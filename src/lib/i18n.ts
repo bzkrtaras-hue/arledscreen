@@ -561,7 +561,7 @@ const tr: Dictionary = {
     quote: "Teklif Al",
   },
   brand: {
-    slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
+    slogan: "NXTIONSTAR: görsel gücün küresel standardı",
   },
   hero: {
     badge: "NXTIONSTAR · ARLEDSCREEN’in kendi markası",
@@ -810,7 +810,7 @@ const tr: Dictionary = {
     backHome: "Ana sayfaya dön",
   },
   footer: {
-    tagline: "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç ve dış mekân LED ekran satışı, montajı ve teknik servisi.",
+    tagline: "NXTIONSTAR, ARLEDSCREEN’in kendi markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç ve dış mekân LED ekran satışı, montajı ve teknik servisi.",
     rights: "Tüm hakları saklıdır.",
     productLine: "Platform",
     engineering: "Telefon, WhatsApp ve e-posta ile proje desteği",
