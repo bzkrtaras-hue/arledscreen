@@ -31,7 +31,14 @@ interface HeroVideoProps {
 }
 
 const ease = [0.22, 0.65, 0.2, 1] as const;
-const CROSSFADE_S = 1.15;
+const CROSSFADE_S = 1.2;
+
+function coverClass(clip: HeroClip) {
+  // Portrait field clips (kafe) need a different focal point than landscape storefronts.
+  return clip.height > clip.width
+    ? "absolute inset-0 h-full w-full object-cover object-[50%_35%]"
+    : "absolute inset-0 h-full w-full object-cover object-[50%_28%] md:object-[68%_42%]";
+}
 
 /**
  * Full-bleed multi-clip hero with soft crossfades.
@@ -63,14 +70,29 @@ export function HeroVideo({
       videoRefs.current.forEach((v, n) => {
         if (!v) return;
         if (n === i && !reduce && allowPlay) {
+          // Warm decode + soft start for the incoming clip.
+          if (v.readyState < 2) v.load();
           v.play().catch(() => {});
-        } else {
+        } else if (n !== i) {
           v.pause();
         }
       });
     },
     [reduce],
   );
+
+  // Prefetch every clip once mounted so crossfades are soft, not black.
+  useEffect(() => {
+    videoRefs.current.forEach((v) => {
+      if (!v) return;
+      try {
+        v.preload = "auto";
+        if (v.readyState < 2) v.load();
+      } catch {
+        /* ignore */
+      }
+    });
+  }, [clips.length]);
 
   useEffect(() => {
     if (reduce || clips.length < 2 || userPaused) return;
@@ -114,16 +136,24 @@ export function HeroVideo({
   return (
     <section aria-label={labels.region} className="relative isolate w-full overflow-hidden bg-navy">
       <div className="relative h-[calc(100dvh-108px)] min-h-[560px] md:h-[clamp(640px,calc(100dvh-116px),860px)] md:min-h-0">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={first.poster}
-          alt=""
-          width={first.width}
-          height={first.height}
-          fetchPriority="high"
-          decoding="sync"
-          className="absolute inset-0 h-full w-full object-cover object-[50%_28%] md:object-[68%_42%]"
-        />
+        {/* Poster stack — soft base while each clip decodes */}
+        {clips.map((clip, i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={`poster-${clip.src}`}
+            src={clip.poster}
+            alt=""
+            width={clip.width}
+            height={clip.height}
+            fetchPriority={i === 0 ? "high" : "low"}
+            decoding={i === 0 ? "sync" : "async"}
+            className={`${coverClass(clip)} transition-opacity duration-[1200ms] ease-out`}
+            style={{
+              opacity: active === i ? 1 : 0,
+              zIndex: 0,
+            }}
+          />
+        ))}
 
         {clips.map((clip, i) => (
           <m.video
@@ -138,13 +168,14 @@ export function HeroVideo({
             muted
             loop
             playsInline
-            preload={i === 0 ? "auto" : "metadata"}
+            preload="auto"
             aria-hidden={true}
             initial={false}
             animate={{
-              opacity: ready[i] && active === i && !reduce ? 1 : 0,
+              opacity: !reduce && ready[i] && active === i ? 1 : 0,
             }}
             transition={{ duration: CROSSFADE_S, ease }}
+            onLoadedData={() => setReady((r) => ({ ...r, [i]: true }))}
             onCanPlay={() => setReady((r) => ({ ...r, [i]: true }))}
             onPlay={() => {
               if (i === active) setPlaying(true);
@@ -152,7 +183,7 @@ export function HeroVideo({
             onPause={() => {
               if (i === active && userPaused) setPlaying(false);
             }}
-            className="absolute inset-0 h-full w-full object-cover object-[50%_28%] md:object-[68%_42%]"
+            className={coverClass(clip)}
             style={{ zIndex: active === i ? 1 : 0 }}
           />
         ))}
@@ -176,10 +207,10 @@ export function HeroVideo({
           )}
         </button>
 
-        {/* Soft scene dots */}
+        {/* Soft scene dots — bottom-start clears Canlı Destek + social rail */}
         {clips.length > 1 && !reduce ? (
           <div
-            className="absolute bottom-5 end-4 z-10 flex gap-2 md:bottom-8 md:end-8"
+            className="absolute bottom-5 start-5 z-10 flex gap-2 md:bottom-8 md:start-8"
             role="tablist"
             aria-label="Sahne videoları"
           >
@@ -240,9 +271,7 @@ export function HeroVideo({
           </div>
         </div>
       </div>
-      <span className="sr-only">
-        {clips.map((c) => c.label).join(" · ")}
-      </span>
+      <span className="sr-only">{clips.map((c) => c.label).join(" · ")}</span>
     </section>
   );
 }
