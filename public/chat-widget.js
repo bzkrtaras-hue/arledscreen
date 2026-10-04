@@ -264,6 +264,13 @@
     /* Mobil hızlı iletişim çubuğu sonradan gelebilir: boyutunu izle. */
     var bar = document.querySelector(".mobile-cta-bar");
     if (bar && "ResizeObserver" in window) new ResizeObserver(place).observe(bar);
+    /* Menü/drawer kapanınca CTA tekrar görünür — --acd-b'yi yeniden ölç. */
+    if ("MutationObserver" in window) {
+      new MutationObserver(function () { place(); }).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
   }
 
   /* Alt hızlı iletişim çubuğu görünürse balonu onun üstüne taşı. */
