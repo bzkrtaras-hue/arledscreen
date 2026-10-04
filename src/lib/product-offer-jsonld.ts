@@ -22,7 +22,7 @@ export function quoteBasedProductOffer(pageUrl: string) {
       "@type": "OfferShippingDetails",
       shippingRate: {
         "@type": "MonetaryAmount",
-        value: 0,
+        value: "0",
         currency: "TRY",
       },
       shippingDestination: {
