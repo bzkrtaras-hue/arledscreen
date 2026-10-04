@@ -25,8 +25,9 @@ interface HeroVideoProps {
 const ease = [0.2, 0.7, 0.2, 1] as const;
 
 /**
- * Full-bleed product-video hero. Copy sits in a bottom-left navy safe zone.
- * Three motions only: copy stagger, video fade onto poster, accent rule.
+ * Full-bleed product-video hero. Copy sits in a bottom-left navy safe zone
+ * and paints at full opacity on first frame (H1 is LCP). Three motions:
+ * video fade onto poster, accent rule, pause control fade-in.
  * No glass pills, no carousel, no rounded-full CTAs.
  */
 export function HeroVideo({
@@ -101,16 +102,8 @@ export function HeroVideo({
     }
   };
 
-  const item = {
-    hidden: { opacity: 0, y: reduce ? 0 : 18 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
-  };
-
   return (
-    <section
-      aria-label={labels.region}
-      className="relative isolate w-full overflow-hidden bg-navy"
-    >
+    <section aria-label={labels.region} className="relative isolate w-full overflow-hidden bg-navy">
       <div className="relative h-[calc(100dvh-108px)] min-h-[560px] md:h-[clamp(640px,calc(100dvh-116px),860px)] md:min-h-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -146,11 +139,14 @@ export function HeroVideo({
           aria-hidden
         />
 
-        <button
+        <m.button
           type="button"
           onClick={toggle}
           aria-label={playing ? labels.pause : labels.play}
           aria-pressed={playing}
+          initial={reduce ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.45, ease, delay: 0.4 }}
           className="absolute end-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-navy/80 text-white transition hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:end-8 md:top-8"
         >
           {playing ? (
@@ -158,46 +154,29 @@ export function HeroVideo({
           ) : (
             <Play className="ml-0.5 h-[18px] w-[18px]" aria-hidden />
           )}
-        </button>
+        </m.button>
 
         <div className="relative z-[1] mx-auto flex h-full max-w-7xl items-end px-5 pb-[calc(4.5rem+1.5rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
-          <m.div
-            className="w-full max-w-[560px]"
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.08, delayChildren: 0.12 } },
-            }}
-          >
-            <m.p
-              variants={item}
-              className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs"
-            >
+          <div className="w-full max-w-[560px]">
+            <p className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs">
               {lockupPrimary}
               <span className="mx-2.5 inline-block h-3 w-px bg-[#1E5BB8] align-middle" aria-hidden />
               {lockupSecondary}
-            </m.p>
+            </p>
             <m.span
               aria-hidden
               className="mt-3 block h-0.5 w-10 origin-left bg-[#1E5BB8] rtl:origin-right"
-              initial={reduce ? { scaleX: 1 } : { scaleX: 0 }}
+              initial={reduce ? false : { scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.55, ease, delay: 0.15 }}
             />
-            <m.h1
-              variants={item}
-              className="mt-5 text-balance font-display text-[clamp(2rem,1.35rem+3vw,4rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-white"
-            >
+            <h1 className="mt-5 text-balance font-display text-[clamp(2rem,1.35rem+3vw,4rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-white">
               {headline}
-            </m.h1>
-            <m.p
-              variants={item}
-              className="mt-4 max-w-[36ch] text-pretty text-[15px] leading-[1.6] text-white/90 sm:text-base sm:leading-[1.65] md:text-lg"
-            >
+            </h1>
+            <p className="mt-4 max-w-[36ch] text-pretty text-[15px] leading-[1.6] text-white/90 sm:text-base sm:leading-[1.65] md:text-lg">
               {subcopy}
-            </m.p>
-            <m.div variants={item} className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
+            </p>
+            <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
               <Link
                 href={quoteHref}
                 className="btn-soft inline-flex min-h-12 items-center justify-center rounded-xl bg-[#1E5BB8] px-7 text-[15px] font-semibold text-white shadow-glow hover:bg-cyan-600 md:min-h-[52px] md:text-base"
@@ -211,8 +190,8 @@ export function HeroVideo({
                 <Calculator className="h-4 w-4" aria-hidden />
                 {calcLabel}
               </Link>
-            </m.div>
-          </m.div>
+            </div>
+          </div>
         </div>
       </div>
       <span className="sr-only">{videoLabel}</span>

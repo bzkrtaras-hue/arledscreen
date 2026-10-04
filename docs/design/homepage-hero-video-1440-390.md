@@ -187,13 +187,15 @@ Also pause when the tab is hidden or the stage leaves the viewport (threshold 0.
 
 ## Motions (exactly three)
 
+H1 / lockup / CTAs paint at full opacity on first frame (LCP). Do not stagger-fade the copy — Framer `opacity: 0` on SSR leaves a blank stage until hydration.
+
 | # | What | Timing | Reduced motion |
 |---|---|---|---|
-| 1 | Copy stack: fade + 18 px up, stagger 80 ms (lockup → H1 → subcopy → CTAs) | 700 ms, ease `[0.2, 0.7, 0.2, 1]`, delayChildren 120 ms | Opacity only, no Y |
+| 1 | Accent rule `scaleX 0 → 1`, origin inline-start | 550 ms, delay 150 ms, ease `[0.2, 0.7, 0.2, 1]` | Instant full width |
 | 2 | Video fades onto the poster once `canplay` | 600 ms, same ease | Video stays hidden; poster is the frame |
-| 3 | Accent rule `scaleX 0 → 1`, origin inline-start | 550 ms, delay 150 ms | Instant full width |
+| 3 | Pause control fades in | 450 ms, delay 400 ms | Instant |
 
-Out of budget: Ken Burns, overlay fade, carousel, magnetic, stat parallax, looping underline.
+Out of budget: Ken Burns, overlay fade, carousel, magnetic, stat parallax, copy opacity stagger, looping underline.
 
 Hover on `.btn-soft` is a control state, not a fourth stage motion.
 
