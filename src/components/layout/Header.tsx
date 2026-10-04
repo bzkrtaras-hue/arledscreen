@@ -124,11 +124,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
   const group = groups[active] ?? groups[0];
 
   return (
-    <header className="glass-bar border-b border-white/40">
-      <div className="mx-auto flex h-[68px] max-w-7xl min-w-0 items-center gap-3 px-4 sm:px-6 md:h-[76px] lg:px-8">
+    <header className="px-3 pb-2 pt-2 sm:px-4 md:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl min-w-0 items-center gap-2 md:gap-3">
         <Link
           href={`/${locale}/`}
-          className="flex min-h-11 min-w-0 shrink-0 items-center gap-2.5 rounded-2xl bg-white/55 px-2.5 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]"
+          className="liquid-glass-btn min-h-12 min-w-0 shrink-0 gap-2.5 px-3 py-1.5 sm:min-h-[3.25rem] sm:px-3.5"
           aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
         >
           <Image
@@ -136,23 +136,26 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             alt="ARLEDSCREEN"
             width={514}
             height={160}
-            className="h-10 w-auto max-w-[150px] object-contain sm:h-11 sm:max-w-[180px]"
+            className="h-9 w-auto max-w-[140px] object-contain sm:h-10 sm:max-w-[170px]"
             priority
             unoptimized
           />
-          <span className="h-8 w-px bg-ink/15" aria-hidden />
+          <span className="h-7 w-px bg-ink/15" aria-hidden />
           <Image
             src="/brand/nxtionstar-wordmark-header-478.webp"
             alt="NXTIONSTAR"
             width={478}
             height={137}
-            className="h-6 w-auto object-contain sm:h-7"
+            className="h-5 w-auto object-contain sm:h-6"
             unoptimized
           />
         </Link>
 
-        <nav className="ml-auto hidden min-w-0 xl:block" aria-label={tr ? "Ana menü" : "Primary"}>
-          <ul className="flex items-center gap-0.5 xl:gap-1">
+        <nav
+          className="liquid-glass-shell ml-auto hidden min-w-0 px-1.5 py-1 xl:block"
+          aria-label={tr ? "Ana menü" : "Primary"}
+        >
+          <ul className="flex items-center gap-0.5">
             {links.map((link) =>
               link.dropdown && (link.dropdown === "products" ? groups.length : guides.length) ? (
                 <li
@@ -339,7 +342,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
         <Link
           href={`/${locale}/quote/`}
-          className="btn-soft ml-auto hidden min-h-11 shrink-0 items-center gap-2 rounded-full bg-cyan px-5 text-[14px] text-white shadow-pill hover:bg-cyan-600 sm:inline-flex xl:ml-3"
+          className="liquid-glass-btn liquid-glass-btn--primary ml-auto hidden min-h-12 shrink-0 gap-2 px-5 text-[14px] font-semibold sm:inline-flex xl:ml-0"
         >
           <FileText className="h-4 w-4" aria-hidden />
           {dict.nav.quote}
@@ -347,7 +350,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
         <button
           type="button"
-          className="ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cyan text-white shadow-pill transition hover:bg-cyan-600 sm:ml-0 xl:hidden"
+          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon ml-auto shrink-0 xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -391,7 +394,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="nav-glass-link inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-soft"
+                  className="liquid-glass-btn liquid-glass-btn--icon text-ink-soft"
                 >
                   <span className="sr-only">{tr ? "Menüyü kapat" : "Close menu"}</span>
                   <X className="h-5 w-5" aria-hidden />
