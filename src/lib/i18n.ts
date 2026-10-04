@@ -561,7 +561,7 @@ const tr: Dictionary = {
     quote: "Teklif al",
   },
   brand: {
-    slogan: "NXTIONSTAR: görsel gücün küresel standardı",
+    slogan: "NXTIONSTAR — görsel gücün küresel standardı",
   },
   hero: {
     badge: "NXTIONSTAR · ARLEDSCREEN’in kendi markası",
