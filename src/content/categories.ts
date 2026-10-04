@@ -117,9 +117,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       { title: "Toplantı ve konferans", body: "Sunum ve video konferans için net, parlak ve dikişsiz görüntü." },
     ],
     pitches: [
-      { label: "P1.25", note: "GOB" },
-      { label: "P1.53", note: "GOB" },
-      { label: "P1.86", note: "GOB" },
+      { label: "P1.25", note: "GOB seçenekli" },
       { label: "P2.5" },
       { label: "P3.07" },
       { label: "P4" },
@@ -330,7 +328,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     description:
       "Kavisli duvar, kolon kaplama ve özel form uygulamaları için esnek LED ekran. Yüzey ölçüsü ve taşıyıcı yapı keşifte planlanır; montaj ve servis ARLEDSCREEN'den.",
     short: "Kavisli yüzeyler, kolonlar ve özel formlar için bükülebilen modüller.",
-    tag: "Kavisli · Silindir · Özel form",
+    tag: "P1.86 · P2.5",
     family: "İç Mekân LED Ekranlar",
     types: ["Kolon kaplama", "Kavisli duvar", "Silindir ve dairesel form", "Özel tasarım dekor"],
     image: "/projects/modules/flex-module-bend.jpg",
@@ -352,7 +350,10 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       { title: "Sahne tasarımı", body: "Etkinlik ve stüdyolar için yaratıcı dekorlar." },
       { title: "Mimari uygulama", body: "Mimarlık ofisleriyle birlikte projelendirilen özel formlar." },
     ],
-    pitches: [],
+    pitches: [
+      { label: "P1.86", note: "esnek" },
+      { label: "P2.5", note: "esnek" },
+    ],
     seriesCategories: [],
     guide: { href: "/tr/rehber/mimari-muhendislik-led/", label: "Mimari LED mühendisliği rehberi" },
     projectType: "diger",
@@ -438,7 +439,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     description:
       "Toplantı salonu, stüdyo ve kontrol odası gibi yakın izleme alanları için ince pitch LED ekran. Piksel aralığı izleme mesafesine göre seçilir; keşif, montaj ve servis ARLEDSCREEN'den.",
     short: "Piksel aralığı küçük, yakın mesafeden keskin görüntü veren iç mekân ekranları.",
-    tag: "Toplantı · Stüdyo · Kontrol odası",
+    tag: "P0.9 · P1.25",
     family: "İç Mekân LED Ekranlar",
     types: ["SMD ince pitch", "COB yüzeyli seçenekler", "Toplantı salonu duvarı", "Stüdyo arka planı"],
     image: "/projects/modules/fine-pitch-panel.jpg",
@@ -459,7 +460,10 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       { title: "Kontrol odası", body: "Kamera, harita ve veri ekranlarının birlikte izlenmesi." },
       { title: "Lobi ve karşılama", body: "Kurumsal girişlerde yakından izlenen içerik alanı." },
     ],
-    pitches: [],
+    pitches: [
+      { label: "P0.9", note: "teknik föy ile" },
+      { label: "P1.25" },
+    ],
     seriesCategories: ["fine-pitch"],
     guide: { href: "/tr/rehber/konferans-salonu-led/", label: "Konferans salonu LED rehberi" },
     projectType: "toplanti",
@@ -469,7 +473,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Hangi piksel aralığını seçmeliyim?",
         answer:
-          "Pratik bir başlangıç olarak, en yakın izleyicinin metre cinsinden uzaklığı ile piksel aralığı (mm) arasında yakın bir ilişki kurulur. Kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz.",
+          "İnce pitch grubunda yayımlanan aralıklar P0.9 ve P1.25'tir. Pratik kural: her 1 mm P ≈ 1 m minimum mesafe. Kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz; P0.9 için teknik föy talep üzerine paylaşılır.",
       },
       {
         question: "SMD ile COB arasındaki fark nedir?",
@@ -494,7 +498,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     short: "Dikey formatlı, ayaklı veya duvara monte edilebilen tanıtım ekranları.",
     tag: "Mağaza · Lobi · Etkinlik",
     family: "Poster ve Totem LED Ekranlar",
-    types: ["Ayaklı poster ekran", "Duvara montaj", "Yan yana birleştirme", "İç ve dış mekân totem"],
+    types: ["Ayaklı poster ekran", "Duvara montaj", "Yan yana birleştirme", "İç ve dış mekân totem", "Menuboard (kafe / restoran)"],
     image: "/projects/totem-indoor.jpg",
     cardImage: "/projects/applications/led-poster-totems.jpg",
     imageAlt: "İç mekânda konumlandırılmış dikey totem LED ekran",

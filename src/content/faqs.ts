@@ -6,7 +6,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "How do I pick pixel pitch for my viewing distance?",
       answer:
-        "For ARLEDSCREEN / NXTIONSTAR walls we start from the closest critical viewer: roughly 1 m of distance per 1 mm of pitch (P1.2 ≈ 1.2 m). Control rooms and lobbies usually need finer pitch; outdoor façades and totems can step up when average viewers stand farther back.",
+        "For ARLEDSCREEN / NXTIONSTAR walls we start from the closest critical viewer: roughly 1 m of distance per 1 mm of pitch (P1.25 ≈ 1.25 m). Control rooms and lobbies usually need finer pitch; outdoor façades and totems can step up when average viewers stand farther back.",
     },
     {
       question: "Can you mix 500×500 and 500×1000 mm cabinets?",
@@ -57,7 +57,12 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Hangi şehirlerde kurulum yapıyorsunuz?",
       answer:
-        "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Referans listemizde İstanbul dışında Manisa, Aksaray, Bursa, Yozgat, Van ve Eskişehir gibi illerde ve yurt dışında tamamlanan projeler yer alır. Projenizin konumunu teklif formunda belirtmeniz yeterlidir.",
+        "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Türkiye geneli proje yürütürüz. Tem 2025 – Tem 2026 proje kayıtlarında 13 il ile Almanya ve Azerbaycan yer alır (81 il iddiası yoktur). Projenizin konumunu teklif formunda belirtmeniz yeterlidir.",
+    },
+    {
+      question: "İade veya garanti süresi nedir?",
+      answer:
+        "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Sitede sabit bir garanti yılı veya genel iade politikası yayımlanmamıştır; kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",

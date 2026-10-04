@@ -15,6 +15,7 @@ import { absoluteUrl } from "@/lib/site";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PRODUCT_GROUPS, groupsByFamily, productGroupPath } from "@/content/categories";
+import { CANONICAL_LINEUP } from "@/content/product-lineup";
 import { ArrowRight, Calculator, FileText } from "lucide-react";
 
 interface PageProps {
@@ -113,6 +114,17 @@ export default async function ProductsPage({ params }: PageProps) {
                 title="Kullanım alanına göre seçin"
                 description="Ürünleri kullanım ortamına göre beş başlıkta topladık. Her sayfada ürün tipinin tanımı, uygulama tipleri, kullanım alanları, teknik bilgi alanları ve sık sorulan sorular yer alır."
               />
+              <aside className="mb-10 max-w-3xl border-y border-border py-6 text-sm leading-relaxed text-ink-soft" data-canonical-lineup>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">Kanonik piksel aralıkları</p>
+                <ul className="mt-3 space-y-1.5 text-ink">
+                  <li><span className="font-semibold">Dış mekân:</span> {CANONICAL_LINEUP.outdoor.pitches.join(", ")}</li>
+                  <li><span className="font-semibold">İç mekân:</span> {CANONICAL_LINEUP.indoor.pitches.join(", ")}</li>
+                  <li><span className="font-semibold">GOB:</span> {CANONICAL_LINEUP.gob.pitches.join(", ")}</li>
+                  <li><span className="font-semibold">İnce pitch:</span> {CANONICAL_LINEUP.finePitch.pitches.join(", ")}</li>
+                  <li><span className="font-semibold">Esnek:</span> {CANONICAL_LINEUP.flexible.pitches.join(", ")}</li>
+                  <li><span className="font-semibold">Diğer:</span> şeffaf, kiralık, poster/totem, menuboard, kiosk, dijital ekran (üst küme), modül ve kontrol sistemleri</li>
+                </ul>
+              </aside>
               <div className="space-y-12">
                 {groupsByFamily().map((f) => (
                   <div key={f.family}>

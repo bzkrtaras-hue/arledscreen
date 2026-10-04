@@ -67,13 +67,17 @@ ErrorDocument 404 /404.html
 
 RewriteEngine On
 
-# www -> apex (301). Only when Host starts with "www."; the target host has no
-# "www." so this cannot loop. Always redirects to HTTPS.
+# www -> apex (301). Root path goes straight to /tr/ to avoid www→/→/tr/ hop.
+# Only when Host starts with "www."; the target host has no "www." so this
+# cannot loop. Always redirects to HTTPS.
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^$ https://%1/tr/ [R=301,L,NE]
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE]
 
-# Apex / -> /tr/ (Turkish default audience)
+# Apex / -> /tr/ (Turkish default audience) — permanent server redirect
 RewriteRule ^$ /tr/ [R=301,L]
+RewriteRule ^index\.html?$ /tr/ [R=301,L]
 
 # Legacy Horizons / old-site paths -> current routes (mirrors public/_redirects for Apache/LiteSpeed hosting)
 RewriteRule ^(iletisim|teklif-al|contact)(\.html)?/?$ /tr/quote/ [R=301,L]
