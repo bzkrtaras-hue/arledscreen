@@ -425,27 +425,33 @@
   }
 
   /*
-   * Settled slogan capsule (TopBar) — single line, aligned with contact chips.
-   * Not the heavy brand plate: logos own that role in the Header row.
+   * Settled slogan capsule (TopBar) — full text on small screens (wrap to 2 lines),
+   * single truncated line from sm+. Not the brand plate (logos own that role).
    */
   .liquid-glass-btn--slogan {
     min-height: 1.85rem;
-    height: 1.85rem;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
     border-radius: 9999px;
     background:
       linear-gradient(
         165deg,
-        rgba(255, 255, 255, 0.82) 0%,
-        rgba(240, 246, 252, 0.72) 55%,
-        rgba(230, 240, 250, 0.78) 100%
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(245, 249, 253, 0.84) 55%,
+        rgba(237, 244, 252, 0.88) 100%
       );
-    border-color: rgba(255, 255, 255, 0.72);
+    border-color: rgba(255, 255, 255, 0.85);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
       0 0 0 1px rgba(15, 42, 79, 0.06),
       0 8px 20px -12px rgba(15, 42, 79, 0.32);
+  }
+  @media (min-width: 640px) {
+    .liquid-glass-btn--slogan {
+      height: 1.85rem;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
   .liquid-glass-btn--slogan:hover {
     transform: none;

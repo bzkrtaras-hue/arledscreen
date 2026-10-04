@@ -61,9 +61,10 @@ export function HeroVideo({
   const reduce = useReducedMotion();
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [active, setActive] = useState(0);
-  const [playing, setPlaying] = useState(false);
   const [userPaused, setUserPaused] = useState(false);
   const [ready, setReady] = useState<Record<number, boolean>>({});
+  // Affordance follows user intent, not async play() — avoids Play icon while autoplaying.
+  const showPause = !reduce && !userPaused;
 
   const playIndex = useCallback(
     (i: number, allowPlay: boolean) => {
@@ -119,14 +120,13 @@ export function HeroVideo({
   }, [active, playIndex, userPaused]);
 
   const toggle = () => {
+    if (reduce) return;
     if (userPaused) {
       setUserPaused(false);
       playIndex(active, true);
-      setPlaying(true);
     } else {
       setUserPaused(true);
       videoRefs.current.forEach((x) => x?.pause());
-      setPlaying(false);
     }
   };
 
@@ -177,12 +177,6 @@ export function HeroVideo({
             transition={{ duration: CROSSFADE_S, ease }}
             onLoadedData={() => setReady((r) => ({ ...r, [i]: true }))}
             onCanPlay={() => setReady((r) => ({ ...r, [i]: true }))}
-            onPlay={() => {
-              if (i === active) setPlaying(true);
-            }}
-            onPause={() => {
-              if (i === active && userPaused) setPlaying(false);
-            }}
             className={coverClass(clip)}
             style={{ zIndex: active === i ? 1 : 0 }}
           />
@@ -193,19 +187,21 @@ export function HeroVideo({
           aria-hidden
         />
 
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={playing ? labels.pause : labels.play}
-          aria-pressed={playing}
-          className="absolute end-4 top-[calc(7.25rem+0.5rem)] z-10 flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-navy/80 text-white transition duration-500 ease-out hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:end-8 md:top-[calc(8rem+0.75rem)]"
-        >
-          {playing ? (
-            <Pause className="h-[18px] w-[18px]" aria-hidden />
-          ) : (
-            <Play className="ml-0.5 h-[18px] w-[18px]" aria-hidden />
-          )}
-        </button>
+        {!reduce ? (
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={showPause ? labels.pause : labels.play}
+            aria-pressed={showPause}
+            className="absolute end-4 top-[calc(7.25rem+0.5rem)] z-10 flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-navy/80 text-white transition duration-500 ease-out hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:end-8 md:top-[calc(8rem+0.75rem)]"
+          >
+            {showPause ? (
+              <Pause className="h-[18px] w-[18px]" aria-hidden />
+            ) : (
+              <Play className="ml-0.5 h-[18px] w-[18px]" aria-hidden />
+            )}
+          </button>
+        ) : null}
 
         {/* Soft scene dots — bottom-start clears Canlı Destek + social rail */}
         {clips.length > 1 && !reduce ? (
