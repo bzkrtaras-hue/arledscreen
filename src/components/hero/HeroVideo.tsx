@@ -198,7 +198,7 @@ export function HeroVideo({
           onClick={toggle}
           aria-label={playing ? labels.pause : labels.play}
           aria-pressed={playing}
-          className="absolute end-4 top-[calc(6.75rem+0.5rem)] z-10 flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-navy/80 text-white transition duration-500 ease-out hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:end-8 md:top-[calc(7.5rem+0.75rem)]"
+          className="absolute end-4 top-[calc(7.25rem+0.5rem)] z-10 flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-navy/80 text-white transition duration-500 ease-out hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:end-8 md:top-[calc(8rem+0.75rem)]"
         >
           {playing ? (
             <Pause className="h-[18px] w-[18px]" aria-hidden />

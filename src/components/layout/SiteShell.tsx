@@ -54,7 +54,7 @@ export function SiteShell({ locale, children }: SiteShellProps) {
         </div>
         <main
           id="main-content"
-          className="flex-1 pt-[6.75rem] md:pt-[7.5rem]"
+          className="flex-1 pt-[7.25rem] md:pt-[8rem]"
         >
           {children}
         </main>
