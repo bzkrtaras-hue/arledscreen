@@ -38,8 +38,8 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/rehber/", label: "Rehber" },
         { href: "/tr/blog/", label: "Blog" },
         { href: "/tr/about/", label: "Hakkımızda" },
-        { href: "/tr/hesaplayici/", label: "Fiyat Hesapla" },
-        { href: "/tr/quote/", label: "Teklif İste" },
+        { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
+        { href: "/tr/quote/", label: "Teklif iste" },
         { href: "/tr/sss/", label: "SSS" },
         { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
       ]

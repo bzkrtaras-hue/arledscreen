@@ -38,7 +38,7 @@ export function QuoteSplit({
             className="btn-soft inline-flex min-h-14 flex-1 items-center justify-center gap-2 rounded-full bg-[#ffffff] px-6 text-[16px] font-bold text-[#174a96] shadow-[0_10px_30px_-12px_rgba(0,0,0,0.55)] hover:bg-[#EEF4FF]"
           >
             <FileText className="h-5 w-5" aria-hidden />
-            Teklif İste
+            Teklif iste
           </Link>
           <a
             href={GENERIC_WHATSAPP_HREF}

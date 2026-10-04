@@ -551,14 +551,14 @@ const en: Dictionary = {
 
 const tr: Dictionary = {
   nav: {
-    home: "Ana Sayfa",
+    home: "Ana sayfa",
     products: "Ürünler",
     about: "Hakkımızda",
     projects: "Projeler",
     references: "Referanslar",
     configurator: "Konfigüratör",
     priceCalculator: "Hesaplayıcı",
-    quote: "Teklif Al",
+    quote: "Teklif al",
   },
   brand: {
     slogan: "NXTIONSTAR: görsel gücün küresel standardı",

@@ -44,7 +44,7 @@ export function MobileCtaBar({ locale }: { locale: Locale }) {
           className="liquid-glass-btn liquid-glass-btn--primary min-h-[52px] flex-[1.35] flex-col gap-0.5 px-2 text-xs font-semibold"
         >
           <FileText className="h-5 w-5" aria-hidden />
-          {tr ? "Teklif İste" : "Get a quote"}
+          {tr ? "Teklif iste" : "Get a quote"}
         </Link>
       </div>
     </nav>

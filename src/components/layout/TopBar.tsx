@@ -35,9 +35,10 @@ export function TopBar({ locale }: { locale: Locale }) {
           <a
             href={CONTACT_PHONE_HREF}
             className="liquid-glass-btn liquid-glass-btn--compact text-[#1a2430] hover:text-cyan"
+            aria-label={CONTACT_PHONE_DISPLAY}
           >
             <PhoneIcon className="h-3 w-3 text-cyan" />
-            <span>{CONTACT_PHONE_DISPLAY}</span>
+            <span className="hidden sm:inline">{CONTACT_PHONE_DISPLAY}</span>
           </a>
           <a
             href={CONTACT_EMAIL_HREF}

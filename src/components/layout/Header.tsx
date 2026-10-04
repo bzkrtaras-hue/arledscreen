@@ -85,14 +85,20 @@ export function Header({ locale, groups, guides }: HeaderProps) {
   useEffect(() => {
     setOpen(false);
     setDrop(null);
+    setMobileSection(null);
   }, [pathname]);
   useEffect(() => {
     const lock = open || Boolean(drop);
     document.documentElement.style.overflow = lock ? "hidden" : "";
+    document.documentElement.classList.toggle("chrome-overlay-open", lock);
     return () => {
       document.documentElement.style.overflow = "";
+      document.documentElement.classList.remove("chrome-overlay-open");
     };
   }, [open, drop]);
+  useEffect(() => {
+    if (!open) setMobileSection(null);
+  }, [open]);
 
   const links: (MenuLink & { dropdown?: Exclude<Dropdown, null> })[] = tr
     ? [
@@ -103,7 +109,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         { href: "/tr/rehber/", label: "Rehber", dropdown: "guides" },
         { href: "/tr/blog/", label: "Blog" },
         { href: "/tr/about/", label: "Hakkımızda" },
-        { href: "/tr/hesaplayici/", label: "Fiyat Hesapla" },
+        { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
       ]
     : [
         { href: `/${locale}/products/`, label: dict.nav.products },
@@ -356,8 +362,16 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="sr-only">{tr ? "Menüyü aç" : "Open menu"}</span>
-          <Menu className="h-5 w-5" aria-hidden />
+          <span className="sr-only">
+            {open
+              ? tr
+                ? "Menüyü kapat"
+                : "Close menu"
+              : tr
+                ? "Menüyü aç"
+                : "Open menu"}
+          </span>
+          {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
         </button>
       </div>
 
@@ -407,14 +421,35 @@ export function Header({ locale, groups, guides }: HeaderProps) {
               exit={{ x: "100%" }}
               transition={{ duration: 0.32, ease }}
             >
-              <div className="flex h-[68px] items-center justify-between border-b border-white/40 px-4">
-                <span className="font-display text-sm font-bold uppercase tracking-[0.14em] text-ink-muted">
-                  {tr ? "Menü" : "Menu"}
-                </span>
+              <div className="flex min-h-[68px] items-center justify-between gap-3 border-b border-[#d8e2ee]/80 px-3 py-2.5">
+                <Link
+                  href={`/${locale}/`}
+                  onClick={() => setOpen(false)}
+                  className="liquid-glass-btn liquid-glass-btn--brand min-h-12 min-w-0 flex-1 justify-start gap-2 px-3 py-1.5"
+                  aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
+                >
+                  <Image
+                    src="/brand/arledscreen-logo-header-514.webp"
+                    alt="ARLEDSCREEN"
+                    width={514}
+                    height={160}
+                    className="h-8 w-auto max-w-[132px] object-contain"
+                    unoptimized
+                  />
+                  <span className="h-6 w-px shrink-0 bg-ink/20" aria-hidden />
+                  <Image
+                    src="/brand/nxtionstar-wordmark-header-478.webp"
+                    alt="NXTIONSTAR"
+                    width={478}
+                    height={137}
+                    className="h-5 w-auto object-contain"
+                    unoptimized
+                  />
+                </Link>
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="liquid-glass-btn liquid-glass-btn--icon text-ink-soft"
+                  className="liquid-glass-btn liquid-glass-btn--icon shrink-0 text-ink-soft"
                 >
                   <span className="sr-only">{tr ? "Menüyü kapat" : "Close menu"}</span>
                   <X className="h-5 w-5" aria-hidden />
@@ -515,7 +550,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   );
                 })}
               </ul>
-              <div className="mt-auto space-y-3 border-t border-[#d8e2ee] px-4 py-5">
+              <div className="mt-auto space-y-3 border-t border-[#d8e2ee] px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] pt-5">
                 <Link
                   href={`/${locale}/quote/`}
                   className="liquid-glass-btn liquid-glass-btn--primary min-h-12 w-full gap-2 text-[15px] font-semibold"

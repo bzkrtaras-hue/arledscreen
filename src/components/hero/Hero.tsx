@@ -18,7 +18,7 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   },
   {
     slug: "aslanturk-yesilpinar-led-ekran",
-    labelTr: "Cafe / restoran",
+    labelTr: "Kafe / restoran",
     labelEn: "Cafe / restaurant",
   },
   {
@@ -72,8 +72,18 @@ export function Hero({ locale }: HeroProps) {
       secondaryLabel={tr ? "Ürün serilerini inceleyin" : "Browse product lines"}
       labels={
         tr
-          ? { region: "ARLEDSCREEN giriş", pause: "Videoyu duraklat", play: "Videoyu oynat" }
-          : { region: "ARLEDSCREEN intro", pause: "Pause video", play: "Play video" }
+          ? {
+              region: "ARLEDSCREEN giriş",
+              pause: "Videoyu duraklat",
+              play: "Videoyu oynat",
+              scenes: "Sahne videoları",
+            }
+          : {
+              region: "ARLEDSCREEN intro",
+              pause: "Pause video",
+              play: "Play video",
+              scenes: "Scene videos",
+            }
       }
       dwellMs={8000}
     />
