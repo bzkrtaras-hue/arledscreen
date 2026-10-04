@@ -1,0 +1,62 @@
+[
+  {
+    "question": "LED ekran fiyatı neye göre belirlenir?",
+    "answer": "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyet fiyat hesaplayıcıyla görülebilir; net rakam ölçü ve konum bilgisiyle verilen yazılı teklifle kesinleşir."
+  },
+  {
+    "question": "P2.5 iç mekân LED ekranın panel fiyatı nedir?",
+    "answer": "ARLEDSCREEN hesaplayıcısındaki 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir."
+  },
+  {
+    "question": "Dış mekân LED ekran panel fiyatları ne kadar?",
+    "answer": "Hesaplayıcıda dış mekân modüller P5 için 29,90 USD, P4 için 33,80 USD, P4 önden servisli için 36,40 USD, P3.07 için 44,20 USD, P2.9 için 53,30 USD ve P2.5 için 63,70 USD/paneldir (KDV ve nakliye hariç)."
+  },
+  {
+    "question": "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
+    "answer": "Pratik bir başlangıç kuralı olarak her 1 mm piksel aralığı için yaklaşık 1 m minimum izleme mesafesi alınır (P2.5 ≈ 2,5 m). Yakın izlemede küçük P değerleri, cephe ve yol kenarı gibi uzak izlemede daha büyük P değerleri tercih edilir. Kesin seçim keşifte içerik türü de dikkate alınarak yapılır."
+  },
+  {
+    "question": "İç mekân ile dış mekân LED ekran arasındaki fark nedir?",
+    "answer": "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Seriye ait değerler teklifle birlikte teknik föyde paylaşılır."
+  },
+  {
+    "question": "LED tabela ile LED ekran arasındaki fark nedir?",
+    "answer": "Kayan yazı tipi LED tabelalar çoğunlukla tek veya sınırlı renkte metin ve basit animasyon gösterir. Tam renkli (RGB) LED ekranlar ise video, görsel ve animasyon oynatır; ölçüsü modüllerle büyütülebilir. ARLEDSCREEN, mağaza cephesi, totem ve vitrin gibi tabela uygulamaları için tam renkli iç ve dış mekân LED ekranlar sunar."
+  },
+  {
+    "question": "Ekran ölçüsü istediğim gibi olabilir mi?",
+    "answer": "Ekran ölçüsü 320 × 160 mm modül katlarına göre planlanır. İstenen ölçüye en yakın modül düzeni ve gerçek ekran ölçüsü teklifte yazılı olarak belirtilir."
+  },
+  {
+    "question": "Keşif ve teklif süreci nasıl işliyor?",
+    "answer": "Önce ölçü, konum, kullanım amacı ve zaman planı alınır. Gerekirse yerinde keşifle montaj yüzeyi, elektrik ve izleme mesafesi incelenir. Ardından ekran ölçüsü, piksel aralığı, kabin adedi ve malzeme listesini içeren teklif hazırlanır."
+  },
+  {
+    "question": "Hangi şehirlerde kurulum yapıyorsunuz?",
+    "answer": "Merkez İstanbul Gaziosmanpaşa'dadır. Proje kayıtlarında İstanbul dışında Manisa, Aksaray, Bursa, Yozgat, Van, Eskişehir gibi iller ile Almanya ve Azerbaycan'da tamamlanan kurulumlar yer alır."
+  },
+  {
+    "question": "LED ekran montajı ne kadar sürer?",
+    "answer": "Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre teklifte paylaşılır."
+  },
+  {
+    "question": "Garanti ve teknik servis nasıl sağlanıyor?",
+    "answer": "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir."
+  },
+  {
+    "question": "Kiralık LED ekran hizmetiniz var mı?",
+    "answer": "Evet. Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçenekleri birlikte değerlendirilir. Kiralık LED ekran fiyatı ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre hazırlanır."
+  },
+  {
+    "question": "Ekrana içerik nasıl yüklenir?",
+    "answer": "LED ekranlar bir kontrol sistemi (gönderici/alıcı kart veya medya oynatıcı) üzerinden yönetilir. Kullanım senaryosuna göre bilgisayardan canlı yayın, USB ile oynatma veya uzaktan içerik yönetimi seçenekleri keşifte belirlenir."
+  },
+  {
+    "question": "Dış mekân ekranlar için izin gerekir mi?",
+    "answer": "Dış mekân reklam ve cephe ekranlarında ilgili belediyenin izin ve ruhsat koşulları geçerli olabilir. Süreç konuma göre değiştiği için başvuru öncesinde belediyeden bilgi alınması önerilir."
+  },
+  {
+    "question": "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
+    "answer": "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. İletişim: +90 530 507 88 34, arled@arledscreen.com."
+  }
+]

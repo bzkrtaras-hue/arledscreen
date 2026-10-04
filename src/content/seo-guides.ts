@@ -1,0 +1,1177 @@
+import type { Locale } from "@/lib/i18n";
+
+export const SEO_GUIDE_SLUGS = [
+  "led-ekran",
+  "dis-mekan-led-ekran",
+  "ic-mekan-led-ekran",
+  "mimari-muhendislik-led",
+  "konferans-salonu-led",
+  "vitrin-led-ekran",
+  "poster-led-ekran",
+  "kiosk-dijital-ekran",
+] as const;
+
+export type SeoGuideSlug = (typeof SEO_GUIDE_SLUGS)[number];
+
+export function isSeoGuideSlug(value: string): value is SeoGuideSlug {
+  return (SEO_GUIDE_SLUGS as readonly string[]).includes(value);
+}
+
+export interface SeoGuideSection {
+  h2: string;
+  body: string;
+}
+
+export interface SeoGuideFaq {
+  question: string;
+  answer: string;
+}
+
+export interface SeoGuide {
+  slug: SeoGuideSlug;
+  title: string;
+  description: string;
+  keywords: string[];
+  h1: string;
+  intro: string;
+  sections: SeoGuideSection[];
+  faqs: SeoGuideFaq[];
+  relatedSlugs: SeoGuideSlug[];
+  cta: { title: string; body: string };
+  /** Short card label for hub / related links */
+  cardLabel: string;
+  cardTeaser: string;
+}
+
+type GuideLocale = "tr" | "en";
+
+const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
+  tr: {
+    "led-ekran": {
+      slug: "led-ekran",
+      title: "LED Ekran Rehberi | Dijital Ekran Seçimi — ARLEDSCREEN",
+      description:
+        "LED ekran nedir, dijital ekran projelerinde pitch, parlaklık ve kabin nasıl seçilir? ARLEDSCREEN / NXTIONSTAR ile İstanbul Gaziosmanpaşa’dan B2B keşif, teklif ve mühendislik kurulumu.",
+      keywords: [
+        "LED ekran",
+        "dijital ekran",
+        "LED duvar",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+        "LED ekran Türkiye",
+      ],
+      h1: "LED ekran ve dijital ekran çözüm rehberi",
+      intro:
+        "LED ekran, piksel modüllerinin birleştiği yüksek parlaklıklı bir dijital ekran yüzeyidir. ARLEDSCREEN’de NXTIONSTAR serileri; iç / dış mekân, izleme mesafesi ve içerik hattına göre boyutlandırılır — keşiften teklife tek masada.",
+      sections: [
+        {
+          h2: "LED ekran ile klasik dijital tabela farkı",
+          body:
+            "LCD / panel bazlı dijital tabela sabit çözünürlük ve sınırlı boyut sunar; LED ekran ise kabinleri yan yana ekleyerek metrelerce geniş yüzey kurmanıza izin verir. Güneş altında okunabilirlik, geniş açı ve kesintisiz video duvar ihtiyacı varsa LED tercih edilir. ARLEDSCREEN projelerinde önce kullanım senaryosu (cephe, lobi, sahne, vitrin) netleşir; ardından pitch ve IP sınıfı seçilir.",
+        },
+        {
+          h2: "Pitch, parlaklık ve kabin — seçim sırası",
+          body:
+            "Kritik izleme mesafesi pitch’i belirler: yakın izlemede ince pitch, uzak cephede daha geniş pitch yeterlidir. İç mekânda tipik 600–1.200 nit; dış mekânda güneşe göre 4.000–8.000+ nit aralığı konuşulur. Kabin geometrisi (ör. 500×500 / 500×1000) montaj iskeleti ve servis erişimine göre teklife işlenir. NXTIONSTAR modellerinin kaynakla doğrulanmış teknik değerleri model sayfalarında listelenir; teknik föy teklifle paylaşılır.",
+        },
+        {
+          h2: "B2B süreç: keşif, teklif, montaj",
+          body:
+            "Kurumsal LED ekran projesi fiyat listesinden alınmaz. İstanbul Gaziosmanpaşa merkezli mühendislik masamız saha veya ölçü paylaşımı ister; güç hattı, sinyal topolojisi (HDMI / SDI / network alıcı), montaj tipi ve takvim özetlenir. Yapay zekâ veya medya sunucusu üzerinden içerik yayınlanacaksa entegrasyon kalemi de teklife eklenir.",
+        },
+        {
+          h2: "Hangi projeler için hangi seriler?",
+          body:
+            "Kontrol odası ve ince pitch lobi için COB / SMD iç mekân; cephe ve DOOH için IP65 dış mekân; perakende vitrin için şeffaf veya ince panel; mobil etkinlik için kiralık kabin. Poster / totem ve kiosk form faktörleri sabit duvardan ayrı boyutlandırılır. Detaylı ürün karşılaştırması için katalog ve fiyat hesaplayıcıyı birlikte kullanın.",
+        },
+      ],
+      faqs: [
+        {
+          question: "LED ekran fiyatı nasıl hesaplanır?",
+          answer:
+            "Metrekare, pitch, kabin tipi, IP sınıfı, kontrol kartı ve montaj kapsamı fiyatı belirler. Online hesaplayıcı yaklaşık malzeme bandı verir; kesin B2B teklif keşif sonrası yazılır.",
+        },
+        {
+          question: "Dijital ekran mı LED duvar mı seçmeliyim?",
+          answer:
+            "Tek panel / küçük vitrin için LCD yeterli olabilir. Geniş, parlak, kesintisiz yüzey veya dış mekân okunabilirlik gerekiyorsa LED ekran doğru yoldur. ARLEDSCREEN her iki senaryoyu da mühendislik açısından ayırır.",
+        },
+        {
+          question: "Türkiye’de NXTIONSTAR LED ekran kimden alınır?",
+          answer:
+            "NXTIONSTAR ürünleri ve kurulum mühendisliği ARLEDSCREEN üzerinden yürür: keşif, montaj, kalibrasyon ve teknik destek İstanbul Gaziosmanpaşa masasında toplanır.",
+        },
+      ],
+      relatedSlugs: [
+        "dis-mekan-led-ekran",
+        "ic-mekan-led-ekran",
+        "konferans-salonu-led",
+      ],
+      cta: {
+        title: "LED ekran projenizi boyutlandıralım",
+        body:
+          "Ölçü, ortam ve kullanım amacını paylaşın; mühendislik masası pitch, güç ve malzeme özetiyle dönüş yapsın.",
+      },
+      cardLabel: "LED ekran",
+      cardTeaser: "Dijital ekran seçimi, pitch ve B2B süreç — ana rehber.",
+    },
+    "dis-mekan-led-ekran": {
+      slug: "dis-mekan-led-ekran",
+      title: "Dış Mekân LED Ekran | IP65 Cephe & DOOH — ARLEDSCREEN",
+      description:
+        "Dış mekân LED ekran ve dış mekân ekranlar: IP65 koruma, yüksek nit, cephe / DOOH mühendisliği. NXTIONSTAR dış mekân modülleri — ARLEDSCREEN keşif ve montaj, İstanbul.",
+      keywords: [
+        "dış mekân LED ekran",
+        "dış mekân ekranlar",
+        "IP65 LED",
+        "DOOH LED",
+        "cephe LED",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Dış mekân LED ekran çözümleri",
+      intro:
+        "Dış mekân ekranlar yağmur, toz ve güneş altında çalışmak zorundadır. ARLEDSCREEN / NXTIONSTAR dış mekân LED ekran projelerinde IP65 sızdırmazlık, GOB yüzey koruması ve yüksek nit çıkışı birlikte planlanır.",
+      sections: [
+        {
+          h2: "Dış mekân ekranlarda IP65 ve GOB neden kritik?",
+          body:
+            "IP65, toz ve su jeti etkisine karşı kabin sızdırmazlığını ifade eder. Cephe ve yol kenarı DOOH kurulumlarında sızdırmaz conta, drenaj ve doğru montaj açısı olmadan uzun ömür beklenmez. GOB (glue on board) yüzey zırhı darbeye ve neme karşı ek koruma sağlar — NXTIONSTAR dış mekân serilerinde bu katman ürün seçiminde açıkça konuşulur.",
+        },
+        {
+          h2: "Parlaklık, pitch ve izleme mesafesi",
+          body:
+            "Güneşli cephede 5.000 nit altı çoğu zaman yetersiz kalır; gece için otomatik dimming planlanır. Uzak izleyicili billboard’da P3.9–P10 bandı yaygınken, yakın yaya trafiğinde daha ince pitch gerekebilir. ARLEDSCREEN keşfinde ortalama izleme mesafesi, güneş yönü ve gece/gündüz içerik profili not edilir.",
+        },
+        {
+          h2: "Cephe, stadyum koridoru ve belediye DOOH",
+          body:
+            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister; stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Her senaryoda güç topolojisi (tek / üç faz) ve yedek alıcı ihtiyacı teklife yazılır.",
+        },
+        {
+          h2: "Keşiften montaja ARLEDSCREEN süreci",
+          body:
+            "Ölçü paylaşımı veya yerinde keşif sonrası kabin dizilimi, çelik konstrüksiyon arayüzü, sinyal hattı (CAT6A / fiber) ve bakım erişimi çizilir. Yapay zekâ veya CMS ile zamanlanan DOOH içeriği varsa alıcı / gönderici uyumu da paketlenir. Kurulum sonrası kalibrasyon ve teknik destek aynı masadan yürür.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Dış mekân LED ekran kaç nit olmalı?",
+          answer:
+            "Ortam ışığına bağlıdır. Yoğun güneşli cephede tipik hedef 5.000–8.000+ nit; gölgeli alanda daha düşük band yetebilir. Keşifte lüks ölçümü veya yön analizi tercih edilir.",
+        },
+        {
+          question: "IP65 olmadan dışarı kurulur mu?",
+          answer:
+            "Kapalı sundurma veya yarı açık alanlar için ara çözümler konuşulabilir; açık cephe ve yağmura açık DOOH için IP65 (veya eşdeğer sızdırmazlık) zorunlu kabul edilir.",
+        },
+        {
+          question: "Dış mekân ekran bakım aralığı nedir?",
+          answer:
+            "Ortam kirliliği ve çalışma saatine göre değişir. ARLEDSCREEN teklifinde periyodik temizlik, fan/PSU kontrolü ve yazılım güncelleme maddeleri opsiyonel olarak eklenir.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "vitrin-led-ekran", "poster-led-ekran"],
+      cta: {
+        title: "Dış mekân LED projenizi planlayalım",
+        body:
+          "Cephe ölçüsü, güneş yönü ve kullanım amacını iletin; IP65 / nit / pitch özeti ile dönüş yapalım.",
+      },
+      cardLabel: "Dış mekân LED",
+      cardTeaser: "IP65 cephe, DOOH ve yüksek nit dış mekân ekranlar.",
+    },
+    "ic-mekan-led-ekran": {
+      slug: "ic-mekan-led-ekran",
+      title: "İç Mekân LED Ekran | Lobi, Stüdyo, Salon — ARLEDSCREEN",
+      description:
+        "İç mekân LED ekran ve iç mekân ekran seçimi: ince pitch, kamera dostu yenileme, lobi / stüdyo / konferans. NXTIONSTAR iç mekân modülleri — ARLEDSCREEN mühendisliği, İstanbul.",
+      keywords: [
+        "iç mekân LED ekran",
+        "iç mekân ekran",
+        "ince pitch LED",
+        "stüdyo LED",
+        "lobi video duvar",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "İç mekân LED ekran çözümleri",
+      intro:
+        "İç mekân ekran projelerinde izleyici yakındır; bu yüzden ince pitch, düşük gürültü ve tutarlı renk önceliklidir. ARLEDSCREEN / NXTIONSTAR iç mekân LED ekranlarında kamera önü kullanım ve AI / CMS içerik hattı da baştan planlanır.",
+      sections: [
+        {
+          h2: "İç mekân ekranda pitch ve izleme mesafesi",
+          body:
+            "Lobi ve showroom’da P1.2–P2.5 bandı sık tercih edilir; kontrol odası ve yayın stüdyosunda daha ince pitch gerekebilir. Kabaca her 1 mm pitch için ~1 m kritik mesafe kuralı başlangıç noktasıdır — ARLEDSCREEN keşfinde gerçek oturma / ayakta izleme mesafesi ölçülür.",
+        },
+        {
+          h2: "Kamera dostu yenileme ve renk",
+          body:
+            "Yayın, kurumsal etkinlik kaydı veya sosyal medya çekiminde tarama çizgisi ve flicker istenmez. Yüksek yenileme oranı, kalibre beyaz nokta ve tutarlı gamut stüdyo / sahne iç mekân LED’inde şarttır. Bu değerler keşifte seçilen NXTIONSTAR modelinin teknik föyüyle teyit edilir.",
+        },
+        {
+          h2: "Lobi, perakende ve kurumsal salon",
+          body:
+            "Otel / ofis lobisinde marka videosu ve yönlendirme; perakende duvarında ürün vitrini; yönetim katında dashboard ve toplantı içeriği. Parlaklık iç mekânda aşırı yüksek tutulmaz — göz konforu ve ambient ışık dengelenir. Ses / AV entegrasyonu gerekirse sinyal şeması teklife eklenir.",
+        },
+        {
+          h2: "YZ uyumlu iç mekân LED",
+          body:
+            "Yapay zekâ ile üretilen veya otomatik seçilen içerik lobide veya salonda kesintisiz akmalıdır. Bu nedenle teklifte yenileme davranışı, alıcı kartı yolu ve CMS / medya sunucusu uyumu yazılı olarak belirtilir.",
+        },
+      ],
+      faqs: [
+        {
+          question: "İç mekân LED mi LCD video duvar mı?",
+          answer:
+            "Çerçevesiz geniş yüzey, yüksek parlaklık ve esnek boyut için LED öne çıkar. Küçük sabit panel ihtiyacında LCD hâlâ uygundur. Keşifte yüzey alanı ve içerik tipi ayırır.",
+        },
+        {
+          question: "İç mekân ekran kaç nit olmalı?",
+          answer:
+            "Tipik 600–1.200 nit yeterlidir; vitrin arkası veya güneşli atrium’da daha yüksek band konuşulabilir. Aşırı nit karanlık salonda rahatsız eder.",
+        },
+        {
+          question: "Servis ön mü arka mı?",
+          answer:
+            "Duvar boşluğu ve erişim yolu belirler. İnce arkalıklı lobi duvarlarında ön servis tercih edilir; teknik oda arkası olan kurulumlarda arka servis daha hızlıdır.",
+        },
+      ],
+      relatedSlugs: [
+        "led-ekran",
+        "konferans-salonu-led",
+        "mimari-muhendislik-led",
+      ],
+      cta: {
+        title: "İç mekân LED duvarınızı boyutlandıralım",
+        body:
+          "Salon / lobi ölçüsü ve izleme mesafesini paylaşın; ince pitch ve güç özeti ile dönüş yapalım.",
+      },
+      cardLabel: "İç mekân LED",
+      cardTeaser: "İnce pitch lobi, stüdyo ve kurumsal iç mekân ekran.",
+    },
+    "mimari-muhendislik-led": {
+      slug: "mimari-muhendislik-led",
+      title: "Mimari ve Mühendislik LED Entegrasyonu — ARLEDSCREEN",
+      description:
+        "Mimari ve mühendislik ekipleri için LED ekran entegrasyonu: statik yük, iskelet, güç, ısı ve sinyal. NXTIONSTAR + ARLEDSCREEN keşif paketi — İstanbul Gaziosmanpaşa.",
+      keywords: [
+        "mimari LED",
+        "mühendislik LED",
+        "LED entegrasyon",
+        "cephe mühendisliği",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Mimari ve mühendislik LED entegrasyonu",
+      intro:
+        "LED yüzeyi yalnızca bir ekran değil; mimari kabuğun ve elektrik / mekanik sistemin parçasıdır. ARLEDSCREEN, mimar ve mühendislik ofisleriyle NXTIONSTAR ürünlerini statik, güç ve sinyal disiplininde birlikte boyutlandırır.",
+      sections: [
+        {
+          h2: "Erken fazda LED kararları",
+          body:
+            "Konsept ve uygulama projesinde pitch / kabin kararı geç bırakılırsa iskelet ve kablo şaftı yetmez. ARLEDSCREEN keşif notunda yüzey alanı, izleme açıları, bakım platformu ve yangın / kaçış güzergâhı ile çakışmalar işaretlenir. Mimari render’a gerçek kabin modülü oturtulabilir.",
+        },
+        {
+          h2: "Statik yük, iskelet ve cephe detayı",
+          body:
+            "Dış mekân LED’de rüzgâr ve ölü yük hesabı; iç mekânda asma tavan / duvar taşıyıcı kapasitesi kritiktir. Çelik veya alüminyum iskelet arayüzü üretici kabin montaj noktalarına göre çizilir. Su yalıtımı, termal genleşme ve servis paneli boşlukları detay projeye işlenir.",
+        },
+        {
+          h2: "Güç, ısı ve sinyal mühendisliği",
+          body:
+            "Peak güç, eşzamanlılık faktörü ve üç faz dengesi elektrik projesine verilir. Kabin arkasında havalandırma veya aktif soğutma gerekebilir. Uzun hatlarda fiber; kısa hatlarda CAT6A; yedek gönderici / alıcı topolojisi kritik mekânlarda önerilir. YZ / medya sunucu hattı varsa port ve gecikme bütçesi eklenir.",
+        },
+        {
+          h2: "Disiplinler arası teslim paketi",
+          body:
+            "ARLEDSCREEN teklifi yalnızca ürün listesi değil; ön BOM, güç özeti, sinyal şeması ve montaj notudur. Şantiye koordinasyonunda ana yüklenici, elektrik ve AV ekipleriyle tek muhatap olunur — Gaziosmanpaşa merkezli mühendislik masası.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Mimari ofis ne zaman ARLEDSCREEN’i çağırmalı?",
+          answer:
+            "İdeal olarak uygulama projesi öncesi veya ihale paketi hazırlanırken. Geç çağrı iskelet revizyonu ve ek maliyet doğurur.",
+        },
+        {
+          question: "LED ağırlığı projeye nasıl verilir?",
+          answer:
+            "Kabin + iskelet + kablo tahmini kg/m² olarak paylaşılır; statik mühendis bu değeri taşıyıcı hesaba işler. Kesin rakam ürün ve montaj tipine bağlıdır.",
+        },
+        {
+          question: "Şeffaf vitrin LED mimariye uyumlu mu?",
+          answer:
+            "Evet — vitrin şeffaflığı ve gündüz/gece görünürlük dengesi mimari konseptle birlikte seçilir. Ayrı rehberde vitrin LED detayı var.",
+        },
+      ],
+      relatedSlugs: [
+        "dis-mekan-led-ekran",
+        "ic-mekan-led-ekran",
+        "vitrin-led-ekran",
+      ],
+      cta: {
+        title: "Mimari LED entegrasyonunu birlikte çizelim",
+        body:
+          "Proje dosyası veya ölçü setini paylaşın; iskelet, güç ve sinyal özeti ile dönüş yapalım.",
+      },
+      cardLabel: "Mimari & mühendislik",
+      cardTeaser: "İskelet, güç, ısı ve sinyal — disiplinler arası LED.",
+    },
+    "konferans-salonu-led": {
+      slug: "konferans-salonu-led",
+      title: "Okul & Konferans Salonu LED Ekran — ARLEDSCREEN",
+      description:
+        "Okul konferans salonu ve konferans salonları için LED ekran: izleme mesafesi, ses/AV entegrasyonu, ince pitch. NXTIONSTAR — ARLEDSCREEN B2B keşif ve kurulum.",
+      keywords: [
+        "okul konferans salonu",
+        "konferans salonları",
+        "konferans LED ekran",
+        "salon video duvar",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Okul ve konferans salonu LED ekran",
+      intro:
+        "Konferans salonları ve okul konferans salonu projelerinde sahne arkası LED veya yan kanatlar sunum, yayın ve etkinlik için tek yüzey olur. ARLEDSCREEN / NXTIONSTAR kurulumu ses, ışık ve kontrol odasıyla uyumlu planlanır.",
+      sections: [
+        {
+          h2: "Salon geometrisi ve izleme mesafesi",
+          body:
+            "İlk sıra ile sahne arası mesafe pitch’i belirler. Okul amfisi ile otel konferans salonu farklı oturma yoğunluğuna sahiptir; metin ağırlıklı sunumda daha ince pitch, video ağırlıklı etkinlikte biraz daha geniş pitch kabul edilebilir. ARLEDSCREEN keşfinde oturma planı ve kritik okuma mesafesi not edilir.",
+        },
+        {
+          h2: "AV entegrasyonu: ses, kamera, kontrol",
+          body:
+            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir. Yüksek yenileme, kamera çekiminde flicker riskini düşürür. Gerekirse yedek kaynak girişi teklife eklenir.",
+        },
+        {
+          h2: "Okul ve kurumsal kullanım farkları",
+          body:
+            "Okul konferans salonunda bütçe ve dayanıklılık; kurumsal salonda marka rengi ve ince pitch öncelik olabilir. Her iki senaryoda da kolay içerik geçişi (PC / laptop / medya oynatıcı) ve basit operatör paneli önemlidir. YZ destekli otomatik içerik zamanlama istenirse CMS hattı baştan tanımlanır.",
+        },
+        {
+          h2: "Montaj, akustik ve sahne güvenliği",
+          body:
+            "Asma LED’lerde statik onay ve güvenlik teli; yerden yükselen sahne duvarında ankraj detayı şarttır. Akustik panellerle çakışma ve fan gürültüsü kontrol edilir. Kurulum sonrası renk kalibrasyonu ve operatör eğitimi ARLEDSCREEN teslimatına dahildir.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Konferans salonu için minimum çözünürlük nedir?",
+          answer:
+            "Sunum metninin son sıradan okunabilirliği esas alınır. Pitch × fiziksel boyut = piksel çözünürlük; keşifte örnek slayt okuma testi yapılabilir.",
+        },
+        {
+          question: "Projeksiyon yerine LED neden tercih edilir?",
+          answer:
+            "Yüksek ambient ışıkta okunabilirlik, tutarlı parlaklık ve geniş açı. Karartma zorunluluğu azalır; etkinlik ve yayın senaryoları kolaylaşır.",
+        },
+        {
+          question: "Okul projelerinde süreç nasıl işler?",
+          answer:
+            "Ölçü / keşif → teknik teklif → onay → montaj → eğitim. İhale dokümanına pitch, nit ve IP (iç mekân) maddeleri net yazılmalıdır.",
+        },
+      ],
+      relatedSlugs: [
+        "ic-mekan-led-ekran",
+        "led-ekran",
+        "mimari-muhendislik-led",
+      ],
+      cta: {
+        title: "Salon LED projenizi boyutlandıralım",
+        body:
+          "Salon ölçüleri ve oturma planını paylaşın; pitch ve AV entegrasyon özeti ile dönüş yapalım.",
+      },
+      cardLabel: "Konferans salonu",
+      cardTeaser: "Okul ve konferans salonları için LED / AV entegrasyon.",
+    },
+    "vitrin-led-ekran": {
+      slug: "vitrin-led-ekran",
+      title: "Vitrin LED Ekran | Şeffaf & Perakende — ARLEDSCREEN",
+      description:
+        "Vitrin LED ekran: şeffaf panel, perakende vitrin ve mağaza cephesi. NXTIONSTAR şeffaf / ince pitch çözümler — ARLEDSCREEN keşif, İstanbul.",
+      keywords: [
+        "vitrin LED ekran",
+        "şeffaf LED",
+        "perakende LED",
+        "mağaza vitrin ekran",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Vitrin LED ekran çözümleri",
+      intro:
+        "Vitrin LED ekran, mağaza camını reklam yüzeyine çevirirken içeriğin görünürlüğünü koruyabilir. ARLEDSCREEN / NXTIONSTAR şeffaf ve ince panel seçenekleriyle perakende vitrin projelerini keşiften montaja yönetir.",
+      sections: [
+        {
+          h2: "Şeffaf LED vs opak vitrin duvarı",
+          body:
+            "Şeffaf LED cam arkasında ürünü göstermeye devam eder; opak LED ise tam video duvar etkisi verir. Marka hikâyesi ve ürün teşhiri dengesi konsept aşamasında seçilir. Şeffaflık oranı (%) ve pitch birlikte değerlendirilir — ince pitch daha ‘ekran’, yüksek şeffaflık daha ‘cam’ hissi verir.",
+        },
+        {
+          h2: "Gündüz okunabilirlik ve gece dimming",
+          body:
+            "Cadde vitrininde güneş yansıması nit ihtiyacını artırır; gece aşırı parlaklık yayalar için rahatsız edici olabilir. Otomatik sensör veya zamanlı dimming planlanır. ARLEDSCREEN keşfinde cephe yönü ve ambient ışık not edilir.",
+        },
+        {
+          h2: "Montaj: cam önü, cam arkası, asma",
+          body:
+            "Cam arkası montajda derinlik ve servis erişimi; cam önünde güvenlik ve yaya mesafesi kritiktir. Kablo gizleme ve güç panosu mağaza operasyonunu bozmayacak şekilde yerleştirilir. Yangın ve kaçış güzergâhı ile çakışma kontrol edilir.",
+        },
+        {
+          h2: "İçerik ve YZ / CMS hattı",
+          body:
+            "Vitrin içeriği sık değişir: kampanya, stok, AI ile üretilen görseller. Medya oynatıcı veya CMS / AI motoru ile alıcı uyumu teklifte yazılır.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Vitrin LED ekran camı keser mi?",
+          answer:
+            "Çoğu kurulum mevcut vitrine ek panel veya arkaya montajdır. Cam değişimi gerekirse mimari / cephe ekibiyle birlikte planlanır.",
+        },
+        {
+          question: "Şeffaf LED her ürüne uyar mı?",
+          answer:
+            "Yoğun metin veya küçük punto içerikte opak ince pitch daha okunaklı olabilir. Ürün teşhiri öncelikliyse şeffaf avantajlıdır.",
+        },
+        {
+          question: "Perakende zincirinde standart paket var mı?",
+          answer:
+            "Evet — tekrarlayan mağaza ölçüleri için tip proje ve merkezi CMS senkronu tasarlanabilir. Teklifte şube adedi ölçeklenir.",
+        },
+      ],
+      relatedSlugs: [
+        "poster-led-ekran",
+        "ic-mekan-led-ekran",
+        "kiosk-dijital-ekran",
+      ],
+      cta: {
+        title: "Vitrin LED projenizi planlayalım",
+        body:
+          "Vitrin ölçüleri ve şeffaflık hedefini paylaşın; panel ve içerik hattı özeti ile dönüş yapalım.",
+      },
+      cardLabel: "Vitrin LED",
+      cardTeaser: "Şeffaf ve perakende vitrin LED ekran çözümleri.",
+    },
+    "poster-led-ekran": {
+      slug: "poster-led-ekran",
+      title: "Poster LED Ekran & Totem | Dikey Tabela — ARLEDSCREEN",
+      description:
+        "Poster LED ekran ve dijital totem: dikey format, lobi / AVM / dış mekân. NXTIONSTAR totem çözümleri — ARLEDSCREEN mühendislik ve montaj.",
+      keywords: [
+        "poster LED ekran",
+        "LED totem",
+        "dijital poster",
+        "dikey LED",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Poster LED ekran ve totem çözümleri",
+      intro:
+        "Poster LED ekran, klasik afiş yerine yüksek parlaklıklı dikey bir dijital yüzeydir. ARLEDSCREEN / NXTIONSTAR totem ve poster formlarında lobi, AVM ve dış mekân bilgilendirme ihtiyaçlarını karşılar.",
+      sections: [
+        {
+          h2: "Poster LED ile duvar LED farkı",
+          body:
+            "Poster / totem bağımsız ayaklı veya duvara asılı dikey bir ünitedir; video duvar ise geniş yatay yüzeydir. Dar alan, yönlendirme ve tek mesajlı kampanyada poster LED öne çıkar. Pitch, izleme mesafesine göre seçilir — yakından okunan lobi posterinde ince pitch tercih edilir.",
+        },
+        {
+          h2: "İç mekân totem vs dış mekân totem",
+          body:
+            "İç mekânda daha düşük nit ve ince gövde; dış mekânda IP65, yüksek nit ve sağlam kaide gerekir. AVM koridorunda güvenlik ve engelli erişim mesafeleri; cephe önünde ankraj ve rüzgâr yükü hesaplanır.",
+        },
+        {
+          h2: "İçerik boyutu ve dikey format",
+          body:
+            "9:16 veya özel dikey çözünürlük içerik üretimini etkiler. CMS’te dikey şablon ve otomatik ölçekleme planlanmalıdır. AI ile üretilen görsellerde dikey kırpma kuralları önceden tanımlanır.",
+        },
+        {
+          h2: "Güç, network ve operasyon",
+          body:
+            "Tekil totemlerde PoE veya yerel priz; çoklu parkta merkezi network ve uzaktan izleme avantajlıdır. ARLEDSCREEN teklifinde kaide, ekran, oynatıcı ve montaj kalemleri ayrılır — B2B netliği için.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Poster LED ekran boyutu nasıl seçilir?",
+          answer:
+            "Koridor genişliği, izleme mesafesi ve mesaj uzunluğu belirler. Tipik dikey totem yükseklikleri mekân tipine göre keşifte netleşir.",
+        },
+        {
+          question: "Totem ile kiosk aynı şey mi?",
+          answer:
+            "Hayır. Totem / poster çoğunlukla tek yönlü bilgilendirme; kiosk dokunmatik etkileşim ve işlem içerir. Ayrı rehberde kiosk detayı var.",
+        },
+        {
+          question: "Dış mekân poster LED gerekir mi IP65?",
+          answer:
+            "Açık alan ve yağmura maruz kurulumlarda evet. Sundurma altı yarı açık alanlarda ara koruma konuşulabilir.",
+        },
+      ],
+      relatedSlugs: [
+        "kiosk-dijital-ekran",
+        "vitrin-led-ekran",
+        "dis-mekan-led-ekran",
+      ],
+      cta: {
+        title: "Poster / totem LED projenizi boyutlandıralım",
+        body:
+          "Adet, ortam (iç / dış) ve içerik formatını paylaşın; teknik özet ile dönüş yapalım.",
+      },
+      cardLabel: "Poster & totem",
+      cardTeaser: "Dikey poster LED ekran ve dijital totem çözümleri.",
+    },
+    "kiosk-dijital-ekran": {
+      slug: "kiosk-dijital-ekran",
+      title: "Kiosk Dijital Ekran | Dokunmatik & Bilgi Noktası — ARLEDSCREEN",
+      description:
+        "Kiosk dijital ekran: dokunmatik bilgi noktası, yönlendirme ve self-servis. LED / panel seçimi, gövde ve yazılım entegrasyonu — ARLEDSCREEN / NXTIONSTAR.",
+      keywords: [
+        "kiosk",
+        "dijital kiosk",
+        "dokunmatik ekran",
+        "bilgi kiosku",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Kiosk dijital ekran çözümleri",
+      intro:
+        "Kiosk, etkileşimli dijital ekran noktasıdır: yönlendirme, bilet, katalog veya self-servis. ARLEDSCREEN projelerinde gövde, ekran teknolojisi ve yazılım entegrasyonu birlikte seçilir — NXTIONSTAR LED yüzeyler gerektiğinde totem / duvar ile kombine edilir.",
+      sections: [
+        {
+          h2: "Kiosk vs totem vs video duvar",
+          body:
+            "Kiosk dokunmatik veya kart / QR etkileşimi ister; totem çoğunlukla tek yönlü yayındır; video duvar geniş izleyiciye hitap eder. Karışık lobilerde kiosk + poster LED yan yana planlanabilir. ARLEDSCREEN keşfinde kullanıcı akışı ve işlem tipi önce netleşir.",
+        },
+        {
+          h2: "Ekran teknolojisi seçimi",
+          body:
+            "Yakın mesafe dokunmatik için yüksek çözünürlüklü panel sık tercih edilir; arkadaki marka duvarı veya yan kanat için LED kullanılabilir. Dış mekân kioskunda yüksek nit, anti-glare ve IP koruması şarttır. Fan, toz filtresi ve kilitli gövde operasyonel ömür için kritiktir.",
+        },
+        {
+          h2: "Yazılım, ödeme ve güvenlik",
+          body:
+            "Mevcut self-servis / CMS / AI asistan yazılımınız varsa API ve çevre birimleri (yazıcı, okuyucu, POS) teklife işlenir. Fiziksel güvenlik: kilit, sabitleme ankrajı, kablo gizleme. KVKK / log gereksinimleri yazılım tarafında netleştirilir.",
+        },
+        {
+          h2: "Kurulum ve saha operasyonu",
+          body:
+            "Zemin ankrajı, engelli erişim yüksekliği ve kuyruk mesafesi mimariyle uyumlu olmalıdır. Çoklu şube / kampüs dağıtımında tip gövde ve merkezi izleme tanımlanır. ARLEDSCREEN teslimatında montaj, ağ bağlantısı ve operatör eğitimi paketlenir.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Kiosk mutlaka LED ekranlı mı olur?",
+          answer:
+            "Hayır. Dokunmatik yüzey çoğunlukla paneldir; LED yan yüzey veya arka video duvar olarak eklenir. İhtiyaç senaryoya göre ayrılır.",
+        },
+        {
+          question: "Dış mekân kiosk mümkün mü?",
+          answer:
+            "Evet — IP korumalı gövde, yüksek nit ve iklimlendirme ile. Keşifte güneş, yağmur ve vandalizm riski değerlendirilir.",
+        },
+        {
+          question: "Tek mi yoksa ağlı kiosk mu?",
+          answer:
+            "Tekil lobi noktası offline çalışabilir; zincir / kampüste merkezi içerik ve izleme için network şarttır. Teklifte her iki model de sunulabilir.",
+        },
+      ],
+      relatedSlugs: [
+        "poster-led-ekran",
+        "vitrin-led-ekran",
+        "led-ekran",
+      ],
+      cta: {
+        title: "Kiosk projenizi birlikte tanımlayalım",
+        body:
+          "Kullanım senaryosu, adet ve yazılım ihtiyacını paylaşın; gövde + ekran özeti ile dönüş yapalım.",
+      },
+      cardLabel: "Kiosk",
+      cardTeaser: "Dokunmatik bilgi ve self-servis kiosk dijital ekran.",
+    },
+  },
+  en: {
+    "led-ekran": {
+      slug: "led-ekran",
+      title: "LED Display Guide | Digital Screen Selection — ARLEDSCREEN",
+      description:
+        "What is an LED display and how do you choose pitch, brightness and cabinets? ARLEDSCREEN / NXTIONSTAR B2B survey, quote and install from Istanbul.",
+      keywords: [
+        "LED display",
+        "digital screen",
+        "LED wall",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "LED display & digital screen guide",
+      intro:
+        "An LED display is a modular, high-brightness digital surface. At ARLEDSCREEN, NXTIONSTAR series are sized by indoor/outdoor use, viewing distance and content path — survey to quote on one desk.",
+      sections: [
+        {
+          h2: "LED wall vs classic digital signage",
+          body:
+            "LCD signage is fixed-size; LED cabinets tile into large seamless walls. Choose LED when you need outdoor readability, wide viewing angles or a continuous video surface. We start from the use case, then lock pitch and IP rating.",
+        },
+        {
+          h2: "Pitch, brightness and cabinets",
+          body:
+            "Critical viewing distance drives pitch. Indoor walls often sit at 600–1,200 nits; outdoor façades need far higher. Cabinet geometry (e.g. 500×500 / 500×1000) follows structure and service access.",
+        },
+        {
+          h2: "B2B process: survey, quote, install",
+          body:
+            "Enterprise LED is not a price-list buy. Our Gaziosmanpaşa engineering desk captures power, signal topology and schedule. AI / media-server content adds an integration line — the ARLEDSCREEN AI-ready standard.",
+        },
+        {
+          h2: "Which series for which project?",
+          body:
+            "Fine-pitch indoor for lobbies and control rooms; IP65 outdoor for façades; transparent panels for retail; rental cabinets for events. Poster/totem and kiosk form factors are sized separately.",
+        },
+      ],
+      faqs: [
+        {
+          question: "How is LED display pricing calculated?",
+          answer:
+            "Area, pitch, cabinet type, IP rating, controllers and install scope. The online calculator gives a materials band; firm B2B quotes follow survey.",
+        },
+        {
+          question: "Digital screen or LED wall?",
+          answer:
+            "Small fixed panels can stay LCD. Wide, bright, seamless or outdoor-readable surfaces point to LED. We separate the two in engineering terms.",
+        },
+        {
+          question: "Who supplies NXTIONSTAR LED in Turkey?",
+          answer:
+            "Products and install engineering run through ARLEDSCREEN: survey, install, calibration and support from Istanbul.",
+        },
+      ],
+      relatedSlugs: [
+        "dis-mekan-led-ekran",
+        "ic-mekan-led-ekran",
+        "konferans-salonu-led",
+      ],
+      cta: {
+        title: "Size your LED display project",
+        body:
+          "Share dimensions, environment and use case — engineering replies with pitch, power and materials outline.",
+      },
+      cardLabel: "LED display",
+      cardTeaser: "Digital screen selection, pitch and B2B process.",
+    },
+    "dis-mekan-led-ekran": {
+      slug: "dis-mekan-led-ekran",
+      title: "Outdoor LED Display | IP65 Façade & DOOH — ARLEDSCREEN",
+      description:
+        "Outdoor LED displays: IP65 sealing, high nits, façade / DOOH engineering. NXTIONSTAR outdoor series — ARLEDSCREEN survey and install, Istanbul.",
+      keywords: [
+        "outdoor LED display",
+        "IP65 LED",
+        "DOOH LED",
+        "façade LED",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Outdoor LED display solutions",
+      intro:
+        "Outdoor screens must survive rain, dust and sun. ARLEDSCREEN / NXTIONSTAR outdoor LED projects plan IP65 sealing, GOB protection and high nit output together.",
+      sections: [
+        {
+          h2: "Why IP65 and GOB matter outdoors",
+          body:
+            "IP65 addresses dust and water-jet sealing. Façade and roadside DOOH also need drainage and correct mounting angles. GOB (glue-on-board) surface armour adds impact and moisture protection; whether it is needed is discussed openly when the NXTIONSTAR outdoor module is selected.",
+        },
+        {
+          h2: "Brightness, pitch and viewing distance",
+          body:
+            "Sunny façades often need 5,000+ nits with night dimming. Distant billboards may use coarser pitch; pedestrian-close walls need finer pitch. Survey notes sun path and day/night content.",
+        },
+        {
+          h2: "Façade, stadium and municipal DOOH",
+          body:
+            "Building façades need wind load and structure; arenas need vibration and service access; municipal signage needs content calendar and power. Power topology and spare receivers go into the quote.",
+        },
+        {
+          h2: "ARLEDSCREEN outdoor delivery",
+          body:
+            "After measurement or site survey we define cabinet layout, steel interface, CAT6A/fiber runs and maintenance access. CMS/AI-scheduled DOOH content includes sender/receiver fit. Calibration and support stay on the same desk.",
+        },
+      ],
+      faqs: [
+        {
+          question: "How many nits for outdoor LED?",
+          answer:
+            "Depends on ambient light. Sunny façades often target 5,000–8,000+ nits; shaded sites can run lower. Survey prefers lux or orientation analysis.",
+        },
+        {
+          question: "Can we install outdoors without IP65?",
+          answer:
+            "Semi-covered spaces may allow intermediate options; open façades and rain-exposed DOOH require IP65-class sealing.",
+        },
+        {
+          question: "What about outdoor maintenance?",
+          answer:
+            "Interval depends on pollution and duty cycle. Quotes can include cleaning, PSU checks and software updates.",
+        },
+      ],
+      relatedSlugs: ["led-ekran", "vitrin-led-ekran", "poster-led-ekran"],
+      cta: {
+        title: "Plan your outdoor LED project",
+        body:
+          "Send façade size, sun orientation and use case — we reply with IP65 / nit / pitch outline.",
+      },
+      cardLabel: "Outdoor LED",
+      cardTeaser: "IP65 façades, DOOH and high-nit outdoor screens.",
+    },
+    "ic-mekan-led-ekran": {
+      slug: "ic-mekan-led-ekran",
+      title: "Indoor LED Display | Lobby, Studio, Hall — ARLEDSCREEN",
+      description:
+        "Indoor LED displays: fine pitch, camera-friendly refresh, lobby / studio / conference. NXTIONSTAR indoor series — ARLEDSCREEN engineering, Istanbul.",
+      keywords: [
+        "indoor LED display",
+        "fine pitch LED",
+        "studio LED",
+        "lobby video wall",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Indoor LED display solutions",
+      intro:
+        "Indoor projects put viewers close — so fine pitch, low noise and consistent colour come first. ARLEDSCREEN / NXTIONSTAR indoor LED also plans camera-facing use and AI/CMS pipelines up front.",
+      sections: [
+        {
+          h2: "Pitch and viewing distance indoors",
+          body:
+            "Lobbies often land in P1.2–P2.5; control rooms and broadcast studios may need finer pitch. We measure real standing/seated distance rather than rules of thumb alone.",
+        },
+        {
+          h2: "Camera-friendly refresh and colour",
+          body:
+            "Broadcast and event capture hate scan lines and flicker. High refresh, calibrated white point and stable gamut are required for studio indoor LED; they are confirmed against the datasheet of the selected NXTIONSTAR model during the survey.",
+        },
+        {
+          h2: "Lobby, retail and corporate halls",
+          body:
+            "Brand loops, product walls and executive dashboards each need balanced brightness for eye comfort. AV integration is added to the signal diagram when required.",
+        },
+        {
+          h2: "AI-ready indoor LED",
+          body:
+            "AI-generated or automated content must run without dropouts. The ARLEDSCREEN standard means known refresh behaviour, documented receivers and CMS/media-server fit without proprietary lock-in.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Indoor LED or LCD video wall?",
+          answer:
+            "LED wins for frameless large surfaces and flexible size. Small fixed panels can stay LCD. Area and content type decide.",
+        },
+        {
+          question: "How many nits indoors?",
+          answer:
+            "Typically 600–1,200 nits; sunlit atriums may need more. Excess brightness hurts dark halls.",
+        },
+        {
+          question: "Front or rear service?",
+          answer:
+            "Wall depth and access decide. Thin lobby walls favour front service; tech rooms behind the wall favour rear service.",
+        },
+      ],
+      relatedSlugs: [
+        "led-ekran",
+        "konferans-salonu-led",
+        "mimari-muhendislik-led",
+      ],
+      cta: {
+        title: "Size your indoor LED wall",
+        body:
+          "Share hall/lobby dimensions and viewing distance — we reply with fine-pitch and power outline.",
+      },
+      cardLabel: "Indoor LED",
+      cardTeaser: "Fine-pitch lobby, studio and corporate indoor screens.",
+    },
+    "mimari-muhendislik-led": {
+      slug: "mimari-muhendislik-led",
+      title: "Architectural & Engineering LED Integration — ARLEDSCREEN",
+      description:
+        "LED integration for architecture and engineering teams: structural load, framing, power, heat and signal. NXTIONSTAR + ARLEDSCREEN survey pack — Istanbul.",
+      keywords: [
+        "architectural LED",
+        "LED engineering",
+        "façade engineering",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Architectural & engineering LED integration",
+      intro:
+        "An LED surface is part of the building envelope and MEP systems. ARLEDSCREEN sizes NXTIONSTAR products with architects and engineers across structure, power and signal.",
+      sections: [
+        {
+          h2: "Early-phase LED decisions",
+          body:
+            "Late pitch/cabinet choices break cable shafts and framing. Survey notes mark area, viewing angles, maintenance platforms and fire-escape conflicts. Real cabinet modules can sit in architectural renders.",
+        },
+        {
+          h2: "Structural load and façade detail",
+          body:
+            "Outdoor LED needs wind and dead-load calcs; indoor walls need substrate capacity. Steel/aluminium interfaces follow cabinet mount points. Waterproofing, thermal movement and service voids go into detail drawings.",
+        },
+        {
+          h2: "Power, heat and signal",
+          body:
+            "Peak power and three-phase balance feed the electrical design. Rear ventilation may be required. Fiber for long runs, CAT6A for short; critical spaces get spare sender/receiver topology. AI/media ports and latency budgets are added when needed.",
+        },
+        {
+          h2: "Cross-discipline delivery pack",
+          body:
+            "Quotes include preliminary BOM, power outline, signal diagram and install notes — one desk coordinating GC, electrical and AV from Gaziosmanpaşa.",
+        },
+      ],
+      faqs: [
+        {
+          question: "When should architects call ARLEDSCREEN?",
+          answer:
+            "Ideally before detailed design or tender packs. Late calls force framing revisions and cost.",
+        },
+        {
+          question: "How is LED weight provided?",
+          answer:
+            "As estimated kg/m² for cabinet + frame + cabling; structural engineers fold it into load calcs. Final numbers depend on product and mount.",
+        },
+        {
+          question: "Are transparent retail LEDs architecture-friendly?",
+          answer:
+            "Yes — transparency vs daytime readability is chosen with the concept. See the shopfront guide for detail.",
+        },
+      ],
+      relatedSlugs: [
+        "dis-mekan-led-ekran",
+        "ic-mekan-led-ekran",
+        "vitrin-led-ekran",
+      ],
+      cta: {
+        title: "Draw LED into your architectural pack",
+        body:
+          "Share drawings or dimensions — we reply with framing, power and signal outline.",
+      },
+      cardLabel: "Architecture & engineering",
+      cardTeaser: "Framing, power, heat and signal — cross-discipline LED.",
+    },
+    "konferans-salonu-led": {
+      slug: "konferans-salonu-led",
+      title: "School & Conference Hall LED Displays — ARLEDSCREEN",
+      description:
+        "LED for school auditoriums and conference halls: viewing distance, AV integration, fine pitch. NXTIONSTAR — ARLEDSCREEN B2B survey and install.",
+      keywords: [
+        "conference hall LED",
+        "auditorium LED",
+        "school hall display",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "School & conference hall LED displays",
+      intro:
+        "Conference halls and school auditoriums use stage LED or side wings as one surface for presentation, broadcast and events. ARLEDSCREEN / NXTIONSTAR installs align with audio, lighting and the control room.",
+      sections: [
+        {
+          h2: "Hall geometry and viewing distance",
+          body:
+            "Front-row distance drives pitch. School amphitheatres and hotel ballrooms differ in density; text-heavy decks need finer pitch than video-led events. Survey captures seating plans and critical reading distance.",
+        },
+        {
+          h2: "AV integration",
+          body:
+            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers. High refresh reduces flicker on camera. Spare inputs can be quoted.",
+        },
+        {
+          h2: "School vs corporate priorities",
+          body:
+            "Schools often prioritise durability and budget; corporate halls may prioritise brand colour and finer pitch. Both need simple source switching and operator panels. AI/CMS scheduling is defined early when required.",
+        },
+        {
+          h2: "Mounting, acoustics and safety",
+          body:
+            "Flown LED needs structural sign-off and safety bonds; stage walls need anchorage detail. Acoustic clashes and fan noise are checked. Colour calibration and operator training close delivery.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Minimum resolution for conference halls?",
+          answer:
+            "Driven by slide readability from the back row. Pitch × physical size yields pixel count; we can run a sample-slide readability check on survey.",
+        },
+        {
+          question: "Why LED instead of projection?",
+          answer:
+            "Readable under ambient light, consistent brightness and wide angles — less need to blackout the room.",
+        },
+        {
+          question: "How do school projects run?",
+          answer:
+            "Measure/survey → technical quote → approval → install → training. Tender docs should state pitch, nits and indoor IP clearly.",
+        },
+      ],
+      relatedSlugs: [
+        "ic-mekan-led-ekran",
+        "led-ekran",
+        "mimari-muhendislik-led",
+      ],
+      cta: {
+        title: "Size your hall LED project",
+        body:
+          "Share hall dimensions and seating — we reply with pitch and AV integration outline.",
+      },
+      cardLabel: "Conference halls",
+      cardTeaser: "School and conference hall LED / AV integration.",
+    },
+    "vitrin-led-ekran": {
+      slug: "vitrin-led-ekran",
+      title: "Shopfront LED Display | Transparent & Retail — ARLEDSCREEN",
+      description:
+        "Shopfront LED: transparent panels, retail windows and store façades. NXTIONSTAR transparent / fine-pitch options — ARLEDSCREEN survey, Istanbul.",
+      keywords: [
+        "shopfront LED",
+        "transparent LED",
+        "retail LED",
+        "window display LED",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Shopfront LED display solutions",
+      intro:
+        "Shopfront LED turns store glass into a media surface while optionally keeping products visible. ARLEDSCREEN / NXTIONSTAR transparent and slim panels cover retail window projects from survey to install.",
+      sections: [
+        {
+          h2: "Transparent LED vs opaque window wall",
+          body:
+            "Transparent LED keeps product visibility; opaque LED is a full video wall. Transparency % and pitch trade ‘glass feel’ vs ‘screen feel’. Concept stage chooses the balance.",
+        },
+        {
+          h2: "Daytime readability and night dimming",
+          body:
+            "Street glare raises nit needs; night brightness must not blind pedestrians. Sensor or scheduled dimming is planned from survey orientation notes.",
+        },
+        {
+          h2: "Mounting: behind glass, in front, hung",
+          body:
+            "Behind-glass depth and service access matter; in-front mounts need pedestrian clearance. Cable concealment and power boards must not disrupt store ops or egress.",
+        },
+        {
+          h2: "Content and AI/CMS pipelines",
+          body:
+            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the quote — the same ARLEDSCREEN AI-ready standard used elsewhere.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Does shopfront LED require cutting the glass?",
+          answer:
+            "Most installs add panels or mount behind existing glass. Glass replacement is coordinated with façade teams only when needed.",
+        },
+        {
+          question: "Is transparent LED right for every product?",
+          answer:
+            "Dense small text may read better on opaque fine pitch. Product showcase favours transparent.",
+        },
+        {
+          question: "Can retail chains standardise a package?",
+          answer:
+            "Yes — repeating store sizes get a type design and central CMS sync, scaled by branch count.",
+        },
+      ],
+      relatedSlugs: [
+        "poster-led-ekran",
+        "ic-mekan-led-ekran",
+        "kiosk-dijital-ekran",
+      ],
+      cta: {
+        title: "Plan your shopfront LED",
+        body:
+          "Share window sizes and transparency goals — we reply with panel and content-path outline.",
+      },
+      cardLabel: "Shopfront LED",
+      cardTeaser: "Transparent and retail shopfront LED displays.",
+    },
+    "poster-led-ekran": {
+      slug: "poster-led-ekran",
+      title: "Poster LED & Totem | Vertical Signage — ARLEDSCREEN",
+      description:
+        "Poster LED displays and digital totems: vertical format for lobby, mall and outdoor. NXTIONSTAR totem solutions — ARLEDSCREEN engineering and install.",
+      keywords: [
+        "poster LED",
+        "LED totem",
+        "digital poster",
+        "vertical LED",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Poster LED display & totem solutions",
+      intro:
+        "Poster LED replaces static posters with bright vertical digital surfaces. ARLEDSCREEN / NXTIONSTAR totems serve lobby, mall and outdoor wayfinding needs.",
+      sections: [
+        {
+          h2: "Poster LED vs wall LED",
+          body:
+            "Posters/totems are freestanding or wall-hung vertical units; video walls are wide horizontal canvases. Narrow spaces and single-message campaigns favour poster LED with pitch matched to reading distance.",
+        },
+        {
+          h2: "Indoor vs outdoor totems",
+          body:
+            "Indoor units use lower nits and slim housings; outdoor units need IP65, high nits and solid bases. Mall corridors respect accessibility clearances; outdoor sites need anchorage and wind calcs.",
+        },
+        {
+          h2: "Vertical content format",
+          body:
+            "9:16 or custom vertical resolutions affect creative production. CMS templates and AI crop rules should be defined up front.",
+        },
+        {
+          h2: "Power, network and operations",
+          body:
+            "Single totems may use local power; multi-site parks benefit from central networking and remote monitoring. Quotes separate base, screen, player and install lines.",
+        },
+      ],
+      faqs: [
+        {
+          question: "How do we size poster LED?",
+          answer:
+            "Corridor width, viewing distance and message length decide. Typical vertical heights are locked on survey by venue type.",
+        },
+        {
+          question: "Is a totem the same as a kiosk?",
+          answer:
+            "No. Totems/posters are mostly one-way; kiosks add touch and transactions. See the kiosk guide.",
+        },
+        {
+          question: "Does outdoor poster LED need IP65?",
+          answer:
+            "Yes for open rain-exposed sites. Semi-covered areas may allow intermediate protection.",
+        },
+      ],
+      relatedSlugs: [
+        "kiosk-dijital-ekran",
+        "vitrin-led-ekran",
+        "dis-mekan-led-ekran",
+      ],
+      cta: {
+        title: "Size your poster / totem LED",
+        body:
+          "Share quantity, indoor/outdoor use and content format — we reply with a technical outline.",
+      },
+      cardLabel: "Poster & totem",
+      cardTeaser: "Vertical poster LED and digital totem solutions.",
+    },
+    "kiosk-dijital-ekran": {
+      slug: "kiosk-dijital-ekran",
+      title: "Digital Kiosk Displays | Touch & Info Points — ARLEDSCREEN",
+      description:
+        "Digital kiosks: touch wayfinding, directories and self-service. Panel/LED choice, enclosure and software integration — ARLEDSCREEN / NXTIONSTAR.",
+      keywords: [
+        "digital kiosk",
+        "touchscreen kiosk",
+        "info kiosk",
+        "NXTIONSTAR",
+        "ARLEDSCREEN",
+      ],
+      h1: "Digital kiosk display solutions",
+      intro:
+        "A kiosk is an interactive digital screen point for wayfinding, tickets, catalogues or self-service. ARLEDSCREEN selects enclosure, display tech and software integration together — combining NXTIONSTAR LED surfaces with totems/walls when needed.",
+      sections: [
+        {
+          h2: "Kiosk vs totem vs video wall",
+          body:
+            "Kiosks need touch or card/QR interaction; totems are mostly one-way; video walls address crowds. Mixed lobbies often place kiosk + poster LED side by side after mapping user flow.",
+        },
+        {
+          h2: "Choosing display technology",
+          body:
+            "Close-range touch often uses high-resolution panels; brand walls beside the kiosk may be LED. Outdoor kiosks need high nits, anti-glare and IP-rated housings with filtration and locks.",
+        },
+        {
+          h2: "Software, payments and security",
+          body:
+            "Existing self-service/CMS/AI stacks define APIs and peripherals (printers, readers, POS). Physical security covers locks, anchors and cable concealment; privacy/logging rules sit on the software side.",
+        },
+        {
+          h2: "Install and field operations",
+          body:
+            "Floor anchors, accessible height and queue distance must match architecture. Multi-site rollouts use a type enclosure and central monitoring. Delivery includes install, networking and operator training.",
+        },
+      ],
+      faqs: [
+        {
+          question: "Must a kiosk use an LED screen?",
+          answer:
+            "No. Touch surfaces are often panels; LED may be a side surface or backdrop wall. Needs drive the split.",
+        },
+        {
+          question: "Are outdoor kiosks possible?",
+          answer:
+            "Yes — with IP-rated enclosures, high nits and climate control. Survey covers sun, rain and vandalism risk.",
+        },
+        {
+          question: "Standalone or networked kiosks?",
+          answer:
+            "Single lobby units can run offline; chains/campuses need networking for content and monitoring. Both models can be quoted.",
+        },
+      ],
+      relatedSlugs: [
+        "poster-led-ekran",
+        "vitrin-led-ekran",
+        "led-ekran",
+      ],
+      cta: {
+        title: "Define your kiosk project",
+        body:
+          "Share use case, quantity and software needs — we reply with enclosure + display outline.",
+      },
+      cardLabel: "Kiosk",
+      cardTeaser: "Touch info and self-service digital kiosk displays.",
+    },
+  },
+};
+
+/** Remove accidental empty fields if any FAQ was mistyped during authoring */
+function normalizeGuide(guide: SeoGuide): SeoGuide {
+  return {
+    ...guide,
+    faqs: guide.faqs.map(({ question, answer }) => ({ question, answer })),
+  };
+}
+
+export function getSeoGuide(locale: Locale, slug: SeoGuideSlug): SeoGuide {
+  const lang: GuideLocale = locale === "tr" ? "tr" : "en";
+  return normalizeGuide(guides[lang][slug]);
+}
+
+export function listSeoGuides(locale: Locale): SeoGuide[] {
+  return SEO_GUIDE_SLUGS.map((slug) => getSeoGuide(locale, slug));
+}
+
+export const SEO_GUIDE_HUB = {
+  tr: {
+    title: "LED Ekran Çözüm Rehberi — ARLEDSCREEN",
+    description:
+      "LED ekran, dış / iç mekân, konferans salonu, vitrin, poster ve kiosk rehberleri. NXTIONSTAR ürünleri, İstanbul Gaziosmanpaşa mühendisliği — ARLEDSCREEN.",
+    h1: "LED ekran çözüm rehberi — ARLEDSCREEN",
+    intro:
+      "NXTIONSTAR LED ürünleri ve ARLEDSCREEN mühendislik masası için konu bazlı rehberler: pitch seçimi, IP65 dış mekân, ince pitch iç mekân, mimari entegrasyon, konferans salonu, vitrin, poster / totem ve kiosk. Her sayfa keşif ve teklif odaklıdır — kopya katalog metni değil.",
+    eyebrow: "Rehber",
+    relatedLabel: "İlgili rehberler",
+    allGuidesLabel: "Tüm rehberler",
+  },
+  en: {
+    title: "LED Display Solution Guides — ARLEDSCREEN",
+    description:
+      "Guides on LED displays, outdoor / indoor, conference halls, shopfronts, posters and kiosks. NXTIONSTAR products, Istanbul engineering — ARLEDSCREEN.",
+    h1: "LED display solution guides — ARLEDSCREEN",
+    intro:
+      "Topic guides for NXTIONSTAR products and the ARLEDSCREEN engineering desk: pitch selection, IP65 outdoor, fine-pitch indoor, architectural integration, conference halls, shopfronts, poster/totem and kiosks. Each page is survey- and quote-oriented — not pasted catalogue copy.",
+    eyebrow: "Guides",
+    relatedLabel: "Related guides",
+    allGuidesLabel: "All guides",
+  },
+} as const;
+
+export function getSeoGuideHub(locale: Locale) {
+  return locale === "tr" ? SEO_GUIDE_HUB.tr : SEO_GUIDE_HUB.en;
+}
