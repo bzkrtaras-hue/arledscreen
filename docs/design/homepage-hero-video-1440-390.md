@@ -177,11 +177,11 @@ One control. Not a centre play overlay.
 | Fill | `#0F2A4F` at 80% | same |
 | Border | 1 px `rgba(255,255,255,0.25)` | same |
 | Icon | Pause when playing; Play when paused. 18 px white | same |
-| Position | **bottom-right** `right: 32`, `bottom: 32` (clear of copy) | **top-right** `right: 16`, `top: 16` (copy owns the bottom) |
+| Position | **top-right** `right: 32`, `top: 32` (clears copy, chat widget, social rail) | **top-right** `right: 16`, `top: 16` (copy owns the bottom) |
 
 `aria-pressed={playing}`. Labels: TR `Duraklat` / `Oynat`; EN `Pause` / `Play`.
 
-Also pause when the tab is hidden or the stage leaves the viewport (threshold 0.25).
+Also pause when the tab is hidden or the stage leaves the viewport (threshold 0.25). Top-right on both breakpoints: bottom-right collides with Canlı Destek and the social rail.
 
 ---
 
@@ -204,25 +204,23 @@ Hover on `.btn-soft` is a control state, not a fourth stage motion.
 ```
 0                                                                1440
 ┌──────────────────────────────────────────────────────────────────┐ 0
-│  VIDEO  object-position 68% 42%                                  │
+│  VIDEO  object-position 68% 42%               [pause]  1364, 32  │
 │  overlay 105deg navy → open right                                │
-│                                                                  │
 │                                                                  │
 │  112, ~320                                                       │
 │  ┌─────────────────────────────┐                                 │
 │  │ ARLEDSCREEN │ NXTIONSTAR    │  w 560                          │
 │  │ ████  accent 40×2           │                                 │
-│  │ H1  (2 lines)               │                                 │
+│  │ H1  (2–3 lines)             │                                 │
 │  │ Subcopy ≤36ch               │                                 │
 │  │ [ Teklif İste ] [ Hesapla ] │  h 52, radius 12, #1E5BB8       │
 │  └─────────────────────────────┘                                 │
-│                                                           pause  │
-│                                              1364, 708  [ 44 ]   │ 784-32-44
+│                                                                  │
 └──────────────────────────────────────────────────────────────────┘ 784
          ↑ left inset 112                          right inset 32
 ```
 
-Pause coordinates: `(1440 − 32 − 44, 784 − 32 − 44)` = **(1364, 708)**.
+Pause coordinates: `(1440 − 32 − 44, 32)` = **(1364, 32)** — top-right of the stage, clear of the Canlı Destek bubble and the social rail.
 
 ---
 
