@@ -7,26 +7,26 @@ export type CitationProof = {
 export type CitationCapsuleProps = {
   /** Visible section title (H2). */
   title: string;
-  /** 40–70 word quotable answer. */
+  /** Short quotable answer for visitors and AI. */
   answer: string;
   proofs: CitationProof[];
   sources: { href: string; label: string }[];
-  dontSay?: string[];
   className?: string;
 };
 
 /**
- * AI-quotable fact block: plain definition + published proof + source URLs.
- * No invented specs — only pass site-published facts.
+ * Public fact block: definition + published proof + human-facing source links.
+ * Internal “do not claim” guidance must never appear here — keep that in docs / llms.txt only.
  */
 export function CitationCapsule({
   title,
   answer,
   proofs,
   sources,
-  dontSay,
   className = "",
 }: CitationCapsuleProps) {
+  const publicSources = sources.filter((s) => !/llms(-full)?\.txt$/i.test(s.href));
+
   return (
     <aside
       className={`border-y border-border bg-band/60 py-10 md:py-12 ${className}`.trim()}
@@ -35,7 +35,7 @@ export function CitationCapsule({
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
-          Alıntılanabilir özet
+          Kurumsal özet
         </p>
         <h2
           id="citation-capsule-title"
@@ -54,10 +54,10 @@ export function CitationCapsule({
             ))}
           </ul>
         ) : null}
-        {sources.length ? (
+        {publicSources.length ? (
           <p className="mt-5 text-sm text-ink-soft">
-            Kaynak:{" "}
-            {sources.map((s, i) => (
+            İlgili sayfalar:{" "}
+            {publicSources.map((s, i) => (
               <span key={s.href}>
                 {i > 0 ? " · " : null}
                 <Link href={s.href} className="font-semibold text-cyan underline-offset-2 hover:underline">
@@ -65,11 +65,6 @@ export function CitationCapsule({
                 </Link>
               </span>
             ))}
-          </p>
-        ) : null}
-        {dontSay?.length ? (
-          <p className="mt-4 text-xs leading-relaxed text-ink-muted">
-            Bunu söyleme: {dontSay.join(" · ")}
           </p>
         ) : null}
       </div>

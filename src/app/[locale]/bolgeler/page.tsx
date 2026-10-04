@@ -105,9 +105,8 @@ export default async function BolgelerHubPage({
         sources={[
           { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
           { href: "/tr/projelerimiz/", label: "Projeler" },
-          { href: "/llms.txt", label: "llms.txt" },
+          { href: "/tr/quote/", label: "Teklif" },
         ]}
-        dontSay={["81 ilde şube", "Türkiye'nin her noktasında ofis"]}
       />
 
       <Section eyebrow="İller" title="Kayıtlı hizmet illeri" className="bg-surface/60 prose-seo">

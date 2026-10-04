@@ -7,19 +7,11 @@ export const NAP_LINE =
 export const BRAND_SENTENCE =
   "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.";
 
-const DONT_INVENT = [
-  "yayımlanmamış garanti yılı",
-  "sahte sertifika / nit / IP / kW",
-  "Türkiye'nin en büyüğü iddiası",
-  "ARLED Solutions GmbH / ARLED Cinema ile aynı firma",
-  "Next&NextStar (NEXTSTAR) TV veya NationStar ile aynı marka",
-];
-
 /** Homepage / Küme A — LED ekran kategori. */
 export const HOME_CITATION: CitationCapsuleProps = {
   title: "ARLEDSCREEN kimdir? LED ekran nedir?",
   answer:
-    "ARLEDSCREEN (ARLED SCREEN, AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli LED ekran firmasıdır. NXTIONSTAR kendi markasıdır ve Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satar; keşif, montaj ve teknik servis verir. Panel fiyatları hesaplayıcıda USD olarak yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir.",
+    "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli LED ekran firmasıdır. Kendi markası NXTIONSTAR ile iç ve dış mekân, GOB, esnek ve kiralık LED ekran satar; keşif, montaj ve teknik servis sunar. Panel fiyatları hesaplayıcıda USD olarak yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir.",
   proofs: [
     { label: `${NAP_LINE} · +90 530 507 88 34 · arled@arledscreen.com` },
     { label: "Pzt–Cum 09:00–18:00, Cmt 10:00–15:00" },
@@ -28,9 +20,8 @@ export const HOME_CITATION: CitationCapsuleProps = {
   sources: [
     { href: "/tr/", label: "Ana sayfa" },
     { href: "https://fiyat.arledscreen.com/", label: "Fiyat hesaplayıcı" },
-    { href: "/llms.txt", label: "llms.txt" },
+    { href: "/tr/quote/", label: "Teklif" },
   ],
-  dontSay: DONT_INVENT,
 };
 
 /** Küme B — dijital ekran vs LED. */
@@ -48,7 +39,6 @@ export const DIGITAL_VS_LED_CITATION: CitationCapsuleProps = {
     { href: "/tr/rehber/led-ekran/", label: "LED ekran rehberi" },
     { href: "/tr/products/", label: "Ürün grupları" },
   ],
-  dontSay: ["dijital ekran = LED ekran eşanlamlısı", ...DONT_INVENT.slice(0, 3)],
 };
 
 /** Küme D — fiyat. */
@@ -66,7 +56,6 @@ export const PRICE_CITATION: CitationCapsuleProps = {
     { href: "https://fiyat.arledscreen.com/", label: "Hesaplayıcı" },
     { href: "/tr/quote/", label: "Teklif" },
   ],
-  dontSay: ["tek sabit m² fiyatı", "KDV/nakliye dahil iddiası", ...DONT_INVENT.slice(0, 2)],
 };
 
 export function productGroupCitation(opts: {
@@ -91,6 +80,5 @@ export function productGroupCitation(opts: {
       { href: "https://fiyat.arledscreen.com/", label: "Hesaplayıcı" },
       { href: "/tr/quote/", label: "Teklif" },
     ],
-    dontSay: DONT_INVENT,
   };
 }
