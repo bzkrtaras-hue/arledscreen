@@ -420,8 +420,8 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   <X className="h-5 w-5" aria-hidden />
                 </button>
               </div>
-              <ul className="flex flex-col gap-1 px-3 py-3">
-                {links.map((link) => {
+              <ul className="flex flex-col gap-2 px-3 py-3">
+                {links.map((link, index) => {
                   const sub =
                     link.dropdown === "products"
                       ? groups.map((g) => ({ href: g.href, label: g.name }))
@@ -431,11 +431,19 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   if (sub.length) {
                     const expanded = mobileSection === link.dropdown;
                     return (
-                      <li key={link.href}>
-                        <div className="flex items-center">
+                      <m.li
+                        key={link.href}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.28, delay: 0.04 + index * 0.035, ease }}
+                      >
+                        <div className="flex items-center gap-1.5">
                           <Link
                             href={link.href}
-                            className="nav-glass-link flex min-h-12 flex-1 items-center rounded-xl px-3 text-base font-semibold text-ink"
+                            className={cn(
+                              "liquid-glass-btn liquid-glass-btn--menu flex-1",
+                              isActive(link.href) && "is-active",
+                            )}
                           >
                             {link.label}
                           </Link>
@@ -443,44 +451,67 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                             type="button"
                             aria-expanded={expanded}
                             onClick={() => setMobileSection(expanded ? null : link.dropdown!)}
-                            className="nav-glass-link inline-flex h-12 w-12 items-center justify-center rounded-xl text-ink-soft"
+                            className={cn(
+                              "liquid-glass-btn liquid-glass-btn--menu-icon",
+                              expanded && "is-active",
+                            )}
                           >
                             <span className="sr-only">
                               {link.label} {tr ? "alt menüsü" : "submenu"}
                             </span>
-                            <ChevronDown className={cn("h-5 w-5 transition-transform", expanded && "rotate-180")} aria-hidden />
+                            <ChevronDown
+                              className={cn(
+                                "h-5 w-5 transition-transform duration-300 ease-out",
+                                expanded && "rotate-180",
+                              )}
+                              aria-hidden
+                            />
                           </button>
                         </div>
-                        {expanded ? (
-                          <ul className="mb-2 ml-3 border-l-2 border-cyan-100 pl-2">
-                            {sub.map((s) => (
-                              <li key={s.href}>
-                                <Link
-                                  href={s.href}
-                                  className="flex min-h-11 items-center rounded-lg px-3 text-[15px] text-ink-soft hover:bg-band hover:text-cyan"
-                                >
-                                  {s.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
-                      </li>
+                        <AnimatePresence initial={false}>
+                          {expanded ? (
+                            <m.ul
+                              key={`${link.dropdown}-sub`}
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.28, ease }}
+                              className="mt-1.5 space-y-1.5 overflow-hidden pl-1"
+                            >
+                              {sub.map((s) => (
+                                <li key={s.href}>
+                                  <Link
+                                    href={s.href}
+                                    className="liquid-glass-btn liquid-glass-btn--submenu"
+                                  >
+                                    {s.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </m.ul>
+                          ) : null}
+                        </AnimatePresence>
+                      </m.li>
                     );
                   }
                   return (
-                    <li key={link.href}>
+                    <m.li
+                      key={link.href}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.28, delay: 0.04 + index * 0.035, ease }}
+                    >
                       <Link
                         href={link.href}
                         aria-current={isActive(link.href) ? "page" : undefined}
                         className={cn(
-                          "nav-glass-link flex min-h-12 items-center rounded-xl px-3 text-base font-semibold text-ink",
-                          isActive(link.href) && "text-cyan",
+                          "liquid-glass-btn liquid-glass-btn--menu",
+                          isActive(link.href) && "is-active",
                         )}
                       >
                         {link.label}
                       </Link>
-                    </li>
+                    </m.li>
                   );
                 })}
               </ul>
@@ -499,7 +530,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   className="liquid-glass-btn min-h-12 w-full gap-2 text-[15px] font-semibold text-[#0F7A41]"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
-                  {tr ? "WhatsApp'tan yazın" : "Message on WhatsApp"}
+                  {tr ? "WhatsApp’tan yazın" : "Message on WhatsApp"}
                 </a>
                 <div className="flex items-center justify-between gap-3 pt-1">
                   <a href={CONTACT_PHONE_HREF} className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ink">
