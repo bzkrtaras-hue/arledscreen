@@ -63,8 +63,8 @@ export function Hero({ locale }: HeroProps) {
       }
       subcopy={
         tr
-          ? "NXTIONSTAR panellerini Türkiye’de ARLEDSCREEN satar, keşfeder ve monte eder. Cephe, vitrin, totem ve salon ölçüleri sahada netleşir; servis Gaziosmanpaşa ofisinden yürür."
-          : "ARLEDSCREEN sells, surveys and installs NXTIONSTAR panels in Turkey. Façade, storefront, totem and hall sizes are confirmed on site; service is run from Gaziosmanpaşa."
+          ? "ARLEDSCREEN, kendi markası NXTIONSTAR ile LED ekran projelerini keşiften montaja ve teknik servise kadar yönetir. Cephe, vitrin, totem ve salon uygulamalarında çözüm sahada şekillenir; operasyon Gaziosmanpaşa merkezimizden yürütülür."
+          : "ARLEDSCREEN delivers NXTIONSTAR LED display projects end to end—survey, sizing, installation and technical service. Façade, storefront, totem and hall solutions are scoped on site; operations run from our Gaziosmanpaşa headquarters."
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Yazılı teklif alın" : "Request a written quote"}

@@ -247,7 +247,7 @@ export function HeroVideo({
             <h1 className="mt-3 text-balance font-display text-[clamp(1.25rem,1rem+1.4vw,1.85rem)] font-bold leading-[1.2] tracking-[-0.02em] text-white">
               {headline}
             </h1>
-            <p className="mt-4 max-w-[36ch] text-pretty text-[15px] leading-[1.6] text-white/90 transition-opacity duration-700 sm:text-base sm:leading-[1.65]">
+            <p className="mt-4 max-w-[48ch] text-pretty text-[15px] leading-[1.65] text-white/90 transition-opacity duration-700 sm:text-base sm:leading-[1.7]">
               {subcopy}
             </p>
             <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
