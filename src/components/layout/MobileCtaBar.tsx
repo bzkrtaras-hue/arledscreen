@@ -24,7 +24,7 @@ export function MobileCtaBar({ locale }: { locale: Locale }) {
   return (
     <nav
       aria-label={tr ? "Hızlı iletişim" : "Quick contact"}
-      className="mobile-cta-bar glass-bar fixed inset-x-0 bottom-0 z-50 flex border-t border-border md:hidden"
+      className="mobile-cta-bar liquid-glass fixed inset-x-0 bottom-0 z-50 flex border-t border-white/45 md:hidden"
     >
       <a href={CONTACT_PHONE_HREF} className={`${item} text-ink-soft`}>
         <PhoneIcon className="h-5 w-5 text-cyan" />

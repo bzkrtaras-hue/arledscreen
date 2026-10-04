@@ -45,8 +45,10 @@ export function SiteShell({ locale, children }: SiteShellProps) {
         <a href="#main-content" className="skip-link">
           {tr ? "İçeriğe geç" : "Skip to main content"}
         </a>
-        <TopBar locale={locale} />
-        <Header locale={locale} groups={groups} guides={guides} />
+        <div className="sticky top-0 z-50">
+          <TopBar locale={locale} />
+          <Header locale={locale} groups={groups} guides={guides} />
+        </div>
         <main id="main-content" className="flex-1">
           {children}
         </main>

@@ -55,8 +55,8 @@ export function LocaleSelect({
       <select
         id={id}
         className={cn(
-          "rounded-md border border-border bg-white text-ink-soft",
-          size === "sm" ? "min-h-10 px-2 text-base md:text-sm" : "min-h-11 w-full px-3 text-base",
+          "glass-select rounded-full text-ink-soft",
+          size === "sm" ? "min-h-9 px-3 text-base md:text-sm" : "min-h-11 w-full px-3 text-base",
         )}
         value={locale}
         onChange={(e) => {

@@ -124,7 +124,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
   const group = groups[active] ?? groups[0];
 
   return (
-    <header className="glass-bar sticky top-0 z-50 border-b border-border/80">
+    <header className="glass-bar border-b border-white/40">
       <div className="mx-auto flex h-[68px] max-w-7xl min-w-0 items-center gap-3 px-4 sm:px-6 md:h-[76px] lg:px-8">
         <Link
           href={`/${locale}/`}
@@ -168,13 +168,13 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     aria-current={isActive(link.href) ? "page" : undefined}
                     onFocus={() => openDrop(link.dropdown!)}
                     className={cn(
-                      "flex min-h-11 items-center gap-1 rounded-full px-3 text-[14px] font-semibold text-ink-soft transition-colors hover:text-cyan",
+                      "nav-glass-link flex min-h-11 items-center gap-1 rounded-full px-3 text-[14px] font-semibold text-ink-soft hover:text-cyan",
                       (drop === link.dropdown || isActive(link.href)) && "text-cyan",
                     )}
                   >
                     {link.label}
                     <ChevronDown
-                      className={cn("h-3.5 w-3.5 transition-transform", drop === link.dropdown && "rotate-180")}
+                      className={cn("h-3.5 w-3.5 transition-transform duration-300", drop === link.dropdown && "rotate-180")}
                       aria-hidden
                     />
                   </Link>
@@ -182,10 +182,10 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     {drop === link.dropdown ? (
                       <m.div
                         key={link.dropdown}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 6 }}
-                        transition={{ duration: 0.2, ease }}
+                        initial={{ opacity: 0, y: 10, scale: 0.985 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 6, scale: 0.99 }}
+                        transition={{ duration: 0.28, ease }}
                         className={cn(
                           "absolute top-full z-50 pt-2",
                           link.dropdown === "products" ? "-left-40 w-[780px]" : "-left-6 w-[320px]",
@@ -194,7 +194,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                         onMouseLeave={closeDrop}
                       >
                         {link.dropdown === "products" ? (
-                          <div className="glass-panel grid grid-cols-[250px_1fr] overflow-hidden rounded-[20px]">
+                          <div className="glass-panel grid grid-cols-[250px_1fr] overflow-hidden rounded-[22px]">
                             <ul className="border-r border-border p-3">
                               {groups.map((g, i) => (
                                 <li key={g.href}>
@@ -217,8 +217,8 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                     }}
                                     onBlur={closeDrop}
                                     className={cn(
-                                      "flex min-h-9 items-center justify-between rounded-xl px-3 text-[13.5px] font-semibold transition-colors",
-                                      i === active ? "bg-cyan-50 text-cyan-700" : "text-ink-soft hover:bg-band",
+                                      "nav-glass-link flex min-h-9 items-center justify-between rounded-xl px-3 text-[13.5px] font-semibold",
+                                      i === active ? "text-cyan-700" : "text-ink-soft",
                                     )}
                                   >
                                     {g.name}
@@ -290,14 +290,14 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                             ) : null}
                           </div>
                         ) : (
-                          <ul className="glass-panel overflow-hidden rounded-[20px] p-3">
+                          <ul className="glass-panel overflow-hidden rounded-[22px] p-3">
                             {guides.map((g) => (
                               <li key={g.href}>
                                 <Link
                                   href={g.href}
                                   onFocus={() => openDrop("guides")}
                                   onBlur={closeDrop}
-                                  className="flex min-h-10 items-center gap-2 rounded-xl px-3 text-[13.5px] font-semibold text-ink-soft hover:bg-band hover:text-cyan"
+                                  className="nav-glass-link flex min-h-10 items-center gap-2 rounded-xl px-3 text-[13.5px] font-semibold text-ink-soft hover:text-cyan"
                                 >
                                   <BookOpen className="h-4 w-4 text-cyan" aria-hidden />
                                   {g.label}
@@ -325,7 +325,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={cn(
-                      "flex min-h-11 items-center rounded-full px-3 text-[14px] font-semibold text-ink-soft transition-colors hover:text-cyan",
+                      "nav-glass-link flex min-h-11 items-center rounded-full px-3 text-[14px] font-semibold text-ink-soft hover:text-cyan",
                       isActive(link.href) && "text-cyan",
                     )}
                   >
@@ -371,27 +371,27 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           >
             <button
               type="button"
-              className="absolute inset-0 h-full w-full bg-navy/50"
+              className="absolute inset-0 h-full w-full bg-navy/40 backdrop-blur-[2px]"
               aria-label={tr ? "Menüyü kapat" : "Close menu"}
               onClick={() => setOpen(false)}
             />
             <m.nav
               id="mobile-nav"
               aria-label={tr ? "Mobil menü" : "Mobile"}
-              className="glass-panel glass-strong absolute inset-y-0 right-0 flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-[20px]"
+              className="glass-panel glass-strong absolute inset-y-0 right-0 flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-[24px] border-l border-white/50"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.28, ease }}
+              transition={{ duration: 0.32, ease }}
             >
-              <div className="flex h-[68px] items-center justify-between border-b border-border px-4">
+              <div className="flex h-[68px] items-center justify-between border-b border-white/40 px-4">
                 <span className="font-display text-sm font-bold uppercase tracking-[0.14em] text-ink-muted">
                   {tr ? "Menü" : "Menu"}
                 </span>
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-soft hover:bg-band"
+                  className="nav-glass-link inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-soft"
                 >
                   <span className="sr-only">{tr ? "Menüyü kapat" : "Close menu"}</span>
                   <X className="h-5 w-5" aria-hidden />
@@ -412,7 +412,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                         <div className="flex items-center">
                           <Link
                             href={link.href}
-                            className="flex min-h-12 flex-1 items-center rounded-xl px-3 text-base font-semibold text-ink hover:bg-band"
+                            className="nav-glass-link flex min-h-12 flex-1 items-center rounded-xl px-3 text-base font-semibold text-ink"
                           >
                             {link.label}
                           </Link>
@@ -420,7 +420,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                             type="button"
                             aria-expanded={expanded}
                             onClick={() => setMobileSection(expanded ? null : link.dropdown!)}
-                            className="inline-flex h-12 w-12 items-center justify-center rounded-xl text-ink-soft hover:bg-band"
+                            className="nav-glass-link inline-flex h-12 w-12 items-center justify-center rounded-xl text-ink-soft"
                           >
                             <span className="sr-only">
                               {link.label} {tr ? "alt menüsü" : "submenu"}
@@ -451,7 +451,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                         href={link.href}
                         aria-current={isActive(link.href) ? "page" : undefined}
                         className={cn(
-                          "flex min-h-12 items-center rounded-xl px-3 text-base font-semibold text-ink hover:bg-band",
+                          "nav-glass-link flex min-h-12 items-center rounded-xl px-3 text-base font-semibold text-ink",
                           isActive(link.href) && "text-cyan",
                         )}
                       >
