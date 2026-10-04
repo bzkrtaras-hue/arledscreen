@@ -41,7 +41,7 @@ export function GatewayTiles() {
   ];
 
   return (
-    <section aria-labelledby="hizli-erisim" className="bg-white pb-12 pt-4 md:pb-16">
+    <section aria-labelledby="hizli-erisim" className="bg-white pb-12 pt-10 md:pb-16 md:pt-14">
       <h2 id="hizli-erisim" className="sr-only">
         Ürünler, projeler, servis ve fiyat hesaplama
       </h2>

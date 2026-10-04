@@ -113,7 +113,7 @@ export default async function HomePage({ params }: PageProps) {
     <>
       <FaqJsonLd faqs={faqs} />
 
-      {/* 1. Inset hero card (H1) → 2. four gateway tiles → 3. grey values band */}
+      {/* 1. Full-bleed video hero (H1) → 2. four gateway tiles → 3. grey values band */}
       <Hero locale={locale} />
       <GatewayTiles />
       <ValuesBand />
