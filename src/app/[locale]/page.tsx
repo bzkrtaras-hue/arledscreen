@@ -64,7 +64,9 @@ export default async function HomePage({ params }: PageProps) {
     return (
       <>
         <FaqJsonLd faqs={faqs} />
-        <Hero locale={locale} />
+        <div className="-mt-[calc(2.5rem+68px)] md:-mt-[calc(2.5rem+76px)]">
+          <Hero locale={locale} />
+        </div>
         <BrandBand locale={locale} />
         <Section
           eyebrow={dict.sections.products.eyebrow}
@@ -113,8 +115,10 @@ export default async function HomePage({ params }: PageProps) {
     <>
       <FaqJsonLd faqs={faqs} />
 
-      {/* 1. Full-bleed video hero (H1) → 2. four gateway tiles → 3. grey values band */}
-      <Hero locale={locale} />
+      {/* 1. Full-bleed video hero under liquid-glass chrome → 2. gateway tiles → 3. values */}
+      <div className="-mt-[calc(2.5rem+68px)] md:-mt-[calc(2.5rem+76px)]">
+        <Hero locale={locale} />
+      </div>
       <GatewayTiles />
       <ValuesBand />
       <CitationCapsule {...HOME_CITATION} />

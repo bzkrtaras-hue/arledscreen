@@ -128,7 +128,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
       <div className="mx-auto flex h-[68px] max-w-7xl min-w-0 items-center gap-3 px-4 sm:px-6 md:h-[76px] lg:px-8">
         <Link
           href={`/${locale}/`}
-          className="flex min-h-11 min-w-0 shrink-0 items-center gap-2.5"
+          className="flex min-h-11 min-w-0 shrink-0 items-center gap-2.5 rounded-2xl bg-white/55 px-2.5 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]"
           aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
         >
           <Image

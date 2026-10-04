@@ -135,7 +135,7 @@ export function HeroVideo({
 
   return (
     <section aria-label={labels.region} className="relative isolate w-full overflow-hidden bg-navy">
-      <div className="relative h-[calc(100dvh-108px)] min-h-[560px] md:h-[clamp(640px,calc(100dvh-116px),860px)] md:min-h-0">
+      <div className="relative h-[100dvh] min-h-[620px] md:h-[clamp(700px,100dvh,920px)] md:min-h-0">
         {/* Poster stack — soft base while each clip decodes */}
         {clips.map((clip, i) => (
           // eslint-disable-next-line @next/next/no-img-element
