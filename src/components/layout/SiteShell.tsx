@@ -47,7 +47,7 @@ export function SiteShell({ locale, children }: SiteShellProps) {
         </a>
         {/* Fixed liquid-glass chrome floats over page content so blur reads clearly. */}
         <div className="pointer-events-none fixed inset-x-0 top-0 z-50">
-          <div className="pointer-events-auto">
+          <div className="pointer-events-auto relative z-50">
             <TopBar locale={locale} />
             <Header locale={locale} groups={groups} guides={guides} />
           </div>

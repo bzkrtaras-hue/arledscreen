@@ -87,11 +87,12 @@ export function Header({ locale, groups, guides }: HeaderProps) {
     setDrop(null);
   }, [pathname]);
   useEffect(() => {
-    document.documentElement.style.overflow = open ? "hidden" : "";
+    const lock = open || Boolean(drop);
+    document.documentElement.style.overflow = lock ? "hidden" : "";
     return () => {
       document.documentElement.style.overflow = "";
     };
-  }, [open]);
+  }, [open, drop]);
 
   const links: (MenuLink & { dropdown?: Exclude<Dropdown, null> })[] = tr
     ? [
@@ -185,26 +186,26 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     {drop === link.dropdown ? (
                       <m.div
                         key={link.dropdown}
-                        initial={{ opacity: 0, y: 10, scale: 0.985 }}
+                        initial={{ opacity: 0, y: 12, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 6, scale: 0.99 }}
-                        transition={{ duration: 0.28, ease }}
+                        exit={{ opacity: 0, y: 8, scale: 0.985 }}
+                        transition={{ duration: 0.3, ease }}
                         className={cn(
-                          "absolute top-full z-50 pt-2",
-                          link.dropdown === "products" ? "-left-40 w-[780px]" : "-left-6 w-[320px]",
+                          "absolute top-full z-[60] pt-3",
+                          link.dropdown === "products" ? "-left-40 w-[780px]" : "-left-6 w-[340px]",
                         )}
                         onMouseEnter={() => openDrop(link.dropdown!)}
                         onMouseLeave={closeDrop}
                       >
                         {link.dropdown === "products" ? (
-                          <div className="glass-panel grid grid-cols-[250px_1fr] overflow-hidden rounded-[22px]">
-                            <ul className="border-r border-border p-3">
+                          <div className="menu-glass-panel grid grid-cols-[250px_1fr] rounded-[24px]">
+                            <ul className="border-r border-[#d8e2ee] p-3">
                               {groups.map((g, i) => (
                                 <li key={g.href}>
                                   {i === 0 || groups[i - 1].family !== g.family ? (
                                     <p
                                       className={cn(
-                                        "px-3 pb-1 text-xs font-bold uppercase tracking-[0.14em] text-ink-muted",
+                                        "px-3 pb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#6b7785]",
                                         i === 0 ? "pt-1" : "pt-3",
                                       )}
                                     >
@@ -220,20 +221,20 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                     }}
                                     onBlur={closeDrop}
                                     className={cn(
-                                      "nav-glass-link flex min-h-9 items-center justify-between rounded-xl px-3 text-[13.5px] font-semibold",
-                                      i === active ? "text-cyan-700" : "text-ink-soft",
+                                      "menu-glass-item flex min-h-9 items-center justify-between rounded-xl px-3 text-[13.5px] font-semibold",
+                                      i === active && "is-active",
                                     )}
                                   >
                                     {g.name}
-                                    <ChevronRight className="h-3.5 w-3.5 opacity-60" aria-hidden />
+                                    <ChevronRight className="h-3.5 w-3.5 opacity-55" aria-hidden />
                                   </Link>
                                 </li>
                               ))}
-                              <li className="mt-2 border-t border-border pt-2">
+                              <li className="mt-2 border-t border-[#d8e2ee] pt-2">
                                 <Link
                                   href="/tr/hizmetler/"
                                   onBlur={closeDrop}
-                                  className="flex min-h-10 items-center rounded-xl px-3 text-[13.5px] font-semibold text-ink-soft hover:bg-band"
+                                  className="menu-glass-item flex min-h-10 items-center rounded-xl px-3 text-[13.5px] font-semibold"
                                 >
                                   Montaj ve teknik servis
                                 </Link>
@@ -242,7 +243,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                 <Link
                                   href="/tr/products/"
                                   onBlur={closeDrop}
-                                  className="flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-[13.5px] font-bold text-cyan hover:bg-band"
+                                  className="menu-glass-item flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-[13.5px] font-bold text-cyan"
                                 >
                                   Tüm ürünler <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                                 </Link>
@@ -251,11 +252,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                             {group ? (
                               <div className="grid grid-cols-[1fr_200px] gap-5 p-5">
                                 <div className="min-w-0">
-                                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
+                                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6b7785]">
                                     {group.tag}
                                   </p>
-                                  <p className="mt-1 font-display text-lg font-bold text-ink">{group.name}</p>
-                                  <p className="mt-1.5 text-[13.5px] leading-6 text-ink-muted">{group.short}</p>
+                                  <p className="mt-1 font-display text-lg font-bold text-[#24303c]">{group.name}</p>
+                                  <p className="mt-1.5 text-[13.5px] leading-6 text-[#4b5563]">{group.short}</p>
                                   {group.pitches.length ? (
                                     <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Modeller">
                                       {group.pitches.map((p) => (
@@ -264,7 +265,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                             href={p.href}
                                             onFocus={() => openDrop("products")}
                                             onBlur={closeDrop}
-                                            className="inline-flex min-h-8 items-center rounded-lg bg-band px-2.5 text-[12px] font-semibold text-ink-soft transition hover:bg-cyan hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan"
+                                            className="inline-flex min-h-8 items-center rounded-lg border border-[#d8e2ee] bg-white/70 px-2.5 text-[12px] font-semibold text-[#3d4650] transition hover:border-cyan/40 hover:bg-cyan hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan"
                                           >
                                             {p.label}
                                           </Link>
@@ -287,31 +288,31 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                   width={200}
                                   height={240}
                                   loading="lazy"
-                                  className="h-full max-h-[240px] w-full rounded-2xl object-cover"
+                                  className="h-full max-h-[240px] w-full rounded-2xl object-cover shadow-[0_10px_28px_-14px_rgba(15,42,79,0.45)] ring-1 ring-black/5"
                                 />
                               </div>
                             ) : null}
                           </div>
                         ) : (
-                          <ul className="glass-panel overflow-hidden rounded-[22px] p-3">
+                          <ul className="menu-glass-panel rounded-[24px] p-3">
                             {guides.map((g) => (
                               <li key={g.href}>
                                 <Link
                                   href={g.href}
                                   onFocus={() => openDrop("guides")}
                                   onBlur={closeDrop}
-                                  className="nav-glass-link flex min-h-10 items-center gap-2 rounded-xl px-3 text-[13.5px] font-semibold text-ink-soft hover:text-cyan"
+                                  className="menu-glass-item flex min-h-10 items-center gap-2 rounded-xl px-3 text-[13.5px] font-semibold"
                                 >
                                   <BookOpen className="h-4 w-4 text-cyan" aria-hidden />
                                   {g.label}
                                 </Link>
                               </li>
                             ))}
-                            <li className="mt-2 border-t border-border pt-2">
+                            <li className="mt-2 border-t border-[#d8e2ee] pt-2">
                               <Link
                                 href="/tr/rehber/"
                                 onBlur={closeDrop}
-                                className="flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-[13.5px] font-bold text-cyan hover:bg-band"
+                                className="menu-glass-item flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-[13.5px] font-bold text-cyan"
                               >
                                 Tüm rehberler <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                               </Link>
@@ -362,6 +363,25 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
       {mounted
         ? createPortal(
+            <>
+      <AnimatePresence>
+        {drop ? (
+          <m.button
+            key="menu-scrim"
+            type="button"
+            aria-label={tr ? "Menüyü kapat" : "Close menu"}
+            className="menu-scrim fixed inset-0 z-[45] hidden xl:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28, ease }}
+            onClick={() => {
+              clearTimeout(closeTimer.current);
+              setDrop(null);
+            }}
+          />
+        ) : null}
+      </AnimatePresence>
       <AnimatePresence>
         {open ? (
           <m.div
@@ -370,18 +390,18 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.22 }}
           >
             <button
               type="button"
-              className="absolute inset-0 h-full w-full bg-navy/40 backdrop-blur-[2px]"
+              className="menu-scrim absolute inset-0 h-full w-full"
               aria-label={tr ? "Menüyü kapat" : "Close menu"}
               onClick={() => setOpen(false)}
             />
             <m.nav
               id="mobile-nav"
               aria-label={tr ? "Mobil menü" : "Mobile"}
-              className="glass-panel glass-strong absolute inset-y-0 right-0 flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-[24px] border-l border-white/50"
+              className="menu-glass-panel absolute inset-y-0 right-0 flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-[26px] border-l border-white/70"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -464,10 +484,10 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   );
                 })}
               </ul>
-              <div className="mt-auto space-y-3 border-t border-border px-4 py-5">
+              <div className="mt-auto space-y-3 border-t border-[#d8e2ee] px-4 py-5">
                 <Link
                   href={`/${locale}/quote/`}
-                  className="btn-soft flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-cyan text-white hover:bg-cyan-600"
+                  className="liquid-glass-btn liquid-glass-btn--primary min-h-12 w-full gap-2 text-[15px] font-semibold"
                 >
                   <FileText className="h-4 w-4" aria-hidden />
                   {dict.nav.quote}
@@ -476,7 +496,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   href={GENERIC_WHATSAPP_HREF}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-soft flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[#0F7A41]/40 bg-white text-[#0F7A41] hover:bg-[#0F7A41]/10"
+                  className="liquid-glass-btn min-h-12 w-full gap-2 text-[15px] font-semibold text-[#0F7A41]"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
                   {tr ? "WhatsApp'tan yazın" : "Message on WhatsApp"}
@@ -499,7 +519,8 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             </m.nav>
           </m.div>
         ) : null}
-      </AnimatePresence>,
+      </AnimatePresence>
+            </>,
             document.body,
           )
         : null}
