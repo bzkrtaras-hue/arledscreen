@@ -10,13 +10,14 @@ last_reviewed: 2026-10-01
 
 # LED tabela mı LED ekran mı?
 
-**Kısa cevap:** Yalnızca kısa bir metin veya fiyat göstermek istiyorsanız **kayan yazı LED tabela** genellikle yeterlidir. Logo, ürün görseli, video ve kampanya içeriğini renkli göstermek istiyorsanız **tam renkli (RGB) LED ekran** gerekir. Tam renkli LED ekranlar bugün mağaza cephesi, totem, vitrin ve poster tabela olarak da kullanılır; bu yüzden aradaki çizgi "ne göstermek istiyorsunuz?" sorusuyla belirlenir.
+**Kısa cevap:** **Dijital ekran** üst kümedir (LCD, OLED, LED tabela, videowall, tam renkli LED ekran). Yalnızca kısa metin veya fiyat için **kayan yazı LED tabela** çoğu zaman yeterlidir. Logo, ürün görseli, video ve kampanya için **tam renkli (RGB) LED ekran** gerekir. ARLEDSCREEN'in ürünü tam renkli LED ekrandır; mağaza cephesi, totem ve vitrinde de kullanılır. "Dijital ekran" ile "LED ekran" eşanlamlı değildir.
 
 ## 1. Tanımlar
 
+- **Dijital ekran (üst küme):** Elektronik görüntü yüzeylerinin genel adıdır. LCD monitör, OLED panel, kayan yazı LED tabela, dijital totem ve tam renkli LED ekranı kapsar. Her dijital ekran LED ekran değildir.
 - **LED tabela (kayan yazı):** LED modüllerle oluşturulan, çoğunlukla tek renkli veya sınırlı renkli metin, sayı ve basit animasyon gösteren elektronik tabela. Eczane, döviz/akaryakıt fiyatı, duyuru panoları tipik örneklerdir.
 - **Klasik ışıklı tabela:** Kutu harf, ışıklı kutu gibi içi LED ile aydınlatılan ama içeriği sabit olan tabelalar. İçerik değişmez.
-- **LED ekran (tam renkli):** RGB piksellerden oluşan, video, fotoğraf ve animasyon oynatan modüler ekran. Ölçüsü modüller eklenerek büyütülür; içerik bilgisayar, USB veya uzaktan yönetimle değiştirilir.
+- **LED ekran (tam renkli):** RGB piksellerden oluşan, video, fotoğraf ve animasyon oynatan modüler ekran. Ölçüsü modüller eklenerek büyütülür; içerik bilgisayar, USB veya uzaktan yönetimle değiştirilir. ARLEDSCREEN bu kategoride iç/dış mekân, GOB, esnek ve kiralık LED ekran satar.
 
 ## 2. Karşılaştırma
 
@@ -55,6 +56,9 @@ last_reviewed: 2026-10-01
 Tam renkli LED ekranlarda ARLEDSCREEN'in 2026 panel fiyatları (320 × 160 mm modül, USD, KDV ve nakliye hariç) dış mekânda P5 için 29,90 USD, P4 için 33,80 USD, iç mekânda P4 için 26,98 USD, P2.5 için 32,18 USD'dir. Ölçünüze göre toplamı [fiyat hesaplayıcı](/tr/hesaplayici/) gösterir. Ayrıntılar için: [LED ekran fiyatları neye göre değişir?](/tr/rehber/led-ekran-fiyatlari/)
 
 ## 6. Sık sorulan sorular
+
+**Dijital ekran ile LED ekran aynı şey midir?**
+Hayır. Dijital ekran üst kümedir; LCD, OLED, LED tabela ve tam renkli LED ekranı kapsar. ARLEDSCREEN'in ürünü tam renkli LED ekrandır.
 
 **LED tabela ile LED ekran arasındaki fark nedir?**
 Kayan yazı tipi LED tabela çoğunlukla tek veya sınırlı renkte metin ve basit animasyon gösterir. Tam renkli LED ekran ise video, fotoğraf ve animasyon oynatır ve ölçüsü modüllerle büyütülebilir.

@@ -70,9 +70,8 @@ export const ORGANIZATION_SAME_AS = [
 
 
 /**
- * Verified NAP (owner-confirmed): İstanbul / Gaziosmanpaşa, phone, e-mail.
- * Street address, postal code, coordinates and opening hours are intentionally
- * omitted until the company confirms them (e.g. via Google Business Profile).
+ * Verified NAP (owner-confirmed 1 Oct 2026): full street, postal code, geo, hours.
+ * Keep identical strings in footer, JSON-LD, llms.txt and Google Business Profile.
  */
 export const BUSINESS_ADDRESS = {
   streetAddress: "Merkez Mah. Tuna Sok. No:15-17 Kat 1",

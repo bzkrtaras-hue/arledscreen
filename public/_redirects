@@ -56,6 +56,21 @@
 /ic-mekan-led-ekranlar /tr/products/ic-mekan-led-ekran/ 301
 /dis-mekan-led-ekranlar /tr/products/dis-mekan-led-ekran/ 301
 /kiralik-led-ekranlar /tr/products/kiralik-led-ekran/ 301
+# Bare legacy paths (no trailing "lar")
+/ic-mekan-led-ekran /tr/products/ic-mekan-led-ekran/ 301
+/ic-mekan-led-ekran/ /tr/products/ic-mekan-led-ekran/ 301
+/dis-mekan-led-ekran /tr/products/dis-mekan-led-ekran/ 301
+/dis-mekan-led-ekran/ /tr/products/dis-mekan-led-ekran/ 301
+/gob-led-ekran /tr/products/gob-led-ekran/ 301
+/gob-led-ekran/ /tr/products/gob-led-ekran/ 301
+/esnek-led-ekran /tr/products/esnek-led-ekran/ 301
+/esnek-led-ekran/ /tr/products/esnek-led-ekran/ 301
+/kiralik-led-ekran /tr/products/kiralik-led-ekran/ 301
+/kiralik-led-ekran/ /tr/products/kiralik-led-ekran/ 301
+/dijital-ekran /tr/rehber/led-tabela-mi-led-ekran-mi/ 301
+/dijital-ekran/ /tr/rehber/led-tabela-mi-led-ekran-mi/ 301
+/led-ekran-fiyatlari /tr/rehber/led-ekran-fiyatlari/ 301
+/led-ekran-fiyatlari/ /tr/rehber/led-ekran-fiyatlari/ 301
 /icmekanled /tr/products/ic-mekan-led-ekran/ 301
 /dismekanled /tr/products/dis-mekan-led-ekran/ 301
 /kiralikled /tr/products/kiralik-led-ekran/ 301

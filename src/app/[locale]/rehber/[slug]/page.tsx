@@ -16,6 +16,8 @@ import {
   isSeoGuideSlug,
   type SeoGuideSlug,
 } from "@/content/seo-guides";
+import { CitationCapsule } from "@/components/seo/CitationCapsule";
+import { HOME_CITATION } from "@/content/citation-capsules";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -72,6 +74,12 @@ export default async function SeoGuidePage({ params }: PageProps) {
         ]}
       />
       <FaqJsonLd faqs={guide.faqs} />
+      {locale === "tr" && slug === "led-ekran" ? (
+        <CitationCapsule
+          {...HOME_CITATION}
+          title="LED ekran nedir? ARLEDSCREEN kimdir?"
+        />
+      ) : null}
 
       <script
         type="application/ld+json"

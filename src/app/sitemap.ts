@@ -1,6 +1,6 @@
 import { BLOG_POSTS } from "@/content/blog";
 import type { MetadataRoute } from "next";
-import { locales } from "@/lib/i18n";
+import { locales, type Locale } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/site";
 import { SEO_GUIDE_SLUGS } from "@/content/seo-guides";
 import { PRODUCT_GROUPS } from "@/content/categories";
@@ -28,9 +28,14 @@ function withTrailingSlash(path: string): string {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Stable lastmod day (UTC) reduces needless crawl churn; force-static export
+  // avoids intermittent edge 500s from runtime generation.
   const now = new Date();
+  now.setUTCHours(0, 0, 0, 0);
   const entries: MetadataRoute.Sitemap = [];
-  for (const locale of locales) {
+  // TR first: primary market and canonical content language for GEO.
+  const orderedLocales: Locale[] = ["tr", ...locales.filter((l) => l !== "tr")];
+  for (const locale of orderedLocales) {
     // ar/ru guides mirror the English text and canonicalise to /en/ (not listed).
     const hasOwnGuides = locale === "tr" || locale === "en";
     for (const route of routes) {
@@ -40,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: absoluteUrl(`/${locale}${path === "/" ? "/" : path}`),
         lastModified: now,
         changeFrequency: route.changeFrequency,
-        priority: route.priority,
+        priority: locale === "tr" ? route.priority : Math.max(0.4, (route.priority ?? 0.5) - 0.1),
       });
     }
     for (const slug of hasOwnGuides ? SEO_GUIDE_SLUGS : []) {
@@ -48,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: absoluteUrl(`/${locale}/rehber/${slug}/`),
         lastModified: now,
         changeFrequency: "weekly",
-        priority: 0.85,
+        priority: locale === "tr" ? 0.85 : 0.7,
       });
     }
   }

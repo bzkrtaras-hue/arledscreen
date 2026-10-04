@@ -25,6 +25,8 @@ import { BrandBand } from "@/components/home/BrandBand";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { CitationCapsule } from "@/components/seo/CitationCapsule";
+import { HOME_CITATION } from "@/content/citation-capsules";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -115,6 +117,7 @@ export default async function HomePage({ params }: PageProps) {
       <Hero locale={locale} />
       <GatewayTiles />
       <ValuesBand />
+      <CitationCapsule {...HOME_CITATION} />
 
       {/* 4. Product groups (category tiles) */}
       <section id="urunler" className="bg-white py-14 md:py-20">

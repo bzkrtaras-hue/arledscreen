@@ -565,9 +565,9 @@ const tr: Dictionary = {
   },
   hero: {
     badge: "NXTIONSTAR, kendi markamız · İstanbul / Gaziosmanpaşa",
-    headline: "LED Ekran Teknoloji Merkezi.",
+    headline: "İstanbul LED Ekran Teknoloji Merkezi.",
     subcopy:
-      "İç ve dış mekân LED ekran sistemlerinde ürün seçimi, keşif, montaj ve teknik servis. Projenizi izleme mesafesi, kullanım ortamı ve bütçeye göre birlikte netleştiriyoruz.",
+      "İç ve dış mekân LED ekran sistemlerinde ürün seçimi, keşif, montaj ve teknik servis. Gaziosmanpaşa merkezliyiz; projenizi izleme mesafesi, kullanım ortamı ve bütçeye göre birlikte netleştiriyoruz.",
     ctaConfigure: "Fiyatı Hesapla",
     ctaQuote: "Teklif İste",
     stats: [

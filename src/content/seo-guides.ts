@@ -60,29 +60,29 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         "ARLEDSCREEN",
         "LED ekran Türkiye",
       ],
-      h1: "LED ekran ve dijital ekran çözüm rehberi",
+      h1: "LED ekran nedir? Dijital ekran üst kümesi içinde tam renkli LED",
       intro:
-        "LED ekran, piksel modüllerinin birleştiği yüksek parlaklıklı bir dijital ekran yüzeyidir. ARLEDSCREEN’de NXTIONSTAR serileri; iç / dış mekân, izleme mesafesi ve içerik hattına göre boyutlandırılır — keşiften teklife tek masada.",
+        "Dijital ekran üst kümedir (LCD, OLED, LED tabela, videowall, tam renkli LED). LED ekran, RGB piksel modüllerinin birleştiği tam renkli görüntü yüzeyidir; video oynatır ve ölçüsü modüllerle büyütülür. ARLEDSCREEN / NXTIONSTAR serileri iç / dış mekân, izleme mesafesi ve içerik hattına göre boyutlandırılır — keşiften teklife tek masada.",
       sections: [
         {
-          h2: "LED ekran ile klasik dijital tabela farkı",
+          h2: "Dijital ekran ile LED ekran farkı",
           body:
-            "LCD / panel bazlı dijital tabela sabit çözünürlük ve sınırlı boyut sunar; LED ekran ise kabinleri yan yana ekleyerek metrelerce geniş yüzey kurmanıza izin verir. Güneş altında okunabilirlik, geniş açı ve kesintisiz video duvar ihtiyacı varsa LED tercih edilir. ARLEDSCREEN projelerinde önce kullanım senaryosu (cephe, lobi, sahne, vitrin) netleşir; ardından pitch ve IP sınıfı seçilir.",
+            "Her dijital ekran LED ekran değildir. LCD / OLED paneller sabit çözünürlük ve sınırlı boyut sunar; kayan yazı LED tabela çoğunlukla metin amaçlıdır. Tam renkli LED ekran ise kabin veya modülleri yan yana ekleyerek geniş yüzey kurmanıza izin verir. Güneş altında okunabilirlik, geniş açı ve kesintisiz video duvar ihtiyacı varsa LED tercih edilir. ARLEDSCREEN projelerinde önce kullanım senaryosu (cephe, lobi, sahne, vitrin) netleşir; ardından piksel aralığı seçilir. Seriye ait parlaklık ve koruma sınıfı değerleri yazılı teklifte paylaşılır.",
         },
         {
-          h2: "Pitch, parlaklık ve kabin — seçim sırası",
+          h2: "Pitch ve montaj — seçim sırası",
           body:
-            "Kritik izleme mesafesi pitch’i belirler: yakın izlemede ince pitch, uzak cephede daha geniş pitch yeterlidir. İç mekânda tipik 600–1.200 nit; dış mekânda güneşe göre 4.000–8.000+ nit aralığı konuşulur. Kabin geometrisi (ör. 500×500 / 500×1000) montaj iskeleti ve servis erişimine göre teklife işlenir. NXTIONSTAR modellerinin kaynakla doğrulanmış teknik değerleri model sayfalarında listelenir; teknik föy teklifle paylaşılır.",
+            "Kritik izleme mesafesi piksel aralığını belirler: pratik kural her 1 mm P değeri ≈ 1 m minimum mesafe (P2.5 ≈ 2,5 m). Yakın izlemede küçük P, uzak cephede daha büyük P tercih edilir. Kabin/modül düzeni ve servis erişimi keşifte netleşir. Model bazında parlaklık, koruma sınıfı ve güç değerleri sitede genel iddia olarak yazılmaz; yazılı teklif ve teknik föyde paylaşılır.",
         },
         {
           h2: "B2B süreç: keşif, teklif, montaj",
           body:
-            "Kurumsal LED ekran projesi fiyat listesinden alınmaz. İstanbul Gaziosmanpaşa merkezli mühendislik masamız saha veya ölçü paylaşımı ister; güç hattı, sinyal topolojisi (HDMI / SDI / network alıcı), montaj tipi ve takvim özetlenir. Yapay zekâ veya medya sunucusu üzerinden içerik yayınlanacaksa entegrasyon kalemi de teklife eklenir.",
+            "Kurumsal LED ekran projesi yalnızca panel listesinden alınmaz. İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN saha veya ölçü paylaşımı ister; elektrik, sinyal, montaj tipi ve takvim özetlenir. Panel fiyatları hesaplayıcıda yayımlıdır; nihai tutar keşif ve yazılı teklifle kesinleşir.",
         },
         {
-          h2: "Hangi projeler için hangi seriler?",
+          h2: "Hangi projeler için hangi gruplar?",
           body:
-            "Kontrol odası ve ince pitch lobi için COB / SMD iç mekân; cephe ve DOOH için IP65 dış mekân; perakende vitrin için şeffaf veya ince panel; mobil etkinlik için kiralık kabin. Poster / totem ve kiosk form faktörleri sabit duvardan ayrı boyutlandırılır. Detaylı ürün karşılaştırması için katalog ve fiyat hesaplayıcıyı birlikte kullanın.",
+            "Yakın izleme ve salon için iç mekân / GOB; cephe ve billboard için dış mekân; vitrin için şeffaf veya ince pitch; etkinlik için kiralık; kavisli yüzey için esnek LED. Poster / totem ayrı form faktörüdür. Detay için ürün grupları ve fiyat hesaplayıcıyı birlikte kullanın.",
         },
       ],
       faqs: [

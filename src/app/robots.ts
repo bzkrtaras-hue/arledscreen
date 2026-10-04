@@ -37,6 +37,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/" as const,
       })),
     ],
+    host: "https://arledscreen.com",
     sitemap: absoluteUrl("/sitemap.xml"),
   };
 }

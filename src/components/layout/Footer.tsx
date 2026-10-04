@@ -202,7 +202,24 @@ export function Footer({ locale }: FooterProps) {
         </div>
       </div>
       <div className="border-t border-white/10 px-4 py-6 text-center text-xs text-white/55">
-        © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}
+        <p>
+          © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}
+        </p>
+        {tr ? (
+          <p className="mt-2">
+            <a href="/llms.txt" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
+              llms.txt
+            </a>
+            {" · "}
+            <a href="/llms-full.txt" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
+              llms-full.txt
+            </a>
+            {" · "}
+            <a href="/sitemap.xml" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
+              sitemap.xml
+            </a>
+          </p>
+        ) : null}
       </div>
     </footer>
   );
