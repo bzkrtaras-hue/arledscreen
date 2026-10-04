@@ -564,12 +564,12 @@ const tr: Dictionary = {
     slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
   },
   hero: {
-    badge: "NXTIONSTAR, kendi markamız · İstanbul / Gaziosmanpaşa",
-    headline: "İstanbul LED Ekran Teknoloji Merkezi.",
+    badge: "NXTIONSTAR · ARLEDSCREEN’in kendi markası",
+    headline: "İç ve dış mekân LED ekran sistemleri.",
     subcopy:
-      "İç ve dış mekân LED ekran sistemlerinde ürün seçimi, keşif, montaj ve teknik servis. Gaziosmanpaşa merkezliyiz; projenizi izleme mesafesi, kullanım ortamı ve bütçeye göre birlikte netleştiriyoruz.",
-    ctaConfigure: "Fiyatı Hesapla",
-    ctaQuote: "Teklif İste",
+      "NXTIONSTAR panellerini Türkiye’de ARLEDSCREEN satar, keşfeder ve monte eder. Cephe, vitrin, totem ve salon ölçüleri sahada netleşir; servis Gaziosmanpaşa ofisinden yürür.",
+    ctaConfigure: "Ürün serilerini inceleyin",
+    ctaQuote: "Yazılı teklif alın",
     stats: [
       { value: "NXTIONSTAR", label: "Kendi markamız" },
       { value: "İstanbul", label: "Gaziosmanpaşa merkez" },
