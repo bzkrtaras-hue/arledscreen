@@ -34,7 +34,7 @@ Kaynak esas: canlı site + `llms.txt` / `llms-full.txt` / hesaplayıcı. Yayıml
 | C kiralık | kiralık led ekran | `/tr/products/kiralik-led-ekran/` | — |
 | C vitrin/totem | vitrin led, totem | `/tr/rehber/vitrin-led-ekran/` / `/tr/products/poster-led-ekran/` | — |
 | D fiyat | led ekran fiyatları, m2 fiyat, hesaplama | `/tr/rehber/led-ekran-fiyatlari/` | `https://fiyat.arledscreen.com/` |
-| E yerel | istanbul / gaziosmanpaşa led ekran | `/tr/` + NAP şema | `/tr/hizmetler/` |
+| E yerel | istanbul / gaziosmanpaşa / antalya / bursa led ekran | `/tr/bolgeler/{il}/` (+ `/tr/` NAP) | `/tr/bolgeler/`, `/tr/hizmetler/` |
 | F marka | nxtionstar, arledscreen, ar-led | `/tr/nxtionstar/` + `/tr/about/` | `/llms.txt` |
 | G iş | montaj, teknik servis, kontrol kartı | `/tr/hizmetler/` | `/tr/products/led-modul-ve-kontrol-sistemleri/`, blog kontrol kartı |
 

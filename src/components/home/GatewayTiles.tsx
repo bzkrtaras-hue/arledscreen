@@ -41,7 +41,7 @@ export function GatewayTiles() {
   ];
 
   return (
-    <section aria-labelledby="hizli-erisim" className="bg-white pb-12 pt-4 md:pb-16">
+    <section aria-labelledby="hizli-erisim" className="bg-white pb-12 pt-10 md:pb-16 md:pt-14">
       <h2 id="hizli-erisim" className="sr-only">
         Ürünler, projeler, servis ve fiyat hesaplama
       </h2>
@@ -57,7 +57,7 @@ export function GatewayTiles() {
                 alt={t.alt}
                 fill
                 sizes="(min-width: 1024px) 300px, (min-width: 640px) 48vw, 92vw"
-                className="object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
+                className="object-cover transition duration-[900ms] ease-out group-hover:scale-[1.04]"
               />
               <span className="absolute inset-0 bg-cyan-700/70 transition duration-500 group-hover:bg-cyan-700/80" aria-hidden />
               <span className="relative rounded-full bg-pill px-7 py-2.5 font-display text-xl font-extrabold tracking-[0.06em] text-ink shadow-pill transition duration-500 group-hover:-translate-y-1 sm:text-[22px]">

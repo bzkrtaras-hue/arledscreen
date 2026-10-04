@@ -5,6 +5,7 @@ import { ClipboardCheck, Hammer, LifeBuoy, Ruler, Settings2, Truck } from "lucid
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { HowToJsonLd } from "@/components/seo/HowToJsonLd";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { HomeFaq } from "@/components/home/HomeFaq";
@@ -65,6 +66,32 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
         ]}
       />
       <ServiceJsonLd locale="tr" />
+      <HowToJsonLd
+        name="LED ekran projesi nasıl ilerler?"
+        description="ARLEDSCREEN LED ekran projelerinde ihtiyaçtan teknik servise kadar beş adımlı süreç."
+        steps={[
+          {
+            name: "İhtiyaç ve ölçü",
+            text: "Kullanım amacı, ortam (iç/dış), yaklaşık ölçü, konum ve zaman planını alıyoruz.",
+          },
+          {
+            name: "Keşif ve ön proje",
+            text: "İzleme mesafesi, montaj yüzeyi, elektrik ve sinyal altyapısını inceleyip piksel aralığını öneriyoruz.",
+          },
+          {
+            name: "Teklif ve teknik föy",
+            text: "Ekran ölçüsü, kabin adedi, malzeme listesi ve iş planını yazılı teklifte paylaşıyoruz.",
+          },
+          {
+            name: "Montaj ve devreye alma",
+            text: "Taşıyıcı sistem, kabin montajı, kablolama, kalibrasyon ve içerik testini tamamlıyoruz.",
+          },
+          {
+            name: "Teknik servis",
+            text: "Kullanım eğitimi sonrası bakım, arıza ve yedek parça taleplerinizde yanınızdayız.",
+          },
+        ]}
+      />
       <FaqJsonLd faqs={FAQS} />
 
       <section className="border-b border-border bg-surface/60">
@@ -75,7 +102,11 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
               LED ekran montaj ve teknik servis hizmetleri
             </h1>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-soft">
-              Keşiften devreye almaya ve kurulum sonrası servise kadar LED ekran projenizin tüm adımlarını planlıyoruz. Merkezimiz İstanbul Gaziosmanpaşa&apos;dadır; Türkiye genelinde proje yürütüyoruz.
+              Keşiften devreye almaya ve kurulum sonrası servise kadar LED ekran projenizin tüm adımlarını planlıyoruz. Merkezimiz İstanbul Gaziosmanpaşa&apos;dadır; Türkiye genelinde proje yürütüyoruz. Kayıtlı iller için{" "}
+              <Link href="/tr/bolgeler/" className="font-semibold text-cyan hover:underline">
+                hizmet bölgesi
+              </Link>{" "}
+              sayfasına bakın.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link href="/tr/quote/" className="btn-soft inline-flex min-h-12 items-center justify-center bg-cyan px-6 text-white hover:bg-cyan-600">

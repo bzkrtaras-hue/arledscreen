@@ -45,9 +45,17 @@ export function SiteShell({ locale, children }: SiteShellProps) {
         <a href="#main-content" className="skip-link">
           {tr ? "İçeriğe geç" : "Skip to main content"}
         </a>
-        <TopBar locale={locale} />
-        <Header locale={locale} groups={groups} guides={guides} />
-        <main id="main-content" className="flex-1">
+        {/* Fixed liquid-glass chrome floats over page content so blur reads clearly. */}
+        <div className="pointer-events-none fixed inset-x-0 top-0 z-50">
+          <div className="pointer-events-auto relative z-50">
+            <TopBar locale={locale} />
+            <Header locale={locale} groups={groups} guides={guides} />
+          </div>
+        </div>
+        <main
+          id="main-content"
+          className="flex-1 pt-[7.25rem] md:pt-[8rem]"
+        >
           {children}
         </main>
         <Footer locale={locale} />

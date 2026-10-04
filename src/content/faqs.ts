@@ -57,7 +57,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Hangi şehirlerde kurulum yapıyorsunuz?",
       answer:
-        "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Türkiye geneli proje yürütürüz. Tem 2025 – Tem 2026 proje kayıtlarında 13 il ile Almanya ve Azerbaycan yer alır (81 il iddiası yoktur). Projenizin konumunu teklif formunda belirtmeniz yeterlidir.",
+        "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Türkiye geneli proje yürütürüz. Tem 2025 – Tem 2026 proje kayıtlarında 13 il ile Almanya ve Azerbaycan yer alır (81 il iddiası yoktur). Kayıtlı iller için /tr/bolgeler/ sayfasına bakın; projenizin konumunu teklif formunda belirtmeniz yeterlidir.",
     },
     {
       question: "İade veya garanti süresi nedir?",

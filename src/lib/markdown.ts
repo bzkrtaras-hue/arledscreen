@@ -92,7 +92,12 @@ function faqsFrom(md: string): ArticleFaq[] {
 }
 
 const DIR = path.join(process.cwd(), "src/content/articles");
-export const ARTICLE_SLUGS = ["led-ekran-fiyatlari", "piksel-araligi-secimi", "led-tabela-mi-led-ekran-mi"] as const;
+export const ARTICLE_SLUGS = [
+  "led-ekran-fiyatlari",
+  "piksel-araligi-secimi",
+  "led-tabela-mi-led-ekran-mi",
+  "kiralik-mi-satin-alma",
+] as const;
 
 export function getArticle(slug: string): Article {
   const raw = fs.readFileSync(path.join(DIR, `${slug}.md`), "utf8");

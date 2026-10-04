@@ -22,13 +22,14 @@ export function LocaleSelect({
   // Turkish-only routes (generateStaticParams returns only { locale: "tr" }).
   const TR_ONLY = [
     /^\/tr\/hizmetler\//,
+    /^\/tr\/bolgeler\//,
     /^\/tr\/projelerimiz\//,
     /^\/tr\/products\/[^/]+\//,
     /^\/tr\/sss\//,
     /^\/tr\/nxtionstar\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,
-    /^\/tr\/rehber\/(led-ekran-fiyatlari|piksel-araligi-secimi|led-tabela-mi-led-ekran-mi)\//,
+    /^\/tr\/rehber\/(led-ekran-fiyatlari|piksel-araligi-secimi|led-tabela-mi-led-ekran-mi|kiralik-mi-satin-alma)\//,
   ];
   const switchLocaleHref = (next: Locale) => {
     const p = pathname.endsWith("/") ? pathname : `${pathname}/`;
@@ -54,8 +55,8 @@ export function LocaleSelect({
       <select
         id={id}
         className={cn(
-          "rounded-md border border-border bg-white text-ink-soft",
-          size === "sm" ? "min-h-10 px-2 text-base md:text-sm" : "min-h-11 w-full px-3 text-base",
+          "glass-select rounded-full text-ink-soft",
+          size === "sm" ? "min-h-7 px-2.5 text-[11px]" : "min-h-11 w-full px-3 text-base",
         )}
         value={locale}
         onChange={(e) => {

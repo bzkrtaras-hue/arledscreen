@@ -85,23 +85,31 @@ export function Header({ locale, groups, guides }: HeaderProps) {
   useEffect(() => {
     setOpen(false);
     setDrop(null);
+    setMobileSection(null);
   }, [pathname]);
   useEffect(() => {
-    document.documentElement.style.overflow = open ? "hidden" : "";
+    const lock = open || Boolean(drop);
+    document.documentElement.style.overflow = lock ? "hidden" : "";
+    document.documentElement.classList.toggle("chrome-overlay-open", lock);
     return () => {
       document.documentElement.style.overflow = "";
+      document.documentElement.classList.remove("chrome-overlay-open");
     };
+  }, [open, drop]);
+  useEffect(() => {
+    if (!open) setMobileSection(null);
   }, [open]);
 
   const links: (MenuLink & { dropdown?: Exclude<Dropdown, null> })[] = tr
     ? [
         { href: "/tr/products/", label: "Ürünler", dropdown: "products" },
         { href: "/tr/hizmetler/", label: "Hizmetler" },
+        { href: "/tr/bolgeler/", label: "Bölgeler" },
         { href: "/tr/projelerimiz/", label: "Projeler" },
         { href: "/tr/rehber/", label: "Rehber", dropdown: "guides" },
         { href: "/tr/blog/", label: "Blog" },
         { href: "/tr/about/", label: "Hakkımızda" },
-        { href: "/tr/hesaplayici/", label: "Fiyat Hesapla" },
+        { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
       ]
     : [
         { href: `/${locale}/products/`, label: dict.nav.products },
@@ -123,11 +131,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
   const group = groups[active] ?? groups[0];
 
   return (
-    <header className="glass-bar sticky top-0 z-50 border-b border-border/80">
-      <div className="mx-auto flex h-[68px] max-w-7xl min-w-0 items-center gap-3 px-4 sm:px-6 md:h-[76px] lg:px-8">
+    <header className="px-3 pb-2.5 pt-1.5 sm:px-4 md:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl min-w-0 items-center gap-2.5 md:gap-3">
         <Link
           href={`/${locale}/`}
-          className="flex min-h-11 min-w-0 shrink-0 items-center gap-2.5"
+          className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] min-h-14 min-w-0 shrink-0 gap-2.5 px-3.5 py-2 sm:min-h-[3.75rem] sm:gap-3 sm:px-4"
           aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
         >
           <Image
@@ -135,23 +143,26 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             alt="ARLEDSCREEN"
             width={514}
             height={160}
-            className="h-10 w-auto max-w-[150px] object-contain sm:h-11 sm:max-w-[180px]"
+            className="h-11 w-auto max-w-[168px] object-contain sm:h-12 sm:max-w-[200px]"
             priority
             unoptimized
           />
-          <span className="h-8 w-px bg-ink/15" aria-hidden />
+          <span className="h-8 w-px shrink-0 bg-ink/20 sm:h-9" aria-hidden />
           <Image
             src="/brand/nxtionstar-wordmark-header-478.webp"
             alt="NXTIONSTAR"
             width={478}
             height={137}
-            className="h-6 w-auto object-contain sm:h-7"
+            className="h-7 w-auto object-contain sm:h-8"
             unoptimized
           />
         </Link>
 
-        <nav className="ml-auto hidden min-w-0 xl:block" aria-label={tr ? "Ana menü" : "Primary"}>
-          <ul className="flex items-center gap-0.5 xl:gap-1">
+        <nav
+          className="liquid-glass-shell liquid-glass-shell--nav ml-auto hidden min-w-0 flex-1 justify-center px-2 py-1.5 xl:flex"
+          aria-label={tr ? "Ana menü" : "Primary"}
+        >
+          <ul className="flex w-full items-center justify-center gap-0.5">
             {links.map((link) =>
               link.dropdown && (link.dropdown === "products" ? groups.length : guides.length) ? (
                 <li
@@ -167,13 +178,13 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     aria-current={isActive(link.href) ? "page" : undefined}
                     onFocus={() => openDrop(link.dropdown!)}
                     className={cn(
-                      "flex min-h-11 items-center gap-1 rounded-full px-3 text-[14px] font-semibold text-ink-soft transition-colors hover:text-cyan",
+                      "nav-glass-link flex min-h-12 items-center gap-1 whitespace-nowrap rounded-full px-3 text-[15px] font-bold text-[#2a3340] hover:text-cyan xl:px-3.5",
                       (drop === link.dropdown || isActive(link.href)) && "text-cyan",
                     )}
                   >
                     {link.label}
                     <ChevronDown
-                      className={cn("h-3.5 w-3.5 transition-transform", drop === link.dropdown && "rotate-180")}
+                      className={cn("h-4 w-4 shrink-0 transition-transform duration-300", drop === link.dropdown && "rotate-180")}
                       aria-hidden
                     />
                   </Link>
@@ -181,26 +192,26 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     {drop === link.dropdown ? (
                       <m.div
                         key={link.dropdown}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 6 }}
-                        transition={{ duration: 0.2, ease }}
+                        initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.985 }}
+                        transition={{ duration: 0.3, ease }}
                         className={cn(
-                          "absolute top-full z-50 pt-2",
-                          link.dropdown === "products" ? "-left-40 w-[780px]" : "-left-6 w-[320px]",
+                          "absolute top-full z-[60] pt-3",
+                          link.dropdown === "products" ? "-left-40 w-[780px]" : "-left-6 w-[340px]",
                         )}
                         onMouseEnter={() => openDrop(link.dropdown!)}
                         onMouseLeave={closeDrop}
                       >
                         {link.dropdown === "products" ? (
-                          <div className="glass-panel grid grid-cols-[250px_1fr] overflow-hidden rounded-[20px]">
-                            <ul className="border-r border-border p-3">
+                          <div className="menu-glass-panel grid grid-cols-[250px_1fr] rounded-[24px]">
+                            <ul className="border-r border-[#d8e2ee] p-3">
                               {groups.map((g, i) => (
                                 <li key={g.href}>
                                   {i === 0 || groups[i - 1].family !== g.family ? (
                                     <p
                                       className={cn(
-                                        "px-3 pb-1 text-xs font-bold uppercase tracking-[0.14em] text-ink-muted",
+                                        "px-3 pb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#6b7785]",
                                         i === 0 ? "pt-1" : "pt-3",
                                       )}
                                     >
@@ -216,20 +227,20 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                     }}
                                     onBlur={closeDrop}
                                     className={cn(
-                                      "flex min-h-9 items-center justify-between rounded-xl px-3 text-[13.5px] font-semibold transition-colors",
-                                      i === active ? "bg-cyan-50 text-cyan-700" : "text-ink-soft hover:bg-band",
+                                      "menu-glass-item flex min-h-9 items-center justify-between rounded-xl px-3 text-[13.5px] font-semibold",
+                                      i === active && "is-active",
                                     )}
                                   >
                                     {g.name}
-                                    <ChevronRight className="h-3.5 w-3.5 opacity-60" aria-hidden />
+                                    <ChevronRight className="h-3.5 w-3.5 opacity-55" aria-hidden />
                                   </Link>
                                 </li>
                               ))}
-                              <li className="mt-2 border-t border-border pt-2">
+                              <li className="mt-2 border-t border-[#d8e2ee] pt-2">
                                 <Link
                                   href="/tr/hizmetler/"
                                   onBlur={closeDrop}
-                                  className="flex min-h-10 items-center rounded-xl px-3 text-[13.5px] font-semibold text-ink-soft hover:bg-band"
+                                  className="menu-glass-item flex min-h-10 items-center rounded-xl px-3 text-[13.5px] font-semibold"
                                 >
                                   Montaj ve teknik servis
                                 </Link>
@@ -238,7 +249,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                 <Link
                                   href="/tr/products/"
                                   onBlur={closeDrop}
-                                  className="flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-[13.5px] font-bold text-cyan hover:bg-band"
+                                  className="menu-glass-item flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-[13.5px] font-bold text-cyan"
                                 >
                                   Tüm ürünler <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                                 </Link>
@@ -247,11 +258,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                             {group ? (
                               <div className="grid grid-cols-[1fr_200px] gap-5 p-5">
                                 <div className="min-w-0">
-                                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
+                                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#6b7785]">
                                     {group.tag}
                                   </p>
-                                  <p className="mt-1 font-display text-lg font-bold text-ink">{group.name}</p>
-                                  <p className="mt-1.5 text-[13.5px] leading-6 text-ink-muted">{group.short}</p>
+                                  <p className="mt-1 font-display text-lg font-bold text-[#24303c]">{group.name}</p>
+                                  <p className="mt-1.5 text-[13.5px] leading-6 text-[#4b5563]">{group.short}</p>
                                   {group.pitches.length ? (
                                     <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Modeller">
                                       {group.pitches.map((p) => (
@@ -260,7 +271,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                             href={p.href}
                                             onFocus={() => openDrop("products")}
                                             onBlur={closeDrop}
-                                            className="inline-flex min-h-8 items-center rounded-lg bg-band px-2.5 text-[12px] font-semibold text-ink-soft transition hover:bg-cyan hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan"
+                                            className="inline-flex min-h-8 items-center rounded-lg border border-[#d8e2ee] bg-white/70 px-2.5 text-[12px] font-semibold text-[#3d4650] transition hover:border-cyan/40 hover:bg-cyan hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan"
                                           >
                                             {p.label}
                                           </Link>
@@ -283,31 +294,31 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                                   width={200}
                                   height={240}
                                   loading="lazy"
-                                  className="h-full max-h-[240px] w-full rounded-2xl object-cover"
+                                  className="h-full max-h-[240px] w-full rounded-2xl object-cover shadow-[0_10px_28px_-14px_rgba(15,42,79,0.45)] ring-1 ring-black/5"
                                 />
                               </div>
                             ) : null}
                           </div>
                         ) : (
-                          <ul className="glass-panel overflow-hidden rounded-[20px] p-3">
+                          <ul className="menu-glass-panel rounded-[24px] p-3">
                             {guides.map((g) => (
                               <li key={g.href}>
                                 <Link
                                   href={g.href}
                                   onFocus={() => openDrop("guides")}
                                   onBlur={closeDrop}
-                                  className="flex min-h-10 items-center gap-2 rounded-xl px-3 text-[13.5px] font-semibold text-ink-soft hover:bg-band hover:text-cyan"
+                                  className="menu-glass-item flex min-h-10 items-center gap-2 rounded-xl px-3 text-[13.5px] font-semibold"
                                 >
                                   <BookOpen className="h-4 w-4 text-cyan" aria-hidden />
                                   {g.label}
                                 </Link>
                               </li>
                             ))}
-                            <li className="mt-2 border-t border-border pt-2">
+                            <li className="mt-2 border-t border-[#d8e2ee] pt-2">
                               <Link
                                 href="/tr/rehber/"
                                 onBlur={closeDrop}
-                                className="flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-[13.5px] font-bold text-cyan hover:bg-band"
+                                className="menu-glass-item flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-[13.5px] font-bold text-cyan"
                               >
                                 Tüm rehberler <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                               </Link>
@@ -324,7 +335,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={cn(
-                      "flex min-h-11 items-center rounded-full px-3 text-[14px] font-semibold text-ink-soft transition-colors hover:text-cyan",
+                      "nav-glass-link flex min-h-12 items-center whitespace-nowrap rounded-full px-3 text-[15px] font-bold text-[#2a3340] hover:text-cyan xl:px-3.5",
                       isActive(link.href) && "text-cyan",
                     )}
                   >
@@ -338,7 +349,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
         <Link
           href={`/${locale}/quote/`}
-          className="btn-soft ml-auto hidden min-h-11 shrink-0 items-center gap-2 rounded-full bg-cyan px-5 text-[14px] text-white shadow-pill hover:bg-cyan-600 sm:inline-flex xl:ml-3"
+          className="liquid-glass-btn liquid-glass-btn--primary relative z-[2] ml-auto hidden min-h-[3.35rem] shrink-0 gap-2 px-6 text-[15px] font-bold sm:inline-flex sm:min-h-14 xl:ml-0"
         >
           <FileText className="h-4 w-4" aria-hidden />
           {dict.nav.quote}
@@ -346,18 +357,45 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
         <button
           type="button"
-          className="ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cyan text-white shadow-pill transition hover:bg-cyan-600 sm:ml-0 xl:hidden"
+          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] ml-auto h-12 w-12 shrink-0 xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="sr-only">{tr ? "Menüyü aç" : "Open menu"}</span>
-          <Menu className="h-5 w-5" aria-hidden />
+          <span className="sr-only">
+            {open
+              ? tr
+                ? "Menüyü kapat"
+                : "Close menu"
+              : tr
+                ? "Menüyü aç"
+                : "Open menu"}
+          </span>
+          {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
         </button>
       </div>
 
       {mounted
         ? createPortal(
+            <>
+      <AnimatePresence>
+        {drop ? (
+          <m.button
+            key="menu-scrim"
+            type="button"
+            aria-label={tr ? "Menüyü kapat" : "Close menu"}
+            className="menu-scrim fixed inset-0 z-[45] hidden xl:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28, ease }}
+            onClick={() => {
+              clearTimeout(closeTimer.current);
+              setDrop(null);
+            }}
+          />
+        ) : null}
+      </AnimatePresence>
       <AnimatePresence>
         {open ? (
           <m.div
@@ -366,38 +404,59 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.22 }}
           >
             <button
               type="button"
-              className="absolute inset-0 h-full w-full bg-navy/50"
+              className="menu-scrim absolute inset-0 h-full w-full"
               aria-label={tr ? "Menüyü kapat" : "Close menu"}
               onClick={() => setOpen(false)}
             />
             <m.nav
               id="mobile-nav"
               aria-label={tr ? "Mobil menü" : "Mobile"}
-              className="glass-panel glass-strong absolute inset-y-0 right-0 flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-[20px]"
+              className="menu-glass-panel absolute inset-y-0 right-0 flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-[26px] border-l border-white/70"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.28, ease }}
+              transition={{ duration: 0.32, ease }}
             >
-              <div className="flex h-[68px] items-center justify-between border-b border-border px-4">
-                <span className="font-display text-sm font-bold uppercase tracking-[0.14em] text-ink-muted">
-                  {tr ? "Menü" : "Menu"}
-                </span>
+              <div className="flex min-h-[68px] items-center justify-between gap-3 border-b border-[#d8e2ee]/80 px-3 py-2.5">
+                <Link
+                  href={`/${locale}/`}
+                  onClick={() => setOpen(false)}
+                  className="liquid-glass-btn liquid-glass-btn--brand min-h-12 min-w-0 flex-1 justify-start gap-2 px-3 py-1.5"
+                  aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
+                >
+                  <Image
+                    src="/brand/arledscreen-logo-header-514.webp"
+                    alt="ARLEDSCREEN"
+                    width={514}
+                    height={160}
+                    className="h-8 w-auto max-w-[132px] object-contain"
+                    unoptimized
+                  />
+                  <span className="h-6 w-px shrink-0 bg-ink/20" aria-hidden />
+                  <Image
+                    src="/brand/nxtionstar-wordmark-header-478.webp"
+                    alt="NXTIONSTAR"
+                    width={478}
+                    height={137}
+                    className="h-5 w-auto object-contain"
+                    unoptimized
+                  />
+                </Link>
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-soft hover:bg-band"
+                  className="liquid-glass-btn liquid-glass-btn--icon shrink-0 text-ink-soft"
                 >
                   <span className="sr-only">{tr ? "Menüyü kapat" : "Close menu"}</span>
                   <X className="h-5 w-5" aria-hidden />
                 </button>
               </div>
-              <ul className="flex flex-col gap-1 px-3 py-3">
-                {links.map((link) => {
+              <ul className="flex flex-col gap-2 px-3 py-3">
+                {links.map((link, index) => {
                   const sub =
                     link.dropdown === "products"
                       ? groups.map((g) => ({ href: g.href, label: g.name }))
@@ -407,11 +466,19 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   if (sub.length) {
                     const expanded = mobileSection === link.dropdown;
                     return (
-                      <li key={link.href}>
-                        <div className="flex items-center">
+                      <m.li
+                        key={link.href}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.28, delay: 0.04 + index * 0.035, ease }}
+                      >
+                        <div className="flex items-center gap-1.5">
                           <Link
                             href={link.href}
-                            className="flex min-h-12 flex-1 items-center rounded-xl px-3 text-base font-semibold text-ink hover:bg-band"
+                            className={cn(
+                              "liquid-glass-btn liquid-glass-btn--menu flex-1",
+                              isActive(link.href) && "is-active",
+                            )}
                           >
                             {link.label}
                           </Link>
@@ -419,51 +486,74 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                             type="button"
                             aria-expanded={expanded}
                             onClick={() => setMobileSection(expanded ? null : link.dropdown!)}
-                            className="inline-flex h-12 w-12 items-center justify-center rounded-xl text-ink-soft hover:bg-band"
+                            className={cn(
+                              "liquid-glass-btn liquid-glass-btn--menu-icon",
+                              expanded && "is-active",
+                            )}
                           >
                             <span className="sr-only">
                               {link.label} {tr ? "alt menüsü" : "submenu"}
                             </span>
-                            <ChevronDown className={cn("h-5 w-5 transition-transform", expanded && "rotate-180")} aria-hidden />
+                            <ChevronDown
+                              className={cn(
+                                "h-5 w-5 transition-transform duration-300 ease-out",
+                                expanded && "rotate-180",
+                              )}
+                              aria-hidden
+                            />
                           </button>
                         </div>
-                        {expanded ? (
-                          <ul className="mb-2 ml-3 border-l-2 border-cyan-100 pl-2">
-                            {sub.map((s) => (
-                              <li key={s.href}>
-                                <Link
-                                  href={s.href}
-                                  className="flex min-h-11 items-center rounded-lg px-3 text-[15px] text-ink-soft hover:bg-band hover:text-cyan"
-                                >
-                                  {s.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
-                      </li>
+                        <AnimatePresence initial={false}>
+                          {expanded ? (
+                            <m.ul
+                              key={`${link.dropdown}-sub`}
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.28, ease }}
+                              className="mt-1.5 space-y-1.5 overflow-hidden pl-1"
+                            >
+                              {sub.map((s) => (
+                                <li key={s.href}>
+                                  <Link
+                                    href={s.href}
+                                    className="liquid-glass-btn liquid-glass-btn--submenu"
+                                  >
+                                    {s.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </m.ul>
+                          ) : null}
+                        </AnimatePresence>
+                      </m.li>
                     );
                   }
                   return (
-                    <li key={link.href}>
+                    <m.li
+                      key={link.href}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.28, delay: 0.04 + index * 0.035, ease }}
+                    >
                       <Link
                         href={link.href}
                         aria-current={isActive(link.href) ? "page" : undefined}
                         className={cn(
-                          "flex min-h-12 items-center rounded-xl px-3 text-base font-semibold text-ink hover:bg-band",
-                          isActive(link.href) && "text-cyan",
+                          "liquid-glass-btn liquid-glass-btn--menu",
+                          isActive(link.href) && "is-active",
                         )}
                       >
                         {link.label}
                       </Link>
-                    </li>
+                    </m.li>
                   );
                 })}
               </ul>
-              <div className="mt-auto space-y-3 border-t border-border px-4 py-5">
+              <div className="mt-auto space-y-3 border-t border-[#d8e2ee] px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] pt-5">
                 <Link
                   href={`/${locale}/quote/`}
-                  className="btn-soft flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-cyan text-white hover:bg-cyan-600"
+                  className="liquid-glass-btn liquid-glass-btn--primary min-h-12 w-full gap-2 text-[15px] font-semibold"
                 >
                   <FileText className="h-4 w-4" aria-hidden />
                   {dict.nav.quote}
@@ -472,10 +562,10 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   href={GENERIC_WHATSAPP_HREF}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-soft flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[#0F7A41]/40 bg-white text-[#0F7A41] hover:bg-[#0F7A41]/10"
+                  className="liquid-glass-btn min-h-12 w-full gap-2 text-[15px] font-semibold text-[#0F7A41]"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
-                  {tr ? "WhatsApp'tan yazın" : "Message on WhatsApp"}
+                  {tr ? "WhatsApp’tan yazın" : "Message on WhatsApp"}
                 </a>
                 <div className="flex items-center justify-between gap-3 pt-1">
                   <a href={CONTACT_PHONE_HREF} className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ink">
@@ -495,7 +585,8 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             </m.nav>
           </m.div>
         ) : null}
-      </AnimatePresence>,
+      </AnimatePresence>
+            </>,
             document.body,
           )
         : null}

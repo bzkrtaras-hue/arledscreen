@@ -39,6 +39,7 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 - [Fiyat hesaplayıcı](https://arledscreen.com/tr/hesaplayici/)
 - [Projeler](https://arledscreen.com/tr/projelerimiz/): Tem 2025 – Tem 2026 arası 45 proje kaydı
 - [Hizmetler](https://arledscreen.com/tr/hizmetler/)
+- [Hizmet bölgesi (iller)](https://arledscreen.com/tr/bolgeler/): Kayıtlı proje illeri; merkez İstanbul Gaziosmanpaşa. Örnek: [İstanbul](https://arledscreen.com/tr/bolgeler/istanbul/), [Antalya](https://arledscreen.com/tr/bolgeler/antalya/), [Bursa](https://arledscreen.com/tr/bolgeler/bursa/), [İzmir](https://arledscreen.com/tr/bolgeler/izmir/), [Eskişehir](https://arledscreen.com/tr/bolgeler/eskisehir/)
 
 ### Ürünler (kanonik lineup — tek liste)
 
@@ -61,6 +62,7 @@ Hizmet bölgesi: Türkiye geneli; Tem 2025 – Tem 2026 kayıtlarında **13 il**
 - [Piksel aralığı](https://arledscreen.com/tr/rehber/piksel-araligi-secimi/)
 - [İç mekân rehberi](https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/)
 - [Dış mekân rehberi](https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/)
+- [Kiralık mı satın alma mı](https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/)
 
 ## 4. GEO kapsülü
 

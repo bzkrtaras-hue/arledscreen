@@ -5,6 +5,7 @@ import { absoluteUrl } from "@/lib/site";
 import { SEO_GUIDE_SLUGS } from "@/content/seo-guides";
 import { PRODUCT_GROUPS } from "@/content/categories";
 import { LED_MODELS, modelPath } from "@/content/models";
+import { SERVICE_REGIONS } from "@/content/service-regions";
 
 export const dynamic = "force-static";
 
@@ -71,12 +72,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
   for (const path of [
     "/hizmetler/",
+    "/bolgeler/",
     "/projelerimiz/",
     "/sss/",
     "/nxtionstar/",
     "/rehber/led-ekran-fiyatlari/",
     "/rehber/piksel-araligi-secimi/",
     "/rehber/led-tabela-mi-led-ekran-mi/",
+    "/rehber/kiralik-mi-satin-alma/",
     "/blog/",
     ...BLOG_POSTS.map((p) => `/blog/${p.slug}/`),
   ]) {
@@ -85,6 +88,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
+    });
+  }
+  for (const region of SERVICE_REGIONS) {
+    entries.push({
+      url: absoluteUrl(`/tr/bolgeler/${region.slug}/`),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: region.isHq ? 0.9 : 0.75,
     });
   }
   return entries;

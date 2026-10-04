@@ -62,7 +62,8 @@
   }[LANG];
 
   var mqReduce = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
-  var mqMobile = window.matchMedia ? window.matchMedia("(max-width: 639px)") : null;
+  /* Match MobileCtaBar (md:hidden = <768px) so launcher clears Ara / WhatsApp / Teklif. */
+  var mqMobile = window.matchMedia ? window.matchMedia("(max-width: 767px)") : null;
   function reduced() { return !!(mqReduce && mqReduce.matches); }
   function mobile() { return !!(mqMobile && mqMobile.matches); }
   function dismissed() { try { return window.sessionStorage.getItem(KEY) === "1"; } catch (e) { return false; } }
@@ -113,7 +114,7 @@
     ".acd-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(160deg,#0f2440,#1b3754);color:#d6e4f5;font-size:14px;font-weight:500;transition:opacity .3s}",
     ".acd-loading img{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px rgba(255,255,255,.9);animation:acd-breathe 1.6s ease-in-out infinite}",
     ".acd-loading.acd-done{opacity:0;pointer-events:none}",
-    "@media (max-width:639px){",
+    "@media (max-width:767px){",
     "  .acd-launcher{width:58px;height:58px}",
     /* Mobil karşılama: başlatıcının yanında küçük balon; hero düğmelerini ve alt çubuğu örtmez. */
     "  .acd-teaser{right:calc(var(--acd-r) + 68px);bottom:var(--acd-b);width:auto;max-width:min(260px,calc(100vw - 100px));min-height:58px;align-items:center;border-radius:20px 20px 6px 20px;transform-origin:100% 80%;animation-name:acd-teaser-m}",
@@ -263,6 +264,13 @@
     /* Mobil hızlı iletişim çubuğu sonradan gelebilir: boyutunu izle. */
     var bar = document.querySelector(".mobile-cta-bar");
     if (bar && "ResizeObserver" in window) new ResizeObserver(place).observe(bar);
+    /* Menü/drawer kapanınca CTA tekrar görünür — --acd-b'yi yeniden ölç. */
+    if ("MutationObserver" in window) {
+      new MutationObserver(function () { place(); }).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
   }
 
   /* Alt hızlı iletişim çubuğu görünürse balonu onun üstüne taşı. */
