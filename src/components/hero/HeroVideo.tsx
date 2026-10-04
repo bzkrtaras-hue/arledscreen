@@ -26,8 +26,8 @@ const ease = [0.2, 0.7, 0.2, 1] as const;
 
 /**
  * Full-bleed product-video hero. Copy sits in a bottom-left navy safe zone
- * and paints at full opacity on first frame (H1 is LCP). Three motions:
- * video fade onto poster, accent rule, pause control fade-in.
+ * and paints at full opacity on first frame (H1 is LCP). Two motions:
+ * video fade onto poster, accent rule. Pause is a control, not a motion.
  * No glass pills, no carousel, no rounded-full CTAs.
  */
 export function HeroVideo({
@@ -139,14 +139,11 @@ export function HeroVideo({
           aria-hidden
         />
 
-        <m.button
+        <button
           type="button"
           onClick={toggle}
           aria-label={playing ? labels.pause : labels.play}
           aria-pressed={playing}
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.45, ease, delay: 0.4 }}
           className="absolute end-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-navy/80 text-white transition hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:end-8 md:top-8"
         >
           {playing ? (
@@ -154,7 +151,7 @@ export function HeroVideo({
           ) : (
             <Play className="ml-0.5 h-[18px] w-[18px]" aria-hidden />
           )}
-        </m.button>
+        </button>
 
         <div className="relative z-[1] mx-auto flex h-full max-w-7xl items-end px-5 pb-[calc(4.5rem+1.5rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
           <div className="w-full max-w-[560px]">
