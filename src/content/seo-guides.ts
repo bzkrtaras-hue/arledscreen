@@ -141,7 +141,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Parlaklık, pitch ve izleme mesafesi",
           body:
-            "Güneşli cephede 5.000 nit altı çoğu zaman yetersiz kalır; gece için otomatik dimming planlanır. Uzak izleyicili billboard’da P3.9–P10 bandı yaygınken, yakın yaya trafiğinde daha ince pitch gerekebilir. ARLEDSCREEN keşfinde ortalama izleme mesafesi, güneş yönü ve gece/gündüz içerik profili not edilir.",
+            "Dış mekân NXTIONSTAR aralıkları: P2.5, P2.9, P3.07, P4, P4 önden servis, P5 ve P8. Uzak billboard’da daha büyük P, yakın yaya trafiğinde daha ince P tercih edilir. Parlaklık ve koruma sınıfı modele göre yazılı teklifte paylaşılır; sitede genel nit/IP iddiası yoktur. ARLEDSCREEN keşfinde ortalama izleme mesafesi, güneş yönü ve gece/gündüz içerik profili not edilir.",
         },
         {
           h2: "Cephe, stadyum koridoru ve belediye DOOH",
@@ -201,7 +201,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İç mekân ekranda pitch ve izleme mesafesi",
           body:
-            "Lobi ve showroom’da P1.2–P2.5 bandı sık tercih edilir; kontrol odası ve yayın stüdyosunda daha ince pitch gerekebilir. Kabaca her 1 mm pitch için ~1 m kritik mesafe kuralı başlangıç noktasıdır — ARLEDSCREEN keşfinde gerçek oturma / ayakta izleme mesafesi ölçülür.",
+            "İç mekân NXTIONSTAR aralıkları: P1.25, P2.5, P3.07 ve P4 (P1.25 GOB seçenekli). Lobi ve showroom’da daha ince P; uzak koridorlarda P3.07–P4 tercih edilebilir. İnce pitch grubunda ayrıca P0.9 / P1.25 yayımlanır. Kabaca her 1 mm pitch için ~1 m kritik mesafe kuralı başlangıç noktasıdır — ARLEDSCREEN keşfinde gerçek oturma / ayakta izleme mesafesi ölçülür.",
         },
         {
           h2: "Kamera dostu yenileme ve renk",
@@ -683,7 +683,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Brightness, pitch and viewing distance",
           body:
-            "Sunny façades often need 5,000+ nits with night dimming. Distant billboards may use coarser pitch; pedestrian-close walls need finer pitch. Survey notes sun path and day/night content.",
+            "Outdoor NXTIONSTAR pitches: P2.5, P2.9, P3.07, P4, P4 front-service, P5 and P8. Distant billboards use coarser P; pedestrian-close walls use finer P. Brightness and IP class are stated in the written quote — the site does not publish blanket nit/IP claims. Survey notes sun path and day/night content.",
         },
         {
           h2: "Façade, stadium and municipal DOOH",
@@ -742,7 +742,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Pitch and viewing distance indoors",
           body:
-            "Lobbies often land in P1.2–P2.5; control rooms and broadcast studios may need finer pitch. We measure real standing/seated distance rather than rules of thumb alone.",
+            "Indoor NXTIONSTAR pitches: P1.25, P2.5, P3.07 and P4 (P1.25 available with GOB). Fine-pitch group also publishes P0.9 and P1.25. Lobbies often use finer P; longer corridors may step to P3.07–P4. We measure real standing/seated distance rather than rules of thumb alone.",
         },
         {
           h2: "Camera-friendly refresh and colour",
