@@ -33,6 +33,7 @@ export function Footer({ locale }: FooterProps) {
     ? [
         { href: "/tr/products/", label: "Ürünler" },
         { href: "/tr/hizmetler/", label: "Hizmetler" },
+        { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
         { href: "/tr/projelerimiz/", label: "Projeler" },
         { href: "/tr/rehber/", label: "Rehber" },
         { href: "/tr/blog/", label: "Blog" },

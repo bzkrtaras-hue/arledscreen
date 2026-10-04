@@ -116,3 +116,25 @@
 /ar/configurator/ /tr/hesaplayici/ 301
 /ru/configurator/ /tr/hesaplayici/ 301
 /home /tr/ 301
+
+# Local SEO / competitor-style city URLs → hizmet bölgesi
+/bolgeler /tr/bolgeler/ 301
+/bolgeler/ /tr/bolgeler/ 301
+/hizmet-bolgesi /tr/bolgeler/ 301
+/hizmet-bolgesi/ /tr/bolgeler/ 301
+/istanbul-led-ekran /tr/bolgeler/istanbul/ 301
+/istanbul-led-ekran/ /tr/bolgeler/istanbul/ 301
+/gaziosmanpasa-led-ekran /tr/bolgeler/istanbul/ 301
+/gaziosmanpasa-led-ekran/ /tr/bolgeler/istanbul/ 301
+/antalya-led-ekran /tr/bolgeler/antalya/ 301
+/antalya-led-ekran/ /tr/bolgeler/antalya/ 301
+/bursa-led-ekran /tr/bolgeler/bursa/ 301
+/bursa-led-ekran/ /tr/bolgeler/bursa/ 301
+/izmir-led-ekran /tr/bolgeler/izmir/ 301
+/izmir-led-ekran/ /tr/bolgeler/izmir/ 301
+/eskisehir-led-ekran /tr/bolgeler/eskisehir/ 301
+/eskisehir-led-ekran/ /tr/bolgeler/eskisehir/ 301
+/kiralik-mi-satin-alma /tr/rehber/kiralik-mi-satin-alma/ 301
+/kiralik-mi-satin-alma/ /tr/rehber/kiralik-mi-satin-alma/ 301
+/led-ekran-kiralama /tr/products/kiralik-led-ekran/ 301
+/led-ekran-kiralama/ /tr/products/kiralik-led-ekran/ 301

@@ -1,3 +1,4 @@
+import { SERVICE_REGIONS } from "@/content/service-regions";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 /** Single Service entity for the verified offering (sales, installation, service). */
@@ -12,8 +13,14 @@ export function ServiceJsonLd({ locale = "tr" }: { locale?: string }) {
       "İç ve dış mekân LED ekran seçimi, keşif, montaj, devreye alma ve teknik servis. NXTIONSTAR ürünleri.",
     brand: { "@type": "Brand", name: "NXTIONSTAR" },
     provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: { "@type": "Country", name: "Türkiye" },
-    url: absoluteUrl(`/${locale}/products/`),
+    areaServed: [
+      { "@type": "Country", name: "Türkiye" },
+      ...SERVICE_REGIONS.map((r) => ({
+        "@type": "AdministrativeArea",
+        name: r.name,
+      })),
+    ],
+    url: absoluteUrl(`/${locale}/hizmetler/`),
   };
   return (
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

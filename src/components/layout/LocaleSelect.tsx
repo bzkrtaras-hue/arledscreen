@@ -22,13 +22,14 @@ export function LocaleSelect({
   // Turkish-only routes (generateStaticParams returns only { locale: "tr" }).
   const TR_ONLY = [
     /^\/tr\/hizmetler\//,
+    /^\/tr\/bolgeler\//,
     /^\/tr\/projelerimiz\//,
     /^\/tr\/products\/[^/]+\//,
     /^\/tr\/sss\//,
     /^\/tr\/nxtionstar\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,
-    /^\/tr\/rehber\/(led-ekran-fiyatlari|piksel-araligi-secimi|led-tabela-mi-led-ekran-mi)\//,
+    /^\/tr\/rehber\/(led-ekran-fiyatlari|piksel-araligi-secimi|led-tabela-mi-led-ekran-mi|kiralik-mi-satin-alma)\//,
   ];
   const switchLocaleHref = (next: Locale) => {
     const p = pathname.endsWith("/") ? pathname : `${pathname}/`;

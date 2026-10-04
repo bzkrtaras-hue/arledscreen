@@ -97,6 +97,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
     ? [
         { href: "/tr/products/", label: "Ürünler", dropdown: "products" },
         { href: "/tr/hizmetler/", label: "Hizmetler" },
+        { href: "/tr/bolgeler/", label: "Bölgeler" },
         { href: "/tr/projelerimiz/", label: "Projeler" },
         { href: "/tr/rehber/", label: "Rehber", dropdown: "guides" },
         { href: "/tr/blog/", label: "Blog" },
