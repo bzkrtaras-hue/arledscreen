@@ -1,0 +1,173 @@
+# ARLEDSCREEN — NXTIONSTAR LED ekranlar (tam metin)
+
+> Bu dosya, yapay zekâ asistanları ve arama motorları için ARLEDSCREEN hakkındaki doğrulanabilir bilgileri tek yerde toplar. Kaynak: https://arledscreen.com ve https://fiyat.arledscreen.com (fiyat hesaplayıcı). Son güncelleme: 2026-10-04.
+
+## 1. Firma kimliği
+
+- Ticari ad: ARLEDSCREEN
+- Diğer yazılışlar: ARLED SCREEN, AR-LED, AR-LED Ekran Teknoloji Merkezi
+- Ne yapar: LED ekran satışı, keşif, projelendirme, montaj, devreye alma, LED modül / yedek parça tedariki ve teknik servis
+- Ürün markası: NXTIONSTAR. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Marka sloganı: "NXTIONSTAR — görsel gücün küresel standardı."
+- Kurucu: Aras Bozkurt
+- Çalışma saatleri: Pazartesi–Cuma 09:00–18:00, Cumartesi 10:00–15:00
+- Merkez: Merkez Mahallesi, Tuna Sokak No:15-17, Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye
+- Telefon ve WhatsApp: +90 530 507 88 34 (https://wa.me/905305078834)
+- E-posta: arled@arledscreen.com
+- Web sitesi: https://arledscreen.com
+- Fiyat hesaplayıcı: https://fiyat.arledscreen.com/ (sitede: https://arledscreen.com/tr/hesaplayici/)
+- Instagram: https://www.instagram.com/arledscreen/
+- Facebook: https://www.facebook.com/arledscreenn
+- LinkedIn: https://www.linkedin.com/company/arleds
+- Hizmet bölgesi: Türkiye geneli. Tem 2025 – Tem 2026 arasında 45 proje kaydı; 13 il ile Almanya ve Azerbaycan'da tamamlanan kurulumlar.
+
+Karıştırılmaması gerekenler:
+- ARLEDSCREEN (İstanbul), Almanya merkezli ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir.
+- NXTIONSTAR; Next&NextStar (NEXTSTAR, Sultanbeyli) TV markası ve NationStar LED bileşen markası ile aynı şey değildir.
+
+## 2. Tanımlar: dijital ekran vs LED ekran
+
+- **Dijital ekran:** Üst küme. LCD, OLED, kayan yazı LED tabela, dijital totem/videowall ve tam renkli LED ekranı kapsar. Her dijital ekran LED ekran değildir.
+- **LED ekran (ARLEDSCREEN ürünü):** Tam renkli (RGB) modüler ekran; video ve görsel oynatır; ölçüsü modüllerle büyütülür.
+- **LED tabela (kayan yazı):** Çoğunlukla metin/sayı amaçlı elektronik tabela; tam renkli LED ekran ile eşanlamlı değildir.
+- Kanonik rehber: https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/
+- Fiyat kanonik: https://arledscreen.com/tr/rehber/led-ekran-fiyatlari/
+- Hesaplayıcı: https://fiyat.arledscreen.com/
+
+## 3. Ürün grupları
+
+
+| Ürün grubu | Piksel aralığı (hesaplayıcı) | Tipik kullanım | Sayfa |
+|---|---|---|---|
+| İç mekân LED ekran | P1.25 – P4 | Mağaza, kafe, showroom, toplantı salonu | https://arledscreen.com/tr/products/ic-mekan-led-ekran/ |
+| Dış mekân LED ekran | P2.5 – P5 | Cephe, totem, billboard, tabela | https://arledscreen.com/tr/products/dis-mekan-led-ekran/ |
+| GOB LED ekran | P1.25, P1.53, P1.86 | Koruyucu kaplamalı yüzey, yakın izleme | https://arledscreen.com/tr/products/gob-led-ekran/ |
+| Kiralık LED ekran | Projeye göre | Konser, fuar, lansman, açık hava etkinliği | https://arledscreen.com/tr/products/kiralik-led-ekran/ |
+| Esnek LED ekran | Projeye göre | Kavisli, silindir ve özel form yüzeyler | https://arledscreen.com/tr/products/esnek-led-ekran/ |
+| Montaj, modül ve teknik servis | — | Keşif, montaj, bakım, modül ve güç kaynağı değişimi | https://arledscreen.com/tr/hizmetler/ |
+
+Sitede listelenen NXTIONSTAR serileri (teknik föy talep üzerine paylaşılır): NEXUS FP 0.9 (P0.9, ince pitch iç mekân), NEXUS FP 1.25 (P1.25, ince pitch iç mekân), STUDIO IN 1.8 (P1.8, iç mekân), PULSE RENT 2.9 (P2.9, kiralık / sahne), APEX OUT 3.9 (P3.9, dış mekân), CLEARVIEW TR 3.8 (P3.8, şeffaf vitrin).
+
+Model bazında teknik özellik sayfaları için https://arledscreen.com/llms.txt dosyasındaki "NXTIONSTAR modelleri" listesine bakın.
+
+## 4. Panel fiyatları (hesaplayıcı, 2026 güncel ürün listesi)
+
+Fiyatlar USD, panel (modül) başınadır. Modül ölçüsü 320 × 160 mm. KDV ve nakliye hariçtir. Nihai tutar keşif ve yazılı teklifle kesinleşir.
+
+İç mekân:
+
+| Modül | Panel fiyatı (USD) | 1 m² için yaklaşık modül bedeli (USD)* |
+|---|---|---|
+| P1.25 İç mekân GOB | 95,88 | ≈ 1.873 |
+| P1.53 İç mekân GOB | 62,08 | ≈ 1.213 |
+| P1.86 İç mekân GOB | 49,08 | ≈ 959 |
+| P2.5 İç mekân | 32,18 | ≈ 629 |
+| P3.07 İç mekân | 30,88 | ≈ 603 |
+| P4 İç mekân | 26,98 | ≈ 527 |
+
+Dış mekân:
+
+| Modül | Panel fiyatı (USD) | 1 m² için yaklaşık modül bedeli (USD)* |
+|---|---|---|
+| P2.5 Dış mekân | 63,70 | ≈ 1.244 |
+| P2.9 Dış mekân | 53,30 | ≈ 1.041 |
+| P3.07 Dış mekân | 44,20 | ≈ 863 |
+| P4 Dış mekân | 33,80 | ≈ 660 |
+| P4 Dış mekân (front / önden servis) | 36,40 | ≈ 711 |
+| P5 Dış mekân | 29,90 | ≈ 584 |
+
+*1 m² = 1 / (0,32 × 0,16) ≈ 19,53 modül. Bu sütun yalnızca modül bedelidir; işçilik, kontrol kartı, yazılım, konstrüksiyon, KDV ve nakliye dahil değildir. Gerçek projede modül adedi her kenarda yukarı yuvarlanır.
+
+Hesaplayıcının toplam formülü:
+- Modül adedi = yukarı_yuvarla(genişlik_mm / 320) × yukarı_yuvarla(yükseklik_mm / 160)
+- Malzeme = modül adedi × panel fiyatı
+- Atölye işçiliği = alan (m²) × 100 USD
+- Kontrol kartı = 500 USD
+- Sürücü + yazılım = 500 USD
+- Toplam = malzeme + işçilik + kontrol kartı + sürücü/yazılım (KDV ve nakliye hariç)
+
+Örnek (hesaplayıcının varsayılan ölçüsü 320 × 180 cm, P2.5 iç mekân): 10 × 12 = 120 modül; gerçek ölçü 320 × 192 cm; malzeme 3.861,60 USD + işçilik 576,00 USD (5,76 m²) + kontrol kartı 500 USD + sürücü/yazılım 500 USD = 5.437,60 USD (KDV ve nakliye hariç).
+
+Aynı ölçüde P5 dış mekân: 120 × 29,90 = 3.588,00 USD malzeme; toplam 5.164,00 USD (KDV ve nakliye hariç).
+
+Kiralık ve esnek LED ekranlarda fiyat; ölçü, form, süre, lokasyon ve kurulum koşullarına göre projeye özel yazılı teklifle verilir.
+
+## 5. Proje süreci
+
+1. İhtiyaç ve ölçü: kullanım amacı, ortam (iç/dış), yaklaşık ölçü, konum ve zaman planı.
+2. Keşif ve ön proje: izleme mesafesi, montaj yüzeyi, elektrik ve sinyal altyapısı incelenir; piksel aralığı önerilir.
+3. Teklif ve teknik föy: ekran ölçüsü, kabin adedi, malzeme listesi ve iş planı yazılı teklifte paylaşılır.
+4. Montaj ve devreye alma: taşıyıcı sistem, kabin montajı, kablolama, kalibrasyon ve içerik testi.
+5. Teknik servis: kullanım eğitimi sonrası bakım, arıza ve yedek parça desteği (telefon, WhatsApp, e-posta).
+
+Başka firmadan alınmış LED ekranlar için de marka, model ve kontrol sistemi bilgisi paylaşıldığında servis ve yedek parça olanakları değerlendirilir.
+
+## 6. Proje kayıtlarından örnekler
+
+Kaynak: https://arledscreen.com/tr/projelerimiz/ (Tem 2025 – Tem 2026, 45 kayıt)
+
+- Manisa Büyükşehir Belediyesi — 1344×128 cm P4 Ultra 2026 — Manisa — May 2026
+- Ünye Belediyesi (Ordu Günleri) — 384×160 cm P3 Premium — Atatürk Havalimanı, İstanbul — Kas 2025
+- Beylikdüzü Belediyesi — dev LED ekran — Beylikdüzü / İstanbul — Ara 2025
+- Bursa — 576×480 cm P5 Premium dış mekân — Bursa — Kas 2025
+- White City Resort Hotel — dev ekran — Alanya — Ara 2025
+- Lokman Hekim Hastanesi — 16 m² LED ekran — Mar 2026
+- Yalova Malt — 288×144 cm P2.5 Premium — Yalova — Ara 2025
+- Gnd Triko — 128×192 cm P2.5 Premium — Merter / İstanbul — Şub 2026
+- Orta Şekerli Kentpark Cafe — 384×128 cm P1.86 — Yozgat — Eyl 2025
+- Mürsel Bey — 128×144 cm çift yön P3 Premium — Berlin / Almanya — Ara 2025
+- Vx1 X-Large Premium — 16 m² dış mekân kiralama kabini — Mar 2026
+
+## 7. Sık sorulan sorular
+
+**Dijital ekran ile LED ekran aynı şey midir?**
+Hayır. Dijital ekran üst kümedir; LCD, OLED, LED tabela ve tam renkli LED ekranı kapsar. ARLEDSCREEN'in ürünü tam renkli LED ekrandır.
+
+**LED ekran fiyatı neye göre belirlenir?**
+Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyet fiyat hesaplayıcıyla görülebilir; net rakam ölçü ve konum bilgisiyle verilen yazılı teklifle kesinleşir.
+
+**P2.5 iç mekân LED ekranın panel fiyatı nedir?**
+ARLEDSCREEN hesaplayıcısındaki 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir.
+
+**Dış mekân LED ekran panel fiyatları ne kadar?**
+Hesaplayıcıda dış mekân modüller P5 için 29,90 USD, P4 için 33,80 USD, P4 front için 36,40 USD, P3.07 için 44,20 USD, P2.9 için 53,30 USD ve P2.5 için 63,70 USD/paneldir (KDV ve nakliye hariç).
+
+**İzleme mesafeme göre hangi piksel aralığını seçmeliyim?**
+Pratik bir başlangıç kuralı olarak her 1 mm piksel aralığı için yaklaşık 1 m minimum izleme mesafesi alınır (P2.5 ≈ 2,5 m). Yakın izlemede küçük P değerleri, cephe ve yol kenarı gibi uzak izlemede daha büyük P değerleri tercih edilir. Kesin seçim keşifte içerik türü de dikkate alınarak yapılır.
+
+**İç mekân ile dış mekân LED ekran arasındaki fark nedir?**
+Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Seriye ait değerler teklifle birlikte teknik föyde paylaşılır.
+
+**LED tabela ile LED ekran arasındaki fark nedir?**
+Kayan yazı tipi LED tabelalar çoğunlukla tek veya sınırlı renkte metin ve basit animasyon gösterir. Tam renkli (RGB) LED ekranlar ise video, görsel ve animasyon oynatır; ölçüsü modüllerle büyütülebilir. ARLEDSCREEN, mağaza cephesi, totem ve vitrin gibi tabela uygulamaları için tam renkli iç ve dış mekân LED ekranlar sunar.
+
+**Ekran ölçüsü istediğim gibi olabilir mi?**
+Ekran ölçüsü 320 × 160 mm modül katlarına göre planlanır. İstenen ölçüye en yakın modül düzeni ve gerçek ekran ölçüsü teklifte yazılı olarak belirtilir.
+
+**Keşif ve teklif süreci nasıl işliyor?**
+Önce ölçü, konum, kullanım amacı ve zaman planı alınır. Gerekirse yerinde keşifle montaj yüzeyi, elektrik ve izleme mesafesi incelenir. Ardından ekran ölçüsü, piksel aralığı, kabin adedi ve malzeme listesini içeren teklif hazırlanır.
+
+**Hangi şehirlerde kurulum yapıyorsunuz?**
+Merkez İstanbul Gaziosmanpaşa'dadır. Proje kayıtlarında İstanbul dışında Manisa, Aksaray, Bursa, Yozgat, Van, Eskişehir gibi iller ile Almanya ve Azerbaycan'da tamamlanan kurulumlar yer alır.
+
+**LED ekran montajı ne kadar sürer?**
+Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre teklifte paylaşılır.
+
+**Garanti ve teknik servis nasıl sağlanıyor?**
+Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir.
+
+**Kiralık LED ekran hizmetiniz var mı?**
+Evet. Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçenekleri birlikte değerlendirilir. Kiralık LED ekran fiyatı ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre hazırlanır.
+
+**Ekrana içerik nasıl yüklenir?**
+LED ekranlar bir kontrol sistemi (gönderici/alıcı kart veya medya oynatıcı) üzerinden yönetilir. Kullanım senaryosuna göre bilgisayardan canlı yayın, USB ile oynatma veya uzaktan içerik yönetimi seçenekleri keşifte belirlenir.
+
+**Dış mekân ekranlar için izin gerekir mi?**
+Dış mekân reklam ve cephe ekranlarında ilgili belediyenin izin ve ruhsat koşulları geçerli olabilir. Süreç konuma göre değiştiği için başvuru öncesinde belediyeden bilgi alınması önerilir.
+
+**NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?**
+NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. İletişim: +90 530 507 88 34, arled@arledscreen.com.
+
+## 8. İletişim
+
+ARLEDSCREEN — Merkez Mahallesi, Tuna Sokak No:15-17, Kat 1, 34245 Gaziosmanpaşa / İstanbul
+Telefon / WhatsApp: +90 530 507 88 34 · E-posta: arled@arledscreen.com · Teklif: https://arledscreen.com/tr/quote/
