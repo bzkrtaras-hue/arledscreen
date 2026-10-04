@@ -74,6 +74,7 @@ RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE]
 
 # Apex / -> /tr/ (Turkish default audience)
 RewriteRule ^$ /tr/ [R=301,L]
+RewriteRule ^index\.html?$ /tr/ [R=301,L]
 
 # Legacy Horizons / old-site paths -> current routes (mirrors public/_redirects for Apache/LiteSpeed hosting)
 RewriteRule ^(iletisim|teklif-al|contact)(\.html)?/?$ /tr/quote/ [R=301,L]

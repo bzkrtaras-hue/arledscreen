@@ -30,3 +30,13 @@ const sweep = (d) => {
 };
 if (fs.existsSync("out")) sweep("out");
 console.log(`postbuild: blocked artefacts removed: ${removed}`);
+
+// Cloudflare Pages serves static assets BEFORE _redirects. A root index.html
+// (meta-refresh stub) causes HTTP 200 at / instead of the permanent 301 to /tr/.
+// Delete it so public/_redirects `/ /tr/ 301` (and /index.html → /tr/) win.
+// llms.txt / robots.txt / sitemap.xml are untouched.
+const rootIndex = path.join("out", "index.html");
+if (fs.existsSync(rootIndex)) {
+  fs.rmSync(rootIndex);
+  console.log("postbuild: removed out/index.html so Cloudflare can 301 / → /tr/");
+}

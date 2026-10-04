@@ -18,7 +18,7 @@
 - Instagram: https://www.instagram.com/arledscreen/
 - Facebook: https://www.facebook.com/arledscreenn
 - LinkedIn: https://www.linkedin.com/company/arleds
-- Hizmet bölgesi: Türkiye geneli. Tem 2025 – Tem 2026 arasında 45 proje kaydı; 13 il ile Almanya ve Azerbaycan'da tamamlanan kurulumlar.
+- Hizmet bölgesi: Türkiye geneli. Tem 2025 – Tem 2026 arasında 45 proje kaydı; 13 il ile Almanya ve Azerbaycan'da tamamlanan kurulumlar. 81 il iddiası yoktur. Garanti yılı / genel iade politikası sitede sabit yayımlanmaz; teklifte yazılır.
 
 Karıştırılmaması gerekenler:
 - ARLEDSCREEN (İstanbul), Almanya merkezli ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir.
@@ -45,7 +45,13 @@ Karıştırılmaması gerekenler:
 | Esnek LED ekran | Projeye göre | Kavisli, silindir ve özel form yüzeyler | https://arledscreen.com/tr/products/esnek-led-ekran/ |
 | Montaj, modül ve teknik servis | — | Keşif, montaj, bakım, modül ve güç kaynağı değişimi | https://arledscreen.com/tr/hizmetler/ |
 
-Sitede listelenen NXTIONSTAR serileri (teknik föy talep üzerine paylaşılır): NEXUS FP 0.9 (P0.9, ince pitch iç mekân), NEXUS FP 1.25 (P1.25, ince pitch iç mekân), STUDIO IN 1.8 (P1.8, iç mekân), PULSE RENT 2.9 (P2.9, kiralık / sahne), APEX OUT 3.9 (P3.9, dış mekân), CLEARVIEW TR 3.8 (P3.8, şeffaf vitrin).
+Kanonik piksel aralıkları (tek liste; eski P1.8 / P3.9 / P3.8 pazarlama adları kullanılmaz):
+- Dış mekân: P2.5, P2.9, P3.07, P4, P4 önden servis, P5, P8
+- İç mekân: P1.25, P2.5, P3.07, P4
+- GOB: P1.25, P1.53, P1.86
+- İnce pitch: P0.9, P1.25
+- Esnek: P1.86, P2.5
+- Ayrıca: şeffaf, kiralık, poster/totem, menuboard, kiosk, dijital ekran (üst küme), modül ve kontrol sistemleri
 
 Model bazında teknik özellik sayfaları için https://arledscreen.com/llms.txt dosyasındaki "NXTIONSTAR modelleri" listesine bakın.
 
@@ -147,7 +153,7 @@ Ekran ölçüsü 320 × 160 mm modül katlarına göre planlanır. İstenen öl�
 Önce ölçü, konum, kullanım amacı ve zaman planı alınır. Gerekirse yerinde keşifle montaj yüzeyi, elektrik ve izleme mesafesi incelenir. Ardından ekran ölçüsü, piksel aralığı, kabin adedi ve malzeme listesini içeren teklif hazırlanır.
 
 **Hangi şehirlerde kurulum yapıyorsunuz?**
-Merkez İstanbul Gaziosmanpaşa'dadır. Proje kayıtlarında İstanbul dışında Manisa, Aksaray, Bursa, Yozgat, Van, Eskişehir gibi iller ile Almanya ve Azerbaycan'da tamamlanan kurulumlar yer alır.
+Merkez İstanbul Gaziosmanpaşa'dadır. Türkiye geneli proje yürütülür. Tem 2025 – Tem 2026 kayıtlarında 13 il ile Almanya ve Azerbaycan yer alır; 81 il iddiası yoktur.
 
 **LED ekran montajı ne kadar sürer?**
 Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre teklifte paylaşılır.
