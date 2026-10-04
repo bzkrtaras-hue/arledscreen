@@ -64,7 +64,7 @@ export default async function HomePage({ params }: PageProps) {
     return (
       <>
         <FaqJsonLd faqs={faqs} />
-        <div className="-mt-[7.5rem] md:-mt-[8.25rem]">
+        <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
           <Hero locale={locale} />
         </div>
         <BrandBand locale={locale} />
@@ -116,7 +116,7 @@ export default async function HomePage({ params }: PageProps) {
       <FaqJsonLd faqs={faqs} />
 
       {/* 1. Full-bleed video hero under liquid-glass chrome → 2. gateway tiles → 3. values */}
-      <div className="-mt-[7.5rem] md:-mt-[8.25rem]">
+      <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
         <Hero locale={locale} />
       </div>
       <GatewayTiles />
