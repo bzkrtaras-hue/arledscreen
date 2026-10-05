@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "catalog": "node scripts/generate-ai-catalog.mjs",
     "audit:offers": "node scripts/audit-product-offers.mjs",
-    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/audit-product-offers.mjs"
+    "audit:images": "node scripts/audit-product-images.mjs",
+    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/audit-product-offers.mjs && node scripts/audit-product-images.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

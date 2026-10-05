@@ -458,9 +458,25 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     family: "Dış Mekân LED Ekranlar",
     types: ["Vitrin arkası", "Showroom camı", "Asma (askılı) kurulum", "İç / yarı outdoor cam"],
     image: "/projects/applications/seffaf-led-vitrin.jpg",
-    imageAlt: "Mağaza vitrin camında şeffaf LED ekran — arkadaki ürünler görünür",
+    imageAlt: "Mağaza vitrin camında şeffaf LED film ekran — pastel dalga içeriği, arkadaki ürünler görünür",
+    techGalleryEyebrow: "Şeffaf LED",
+    techGalleryTitle: "Vitrin camı ve film formu",
+    techGalleryDescription:
+      "Şeffaf LED, cam üzerinde ince film veya açık ızgara olarak uygulanır; vitrin teşhirini kapatmadan dijital içerik gösterir. Cephe mesh (transparan) grubundan ayrı planlanır.",
+    techGallery: [
+      {
+        src: "/projects/applications/seffaf-led-vitrin.jpg",
+        alt: "Butik vitrin camında şeffaf LED — içeride manken ve ürünler görünür",
+        caption: "Vitrin uygulaması — arkadaki teşhir korunur",
+      },
+      {
+        src: "/projects/applications/seffaf-led-film.jpg",
+        alt: "Şeffaf LED film / şerit yapı yakından — cam üzerinde ince LED hatları",
+        caption: "Film / şerit form — cam yüzeye yakın montaj",
+      },
+    ],
     intro: [
-      "Şeffaf LED ekranlarda LED’ler ince çubuklar hâlinde dizilir ve aralarında boşluk bırakılır. Bu sayede ekran çalışırken de camın arkası görülebilir; mağaza içi gün ışığından tamamen kopmaz.",
+      "Şeffaf LED ekranlarda LED’ler cam üzerinde ince bir film veya açık ızgara hâlinde dizilir; aralarında boşluk bırakıldığı için ekran çalışırken de camın arkası görülebilir. Mağaza içi gün ışığı ve ürün teşhiri büyük ölçüde korunur.",
       "Bu grup perakende vitrin ve showroom camı için planlanır. Bina cephesi ölçeğinde, dış hava koşullarına açık mesh/ızgara form faktörü için ayrı ürün grubumuz vardır: Transparan LED ekran.",
       "Ekranın ne kadar şeffaf görüneceği ile görüntü keskinliği arasında bir denge vardır. Doğru seçim cam ölçüsüne, izleyicinin uzaklığına ve ışığa göre keşifte yapılır.",
     ],
@@ -517,7 +533,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     family: "Dış Mekân LED Ekranlar",
     types: ["Cam cephe mesh", "Izgara / grid panel", "Yarı outdoor cephe", "AVM cam koridor"],
     image: "/projects/applications/transparan-led-cephe.jpg",
-    imageAlt: "Cam bina cephesinde transparan mesh LED ekran — arkadaki katlar görünür",
+    imageAlt: "İstanbul cam bina cephesinde transparan mesh LED — mavi-mor içerik, arkadaki ofis katları görünür",
     intro: [
       "Transparan LED ekran, LED’lerin ızgara/mesh düzeninde boşluklu yerleştirildiği açık bir form faktördür. Amaç, cephe ölçeğinde dijital içerik gösterirken mimari derinliği ve ışık geçişini tamamen kapatmamaktır.",
       "Bu grup, mağaza vitrinindeki yüksek şeffaflıklı Şeffaf LED ekrandan ayrıdır. Cephe yüksekliği, rüzgâr/yağmur maruziyeti ve izleme mesafesi keşifte netleşir; model önerisi buna göre yapılır.",
@@ -630,7 +646,23 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     types: ["Ayaklı poster ekran", "Duvara montaj", "Yan yana birleştirme", "İç ve dış mekân totem", "Menuboard (kafe / restoran)"],
     image: "/projects/totem-indoor.jpg",
     cardImage: "/projects/applications/led-poster-totems.jpg",
-    imageAlt: "İç mekânda konumlandırılmış dikey totem LED ekran",
+    imageAlt: "İç mekânda ayaklı dikey totem / poster LED ekran — mağaza ve lobi tanıtım",
+    techGalleryEyebrow: "Poster & totem",
+    techGalleryTitle: "Dikey format seçenekleri",
+    techGalleryDescription:
+      "Poster LED ve totem ekranlar dar alanlara uygun dikey formattadır; tek başına veya yan yana birleştirilerek kullanılır. List fiyatı yayımlanmaz; ölçü ve adet keşif sonrası yazılı teklifle netleşir.",
+    techGallery: [
+      {
+        src: "/projects/totem-indoor.jpg",
+        alt: "Showroom’da ayaklı dikey totem LED ekran",
+        caption: "Tek totem — lobi / mağaza girişi",
+      },
+      {
+        src: "/projects/applications/led-poster-totems.jpg",
+        alt: "Farklı genişlikte dört dikey poster LED totem yan yana — stüdyo çekimi",
+        caption: "Poster LED ölçü ailesi — yan yana kurulum",
+      },
+    ],
     intro: [
       "Poster LED ekranlar, basılı afiş ve standların dijital karşılığıdır. Dikey formatları sayesinde giriş, koridor ve kasa önü gibi dar alanlara sığar; içerik birkaç dakika içinde değiştirilebilir.",
       "Ayaklı olarak tek başına kullanılabilir veya birkaç ekran yan yana getirilerek daha geniş bir yüzey oluşturulabilir. Dış mekân totemlerde ise gövde ve sabitleme detayları konuma göre planlanır.",
