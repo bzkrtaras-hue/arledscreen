@@ -18,7 +18,7 @@ import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { getSeo } from "@/content/seo";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildThinLocaleMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
 interface PageProps {
@@ -31,12 +31,23 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "quote");
+  // Short quote form + NAP block are TR-primary; EN/AR/RU are thin → noindex → TR.
+  if (locale !== "tr") {
+    return buildThinLocaleMetadata({
+      locale,
+      path: "/quote",
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
+    });
+  }
   return buildPageMetadata({
     locale,
     path: "/quote",
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    hreflangLocales: [],
   });
 }
 

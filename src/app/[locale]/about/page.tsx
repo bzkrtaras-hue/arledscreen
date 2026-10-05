@@ -14,7 +14,7 @@ import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { getSeo } from "@/content/seo";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildThinLocaleMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 
@@ -28,12 +28,23 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "about");
+  // EN/AR/RU about is a thin shell (TR-only TrustFacts / entity cite) → noindex → TR.
+  if (locale !== "tr") {
+    return buildThinLocaleMetadata({
+      locale,
+      path: "/about",
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
+    });
+  }
   return buildPageMetadata({
     locale,
     path: "/about",
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    hreflangLocales: [],
   });
 }
 

@@ -28,6 +28,9 @@ export async function generateMetadata({
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    // AR/RU mirror EN copy; consolidate signals to EN while layout noindexes them.
+    canonicalLocale: locale === "ar" || locale === "ru" ? "en" : undefined,
+    hreflangLocales: ["tr", "en"],
   });
 }
 

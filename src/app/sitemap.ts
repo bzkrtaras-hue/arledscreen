@@ -13,8 +13,8 @@ export const dynamic = "force-static";
 /**
  * Sitemap lists only indexable, substantive URLs.
  * - TR: full site (products, models, bölgeler, blog, rehber…)
- * - EN: pages with real EN copy (home, about, hesaplayici, quote, yapay-zeka, rehber)
- * - Thin /en/products hub, /ar/* and /ru/* are omitted (no false language pairs).
+ * - EN: pages with real EN copy (home, yapay-zeka, rehber + guides)
+ * - Thin EN shells (/products, /about, /hesaplayici, /quote), /ar/*, /ru/* omitted
  */
 
 const TR_CORE: {
@@ -40,9 +40,6 @@ const EN_CORE: {
   { path: "/", priority: 0.9, changeFrequency: "daily" },
   { path: "/yapay-zeka/", priority: 0.85, changeFrequency: "weekly" },
   { path: "/rehber/", priority: 0.75, changeFrequency: "weekly" },
-  { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/hesaplayici/", priority: 0.65, changeFrequency: "weekly" },
-  { path: "/quote/", priority: 0.7, changeFrequency: "weekly" },
 ];
 
 function withTrailingSlash(path: string): string {

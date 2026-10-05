@@ -5,7 +5,7 @@ import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FiyatHesaplayiciEmbed } from "@/components/calculator/FiyatHesaplayiciEmbed";
 import { getSeo } from "@/content/seo";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildThinLocaleMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import Link from "next/link";
 import { modelUrlForPrice } from "@/content/models";
@@ -22,12 +22,23 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "hesaplayici");
+  // Panel table + Product JSON-LD are TR-only; EN shell is embed-only → noindex → TR.
+  if (locale !== "tr") {
+    return buildThinLocaleMetadata({
+      locale,
+      path: "/hesaplayici",
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
+    });
+  }
   return buildPageMetadata({
     locale,
     path: "/hesaplayici",
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    hreflangLocales: [],
   });
 }
 

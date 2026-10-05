@@ -10,7 +10,7 @@ import { ItemListJsonLd } from "@/components/seo/ItemListJsonLd";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { getProducts } from "@/content/products";
 import { getSeo } from "@/content/seo";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildThinLocaleMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -28,19 +28,15 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "products");
-  // Full product catalog is TR-only; EN/AR/RU hubs are thin shells → noindex, no hreflang.
+  // Full product catalog is TR-only; EN/AR/RU hubs are thin shells → noindex → TR.
   if (locale !== "tr") {
-    return {
-      ...buildPageMetadata({
-        locale,
-        path: "/products",
-        title: seo.title,
-        description: seo.description,
-        keywords: seo.keywords,
-        hreflangLocales: [],
-      }),
-      robots: { index: false, follow: true },
-    };
+    return buildThinLocaleMetadata({
+      locale,
+      path: "/products",
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
+    });
   }
   return buildPageMetadata({
     locale,

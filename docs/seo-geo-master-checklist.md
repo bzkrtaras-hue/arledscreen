@@ -26,6 +26,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] Live technical audit documented in [`docs/technical-seo-audit.md`](./technical-seo-audit.md) (canonical/hreflang/redirects/robots/sitemap PASS)
 - [ ] **Owner:** Google Search Console property verified; submit sitemap; review Pages / CWV / HTTPS
 - [x] Lab CWV / mobile smoke (home, fiyat, products, 1 case study) — [`docs/cwv-mobile-smoke.md`](./cwv-mobile-smoke.md) (perf 100, LCP ≤1.5s, CLS 0)
+- [x] EN thin locale noindex + TR self-canonical audit — [`docs/locale-canonical-audit.md`](./locale-canonical-audit.md) (`npm run audit:locale`)
 - [ ] **Owner:** Bing Webmaster Tools sitemap submit
 
 ## P0/P1 — On-site content proof
