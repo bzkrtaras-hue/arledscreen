@@ -458,9 +458,10 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     family: "Dış Mekân LED Ekranlar",
     types: ["Vitrin arkası", "Showroom camı", "Asma (askılı) kurulum", "İç / yarı outdoor cam"],
     image: "/projects/applications/seffaf-led-vitrin.jpg",
-    imageAlt: "Mağaza vitrin camında şeffaf LED ekran — arkadaki ürünler görünür",
+    cardImage: "/projects/applications/seffaf-led-film.jpg",
+    imageAlt: "AVM mağaza vitrininde şeffaf LED ekran — pembe kalp içeriği, içerideki ürünler görünür",
     intro: [
-      "Şeffaf LED ekranlarda LED’ler ince çubuklar hâlinde dizilir ve aralarında boşluk bırakılır. Bu sayede ekran çalışırken de camın arkası görülebilir; mağaza içi gün ışığından tamamen kopmaz.",
+      "Şeffaf LED ekranlarda LED’ler cam üzerinde ince bir film veya açık ızgara hâlinde dizilir; aralarında boşluk bırakıldığı için ekran çalışırken de camın arkası görülebilir. Mağaza içi gün ışığı ve ürün teşhiri büyük ölçüde korunur.",
       "Bu grup perakende vitrin ve showroom camı için planlanır. Bina cephesi ölçeğinde, dış hava koşullarına açık mesh/ızgara form faktörü için ayrı ürün grubumuz vardır: Transparan LED ekran.",
       "Ekranın ne kadar şeffaf görüneceği ile görüntü keskinliği arasında bir denge vardır. Doğru seçim cam ölçüsüne, izleyicinin uzaklığına ve ışığa göre keşifte yapılır.",
     ],
