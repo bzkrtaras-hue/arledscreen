@@ -127,6 +127,7 @@ export default async function HomePage({ params }: PageProps) {
       <section id="urunler" className="bg-white py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
+            glass
             eyebrow="Ürün grupları"
             title="Kullanım alanına göre LED ekran çözümleri"
             description="Ekran seçimi, kullanım amacı ve izleme mesafesiyle başlar. Size en yakın grubu seçin; seçenekleri, kullanım alanlarını ve ilgili projeleri inceleyin."
@@ -139,6 +140,7 @@ export default async function HomePage({ params }: PageProps) {
       <section id="referanslar" className="border-t border-border bg-white py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
+            glass
             eyebrow={dict.sections.references.eyebrow}
             title={dict.sections.references.title}
             description="Yakın süreçte tamamladığımız projelerden bir seçki."
@@ -156,6 +158,7 @@ export default async function HomePage({ params }: PageProps) {
         eyebrow="Çalışma süreci"
         title="Projeniz beş adımda ilerler"
         description="Her adımda neyin yapılacağını ve sizden hangi bilginin gerektiğini baştan paylaşıyoruz."
+        glassHeading
         className="min-w-0 bg-band prose-seo"
       >
         <ProcessSteps />
@@ -166,6 +169,7 @@ export default async function HomePage({ params }: PageProps) {
         eyebrow="Öğrenme merkezi"
         title="Karar vermeden önce öğrenin"
         description="Piksel aralığı, iç ve dış mekân farkları, salon ve vitrin uygulamaları hakkında sade rehberler."
+        glassHeading
         className="min-w-0 prose-seo"
       >
         <LearningHub />
@@ -176,6 +180,7 @@ export default async function HomePage({ params }: PageProps) {
         eyebrow="Blogdan"
         title="Son projeler ve paylaşımlar"
         description="Tamamladığımız LED ekran projelerinden ve kurulum süreçlerinden güncel notlar."
+        glassHeading
         className="min-w-0 bg-band prose-seo"
       >
         <BlogTeaser />
@@ -192,6 +197,7 @@ export default async function HomePage({ params }: PageProps) {
         id="sss"
         eyebrow={dict.sections.faq.eyebrow}
         title={dict.sections.faq.title}
+        glassHeading
         className="min-w-0 prose-seo"
       >
         <HomeFaq faqs={faqs} />

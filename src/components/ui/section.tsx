@@ -8,6 +8,8 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
   contained?: boolean;
   /** Render the title as the page H1 (for top-of-page sections). */
   titleAs?: "h1" | "h2";
+  /** Soft liquid-glass plate around the section heading block. */
+  glassHeading?: boolean;
   children?: ReactNode;
 }
 
@@ -18,6 +20,7 @@ export function Section({
   description,
   contained = true,
   titleAs = "h2",
+  glassHeading = false,
   children,
   ...props
 }: SectionProps) {
@@ -33,7 +36,13 @@ export function Section({
         )}
       >
         {(eyebrow || title || description) && (
-          <header className="mb-8 max-w-3xl md:mb-12">
+          <header
+            className={cn(
+              "mb-8 max-w-3xl md:mb-12",
+              glassHeading &&
+                "liquid-glass-heading px-5 py-5 sm:px-7 sm:py-6 md:px-8 md:py-7 transition-[box-shadow,transform] duration-500 ease-out",
+            )}
+          >
             {eyebrow && (
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.1em] text-cyan sm:text-xs sm:tracking-[0.14em]">
                 {eyebrow}

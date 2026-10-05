@@ -34,16 +34,18 @@ export function CitationCapsule({
       data-citation-capsule
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
-          Kurumsal özet
-        </p>
-        <h2
-          id="citation-capsule-title"
-          className="mt-2 font-display text-xl font-bold tracking-[-0.02em] text-ink sm:text-2xl"
-        >
-          {title}
-        </h2>
-        <p className="mt-4 text-base leading-[1.75] text-ink-soft">{answer}</p>
+        <div className="liquid-glass-heading px-5 py-5 sm:px-7 sm:py-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">
+            Kurumsal özet
+          </p>
+          <h2
+            id="citation-capsule-title"
+            className="mt-2 font-display text-xl font-bold tracking-[-0.02em] text-ink sm:text-2xl"
+          >
+            {title}
+          </h2>
+          <p className="mt-4 text-base leading-[1.75] text-ink-soft">{answer}</p>
+        </div>
         {proofs.length ? (
           <ul className="mt-5 space-y-2 text-sm leading-relaxed text-ink">
             {proofs.map((p) => (

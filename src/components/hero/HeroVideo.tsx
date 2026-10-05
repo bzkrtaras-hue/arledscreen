@@ -230,27 +230,49 @@ export function HeroVideo({
         ) : null}
 
         <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-5 pb-[calc(4.5rem+1.5rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
-          <div className="w-full max-w-[560px]">
-            <p className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white/90 sm:text-xs">
+          <div className="w-full max-w-[580px]">
+            <m.p
+              className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white/90 sm:text-xs"
+              initial={reduce ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease, delay: 0.05 }}
+            >
               {eyebrow}
-            </p>
+            </m.p>
             <m.span
               aria-hidden
               className="mt-3 block h-0.5 w-10 origin-left bg-[#1E5BB8] rtl:origin-right"
               initial={reduce ? false : { scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 0.55, ease, delay: 0.15 }}
+              transition={{ duration: 0.7, ease, delay: 0.18 }}
             />
-            <p className="mt-4 font-display text-[clamp(2.4rem,1.6rem+3.5vw,3.75rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-white">
+            <m.p
+              className="mt-4 font-display text-[clamp(2.4rem,1.6rem+3.5vw,3.75rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-white"
+              initial={reduce ? false : { opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, ease, delay: 0.22 }}
+            >
               {brand}
-            </p>
-            <h1 className="mt-3 text-balance font-display text-[clamp(1.25rem,1rem+1.4vw,1.85rem)] font-bold leading-[1.2] tracking-[-0.02em] text-white">
-              {headline}
-            </h1>
-            <p className="mt-4 max-w-[48ch] text-pretty text-[15px] leading-[1.65] text-white/90 transition-opacity duration-700 sm:text-base sm:leading-[1.7]">
-              {subcopy}
-            </p>
-            <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:gap-3">
+            </m.p>
+            <m.div
+              className="liquid-glass-hero-copy mt-4 px-4 py-4 sm:mt-5 sm:px-5 sm:py-5"
+              initial={reduce ? false : { opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, ease, delay: 0.34 }}
+            >
+              <h1 className="text-balance font-display text-[clamp(1.25rem,1rem+1.4vw,1.85rem)] font-bold leading-[1.2] tracking-[-0.02em] text-white">
+                {headline}
+              </h1>
+              <p className="mt-3 max-w-[54ch] text-pretty text-[15px] leading-[1.65] text-white/92 sm:text-base sm:leading-[1.7]">
+                {subcopy}
+              </p>
+            </m.div>
+            <m.div
+              className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:gap-3"
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease, delay: 0.48 }}
+            >
               <Link
                 href={quoteHref}
                 className="btn-soft inline-flex min-h-12 items-center justify-center rounded-xl bg-[#1E5BB8] px-7 text-[15px] font-semibold text-white shadow-glow transition duration-500 hover:bg-cyan-600 md:min-h-[52px] md:text-base"
@@ -263,7 +285,7 @@ export function HeroVideo({
               >
                 {secondaryLabel}
               </Link>
-            </div>
+            </m.div>
           </div>
         </div>
       </div>

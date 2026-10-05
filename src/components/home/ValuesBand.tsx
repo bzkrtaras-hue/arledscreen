@@ -10,13 +10,14 @@ export function ValuesBand() {
     <section id="neden-arledscreen" className="overflow-hidden bg-band py-14 md:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
+          glass
           eyebrow="Neden ARLEDSCREEN?"
           title="Kararınızı destekleyecek somut bilgiler"
           description="Doğru ürün kadar doğru keşif, temiz montaj ve kurulum sonrası destek de belirleyicidir. Buradaki bilgilerin tamamı doğrulanabilir kayıtlara dayanır."
         />
         <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-12">
           {items.map(({ Icon, title, body, href, linkLabel }, i) => (
-            <FadeIn as="li" key={title} dir={i % 2 === 0 ? "left" : "right"} delay={(i % 3) * 0.12} className="text-center">
+            <FadeIn as="li" key={title} dir={i % 2 === 0 ? "left" : "right"} delay={0.08 + (i % 3) * 0.1} duration={0.8} className="text-center">
               <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl text-cyan glass-card">
                 <Icon className="h-7 w-7" strokeWidth={1.7} aria-hidden />
               </span>
