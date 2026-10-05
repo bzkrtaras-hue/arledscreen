@@ -100,7 +100,7 @@ export function OrganizationJsonLd() {
           url: absoluteUrl("/catalog.json"),
           numberOfItems: 12,
           description:
-            "Yalnızca yayımlanmış iç/dış/GOB panel listesi (shippingDetails: nakliye hariç, ücretsiz kargo yok; hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade teklif/sözleşme). Kiralık, şeffaf, esnek, poster gruplarında list fiyatı yok — yazılı teklif.",
+            "Yalnızca yayımlanmış iç/dış/GOB panel listesi (shippingDetails: nakliye hariç, ücretsiz kargo yok; hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade teklif/sözleşme). Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yok — yazılı teklif.",
         },
         subjectOf: [
           {

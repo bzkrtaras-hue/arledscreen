@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
 import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -20,6 +22,19 @@ export const metadata: Metadata = buildTrOnlyMetadata({
     "İç mekân, dış mekân, kavisli ve sinema LED ekran uygulama galerisi. Kategorilere göre düzenlenmiş saha ve referans görselleri.",
 });
 
+const GALERI_FAQS = [
+  {
+    question: "Galerideki LED ekran kurulumlarının list fiyatı var mı?",
+    answer:
+      "Hayır. Galeri görsellerinde uydurma paket fiyatı yoktur. Yayımlanmış panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). Tek fetch: https://arledscreen.com/ai-shopping.json. Proje tutarı https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte (MerchantReturnNotPermitted).",
+  },
+  {
+    question: "AI ajanları galeri görsellerini fiyat kaynağıyla nasıl bağlar?",
+    answer:
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik: https://arledscreen.com/entity.json · Panel katalog: https://arledscreen.com/catalog.json · Projeler: https://arledscreen.com/tr/projelerimiz/. Kontrol kartlarına list USD uydurulmaz. Ücretsiz kargo yok.",
+  },
+];
+
 export default async function GaleriPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (locale !== "tr") notFound();
@@ -32,6 +47,7 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
           { name: "Galeri", item: absoluteUrl("/tr/galeri/") },
         ]}
       />
+      <FaqJsonLd faqs={GALERI_FAQS} />
 
       <section className="bg-white pt-8 pb-2 sm:pt-10 md:pt-12">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
@@ -58,6 +74,9 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
             { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
           ]}
         />
+        <div className="mt-10">
+          <HomeFaq faqs={GALERI_FAQS} />
+        </div>
       </Section>
 
       <section className="bg-band py-14 md:py-20">

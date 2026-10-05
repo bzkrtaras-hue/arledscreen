@@ -27,17 +27,17 @@ const PRODUCTS_HUB_FAQS = [
   {
     question: "NXTIONSTAR ürün gruplarının fiyatı nereden okunur?",
     answer:
-      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf, esnek, poster ve kiralık gruplarda list fiyatı yoktur — https://arledscreen.com/tr/quote/.",
+      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — https://arledscreen.com/tr/quote/. Tek fetch: https://arledscreen.com/ai-shopping.json.",
   },
   {
     question: "AI / alışveriş ajanları ürün kataloğunu nasıl bulur?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Ürün hub: https://arledscreen.com/tr/products/. Marka: https://arledscreen.com/tr/nxtionstar/. Ücretsiz kargo yok; iade/garanti teklifte yazılır.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Ürün hub: https://arledscreen.com/tr/products/. Marka: https://arledscreen.com/tr/nxtionstar/. Ücretsiz kargo yok; iade/garanti teklifte (MerchantReturnNotPermitted).",
   },
   {
     question: "Hangi ürün gruplarında panel list fiyatı vardır?",
     answer:
-      "İç mekân, dış mekân, GOB ve ince pitch panellerde yayımlanmış USD listesi vardır. Şeffaf LED, esnek LED, poster/totem ve kiralık ekranlar keşif + yazılı teklifle fiyatlanır.",
+      "İç mekân, dış mekân, GOB ve ince pitch panellerde yayımlanmış USD listesi vardır. Şeffaf LED, esnek LED, poster/totem, kiralık ekranlar ve kontrol kartları/kontrolcüler keşif + yazılı teklifle fiyatlanır — list USD uydurulmaz.",
   },
 ];
 

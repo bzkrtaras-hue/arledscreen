@@ -117,6 +117,11 @@ export default async function SeoGuidePage({ params }: PageProps) {
             mainEntityOfPage: absoluteUrl(
               `/${locale}/rehber/${guide.slug}/`,
             ),
+            sameAs: [
+              absoluteUrl("/ai-shopping.json"),
+              absoluteUrl("/catalog.json"),
+              absoluteUrl("/entity.json"),
+            ],
             keywords: guide.keywords.join(", "),
           }),
         }}

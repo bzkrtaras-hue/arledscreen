@@ -63,7 +63,7 @@ export const CHECKS = [
     url: `${SITE}/.well-known/ard.json`,
     outRel: ".well-known/ard.json",
     expect: "json",
-    mustInclude: ["catalog", "entity-profiles", "ai-shopping", "pricedPanels"],
+    mustInclude: ["catalog", "entity-profiles", "ai-shopping", "pricedPanels", "hasMerchantReturnPolicy", "MerchantReturnNotPermitted"],
     cors: true,
     contentType: "application/json",
   },

@@ -51,6 +51,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 59 | 2026-10-05 | FAQ honesty wave 3 · model FAQPage · AggregateOffer ücretsiz-kargo · audit requireHonesty | ✅ |
 | 60 | 2026-10-05 | Case-study FAQPage ×29 · Org OfferCatalog honesty · merge-day/post-deploy Day 59 · hub AggregateOffer audit | ✅ |
 | 61 | 2026-10-05 | llms hasMerchantReturnPolicy tokens · case/blog sameAs→ai-shopping · blog FAQPage ×N | ✅ |
+| 62 | 2026-10-05 | Kontrol quote-only invent closure · ARD return-policy tokens · galeri FAQPage | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -296,3 +297,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Case CreativeWork + BlogPosting `sameAs` → ai-shopping / catalog / entity
 - Blog post FAQPage + HomeFaq (ai-shopping + honesty)
 - Guards: cite-parity + smoke llms needles · audit:faq blog dirs + case sameAs
+
+## Gün 62 notları
+
+- Kontrol quote-only invent closure: catalog quoteOnlyProductGroups + agentRules + products hub FAQ + Org OfferCatalog (Huidu/NovaStar/Colorlight)
+- ARD / ai-catalog: hasMerchantReturnPolicy + MerchantReturnNotPermitted tokens (+ sync)
+- Galeri FAQPage + HomeFaq (ai-shopping + honesty)
+- Guards: audit:ai-shopping quoteOnly≥9+kontrol · smoke ard needles · audit:faq galeri

@@ -176,7 +176,13 @@ auditPage("projelerimiz", {
   requireAiShopping: true,
   requireHonesty: true,
 });
-auditPage("blog", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
+auditPage("blog", { minCount: 2, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("galeri", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
 auditPage("bolgeler", {
   minCount: 3,
   requirePriceHint: true,

@@ -164,6 +164,26 @@ const quoteOnlyGroups = [
     url: `${SITE}/tr/products/kiralik-led-ekran/`,
     note: "Kiralama bedeli projeye göre teklif.",
   },
+  {
+    name: "Huidu kontrol kartları",
+    url: `${SITE}/tr/products/huidu-kontrol-kartlari/`,
+    note: "Kontrol kartı list fiyatı yok; yazılı teklif (Offer yok).",
+  },
+  {
+    name: "NovaStar kontrolcüler",
+    url: `${SITE}/tr/products/novastar-kontrolculer/`,
+    note: "Kontrolcü list fiyatı yok; yazılı teklif (Offer yok).",
+  },
+  {
+    name: "Colorlight kontrolcüler",
+    url: `${SITE}/tr/products/colorlight-kontrolculer/`,
+    note: "Kontrolcü list fiyatı yok; yazılı teklif (Offer yok).",
+  },
+  {
+    name: "LED modül ve kontrol sistemleri",
+    url: `${SITE}/tr/products/led-modul-ve-kontrol-sistemleri/`,
+    note: "Kontrol hub; list fiyatı yok — yazılı teklif.",
+  },
 ];
 
 /** Human labels for priced product-group AggregateOffer summaries. */

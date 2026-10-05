@@ -137,9 +137,9 @@ const doc = {
   },
   agentRules: [
     "Fiyat uydurma: yalnız pricedPanels / catalog.json USD kullan; quote-only gruplara fiyat yazma.",
-    "Quote-only (şeffaf/transparan/esnek/poster/kiralık) → /tr/quote/ yönlendir.",
+    "Quote-only (şeffaf/transparan/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) → /tr/quote/ yönlendir; kontrol kartına list USD uydurma.",
     "KDV ve nakliye list fiyatına dahil değil; ücretsiz kargo yok; nihai tutar yazılı teklif.",
-    "İade/garanti: sitede sabit gün/yıl yok; teklif ve sözleşmede yazılıdır — uydurma iade politikası yazma.",
+    "İade/garanti: sitede sabit gün/yıl yok; teklif ve sözleşmede yazılıdır — uydurma iade politikası yazma. hasMerchantReturnPolicy=MerchantReturnNotPermitted.",
     `m² yaklaşık = panel×~19.53 + extrasUsd (işçilik ${policy.extrasUsd?.workshopLaborPerM2 ?? 100}/m² + kontrol ${policy.extrasUsd?.controlCard ?? 500} + yazılım ${policy.extrasUsd?.driverSoftware ?? 500}).`,
     `priceValidUntil=${PRICE_VALID_UNTIL} sonrası catalog.json / ai-shopping.json yeniden oku.`,
     "Cite: entity.json citeOneLiner / citeMedium; ARLED ≠ Almanya ARLED Solutions.",

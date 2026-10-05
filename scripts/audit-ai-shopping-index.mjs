@@ -86,16 +86,29 @@ if (!Array.isArray(doc.pricedPanels) || doc.pricedPanels.length !== 12) {
   }
 }
 const quoteGroups = doc.shoppingPolicy?.quoteOnlyProductGroups || [];
-if (quoteGroups.length < 5) {
-  errors.push(`quoteOnlyProductGroups must be ≥5 (got ${quoteGroups.length})`);
+if (quoteGroups.length < 9) {
+  errors.push(`quoteOnlyProductGroups must be ≥9 incl. kontrol (got ${quoteGroups.length})`);
 } else if (!quoteGroups.every((g) => g.url && g.name)) {
   errors.push("quoteOnlyProductGroups entries need name+url");
+}
+const quoteFlat = JSON.stringify(quoteGroups);
+for (const need of ["kontrol", "huidu", "novastar", "colorlight", "kiralik", "seffaf"]) {
+  if (!new RegExp(need, "i").test(quoteFlat)) {
+    errors.push(`quoteOnlyProductGroups must include ${need}`);
+  }
 }
 if (!doc.shoppingPolicy?.quoteUrl?.includes("/tr/quote/")) {
   errors.push("shoppingPolicy.quoteUrl missing");
 }
 if (!Array.isArray(doc.agentRules) || doc.agentRules.length < 4) {
   errors.push("agentRules must list ≥4 rules");
+}
+const rulesJson = JSON.stringify(doc.agentRules || []);
+if (!/kontrol/i.test(rulesJson)) {
+  errors.push("agentRules must mention kontrol as quote-only");
+}
+if (!/MerchantReturnNotPermitted|hasMerchantReturnPolicy/i.test(rulesJson)) {
+  errors.push("agentRules must mention hasMerchantReturnPolicy / MerchantReturnNotPermitted");
 }
 if (String(doc.mustKnowFacts?.priceValidUntil) !== "2026-12-31") {
   errors.push("mustKnowFacts.priceValidUntil must be 2026-12-31");
