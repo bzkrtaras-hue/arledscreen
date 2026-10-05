@@ -300,6 +300,14 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
+// Day 74: ARD discovery prompt count must not drift behind blind suite
+const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
+if (ardTxt && !/22 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 22 kör test intent (not stale 17/21)");
+}
+if (ardTxt && /17 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17 kör test intent");
+}
 
 if (errors.length) {
   console.error(`audit-cite-parity: FAIL (${errors.length})`);

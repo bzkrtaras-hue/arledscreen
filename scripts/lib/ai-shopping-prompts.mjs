@@ -168,6 +168,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["Gaziosmanpaşa", "entity.json", "entity-profiles.json"],
     mustNotSay: ["küresel standard", "Türkiye'nin en", "ücretsiz kargo dahil"],
   },
+  {
+    id: 22,
+    q: "ARLEDSCREEN Almanya ARLED ile aynı mı?",
+    paths: ["/entity.json", "/tr/about/", "/llms-full.txt"],
+    mustSay: ["Gaziosmanpaşa", "aynı firma değildir"],
+    mustNotSay: ["aynı şirkettir", "Türkiye'nin en", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

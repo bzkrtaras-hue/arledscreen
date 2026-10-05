@@ -63,6 +63,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 71 | 2026-10-05 | AI-ready invent kill · yapay-zeka EN/TR · AR/RU meta honesty · blind #19 · smoke EN YZ | ✅ |
 | 72 | 2026-10-05 | Slogan küresel-standart invent kill · Enterprise/Kurumsal masa → yazılı teklif · blind #20 | ✅ |
 | 73 | 2026-10-05 | llms-full slogan residual · directory paste packs · blind #21 · seo-guides desk residual | ✅ |
+| 74 | 2026-10-05 | ARD 17→22 kör test drift · quote desk invent · Alman ARLED blind #22 · llms intent rows | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -400,3 +401,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - seo-guides outdoor/mimari: “same/one desk” residual → Gaziosmanpaşa + yazılı teklif
 - Blind #21 «sektör dizinine nasıl yazılır?» — skor /63
 - cite-parity + smoke llms-full slogan needle
+
+## Gün 74 notları
+
+- **ARD drift fix:** ai-shopping discovery “17 kör test” → **22 kör test** (+ ai-catalog sync)
+- HomeCtaBand EN: quote desk invent → Gaziosmanpaşa yazılı teklif
+- EN about: “LED engineering” / Enterprise Quote soften
+- llms-full §5: dizin / slogan / AI-ready / rehber / Alman ARLED intent satırları
+- Blind #22 «Almanya ARLED ile aynı mı?» — skor /66
+- Playbook §5 haber cümlesi + ai-shopping cite

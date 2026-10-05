@@ -29,7 +29,7 @@ export function HomeCtaBand({ locale }: HomeCtaBandProps) {
         ? "اطلب عرض سعر أو استكشف المواد والتكلفة عبر الحاسبة المباشرة."
         : locale === "ru"
           ? "Запросите КП или оцените материалы и стоимость в живом калькуляторе."
-          : "Reach our quote desk or explore materials and cost with the live calculator.";
+          : "Request a written quote from Gaziosmanpaşa, or explore materials and cost with the live calculator.";
 
   const waLabel = locale === "tr" ? "WhatsApp'tan yazın" : locale === "ar" ? "واتساب" : locale === "ru" ? "WhatsApp" : "WhatsApp us";
   const socialLabel = locale === "tr" ? "Bize ulaşın" : locale === "ar" ? "تواصل معنا" : locale === "ru" ? "Связаться" : "Contact us";

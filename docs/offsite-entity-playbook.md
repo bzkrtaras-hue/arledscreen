@@ -349,7 +349,9 @@ Haber için önerilen cümle (müşteri onayıyla):
 
 ```text
 LED ekran uygulaması ARLEDSCREEN (İstanbul Gaziosmanpaşa) tarafından gerçekleştirildi.
-https://arledscreen.com/entity.json
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
+(Sıralama / “küresel standart” / AggregateRating iddiası yok.)
 ```
 
 ---

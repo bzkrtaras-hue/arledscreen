@@ -267,7 +267,7 @@ const en: Dictionary = {
     subcopy:
       "Fine-pitch, outdoor LED, totems and digital signage. NXTIONSTAR products with end-to-end compatibility for AI, media servers and control software — engineered by ARLEDSCREEN.",
     ctaConfigure: "Price List / Calculator",
-    ctaQuote: "Request Enterprise Quote",
+    ctaQuote: "Request written quote",
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },
       { value: "Istanbul", label: "Gaziosmanpaşa HQ" },
@@ -329,11 +329,11 @@ const en: Dictionary = {
   },
   about: {
     eyebrow: "Company",
-    title: "ARLEDSCREEN — LED engineering in Turkey",
+    title: "ARLEDSCREEN — LED sales, install & service in Turkey",
     description:
-      "ARLEDSCREEN delivers LED systems in Turkey. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product sub-brand.",
+      "ARLEDSCREEN delivers LED systems in Turkey from Istanbul Gaziosmanpaşa. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product brand; sole sales point in Turkey: ARLEDSCREEN.",
     body:
-      "From fine-pitch command centers to IP65 outdoor LED and totem installs, our Gaziosmanpaşa team pairs product choice with viewing distance, power topology and a clear BOM. We serve integrators, agencies and facility owners who need field-ready systems — not showroom theatre.",
+      "From fine-pitch command centers to IP65 outdoor LED and totem installs, our Gaziosmanpaşa team pairs product choice with viewing distance, power topology and a clear BOM. Panel USD: catalog.json / ai-shopping.json; transparent/poster/control stay quote-only.",
     cta: "Read more about us",
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },

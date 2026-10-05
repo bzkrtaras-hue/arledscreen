@@ -28,7 +28,7 @@ Hedef: **16/16 PASS** (BLOCKED 0).
 
 | URL | Beklenen |
 |-----|----------|
-| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · extrasUsd≠list SKU · ücretsiz kargo yok · blind #13–#21 |
+| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · extrasUsd≠list SKU · ücretsiz kargo yok · blind #13–#22 |
 | `/entity.json` | 200 JSON · `citeOneLiner` · Gaziosmanpaşa · `hasOfferCatalog` + kontrol |
 | `/entity-profiles.json` | 200 JSON · `gbpDescription` · `linkedinAbout` · `sameAsReadiness` |
 | `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` · `shippingDetails` · `hasMerchantReturnPolicy` · ücretsiz kargo yok · quoteOnly+kontrol |
@@ -86,11 +86,11 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 
 ## 4) Kör tur 1 (deploy sonrası)
 
-Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 21 prompt × 0–3 = /63  
+Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 22 prompt × 0–3 = /66  
 **mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3)  
 Skor: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
-Hedef tur 1 ≥ 26/63; Point C sonrası tur 2 ≥ 38/63.
+Hedef tur 1 ≥ 26/66; Point C sonrası tur 2 ≥ 38/66.
 
 ## 5) Day 57–64 canlı doğrulama (özet)
 

@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 21 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 22 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 21) errors.push(`blindTestPrompts must be 21 (got ${prompts.length})`);
+if (prompts.length !== 22) errors.push(`blindTestPrompts must be 22 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,8 +163,8 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/17 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 17 kör test intent");
+if (!/22 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 22 kör test intent");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -235,6 +235,11 @@ if (!p20 || !/küresel|kuresel|global/i.test(p20.q || "")) {
 const p21 = (doc.blindTestPrompts || []).find((p) => p.id === 21);
 if (!p21 || !/dizin/i.test(p21.q || "")) {
   errors.push("blindTestPrompts #21 must cover sektör dizin / Point C pack invent");
+}
+// Day 74: Alman ARLED disambiguation
+const p22 = (doc.blindTestPrompts || []).find((p) => p.id === 22);
+if (!p22 || !/Almanya|ARLED/i.test(p22.q || "")) {
+  errors.push("blindTestPrompts #22 must cover Almanya ARLED disambiguation");
 }
 
 if (errors.length) {
