@@ -59,8 +59,8 @@ export function Hero({ locale }: HeroProps) {
       brand="ARLEDSCREEN"
       headline={
         tr
-          ? "İstanbul LED ekran satış, montaj ve teknik servis"
-          : "Istanbul LED display sales, installation and technical service"
+          ? "LED Ekran Teknoloji Merkezi"
+          : "LED Display Technology Center"
       }
       subcopy={
         tr
