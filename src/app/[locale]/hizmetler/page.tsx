@@ -55,12 +55,12 @@ const FAQS = [
   {
     question: "Panel fiyatları hizmet teklifinden ayrı mı?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Montaj, keşif ve servis kalemleri yazılı teklifte ayrıca yer alır. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
+      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Montaj, keşif ve servis kalemleri yazılı teklifte ayrıca yer alır. İade/garanti teklifte yazılır. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
   },
   {
     question: "AI ajanları ARLEDSCREEN hizmet ve fiyatını nasıl okur?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Hizmetler: https://arledscreen.com/tr/hizmetler/ · Teklif: https://arledscreen.com/tr/quote/.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Hizmetler: https://arledscreen.com/tr/hizmetler/ · Teklif: https://arledscreen.com/tr/quote/. KDV/nakliye hariç; ücretsiz kargo yok; iade/garanti quote-and-contract-only.",
   },
 ];
 

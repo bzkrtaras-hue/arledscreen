@@ -45,7 +45,7 @@ export const CHECKS = [
     url: `${SITE}/catalog.json`,
     outRel: "catalog.json",
     expect: "json",
-    mustInclude: ["dataset", "groupAggregateOffers", "shippingDetails", "hasMerchantReturnPolicy", "MerchantReturnNotPermitted"],
+    mustInclude: ["dataset", "groupAggregateOffers", "shippingDetails", "hasMerchantReturnPolicy", "MerchantReturnNotPermitted", "ücretsiz kargo yok"],
     cors: true,
     contentType: "application/json",
   },

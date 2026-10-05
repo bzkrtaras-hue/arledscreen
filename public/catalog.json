@@ -65,7 +65,7 @@
         "p5-dis"
       ],
       "priceValidUntil": "2026-12-31",
-      "description": "12 priced panel USD bandı (iç + dış + GOB). Quote-only ürünler dahil değildir.",
+      "description": "12 priced panel USD bandı (iç + dış + GOB). KDV ve nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only. Quote-only ürünler dahil değildir.",
       "seller": {
         "@id": "https://arledscreen.com/#organization"
       }
@@ -88,7 +88,7 @@
         "p5-dis"
       ],
       "priceValidUntil": "2026-12-31",
-      "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
+      "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme (quote-and-contract-only). Kaynak: PANEL_PRICES → catalog.json.",
       "seller": {
         "@id": "https://arledscreen.com/#organization"
       }
@@ -108,7 +108,7 @@
         "p1-86-ic-gob"
       ],
       "priceValidUntil": "2026-12-31",
-      "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
+      "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme (quote-and-contract-only). Kaynak: PANEL_PRICES → catalog.json.",
       "seller": {
         "@id": "https://arledscreen.com/#organization"
       }
@@ -131,7 +131,7 @@
         "p4-ic"
       ],
       "priceValidUntil": "2026-12-31",
-      "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
+      "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme (quote-and-contract-only). Kaynak: PANEL_PRICES → catalog.json.",
       "seller": {
         "@id": "https://arledscreen.com/#organization"
       }

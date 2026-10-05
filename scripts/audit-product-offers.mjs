@@ -295,6 +295,9 @@ if (fs.existsSync(catalogPath)) {
         errors.push(`catalog all offerCount ${all.offerCount} != ${priceById.size}`);
       }
       if (all.priceCurrency !== "USD") errors.push("catalog all AggregateOffer currency");
+      if (!/ücretsiz kargo yok/i.test(String(all.description || ""))) {
+        errors.push("catalog all AggregateOffer description must state ücretsiz kargo yok");
+      }
     }
     const forbidden = ["seffaf", "transparan", "esnek", "poster", "kiralik", "kontrol"];
     for (const g of groups) {
@@ -304,6 +307,9 @@ if (fs.existsSync(catalogPath)) {
       }
       if (forbidden.some((f) => String(g.url || g["@id"] || "").includes(f))) {
         errors.push(`catalog groupAggregateOffers must not include quote-only ${g.url}`);
+      }
+      if (!/ücretsiz kargo yok|nakliye hariç/i.test(String(g.description || ""))) {
+        errors.push(`catalog AggregateOffer ${g.name || g["@id"]} description must state nakliye/ücretsiz kargo honesty`);
       }
       const count = Number(g.offerCount);
       const skus = Array.isArray(g.sku) ? g.sku : [];

@@ -146,7 +146,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
             offerCount: prices.length,
             priceValidUntil: PRICE_VALID_UNTIL,
             description:
-              "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: catalog.json groupAggregateOffers.",
+              "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme. Kaynak: catalog.json groupAggregateOffers.",
             seller: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/catalog.json` },
           },

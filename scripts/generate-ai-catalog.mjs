@@ -202,7 +202,7 @@ function groupAggregateOffers() {
       sku: rows.map((r) => r.id),
       priceValidUntil: PRICE_VALID_UNTIL,
       description:
-        "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
+        "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme (quote-and-contract-only). Kaynak: PANEL_PRICES → catalog.json.",
       seller: { "@id": `${SITE}/#organization` },
     });
   }
@@ -219,7 +219,7 @@ function groupAggregateOffers() {
     sku: prices.map((p) => p.id),
     priceValidUntil: PRICE_VALID_UNTIL,
     description:
-      "12 priced panel USD bandı (iç + dış + GOB). Quote-only ürünler dahil değildir.",
+      "12 priced panel USD bandı (iç + dış + GOB). KDV ve nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only. Quote-only ürünler dahil değildir.",
     seller: { "@id": `${SITE}/#organization` },
   });
   return out;

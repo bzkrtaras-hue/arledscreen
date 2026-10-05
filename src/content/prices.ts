@@ -176,7 +176,8 @@ export function panelProductsJsonLd(
         highPrice: Math.max(...usd).toFixed(2),
         offerCount: panels.length,
         priceValidUntil: PRICE_VALID_UNTIL,
-        description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: catalog.json.",
+        description:
+          "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme. Kaynak: catalog.json.",
         seller: org,
         isPartOf: { "@id": `${SITE_URL}/catalog.json` },
       },

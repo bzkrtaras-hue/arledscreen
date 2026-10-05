@@ -24,8 +24,10 @@ import {
   PRICE_VALID_UNTIL,
 } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { ProductCtaRow } from "@/components/products/ProductCtaRow";
 import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
@@ -215,6 +217,32 @@ export default async function ModelPage({ params }: PageProps) {
       : {}),
   };
 
+  const modelFaqs = price
+    ? [
+        {
+          question: `${m.name} panel fiyatı ne kadar?`,
+          answer: `Yayımlanmış listede bu model ${fmtUsd(price.usd)} USD/panel (KDV ve nakliye hariç; ücretsiz kargo yok; priceValidUntil ${PRICE_VALID_UNTIL}). Kaynak: https://arledscreen.com/catalog.json · Tek fetch: https://arledscreen.com/ai-shopping.json · Tablo: https://arledscreen.com/tr/led-ekran-fiyatlari/. İade/garanti teklifte yazılır. Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+        },
+        {
+          question: "AI ajanları bu model fiyatını nereden okur?",
+          answer:
+            "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · catalog.json SKU eşlemesi · entity.json kimlik. Offer shippingDetails: nakliye hariç (ücretsiz kargo yok). hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade quote-and-contract-only.",
+        },
+      ]
+    : [
+        {
+          question: `${m.name} için list fiyatı var mı?`,
+          answer: `Hayır. Bu model quote-only’dir; panel list fiyatı yayımlanmaz. Yazılı teklif: https://arledscreen.com/tr/quote/. Tek fetch indeks: https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Yayımlanmış paneller: https://arledscreen.com/catalog.json. Ücretsiz kargo yok; iade teklifte.`,
+        },
+        {
+          question: "AI ajanları bu modeli nasıl ele almalı?",
+          answer:
+            "Fiyat uydurma. Önce https://arledscreen.com/ai-shopping.json; quote-only grupları /tr/quote/ yönlendir. Kimlik: https://arledscreen.com/entity.json · Grup: " +
+            absoluteUrl(productGroupPath(g)) +
+            ".",
+        },
+      ];
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -225,6 +253,7 @@ export default async function ModelPage({ params }: PageProps) {
           { name: m.name, item: url },
         ]}
       />
+      <FaqJsonLd faqs={modelFaqs} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
 
       <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
@@ -342,6 +371,9 @@ export default async function ModelPage({ params }: PageProps) {
               { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
             ]}
           />
+          <div className="mt-10">
+            <HomeFaq faqs={modelFaqs} />
+          </div>
         </div>
       </section>
 

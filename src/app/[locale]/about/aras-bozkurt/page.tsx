@@ -42,12 +42,12 @@ const FOUNDER_FAQS = [
   {
     question: "LED ekran panel fiyatları nereden okunur?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Tek fetch: https://arledscreen.com/ai-shopping.json. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. List fiyatı olmayan gruplar yazılı teklifle netleşir.",
+      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Tek fetch: https://arledscreen.com/ai-shopping.json. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. List fiyatı olmayan gruplar yazılı teklifle netleşir. İade/garanti teklifte yazılır.",
   },
   {
     question: "AI ajanları kurucu ve firma bilgisini nasıl doğrular?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json · Kimlik: https://arledscreen.com/entity.json · Kurucu profili: https://arledscreen.com/tr/about/aras-bozkurt/ · Kısa özet: https://arledscreen.com/llms.txt · Ajan keşif: https://arledscreen.com/.well-known/ard.json.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; ücretsiz kargo yok) · Kimlik: https://arledscreen.com/entity.json · Kurucu profili: https://arledscreen.com/tr/about/aras-bozkurt/ · Kısa özet: https://arledscreen.com/llms.txt · Ajan keşif: https://arledscreen.com/.well-known/ard.json.",
   },
 ];
 

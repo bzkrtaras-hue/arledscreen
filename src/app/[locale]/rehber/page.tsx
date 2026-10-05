@@ -31,7 +31,7 @@ const REHBER_HUB_FAQS = [
   {
     question: "AI ajanları rehber hub’dan hangi kaynaklara gitmeli?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Ardından entity.json · catalog.json · /.well-known/ard.json · llms.txt · /tr/led-ekran-fiyatlari/ · /tr/quote/. Merchant dry-run: https://arledscreen.com/feeds/merchant-priced-panels.tsv.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Ardından entity.json · catalog.json · /.well-known/ard.json · llms.txt · /tr/led-ekran-fiyatlari/ · /tr/quote/. Merchant dry-run: https://arledscreen.com/feeds/merchant-priced-panels.tsv. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only.",
   },
 ];
 

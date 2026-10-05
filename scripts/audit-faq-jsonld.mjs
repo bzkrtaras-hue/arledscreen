@@ -41,7 +41,7 @@ const FORBIDDEN = [
 const PRICE_HINT = /catalog\.json|led-ekran-fiyatlari/;
 const AI_SHOPPING_HINT = /ai-shopping\.json/;
 
-function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShopping = false } = {}) {
+function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShopping = false, requireHonesty = false } = {}) {
   const file =
     rel === "." || rel === ""
       ? path.join(outTr, "index.html")
@@ -74,6 +74,7 @@ function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShoppi
   }
   let priceOk = false;
   let aiOk = false;
+  let honestyOk = false;
   for (const q of ents) {
     const name = q?.name || "";
     const ans = q?.acceptedAnswer?.text || "";
@@ -82,6 +83,7 @@ function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShoppi
     if (ans.trim().length < 40) errors.push(`${rel}: short answer for "${name.slice(0, 40)}"`);
     if (PRICE_HINT.test(ans) || PRICE_HINT.test(name)) priceOk = true;
     if (AI_SHOPPING_HINT.test(ans) || AI_SHOPPING_HINT.test(name)) aiOk = true;
+    if (/ücretsiz kargo yok/i.test(ans) || /quote-and-contract/i.test(ans)) honestyOk = true;
     for (const re of FORBIDDEN) {
       if (re.test(ans) || re.test(name)) errors.push(`${rel}: forbidden claim in FAQ`);
     }
@@ -92,6 +94,9 @@ function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShoppi
   if (requireAiShopping && !aiOk) {
     errors.push(`${rel}: no FAQ answer mentions ai-shopping.json`);
   }
+  if (requireHonesty && !honestyOk) {
+    errors.push(`${rel}: FAQ must state ücretsiz kargo yok or quote-and-contract honesty`);
+  }
 }
 
 let checked = 0;
@@ -99,10 +104,15 @@ for (const slug of commercialSlugs) {
   checked += 1;
   auditPage(slug, { minCount: 2, requirePriceHint: true, requireAiShopping: true });
 }
-auditPage("bolgeler", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
+auditPage("bolgeler", { minCount: 3, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
 for (const slug of regionDirs) {
   checked += 1;
-  auditPage(`bolgeler/${slug}`, { minCount: 3, requirePriceHint: true, requireAiShopping: true });
+  auditPage(`bolgeler/${slug}`, {
+    minCount: 3,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
 }
 
 const productDirs = fs
@@ -111,27 +121,115 @@ const productDirs = fs
   .map((d) => d.name);
 for (const slug of productDirs) {
   checked += 1;
-  auditPage(`products/${slug}`, { minCount: 2, requirePriceHint: true, requireAiShopping: true });
+  auditPage(`products/${slug}`, {
+    minCount: 2,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
 }
-auditPage("led-ekran-fiyatlari", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
-auditPage("hesaplayici", { minCount: 2, requirePriceHint: true });
-auditPage("quote", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
-auditPage("about", { minCount: 4, requirePriceHint: true, requireAiShopping: true });
-auditPage("nxtionstar", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
-auditPage("products", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
-auditPage("about/aras-bozkurt", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
-auditPage("yapay-zeka", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
-auditPage("sss", { minCount: 4, requirePriceHint: true, requireAiShopping: true });
-auditPage("hizmetler", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
-auditPage(".", { minCount: 4, requirePriceHint: true, requireAiShopping: true }); // TR home
-auditPage("rehber", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
-auditPage("projelerimiz", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
+auditPage("led-ekran-fiyatlari", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("hesaplayici", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("quote", { minCount: 2, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("about", { minCount: 4, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("nxtionstar", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("products", { minCount: 2, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("about/aras-bozkurt", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("yapay-zeka", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("sss", { minCount: 4, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("hizmetler", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage(".", { minCount: 4, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("rehber", { minCount: 3, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("projelerimiz", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
 auditPage("blog", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
-auditPage("rehber/piksel-araligi-secimi", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
-auditPage("rehber/kiralik-mi-satin-alma", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
-auditPage("rehber/gob-vs-smd", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
-auditPage("rehber/led-tabela-mi-led-ekran-mi", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
-auditPage("rehber/led-ekran-fiyatlari", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
+auditPage("bolgeler", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/piksel-araligi-secimi", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/kiralik-mi-satin-alma", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/gob-vs-smd", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/led-tabela-mi-led-ekran-mi", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/led-ekran-fiyatlari", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+
+// Day 59: model pages must ship FAQPage + ai-shopping cite (blind #3)
+let modelFaqChecked = 0;
+for (const group of productDirs) {
+  const groupDir = path.join(outTr, "products", group);
+  for (const ent of fs.readdirSync(groupDir, { withFileTypes: true })) {
+    if (!ent.isDirectory()) continue;
+    modelFaqChecked += 1;
+    auditPage(`products/${group}/${ent.name}`, {
+      minCount: 2,
+      requirePriceHint: true,
+      requireAiShopping: true,
+      requireHonesty: true,
+    });
+  }
+}
+
 const seoGuideSrc = fs.readFileSync(path.join(root, "src/content/seo-guides.ts"), "utf8");
 const seoGuideBlock = seoGuideSrc.match(/export const SEO_GUIDE_SLUGS = \[([\s\S]*?)\] as const/);
 const seoGuideSlugs = seoGuideBlock
@@ -139,11 +237,16 @@ const seoGuideSlugs = seoGuideBlock
   : [];
 for (const slug of seoGuideSlugs) {
   checked += 1;
-  auditPage(`rehber/${slug}`, { minCount: 3, requirePriceHint: true });
+  auditPage(`rehber/${slug}`, {
+    minCount: 3,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
 }
 
 console.log(
-  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles + ${seoGuideSlugs.length} seo-guides`,
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + ${modelFaqChecked} models + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles + ${seoGuideSlugs.length} seo-guides`,
 );
 if (errors.length) {
   console.error("FAIL:");
