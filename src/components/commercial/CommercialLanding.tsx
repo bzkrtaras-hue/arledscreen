@@ -34,13 +34,22 @@ function LinkCloud({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="font-display text-lg font-bold text-ink md:text-xl">{title}</h2>
         <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
-          {links.map((l) => (
-            <li key={l.href}>
-              <Link href={l.href} className="text-sm font-semibold text-cyan hover:underline">
-                {l.label}
-              </Link>
-            </li>
-          ))}
+          {links.map((l) => {
+            const externalish = /\.(json|txt)$/i.test(l.href) || l.href.startsWith("/.well-known/");
+            return (
+              <li key={l.href}>
+                {externalish ? (
+                  <a href={l.href} className="text-sm font-semibold text-cyan hover:underline">
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link href={l.href} className="text-sm font-semibold text-cyan hover:underline">
+                    {l.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -145,6 +154,12 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
               <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                 Fiyatlar
               </Link>
+              <a href="/catalog.json" className="font-semibold text-cyan hover:underline">
+                catalog.json
+              </a>
+              <Link href="/tr/quote/" className="font-semibold text-cyan hover:underline">
+                Teklif
+              </Link>
               <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
                 Hesaplayıcı
               </Link>
@@ -225,10 +240,13 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
       )}
 
       <LinkCloud
-        title="Fiyat ve seçim"
+        title="Fiyat, katalog ve teklif"
         links={[
           { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları 2026" },
+          { href: "/catalog.json", label: "catalog.json (panel USD)" },
+          { href: "/tr/quote/", label: "Yazılı teklif" },
           { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
+          { href: "/entity.json", label: "entity.json (kimlik)" },
           { href: "/tr/rehber/piksel-araligi-secimi/", label: "Piksel aralığı seçimi" },
           { href: "/tr/rehber/gob-vs-smd/", label: "GOB vs SMD" },
           { href: "/tr/rehber/kiralik-mi-satin-alma/", label: "Kiralık mı, satın alma mı?" },

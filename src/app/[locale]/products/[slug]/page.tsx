@@ -576,6 +576,41 @@ export default async function ProductGroupPage({ params }: PageProps) {
         </div>
       </section>
 
+      <section className="border-t border-border bg-white py-10 md:py-12" aria-labelledby="alisveris-kaynaklari">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 id="alisveris-kaynaklari" className="font-display text-lg font-bold text-ink md:text-xl">
+            Fiyat, katalog ve teklif
+          </h2>
+          <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            <li>
+              <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                LED ekran fiyatları 2026
+              </Link>
+            </li>
+            <li>
+              <a href="/catalog.json" className="font-semibold text-cyan hover:underline">
+                catalog.json
+              </a>
+            </li>
+            <li>
+              <Link href={quoteHref} className="font-semibold text-cyan hover:underline">
+                Yazılı teklif
+              </Link>
+            </li>
+            <li>
+              <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
+                Fiyat hesaplayıcı
+              </Link>
+            </li>
+            <li>
+              <a href="/entity.json" className="font-semibold text-cyan hover:underline">
+                entity.json
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <HomeCtaBand locale="tr" />
     </>
   );
