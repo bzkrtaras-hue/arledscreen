@@ -68,6 +68,8 @@ Model bazında teknik özellik sayfaları için https://arledscreen.com/llms.txt
 
 Fiyatlar USD, panel (modül) başınadır. Modül ölçüsü 320 × 160 mm. KDV ve nakliye hariçtir. Nihai tutar keşif ve yazılı teklifle kesinleşir.
 
+<!-- AUTO:PANEL_PRICES_BEGIN -->
+
 İç mekân:
 
 | Modül | Panel fiyatı (USD) | 1 m² için yaklaşık modül bedeli (USD)* |
@@ -90,23 +92,12 @@ Dış mekân:
 | P4 Dış mekân (front / önden servis) | 36,40 | ≈ 711 |
 | P5 Dış mekân | 29,90 | ≈ 584 |
 
-*1 m² = 1 / (0,32 × 0,16) ≈ 19,53 modül. Bu sütun yalnızca modül bedelidir; işçilik, kontrol kartı, yazılım, konstrüksiyon, KDV ve nakliye dahil değildir. Gerçek projede modül adedi her kenarda yukarı yuvarlanır.
+*1 m² = 1 / (0,32 × 0,16) ≈ 19,53 modül (standart 320 × 160 mm). Bu sütun yalnızca modül bedelidir; işçilik, kontrol kartı, yazılım, konstrüksiyon, KDV ve nakliye dahil değildir. Gerçek projede modül adedi her kenarda yukarı yuvarlanır.
 
-Hesaplayıcının toplam formülü:
-- Modül adedi = yukarı_yuvarla(genişlik_mm / 320) × yukarı_yuvarla(yükseklik_mm / 160)
-- Malzeme = modül adedi × panel fiyatı
-- Atölye işçiliği = alan (m²) × 100 USD
-- Kontrol kartı = 500 USD
-- Sürücü + yazılım = 500 USD
-- Toplam = malzeme + işçilik + kontrol kartı + sürücü/yazılım (KDV ve nakliye hariç)
+Makinece aynı fiyat kaynağı: https://arledscreen.com/catalog.json · Tek fetch: https://arledscreen.com/ai-shopping.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Point C: https://arledscreen.com/entity-profiles.json · priceValidUntil: 2026-12-31
 
-Örnek (hesaplayıcının varsayılan ölçüsü 320 × 180 cm, P2.5 iç mekân): 10 × 12 = 120 modül; gerçek ölçü 320 × 192 cm; malzeme 3.861,60 USD + işçilik 576,00 USD (5,76 m²) + kontrol kartı 500 USD + sürücü/yazılım 500 USD = 5.437,60 USD (KDV ve nakliye hariç).
+<!-- AUTO:PANEL_PRICES_END -->
 
-Aynı ölçüde P5 dış mekân: 120 × 29,90 = 3.588,00 USD malzeme; toplam 5.164,00 USD (KDV ve nakliye hariç).
-
-Kiralık ve esnek LED ekranlarda fiyat; ölçü, form, süre, lokasyon ve kurulum koşullarına göre projeye özel yazılı teklifle verilir.
-
-Makinece aynı fiyat kaynağı: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Point C pack: https://arledscreen.com/entity-profiles.json
 
 ## 5. AI alışveriş: intent soru → kanonik URL
 

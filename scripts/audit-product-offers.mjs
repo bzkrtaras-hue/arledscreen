@@ -139,6 +139,9 @@ for (const model of models) {
     if (!partOf.includes("/catalog.json")) {
       errors.push(`${model.group}/${model.slug}: priced Product/Offer must isPartOf catalog.json`);
     }
+    if (offers.priceValidUntil !== "2026-12-31") {
+      errors.push(`${model.group}/${model.slug}: offers.priceValidUntil must be 2026-12-31`);
+    }
   } else {
     quoteChecked += 1;
     if (product.offers) {

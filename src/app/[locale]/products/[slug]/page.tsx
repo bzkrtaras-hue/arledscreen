@@ -5,7 +5,15 @@ import { ArrowRight, BookOpen, Calculator, CalendarDays, Check, ChevronRight, Fi
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
-import { CALC_EXTRAS, fmtM2, fmtUsd, panelProductsJsonLd, pricesForGroup, type PanelPrice } from "@/content/prices";
+import {
+  CALC_EXTRAS,
+  fmtM2,
+  fmtUsd,
+  panelProductsJsonLd,
+  pricesForGroup,
+  PRICE_VALID_UNTIL,
+  type PanelPrice,
+} from "@/content/prices";
 import { modelPath, modelsForGroup, modelUrlForPrice, SPEC_LABELS, type SpecKey } from "@/content/models";
 import { OptImage } from "@/components/ui/opt-image";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -136,6 +144,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
             lowPrice: Math.min(...prices.map((x) => x.usd)).toFixed(2),
             highPrice: Math.max(...prices.map((x) => x.usd)).toFixed(2),
             offerCount: prices.length,
+            priceValidUntil: PRICE_VALID_UNTIL,
             description:
               "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: catalog.json groupAggregateOffers.",
             seller: { "@id": `${SITE_URL}/#organization` },

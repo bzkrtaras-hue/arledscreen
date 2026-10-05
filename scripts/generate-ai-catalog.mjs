@@ -86,6 +86,7 @@ const products = prices.map((p) => {
       url,
       price: p.usd.toFixed(2),
       priceCurrency: "USD",
+      priceValidUntil: "2026-12-31",
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       priceSpecification: {
@@ -168,6 +169,7 @@ function groupAggregateOffers() {
       highPrice: Math.max(...usd).toFixed(2),
       offerCount: rows.length,
       sku: rows.map((r) => r.id),
+      priceValidUntil: "2026-12-31",
       description:
         "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
       seller: { "@id": `${SITE}/#organization` },
@@ -184,6 +186,7 @@ function groupAggregateOffers() {
     highPrice: Math.max(...allUsd).toFixed(2),
     offerCount: prices.length,
     sku: prices.map((p) => p.id),
+    priceValidUntil: "2026-12-31",
     description:
       "12 priced panel USD bandı (iç + dış + GOB). Quote-only ürünler dahil değildir.",
     seller: { "@id": `${SITE}/#organization` },

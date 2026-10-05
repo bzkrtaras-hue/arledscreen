@@ -92,6 +92,7 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
       lowPrice: Math.min(...usd).toFixed(2),
       highPrice: Math.max(...usd).toFixed(2),
       offerCount: pitchPanels.length,
+      priceValidUntil: "2026-12-31",
       sku: pitchPanels.map((p) => p.id),
       description: `${pitchLabel} yayımlanmış panel USD bandı; KDV ve nakliye hariç. Kaynak: catalog.json.`,
       seller: { "@id": `${SITE_URL}/#organization` },

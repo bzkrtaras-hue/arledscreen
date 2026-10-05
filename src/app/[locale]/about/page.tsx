@@ -166,6 +166,11 @@ export default async function AboutPage({ params }: PageProps) {
                 </a>
               </li>
               <li>
+                <a href="/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                  ai-shopping.json
+                </a>
+              </li>
+              <li>
                 <a href="/entity.json" className="font-semibold text-cyan hover:underline">
                   entity.json
                 </a>

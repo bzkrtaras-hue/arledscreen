@@ -39,6 +39,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 47 | 2026-10-05 | Offer↔catalog join (sku/@id) + pitch AggregateOffer + llms USD parity | ✅ |
 | 48 | 2026-10-05 | `ai-shopping.json` tek-fetch index + `post-deploy` + entity hasOfferCatalog | ✅ |
 | 49 | 2026-10-05 | ai-shopping.json birincil ajan girişi (yapay-zeka/footer/FAQ/llms) | ✅ |
+| 50 | 2026-10-05 | Offer `priceValidUntil` + `sync-llms-prices` otomatik PANEL tablosu | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -193,3 +194,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Organization WebSite significantLink → ai-shopping.json
 - smoke/blind-test: yapay-zeka mustInclude ai-shopping.json
 - post-deploy: Point C + kör tur hatırlatma
+
+## Gün 50 notları
+
+- `PRICE_VALID_UNTIL=2026-12-31` — Product/Offer/AggregateOffer (model, group, pitch, catalog)
+- `scripts/sync-llms-prices.mjs` — build’de PANEL_PRICES → llms-full.txt AUTO blok
+- about: ai-shopping.json birincil kaynak linki
+- Guards: audit:offers + cite-parity `priceValidUntil`; smoke about mustInclude ai-shopping

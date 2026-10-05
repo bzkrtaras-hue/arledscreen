@@ -144,6 +144,9 @@ if (seoSrc) {
 const pricesSrc = read("src/content/prices.ts");
 const llmsFull = read("public/llms-full.txt");
 if (pricesSrc && llmsFull) {
+  if (!llmsFull.includes("<!-- AUTO:PANEL_PRICES_BEGIN -->") || !llmsFull.includes("<!-- AUTO:PANEL_PRICES_END -->")) {
+    errors.push("llms-full.txt missing AUTO:PANEL_PRICES markers (run npm run llms-prices)");
+  }
   const usdRe =
     /\{\s*id:\s*"([^"]+)",\s*pitch:\s*"([^"]+)",\s*pitchMm:\s*([\d.]+),\s*use:\s*"(ic|dis)",\s*(?:surface:\s*"GOB",\s*)?(?:frontService:\s*true,\s*)?usd:\s*([\d.]+)/g;
   for (const m of pricesSrc.matchAll(usdRe)) {
@@ -154,6 +157,9 @@ if (pricesSrc && llmsFull) {
     if (!llmsFull.includes(comma) && !llmsFull.includes(dot)) {
       errors.push(`llms-full.txt missing PANEL_PRICES ${id} USD ${comma}`);
     }
+  }
+  if (!llmsFull.includes("priceValidUntil: 2026-12-31") && !llmsFull.includes("2026-12-31")) {
+    errors.push("llms-full.txt AUTO price block should cite priceValidUntil 2026-12-31");
   }
 }
 

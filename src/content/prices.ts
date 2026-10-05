@@ -27,6 +27,9 @@ export const CALC_EXTRAS = {
   driverSoftware: 500,
 };
 
+/** Published list year window — agents/Merchant may treat prices as dated. */
+export const PRICE_VALID_UNTIL = "2026-12-31";
+
 export const PANEL_PRICES: PanelPrice[] = [
   { id: "p1-25-ic-gob", pitch: "P1.25", pitchMm: 1.25, use: "ic", surface: "GOB", usd: 95.88, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
   { id: "p1-53-ic-gob", pitch: "P1.53", pitchMm: 1.53, use: "ic", surface: "GOB", usd: 62.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
@@ -107,6 +110,7 @@ export function panelProductsJsonLd(
       url: u,
       price: p.usd.toFixed(2),
       priceCurrency: "USD",
+      priceValidUntil: PRICE_VALID_UNTIL,
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         price: p.usd.toFixed(2),
@@ -137,6 +141,7 @@ export function panelProductsJsonLd(
         lowPrice: Math.min(...usd).toFixed(2),
         highPrice: Math.max(...usd).toFixed(2),
         offerCount: panels.length,
+        priceValidUntil: PRICE_VALID_UNTIL,
         description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: catalog.json.",
         seller: org,
         isPartOf: { "@id": `${SITE_URL}/catalog.json` },

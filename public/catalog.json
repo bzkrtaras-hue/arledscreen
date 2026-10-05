@@ -60,6 +60,7 @@
         "p4-dis-front",
         "p5-dis"
       ],
+      "priceValidUntil": "2026-12-31",
       "description": "12 priced panel USD bandı (iç + dış + GOB). Quote-only ürünler dahil değildir.",
       "seller": {
         "@id": "https://arledscreen.com/#organization"
@@ -82,6 +83,7 @@
         "p4-dis-front",
         "p5-dis"
       ],
+      "priceValidUntil": "2026-12-31",
       "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
       "seller": {
         "@id": "https://arledscreen.com/#organization"
@@ -101,6 +103,7 @@
         "p1-53-ic-gob",
         "p1-86-ic-gob"
       ],
+      "priceValidUntil": "2026-12-31",
       "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
       "seller": {
         "@id": "https://arledscreen.com/#organization"
@@ -123,6 +126,7 @@
         "p3-07-ic",
         "p4-ic"
       ],
+      "priceValidUntil": "2026-12-31",
       "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
       "seller": {
         "@id": "https://arledscreen.com/#organization"
@@ -177,6 +181,7 @@
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
         "price": "95.88",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -246,6 +251,7 @@
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
         "price": "62.08",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -315,6 +321,7 @@
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
         "price": "49.08",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -379,6 +386,7 @@
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
         "price": "32.18",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -443,6 +451,7 @@
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
         "price": "30.88",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -507,6 +516,7 @@
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
         "price": "26.98",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -571,6 +581,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
         "price": "63.70",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -635,6 +646,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
         "price": "53.30",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -699,6 +711,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
         "price": "44.20",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -763,6 +776,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
         "price": "33.80",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -832,6 +846,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
         "price": "36.40",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
@@ -896,6 +911,7 @@
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
         "price": "29.90",
         "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
         "priceSpecification": {
