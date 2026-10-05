@@ -162,7 +162,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           className="ml-auto hidden min-w-0 flex-1 justify-center xl:flex"
           aria-label={tr ? "Ana menü" : "Primary"}
         >
-          <ul className="flex w-full flex-wrap items-center justify-center gap-1.5">
+          <ul className="flex w-full flex-nowrap items-center justify-end gap-1 xl:justify-center 2xl:gap-1.5">
             {links.map((link) =>
               link.dropdown && (link.dropdown === "products" ? groups.length : guides.length) ? (
                 <li

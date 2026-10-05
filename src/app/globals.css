@@ -650,14 +650,24 @@
 
   /* Desktop primary nav: each item is its own liquid-glass button */
   .liquid-glass-btn--nav {
-    min-height: 2.85rem;
-    padding-left: 0.85rem;
-    padding-right: 0.85rem;
-    gap: 0.2rem;
-    font-size: 0.9375rem;
+    min-height: 2.65rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    gap: 0.15rem;
+    font-size: 0.875rem;
     font-weight: 700;
     color: #2a3340;
     white-space: nowrap;
+  }
+  @media (min-width: 1400px) {
+    .liquid-glass-btn--nav {
+      min-height: 2.85rem;
+      padding-left: 0.85rem;
+      padding-right: 0.85rem;
+      font-size: 0.9375rem;
+    }
+  }
+  .liquid-glass-btn--nav {
     background:
       linear-gradient(
         165deg,
@@ -857,6 +867,7 @@
   .liquid-glass-btn--brand,
   .liquid-glass-btn--compact,
   .liquid-glass-btn--slogan,
+  .liquid-glass-btn--nav,
   .liquid-glass-shell--nav { background: #ffffff; }
   .menu-scrim { background: rgba(11, 27, 51, 0.5); }
   .menu-glass-panel,
