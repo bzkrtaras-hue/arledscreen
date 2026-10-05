@@ -46,16 +46,18 @@ function clipKey(clip: HeroClip) {
 }
 
 function coverClass(clip: HeroClip) {
-  // Portrait field / factory clips need a higher focal point than landscape walls.
+  // Native resolution via object-cover (no re-encode / no downscale of the file).
+  // Portrait installs need a higher focal point; landscape keeps centre-right LED walls.
   return clip.height > clip.width
-    ? "absolute inset-0 h-full w-full object-cover object-[50%_32%]"
-    : "absolute inset-0 h-full w-full object-cover object-[50%_40%] md:object-[55%_42%]";
+    ? "absolute inset-0 h-full w-full object-cover object-[50%_28%]"
+    : "absolute inset-0 h-full w-full object-cover object-[52%_42%] md:object-[58%_44%]";
 }
 
 /**
  * Full-bleed multi-clip hero with soft crossfades.
  * Supports HQ still precursors (factory) + muted field videos.
  * Left-settled stack: H1 → accent → glass plate (lead + pillars) → CTAs.
+ * Multi-clip soft rotate (~6–7s) at native resolution (object-cover only).
  */
 export function HeroVideo({
   clips,

@@ -7,64 +7,55 @@ interface HeroProps {
 }
 
 /**
- * Homepage hero — HQ factory stills (12MP field photos, web-sized) lead the
- * stage as sharp precursors; one native 1280 landscape video keeps motion.
+ * Homepage hero — soft-rotating field videos.
+ * Prefer native landscape 1280×720 first (sharpest inventory), then the
+ * highest-bitrate installation portraits. No further downscale on encode;
+ * browser object-cover scales without re-encoding.
  */
-const FACTORY_STILLS: {
-  poster: string;
-  width: number;
-  height: number;
-  labelTr: string;
-  labelEn: string;
-}[] = [
+const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   {
-    poster: "/hero/fabrika-kalibrasyon-duvar.jpg",
-    width: 2560,
-    height: 1920,
-    labelTr: "Fabrika kalibrasyon",
-    labelEn: "Factory calibration",
+    slug: "eskisehir-sigorta-led-ekran-vitrin",
+    labelTr: "Vitrin",
+    labelEn: "Storefront",
   },
   {
-    poster: "/hero/fabrika-modul-montaj.jpg",
-    width: 2560,
-    height: 1920,
-    labelTr: "Modül montaj",
-    labelEn: "Module assembly",
+    slug: "eskisehir-sigorta-led-ekran-ic",
+    labelTr: "İç mekân",
+    labelEn: "Indoor",
   },
   {
-    poster: "/hero/fabrika-kirmizi-test.jpg",
-    width: 1650,
-    height: 2200,
-    labelTr: "Kırmızı test",
-    labelEn: "Red test wall",
+    slug: "kafe-led-ekran-uygulamasi",
+    labelTr: "Lounge",
+    labelEn: "Lounge",
+  },
+  {
+    slug: "ic-mekan-led-ekran-montaji",
+    labelTr: "Montaj",
+    labelEn: "Install",
+  },
+  {
+    slug: "istanbul-drama-sanat-atolyesi-dis-mekan-led",
+    labelTr: "Cephe",
+    labelEn: "Façade",
   },
 ];
 
 export function Hero({ locale }: HeroProps) {
   const tr = locale === "tr";
 
-  const stillClips: HeroClip[] = FACTORY_STILLS.map((still) => ({
-    poster: still.poster,
-    width: still.width,
-    height: still.height,
-    label: tr ? still.labelTr : still.labelEn,
-  }));
-
-  const vitrin = getVideo("eskisehir-sigorta-led-ekran-vitrin");
-  const videoClips: HeroClip[] = vitrin
-    ? [
-        {
-          src: vitrin.src,
-          poster: vitrin.poster,
-          width: vitrin.width,
-          height: vitrin.height,
-          label: tr ? "Vitrin" : "Storefront",
-        },
-      ]
-    : [];
-
-  // Lead with sharp factory stills; close on the best landscape field clip.
-  const clips: HeroClip[] = [...stillClips.slice(0, 2), ...videoClips];
+  const clips: HeroClip[] = HERO_SCENES.flatMap((scene) => {
+    const video = getVideo(scene.slug);
+    if (!video) return [];
+    return [
+      {
+        src: video.src,
+        poster: video.poster,
+        width: video.width,
+        height: video.height,
+        label: tr ? scene.labelTr : scene.labelEn,
+      },
+    ];
+  });
 
   if (!clips.length) return null;
 
@@ -90,7 +81,7 @@ export function Hero({ locale }: HeroProps) {
                 body: "Bina cephesi, vitrin, totem, salon ve poster menuboard uygulamaları.",
               },
               {
-                title: "Yerli Üretim ve Yaygın Ağ",
+                title: "Yerli Üretim ve Yaygın Ağı",
                 body: "İstanbul merkezli fabrikamızdan çıkan ürünler, Türkiye’nin 81 ilinde profesyonel bayi ağımızla kurulmaktadır.",
               },
             ]
@@ -119,16 +110,16 @@ export function Hero({ locale }: HeroProps) {
               region: "ARLEDSCREEN giriş",
               pause: "Videoyu duraklat",
               play: "Videoyu oynat",
-              scenes: "Sahne görüntüleri",
+              scenes: "Sahne videoları",
             }
           : {
               region: "ARLEDSCREEN intro",
               pause: "Pause video",
               play: "Play video",
-              scenes: "Scene media",
+              scenes: "Scene videos",
             }
       }
-      dwellMs={8000}
+      dwellMs={6500}
     />
   );
 }
