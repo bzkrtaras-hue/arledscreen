@@ -7,26 +7,26 @@ interface HeroProps {
 }
 
 /**
- * Homepage hero — pack B copy (katalog) + soft-rotating field videos:
- * B vitrin · C cafe/restaurant · D lounge
+ * Homepage hero — HQ Drive field clips first (sphere landscape + flex module),
+ * then a storefront landscape. Soft rotate ~6.5s.
  */
 const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
+  {
+    slug: "sphere-led-showroom",
+    labelTr: "Küresel LED",
+    labelEn: "Sphere LED",
+  },
+  {
+    slug: "flexible-module-bend-demo",
+    labelTr: "Esnek modül",
+    labelEn: "Flexible module",
+  },
   {
     slug: "eskisehir-sigorta-led-ekran-vitrin",
     labelTr: "Vitrin",
     labelEn: "Storefront",
   },
-  {
-    slug: "aslanturk-yesilpinar-led-ekran",
-    labelTr: "Kafe / restoran",
-    labelEn: "Cafe / restaurant",
-  },
-  {
-    slug: "kafe-led-ekran-uygulamasi",
-    labelTr: "Lounge",
-    labelEn: "Lounge",
-  },
-];
+] as const;
 
 export function Hero({ locale }: HeroProps) {
   const tr = locale === "tr";
@@ -85,7 +85,7 @@ export function Hero({ locale }: HeroProps) {
               scenes: "Scene videos",
             }
       }
-      dwellMs={8000}
+      dwellMs={6500}
     />
   );
 }

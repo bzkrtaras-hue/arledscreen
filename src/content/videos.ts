@@ -1,6 +1,6 @@
 /**
- * Site videos re-encoded from ARLEDSCREEN's own Instagram export (@arledscreen).
- * H.264, CRF 28, no audio, +faststart. Captions use only facts from the post captions.
+ * Site videos: Drive field clips + Instagram export (@arledscreen).
+ * H.264, no audio, +faststart. Captions use only verified project facts.
  */
 export interface SiteVideo {
   slug: string;
@@ -18,6 +18,33 @@ export interface SiteVideo {
 }
 
 export const PROJECT_VIDEOS: SiteVideo[] = [
+  {
+    slug: "sphere-led-showroom",
+    src: "/videos/sphere-led-showroom.mp4",
+    poster: "/videos/sphere-led-showroom.jpg",
+    width: 1280,
+    height: 720,
+    title: "Küresel LED Ekran — Showroom",
+    caption: "Asılı küresel LED ekran, yüksek çözünürlüklü içerik yayını",
+  },
+  {
+    slug: "flexible-module-bend-demo",
+    src: "/videos/flexible-module-bend-demo.mp4",
+    poster: "/videos/flexible-module-bend-demo.jpg",
+    width: 1080,
+    height: 1920,
+    title: "Esnek LED Modül — Bükülme Demo",
+    caption: "Esnek LED modülün kavisli yüzeye uyumunu gösteren yakın plan",
+  },
+  {
+    slug: "club-curved-led-ribbon",
+    src: "/videos/club-curved-led-ribbon.mp4",
+    poster: "/videos/club-curved-led-ribbon.jpg",
+    width: 848,
+    height: 480,
+    title: "Kulüp — Kavisli LED ve Şerit Ekran",
+    caption: "İç mekân kavisli LED duvar ve balkon şerit ekran uygulaması",
+  },
   {
     slug: "eskisehir-sigorta-led-ekran-vitrin",
     src: "/videos/eskisehir-sigorta-led-ekran-vitrin.mp4",
