@@ -17,7 +17,6 @@ import {
 import { CALC_EXTRAS, fmtUsd, panelM2, panelModule } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
-import { quoteBasedProductOffer } from "@/lib/product-offer-jsonld";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { whatsappHref } from "@/lib/whatsapp";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -119,6 +118,9 @@ export default async function ModelPage({ params }: PageProps) {
   const specRows = SPEC_ORDER.filter((key) => m.specs[key]).map((key) => ({ key, label: SPEC_LABELS[key], spec: m.specs[key] }));
 
   const brandName = m.brandName ?? g.brandName ?? "NXTIONSTAR";
+  // GSC Merchant listings require offers.price (or priceSpecification.price).
+  // Quote-only models (P8, esnek, kontrol) have no published USD — omit Offer
+  // entirely. An Offer without price marks the item invalid in Search Console.
   const productLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -134,26 +136,26 @@ export default async function ModelPage({ params }: PageProps) {
     additionalProperty: specRows
       .filter((r) => r.spec)
       .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
-    // Quote-based models (no published panel USD): Offer without `price`.
-    // Priced panels keep USD UnitPriceSpecification for the calculator list.
-    offers: price
+    ...(price
       ? {
-          "@type": "Offer",
-          url,
-          price: price.usd.toFixed(2),
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          itemCondition: "https://schema.org/NewCondition",
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
+          offers: {
+            "@type": "Offer",
+            url,
             price: price.usd.toFixed(2),
             priceCurrency: "USD",
-            valueAddedTaxIncluded: false,
-            referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
+            availability: "https://schema.org/InStock",
+            itemCondition: "https://schema.org/NewCondition",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: price.usd.toFixed(2),
+              priceCurrency: "USD",
+              valueAddedTaxIncluded: false,
+              referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
+            },
+            seller: { "@id": `${SITE_URL}/#organization` },
           },
-          seller: { "@id": `${SITE_URL}/#organization` },
         }
-      : quoteBasedProductOffer(url),
+      : {}),
   };
 
   return (
