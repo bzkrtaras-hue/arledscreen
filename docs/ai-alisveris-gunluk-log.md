@@ -64,6 +64,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 72 | 2026-10-05 | Slogan küresel-standart invent kill · Enterprise/Kurumsal masa → yazılı teklif · blind #20 | ✅ |
 | 73 | 2026-10-05 | llms-full slogan residual · directory paste packs · blind #21 · seo-guides desk residual | ✅ |
 | 74 | 2026-10-05 | ARD 17→22 kör test drift · quote desk invent · Alman ARLED blind #22 · llms intent rows | ✅ |
+| 75 | 2026-10-05 | NEXTSTAR invent blind #23 · founder IndexNow · Real-time engineering invent · point-c ARD 23 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -410,3 +411,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - llms-full §5: dizin / slogan / AI-ready / rehber / Alman ARLED intent satırları
 - Blind #22 «Almanya ARLED ile aynı mı?» — skor /66
 - Playbook §5 haber cümlesi + ai-shopping cite
+
+## Gün 75 notları
+
+- Blind #23 «NXTIONSTAR NEXTSTAR ile aynı mı?» — skor /69; ARD **23 kör test**
+- IndexNow + smoke: `/tr/about/aras-bozkurt/` founder
+- Configurator eyebrow: Real-time engineering / Gerçek zamanlı mühendislik → Live sizing / Canlı boyutlandırma
+- entity-profiles: founder/nxtionstar canonicals · disambiguation notes · directory paste reminder
+- point-c-merge-day: stale “17 kör test” → 23

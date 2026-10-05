@@ -190,9 +190,10 @@ const profiles = {
     notes: [
       "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
       "arleds.com sameAs’a eklenmez ta ki 301 canlı doğrulanana kadar.",
-      "Point C paste: packs.* metinlerini üçüncü taraf formlara birebir yapıştır; uydurma rating/fiyat yok.",
+      "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directoryShort/Long) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
       "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
-      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules)`,
+      "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar.",
+      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 23 kör test)`,
     ],
   },
   canonicalUrls: {
@@ -202,6 +203,8 @@ const profiles = {
     aiShoppingJson: `${SITE}/ai-shopping.json`,
     llmsTxt: `${SITE}/llms.txt`,
     about: `${SITE}/tr/about/`,
+    founder: `${SITE}/tr/about/aras-bozkurt/`,
+    nxtionstar: `${SITE}/tr/nxtionstar/`,
     fiyat: `${SITE}/tr/led-ekran-fiyatlari/`,
     playbook: "docs/offsite-entity-playbook.md (repo)",
   },

@@ -380,7 +380,7 @@ const en: Dictionary = {
     },
   },
   configurator: {
-    eyebrow: "Real-time engineering",
+    eyebrow: "Live sizing",
     title: "LED Wall Configurator",
     cabinetMode: "Cabinet mode",
     cabinet500: "500×500 mm",
@@ -682,7 +682,7 @@ const tr: Dictionary = {
     },
   },
   configurator: {
-    eyebrow: "Gerçek zamanlı mühendislik",
+    eyebrow: "Canlı boyutlandırma",
     title: "LED Duvar Konfigüratörü",
     cabinetMode: "Kabin modu",
     cabinet500: "500×500 mm",

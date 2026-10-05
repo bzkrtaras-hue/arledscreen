@@ -100,7 +100,7 @@ export const CHECKS = [
       "pricedPanels",
       "hasMerchantReturnPolicy",
       "MerchantReturnNotPermitted",
-      "22 kör test",
+      "23 kör test",
     ],
     cors: true,
     contentType: "application/json",
@@ -235,7 +235,14 @@ export const CHECKS = [
     url: `${SITE}/tr/nxtionstar/`,
     outRel: "tr/nxtionstar/index.html",
     expect: "html",
-    mustInclude: ["ARLEDSCREEN ürün markası", "Gaziosmanpaşa", "entity.json"],
+    mustInclude: ["ARLEDSCREEN ürün markası", "Gaziosmanpaşa", "entity.json", "NEXTSTAR"],
+  },
+  {
+    id: "founder",
+    url: `${SITE}/tr/about/aras-bozkurt/`,
+    outRel: "tr/about/aras-bozkurt/index.html",
+    expect: "html",
+    mustInclude: ["Gaziosmanpaşa", "entity.json", "ai-shopping.json"],
   },
 ];
 

@@ -302,8 +302,8 @@ for (const rel of [
 }
 // Day 74: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/22 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 22 kör test intent (not stale 17/21)");
+if (ardTxt && !/23 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 23 kör test intent (not stale 17/22)");
 }
 if (ardTxt && /17 kör test/i.test(ardTxt)) {
   errors.push("ard.json must not cite stale 17 kör test intent");
