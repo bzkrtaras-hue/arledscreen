@@ -75,6 +75,8 @@ for (const needle of [
   "/catalog.json",
   "/entity.json",
   "/ai-shopping.json",
+  "ücretsiz kargo yok",
+  "MerchantReturnNotPermitted",
 ]) {
   if (!orgSrc.includes(needle)) errors.push(`OrganizationJsonLd.tsx missing ${needle}`);
 }
@@ -90,6 +92,9 @@ if (fs.existsSync(homeHtml)) {
   }
   if (!html.includes("/ai-shopping.json")) {
     errors.push("out/tr/index.html Organization JSON-LD missing ai-shopping.json");
+  }
+  if (!/ücretsiz kargo yok/i.test(html)) {
+    errors.push("out/tr/index.html Organization JSON-LD must state ücretsiz kargo yok");
   }
 }
 

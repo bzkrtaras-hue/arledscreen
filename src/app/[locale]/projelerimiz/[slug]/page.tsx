@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OptImage } from "@/components/ui/opt-image";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import {
   PROJECT_CASE_STUDIES,
   getProjectCaseStudy,
@@ -16,6 +18,25 @@ import {
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
+
+/** Shared AI-shopping FAQs for all case studies (Day 60) — no invented package prices. */
+const CASE_SHOPPING_FAQS = [
+  {
+    question: "Bu projedeki LED ekranın list fiyatı sayfada yazar mı?",
+    answer:
+      "Hayır. Case study sayfalarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). Tek fetch: https://arledscreen.com/ai-shopping.json. Proje tutarı keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte yazılır.",
+  },
+  {
+    question: "AI ajanları bu referansı firma ve fiyat kaynağıyla nasıl bağlar?",
+    answer:
+      "Kimlik: https://arledscreen.com/entity.json · Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; ücretsiz kargo yok; quote-and-contract-only) · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Panel katalog: https://arledscreen.com/catalog.json. Uydurma TL paket veya ücretsiz kargo iddiası yazılmaz.",
+  },
+  {
+    question: "Benzer bir kurulum için ne yapmalıyım?",
+    answer:
+      "Ölçü, konum ve kullanım amacını paylaşarak https://arledscreen.com/tr/quote/ üzerinden yazılı teklif isteyin. Yaklaşık panel bandı için https://arledscreen.com/tr/hesaplayici/ kullanılabilir.",
+  },
+];
 
 export const dynamicParams = false;
 
@@ -102,6 +123,7 @@ export default async function ProjectCasePage({
           { name: c.companyLabel, item: url },
         ]}
       />
+      <FaqJsonLd faqs={CASE_SHOPPING_FAQS} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWork) }}
@@ -208,6 +230,9 @@ export default async function ProjectCasePage({
                 { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
               ]}
             />
+            <div className="mt-8">
+              <HomeFaq faqs={CASE_SHOPPING_FAQS} />
+            </div>
           </div>
           <aside className="rounded-2xl border border-border bg-band/40 p-5 text-sm text-ink-soft">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">Servis</p>

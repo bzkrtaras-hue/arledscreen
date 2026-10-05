@@ -1,7 +1,14 @@
-# Point C — merge günü kontrol listesi (Gün 42)
+# Point C — merge günü kontrol listesi (Gün 60)
 
 Hedef: PR #55 deploy olduktan **aynı gün** canlı AI yüzeyleri + bağımsız atıf başlasın.
 Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/entity-profiles.json) · playbook: [`offsite-entity-playbook.md`](./offsite-entity-playbook.md)
+
+Pre-merge (opsiyonel, zaten yeşil olmalı):
+
+```bash
+npm run build          # postbuild audits + smoke:local
+npm run verify:premerge
+```
 
 ## 0) Merge + redeploy (blok)
 
@@ -13,26 +20,29 @@ Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/
 
 ```bash
 npm run smoke:live
+# veya hepsi birden:
+npm run post-deploy
 ```
 
-Hedef: **13/13 PASS** (veya ≥12; sitemap + IndexNow key).
+Hedef: **14/14 PASS** (BLOCKED 0).
 
 | URL | Beklenen |
 |-----|----------|
-| `/ai-shopping.json` | 200 · `pricedPanels` · `agentRules` · ücretsiz kargo yok |
+| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · ücretsiz kargo yok · quote-and-contract-only |
 | `/entity.json` | 200 JSON · `citeOneLiner` · Gaziosmanpaşa |
 | `/entity-profiles.json` | 200 JSON · `gbpDescription` · `linkedinAbout` · `sameAsReadiness` |
-| `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` · `shippingDetails` |
+| `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` · `shippingDetails` · `hasMerchantReturnPolicy` · ücretsiz kargo yok |
 | `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping |
-| `/llms.txt` | cite + pricedPanels + ücretsiz kargo yok |
-| `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · shipping boş · KDV açıklaması |
+| `/llms.txt` / `/llms-full.txt` | cite + pricedPanels + ücretsiz kargo yok |
+| `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · shipping boş · KDV açıklaması · iade honesty |
 | `/tr/about/` · `/tr/yapay-zeka/` · `/tr/led-ekran-fiyatlari/` | entity + catalog + ai-shopping |
+| `/sitemap.xml` | catalog + ai-shopping + ai-catalog |
 | IndexNow key `.txt` | 200 · key body |
 
 Hızlı curl:
 
 ```bash
-for u in entity.json entity-profiles.json catalog.json .well-known/ard.json feeds/merchant-priced-panels.tsv; do
+for u in ai-shopping.json entity.json entity-profiles.json catalog.json .well-known/ard.json .well-known/ai-catalog.json feeds/merchant-priced-panels.tsv; do
   code=$(curl -s -o /dev/null -w "%{http_code}" "https://arledscreen.com/$u")
   echo "$code  /$u"
 done
@@ -40,35 +50,34 @@ done
 
 ## 1b) IndexNow ping (smoke yeşil olduktan sonra)
 
+`npm run post-deploy` zaten IndexNow çalıştırır. Ayrı:
+
 ```bash
-npm run post-deploy
-# veya ayrı:
-npm run smoke:live
 npm run indexnow -- --live
 ```
 
 Tek fetch ajan index: https://arledscreen.com/ai-shopping.json  
-Dokümantasyon: [`indexnow.md`](./indexnow.md) — Bing’e AI artefact URL’lerini bildirir (entity/catalog/ard/…).
+Dokümantasyon: [`indexnow.md`](./indexnow.md)
 
 ## 2) Point C yapıştırma (aynı NAP / cite)
 
-Pack’leri canlıdan alın (repo `public/entity-profiles.json` ile birebir):
-
 ```bash
+npm run point-c-packs -- --live
+# veya:
 curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 ```
 
 | Kanal | Pack anahtarı | Not |
 |-------|---------------|-----|
 | Google Business Profile açıklama | `gbpDescription` | MEDIUM cite; kategori LED / dijital tabela |
-| LinkedIn şirket About | `linkedinAbout` | Web + entity.json + telefon |
+| LinkedIn şirket About | `linkedinAbout` | Web + entity.json + ai-shopping + telefon |
 | Instagram bio | `instagramBio` | Kısa; site TR |
 | Facebook About | `facebookAbout` | MEDIUM cite |
 | Dizin kısa | `directoryShort` | ONE_LINER |
 | Dizin uzun | `directoryLong` | NAP + entity |
 | YouTube About | `youtubeAbout` | SHORT + entity |
 
-**Yapmayın:** uydurma rating, “Türkiye’nin en …”, sabit TL paket, kaydı olmayan il kapısı.
+**Yapmayın:** uydurma rating, “Türkiye’nin en …”, sabit TL paket, ücretsiz kargo iddiası, kaydı olmayan il kapısı.
 
 ## 3) Domain birleştirme
 
@@ -78,15 +87,13 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 ## 4) Kör tur 1 (deploy sonrası)
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 12 prompt × 0–3 = /36  
-Skor kartı: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)  
-Hedef tur 1 ≥ **18/36**.
+**mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10) · 32.18 (#3)  
+Skor: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
-## 5) Merchant (opsiyonel, priced-only)
+Hedef tur 1 ≥ 18/36; Point C sonrası tur 2 ≥ 27/36.
 
-- Feed: `/feeds/merchant-priced-panels.tsv` (12 SKU)
-- Quote-only (şeffaf/esnek/poster/kiralık) **eklenmez**
-- Checklist: [`merchant-priced-panels.md`](./merchant-priced-panels.md)
+## 5) Day 57–59 canlı doğrulama (özet)
 
-## 6) Ay sonu (≤ 2026-11-04)
-
-[`ai-alisveris-ay-sonu-pano.md`](./ai-alisveris-ay-sonu-pano.md): smoke GREEN · Point C ≥ 5 bağımsız URL · kör tur 2 ≥ 27/36
+- Offer `hasMerchantReturnPolicy` = MerchantReturnNotPermitted (12 SKU)
+- Model FAQPage (25) + case study FAQPage (29)
+- FAQ honesty: ücretsiz kargo yok / quote-and-contract on hubs

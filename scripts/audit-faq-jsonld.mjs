@@ -230,6 +230,24 @@ for (const group of productDirs) {
   }
 }
 
+// Day 60: every case study must ship FAQPage + ai-shopping + honesty
+const caseDirs = fs.existsSync(path.join(outTr, "projelerimiz"))
+  ? fs
+      .readdirSync(path.join(outTr, "projelerimiz"), { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name)
+  : [];
+let caseFaqChecked = 0;
+for (const slug of caseDirs) {
+  caseFaqChecked += 1;
+  auditPage(`projelerimiz/${slug}`, {
+    minCount: 2,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
+}
+
 const seoGuideSrc = fs.readFileSync(path.join(root, "src/content/seo-guides.ts"), "utf8");
 const seoGuideBlock = seoGuideSrc.match(/export const SEO_GUIDE_SLUGS = \[([\s\S]*?)\] as const/);
 const seoGuideSlugs = seoGuideBlock
@@ -246,7 +264,7 @@ for (const slug of seoGuideSlugs) {
 }
 
 console.log(
-  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + ${modelFaqChecked} models + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles + ${seoGuideSlugs.length} seo-guides`,
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + ${modelFaqChecked} models + ${caseFaqChecked} cases + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles + ${seoGuideSlugs.length} seo-guides`,
 );
 if (errors.length) {
   console.error("FAIL:");

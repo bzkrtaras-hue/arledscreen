@@ -460,6 +460,9 @@ for (const group of PRICED_GROUPS) {
       if (!JSON.stringify(data.offers).includes("/catalog.json")) {
         errors.push(`${group} AggregateOffer must cite catalog.json`);
       }
+      if (!/ücretsiz kargo yok/i.test(String(data.offers.description || ""))) {
+        errors.push(`${group} AggregateOffer description must state ücretsiz kargo yok`);
+      }
     }
   }
   if (!found) errors.push(`${group} hub missing Service AggregateOffer`);

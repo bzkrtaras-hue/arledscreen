@@ -1,11 +1,12 @@
 /**
- * Post-deploy AI alışveriş gate (Gün 48).
+ * Post-deploy AI alışveriş gate (Gün 48 + Gün 60).
  *
  * After PR #55 CF redeploy:
  *   npm run post-deploy
  *
  * 1) smoke:live — must be BLOCKED 0 (or pass --force)
  * 2) indexnow --live — Bing recrawl of AI artefacts (unless --no-indexnow)
+ * 3) echo Day 57–59 contract + Point C / blind-test next steps
  *
  * Usage:
  *   node scripts/post-deploy-ai.mjs
@@ -35,38 +36,54 @@ console.log("=== post-deploy AI alışveriş ===");
 const smoke = run("smoke-live-ai-shopping.mjs");
 const blockedMatch = smoke.stdout.match(/BLOCKED\s+(\d+)/);
 const blocked = blockedMatch ? Number(blockedMatch[1]) : 99;
+const passMatch = smoke.stdout.match(/PASS\s+(\d+)/);
+const pass = passMatch ? Number(passMatch[1]) : 0;
 
 if (blocked > 0 && !force) {
   console.error("");
-  console.error(`post-deploy: STOP — smoke BLOCKED=${blocked}. Merge/redeploy PR #55, then retry.`);
+  console.error(
+    `post-deploy: STOP — smoke BLOCKED=${blocked} (PASS ${pass}). Merge/redeploy PR #55, then retry.`,
+  );
   console.error("  debug only: npm run post-deploy -- --force");
   process.exit(1);
 }
 
 if (skipIndex) {
   console.log("post-deploy: skip IndexNow (--no-indexnow)");
-  process.exit(0);
+} else {
+  console.log(
+    blocked > 0
+      ? "post-deploy: FORCE IndexNow despite smoke blocks"
+      : "post-deploy: smoke OK → IndexNow live",
+  );
+  const idx = run("indexnow-ping.mjs", ["--live"]);
+  if (idx.status !== 0) {
+    console.error("post-deploy: IndexNow failed");
+    process.exit(1);
+  }
+  console.log("post-deploy: OK — live surfaces notified");
 }
 
+console.log("");
+console.log("Day 57–59 contract (canlı doğrula):");
 console.log(
-  blocked > 0
-    ? "post-deploy: FORCE IndexNow despite smoke blocks"
-    : "post-deploy: smoke OK → IndexNow live",
+  "  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd · returnPolicy · ücretsiz kargo yok",
 );
-const idx = run("indexnow-ping.mjs", ["--live"]);
-if (idx.status !== 0) {
-  console.error("post-deploy: IndexNow failed");
-  process.exit(1);
-}
-console.log("post-deploy: OK — live surfaces notified");
+console.log(
+  "  catalog.json → shippingDetails · hasMerchantReturnPolicy · Brand.url · priceValidUntil · AggregateOffer honesty",
+);
+console.log("  merchant TSV → shipping boş · tax=TR:0:n · iade honesty");
+console.log(
+  "  HTML FAQ → ai-shopping cite + ücretsiz kargo yok (hubs · models · case studies)",
+);
+console.log(
+  "  Organization hasOfferCatalog → ücretsiz kargo yok / MerchantReturnNotPermitted",
+);
 console.log("");
-console.log("Day 51–53 contract (canlı doğrula):");
-console.log("  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd · returnPolicy · ücretsiz kargo yok");
-console.log("  catalog.json → shippingDetails · hasMerchantReturnPolicy · Brand.url · priceValidUntil");
-console.log("  merchant TSV → shipping boş · tax=TR:0:n (KDV hariç, tax-free değil)");
-console.log("  llms/yapay-zeka → pricedPanels + honesty tokens");
-console.log("");
-console.log("Next (sahip): npm run point-c-packs -- --live → GBP/LinkedIn/IG/FB paste");
-console.log("  entity-profiles.json → sameAsReadiness + packs (ai-shopping cite)");
-console.log("Then: docs/ai-shopping-blind-test-scores.md tur 1");
+console.log("Next (sahip):");
+console.log("  1) npm run point-c-packs -- --live  → GBP / LinkedIn / IG / FB paste");
+console.log("  2) docs/point-c-merge-day.md checklist");
+console.log(
+  "  3) docs/ai-shopping-blind-test.md kör tur 1 (mustSay honesty) → ai-shopping-blind-test-scores.md",
+);
 process.exit(0);

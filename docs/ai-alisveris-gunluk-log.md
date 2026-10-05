@@ -49,6 +49,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 57 | 2026-10-05 | Offer hasMerchantReturnPolicy · Merchant iade honesty · sitemap ai-catalog · audit/smoke/blind-test guards | ✅ |
 | 58 | 2026-10-05 | FAQ ai-shopping wave 2 (quote-only/commercial/founder/projeler/bolgeler/articles) · blind mustSay honesty | ✅ |
 | 59 | 2026-10-05 | FAQ honesty wave 3 · model FAQPage · AggregateOffer ücretsiz-kargo · audit requireHonesty | ✅ |
+| 60 | 2026-10-05 | Case-study FAQPage ×29 · Org OfferCatalog honesty · merge-day/post-deploy Day 59 · hub AggregateOffer audit | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -280,3 +281,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Model pages: FAQPage + HomeFaq (priced USD + quote-only teklif) — blind #3 path
 - AggregateOffer descriptions: ücretsiz kargo yok + iade honesty (catalog + panelProductsJsonLd + group hubs)
 - Guards: audit:faq `requireHonesty` · audit:offers AggregateOffer · smoke catalog mustInclude
+
+## Gün 60 notları
+
+- Case study FAQPage + HomeFaq (29): ai-shopping + ücretsiz kargo yok + teklif (uydurma paket yok)
+- Organization `hasOfferCatalog` / `subjectOf` honesty (shippingDetails · MerchantReturnNotPermitted · ücretsiz kargo yok)
+- `docs/point-c-merge-day.md` + `post-deploy` → Day 57–59 / smoke 14/14 / blind mustSay
+- Guards: audit:faq case dirs · audit:offers hub AggregateOffer description · entity-sameas Org honesty

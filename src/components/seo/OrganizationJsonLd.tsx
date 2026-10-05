@@ -100,7 +100,7 @@ export function OrganizationJsonLd() {
           url: absoluteUrl("/catalog.json"),
           numberOfItems: 12,
           description:
-            "Yalnızca yayımlanmış iç/dış/GOB panel listesi. Kiralık, şeffaf, esnek, poster gruplarında list fiyatı yok — yazılı teklif.",
+            "Yalnızca yayımlanmış iç/dış/GOB panel listesi (shippingDetails: nakliye hariç, ücretsiz kargo yok; hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade teklif/sözleşme). Kiralık, şeffaf, esnek, poster gruplarında list fiyatı yok — yazılı teklif.",
         },
         subjectOf: [
           {
@@ -109,7 +109,7 @@ export function OrganizationJsonLd() {
             encodingFormat: "application/ld+json",
             contentUrl: absoluteUrl("/ai-shopping.json"),
             description:
-              "Tek fetch: 12 pricedPanels + agentRules + extrasUsd + returnPolicy + cite",
+              "Tek fetch: 12 pricedPanels + agentRules + extrasUsd + returnPolicy + ücretsiz kargo yok + cite",
           },
           {
             "@type": "DataDownload",
