@@ -276,6 +276,10 @@ if (fs.existsSync(catalogPath)) {
   if (!/excluded/i.test(String(catalog.shoppingPolicy?.shipping || ""))) {
     errors.push("catalog.shoppingPolicy.shipping must note excluded-from-list");
   }
+  // Day 66: extrasUsdNote closes catalog-first invent of controlCard=500 as brand list
+  if (!/Huidu|list SKU/i.test(String(catalog.shoppingPolicy?.extrasUsdNote || ""))) {
+    errors.push("catalog.shoppingPolicy.extrasUsdNote must disambiguate controlCard ≠ Huidu/list SKU");
+  }
   // groupAggregateOffers: all-panels + each priced group; no quote-only slugs
   const groups = catalog.groupAggregateOffers;
   if (!Array.isArray(groups) || groups.length < 3) {

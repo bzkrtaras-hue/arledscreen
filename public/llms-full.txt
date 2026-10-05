@@ -167,7 +167,7 @@ Hayır. Dijital ekran üst kümedir; LCD, OLED, LED tabela ve tam renkli LED ekr
 Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyet fiyat hesaplayıcıyla görülebilir; net rakam ölçü ve konum bilgisiyle verilen yazılı teklifle kesinleşir.
 
 **P2.5 iç mekân LED ekranın panel fiyatı nedir?**
-ARLEDSCREEN hesaplayıcısındaki 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir.
+ARLEDSCREEN hesaplayıcısındaki 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir (extrasUsd tahmini — Huidu/NovaStar/Colorlight list SKU değildir).
 
 **Dış mekân LED ekran panel fiyatları ne kadar?**
 Hesaplayıcıda dış mekân modüller P5 için 29,90 USD, P4 için 33,80 USD, P4 front için 36,40 USD, P3.07 için 44,20 USD, P2.9 için 53,30 USD ve P2.5 için 63,70 USD/paneldir (KDV ve nakliye hariç).

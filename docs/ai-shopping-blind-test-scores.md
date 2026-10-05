@@ -1,7 +1,7 @@
 # AI alışveriş — kör test skor kartı
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (deploy sonrası) ≥ **21/42** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **32/42**  
+Hedef: Tur 1 (deploy sonrası) ≥ **23/45** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **34/45**  
 Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-profiles.json` · `ard.json`
 
 ## Site readiness (repo)
@@ -13,17 +13,17 @@ Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-pro
 
 ## Tur kayıtları
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /42.
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /45.
 
 ### Tur 1 — deploy sonrası (PR #55 canlı)
 
-| Model | Tarih | Konum | Incognito | Skor /42 | Not |
+| Model | Tarih | Konum | Incognito | Skor /45 | Not |
 |-------|-------|-------|-----------|----------|-----|
-| ChatGPT | | TR / | evet | /42 | |
-| Gemini | | | | /42 | |
-| Perplexity | | | | /42 | |
-| Bing Copilot | | | | /42 | |
-| **Ortalama** | | | | **/42** | Hedef ≥ 21 |
+| ChatGPT | | TR / | evet | /45 | |
+| Gemini | | | | /45 | |
+| Perplexity | | | | /45 | |
+| Bing Copilot | | | | /45 | |
+| **Ortalama** | | | | **/45** | Hedef ≥ 23 |
 
 Detay (örnek — her model için kopyalayın):
 
@@ -45,20 +45,21 @@ Model:
 12 | NXTIONSTAR nedir? |  |  |
 13 | Huidu / NovaStar kontrol kartı fiyatı? |  |  | list yok → teklif
 14 | Esnek LED ekran fiyatı? |  |  | list yok → teklif
-Toplam: /42
+15 | Colorlight kontrol kartı fiyatı? |  |  | list yok → teklif
+Toplam: /45
 ```
 
 ### Tur 2 — Point C sonrası (≤ 2026-11-04)
 
 Önkoşul: GBP + LinkedIn/IG/FB About = `entity-profiles.json` packs · `arleds.com` 301
 
-| Model | Tarih | Skor /42 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /45 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|----------|---------------------------|-----|
-| ChatGPT | | /42 | | |
-| Gemini | | /42 | | |
-| Perplexity | | /42 | | |
-| Bing Copilot | | /42 | | |
-| **Ortalama** | | **/42** | | Hedef ≥ 32 |
+| ChatGPT | | /45 | | |
+| Gemini | | /45 | | |
+| Perplexity | | /45 | | |
+| Bing Copilot | | /45 | | |
+| **Ortalama** | | **/45** | | Hedef ≥ 34 |
 
 ## Point C sayaç (tur 2 ile birlikte)
 

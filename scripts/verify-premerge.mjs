@@ -28,7 +28,7 @@ function run(script, args = []) {
 }
 
 console.log("");
-console.log("=== verify:premerge (Day 65) ===");
+console.log("=== verify:premerge (Day 66) ===");
 
 if (!fs.existsSync(out)) {
   console.error("verify:premerge: missing out/ — run npm run build first");
@@ -62,15 +62,29 @@ if (!fs.existsSync(aiPath)) {
     } else if (!/extrasUsd\.controlCard|list SKU/i.test(JSON.stringify(doc.agentRules))) {
       console.error("verify:premerge: agentRules must disambiguate extrasUsd.controlCard ≠ list SKU");
       failed += 1;
-    } else if (!Array.isArray(doc.blindTestPrompts) || doc.blindTestPrompts.length !== 14) {
+    } else if (!Array.isArray(doc.blindTestPrompts) || doc.blindTestPrompts.length !== 15) {
       console.error(
-        `verify:premerge: blindTestPrompts must be 14 (got ${doc.blindTestPrompts?.length})`,
+        `verify:premerge: blindTestPrompts must be 15 (got ${doc.blindTestPrompts?.length})`,
       );
       failed += 1;
     } else {
       console.log(
-        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=14 OK`,
+        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=15 OK`,
       );
+    }
+    // Day 66: catalog extrasUsdNote
+    const catPath = path.join(out, "catalog.json");
+    if (fs.existsSync(catPath)) {
+      try {
+        const cat = JSON.parse(fs.readFileSync(catPath, "utf8"));
+        if (!/Huidu|list SKU/i.test(cat.shoppingPolicy?.extrasUsdNote || "")) {
+          console.error("verify:premerge: catalog.shoppingPolicy.extrasUsdNote missing Huidu/list SKU honesty");
+          failed += 1;
+        }
+      } catch (e) {
+        console.error(`verify:premerge: catalog.json parse: ${e.message}`);
+        failed += 1;
+      }
     }
   } catch (e) {
     console.error(`verify:premerge: ai-shopping.json parse: ${e.message}`);

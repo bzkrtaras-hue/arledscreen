@@ -32,7 +32,7 @@ const QUOTE_FAQS = [
   {
     question: "Yazılı teklif ne zaman gerekir?",
     answer:
-      "Nihai proje tutarı her zaman keşif sonrası yazılı teklifle kesinleşir. Yayımlanmış 12 panel için yaklaşık USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir; kiralık, şeffaf, esnek ve poster gruplarında list fiyatı yoktur — bu form veya WhatsApp ile teklif alınır.",
+      "Nihai proje tutarı her zaman keşif sonrası yazılı teklifle kesinleşir. Yayımlanmış 12 panel için yaklaşık USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir; kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — bu form veya WhatsApp ile teklif alınır. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir.",
   },
   {
     question: "Teklif için hangi bilgiler yeterli?",

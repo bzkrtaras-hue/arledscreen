@@ -55,6 +55,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 63 | 2026-10-05 | Kontrol residual wave (entity/commercial/YZ) · blind #13 · merchant return_policy_label · footer merchant/ai-catalog | ✅ |
 | 64 | 2026-10-05 | llms/hubs kontrol quote-only closure · extrasUsd≠list · IndexNow kontrol hubs · smoke Day63 needles | ✅ |
 | 65 | 2026-10-05 | Price-surface extrasUsd≠list SKU · agentRules disambiguation · SSS/Home FAQ · blind #14 esnek | ✅ |
+| 66 | 2026-10-05 | fiyat-hesap UI extrasUsd honesty · catalog extrasUsdNote · kontrol brand FAQs · blind #15 Colorlight | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -332,3 +333,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - SSS + Home FAQ: kontrol quote-only residual
 - Blind prompt #14 «Esnek LED ekran fiyatı?» — skor /42
 - ARD / ai-shopping: 14 kör test intent
+
+## Gün 66 notları
+
+- `public/fiyat-hesap/index.html`: kontrol kartı tahmini + WhatsApp notu (≠ Huidu/NovaStar/Colorlight list)
+- `catalog.json` `shoppingPolicy.extrasUsdNote` + audit/smoke/verify
+- Huidu/NovaStar/Colorlight product FAQs: list fiyatı yok
+- Blind #15 Colorlight · IndexNow esnek hub · quote FAQ kontrol · llms-full §4 — skor /45

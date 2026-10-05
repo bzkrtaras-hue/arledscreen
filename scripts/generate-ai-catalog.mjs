@@ -277,6 +277,8 @@ const catalog = {
       controlCard: controlCard,
       driverSoftware: driverSoftware,
     },
+    extrasUsdNote:
+      "Calculator estimates only — extrasUsd.controlCard is NOT a Huidu/NovaStar/Colorlight list SKU price; brand/model finalize in written quote. Quote-only groups have no list USD.",
     finalPrice: "Keşif sonrası yazılı teklif",
     quoteUrl: `${SITE}/tr/quote/`,
     calculatorUrl: `${SITE}/tr/hesaplayici/`,

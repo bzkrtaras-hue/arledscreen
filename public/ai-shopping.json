@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 14 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 15 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -528,6 +528,24 @@
       "q": "Esnek LED ekran fiyatı?",
       "urls": [
         "https://arledscreen.com/tr/products/esnek-led-ekran/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "teklif",
+        "ai-shopping.json"
+      ],
+      "mustNotSay": [
+        "ücretsiz kargo dahil",
+        "günlük TL",
+        "stokta paket"
+      ]
+    },
+    {
+      "id": 15,
+      "q": "Colorlight kontrol kartı fiyatı?",
+      "urls": [
+        "https://arledscreen.com/tr/products/colorlight-kontrolculer/",
         "https://arledscreen.com/tr/quote/",
         "https://arledscreen.com/ai-shopping.json"
       ],

@@ -50,6 +50,11 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     whatsapp: "Merhaba, Huidu kontrol kartı (model / ekran ölçüsü) için bilgi ve teklif almak istiyorum:",
     faqs: [
       {
+        question: "Huidu kontrol kartının list fiyatı var mı?",
+        answer:
+          "Hayır. Huidu (ve NovaStar/Colorlight) kontrol kartlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd kontrol kartı 500 USD marka list SKU değildir. Tek fetch: https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
+      },
+      {
         question: "Huidu kart hangi ekran ölçüsüne yeter?",
         answer:
           "Örneğin HD-C16 resmi föyde yaklaşık 200.000 piksele (640×320) kadar yükleme belirtir; en ve boy sınırları da vardır. Kesin seçim, ekranın toplam piksel sayısına ve senkron/asenkron ihtiyacına göre yapılır.",
@@ -108,6 +113,11 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     projectType: "servis",
     whatsapp: "Merhaba, NovaStar kontrolcü (VX / Taurus / MCTRL) için bilgi ve teklif almak istiyorum. Ekran ölçüsü:",
     faqs: [
+      {
+        question: "NovaStar kontrolcünün list fiyatı var mı?",
+        answer:
+          "Hayır. NovaStar (ve Huidu/Colorlight) kontrol hatlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. Tek fetch: https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
+      },
       {
         question: "VX600 ne kadar piksel sürer?",
         answer:
@@ -168,6 +178,11 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     projectType: "servis",
     whatsapp: "Merhaba, Colorlight kontrolcü (X / VX / S) için bilgi ve teklif almak istiyorum. Ekran ölçüsü:",
     faqs: [
+      {
+        question: "Colorlight kontrolcünün list fiyatı var mı?",
+        answer:
+          "Hayır. Colorlight (ve Huidu/NovaStar) kontrol hatlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. Tek fetch: https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
+      },
       {
         question: "X20 ile VX20 arasındaki fark nedir?",
         answer:

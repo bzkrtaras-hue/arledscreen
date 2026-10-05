@@ -549,14 +549,14 @@ img{max-width:100%;height:auto}
                         <div class="line"><span>Modül</span><strong id="ar-mods">—</strong></div>
                         <div class="line"><span>Malzeme</span><strong id="ar-mat">—</strong></div>
                         <div class="line"><span>İşçilik <small>100 USD / m²</small></span><strong id="ar-labor" class="amber">—</strong></div>
-                        <div class="line"><span>Kontrol kartı</span><strong id="ar-cardcost">—</strong></div>
-                        <div class="line"><span>Sürücü + yazılım</span><strong id="ar-driver">—</strong></div>
+                        <div class="line"><span>Kontrol kartı <small>tahmini</small></span><strong id="ar-cardcost">—</strong></div>
+                        <div class="line"><span>Sürücü + yazılım <small>tahmini</small></span><strong id="ar-driver">—</strong></div>
                     </div>
                 </div>
             </div>
             <div class="note-amber">
                 <svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>
-                <p>Bağlayıcı teklif değildir. Keşif sonrası netleşir.</p>
+                <p>Bağlayıcı teklif değildir. Kontrol kartı 500 USD hesaplayıcı tahminidir — Huidu/NovaStar/Colorlight list SKU değildir; keşif sonrası netleşir.</p>
             </div>
             <div id="ar-cta-wrap" class="offer-cta" hidden>
                 <button type="button" id="ar-cta" class="btn btn-primary">Bu ürünle hesapla</button>
@@ -659,7 +659,7 @@ img{max-width:100%;height:auto}
                     <div class="lines">
                         <div class="line"><span>Malzeme maliyeti</span><strong id="result-material"></strong></div>
                         <div class="line"><span>Atölye işçiliği <small>100 USD / m²</small></span><strong id="result-labor" class="amber"></strong></div>
-                        <div class="line"><span>Kontrol kartı</span><strong id="result-control-card"></strong></div>
+                        <div class="line"><span>Kontrol kartı <small>tahmini · marka list değil</small></span><strong id="result-control-card"></strong></div>
                         <div class="line"><span>Sürücü + yazılım</span><strong id="result-driver"></strong></div>
                     </div>
                     <div class="total">
@@ -669,7 +669,7 @@ img{max-width:100%;height:auto}
                 </div>
                 <div class="res-note">
                     <svg class="ico" aria-hidden="true"><use href="#i-info"/></svg>
-                    <p>Atölye işçiliği toplam fiyata dahildir. Nakliye ve KDV dahil değildir; nihai tutar proje detaylarına göre teyit edilir.</p>
+                    <p>Atölye işçiliği toplam fiyata dahildir. Kontrol kartı / sürücü kalemleri hesaplayıcı tahminidir (extrasUsd) — Huidu/NovaStar/Colorlight list SKU fiyatı değildir. Nakliye ve KDV dahil değildir; nihai tutar proje detaylarına göre teyit edilir.</p>
                 </div>
                 <div class="res-foot">
                     <button type="button" onclick="sendViaWhatsApp()" class="btn btn-wa">
@@ -886,7 +886,7 @@ img{max-width:100%;height:auto}
             }
 
             const calculation = lastCalculation;
-            const message = `ARLEDSCREEN LED Ekran Tahmini\n\nÖlçü: ${calculation.width} × ${calculation.height} cm\nUyarlanmış ölçü: ${calculation.actualWidth} × ${calculation.actualHeight} cm\n\nModül: ${calculation.moduleName}\nAdet: ${calculation.totalModules} (${calculation.modulesX} × ${calculation.modulesY})\n\nMalzeme: ${calculation.materialCost.toFixed(2)} USD\nAtölye işçiliği: ${calculation.laborCost.toFixed(2)} USD\nKontrol kartı: ${calculation.controlCardCost.toFixed(2)} USD\nSürücü + yazılım: ${calculation.driverSoftwareCost.toFixed(2)} USD\nToplam: ${calculation.totalCost.toFixed(2)} USD\n\nNot: Atölye işçiliği dahildir. Nakliye ve KDV dahil değildir. Nihai tutar proje detaylarına göre teyit edilir.`;
+            const message = `ARLEDSCREEN LED Ekran Tahmini\n\nÖlçü: ${calculation.width} × ${calculation.height} cm\nUyarlanmış ölçü: ${calculation.actualWidth} × ${calculation.actualHeight} cm\n\nModül: ${calculation.moduleName}\nAdet: ${calculation.totalModules} (${calculation.modulesX} × ${calculation.modulesY})\n\nMalzeme: ${calculation.materialCost.toFixed(2)} USD\nAtölye işçiliği: ${calculation.laborCost.toFixed(2)} USD\nKontrol kartı (tahmini extrasUsd): ${calculation.controlCardCost.toFixed(2)} USD\nSürücü + yazılım (tahmini): ${calculation.driverSoftwareCost.toFixed(2)} USD\nToplam: ${calculation.totalCost.toFixed(2)} USD\n\nNot: Atölye işçiliği dahildir. Kontrol kartı 500 USD Huidu/NovaStar/Colorlight list SKU değildir. Nakliye ve KDV dahil değildir. Nihai tutar proje detaylarına göre teyit edilir.`;
             window.open(`https://wa.me/905305078834?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
         }
 
