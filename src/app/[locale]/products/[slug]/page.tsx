@@ -10,10 +10,10 @@ import { modelPath, modelsForGroup, modelUrlForPrice, SPEC_LABELS, type SpecKey 
 import { OptImage } from "@/components/ui/opt-image";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { HomeCtaBand } from "@/components/home/HomeCtaBand";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
+import { ProductCtaRow } from "@/components/products/ProductCtaRow";
 import {
   PRODUCT_GROUPS,
   getProductGroup,
@@ -256,31 +256,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 </ul>
               </div>
             ) : null}
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a
-                href={whatsappHref(g.whatsapp)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-6 text-white hover:bg-[#0B6435]"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                WhatsApp&apos;tan sorun
-              </a>
-              <Link
-                href={quoteHref}
-                className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
-              >
-                <FileText className="h-4 w-4" aria-hidden />
-                Teklif isteyin
-              </Link>
-              <Link
-                href="/tr/hesaplayici/"
-                className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan"
-              >
-                <Calculator className="h-4 w-4" aria-hidden />
-                Fiyatı hesaplayın
-              </Link>
-            </div>
+            <ProductCtaRow className="mt-7" quoteHref={quoteHref} whatsappMessage={g.whatsapp} />
           </div>
         </div>
       </section>
@@ -389,21 +365,12 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 </p>
               </div>
               <div className="flex flex-col gap-3">
-                <a
-                  href={whatsappHref(g.whatsapp)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-soft inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-6 text-white hover:bg-[#0B6435]"
-                >
-                  <WhatsAppIcon className="h-4 w-4" />
-                  WhatsApp&apos;tan yazın
-                </a>
-                <Link
-                  href={quoteHref}
-                  className="btn-soft inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan"
-                >
-                  Teklif formunu doldurun
-                </Link>
+                <ProductCtaRow
+                  quoteHref={quoteHref}
+                  whatsappMessage={g.whatsapp}
+                  showCalculator={false}
+                  className="sm:flex-col"
+                />
               </div>
             </div>
           )}
@@ -593,9 +560,20 @@ export default async function ProductGroupPage({ params }: PageProps) {
               </a>
             </li>
             <li>
-              <Link href={quoteHref} className="font-semibold text-cyan hover:underline">
+              <Link href={quoteHref} className="font-semibold text-cyan hover:underline" data-cta="quote">
                 Yazılı teklif
               </Link>
+            </li>
+            <li>
+              <a
+                href={whatsappHref(g.whatsapp)}
+                className="font-semibold text-cyan hover:underline"
+                data-cta="whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
             </li>
             <li>
               <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">

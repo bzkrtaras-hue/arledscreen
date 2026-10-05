@@ -65,3 +65,6 @@ export function projectWhatsappHref(id: ProjectTypeId): string {
 export const GENERIC_WHATSAPP_HREF = whatsappHref(
   "Merhaba, LED ekran projesi hakkında bilgi almak istiyorum.",
 );
+
+export const GENERIC_WHATSAPP_MESSAGE =
+  "Merhaba, LED ekran projesi hakkında bilgi almak istiyorum.";

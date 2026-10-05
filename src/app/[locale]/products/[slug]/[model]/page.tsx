@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Calculator, ChevronRight, FileText } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { getProductGroup, productGroupPath } from "@/content/categories";
 import {
   LED_MODELS,
@@ -16,9 +16,8 @@ import {
 } from "@/content/models";
 import { CALC_EXTRAS, fmtUsd, panelM2, panelModule } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
-import { WhatsAppIcon } from "@/components/ui/brand-icons";
+import { ProductCtaRow } from "@/components/products/ProductCtaRow";
 import { buildTrOnlyMetadata } from "@/lib/seo";
-import { whatsappHref } from "@/lib/whatsapp";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 interface PageProps {
@@ -113,7 +112,6 @@ export default async function ModelPage({ params }: PageProps) {
   const url = absoluteUrl(modelPath(m));
   const price = modelPrice(m);
   const related = modelsForGroup(m.group).filter((x) => !(x.group === m.group && x.slug === m.slug));
-  const wa = whatsappHref(`Merhaba, ${m.name} (${m.chip}) için bilgi ve teklif almak istiyorum. Yaklaşık ekran ölçüsü ve konum:`);
   const description = describe(m);
   const specRows = SPEC_ORDER.filter((key) => m.specs[key]).map((key) => ({ key, label: SPEC_LABELS[key], spec: m.specs[key] }));
 
@@ -249,33 +247,12 @@ export default async function ModelPage({ params }: PageProps) {
                 </p>
               )}
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link
-                  href={`/tr/quote/?tip=${g.projectType}`}
-                  className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
-                >
-                  <FileText className="h-4 w-4" aria-hidden />
-                  Teklif isteyin
-                </Link>
-                <a
-                  href={wa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-6 text-white hover:bg-[#0B6435]"
-                >
-                  <WhatsAppIcon className="h-4 w-4" />
-                  WhatsApp&apos;tan sorun
-                </a>
-                {m.kind !== "kontrol" ? (
-                  <Link
-                    href="/tr/hesaplayici/"
-                    className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan"
-                  >
-                    <Calculator className="h-4 w-4" aria-hidden />
-                    Fiyatı hesaplayın
-                  </Link>
-                ) : null}
-              </div>
+              <ProductCtaRow
+                className="mt-6"
+                quoteHref={`/tr/quote/?tip=${g.projectType}`}
+                whatsappMessage={`Merhaba, ${m.name} (${m.chip}) için bilgi ve teklif almak istiyorum. Yaklaşık ekran ölçüsü ve konum:`}
+                showCalculator={m.kind !== "kontrol"}
+              />
 
               <h2 id="teknik" className="mt-10 scroll-mt-28 font-display text-xl font-bold text-ink sm:text-2xl">Teknik özellikler</h2>
               <dl className="mt-4 overflow-hidden rounded-2xl border border-border bg-white">

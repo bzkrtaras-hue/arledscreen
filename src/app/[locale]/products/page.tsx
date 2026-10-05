@@ -16,7 +16,9 @@ import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PRODUCT_GROUPS, groupsByFamily, productGroupPath } from "@/content/categories";
 import { CANONICAL_LINEUP } from "@/content/product-lineup";
-import { ArrowRight, Calculator, FileText } from "lucide-react";
+import { ProductCtaRow } from "@/components/products/ProductCtaRow";
+import { ArrowRight } from "lucide-react";
+import { GENERIC_WHATSAPP_MESSAGE } from "@/lib/whatsapp";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -103,15 +105,11 @@ export default async function ProductsPage({ params }: PageProps) {
                   {seo.h1 ?? pageCopy.title}
                 </h1>
                 <p className="mt-4 max-w-xl text-pretty text-base leading-[1.75] text-ink-soft">{seo.intro ?? pageCopy.description}</p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <Link href="/tr/quote/" className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600">
-                    <FileText className="h-4 w-4" aria-hidden />
-                    Teklif isteyin
-                  </Link>
-                  <Link href="/tr/hesaplayici/" className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan">
-                    <Calculator className="h-4 w-4" aria-hidden />
-                    Fiyatı hesaplayın
-                  </Link>
+                <div className="mt-6">
+                  <ProductCtaRow
+                    quoteHref="/tr/quote/"
+                    whatsappMessage={GENERIC_WHATSAPP_MESSAGE}
+                  />
                 </div>
               </div>
             </div>
