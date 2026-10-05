@@ -21,17 +21,18 @@
       "displayName": "NXTIONSTAR panel katalog (AI alışveriş)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/catalog.json",
-      "description": "Yayımlanmış 2026 panel (modül) USD fiyatları + ürün URL. KDV ve nakliye hariç. Uydurma fiyat yok; şeffaf/esnek/poster/kiralık teklifle netleşir.",
+      "description": "Yayımlanmış 2026 panel (modül) USD fiyatları + ürün URL + groupAggregateOffers (iç/dış/GOB bantları). KDV ve nakliye hariç. Uydurma fiyat yok; şeffaf/esnek/poster/kiralık teklifle netleşir.",
       "representativeQueries": [
         "LED ekran panel fiyatı USD",
         "P2.5 iç mekân LED modül fiyatı",
         "NXTIONSTAR P4 dış mekân fiyat",
+        "GOB LED panel fiyat aralığı",
         "LED ekran m² yaklaşık maliyet nasıl hesaplanır?"
       ],
-      "tags": ["shopping", "catalog", "price", "LED", "NXTIONSTAR"],
-      "capabilities": ["ListPricedPanels", "ProductUrlLookup"],
+      "tags": ["shopping", "catalog", "price", "LED", "NXTIONSTAR", "AggregateOffer"],
+      "capabilities": ["ListPricedPanels", "ProductUrlLookup", "GroupPriceBand"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:44:09Z"
+      "updatedAt": "2026-10-05T19:30:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:llms",
