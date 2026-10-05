@@ -117,16 +117,16 @@ auditPage("led-ekran-fiyatlari", { minCount: 3, requirePriceHint: true, requireA
 auditPage("hesaplayici", { minCount: 2, requirePriceHint: true });
 auditPage("quote", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
 auditPage("about", { minCount: 4, requirePriceHint: true, requireAiShopping: true });
-auditPage("nxtionstar", { minCount: 3, requirePriceHint: true });
+auditPage("nxtionstar", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage("products", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
 auditPage("about/aras-bozkurt", { minCount: 3, requirePriceHint: true });
 auditPage("yapay-zeka", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage("sss", { minCount: 4, requirePriceHint: true, requireAiShopping: true });
-auditPage("hizmetler", { minCount: 3, requirePriceHint: true });
+auditPage("hizmetler", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage(".", { minCount: 4, requirePriceHint: true, requireAiShopping: true }); // TR home
-auditPage("rehber", { minCount: 3, requirePriceHint: true });
+auditPage("rehber", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage("projelerimiz", { minCount: 3, requirePriceHint: true });
-auditPage("blog", { minCount: 2, requirePriceHint: true });
+auditPage("blog", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
 auditPage("rehber/piksel-araligi-secimi", { minCount: 2, requirePriceHint: true });
 auditPage("rehber/kiralik-mi-satin-alma", { minCount: 2, requirePriceHint: true });
 

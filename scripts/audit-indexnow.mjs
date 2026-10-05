@@ -1,5 +1,5 @@
 /**
- * IndexNow key file presence (Gün 46).
+ * IndexNow key file presence (Gün 46) + URL list completeness (Gün 56).
  *
  * Ensures out/ ships a valid IndexNow verification file so post-merge
  * `npm run indexnow -- --live` can notify Bing of AI artefact URLs.
@@ -9,6 +9,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { INDEXNOW_URLS, INDEXNOW_REQUIRED, SITE } from "./lib/indexnow-urls.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const out = path.join(root, "out");
@@ -52,10 +53,42 @@ if (fs.existsSync(ardPath) && key) {
   }
 }
 
+const urlSet = new Set(INDEXNOW_URLS);
+for (const rel of INDEXNOW_REQUIRED) {
+  const full = `${SITE}${rel}`;
+  if (!urlSet.has(full)) {
+    errors.push(`IndexNow URL list missing ${rel}`);
+  }
+}
+
+/** Map IndexNow URL → out/ file path. */
+function outPathFor(full) {
+  const rel = full.replace(SITE, "").replace(/^\//, "");
+  if (
+    rel.endsWith(".json") ||
+    rel.endsWith(".txt") ||
+    rel.endsWith(".tsv") ||
+    rel.endsWith(".xml")
+  ) {
+    return path.join(out, rel);
+  }
+  const clean = rel.replace(/\/$/, "") || "tr";
+  return path.join(out, clean, "index.html");
+}
+
+for (const full of INDEXNOW_URLS) {
+  const file = outPathFor(full);
+  if (!fs.existsSync(file)) {
+    errors.push(`IndexNow URL has no out/ artefact: ${full.replace(SITE, "")}`);
+  }
+}
+
 if (errors.length) {
   console.error(`audit-indexnow: FAIL (${errors.length})`);
   for (const e of errors) console.error(" -", e);
   process.exit(1);
 }
 
-console.log(`audit-indexnow: OK — key=${key}.txt shipped in out/`);
+console.log(
+  `audit-indexnow: OK — key=${key}.txt · IndexNow URLs=${INDEXNOW_URLS.length} (required hubs present)`,
+);

@@ -43,6 +43,14 @@ export function OrganizationJsonLd() {
           absoluteUrl("/entity.json"),
           absoluteUrl("/tr/led-ekran-fiyatlari/"),
         ],
+        // No SearchAction: site has no public search endpoint — fake urlTemplate would be dishonest.
+        // Honest CTA: written quote (same pattern as quote-only Product potentialAction).
+        potentialAction: {
+          "@type": "CommunicateAction",
+          name: "LED ekran yazılı teklif",
+          target: absoluteUrl("/tr/quote/"),
+          url: absoluteUrl("/tr/quote/"),
+        },
       },
       {
         "@type": "Organization",
@@ -61,6 +69,12 @@ export function OrganizationJsonLd() {
         address,
         sameAs: [...ORGANIZATION_SAME_AS],
         brand: { "@type": "Brand", name: "NXTIONSTAR", url: absoluteUrl("/tr/nxtionstar/") },
+        potentialAction: {
+          "@type": "CommunicateAction",
+          name: "Yazılı teklif al",
+          target: absoluteUrl("/tr/quote/"),
+          url: absoluteUrl("/tr/quote/"),
+        },
         founder: {
           "@type": "Person",
           name: "Aras Bozkurt",

@@ -45,6 +45,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 53 | 2026-10-05 | llms/ARD/yapay-zeka honesty parity · Org subjectOf ai-shopping · smoke Day51–52 | ✅ |
 | 54 | 2026-10-05 | Home/quote FAQ · ai-catalog refresh · Merchant tax · Point C sameAsReadiness | ✅ |
 | 55 | 2026-10-05 | ARD→ai-catalog sync · shared prompts · FAQ holes · Footer EN · point-c --check · PR CI | ✅ |
+| 56 | 2026-10-05 | smoke:local / verify:premerge · FAQ ai-shopping holes · IndexNow URL complete · Org Quote CTA · blind-test doc parity | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -248,3 +249,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - SSS / fiyat hub / products hub FAQ → ai-shopping; audit:faq requireAiShopping
 - Footer machine links all locales (EN parity)
 - `point-c-packs --check` + postbuild/audit:all; PR CI workflow `ai-alisveris-audit.yml`
+
+## Gün 56 notları
+
+- `smoke:local` / `verify:premerge`: canlı smoke ile aynı mustInclude → `out/` (pre-merge confidence; postbuild + PR CI)
+- FAQ ai-shopping cite: hizmetler · rehber hub · blog hub · nxtionstar (+ audit:faq requireAiShopping)
+- IndexNow URL list complete (ai-catalog · hizmetler · sss · nxtionstar · blog · rehber hub); audit artefact check
+- WebSite/Org `potentialAction` CommunicateAction → `/tr/quote/` (SearchAction yok — sahte search endpoint yok)
+- Blind-test doc ↔ `scripts/lib/ai-shopping-prompts.mjs` parity guard; ProductJsonLd telephone E164

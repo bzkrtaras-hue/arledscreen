@@ -1,5 +1,5 @@
 /**
- * IndexNow ping for AI alışveriş artefacts (Gün 46).
+ * IndexNow ping for AI alışveriş artefacts (Gün 46 + 56).
  *
  * After PR #55 merge + CF redeploy, notify Bing/IndexNow partners to recrawl
  * previously soft-404 machine-readable URLs (entity/catalog/ard/…) plus price hubs.
@@ -12,11 +12,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { INDEXNOW_URLS, SITE } from "./lib/indexnow-urls.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SITE = "https://arledscreen.com";
 const HOST = "arledscreen.com";
 const live = process.argv.includes("--live");
+const URLS = INDEXNOW_URLS;
 
 /** Discover key from public/*.txt whose body === basename without .txt */
 function resolveKey() {
@@ -35,28 +36,6 @@ if (!resolved) {
   console.error("indexnow-ping: missing public/<32-hex>.txt key file");
   process.exit(1);
 }
-
-const URLS = [
-  `${SITE}/ai-shopping.json`,
-  `${SITE}/entity.json`,
-  `${SITE}/entity-profiles.json`,
-  `${SITE}/catalog.json`,
-  `${SITE}/.well-known/ard.json`,
-  `${SITE}/llms.txt`,
-  `${SITE}/llms-full.txt`,
-  `${SITE}/feeds/merchant-priced-panels.tsv`,
-  `${SITE}/sitemap.xml`,
-  `${SITE}/tr/`,
-  `${SITE}/tr/led-ekran-fiyatlari/`,
-  `${SITE}/tr/hesaplayici/`,
-  `${SITE}/tr/yapay-zeka/`,
-  `${SITE}/tr/about/`,
-  `${SITE}/tr/quote/`,
-  `${SITE}/tr/products/`,
-  `${SITE}/tr/rehber/led-ekran/`,
-  `${SITE}/tr/rehber/gob-vs-smd/`,
-  `${SITE}/tr/p2-5-led-ekran/`,
-];
 
 const payload = {
   host: HOST,
