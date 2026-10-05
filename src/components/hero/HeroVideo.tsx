@@ -238,34 +238,18 @@ export function HeroVideo({
 
         <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-4 pb-[calc(4.25rem+1rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
           <div className="w-full max-w-[560px]">
-            {/* Brand-first — no “kendi markası” / NXTIONSTAR overline above the wordmark */}
-            <m.p
-              className="font-display text-[clamp(2.1rem,1.45rem+3vw,3.85rem)] font-extrabold leading-[0.94] tracking-[-0.035em] text-white"
-              style={{ textShadow: "0 2px 22px rgba(11,27,51,0.4)" }}
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease, delay: 0.08 }}
-            >
-              {brand}
-            </m.p>
-            <m.span
-              aria-hidden
-              className="mt-2.5 block h-0.5 w-9 origin-left bg-[#1E5BB8] sm:mt-3 sm:w-10 rtl:origin-right"
-              initial={reduce ? false : { scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.65, ease, delay: 0.18 }}
-            />
+            {/* Visible stack starts at glass — no ARLEDSCREEN wordmark / no H1 duplicate above pillars */}
+            <h1 className="sr-only">
+              {brand}. {headline}
+            </h1>
 
             <m.div
-              className="liquid-glass-hero-copy mt-3 px-3.5 py-3.5 sm:mt-5 sm:px-5 sm:py-5"
+              className="liquid-glass-hero-copy px-3.5 py-3.5 sm:px-5 sm:py-5"
               initial={reduce ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease, delay: 0.28 }}
+              transition={{ duration: 0.8, ease, delay: 0.12 }}
             >
-              <h1 className="text-balance font-display text-[clamp(1.1rem,0.95rem+1vw,1.8rem)] font-bold leading-[1.2] tracking-[-0.02em]">
-                {headline}
-              </h1>
-              <p className="hero-copy-lead mt-2 max-w-[48ch] text-pretty text-[13.5px] font-medium leading-[1.55] sm:mt-3 sm:text-base sm:leading-[1.7]">
+              <p className="hero-copy-lead max-w-[48ch] text-pretty text-[13.5px] font-medium leading-[1.55] sm:text-base sm:leading-[1.7]">
                 {subcopy}
               </p>
               {points?.length ? (
