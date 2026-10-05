@@ -512,7 +512,7 @@
   .liquid-glass-hero-copy {
     position: relative;
     isolation: isolate;
-    border-radius: 1.25rem;
+    border-radius: 1.1rem;
     color: #1a2430;
     -webkit-backdrop-filter: saturate(210%) blur(22px) brightness(1.06);
     backdrop-filter: saturate(210%) blur(22px) brightness(1.06);

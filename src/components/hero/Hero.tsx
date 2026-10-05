@@ -51,11 +51,6 @@ export function Hero({ locale }: HeroProps) {
     <HeroVideo
       clips={clips}
       brand="ARLEDSCREEN"
-      eyebrow={
-        tr
-          ? "NXTIONSTAR · ARLEDSCREEN’in kendi markası"
-          : "NXTIONSTAR · ARLEDSCREEN’s own brand"
-      }
       headline={
         tr
           ? "İç ve dış mekân LED ekran sistemleri."

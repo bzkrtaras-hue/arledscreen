@@ -23,7 +23,8 @@ interface HeroVideoProps {
   clips: HeroClip[];
   /** Large brand wordmark (pack B) */
   brand: string;
-  eyebrow: string;
+  /** Optional overline — omit on mobile-first homepage for cleaner hierarchy */
+  eyebrow?: string;
   headline: string;
   /** Lead sentence under the H1 */
   subcopy: string;
@@ -144,7 +145,7 @@ export function HeroVideo({
 
   return (
     <section aria-label={labels.region} className="relative isolate w-full overflow-hidden bg-navy">
-      <div className="relative h-[100dvh] min-h-[620px] md:h-[clamp(700px,100dvh,920px)] md:min-h-0">
+      <div className="relative h-[100svh] min-h-[560px] max-h-[860px] md:h-[clamp(700px,100dvh,920px)] md:min-h-0 md:max-h-none">
         {/* Poster stack — soft base while each clip decodes */}
         {clips.map((clip, i) => (
           // eslint-disable-next-line @next/next/no-img-element
@@ -238,52 +239,57 @@ export function HeroVideo({
           </div>
         ) : null}
 
-        <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-5 pb-[calc(4.5rem+1.5rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
+        <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-4 pb-[calc(4.25rem+1rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
           <div className="w-full max-w-[560px]">
-            {/* Pack B left-safe stack: eyebrow → brand → glass title block → CTAs */}
+            {/* Brand-first: no redundant overline — glass holds title + pillars */}
+            {eyebrow ? (
+              <m.p
+                className="mb-3 font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs"
+                style={{ textShadow: "0 1px 12px rgba(11,27,51,0.45)" }}
+                initial={reduce ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease, delay: 0.05 }}
+              >
+                {eyebrow}
+              </m.p>
+            ) : null}
             <m.p
-              className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs"
-              style={{ textShadow: "0 1px 12px rgba(11,27,51,0.45)" }}
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, ease, delay: 0.05 }}
-            >
-              {eyebrow}
-            </m.p>
-            <m.span
-              aria-hidden
-              className="mt-3 block h-0.5 w-10 origin-left bg-[#1E5BB8] rtl:origin-right"
-              initial={reduce ? false : { scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.7, ease, delay: 0.18 }}
-            />
-            <m.p
-              className="mt-4 font-display text-[clamp(2.55rem,1.7rem+3.6vw,3.85rem)] font-extrabold leading-[0.94] tracking-[-0.035em] text-white"
+              className="font-display text-[clamp(2.1rem,1.45rem+3vw,3.85rem)] font-extrabold leading-[0.94] tracking-[-0.035em] text-white"
               style={{ textShadow: "0 2px 22px rgba(11,27,51,0.4)" }}
-              initial={reduce ? false : { opacity: 0, y: 18 }}
+              initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, ease, delay: 0.22 }}
+              transition={{ duration: 0.7, ease, delay: 0.08 }}
             >
               {brand}
             </m.p>
+            <m.span
+              aria-hidden
+              className="mt-2.5 block h-0.5 w-9 origin-left bg-[#1E5BB8] sm:mt-3 sm:w-10 rtl:origin-right"
+              initial={reduce ? false : { scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.65, ease, delay: 0.18 }}
+            />
 
             <m.div
-              className="liquid-glass-hero-copy mt-4 px-4 py-4 sm:mt-5 sm:px-5 sm:py-5"
-              initial={reduce ? false : { opacity: 0, y: 20 }}
+              className="liquid-glass-hero-copy mt-3 px-3.5 py-3.5 sm:mt-5 sm:px-5 sm:py-5"
+              initial={reduce ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease, delay: 0.34 }}
+              transition={{ duration: 0.8, ease, delay: 0.28 }}
             >
-              <h1 className="text-balance font-display text-[clamp(1.2rem,1rem+1.25vw,1.8rem)] font-bold leading-[1.22] tracking-[-0.02em]">
+              <h1 className="text-balance font-display text-[clamp(1.1rem,0.95rem+1vw,1.8rem)] font-bold leading-[1.2] tracking-[-0.02em]">
                 {headline}
               </h1>
-              <p className="hero-copy-lead mt-3 max-w-[48ch] text-pretty text-[15px] font-medium leading-[1.65] sm:text-base sm:leading-[1.7]">
+              <p className="hero-copy-lead mt-2 max-w-[48ch] text-pretty text-[13.5px] font-medium leading-[1.55] sm:mt-3 sm:text-base sm:leading-[1.7]">
                 {subcopy}
               </p>
               {points?.length ? (
-                <ul className="hero-copy-rule mt-4 space-y-2.5 border-t pt-3.5">
+                <ul className="hero-copy-rule mt-3 space-y-2 border-t pt-3 sm:mt-4 sm:space-y-2.5 sm:pt-3.5">
                   {points.map((point) => (
-                    <li key={point.title} className="flex gap-2.5 text-[14px] leading-[1.55] sm:text-[15px] sm:leading-[1.6]">
-                      <span className="hero-copy-dot mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full" aria-hidden />
+                    <li
+                      key={point.title}
+                      className="flex gap-2 text-[13px] leading-[1.45] sm:gap-2.5 sm:text-[15px] sm:leading-[1.6]"
+                    >
+                      <span className="hero-copy-dot mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full" aria-hidden />
                       <span>
                         <span className="hero-copy-point-title font-semibold">{point.title}: </span>
                         <span className="hero-copy-point-body">{point.body}</span>
@@ -295,20 +301,20 @@ export function HeroVideo({
             </m.div>
 
             <m.div
-              className="mt-5 flex flex-col gap-2.5 sm:mt-6 sm:flex-row sm:gap-3"
-              initial={reduce ? false : { opacity: 0, y: 16 }}
+              className="mt-3.5 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:gap-3"
+              initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease, delay: 0.48 }}
+              transition={{ duration: 0.65, ease, delay: 0.4 }}
             >
               <Link
                 href={quoteHref}
-                className="btn-soft inline-flex min-h-12 items-center justify-center rounded-xl bg-[#1E5BB8] px-7 text-[15px] font-semibold text-white shadow-glow transition duration-500 hover:bg-cyan-600 md:min-h-[52px] md:text-base"
+                className="btn-soft inline-flex min-h-11 items-center justify-center rounded-xl bg-[#1E5BB8] px-6 text-[14px] font-semibold text-white shadow-glow transition duration-500 hover:bg-cyan-600 sm:min-h-12 sm:px-7 sm:text-[15px] md:min-h-[52px] md:text-base"
               >
                 {quoteLabel}
               </Link>
               <Link
                 href={secondaryHref}
-                className="btn-soft inline-flex min-h-12 items-center justify-center rounded-xl border-[1.5px] border-white/80 bg-transparent px-7 text-[15px] font-semibold text-white transition duration-500 hover:bg-white/10 md:min-h-[52px] md:text-base"
+                className="btn-soft inline-flex min-h-11 items-center justify-center rounded-xl border-[1.5px] border-white/80 bg-transparent px-6 text-[14px] font-semibold text-white transition duration-500 hover:bg-white/10 sm:min-h-12 sm:px-7 sm:text-[15px] md:min-h-[52px] md:text-base"
               >
                 {secondaryLabel}
               </Link>
