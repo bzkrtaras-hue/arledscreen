@@ -6,7 +6,8 @@ import { m, useReducedMotion } from "framer-motion";
 import { Pause, Play } from "lucide-react";
 
 export type HeroClip = {
-  src: string;
+  /** Optional muted loop — omit for high-res still-only scenes */
+  src?: string;
   poster: string;
   width: number;
   height: number;
@@ -21,7 +22,7 @@ export type HeroPoint = {
 
 interface HeroVideoProps {
   clips: HeroClip[];
-  /** Large brand wordmark (pack B) */
+  /** Large brand wordmark (pack B) — sr-only when not painted */
   brand: string;
   headline: string;
   /** Lead sentence under the H1 */
@@ -40,17 +41,21 @@ interface HeroVideoProps {
 const ease = [0.22, 0.65, 0.2, 1] as const;
 const CROSSFADE_S = 1.2;
 
+function clipKey(clip: HeroClip) {
+  return clip.src ?? clip.poster;
+}
+
 function coverClass(clip: HeroClip) {
-  // Portrait field clips (kafe) need a different focal point than landscape storefronts.
+  // Portrait field / factory clips need a higher focal point than landscape walls.
   return clip.height > clip.width
-    ? "absolute inset-0 h-full w-full object-cover object-[50%_35%]"
-    : "absolute inset-0 h-full w-full object-cover object-[50%_28%] md:object-[68%_42%]";
+    ? "absolute inset-0 h-full w-full object-cover object-[50%_32%]"
+    : "absolute inset-0 h-full w-full object-cover object-[50%_40%] md:object-[55%_42%]";
 }
 
 /**
  * Full-bleed multi-clip hero with soft crossfades.
- * Copy: bottom-left navy safe zone. Brand-first. No glass pills.
- * Canlı Destek / chat widget lives outside this component (homepage Script).
+ * Supports HQ still precursors (factory) + muted field videos.
+ * Copy: bottom-left navy safe zone. Canlı Destek lives outside this component.
  */
 export function HeroVideo({
   clips,
@@ -70,27 +75,33 @@ export function HeroVideo({
   const [active, setActive] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const [ready, setReady] = useState<Record<number, boolean>>({});
-  // Affordance follows user intent, not async play() — avoids Play icon while autoplaying.
   const showPause = !reduce && !userPaused;
+  const hasVideo = clips.some((c) => Boolean(c.src));
 
   const playIndex = useCallback(
     (i: number, allowPlay: boolean) => {
       videoRefs.current.forEach((v, n) => {
         if (!v) return;
-        if (n === i && !reduce && allowPlay) {
-          // Warm decode + soft start for the incoming clip.
+        if (n === i && !reduce && allowPlay && clips[n]?.src) {
           if (v.readyState < 2) v.load();
           v.play().catch(() => {});
-        } else if (n !== i) {
+        } else {
           v.pause();
         }
       });
     },
-    [reduce],
+    [clips, reduce],
   );
 
-  // Prefetch every clip once mounted so crossfades are soft, not black.
+  // Stills are ready immediately; prefetch video clips once mounted.
   useEffect(() => {
+    setReady((prev) => {
+      const next = { ...prev };
+      clips.forEach((clip, i) => {
+        if (!clip.src) next[i] = true;
+      });
+      return next;
+    });
     videoRefs.current.forEach((v) => {
       if (!v) return;
       try {
@@ -100,7 +111,7 @@ export function HeroVideo({
         /* ignore */
       }
     });
-  }, [clips.length]);
+  }, [clips]);
 
   useEffect(() => {
     if (reduce || clips.length < 2 || userPaused) return;
@@ -143,18 +154,20 @@ export function HeroVideo({
   return (
     <section aria-label={labels.region} className="relative isolate w-full overflow-hidden bg-navy">
       <div className="relative h-[100svh] min-h-[560px] max-h-[860px] md:h-[clamp(700px,100dvh,920px)] md:min-h-0 md:max-h-none">
-        {/* Poster stack — soft base while each clip decodes */}
+        {/* Still / poster stack — HQ factory frames stay sharp under the wash */}
         {clips.map((clip, i) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            key={`poster-${clip.src}`}
+            key={`still-${clipKey(clip)}`}
             src={clip.poster}
             alt=""
             width={clip.width}
             height={clip.height}
             fetchPriority={i === 0 ? "high" : "low"}
             decoding={i === 0 ? "sync" : "async"}
-            className={`${coverClass(clip)} transition-opacity duration-[1200ms] ease-out`}
+            className={`${coverClass(clip)} transition-opacity duration-[1200ms] ease-out ${
+              !reduce && active === i && !clip.src ? "hero-still-drift" : ""
+            }`}
             style={{
               opacity: active === i ? 1 : 0,
               zIndex: 0,
@@ -162,39 +175,41 @@ export function HeroVideo({
           />
         ))}
 
-        {clips.map((clip, i) => (
-          <m.video
-            key={clip.src}
-            ref={(el) => {
-              videoRefs.current[i] = el;
-            }}
-            src={clip.src}
-            poster={clip.poster}
-            width={clip.width}
-            height={clip.height}
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden={true}
-            initial={false}
-            animate={{
-              opacity: !reduce && ready[i] && active === i ? 1 : 0,
-            }}
-            transition={{ duration: CROSSFADE_S, ease }}
-            onLoadedData={() => setReady((r) => ({ ...r, [i]: true }))}
-            onCanPlay={() => setReady((r) => ({ ...r, [i]: true }))}
-            className={coverClass(clip)}
-            style={{ zIndex: active === i ? 1 : 0 }}
-          />
-        ))}
+        {clips.map((clip, i) =>
+          clip.src ? (
+            <m.video
+              key={`video-${clip.src}`}
+              ref={(el) => {
+                videoRefs.current[i] = el;
+              }}
+              src={clip.src}
+              poster={clip.poster}
+              width={clip.width}
+              height={clip.height}
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-hidden={true}
+              initial={false}
+              animate={{
+                opacity: !reduce && ready[i] && active === i ? 1 : 0,
+              }}
+              transition={{ duration: CROSSFADE_S, ease }}
+              onLoadedData={() => setReady((r) => ({ ...r, [i]: true }))}
+              onCanPlay={() => setReady((r) => ({ ...r, [i]: true }))}
+              className={coverClass(clip)}
+              style={{ zIndex: active === i ? 1 : 0 }}
+            />
+          ) : null,
+        )}
 
         <div
           className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(15,42,79,0.28)_0%,rgba(15,42,79,0.40)_38%,rgba(11,27,51,0.84)_70%,rgba(11,27,51,0.96)_100%)] md:bg-[linear-gradient(105deg,rgba(15,42,79,0.94)_0%,rgba(15,42,79,0.78)_34%,rgba(11,27,51,0.42)_58%,rgba(11,27,51,0.16)_100%),linear-gradient(180deg,rgba(15,42,79,0.22)_0%,transparent_30%,rgba(11,27,51,0.50)_70%,rgba(11,27,51,0.88)_100%)]"
           aria-hidden
         />
 
-        {!reduce ? (
+        {!reduce && hasVideo ? (
           <button
             type="button"
             onClick={toggle}
@@ -210,7 +225,6 @@ export function HeroVideo({
           </button>
         ) : null}
 
-        {/* Soft scene dots — bottom-start clears Canlı Destek + social rail */}
         {clips.length > 1 && !reduce ? (
           <div
             className="absolute bottom-5 start-5 z-10 flex gap-2 md:bottom-8 md:start-8"
@@ -219,7 +233,7 @@ export function HeroVideo({
           >
             {clips.map((clip, i) => (
               <button
-                key={clip.src}
+                key={clipKey(clip)}
                 type="button"
                 role="tab"
                 aria-selected={active === i}
@@ -238,7 +252,6 @@ export function HeroVideo({
 
         <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-4 pb-[calc(4.25rem+1rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
           <div className="w-full max-w-[560px]">
-            {/* Visible stack starts at glass — no ARLEDSCREEN wordmark / no H1 duplicate above pillars */}
             <h1 className="sr-only">
               {brand}. {headline}
             </h1>

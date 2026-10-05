@@ -7,45 +7,64 @@ interface HeroProps {
 }
 
 /**
- * Homepage hero — pack B copy + soft-rotating field videos.
- * Prefer native 1280×720 landscape first (sharpest inventory); only one
- * high-bitrate portrait (kafe) for lounge variety. Soft 720×1280 Instagram
- * re-encodes (e.g. aslanturk ~350 kbps) stay off the hero stage.
+ * Homepage hero — HQ factory stills (12MP field photos, web-sized) lead the
+ * stage as sharp precursors; one native 1280 landscape video keeps motion.
  */
-const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
+const FACTORY_STILLS: {
+  poster: string;
+  width: number;
+  height: number;
+  labelTr: string;
+  labelEn: string;
+}[] = [
   {
-    slug: "eskisehir-sigorta-led-ekran-vitrin",
-    labelTr: "Vitrin",
-    labelEn: "Storefront",
+    poster: "/hero/fabrika-kalibrasyon-duvar.jpg",
+    width: 2560,
+    height: 1920,
+    labelTr: "Fabrika kalibrasyon",
+    labelEn: "Factory calibration",
   },
   {
-    slug: "eskisehir-sigorta-led-ekran-ic",
-    labelTr: "İç mekân",
-    labelEn: "Indoor",
+    poster: "/hero/fabrika-modul-montaj.jpg",
+    width: 2560,
+    height: 1920,
+    labelTr: "Modül montaj",
+    labelEn: "Module assembly",
   },
   {
-    slug: "kafe-led-ekran-uygulamasi",
-    labelTr: "Lounge",
-    labelEn: "Lounge",
+    poster: "/hero/fabrika-kirmizi-test.jpg",
+    width: 1650,
+    height: 2200,
+    labelTr: "Kırmızı test",
+    labelEn: "Red test wall",
   },
 ];
 
 export function Hero({ locale }: HeroProps) {
   const tr = locale === "tr";
 
-  const clips: HeroClip[] = HERO_SCENES.flatMap((scene) => {
-    const video = getVideo(scene.slug);
-    if (!video) return [];
-    return [
-      {
-        src: video.src,
-        poster: video.poster,
-        width: video.width,
-        height: video.height,
-        label: tr ? scene.labelTr : scene.labelEn,
-      },
-    ];
-  });
+  const stillClips: HeroClip[] = FACTORY_STILLS.map((still) => ({
+    poster: still.poster,
+    width: still.width,
+    height: still.height,
+    label: tr ? still.labelTr : still.labelEn,
+  }));
+
+  const vitrin = getVideo("eskisehir-sigorta-led-ekran-vitrin");
+  const videoClips: HeroClip[] = vitrin
+    ? [
+        {
+          src: vitrin.src,
+          poster: vitrin.poster,
+          width: vitrin.width,
+          height: vitrin.height,
+          label: tr ? "Vitrin" : "Storefront",
+        },
+      ]
+    : [];
+
+  // Lead with sharp factory stills; close on the best landscape field clip.
+  const clips: HeroClip[] = [...stillClips.slice(0, 2), ...videoClips];
 
   if (!clips.length) return null;
 
@@ -104,13 +123,13 @@ export function Hero({ locale }: HeroProps) {
               region: "ARLEDSCREEN giriş",
               pause: "Videoyu duraklat",
               play: "Videoyu oynat",
-              scenes: "Sahne videoları",
+              scenes: "Sahne görüntüleri",
             }
           : {
               region: "ARLEDSCREEN intro",
               pause: "Pause video",
               play: "Play video",
-              scenes: "Scene videos",
+              scenes: "Scene media",
             }
       }
       dwellMs={8000}
