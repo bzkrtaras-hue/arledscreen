@@ -240,6 +240,17 @@ if (fs.existsSync(catalogPath)) {
     if (!p.brand?.url || !String(p.brand.url).includes("/nxtionstar")) {
       errors.push(`catalog ${sku} Brand.url must point to nxtionstar`);
     }
+    const unitText = p.offers?.priceSpecification?.referenceQuantity?.unitText;
+    if (unitText !== "panel") {
+      errors.push(`catalog ${sku} priceSpecification.unitText must be panel (got ${unitText})`);
+    }
+    const pitchUnit = (p.additionalProperty || []).find((a) => a.name === "Piksel aralığı")?.unitText;
+    if (pitchUnit !== "mm") {
+      errors.push(`catalog ${sku} pitch unitText must be mm`);
+    }
+    if (!p.offers?.areaServed || !/Türkiye|TR/i.test(JSON.stringify(p.offers.areaServed))) {
+      errors.push(`catalog ${sku} offers.areaServed must be Türkiye`);
+    }
   }
   if (catalog.shoppingPolicy?.priceValidUntil !== "2026-12-31") {
     errors.push("catalog.shoppingPolicy.priceValidUntil must be 2026-12-31");

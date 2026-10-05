@@ -19,13 +19,14 @@ Hedef: **13/13 PASS** (veya ≥12; sitemap + IndexNow key).
 
 | URL | Beklenen |
 |-----|----------|
+| `/ai-shopping.json` | 200 · `pricedPanels` · `agentRules` · ücretsiz kargo yok |
 | `/entity.json` | 200 JSON · `citeOneLiner` · Gaziosmanpaşa |
-| `/entity-profiles.json` | 200 JSON · `gbpDescription` · `linkedinAbout` |
-| `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` |
-| `/.well-known/ard.json` | 200 · catalog + entity-profiles discovery |
-| `/llms.txt` | cite + entity-profiles.json |
-| `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · `32.18 USD` |
-| `/tr/about/` · `/tr/yapay-zeka/` · `/tr/led-ekran-fiyatlari/` | entity + catalog link |
+| `/entity-profiles.json` | 200 JSON · `gbpDescription` · `linkedinAbout` · `sameAsReadiness` |
+| `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` · `shippingDetails` |
+| `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping |
+| `/llms.txt` | cite + pricedPanels + ücretsiz kargo yok |
+| `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · shipping boş · KDV açıklaması |
+| `/tr/about/` · `/tr/yapay-zeka/` · `/tr/led-ekran-fiyatlari/` | entity + catalog + ai-shopping |
 | IndexNow key `.txt` | 200 · key body |
 
 Hızlı curl:

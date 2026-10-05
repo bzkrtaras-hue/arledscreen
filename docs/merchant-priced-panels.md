@@ -76,4 +76,4 @@ npm run build   # postbuild audit:offers + audit:merchant-feed dahil
 - m² maliyeti ≈ panel × 19,53 + işçilik/kontrol/yazılım (hesaplayıcı).
 - Nihai proje tutarı yazılı teklifle kesinleşir — Merchant’da “from” iddiası yok.
 - TSV `shipping` sütunu **boş** bırakılır (Gün 52): `TR:::0 USD` ücretsiz kargo iddiası yasak. Gerçek kargo/KDV Merchant Center’da sahibi ayarlar; list fiyatı nakliye hariç.
-- `tax=TR:0:n` = KDV list fiyatına dahil değil.
+- `tax=TR:0:n` = **KDV list fiyatına dahil değil** (Gün 54). `0` sıfır KDV / tax-free iddiası değildir; description’da KDV açık yazılır.

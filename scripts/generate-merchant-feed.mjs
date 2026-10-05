@@ -72,6 +72,7 @@ for (const p of dataset) {
     p.name,
     "Panel (modül) list fiyatı USD; KDV ve nakliye hariç.",
     "Nakliye list fiyatına dahil değildir; ücretsiz kargo yok — yazılı teklifle netleşir.",
+    "tax=TR:0:n = KDV list USD'ye dahil değil (sıfır oran iddiası değil).",
     "Nihai tutar keşif ve yazılı teklifle kesinleşir.",
     "ARLEDSCREEN / NXTIONSTAR — İstanbul Gaziosmanpaşa.",
   ].join(" ");
@@ -94,7 +95,8 @@ for (const p of dataset) {
       "no",
       // Empty shipping: do NOT claim TR:::0 USD (free). Owner sets real freight in Merchant Center.
       "",
-      "TR:0:n", // VAT not included in list price
+      // TR:0:n = VAT not included in list price (NOT "0% VAT / tax-free")
+      "TR:0:n",
     ].join("\t"),
   );
 }

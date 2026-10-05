@@ -103,6 +103,15 @@ function auditFeed(parsed, catalogSkus, catalogBySku) {
     if (!/nakliye/i.test(r.description || "")) {
       errors.push(`${rel}: ${r.id} description should state nakliye excluded`);
     }
+    if (r.tax && r.tax !== "TR:0:n") {
+      errors.push(`${rel}: ${r.id} tax must be TR:0:n (VAT excluded from list, not tax-free)`);
+    }
+    if (/KDV yok|tax.?free|vergiden muaf/i.test(r.description || "")) {
+      errors.push(`${rel}: ${r.id} must not claim tax-free / KDV yok`);
+    }
+    if (r.tax === "TR:0:n" && !/KDV/i.test(r.description || "")) {
+      errors.push(`${rel}: ${r.id} description must explain KDV when tax=TR:0:n`);
+    }
   }
   for (const sku of catalogSkus) {
     if (!ids.has(sku)) errors.push(`${rel}: missing catalog sku ${sku}`);

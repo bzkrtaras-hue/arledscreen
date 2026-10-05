@@ -109,6 +109,7 @@ const products = prices.map((p) => {
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       shippingDetails: PANEL_SHIPPING_DETAILS,
+      areaServed: { "@type": "Country", name: "Türkiye" },
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         price: p.usd.toFixed(2),

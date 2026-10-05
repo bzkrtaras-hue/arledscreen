@@ -14,31 +14,48 @@
       ],
       "tags": ["organization", "NAP", "LED", "Türkiye", "entity"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:44:09Z"
+      "updatedAt": "2026-10-05T21:10:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:shopping:discovery-index",
+      "displayName": "AI alışveriş discovery index (tek fetch)",
+      "type": "application/ld+json",
+      "url": "https://arledscreen.com/ai-shopping.json",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + entity/catalog/Point C/ARD/llms/Merchant + 12 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; iade teklif-only. Ajanlar önce burayı okuyabilir.",
+      "representativeQueries": [
+        "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
+        "ARLEDSCREEN AI alışveriş kaynakları",
+        "LED panel fiyat catalog entity tek URL"
+      ],
+      "tags": ["shopping", "discovery", "GEO", "agents", "pricedPanels", "agentRules"],
+      "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts", "PricedPanels", "AgentRules"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-05T21:10:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:shopping:panel-catalog",
       "displayName": "NXTIONSTAR panel katalog (AI alışveriş)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/catalog.json",
-      "description": "Yayımlanmış 2026 panel (modül) USD fiyatları + ürün URL. KDV ve nakliye hariç. Uydurma fiyat yok; şeffaf/esnek/poster/kiralık teklifle netleşir.",
+      "description": "Yayımlanmış 2026 panel (modül) USD fiyatları + ürün URL + groupAggregateOffers. Offer shippingDetails: KDV ve nakliye hariç, ücretsiz kargo yok. returnPolicy teklif/sözleşme. Uydurma fiyat yok; şeffaf/esnek/poster/kiralık teklifle netleşir.",
       "representativeQueries": [
         "LED ekran panel fiyatı USD",
         "P2.5 iç mekân LED modül fiyatı",
         "NXTIONSTAR P4 dış mekân fiyat",
+        "GOB LED panel fiyat aralığı",
         "LED ekran m² yaklaşık maliyet nasıl hesaplanır?"
       ],
-      "tags": ["shopping", "catalog", "price", "LED", "NXTIONSTAR"],
-      "capabilities": ["ListPricedPanels", "ProductUrlLookup"],
+      "tags": ["shopping", "catalog", "price", "LED", "NXTIONSTAR", "AggregateOffer", "shippingDetails"],
+      "capabilities": ["ListPricedPanels", "ProductUrlLookup", "GroupPriceBand", "ShippingHonesty"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:44:09Z"
+      "updatedAt": "2026-10-05T21:10:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:llms",
       "displayName": "ARLEDSCREEN llms.txt (AI özet)",
       "type": "text/plain",
       "url": "https://arledscreen.com/llms.txt",
-      "description": "Kısa, alıntılanabilir firma ve ürün özeti; kanonik URL haritası; asistan kuralları (uydurma iddia yasağı).",
+      "description": "Kısa, alıntılanabilir firma ve ürün özeti; kanonik URL haritası; asistan kuralları (pricedPanels, ücretsiz kargo yok, iade teklif-only).",
       "representativeQueries": [
         "LED ekran nedir ARLEDSCREEN",
         "dijital ekran ile LED ekran farkı",
@@ -46,14 +63,14 @@
       ],
       "tags": ["llms", "documentation", "GEO"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:44:09Z"
+      "updatedAt": "2026-10-05T21:10:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:llms-full",
       "displayName": "ARLEDSCREEN llms-full.txt",
       "type": "text/plain",
       "url": "https://arledscreen.com/llms-full.txt",
-      "description": "Genişletilmiş makinece okunur site özeti; AI alışveriş intent→URL tablosu; ürün grupları ve ticari URL’ler.",
+      "description": "Genişletilmiş makinece okunur site özeti; AI alışveriş intent→URL tablosu; pricedPanels + shipping honesty.",
       "representativeQueries": [
         "ARLEDSCREEN ürün grupları listesi",
         "LED ekran montaj ve servis İstanbul",
@@ -61,14 +78,14 @@
       ],
       "tags": ["llms", "documentation", "shopping"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T19:05:00Z"
+      "updatedAt": "2026-10-05T21:10:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:price-hub",
       "displayName": "LED ekran fiyatları 2026 (insan + ajan)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
-      "description": "Yayımlanmış panel tablosu ve örnek m² hesapları. catalog.json ile aynı fiyat kaynağı.",
+      "description": "Yayımlanmış panel tablosu ve örnek m² hesapları. catalog.json / ai-shopping.json ile aynı fiyat kaynağı.",
       "representativeQueries": [
         "LED ekran fiyatları 2026",
         "LED ekran m2 fiyatı",
@@ -76,14 +93,14 @@
       ],
       "tags": ["pricing", "commerce", "TR"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:44:09Z"
+      "updatedAt": "2026-10-05T21:10:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:quote",
       "displayName": "ARLEDSCREEN yazılı teklif",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/quote/",
-      "description": "Keşif sonrası yazılı teklif formu. List fiyatı olmayan ürünler ve nihai tutar burada netleşir.",
+      "description": "Keşif sonrası yazılı teklif formu. List fiyatı olmayan ürünler ve nihai tutar burada netleşir. Ajanlar buradan fiyat uydurmaz.",
       "representativeQueries": [
         "LED ekran teklif al",
         "şeffaf LED ekran fiyat teklifi",
@@ -91,7 +108,7 @@
       ],
       "tags": ["quote", "commerce", "B2B"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:44:09Z"
+      "updatedAt": "2026-10-05T21:10:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:proof:case-studies",
@@ -113,39 +130,39 @@
       "displayName": "Yapay zekâ & LED + AI alışveriş keşfi",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/yapay-zeka/",
-      "description": "YZ uyumlu LED entegrasyonu ve ajanların okuması gereken entity/catalog/ard/llms kanonik URL’leri.",
+      "description": "YZ uyumlu LED entegrasyonu ve ajan kanonikleri: ai-shopping.json (pricedPanels+agentRules), entity/catalog/ard/llms. shippingDetails + ücretsiz kargo yok + iade teklif-only.",
       "representativeQueries": [
         "yapay zeka uyumlu LED ekran",
         "AI ajanları LED ekran fiyatını nereden okur",
-        "ARLEDSCREEN catalog.json"
+        "ARLEDSCREEN ai-shopping.json"
       ],
       "tags": ["AI", "LED", "shopping", "agents"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:53:00Z"
+      "updatedAt": "2026-10-05T21:10:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:shopping:merchant-feed",
       "displayName": "Google Merchant dry-run feed (12 priced panels)",
       "type": "text/tab-separated-values",
       "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
-      "description": "Yalnızca PANEL_PRICES’taki 12 priced SKU. Quote-only yok. catalog.json ile fiyat parity.",
+      "description": "Yalnızca PANEL_PRICES’taki 12 priced SKU. Quote-only yok. shipping boş (ücretsiz kargo yok). tax=TR:0:n = KDV list dışı (sıfır oran değil). catalog.json ile fiyat parity.",
       "representativeQueries": [
         "Google Merchant LED panel feed ARLEDSCREEN",
         "NXTIONSTAR priced SKU listesi"
       ],
       "tags": ["merchant", "shopping", "feed", "TSV", "priced-only"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T19:50:00Z"
+      "updatedAt": "2026-10-05T21:10:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:entity:profile-packs",
       "displayName": "Point C profile paste packs",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/entity-profiles.json",
-      "description": "GBP / LinkedIn / Instagram / Facebook / dizin yapıştırma metinleri — entity.json cite ile birebir. Sahip Point C operasyonu.",
+      "description": "GBP / LinkedIn / Instagram / Facebook / dizin yapıştırma metinleri — entity.json cite ile birebir. sameAsReadiness notları dahil. Sahip Point C operasyonu.",
       "tags": ["entity", "Point-C", "GBP", "LinkedIn", "NAP"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T20:10:00Z"
+      "updatedAt": "2026-10-05T21:10:00Z"
     }
   ]
 }

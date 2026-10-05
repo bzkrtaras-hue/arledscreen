@@ -12,12 +12,28 @@
   "dateModified": "2026-10-05",
   "packs": {
     "gbpDescription": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
-    "linkedinAbout": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nWeb: https://arledscreen.com/tr/\nDoğrulama: https://arledscreen.com/entity.json\nTelefon: +90 530 507 88 34",
+    "linkedinAbout": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nWeb: https://arledscreen.com/tr/\nDoğrulama: https://arledscreen.com/entity.json\nAI alışveriş: https://arledscreen.com/ai-shopping.json\nTelefon: +90 530 507 88 34",
     "instagramBio": "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
     "facebookAbout": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
     "directoryShort": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
-    "directoryLong": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nE-posta: arled@arledscreen.com\nWeb: https://arledscreen.com/tr/\nDoğrulama: https://arledscreen.com/entity.json",
-    "youtubeAbout": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.\n\nSite: https://arledscreen.com/tr/\nEntity: https://arledscreen.com/entity.json"
+    "directoryLong": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nE-posta: arled@arledscreen.com\nWeb: https://arledscreen.com/tr/\nDoğrulama: https://arledscreen.com/entity.json\nAI alışveriş: https://arledscreen.com/ai-shopping.json",
+    "youtubeAbout": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.\n\nSite: https://arledscreen.com/tr/\nEntity: https://arledscreen.com/entity.json\nAI alışveriş: https://arledscreen.com/ai-shopping.json"
+  },
+  "sameAsReadiness": {
+    "live": [
+      "https://www.instagram.com/arledscreen",
+      "https://www.facebook.com/arledscreenn",
+      "https://www.linkedin.com/company/arleds"
+    ],
+    "blockedUntil301": [
+      "https://arleds.com/ (apex → arledscreen.com/tr/ 301 sonrası sameAs)"
+    ],
+    "notes": [
+      "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
+      "arleds.com sameAs’a eklenmez ta ki 301 canlı doğrulanana kadar.",
+      "Point C paste: packs.* metinlerini üçüncü taraf formlara birebir yapıştır; uydurma rating/fiyat yok.",
+      "Tek fetch ajan index: https://arledscreen.com/ai-shopping.json"
+    ]
   },
   "canonicalUrls": {
     "entityJson": "https://arledscreen.com/entity.json",

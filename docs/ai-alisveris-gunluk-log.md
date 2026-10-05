@@ -43,6 +43,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 51 | 2026-10-05 | ai-shopping pricedPanels+agentRules · Offer shippingDetails · Brand.url | ✅ |
 | 52 | 2026-10-05 | Merchant shipping honesty · iade FAQ · extrasUsd · ENTITY_FAQS tek kaynak | ✅ |
 | 53 | 2026-10-05 | llms/ARD/yapay-zeka honesty parity · Org subjectOf ai-shopping · smoke Day51–52 | ✅ |
+| 54 | 2026-10-05 | Home/quote FAQ · ai-catalog refresh · Merchant tax · Point C sameAsReadiness | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -229,3 +230,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Organization `subjectOf` → ai-shopping.json
 - `smoke:live` Day 51–52 assert (pricedPanels, agentRules, shippingDetails, ücretsiz kargo yok)
 - Guards: cite-parity llms/yapay-zeka; audit:ai-shopping ard text; audit:entity-sameas
+
+## Gün 54 notları
+
+- Home FAQ + quote FAQ + commercial FAQ → ai-shopping tek fetch (eski catalog-only çelişki kapandı)
+- `.well-known/ai-catalog.json` Day 51–53 parity + ai-shopping discovery entry
+- Merchant `tax=TR:0:n` honesty (KDV hariç ≠ tax-free) + audit guard
+- Blind-test prompt #6 → ai-shopping first; readiness asserts pricedPanels/extras/return
+- Catalog Offer `areaServed=Türkiye` + unitText=panel audit
+- Point C: `sameAsReadiness` + packs’te ai-shopping cite; post-deploy Day 51–53 echo

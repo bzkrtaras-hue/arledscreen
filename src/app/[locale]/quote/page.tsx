@@ -42,7 +42,7 @@ const QUOTE_FAQS = [
   {
     question: "AI ajanları fiyatı bu formdan mı okusun?",
     answer:
-      "Hayır. Ajanlar yayımlanmış panel USD için https://arledscreen.com/catalog.json kullanmalı; quote-only ürünlere fiyat uydurmamalı. Bu sayfa yazılı teklif kanalıdır. Keşif: https://arledscreen.com/.well-known/ard.json.",
+      "Hayır. Ajanlar önce https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) okumalı; panel USD için https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok). Quote-only ürünlere fiyat uydurulmaz. Bu sayfa yazılı teklif kanalıdır. Keşif: https://arledscreen.com/.well-known/ard.json · Kimlik: https://arledscreen.com/entity.json.",
   },
 ];
 

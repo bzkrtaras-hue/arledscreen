@@ -77,7 +77,7 @@ const PROMPTS = [
   {
     id: 6,
     q: "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
-    paths: ["/tr/yapay-zeka/", "/.well-known/ard.json"],
+    paths: ["/ai-shopping.json", "/tr/yapay-zeka/", "/.well-known/ard.json"],
   },
   {
     id: 7,
@@ -165,6 +165,10 @@ if (catalog) {
   if (groups.length < 3) {
     errors.push(`catalog.groupAggregateOffers expected ≥3 (got ${groups.length})`);
   }
+  const withShip = dataset.filter((d) => d.offers?.shippingDetails);
+  if (withShip.length !== 12) {
+    errors.push(`catalog offers.shippingDetails expected on 12 panels (got ${withShip.length})`);
+  }
   const quoteOnly = catalog.quoteOnlyProductGroups || [];
   for (const need of ["kiralik-led-ekran", "seffaf-led-ekran", "transparan-led-ekran"]) {
     const hit = quoteOnly.some(
@@ -186,6 +190,25 @@ if (catalog) {
     if (/kiralik-led-ekran|seffaf-led-ekran|transparan-led-ekran/.test(u)) {
       errors.push(`priced dataset must not include quote-only URL ${u}`);
     }
+  }
+}
+
+const aiShopping = readJson("ai-shopping.json");
+if (aiShopping) {
+  if (!Array.isArray(aiShopping.pricedPanels) || aiShopping.pricedPanels.length !== 12) {
+    errors.push(`ai-shopping.pricedPanels must be 12 (got ${aiShopping.pricedPanels?.length})`);
+  }
+  if (!Array.isArray(aiShopping.agentRules) || aiShopping.agentRules.length < 4) {
+    errors.push("ai-shopping.agentRules missing");
+  }
+  if (Number(aiShopping.shoppingPolicy?.extrasUsd?.workshopLaborPerM2) !== 100) {
+    errors.push("ai-shopping.shoppingPolicy.extrasUsd.workshopLaborPerM2 must be 100");
+  }
+  if (!/quote-and-contract-only/i.test(String(aiShopping.shoppingPolicy?.returnPolicy || ""))) {
+    errors.push("ai-shopping.shoppingPolicy.returnPolicy must be quote-and-contract-only");
+  }
+  if (!/ücretsiz kargo yok/i.test(JSON.stringify(aiShopping.agentRules || []))) {
+    errors.push("ai-shopping.agentRules must forbid ücretsiz kargo");
   }
 }
 
@@ -223,7 +246,15 @@ if (llmsFullPath) {
 const yapay = mustExist("tr/yapay-zeka/index.html");
 if (yapay) {
   const html = fs.readFileSync(yapay, "utf8");
-  for (const needle of ["catalog.json", "entity.json", "ard.json", "ai-shopping.json"]) {
+  for (const needle of [
+    "catalog.json",
+    "entity.json",
+    "ard.json",
+    "ai-shopping.json",
+    "pricedPanels",
+    "priceValidUntil",
+    "ücretsiz kargo yok",
+  ]) {
     if (!html.includes(needle)) {
       errors.push(`tr/yapay-zeka/ must mention ${needle}`);
     }
@@ -269,6 +300,12 @@ if (profiles) {
   }
   if (!String(profiles.packs?.linkedinAbout || "").includes("entity.json")) {
     errors.push("entity-profiles.json linkedinAbout must cite entity.json");
+  }
+  if (!String(profiles.packs?.linkedinAbout || "").includes("ai-shopping.json")) {
+    errors.push("entity-profiles.json linkedinAbout must cite ai-shopping.json");
+  }
+  if (!profiles.sameAsReadiness?.live || !Array.isArray(profiles.sameAsReadiness.blockedUntil301)) {
+    errors.push("entity-profiles.json sameAsReadiness must list live + blockedUntil301");
   }
 }
 

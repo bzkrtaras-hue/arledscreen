@@ -175,14 +175,24 @@ const profiles = {
   dateModified: new Date().toISOString().slice(0, 10),
   packs: {
     gbpDescription: ENTITY_CITE_MEDIUM,
-    linkedinAbout: `${ENTITY_CITE_MEDIUM}\n\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nTelefon: ${CONTACT_PHONE_DISPLAY}`,
+    linkedinAbout: `${ENTITY_CITE_MEDIUM}\n\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json\nTelefon: ${CONTACT_PHONE_DISPLAY}`,
     instagramBio: "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
     facebookAbout: ENTITY_CITE_MEDIUM,
     directoryShort: ENTITY_CITE_ONE_LINER,
-    directoryLong: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nE-posta: ${CONTACT_EMAIL}\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json`,
-    youtubeAbout: `${ENTITY_CITE_SHORT}\n\nSite: ${SITE}/tr/\nEntity: ${SITE}/entity.json`,
+    directoryLong: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nE-posta: ${CONTACT_EMAIL}\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json`,
+    youtubeAbout: `${ENTITY_CITE_SHORT}\n\nSite: ${SITE}/tr/\nEntity: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json`,
   },
-    canonicalUrls: {
+  sameAsReadiness: {
+    live: ORGANIZATION_SAME_AS,
+    blockedUntil301: ["https://arleds.com/ (apex → arledscreen.com/tr/ 301 sonrası sameAs)"],
+    notes: [
+      "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
+      "arleds.com sameAs’a eklenmez ta ki 301 canlı doğrulanana kadar.",
+      "Point C paste: packs.* metinlerini üçüncü taraf formlara birebir yapıştır; uydurma rating/fiyat yok.",
+      `Tek fetch ajan index: ${SITE}/ai-shopping.json`,
+    ],
+  },
+  canonicalUrls: {
     entityJson: `${SITE}/entity.json`,
     catalogJson: `${SITE}/catalog.json`,
     ardJson: `${SITE}/.well-known/ard.json`,

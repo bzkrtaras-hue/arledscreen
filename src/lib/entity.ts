@@ -86,6 +86,7 @@ export const ENTITY_PROFILE_PACKS = {
 
 Web: https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
 Telefon: ${CONTACT_PHONE_DISPLAY}`,
   instagramBio: "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
   facebookAbout: ENTITY_CITE_MEDIUM,
@@ -96,11 +97,13 @@ Adres: ${BUSINESS_ADDRESS.streetAddress}, ${BUSINESS_ADDRESS.postalCode} ${BUSIN
 Telefon: ${CONTACT_PHONE_DISPLAY}
 E-posta: ${CONTACT_EMAIL}
 Web: https://arledscreen.com/tr/
-Doğrulama: https://arledscreen.com/entity.json`,
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json`,
   youtubeAbout: `${ENTITY_CITE_SHORT}
 
 Site: https://arledscreen.com/tr/
-Entity: https://arledscreen.com/entity.json`,
+Entity: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json`,
 } as const;
 
 export type EntityDocument = {

@@ -196,6 +196,10 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "95.88",
@@ -274,6 +278,10 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
         },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
@@ -354,6 +362,10 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "49.08",
@@ -427,6 +439,10 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
         },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
@@ -502,6 +518,10 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "30.88",
@@ -575,6 +595,10 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
         },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
@@ -650,6 +674,10 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "63.70",
@@ -723,6 +751,10 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
         },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
@@ -798,6 +830,10 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "44.20",
@@ -871,6 +907,10 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
         },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
@@ -951,6 +991,10 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "36.40",
@@ -1024,6 +1068,10 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Türkiye"
         },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",

@@ -92,7 +92,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "AI / alışveriş ajanları fiyat ve kimliği nereden okumalı?",
       answer:
-        "Makinece kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/ · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt.",
+        "Tek fetch: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules; priceValidUntil 2026-12-31). Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel kataloğu: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. İade/garanti teklifte yazılır; uydurma TL paket yok.",
     },
   ],
   ar: [

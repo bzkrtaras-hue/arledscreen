@@ -27,7 +27,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 3 | P2.5 iç mekan LED ekran paneli kaç USD? | catalog `p2-5-ic` | **32,18 USD** | Sabit m² TL |
 | 4 | Dış mekan LED ekran fiyat bandı | catalog groupAggregateOffers | low–high USD | Quote-only’ye fiyat uydurma |
 | 5 | LED ekran m² maliyeti nasıl hesaplanır? | `/tr/hesaplayici/` | formül + yazılı teklif | “stokta paket hazır” |
-| 6 | AI ajanları ARLEDSCREEN fiyatını nereden okur? | `/tr/yapay-zeka/` · ard.json | catalog + entity + ard | Sadece blog |
+| 6 | AI ajanları ARLEDSCREEN fiyatını nereden okur? | `/ai-shopping.json` · `/tr/yapay-zeka/` · ard | **ai-shopping önce** (pricedPanels+agentRules) · entity/catalog | Sadece blog |
 | 7 | GOB mi SMD mi? | `/tr/rehber/gob-vs-smd/` | karar kriterleri + GOB USD tablo | Sahte sertifika |
 | 8 | LED tabela mı LED ekran mı? | `/tr/rehber/led-tabela-mi-led-ekran-mi/` | dijital ≠ LED | Eşanlamlı ezme |
 | 9 | Kiralık LED ekran fiyatı? | `/tr/products/kiralik-led-ekran/` · quote | list yok → teklif | Sahte günlük TL |
@@ -66,15 +66,17 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 
 1. 12 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
 2. `entity.json`: telephone, Gaziosmanpaşa, citeOneLiner, disambiguatingDescription, NXTIONSTAR
-3. `catalog.json`: 12 dataset SKU; P2.5 iç = 32.18; groupAggregateOffers ≥ 3
-4. `llms-full.txt` §5 intent tablosu kanonik URL’leri içerir (entity-profiles + about + products)
-5. Quote-only gruplar (`kiralik`, `seffaf`, `transparan`) catalog `dataset`’te fiyat **yok**
-6. `/tr/yapay-zeka/` HTML’de catalog.json + entity.json geçiyor
-7. `ard.json` entity-profiles.json discovery; `entity-profiles.json` packs MEDIUM cite
+3. `catalog.json`: 12 dataset SKU; P2.5 iç = 32.18; groupAggregateOffers ≥ 3; shippingDetails
+4. `ai-shopping.json`: 12 `pricedPanels` + `agentRules` + `extrasUsd` + `returnPolicy` + ücretsiz kargo yok
+5. `llms-full.txt` §5 intent tablosu kanonik URL’leri içerir (entity-profiles + about + products)
+6. Quote-only gruplar (`kiralik`, `seffaf`, `transparan`) catalog `dataset`’te fiyat **yok**
+7. `/tr/yapay-zeka/` HTML’de ai-shopping + catalog + entity + priceValidUntil
+8. `ard.json` entity-profiles + ai-shopping discovery; `entity-profiles.json` packs MEDIUM cite
 
 ## Owner sırası
 
 1. PR #55 merge + CF redeploy  
-2. `curl -sI` entity / catalog / ard / entity-profiles → 200  
-3. Canlı kör tur 1 (12 prompt) → skor kartı  
-4. Point C (GBP + LinkedIn packs) → tur 2
+2. `npm run post-deploy` (smoke GREEN → IndexNow; Day 51–53 contract echo)  
+3. `curl -sI` entity / catalog / ard / ai-shopping / entity-profiles → 200  
+4. Canlı kör tur 1 (12 prompt) → skor kartı  
+5. Point C (GBP + LinkedIn packs) → tur 2

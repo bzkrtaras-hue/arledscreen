@@ -59,6 +59,14 @@ if (idx.status !== 0) {
   process.exit(1);
 }
 console.log("post-deploy: OK — live surfaces notified");
+console.log("");
+console.log("Day 51–53 contract (canlı doğrula):");
+console.log("  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd · returnPolicy · ücretsiz kargo yok");
+console.log("  catalog.json → shippingDetails · Brand.url · priceValidUntil");
+console.log("  merchant TSV → shipping boş · tax=TR:0:n (KDV hariç, tax-free değil)");
+console.log("  llms/yapay-zeka → pricedPanels + honesty tokens");
+console.log("");
 console.log("Next (sahip): npm run point-c-packs -- --live → GBP/LinkedIn/IG/FB paste");
+console.log("  entity-profiles.json → sameAsReadiness + packs (ai-shopping cite)");
 console.log("Then: docs/ai-shopping-blind-test-scores.md tur 1");
 process.exit(0);
