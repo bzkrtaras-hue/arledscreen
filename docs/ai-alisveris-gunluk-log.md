@@ -42,6 +42,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 50 | 2026-10-05 | Offer `priceValidUntil` + `sync-llms-prices` otomatik PANEL tablosu | ✅ |
 | 51 | 2026-10-05 | ai-shopping pricedPanels+agentRules · Offer shippingDetails · Brand.url | ✅ |
 | 52 | 2026-10-05 | Merchant shipping honesty · iade FAQ · extrasUsd · ENTITY_FAQS tek kaynak | ✅ |
+| 53 | 2026-10-05 | llms/ARD/yapay-zeka honesty parity · Org subjectOf ai-shopping · smoke Day51–52 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -219,3 +220,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `ai-shopping.json`: `extrasUsd` + `returnPolicy` + agentRules (iade / ücretsiz kargo / m²)
 - Ürün grubu FAQ: shippingDetails + ücretsiz kargo yok + ai-shopping cite
 - Guards: audit:merchant-feed free-ship; audit:ai-shopping extras; cite-parity ENTITY_FAQS Q
+
+## Gün 53 notları
+
+- `llms.txt` / `llms-full.txt`: pricedPanels + agentRules + priceValidUntil + ücretsiz kargo yok + iade honesty
+- `ard.json`: discovery/catalog açıklamaları Day 51–52 sözleşmelerine yetişti
+- `/yapay-zeka`: shippingDetails / return / priceValidUntil; TechArticle sameAs → ai-shopping
+- Organization `subjectOf` → ai-shopping.json
+- `smoke:live` Day 51–52 assert (pricedPanels, agentRules, shippingDetails, ücretsiz kargo yok)
+- Guards: cite-parity llms/yapay-zeka; audit:ai-shopping ard text; audit:entity-sameas

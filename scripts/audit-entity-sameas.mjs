@@ -74,6 +74,7 @@ for (const needle of [
   "hasOfferCatalog",
   "/catalog.json",
   "/entity.json",
+  "/ai-shopping.json",
 ]) {
   if (!orgSrc.includes(needle)) errors.push(`OrganizationJsonLd.tsx missing ${needle}`);
 }
@@ -86,6 +87,9 @@ if (fs.existsSync(homeHtml)) {
   }
   if (!html.includes("/entity.json")) {
     errors.push("out/tr/index.html Organization JSON-LD missing entity.json subjectOf");
+  }
+  if (!html.includes("/ai-shopping.json")) {
+    errors.push("out/tr/index.html Organization JSON-LD missing ai-shopping.json");
   }
 }
 

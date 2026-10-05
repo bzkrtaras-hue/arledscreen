@@ -139,6 +139,9 @@ const ard = fs.readFileSync(path.join(out, ".well-known", "ard.json"), "utf8");
 if (!ard.includes("/ai-shopping.json")) {
   errors.push("ard.json must discover ai-shopping.json");
 }
+if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
+  errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
+}
 
 if (errors.length) {
   console.error(`audit-ai-shopping-index: FAIL (${errors.length})`);

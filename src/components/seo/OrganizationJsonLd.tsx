@@ -91,6 +91,14 @@ export function OrganizationJsonLd() {
         subjectOf: [
           {
             "@type": "DataDownload",
+            name: "AI alışveriş discovery index",
+            encodingFormat: "application/ld+json",
+            contentUrl: absoluteUrl("/ai-shopping.json"),
+            description:
+              "Tek fetch: 12 pricedPanels + agentRules + extrasUsd + returnPolicy + cite",
+          },
+          {
+            "@type": "DataDownload",
             name: "ARLEDSCREEN entity.json",
             encodingFormat: "application/ld+json",
             contentUrl: absoluteUrl("/entity.json"),

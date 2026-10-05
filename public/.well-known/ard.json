@@ -21,7 +21,7 @@
       "displayName": "NXTIONSTAR panel katalog (AI alışveriş)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/catalog.json",
-      "description": "Yayımlanmış 2026 panel (modül) USD fiyatları + ürün URL + groupAggregateOffers (iç/dış/GOB bantları). KDV ve nakliye hariç. Uydurma fiyat yok; şeffaf/esnek/poster/kiralık teklifle netleşir.",
+      "description": "Yayımlanmış 2026 panel (modül) USD fiyatları + ürün URL + groupAggregateOffers (iç/dış/GOB bantları). Offer shippingDetails: KDV ve nakliye hariç, ücretsiz kargo yok. returnPolicy teklif/sözleşme. Uydurma fiyat yok; şeffaf/esnek/poster/kiralık teklifle netleşir.",
       "representativeQueries": [
         "LED ekran panel fiyatı USD",
         "P2.5 iç mekân LED modül fiyatı",
@@ -29,10 +29,10 @@
         "GOB LED panel fiyat aralığı",
         "LED ekran m² yaklaşık maliyet nasıl hesaplanır?"
       ],
-      "tags": ["shopping", "catalog", "price", "LED", "NXTIONSTAR", "AggregateOffer"],
-      "capabilities": ["ListPricedPanels", "ProductUrlLookup", "GroupPriceBand"],
+      "tags": ["shopping", "catalog", "price", "LED", "NXTIONSTAR", "AggregateOffer", "shippingDetails"],
+      "capabilities": ["ListPricedPanels", "ProductUrlLookup", "GroupPriceBand", "ShippingHonesty"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T19:30:00Z"
+      "updatedAt": "2026-10-05T21:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:llms",
@@ -160,16 +160,16 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte entity + catalog + Point C + ARD + llms + Merchant + 12 kör test intent + cite. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + entity/catalog/Point C/ARD/llms/Merchant + 12 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; iade teklif-only. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
         "LED panel fiyat catalog entity tek URL"
       ],
-      "tags": ["shopping", "discovery", "GEO", "agents"],
-      "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts"],
+      "tags": ["shopping", "discovery", "GEO", "agents", "pricedPanels", "agentRules"],
+      "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts", "PricedPanels", "AgentRules"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T20:45:00Z"
+      "updatedAt": "2026-10-05T21:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:ops:indexnow",

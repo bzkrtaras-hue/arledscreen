@@ -85,6 +85,10 @@ function checkLlms(rel) {
     "+90 530 507 88 34",
     "entity.json",
     "catalog.json",
+    "ai-shopping.json",
+    "pricedPanels",
+    "ücretsiz kargo yok",
+    "priceValidUntil",
     "ARLED Solutions",
     "NationStar",
   ]) {
@@ -101,7 +105,7 @@ function checkHtml(rel, mustInclude) {
   const html = read(rel);
   if (!html) return;
   for (const s of mustInclude) {
-    if (!html.includes(s)) errors.push(`${rel} missing cite fragment`);
+    if (!html.includes(s)) errors.push(`${rel} missing: ${s}`);
   }
 }
 
@@ -109,8 +113,16 @@ if (MEDIUM) {
   checkHtml("out/tr/about/index.html", [MEDIUM]);
   checkHtml("out/tr/about/aras-bozkurt/index.html", [MEDIUM]);
 }
-// yapay-zeka must point agents at entity + catalog
-checkHtml("out/tr/yapay-zeka/index.html", ["entity.json", "catalog.json", "llms.txt"]);
+// yapay-zeka must point agents at honesty contracts (Gün 53)
+checkHtml("out/tr/yapay-zeka/index.html", [
+  "entity.json",
+  "catalog.json",
+  "llms.txt",
+  "ai-shopping.json",
+  "pricedPanels",
+  "priceValidUntil",
+  "ücretsiz kargo yok",
+]);
 
 // Point C packs must reuse citeMedium verbatim
 if (MEDIUM) {

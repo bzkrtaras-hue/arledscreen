@@ -75,7 +75,7 @@ const block = [
   "",
   "*1 m² = 1 / (0,32 × 0,16) ≈ 19,53 modül (standart 320 × 160 mm). Bu sütun yalnızca modül bedelidir; işçilik, kontrol kartı, yazılım, konstrüksiyon, KDV ve nakliye dahil değildir. Gerçek projede modül adedi her kenarda yukarı yuvarlanır.",
   "",
-  `Makinece aynı fiyat kaynağı: https://arledscreen.com/catalog.json · Tek fetch: https://arledscreen.com/ai-shopping.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Point C: https://arledscreen.com/entity-profiles.json · priceValidUntil: ${PRICE_VALID_UNTIL}`,
+  `Makinece aynı fiyat kaynağı: https://arledscreen.com/catalog.json · Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels+agentRules) · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Point C: https://arledscreen.com/entity-profiles.json · priceValidUntil: ${PRICE_VALID_UNTIL} · ücretsiz kargo yok`,
   "",
   "<!-- AUTO:PANEL_PRICES_END -->",
 ].join("\n");
