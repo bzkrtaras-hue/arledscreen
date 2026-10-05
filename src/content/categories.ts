@@ -21,6 +21,13 @@ export interface CategoryFaq {
   answer: string;
 }
 
+/** Optional tech / comparison visuals on the product group page */
+export interface TechGalleryShot {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface ProductGroup {
   slug: string;
   /** Menu / card label */
@@ -41,6 +48,11 @@ export interface ProductGroup {
   imageAlt: string;
   /** Optional separate image for small cards */
   cardImage?: string;
+  /** Optional tech / form comparison gallery */
+  techGallery?: TechGalleryShot[];
+  techGalleryEyebrow?: string;
+  techGalleryTitle?: string;
+  techGalleryDescription?: string;
   intro: string[];
   highlights: string[];
   uses: { title: string; body: string }[];
@@ -52,6 +64,53 @@ export interface ProductGroup {
   refFilter?: (r: Reference) => boolean;
   faqs: CategoryFaq[];
 }
+
+/** Shared GOB / COB / SMD comparison shots for fine-pitch family pages */
+const FINE_PITCH_TECH_GALLERY: TechGalleryShot[] = [
+  {
+    src: "/projects/modules/tech/cob-smd-gob-trio.jpg",
+    alt: "COB, SMD ve GOB LED modül yüzeylerinin yan yana karşılaştırması",
+    caption: "COB · SMD · GOB — üç yüzey teknolojisi",
+  },
+  {
+    src: "/projects/modules/tech/gob-vs-cob-surface.jpg",
+    alt: "GOB ve COB ince pitch LED modül yüzey dokusu karşılaştırması",
+    caption: "GOB vs COB — yüzey ve doku farkı",
+  },
+  {
+    src: "/projects/modules/tech/gob-vs-normal-smd.jpg",
+    alt: "GOB kaplamalı LED modül ile standart SMD modül kesit karşılaştırması",
+    caption: "GOB vs standart SMD — koruyucu katman",
+  },
+  {
+    src: "/projects/modules/tech/gob-vs-standard-water.jpg",
+    alt: "GOB LED modül üzerinde su damlası ile standart modül karşılaştırması",
+    caption: "GOB — su ve darbe korumalı yüzey",
+  },
+  {
+    src: "/projects/modules/tech/cob-vs-gob-diagram.jpg",
+    alt: "COB Chip on Board ve GOB Glue on Board yapı diyagramı",
+    caption: "COB (Chip on Board) vs GOB (Glue on Board)",
+  },
+  {
+    src: "/projects/modules/tech/gob-production-process.jpg",
+    alt: "GOB LED üretiminde SMD modül üzerine şeffaf tutkal kaplama süreci",
+    caption: "GOB üretim adımı — Glue on Board",
+  },
+];
+
+const FLEXIBLE_TECH_GALLERY: TechGalleryShot[] = [
+  {
+    src: "/projects/modules/tech/flexible-curve-concave-convex.jpg",
+    alt: "Esnek LED ekran konkav, konveks ve silindirik kavis diyagramları ile iç mekân uygulama görseli",
+    caption: "Konkav · Konveks · Silindirik kavis (ör. 611R)",
+  },
+  {
+    src: "/projects/modules/tech/flexible-module-bend-lit.jpg",
+    alt: "Bükülmüş esnek LED modül — aydınlatılmış yüzey ve esnek arka yapı",
+    caption: "Esnek LED modül — bükülebilir yapı",
+  },
+];
 
 export const PRODUCT_FAMILIES = [
   "Dış Mekân LED Ekranlar",
@@ -219,8 +278,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     tag: "P1.25 · P1.53 · P1.86",
     family: "İç Mekân LED Ekranlar",
     types: ["Toplantı ve konferans", "Kontrol odası", "Yakın izleme alanları"],
-    image: "/projects/modules/smd-macro-matrix.jpg",
-    imageAlt: "LED modül yüzeyinin yakından görünümü",
+    image: "/projects/modules/tech/gob-vs-standard-water.jpg",
+    imageAlt: "GOB LED modül üzerinde su damlası — koruyucu kaplama yüzeyi",
+    techGallery: FINE_PITCH_TECH_GALLERY,
     intro: [
       "GOB (Glue on Board) teknolojisinde LED'lerin üzeri şeffaf bir koruyucu katmanla kaplanır. Bu katman, LED yüzeyini darbe, nem ve toza karşı korumaya yardımcı olur.",
       "İnsanların ekrana yaklaşabildiği, dokunabildiği veya yoğun trafiğin olduğu alanlarda GOB seçenekleri değerlendirilir. Uygunluğu keşifte kullanım koşullarına göre birlikte netleştiriyoruz.",
@@ -331,15 +391,20 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     tag: "P1.86 · P2.5",
     family: "İç Mekân LED Ekranlar",
     types: ["Kolon kaplama", "Kavisli duvar", "Silindir ve dairesel form", "Özel tasarım dekor"],
-    image: "/projects/modules/flex-module-bend.jpg",
+    image: "/projects/modules/tech/flexible-module-bend-lit.jpg",
     cardImage: "/projects/applications/curved-led-tulips.jpg",
     imageAlt: "Bükülerek kavisli forma getirilmiş esnek LED modül",
+    techGallery: FLEXIBLE_TECH_GALLERY,
+    techGalleryEyebrow: "Esnek form",
+    techGalleryTitle: "Konkav, konveks ve silindirik kavis",
+    techGalleryDescription:
+      "Esnek LED modüller konkav (iç bükey), konveks (dış bükey) ve silindirik yüzeylere uygulanabilir. Eğrilik yarıçapı ve taşıyıcı yapı keşifte yüzeye göre planlanır.",
     intro: [
       "Esnek LED modüller bükülerek kolonları, dairesel yüzeyleri ve dalgalı duvarları kaplayabilir; düz kabinlerle elde edilemeyen formlar mümkün hâle gelir.",
-      "Her esnek ekran projesi mekâna özeldir. Yüzey ölçüsü, eğrilik ve taşıyıcı yapı keşifte birlikte planlanır; ardından yazılı teklif hazırlanır.",
+      "Konkav, konveks veya silindirik kavis seçenekleriyle showroom, lobi ve sahne tasarımlarında çerçeveden bağımsız bir yüzey oluşturulur. Her proje mekâna özeldir; ölçü ve eğrilik keşifte netleştirilir.",
     ],
     highlights: [
-      "Kavisli ve dairesel formlar",
+      "Konkav, konveks ve silindirik formlar",
       "Kolon ve silindir kaplama",
       "Mimari projelere özel ölçülendirme",
       "Keşif, taşıyıcı yapı ve montaj planı",
@@ -437,20 +502,21 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     lead: "Yakından izlenen alanlar için yüksek piksel yoğunluğu",
     title: "İnce Pitch LED Ekran | Toplantı, Stüdyo, Kontrol Odası | ARLEDSCREEN",
     description:
-      "Toplantı salonu, stüdyo ve kontrol odası gibi yakın izleme alanları için ince pitch LED ekran. Piksel aralığı izleme mesafesine göre seçilir; keşif, montaj ve servis ARLEDSCREEN'den.",
+      "Toplantı salonu, stüdyo ve kontrol odası gibi yakın izleme alanları için ince pitch LED ekran. SMD, COB ve GOB yüzey seçenekleri; piksel aralığı izleme mesafesine göre seçilir.",
     short: "Piksel aralığı küçük, yakın mesafeden keskin görüntü veren iç mekân ekranları.",
-    tag: "P0.9 · P1.25",
+    tag: "P0.9 · P1.25 · GOB",
     family: "İç Mekân LED Ekranlar",
-    types: ["SMD ince pitch", "COB yüzeyli seçenekler", "Toplantı salonu duvarı", "Stüdyo arka planı"],
-    image: "/projects/modules/fine-pitch-panel.jpg",
-    imageAlt: "Yakın plan ince pitch LED panel yüzeyi",
+    types: ["SMD ince pitch", "COB yüzeyli seçenekler", "GOB (Glue on Board)", "Toplantı salonu duvarı", "Stüdyo arka planı"],
+    image: "/projects/modules/tech/cob-smd-gob-trio.jpg",
+    imageAlt: "COB, SMD ve GOB ince pitch LED modül yüzey karşılaştırması",
+    techGallery: FINE_PITCH_TECH_GALLERY,
     intro: [
       "Piksel aralığı (pitch), iki LED merkezi arasındaki milimetre cinsinden mesafedir. Aralık küçüldükçe aynı alana daha çok piksel sığar ve ekran daha yakından izlendiğinde bile görüntü bütünlüğünü korur.",
-      "İnce pitch ekranlar bu nedenle izleyicinin birkaç metre mesafede durduğu salonlarda kullanılır. Seçim yapılırken salon derinliği, içerik türü ve bütçe birlikte değerlendirilir; gereğinden küçük pitch maliyeti gereksiz yere artırır.",
+      "İnce pitch ekranlarda yüzey teknolojisi de seçilir: SMD, COB (Chip on Board) veya GOB (Glue on Board). GOB'da LED yüzeyi şeffaf koruyucu katmanla kaplanır; yakın izleme ve temas riski olan alanlarda tercih edilir.",
     ],
     highlights: [
       "Yakın mesafede net ve pürüzsüz görüntü",
-      "Projeksiyon ve çoklu monitöre göre çerçevesiz yüzey",
+      "SMD, COB ve GOB yüzey seçenekleri",
       "Salon derinliğine göre piksel aralığı önerisi",
       "Keşif, montaj ve teknik servis tek ekipten",
     ],
@@ -476,9 +542,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
           "İnce pitch grubunda yayımlanan aralıklar P0.9 ve P1.25'tir. Pratik kural: her 1 mm P ≈ 1 m minimum mesafe. Kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz; P0.9 için teknik föy talep üzerine paylaşılır.",
       },
       {
-        question: "SMD ile COB arasındaki fark nedir?",
+        question: "SMD, COB ve GOB arasındaki fark nedir?",
         answer:
-          "SMD'de her LED ayrı bir paket olarak karta lehimlenir; COB'da LED çipleri doğrudan karta yerleştirilip ortak bir yüzeyle kapatılır. COB yüzeyi darbeye karşı daha dayanıklıdır; uygun seçenek projeye göre önerilir.",
+          "SMD'de her LED ayrı paket olarak karta lehimlenir. COB'da çipler doğrudan karta yerleştirilip ortak yüzeyle kapatılır. GOB'da SMD yüzeyi ek şeffaf tutkal katmanıyla kaplanır; darbe, nem ve toza karşı koruma artar. Uygun seçenek projeye göre önerilir.",
       },
       {
         question: "Toplantı sistemleriyle birlikte çalışır mı?",

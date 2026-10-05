@@ -85,6 +85,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
   const tabs = [
     { href: "#secenekler", label: models.length ? "Modeller" : "Fiyat teklifi" },
     ...(models.length ? [{ href: "#teknik", label: "Karşılaştırma" }] : []),
+    ...(g.techGallery?.length ? [{ href: "#teknoloji", label: "Teknoloji" }] : []),
     { href: "#kullanim", label: "Kullanım alanları" },
     ...(refs.length ? [{ href: "#projeler", label: "Projeler" }] : []),
     { href: "#sss", label: "SSS" },
@@ -373,6 +374,52 @@ export default async function ProductGroupPage({ params }: PageProps) {
 
         </div>
       </section>
+
+      {g.techGallery?.length ? (
+        <section id="teknoloji" className="scroll-mt-28 border-t border-border bg-white py-14 md:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeading
+              align="left"
+              eyebrow={g.techGalleryEyebrow ?? "Yüzey teknolojisi"}
+              title={g.techGalleryTitle ?? "SMD, COB ve GOB karşılaştırması"}
+              description={
+                g.techGalleryDescription ??
+                "İnce pitch LED ekranlarda yüzey seçimi görüntü kalitesi kadar dayanıklılığı da belirler. GOB (Glue on Board) koruyucu kaplama; COB çip-on-board; SMD klasik paket yapısıdır."
+              }
+            />
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {g.techGallery.map((shot) => (
+                <li key={shot.src}>
+                  <figure className="overflow-hidden rounded-2xl border border-border bg-band">
+                    <div className="relative aspect-[16/11] bg-white">
+                      <OptImage
+                        src={shot.src}
+                        alt={shot.alt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                        className="object-contain p-2"
+                      />
+                    </div>
+                    <figcaption className="px-4 py-3 text-sm font-semibold text-ink">
+                      {shot.caption}
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+            {g.slug === "ince-pitch-led-ekran" ? (
+              <p className="mt-8 text-center">
+                <Link
+                  href="/tr/products/gob-led-ekran/"
+                  className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-cyan hover:underline"
+                >
+                  GOB LED Ekran grubuna geçin <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </p>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
 
       {/* Use cases */}
       <section id="kullanim" className="scroll-mt-28 bg-white py-14 md:py-16">

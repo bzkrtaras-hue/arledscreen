@@ -47,7 +47,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") },
         ]}
       />
-      {/* Full-bleed photo banner with centred title */}
+      {/* Compact page intro — keep field videos above the fold */}
       <section className="relative isolate overflow-hidden bg-navy">
         <OptImage
           src="/projects/outdoor-led-mapping.jpg"
@@ -55,17 +55,16 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           fill
           priority
           sizes="100vw"
-          className="-z-10 object-cover opacity-50"
+          className="-z-10 object-cover opacity-40"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0B1B33]/70 to-[#0B1B33]/90" aria-hidden />
-        <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 md:py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#9CC0F5]">Projeler ve referanslar</p>
-          <h1 className="mt-3 text-balance font-display text-[clamp(1.9rem,1.3rem+2.4vw,3rem)] font-extrabold tracking-[-0.03em] text-white">
-            Yakın Süreçte Tamamlanan Projeler
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/85">
-            Yakın süreçte tamamladığımız projelerden bir seçki.
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0B1B33]/75 to-[#0B1B33]/92" aria-hidden />
+        <div className="mx-auto max-w-4xl px-4 py-6 text-center sm:px-6 sm:py-7 md:py-8">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9CC0F5]">
+            Projeler ve referanslar
           </p>
+          <h1 className="mt-1.5 text-balance font-display text-[clamp(1.35rem,1.1rem+1.2vw,1.85rem)] font-extrabold tracking-[-0.03em] text-white">
+            Tamamlanan projeler
+          </h1>
         </div>
       </section>
 

@@ -103,10 +103,10 @@ export function Header({ locale, groups, guides }: HeaderProps) {
   const links: (MenuLink & { dropdown?: Exclude<Dropdown, null> })[] = tr
     ? [
         { href: "/tr/products/", label: "Ürünler", dropdown: "products" },
-        { href: "/tr/hizmetler/", label: "Hizmetler" },
-        { href: "/tr/bolgeler/", label: "Bölgeler" },
         { href: "/tr/projelerimiz/", label: "Projeler" },
         { href: "/tr/rehber/", label: "Rehber", dropdown: "guides" },
+        { href: "/tr/bolgeler/", label: "Bölgeler" },
+        { href: "/tr/hizmetler/", label: "Hizmetler" },
         { href: "/tr/blog/", label: "Blog" },
         { href: "/tr/about/", label: "Hakkımızda" },
       ]
@@ -444,16 +444,16 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     alt="ARLEDSCREEN"
                     width={514}
                     height={160}
-                    className="h-8 w-auto max-w-[132px] object-contain"
+                    className="h-10 w-auto max-w-[170px] object-contain"
                     unoptimized
                   />
-                  <span className="h-6 w-px shrink-0 bg-ink/20" aria-hidden />
+                  <span className="h-6 w-px shrink-0 bg-ink/15" aria-hidden />
                   <Image
                     src="/brand/nxtionstar-wordmark-header-478.webp"
                     alt="NXTIONSTAR"
                     width={478}
                     height={137}
-                    className="h-5 w-auto object-contain"
+                    className="h-5 w-auto opacity-90 object-contain"
                     unoptimized
                   />
                 </Link>
