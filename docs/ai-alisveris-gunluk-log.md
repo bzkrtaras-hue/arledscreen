@@ -21,6 +21,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 29 | 2026-10-05 | Regression suite tek komut (`audit:all`) | ✅ |
 | 30 | 2026-10-05 | Ay sonu pano + `smoke:live` (ölçüm 2026-11-04) | ✅ |
 | 31 | 2026-10-05 | Fiyat hub AI sources + Merchant ARD + `_routes` exclude | ✅ |
+| 32 | 2026-10-05 | Pitch USD FAQs + hesaplayici shopping FAQ/LinkCloud | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -43,6 +44,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `ard.json` + `ai-catalog.json`: Merchant feed discovery entry
 - `_routes.json` exclude: entity/catalog/feeds/well-known/llms (Functions’ın static AI dosyalarına dokunmaması)
 - `_headers` CORS for merchant TSV; layout `<link rel=alternate>` merchant feed
+
+## Gün 32 notları
+
+- Pitch cluster (P1.25–P5): yayımlanmış PANEL_PRICES USD cümlesi + catalog FAQ + agent source
+- Hesaplayıcı: FAQPage + ShoppingLinkCloud + merchant TSV; `audit:faq` / blind-test kapladı
 
 ## Owner P0 (her gün hatırlatma)
 

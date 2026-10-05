@@ -232,6 +232,28 @@ if (fiyat) {
   }
 }
 
+const hesap = mustExist("tr/hesaplayici/index.html");
+if (hesap) {
+  const html = fs.readFileSync(hesap, "utf8");
+  for (const needle of ["catalog.json", "entity.json", "merchant-priced-panels.tsv"]) {
+    if (!html.includes(needle)) {
+      errors.push(`tr/hesaplayici/ must mention ${needle}`);
+    }
+  }
+  if (!/"@type":\s*"FAQPage"/.test(html)) {
+    errors.push("tr/hesaplayici/ missing FAQPage JSON-LD");
+  }
+}
+
+// Pitch cluster: P2.5 must cite published 32,18 USD (or 32.18)
+const p25 = mustExist("tr/p2-5-led-ekran/index.html");
+if (p25) {
+  const html = fs.readFileSync(p25, "utf8");
+  if (!/32[,.]18/.test(html) || !html.includes("catalog.json")) {
+    errors.push("tr/p2-5-led-ekran/ must cite published P2.5 panel USD + catalog.json");
+  }
+}
+
 const ard = readJson(".well-known/ard.json");
 if (ard) {
   const urls = JSON.stringify(ard);

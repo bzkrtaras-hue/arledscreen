@@ -11,6 +11,7 @@ import { displayCompany } from "@/content/trust";
 import { modelPath, LED_MODELS } from "@/content/models";
 import { productGroupPath, getProductGroup } from "@/content/categories";
 import { SERVICE_REGIONS } from "@/content/service-regions";
+import { PANEL_PRICES } from "@/content/prices";
 
 export type CommercialCluster = "intent" | "product" | "pitch" | "use";
 
@@ -461,6 +462,17 @@ function pitchPage(opts: {
   proof: (r: Reference) => boolean;
   images: CommercialImage[];
 }): CommercialPage {
+  const priceLine = pitchPublishedPriceLine(opts.label);
+  const priceFaq = priceLine
+    ? {
+        question: `${opts.label} panel fiyatı ne kadar?`,
+        answer: `2026 yayımlanmış listede ${opts.label} panelleri — ${priceLine} (panel başı, KDV ve nakliye hariç). Kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.`,
+      }
+    : FAQ_PRICE_SOURCE;
+  const priceIntro = priceLine
+    ? `Yayımlanmış panel fiyatları (${opts.label}): ${priceLine}. Makinece: https://arledscreen.com/catalog.json.`
+    : null;
+
   return {
     slug: opts.slug,
     cluster: "pitch",
@@ -469,7 +481,7 @@ function pitchPage(opts: {
     h1: opts.h1,
     eyebrow: "Piksel aralığı",
     lead: opts.lead,
-    intro: [...opts.intro, NAP],
+    intro: [...opts.intro, ...(priceIntro ? [priceIntro] : []), NAP],
     bullets: ["İzleme mesafesine göre seçim", "Model sayfalarında teknik özet", "Fiyat hesaplayıcı + yazılı teklif"],
     images: opts.images,
     proofs: proofsFrom(opts.proof, 5),
@@ -481,13 +493,29 @@ function pitchPage(opts: {
       {
         question: `${opts.label} ne zaman seçilir?`,
         answer:
-          "İzleme mesafesi, bütçe ve içerik tipi birlikte değerlendirilir. Yakın mesafede daha küçük pitch; uzak servis/cephede daha büyük pitch tercih edilir.",
+          "İzleme mesafesi, bütçe ve içerik tipi birlikte değerlendirilir. Yakın mesafede daha küçük pitch; uzak servis/cephede daha büyük pitch tercih edilir. Rehber: https://arledscreen.com/tr/rehber/piksel-araligi-secimi/.",
       },
-      FAQ_PRICE_SOURCE,
+      priceFaq,
+      FAQ_AGENT_SOURCE,
     ],
     primaryCta: { href: opts.modelLinks[0]?.href ?? "/tr/products/", label: "Modeli incele" },
     secondaryCta: { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
   };
+}
+
+/** Published USD band for a pitch landing (e.g. "P2.5 LED") — never invents prices. */
+function pitchPublishedPriceLine(label: string): string | null {
+  const pitch = label.replace(/\s*LED\s*$/i, "").trim();
+  const rows = PANEL_PRICES.filter((p) => p.pitch === pitch);
+  if (!rows.length) return null;
+  const fmt = (n: number) => n.toFixed(2).replace(".", ",");
+  return rows
+    .map((p) => {
+      const use = p.use === "ic" ? "iç mekân" : "dış mekân";
+      const extra = [p.surface, p.frontService ? "önden servis" : ""].filter(Boolean).join(", ");
+      return `${use}${extra ? ` (${extra})` : ""}: ${fmt(p.usd)} USD`;
+    })
+    .join("; ");
 }
 
 const PITCH_PAGES: CommercialPage[] = [

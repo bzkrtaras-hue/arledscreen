@@ -46,6 +46,7 @@ const pages = [
   ...productDirs.map((s) => path.join(outTr, s, "index.html")),
   ...rehberExtras.map((s) => path.join(outTr, s, "index.html")),
   path.join(outTr, "led-ekran-fiyatlari", "index.html"),
+  path.join(outTr, "hesaplayici", "index.html"),
 ];
 
 let checked = 0;

@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { FiyatHesaplayiciEmbed } from "@/components/calculator/FiyatHesaplayiciEmbed";
 import { getSeo } from "@/content/seo";
 import { buildPageMetadata, buildThinLocaleMetadata } from "@/lib/seo";
@@ -15,6 +18,24 @@ import { PANEL_PRICES, panelProductsJsonLd } from "@/content/prices";
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
+
+const HESAP_FAQS = [
+  {
+    question: "Hesaplayıcıdaki fiyatlar nereden geliyor?",
+    answer:
+      "Yayımlanmış 2026 panel (modül) USD listesinden. Aynı kaynak https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariçtir; nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+  },
+  {
+    question: "AI ajanları hesaplayıcı fiyatını nasıl doğrular?",
+    answer:
+      "Makinece panel USD: https://arledscreen.com/catalog.json · Kimlik: https://arledscreen.com/entity.json · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Ajan keşif: https://arledscreen.com/.well-known/ard.json. Quote-only gruplara fiyat uydurulmaz.",
+  },
+  {
+    question: "Hesaplayıcı sonucu sipariş midir?",
+    answer:
+      "Hayır. Hesaplayıcı yaklaşık malzeme + işçilik + kontrol/yazılım bandını gösterir. Nihai tutar ölçü, montaj ve konstrüksiyonla https://arledscreen.com/tr/quote/ üzerinden yazılı teklifte kesinleşir.",
+  },
+];
 
 export async function generateMetadata({
   params,
@@ -60,6 +81,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
           },
         ]}
       />
+      {locale === "tr" ? <FaqJsonLd faqs={HESAP_FAQS} /> : null}
       {/* H1 kept in the DOM for SEO/screen readers but visually hidden; the calculator starts directly under the site header. */}
       <h1 className="sr-only">{seo.h1 ?? dict.page.hesaplayici.title}</h1>
       <FiyatHesaplayiciEmbed title={seo.h1 ?? dict.page.hesaplayici.title} />
@@ -86,6 +108,23 @@ export default async function HesaplayiciPage({ params }: PageProps) {
               anlatıyoruz.
             </p>
             <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" showCalcLink={false} />
+            <div className="mt-8">
+              <ShoppingLinkCloud
+                excludeHref="/tr/hesaplayici/"
+                extra={[
+                  {
+                    href: "/feeds/merchant-priced-panels.tsv",
+                    label: "Merchant feed (12 SKU)",
+                  },
+                ]}
+              />
+            </div>
+            <div className="mt-12">
+              <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">Sık sorulanlar</h2>
+              <div className="mt-6">
+                <HomeFaq faqs={HESAP_FAQS} />
+              </div>
+            </div>
           </div>
         ) : null}
       </Section>
