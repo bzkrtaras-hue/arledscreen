@@ -69,7 +69,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">2026 panel fiyat listesi</h2>
             <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
               Hesaplayıcıda kullanılan 12 modülün panel fiyatları aşağıdadır. Tutarlar yaklaşıktır; nihai fiyat keşif ve malzeme listesiyle birlikte yazılı teklifte paylaşılır. Fiyatların nasıl oluştuğunu{" "}
-              <Link href="/tr/rehber/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+              <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                 LED ekran fiyatları rehberinde
               </Link>{" "}
               anlatıyoruz.

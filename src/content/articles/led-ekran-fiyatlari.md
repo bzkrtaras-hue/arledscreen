@@ -1,5 +1,5 @@
 ---
-slug: /tr/rehber/led-ekran-fiyatlari/
+slug: /tr/led-ekran-fiyatlari/
 title: "LED Ekran Fiyatları 2026: Fiyat Neye Göre Değişir? (Panel Fiyat Tablosu)"
 meta_description: "LED ekran fiyatını belirleyen 8 etken, 2026 iç ve dış mekân panel fiyatları (USD) ve 4 örnek ölçü için hesaplayıcı sonuçları. KDV ve nakliye hariç."
 h1: "LED ekran fiyatları neye göre değişir?"

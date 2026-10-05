@@ -17,7 +17,6 @@ import {
 import { CALC_EXTRAS, fmtUsd, panelM2, panelModule } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
-import { quoteBasedProductOffer } from "@/lib/product-offer-jsonld";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { whatsappHref } from "@/lib/whatsapp";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -36,6 +35,7 @@ const KIND_LABEL: Record<ModelKind, string> = {
   dis: "dış mekân",
   gob: "GOB kaplamalı iç mekân",
   esnek: "esnek (bükülebilir)",
+  kontrol: "LED kontrol",
 };
 
 const USES: Record<ModelKind, { title: string; body: string }[]> = {
@@ -63,9 +63,20 @@ const USES: Record<ModelKind, { title: string; body: string }[]> = {
     { title: "Silindir ve kemer", body: "Mimari projelere özel düz olmayan yüzeyler." },
     { title: "Sahne dekoru", body: "Etkinlik ve stüdyolarda yaratıcı tasarımlar." },
   ],
+  kontrol: [
+    { title: "Yeni ekran kurulumu", body: "Modül + kontrol + yazılımın birlikte planlanması." },
+    { title: "Kart / işlemci yenileme", body: "Arızalı veya kapasitesi yetmeyen kontrolün değişimi." },
+    { title: "Uzaktan içerik", body: "Wi‑Fi, ağ veya bulut ile merkezi yayın yönetimi." },
+    { title: "Sahne ve senkron yayın", body: "HDMI/SDI kaynaklı düşük gecikmeli gösterim." },
+  ],
 };
 
 function describe(m: LedModel): string {
+  if (m.kind === "kontrol") {
+    const load = m.specs.loadCapacity?.value;
+    const brand = m.brandName ?? "LED";
+    return `${m.name}, ${brand} üretici föyüne dayanan ${KIND_LABEL.kontrol} cihazıdır.${load ? ` Yükleme: ${load}.` : ""} ${m.note}`;
+  }
   const pitch = m.specs.pitch?.value ?? m.chip;
   const size = m.specs.moduleSize?.value;
   return `${m.name}, ${pitch} piksel aralığına sahip ${KIND_LABEL[m.kind]} LED ekran modülüdür.${size ? ` ${size} ölçüsündeki modüller yan yana getirilerek istenen ekran ölçüsü oluşturulur.` : ""} ${m.note}`;
@@ -77,6 +88,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!m) return {};
   const price = modelPrice(m);
   const pitch = m.specs.pitch?.value ?? m.chip;
+  if (m.kind === "kontrol") {
+    const load = m.specs.loadCapacity?.value;
+    return buildTrOnlyMetadata({
+      path: modelPath(m).replace(/^\/tr/, ""),
+      title: `${m.name} – Teknik Özellikler | ARLEDSCREEN`,
+      description: `${m.name}: ${load ? `${load}. ` : ""}${m.specs.software ? `Yazılım: ${m.specs.software.value}. ` : ""}Kurulum ve yapılandırma ARLEDSCREEN. Teklif için iletişime geçin.`,
+    });
+  }
   return buildTrOnlyMetadata({
     path: modelPath(m).replace(/^\/tr/, ""),
     title: `${m.name.replace(/ LED Modül$/, " LED Ekran Modülü")} – Teknik Özellikler${price ? " ve Fiyat" : ""} | ARLEDSCREEN`,
@@ -98,41 +117,45 @@ export default async function ModelPage({ params }: PageProps) {
   const description = describe(m);
   const specRows = SPEC_ORDER.filter((key) => m.specs[key]).map((key) => ({ key, label: SPEC_LABELS[key], spec: m.specs[key] }));
 
+  const brandName = m.brandName ?? g.brandName ?? "NXTIONSTAR";
+  // GSC Merchant listings require offers.price (or priceSpecification.price).
+  // Quote-only models (P8, esnek, kontrol) have no published USD — omit Offer
+  // entirely. An Offer without price marks the item invalid in Search Console.
   const productLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${url}#product`,
     name: m.name,
-    sku: `NXT-${m.group.split("-")[0].toUpperCase()}-${m.slug.toUpperCase()}`,
-    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    sku: `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`,
+    brand: { "@type": "Brand", name: brandName },
     itemCondition: "https://schema.org/NewCondition",
-    category: `${g.name} modülü`,
+    category: m.kind === "kontrol" ? `${g.name}` : `${g.name} modülü`,
     image: absoluteUrl(m.image),
     description,
     url,
     additionalProperty: specRows
       .filter((r) => r.spec)
       .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
-    // Quote-based models (no published panel USD): Offer without `price`.
-    // Priced panels keep USD UnitPriceSpecification for the calculator list.
-    offers: price
+    ...(price
       ? {
-          "@type": "Offer",
-          url,
-          price: price.usd.toFixed(2),
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          itemCondition: "https://schema.org/NewCondition",
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
+          offers: {
+            "@type": "Offer",
+            url,
             price: price.usd.toFixed(2),
             priceCurrency: "USD",
-            valueAddedTaxIncluded: false,
-            referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
+            availability: "https://schema.org/InStock",
+            itemCondition: "https://schema.org/NewCondition",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: price.usd.toFixed(2),
+              priceCurrency: "USD",
+              valueAddedTaxIncluded: false,
+              referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
+            },
+            seller: { "@id": `${SITE_URL}/#organization` },
           },
-          seller: { "@id": `${SITE_URL}/#organization` },
         }
-      : quoteBasedProductOffer(url),
+      : {}),
   };
 
   return (
@@ -215,13 +238,15 @@ export default async function ModelPage({ params }: PageProps) {
                   <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp&apos;tan sorun
                 </a>
-                <Link
-                  href="/tr/hesaplayici/"
-                  className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan"
-                >
-                  <Calculator className="h-4 w-4" aria-hidden />
-                  Fiyatı hesaplayın
-                </Link>
+                {m.kind !== "kontrol" ? (
+                  <Link
+                    href="/tr/hesaplayici/"
+                    className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan"
+                  >
+                    <Calculator className="h-4 w-4" aria-hidden />
+                    Fiyatı hesaplayın
+                  </Link>
+                ) : null}
               </div>
 
               <h2 id="teknik" className="mt-10 scroll-mt-28 font-display text-xl font-bold text-ink sm:text-2xl">Teknik özellikler</h2>
@@ -234,7 +259,9 @@ export default async function ModelPage({ params }: PageProps) {
                 ))}
               </dl>
               <p className="mt-3 text-[12.5px] leading-relaxed text-ink-muted">
-                Değerler modül üreticisinin teknik verileri ve fiyat hesaplayıcımızdaki modül bilgisinden alınmıştır. Tabloda yer almayan değerler (parlaklık, yenileme hızı, güç vb.) seçilen kabin ve proje koşullarına göre teklifle birlikte teknik föyde paylaşılır.
+                {m.kind === "kontrol"
+                  ? "Değerler ilgili üreticinin (Huidu / NovaStar / Colorlight) yayımlanmış teknik föylerinden alınmıştır. Proje koşullarına bağlı ayrıntılar yazılı teklifte netleşir."
+                  : "Değerler modül üreticisinin teknik verileri ve fiyat hesaplayıcımızdaki modül bilgisinden alınmıştır. Tabloda yer almayan değerler (parlaklık, yenileme hızı, güç vb.) seçilen kabin ve proje koşullarına göre teklifle birlikte teknik föyde paylaşılır."}
               </p>
             </div>
           </div>
@@ -253,11 +280,23 @@ export default async function ModelPage({ params }: PageProps) {
             ))}
           </ul>
           <p className="mt-6 text-sm text-ink-soft">
-            Piksel aralığı seçimi için{" "}
-            <Link href="/tr/rehber/piksel-araligi-secimi/" className="font-semibold text-cyan hover:underline">piksel aralığı rehberimize</Link>{" "}
-            ve{" "}
-            <Link href={g.guide.href} className="font-semibold text-cyan hover:underline">{g.guide.label.toLocaleLowerCase("tr-TR")}</Link>{" "}
-            sayfasına göz atabilirsiniz.
+            {m.kind === "kontrol" ? (
+              <>
+                Modül ve diğer kontrol seçenekleri için{" "}
+                <Link href="/tr/products/led-modul-ve-kontrol-sistemleri/" className="font-semibold text-cyan hover:underline">
+                  LED modül ve kontrol sistemleri
+                </Link>{" "}
+                sayfasına göz atabilirsiniz.
+              </>
+            ) : (
+              <>
+                Piksel aralığı seçimi için{" "}
+                <Link href="/tr/rehber/piksel-araligi-secimi/" className="font-semibold text-cyan hover:underline">piksel aralığı rehberimize</Link>{" "}
+                ve{" "}
+                <Link href={g.guide.href} className="font-semibold text-cyan hover:underline">{g.guide.label.toLocaleLowerCase("tr-TR")}</Link>{" "}
+                sayfasına göz atabilirsiniz.
+              </>
+            )}
           </p>
         </div>
       </section>

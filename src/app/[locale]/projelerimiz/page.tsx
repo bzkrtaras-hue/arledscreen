@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -10,6 +11,8 @@ import { AllReferencesNote } from "@/components/projects/AllReferencesNote";
 import { ReferencesGrid } from "@/components/projects/ReferencesGrid";
 import { CompletedProjectsGallery } from "@/components/projects/CompletedProjectsGallery";
 import { ProjectVideos } from "@/components/projects/ProjectVideos";
+import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
+import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { PROJECT_VIDEOS, videoObjectJsonLd } from "@/content/videos";
@@ -47,30 +50,70 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") },
         ]}
       />
-      {/* Full-bleed photo banner with centred title */}
+      {/* Compact page intro — keep field videos above the fold */}
       <section className="relative isolate overflow-hidden bg-navy">
         <OptImage
           src="/projects/outdoor-led-mapping.jpg"
-          alt=""
+          alt="Dış mekân LED ekran kalibrasyon haritası"
           fill
           priority
           sizes="100vw"
-          className="-z-10 object-cover opacity-50"
+          className="-z-10 object-cover opacity-40"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0B1B33]/70 to-[#0B1B33]/90" aria-hidden />
-        <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 md:py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#9CC0F5]">Projeler ve referanslar</p>
-          <h1 className="mt-3 text-balance font-display text-[clamp(1.9rem,1.3rem+2.4vw,3rem)] font-extrabold tracking-[-0.03em] text-white">
-            Yakın Süreçte Tamamlanan Projeler
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0B1B33]/75 to-[#0B1B33]/92" aria-hidden />
+        <div className="mx-auto max-w-4xl px-4 py-6 text-center sm:px-6 sm:py-7 md:py-8">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9CC0F5]">
+            Projeler ve referanslar
+          </p>
+          <h1 className="mt-1.5 text-balance font-display text-[clamp(1.35rem,1.1rem+1.2vw,1.85rem)] font-extrabold tracking-[-0.03em] text-white">
+            Tamamlanan projeler
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/85">
-            Yakın süreçte tamamladığımız projelerden bir seçki.
+          <p className="mx-auto mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-white/85 sm:mt-3.5 sm:text-[0.95rem]">
+            Dikkat! Ucuz teknoloji bir illüzyondur ve ucuz mal edilen her teknoloji gelecekte büyük
+            büyük maliyetler doğurur.
           </p>
         </div>
       </section>
 
-      <Section eyebrow="Yakın süreçte tamamlananlar" title="Öne çıkan projeler" description="Yakın süreçte tamamladığımız projelerden bir seçki." className="prose-seo">
+      <Section
+        id="videolar"
+        eyebrow="Sahadan"
+        title="Videolar"
+        description="Kurulumlarımızdan kısa video kayıtları. İlk video görünür olduğunda sessiz oynar; diğerlerini oynatmak için dokunun."
+        className="prose-seo pt-3 sm:pt-4 md:pt-5 pb-10 sm:pb-12 md:pb-14 [&_header]:mb-4 [&_header]:md:mb-5"
+      >
+        <ProjectVideos />
+      </Section>
+
+      <Section eyebrow="Saha" title="Uygulama fotoğrafları" className="bg-band prose-seo">
+        <CompletedProjectsGallery locale="tr" />
+      </Section>
+
+      <Section
+        eyebrow="Yakın süreçte tamamlananlar"
+        title="Öne çıkan projeler"
+        description="Yakın süreçte tamamladığımız projelerden bir seçki."
+        className="prose-seo"
+      >
         <FeaturedReferences limit={7} showAllLink={false} ctaHref="#liste" ctaLabel="Diğer projeleri görün" />
+      </Section>
+
+      <Section
+        id="galeri"
+        eyebrow="Uygulama görselleri"
+        title="Galeri"
+        description="İç mekân, dış mekân, kavisli ve sinema uygulamaları kategorilere göre düzenlendi."
+        className="bg-band prose-seo"
+      >
+        <YiyistarGallery showFeatured={false} showJumpNav={false} limitSections={2} />
+        <p className="mt-8 text-center">
+          <Link
+            href="/tr/galeri/"
+            className="inline-flex min-h-11 items-center rounded-full border border-border bg-white px-5 text-sm font-semibold text-ink-soft hover:border-cyan/45 hover:text-cyan"
+          >
+            Tam galeriyi aç
+          </Link>
+        </p>
       </Section>
 
       {/* Dark icon strip */}
@@ -90,17 +133,35 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         </ul>
       </section>
 
-      <Section eyebrow="Saha" title="Uygulama fotoğrafları" className="bg-band prose-seo">
-        <CompletedProjectsGallery locale="tr" />
-      </Section>
-
-      <Section id="videolar" eyebrow="Sahadan" title="Videolar" description="Kurulumlarımızdan kısa video kayıtları. İlk video görünür olduğunda sessiz oynar; diğerlerini oynatmak için dokunun." className="prose-seo">
-        <ProjectVideos />
-      </Section>
-
       <Section id="liste" eyebrow="Seçki" title="Proje listesi" description="Yakın süreçte tamamladığımız projelerden bir seçki; tarih, firma veya proje adı, kapsam ve konum bilgisiyle." className="prose-seo">
         <ReferencesGrid locale="tr" />
         <AllReferencesNote />
+      </Section>
+
+      <Section
+        id="case-studies"
+        eyebrow="Case study"
+        title="Yayımlanmış proje sayfaları"
+        description="Konumu ve ölçüsü/pitch’i yayımlanmış kayıtlardan üretilen sayfalar. Uydurma yorum veya teknik iddia yoktur."
+        className="bg-surface/60 prose-seo"
+      >
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {PROJECT_CASE_STUDIES.map((c) => (
+            <li key={c.slug}>
+              <Link
+                href={`/tr/projelerimiz/${c.slug}/`}
+                className="block rounded-2xl border border-border bg-white p-4 transition hover:border-cyan/40"
+              >
+                <p className="font-display text-base font-bold text-ink">{c.companyLabel}</p>
+                <p className="mt-1 text-sm text-ink-soft">{c.detail}</p>
+                <p className="mt-2 text-xs text-ink-muted">
+                  {c.date}
+                  {c.location ? ` · ${c.location}` : ""}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <section className="bg-band py-14 md:py-20">

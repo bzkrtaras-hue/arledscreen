@@ -33,7 +33,9 @@ function normalizePath(path: string): string {
 
 /**
  * Shared page Metadata builder — canonical, hreflang, OG, Twitter.
- * siteName is always ARLEDSCREEN | NXTIONSTAR.
+ * siteName / titles use ARLEDSCREEN only; NXTIONSTAR stays on product pages as sub-brand.
+ * Default hreflang pair is tr↔en only (true counterparts). Pass hreflangLocales to override;
+ * omit languages entirely by passing hreflangLocales: [].
  */
 export function buildPageMetadata({
   locale,
@@ -42,14 +44,14 @@ export function buildPageMetadata({
   description,
   keywords,
   canonicalLocale,
-  hreflangLocales,
+  hreflangLocales = ["tr", "en"],
 }: BuildPageMetadataInput): Metadata {
   const clean = normalizePath(path);
   const url = absoluteUrl(`/${canonicalLocale ?? locale}${clean}`);
   const all = buildAlternates(clean || "/");
-  const languages = hreflangLocales
+  const languages = hreflangLocales.length
     ? Object.fromEntries(Object.entries(all).filter(([l]) => hreflangLocales.includes(l as Locale)))
-    : all;
+    : undefined;
 
   return {
     title,
@@ -59,7 +61,7 @@ export function buildPageMetadata({
       title,
       description,
       url,
-      siteName: "ARLEDSCREEN | NXTIONSTAR",
+      siteName: "ARLEDSCREEN",
       locale: OG_LOCALE[locale],
       type: "website",
       images: [{ url: "/og/arledscreen-og.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" }],
@@ -72,10 +74,14 @@ export function buildPageMetadata({
     },
     alternates: {
       canonical: url,
-      languages: {
-        ...languages,
-        "x-default": absoluteUrl(`/tr${clean}`),
-      },
+      ...(languages
+        ? {
+            languages: {
+              ...languages,
+              "x-default": absoluteUrl(`/tr${clean}`),
+            },
+          }
+        : {}),
     },
     metadataBase: new URL(SITE_URL),
   };
@@ -105,7 +111,7 @@ export function buildTrOnlyMetadata({
       title,
       description,
       url,
-      siteName: "ARLEDSCREEN | NXTIONSTAR",
+      siteName: "ARLEDSCREEN",
       locale: "tr_TR",
       type,
       images: [og],

@@ -24,7 +24,11 @@ export function Section({
   const TitleTag = titleAs;
   return (
     <section
-      className={cn("relative py-12 sm:py-16 md:py-24", className)}
+      className={cn(
+        // Use pt/pb (not py) so page-level className can override one side via twMerge.
+        "relative pt-12 pb-12 sm:pt-16 sm:pb-16 md:pt-24 md:pb-24",
+        className,
+      )}
       {...props}
     >
       <div

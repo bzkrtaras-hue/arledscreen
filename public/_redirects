@@ -1,13 +1,15 @@
 # Host redirects: www → apex is handled in Cloudflare Rules (do not reverse here).
-# Ops tip: set the Cloudflare www rule target to https://arledscreen.com/tr/ so
-# www skips the apex hop. After www→apex, apex / must 301 to /tr/ (permanent).
-# Do NOT ship out/index.html — public/index.html was removed; postbuild also
-# deletes any leftover so this rule is not shadowed by a 200 static asset.
+# Ops tip: Cloudflare www rule MUST target https://arledscreen.com/tr/ (absolute)
+# so www skips the apex hop and never lands on a relative /tr/ Location.
+#
+# Apex `/` is owned by functions/index.js (absolute 301). Keep these static
+# rules as a belt-and-suspenders fallback when Functions are not invoked
+# (e.g. local static preview). Do NOT ship out/index.html — postbuild deletes it.
 
-# Language root → Turkish new site (canonical story) — HTTP 301, not meta refresh
-/ /tr/ 301
-/index.html /tr/ 301
-/index.htm /tr/ 301
+# Language root → Turkish home (absolute 301 — no old AR-LED HTML, no 404)
+/ https://arledscreen.com/tr/ 301
+/index.html https://arledscreen.com/tr/ 301
+/index.htm https://arledscreen.com/tr/ 301
 
 # Legacy Hostinger / Horizons paths → current Next.js routes (301)
 /iletisim /tr/quote/ 301
@@ -34,7 +36,10 @@
 /urunler/poster-led-ekran/ /tr/products/poster-led-ekran/ 301
 /urunler/led-modul-ve-kontrol-sistemleri /tr/products/led-modul-ve-kontrol-sistemleri/ 301
 /urunler/led-modul-ve-kontrol-sistemleri/ /tr/products/led-modul-ve-kontrol-sistemleri/ 301
-/urunler/transparan-led-ekran /tr/products/seffaf-led-ekran/ 301
+/urunler/transparan-led-ekran /tr/products/transparan-led-ekran/ 301
+/urunler/transparan-led-ekran/ /tr/products/transparan-led-ekran/ 301
+/transparan-led-ekran /tr/products/transparan-led-ekran/ 301
+/transparan-led-ekran/ /tr/products/transparan-led-ekran/ 301
 /urunler/rental-led-ekran /tr/products/kiralik-led-ekran/ 301
 /urunler/oem-urunler /tr/products/led-modul-ve-kontrol-sistemleri/ 301
 /urunler/dis-mekan-led-ekran/ /tr/products/dis-mekan-led-ekran/ 301
@@ -75,8 +80,10 @@
 /kiralik-led-ekran/ /tr/products/kiralik-led-ekran/ 301
 /dijital-ekran /tr/rehber/led-tabela-mi-led-ekran-mi/ 301
 /dijital-ekran/ /tr/rehber/led-tabela-mi-led-ekran-mi/ 301
-/led-ekran-fiyatlari /tr/rehber/led-ekran-fiyatlari/ 301
-/led-ekran-fiyatlari/ /tr/rehber/led-ekran-fiyatlari/ 301
+/led-ekran-fiyatlari /tr/led-ekran-fiyatlari/ 301
+/led-ekran-fiyatlari/ /tr/led-ekran-fiyatlari/ 301
+/tr/rehber/led-ekran-fiyatlari /tr/led-ekran-fiyatlari/ 301
+/tr/rehber/led-ekran-fiyatlari/ /tr/led-ekran-fiyatlari/ 301
 /icmekanled /tr/products/ic-mekan-led-ekran/ 301
 /dismekanled /tr/products/dis-mekan-led-ekran/ 301
 /kiralikled /tr/products/kiralik-led-ekran/ 301
@@ -92,6 +99,8 @@
 /hakkimizda /tr/about/ 301
 /hakkimizda/ /tr/about/ 301
 /about /tr/about/ 301
+/tr/basin /tr/about/ 301
+/tr/basin/ /tr/about/ 301
 /sertifikalar /tr/about/ 301
 /kullanim-kosullari /tr/about/ 301
 /kullanim-kosullari/ /tr/about/ 301
@@ -136,5 +145,15 @@
 /eskisehir-led-ekran/ /tr/bolgeler/eskisehir/ 301
 /kiralik-mi-satin-alma /tr/rehber/kiralik-mi-satin-alma/ 301
 /kiralik-mi-satin-alma/ /tr/rehber/kiralik-mi-satin-alma/ 301
-/led-ekran-kiralama /tr/products/kiralik-led-ekran/ 301
-/led-ekran-kiralama/ /tr/products/kiralik-led-ekran/ 301
+/led-ekran-kiralama /tr/led-ekran-kiralama/ 301
+/led-ekran-kiralama/ /tr/led-ekran-kiralama/ 301
+/led-ekran /tr/led-ekran/ 301
+/led-ekran/ /tr/led-ekran/ 301
+/led-ekran-satisi /tr/led-ekran-satisi/ 301
+/led-ekran-satisi/ /tr/led-ekran-satisi/ 301
+/led-ekran-ureticisi /tr/led-ekran-ureticisi/ 301
+/led-ekran-ureticisi/ /tr/led-ekran-ureticisi/ 301
+/led-ekran-montaj /tr/led-ekran-montaj/ 301
+/led-ekran-montaj/ /tr/led-ekran-montaj/ 301
+/led-ekran-servis /tr/led-ekran-servis/ 301
+/led-ekran-servis/ /tr/led-ekran-servis/ 301

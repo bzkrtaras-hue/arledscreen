@@ -34,7 +34,11 @@ export type SpecKey =
   | "power"
   | "viewingAngle"
   | "current"
-  | "viewDistance";
+  | "viewDistance"
+  | "loadCapacity"
+  | "ethernetPorts"
+  | "videoInputs"
+  | "software";
 
 export const SPEC_LABELS: Record<SpecKey, string> = {
   pitch: "Piksel aralığı",
@@ -42,12 +46,12 @@ export const SPEC_LABELS: Record<SpecKey, string> = {
   matrix: "Piksel matrisi (modül çözünürlüğü)",
   pixels: "Modül başına piksel",
   density: "Piksel yoğunluğu",
-  ledType: "LED / yüzey tipi",
+  ledType: "Cihaz / yüzey tipi",
   voltage: "Çalışma gerilimi",
   protection: "Koruma sınıfı",
   service: "Montaj ve servis",
   control: "Kontrol sistemi",
-  media: "Desteklenen medya formatları",
+  media: "Medya / sinyal özellikleri",
   brightness: "Parlaklık",
   refresh: "Yenileme hızı",
   scan: "Tarama (scan)",
@@ -55,10 +59,14 @@ export const SPEC_LABELS: Record<SpecKey, string> = {
   viewingAngle: "Görüş açısı",
   current: "Akım çekişi (5 V DC)",
   viewDistance: "Minimum izleme mesafesi",
+  loadCapacity: "Yükleme kapasitesi",
+  ethernetPorts: "Ethernet / çıkış portları",
+  videoInputs: "Video / veri girişleri",
+  software: "Yazılım",
 };
 export const SPEC_ORDER = Object.keys(SPEC_LABELS) as SpecKey[];
 
-export type ModelKind = "ic" | "dis" | "gob" | "esnek";
+export type ModelKind = "ic" | "dis" | "gob" | "esnek" | "kontrol";
 export interface LedModel {
   slug: string;
   group: string;
@@ -73,6 +81,8 @@ export interface LedModel {
   specs: Partial<Record<SpecKey, SpecValue>>;
   /** Extra own-words sentence specific to this model */
   note: string;
+  /** Optional manufacturer brand (control cards). */
+  brandName?: string;
 }
 
 const k = (value: string): SpecValue => ({ value, src: "kaynak" });
@@ -386,6 +396,212 @@ export const LED_MODELS: LedModel[] = [
       control: SR,
     },
     note: "Orta mesafeden izlenen kavisli yüzeylerde, kemer ve kolon gibi düz olmayan alanlarda kullanılan esnek modüldür.",
+  },
+  // —— Kontrol sistemleri (Huidu / NovaStar / Colorlight) ——
+  {
+    slug: "hd-c16",
+    group: "huidu-kontrol-kartlari",
+    chip: "HD-C16",
+    name: "Huidu HD-C16 Asenkron LED Kontrol Kartı",
+    kind: "kontrol",
+    brandName: "Huidu",
+    image: "/control/huidu-card-a.jpg",
+    imageAlt: "Huidu HD-C16 asenkron LED kontrol kartı",
+    specs: {
+      ledType: k("Asenkron oynatıcı (gönderici + alıcı işlevi)"),
+      loadCapacity: k("≈200.000 piksel (640 × 320)"),
+      ethernetPorts: k("HUB çıkışları; büyük ekranda HD-R alıcı ile genişletme"),
+      videoInputs: k("USB; ağ / Wi‑Fi; opsiyonel 4G"),
+      media: k("Video / görsel / metin; 60 Hz çıkış, HD hard decode"),
+      software: k("HDPlayer, LedArt (mobil), Huidu bulut"),
+      power: k("5 V DC (tipik)"),
+      control: k("Huidu asenkron kontrol sistemi"),
+    },
+    note: "Küçük ve orta LED tabelalarda tek kartla yayın için tasarlanmıştır; Wi‑Fi ile sahada içerik güncellemesi pratiktir.",
+  },
+  {
+    slug: "hd-a7",
+    group: "huidu-kontrol-kartlari",
+    chip: "HD-A7",
+    name: "Huidu HD-A7 4K Çift Mod LED Kontrolcü",
+    kind: "kontrol",
+    brandName: "Huidu",
+    image: "/control/huidu-card-c.png",
+    imageAlt: "Huidu HD-A7 4K LED kontrolcü",
+    specs: {
+      ledType: k("4K çift mod (senkron / asenkron) kontrolcü"),
+      loadCapacity: k("5,2 milyon piksele kadar; en 15.360 piksel"),
+      ethernetPorts: k("8 × RJ45 çıkış"),
+      videoInputs: k("HDMI ×5, DP ×1; USB 3.0 / 2.0"),
+      media: k("Çoklu 4K / 1080p pencere; yaygın video formatları"),
+      software: k("HDPlayer; mobil APP; opsiyonel 4G/5G"),
+      power: k("≈72 W (AC 100–240 V)"),
+      control: k("Huidu 4K master kontrol"),
+    },
+    note: "Geniş reklam duvarı ve yüksek çözünürlüklü iç mekân yüzeylerinde HDMI/DP kaynağıyla senkron veya depolu asenkron yayın için uygundur.",
+  },
+  {
+    slug: "hd-w60",
+    group: "huidu-kontrol-kartlari",
+    chip: "HD-W60",
+    name: "Huidu HD-W60 Wi‑Fi Tek/Çift Renk Kontrol Kartı",
+    kind: "kontrol",
+    brandName: "Huidu",
+    image: "/control/huidu-card-b.jpg",
+    imageAlt: "Huidu HD-W60 Wi-Fi kontrol kartı",
+    specs: {
+      ledType: k("Tek / çift renk Wi‑Fi kontrol kartı"),
+      loadCapacity: k("Tek renk 1024×32; çift renk 512×32"),
+      ethernetPorts: k("HUB12 / HUB08 modül bağlantısı"),
+      videoInputs: k("Wi‑Fi ve USB ile program yükleme"),
+      media: k("Metin, görsel, saat, sayaç, Excel alanı"),
+      software: k("HD2020, LedArt"),
+      power: k("5 V DC · düşük güç"),
+      control: k("Huidu W6X serisi"),
+    },
+    note: "Klasik tek–çift renk LED tabelalarda ekonomik Wi‑Fi güncelleme için tercih edilir; tam renkli video duvarı için C/A serisi seçilir.",
+  },
+  {
+    slug: "vx600",
+    group: "novastar-kontrolculer",
+    chip: "VX600",
+    name: "NovaStar VX600 All-in-One LED Kontrolcü",
+    kind: "kontrol",
+    brandName: "NovaStar",
+    image: "/control/novastar-vx600.png",
+    imageAlt: "NovaStar VX600 all-in-one LED kontrolcü",
+    specs: {
+      ledType: k("All-in-one video kontrolcü / fiber çevirici / bypass"),
+      loadCapacity: k("3,9 milyon piksel; en 10.240 · boy 8.192"),
+      ethernetPorts: k("6 × Gigabit Ethernet"),
+      videoInputs: k("HDMI, DVI, 3G-SDI, OPT (modele göre)"),
+      media: k("Stepless scaling, düşük gecikme, kalibrasyon"),
+      software: k("NovaLCT, Unico, VICP"),
+      power: k("≈35 W · AC 100–240 V"),
+      control: k("NovaStar VX serisi"),
+    },
+    note: "Video işleme ile gönderimi tek kutuda birleştirir; ultra geniş veya yüksek LED yüzeylerde sabit ve sahne işleri için uygundur.",
+  },
+  {
+    slug: "tb50",
+    group: "novastar-kontrolculer",
+    chip: "TB50",
+    name: "NovaStar Taurus TB50 Multimedya Oynatıcı",
+    kind: "kontrol",
+    brandName: "NovaStar",
+    image: "/control/novastar-hero.jpg",
+    imageAlt: "NovaStar Taurus serisi multimedya oynatıcı ailesi",
+    specs: {
+      ledType: k("Taurus medya oynatıcı (oynatma + gönderim)"),
+      loadCapacity: k("≈1,3 milyon piksel sınıfı (föye göre)"),
+      ethernetPorts: k("Gigabit Ethernet; Wi‑Fi; opsiyonel 4G"),
+      videoInputs: k("USB oynatma; HDMI loop (T50 varyantında)"),
+      media: k("H.264/H.265 4K@60 decode; çoklu pencere"),
+      software: k("NovaStar bulut yayın; mobil kontrol"),
+      power: k("DC 5–12 V · maks. ≈18 W"),
+      control: k("NovaStar Taurus"),
+    },
+    note: "Zincir mağaza ve sabit reklam ekranlarında bilgisayar olmadan içerik yayınlamak için kullanılır; bulut ile uzaktan yönetim seçeneklidir.",
+  },
+  {
+    slug: "mctrl660-pro",
+    group: "novastar-kontrolculer",
+    chip: "MCTRL660 PRO",
+    name: "NovaStar MCTRL660 PRO Gönderici Kart",
+    kind: "kontrol",
+    brandName: "NovaStar",
+    image: "/control/novastar-mctrl660-pro.png",
+    imageAlt: "NovaStar MCTRL660 PRO gönderici kart",
+    specs: {
+      ledType: k("Profesyonel LED gönderici kart"),
+      loadCapacity: k("Yüksek çözünürlüklü senkron gönderim (föy)"),
+      ethernetPorts: k("Çoklu Gigabit Ethernet çıkış"),
+      videoInputs: k("Harici video işlemci / bilgisayar kaynağı"),
+      media: k("Senkron LED yayın; kalibrasyon uyumu"),
+      software: k("NovaLCT"),
+      control: k("NovaStar MCTRL serisi"),
+    },
+    note: "Ayrı video işlemci veya yayın kaynağından gelen sinyali LED ekrana dağıtmak için kullanılan gönderici karttır.",
+  },
+  {
+    slug: "x20",
+    group: "colorlight-kontrolculer",
+    chip: "X20",
+    name: "Colorlight X20 Multimedya LED İşlemci",
+    kind: "kontrol",
+    brandName: "Colorlight",
+    image: "/control/colorlight-x20.png",
+    imageAlt: "Colorlight X20 multimedya LED işlemci",
+    specs: {
+      ledType: k("Multimedya LED işlemci"),
+      loadCapacity: k("Yüksek çözünürlük / çok katmanlı splicing (X serisi)"),
+      ethernetPorts: k("Çoklu Gigabit Ethernet çıkış"),
+      videoInputs: k("HDMI / DP / DVI sınıfı çoklu giriş"),
+      media: k("USB oynatma; serbest katman yerleşimi"),
+      software: k("iSet; web kontrol"),
+      control: k("Colorlight X serisi"),
+    },
+    note: "Sabit kurulumlarda çok kaynaklı sahne ve ölçeklenebilir Ethernet çıkışı için tercih edilen Colorlight işlemcidir.",
+  },
+  {
+    slug: "x40m",
+    group: "colorlight-kontrolculer",
+    chip: "X40m",
+    name: "Colorlight X40m Yüksek Yük LED İşlemci",
+    kind: "kontrol",
+    brandName: "Colorlight",
+    image: "/control/colorlight-x40m.png",
+    imageAlt: "Colorlight X40m yüksek kapasiteli LED işlemci",
+    specs: {
+      ledType: k("Yüksek kapasiteli multimedya işlemci"),
+      loadCapacity: k("8K×2K sınıfı / on milyonlarca piksele kadar (föy)"),
+      ethernetPorts: k("40× Gigabit veya 4×10G fiber moda geçiş"),
+      videoInputs: k("HDMI 2.0, DP 1.2, HDMI 1.4, DVI"),
+      media: k("6 katman serbest splicing; USB oynatma; Hi‑Fi ses"),
+      software: k("iSet; web; çoklu platform kontrol"),
+      control: k("Colorlight X40m / X20m ailesi"),
+    },
+    note: "Çok geniş veya yüksek LED duvarlarda fiber mesafeli gönderim ve çok katmanlı sahne yönetimi için uygundur.",
+  },
+  {
+    slug: "vx20",
+    group: "colorlight-kontrolculer",
+    chip: "VX20",
+    name: "Colorlight VX20 Video İşlemci",
+    kind: "kontrol",
+    brandName: "Colorlight",
+    image: "/control/colorlight-vx20.png",
+    imageAlt: "Colorlight VX20 LED video işlemci",
+    specs: {
+      ledType: k("Profesyonel LED video işlemci / kontrolcü"),
+      loadCapacity: k("Yüksek çözünürlüklü LED duvarlar (VX sınıfı)"),
+      ethernetPorts: k("Çoklu Gigabit Ethernet"),
+      videoInputs: k("Çoklu dijital video girişi"),
+      media: k("Ölçekleme, kaynak geçişi, yayın kalitesi işleme"),
+      software: k("iSet / Colorlight kontrol yazılımı"),
+      control: k("Colorlight VX serisi"),
+    },
+    note: "Sahne ve yüksek kaliteli sabit kurulumlarda video işleme odaklı Colorlight kontrolcü olarak konumlanır.",
+  },
+  {
+    slug: "s20",
+    group: "colorlight-kontrolculer",
+    chip: "S20",
+    name: "Colorlight S20 LED Gönderici Kart",
+    kind: "kontrol",
+    brandName: "Colorlight",
+    image: "/control/colorlight-s20.png",
+    imageAlt: "Colorlight S20 LED gönderici kart",
+    specs: {
+      ledType: k("LED gönderici kart"),
+      loadCapacity: k("Senkron gönderim (föy / alıcı kart ile)"),
+      ethernetPorts: k("Gigabit Ethernet çıkışlar"),
+      videoInputs: k("Üst işlemci veya bilgisayar kaynağı"),
+      media: k("Senkron LED veri gönderimi"),
+      software: k("LEDVISION / iSet ekosistemi"),
+      control: k("Colorlight S serisi"),
+    },
+    note: "Kompakt gönderici kart; mevcut Colorlight alıcı kartlı ekranlarda senkron yayın için kullanılır.",
   },
 ];
 

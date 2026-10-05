@@ -1,6 +1,6 @@
 /**
- * Site videos re-encoded from ARLEDSCREEN's own Instagram export (@arledscreen).
- * H.264, CRF 28, no audio, +faststart. Captions use only facts from the post captions.
+ * Site videos: Drive field clips + Instagram export (@arledscreen).
+ * H.264, no audio, +faststart. Captions use only verified project facts.
  */
 export interface SiteVideo {
   slug: string;
@@ -18,6 +18,123 @@ export interface SiteVideo {
 }
 
 export const PROJECT_VIDEOS: SiteVideo[] = [
+  {
+    slug: "lounge-fine-pitch-fox",
+    src: "/videos/lounge-fine-pitch-fox.mp4",
+    poster: "/videos/lounge-fine-pitch-fox.jpg",
+    width: 1080,
+    height: 1920,
+    title: "Lounge — İnce Pitch LED Duvar",
+    caption: "4K saha görüntüsü: lounge oturma alanında yüksek çözünürlüklü LED duvar testi",
+  },
+  {
+    slug: "lounge-gob-install",
+    src: "/videos/lounge-gob-install.mp4",
+    poster: "/videos/lounge-gob-install.jpg",
+    width: 1080,
+    height: 1920,
+    title: "Lounge — GOB LED Montaj",
+    caption: "İç mekân lounge’da GOB ince pitch LED duvar montajı ve saha kurulumu",
+  },
+  {
+    slug: "event-lounge-led-wall",
+    src: "/videos/event-lounge-led-wall.mp4",
+    poster: "/videos/event-lounge-led-wall.jpg",
+    width: 720,
+    height: 1280,
+    title: "Etkinlik Lounge — LED Sahne Duvarı",
+    caption: "Karanlık lounge’da yüksek kontrast içerikli iç mekân LED duvar",
+  },
+  {
+    slug: "immersive-ceiling-led-tunnel",
+    src: "/videos/immersive-ceiling-led-tunnel.mp4",
+    poster: "/videos/immersive-ceiling-led-tunnel.jpg",
+    width: 720,
+    height: 986,
+    title: "İmmersif LED — Tavan ve Yan Duvar",
+    caption: "Tavan ve yan yüzeyleri kaplayan immersif iç mekân LED tünel kurulumu",
+  },
+  {
+    slug: "club-immersive-led-stage",
+    src: "/videos/club-immersive-led-stage.mp4",
+    poster: "/videos/club-immersive-led-stage.jpg",
+    width: 1080,
+    height: 1920,
+    title: "Kulüp — İmmersif LED Sahne",
+    caption: "Dikey LED paneller ve zemin LED ile immersif kulüp / lounge uygulaması",
+  },
+  {
+    slug: "lounge-aquarium-wall",
+    src: "/videos/lounge-aquarium-wall.mp4",
+    poster: "/videos/lounge-aquarium-wall.jpg",
+    width: 1280,
+    height: 720,
+    title: "Lounge — Akvaryum İçerikli LED Duvar",
+    caption: "Kafe / lounge salonunda yatay iç mekân LED duvar yayını",
+  },
+  {
+    slug: "lounge-football-night",
+    src: "/videos/lounge-football-night.mp4",
+    poster: "/videos/lounge-football-night.jpg",
+    width: 848,
+    height: 480,
+    title: "Lounge — Gece Maç Yayını",
+    caption: "Gece lounge ortamında canlı spor yayını yapan geniş LED ekran",
+  },
+  {
+    slug: "curved-mobile-led-podium",
+    src: "/videos/curved-mobile-led-podium.mp4",
+    poster: "/videos/curved-mobile-led-podium.jpg",
+    width: 1280,
+    height: 720,
+    title: "Kavisli Mobil LED Podyum",
+    caption: "Tekerlekli, kavisli LED banko / podyum — özel form üretim testi",
+  },
+  {
+    slug: "showroom-wall-arled-branding",
+    src: "/videos/showroom-wall-arled-branding.mp4",
+    poster: "/videos/showroom-wall-arled-branding.jpg",
+    width: 848,
+    height: 478,
+    title: "Showroom — Marka İçerikli LED Duvar",
+    caption: "İç mekân showroom duvarında ARLEDSCREEN marka animasyonu",
+  },
+  {
+    slug: "outdoor-event-led-truss",
+    src: "/videos/outdoor-event-led-truss.mp4",
+    poster: "/videos/outdoor-event-led-truss.jpg",
+    width: 1280,
+    height: 720,
+    title: "Açık Hava Etkinlik — LED Truss Montajı",
+    caption: "Gece etkinliğinde truss üzerine kurulan modüler dış mekân LED duvar",
+  },
+  {
+    slug: "sphere-led-showroom",
+    src: "/videos/sphere-led-showroom.mp4",
+    poster: "/videos/sphere-led-showroom.jpg",
+    width: 1280,
+    height: 720,
+    title: "Küresel LED Ekran — Showroom",
+    caption: "Asılı küresel LED ekran, yüksek çözünürlüklü içerik yayını",
+  },
+  {
+    slug: "flexible-module-bend-demo",
+    src: "/videos/flexible-module-bend-demo.mp4",
+    poster: "/videos/flexible-module-bend-demo.jpg",
+    width: 1080,
+    height: 1920,
+    title: "Esnek LED Modül — Bükülme Demo",
+    caption: "Esnek LED modülün kavisli yüzeye uyumunu gösteren yakın plan",
+  },
+  {
+    slug: "club-curved-led-ribbon",
+    src: "/videos/club-curved-led-ribbon.mp4",
+    poster: "/videos/club-curved-led-ribbon.jpg",
+    width: 848,
+    height: 480,
+    title: "Kulüp — Kavisli LED ve Şerit Ekran",
+    caption: "İç mekân kavisli LED duvar ve balkon şerit ekran uygulaması",
+  },
   {
     slug: "eskisehir-sigorta-led-ekran-vitrin",
     src: "/videos/eskisehir-sigorta-led-ekran-vitrin.mp4",

@@ -24,8 +24,6 @@ import { displayCompany } from "@/content/trust";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { whatsappHref } from "@/lib/whatsapp";
-import { CitationCapsule } from "@/components/seo/CitationCapsule";
-import { productGroupCitation } from "@/content/citation-capsules";
 
 export const dynamicParams = false;
 
@@ -78,13 +76,17 @@ export default async function ProductGroupPage({ params }: PageProps) {
   const prices = pricesForGroup(g.slug);
   const models = modelsForGroup(g.slug);
   const quickPrice = priceAnswer(g.name, prices);
-  const COMPARE_KEYS: SpecKey[] = ["pitch", "moduleSize", "matrix", "pixels", "density", "ledType", "protection", "service", "voltage", "brightness", "refresh", "scan", "power", "viewingAngle", "current", "viewDistance"];
+  const isControlGroup = models.some((m) => m.kind === "kontrol") || Boolean(g.brandName);
+  const COMPARE_KEYS: SpecKey[] = isControlGroup
+    ? ["ledType", "loadCapacity", "ethernetPorts", "videoInputs", "media", "software", "power", "control"]
+    : ["pitch", "moduleSize", "matrix", "pixels", "density", "ledType", "protection", "service", "voltage", "brightness", "refresh", "scan", "power", "viewingAngle", "current", "viewDistance"];
   // Keep a column only when at least half of the models have a value (never a column of dashes).
   const compareCols = COMPARE_KEYS.filter((c) => models.filter((m) => m.specs[c]).length * 2 >= models.length);
 
   const tabs = [
     { href: "#secenekler", label: models.length ? "Modeller" : "Fiyat teklifi" },
     ...(models.length ? [{ href: "#teknik", label: "Karşılaştırma" }] : []),
+    ...(g.techGallery?.length ? [{ href: "#teknoloji", label: "Teknoloji" }] : []),
     { href: "#kullanim", label: "Kullanım alanları" },
     ...(refs.length ? [{ href: "#projeler", label: "Projeler" }] : []),
     { href: "#sss", label: "SSS" },
@@ -100,7 +102,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
     url,
     image: absoluteUrl(g.image),
     provider: { "@id": `${SITE_URL}/#organization` },
-    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    brand: { "@type": "Brand", name: g.brandName ?? "NXTIONSTAR" },
     areaServed: { "@type": "Country", name: "Türkiye" },
     ...(prices.length
       ? {
@@ -241,17 +243,6 @@ export default async function ProductGroupPage({ params }: PageProps) {
         </div>
       </section>
 
-      <CitationCapsule
-        {...productGroupCitation({
-          name: g.name,
-          href: productGroupPath(g),
-          pitchHint: g.lead.endsWith(".") ? g.lead : `${g.lead}.`,
-          priceBand: prices.length
-            ? `${fmtUsd(Math.min(...prices.map((x) => x.usd)))} – ${fmtUsd(Math.max(...prices.map((x) => x.usd)))} USD/panel`
-            : undefined,
-        })}
-      />
-
       {/* Options / pricing */}
       <section id="secenekler" className="scroll-mt-28 bg-band py-14 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -259,36 +250,88 @@ export default async function ProductGroupPage({ params }: PageProps) {
             <>
               <SectionHeading
                 align="left"
-                eyebrow="NXTIONSTAR modelleri"
-                title={`${g.name} modelleri`}
-                description="Her modelin teknik özelliklerini, görsellerini ve fiyat bilgisini kendi sayfasında bulabilirsiniz. Bir model seçerek detaylara ulaşın."
+                eyebrow={isControlGroup ? `${g.brandName ?? "Kontrol"} modelleri` : "NXTIONSTAR modelleri"}
+                title={`${g.name} — öne çıkan modeller`}
+                description={
+                  isControlGroup
+                    ? "Özellikler üretici föylerinden alınmıştır. İlk bakışta yükleme kapasitesi, portlar ve yazılımı karşılaştırın; detay için modele tıklayın."
+                    : "Her modelin teknik özelliklerini, görsellerini ve fiyat bilgisini kendi sayfasında bulabilirsiniz. Bir model seçerek detaylara ulaşın."
+                }
               />
-              <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+              <ul
+                className={
+                  isControlGroup
+                    ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+                    : "grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7"
+                }
+              >
                 {models.map((m, i) => (
                   <FadeIn as="li" key={m.group + m.slug} delay={i * 0.05}>
                     <Link
                       href={modelPath(m)}
-                      className="group flex h-full min-h-28 flex-col items-center justify-center rounded-2xl px-3 py-5 text-center transition hover:-translate-y-0.5 hover:ring-2 hover:ring-cyan/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan glass-card"
+                      className={
+                        isControlGroup
+                          ? "group flex h-full flex-col overflow-hidden rounded-2xl transition hover:-translate-y-0.5 hover:ring-2 hover:ring-cyan/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan glass-card"
+                          : "group flex h-full min-h-28 flex-col items-center justify-center rounded-2xl px-3 py-5 text-center transition hover:-translate-y-0.5 hover:ring-2 hover:ring-cyan/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan glass-card"
+                      }
                     >
-                      <span className="font-display text-xl font-extrabold text-cyan">{m.chip}</span>
-                      <span className="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">
-                        {m.kind === "dis" ? "Dış mekân" : m.kind === "esnek" ? "Esnek" : m.kind === "gob" ? "GOB" : "İç mekân"}
-                      </span>
-                      <span className="mt-2 inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-soft group-hover:text-cyan">
-                        Teknik özellikler <ArrowRight className="h-3 w-3" aria-hidden />
-                      </span>
+                      {isControlGroup ? (
+                        <>
+                          <div className="relative aspect-[16/10] w-full bg-surface">
+                            <OptImage
+                              src={m.image}
+                              alt={m.imageAlt}
+                              fill
+                              sizes="(max-width: 1024px) 50vw, 33vw"
+                              className="object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+                            />
+                          </div>
+                          <div className="flex flex-1 flex-col px-4 py-4 text-left">
+                            <span className="font-display text-lg font-extrabold text-cyan">{m.chip}</span>
+                            <span className="mt-1 text-sm font-semibold text-ink">{m.name}</span>
+                            {m.specs.loadCapacity ? (
+                              <span className="mt-2 text-[13px] leading-snug text-ink-muted">
+                                {m.specs.loadCapacity.value}
+                              </span>
+                            ) : null}
+                            <span className="mt-3 inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-soft group-hover:text-cyan">
+                              Teknik özellikler <ArrowRight className="h-3 w-3" aria-hidden />
+                            </span>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <span className="font-display text-xl font-extrabold text-cyan">{m.chip}</span>
+                          <span className="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">
+                            {m.kind === "dis" ? "Dış mekân" : m.kind === "esnek" ? "Esnek" : m.kind === "gob" ? "GOB" : "İç mekân"}
+                          </span>
+                          <span className="mt-2 inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-soft group-hover:text-cyan">
+                            Teknik özellikler <ArrowRight className="h-3 w-3" aria-hidden />
+                          </span>
+                        </>
+                      )}
                     </Link>
                   </FadeIn>
                 ))}
               </ul>
               <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-                <Link
-                  href="/tr/hesaplayici/"
-                  className="btn-soft inline-flex min-h-12 items-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
-                >
-                  <Calculator className="h-4 w-4" aria-hidden />
-                  Ölçünüze göre yaklaşık maliyeti hesaplayın
-                </Link>
+                {isControlGroup ? (
+                  <Link
+                    href={quoteHref}
+                    className="btn-soft inline-flex min-h-12 items-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
+                  >
+                    <FileText className="h-4 w-4" aria-hidden />
+                    Bu kontrol sistemi için teklif al
+                  </Link>
+                ) : (
+                  <Link
+                    href="/tr/hesaplayici/"
+                    className="btn-soft inline-flex min-h-12 items-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
+                  >
+                    <Calculator className="h-4 w-4" aria-hidden />
+                    Ölçünüze göre yaklaşık maliyeti hesaplayın
+                  </Link>
+                )}
                 <p className="text-sm text-ink-muted">Kesin fiyat; keşif ve malzeme listesiyle birlikte yazılı teklifte paylaşılır.</p>
               </div>
             </>
@@ -340,7 +383,9 @@ export default async function ProductGroupPage({ params }: PageProps) {
             <div id="teknik" className="mt-12 scroll-mt-28">
               <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">Model karşılaştırma tablosu</h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
-                {g.name} grubundaki NXTIONSTAR modüllerinin teknik değerleri. Model adına dokunarak ayrıntılı sayfaya geçebilirsiniz; Tabloda yalnızca modellerin çoğunda doğrulanmış değeri olan özellikler yer alır; tüm değerler model sayfalarında listelenir.
+                {isControlGroup
+                  ? `${g.name} modellerinin üretici föylerinden derlenen teknik değerleri. Model adına dokunarak ayrıntılı sayfaya geçebilirsiniz; tabloda yalnızca modellerin çoğunda değeri olan özellikler yer alır.`
+                  : `${g.name} grubundaki NXTIONSTAR modüllerinin teknik değerleri. Model adına dokunarak ayrıntılı sayfaya geçebilirsiniz; tabloda yalnızca modellerin çoğunda doğrulanmış değeri olan özellikler yer alır; tüm değerler model sayfalarında listelenir.`}
               </p>
               <div className="mt-5 overflow-x-auto rounded-2xl glass-card">
                 <table className="w-full min-w-[640px] text-left text-sm">
@@ -373,6 +418,52 @@ export default async function ProductGroupPage({ params }: PageProps) {
 
         </div>
       </section>
+
+      {g.techGallery?.length ? (
+        <section id="teknoloji" className="scroll-mt-28 border-t border-border bg-white py-14 md:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeading
+              align="left"
+              eyebrow={g.techGalleryEyebrow ?? "Yüzey teknolojisi"}
+              title={g.techGalleryTitle ?? "SMD, COB ve GOB karşılaştırması"}
+              description={
+                g.techGalleryDescription ??
+                "İnce pitch LED ekranlarda yüzey seçimi görüntü kalitesi kadar dayanıklılığı da belirler. GOB (Glue on Board) koruyucu kaplama; COB çip-on-board; SMD klasik paket yapısıdır."
+              }
+            />
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {g.techGallery.map((shot) => (
+                <li key={shot.src}>
+                  <figure className="overflow-hidden rounded-2xl border border-border bg-band">
+                    <div className="relative aspect-[16/11] bg-white">
+                      <OptImage
+                        src={shot.src}
+                        alt={shot.alt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                        className="object-contain p-2"
+                      />
+                    </div>
+                    <figcaption className="px-4 py-3 text-sm font-semibold text-ink">
+                      {shot.caption}
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+            {g.slug === "ince-pitch-led-ekran" ? (
+              <p className="mt-8 text-center">
+                <Link
+                  href="/tr/products/gob-led-ekran/"
+                  className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-cyan hover:underline"
+                >
+                  GOB LED Ekran grubuna geçin <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </p>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
 
       {/* Use cases */}
       <section id="kullanim" className="scroll-mt-28 bg-white py-14 md:py-16">

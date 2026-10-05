@@ -1,3 +1,4 @@
+import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS,
@@ -45,16 +46,20 @@ export function OrganizationJsonLd() {
         logo,
         image: logo,
         slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
-        description:
-          "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç ve dış mekân, GOB, esnek ve kiralık LED ekran satışı; keşif, montaj ve teknik servis. Almanya'daki ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir.",
+        description: ENTITY_CITE_MEDIUM,
         disambiguatingDescription:
-          "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. NXTIONSTAR kendi markasıdır; Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen markası ile karıştırılmamalıdır.",
+          "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.",
         email: CONTACT_EMAIL,
         telephone: CONTACT_PHONE_E164,
         address,
         sameAs: [...ORGANIZATION_SAME_AS],
         brand: { "@type": "Brand", name: "NXTIONSTAR", url: absoluteUrl("/tr/nxtionstar/") },
-        founder: { "@type": "Person", name: "Aras Bozkurt" },
+        founder: {
+          "@type": "Person",
+          name: "Aras Bozkurt",
+          url: absoluteUrl("/tr/about/aras-bozkurt/"),
+          sameAs: ["https://www.linkedin.com/in/bozkurtaras"],
+        },
         knowsAbout: [
           "LED ekran",
           "dijital ekran",

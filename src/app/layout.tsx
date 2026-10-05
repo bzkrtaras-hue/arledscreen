@@ -14,14 +14,14 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "LED Ekran Teknoloji Merkezi | ARLEDSCREEN – NXTIONSTAR",
+    default: "LED Ekran Teknoloji Merkezi | ARLEDSCREEN",
     template: "%s",
   },
   description:
-    "NXTIONSTAR markasının sahibi ARLEDSCREEN: iç ve dış mekân LED ekran seçimi, keşif, montaj ve teknik servis. İstanbul / Gaziosmanpaşa.",
+    "ARLEDSCREEN: iç ve dış mekân LED ekran seçimi, keşif, montaj ve teknik servis. İstanbul / Gaziosmanpaşa. NXTIONSTAR ürün sayfalarında alt marka olarak yer alır.",
   openGraph: {
     type: "website",
-    siteName: "ARLEDSCREEN | NXTIONSTAR",
+    siteName: "ARLEDSCREEN",
     locale: "tr_TR",
   },
   twitter: {

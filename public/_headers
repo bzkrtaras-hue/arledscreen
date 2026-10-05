@@ -35,6 +35,9 @@
 /llms-full.txt
   Cache-Control: public, max-age=3600
 
+/entity.json
+  Cache-Control: public, max-age=3600
+
 # Self-hosted price calculator (embedded same-origin on /<locale>/hesaplayici/).
 # Voice input (Web Speech API) needs the microphone: allowed for this origin only,
 # both on the calculator document and on the pages that embed it (iframe allow="microphone").

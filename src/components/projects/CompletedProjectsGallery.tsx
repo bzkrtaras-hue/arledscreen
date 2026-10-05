@@ -26,7 +26,7 @@ export function CompletedProjectsGallery({ locale }: Props) {
           <figure className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-border bg-surface">
             <OptImage
               src={shot.src}
-              alt=""
+              alt={labels[shot.key]}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
               className="object-cover transition duration-700 group-hover:scale-[1.03]"

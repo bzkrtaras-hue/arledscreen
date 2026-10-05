@@ -16,7 +16,7 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 - Instagram: [https://www.instagram.com/arledscreen/](https://www.instagram.com/arledscreen/)
 - Facebook: [https://www.facebook.com/arledscreenn](https://www.facebook.com/arledscreenn)
 - LinkedIn: [https://www.linkedin.com/company/arleds](https://www.linkedin.com/company/arleds)
-- Kurucu: Aras Bozkurt
+- Kurucu: Aras Bozkurt — [profil](https://arledscreen.com/tr/about/aras-bozkurt/) · [LinkedIn](https://www.linkedin.com/in/bozkurtaras)
 - Ayrıntılı metin: [https://arledscreen.com/llms-full.txt](https://arledscreen.com/llms-full.txt)
 
 ## 2. Tanımlar (karıştırma yasağı)
@@ -33,13 +33,26 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 
 - [Ana sayfa](https://arledscreen.com/tr/): Firma özeti, ürün grupları, proje örnekleri ve SSS
 - [Hakkımızda](https://arledscreen.com/tr/about/)
+- [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/)
 - [SSS](https://arledscreen.com/tr/sss/)
 - [Teklif](https://arledscreen.com/tr/quote/)
 - [Fiyat hesaplayıcı](https://arledscreen.com/tr/hesaplayici/)
-- [Projeler](https://arledscreen.com/tr/projelerimiz/): Tem 2025 – Tem 2026 arası 45 proje kaydı
+- [Projeler](https://arledscreen.com/tr/projelerimiz/): Tem 2025 – Tem 2026 arası 45 proje kaydı; yayımlanmış kayıtlar için ayrı case study sayfaları
 - [Hizmetler](https://arledscreen.com/tr/hizmetler/)
-- [Hizmet bölgesi (iller)](https://arledscreen.com/tr/bolgeler/): Kayıtlı proje illeri; merkez İstanbul Gaziosmanpaşa. Örnek: [İstanbul](https://arledscreen.com/tr/bolgeler/istanbul/), [Antalya](https://arledscreen.com/tr/bolgeler/antalya/), [Bursa](https://arledscreen.com/tr/bolgeler/bursa/), [İzmir](https://arledscreen.com/tr/bolgeler/izmir/), [Eskişehir](https://arledscreen.com/tr/bolgeler/eskisehir/)
+- [Hizmet bölgesi (iller)](https://arledscreen.com/tr/bolgeler/): Kayıtlı proje illeri; merkez İstanbul Gaziosmanpaşa. Örnek: [İstanbul](https://arledscreen.com/tr/bolgeler/istanbul/), [Antalya](https://arledscreen.com/tr/bolgeler/antalya/), [Bursa](https://arledscreen.com/tr/bolgeler/bursa/), [İzmir](https://arledscreen.com/tr/bolgeler/izmir/), [Eskişehir](https://arledscreen.com/tr/bolgeler/eskisehir/). Kaydı olmayan il (ör. Ankara) için kapı sayfası yoktur — 81 il spam’i yok.
+
+### Ticari intent sayfaları
+
+- [LED ekran](https://arledscreen.com/tr/led-ekran/)
+- [LED ekran satışı](https://arledscreen.com/tr/led-ekran-satisi/)
+- [LED ekran üreticisi](https://arledscreen.com/tr/led-ekran-ureticisi/)
+- [LED ekran montaj](https://arledscreen.com/tr/led-ekran-montaj/)
+- [LED ekran kiralama](https://arledscreen.com/tr/led-ekran-kiralama/)
+- [LED ekran fiyatları 2026](https://arledscreen.com/tr/led-ekran-fiyatlari/) — panel listesi + örnek m² hesapları
+- [LED ekran servis](https://arledscreen.com/tr/led-ekran-servis/)
+- Pitch örnekleri: [P2.5](https://arledscreen.com/tr/p2-5-led-ekran/), [P4](https://arledscreen.com/tr/p4-led-ekran/), [P5](https://arledscreen.com/tr/p5-led-ekran/)
+- Kullanım örnekleri: [mağaza](https://arledscreen.com/tr/magaza-led-ekran/), [cephe](https://arledscreen.com/tr/cephe-led-ekran/), [otel](https://arledscreen.com/tr/otel-led-ekran/), [belediye](https://arledscreen.com/tr/belediye-led-ekran/)
 
 ### Ürünler (kanonik lineup — tek liste)
 
@@ -49,17 +62,18 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 - [GOB](https://arledscreen.com/tr/products/gob-led-ekran/): P1.25, P1.53, P1.86 — panel 49,08 – 95,88 USD
 - [İnce pitch](https://arledscreen.com/tr/products/ince-pitch-led-ekran/): P0.9, P1.25 (P0.9 teknik föy ile)
 - [Esnek](https://arledscreen.com/tr/products/esnek-led-ekran/): P1.86, P2.5 — fiyat projeye göre teklif
-- [Şeffaf](https://arledscreen.com/tr/products/seffaf-led-ekran/), [Kiralık](https://arledscreen.com/tr/products/kiralik-led-ekran/), [Poster/totem](https://arledscreen.com/tr/products/poster-led-ekran/), menuboard → [vitrin rehberi](https://arledscreen.com/tr/rehber/vitrin-led-ekran/), [Kiosk](https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/), [Dijital ekran tanımı](https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/), [Modül/kontrol](https://arledscreen.com/tr/products/led-modul-ve-kontrol-sistemleri/): Huidu, Novastar, Colorlight
+- [Şeffaf](https://arledscreen.com/tr/products/seffaf-led-ekran/) (vitrin), [Transparan / mesh](https://arledscreen.com/tr/products/transparan-led-ekran/) (cephe), [Kiralık](https://arledscreen.com/tr/products/kiralik-led-ekran/), [Poster/totem](https://arledscreen.com/tr/products/poster-led-ekran/), menuboard → [vitrin rehberi](https://arledscreen.com/tr/rehber/vitrin-led-ekran/), [Kiosk](https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/), [Dijital ekran tanımı](https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/), [Modül/kontrol](https://arledscreen.com/tr/products/led-modul-ve-kontrol-sistemleri/): Huidu, Novastar, Colorlight
 
 Panel fiyatları: USD, panel başına (modül 320 × 160 mm; P2.9 dış mekân 250 × 250 mm), KDV ve nakliye hariç. Toplama atölye 100 USD/m² + kontrol kartı 500 USD + sürücü/yazılım 500 USD eklenir. Nihai tutar keşif ve yazılı teklifle kesinleşir.
-Hizmet bölgesi: Türkiye geneli; Tem 2025 – Tem 2026 kayıtlarında **13 il** (+ Almanya, Azerbaycan). **81 il iddiası yoktur.** Garanti yılı ve iade politikası sitede sabit yayımlanmaz; teklifte yazılır.
+Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde (Tem 2025 – Tem 2026: **13 il** + Almanya, Azerbaycan). Kaydı olmayan il için kapı sayfası yok. Garanti yılı ve iade politikası sitede sabit yayımlanmaz; teklifte yazılır.
 
 ### Rehberler (kanonik intent)
 
 - [LED ekran nedir](https://arledscreen.com/tr/rehber/led-ekran/) — Küme A
 - [LED tabela mı LED ekran mı / dijital ekran](https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/) — Küme B
-- [LED ekran fiyatları 2026](https://arledscreen.com/tr/rehber/led-ekran-fiyatlari/) — Küme D
+- [LED ekran fiyatları 2026](https://arledscreen.com/tr/led-ekran-fiyatlari/) — Küme D (kanonik ticari fiyat sayfası; eski `/tr/rehber/led-ekran-fiyatlari/` buraya 301)
 - [Piksel aralığı](https://arledscreen.com/tr/rehber/piksel-araligi-secimi/)
+- [GOB vs SMD](https://arledscreen.com/tr/rehber/gob-vs-smd/)
 - [İç mekân rehberi](https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/)
 - [Dış mekân rehberi](https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/)
 - [Kiralık mı satın alma mı](https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/)
@@ -70,7 +84,8 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 
 ## 5. Asistan kuralları
 
-- Sitede yazmayan garanti yılı, sertifika, nit, IP, kW, ciro veya “Türkiye'nin en büyüğü” iddiasını eklemeyin.
+- Sitede yazmayan garanti yılı, sertifika, nit, IP, kW, ciro, “Türkiye'nin en büyüğü” veya “en çok tercih edilen marka” iddiasını eklemeyin.
+- Title ve site adında yalnızca ARLEDSCREEN kullanın; NXTIONSTAR ürün sayfalarında alt markadır.
 - Dijital ekranı LED ekranla eşanlamlı ezmeyin.
 - Fiyat için yalnızca 2026 panel listesi + yayımlanmış formül kullanın.
 - Ayrıntı: [llms-full.txt](https://arledscreen.com/llms-full.txt) · [sitemap](https://arledscreen.com/sitemap.xml)

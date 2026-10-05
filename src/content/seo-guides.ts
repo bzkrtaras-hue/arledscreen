@@ -405,7 +405,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Şeffaf LED vs opak vitrin duvarı",
           body:
-            "Şeffaf LED cam arkasında ürünü göstermeye devam eder; opak LED ise tam video duvar etkisi verir. Marka hikâyesi ve ürün teşhiri dengesi konsept aşamasında seçilir. Şeffaflık oranı (%) ve pitch birlikte değerlendirilir — ince pitch daha ‘ekran’, yüksek şeffaflık daha ‘cam’ hissi verir.",
+            "Şeffaf LED cam arkasında ürünü göstermeye devam eder; opak LED ise tam video duvar etkisi verir. Marka hikâyesi ve ürün teşhiri dengesi konsept aşamasında seçilir. Şeffaflık oranı (%) ve pitch birlikte değerlendirilir — ince pitch daha ‘ekran’, yüksek şeffaflık daha ‘cam’ hissi verir. Bina cephesi ölçeğinde mesh form için ayrı ürün grubu: transparan LED ekran.",
         },
         {
           h2: "Gündüz okunabilirlik ve gece dimming",

@@ -1,6 +1,7 @@
 import type { ProductCategory as SeriesCategory } from "@/types/product";
 import type { ProjectTypeId } from "@/lib/whatsapp";
 import { references, type Reference } from "@/content/references";
+import { CONTROL_GROUPS } from "@/content/control-products";
 
 /**
  * Product groups (category landing pages under /tr/products/<slug>/).
@@ -19,6 +20,13 @@ export interface PitchOption {
 export interface CategoryFaq {
   question: string;
   answer: string;
+}
+
+/** Optional tech / comparison visuals on the product group page */
+export interface TechGalleryShot {
+  src: string;
+  alt: string;
+  caption: string;
 }
 
 export interface ProductGroup {
@@ -41,6 +49,11 @@ export interface ProductGroup {
   imageAlt: string;
   /** Optional separate image for small cards */
   cardImage?: string;
+  /** Optional tech / form comparison gallery */
+  techGallery?: TechGalleryShot[];
+  techGalleryEyebrow?: string;
+  techGalleryTitle?: string;
+  techGalleryDescription?: string;
   intro: string[];
   highlights: string[];
   uses: { title: string; body: string }[];
@@ -51,7 +64,56 @@ export interface ProductGroup {
   whatsapp: string;
   refFilter?: (r: Reference) => boolean;
   faqs: CategoryFaq[];
+  /** Optional manufacturer brand for schema / chips (control systems). */
+  brandName?: string;
 }
+
+/** Shared GOB / COB / SMD comparison shots for fine-pitch family pages */
+const FINE_PITCH_TECH_GALLERY: TechGalleryShot[] = [
+  {
+    src: "/projects/modules/tech/cob-smd-gob-trio.jpg",
+    alt: "COB, SMD ve GOB LED modül yüzeylerinin yan yana karşılaştırması",
+    caption: "COB · SMD · GOB — üç yüzey teknolojisi",
+  },
+  {
+    src: "/projects/modules/tech/gob-vs-cob-surface.jpg",
+    alt: "GOB ve COB ince pitch LED modül yüzey dokusu karşılaştırması",
+    caption: "GOB vs COB — yüzey ve doku farkı",
+  },
+  {
+    src: "/projects/modules/tech/gob-vs-normal-smd.jpg",
+    alt: "GOB kaplamalı LED modül ile standart SMD modül kesit karşılaştırması",
+    caption: "GOB vs standart SMD — koruyucu katman",
+  },
+  {
+    src: "/projects/modules/tech/gob-vs-standard-water.jpg",
+    alt: "GOB LED modül üzerinde su damlası ile standart modül karşılaştırması",
+    caption: "GOB — su ve darbe korumalı yüzey",
+  },
+  {
+    src: "/projects/modules/tech/cob-vs-gob-diagram.jpg",
+    alt: "COB Chip on Board ve GOB Glue on Board yapı diyagramı",
+    caption: "COB (Chip on Board) vs GOB (Glue on Board)",
+  },
+  {
+    src: "/projects/modules/tech/gob-production-process.jpg",
+    alt: "GOB LED üretiminde SMD modül üzerine şeffaf tutkal kaplama süreci",
+    caption: "GOB üretim adımı — Glue on Board",
+  },
+];
+
+const FLEXIBLE_TECH_GALLERY: TechGalleryShot[] = [
+  {
+    src: "/projects/modules/tech/flexible-curve-concave-convex.jpg",
+    alt: "Esnek LED ekran konkav, konveks ve silindirik kavis diyagramları ile iç mekân uygulama görseli",
+    caption: "Konkav · Konveks · Silindirik kavis (ör. 611R)",
+  },
+  {
+    src: "/projects/modules/tech/flexible-module-bend-lit.jpg",
+    alt: "Bükülmüş esnek LED modül — aydınlatılmış yüzey ve esnek arka yapı",
+    caption: "Esnek LED modül — bükülebilir yapı",
+  },
+];
 
 export const PRODUCT_FAMILIES = [
   "Dış Mekân LED Ekranlar",
@@ -152,7 +214,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     lead: "Gün ışığında okunur, uzaktan fark edilir",
     title: "Dış Mekân LED Ekran Fiyatları ve Modelleri | Cephe, Totem | ARLEDSCREEN",
     description:
-      "Cephe, totem, billboard ve meydan uygulamaları için dış mekân LED ekran: piksel aralığı seçimi, taşıyıcı sistem, montaj ve teknik servis. ARLEDSCREEN – NXTIONSTAR.",
+      "Cephe, totem, billboard ve meydan uygulamaları için dış mekân LED ekran: piksel aralığı seçimi, taşıyıcı sistem, montaj ve teknik servis. ARLEDSCREEN; NXTIONSTAR alt markası.",
     short: "Cephe, totem ve billboard uygulamaları için gün ışığında okunabilen ekranlar.",
     tag: "P2.5 – P8",
     family: "Dış Mekân LED Ekranlar",
@@ -219,8 +281,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     tag: "P1.25 · P1.53 · P1.86",
     family: "İç Mekân LED Ekranlar",
     types: ["Toplantı ve konferans", "Kontrol odası", "Yakın izleme alanları"],
-    image: "/projects/modules/smd-macro-matrix.jpg",
-    imageAlt: "LED modül yüzeyinin yakından görünümü",
+    image: "/projects/modules/tech/gob-vs-standard-water.jpg",
+    imageAlt: "GOB LED modül üzerinde su damlası — koruyucu kaplama yüzeyi",
+    techGallery: FINE_PITCH_TECH_GALLERY,
     intro: [
       "GOB (Glue on Board) teknolojisinde LED'lerin üzeri şeffaf bir koruyucu katmanla kaplanır. Bu katman, LED yüzeyini darbe, nem ve toza karşı korumaya yardımcı olur.",
       "İnsanların ekrana yaklaşabildiği, dokunabildiği veya yoğun trafiğin olduğu alanlarda GOB seçenekleri değerlendirilir. Uygunluğu keşifte kullanım koşullarına göre birlikte netleştiriyoruz.",
@@ -331,15 +394,20 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     tag: "P1.86 · P2.5",
     family: "İç Mekân LED Ekranlar",
     types: ["Kolon kaplama", "Kavisli duvar", "Silindir ve dairesel form", "Özel tasarım dekor"],
-    image: "/projects/modules/flex-module-bend.jpg",
+    image: "/projects/modules/tech/flexible-module-bend-lit.jpg",
     cardImage: "/projects/applications/curved-led-tulips.jpg",
     imageAlt: "Bükülerek kavisli forma getirilmiş esnek LED modül",
+    techGallery: FLEXIBLE_TECH_GALLERY,
+    techGalleryEyebrow: "Esnek form",
+    techGalleryTitle: "Konkav, konveks ve silindirik kavis",
+    techGalleryDescription:
+      "Esnek LED modüller konkav (iç bükey), konveks (dış bükey) ve silindirik yüzeylere uygulanabilir. Eğrilik yarıçapı ve taşıyıcı yapı keşifte yüzeye göre planlanır.",
     intro: [
       "Esnek LED modüller bükülerek kolonları, dairesel yüzeyleri ve dalgalı duvarları kaplayabilir; düz kabinlerle elde edilemeyen formlar mümkün hâle gelir.",
-      "Her esnek ekran projesi mekâna özeldir. Yüzey ölçüsü, eğrilik ve taşıyıcı yapı keşifte birlikte planlanır; ardından yazılı teklif hazırlanır.",
+      "Konkav, konveks veya silindirik kavis seçenekleriyle showroom, lobi ve sahne tasarımlarında çerçeveden bağımsız bir yüzey oluşturulur. Her proje mekâna özeldir; ölçü ve eğrilik keşifte netleştirilir.",
     ],
     highlights: [
-      "Kavisli ve dairesel formlar",
+      "Konkav, konveks ve silindirik formlar",
       "Kolon ve silindir kaplama",
       "Mimari projelere özel ölçülendirme",
       "Keşif, taşıyıcı yapı ve montaj planı",
@@ -380,43 +448,49 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
   {
     slug: "seffaf-led-ekran",
     name: "Şeffaf LED Ekran",
-    h1: "Şeffaf (Transparan) LED Ekran",
-    lead: "Cam yüzeylerde görüşü kapatmadan dijital içerik",
-    title: "Şeffaf LED Ekran | Vitrin ve Cam Cephe Uygulamaları | ARLEDSCREEN",
+    h1: "Şeffaf LED Ekran",
+    lead: "Cam vitrinde arkadaki ürünü göstererek dijital içerik",
+    title: "Şeffaf LED Ekran | Vitrin ve Cam Uygulamaları | ARLEDSCREEN",
     description:
-      "Mağaza vitrini, cam cephe ve showroom için şeffaf LED ekran. Cam ölçüsü, montaj tipi ve izleme mesafesi keşifte belirlenir; teklif, montaj ve servis ARLEDSCREEN'den.",
-    short: "Cam vitrin ve cephelerde arkadaki görüşü koruyan açık yapılı ekranlar.",
-    tag: "Vitrin · Cam cephe · Showroom",
+      "Mağaza vitrini ve showroom camı için şeffaf LED ekran. Yüksek şeffaflıklı açık yapı; cam ölçüsü, montaj tipi ve izleme mesafesi keşifte belirlenir. Transparan (mesh) cephe LED ile karıştırılmamalıdır.",
+    short: "Vitrin camında arkadaki teşhiri koruyan yüksek şeffaflıklı LED.",
+    tag: "Vitrin · Showroom · Yüksek şeffaflık",
     family: "Dış Mekân LED Ekranlar",
-    types: ["Vitrin arkası", "Cam cephe", "Asma (askılı) kurulum", "Showroom bölmesi"],
-    image: "/projects/applications/led-poster-totems.jpg",
-    imageAlt: "Cam vitrin önünde konumlanmış ince profilli LED ekranlar",
+    types: ["Vitrin arkası", "Showroom camı", "Asma (askılı) kurulum", "İç / yarı outdoor cam"],
+    image: "/projects/applications/seffaf-led-vitrin.jpg",
+    imageAlt: "Mağaza vitrin camında şeffaf LED ekran — arkadaki ürünler görünür",
     intro: [
-      "Şeffaf LED ekranlarda LED'ler ince çubuklar hâlinde dizilir ve aralarında boşluk bırakılır. Bu sayede ekran çalışırken de camın arkası görülebilir, mağaza içi gün ışığından tamamen kopmaz.",
-      "Ekranın ne kadar şeffaf görüneceği ile görüntü keskinliği arasında bir denge vardır. Doğru seçim cam ölçüsüne, izleyicinin uzaklığına ve ekranın gün içinde maruz kalacağı ışığa göre keşifte yapılır.",
+      "Şeffaf LED ekranlarda LED’ler ince çubuklar hâlinde dizilir ve aralarında boşluk bırakılır. Bu sayede ekran çalışırken de camın arkası görülebilir; mağaza içi gün ışığından tamamen kopmaz.",
+      "Bu grup perakende vitrin ve showroom camı için planlanır. Bina cephesi ölçeğinde, dış hava koşullarına açık mesh/ızgara form faktörü için ayrı ürün grubumuz vardır: Transparan LED ekran.",
+      "Ekranın ne kadar şeffaf görüneceği ile görüntü keskinliği arasında bir denge vardır. Doğru seçim cam ölçüsüne, izleyicinin uzaklığına ve ışığa göre keşifte yapılır.",
     ],
     highlights: [
-      "Camın arkasındaki görüşü büyük ölçüde korur",
-      "İnce ve hafif yapı, cam yüzeye yakın montaj",
-      "Vitrin ve cephe ölçüsüne göre planlama",
+      "Camın arkasındaki ürün teşhirini büyük ölçüde korur",
+      "İnce ve hafif yapı, vitrin camına yakın montaj",
+      "Vitrin ölçüsüne göre planlama",
       "Keşif, montaj ve teknik servis tek ekipten",
     ],
     uses: [
       { title: "Mağaza vitrini", body: "Ürün teşhirini kapatmadan kampanya ve marka içeriği gösterme." },
-      { title: "Cam cephe", body: "Bina cephesindeki camları dijital yüzeye dönüştürme." },
       { title: "Showroom", body: "Bölmeler ve iç camlarda hafif, göz yormayan içerik alanı." },
       { title: "Fuar ve sergi", body: "Stantlarda katmanlı ve derinlik hissi veren tasarımlar." },
+      { title: "Perakende lobi", body: "Cam bölmelerde yönlendirme ve kampanya yayını." },
     ],
     pitches: [],
     seriesCategories: ["transparent"],
     guide: { href: "/tr/rehber/vitrin-led-ekran/", label: "Vitrin LED ekran rehberi" },
     projectType: "magaza",
-    whatsapp: "Merhaba, vitrin / cam cephe için şeffaf LED ekran hakkında bilgi almak istiyorum. Cam ölçüsü ve konum:",
+    whatsapp: "Merhaba, vitrin / showroom için şeffaf LED ekran hakkında bilgi almak istiyorum. Cam ölçüsü ve konum:",
     faqs: [
+      {
+        question: "Şeffaf LED ile transparan LED aynı şey mi?",
+        answer:
+          "Hayır. Şeffaf LED bu sitede vitrin/showroom camı için yüksek şeffaflıklı açık yapıyı ifade eder. Transparan LED, cephe ölçeğinde mesh/ızgara form faktörünü ifade eder — ayrı ürün sayfasında anlatılır.",
+      },
       {
         question: "Şeffaf LED ekran ne zaman tercih edilir?",
         answer:
-          "Vitrin veya cam cephe gibi arkadaki görüşün korunması gereken yüzeylerde tercih edilir. Tam kapalı bir görüntü yüzeyi gerekiyorsa standart LED ekran daha uygun olabilir.",
+          "Vitrin veya showroom gibi arkadaki ürünün görünür kalması gereken cam yüzeylerde tercih edilir. Tam kapalı bir görüntü yüzeyi gerekiyorsa standart LED ekran daha uygun olabilir.",
       },
       {
         question: "Gündüz vitrinde içerik okunur mu?",
@@ -431,26 +505,81 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     ],
   },
   {
+    slug: "transparan-led-ekran",
+    name: "Transparan LED Ekran",
+    h1: "Transparan (Mesh) LED Ekran",
+    lead: "Cam cephe ve dış mekân için ızgara yapılı şeffaf form",
+    title: "Transparan LED Ekran | Cam Cephe ve Mesh LED | ARLEDSCREEN",
+    description:
+      "Bina cam cephesi ve dış mekân uygulamaları için transparan (mesh/ızgara) LED ekran. Açık yapı ile arkadaki mimari görünür kalır. Vitrin odaklı şeffaf LED grubundan ayrı planlanır; keşif ve teklif ARLEDSCREEN’den.",
+    short: "Cephe ölçeğinde mesh/ızgara transparan LED — mimari görünürlüğü korur.",
+    tag: "Cam cephe · Mesh · Dış / yarı outdoor",
+    family: "Dış Mekân LED Ekranlar",
+    types: ["Cam cephe mesh", "Izgara / grid panel", "Yarı outdoor cephe", "AVM cam koridor"],
+    image: "/projects/applications/transparan-led-cephe.jpg",
+    imageAlt: "Cam bina cephesinde transparan mesh LED ekran — arkadaki katlar görünür",
+    intro: [
+      "Transparan LED ekran, LED’lerin ızgara/mesh düzeninde boşluklu yerleştirildiği açık bir form faktördür. Amaç, cephe ölçeğinde dijital içerik gösterirken mimari derinliği ve ışık geçişini tamamen kapatmamaktır.",
+      "Bu grup, mağaza vitrinindeki yüksek şeffaflıklı Şeffaf LED ekrandan ayrıdır. Cephe yüksekliği, rüzgâr/yağmur maruziyeti ve izleme mesafesi keşifte netleşir; model önerisi buna göre yapılır.",
+      "Parlaklık, IP sınıfı ve şeffaflık oranı sitede sabit yayımlanmaz; yazılı teklifte proje koşullarına göre belirtilir.",
+    ],
+    highlights: [
+      "Cephe ölçeğinde açık yapı",
+      "Arkada mimari / kat görünürlüğü korunabilir",
+      "Cam cephe ve yarı outdoor senaryolara uygun planlama",
+      "Keşif, montaj ve teknik servis tek ekipten",
+    ],
+    uses: [
+      { title: "Cam cephe", body: "Bina cephesindeki camları dijital yüzeye dönüştürme." },
+      { title: "AVM dış / ara cephe", body: "Geniş cam yüzeylerde marka ve kampanya yayını." },
+      { title: "Showroom cephe", body: "Dışarıdan görünen ama içeriyi tamamen kesmeyen uygulamalar." },
+      { title: "Etkinlik mimarisi", body: "Geçici veya sabit cephe katmanlı tasarımlar." },
+    ],
+    pitches: [],
+    seriesCategories: ["transparent"],
+    guide: { href: "/tr/rehber/dis-mekan-led-ekran/", label: "Dış mekân LED ekran rehberi" },
+    projectType: "dis-mekan",
+    whatsapp: "Merhaba, cam cephe için transparan (mesh) LED ekran hakkında bilgi almak istiyorum. Cephe ölçüsü ve konum:",
+    faqs: [
+      {
+        question: "Transparan LED ile şeffaf LED farkı nedir?",
+        answer:
+          "Şeffaf LED vitrin/showroom camı için yüksek şeffaflıklı uygulamayı; transparan LED cephe ölçeğinde mesh/ızgara formu ifade eder. İkisi de ‘arkası görünen’ ailede olsa da kullanım yeri ve form faktörü farklıdır.",
+      },
+      {
+        question: "Her dış cephe için transparan LED uygun mu?",
+        answer:
+          "Hayır. Yoğun güneş, rüzgâr ve uzun mesafe izleme koşullarında standart dış mekân LED veya başka bir çözüm daha uygun olabilir. Karar keşifte verilir.",
+      },
+      {
+        question: "Şeffaflık oranı nedir?",
+        answer:
+          "Model ve piksel düzenine göre değişir. Sitede sabit yüzde yayımlamayız; keşif sonrası teklifte paylaşılır.",
+      },
+    ],
+  },
+  {
     slug: "ince-pitch-led-ekran",
     name: "İnce Pitch LED Ekran",
     h1: "İnce Pitch (Fine Pitch) LED Ekran",
     lead: "Yakından izlenen alanlar için yüksek piksel yoğunluğu",
     title: "İnce Pitch LED Ekran | Toplantı, Stüdyo, Kontrol Odası | ARLEDSCREEN",
     description:
-      "Toplantı salonu, stüdyo ve kontrol odası gibi yakın izleme alanları için ince pitch LED ekran. Piksel aralığı izleme mesafesine göre seçilir; keşif, montaj ve servis ARLEDSCREEN'den.",
+      "Toplantı salonu, stüdyo ve kontrol odası gibi yakın izleme alanları için ince pitch LED ekran. SMD, COB ve GOB yüzey seçenekleri; piksel aralığı izleme mesafesine göre seçilir.",
     short: "Piksel aralığı küçük, yakın mesafeden keskin görüntü veren iç mekân ekranları.",
-    tag: "P0.9 · P1.25",
+    tag: "P0.9 · P1.25 · GOB",
     family: "İç Mekân LED Ekranlar",
-    types: ["SMD ince pitch", "COB yüzeyli seçenekler", "Toplantı salonu duvarı", "Stüdyo arka planı"],
-    image: "/projects/modules/fine-pitch-panel.jpg",
-    imageAlt: "Yakın plan ince pitch LED panel yüzeyi",
+    types: ["SMD ince pitch", "COB yüzeyli seçenekler", "GOB (Glue on Board)", "Toplantı salonu duvarı", "Stüdyo arka planı"],
+    image: "/projects/modules/tech/cob-smd-gob-trio.jpg",
+    imageAlt: "COB, SMD ve GOB ince pitch LED modül yüzey karşılaştırması",
+    techGallery: FINE_PITCH_TECH_GALLERY,
     intro: [
       "Piksel aralığı (pitch), iki LED merkezi arasındaki milimetre cinsinden mesafedir. Aralık küçüldükçe aynı alana daha çok piksel sığar ve ekran daha yakından izlendiğinde bile görüntü bütünlüğünü korur.",
-      "İnce pitch ekranlar bu nedenle izleyicinin birkaç metre mesafede durduğu salonlarda kullanılır. Seçim yapılırken salon derinliği, içerik türü ve bütçe birlikte değerlendirilir; gereğinden küçük pitch maliyeti gereksiz yere artırır.",
+      "İnce pitch ekranlarda yüzey teknolojisi de seçilir: SMD, COB (Chip on Board) veya GOB (Glue on Board). GOB'da LED yüzeyi şeffaf koruyucu katmanla kaplanır; yakın izleme ve temas riski olan alanlarda tercih edilir.",
     ],
     highlights: [
       "Yakın mesafede net ve pürüzsüz görüntü",
-      "Projeksiyon ve çoklu monitöre göre çerçevesiz yüzey",
+      "SMD, COB ve GOB yüzey seçenekleri",
       "Salon derinliğine göre piksel aralığı önerisi",
       "Keşif, montaj ve teknik servis tek ekipten",
     ],
@@ -476,9 +605,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
           "İnce pitch grubunda yayımlanan aralıklar P0.9 ve P1.25'tir. Pratik kural: her 1 mm P ≈ 1 m minimum mesafe. Kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz; P0.9 için teknik föy talep üzerine paylaşılır.",
       },
       {
-        question: "SMD ile COB arasındaki fark nedir?",
+        question: "SMD, COB ve GOB arasındaki fark nedir?",
         answer:
-          "SMD'de her LED ayrı bir paket olarak karta lehimlenir; COB'da LED çipleri doğrudan karta yerleştirilip ortak bir yüzeyle kapatılır. COB yüzeyi darbeye karşı daha dayanıklıdır; uygun seçenek projeye göre önerilir.",
+          "SMD'de her LED ayrı paket olarak karta lehimlenir. COB'da çipler doğrudan karta yerleştirilip ortak yüzeyle kapatılır. GOB'da SMD yüzeyi ek şeffaf tutkal katmanıyla kaplanır; darbe, nem ve toza karşı koruma artar. Uygun seçenek projeye göre önerilir.",
       },
       {
         question: "Toplantı sistemleriyle birlikte çalışır mı?",
@@ -559,21 +688,25 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "Ön ve arka yüzü görünen SMD LED modül",
     intro: [
       "Bir LED ekran; LED modüller, bu modülleri taşıyan kabinler, görüntüyü modüllere dağıtan kontrol kartları ve güç kaynaklarından oluşur. Görüntü işlemci ise bilgisayar veya yayın kaynağından gelen sinyali ekran çözünürlüğüne uyarlar.",
-      "Yeni bir proje için tüm bileşenleri birlikte planlayabilir, mevcut bir ekranda arızalanan parça için uyumlu modül ve kart tedarik edebiliriz. Uyumluluk, ekranın etiket bilgileri ve modül ölçüsü incelenerek kontrol edilir.",
+      "Kontrol tarafında Huidu, NovaStar ve Colorlight markalarını proje ihtiyacına göre seçiyoruz; her markanın kendi ürün sayfasında modeller ve teknik özellikler yer alır. Uyumluluk, ekranın etiket bilgileri ve modül ölçüsü incelenerek kontrol edilir.",
     ],
     highlights: [
-      "Yeni proje için eksiksiz bileşen planı",
-      "Mevcut ekranlar için uyumlu yedek parça",
-      "Kontrol sistemi kurulumu ve yapılandırma",
-      "Atölye ve sahada teknik servis",
+      "Huidu asenkron kartlar — Wi‑Fi / USB içerik",
+      "NovaStar VX, Taurus ve MCTRL kontrolcüler",
+      "Colorlight X / VX işlemci ve S gönderici",
+      "Kurulum, haritalama ve teknik servis",
     ],
     uses: [
       { title: "Yedek modül", body: "Arızalı veya renk farkı oluşan modüllerin değişimi." },
-      { title: "Kontrol sistemi", body: "Alıcı / gönderici kart ve görüntü işlemci kurulumu." },
+      { title: "Kontrol sistemi", body: "Huidu, NovaStar veya Colorlight kurulum ve yapılandırma." },
       { title: "Ekran büyütme", body: "Mevcut ekrana uyumlu modüllerle yüzey ekleme." },
       { title: "Entegratörler", body: "Kendi projesini kuran firmalara bileşen tedariki." },
     ],
-    pitches: [],
+    pitches: [
+      { label: "Huidu", note: "Asenkron kontrol kartları" },
+      { label: "NovaStar", note: "VX / Taurus / MCTRL" },
+      { label: "Colorlight", note: "X / VX / S serisi" },
+    ],
     seriesCategories: [],
     guide: { href: "/tr/rehber/led-ekran/", label: "LED ekran rehberi" },
     projectType: "servis",
@@ -585,9 +718,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
           "Modülün arkasındaki etiket bilgisini, ölçüsünü ve fotoğrafını paylaşmanız yeterli. Uyumlu seçeneği kontrol edip size dönüyoruz.",
       },
       {
-        question: "Alıcı kart ile gönderici kart ne işe yarar?",
+        question: "Hangi kontrol markasını seçmeliyim?",
         answer:
-          "Gönderici kart, kaynaktan gelen görüntüyü ekrana iletir; kabinlerin içindeki alıcı kartlar bu veriyi kendi bölümlerindeki modüllere dağıtır.",
+          "Asenkron tabela ve Wi‑Fi güncellemede sıkça Huidu; yüksek piksel yükü ve sahne/senkron işlerde NovaStar veya Colorlight öne çıkar. Keşifte kaynak tipi ve ekran ölçüsüne göre netleştiririz.",
       },
       {
         question: "Kurulum ve yapılandırma desteği veriyor musunuz?",
@@ -596,6 +729,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       },
     ],
   },
+  ...CONTROL_GROUPS,
 ];
 
 // Keep a stable, family-ordered list for menus, grids and the sitemap.

@@ -62,8 +62,9 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/rehber/piksel-araligi-secimi/", label: "Piksel aralığı nasıl seçilir?" },
-      { href: "/tr/products/ic-mekan-led-ekran/", label: "İç mekân LED ekran modelleri" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
+      { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
   },
   {
@@ -108,8 +109,9 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/products/ic-mekan-led-ekran/", label: "İç mekân LED ekran modelleri" },
-      { href: "/tr/projelerimiz/", label: "Tamamlanan projelerimiz" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
+      { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
   },
   {
@@ -144,8 +146,9 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/products/ic-mekan-led-ekran/", label: "İç mekân LED ekran modelleri" },
-      { href: "/tr/projelerimiz/", label: "Tamamlanan projelerimiz" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
+      { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
   },
   {
@@ -189,9 +192,9 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/rehber/led-tabela-mi-led-ekran-mi/", label: "LED tabela mı, LED ekran mı?" },
-      { href: "/tr/rehber/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
-      { href: "/tr/products/ic-mekan-led-ekran/", label: "İç mekân LED ekran modelleri" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
+      { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
   },
   {
@@ -236,9 +239,11 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/hizmetler/", label: "Keşif, montaj ve servis hizmetlerimiz" },
-      { href: "/tr/products/ic-mekan-led-ekran/", label: "İç mekân LED ekran modelleri" },
-    ],    videoSlug: "eskisehir-sigorta-led-ekran-vitrin",
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
+      { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
+    ],
+    videoSlug: "eskisehir-sigorta-led-ekran-vitrin",
   },
   {
     slug: "ic-mekan-led-ekran-ile-markanizi-gorunur-kilin",
@@ -285,8 +290,9 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/products/ic-mekan-led-ekran/", label: "İç mekân LED ekran modelleri" },
-      { href: "/tr/rehber/piksel-araligi-secimi/", label: "Piksel aralığı nasıl seçilir?" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
+      { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
   },
 ];

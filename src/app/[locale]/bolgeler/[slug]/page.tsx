@@ -5,7 +5,7 @@ import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { HomeFaq } from "@/components/home/HomeFaq";
-import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
+import { productGroupPath, getProductGroup } from "@/content/categories";
 import {
   SERVICE_REGIONS,
   getServiceRegion,
@@ -51,6 +51,8 @@ export default async function ServiceRegionPage({
   const region = getServiceRegion(slug);
   if (!region) notFound();
 
+  const disMekan = getProductGroup("dis-mekan-led-ekran");
+
   const faqs = [
     {
       question: `${region.name} içinde LED ekran montajı yapıyor musunuz?`,
@@ -82,12 +84,6 @@ export default async function ServiceRegionPage({
     },
     url: absoluteUrl(serviceRegionPath(region.slug)),
   };
-
-  const featuredGroups = PRODUCT_GROUPS.filter((g) =>
-    ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran", "kiralik-led-ekran"].includes(
-      g.slug,
-    ),
-  );
 
   return (
     <>
@@ -147,67 +143,85 @@ export default async function ServiceRegionPage({
       ) : null}
 
       <Section
-        eyebrow="Kayıtlı konumlar"
-        title={`${region.name} proje konumları`}
-        description="Yalnızca yayımlanmış referans kayıtlarındaki konum adları listelenir."
+        eyebrow="Kayıtlı projeler"
+        title={`${region.name} proje kayıtları`}
+        description={`${region.projectCount} yayımlanmış kayıt. Tarih, kapsam ve konum; stok görsel yok.`}
         className="bg-surface/60 prose-seo"
       >
-        <ul className="flex flex-wrap gap-2">
-          {region.locations.map((loc) => (
-            <li
-              key={loc}
-              className="rounded-full border border-border bg-white px-3 py-1.5 text-sm text-ink-soft"
-            >
-              {loc}
-            </li>
-          ))}
-        </ul>
-        {region.projectLabels.length > 0 ? (
-          <div className="mt-8">
-            <h2 className="font-display text-base font-bold text-ink">Örnek kayıtlar</h2>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-ink-soft">
-              {region.projectLabels.map((label) => (
-                <li key={label}>{label}</li>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-border text-ink-muted">
+                <th className="py-2 pr-3 font-semibold">Tarih</th>
+                <th className="py-2 pr-3 font-semibold">Kayıt</th>
+                <th className="py-2 pr-3 font-semibold">Ölçü / P</th>
+                <th className="py-2 font-semibold">Konum</th>
+              </tr>
+            </thead>
+            <tbody>
+              {region.projects.map((p) => (
+                <tr key={`${p.date}-${p.label}-${p.detail}`} className="border-b border-border/70">
+                  <td className="py-2.5 pr-3 text-ink-soft">{p.date}</td>
+                  <td className="py-2.5 pr-3 font-medium text-ink">{p.label}</td>
+                  <td className="py-2.5 pr-3 text-ink-soft">{p.detail}</td>
+                  <td className="py-2.5 text-ink-soft">{p.location}</td>
+                </tr>
               ))}
-            </ul>
-            <p className="mt-4 text-sm">
-              <Link href="/tr/projelerimiz/" className="font-semibold text-cyan hover:underline">
-                Tüm proje listesi
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-sm">
+          <Link href="/tr/projelerimiz/" className="font-semibold text-cyan hover:underline">
+            Tüm proje listesi
+          </Link>
+          {disMekan ? (
+            <>
+              {" · "}
+              <Link
+                href={productGroupPath(disMekan)}
+                className="font-semibold text-cyan hover:underline"
+              >
+                Dış mekân LED ekran
               </Link>
-            </p>
-          </div>
-        ) : null}
+            </>
+          ) : null}
+        </p>
       </Section>
 
-      <Section eyebrow="Ürünler" title={`${region.name} için sık tercih edilen gruplar`} className="prose-seo">
-        <ul className="grid gap-4 sm:grid-cols-2">
-          {featuredGroups.map((g) => (
-            <li key={g.slug}>
-              <Link
-                href={productGroupPath(g)}
-                className="glass-card block rounded-2xl p-5 transition hover:border-cyan/40"
-              >
-                <h2 className="font-display text-base font-bold text-ink">{g.name}</h2>
-                <p className="mt-2 text-sm text-ink-muted">{g.short}</p>
-              </Link>
-            </li>
-          ))}
+      <Section
+        eyebrow="İlgili sayfalar"
+        title={`${region.name} için sonraki adımlar`}
+        className="prose-seo"
+      >
+        <ul className="grid gap-3 sm:grid-cols-3">
+          <li>
+            <Link
+              href="/tr/led-ekran-fiyatlari/"
+              className="glass-card block rounded-2xl p-5 transition hover:border-cyan/40"
+            >
+              <h2 className="font-display text-base font-bold text-ink">LED ekran fiyatları</h2>
+              <p className="mt-2 text-sm text-ink-muted">Fiyatı neyin belirlediği — rehber.</p>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/tr/products/dis-mekan-led-ekran/"
+              className="glass-card block rounded-2xl p-5 transition hover:border-cyan/40"
+            >
+              <h2 className="font-display text-base font-bold text-ink">Dış mekân LED ekran</h2>
+              <p className="mt-2 text-sm text-ink-muted">Cephe, totem ve billboard modelleri.</p>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/tr/hesaplayici/"
+              className="glass-card block rounded-2xl p-5 transition hover:border-cyan/40"
+            >
+              <h2 className="font-display text-base font-bold text-ink">Fiyat hesaplayıcı</h2>
+              <p className="mt-2 text-sm text-ink-muted">Ölçü ve pitch ile yaklaşık maliyet.</p>
+            </Link>
+          </li>
         </ul>
-        <p className="mt-6 text-sm text-ink-muted">
-          Fiyat bandı için{" "}
-          <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
-            hesaplayıcı
-          </Link>
-          ; süreç için{" "}
-          <Link href="/tr/hizmetler/" className="font-semibold text-cyan hover:underline">
-            hizmetler
-          </Link>
-          ; diğer iller için{" "}
-          <Link href="/tr/bolgeler/" className="font-semibold text-cyan hover:underline">
-            hizmet bölgesi
-          </Link>
-          .
-        </p>
       </Section>
 
       <Section eyebrow="SSS" title={`${region.name} LED ekran soruları`} className="border-t border-border prose-seo">

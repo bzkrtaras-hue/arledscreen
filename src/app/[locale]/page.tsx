@@ -1,5 +1,6 @@
 import { BlogTeaser } from "@/components/home/BlogTeaser";
 import type { Metadata } from "next";
+import Link from "next/link";
 import Script from "next/script";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
@@ -25,8 +26,6 @@ import { BrandBand } from "@/components/home/BrandBand";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { CitationCapsule } from "@/components/seo/CitationCapsule";
-import { HOME_CITATION } from "@/content/citation-capsules";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -38,12 +37,16 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "home");
+  // Only tr↔en share true home counterparts; ar/ru are thin → no hreflang.
+  const hreflangLocales =
+    locale === "tr" || locale === "en" ? (["tr", "en"] as Locale[]) : [];
   return buildPageMetadata({
     locale,
     path: "/",
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    hreflangLocales,
   });
 }
 
@@ -121,7 +124,6 @@ export default async function HomePage({ params }: PageProps) {
       </div>
       <GatewayTiles />
       <ValuesBand />
-      <CitationCapsule {...HOME_CITATION} />
 
       {/* 4. Product groups (category tiles) */}
       <section id="urunler" className="bg-white py-14 md:py-20">
@@ -132,6 +134,21 @@ export default async function HomePage({ params }: PageProps) {
             description="Ekran seçimi, kullanım amacı ve izleme mesafesiyle başlar. Size en yakın grubu seçin; seçenekleri, kullanım alanlarını ve ilgili projeleri inceleyin."
           />
           <ProductGroupGrid />
+          <p className="mt-8 text-sm text-ink-muted">
+            Fiyat için{" "}
+            <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+              LED ekran fiyatları rehberi
+            </Link>
+            ,{" "}
+            <Link href="/tr/products/dis-mekan-led-ekran/" className="font-semibold text-cyan hover:underline">
+              dış mekân LED ekran
+            </Link>{" "}
+            veya{" "}
+            <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
+              fiyat hesaplayıcı
+            </Link>
+            .
+          </p>
         </div>
       </section>
 

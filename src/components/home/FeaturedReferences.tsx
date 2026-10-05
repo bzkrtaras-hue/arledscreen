@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { ArrowRight, CalendarDays, MapPin, Ruler } from "lucide-react";
 import { getCaseStudies, type CaseStudy } from "@/content/trust";
+import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 import { OptImage } from "@/components/ui/opt-image";
 import { FadeIn } from "@/components/motion/FadeIn";
+
+function caseHref(c: CaseStudy): string {
+  const match = PROJECT_CASE_STUDIES.find((x) => x.refId === c.refId);
+  return match ? `/tr/projelerimiz/${match.slug}/` : "/tr/projelerimiz/#liste";
+}
 
 function Meta({ c }: { c: CaseStudy }) {
   return (
@@ -85,13 +91,17 @@ export function FeaturedReferences({
           ) : null}
           <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 lg:p-10">
             <Tags c={featured} />
-            <h3 className="font-display text-xl font-bold text-ink sm:text-2xl">{featured.title}</h3>
+            <h3 className="font-display text-xl font-bold text-ink sm:text-2xl">
+              <Link href={caseHref(featured)} className="hover:text-cyan">
+                {featured.title}
+              </Link>
+            </h3>
             <Meta c={featured} />
             <Link
-              href={ctaHref}
+              href={caseHref(featured)}
               className="btn-soft mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-navy px-5 text-sm text-white hover:bg-cyan-700 sm:self-start"
             >
-              {ctaLabel} <ArrowRight className="h-4 w-4" aria-hidden />
+              Case study <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
         </FadeIn>
@@ -102,7 +112,11 @@ export function FeaturedReferences({
           {rest.map((c, i) => (
             <FadeIn as="li" key={c.refId} delay={i * 0.1} className="flex flex-col gap-3 rounded-2xl p-5 glass-card">
               <Tags c={c} />
-              <h3 className="font-display text-base font-bold text-ink">{c.title}</h3>
+              <h3 className="font-display text-base font-bold text-ink">
+                <Link href={caseHref(c)} className="hover:text-cyan">
+                  {c.title}
+                </Link>
+              </h3>
               <Meta c={c} />
             </FadeIn>
           ))}
@@ -112,10 +126,10 @@ export function FeaturedReferences({
       {showAllLink ? (
         <div className="mt-8 flex justify-center">
           <Link
-            href="/tr/projelerimiz/#liste"
+            href={ctaHref}
             className="btn-soft inline-flex min-h-11 items-center rounded-full border border-cyan/50 bg-white px-5 text-sm text-cyan hover:bg-cyan-50"
           >
-            Diğer projeleri görün
+            {ctaLabel}
           </Link>
         </div>
       ) : null}

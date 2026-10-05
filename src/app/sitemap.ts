@@ -1,15 +1,23 @@
 import { BLOG_POSTS } from "@/content/blog";
 import type { MetadataRoute } from "next";
-import { locales, type Locale } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/site";
 import { SEO_GUIDE_SLUGS } from "@/content/seo-guides";
 import { PRODUCT_GROUPS } from "@/content/categories";
 import { LED_MODELS, modelPath } from "@/content/models";
 import { SERVICE_REGIONS } from "@/content/service-regions";
+import { COMMERCIAL_PAGES } from "@/content/commercial-pages";
+import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 
 export const dynamic = "force-static";
 
-const routes: {
+/**
+ * Sitemap lists only indexable, substantive URLs.
+ * - TR: full site (products, models, bölgeler, blog, rehber…)
+ * - EN: pages with real EN copy (home, about, hesaplayici, quote, yapay-zeka, rehber)
+ * - Thin /en/products hub, /ar/* and /ru/* are omitted (no false language pairs).
+ */
+
+const TR_CORE: {
   path: string;
   priority: number;
   changeFrequency: MetadataRoute.Sitemap[0]["changeFrequency"];
@@ -23,42 +31,66 @@ const routes: {
   { path: "/quote/", priority: 0.8, changeFrequency: "weekly" },
 ];
 
+/** EN routes that have dedicated English text (not a thin shell). */
+const EN_CORE: {
+  path: string;
+  priority: number;
+  changeFrequency: MetadataRoute.Sitemap[0]["changeFrequency"];
+}[] = [
+  { path: "/", priority: 0.9, changeFrequency: "daily" },
+  { path: "/yapay-zeka/", priority: 0.85, changeFrequency: "weekly" },
+  { path: "/rehber/", priority: 0.75, changeFrequency: "weekly" },
+  { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/hesaplayici/", priority: 0.65, changeFrequency: "weekly" },
+  { path: "/quote/", priority: 0.7, changeFrequency: "weekly" },
+];
+
 function withTrailingSlash(path: string): string {
   if (!path || path === "/") return "/";
   return path.endsWith("/") ? path : `${path}/`;
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Stable lastmod day (UTC) reduces needless crawl churn; force-static export
-  // avoids intermittent edge 500s from runtime generation.
   const now = new Date();
   now.setUTCHours(0, 0, 0, 0);
   const entries: MetadataRoute.Sitemap = [];
-  // TR first: primary market and canonical content language for GEO.
-  const orderedLocales: Locale[] = ["tr", ...locales.filter((l) => l !== "tr")];
-  for (const locale of orderedLocales) {
-    // ar/ru guides mirror the English text and canonicalise to /en/ (not listed).
-    const hasOwnGuides = locale === "tr" || locale === "en";
-    for (const route of routes) {
-      if (!hasOwnGuides && route.path === "/rehber/") continue;
-      const path = withTrailingSlash(route.path);
-      entries.push({
-        url: absoluteUrl(`/${locale}${path === "/" ? "/" : path}`),
-        lastModified: now,
-        changeFrequency: route.changeFrequency,
-        priority: locale === "tr" ? route.priority : Math.max(0.4, (route.priority ?? 0.5) - 0.1),
-      });
-    }
-    for (const slug of hasOwnGuides ? SEO_GUIDE_SLUGS : []) {
-      entries.push({
-        url: absoluteUrl(`/${locale}/rehber/${slug}/`),
-        lastModified: now,
-        changeFrequency: "weekly",
-        priority: locale === "tr" ? 0.85 : 0.7,
-      });
-    }
+
+  for (const route of TR_CORE) {
+    const path = withTrailingSlash(route.path);
+    entries.push({
+      url: absoluteUrl(`/tr${path === "/" ? "/" : path}`),
+      lastModified: now,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    });
   }
-  // Turkish-only pages
+  for (const slug of SEO_GUIDE_SLUGS) {
+    entries.push({
+      url: absoluteUrl(`/tr/rehber/${slug}/`),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    });
+  }
+
+  for (const route of EN_CORE) {
+    const path = withTrailingSlash(route.path);
+    entries.push({
+      url: absoluteUrl(`/en${path === "/" ? "/" : path}`),
+      lastModified: now,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    });
+  }
+  for (const slug of SEO_GUIDE_SLUGS) {
+    entries.push({
+      url: absoluteUrl(`/en/rehber/${slug}/`),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    });
+  }
+
   for (const g of PRODUCT_GROUPS) {
     entries.push({
       url: absoluteUrl(`/tr/products/${g.slug}/`),
@@ -68,26 +100,68 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
   for (const m of LED_MODELS) {
-    entries.push({ url: absoluteUrl(modelPath(m)), lastModified: now, changeFrequency: "weekly", priority: 0.8 });
+    entries.push({
+      url: absoluteUrl(modelPath(m)),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    });
+  }
+  for (const page of COMMERCIAL_PAGES) {
+    entries.push({
+      url: absoluteUrl(`/tr/${page.slug}/`),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: page.cluster === "intent" ? 0.95 : page.cluster === "use" ? 0.88 : 0.86,
+    });
+  }
+  entries.push({
+    url: absoluteUrl("/tr/led-ekran-fiyatlari/"),
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.96,
+  });
+  for (const c of PROJECT_CASE_STUDIES) {
+    entries.push({
+      url: absoluteUrl(`/tr/projelerimiz/${c.slug}/`),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.72,
+    });
   }
   for (const path of [
     "/hizmetler/",
     "/bolgeler/",
     "/projelerimiz/",
+    "/galeri/",
     "/sss/",
     "/nxtionstar/",
-    "/rehber/led-ekran-fiyatlari/",
+    "/about/aras-bozkurt/",
     "/rehber/piksel-araligi-secimi/",
     "/rehber/led-tabela-mi-led-ekran-mi/",
     "/rehber/kiralik-mi-satin-alma/",
-    "/blog/",
-    ...BLOG_POSTS.map((p) => `/blog/${p.slug}/`),
+    "/rehber/gob-vs-smd/",
   ]) {
     entries.push({
       url: absoluteUrl(`/tr${path}`),
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
+    });
+  }
+  // Blog kept as secondary trust content — not the commercial SEO cluster.
+  entries.push({
+    url: absoluteUrl("/tr/blog/"),
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.45,
+  });
+  for (const p of BLOG_POSTS) {
+    entries.push({
+      url: absoluteUrl(`/tr/blog/${p.slug}/`),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.4,
     });
   }
   for (const region of SERVICE_REGIONS) {
