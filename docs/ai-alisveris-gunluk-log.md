@@ -20,6 +20,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 28 | 2026-10-05 | FAQ + LinkCloud gaps (ürün grupları catalog hint) | ✅ |
 | 29 | 2026-10-05 | Regression suite tek komut (`audit:all`) | ✅ |
 | 30 | 2026-10-05 | Ay sonu pano + `smoke:live` (ölçüm 2026-11-04) | ✅ |
+| 31 | 2026-10-05 | Fiyat hub AI sources + Merchant ARD + `_routes` exclude | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -35,6 +36,13 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - [`docs/ai-alisveris-ay-sonu-pano.md`](./ai-alisveris-ay-sonu-pano.md) — site/canlı/Point C/kör test/Merchant ölçüm şablonu
 - `npm run smoke:live` — 2026-10-05: **1/10 PASS** (sitemap); entity/catalog/ard/feed 404 → PR #55 merge şart
 - Kod günleri 16–30 iskeleti tamam; **liderlik skoru** merge + Point C + 2026-11-04 kör tur 2 ile kapanır
+
+## Gün 31 notları
+
+- Fiyat hub FAQ + ShoppingLinkCloud: catalog / entity / merchant TSV
+- `ard.json` + `ai-catalog.json`: Merchant feed discovery entry
+- `_routes.json` exclude: entity/catalog/feeds/well-known/llms (Functions’ın static AI dosyalarına dokunmaması)
+- `_headers` CORS for merchant TSV; layout `<link rel=alternate>` merchant feed
 
 ## Owner P0 (her gün hatırlatma)
 

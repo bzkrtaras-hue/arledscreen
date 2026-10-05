@@ -28,7 +28,8 @@ export function ShoppingLinkCloud({
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">{title}</p>
       <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
         {links.map((l) => {
-          const fileish = /\.(json|txt)$/i.test(l.href) || l.href.startsWith("/.well-known/");
+          const fileish =
+            /\.(json|txt|tsv)$/i.test(l.href) || l.href.startsWith("/.well-known/");
           return (
             <li key={l.href}>
               {fileish ? (

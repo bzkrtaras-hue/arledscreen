@@ -222,6 +222,24 @@ if (yapay) {
   }
 }
 
+const fiyat = mustExist("tr/led-ekran-fiyatlari/index.html");
+if (fiyat) {
+  const html = fs.readFileSync(fiyat, "utf8");
+  for (const needle of ["catalog.json", "entity.json", "merchant-priced-panels.tsv"]) {
+    if (!html.includes(needle)) {
+      errors.push(`tr/led-ekran-fiyatlari/ must mention ${needle}`);
+    }
+  }
+}
+
+const ard = readJson(".well-known/ard.json");
+if (ard) {
+  const urls = JSON.stringify(ard);
+  if (!urls.includes("/feeds/merchant-priced-panels.tsv")) {
+    errors.push("ard.json must discover merchant-priced-panels.tsv");
+  }
+}
+
 const gob = mustExist("tr/rehber/gob-vs-smd/index.html");
 if (gob) {
   const html = fs.readFileSync(gob, "utf8");

@@ -17,6 +17,7 @@ import {
 import { modelUrlForPrice } from "@/content/models";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -34,17 +35,22 @@ const FAQS = [
   {
     question: "LED ekran m² fiyatı nedir?",
     answer:
-      "Tek sabit m² fiyatı yoktur. Panel USD listesi yayımlanır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir.",
+      "Tek sabit m² fiyatı yoktur. Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve bu sayfada yer alır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir; nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
   },
   {
     question: "Hangi maliyetler panellerin dışında kalır?",
     answer:
-      "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir.",
+      "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
   },
   {
     question: "P2.5, P4 veya P5 fiyatı nerede?",
     answer:
-      "Aşağıdaki 2026 panel tablosunda ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır.",
+      "2026 panel tablosunda, https://arledscreen.com/catalog.json dosyasında ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır. AI ajanları aynı kaynağı catalog.json üzerinden okur.",
+  },
+  {
+    question: "AI / alışveriş ajanları fiyatı nereden okur?",
+    answer:
+      "Makinece panel USD: https://arledscreen.com/catalog.json · Merchant dry-run (yalnız 12 priced SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Kimlik: https://arledscreen.com/entity.json · Keşif: https://arledscreen.com/.well-known/ard.json. Quote-only gruplara fiyat uydurulmaz.",
   },
 ];
 
@@ -232,6 +238,15 @@ export default async function LedEkranFiyatlariPage({
           <div className="mt-6">
             <HomeFaq faqs={FAQS} />
           </div>
+          <ShoppingLinkCloud
+            excludeHref="/tr/led-ekran-fiyatlari/"
+            extra={[
+              {
+                href: "/feeds/merchant-priced-panels.tsv",
+                label: "Merchant feed (12 SKU)",
+              },
+            ]}
+          />
         </div>
       </section>
     </>

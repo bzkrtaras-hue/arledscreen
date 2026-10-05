@@ -46,5 +46,5 @@ const routesJson = path.join("out", "_routes.json");
 if (!fs.existsSync(routesJson)) {
   console.warn("postbuild: WARNING out/_routes.json missing — root Function may run on all paths");
 } else {
-  console.log("postbuild: out/_routes.json present (Function scoped to /)");
+  console.log("postbuild: out/_routes.json present (Function scoped to /; AI static paths excluded)");
 }

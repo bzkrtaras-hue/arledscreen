@@ -104,9 +104,10 @@ for (const slug of productDirs) {
   checked += 1;
   auditPage(`products/${slug}`, { minCount: 2, requirePriceHint: true });
 }
+auditPage("led-ekran-fiyatlari", { minCount: 3, requirePriceHint: true });
 
 console.log(
-  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups (+ hub)`,
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + fiyat hub (+ hub)`,
 );
 if (errors.length) {
   console.error("FAIL:");

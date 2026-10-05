@@ -51,6 +51,7 @@ export default function RootLayout({
         <link rel="ard" href="/.well-known/ard.json" />
         <link rel="alternate" type="application/ld+json" href="/entity.json" title="ARLEDSCREEN entity" />
         <link rel="alternate" type="application/ld+json" href="/catalog.json" title="NXTIONSTAR panel catalog" />
+        <link rel="alternate" type="text/tab-separated-values" href="/feeds/merchant-priced-panels.tsv" title="Merchant priced panels (12 SKU)" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
       </head>
       <body className="min-h-screen bg-bg font-sans antialiased">

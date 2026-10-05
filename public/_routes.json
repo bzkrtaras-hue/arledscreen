@@ -1,5 +1,19 @@
 {
   "version": 1,
   "include": ["/"],
-  "exclude": []
+  "exclude": [
+    "/entity.json",
+    "/catalog.json",
+    "/feeds/*",
+    "/.well-known/*",
+    "/llms.txt",
+    "/llms-full.txt",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/tr/*",
+    "/en/*",
+    "/ar/*",
+    "/ru/*",
+    "/_next/*"
+  ]
 }

@@ -123,6 +123,22 @@
       "tags": ["AI", "LED", "shopping", "agents"],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T18:53:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:shopping:merchant-feed",
+      "displayName": "Google Merchant dry-run feed (12 priced panels)",
+      "type": "text/tab-separated-values",
+      "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+      "description": "Yalnızca PANEL_PRICES’taki 12 priced SKU. Quote-only (şeffaf/esnek/poster/kiralık/kontrol) yok. catalog.json ile fiyat parity; uydurma TL paket yok.",
+      "representativeQueries": [
+        "Google Merchant LED panel feed ARLEDSCREEN",
+        "NXTIONSTAR priced SKU listesi",
+        "P2.5 iç mekân LED Merchant price"
+      ],
+      "tags": ["merchant", "shopping", "feed", "TSV", "priced-only"],
+      "capabilities": ["MerchantFeedDownload", "PricedSkuList"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-05T19:50:00Z"
     }
   ]
 }
