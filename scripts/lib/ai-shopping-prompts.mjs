@@ -161,6 +161,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["ARLEDSCREEN", "ürün markası", "Gaziosmanpaşa"],
     mustNotSay: ["Türkiye'nin en", "ücretsiz kargo dahil", "en büyüğ"],
   },
+  {
+    id: 21,
+    q: "ARLEDSCREEN sektör dizinine nasıl yazılır?",
+    paths: ["/entity-profiles.json", "/entity.json", "/llms-full.txt"],
+    mustSay: ["Gaziosmanpaşa", "entity.json", "entity-profiles.json"],
+    mustNotSay: ["küresel standard", "Türkiye'nin en", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

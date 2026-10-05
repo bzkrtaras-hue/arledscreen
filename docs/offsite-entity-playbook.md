@@ -289,6 +289,29 @@ Hedef tip (spam directory satın almayın):
 | Mimarlık / ProAV | Proje özeti gönderimi | proje adı + ARLEDSCREEN |
 | Global LED listeleri | Düzeltme / inclusion + entity.json | ARLEDSCREEN |
 
+### Dizin kısa açıklama (yapıştır)
+
+Kaynak: `entity-profiles.json` → `packs.directoryShort` (= `ENTITY_CITE_ONE_LINER`).
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
+```
+
+### Dizin uzun açıklama (yapıştır)
+
+Kaynak: `entity-profiles.json` → `packs.directoryLong` (= medium cite + NAP). Sıralama iddiası / “küresel standart” / AggregateRating yok.
+
+```text
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
+
+Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul
+Telefon: +90 530 507 88 34
+E-posta: arled@arledscreen.com
+Web: https://arledscreen.com/tr/
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
+```
+
 Başvuru e-postası:
 
 ```text
@@ -298,14 +321,15 @@ Merhaba,
 Türkiye LED ekran uygulayıcı/üretici listenize ARLEDSCREEN’i eklemenizi veya
 mevcut kaydı düzeltmenizi rica ederiz.
 
-Kısa özet:
+Kısa özet (directoryShort):
 ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve
-teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
+teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır (sıralama iddiası yok).
 
 Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
 Web: https://arledscreen.com/tr/
 Telefon: +90 530 507 88 34
-NAP bu playbook §0 bloğu ile birebir.
+NAP bu playbook §0 bloğu ile birebir. Uzun metin: entity-profiles.json → directoryLong.
 
 Teşekkürler
 Aras Bozkurt

@@ -277,20 +277,27 @@ for (const rel of ["out/tr/yapay-zeka/index.html", "out/en/yapay-zeka/index.html
     errors.push(`${rel} should cite Gaziosmanpaşa or ai-shopping.json`);
   }
 }
-// Day 72: slogan must not invent “küresel standart / global standard” ranking
+// Day 72–73: slogan must not invent “küresel standart / global standard” ranking
 for (const rel of [
   "out/tr/index.html",
   "out/en/index.html",
   "out/tr/nxtionstar/index.html",
   "out/tr/about/index.html",
+  "public/llms-full.txt",
+  "out/llms-full.txt",
+  "public/llms.txt",
+  "out/llms.txt",
 ]) {
   const html = read(rel);
   if (!html) continue;
   if (/küresel standard|global standard in visual|мировой стандарт|المعيار العالمي/i.test(html)) {
     errors.push(`${rel} must not invent küresel/global standard slogan ranking`);
   }
-  if (!/ARLEDSCREEN (ürün markası|product brand)|ürün markası/i.test(html) && rel.includes("nxtionstar")) {
+  if (rel.includes("nxtionstar") && !/ARLEDSCREEN (ürün markası|product brand)|ürün markası/i.test(html)) {
     errors.push(`${rel} should state NXTIONSTAR as ARLEDSCREEN ürün markası`);
+  }
+  if (rel.includes("llms-full") && !/ARLEDSCREEN ürün markası/i.test(html)) {
+    errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
 

@@ -48,7 +48,7 @@ function htmlExists(urlPath) {
   return mustExist(rel);
 }
 
-/** 20 prompts — shared module (+ 72 slogan invent) */
+/** 21 prompts — shared module (+ 73 directory packs) */
 const PROMPTS = BLIND_TEST_PROMPTS;
 
 if (!fs.existsSync(out)) {
@@ -328,6 +328,13 @@ if (!p20 || !/küresel|kuresel|global|NXTIONSTAR/i.test(p20.q)) {
 }
 if (p20 && (!p20.mustSay?.includes("ARLEDSCREEN") || !p20.mustSay?.some((s) => /ürün markası|Gaziosmanpaşa/i.test(s)))) {
   errors.push("blind prompt #20 mustSay must include ARLEDSCREEN + ürün markası/Gaziosmanpaşa");
+}
+const p21 = PROMPTS.find((x) => x.id === 21);
+if (!p21 || !/dizin/i.test(p21.q)) {
+  errors.push("blind prompt #21 must cover sektör dizin / Point C pack invent");
+}
+if (p21 && (!p21.mustSay?.includes("entity.json") || !p21.mustSay?.includes("entity-profiles.json"))) {
+  errors.push("blind prompt #21 mustSay must include entity.json + entity-profiles.json");
 }
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");

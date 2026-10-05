@@ -131,6 +131,7 @@ export const CHECKS = [
       "MerchantReturnNotPermitted",
       "huidu-kontrol-kartlari",
       "kontrol",
+      "ARLEDSCREEN ürün markası",
     ],
     cors: true,
     contentType: "text/plain",

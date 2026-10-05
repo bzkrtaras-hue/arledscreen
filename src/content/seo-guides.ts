@@ -693,7 +693,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "ARLEDSCREEN outdoor delivery",
           body:
-            "After measurement or site survey we define cabinet layout, steel interface, CAT6A/fiber runs and maintenance access. CMS/AI-scheduled DOOH content includes sender/receiver fit. Calibration and support stay on the same desk.",
+            "After measurement or site survey we define cabinet layout, steel interface, CAT6A/fiber runs and maintenance access. CMS/AI-scheduled DOOH content includes sender/receiver fit. Calibration and support stay with the Gaziosmanpaşa team through the written quote.",
         },
       ],
       faqs: [
@@ -824,7 +824,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Cross-discipline delivery pack",
           body:
-            "Quotes include preliminary BOM, power outline, signal diagram and install notes — one desk coordinating GC, electrical and AV from Gaziosmanpaşa.",
+            "Quotes include preliminary BOM, power outline, signal diagram and install notes — one Gaziosmanpaşa contact coordinating GC, electrical and AV (written quote; no invented list SKU).",
         },
       ],
       faqs: [

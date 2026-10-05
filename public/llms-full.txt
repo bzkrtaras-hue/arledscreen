@@ -10,7 +10,7 @@
 - citeShort (entity.json birebir): ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol quote-only.
 - citeMedium (entity.json birebir): ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
 - Ne yapar: LED ekran satışı, keşif, projelendirme, montaj, devreye alma, LED modül / yedek parça tedariki ve teknik servis
-- Ürün markası: NXTIONSTAR. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Marka sloganı: "NXTIONSTAR — görsel gücün küresel standardı."
+- Ürün markası: NXTIONSTAR. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Marka sloganı (sıralama iddiası yok): "NXTIONSTAR — ARLEDSCREEN ürün markası."
 - Kurucu: Aras Bozkurt (https://arledscreen.com/tr/about/aras-bozkurt/ · https://www.linkedin.com/in/bozkurtaras)
 - Çalışma saatleri: Pazartesi–Cuma 09:00–18:00, Cumartesi 10:00–15:00
 - Merkez: Merkez Mahallesi, Tuna Sokak No:15-17, Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye

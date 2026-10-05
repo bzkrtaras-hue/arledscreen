@@ -62,6 +62,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 70 | 2026-10-05 | seo-guides engineering-desk invent kill · rehber FAQ · blind #18 · IndexNow EN rehber · YT playbook | ✅ |
 | 71 | 2026-10-05 | AI-ready invent kill · yapay-zeka EN/TR · AR/RU meta honesty · blind #19 · smoke EN YZ | ✅ |
 | 72 | 2026-10-05 | Slogan küresel-standart invent kill · Enterprise/Kurumsal masa → yazılı teklif · blind #20 | ✅ |
+| 73 | 2026-10-05 | llms-full slogan residual · directory paste packs · blind #21 · seo-guides desk residual | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -391,3 +392,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `NXTIONSTAR_SLOGAN_TR/EN` constants in `entity.ts`; ENTITY_FAQS honesty
 - Blind #20 «NXTIONSTAR küresel standart mı?» — skor /60
 - smoke nxtionstar · cite-parity slogan guard
+
+## Gün 73 notları
+
+- `llms-full.txt`: residual “küresel standardı” slogan → ARLEDSCREEN ürün markası
+- Playbook §4: **directoryShort / directoryLong** paste packs (Point C dizin)
+- seo-guides outdoor/mimari: “same/one desk” residual → Gaziosmanpaşa + yazılı teklif
+- Blind #21 «sektör dizinine nasıl yazılır?» — skor /63
+- cite-parity + smoke llms-full slogan needle
