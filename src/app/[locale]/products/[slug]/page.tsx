@@ -24,8 +24,6 @@ import { displayCompany } from "@/content/trust";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { whatsappHref } from "@/lib/whatsapp";
-import { CitationCapsule } from "@/components/seo/CitationCapsule";
-import { productGroupCitation } from "@/content/citation-capsules";
 
 export const dynamicParams = false;
 
@@ -244,17 +242,6 @@ export default async function ProductGroupPage({ params }: PageProps) {
           </div>
         </div>
       </section>
-
-      <CitationCapsule
-        {...productGroupCitation({
-          name: g.name,
-          href: productGroupPath(g),
-          pitchHint: g.lead.endsWith(".") ? g.lead : `${g.lead}.`,
-          priceBand: prices.length
-            ? `${fmtUsd(Math.min(...prices.map((x) => x.usd)))} – ${fmtUsd(Math.max(...prices.map((x) => x.usd)))} USD/panel`
-            : undefined,
-        })}
-      />
 
       {/* Options / pricing */}
       <section id="secenekler" className="scroll-mt-28 bg-band py-14 md:py-16">

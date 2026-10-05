@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
-import { CitationCapsule } from "@/components/seo/CitationCapsule";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import {
   SERVICE_REGIONS,
@@ -94,22 +93,6 @@ export default async function BolgelerHubPage({
           </div>
         </div>
       </section>
-
-      <CitationCapsule
-        title="ARLEDSCREEN hangi bölgelerde LED ekran kuruyor?"
-        answer={`ARLEDSCREEN merkezi İstanbul Gaziosmanpaşa'dadır. Hizmet Türkiye geneli; tamamlanan iş listesi kayıtlı illerde yer alır (Tem 2025 – Tem 2026: ${summary.provinceCount} il). Her proje keşif ve yazılı teklifle planlanır.`}
-        proofs={[
-          { label: `Kayıtlı il sayısı: ${summary.provinceCount}` },
-          { label: "Merkez: Gaziosmanpaşa / İstanbul" },
-          { label: "Yalnızca kayıtlı il sayfaları" },
-        ]}
-        sources={[
-          { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
-          { href: "/tr/projelerimiz/", label: "Projeler" },
-          { href: "/llms.txt", label: "llms.txt" },
-        ]}
-        dontSay={["81 ilde bitmiş iş", "Türkiye'nin her noktasında ofis", "en çok tercih edilen marka"]}
-      />
 
       <Section eyebrow="İller" title="Kayıtlı hizmet illeri" className="bg-surface/60 prose-seo">
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
