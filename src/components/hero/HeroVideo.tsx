@@ -264,25 +264,25 @@ export function HeroVideo({
               {brand}
             </m.p>
             <m.div
-              className="liquid-glass-hero-copy mt-4 px-4 py-4 sm:mt-5 sm:px-5 sm:py-5"
+              className="liquid-glass-hero-copy mt-4 px-4 py-4 sm:mt-5 sm:px-6 sm:py-5"
               initial={reduce ? false : { opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease, delay: 0.34 }}
             >
-              <h1 className="text-balance font-display text-[clamp(1.25rem,1rem+1.4vw,1.85rem)] font-bold leading-[1.2] tracking-[-0.02em] text-white">
+              <h1 className="text-balance font-display text-[clamp(1.2rem,1rem+1.2vw,1.75rem)] font-bold leading-[1.22] tracking-[-0.02em]">
                 {headline}
               </h1>
-              <p className="mt-3 max-w-[58ch] text-pretty text-[15px] leading-[1.65] text-white/92 sm:text-base sm:leading-[1.7]">
+              <p className="hero-copy-lead mt-3 max-w-[58ch] text-pretty text-[15px] font-medium leading-[1.65] sm:text-base sm:leading-[1.7]">
                 {subcopy}
               </p>
               {points?.length ? (
-                <ul className="mt-4 space-y-2.5 border-t border-white/15 pt-4">
+                <ul className="mt-4 space-y-3 border-t border-white/20 pt-4">
                   {points.map((point) => (
-                    <li key={point.title} className="flex gap-2.5 text-[14px] leading-[1.55] text-white/90 sm:text-[15px] sm:leading-[1.6]">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7EB3F0]" aria-hidden />
+                    <li key={point.title} className="flex gap-2.5 text-[14px] leading-[1.55] sm:text-[15px] sm:leading-[1.6]">
+                      <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#8EC0F5]" aria-hidden />
                       <span>
-                        <span className="font-semibold text-white">{point.title}: </span>
-                        {point.body}
+                        <span className="hero-copy-point-title font-semibold">{point.title}: </span>
+                        <span className="hero-copy-point-body">{point.body}</span>
                       </span>
                     </li>
                   ))}
@@ -290,7 +290,7 @@ export function HeroVideo({
               ) : null}
             </m.div>
             <m.div
-              className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:gap-3"
+              className="mt-5 flex flex-col gap-2.5 sm:mt-6 sm:flex-row sm:gap-3"
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease, delay: 0.48 }}
@@ -303,7 +303,7 @@ export function HeroVideo({
               </Link>
               <Link
                 href={secondaryHref}
-                className="btn-soft inline-flex min-h-12 items-center justify-center rounded-xl border-[1.5px] border-white/70 bg-transparent px-7 text-[15px] font-semibold text-white transition duration-500 hover:bg-white/10 md:min-h-[52px] md:text-base"
+                className="btn-soft inline-flex min-h-12 items-center justify-center rounded-xl border-[1.5px] border-white/80 bg-white/10 px-7 text-[15px] font-semibold text-white backdrop-blur-sm transition duration-500 hover:bg-white/18 md:min-h-[52px] md:text-base"
               >
                 {secondaryLabel}
               </Link>
