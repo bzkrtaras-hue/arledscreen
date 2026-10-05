@@ -159,10 +159,10 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         </Link>
 
         <nav
-          className="liquid-glass-shell liquid-glass-shell--nav ml-auto hidden min-w-0 flex-1 justify-center px-2 py-1.5 xl:flex"
+          className="ml-auto hidden min-w-0 flex-1 justify-center xl:flex"
           aria-label={tr ? "Ana menü" : "Primary"}
         >
-          <ul className="flex w-full items-center justify-center gap-0.5">
+          <ul className="flex w-full flex-wrap items-center justify-center gap-1.5">
             {links.map((link) =>
               link.dropdown && (link.dropdown === "products" ? groups.length : guides.length) ? (
                 <li
@@ -178,8 +178,8 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     aria-current={isActive(link.href) ? "page" : undefined}
                     onFocus={() => openDrop(link.dropdown!)}
                     className={cn(
-                      "nav-glass-link flex min-h-12 items-center gap-1 whitespace-nowrap rounded-full px-3 text-[15px] font-bold text-[#2a3340] hover:text-cyan xl:px-3.5",
-                      (drop === link.dropdown || isActive(link.href)) && "text-cyan",
+                      "liquid-glass-btn liquid-glass-btn--nav",
+                      (drop === link.dropdown || isActive(link.href)) && "is-active",
                     )}
                   >
                     {link.label}
@@ -335,8 +335,8 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={cn(
-                      "nav-glass-link flex min-h-12 items-center whitespace-nowrap rounded-full px-3 text-[15px] font-bold text-[#2a3340] hover:text-cyan xl:px-3.5",
-                      isActive(link.href) && "text-cyan",
+                      "liquid-glass-btn liquid-glass-btn--nav",
+                      isActive(link.href) && "is-active",
                     )}
                   >
                     {link.label}
