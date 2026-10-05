@@ -15,7 +15,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 23 | 2026-10-05 | Sitemap completeness (`audit:sitemap`) | ✅ |
 | 24 | 2026-10-05 | Bing/AI bot Allow + Host (`audit:robots`) | ✅ |
 | 25 | 2026-10-05 | Kör test protokolü + `audit:blind-test` | ✅ |
-| 26 | — | (plan: llms/entity cite parity smoke) | ⏳ |
+| 26 | 2026-10-05 | llms/entity cite parity (`audit:cite-parity`) | ✅ |
 | 27 | — | (plan: Merchant feed dry-run / priced panels) | ⏳ |
 | 28 | — | (plan: FAQ + commercial LinkCloud gaps) | ⏳ |
 | 29 | — | (plan: regression suite tek komut özeti) | ⏳ |
@@ -33,6 +33,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 12 prompt + skor kartı (0–3)
 - `scripts/audit-blind-test.mjs` — site readiness (entity NAP, P2.5=32.18, quote-only, llms intent)
 - Canlı tur sahibi işi; deploy sonrası skor hedefi tur1 ≥18/36
+
+## Gün 26 notları
+
+- [`docs/cite-parity.md`](./cite-parity.md) — ENTITY_CITE_* ↔ entity.json ↔ llms ↔ about
+- `llms.txt` / `llms-full.txt` verbatim citeOneLiner/Short/Medium
+- `seo.ts` about TR/EN cite import; `audit:cite-parity` postbuild
 
 ## Owner P0 (her gün hatırlatma)
 

@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { ENTITY_CITE_MEDIUM, ENTITY_CITE_SHORT, ENTITY_CITE_SHORT_EN } from "@/lib/entity";
 
 export type SeoPageKey =
   | "home"
@@ -53,12 +54,10 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     },
     about: {
       title: "Hakkımızda | ARLEDSCREEN",
-      description:
-        "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
+      description: ENTITY_CITE_SHORT,
       keywords: ["ARLEDSCREEN", "LED ekran firması İstanbul", "LED ekran montaj", "NXTIONSTAR"],
       h1: "ARLEDSCREEN hakkında",
-      intro:
-        "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
+      intro: ENTITY_CITE_MEDIUM,
     },
     hesaplayici: {
       title: "LED Ekran Fiyat Hesaplayıcı | Malzeme & Maliyet | ARLEDSCREEN",
@@ -155,8 +154,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     },
     about: {
       title: "About ARLEDSCREEN | LED Engineering Partner",
-      description:
-        "ARLEDSCREEN in Gaziosmanpaşa, Istanbul delivers LED engineering: site survey, installation, calibration and after-sales support for enterprise LED walls across Turkey.",
+      description: ENTITY_CITE_SHORT_EN,
       keywords: [
         "ARLEDSCREEN",
         "LED display Turkey",
@@ -164,8 +162,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "digital signage",
       ],
       h1: "ARLEDSCREEN — LED engineering partner",
-      intro:
-        "Our role is clear: we support integrators, agencies and facility owners with engineering-led LED wall projects across Turkey. NXTIONSTAR is our product sub-brand.",
+      intro: ENTITY_CITE_SHORT_EN,
     },
     hesaplayici: {
       title: "LED Display Price Calculator | Materials & Cost | ARLEDSCREEN",
