@@ -396,7 +396,9 @@ export default async function ProductGroupPage({ params }: PageProps) {
             <div id="teknik" className="mt-12 scroll-mt-28">
               <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">Model karşılaştırma tablosu</h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
-                {g.name} grubundaki NXTIONSTAR modüllerinin teknik değerleri. Model adına dokunarak ayrıntılı sayfaya geçebilirsiniz; Tabloda yalnızca modellerin çoğunda doğrulanmış değeri olan özellikler yer alır; tüm değerler model sayfalarında listelenir.
+                {isControlGroup
+                  ? `${g.name} modellerinin üretici föylerinden derlenen teknik değerleri. Model adına dokunarak ayrıntılı sayfaya geçebilirsiniz; tabloda yalnızca modellerin çoğunda değeri olan özellikler yer alır.`
+                  : `${g.name} grubundaki NXTIONSTAR modüllerinin teknik değerleri. Model adına dokunarak ayrıntılı sayfaya geçebilirsiniz; tabloda yalnızca modellerin çoğunda doğrulanmış değeri olan özellikler yer alır; tüm değerler model sayfalarında listelenir.`}
               </p>
               <div className="mt-5 overflow-x-auto rounded-2xl glass-card">
                 <table className="w-full min-w-[640px] text-left text-sm">
