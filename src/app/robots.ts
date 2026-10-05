@@ -31,10 +31,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/tr/basin/", "/tr/basin"],
       },
       ...AI_BOTS.map((userAgent) => ({
         userAgent,
         allow: "/" as const,
+        disallow: ["/tr/basin/", "/tr/basin"],
       })),
     ],
     host: "https://arledscreen.com",
