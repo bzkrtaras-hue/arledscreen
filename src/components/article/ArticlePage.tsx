@@ -8,6 +8,20 @@ import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { ARTICLE_LINKS } from "@/content/article-links";
 
+/** Shared AI-shopping cites for markdown rehber articles (Day 58). */
+const ARTICLE_SHOPPING_FAQS = [
+  {
+    question: "Bu rehberdeki LED ekran panel fiyatını nereden okumalıyım?",
+    answer:
+      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç). Yaklaşık m²: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir; uydurma TL paket yoktur.",
+  },
+  {
+    question: "AI ajanları ARLEDSCREEN fiyat ve kimliğini nereden doğrular?",
+    answer:
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik/NAP: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel katalog: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Özet: https://arledscreen.com/llms.txt. İade/garanti teklifte; ücretsiz kargo yok.",
+  },
+];
+
 export function articleMetadata(slug: (typeof ARTICLE_SLUGS)[number]): Metadata {
   const a = getArticle(slug);
   return buildTrOnlyMetadata({
@@ -36,6 +50,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
     publisher: { "@id": `${SITE_URL}/#organization` },
     image: absoluteUrl("/og/arledscreen-og.jpg"),
     sameAs: [
+      absoluteUrl("/ai-shopping.json"),
       absoluteUrl("/entity.json"),
       absoluteUrl("/catalog.json"),
       absoluteUrl("/.well-known/ard.json"),
@@ -43,6 +58,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
     ],
   };
   const others = ARTICLE_LINKS.filter((l) => !l.href.includes(`/${slug}/`));
+  const faqs = [...(a.faqs || []), ...ARTICLE_SHOPPING_FAQS];
   return (
     <>
       <BreadcrumbJsonLd
@@ -52,7 +68,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
           { name: a.h1, item: url },
         ]}
       />
-      {a.faqs.length ? <FaqJsonLd faqs={a.faqs} /> : null}
+      <FaqJsonLd faqs={faqs} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <article className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">

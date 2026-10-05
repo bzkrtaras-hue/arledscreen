@@ -1,10 +1,10 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-05 (Gün 56: prompt kaynağı tekilleştirildi)  
+Son güncelleme: 2026-10-05 (Gün 58: mustSay honesty + FAQ ai-shopping wave 2)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
 Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 12 prompt’u çalıştırır.
 
-**Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
+**Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
 ## Amaç
 
@@ -22,20 +22,20 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 
 ## 12 prompt (alışveriş + varlık)
 
-| # | Prompt (TR) | Kanonik kaynak | Must-say | Must-not-say |
+| # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
-| 1 | ARLEDSCREEN kimdir? | `/entity.json` · `/tr/about/` | Gaziosmanpaşa, NXTIONSTAR markası | Alman ARLED / NEXTSTAR TV |
-| 2 | LED ekran panel fiyatları 2026 | `/catalog.json` · `/tr/led-ekran-fiyatlari/` | USD panel, KDV hariç, 12 panel | Uydurma TL paket |
-| 3 | P2.5 iç mekan LED ekran paneli kaç USD? | catalog `p2-5-ic` | **32,18 USD** | Sabit m² TL |
-| 4 | Dış mekan LED ekran fiyat bandı | catalog groupAggregateOffers | low–high USD | Quote-only’ye fiyat uydurma |
-| 5 | LED ekran m² maliyeti nasıl hesaplanır? | `/tr/hesaplayici/` | formül + yazılı teklif | “stokta paket hazır” |
-| 6 | AI ajanları ARLEDSCREEN fiyatını nereden okur? | `/ai-shopping.json` · `/tr/yapay-zeka/` · ard | **ai-shopping önce** (pricedPanels+agentRules) · entity/catalog | Sadece blog |
-| 7 | GOB mi SMD mi? | `/tr/rehber/gob-vs-smd/` | karar kriterleri + GOB USD tablo | Sahte sertifika |
-| 8 | LED tabela mı LED ekran mı? | `/tr/rehber/led-tabela-mi-led-ekran-mi/` | dijital ≠ LED | Eşanlamlı ezme |
-| 9 | Kiralık LED ekran fiyatı? | `/tr/products/kiralik-led-ekran/` · quote | list yok → teklif | Sahte günlük TL |
-| 10 | Şeffaf / transparan LED fiyatı? | `/tr/products/seffaf-led-ekran/` · transparan | list yok → teklif | Merchant’a ekleme |
-| 11 | İstanbul LED ekran firması telefon? | entity NAP | **+90 530 507 88 34** | Yanlış ilçe |
-| 12 | NXTIONSTAR nedir? | `/tr/nxtionstar/` · entity | ARLEDSCREEN markası, TR tek satış | Distribütör / yiyistar |
+| 1 | ARLEDSCREEN kimdir? | `/entity.json` · `/tr/about/` | Gaziosmanpaşa, NXTIONSTAR | Alman ARLED / NEXTSTAR TV |
+| 2 | LED ekran panel fiyatları 2026 | `/catalog.json` · `/tr/led-ekran-fiyatlari/` | USD, KDV, **ücretsiz kargo yok** | ücretsiz kargo dahil / TL paket |
+| 3 | P2.5 iç mekan LED ekran paneli kaç USD? | catalog `p2-5-ic` | **32.18**, ücretsiz kargo yok | ücretsiz kargo dahil |
+| 4 | Dış mekan LED ekran fiyat bandı | catalog groupAggregateOffers | USD, ücretsiz kargo yok | ücretsiz kargo dahil |
+| 5 | LED ekran m² maliyeti nasıl hesaplanır? | `/tr/hesaplayici/` | yazılı teklif, ücretsiz kargo yok | “stokta paket hazır” |
+| 6 | AI ajanları ARLEDSCREEN fiyatını nereden okur? | `/ai-shopping.json` · `/tr/yapay-zeka/` · ard | **ai-shopping.json** · pricedPanels · agentRules · ücretsiz kargo yok · quote-and-contract | Sadece blog |
+| 7 | GOB mi SMD mi? | `/tr/rehber/gob-vs-smd/` | GOB + catalog.json | Sahte sertifika |
+| 8 | LED tabela mı LED ekran mı? | `/tr/rehber/led-tabela-mi-led-ekran-mi/` | LED ekran | Eşanlamlı ezme |
+| 9 | Kiralık LED ekran fiyatı? | `/tr/products/kiralik-led-ekran/` · quote | teklif + **ai-shopping.json** | günlük TL / ücretsiz kargo dahil |
+| 10 | Şeffaf / transparan LED fiyatı? | `/tr/products/seffaf-led-ekran/` · transparan | teklif + **ai-shopping.json** | ücretsiz kargo dahil |
+| 11 | İstanbul LED ekran firması telefon? | entity NAP | **530 507 88 34**, Gaziosmanpaşa | Yanlış ilçe |
+| 12 | NXTIONSTAR nedir? | `/tr/nxtionstar/` · entity | ARLEDSCREEN, NXTIONSTAR | Distribütör / NEXTSTAR |
 
 ## Canlı skor kartı (prompt başına 0–3)
 

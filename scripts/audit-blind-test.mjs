@@ -275,12 +275,32 @@ if (gob) {
   }
 }
 
+// Day 58: prompt honesty mustSay (ücretsiz kargo yok / teklif / ai-shopping) must be present on price intents
+for (const id of [2, 3, 4, 5, 6]) {
+  const p = PROMPTS.find((x) => x.id === id);
+  if (!p?.mustSay?.some((s) => /ücretsiz kargo yok|quote-and-contract/i.test(s))) {
+    errors.push(`blind prompt #${id} mustSay must include ücretsiz kargo yok or quote-and-contract`);
+  }
+}
+for (const id of [9, 10]) {
+  const p = PROMPTS.find((x) => x.id === id);
+  if (!p?.mustSay?.includes("ai-shopping.json") || !p?.mustSay?.includes("teklif")) {
+    errors.push(`blind prompt #${id} mustSay must include teklif + ai-shopping.json`);
+  }
+}
+if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
+  errors.push("every blind prompt must declare non-empty mustSay");
+}
+
 // Day 56: docs/ai-shopping-blind-test.md must not drift from shared prompts module
 const blindDoc = path.join(root, "docs/ai-shopping-blind-test.md");
 if (fs.existsSync(blindDoc)) {
   const doc = fs.readFileSync(blindDoc, "utf8");
   if (!doc.includes("scripts/lib/ai-shopping-prompts.mjs")) {
     errors.push("docs/ai-shopping-blind-test.md must cite scripts/lib/ai-shopping-prompts.mjs as source of truth");
+  }
+  if (!doc.includes("ücretsiz kargo yok") || !doc.includes("mustSay")) {
+    errors.push("docs/ai-shopping-blind-test.md must document mustSay honesty (ücretsiz kargo yok)");
   }
   for (const p of PROMPTS) {
     if (!doc.includes(p.q)) {

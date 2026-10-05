@@ -47,6 +47,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 55 | 2026-10-05 | ARD→ai-catalog sync · shared prompts · FAQ holes · Footer EN · point-c --check · PR CI | ✅ |
 | 56 | 2026-10-05 | smoke:local / verify:premerge · FAQ ai-shopping holes · IndexNow URL complete · Org Quote CTA · blind-test doc parity | ✅ |
 | 57 | 2026-10-05 | Offer hasMerchantReturnPolicy · Merchant iade honesty · sitemap ai-catalog · audit/smoke/blind-test guards | ✅ |
+| 58 | 2026-10-05 | FAQ ai-shopping wave 2 (quote-only/commercial/founder/projeler/bolgeler/articles) · blind mustSay honesty | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -265,3 +266,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Merchant TSV description iade honesty + audit guard
 - Sitemap + audit: `/.well-known/ai-catalog.json` (IndexNow parity)
 - Guards: audit:offers · audit:blind-test · audit:merchant-feed · smoke catalog/ai-shopping mustInclude
+
+## Gün 58 notları
+
+- FAQ `ai-shopping.json` wave 2: quote-only product groups · montaj/kiralama/servis/totem · founder · projeler · bölgeler hub+iller · ArticlePage rehber articles
+- Blind-test `mustSay` honesty (#2–#6 ücretsiz kargo yok / quote-and-contract; #9–#10 teklif+ai-shopping) + audit guard
+- `audit:faq` requireAiShopping genişletildi (product groups, commercial, regions, articles)

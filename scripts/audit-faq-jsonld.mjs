@@ -97,12 +97,12 @@ function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShoppi
 let checked = 0;
 for (const slug of commercialSlugs) {
   checked += 1;
-  auditPage(slug, { minCount: 2, requirePriceHint: true });
+  auditPage(slug, { minCount: 2, requirePriceHint: true, requireAiShopping: true });
 }
-auditPage("bolgeler", { minCount: 3, requirePriceHint: true });
+auditPage("bolgeler", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 for (const slug of regionDirs) {
   checked += 1;
-  auditPage(`bolgeler/${slug}`, { minCount: 3, requirePriceHint: true });
+  auditPage(`bolgeler/${slug}`, { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 }
 
 const productDirs = fs
@@ -111,7 +111,7 @@ const productDirs = fs
   .map((d) => d.name);
 for (const slug of productDirs) {
   checked += 1;
-  auditPage(`products/${slug}`, { minCount: 2, requirePriceHint: true });
+  auditPage(`products/${slug}`, { minCount: 2, requirePriceHint: true, requireAiShopping: true });
 }
 auditPage("led-ekran-fiyatlari", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage("hesaplayici", { minCount: 2, requirePriceHint: true });
@@ -119,17 +119,19 @@ auditPage("quote", { minCount: 2, requirePriceHint: true, requireAiShopping: tru
 auditPage("about", { minCount: 4, requirePriceHint: true, requireAiShopping: true });
 auditPage("nxtionstar", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage("products", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
-auditPage("about/aras-bozkurt", { minCount: 3, requirePriceHint: true });
+auditPage("about/aras-bozkurt", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage("yapay-zeka", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage("sss", { minCount: 4, requirePriceHint: true, requireAiShopping: true });
 auditPage("hizmetler", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage(".", { minCount: 4, requirePriceHint: true, requireAiShopping: true }); // TR home
 auditPage("rehber", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
-auditPage("projelerimiz", { minCount: 3, requirePriceHint: true });
+auditPage("projelerimiz", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage("blog", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
-auditPage("rehber/piksel-araligi-secimi", { minCount: 2, requirePriceHint: true });
-auditPage("rehber/kiralik-mi-satin-alma", { minCount: 2, requirePriceHint: true });
-
+auditPage("rehber/piksel-araligi-secimi", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
+auditPage("rehber/kiralik-mi-satin-alma", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
+auditPage("rehber/gob-vs-smd", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
+auditPage("rehber/led-tabela-mi-led-ekran-mi", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
+auditPage("rehber/led-ekran-fiyatlari", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
 const seoGuideSrc = fs.readFileSync(path.join(root, "src/content/seo-guides.ts"), "utf8");
 const seoGuideBlock = seoGuideSrc.match(/export const SEO_GUIDE_SLUGS = \[([\s\S]*?)\] as const/);
 const seoGuideSlugs = seoGuideBlock

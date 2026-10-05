@@ -45,7 +45,7 @@ const FAQS = [
   {
     question: "Bölgesel LED ekran fiyatı nereden okunur?",
     answer:
-      "Sabit il/m² fiyatı yoktur. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Nihai tutar keşif sonrası yazılı teklifle kesinleşir. Kimlik: https://arledscreen.com/entity.json.",
+      "Sabit il/m² fiyatı yoktur. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Tek fetch: https://arledscreen.com/ai-shopping.json. Nihai tutar keşif sonrası yazılı teklifle kesinleşir. Kimlik: https://arledscreen.com/entity.json.",
   },
 ];
 

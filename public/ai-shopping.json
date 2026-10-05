@@ -308,6 +308,14 @@
       "urls": [
         "https://arledscreen.com/entity.json",
         "https://arledscreen.com/tr/about/"
+      ],
+      "mustSay": [
+        "Gaziosmanpaşa",
+        "NXTIONSTAR"
+      ],
+      "mustNotSay": [
+        "ARLED Solutions",
+        "NEXTSTAR"
       ]
     },
     {
@@ -316,6 +324,15 @@
       "urls": [
         "https://arledscreen.com/catalog.json",
         "https://arledscreen.com/tr/led-ekran-fiyatlari/"
+      ],
+      "mustSay": [
+        "USD",
+        "KDV",
+        "ücretsiz kargo yok"
+      ],
+      "mustNotSay": [
+        "ücretsiz kargo dahil",
+        "free shipping"
       ]
     },
     {
@@ -324,6 +341,13 @@
       "urls": [
         "https://arledscreen.com/catalog.json",
         "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/"
+      ],
+      "mustSay": [
+        "32.18",
+        "ücretsiz kargo yok"
+      ],
+      "mustNotSay": [
+        "ücretsiz kargo dahil"
       ]
     },
     {
@@ -332,6 +356,13 @@
       "urls": [
         "https://arledscreen.com/catalog.json",
         "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
+      ],
+      "mustSay": [
+        "USD",
+        "ücretsiz kargo yok"
+      ],
+      "mustNotSay": [
+        "ücretsiz kargo dahil"
       ]
     },
     {
@@ -339,6 +370,13 @@
       "q": "LED ekran m² maliyeti nasıl hesaplanır?",
       "urls": [
         "https://arledscreen.com/tr/hesaplayici/"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "ücretsiz kargo yok"
+      ],
+      "mustNotSay": [
+        "stokta paket"
       ]
     },
     {
@@ -348,21 +386,38 @@
         "https://arledscreen.com/ai-shopping.json",
         "https://arledscreen.com/tr/yapay-zeka/",
         "https://arledscreen.com/.well-known/ard.json"
-      ]
+      ],
+      "mustSay": [
+        "ai-shopping.json",
+        "pricedPanels",
+        "agentRules",
+        "ücretsiz kargo yok",
+        "quote-and-contract"
+      ],
+      "mustNotSay": []
     },
     {
       "id": 7,
       "q": "GOB mi SMD mi?",
       "urls": [
         "https://arledscreen.com/tr/rehber/gob-vs-smd/"
-      ]
+      ],
+      "mustSay": [
+        "GOB",
+        "catalog.json"
+      ],
+      "mustNotSay": []
     },
     {
       "id": 8,
       "q": "LED tabela mı LED ekran mı?",
       "urls": [
         "https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/"
-      ]
+      ],
+      "mustSay": [
+        "LED ekran"
+      ],
+      "mustNotSay": []
     },
     {
       "id": 9,
@@ -370,6 +425,14 @@
       "urls": [
         "https://arledscreen.com/tr/products/kiralik-led-ekran/",
         "https://arledscreen.com/tr/quote/"
+      ],
+      "mustSay": [
+        "teklif",
+        "ai-shopping.json"
+      ],
+      "mustNotSay": [
+        "günlük TL",
+        "ücretsiz kargo dahil"
       ]
     },
     {
@@ -378,6 +441,13 @@
       "urls": [
         "https://arledscreen.com/tr/products/seffaf-led-ekran/",
         "https://arledscreen.com/tr/products/transparan-led-ekran/"
+      ],
+      "mustSay": [
+        "teklif",
+        "ai-shopping.json"
+      ],
+      "mustNotSay": [
+        "ücretsiz kargo dahil"
       ]
     },
     {
@@ -386,7 +456,12 @@
       "urls": [
         "https://arledscreen.com/entity.json",
         "https://arledscreen.com/tr/"
-      ]
+      ],
+      "mustSay": [
+        "530 507 88 34",
+        "Gaziosmanpaşa"
+      ],
+      "mustNotSay": []
     },
     {
       "id": 12,
@@ -394,6 +469,14 @@
       "urls": [
         "https://arledscreen.com/tr/nxtionstar/",
         "https://arledscreen.com/entity.json"
+      ],
+      "mustSay": [
+        "ARLEDSCREEN",
+        "NXTIONSTAR"
+      ],
+      "mustNotSay": [
+        "NEXTSTAR",
+        "distribütör"
       ]
     }
   ],

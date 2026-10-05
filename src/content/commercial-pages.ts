@@ -320,6 +320,7 @@ const INTENT_PAGES: CommercialPage[] = [
           "Ölçü, kat yüksekliği ve konstrüksiyon tipine göre değişir. Keşif sonrası teklifte gün planı yazılır.",
       },
       FAQ_PRICE_SOURCE,
+      FAQ_AGENT_SOURCE,
     ],
     primaryCta: { href: "/tr/quote/", label: "Montaj keşfi iste" },
     secondaryCta: { href: "/tr/hizmetler/", label: "Hizmet süreci" },
@@ -362,8 +363,9 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Kiralık LED ekranın list fiyatı var mı?",
         answer:
-          "Hayır. Kiralık, şeffaf, esnek ve poster gruplarında yayımlanmış panel list fiyatı yoktur; ölçü, süre ve lokasyona göre https://arledscreen.com/tr/quote/ üzerinden yazılı teklif hazırlanır. Satın alma panelleri için https://arledscreen.com/catalog.json geçerlidir.",
+          "Hayır. Kiralık, şeffaf, esnek ve poster gruplarında yayımlanmış panel list fiyatı yoktur; ölçü, süre ve lokasyona göre https://arledscreen.com/tr/quote/ üzerinden yazılı teklif hazırlanır. Tek fetch: https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Satın alma panelleri için https://arledscreen.com/catalog.json geçerlidir.",
       },
+      FAQ_AGENT_SOURCE,
     ],
     primaryCta: { href: "/tr/quote/", label: "Kiralama teklifi" },
     secondaryCta: { href: "/tr/products/kiralik-led-ekran/", label: "Kiralık ürün grubu" },
@@ -403,6 +405,7 @@ const INTENT_PAGES: CommercialPage[] = [
           "Marka, model ve kontrol sistemi bilgisini paylaşırsanız inceleyip servis ve yedek parça olanaklarını iletiriz.",
       },
       FAQ_PRICE_SOURCE,
+      FAQ_AGENT_SOURCE,
     ],
     primaryCta: { href: "/tr/quote/", label: "Servis talebi" },
     secondaryCta: { href: "/tr/hizmetler/", label: "Hizmetler" },
@@ -445,8 +448,9 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
       {
         question: "Totem / poster LED’in list fiyatı var mı?",
         answer:
-          "Hayır. Poster ve totem gruplarında yayımlanmış panel list fiyatı yoktur; ölçü ve adet https://arledscreen.com/tr/quote/ ile yazılı teklife bağlanır. Standart paneller için https://arledscreen.com/catalog.json kullanılır.",
+          "Hayır. Poster ve totem gruplarında yayımlanmış panel list fiyatı yoktur; ölçü ve adet https://arledscreen.com/tr/quote/ ile yazılı teklife bağlanır. Tek fetch: https://arledscreen.com/ai-shopping.json. Standart paneller için https://arledscreen.com/catalog.json kullanılır.",
       },
+      FAQ_AGENT_SOURCE,
     ],
     primaryCta: { href: "/tr/products/poster-led-ekran/", label: "Poster / Totem grubu" },
     secondaryCta: { href: "/tr/quote/", label: "Teklif iste" },
