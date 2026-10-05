@@ -98,6 +98,18 @@ for (const s of groupSlugs) req(`${SITE}/tr/products/${s}/`);
 for (const m of modelPairs) req(`${SITE}/tr/products/${m.group}/${m.slug}/`);
 for (const s of seoGuides) req(`${SITE}/tr/rehber/${s}/`);
 for (const s of articleSlugs) req(`${SITE}/tr/rehber/${s}/`);
+// Machine-readable AI alışveriş artefacts
+for (const p of [
+  "/catalog.json",
+  "/entity.json",
+  "/entity-profiles.json",
+  "/.well-known/ard.json",
+  "/llms.txt",
+  "/llms-full.txt",
+  "/feeds/merchant-priced-panels.tsv",
+]) {
+  req(`${SITE}${p}`);
+}
 // Indexable EN
 req(`${SITE}/en/`);
 req(`${SITE}/en/yapay-zeka/`);
@@ -157,6 +169,16 @@ if (errors.length) {
   process.exit(1);
 }
 
+const aiArtefacts = [
+  "/catalog.json",
+  "/entity.json",
+  "/entity-profiles.json",
+  "/.well-known/ard.json",
+  "/llms.txt",
+  "/llms-full.txt",
+  "/feeds/merchant-priced-panels.tsv",
+].filter((p) => locSet.has(`${SITE}${p}`)).length;
+
 console.log(
-  `audit-sitemap: OK — urls=${locs.length} commercial=${commercialSlugs.length} cases=${caseSlugs.length} groups=${groupSlugs.length} models=${modelPairs.length} indexable_tr_checked=${indexableChecked}`,
+  `audit-sitemap: OK — urls=${locs.length} commercial=${commercialSlugs.length} cases=${caseSlugs.length} groups=${groupSlugs.length} models=${modelPairs.length} ai_artefacts=${aiArtefacts} indexable_tr_checked=${indexableChecked}`,
 );

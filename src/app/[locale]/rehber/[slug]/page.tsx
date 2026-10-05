@@ -16,6 +16,22 @@ import {
   isSeoGuideSlug,
   type SeoGuideSlug,
 } from "@/content/seo-guides";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+
+/** Shared AI-shopping cites — keep aligned with catalog.json / entity.json */
+const GUIDE_SHOPPING_FAQS = [
+  {
+    question: "Bu rehberdeki LED ekran panel fiyatını nereden okumalıyım?",
+    answer:
+      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç). Yaklaşık m²: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir; uydurma TL paket yoktur.",
+  },
+  {
+    question: "AI ajanları ARLEDSCREEN fiyat ve kimliğini nereden doğrular?",
+    answer:
+      "Kimlik/NAP: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel katalog: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Özet: https://arledscreen.com/llms.txt.",
+  },
+];
+
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
 }
@@ -54,6 +70,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
   const guide = getSeoGuide(locale, slug as SeoGuideSlug);
   const hub = getSeoGuideHub(locale);
   const dict = getDictionary(locale);
+  const faqs = [...guide.faqs, ...GUIDE_SHOPPING_FAQS];
 
   return (
     <>
@@ -70,7 +87,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
           },
         ]}
       />
-      <FaqJsonLd faqs={guide.faqs} />
+      <FaqJsonLd faqs={faqs} />
 
       <script
         type="application/ld+json"
@@ -125,7 +142,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
           ))}
 
           <div className="grid gap-4 md:grid-cols-2">
-            {guide.faqs.map((f) => (
+            {faqs.map((f) => (
               <GlassPanel key={f.question} className="p-5">
                 <h3 className="font-display text-base font-semibold text-ink">
                   {f.question}
@@ -134,6 +151,8 @@ export default async function SeoGuidePage({ params }: PageProps) {
               </GlassPanel>
             ))}
           </div>
+
+          <ShoppingLinkCloud excludeHref={`/tr/rehber/${guide.slug}/`} />
 
           <GlassPanel className="max-w-3xl p-6">
             <h2 className="font-display text-lg font-bold text-ink">

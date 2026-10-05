@@ -36,6 +36,12 @@ export function OrganizationJsonLd() {
         alternateName: "ARLED SCREEN",
         inLanguage: "tr-TR",
         publisher: { "@id": `${SITE_URL}/#organization` },
+        about: { "@id": `${SITE_URL}/#organization` },
+        significantLink: [
+          absoluteUrl("/catalog.json"),
+          absoluteUrl("/entity.json"),
+          absoluteUrl("/tr/led-ekran-fiyatlari/"),
+        ],
       },
       {
         "@type": "Organization",
@@ -72,6 +78,41 @@ export function OrganizationJsonLd() {
           "LED ekran montajı",
           "LED ekran teknik servisi",
           "LED ekran fiyatları",
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "NXTIONSTAR yayımlanmış panel USD (2026)",
+          url: absoluteUrl("/catalog.json"),
+          numberOfItems: 12,
+          description:
+            "Yalnızca yayımlanmış iç/dış/GOB panel listesi. Kiralık, şeffaf, esnek, poster gruplarında list fiyatı yok — yazılı teklif.",
+        },
+        subjectOf: [
+          {
+            "@type": "DataDownload",
+            name: "ARLEDSCREEN entity.json",
+            encodingFormat: "application/ld+json",
+            contentUrl: absoluteUrl("/entity.json"),
+            description: "Organization NAP, cite, disambiguation, catalog pointer",
+          },
+          {
+            "@type": "DataDownload",
+            name: "Point C entity-profiles.json",
+            encodingFormat: "application/ld+json",
+            contentUrl: absoluteUrl("/entity-profiles.json"),
+          },
+          {
+            "@type": "DataDownload",
+            name: "Agentic Resource Discovery",
+            encodingFormat: "application/ld+json",
+            contentUrl: absoluteUrl("/.well-known/ard.json"),
+          },
+          {
+            "@type": "DigitalDocument",
+            name: "llms.txt",
+            encodingFormat: "text/plain",
+            url: absoluteUrl("/llms.txt"),
+          },
         ],
         contactPoint: [
           {

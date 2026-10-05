@@ -7,7 +7,7 @@ Canlı smoke: `npm run smoke:live`
 Bu sayfa **ölçüm şablonu + sahip panosu**. Kod tarafı Gün 16–29 ile hazır;
 canlı skorlar merge + Point C sonrası doldurulur.
 
-## A) Site-side (repo) — 2026-10-05 (gün 16–44)
+## A) Site-side (repo) — 2026-10-05 (gün 16–45)
 
 | Metrik | Hedef | Durum |
 |--------|-------|-------|
@@ -18,7 +18,9 @@ canlı skorlar merge + Point C sonrası doldurulur.
 | Cite parity | entity↔llms↔about↔profiles | ✅ audit:cite-parity |
 | Kör test site readiness | 12 prompt URL | ✅ audit:blind-test |
 | AI headers (CORS/ctype) | 8 path | ✅ audit:ai-headers |
-| Shopping LinkCloud | home→model→case→blog | ✅ 135+ yüzey |
+| Shopping LinkCloud | home→model→case→blog→seo-guide | ✅ 143+ yüzey |
+| Org → catalog JSON-LD | hasOfferCatalog | ✅ OrganizationJsonLd |
+| Sitemap AI artefacts | 7 machine URL | ✅ catalog/entity/ard/… |
 | Point C paste packs | `/entity-profiles.json` | ✅ sync-entity |
 | Spam / 81-il | yok | ✅ |
 

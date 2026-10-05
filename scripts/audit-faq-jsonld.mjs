@@ -124,8 +124,18 @@ auditPage("blog", { minCount: 2, requirePriceHint: true });
 auditPage("rehber/piksel-araligi-secimi", { minCount: 2, requirePriceHint: true });
 auditPage("rehber/kiralik-mi-satin-alma", { minCount: 2, requirePriceHint: true });
 
+const seoGuideSrc = fs.readFileSync(path.join(root, "src/content/seo-guides.ts"), "utf8");
+const seoGuideBlock = seoGuideSrc.match(/export const SEO_GUIDE_SLUGS = \[([\s\S]*?)\] as const/);
+const seoGuideSlugs = seoGuideBlock
+  ? [...seoGuideBlock[1].matchAll(/"([^"]+)"/g)].map((m) => m[1])
+  : [];
+for (const slug of seoGuideSlugs) {
+  checked += 1;
+  auditPage(`rehber/${slug}`, { minCount: 3, requirePriceHint: true });
+}
+
 console.log(
-  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles`,
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles + ${seoGuideSlugs.length} seo-guides`,
 );
 if (errors.length) {
   console.error("FAIL:");

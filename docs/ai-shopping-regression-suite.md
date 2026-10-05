@@ -1,4 +1,4 @@
-# AI alışveriş regression suite (Gün 29 → güncellendi Gün 44)
+# AI alışveriş regression suite (Gün 29 → güncellendi Gün 45)
 
 Son güncelleme: 2026-10-05  
 Komut: `npm run audit:all` (build sonrası) · postbuild zinciri aynı guard’ları çalıştırır
@@ -17,9 +17,9 @@ npm run audit:all
 |-------|----------------|
 | offers | P0 fiyat/Offer |
 | images | P0 ürün görseli |
-| shopping-links | 28→42 LinkCloud (**135 yüzey**; entity-profiles zorunlu) |
-| faq | 28→41 FAQ price hint (home/hub/founder/blog/…) |
-| entity | P0 sameAs + entity-profiles packs |
+| shopping-links | 28→45 LinkCloud (**143+ yüzey**; SEO-guide cluster dahil) |
+| faq | 28→45 FAQ price hint (home/hub/founder/blog/seo-guides…) |
+| entity | P0 sameAs + entity-profiles packs + Org hasOfferCatalog |
 | schema | 17 GSC schema |
 | locale | 18 thin EN |
 | case-images | 19 foto gap |

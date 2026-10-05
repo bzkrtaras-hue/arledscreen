@@ -49,6 +49,13 @@ const rehberExtras = [
   "rehber/led-tabela-mi-led-ekran-mi",
 ];
 
+const seoGuideSrc = fs.readFileSync(path.join(root, "src/content/seo-guides.ts"), "utf8");
+const seoGuideBlock = seoGuideSrc.match(/export const SEO_GUIDE_SLUGS = \[([\s\S]*?)\] as const/);
+const seoGuideSlugs = seoGuideBlock
+  ? [...seoGuideBlock[1].matchAll(/"([^"]+)"/g)].map((m) => m[1])
+  : [];
+const seoGuidePages = seoGuideSlugs.map((s) => `rehber/${s}`);
+
 const regionDirs = fs
   .readdirSync(path.join(outTr, "bolgeler"), { withFileTypes: true })
   .filter((d) => d.isDirectory())
@@ -74,6 +81,7 @@ const pages = [
   ...productDirs.map((s) => path.join(outTr, s, "index.html")),
   ...modelPages,
   ...rehberExtras.map((s) => path.join(outTr, s, "index.html")),
+  ...seoGuidePages.map((s) => path.join(outTr, s, "index.html")),
   ...regionDirs.map((s) => path.join(outTr, s, "index.html")),
   ...caseDirs.map((s) => path.join(outTr, s, "index.html")),
   ...blogDirs.map((s) => path.join(outTr, s, "index.html")),
@@ -111,7 +119,7 @@ for (const file of pages) {
 }
 
 console.log(
-  `Checked ${checked} shopping surfaces (home/commercial/product/models/rehber/regions/cases/blog/about/hubs) for fiyat+catalog+quote+hesaplayici+entity links`,
+  `Checked ${checked} shopping surfaces (home/commercial/product/models/rehber+seo-guides/regions/cases/blog/about/hubs) for fiyat+catalog+quote+hesaplayici+entity links`,
 );
 if (errors.length) {
   console.error("FAIL:");

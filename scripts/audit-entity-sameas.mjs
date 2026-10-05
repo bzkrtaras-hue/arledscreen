@@ -60,8 +60,27 @@ if (!fs.existsSync(entityPath)) {
 }
 
 const orgSrc = fs.readFileSync(path.join(root, "src/components/seo/OrganizationJsonLd.tsx"), "utf8");
-for (const needle of ["ARLED Solutions", "NEXTSTAR", "NationStar", "ORGANIZATION_SAME_AS"]) {
+for (const needle of [
+  "ARLED Solutions",
+  "NEXTSTAR",
+  "NationStar",
+  "ORGANIZATION_SAME_AS",
+  "hasOfferCatalog",
+  "/catalog.json",
+  "/entity.json",
+]) {
   if (!orgSrc.includes(needle)) errors.push(`OrganizationJsonLd.tsx missing ${needle}`);
+}
+
+const homeHtml = path.join(root, "out/tr/index.html");
+if (fs.existsSync(homeHtml)) {
+  const html = fs.readFileSync(homeHtml, "utf8");
+  if (!html.includes("hasOfferCatalog") || !html.includes("/catalog.json")) {
+    errors.push("out/tr/index.html Organization JSON-LD missing hasOfferCatalog → catalog.json");
+  }
+  if (!html.includes("/entity.json")) {
+    errors.push("out/tr/index.html Organization JSON-LD missing entity.json subjectOf");
+  }
 }
 
 for (const file of ["public/llms.txt", "public/llms-full.txt"]) {

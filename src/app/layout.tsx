@@ -48,12 +48,43 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="ard" href="/.well-known/ard.json" />
-        <link rel="alternate" type="application/ld+json" href="/entity.json" title="ARLEDSCREEN entity" />
-        <link rel="alternate" type="application/ld+json" href="/entity-profiles.json" title="Point C profile paste packs" />
-        <link rel="alternate" type="application/ld+json" href="/catalog.json" title="NXTIONSTAR panel catalog" />
-        <link rel="alternate" type="text/tab-separated-values" href="/feeds/merchant-priced-panels.tsv" title="Merchant priced panels (12 SKU)" />
-        <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+        <link rel="ard" href={`${SITE_URL}/.well-known/ard.json`} />
+        <link
+          rel="alternate"
+          type="application/ld+json"
+          href={`${SITE_URL}/entity.json`}
+          title="ARLEDSCREEN entity"
+        />
+        <link
+          rel="alternate"
+          type="application/ld+json"
+          href={`${SITE_URL}/entity-profiles.json`}
+          title="Point C profile paste packs"
+        />
+        <link
+          rel="alternate"
+          type="application/ld+json"
+          href={`${SITE_URL}/catalog.json`}
+          title="NXTIONSTAR panel catalog"
+        />
+        <link
+          rel="alternate"
+          type="text/tab-separated-values"
+          href={`${SITE_URL}/feeds/merchant-priced-panels.tsv`}
+          title="Merchant priced panels (12 SKU)"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href={`${SITE_URL}/llms.txt`}
+          title="llms.txt"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href={`${SITE_URL}/llms-full.txt`}
+          title="llms-full.txt"
+        />
       </head>
       <body className="min-h-screen bg-bg font-sans antialiased">
         {children}

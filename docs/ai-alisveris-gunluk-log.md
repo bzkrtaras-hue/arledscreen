@@ -34,6 +34,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 42 | 2026-10-05 | entity-profiles CORS + merge-day Point C checklist | ✅ |
 | 43 | 2026-10-05 | Deploy artifact guard + blind-test skor kartı | ✅ |
 | 44 | 2026-10-05 | AI headers parity (CORS+Content-Type) + `audit:ai-headers` | ✅ |
+| 45 | 2026-10-05 | Org hasOfferCatalog + sitemap AI artefacts + SEO-guide LinkCloud | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -146,3 +147,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `_headers`: entity/catalog/llms Content-Type charset parity (ajan parse)
 - `audit:ai-headers`: 8 AI path CORS + CORP + Content-Type (postbuild + `audit:all` → 15)
 - `smoke:live`: HTTP 200 iken CORS/Content-Type HEADERS kontrolü
+
+## Gün 45 notları
+
+- Organization JSON-LD: `hasOfferCatalog` → catalog.json + `subjectOf` entity/profiles/ard/llms
+- Sitemap: 7 AI artefact URL (catalog/entity/profiles/ard/llms/llms-full/merchant TSV)
+- SEO-guide cluster (8 slug): ShoppingLinkCloud + catalog/entity FAQ cites
+- Head discovery: absolute artefact hrefs + `llms-full.txt` alternate
+- LinkCloud default: ard.json + Merchant TSV
+- Guards: shopping-links + faq + sitemap + entity sameAs hasOfferCatalog

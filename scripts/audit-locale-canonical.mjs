@@ -175,7 +175,10 @@ if (!fs.existsSync(smPath)) {
   if (sm.includes("/ar/") || sm.includes("/ru/")) {
     errors.push("sitemap includes /ar/ or /ru/");
   }
-  const enUrls = [...sm.matchAll(/<loc>(https:\/\/arledscreen\.com\/en[^<]*)<\/loc>/g)].map((m) => m[1]);
+  // Require /en/ path segment — do NOT match /entity.json (substring "en")
+  const enUrls = [
+    ...sm.matchAll(/<loc>(https:\/\/arledscreen\.com\/en\/[^<]*)<\/loc>/g),
+  ].map((m) => m[1]);
   const expectedEnCount = 1 + 1 + 1 + GUIDE_SLUGS.length; // home + yapay-zeka + rehber hub + guides
   if (enUrls.length !== expectedEnCount) {
     errors.push(`sitemap EN count ${enUrls.length} ≠ ${expectedEnCount} (${enUrls.join(", ")})`);

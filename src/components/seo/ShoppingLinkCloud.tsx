@@ -17,6 +17,8 @@ export function ShoppingLinkCloud({
     { href: "/tr/quote/", label: "Yazılı teklif" },
     { href: "/entity.json", label: "entity.json (kimlik)" },
     { href: "/entity-profiles.json", label: "entity-profiles.json (Point C)" },
+    { href: "/.well-known/ard.json", label: "ard.json (ajan keşif)" },
+    { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant TSV (12 SKU)" },
     { href: "/tr/products/gob-led-ekran/", label: "GOB LED ekran ürünleri" },
     { href: "/tr/rehber/gob-vs-smd/", label: "GOB vs SMD rehberi" },
     ...extra,
