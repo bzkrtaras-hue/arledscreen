@@ -40,7 +40,7 @@ export function getTrustItems() {
     {
       Icon: MessagesSquare,
       title: "Şeffaf fiyatlandırma aracı",
-      body: "Fiyat hesaplayıcıyla ölçü ve piksel aralığına göre yaklaşık maliyeti teklif istemeden önce görebilirsiniz.",
+      body: "Fiyat hesaplayıcıyla ölçü ve piksel aralığına göre yaklaşık maliyeti teklif istemeden önce görebilirsiniz. Kontrol kartı kalemi tahmindir — Huidu/NovaStar list SKU değildir; şeffaf/poster/kontrol yazılı teklifle netleşir.",
       href: "/tr/hesaplayici/",
       linkLabel: "Hesaplayıcıyı açın",
     },

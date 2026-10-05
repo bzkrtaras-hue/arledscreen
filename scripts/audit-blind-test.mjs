@@ -48,7 +48,7 @@ function htmlExists(urlPath) {
   return mustExist(rel);
 }
 
-/** 15 prompts — shared module (Gün 55 + 63 kontrol + 65 esnek + 66 Colorlight) */
+/** 16 prompts — shared module (+ 67 poster/totem) */
 const PROMPTS = BLIND_TEST_PROMPTS;
 
 if (!fs.existsSync(out)) {
@@ -282,7 +282,7 @@ for (const id of [2, 3, 4, 5, 6]) {
     errors.push(`blind prompt #${id} mustSay must include ücretsiz kargo yok or quote-and-contract`);
   }
 }
-for (const id of [9, 10, 13, 14, 15]) {
+for (const id of [9, 10, 13, 14, 15, 16]) {
   const p = PROMPTS.find((x) => x.id === id);
   if (!p?.mustSay?.includes("ai-shopping.json") || !p?.mustSay?.includes("teklif")) {
     errors.push(`blind prompt #${id} mustSay must include teklif + ai-shopping.json`);
@@ -299,6 +299,10 @@ if (!p14 || !/esnek/i.test(p14.q)) {
 const p15 = PROMPTS.find((x) => x.id === 15);
 if (!p15 || !/Colorlight|colorlight/i.test(p15.q)) {
   errors.push("blind prompt #15 must cover Colorlight kontrol quote-only invent");
+}
+const p16 = PROMPTS.find((x) => x.id === 16);
+if (!p16 || !/poster|totem/i.test(p16.q)) {
+  errors.push("blind prompt #16 must cover poster/totem quote-only invent");
 }
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");

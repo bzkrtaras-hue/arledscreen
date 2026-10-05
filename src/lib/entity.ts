@@ -26,7 +26,7 @@ export const ENTITY_CITE_SHORT =
 
 /** Medium cite for press / About fields. */
 export const ENTITY_CITE_MEDIUM =
-  "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.";
+  "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.";
 
 /** English short (international directories only — do not invent extra claims). */
 export const ENTITY_CITE_SHORT_EN =
@@ -55,7 +55,7 @@ export const ENTITY_FAQS = [
   {
     question: "ARLEDSCREEN hangi hizmetleri sunar?",
     answer:
-      "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir.",
+      "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — list USD yok. Nihai tutar keşif ve yazılı teklifle kesinleşir.",
   },
   {
     question: "LED ekran panel fiyatları nereden alınır?",
@@ -86,7 +86,7 @@ export const ENTITY_PROFILE_PACKS = {
 
 Web: https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json
-AI alışveriş: https://arledscreen.com/ai-shopping.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
 Telefon: ${CONTACT_PHONE_DISPLAY}`,
   instagramBio: "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
   facebookAbout: ENTITY_CITE_MEDIUM,
@@ -98,7 +98,7 @@ Telefon: ${CONTACT_PHONE_DISPLAY}
 E-posta: ${CONTACT_EMAIL}
 Web: https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json
-AI alışveriş: https://arledscreen.com/ai-shopping.json`,
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)`,
   youtubeAbout: `${ENTITY_CITE_SHORT}
 
 Site: https://arledscreen.com/tr/

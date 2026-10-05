@@ -2,7 +2,7 @@
 
 Son güncelleme: 2026-10-05 (Gün 58: mustSay honesty + FAQ ai-shopping wave 2)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 15 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 16 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 15 prompt (alışveriş + varlık)
+## 16 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -39,6 +39,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 13 | Huidu / NovaStar kontrol kartı fiyatı? | `/tr/products/huidu-kontrol-kartlari/` · `/tr/products/novastar-kontrolculer/` · quote · ai-shopping | teklif + **ai-shopping.json** | ücretsiz kargo dahil / stokta paket |
 | 14 | Esnek LED ekran fiyatı? | `/tr/products/esnek-led-ekran/` · quote · ai-shopping | teklif + **ai-shopping.json** | ücretsiz kargo dahil / stokta paket |
 | 15 | Colorlight kontrol kartı fiyatı? | `/tr/products/colorlight-kontrolculer/` · quote · ai-shopping | teklif + **ai-shopping.json** | ücretsiz kargo dahil / stokta paket |
+| 16 | Poster / totem LED fiyatı? | `/tr/products/poster-led-ekran/` · quote · ai-shopping | teklif + **ai-shopping.json** | ücretsiz kargo dahil / stokta paket |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -49,7 +50,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 45. Hedef tur 1 ≥ 23/45; tur 2 (Point C sonrası) ≥ 34/45.
+**Tur skoru** = toplam / 48. Hedef tur 1 ≥ 24/48; tur 2 (Point C sonrası) ≥ 36/48.
 
 ### Canlı tur kayıt şablonu
 
@@ -62,14 +63,14 @@ Incognito: evet/hayır
 # | Prompt | Skor 0-3 | Atıf URL | Not
 1 | ... |  |  |
 ...
-Toplam: /45
+Toplam: /48
 ```
 
 Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md) altına yazın (sahip).
 
 ## Site readiness kontrolleri (`audit:blind-test`)
 
-1. 15 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
+1. 16 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
 2. `entity.json`: telephone, Gaziosmanpaşa, citeOneLiner, disambiguatingDescription, NXTIONSTAR
 3. `catalog.json`: 12 dataset SKU; P2.5 iç = 32.18; groupAggregateOffers ≥ 3; shippingDetails; hasMerchantReturnPolicy (MerchantReturnNotPermitted)
 4. `ai-shopping.json`: 12 `pricedPanels` + `agentRules` + `extrasUsd` + `returnPolicy` + ücretsiz kargo yok + quote-and-contract-only
@@ -83,5 +84,5 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 1. PR #55 merge + CF redeploy  
 2. `npm run post-deploy` (smoke GREEN → IndexNow; Day 51–53 contract echo)  
 3. `curl -sI` entity / catalog / ard / ai-shopping / entity-profiles → 200  
-4. Canlı kör tur 1 (15 prompt) → skor kartı  
+4. Canlı kör tur 1 (16 prompt) → skor kartı  
 5. Point C (GBP + LinkedIn packs) → tur 2

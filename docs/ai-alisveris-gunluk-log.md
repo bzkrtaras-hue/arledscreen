@@ -56,6 +56,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 64 | 2026-10-05 | llms/hubs kontrol quote-only closure · extrasUsd≠list · IndexNow kontrol hubs · smoke Day63 needles | ✅ |
 | 65 | 2026-10-05 | Price-surface extrasUsd≠list SKU · agentRules disambiguation · SSS/Home FAQ · blind #14 esnek | ✅ |
 | 66 | 2026-10-05 | fiyat-hesap UI extrasUsd honesty · catalog extrasUsdNote · kontrol brand FAQs · blind #15 Colorlight | ✅ |
+| 67 | 2026-10-05 | Point C citeMedium honesty · GEO kapsül · blind #16 poster · IndexNow quote hubs · smoke fiyat-hesap | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -340,3 +341,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `catalog.json` `shoppingPolicy.extrasUsdNote` + audit/smoke/verify
 - Huidu/NovaStar/Colorlight product FAQs: list fiyatı yok
 - Blind #15 Colorlight · IndexNow esnek hub · quote FAQ kontrol · llms-full §4 — skor /45
+
+## Gün 67 notları
+
+- `ENTITY_CITE_MEDIUM` + Point C packs / sameAsReadiness: quote-only + extrasUsd ≠ marka list SKU (Owner paste)
+- llms GEO kapsülü + TrustFacts: kontrol/poster honesty
+- Blind #16 «Poster / totem LED fiyatı?» — skor /48
+- IndexNow: poster/seffaf/transparan hubs · smoke: fiyat-hesap + entity-profiles honesty (15 checks)

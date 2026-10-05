@@ -122,6 +122,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["teklif", "ai-shopping.json"],
     mustNotSay: ["ücretsiz kargo dahil", "günlük TL", "stokta paket"],
   },
+  {
+    id: 16,
+    q: "Poster / totem LED fiyatı?",
+    paths: ["/tr/products/poster-led-ekran/", "/tr/quote/", "/ai-shopping.json"],
+    mustSay: ["teklif", "ai-shopping.json"],
+    mustNotSay: ["ücretsiz kargo dahil", "günlük TL", "stokta paket"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -86,6 +86,15 @@ function validate(doc) {
   if (!doc.canonicalUrls?.entityJson?.includes("/entity.json")) {
     errors.push("canonicalUrls.entityJson missing");
   }
+  // Day 67: Point C packs must carry kontrol/extrasUsd honesty (Owner paste → third-party corpus)
+  const medium = String(citeMedium || packs.gbpDescription || "");
+  if (!/quote-only/i.test(medium) || !/extrasUsd/i.test(medium) || !/Huidu/i.test(medium)) {
+    errors.push("citeMedium/gbpDescription must include quote-only + extrasUsd + Huidu honesty");
+  }
+  const readiness = JSON.stringify(doc.sameAsReadiness || {});
+  if (!/extrasUsd|quote-only|kontrol/i.test(readiness)) {
+    errors.push("sameAsReadiness.notes must mention kontrol/extrasUsd quote-only honesty");
+  }
   return errors;
 }
 

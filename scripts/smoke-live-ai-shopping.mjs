@@ -36,7 +36,14 @@ export const CHECKS = [
     url: `${SITE}/entity-profiles.json`,
     outRel: "entity-profiles.json",
     expect: "json",
-    mustInclude: ["gbpDescription", "linkedinAbout", "Gaziosmanpaşa"],
+    mustInclude: [
+      "gbpDescription",
+      "linkedinAbout",
+      "Gaziosmanpaşa",
+      "extrasUsd 500",
+      "quote-only",
+      "Huidu",
+    ],
     cors: true,
     contentType: "application/json",
   },
@@ -73,6 +80,7 @@ export const CHECKS = [
       "Huidu / NovaStar kontrol kartı fiyatı?",
       "Esnek LED ekran fiyatı?",
       "Colorlight kontrol kartı fiyatı?",
+      "Poster / totem LED fiyatı?",
       "extrasUsd.controlCard",
       "list SKU",
     ],
@@ -176,6 +184,13 @@ export const CHECKS = [
     outRel: "e8e6f86598e94e95a323f807c39843ad.txt",
     expect: "text",
     mustInclude: ["e8e6f86598e94e95a323f807c39843ad"],
+  },
+  {
+    id: "fiyat-hesap",
+    url: `${SITE}/fiyat-hesap/`,
+    outRel: "fiyat-hesap/index.html",
+    expect: "html",
+    mustInclude: ["list SKU", "Huidu", "Kontrol kartı"],
   },
 ];
 

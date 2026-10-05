@@ -169,7 +169,7 @@ const profiles = {
   "@type": "Dataset",
   name: "ARLEDSCREEN entity profile paste packs (Point C)",
   description:
-    "Third-party profile paste packs derived from the same cite facts as entity.json. Owner-operated Point C; do not invent ratings or prices.",
+    "Third-party profile paste packs derived from the same cite facts as entity.json. Owner-operated Point C; do not invent ratings or prices. Quote-only: şeffaf/poster/kontrol — extrasUsd.controlCard ≠ Huidu/NovaStar/Colorlight list SKU; use ai-shopping.json.",
   url: `${SITE}/entity-profiles.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: `${SITE}/entity.json`,
@@ -177,11 +177,11 @@ const profiles = {
   dateModified: new Date().toISOString().slice(0, 10),
   packs: {
     gbpDescription: ENTITY_CITE_MEDIUM,
-    linkedinAbout: `${ENTITY_CITE_MEDIUM}\n\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json\nTelefon: ${CONTACT_PHONE_DISPLAY}`,
+    linkedinAbout: `${ENTITY_CITE_MEDIUM}\n\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)\nTelefon: ${CONTACT_PHONE_DISPLAY}`,
     instagramBio: "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
     facebookAbout: ENTITY_CITE_MEDIUM,
     directoryShort: ENTITY_CITE_ONE_LINER,
-    directoryLong: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nE-posta: ${CONTACT_EMAIL}\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json`,
+    directoryLong: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nE-posta: ${CONTACT_EMAIL}\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)`,
     youtubeAbout: `${ENTITY_CITE_SHORT}\n\nSite: ${SITE}/tr/\nEntity: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json`,
   },
   sameAsReadiness: {
@@ -191,7 +191,8 @@ const profiles = {
       "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
       "arleds.com sameAs’a eklenmez ta ki 301 canlı doğrulanana kadar.",
       "Point C paste: packs.* metinlerini üçüncü taraf formlara birebir yapıştır; uydurma rating/fiyat yok.",
-      `Tek fetch ajan index: ${SITE}/ai-shopping.json`,
+      "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
+      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules)`,
     ],
   },
   canonicalUrls: {
