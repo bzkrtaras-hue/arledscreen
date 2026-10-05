@@ -93,8 +93,32 @@
   }
 }
 
+/* Off-document until keyboard focus — never steals layout or paints over the header. */
 .skip-link {
-  @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-cyan focus:px-4 focus:py-2 focus:text-white focus:outline-none;
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: #1e5bb8;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transform: translateY(-160%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 /* Readable long-form / SEO body at ~390px without breaking desktop */
@@ -429,9 +453,10 @@
    * single truncated line from sm+. Not the brand plate (logos own that role).
    */
   .liquid-glass-btn--slogan {
+    height: 1.85rem;
     min-height: 1.85rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
+    padding-top: 0;
+    padding-bottom: 0;
     border-radius: 9999px;
     background:
       linear-gradient(
@@ -445,13 +470,6 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.95),
       0 0 0 1px rgba(15, 42, 79, 0.06),
       0 8px 20px -12px rgba(15, 42, 79, 0.32);
-  }
-  @media (min-width: 640px) {
-    .liquid-glass-btn--slogan {
-      height: 1.85rem;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
   }
   .liquid-glass-btn--slogan:hover {
     transform: none;
@@ -506,28 +524,28 @@
   }
 
   /*
-   * Hero copy plate — transparent liquid glass, dark ink.
-   * Matches pack-B left-safe composition: frost reads as glass; type stays sharp.
+   * Hero copy plate — truly translucent liquid glass (video reads through).
+   * Dark ink + light frost; not a solid white card.
    */
   .liquid-glass-hero-copy {
     position: relative;
     isolation: isolate;
     border-radius: 1.1rem;
-    color: #1a2430;
-    -webkit-backdrop-filter: saturate(210%) blur(22px) brightness(1.06);
-    backdrop-filter: saturate(210%) blur(22px) brightness(1.06);
+    color: #122033;
+    -webkit-backdrop-filter: saturate(180%) blur(18px) brightness(1.08);
+    backdrop-filter: saturate(180%) blur(18px) brightness(1.08);
     background:
       linear-gradient(
         165deg,
-        rgba(255, 255, 255, 0.78) 0%,
-        rgba(247, 250, 253, 0.62) 48%,
-        rgba(237, 244, 252, 0.7) 100%
+        rgba(255, 255, 255, 0.34) 0%,
+        rgba(247, 250, 253, 0.22) 48%,
+        rgba(237, 244, 252, 0.28) 100%
       );
-    border: 1px solid rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.42);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.92),
-      0 0 0 1px rgba(15, 42, 79, 0.06),
-      0 18px 40px -22px rgba(11, 27, 51, 0.45);
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      0 0 0 1px rgba(15, 42, 79, 0.08),
+      0 18px 40px -22px rgba(11, 27, 51, 0.4);
   }
   .liquid-glass-hero-copy::before {
     content: "";
@@ -539,10 +557,10 @@
     background:
       linear-gradient(
         120deg,
-        rgba(255, 255, 255, 0.55) 0%,
-        rgba(255, 255, 255, 0.1) 34%,
+        rgba(255, 255, 255, 0.28) 0%,
+        rgba(255, 255, 255, 0.06) 34%,
         transparent 52%,
-        rgba(30, 91, 184, 0.08) 100%
+        rgba(30, 91, 184, 0.06) 100%
       );
   }
   .liquid-glass-hero-copy > * {
@@ -550,19 +568,21 @@
     z-index: 1;
   }
   .liquid-glass-hero-copy h1 {
-    color: #122033;
+    color: #0f1a28;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
   }
   .liquid-glass-hero-copy .hero-copy-lead {
-    color: #2a3340;
+    color: #1a2430;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
   }
   .liquid-glass-hero-copy .hero-copy-point-title {
-    color: #122033;
+    color: #0f1a28;
   }
   .liquid-glass-hero-copy .hero-copy-point-body {
-    color: #3d4650;
+    color: #24303c;
   }
   .liquid-glass-hero-copy .hero-copy-rule {
-    border-color: rgba(18, 32, 51, 0.14);
+    border-color: rgba(18, 32, 51, 0.18);
   }
   .liquid-glass-hero-copy .hero-copy-dot {
     background: #1e5bb8;

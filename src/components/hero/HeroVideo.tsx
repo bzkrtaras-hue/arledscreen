@@ -23,8 +23,6 @@ interface HeroVideoProps {
   clips: HeroClip[];
   /** Large brand wordmark (pack B) */
   brand: string;
-  /** Optional overline — omit on mobile-first homepage for cleaner hierarchy */
-  eyebrow?: string;
   headline: string;
   /** Lead sentence under the H1 */
   subcopy: string;
@@ -57,7 +55,6 @@ function coverClass(clip: HeroClip) {
 export function HeroVideo({
   clips,
   brand,
-  eyebrow,
   headline,
   subcopy,
   points,
@@ -241,18 +238,7 @@ export function HeroVideo({
 
         <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-4 pb-[calc(4.25rem+1rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
           <div className="w-full max-w-[560px]">
-            {/* Brand-first: no redundant overline — glass holds title + pillars */}
-            {eyebrow ? (
-              <m.p
-                className="mb-3 font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs"
-                style={{ textShadow: "0 1px 12px rgba(11,27,51,0.45)" }}
-                initial={reduce ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, ease, delay: 0.05 }}
-              >
-                {eyebrow}
-              </m.p>
-            ) : null}
+            {/* Brand-first — no “kendi markası” / NXTIONSTAR overline above the wordmark */}
             <m.p
               className="font-display text-[clamp(2.1rem,1.45rem+3vw,3.85rem)] font-extrabold leading-[0.94] tracking-[-0.035em] text-white"
               style={{ textShadow: "0 2px 22px rgba(11,27,51,0.4)" }}
