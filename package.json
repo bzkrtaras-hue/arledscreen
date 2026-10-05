@@ -11,7 +11,8 @@
     "audit:offers": "node scripts/audit-product-offers.mjs",
     "audit:images": "node scripts/audit-product-images.mjs",
     "audit:shopping-links": "node scripts/audit-shopping-links.mjs",
-    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/audit-product-offers.mjs && node scripts/audit-product-images.mjs && node scripts/audit-shopping-links.mjs"
+    "audit:faq": "node scripts/audit-faq-jsonld.mjs",
+    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/audit-product-offers.mjs && node scripts/audit-product-images.mjs && node scripts/audit-shopping-links.mjs && node scripts/audit-faq-jsonld.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

@@ -61,12 +61,12 @@ export default async function ServiceRegionPage({
     {
       question: `${region.name} LED ekran fiyatı ne kadar?`,
       answer:
-        "Sabit m² fiyatı yoktur. Panel USD listesi fiyat hesaplayıcıda yayımlanır; nihai tutar ölçü, piksel aralığı, iç/dış mekân ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+        "Sabit m² fiyatı yoktur. Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır; nihai tutar ölçü, piksel aralığı, iç/dış mekân ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
     },
     {
       question: "Keşif için ne paylaşmalıyım?",
       answer:
-        "Yaklaşık ölçü, montaj yeri, kullanım amacı ve izleme mesafesi yeterlidir. Fotoğraf veya kısa video süreci hızlandırır.",
+        "Yaklaşık ölçü, montaj yeri, kullanım amacı ve izleme mesafesi yeterlidir. Fotoğraf veya kısa video süreci hızlandırır. Firma kimliği için https://arledscreen.com/entity.json kullanılabilir.",
     },
   ];
 
