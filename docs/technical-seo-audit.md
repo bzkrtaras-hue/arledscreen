@@ -11,7 +11,7 @@ indexing counts are **owner-only** and are not available from this environment.
 | `/tr/` canonical | `https://arledscreen.com/tr/` |
 | `/en/` exists | Yes, 200; canonical self; hreflang tr↔en + x-default→`/tr/` |
 | hreflang (home) | `en`→`/en/`, `tr`→`/tr/`, `x-default`→`/tr/` |
-| TR-only pages (led-ekran, bölgeler, basin) | Self-canonical; **no** false en hreflang |
+| TR-only pages (led-ekran, bölgeler) | Self-canonical; **no** false en hreflang |
 | http → https | 301 (Cloudflare) |
 | www → non-www apex | 301 → `https://arledscreen.com/…` |
 | Trailing slash | Missing slash → **308** → slash URL; sitemap locs all end with `/` |
@@ -45,7 +45,7 @@ Sign in → property `https://arledscreen.com` (URL-prefix or Domain):
    - Soft 404
    - Redirect error
 4. **HTTPS** / **Core Web Vitals** / **Manual actions** = clean
-5. Inspect sample URLs: `/tr/`, `/tr/led-ekran-fiyatlari/`, `/tr/basin/`, one case study
+5. Inspect sample URLs: `/tr/`, `/tr/led-ekran-fiyatlari/`, `/entity.json`, one case study
 6. Optional: Bing Webmaster Tools same sitemap
 
 ## Verdict

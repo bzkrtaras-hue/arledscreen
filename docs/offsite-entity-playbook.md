@@ -3,14 +3,15 @@
 Amaç: Google / Maps / ChatGPT / Gemini / Perplexity / Copilot’un ARLEDSCREEN’i
 **İstanbul merkezli, doğrulanabilir bir Türk LED ekran firması** olarak ilişkilendirmesi.
 
-Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu yalnızca atıf sayfası,
-NAP tutarlılığı, `entity.json` ve case study URL’leri sağlar.
+Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu NAP tutarlılığı,
+`entity.json`, bu playbook ve case study URL’leri sağlar. Yapıştırma metinleri **sitede
+yayımlanmaz** — yalnızca burada.
 
 | Kaynak | URL |
 |---|---|
-| Kanonik atıf sayfası | https://arledscreen.com/tr/basin/ |
-| Makinece entity | https://arledscreen.com/entity.json |
+| Makinece entity (NAP + cite) | https://arledscreen.com/entity.json |
 | Kısa AI özeti | https://arledscreen.com/llms.txt |
+| Hakkımızda | https://arledscreen.com/tr/about/ |
 
 ---
 
@@ -40,7 +41,6 @@ Telefon / WhatsApp: +90 530 507 88 34
 E-posta: arled@arledscreen.com
 Web: https://arledscreen.com
 TR: https://arledscreen.com/tr/
-Basın / NAP: https://arledscreen.com/tr/basin/
 entity.json: https://arledscreen.com/entity.json
 Harita: https://www.google.com/maps/search/?api=1&query=41.0538876%2C28.9121358
 Çalışma: Pazartesi–Cuma 09:00–18:00 · Cumartesi 10:00–15:00
@@ -69,23 +69,23 @@ Bu yapılmadan “ARLEDSCREEN kimdir?” cevabı iki domain arasında bölünür
 
 ## 0c) Hedef atıf cümlesi (10–20 kaynakta aynı olgu)
 
-Abartısız, kopyalanabilir (site `/tr/basin/` ve `entity.json` ile birebir):
+Abartısız, kopyalanabilir (`entity.json` ile birebir):
 
 ```text
 ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve
 teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
-Kaynak özeti: https://arledscreen.com/tr/basin/
+Kaynak: https://arledscreen.com/entity.json
 ```
 
-Daha uzun varyantlar: https://arledscreen.com/tr/basin/ → “Üçüncü taraf profiller için yapıştırma metinleri”
+Daha uzun varyantlar: bu dosyada §1 GBP, §3 LinkedIn/Instagram pack’leri.
 
 ---
 
 ## 0d) 20 bağımsız kaynak takip listesi
 
-Birinci taraf (zaten var — tek başına yetmez): site, basin, entity.json, llms.txt.
+Birinci taraf (zaten var — tek başına yetmez): site, entity.json, llms.txt.
 
-| # | Kaynak tipi | Aksiyon (yapıştırma metni basin’de) | Durum | Canlı URL |
+| # | Kaynak tipi | Aksiyon (yapıştırma metni playbook’ta) | Durum | Canlı URL |
 |---|---|---|---|---|
 | 1 | Google Business Profile | Açıklama = orta cite; web = arledscreen.com/tr/ | [ ] | |
 | 2 | Bing Places / Microsoft | Aynı NAP | [ ] | |
@@ -94,10 +94,10 @@ Birinci taraf (zaten var — tek başına yetmez): site, basin, entity.json, llm
 | 5 | Instagram | @arledscreen bio pack | [ ] | https://www.instagram.com/arledscreen |
 | 6 | Facebook | arledscreenn About = orta cite + NAP | [ ] | https://www.facebook.com/arledscreenn |
 | 7 | YouTube kanalı | About + banner; sonra schema `sameAs` | [ ] | |
-| 8 | TR işletme / sektör dizini #1 | Kısa + uzun dizin pack + basin link | [ ] | |
+| 8 | TR işletme / sektör dizini #1 | Kısa + uzun dizin pack + entity.json | [ ] | |
 | 9 | TR işletme / sektör dizini #2 | Farklı domain | [ ] | |
 | 10 | Yerel İstanbul / Gaziosmanpaşa dizini | Tabela / LED kategori | [ ] | |
-| 11 | Global üretici/uygulayıcı listesi | Inclusion + basin | [ ] | |
+| 11 | Global üretici/uygulayıcı listesi | Inclusion + entity.json | [ ] | |
 | 12 | Haber / fuar notu #1 | Müşteri onaylı; tek cümle + link | [ ] | |
 | 13 | Haber #2 | Farklı yayın | [ ] | |
 | 14 | Müşteri web referansı #1 | “LED ekran: ARLEDSCREEN” + link | [ ] | |
@@ -114,20 +114,20 @@ Birinci taraf (zaten var — tek başına yetmez): site, basin, entity.json, llm
 
 ## 0e) İlk 14 gün — sahip aksiyon sırası (P0)
 
-Kod tarafı hazır (`/tr/basin/`, `entity.json`, playbook). Sıra operasyonda:
+Kod tarafı hazır (`entity.json`, playbook). Sıra operasyonda:
 
 | Gün | İş | Neden |
 |---|---|---|
 | 1 | `arleds.com` → `arledscreen.com/tr/` 301 | Entity bölünmesini kes |
 | 1–2 | GBP oluştur/doldur: kategori, NAP, saat, WhatsApp, web, orta cite | Maps + yerel AI |
-| 2 | LinkedIn şirket About + kurucu Featured’a basin link | Sosyal entity |
+| 2 | LinkedIn şirket About + kurucu Featured’a entity.json | Sosyal entity |
 | 2 | Instagram bio + Facebook About aynı pack | Tutarlılık |
 | 3–5 | GBP’ye 20+ gerçek foto (fabrika/montaj/proje) | Güven sinyali |
 | 3–7 | 2 sektör/yerel dizin başvurusu (aşağıdaki e-posta) | İlk bağımsız domain’ler |
 | 7–14 | 1 müşteri sitesi mention + 1 yerel haber/fuar denemesi | Gerçek 3. taraf |
 | Sürekli | Teslim sonrası etik Google yorum daveti | Yorum = bağımsız kanıt |
 
-Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + basin URL** koyun.
+Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** koyun.
 
 ---
 
@@ -138,7 +138,7 @@ Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + basin URL** koy
 - [ ] İkincil: Tabela, görsel iletişim vb. (gerçek hizmetlerle uyumlu)
 - [ ] Adres / telefon / web / saatler = yukarıdaki NAP
 - [ ] Web: `https://arledscreen.com/tr/` (arleds.com değil)
-- [ ] Açıklama: basin “Kısa” veya “Orta” pack (birebir)
+- [ ] Açıklama: playbook §1 GBP pack (birebir)
 - [ ] WhatsApp iş bağlantısı
 - [ ] Hizmetler: LED ekran satışı, montaj, kiralama, teknik servis, keşif
 - [ ] Ürünler: iç/dış, GOB, esnek, kiralık (site URL’leriyle)
@@ -184,7 +184,7 @@ Anahtar kelime yazmanıza gerek yok — kendi cümleleriniz yeterli.
 ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
 
 Web: https://arledscreen.com/tr/
-Basın / NAP: https://arledscreen.com/tr/basin/
+Doğrulama: https://arledscreen.com/entity.json
 Telefon: +90 530 507 88 34
 ```
 
@@ -200,7 +200,7 @@ Her major proje için aynı paket:
 1. Case study URL (`/tr/projelerimiz/...`)
 2. LinkedIn şirket + kurucu post (ölçü, şehir, tarih — abartı yok)
 3. Instagram carousel / Reel
-4. YouTube Short + uzun montaj (transcript ile); kanal açılınca `sameAs` + `/tr/basin/` güncelle
+4. YouTube Short + uzun montaj (transcript ile); kanal açılınca `sameAs` güncelle
 5. GBP post
 
 Şablon cümle:
@@ -219,11 +219,11 @@ Hedef tip (spam directory satın almayın):
 
 | Tip | Örnek aksiyon | Anchor |
 |---|---|---|
-| TR LED / AV / işletme portalı | Listeye başvuru + basin | ARLEDSCREEN |
+| TR LED / AV / işletme portalı | Listeye başvuru + entity.json | ARLEDSCREEN |
 | Yerel işletme | Gaziosmanpaşa / İstanbul dijital tabela | ARLEDSCREEN İstanbul |
 | Ticaret / fuar | Katılımcı listesi, basın bülteni | ARLEDSCREEN |
 | Mimarlık / ProAV | Proje özeti gönderimi | proje adı + ARLEDSCREEN |
-| Global LED listeleri | Düzeltme / inclusion + basin | ARLEDSCREEN |
+| Global LED listeleri | Düzeltme / inclusion + entity.json | ARLEDSCREEN |
 
 Başvuru e-postası:
 
@@ -238,11 +238,10 @@ Kısa özet:
 ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve
 teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
 
-Doğrulama: https://arledscreen.com/tr/basin/
-Makinece: https://arledscreen.com/entity.json
+Doğrulama: https://arledscreen.com/entity.json
 Web: https://arledscreen.com/tr/
 Telefon: +90 530 507 88 34
-NAP ve sosyal profiller basin sayfasında birebir.
+NAP bu playbook §0 bloğu ile birebir.
 
 Teşekkürler
 Aras Bozkurt
@@ -262,7 +261,7 @@ Haber için önerilen cümle (müşteri onayıyla):
 
 ```text
 LED ekran uygulaması ARLEDSCREEN (İstanbul Gaziosmanpaşa) tarafından gerçekleştirildi.
-https://arledscreen.com/tr/basin/
+https://arledscreen.com/entity.json
 ```
 
 ---
@@ -294,7 +293,7 @@ Aynı cümlenin çeşitleri (abartısız) şuralarda görünsün:
 7. 2–3 haber / fuar  
 8. 2+ müşteri sitesi mention  
 9. Bing Places (varsa)  
-10. basin + entity.json + llms.txt (birinci taraf; tek başına yetmez)
+10. entity.json + llms.txt (birinci taraf; tek başına yetmez)
 
 Kontrol soruları (ayda bir, tarayıcı/incognito + Perplexity/ChatGPT):
 

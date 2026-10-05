@@ -39,7 +39,6 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/projelerimiz/", label: "Projeler" },
         { href: "/tr/rehber/", label: "Rehber" },
         { href: "/tr/about/", label: "Hakkımızda" },
-        { href: "/tr/basin/", label: "Basın kiti" },
         { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
         { href: "/tr/quote/", label: "Teklif iste" },
         { href: "/tr/sss/", label: "SSS" },
@@ -221,12 +220,6 @@ export function Footer({ locale }: FooterProps) {
         </p>
         {tr ? (
           <p className="mt-2">
-            <a href="/entity.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              entity.json
-            </a>
-            <span className="text-white/30" aria-hidden>
-              ·
-            </span>
             <a href="/llms.txt" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
               llms.txt
             </a>

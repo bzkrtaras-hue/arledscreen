@@ -1,6 +1,6 @@
 /**
  * Canonical ARLEDSCREEN entity / citation facts.
- * Keep identical meaning with public/entity.json, /tr/basin/, llms.txt, and off-site bios.
+ * Keep identical meaning with public/entity.json, llms.txt, and off-site bios.
  * Do not invent ratings, certificates, headcount, or “Türkiye’nin en…” claims.
  */
 
@@ -65,7 +65,7 @@ export const ENTITY_PROFILE_PACKS = {
   linkedinAbout: `${ENTITY_CITE_MEDIUM}
 
 Web: https://arledscreen.com/tr/
-Basın / NAP: https://arledscreen.com/tr/basin/
+Doğrulama: https://arledscreen.com/entity.json
 Telefon: ${CONTACT_PHONE_DISPLAY}`,
   instagramBio: "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
   facebookAbout: ENTITY_CITE_MEDIUM,
@@ -76,11 +76,11 @@ Adres: ${BUSINESS_ADDRESS.streetAddress}, ${BUSINESS_ADDRESS.postalCode} ${BUSIN
 Telefon: ${CONTACT_PHONE_DISPLAY}
 E-posta: ${CONTACT_EMAIL}
 Web: https://arledscreen.com/tr/
-Doğrulama: https://arledscreen.com/tr/basin/`,
+Doğrulama: https://arledscreen.com/entity.json`,
   youtubeAbout: `${ENTITY_CITE_SHORT}
 
 Site: https://arledscreen.com/tr/
-Basın kiti: https://arledscreen.com/tr/basin/`,
+Entity: https://arledscreen.com/entity.json`,
 } as const;
 
 export type EntityDocument = {
@@ -157,7 +157,7 @@ export function buildEntityDocument(): EntityDocument {
       url: `${SITE_URL}/tr/nxtionstar/`,
     },
     founder: { "@type": "Person", name: "Aras Bozkurt" },
-    citationPage: `${SITE_URL}/tr/basin/`,
+    citationPage: `${SITE_URL}/tr/about/`,
     llmsTxt: `${SITE_URL}/llms.txt`,
     entityJson: `${SITE_URL}/entity.json`,
     citeOneLiner: ENTITY_CITE_ONE_LINER,

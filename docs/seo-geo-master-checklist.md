@@ -32,23 +32,22 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 ## P1 — Local / reviews (owner-operated)
 
 Detaylı playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)  
-Atıf sayfası: `/tr/basin/`
+Makinece atıf: `/entity.json` · metin: `/llms.txt`
 
 - [ ] Google Business Profile: categories, hours, WhatsApp, 50+ real photos, services
 - [ ] Ethical review request flow after install (no keyword stuffing scripts)
 - [ ] GBP posts mirroring each new case study
 - [ ] NAP identical on GBP, site footer, llms.txt, LinkedIn, Instagram, Facebook
-- [x] On-site citeable brand fact page (`/tr/basin/`) + off-site playbook in repo
+- [x] Off-site playbook + `entity.json` in repo (public basin sayfası yok)
 
 ## P1/P2 — Off-site entity & mentions (owner + PR) — **Point C**
 
 Hedef: “ARLEDSCREEN kimdir?” cevabı **yalnızca kendi siteden** gelmesin; 10–20 güvenilir dış kaynakta aynı olgu doğrulansın.
 
-- [x] On-site citation kit: `/tr/basin/` + FAQ “kimdir?” + yapıştırma pack’leri
 - [x] Machine-readable `public/entity.json` (Organization + cite + FAQs)
-- [x] Off-site playbook: gap audit + 14-gün P0 sıra + 20-kaynak tracker
+- [x] Off-site playbook: gap audit + 14-gün P0 sıra + 20-kaynak tracker (yapıştırma metinleri repo içi)
 - [ ] **Owner P0:** `arleds.com` → `arledscreen.com/tr/` 301 (entity bölünmesini kes)
-- [ ] **Owner P0:** GBP + LinkedIn/IG/FB About = basin pack (aynı NAP)
+- [ ] **Owner P0:** GBP + LinkedIn/IG/FB About = playbook pack (aynı NAP)
 - [ ] LinkedIn company + founder posts per major project
 - [ ] Instagram / YouTube: install clips with transcript + embed on case study
 - [ ] Pitch ARLEDSCREEN to sector lists / AV portals / local news (no spam directories)
