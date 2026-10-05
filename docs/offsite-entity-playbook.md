@@ -32,6 +32,63 @@ Karıştırma yasağı: Almanya ARLED Solutions GmbH / ARLED Cinema · Next&Next
 
 ---
 
+## 0b) Domain birleştirme (kritik entity notu)
+
+Aynı telefon (+90 530 507 88 34) ile görünen eski/yan site **arleds.com** hâlâ indekste rakip/kafa karışıklığı yaratabilir.
+Önceki karar: TLS/redirect yoksa `sameAs`’a eklenmez.
+
+- [ ] `https://arleds.com` → `https://arledscreen.com/tr/` **301** (tüm sayfalar)
+- [ ] www/http varyantları da apex’e
+- [ ] GSC’de eski domain property varsa adres değişikliği / sitemap temizliği
+- [ ] Bio/GBP/web alanında yalnızca `arledscreen.com`
+
+Bu yapılmadan “ARLEDSCREEN kimdir?” cevabı iki domain arasında bölünür.
+
+---
+
+## 0c) Hedef atıf cümlesi (10–20 kaynakta aynı olgu)
+
+Abartısız, kopyalanabilir:
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve
+teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
+Kaynak özeti: https://arledscreen.com/tr/basin/
+```
+
+---
+
+## 0d) 20 bağımsız kaynak takip listesi
+
+Birinci taraf (zaten var — tek başına yetmez): site, llms.txt, basin, LinkedIn şirket, Instagram, Facebook.
+
+| # | Kaynak tipi | Örnek / aksiyon | Durum |
+|---|---|---|---|
+| 1 | Google Business Profile | Dolu profil + foto + hizmetler | [ ] |
+| 2 | Bing Places / Microsoft | Aynı NAP | [ ] |
+| 3 | LinkedIn şirket | company/arleds — About = atıf cümlesi | [ ] |
+| 4 | LinkedIn kurucu | bozkurtaras — şirket linki + proje postları | [ ] |
+| 5 | Instagram | @arledscreen bio + site | [ ] |
+| 6 | Facebook | arledscreenn About = NAP | [ ] |
+| 7 | YouTube kanalı | About + banner; sonra `sameAs` | [ ] |
+| 8 | TR LED/AV portal listesi | Inclusion + basin link | [ ] |
+| 9 | Global üretici listesi (örn. LEGIDATECH tipi) | Düzeltme/ekleme talebi | [ ] |
+| 10 | Yerel İstanbul işletme dizini | Gaziosmanpaşa / tabela kategorisi | [ ] |
+| 11 | 2. yerel / sektör dizini | Farklı domain | [ ] |
+| 12 | Haber / fuar notu | Ordu Günleri, belediye, otel — müşteri onaylı | [ ] |
+| 13 | 2. haber | Farklı yayın | [ ] |
+| 14 | Müşteri web referansı | “LED ekran: ARLEDSCREEN” + link | [ ] |
+| 15 | 2. müşteri referansı | Farklı domain | [ ] |
+| 16 | PDF datasheet host | `arledscreen.com` + 3. taraf katalogda cite | [ ] |
+| 17 | Ticaret/fuar katılımcı listesi | İsim + URL | [ ] |
+| 18 | ProAV / mimarlık yayını | Proje özeti | [ ] |
+| 19 | Harita/ek dizin (Apple/Maps uyumu) | NAP aynı | [ ] |
+| 20 | Wikidata **yalnızca** notability varsa | Zorlamayın; yoksa atlayın | [ ] opsiyonel |
+
+Başarı ölçütü: “ARLEDSCREEN kimdir?” / “İstanbul LED ekran firmaları” sorusunda **kendi siteniz dışında ≥5–10 güvenilir URL** aynı olguyu taşır.
+
+---
+
 ## 1) Google Business Profile (P0)
 
 - [ ] İşletme adı: ARLEDSCREEN (GBP kurallarına uygun; keyword stuffing yok)
