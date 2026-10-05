@@ -15,6 +15,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] Ay sonu ölçüm panosu + canlı smoke: [`docs/ai-alisveris-ay-sonu-pano.md`](./ai-alisveris-ay-sonu-pano.md) (`npm run smoke:live`)
 - [x] Kör test skor kartı şablonu: [`docs/ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 - [x] AI artefact headers: CORS + Content-Type + CORP (`npm run audit:ai-headers`)
+- [x] IndexNow key + post-merge Bing ping (`npm run indexnow` · [`docs/indexnow.md`](./indexnow.md))
 - [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok) — checklist: [`docs/merchant-priced-panels.md`](./merchant-priced-panels.md); dry-run TSV: `/feeds/merchant-priced-panels.tsv` (`audit:merchant-feed`)
 - [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn) — packs: `/entity-profiles.json`
 - [ ] **Owner:** `arleds.com` → `arledscreen.com/tr/` 301

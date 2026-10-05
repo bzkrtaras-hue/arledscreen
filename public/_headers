@@ -85,6 +85,10 @@
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
+/e8e6f86598e94e95a323f807c39843ad.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8
+
 # Self-hosted price calculator (embedded same-origin on /<locale>/hesaplayici/).
 # Voice input (Web Speech API) needs the microphone: allowed for this origin only,
 # both on the calculator document and on the pages that embed it (iframe allow="microphone").

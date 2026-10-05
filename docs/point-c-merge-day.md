@@ -15,7 +15,7 @@ Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/
 npm run smoke:live
 ```
 
-Hedef: **12/12 PASS** (veya ≥11; sitemap zaten yeşil).
+Hedef: **13/13 PASS** (veya ≥12; sitemap + IndexNow key).
 
 | URL | Beklenen |
 |-----|----------|
@@ -26,6 +26,7 @@ Hedef: **12/12 PASS** (veya ≥11; sitemap zaten yeşil).
 | `/llms.txt` | cite + entity-profiles.json |
 | `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · `32.18 USD` |
 | `/tr/about/` · `/tr/yapay-zeka/` · `/tr/led-ekran-fiyatlari/` | entity + catalog link |
+| IndexNow key `.txt` | 200 · key body |
 
 Hızlı curl:
 
@@ -35,6 +36,14 @@ for u in entity.json entity-profiles.json catalog.json .well-known/ard.json feed
   echo "$code  /$u"
 done
 ```
+
+## 1b) IndexNow ping (smoke yeşil olduktan sonra)
+
+```bash
+npm run indexnow -- --live
+```
+
+Dokümantasyon: [`indexnow.md`](./indexnow.md) — Bing’e AI artefact URL’lerini bildirir (entity/catalog/ard/…).
 
 ## 2) Point C yapıştırma (aynı NAP / cite)
 

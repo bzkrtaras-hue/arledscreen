@@ -154,6 +154,21 @@
       "tags": ["entity", "Point-C", "GBP", "LinkedIn", "NAP"],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T20:10:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:ops:indexnow",
+      "displayName": "IndexNow key (post-deploy AI artefact recrawl)",
+      "type": "text/plain",
+      "url": "https://arledscreen.com/e8e6f86598e94e95a323f807c39843ad.txt",
+      "description": "IndexNow doğrulama anahtarı. Deploy sonrası Bing/ortaklar için entity/catalog/ard/merchant URL ping: npm run indexnow -- --live. Spam URL yok.",
+      "representativeQueries": [
+        "ARLEDSCREEN IndexNow",
+        "Bing recrawl catalog.json ARLEDSCREEN"
+      ],
+      "tags": ["indexnow", "bing", "ops", "shopping"],
+      "capabilities": ["IndexNowPing"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-05T20:30:00Z"
     }
   ]
 }

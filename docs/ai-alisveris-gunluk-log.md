@@ -35,6 +35,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 43 | 2026-10-05 | Deploy artifact guard + blind-test skor kartı | ✅ |
 | 44 | 2026-10-05 | AI headers parity (CORS+Content-Type) + `audit:ai-headers` | ✅ |
 | 45 | 2026-10-05 | Org hasOfferCatalog + sitemap AI artefacts + SEO-guide LinkCloud | ✅ |
+| 46 | 2026-10-05 | IndexNow key + ping script + `audit:indexnow` (post-merge Bing) | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -156,3 +157,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Head discovery: absolute artefact hrefs + `llms-full.txt` alternate
 - LinkCloud default: ard.json + Merchant TSV
 - Guards: shopping-links + faq + sitemap + entity sameAs hasOfferCatalog
+
+## Gün 46 notları
+
+- IndexNow key `public/<hex>.txt` + `npm run indexnow` (dry-run / `--live`)
+- `audit:indexnow` postbuild + suite (16 audit)
+- `ard.json` IndexNow discovery entry
+- `smoke:live` IndexNow key check (13 endpoint)
+- Merge-gün: smoke GREEN → `indexnow -- --live` — [`indexnow.md`](./indexnow.md)

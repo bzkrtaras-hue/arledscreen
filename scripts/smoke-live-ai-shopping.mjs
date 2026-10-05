@@ -20,7 +20,8 @@ const CHECKS = [
   { id: "fiyat", url: `${SITE}/tr/led-ekran-fiyatlari/`, expect: "html", mustInclude: ["catalog.json"] },
   { id: "yapay-zeka", url: `${SITE}/tr/yapay-zeka/`, expect: "html", mustInclude: ["entity.json", "catalog.json"] },
   { id: "about", url: `${SITE}/tr/about/`, expect: "html", mustInclude: ["entity.json", "catalog.json"] },
-  { id: "sitemap", url: `${SITE}/sitemap.xml`, expect: "xml", mustInclude: ["led-ekran-fiyatlari"] },
+  { id: "sitemap", url: `${SITE}/sitemap.xml`, expect: "xml", mustInclude: ["led-ekran-fiyatlari", "catalog.json"] },
+  { id: "indexnow-key", url: `${SITE}/e8e6f86598e94e95a323f807c39843ad.txt`, expect: "text", mustInclude: ["e8e6f86598e94e95a323f807c39843ad"] },
 ];
 
 async function check(c) {

@@ -1,4 +1,4 @@
-# AI alışveriş regression suite (Gün 29 → güncellendi Gün 45)
+# AI alışveriş regression suite (Gün 29 → güncellendi Gün 46)
 
 Son güncelleme: 2026-10-05  
 Komut: `npm run audit:all` (build sonrası) · postbuild zinciri aynı guard’ları çalıştırır
@@ -11,7 +11,7 @@ npm run build          # üretir + postbuild audit’leri
 npm run audit:all
 ```
 
-`scripts/audit-ai-shopping-suite.mjs` 15 audit’i sırayla çalıştırır ve tablo basar:
+`scripts/audit-ai-shopping-suite.mjs` 16 audit’i sırayla çalıştırır ve tablo basar:
 
 | Audit | Gün / katman |
 |-------|----------------|
@@ -30,18 +30,20 @@ npm run audit:all
 | cite-parity | 26 entity↔llms↔profiles |
 | merchant-feed | 27 GMC TSV 12 SKU |
 | ai-headers | 44 CORS + Content-Type + CORP |
+| indexnow | 46 IndexNow key out/ |
 
 Çıkış kodu: herhangi biri FAIL → `1` (CI kırmızı).
 
 ## Canlı ölçüm
 
 ```bash
-npm run smoke:live          # 12 endpoint
+npm run smoke:live          # 13 endpoint (+ IndexNow key)
 npm run point-c-packs       # local paste packs
 npm run point-c-packs -- --live   # deploy sonrası
+npm run indexnow -- --live  # Bing recrawl AI artefacts (smoke GREEN sonrası)
 ```
 
-Merge-gün checklist: [`point-c-merge-day.md`](./point-c-merge-day.md)
+Merge-gün checklist: [`point-c-merge-day.md`](./point-c-merge-day.md) · IndexNow: [`indexnow.md`](./indexnow.md)
 
 ## Owner hâlâ bloklayanlar (suite yeşil olsa bile)
 
