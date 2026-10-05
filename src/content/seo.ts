@@ -53,13 +53,19 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "Serileri kullanım alanına göre grupladık. Projenize uygun modelin teknik föyünü ve fiyatını teklifle birlikte paylaşıyoruz.",
     },
     about: {
-      title: "Hakkımızda | ARLEDSCREEN – NXTIONSTAR Markasının Sahibi",
+      title: "Hakkımızda | ARLEDSCREEN & NXTIONSTAR | LED Ekran Teknoloji Merkezi",
       description:
-        "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İstanbul Gaziosmanpaşa merkezli; LED ekran satışı, keşif, montaj ve teknik servis.",
-      keywords: ["ARLEDSCREEN", "NXTIONSTAR LED ekran", "LED ekran firması İstanbul"],
-      h1: "ARLEDSCREEN hakkında",
+        "ARLEDSCREEN, LED ekran çözümlerini NXTIONSTAR kalitesiyle sunar. İstanbul üretim, uçtan uca proje yönetimi ve Türkiye’nin 81 ilinde bayi–servis ağı.",
+      keywords: [
+        "ARLEDSCREEN",
+        "NXTIONSTAR LED ekran",
+        "LED ekran firması İstanbul",
+        "Bozkurt Global",
+        "LED ekran montaj",
+      ],
+      h1: "ARLEDSCREEN & NXTIONSTAR",
       intro:
-        "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır. ARLEDSCREEN, Türkiye'deki tek satış noktası olarak ürün seçimi, keşif, montaj ve teknik servis süreçlerini yürütür.",
+        "ARLEDSCREEN, LED ekran çözümlerini NXTIONSTAR kalitesi ve güvencesiyle sunar. Keşiften satış sonrası teknik servise kadar uçtan uca yönetir.",
     },
     hesaplayici: {
       title: "LED Ekran Fiyat Hesaplayıcı | Malzeme & Maliyet | ARLEDSCREEN",

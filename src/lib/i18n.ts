@@ -329,16 +329,16 @@ const en: Dictionary = {
   },
   about: {
     eyebrow: "Company",
-    title: "ARLEDSCREEN — NXTIONSTAR LED engineering in Turkey",
+    title: "ARLEDSCREEN & NXTIONSTAR",
     description:
-      "ARLEDSCREEN delivers NXTIONSTAR LED systems in Turkey. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage.",
+      "ARLEDSCREEN delivers LED display solutions with NXTIONSTAR quality and assurance — Istanbul production, end-to-end project management.",
     body:
-      "From fine-pitch command centers to IP65 outdoor LED and totem installs, our desk pairs product choice with viewing distance, power topology and a clear BOM. We serve integrators, agencies and facility owners who need field-ready engineering — not showroom theatre.",
+      "Part of the Bozkurt Global family of companies: site survey, infrastructure planning, custom build and install, plus dealer and service coverage across Turkey’s 81 provinces.",
     cta: "Read more about us",
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },
-      { value: "Istanbul", label: "Gaziosmanpaşa HQ" },
-      { value: "Turnkey", label: "Survey · install · service" },
+      { value: "81 provinces", label: "Dealer & service network" },
+      { value: "End-to-end", label: "Survey · install · service" },
     ],
   },
   references: {
@@ -631,16 +631,16 @@ const tr: Dictionary = {
   },
   about: {
     eyebrow: "Kurum",
-    title: "LED ekran teknoloji merkezi — ARLEDSCREEN",
+    title: "ARLEDSCREEN & NXTIONSTAR",
     description:
-      "ARLEDSCREEN, NXTIONSTAR LED ekran teknolojisini kurumsal projelerde ürün, keşif, montaj ve teknik destekle tek çatı altında yürütür.",
+      "ARLEDSCREEN, LED ekran çözümlerini NXTIONSTAR kalitesi ve güvencesiyle sunar. İstanbul üretim; keşiften satış sonrası servise uçtan uca yönetim.",
     body:
-      "Toplantı salonlarından dış mekân cephelere, totem ve sahne kurulumlarına kadar ürün seçimini izleme mesafesi, güç planı ve net malzeme listesiyle birlikte ele alıyoruz. Amacımız, sahada sorunsuz çalışan ve bakımı planlanmış LED ekran sistemleri kurmak.",
+      "Bozkurt Global aile şirketleri bünyesinde; saha keşfi, teknik altyapı, özel üretim–montaj ve 81 ildeki bayi–servis ağımızla LED ekran projelerini hayata geçiriyoruz.",
     cta: "Hakkımızda daha fazla",
     stats: [
       { value: "NXTIONSTAR", label: "Kendi markamız" },
-      { value: "İstanbul", label: "Gaziosmanpaşa merkez" },
-      { value: "Anahtar teslim", label: "Keşif · montaj · servis" },
+      { value: "81 il", label: "Bayi ve servis ağı" },
+      { value: "Uçtan uca", label: "Keşif · montaj · servis" },
     ],
   },
   references: {
