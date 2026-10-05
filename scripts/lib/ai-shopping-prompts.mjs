@@ -196,6 +196,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
     mustNotSay: ["engineering standard", "mühendislik standardı", "küresel standard", "Türkiye'nin en"],
   },
+  {
+    id: 26,
+    q: "NXTIONSTAR mı ARLEDSCREEN mi satıyor?",
+    paths: ["/tr/nxtionstar/", "/entity.json", "/tr/about/", "/llms-full.txt"],
+    mustSay: ["ARLEDSCREEN", "ürün markası", "Gaziosmanpaşa"],
+    mustNotSay: ["NXTIONSTAR satar", "bağımsız firma", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

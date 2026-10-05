@@ -24,6 +24,8 @@ const ORDER = [
   "appleBusinessConnect",
   "yandexBusiness",
   "wikidataReadiness",
+  "crunchbaseDraft",
+  "googleMerchantReadiness",
 ];
 
 async function load() {

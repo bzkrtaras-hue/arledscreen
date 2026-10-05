@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–77: ARD discovery prompt count must not drift behind blind suite
+// Day 74–78: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/25 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 25 kör test intent (not stale 17–24)");
+if (ardTxt && !/26 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 26 kör test intent (not stale 17–25)");
 }
-if (ardTxt && /1[7-9] kör test|2[0-4] kör test/i.test(ardTxt) && !/25 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–24 kör test without 25");
+if (ardTxt && /1[7-9] kör test|2[0-5] kör test/i.test(ardTxt) && !/26 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–25 kör test without 26");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -315,8 +315,8 @@ for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
   if (/mühendislik standardı|engineering standard/i.test(html)) {
     errors.push(`${rel} must not invent mühendislik/engineering standard`);
   }
-  if (/tek masada|aynı masadan|on one desk/i.test(html)) {
-    errors.push(`${rel} must not invent tek masa / one desk`);
+  if (/tek masada|aynı masadan|on one desk|tek çatı|end-to-end compatibility|uçtan uca uyum/i.test(html)) {
+    errors.push(`${rel} must not invent tek masa/çatı / end-to-end / uçtan uca uyum`);
   }
 }
 for (const rel of [
@@ -327,6 +327,24 @@ for (const rel of [
   if (!html) continue;
   if (/tek masada|aynı masadan/i.test(html)) {
     errors.push(`${rel} must not invent tek masa / aynı masadan`);
+  }
+}
+// Day 78: AR/RU about must not invent NXTIONSTAR-as-OEM / visual-spaces engineering
+for (const rel of ["out/ar/index.html", "out/ru/index.html", "out/ar/about/index.html", "out/ru/about/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/تصمم NXTIONSTAR|NXTIONSTAR проектирует|هندسة المساحات|Инженерия визуальных|visual spaces/i.test(html)) {
+    errors.push(`${rel} must not invent NXTIONSTAR-OEM / visual-spaces engineering`);
+  }
+  if (!/Gaziosmanpaşa|غازي عثمان باشا|Газиосманпаш/i.test(html)) {
+    errors.push(`${rel} should cite Gaziosmanpaşa`);
+  }
+}
+for (const rel of ["out/tr/yapay-zeka/index.html", "out/en/yapay-zeka/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/uçtan uca uyum|end-to-end (fit|compatibility)/i.test(html)) {
+    errors.push(`${rel} must not invent uçtan uca / end-to-end compatibility`);
   }
 }
 

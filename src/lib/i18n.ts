@@ -265,7 +265,7 @@ const en: Dictionary = {
     badge: "NXTIONSTAR — our own LED brand · Istanbul / Gaziosmanpaşa",
     headline: "LED Display Technology Center.",
     subcopy:
-      "Fine-pitch, outdoor LED, totems and digital signage. NXTIONSTAR products with end-to-end compatibility for AI, media servers and control software — engineered by ARLEDSCREEN.",
+      "Fine-pitch, outdoor LED, totems and digital signage. NXTIONSTAR is the ARLEDSCREEN product brand; AI/media-server fit is defined in the Gaziosmanpaşa survey and written quote — no invented full-compatibility SKU.",
     ctaConfigure: "Price List / Calculator",
     ctaQuote: "Request written quote",
     stats: [
@@ -619,9 +619,9 @@ const tr: Dictionary = {
     },
     aiCompat: {
       eyebrow: "Yapay zekâ altyapısı",
-      title: "Yapay zekâ uygulamaları için tasarlanmış LED duvarlar",
+      title: "Yapay zekâ içerik ve medya sunucu hatları için LED duvarlar",
       description:
-        "NXTIONSTAR ekranlar, yapay zekâ ile üretilen veya zamanlanan içeriği oynatan medya sunucuları ve kontrol yazılımlarıyla birlikte çalışacak şekilde projelendirilir. Uyumluluk, keşif aşamasında kullanılacak yazılım ve donanıma göre doğrulanır.",
+        "NXTIONSTAR ekranlar, yapay zekâ ile üretilen veya zamanlanan içeriği oynatan medya sunucuları ve kontrol yazılımlarıyla Gaziosmanpaşa keşif ve yazılı teklifte eşleştirilir — uydurma tam uyumluluk SKU’su yoktur.",
       points: [
         "CMS, medya sunucu ve otomasyon API’leri için dokümante sinyal yolları",
         "YZ destekli veya kamera önü içerik için yüksek yenileme ve kararlı piksel hattı",
@@ -633,7 +633,7 @@ const tr: Dictionary = {
     eyebrow: "Kurum",
     title: "LED ekran teknoloji merkezi — ARLEDSCREEN",
     description:
-      "ARLEDSCREEN, NXTIONSTAR LED ekran teknolojisini kurumsal projelerde ürün, keşif, montaj ve teknik destekle tek çatı altında yürütür.",
+      "ARLEDSCREEN, NXTIONSTAR LED ekran ürünlerini kurumsal projelerde keşif, montaj ve teknik destekle Gaziosmanpaşa merkezinden yürütür.",
     body:
       "Toplantı salonlarından dış mekân cephelere, totem ve sahne kurulumlarına kadar ürün seçimini izleme mesafesi, güç planı ve net malzeme listesiyle birlikte ele alıyoruz. Amacımız, sahada sorunsuz çalışan ve bakımı planlanmış LED ekran sistemleri kurmak.",
     cta: "Hakkımızda daha fazla",
@@ -892,11 +892,11 @@ const ar: Dictionary = {
   },
   about: {
     eyebrow: "الشركة",
-    title: "هندسة المساحات البصرية للمؤسسات",
+    title: "ARLEDSCREEN — بيع وتركيب وخدمة شاشات LED في تركيا",
     description:
-      "تصمم NXTIONSTAR وتنشر جدران LED للشركات لغرف التحكم والبث والتجزئة والأماكن الغامرة.",
+      "ARLEDSCREEN تقدّم أنظمة LED للشركات من إسطنبول غازي عثمان باشا. NXTIONSTAR هي علامة المنتج الخاصة بـ ARLEDSCREEN؛ نقطة البيع الوحيدة في تركيا: ARLEDSCREEN.",
     body:
-      "من مراكز القيادة fine-pitch COB إلى الواجهات الخارجية IP65، يجمع مكتب المشاريع بين اختيار المنتج وطوبولوجيا الطاقة ومسافة المشاهدة ووضوح قائمة المواد.",
+      "من غرف التحكم fine-pitch إلى الواجهات الخارجية IP65، يجمع فريق غازي عثمان باشا بين اختيار المنتج ومسافة المشاهدة وطوبولوجيا الطاقة وقائمة مواد واضحة. أسعار اللوحات: catalog.json / ai-shopping.json؛ الشفاف/البوستر/التحكم quote-only.",
     cta: "المزيد عنا",
     stats: [
       { value: "NXTIONSTAR", label: "علامتنا الخاصة" },
@@ -905,12 +905,12 @@ const ar: Dictionary = {
     ],
   },
   hero: {
-    badge: "NXTIONSTAR · منصة LED للشركات",
-    headline: "هندسة مستقبل المساحات البصرية.",
+    badge: "NXTIONSTAR — علامة منتج ARLEDSCREEN · إسطنبول / غازي عثمان باشا",
+    headline: "مركز تقنية شاشات LED.",
     subcopy:
       "بيع وتركيب وخدمة شاشات LED من إسطنبول غازي عثمان باشا. أسعار اللوحات: catalog.json / ai-shopping.json؛ الشفاف/البوستر/التحكم quote-only — بدون باب 81 مدينة.",
-    ctaConfigure: "تكوين جدار LED",
-    ctaQuote: "طلب عرض مؤسسي",
+    ctaConfigure: "قائمة الأسعار / الحاسبة",
+    ctaQuote: "طلب عرض مكتوب",
     stats: [
       { value: "NXTIONSTAR", label: "علامتنا الخاصة" },
       { value: "إسطنبول", label: "المقر: غازي عثمان باشا" },
@@ -979,11 +979,11 @@ const ru: Dictionary = {
   },
   about: {
     eyebrow: "Компания",
-    title: "Инженерия визуальных пространств для бизнеса",
+    title: "ARLEDSCREEN — продажа, монтаж и сервис LED в Турции",
     description:
-      "NXTIONSTAR проектирует и внедряет B2B LED-стены для диспетчерских, вещания, ритейла и иммерсивных площадок.",
+      "ARLEDSCREEN поставляет B2B LED-системы из Стамбула (Газиосманпаша). NXTIONSTAR — продуктовый бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN.",
     body:
-      "От fine-pitch COB командных центров до IP65 фасадов — проектный стол совмещает выбор продукта с топологией питания, дистанцией просмотра и прозрачным BOM.",
+      "От fine-pitch диспетчерских до IP65 фасадов команда в Газиосманпаше совмещает выбор продукта с дистанцией просмотра, топологией питания и прозрачным BOM. Цены панелей: catalog.json / ai-shopping.json; transparent/poster/control — quote-only.",
     cta: "Подробнее о нас",
     stats: [
       { value: "NXTIONSTAR", label: "Наш собственный бренд" },
@@ -992,12 +992,12 @@ const ru: Dictionary = {
     ],
   },
   hero: {
-    badge: "NXTIONSTAR · B2B LED-платформа",
-    headline: "Проектируем будущее визуальных пространств.",
+    badge: "NXTIONSTAR — продуктовый бренд ARLEDSCREEN · Стамбул / Газиосманпаша",
+    headline: "Центр технологий LED-дисплеев.",
     subcopy:
       "Продажа, монтаж и сервис LED из Стамбула (Газиосманпаша). Цены панелей: catalog.json / ai-shopping.json; transparent/poster/control — quote-only. Без 81-городских doorway.",
-    ctaConfigure: "Сконфигурировать LED-стену",
-    ctaQuote: "Запросить корпоративное КП",
+    ctaConfigure: "Прайс / калькулятор",
+    ctaQuote: "Запросить письменное КП",
     stats: [
       { value: "NXTIONSTAR", label: "Наш собственный бренд" },
       { value: "Стамбул", label: "Офис: Газиосманпаша" },

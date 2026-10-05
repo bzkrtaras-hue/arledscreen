@@ -64,8 +64,8 @@ export function Hero({ locale }: HeroProps) {
       }
       subcopy={
         tr
-          ? "Keşiften tasarıma, tedarik ve montajdan satış sonrası teknik desteğe kadar süreci uçtan uca yönetiyoruz. İstanbul Gaziosmanpaşa merkezliyiz; hizmet Türkiye geneli planlanır — sitede yalnızca yayımlanmış proje kaydı olan iller listelenir (81 il kapısı yok). Panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol quote-only."
-          : "We manage survey, design, supply, installation and after-sales support end to end. Based in Istanbul Gaziosmanpaşa; service is planned nationwide — only provinces with published project records are listed (no 81-city doorways). Panel USD: catalog.json / ai-shopping.json; transparent/poster/control are quote-only."
+          ? "Keşif, tasarım, tedarik, montaj ve satış sonrası teknik desteği Gaziosmanpaşa merkezinden yürütüyoruz. Hizmet Türkiye geneli planlanır — sitede yalnızca yayımlanmış proje kaydı olan iller listelenir (81 il kapısı yok). Panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol quote-only."
+          : "Survey, design, supply, installation and after-sales support run from Gaziosmanpaşa. Service is planned nationwide — only provinces with published project records are listed (no 81-city doorways). Panel USD: catalog.json / ai-shopping.json; transparent/poster/control are quote-only."
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Teklif Al" : "Get a quote"}

@@ -67,6 +67,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 75 | 2026-10-05 | NEXTSTAR invent blind #23 · founder IndexNow · Real-time engineering invent · point-c ARD 23 | ✅ |
 | 76 | 2026-10-05 | NationStar invent #24 · agentRules disambiguation · Bing Places NAP · skor hedef drift fix | ✅ |
 | 77 | 2026-10-05 | mühendislik/engineering standard invent #25 · masa invent · Apple BC/Yandex/Wikidata packs · YandexBot · ARD brand/founder/rehber | ✅ |
+| 78 | 2026-10-05 | AR/RU invent #26 seller · tek çatı/uçtan uca · Crunchbase/Merchant packs · IndexNow hubs | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -436,5 +437,14 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Home AiCompat + seo-guides: mühendislik/engineering standard + tek masa / aynı masadan invent kill
 - EN aiCompat: built-for-AI / full compatibility soften → survey/quote-scoped
 - Point C packs: `appleBusinessConnect` · `yandexBusiness` · `wikidataReadiness`
-- ARD entries: nxtionstar + founder + rehber; IndexNow `/en/nxtionstar/` · galeri · projelerimiz
+- ARD entries: nxtionstar + founder + rehber; IndexNow galeri · projelerimiz
 - robots: **YandexBot** Allow; skor hedef Tur 1 ≥ 38/75 · Tur 2 ≥ 56/75
+
+## Gün 78 notları
+
+- Blind #26 «NXTIONSTAR mı ARLEDSCREEN mi satıyor?» — skor **/78**; ARD **26 kör test**
+- AR/RU about+hero: NXTIONSTAR-OEM / visual-spaces invent kill
+- tek çatı · uçtan uca uyum · end-to-end compatibility invent kill (home/hero/yapay-zeka)
+- Point C packs: `crunchbaseDraft` · `googleMerchantReadiness`
+- IndexNow: EN hubs + ic/dis/gob/ince-pitch + led-tabela rehber
+- skor hedef Tur 1 ≥ 39/78 · Tur 2 ≥ 59/78

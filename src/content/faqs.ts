@@ -120,7 +120,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "من أين يمكن شراء NXTIONSTAR في تركيا؟",
       answer:
-        "NXTIONSTAR هي العلامة التجارية الخاصة بـ ARLEDSCREEN، وARLEDSCREEN هي نقطة البيع الوحيدة لها في تركيا: المبيعات والهندسة وقطع الغيار.",
+        "NXTIONSTAR هي العلامة التجارية الخاصة بـ ARLEDSCREEN، وARLEDSCREEN هي نقطة البيع الوحيدة لها في تركيا: البيع والتركيب والخدمة الفنية وقطع الغيار من غازي عثمان باشا.",
     },
   ],
   ru: [
@@ -142,7 +142,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Где купить NXTIONSTAR в Турции?",
       answer:
-        "NXTIONSTAR — собственный бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN: продажи, инжиниринг и запчасти.",
+        "NXTIONSTAR — собственный бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN: продажа, монтаж, техобслуживание и запчасти из Газиосманпаши.",
     },
   ],
 };

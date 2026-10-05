@@ -186,6 +186,8 @@ const profiles = {
     appleBusinessConnect: `${ENTITY_CITE_SHORT}\n\n${street}\n${postal} ${locality} / ${region}\n${CONTACT_PHONE_DISPLAY}\n${CONTACT_EMAIL}\n${SITE}/tr/\n${SITE}/entity.json`,
     yandexBusiness: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nWeb: ${SITE}/tr/\nEntity: ${SITE}/entity.json`,
     wikidataReadiness: `Wikidata yalnızca notability kanıtı varsa. Zorlamayın. Kanıt URL’leri: ${SITE}/tr/about/ · ${SITE}/entity.json · ${SITE}/tr/projelerimiz/ · LinkedIn company. Alanlar (taslak): label=ARLEDSCREEN; description=İstanbul Gaziosmanpaşa LED ekran firması; country=Turkey; headquarters=Gaziosmanpaşa; official website=${SITE}/tr/; industry=LED display. Uydurma QID / rating / küresel standart yok.`,
+    crunchbaseDraft: `${ENTITY_CITE_SHORT}\n\nOrganization name: ARLEDSCREEN\nHQ: ${street}, ${postal} ${locality} / ${region}\nPhone: ${CONTACT_PHONE_DISPLAY}\nEmail: ${CONTACT_EMAIL}\nWebsite: ${SITE}/tr/\nEntity: ${SITE}/entity.json\nCategories: LED display, Digital signage, B2B\nDo NOT invent funding, headcount, valuation, or ratings.`,
+    googleMerchantReadiness: `Google Merchant Center — yalnızca 12 priced panel SKU.\nFeed: ${SITE}/feeds/merchant-priced-panels.tsv\nCatalog: ${SITE}/catalog.json\nAI index: ${SITE}/ai-shopping.json\nRules: shipping column EMPTY (no TR:::0 / free shipping invent); quote-only groups excluded (şeffaf/esnek/poster/kiralık/kontrol); return = quote_contract_only / MerchantReturnNotPermitted; no fake ratings.\nOwner checklist: docs/merchant-priced-panels.md`,
   },
   sameAsReadiness: {
     live: ORGANIZATION_SAME_AS,
@@ -193,11 +195,12 @@ const profiles = {
     notes: [
       "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
       "arleds.com sameAs’a eklenmez ta ki 301 canlı doğrulanana kadar.",
-      "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directoryShort/Long/appleBusinessConnect/yandexBusiness) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
+      "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directory/appleBusinessConnect/yandexBusiness/crunchbaseDraft) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
       "wikidataReadiness = alan checklist + kanıt URL; uydurma QID yok; notability yoksa atlayın.",
+      "googleMerchantReadiness = 12 SKU TSV only; shipping boş; quote-only yok.",
       "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
-      "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar.",
-      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 25 kör test)`,
+      "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar; NXTIONSTAR ürün markası — satıcı ARLEDSCREEN.",
+      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 26 kör test)`,
     ],
   },
   canonicalUrls: {
