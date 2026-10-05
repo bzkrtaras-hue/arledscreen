@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 29 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 30 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 29) errors.push(`blindTestPrompts must be 29 (got ${prompts.length})`);
+if (prompts.length !== 30) errors.push(`blindTestPrompts must be 30 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/29 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 29 kör test intent");
+if (!/30 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 30 kör test intent");
 }
-if (/2[0-8] kör test/i.test(ard) && !/29 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–28 kör test without 29");
+if (/2[0-9] kör test/i.test(ard) && !/30 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–29 kör test without 30");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -281,6 +281,14 @@ if (!p29 || !/AI-infrastructure/i.test(p29.q || "")) {
 }
 if (!/AI-infrastructure ready/i.test(rulesJson)) {
   errors.push("agentRules must forbid AI-infrastructure ready SKU invent");
+}
+// Day 82: enterprise / aynı gün / all-in-one invent
+const p30 = (doc.blindTestPrompts || []).find((p) => p.id === 30);
+if (!p30 || !/enterprise|aynı gün|all-in-one/i.test(p30.q || "")) {
+  errors.push("blindTestPrompts #30 must cover enterprise / aynı gün / all-in-one invent");
+}
+if (!/aynı gün|enterprise all-in-one/i.test(rulesJson)) {
+  errors.push("agentRules must forbid aynı gün / enterprise all-in-one invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

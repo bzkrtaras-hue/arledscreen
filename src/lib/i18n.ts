@@ -313,7 +313,7 @@ const en: Dictionary = {
     },
     faq: {
       eyebrow: "FAQ",
-      title: "Answers enterprise buyers ask first",
+      title: "Answers B2B buyers ask first",
     },
     aiCompat: {
       eyebrow: "AI integration",
@@ -323,7 +323,7 @@ const en: Dictionary = {
       points: [
         "Documented signal paths for CMS, media servers and automation APIs",
         "High refresh and stable pixel pipelines for AI-driven or camera-facing content",
-        "Gaziosmanpaşa survey team that sizes pitch, power and receivers around your AI stack",
+        "Gaziosmanpaşa survey team that sizes pitch, power and receivers around your CMS / media-server path",
       ],
     },
   },
@@ -399,7 +399,7 @@ const en: Dictionary = {
   power: {
     title: "Power & Signal Calculator",
     description:
-      "Estimate peak/average draw, 3-phase breaker sizing, and CAT6 vs fiber guidance for enterprise installs.",
+      "Estimate peak/average draw, 3-phase breaker sizing, and CAT6 vs fiber guidance for B2B / fixed installs.",
     environment: "Environment",
     indoor: "Indoor",
     outdoor: "Outdoor",
@@ -625,7 +625,7 @@ const tr: Dictionary = {
       points: [
         "CMS, medya sunucu ve otomasyon API’leri için dokümante sinyal yolları",
         "YZ destekli veya kamera önü içerik için yüksek yenileme ve kararlı piksel hattı",
-        "Pitch, güç ve alıcı mimarisini sizin YZ yığınınıza göre boyutlandıran Gaziosmanpaşa keşif ekibi",
+        "Pitch, güç ve alıcı mimarisini CMS / medya sunucu hattınıza göre boyutlandıran Gaziosmanpaşa keşif ekibi",
       ],
     },
   },

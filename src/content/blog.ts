@@ -133,8 +133,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         h2: "Fuar ve etkinlik alanlarında LED ekran",
         p: [
-          "Kalabalık etkinlik alanlarında, yüzlerce stant arasında öne çıkmak için güçlü bir görsel unsur gerekir. Standın uzaktan fark edilmesi ve ziyaretçinin dikkatinin kısa sürede çekilmesi bu nedenle önemlidir. Geniş formatlı bir LED ekran; şehir tanıtım filmlerini, etkinlik programını ve görsel içerikleri yüksek parlaklıkla aynı anda çok sayıda ziyaretçiye ulaştırır.",
-          "Bu projede kullanılan NXTIONSTAR P3 premium seri, canlı renkleri ve yüksek parlaklığıyla yakın mesafeden izlendiğinde dahi detaylı bir görüntü sunacak şekilde tercih edildi. 3 mm piksel aralığı, stant önünde birkaç metreden izleyen ziyaretçiler için netlik ile bütçe arasında dengeli bir seçimdir.",
+          "Kalabalık etkinlik alanlarında, yüzlerce stant arasında öne çıkmak için güçlü bir görsel unsur gerekir. Standın uzaktan fark edilmesi ve ziyaretçinin dikkatinin kısa sürede çekilmesi bu nedenle önemlidir. Geniş formatlı bir LED ekran; şehir tanıtım filmlerini, etkinlik programını ve görsel içerikleri stant izleme mesafesine uygun pitch ile aynı anda çok sayıda ziyaretçiye ulaştırır.",
+          "Bu projede kullanılan NXTIONSTAR P3 (3 mm) pitch, stant önünde birkaç metreden izleyen ziyaretçiler için netlik ile bütçe arasında dengeli bir seçimdi. Parlaklık ve renk değerleri proje teklifinde / teknik föyde yazılıdır — sitede sabit nit iddiası yok.",
         ],
       },
       {
@@ -227,9 +227,9 @@ export const BLOG_POSTS: BlogPost[] = [
         h2: "NXTIONSTAR LED ekranlarda öne çıkanlar",
         p: ["Projede kullanılan NXTIONSTAR LED ekranlar, mesajın şubeye gelen müşterilere net biçimde ulaşması gözetilerek seçildi:"],
         list: [
-          "Yüksek parlaklık ve canlı renkler",
-          "Keskin ve detaylı görüntü",
-          "Ölçüye ve konsepte göre özel tasarım",
+          "İzleme mesafesine uygun pitch seçimi",
+          "Keşifte seçilen panel (nit/renk teklifte)",
+          "Ölçüye ve konsepte göre planlanan kurulum",
         ],
       },
       {
@@ -283,9 +283,9 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        h2: "Ekran değil, etki tasarlıyoruz",
+        h2: "Keşif, montaj ve teknik destek",
         p: [
-          "ARLEDSCREEN olarak profesyonel kurulum, içerik desteği ve satış sonrası teknik hizmetle projenin her aşamasında yanınızdayız. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Mekânınıza uygun ölçü ve model için bizimle iletişime geçebilirsiniz; ekranın konumunu, izleme mesafesini ve göstermek istediğiniz içerik türünü paylaşmanız, doğru piksel aralığını belirlememiz için yeterlidir.",
+          "Keşif, montaj ve satış sonrası teknik destek Gaziosmanpaşa ekibiyle yazılı teklifte tanımlanır. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Mekânınıza uygun ölçü ve model için ekranın konumunu, izleme mesafesini ve içerik türünü paylaşmanız, doğru piksel aralığını belirlememiz için yeterlidir.",
         ],
       },
     ],

@@ -71,6 +71,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 79 | 2026-10-05 | turnkey/tek süreç #27 · Ücretsiz calculator · DuckDuckBot · ARD about/hesap/kontrol | ✅ |
 | 80 | 2026-10-05 | sorunsuz/platform #28 · Küresel LED · tek merkezden · ARD led-ekran/sss | ✅ |
 | 81 | 2026-10-05 | AI-infrastructure #29 · ranking invent · EN yapay-zeka ARD · skor /87 | ✅ |
+| 82 | 2026-10-05 | enterprise/aynı-gün #30 · hizmetler/products ARD · skor /90 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -474,3 +475,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - EN FAQ AI-infrastructure ready → survey-scoped · İstikbal ranking kill · rehber/kontrol kesintisiz soften
 - EN yapay-zeka AI-compatible framing · agentRules AI-infrastructure · ARD EN yapay-zeka discovery
 - IndexNow: piksel-araligi + EN ic/dis rehber · skor Tur 1 ≥ 44/87 · Tur 2 ≥ 65/87
+
+## Gün 82 notları
+
+- Blind #30 «enterprise / aynı gün / all-in-one mı?» — skor **/90**; ARD **30 kör test**
+- aynı gün SLA · enterprise buyers · keşiften–servise / aynı ekip · blog parlaklık invent kill
+- ARD: hizmetler + products hub · IndexNow satisi/montaj + AR/RU · agentRules enterprise honesty
+- skor hedef Tur 1 ≥ 45/90 · Tur 2 ≥ 68/90

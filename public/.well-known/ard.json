@@ -115,15 +115,46 @@
       "displayName": "LED ekran ticari hub",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/led-ekran/",
-      "description": "İç/dış/GOB/esnek/kiralık LED hub. Tek merkezden/platform invent yok; Gaziosmanpaşa + yazılı teklif. Blind #28.",
+      "description": "İç/dış/GOB/esnek/kiralık LED hub. Tek merkezden/platform/aynı-gün SLA invent yok; Gaziosmanpaşa + yazılı teklif. Blind #28/#30.",
       "representativeQueries": [
         "LED ekran nedir ARLEDSCREEN",
         "ARLEDSCREEN sorunsuz LED platformu mu?",
+        "ARLEDSCREEN enterprise / aynı gün kurulum / all-in-one mı?",
         "iç mekan LED ekran"
       ],
       "tags": ["commerce", "LED", "GEO", "shopping"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T00:45:00Z"
+      "updatedAt": "2026-10-06T01:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:hizmetler",
+      "displayName": "Hizmetler — keşif / montaj / servis",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/hizmetler/",
+      "description": "Keşif, montaj ve teknik servis süreci. Sabit aynı-gün SLA / enterprise all-in-one / ücretsiz montaj invent yok; kapsam yazılı teklifte. Blind #30.",
+      "representativeQueries": [
+        "ARLEDSCREEN hizmetler",
+        "LED ekran montaj süresi",
+        "ARLEDSCREEN enterprise / aynı gün kurulum"
+      ],
+      "tags": ["services", "commerce", "GEO", "honesty"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T01:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:products-hub",
+      "displayName": "Ürün grupları hub",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/",
+      "description": "Priced panel grupları + quote-only (şeffaf/esnek/poster/kiralık/kontrol). List USD yok gruplar → /tr/quote/. ai-shopping.json / catalog.json.",
+      "representativeQueries": [
+        "ARLEDSCREEN ürün grupları",
+        "LED ekran modelleri",
+        "quote-only LED ürünler"
+      ],
+      "tags": ["products", "shopping", "GEO", "quote-only"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T01:30:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:sss",
@@ -252,17 +283,18 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 29 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 30 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
         "LED panel fiyat catalog entity tek URL",
-        "AI-infrastructure ready LED nedir / ARLEDSCREEN satıyor mu?"
+        "AI-infrastructure ready LED nedir / ARLEDSCREEN satıyor mu?",
+        "ARLEDSCREEN enterprise / aynı gün kurulum / keşiften servise all-in-one mı?"
       ],
       "tags": ["shopping", "discovery", "GEO", "agents", "pricedPanels", "agentRules", "hasMerchantReturnPolicy"],
       "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts", "PricedPanels", "AgentRules", "ReturnPolicyHonesty"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T01:00:00Z"
+      "updatedAt": "2026-10-06T01:30:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

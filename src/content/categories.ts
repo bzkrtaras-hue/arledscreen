@@ -164,7 +164,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "Toplantı salonunda duvara monte iç mekân LED ekran",
     intro: [
       "İç mekânda izleyici ekrana birkaç adım uzaklıkta durur; bu yüzden doğru piksel aralığı hem görüntü netliğini hem de bütçeyi doğrudan etkiler. Piksel aralığını izleme mesafesine, ekran ölçüsüne ve içerik türüne göre birlikte belirliyoruz.",
-      "Ölçünüzü modül katlarına göre planlıyor; keşif, montaj, devreye alma ve kurulum sonrası teknik servisi aynı ekiple yürütüyoruz.",
+      "Ölçünüzü modül katlarına göre planlıyor; keşif, montaj ve kurulum sonrası teknik servis Gaziosmanpaşa ekibiyle yazılı teklif kapsamında planlanır.",
     ],
     highlights: [
       "İzleme mesafesine göre piksel aralığı önerisi",
@@ -223,7 +223,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "Bina önünde taşıyıcı sisteme kurulu dış mekân LED ekran",
     intro: [
       "Dış mekânda ekran; güneş, yağmur ve toz koşullarında okunabilir kalmalıdır. Piksel aralığını montaj yüksekliği ve izleme mesafesiyle birlikte seçtiğimizde mesaj uzaktan okunur ve bütçe gereksiz çözünürlüğe harcanmaz.",
-      "Taşıyıcı sistem, elektrik altyapısı ve sinyal bağlantısı keşifte birlikte planlanır; montaj ve devreye alma aynı ekip tarafından tamamlanır.",
+      "Taşıyıcı sistem, elektrik altyapısı ve sinyal bağlantısı keşifte birlikte planlanır; montaj ve devreye alma yazılı teklifte tanımlanan kapsamda tamamlanır.",
     ],
     highlights: [
       "Montaj yüksekliği ve izleme mesafesine göre seçim",

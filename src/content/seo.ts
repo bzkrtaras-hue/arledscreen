@@ -201,7 +201,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       keywords: [
         "LED display quote",
         "LED wall quotation",
-        "enterprise LED project",
+        "B2B LED project",
         "ARLEDSCREEN quote",
         "digital signage quote",
       ],

@@ -196,7 +196,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       {
         question: "Kurulum süresi ne kadar?",
         answer:
-          "Tek gönderici değişiminde çoğu zaman aynı gün yapılandırma biter. Yeni işlemci + fiber + çok katmanlı sahne için süre keşifte planlanır.",
+          "Süre keşif ve sahaya göre değişir; basit gönderici değişiminde kısa yapılandırma mümkün olabilir, karmaşık işlemci/fiber işleri yazılı teklifte planlanır — sabit aynı-gün SLA yoktur.",
       },
     ],
   },

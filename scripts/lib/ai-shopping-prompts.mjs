@@ -224,6 +224,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
     mustNotSay: ["AI-infrastructure ready SKU", "AI-ready product", "ücretsiz kargo dahil", "Türkiye'nin en"],
   },
+  {
+    id: 30,
+    q: "ARLEDSCREEN enterprise / aynı gün kurulum / keşiften servise all-in-one mı?",
+    paths: ["/tr/led-ekran/", "/tr/hizmetler/", "/tr/products/colorlight-kontrolculer/", "/entity.json", "/ai-shopping.json"],
+    mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
+    mustNotSay: ["aynı gün garanti", "enterprise all-in-one", "ücretsiz montaj", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

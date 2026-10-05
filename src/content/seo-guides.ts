@@ -620,7 +620,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "B2B process: survey, quote, install",
           body:
-            "Enterprise LED is not a blind price-list buy. From Gaziosmanpaşa we capture power, signal topology and schedule in the survey, then issue a written quote. Published panel USD: catalog.json / ai-shopping.json; transparent/poster/control groups stay quote-only — no invented list SKU.",
+            "B2B LED is not a blind price-list buy. From Gaziosmanpaşa we capture power, signal topology and schedule in the survey, then issue a written quote. Published panel USD: catalog.json / ai-shopping.json; transparent/poster/control groups stay quote-only — no invented list SKU or enterprise all-in-one package.",
         },
         {
           h2: "Which series for which project?",

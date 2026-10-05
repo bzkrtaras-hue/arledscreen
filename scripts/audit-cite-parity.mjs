@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–81: ARD discovery prompt count must not drift behind blind suite
+// Day 74–82: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/29 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 29 kör test intent (not stale 17–28)");
+if (ardTxt && !/30 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 30 kör test intent (not stale 17–29)");
 }
-if (ardTxt && /1[7-9] kör test|2[0-8] kör test/i.test(ardTxt) && !/29 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–28 kör test without 29");
+if (ardTxt && /1[7-9] kör test|2[0-9] kör test/i.test(ardTxt) && !/30 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–29 kör test without 30");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -401,6 +401,19 @@ for (const rel of ["out/tr/projelerimiz/index.html", "out/tr/about/index.html"])
   if (!html) continue;
   if (/Türkiye'nin en büyük mağazası|Türkiye'nin en /i.test(html)) {
     errors.push(`${rel} must not invent Türkiye'nin en ranking claim`);
+  }
+}
+// Day 82: enterprise / aynı gün SLA invent
+for (const rel of [
+  "out/tr/led-ekran/index.html",
+  "out/tr/hizmetler/index.html",
+  "out/tr/products/colorlight-kontrolculer/index.html",
+  "out/en/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/aynı gün yapılandırma|aynı gün garanti|enterprise all-in-one|Answers enterprise buyers/i.test(html)) {
+    errors.push(`${rel} must not invent aynı gün SLA / enterprise all-in-one`);
   }
 }
 
