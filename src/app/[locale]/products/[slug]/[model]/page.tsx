@@ -121,6 +121,7 @@ export default async function ModelPage({ params }: PageProps) {
   // GSC Merchant listings require offers.price (or priceSpecification.price).
   // Quote-only models (P8, esnek, kontrol) have no published USD — omit Offer
   // entirely. An Offer without price marks the item invalid in Search Console.
+  const quoteUrl = absoluteUrl("/tr/quote/");
   const productLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -128,14 +129,41 @@ export default async function ModelPage({ params }: PageProps) {
     name: m.name,
     sku: `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`,
     brand: { "@type": "Brand", name: brandName },
+    ...(m.kind === "kontrol"
+      ? {
+          manufacturer: { "@type": "Organization", name: brandName },
+          isRelatedTo: absoluteUrl(productGroupPath(g)),
+        }
+      : {}),
     itemCondition: "https://schema.org/NewCondition",
-    category: m.kind === "kontrol" ? `${g.name}` : `${g.name} modülü`,
+    category: m.kind === "kontrol" ? `LED kontrol sistemi · ${g.name}` : `${g.name} modülü`,
     image: absoluteUrl(m.image),
     description,
     url,
-    additionalProperty: specRows
-      .filter((r) => r.spec)
-      .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
+    additionalProperty: [
+      ...specRows
+        .filter((r) => r.spec)
+        .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
+      ...(m.kind === "kontrol" || !price
+        ? [
+            {
+              "@type": "PropertyValue",
+              name: "Fiyatlandırma",
+              value: "List fiyatı yayımlanmaz; keşif sonrası yazılı teklif",
+            },
+          ]
+        : []),
+    ],
+    ...(m.kind === "kontrol" || !price
+      ? {
+          potentialAction: {
+            "@type": "CommunicateAction",
+            name: "Yazılı teklif al",
+            target: quoteUrl,
+            url: quoteUrl,
+          },
+        }
+      : {}),
     ...(price
       ? {
           offers: {

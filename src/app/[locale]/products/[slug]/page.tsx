@@ -116,9 +116,45 @@ export default async function ProductGroupPage({ params }: PageProps) {
             seller: { "@id": `${SITE_URL}/#organization` },
           },
         }
-      : {}),
+      : {
+          // Quote-only groups (kontrol kartları, şeffaf, esnek, …): never emit
+          // AggregateOffer without prices — GSC Merchant treats incomplete offers as invalid.
+          potentialAction: {
+            "@type": "CommunicateAction",
+            name: "Yazılı teklif al",
+            target: absoluteUrl("/tr/quote/"),
+            url: absoluteUrl("/tr/quote/"),
+          },
+        }),
   };
   const productsLd = prices.length ? panelProductsJsonLd(prices, url, undefined, modelUrlForPrice(absoluteUrl)) : null;
+  // Control / quote-only hubs: ItemList of model Products (no offers) for agent discovery.
+  const controlItemListLd =
+    isControlGroup && models.length && !prices.length
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "@id": `${url}#models`,
+          name: `${g.name} modelleri`,
+          description:
+            "List fiyatı yayımlanmayan kontrol ürünleri; her model Product schema’sında offers yoktur. Fiyat keşif sonrası yazılı teklifle netleşir.",
+          numberOfItems: models.length,
+          itemListElement: models.map((m, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: absoluteUrl(modelPath(m)),
+            name: m.name,
+            item: {
+              "@type": "Product",
+              "@id": `${absoluteUrl(modelPath(m))}#product`,
+              name: m.name,
+              brand: { "@type": "Brand", name: m.brandName ?? g.brandName ?? "NXTIONSTAR" },
+              url: absoluteUrl(modelPath(m)),
+              image: absoluteUrl(m.image),
+            },
+          })),
+        }
+      : null;
 
   return (
     <>
@@ -133,6 +169,12 @@ export default async function ProductGroupPage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {productsLd ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsLd) }} />
+      ) : null}
+      {controlItemListLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(controlItemListLd) }}
+        />
       ) : null}
 
       {/* Intro: framed photo left, breadcrumb + H1 + section tabs right */}

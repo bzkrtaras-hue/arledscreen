@@ -39,12 +39,13 @@ for (const m of pricesSrc.matchAll(priceRe)) {
   priceRows.push(row);
 }
 
-/** @type {{slug:string,group:string,priceId?:string}[]} */
+/** @type {{slug:string,group:string,priceId?:string,kind?:string}[]} */
 const models = [];
 const blockRe = /\{\s*slug:\s*"([^"]+)",\s*group:\s*"([^"]+)"([\s\S]*?)(?=\n  \{\s*slug:|\n];)/g;
 for (const m of modelsSrc.matchAll(blockRe)) {
   const priceId = m[3].match(/priceId:\s*"([^"]+)"/)?.[1];
-  models.push({ slug: m[1], group: m[2], priceId });
+  const kind = m[3].match(/kind:\s*"([^"]+)"/)?.[1];
+  models.push({ slug: m[1], group: m[2], priceId, kind });
 }
 
 const outRoot = path.join(root, "out/tr/products");
@@ -55,6 +56,7 @@ if (!fs.existsSync(outRoot)) {
 
 let pricedChecked = 0;
 let quoteChecked = 0;
+let kontrolChecked = 0;
 
 for (const model of models) {
   const file = path.join(outRoot, model.group, model.slug, "index.html");
@@ -91,6 +93,21 @@ for (const model of models) {
     errors.push(`${model.group}/${model.slug}: priceId ${model.priceId} not in PANEL_PRICES`);
   }
 
+  if (model.kind === "kontrol") {
+    kontrolChecked += 1;
+    if (model.priceId) {
+      errors.push(`${model.group}/${model.slug}: kontrol model must not have priceId`);
+    }
+    if (product.offers) {
+      errors.push(
+        `${model.group}/${model.slug}: kontrol Product must omit offers (quote-only; GSC)`,
+      );
+    }
+    if (!product.potentialAction) {
+      errors.push(`${model.group}/${model.slug}: kontrol Product missing potentialAction (quote CTA)`);
+    }
+  }
+
   if (expectedUsd != null) {
     pricedChecked += 1;
     const offers = product.offers;
@@ -124,7 +141,44 @@ for (const model of models) {
   }
 }
 
-// catalog.json ↔ PANEL_PRICES
+// Control group hubs: Service must not carry AggregateOffer; ItemList of models without nested offers.price
+const CONTROL_GROUPS = [
+  "huidu-kontrol-kartlari",
+  "novastar-kontrolculer",
+  "colorlight-kontrolculer",
+  "led-modul-ve-kontrol-sistemleri",
+];
+for (const group of CONTROL_GROUPS) {
+  const hub = path.join(outRoot, group, "index.html");
+  if (!fs.existsSync(hub)) {
+    if (group !== "led-modul-ve-kontrol-sistemleri") {
+      errors.push(`missing control hub: ${group}`);
+    }
+    continue;
+  }
+  const hubHtml = fs.readFileSync(hub, "utf8");
+  for (const m of hubHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+    let data;
+    try {
+      data = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    if (data?.["@type"] === "Service" && data.offers) {
+      errors.push(`${group} hub Service must not include offers (quote-only control)`);
+    }
+    if (data?.["@type"] === "ItemList") {
+      for (const li of data.itemListElement || []) {
+        if (li?.item?.offers || li?.offers) {
+          errors.push(`${group} ItemList entry must omit offers`);
+        }
+      }
+    }
+  }
+}
+
+// catalog.json must never list kontrol SKUs
+const kontrolSlugs = models.filter((m) => m.kind === "kontrol").map((m) => m.slug);
 const catalogPath = path.join(root, "public/catalog.json");
 if (fs.existsSync(catalogPath)) {
   const catalog = JSON.parse(fs.readFileSync(catalogPath, "utf8"));
@@ -134,6 +188,10 @@ if (fs.existsSync(catalogPath)) {
   }
   for (const p of dataset) {
     const sku = p.sku;
+    const urlStr = String(p.url || "");
+    if (kontrolSlugs.some((s) => urlStr.includes(`/${s}/`) || String(sku).toLowerCase().includes(s))) {
+      errors.push(`catalog must not include kontrol product ${sku}`);
+    }
     const expected = priceById.get(sku);
     if (expected == null) {
       errors.push(`catalog sku ${sku} not in PANEL_PRICES`);
@@ -256,7 +314,7 @@ if (fs.existsSync(embedPath)) {
 }
 
 console.log(
-  `Checked ${models.length} models (priced=${pricedChecked}, quote-only=${quoteChecked}); catalog panels=${priceById.size}; fiyat hub + calculator parity`,
+  `Checked ${models.length} models (priced=${pricedChecked}, quote-only=${quoteChecked}, kontrol=${kontrolChecked}); catalog panels=${priceById.size}; fiyat hub + calculator parity`,
 );
 if (errors.length) {
   console.error("FAIL:");
