@@ -30,6 +30,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 38 | 2026-10-05 | Rehber hub + projeler + galeri shopping FAQs | ✅ |
 | 39 | 2026-10-05 | Case study + blog ShoppingLinkCloud / FAQ | ✅ |
 | 40 | 2026-10-05 | Model pages LinkCloud + entity-profiles.json Point C | ✅ |
+| 41 | 2026-10-05 | llms-full/smoke/footer Point C discovery | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -108,9 +109,17 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - ARD + llms.txt discovery; `_routes.json` exclude
 - shopping-links: model sayfaları da
 
+## Gün 41 notları
+
+- `llms-full.txt` §5: entity-profiles + about + products hub intent satırları
+- Root layout `<link rel=alternate>` + footer: entity-profiles.json
+- `entity.json` → `entityProfilesJson` self-link; cite-parity pack MEDIUM
+- `smoke:live`: entity-profiles + about kontrolleri (12 check)
+- Ay sonu panosu: Point C packs + LinkCloud metrikleri
+
 ## Owner P0 (her gün hatırlatma)
 
-1. PR #55 merge + Cloudflare Pages redeploy → canlı `/entity.json` `/catalog.json` `/.well-known/ard.json`
-2. Point C: GBP + LinkedIn/IG/FB About = playbook pack
+1. PR #55 merge + Cloudflare Pages redeploy → canlı `/entity.json` `/catalog.json` `/.well-known/ard.json` `/entity-profiles.json`
+2. Point C: GBP + LinkedIn/IG/FB About = `entity-profiles.json` packs (playbook)
 3. `arleds.com` → `arledscreen.com/tr/` 301
 4. `npm run smoke:live` yeşile dönünce kör tur 1 skor kartı

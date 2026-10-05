@@ -16,6 +16,7 @@ export function ShoppingLinkCloud({
     { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     { href: "/tr/quote/", label: "Yazılı teklif" },
     { href: "/entity.json", label: "entity.json (kimlik)" },
+    { href: "/entity-profiles.json", label: "entity-profiles.json (Point C)" },
     { href: "/tr/products/gob-led-ekran/", label: "GOB LED ekran ürünleri" },
     { href: "/tr/rehber/gob-vs-smd/", label: "GOB vs SMD rehberi" },
     ...extra,

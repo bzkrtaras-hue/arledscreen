@@ -52,6 +52,7 @@
   "citationPage": "https://arledscreen.com/tr/about/",
   "llmsTxt": "https://arledscreen.com/llms.txt",
   "entityJson": "https://arledscreen.com/entity.json",
+  "entityProfilesJson": "https://arledscreen.com/entity-profiles.json",
   "catalogJson": "https://arledscreen.com/catalog.json",
   "ardJson": "https://arledscreen.com/.well-known/ard.json",
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
@@ -81,7 +82,7 @@
     },
     {
       "question": "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
-      "answer": "Makinece entity: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir."
+      "answer": "Makinece entity: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir."
     }
   ]
 }

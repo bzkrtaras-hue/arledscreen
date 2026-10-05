@@ -16,6 +16,7 @@ const REQUIRED = [
   "/tr/quote/",
   "/tr/hesaplayici/",
   "/entity.json",
+  "/entity-profiles.json",
 ];
 
 const commercialSrc = fs.readFileSync(path.join(root, "src/content/commercial-pages.ts"), "utf8");

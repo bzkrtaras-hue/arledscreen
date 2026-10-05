@@ -10,14 +10,16 @@ const SITE = "https://arledscreen.com";
 
 const CHECKS = [
   { id: "entity", url: `${SITE}/entity.json`, expect: "json", mustInclude: ["ARLEDSCREEN", "citeOneLiner"] },
+  { id: "entity-profiles", url: `${SITE}/entity-profiles.json`, expect: "json", mustInclude: ["gbpDescription", "linkedinAbout", "Gaziosmanpaşa"] },
   { id: "catalog", url: `${SITE}/catalog.json`, expect: "json", mustInclude: ["dataset", "groupAggregateOffers"] },
-  { id: "ard", url: `${SITE}/.well-known/ard.json`, expect: "json", mustInclude: ["catalog"] },
-  { id: "llms", url: `${SITE}/llms.txt`, expect: "text", mustInclude: ["citeOneLiner", "Gaziosmanpaşa"] },
-  { id: "llms-full", url: `${SITE}/llms-full.txt`, expect: "text", mustInclude: ["catalog.json", "entity.json"] },
+  { id: "ard", url: `${SITE}/.well-known/ard.json`, expect: "json", mustInclude: ["catalog", "entity-profiles"] },
+  { id: "llms", url: `${SITE}/llms.txt`, expect: "text", mustInclude: ["citeOneLiner", "Gaziosmanpaşa", "entity-profiles.json"] },
+  { id: "llms-full", url: `${SITE}/llms-full.txt`, expect: "text", mustInclude: ["catalog.json", "entity.json", "entity-profiles.json"] },
   { id: "robots", url: `${SITE}/robots.txt`, expect: "text", mustInclude: ["Host: arledscreen.com", "bingbot"] },
   { id: "merchant-feed", url: `${SITE}/feeds/merchant-priced-panels.tsv`, expect: "text", mustInclude: ["p2-5-ic", "32.18 USD"] },
   { id: "fiyat", url: `${SITE}/tr/led-ekran-fiyatlari/`, expect: "html", mustInclude: ["catalog.json"] },
   { id: "yapay-zeka", url: `${SITE}/tr/yapay-zeka/`, expect: "html", mustInclude: ["entity.json", "catalog.json"] },
+  { id: "about", url: `${SITE}/tr/about/`, expect: "html", mustInclude: ["entity.json", "catalog.json"] },
   { id: "sitemap", url: `${SITE}/sitemap.xml`, expect: "xml", mustInclude: ["led-ekran-fiyatlari"] },
 ];
 

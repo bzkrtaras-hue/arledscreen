@@ -94,7 +94,7 @@ const faqs = [
   },
   {
     question: "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
-    answer: `Makinece entity: ${SITE}/entity.json · Panel kataloğu: ${SITE}/catalog.json · Ajan keşif: ${SITE}/.well-known/ard.json · Kısa özet: ${SITE}/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir.`,
+    answer: `Makinece entity: ${SITE}/entity.json · Point C pack: ${SITE}/entity-profiles.json · Panel kataloğu: ${SITE}/catalog.json · Ajan keşif: ${SITE}/.well-known/ard.json · Kısa özet: ${SITE}/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir.`,
   },
 ];
 
@@ -143,6 +143,7 @@ const doc = {
   citationPage: `${SITE}/tr/about/`,
   llmsTxt: `${SITE}/llms.txt`,
   entityJson: `${SITE}/entity.json`,
+  entityProfilesJson: `${SITE}/entity-profiles.json`,
   catalogJson: `${SITE}/catalog.json`,
   ardJson: `${SITE}/.well-known/ard.json`,
   citeOneLiner: ENTITY_CITE_ONE_LINER,

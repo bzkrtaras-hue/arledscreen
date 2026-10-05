@@ -112,6 +112,26 @@ if (MEDIUM) {
 // yapay-zeka must point agents at entity + catalog
 checkHtml("out/tr/yapay-zeka/index.html", ["entity.json", "catalog.json", "llms.txt"]);
 
+// Point C packs must reuse citeMedium verbatim
+if (MEDIUM) {
+  const profiles = read("public/entity-profiles.json");
+  if (profiles) {
+    for (const key of ["gbpDescription", "facebookAbout", "linkedinAbout", "directoryLong"]) {
+      if (!profiles.includes(MEDIUM)) {
+        errors.push(`entity-profiles.json packs must include ENTITY_CITE_MEDIUM (${key} check)`);
+        break;
+      }
+    }
+    if (!profiles.includes("entity-profiles.json") && !profiles.includes('"@type": "Dataset"')) {
+      errors.push("entity-profiles.json malformed Dataset");
+    }
+  }
+  const outProfiles = read("out/entity-profiles.json");
+  if (outProfiles && !outProfiles.includes(MEDIUM)) {
+    errors.push("out/entity-profiles.json missing ENTITY_CITE_MEDIUM");
+  }
+}
+
 // seo.ts about fields should import entity cites (string presence after build is in HTML meta)
 const seoSrc = read("src/content/seo.ts");
 if (seoSrc) {
