@@ -98,12 +98,20 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
 
       <Section
         id="galeri"
-        eyebrow="Toptancı galerisi"
+        eyebrow="Uygulama görselleri"
         title="Galeri"
-        description="YIYISTAR (yiyistar.com) galeri bölümündeki uygulama görselleri; aynı kategori başlıklarıyla."
+        description="İç mekân, dış mekân, kavisli ve sinema uygulamaları kategorilere göre düzenlendi."
         className="bg-band prose-seo"
       >
-        <YiyistarGallery />
+        <YiyistarGallery showFeatured={false} showJumpNav={false} limitSections={2} />
+        <p className="mt-8 text-center">
+          <a
+            href="/tr/galeri/"
+            className="inline-flex min-h-11 items-center rounded-full border border-border bg-white px-5 text-sm font-semibold text-ink-soft hover:border-cyan/45 hover:text-cyan"
+          >
+            Tam galeriyi aç
+          </a>
+        </p>
       </Section>
 
       {/* Dark icon strip */}

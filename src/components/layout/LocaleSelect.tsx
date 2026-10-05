@@ -24,6 +24,7 @@ export function LocaleSelect({
     /^\/tr\/hizmetler\//,
     /^\/tr\/bolgeler\//,
     /^\/tr\/projelerimiz\//,
+    /^\/tr\/galeri\//,
     /^\/tr\/products\/[^/]+\//,
     /^\/tr\/sss\//,
     /^\/tr\/nxtionstar\//,

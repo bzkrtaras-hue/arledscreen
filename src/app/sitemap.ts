@@ -109,6 +109,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/hizmetler/",
     "/bolgeler/",
     "/projelerimiz/",
+    "/galeri/",
     "/sss/",
     "/nxtionstar/",
     "/rehber/led-ekran-fiyatlari/",
