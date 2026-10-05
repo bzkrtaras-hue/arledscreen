@@ -58,8 +58,11 @@ Makinece atıf: `/entity.json` · metin: `/llms.txt`
 
 Hedef: “ARLEDSCREEN kimdir?” cevabı **yalnızca kendi siteden** gelmesin; 10–20 güvenilir dış kaynakta aynı olgu doğrulansın.
 
+Durum (2026-10-05): site A/B kod hazır; canlı entity/catalog/ard soft-404 → PR #55; bağımsız C tamamlanan = 0. Tracker: playbook §0d.
+
 - [x] Machine-readable `public/entity.json` (Organization + cite + FAQs)
 - [x] Off-site playbook: gap audit + 14-gün P0 sıra + 20-kaynak tracker (yapıştırma metinleri repo içi)
+- [x] Point C tracker güncellendi (Site hazır / Sahip durum / sayaç + panosu)
 - [ ] **Owner P0:** Canlı `/entity.json` + `/catalog.json` + `/.well-known/ard.json` 200 (2026-10-05 soft-404; PR #55 merge + CF redeploy)
 - [ ] **Owner P0:** `arleds.com` → `arledscreen.com/tr/` 301 (entity bölünmesini kes)
 - [ ] **Owner P0:** GBP + LinkedIn/IG/FB About = playbook pack (aynı NAP)
