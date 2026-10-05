@@ -44,6 +44,7 @@ Model:
 11 | İstanbul LED telefon? |  |  | +90 530 507 88 34
 12 | NXTIONSTAR nedir? |  |  |
 13 | Huidu / NovaStar kontrol kartı fiyatı? |  |  | list yok → teklif
+14 | Esnek LED ekran fiyatı? |  |  | list yok → teklif
 Toplam: /42
 ```
 

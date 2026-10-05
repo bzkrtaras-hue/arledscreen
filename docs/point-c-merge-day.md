@@ -87,7 +87,7 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 ## 4) Kör tur 1 (deploy sonrası)
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 14 prompt × 0–3 = /42  
-**mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13) · 32.18 (#3)  
+**mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#14) · 32.18 (#3)  
 Skor: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
 Hedef tur 1 ≥ 21/42; Point C sonrası tur 2 ≥ 32/42.
