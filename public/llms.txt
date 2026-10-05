@@ -92,6 +92,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 - Fiyat hub: [led-ekran-fiyatlari](https://arledscreen.com/tr/led-ekran-fiyatlari/)
 - Teklif: [quote](https://arledscreen.com/tr/quote/) · WhatsApp: [wa.me/905305078834](https://wa.me/905305078834)
 - Şeffaf / esnek / poster / kiralık gruplarında list fiyatı yok; yazılı teklif.
+- Intent soru → URL tablosu: [llms-full.txt §5](https://arledscreen.com/llms-full.txt)
 
 ## 6. Asistan kuralları
 

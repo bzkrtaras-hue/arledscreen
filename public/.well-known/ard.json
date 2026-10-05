@@ -53,14 +53,15 @@
       "displayName": "ARLEDSCREEN llms-full.txt",
       "type": "text/plain",
       "url": "https://arledscreen.com/llms-full.txt",
-      "description": "Genişletilmiş makinece okunur site özeti; ürün grupları ve ticari intent URL’leri.",
+      "description": "Genişletilmiş makinece okunur site özeti; AI alışveriş intent→URL tablosu; ürün grupları ve ticari URL’ler.",
       "representativeQueries": [
         "ARLEDSCREEN ürün grupları listesi",
-        "LED ekran montaj ve servis İstanbul"
+        "LED ekran montaj ve servis İstanbul",
+        "AI ajanları LED fiyatını hangi URL’den okur"
       ],
-      "tags": ["llms", "documentation"],
+      "tags": ["llms", "documentation", "shopping"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:44:09Z"
+      "updatedAt": "2026-10-05T19:05:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:price-hub",
