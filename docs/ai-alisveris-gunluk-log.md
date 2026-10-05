@@ -54,6 +54,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 62 | 2026-10-05 | Kontrol quote-only invent closure · ARD return-policy tokens · galeri FAQPage | ✅ |
 | 63 | 2026-10-05 | Kontrol residual wave (entity/commercial/YZ) · blind #13 · merchant return_policy_label · footer merchant/ai-catalog | ✅ |
 | 64 | 2026-10-05 | llms/hubs kontrol quote-only closure · extrasUsd≠list · IndexNow kontrol hubs · smoke Day63 needles | ✅ |
+| 65 | 2026-10-05 | Price-surface extrasUsd≠list SKU · agentRules disambiguation · SSS/Home FAQ · blind #14 esnek | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -323,3 +324,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - IndexNow: 4 kontrol product hubs (+ required huidu)
 - smoke: entity hasOfferCatalog+kontrol · ai-shopping #13 · llms Huidu · merchant return_policy_label
 - point-c-merge-day + post-deploy → Day 57–64 contract
+
+## Gün 65 notları
+
+- PanelPriceTable · fiyat hub FAQ · products priceAnswer · led-ekran-fiyatlari.md: extrasUsd 500 ≠ marka list SKU
+- `agentRules`: `extrasUsd.controlCard=500 … list SKU değildir` (+ audit/verify/smoke)
+- SSS + Home FAQ: kontrol quote-only residual
+- Blind prompt #14 «Esnek LED ekran fiyatı?» — skor /42
+- ARD / ai-shopping: 14 kör test intent

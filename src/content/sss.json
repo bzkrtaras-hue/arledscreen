@@ -5,7 +5,7 @@
   },
   {
     "question": "P2.5 iç mekân LED ekranın panel fiyatı nedir?",
-    "answer": "ARLEDSCREEN 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir."
+    "answer": "ARLEDSCREEN 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir (extrasUsd tahmini — Huidu/NovaStar/Colorlight list SKU değildir)."
   },
   {
     "question": "Dış mekân LED ekran panel fiyatları ne kadar?",
@@ -61,6 +61,6 @@
   },
   {
     "question": "AI / alışveriş ajanları fiyat ve kimliği nereden okumalı?",
-    "answer": "Tek fetch: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules; priceValidUntil 2026-12-31). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/ · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf/esnek/poster/kiralık list fiyatı yoktur — https://arledscreen.com/tr/quote/. İade/garanti teklifte yazılır."
+    "answer": "Tek fetch: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules; priceValidUntil 2026-12-31). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/ · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf/esnek/poster/kiralık ve Huidu/NovaStar/Colorlight kontrol list fiyatı yoktur — https://arledscreen.com/tr/quote/. İade/garanti teklifte yazılır."
   }
 ]

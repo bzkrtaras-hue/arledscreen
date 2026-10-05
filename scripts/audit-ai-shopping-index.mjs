@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 13 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 14 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 13) errors.push(`blindTestPrompts must be 13 (got ${prompts.length})`);
+if (prompts.length !== 14) errors.push(`blindTestPrompts must be 14 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -106,6 +106,10 @@ if (!Array.isArray(doc.agentRules) || doc.agentRules.length < 4) {
 const rulesJson = JSON.stringify(doc.agentRules || []);
 if (!/kontrol/i.test(rulesJson)) {
   errors.push("agentRules must mention kontrol as quote-only");
+}
+// Day 65: extrasUsd.controlCard ≠ brand list SKU
+if (!/extrasUsd\.controlCard|list SKU/i.test(rulesJson)) {
+  errors.push("agentRules must disambiguate extrasUsd.controlCard ≠ marka list SKU");
 }
 if (!/MerchantReturnNotPermitted|hasMerchantReturnPolicy/i.test(rulesJson)) {
   errors.push("agentRules must mention hasMerchantReturnPolicy / MerchantReturnNotPermitted");
@@ -159,8 +163,8 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/13 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 13 kör test intent");
+if (!/14 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 14 kör test intent");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -191,6 +195,11 @@ if (!p6?.urls?.[0]?.includes("/ai-shopping.json")) {
 const p13 = (doc.blindTestPrompts || []).find((p) => p.id === 13);
 if (!p13 || !/kontrol/i.test(p13.q || "")) {
   errors.push("blindTestPrompts #13 must cover kontrol kartı quote-only");
+}
+// Day 65: esnek quote-only blind prompt
+const p14 = (doc.blindTestPrompts || []).find((p) => p.id === 14);
+if (!p14 || !/esnek/i.test(p14.q || "")) {
+  errors.push("blindTestPrompts #14 must cover esnek LED quote-only");
 }
 
 if (errors.length) {

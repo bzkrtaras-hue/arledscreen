@@ -1,7 +1,7 @@
 # AI alışveriş — kör test skor kartı
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (deploy sonrası) ≥ **20/39** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **29/39**  
+Hedef: Tur 1 (deploy sonrası) ≥ **21/42** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **32/42**  
 Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-profiles.json` · `ard.json`
 
 ## Site readiness (repo)
@@ -13,17 +13,17 @@ Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-pro
 
 ## Tur kayıtları
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /39.
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /42.
 
 ### Tur 1 — deploy sonrası (PR #55 canlı)
 
-| Model | Tarih | Konum | Incognito | Skor /39 | Not |
+| Model | Tarih | Konum | Incognito | Skor /42 | Not |
 |-------|-------|-------|-----------|----------|-----|
-| ChatGPT | | TR / | evet | /39 | |
-| Gemini | | | | /39 | |
-| Perplexity | | | | /39 | |
-| Bing Copilot | | | | /39 | |
-| **Ortalama** | | | | **/39** | Hedef ≥ 20 |
+| ChatGPT | | TR / | evet | /42 | |
+| Gemini | | | | /42 | |
+| Perplexity | | | | /42 | |
+| Bing Copilot | | | | /42 | |
+| **Ortalama** | | | | **/42** | Hedef ≥ 21 |
 
 Detay (örnek — her model için kopyalayın):
 
@@ -44,20 +44,20 @@ Model:
 11 | İstanbul LED telefon? |  |  | +90 530 507 88 34
 12 | NXTIONSTAR nedir? |  |  |
 13 | Huidu / NovaStar kontrol kartı fiyatı? |  |  | list yok → teklif
-Toplam: /39
+Toplam: /42
 ```
 
 ### Tur 2 — Point C sonrası (≤ 2026-11-04)
 
 Önkoşul: GBP + LinkedIn/IG/FB About = `entity-profiles.json` packs · `arleds.com` 301
 
-| Model | Tarih | Skor /39 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /42 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|----------|---------------------------|-----|
-| ChatGPT | | /39 | | |
-| Gemini | | /39 | | |
-| Perplexity | | /39 | | |
-| Bing Copilot | | /39 | | |
-| **Ortalama** | | **/39** | | Hedef ≥ 29 |
+| ChatGPT | | /42 | | |
+| Gemini | | /42 | | |
+| Perplexity | | /42 | | |
+| Bing Copilot | | /42 | | |
+| **Ortalama** | | **/42** | | Hedef ≥ 32 |
 
 ## Point C sayaç (tur 2 ile birlikte)
 

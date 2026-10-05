@@ -40,7 +40,7 @@ const FAQS = [
   {
     question: "Hangi maliyetler panellerin dışında kalır?",
     answer:
-      "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
+      "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir. Kontrol 500 USD hesaplayıcı extrasUsd tahminidir — Huidu/NovaStar/Colorlight list SKU değildir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
   },
   {
     question: "P2.5, P4 veya P5 fiyatı nerede?",

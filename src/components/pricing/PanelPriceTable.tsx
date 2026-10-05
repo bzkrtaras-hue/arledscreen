@@ -53,7 +53,8 @@ export function PanelPriceTable({ panels, caption, showUse = true, showCalcLink 
       <p className="mt-3 text-[13px] leading-relaxed text-ink-muted">
         {PRICE_NOTE} m² sütunu yalnızca modül bedelidir (320 × 160 mm modülde 1 m² ≈ 19,53 panel). Hesaplayıcı toplamına atölye işçiliği (
         {CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı ({CALC_EXTRAS.controlCard} USD) ve sürücü + yazılım (
-        {CALC_EXTRAS.driverSoftware} USD) ayrıca eklenir.
+        {CALC_EXTRAS.driverSoftware} USD) ayrıca eklenir — bu kontrol kalemi hesaplayıcı extrasUsd tahmini olup
+        Huidu/NovaStar/Colorlight list SKU fiyatı değildir; marka/model yazılı teklifle netleşir.
         {showCalcLink ? (
           <>
             {" "}

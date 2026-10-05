@@ -19,7 +19,7 @@ last_reviewed: 2026-10-01
 3. **İç veya dış mekân.** Dış mekân modüller güneş altında okunabilmek için daha yüksek parlaklık, yağmur ve toza karşı daha yüksek koruma ister. Aynı P değerinde dış mekân modül daha pahalıdır: P2.5 iç mekân 32,18 USD, P2.5 dış mekân 63,70 USD.
 4. **Yüzey teknolojisi (ör. GOB).** GOB modüllerde LED yüzeyi koruyucu bir kaplamayla kapatılır. İnce piksel aralıklarında (P1.25, P1.53, P1.86) bu seçenek fiyatı etkiler.
 5. **Servis tipi (önden / arkadan).** Duvara sıfır montajda modüllere önden erişim gerekir. Hesaplayıcıda P4 dış mekân modül 33,80 USD, P4 dış mekân front (önden servis) modül 36,40 USD'dir.
-6. **Kontrol sistemi ve yazılım.** Hesaplayıcı toplamına kontrol kartı için 500 USD ve sürücü + yazılım için 500 USD ekler.
+6. **Kontrol sistemi ve yazılım.** Hesaplayıcı toplamına kontrol kartı için 500 USD ve sürücü + yazılım için 500 USD ekler (`extrasUsd` tahmini). Bu tutar Huidu/NovaStar/Colorlight list SKU fiyatı değildir; kontrol kartı marka/model yazılı teklifle netleşir.
 7. **İşçilik ve saha koşulları.** Hesaplayıcıda atölye işçiliği m² başına 100 USD'dir. Taşıyıcı konstrüksiyon, elektrik altyapısı, montaj yüksekliği ve saha izinleri keşifte değerlendirilir.
 8. **Vergi, nakliye ve kur.** Liste fiyatları USD'dir. KDV ve nakliye hesaplayıcı toplamına dahil değildir.
 
@@ -47,7 +47,7 @@ Fiyatlar USD, panel başınadır (320 × 160 mm; P2.9 dış mekân modülü 250 
 - Modül adedi = yukarı yuvarla(genişlik ÷ 32 cm) × yukarı yuvarla(yükseklik ÷ 16 cm)
 - Malzeme = modül adedi × panel fiyatı
 - Atölye işçiliği = alan (m²) × 100 USD
-- Sabit kalemler = kontrol kartı 500 USD + sürücü/yazılım 500 USD
+- Sabit kalemler = kontrol kartı 500 USD + sürücü/yazılım 500 USD (`extrasUsd`; marka list SKU değil)
 - **Toplam = malzeme + işçilik + sabit kalemler** (KDV ve nakliye hariç)
 
 ## 4. Örnek ölçüler için hesaplayıcı sonuçları
