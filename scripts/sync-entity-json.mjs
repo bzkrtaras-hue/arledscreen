@@ -69,38 +69,31 @@ const openingHours =
     ? hours.slice(0, 2)
     : ["Pazartesi – Cuma: 09:00 – 18:00", "Cumartesi: 10:00 – 15:00"];
 
-const faqs = [
-  {
-    question: "ARLEDSCREEN kimdir?",
-    answer: ENTITY_CITE_MEDIUM,
-  },
-  {
-    question: "ARLEDSCREEN nerede?",
-    answer: `Merkez: ${street}, ${postal} ${locality} / ${region}, Türkiye. Telefon / WhatsApp: ${CONTACT_PHONE_DISPLAY}.`,
-  },
-  {
-    question: "NXTIONSTAR nedir?",
-    answer:
-      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir.",
-  },
-  {
-    question: "ARLEDSCREEN hangi hizmetleri sunar?",
-    answer:
-      "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir.",
-  },
-  {
-    question: "LED ekran panel fiyatları nereden alınır?",
-    answer: `Yayımlanmış 2026 panel (modül) USD listesi ${SITE}/catalog.json ve ${SITE}/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariçtir; nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: ${SITE}/tr/hesaplayici/`,
-  },
-  {
-    question: "Yayımlanmış panel fiyatları ne zamana kadar geçerlidir?",
-    answer: `List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: ${SITE}/catalog.json ve ${SITE}/ai-shopping.json). Bu tarihten sonra ajanlar katalogu yeniden okumalıdır. KDV ve nakliye hariçtir; nihai tutar keşif sonrası yazılı teklifle kesinleşir.`,
-  },
-  {
-    question: "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
-    answer: `Tek fetch index: ${SITE}/ai-shopping.json · Kimlik: ${SITE}/entity.json · Point C pack: ${SITE}/entity-profiles.json · Panel kataloğu: ${SITE}/catalog.json · Ajan keşif: ${SITE}/.well-known/ard.json · Kısa özet: ${SITE}/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir; ajanlar bu gruplara USD uydurmamalıdır.`,
-  },
-];
+/** Parse ENTITY_FAQS from entity.ts — single source (Gün 52); no hardcoded FAQ drift. */
+function parseEntityFaqs(src) {
+  const block = src.match(/export const ENTITY_FAQS = \[([\s\S]*?)\] as const/);
+  if (!block) throw new Error("sync-entity: missing ENTITY_FAQS");
+  const faqs = [];
+  const itemRe =
+    /\{\s*question:\s*"((?:\\.|[^"\\])*)",\s*answer:\s*(?:([A-Z0-9_]+)|"((?:\\.|[^"\\])*)")\s*,?\s*\}/g;
+  for (const m of block[1].matchAll(itemRe)) {
+    const question = m[1].replace(/\\"/g, '"');
+    let answer;
+    if (m[2]) {
+      if (m[2] === "ENTITY_CITE_MEDIUM") answer = ENTITY_CITE_MEDIUM;
+      else throw new Error(`sync-entity: unknown FAQ answer ref ${m[2]}`);
+    } else {
+      answer = m[3].replace(/\\"/g, '"').replace(/\\n/g, "\n");
+    }
+    faqs.push({ question, answer });
+  }
+  if (faqs.length < 7) {
+    throw new Error(`sync-entity: ENTITY_FAQS too short (${faqs.length})`);
+  }
+  return faqs;
+}
+
+const faqs = parseEntityFaqs(entitySrc);
 
 if (ORGANIZATION_SAME_AS.some((u) => /arleds\.com/i.test(u))) {
   throw new Error("sync-entity: arleds.com must not be in sameAs until 301 works");

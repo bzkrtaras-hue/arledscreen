@@ -100,6 +100,22 @@ if (!Array.isArray(doc.agentRules) || doc.agentRules.length < 4) {
 if (String(doc.mustKnowFacts?.priceValidUntil) !== "2026-12-31") {
   errors.push("mustKnowFacts.priceValidUntil must be 2026-12-31");
 }
+const extras = doc.shoppingPolicy?.extrasUsd || {};
+if (Number(extras.workshopLaborPerM2) !== 100) {
+  errors.push("shoppingPolicy.extrasUsd.workshopLaborPerM2 must be 100");
+}
+if (Number(extras.controlCard) !== 500 || Number(extras.driverSoftware) !== 500) {
+  errors.push("shoppingPolicy.extrasUsd controlCard/driverSoftware must be 500");
+}
+if (!/iade|garanti/i.test(JSON.stringify(doc.agentRules || []))) {
+  errors.push("agentRules must mention iade/garanti honesty");
+}
+if (!/ücretsiz kargo yok/i.test(JSON.stringify(doc.agentRules || []))) {
+  errors.push("agentRules must forbid fake free shipping");
+}
+if (!/quote-and-contract-only/i.test(String(doc.shoppingPolicy?.returnPolicy || ""))) {
+  errors.push("shoppingPolicy.returnPolicy must be quote-and-contract-only");
+}
 
 const entity = JSON.parse(fs.readFileSync(path.join(out, "entity.json"), "utf8"));
 if (!entity.aiShoppingJson?.includes("/ai-shopping.json")) {

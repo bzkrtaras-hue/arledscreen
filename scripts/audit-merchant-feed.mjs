@@ -93,6 +93,16 @@ function auditFeed(parsed, catalogSkus, catalogBySku) {
     if (/kiralik-led-ekran|seffaf-led-ekran|transparan-led-ekran|poster-led-ekran|esnek-led-ekran/.test(r.link)) {
       errors.push(`${rel}: quote-only URL must not appear: ${r.link}`);
     }
+    // Day 52: never claim free shipping (contradicts Offer shippingDetails / agentRules)
+    if (/:::0(\s*USD)?/i.test(r.shipping || "") || /^TR:::0/i.test(r.shipping || "")) {
+      errors.push(`${rel}: ${r.id} shipping must not claim free (0 USD); leave empty for owner Merchant rates`);
+    }
+    if (/ücretsiz kargo|free shipping/i.test(r.description || "") && !/ücretsiz kargo yok/i.test(r.description || "")) {
+      errors.push(`${rel}: ${r.id} description must not claim free shipping`);
+    }
+    if (!/nakliye/i.test(r.description || "")) {
+      errors.push(`${rel}: ${r.id} description should state nakliye excluded`);
+    }
   }
   for (const sku of catalogSkus) {
     if (!ids.has(sku)) errors.push(`${rel}: missing catalog sku ${sku}`);

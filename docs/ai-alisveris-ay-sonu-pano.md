@@ -8,20 +8,22 @@ IndexNow / post-deploy: `npm run post-deploy`
 Bu sayfa **ölçüm şablonu + sahip panosu**. Kod tarafı Gün 16–29 ile hazır;
 canlı skorlar merge + Point C sonrası doldurulur.
 
-## A) Site-side (repo) — 2026-10-05 (gün 16–51)
+## A) Site-side (repo) — 2026-10-05 (gün 16–52)
 
 | Metrik | Hedef | Durum |
 |--------|-------|-------|
 | Regression suite | 17/17 PASS | ✅ `npm run audit:all` GREEN |
 | Priced panels | 12 SKU | ✅ catalog + Merchant TSV |
 | Quote-only Offer yok | 0 fake price | ✅ audit:offers |
+| Merchant shipping | free-ship yok (`:::0` yasak) | ✅ audit:merchant-feed |
 | robots Host bare | `arledscreen.com` | ✅ audit:robots |
 | Cite parity | entity↔llms↔about↔profiles | ✅ audit:cite-parity |
 | Kör test site readiness | 12 prompt URL | ✅ audit:blind-test |
 | AI headers (CORS/ctype) | 9 path | ✅ audit:ai-headers |
 | IndexNow key | public hex.txt | ✅ audit:indexnow |
-| AI shopping index | `/ai-shopping.json` + 12 pricedPanels | ✅ audit:ai-shopping |
+| AI shopping index | `/ai-shopping.json` + 12 pricedPanels + extrasUsd | ✅ audit:ai-shopping |
 | Offer shippingDetails | nakliye hariç (TR) | ✅ model + catalog |
+| Return/garanti honesty | teklif-only FAQ + agentRules | ✅ entity + ai-shopping |
 | Shopping LinkCloud | home→model→case→blog→seo-guide | ✅ 143+ yüzey |
 | Org → catalog JSON-LD | hasOfferCatalog | ✅ OrganizationJsonLd + entity.json |
 | Offer ↔ catalog join | sku=priceId + isPartOf | ✅ model/group/pitch |

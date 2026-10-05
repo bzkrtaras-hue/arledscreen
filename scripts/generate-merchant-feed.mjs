@@ -71,6 +71,7 @@ for (const p of dataset) {
   const desc = [
     p.name,
     "Panel (modül) list fiyatı USD; KDV ve nakliye hariç.",
+    "Nakliye list fiyatına dahil değildir; ücretsiz kargo yok — yazılı teklifle netleşir.",
     "Nihai tutar keşif ve yazılı teklifle kesinleşir.",
     "ARLEDSCREEN / NXTIONSTAR — İstanbul Gaziosmanpaşa.",
   ].join(" ");
@@ -91,7 +92,8 @@ for (const p of dataset) {
       "4044", // Electronics > Video > Televisions (closest GMC taxonomy for LED display modules)
       cell(`LED Screens > ${p.category || "LED module"}`),
       "no",
-      "TR:::0 USD", // shipping placeholder; owner overrides in Merchant
+      // Empty shipping: do NOT claim TR:::0 USD (free). Owner sets real freight in Merchant Center.
+      "",
       "TR:0:n", // VAT not included in list price
     ].join("\t"),
   );

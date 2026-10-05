@@ -239,6 +239,7 @@ const catalog = {
     vatIncluded: false,
     shippingIncluded: false,
     shipping: "excluded-from-list; quote",
+    returnPolicy: "quote-and-contract-only; no fixed site return window",
     extrasUsd: {
       workshopLaborPerM2: laborPerM2,
       controlCard: controlCard,

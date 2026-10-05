@@ -78,7 +78,7 @@ function shoppingSourceFaq(
     return {
       question: `${name} panel fiyatları ajanlar nereden okur?`,
       answer:
-        `Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json. KDV ve nakliye hariç; nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+        `Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Tek fetch: https://arledscreen.com/ai-shopping.json. KDV ve nakliye hariç; Offer shippingDetails nakliyeyi list dışı bırakır (ücretsiz kargo yok). Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
     };
   }
   return {

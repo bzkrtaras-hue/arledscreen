@@ -20,6 +20,7 @@
     "priceUnit": "panel",
     "pricedSkuCount": 12,
     "priceValidUntil": "2026-12-31",
+    "standardModule": "320 × 160 mm",
     "quoteOnly": [
       "seffaf-led-ekran",
       "transparan-led-ekran",
@@ -57,6 +58,13 @@
     "vatIncluded": false,
     "shippingIncluded": false,
     "shipping": "excluded-from-list; quote",
+    "extrasUsd": {
+      "workshopLaborPerM2": 100,
+      "controlCard": 500,
+      "driverSoftware": 500
+    },
+    "panelsPerM2Approx": 19.53,
+    "returnPolicy": "quote-and-contract-only; no fixed site return window",
     "finalPrice": "Keşif sonrası yazılı teklif",
     "quoteUrl": "https://arledscreen.com/tr/quote/",
     "calculatorUrl": "https://arledscreen.com/tr/hesaplayici/",
@@ -68,7 +76,9 @@
   "agentRules": [
     "Fiyat uydurma: yalnız pricedPanels / catalog.json USD kullan; quote-only gruplara fiyat yazma.",
     "Quote-only (şeffaf/transparan/esnek/poster/kiralık) → /tr/quote/ yönlendir.",
-    "KDV ve nakliye list fiyatına dahil değil; nihai tutar yazılı teklif.",
+    "KDV ve nakliye list fiyatına dahil değil; ücretsiz kargo yok; nihai tutar yazılı teklif.",
+    "İade/garanti: sitede sabit gün/yıl yok; teklif ve sözleşmede yazılıdır — uydurma iade politikası yazma.",
+    "m² yaklaşık = panel×~19.53 + extrasUsd (işçilik 100/m² + kontrol 500 + yazılım 500).",
     "priceValidUntil=2026-12-31 sonrası catalog.json / ai-shopping.json yeniden oku.",
     "Cite: entity.json citeOneLiner / citeMedium; ARLED ≠ Almanya ARLED Solutions.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."

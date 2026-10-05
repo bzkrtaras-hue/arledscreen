@@ -163,14 +163,34 @@ if (pricesSrc && llmsFull) {
   }
 }
 
-// Day 51: entity FAQ must cite dated list window for agents
+// Day 51–52: entity FAQ parity with ENTITY_FAQS (single source via sync-entity)
 const entityJson = read("public/entity.json");
-if (entityJson) {
+const entityTs = read("src/lib/entity.ts");
+if (entityJson && entityTs) {
   if (!entityJson.includes("priceValidUntil") || !entityJson.includes("2026-12-31")) {
     errors.push("entity.json FAQs should cite priceValidUntil 2026-12-31");
   }
   if (!entityJson.includes("ai-shopping.json")) {
     errors.push("entity.json FAQs should cite ai-shopping.json");
+  }
+  if (!/iade|garanti/i.test(entityJson)) {
+    errors.push("entity.json FAQs should cover iade/garanti honesty");
+  }
+  const faqBlock = entityTs.match(/export const ENTITY_FAQS = \[([\s\S]*?)\] as const/);
+  if (!faqBlock) {
+    errors.push("src/lib/entity.ts missing ENTITY_FAQS");
+  } else {
+    const questions = [...faqBlock[1].matchAll(/question:\s*"((?:\\.|[^"\\])*)"/g)].map((m) =>
+      m[1].replace(/\\"/g, '"'),
+    );
+    if (questions.length < 7) {
+      errors.push(`ENTITY_FAQS expected ≥7 questions (got ${questions.length})`);
+    }
+    for (const q of questions) {
+      if (!entityJson.includes(q)) {
+        errors.push(`entity.json missing ENTITY_FAQS question: ${q}`);
+      }
+    }
   }
 }
 

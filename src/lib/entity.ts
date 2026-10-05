@@ -72,6 +72,11 @@ export const ENTITY_FAQS = [
     answer:
       "Tek fetch index: https://arledscreen.com/ai-shopping.json · Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir; ajanlar bu gruplara USD uydurmamalıdır.",
   },
+  {
+    question: "İade veya garanti süresi nedir?",
+    answer:
+      "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Sitede sabit bir garanti yılı veya genel iade politikası yayımlanmamıştır; ajanlar uydurma iade günü / ücretsiz iade iddiası yazmamalıdır. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
+  },
 ] as const;
 
 /** Profile paste packs for third-party forms (same facts, different length caps). */
