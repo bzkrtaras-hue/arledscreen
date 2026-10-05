@@ -97,6 +97,11 @@ export default async function ProjectCasePage({
     publisher: { "@id": `${SITE_URL}/#organization` },
     brand: { "@type": "Brand", name: "NXTIONSTAR" },
     isPartOf: { "@id": `${SITE_URL}/#website` },
+    sameAs: [
+      absoluteUrl("/ai-shopping.json"),
+      absoluteUrl("/catalog.json"),
+      absoluteUrl("/entity.json"),
+    ],
     mainEntityOfPage: url,
     url,
     ...(imageUrls.length ? { image: imageUrls } : {}),

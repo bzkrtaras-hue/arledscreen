@@ -50,6 +50,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 58 | 2026-10-05 | FAQ ai-shopping wave 2 (quote-only/commercial/founder/projeler/bolgeler/articles) · blind mustSay honesty | ✅ |
 | 59 | 2026-10-05 | FAQ honesty wave 3 · model FAQPage · AggregateOffer ücretsiz-kargo · audit requireHonesty | ✅ |
 | 60 | 2026-10-05 | Case-study FAQPage ×29 · Org OfferCatalog honesty · merge-day/post-deploy Day 59 · hub AggregateOffer audit | ✅ |
+| 61 | 2026-10-05 | llms hasMerchantReturnPolicy tokens · case/blog sameAs→ai-shopping · blog FAQPage ×N | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -288,3 +289,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Organization `hasOfferCatalog` / `subjectOf` honesty (shippingDetails · MerchantReturnNotPermitted · ücretsiz kargo yok)
 - `docs/point-c-merge-day.md` + `post-deploy` → Day 57–59 / smoke 14/14 / blind mustSay
 - Guards: audit:faq case dirs · audit:offers hub AggregateOffer description · entity-sameas Org honesty
+
+## Gün 61 notları
+
+- `llms.txt` / `llms-full.txt`: `hasMerchantReturnPolicy` + `MerchantReturnNotPermitted` (Day 57 contract in agent prose)
+- Case CreativeWork + BlogPosting `sameAs` → ai-shopping / catalog / entity
+- Blog post FAQPage + HomeFaq (ai-shopping + honesty)
+- Guards: cite-parity + smoke llms needles · audit:faq blog dirs + case sameAs

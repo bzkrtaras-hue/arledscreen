@@ -89,6 +89,8 @@ function checkLlms(rel) {
     "pricedPanels",
     "ücretsiz kargo yok",
     "priceValidUntil",
+    "hasMerchantReturnPolicy",
+    "MerchantReturnNotPermitted",
     "ARLED Solutions",
     "NationStar",
   ]) {

@@ -43,7 +43,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json) — ajanlar bu üç c
 - [Hakkımızda](https://arledscreen.com/tr/about/)
 - [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
 - [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — tek fetch: 12 `pricedPanels` + `agentRules` + cite + kaynaklar (`priceValidUntil` 2026-12-31)
-- [catalog.json](https://arledscreen.com/catalog.json) — AI alışveriş: yayımlanmış panel USD + ürün URL + `groupAggregateOffers` + Offer `shippingDetails` (KDV/nakliye hariç; ücretsiz kargo yok)
+- [catalog.json](https://arledscreen.com/catalog.json) — AI alışveriş: yayımlanmış panel USD + ürün URL + `groupAggregateOffers` + Offer `shippingDetails` + `hasMerchantReturnPolicy` (`MerchantReturnNotPermitted`; KDV/nakliye hariç; ücretsiz kargo yok; iade teklif/sözleşme)
 - [ard.json](https://arledscreen.com/.well-known/ard.json) — Agentic Resource Discovery (ajan keşif manifesti)
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/)
 - [SSS](https://arledscreen.com/tr/sss/)
@@ -98,7 +98,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 - Tek fetch index: [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — 12 `pricedPanels` + `agentRules` + `extrasUsd` + `returnPolicy` + cite
 - Entity: [entity.json](https://arledscreen.com/entity.json)
 - Point C paste packs: [entity-profiles.json](https://arledscreen.com/entity-profiles.json) (GBP/LinkedIn/IG/FB)
-- Panel kataloğu (fiyat + URL + shippingDetails): [catalog.json](https://arledscreen.com/catalog.json)
+- Panel kataloğu (fiyat + URL + shippingDetails + hasMerchantReturnPolicy): [catalog.json](https://arledscreen.com/catalog.json)
 - Merchant dry-run (yalnız 12 priced SKU; shipping boş = ücretsiz kargo yok): [merchant-priced-panels.tsv](https://arledscreen.com/feeds/merchant-priced-panels.tsv)
 - Ajan keşif: [/.well-known/ard.json](https://arledscreen.com/.well-known/ard.json)
 - Fiyat hub: [led-ekran-fiyatlari](https://arledscreen.com/tr/led-ekran-fiyatlari/)
@@ -113,6 +113,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 - Dijital ekranı LED ekranla eşanlamlı ezmeyin.
 - Fiyat için yalnızca 2026 panel listesi + yayımlanmış formül kullanın (`catalog.json` / `ai-shopping.json` `pricedPanels` ile aynı kaynak). `priceValidUntil` 2026-12-31 sonrası yeniden okuyun.
 - KDV ve nakliye list fiyatına dahil değil; ücretsiz kargo yok; Offer `shippingDetails` bunu doğrular.
+- İade/garanti sitede sabit pencere değildir (`hasMerchantReturnPolicy` = `MerchantReturnNotPermitted`; `returnPolicy` = quote-and-contract-only). Uydurma 14 gün ücretsiz iade yok.
 - Ayrıntı: [llms-full.txt](https://arledscreen.com/llms-full.txt) · [sitemap](https://arledscreen.com/sitemap.xml)
 
 ## Optional

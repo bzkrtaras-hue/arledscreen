@@ -246,6 +246,29 @@ for (const slug of caseDirs) {
     requireAiShopping: true,
     requireHonesty: true,
   });
+  // Day 61: CreativeWork sameAs → ai-shopping
+  const caseHtml = fs.readFileSync(path.join(outTr, "projelerimiz", slug, "index.html"), "utf8");
+  if (!caseHtml.includes("/ai-shopping.json") || !/sameAs/i.test(caseHtml)) {
+    errors.push(`projelerimiz/${slug}: CreativeWork/FAQ must sameAs or cite ai-shopping.json`);
+  }
+}
+
+// Day 61: blog posts FAQPage + honesty
+const blogDirs = fs.existsSync(path.join(outTr, "blog"))
+  ? fs
+      .readdirSync(path.join(outTr, "blog"), { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name)
+  : [];
+let blogFaqChecked = 0;
+for (const slug of blogDirs) {
+  blogFaqChecked += 1;
+  auditPage(`blog/${slug}`, {
+    minCount: 2,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
 }
 
 const seoGuideSrc = fs.readFileSync(path.join(root, "src/content/seo-guides.ts"), "utf8");
@@ -264,7 +287,7 @@ for (const slug of seoGuideSlugs) {
 }
 
 console.log(
-  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + ${modelFaqChecked} models + ${caseFaqChecked} cases + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles + ${seoGuideSlugs.length} seo-guides`,
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + ${modelFaqChecked} models + ${caseFaqChecked} cases + ${blogFaqChecked} blog posts + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles + ${seoGuideSlugs.length} seo-guides`,
 );
 if (errors.length) {
   console.error("FAIL:");
