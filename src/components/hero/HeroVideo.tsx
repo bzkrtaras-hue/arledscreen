@@ -281,8 +281,8 @@ export function HeroVideo({
             </m.h1>
 
             <m.p
-              className="mt-3 max-w-[46ch] text-pretty text-[15px] font-medium leading-[1.65] text-white/92 sm:mt-4 sm:text-[17px] sm:leading-[1.7]"
-              style={{ textShadow: "0 1px 14px rgba(11,27,51,0.45)" }}
+              className="mt-3 max-w-[46ch] text-pretty text-[15px] font-semibold leading-[1.65] text-white sm:mt-4 sm:text-[17px] sm:leading-[1.7]"
+              style={{ textShadow: "0 2px 18px rgba(11,27,51,0.75), 0 0 2px rgba(11,27,51,0.55)" }}
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease, delay: 0.28 }}
