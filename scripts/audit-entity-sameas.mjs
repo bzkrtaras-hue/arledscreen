@@ -106,6 +106,16 @@ if (!fs.existsSync(profilesPath)) {
   }
 }
 
+const headersPath = path.join(root, "public/_headers");
+if (fs.existsSync(headersPath)) {
+  const headers = fs.readFileSync(headersPath, "utf8");
+  if (!headers.includes("/entity-profiles.json")) {
+    errors.push("_headers missing /entity-profiles.json CORS block");
+  } else if (!/\/entity-profiles\.json[\s\S]*?Access-Control-Allow-Origin:\s*\*/.test(headers)) {
+    errors.push("_headers /entity-profiles.json must Allow-Origin *");
+  }
+}
+
 /** Optional live probe (network). Failures are warnings until PR #55 deploys. */
 async function liveProbe() {
   const urls = [

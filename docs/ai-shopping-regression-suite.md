@@ -1,4 +1,4 @@
-# AI alışveriş regression suite (Gün 29)
+# AI alışveriş regression suite (Gün 29 → güncellendi Gün 42)
 
 Son güncelleme: 2026-10-05  
 Komut: `npm run audit:all` (build sonrası) · postbuild zinciri aynı guard’ları çalıştırır
@@ -17,24 +17,34 @@ npm run audit:all
 |-------|----------------|
 | offers | P0 fiyat/Offer |
 | images | P0 ürün görseli |
-| shopping-links | 28 LinkCloud |
-| faq | 28 FAQ price hint |
-| entity | P0 sameAs |
+| shopping-links | 28→42 LinkCloud (**135 yüzey**; entity-profiles zorunlu) |
+| faq | 28→41 FAQ price hint (home/hub/founder/blog/…) |
+| entity | P0 sameAs + entity-profiles packs |
 | schema | 17 GSC schema |
 | locale | 18 thin EN |
 | case-images | 19 foto gap |
 | product-ctas | 22 CTA sıra |
 | sitemap | 23 completeness |
 | robots | 24 Bing/AI Host |
-| blind-test | 25 kör test site readiness |
-| cite-parity | 26 entity↔llms |
+| blind-test | 25 kör test + entity-profiles ARD |
+| cite-parity | 26 entity↔llms↔profiles |
 | merchant-feed | 27 GMC TSV 12 SKU |
 
 Çıkış kodu: herhangi biri FAIL → `1` (CI kırmızı).
 
+## Canlı ölçüm
+
+```bash
+npm run smoke:live          # 12 endpoint
+npm run point-c-packs       # local paste packs
+npm run point-c-packs -- --live   # deploy sonrası
+```
+
+Merge-gün checklist: [`point-c-merge-day.md`](./point-c-merge-day.md)
+
 ## Owner hâlâ bloklayanlar (suite yeşil olsa bile)
 
-1. PR #55 merge + CF redeploy → canlı entity/catalog/ard  
-2. Point C üçüncü taraf atıf  
+1. PR #55 merge + CF redeploy → canlı entity/catalog/ard/entity-profiles  
+2. Point C üçüncü taraf atıf (`entity-profiles.json` packs)  
 3. Canlı kör tur skor kartı  
 4. Merchant Center feed yükleme

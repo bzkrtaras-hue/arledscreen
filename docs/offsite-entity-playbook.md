@@ -11,6 +11,7 @@ yayımlanmaz** — yalnızca burada.
 |---|---|
 | Makinece entity (NAP + cite) | https://arledscreen.com/entity.json |
 | Point C paste packs | https://arledscreen.com/entity-profiles.json |
+| Merge-gün checklist | [`point-c-merge-day.md`](./point-c-merge-day.md) |
 | Kısa AI özeti | https://arledscreen.com/llms.txt |
 | Hakkımızda | https://arledscreen.com/tr/about/ |
 

@@ -70,13 +70,13 @@ function shoppingSourceFaq(
     return {
       question: `${name} panel fiyatları ajanlar nereden okur?`,
       answer:
-        `Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: https://arledscreen.com/entity.json. KDV ve nakliye hariç; nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+        `Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json. KDV ve nakliye hariç; nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
     };
   }
   return {
     question: `${name} için list fiyatı var mı?`,
     answer:
-      `${name} için panel list fiyatı yayımlanmaz; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. Yayımlanmış diğer paneller için https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ kaynak alınır. Firma kimliği: https://arledscreen.com/entity.json.`,
+      `${name} için panel list fiyatı yayımlanmaz; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. Yayımlanmış diğer paneller için https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ kaynak alınır. Firma kimliği: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json.`,
   };
 }
 
