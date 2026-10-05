@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -105,12 +106,12 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
       >
         <YiyistarGallery showFeatured={false} showJumpNav={false} limitSections={2} />
         <p className="mt-8 text-center">
-          <a
+          <Link
             href="/tr/galeri/"
             className="inline-flex min-h-11 items-center rounded-full border border-border bg-white px-5 text-sm font-semibold text-ink-soft hover:border-cyan/45 hover:text-cyan"
           >
             Tam galeriyi aç
-          </a>
+          </Link>
         </p>
       </Section>
 
