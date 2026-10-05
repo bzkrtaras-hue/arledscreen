@@ -40,7 +40,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] Service + FAQ JSON-LD on commercial / region pages
 - [x] `llms.txt` / `llms-full.txt` updated with commercial URLs
 - [x] `catalog.json` — AI alışveriş için yayımlanmış panel USD + ürün URL (build’de üretilir)
-- [ ] Attach more **real** project photos to case studies as files become available
+- [ ] Attach more **real** project photos to case studies as files become available — gap list: [`docs/case-study-photo-gaps.md`](./case-study-photo-gaps.md) (8/29 have photos; `audit:case-images`)
 - [x] Author / E-E-A-T page for Aras Bozkurt (`/tr/about/aras-bozkurt/` + Person JSON-LD)
 - [x] Commercial landings: fiyat + hesaplayıcı + karar rehberi LinkCloud
 - [x] GOB vs SMD karar rehberi (`/tr/rehber/gob-vs-smd/`)

@@ -232,9 +232,9 @@ export default async function ProjectCasePage({
           </div>
         </section>
       ) : (
-        <section className="border-t border-border py-8">
+        <section className="border-t border-border py-8" data-case-photo-gap="true">
           <div className="mx-auto max-w-7xl px-4 text-sm text-ink-muted sm:px-6 lg:px-8">
-            Bu kayıt için henüz eşleşen stok/proje fotoğrafı bağlı değil. Genel galeri:{" "}
+            Bu kayıt için henüz eşleşen proje fotoğrafı bağlı değil (uydurma görsel eklenmez). Genel galeri:{" "}
             <Link href="/tr/galeri/" className="font-semibold text-cyan hover:underline">
               /tr/galeri/
             </Link>
