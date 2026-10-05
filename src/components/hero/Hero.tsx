@@ -64,8 +64,8 @@ export function Hero({ locale }: HeroProps) {
       }
       subcopy={
         tr
-          ? "Keşif, montaj ve teknik servis. Merkezimiz İstanbul Gaziosmanpaşa’dadır; kurulum taleplerini Türkiye geneli alıyoruz."
-          : "Survey, installation and technical service. Headquarters in Gaziosmanpaşa, Istanbul; we take installation requests across Turkey."
+          ? "Projenin ilk keşif aşamasından tasarım, üretim, montaj ve satış sonrası teknik destek süreçlerine kadar tüm operasyonu uçtan uca yönetiyoruz. İstanbul merkezli üretim tesisimizde yüksek kalite standartlarında hazırlanan LED ekran sistemleri, Türkiye’nin 81 ilindeki yaygın bayi ve servis ağımız aracılığıyla sahada profesyonellikle hayata geçirilmektedir."
+          : "We manage the full operation end to end — from the first site survey through design, production, installation and after-sales technical support. LED display systems prepared to high quality standards at our Istanbul-based production facility are delivered on site through our dealer and service network across Turkey’s 81 provinces."
       }
       points={
         tr
