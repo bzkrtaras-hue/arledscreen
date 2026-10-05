@@ -50,22 +50,24 @@ Bu sayfalarda Product schema vardır; **offers yoktur**. Teklif: `/tr/quote/`.
 - [x] `catalog.json` ürünlerinde absolute `image` (generate-ai-catalog)
 - [x] `catalog.json` `groupAggregateOffers` — all / iç / dış / GOB AggregateOffer bantları (quote-only yok)
 - [x] postbuild `audit:offers`
+- [x] Merchant dry-run TSV (yalnız 12 SKU) — `public/feeds/merchant-priced-panels.tsv` + `audit:merchant-feed`
 
 ## Sahip checklist (Merchant Center)
 
 1. [ ] PR #55 merge + CF redeploy; `catalog.json` ve 12 model URL **200**
 2. [ ] Merchant Center’da yalnızca 12 priced SKU (yukarıdaki tablo)
-3. [ ] Feed / URL inspection: her SKU’da price + currency + image
-4. [ ] Quote-only URL’leri feed’e **ekleme**
-5. [ ] Fiyat değişince `PANEL_PRICES` → build → catalog; Merchant’ı senkron tut
-6. [ ] GSC → Enhancements → Merchant listings: “Missing offers.price” = 0
+3. [ ] Feed URL: `https://arledscreen.com/feeds/merchant-priced-panels.tsv` (veya dosyayı yükle)
+4. [ ] Feed / URL inspection: her SKU’da price + currency + image
+5. [ ] Quote-only URL’leri feed’e **ekleme**
+6. [ ] Fiyat değişince `PANEL_PRICES` → build → catalog + TSV; Merchant’ı senkron tut
+7. [ ] GSC → Enhancements → Merchant listings: “Missing offers.price” = 0
 
 ## Doğrulama komutları
 
 ```bash
-npm run catalog
-npm run build   # postbuild audit:offers dahil
-# manuel: out/tr/products/.../index.html içinde Product.offers.price
+npm run catalog && npm run merchant-feed
+npm run build   # postbuild audit:offers + audit:merchant-feed dahil
+# manuel: out/feeds/merchant-priced-panels.tsv — 12 satır, quote-only yok
 ```
 
 ## Notlar
@@ -73,3 +75,4 @@ npm run build   # postbuild audit:offers dahil
 - Fiyat panel (modül) başına USD; KDV/nakliye hariç.
 - m² maliyeti ≈ panel × 19,53 + işçilik/kontrol/yazılım (hesaplayıcı).
 - Nihai proje tutarı yazılı teklifle kesinleşir — Merchant’da “from” iddiası yok.
+- TSV `shipping=TR:::0 USD` ve `tax=TR:0:n` yer tutucu; Merchant hesabında gerçek kargo/KDV ayarı sahibi kontrol eder.

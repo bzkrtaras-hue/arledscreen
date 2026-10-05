@@ -16,7 +16,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 24 | 2026-10-05 | Bing/AI bot Allow + Host (`audit:robots`) | ✅ |
 | 25 | 2026-10-05 | Kör test protokolü + `audit:blind-test` | ✅ |
 | 26 | 2026-10-05 | llms/entity cite parity (`audit:cite-parity`) | ✅ |
-| 27 | — | (plan: Merchant feed dry-run / priced panels) | ⏳ |
+| 27 | 2026-10-05 | Merchant feed dry-run 12 SKU (`audit:merchant-feed`) | ✅ |
 | 28 | — | (plan: FAQ + commercial LinkCloud gaps) | ⏳ |
 | 29 | — | (plan: regression suite tek komut özeti) | ⏳ |
 | 30 | 2026-11-04 | Ay sonu ölçüm + owner Point C panosu | ⏳ |
@@ -39,6 +39,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - [`docs/cite-parity.md`](./cite-parity.md) — ENTITY_CITE_* ↔ entity.json ↔ llms ↔ about
 - `llms.txt` / `llms-full.txt` verbatim citeOneLiner/Short/Medium
 - `seo.ts` about TR/EN cite import; `audit:cite-parity` postbuild
+
+## Gün 27 notları
+
+- `public/feeds/merchant-priced-panels.tsv` — yalnızca 12 priced SKU (quote-only yok)
+- `generate-merchant-feed.mjs` build zincirinde; `audit:merchant-feed` postbuild
+- Owner: Merchant Center’a TSV URL veya dosya yükle (deploy sonrası)
 
 ## Owner P0 (her gün hatırlatma)
 
