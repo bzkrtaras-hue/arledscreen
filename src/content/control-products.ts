@@ -24,7 +24,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     imageAlt: "Huidu LED asenkron kontrol kartı ürün görseli",
     brandName: "Huidu",
     intro: [
-      "Huidu (Shenzhen Huidu Technology) kontrol kartları, özellikle asenkron LED tabela ve orta boy reklam yüzeylerinde sık tercih edilir. Kart üzerinde depolama vardır; program bilgisayar veya telefonda hazırlanıp Wi‑Fi, USB ya da ağ üzerinden ekrana gönderilir.",
+      "Huidu (Shenzhen Huidu Technology) kontrol kartları, asenkron LED tabela ve orta boy reklam yüzeylerinde yaygın kullanılan kontrol hattıdır. Kart üzerinde depolama vardır; program bilgisayar veya telefonda hazırlanıp Wi‑Fi, USB ya da ağ üzerinden ekrana gönderilir.",
       "ARLEDSCREEN olarak Huidu kart seçimini ekran ölçüsüne, piksel yüküne ve yayın senaryosuna göre yapıyoruz. Kurulumda HDPlayer / LedArt yazılımı, ekran haritası ve uzaktan erişim ayarları birlikte teslim edilir. Nihai model keşif sonrası yazılı teklifle netleşir.",
     ],
     highlights: [

@@ -224,7 +224,7 @@ const INTENT_PAGES: CommercialPage[] = [
       "Yazılı teklif; gizli ek ücret yok",
     ],
     images: [
-      { src: "/projects/panels-warehouse.jpg", alt: "LED ekran panel stok ve satış hazırlığı" },
+      { src: "/projects/panels-warehouse.jpg", alt: "LED ekran panel depo ve sevkiyat hazırlığı" },
       { src: "/projects/indoor-smd.jpg", alt: "İç mekân SMD LED ekran satışı" },
     ],
     proofs: proofsFrom((r) => /P\d|panel|Premium|Ultra/i.test(r.detail), 6),
@@ -247,15 +247,15 @@ const INTENT_PAGES: CommercialPage[] = [
   page({
     slug: "led-ekran-ureticisi",
     cluster: "intent",
-    title: "LED Ekran Üreticisi / Tedarik | ARLEDSCREEN NXTIONSTAR",
+    title: "LED Ekran Üreticisi Arayanlar · NXTIONSTAR Tedarik | ARLEDSCREEN",
     description:
-      "LED ekran üreticisi arayanlar için: NXTIONSTAR panelleri ARLEDSCREEN üzerinden satış, montaj ve servis. İstanbul Gaziosmanpaşa. Panel USD: catalog.json; şeffaf/poster/kontrol quote-only.",
-    h1: "LED ekran üreticisi mi, teknoloji merkezi mi?",
+      "Üretici / fabrika / OEM / bağımsız bayi arayanlar için dürüst çerçeve: NXTIONSTAR = ARLEDSCREEN ürün markası; satış, montaj ve servis Gaziosmanpaşa’dan yazılı teklifle. Panel USD: catalog.json; şeffaf/poster/kontrol quote-only.",
+    h1: "Üretici mi, bayi mi? Ne fabrika ne distribütör",
     eyebrow: "Tedarik · Satış · Montaj",
-    lead: "NXTIONSTAR LED ekran sistemlerini İstanbul Gaziosmanpaşa merkezinden projelendiriyor, tedarik ediyor ve sahada uyguluyoruz — uydurma fabrika iddiası yok.",
+    lead: "NXTIONSTAR LED ekran sistemlerini İstanbul Gaziosmanpaşa merkezinden projelendiriyor, tedarik ediyor ve sahada uyguluyoruz — uydurma OEM fabrika veya bağımsız bayi iddiası yok.",
     intro: [
-      "ARLEDSCREEN, NXTIONSTAR markalı LED ekran çözümlerini Türkiye’de satış, montaj ve servisle buluşturan teknoloji merkezidir.",
-      "Tedarik, kalite kontrol ve saha montajı aynı operasyon altında ilerler; proje ölçüsüne göre panel ve kontrol konfigürasyonu hazırlanır. Kontrol kartı list USD yoktur — teklif.",
+      "ARLEDSCREEN, NXTIONSTAR ürün markasının sahibi ve Türkiye’deki tek satış noktasıdır; Gaziosmanpaşa’dan satış, montaj ve teknik servis sunar.",
+      "Panel ve kontrol seçimi keşifte netleşir; tedarik ve saha montajı yazılı teklif kapsamındadır — stok paket veya fabrika hattı iddiası yok. Kontrol kartı list USD yoktur — teklif.",
       NAP,
     ],
     bullets: [
@@ -277,7 +277,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Üretici misiniz, bayi misiniz?",
         answer:
-          "ARLEDSCREEN, NXTIONSTAR LED ekran sistemlerini projelendiren, tedarik eden ve sahada uygulayan İstanbul Gaziosmanpaşa merkezli teknoloji merkezidir. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Marka ve operasyon ayrımı teklifte net yazılır.",
+          "Ne fabrika üreticisiyiz ne bağımsız distribütör/bayi. NXTIONSTAR ürün markasının sahibi ARLEDSCREEN’dir; satış, montaj ve servis Gaziosmanpaşa’dan yazılı teklifle yürür — uydurma OEM fabrika yok. Kimlik: https://arledscreen.com/entity.json.",
       },
       FAQ_AGENT_SOURCE,
     ],
@@ -544,7 +544,7 @@ const PITCH_PAGES: CommercialPage[] = [
     h1: "P1.86 LED ekran",
     lead: "İnce pitch ile bütçe dengesi; GOB ve esnek seçenekler.",
     intro: [
-      "P1.86, kurumsal lobi ve mağaza ekranlarında sık kullanılan ince pitch bandıdır. GOB ve esnek varyantları model sayfalarındadır.",
+      "P1.86, kurumsal lobi ve mağaza ekranlarında ince pitch katalog bandıdır. GOB ve esnek varyantları model sayfalarındadır.",
     ],
     modelLinks: [
       modelLink("gob-led-ekran", "p1-86-gob", "P1.86 GOB"),
@@ -560,9 +560,9 @@ const PITCH_PAGES: CommercialPage[] = [
     slug: "p2-5-led-ekran",
     label: "P2.5 LED",
     h1: "P2.5 LED ekran",
-    lead: "İç ve dış mekân projelerinde sık tercih edilen pitch bandı.",
+    lead: "İç ve dış mekân kayıtlarında görülen orta pitch bandı.",
     intro: [
-      "P2.5; mağaza, kafe, sahne yakını ve orta mesafe dış mekânlarda dengeli çözünürlük sunar. Kayıtlı projelerde sık geçer.",
+      "P2.5; mağaza, kafe, sahne yakını ve orta mesafe dış mekânlarda dengeli çözünürlük sunar. Referans listesinde P2.5 geçen kayıtlar vardır.",
     ],
     modelLinks: [
       modelLink("ic-mekan-led-ekran", "p2-5", "P2.5 iç mekan"),
@@ -608,7 +608,7 @@ const PITCH_PAGES: CommercialPage[] = [
     slug: "p4-led-ekran",
     label: "P4 LED",
     h1: "P4 LED ekran",
-    lead: "Cephe ve açık alan için sık tercih edilen P4 bandı.",
+    lead: "Cephe ve açık alan için yayımlı P4 bandı.",
     intro: [
       "P4, Manisa Büyükşehir Belediyesi kaydındaki 1344×128 cm Ultra 2026 uygulaması gibi geniş dış mekân işlerinde kullanılır. Önden servis varyantı da vardır.",
     ],

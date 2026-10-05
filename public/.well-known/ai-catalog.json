@@ -214,6 +214,87 @@
       "updatedAt": "2026-10-06T01:30:00Z"
     },
     {
+      "identifier": "urn:air:arledscreen.com:commerce:uretici-intent",
+      "displayName": "LED ekran üreticisi intent (honesty)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/led-ekran-ureticisi/",
+      "description": "Üretici/fabrika/OEM/bayi arayanlar için dürüst çerçeve. Ne fabrika üreticisi ne bağımsız distribütör — NXTIONSTAR ürün markası; satıcı ARLEDSCREEN (Gaziosmanpaşa). Blind #31.",
+      "representativeQueries": [
+        "ARLEDSCREEN LED ekran üreticisi / fabrika / OEM mi, yoksa bayi mi?",
+        "LED ekran üreticisi İstanbul",
+        "NXTIONSTAR kim üretir"
+      ],
+      "tags": [
+        "commerce",
+        "identity",
+        "GEO",
+        "honesty",
+        "üretici"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:satisi-intent",
+      "displayName": "LED ekran satışı intent",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/led-ekran-satisi/",
+      "description": "Satış intent hub. Panel USD catalog/ai-shopping; quote-only gruplar teklifle. Gaziosmanpaşa.",
+      "representativeQueries": [
+        "LED ekran satışı",
+        "LED ekran satın al İstanbul",
+        "NXTIONSTAR panel satışı"
+      ],
+      "tags": [
+        "commerce",
+        "sales",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:montaj-intent",
+      "displayName": "LED ekran montaj intent",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/led-ekran-montaj/",
+      "description": "Montaj intent: keşif, konstrüksiyon, kabin, kablolama, kalibrasyon. Sabit aynı-gün SLA yok; kapsam yazılı teklifte.",
+      "representativeQueries": [
+        "LED ekran montaj",
+        "LED ekran kurulum İstanbul",
+        "LED montaj süresi"
+      ],
+      "tags": [
+        "commerce",
+        "install",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:servis-intent",
+      "displayName": "LED ekran servis intent",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/led-ekran-servis/",
+      "description": "Teknik servis / bakım intent. Garanti/iade teklifte; sabit yıl yok. Gaziosmanpaşa.",
+      "representativeQueries": [
+        "LED ekran servis",
+        "LED ekran teknik destek",
+        "LED ekran bakım"
+      ],
+      "tags": [
+        "commerce",
+        "service",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:00:00Z"
+    },
+    {
       "identifier": "urn:air:arledscreen.com:docs:sss",
       "displayName": "SSS — fiyat / kimlik / ajan",
       "type": "text/html",
@@ -384,13 +465,14 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 30 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 31 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
         "LED panel fiyat catalog entity tek URL",
         "AI-infrastructure ready LED nedir / ARLEDSCREEN satıyor mu?",
-        "ARLEDSCREEN enterprise / aynı gün kurulum / keşiften servise all-in-one mı?"
+        "ARLEDSCREEN enterprise / aynı gün kurulum / keşiften servise all-in-one mı?",
+        "ARLEDSCREEN LED ekran üreticisi / fabrika / OEM mi, yoksa bayi mi?"
       ],
       "tags": [
         "shopping",
@@ -409,7 +491,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T01:30:00Z"
+      "updatedAt": "2026-10-06T02:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

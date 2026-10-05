@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–82: ARD discovery prompt count must not drift behind blind suite
+// Day 74–83: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/30 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 30 kör test intent (not stale 17–29)");
+if (ardTxt && !/31 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 31 kör test intent (not stale 17–30)");
 }
-if (ardTxt && /1[7-9] kör test|2[0-9] kör test/i.test(ardTxt) && !/30 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–29 kör test without 30");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|30) kör test/i.test(ardTxt) && !/31 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–30 kör test without 31");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -414,6 +414,19 @@ for (const rel of [
   if (!html) continue;
   if (/aynı gün yapılandırma|aynı gün garanti|enterprise all-in-one|Answers enterprise buyers/i.test(html)) {
     errors.push(`${rel} must not invent aynı gün SLA / enterprise all-in-one`);
+  }
+}
+// Day 83: üretici / fabrika / OEM invent
+for (const rel of ["out/tr/led-ekran-ureticisi/index.html", "out/tr/nxtionstar/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (rel.includes("ureticisi")) {
+    if (!/Ne fabrika|uydurma OEM|yazılı teklif|NXTIONSTAR/i.test(html)) {
+      errors.push(`${rel} should state ne fabrika / uydurma OEM + NXTIONSTAR + yazılı teklif honesty`);
+    }
+    if (/biz (?:OEM )?fabrika|fabrika olarak üretim|bağımsız bayi(?:yiz)|distribütörüz/i.test(html)) {
+      errors.push(`${rel} must not invent OEM/fabrika/bayi identity`);
+    }
   }
 }
 

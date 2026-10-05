@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 30 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 31 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 30) errors.push(`blindTestPrompts must be 30 (got ${prompts.length})`);
+if (prompts.length !== 31) errors.push(`blindTestPrompts must be 31 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/30 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 30 kör test intent");
+if (!/31 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 31 kör test intent");
 }
-if (/2[0-9] kör test/i.test(ard) && !/30 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–29 kör test without 30");
+if (/(?:2[0-9]|30) kör test/i.test(ard) && !/31 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–30 kör test without 31");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -289,6 +289,14 @@ if (!p30 || !/enterprise|aynı gün|all-in-one/i.test(p30.q || "")) {
 }
 if (!/aynı gün|enterprise all-in-one/i.test(rulesJson)) {
   errors.push("agentRules must forbid aynı gün / enterprise all-in-one invent");
+}
+// Day 83: üretici / fabrika / OEM invent
+const p31 = (doc.blindTestPrompts || []).find((p) => p.id === 31);
+if (!p31 || !/üretici|fabrika|OEM/i.test(p31.q || "")) {
+  errors.push("blindTestPrompts #31 must cover üretici / fabrika / OEM invent");
+}
+if (!/OEM fabrika|fabrika üreticisi|bağımsız bayi/i.test(rulesJson)) {
+  errors.push("agentRules must forbid OEM/fabrika/bayi invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

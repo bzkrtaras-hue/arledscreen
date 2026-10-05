@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 30 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 31 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -146,6 +146,7 @@ const doc = {
     "Cite: entity.json citeOneLiner / citeMedium; ARLEDSCREEN ≠ Almanya ARLED Solutions / ARLED Cinema; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar LED bileşen; küresel standart / global standard sıralama iddiası yok.",
     "AI-infrastructure ready / AI-ready product SKU yok — entegrasyon Gaziosmanpaşa keşif + yazılı teklifte; Türkiye'nin en / ranking iddiası yok.",
     "Enterprise all-in-one / aynı gün kurulum SLA / ücretsiz montaj iddiası yok — süre ve kapsam yazılı teklifte.",
+    "OEM fabrika / fabrika üreticisi / bağımsız bayi / distribütör iddiası yok — NXTIONSTAR ürün markası; satıcı ARLEDSCREEN (Gaziosmanpaşa).",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

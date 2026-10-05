@@ -335,8 +335,8 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     lead: "Konser, fuar ve lansmanlar için etkinliğe hazır sistemler",
     title: "Kiralık LED Ekran | Konser, Fuar, Lansman | ARLEDSCREEN",
     description:
-      "Konser, fuar, lansman ve açık hava etkinlikleri için kiralık LED ekran: hızlı kurulan kabinler, kurulum ve söküm planlaması. Etkinlik bilgilerinizle teklif isteyin.",
-    short: "Konser, fuar, lansman ve özel etkinlikler için hızlı kurulan kiralık sistemler.",
+      "Konser, fuar, lansman ve açık hava etkinlikleri için kiralık LED ekran: etkinlik takvimine göre kurulan kabinler, kurulum ve söküm planlaması. Etkinlik bilgilerinizle teklif isteyin.",
+    short: "Konser, fuar, lansman ve özel etkinlikler için etkinlik takvimine göre planlanan kiralık sistemler.",
     tag: "Etkinlik · Fuar · Sahne",
     family: "Kiralık LED Ekranlar",
     types: ["Sahne arka ekranı", "Konser ve festival", "Fuar standı", "Kurumsal etkinlik"],
@@ -347,7 +347,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "Kiralık LED ekran fiyatı; ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre hazırlanır. Net teklif için etkinlik bilgilerinizi paylaşmanız yeterlidir.",
     ],
     highlights: [
-      "Hızlı kurulan kiralama kabinleri",
+      "Etkinlik takvimine göre kurulan kiralama kabinleri",
       "Kurulum ve söküm planlaması",
       "İç ve dış mekân etkinlikleri",
       "Etkinliğe özel yazılı teklif",
@@ -484,7 +484,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "Camın arkasındaki ürün teşhirini büyük ölçüde korur",
       "İnce ve hafif yapı, vitrin camına yakın montaj",
       "Vitrin ölçüsüne göre planlama",
-      "Keşif, montaj ve teknik servis tek ekipten",
+      "Keşif, montaj ve teknik servis yazılı teklifte",
     ],
     uses: [
       { title: "Mağaza vitrini", body: "Ürün teşhirini kapatmadan kampanya ve marka içeriği gösterme." },
@@ -543,7 +543,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "Cephe ölçeğinde açık yapı",
       "Arkada mimari / kat görünürlüğü korunabilir",
       "Cam cephe ve yarı outdoor senaryolara uygun planlama",
-      "Keşif, montaj ve teknik servis tek ekipten",
+      "Keşif, montaj ve teknik servis yazılı teklifte",
     ],
     uses: [
       { title: "Cam cephe", body: "Bina cephesindeki camları dijital yüzeye dönüştürme." },
@@ -597,7 +597,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "Yakın mesafede net ve pürüzsüz görüntü",
       "SMD, COB ve GOB yüzey seçenekleri",
       "Salon derinliğine göre piksel aralığı önerisi",
-      "Keşif, montaj ve teknik servis tek ekipten",
+      "Keşif, montaj ve teknik servis yazılı teklifte",
     ],
     uses: [
       { title: "Toplantı salonu", body: "Sunum ve video konferans için tek parça ekran duvarı." },
@@ -676,7 +676,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     uses: [
       { title: "Mağaza girişi", body: "Kampanya ve yeni ürün duyuruları için dikkat çeken nokta." },
       { title: "AVM ve lobi", body: "Yönlendirme, duyuru ve marka içerikleri." },
-      { title: "Etkinlik ve fuar", body: "Kolay taşınan, hızlı kurulan tanıtım ekranı." },
+      { title: "Etkinlik ve fuar", body: "Kolay taşınan, etkinlik takvimine göre kurulan tanıtım ekranı." },
       { title: "Restoran ve kafe", body: "Menü ve günlük öneri gösterimi." },
     ],
     pitches: [],

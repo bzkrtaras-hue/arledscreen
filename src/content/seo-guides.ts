@@ -117,9 +117,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "dis-mekan-led-ekran": {
       slug: "dis-mekan-led-ekran",
-      title: "Dış Mekân LED Ekran | IP65 Cephe & DOOH — ARLEDSCREEN",
+      title: "Dış Mekân LED Ekran | Cephe & DOOH — ARLEDSCREEN",
       description:
-        "Dış mekân LED ekran ve dış mekân ekranlar: IP65 koruma, yüksek nit, cephe / DOOH mühendisliği. NXTIONSTAR dış mekân modülleri — ARLEDSCREEN keşif ve montaj, İstanbul.",
+        "Dış mekân LED ekran: koruma sınıfı ve parlaklık modele göre yazılı teklifte. NXTIONSTAR dış mekân modülleri — ARLEDSCREEN keşif ve montaj, İstanbul Gaziosmanpaşa.",
       keywords: [
         "dış mekân LED ekran",
         "dış mekân ekranlar",
@@ -131,7 +131,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "Dış mekân LED ekran çözümleri",
       intro:
-        "Dış mekân ekranlar yağmur, toz ve güneş altında çalışmak zorundadır. ARLEDSCREEN / NXTIONSTAR dış mekân LED ekran projelerinde IP65 sızdırmazlık, GOB yüzey koruması ve yüksek nit çıkışı birlikte planlanır.",
+        "Dış mekân ekranlar yağmur, toz ve güneş altında çalışmak zorundadır. ARLEDSCREEN / NXTIONSTAR dış mekân LED ekran projelerinde sızdırmazlık, GOB yüzey koruması ve parlaklık ihtiyacı keşifte konuşulur; IP sınıfı ve nit değeri modele göre yazılı teklifte / teknik föyde yer alır — sitede sabit nit/IP iddiası yok.",
       sections: [
         {
           h2: "Dış mekân ekranlarda IP65 ve GOB neden kritik?",
@@ -158,12 +158,12 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Dış mekân LED ekran kaç nit olmalı?",
           answer:
-            "Ortam ışığına bağlıdır. Yoğun güneşli cephede tipik hedef 5.000–8.000+ nit; gölgeli alanda daha düşük band yetebilir. Keşifte lüks ölçümü veya yön analizi tercih edilir.",
+            "Ortam ışığına bağlıdır. Yoğun güneşte tipik sektör bandı konuşulabilir; kesin nit modele ve yazılı teklif/föye bağlıdır — sitede sabit nit yok. Keşifte yön analizi tercih edilir.",
         },
         {
           question: "IP65 olmadan dışarı kurulur mu?",
           answer:
-            "Kapalı sundurma veya yarı açık alanlar için ara çözümler konuşulabilir; açık cephe ve yağmura açık DOOH için IP65 (veya eşdeğer sızdırmazlık) zorunlu kabul edilir.",
+            "Kapalı sundurma veya yarı açık alanlar için ara çözümler konuşulabilir; açık cephe ve yağmura açık DOOH için IP65-sınıfı (veya eşdeğer) sızdırmazlık keşif ve yazılı teklifte zorunlu kabul edilir — model föyüne bakılır.",
         },
         {
           question: "Dış mekân ekran bakım aralığı nedir?",
@@ -175,10 +175,10 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       cta: {
         title: "Dış mekân LED projenizi planlayalım",
         body:
-          "Cephe ölçüsü, güneş yönü ve kullanım amacını iletin; IP65 / nit / pitch özeti ile dönüş yapalım.",
+          "Cephe ölçüsü, güneş yönü ve kullanım amacını iletin; koruma sınıfı / parlaklık / pitch özetini yazılı teklifte paylaşalım.",
       },
       cardLabel: "Dış mekân LED",
-      cardTeaser: "IP65 cephe, DOOH ve yüksek nit dış mekân ekranlar.",
+      cardTeaser: "Cephe ve DOOH dış mekân LED — IP/nit teklifte.",
     },
     "ic-mekan-led-ekran": {
       slug: "ic-mekan-led-ekran",
@@ -660,9 +660,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
     },
     "dis-mekan-led-ekran": {
       slug: "dis-mekan-led-ekran",
-      title: "Outdoor LED Display | IP65 Façade & DOOH — ARLEDSCREEN",
+      title: "Outdoor LED Display | Façade & DOOH — ARLEDSCREEN",
       description:
-        "Outdoor LED displays: IP65 sealing, high nits, façade / DOOH engineering. NXTIONSTAR outdoor series — ARLEDSCREEN survey and install, Istanbul.",
+        "Outdoor LED: protection class and brightness by model in the written quote. NXTIONSTAR outdoor series — ARLEDSCREEN survey and install, Istanbul Gaziosmanpaşa.",
       keywords: [
         "outdoor LED display",
         "IP65 LED",
@@ -673,7 +673,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "Outdoor LED display solutions",
       intro:
-        "Outdoor screens must survive rain, dust and sun. ARLEDSCREEN / NXTIONSTAR outdoor LED projects plan IP65 sealing, GOB protection and high nit output together.",
+        "Outdoor screens must survive rain, dust and sun. ARLEDSCREEN / NXTIONSTAR outdoor LED projects discuss sealing, GOB protection and brightness needs in the survey; IP class and nits land in the written quote / technical sheet — no fixed site-wide nit/IP claim.",
       sections: [
         {
           h2: "Why IP65 and GOB matter outdoors",
@@ -700,12 +700,12 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "How many nits for outdoor LED?",
           answer:
-            "Depends on ambient light. Sunny façades often target 5,000–8,000+ nits; shaded sites can run lower. Survey prefers lux or orientation analysis.",
+            "Depends on ambient light. A typical industry band may be discussed for sunny façades; the exact nit figure is model- and quote/sheet-specific — no fixed site nit. Survey prefers orientation analysis.",
         },
         {
           question: "Can we install outdoors without IP65?",
           answer:
-            "Semi-covered spaces may allow intermediate options; open façades and rain-exposed DOOH require IP65-class sealing.",
+            "Semi-covered spaces may allow intermediate options; open façades and rain-exposed DOOH require IP65-class (or equivalent) sealing as defined in the survey and written quote — check the model sheet.",
         },
         {
           question: "What about outdoor maintenance?",
@@ -717,10 +717,10 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       cta: {
         title: "Plan your outdoor LED project",
         body:
-          "Send façade size, sun orientation and use case — we reply with IP65 / nit / pitch outline.",
+          "Send façade size, sun orientation and use case — we reply with protection class / brightness / pitch outline in the written quote.",
       },
       cardLabel: "Outdoor LED",
-      cardTeaser: "IP65 façades, DOOH and high-nit outdoor screens.",
+      cardTeaser: "Façade and DOOH outdoor LED — IP/nits in the quote.",
     },
     "ic-mekan-led-ekran": {
       slug: "ic-mekan-led-ekran",

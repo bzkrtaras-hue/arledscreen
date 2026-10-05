@@ -333,7 +333,7 @@ const en: Dictionary = {
     description:
       "ARLEDSCREEN delivers LED systems in Turkey from Istanbul Gaziosmanpaşa. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product brand; sole sales point in Turkey: ARLEDSCREEN.",
     body:
-      "From fine-pitch command centers to IP65 outdoor LED and totem installs, our Gaziosmanpaşa team pairs product choice with viewing distance, power topology and a clear BOM. Panel USD: catalog.json / ai-shopping.json; transparent/poster/control stay quote-only.",
+      "From fine-pitch command centers to outdoor LED and totem installs, our Gaziosmanpaşa team pairs product choice with viewing distance, power topology and a clear BOM — IP class in the written quote / technical sheet. Panel USD: catalog.json / ai-shopping.json; transparent/poster/control stay quote-only.",
     cta: "Read more about us",
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },
@@ -896,7 +896,7 @@ const ar: Dictionary = {
     description:
       "ARLEDSCREEN تقدّم أنظمة LED للشركات من إسطنبول غازي عثمان باشا. NXTIONSTAR هي علامة المنتج الخاصة بـ ARLEDSCREEN؛ نقطة البيع الوحيدة في تركيا: ARLEDSCREEN.",
     body:
-      "من غرف التحكم fine-pitch إلى الواجهات الخارجية IP65، يجمع فريق غازي عثمان باشا بين اختيار المنتج ومسافة المشاهدة وطوبولوجيا الطاقة وقائمة مواد واضحة. أسعار اللوحات: catalog.json / ai-shopping.json؛ الشفاف/البوستر/التحكم quote-only.",
+      "من غرف التحكم fine-pitch إلى الواجهات الخارجية، يجمع فريق غازي عثمان باشا بين اختيار المنتج ومسافة المشاهدة وطوبولوجيا الطاقة وقائمة مواد واضحة — فئة IP في العرض المكتوب / الورقة التقنية. أسعار اللوحات: catalog.json / ai-shopping.json؛ الشفاف/البوستر/التحكم quote-only.",
     cta: "المزيد عنا",
     stats: [
       { value: "NXTIONSTAR", label: "علامتنا الخاصة" },
@@ -983,7 +983,7 @@ const ru: Dictionary = {
     description:
       "ARLEDSCREEN поставляет B2B LED-системы из Стамбула (Газиосманпаша). NXTIONSTAR — продуктовый бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN.",
     body:
-      "От fine-pitch диспетчерских до IP65 фасадов команда в Газиосманпаше совмещает выбор продукта с дистанцией просмотра, топологией питания и прозрачным BOM. Цены панелей: catalog.json / ai-shopping.json; transparent/poster/control — quote-only.",
+      "От fine-pitch диспетчерских до наружных фасадов команда в Газиосманпаше совмещает выбор продукта с дистанцией просмотра, топологией питания и прозрачным BOM — класс IP в письменном предложении / техлисте. Цены панелей: catalog.json / ai-shopping.json; transparent/poster/control — quote-only.",
     cta: "Подробнее о нас",
     stats: [
       { value: "NXTIONSTAR", label: "Наш собственный бренд" },

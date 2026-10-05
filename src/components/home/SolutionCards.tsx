@@ -26,7 +26,7 @@ const SOLUTIONS = [
   },
   {
     title: "Sahne ve etkinlik",
-    body: "Konser, fuar ve lansmanlar için hızlı kurulan kabinler; kiralık veya satış seçenekleri.",
+    body: "Konser, fuar ve lansmanlar için etkinlik takvimine göre kurulan kabinler; kiralık veya satış seçenekleri.",
     image: "/projects/applications/mobile-led-stage-iveco.jpg",
     alt: "Mobil LED sahne uygulaması",
     guide: "/tr/rehber/led-ekran/",

@@ -72,6 +72,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 80 | 2026-10-05 | sorunsuz/platform #28 · Küresel LED · tek merkezden · ARD led-ekran/sss | ✅ |
 | 81 | 2026-10-05 | AI-infrastructure #29 · ranking invent · EN yapay-zeka ARD · skor /87 | ✅ |
 | 82 | 2026-10-05 | enterprise/aynı-gün #30 · hizmetler/products ARD · skor /90 | ✅ |
+| 83 | 2026-10-05 | üretici/fabrika/OEM #31 · satisi/montaj/servis ARD · skor /93 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -482,3 +483,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - aynı gün SLA · enterprise buyers · keşiften–servise / aynı ekip · blog parlaklık invent kill
 - ARD: hizmetler + products hub · IndexNow satisi/montaj + AR/RU · agentRules enterprise honesty
 - skor hedef Tur 1 ≥ 45/90 · Tur 2 ≥ 68/90
+
+## Gün 83 notları
+
+- Blind #31 «üretici / fabrika / OEM mi, yoksa bayi mi?» — skor **/93**; ARD **31 kör test**
+- üretici page honesty · sık tercih · outdoor IP/nit meta · hızlı kurulan / tek ekip invent
+- ARD: ureticisi + satisi + montaj + servis · IndexNow servis · agentRules OEM/fabrika
+- skor hedef Tur 1 ≥ 47/93 · Tur 2 ≥ 70/93
