@@ -96,12 +96,21 @@ for (const slug of regionDirs) {
   auditPage(`bolgeler/${slug}`, { minCount: 3, requirePriceHint: true });
 }
 
+const productDirs = fs
+  .readdirSync(path.join(outTr, "products"), { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => d.name);
+for (const slug of productDirs) {
+  checked += 1;
+  auditPage(`products/${slug}`, { minCount: 2, requirePriceHint: true });
+}
+
 console.log(
-  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions (+ hub)`,
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups (+ hub)`,
 );
 if (errors.length) {
   console.error("FAIL:");
   for (const e of errors) console.error(" -", e);
   process.exit(1);
 }
-console.log("OK: commercial/region FAQPage guards passed");
+console.log("OK: commercial/region/product FAQPage guards passed");

@@ -46,6 +46,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [ ] Attach more **real** project photos to case studies as files become available — gap list: [`docs/case-study-photo-gaps.md`](./case-study-photo-gaps.md) (8/29 have photos; `audit:case-images`)
 - [x] Author / E-E-A-T page for Aras Bozkurt (`/tr/about/aras-bozkurt/` + Person JSON-LD)
 - [x] Commercial landings: fiyat + hesaplayıcı + karar rehberi LinkCloud
+- [x] Product group FAQ + LinkCloud: catalog/fiyat kaynak hint — [`docs/faq-linkcloud-gaps.md`](./faq-linkcloud-gaps.md)
 - [x] Product CTA tutarlılığı: Teklif → WhatsApp → Hesaplayıcı (`ProductCtaRow` + `audit:product-ctas`)
 - [x] GOB vs SMD karar rehberi (`/tr/rehber/gob-vs-smd/`) + GOB panel USD tablosu + fiyat/catalog ShoppingLinkCloud
 - [x] About sayfası: entity cite + disambiguation (basin UI yok)

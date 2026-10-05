@@ -14,6 +14,7 @@ import { HomeFaq } from "@/components/home/HomeFaq";
 import { HomeCtaBand } from "@/components/home/HomeCtaBand";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { ProductCtaRow } from "@/components/products/ProductCtaRow";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import {
   PRODUCT_GROUPS,
   getProductGroup,
@@ -23,7 +24,6 @@ import {
 import { displayCompany } from "@/content/trust";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
-import { whatsappHref } from "@/lib/whatsapp";
 
 export const dynamicParams = false;
 
@@ -56,7 +56,27 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
       (lo.moduleMm || hi.moduleMm
         ? ""
         : `1 m² yaklaşık 19,53 panel ettiği için yalnızca modül bedeli m² başına yaklaşık ${fmtM2(lo.usd)} – ${fmtM2(hi.usd)} USD olur. `) +
+      `Makinece aynı kaynak: https://arledscreen.com/catalog.json · insan okunur: https://arledscreen.com/tr/led-ekran-fiyatlari/ · hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. ` +
       `Toplam maliyete atölye işçiliği (${CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı (${CALC_EXTRAS.controlCard} USD) ve sürücü + yazılım (${CALC_EXTRAS.driverSoftware} USD) eklenir; nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`,
+  };
+}
+
+/** AI alışveriş: her ürün grubunda catalog/fiyat/teklif kaynağı (priced + quote-only). */
+function shoppingSourceFaq(
+  name: string,
+  prices: PanelPrice[],
+): { question: string; answer: string } {
+  if (prices.length) {
+    return {
+      question: `${name} panel fiyatları ajanlar nereden okur?`,
+      answer:
+        `Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: https://arledscreen.com/entity.json. KDV ve nakliye hariç; nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+    };
+  }
+  return {
+    question: `${name} için list fiyatı var mı?`,
+    answer:
+      `${name} için panel list fiyatı yayımlanmaz; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. Yayımlanmış diğer paneller için https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ kaynak alınır. Firma kimliği: https://arledscreen.com/entity.json.`,
   };
 }
 
@@ -76,6 +96,8 @@ export default async function ProductGroupPage({ params }: PageProps) {
   const prices = pricesForGroup(g.slug);
   const models = modelsForGroup(g.slug);
   const quickPrice = priceAnswer(g.name, prices);
+  const sourceFaq = shoppingSourceFaq(g.name, prices);
+  const groupFaqs = [sourceFaq, ...(quickPrice ? [quickPrice] : []), ...g.faqs];
   const isControlGroup = models.some((m) => m.kind === "kontrol") || Boolean(g.brandName);
   const COMPARE_KEYS: SpecKey[] = isControlGroup
     ? ["ledType", "loadCapacity", "ethernetPorts", "videoInputs", "media", "software", "power", "control"]
@@ -165,7 +187,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
           { name: g.name, item: url },
         ]}
       />
-      <FaqJsonLd faqs={quickPrice ? [quickPrice, ...g.faqs] : g.faqs} />
+      <FaqJsonLd faqs={groupFaqs} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {productsLd ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsLd) }} />
@@ -530,7 +552,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
       <section id="sss" className="scroll-mt-28 bg-band py-14 md:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <SectionHeading eyebrow="Sık sorulan sorular" title={`${g.name} hakkında sorular`} />
-          <HomeFaq faqs={g.faqs} />
+          <HomeFaq faqs={groupFaqs} />
         </div>
       </section>
 
@@ -545,47 +567,13 @@ export default async function ProductGroupPage({ params }: PageProps) {
 
       <section className="border-t border-border bg-white py-10 md:py-12" aria-labelledby="alisveris-kaynaklari">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 id="alisveris-kaynaklari" className="font-display text-lg font-bold text-ink md:text-xl">
+          <h2 id="alisveris-kaynaklari" className="sr-only">
             Fiyat, katalog ve teklif
           </h2>
-          <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-            <li>
-              <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-                LED ekran fiyatları 2026
-              </Link>
-            </li>
-            <li>
-              <a href="/catalog.json" className="font-semibold text-cyan hover:underline">
-                catalog.json
-              </a>
-            </li>
-            <li>
-              <Link href={quoteHref} className="font-semibold text-cyan hover:underline" data-cta="quote">
-                Yazılı teklif
-              </Link>
-            </li>
-            <li>
-              <a
-                href={whatsappHref(g.whatsapp)}
-                className="font-semibold text-cyan hover:underline"
-                data-cta="whatsapp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp
-              </a>
-            </li>
-            <li>
-              <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
-                Fiyat hesaplayıcı
-              </Link>
-            </li>
-            <li>
-              <a href="/entity.json" className="font-semibold text-cyan hover:underline">
-                entity.json
-              </a>
-            </li>
-          </ul>
+          <ShoppingLinkCloud
+            excludeHref={`/tr/products/${g.slug}/`}
+            extra={[{ href: quoteHref, label: "Yazılı teklif (bu ürün)" }]}
+          />
         </div>
       </section>
 

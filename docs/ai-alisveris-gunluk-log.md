@@ -17,7 +17,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 25 | 2026-10-05 | Kör test protokolü + `audit:blind-test` | ✅ |
 | 26 | 2026-10-05 | llms/entity cite parity (`audit:cite-parity`) | ✅ |
 | 27 | 2026-10-05 | Merchant feed dry-run 12 SKU (`audit:merchant-feed`) | ✅ |
-| 28 | — | (plan: FAQ + commercial LinkCloud gaps) | ⏳ |
+| 28 | 2026-10-05 | FAQ + LinkCloud gaps (ürün grupları catalog hint) | ✅ |
 | 29 | — | (plan: regression suite tek komut özeti) | ⏳ |
 | 30 | 2026-11-04 | Ay sonu ölçüm + owner Point C panosu | ⏳ |
 
@@ -45,6 +45,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `public/feeds/merchant-priced-panels.tsv` — yalnızca 12 priced SKU (quote-only yok)
 - `generate-merchant-feed.mjs` build zincirinde; `audit:merchant-feed` postbuild
 - Owner: Merchant Center’a TSV URL veya dosya yükle (deploy sonrası)
+
+## Gün 28 notları
+
+- Ürün grubu FAQ’larına catalog/fiyat/hesaplayıcı kaynak cümlesi (`shoppingSourceFaq`)
+- `ShoppingLinkCloud` ürün gruplarında; audit fiyat+entity+hesaplayıcı genişletildi
+- [`docs/faq-linkcloud-gaps.md`](./faq-linkcloud-gaps.md)
 
 ## Owner P0 (her gün hatırlatma)
 
