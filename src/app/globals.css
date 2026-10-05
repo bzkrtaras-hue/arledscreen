@@ -506,28 +506,28 @@
   }
 
   /*
-   * Hero copy plate — near-opaque navy glass.
-   * Must keep pure light text readable over any video frame (no washed-out navy-on-navy).
+   * Hero copy plate — transparent liquid glass, dark ink.
+   * Matches pack-B left-safe composition: frost reads as glass; type stays sharp.
    */
   .liquid-glass-hero-copy {
     position: relative;
     isolation: isolate;
-    border-radius: 1.35rem;
-    color: #f4f7fb;
-    -webkit-backdrop-filter: saturate(180%) blur(24px);
-    backdrop-filter: saturate(180%) blur(24px);
+    border-radius: 1.25rem;
+    color: #1a2430;
+    -webkit-backdrop-filter: saturate(210%) blur(22px) brightness(1.06);
+    backdrop-filter: saturate(210%) blur(22px) brightness(1.06);
     background:
       linear-gradient(
         165deg,
-        rgba(8, 20, 40, 0.92) 0%,
-        rgba(12, 32, 62, 0.9) 52%,
-        rgba(8, 20, 40, 0.94) 100%
+        rgba(255, 255, 255, 0.78) 0%,
+        rgba(247, 250, 253, 0.62) 48%,
+        rgba(237, 244, 252, 0.7) 100%
       );
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.72);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.22),
-      0 0 0 1px rgba(0, 0, 0, 0.2),
-      0 22px 48px -20px rgba(0, 0, 0, 0.65);
+      inset 0 1px 0 rgba(255, 255, 255, 0.92),
+      0 0 0 1px rgba(15, 42, 79, 0.06),
+      0 18px 40px -22px rgba(11, 27, 51, 0.45);
   }
   .liquid-glass-hero-copy::before {
     content: "";
@@ -538,10 +538,11 @@
     border-radius: inherit;
     background:
       linear-gradient(
-        125deg,
-        rgba(255, 255, 255, 0.14) 0%,
-        transparent 38%,
-        rgba(30, 91, 184, 0.16) 100%
+        120deg,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0.1) 34%,
+        transparent 52%,
+        rgba(30, 91, 184, 0.08) 100%
       );
   }
   .liquid-glass-hero-copy > * {
@@ -549,16 +550,22 @@
     z-index: 1;
   }
   .liquid-glass-hero-copy h1 {
-    color: #ffffff;
+    color: #122033;
   }
   .liquid-glass-hero-copy .hero-copy-lead {
-    color: #e8eef6;
+    color: #2a3340;
   }
   .liquid-glass-hero-copy .hero-copy-point-title {
-    color: #ffffff;
+    color: #122033;
   }
   .liquid-glass-hero-copy .hero-copy-point-body {
-    color: #d7e0ec;
+    color: #3d4650;
+  }
+  .liquid-glass-hero-copy .hero-copy-rule {
+    border-color: rgba(18, 32, 51, 0.14);
+  }
+  .liquid-glass-hero-copy .hero-copy-dot {
+    background: #1e5bb8;
   }
 
   /* Compact utility chips in TopBar — match slogan capsule height */
@@ -818,7 +825,7 @@
   .liquid-glass-btn--slogan,
   .liquid-glass-shell--nav,
   .liquid-glass-heading { background: #ffffff; }
-  .liquid-glass-hero-copy { background: #0b1b33; color: #f4f7fb; }
+  .liquid-glass-hero-copy { background: #f7f9fc; color: #1a2430; }
   .menu-scrim { background: rgba(11, 27, 51, 0.45); }
   .menu-glass-panel,
   .glass-panel,
@@ -853,7 +860,7 @@
   .liquid-glass-btn--slogan,
   .liquid-glass-shell--nav,
   .liquid-glass-heading { background: #ffffff; }
-  .liquid-glass-hero-copy { background: #0f2346; }
+  .liquid-glass-hero-copy { background: #f7f9fc; color: #1a2430; }
   .menu-scrim { background: rgba(11, 27, 51, 0.5); }
   .menu-glass-panel,
   .glass-panel,

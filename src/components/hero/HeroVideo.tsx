@@ -239,9 +239,11 @@ export function HeroVideo({
         ) : null}
 
         <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-5 pb-[calc(4.5rem+1.5rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
-          <div className="w-full max-w-[640px]">
+          <div className="w-full max-w-[560px]">
+            {/* Pack B left-safe stack: eyebrow → brand → glass title block → CTAs */}
             <m.p
-              className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white/90 sm:text-xs"
+              className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs"
+              style={{ textShadow: "0 1px 12px rgba(11,27,51,0.45)" }}
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, ease, delay: 0.05 }}
@@ -256,30 +258,32 @@ export function HeroVideo({
               transition={{ duration: 0.7, ease, delay: 0.18 }}
             />
             <m.p
-              className="mt-4 font-display text-[clamp(2.4rem,1.6rem+3.5vw,3.75rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-white"
+              className="mt-4 font-display text-[clamp(2.55rem,1.7rem+3.6vw,3.85rem)] font-extrabold leading-[0.94] tracking-[-0.035em] text-white"
+              style={{ textShadow: "0 2px 22px rgba(11,27,51,0.4)" }}
               initial={reduce ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, ease, delay: 0.22 }}
             >
               {brand}
             </m.p>
+
             <m.div
-              className="liquid-glass-hero-copy mt-4 px-4 py-4 sm:mt-5 sm:px-6 sm:py-5"
-              initial={reduce ? false : { opacity: 0, y: 22 }}
+              className="liquid-glass-hero-copy mt-4 px-4 py-4 sm:mt-5 sm:px-5 sm:py-5"
+              initial={reduce ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease, delay: 0.34 }}
             >
-              <h1 className="text-balance font-display text-[clamp(1.2rem,1rem+1.2vw,1.75rem)] font-bold leading-[1.22] tracking-[-0.02em]">
+              <h1 className="text-balance font-display text-[clamp(1.2rem,1rem+1.25vw,1.8rem)] font-bold leading-[1.22] tracking-[-0.02em]">
                 {headline}
               </h1>
-              <p className="hero-copy-lead mt-3 max-w-[58ch] text-pretty text-[15px] font-medium leading-[1.65] sm:text-base sm:leading-[1.7]">
+              <p className="hero-copy-lead mt-3 max-w-[48ch] text-pretty text-[15px] font-medium leading-[1.65] sm:text-base sm:leading-[1.7]">
                 {subcopy}
               </p>
               {points?.length ? (
-                <ul className="mt-4 space-y-3 border-t border-white/20 pt-4">
+                <ul className="hero-copy-rule mt-4 space-y-2.5 border-t pt-3.5">
                   {points.map((point) => (
                     <li key={point.title} className="flex gap-2.5 text-[14px] leading-[1.55] sm:text-[15px] sm:leading-[1.6]">
-                      <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#8EC0F5]" aria-hidden />
+                      <span className="hero-copy-dot mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full" aria-hidden />
                       <span>
                         <span className="hero-copy-point-title font-semibold">{point.title}: </span>
                         <span className="hero-copy-point-body">{point.body}</span>
@@ -289,6 +293,7 @@ export function HeroVideo({
                 </ul>
               ) : null}
             </m.div>
+
             <m.div
               className="mt-5 flex flex-col gap-2.5 sm:mt-6 sm:flex-row sm:gap-3"
               initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -303,7 +308,7 @@ export function HeroVideo({
               </Link>
               <Link
                 href={secondaryHref}
-                className="btn-soft inline-flex min-h-12 items-center justify-center rounded-xl border-[1.5px] border-white/80 bg-white/10 px-7 text-[15px] font-semibold text-white backdrop-blur-sm transition duration-500 hover:bg-white/18 md:min-h-[52px] md:text-base"
+                className="btn-soft inline-flex min-h-12 items-center justify-center rounded-xl border-[1.5px] border-white/80 bg-transparent px-7 text-[15px] font-semibold text-white transition duration-500 hover:bg-white/10 md:min-h-[52px] md:text-base"
               >
                 {secondaryLabel}
               </Link>
