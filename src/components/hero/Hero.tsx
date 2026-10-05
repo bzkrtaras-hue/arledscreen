@@ -79,39 +79,8 @@ export function Hero({ locale }: HeroProps) {
       }
       subcopy={
         tr
-          ? "ARLEDSCREEN, LED teknolojilerindeki yüksek kalite standartlarını NXTIONSTAR güvencesiyle hayata geçirmektedir:"
-          : "ARLEDSCREEN brings high LED quality standards to life under the NXTIONSTAR guarantee:"
-      }
-      points={
-        tr
-          ? [
-              {
-                title: "Uçtan Uca Proje Yönetimi",
-                body: "Keşif, tasarım, montaj ve satış sonrası teknik servis desteği.",
-              },
-              {
-                title: "Geniş Ürün Çözümleri",
-                body: "Bina cephesi, vitrin, totem, salon ve poster menuboard uygulamaları.",
-              },
-              {
-                title: "Yerli Üretim ve Yaygın Ağı",
-                body: "İstanbul merkezli fabrikamızdan çıkan ürünler, Türkiye’nin 81 ilinde profesyonel bayi ağımızla kurulmaktadır.",
-              },
-            ]
-          : [
-              {
-                title: "End-to-end project delivery",
-                body: "Survey, design, installation and after-sales technical service.",
-              },
-              {
-                title: "Broad product solutions",
-                body: "Building façades, storefronts, totems, halls and poster menuboards.",
-              },
-              {
-                title: "Local production and national reach",
-                body: "Products from our Istanbul factory are installed across Turkey’s 81 provinces through our professional dealer network.",
-              },
-            ]
+          ? "NXTIONSTAR panellerini Türkiye’de ARLEDSCREEN satar, keşfeder ve monte eder. Cephe, vitrin, totem ve salon ölçüleri sahada netleşir; servis Gaziosmanpaşa ofisinden yürür."
+          : "ARLEDSCREEN sells, surveys and installs NXTIONSTAR panels across Turkey. Façade, storefront, totem and hall sizes are confirmed on site; service runs from Gaziosmanpaşa."
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Yazılı teklif alın" : "Request a written quote"}
