@@ -237,8 +237,17 @@
 500
 ]
 },
+"/projects/applications/seffaf-led-film.jpg": {
+"h": 1100,
+"w": 1100,
+"widths": [
+480,
+960,
+1100
+]
+},
 "/projects/applications/seffaf-led-vitrin.jpg": {
-"h": 720,
+"h": 1280,
 "w": 1280,
 "widths": [
 480,
