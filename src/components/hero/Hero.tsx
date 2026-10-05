@@ -9,22 +9,28 @@ interface HeroProps {
 /**
  * Homepage hero — HQ Drive field clips + readable glass stack.
  * No ARLEDSCREEN wordmark; H1 is LED EKRAN TEKNOLOJİ MERKEZİ.
+ * Lead clip: 4K lounge fine-pitch field video from Drive folder.
  */
 const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
+  {
+    slug: "lounge-fine-pitch-fox",
+    labelTr: "Lounge LED",
+    labelEn: "Lounge LED",
+  },
+  {
+    slug: "immersive-ceiling-led-tunnel",
+    labelTr: "İmmersif tavan",
+    labelEn: "Immersive ceiling",
+  },
+  {
+    slug: "event-lounge-led-wall",
+    labelTr: "Etkinlik lounge",
+    labelEn: "Event lounge",
+  },
   {
     slug: "sphere-led-showroom",
     labelTr: "Küresel LED",
     labelEn: "Sphere LED",
-  },
-  {
-    slug: "flexible-module-bend-demo",
-    labelTr: "Esnek modül",
-    labelEn: "Flexible module",
-  },
-  {
-    slug: "eskisehir-sigorta-led-ekran-vitrin",
-    labelTr: "Vitrin",
-    labelEn: "Storefront",
   },
 ];
 
