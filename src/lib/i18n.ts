@@ -317,9 +317,9 @@ const en: Dictionary = {
     },
     aiCompat: {
       eyebrow: "AI infrastructure",
-      title: "LED walls built for artificial-intelligence workflows",
+      title: "LED walls for AI content and media-server workflows",
       description:
-        "NXTIONSTAR displays are specified by ARLEDSCREEN for full compatibility with AI content engines, media servers and control software — so generated, scheduled and automated visuals stay reliable on the wall.",
+        "NXTIONSTAR displays are specified by ARLEDSCREEN so AI content engines, media servers and control software can be matched in the Gaziosmanpaşa survey and written quote — not sold as an invented AI-ready or engineering-standard SKU.",
       points: [
         "Documented signal paths for CMS, media servers and automation APIs",
         "High refresh and stable pixel pipelines for AI-driven or camera-facing content",

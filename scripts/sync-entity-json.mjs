@@ -183,6 +183,9 @@ const profiles = {
     directoryShort: ENTITY_CITE_ONE_LINER,
     directoryLong: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nE-posta: ${CONTACT_EMAIL}\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)`,
     youtubeAbout: `${ENTITY_CITE_SHORT}\n\nSite: ${SITE}/tr/\nEntity: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json`,
+    appleBusinessConnect: `${ENTITY_CITE_SHORT}\n\n${street}\n${postal} ${locality} / ${region}\n${CONTACT_PHONE_DISPLAY}\n${CONTACT_EMAIL}\n${SITE}/tr/\n${SITE}/entity.json`,
+    yandexBusiness: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nWeb: ${SITE}/tr/\nEntity: ${SITE}/entity.json`,
+    wikidataReadiness: `Wikidata yalnızca notability kanıtı varsa. Zorlamayın. Kanıt URL’leri: ${SITE}/tr/about/ · ${SITE}/entity.json · ${SITE}/tr/projelerimiz/ · LinkedIn company. Alanlar (taslak): label=ARLEDSCREEN; description=İstanbul Gaziosmanpaşa LED ekran firması; country=Turkey; headquarters=Gaziosmanpaşa; official website=${SITE}/tr/; industry=LED display. Uydurma QID / rating / küresel standart yok.`,
   },
   sameAsReadiness: {
     live: ORGANIZATION_SAME_AS,
@@ -190,10 +193,11 @@ const profiles = {
     notes: [
       "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
       "arleds.com sameAs’a eklenmez ta ki 301 canlı doğrulanana kadar.",
-      "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directoryShort/Long) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
+      "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directoryShort/Long/appleBusinessConnect/yandexBusiness) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
+      "wikidataReadiness = alan checklist + kanıt URL; uydurma QID yok; notability yoksa atlayın.",
       "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
       "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar.",
-      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 24 kör test)`,
+      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 25 kör test)`,
     ],
   },
   canonicalUrls: {

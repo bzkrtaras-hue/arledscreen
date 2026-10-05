@@ -21,6 +21,9 @@ const ORDER = [
   "directoryShort",
   "directoryLong",
   "youtubeAbout",
+  "appleBusinessConnect",
+  "yandexBusiness",
+  "wikidataReadiness",
 ];
 
 async function load() {

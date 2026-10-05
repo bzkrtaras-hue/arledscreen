@@ -98,6 +98,38 @@ https://arledscreen.com/entity.json
 Kısa: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır (sıralama iddiası yok).
 ```
 
+### Apple Business Connect (yapıştır — pack `appleBusinessConnect`)
+
+NAP birebir; web yalnızca `arledscreen.com/tr/`. Uydurma rating / saat dışı iddia yok.
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
+
+Merkez Mah. Tuna Sok. No:15-17 Kat 1
+34245 Gaziosmanpaşa / İstanbul
++90 530 507 88 34
+arled@arledscreen.com
+https://arledscreen.com/tr/
+https://arledscreen.com/entity.json
+```
+
+### Yandex Business / Maps (yapıştır — pack `yandexBusiness`)
+
+TR GEO için aynı NAP + orta cite. Kategori: LED ekran / dijital tabela. Web: `https://arledscreen.com/tr/`.
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
+
+Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul
+Telefon: +90 530 507 88 34
+Web: https://arledscreen.com/tr/
+Entity: https://arledscreen.com/entity.json
+```
+
+### Wikidata readiness (yalnızca notability varsa — pack `wikidataReadiness`)
+
+Zorlamayın. Uydurma QID yok. Kanıt URL’leri: `/tr/about/` · `entity.json` · `/tr/projelerimiz/` · LinkedIn company. Alan taslağı: label=ARLEDSCREEN; description=İstanbul Gaziosmanpaşa LED ekran firması; country=Turkey; headquarters=Gaziosmanpaşa; official website=`https://arledscreen.com/tr/`.
+
 ---
 
 ## 0b) Domain birleştirme (kritik entity notu)

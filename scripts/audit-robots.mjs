@@ -81,6 +81,7 @@ const REQUIRED = [
   "Amazonbot",
   "DuckAssistBot",
   "Applebot",
+  "YandexBot",
 ];
 
 for (const a of REQUIRED) mustAllow(a);

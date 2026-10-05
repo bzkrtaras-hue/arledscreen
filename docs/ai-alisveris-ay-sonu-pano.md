@@ -39,10 +39,10 @@ npm run smoke:live
 
 | Endpoint | Hedef | 2026-10-05 | 2026-11-04 |
 |----------|-------|------------|------------|
-| `/entity.json` | 200 JSON | soft-404 until PR #55 merge (Day 76 tip ready) (HTTP 404) | |
-| `/entity-profiles.json` | 200 JSON packs | soft-404 until PR #55 merge (Day 76 tip ready) (PR #55) | |
-| `/catalog.json` | 200 JSON | soft-404 until PR #55 merge (Day 76 tip ready) (HTTP 404) | |
-| `/.well-known/ard.json` | 200 JSON | soft-404 until PR #55 merge (Day 76 tip ready) (HTTP 404) | |
+| `/entity.json` | 200 JSON | soft-404 until PR #55 merge (Day 77 tip ready) (HTTP 404) | |
+| `/entity-profiles.json` | 200 JSON packs | soft-404 until PR #55 merge (Day 77 tip ready) (PR #55) | |
+| `/catalog.json` | 200 JSON | soft-404 until PR #55 merge (Day 77 tip ready) (HTTP 404) | |
+| `/.well-known/ard.json` | 200 JSON | soft-404 until PR #55 merge (Day 77 tip ready) (HTTP 404) | |
 | `/llms.txt` | 200 + cite | 200 ama cite bölümü eski (PR #55 sonrası) | |
 | `/robots.txt` Host | bare hostname | eski Host/şema (PR #55 sonrası) | |
 | `/feeds/merchant-priced-panels.tsv` | 12 SKU | HTTP 404 | |
@@ -63,6 +63,8 @@ Playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 | Instagram bio | ☐ | ☐ | |
 | Facebook About | ☐ | ☐ | |
 | Bing Places | ☐ | ☐ | |
+| Apple Business Connect | ☐ | ☐ | |
+| Yandex Business | ☐ | ☐ | |
 | Sektör dizini 1 | ☐ | ☐ | |
 | Sektör dizini 2 | ☐ | ☐ | |
 | Müşteri / yerel mention | ☐ | ☐ | |
@@ -70,15 +72,15 @@ Playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
 ## D) Kör test skorları (canlı modeller)
 
-Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 24 prompt × 0–3 = /72  
+Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 25 prompt × 0–3 = /75  
 Skor kartı (sahip doldurur): [`docs/ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
 | Tur | Tarih | ChatGPT | Gemini | Perplexity | Bing Copilot | Ort. |
 |-----|-------|---------|--------|------------|--------------|------|
-| 1 (deploy sonrası) | | /72 | /72 | /72 | /72 | |
-| 2 (Point C sonrası) | ≤2026-11-04 | /72 | /72 | /72 | /72 | |
+| 1 (deploy sonrası) | | /75 | /75 | /75 | /75 | |
+| 2 (Point C sonrası) | ≤2026-11-04 | /75 | /75 | /75 | /75 | |
 
-Hedef: Tur 1 ≥ 36/72 · Tur 2 ≥ 54/72
+Hedef: Tur 1 ≥ 38/75 · Tur 2 ≥ 56/75
 
 ## E) Merchant / Shopping
 
@@ -93,7 +95,7 @@ Hedef: Tur 1 ≥ 36/72 · Tur 2 ≥ 54/72
 
 - [ ] `smoke:live` GREEN
 - [ ] Point C ≥ 5 bağımsız URL aynı cite
-- [ ] Kör tur 2 ortalama ≥ 54/72
+- [ ] Kör tur 2 ortalama ≥ 56/75
 - [ ] Merchant feed yayında (opsiyonel ama önerilir)
 - [ ] GSC “Missing offers.price” = 0
 

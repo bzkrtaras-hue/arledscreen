@@ -22,6 +22,8 @@ export const AI_SEARCH_BOTS = [
   "DuckAssistBot",
   "Amzn-SearchBot",
   "Applebot",
+  "YandexBot",
+  "Yandex",
   "FacebookBot",
   "meta-externalagent",
 ] as const;

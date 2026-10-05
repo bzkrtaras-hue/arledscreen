@@ -357,6 +357,18 @@ if (!p24 || !/NationStar/i.test(p24.q)) {
 if (p24 && (!p24.mustSay?.includes("ARLEDSCREEN") || !p24.mustSay?.includes("farklı"))) {
   errors.push("blind prompt #24 mustSay must include ARLEDSCREEN + farklı");
 }
+const pBlind25 = PROMPTS.find((x) => x.id === 25);
+if (!pBlind25 || !/mühendislik|engineering/i.test(pBlind25.q)) {
+  errors.push("blind prompt #25 must cover mühendislik/engineering standard invent");
+}
+if (
+  pBlind25 &&
+  (!pBlind25.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind25.mustSay?.includes("yazılı teklif") ||
+    !pBlind25.mustSay?.includes("ARLEDSCREEN"))
+) {
+  errors.push("blind prompt #25 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

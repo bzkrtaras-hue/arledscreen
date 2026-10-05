@@ -189,6 +189,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["farklı", "ARLEDSCREEN", "Gaziosmanpaşa"],
     mustNotSay: ["aynı marka", "distribütör", "ücretsiz kargo dahil"],
   },
+  {
+    id: 25,
+    q: "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
+    paths: ["/tr/", "/tr/yapay-zeka/", "/entity.json", "/ai-shopping.json"],
+    mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
+    mustNotSay: ["engineering standard", "mühendislik standardı", "küresel standard", "Türkiye'nin en"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

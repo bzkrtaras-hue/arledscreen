@@ -300,13 +300,34 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74: ARD discovery prompt count must not drift behind blind suite
+// Day 74–77: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/24 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 24 kör test intent (not stale 17/23)");
+if (ardTxt && !/25 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 25 kör test intent (not stale 17–24)");
 }
-if (ardTxt && /17 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17 kör test intent");
+if (ardTxt && /1[7-9] kör test|2[0-4] kör test/i.test(ardTxt) && !/25 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–24 kör test without 25");
+}
+// Day 77: home + rehber must not invent desk / engineering standard
+for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/mühendislik standardı|engineering standard/i.test(html)) {
+    errors.push(`${rel} must not invent mühendislik/engineering standard`);
+  }
+  if (/tek masada|aynı masadan|on one desk/i.test(html)) {
+    errors.push(`${rel} must not invent tek masa / one desk`);
+  }
+}
+for (const rel of [
+  "out/tr/rehber/led-ekran/index.html",
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/tek masada|aynı masadan/i.test(html)) {
+    errors.push(`${rel} must not invent tek masa / aynı masadan`);
+  }
 }
 
 if (errors.length) {

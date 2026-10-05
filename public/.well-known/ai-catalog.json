@@ -222,7 +222,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 24 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 25 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -245,7 +245,68 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T22:00:00Z"
+      "updatedAt": "2026-10-06T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
+      "displayName": "NXTIONSTAR ürün markası (disambiguation)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/nxtionstar/",
+      "description": "NXTIONSTAR = ARLEDSCREEN ürün markası. ≠ NEXTSTAR TV ≠ NationStar LED bileşen. Tek satış noktası ARLEDSCREEN (Gaziosmanpaşa). Sıralama iddiası yok; entegrasyon keşif/yazılı teklifte.",
+      "representativeQueries": [
+        "NXTIONSTAR nedir?",
+        "NXTIONSTAR NEXTSTAR ile aynı mı?",
+        "NXTIONSTAR NationStar ile aynı mı?",
+        "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?"
+      ],
+      "tags": [
+        "brand",
+        "NXTIONSTAR",
+        "disambiguation",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:person:founder",
+      "displayName": "Kurucu Aras Bozkurt",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/about/aras-bozkurt/",
+      "description": "ARLEDSCREEN kurucusu; Gaziosmanpaşa. Kimlik entity.json founder + LinkedIn sameAs ile doğrulanır.",
+      "representativeQueries": [
+        "Aras Bozkurt kimdir?",
+        "ARLEDSCREEN kurucu",
+        "Gaziosmanpaşa LED ekran kurucu"
+      ],
+      "tags": [
+        "founder",
+        "Person",
+        "GEO",
+        "entity"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber",
+      "displayName": "LED ekran çözüm rehberi hub",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/",
+      "description": "Rehber hub: panel fiyatı catalog.json / ai-shopping.json. Engineering desk invent yok; keşif + yazılı teklif Gaziosmanpaşa.",
+      "representativeQueries": [
+        "LED ekran çözüm rehberi panel fiyatı",
+        "GOB vs SMD",
+        "LED ekran nedir rehber"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "shopping",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T00:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:ops:indexnow",

@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 24 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 25 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 24) errors.push(`blindTestPrompts must be 24 (got ${prompts.length})`);
+if (prompts.length !== 25) errors.push(`blindTestPrompts must be 25 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,8 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/24 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 24 kör test intent");
+if (!/25 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 25 kör test intent");
+}
+if (/2[0-4] kör test/i.test(ard) && !/25 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–24 kör test without 25");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -250,6 +253,11 @@ if (!p23 || !/NEXTSTAR|NXTIONSTAR/i.test(p23.q || "")) {
 const p24 = (doc.blindTestPrompts || []).find((p) => p.id === 24);
 if (!p24 || !/NationStar/i.test(p24.q || "")) {
   errors.push("blindTestPrompts #24 must cover NXTIONSTAR vs NationStar invent");
+}
+// Day 77: mühendislik / engineering standard invent
+const p25 = (doc.blindTestPrompts || []).find((p) => p.id === 25);
+if (!p25 || !/mühendislik|engineering/i.test(p25.q || "")) {
+  errors.push("blindTestPrompts #25 must cover mühendislik/engineering standard invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

@@ -66,6 +66,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 74 | 2026-10-05 | ARD 17→22 kör test drift · quote desk invent · Alman ARLED blind #22 · llms intent rows | ✅ |
 | 75 | 2026-10-05 | NEXTSTAR invent blind #23 · founder IndexNow · Real-time engineering invent · point-c ARD 23 | ✅ |
 | 76 | 2026-10-05 | NationStar invent #24 · agentRules disambiguation · Bing Places NAP · skor hedef drift fix | ✅ |
+| 77 | 2026-10-05 | mühendislik/engineering standard invent #25 · masa invent · Apple BC/Yandex/Wikidata packs · YandexBot · ARD brand/founder/rehber | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -428,3 +429,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Playbook §0: **Bing Places / Apple Maps** NAP paste
 - skor hedef drift: Tur 1 ≥ 36/72 · Tur 2 ≥ 54/72 (stale 26/38 düzeltildi)
 - smoke nxtionstar NationStar needle
+
+## Gün 77 notları
+
+- Blind #25 «NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?» — skor **/75**; ARD **25 kör test**
+- Home AiCompat + seo-guides: mühendislik/engineering standard + tek masa / aynı masadan invent kill
+- EN aiCompat: built-for-AI / full compatibility soften → survey/quote-scoped
+- Point C packs: `appleBusinessConnect` · `yandexBusiness` · `wikidataReadiness`
+- ARD entries: nxtionstar + founder + rehber; IndexNow `/en/nxtionstar/` · galeri · projelerimiz
+- robots: **YandexBot** Allow; skor hedef Tur 1 ≥ 38/75 · Tur 2 ≥ 56/75

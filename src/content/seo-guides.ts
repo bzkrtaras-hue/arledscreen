@@ -62,7 +62,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "LED ekran nedir? Dijital ekran üst kümesi içinde tam renkli LED",
       intro:
-        "Dijital ekran üst kümedir (LCD, OLED, LED tabela, videowall, tam renkli LED). LED ekran, RGB piksel modüllerinin birleştiği tam renkli görüntü yüzeyidir; video oynatır ve ölçüsü modüllerle büyütülür. ARLEDSCREEN / NXTIONSTAR serileri iç / dış mekân, izleme mesafesi ve içerik hattına göre boyutlandırılır — keşiften teklife tek masada.",
+        "Dijital ekran üst kümedir (LCD, OLED, LED tabela, videowall, tam renkli LED). LED ekran, RGB piksel modüllerinin birleştiği tam renkli görüntü yüzeyidir; video oynatır ve ölçüsü modüllerle büyütülür. ARLEDSCREEN / NXTIONSTAR serileri iç / dış mekân, izleme mesafesi ve içerik hattına göre boyutlandırılır — keşif ve yazılı teklif Gaziosmanpaşa merkezinden yürür.",
       sections: [
         {
           h2: "Dijital ekran ile LED ekran farkı",
@@ -151,7 +151,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Keşiften montaja ARLEDSCREEN süreci",
           body:
-            "Ölçü paylaşımı veya yerinde keşif sonrası kabin dizilimi, çelik konstrüksiyon arayüzü, sinyal hattı (CAT6A / fiber) ve bakım erişimi çizilir. Yapay zekâ veya CMS ile zamanlanan DOOH içeriği varsa alıcı / gönderici uyumu da paketlenir. Kurulum sonrası kalibrasyon ve teknik destek aynı masadan yürür.",
+            "Ölçü paylaşımı veya yerinde keşif sonrası kabin dizilimi, çelik konstrüksiyon arayüzü, sinyal hattı (CAT6A / fiber) ve bakım erişimi çizilir. Yapay zekâ veya CMS ile zamanlanan DOOH içeriği varsa alıcı / gönderici uyumu da paketlenir. Kurulum sonrası kalibrasyon ve teknik destek Gaziosmanpaşa merkezinden yazılı teklif kapsamında yürür.",
         },
       ],
       faqs: [
