@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -49,6 +50,14 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
 
       <Section className="prose-seo pt-6 sm:pt-8 md:pt-10" contained>
         <YiyistarGallery />
+        <ShoppingLinkCloud
+          excludeHref="/tr/galeri/"
+          title="Galeri · fiyat ve kimlik kaynakları"
+          extra={[
+            { href: "/tr/projelerimiz/", label: "Projeler" },
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+          ]}
+        />
       </Section>
 
       <section className="bg-band py-14 md:py-20">

@@ -6,6 +6,9 @@ import { Section } from "@/components/ui/section";
 import { GlassPanel } from "@/components/ui/glass-panel";
 import { Button } from "@/components/ui/button";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { getSeoGuideHub, listSeoGuides } from "@/content/seo-guides";
@@ -13,6 +16,24 @@ import { getSeoGuideHub, listSeoGuides } from "@/content/seo-guides";
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
+
+const REHBER_HUB_FAQS = [
+  {
+    question: "LED ekran fiyatı rehberlerden sonra nereden okunur?",
+    answer:
+      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+  },
+  {
+    question: "Hangi rehber AI alışveriş list vs teklif farkını açıklar?",
+    answer:
+      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık (quote-only) ayrımını tarif eder. Kimlik: https://arledscreen.com/entity.json.",
+  },
+  {
+    question: "AI ajanları rehber hub’dan hangi kaynaklara gitmeli?",
+    answer:
+      "entity.json · catalog.json · /.well-known/ard.json · llms.txt · /tr/led-ekran-fiyatlari/ · /tr/quote/. Merchant dry-run: https://arledscreen.com/feeds/merchant-priced-panels.tsv.",
+  },
+];
 
 export async function generateMetadata({
   params,
@@ -57,6 +78,7 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           },
         ]}
       />
+      {locale === "tr" ? <FaqJsonLd faqs={REHBER_HUB_FAQS} /> : null}
 
       <Section
         titleAs="h1"
@@ -103,6 +125,23 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
             </Button>
           </div>
         </div>
+
+        {locale === "tr" ? (
+          <div className="mt-12">
+            <h2 className="font-display text-xl font-bold text-ink">Sık sorulanlar</h2>
+            <div className="mt-6">
+              <HomeFaq faqs={REHBER_HUB_FAQS} />
+            </div>
+            <ShoppingLinkCloud
+              excludeHref="/tr/rehber/"
+              title="Rehber hub · fiyat ve kimlik kaynakları"
+              extra={[
+                { href: "/tr/rehber/kiralik-mi-satin-alma/", label: "List vs teklif rehberi" },
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+              ]}
+            />
+          </div>
+        ) : null}
       </Section>
     </>
   );

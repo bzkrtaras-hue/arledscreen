@@ -63,6 +63,9 @@ const pages = [
   path.join(outTr, "sss", "index.html"),
   path.join(outTr, "hizmetler", "index.html"),
   path.join(outTr, "bolgeler", "index.html"),
+  path.join(outTr, "rehber", "index.html"),
+  path.join(outTr, "projelerimiz", "index.html"),
+  path.join(outTr, "galeri", "index.html"),
 ];
 
 let checked = 0;
@@ -81,7 +84,7 @@ for (const file of pages) {
 }
 
 console.log(
-  `Checked ${checked} shopping surfaces (home/commercial/product/rehber/regions/about/hub/founder/yapay-zeka/sss/hizmetler) for fiyat+catalog+quote+hesaplayici+entity links`,
+  `Checked ${checked} shopping surfaces (home/commercial/product/rehber/regions/about/hub/founder/yapay-zeka/sss/hizmetler/projeler/galeri) for fiyat+catalog+quote+hesaplayici+entity links`,
 );
 if (errors.length) {
   console.error("FAIL:");

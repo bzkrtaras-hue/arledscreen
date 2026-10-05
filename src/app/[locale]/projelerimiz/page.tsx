@@ -13,6 +13,9 @@ import { CompletedProjectsGallery } from "@/components/projects/CompletedProject
 import { ProjectVideos } from "@/components/projects/ProjectVideos";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { PROJECT_VIDEOS, videoObjectJsonLd } from "@/content/videos";
@@ -28,6 +31,24 @@ export const metadata: Metadata = buildTrOnlyMetadata({
   description:
     "ARLEDSCREEN tarafından tamamlanan LED ekran projeleri: belediye, kafe, mağaza, etkinlik ve dış mekân kurulumları. Ölçü, piksel aralığı, konum ve tarih bilgileriyle.",
 });
+
+const PROJELER_FAQS = [
+  {
+    question: "Projelerdeki LED ekran fiyatı sayfada yazar mı?",
+    answer:
+      "Case study sayfalarında uydurma paket fiyatı yoktur. Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır; proje tutarı keşif sonrası yazılı teklifle kesinleşir.",
+  },
+  {
+    question: "AI ajanları proje referansını firma kimliğiyle nasıl bağlar?",
+    answer:
+      "Kimlik: https://arledscreen.com/entity.json · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Kısa özet: https://arledscreen.com/llms.txt. Panel kataloğu: https://arledscreen.com/catalog.json.",
+  },
+  {
+    question: "Kayıtlı iller ve 81 il kapısı var mı?",
+    answer:
+      "Hayır. Yalnızca yayımlanmış proje illeri /tr/bolgeler/ altında listelenir; kaydı olmayan il için kapı sayfası açılmaz.",
+  },
+];
 
 export default async function ProjelerimizPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -50,6 +71,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") },
         ]}
       />
+      <FaqJsonLd faqs={PROJELER_FAQS} />
       {/* Compact page intro — keep field videos above the fold */}
       <section className="relative isolate overflow-hidden bg-navy">
         <OptImage
@@ -162,6 +184,18 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
             </li>
           ))}
         </ul>
+      </Section>
+
+      <Section eyebrow="SSS" title="Projeler, fiyat ve kimlik" className="border-t border-border prose-seo">
+        <HomeFaq faqs={PROJELER_FAQS} />
+        <ShoppingLinkCloud
+          excludeHref="/tr/projelerimiz/"
+          title="Projeler · fiyat ve kimlik kaynakları"
+          extra={[
+            { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+          ]}
+        />
       </Section>
 
       <section className="bg-band py-14 md:py-20">
