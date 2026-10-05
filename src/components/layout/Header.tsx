@@ -132,10 +132,10 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
   return (
     <header className="px-3 pb-2 pt-1.5 sm:px-4 md:px-6 lg:px-8">
-      <div className="mx-auto flex h-14 max-w-7xl min-w-0 items-center gap-2 sm:h-[3.75rem] md:gap-3">
+      <div className="mx-auto flex h-14 max-w-7xl min-w-0 items-stretch gap-2 sm:h-[3.75rem] md:gap-3">
         <Link
           href={`/${locale}/`}
-          className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] h-full min-w-0 shrink-0 gap-2 px-3 py-0 sm:gap-2.5 sm:px-3.5"
+          className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] flex h-auto min-w-0 shrink-0 items-center gap-2 self-stretch px-3 py-0 sm:gap-2.5 sm:px-3.5"
           aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
         >
           <Image
@@ -159,7 +159,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         </Link>
 
         <nav
-          className="liquid-glass-shell liquid-glass-shell--nav ml-auto hidden h-full min-w-0 flex-1 items-center justify-center px-1.5 xl:flex"
+          className="liquid-glass-shell liquid-glass-shell--nav ml-auto hidden min-w-0 flex-1 items-center justify-center self-stretch px-1.5 xl:flex"
           aria-label={tr ? "Ana menü" : "Primary"}
         >
           <ul className="flex h-full w-full items-center justify-center gap-0">
@@ -347,10 +347,10 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           </ul>
         </nav>
 
-        <div className="ml-auto flex h-full shrink-0 items-center gap-2 xl:ml-0">
+        <div className="ml-auto flex shrink-0 items-stretch gap-2 self-stretch xl:ml-0">
         <Link
           href={`/${locale}/quote/`}
-          className="liquid-glass-btn liquid-glass-btn--primary relative z-[2] hidden h-full shrink-0 gap-2 px-5 text-[14px] font-bold sm:inline-flex sm:px-6 sm:text-[15px]"
+          className="liquid-glass-btn liquid-glass-btn--primary relative z-[2] hidden shrink-0 items-center gap-2 self-stretch px-5 text-[14px] font-bold sm:inline-flex sm:px-6 sm:text-[15px]"
         >
           <FileText className="h-4 w-4" aria-hidden />
           {dict.nav.quote}
@@ -358,7 +358,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
         <button
           type="button"
-          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] h-12 w-12 shrink-0 xl:hidden"
+          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] h-auto w-12 shrink-0 self-stretch xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}

@@ -112,7 +112,7 @@
     transform 0.2s ease,
     opacity 0.2s ease;
 }
-.skip-link:focus,
+/* Keyboard only — never stick open from programmatic/mouse focus (was causing “İçeriğe geç” kayması). */
 .skip-link:focus-visible {
   transform: translateY(0);
   opacity: 1;
