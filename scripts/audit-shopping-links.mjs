@@ -45,12 +45,28 @@ const regionDirs = fs
   .filter((d) => d.isDirectory())
   .map((d) => `bolgeler/${d.name}`);
 
+const caseDirs = fs.existsSync(path.join(outTr, "projelerimiz"))
+  ? fs
+      .readdirSync(path.join(outTr, "projelerimiz"), { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => `projelerimiz/${d.name}`)
+  : [];
+
+const blogDirs = fs.existsSync(path.join(outTr, "blog"))
+  ? fs
+      .readdirSync(path.join(outTr, "blog"), { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => `blog/${d.name}`)
+  : [];
+
 /** Paths that use CommercialLanding, product group template, or ShoppingLinkCloud */
 const pages = [
   ...unique.map((s) => path.join(outTr, s, "index.html")),
   ...productDirs.map((s) => path.join(outTr, s, "index.html")),
   ...rehberExtras.map((s) => path.join(outTr, s, "index.html")),
   ...regionDirs.map((s) => path.join(outTr, s, "index.html")),
+  ...caseDirs.map((s) => path.join(outTr, s, "index.html")),
+  ...blogDirs.map((s) => path.join(outTr, s, "index.html")),
   path.join(outTr, "index.html"), // TR home
   path.join(outTr, "led-ekran-fiyatlari", "index.html"),
   path.join(outTr, "hesaplayici", "index.html"),
@@ -66,6 +82,7 @@ const pages = [
   path.join(outTr, "rehber", "index.html"),
   path.join(outTr, "projelerimiz", "index.html"),
   path.join(outTr, "galeri", "index.html"),
+  path.join(outTr, "blog", "index.html"),
 ];
 
 let checked = 0;
@@ -84,7 +101,7 @@ for (const file of pages) {
 }
 
 console.log(
-  `Checked ${checked} shopping surfaces (home/commercial/product/rehber/regions/about/hub/founder/yapay-zeka/sss/hizmetler/projeler/galeri) for fiyat+catalog+quote+hesaplayici+entity links`,
+  `Checked ${checked} shopping surfaces (home/commercial/product/rehber/regions/cases/blog/about/hubs) for fiyat+catalog+quote+hesaplayici+entity links`,
 );
 if (errors.length) {
   console.error("FAIL:");

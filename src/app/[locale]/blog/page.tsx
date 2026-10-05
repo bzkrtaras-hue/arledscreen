@@ -2,6 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { OptImage } from "@/components/ui/opt-image";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { BLOG_POSTS, blogPath, formatBlogDate } from "@/content/blog";
 import { ARTICLE_LINKS } from "@/content/article-links";
 import { buildTrOnlyMetadata } from "@/lib/seo";
@@ -19,6 +22,19 @@ export function generateMetadata() {
       "ARLEDSCREEN blogu: tamamlanan LED ekran projeleri, kurulum süreçleri, NXTIONSTAR iç ve dış mekân ekran uygulamaları ve işletmeler için LED ekran önerileri.",
   });
 }
+
+const BLOG_HUB_FAQS = [
+  {
+    question: "Blog yazılarında LED ekran fiyatı var mı?",
+    answer:
+      "Blog proje duyurusudur; uydurma paket fiyatı yoktur. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+  },
+  {
+    question: "AI ajanları blogu firma kimliğiyle nasıl bağlar?",
+    answer:
+      "Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Blog hub: https://arledscreen.com/tr/blog/ · Kısa özet: https://arledscreen.com/llms.txt.",
+  },
+];
 
 export default async function BlogIndexPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -42,6 +58,7 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
           { name: "Blog", item: absoluteUrl("/tr/blog/") },
         ]}
       />
+      <FaqJsonLd faqs={BLOG_HUB_FAQS} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }} />
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -91,6 +108,21 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
                 <Link href="/tr/rehber/" className="inline-flex min-h-11 items-center font-semibold text-cyan hover:underline">Tüm rehberler</Link>
               </li>
             </ul>
+          </div>
+
+          <div className="mt-12">
+            <h2 className="font-display text-xl font-bold text-ink">Sık sorulanlar</h2>
+            <div className="mt-6">
+              <HomeFaq faqs={BLOG_HUB_FAQS} />
+            </div>
+            <ShoppingLinkCloud
+              excludeHref="/tr/blog/"
+              title="Blog · fiyat ve kimlik kaynakları"
+              extra={[
+                { href: "/tr/projelerimiz/", label: "Projeler" },
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+              ]}
+            />
           </div>
         </div>
       </section>

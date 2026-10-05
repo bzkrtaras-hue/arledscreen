@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OptImage } from "@/components/ui/opt-image";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import {
   PROJECT_CASE_STUDIES,
   getProjectCaseStudy,
@@ -199,6 +200,14 @@ export default async function ProjectCasePage({
                 </Link>
               </li>
             </ul>
+            <ShoppingLinkCloud
+              excludeHref={`/tr/projelerimiz/${c.slug}/`}
+              title="Case study · fiyat ve kimlik (uydurma paket yok)"
+              extra={[
+                { href: "/tr/projelerimiz/", label: "Tüm projeler" },
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+              ]}
+            />
           </div>
           <aside className="rounded-2xl border border-border bg-band/40 p-5 text-sm text-ink-soft">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">Servis</p>

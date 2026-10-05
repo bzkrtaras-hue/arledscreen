@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { OptImage } from "@/components/ui/opt-image";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import manifest from "@/content/image-manifest.json";
 import { BLOG_POSTS, blogImageUrl, blogPath, formatBlogDate, getBlogPost } from "@/content/blog";
 import { buildTrOnlyMetadata } from "@/lib/seo";
@@ -118,7 +119,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           <div className="mt-10 rounded-card bg-band p-6">
             <p className="font-display text-lg font-bold text-ink">Benzer bir proje mi planlıyorsunuz?</p>
             <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-              Ölçü, konum ve kullanım amacını paylaşın; keşif sonrası malzeme listesiyle birlikte yazılı teklif hazırlayalım.
+              Ölçü, konum ve kullanım amacını paylaşın; keşif sonrası malzeme listesiyle birlikte yazılı teklif hazırlayalım. Panel list fiyatı:{" "}
+              <a href="/catalog.json" className="font-semibold text-cyan hover:underline">catalog.json</a>
+              {" · "}
+              <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">fiyat hub</Link>
+              . Kimlik:{" "}
+              <a href="/entity.json" className="font-semibold text-cyan hover:underline">entity.json</a>.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#0F7A41] px-5 text-sm font-semibold text-white hover:bg-[#0B6435]">
@@ -128,6 +134,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               <Link href="/tr/quote/" className="inline-flex min-h-11 items-center rounded-full bg-cyan px-5 text-sm font-semibold text-white hover:bg-cyan-600">Teklif isteyin</Link>
             </div>
           </div>
+
+          <ShoppingLinkCloud
+            excludeHref={`/tr/blog/${p.slug}/`}
+            title="Blog yazısı · fiyat ve kimlik kaynakları"
+            extra={[
+              { href: "/tr/blog/", label: "Blog hub" },
+              { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
+              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+            ]}
+          />
 
           {p.related?.length ? (
             <div className="mt-8">

@@ -120,11 +120,12 @@ auditPage("hizmetler", { minCount: 3, requirePriceHint: true });
 auditPage(".", { minCount: 4, requirePriceHint: true }); // TR home
 auditPage("rehber", { minCount: 3, requirePriceHint: true });
 auditPage("projelerimiz", { minCount: 3, requirePriceHint: true });
+auditPage("blog", { minCount: 2, requirePriceHint: true });
 auditPage("rehber/piksel-araligi-secimi", { minCount: 2, requirePriceHint: true });
 auditPage("rehber/kiralik-mi-satin-alma", { minCount: 2, requirePriceHint: true });
 
 console.log(
-  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + rehber articles`,
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles`,
 );
 if (errors.length) {
   console.error("FAIL:");
