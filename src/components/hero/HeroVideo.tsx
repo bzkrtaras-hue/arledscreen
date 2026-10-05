@@ -55,7 +55,7 @@ function coverClass(clip: HeroClip) {
 /**
  * Full-bleed multi-clip hero with soft crossfades.
  * Supports HQ still precursors (factory) + muted field videos.
- * Pack B copy: brand → accent → headline → body → CTAs on navy wash (no glass card).
+ * Left-settled stack: H1 → accent → glass plate (lead + pillars) → CTAs.
  */
 export function HeroVideo({
   clips,
@@ -205,7 +205,7 @@ export function HeroVideo({
         )}
 
         <div
-          className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(15,42,79,0.28)_0%,rgba(15,42,79,0.40)_38%,rgba(11,27,51,0.84)_70%,rgba(11,27,51,0.96)_100%)] md:bg-[linear-gradient(105deg,rgba(15,42,79,0.94)_0%,rgba(15,42,79,0.78)_34%,rgba(11,27,51,0.42)_58%,rgba(11,27,51,0.16)_100%),linear-gradient(180deg,rgba(15,42,79,0.22)_0%,transparent_30%,rgba(11,27,51,0.50)_70%,rgba(11,27,51,0.88)_100%)]"
+          className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(15,42,79,0.34)_0%,rgba(15,42,79,0.48)_36%,rgba(11,27,51,0.88)_68%,rgba(11,27,51,0.97)_100%)] md:bg-[linear-gradient(105deg,rgba(15,42,79,0.96)_0%,rgba(15,42,79,0.86)_32%,rgba(11,27,51,0.48)_56%,rgba(11,27,51,0.18)_100%),linear-gradient(180deg,rgba(15,42,79,0.28)_0%,transparent_28%,rgba(11,27,51,0.55)_70%,rgba(11,27,51,0.92)_100%)]"
           aria-hidden
         />
 
@@ -251,73 +251,60 @@ export function HeroVideo({
         ) : null}
 
         <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-4 pb-[calc(4.25rem+1rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
-          {/* Pack B settled stack — open white type on navy wash, no glass card */}
-          <div className="w-full max-w-[540px]">
-            <m.p
-              className="font-display text-[clamp(2.35rem,1.5rem+3.6vw,4.25rem)] font-extrabold leading-[0.92] tracking-[-0.04em] text-white"
-              style={{ textShadow: "0 2px 28px rgba(11,27,51,0.55)" }}
+          {/* Left-settled: title + readable glass plate + CTAs (refs: pack B + glass) */}
+          <div className="w-full max-w-[560px]">
+            <span className="sr-only">{brand}</span>
+
+            <m.h1
+              className="text-balance font-display text-[clamp(1.55rem,1.15rem+1.7vw,2.55rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-white"
+              style={{ textShadow: "0 2px 24px rgba(11,27,51,0.7), 0 0 2px rgba(11,27,51,0.45)" }}
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease, delay: 0.06 }}
             >
-              {brand}
-            </m.p>
+              {headline}
+            </m.h1>
             <m.span
               aria-hidden
-              className="mt-3 block h-0.5 w-10 origin-left bg-[#1E5BB8] sm:mt-3.5 sm:w-11 rtl:origin-right"
+              className="mt-3 block h-0.5 w-11 origin-left bg-[#1E5BB8] sm:mt-3.5 sm:w-12 rtl:origin-right"
               initial={reduce ? false : { scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.6, ease, delay: 0.16 }}
             />
 
-            <m.h1
-              className="mt-4 text-balance font-display text-[clamp(1.25rem,1.05rem+1.1vw,1.85rem)] font-bold leading-[1.2] tracking-[-0.02em] text-white sm:mt-5"
-              style={{ textShadow: "0 1px 18px rgba(11,27,51,0.5)" }}
+            <m.div
+              className="liquid-glass-hero-copy mt-4 px-4 py-4 sm:mt-5 sm:px-5 sm:py-5"
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease, delay: 0.2 }}
+              transition={{ duration: 0.7, ease, delay: 0.22 }}
             >
-              {headline}
-            </m.h1>
+              <p className="hero-copy-lead text-pretty text-[14px] font-semibold leading-[1.55] sm:text-[15.5px] sm:leading-[1.6]">
+                {subcopy}
+              </p>
 
-            <m.p
-              className="mt-3 max-w-[46ch] text-pretty text-[15px] font-semibold leading-[1.65] text-white sm:mt-4 sm:text-[17px] sm:leading-[1.7]"
-              style={{ textShadow: "0 2px 18px rgba(11,27,51,0.75), 0 0 2px rgba(11,27,51,0.55)" }}
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease, delay: 0.28 }}
-            >
-              {subcopy}
-            </m.p>
-
-            {points?.length ? (
-              <m.ul
-                className="mt-4 space-y-2.5 border-t border-white/25 pt-4 sm:mt-5"
-                initial={reduce ? false : { opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, ease, delay: 0.34 }}
-              >
-                {points.map((point) => (
-                  <li
-                    key={point.title}
-                    className="flex gap-2.5 text-[14px] leading-[1.5] text-white/90 sm:text-[15px] sm:leading-[1.55]"
-                    style={{ textShadow: "0 1px 12px rgba(11,27,51,0.4)" }}
-                  >
-                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#1E5BB8]" aria-hidden />
-                    <span>
-                      <span className="font-semibold text-white">{point.title}: </span>
-                      <span className="font-medium text-white/88">{point.body}</span>
-                    </span>
-                  </li>
-                ))}
-              </m.ul>
-            ) : null}
+              {points?.length ? (
+                <ul className="hero-copy-rule mt-3.5 space-y-2.5 border-t pt-3.5 sm:mt-4 sm:space-y-3">
+                  {points.map((point) => (
+                    <li
+                      key={point.title}
+                      className="flex gap-2.5 text-[13.5px] leading-[1.5] sm:text-[14.5px] sm:leading-[1.55]"
+                    >
+                      <span className="hero-copy-dot mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full" aria-hidden />
+                      <span>
+                        <span className="hero-copy-point-title font-bold">{point.title}: </span>
+                        <span className="hero-copy-point-body font-medium">{point.body}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </m.div>
 
             <m.div
-              className="mt-5 flex flex-col gap-2.5 sm:mt-7 sm:flex-row sm:gap-3"
+              className="mt-5 flex flex-col gap-2.5 sm:mt-6 sm:flex-row sm:gap-3"
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, ease, delay: 0.4 }}
+              transition={{ duration: 0.65, ease, delay: 0.36 }}
             >
               <Link
                 href={quoteHref}

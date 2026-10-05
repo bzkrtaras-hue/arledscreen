@@ -72,15 +72,42 @@ export function Hero({ locale }: HeroProps) {
     <HeroVideo
       clips={clips}
       brand="ARLEDSCREEN"
-      headline={
-        tr
-          ? "İç ve dış mekân LED ekran sistemleri."
-          : "Indoor and outdoor LED display systems."
-      }
+      headline={tr ? "LED EKRAN TEKNOLOJİ MERKEZİ" : "LED DISPLAY TECHNOLOGY CENTER"}
       subcopy={
         tr
-          ? "NXTIONSTAR panellerini Türkiye’de ARLEDSCREEN satar, keşfeder ve monte eder. Cephe, vitrin, totem ve salon ölçüleri sahada netleşir; servis Gaziosmanpaşa ofisinden yürür."
-          : "ARLEDSCREEN sells, surveys and installs NXTIONSTAR panels across Turkey. Façade, storefront, totem and hall sizes are confirmed on site; service runs from Gaziosmanpaşa."
+          ? "ARLEDSCREEN, LED teknolojilerindeki yüksek kalite standartlarını NXTIONSTAR güvencesiyle hayata geçirmektedir:"
+          : "ARLEDSCREEN delivers LED technology quality standards with the assurance of NXTIONSTAR:"
+      }
+      points={
+        tr
+          ? [
+              {
+                title: "Uçtan Uca Proje Yönetimi",
+                body: "Keşif, tasarım, montaj ve satış sonrası teknik servis desteği.",
+              },
+              {
+                title: "Geniş Ürün Çözümleri",
+                body: "Bina cephesi, vitrin, totem, salon ve poster menuboard uygulamaları.",
+              },
+              {
+                title: "Yerli Üretim ve Yaygın Ağ",
+                body: "İstanbul merkezli fabrikamızdan çıkan ürünler, Türkiye’nin 81 ilinde profesyonel bayi ağımızla kurulmaktadır.",
+              },
+            ]
+          : [
+              {
+                title: "End-to-end project management",
+                body: "Survey, design, installation and after-sales technical service.",
+              },
+              {
+                title: "Broad product solutions",
+                body: "Façade, storefront, totem, hall and poster / menuboard applications.",
+              },
+              {
+                title: "Local production and nationwide reach",
+                body: "Panels from our Istanbul factory are installed across Turkey’s 81 provinces through our professional dealer network.",
+              },
+            ]
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Yazılı teklif alın" : "Request a written quote"}
