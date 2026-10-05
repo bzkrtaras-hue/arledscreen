@@ -73,7 +73,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         eyebrow="Sahadan"
         title="Videolar"
         description="Kurulumlarımızdan kısa video kayıtları. İlk video görünür olduğunda sessiz oynar; diğerlerini oynatmak için dokunun."
-        className="prose-seo"
+        className="prose-seo pt-4 sm:pt-5 md:pt-6 pb-10 sm:pb-12 md:pb-14 [&_header]:mb-5 [&_header]:md:mb-6"
       >
         <ProjectVideos />
       </Section>
