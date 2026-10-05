@@ -81,14 +81,22 @@ export function panelProductsJsonLd(
   const org = { "@id": `${SITE_URL}/#organization` };
   const products = panels.map((p) => {
     const u = urlFor?.(p) ?? pageUrl;
+    const catalogUrl = `${SITE_URL}/catalog.json`;
     return {
     "@type": "Product",
     "@id": urlFor?.(p) ? `${u}#product` : `${pageUrl}#${p.id}`,
     name: `${panelLabel(p)} LED ekran modülü (${panelModule(p)})`,
+    sku: p.id,
     brand: { "@type": "Brand", name: "NXTIONSTAR" },
     category: "LED ekran modülü",
     description: `${panelLabel(p)} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.`,
     url: u,
+    isPartOf: {
+      "@type": "DataCatalog",
+      "@id": catalogUrl,
+      url: catalogUrl,
+      name: "NXTIONSTAR yayımlanmış panel USD katalog",
+    },
     additionalProperty: [
       { "@type": "PropertyValue", name: "Piksel aralığı", value: p.pitchMm, unitText: "mm" },
       { "@type": "PropertyValue", name: "Modül ölçüsü", value: panelModule(p) },
@@ -107,6 +115,7 @@ export function panelProductsJsonLd(
         referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
       },
       seller: org,
+      isPartOf: { "@id": catalogUrl },
     },
   };
   });
@@ -123,12 +132,14 @@ export function panelProductsJsonLd(
       url: pageUrl,
       offers: {
         "@type": "AggregateOffer",
+        "@id": `${SITE_URL}/catalog.json#all-priced-panels`,
         priceCurrency: "USD",
         lowPrice: Math.min(...usd).toFixed(2),
         highPrice: Math.max(...usd).toFixed(2),
         offerCount: panels.length,
-        description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç.",
+        description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: catalog.json.",
         seller: org,
+        isPartOf: { "@id": `${SITE_URL}/catalog.json` },
       },
     });
   }

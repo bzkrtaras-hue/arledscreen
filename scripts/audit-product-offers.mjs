@@ -131,6 +131,14 @@ for (const model of models) {
     if (specPrice != null && Number(specPrice).toFixed(2) !== expectedUsd.toFixed(2)) {
       errors.push(`${model.group}/${model.slug}: priceSpecification.price mismatch`);
     }
+    // Day 47: Offer ↔ catalog.json join key
+    if (product.sku !== model.priceId) {
+      errors.push(`${model.group}/${model.slug}: Product.sku ${product.sku} != catalog priceId ${model.priceId}`);
+    }
+    const partOf = JSON.stringify(product.isPartOf || {}) + JSON.stringify(offers.isPartOf || {});
+    if (!partOf.includes("/catalog.json")) {
+      errors.push(`${model.group}/${model.slug}: priced Product/Offer must isPartOf catalog.json`);
+    }
   } else {
     quoteChecked += 1;
     if (product.offers) {
@@ -209,6 +217,13 @@ if (fs.existsSync(catalogPath)) {
     }
     if (!p.image || !String(p.image).startsWith("https://arledscreen.com/")) {
       errors.push(`catalog ${sku} missing absolute product image`);
+    }
+    if (!p["@id"] || !String(p["@id"]).includes("#product")) {
+      errors.push(`catalog ${sku} missing @id …#product (page join)`);
+    }
+    const part = JSON.stringify(p.isPartOf || {}) + JSON.stringify(p.offers?.isPartOf || {});
+    if (!part.includes("/catalog.json")) {
+      errors.push(`catalog ${sku} missing isPartOf catalog.json`);
     }
   }
   // groupAggregateOffers: all-panels + each priced group; no quote-only slugs
@@ -361,6 +376,75 @@ if (fs.existsSync(embedPath)) {
   }
 } else {
   errors.push("public/fiyat-hesap/index.html missing");
+}
+
+// Day 47: priced product-group AggregateOffer @id joins catalog.groupAggregateOffers
+const PRICED_GROUPS = ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran"];
+for (const group of PRICED_GROUPS) {
+  const hub = path.join(outRoot, group, "index.html");
+  if (!fs.existsSync(hub)) {
+    errors.push(`missing priced group hub: ${group}`);
+    continue;
+  }
+  const hubHtml = fs.readFileSync(hub, "utf8");
+  let found = false;
+  for (const m of hubHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+    let data;
+    try {
+      data = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    if (data?.["@type"] === "Service" && data.offers?.["@type"] === "AggregateOffer") {
+      found = true;
+      const id = String(data.offers["@id"] || "");
+      if (!id.includes(`catalog.json#group-${group}`)) {
+        errors.push(`${group} AggregateOffer @id must be catalog.json#group-${group}`);
+      }
+      if (!JSON.stringify(data.offers).includes("/catalog.json")) {
+        errors.push(`${group} AggregateOffer must cite catalog.json`);
+      }
+    }
+  }
+  if (!found) errors.push(`${group} hub missing Service AggregateOffer`);
+}
+
+// Day 47: pitch landings with published PANEL_PRICES must emit AggregateOffer → catalog
+const pitchSlugs = [
+  "p1-25-led-ekran",
+  "p1-86-led-ekran",
+  "p2-5-led-ekran",
+  "p2-9-led-ekran",
+  "p3-07-led-ekran",
+  "p4-led-ekran",
+  "p5-led-ekran",
+];
+for (const slug of pitchSlugs) {
+  const file = path.join(root, "out/tr", slug, "index.html");
+  if (!fs.existsSync(file)) continue; // some pitch slugs may not exist
+  const html = fs.readFileSync(file, "utf8");
+  let agg = null;
+  for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+    let data;
+    try {
+      data = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    if (data?.["@type"] === "Service" && data.offers?.["@type"] === "AggregateOffer") {
+      agg = data.offers;
+    }
+  }
+  if (!agg) {
+    // only fail if this pitch has PANEL_PRICES rows
+    const pitch = `P${slug.replace(/^p/, "").replace(/-led-ekran$/, "").replace("-", ".")}`;
+    const hasRows = priceRows.some((p) => p.pitch === pitch);
+    if (hasRows) errors.push(`${slug}: published pitch missing AggregateOffer → catalog`);
+    continue;
+  }
+  if (!String(agg["@id"] || "").includes("catalog.json")) {
+    errors.push(`${slug}: AggregateOffer @id must join catalog.json`);
+  }
 }
 
 console.log(

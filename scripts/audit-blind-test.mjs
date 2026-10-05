@@ -205,6 +205,9 @@ if (llmsFullPath) {
     "/tr/about/",
     "/tr/products/",
     "/feeds/merchant-priced-panels.tsv",
+    "/tr/rehber/gob-vs-smd/",
+    "/tr/products/ic-mekan-led-ekran/p2-5/",
+    "/tr/p2-5-led-ekran/",
   ];
   for (const u of requiredUrls) {
     if (!llms.includes(u)) {

@@ -8,7 +8,7 @@ IndexNow (deploy sonrası): `npm run indexnow -- --live`
 Bu sayfa **ölçüm şablonu + sahip panosu**. Kod tarafı Gün 16–29 ile hazır;
 canlı skorlar merge + Point C sonrası doldurulur.
 
-## A) Site-side (repo) — 2026-10-05 (gün 16–46)
+## A) Site-side (repo) — 2026-10-05 (gün 16–47)
 
 | Metrik | Hedef | Durum |
 |--------|-------|-------|
@@ -22,6 +22,7 @@ canlı skorlar merge + Point C sonrası doldurulur.
 | IndexNow key | public hex.txt | ✅ audit:indexnow |
 | Shopping LinkCloud | home→model→case→blog→seo-guide | ✅ 143+ yüzey |
 | Org → catalog JSON-LD | hasOfferCatalog | ✅ OrganizationJsonLd |
+| Offer ↔ catalog join | sku=priceId + isPartOf | ✅ model/group/pitch |
 | Sitemap AI artefacts | 7 machine URL | ✅ catalog/entity/ard/… |
 | Point C paste packs | `/entity-profiles.json` | ✅ sync-entity |
 | Spam / 81-il | yok | ✅ |

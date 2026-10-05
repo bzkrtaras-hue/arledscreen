@@ -36,6 +36,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 44 | 2026-10-05 | AI headers parity (CORS+Content-Type) + `audit:ai-headers` | ✅ |
 | 45 | 2026-10-05 | Org hasOfferCatalog + sitemap AI artefacts + SEO-guide LinkCloud | ✅ |
 | 46 | 2026-10-05 | IndexNow key + ping script + `audit:indexnow` (post-merge Bing) | ✅ |
+| 47 | 2026-10-05 | Offer↔catalog join (sku/@id) + pitch AggregateOffer + llms USD parity | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -165,3 +166,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `ard.json` IndexNow discovery entry
 - `smoke:live` IndexNow key check (13 endpoint)
 - Merge-gün: smoke GREEN → `indexnow -- --live` — [`indexnow.md`](./indexnow.md)
+
+## Gün 47 notları
+
+- Model Product.sku = catalog priceId; Offer/Product `isPartOf` → catalog.json
+- catalog Products `@id` …#product + isPartOf (sayfa↔katalog join)
+- Ürün grubu AggregateOffer `@id` = `catalog.json#group-{slug}`
+- Pitch landings: AggregateOffer from PANEL_PRICES → catalog
+- llms-full intent: GOB vs SMD + P2.5 model/pitch URLs
+- Guards: audit:offers join + pitch/group; cite-parity PANEL USD; blind-test intent URLs

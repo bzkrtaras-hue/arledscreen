@@ -120,13 +120,15 @@ export default async function ModelPage({ params }: PageProps) {
   // GSC Merchant listings require offers.price (or priceSpecification.price).
   // Quote-only models (P8, esnek, kontrol) have no published USD — omit Offer
   // entirely. An Offer without price marks the item invalid in Search Console.
+  // sku = catalog PANEL_PRICES id when priced so agents join Offer ↔ catalog.json.
   const quoteUrl = absoluteUrl("/tr/quote/");
+  const catalogUrl = absoluteUrl("/catalog.json");
   const productLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${url}#product`,
     name: m.name,
-    sku: `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`,
+    sku: m.priceId ?? `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`,
     brand: { "@type": "Brand", name: brandName },
     ...(m.kind === "kontrol"
       ? {
@@ -139,6 +141,16 @@ export default async function ModelPage({ params }: PageProps) {
     image: absoluteUrl(m.image),
     description,
     url,
+    ...(price
+      ? {
+          isPartOf: {
+            "@type": "DataCatalog",
+            "@id": catalogUrl,
+            url: catalogUrl,
+            name: "NXTIONSTAR yayımlanmış panel USD katalog",
+          },
+        }
+      : {}),
     additionalProperty: [
       ...specRows
         .filter((r) => r.spec)
@@ -151,7 +163,13 @@ export default async function ModelPage({ params }: PageProps) {
               value: "List fiyatı yayımlanmaz; keşif sonrası yazılı teklif",
             },
           ]
-        : []),
+        : [
+            {
+              "@type": "PropertyValue",
+              name: "catalog.json",
+              value: catalogUrl,
+            },
+          ]),
     ],
     ...(m.kind === "kontrol" || !price
       ? {
@@ -180,6 +198,7 @@ export default async function ModelPage({ params }: PageProps) {
               referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
             },
             seller: { "@id": `${SITE_URL}/#organization` },
+            isPartOf: { "@id": catalogUrl },
           },
         }
       : {}),

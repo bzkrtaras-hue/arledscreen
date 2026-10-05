@@ -140,10 +140,27 @@ if (seoSrc) {
   }
 }
 
+// Day 47: every PANEL_PRICES USD must appear in llms-full (agent prose cite parity)
+const pricesSrc = read("src/content/prices.ts");
+const llmsFull = read("public/llms-full.txt");
+if (pricesSrc && llmsFull) {
+  const usdRe =
+    /\{\s*id:\s*"([^"]+)",\s*pitch:\s*"([^"]+)",\s*pitchMm:\s*([\d.]+),\s*use:\s*"(ic|dis)",\s*(?:surface:\s*"GOB",\s*)?(?:frontService:\s*true,\s*)?usd:\s*([\d.]+)/g;
+  for (const m of pricesSrc.matchAll(usdRe)) {
+    const id = m[1];
+    const usd = Number(m[5]);
+    const comma = usd.toFixed(2).replace(".", ",");
+    const dot = usd.toFixed(2);
+    if (!llmsFull.includes(comma) && !llmsFull.includes(dot)) {
+      errors.push(`llms-full.txt missing PANEL_PRICES ${id} USD ${comma}`);
+    }
+  }
+}
+
 if (errors.length) {
   console.error(`audit-cite-parity: FAIL (${errors.length})`);
   for (const e of errors) console.error(" -", e);
   process.exit(1);
 }
 
-console.log("audit-cite-parity: OK — entity↔llms↔about cite strings verbatim");
+console.log("audit-cite-parity: OK — entity↔llms↔about cite strings verbatim + PANEL USD");

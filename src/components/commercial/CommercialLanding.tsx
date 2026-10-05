@@ -5,6 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import type { CommercialPage } from "@/content/commercial-pages";
 import { commercialPath } from "@/content/commercial-pages";
+import { PANEL_PRICES } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
@@ -20,6 +21,13 @@ const CLUSTER_LABEL: Record<CommercialPage["cluster"], string> = {
   pitch: "Piksel aralığı",
   use: "Kullanım",
 };
+
+/** Map pitch landing slug (p2-5-led-ekran) → PANEL_PRICES.pitch (P2.5). */
+function pitchFromCommercialSlug(slug: string): string | null {
+  const m = slug.match(/^p(\d+(?:-\d+)?)-led-ekran$/i);
+  if (!m) return null;
+  return `P${m[1].replace("-", ".")}`;
+}
 
 function LinkCloud({
   title,
@@ -58,7 +66,13 @@ function LinkCloud({
 
 export function CommercialLanding({ page }: { page: CommercialPage }) {
   const url = absoluteUrl(commercialPath(page.slug));
-  const serviceLd = {
+  const catalogUrl = absoluteUrl("/catalog.json");
+  const pitchLabel =
+    page.cluster === "pitch" ? pitchFromCommercialSlug(page.slug) : null;
+  const pitchPanels = pitchLabel
+    ? PANEL_PRICES.filter((p) => p.pitch === pitchLabel)
+    : [];
+  const serviceLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${url}#service`,
@@ -68,6 +82,27 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
     areaServed: { "@type": "Country", name: "Türkiye" },
     url,
   };
+  if (pitchPanels.length) {
+    const usd = pitchPanels.map((p) => p.usd);
+    serviceLd.offers = {
+      "@type": "AggregateOffer",
+      "@id": `${catalogUrl}#pitch-${page.slug}`,
+      url,
+      priceCurrency: "USD",
+      lowPrice: Math.min(...usd).toFixed(2),
+      highPrice: Math.max(...usd).toFixed(2),
+      offerCount: pitchPanels.length,
+      sku: pitchPanels.map((p) => p.id),
+      description: `${pitchLabel} yayımlanmış panel USD bandı; KDV ve nakliye hariç. Kaynak: catalog.json.`,
+      seller: { "@id": `${SITE_URL}/#organization` },
+      isPartOf: { "@id": catalogUrl },
+    };
+    serviceLd.isPartOf = {
+      "@type": "DataCatalog",
+      "@id": catalogUrl,
+      url: catalogUrl,
+    };
+  }
 
   return (
     <>

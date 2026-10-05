@@ -130,12 +130,16 @@ export default async function ProductGroupPage({ params }: PageProps) {
       ? {
           offers: {
             "@type": "AggregateOffer",
+            "@id": `${SITE_URL}/catalog.json#group-${g.slug}`,
+            url,
             priceCurrency: "USD",
             lowPrice: Math.min(...prices.map((x) => x.usd)).toFixed(2),
             highPrice: Math.max(...prices.map((x) => x.usd)).toFixed(2),
             offerCount: prices.length,
-            description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç.",
+            description:
+              "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: catalog.json groupAggregateOffers.",
             seller: { "@id": `${SITE_URL}/#organization` },
+            isPartOf: { "@id": `${SITE_URL}/catalog.json` },
           },
         }
       : {

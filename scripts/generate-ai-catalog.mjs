@@ -61,6 +61,7 @@ const products = prices.map((p) => {
   const image = model?.image ? `${SITE}${model.image}` : undefined;
   return {
     "@type": "Product",
+    "@id": `${url}#product`,
     sku: p.id,
     name,
     brand: { "@type": "Brand", name: "NXTIONSTAR" },
@@ -68,6 +69,7 @@ const products = prices.map((p) => {
     url,
     groupUrl,
     ...(image ? { image, imageAlt: model.imageAlt } : {}),
+    isPartOf: { "@type": "DataCatalog", "@id": `${SITE}/catalog.json`, url: `${SITE}/catalog.json` },
     additionalProperty: [
       { "@type": "PropertyValue", name: "Piksel aralığı", value: p.pitchMm, unitText: "mm" },
       { "@type": "PropertyValue", name: "Modül ölçüsü", value: p.moduleMm },
@@ -99,6 +101,7 @@ const products = prices.map((p) => {
         },
       },
       seller: { "@id": `${SITE}/#organization` },
+      isPartOf: { "@id": `${SITE}/catalog.json` },
     },
   };
 });

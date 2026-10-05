@@ -1,4 +1,4 @@
-# AI alışveriş regression suite (Gün 29 → güncellendi Gün 46)
+# AI alışveriş regression suite (Gün 29 → güncellendi Gün 47)
 
 Son güncelleme: 2026-10-05  
 Komut: `npm run audit:all` (build sonrası) · postbuild zinciri aynı guard’ları çalıştırır
@@ -15,7 +15,7 @@ npm run audit:all
 
 | Audit | Gün / katman |
 |-------|----------------|
-| offers | P0 fiyat/Offer |
+| offers | P0+47 fiyat/Offer + catalog sku/@id join + pitch AggregateOffer |
 | images | P0 ürün görseli |
 | shopping-links | 28→45 LinkCloud (**143+ yüzey**; SEO-guide cluster dahil) |
 | faq | 28→45 FAQ price hint (home/hub/founder/blog/seo-guides…) |
@@ -26,8 +26,8 @@ npm run audit:all
 | product-ctas | 22 CTA sıra |
 | sitemap | 23 completeness |
 | robots | 24 Bing/AI Host |
-| blind-test | 25 kör test + entity-profiles ARD |
-| cite-parity | 26 entity↔llms↔profiles |
+| blind-test | 25+47 kör test + GOB/P2.5 intent URLs |
+| cite-parity | 26+47 entity↔llms↔profiles + PANEL USD in llms-full |
 | merchant-feed | 27 GMC TSV 12 SKU |
 | ai-headers | 44 CORS + Content-Type + CORP |
 | indexnow | 46 IndexNow key out/ |
@@ -40,7 +40,7 @@ npm run audit:all
 npm run smoke:live          # 13 endpoint (+ IndexNow key)
 npm run point-c-packs       # local paste packs
 npm run point-c-packs -- --live   # deploy sonrası
-npm run indexnow -- --live  # Bing recrawl AI artefacts (smoke GREEN sonrası)
+npm run indexnow -- --live  # Bing recrawl AI surfaces (smoke GREEN sonrası)
 ```
 
 Merge-gün checklist: [`point-c-merge-day.md`](./point-c-merge-day.md) · IndexNow: [`indexnow.md`](./indexnow.md)
