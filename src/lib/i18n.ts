@@ -567,7 +567,7 @@ const tr: Dictionary = {
     badge: "NXTIONSTAR · ARLEDSCREEN’in kendi markası",
     headline: "İç ve dış mekân LED ekran sistemleri.",
     subcopy:
-      "ARLEDSCREEN, kendi markası NXTIONSTAR ile LED ekran projelerini keşiften montaja ve teknik servise kadar yönetir. Cephe, vitrin, totem ve salon uygulamalarında çözüm sahada şekillenir; İstanbul merkezli fabrikamızdan çıkan ürünler, bayilerimiz aracılığıyla 81 ilde monte edilmektedir.",
+      "ARLEDSCREEN, LED teknolojilerindeki yüksek kalite standartlarını NXTIONSTAR güvencesiyle hayata geçirmektedir: uçtan uca proje yönetimi; cephe, vitrin, totem, salon ve menuboard çözümleri; İstanbul fabrikasından çıkan ürünler 81 ilde profesyonel bayi ağıyla kurulur.",
     ctaConfigure: "Ürün serilerini inceleyin",
     ctaQuote: "Yazılı teklif alın",
     stats: [

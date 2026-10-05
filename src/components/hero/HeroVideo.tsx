@@ -14,13 +14,21 @@ export type HeroClip = {
   label: string;
 };
 
+export type HeroPoint = {
+  title: string;
+  body: string;
+};
+
 interface HeroVideoProps {
   clips: HeroClip[];
   /** Large brand wordmark (pack B) */
   brand: string;
   eyebrow: string;
   headline: string;
+  /** Lead sentence under the H1 */
   subcopy: string;
+  /** Optional structured pillars under the lead */
+  points?: HeroPoint[];
   quoteHref: string;
   quoteLabel: string;
   secondaryHref: string;
@@ -51,6 +59,7 @@ export function HeroVideo({
   eyebrow,
   headline,
   subcopy,
+  points,
   quoteHref,
   quoteLabel,
   secondaryHref,
@@ -230,7 +239,7 @@ export function HeroVideo({
         ) : null}
 
         <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-5 pb-[calc(4.5rem+1.5rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
-          <div className="w-full max-w-[580px]">
+          <div className="w-full max-w-[640px]">
             <m.p
               className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-white/90 sm:text-xs"
               initial={reduce ? false : { opacity: 0, y: 12 }}
@@ -263,9 +272,22 @@ export function HeroVideo({
               <h1 className="text-balance font-display text-[clamp(1.25rem,1rem+1.4vw,1.85rem)] font-bold leading-[1.2] tracking-[-0.02em] text-white">
                 {headline}
               </h1>
-              <p className="mt-3 max-w-[54ch] text-pretty text-[15px] leading-[1.65] text-white/92 sm:text-base sm:leading-[1.7]">
+              <p className="mt-3 max-w-[58ch] text-pretty text-[15px] leading-[1.65] text-white/92 sm:text-base sm:leading-[1.7]">
                 {subcopy}
               </p>
+              {points?.length ? (
+                <ul className="mt-4 space-y-2.5 border-t border-white/15 pt-4">
+                  {points.map((point) => (
+                    <li key={point.title} className="flex gap-2.5 text-[14px] leading-[1.55] text-white/90 sm:text-[15px] sm:leading-[1.6]">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7EB3F0]" aria-hidden />
+                      <span>
+                        <span className="font-semibold text-white">{point.title}: </span>
+                        {point.body}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </m.div>
             <m.div
               className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:gap-3"

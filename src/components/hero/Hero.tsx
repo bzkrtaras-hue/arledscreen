@@ -63,8 +63,39 @@ export function Hero({ locale }: HeroProps) {
       }
       subcopy={
         tr
-          ? "ARLEDSCREEN, kendi markası NXTIONSTAR ile LED ekran projelerini keşiften montaja ve teknik servise kadar yönetir. Cephe, vitrin, totem ve salon uygulamalarında çözüm sahada şekillenir; İstanbul merkezli fabrikamızdan çıkan ürünler, bayilerimiz aracılığıyla 81 ilde monte edilmektedir."
-          : "ARLEDSCREEN delivers NXTIONSTAR LED display projects end to end—from survey and installation through technical service. Façade, storefront, totem and hall solutions take shape on site; products from our Istanbul factory are installed nationwide across 81 provinces through our dealer network."
+          ? "ARLEDSCREEN, LED teknolojilerindeki yüksek kalite standartlarını NXTIONSTAR güvencesiyle hayata geçirmektedir:"
+          : "ARLEDSCREEN brings high LED quality standards to life under the NXTIONSTAR guarantee:"
+      }
+      points={
+        tr
+          ? [
+              {
+                title: "Uçtan uca proje yönetimi",
+                body: "Keşif, tasarım, montaj ve satış sonrası teknik servis desteği.",
+              },
+              {
+                title: "Geniş ürün çözümleri",
+                body: "Bina cephesi, vitrin, totem, salon ve poster menuboard uygulamaları.",
+              },
+              {
+                title: "Yerli üretim ve yaygın ağ",
+                body: "İstanbul merkezli fabrikamızdan çıkan ürünler, Türkiye’nin 81 ilinde profesyonel bayi ağımızla kurulmaktadır.",
+              },
+            ]
+          : [
+              {
+                title: "End-to-end project delivery",
+                body: "Survey, design, installation and after-sales technical service.",
+              },
+              {
+                title: "Broad product solutions",
+                body: "Building façades, storefronts, totems, halls and poster menuboards.",
+              },
+              {
+                title: "Local production and national reach",
+                body: "Products from our Istanbul factory are installed across Turkey’s 81 provinces through our professional dealer network.",
+              },
+            ]
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Yazılı teklif alın" : "Request a written quote"}
