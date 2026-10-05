@@ -57,6 +57,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 65 | 2026-10-05 | Price-surface extrasUsd≠list SKU · agentRules disambiguation · SSS/Home FAQ · blind #14 esnek | ✅ |
 | 66 | 2026-10-05 | fiyat-hesap UI extrasUsd honesty · catalog extrasUsdNote · kontrol brand FAQs · blind #15 Colorlight | ✅ |
 | 67 | 2026-10-05 | Point C citeMedium honesty · GEO kapsül · blind #16 poster · IndexNow quote hubs · smoke fiyat-hesap | ✅ |
+| 68 | 2026-10-05 | Hero 81-il invent kill · citeShort/IG/playbook honesty · led-modul FAQ · IndexNow kiralık | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -348,3 +349,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - llms GEO kapsülü + TrustFacts: kontrol/poster honesty
 - Blind #16 «Poster / totem LED fiyatı?» — skor /48
 - IndexNow: poster/seffaf/transparan hubs · smoke: fiyat-hesap + entity-profiles honesty (15 checks)
+
+## Gün 68 notları
+
+- Home hero: **81 il bayi/servis ağı invent kaldırıldı** → Gaziosmanpaşa + 81 il kapısı yok + quote-only
+- `ENTITY_CITE_SHORT` + Instagram bio + offsite playbook GBP/LinkedIn = Day 67 cite honesty
+- led-modul-ve-kontrol hub FAQ: list fiyatı yok / extrasUsd ≠ list SKU
+- IndexNow kiralık hub · smoke home · cite-parity hero 81-il guard (16 checks)

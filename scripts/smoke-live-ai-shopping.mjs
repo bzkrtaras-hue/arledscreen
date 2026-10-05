@@ -172,6 +172,13 @@ export const CHECKS = [
     mustInclude: ["entity.json", "catalog.json", "ai-shopping.json"],
   },
   {
+    id: "home",
+    url: `${SITE}/tr/`,
+    outRel: "tr/index.html",
+    expect: "html",
+    mustInclude: ["Gaziosmanpaşa", "81 il kapısı yok", "quote-only", "ai-shopping.json"],
+  },
+  {
     id: "sitemap",
     url: `${SITE}/sitemap.xml`,
     outRel: "sitemap.xml",

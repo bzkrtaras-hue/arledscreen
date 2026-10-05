@@ -22,7 +22,7 @@ export const ENTITY_CITE_ONE_LINER =
 
 /** Short blurb (~40 words) for GBP / LinkedIn / directories. */
 export const ENTITY_CITE_SHORT =
-  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.";
+  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol quote-only.";
 
 /** Medium cite for press / About fields. */
 export const ENTITY_CITE_MEDIUM =
@@ -88,7 +88,7 @@ Web: https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json
 AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
 Telefon: ${CONTACT_PHONE_DISPLAY}`,
-  instagramBio: "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
+  instagramBio: "İstanbul LED · NXTIONSTAR · Satış+montaj · quote-only gruplar teklifle\narledscreen.com/tr/",
   facebookAbout: ENTITY_CITE_MEDIUM,
   directoryShort: ENTITY_CITE_ONE_LINER,
   directoryLong: `${ENTITY_CITE_MEDIUM}

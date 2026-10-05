@@ -6,7 +6,7 @@
  *
  * 1) smoke:live — must be BLOCKED 0 (or pass --force)
  * 2) indexnow --live — Bing recrawl of AI artefacts (unless --no-indexnow)
- * 3) echo Day 57–67 contract + Point C / blind-test next steps
+ * 3) echo Day 57–68 contract + Point C / blind-test next steps
  *
  * Usage:
  *   node scripts/post-deploy-ai.mjs
@@ -65,7 +65,7 @@ if (skipIndex) {
 }
 
 console.log("");
-console.log("Day 57–67 contract (canlı doğrula):");
+console.log("Day 57–68 contract (canlı doğrula):");
 console.log(
   "  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd≠list SKU · returnPolicy · blind #13–#16",
 );
@@ -73,13 +73,13 @@ console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → citeMedium quote-only/extrasUsd honesty · sameAsReadiness notes",
+  "  entity-profiles → citeMedium/citeShort quote-only honesty · playbook Day 68 packs",
+);
+console.log(
+  "  home hero → NO 81-il bayi invent · 81 il kapısı yok + quote-only",
 );
 console.log(
   "  merchant TSV → shipping boş · tax=TR:0:n · return_policy_label=quote_contract_only",
-);
-console.log(
-  "  HTML + fiyat-hesap UI → ai-shopping + ücretsiz kargo yok + kontrol quote-only",
 );
 console.log("");
 console.log("Next (sahip):");

@@ -178,7 +178,7 @@ const profiles = {
   packs: {
     gbpDescription: ENTITY_CITE_MEDIUM,
     linkedinAbout: `${ENTITY_CITE_MEDIUM}\n\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)\nTelefon: ${CONTACT_PHONE_DISPLAY}`,
-    instagramBio: "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
+    instagramBio: "İstanbul LED · NXTIONSTAR · Satış+montaj · quote-only gruplar teklifle\narledscreen.com/tr/",
     facebookAbout: ENTITY_CITE_MEDIUM,
     directoryShort: ENTITY_CITE_ONE_LINER,
     directoryLong: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nE-posta: ${CONTACT_EMAIL}\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nAI alışveriş: ${SITE}/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)`,

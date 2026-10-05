@@ -183,11 +183,14 @@ Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** k
 
 ### GBP açıklama (yapıştır)
 
+Kaynak gerçeği: `entity-profiles.json` → `packs.gbpDescription` (= `ENTITY_CITE_MEDIUM`). Aşağıyı birebir kullanın:
+
 ```text
-ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
 
 https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
 ```
 
 ---
@@ -216,18 +219,23 @@ Anahtar kelime yazmanıza gerek yok — kendi cümleleriniz yeterli.
 
 ### LinkedIn şirket About (yapıştır)
 
+Kaynak: `entity-profiles.json` → `packs.linkedinAbout` (birebir).
+
 ```text
-ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
 
 Web: https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
 Telefon: +90 530 507 88 34
 ```
 
 ### Instagram bio (yapıştır)
 
+Kaynak: `entity-profiles.json` → `packs.instagramBio`.
+
 ```text
-İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis
+İstanbul LED · NXTIONSTAR · Satış+montaj · quote-only gruplar teklifle
 arledscreen.com/tr/
 ```
 

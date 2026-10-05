@@ -64,8 +64,8 @@ export function Hero({ locale }: HeroProps) {
       }
       subcopy={
         tr
-          ? "Projenin ilk keşif aşamasından tasarım, üretim, montaj ve satış sonrası teknik destek süreçlerine kadar tüm operasyonu uçtan uca yönetiyoruz. İstanbul merkezli üretim tesisimizde yüksek kalite standartlarında hazırlanan LED ekran sistemleri, Türkiye’nin 81 ilindeki yaygın bayi ve servis ağımız aracılığıyla sahada profesyonellikle hayata geçirilmektedir."
-          : "We manage the full operation end to end — from the first site survey through design, production, installation and after-sales technical support. LED display systems prepared to high quality standards at our Istanbul-based production facility are delivered on site through our dealer and service network across Turkey’s 81 provinces."
+          ? "Keşiften tasarıma, tedarik ve montajdan satış sonrası teknik desteğe kadar süreci uçtan uca yönetiyoruz. İstanbul Gaziosmanpaşa merkezliyiz; hizmet Türkiye geneli planlanır — sitede yalnızca yayımlanmış proje kaydı olan iller listelenir (81 il kapısı yok). Panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol quote-only."
+          : "We manage survey, design, supply, installation and after-sales support end to end. Based in Istanbul Gaziosmanpaşa; service is planned nationwide — only provinces with published project records are listed (no 81-city doorways). Panel USD: catalog.json / ai-shopping.json; transparent/poster/control are quote-only."
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Teklif Al" : "Get a quote"}

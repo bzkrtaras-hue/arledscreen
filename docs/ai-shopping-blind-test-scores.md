@@ -9,7 +9,7 @@ Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-pro
 | Kontrol | Durum |
 |---------|--------|
 | `npm run audit:blind-test` | build/postbuild |
-| `npm run smoke:live` | deploy sonrası 15/15 |
+| `npm run smoke:live` | deploy sonrası 16/16 |
 
 ## Tur kayıtları
 

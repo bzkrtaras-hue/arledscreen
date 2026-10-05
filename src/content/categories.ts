@@ -745,6 +745,11 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     whatsapp: "Merhaba, LED modül / kontrol kartı hakkında bilgi almak istiyorum. Modül ölçüsü ve ekran bilgisi:",
     faqs: [
       {
+        question: "Kontrol kartı / modül list fiyatı var mı?",
+        answer:
+          "Hayır. Huidu/NovaStar/Colorlight kontrol ve özel modül hatlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. Tek fetch: https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
+      },
+      {
         question: "Mevcut ekranıma uyumlu modül bulabilir misiniz?",
         answer:
           "Modülün arkasındaki etiket bilgisini, ölçüsünü ve fotoğrafını paylaşmanız yeterli. Uyumlu seçeneği kontrol edip size dönüyoruz.",
@@ -752,7 +757,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Hangi kontrol markasını seçmeliyim?",
         answer:
-          "Asenkron tabela ve Wi‑Fi güncellemede sıkça Huidu; yüksek piksel yükü ve sahne/senkron işlerde NovaStar veya Colorlight öne çıkar. Keşifte kaynak tipi ve ekran ölçüsüne göre netleştiririz.",
+          "Asenkron tabela ve Wi‑Fi güncellemede sıkça Huidu; yüksek piksel yükü ve sahne/senkron işlerde NovaStar veya Colorlight öne çıkar. Keşifte kaynak tipi ve ekran ölçüsüne göre netleştiririz. List fiyatı yok — yazılı teklif.",
       },
       {
         question: "Kurulum ve yapılandırma desteği veriyor musunuz?",

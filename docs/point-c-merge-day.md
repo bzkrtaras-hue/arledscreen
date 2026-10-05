@@ -24,7 +24,7 @@ npm run smoke:live
 npm run post-deploy
 ```
 
-Hedef: **15/15 PASS** (BLOCKED 0).
+Hedef: **16/16 PASS** (BLOCKED 0).
 
 | URL | Beklenen |
 |-----|----------|
