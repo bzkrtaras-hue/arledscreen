@@ -32,6 +32,7 @@ const AUDITS = [
   { id: "ai-headers", script: "audit-ai-headers.mjs", day: "44" },
   { id: "indexnow", script: "audit-indexnow.mjs", day: "46" },
   { id: "ai-shopping", script: "audit-ai-shopping-index.mjs", day: "48" },
+  { id: "point-c-check", script: "print-point-c-packs.mjs", day: "55", args: ["--check"] },
 ];
 
 if (!fs.existsSync(path.join(root, "out"))) {
@@ -45,7 +46,7 @@ let failed = 0;
 for (const a of AUDITS) {
   const scriptPath = path.join(root, "scripts", a.script);
   const started = Date.now();
-  const r = spawnSync(process.execPath, [scriptPath], {
+  const r = spawnSync(process.execPath, [scriptPath, ...(a.args || [])], {
     cwd: root,
     encoding: "utf8",
   });

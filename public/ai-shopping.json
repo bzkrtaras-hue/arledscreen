@@ -345,9 +345,9 @@
       "id": 6,
       "q": "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
       "urls": [
+        "https://arledscreen.com/ai-shopping.json",
         "https://arledscreen.com/tr/yapay-zeka/",
-        "https://arledscreen.com/.well-known/ard.json",
-        "https://arledscreen.com/ai-shopping.json"
+        "https://arledscreen.com/.well-known/ard.json"
       ]
     },
     {

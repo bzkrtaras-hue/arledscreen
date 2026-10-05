@@ -50,7 +50,7 @@ const FAQS = [
   {
     question: "AI / alışveriş ajanları fiyatı nereden okur?",
     answer:
-      "Makinece panel USD: https://arledscreen.com/catalog.json · Merchant dry-run (yalnız 12 priced SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Kimlik: https://arledscreen.com/entity.json · Keşif: https://arledscreen.com/.well-known/ard.json. Quote-only gruplara fiyat uydurulmaz.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Panel USD: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Kimlik: https://arledscreen.com/entity.json · Keşif: https://arledscreen.com/.well-known/ard.json. Quote-only gruplara fiyat uydurulmaz.",
   },
 ];
 

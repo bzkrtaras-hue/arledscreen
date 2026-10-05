@@ -219,8 +219,7 @@ export function Footer({ locale }: FooterProps) {
         <p>
           © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}
         </p>
-        {tr ? (
-          <p className="mt-2">
+        <p className="mt-2">
             <a href="/ai-shopping.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
               ai-shopping.json
             </a>
@@ -253,7 +252,6 @@ export function Footer({ locale }: FooterProps) {
               sitemap.xml
             </a>
           </p>
-        ) : null}
       </div>
     </footer>
   );

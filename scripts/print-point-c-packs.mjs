@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
- * Print Point C paste packs from public/entity-profiles.json (local) or LIVE URL.
+ * Print / validate Point C paste packs from public/entity-profiles.json (local) or LIVE URL.
  * Usage:
  *   node scripts/print-point-c-packs.mjs
  *   node scripts/print-point-c-packs.mjs --live
+ *   node scripts/print-point-c-packs.mjs --check   (cite/URL dry-run; no paste)
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -11,6 +12,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const live = process.argv.includes("--live");
+const checkOnly = process.argv.includes("--check");
 const ORDER = [
   "gbpDescription",
   "linkedinAbout",
@@ -34,7 +36,74 @@ async function load() {
   return JSON.parse(fs.readFileSync(p, "utf8"));
 }
 
+function validate(doc) {
+  const errors = [];
+  const packs = doc.packs || {};
+  const entityPath = path.join(root, "public/entity.json");
+  if (!fs.existsSync(entityPath) && !live) {
+    errors.push("missing public/entity.json for cite check");
+  }
+  let citeMedium = "";
+  let telephone = "";
+  if (fs.existsSync(entityPath)) {
+    const entity = JSON.parse(fs.readFileSync(entityPath, "utf8"));
+    citeMedium = entity.citeMedium || "";
+    telephone = String(entity.telephone || "");
+  }
+
+  for (const key of ORDER) {
+    if (!packs[key] || String(packs[key]).length < 20) {
+      errors.push(`packs.${key} missing/short`);
+    }
+  }
+  if (citeMedium && packs.gbpDescription !== citeMedium) {
+    errors.push("packs.gbpDescription must equal entity.citeMedium");
+  }
+  if (citeMedium && packs.facebookAbout !== citeMedium) {
+    errors.push("packs.facebookAbout must equal entity.citeMedium");
+  }
+  const linkedin = String(packs.linkedinAbout || "");
+  for (const needle of ["entity.json", "ai-shopping.json", "Gaziosmanpaşa", "NXTIONSTAR"]) {
+    if (!linkedin.includes(needle)) {
+      errors.push(`linkedinAbout missing ${needle}`);
+    }
+  }
+  if (telephone && !linkedin.includes("530") && !linkedin.includes(telephone.replace("+", ""))) {
+    errors.push("linkedinAbout missing telephone");
+  }
+  if (!doc.sameAsReadiness?.live || !Array.isArray(doc.sameAsReadiness.blockedUntil301)) {
+    errors.push("sameAsReadiness.live / blockedUntil301 required");
+  }
+  if (doc.sameAsReadiness?.blockedUntil301?.some((u) => !/arleds\.com/i.test(String(u)))) {
+    // ok if list empty of arleds — but we expect arleds blocked note
+  }
+  if (!JSON.stringify(doc.sameAsReadiness || {}).includes("arleds.com")) {
+    errors.push("sameAsReadiness must mention arleds.com blocked-until-301");
+  }
+  if (!doc.canonicalUrls?.aiShoppingJson?.includes("/ai-shopping.json")) {
+    errors.push("canonicalUrls.aiShoppingJson missing");
+  }
+  if (!doc.canonicalUrls?.entityJson?.includes("/entity.json")) {
+    errors.push("canonicalUrls.entityJson missing");
+  }
+  return errors;
+}
+
 const doc = await load();
+
+if (checkOnly) {
+  const errors = validate(doc);
+  if (errors.length) {
+    console.error(`point-c-packs --check: FAIL (${errors.length})`);
+    for (const e of errors) console.error(" -", e);
+    process.exit(1);
+  }
+  console.log(
+    `point-c-packs --check: OK — packs=${ORDER.length} sameAsReadiness + ai-shopping cite (${live ? "LIVE" : "local"})`,
+  );
+  process.exit(0);
+}
+
 const packs = doc.packs || {};
 console.log(`Point C packs (${live ? "LIVE" : "local"}) — ${doc.url || "entity-profiles.json"}`);
 console.log("=".repeat(72));
@@ -47,4 +116,8 @@ for (const key of ORDER) {
   console.log(`\n## ${key}\n`);
   console.log(text);
   console.log("\n" + "-".repeat(72));
+}
+if (doc.sameAsReadiness) {
+  console.log("\n## sameAsReadiness\n");
+  console.log(JSON.stringify(doc.sameAsReadiness, null, 2));
 }

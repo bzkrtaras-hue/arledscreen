@@ -44,6 +44,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 52 | 2026-10-05 | Merchant shipping honesty · iade FAQ · extrasUsd · ENTITY_FAQS tek kaynak | ✅ |
 | 53 | 2026-10-05 | llms/ARD/yapay-zeka honesty parity · Org subjectOf ai-shopping · smoke Day51–52 | ✅ |
 | 54 | 2026-10-05 | Home/quote FAQ · ai-catalog refresh · Merchant tax · Point C sameAsReadiness | ✅ |
+| 55 | 2026-10-05 | ARD→ai-catalog sync · shared prompts · FAQ holes · Footer EN · point-c --check · PR CI | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -239,3 +240,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind-test prompt #6 → ai-shopping first; readiness asserts pricedPanels/extras/return
 - Catalog Offer `areaServed=Türkiye` + unitText=panel audit
 - Point C: `sameAsReadiness` + packs’te ai-shopping cite; post-deploy Day 51–53 echo
+
+## Gün 55 notları
+
+- `sync-ai-catalog-from-ard`: ai-catalog.json = ard.json (tek kaynak; drift yok)
+- Shared `scripts/lib/ai-shopping-prompts.mjs` → generate + audit-blind-test (#6 ai-shopping first)
+- SSS / fiyat hub / products hub FAQ → ai-shopping; audit:faq requireAiShopping
+- Footer machine links all locales (EN parity)
+- `point-c-packs --check` + postbuild/audit:all; PR CI workflow `ai-alisveris-audit.yml`

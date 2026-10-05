@@ -12,6 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { promptsWithAbsoluteUrls } from "./lib/ai-shopping-prompts.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://arledscreen.com";
@@ -84,20 +85,7 @@ const SOURCES = [
   },
 ];
 
-const PROMPTS = [
-  { id: 1, q: "ARLEDSCREEN kimdir?", urls: [`${SITE}/entity.json`, `${SITE}/tr/about/`] },
-  { id: 2, q: "LED ekran panel fiyatları 2026", urls: [`${SITE}/catalog.json`, `${SITE}/tr/led-ekran-fiyatlari/`] },
-  { id: 3, q: "P2.5 iç mekan LED ekran paneli kaç USD?", urls: [`${SITE}/catalog.json`, `${SITE}/tr/products/ic-mekan-led-ekran/p2-5/`] },
-  { id: 4, q: "Dış mekan LED ekran fiyat bandı", urls: [`${SITE}/catalog.json`, `${SITE}/tr/products/dis-mekan-led-ekran/`] },
-  { id: 5, q: "LED ekran m² maliyeti nasıl hesaplanır?", urls: [`${SITE}/tr/hesaplayici/`] },
-  { id: 6, q: "AI ajanları ARLEDSCREEN fiyatını nereden okur?", urls: [`${SITE}/tr/yapay-zeka/`, `${SITE}/.well-known/ard.json`, `${SITE}/ai-shopping.json`] },
-  { id: 7, q: "GOB mi SMD mi?", urls: [`${SITE}/tr/rehber/gob-vs-smd/`] },
-  { id: 8, q: "LED tabela mı LED ekran mı?", urls: [`${SITE}/tr/rehber/led-tabela-mi-led-ekran-mi/`] },
-  { id: 9, q: "Kiralık LED ekran fiyatı?", urls: [`${SITE}/tr/products/kiralik-led-ekran/`, `${SITE}/tr/quote/`] },
-  { id: 10, q: "Şeffaf / transparan LED fiyatı?", urls: [`${SITE}/tr/products/seffaf-led-ekran/`, `${SITE}/tr/products/transparan-led-ekran/`] },
-  { id: 11, q: "İstanbul LED ekran firması telefon?", urls: [`${SITE}/entity.json`, `${SITE}/tr/`] },
-  { id: 12, q: "NXTIONSTAR nedir?", urls: [`${SITE}/tr/nxtionstar/`, `${SITE}/entity.json`] },
-];
+const PROMPTS = promptsWithAbsoluteUrls();
 
 const p25 = dataset.find((d) => d.sku === "p2-5-ic");
 const p25Price = p25?.offers?.price || p25?.offers?.priceSpecification?.price;

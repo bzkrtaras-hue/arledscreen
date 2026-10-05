@@ -143,6 +143,31 @@ if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
 
+// Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
+const aiCatPath = path.join(out, ".well-known", "ai-catalog.json");
+if (!fs.existsSync(aiCatPath)) {
+  errors.push("missing out/.well-known/ai-catalog.json");
+} else {
+  try {
+    const aiCat = JSON.parse(fs.readFileSync(aiCatPath, "utf8"));
+    const ardDoc = JSON.parse(ard);
+    if (JSON.stringify(aiCat.entries) !== JSON.stringify(ardDoc.entries)) {
+      errors.push("ai-catalog.json entries must equal ard.json (run sync-ai-catalog-from-ard)");
+    }
+    if (aiCat._syncedFrom !== "ard.json") {
+      errors.push("ai-catalog.json must set _syncedFrom=ard.json");
+    }
+  } catch (e) {
+    errors.push(`ai-catalog.json invalid: ${e.message}`);
+  }
+}
+
+// Day 55: blindTestPrompts must match shared module order (#6 ai-shopping first)
+const p6 = (doc.blindTestPrompts || []).find((p) => p.id === 6);
+if (!p6?.urls?.[0]?.includes("/ai-shopping.json")) {
+  errors.push("blindTestPrompts #6 must lead with ai-shopping.json");
+}
+
 if (errors.length) {
   console.error(`audit-ai-shopping-index: FAIL (${errors.length})`);
   for (const e of errors) console.error(" -", e);

@@ -39,8 +39,9 @@ const FORBIDDEN = [
 ];
 
 const PRICE_HINT = /catalog\.json|led-ekran-fiyatlari/;
+const AI_SHOPPING_HINT = /ai-shopping\.json/;
 
-function auditPage(rel, { minCount = 2, requirePriceHint = true } = {}) {
+function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShopping = false } = {}) {
   const file =
     rel === "." || rel === ""
       ? path.join(outTr, "index.html")
@@ -72,6 +73,7 @@ function auditPage(rel, { minCount = 2, requirePriceHint = true } = {}) {
     errors.push(`${rel}: FAQPage has ${ents.length} Qs (need ≥${minCount})`);
   }
   let priceOk = false;
+  let aiOk = false;
   for (const q of ents) {
     const name = q?.name || "";
     const ans = q?.acceptedAnswer?.text || "";
@@ -79,12 +81,16 @@ function auditPage(rel, { minCount = 2, requirePriceHint = true } = {}) {
     if (name.trim().length < 10) errors.push(`${rel}: short question "${name}"`);
     if (ans.trim().length < 40) errors.push(`${rel}: short answer for "${name.slice(0, 40)}"`);
     if (PRICE_HINT.test(ans) || PRICE_HINT.test(name)) priceOk = true;
+    if (AI_SHOPPING_HINT.test(ans) || AI_SHOPPING_HINT.test(name)) aiOk = true;
     for (const re of FORBIDDEN) {
       if (re.test(ans) || re.test(name)) errors.push(`${rel}: forbidden claim in FAQ`);
     }
   }
   if (requirePriceHint && !priceOk) {
     errors.push(`${rel}: no FAQ answer mentions catalog.json or led-ekran-fiyatlari`);
+  }
+  if (requireAiShopping && !aiOk) {
+    errors.push(`${rel}: no FAQ answer mentions ai-shopping.json`);
   }
 }
 
@@ -107,17 +113,17 @@ for (const slug of productDirs) {
   checked += 1;
   auditPage(`products/${slug}`, { minCount: 2, requirePriceHint: true });
 }
-auditPage("led-ekran-fiyatlari", { minCount: 3, requirePriceHint: true });
+auditPage("led-ekran-fiyatlari", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
 auditPage("hesaplayici", { minCount: 2, requirePriceHint: true });
-auditPage("quote", { minCount: 2, requirePriceHint: true });
-auditPage("about", { minCount: 4, requirePriceHint: true });
+auditPage("quote", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
+auditPage("about", { minCount: 4, requirePriceHint: true, requireAiShopping: true });
 auditPage("nxtionstar", { minCount: 3, requirePriceHint: true });
-auditPage("products", { minCount: 2, requirePriceHint: true });
+auditPage("products", { minCount: 2, requirePriceHint: true, requireAiShopping: true });
 auditPage("about/aras-bozkurt", { minCount: 3, requirePriceHint: true });
-auditPage("yapay-zeka", { minCount: 3, requirePriceHint: true });
-auditPage("sss", { minCount: 4, requirePriceHint: true });
+auditPage("yapay-zeka", { minCount: 3, requirePriceHint: true, requireAiShopping: true });
+auditPage("sss", { minCount: 4, requirePriceHint: true, requireAiShopping: true });
 auditPage("hizmetler", { minCount: 3, requirePriceHint: true });
-auditPage(".", { minCount: 4, requirePriceHint: true }); // TR home
+auditPage(".", { minCount: 4, requirePriceHint: true, requireAiShopping: true }); // TR home
 auditPage("rehber", { minCount: 3, requirePriceHint: true });
 auditPage("projelerimiz", { minCount: 3, requirePriceHint: true });
 auditPage("blog", { minCount: 2, requirePriceHint: true });

@@ -32,7 +32,7 @@ const PRODUCTS_HUB_FAQS = [
   {
     question: "AI / alışveriş ajanları ürün kataloğunu nasıl bulur?",
     answer:
-      "Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Ürün hub: https://arledscreen.com/tr/products/. Marka: https://arledscreen.com/tr/nxtionstar/.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Ürün hub: https://arledscreen.com/tr/products/. Marka: https://arledscreen.com/tr/nxtionstar/. Ücretsiz kargo yok; iade/garanti teklifte yazılır.",
   },
   {
     question: "Hangi ürün gruplarında panel list fiyatı vardır?",

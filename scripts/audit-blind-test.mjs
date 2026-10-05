@@ -11,6 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { BLIND_TEST_PROMPTS } from "./lib/ai-shopping-prompts.mjs";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const out = path.join(root, "out");
@@ -47,72 +48,8 @@ function htmlExists(urlPath) {
   return mustExist(rel);
 }
 
-/** 12 prompts — keep in sync with docs/ai-shopping-blind-test.md */
-const PROMPTS = [
-  {
-    id: 1,
-    q: "ARLEDSCREEN kimdir?",
-    paths: ["/entity.json", "/tr/about/"],
-  },
-  {
-    id: 2,
-    q: "LED ekran panel fiyatları 2026",
-    paths: ["/catalog.json", "/tr/led-ekran-fiyatlari/"],
-  },
-  {
-    id: 3,
-    q: "P2.5 iç mekan LED ekran paneli kaç USD?",
-    paths: ["/catalog.json", "/tr/products/ic-mekan-led-ekran/p2-5/"],
-  },
-  {
-    id: 4,
-    q: "Dış mekan LED ekran fiyat bandı",
-    paths: ["/catalog.json", "/tr/products/dis-mekan-led-ekran/"],
-  },
-  {
-    id: 5,
-    q: "LED ekran m² maliyeti nasıl hesaplanır?",
-    paths: ["/tr/hesaplayici/"],
-  },
-  {
-    id: 6,
-    q: "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
-    paths: ["/ai-shopping.json", "/tr/yapay-zeka/", "/.well-known/ard.json"],
-  },
-  {
-    id: 7,
-    q: "GOB mi SMD mi?",
-    paths: ["/tr/rehber/gob-vs-smd/"],
-  },
-  {
-    id: 8,
-    q: "LED tabela mı LED ekran mı?",
-    paths: ["/tr/rehber/led-tabela-mi-led-ekran-mi/"],
-  },
-  {
-    id: 9,
-    q: "Kiralık LED ekran fiyatı?",
-    paths: ["/tr/products/kiralik-led-ekran/", "/tr/quote/"],
-  },
-  {
-    id: 10,
-    q: "Şeffaf / transparan LED fiyatı?",
-    paths: [
-      "/tr/products/seffaf-led-ekran/",
-      "/tr/products/transparan-led-ekran/",
-    ],
-  },
-  {
-    id: 11,
-    q: "İstanbul LED ekran firması telefon?",
-    paths: ["/entity.json", "/tr/"],
-  },
-  {
-    id: 12,
-    q: "NXTIONSTAR nedir?",
-    paths: ["/tr/nxtionstar/", "/entity.json"],
-  },
-];
+/** 12 prompts — shared module (Gün 55) */
+const PROMPTS = BLIND_TEST_PROMPTS;
 
 if (!fs.existsSync(out)) {
   console.error("Missing out/ — run npm run build first");
