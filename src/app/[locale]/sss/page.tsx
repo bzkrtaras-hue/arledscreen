@@ -55,7 +55,7 @@ export default async function SssPage({ params }: { params: Promise<{ locale: st
           </div>
           <p className="mt-8 text-sm text-ink-muted">
             İlgili rehberler:{" "}
-            <Link href="/tr/rehber/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">LED ekran fiyatları</Link>,{" "}
+            <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">LED ekran fiyatları</Link>,{" "}
             <Link href="/tr/rehber/piksel-araligi-secimi/" className="font-semibold text-cyan hover:underline">piksel aralığı seçimi</Link>,{" "}
             <Link href="/tr/rehber/led-tabela-mi-led-ekran-mi/" className="font-semibold text-cyan hover:underline">LED tabela mı, LED ekran mı?</Link>
           </p>

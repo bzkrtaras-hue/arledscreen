@@ -5,6 +5,7 @@ import { SEO_GUIDE_SLUGS } from "@/content/seo-guides";
 import { PRODUCT_GROUPS } from "@/content/categories";
 import { LED_MODELS, modelPath } from "@/content/models";
 import { SERVICE_REGIONS } from "@/content/service-regions";
+import { COMMERCIAL_PAGES } from "@/content/commercial-pages";
 
 export const dynamic = "force-static";
 
@@ -105,6 +106,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     });
   }
+  for (const page of COMMERCIAL_PAGES) {
+    entries.push({
+      url: absoluteUrl(`/tr/${page.slug}/`),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: page.cluster === "intent" ? 0.95 : page.cluster === "use" ? 0.88 : 0.86,
+    });
+  }
   for (const path of [
     "/hizmetler/",
     "/bolgeler/",
@@ -112,18 +121,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/galeri/",
     "/sss/",
     "/nxtionstar/",
-    "/rehber/led-ekran-fiyatlari/",
     "/rehber/piksel-araligi-secimi/",
     "/rehber/led-tabela-mi-led-ekran-mi/",
     "/rehber/kiralik-mi-satin-alma/",
-    "/blog/",
-    ...BLOG_POSTS.map((p) => `/blog/${p.slug}/`),
   ]) {
     entries.push({
       url: absoluteUrl(`/tr${path}`),
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
+    });
+  }
+  // Blog kept as secondary trust content — not the commercial SEO cluster.
+  entries.push({
+    url: absoluteUrl("/tr/blog/"),
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.45,
+  });
+  for (const p of BLOG_POSTS) {
+    entries.push({
+      url: absoluteUrl(`/tr/blog/${p.slug}/`),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.4,
     });
   }
   for (const region of SERVICE_REGIONS) {

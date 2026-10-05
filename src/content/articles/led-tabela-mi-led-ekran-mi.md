@@ -53,7 +53,7 @@ last_reviewed: 2026-10-01
 
 ## 5. Fiyat fikri
 
-Tam renkli LED ekranlarda ARLEDSCREEN'in 2026 panel fiyatları (320 × 160 mm modül, USD, KDV ve nakliye hariç) dış mekânda P5 için 29,90 USD, P4 için 33,80 USD, iç mekânda P4 için 26,98 USD, P2.5 için 32,18 USD'dir. Ölçünüze göre toplamı [fiyat hesaplayıcı](/tr/hesaplayici/) gösterir. Ayrıntılar için: [LED ekran fiyatları neye göre değişir?](/tr/rehber/led-ekran-fiyatlari/)
+Tam renkli LED ekranlarda ARLEDSCREEN'in 2026 panel fiyatları (320 × 160 mm modül, USD, KDV ve nakliye hariç) dış mekânda P5 için 29,90 USD, P4 için 33,80 USD, iç mekânda P4 için 26,98 USD, P2.5 için 32,18 USD'dir. Ölçünüze göre toplamı [fiyat hesaplayıcı](/tr/hesaplayici/) gösterir. Ayrıntılar için: [LED ekran fiyatları neye göre değişir?](/tr/led-ekran-fiyatlari/)
 
 ## 6. Sık sorulan sorular
 

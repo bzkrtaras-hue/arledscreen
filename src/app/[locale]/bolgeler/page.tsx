@@ -75,7 +75,20 @@ export default async function BolgelerHubPage({
             Aşağıdaki {summary.provinceCount} il
             {summary.countries.length ? ` (ayrıca ${summary.countries.join(", ")})` : ""}, Tem
             2025 – Tem 2026 yayımlanmış proje kayıtlarından türetilir. Kaydı olmayan il için
-            kapı sayfası açılmaz.
+            kapı sayfası açılmaz — programatik 81 il spam’i yoktur. Ankara veya Ordu gibi
+            henüz yayımlanmış il kaydı olmayan şehirler için ayrı landing üretilmez; keşif
+            talebi yine alınır.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm text-ink-muted">
+            Ticari ihtiyaçlar için{" "}
+            <Link href="/tr/led-ekran/" className="font-semibold text-cyan hover:underline">
+              LED ekran
+            </Link>
+            ,{" "}
+            <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+              fiyatlar
+            </Link>{" "}
+            ve ürün gruplarına bakın.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link

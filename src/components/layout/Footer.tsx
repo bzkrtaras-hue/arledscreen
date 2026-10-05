@@ -31,12 +31,13 @@ export function Footer({ locale }: FooterProps) {
 
   const quickLinks = tr
     ? [
+        { href: "/tr/led-ekran/", label: "LED ekran" },
+        { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
         { href: "/tr/products/", label: "Ürünler" },
         { href: "/tr/hizmetler/", label: "Hizmetler" },
         { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
         { href: "/tr/projelerimiz/", label: "Projeler" },
         { href: "/tr/rehber/", label: "Rehber" },
-        { href: "/tr/blog/", label: "Blog" },
         { href: "/tr/about/", label: "Hakkımızda" },
         { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
         { href: "/tr/quote/", label: "Teklif iste" },
@@ -60,14 +61,25 @@ export function Footer({ locale }: FooterProps) {
           ],
         },
         {
+          title: "Ticari sayfalar",
+          links: [
+            { href: "/tr/led-ekran/", label: "LED ekran" },
+            { href: "/tr/led-ekran-satisi/", label: "LED ekran satışı" },
+            { href: "/tr/led-ekran-montaj/", label: "LED ekran montaj" },
+            { href: "/tr/led-ekran-kiralama/", label: "LED ekran kiralama" },
+            { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
+            { href: "/tr/led-ekran-servis/", label: "LED ekran servis" },
+            { href: "/tr/magaza-led-ekran/", label: "Mağaza LED ekran" },
+            { href: "/tr/cephe-led-ekran/", label: "Cephe LED ekran" },
+          ],
+        },
+        {
           title: "Rehber",
           links: [
             ...ARTICLE_LINKS,
             { href: "/tr/rehber/led-ekran/", label: "LED ekran nedir?" },
             { href: "/tr/rehber/ic-mekan-led-ekran/", label: "İç mekân LED ekran" },
             { href: "/tr/rehber/dis-mekan-led-ekran/", label: "Dış mekân LED ekran" },
-            { href: "/tr/rehber/konferans-salonu-led/", label: "Konferans salonu LED" },
-            { href: "/tr/rehber/vitrin-led-ekran/", label: "Vitrin LED ekran" },
             { href: "/tr/yapay-zeka/", label: "Yapay zekâ ve LED ekran" },
           ],
         },

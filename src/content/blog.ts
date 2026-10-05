@@ -62,7 +62,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/rehber/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
       { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
       { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
@@ -109,7 +109,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/rehber/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
       { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
       { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
@@ -146,7 +146,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/rehber/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
       { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
       { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
@@ -192,7 +192,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/rehber/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
       { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
       { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
@@ -239,7 +239,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/rehber/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
       { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
       { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],
@@ -290,7 +290,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
     related: [
-      { href: "/tr/rehber/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları neye göre değişir?" },
       { href: "/tr/products/dis-mekan-led-ekran/", label: "Dış mekân LED ekran modelleri" },
       { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     ],

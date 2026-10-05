@@ -196,7 +196,7 @@ export default async function ServiceRegionPage({
         <ul className="grid gap-3 sm:grid-cols-3">
           <li>
             <Link
-              href="/tr/rehber/led-ekran-fiyatlari/"
+              href="/tr/led-ekran-fiyatlari/"
               className="glass-card block rounded-2xl p-5 transition hover:border-cyan/40"
             >
               <h2 className="font-display text-base font-bold text-ink">LED ekran fiyatları</h2>

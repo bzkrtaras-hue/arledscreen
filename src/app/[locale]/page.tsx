@@ -136,7 +136,7 @@ export default async function HomePage({ params }: PageProps) {
           <ProductGroupGrid />
           <p className="mt-8 text-sm text-ink-muted">
             Fiyat için{" "}
-            <Link href="/tr/rehber/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+            <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
               LED ekran fiyatları rehberi
             </Link>
             ,{" "}
