@@ -48,8 +48,11 @@ export interface ProductGroup {
   imageAlt: string;
   /** Optional separate image for small cards */
   cardImage?: string;
-  /** Optional GOB / COB / SMD comparison gallery */
+  /** Optional tech / form comparison gallery */
   techGallery?: TechGalleryShot[];
+  techGalleryEyebrow?: string;
+  techGalleryTitle?: string;
+  techGalleryDescription?: string;
   intro: string[];
   highlights: string[];
   uses: { title: string; body: string }[];
@@ -93,6 +96,19 @@ const FINE_PITCH_TECH_GALLERY: TechGalleryShot[] = [
     src: "/projects/modules/tech/gob-production-process.jpg",
     alt: "GOB LED üretiminde SMD modül üzerine şeffaf tutkal kaplama süreci",
     caption: "GOB üretim adımı — Glue on Board",
+  },
+];
+
+const FLEXIBLE_TECH_GALLERY: TechGalleryShot[] = [
+  {
+    src: "/projects/modules/tech/flexible-curve-concave-convex.jpg",
+    alt: "Esnek LED ekran konkav, konveks ve silindirik kavis diyagramları ile iç mekân uygulama görseli",
+    caption: "Konkav · Konveks · Silindirik kavis (ör. 611R)",
+  },
+  {
+    src: "/projects/modules/tech/flexible-module-bend-lit.jpg",
+    alt: "Bükülmüş esnek LED modül — aydınlatılmış yüzey ve esnek arka yapı",
+    caption: "Esnek LED modül — bükülebilir yapı",
   },
 ];
 
@@ -375,15 +391,20 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     tag: "P1.86 · P2.5",
     family: "İç Mekân LED Ekranlar",
     types: ["Kolon kaplama", "Kavisli duvar", "Silindir ve dairesel form", "Özel tasarım dekor"],
-    image: "/projects/modules/flex-module-bend.jpg",
+    image: "/projects/modules/tech/flexible-module-bend-lit.jpg",
     cardImage: "/projects/applications/curved-led-tulips.jpg",
     imageAlt: "Bükülerek kavisli forma getirilmiş esnek LED modül",
+    techGallery: FLEXIBLE_TECH_GALLERY,
+    techGalleryEyebrow: "Esnek form",
+    techGalleryTitle: "Konkav, konveks ve silindirik kavis",
+    techGalleryDescription:
+      "Esnek LED modüller konkav (iç bükey), konveks (dış bükey) ve silindirik yüzeylere uygulanabilir. Eğrilik yarıçapı ve taşıyıcı yapı keşifte yüzeye göre planlanır.",
     intro: [
       "Esnek LED modüller bükülerek kolonları, dairesel yüzeyleri ve dalgalı duvarları kaplayabilir; düz kabinlerle elde edilemeyen formlar mümkün hâle gelir.",
-      "Her esnek ekran projesi mekâna özeldir. Yüzey ölçüsü, eğrilik ve taşıyıcı yapı keşifte birlikte planlanır; ardından yazılı teklif hazırlanır.",
+      "Konkav, konveks veya silindirik kavis seçenekleriyle showroom, lobi ve sahne tasarımlarında çerçeveden bağımsız bir yüzey oluşturulur. Her proje mekâna özeldir; ölçü ve eğrilik keşifte netleştirilir.",
     ],
     highlights: [
-      "Kavisli ve dairesel formlar",
+      "Konkav, konveks ve silindirik formlar",
       "Kolon ve silindir kaplama",
       "Mimari projelere özel ölçülendirme",
       "Keşif, taşıyıcı yapı ve montaj planı",

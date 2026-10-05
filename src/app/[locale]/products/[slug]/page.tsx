@@ -380,9 +380,12 @@ export default async function ProductGroupPage({ params }: PageProps) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
               align="left"
-              eyebrow="Yüzey teknolojisi"
-              title="SMD, COB ve GOB karşılaştırması"
-              description="İnce pitch LED ekranlarda yüzey seçimi görüntü kalitesi kadar dayanıklılığı da belirler. GOB (Glue on Board) koruyucu kaplama; COB çip-on-board; SMD klasik paket yapısıdır."
+              eyebrow={g.techGalleryEyebrow ?? "Yüzey teknolojisi"}
+              title={g.techGalleryTitle ?? "SMD, COB ve GOB karşılaştırması"}
+              description={
+                g.techGalleryDescription ??
+                "İnce pitch LED ekranlarda yüzey seçimi görüntü kalitesi kadar dayanıklılığı da belirler. GOB (Glue on Board) koruyucu kaplama; COB çip-on-board; SMD klasik paket yapısıdır."
+              }
             />
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {g.techGallery.map((shot) => (
