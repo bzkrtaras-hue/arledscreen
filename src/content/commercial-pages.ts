@@ -101,7 +101,7 @@ function intentLinks(except?: string): CommercialLink[] {
   return all.filter((l) => !except || !l.href.includes(`/${except}/`));
 }
 
-function useLinks(except?: string): CommercialLink[] {
+function usageLinks(except?: string): CommercialLink[] {
   const all: CommercialLink[] = [
     { href: "/tr/magaza-led-ekran/", label: "Mağaza LED ekran" },
     { href: "/tr/avm-led-ekran/", label: "AVM LED ekran" },
@@ -138,19 +138,6 @@ function productClusterLinks(except?: string): CommercialLink[] {
     .filter((x): x is CommercialLink => Boolean(x));
 }
 
-function pitchLinks(except?: string): CommercialLink[] {
-  const all: CommercialLink[] = [
-    { href: "/tr/p1-25-led-ekran/", label: "P1.25 LED" },
-    { href: "/tr/p1-86-led-ekran/", label: "P1.86 LED" },
-    { href: "/tr/p2-5-led-ekran/", label: "P2.5 LED" },
-    { href: "/tr/p2-9-led-ekran/", label: "P2.9 LED" },
-    { href: "/tr/p3-07-led-ekran/", label: "P3.07 LED" },
-    { href: "/tr/p4-led-ekran/", label: "P4 LED" },
-    { href: "/tr/p5-led-ekran/", label: "P5 LED" },
-  ];
-  return all.filter((l) => !except || !l.href.includes(`/${except}/`));
-}
-
 function page(p: CommercialPage): CommercialPage {
   return p;
 }
@@ -183,7 +170,7 @@ const INTENT_PAGES: CommercialPage[] = [
     ],
     proofs: proofsFrom(() => true, 8),
     relatedProducts: productClusterLinks(),
-    relatedUses: useLinks(),
+    relatedUses: usageLinks(),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks("led-ekran"),
     faqs: [
@@ -226,7 +213,7 @@ const INTENT_PAGES: CommercialPage[] = [
     ],
     proofs: proofsFrom((r) => /P\d|panel|Premium|Ultra/i.test(r.detail), 6),
     relatedProducts: productClusterLinks(),
-    relatedUses: useLinks(),
+    relatedUses: usageLinks(),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks("led-ekran-satisi"),
     faqs: [
@@ -265,7 +252,7 @@ const INTENT_PAGES: CommercialPage[] = [
     ],
     proofs: proofsFrom(() => true, 6),
     relatedProducts: productClusterLinks(),
-    relatedUses: useLinks(),
+    relatedUses: usageLinks(),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks("led-ekran-ureticisi"),
     faqs: [
@@ -304,7 +291,7 @@ const INTENT_PAGES: CommercialPage[] = [
     ],
     proofs: proofsFrom((r) => /montaj|dış mekân|dış mekan|cm/i.test(`${r.detail} ${r.company}`), 6),
     relatedProducts: productClusterLinks(),
-    relatedUses: useLinks(),
+    relatedUses: usageLinks(),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks("led-ekran-montaj"),
     faqs: [
@@ -343,7 +330,7 @@ const INTENT_PAGES: CommercialPage[] = [
     ],
     proofs: proofsFrom((r) => /kiralama|sahne|fuar|Ordu Günleri|stand/i.test(`${r.detail} ${r.company}`), 6),
     relatedProducts: [productLink("kiralik-led-ekran", "Kiralık LED ekran")!].filter(Boolean),
-    relatedUses: useLinks().filter((u) => /sahne|fuar|dugun|konferans/.test(u.href)),
+    relatedUses: usageLinks().filter((u) => /sahne|fuar|dugun|konferans/.test(u.href)),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks("led-ekran-kiralama"),
     faqs: [
@@ -381,7 +368,7 @@ const INTENT_PAGES: CommercialPage[] = [
     ],
     proofs: proofsFrom((r) => /\d+\s*m|cm|P\d/i.test(r.detail), 6),
     relatedProducts: productClusterLinks(),
-    relatedUses: useLinks(),
+    relatedUses: usageLinks(),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks("led-ekran-fiyatlari"),
     faqs: [
@@ -424,7 +411,7 @@ const INTENT_PAGES: CommercialPage[] = [
     ],
     proofs: proofsFrom(() => true, 4),
     relatedProducts: productClusterLinks(),
-    relatedUses: useLinks(),
+    relatedUses: usageLinks(),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks("led-ekran-servis"),
     faqs: [
@@ -463,7 +450,7 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
     ],
     proofs: proofsFrom((r) => /vitrin|belediye|otel|resort/i.test(`${r.detail} ${r.company}`), 3),
     relatedProducts: productClusterLinks(),
-    relatedUses: useLinks().filter((u) => /avm|otel|belediye|magaza/.test(u.href)),
+    relatedUses: usageLinks().filter((u) => /avm|otel|belediye|magaza/.test(u.href)),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks(),
     faqs: [
@@ -500,7 +487,7 @@ function pitchPage(opts: {
     images: opts.images,
     proofs: proofsFrom(opts.proof, 5),
     relatedProducts: opts.modelLinks,
-    relatedUses: useLinks(),
+    relatedUses: usageLinks(),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks(),
     faqs: [
@@ -631,7 +618,7 @@ const PITCH_PAGES: CommercialPage[] = [
   }),
 ];
 
-function usePage(opts: {
+function usagePage(opts: {
   slug: string;
   name: string;
   lead: string;
@@ -655,7 +642,7 @@ function usePage(opts: {
     relatedProducts: opts.products
       .map((s) => productLink(s))
       .filter((x): x is CommercialLink => Boolean(x)),
-    relatedUses: useLinks(opts.slug),
+    relatedUses: usageLinks(opts.slug),
     relatedCities: CORE_CITIES,
     relatedIntents: intentLinks(),
     faqs: [
@@ -671,7 +658,7 @@ function usePage(opts: {
 }
 
 const USE_PAGES: CommercialPage[] = [
-  usePage({
+  usagePage({
     slug: "magaza-led-ekran",
     name: "Mağaza LED ekran",
     lead: "Vitrin, satış alanı ve marka duvarı için mağaza LED ekran çözümleri.",
@@ -685,7 +672,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["ic-mekan-led-ekran", "gob-led-ekran", "poster-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "avm-led-ekran",
     name: "AVM LED ekran",
     lead: "AVM atrium, koridor ve cephe LED ekran uygulamaları.",
@@ -697,7 +684,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["dis-mekan-led-ekran", "ic-mekan-led-ekran", "poster-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "cephe-led-ekran",
     name: "Cephe LED ekran",
     lead: "Bina cephesi ve meydan için dış mekan LED ekran.",
@@ -709,7 +696,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["dis-mekan-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "billboard-led-ekran",
     name: "Billboard LED ekran",
     lead: "Yol kenarı ve açık alan billboard LED ekranları.",
@@ -721,7 +708,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["dis-mekan-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "vitrin-led-ekran",
     name: "Vitrin LED ekran",
     lead: "Mağaza vitrini ve kolon uygulamaları için LED ekran.",
@@ -735,7 +722,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["ic-mekan-led-ekran", "seffaf-led-ekran", "gob-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "otel-led-ekran",
     name: "Otel LED ekran",
     lead: "Otel lobi, ballroom ve dış cephe LED ekran çözümleri.",
@@ -747,7 +734,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "restoran-led-ekran",
     name: "Restoran LED ekran",
     lead: "Restoran ve kafe oturma alanları için LED ekran.",
@@ -762,7 +749,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["ic-mekan-led-ekran", "gob-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "dugun-salonu-led-ekran",
     name: "Düğün salonu LED ekran",
     lead: "Düğün ve olay salonu sahne LED ekranları.",
@@ -774,7 +761,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["ic-mekan-led-ekran", "kiralik-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "konferans-salonu-led-ekran",
     name: "Konferans salonu LED ekran",
     lead: "Konferans ve toplantı salonları için yüksek okunabilirlikli LED.",
@@ -786,7 +773,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["ic-mekan-led-ekran", "gob-led-ekran", "ince-pitch-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "sahne-led-ekran",
     name: "Sahne LED ekran",
     lead: "Konser, tiyatro ve etkinlik sahnesi LED ekranları.",
@@ -798,7 +785,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["kiralik-led-ekran", "dis-mekan-led-ekran", "ic-mekan-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "fuar-led-ekran",
     name: "Fuar LED ekran",
     lead: "Fuar standı ve geçici alan LED ekran kurulumları.",
@@ -813,7 +800,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["kiralik-led-ekran", "ic-mekan-led-ekran", "poster-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "belediye-led-ekran",
     name: "Belediye LED ekran",
     lead: "Belediye meydan, bilgilendirme ve etkinlik LED ekranları.",
@@ -827,7 +814,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["dis-mekan-led-ekran", "ic-mekan-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "fabrika-led-ekran",
     name: "Fabrika LED ekran",
     lead: "Üretim sahası, kantin ve fabrika girişi LED ekranları.",
@@ -839,7 +826,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["dis-mekan-led-ekran", "ic-mekan-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "spor-salonu-led-ekran",
     name: "Spor salonu LED ekran",
     lead: "Spor salonu ve kapalı arena skor/perimetre LED çözümleri.",
@@ -851,7 +838,7 @@ const USE_PAGES: CommercialPage[] = [
     ],
     products: ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran"],
   }),
-  usePage({
+  usagePage({
     slug: "stadyum-led-ekran",
     name: "Stadyum LED ekran",
     lead: "Stadyum ve büyük açık alan LED ekranları.",
