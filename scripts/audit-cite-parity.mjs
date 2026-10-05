@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–83: ARD discovery prompt count must not drift behind blind suite
+// Day 74–84: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/31 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 31 kör test intent (not stale 17–30)");
+if (ardTxt && !/32 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 32 kör test intent (not stale 17–31)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|30) kör test/i.test(ardTxt) && !/31 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–30 kör test without 31");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[01]) kör test/i.test(ardTxt) && !/32 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–31 kör test without 32");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -427,6 +427,24 @@ for (const rel of ["out/tr/led-ekran-ureticisi/index.html", "out/tr/nxtionstar/i
     if (/biz (?:OEM )?fabrika|fabrika olarak üretim|bağımsız bayi(?:yiz)|distribütörüz/i.test(html)) {
       errors.push(`${rel} must not invent OEM/fabrika/bayi identity`);
     }
+  }
+}
+// Day 84: tek ekip / keşiften teslimata / fabrika use-case invent
+for (const rel of [
+  "out/tr/fabrika-led-ekran/index.html",
+  "out/tr/blog/alanya-white-city-resort-hotel-led-ekran/index.html",
+  "out/tr/hizmetler/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/Keşiften teslimata tek ekip|tek ekip hâlinde|tek ekip garanti|keşiften teslimata platform/i.test(html)) {
+    errors.push(`${rel} must not invent tek ekip / keşiften teslimata platform`);
+  }
+}
+{
+  const html = read("out/tr/fabrika-led-ekran/index.html");
+  if (html && !/kullanım alanı|üretici değil|led-ekran-ureticisi/i.test(html)) {
+    errors.push("out/tr/fabrika-led-ekran/ should disambiguate use-case vs üretici");
   }
 }
 

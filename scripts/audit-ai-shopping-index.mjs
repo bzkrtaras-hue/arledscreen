@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 31 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 32 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 31) errors.push(`blindTestPrompts must be 31 (got ${prompts.length})`);
+if (prompts.length !== 32) errors.push(`blindTestPrompts must be 32 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/31 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 31 kör test intent");
+if (!/32 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 32 kör test intent");
 }
-if (/(?:2[0-9]|30) kör test/i.test(ard) && !/31 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–30 kör test without 31");
+if (/(?:2[0-9]|3[01]) kör test/i.test(ard) && !/32 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–31 kör test without 32");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -297,6 +297,14 @@ if (!p31 || !/üretici|fabrika|OEM/i.test(p31.q || "")) {
 }
 if (!/OEM fabrika|fabrika üreticisi|bağımsız bayi/i.test(rulesJson)) {
   errors.push("agentRules must forbid OEM/fabrika/bayi invent");
+}
+// Day 84: tek ekip / keşiften teslimata / fabrika use-case invent
+const p32 = (doc.blindTestPrompts || []).find((p) => p.id === 32);
+if (!p32 || !/tek ekip|keşiften teslimata|fabrika LED/i.test(p32.q || "")) {
+  errors.push("blindTestPrompts #32 must cover tek ekip / keşiften teslimata / fabrika invent");
+}
+if (!/tek ekip|keşiften teslimata/i.test(rulesJson)) {
+  errors.push("agentRules must forbid tek ekip / keşiften teslimata invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

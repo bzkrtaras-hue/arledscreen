@@ -101,9 +101,9 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        h2: "Keşiften teslimata tek ekip",
+        h2: "Keşif, montaj ve yazılı teklif",
         p: [
-          "ARLEDSCREEN olarak otel projelerinde keşif, ölçülendirme, montaj ve devreye alma adımlarını tek ekip hâlinde yürütüyoruz. Ekranlarda NXTIONSTAR modüllerini kullanıyoruz; NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır ve Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
+          "Otel projelerinde keşif, ölçülendirme, montaj ve devreye alma kalemleri Gaziosmanpaşa ekibiyle yazılı teklifte tanımlanır — uydurma tek-ekip / keşiften-teslimata platform iddiası yok. Ekranlarda NXTIONSTAR modüllerini kullanıyoruz; NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır ve Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
           "Konaklama tesisiniz için benzer bir uygulama planlıyorsanız alan ölçülerini ve kullanım senaryosunu paylaşın; size uygun ekran ölçüsünü ve modeli birlikte belirleyelim. Otel projelerinde sezon takvimini dikkate alarak montajı, tesisin işleyişini en az etkileyecek zamana planlıyoruz.",
         ],
       },
@@ -141,7 +141,7 @@ export const BLOG_POSTS: BlogPost[] = [
         h2: "Kamu kurumları ve belediyeler için çözümler",
         p: [
           "Belediyeler ve kamu kurumları için tanıtım standı, bilgilendirme ekranı ve etkinlik alanı uygulamalarında keşif, montaj ve teknik destek hizmeti veriyoruz. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
-          "Kurumunuzun etkinlik veya tanıtım projesi için ölçü ve tarih bilgisini paylaşmanız, size uygun çözümü planlamamız için yeterlidir. Geçici etkinliklerde ekranın kurulumu ve sökümü de dahil olmak üzere süreci baştan sona planlıyoruz.",
+          "Kurumunuzun etkinlik veya tanıtım projesi için ölçü ve tarih bilgisini paylaşmanız, size uygun çözümü planlamamız için yeterlidir. Geçici etkinliklerde kurulum ve söküm kapsamı yazılı teklifte planlanır.",
         ],
       },
     ],
@@ -187,7 +187,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         h2: "Keşif ve teklif",
         p: [
-          "ARLEDSCREEN olarak işletmenizi yerinde inceleyip uygun ekran ölçüsünü ve modeli öneriyor, montajdan içerik yönetimi kurulumuna kadar tüm süreci üstleniyoruz. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Mekânınızın ölçülerini ve ekranı yerleştirmeyi düşündüğünüz alanın fotoğrafını WhatsApp üzerinden paylaşabilir veya teklif formunu doldurabilirsiniz.",
+          "ARLEDSCREEN olarak işletmenizi yerinde inceleyip uygun ekran ölçüsünü ve modeli öneriyoruz; montaj ve içerik yönetimi kurulumu yazılı teklif kapsamındadır. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Mekânınızın ölçülerini ve ekranı yerleştirmeyi düşündüğünüz alanın fotoğrafını WhatsApp üzerinden paylaşabilir veya teklif formunu doldurabilirsiniz.",
         ],
       },
     ],

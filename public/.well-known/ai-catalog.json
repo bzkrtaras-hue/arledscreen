@@ -295,6 +295,125 @@
       "updatedAt": "2026-10-06T02:00:00Z"
     },
     {
+      "identifier": "urn:air:arledscreen.com:commerce:fabrika-use",
+      "displayName": "Fabrika LED ekran (kullanım alanı)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/fabrika-led-ekran/",
+      "description": "Endüstriyel / fabrika mekân kullanım sayfası — üretici/OEM iddiası değil. Üretici honesty: /tr/led-ekran-ureticisi/. Blind #32.",
+      "representativeQueries": [
+        "ARLEDSCREEN keşiften teslimata tek ekip mi / fabrika LED üreticisi mi?",
+        "fabrika LED ekran",
+        "endüstriyel LED ekran"
+      ],
+      "tags": [
+        "commerce",
+        "use-case",
+        "GEO",
+        "honesty",
+        "fabrika"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p25-hub",
+      "displayName": "P2.5 LED ekran (priced pitch hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/p2-5-led-ekran/",
+      "description": "P2.5 priced pitch hub; panel USD catalog.json / ai-shopping.json (ör. p2-5-ic 32.18). Ranking/sık tercih invent yok.",
+      "representativeQueries": [
+        "P2.5 LED ekran fiyat",
+        "P2.5 iç mekan panel USD",
+        "LED pitch P2.5"
+      ],
+      "tags": [
+        "commerce",
+        "pricing",
+        "pitch",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:kiralama-intent",
+      "displayName": "LED ekran kiralama intent",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/led-ekran-kiralama/",
+      "description": "Kiralama intent; list fiyatı yok → yazılı teklif. ai-shopping quote-only. Hızlı kurulan SLA invent yok.",
+      "representativeQueries": [
+        "LED ekran kiralama",
+        "kiralık LED fiyat",
+        "etkinlik LED kiralama"
+      ],
+      "tags": [
+        "commerce",
+        "rental",
+        "GEO",
+        "quote-only"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:proof:galeri",
+      "displayName": "Galeri — saha görselleri",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/galeri/",
+      "description": "Saha / atölye görselleri. Spam blog yok; kayıtlı proje kanıtı.",
+      "representativeQueries": [
+        "ARLEDSCREEN galeri",
+        "LED ekran proje fotoğrafları",
+        "NXTIONSTAR kurulum görselleri"
+      ],
+      "tags": [
+        "proof",
+        "gallery",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:geo:bolgeler",
+      "displayName": "Bölgeler hub (kayıtlı iller)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/bolgeler/",
+      "description": "Yalnızca kayıtlı referans illeri. 81-il doorway / spam kapısı yok.",
+      "representativeQueries": [
+        "ARLEDSCREEN bölgeler",
+        "İstanbul LED ekran firması iller",
+        "81 il LED kapısı yok"
+      ],
+      "tags": [
+        "GEO",
+        "regions",
+        "anti-spam"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:fiyat-hesap-embed",
+      "displayName": "fiyat-hesap embed (calculator)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/fiyat-hesap/",
+      "description": "Hesaplayıcı embed; catalog/ai-shopping aynı panel USD. extrasUsd ≠ marka list SKU. Ücretsiz kargo yok.",
+      "representativeQueries": [
+        "fiyat hesap LED",
+        "LED m2 maliyet hesap",
+        "extrasUsd kontrol kartı"
+      ],
+      "tags": [
+        "pricing",
+        "calculator",
+        "commerce"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T02:30:00Z"
+    },
+    {
       "identifier": "urn:air:arledscreen.com:docs:sss",
       "displayName": "SSS — fiyat / kimlik / ajan",
       "type": "text/html",
@@ -465,14 +584,15 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 31 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 32 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
         "LED panel fiyat catalog entity tek URL",
         "AI-infrastructure ready LED nedir / ARLEDSCREEN satıyor mu?",
         "ARLEDSCREEN enterprise / aynı gün kurulum / keşiften servise all-in-one mı?",
-        "ARLEDSCREEN LED ekran üreticisi / fabrika / OEM mi, yoksa bayi mi?"
+        "ARLEDSCREEN LED ekran üreticisi / fabrika / OEM mi, yoksa bayi mi?",
+        "ARLEDSCREEN keşiften teslimata tek ekip mi / fabrika LED üreticisi mi?"
       ],
       "tags": [
         "shopping",
@@ -491,7 +611,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T02:00:00Z"
+      "updatedAt": "2026-10-06T02:30:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

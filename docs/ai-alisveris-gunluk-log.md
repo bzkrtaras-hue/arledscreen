@@ -73,6 +73,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 81 | 2026-10-05 | AI-infrastructure #29 · ranking invent · EN yapay-zeka ARD · skor /87 | ✅ |
 | 82 | 2026-10-05 | enterprise/aynı-gün #30 · hizmetler/products ARD · skor /90 | ✅ |
 | 83 | 2026-10-05 | üretici/fabrika/OEM #31 · satisi/montaj/servis ARD · skor /93 | ✅ |
+| 84 | 2026-10-05 | tek ekip/fabrika use-case #32 · p2-5/galeri/bolgeler ARD · skor /96 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -490,3 +491,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - üretici page honesty · sık tercih · outdoor IP/nit meta · hızlı kurulan / tek ekip invent
 - ARD: ureticisi + satisi + montaj + servis · IndexNow servis · agentRules OEM/fabrika
 - skor hedef Tur 1 ≥ 47/93 · Tur 2 ≥ 70/93
+
+## Gün 84 notları
+
+- Blind #32 «keşiften teslimata tek ekip / fabrika LED üreticisi mi?» — skor **/96**; ARD **32 kör test**
+- blog tek ekip / tüm süreç invent · fabrika use-case disambiguation · outdoor nit residual
+- ARD: fabrika + p2-5 + kiralama + galeri + bolgeler + fiyat-hesap · IndexNow fabrika/kiralama
+- skor hedef Tur 1 ≥ 48/96 · Tur 2 ≥ 72/96

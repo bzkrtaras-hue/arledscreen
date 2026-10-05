@@ -238,6 +238,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN", "NXTIONSTAR"],
     mustNotSay: ["OEM fabrika", "fabrika üreticisi", "distribütör", "bağımsız bayi", "ücretsiz kargo dahil"],
   },
+  {
+    id: 32,
+    q: "ARLEDSCREEN keşiften teslimata tek ekip mi / fabrika LED üreticisi mi?",
+    paths: ["/tr/fabrika-led-ekran/", "/tr/led-ekran-ureticisi/", "/tr/hizmetler/", "/entity.json", "/ai-shopping.json"],
+    mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
+    mustNotSay: ["tek ekip garanti", "keşiften teslimata platform", "fabrika üreticisiyiz", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

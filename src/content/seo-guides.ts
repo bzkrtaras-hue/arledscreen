@@ -478,7 +478,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İç mekân totem vs dış mekân totem",
           body:
-            "İç mekânda daha düşük nit ve ince gövde; dış mekânda IP65, yüksek nit ve sağlam kaide gerekir. AVM koridorunda güvenlik ve engelli erişim mesafeleri; cephe önünde ankraj ve rüzgâr yükü hesaplanır.",
+            "İç mekânda daha düşük parlaklık ve ince gövde; dış mekânda IP-sınıfı sızdırmazlık, uygun parlaklık ve sağlam kaide keşifte konuşulur (değerler teklifte). AVM koridorunda güvenlik ve engelli erişim mesafeleri; cephe önünde ankraj ve rüzgâr yükü hesaplanır.",
         },
         {
           h2: "İçerik boyutu ve dikey format",
@@ -546,7 +546,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Ekran teknolojisi seçimi",
           body:
-            "Yakın mesafe dokunmatik için yüksek çözünürlüklü panel sık tercih edilir; arkadaki marka duvarı veya yan kanat için LED kullanılabilir. Dış mekân kioskunda yüksek nit, anti-glare ve IP koruması şarttır. Fan, toz filtresi ve kilitli gövde operasyonel ömür için kritiktir.",
+            "Yakın mesafe dokunmatik için yüksek çözünürlüklü panel sık seçilir; arkadaki marka duvarı veya yan kanat için LED kullanılabilir. Dış mekân kioskunda parlaklık, anti-glare ve IP koruması keşifte konuşulur — değerler yazılı teklifte. Fan, toz filtresi ve kilitli gövde operasyonel ömür için kritiktir.",
         },
         {
           h2: "Yazılım, ödeme ve güvenlik",
@@ -568,7 +568,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Dış mekân kiosk mümkün mü?",
           answer:
-            "Evet — IP korumalı gövde, yüksek nit ve iklimlendirme ile. Keşifte güneş, yağmur ve vandalizm riski değerlendirilir.",
+            "Evet — IP korumalı gövde, uygun parlaklık ve iklimlendirme keşifte konuşulur; değerler yazılı teklifte. Güneş, yağmur ve vandalizm riski değerlendirilir.",
         },
         {
           question: "Tek mi yoksa ağlı kiosk mu?",

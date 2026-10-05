@@ -838,12 +838,15 @@ const USE_PAGES: CommercialPage[] = [
   usagePage({
     slug: "fabrika-led-ekran",
     name: "Fabrika LED ekran",
-    lead: "Üretim sahası, kantin ve fabrika girişi LED ekranları.",
-    intro: ["Fabrika ortamında toz, mesafe ve montaj yüksekliği seçimi etkiler. Keşifte ortam koşulları not edilir; abartılı IP/kW iddiası yapılmaz, değerler teklifte yazılır."],
+    lead: "Üretim sahası, kantin ve fabrika girişi LED ekranları — kullanım alanı; üretici/OEM iddiası değil.",
+    intro: [
+      "Bu sayfa fabrika / endüstriyel mekân kullanımını anlatır; ARLEDSCREEN’i fabrika üreticisi veya OEM olarak sunmaz. Üretici/bayi ayrımı: /tr/led-ekran-ureticisi/.",
+      "Fabrika ortamında toz, mesafe ve montaj yüksekliği seçimi etkiler. Keşifte ortam koşulları not edilir; abartılı IP/kW iddiası yapılmaz, değerler yazılı teklifte yazılır.",
+    ],
     proof: (r) => /P2\.5|P3|P4|montaj/i.test(r.detail),
     images: [
       { src: "/projects/factory-assembly.jpg", alt: "Fabrika / endüstriyel LED bağlamı" },
-      { src: "/projects/panels-warehouse.jpg", alt: "Panel depo ve fabrika hazırlık" },
+      { src: "/projects/panels-warehouse.jpg", alt: "Panel depo ve sevkiyat hazırlığı" },
     ],
     products: ["dis-mekan-led-ekran", "ic-mekan-led-ekran"],
   }),
