@@ -106,6 +106,16 @@ if (catalog) {
   if (withShip.length !== 12) {
     errors.push(`catalog offers.shippingDetails expected on 12 panels (got ${withShip.length})`);
   }
+  const withReturn = dataset.filter(
+    (d) =>
+      d.offers?.hasMerchantReturnPolicy?.["@type"] === "MerchantReturnPolicy" &&
+      /MerchantReturnNotPermitted/i.test(String(d.offers.hasMerchantReturnPolicy.returnPolicyCategory || "")),
+  );
+  if (withReturn.length !== 12) {
+    errors.push(
+      `catalog offers.hasMerchantReturnPolicy (MerchantReturnNotPermitted) expected on 12 panels (got ${withReturn.length})`,
+    );
+  }
   const quoteOnly = catalog.quoteOnlyProductGroups || [];
   for (const need of ["kiralik-led-ekran", "seffaf-led-ekran", "transparan-led-ekran"]) {
     const hit = quoteOnly.some(

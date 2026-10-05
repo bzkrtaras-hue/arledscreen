@@ -41,6 +41,19 @@ export const PANEL_SHIPPING_DETAILS = {
     "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok.",
 } as const;
 
+/**
+ * Honest MerchantReturnPolicy: no fixed site return window.
+ * MerchantReturnNotPermitted = no online self-serve return; contract may still
+ * define returns (quote-and-contract-only). Blocks invented “14-day free return”.
+ */
+export const PANEL_RETURN_POLICY = {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "TR",
+  returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+  description:
+    "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok.",
+} as const;
+
 export const NXTIONSTAR_BRAND = {
   "@type": "Brand",
   name: "NXTIONSTAR",
@@ -131,6 +144,7 @@ export function panelProductsJsonLd(
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       shippingDetails: { ...PANEL_SHIPPING_DETAILS },
+      hasMerchantReturnPolicy: { ...PANEL_RETURN_POLICY },
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         price: p.usd.toFixed(2),

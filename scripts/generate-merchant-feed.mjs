@@ -72,6 +72,7 @@ for (const p of dataset) {
     p.name,
     "Panel (modül) list fiyatı USD; KDV ve nakliye hariç.",
     "Nakliye list fiyatına dahil değildir; ücretsiz kargo yok — yazılı teklifle netleşir.",
+    "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir (ücretsiz 14 gün iade yok).",
     "tax=TR:0:n = KDV list USD'ye dahil değil (sıfır oran iddiası değil).",
     "Nihai tutar keşif ve yazılı teklifle kesinleşir.",
     "ARLEDSCREEN / NXTIONSTAR — İstanbul Gaziosmanpaşa.",

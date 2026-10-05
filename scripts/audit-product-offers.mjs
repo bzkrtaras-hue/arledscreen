@@ -145,6 +145,16 @@ for (const model of models) {
     if (!offers.shippingDetails || !/nakliye/i.test(JSON.stringify(offers.shippingDetails))) {
       errors.push(`${model.group}/${model.slug}: offers.shippingDetails must state nakliye excluded`);
     }
+    const ret = offers.hasMerchantReturnPolicy;
+    if (!ret || ret["@type"] !== "MerchantReturnPolicy") {
+      errors.push(`${model.group}/${model.slug}: offers.hasMerchantReturnPolicy must be MerchantReturnPolicy`);
+    } else if (!/MerchantReturnNotPermitted/i.test(String(ret.returnPolicyCategory || ""))) {
+      errors.push(`${model.group}/${model.slug}: returnPolicyCategory must be MerchantReturnNotPermitted (no fixed site window)`);
+    } else if (!/teklif|sözleşme|sozlesme/i.test(JSON.stringify(ret))) {
+      errors.push(`${model.group}/${model.slug}: hasMerchantReturnPolicy must state teklif/sözleşme`);
+    } else if (/14\s*gün|ücretsiz iade/i.test(JSON.stringify(ret)) && !/ücretsiz iade yok/i.test(JSON.stringify(ret))) {
+      errors.push(`${model.group}/${model.slug}: must not invent a free return window`);
+    }
   } else {
     quoteChecked += 1;
     if (product.offers) {
@@ -236,6 +246,14 @@ if (fs.existsSync(catalogPath)) {
     }
     if (!p.offers?.shippingDetails || !/nakliye/i.test(JSON.stringify(p.offers.shippingDetails))) {
       errors.push(`catalog ${sku} shippingDetails must state nakliye excluded`);
+    }
+    const catRet = p.offers?.hasMerchantReturnPolicy;
+    if (!catRet || catRet["@type"] !== "MerchantReturnPolicy") {
+      errors.push(`catalog ${sku} hasMerchantReturnPolicy must be MerchantReturnPolicy`);
+    } else if (!/MerchantReturnNotPermitted/i.test(String(catRet.returnPolicyCategory || ""))) {
+      errors.push(`catalog ${sku} returnPolicyCategory must be MerchantReturnNotPermitted`);
+    } else if (!/teklif|sözleşme|sozlesme/i.test(JSON.stringify(catRet))) {
+      errors.push(`catalog ${sku} hasMerchantReturnPolicy must state teklif/sözleşme`);
     }
     if (!p.brand?.url || !String(p.brand.url).includes("/nxtionstar")) {
       errors.push(`catalog ${sku} Brand.url must point to nxtionstar`);

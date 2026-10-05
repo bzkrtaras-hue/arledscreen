@@ -49,7 +49,7 @@ Bu sayfalarda Product schema vardır; **offers yoktur**. Teklif: `/tr/quote/`.
 - [x] Fiyat hub + hesaplayıcı parity
 - [x] `catalog.json` ürünlerinde absolute `image` (generate-ai-catalog)
 - [x] `catalog.json` `groupAggregateOffers` — all / iç / dış / GOB AggregateOffer bantları (quote-only yok)
-- [x] postbuild `audit:offers`
+- [x] Offer `shippingDetails` (nakliye hariç) + `hasMerchantReturnPolicy` (MerchantReturnNotPermitted — iade teklif-only)
 - [x] Merchant dry-run TSV (yalnız 12 SKU) — `public/feeds/merchant-priced-panels.tsv` + `audit:merchant-feed`
 
 ## Sahip checklist (Merchant Center)
@@ -77,3 +77,4 @@ npm run build   # postbuild audit:offers + audit:merchant-feed dahil
 - Nihai proje tutarı yazılı teklifle kesinleşir — Merchant’da “from” iddiası yok.
 - TSV `shipping` sütunu **boş** bırakılır (Gün 52): `TR:::0 USD` ücretsiz kargo iddiası yasak. Gerçek kargo/KDV Merchant Center’da sahibi ayarlar; list fiyatı nakliye hariç.
 - `tax=TR:0:n` = **KDV list fiyatına dahil değil** (Gün 54). `0` sıfır KDV / tax-free iddiası değildir; description’da KDV açık yazılır.
+- Description iade honesty (Gün 57): sitede sabit iade penceresi yok; teklif/sözleşme; uydurma 14 gün ücretsiz iade yok. Offer `hasMerchantReturnPolicy` = `MerchantReturnNotPermitted`.

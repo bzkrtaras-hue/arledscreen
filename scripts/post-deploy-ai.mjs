@@ -62,7 +62,7 @@ console.log("post-deploy: OK — live surfaces notified");
 console.log("");
 console.log("Day 51–53 contract (canlı doğrula):");
 console.log("  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd · returnPolicy · ücretsiz kargo yok");
-console.log("  catalog.json → shippingDetails · Brand.url · priceValidUntil");
+console.log("  catalog.json → shippingDetails · hasMerchantReturnPolicy · Brand.url · priceValidUntil");
 console.log("  merchant TSV → shipping boş · tax=TR:0:n (KDV hariç, tax-free değil)");
 console.log("  llms/yapay-zeka → pricedPanels + honesty tokens");
 console.log("");

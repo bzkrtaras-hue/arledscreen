@@ -3,7 +3,7 @@
   "@type": "DataCatalog",
   "@id": "https://arledscreen.com/catalog.json",
   "name": "ARLEDSCREEN / NXTIONSTAR LED panel katalog (AI alışveriş)",
-  "description": "Yayımlanmış 2026 panel (modül) USD listesi. AI alışveriş ve ajan sistemleri için makinece okunur. KDV ve nakliye hariç; nihai tutar keşif ve yazılı teklifle kesinleşir. Uydurma fiyat yoktur. groupAggregateOffers alanından ürün grubu fiyat bandına bakın.",
+  "description": "Yayımlanmış 2026 panel (modül) USD listesi. AI alışveriş ve ajan sistemleri için makinece okunur. KDV ve nakliye hariç; Offer shippingDetails + hasMerchantReturnPolicy (MerchantReturnNotPermitted — iade teklif/sözleşme). Nihai tutar keşif ve yazılı teklifle kesinleşir. Uydurma fiyat yoktur. groupAggregateOffers alanından ürün grubu fiyat bandına bakın.",
   "url": "https://arledscreen.com/catalog.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -25,6 +25,7 @@
     "shippingIncluded": false,
     "shipping": "excluded-from-list; quote",
     "returnPolicy": "quote-and-contract-only; no fixed site return window",
+    "hasMerchantReturnPolicy": "MerchantReturnNotPermitted; quote-and-contract-only",
     "extrasUsd": {
       "workshopLaborPerM2": 100,
       "controlCard": 500,
@@ -196,6 +197,12 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
+        },
         "areaServed": {
           "@type": "Country",
           "name": "Türkiye"
@@ -278,6 +285,12 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
         },
         "areaServed": {
           "@type": "Country",
@@ -362,6 +375,12 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
+        },
         "areaServed": {
           "@type": "Country",
           "name": "Türkiye"
@@ -439,6 +458,12 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
         },
         "areaServed": {
           "@type": "Country",
@@ -518,6 +543,12 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
+        },
         "areaServed": {
           "@type": "Country",
           "name": "Türkiye"
@@ -595,6 +626,12 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
         },
         "areaServed": {
           "@type": "Country",
@@ -674,6 +711,12 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
+        },
         "areaServed": {
           "@type": "Country",
           "name": "Türkiye"
@@ -751,6 +794,12 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
         },
         "areaServed": {
           "@type": "Country",
@@ -830,6 +879,12 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
+        },
         "areaServed": {
           "@type": "Country",
           "name": "Türkiye"
@@ -907,6 +962,12 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
         },
         "areaServed": {
           "@type": "Country",
@@ -991,6 +1052,12 @@
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
         },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
+        },
         "areaServed": {
           "@type": "Country",
           "name": "Türkiye"
@@ -1068,6 +1135,12 @@
             "addressCountry": "TR"
           },
           "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+          "description": "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok."
         },
         "areaServed": {
           "@type": "Country",

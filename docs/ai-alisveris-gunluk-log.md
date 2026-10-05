@@ -46,6 +46,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 54 | 2026-10-05 | Home/quote FAQ · ai-catalog refresh · Merchant tax · Point C sameAsReadiness | ✅ |
 | 55 | 2026-10-05 | ARD→ai-catalog sync · shared prompts · FAQ holes · Footer EN · point-c --check · PR CI | ✅ |
 | 56 | 2026-10-05 | smoke:local / verify:premerge · FAQ ai-shopping holes · IndexNow URL complete · Org Quote CTA · blind-test doc parity | ✅ |
+| 57 | 2026-10-05 | Offer hasMerchantReturnPolicy · Merchant iade honesty · sitemap ai-catalog · audit/smoke/blind-test guards | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -257,3 +258,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - IndexNow URL list complete (ai-catalog · hizmetler · sss · nxtionstar · blog · rehber hub); audit artefact check
 - WebSite/Org `potentialAction` CommunicateAction → `/tr/quote/` (SearchAction yok — sahte search endpoint yok)
 - Blind-test doc ↔ `scripts/lib/ai-shopping-prompts.mjs` parity guard; ProductJsonLd telephone E164
+
+## Gün 57 notları
+
+- Offer `hasMerchantReturnPolicy` = MerchantReturnNotPermitted (quote/contract-only; uydurma 14 gün ücretsiz iade yok) — `PANEL_RETURN_POLICY` → catalog + model + panelProductsJsonLd
+- Merchant TSV description iade honesty + audit guard
+- Sitemap + audit: `/.well-known/ai-catalog.json` (IndexNow parity)
+- Guards: audit:offers · audit:blind-test · audit:merchant-feed · smoke catalog/ai-shopping mustInclude

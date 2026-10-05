@@ -32,6 +32,15 @@ const PANEL_SHIPPING_DETAILS = {
     "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok.",
 };
 
+/** Honest MerchantReturnPolicy — mirrors src/content/prices.ts PANEL_RETURN_POLICY */
+const PANEL_RETURN_POLICY = {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "TR",
+  returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+  description:
+    "İade/garanti sitede sabit pencere değildir; yazılı teklif ve sözleşmede belirlenir. Uydurma 14 gün ücretsiz iade yok.",
+};
+
 const priceRe =
   /\{\s*id:\s*"([^"]+)",\s*pitch:\s*"([^"]+)",\s*pitchMm:\s*([\d.]+),\s*use:\s*"(ic|dis)",\s*(?:surface:\s*"GOB",\s*)?(?:frontService:\s*true,\s*)?usd:\s*([\d.]+),\s*groups:\s*\[([^\]]+)\](?:,\s*moduleMm:\s*"([^"]+)")?\s*\}/g;
 
@@ -109,6 +118,7 @@ const products = prices.map((p) => {
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
       shippingDetails: PANEL_SHIPPING_DETAILS,
+      hasMerchantReturnPolicy: PANEL_RETURN_POLICY,
       areaServed: { "@type": "Country", name: "Türkiye" },
       priceSpecification: {
         "@type": "UnitPriceSpecification",
@@ -221,7 +231,7 @@ const catalog = {
   "@id": `${SITE}/catalog.json`,
   name: "ARLEDSCREEN / NXTIONSTAR LED panel katalog (AI alışveriş)",
   description:
-    "Yayımlanmış 2026 panel (modül) USD listesi. AI alışveriş ve ajan sistemleri için makinece okunur. KDV ve nakliye hariç; nihai tutar keşif ve yazılı teklifle kesinleşir. Uydurma fiyat yoktur. groupAggregateOffers alanından ürün grubu fiyat bandına bakın.",
+    "Yayımlanmış 2026 panel (modül) USD listesi. AI alışveriş ve ajan sistemleri için makinece okunur. KDV ve nakliye hariç; Offer shippingDetails + hasMerchantReturnPolicy (MerchantReturnNotPermitted — iade teklif/sözleşme). Nihai tutar keşif ve yazılı teklifle kesinleşir. Uydurma fiyat yoktur. groupAggregateOffers alanından ürün grubu fiyat bandına bakın.",
   url: `${SITE}/catalog.json`,
   creator: { "@id": `${SITE}/#organization` },
   dateModified: new Date().toISOString().slice(0, 10),
@@ -241,6 +251,7 @@ const catalog = {
     shippingIncluded: false,
     shipping: "excluded-from-list; quote",
     returnPolicy: "quote-and-contract-only; no fixed site return window",
+    hasMerchantReturnPolicy: "MerchantReturnNotPermitted; quote-and-contract-only",
     extrasUsd: {
       workshopLaborPerM2: laborPerM2,
       controlCard: controlCard,

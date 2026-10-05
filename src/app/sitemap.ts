@@ -178,6 +178,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/entity.json", 0.97],
     ["/entity-profiles.json", 0.9],
     ["/.well-known/ard.json", 0.95],
+    ["/.well-known/ai-catalog.json", 0.94],
     ["/llms.txt", 0.92],
     ["/llms-full.txt", 0.88],
     ["/feeds/merchant-priced-panels.tsv", 0.93],

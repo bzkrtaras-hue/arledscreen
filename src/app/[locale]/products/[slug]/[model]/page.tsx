@@ -20,6 +20,7 @@ import {
   panelM2,
   panelModule,
   PANEL_SHIPPING_DETAILS,
+  PANEL_RETURN_POLICY,
   PRICE_VALID_UNTIL,
 } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -199,6 +200,7 @@ export default async function ModelPage({ params }: PageProps) {
             availability: "https://schema.org/InStock",
             itemCondition: "https://schema.org/NewCondition",
             shippingDetails: { ...PANEL_SHIPPING_DETAILS },
+            hasMerchantReturnPolicy: { ...PANEL_RETURN_POLICY },
             priceSpecification: {
               "@type": "UnitPriceSpecification",
               price: price.usd.toFixed(2),

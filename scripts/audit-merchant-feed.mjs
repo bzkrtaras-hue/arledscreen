@@ -103,6 +103,12 @@ function auditFeed(parsed, catalogSkus, catalogBySku) {
     if (!/nakliye/i.test(r.description || "")) {
       errors.push(`${rel}: ${r.id} description should state nakliye excluded`);
     }
+    if (!/iade/i.test(r.description || "") || !/teklif/i.test(r.description || "")) {
+      errors.push(`${rel}: ${r.id} description must state iade = teklif/sözleşme (no fixed site window)`);
+    }
+    if (/14\s*gün.*ücretsiz iade|ücretsiz iade|free return/i.test(r.description || "") && !/iade yok|ücretsiz 14 gün iade yok/i.test(r.description || "")) {
+      errors.push(`${rel}: ${r.id} must not claim free returns`);
+    }
     if (r.tax && r.tax !== "TR:0:n") {
       errors.push(`${rel}: ${r.id} tax must be TR:0:n (VAT excluded from list, not tax-free)`);
     }
