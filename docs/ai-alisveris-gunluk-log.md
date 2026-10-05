@@ -24,6 +24,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 32 | 2026-10-05 | Pitch USD FAQs + hesaplayici shopping FAQ/LinkCloud | ✅ |
 | 33 | 2026-10-05 | İzleme/kiralama rehber + quote FAQ (list vs teklif) | ✅ |
 | 34 | 2026-10-05 | About/NXTIONSTAR/products hub identity FAQs + LinkCloud | ✅ |
+| 35 | 2026-10-05 | Founder + yapay-zeka ShoppingLinkCloud / FAQ | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -63,6 +64,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `/tr/about/`: ENTITY_FAQS FAQPage + entity/catalog linkleri + ShoppingLinkCloud + HomeFaq
 - `/tr/nxtionstar/`: panel fiyat FAQ + ShoppingLinkCloud (catalog/merchant)
 - `/tr/products/`: hub FAQPage (list vs quote-only) + ShoppingLinkCloud
+
+## Gün 35 notları
+
+- `/tr/about/aras-bozkurt/`: kurucu FAQPage + ShoppingLinkCloud (E-E-A-T ↔ entity/catalog)
+- `/tr/yapay-zeka/`: ShoppingLinkCloud + hesaplayıcı/merchant agent linkleri
+- FAQ + shopping-link audits: founder + yapay-zeka
 
 ## Owner P0 (her gün hatırlatma)
 

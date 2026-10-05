@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -24,6 +27,29 @@ export const metadata: Metadata = buildTrOnlyMetadata({
   description:
     "Aras Bozkurt, İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN’in kurucusudur. LED ekran satış, montaj ve teknik servis projelerini yürütür.",
 });
+
+const FOUNDER_FAQS = [
+  {
+    question: "Aras Bozkurt kimdir?",
+    answer:
+      "Aras Bozkurt, İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN’in kurucusudur. LED ekran satış, keşif, montaj ve teknik servis süreçlerini yürütür. Firma kimliği: https://arledscreen.com/entity.json.",
+  },
+  {
+    question: "ARLEDSCREEN kurucusu hangi markayı satar?",
+    answer:
+      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Marka sayfası: https://arledscreen.com/tr/nxtionstar/.",
+  },
+  {
+    question: "LED ekran panel fiyatları nereden okunur?",
+    answer:
+      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. List fiyatı olmayan gruplar yazılı teklifle netleşir.",
+  },
+  {
+    question: "AI ajanları kurucu ve firma bilgisini nasıl doğrular?",
+    answer:
+      "Makinece kimlik: https://arledscreen.com/entity.json · Kurucu profili: https://arledscreen.com/tr/about/aras-bozkurt/ · Kısa özet: https://arledscreen.com/llms.txt · Ajan keşif: https://arledscreen.com/.well-known/ard.json.",
+  },
+];
 
 export default async function FounderPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -51,6 +77,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
           { name: "Aras Bozkurt", item: url },
         ]}
       />
+      <FaqJsonLd faqs={FOUNDER_FAQS} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
@@ -124,6 +151,22 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
               </a>
             </li>
           </ul>
+
+          <div className="mt-12 max-w-3xl">
+            <h2 className="font-display text-xl font-bold text-ink">Sık sorulanlar</h2>
+            <div className="mt-6">
+              <HomeFaq faqs={FOUNDER_FAQS} />
+            </div>
+            <ShoppingLinkCloud
+              excludeHref="/tr/about/aras-bozkurt/"
+              title="Kurucu · fiyat ve kimlik kaynakları"
+              extra={[
+                { href: "/tr/about/", label: "Hakkımızda" },
+                { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+              ]}
+            />
+          </div>
         </div>
       </section>
     </>

@@ -110,11 +110,13 @@ auditPage("quote", { minCount: 2, requirePriceHint: true });
 auditPage("about", { minCount: 4, requirePriceHint: true });
 auditPage("nxtionstar", { minCount: 3, requirePriceHint: true });
 auditPage("products", { minCount: 2, requirePriceHint: true });
+auditPage("about/aras-bozkurt", { minCount: 3, requirePriceHint: true });
+auditPage("yapay-zeka", { minCount: 3, requirePriceHint: true });
 auditPage("rehber/piksel-araligi-secimi", { minCount: 2, requirePriceHint: true });
 auditPage("rehber/kiralik-mi-satin-alma", { minCount: 2, requirePriceHint: true });
 
 console.log(
-  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + fiyat + hesaplayici + quote + about + nxtionstar + products hub + rehber`,
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + rehber`,
 );
 if (errors.length) {
   console.error("FAIL:");

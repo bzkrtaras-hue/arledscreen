@@ -7,6 +7,7 @@ import { GlassPanel } from "@/components/ui/glass-panel";
 import { Button } from "@/components/ui/button";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { getSeo } from "@/content/seo";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -90,6 +91,8 @@ const content: Record<
       { href: "/.well-known/ard.json", label: "ard.json", note: "Agentic Resource Discovery" },
       { href: "/llms.txt", label: "llms.txt", note: "Kısa AI özeti" },
       { href: "/tr/led-ekran-fiyatlari/", label: "Fiyat hub", note: "İnsan + ajan fiyat tablosu" },
+      { href: "/tr/hesaplayici/", label: "Hesaplayıcı", note: "12 panel USD canlı formül" },
+      { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant TSV", note: "12 priced SKU dry-run" },
       { href: "/tr/quote/", label: "Teklif", note: "List fiyatı olmayan ürünler" },
     ],
     ctaTitle: "YZ uyumlu LED projenizi boyutlandıralım",
@@ -160,6 +163,8 @@ const content: Record<
       { href: "/.well-known/ard.json", label: "ard.json", note: "Agentic Resource Discovery" },
       { href: "/llms.txt", label: "llms.txt", note: "Short AI summary" },
       { href: "/tr/led-ekran-fiyatlari/", label: "Price hub", note: "Published panel table" },
+      { href: "/tr/hesaplayici/", label: "Calculator", note: "12 panel USD live formula" },
+      { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant TSV", note: "12 priced SKU dry-run" },
       { href: "/tr/quote/", label: "Quote", note: "Non-listed products" },
     ],
     ctaTitle: "Size your AI-ready LED project",
@@ -286,6 +291,17 @@ export default async function YapayZekaPage({ params }: PageProps) {
                 </li>
               ))}
             </ul>
+            {locale === "tr" ? (
+              <ShoppingLinkCloud
+                excludeHref="/tr/yapay-zeka/"
+                title="AI alışveriş keşif şeridi"
+                extra={[
+                  { href: "/.well-known/ard.json", label: "ard.json" },
+                  { href: "/llms.txt", label: "llms.txt" },
+                  { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+                ]}
+              />
+            ) : null}
           </GlassPanel>
 
           <div className="grid gap-4 md:grid-cols-2">
