@@ -9,14 +9,14 @@
 const SITE = "https://arledscreen.com";
 
 const CHECKS = [
-  { id: "entity", url: `${SITE}/entity.json`, expect: "json", mustInclude: ["ARLEDSCREEN", "citeOneLiner"] },
-  { id: "entity-profiles", url: `${SITE}/entity-profiles.json`, expect: "json", mustInclude: ["gbpDescription", "linkedinAbout", "Gaziosmanpaşa"] },
-  { id: "catalog", url: `${SITE}/catalog.json`, expect: "json", mustInclude: ["dataset", "groupAggregateOffers"] },
-  { id: "ard", url: `${SITE}/.well-known/ard.json`, expect: "json", mustInclude: ["catalog", "entity-profiles"] },
-  { id: "llms", url: `${SITE}/llms.txt`, expect: "text", mustInclude: ["citeOneLiner", "Gaziosmanpaşa", "entity-profiles.json"] },
-  { id: "llms-full", url: `${SITE}/llms-full.txt`, expect: "text", mustInclude: ["catalog.json", "entity.json", "entity-profiles.json"] },
+  { id: "entity", url: `${SITE}/entity.json`, expect: "json", mustInclude: ["ARLEDSCREEN", "citeOneLiner"], cors: true, contentType: "application/json" },
+  { id: "entity-profiles", url: `${SITE}/entity-profiles.json`, expect: "json", mustInclude: ["gbpDescription", "linkedinAbout", "Gaziosmanpaşa"], cors: true, contentType: "application/json" },
+  { id: "catalog", url: `${SITE}/catalog.json`, expect: "json", mustInclude: ["dataset", "groupAggregateOffers"], cors: true, contentType: "application/json" },
+  { id: "ard", url: `${SITE}/.well-known/ard.json`, expect: "json", mustInclude: ["catalog", "entity-profiles"], cors: true, contentType: "application/json" },
+  { id: "llms", url: `${SITE}/llms.txt`, expect: "text", mustInclude: ["citeOneLiner", "Gaziosmanpaşa", "entity-profiles.json"], cors: true, contentType: "text/plain" },
+  { id: "llms-full", url: `${SITE}/llms-full.txt`, expect: "text", mustInclude: ["catalog.json", "entity.json", "entity-profiles.json"], cors: true, contentType: "text/plain" },
   { id: "robots", url: `${SITE}/robots.txt`, expect: "text", mustInclude: ["Host: arledscreen.com", "bingbot"] },
-  { id: "merchant-feed", url: `${SITE}/feeds/merchant-priced-panels.tsv`, expect: "text", mustInclude: ["p2-5-ic", "32.18 USD"] },
+  { id: "merchant-feed", url: `${SITE}/feeds/merchant-priced-panels.tsv`, expect: "text", mustInclude: ["p2-5-ic", "32.18 USD"], cors: true, contentType: "text/tab-separated-values" },
   { id: "fiyat", url: `${SITE}/tr/led-ekran-fiyatlari/`, expect: "html", mustInclude: ["catalog.json"] },
   { id: "yapay-zeka", url: `${SITE}/tr/yapay-zeka/`, expect: "html", mustInclude: ["entity.json", "catalog.json"] },
   { id: "about", url: `${SITE}/tr/about/`, expect: "html", mustInclude: ["entity.json", "catalog.json"] },
@@ -33,19 +33,41 @@ async function check(c) {
     const text = await res.text();
     const ms = Date.now() - started;
     const ctype = res.headers.get("content-type") || "";
+    const acao = res.headers.get("access-control-allow-origin") || "";
     const looksHtmlSoft404 =
       res.status === 200 &&
       /text\/html/i.test(ctype) &&
       c.expect !== "html" &&
       /<!DOCTYPE html|<html/i.test(text.slice(0, 200));
     const missing = (c.mustInclude || []).filter((n) => !text.includes(n));
+    const headerGaps = [];
+    if (c.cors && res.status === 200 && !looksHtmlSoft404 && acao !== "*") {
+      headerGaps.push("CORS:*");
+    }
+    if (
+      c.contentType &&
+      res.status === 200 &&
+      !looksHtmlSoft404 &&
+      !ctype.toLowerCase().includes(c.contentType.toLowerCase())
+    ) {
+      headerGaps.push(`ctype:${c.contentType}`);
+    }
     let status = "PASS";
     if (res.status !== 200) status = `HTTP_${res.status}`;
     else if (looksHtmlSoft404) status = "SOFT_404";
     else if (missing.length) status = "CONTENT";
-    return { id: c.id, url: c.url, status, ms, missing, http: res.status };
+    else if (headerGaps.length) status = "HEADERS";
+    return {
+      id: c.id,
+      url: c.url,
+      status,
+      ms,
+      missing,
+      headerGaps,
+      http: res.status,
+    };
   } catch (e) {
-    return { id: c.id, url: c.url, status: "ERROR", ms: Date.now() - started, missing: [], error: String(e.message || e) };
+    return { id: c.id, url: c.url, status: "ERROR", ms: Date.now() - started, missing: [], headerGaps: [], error: String(e.message || e) };
   }
 }
 
@@ -66,11 +88,11 @@ async function main() {
   );
   console.log("-".repeat(78));
   for (const r of results) {
-    const note = r.missing?.length
-      ? ` missing=[${r.missing.join(",")}]`
-      : r.error
-        ? ` ${r.error}`
-        : "";
+    const parts = [];
+    if (r.missing?.length) parts.push(`missing=[${r.missing.join(",")}]`);
+    if (r.headerGaps?.length) parts.push(`headers=[${r.headerGaps.join(",")}]`);
+    if (r.error) parts.push(r.error);
+    const note = parts.length ? ` ${parts.join(" ")}` : "";
     console.log(
       `${r.id.padEnd(14)} ${r.status.padEnd(10)} ${String(r.ms).padEnd(6)} ${r.url}${note}`,
     );

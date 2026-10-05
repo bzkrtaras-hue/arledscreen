@@ -33,6 +33,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 41 | 2026-10-05 | llms-full/smoke/footer Point C discovery | ✅ |
 | 42 | 2026-10-05 | entity-profiles CORS + merge-day Point C checklist | ✅ |
 | 43 | 2026-10-05 | Deploy artifact guard + blind-test skor kartı | ✅ |
+| 44 | 2026-10-05 | AI headers parity (CORS+Content-Type) + `audit:ai-headers` | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -139,3 +140,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 2. Point C: [`point-c-merge-day.md`](./point-c-merge-day.md) + `entity-profiles.json` packs
 3. `arleds.com` → `arledscreen.com/tr/` 301
 4. `npm run smoke:live` yeşile → [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md) tur 1
+
+## Gün 44 notları
+
+- `_headers`: entity/catalog/llms Content-Type charset parity (ajan parse)
+- `audit:ai-headers`: 8 AI path CORS + CORP + Content-Type (postbuild + `audit:all` → 15)
+- `smoke:live`: HTTP 200 iken CORS/Content-Type HEADERS kontrolü

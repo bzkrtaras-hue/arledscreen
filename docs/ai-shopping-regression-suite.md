@@ -1,4 +1,4 @@
-# AI alışveriş regression suite (Gün 29 → güncellendi Gün 42)
+# AI alışveriş regression suite (Gün 29 → güncellendi Gün 44)
 
 Son güncelleme: 2026-10-05  
 Komut: `npm run audit:all` (build sonrası) · postbuild zinciri aynı guard’ları çalıştırır
@@ -11,7 +11,7 @@ npm run build          # üretir + postbuild audit’leri
 npm run audit:all
 ```
 
-`scripts/audit-ai-shopping-suite.mjs` 14 audit’i sırayla çalıştırır ve tablo basar:
+`scripts/audit-ai-shopping-suite.mjs` 15 audit’i sırayla çalıştırır ve tablo basar:
 
 | Audit | Gün / katman |
 |-------|----------------|
@@ -29,6 +29,7 @@ npm run audit:all
 | blind-test | 25 kör test + entity-profiles ARD |
 | cite-parity | 26 entity↔llms↔profiles |
 | merchant-feed | 27 GMC TSV 12 SKU |
+| ai-headers | 44 CORS + Content-Type + CORP |
 
 Çıkış kodu: herhangi biri FAIL → `1` (CI kırmızı).
 

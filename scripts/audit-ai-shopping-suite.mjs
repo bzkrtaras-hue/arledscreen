@@ -29,6 +29,7 @@ const AUDITS = [
   { id: "blind-test", script: "audit-blind-test.mjs", day: "25" },
   { id: "cite-parity", script: "audit-cite-parity.mjs", day: "26" },
   { id: "merchant-feed", script: "audit-merchant-feed.mjs", day: "27" },
+  { id: "ai-headers", script: "audit-ai-headers.mjs", day: "44" },
 ];
 
 if (!fs.existsSync(path.join(root, "out"))) {

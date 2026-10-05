@@ -32,6 +32,7 @@
 /entity.json
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
@@ -45,6 +46,7 @@
 /catalog.json
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
@@ -65,12 +67,14 @@
 /llms.txt
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
 /llms-full.txt
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
