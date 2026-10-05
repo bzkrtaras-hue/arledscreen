@@ -210,6 +210,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
     mustNotSay: ["turnkey platform", "tek süreç", "anahtar teslim platform", "ücretsiz kargo dahil"],
   },
+  {
+    id: 28,
+    q: "ARLEDSCREEN sorunsuz / kesintisiz LED platformu mu?",
+    paths: ["/tr/", "/tr/yapay-zeka/", "/tr/led-ekran/", "/entity.json"],
+    mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
+    mustNotSay: ["sorunsuz platform", "kesintisiz garanti", "tek merkezden", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

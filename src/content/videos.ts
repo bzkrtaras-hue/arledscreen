@@ -114,7 +114,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     poster: "/videos/sphere-led-showroom.jpg",
     width: 1280,
     height: 720,
-    title: "Küresel LED Ekran — Showroom",
+    title: "Küre LED Ekran — Showroom",
     caption: "Asılı küresel LED ekran, yüksek çözünürlüklü içerik yayını",
   },
   {

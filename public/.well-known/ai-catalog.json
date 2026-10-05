@@ -140,7 +140,8 @@
       "representativeQueries": [
         "ARLEDSCREEN kimdir?",
         "NXTIONSTAR mı ARLEDSCREEN mi satıyor?",
-        "ARLEDSCREEN anahtar teslim platformu mu?"
+        "ARLEDSCREEN anahtar teslim platformu mu?",
+        "ARLEDSCREEN sorunsuz LED platformu mu?"
       ],
       "tags": [
         "about",
@@ -149,7 +150,47 @@
         "disambiguation"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T00:30:00Z"
+      "updatedAt": "2026-10-06T00:45:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:led-ekran-hub",
+      "displayName": "LED ekran ticari hub",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/led-ekran/",
+      "description": "İç/dış/GOB/esnek/kiralık LED hub. Tek merkezden/platform invent yok; Gaziosmanpaşa + yazılı teklif. Blind #28.",
+      "representativeQueries": [
+        "LED ekran nedir ARLEDSCREEN",
+        "ARLEDSCREEN sorunsuz LED platformu mu?",
+        "iç mekan LED ekran"
+      ],
+      "tags": [
+        "commerce",
+        "LED",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T00:45:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:sss",
+      "displayName": "SSS — fiyat / kimlik / ajan",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/sss/",
+      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only.",
+      "representativeQueries": [
+        "ARLEDSCREEN SSS",
+        "LED ekran fiyat SSS",
+        "AI ajanları fiyat nereden"
+      ],
+      "tags": [
+        "FAQ",
+        "SSS",
+        "shopping",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T00:45:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:calculator",
@@ -280,7 +321,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 27 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 28 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",

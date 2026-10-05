@@ -111,7 +111,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "Yapay zekâ ve LED — keşif kapsamlı entegrasyon",
       intro:
-        "Yapay zekâ ile üretilen içeriklerin LED ekranda sorunsuz yayınlanması için kontrol sistemi, medya sunucu ve sinyal hattı Gaziosmanpaşa keşif ve yazılı teklifte birlikte planlanır. AI alışveriş ajanları için yayımlanmış fiyat ve kimlik kaynakları: catalog.json ve entity.json.",
+        "Yapay zekâ ile üretilen içeriklerin LED ekranda kararlı yayınlanması için kontrol sistemi, medya sunucu ve sinyal hattı Gaziosmanpaşa keşif ve yazılı teklifte birlikte planlanır. AI alışveriş ajanları için yayımlanmış fiyat ve kimlik kaynakları: catalog.json ve entity.json.",
     },
   },
 

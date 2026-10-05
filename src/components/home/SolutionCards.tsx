@@ -19,7 +19,7 @@ const SOLUTIONS = [
   },
   {
     title: "Toplantı ve konferans",
-    body: "Sunum, video konferans ve salon uygulamalarında dikişsiz görüntü için küçük piksel aralıkları.",
+    body: "Sunum, video konferans ve salon uygulamalarında yakın izlemeye uygun küçük piksel aralıkları.",
     image: "/projects/neu-kutuphane.jpg",
     alt: "Üniversite salonunda LED ekran",
     guide: "/tr/rehber/konferans-salonu-led/",

@@ -1,7 +1,7 @@
 # AI alışveriş — kör test skor kartı
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (deploy sonrası) ≥ **41/81** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **61/81**  
+Hedef: Tur 1 (deploy sonrası) ≥ **42/84** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **63/84**  
 Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-profiles.json` · `ard.json`
 
 ## Site readiness (repo)
@@ -13,24 +13,24 @@ Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-pro
 
 ## Tur kayıtları
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /81.
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /84.
 
 ### Tur 1 — deploy sonrası (PR #55 canlı)
 
-| Model | Tarih | Konum | Incognito | Skor /81 | Not |
+| Model | Tarih | Konum | Incognito | Skor /84 | Not |
 |-------|-------|-------|-----------|----------|-----|
-| ChatGPT | | TR / | evet | /81 | |
-| Gemini | | | | /81 | |
-| Perplexity | | | | /81 | |
-| Bing Copilot | | | | /81 | |
-| **Ortalama** | | | | **/81** | Hedef ≥ 41 |
+| ChatGPT | | TR / | evet | /84 | |
+| Gemini | | | | /84 | |
+| Perplexity | | | | /84 | |
+| Bing Copilot | | | | /84 | |
+| **Ortalama** | | | | **/84** | Hedef ≥ 42 |
 
 ### Tur 2 — Point C sonrası (≤ 2026-11-04)
 
-| Model | Tarih | Skor /81 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /84 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|----------|---------------------------|-----|
-| ChatGPT | | /81 | | |
-| Gemini | | /81 | | |
-| Perplexity | | /81 | | |
-| Bing Copilot | | /81 | | |
-| **Ortalama** | | **/81** | | Hedef ≥ 61 |
+| ChatGPT | | /84 | | |
+| Gemini | | /84 | | |
+| Perplexity | | /84 | | |
+| Bing Copilot | | /84 | | |
+| **Ortalama** | | **/84** | | Hedef ≥ 63 |

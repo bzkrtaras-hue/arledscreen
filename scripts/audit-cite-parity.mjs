@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–79: ARD discovery prompt count must not drift behind blind suite
+// Day 74–80: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/27 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 27 kör test intent (not stale 17–26)");
+if (ardTxt && !/28 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 28 kör test intent (not stale 17–27)");
 }
-if (ardTxt && /1[7-9] kör test|2[0-6] kör test/i.test(ardTxt) && !/27 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–26 kör test without 27");
+if (ardTxt && /1[7-9] kör test|2[0-7] kör test/i.test(ardTxt) && !/28 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–27 kör test without 28");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -365,8 +365,23 @@ for (const rel of ["out/tr/hesaplayici/index.html", "out/en/hesaplayici/index.ht
 for (const rel of ["out/ar/index.html", "out/ru/index.html"]) {
   const html = read(rel);
   if (!html) continue;
-  if (/البيئات البصرية الحرجة|критически важных визуальных/i.test(html)) {
-    errors.push(`${rel} must not invent critical visual-spaces footer tagline`);
+  if (/البيئات البصرية الحرجة|критически важных визуальных|وحدات المنصة|Модули платформы/i.test(html)) {
+    errors.push(`${rel} must not invent visual-spaces / platform module invent`);
+  }
+}
+// Day 80: sorunsuz / Küresel LED / tek merkezden / dikişsiz invent
+for (const rel of [
+  "out/tr/index.html",
+  "out/tr/about/index.html",
+  "out/tr/yapay-zeka/index.html",
+  "out/tr/led-ekran/index.html",
+  "out/tr/products/kiralik-led-ekran/index.html",
+  "out/tr/products/ic-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/sorunsuz|Küresel LED|tek merkezden|dikişsiz/i.test(html)) {
+    errors.push(`${rel} must not invent sorunsuz / Küresel LED / tek merkezden / dikişsiz`);
   }
 }
 

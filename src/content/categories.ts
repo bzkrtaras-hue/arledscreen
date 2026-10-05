@@ -152,7 +152,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     slug: "ic-mekan-led-ekran",
     name: "İç Mekân LED Ekran",
     h1: "İç Mekân LED Ekran",
-    lead: "Yakın izleme mesafesinde net ve dikişsiz görüntü",
+    lead: "Yakın izleme mesafesine uygun ince pitch görüntü",
     title: "İç Mekân LED Ekran Fiyatları ve Modelleri | Mağaza, Kafe, Salon | ARLEDSCREEN",
     description:
       "Mağaza, kafe, showroom ve toplantı salonları için iç mekân LED ekran: piksel aralığı seçimi, keşif, montaj ve teknik servis. NXTIONSTAR markasıyla ARLEDSCREEN.",
@@ -176,7 +176,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       { title: "Mağaza ve vitrin", body: "Ürün tanıtımı ve kampanya içerikleri için dikkat çeken yüzeyler." },
       { title: "Kafe ve restoran", body: "Maç yayını, menü ve atmosfer içerikleri için geniş ekranlar." },
       { title: "Showroom ve lobi", body: "Marka deneyimini destekleyen büyük formatlı video duvarları." },
-      { title: "Toplantı ve konferans", body: "Sunum ve video konferans için net, parlak ve dikişsiz görüntü." },
+      { title: "Toplantı ve konferans", body: "Sunum ve video konferans için yakın izlemeye uygun ince pitch görüntü." },
     ],
     pitches: [
       { label: "P1.25", note: "GOB seçenekli" },
@@ -343,7 +343,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     image: "/projects/modules/stage-led.jpg",
     imageAlt: "Konser sahnesinde LED ekran ve izleyiciler",
     intro: [
-      "Etkinlikte ekranın zamanında kurulması, gün boyu sorunsuz çalışması ve etkinlik bitince hızla sökülmesi gerekir. Kiralık projelerde bu süreci etkinlik takviminize göre planlıyoruz.",
+      "Etkinlikte ekranın zamanında kurulması, etkinlik takvimine göre çalışması ve bitince hızla sökülmesi gerekir. Kiralık projelerde bu süreci Gaziosmanpaşa ekibiyle yazılı teklifte planlıyoruz.",
       "Kiralık LED ekran fiyatı; ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre hazırlanır. Net teklif için etkinlik bilgilerinizi paylaşmanız yeterlidir.",
     ],
     highlights: [

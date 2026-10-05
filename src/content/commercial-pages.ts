@@ -167,7 +167,7 @@ const INTENT_PAGES: CommercialPage[] = [
       "LED ekran satışı, montajı ve teknik servis. İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN; iç/dış mekân, GOB, esnek ve kiralık çözümler. Keşif sonrası yazılı teklif.",
     h1: "LED ekran satışı, montajı ve teknik servis",
     eyebrow: "ARLEDSCREEN · LED Ekran Teknoloji Merkezi",
-    lead: "İç mekân, dış mekân, GOB, esnek ve kiralık LED ekran projelerini keşiften satış sonrası servise kadar tek merkezden yönetiyoruz.",
+    lead: "İç mekân, dış mekân, GOB, esnek ve kiralık LED ekran projelerini keşiften satış sonrası servise kadar Gaziosmanpaşa merkezinden planlıyoruz.",
     intro: [
       "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli LED ekran teknoloji merkezidir. NXTIONSTAR ürün hattı ile mağaza, AVM, cephe, sahne, otel ve belediye uygulamalarında satış, montaj ve teknik servis sunar.",
       "Sabit m² fiyatı yoktur; panel listesi fiyat hesaplayıcıda yayımlanır, nihai tutar ölçü, piksel aralığı ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",

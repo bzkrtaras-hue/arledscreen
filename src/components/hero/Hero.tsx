@@ -24,7 +24,7 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   },
   {
     slug: "sphere-led-showroom",
-    labelTr: "Küresel LED",
+    labelTr: "Küre LED",
     labelEn: "Sphere LED",
   },
   {

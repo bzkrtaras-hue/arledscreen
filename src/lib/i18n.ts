@@ -289,7 +289,7 @@ const en: Dictionary = {
     },
     power: {
       eyebrow: "Power topology",
-      title: "Infrastructure that keeps the wall online",
+      title: "Power and signal plan",
       description:
         "Translate area and environment into peak/average kW, breaker guidance, and CAT6 vs fiber notes.",
     },
@@ -591,7 +591,7 @@ const tr: Dictionary = {
     },
     power: {
       eyebrow: "Güç topolojisi",
-      title: "Ekranı güvenle çalıştıran altyapı",
+      title: "Güç ve sinyal planı",
       description:
         "Alan ve ortamı tepe/ortalama kW, kesici önerisi ve CAT6 / fiber notlarına dönüştürün.",
     },
@@ -635,7 +635,7 @@ const tr: Dictionary = {
     description:
       "ARLEDSCREEN, NXTIONSTAR LED ekran ürünlerini kurumsal projelerde keşif, montaj ve teknik destekle Gaziosmanpaşa merkezinden yürütür.",
     body:
-      "Toplantı salonlarından dış mekân cephelere, totem ve sahne kurulumlarına kadar ürün seçimini izleme mesafesi, güç planı ve net malzeme listesiyle birlikte ele alıyoruz. Amacımız, sahada sorunsuz çalışan ve bakımı planlanmış LED ekran sistemleri kurmak.",
+      "Toplantı salonlarından dış mekân cephelere, totem ve sahne kurulumlarına kadar ürün seçimini izleme mesafesi, güç planı ve net malzeme listesiyle birlikte ele alıyoruz. Amacımız, bakımı planlanmış ve keşifte tanımlanmış LED ekran sistemleri kurmak.",
     cta: "Hakkımızda daha fazla",
     stats: [
       { value: "NXTIONSTAR", label: "Kendi markamız" },
@@ -869,7 +869,7 @@ const ar: Dictionary = {
   sections: {
     ...en.sections,
     modules: {
-      eyebrow: "وحدات المنصة",
+      eyebrow: "أدوات الموقع",
       title: "كل ما تحتاجه — بدون تشويش",
       description:
         "استكشف المنتجات والحاسبة والمُكوِّن ومراجع المشاريع. كل أداة في صفحتها؛ هنا نوضح وظيفتها.",
@@ -956,7 +956,7 @@ const ru: Dictionary = {
   sections: {
     ...en.sections,
     modules: {
-      eyebrow: "Модули платформы",
+      eyebrow: "Инструменты сайта",
       title: "Всё нужное — без лишнего",
       description:
         "Продукты, калькулятор, конфигуратор и проекты. Каждый инструмент на своей странице; здесь — кратко о назначении.",
