@@ -14,7 +14,8 @@
     "audit:shopping-links": "node scripts/audit-shopping-links.mjs",
     "audit:faq": "node scripts/audit-faq-jsonld.mjs",
     "audit:entity": "node scripts/audit-entity-sameas.mjs",
-    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/audit-product-offers.mjs && node scripts/audit-product-images.mjs && node scripts/audit-shopping-links.mjs && node scripts/audit-faq-jsonld.mjs && node scripts/audit-entity-sameas.mjs"
+    "audit:schema": "node scripts/audit-schema-gsc.mjs",
+    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/audit-product-offers.mjs && node scripts/audit-product-images.mjs && node scripts/audit-shopping-links.mjs && node scripts/audit-faq-jsonld.mjs && node scripts/audit-entity-sameas.mjs && node scripts/audit-schema-gsc.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
