@@ -46,11 +46,11 @@ function clipKey(clip: HeroClip) {
 }
 
 function coverClass(clip: HeroClip) {
-  // Native resolution via object-cover (no re-encode / no downscale of the file).
-  // Portrait installs need a higher focal point; landscape keeps centre-right LED walls.
+  // Full-bleed cover so desktop hero shows the LED surface, not letterboxed bars.
+  // Landscape: keep the wall centred; portrait: bias upward to the install.
   return clip.height > clip.width
-    ? "absolute inset-0 h-full w-full object-cover object-[50%_28%]"
-    : "absolute inset-0 h-full w-full object-cover object-[52%_42%] md:object-[58%_44%]";
+    ? "absolute inset-0 h-full w-full object-cover object-[50%_30%] md:object-[50%_28%]"
+    : "absolute inset-0 h-full w-full object-cover object-center md:object-[54%_46%]";
 }
 
 /**
@@ -155,7 +155,7 @@ export function HeroVideo({
 
   return (
     <section aria-label={labels.region} className="relative isolate w-full overflow-hidden bg-navy">
-      <div className="relative h-[100svh] min-h-[560px] max-h-[860px] md:h-[clamp(700px,100dvh,920px)] md:min-h-0 md:max-h-none">
+      <div className="relative h-[100svh] min-h-[560px] max-h-[860px] md:h-[min(100dvh,920px)] md:min-h-[680px] md:max-h-[920px]">
         {/* Still / poster stack — HQ factory frames stay sharp under the wash */}
         {clips.map((clip, i) => (
           // eslint-disable-next-line @next/next/no-img-element
@@ -207,7 +207,7 @@ export function HeroVideo({
         )}
 
         <div
-          className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(15,42,79,0.34)_0%,rgba(15,42,79,0.48)_36%,rgba(11,27,51,0.88)_68%,rgba(11,27,51,0.97)_100%)] md:bg-[linear-gradient(105deg,rgba(15,42,79,0.96)_0%,rgba(15,42,79,0.86)_32%,rgba(11,27,51,0.48)_56%,rgba(11,27,51,0.18)_100%),linear-gradient(180deg,rgba(15,42,79,0.28)_0%,transparent_28%,rgba(11,27,51,0.55)_70%,rgba(11,27,51,0.92)_100%)]"
+          className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(15,42,79,0.34)_0%,rgba(15,42,79,0.48)_36%,rgba(11,27,51,0.88)_68%,rgba(11,27,51,0.97)_100%)] md:bg-[linear-gradient(105deg,rgba(15,42,79,0.9)_0%,rgba(15,42,79,0.72)_28%,rgba(11,27,51,0.28)_52%,rgba(11,27,51,0.08)_100%),linear-gradient(180deg,rgba(15,42,79,0.22)_0%,transparent_32%,rgba(11,27,51,0.42)_72%,rgba(11,27,51,0.88)_100%)]"
           aria-hidden
         />
 
