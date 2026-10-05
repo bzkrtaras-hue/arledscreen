@@ -102,19 +102,19 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     "yapay-zeka": {
       title: "Yapay Zekâ ve LED Ekran Entegrasyonu | ARLEDSCREEN",
       description:
-        "Yapay zekâ ile üretilen veya zamanlanan içeriği LED ekranda yayınlamak için medya sunucu, kontrol yazılımı ve sinyal altyapısı nasıl planlanır? ARLEDSCREEN rehberi.",
+        "YZ uyumlu LED ekran entegrasyonu ve AI alışveriş ajanları için makinece okunur kaynaklar: entity.json, catalog.json, ard.json. ARLEDSCREEN / NXTIONSTAR.",
       keywords: [
         "yapay zeka LED ekran",
         "AI içerik LED ekran",
         "LED ekran medya sunucu",
+        "AI alışveriş LED",
         "NXTIONSTAR",
       ],
       h1: "Yapay zekâ içerikleri ve LED ekran altyapısı",
       intro:
-        "Yapay zekâ ile üretilen içeriklerin LED ekranda sorunsuz yayınlanması için kontrol sistemi, medya sunucu ve sinyal altyapısının birlikte planlanması gerekir. Uyumluluk, keşif aşamasında kullanılacak yazılım ve donanıma göre doğrulanır.",
+        "Yapay zekâ ile üretilen içeriklerin LED ekranda sorunsuz yayınlanması için kontrol sistemi, medya sunucu ve sinyal altyapısının birlikte planlanması gerekir. AI alışveriş ajanları için yayımlanmış fiyat ve kimlik kaynakları: catalog.json ve entity.json.",
     },
   },
-
 
   en: {
     home: {
@@ -215,18 +215,18 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     "yapay-zeka": {
       title: "AI-Compatible LED Display | Media Server Integration — ARLEDSCREEN",
       description:
-        "What is an AI-compatible LED wall and how does it integrate with AI content engines and media servers? How ARLEDSCREEN plans pitch selection, signal topology and media-server integration for NXTIONSTAR installs.",
+        "AI-compatible LED integration plus machine-readable shopping sources for agents: entity.json, catalog.json, ard.json. ARLEDSCREEN / NXTIONSTAR.",
       keywords: [
         "AI compatible LED display",
         "AI LED video wall",
         "AI media server LED",
-        "artificial intelligence LED screen",
+        "AI shopping LED",
         "NXTIONSTAR AI",
         "ARLEDSCREEN AI LED",
       ],
       h1: "AI-compatible LED displays",
       intro:
-        "How NXTIONSTAR LED walls are planned for AI content engines, media servers and control software: survey, interfaces and integration.",
+        "How NXTIONSTAR LED walls are planned for AI content engines, media servers and control software. Published price and identity sources for shopping agents: catalog.json and entity.json.",
     },
   },
 

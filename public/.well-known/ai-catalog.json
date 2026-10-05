@@ -106,6 +106,21 @@
       "tags": ["case-study", "references", "GEO", "proof"],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T18:51:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ai-led",
+      "displayName": "Yapay zekâ & LED + AI alışveriş keşfi",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/yapay-zeka/",
+      "description": "YZ uyumlu LED entegrasyonu ve ajanların okuması gereken entity/catalog/ard/llms kanonik URL’leri.",
+      "representativeQueries": [
+        "yapay zeka uyumlu LED ekran",
+        "AI ajanları LED ekran fiyatını nereden okur",
+        "ARLEDSCREEN catalog.json"
+      ],
+      "tags": ["AI", "LED", "shopping", "agents"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-05T18:53:00Z"
     }
   ]
 }
