@@ -43,7 +43,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [ ] Attach more **real** project photos to case studies as files become available — gap list: [`docs/case-study-photo-gaps.md`](./case-study-photo-gaps.md) (8/29 have photos; `audit:case-images`)
 - [x] Author / E-E-A-T page for Aras Bozkurt (`/tr/about/aras-bozkurt/` + Person JSON-LD)
 - [x] Commercial landings: fiyat + hesaplayıcı + karar rehberi LinkCloud
-- [x] GOB vs SMD karar rehberi (`/tr/rehber/gob-vs-smd/`)
+- [x] GOB vs SMD karar rehberi (`/tr/rehber/gob-vs-smd/`) + GOB panel USD tablosu + fiyat/catalog ShoppingLinkCloud
 - [x] About sayfası: entity cite + disambiguation (basin UI yok)
 
 ## P1 — Local / reviews (owner-operated)
@@ -80,7 +80,7 @@ Durum (2026-10-05): site A/B kod hazır; canlı entity/catalog/ard soft-404 → 
 ## P2 — Content clusters (quality over volume)
 
 - [ ] Expand fiyat cluster: P2.5/P4/P5 decision pages already exist — keep unique, interlink to fiyat hub
-- [ ] Decision guides: GOB vs SMD, izleme mesafesi, kiralama vs satın alma (rehber already partial)
+- [x] Decision guide GOB vs SMD + fiyat LinkCloud (Gün 20); kalan: izleme mesafesi / kiralama kalınlaştırma
 - [ ] No 100 thin blogs; keep blog as project storytelling only
 - [ ] Internal link audit: every commercial page → fiyat + calculator + 1 product + 1 city when relevant
 

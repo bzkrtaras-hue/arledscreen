@@ -33,6 +33,9 @@ const pages = [
     "products/transparan-led-ekran",
     "products/poster-led-ekran",
     "products/huidu-kontrol-kartlari",
+    "rehber/gob-vs-smd",
+    "rehber/piksel-araligi-secimi",
+    "rehber/kiralik-mi-satin-alma",
   ].map((s) => path.join(outTr, s, "index.html")),
 ];
 
