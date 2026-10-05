@@ -18,7 +18,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 26 | 2026-10-05 | llms/entity cite parity (`audit:cite-parity`) | ✅ |
 | 27 | 2026-10-05 | Merchant feed dry-run 12 SKU (`audit:merchant-feed`) | ✅ |
 | 28 | 2026-10-05 | FAQ + LinkCloud gaps (ürün grupları catalog hint) | ✅ |
-| 29 | — | (plan: regression suite tek komut özeti) | ⏳ |
+| 29 | 2026-10-05 | Regression suite tek komut (`audit:all`) | ✅ |
 | 30 | 2026-11-04 | Ay sonu ölçüm + owner Point C panosu | ⏳ |
 
 ## Gün 24 notları
@@ -51,6 +51,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Ürün grubu FAQ’larına catalog/fiyat/hesaplayıcı kaynak cümlesi (`shoppingSourceFaq`)
 - `ShoppingLinkCloud` ürün gruplarında; audit fiyat+entity+hesaplayıcı genişletildi
 - [`docs/faq-linkcloud-gaps.md`](./faq-linkcloud-gaps.md)
+
+## Gün 29 notları
+
+- `npm run audit:all` → 14 audit PASS/FAIL tablosu
+- [`docs/ai-shopping-regression-suite.md`](./ai-shopping-regression-suite.md)
 
 ## Owner P0 (her gün hatırlatma)
 
