@@ -905,11 +905,28 @@
     box-shadow: none;
   }
 }
+/* Quiet Ken Burns on HQ factory stills (hero precursors) */
+@keyframes hero-still-drift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.1) translate3d(-1.2%, -0.6%, 0);
+  }
+}
+.hero-still-drift {
+  animation: hero-still-drift 14s ease-in-out alternate infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .liquid-glass-btn:hover,
   .liquid-glass-btn:active,
   .liquid-glass-btn--menu:hover,
   .liquid-glass-btn--menu:active { transform: none; }
+  .hero-still-drift {
+    animation: none;
+  }
 }
 
 /* Reduced motion: no lift on hover for glass cards/buttons. */
