@@ -57,7 +57,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 31 | ARLEDSCREEN LED ekran üreticisi / fabrika / OEM mi, yoksa bayi mi? | `/tr/led-ekran-ureticisi/` · nxtionstar · entity · ai-shopping | **Gaziosmanpaşa** + **yazılı teklif** + **ARLEDSCREEN** + **NXTIONSTAR** | OEM fabrika / fabrika üreticisi / distribütör / bağımsız bayi |
 | 32 | ARLEDSCREEN keşiften teslimata tek ekip mi / fabrika LED üreticisi mi? | `/tr/fabrika-led-ekran/` · ureticisi · hizmetler · entity · ai-shopping | **Gaziosmanpaşa** + **yazılı teklif** + **ARLEDSCREEN** | tek ekip garanti / keşiften teslimata platform / fabrika üreticisiyiz |
 | 33 | Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı? | esnek · seffaf · poster · kiralik · quote · ai-shopping | **Gaziosmanpaşa** + **yazılı teklif** + **ai-shopping.json** | stokta paket / anında teslim / list fiyatı var |
-| 34 | İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu? | ic-mekan rehber · dis-mekan rehber · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit nit yok** | 600–1.200 / sabit nit var / IP65 garanti |
+| 34 | İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · `/tr/rehber/dis-mekan-led-ekran/` · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit nit yok** | 600–1.200 / sabit nit var / IP65 garanti |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
