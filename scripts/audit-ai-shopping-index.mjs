@@ -68,6 +68,38 @@ if (String(doc.mustKnowFacts?.p25IcUsd) !== "32.18") {
 if (Number(doc.shoppingPolicy?.pricedSkuCount) !== 12) {
   errors.push(`shoppingPolicy.pricedSkuCount must be 12`);
 }
+if (doc.shoppingPolicy?.priceValidUntil !== "2026-12-31") {
+  errors.push(`shoppingPolicy.priceValidUntil must be 2026-12-31`);
+}
+if (!Array.isArray(doc.pricedPanels) || doc.pricedPanels.length !== 12) {
+  errors.push(`pricedPanels must list 12 SKUs (got ${doc.pricedPanels?.length})`);
+} else {
+  const p25 = doc.pricedPanels.find((p) => p.sku === "p2-5-ic");
+  if (!p25 || String(p25.price) !== "32.18") {
+    errors.push("pricedPanels must include p2-5-ic @ 32.18");
+  }
+  for (const p of doc.pricedPanels) {
+    if (!p.url || !String(p.url).includes("/tr/products/")) {
+      errors.push(`pricedPanels ${p.sku} missing product url`);
+      break;
+    }
+  }
+}
+const quoteGroups = doc.shoppingPolicy?.quoteOnlyProductGroups || [];
+if (quoteGroups.length < 5) {
+  errors.push(`quoteOnlyProductGroups must be ≥5 (got ${quoteGroups.length})`);
+} else if (!quoteGroups.every((g) => g.url && g.name)) {
+  errors.push("quoteOnlyProductGroups entries need name+url");
+}
+if (!doc.shoppingPolicy?.quoteUrl?.includes("/tr/quote/")) {
+  errors.push("shoppingPolicy.quoteUrl missing");
+}
+if (!Array.isArray(doc.agentRules) || doc.agentRules.length < 4) {
+  errors.push("agentRules must list ≥4 rules");
+}
+if (String(doc.mustKnowFacts?.priceValidUntil) !== "2026-12-31") {
+  errors.push("mustKnowFacts.priceValidUntil must be 2026-12-31");
+}
 
 const entity = JSON.parse(fs.readFileSync(path.join(out, "entity.json"), "utf8"));
 if (!entity.aiShoppingJson?.includes("/ai-shopping.json")) {
@@ -99,5 +131,5 @@ if (errors.length) {
 }
 
 console.log(
-  `audit-ai-shopping-index: OK — sources=${needSources.length} prompts=${prompts.length} entity+CORS+routes+ard`,
+  `audit-ai-shopping-index: OK — sources=${needSources.length} prompts=${prompts.length} pricedPanels=12 entity+CORS+routes+ard`,
 );

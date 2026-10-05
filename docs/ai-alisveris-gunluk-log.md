@@ -40,6 +40,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 48 | 2026-10-05 | `ai-shopping.json` tek-fetch index + `post-deploy` + entity hasOfferCatalog | ✅ |
 | 49 | 2026-10-05 | ai-shopping.json birincil ajan girişi (yapay-zeka/footer/FAQ/llms) | ✅ |
 | 50 | 2026-10-05 | Offer `priceValidUntil` + `sync-llms-prices` otomatik PANEL tablosu | ✅ |
+| 51 | 2026-10-05 | ai-shopping pricedPanels+agentRules · Offer shippingDetails · Brand.url | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -201,3 +202,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `scripts/sync-llms-prices.mjs` — build’de PANEL_PRICES → llms-full.txt AUTO blok
 - about: ai-shopping.json birincil kaynak linki
 - Guards: audit:offers + cite-parity `priceValidUntil`; smoke about mustInclude ai-shopping
+
+## Gün 51 notları
+
+- `ai-shopping.json`: 12 `pricedPanels` + `agentRules` + quoteOnlyProductGroups + priceValidUntil
+- Offer `shippingDetails` (nakliye hariç, ücretsiz kargo yok) — catalog + model + hesaplayıcı
+- Brand.url → /tr/nxtionstar/; availability/itemCondition parity on panelProductsJsonLd
+- Entity + hesap FAQ: dated list window; quote-only → /tr/quote/
+- Guards: audit:ai-shopping pricedPanels; audit:offers shippingDetails; cite-parity FAQ

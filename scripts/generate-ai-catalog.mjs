@@ -13,6 +13,25 @@ const SITE = "https://arledscreen.com";
 const pricesSrc = fs.readFileSync(path.join(root, "src/content/prices.ts"), "utf8");
 const modelsSrc = fs.readFileSync(path.join(root, "src/content/models.ts"), "utf8");
 
+const PRICE_VALID_UNTIL =
+  pricesSrc.match(/export const PRICE_VALID_UNTIL\s*=\s*"([^"]+)"/)?.[1] || "2026-12-31";
+
+const NXTIONSTAR_BRAND = {
+  "@type": "Brand",
+  name: "NXTIONSTAR",
+  url: `${SITE}/tr/nxtionstar/`,
+};
+
+const PANEL_SHIPPING_DETAILS = {
+  "@type": "OfferShippingDetails",
+  shippingDestination: {
+    "@type": "DefinedRegion",
+    addressCountry: "TR",
+  },
+  description:
+    "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok.",
+};
+
 const priceRe =
   /\{\s*id:\s*"([^"]+)",\s*pitch:\s*"([^"]+)",\s*pitchMm:\s*([\d.]+),\s*use:\s*"(ic|dis)",\s*(?:surface:\s*"GOB",\s*)?(?:frontService:\s*true,\s*)?usd:\s*([\d.]+),\s*groups:\s*\[([^\]]+)\](?:,\s*moduleMm:\s*"([^"]+)")?\s*\}/g;
 
@@ -64,7 +83,7 @@ const products = prices.map((p) => {
     "@id": `${url}#product`,
     sku: p.id,
     name,
-    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    brand: NXTIONSTAR_BRAND,
     category: "LED ekran modülü",
     url,
     groupUrl,
@@ -86,9 +105,10 @@ const products = prices.map((p) => {
       url,
       price: p.usd.toFixed(2),
       priceCurrency: "USD",
-      priceValidUntil: "2026-12-31",
+      priceValidUntil: PRICE_VALID_UNTIL,
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
+      shippingDetails: PANEL_SHIPPING_DETAILS,
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         price: p.usd.toFixed(2),
@@ -169,7 +189,7 @@ function groupAggregateOffers() {
       highPrice: Math.max(...usd).toFixed(2),
       offerCount: rows.length,
       sku: rows.map((r) => r.id),
-      priceValidUntil: "2026-12-31",
+      priceValidUntil: PRICE_VALID_UNTIL,
       description:
         "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
       seller: { "@id": `${SITE}/#organization` },
@@ -186,7 +206,7 @@ function groupAggregateOffers() {
     highPrice: Math.max(...allUsd).toFixed(2),
     offerCount: prices.length,
     sku: prices.map((p) => p.id),
-    priceValidUntil: "2026-12-31",
+    priceValidUntil: PRICE_VALID_UNTIL,
     description:
       "12 priced panel USD bandı (iç + dış + GOB). Quote-only ürünler dahil değildir.",
     seller: { "@id": `${SITE}/#organization` },
@@ -215,8 +235,10 @@ const catalog = {
     currency: "USD",
     priceUnit: "panel",
     standardModule: "320 × 160 mm",
+    priceValidUntil: PRICE_VALID_UNTIL,
     vatIncluded: false,
     shippingIncluded: false,
+    shipping: "excluded-from-list; quote",
     extrasUsd: {
       workshopLaborPerM2: laborPerM2,
       controlCard: controlCard,

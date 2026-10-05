@@ -8,7 +8,7 @@ IndexNow / post-deploy: `npm run post-deploy`
 Bu sayfa **ölçüm şablonu + sahip panosu**. Kod tarafı Gün 16–29 ile hazır;
 canlı skorlar merge + Point C sonrası doldurulur.
 
-## A) Site-side (repo) — 2026-10-05 (gün 16–49)
+## A) Site-side (repo) — 2026-10-05 (gün 16–51)
 
 | Metrik | Hedef | Durum |
 |--------|-------|-------|
@@ -20,7 +20,8 @@ canlı skorlar merge + Point C sonrası doldurulur.
 | Kör test site readiness | 12 prompt URL | ✅ audit:blind-test |
 | AI headers (CORS/ctype) | 9 path | ✅ audit:ai-headers |
 | IndexNow key | public hex.txt | ✅ audit:indexnow |
-| AI shopping index | `/ai-shopping.json` | ✅ audit:ai-shopping |
+| AI shopping index | `/ai-shopping.json` + 12 pricedPanels | ✅ audit:ai-shopping |
+| Offer shippingDetails | nakliye hariç (TR) | ✅ model + catalog |
 | Shopping LinkCloud | home→model→case→blog→seo-guide | ✅ 143+ yüzey |
 | Org → catalog JSON-LD | hasOfferCatalog | ✅ OrganizationJsonLd + entity.json |
 | Offer ↔ catalog join | sku=priceId + isPartOf | ✅ model/group/pitch |

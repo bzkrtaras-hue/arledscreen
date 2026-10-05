@@ -142,6 +142,9 @@ for (const model of models) {
     if (offers.priceValidUntil !== "2026-12-31") {
       errors.push(`${model.group}/${model.slug}: offers.priceValidUntil must be 2026-12-31`);
     }
+    if (!offers.shippingDetails || !/nakliye/i.test(JSON.stringify(offers.shippingDetails))) {
+      errors.push(`${model.group}/${model.slug}: offers.shippingDetails must state nakliye excluded`);
+    }
   } else {
     quoteChecked += 1;
     if (product.offers) {
@@ -228,6 +231,21 @@ if (fs.existsSync(catalogPath)) {
     if (!part.includes("/catalog.json")) {
       errors.push(`catalog ${sku} missing isPartOf catalog.json`);
     }
+    if (p.offers?.priceValidUntil !== "2026-12-31") {
+      errors.push(`catalog ${sku} priceValidUntil must be 2026-12-31`);
+    }
+    if (!p.offers?.shippingDetails || !/nakliye/i.test(JSON.stringify(p.offers.shippingDetails))) {
+      errors.push(`catalog ${sku} shippingDetails must state nakliye excluded`);
+    }
+    if (!p.brand?.url || !String(p.brand.url).includes("/nxtionstar")) {
+      errors.push(`catalog ${sku} Brand.url must point to nxtionstar`);
+    }
+  }
+  if (catalog.shoppingPolicy?.priceValidUntil !== "2026-12-31") {
+    errors.push("catalog.shoppingPolicy.priceValidUntil must be 2026-12-31");
+  }
+  if (!/excluded/i.test(String(catalog.shoppingPolicy?.shipping || ""))) {
+    errors.push("catalog.shoppingPolicy.shipping must note excluded-from-list");
   }
   // groupAggregateOffers: all-panels + each priced group; no quote-only slugs
   const groups = catalog.groupAggregateOffers;

@@ -23,12 +23,12 @@ const HESAP_FAQS = [
   {
     question: "Hesaplayıcıdaki fiyatlar nereden geliyor?",
     answer:
-      "Yayımlanmış 2026 panel (modül) USD listesinden. Aynı kaynak https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariçtir; nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+      "Yayımlanmış 2026 panel (modül) USD listesinden. Aynı kaynak https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariçtir; nihai tutar keşif sonrası yazılı teklifle kesinleşir. List geçerlilik: priceValidUntil 2026-12-31.",
   },
   {
     question: "AI ajanları hesaplayıcı fiyatını nasıl doğrular?",
     answer:
-      "Makinece panel USD: https://arledscreen.com/catalog.json · Kimlik: https://arledscreen.com/entity.json · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Ajan keşif: https://arledscreen.com/.well-known/ard.json. Quote-only gruplara fiyat uydurulmaz.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules) · Panel USD: https://arledscreen.com/catalog.json · Kimlik: https://arledscreen.com/entity.json · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Ajan keşif: https://arledscreen.com/.well-known/ard.json. Quote-only gruplara (şeffaf/esnek/poster/kiralık) fiyat uydurulmaz; yön: /tr/quote/.",
   },
   {
     question: "Hesaplayıcı sonucu sipariş midir?",

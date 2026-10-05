@@ -30,6 +30,23 @@ export const CALC_EXTRAS = {
 /** Published list year window — agents/Merchant may treat prices as dated. */
 export const PRICE_VALID_UNTIL = "2026-12-31";
 
+/** Honest OfferShippingDetails: list USD excludes freight; final = quote. */
+export const PANEL_SHIPPING_DETAILS = {
+  "@type": "OfferShippingDetails",
+  shippingDestination: {
+    "@type": "DefinedRegion",
+    addressCountry: "TR",
+  },
+  description:
+    "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok.",
+} as const;
+
+export const NXTIONSTAR_BRAND = {
+  "@type": "Brand",
+  name: "NXTIONSTAR",
+  url: `${SITE_URL}/tr/nxtionstar/`,
+} as const;
+
 export const PANEL_PRICES: PanelPrice[] = [
   { id: "p1-25-ic-gob", pitch: "P1.25", pitchMm: 1.25, use: "ic", surface: "GOB", usd: 95.88, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
   { id: "p1-53-ic-gob", pitch: "P1.53", pitchMm: 1.53, use: "ic", surface: "GOB", usd: 62.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
@@ -90,7 +107,7 @@ export function panelProductsJsonLd(
     "@id": urlFor?.(p) ? `${u}#product` : `${pageUrl}#${p.id}`,
     name: `${panelLabel(p)} LED ekran modülü (${panelModule(p)})`,
     sku: p.id,
-    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    brand: { ...NXTIONSTAR_BRAND },
     category: "LED ekran modülü",
     description: `${panelLabel(p)} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.`,
     url: u,
@@ -111,6 +128,9 @@ export function panelProductsJsonLd(
       price: p.usd.toFixed(2),
       priceCurrency: "USD",
       priceValidUntil: PRICE_VALID_UNTIL,
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      shippingDetails: { ...PANEL_SHIPPING_DETAILS },
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         price: p.usd.toFixed(2),
@@ -131,7 +151,7 @@ export function panelProductsJsonLd(
       "@id": `${pageUrl}#service`,
       name: serviceName,
       provider: org,
-      brand: { "@type": "Brand", name: "NXTIONSTAR" },
+      brand: { ...NXTIONSTAR_BRAND },
       areaServed: { "@type": "Country", name: "Türkiye" },
       url: pageUrl,
       offers: {

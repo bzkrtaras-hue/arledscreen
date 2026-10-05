@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import type { CommercialPage } from "@/content/commercial-pages";
 import { commercialPath } from "@/content/commercial-pages";
-import { PANEL_PRICES } from "@/content/prices";
+import { PANEL_PRICES, PRICE_VALID_UNTIL } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
@@ -92,7 +92,7 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
       lowPrice: Math.min(...usd).toFixed(2),
       highPrice: Math.max(...usd).toFixed(2),
       offerCount: pitchPanels.length,
-      priceValidUntil: "2026-12-31",
+      priceValidUntil: PRICE_VALID_UNTIL,
       sku: pitchPanels.map((p) => p.id),
       description: `${pitchLabel} yayımlanmış panel USD bandı; KDV ve nakliye hariç. Kaynak: catalog.json.`,
       seller: { "@id": `${SITE_URL}/#organization` },

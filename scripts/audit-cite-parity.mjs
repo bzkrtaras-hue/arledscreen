@@ -163,6 +163,17 @@ if (pricesSrc && llmsFull) {
   }
 }
 
+// Day 51: entity FAQ must cite dated list window for agents
+const entityJson = read("public/entity.json");
+if (entityJson) {
+  if (!entityJson.includes("priceValidUntil") || !entityJson.includes("2026-12-31")) {
+    errors.push("entity.json FAQs should cite priceValidUntil 2026-12-31");
+  }
+  if (!entityJson.includes("ai-shopping.json")) {
+    errors.push("entity.json FAQs should cite ai-shopping.json");
+  }
+}
+
 if (errors.length) {
   console.error(`audit-cite-parity: FAIL (${errors.length})`);
   for (const e of errors) console.error(" -", e);

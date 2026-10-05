@@ -20,8 +20,10 @@
     "currency": "USD",
     "priceUnit": "panel",
     "standardModule": "320 × 160 mm",
+    "priceValidUntil": "2026-12-31",
     "vatIncluded": false,
     "shippingIncluded": false,
+    "shipping": "excluded-from-list; quote",
     "extrasUsd": {
       "workshopLaborPerM2": 100,
       "controlCard": 500,
@@ -141,7 +143,8 @@
       "name": "NXTIONSTAR P1.25 İç mekân (GOB) LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
@@ -184,6 +187,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "95.88",
@@ -211,7 +222,8 @@
       "name": "NXTIONSTAR P1.53 İç mekân (GOB) LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
@@ -254,6 +266,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "62.08",
@@ -281,7 +301,8 @@
       "name": "NXTIONSTAR P1.86 İç mekân (GOB) LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
@@ -324,6 +345,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "49.08",
@@ -351,7 +380,8 @@
       "name": "NXTIONSTAR P2.5 İç mekân LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
@@ -389,6 +419,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "32.18",
@@ -416,7 +454,8 @@
       "name": "NXTIONSTAR P3.07 İç mekân LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
@@ -454,6 +493,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "30.88",
@@ -481,7 +528,8 @@
       "name": "NXTIONSTAR P4 İç mekân LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
@@ -519,6 +567,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "26.98",
@@ -546,7 +602,8 @@
       "name": "NXTIONSTAR P2.5 Dış mekân LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
@@ -584,6 +641,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "63.70",
@@ -611,7 +676,8 @@
       "name": "NXTIONSTAR P2.9 Dış mekân LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
@@ -649,6 +715,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "53.30",
@@ -676,7 +750,8 @@
       "name": "NXTIONSTAR P3.07 Dış mekân LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
@@ -714,6 +789,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "44.20",
@@ -741,7 +824,8 @@
       "name": "NXTIONSTAR P4 Dış mekân LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
@@ -779,6 +863,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "33.80",
@@ -806,7 +898,8 @@
       "name": "NXTIONSTAR P4 Dış mekân (önden servis) LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
@@ -849,6 +942,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "36.40",
@@ -876,7 +977,8 @@
       "name": "NXTIONSTAR P5 Dış mekân LED Modül",
       "brand": {
         "@type": "Brand",
-        "name": "NXTIONSTAR"
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
       },
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
@@ -914,6 +1016,14 @@
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "description": "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok."
+        },
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "29.90",

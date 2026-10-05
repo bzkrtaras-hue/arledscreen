@@ -14,7 +14,14 @@ import {
   type LedModel,
   type ModelKind,
 } from "@/content/models";
-import { CALC_EXTRAS, fmtUsd, panelM2, panelModule, PRICE_VALID_UNTIL } from "@/content/prices";
+import {
+  CALC_EXTRAS,
+  fmtUsd,
+  panelM2,
+  panelModule,
+  PANEL_SHIPPING_DETAILS,
+  PRICE_VALID_UNTIL,
+} from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { ProductCtaRow } from "@/components/products/ProductCtaRow";
 import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
@@ -191,6 +198,7 @@ export default async function ModelPage({ params }: PageProps) {
             priceValidUntil: PRICE_VALID_UNTIL,
             availability: "https://schema.org/InStock",
             itemCondition: "https://schema.org/NewCondition",
+            shippingDetails: { ...PANEL_SHIPPING_DETAILS },
             priceSpecification: {
               "@type": "UnitPriceSpecification",
               price: price.usd.toFixed(2),

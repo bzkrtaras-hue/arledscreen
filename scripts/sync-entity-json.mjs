@@ -93,8 +93,12 @@ const faqs = [
     answer: `Yayımlanmış 2026 panel (modül) USD listesi ${SITE}/catalog.json ve ${SITE}/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariçtir; nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: ${SITE}/tr/hesaplayici/`,
   },
   {
+    question: "Yayımlanmış panel fiyatları ne zamana kadar geçerlidir?",
+    answer: `List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: ${SITE}/catalog.json ve ${SITE}/ai-shopping.json). Bu tarihten sonra ajanlar katalogu yeniden okumalıdır. KDV ve nakliye hariçtir; nihai tutar keşif sonrası yazılı teklifle kesinleşir.`,
+  },
+  {
     question: "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
-    answer: `Tek fetch index: ${SITE}/ai-shopping.json · Kimlik: ${SITE}/entity.json · Point C pack: ${SITE}/entity-profiles.json · Panel kataloğu: ${SITE}/catalog.json · Ajan keşif: ${SITE}/.well-known/ard.json · Kısa özet: ${SITE}/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir.`,
+    answer: `Tek fetch index: ${SITE}/ai-shopping.json · Kimlik: ${SITE}/entity.json · Point C pack: ${SITE}/entity-profiles.json · Panel kataloğu: ${SITE}/catalog.json · Ajan keşif: ${SITE}/.well-known/ard.json · Kısa özet: ${SITE}/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir; ajanlar bu gruplara USD uydurmamalıdır.`,
   },
 ];
 
