@@ -33,6 +33,7 @@ export function SiteShell({ locale, children }: SiteShellProps) {
     : [];
   const guides: MenuLink[] = tr
     ? [
+        { href: "/tr/blog/", label: "Blog — proje yazıları" },
         ...ARTICLE_LINKS,
         ...listSeoGuides("tr").map((g) => ({ href: `/tr/rehber/${g.slug}/`, label: g.cardLabel })),
         { href: "/tr/sss/", label: "Sık sorulan sorular" },

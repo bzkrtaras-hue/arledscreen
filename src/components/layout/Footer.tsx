@@ -37,6 +37,7 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/hizmetler/", label: "Hizmetler" },
         { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
         { href: "/tr/projelerimiz/", label: "Projeler" },
+        { href: "/tr/blog/", label: "Blog" },
         { href: "/tr/rehber/", label: "Rehber" },
         { href: "/tr/about/", label: "Hakkımızda" },
         { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
@@ -76,6 +77,7 @@ export function Footer({ locale }: FooterProps) {
         {
           title: "Rehber",
           links: [
+            { href: "/tr/blog/", label: "Blog — proje yazıları" },
             ...ARTICLE_LINKS,
             { href: "/tr/rehber/led-ekran/", label: "LED ekran nedir?" },
             { href: "/tr/rehber/ic-mekan-led-ekran/", label: "İç mekân LED ekran" },
