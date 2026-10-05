@@ -6,7 +6,7 @@
  *
  * 1) smoke:live — must be BLOCKED 0 (or pass --force)
  * 2) indexnow --live — Bing recrawl of AI artefacts (unless --no-indexnow)
- * 3) echo Day 57–59 contract + Point C / blind-test next steps
+ * 3) echo Day 57–64 contract + Point C / blind-test next steps
  *
  * Usage:
  *   node scripts/post-deploy-ai.mjs
@@ -65,25 +65,27 @@ if (skipIndex) {
 }
 
 console.log("");
-console.log("Day 57–59 contract (canlı doğrula):");
+console.log("Day 57–64 contract (canlı doğrula):");
 console.log(
-  "  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd · returnPolicy · ücretsiz kargo yok",
+  "  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd · returnPolicy · ücretsiz kargo yok · blind #13 kontrol",
 );
 console.log(
-  "  catalog.json → shippingDetails · hasMerchantReturnPolicy · Brand.url · priceValidUntil · AggregateOffer honesty",
-);
-console.log("  merchant TSV → shipping boş · tax=TR:0:n · iade honesty");
-console.log(
-  "  HTML FAQ → ai-shopping cite + ücretsiz kargo yok (hubs · models · case studies)",
+  "  catalog.json → shippingDetails · hasMerchantReturnPolicy · Brand.url · priceValidUntil · AggregateOffer honesty · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  Organization hasOfferCatalog → ücretsiz kargo yok / MerchantReturnNotPermitted",
+  "  merchant TSV → shipping boş · tax=TR:0:n · return_policy_label=quote_contract_only · iade honesty",
+);
+console.log(
+  "  HTML FAQ → ai-shopping cite + ücretsiz kargo yok + kontrol quote-only (hubs · models · case · llms)",
+);
+console.log(
+  "  Organization / entity hasOfferCatalog → ücretsiz kargo yok / MerchantReturnNotPermitted / kontrol",
 );
 console.log("");
 console.log("Next (sahip):");
 console.log("  1) npm run point-c-packs -- --live  → GBP / LinkedIn / IG / FB paste");
 console.log("  2) docs/point-c-merge-day.md checklist");
 console.log(
-  "  3) docs/ai-shopping-blind-test.md kör tur 1 (mustSay honesty) → ai-shopping-blind-test-scores.md",
+  "  3) docs/ai-shopping-blind-test.md kör tur 1 (13 prompt /39; mustSay honesty) → ai-shopping-blind-test-scores.md",
 );
 process.exit(0);

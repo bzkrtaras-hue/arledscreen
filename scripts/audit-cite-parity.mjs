@@ -103,6 +103,24 @@ checkLlms("public/llms-full.txt");
 checkLlms("out/llms.txt");
 checkLlms("out/llms-full.txt");
 
+// Day 64: llms must close kontrol invent (extrasUsd 500 ≠ marka list; quote-only Huidu)
+for (const rel of ["public/llms.txt", "public/llms-full.txt", "out/llms.txt", "out/llms-full.txt"]) {
+  const txt = read(rel);
+  if (!txt) continue;
+  if (!/Huidu/i.test(txt) || !/kontrol/i.test(txt)) {
+    errors.push(`${rel} must mention Huidu + kontrol quote-only honesty`);
+  }
+  if (rel.includes("llms.txt") && !rel.includes("full") && !/list SKU|list fiyatı değildir|≠ marka/i.test(txt)) {
+    // short llms must disambiguate extrasUsd controlCard
+    if (!/list SKU fiyatı değildir|marka\/model teklifle/i.test(txt)) {
+      errors.push(`${rel} must clarify extrasUsd kontrol kartı is not Huidu/NovaStar list SKU`);
+    }
+  }
+  if (rel.includes("llms-full") && !/huidu-kontrol-kartlari/i.test(txt)) {
+    errors.push(`${rel} §5 must include huidu-kontrol-kartlari intent row`);
+  }
+}
+
 function checkHtml(rel, mustInclude) {
   const html = read(rel);
   if (!html) return;

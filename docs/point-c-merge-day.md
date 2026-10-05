@@ -1,4 +1,4 @@
-# Point C — merge günü kontrol listesi (Gün 60)
+# Point C — merge günü kontrol listesi (Gün 64)
 
 Hedef: PR #55 deploy olduktan **aynı gün** canlı AI yüzeyleri + bağımsız atıf başlasın.
 Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/entity-profiles.json) · playbook: [`offsite-entity-playbook.md`](./offsite-entity-playbook.md)
@@ -28,13 +28,13 @@ Hedef: **14/14 PASS** (BLOCKED 0).
 
 | URL | Beklenen |
 |-----|----------|
-| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · ücretsiz kargo yok · quote-and-contract-only |
-| `/entity.json` | 200 JSON · `citeOneLiner` · Gaziosmanpaşa |
+| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · ücretsiz kargo yok · quote-and-contract-only · blind #13 kontrol |
+| `/entity.json` | 200 JSON · `citeOneLiner` · Gaziosmanpaşa · `hasOfferCatalog` + kontrol |
 | `/entity-profiles.json` | 200 JSON · `gbpDescription` · `linkedinAbout` · `sameAsReadiness` |
-| `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` · `shippingDetails` · `hasMerchantReturnPolicy` · ücretsiz kargo yok |
-| `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping |
-| `/llms.txt` / `/llms-full.txt` | cite + pricedPanels + ücretsiz kargo yok |
-| `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · shipping boş · KDV açıklaması · iade honesty |
+| `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` · `shippingDetails` · `hasMerchantReturnPolicy` · ücretsiz kargo yok · quoteOnly+kontrol |
+| `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping · 13 kör test |
+| `/llms.txt` / `/llms-full.txt` | cite + pricedPanels + ücretsiz kargo yok + Huidu/kontrol quote-only |
+| `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · shipping boş · `return_policy_label=quote_contract_only` · iade honesty |
 | `/tr/about/` · `/tr/yapay-zeka/` · `/tr/led-ekran-fiyatlari/` | entity + catalog + ai-shopping |
 | `/sitemap.xml` | catalog + ai-shopping + ai-catalog |
 | IndexNow key `.txt` | 200 · key body |
@@ -87,13 +87,14 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 ## 4) Kör tur 1 (deploy sonrası)
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 13 prompt × 0–3 = /39  
-**mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10) · 32.18 (#3)  
+**mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13) · 32.18 (#3)  
 Skor: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
 Hedef tur 1 ≥ 20/39; Point C sonrası tur 2 ≥ 29/39.
 
-## 5) Day 57–59 canlı doğrulama (özet)
+## 5) Day 57–64 canlı doğrulama (özet)
 
 - Offer `hasMerchantReturnPolicy` = MerchantReturnNotPermitted (12 SKU)
-- Model FAQPage (25) + case study FAQPage (29)
-- FAQ honesty: ücretsiz kargo yok / quote-and-contract on hubs
+- Model FAQPage (25) + case study FAQPage (29) + blog/galeri FAQ
+- FAQ honesty: ücretsiz kargo yok / quote-and-contract + kontrol quote-only (llms · hubs)
+- Merchant `return_policy_label=quote_contract_only` · IndexNow kontrol product hubs

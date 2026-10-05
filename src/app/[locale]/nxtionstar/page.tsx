@@ -41,7 +41,7 @@ const FAQS = [
   {
     question: "NXTIONSTAR panel fiyatları nereden okunur?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). İade/garanti teklifte yazılır. Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf/esnek/poster/kiralık list fiyatı yoktur — https://arledscreen.com/tr/quote/.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). İade/garanti teklifte yazılır. Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf/esnek/poster/kiralık ve Huidu/NovaStar/Colorlight kontrol list fiyatı yoktur — https://arledscreen.com/tr/quote/.",
   },
 ];
 

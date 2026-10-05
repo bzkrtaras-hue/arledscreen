@@ -53,6 +53,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 61 | 2026-10-05 | llms hasMerchantReturnPolicy tokens · case/blog sameAs→ai-shopping · blog FAQPage ×N | ✅ |
 | 62 | 2026-10-05 | Kontrol quote-only invent closure · ARD return-policy tokens · galeri FAQPage | ✅ |
 | 63 | 2026-10-05 | Kontrol residual wave (entity/commercial/YZ) · blind #13 · merchant return_policy_label · footer merchant/ai-catalog | ✅ |
+| 64 | 2026-10-05 | llms/hubs kontrol quote-only closure · extrasUsd≠list · IndexNow kontrol hubs · smoke Day63 needles | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -314,3 +315,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Footer discovery: ai-catalog.json + merchant-priced-panels.tsv
 - entity.json hasOfferCatalog.description (kontrol honesty)
 - Guards: audit:ai-shopping prompts=13 · audit:blind-test #13 · audit:merchant-feed return_policy_label
+
+## Gün 64 notları
+
+- `llms.txt` / `llms-full.txt` §5: kontrol quote-only + extrasUsd 500 ≠ Huidu/NovaStar list SKU
+- hesaplayici / rehber hub / nxtionstar / kiralama FAQ / kiralik-mi-satin-alma rehber: kontrol residual
+- IndexNow: 4 kontrol product hubs (+ required huidu)
+- smoke: entity hasOfferCatalog+kontrol · ai-shopping #13 · llms Huidu · merchant return_policy_label
+- point-c-merge-day + post-deploy → Day 57–64 contract

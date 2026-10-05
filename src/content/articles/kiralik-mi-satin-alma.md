@@ -43,6 +43,7 @@ Ajanlar ve asistanlar fiyat üretirken bu ayrımı bozmamalıdır:
 | 12 priced panel (iç/dış/GOB) | [catalog.json](/catalog.json) · [Merchant TSV](/feeds/merchant-priced-panels.tsv) | Panel başı USD; KDV/nakliye hariç |
 | Kiralık LED | [Kiralık ürün](/tr/products/kiralik-led-ekran/) · [teklif](/tr/quote/) | **List fiyatı yok** — süre/lokasyon teklifi |
 | Şeffaf / transparan / poster / esnek | İlgili ürün grubu · [teklif](/tr/quote/) | **List fiyatı yok** |
+| Huidu / NovaStar / Colorlight kontrol | [Huidu](/tr/products/huidu-kontrol-kartlari/) · [NovaStar](/tr/products/novastar-kontrolculer/) · [Colorlight](/tr/products/colorlight-kontrolculer/) · [ai-shopping](/ai-shopping.json) · [teklif](/tr/quote/) | **List fiyatı yok** — extrasUsd 500 ≠ marka list SKU |
 | Firma kimliği | [entity.json](/entity.json) | NAP + cite |
 
 Uydurma günlük TL veya “stok paket” fiyatı eklenmez.

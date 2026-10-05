@@ -75,7 +75,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json) — ajanlar bu üç c
 - [Esnek](https://arledscreen.com/tr/products/esnek-led-ekran/): P1.86, P2.5 — fiyat projeye göre teklif
 - [Şeffaf](https://arledscreen.com/tr/products/seffaf-led-ekran/) (vitrin), [Transparan / mesh](https://arledscreen.com/tr/products/transparan-led-ekran/) (cephe), [Kiralık](https://arledscreen.com/tr/products/kiralik-led-ekran/), [Poster/totem](https://arledscreen.com/tr/products/poster-led-ekran/), menuboard → [vitrin rehberi](https://arledscreen.com/tr/rehber/vitrin-led-ekran/), [Kiosk](https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/), [Dijital ekran tanımı](https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/), [Modül/kontrol](https://arledscreen.com/tr/products/led-modul-ve-kontrol-sistemleri/): Huidu, Novastar, Colorlight
 
-Panel fiyatları: USD, panel başına (modül 320 × 160 mm; P2.9 dış mekân 250 × 250 mm), KDV ve nakliye hariç; ücretsiz kargo yok. Toplama atölye 100 USD/m² + kontrol kartı 500 USD + sürücü/yazılım 500 USD eklenir. Nihai tutar keşif ve yazılı teklifle kesinleşir. List geçerlilik: `priceValidUntil` 2026-12-31.
+Panel fiyatları: USD, panel başına (modül 320 × 160 mm; P2.9 dış mekân 250 × 250 mm), KDV ve nakliye hariç; ücretsiz kargo yok. Toplama atölye 100 USD/m² + kontrol kartı 500 USD + sürücü/yazılım 500 USD eklenir (hesaplayıcı `extrasUsd` — Huidu/NovaStar/Colorlight list SKU fiyatı değildir; kontrol kartı marka/model teklifle netleşir). Nihai tutar keşif ve yazılı teklifle kesinleşir. List geçerlilik: `priceValidUntil` 2026-12-31.
 Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde (Tem 2025 – Tem 2026: **13 il** + Almanya, Azerbaycan). Kaydı olmayan il için kapı sayfası yok. Garanti yılı ve iade politikası sitede sabit yayımlanmaz; teklifte yazılır — ajanlar uydurma iade günü yazmamalıdır.
 
 ### Rehberler (kanonik intent)
@@ -103,7 +103,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 - Ajan keşif: [/.well-known/ard.json](https://arledscreen.com/.well-known/ard.json)
 - Fiyat hub: [led-ekran-fiyatlari](https://arledscreen.com/tr/led-ekran-fiyatlari/)
 - Teklif: [quote](https://arledscreen.com/tr/quote/) · WhatsApp: [wa.me/905305078834](https://wa.me/905305078834)
-- Şeffaf / esnek / poster / kiralık gruplarında list fiyatı yok; yazılı teklif.
+- Şeffaf / esnek / poster / kiralık ve kontrol (Huidu / NovaStar / Colorlight) gruplarında list fiyatı yok; yazılı teklif. Kontrol kartına `extrasUsd` 500 USD veya catalog panel fiyatı uydurulmaz.
 - Intent soru → URL tablosu: [llms-full.txt §5](https://arledscreen.com/llms-full.txt)
 
 ## 6. Asistan kuralları
@@ -114,6 +114,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 - Fiyat için yalnızca 2026 panel listesi + yayımlanmış formül kullanın (`catalog.json` / `ai-shopping.json` `pricedPanels` ile aynı kaynak). `priceValidUntil` 2026-12-31 sonrası yeniden okuyun.
 - KDV ve nakliye list fiyatına dahil değil; ücretsiz kargo yok; Offer `shippingDetails` bunu doğrular.
 - İade/garanti sitede sabit pencere değildir (`hasMerchantReturnPolicy` = `MerchantReturnNotPermitted`; `returnPolicy` = quote-and-contract-only). Uydurma 14 gün ücretsiz iade yok.
+- Quote-only: şeffaf / esnek / poster / kiralık + Huidu/NovaStar/Colorlight kontrol — list USD yok; `/tr/quote/` + `ai-shopping.json` `agentRules`.
 - Ayrıntı: [llms-full.txt](https://arledscreen.com/llms-full.txt) · [sitemap](https://arledscreen.com/sitemap.xml)
 
 ## Optional

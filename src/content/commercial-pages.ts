@@ -363,7 +363,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Kiralık LED ekranın list fiyatı var mı?",
         answer:
-          "Hayır. Kiralık, şeffaf, esnek ve poster gruplarında yayımlanmış panel list fiyatı yoktur; ölçü, süre ve lokasyona göre https://arledscreen.com/tr/quote/ üzerinden yazılı teklif hazırlanır. Tek fetch: https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Satın alma panelleri için https://arledscreen.com/catalog.json geçerlidir.",
+          "Hayır. Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında yayımlanmış panel/kart list fiyatı yoktur; ölçü, süre ve lokasyona göre https://arledscreen.com/tr/quote/ üzerinden yazılı teklif hazırlanır. Tek fetch: https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Satın alma panelleri için https://arledscreen.com/catalog.json geçerlidir.",
       },
       FAQ_AGENT_SOURCE,
     ],

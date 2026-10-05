@@ -26,7 +26,7 @@ const REHBER_HUB_FAQS = [
   {
     question: "Hangi rehber AI alışveriş list vs teklif farkını açıklar?",
     answer:
-      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık (quote-only) ayrımını tarif eder. Kimlik: https://arledscreen.com/entity.json.",
+      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol (quote-only) ayrımını tarif eder. Kontrol kartına list USD uydurulmaz. Kimlik: https://arledscreen.com/entity.json.",
   },
   {
     question: "AI ajanları rehber hub’dan hangi kaynaklara gitmeli?",
