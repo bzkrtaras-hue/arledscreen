@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import {
+  ENTITY_CITE_MEDIUM,
+  ENTITY_CITE_ONE_LINER,
+  ENTITY_CITE_SHORT,
+  ENTITY_CITE_SHORT_EN,
+  ENTITY_DISAMBIGUATION,
+  ENTITY_FAQS,
+  ENTITY_PROFILE_PACKS,
+} from "@/lib/entity";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -37,7 +46,10 @@ const FACTS = [
     label: "Diğer yazılışlar",
     value: "ARLED SCREEN · AR-LED · AR-LED Ekran Teknoloji Merkezi",
   },
-  { label: "Ürün markası", value: "NXTIONSTAR (ARLEDSCREEN’in kendi markası; TR tek satış noktası ARLEDSCREEN)" },
+  {
+    label: "Ürün markası",
+    value: "NXTIONSTAR (ARLEDSCREEN’in kendi markası; TR tek satış noktası ARLEDSCREEN)",
+  },
   { label: "Kurucu", value: "Aras Bozkurt" },
   { label: "Web", value: "https://arledscreen.com" },
   { label: "TR ana sayfa", value: "https://arledscreen.com/tr/" },
@@ -53,15 +65,17 @@ const FACTS = [
     value: `${BUSINESS_GEO.latitude}, ${BUSINESS_GEO.longitude}`,
   },
   { label: "Çalışma saatleri", value: BUSINESS_HOURS_TEXT.join(" · ") },
+  { label: "Makinece okunur", value: "https://arledscreen.com/entity.json" },
 ];
 
-const DISAMBIGUATION = [
-  "ARLEDSCREEN (İstanbul) ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
-  "NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED bileşen",
-];
-
-const CITE_BLURB =
-  "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.";
+const PROFILE_BLOCKS = [
+  { id: "one", title: "Tek cümle (atıf hedefi)", body: ENTITY_CITE_ONE_LINER },
+  { id: "short", title: "Kısa (GBP / dizin özeti)", body: ENTITY_CITE_SHORT },
+  { id: "medium", title: "Orta (LinkedIn / Facebook About)", body: ENTITY_PROFILE_PACKS.linkedinAbout },
+  { id: "ig", title: "Instagram bio", body: ENTITY_PROFILE_PACKS.instagramBio },
+  { id: "dir", title: "Dizin uzun açıklama", body: ENTITY_PROFILE_PACKS.directoryLong },
+  { id: "en", title: "English short (uluslararası listeler)", body: ENTITY_CITE_SHORT_EN },
+] as const;
 
 export default async function BasinPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -74,9 +88,19 @@ export default async function BasinPage({ params }: { params: Promise<{ locale: 
     "@id": `${url}#aboutpage`,
     url,
     name: "ARLEDSCREEN basın kiti ve doğrulanabilir firma bilgisi",
-    description: CITE_BLURB,
+    description: ENTITY_CITE_MEDIUM,
     mainEntity: { "@id": `${SITE_URL}/#organization` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
+  };
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${url}#faq`,
+    mainEntity: ENTITY_FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
   };
 
   return (
@@ -91,6 +115,10 @@ export default async function BasinPage({ params }: { params: Promise<{ locale: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
 
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
@@ -103,7 +131,8 @@ export default async function BasinPage({ params }: { params: Promise<{ locale: 
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             Bu sayfa haber siteleri, sektör dizinleri, üretici listeleri ve AI sistemlerinin
             ARLEDSCREEN’i doğru ilişkilendirmesi için kanonik özet sunar. Sitede yazmayan
-            ciro, sertifika, “Türkiye’nin en büyüğü” gibi iddialar yoktur.
+            ciro, sertifika, “Türkiye’nin en büyüğü” gibi iddialar yoktur. Bağımsız kaynaklarda
+            aynı olgunun doğrulanması için aşağıdaki tek cümleyi kullanın.
           </p>
         </div>
       </section>
@@ -112,53 +141,117 @@ export default async function BasinPage({ params }: { params: Promise<{ locale: 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-xl font-bold text-ink md:text-2xl">Atıf için kısa metin</h2>
           <blockquote className="mt-4 max-w-3xl rounded-2xl border border-border bg-band/40 p-5 text-base leading-relaxed text-ink">
-            {CITE_BLURB}
+            {ENTITY_CITE_MEDIUM}
           </blockquote>
           <p className="mt-3 text-sm text-ink-muted">{BUSINESS_NAP_LINE}</p>
+          <p className="mt-2 text-sm text-ink-soft">
+            Makinece okunur kopya:{" "}
+            <a href="/entity.json" className="font-semibold text-cyan hover:underline">
+              /entity.json
+            </a>
+          </p>
+
+          <h2 className="mt-12 font-display text-xl font-bold text-ink md:text-2xl">
+            Üçüncü taraf profiller için yapıştırma metinleri
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm text-ink-soft">
+            Google Business Profile, LinkedIn, Instagram, Facebook ve sektör dizinlerine aynı
+            olguyu taşıyın. Abartı eklemeyin; NAP satırını değiştirmeyin.
+          </p>
+          <div className="mt-6 grid gap-4 lg:grid-cols-2">
+            {PROFILE_BLOCKS.map((block) => (
+              <div key={block.id} className="rounded-2xl border border-border bg-white p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">
+                  {block.title}
+                </p>
+                <pre className="mt-3 whitespace-pre-wrap font-sans text-sm leading-relaxed text-ink">
+                  {block.body}
+                </pre>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="mt-12 font-display text-xl font-bold text-ink md:text-2xl">
+            ARLEDSCREEN kimdir? (SSS)
+          </h2>
+          <dl className="mt-5 divide-y divide-border border-y border-border">
+            {ENTITY_FAQS.map((f) => (
+              <div key={f.question} className="py-4">
+                <dt className="font-display text-base font-bold text-ink">{f.question}</dt>
+                <dd className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-soft">{f.answer}</dd>
+              </div>
+            ))}
+          </dl>
 
           <h2 className="mt-12 font-display text-xl font-bold text-ink md:text-2xl">NAP ve kimlik</h2>
           <dl className="mt-5 divide-y divide-border border-y border-border">
             {FACTS.map((f) => (
               <div key={f.label} className="grid gap-1 py-3 sm:grid-cols-[12rem_1fr] sm:gap-4">
                 <dt className="text-sm font-semibold text-ink-muted">{f.label}</dt>
-                <dd className="text-sm text-ink break-words">{f.value}</dd>
+                <dd className="break-words text-sm text-ink">{f.value}</dd>
               </div>
             ))}
           </dl>
 
-          <h2 className="mt-12 font-display text-xl font-bold text-ink md:text-2xl">Sosyal profiller (sameAs)</h2>
+          <h2 className="mt-12 font-display text-xl font-bold text-ink md:text-2xl">
+            Sosyal profiller (sameAs)
+          </h2>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
-              <a href={SOCIAL_LINKS.instagram.href} className="font-semibold text-cyan hover:underline" rel="noopener noreferrer" target="_blank">
+              <a
+                href={SOCIAL_LINKS.instagram.href}
+                className="font-semibold text-cyan hover:underline"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 Instagram @arledscreen
               </a>
             </li>
             <li>
-              <a href={SOCIAL_LINKS.facebook.href} className="font-semibold text-cyan hover:underline" rel="noopener noreferrer" target="_blank">
+              <a
+                href={SOCIAL_LINKS.facebook.href}
+                className="font-semibold text-cyan hover:underline"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 Facebook arledscreenn
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/company/arleds" className="font-semibold text-cyan hover:underline" rel="noopener noreferrer" target="_blank">
+              <a
+                href="https://www.linkedin.com/company/arleds"
+                className="font-semibold text-cyan hover:underline"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 LinkedIn company/arleds
               </a>
             </li>
-            {ORGANIZATION_SAME_AS.filter((u) => !u.includes("instagram") && !u.includes("facebook") && !u.includes("linkedin")).map((u) => (
+            {ORGANIZATION_SAME_AS.filter(
+              (u) => !u.includes("instagram") && !u.includes("facebook") && !u.includes("linkedin"),
+            ).map((u) => (
               <li key={u}>
-                <a href={u} className="font-semibold text-cyan hover:underline" rel="noopener noreferrer" target="_blank">
+                <a
+                  href={u}
+                  className="font-semibold text-cyan hover:underline"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   {u}
                 </a>
               </li>
             ))}
           </ul>
           <p className="mt-3 text-xs text-ink-muted">
-            YouTube kanalı açıldığında bu listeye ve Organization schema `sameAs` alanına eklenmelidir.
-            Olmayan profil uydurulmaz.
+            YouTube kanalı açıldığında bu listeye ve Organization schema `sameAs` alanına
+            eklenmelidir. Olmayan profil uydurulmaz.
           </p>
 
-          <h2 className="mt-12 font-display text-xl font-bold text-ink md:text-2xl">Karıştırılmaması gerekenler</h2>
+          <h2 className="mt-12 font-display text-xl font-bold text-ink md:text-2xl">
+            Karıştırılmaması gerekenler
+          </h2>
           <ul className="mt-4 space-y-2 text-sm text-ink-soft">
-            {DISAMBIGUATION.map((d) => (
+            {ENTITY_DISAMBIGUATION.map((d) => (
               <li key={d} className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden />
                 {d}
@@ -194,6 +287,11 @@ export default async function BasinPage({ params }: { params: Promise<{ locale: 
               </Link>
             </li>
             <li>
+              <a href="/entity.json" className="font-semibold text-cyan hover:underline">
+                entity.json
+              </a>
+            </li>
+            <li>
               <a href="/llms.txt" className="font-semibold text-cyan hover:underline">
                 llms.txt
               </a>
@@ -217,15 +315,17 @@ export default async function BasinPage({ params }: { params: Promise<{ locale: 
 
           <div className="mt-10 rounded-2xl border border-border bg-white p-5 text-sm text-ink-soft">
             <p className="font-semibold text-ink">Dizin / haber editörleri için</p>
-            <p className="mt-2">
-              Lütfen adres satırlarını birebir kullanın:
-            </p>
+            <p className="mt-2">Lütfen adres satırlarını birebir kullanın:</p>
             {BUSINESS_ADDRESS_LINES.map((l) => (
               <p key={l}>{l}</p>
             ))}
             <p className="mt-2">
-              Kategori önerisi: LED ekran satışı / dijital tabelacılık / görsel iletişim ekipmanları.
-              Sahte puan, sahte çalışan sayısı veya doğrulanmamış üretim kapasitesi eklemeyin.
+              Kategori önerisi: LED ekran satışı / dijital tabelacılık / görsel iletişim
+              ekipmanları. Sahte puan, sahte çalışan sayısı veya doğrulanmamış üretim kapasitesi
+              eklemeyin.
+            </p>
+            <p className="mt-2">
+              Hedef atıf cümlesi: <span className="text-ink">{ENTITY_CITE_ONE_LINER}</span>
             </p>
           </div>
         </div>

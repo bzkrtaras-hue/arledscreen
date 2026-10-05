@@ -221,6 +221,12 @@ export function Footer({ locale }: FooterProps) {
         </p>
         {tr ? (
           <p className="mt-2">
+            <a href="/entity.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
+              entity.json
+            </a>
+            <span className="text-white/30" aria-hidden>
+              ·
+            </span>
             <a href="/llms.txt" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
               llms.txt
             </a>

@@ -40,14 +40,22 @@ Atıf sayfası: `/tr/basin/`
 - [ ] NAP identical on GBP, site footer, llms.txt, LinkedIn, Instagram, Facebook
 - [x] On-site citeable brand fact page (`/tr/basin/`) + off-site playbook in repo
 
-## P1/P2 — Off-site entity & mentions (owner + PR)
+## P1/P2 — Off-site entity & mentions (owner + PR) — **Point C**
 
+Hedef: “ARLEDSCREEN kimdir?” cevabı **yalnızca kendi siteden** gelmesin; 10–20 güvenilir dış kaynakta aynı olgu doğrulansın.
+
+- [x] On-site citation kit: `/tr/basin/` + FAQ “kimdir?” + yapıştırma pack’leri
+- [x] Machine-readable `public/entity.json` (Organization + cite + FAQs)
+- [x] Off-site playbook: gap audit + 14-gün P0 sıra + 20-kaynak tracker
+- [ ] **Owner P0:** `arleds.com` → `arledscreen.com/tr/` 301 (entity bölünmesini kes)
+- [ ] **Owner P0:** GBP + LinkedIn/IG/FB About = basin pack (aynı NAP)
 - [ ] LinkedIn company + founder posts per major project
 - [ ] Instagram / YouTube: install clips with transcript + embed on case study
 - [ ] Pitch ARLEDSCREEN to sector lists / AV portals / local news (no spam directories)
 - [ ] Ask customers for a project mention/link on their site when appropriate
 - [ ] PDF datasheets hosted on-site and cited from product pages (real sheets only)
 - [ ] Monitor third-party “Turkey LED manufacturers” lists; request accurate inclusion
+- [ ] **Ölçüm:** ayda bir “ARLEDSCREEN kimdir?” → site dışı ≥5–10 URL aynı olguyu taşıyor mu?
 
 ## P2 — Content clusters (quality over volume)
 

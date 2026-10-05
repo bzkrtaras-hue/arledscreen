@@ -1,11 +1,12 @@
 # ARLEDSCREEN — NXTIONSTAR LED ekranlar (tam metin)
 
-> Bu dosya, yapay zekâ asistanları ve arama motorları için ARLEDSCREEN hakkındaki doğrulanabilir bilgileri tek yerde toplar. Kaynak: https://arledscreen.com ve https://fiyat.arledscreen.com (fiyat hesaplayıcı). Son güncelleme: 2026-10-04.
+> Bu dosya, yapay zekâ asistanları ve arama motorları için ARLEDSCREEN hakkındaki doğrulanabilir bilgileri tek yerde toplar. Kaynak: https://arledscreen.com ve https://fiyat.arledscreen.com (fiyat hesaplayıcı). Son güncelleme: 2026-10-05.
 
 ## 1. Firma kimliği
 
 - Ticari ad: ARLEDSCREEN
 - Diğer yazılışlar: ARLED SCREEN, AR-LED, AR-LED Ekran Teknoloji Merkezi
+- Atıf cümlesi: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
 - Ne yapar: LED ekran satışı, keşif, projelendirme, montaj, devreye alma, LED modül / yedek parça tedariki ve teknik servis
 - Ürün markası: NXTIONSTAR. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Marka sloganı: "NXTIONSTAR — görsel gücün küresel standardı."
 - Kurucu: Aras Bozkurt
@@ -14,6 +15,8 @@
 - Telefon ve WhatsApp: +90 530 507 88 34 (https://wa.me/905305078834)
 - E-posta: arled@arledscreen.com
 - Web sitesi: https://arledscreen.com
+- Basın kiti (kanonik NAP / dizin atıfı): https://arledscreen.com/tr/basin/
+- Makinece entity: https://arledscreen.com/entity.json
 - Fiyat hesaplayıcı: https://fiyat.arledscreen.com/ (sitede: https://arledscreen.com/tr/hesaplayici/)
 - Instagram: https://www.instagram.com/arledscreen/
 - Facebook: https://www.facebook.com/arledscreenn
