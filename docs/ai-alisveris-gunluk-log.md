@@ -19,46 +19,26 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 27 | 2026-10-05 | Merchant feed dry-run 12 SKU (`audit:merchant-feed`) | ✅ |
 | 28 | 2026-10-05 | FAQ + LinkCloud gaps (ürün grupları catalog hint) | ✅ |
 | 29 | 2026-10-05 | Regression suite tek komut (`audit:all`) | ✅ |
-| 30 | 2026-11-04 | Ay sonu ölçüm + owner Point C panosu | ⏳ |
+| 30 | 2026-10-05 | Ay sonu pano + `smoke:live` (ölçüm 2026-11-04) | ✅ |
 
-## Gün 24 notları
+## Gün 24–28 özeti
 
-- `src/app/robots.ts`: `AI_SEARCH_BOTS` + `AI_TRAINING_BOTS`; Host bare `arledscreen.com`
-- `scripts/audit-robots.mjs` postbuild’e bağlandı
-- `out/robots.txt`: 23 bot + `*` Allow `/`; Host + Sitemap OK
-- Canlı robots hâlâ eski Host şemalı olabilir → **PR #55 merge + CF redeploy**
-
-## Gün 25 notları
-
-- [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 12 prompt + skor kartı (0–3)
-- `scripts/audit-blind-test.mjs` — site readiness (entity NAP, P2.5=32.18, quote-only, llms intent)
-- Canlı tur sahibi işi; deploy sonrası skor hedefi tur1 ≥18/36
-
-## Gün 26 notları
-
-- [`docs/cite-parity.md`](./cite-parity.md) — ENTITY_CITE_* ↔ entity.json ↔ llms ↔ about
-- `llms.txt` / `llms-full.txt` verbatim citeOneLiner/Short/Medium
-- `seo.ts` about TR/EN cite import; `audit:cite-parity` postbuild
-
-## Gün 27 notları
-
-- `public/feeds/merchant-priced-panels.tsv` — yalnızca 12 priced SKU (quote-only yok)
-- `generate-merchant-feed.mjs` build zincirinde; `audit:merchant-feed` postbuild
-- Owner: Merchant Center’a TSV URL veya dosya yükle (deploy sonrası)
-
-## Gün 28 notları
-
-- Ürün grubu FAQ’larına catalog/fiyat/hesaplayıcı kaynak cümlesi (`shoppingSourceFaq`)
-- `ShoppingLinkCloud` ürün gruplarında; audit fiyat+entity+hesaplayıcı genişletildi
-- [`docs/faq-linkcloud-gaps.md`](./faq-linkcloud-gaps.md)
+- 24 robots Allow + Host · 25 kör test · 26 cite parity · 27 Merchant TSV · 28 FAQ/LinkCloud catalog hint
 
 ## Gün 29 notları
 
 - `npm run audit:all` → 14 audit PASS/FAIL tablosu
 - [`docs/ai-shopping-regression-suite.md`](./ai-shopping-regression-suite.md)
 
+## Gün 30 notları
+
+- [`docs/ai-alisveris-ay-sonu-pano.md`](./ai-alisveris-ay-sonu-pano.md) — site/canlı/Point C/kör test/Merchant ölçüm şablonu
+- `npm run smoke:live` — 2026-10-05: **1/10 PASS** (sitemap); entity/catalog/ard/feed 404 → PR #55 merge şart
+- Kod günleri 16–30 iskeleti tamam; **liderlik skoru** merge + Point C + 2026-11-04 kör tur 2 ile kapanır
+
 ## Owner P0 (her gün hatırlatma)
 
 1. PR #55 merge + Cloudflare Pages redeploy → canlı `/entity.json` `/catalog.json` `/.well-known/ard.json`
 2. Point C: GBP + LinkedIn/IG/FB About = playbook pack
 3. `arleds.com` → `arledscreen.com/tr/` 301
+4. `npm run smoke:live` yeşile dönünce kör tur 1 skor kartı

@@ -11,6 +11,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] Product Offer guard: `npm run audit:offers` (priced → price+image; quote-only → offers yok; catalog ↔ PANEL_PRICES; fiyat hub + fiyat-hesap hesaplayıcı parity) — postbuild’de çalışır
 - [x] GSC invalid-schema regression: `npm run audit:schema` (Offer/AggregateOffer/FAQ/Breadcrumb/no AggregateRating) — postbuild
 - [x] Tek komut regression suite: `npm run audit:all` — [`docs/ai-shopping-regression-suite.md`](./ai-shopping-regression-suite.md) (14 audit)
+- [x] Ay sonu ölçüm panosu + canlı smoke: [`docs/ai-alisveris-ay-sonu-pano.md`](./ai-alisveris-ay-sonu-pano.md) (`npm run smoke:live`)
 - [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok) — checklist: [`docs/merchant-priced-panels.md`](./merchant-priced-panels.md); dry-run TSV: `/feeds/merchant-priced-panels.tsv` (`audit:merchant-feed`)
 - [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn)
 - [ ] **Owner:** `arleds.com` → `arledscreen.com/tr/` 301
