@@ -12,6 +12,7 @@ import { ReferencesGrid } from "@/components/projects/ReferencesGrid";
 import { CompletedProjectsGallery } from "@/components/projects/CompletedProjectsGallery";
 import { ProjectVideos } from "@/components/projects/ProjectVideos";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
+import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { PROJECT_VIDEOS, videoObjectJsonLd } from "@/content/videos";
@@ -135,6 +136,32 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
       <Section id="liste" eyebrow="Seçki" title="Proje listesi" description="Yakın süreçte tamamladığımız projelerden bir seçki; tarih, firma veya proje adı, kapsam ve konum bilgisiyle." className="prose-seo">
         <ReferencesGrid locale="tr" />
         <AllReferencesNote />
+      </Section>
+
+      <Section
+        id="case-studies"
+        eyebrow="Case study"
+        title="Yayımlanmış proje sayfaları"
+        description="Konumu ve ölçüsü/pitch’i yayımlanmış kayıtlardan üretilen sayfalar. Uydurma yorum veya teknik iddia yoktur."
+        className="bg-surface/60 prose-seo"
+      >
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {PROJECT_CASE_STUDIES.map((c) => (
+            <li key={c.slug}>
+              <Link
+                href={`/tr/projelerimiz/${c.slug}/`}
+                className="block rounded-2xl border border-border bg-white p-4 transition hover:border-cyan/40"
+              >
+                <p className="font-display text-base font-bold text-ink">{c.companyLabel}</p>
+                <p className="mt-1 text-sm text-ink-soft">{c.detail}</p>
+                <p className="mt-2 text-xs text-ink-muted">
+                  {c.date}
+                  {c.location ? ` · ${c.location}` : ""}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <section className="bg-band py-14 md:py-20">

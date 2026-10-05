@@ -344,49 +344,6 @@ const INTENT_PAGES: CommercialPage[] = [
     secondaryCta: { href: "/tr/products/kiralik-led-ekran/", label: "Kiralık ürün grubu" },
   }),
   page({
-    slug: "led-ekran-fiyatlari",
-    cluster: "intent",
-    title: "LED Ekran Fiyatları 2026 | ARLEDSCREEN",
-    description:
-      "LED ekran fiyatları: panel USD listesi fiyat hesaplayıcıda. m² fiyatı ölçü, piksel aralığı ve montaja göre değişir. ARLEDSCREEN yazılı teklif.",
-    h1: "LED ekran fiyatları",
-    eyebrow: "Fiyatlandırma",
-    lead: "Sabit tek m² fiyatı yoktur. Yayımlanan panel listesini hesaplayıcıda görün; nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
-    intro: [
-      "LED ekran fiyatını belirleyen başlıca kalemler: piksel aralığı, toplam m², iç/dış mekân, kabin tipi, kontrol sistemi, konstrüksiyon ve montaj koşullarıdır.",
-      "Güncel panel USD bandı fiyat hesaplayıcıda listelenir. Detaylı fiyat faktörleri için eski rehber içeriği de bu sayfaya taşınmıştır; hesaplayıcı her zaman güncel listedir.",
-      NAP,
-    ],
-    bullets: [
-      "Panel listesi → /tr/hesaplayici/",
-      "Keşif sonrası yazılı teklif",
-      "KDV, nakliye ve montaj teklifte ayrı kalemlenebilir",
-    ],
-    images: [
-      { src: "/projects/led-kit.jpg", alt: "LED ekran panel ve montaj kiti" },
-      { src: "/projects/cabinet-50x100.jpg", alt: "LED ekran kabin örneği" },
-    ],
-    proofs: proofsFrom((r) => /\d+\s*m|cm|P\d/i.test(r.detail), 6),
-    relatedProducts: productClusterLinks(),
-    relatedUses: usageLinks(),
-    relatedCities: CORE_CITIES,
-    relatedIntents: intentLinks("led-ekran-fiyatlari"),
-    faqs: [
-      {
-        question: "LED ekran m² fiyatı nedir?",
-        answer:
-          "Tek sabit m² fiyatı yoktur. Panel USD listesi hesaplayıcıda yayımlanır; montaj ve konstrüksiyon keşif sonrası eklenir.",
-      },
-      {
-        question: "Fiyat teklifi için ne gerekli?",
-        answer:
-          "Yaklaşık ölçü, iç/dış mekân, kullanım amacı ve izleme mesafesi yeterlidir. Fotoğraf süreci hızlandırır.",
-      },
-    ],
-    primaryCta: { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
-    secondaryCta: { href: "/tr/quote/", label: "Yazılı teklif iste" },
-  }),
-  page({
     slug: "led-ekran-servis",
     cluster: "intent",
     title: "LED Ekran Servis ve Bakım | ARLEDSCREEN",

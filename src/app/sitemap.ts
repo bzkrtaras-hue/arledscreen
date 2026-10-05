@@ -6,6 +6,7 @@ import { PRODUCT_GROUPS } from "@/content/categories";
 import { LED_MODELS, modelPath } from "@/content/models";
 import { SERVICE_REGIONS } from "@/content/service-regions";
 import { COMMERCIAL_PAGES } from "@/content/commercial-pages";
+import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 
 export const dynamic = "force-static";
 
@@ -112,6 +113,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: page.cluster === "intent" ? 0.95 : page.cluster === "use" ? 0.88 : 0.86,
+    });
+  }
+  entries.push({
+    url: absoluteUrl("/tr/led-ekran-fiyatlari/"),
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.96,
+  });
+  for (const c of PROJECT_CASE_STUDIES) {
+    entries.push({
+      url: absoluteUrl(`/tr/projelerimiz/${c.slug}/`),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.72,
     });
   }
   for (const path of [
