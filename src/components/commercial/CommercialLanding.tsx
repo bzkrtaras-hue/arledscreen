@@ -247,6 +247,7 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
           { href: "/tr/quote/", label: "Yazılı teklif" },
           { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
           { href: "/entity.json", label: "entity.json (kimlik)" },
+          { href: "/entity-profiles.json", label: "entity-profiles.json (Point C)" },
           { href: "/tr/rehber/piksel-araligi-secimi/", label: "Piksel aralığı seçimi" },
           { href: "/tr/rehber/gob-vs-smd/", label: "GOB vs SMD" },
           { href: "/tr/rehber/kiralik-mi-satin-alma/", label: "Kiralık mı, satın alma mı?" },
