@@ -35,6 +35,7 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 - [Hakkımızda](https://arledscreen.com/tr/about/)
 - [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
 - [catalog.json](https://arledscreen.com/catalog.json) — AI alışveriş: yayımlanmış panel USD + ürün URL (KDV/nakliye hariç)
+- [ard.json](https://arledscreen.com/.well-known/ard.json) — Agentic Resource Discovery (ajan keşif manifesti)
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/)
 - [SSS](https://arledscreen.com/tr/sss/)
 - [Teklif](https://arledscreen.com/tr/quote/)
@@ -87,6 +88,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 
 - Entity: [entity.json](https://arledscreen.com/entity.json)
 - Panel kataloğu (fiyat + URL): [catalog.json](https://arledscreen.com/catalog.json)
+- Ajan keşif: [/.well-known/ard.json](https://arledscreen.com/.well-known/ard.json)
 - Fiyat hub: [led-ekran-fiyatlari](https://arledscreen.com/tr/led-ekran-fiyatlari/)
 - Teklif: [quote](https://arledscreen.com/tr/quote/) · WhatsApp: [wa.me/905305078834](https://wa.me/905305078834)
 - Şeffaf / esnek / poster / kiralık gruplarında list fiyatı yok; yazılı teklif.

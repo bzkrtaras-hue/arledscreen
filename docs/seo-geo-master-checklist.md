@@ -7,6 +7,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 
 - [x] `catalog.json` — yayımlanmış panel USD + Product URL (build’de `scripts/generate-ai-catalog.mjs`)
 - [x] `entity.json` + `llms.txt` alışveriş FAQ / katalog linki
+- [x] `/.well-known/ard.json` (+ legacy `ai-catalog.json`) — Agentic Resource Discovery; CORS açık; `rel=ard` link
 - [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok)
 - [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn)
 - [ ] **Owner:** `arleds.com` → `arledscreen.com/tr/` 301

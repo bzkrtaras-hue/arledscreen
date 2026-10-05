@@ -29,14 +29,43 @@
 /robots.txt
   Cache-Control: public, max-age=3600
 
+/entity.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/catalog.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/ard.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/ai-catalog.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
 /llms.txt
   Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
 /llms-full.txt
   Cache-Control: public, max-age=3600
-
-/entity.json
-  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
 # Self-hosted price calculator (embedded same-origin on /<locale>/hesaplayici/).
 # Voice input (Web Speech API) needs the microphone: allowed for this origin only,

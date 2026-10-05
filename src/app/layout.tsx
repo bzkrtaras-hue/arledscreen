@@ -31,6 +31,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  other: {
+    ard: `${SITE_URL}/.well-known/ard.json`,
+  },
 };
 
 export default function RootLayout({
@@ -44,6 +47,12 @@ export default function RootLayout({
       className={montserrat.variable}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="ard" href="/.well-known/ard.json" />
+        <link rel="alternate" type="application/ld+json" href="/entity.json" title="ARLEDSCREEN entity" />
+        <link rel="alternate" type="application/ld+json" href="/catalog.json" title="NXTIONSTAR panel catalog" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+      </head>
       <body className="min-h-screen bg-bg font-sans antialiased">
         {children}
         {/* MailerLite Universal (newsletter form in the footer). Loaded after the page is idle so it does not

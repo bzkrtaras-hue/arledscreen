@@ -65,7 +65,7 @@ export const ENTITY_FAQS = [
   {
     question: "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
     answer:
-      "Makinece entity: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Kısa özet: https://arledscreen.com/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir.",
+      "Makinece entity: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir.",
   },
 ] as const;
 
@@ -126,6 +126,7 @@ export type EntityDocument = {
   llmsTxt: string;
   entityJson: string;
   catalogJson: string;
+  ardJson: string;
   citeOneLiner: string;
   citeShort: string;
   citeMedium: string;
@@ -177,6 +178,7 @@ export function buildEntityDocument(): EntityDocument {
     llmsTxt: `${SITE_URL}/llms.txt`,
     entityJson: `${SITE_URL}/entity.json`,
     catalogJson: `${SITE_URL}/catalog.json`,
+    ardJson: `${SITE_URL}/.well-known/ard.json`,
     citeOneLiner: ENTITY_CITE_ONE_LINER,
     citeShort: ENTITY_CITE_SHORT,
     citeMedium: ENTITY_CITE_MEDIUM,
