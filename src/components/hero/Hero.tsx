@@ -7,8 +7,10 @@ interface HeroProps {
 }
 
 /**
- * Homepage hero — pack B copy (katalog) + soft-rotating field videos:
- * B vitrin · C cafe/restaurant · D lounge
+ * Homepage hero — pack B copy + soft-rotating field videos.
+ * Prefer native 1280×720 landscape first (sharpest inventory); only one
+ * high-bitrate portrait (kafe) for lounge variety. Soft 720×1280 Instagram
+ * re-encodes (e.g. aslanturk ~350 kbps) stay off the hero stage.
  */
 const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   {
@@ -17,9 +19,9 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
     labelEn: "Storefront",
   },
   {
-    slug: "aslanturk-yesilpinar-led-ekran",
-    labelTr: "Kafe / restoran",
-    labelEn: "Cafe / restaurant",
+    slug: "eskisehir-sigorta-led-ekran-ic",
+    labelTr: "İç mekân",
+    labelEn: "Indoor",
   },
   {
     slug: "kafe-led-ekran-uygulamasi",

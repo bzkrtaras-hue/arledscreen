@@ -1,6 +1,9 @@
 /**
  * Site videos re-encoded from ARLEDSCREEN's own Instagram export (@arledscreen).
  * H.264, CRF 28, no audio, +faststart. Captions use only facts from the post captions.
+ *
+ * Resolution inventory (native): two landscape 1280×720 (Eskişehir vitrin/iç),
+ * remaining clips are 720-wide portraits. Homepage hero prefers the 1280 clips.
  */
 export interface SiteVideo {
   slug: string;
