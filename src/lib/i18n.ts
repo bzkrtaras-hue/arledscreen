@@ -98,6 +98,16 @@ export interface Dictionary {
       mobileLedTruck: string;
       mobileLedStage: string;
       automotiveLedEyes: string;
+      pabloCafeMenuBoard: string;
+      loungeLedWallPaint: string;
+      hospitalAcilLedInstall: string;
+      verticalLedFujiStand: string;
+      facadeFrameInstall: string;
+      circularBrandLedSigns: string;
+      officeMeetingLedWall: string;
+      interactiveTotemKiosk: string;
+      pharmacyDutyLed: string;
+      cafePillarSignage: string;
     };
   };
   configurator: {
@@ -377,6 +387,16 @@ const en: Dictionary = {
       mobileLedTruck: "Mobile LED advertising truck — outdoor DOOH",
       mobileLedStage: "Mobile LED stage truck — event production",
       automotiveLedEyes: "Custom automotive LED — creative application",
+      pabloCafeMenuBoard: "Pablo Cafe — branded menu display kiosk",
+      loungeLedWallPaint: "Lounge / venue — indoor LED video wall",
+      hospitalAcilLedInstall: "Hospital emergency entrance — outdoor LED install",
+      verticalLedFujiStand: "Vertical LED panel — portable stand display",
+      facadeFrameInstall: "Commercial façade — LED frame structure install",
+      circularBrandLedSigns: "Circular LED brand signs — retail branding",
+      officeMeetingLedWall: "Corporate meeting room — indoor LED wall",
+      interactiveTotemKiosk: "Interactive digital totem — wayfinding kiosk",
+      pharmacyDutyLed: "Pharmacy duty sign — LED display",
+      cafePillarSignage: "Cafe pillar — illuminated 3D signage",
     },
   },
   configurator: {
@@ -679,6 +699,16 @@ const tr: Dictionary = {
       mobileLedTruck: "Mobil LED reklam kamyonu — dış mekân DOOH",
       mobileLedStage: "Mobil LED sahne kamyonu — etkinlik üretimi",
       automotiveLedEyes: "Özel otomotiv LED — yaratıcı uygulama",
+      pabloCafeMenuBoard: "Pablo Cafe — markalı menü display kiosk",
+      loungeLedWallPaint: "Lounge / mekan — iç mekân LED video duvar",
+      hospitalAcilLedInstall: "Hastane acil girişi — dış mekân LED montajı",
+      verticalLedFujiStand: "Dikey LED panel — taşınabilir stand ekran",
+      facadeFrameInstall: "Ticari cephe — LED karkas montajı",
+      circularBrandLedSigns: "Yuvarlak LED marka tabelaları — perakende branding",
+      officeMeetingLedWall: "Kurumsal toplantı odası — iç mekân LED duvar",
+      interactiveTotemKiosk: "İnteraktif dijital totem — yönlendirme kiosk",
+      pharmacyDutyLed: "Nöbetçi eczane — LED tabela",
+      cafePillarSignage: "Kafe kolon — ışıklı 3D tabela",
     },
   },
   configurator: {
