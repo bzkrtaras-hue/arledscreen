@@ -37,7 +37,6 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/hizmetler/", label: "Hizmetler" },
         { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
         { href: "/tr/projelerimiz/", label: "Projeler" },
-        { href: "/tr/blog/", label: "Blog" },
         { href: "/tr/rehber/", label: "Rehber" },
         { href: "/tr/about/", label: "Hakkımızda" },
         { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
