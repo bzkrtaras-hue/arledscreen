@@ -86,11 +86,28 @@
 1408
 ]
 },
+"/projects/applications/arledscreen-pole-billboard.jpg": {
+"h": 1600,
+"w": 900,
+"widths": [
+480,
+900
+]
+},
 "/projects/applications/automotive-led-eyes.jpg": {
 "h": 447,
 "w": 447,
 "widths": [
 447
+]
+},
+"/projects/applications/billboard-frame-pillar-install.jpg": {
+"h": 1600,
+"w": 1200,
+"widths": [
+480,
+960,
+1200
 ]
 },
 "/projects/applications/cafe-pillar-signage.jpg": {
@@ -109,6 +126,24 @@
 522
 ]
 },
+"/projects/applications/coskun-rest-area-flag-led.jpg": {
+"h": 1600,
+"w": 1204,
+"widths": [
+480,
+960,
+1204
+]
+},
+"/projects/applications/coskunlar-karoser-billboard.jpg": {
+"h": 1200,
+"w": 1600,
+"widths": [
+480,
+960,
+1600
+]
+},
 "/projects/applications/curved-led-tulips.jpg": {
 "h": 505,
 "w": 396,
@@ -117,6 +152,31 @@
 ]
 },
 "/projects/applications/facade-frame-install.jpg": {
+"h": 1600,
+"w": 900,
+"widths": [
+480,
+900
+]
+},
+"/projects/applications/factory-finepitch-test-wall.jpg": {
+"h": 1200,
+"w": 1600,
+"widths": [
+480,
+960,
+1600
+]
+},
+"/projects/applications/factory-long-panel-lift.jpg": {
+"h": 1600,
+"w": 900,
+"widths": [
+480,
+900
+]
+},
+"/projects/applications/highway-pole-led-hoist.jpg": {
 "h": 1600,
 "w": 900,
 "widths": [
@@ -194,6 +254,15 @@
 480,
 960,
 1179
+]
+},
+"/projects/applications/outdoor-panel-crane-install.jpg": {
+"h": 1600,
+"w": 1200,
+"widths": [
+480,
+960,
+1200
 ]
 },
 "/projects/applications/pablo-cafe-menu-board.jpg": {

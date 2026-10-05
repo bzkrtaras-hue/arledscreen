@@ -108,6 +108,14 @@ export interface Dictionary {
       interactiveTotemKiosk: string;
       pharmacyDutyLed: string;
       cafePillarSignage: string;
+      outdoorPanelCraneInstall: string;
+      billboardFramePillarInstall: string;
+      coskunRestAreaFlagLed: string;
+      coskunlarKaroserBillboard: string;
+      arledscreenPoleBillboard: string;
+      factoryLongPanelLift: string;
+      highwayPoleLedHoist: string;
+      factoryFinepitchTestWall: string;
     };
   };
   configurator: {
@@ -397,6 +405,14 @@ const en: Dictionary = {
       interactiveTotemKiosk: "Interactive digital totem — wayfinding kiosk",
       pharmacyDutyLed: "Pharmacy duty sign — LED display",
       cafePillarSignage: "Cafe pillar — illuminated 3D signage",
+      outdoorPanelCraneInstall: "Outdoor LED panel — crane installation",
+      billboardFramePillarInstall: "Outdoor billboard frame — pillar install",
+      coskunRestAreaFlagLed: "Highway rest area — outdoor LED (Turkish flag)",
+      coskunlarKaroserBillboard: "Coşkunlar Karoser — outdoor LED billboard",
+      arledscreenPoleBillboard: "ARLEDSCREEN — pole-mounted outdoor LED",
+      factoryLongPanelLift: "Factory yard — long LED panel lift",
+      highwayPoleLedHoist: "Highway roadside — pole LED hoist install",
+      factoryFinepitchTestWall: "Factory — fine-pitch LED wall test",
     },
   },
   configurator: {
@@ -709,6 +725,14 @@ const tr: Dictionary = {
       interactiveTotemKiosk: "İnteraktif dijital totem — yönlendirme kiosk",
       pharmacyDutyLed: "Nöbetçi eczane — LED tabela",
       cafePillarSignage: "Kafe kolon — ışıklı 3D tabela",
+      outdoorPanelCraneInstall: "Dış mekân LED panel — vinç montajı",
+      billboardFramePillarInstall: "Dış mekân billboard karkası — direk montajı",
+      coskunRestAreaFlagLed: "Dinlenme tesisi — dış mekân LED (Türk bayrağı)",
+      coskunlarKaroserBillboard: "Coşkunlar Karoser — dış mekân LED billboard",
+      arledscreenPoleBillboard: "ARLEDSCREEN — direk tipi dış mekân LED",
+      factoryLongPanelLift: "Fabrika sahası — uzun LED panel kaldırma",
+      highwayPoleLedHoist: "Karayolu kenarı — direk LED vinç montajı",
+      factoryFinepitchTestWall: "Fabrika — ince pitch LED duvar testi",
     },
   },
   configurator: {

@@ -3,6 +3,14 @@ import { getDictionary } from "@/lib/i18n";
 import { OptImage } from "@/components/ui/opt-image";
 
 const SHOTS = [
+  { src: "/projects/applications/outdoor-panel-crane-install.jpg", key: "outdoorPanelCraneInstall" as const },
+  { src: "/projects/applications/billboard-frame-pillar-install.jpg", key: "billboardFramePillarInstall" as const },
+  { src: "/projects/applications/coskun-rest-area-flag-led.jpg", key: "coskunRestAreaFlagLed" as const },
+  { src: "/projects/applications/coskunlar-karoser-billboard.jpg", key: "coskunlarKaroserBillboard" as const },
+  { src: "/projects/applications/arledscreen-pole-billboard.jpg", key: "arledscreenPoleBillboard" as const },
+  { src: "/projects/applications/factory-long-panel-lift.jpg", key: "factoryLongPanelLift" as const },
+  { src: "/projects/applications/highway-pole-led-hoist.jpg", key: "highwayPoleLedHoist" as const },
+  { src: "/projects/applications/factory-finepitch-test-wall.jpg", key: "factoryFinepitchTestWall" as const },
   { src: "/projects/applications/pablo-cafe-menu-board.jpg", key: "pabloCafeMenuBoard" as const },
   { src: "/projects/applications/lounge-led-wall-paint.jpg", key: "loungeLedWallPaint" as const },
   { src: "/projects/applications/hospital-acil-led-install.jpg", key: "hospitalAcilLedInstall" as const },
