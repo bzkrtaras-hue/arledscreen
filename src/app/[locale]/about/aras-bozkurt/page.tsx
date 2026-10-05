@@ -66,8 +66,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             ARLEDSCREEN kurucusu. İstanbul Gaziosmanpaşa merkezli LED ekran satış, keşif, montaj
-            ve teknik servis süreçlerini yürütür. Bu sayfada sitede doğrulanmayan unvan, sertifika
-            veya “Türkiye’nin en…” iddiası yoktur.
+            ve teknik servis süreçlerini yürütür.
           </p>
         </div>
       </section>
