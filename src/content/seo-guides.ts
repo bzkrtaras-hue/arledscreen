@@ -67,7 +67,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Dijital ekran ile LED ekran farkı",
           body:
-            "Her dijital ekran LED ekran değildir. LCD / OLED paneller sabit çözünürlük ve sınırlı boyut sunar; kayan yazı LED tabela çoğunlukla metin amaçlıdır. Tam renkli LED ekran ise kabin veya modülleri yan yana ekleyerek geniş yüzey kurmanıza izin verir. Güneş altında okunabilirlik, geniş açı ve kesintisiz video duvar ihtiyacı varsa LED tercih edilir. ARLEDSCREEN projelerinde önce kullanım senaryosu (cephe, lobi, sahne, vitrin) netleşir; ardından piksel aralığı seçilir. Seriye ait parlaklık ve koruma sınıfı değerleri yazılı teklifte paylaşılır.",
+            "Her dijital ekran LED ekran değildir. LCD / OLED paneller sabit çözünürlük ve sınırlı boyut sunar; kayan yazı LED tabela çoğunlukla metin amaçlıdır. Tam renkli LED ekran ise kabin veya modülleri yan yana ekleyerek geniş yüzey kurmanıza izin verir. Güneş altında okunabilirlik, geniş açı ve çerçevesiz video duvar ihtiyacı varsa LED tercih edilir. ARLEDSCREEN projelerinde önce kullanım senaryosu (cephe, lobi, sahne, vitrin) netleşir; ardından piksel aralığı seçilir. Seriye ait parlaklık ve koruma sınıfı değerleri yazılı teklifte paylaşılır.",
         },
         {
           h2: "Pitch ve montaj — seçim sırası",
@@ -94,7 +94,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Dijital ekran mı LED duvar mı seçmeliyim?",
           answer:
-            "Tek panel / küçük vitrin için LCD yeterli olabilir. Geniş, parlak, kesintisiz yüzey veya dış mekân okunabilirlik gerekiyorsa LED ekran doğru yoldur. ARLEDSCREEN her iki senaryoyu da mühendislik açısından ayırır.",
+            "Tek panel / küçük vitrin için LCD yeterli olabilir. Geniş, parlak, çerçevesiz yüzey veya dış mekân okunabilirlik gerekiyorsa LED ekran doğru yoldur. ARLEDSCREEN her iki senaryoyu da keşif ve yazılı teklifte ayırır.",
         },
         {
           question: "Türkiye’de NXTIONSTAR LED ekran kimden alınır?",
@@ -216,7 +216,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "YZ uyumlu iç mekân LED",
           body:
-            "Yapay zekâ ile üretilen veya otomatik seçilen içerik lobide veya salonda kesintisiz akmalıdır. Bu nedenle teklifte yenileme davranışı, alıcı kartı yolu ve CMS / medya sunucusu uyumu yazılı olarak belirtilir.",
+            "Yapay zekâ ile üretilen veya otomatik seçilen içerik lobide veya salonda kararlı akmalıdır. Bu nedenle teklifte yenileme davranışı, alıcı kartı yolu ve CMS / medya sunucusu uyumu Gaziosmanpaşa keşif notunda yazılı olarak belirtilir.",
         },
       ],
       faqs: [
@@ -610,7 +610,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "LED wall vs classic digital signage",
           body:
-            "LCD signage is fixed-size; LED cabinets tile into large seamless walls. Choose LED when you need outdoor readability, wide viewing angles or a continuous video surface. We start from the use case, then lock pitch and IP rating.",
+            "LCD signage is fixed-size; LED cabinets tile into large frameless walls. Choose LED when you need outdoor readability, wide viewing angles or a continuous video surface. We start from the use case, then lock pitch and IP rating in the written quote.",
         },
         {
           h2: "Pitch, brightness and cabinets",
@@ -637,7 +637,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Digital screen or LED wall?",
           answer:
-            "Small fixed panels can stay LCD. Wide, bright, seamless or outdoor-readable surfaces point to LED. We separate the two in engineering terms.",
+            "Small fixed panels can stay LCD. Wide, bright, frameless or outdoor-readable surfaces point to LED. We separate the two in the Gaziosmanpaşa survey and written quote.",
         },
         {
           question: "Who supplies NXTIONSTAR LED in Turkey?",
@@ -755,9 +755,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Brand loops, product walls and executive dashboards each need balanced brightness for eye comfort. AV integration is added to the signal diagram when required.",
         },
         {
-          h2: "AI-compatible indoor LED",
+          h2: "Survey-scoped AI indoor LED integration",
           body:
-            "AI-generated or automated content must run without dropouts. From Gaziosmanpaşa we specify known refresh behaviour, documented receivers and CMS/media-server fit without proprietary lock-in — integration is written into the survey/quote, not sold as an invented “AI-ready” SKU.",
+            "AI-generated or automated content needs known refresh behaviour, documented receivers and CMS/media-server fit without proprietary lock-in — integration is written into the Gaziosmanpaşa survey/quote, not sold as an invented “AI-ready” or “AI-infrastructure ready” SKU.",
         },
       ],
       faqs: [
@@ -959,7 +959,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Content and AI/CMS pipelines",
           body:
-            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the written quote from Gaziosmanpaşa — the same AI-compatible integration approach used on other ARLEDSCREEN projects (no invented AI-ready product SKU).",
+            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the written quote from Gaziosmanpaşa — the same survey-scoped integration approach used on other ARLEDSCREEN projects (no invented AI-ready or AI-infrastructure ready product SKU).",
         },
       ],
       faqs: [

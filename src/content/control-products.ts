@@ -98,7 +98,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       "NovaLCT ile nokta kalibrasyonu ve ekran izleme",
     ],
     uses: [
-      { title: "Sabit reklam cephesi", body: "Yüksek piksel yükünde kesintisiz senkron yayın." },
+      { title: "Sabit reklam cephesi", body: "Yüksek piksel yükünde senkron yayın — kapsam yazılı teklifte." },
       { title: "Sahne ve kiralık", body: "Düşük gecikme ve çoklu kaynak geçişi." },
       { title: "Zincir mağaza", body: "Taurus + bulut ile merkezi içerik dağıtımı." },
       { title: "Kontrol odası", body: "Çoklu pencere ve kalibrasyon gerektiren duvarlar." },

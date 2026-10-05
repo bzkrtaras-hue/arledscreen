@@ -560,7 +560,7 @@ const PITCH_PAGES: CommercialPage[] = [
     slug: "p2-5-led-ekran",
     label: "P2.5 LED",
     h1: "P2.5 LED ekran",
-    lead: "İç ve dış mekân projelerinde en çok kullanılan pitch bandı.",
+    lead: "İç ve dış mekân projelerinde sık tercih edilen pitch bandı.",
     intro: [
       "P2.5; mağaza, kafe, sahne yakını ve orta mesafe dış mekânlarda dengeli çözünürlük sunar. Kayıtlı projelerde sık geçer.",
     ],

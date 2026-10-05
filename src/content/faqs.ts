@@ -19,14 +19,14 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "We derive peak and average kW from active area and indoor/outdoor duty, recommend three-phase R-S-T balancing, and choose CAT6A or fiber from run length and receiver count — then fold that into the quote pack.",
     },
     {
-      question: "Are NXTIONSTAR LED walls compatible with AI media platforms?",
+      question: "Can NXTIONSTAR LED walls show AI-generated content via media servers?",
       answer:
-        "LED walls display the signal they receive, so AI-generated content works through a standard media player, media server or CMS. During the survey ARLEDSCREEN checks your content source, input interfaces and refresh requirements, and the quote lists the controller and integration items in writing.",
+        "LED walls display the signal they receive, so AI-generated content works through a media player, media server or CMS. During the Gaziosmanpaşa survey ARLEDSCREEN checks your content source, input interfaces and refresh requirements, and the written quote lists the controller and integration items — no invented AI-ready product SKU.",
     },
     {
-      question: "What does AI-infrastructure ready mean for an LED project?",
+      question: "What does survey-scoped AI integration mean for an LED project?",
       answer:
-        "It means the display layer is engineered so AI-generated or AI-scheduled content can run without proprietary lock-in: reliable pixel pipelines, known latency/refresh behavior, and integration paths for CMS, media servers and automation APIs that your AV/IT team already uses.",
+        "It means AI-generated or AI-scheduled content is matched to receivers, refresh behaviour and CMS/media-server paths in the Gaziosmanpaşa survey and written quote — without proprietary lock-in and without selling an invented “AI-infrastructure ready” SKU.",
     },
     {
       question: "Who supplies NXTIONSTAR LED projects in Turkey?",

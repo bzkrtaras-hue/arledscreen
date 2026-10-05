@@ -190,15 +190,31 @@
       "displayName": "Yapay zekâ & LED + AI alışveriş keşfi",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/yapay-zeka/",
-      "description": "YZ uyumlu LED entegrasyonu ve ajanların okuması gereken entity/catalog/ard/llms kanonik URL’leri.",
+      "description": "Keşif-kapsamlı AI/medya entegrasyonu (uydurma AI-infrastructure ready SKU yok) + ajanların okuması gereken entity/catalog/ard/llms kanonik URL’leri.",
       "representativeQueries": [
         "yapay zeka uyumlu LED ekran",
+        "AI-infrastructure ready LED nedir",
         "AI ajanları LED ekran fiyatını nereden okur",
         "ARLEDSCREEN catalog.json"
       ],
       "tags": ["AI", "LED", "shopping", "agents"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:53:00Z"
+      "updatedAt": "2026-10-06T01:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ai-led-en",
+      "displayName": "AI & LED guide (EN) — survey-scoped integration",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/yapay-zeka/",
+      "description": "EN survey-scoped AI/media-server LED integration. No invented AI-infrastructure ready / AI-ready product SKU. Agents: ai-shopping.json + catalog.json + entity.json.",
+      "representativeQueries": [
+        "AI-infrastructure ready LED ARLEDSCREEN",
+        "AI-compatible LED survey Gaziosmanpaşa",
+        "Where do AI agents read ARLEDSCREEN prices"
+      ],
+      "tags": ["AI", "LED", "shopping", "agents", "EN"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T01:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:shopping:merchant-feed",
@@ -236,16 +252,17 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 28 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 29 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
-        "LED panel fiyat catalog entity tek URL"
+        "LED panel fiyat catalog entity tek URL",
+        "AI-infrastructure ready LED nedir / ARLEDSCREEN satıyor mu?"
       ],
       "tags": ["shopping", "discovery", "GEO", "agents", "pricedPanels", "agentRules", "hasMerchantReturnPolicy"],
       "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts", "PricedPanels", "AgentRules", "ReturnPolicyHonesty"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T00:00:00Z"
+      "updatedAt": "2026-10-06T01:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

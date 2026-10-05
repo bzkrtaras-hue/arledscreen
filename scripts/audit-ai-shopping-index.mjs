@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 28 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 29 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 28) errors.push(`blindTestPrompts must be 28 (got ${prompts.length})`);
+if (prompts.length !== 29) errors.push(`blindTestPrompts must be 29 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/28 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 28 kör test intent");
+if (!/29 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 29 kör test intent");
 }
-if (/2[0-7] kör test/i.test(ard) && !/28 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–27 kör test without 28");
+if (/2[0-8] kör test/i.test(ard) && !/29 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–28 kör test without 29");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -273,6 +273,14 @@ if (!p27 || !/turnkey|tek süreç|anahtar teslim/i.test(p27.q || "")) {
 const p28 = (doc.blindTestPrompts || []).find((p) => p.id === 28);
 if (!p28 || !/sorunsuz|kesintisiz/i.test(p28.q || "")) {
   errors.push("blindTestPrompts #28 must cover sorunsuz / kesintisiz platform invent");
+}
+// Day 81: AI-infrastructure ready invent
+const p29 = (doc.blindTestPrompts || []).find((p) => p.id === 29);
+if (!p29 || !/AI-infrastructure/i.test(p29.q || "")) {
+  errors.push("blindTestPrompts #29 must cover AI-infrastructure ready invent");
+}
+if (!/AI-infrastructure ready/i.test(rulesJson)) {
+  errors.push("agentRules must forbid AI-infrastructure ready SKU invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–80: ARD discovery prompt count must not drift behind blind suite
+// Day 74–81: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/28 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 28 kör test intent (not stale 17–27)");
+if (ardTxt && !/29 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 29 kör test intent (not stale 17–28)");
 }
-if (ardTxt && /1[7-9] kör test|2[0-7] kör test/i.test(ardTxt) && !/28 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–27 kör test without 28");
+if (ardTxt && /1[7-9] kör test|2[0-8] kör test/i.test(ardTxt) && !/29 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–28 kör test without 29");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -382,6 +382,25 @@ for (const rel of [
   if (!html) continue;
   if (/sorunsuz|Küresel LED|tek merkezden|dikişsiz/i.test(html)) {
     errors.push(`${rel} must not invent sorunsuz / Küresel LED / tek merkezden / dikişsiz`);
+  }
+}
+// Day 81: AI-infrastructure ready / ranking invent
+for (const rel of [
+  "out/en/yapay-zeka/index.html",
+  "out/tr/yapay-zeka/index.html",
+  "out/en/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/AI-infrastructure ready SKU|What does AI-infrastructure ready mean|AI-compatible LED mean\?/i.test(html)) {
+    errors.push(`${rel} must not invent AI-infrastructure ready / AI-compatible SKU framing`);
+  }
+}
+for (const rel of ["out/tr/projelerimiz/index.html", "out/tr/about/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/Türkiye'nin en büyük mağazası|Türkiye'nin en /i.test(html)) {
+    errors.push(`${rel} must not invent Türkiye'nin en ranking claim`);
   }
 }
 

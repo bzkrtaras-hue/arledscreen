@@ -127,9 +127,9 @@ const content: Record<
     navLabel: "AI & LED",
     sections: [
       {
-        h2: "What does AI-compatible LED mean?",
+        h2: "What does survey-scoped AI LED integration mean?",
         body:
-          "An AI-compatible LED wall is a display layer sized so AI-generated, scheduled or automated content runs reliably. For ARLEDSCREEN / NXTIONSTAR that means known refresh and latency behavior, documented signal paths, and CMS / media-server / control-software matching defined in the Gaziosmanpaşa survey and written quote — without proprietary lock-in or an invented full-compatibility SKU.",
+          "A display layer sized so AI-generated, scheduled or automated content runs reliably. For ARLEDSCREEN / NXTIONSTAR that means known refresh and latency behavior, documented signal paths, and CMS / media-server / control-software matching defined in the Gaziosmanpaşa survey and written quote — without proprietary lock-in or an invented “AI-infrastructure ready” / “AI-ready” product SKU.",
       },
       {
         h2: "Where is it used?",
@@ -171,14 +171,14 @@ const content: Record<
       { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant TSV", note: "12 priced SKU; no free shipping" },
       { href: "/tr/quote/", label: "Quote", note: "Non-listed products" },
     ],
-    ctaTitle: "Size your AI-compatible LED project",
+    ctaTitle: "Size your AI/media LED project",
     ctaBody:
       "Share dimensions, environment and integration needs — the Gaziosmanpaşa team replies with pitch, power and signal outline; firm price follows a written quote.",
     faqs: [
       {
-        question: "How is AI-compatible LED different from a standard wall?",
+        question: "How does survey-scoped AI LED integration differ from a standard wall?",
         answer:
-          "It is not about an on-panel “smart chip”; it is refresh, signal and control architecture chosen for reliable AI/media integration — written clearly into the ARLEDSCREEN survey and quote from Gaziosmanpaşa.",
+          "It is not about an on-panel “smart chip”; it is refresh, signal and control architecture chosen for reliable AI/media integration — written clearly into the ARLEDSCREEN Gaziosmanpaşa survey and quote, not sold as an “AI-infrastructure ready” SKU.",
       },
       {
         question: "Which AI or media servers work?",

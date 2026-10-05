@@ -70,6 +70,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 78 | 2026-10-05 | AR/RU invent #26 seller · tek çatı/uçtan uca · Crunchbase/Merchant packs · IndexNow hubs | ✅ |
 | 79 | 2026-10-05 | turnkey/tek süreç #27 · Ücretsiz calculator · DuckDuckBot · ARD about/hesap/kontrol | ✅ |
 | 80 | 2026-10-05 | sorunsuz/platform #28 · Küresel LED · tek merkezden · ARD led-ekran/sss | ✅ |
+| 81 | 2026-10-05 | AI-infrastructure #29 · ranking invent · EN yapay-zeka ARD · skor /87 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -466,3 +467,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - AR/RU platform modules · HomeCtaBand locale honesty · hesaplayici locale href
 - ARD: led-ekran hub + SSS · IndexNow led-ekran/bolgeler/sss
 - skor hedef Tur 1 ≥ 42/84 · Tur 2 ≥ 63/84
+
+## Gün 81 notları
+
+- Blind #29 «AI-infrastructure ready LED nedir / ARLEDSCREEN satıyor mu?» — skor **/87**; ARD **29 kör test**
+- EN FAQ AI-infrastructure ready → survey-scoped · İstikbal ranking kill · rehber/kontrol kesintisiz soften
+- EN yapay-zeka AI-compatible framing · agentRules AI-infrastructure · ARD EN yapay-zeka discovery
+- IndexNow: piksel-araligi + EN ic/dis rehber · skor Tur 1 ≥ 44/87 · Tur 2 ≥ 65/87

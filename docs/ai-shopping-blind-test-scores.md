@@ -1,36 +1,30 @@
 # AI alışveriş — kör test skor kartı
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (deploy sonrası) ≥ **42/84** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **63/84**  
-Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-profiles.json` · `ard.json`
+Hedef: Tur 1 (deploy sonrası) ≥ **44/87** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **65/87**  
+Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (29 prompt)
 
-## Site readiness (repo)
+> Sahip doldurur. Agent skor uydurmaz.
+> Canlı tur PR #55 merge + CF redeploy + `smoke:live` GREEN sonrası.
 
-| Kontrol | Durum |
-|---------|--------|
-| `npm run audit:blind-test` | build/postbuild |
-| `npm run smoke:live` | deploy sonrası 20/20 |
+## Tur 1 — deploy sonrası (Point C öncesi)
 
-## Tur kayıtları
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /87.
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /84.
-
-### Tur 1 — deploy sonrası (PR #55 canlı)
-
-| Model | Tarih | Konum | Incognito | Skor /84 | Not |
+| Model | Tarih | Konum | Incognito | Skor /87 | Not |
 |-------|-------|-------|-----------|----------|-----|
-| ChatGPT | | TR / | evet | /84 | |
-| Gemini | | | | /84 | |
-| Perplexity | | | | /84 | |
-| Bing Copilot | | | | /84 | |
-| **Ortalama** | | | | **/84** | Hedef ≥ 42 |
+| ChatGPT | | TR / | evet | /87 | |
+| Gemini | | | | /87 | |
+| Perplexity | | | | /87 | |
+| Bing Copilot | | | | /87 | |
+| **Ortalama** | | | | **/87** | Hedef ≥ 44 |
 
-### Tur 2 — Point C sonrası (≤ 2026-11-04)
+## Tur 2 — Point C sonrası (≤2026-11-04)
 
-| Model | Tarih | Skor /84 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /87 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|----------|---------------------------|-----|
-| ChatGPT | | /84 | | |
-| Gemini | | /84 | | |
-| Perplexity | | /84 | | |
-| Bing Copilot | | /84 | | |
-| **Ortalama** | | **/84** | | Hedef ≥ 63 |
+| ChatGPT | | /87 | | |
+| Gemini | | /87 | | |
+| Perplexity | | /87 | | |
+| Bing Copilot | | /87 | | |
+| **Ortalama** | | **/87** | | Hedef ≥ 65 |

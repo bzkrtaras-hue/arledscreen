@@ -217,6 +217,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
     mustNotSay: ["sorunsuz platform", "kesintisiz garanti", "tek merkezden", "ücretsiz kargo dahil"],
   },
+  {
+    id: 29,
+    q: "AI-infrastructure ready LED nedir / ARLEDSCREEN satıyor mu?",
+    paths: ["/en/", "/tr/yapay-zeka/", "/en/yapay-zeka/", "/entity.json", "/ai-shopping.json"],
+    mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
+    mustNotSay: ["AI-infrastructure ready SKU", "AI-ready product", "ücretsiz kargo dahil", "Türkiye'nin en"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -44,8 +44,8 @@ export function AiCompatSection({ locale }: Props) {
           className="text-sm font-semibold text-cyan hover:underline"
         >
           {locale === "tr"
-            ? "Yapay zekâ uyumlu LED rehberini aç →"
-            : "Open the AI-compatible LED guide →"}
+            ? "Yapay zekâ / LED entegrasyon rehberini aç →"
+            : "Open the AI / LED integration guide →"}
         </Link>
       </p>
     </Section>
