@@ -87,7 +87,7 @@ Durum (2026-10-05): site A/B kod hazır; canlı entity/catalog/ard soft-404 → 
 ## P2 — Content clusters (quality over volume)
 
 - [x] Expand fiyat cluster: P2.5/P4/P5 (+ diğer pitch) yayımlanmış panel USD + catalog FAQ — [`docs/fiyat-cluster-pitch.md`](./fiyat-cluster-pitch.md)
-- [x] Decision guide GOB vs SMD + fiyat LinkCloud (Gün 20); kalan: izleme mesafesi / kiralama kalınlaştırma
+- [x] Decision guide GOB vs SMD + fiyat LinkCloud (Gün 20); izleme mesafesi + kiralama/alışveriş ayrımı (Gün 33)
 - [ ] No 100 thin blogs; keep blog as project storytelling only
 - [x] Internal link audit: every commercial page → fiyat + calculator + entity/catalog (`audit:shopping-links`)
 

@@ -22,6 +22,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 30 | 2026-10-05 | Ay sonu pano + `smoke:live` (ölçüm 2026-11-04) | ✅ |
 | 31 | 2026-10-05 | Fiyat hub AI sources + Merchant ARD + `_routes` exclude | ✅ |
 | 32 | 2026-10-05 | Pitch USD FAQs + hesaplayici shopping FAQ/LinkCloud | ✅ |
+| 33 | 2026-10-05 | İzleme/kiralama rehber + quote FAQ (list vs teklif) | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -49,6 +50,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 
 - Pitch cluster (P1.25–P5): yayımlanmış PANEL_PRICES USD cümlesi + catalog FAQ + agent source
 - Hesaplayıcı: FAQPage + ShoppingLinkCloud + merchant TSV; `audit:faq` / blind-test kapladı
+
+## Gün 33 notları
+
+- `piksel-araligi-secimi`: dış mekân USD tablosu + catalog/entity/merchant + pitch linkleri
+- `kiralik-mi-satin-alma`: AI alışveriş list vs teklif tablosu (quote-only kuralı)
+- `/tr/quote/`: FAQPage + ShoppingLinkCloud (ajanlar quote’a fiyat uydurmasın)
 
 ## Owner P0 (her gün hatırlatma)
 

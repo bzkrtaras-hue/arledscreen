@@ -14,6 +14,9 @@ import {
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
@@ -24,6 +27,24 @@ import { absoluteUrl } from "@/lib/site";
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
+
+const QUOTE_FAQS = [
+  {
+    question: "Yazılı teklif ne zaman gerekir?",
+    answer:
+      "Nihai proje tutarı her zaman keşif sonrası yazılı teklifle kesinleşir. Yayımlanmış 12 panel için yaklaşık USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir; kiralık, şeffaf, esnek ve poster gruplarında list fiyatı yoktur — bu form veya WhatsApp ile teklif alınır.",
+  },
+  {
+    question: "Teklif için hangi bilgiler yeterli?",
+    answer:
+      "Yaklaşık ölçü, iç/dış mekân, konum, kullanım amacı ve zaman planı yeterlidir. Fotoğraf veya kısa video süreci hızlandırır. Firma kimliği: https://arledscreen.com/entity.json.",
+  },
+  {
+    question: "AI ajanları fiyatı bu formdan mı okusun?",
+    answer:
+      "Hayır. Ajanlar yayımlanmış panel USD için https://arledscreen.com/catalog.json kullanmalı; quote-only ürünlere fiyat uydurmamalı. Bu sayfa yazılı teklif kanalıdır. Keşif: https://arledscreen.com/.well-known/ard.json.",
+  },
+];
 
 export async function generateMetadata({
   params,
@@ -66,6 +87,7 @@ export default async function QuotePage({ params }: PageProps) {
           { name: dict.nav.quote, item: absoluteUrl(`/${locale}/quote`) },
         ]}
       />
+      {locale === "tr" ? <FaqJsonLd faqs={QUOTE_FAQS} /> : null}
       {locale === "tr" ? (
         <>
           {/* Rounded photo banner with centred H1 */}
@@ -158,6 +180,24 @@ export default async function QuotePage({ params }: PageProps) {
               <h2 className="font-display text-xl font-bold text-ink">Proje türüne göre WhatsApp&apos;tan hızlı mesaj</h2>
               <p className="mb-5 mt-1 text-sm text-ink-muted">Formu doldurmak istemiyorsanız proje türünü seçin; mesaj hazır açılır.</p>
               <WhatsAppProjectPicker />
+            </div>
+          </section>
+
+          <section className="border-t border-border bg-white py-12 md:py-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <h2 className="font-display text-xl font-bold text-ink md:text-2xl">Sık sorulanlar</h2>
+              <div className="mt-6">
+                <HomeFaq faqs={QUOTE_FAQS} />
+              </div>
+              <ShoppingLinkCloud
+                excludeHref="/tr/quote/"
+                extra={[
+                  {
+                    href: "/feeds/merchant-priced-panels.tsv",
+                    label: "Merchant feed (12 SKU)",
+                  },
+                ]}
+              />
             </div>
           </section>
         </>
