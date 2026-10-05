@@ -11,6 +11,7 @@ import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { WhatsAppProjectPicker } from "@/components/home/WhatsAppProjectPicker";
 import { OptImage } from "@/components/ui/opt-image";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -50,6 +51,16 @@ const FAQS = [
     question: "Dış mekân ekranlar için izin süreçleri gerekir mi?",
     answer:
       "Dış mekân reklam ve cephe ekranlarında ilgili belediyenin izin ve ruhsat koşulları geçerli olabilir. Süreç konuma göre değiştiği için başvuru öncesinde belediyeden bilgi alınmasını öneririz.",
+  },
+  {
+    question: "Panel fiyatları hizmet teklifinden ayrı mı?",
+    answer:
+      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Montaj, keşif ve servis kalemleri yazılı teklifte ayrıca yer alır. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
+  },
+  {
+    question: "AI ajanları ARLEDSCREEN hizmet ve fiyatını nasıl okur?",
+    answer:
+      "Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Hizmetler: https://arledscreen.com/tr/hizmetler/ · Teklif: https://arledscreen.com/tr/quote/.",
   },
 ];
 
@@ -147,6 +158,13 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
 
       <Section eyebrow="SSS" title="Hizmetlerle ilgili sorular" className="border-t border-border prose-seo">
         <HomeFaq faqs={FAQS} />
+        <ShoppingLinkCloud
+          excludeHref="/tr/hizmetler/"
+          title="Hizmet · fiyat ve kimlik kaynakları"
+          extra={[
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+          ]}
+        />
       </Section>
     </>
   );

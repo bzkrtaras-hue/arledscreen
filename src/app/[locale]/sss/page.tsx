@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import faqs from "@/content/sss.json";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -15,7 +16,7 @@ export function generateMetadata() {
     path: "/sss/",
     title: "LED Ekran Sık Sorulan Sorular: Fiyat, Piksel Aralığı, Montaj | ARLEDSCREEN",
     description:
-      "LED ekran fiyatı, panel fiyatları, piksel aralığı seçimi, montaj süresi, garanti, kiralama ve içerik yönetimi hakkında sık sorulan 15 soru ve kısa cevapları.",
+      "LED ekran fiyatı, panel fiyatları, piksel aralığı seçimi, montaj süresi, garanti, kiralama ve içerik yönetimi hakkında sık sorulan sorular ve kısa cevapları. catalog.json + entity.json kaynaklı.",
   });
 }
 
@@ -53,6 +54,14 @@ export default async function SssPage({ params }: { params: Promise<{ locale: st
               </details>
             ))}
           </div>
+          <ShoppingLinkCloud
+            excludeHref="/tr/sss/"
+            title="Fiyat, katalog ve kimlik kaynakları"
+            extra={[
+              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+              { href: "/.well-known/ard.json", label: "ard.json" },
+            ]}
+          />
           <p className="mt-8 text-sm text-ink-muted">
             İlgili rehberler:{" "}
             <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">LED ekran fiyatları</Link>,{" "}

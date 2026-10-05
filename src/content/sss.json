@@ -1,15 +1,15 @@
 [
   {
     "question": "LED ekran fiyatı neye göre belirlenir?",
-    "answer": "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyet fiyat hesaplayıcıyla görülebilir; net rakam ölçü ve konum bilgisiyle verilen yazılı teklifle kesinleşir."
+    "answer": "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık maliyet fiyat hesaplayıcıyla görülebilir; net rakam ölçü ve konum bilgisiyle verilen yazılı teklifle kesinleşir."
   },
   {
     "question": "P2.5 iç mekân LED ekranın panel fiyatı nedir?",
-    "answer": "ARLEDSCREEN hesaplayıcısındaki 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir."
+    "answer": "ARLEDSCREEN 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir."
   },
   {
     "question": "Dış mekân LED ekran panel fiyatları ne kadar?",
-    "answer": "Hesaplayıcıda dış mekân modüller P5 için 29,90 USD, P4 için 33,80 USD, P4 önden servisli için 36,40 USD, P3.07 için 44,20 USD, P2.9 için 53,30 USD ve P2.5 için 63,70 USD/paneldir (KDV ve nakliye hariç)."
+    "answer": "Yayımlanmış listede dış mekân modüller P5 için 29,90 USD, P4 için 33,80 USD, P4 önden servisli için 36,40 USD, P3.07 için 44,20 USD, P2.9 için 53,30 USD ve P2.5 için 63,70 USD/paneldir (KDV ve nakliye hariç). Kaynak: https://arledscreen.com/catalog.json · https://arledscreen.com/tr/led-ekran-fiyatlari/."
   },
   {
     "question": "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
@@ -57,6 +57,10 @@
   },
   {
     "question": "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
-    "answer": "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. İletişim: +90 530 507 88 34, arled@arledscreen.com."
+    "answer": "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: https://arledscreen.com/entity.json · İletişim: +90 530 507 88 34, arled@arledscreen.com."
+  },
+  {
+    "question": "AI / alışveriş ajanları fiyat ve kimliği nereden okumalı?",
+    "answer": "Makinece kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/ · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf/esnek/poster/kiralık list fiyatı yoktur — https://arledscreen.com/tr/quote/."
   }
 ]

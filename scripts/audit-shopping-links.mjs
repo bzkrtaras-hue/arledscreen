@@ -53,6 +53,8 @@ const pages = [
   path.join(outTr, "products", "index.html"),
   path.join(outTr, "about", "aras-bozkurt", "index.html"),
   path.join(outTr, "yapay-zeka", "index.html"),
+  path.join(outTr, "sss", "index.html"),
+  path.join(outTr, "hizmetler", "index.html"),
 ];
 
 let checked = 0;
@@ -71,7 +73,7 @@ for (const file of pages) {
 }
 
 console.log(
-  `Checked ${checked} commercial/product/rehber/about/nxtionstar/hub/founder/yapay-zeka pages for fiyat+catalog+quote+hesaplayici+entity links`,
+  `Checked ${checked} shopping surfaces (commercial/product/rehber/about/hub/founder/yapay-zeka/sss/hizmetler) for fiyat+catalog+quote+hesaplayici+entity links`,
 );
 if (errors.length) {
   console.error("FAIL:");
