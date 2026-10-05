@@ -37,7 +37,9 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@graph": PROJECT_VIDEOS.map((v) => videoObjectJsonLd(v, absoluteUrl("/tr/projelerimiz/"), absoluteUrl, `${SITE_URL}/#organization`)),
+            "@graph": PROJECT_VIDEOS.map((v) =>
+              videoObjectJsonLd(v, absoluteUrl("/tr/projelerimiz/"), absoluteUrl, `${SITE_URL}/#organization`),
+            ),
           }),
         }}
       />
@@ -47,7 +49,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") },
         ]}
       />
-      {/* Full-bleed photo banner with centred title */}
+
       <section className="relative isolate overflow-hidden bg-navy">
         <OptImage
           src="/projects/outdoor-led-mapping.jpg"
@@ -58,22 +60,69 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           className="-z-10 object-cover opacity-50"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0B1B33]/70 to-[#0B1B33]/90" aria-hidden />
-        <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 md:py-20">
+        <div className="mx-auto max-w-4xl px-4 py-12 text-center sm:px-6 md:py-16">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#9CC0F5]">Projeler ve referanslar</p>
-          <h1 className="mt-3 text-balance font-display text-[clamp(1.9rem,1.3rem+2.4vw,3rem)] font-extrabold tracking-[-0.03em] text-white">
-            Yakın Süreçte Tamamlanan Projeler
+          <h1 className="mt-3 text-balance font-display text-[clamp(1.75rem,1.2rem+2.2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-white">
+            Saha uygulamaları ve öne çıkan projeler
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/85">
-            Yakın süreçte tamamladığımız projelerden bir seçki.
+          <p className="mx-auto mt-3 max-w-2xl text-[15px] leading-relaxed text-white/85 sm:text-base">
+            Kurulum fotoğrafları, sahadan videolar ve ölçü–konum bilgili referans seçkisi.
           </p>
+          <nav
+            aria-label="Sayfa bölümleri"
+            className="mx-auto mt-6 flex max-w-lg flex-wrap items-center justify-center gap-2"
+          >
+            {[
+              { href: "#saha", label: "Saha" },
+              { href: "#videolar", label: "Videolar" },
+              { href: "#one-cikan", label: "Öne çıkan" },
+              { href: "#liste", label: "Liste" },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="inline-flex min-h-10 items-center rounded-full border border-white/25 bg-white/10 px-3.5 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white/18"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </section>
 
-      <Section eyebrow="Yakın süreçte tamamlananlar" title="Öne çıkan projeler" description="Yakın süreçte tamamladığımız projelerden bir seçki." className="prose-seo">
-        <FeaturedReferences limit={7} showAllLink={false} ctaHref="#liste" ctaLabel="Diğer projeleri görün" />
+      {/* 1. Saha uygulamaları — üstte */}
+      <Section
+        id="saha"
+        eyebrow="Saha"
+        title="Uygulama fotoğrafları"
+        description="Sahada tamamlanan LED ekran uygulamalarından seçilmiş kareler."
+        className="bg-band prose-seo"
+      >
+        <CompletedProjectsGallery locale="tr" />
       </Section>
 
-      {/* Dark icon strip */}
+      {/* 2. Videolar — Drive / saha klipleri */}
+      <Section
+        id="videolar"
+        eyebrow="Sahadan"
+        title="Videolar"
+        description="Kurulumlarımızdan kısa video kayıtları. İlk video görünür olduğunda sessiz oynar; diğerlerini oynatmak için dokunun."
+        className="prose-seo"
+      >
+        <ProjectVideos />
+      </Section>
+
+      {/* 3. Öne çıkan — pratik, görünür kartlar */}
+      <Section
+        id="one-cikan"
+        eyebrow="Seçki"
+        title="Öne çıkan projeler"
+        description="Ölçü, konum ve tarih bilgisiyle hızlı tarama; tüm liste aşağıda."
+        className="bg-band prose-seo"
+      >
+        <FeaturedReferences limit={7} showAllLink={false} ctaHref="#liste" ctaLabel="Tüm proje listesine geç" />
+      </Section>
+
       <section className="bg-foot py-10 text-white" aria-label="Proje sürecimiz">
         <ul className="mx-auto grid max-w-5xl gap-8 px-4 text-center sm:grid-cols-3 sm:px-6">
           {[
@@ -90,15 +139,13 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         </ul>
       </section>
 
-      <Section eyebrow="Saha" title="Uygulama fotoğrafları" className="bg-band prose-seo">
-        <CompletedProjectsGallery locale="tr" />
-      </Section>
-
-      <Section id="videolar" eyebrow="Sahadan" title="Videolar" description="Kurulumlarımızdan kısa video kayıtları. İlk video görünür olduğunda sessiz oynar; diğerlerini oynatmak için dokunun." className="prose-seo">
-        <ProjectVideos />
-      </Section>
-
-      <Section id="liste" eyebrow="Seçki" title="Proje listesi" description="Yakın süreçte tamamladığımız projelerden bir seçki; tarih, firma veya proje adı, kapsam ve konum bilgisiyle." className="prose-seo">
+      <Section
+        id="liste"
+        eyebrow="Kayıt"
+        title="Proje listesi"
+        description="Yakın süreçte tamamladığımız projeler; tarih, kapsam ve konum bilgisiyle."
+        className="prose-seo"
+      >
         <ReferencesGrid locale="tr" />
         <AllReferencesNote />
       </Section>

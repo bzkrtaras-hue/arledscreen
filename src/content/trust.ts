@@ -88,16 +88,37 @@ function pitchOf(detail: string): string | undefined {
  * Only the Ünye photo is attached because its file name matches the record.
  */
 const CASE_IDS: { id: string; sector: string; environment?: string; image?: CaseStudy["image"] }[] = [
-  { id: "ref-05", sector: "Kamu / belediye" },
+  {
+    id: "ref-05",
+    sector: "Kamu / belediye",
+    image: { src: "/projects/billboard-arled.jpg", alt: "Belediye / kamu tipi LED ekran uygulaması" },
+  },
   {
     id: "ref-26",
     sector: "Kamu / etkinlik",
     image: { src: "/projects/unye.jpg", alt: "Ünye Belediyesi Ordu Günleri LED ekran kurulumu" },
   },
-  { id: "ref-27", sector: "Dış mekân", environment: "Dış mekân" },
-  { id: "ref-33", sector: "Kafe / lounge" },
-  { id: "ref-25", sector: "Ticari işletme" },
-  { id: "ref-15", sector: "Tekstil / mağaza" },
+  {
+    id: "ref-27",
+    sector: "Dış mekân",
+    environment: "Dış mekân",
+    image: { src: "/projects/outdoor-led-mapping.jpg", alt: "Dış mekân LED ekran cephe uygulaması" },
+  },
+  {
+    id: "ref-33",
+    sector: "Kafe / lounge",
+    image: { src: "/projects/lounge-football.jpg", alt: "Kafe / lounge LED ekran uygulaması" },
+  },
+  {
+    id: "ref-25",
+    sector: "Ticari işletme",
+    image: { src: "/projects/kafe.jpg", alt: "Ticari mekân iç LED ekran uygulaması" },
+  },
+  {
+    id: "ref-15",
+    sector: "Tekstil / mağaza",
+    image: { src: "/projects/totem-indoor.jpg", alt: "Mağaza / vitrin LED ekran uygulaması" },
+  },
 ];
 
 export function getCaseStudies(): CaseStudy[] {

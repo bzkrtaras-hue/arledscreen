@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import {
   locales,
@@ -50,11 +51,21 @@ export default async function LocaleLayout({
   const locale = raw;
   const dir = getLocaleDirection(locale);
 
+  const chatLocale = locale === "en" ? "en" : "tr";
+
   return (
     <div lang={locale} dir={dir}>
       <LocaleHtml locale={locale} />
       <OrganizationJsonLd />
       <SiteShell locale={locale}>{children}</SiteShell>
+      {/* Canlı Destek: her sayfada balon + karşılama bildirimi (hesaplayıcı hariç). */}
+      <Script
+        src="/chat-widget.js"
+        strategy="lazyOnload"
+        data-locale={chatLocale}
+        data-pages="*"
+        data-delay="2800"
+      />
     </div>
   );
 }

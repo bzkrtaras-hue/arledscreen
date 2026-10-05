@@ -1,6 +1,5 @@
 import { BlogTeaser } from "@/components/home/BlogTeaser";
 import type { Metadata } from "next";
-import Script from "next/script";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
@@ -54,11 +53,6 @@ export default async function HomePage({ params }: PageProps) {
   const dict = getDictionary(locale);
   const faqs = getFaqs(locale);
   const tr = locale === "tr";
-  // Canlı Destek sohbet balonu (public/chat-widget.js): yalnızca TR ve EN ana sayfada, sayfa yüklendikten sonra.
-  const chatWidget =
-    locale === "tr" || locale === "en" ? (
-      <Script src="/chat-widget.js" strategy="lazyOnload" data-locale={locale} />
-    ) : null;
 
   if (!tr) {
     return (
@@ -106,7 +100,6 @@ export default async function HomePage({ params }: PageProps) {
         >
           <HomeFaq faqs={faqs} />
         </Section>
-        {chatWidget}
       </>
     );
   }
@@ -202,7 +195,6 @@ export default async function HomePage({ params }: PageProps) {
       >
         <HomeFaq faqs={faqs} />
       </Section>
-      {chatWidget}
     </>
   );
 }
