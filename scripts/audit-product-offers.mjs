@@ -22,10 +22,21 @@ const pricesSrc = fs.readFileSync(path.join(root, "src/content/prices.ts"), "utf
 const modelsSrc = fs.readFileSync(path.join(root, "src/content/models.ts"), "utf8");
 
 const priceById = new Map();
+/** @type {{id:string,pitch:string,use:string,surface?:string,frontService:boolean,usd:number}[]} */
+const priceRows = [];
 const priceRe =
   /\{\s*id:\s*"([^"]+)",\s*pitch:\s*"([^"]+)",\s*pitchMm:\s*([\d.]+),\s*use:\s*"(ic|dis)",\s*(?:surface:\s*"GOB",\s*)?(?:frontService:\s*true,\s*)?usd:\s*([\d.]+)/g;
 for (const m of pricesSrc.matchAll(priceRe)) {
-  priceById.set(m[1], Number(m[5]));
+  const row = {
+    id: m[1],
+    pitch: m[2],
+    use: m[4],
+    surface: /surface:\s*"GOB"/.test(m[0]) ? "GOB" : undefined,
+    frontService: /frontService:\s*true/.test(m[0]),
+    usd: Number(m[5]),
+  };
+  priceById.set(row.id, row.usd);
+  priceRows.push(row);
 }
 
 /** @type {{slug:string,group:string,priceId?:string}[]} */
@@ -143,12 +154,113 @@ if (fs.existsSync(catalogPath)) {
   errors.push("public/catalog.json missing");
 }
 
+// Fiyat hub JSON-LD ↔ PANEL_PRICES
+const hubPath = path.join(root, "out/tr/led-ekran-fiyatlari/index.html");
+if (fs.existsSync(hubPath)) {
+  const hubHtml = fs.readFileSync(hubPath, "utf8");
+  const hubPrices = [];
+  for (const m of hubHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+    let data;
+    try {
+      data = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    const nodes = data?.["@graph"] ?? (Array.isArray(data) ? data : [data]);
+    for (const n of nodes) {
+      if (n?.["@type"] === "Product" && n.offers?.price != null) {
+        hubPrices.push(Number(n.offers.price));
+      }
+      if (n?.["@type"] === "AggregateOffer" || n?.offers?.["@type"] === "AggregateOffer") {
+        const agg = n["@type"] === "AggregateOffer" ? n : n.offers;
+        const usd = [...priceById.values()];
+        const lo = Math.min(...usd).toFixed(2);
+        const hi = Math.max(...usd).toFixed(2);
+        if (Number(agg.lowPrice).toFixed(2) !== lo || Number(agg.highPrice).toFixed(2) !== hi) {
+          errors.push(
+            `fiyat hub AggregateOffer ${agg.lowPrice}-${agg.highPrice} != PANEL ${lo}-${hi}`,
+          );
+        }
+        if (Number(agg.offerCount) !== priceById.size) {
+          errors.push(`fiyat hub offerCount ${agg.offerCount} != ${priceById.size}`);
+        }
+      }
+    }
+  }
+  const expectedSet = [...priceById.values()].map((x) => x.toFixed(2)).sort();
+  const hubSet = hubPrices.map((x) => x.toFixed(2)).sort();
+  if (hubSet.length !== expectedSet.length || hubSet.join() !== expectedSet.join()) {
+    errors.push(
+      `fiyat hub Product prices [${hubSet.join(",")}] != PANEL_PRICES [${expectedSet.join(",")}]`,
+    );
+  }
+} else {
+  errors.push("missing out/tr/led-ekran-fiyatlari — run build first");
+}
+
+// Calculator embed indoorModules/outdoorModules ↔ PANEL_PRICES
+const embedPath = path.join(root, "public/fiyat-hesap/index.html");
+if (fs.existsSync(embedPath)) {
+  const emb = fs.readFileSync(embedPath, "utf8");
+  const indoorBlock = emb.match(/const indoorModules = \[([\s\S]*?)\];/)?.[1] ?? "";
+  const outdoorBlock = emb.match(/const outdoorModules = \[([\s\S]*?)\];/)?.[1] ?? "";
+  const parseMods = (block, use) =>
+    [...block.matchAll(/\{\s*name:\s*"([^"]+)",\s*price:\s*([\d.]+)\s*\}/g)].map((m) => ({
+      name: m[1],
+      price: Number(m[2]),
+      use,
+    }));
+  const embedMods = [...parseMods(indoorBlock, "ic"), ...parseMods(outdoorBlock, "dis")];
+  if (embedMods.length !== priceRows.length) {
+    errors.push(`fiyat-hesap modules ${embedMods.length} != PANEL_PRICES ${priceRows.length}`);
+  }
+  const used = new Set();
+  for (const mod of embedMods) {
+    const row = priceRows.find((p) => {
+      if (p.use !== mod.use) return false;
+      if (Math.abs(p.usd - mod.price) > 0.001) return false;
+      const gob = Boolean(p.surface === "GOB") === /GOB/i.test(mod.name);
+      const front = Boolean(p.frontService) === /ÖNDEN SERVİS|FRONT/i.test(mod.name);
+      const pitchOk = mod.name.includes(p.pitch);
+      return gob && front && pitchOk;
+    });
+    if (!row) {
+      errors.push(`fiyat-hesap unmatched module ${mod.name} @ ${mod.price}`);
+    } else if (used.has(row.id)) {
+      errors.push(`fiyat-hesap duplicate match for ${row.id}`);
+    } else {
+      used.add(row.id);
+    }
+  }
+  for (const p of priceRows) {
+    if (!used.has(p.id)) errors.push(`fiyat-hesap missing PANEL ${p.id} (${p.usd})`);
+  }
+
+  // CALC_EXTRAS parity (labor/control/driver) if present in embed
+  const labor = pricesSrc.match(/laborPerM2:\s*(\d+)/)?.[1];
+  const control = pricesSrc.match(/controlCard:\s*(\d+)/)?.[1];
+  const driver = pricesSrc.match(/driverSoftware:\s*(\d+)/)?.[1];
+  for (const [label, val] of [
+    ["laborPerM2", labor],
+    ["controlCard", control],
+    ["driverSoftware", driver],
+  ]) {
+    if (!val) continue;
+    // embed may use different var names; require the numeric literal somewhere near cost formula
+    if (!new RegExp(`[^\\d]${val}(?:\\.0+)?[^\\d]`).test(emb) && !emb.includes(val)) {
+      errors.push(`fiyat-hesap missing CALC_EXTRAS ${label}=${val} literal`);
+    }
+  }
+} else {
+  errors.push("public/fiyat-hesap/index.html missing");
+}
+
 console.log(
-  `Checked ${models.length} models (priced=${pricedChecked}, quote-only=${quoteChecked}); catalog panels=${priceById.size}`,
+  `Checked ${models.length} models (priced=${pricedChecked}, quote-only=${quoteChecked}); catalog panels=${priceById.size}; fiyat hub + calculator parity`,
 );
 if (errors.length) {
   console.error("FAIL:");
   for (const e of errors) console.error(" -", e);
   process.exit(1);
 }
-console.log("OK: Product Offer / image / catalog guards passed");
+console.log("OK: Product Offer / image / catalog / fiyat-hub / calculator guards passed");
