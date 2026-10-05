@@ -207,6 +207,9 @@ if (fs.existsSync(catalogPath)) {
     if (!p.url || !String(p.url).startsWith("https://arledscreen.com/tr/products/")) {
       errors.push(`catalog ${sku} bad product url`);
     }
+    if (!p.image || !String(p.image).startsWith("https://arledscreen.com/")) {
+      errors.push(`catalog ${sku} missing absolute product image`);
+    }
   }
 } else {
   errors.push("public/catalog.json missing");

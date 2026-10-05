@@ -31,10 +31,18 @@ for (const m of pricesSrc.matchAll(priceRe)) {
   });
 }
 
-const modelBlocks = [...modelsSrc.matchAll(/\{\s*slug:\s*"([^"]+)",\s*group:\s*"([^"]+)"[\s\S]*?priceId:\s*"([^"]+)"/g)];
+const modelBlocks = [
+  ...modelsSrc.matchAll(
+    /\{\s*slug:\s*"([^"]+)",\s*group:\s*"([^"]+)"([\s\S]*?)(?=\n  \{\s*slug:|\n];)/g,
+  ),
+];
 const byPriceId = new Map();
 for (const m of modelBlocks) {
-  byPriceId.set(m[3], { slug: m[1], group: m[2] });
+  const priceId = m[3].match(/priceId:\s*"([^"]+)"/)?.[1];
+  if (!priceId) continue;
+  const image = m[3].match(/image:\s*"([^"]+)"/)?.[1];
+  const imageAlt = m[3].match(/imageAlt:\s*"([^"]+)"/)?.[1];
+  byPriceId.set(priceId, { slug: m[1], group: m[2], image, imageAlt });
 }
 
 const laborPerM2 = 100;
@@ -50,6 +58,7 @@ const products = prices.map((p) => {
     ? `${SITE}/tr/products/${model.group}/${model.slug}/`
     : `${SITE}/tr/products/${p.groups[0]}/`;
   const groupUrl = `${SITE}/tr/products/${p.groups[0]}/`;
+  const image = model?.image ? `${SITE}${model.image}` : undefined;
   return {
     "@type": "Product",
     sku: p.id,
@@ -58,6 +67,7 @@ const products = prices.map((p) => {
     category: "LED ekran modülü",
     url,
     groupUrl,
+    ...(image ? { image, imageAlt: model.imageAlt } : {}),
     additionalProperty: [
       { "@type": "PropertyValue", name: "Piksel aralığı", value: p.pitchMm, unitText: "mm" },
       { "@type": "PropertyValue", name: "Modül ölçüsü", value: p.moduleMm },

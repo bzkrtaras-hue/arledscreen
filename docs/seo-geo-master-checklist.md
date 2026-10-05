@@ -9,7 +9,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] `entity.json` + `llms.txt` alışveriş FAQ / katalog linki
 - [x] `/.well-known/ard.json` (+ legacy `ai-catalog.json`) — Agentic Resource Discovery; CORS açık; `rel=ard` link
 - [x] Product Offer guard: `npm run audit:offers` (priced → price+image; quote-only → offers yok; catalog ↔ PANEL_PRICES; fiyat hub + fiyat-hesap hesaplayıcı parity) — postbuild’de çalışır
-- [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok)
+- [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok) — checklist: [`docs/merchant-priced-panels.md`](./merchant-priced-panels.md)
 - [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn)
 - [ ] **Owner:** `arleds.com` → `arledscreen.com/tr/` 301
 
@@ -46,7 +46,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 ## P1 — Local / reviews (owner-operated)
 
 Detaylı playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)  
-Makinece atıf: `/entity.json` · metin: `/llms.txt`
+Makinece atıf: `/entity.json` · katalog: `/catalog.json` · metin: `/llms.txt`
 
 - [ ] Google Business Profile: categories, hours, WhatsApp, 50+ real photos, services
 - [ ] Ethical review request flow after install (no keyword stuffing scripts)

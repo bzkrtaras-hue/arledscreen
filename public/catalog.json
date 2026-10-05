@@ -48,6 +48,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "image": "https://arledscreen.com/modules/nxtionstar-p1-25-ic-mekan-modul.webp",
+      "imageAlt": "NXTIONSTAR P1.25 iç mekân LED modülün ön ve arka yüzü",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -106,6 +108,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "image": "https://arledscreen.com/modules/nxtionstar-p1-53-ic-mekan-modul.webp",
+      "imageAlt": "NXTIONSTAR P1.53 iç mekân LED modül",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -164,6 +168,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "image": "https://arledscreen.com/modules/nxtionstar-p1-86-ic-mekan-modul.webp",
+      "imageAlt": "NXTIONSTAR P1.86 GOB iç mekân LED modül",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -222,6 +228,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "image": "https://arledscreen.com/modules/nxtionstar-p2-5-ic-mekan-modul.webp",
+      "imageAlt": "NXTIONSTAR P2.5 iç mekân LED modül",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -275,6 +283,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "image": "https://arledscreen.com/projects/modules/indoor-smd-surface.jpg",
+      "imageAlt": "İç mekân SMD LED modül yüzeyi",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -328,6 +338,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "image": "https://arledscreen.com/projects/modules/indoor-wall.jpg",
+      "imageAlt": "İç mekân LED ekran duvarı",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -381,6 +393,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "image": "https://arledscreen.com/modules/nxtionstar-p2-5-dis-mekan-modul.webp",
+      "imageAlt": "NXTIONSTAR P2.5 dış mekân LED modül",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -434,6 +448,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "image": "https://arledscreen.com/modules/nxtionstar-p2-97-dis-mekan-modul.webp",
+      "imageAlt": "NXTIONSTAR P2.9 dış mekân LED modül",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -487,6 +503,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "image": "https://arledscreen.com/modules/nxtionstar-p3-076-dis-mekan-modul.webp",
+      "imageAlt": "NXTIONSTAR P3.07 dış mekân LED modül",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -540,6 +558,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "image": "https://arledscreen.com/modules/nxtionstar-p4-dis-mekan-modul.webp",
+      "imageAlt": "NXTIONSTAR P4 dış mekân LED modül",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -593,6 +613,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "image": "https://arledscreen.com/projects/modules/front-service-module.jpg",
+      "imageAlt": "Önden servis edilebilen LED modül",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
@@ -651,6 +673,8 @@
       "category": "LED ekran modülü",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "image": "https://arledscreen.com/modules/nxtionstar-p5-dis-mekan-modul.webp",
+      "imageAlt": "NXTIONSTAR P5 dış mekân LED modül",
       "additionalProperty": [
         {
           "@type": "PropertyValue",
