@@ -60,7 +60,7 @@ const FAQS = [
   {
     question: "AI ajanları ARLEDSCREEN hizmet ve fiyatını nasıl okur?",
     answer:
-      "Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Hizmetler: https://arledscreen.com/tr/hizmetler/ · Teklif: https://arledscreen.com/tr/quote/.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Hizmetler: https://arledscreen.com/tr/hizmetler/ · Teklif: https://arledscreen.com/tr/quote/.",
   },
 ];
 

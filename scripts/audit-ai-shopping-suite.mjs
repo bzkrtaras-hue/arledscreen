@@ -33,6 +33,7 @@ const AUDITS = [
   { id: "indexnow", script: "audit-indexnow.mjs", day: "46" },
   { id: "ai-shopping", script: "audit-ai-shopping-index.mjs", day: "48" },
   { id: "point-c-check", script: "print-point-c-packs.mjs", day: "55", args: ["--check"] },
+  { id: "smoke-local", script: "smoke-live-ai-shopping.mjs", day: "56", args: ["--local"] },
 ];
 
 if (!fs.existsSync(path.join(root, "out"))) {

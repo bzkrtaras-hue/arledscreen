@@ -1,8 +1,10 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-05  
+Son güncelleme: 2026-10-05 (Gün 56: prompt kaynağı tekilleştirildi)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
 Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 12 prompt’u çalıştırır.
+
+**Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
 ## Amaç
 
@@ -31,7 +33,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 7 | GOB mi SMD mi? | `/tr/rehber/gob-vs-smd/` | karar kriterleri + GOB USD tablo | Sahte sertifika |
 | 8 | LED tabela mı LED ekran mı? | `/tr/rehber/led-tabela-mi-led-ekran-mi/` | dijital ≠ LED | Eşanlamlı ezme |
 | 9 | Kiralık LED ekran fiyatı? | `/tr/products/kiralik-led-ekran/` · quote | list yok → teklif | Sahte günlük TL |
-| 10 | Şeffaf / transparan LED fiyatı? | seffaf + transparan ürün | list yok → teklif | Merchant’a ekleme |
+| 10 | Şeffaf / transparan LED fiyatı? | `/tr/products/seffaf-led-ekran/` · transparan | list yok → teklif | Merchant’a ekleme |
 | 11 | İstanbul LED ekran firması telefon? | entity NAP | **+90 530 507 88 34** | Yanlış ilçe |
 | 12 | NXTIONSTAR nedir? | `/tr/nxtionstar/` · entity | ARLEDSCREEN markası, TR tek satış | Distribütör / yiyistar |
 

@@ -265,6 +265,31 @@ if (gob) {
   }
 }
 
+// Day 56: docs/ai-shopping-blind-test.md must not drift from shared prompts module
+const blindDoc = path.join(root, "docs/ai-shopping-blind-test.md");
+if (fs.existsSync(blindDoc)) {
+  const doc = fs.readFileSync(blindDoc, "utf8");
+  if (!doc.includes("scripts/lib/ai-shopping-prompts.mjs")) {
+    errors.push("docs/ai-shopping-blind-test.md must cite scripts/lib/ai-shopping-prompts.mjs as source of truth");
+  }
+  for (const p of PROMPTS) {
+    if (!doc.includes(p.q)) {
+      errors.push(`docs/ai-shopping-blind-test.md missing prompt #${p.id} text: ${p.q}`);
+    }
+    // Primary path (first) must appear in the doc table / text
+    const primary = p.paths[0];
+    if (primary && !doc.includes(primary) && !doc.includes(primary.replace(/\/$/, ""))) {
+      // Allow short segment for product hubs (e.g. seffaf)
+      const seg = primary.split("/").filter(Boolean).pop();
+      if (!seg || !doc.includes(seg)) {
+        errors.push(`docs/ai-shopping-blind-test.md missing primary path for #${p.id}: ${primary}`);
+      }
+    }
+  }
+} else {
+  errors.push("missing docs/ai-shopping-blind-test.md");
+}
+
 if (errors.length) {
   console.error(`audit-blind-test: FAIL (${errors.length})`);
   for (const e of errors) console.error(" -", e);
