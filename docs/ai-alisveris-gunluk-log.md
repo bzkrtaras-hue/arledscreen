@@ -29,6 +29,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 37 | 2026-10-05 | Home + bölgeler hub/iller ShoppingLinkCloud | ✅ |
 | 38 | 2026-10-05 | Rehber hub + projeler + galeri shopping FAQs | ✅ |
 | 39 | 2026-10-05 | Case study + blog ShoppingLinkCloud / FAQ | ✅ |
+| 40 | 2026-10-05 | Model pages LinkCloud + entity-profiles.json Point C | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -99,6 +100,13 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Case study şablonu: ShoppingLinkCloud (uydurma paket yok → catalog/fiyat)
 - `/tr/blog/`: FAQPage + LinkCloud; her blog yazısına ShoppingLinkCloud + catalog/entity cites
 - shopping-links audit: tüm case + blog sayfaları
+
+## Gün 40 notları
+
+- Ürün model sayfaları: ShoppingLinkCloud (25 model)
+- `/entity-profiles.json`: Point C yapıştırma pack’leri (GBP/LinkedIn/IG/FB) — sync-entity üretir
+- ARD + llms.txt discovery; `_routes.json` exclude
+- shopping-links: model sayfaları da
 
 ## Owner P0 (her gün hatırlatma)
 

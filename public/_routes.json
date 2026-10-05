@@ -3,6 +3,7 @@
   "include": ["/"],
   "exclude": [
     "/entity.json",
+    "/entity-profiles.json",
     "/catalog.json",
     "/feeds/*",
     "/.well-known/*",

@@ -260,6 +260,9 @@ if (ard) {
   if (!urls.includes("/feeds/merchant-priced-panels.tsv")) {
     errors.push("ard.json must discover merchant-priced-panels.tsv");
   }
+  if (!urls.includes("/entity-profiles.json")) {
+    errors.push("ard.json must discover entity-profiles.json (Point C packs)");
+  }
 }
 
 const gob = mustExist("tr/rehber/gob-vs-smd/index.html");

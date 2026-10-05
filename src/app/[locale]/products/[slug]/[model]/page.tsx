@@ -17,6 +17,7 @@ import {
 import { CALC_EXTRAS, fmtUsd, panelM2, panelModule } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { ProductCtaRow } from "@/components/products/ProductCtaRow";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
@@ -303,6 +304,14 @@ export default async function ModelPage({ params }: PageProps) {
               </>
             )}
           </p>
+          <ShoppingLinkCloud
+            excludeHref={modelPath(m)}
+            title={`${m.name} · fiyat ve kimlik kaynakları`}
+            extra={[
+              { href: productGroupPath(g), label: g.name },
+              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+            ]}
+          />
         </div>
       </section>
 

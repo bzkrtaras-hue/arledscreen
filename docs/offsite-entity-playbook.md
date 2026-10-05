@@ -10,6 +10,7 @@ yayımlanmaz** — yalnızca burada.
 | Kaynak | URL |
 |---|---|
 | Makinece entity (NAP + cite) | https://arledscreen.com/entity.json |
+| Point C paste packs | https://arledscreen.com/entity-profiles.json |
 | Kısa AI özeti | https://arledscreen.com/llms.txt |
 | Hakkımızda | https://arledscreen.com/tr/about/ |
 

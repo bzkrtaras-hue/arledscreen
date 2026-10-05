@@ -155,3 +155,39 @@ const doc = {
 const out = path.join(root, "public/entity.json");
 fs.writeFileSync(out, `${JSON.stringify(doc, null, 2)}\n`);
 console.log(`sync-entity: wrote ${path.relative(root, out)} (sameAs=${ORGANIZATION_SAME_AS.length})`);
+
+/** Point C paste packs — owner forms (GBP/LinkedIn/IG/FB/directories). Not Organization schema. */
+const profiles = {
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  name: "ARLEDSCREEN entity profile paste packs (Point C)",
+  description:
+    "Third-party profile paste packs derived from the same cite facts as entity.json. Owner-operated Point C; do not invent ratings or prices.",
+  url: `${SITE}/entity-profiles.json`,
+  creator: { "@id": `${SITE}/#organization` },
+  isBasedOn: `${SITE}/entity.json`,
+  license: "https://arledscreen.com/tr/about/",
+  dateModified: new Date().toISOString().slice(0, 10),
+  packs: {
+    gbpDescription: ENTITY_CITE_MEDIUM,
+    linkedinAbout: `${ENTITY_CITE_MEDIUM}\n\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json\nTelefon: ${CONTACT_PHONE_DISPLAY}`,
+    instagramBio: "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
+    facebookAbout: ENTITY_CITE_MEDIUM,
+    directoryShort: ENTITY_CITE_ONE_LINER,
+    directoryLong: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nE-posta: ${CONTACT_EMAIL}\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json`,
+    youtubeAbout: `${ENTITY_CITE_SHORT}\n\nSite: ${SITE}/tr/\nEntity: ${SITE}/entity.json`,
+  },
+  canonicalUrls: {
+    entityJson: `${SITE}/entity.json`,
+    catalogJson: `${SITE}/catalog.json`,
+    ardJson: `${SITE}/.well-known/ard.json`,
+    llmsTxt: `${SITE}/llms.txt`,
+    about: `${SITE}/tr/about/`,
+    fiyat: `${SITE}/tr/led-ekran-fiyatlari/`,
+    playbook: "docs/offsite-entity-playbook.md (repo)",
+  },
+};
+
+const profilesOut = path.join(root, "public/entity-profiles.json");
+fs.writeFileSync(profilesOut, `${JSON.stringify(profiles, null, 2)}\n`);
+console.log(`sync-entity: wrote ${path.relative(root, profilesOut)} (Point C packs)`);

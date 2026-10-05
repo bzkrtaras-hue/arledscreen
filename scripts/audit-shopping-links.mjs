@@ -33,6 +33,14 @@ const productDirs = fs
   .filter((d) => d.isDirectory())
   .map((d) => `products/${d.name}`);
 
+const modelPages = [];
+for (const groupRel of productDirs) {
+  const groupAbs = path.join(outTr, groupRel);
+  for (const d of fs.readdirSync(groupAbs, { withFileTypes: true })) {
+    if (d.isDirectory()) modelPages.push(path.join(groupAbs, d.name, "index.html"));
+  }
+}
+
 const rehberExtras = [
   "rehber/gob-vs-smd",
   "rehber/piksel-araligi-secimi",
@@ -63,6 +71,7 @@ const blogDirs = fs.existsSync(path.join(outTr, "blog"))
 const pages = [
   ...unique.map((s) => path.join(outTr, s, "index.html")),
   ...productDirs.map((s) => path.join(outTr, s, "index.html")),
+  ...modelPages,
   ...rehberExtras.map((s) => path.join(outTr, s, "index.html")),
   ...regionDirs.map((s) => path.join(outTr, s, "index.html")),
   ...caseDirs.map((s) => path.join(outTr, s, "index.html")),
@@ -101,7 +110,7 @@ for (const file of pages) {
 }
 
 console.log(
-  `Checked ${checked} shopping surfaces (home/commercial/product/rehber/regions/cases/blog/about/hubs) for fiyat+catalog+quote+hesaplayici+entity links`,
+  `Checked ${checked} shopping surfaces (home/commercial/product/models/rehber/regions/cases/blog/about/hubs) for fiyat+catalog+quote+hesaplayici+entity links`,
 );
 if (errors.length) {
   console.error("FAIL:");

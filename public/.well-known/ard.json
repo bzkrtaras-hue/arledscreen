@@ -139,6 +139,21 @@
       "capabilities": ["MerchantFeedDownload", "PricedSkuList"],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T19:50:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:entity:profile-packs",
+      "displayName": "Point C profile paste packs",
+      "type": "application/ld+json",
+      "url": "https://arledscreen.com/entity-profiles.json",
+      "description": "GBP / LinkedIn / Instagram / Facebook / dizin yapıştırma metinleri — entity.json cite ile birebir. Sahip Point C operasyonu; uydurma rating/fiyat yok.",
+      "representativeQueries": [
+        "ARLEDSCREEN Google Business Profile açıklaması",
+        "ARLEDSCREEN LinkedIn About metni",
+        "ARLEDSCREEN entity paste pack"
+      ],
+      "tags": ["entity", "Point-C", "GBP", "LinkedIn", "NAP"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-05T20:10:00Z"
     }
   ]
 }

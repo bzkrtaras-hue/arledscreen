@@ -95,6 +95,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 ## 5. AI alışveriş / ajan okuma
 
 - Entity: [entity.json](https://arledscreen.com/entity.json)
+- Point C paste packs: [entity-profiles.json](https://arledscreen.com/entity-profiles.json) (GBP/LinkedIn/IG/FB)
 - Panel kataloğu (fiyat + URL): [catalog.json](https://arledscreen.com/catalog.json)
 - Merchant dry-run (yalnız 12 priced SKU): [merchant-priced-panels.tsv](https://arledscreen.com/feeds/merchant-priced-panels.tsv)
 - Ajan keşif: [/.well-known/ard.json](https://arledscreen.com/.well-known/ard.json)

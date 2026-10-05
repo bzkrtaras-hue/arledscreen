@@ -90,6 +90,22 @@ if (fs.existsSync(path.join(root, "out"))) {
   warnings.push("out/ missing — skip export copy check");
 }
 
+const profilesPath = path.join(root, "public/entity-profiles.json");
+if (!fs.existsSync(profilesPath)) {
+  errors.push("public/entity-profiles.json missing (Point C packs)");
+} else {
+  const packs = JSON.parse(fs.readFileSync(profilesPath, "utf8"));
+  for (const key of ["gbpDescription", "linkedinAbout", "instagramBio", "facebookAbout", "directoryLong"]) {
+    if (!packs.packs?.[key]) errors.push(`entity-profiles.json missing packs.${key}`);
+  }
+  if (!String(packs.packs?.gbpDescription || "").includes("Gaziosmanpaşa")) {
+    errors.push("entity-profiles gbpDescription missing Gaziosmanpaşa");
+  }
+  if (fs.existsSync(path.join(root, "out")) && !fs.existsSync(path.join(root, "out/entity-profiles.json"))) {
+    errors.push("out/entity-profiles.json missing after build");
+  }
+}
+
 /** Optional live probe (network). Failures are warnings until PR #55 deploys. */
 async function liveProbe() {
   const urls = [
