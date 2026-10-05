@@ -37,7 +37,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "LED ekran fiyatı neye göre belirlenir?",
       answer:
-        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz.",
+        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz.",
     },
     {
       question: "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
@@ -77,7 +77,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Kiralık LED ekran hizmetiniz var mı?",
       answer:
-        "Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçeneklerini birlikte değerlendiriyoruz. Etkinlik tarihi, ekran ölçüsü ve konum bilgisini paylaşırsanız uygun seçeneği size iletiriz.",
+        "Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçeneklerini birlikte değerlendiriyoruz. Etkinlik tarihi, ekran ölçüsü ve konum bilgisini paylaşırsanız uygun seçeneği size iletiriz. Kiralıkta list fiyatı yoktur — https://arledscreen.com/tr/quote/.",
     },
     {
       question: "Ekrana içerik nasıl yüklenir?",
@@ -87,7 +87,12 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
       answer:
-        "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür.",
+        "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: https://arledscreen.com/entity.json.",
+    },
+    {
+      question: "AI / alışveriş ajanları fiyat ve kimliği nereden okumalı?",
+      answer:
+        "Makinece kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/ · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt.",
     },
   ],
   ar: [

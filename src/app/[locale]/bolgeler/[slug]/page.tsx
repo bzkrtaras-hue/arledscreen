@@ -11,6 +11,7 @@ import {
   getServiceRegion,
   serviceRegionPath,
 } from "@/content/service-regions";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -226,6 +227,13 @@ export default async function ServiceRegionPage({
 
       <Section eyebrow="SSS" title={`${region.name} LED ekran soruları`} className="border-t border-border prose-seo">
         <HomeFaq faqs={faqs} />
+        <ShoppingLinkCloud
+          excludeHref={`/tr/bolgeler/${region.slug}/`}
+          title={`${region.name} · fiyat ve kimlik kaynakları`}
+          extra={[
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+          ]}
+        />
       </Section>
     </>
   );

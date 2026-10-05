@@ -41,9 +41,12 @@ const FORBIDDEN = [
 const PRICE_HINT = /catalog\.json|led-ekran-fiyatlari/;
 
 function auditPage(rel, { minCount = 2, requirePriceHint = true } = {}) {
-  const file = path.join(outTr, rel, "index.html");
+  const file =
+    rel === "." || rel === ""
+      ? path.join(outTr, "index.html")
+      : path.join(outTr, rel, "index.html");
   if (!fs.existsSync(file)) {
-    errors.push(`missing HTML: ${rel}`);
+    errors.push(`missing HTML: ${rel === "." || rel === "" ? "home (tr/)" : rel}`);
     return;
   }
   const html = fs.readFileSync(file, "utf8");
@@ -90,7 +93,7 @@ for (const slug of commercialSlugs) {
   checked += 1;
   auditPage(slug, { minCount: 2, requirePriceHint: true });
 }
-auditPage("bolgeler", { minCount: 2, requirePriceHint: false });
+auditPage("bolgeler", { minCount: 3, requirePriceHint: true });
 for (const slug of regionDirs) {
   checked += 1;
   auditPage(`bolgeler/${slug}`, { minCount: 3, requirePriceHint: true });
@@ -114,11 +117,12 @@ auditPage("about/aras-bozkurt", { minCount: 3, requirePriceHint: true });
 auditPage("yapay-zeka", { minCount: 3, requirePriceHint: true });
 auditPage("sss", { minCount: 4, requirePriceHint: true });
 auditPage("hizmetler", { minCount: 3, requirePriceHint: true });
+auditPage(".", { minCount: 4, requirePriceHint: true }); // TR home
 auditPage("rehber/piksel-araligi-secimi", { minCount: 2, requirePriceHint: true });
 auditPage("rehber/kiralik-mi-satin-alma", { minCount: 2, requirePriceHint: true });
 
 console.log(
-  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber`,
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber`,
 );
 if (errors.length) {
   console.error("FAIL:");

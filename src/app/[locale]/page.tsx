@@ -26,6 +26,7 @@ import { BrandBand } from "@/components/home/BrandBand";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -212,6 +213,14 @@ export default async function HomePage({ params }: PageProps) {
         className="min-w-0 prose-seo"
       >
         <HomeFaq faqs={faqs} />
+        <ShoppingLinkCloud
+          excludeHref="/tr/"
+          title="Ana sayfa · fiyat ve kimlik kaynakları"
+          extra={[
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+            { href: "/.well-known/ard.json", label: "ard.json" },
+          ]}
+        />
       </Section>
       {chatWidget}
     </>

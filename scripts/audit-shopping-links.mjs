@@ -40,11 +40,18 @@ const rehberExtras = [
   "rehber/led-tabela-mi-led-ekran-mi",
 ];
 
+const regionDirs = fs
+  .readdirSync(path.join(outTr, "bolgeler"), { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => `bolgeler/${d.name}`);
+
 /** Paths that use CommercialLanding, product group template, or ShoppingLinkCloud */
 const pages = [
   ...unique.map((s) => path.join(outTr, s, "index.html")),
   ...productDirs.map((s) => path.join(outTr, s, "index.html")),
   ...rehberExtras.map((s) => path.join(outTr, s, "index.html")),
+  ...regionDirs.map((s) => path.join(outTr, s, "index.html")),
+  path.join(outTr, "index.html"), // TR home
   path.join(outTr, "led-ekran-fiyatlari", "index.html"),
   path.join(outTr, "hesaplayici", "index.html"),
   path.join(outTr, "quote", "index.html"),
@@ -55,6 +62,7 @@ const pages = [
   path.join(outTr, "yapay-zeka", "index.html"),
   path.join(outTr, "sss", "index.html"),
   path.join(outTr, "hizmetler", "index.html"),
+  path.join(outTr, "bolgeler", "index.html"),
 ];
 
 let checked = 0;
@@ -73,7 +81,7 @@ for (const file of pages) {
 }
 
 console.log(
-  `Checked ${checked} shopping surfaces (commercial/product/rehber/about/hub/founder/yapay-zeka/sss/hizmetler) for fiyat+catalog+quote+hesaplayici+entity links`,
+  `Checked ${checked} shopping surfaces (home/commercial/product/rehber/regions/about/hub/founder/yapay-zeka/sss/hizmetler) for fiyat+catalog+quote+hesaplayici+entity links`,
 );
 if (errors.length) {
   console.error("FAIL:");
