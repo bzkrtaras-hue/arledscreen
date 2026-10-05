@@ -18,7 +18,7 @@ canlı skorlar merge + Point C sonrası doldurulur.
 | Merchant shipping | free-ship yok (`:::0` yasak) | ✅ audit:merchant-feed |
 | robots Host bare | `arledscreen.com` | ✅ audit:robots |
 | Cite parity | entity↔llms↔about↔profiles | ✅ audit:cite-parity |
-| Kör test site readiness | 23 prompt URL | ✅ audit:blind-test |
+| Kör test site readiness | 24 prompt URL | ✅ audit:blind-test |
 | AI headers (CORS/ctype) | 9 path | ✅ audit:ai-headers |
 | IndexNow key | public hex.txt | ✅ audit:indexnow |
 | AI shopping index | `/ai-shopping.json` + 12 pricedPanels + extrasUsd | ✅ audit:ai-shopping |
@@ -39,10 +39,10 @@ npm run smoke:live
 
 | Endpoint | Hedef | 2026-10-05 | 2026-11-04 |
 |----------|-------|------------|------------|
-| `/entity.json` | 200 JSON | soft-404 until PR #55 merge (Day 75 tip ready) (HTTP 404) | |
-| `/entity-profiles.json` | 200 JSON packs | soft-404 until PR #55 merge (Day 75 tip ready) (PR #55) | |
-| `/catalog.json` | 200 JSON | soft-404 until PR #55 merge (Day 75 tip ready) (HTTP 404) | |
-| `/.well-known/ard.json` | 200 JSON | soft-404 until PR #55 merge (Day 75 tip ready) (HTTP 404) | |
+| `/entity.json` | 200 JSON | soft-404 until PR #55 merge (Day 76 tip ready) (HTTP 404) | |
+| `/entity-profiles.json` | 200 JSON packs | soft-404 until PR #55 merge (Day 76 tip ready) (PR #55) | |
+| `/catalog.json` | 200 JSON | soft-404 until PR #55 merge (Day 76 tip ready) (HTTP 404) | |
+| `/.well-known/ard.json` | 200 JSON | soft-404 until PR #55 merge (Day 76 tip ready) (HTTP 404) | |
 | `/llms.txt` | 200 + cite | 200 ama cite bölümü eski (PR #55 sonrası) | |
 | `/robots.txt` Host | bare hostname | eski Host/şema (PR #55 sonrası) | |
 | `/feeds/merchant-priced-panels.tsv` | 12 SKU | HTTP 404 | |
@@ -70,15 +70,15 @@ Playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
 ## D) Kör test skorları (canlı modeller)
 
-Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 23 prompt × 0–3 = /69  
+Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 24 prompt × 0–3 = /72  
 Skor kartı (sahip doldurur): [`docs/ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
 | Tur | Tarih | ChatGPT | Gemini | Perplexity | Bing Copilot | Ort. |
 |-----|-------|---------|--------|------------|--------------|------|
-| 1 (deploy sonrası) | | /69 | /69 | /69 | /69 | |
-| 2 (Point C sonrası) | ≤2026-11-04 | /69 | /69 | /69 | /69 | |
+| 1 (deploy sonrası) | | /72 | /72 | /72 | /72 | |
+| 2 (Point C sonrası) | ≤2026-11-04 | /72 | /72 | /72 | /72 | |
 
-Hedef: Tur 1 ≥ 26/69 · Tur 2 ≥ 38/69
+Hedef: Tur 1 ≥ 36/72 · Tur 2 ≥ 54/72
 
 ## E) Merchant / Shopping
 
@@ -93,7 +93,7 @@ Hedef: Tur 1 ≥ 26/69 · Tur 2 ≥ 38/69
 
 - [ ] `smoke:live` GREEN
 - [ ] Point C ≥ 5 bağımsız URL aynı cite
-- [ ] Kör tur 2 ortalama ≥ 38/69
+- [ ] Kör tur 2 ortalama ≥ 54/72
 - [ ] Merchant feed yayında (opsiyonel ama önerilir)
 - [ ] GSC “Missing offers.price” = 0
 

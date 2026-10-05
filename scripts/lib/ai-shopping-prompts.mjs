@@ -182,6 +182,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["farklı", "ARLEDSCREEN", "Gaziosmanpaşa"],
     mustNotSay: ["aynı marka", "distribütör", "ücretsiz kargo dahil"],
   },
+  {
+    id: 24,
+    q: "NXTIONSTAR NationStar ile aynı mı?",
+    paths: ["/tr/nxtionstar/", "/entity.json", "/llms-full.txt"],
+    mustSay: ["farklı", "ARLEDSCREEN", "Gaziosmanpaşa"],
+    mustNotSay: ["aynı marka", "distribütör", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

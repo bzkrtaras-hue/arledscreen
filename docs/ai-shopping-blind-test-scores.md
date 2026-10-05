@@ -1,7 +1,7 @@
 # AI alışveriş — kör test skor kartı
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (deploy sonrası) ≥ **26/69** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **38/69**  
+Hedef: Tur 1 (deploy sonrası) ≥ **36/72** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **54/72**  
 Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-profiles.json` · `ard.json`
 
 ## Site readiness (repo)
@@ -9,21 +9,21 @@ Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-pro
 | Kontrol | Durum |
 |---------|--------|
 | `npm run audit:blind-test` | build/postbuild |
-| `npm run smoke:live` | deploy sonrası 16/16 |
+| `npm run smoke:live` | deploy sonrası 20/20 |
 
 ## Tur kayıtları
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /69.
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /72.
 
 ### Tur 1 — deploy sonrası (PR #55 canlı)
 
-| Model | Tarih | Konum | Incognito | Skor /69 | Not |
+| Model | Tarih | Konum | Incognito | Skor /72 | Not |
 |-------|-------|-------|-----------|----------|-----|
-| ChatGPT | | TR / | evet | /69 | |
-| Gemini | | | | /69 | |
-| Perplexity | | | | /69 | |
-| Bing Copilot | | | | /69 | |
-| **Ortalama** | | | | **/69** | Hedef ≥ 26 |
+| ChatGPT | | TR / | evet | /72 | |
+| Gemini | | | | /72 | |
+| Perplexity | | | | /72 | |
+| Bing Copilot | | | | /72 | |
+| **Ortalama** | | | | **/72** | Hedef ≥ 36 |
 
 Detay (örnek — her model için kopyalayın):
 
@@ -48,20 +48,20 @@ Model:
 15 | Colorlight kontrol kartı fiyatı? |  |  | list yok → teklif
 16 | Poster / totem LED fiyatı? |  |  | list yok → teklif
 17 | LED modül ve kontrol sistemi fiyatı? |  |  | list yok → teklif
-Toplam: /69
+Toplam: /72
 ```
 
 ### Tur 2 — Point C sonrası (≤ 2026-11-04)
 
 Önkoşul: GBP + LinkedIn/IG/FB About = `entity-profiles.json` packs · `arleds.com` 301
 
-| Model | Tarih | Skor /69 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /72 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|----------|---------------------------|-----|
-| ChatGPT | | /69 | | |
-| Gemini | | /69 | | |
-| Perplexity | | /69 | | |
-| Bing Copilot | | /69 | | |
-| **Ortalama** | | **/69** | | Hedef ≥ 38 |
+| ChatGPT | | /72 | | |
+| Gemini | | /72 | | |
+| Perplexity | | /72 | | |
+| Bing Copilot | | /72 | | |
+| **Ortalama** | | **/72** | | Hedef ≥ 54 |
 
 ## Point C sayaç (tur 2 ile birlikte)
 

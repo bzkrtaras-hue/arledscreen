@@ -193,7 +193,7 @@ const profiles = {
       "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directoryShort/Long) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
       "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
       "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar.",
-      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 23 kör test)`,
+      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 24 kör test)`,
     ],
   },
   canonicalUrls: {

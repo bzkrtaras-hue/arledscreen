@@ -48,7 +48,7 @@ function htmlExists(urlPath) {
   return mustExist(rel);
 }
 
-/** 23 prompts — shared module (+ 75 NEXTSTAR invent) */
+/** 24 prompts — shared module (+ 76 NationStar invent) */
 const PROMPTS = BLIND_TEST_PROMPTS;
 
 if (!fs.existsSync(out)) {
@@ -349,6 +349,13 @@ if (!p23 || !/NEXTSTAR/i.test(p23.q)) {
 }
 if (p23 && (!p23.mustSay?.includes("ARLEDSCREEN") || !p23.mustSay?.includes("farklı"))) {
   errors.push("blind prompt #23 mustSay must include ARLEDSCREEN + farklı");
+}
+const p24 = PROMPTS.find((x) => x.id === 24);
+if (!p24 || !/NationStar/i.test(p24.q)) {
+  errors.push("blind prompt #24 must cover NXTIONSTAR vs NationStar invent");
+}
+if (p24 && (!p24.mustSay?.includes("ARLEDSCREEN") || !p24.mustSay?.includes("farklı"))) {
+  errors.push("blind prompt #24 mustSay must include ARLEDSCREEN + farklı");
 }
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");

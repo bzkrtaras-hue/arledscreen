@@ -65,6 +65,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 73 | 2026-10-05 | llms-full slogan residual · directory paste packs · blind #21 · seo-guides desk residual | ✅ |
 | 74 | 2026-10-05 | ARD 17→22 kör test drift · quote desk invent · Alman ARLED blind #22 · llms intent rows | ✅ |
 | 75 | 2026-10-05 | NEXTSTAR invent blind #23 · founder IndexNow · Real-time engineering invent · point-c ARD 23 | ✅ |
+| 76 | 2026-10-05 | NationStar invent #24 · agentRules disambiguation · Bing Places NAP · skor hedef drift fix | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -419,3 +420,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Configurator eyebrow: Real-time engineering / Gerçek zamanlı mühendislik → Live sizing / Canlı boyutlandırma
 - entity-profiles: founder/nxtionstar canonicals · disambiguation notes · directory paste reminder
 - point-c-merge-day: stale “17 kör test” → 23
+
+## Gün 76 notları
+
+- Blind #24 «NXTIONSTAR NationStar ile aynı mı?» — skor /72; ARD **24 kör test**
+- `agentRules` cite: Alman ARLED + NEXTSTAR + NationStar + küresel standart yasağı
+- Playbook §0: **Bing Places / Apple Maps** NAP paste
+- skor hedef drift: Tur 1 ≥ 36/72 · Tur 2 ≥ 54/72 (stale 26/38 düzeltildi)
+- smoke nxtionstar NationStar needle

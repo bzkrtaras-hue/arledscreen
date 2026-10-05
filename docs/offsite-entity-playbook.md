@@ -82,6 +82,22 @@ Marka yazılışları: **ARLEDSCREEN** (birincil) · ARLED SCREEN · AR-LED Ekra
 
 Karıştırma yasağı: Almanya ARLED Solutions GmbH / ARLED Cinema · Next&NextStar (NEXTSTAR) TV · NationStar
 
+### Bing Places / Apple Maps (yapıştır — NAP birebir)
+
+GBP ile aynı NAP + kısa cite. Kategori: LED display / Digital signage / Electronics store (uygun olan). Web yalnızca `https://arledscreen.com/tr/`.
+
+```text
+ARLEDSCREEN
+Merkez Mah. Tuna Sok. No:15-17 Kat 1
+34245 Gaziosmanpaşa / İstanbul
++90 530 507 88 34
+arled@arledscreen.com
+https://arledscreen.com/tr/
+https://arledscreen.com/entity.json
+
+Kısa: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır (sıralama iddiası yok).
+```
+
 ---
 
 ## 0b) Domain birleştirme (kritik entity notu)

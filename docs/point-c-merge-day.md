@@ -28,11 +28,11 @@ Hedef: **16/16 PASS** (BLOCKED 0).
 
 | URL | Beklenen |
 |-----|----------|
-| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · extrasUsd≠list SKU · ücretsiz kargo yok · blind #13–#23 |
+| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · extrasUsd≠list SKU · ücretsiz kargo yok · blind #13–#24 |
 | `/entity.json` | 200 JSON · `citeOneLiner` · Gaziosmanpaşa · `hasOfferCatalog` + kontrol |
 | `/entity-profiles.json` | 200 JSON · `gbpDescription` · `linkedinAbout` · `sameAsReadiness` |
 | `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` · `shippingDetails` · `hasMerchantReturnPolicy` · ücretsiz kargo yok · quoteOnly+kontrol |
-| `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping · **23 kör test** |
+| `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping · **24 kör test** |
 | `/llms.txt` / `/llms-full.txt` | cite + pricedPanels + ücretsiz kargo yok + Huidu/kontrol quote-only |
 | `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · shipping boş · `return_policy_label=quote_contract_only` · iade honesty |
 | `/tr/about/` · `/tr/yapay-zeka/` · `/tr/led-ekran-fiyatlari/` | entity + catalog + ai-shopping |
@@ -86,11 +86,11 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 
 ## 4) Kör tur 1 (deploy sonrası)
 
-Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 23 prompt × 0–3 = /69  
+Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 24 prompt × 0–3 = /72  
 **mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3)  
 Skor: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
-Hedef tur 1 ≥ 26/69; Point C sonrası tur 2 ≥ 38/69.
+Hedef tur 1 ≥ 36/72; Point C sonrası tur 2 ≥ 54/72.
 
 ## 5) Day 57–64 canlı doğrulama (özet)
 
