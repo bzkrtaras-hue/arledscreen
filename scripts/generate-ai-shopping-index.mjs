@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 33 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 34 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -149,6 +149,7 @@ const doc = {
     "OEM fabrika / fabrika üreticisi / bağımsız bayi / distribütör iddiası yok — NXTIONSTAR ürün markası; satıcı ARLEDSCREEN (Gaziosmanpaşa).",
     "Keşiften teslimata tek ekip / tek ekip garanti platform iddiası yok — kapsam yazılı teklifte; fabrika-led-ekran = kullanım alanı (üretici değil).",
     "Quote-only (şeffaf/esnek/poster/kiralık): stokta paket / anında teslim / list fiyatı var iddiası yok — Gaziosmanpaşa keşif + yazılı teklif; ai-shopping.json.",
+    "Sabit nit / IP / kW site iddiası yok — parlaklık ve koruma sınıfı modele göre yazılı teklif/föyde; ajanlar «600–1200 nit» veya «IP65 garanti» uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

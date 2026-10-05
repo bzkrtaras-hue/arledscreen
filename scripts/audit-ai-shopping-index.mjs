@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 32 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 34 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 33) errors.push(`blindTestPrompts must be 33 (got ${prompts.length})`);
+if (prompts.length !== 34) errors.push(`blindTestPrompts must be 34 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/33 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 33 kör test intent");
+if (!/34 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 34 kör test intent");
 }
-if (/(?:2[0-9]|3[0-2]) kör test/i.test(ard) && !/33 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–32 kör test without 33");
+if (/(?:2[0-9]|3[0-3]) kör test/i.test(ard) && !/34 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–33 kör test without 34");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -313,6 +313,14 @@ if (!p33 || !/stokta|anında teslim|list fiyat/i.test(p33.q || "")) {
 }
 if (!/stokta paket|anında teslim|list fiyatı/i.test(rulesJson)) {
   errors.push("agentRules must forbid stokta paket / anında teslim / list fiyat invent");
+}
+// Day 86: sabit nit / IP invent
+const p34 = (doc.blindTestPrompts || []).find((p) => p.id === 34);
+if (!p34 || !/nit|IP/i.test(p34.q || "")) {
+  errors.push("blindTestPrompts #34 must cover sabit nit / IP invent");
+}
+if (!/sabit nit|IP65 garanti|600.?1200/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit nit / IP65 garanti invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

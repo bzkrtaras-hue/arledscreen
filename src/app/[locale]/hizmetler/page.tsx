@@ -113,7 +113,7 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
               LED ekran montaj ve teknik servis hizmetleri
             </h1>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-soft">
-              Keşiften devreye almaya ve kurulum sonrası servise kadar LED ekran projenizin tüm adımlarını planlıyoruz. Merkezimiz İstanbul Gaziosmanpaşa&apos;dadır; Türkiye genelinde proje yürütüyoruz. Kayıtlı iller için{" "}
+              Keşif, montaj ve servis kalemlerini Gaziosmanpaşa&apos;dan yazılı teklifte planlıyoruz — sabit keşiften–devreye paket veya platform iddiası yok. Merkezimiz İstanbul Gaziosmanpaşa&apos;dadır; Türkiye genelinde proje yürütüyoruz. Kayıtlı iller için{" "}
               <Link href="/tr/bolgeler/" className="font-semibold text-cyan hover:underline">
                 hizmet bölgesi
               </Link>{" "}

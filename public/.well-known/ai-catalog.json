@@ -337,6 +337,152 @@
       "updatedAt": "2026-10-06T02:30:00Z"
     },
     {
+      "identifier": "urn:air:arledscreen.com:commerce:ic-mekan-priced",
+      "displayName": "İç mekân LED ekran (priced hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "description": "İç mekân priced panel grubu. Panel USD catalog/ai-shopping; sabit nit yok — Blind #34. Gaziosmanpaşa + yazılı teklif.",
+      "representativeQueries": [
+        "iç mekan LED ekran fiyat",
+        "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
+        "P2.5 iç mekan LED"
+      ],
+      "tags": [
+        "commerce",
+        "pricing",
+        "indoor",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T04:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:dis-mekan-priced",
+      "displayName": "Dış mekân LED ekran (priced hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "description": "Dış mekân priced panel grubu. IP/nit modele göre yazılı teklif/föyde — sitede sabit yok. Blind #34.",
+      "representativeQueries": [
+        "dış mekan LED ekran fiyat",
+        "dış mekân LED kaç nit",
+        "IP65 LED ekran"
+      ],
+      "tags": [
+        "commerce",
+        "pricing",
+        "outdoor",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T04:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:gob-priced",
+      "displayName": "GOB LED ekran (priced hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/",
+      "description": "GOB priced panel grubu. Panel USD catalog/ai-shopping; rehber gob-vs-smd.",
+      "representativeQueries": [
+        "GOB LED ekran fiyat",
+        "GOB mi SMD mi?",
+        "GOB panel USD"
+      ],
+      "tags": [
+        "commerce",
+        "pricing",
+        "GOB",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T04:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-ic",
+      "displayName": "İç mekân LED rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34. Panel USD catalog/ai-shopping.",
+      "representativeQueries": [
+        "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
+        "iç mekan LED rehber",
+        "iç mekan nit"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "indoor",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T04:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
+      "displayName": "Dış mekân LED rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
+      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34. Keşif + yazılı teklif Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Dış mekân LED ekran kaç nit olmalı?",
+        "IP65 LED rehber",
+        "dış mekan LED rehber"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "outdoor",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T04:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:totem",
+      "displayName": "Totem LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/totem-led-ekran/",
+      "description": "Totem / dikey LED intent. Quote-only poster grubuyla planlanır; list fiyatı yok.",
+      "representativeQueries": [
+        "totem LED ekran",
+        "dijital totem fiyat",
+        "poster LED totem"
+      ],
+      "tags": [
+        "commerce",
+        "totem",
+        "GEO",
+        "quote-only"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T04:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-mimari",
+      "displayName": "Mimari / mühendislik LED rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); keşif + yazılı teklif.",
+      "representativeQueries": [
+        "mimari LED mühendislik",
+        "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
+        "esnek LED mimari"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "architecture",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T04:00:00Z"
+    },
+    {
       "identifier": "urn:air:arledscreen.com:commerce:kiralama-intent",
       "displayName": "LED ekran kiralama intent",
       "type": "text/html",
@@ -728,7 +874,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 33 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 34 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -737,7 +883,8 @@
         "ARLEDSCREEN enterprise / aynı gün kurulum / keşiften servise all-in-one mı?",
         "ARLEDSCREEN LED ekran üreticisi / fabrika / OEM mi, yoksa bayi mi?",
         "ARLEDSCREEN keşiften teslimata tek ekip mi / fabrika LED üreticisi mi?",
-        "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?"
+        "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
+        "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -756,7 +903,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T03:00:00Z"
+      "updatedAt": "2026-10-06T04:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

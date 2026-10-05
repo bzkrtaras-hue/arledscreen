@@ -259,6 +259,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ai-shopping.json"],
     mustNotSay: ["stokta paket", "anında teslim", "list fiyatı var", "ücretsiz kargo dahil"],
   },
+  {
+    id: 34,
+    q: "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit nit yok"],
+    mustNotSay: ["600–1.200", "600-1200", "sabit nit var", "IP65 garanti", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -277,7 +277,7 @@ const en: Dictionary = {
   sections: {
     modules: {
       eyebrow: "Site tools",
-      title: "Everything you need — without the clutter",
+      title: "Site tools — products, calculator, projects",
       description:
         "Explore products, calculator, configurator and project references. Each tool lives on its own page; here we show what it does.",
     },
@@ -321,7 +321,7 @@ const en: Dictionary = {
       description:
         "NXTIONSTAR displays are specified by ARLEDSCREEN so AI content engines, media servers and control software can be matched in the Gaziosmanpaşa survey and written quote — not sold as an invented AI-ready or engineering-standard SKU.",
       points: [
-        "Documented signal paths for CMS, media servers and automation APIs",
+        "Signal paths for CMS, media servers and automation APIs sized in the Gaziosmanpaşa survey and written quote",
         "Refresh and receiver paths matched in the Gaziosmanpaşa survey for AI-driven or camera-facing content",
         "Gaziosmanpaşa survey team that sizes pitch, power and receivers around your CMS / media-server path",
       ],
@@ -331,7 +331,7 @@ const en: Dictionary = {
     eyebrow: "Company",
     title: "ARLEDSCREEN — LED sales, install & service in Turkey",
     description:
-      "ARLEDSCREEN delivers LED systems in Turkey from Istanbul Gaziosmanpaşa. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product brand; sole sales point in Turkey: ARLEDSCREEN.",
+      "ARLEDSCREEN sells, installs and services LED systems in Turkey from Istanbul Gaziosmanpaşa. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product brand; sole sales point in Turkey: ARLEDSCREEN.",
     body:
       "From fine-pitch command centers to outdoor LED and totem installs, our Gaziosmanpaşa team pairs product choice with viewing distance, power topology and a clear BOM — IP class in the written quote / technical sheet. Panel USD: catalog.json / ai-shopping.json; transparent/poster/control stay quote-only.",
     cta: "Read more about us",

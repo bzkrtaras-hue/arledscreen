@@ -149,9 +149,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Bina cephesi iskelet ve rüzgâr yükü hesabı ister; stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Her senaryoda güç topolojisi (tek / üç faz) ve yedek alıcı ihtiyacı teklife yazılır.",
         },
         {
-          h2: "Keşiften montaja ARLEDSCREEN süreci",
+          h2: "Keşif sonrası montaj — kapsam yazılı teklifte",
           body:
-            "Ölçü paylaşımı veya yerinde keşif sonrası kabin dizilimi, çelik konstrüksiyon arayüzü, sinyal hattı (CAT6A / fiber) ve bakım erişimi çizilir. Yapay zekâ veya CMS ile zamanlanan DOOH içeriği varsa alıcı / gönderici uyumu da paketlenir. Kurulum sonrası kalibrasyon ve teknik destek Gaziosmanpaşa merkezinden yazılı teklif kapsamında yürür.",
+            "Ölçü paylaşımı veya yerinde keşif sonrası kabin dizilimi, çelik konstrüksiyon arayüzü, sinyal hattı (CAT6A / fiber) ve bakım erişimi çizilir. Yapay zekâ veya CMS ile zamanlanan DOOH içeriği varsa alıcı / gönderici uyumu da paketlenir. Kurulum sonrası kalibrasyon ve teknik destek Gaziosmanpaşa merkezinden yazılı teklif kapsamında yürür — uydurma keşiften-montaja platform iddiası yok.",
         },
       ],
       faqs: [
@@ -228,7 +228,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "İç mekân ekran kaç nit olmalı?",
           answer:
-            "Tipik 600–1.200 nit yeterlidir; vitrin arkası veya güneşli atrium’da daha yüksek band konuşulabilir. Aşırı nit karanlık salonda rahatsız eder.",
+            "Parlaklık ortama ve modele bağlıdır; kesin nit yazılı teklif / teknik föyde — sitede sabit nit yok. Vitrin arkası veya güneşli atrium’da daha yüksek band keşifte konuşulabilir. Aşırı nit karanlık salonda rahatsız eder. Keşif Gaziosmanpaşa merkezinden planlanır.",
         },
         {
           question: "Servis ön mü arka mı?",
@@ -400,7 +400,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "Vitrin LED ekran çözümleri",
       intro:
-        "Vitrin LED ekran, mağaza camını reklam yüzeyine çevirirken içeriğin görünürlüğünü koruyabilir. ARLEDSCREEN / NXTIONSTAR şeffaf ve ince panel seçenekleriyle perakende vitrin projelerini keşiften montaja yönetir.",
+        "Vitrin LED ekran, mağaza camını reklam yüzeyine çevirirken içeriğin görünürlüğünü koruyabilir. ARLEDSCREEN / NXTIONSTAR şeffaf ve ince panel seçenekleriyle perakende vitrin projelerinde keşif ve montaj kalemlerini yazılı teklifle planlar — uydurma keşiften-montaja platform yok.",
       sections: [
         {
           h2: "Şeffaf LED vs opak vitrin duvarı",
@@ -457,7 +457,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       slug: "poster-led-ekran",
       title: "Poster LED Ekran & Totem | Dikey Tabela — ARLEDSCREEN",
       description:
-        "Poster LED ekran ve dijital totem: dikey format, lobi / AVM / dış mekân. NXTIONSTAR totem çözümleri — ARLEDSCREEN mühendislik ve montaj.",
+        "Poster LED ekran ve dijital totem: dikey format, lobi / AVM / dış mekân. NXTIONSTAR totem çözümleri — ARLEDSCREEN keşif + montaj (yazılı teklif).",
       keywords: [
         "poster LED ekran",
         "LED totem",
@@ -615,7 +615,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Pitch, brightness and cabinets",
           body:
-            "Critical viewing distance drives pitch. Indoor walls often sit at 600–1,200 nits; outdoor façades need far higher. Cabinet geometry (e.g. 500×500 / 500×1000) follows structure and service access.",
+            "Critical viewing distance drives pitch. Indoor walls usually need lower nits than outdoor façades; exact figures are quote/sheet-specific — no fixed site nit. Cabinet geometry (e.g. 500×500 / 500×1000) follows structure and service access.",
         },
         {
           h2: "B2B process: survey, quote, install",
@@ -769,7 +769,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "How many nits indoors?",
           answer:
-            "Typically 600–1,200 nits; sunlit atriums may need more. Excess brightness hurts dark halls.",
+            "Brightness depends on ambient light and model; exact nits in the written quote / sheet — no fixed site nit. Sunlit atriums may need more; excess brightness hurts dark halls. Survey is planned from Gaziosmanpaşa.",
         },
         {
           question: "Front or rear service?",
@@ -1017,7 +1017,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Indoor vs outdoor totems",
           body:
-            "Indoor units use lower nits and slim housings; outdoor units need IP65, high nits and solid bases. Mall corridors respect accessibility clearances; outdoor sites need anchorage and wind calcs.",
+            "Indoor units use lower nits and slim housings; outdoor units need higher brightness, sealing and solid bases — IP class and nits in the written quote / sheet, not a site-wide claim. Mall corridors respect accessibility clearances; outdoor sites need anchorage and wind calcs.",
         },
         {
           h2: "Vertical content format",
