@@ -69,7 +69,26 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         </div>
       </section>
 
-      <Section eyebrow="Yakın süreçte tamamlananlar" title="Öne çıkan projeler" description="Yakın süreçte tamamladığımız projelerden bir seçki." className="prose-seo">
+      <Section
+        id="videolar"
+        eyebrow="Sahadan"
+        title="Videolar"
+        description="Kurulumlarımızdan kısa video kayıtları. İlk video görünür olduğunda sessiz oynar; diğerlerini oynatmak için dokunun."
+        className="prose-seo"
+      >
+        <ProjectVideos />
+      </Section>
+
+      <Section eyebrow="Saha" title="Uygulama fotoğrafları" className="bg-band prose-seo">
+        <CompletedProjectsGallery locale="tr" />
+      </Section>
+
+      <Section
+        eyebrow="Yakın süreçte tamamlananlar"
+        title="Öne çıkan projeler"
+        description="Yakın süreçte tamamladığımız projelerden bir seçki."
+        className="prose-seo"
+      >
         <FeaturedReferences limit={7} showAllLink={false} ctaHref="#liste" ctaLabel="Diğer projeleri görün" />
       </Section>
 
@@ -89,14 +108,6 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           ))}
         </ul>
       </section>
-
-      <Section eyebrow="Saha" title="Uygulama fotoğrafları" className="bg-band prose-seo">
-        <CompletedProjectsGallery locale="tr" />
-      </Section>
-
-      <Section id="videolar" eyebrow="Sahadan" title="Videolar" description="Kurulumlarımızdan kısa video kayıtları. İlk video görünür olduğunda sessiz oynar; diğerlerini oynatmak için dokunun." className="prose-seo">
-        <ProjectVideos />
-      </Section>
 
       <Section id="liste" eyebrow="Seçki" title="Proje listesi" description="Yakın süreçte tamamladığımız projelerden bir seçki; tarih, firma veya proje adı, kapsam ve konum bilgisiyle." className="prose-seo">
         <ReferencesGrid locale="tr" />
