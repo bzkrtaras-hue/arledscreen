@@ -97,6 +97,7 @@ export const ARTICLE_SLUGS = [
   "piksel-araligi-secimi",
   "led-tabela-mi-led-ekran-mi",
   "kiralik-mi-satin-alma",
+  "gob-vs-smd",
 ] as const;
 
 export function getArticle(slug: string): Article {

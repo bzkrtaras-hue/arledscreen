@@ -54,7 +54,12 @@ export function OrganizationJsonLd() {
         address,
         sameAs: [...ORGANIZATION_SAME_AS],
         brand: { "@type": "Brand", name: "NXTIONSTAR", url: absoluteUrl("/tr/nxtionstar/") },
-        founder: { "@type": "Person", name: "Aras Bozkurt" },
+        founder: {
+          "@type": "Person",
+          name: "Aras Bozkurt",
+          url: absoluteUrl("/tr/about/aras-bozkurt/"),
+          sameAs: ["https://www.linkedin.com/in/bozkurtaras"],
+        },
         knowsAbout: [
           "LED ekran",
           "dijital ekran",

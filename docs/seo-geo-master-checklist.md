@@ -27,7 +27,10 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] Service + FAQ JSON-LD on commercial / region pages
 - [x] `llms.txt` / `llms-full.txt` updated with commercial URLs
 - [ ] Attach more **real** project photos to case studies as files become available
-- [ ] Author / E-E-A-T page for Aras Bozkurt (only real bio + LinkedIn)
+- [x] Author / E-E-A-T page for Aras Bozkurt (`/tr/about/aras-bozkurt/` + Person JSON-LD)
+- [x] Commercial landings: fiyat + hesaplayıcı + karar rehberi LinkCloud
+- [x] GOB vs SMD karar rehberi (`/tr/rehber/gob-vs-smd/`)
+- [x] About sayfası: entity cite + disambiguation (basin UI yok)
 
 ## P1 — Local / reviews (owner-operated)
 

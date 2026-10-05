@@ -39,7 +39,9 @@
   },
   "founder": {
     "@type": "Person",
-    "name": "Aras Bozkurt"
+    "name": "Aras Bozkurt",
+    "url": "https://arledscreen.com/tr/about/aras-bozkurt/",
+    "sameAs": ["https://www.linkedin.com/in/bozkurtaras"]
   },
   "citationPage": "https://arledscreen.com/tr/about/",
   "llmsTxt": "https://arledscreen.com/llms.txt",

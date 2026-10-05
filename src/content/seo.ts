@@ -54,11 +54,11 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "Hakkımızda | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli LED ekran firmasıdır. NXTIONSTAR kendi alt markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, keşif, montaj ve teknik servis.",
-      keywords: ["ARLEDSCREEN", "LED ekran firması İstanbul", "LED ekran montaj"],
+        "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
+      keywords: ["ARLEDSCREEN", "LED ekran firması İstanbul", "LED ekran montaj", "NXTIONSTAR"],
       h1: "ARLEDSCREEN hakkında",
       intro:
-        "ARLEDSCREEN ürün seçimi, keşif, montaj ve teknik servis süreçlerini yürütür. NXTIONSTAR, ürün sayfalarında yer alan kendi alt markasıdır.",
+        "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
     },
     hesaplayici: {
       title: "LED Ekran Fiyat Hesaplayıcı | Malzeme & Maliyet | ARLEDSCREEN",

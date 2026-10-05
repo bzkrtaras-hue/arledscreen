@@ -120,19 +120,38 @@ function usageHint(sector: string): { href: string; label: string } | undefined 
 
 /** Known photo matches — only attach when filename/project identity is clear. */
 const IMAGE_BY_REF: Record<string, { src: string; alt: string }[]> = {
+  "ref-19": [
+    { src: "/videos/aslanturk-yesilpinar-led-ekran.jpg", alt: "Ercan Et / Aslantürk Yeşilpınar şube LED ekran" },
+  ],
   "ref-26": [
     { src: "/projects/unye.jpg", alt: "Ünye Belediyesi Ordu Günleri LED ekran kurulumu" },
     { src: "/blog/unye-belediyesi-led-ekran.jpg", alt: "Ordu Günleri standında 384×160 cm LED ekran" },
   ],
   "ref-22": [{ src: "/blog/alanya-otel-led-ekran.jpg", alt: "Alanya White City Resort Hotel LED ekran" }],
+  "ref-38": [
+    {
+      src: "/videos/istanbul-drama-sanat-atolyesi-dis-mekan-led.jpg",
+      alt: "İstanbul Drama Sanat Atölyesi dış mekân LED ekran",
+    },
+  ],
   "ref-39": [
     { src: "/blog/eskisehir-sigorta-led-ekran.jpg", alt: "Eskişehir sigorta şubesi LED ekran montajı" },
     { src: "/blog/eskisehir-sigorta-led-ekran-2.jpg", alt: "Eskişehir şube LED kabin kablolaması" },
+    { src: "/blog/eskisehir-sigorta-led-ekran-3.jpg", alt: "Eskişehir şube LED ekran test ve montaj" },
+    { src: "/videos/eskisehir-sigorta-led-ekran-ic.jpg", alt: "Eskişehir sigorta şubesi iç mekân LED ekran" },
+    { src: "/videos/eskisehir-sigorta-led-ekran-vitrin.jpg", alt: "Eskişehir sigorta şubesi vitrin LED ekran" },
   ],
-  "ref-14": [{ src: "/projects/kafe.jpg", alt: "Kafe / yaşam alanı LED ekran uygulaması" }],
+  "ref-14": [
+    { src: "/projects/kafe.jpg", alt: "Kafe / yaşam alanı LED ekran uygulaması" },
+    { src: "/blog/kafe-restoran-led-ekran.jpg", alt: "Restoran / kafe LED ekran yayını" },
+    { src: "/videos/kafe-led-ekran-uygulamasi.jpg", alt: "Kafe LED ekran uygulaması" },
+  ],
   "ref-05": [{ src: "/projects/modules/outdoor-facade.jpg", alt: "Geniş dış mekân / belediye ölçeği LED yüzey" }],
   "ref-27": [{ src: "/projects/billboard-arled.jpg", alt: "Büyük yüzey dış mekân LED ekran" }],
-  "ref-44": [{ src: "/projects/modules/tech/flexible-curve-concave-convex.jpg", alt: "Esnek / oval LED ekran formu" }],
+  "ref-44": [
+    { src: "/projects/modules/tech/flexible-curve-concave-convex.jpg", alt: "Esnek / oval LED ekran formu" },
+    { src: "/videos/manisa-kulup-oval-led-ekran.jpg", alt: "Manisa kulüp oval LED ekran" },
+  ],
 };
 
 function isPublishable(ref: Reference): boolean {

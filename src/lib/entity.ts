@@ -111,7 +111,7 @@ export type EntityDocument = {
   openingHours: string[];
   sameAs: string[];
   brand: { "@type": "Brand"; name: string; url: string };
-  founder: { "@type": "Person"; name: string };
+  founder: { "@type": "Person"; name: string; url?: string; sameAs?: string[] };
   citationPage: string;
   llmsTxt: string;
   entityJson: string;
@@ -156,7 +156,12 @@ export function buildEntityDocument(): EntityDocument {
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
     },
-    founder: { "@type": "Person", name: "Aras Bozkurt" },
+    founder: {
+      "@type": "Person",
+      name: "Aras Bozkurt",
+      url: `${SITE_URL}/tr/about/aras-bozkurt/`,
+      sameAs: ["https://www.linkedin.com/in/bozkurtaras"],
+    },
     citationPage: `${SITE_URL}/tr/about/`,
     llmsTxt: `${SITE_URL}/llms.txt`,
     entityJson: `${SITE_URL}/entity.json`,

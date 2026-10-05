@@ -337,7 +337,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Kiralık mı, satın alma mı?",
         answer:
-          "Tek seferlik etkinliklerde kiralama; sürekli kullanımda satın alma genelde daha ekonomiktir. Karşılaştırma için rehber sayfamıza bakın.",
+          "Tek seferlik etkinliklerde kiralama; sürekli kullanımda satın alma genelde daha ekonomiktir. Ayrıntılı karşılaştırma için “Kiralık mı, satın alma mı?” rehberine bakın.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Kiralama teklifi" },

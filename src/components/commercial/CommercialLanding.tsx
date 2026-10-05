@@ -138,7 +138,18 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
                 {h}
               </p>
             ))}
-            <p className="mt-4 text-xs text-ink-muted">
+            <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-xs">
+              <Link href="/tr/about/" className="font-semibold text-cyan hover:underline">
+                Hakkımızda
+              </Link>
+              <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                Fiyatlar
+              </Link>
+              <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
+                Hesaplayıcı
+              </Link>
+            </p>
+            <p className="mt-3 text-xs text-ink-muted">
               Şehir sayfaları yalnızca yayımlanmış proje kaydı olan illerde açılır; 81 il spam’i yoktur.
             </p>
           </aside>
@@ -213,6 +224,16 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
         </section>
       )}
 
+      <LinkCloud
+        title="Fiyat ve seçim"
+        links={[
+          { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları 2026" },
+          { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
+          { href: "/tr/rehber/piksel-araligi-secimi/", label: "Piksel aralığı seçimi" },
+          { href: "/tr/rehber/gob-vs-smd/", label: "GOB vs SMD" },
+          { href: "/tr/rehber/kiralik-mi-satin-alma/", label: "Kiralık mı, satın alma mı?" },
+        ].filter((l) => l.href !== commercialPath(page.slug))}
+      />
       <LinkCloud title="İlgili ürünler" links={page.relatedProducts} />
       <LinkCloud
         title="Piksel aralığı sayfaları"

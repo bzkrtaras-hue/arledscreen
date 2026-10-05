@@ -16,7 +16,7 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 - Instagram: [https://www.instagram.com/arledscreen/](https://www.instagram.com/arledscreen/)
 - Facebook: [https://www.facebook.com/arledscreenn](https://www.facebook.com/arledscreenn)
 - LinkedIn: [https://www.linkedin.com/company/arleds](https://www.linkedin.com/company/arleds)
-- Kurucu: Aras Bozkurt
+- Kurucu: Aras Bozkurt — [profil](https://arledscreen.com/tr/about/aras-bozkurt/) · [LinkedIn](https://www.linkedin.com/in/bozkurtaras)
 - Ayrıntılı metin: [https://arledscreen.com/llms-full.txt](https://arledscreen.com/llms-full.txt)
 
 ## 2. Tanımlar (karıştırma yasağı)
@@ -73,6 +73,7 @@ Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde (Tem 
 - [LED tabela mı LED ekran mı / dijital ekran](https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/) — Küme B
 - [LED ekran fiyatları 2026](https://arledscreen.com/tr/led-ekran-fiyatlari/) — Küme D (kanonik ticari fiyat sayfası; eski `/tr/rehber/led-ekran-fiyatlari/` buraya 301)
 - [Piksel aralığı](https://arledscreen.com/tr/rehber/piksel-araligi-secimi/)
+- [GOB vs SMD](https://arledscreen.com/tr/rehber/gob-vs-smd/)
 - [İç mekân rehberi](https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/)
 - [Dış mekân rehberi](https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/)
 - [Kiralık mı satın alma mı](https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/)

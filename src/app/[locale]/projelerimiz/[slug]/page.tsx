@@ -132,6 +132,13 @@ export default async function ProjectCasePage({
               ))}
             </dl>
             <p className="mt-6 text-sm leading-relaxed text-ink-soft">
+              {c.companyLabel} kaydı {c.date} tarihinde yayımlanmıştır. Kapsam: {c.detail}
+              {c.location ? `; konum: ${c.location}` : ""}.
+              {c.pitch ? ` Kayıtta geçen piksel aralığı: ${c.pitch}.` : ""}
+              {c.environment ? ` Ortam: ${c.environment}.` : ""}
+              {c.areaM2 ? ` Yaklaşık alan: ${c.areaM2} m².` : ""} Sektör etiketi: {c.sector}.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-ink-soft">
               Teknik çözüm, montaj yöntemi ve kontrol sistemi proje keşfine göre yazılı
               teklifte netleşir. Aşağıdaki bağlantılar aynı kullanım / ürün ailesine gider.
             </p>
@@ -163,6 +170,11 @@ export default async function ProjectCasePage({
               <li>
                 <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                   LED ekran fiyatları
+                </Link>
+              </li>
+              <li>
+                <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
+                  Fiyat hesaplayıcı
                 </Link>
               </li>
             </ul>
