@@ -136,6 +136,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/galeri/",
     "/sss/",
     "/nxtionstar/",
+    "/basin/",
     "/rehber/piksel-araligi-secimi/",
     "/rehber/led-tabela-mi-led-ekran-mi/",
     "/rehber/kiralik-mi-satin-alma/",

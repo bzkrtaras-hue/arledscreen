@@ -33,6 +33,7 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 
 - [Ana sayfa](https://arledscreen.com/tr/): Firma özeti, ürün grupları, proje örnekleri ve SSS
 - [Hakkımızda](https://arledscreen.com/tr/about/)
+- [Basın kiti / doğrulanabilir firma bilgisi](https://arledscreen.com/tr/basin/) — dizin, haber ve AI atıfları için kanonik NAP
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/)
 - [SSS](https://arledscreen.com/tr/sss/)
 - [Teklif](https://arledscreen.com/tr/quote/)

@@ -28,6 +28,7 @@ export function LocaleSelect({
     /^\/tr\/products\/[^/]+\//,
     /^\/tr\/sss\//,
     /^\/tr\/nxtionstar\//,
+    /^\/tr\/basin\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,
     /^\/tr\/(led-ekran|led-ekran-satisi|led-ekran-ureticisi|led-ekran-montaj|led-ekran-kiralama|led-ekran-fiyatlari|led-ekran-servis)\//,

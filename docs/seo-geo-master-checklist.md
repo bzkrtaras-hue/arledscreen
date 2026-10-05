@@ -30,10 +30,14 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 
 ## P1 — Local / reviews (owner-operated)
 
+Detaylı playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)  
+Atıf sayfası: `/tr/basin/`
+
 - [ ] Google Business Profile: categories, hours, WhatsApp, 50+ real photos, services
 - [ ] Ethical review request flow after install (no keyword stuffing scripts)
 - [ ] GBP posts mirroring each new case study
 - [ ] NAP identical on GBP, site footer, llms.txt, LinkedIn, Instagram, Facebook
+- [x] On-site citeable brand fact page (`/tr/basin/`) + off-site playbook in repo
 
 ## P1/P2 — Off-site entity & mentions (owner + PR)
 
