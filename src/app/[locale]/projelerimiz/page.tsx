@@ -10,6 +10,7 @@ import { AllReferencesNote } from "@/components/projects/AllReferencesNote";
 import { ReferencesGrid } from "@/components/projects/ReferencesGrid";
 import { CompletedProjectsGallery } from "@/components/projects/CompletedProjectsGallery";
 import { ProjectVideos } from "@/components/projects/ProjectVideos";
+import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { PROJECT_VIDEOS, videoObjectJsonLd } from "@/content/videos";
@@ -93,6 +94,16 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         className="prose-seo"
       >
         <FeaturedReferences limit={7} showAllLink={false} ctaHref="#liste" ctaLabel="Diğer projeleri görün" />
+      </Section>
+
+      <Section
+        id="galeri"
+        eyebrow="Toptancı galerisi"
+        title="Galeri"
+        description="YIYISTAR (yiyistar.com) galeri bölümündeki uygulama görselleri; aynı kategori başlıklarıyla."
+        className="bg-band prose-seo"
+      >
+        <YiyistarGallery />
       </Section>
 
       {/* Dark icon strip */}
