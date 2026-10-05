@@ -23,6 +23,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 31 | 2026-10-05 | Fiyat hub AI sources + Merchant ARD + `_routes` exclude | ✅ |
 | 32 | 2026-10-05 | Pitch USD FAQs + hesaplayici shopping FAQ/LinkCloud | ✅ |
 | 33 | 2026-10-05 | İzleme/kiralama rehber + quote FAQ (list vs teklif) | ✅ |
+| 34 | 2026-10-05 | About/NXTIONSTAR/products hub identity FAQs + LinkCloud | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -56,6 +57,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `piksel-araligi-secimi`: dış mekân USD tablosu + catalog/entity/merchant + pitch linkleri
 - `kiralik-mi-satin-alma`: AI alışveriş list vs teklif tablosu (quote-only kuralı)
 - `/tr/quote/`: FAQPage + ShoppingLinkCloud (ajanlar quote’a fiyat uydurmasın)
+
+## Gün 34 notları
+
+- `/tr/about/`: ENTITY_FAQS FAQPage + entity/catalog linkleri + ShoppingLinkCloud + HomeFaq
+- `/tr/nxtionstar/`: panel fiyat FAQ + ShoppingLinkCloud (catalog/merchant)
+- `/tr/products/`: hub FAQPage (list vs quote-only) + ShoppingLinkCloud
 
 ## Owner P0 (her gün hatırlatma)
 

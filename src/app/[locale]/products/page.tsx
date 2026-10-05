@@ -19,6 +19,27 @@ import { CANONICAL_LINEUP } from "@/content/product-lineup";
 import { ProductCtaRow } from "@/components/products/ProductCtaRow";
 import { ArrowRight } from "lucide-react";
 import { GENERIC_WHATSAPP_MESSAGE } from "@/lib/whatsapp";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
+
+const PRODUCTS_HUB_FAQS = [
+  {
+    question: "NXTIONSTAR ürün gruplarının fiyatı nereden okunur?",
+    answer:
+      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf, esnek, poster ve kiralık gruplarda list fiyatı yoktur — https://arledscreen.com/tr/quote/.",
+  },
+  {
+    question: "AI / alışveriş ajanları ürün kataloğunu nasıl bulur?",
+    answer:
+      "Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Ürün hub: https://arledscreen.com/tr/products/. Marka: https://arledscreen.com/tr/nxtionstar/.",
+  },
+  {
+    question: "Hangi ürün gruplarında panel list fiyatı vardır?",
+    answer:
+      "İç mekân, dış mekân, GOB ve ince pitch panellerde yayımlanmış USD listesi vardır. Şeffaf LED, esnek LED, poster/totem ve kiralık ekranlar keşif + yazılı teklifle fiyatlanır.",
+  },
+];
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -82,6 +103,7 @@ export default async function ProductsPage({ params }: PageProps) {
       <ServiceJsonLd locale={locale} />
       {locale === "tr" ? (
         <>
+          <FaqJsonLd faqs={PRODUCTS_HUB_FAQS} />
           <ItemListJsonLd
             name="LED ekran ürün grupları"
             items={PRODUCT_GROUPS.map((g) => ({ name: g.name, url: absoluteUrl(productGroupPath(g)), image: g.image }))}
@@ -201,6 +223,25 @@ export default async function ProductsPage({ params }: PageProps) {
                   ))}
                 </nav>
               </div>
+            </div>
+          </section>
+
+          <section className="border-t border-border bg-band py-14 md:py-16 prose-seo">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <h2 className="font-display text-xl font-bold text-ink md:text-2xl">
+                Fiyat, katalog ve AI ajan kaynakları
+              </h2>
+              <div className="mt-6">
+                <HomeFaq faqs={PRODUCTS_HUB_FAQS} />
+              </div>
+              <ShoppingLinkCloud
+                excludeHref="/tr/products/"
+                title="Ürün hub — makinece okunur kaynaklar"
+                extra={[
+                  { href: "/tr/nxtionstar/", label: "NXTIONSTAR marka" },
+                  { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+                ]}
+              />
             </div>
           </section>
         </>

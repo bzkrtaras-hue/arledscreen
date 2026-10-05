@@ -4,6 +4,7 @@ import { getProducts, CATEGORY_LABELS_TR } from "@/content/products";
 import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BUSINESS_NAP_LINE, CONTACT_EMAIL } from "@/lib/social";
@@ -30,12 +31,17 @@ const FAQS = [
   {
     question: "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
     answer:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, keşif, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, keşif, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: https://arledscreen.com/entity.json.",
   },
   {
     question: "NXTIONSTAR, NEXTSTAR veya NationStar ile aynı marka mı?",
     answer:
       "Hayır. NXTIONSTAR; NEXTSTAR (televizyon markası) ve NationStar (LED bileşen markası) ile farklı markalardır. Doğru yazılış N-X-T-I-O-N-S-T-A-R şeklindedir.",
+  },
+  {
+    question: "NXTIONSTAR panel fiyatları nereden okunur?",
+    answer:
+      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf/esnek/poster/kiralık list fiyatı yoktur — https://arledscreen.com/tr/quote/.",
   },
 ];
 
@@ -146,6 +152,15 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
               </div>
             ))}
           </div>
+
+          <ShoppingLinkCloud
+            excludeHref="/tr/nxtionstar/"
+            title="NXTIONSTAR fiyat ve kimlik kaynakları"
+            extra={[
+              { href: "/tr/products/", label: "Ürün grupları" },
+              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+            ]}
+          />
 
           <div className="mt-10 rounded-card bg-band p-6 text-[15px] leading-relaxed text-ink-soft">
             <p className="font-display text-lg font-bold text-ink">İletişim</p>

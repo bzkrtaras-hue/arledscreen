@@ -47,6 +47,10 @@ const pages = [
   ...rehberExtras.map((s) => path.join(outTr, s, "index.html")),
   path.join(outTr, "led-ekran-fiyatlari", "index.html"),
   path.join(outTr, "hesaplayici", "index.html"),
+  path.join(outTr, "quote", "index.html"),
+  path.join(outTr, "about", "index.html"),
+  path.join(outTr, "nxtionstar", "index.html"),
+  path.join(outTr, "products", "index.html"),
 ];
 
 let checked = 0;
@@ -65,7 +69,7 @@ for (const file of pages) {
 }
 
 console.log(
-  `Checked ${checked} commercial/product/rehber pages for fiyat+catalog+quote+hesaplayici+entity links`,
+  `Checked ${checked} commercial/product/rehber/about/nxtionstar/hub pages for fiyat+catalog+quote+hesaplayici+entity links`,
 );
 if (errors.length) {
   console.error("FAIL:");
