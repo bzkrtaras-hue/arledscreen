@@ -211,6 +211,53 @@ if (fs.existsSync(catalogPath)) {
       errors.push(`catalog ${sku} missing absolute product image`);
     }
   }
+  // groupAggregateOffers: all-panels + each priced group; no quote-only slugs
+  const groups = catalog.groupAggregateOffers;
+  if (!Array.isArray(groups) || groups.length < 3) {
+    errors.push(`catalog.groupAggregateOffers missing or too short (${groups?.length ?? 0})`);
+  } else {
+    const all = groups.find((g) => g["@id"]?.includes("#all-priced-panels"));
+    const usd = [...priceById.values()];
+    const lo = Math.min(...usd).toFixed(2);
+    const hi = Math.max(...usd).toFixed(2);
+    if (!all) {
+      errors.push("catalog missing #all-priced-panels AggregateOffer");
+    } else {
+      if (Number(all.lowPrice).toFixed(2) !== lo || Number(all.highPrice).toFixed(2) !== hi) {
+        errors.push(`catalog all AggregateOffer ${all.lowPrice}-${all.highPrice} != ${lo}-${hi}`);
+      }
+      if (Number(all.offerCount) !== priceById.size) {
+        errors.push(`catalog all offerCount ${all.offerCount} != ${priceById.size}`);
+      }
+      if (all.priceCurrency !== "USD") errors.push("catalog all AggregateOffer currency");
+    }
+    const forbidden = ["seffaf", "transparan", "esnek", "poster", "kiralik", "kontrol"];
+    for (const g of groups) {
+      if (g["@type"] !== "AggregateOffer") errors.push(`catalog group ${g.name} not AggregateOffer`);
+      if (!g.lowPrice || !g.highPrice || !g.priceCurrency || !g.offerCount) {
+        errors.push(`catalog group ${g.name || g["@id"]} incomplete AggregateOffer`);
+      }
+      if (forbidden.some((f) => String(g.url || g["@id"] || "").includes(f))) {
+        errors.push(`catalog groupAggregateOffers must not include quote-only ${g.url}`);
+      }
+      const count = Number(g.offerCount);
+      const skus = Array.isArray(g.sku) ? g.sku : [];
+      if (skus.length && skus.length !== count) {
+        errors.push(`catalog ${g.name}: sku[] length ${skus.length} != offerCount ${count}`);
+      }
+      for (const sku of skus) {
+        if (!priceById.has(sku)) errors.push(`catalog group ${g.name} unknown sku ${sku}`);
+      }
+      if (skus.length) {
+        const vals = skus.map((s) => priceById.get(s));
+        const glo = Math.min(...vals).toFixed(2);
+        const ghi = Math.max(...vals).toFixed(2);
+        if (Number(g.lowPrice).toFixed(2) !== glo || Number(g.highPrice).toFixed(2) !== ghi) {
+          errors.push(`catalog ${g.name} band ${g.lowPrice}-${g.highPrice} != ${glo}-${ghi}`);
+        }
+      }
+    }
+  }
 } else {
   errors.push("public/catalog.json missing");
 }

@@ -48,6 +48,7 @@ Bu sayfalarda Product schema vardır; **offers yoktur**. Teklif: `/tr/quote/`.
 - [x] `catalog.json` ↔ `PANEL_PRICES` parity
 - [x] Fiyat hub + hesaplayıcı parity
 - [x] `catalog.json` ürünlerinde absolute `image` (generate-ai-catalog)
+- [x] `catalog.json` `groupAggregateOffers` — all / iç / dış / GOB AggregateOffer bantları (quote-only yok)
 - [x] postbuild `audit:offers`
 
 ## Sahip checklist (Merchant Center)

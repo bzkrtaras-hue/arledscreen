@@ -131,13 +131,70 @@ const quoteOnlyGroups = [
   },
 ];
 
+/** Human labels for priced product-group AggregateOffer summaries. */
+const GROUP_META = {
+  "ic-mekan-led-ekran": "İç mekân LED ekran panelleri",
+  "dis-mekan-led-ekran": "Dış mekân LED ekran panelleri",
+  "gob-led-ekran": "GOB LED ekran panelleri",
+};
+
+/**
+ * Build AggregateOffer rollups per product group (only groups with published USD).
+ * Quote-only groups must never appear here (no empty AggregateOffer).
+ */
+function groupAggregateOffers() {
+  /** @type {Map<string, typeof prices>} */
+  const byGroup = new Map();
+  for (const p of prices) {
+    for (const g of p.groups) {
+      if (!byGroup.has(g)) byGroup.set(g, []);
+      byGroup.get(g).push(p);
+    }
+  }
+  const out = [];
+  for (const [slug, rows] of [...byGroup.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+    const usd = rows.map((r) => r.usd);
+    const name = GROUP_META[slug] || slug;
+    out.push({
+      "@type": "AggregateOffer",
+      "@id": `${SITE}/catalog.json#group-${slug}`,
+      name,
+      url: `${SITE}/tr/products/${slug}/`,
+      priceCurrency: "USD",
+      lowPrice: Math.min(...usd).toFixed(2),
+      highPrice: Math.max(...usd).toFixed(2),
+      offerCount: rows.length,
+      sku: rows.map((r) => r.id),
+      description:
+        "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
+      seller: { "@id": `${SITE}/#organization` },
+    });
+  }
+  const allUsd = prices.map((p) => p.usd);
+  out.unshift({
+    "@type": "AggregateOffer",
+    "@id": `${SITE}/catalog.json#all-priced-panels`,
+    name: "Tüm yayımlanmış NXTIONSTAR paneller",
+    url: `${SITE}/tr/led-ekran-fiyatlari/`,
+    priceCurrency: "USD",
+    lowPrice: Math.min(...allUsd).toFixed(2),
+    highPrice: Math.max(...allUsd).toFixed(2),
+    offerCount: prices.length,
+    sku: prices.map((p) => p.id),
+    description:
+      "12 priced panel USD bandı (iç + dış + GOB). Quote-only ürünler dahil değildir.",
+    seller: { "@id": `${SITE}/#organization` },
+  });
+  return out;
+}
+
 const catalog = {
   "@context": "https://schema.org",
   "@type": "DataCatalog",
   "@id": `${SITE}/catalog.json`,
   name: "ARLEDSCREEN / NXTIONSTAR LED panel katalog (AI alışveriş)",
   description:
-    "Yayımlanmış 2026 panel (modül) USD listesi. AI alışveriş ve ajan sistemleri için makinece okunur. KDV ve nakliye hariç; nihai tutar keşif ve yazılı teklifle kesinleşir. Uydurma fiyat yoktur.",
+    "Yayımlanmış 2026 panel (modül) USD listesi. AI alışveriş ve ajan sistemleri için makinece okunur. KDV ve nakliye hariç; nihai tutar keşif ve yazılı teklifle kesinleşir. Uydurma fiyat yoktur. groupAggregateOffers alanından ürün grubu fiyat bandına bakın.",
   url: `${SITE}/catalog.json`,
   creator: { "@id": `${SITE}/#organization` },
   dateModified: new Date().toISOString().slice(0, 10),
@@ -168,14 +225,22 @@ const catalog = {
     "ARLEDSCREEN ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
     "NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED bileşen",
   ],
+  groupAggregateOffers: groupAggregateOffers(),
   dataset: products,
   quoteOnlyProductGroups: quoteOnlyGroups,
 };
 
 const out = path.join(root, "public/catalog.json");
 fs.writeFileSync(out, `${JSON.stringify(catalog, null, 2)}\n`);
-console.log(`Wrote ${out} (${products.length} priced panels, ${quoteOnlyGroups.length} quote-only groups)`);
+const groups = catalog.groupAggregateOffers;
+console.log(
+  `Wrote ${out} (${products.length} priced panels, ${groups.length} AggregateOffer groups, ${quoteOnlyGroups.length} quote-only groups)`,
+);
 if (products.length < 10) {
   console.error("Expected ≥10 priced panels from prices.ts");
+  process.exit(1);
+}
+if (groups.length < 3) {
+  console.error("Expected ≥3 group AggregateOffers (all + ic + dis at minimum)");
   process.exit(1);
 }

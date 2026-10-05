@@ -34,7 +34,7 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 - [Ana sayfa](https://arledscreen.com/tr/): Firma özeti, ürün grupları, proje örnekleri ve SSS
 - [Hakkımızda](https://arledscreen.com/tr/about/)
 - [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
-- [catalog.json](https://arledscreen.com/catalog.json) — AI alışveriş: yayımlanmış panel USD + ürün URL (KDV/nakliye hariç)
+- [catalog.json](https://arledscreen.com/catalog.json) — AI alışveriş: yayımlanmış panel USD + ürün URL + `groupAggregateOffers` (grup fiyat bandı; KDV/nakliye hariç)
 - [ard.json](https://arledscreen.com/.well-known/ard.json) — Agentic Resource Discovery (ajan keşif manifesti)
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/)
 - [SSS](https://arledscreen.com/tr/sss/)

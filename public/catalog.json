@@ -3,7 +3,7 @@
   "@type": "DataCatalog",
   "@id": "https://arledscreen.com/catalog.json",
   "name": "ARLEDSCREEN / NXTIONSTAR LED panel katalog (AI alışveriş)",
-  "description": "Yayımlanmış 2026 panel (modül) USD listesi. AI alışveriş ve ajan sistemleri için makinece okunur. KDV ve nakliye hariç; nihai tutar keşif ve yazılı teklifle kesinleşir. Uydurma fiyat yoktur.",
+  "description": "Yayımlanmış 2026 panel (modül) USD listesi. AI alışveriş ve ajan sistemleri için makinece okunur. KDV ve nakliye hariç; nihai tutar keşif ve yazılı teklifle kesinleşir. Uydurma fiyat yoktur. groupAggregateOffers alanından ürün grubu fiyat bandına bakın.",
   "url": "https://arledscreen.com/catalog.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -35,6 +35,99 @@
   "disambiguation": [
     "ARLEDSCREEN ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
     "NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED bileşen"
+  ],
+  "groupAggregateOffers": [
+    {
+      "@type": "AggregateOffer",
+      "@id": "https://arledscreen.com/catalog.json#all-priced-panels",
+      "name": "Tüm yayımlanmış NXTIONSTAR paneller",
+      "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+      "priceCurrency": "USD",
+      "lowPrice": "26.98",
+      "highPrice": "95.88",
+      "offerCount": 12,
+      "sku": [
+        "p1-25-ic-gob",
+        "p1-53-ic-gob",
+        "p1-86-ic-gob",
+        "p2-5-ic",
+        "p3-07-ic",
+        "p4-ic",
+        "p2-5-dis",
+        "p2-9-dis",
+        "p3-07-dis",
+        "p4-dis",
+        "p4-dis-front",
+        "p5-dis"
+      ],
+      "description": "12 priced panel USD bandı (iç + dış + GOB). Quote-only ürünler dahil değildir.",
+      "seller": {
+        "@id": "https://arledscreen.com/#organization"
+      }
+    },
+    {
+      "@type": "AggregateOffer",
+      "@id": "https://arledscreen.com/catalog.json#group-dis-mekan-led-ekran",
+      "name": "Dış mekân LED ekran panelleri",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "priceCurrency": "USD",
+      "lowPrice": "29.90",
+      "highPrice": "63.70",
+      "offerCount": 6,
+      "sku": [
+        "p2-5-dis",
+        "p2-9-dis",
+        "p3-07-dis",
+        "p4-dis",
+        "p4-dis-front",
+        "p5-dis"
+      ],
+      "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
+      "seller": {
+        "@id": "https://arledscreen.com/#organization"
+      }
+    },
+    {
+      "@type": "AggregateOffer",
+      "@id": "https://arledscreen.com/catalog.json#group-gob-led-ekran",
+      "name": "GOB LED ekran panelleri",
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/",
+      "priceCurrency": "USD",
+      "lowPrice": "49.08",
+      "highPrice": "95.88",
+      "offerCount": 3,
+      "sku": [
+        "p1-25-ic-gob",
+        "p1-53-ic-gob",
+        "p1-86-ic-gob"
+      ],
+      "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
+      "seller": {
+        "@id": "https://arledscreen.com/#organization"
+      }
+    },
+    {
+      "@type": "AggregateOffer",
+      "@id": "https://arledscreen.com/catalog.json#group-ic-mekan-led-ekran",
+      "name": "İç mekân LED ekran panelleri",
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "priceCurrency": "USD",
+      "lowPrice": "26.98",
+      "highPrice": "95.88",
+      "offerCount": 6,
+      "sku": [
+        "p1-25-ic-gob",
+        "p1-53-ic-gob",
+        "p1-86-ic-gob",
+        "p2-5-ic",
+        "p3-07-ic",
+        "p4-ic"
+      ],
+      "description": "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Kaynak: PANEL_PRICES → catalog.json.",
+      "seller": {
+        "@id": "https://arledscreen.com/#organization"
+      }
+    }
   ],
   "dataset": [
     {
