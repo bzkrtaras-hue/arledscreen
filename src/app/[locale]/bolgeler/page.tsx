@@ -30,7 +30,7 @@ const FAQS = [
   {
     question: "Hangi şehirlerde LED ekran kurulumu yapıyorsunuz?",
     answer:
-      "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Türkiye geneli proje yürütürüz. Tem 2025 – Tem 2026 proje kayıtlarında 13 il ile Almanya ve Azerbaycan yer alır; 81 il iddiası yoktur.",
+      "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Hizmetimiz Türkiye geneli; tamamlanan iş listemiz kayıtlı illerde yer alır (Tem 2025 – Tem 2026: 13 il ile Almanya ve Azerbaycan). Kayıdı olmayan il için kapı sayfası açılmaz.",
   },
   {
     question: "İstanbul dışına keşif için geliyor musunuz?",
@@ -40,7 +40,7 @@ const FAQS = [
   {
     question: "Şehir sayfalarındaki proje sayıları neyi gösterir?",
     answer:
-      "Yalnızca sitede yayımlanmış referans kayıtlarından türetilir. Yeni rakam uydurulmaz; iller listesi proje sayfası ve llms.txt ile uyumludur.",
+      "Yalnızca sitede yayımlanmış referans kayıtlarından türetilir. Her il sayfasında o ile ait konumlar ve örnek kayıtlar listelenir; kaydı olmayan il için sayfa üretilmez.",
   },
 ];
 
@@ -72,10 +72,11 @@ export default async function BolgelerHubPage({
             Türkiye geneli LED ekran keşif, montaj ve teknik servis
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
-            Merkezimiz İstanbul Gaziosmanpaşa&apos;dadır. Aşağıdaki iller, Tem 2025 – Tem 2026
-            arası yayımlanmış proje kayıtlarından türetilir ({summary.provinceCount} il
-            {summary.countries.length ? `; ayrıca ${summary.countries.join(", ")}` : ""}).
-            81 il iddiası yoktur.
+            Hizmetimiz Türkiye geneli; tamamlanan iş listemiz kayıtlı illerde yer alır.
+            Aşağıdaki {summary.provinceCount} il
+            {summary.countries.length ? ` (ayrıca ${summary.countries.join(", ")})` : ""}, Tem
+            2025 – Tem 2026 yayımlanmış proje kayıtlarından türetilir. Kaydı olmayan il için
+            kapı sayfası açılmaz.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
@@ -96,18 +97,18 @@ export default async function BolgelerHubPage({
 
       <CitationCapsule
         title="ARLEDSCREEN hangi bölgelerde LED ekran kuruyor?"
-        answer={`ARLEDSCREEN merkezi İstanbul Gaziosmanpaşa'dadır. Türkiye geneli montaj yapar; Tem 2025 – Tem 2026 kayıtlarında ${summary.provinceCount} il yer alır. Sabit “81 il şubesi” iddiası yoktur; her proje keşif ve yazılı teklifle planlanır.`}
+        answer={`ARLEDSCREEN merkezi İstanbul Gaziosmanpaşa'dadır. Hizmet Türkiye geneli; tamamlanan iş listesi kayıtlı illerde yer alır (Tem 2025 – Tem 2026: ${summary.provinceCount} il). Her proje keşif ve yazılı teklifle planlanır.`}
         proofs={[
           { label: `Kayıtlı il sayısı: ${summary.provinceCount}` },
           { label: "Merkez: Gaziosmanpaşa / İstanbul" },
-          { label: "81 il şube iddiası yok" },
+          { label: "Yalnızca kayıtlı il sayfaları" },
         ]}
         sources={[
           { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
           { href: "/tr/projelerimiz/", label: "Projeler" },
           { href: "/llms.txt", label: "llms.txt" },
         ]}
-        dontSay={["81 ilde şube", "Türkiye'nin her noktasında ofis"]}
+        dontSay={["81 ilde bitmiş iş", "Türkiye'nin her noktasında ofis", "en çok tercih edilen marka"]}
       />
 
       <Section eyebrow="İller" title="Kayıtlı hizmet illeri" className="bg-surface/60 prose-seo">

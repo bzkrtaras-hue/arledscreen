@@ -144,12 +144,28 @@ export default async function ServiceRegionPage({
             Gaziosmanpaşa ve İstanbul geneli keşif, montaj ve teknik servis buradan koordine edilir.
           </p>
         </Section>
-      ) : null}
+      ) : (
+        <Section
+          eyebrow="Süreç"
+          title={`${region.name} LED ekran süreci`}
+          description="İstanbul merkezli ekip; kayıtlı illerde aynı keşif → montaj → servis modeliyle çalışır."
+          className="prose-seo"
+        >
+          <ol className="list-decimal space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+            <li>Ölçü, konum ve kullanım amacını teklif formundan paylaşın.</li>
+            <li>Keşif ve ürün seçimi yazılı olarak netleşir; garanti kapsamı teklifte yazılır.</li>
+            <li>Montaj ve devreye alma sahada tamamlanır; teknik servis aynı ekiple sürer.</li>
+          </ol>
+          <p className="mt-4 text-sm text-ink-muted">
+            Merkez: {BUSINESS_ADDRESS_LINES[0]} · {CONTACT_PHONE_DISPLAY}
+          </p>
+        </Section>
+      )}
 
       <Section
         eyebrow="Kayıtlı konumlar"
-        title={`${region.name} proje konumları`}
-        description="Yalnızca yayımlanmış referans kayıtlarındaki konum adları listelenir."
+        title={`${region.name} ilçe ve proje konumları`}
+        description={`${region.projectCount} kayıtlı uygulama. Yalnızca yayımlanmış referanslardaki konum adları listelenir.`}
         className="bg-surface/60 prose-seo"
       >
         <ul className="flex flex-wrap gap-2">
@@ -164,7 +180,9 @@ export default async function ServiceRegionPage({
         </ul>
         {region.projectLabels.length > 0 ? (
           <div className="mt-8">
-            <h2 className="font-display text-base font-bold text-ink">Örnek kayıtlar</h2>
+            <h2 className="font-display text-base font-bold text-ink">
+              {region.name} proje kayıtları
+            </h2>
             <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-ink-soft">
               {region.projectLabels.map((label) => (
                 <li key={label}>{label}</li>
@@ -179,7 +197,7 @@ export default async function ServiceRegionPage({
         ) : null}
       </Section>
 
-      <Section eyebrow="Ürünler" title={`${region.name} için sık tercih edilen gruplar`} className="prose-seo">
+      <Section eyebrow="Ürünler" title={`${region.name} için ürün grupları`} className="prose-seo">
         <ul className="grid gap-4 sm:grid-cols-2">
           {featuredGroups.map((g) => (
             <li key={g.slug}>

@@ -329,9 +329,9 @@ const en: Dictionary = {
   },
   about: {
     eyebrow: "Company",
-    title: "ARLEDSCREEN — NXTIONSTAR LED engineering in Turkey",
+    title: "ARLEDSCREEN — LED engineering in Turkey",
     description:
-      "ARLEDSCREEN delivers NXTIONSTAR LED systems in Turkey. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage.",
+      "ARLEDSCREEN delivers LED systems in Turkey. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product sub-brand.",
     body:
       "From fine-pitch command centers to IP65 outdoor LED and totem installs, our desk pairs product choice with viewing distance, power topology and a clear BOM. We serve integrators, agencies and facility owners who need field-ready engineering — not showroom theatre.",
     cta: "Read more about us",

@@ -1,13 +1,14 @@
 # Host redirects: www → apex is handled in Cloudflare Rules (do not reverse here).
-# Ops tip: set the Cloudflare www rule target to https://arledscreen.com/tr/ so
-# www skips the apex hop. After www→apex, apex / must 301 to /tr/ (permanent).
+# Ops tip: Cloudflare www rule MUST target https://arledscreen.com/tr/ (absolute)
+# so www skips the apex hop and never lands on a relative /tr/ Location.
+# Apex / also 301s with an absolute Location to the same TR home (canonical).
 # Do NOT ship out/index.html — public/index.html was removed; postbuild also
 # deletes any leftover so this rule is not shadowed by a 200 static asset.
 
-# Language root → Turkish new site (canonical story) — HTTP 301, not meta refresh
-/ /tr/ 301
-/index.html /tr/ 301
-/index.htm /tr/ 301
+# Language root → Turkish home (absolute 301 — no relative Location, no old root HTML)
+/ https://arledscreen.com/tr/ 301
+/index.html https://arledscreen.com/tr/ 301
+/index.htm https://arledscreen.com/tr/ 301
 
 # Legacy Hostinger / Horizons paths → current Next.js routes (301)
 /iletisim /tr/quote/ 301

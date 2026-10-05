@@ -133,7 +133,7 @@ Repo dosyası güncellendi: `public/llms.txt` ve `public/llms-full.txt` (dijital
 ## E) 6 sayfa — title / H1 / ilk 120 kelime / SSS / JSON-LD notu
 
 ### 1. Ana `/tr/`
-- **Title:** İstanbul LED Ekran Satış, Montaj ve Servis | ARLEDSCREEN – NXTIONSTAR  
+- **Title:** İstanbul LED Ekran Satış, Montaj ve Servis | ARLEDSCREEN  
 - **H1:** İstanbul LED Ekran Teknoloji Merkezi.  
 - **İlk 120 kelime:** Hero subcopy + CitationCapsule (HOME_CITATION).  
 - **SSS:** mevcut HomeFaq (fiyat, pitch, iç-dış, keşif, şehir, montaj, garanti, kiralık, içerik, NXTIONSTAR).  

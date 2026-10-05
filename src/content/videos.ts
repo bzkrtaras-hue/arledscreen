@@ -97,7 +97,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     width: 848,
     height: 478,
     title: "Showroom — Marka İçerikli LED Duvar",
-    caption: "İç mekân showroom duvarında AR-LED marka animasyonu",
+    caption: "İç mekân showroom duvarında ARLEDSCREEN marka animasyonu",
   },
   {
     slug: "outdoor-event-led-truss",

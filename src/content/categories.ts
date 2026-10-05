@@ -211,7 +211,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     lead: "Gün ışığında okunur, uzaktan fark edilir",
     title: "Dış Mekân LED Ekran Fiyatları ve Modelleri | Cephe, Totem | ARLEDSCREEN",
     description:
-      "Cephe, totem, billboard ve meydan uygulamaları için dış mekân LED ekran: piksel aralığı seçimi, taşıyıcı sistem, montaj ve teknik servis. ARLEDSCREEN – NXTIONSTAR.",
+      "Cephe, totem, billboard ve meydan uygulamaları için dış mekân LED ekran: piksel aralığı seçimi, taşıyıcı sistem, montaj ve teknik servis. ARLEDSCREEN; NXTIONSTAR alt markası.",
     short: "Cephe, totem ve billboard uygulamaları için gün ışığında okunabilen ekranlar.",
     tag: "P2.5 – P8",
     family: "Dış Mekân LED Ekranlar",

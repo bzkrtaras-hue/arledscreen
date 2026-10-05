@@ -95,7 +95,8 @@ function buildRegions(): ServiceRegion[] {
     ).length;
     const hqNote = meta.isHq
       ? " Merkez ofisimiz Gaziosmanpaşa'dadır (Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245)."
-      : " Merkezimiz İstanbul Gaziosmanpaşa'dadır; proje keşfi ve montajı bu ile de yürütülür.";
+      : " Merkezimiz İstanbul Gaziosmanpaşa'dadır; keşif ve montaj bu ile de aynı süreçle yürütülür.";
+    const locationList = locations.join(", ");
 
     regions.push({
       slug: meta.slug,
@@ -103,12 +104,12 @@ function buildRegions(): ServiceRegion[] {
       locative: meta.locative,
       isHq: Boolean(meta.isHq),
       locations,
-      projectLabels: bucket.labels.slice(0, 8),
+      projectLabels: bucket.labels.slice(0, 12),
       projectCount,
       title: `${province} LED Ekran Satış, Montaj ve Servis | ARLEDSCREEN`,
-      description: `${province} LED ekran: NXTIONSTAR paneller, keşif, montaj ve teknik servis. ARLEDSCREEN — İstanbul merkezli, kayıtlı proje referanslarıyla.`,
+      description: `${province} LED ekran: keşif, montaj ve teknik servis. Kayıtlı konumlar: ${locationList}. ARLEDSCREEN — İstanbul merkezli.`,
       h1: `${province} LED ekran satış, montaj ve teknik servis`,
-      intro: `${meta.locative} iç ve dış mekân LED ekran satışı, keşif, montaj, devreye alma ve teknik servis sunuyoruz.${hqNote} Tem 2025 – Tem 2026 proje kayıtlarında bu il için ${projectCount} kayıtlı uygulama yer alır. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`,
+      intro: `${meta.locative} iç ve dış mekân LED ekran satışı, keşif, montaj, devreye alma ve teknik servis sunuyoruz.${hqNote} Tem 2025 – Tem 2026 kayıtlarında bu il için ${projectCount} uygulama ve şu konumlar yer alır: ${locationList}. Nihai fiyat keşif ve yazılı teklifle kesinleşir; garanti kapsamı teklifte yazılır.`,
     });
   }
 

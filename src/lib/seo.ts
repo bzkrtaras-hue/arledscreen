@@ -33,7 +33,7 @@ function normalizePath(path: string): string {
 
 /**
  * Shared page Metadata builder — canonical, hreflang, OG, Twitter.
- * siteName is always ARLEDSCREEN | NXTIONSTAR.
+ * siteName / titles use ARLEDSCREEN only; NXTIONSTAR stays on product pages as sub-brand.
  */
 export function buildPageMetadata({
   locale,
@@ -59,7 +59,7 @@ export function buildPageMetadata({
       title,
       description,
       url,
-      siteName: "ARLEDSCREEN | NXTIONSTAR",
+      siteName: "ARLEDSCREEN",
       locale: OG_LOCALE[locale],
       type: "website",
       images: [{ url: "/og/arledscreen-og.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" }],
@@ -105,7 +105,7 @@ export function buildTrOnlyMetadata({
       title,
       description,
       url,
-      siteName: "ARLEDSCREEN | NXTIONSTAR",
+      siteName: "ARLEDSCREEN",
       locale: "tr_TR",
       type,
       images: [og],
