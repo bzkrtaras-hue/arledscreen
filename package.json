@@ -4,15 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/generate-ai-catalog.mjs && next build",
+    "build": "node scripts/sync-entity-json.mjs && node scripts/generate-ai-catalog.mjs && next build",
     "start": "next start",
     "lint": "eslint .",
     "catalog": "node scripts/generate-ai-catalog.mjs",
+    "entity": "node scripts/sync-entity-json.mjs",
     "audit:offers": "node scripts/audit-product-offers.mjs",
     "audit:images": "node scripts/audit-product-images.mjs",
     "audit:shopping-links": "node scripts/audit-shopping-links.mjs",
     "audit:faq": "node scripts/audit-faq-jsonld.mjs",
-    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/audit-product-offers.mjs && node scripts/audit-product-images.mjs && node scripts/audit-shopping-links.mjs && node scripts/audit-faq-jsonld.mjs"
+    "audit:entity": "node scripts/audit-entity-sameas.mjs",
+    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/audit-product-offers.mjs && node scripts/audit-product-images.mjs && node scripts/audit-shopping-links.mjs && node scripts/audit-faq-jsonld.mjs && node scripts/audit-entity-sameas.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

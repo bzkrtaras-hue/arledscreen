@@ -13,6 +13,19 @@ yayımlanmaz** — yalnızca burada.
 | Kısa AI özeti | https://arledscreen.com/llms.txt |
 | Hakkımızda | https://arledscreen.com/tr/about/ |
 
+### P0 — Canlı entity / catalog yayın (doğrulama 2026-10-05)
+
+| URL | Canlı | Not |
+|-----|-------|-----|
+| `/llms.txt` | 200 | OK |
+| `/entity.json` | **404** (Next soft-404 HTML) | Repo’da var; prod artifact eksik → **PR #55 merge + CF Pages redeploy** |
+| `/catalog.json` | **404** | AI alışveriş branch’inde; merge sonrası |
+| `/.well-known/ard.json` | **404** | Aynı |
+| Ana sayfa Organization `sameAs` | IG + FB + LinkedIn | `arleds.com` yok (doğru; 301 yokken eklenmez) |
+| Canlı `disambiguatingDescription` | Eski/kısmi | Repo’da Almanya ARLED Solutions + NEXTSTAR/NationStar tam; redeploy ile güncellenir |
+
+Build: `npm run entity` + `npm run audit:entity` (postbuild).
+
 ---
 
 ## Gap audit (2026-10-05) — Neden C kritik?
