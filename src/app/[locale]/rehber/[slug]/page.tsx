@@ -28,7 +28,7 @@ const GUIDE_SHOPPING_FAQS = [
   {
     question: "AI ajanları ARLEDSCREEN fiyat ve kimliğini nereden doğrular?",
     answer:
-      "Kimlik/NAP: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel katalog: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Özet: https://arledscreen.com/llms.txt.",
+      "Tek fetch: https://arledscreen.com/ai-shopping.json · Kimlik/NAP: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel katalog: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Özet: https://arledscreen.com/llms.txt.",
   },
 ];
 

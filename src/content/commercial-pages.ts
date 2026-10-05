@@ -97,7 +97,7 @@ const FAQ_PRICE_SOURCE = {
 const FAQ_AGENT_SOURCE = {
   question: "AI ajanları ARLEDSCREEN fiyat ve kimliğini nereden doğrular?",
   answer:
-    "Kimlik/NAP: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Panel fiyat + ürün URL: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf, esnek, poster ve kiralık gruplarda list fiyatı yok; https://arledscreen.com/tr/quote/ üzerinden yazılı teklif alınır.",
+    "Tek fetch: https://arledscreen.com/ai-shopping.json · Kimlik/NAP: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Panel fiyat + ürün URL: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf, esnek, poster ve kiralık gruplarda list fiyatı yok; https://arledscreen.com/tr/quote/ üzerinden yazılı teklif alınır.",
 };
 
 const CORE_CITIES = cityLinks(["istanbul", "antalya", "bursa", "izmir", "eskisehir", "manisa", "yalova"]);

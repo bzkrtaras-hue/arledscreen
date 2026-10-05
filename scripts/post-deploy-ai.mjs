@@ -59,4 +59,6 @@ if (idx.status !== 0) {
   process.exit(1);
 }
 console.log("post-deploy: OK — live surfaces notified");
+console.log("Next (sahip): npm run point-c-packs -- --live → GBP/LinkedIn/IG/FB paste");
+console.log("Then: docs/ai-shopping-blind-test-scores.md tur 1");
 process.exit(0);

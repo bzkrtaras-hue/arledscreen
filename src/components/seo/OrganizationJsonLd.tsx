@@ -38,6 +38,7 @@ export function OrganizationJsonLd() {
         publisher: { "@id": `${SITE_URL}/#organization` },
         about: { "@id": `${SITE_URL}/#organization` },
         significantLink: [
+          absoluteUrl("/ai-shopping.json"),
           absoluteUrl("/catalog.json"),
           absoluteUrl("/entity.json"),
           absoluteUrl("/tr/led-ekran-fiyatlari/"),

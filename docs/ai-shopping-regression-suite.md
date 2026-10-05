@@ -1,4 +1,4 @@
-# AI alışveriş regression suite (Gün 29 → güncellendi Gün 48)
+# AI alışveriş regression suite (Gün 29 → güncellendi Gün 49)
 
 Son güncelleme: 2026-10-05  
 Komut: `npm run audit:all` (build sonrası) · postbuild zinciri aynı guard’ları çalıştırır

@@ -42,6 +42,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json) — ajanlar bu üç c
 - [Ana sayfa](https://arledscreen.com/tr/): Firma özeti, ürün grupları, proje örnekleri ve SSS
 - [Hakkımızda](https://arledscreen.com/tr/about/)
 - [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
+- [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — tek fetch AI alışveriş index (12 intent + cite + kaynaklar)
 - [catalog.json](https://arledscreen.com/catalog.json) — AI alışveriş: yayımlanmış panel USD + ürün URL + `groupAggregateOffers` (grup fiyat bandı; KDV/nakliye hariç)
 - [ard.json](https://arledscreen.com/.well-known/ard.json) — Agentic Resource Discovery (ajan keşif manifesti)
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/)
@@ -94,6 +95,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 
 ## 5. AI alışveriş / ajan okuma
 
+- Tek fetch index: [ai-shopping.json](https://arledscreen.com/ai-shopping.json) (12 intent + cite + kaynaklar)
 - Entity: [entity.json](https://arledscreen.com/entity.json)
 - Point C paste packs: [entity-profiles.json](https://arledscreen.com/entity-profiles.json) (GBP/LinkedIn/IG/FB)
 - Panel kataloğu (fiyat + URL): [catalog.json](https://arledscreen.com/catalog.json)

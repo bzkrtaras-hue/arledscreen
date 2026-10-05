@@ -19,7 +19,7 @@ const CHECKS = [
   { id: "robots", url: `${SITE}/robots.txt`, expect: "text", mustInclude: ["Host: arledscreen.com", "bingbot"] },
   { id: "merchant-feed", url: `${SITE}/feeds/merchant-priced-panels.tsv`, expect: "text", mustInclude: ["p2-5-ic", "32.18 USD"], cors: true, contentType: "text/tab-separated-values" },
   { id: "fiyat", url: `${SITE}/tr/led-ekran-fiyatlari/`, expect: "html", mustInclude: ["catalog.json"] },
-  { id: "yapay-zeka", url: `${SITE}/tr/yapay-zeka/`, expect: "html", mustInclude: ["entity.json", "catalog.json"] },
+  { id: "yapay-zeka", url: `${SITE}/tr/yapay-zeka/`, expect: "html", mustInclude: ["entity.json", "catalog.json", "ai-shopping.json"] },
   { id: "about", url: `${SITE}/tr/about/`, expect: "html", mustInclude: ["entity.json", "catalog.json"] },
   { id: "sitemap", url: `${SITE}/sitemap.xml`, expect: "xml", mustInclude: ["led-ekran-fiyatlari", "catalog.json"] },
   { id: "indexnow-key", url: `${SITE}/e8e6f86598e94e95a323f807c39843ad.txt`, expect: "text", mustInclude: ["e8e6f86598e94e95a323f807c39843ad"] },

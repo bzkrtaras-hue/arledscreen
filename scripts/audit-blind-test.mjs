@@ -223,7 +223,7 @@ if (llmsFullPath) {
 const yapay = mustExist("tr/yapay-zeka/index.html");
 if (yapay) {
   const html = fs.readFileSync(yapay, "utf8");
-  for (const needle of ["catalog.json", "entity.json", "ard.json"]) {
+  for (const needle of ["catalog.json", "entity.json", "ard.json", "ai-shopping.json"]) {
     if (!html.includes(needle)) {
       errors.push(`tr/yapay-zeka/ must mention ${needle}`);
     }

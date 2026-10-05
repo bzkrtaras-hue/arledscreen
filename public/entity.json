@@ -89,7 +89,7 @@
     },
     {
       "question": "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
-      "answer": "Makinece entity: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir."
+      "answer": "Tek fetch index: https://arledscreen.com/ai-shopping.json · Kimlik: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir."
     }
   ]
 }

@@ -94,7 +94,7 @@ const faqs = [
   },
   {
     question: "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
-    answer: `Makinece entity: ${SITE}/entity.json · Point C pack: ${SITE}/entity-profiles.json · Panel kataloğu: ${SITE}/catalog.json · Ajan keşif: ${SITE}/.well-known/ard.json · Kısa özet: ${SITE}/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir.`,
+    answer: `Tek fetch index: ${SITE}/ai-shopping.json · Kimlik: ${SITE}/entity.json · Point C pack: ${SITE}/entity-profiles.json · Panel kataloğu: ${SITE}/catalog.json · Ajan keşif: ${SITE}/.well-known/ard.json · Kısa özet: ${SITE}/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir.`,
   },
 ];
 

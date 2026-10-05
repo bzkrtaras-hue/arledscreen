@@ -38,6 +38,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 46 | 2026-10-05 | IndexNow key + ping script + `audit:indexnow` (post-merge Bing) | ✅ |
 | 47 | 2026-10-05 | Offer↔catalog join (sku/@id) + pitch AggregateOffer + llms USD parity | ✅ |
 | 48 | 2026-10-05 | `ai-shopping.json` tek-fetch index + `post-deploy` + entity hasOfferCatalog | ✅ |
+| 49 | 2026-10-05 | ai-shopping.json birincil ajan girişi (yapay-zeka/footer/FAQ/llms) | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -184,3 +185,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `npm run post-deploy` = smoke → IndexNow (merge günü)
 - Wire: sitemap · head · LinkCloud · ARD · CORS · `_routes` · smoke 14 · audit:ai-shopping (17)
 - Docs: merge-day post-deploy adımı
+
+## Gün 49 notları
+
+- yapay-zeka TR/EN: ai-shopping.json birincil agent link + FAQ
+- Footer + llms.txt §5 + ENTITY/commercial/rehber agent FAQ cite
+- Organization WebSite significantLink → ai-shopping.json
+- smoke/blind-test: yapay-zeka mustInclude ai-shopping.json
+- post-deploy: Point C + kör tur hatırlatma

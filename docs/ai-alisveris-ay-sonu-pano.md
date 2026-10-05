@@ -8,7 +8,7 @@ IndexNow / post-deploy: `npm run post-deploy`
 Bu sayfa **ölçüm şablonu + sahip panosu**. Kod tarafı Gün 16–29 ile hazır;
 canlı skorlar merge + Point C sonrası doldurulur.
 
-## A) Site-side (repo) — 2026-10-05 (gün 16–48)
+## A) Site-side (repo) — 2026-10-05 (gün 16–49)
 
 | Metrik | Hedef | Durum |
 |--------|-------|-------|
