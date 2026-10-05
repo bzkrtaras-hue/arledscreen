@@ -32,6 +32,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 40 | 2026-10-05 | Model pages LinkCloud + entity-profiles.json Point C | ✅ |
 | 41 | 2026-10-05 | llms-full/smoke/footer Point C discovery | ✅ |
 | 42 | 2026-10-05 | entity-profiles CORS + merge-day Point C checklist | ✅ |
+| 43 | 2026-10-05 | Deploy artifact guard + blind-test skor kartı | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -125,9 +126,16 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - [`docs/point-c-merge-day.md`](./point-c-merge-day.md): merge → smoke → yapıştırma → kör tur
 - `npm run point-c-packs` (+ `--live`); regression suite docs güncellendi
 
+## Gün 43 notları
+
+- postbuild: AI static artefact + `_routes` exclude + entity-profiles CORS guard (FAIL on missing)
+- [`docs/ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md): tur 1/2 skor kartı
+- `audit:blind-test`: llms-full intent (profiles/about/products) + profiles pack checks
+- Master checklist: entity-profiles + merge owner items
+
 ## Owner P0 (her gün hatırlatma)
 
 1. PR #55 merge + Cloudflare Pages redeploy → canlı `/entity.json` `/catalog.json` `/.well-known/ard.json` `/entity-profiles.json`
 2. Point C: [`point-c-merge-day.md`](./point-c-merge-day.md) + `entity-profiles.json` packs
 3. `arleds.com` → `arledscreen.com/tr/` 301
-4. `npm run smoke:live` yeşile dönünce kör tur 1 skor kartı
+4. `npm run smoke:live` yeşile → [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md) tur 1

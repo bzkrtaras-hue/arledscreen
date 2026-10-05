@@ -201,6 +201,10 @@ if (llmsFullPath) {
     "/.well-known/ard.json",
     "/tr/rehber/led-tabela-mi-led-ekran-mi/",
     "/tr/products/kiralik-led-ekran/",
+    "/entity-profiles.json",
+    "/tr/about/",
+    "/tr/products/",
+    "/feeds/merchant-priced-panels.tsv",
   ];
   for (const u of requiredUrls) {
     if (!llms.includes(u)) {
@@ -254,6 +258,16 @@ if (p25) {
   }
 }
 
+const profiles = readJson("entity-profiles.json");
+if (profiles) {
+  if (!profiles.packs?.gbpDescription || !String(profiles.packs.gbpDescription).includes("Gaziosmanpaşa")) {
+    errors.push("entity-profiles.json gbpDescription missing Gaziosmanpaşa");
+  }
+  if (!String(profiles.packs?.linkedinAbout || "").includes("entity.json")) {
+    errors.push("entity-profiles.json linkedinAbout must cite entity.json");
+  }
+}
+
 const ard = readJson(".well-known/ard.json");
 if (ard) {
   const urls = JSON.stringify(ard);
@@ -280,5 +294,5 @@ if (errors.length) {
 }
 
 console.log(
-  `audit-blind-test: OK — prompts=${PROMPTS.length} entity+catalog+llms cite facts ready`,
+  `audit-blind-test: OK — prompts=${PROMPTS.length} entity+catalog+llms+profiles cite facts ready`,
 );

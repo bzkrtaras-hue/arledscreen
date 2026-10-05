@@ -7,7 +7,7 @@ Canlı smoke: `npm run smoke:live`
 Bu sayfa **ölçüm şablonu + sahip panosu**. Kod tarafı Gün 16–29 ile hazır;
 canlı skorlar merge + Point C sonrası doldurulur.
 
-## A) Site-side (repo) — 2026-10-05 (gün 16–41)
+## A) Site-side (repo) — 2026-10-05 (gün 16–43)
 
 | Metrik | Hedef | Durum |
 |--------|-------|-------|
@@ -60,7 +60,8 @@ Playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
 ## D) Kör test skorları (canlı modeller)
 
-Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 12 prompt × 0–3 = /36
+Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 12 prompt × 0–3 = /36  
+Skor kartı (sahip doldurur): [`docs/ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
 | Tur | Tarih | ChatGPT | Gemini | Perplexity | Bing Copilot | Ort. |
 |-----|-------|---------|--------|------------|--------------|------|

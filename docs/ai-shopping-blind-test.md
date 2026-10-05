@@ -60,20 +60,21 @@ Incognito: evet/hayır
 Toplam: /36
 ```
 
-Sonuçları `docs/ai-shopping-blind-test-scores.md` altına ekle (sahip).
+Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md) altına yazın (sahip).
 
 ## Site readiness kontrolleri (`audit:blind-test`)
 
 1. 12 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
 2. `entity.json`: telephone, Gaziosmanpaşa, citeOneLiner, disambiguatingDescription, NXTIONSTAR
 3. `catalog.json`: 12 dataset SKU; P2.5 iç = 32.18; groupAggregateOffers ≥ 3
-4. `llms-full.txt` §5 intent tablosu kanonik URL’leri içerir
+4. `llms-full.txt` §5 intent tablosu kanonik URL’leri içerir (entity-profiles + about + products)
 5. Quote-only gruplar (`kiralik`, `seffaf`, `transparan`) catalog `dataset`’te fiyat **yok**
 6. `/tr/yapay-zeka/` HTML’de catalog.json + entity.json geçiyor
+7. `ard.json` entity-profiles.json discovery; `entity-profiles.json` packs MEDIUM cite
 
 ## Owner sırası
 
 1. PR #55 merge + CF redeploy  
-2. `curl -sI` entity / catalog / ard → 200  
-3. Canlı kör tur 1 (12 prompt) skor kartına yaz  
-4. Point C (GBP + LinkedIn) → tur 2
+2. `curl -sI` entity / catalog / ard / entity-profiles → 200  
+3. Canlı kör tur 1 (12 prompt) → skor kartı  
+4. Point C (GBP + LinkedIn packs) → tur 2

@@ -64,7 +64,8 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 ## 4) Kör tur 1 (deploy sonrası)
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 12 prompt × 0–3 = /36  
-Hedef tur 1 ≥ **18/36**. Skorları `ai-shopping-blind-test-scores.md`’e yazın.
+Skor kartı: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)  
+Hedef tur 1 ≥ **18/36**.
 
 ## 5) Merchant (opsiyonel, priced-only)
 

@@ -8,13 +8,16 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] `catalog.json` — yayımlanmış panel USD + Product URL (build’de `scripts/generate-ai-catalog.mjs`)
 - [x] `entity.json` + `llms.txt` alışveriş FAQ / katalog linki
 - [x] `/.well-known/ard.json` (+ legacy `ai-catalog.json`) — Agentic Resource Discovery; CORS açık; `rel=ard` link
+- [x] `entity-profiles.json` — Point C paste packs (GBP/LinkedIn/IG/FB); CORS; ARD discovery — [`point-c-merge-day.md`](./point-c-merge-day.md)
 - [x] Product Offer guard: `npm run audit:offers` (priced → price+image; quote-only → offers yok; catalog ↔ PANEL_PRICES; fiyat hub + fiyat-hesap hesaplayıcı parity) — postbuild’de çalışır
 - [x] GSC invalid-schema regression: `npm run audit:schema` (Offer/AggregateOffer/FAQ/Breadcrumb/no AggregateRating) — postbuild
 - [x] Tek komut regression suite: `npm run audit:all` — [`docs/ai-shopping-regression-suite.md`](./ai-shopping-regression-suite.md) (14 audit)
 - [x] Ay sonu ölçüm panosu + canlı smoke: [`docs/ai-alisveris-ay-sonu-pano.md`](./ai-alisveris-ay-sonu-pano.md) (`npm run smoke:live`)
+- [x] Kör test skor kartı şablonu: [`docs/ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 - [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok) — checklist: [`docs/merchant-priced-panels.md`](./merchant-priced-panels.md); dry-run TSV: `/feeds/merchant-priced-panels.tsv` (`audit:merchant-feed`)
-- [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn)
+- [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn) — packs: `/entity-profiles.json`
 - [ ] **Owner:** `arleds.com` → `arledscreen.com/tr/` 301
+- [ ] **Owner:** PR #55 merge + CF redeploy → canlı entity/catalog/ard/profiles 200
 
 ## P0 — Immediate (site + measurement)
 
