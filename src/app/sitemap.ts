@@ -173,6 +173,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Machine-readable AI alışveriş artefacts (agents + Bing/GSC discovery after deploy)
   for (const [path, priority] of [
+    ["/ai-shopping.json", 0.99],
     ["/catalog.json", 0.98],
     ["/entity.json", 0.97],
     ["/entity-profiles.json", 0.9],

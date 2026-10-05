@@ -5,6 +5,7 @@
     "/entity.json",
     "/entity-profiles.json",
     "/catalog.json",
+    "/ai-shopping.json",
     "/feeds/*",
     "/.well-known/*",
     "/llms.txt",

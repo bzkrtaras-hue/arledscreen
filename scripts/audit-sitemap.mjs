@@ -100,6 +100,7 @@ for (const s of seoGuides) req(`${SITE}/tr/rehber/${s}/`);
 for (const s of articleSlugs) req(`${SITE}/tr/rehber/${s}/`);
 // Machine-readable AI alışveriş artefacts
 for (const p of [
+  "/ai-shopping.json",
   "/catalog.json",
   "/entity.json",
   "/entity-profiles.json",
@@ -170,6 +171,7 @@ if (errors.length) {
 }
 
 const aiArtefacts = [
+  "/ai-shopping.json",
   "/catalog.json",
   "/entity.json",
   "/entity-profiles.json",

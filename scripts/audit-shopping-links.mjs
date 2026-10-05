@@ -13,6 +13,7 @@ const errors = [];
 const REQUIRED = [
   "/tr/led-ekran-fiyatlari/",
   "/catalog.json",
+  "/ai-shopping.json",
   "/tr/quote/",
   "/tr/hesaplayici/",
   "/entity.json",

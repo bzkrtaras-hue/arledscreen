@@ -23,6 +23,7 @@
     "entityJson": "https://arledscreen.com/entity.json",
     "catalogJson": "https://arledscreen.com/catalog.json",
     "ardJson": "https://arledscreen.com/.well-known/ard.json",
+    "aiShoppingJson": "https://arledscreen.com/ai-shopping.json",
     "llmsTxt": "https://arledscreen.com/llms.txt",
     "about": "https://arledscreen.com/tr/about/",
     "fiyat": "https://arledscreen.com/tr/led-ekran-fiyatlari/",

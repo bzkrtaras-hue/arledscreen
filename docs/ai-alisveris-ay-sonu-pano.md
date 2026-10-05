@@ -1,29 +1,30 @@
 # Ay sonu ölçüm panosu — AI alışveriş / GEO (Gün 30)
 
 Hedef tarih: **2026-11-04**  
-Site-side suite: `npm run audit:all` (16 audit)  
+Site-side suite: `npm run audit:all` (17 audit)  
 Canlı smoke: `npm run smoke:live`  
-IndexNow (deploy sonrası): `npm run indexnow -- --live`
+IndexNow / post-deploy: `npm run post-deploy`
 
 Bu sayfa **ölçüm şablonu + sahip panosu**. Kod tarafı Gün 16–29 ile hazır;
 canlı skorlar merge + Point C sonrası doldurulur.
 
-## A) Site-side (repo) — 2026-10-05 (gün 16–47)
+## A) Site-side (repo) — 2026-10-05 (gün 16–48)
 
 | Metrik | Hedef | Durum |
 |--------|-------|-------|
-| Regression suite | 16/16 PASS | ✅ `npm run audit:all` GREEN |
+| Regression suite | 17/17 PASS | ✅ `npm run audit:all` GREEN |
 | Priced panels | 12 SKU | ✅ catalog + Merchant TSV |
 | Quote-only Offer yok | 0 fake price | ✅ audit:offers |
 | robots Host bare | `arledscreen.com` | ✅ audit:robots |
 | Cite parity | entity↔llms↔about↔profiles | ✅ audit:cite-parity |
 | Kör test site readiness | 12 prompt URL | ✅ audit:blind-test |
-| AI headers (CORS/ctype) | 8 path | ✅ audit:ai-headers |
+| AI headers (CORS/ctype) | 9 path | ✅ audit:ai-headers |
 | IndexNow key | public hex.txt | ✅ audit:indexnow |
+| AI shopping index | `/ai-shopping.json` | ✅ audit:ai-shopping |
 | Shopping LinkCloud | home→model→case→blog→seo-guide | ✅ 143+ yüzey |
-| Org → catalog JSON-LD | hasOfferCatalog | ✅ OrganizationJsonLd |
+| Org → catalog JSON-LD | hasOfferCatalog | ✅ OrganizationJsonLd + entity.json |
 | Offer ↔ catalog join | sku=priceId + isPartOf | ✅ model/group/pitch |
-| Sitemap AI artefacts | 7 machine URL | ✅ catalog/entity/ard/… |
+| Sitemap AI artefacts | 8 machine URL | ✅ + ai-shopping.json |
 | Point C paste packs | `/entity-profiles.json` | ✅ sync-entity |
 | Spam / 81-il | yok | ✅ |
 

@@ -156,6 +156,22 @@
       "updatedAt": "2026-10-05T20:10:00Z"
     },
     {
+      "identifier": "urn:air:arledscreen.com:shopping:discovery-index",
+      "displayName": "AI alışveriş discovery index (tek fetch)",
+      "type": "application/ld+json",
+      "url": "https://arledscreen.com/ai-shopping.json",
+      "description": "Tek istekte entity + catalog + Point C + ARD + llms + Merchant + 12 kör test intent + cite. Ajanlar önce burayı okuyabilir.",
+      "representativeQueries": [
+        "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
+        "ARLEDSCREEN AI alışveriş kaynakları",
+        "LED panel fiyat catalog entity tek URL"
+      ],
+      "tags": ["shopping", "discovery", "GEO", "agents"],
+      "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-05T20:45:00Z"
+    },
+    {
       "identifier": "urn:air:arledscreen.com:ops:indexnow",
       "displayName": "IndexNow key (post-deploy AI artefact recrawl)",
       "type": "text/plain",

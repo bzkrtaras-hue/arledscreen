@@ -28,6 +28,10 @@ const AI_PATHS = [
     contentType: "application/json",
   },
   {
+    path: "/ai-shopping.json",
+    contentType: "application/json",
+  },
+  {
     path: "/.well-known/ard.json",
     contentType: "application/json",
   },

@@ -55,6 +55,13 @@
   "entityProfilesJson": "https://arledscreen.com/entity-profiles.json",
   "catalogJson": "https://arledscreen.com/catalog.json",
   "ardJson": "https://arledscreen.com/.well-known/ard.json",
+  "aiShoppingJson": "https://arledscreen.com/ai-shopping.json",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "NXTIONSTAR yayımlanmış panel USD (2026)",
+    "url": "https://arledscreen.com/catalog.json",
+    "numberOfItems": 12
+  },
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
   "citeShort": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.",
   "citeMedium": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",

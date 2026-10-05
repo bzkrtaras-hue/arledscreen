@@ -49,7 +49,7 @@ if (!fs.existsSync(routesJson)) {
   console.log("postbuild: out/_routes.json present (Function scoped to /; AI static paths excluded)");
   const routes = JSON.parse(fs.readFileSync(routesJson, "utf8"));
   const exclude = routes.exclude || [];
-  for (const need of ["/entity.json", "/entity-profiles.json", "/catalog.json", "/.well-known/*", "/feeds/*"]) {
+  for (const need of ["/entity.json", "/entity-profiles.json", "/catalog.json", "/ai-shopping.json", "/.well-known/*", "/feeds/*"]) {
     if (!exclude.includes(need)) {
       console.warn(`postbuild: WARNING _routes.json exclude missing ${need}`);
     }
@@ -61,6 +61,7 @@ const AI_STATIC = [
   "entity.json",
   "entity-profiles.json",
   "catalog.json",
+  "ai-shopping.json",
   "llms.txt",
   "llms-full.txt",
   path.join(".well-known", "ard.json"),
@@ -81,10 +82,25 @@ if (!/\/entity-profiles\.json[\s\S]*?Access-Control-Allow-Origin:\s*\*/.test(hea
   console.error("postbuild: FAIL out/_headers missing entity-profiles CORS");
   process.exit(1);
 }
+if (!/\/ai-shopping\.json[\s\S]*?Access-Control-Allow-Origin:\s*\*/.test(headersOut)) {
+  console.error("postbuild: FAIL out/_headers missing ai-shopping CORS");
+  process.exit(1);
+}
 const entityOut = JSON.parse(fs.readFileSync(path.join("out", "entity.json"), "utf8"));
 if (!entityOut.entityProfilesJson?.includes("/entity-profiles.json")) {
   console.error("postbuild: FAIL out/entity.json missing entityProfilesJson");
   process.exit(1);
 }
-console.log("postbuild: AI static artefacts OK (entity/catalog/ard/profiles/llms/feed + CORS)");
+if (!entityOut.aiShoppingJson?.includes("/ai-shopping.json")) {
+  console.error("postbuild: FAIL out/entity.json missing aiShoppingJson");
+  process.exit(1);
+}
+const routes = JSON.parse(fs.readFileSync(path.join("out", "_routes.json"), "utf8"));
+const exclude = routes.exclude || [];
+for (const need of ["/entity.json", "/entity-profiles.json", "/catalog.json", "/ai-shopping.json", "/.well-known/*", "/feeds/*"]) {
+  if (!exclude.includes(need)) {
+    console.warn(`postbuild: WARNING _routes.json exclude missing ${need}`);
+  }
+}
+console.log("postbuild: AI static artefacts OK (entity/catalog/ard/profiles/ai-shopping/llms/feed + CORS)");
 

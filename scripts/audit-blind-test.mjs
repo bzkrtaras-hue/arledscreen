@@ -195,6 +195,7 @@ if (llmsFullPath) {
   const requiredUrls = [
     "/entity.json",
     "/catalog.json",
+    "/ai-shopping.json",
     "/tr/led-ekran-fiyatlari/",
     "/tr/hesaplayici/",
     "/tr/yapay-zeka/",

@@ -54,6 +54,12 @@ if (!fs.existsSync(entityPath)) {
   if (entity["@type"] !== "Organization") errors.push("entity.json @type not Organization");
   if (!entity.catalogJson?.includes("/catalog.json")) errors.push("entity.json catalogJson missing");
   if (!entity.ardJson?.includes("/ard.json")) errors.push("entity.json ardJson missing");
+  if (!entity.aiShoppingJson?.includes("/ai-shopping.json")) {
+    errors.push("entity.json aiShoppingJson missing");
+  }
+  if (!entity.hasOfferCatalog?.url?.includes("/catalog.json")) {
+    errors.push("entity.json hasOfferCatalog must point at catalog.json");
+  }
   if (!entity.founder?.sameAs?.includes("https://www.linkedin.com/in/bozkurtaras")) {
     errors.push("founder sameAs missing LinkedIn");
   }

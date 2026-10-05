@@ -146,6 +146,13 @@ const doc = {
   entityProfilesJson: `${SITE}/entity-profiles.json`,
   catalogJson: `${SITE}/catalog.json`,
   ardJson: `${SITE}/.well-known/ard.json`,
+  aiShoppingJson: `${SITE}/ai-shopping.json`,
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "NXTIONSTAR yayımlanmış panel USD (2026)",
+    url: `${SITE}/catalog.json`,
+    numberOfItems: 12,
+  },
   citeOneLiner: ENTITY_CITE_ONE_LINER,
   citeShort: ENTITY_CITE_SHORT,
   citeMedium: ENTITY_CITE_MEDIUM,
@@ -178,10 +185,11 @@ const profiles = {
     directoryLong: `${ENTITY_CITE_MEDIUM}\n\nAdres: ${street}, ${postal} ${locality} / ${region}\nTelefon: ${CONTACT_PHONE_DISPLAY}\nE-posta: ${CONTACT_EMAIL}\nWeb: ${SITE}/tr/\nDoğrulama: ${SITE}/entity.json`,
     youtubeAbout: `${ENTITY_CITE_SHORT}\n\nSite: ${SITE}/tr/\nEntity: ${SITE}/entity.json`,
   },
-  canonicalUrls: {
+    canonicalUrls: {
     entityJson: `${SITE}/entity.json`,
     catalogJson: `${SITE}/catalog.json`,
     ardJson: `${SITE}/.well-known/ard.json`,
+    aiShoppingJson: `${SITE}/ai-shopping.json`,
     llmsTxt: `${SITE}/llms.txt`,
     about: `${SITE}/tr/about/`,
     fiyat: `${SITE}/tr/led-ekran-fiyatlari/`,

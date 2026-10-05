@@ -37,6 +37,7 @@ if (!resolved) {
 }
 
 const URLS = [
+  `${SITE}/ai-shopping.json`,
   `${SITE}/entity.json`,
   `${SITE}/entity-profiles.json`,
   `${SITE}/catalog.json`,

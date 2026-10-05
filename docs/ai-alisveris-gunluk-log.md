@@ -37,6 +37,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 45 | 2026-10-05 | Org hasOfferCatalog + sitemap AI artefacts + SEO-guide LinkCloud | ✅ |
 | 46 | 2026-10-05 | IndexNow key + ping script + `audit:indexnow` (post-merge Bing) | ✅ |
 | 47 | 2026-10-05 | Offer↔catalog join (sku/@id) + pitch AggregateOffer + llms USD parity | ✅ |
+| 48 | 2026-10-05 | `ai-shopping.json` tek-fetch index + `post-deploy` + entity hasOfferCatalog | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -175,3 +176,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Pitch landings: AggregateOffer from PANEL_PRICES → catalog
 - llms-full intent: GOB vs SMD + P2.5 model/pitch URLs
 - Guards: audit:offers join + pitch/group; cite-parity PANEL USD; blind-test intent URLs
+
+## Gün 48 notları
+
+- `/ai-shopping.json`: tek fetch discovery (sources + 12 prompt + cite + P2.5 32.18)
+- entity.json: `hasOfferCatalog` + `aiShoppingJson`
+- `npm run post-deploy` = smoke → IndexNow (merge günü)
+- Wire: sitemap · head · LinkCloud · ARD · CORS · `_routes` · smoke 14 · audit:ai-shopping (17)
+- Docs: merge-day post-deploy adımı

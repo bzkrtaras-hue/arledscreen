@@ -69,6 +69,12 @@ export default function RootLayout({
         />
         <link
           rel="alternate"
+          type="application/ld+json"
+          href={`${SITE_URL}/ai-shopping.json`}
+          title="AI alışveriş discovery index"
+        />
+        <link
+          rel="alternate"
           type="text/tab-separated-values"
           href={`${SITE_URL}/feeds/merchant-priced-panels.tsv`}
           title="Merchant priced panels (12 SKU)"

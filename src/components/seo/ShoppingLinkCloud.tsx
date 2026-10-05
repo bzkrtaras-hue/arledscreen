@@ -13,6 +13,7 @@ export function ShoppingLinkCloud({
   const links = [
     { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları 2026" },
     { href: "/catalog.json", label: "catalog.json (panel USD)" },
+    { href: "/ai-shopping.json", label: "ai-shopping.json (ajan index)" },
     { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     { href: "/tr/quote/", label: "Yazılı teklif" },
     { href: "/entity.json", label: "entity.json (kimlik)" },

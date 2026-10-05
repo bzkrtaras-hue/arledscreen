@@ -40,9 +40,13 @@ done
 ## 1b) IndexNow ping (smoke yeşil olduktan sonra)
 
 ```bash
+npm run post-deploy
+# veya ayrı:
+npm run smoke:live
 npm run indexnow -- --live
 ```
 
+Tek fetch ajan index: https://arledscreen.com/ai-shopping.json  
 Dokümantasyon: [`indexnow.md`](./indexnow.md) — Bing’e AI artefact URL’lerini bildirir (entity/catalog/ard/…).
 
 ## 2) Point C yapıştırma (aynı NAP / cite)
