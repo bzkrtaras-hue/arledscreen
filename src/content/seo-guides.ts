@@ -755,9 +755,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Brand loops, product walls and executive dashboards each need balanced brightness for eye comfort. AV integration is added to the signal diagram when required.",
         },
         {
-          h2: "AI-ready indoor LED",
+          h2: "AI-compatible indoor LED",
           body:
-            "AI-generated or automated content must run without dropouts. The ARLEDSCREEN standard means known refresh behaviour, documented receivers and CMS/media-server fit without proprietary lock-in.",
+            "AI-generated or automated content must run without dropouts. From Gaziosmanpaşa we specify known refresh behaviour, documented receivers and CMS/media-server fit without proprietary lock-in — integration is written into the survey/quote, not sold as an invented “AI-ready” SKU.",
         },
       ],
       faqs: [
@@ -959,7 +959,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Content and AI/CMS pipelines",
           body:
-            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the quote — the same ARLEDSCREEN AI-ready standard used elsewhere.",
+            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the written quote from Gaziosmanpaşa — the same AI-compatible integration approach used on other ARLEDSCREEN projects (no invented AI-ready product SKU).",
         },
       ],
       faqs: [

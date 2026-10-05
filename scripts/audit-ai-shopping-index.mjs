@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 18 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 19 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 18) errors.push(`blindTestPrompts must be 18 (got ${prompts.length})`);
+if (prompts.length !== 19) errors.push(`blindTestPrompts must be 19 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -220,6 +220,11 @@ if (!p17 || !/modül|modul/i.test(p17.q || "")) {
 const p18 = (doc.blindTestPrompts || []).find((p) => p.id === 18);
 if (!p18 || !/rehber/i.test(p18.q || "")) {
   errors.push("blindTestPrompts #18 must cover LED ekran çözüm rehberi price invent");
+}
+// Day 71: AI-ready invent
+const p19 = (doc.blindTestPrompts || []).find((p) => p.id === 19);
+if (!p19 || !/AI-ready|ai-ready/i.test(p19.q || "")) {
+  errors.push("blindTestPrompts #19 must cover AI-ready LED invent");
 }
 
 if (errors.length) {

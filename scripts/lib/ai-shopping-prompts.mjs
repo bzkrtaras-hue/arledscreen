@@ -147,6 +147,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["catalog.json", "ai-shopping.json", "ücretsiz kargo yok"],
     mustNotSay: ["engineering desk", "ücretsiz kargo dahil", "stokta paket"],
   },
+  {
+    id: 19,
+    q: "AI-ready LED ekran fiyatı?",
+    paths: ["/tr/yapay-zeka/", "/en/yapay-zeka/", "/ai-shopping.json", "/catalog.json"],
+    mustSay: ["ai-shopping.json", "catalog.json", "ücretsiz kargo yok"],
+    mustNotSay: ["AI-ready standard", "ücretsiz kargo dahil", "stokta paket"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

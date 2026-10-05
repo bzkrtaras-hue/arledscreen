@@ -109,7 +109,7 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           <p className="mt-2 max-w-2xl text-sm text-ink-soft">
             {locale === "tr"
               ? "Rehberleri okuduktan sonra ölçü ve ortam bilginizi paylaşın; Gaziosmanpaşa ekibi pitch ve güç özetiyle dönüş yapsın — nihai tutar yazılı teklifle."
-              : "After the guides, share dimensions and environment — engineering replies with pitch and power outline."}
+              : "After the guides, share dimensions and environment — Gaziosmanpaşa replies with pitch and power outline; firm price is a written quote."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Button asChild>

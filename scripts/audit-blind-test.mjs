@@ -48,7 +48,7 @@ function htmlExists(urlPath) {
   return mustExist(rel);
 }
 
-/** 18 prompts — shared module (+ 70 rehber hub) */
+/** 19 prompts — shared module (+ 71 AI-ready invent) */
 const PROMPTS = BLIND_TEST_PROMPTS;
 
 if (!fs.existsSync(out)) {
@@ -276,7 +276,7 @@ if (gob) {
 }
 
 // Day 58: prompt honesty mustSay (ücretsiz kargo yok / teklif / ai-shopping) must be present on price intents
-for (const id of [2, 3, 4, 5, 6, 18]) {
+for (const id of [2, 3, 4, 5, 6, 18, 19]) {
   const p = PROMPTS.find((x) => x.id === id);
   if (!p?.mustSay?.some((s) => /ücretsiz kargo yok|quote-and-contract/i.test(s))) {
     errors.push(`blind prompt #${id} mustSay must include ücretsiz kargo yok or quote-and-contract`);
@@ -314,6 +314,13 @@ if (!p18 || !/rehber/i.test(p18.q)) {
 }
 if (p18 && (!p18.mustSay?.includes("catalog.json") || !p18.mustSay?.includes("ai-shopping.json"))) {
   errors.push("blind prompt #18 mustSay must include catalog.json + ai-shopping.json");
+}
+const p19 = PROMPTS.find((x) => x.id === 19);
+if (!p19 || !/AI-ready|ai-ready/i.test(p19.q)) {
+  errors.push("blind prompt #19 must cover AI-ready LED invent");
+}
+if (p19 && (!p19.mustSay?.includes("catalog.json") || !p19.mustSay?.includes("ai-shopping.json"))) {
+  errors.push("blind prompt #19 mustSay must include catalog.json + ai-shopping.json");
 }
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");

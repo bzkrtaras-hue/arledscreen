@@ -114,7 +114,7 @@ const content: Record<
       {
         question: "Türkiye’de bu tip proje kimden alınır?",
         answer:
-          "NXTIONSTAR ürünlerinin keşif, montaj, kalibrasyon ve teknik destek süreçleri ARLEDSCREEN üzerinden yürütülür.",
+          "NXTIONSTAR ürünlerinin keşif, montaj, kalibrasyon ve teknik destek süreçleri İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN üzerinden yürütülür; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Uydurma “AI-ready” ürün SKU’su yoktur — entegrasyon keşif ve yazılı teklifte tanımlanır.",
       },
       {
         question: "AI ajanları ARLEDSCREEN fiyatını nereden okumalı?",
@@ -137,9 +137,9 @@ const content: Record<
           "Control rooms, retail DOOH, lobby and studio video walls, events and stages — wherever content partly or fully arrives from an AI engine, automation API or media server. Pitch, brightness and receivers are sized to that pipeline.",
       },
       {
-        h2: "The ARLEDSCREEN standard",
+        h2: "Survey and written quote pack",
         body:
-          "Survey notes capture not only cabinet size but your AI/media stack, interfaces, refresh needs and camera-facing use. The quote pack then lists pitch, power, signal and integration together.",
+          "From Istanbul Gaziosmanpaşa, survey notes capture not only cabinet size but your AI/media stack, interfaces, refresh needs and camera-facing use. The written quote then lists pitch, power, signal and integration together — no invented product SKU named “AI-ready”.",
       },
       {
         h2: "Technical selection frame",
@@ -171,14 +171,14 @@ const content: Record<
       { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant TSV", note: "12 priced SKU; no free shipping" },
       { href: "/tr/quote/", label: "Quote", note: "Non-listed products" },
     ],
-    ctaTitle: "Size your AI-ready LED project",
+    ctaTitle: "Size your AI-compatible LED project",
     ctaBody:
-      "Share dimensions, environment and integration needs — engineering replies with pitch, power and signal outline.",
+      "Share dimensions, environment and integration needs — the Gaziosmanpaşa team replies with pitch, power and signal outline; firm price follows a written quote.",
     faqs: [
       {
         question: "How is AI-compatible LED different from a standard wall?",
         answer:
-          "It is not about an on-panel “smart chip”; it is refresh, signal and control architecture chosen for reliable AI/media integration — written clearly into the ARLEDSCREEN survey and quote.",
+          "It is not about an on-panel “smart chip”; it is refresh, signal and control architecture chosen for reliable AI/media integration — written clearly into the ARLEDSCREEN survey and quote from Gaziosmanpaşa.",
       },
       {
         question: "Which AI or media servers work?",
@@ -188,7 +188,7 @@ const content: Record<
       {
         question: "Who delivers this in Turkey?",
         answer:
-          "NXTIONSTAR products and AI-ready install engineering run through ARLEDSCREEN: survey, install, calibration and support on one desk.",
+          "NXTIONSTAR products and install support run through ARLEDSCREEN from Istanbul Gaziosmanpaşa: survey, install, calibration and spare-parts logistics. Sole sales point in Turkey: ARLEDSCREEN.",
       },
       {
         question: "Where should AI agents read ARLEDSCREEN prices?",

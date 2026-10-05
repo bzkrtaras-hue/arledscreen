@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-05 (Gün 70: blind #18 rehber hub)  
+Son güncelleme: 2026-10-05 (Gün 71: blind #19 AI-ready invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 18 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 19 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 18 prompt (alışveriş + varlık)
+## 19 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -42,6 +42,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 16 | Poster / totem LED fiyatı? | `/tr/products/poster-led-ekran/` · quote · ai-shopping | teklif + **ai-shopping.json** | ücretsiz kargo dahil / stokta paket |
 | 17 | LED modül ve kontrol sistemi fiyatı? | `/tr/products/led-modul-ve-kontrol-sistemleri/` · quote · ai-shopping | teklif + **ai-shopping.json** | ücretsiz kargo dahil / stokta paket |
 | 18 | LED ekran çözüm rehberi panel fiyatı nereden okunur? | `/tr/rehber/` · `/tr/rehber/led-ekran/` · catalog · ai-shopping | **catalog.json** + **ai-shopping.json** + ücretsiz kargo yok | engineering desk / ücretsiz kargo dahil |
+| 19 | AI-ready LED ekran fiyatı? | `/tr/yapay-zeka/` · `/en/yapay-zeka/` · ai-shopping · catalog | **ai-shopping.json** + **catalog.json** + ücretsiz kargo yok | AI-ready standard / ücretsiz kargo dahil |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -52,7 +53,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 54. Hedef tur 1 ≥ 27/54; tur 2 (Point C sonrası) ≥ 40/54.
+**Tur skoru** = toplam / 57. Hedef tur 1 ≥ 29/57; tur 2 (Point C sonrası) ≥ 43/57.
 
 ### Canlı tur kayıt şablonu
 
@@ -65,27 +66,28 @@ Incognito: evet/hayır
 # | Prompt | Skor 0-3 | Atıf URL | Not
 1 | ... |  |  |
 ...
-Toplam: /54
+Toplam: /57
 ```
 
 Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md) altına yazın (sahip).
 
 ## Site readiness kontrolleri (`audit:blind-test`)
 
-1. 18 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
+1. 19 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
 2. `entity.json`: telephone, Gaziosmanpaşa, citeOneLiner, disambiguatingDescription, NXTIONSTAR
 3. `catalog.json`: 12 dataset SKU; P2.5 iç = 32.18; groupAggregateOffers ≥ 3; shippingDetails; hasMerchantReturnPolicy (MerchantReturnNotPermitted)
 4. `ai-shopping.json`: 12 `pricedPanels` + `agentRules` + `extrasUsd` + `returnPolicy` + ücretsiz kargo yok + quote-and-contract-only
 5. `llms-full.txt` §5 intent tablosu kanonik URL’leri içerir (entity-profiles + about + products)
 6. Quote-only gruplar (`kiralik`, `seffaf`, `transparan`) catalog `dataset`’te fiyat **yok**
-7. `/tr/yapay-zeka/` HTML’de ai-shopping + catalog + entity + priceValidUntil
+7. `/tr/yapay-zeka/` HTML’de ai-shopping + catalog + entity + priceValidUntil + Gaziosmanpaşa
 8. `ard.json` entity-profiles + ai-shopping discovery; `entity-profiles.json` packs MEDIUM cite
 9. `/tr/rehber/` + `/en/rehber/`: engineering desk invent yok; catalog/ai-shopping cite
+10. `/tr/yapay-zeka/` + `/en/yapay-zeka/`: AI-ready SKU / one-desk invent yok
 
 ## Owner sırası
 
 1. PR #55 merge + CF redeploy  
 2. `npm run post-deploy` (smoke GREEN → IndexNow; Day 51–53 contract echo)  
 3. `curl -sI` entity / catalog / ard / ai-shopping / entity-profiles → 200  
-4. Canlı kör tur 1 (18 prompt) → skor kartı  
+4. Canlı kör tur 1 (19 prompt) → skor kartı  
 5. Point C (GBP + LinkedIn packs) → tur 2

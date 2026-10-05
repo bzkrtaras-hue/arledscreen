@@ -163,7 +163,21 @@ export const CHECKS = [
     url: `${SITE}/tr/yapay-zeka/`,
     outRel: "tr/yapay-zeka/index.html",
     expect: "html",
-    mustInclude: ["entity.json", "catalog.json", "ai-shopping.json", "priceValidUntil", "ücretsiz kargo yok"],
+    mustInclude: [
+      "entity.json",
+      "catalog.json",
+      "ai-shopping.json",
+      "priceValidUntil",
+      "ücretsiz kargo yok",
+      "Gaziosmanpaşa",
+    ],
+  },
+  {
+    id: "yapay-zeka-en",
+    url: `${SITE}/en/yapay-zeka/`,
+    outRel: "en/yapay-zeka/index.html",
+    expect: "html",
+    mustInclude: ["ai-shopping.json", "catalog.json", "Gaziosmanpaşa"],
   },
   {
     id: "about",

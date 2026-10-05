@@ -266,6 +266,17 @@ if (trRehber) {
     errors.push("out/tr/rehber/index.html should cite catalog.json or ai-shopping.json");
   }
 }
+// Day 71: yapay-zeka must not invent branded “AI-ready” SKU / desk
+for (const rel of ["out/tr/yapay-zeka/index.html", "out/en/yapay-zeka/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/AI-ready standard|AI-ready LED project|on one desk/i.test(html)) {
+    errors.push(`${rel} must not invent AI-ready SKU / one-desk branding`);
+  }
+  if (!/Gaziosmanpaşa|Gaziosmanpasa|ai-shopping\.json/i.test(html)) {
+    errors.push(`${rel} should cite Gaziosmanpaşa or ai-shopping.json`);
+  }
+}
 
 if (errors.length) {
   console.error(`audit-cite-parity: FAIL (${errors.length})`);

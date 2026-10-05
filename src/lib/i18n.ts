@@ -584,7 +584,7 @@ const tr: Dictionary = {
         "NXTIONSTAR ürünleri, fiyat hesaplayıcı, ekran konfigüratörü ve saha referansları. Her araç kendi sayfasında; burada işlevlerini özetliyoruz.",
     },
     configurator: {
-      eyebrow: "Mühendislik masası",
+      eyebrow: "Proje boyutlandırma",
       title: "Saha keşfinden önce ekranı boyutlandırın",
       description:
         "Genişlik, yükseklik, pitch ve kabin modunu ayarlayın. Çözünürlük, izleme mesafesi ve kabin adedi anında güncellenir.",

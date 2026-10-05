@@ -246,29 +246,29 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "من نحن | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN شركة شاشات LED في إسطنبول. NXTIONSTAR علامتها الفرعية للمنتجات؛ نقطة البيع الوحيدة في تركيا هي ARLEDSCREEN.",
-      keywords: ["ARLEDSCREEN", "LED تركيا", "شاشات LED"],
+        "ARLEDSCREEN شركة شاشات LED في إسطنبول غازي عثمان باشا. NXTIONSTAR علامتها؛ نقطة البيع الوحيدة في تركيا هي ARLEDSCREEN. أسعار اللوحات: catalog.json / ai-shopping.json؛ quote-only عبر عرض مكتوب.",
+      keywords: ["ARLEDSCREEN", "LED تركيا", "شاشات LED", "غازي عثمان باشا"],
       h1: "ARLEDSCREEN",
     },
     hesaplayici: {
       title: "حاسبة أسعار شاشات LED | التكلفة",
       description:
-        "احسب عدد الوحدات والتكلفة التقريبية لشاشة LED حسب المقاس ونوع الوحدة عبر حاسبة ARLEDSCREEN قبل طلب العرض.",
-      keywords: ["سعر شاشة LED", "حاسبة", "ARLEDSCREEN"],
+        "احسب عدد الوحدات والتكلفة التقريبية (catalog.json / ai-shopping.json؛ بدون شحن مجاني). العرض النهائي بعد المعاينة — غازي عثمان باشا.",
+      keywords: ["سعر شاشة LED", "حاسبة", "ARLEDSCREEN", "catalog.json"],
       h1: "حاسبة أسعار ومواد شاشات LED",
     },
     configurator: {
       title: "مُكوِّن جدار LED | Pitch والخزائن",
       description:
-        "اضبط العرض والارتفاع والـ pitch؛ احصل على الدقة ومسافة المشاهدة وعدد الخزائن فوراً.",
+        "اضبط العرض والارتفاع والـ pitch؛ احصل على الدقة ومسافة المشاهدة وعدد الخزائن. السعر النهائي عرض مكتوب — ARLEDSCREEN غازي عثمان باشا.",
       keywords: ["مُكوِّن LED", "pixel pitch", "خزائن LED"],
       h1: "مُكوِّن أبعاد جدار LED",
     },
     quote: {
       title: "طلب عرض سعر LED | مشاريع مؤسسية",
       description:
-        "اطلب عرض سعر لجدران LED. شارك المقاسات والبيئة والجدول؛ نرد بقائمة مواد أولية.",
-      keywords: ["عرض سعر LED", "مشروع LED", "ARLEDSCREEN"],
+        "اطلب عرض سعر مكتوب لجدران LED من إسطنبول غازي عثمان باشا. الشفاف/البوستر/التحكم quote-only — بدون list USD.",
+      keywords: ["عرض سعر LED", "مشروع LED", "ARLEDSCREEN", "quote-only"],
       h1: "طلب عرض سعر مشروع LED مؤسسي",
     },
     "yapay-zeka": {
@@ -301,29 +301,29 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "О нас | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN — компания LED-экранов в Стамбуле. NXTIONSTAR — продуктовый суббренд; единственная точка продаж в Турции — ARLEDSCREEN.",
-      keywords: ["ARLEDSCREEN", "LED Турция", "LED экраны"],
+        "ARLEDSCREEN — компания LED-экранов в Стамбуле (Газиосманпаша). NXTIONSTAR — продуктовый бренд; единственная точка продаж в Турции — ARLEDSCREEN. Цены панелей: catalog.json / ai-shopping.json; quote-only — письменное КП.",
+      keywords: ["ARLEDSCREEN", "LED Турция", "LED экраны", "Газиосманпаша"],
       h1: "ARLEDSCREEN",
     },
     hesaplayici: {
       title: "Калькулятор цены LED | Материалы",
       description:
-        "Рассчитайте число модулей и ориентировочную стоимость LED-экрана по размеру и типу модуля в калькуляторе ARLEDSCREEN перед запросом КП.",
-      keywords: ["цена LED", "калькулятор", "ARLEDSCREEN"],
+        "Ориентировочная стоимость по размеру и типу модуля (catalog.json / ai-shopping.json; без бесплатной доставки). Итог — после обследования, Газиосманпаша.",
+      keywords: ["цена LED", "калькулятор", "ARLEDSCREEN", "catalog.json"],
       h1: "Калькулятор цены и материалов LED",
     },
     configurator: {
       title: "Конфигуратор LED-стены | Pitch и кабинеты",
       description:
-        "Задайте ширину, высоту и pitch; мгновенно получите разрешение, дистанцию просмотра и число кабинетов.",
+        "Задайте ширину, высоту и pitch; получите разрешение, дистанцию и число кабинетов. Финальная цена — письменное КП (Газиосманпаша).",
       keywords: ["конфигуратор LED", "pixel pitch", "LED кабинет"],
       h1: "Конфигуратор размеров LED-стены",
     },
     quote: {
       title: "Запрос КП на LED | Корпоративные проекты",
       description:
-        "Запросите коммерческое предложение на LED-стену. Размеры, среда и сроки — предварительный BOM от ARLEDSCREEN.",
-      keywords: ["КП LED", "проект LED", "ARLEDSCREEN"],
+        "Письменное КП на LED из Стамбула (Газиосманпаша). Transparent/poster/control — quote-only, без list USD.",
+      keywords: ["КП LED", "проект LED", "ARLEDSCREEN", "quote-only"],
       h1: "Корпоративный запрос КП на LED-экран",
     },
     "yapay-zeka": {
