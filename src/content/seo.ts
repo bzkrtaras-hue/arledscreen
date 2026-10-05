@@ -162,19 +162,19 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "From fine-pitch GOB to outdoor façade and flexible modules — pick the NXTIONSTAR module that matches your venue.",
     },
     about: {
-      title: "About ARLEDSCREEN | NXTIONSTAR LED Engineering Partner",
+      title: "About ARLEDSCREEN & NXTIONSTAR | LED Technology Centre",
       description:
-        "ARLEDSCREEN in Gaziosmanpaşa, Istanbul delivers NXTIONSTAR LED engineering: site survey, installation, calibration and after-sales support for enterprise LED walls across Turkey.",
+        "ARLEDSCREEN delivers LED displays with NXTIONSTAR quality. Istanbul production, end-to-end project management and dealer–service coverage across Turkey’s 81 provinces.",
       keywords: [
         "ARLEDSCREEN",
         "NXTIONSTAR LED brand",
         "LED display Turkey",
         "about us",
-        "digital signage",
+        "Bozkurt Global",
       ],
-      h1: "ARLEDSCREEN — NXTIONSTAR LED engineering partner",
+      h1: "ARLEDSCREEN & NXTIONSTAR",
       intro:
-        "Our role is clear: we support integrators, agencies and facility owners with NXTIONSTAR LED systems and engineering-led wall projects across Turkey.",
+        "ARLEDSCREEN delivers LED display solutions with NXTIONSTAR quality and assurance — from site survey through after-sales technical service.",
     },
     hesaplayici: {
       title: "LED Display Price Calculator | Materials & Cost | ARLEDSCREEN",
