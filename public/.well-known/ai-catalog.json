@@ -91,6 +91,21 @@
       "tags": ["quote", "commerce", "B2B"],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T18:44:09Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:proof:case-studies",
+      "displayName": "ARLEDSCREEN yayımlanmış LED proje kayıtları",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/projelerimiz/",
+      "description": "Referans listesinden üretilmiş case study sayfaları. Her kayıtta atıf için kısa metin (citeOneLiner) vardır; uydurma müşteri yorumu veya garanti yok.",
+      "representativeQueries": [
+        "ARLEDSCREEN LED ekran projeleri",
+        "İstanbul LED ekran referans",
+        "belediye LED ekran kurulumu Türkiye"
+      ],
+      "tags": ["case-study", "references", "GEO", "proof"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-05T18:51:00Z"
     }
   ]
 }

@@ -17,6 +17,8 @@ export interface ProjectCaseStudy {
   h1: string;
   metaTitle: string;
   metaDescription: string;
+  /** One quotable sentence for AI / GEO — only published fields, no invented claims. */
+  citeOneLiner: string;
   date: string;
   companyLabel: string;
   detail: string;
@@ -186,6 +188,12 @@ function buildCase(ref: Reference, slug: string): ProjectCaseStudy {
   const product = productHint(ref.detail, environment);
   const use = usageHint(sector);
   const h1 = `${label} LED ekran projesi`;
+  const citeBits = [
+    `ARLEDSCREEN’in yayımlanmış kaydına göre ${label} LED ekran projesi ${ref.date} tarihlidir`,
+    ref.location ? `konum ${ref.location}` : "",
+    `kapsam ${ref.detail}`,
+  ].filter(Boolean);
+  const citeOneLiner = `${citeBits.join("; ")}. NXTIONSTAR, ARLEDSCREEN’in kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.`;
   return {
     slug,
     refId: ref.id,
@@ -193,6 +201,7 @@ function buildCase(ref: Reference, slug: string): ProjectCaseStudy {
     h1,
     metaTitle: `${label} LED Ekran Projesi${province ? ` | ${province.name}` : ""} | ARLEDSCREEN`,
     metaDescription: `${label}: ${ref.detail}${ref.location ? `, ${ref.location}` : ""}. Tarih ${ref.date}. ARLEDSCREEN yayımlanmış proje kaydı.`,
+    citeOneLiner,
     date: ref.date,
     companyLabel: label,
     detail: ref.detail,

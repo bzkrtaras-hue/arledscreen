@@ -49,19 +49,36 @@ export default async function ProjectCasePage({
   if (!c) notFound();
 
   const url = absoluteUrl(projectCasePath(c.slug));
+  const imageUrls = c.images.map((img) =>
+    absoluteUrl(img.src.startsWith("/blog/") ? img.src.replace("/blog/", "/opt/blog/") : img.src),
+  );
   const creativeWork = {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
+    "@type": ["CreativeWork", "Article"],
     "@id": `${url}#case`,
+    headline: c.h1,
     name: c.h1,
+    abstract: c.citeOneLiner,
     description: c.metaDescription,
+    text: c.citeOneLiner,
+    inLanguage: "tr",
     dateCreated: c.date,
-    about: "LED ekran kurulumu",
+    datePublished: c.date,
+    about: [
+      { "@type": "Thing", name: "LED ekran kurulumu" },
+      ...(c.location
+        ? [{ "@type": "Place", name: c.location, ...(c.provinceName ? { address: { "@type": "PostalAddress", addressLocality: c.provinceName, addressCountry: "TR" } } : {}) }]
+        : []),
+    ],
     provider: { "@id": `${SITE_URL}/#organization` },
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    mainEntityOfPage: url,
     url,
-    ...(c.images[0]
-      ? { image: absoluteUrl(c.images[0].src.startsWith("/blog/") ? c.images[0].src.replace("/blog/", "/opt/blog/") : c.images[0].src) }
-      : {}),
+    ...(imageUrls.length ? { image: imageUrls } : {}),
+    keywords: ["ARLEDSCREEN", "NXTIONSTAR", "LED ekran", c.sector, c.location].filter(Boolean).join(", "),
   };
 
   const rows: { label: string; value: string }[] = [
@@ -97,6 +114,10 @@ export default async function ProjectCasePage({
           <h1 className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.7rem,1.2rem+1.8vw,2.5rem)] font-extrabold tracking-[-0.03em] text-ink">
             {c.h1}
           </h1>
+          <blockquote className="mt-5 max-w-3xl rounded-2xl border border-border bg-white/80 p-5 text-base leading-relaxed text-ink">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">Atıf için kısa metin</p>
+            <p className="mt-2">{c.citeOneLiner}</p>
+          </blockquote>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             Bu sayfa ARLEDSCREEN referans listesindeki yayımlanmış alanlardan üretilir.
             Kontrol sistemi, garanti yılı, müşteri yorumu veya süre gibi sitede yazmayan
