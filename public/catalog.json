@@ -1,0 +1,724 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "@id": "https://arledscreen.com/catalog.json",
+  "name": "ARLEDSCREEN / NXTIONSTAR LED panel katalog (AI alışveriş)",
+  "description": "Yayımlanmış 2026 panel (modül) USD listesi. AI alışveriş ve ajan sistemleri için makinece okunur. KDV ve nakliye hariç; nihai tutar keşif ve yazılı teklifle kesinleşir. Uydurma fiyat yoktur.",
+  "url": "https://arledscreen.com/catalog.json",
+  "creator": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "dateModified": "2026-10-05",
+  "inLanguage": "tr",
+  "isBasedOn": [
+    "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+    "https://arledscreen.com/tr/hesaplayici/",
+    "https://fiyat.arledscreen.com/",
+    "https://arledscreen.com/entity.json"
+  ],
+  "shoppingPolicy": {
+    "currency": "USD",
+    "priceUnit": "panel",
+    "standardModule": "320 × 160 mm",
+    "vatIncluded": false,
+    "shippingIncluded": false,
+    "extrasUsd": {
+      "workshopLaborPerM2": 100,
+      "controlCard": 500,
+      "driverSoftware": 500
+    },
+    "finalPrice": "Keşif sonrası yazılı teklif",
+    "quoteUrl": "https://arledscreen.com/tr/quote/",
+    "calculatorUrl": "https://arledscreen.com/tr/hesaplayici/",
+    "whatsapp": "https://wa.me/905305078834"
+  },
+  "disambiguation": [
+    "ARLEDSCREEN ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
+    "NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED bileşen"
+  ],
+  "dataset": [
+    {
+      "@type": "Product",
+      "sku": "p1-25-ic-gob",
+      "name": "NXTIONSTAR P1.25 İç mekân (GOB) LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 1.25,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "İç mekân"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Yüzey",
+          "value": "GOB"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
+        "price": "95.88",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "95.88",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p1-53-ic-gob",
+      "name": "NXTIONSTAR P1.53 İç mekân (GOB) LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 1.53,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "İç mekân"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Yüzey",
+          "value": "GOB"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
+        "price": "62.08",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "62.08",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p1-86-ic-gob",
+      "name": "NXTIONSTAR P1.86 İç mekân (GOB) LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 1.86,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "İç mekân"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Yüzey",
+          "value": "GOB"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
+        "price": "49.08",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "49.08",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p2-5-ic",
+      "name": "NXTIONSTAR P2.5 İç mekân LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 2.5,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "İç mekân"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
+        "price": "32.18",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "32.18",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p3-07-ic",
+      "name": "NXTIONSTAR P3.07 İç mekân LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 3.07,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "İç mekân"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
+        "price": "30.88",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "30.88",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p4-ic",
+      "name": "NXTIONSTAR P4 İç mekân LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 4,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "İç mekân"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
+        "price": "26.98",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "26.98",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p2-5-dis",
+      "name": "NXTIONSTAR P2.5 Dış mekân LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 2.5,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "Dış mekân"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
+        "price": "63.70",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "63.70",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p2-9-dis",
+      "name": "NXTIONSTAR P2.9 Dış mekân LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 2.9,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "250 × 250 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "Dış mekân"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
+        "price": "53.30",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "53.30",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p3-07-dis",
+      "name": "NXTIONSTAR P3.07 Dış mekân LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 3.07,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "Dış mekân"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
+        "price": "44.20",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "44.20",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p4-dis",
+      "name": "NXTIONSTAR P4 Dış mekân LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 4,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "Dış mekân"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
+        "price": "33.80",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "33.80",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p4-dis-front",
+      "name": "NXTIONSTAR P4 Dış mekân (önden servis) LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 4,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "Dış mekân"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Servis",
+          "value": "Önden servis"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
+        "price": "36.40",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "36.40",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    },
+    {
+      "@type": "Product",
+      "sku": "p5-dis",
+      "name": "NXTIONSTAR P5 Dış mekân LED Modül",
+      "brand": {
+        "@type": "Brand",
+        "name": "NXTIONSTAR"
+      },
+      "category": "LED ekran modülü",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Piksel aralığı",
+          "value": 5,
+          "unitText": "mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Modül ölçüsü",
+          "value": "320 × 160 mm"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Kullanım",
+          "value": "Dış mekân"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
+        "price": "29.90",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "29.90",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
+    }
+  ],
+  "quoteOnlyProductGroups": [
+    {
+      "name": "Şeffaf LED ekran",
+      "url": "https://arledscreen.com/tr/products/seffaf-led-ekran/",
+      "note": "Panel list fiyatı yayımlanmaz; yazılı teklif."
+    },
+    {
+      "name": "Transparan (mesh) LED ekran",
+      "url": "https://arledscreen.com/tr/products/transparan-led-ekran/",
+      "note": "Panel list fiyatı yayımlanmaz; yazılı teklif."
+    },
+    {
+      "name": "Esnek LED ekran",
+      "url": "https://arledscreen.com/tr/products/esnek-led-ekran/",
+      "note": "Panel list fiyatı yayımlanmaz; yazılı teklif."
+    },
+    {
+      "name": "Poster / totem LED ekran",
+      "url": "https://arledscreen.com/tr/products/poster-led-ekran/",
+      "note": "Panel list fiyatı yayımlanmaz; yazılı teklif."
+    },
+    {
+      "name": "Kiralık LED ekran",
+      "url": "https://arledscreen.com/tr/products/kiralik-led-ekran/",
+      "note": "Kiralama bedeli projeye göre teklif."
+    }
+  ]
+}

@@ -16,6 +16,7 @@
 - E-posta: arled@arledscreen.com
 - Web sitesi: https://arledscreen.com
 - Makinece entity (NAP / cite): https://arledscreen.com/entity.json
+- AI alışveriş kataloğu (panel USD + ürün URL): https://arledscreen.com/catalog.json
 - Fiyat hesaplayıcı: https://fiyat.arledscreen.com/ (sitede: https://arledscreen.com/tr/hesaplayici/)
 - Instagram: https://www.instagram.com/arledscreen/
 - Facebook: https://www.facebook.com/arledscreenn

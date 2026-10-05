@@ -57,6 +57,16 @@ export const ENTITY_FAQS = [
     answer:
       "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir.",
   },
+  {
+    question: "LED ekran panel fiyatları nereden alınır?",
+    answer:
+      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariçtir; nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/",
+  },
+  {
+    question: "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
+    answer:
+      "Makinece entity: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Kısa özet: https://arledscreen.com/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir.",
+  },
 ] as const;
 
 /** Profile paste packs for third-party forms (same facts, different length caps). */
@@ -115,6 +125,7 @@ export type EntityDocument = {
   citationPage: string;
   llmsTxt: string;
   entityJson: string;
+  catalogJson: string;
   citeOneLiner: string;
   citeShort: string;
   citeMedium: string;
@@ -165,6 +176,7 @@ export function buildEntityDocument(): EntityDocument {
     citationPage: `${SITE_URL}/tr/about/`,
     llmsTxt: `${SITE_URL}/llms.txt`,
     entityJson: `${SITE_URL}/entity.json`,
+    catalogJson: `${SITE_URL}/catalog.json`,
     citeOneLiner: ENTITY_CITE_ONE_LINER,
     citeShort: ENTITY_CITE_SHORT,
     citeMedium: ENTITY_CITE_MEDIUM,

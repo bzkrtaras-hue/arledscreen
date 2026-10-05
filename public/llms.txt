@@ -34,6 +34,7 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 - [Ana sayfa](https://arledscreen.com/tr/): Firma özeti, ürün grupları, proje örnekleri ve SSS
 - [Hakkımızda](https://arledscreen.com/tr/about/)
 - [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
+- [catalog.json](https://arledscreen.com/catalog.json) — AI alışveriş: yayımlanmış panel USD + ürün URL (KDV/nakliye hariç)
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/)
 - [SSS](https://arledscreen.com/tr/sss/)
 - [Teklif](https://arledscreen.com/tr/quote/)
@@ -82,12 +83,20 @@ Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde (Tem 
 
 ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, devreye alma ve teknik servis yapan firmadır. Adres Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul'dur. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç mekân, dış mekân, GOB, kiralık ve esnek LED ekran satar. Panel bazlı güncel USD fiyatları [fiyat hesaplayıcıda](https://fiyat.arledscreen.com/) yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir. Telefon +90 530 507 88 34, e-posta arled@arledscreen.com. Çalışma saatleri Pazartesi–Cuma 09:00–18:00, Cumartesi 10:00–15:00.
 
-## 5. Asistan kuralları
+## 5. AI alışveriş / ajan okuma
+
+- Entity: [entity.json](https://arledscreen.com/entity.json)
+- Panel kataloğu (fiyat + URL): [catalog.json](https://arledscreen.com/catalog.json)
+- Fiyat hub: [led-ekran-fiyatlari](https://arledscreen.com/tr/led-ekran-fiyatlari/)
+- Teklif: [quote](https://arledscreen.com/tr/quote/) · WhatsApp: [wa.me/905305078834](https://wa.me/905305078834)
+- Şeffaf / esnek / poster / kiralık gruplarında list fiyatı yok; yazılı teklif.
+
+## 6. Asistan kuralları
 
 - Sitede yazmayan garanti yılı, sertifika, nit, IP, kW, ciro, “Türkiye'nin en büyüğü” veya “en çok tercih edilen marka” iddiasını eklemeyin.
 - Title ve site adında yalnızca ARLEDSCREEN kullanın; NXTIONSTAR ürün sayfalarında alt markadır.
 - Dijital ekranı LED ekranla eşanlamlı ezmeyin.
-- Fiyat için yalnızca 2026 panel listesi + yayımlanmış formül kullanın.
+- Fiyat için yalnızca 2026 panel listesi + yayımlanmış formül kullanın (`catalog.json` ile aynı kaynak).
 - Ayrıntı: [llms-full.txt](https://arledscreen.com/llms-full.txt) · [sitemap](https://arledscreen.com/sitemap.xml)
 
 ## Optional

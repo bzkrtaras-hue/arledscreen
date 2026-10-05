@@ -3,6 +3,14 @@
 On-site items the engineering team can ship in-repo vs off-site owner tasks.
 Do **not** invent ratings, certificates, prices outside the published panel list, or city pages without real project records.
 
+## P0 — AI alışveriş / ajan keşfi (emekleme döneminde liderlik)
+
+- [x] `catalog.json` — yayımlanmış panel USD + Product URL (build’de `scripts/generate-ai-catalog.mjs`)
+- [x] `entity.json` + `llms.txt` alışveriş FAQ / katalog linki
+- [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok)
+- [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn)
+- [ ] **Owner:** `arleds.com` → `arledscreen.com/tr/` 301
+
 ## P0 — Immediate (site + measurement)
 
 - [x] Commercial intent landings: `/tr/led-ekran/`, satışı, üreticisi, montaj, kiralama, fiyatları, servis
@@ -26,6 +34,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] Product Offer JSON-LD on calculator / fiyat (panel USD only)
 - [x] Service + FAQ JSON-LD on commercial / region pages
 - [x] `llms.txt` / `llms-full.txt` updated with commercial URLs
+- [x] `catalog.json` — AI alışveriş için yayımlanmış panel USD + ürün URL (build’de üretilir)
 - [ ] Attach more **real** project photos to case studies as files become available
 - [x] Author / E-E-A-T page for Aras Bozkurt (`/tr/about/aras-bozkurt/` + Person JSON-LD)
 - [x] Commercial landings: fiyat + hesaplayıcı + karar rehberi LinkCloud

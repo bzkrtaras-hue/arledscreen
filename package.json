@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/generate-ai-catalog.mjs && next build",
     "start": "next start",
     "lint": "eslint .",
+    "catalog": "node scripts/generate-ai-catalog.mjs",
     "postbuild": "node scripts/postbuild-lang.mjs"
   },
   "dependencies": {

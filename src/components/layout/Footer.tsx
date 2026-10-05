@@ -225,6 +225,10 @@ export function Footer({ locale }: FooterProps) {
               entity.json
             </a>
             {" · "}
+            <a href="/catalog.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
+              catalog.json
+            </a>
+            {" · "}
             <a href="/llms.txt" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
               llms.txt
             </a>

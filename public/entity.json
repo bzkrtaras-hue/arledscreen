@@ -46,6 +46,7 @@
   "citationPage": "https://arledscreen.com/tr/about/",
   "llmsTxt": "https://arledscreen.com/llms.txt",
   "entityJson": "https://arledscreen.com/entity.json",
+  "catalogJson": "https://arledscreen.com/catalog.json",
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
   "citeShort": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
   "citeMedium": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
@@ -66,6 +67,14 @@
     {
       "question": "ARLEDSCREEN hangi hizmetleri sunar?",
       "answer": "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir."
+    },
+    {
+      "question": "LED ekran panel fiyatları nereden alınır?",
+      "answer": "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariçtir; nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/"
+    },
+    {
+      "question": "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
+      "answer": "Makinece entity: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Kısa özet: https://arledscreen.com/llms.txt. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık) teklifle netleşir."
     }
   ]
 }
