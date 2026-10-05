@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 19 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 20 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -633,6 +633,24 @@
         "AI-ready standard",
         "ücretsiz kargo dahil",
         "stokta paket"
+      ]
+    },
+    {
+      "id": 20,
+      "q": "NXTIONSTAR küresel standart mı?",
+      "urls": [
+        "https://arledscreen.com/tr/nxtionstar/",
+        "https://arledscreen.com/entity.json"
+      ],
+      "mustSay": [
+        "ARLEDSCREEN",
+        "ürün markası",
+        "Gaziosmanpaşa"
+      ],
+      "mustNotSay": [
+        "Türkiye'nin en",
+        "ücretsiz kargo dahil",
+        "en büyüğ"
       ]
     }
   ],

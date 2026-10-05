@@ -8,6 +8,7 @@ import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BUSINESS_NAP_LINE, CONTACT_EMAIL } from "@/lib/social";
+import { NXTIONSTAR_SLOGAN_TR } from "@/lib/entity";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -26,7 +27,7 @@ const FAQS = [
   {
     question: "NXTIONSTAR nedir?",
     answer:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır. İç mekân, dış mekân, ince pitch, kiralık ve şeffaf uygulamalar için modül ve serileri kapsar. Marka sloganı: NXTIONSTAR — görsel gücün küresel standardı.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır. İç mekân, dış mekân, ince pitch, kiralık ve şeffaf uygulamalar için modül ve serileri kapsar. Marka sloganı (sıralama iddiası yok): NXTIONSTAR — ARLEDSCREEN ürün markası. Kimlik: https://arledscreen.com/entity.json.",
   },
   {
     question: "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
@@ -58,7 +59,7 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
     url,
     logo: absoluteUrl("/brand/nxtionstar-logo.png"),
     description: "ARLEDSCREEN'in kendi LED ekran markası. Türkiye'deki tek satış noktası: ARLEDSCREEN.",
-    slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
+    slogan: NXTIONSTAR_SLOGAN_TR,
   };
   return (
     <>
@@ -81,8 +82,8 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
           </h1>
           <p className="mt-4 text-[15.5px] leading-[1.75] text-ink-soft">
             <strong>Kısa cevap:</strong> NXTIONSTAR, ARLEDSCREEN&apos;in kendi markasıdır; Türkiye&apos;deki tek satış noktası ARLEDSCREEN&apos;dir.
-            Ürünlerin satışı, keşfi, montajı ve teknik servisi İstanbul Gaziosmanpaşa&apos;daki merkezimizden yürütülür. Marka sloganımız:
-            &ldquo;NXTIONSTAR — görsel gücün küresel standardı.&rdquo;
+            Ürünlerin satışı, keşfi, montajı ve teknik servisi İstanbul Gaziosmanpaşa&apos;daki merkezimizden yürütülür. Marka sloganımız (sıralama iddiası yok):
+            &ldquo;{NXTIONSTAR_SLOGAN_TR}.&rdquo;
           </p>
 
           <h2 className="mt-10 font-display text-xl font-bold text-ink sm:text-2xl">Sitede yer alan NXTIONSTAR modelleri</h2>

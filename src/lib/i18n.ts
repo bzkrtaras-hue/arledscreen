@@ -259,7 +259,7 @@ const en: Dictionary = {
     quote: "Request Quote",
   },
   brand: {
-    slogan: "NXTIONSTAR — the global standard in visual power.",
+    slogan: "NXTIONSTAR — ARLEDSCREEN product brand",
   },
   hero: {
     badge: "NXTIONSTAR — our own LED brand · Istanbul / Gaziosmanpaşa",
@@ -449,8 +449,8 @@ const en: Dictionary = {
   quote: {
     title: "Request a project quote",
     description:
-      "Three steps — contact, project geometry, and timeline. Our engineering team responds with a preliminary BOM.",
-    eyebrow: "Enterprise desk",
+      "Three steps — contact, project geometry, and timeline. Our Gaziosmanpaşa team responds with a preliminary BOM and written quote.",
+    eyebrow: "Written quote",
     steps: {
       contact: "Contact",
       project: "Project",
@@ -504,11 +504,11 @@ const en: Dictionary = {
     sending: "Sending…",
     successTitle: "Quote request received",
     successBody:
-      "Our enterprise desk will respond within one business day with a preliminary BOM and power topology outline.",
+      "We will respond from Gaziosmanpaşa within one business day with a preliminary BOM and power topology outline — firm price is a written quote.",
     backHome: "Back to home",
   },
   footer: {
-    tagline: "NXTIONSTAR LED displays · engineered and delivered by ARLEDSCREEN.",
+    tagline: "NXTIONSTAR LED displays · sold and installed by ARLEDSCREEN (Gaziosmanpaşa).",
     rights: "All rights reserved.",
     productLine: "Platform",
     engineering: "Survey, installation and technical service",
@@ -534,10 +534,10 @@ const en: Dictionary = {
         "Each card below shows a real NXTIONSTAR module with its pixel pitch and use. The datasheet and price are shared with your quote.",
     },
     quote: {
-      eyebrow: "Enterprise desk",
+      eyebrow: "Written quote",
       title: "Request a project quote",
       description:
-        "Three steps — contact, project geometry, and timeline. Our engineering team responds with a preliminary BOM.",
+        "Three steps — contact, project geometry, and timeline. Our Gaziosmanpaşa team responds with a preliminary BOM and written quote.",
     },
     hesaplayici: {
       eyebrow: "Live catalog tool",
@@ -561,7 +561,7 @@ const tr: Dictionary = {
     quote: "Teklif al",
   },
   brand: {
-    slogan: "NXTIONSTAR — görsel gücün küresel standardı",
+    slogan: "NXTIONSTAR — ARLEDSCREEN ürün markası",
   },
   hero: {
     badge: "NXTIONSTAR · ARLEDSCREEN’in kendi markası",
@@ -751,8 +751,8 @@ const tr: Dictionary = {
   quote: {
     title: "Proje teklifi talep edin",
     description:
-      "Üç adım: iletişim, proje ölçüleri ve zaman çizelgesi. Mühendislik ekibimiz ön malzeme listesi ile yanıtlar.",
-    eyebrow: "Kurumsal masa",
+      "Üç adım: iletişim, proje ölçüleri ve zaman çizelgesi. Gaziosmanpaşa ekibimiz ön malzeme listesi ve yazılı teklifle yanıtlar.",
+    eyebrow: "Yazılı teklif",
     steps: {
       contact: "İletişim",
       project: "Proje",
@@ -806,7 +806,7 @@ const tr: Dictionary = {
     sending: "Gönderiliyor…",
     successTitle: "Teklif talebiniz alındı",
     successBody:
-      "Kurumsal masamız bir iş günü içinde ön malzeme listesi ve güç özeti ile dönüş yapacaktır.",
+      "Gaziosmanpaşa ekibimiz bir iş günü içinde ön malzeme listesi ve güç özeti ile dönüş yapacaktır — nihai tutar yazılı teklifle kesinleşir.",
     backHome: "Ana sayfaya dön",
   },
   footer: {
@@ -836,10 +836,10 @@ const tr: Dictionary = {
         "Aşağıdaki görsel, modül seçeneklerine genel bir bakış sunar. Parlaklık, kabin ölçüsü ve koruma sınıfı gibi model bazlı değerler teklifle birlikte yazılı olarak iletilir.",
     },
     quote: {
-      eyebrow: "Kurumsal masa",
+      eyebrow: "Yazılı teklif",
       title: "Proje teklifi talep edin",
       description:
-        "Üç adım: iletişim, proje ölçüleri ve zaman çizelgesi. Mühendislik ekibimiz ön malzeme listesi ile yanıtlar.",
+        "Üç adım: iletişim, proje ölçüleri ve zaman çizelgesi. Gaziosmanpaşa ekibimiz ön malzeme listesi ve yazılı teklifle yanıtlar.",
     },
     hesaplayici: {
       eyebrow: "Canlı katalog aracı",
@@ -864,7 +864,7 @@ const ar: Dictionary = {
     quote: "طلب عرض سعر",
   },
   brand: {
-    slogan: "NXTIONSTAR — المعيار العالمي للقوة البصرية.",
+    slogan: "NXTIONSTAR — علامة منتجات ARLEDSCREEN",
   },
   sections: {
     ...en.sections,
@@ -951,7 +951,7 @@ const ru: Dictionary = {
     quote: "Запросить КП",
   },
   brand: {
-    slogan: "NXTIONSTAR — мировой стандарт визуальной силы.",
+    slogan: "NXTIONSTAR — продуктовый бренд ARLEDSCREEN",
   },
   sections: {
     ...en.sections,

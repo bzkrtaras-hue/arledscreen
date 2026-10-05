@@ -221,6 +221,13 @@ export const CHECKS = [
     expect: "html",
     mustInclude: ["catalog.json", "ai-shopping.json", "Gaziosmanpaşa"],
   },
+  {
+    id: "nxtionstar",
+    url: `${SITE}/tr/nxtionstar/`,
+    outRel: "tr/nxtionstar/index.html",
+    expect: "html",
+    mustInclude: ["ARLEDSCREEN ürün markası", "Gaziosmanpaşa", "entity.json"],
+  },
 ];
 
 function checkLocal(c) {

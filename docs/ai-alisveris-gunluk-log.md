@@ -61,6 +61,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 69 | 2026-10-05 | EN/AR/RU home meta honesty · üretici page · blind #17 led-modul · FB playbook | ✅ |
 | 70 | 2026-10-05 | seo-guides engineering-desk invent kill · rehber FAQ · blind #18 · IndexNow EN rehber · YT playbook | ✅ |
 | 71 | 2026-10-05 | AI-ready invent kill · yapay-zeka EN/TR · AR/RU meta honesty · blind #19 · smoke EN YZ | ✅ |
+| 72 | 2026-10-05 | Slogan küresel-standart invent kill · Enterprise/Kurumsal masa → yazılı teklif · blind #20 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -382,3 +383,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - AR/RU `seo.ts` about/hesaplayici/configurator/quote: Gaziosmanpaşa + catalog/ai-shopping honesty
 - Blind #19 «AI-ready LED ekran fiyatı?» — skor /57
 - IndexNow `/en/yapay-zeka/` · smoke yapay-zeka-en (18 checks) · cite-parity AI-ready guard
+
+## Gün 72 notları
+
+- **Slogan invent kill:** TR/EN/AR/RU + Org/Brand JSON-LD — “küresel standart / global standard” → `NXTIONSTAR — ARLEDSCREEN ürün markası`
+- Quote UI: Enterprise desk / Kurumsal masa → Written quote / Yazılı teklif + Gaziosmanpaşa
+- `NXTIONSTAR_SLOGAN_TR/EN` constants in `entity.ts`; ENTITY_FAQS honesty
+- Blind #20 «NXTIONSTAR küresel standart mı?» — skor /60
+- smoke nxtionstar · cite-parity slogan guard

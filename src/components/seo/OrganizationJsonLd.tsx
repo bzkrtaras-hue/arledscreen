@@ -1,4 +1,4 @@
-import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
+import { ENTITY_CITE_MEDIUM, NXTIONSTAR_SLOGAN_TR } from "@/lib/entity";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS,
@@ -60,7 +60,7 @@ export function OrganizationJsonLd() {
         url: SITE_URL,
         logo,
         image: logo,
-        slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
+        slogan: NXTIONSTAR_SLOGAN_TR,
         description: ENTITY_CITE_MEDIUM,
         disambiguatingDescription:
           "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.",

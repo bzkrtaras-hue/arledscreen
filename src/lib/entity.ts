@@ -16,6 +16,14 @@ import {
 } from "@/lib/social";
 import { SITE_URL } from "@/lib/site";
 
+/**
+ * Brand slogan — identity only. Do NOT invent ranking (“küresel standart”,
+ * “global standard”, “Türkiye’nin en…”). Keep in sync with i18n brand.slogan
+ * and Organization / Brand JSON-LD.
+ */
+export const NXTIONSTAR_SLOGAN_TR = "NXTIONSTAR — ARLEDSCREEN ürün markası";
+export const NXTIONSTAR_SLOGAN_EN = "NXTIONSTAR — ARLEDSCREEN product brand";
+
 /** One-line fact AI / directories should repeat independently. */
 export const ENTITY_CITE_ONE_LINER =
   "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.";
@@ -50,7 +58,7 @@ export const ENTITY_FAQS = [
   {
     question: "NXTIONSTAR nedir?",
     answer:
-      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir.",
+      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Slogan kimlik içindir — uydurma “küresel standart / global standard” sıralama iddiası yoktur.",
   },
   {
     question: "ARLEDSCREEN hangi hizmetleri sunar?",

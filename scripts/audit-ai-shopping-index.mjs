@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 19 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 20 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 19) errors.push(`blindTestPrompts must be 19 (got ${prompts.length})`);
+if (prompts.length !== 20) errors.push(`blindTestPrompts must be 20 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -225,6 +225,11 @@ if (!p18 || !/rehber/i.test(p18.q || "")) {
 const p19 = (doc.blindTestPrompts || []).find((p) => p.id === 19);
 if (!p19 || !/AI-ready|ai-ready/i.test(p19.q || "")) {
   errors.push("blindTestPrompts #19 must cover AI-ready LED invent");
+}
+// Day 72: NXTIONSTAR küresel standart invent
+const p20 = (doc.blindTestPrompts || []).find((p) => p.id === 20);
+if (!p20 || !/küresel|kuresel|global/i.test(p20.q || "")) {
+  errors.push("blindTestPrompts #20 must cover NXTIONSTAR küresel standart invent");
 }
 
 if (errors.length) {

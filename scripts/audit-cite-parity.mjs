@@ -277,6 +277,22 @@ for (const rel of ["out/tr/yapay-zeka/index.html", "out/en/yapay-zeka/index.html
     errors.push(`${rel} should cite Gaziosmanpaşa or ai-shopping.json`);
   }
 }
+// Day 72: slogan must not invent “küresel standart / global standard” ranking
+for (const rel of [
+  "out/tr/index.html",
+  "out/en/index.html",
+  "out/tr/nxtionstar/index.html",
+  "out/tr/about/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/küresel standard|global standard in visual|мировой стандарт|المعيار العالمي/i.test(html)) {
+    errors.push(`${rel} must not invent küresel/global standard slogan ranking`);
+  }
+  if (!/ARLEDSCREEN (ürün markası|product brand)|ürün markası/i.test(html) && rel.includes("nxtionstar")) {
+    errors.push(`${rel} should state NXTIONSTAR as ARLEDSCREEN ürün markası`);
+  }
+}
 
 if (errors.length) {
   console.error(`audit-cite-parity: FAIL (${errors.length})`);

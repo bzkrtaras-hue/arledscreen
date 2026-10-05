@@ -154,6 +154,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["ai-shopping.json", "catalog.json", "ücretsiz kargo yok"],
     mustNotSay: ["AI-ready standard", "ücretsiz kargo dahil", "stokta paket"],
   },
+  {
+    id: 20,
+    q: "NXTIONSTAR küresel standart mı?",
+    paths: ["/tr/nxtionstar/", "/entity.json"],
+    mustSay: ["ARLEDSCREEN", "ürün markası", "Gaziosmanpaşa"],
+    mustNotSay: ["Türkiye'nin en", "ücretsiz kargo dahil", "en büyüğ"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
