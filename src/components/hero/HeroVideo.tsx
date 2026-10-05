@@ -162,7 +162,7 @@ export function HeroVideo({
           <img
             key={`still-${clipKey(clip)}`}
             src={clip.poster}
-            alt=""
+            alt={clip.label}
             width={clip.width}
             height={clip.height}
             fetchPriority={i === 0 ? "high" : "low"}

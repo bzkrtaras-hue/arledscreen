@@ -34,6 +34,8 @@ function normalizePath(path: string): string {
 /**
  * Shared page Metadata builder — canonical, hreflang, OG, Twitter.
  * siteName / titles use ARLEDSCREEN only; NXTIONSTAR stays on product pages as sub-brand.
+ * Default hreflang pair is tr↔en only (true counterparts). Pass hreflangLocales to override;
+ * omit languages entirely by passing hreflangLocales: [].
  */
 export function buildPageMetadata({
   locale,
@@ -42,14 +44,14 @@ export function buildPageMetadata({
   description,
   keywords,
   canonicalLocale,
-  hreflangLocales,
+  hreflangLocales = ["tr", "en"],
 }: BuildPageMetadataInput): Metadata {
   const clean = normalizePath(path);
   const url = absoluteUrl(`/${canonicalLocale ?? locale}${clean}`);
   const all = buildAlternates(clean || "/");
-  const languages = hreflangLocales
+  const languages = hreflangLocales.length
     ? Object.fromEntries(Object.entries(all).filter(([l]) => hreflangLocales.includes(l as Locale)))
-    : all;
+    : undefined;
 
   return {
     title,
@@ -72,10 +74,14 @@ export function buildPageMetadata({
     },
     alternates: {
       canonical: url,
-      languages: {
-        ...languages,
-        "x-default": absoluteUrl(`/tr${clean}`),
-      },
+      ...(languages
+        ? {
+            languages: {
+              ...languages,
+              "x-default": absoluteUrl(`/tr${clean}`),
+            },
+          }
+        : {}),
     },
     metadataBase: new URL(SITE_URL),
   };

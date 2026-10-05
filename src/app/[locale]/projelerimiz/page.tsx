@@ -52,7 +52,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
       <section className="relative isolate overflow-hidden bg-navy">
         <OptImage
           src="/projects/outdoor-led-mapping.jpg"
-          alt=""
+          alt="Dış mekân LED ekran kalibrasyon haritası"
           fill
           priority
           sizes="100vw"

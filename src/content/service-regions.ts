@@ -1,4 +1,4 @@
-import { references } from "@/content/references";
+import { references, type Reference } from "@/content/references";
 import { displayCompany, getReferenceStats } from "@/content/trust";
 
 /**
@@ -6,6 +6,13 @@ import { displayCompany, getReferenceStats } from "@/content/trust";
  * Only provinces that appear in the owner reference sheet — no invented cities
  * or “81 il” claims. Content is derived from published project locations.
  */
+
+export interface RegionProject {
+  date: string;
+  label: string;
+  detail: string;
+  location: string;
+}
 
 export interface ServiceRegion {
   slug: string;
@@ -17,6 +24,8 @@ export interface ServiceRegion {
   locations: string[];
   /** Anonymised / public project labels for on-page proof */
   projectLabels: string[];
+  /** Published projects for this province only (date, size/P, district) */
+  projects: RegionProject[];
   projectCount: number;
   title: string;
   description: string;
@@ -65,38 +74,45 @@ const LOCATION_TO_PROVINCE: Record<string, string> = {
   Eskişehir: "Eskişehir",
 };
 
-function buildRegions(): ServiceRegion[] {
-  const byProvince = new Map<
-    string,
-    { locations: Set<string>; labels: string[] }
-  >();
+function refsForProvince(province: string): Reference[] {
+  return references.filter(
+    (r) => r.location && LOCATION_TO_PROVINCE[r.location] === province,
+  );
+}
 
-  for (const ref of references) {
-    if (!ref.location) continue;
-    const province = LOCATION_TO_PROVINCE[ref.location];
-    if (!province || !PROVINCE_META[province]) continue;
-    let bucket = byProvince.get(province);
-    if (!bucket) {
-      bucket = { locations: new Set(), labels: [] };
-      byProvince.set(province, bucket);
-    }
-    bucket.locations.add(ref.location);
-    const label = displayCompany(ref);
-    if (label && !bucket.labels.includes(label)) bucket.labels.push(label);
+function buildIntro(province: string, meta: { locative: string; isHq?: boolean }, projects: RegionProject[]): string {
+  const count = projects.length;
+  const sample = projects
+    .slice(0, 3)
+    .map((p) => {
+      const bits = [p.date, p.location, p.detail].filter(Boolean);
+      return bits.join(" · ");
+    })
+    .join("; ");
+
+  if (meta.isHq) {
+    return `${meta.locative} LED ekran satışı, keşif, montaj ve teknik servis Gaziosmanpaşa merkez ofisten yürütülür (Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245). Tem 2025 – Tem 2026 kayıtlarında bu il için ${count} yayımlanmış uygulama vardır${sample ? `: ${sample}` : ""}. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`;
   }
 
+  return `${meta.locative} yayımlanmış ${count} proje kaydı vardır${sample ? ` (${sample})` : ""}. Keşif ve montaj İstanbul Gaziosmanpaşa merkezden planlanır; bu sayfada yalnızca ${province} kayıtları listelenir. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`;
+}
+
+function buildRegions(): ServiceRegion[] {
   const regions: ServiceRegion[] = [];
   for (const [province, meta] of Object.entries(PROVINCE_META)) {
-    const bucket = byProvince.get(province);
-    if (!bucket || bucket.locations.size === 0) continue;
-    const locations = [...bucket.locations].sort((a, b) => a.localeCompare(b, "tr"));
-    const projectCount = references.filter(
-      (r) => r.location && LOCATION_TO_PROVINCE[r.location] === province,
-    ).length;
-    const hqNote = meta.isHq
-      ? " Merkez ofisimiz Gaziosmanpaşa'dadır (Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245)."
-      : " Merkezimiz İstanbul Gaziosmanpaşa'dadır; keşif ve montaj bu ile de aynı süreçle yürütülür.";
-    const locationList = locations.join(", ");
+    const refs = refsForProvince(province);
+    if (!refs.length) continue;
+
+    const locations = [...new Set(refs.map((r) => r.location))].sort((a, b) =>
+      a.localeCompare(b, "tr"),
+    );
+    const projects: RegionProject[] = refs.map((r) => ({
+      date: r.date,
+      label: displayCompany(r),
+      detail: r.detail,
+      location: r.location,
+    }));
+    const labels = [...new Set(projects.map((p) => p.label))];
 
     regions.push({
       slug: meta.slug,
@@ -104,16 +120,16 @@ function buildRegions(): ServiceRegion[] {
       locative: meta.locative,
       isHq: Boolean(meta.isHq),
       locations,
-      projectLabels: bucket.labels.slice(0, 12),
-      projectCount,
+      projectLabels: labels.slice(0, 12),
+      projects,
+      projectCount: projects.length,
       title: `${province} LED Ekran Satış, Montaj ve Servis | ARLEDSCREEN`,
-      description: `${province} LED ekran: keşif, montaj ve teknik servis. Kayıtlı konumlar: ${locationList}. ARLEDSCREEN — İstanbul merkezli.`,
+      description: `${province} LED ekran: keşif, montaj ve teknik servis. Kayıtlı konumlar: ${locations.join(", ")}. ARLEDSCREEN — İstanbul Gaziosmanpaşa merkezli.`,
       h1: `${province} LED ekran satış, montaj ve teknik servis`,
-      intro: `${meta.locative} iç ve dış mekân LED ekran satışı, keşif, montaj, devreye alma ve teknik servis sunuyoruz.${hqNote} Tem 2025 – Tem 2026 kayıtlarında bu il için ${projectCount} uygulama ve şu konumlar yer alır: ${locationList}. Nihai fiyat keşif ve yazılı teklifle kesinleşir; garanti kapsamı teklifte yazılır.`,
+      intro: buildIntro(province, meta, projects),
     });
   }
 
-  // HQ / commercial priority first, then alphabetical
   const priority = ["istanbul", "antalya", "bursa", "izmir", "eskisehir"];
   return regions.sort((a, b) => {
     const ai = priority.indexOf(a.slug);

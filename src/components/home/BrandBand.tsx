@@ -16,7 +16,7 @@ export function BrandBand({ locale }: { locale: Locale }) {
         <div className="relative isolate overflow-hidden rounded-[2rem] md:rounded-hero">
           <OptImage
             src="/projects/outdoor-led-mapping.jpg"
-            alt=""
+            alt={tr ? "Dış mekân LED ekran kalibrasyon haritası" : "Outdoor LED calibration mapping"}
             fill
             sizes="(min-width: 1280px) 1216px, 100vw"
             className="-z-10 scale-110 object-cover blur-[2px]"

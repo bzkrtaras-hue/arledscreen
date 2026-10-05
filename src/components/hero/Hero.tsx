@@ -9,6 +9,7 @@ interface HeroProps {
 /**
  * Homepage hero — landscape-first field clips so desktop shows the LED wall.
  * Lead: Eskişehir Sinan Polat Sigorta vitrin.
+ * H1 carries the local query; NXTIONSTAR slogan stays in the top bar only.
  */
 const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   {
@@ -56,16 +57,33 @@ export function Hero({ locale }: HeroProps) {
     <HeroVideo
       clips={clips}
       brand="ARLEDSCREEN"
-      headline={tr ? "LED EKRAN TEKNOLOJİ MERKEZİ" : "LED DISPLAY TECHNOLOGY CENTER"}
+      headline={
+        tr
+          ? "İstanbul LED ekran satış, montaj ve teknik servis"
+          : "Istanbul LED display sales, installation and technical service"
+      }
       subcopy={
         tr
-          ? "Projenin ilk keşif aşamasından tasarım, üretim, montaj ve satış sonrası teknik destek süreçlerine kadar tüm operasyonu uçtan uca yönetiyoruz. Merkezimiz İstanbul Gaziosmanpaşa’dadır; kurulum taleplerini Türkiye geneli alıyoruz."
-          : "We manage the full operation end to end — from the first survey through design, production, installation and after-sales technical support. Our headquarters is in Gaziosmanpaşa, Istanbul; we take installation requests across Turkey."
+          ? "Keşif, montaj ve teknik servis. Merkezimiz İstanbul Gaziosmanpaşa’dadır; kurulum taleplerini Türkiye geneli alıyoruz."
+          : "Survey, installation and technical service. Headquarters in Gaziosmanpaşa, Istanbul; we take installation requests across Turkey."
+      }
+      points={
+        tr
+          ? [
+              { title: "Keşif", body: "Ölçü, izleme mesafesi ve montaj yüzeyi yerinde netleşir." },
+              { title: "Montaj", body: "Kabin, kablolama, kalibrasyon ve devreye alma." },
+              { title: "Servis", body: "Kurulum sonrası teknik destek Gaziosmanpaşa’dan yürür." },
+            ]
+          : [
+              { title: "Survey", body: "Size, viewing distance and mounting surface confirmed on site." },
+              { title: "Install", body: "Cabinets, cabling, calibration and commissioning." },
+              { title: "Service", body: "After-sales support coordinated from Gaziosmanpaşa." },
+            ]
       }
       quoteHref={`/${locale}/quote/`}
-      quoteLabel={tr ? "Yazılı teklif alın" : "Request a written quote"}
-      secondaryHref={`/${locale}/products/`}
-      secondaryLabel={tr ? "Ürün serilerini inceleyin" : "Browse product lines"}
+      quoteLabel={tr ? "Teklif Al" : "Get a quote"}
+      secondaryHref={`/${locale}/hesaplayici/`}
+      secondaryLabel={tr ? "Fiyat hesapla" : "Price calculator"}
       labels={
         tr
           ? {

@@ -31,7 +31,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "LED ekran teknik servis",
         "ARLEDSCREEN",
       ],
-      h1: "İstanbul LED Ekran Teknoloji Merkezi.",
+      h1: "İstanbul LED ekran satış, montaj ve teknik servis",
       intro:
         "İç ve dış mekân LED ekran sistemlerinde ürün seçimi, keşif, montaj ve teknik servis.",
     },

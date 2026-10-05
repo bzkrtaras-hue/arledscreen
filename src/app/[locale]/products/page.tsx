@@ -28,12 +28,27 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "products");
+  // Full product catalog is TR-only; EN/AR/RU hubs are thin shells → noindex, no hreflang.
+  if (locale !== "tr") {
+    return {
+      ...buildPageMetadata({
+        locale,
+        path: "/products",
+        title: seo.title,
+        description: seo.description,
+        keywords: seo.keywords,
+        hreflangLocales: [],
+      }),
+      robots: { index: false, follow: true },
+    };
+  }
   return buildPageMetadata({
     locale,
     path: "/products",
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    hreflangLocales: [],
   });
 }
 

@@ -4,7 +4,6 @@ import {
   locales,
   isLocale,
   getLocaleDirection,
-  buildAlternates,
   type Locale,
 } from "@/lib/i18n";
 import { SiteShell } from "@/components/layout/SiteShell";
@@ -28,16 +27,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
-  const languages = buildAlternates("/");
-
+  // Page-level metadata owns hreflang (tr↔en only where content matches).
+  // Do not emit home alternates for every route — that invents false pairs.
+  // ar/ru are thin mirrors → keep out of the index.
+  const thinLocale = locale === "ar" || locale === "ru";
   return {
     alternates: {
-      canonical: absoluteUrl(`/${locale}`),
-      languages: {
-        ...languages,
-        "x-default": absoluteUrl("/tr/"),
-      },
+      canonical: absoluteUrl(`/${locale}/`),
     },
+    ...(thinLocale ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

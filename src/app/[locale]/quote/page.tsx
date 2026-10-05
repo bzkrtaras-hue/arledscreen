@@ -62,7 +62,7 @@ export default async function QuotePage({ params }: PageProps) {
             <div className="relative isolate mx-auto max-w-7xl overflow-hidden bg-navy md:rounded-[2rem]">
               <OptImage
                 src="/projects/neu-kutuphane.jpg"
-                alt=""
+                alt="Üniversite kütüphanesi LED sahne duvarı"
                 fill
                 priority
                 sizes="(min-width: 1280px) 1216px, 100vw"
