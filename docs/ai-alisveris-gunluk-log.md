@@ -14,7 +14,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 22 | 2026-10-05 | ProductCtaRow + `audit:product-ctas` | ✅ |
 | 23 | 2026-10-05 | Sitemap completeness (`audit:sitemap`) | ✅ |
 | 24 | 2026-10-05 | Bing/AI bot Allow + Host (`audit:robots`) | ✅ |
-| 25 | — | Kör test protokolü (AI shopping sorguları) | ⏳ |
+| 25 | 2026-10-05 | Kör test protokolü + `audit:blind-test` | ✅ |
 | 26 | — | (plan: llms/entity cite parity smoke) | ⏳ |
 | 27 | — | (plan: Merchant feed dry-run / priced panels) | ⏳ |
 | 28 | — | (plan: FAQ + commercial LinkCloud gaps) | ⏳ |
@@ -27,6 +27,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `scripts/audit-robots.mjs` postbuild’e bağlandı
 - `out/robots.txt`: 23 bot + `*` Allow `/`; Host + Sitemap OK
 - Canlı robots hâlâ eski Host şemalı olabilir → **PR #55 merge + CF redeploy**
+
+## Gün 25 notları
+
+- [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 12 prompt + skor kartı (0–3)
+- `scripts/audit-blind-test.mjs` — site readiness (entity NAP, P2.5=32.18, quote-only, llms intent)
+- Canlı tur sahibi işi; deploy sonrası skor hedefi tur1 ≥18/36
 
 ## Owner P0 (her gün hatırlatma)
 
