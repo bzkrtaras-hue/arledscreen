@@ -136,7 +136,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
       <div className="mx-auto flex max-w-[90rem] min-w-0 items-center gap-2 md:gap-2.5">
         <Link
           href={`/${locale}/`}
-          className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] -ml-0.5 min-h-11 min-w-0 shrink-0 gap-2 px-2.5 py-1.5 sm:min-h-12 sm:gap-2.5 sm:px-3"
+          className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] -ml-0.5 min-h-12 min-w-0 shrink-0 gap-2.5 px-3 py-1.5 sm:min-h-[3.35rem] sm:gap-3 sm:px-3.5"
           aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
         >
           <Image
@@ -144,17 +144,17 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             alt="ARLEDSCREEN"
             width={514}
             height={160}
-            className="h-8 w-auto max-w-[132px] object-contain sm:h-9 sm:max-w-[150px]"
+            className="h-11 w-auto max-w-[190px] object-contain sm:h-12 sm:max-w-[220px]"
             priority
             unoptimized
           />
-          <span className="h-6 w-px shrink-0 bg-ink/20 sm:h-7" aria-hidden />
+          <span className="h-7 w-px shrink-0 bg-ink/15 sm:h-8" aria-hidden />
           <Image
             src="/brand/nxtionstar-wordmark-header-478.webp"
             alt="NXTIONSTAR"
             width={478}
             height={137}
-            className="h-5 w-auto object-contain sm:h-6"
+            className="h-5 w-auto opacity-90 object-contain sm:h-6"
             unoptimized
           />
         </Link>
