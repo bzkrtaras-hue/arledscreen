@@ -23,6 +23,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] Home canonical = `https://arledscreen.com/tr/`; hreflang tr↔en + x-default
 - [x] `robots.txt` Allow + Sitemap line; AI crawlers allowed
 - [x] `sitemap.xml` `application/xml`, includes commercial + case study URLs
+- [x] Sitemap completeness guard — [`docs/sitemap-completeness.md`](./sitemap-completeness.md) (`npm run audit:sitemap`; 155 URLs)
 - [x] Live technical audit documented in [`docs/technical-seo-audit.md`](./technical-seo-audit.md) (canonical/hreflang/redirects/robots/sitemap PASS)
 - [ ] **Owner:** Google Search Console property verified; submit sitemap; review Pages / CWV / HTTPS
 - [x] Lab CWV / mobile smoke (home, fiyat, products, 1 case study) — [`docs/cwv-mobile-smoke.md`](./cwv-mobile-smoke.md) (perf 100, LCP ≤1.5s, CLS 0)

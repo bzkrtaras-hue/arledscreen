@@ -135,6 +135,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/nxtionstar/",
     "/about/aras-bozkurt/",
     "/rehber/piksel-araligi-secimi/",
+    "/rehber/led-ekran-fiyatlari/",
     "/rehber/led-tabela-mi-led-ekran-mi/",
     "/rehber/kiralik-mi-satin-alma/",
     "/rehber/gob-vs-smd/",
