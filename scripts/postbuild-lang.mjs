@@ -31,14 +31,20 @@ const sweep = (d) => {
 if (fs.existsSync("out")) sweep("out");
 console.log(`postbuild: blocked artefacts removed: ${removed}`);
 
-// Cloudflare Pages serves static assets BEFORE _redirects. A root index.html
-// (old meta-refresh stub) caused HTTP 200 at / instead of absolute 301 to
-// https://arledscreen.com/tr/. public/index.html is gone; this is a safety net.
-// llms.txt / robots.txt / sitemap.xml are untouched.
+// Cloudflare Pages serves static assets BEFORE _redirects / Functions.
+// A root index.html (old AR-LED meta-refresh stub) caused HTTP 200 at /
+// instead of absolute 301 to https://arledscreen.com/tr/. Never ship it.
+// llms.txt / robots.txt / sitemap.xml / _routes.json are untouched.
 const rootIndex = path.join("out", "index.html");
 if (fs.existsSync(rootIndex)) {
   fs.rmSync(rootIndex);
-  console.log("postbuild: removed out/index.html so Cloudflare can 301 / → https://arledscreen.com/tr/");
+  console.log("postbuild: removed out/index.html so apex can 301 → https://arledscreen.com/tr/");
 } else {
-  console.log("postbuild: out/index.html already absent (absolute 301 / → /tr/ ready)");
+  console.log("postbuild: out/index.html already absent (apex 301 ready)");
+}
+const routesJson = path.join("out", "_routes.json");
+if (!fs.existsSync(routesJson)) {
+  console.warn("postbuild: WARNING out/_routes.json missing — root Function may run on all paths");
+} else {
+  console.log("postbuild: out/_routes.json present (Function scoped to /)");
 }

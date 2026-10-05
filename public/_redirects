@@ -1,11 +1,12 @@
 # Host redirects: www → apex is handled in Cloudflare Rules (do not reverse here).
 # Ops tip: Cloudflare www rule MUST target https://arledscreen.com/tr/ (absolute)
 # so www skips the apex hop and never lands on a relative /tr/ Location.
-# Apex / also 301s with an absolute Location to the same TR home (canonical).
-# Do NOT ship out/index.html — public/index.html was removed; postbuild also
-# deletes any leftover so this rule is not shadowed by a 200 static asset.
+#
+# Apex `/` is owned by functions/index.js (absolute 301). Keep these static
+# rules as a belt-and-suspenders fallback when Functions are not invoked
+# (e.g. local static preview). Do NOT ship out/index.html — postbuild deletes it.
 
-# Language root → Turkish home (absolute 301 — no relative Location, no old root HTML)
+# Language root → Turkish home (absolute 301 — no old AR-LED HTML, no 404)
 / https://arledscreen.com/tr/ 301
 /index.html https://arledscreen.com/tr/ 301
 /index.htm https://arledscreen.com/tr/ 301
