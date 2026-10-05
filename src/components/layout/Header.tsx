@@ -109,14 +109,15 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         { href: "/tr/rehber/", label: "Rehber", dropdown: "guides" },
         { href: "/tr/blog/", label: "Blog" },
         { href: "/tr/about/", label: "Hakkımızda" },
-        { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
       ]
     : [
         { href: `/${locale}/products/`, label: dict.nav.products },
         { href: `/${locale}/rehber/`, label: "Guides" },
         { href: `/${locale}/about/`, label: dict.nav.about },
-        { href: `/${locale}/hesaplayici/`, label: dict.nav.priceCalculator },
       ];
+
+  const priceHref = `/${locale}/hesaplayici/`;
+  const priceLabel = tr ? "Fiyat hesapla" : dict.nav.priceCalculator;
 
   const isActive = (href: string) => {
     const clean = href.replace(/\/$/, "");
@@ -347,13 +348,23 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           </ul>
         </nav>
 
-        <Link
-          href={`/${locale}/quote/`}
-          className="liquid-glass-btn liquid-glass-btn--primary relative z-[2] ml-3 hidden min-h-11 shrink-0 gap-1.5 px-4 text-[13px] font-bold sm:inline-flex sm:min-h-12 xl:ml-4"
-        >
-          <FileText className="h-3.5 w-3.5" aria-hidden />
-          {dict.nav.quote}
-        </Link>
+        <div className="relative z-[2] ml-3 hidden shrink-0 items-center gap-1.5 sm:flex xl:ml-4">
+          <Link
+            href={priceHref}
+            aria-current={isActive(priceHref) ? "page" : undefined}
+            className="liquid-glass-btn liquid-glass-btn--primary min-h-11 gap-1.5 px-3.5 text-[13px] font-bold sm:min-h-12"
+          >
+            <Calculator className="h-3.5 w-3.5" aria-hidden />
+            {priceLabel}
+          </Link>
+          <Link
+            href={`/${locale}/quote/`}
+            className="liquid-glass-btn liquid-glass-btn--primary min-h-11 gap-1.5 px-3.5 text-[13px] font-bold sm:min-h-12"
+          >
+            <FileText className="h-3.5 w-3.5" aria-hidden />
+            {dict.nav.quote}
+          </Link>
+        </div>
 
         <button
           type="button"
@@ -551,6 +562,14 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                 })}
               </ul>
               <div className="mt-auto space-y-3 border-t border-[#d8e2ee] px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom,0px))] pt-5">
+                <Link
+                  href={priceHref}
+                  aria-current={isActive(priceHref) ? "page" : undefined}
+                  className="liquid-glass-btn liquid-glass-btn--primary min-h-12 w-full gap-2 text-[15px] font-semibold"
+                >
+                  <Calculator className="h-4 w-4" aria-hidden />
+                  {priceLabel}
+                </Link>
                 <Link
                   href={`/${locale}/quote/`}
                   className="liquid-glass-btn liquid-glass-btn--primary min-h-12 w-full gap-2 text-[15px] font-semibold"
