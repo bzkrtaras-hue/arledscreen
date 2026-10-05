@@ -454,6 +454,18 @@ if (
 ) {
   errors.push("blind prompt #32 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN");
 }
+const pBlind33 = PROMPTS.find((x) => x.id === 33);
+if (!pBlind33 || !/stokta|anında teslim|list fiyat/i.test(pBlind33.q)) {
+  errors.push("blind prompt #33 must cover quote-only stok/anında/list fiyat invent");
+}
+if (
+  pBlind33 &&
+  (!pBlind33.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind33.mustSay?.includes("yazılı teklif") ||
+    !pBlind33.mustSay?.includes("ai-shopping.json"))
+) {
+  errors.push("blind prompt #33 mustSay must include Gaziosmanpaşa + yazılı teklif + ai-shopping.json");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

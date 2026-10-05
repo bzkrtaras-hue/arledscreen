@@ -352,6 +352,111 @@
       "updatedAt": "2026-10-06T00:30:00Z"
     },
     {
+      "identifier": "urn:air:arledscreen.com:commerce:esnek-quote",
+      "displayName": "Esnek LED ekran (quote-only)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/esnek-led-ekran/",
+      "description": "Esnek LED quote-only. Stokta paket / anında teslim / list fiyatı yok — Gaziosmanpaşa keşif + yazılı teklif. Blind #33 / #14.",
+      "representativeQueries": [
+        "Esnek LED ekran fiyatı?",
+        "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
+        "esnek LED sipariş"
+      ],
+      "tags": ["esnek", "quote-only", "shopping", "GEO", "honesty"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T03:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:seffaf-quote",
+      "displayName": "Şeffaf LED ekran (quote-only)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/seffaf-led-ekran/",
+      "description": "Şeffaf LED quote-only. Stokta paket / anında teslim / list fiyatı yok. Blind #33 / #10.",
+      "representativeQueries": [
+        "Şeffaf / transparan LED fiyatı?",
+        "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
+        "vitrin şeffaf LED"
+      ],
+      "tags": ["seffaf", "quote-only", "shopping", "GEO", "honesty"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T03:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:poster-quote",
+      "displayName": "Poster / totem LED (quote-only)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/poster-led-ekran/",
+      "description": "Poster/totem LED quote-only. Stokta paket / anında teslim / list fiyatı yok. Blind #33 / #16.",
+      "representativeQueries": [
+        "Poster / totem LED fiyatı?",
+        "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
+        "totem LED ekran"
+      ],
+      "tags": ["poster", "quote-only", "shopping", "GEO", "honesty"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T03:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:kiralik-product",
+      "displayName": "Kiralık LED ekran ürün hub (quote-only)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/kiralik-led-ekran/",
+      "description": "Kiralık LED ürün hub quote-only. Stokta paket / anında teslim / list fiyatı yok — yazılı teklif. Blind #33 / #9.",
+      "representativeQueries": [
+        "Kiralık LED ekran fiyatı?",
+        "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
+        "etkinlik kiralık LED"
+      ],
+      "tags": ["kiralik", "quote-only", "shopping", "GEO", "honesty"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T03:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:novastar-quote",
+      "displayName": "NovaStar kontrol (quote-only)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/novastar-kontrolculer/",
+      "description": "NovaStar kontrol quote-only — list USD yok; extrasUsd.controlCard ≠ marka list SKU. Blind #13.",
+      "representativeQueries": [
+        "Huidu / NovaStar kontrol kartı fiyatı?",
+        "NovaStar kontrolcü teklif",
+        "NovaStar list fiyatı yok"
+      ],
+      "tags": ["novastar", "kontrol", "quote-only", "shopping"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T03:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:colorlight-quote",
+      "displayName": "Colorlight kontrol (quote-only)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/colorlight-kontrolculer/",
+      "description": "Colorlight kontrol quote-only — list USD yok. Blind #15 / #30.",
+      "representativeQueries": [
+        "Colorlight kontrol kartı fiyatı?",
+        "Colorlight kontrolcü teklif",
+        "Colorlight list fiyatı yok"
+      ],
+      "tags": ["colorlight", "kontrol", "quote-only", "shopping"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T03:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:proof:blog",
+      "displayName": "Blog — kayıtlı proje yazıları",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/blog/",
+      "description": "Spam / 81-il doorway yok. Kayıtlı proje anlatımı; ranking / daha çok tercih / tek ekip invent yok.",
+      "representativeQueries": [
+        "ARLEDSCREEN blog",
+        "LED ekran proje yazıları",
+        "Alanya White City LED"
+      ],
+      "tags": ["blog", "proof", "GEO", "anti-spam"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T03:00:00Z"
+    },
+    {
       "identifier": "urn:air:arledscreen.com:proof:case-studies",
       "displayName": "ARLEDSCREEN yayımlanmış LED proje kayıtları",
       "type": "text/html",
@@ -433,7 +538,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 32 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 33 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -441,12 +546,13 @@
         "AI-infrastructure ready LED nedir / ARLEDSCREEN satıyor mu?",
         "ARLEDSCREEN enterprise / aynı gün kurulum / keşiften servise all-in-one mı?",
         "ARLEDSCREEN LED ekran üreticisi / fabrika / OEM mi, yoksa bayi mi?",
-        "ARLEDSCREEN keşiften teslimata tek ekip mi / fabrika LED üreticisi mi?"
+        "ARLEDSCREEN keşiften teslimata tek ekip mi / fabrika LED üreticisi mi?",
+        "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?"
       ],
       "tags": ["shopping", "discovery", "GEO", "agents", "pricedPanels", "agentRules", "hasMerchantReturnPolicy"],
       "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts", "PricedPanels", "AgentRules", "ReturnPolicyHonesty"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T02:30:00Z"
+      "updatedAt": "2026-10-06T03:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

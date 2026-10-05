@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–84: ARD discovery prompt count must not drift behind blind suite
+// Day 74–85: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/32 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 32 kör test intent (not stale 17–31)");
+if (ardTxt && !/33 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 33 kör test intent (not stale 17–32)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[01]) kör test/i.test(ardTxt) && !/32 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–31 kör test without 32");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-2]) kör test/i.test(ardTxt) && !/33 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–32 kör test without 33");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -445,6 +445,34 @@ for (const rel of [
   const html = read("out/tr/fabrika-led-ekran/index.html");
   if (html && !/kullanım alanı|üretici değil|led-ekran-ureticisi/i.test(html)) {
     errors.push("out/tr/fabrika-led-ekran/ should disambiguate use-case vs üretici");
+  }
+}
+// Day 85: quote-only stok/anında/list + TrustFacts aynı-ekip residual
+for (const rel of [
+  "out/tr/products/esnek-led-ekran/index.html",
+  "out/tr/products/kiralik-led-ekran/index.html",
+  "out/tr/products/seffaf-led-ekran/index.html",
+  "out/tr/products/poster-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/yazılı teklif|ai-shopping\.json|quote-only/i.test(html)) {
+    errors.push(`${rel} should cite yazılı teklif / ai-shopping quote-only honesty`);
+  }
+  if (/stokta paket hazır|anında teslim garant|list fiyatı vardır/i.test(html)) {
+    errors.push(`${rel} must not invent stokta paket / anında teslim / list fiyat`);
+  }
+}
+{
+  const html = read("out/tr/index.html");
+  if (html && /aynı ekiple planlanır|Keşiften devreye alma aynı ekiple/i.test(html)) {
+    errors.push("out/tr/index.html must not invent aynı ekiple / keşiften-devreye aynı ekip");
+  }
+}
+{
+  const html = read("out/tr/blog/256x128-cm-ic-mekan-led-ekran/index.html");
+  if (html && /daha çok tercih ediliyor|en çok tercih/i.test(html)) {
+    errors.push("blog 256x128 must not invent preference ranking");
   }
 }
 

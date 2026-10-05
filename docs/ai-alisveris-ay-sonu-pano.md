@@ -39,10 +39,10 @@ npm run smoke:live
 
 | Endpoint | Hedef | 2026-10-05 | 2026-11-04 |
 |----------|-------|------------|------------|
-| `/entity.json` | 200 JSON | soft-404 until PR #55 merge (Day 84 tip ready) (HTTP 404) | |
-| `/entity-profiles.json` | 200 JSON packs | soft-404 until PR #55 merge (Day 84 tip ready) (PR #55) | |
-| `/catalog.json` | 200 JSON | soft-404 until PR #55 merge (Day 84 tip ready) (HTTP 404) | |
-| `/.well-known/ard.json` | 200 JSON | soft-404 until PR #55 merge (Day 84 tip ready) (HTTP 404) | |
+| `/entity.json` | 200 JSON | soft-404 until PR #55 merge (Day 85 tip ready) (HTTP 404) | |
+| `/entity-profiles.json` | 200 JSON packs | soft-404 until PR #55 merge (Day 85 tip ready) (PR #55) | |
+| `/catalog.json` | 200 JSON | soft-404 until PR #55 merge (Day 85 tip ready) (HTTP 404) | |
+| `/.well-known/ard.json` | 200 JSON | soft-404 until PR #55 merge (Day 85 tip ready) (HTTP 404) | |
 | `/llms.txt` | 200 + cite | 200 ama cite bölümü eski (PR #55 sonrası) | |
 | `/robots.txt` Host | bare hostname | eski Host/şema (PR #55 sonrası) | |
 | `/feeds/merchant-priced-panels.tsv` | 12 SKU | HTTP 404 | |
@@ -72,15 +72,15 @@ Playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
 ## D) Kör test skorları (canlı modeller)
 
-Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 32 prompt × 0–3 = /96  
+Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 33 prompt × 0–3 = /99  
 Skor kartı (sahip doldurur): [`docs/ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
 | Tur | Tarih | ChatGPT | Gemini | Perplexity | Bing Copilot | Ort. |
 |-----|-------|---------|--------|------------|--------------|------|
-| 1 (deploy sonrası) | | /96 | /96 | /96 | /96 | |
-| 2 (Point C sonrası) | ≤2026-11-04 | /96 | /96 | /96 | /96 | |
+| 1 (deploy sonrası) | | /99 | /99 | /99 | /99 | |
+| 2 (Point C sonrası) | ≤2026-11-04 | /99 | /99 | /99 | /99 | |
 
-Hedef: Tur 1 ≥ 48/96 · Tur 2 ≥ 72/96
+Hedef: Tur 1 ≥ 50/99 · Tur 2 ≥ 74/99
 
 ## E) Merchant / Shopping
 
@@ -95,7 +95,7 @@ Hedef: Tur 1 ≥ 48/96 · Tur 2 ≥ 72/96
 
 - [ ] `smoke:live` GREEN
 - [ ] Point C ≥ 5 bağımsız URL aynı cite
-- [ ] Kör tur 2 ortalama ≥ 72/96
+- [ ] Kör tur 2 ortalama ≥ 74/99
 - [ ] Merchant feed yayında (opsiyonel ama önerilir)
 - [ ] GSC “Missing offers.price” = 0
 

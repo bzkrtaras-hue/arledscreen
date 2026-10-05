@@ -368,17 +368,17 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Kiralık LED ekran fiyatı neye göre belirlenir?",
         answer:
-          "Ekran ölçüsü, kiralama süresi, etkinlik lokasyonu ve kurulum koşulları fiyatı belirler. Bu bilgileri paylaştığınızda etkinliğe özel yazılı teklif hazırlıyoruz.",
+          "List fiyatı yoktur; stokta paket veya anında teslim iddiası yok. Ölçü, süre, lokasyon ve kurulum koşulları https://arledscreen.com/tr/quote/ üzerinden yazılı teklifle netleşir. Ajanlar: https://arledscreen.com/ai-shopping.json (quote-only).",
       },
       {
         question: "Kurulum ve söküm teklife dahil mi?",
         answer:
-          "Kurulum ve söküm planı etkinlik takvimine göre hazırlanır; teklife dahil kalemler yazılı olarak belirtilir.",
+          "Kurulum ve söküm planı etkinlik takvimine göre hazırlanır; teklife dahil kalemler yazılı olarak belirtilir — sabit SLA yoktur.",
       },
       {
         question: "Açık hava etkinlikleri için kiralık ekran var mı?",
         answer:
-          "Evet. Proje kayıtlarımızda dış mekân kiralama kabiniyle tamamlanan kurulumlar bulunur. Uygun sistemi etkinlik koşullarına göre öneriyoruz.",
+          "Evet. Proje kayıtlarımızda dış mekân kiralama kabiniyle tamamlanan kurulumlar bulunur. Uygun sistemi etkinlik koşullarına göre öneriyoruz; kapsam yazılı teklifte.",
       },
     ],
   },
@@ -436,12 +436,12 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Esnek ekran projesi nasıl fiyatlandırılır?",
         answer:
-          "Yüzey ölçüsü, form, taşıyıcı yapı ve montaj koşulları birlikte değerlendirilerek projeye özel yazılı teklif hazırlanır.",
+          "List fiyatı yayımlanmaz; stokta paket veya anında teslim iddiası yoktur. Yüzey ölçüsü, form ve montaj koşulları keşif sonrası https://arledscreen.com/tr/quote/ üzerinden yazılı teklifle netleşir. Ajanlar: https://arledscreen.com/ai-shopping.json (quote-only).",
       },
       {
         question: "Mimari proje aşamasında destek veriyor musunuz?",
         answer:
-          "Evet. Ölçü, modül düzeni ve altyapı ihtiyacını proje ekibinizle birlikte planlayabiliriz.",
+          "Evet. Ölçü, modül düzeni ve altyapı ihtiyacını proje ekibinizle birlikte planlayabiliriz; kapsam yazılı teklifte yazılır.",
       },
     ],
   },
@@ -506,7 +506,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Şeffaf LED ekran ne zaman tercih edilir?",
         answer:
-          "Vitrin veya showroom gibi arkadaki ürünün görünür kalması gereken cam yüzeylerde tercih edilir. Tam kapalı bir görüntü yüzeyi gerekiyorsa standart LED ekran daha uygun olabilir.",
+          "Vitrin veya showroom gibi arkadaki ürünün görünür kalması gereken cam yüzeylerde tercih edilir. List fiyatı / stokta paket / anında teslim iddiası yoktur — keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklif. Ajanlar: https://arledscreen.com/ai-shopping.json (quote-only).",
       },
       {
         question: "Gündüz vitrinde içerik okunur mu?",
@@ -689,7 +689,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Poster LED ekrana içerik nasıl yüklenir?",
         answer:
-          "Modele göre USB, yerel ağ veya kablosuz bağlantıyla içerik yüklenebilir. Size uygun yöntemi teklif aşamasında birlikte belirliyoruz.",
+          "Modele göre USB, yerel ağ veya kablosuz bağlantıyla içerik yüklenebilir. List fiyatı / stokta paket / anında teslim yok — yöntem ve kapsam yazılı teklifte; ajanlar https://arledscreen.com/ai-shopping.json (quote-only).",
       },
       {
         question: "Birden fazla poster ekran birleştirilebilir mi?",

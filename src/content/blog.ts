@@ -43,7 +43,7 @@ export const BLOG_POSTS: BlogPost[] = [
     sections: [
       {
         p: [
-          "Nisan 2026'da paylaştığımız bu uygulamada, iç mekânda kullanılmak üzere 256 × 128 cm ölçüsünde bir LED ekran kurduk. Ekran, salon duvarına sabitlenerek klasik bir televizyonun yerini alacak şekilde konumlandırıldı ve günlük yayın izlemeden sunuma kadar farklı içerikler için kullanılabiliyor. Bu tür uygulamalar, ev ve ofislerde geniş ekran ihtiyacını tek ve kesintisiz bir yüzeyle karşılamak isteyenler için giderek daha çok tercih ediliyor.",
+          "Nisan 2026'da paylaştığımız bu uygulamada, iç mekânda kullanılmak üzere 256 × 128 cm ölçüsünde bir LED ekran kurduk. Ekran, salon duvarına sabitlenerek klasik bir televizyonun yerini alacak şekilde konumlandırıldı ve günlük yayın izlemeden sunuma kadar farklı içerikler için kullanılabiliyor. Bu tür uygulamalar, ev ve ofislerde çerçeveye yakın geniş bir görüntü yüzeyi ihtiyacı için kullanılır — pazar tercih sıralaması iddiası yoktur.",
         ],
       },
       {

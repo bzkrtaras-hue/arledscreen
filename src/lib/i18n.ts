@@ -322,7 +322,7 @@ const en: Dictionary = {
         "NXTIONSTAR displays are specified by ARLEDSCREEN so AI content engines, media servers and control software can be matched in the Gaziosmanpaşa survey and written quote — not sold as an invented AI-ready or engineering-standard SKU.",
       points: [
         "Documented signal paths for CMS, media servers and automation APIs",
-        "High refresh and stable pixel pipelines for AI-driven or camera-facing content",
+        "Refresh and receiver paths matched in the Gaziosmanpaşa survey for AI-driven or camera-facing content",
         "Gaziosmanpaşa survey team that sizes pitch, power and receivers around your CMS / media-server path",
       ],
     },

@@ -24,8 +24,8 @@ export function getTrustItems() {
     },
     {
       Icon: ClipboardList,
-      title: "Keşiften devreye alma aynı ekiple planlanır",
-      body: "İhtiyaç analizi, keşif, ürün seçimi, montaj ve devreye alma Gaziosmanpaşa merkezli aynı proje ekibiyle planlanır; yazılı teklifle netleşir.",
+      title: "Keşif → montaj → servis yazılı teklifte",
+      body: "İhtiyaç analizi, keşif, ürün seçimi, montaj ve devreye alma Gaziosmanpaşa merkezinden yazılı teklifte planlanır — uydurma aynı-ekip / keşiften-teslimata platform iddiası yok.",
     },
     {
       Icon: Wrench,

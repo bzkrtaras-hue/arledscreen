@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/32 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 32 kör test intent");
+if (!/33 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 33 kör test intent");
 }
-if (/(?:2[0-9]|3[01]) kör test/i.test(ard) && !/32 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–31 kör test without 32");
+if (/(?:2[0-9]|3[0-2]) kör test/i.test(ard) && !/33 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–32 kör test without 33");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -305,6 +305,14 @@ if (!p32 || !/tek ekip|keşiften teslimata|fabrika LED/i.test(p32.q || "")) {
 }
 if (!/tek ekip|keşiften teslimata/i.test(rulesJson)) {
   errors.push("agentRules must forbid tek ekip / keşiften teslimata invent");
+}
+// Day 85: quote-only stok / anında teslim / list fiyat invent
+const p33 = (doc.blindTestPrompts || []).find((p) => p.id === 33);
+if (!p33 || !/stokta|anında teslim|list fiyat/i.test(p33.q || "")) {
+  errors.push("blindTestPrompts #33 must cover quote-only stok/anında/list fiyat invent");
+}
+if (!/stokta paket|anında teslim|list fiyatı/i.test(rulesJson)) {
+  errors.push("agentRules must forbid stokta paket / anında teslim / list fiyat invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

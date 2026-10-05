@@ -74,6 +74,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 82 | 2026-10-05 | enterprise/aynı-gün #30 · hizmetler/products ARD · skor /90 | ✅ |
 | 83 | 2026-10-05 | üretici/fabrika/OEM #31 · satisi/montaj/servis ARD · skor /93 | ✅ |
 | 84 | 2026-10-05 | tek ekip/fabrika use-case #32 · p2-5/galeri/bolgeler ARD · skor /96 | ✅ |
+| 85 | 2026-10-05 | quote-only stok/anında #33 · TrustFacts aynı-ekip · esnek/seffaf/poster ARD · skor /99 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -498,3 +499,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - blog tek ekip / tüm süreç invent · fabrika use-case disambiguation · outdoor nit residual
 - ARD: fabrika + p2-5 + kiralama + galeri + bolgeler + fiyat-hesap · IndexNow fabrika/kiralama
 - skor hedef Tur 1 ≥ 48/96 · Tur 2 ≥ 72/96
+
+## Gün 85 notları
+
+- Blind #33 «esnek/şeffaf/poster/kiralık stokta mı / anında teslim / list fiyatı?» — skor **/99**; ARD **33 kör test**
+- TrustFacts aynı-ekip residual · blog tercih sıralaması · esnek/kiralık/şeffaf/poster FAQ invent
+- ARD: esnek + seffaf + poster + kiralik ürün + novastar + colorlight + blog · agentRules stok/anında
+- skor hedef Tur 1 ≥ 50/99 · Tur 2 ≥ 74/99

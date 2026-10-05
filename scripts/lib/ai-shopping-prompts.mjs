@@ -245,6 +245,20 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
     mustNotSay: ["tek ekip garanti", "keşiften teslimata platform", "fabrika üreticisiyiz", "ücretsiz kargo dahil"],
   },
+  {
+    id: 33,
+    q: "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
+    paths: [
+      "/tr/products/esnek-led-ekran/",
+      "/tr/products/seffaf-led-ekran/",
+      "/tr/products/poster-led-ekran/",
+      "/tr/products/kiralik-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ai-shopping.json"],
+    mustNotSay: ["stokta paket", "anında teslim", "list fiyatı var", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
