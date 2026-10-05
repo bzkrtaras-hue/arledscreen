@@ -21,7 +21,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] City pages only for published provinces (`/tr/bolgeler/…`); Ankara/Ordu not fabricated
 - [x] `/` → `/tr/` 301; www → apex; http → https
 - [x] Home canonical = `https://arledscreen.com/tr/`; hreflang tr↔en + x-default
-- [x] `robots.txt` Allow + Sitemap line; AI crawlers allowed
+- [x] `robots.txt` Allow + Sitemap + bare `Host: arledscreen.com`; Bing/AI bots Explicit Allow — [`docs/robots-ai-bots.md`](./robots-ai-bots.md) (`npm run audit:robots`)
 - [x] `sitemap.xml` `application/xml`, includes commercial + case study URLs
 - [x] Sitemap completeness guard — [`docs/sitemap-completeness.md`](./sitemap-completeness.md) (`npm run audit:sitemap`; 155 URLs)
 - [x] Live technical audit documented in [`docs/technical-seo-audit.md`](./technical-seo-audit.md) (canonical/hreflang/redirects/robots/sitemap PASS)
