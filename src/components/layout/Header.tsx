@@ -131,11 +131,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
   const group = groups[active] ?? groups[0];
 
   return (
-    <header className="px-3 pb-2.5 pt-1.5 sm:px-4 md:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-7xl min-w-0 items-center gap-2.5 md:gap-3">
+    <header className="pl-2 pr-3 pb-2.5 pt-1.5 sm:pl-3 sm:pr-4 md:pl-4 md:pr-6 lg:pl-5 lg:pr-8">
+      <div className="mx-auto flex max-w-[90rem] min-w-0 items-center gap-2 md:gap-2.5">
         <Link
           href={`/${locale}/`}
-          className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] min-h-14 min-w-0 shrink-0 gap-2.5 px-3.5 py-2 sm:min-h-[3.75rem] sm:gap-3 sm:px-4"
+          className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] -ml-0.5 min-h-11 min-w-0 shrink-0 gap-2 px-2.5 py-1.5 sm:min-h-12 sm:gap-2.5 sm:px-3"
           aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
         >
           <Image
@@ -143,17 +143,17 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             alt="ARLEDSCREEN"
             width={514}
             height={160}
-            className="h-11 w-auto max-w-[168px] object-contain sm:h-12 sm:max-w-[200px]"
+            className="h-8 w-auto max-w-[132px] object-contain sm:h-9 sm:max-w-[150px]"
             priority
             unoptimized
           />
-          <span className="h-8 w-px shrink-0 bg-ink/20 sm:h-9" aria-hidden />
+          <span className="h-6 w-px shrink-0 bg-ink/20 sm:h-7" aria-hidden />
           <Image
             src="/brand/nxtionstar-wordmark-header-478.webp"
             alt="NXTIONSTAR"
             width={478}
             height={137}
-            className="h-7 w-auto object-contain sm:h-8"
+            className="h-5 w-auto object-contain sm:h-6"
             unoptimized
           />
         </Link>
@@ -349,9 +349,9 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
         <Link
           href={`/${locale}/quote/`}
-          className="liquid-glass-btn liquid-glass-btn--primary relative z-[2] ml-auto hidden min-h-[3.35rem] shrink-0 gap-2 px-6 text-[15px] font-bold sm:inline-flex sm:min-h-14 xl:ml-0"
+          className="liquid-glass-btn liquid-glass-btn--primary relative z-[2] ml-3 hidden min-h-11 shrink-0 gap-1.5 px-4 text-[13px] font-bold sm:inline-flex sm:min-h-12 xl:ml-4"
         >
-          <FileText className="h-4 w-4" aria-hidden />
+          <FileText className="h-3.5 w-3.5" aria-hidden />
           {dict.nav.quote}
         </Link>
 
