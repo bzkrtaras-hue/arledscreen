@@ -1,6 +1,7 @@
 import type { ProductCategory as SeriesCategory } from "@/types/product";
 import type { ProjectTypeId } from "@/lib/whatsapp";
 import { references, type Reference } from "@/content/references";
+import { CONTROL_GROUPS } from "@/content/control-products";
 
 /**
  * Product groups (category landing pages under /tr/products/<slug>/).
@@ -63,6 +64,8 @@ export interface ProductGroup {
   whatsapp: string;
   refFilter?: (r: Reference) => boolean;
   faqs: CategoryFaq[];
+  /** Optional manufacturer brand for schema / chips (control systems). */
+  brandName?: string;
 }
 
 /** Shared GOB / COB / SMD comparison shots for fine-pitch family pages */
@@ -625,21 +628,25 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "Ön ve arka yüzü görünen SMD LED modül",
     intro: [
       "Bir LED ekran; LED modüller, bu modülleri taşıyan kabinler, görüntüyü modüllere dağıtan kontrol kartları ve güç kaynaklarından oluşur. Görüntü işlemci ise bilgisayar veya yayın kaynağından gelen sinyali ekran çözünürlüğüne uyarlar.",
-      "Yeni bir proje için tüm bileşenleri birlikte planlayabilir, mevcut bir ekranda arızalanan parça için uyumlu modül ve kart tedarik edebiliriz. Uyumluluk, ekranın etiket bilgileri ve modül ölçüsü incelenerek kontrol edilir.",
+      "Kontrol tarafında Huidu, NovaStar ve Colorlight markalarını proje ihtiyacına göre seçiyoruz; her markanın kendi ürün sayfasında modeller ve teknik özellikler yer alır. Uyumluluk, ekranın etiket bilgileri ve modül ölçüsü incelenerek kontrol edilir.",
     ],
     highlights: [
-      "Yeni proje için eksiksiz bileşen planı",
-      "Mevcut ekranlar için uyumlu yedek parça",
-      "Kontrol sistemi kurulumu ve yapılandırma",
-      "Atölye ve sahada teknik servis",
+      "Huidu asenkron kartlar — Wi‑Fi / USB içerik",
+      "NovaStar VX, Taurus ve MCTRL kontrolcüler",
+      "Colorlight X / VX işlemci ve S gönderici",
+      "Kurulum, haritalama ve teknik servis",
     ],
     uses: [
       { title: "Yedek modül", body: "Arızalı veya renk farkı oluşan modüllerin değişimi." },
-      { title: "Kontrol sistemi", body: "Alıcı / gönderici kart ve görüntü işlemci kurulumu." },
+      { title: "Kontrol sistemi", body: "Huidu, NovaStar veya Colorlight kurulum ve yapılandırma." },
       { title: "Ekran büyütme", body: "Mevcut ekrana uyumlu modüllerle yüzey ekleme." },
       { title: "Entegratörler", body: "Kendi projesini kuran firmalara bileşen tedariki." },
     ],
-    pitches: [],
+    pitches: [
+      { label: "Huidu", note: "Asenkron kontrol kartları" },
+      { label: "NovaStar", note: "VX / Taurus / MCTRL" },
+      { label: "Colorlight", note: "X / VX / S serisi" },
+    ],
     seriesCategories: [],
     guide: { href: "/tr/rehber/led-ekran/", label: "LED ekran rehberi" },
     projectType: "servis",
@@ -651,9 +658,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
           "Modülün arkasındaki etiket bilgisini, ölçüsünü ve fotoğrafını paylaşmanız yeterli. Uyumlu seçeneği kontrol edip size dönüyoruz.",
       },
       {
-        question: "Alıcı kart ile gönderici kart ne işe yarar?",
+        question: "Hangi kontrol markasını seçmeliyim?",
         answer:
-          "Gönderici kart, kaynaktan gelen görüntüyü ekrana iletir; kabinlerin içindeki alıcı kartlar bu veriyi kendi bölümlerindeki modüllere dağıtır.",
+          "Asenkron tabela ve Wi‑Fi güncellemede sıkça Huidu; yüksek piksel yükü ve sahne/senkron işlerde NovaStar veya Colorlight öne çıkar. Keşifte kaynak tipi ve ekran ölçüsüne göre netleştiririz.",
       },
       {
         question: "Kurulum ve yapılandırma desteği veriyor musunuz?",
@@ -662,6 +669,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       },
     ],
   },
+  ...CONTROL_GROUPS,
 ];
 
 // Keep a stable, family-ordered list for menus, grids and the sitemap.

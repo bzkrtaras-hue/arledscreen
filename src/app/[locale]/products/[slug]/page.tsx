@@ -78,7 +78,10 @@ export default async function ProductGroupPage({ params }: PageProps) {
   const prices = pricesForGroup(g.slug);
   const models = modelsForGroup(g.slug);
   const quickPrice = priceAnswer(g.name, prices);
-  const COMPARE_KEYS: SpecKey[] = ["pitch", "moduleSize", "matrix", "pixels", "density", "ledType", "protection", "service", "voltage", "brightness", "refresh", "scan", "power", "viewingAngle", "current", "viewDistance"];
+  const isControlGroup = models.some((m) => m.kind === "kontrol") || Boolean(g.brandName);
+  const COMPARE_KEYS: SpecKey[] = isControlGroup
+    ? ["ledType", "loadCapacity", "ethernetPorts", "videoInputs", "media", "software", "power", "control"]
+    : ["pitch", "moduleSize", "matrix", "pixels", "density", "ledType", "protection", "service", "voltage", "brightness", "refresh", "scan", "power", "viewingAngle", "current", "viewDistance"];
   // Keep a column only when at least half of the models have a value (never a column of dashes).
   const compareCols = COMPARE_KEYS.filter((c) => models.filter((m) => m.specs[c]).length * 2 >= models.length);
 
@@ -101,7 +104,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
     url,
     image: absoluteUrl(g.image),
     provider: { "@id": `${SITE_URL}/#organization` },
-    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    brand: { "@type": "Brand", name: g.brandName ?? "NXTIONSTAR" },
     areaServed: { "@type": "Country", name: "Türkiye" },
     ...(prices.length
       ? {
@@ -260,36 +263,88 @@ export default async function ProductGroupPage({ params }: PageProps) {
             <>
               <SectionHeading
                 align="left"
-                eyebrow="NXTIONSTAR modelleri"
-                title={`${g.name} modelleri`}
-                description="Her modelin teknik özelliklerini, görsellerini ve fiyat bilgisini kendi sayfasında bulabilirsiniz. Bir model seçerek detaylara ulaşın."
+                eyebrow={isControlGroup ? `${g.brandName ?? "Kontrol"} modelleri` : "NXTIONSTAR modelleri"}
+                title={`${g.name} — öne çıkan modeller`}
+                description={
+                  isControlGroup
+                    ? "Özellikler üretici föylerinden alınmıştır. İlk bakışta yükleme kapasitesi, portlar ve yazılımı karşılaştırın; detay için modele tıklayın."
+                    : "Her modelin teknik özelliklerini, görsellerini ve fiyat bilgisini kendi sayfasında bulabilirsiniz. Bir model seçerek detaylara ulaşın."
+                }
               />
-              <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+              <ul
+                className={
+                  isControlGroup
+                    ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+                    : "grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7"
+                }
+              >
                 {models.map((m, i) => (
                   <FadeIn as="li" key={m.group + m.slug} delay={i * 0.05}>
                     <Link
                       href={modelPath(m)}
-                      className="group flex h-full min-h-28 flex-col items-center justify-center rounded-2xl px-3 py-5 text-center transition hover:-translate-y-0.5 hover:ring-2 hover:ring-cyan/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan glass-card"
+                      className={
+                        isControlGroup
+                          ? "group flex h-full flex-col overflow-hidden rounded-2xl transition hover:-translate-y-0.5 hover:ring-2 hover:ring-cyan/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan glass-card"
+                          : "group flex h-full min-h-28 flex-col items-center justify-center rounded-2xl px-3 py-5 text-center transition hover:-translate-y-0.5 hover:ring-2 hover:ring-cyan/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan glass-card"
+                      }
                     >
-                      <span className="font-display text-xl font-extrabold text-cyan">{m.chip}</span>
-                      <span className="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">
-                        {m.kind === "dis" ? "Dış mekân" : m.kind === "esnek" ? "Esnek" : m.kind === "gob" ? "GOB" : "İç mekân"}
-                      </span>
-                      <span className="mt-2 inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-soft group-hover:text-cyan">
-                        Teknik özellikler <ArrowRight className="h-3 w-3" aria-hidden />
-                      </span>
+                      {isControlGroup ? (
+                        <>
+                          <div className="relative aspect-[16/10] w-full bg-surface">
+                            <OptImage
+                              src={m.image}
+                              alt={m.imageAlt}
+                              fill
+                              sizes="(max-width: 1024px) 50vw, 33vw"
+                              className="object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+                            />
+                          </div>
+                          <div className="flex flex-1 flex-col px-4 py-4 text-left">
+                            <span className="font-display text-lg font-extrabold text-cyan">{m.chip}</span>
+                            <span className="mt-1 text-sm font-semibold text-ink">{m.name}</span>
+                            {m.specs.loadCapacity ? (
+                              <span className="mt-2 text-[13px] leading-snug text-ink-muted">
+                                {m.specs.loadCapacity.value}
+                              </span>
+                            ) : null}
+                            <span className="mt-3 inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-soft group-hover:text-cyan">
+                              Teknik özellikler <ArrowRight className="h-3 w-3" aria-hidden />
+                            </span>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <span className="font-display text-xl font-extrabold text-cyan">{m.chip}</span>
+                          <span className="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-ink-muted">
+                            {m.kind === "dis" ? "Dış mekân" : m.kind === "esnek" ? "Esnek" : m.kind === "gob" ? "GOB" : "İç mekân"}
+                          </span>
+                          <span className="mt-2 inline-flex items-center gap-1 text-[12.5px] font-semibold text-ink-soft group-hover:text-cyan">
+                            Teknik özellikler <ArrowRight className="h-3 w-3" aria-hidden />
+                          </span>
+                        </>
+                      )}
                     </Link>
                   </FadeIn>
                 ))}
               </ul>
               <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-                <Link
-                  href="/tr/hesaplayici/"
-                  className="btn-soft inline-flex min-h-12 items-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
-                >
-                  <Calculator className="h-4 w-4" aria-hidden />
-                  Ölçünüze göre yaklaşık maliyeti hesaplayın
-                </Link>
+                {isControlGroup ? (
+                  <Link
+                    href={quoteHref}
+                    className="btn-soft inline-flex min-h-12 items-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
+                  >
+                    <FileText className="h-4 w-4" aria-hidden />
+                    Bu kontrol sistemi için teklif al
+                  </Link>
+                ) : (
+                  <Link
+                    href="/tr/hesaplayici/"
+                    className="btn-soft inline-flex min-h-12 items-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
+                  >
+                    <Calculator className="h-4 w-4" aria-hidden />
+                    Ölçünüze göre yaklaşık maliyeti hesaplayın
+                  </Link>
+                )}
                 <p className="text-sm text-ink-muted">Kesin fiyat; keşif ve malzeme listesiyle birlikte yazılı teklifte paylaşılır.</p>
               </div>
             </>

@@ -35,6 +35,7 @@ const KIND_CATEGORY: Record<ModelKind, ProductCategory> = {
   ic: "indoor",
   dis: "outdoor",
   esnek: "flexible",
+  kontrol: "indoor",
 };
 
 const KIND_SERIES_TR: Record<ModelKind, string> = {
@@ -42,6 +43,7 @@ const KIND_SERIES_TR: Record<ModelKind, string> = {
   ic: "İç mekân",
   dis: "Dış mekân",
   esnek: "Esnek",
+  kontrol: "Kontrol sistemi",
 };
 
 const KIND_SERIES_EN: Record<ModelKind, string> = {
@@ -49,11 +51,29 @@ const KIND_SERIES_EN: Record<ModelKind, string> = {
   ic: "Indoor",
   dis: "Outdoor",
   esnek: "Flexible",
+  kontrol: "Control system",
 };
 
 const pitchOf = (m: LedModel) => Number.parseFloat(m.chip.replace(/^P/, "").replace(",", "."));
 
 function fromModel(m: LedModel): Product {
+  if (m.kind === "kontrol") {
+    return {
+      id: `${m.group}-${m.slug}`,
+      slug: `${m.group}-${m.slug}`,
+      name: m.name,
+      series: m.brandName ?? KIND_SERIES_EN.kontrol,
+      category: "indoor",
+      shortDescription: m.note,
+      description: m.note,
+      specs: { pixelPitchMm: 0, technology: "SMD" },
+      highlights: [],
+      image: m.image,
+      imageAlt: m.imageAlt,
+      href: modelPath(m),
+      imageGradient: "from-slate-50 via-white to-cyan-50",
+    };
+  }
   const pitch = pitchOf(m);
   const front = m.chip.includes("önden servis");
   const enKind = m.kind === "dis" && front ? "front-service outdoor" : KIND_SERIES_EN[m.kind];

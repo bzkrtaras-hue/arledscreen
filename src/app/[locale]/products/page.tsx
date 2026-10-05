@@ -137,7 +137,7 @@ export default async function ProductsPage({ params }: PageProps) {
                   <li><span className="font-semibold">GOB:</span> {CANONICAL_LINEUP.gob.pitches.join(", ")}</li>
                   <li><span className="font-semibold">İnce pitch:</span> {CANONICAL_LINEUP.finePitch.pitches.join(", ")}</li>
                   <li><span className="font-semibold">Esnek:</span> {CANONICAL_LINEUP.flexible.pitches.join(", ")}</li>
-                  <li><span className="font-semibold">Diğer:</span> şeffaf, kiralık, poster/totem, menuboard, kiosk, dijital ekran (üst küme), modül ve kontrol sistemleri</li>
+                  <li><span className="font-semibold">Diğer:</span> şeffaf, kiralık, poster/totem, menuboard, kiosk, dijital ekran; modül ve kontrol; Huidu / NovaStar / Colorlight kontrolcüler</li>
                 </ul>
               </aside>
               <div className="space-y-12">
