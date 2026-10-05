@@ -59,6 +59,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 67 | 2026-10-05 | Point C citeMedium honesty · GEO kapsül · blind #16 poster · IndexNow quote hubs · smoke fiyat-hesap | ✅ |
 | 68 | 2026-10-05 | Hero 81-il invent kill · citeShort/IG/playbook honesty · led-modul FAQ · IndexNow kiralık | ✅ |
 | 69 | 2026-10-05 | EN/AR/RU home meta honesty · üretici page · blind #17 led-modul · FB playbook | ✅ |
+| 70 | 2026-10-05 | seo-guides engineering-desk invent kill · rehber FAQ · blind #18 · IndexNow EN rehber · YT playbook | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -364,3 +365,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `led-ekran-ureticisi`: üretici/fabrika invent soft; NXTIONSTAR tek satış noktası honesty
 - Blind #17 LED modül/kontrol · IndexNow üretici · cite-parity EN home · ENTITY_CITE_SHORT_EN quote-only
 - Playbook Facebook About paste (= citeMedium)
+
+## Gün 70 notları
+
+- `seo-guides.ts`: EN/TR hub + led-ekran — **engineering desk invent kaldırıldı**; Gaziosmanpaşa + catalog/ai-shopping honesty
+- Rehber hub FAQ: ai-shopping + ücretsiz kargo yok + extrasUsd≠list
+- Blind #18 «LED ekran çözüm rehberi panel fiyatı?» — skor /54
+- IndexNow EN `/en/rehber/` + led-ekran · smoke rehber-hub (17 checks)
+- cite-parity: EN/TR rehber no engineering desk · Playbook YouTube About paste

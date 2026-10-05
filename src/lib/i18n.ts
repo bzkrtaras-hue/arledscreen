@@ -282,7 +282,7 @@ const en: Dictionary = {
         "Explore products, calculator, configurator and project references. Each tool lives on its own page; here we show what it does.",
     },
     configurator: {
-      eyebrow: "Engineering desk",
+      eyebrow: "Project sizing",
       title: "Size the wall before the site survey",
       description:
         "Dial width, height, pitch and cabinet mode. Resolution, viewing distance and cabinet counts update instantly.",
@@ -323,7 +323,7 @@ const en: Dictionary = {
       points: [
         "Documented signal paths for CMS, media servers and automation APIs",
         "High refresh and stable pixel pipelines for AI-driven or camera-facing content",
-        "Engineering desk that sizes pitch, power and receivers around your AI stack",
+        "Gaziosmanpaşa survey team that sizes pitch, power and receivers around your AI stack",
       ],
     },
   },
@@ -333,7 +333,7 @@ const en: Dictionary = {
     description:
       "ARLEDSCREEN delivers LED systems in Turkey. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product sub-brand.",
     body:
-      "From fine-pitch command centers to IP65 outdoor LED and totem installs, our desk pairs product choice with viewing distance, power topology and a clear BOM. We serve integrators, agencies and facility owners who need field-ready engineering — not showroom theatre.",
+      "From fine-pitch command centers to IP65 outdoor LED and totem installs, our Gaziosmanpaşa team pairs product choice with viewing distance, power topology and a clear BOM. We serve integrators, agencies and facility owners who need field-ready systems — not showroom theatre.",
     cta: "Read more about us",
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },
@@ -625,7 +625,7 @@ const tr: Dictionary = {
       points: [
         "CMS, medya sunucu ve otomasyon API’leri için dokümante sinyal yolları",
         "YZ destekli veya kamera önü içerik için yüksek yenileme ve kararlı piksel hattı",
-        "Pitch, güç ve alıcı mimarisini sizin YZ yığınınıza göre boyutlandıran mühendislik masası",
+        "Pitch, güç ve alıcı mimarisini sizin YZ yığınınıza göre boyutlandıran Gaziosmanpaşa keşif ekibi",
       ],
     },
   },

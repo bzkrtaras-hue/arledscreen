@@ -41,6 +41,8 @@ export const INDEXNOW_URLS = [
   `${SITE}/tr/rehber/led-ekran/`,
   `${SITE}/tr/rehber/gob-vs-smd/`,
   `${SITE}/tr/rehber/kiralik-mi-satin-alma/`,
+  `${SITE}/en/rehber/`,
+  `${SITE}/en/rehber/led-ekran/`,
   `${SITE}/tr/p2-5-led-ekran/`,
 ];
 
@@ -65,4 +67,5 @@ export const INDEXNOW_REQUIRED = [
   "/tr/nxtionstar/",
   "/tr/blog/",
   "/tr/rehber/",
+  "/en/rehber/",
 ];

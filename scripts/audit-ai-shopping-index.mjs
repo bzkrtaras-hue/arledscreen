@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 17 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 18 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 17) errors.push(`blindTestPrompts must be 17 (got ${prompts.length})`);
+if (prompts.length !== 18) errors.push(`blindTestPrompts must be 18 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -215,6 +215,11 @@ if (!p16 || !/poster|totem/i.test(p16.q || "")) {
 const p17 = (doc.blindTestPrompts || []).find((p) => p.id === 17);
 if (!p17 || !/modül|modul/i.test(p17.q || "")) {
   errors.push("blindTestPrompts #17 must cover LED modül/kontrol quote-only");
+}
+// Day 70: rehber hub / engineering-desk invent
+const p18 = (doc.blindTestPrompts || []).find((p) => p.id === 18);
+if (!p18 || !/rehber/i.test(p18.q || "")) {
+  errors.push("blindTestPrompts #18 must cover LED ekran çözüm rehberi price invent");
 }
 
 if (errors.length) {

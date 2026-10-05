@@ -247,6 +247,18 @@ Kaynak: `entity-profiles.json` → `packs.facebookAbout` (= `ENTITY_CITE_MEDIUM`
 ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
 ```
 
+### YouTube kanal About (yapıştır — kanal açılınca)
+
+Kaynak: `entity-profiles.json` → `packs.youtubeAbout` (= `ENTITY_CITE_SHORT` + URL’ler). Kanal yokken schema `sameAs`’a ekleme.
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol quote-only.
+
+Site: https://arledscreen.com/tr/
+Entity: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
+```
+
 Her major proje için aynı paket:
 
 1. Case study URL (`/tr/projelerimiz/...`)

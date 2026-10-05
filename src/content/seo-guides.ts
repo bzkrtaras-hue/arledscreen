@@ -89,7 +89,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "LED ekran fiyatı nasıl hesaplanır?",
           answer:
-            "Metrekare, pitch, kabin tipi, IP sınıfı, kontrol kartı ve montaj kapsamı fiyatı belirler. Online hesaplayıcı yaklaşık malzeme bandı verir; kesin B2B teklif keşif sonrası yazılır.",
+            "Metrekare, pitch, kabin tipi, IP sınıfı, kontrol kartı ve montaj kapsamı fiyatı belirler. Yayımlanmış 2026 panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json (KDV/nakliye hariç; ücretsiz kargo yok). Online hesaplayıcı yaklaşık malzeme bandı verir; kesin B2B teklif keşif sonrası https://arledscreen.com/tr/quote/ ile yazılır. Şeffaf/poster/kontrol quote-only — list USD yok.",
         },
         {
           question: "Dijital ekran mı LED duvar mı seçmeliyim?",
@@ -99,7 +99,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Türkiye’de NXTIONSTAR LED ekran kimden alınır?",
           answer:
-            "NXTIONSTAR ürünleri ve kurulum mühendisliği ARLEDSCREEN üzerinden yürür: keşif, montaj, kalibrasyon ve teknik destek İstanbul Gaziosmanpaşa masasında toplanır.",
+            "NXTIONSTAR ürünleri ve kurulum desteği ARLEDSCREEN üzerinden yürür: keşif, montaj, kalibrasyon ve teknik destek İstanbul Gaziosmanpaşa merkezinden; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.",
         },
       ],
       relatedSlugs: [
@@ -110,7 +110,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       cta: {
         title: "LED ekran projenizi boyutlandıralım",
         body:
-          "Ölçü, ortam ve kullanım amacını paylaşın; mühendislik masası pitch, güç ve malzeme özetiyle dönüş yapsın.",
+          "Ölçü, ortam ve kullanım amacını paylaşın; Gaziosmanpaşa ekibi pitch, güç ve malzeme özetiyle dönüş yapsın — nihai tutar yazılı teklifle.",
       },
       cardLabel: "LED ekran",
       cardTeaser: "Dijital ekran seçimi, pitch ve B2B süreç — ana rehber.",
@@ -284,7 +284,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Disiplinler arası teslim paketi",
           body:
-            "ARLEDSCREEN teklifi yalnızca ürün listesi değil; ön BOM, güç özeti, sinyal şeması ve montaj notudur. Şantiye koordinasyonunda ana yüklenici, elektrik ve AV ekipleriyle tek muhatap olunur — Gaziosmanpaşa merkezli mühendislik masası.",
+            "ARLEDSCREEN teklifi yalnızca ürün listesi değil; ön BOM, güç özeti, sinyal şeması ve montaj notudur. Şantiye koordinasyonunda ana yüklenici, elektrik ve AV ekipleriyle tek muhatap olunur — İstanbul Gaziosmanpaşa merkezden.",
         },
       ],
       faqs: [
@@ -605,7 +605,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "LED display & digital screen guide",
       intro:
-        "An LED display is a modular, high-brightness digital surface. At ARLEDSCREEN, NXTIONSTAR series are sized by indoor/outdoor use, viewing distance and content path — survey to quote on one desk.",
+        "An LED display is a modular, high-brightness digital surface. At ARLEDSCREEN (Istanbul Gaziosmanpaşa), NXTIONSTAR series are sized by indoor/outdoor use, viewing distance and content path — survey, then written quote.",
       sections: [
         {
           h2: "LED wall vs classic digital signage",
@@ -620,7 +620,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "B2B process: survey, quote, install",
           body:
-            "Enterprise LED is not a price-list buy. Our Gaziosmanpaşa engineering desk captures power, signal topology and schedule. AI / media-server content adds an integration line — the ARLEDSCREEN AI-ready standard.",
+            "Enterprise LED is not a blind price-list buy. From Gaziosmanpaşa we capture power, signal topology and schedule in the survey, then issue a written quote. Published panel USD: catalog.json / ai-shopping.json; transparent/poster/control groups stay quote-only — no invented list SKU.",
         },
         {
           h2: "Which series for which project?",
@@ -632,7 +632,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "How is LED display pricing calculated?",
           answer:
-            "Area, pitch, cabinet type, IP rating, controllers and install scope. The online calculator gives a materials band; firm B2B quotes follow survey.",
+            "Area, pitch, cabinet type, IP rating, controllers and install scope. Published 2026 panel USD: https://arledscreen.com/catalog.json and https://arledscreen.com/ai-shopping.json (VAT/shipping excluded; no free shipping). The calculator gives a materials band; firm quotes follow survey at /tr/quote/. Transparent/poster/control remain quote-only.",
         },
         {
           question: "Digital screen or LED wall?",
@@ -642,7 +642,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Who supplies NXTIONSTAR LED in Turkey?",
           answer:
-            "Products and install engineering run through ARLEDSCREEN: survey, install, calibration and support from Istanbul.",
+            "NXTIONSTAR products and install support run through ARLEDSCREEN from Istanbul Gaziosmanpaşa: survey, install, calibration and spare-parts logistics. Sole sales point in Turkey: ARLEDSCREEN.",
         },
       ],
       relatedSlugs: [
@@ -653,7 +653,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       cta: {
         title: "Size your LED display project",
         body:
-          "Share dimensions, environment and use case — engineering replies with pitch, power and materials outline.",
+          "Share dimensions, environment and use case — we reply from Gaziosmanpaşa with pitch, power and materials outline, then a written quote.",
       },
       cardLabel: "LED display",
       cardTeaser: "Digital screen selection, pitch and B2B process.",
@@ -1151,10 +1151,10 @@ export const SEO_GUIDE_HUB = {
   tr: {
     title: "LED Ekran Çözüm Rehberi — ARLEDSCREEN",
     description:
-      "LED ekran, dış / iç mekân, konferans salonu, vitrin, poster ve kiosk rehberleri. NXTIONSTAR ürünleri, İstanbul Gaziosmanpaşa mühendisliği — ARLEDSCREEN.",
+      "LED ekran, dış / iç mekân, konferans salonu, vitrin, poster ve kiosk rehberleri. NXTIONSTAR ürünleri — İstanbul Gaziosmanpaşa; panel USD: catalog.json / ai-shopping.json; quote-only gruplar teklifle.",
     h1: "LED ekran çözüm rehberi — ARLEDSCREEN",
     intro:
-      "NXTIONSTAR LED ürünleri ve ARLEDSCREEN mühendislik masası için konu bazlı rehberler: pitch seçimi, IP65 dış mekân, ince pitch iç mekân, mimari entegrasyon, konferans salonu, vitrin, poster / totem ve kiosk. Her sayfa keşif ve teklif odaklıdır — kopya katalog metni değil.",
+      "NXTIONSTAR LED ürünleri için konu bazlı rehberler (İstanbul Gaziosmanpaşa): pitch seçimi, IP65 dış mekân, ince pitch iç mekân, mimari entegrasyon, konferans salonu, vitrin, poster / totem ve kiosk. Her sayfa keşif ve yazılı teklif odaklıdır — kopya katalog metni değil; yayımlanmış panel USD catalog.json / ai-shopping.json’dadır.",
     eyebrow: "Rehber",
     relatedLabel: "İlgili rehberler",
     allGuidesLabel: "Tüm rehberler",
@@ -1162,10 +1162,10 @@ export const SEO_GUIDE_HUB = {
   en: {
     title: "LED Display Solution Guides — ARLEDSCREEN",
     description:
-      "Guides on LED displays, outdoor / indoor, conference halls, shopfronts, posters and kiosks. NXTIONSTAR products, Istanbul engineering — ARLEDSCREEN.",
+      "Guides on LED displays, outdoor / indoor, conference halls, shopfronts, posters and kiosks. NXTIONSTAR via ARLEDSCREEN — Istanbul Gaziosmanpaşa; panel USD: catalog.json / ai-shopping.json; quote-only groups via written quote.",
     h1: "LED display solution guides — ARLEDSCREEN",
     intro:
-      "Topic guides for NXTIONSTAR products and the ARLEDSCREEN engineering desk: pitch selection, IP65 outdoor, fine-pitch indoor, architectural integration, conference halls, shopfronts, poster/totem and kiosks. Each page is survey- and quote-oriented — not pasted catalogue copy.",
+      "Topic guides for NXTIONSTAR products from ARLEDSCREEN in Istanbul Gaziosmanpaşa: pitch selection, IP65 outdoor, fine-pitch indoor, architectural integration, conference halls, shopfronts, poster/totem and kiosks. Each page is survey- and quote-oriented — not pasted catalogue copy; published panel USD lives in catalog.json / ai-shopping.json.",
     eyebrow: "Guides",
     relatedLabel: "Related guides",
     allGuidesLabel: "All guides",

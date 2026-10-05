@@ -200,6 +200,13 @@ export const CHECKS = [
     expect: "html",
     mustInclude: ["list SKU", "Huidu", "Kontrol kartı"],
   },
+  {
+    id: "rehber-hub",
+    url: `${SITE}/tr/rehber/`,
+    outRel: "tr/rehber/index.html",
+    expect: "html",
+    mustInclude: ["catalog.json", "ai-shopping.json", "Gaziosmanpaşa"],
+  },
 ];
 
 function checkLocal(c) {

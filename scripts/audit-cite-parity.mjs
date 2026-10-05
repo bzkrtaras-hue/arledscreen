@@ -246,6 +246,26 @@ if (enHome) {
     errors.push("out/en/index.html home meta should cite Gaziosmanpaşa or quote-only honesty");
   }
 }
+// Day 70: EN rehber hub + led-ekran guide must not invent “engineering desk”
+for (const rel of ["out/en/rehber/index.html", "out/en/rehber/led-ekran/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/engineering desk/i.test(html)) {
+    errors.push(`${rel} must not invent engineering desk`);
+  }
+  if (!/Gaziosmanpaşa|Gaziosmanpasa|catalog\.json|ai-shopping\.json/i.test(html)) {
+    errors.push(`${rel} should cite Gaziosmanpaşa or catalog/ai-shopping honesty`);
+  }
+}
+const trRehber = read("out/tr/rehber/index.html");
+if (trRehber) {
+  if (/engineering desk/i.test(trRehber)) {
+    errors.push("out/tr/rehber/index.html must not invent engineering desk");
+  }
+  if (!/catalog\.json|ai-shopping\.json/i.test(trRehber)) {
+    errors.push("out/tr/rehber/index.html should cite catalog.json or ai-shopping.json");
+  }
+}
 
 if (errors.length) {
   console.error(`audit-cite-parity: FAIL (${errors.length})`);

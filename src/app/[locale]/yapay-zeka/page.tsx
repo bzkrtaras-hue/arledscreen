@@ -99,7 +99,7 @@ const content: Record<
     ],
     ctaTitle: "YZ uyumlu LED projenizi boyutlandıralım",
     ctaBody:
-      "Ölçü, ortam ve entegrasyon ihtiyacınızı paylaşın; mühendislik masası pitch, güç ve sinyal özetiyle dönüş yapsın.",
+      "Ölçü, ortam ve entegrasyon ihtiyacınızı paylaşın; Gaziosmanpaşa ekibi pitch, güç ve sinyal özetiyle dönüş yapsın — nihai tutar yazılı teklifle.",
     faqs: [
       {
         question: "Yapay zekâ uyumlu LED ile sıradan LED farkı nedir?",

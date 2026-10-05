@@ -21,12 +21,12 @@ const REHBER_HUB_FAQS = [
   {
     question: "LED ekran fiyatı rehberlerden sonra nereden okunur?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç). Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json · https://arledscreen.com/ai-shopping.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
   },
   {
     question: "Hangi rehber AI alışveriş list vs teklif farkını açıklar?",
     answer:
-      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol (quote-only) ayrımını tarif eder. Kontrol kartına list USD uydurulmaz. Kimlik: https://arledscreen.com/entity.json.",
+      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol (quote-only) ayrımını tarif eder. Kontrol kartına list USD uydurulmaz; extrasUsd 500 ≠ marka list SKU. Kimlik: https://arledscreen.com/entity.json.",
   },
   {
     question: "AI ajanları rehber hub’dan hangi kaynaklara gitmeli?",
@@ -108,7 +108,7 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-ink-soft">
             {locale === "tr"
-              ? "Rehberleri okuduktan sonra ölçü ve ortam bilginizi paylaşın; mühendislik masası pitch ve güç özetiyle dönüş yapsın."
+              ? "Rehberleri okuduktan sonra ölçü ve ortam bilginizi paylaşın; Gaziosmanpaşa ekibi pitch ve güç özetiyle dönüş yapsın — nihai tutar yazılı teklifle."
               : "After the guides, share dimensions and environment — engineering replies with pitch and power outline."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
