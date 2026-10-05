@@ -7,8 +7,8 @@ interface HeroProps {
 }
 
 /**
- * Homepage hero — HQ Drive field clips first (sphere landscape + flex module),
- * then a storefront landscape. Soft rotate ~6.5s.
+ * Homepage hero — HQ Drive field clips + readable glass stack.
+ * No ARLEDSCREEN wordmark; H1 is LED EKRAN TEKNOLOJİ MERKEZİ.
  */
 const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   {
@@ -26,7 +26,7 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
     labelTr: "Vitrin",
     labelEn: "Storefront",
   },
-] as const;
+];
 
 export function Hero({ locale }: HeroProps) {
   const tr = locale === "tr";
@@ -51,20 +51,42 @@ export function Hero({ locale }: HeroProps) {
     <HeroVideo
       clips={clips}
       brand="ARLEDSCREEN"
-      eyebrow={
-        tr
-          ? "NXTIONSTAR · ARLEDSCREEN’in kendi markası"
-          : "NXTIONSTAR · ARLEDSCREEN’s own brand"
-      }
-      headline={
-        tr
-          ? "İç ve dış mekân LED ekran sistemleri."
-          : "Indoor and outdoor LED display systems."
-      }
+      headline={tr ? "LED EKRAN TEKNOLOJİ MERKEZİ" : "LED DISPLAY TECHNOLOGY CENTER"}
       subcopy={
         tr
-          ? "NXTIONSTAR panellerini Türkiye’de ARLEDSCREEN satar, keşfeder ve monte eder. Cephe, vitrin, totem ve salon ölçüleri sahada netleşir; servis Gaziosmanpaşa ofisinden yürür."
-          : "ARLEDSCREEN sells, surveys and installs NXTIONSTAR panels in Turkey. Façade, storefront, totem and hall sizes are confirmed on site; service is run from Gaziosmanpaşa."
+          ? "ARLEDSCREEN, LED teknolojilerindeki yüksek kalite standartlarını NXTIONSTAR güvencesiyle hayata geçirmektedir:"
+          : "ARLEDSCREEN delivers LED technology quality standards with the assurance of NXTIONSTAR:"
+      }
+      points={
+        tr
+          ? [
+              {
+                title: "Uçtan Uca Proje Yönetimi",
+                body: "Keşif, tasarım, montaj ve satış sonrası teknik servis desteği.",
+              },
+              {
+                title: "Geniş Ürün Çözümleri",
+                body: "Bina cephesi, vitrin, totem, salon ve poster menuboard uygulamaları.",
+              },
+              {
+                title: "Yerli Üretim ve Yaygın Ağı",
+                body: "İstanbul merkezli fabrikamızdan çıkan ürünler, Türkiye’nin 81 ilinde profesyonel bayi ağımızla kurulmaktadır.",
+              },
+            ]
+          : [
+              {
+                title: "End-to-end project management",
+                body: "Survey, design, installation and after-sales technical service.",
+              },
+              {
+                title: "Broad product solutions",
+                body: "Façade, storefront, totem, hall and poster / menuboard applications.",
+              },
+              {
+                title: "Local production and nationwide reach",
+                body: "Panels from our Istanbul factory are installed across Turkey’s 81 provinces through our professional dealer network.",
+              },
+            ]
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Yazılı teklif alın" : "Request a written quote"}

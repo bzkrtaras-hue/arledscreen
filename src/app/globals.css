@@ -721,6 +721,67 @@
   .glass-select { background: #ffffff; }
 }
 
+/*
+ * Hero copy plate — frosted glass with enough opacity for readable dark ink
+ * over busy LED / video backgrounds (video still reads softly through).
+ */
+.liquid-glass-hero-copy {
+  position: relative;
+  isolation: isolate;
+  border-radius: 1.1rem;
+  color: #122033;
+  -webkit-backdrop-filter: saturate(180%) blur(24px) brightness(1.14);
+  backdrop-filter: saturate(180%) blur(24px) brightness(1.14);
+  background:
+    linear-gradient(
+      165deg,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(247, 250, 253, 0.84) 48%,
+      rgba(232, 241, 252, 0.86) 100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 0 0 1px rgba(15, 42, 79, 0.12),
+    0 22px 44px -20px rgba(11, 27, 51, 0.52);
+}
+.liquid-glass-hero-copy::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.14) 34%,
+      transparent 52%,
+      rgba(30, 91, 184, 0.05) 100%
+    );
+}
+.liquid-glass-hero-copy > * {
+  position: relative;
+  z-index: 1;
+}
+.liquid-glass-hero-copy .hero-copy-lead {
+  color: #0f1a28;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.liquid-glass-hero-copy .hero-copy-point-title {
+  color: #0c1522;
+}
+.liquid-glass-hero-copy .hero-copy-point-body {
+  color: #1a2430;
+}
+.liquid-glass-hero-copy .hero-copy-rule {
+  border-color: rgba(18, 32, 51, 0.18);
+}
+.liquid-glass-hero-copy .hero-copy-dot {
+  background: #1e5bb8;
+}
+
 /* User asked for less transparency: solid surfaces, no blur. */
 @media (prefers-reduced-transparency: reduce) {
   .glass-bar,
@@ -729,6 +790,7 @@
   .liquid-glass,
   .liquid-glass-btn,
   .liquid-glass-shell,
+  .liquid-glass-hero-copy,
   .menu-scrim,
   .menu-glass-panel,
   .glass-select {
@@ -738,7 +800,8 @@
   .glass-bar,
   .liquid-glass,
   .liquid-glass-btn,
-  .liquid-glass-shell { background: #f7f9fc; }
+  .liquid-glass-shell,
+  .liquid-glass-hero-copy { background: #f7f9fc; }
   .liquid-glass-btn--primary { background: #1e5bb8; color: #fff; }
   .liquid-glass-btn--brand,
   .liquid-glass-btn--compact,
