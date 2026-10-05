@@ -132,10 +132,11 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
   return (
     <header className="px-3 pb-2 pt-1.5 sm:px-4 md:px-6 lg:px-8">
-      <div className="mx-auto flex h-14 max-w-7xl min-w-0 items-stretch gap-2 sm:h-[3.75rem] md:gap-3">
+      {/* One settled chrome bar: brand · nav (Ürünler…Fiyat hesapla) · Teklif al */}
+      <div className="liquid-glass-shell liquid-glass-shell--nav mx-auto flex h-14 max-w-7xl min-w-0 items-center gap-2 px-2 sm:h-[3.75rem] sm:gap-3 sm:px-2.5 md:px-3">
         <Link
           href={`/${locale}/`}
-          className="liquid-glass-btn liquid-glass-btn--brand relative z-[2] flex h-auto min-w-0 shrink-0 items-center gap-2 self-stretch px-3 py-0 sm:gap-2.5 sm:px-3.5"
+          className="header-brand-plate relative z-[2] flex h-11 min-w-0 shrink-0 items-center gap-2 rounded-full px-3 sm:h-12 sm:gap-2.5 sm:px-3.5"
           aria-label={tr ? "ARLEDSCREEN ana sayfa" : "ARLEDSCREEN home"}
         >
           <Image
@@ -143,31 +144,31 @@ export function Header({ locale, groups, guides }: HeaderProps) {
             alt="ARLEDSCREEN"
             width={514}
             height={160}
-            className="h-9 w-auto max-w-[150px] object-contain sm:h-10 sm:max-w-[180px]"
+            className="h-8 w-auto max-w-[140px] object-contain sm:h-9 sm:max-w-[168px]"
             priority
             unoptimized
           />
-          <span className="h-7 w-px shrink-0 bg-ink/20 sm:h-8" aria-hidden />
+          <span className="h-6 w-px shrink-0 bg-ink/20 sm:h-7" aria-hidden />
           <Image
             src="/brand/nxtionstar-wordmark-header-478.webp"
             alt="NXTIONSTAR"
             width={478}
             height={137}
-            className="h-6 w-auto object-contain sm:h-7"
+            className="h-5 w-auto object-contain sm:h-6"
             unoptimized
           />
         </Link>
 
         <nav
-          className="liquid-glass-shell liquid-glass-shell--nav ml-auto hidden min-w-0 flex-1 items-center justify-center self-stretch px-1.5 xl:flex"
+          className="hidden min-w-0 flex-1 items-center xl:flex"
           aria-label={tr ? "Ana menü" : "Primary"}
         >
-          <ul className="flex h-full w-full items-center justify-center gap-0">
+          <ul className="flex w-full min-w-0 items-center justify-between gap-0.5 px-1">
             {links.map((link) =>
               link.dropdown && (link.dropdown === "products" ? groups.length : guides.length) ? (
                 <li
                   key={link.href}
-                  className="relative flex h-full items-center"
+                  className="relative flex items-center"
                   onMouseEnter={() => openDrop(link.dropdown!)}
                   onMouseLeave={closeDrop}
                 >
@@ -178,13 +179,13 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     aria-current={isActive(link.href) ? "page" : undefined}
                     onFocus={() => openDrop(link.dropdown!)}
                     className={cn(
-                      "nav-glass-link flex h-10 items-center gap-0.5 whitespace-nowrap rounded-full px-2.5 text-[13.5px] font-bold text-[#2a3340] hover:text-cyan 2xl:px-3.5 2xl:text-[15px]",
+                      "nav-glass-link flex h-10 items-center gap-0.5 whitespace-nowrap rounded-full px-2 text-[13px] font-bold leading-none text-[#2a3340] hover:text-cyan xl:px-2.5 2xl:px-3.5 2xl:text-[14.5px]",
                       (drop === link.dropdown || isActive(link.href)) && "text-cyan",
                     )}
                   >
                     {link.label}
                     <ChevronDown
-                      className={cn("h-4 w-4 shrink-0 transition-transform duration-300", drop === link.dropdown && "rotate-180")}
+                      className={cn("h-3.5 w-3.5 shrink-0 transition-transform duration-300", drop === link.dropdown && "rotate-180")}
                       aria-hidden
                     />
                   </Link>
@@ -330,12 +331,12 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   </AnimatePresence>
                 </li>
               ) : (
-                <li key={link.href} className="flex h-full items-center">
+                <li key={link.href} className="flex items-center">
                   <Link
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
                     className={cn(
-                      "nav-glass-link flex h-10 items-center whitespace-nowrap rounded-full px-2.5 text-[13.5px] font-bold text-[#2a3340] hover:text-cyan 2xl:px-3.5 2xl:text-[15px]",
+                      "nav-glass-link flex h-10 items-center whitespace-nowrap rounded-full px-2 text-[13px] font-bold leading-none text-[#2a3340] hover:text-cyan xl:px-2.5 2xl:px-3.5 2xl:text-[14.5px]",
                       isActive(link.href) && "text-cyan",
                     )}
                   >
@@ -347,10 +348,9 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           </ul>
         </nav>
 
-        <div className="ml-auto flex shrink-0 items-stretch gap-2 self-stretch xl:ml-0">
         <Link
           href={`/${locale}/quote/`}
-          className="liquid-glass-btn liquid-glass-btn--primary relative z-[2] hidden shrink-0 items-center gap-2 self-stretch px-5 text-[14px] font-bold sm:inline-flex sm:px-6 sm:text-[15px]"
+          className="liquid-glass-btn liquid-glass-btn--primary relative z-[2] ml-auto hidden h-11 shrink-0 items-center gap-2 rounded-full px-5 text-[14px] font-bold sm:inline-flex sm:h-12 sm:px-6 sm:text-[15px] xl:ml-0"
         >
           <FileText className="h-4 w-4" aria-hidden />
           {dict.nav.quote}
@@ -358,7 +358,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
         <button
           type="button"
-          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] h-auto w-12 shrink-0 self-stretch xl:hidden"
+          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] ml-auto h-11 w-11 shrink-0 xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -374,7 +374,6 @@ export function Header({ locale, groups, guides }: HeaderProps) {
           </span>
           {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
         </button>
-        </div>
       </div>
 
       {mounted
