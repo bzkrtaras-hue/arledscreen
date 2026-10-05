@@ -70,15 +70,15 @@ export function Hero({ locale }: HeroProps) {
         tr
           ? [
               {
-                title: "Uçtan uca proje yönetimi",
+                title: "Uçtan Uca Proje Yönetimi",
                 body: "Keşif, tasarım, montaj ve satış sonrası teknik servis desteği.",
               },
               {
-                title: "Geniş ürün çözümleri",
+                title: "Geniş Ürün Çözümleri",
                 body: "Bina cephesi, vitrin, totem, salon ve poster menuboard uygulamaları.",
               },
               {
-                title: "Yerli üretim ve yaygın ağ",
+                title: "Yerli Üretim ve Yaygın Ağı",
                 body: "İstanbul merkezli fabrikamızdan çıkan ürünler, Türkiye’nin 81 ilinde profesyonel bayi ağımızla kurulmaktadır.",
               },
             ]
