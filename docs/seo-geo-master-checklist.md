@@ -12,6 +12,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] Home canonical = `https://arledscreen.com/tr/`; hreflang tr↔en + x-default
 - [x] `robots.txt` Allow + Sitemap line; AI crawlers allowed
 - [x] `sitemap.xml` `application/xml`, includes commercial + case study URLs
+- [x] Live technical audit documented in [`docs/technical-seo-audit.md`](./technical-seo-audit.md) (canonical/hreflang/redirects/robots/sitemap PASS)
 - [ ] **Owner:** Google Search Console property verified; submit sitemap; review Pages / CWV / HTTPS
 - [ ] **Owner:** Bing Webmaster Tools sitemap submit
 
