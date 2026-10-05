@@ -54,39 +54,8 @@ export function Hero({ locale }: HeroProps) {
       headline={tr ? "LED EKRAN TEKNOLOJİ MERKEZİ" : "LED DISPLAY TECHNOLOGY CENTER"}
       subcopy={
         tr
-          ? "ARLEDSCREEN, LED teknolojilerindeki yüksek kalite standartlarını NXTIONSTAR güvencesiyle hayata geçirmektedir:"
-          : "ARLEDSCREEN delivers LED technology quality standards with the assurance of NXTIONSTAR:"
-      }
-      points={
-        tr
-          ? [
-              {
-                title: "Uçtan Uca Proje Yönetimi",
-                body: "Keşif, tasarım, montaj ve satış sonrası teknik servis desteği.",
-              },
-              {
-                title: "Geniş Ürün Çözümleri",
-                body: "Bina cephesi, vitrin, totem, salon ve poster menuboard uygulamaları.",
-              },
-              {
-                title: "Yerli Üretim ve Yaygın Ağı",
-                body: "İstanbul merkezli fabrikamızdan çıkan ürünler, Türkiye’nin 81 ilinde profesyonel bayi ağımızla kurulmaktadır.",
-              },
-            ]
-          : [
-              {
-                title: "End-to-end project management",
-                body: "Survey, design, installation and after-sales technical service.",
-              },
-              {
-                title: "Broad product solutions",
-                body: "Façade, storefront, totem, hall and poster / menuboard applications.",
-              },
-              {
-                title: "Local production and nationwide reach",
-                body: "Panels from our Istanbul factory are installed across Turkey’s 81 provinces through our professional dealer network.",
-              },
-            ]
+          ? "Projenin ilk keşif aşamasından tasarım, üretim, montaj ve satış sonrası teknik destek süreçlerine kadar tüm operasyonu uçtan uca yönetiyoruz. İstanbul merkezli üretim tesisimizde yüksek kalite standartlarında hazırlanan LED ekran sistemleri, Türkiye’nin 81 ilindeki yaygın bayi ve servis ağımız aracılığıyla sahada profesyonellikle hayata geçirilmektedir."
+          : "We manage the full operation end to end — from the first survey through design, production, installation and after-sales technical support. LED display systems built to high quality standards at our Istanbul facility are delivered on site across Turkey’s 81 provinces through our dealer and service network."
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Yazılı teklif alın" : "Request a written quote"}

@@ -254,7 +254,7 @@ export function HeroVideo({
 
         <div className="relative z-[3] mx-auto flex h-full max-w-7xl items-end px-4 pb-[calc(4.25rem+1rem+env(safe-area-inset-bottom,0px))] sm:px-6 md:px-8 md:pb-[72px] lg:px-8">
           {/* Left-settled: title + readable glass plate + CTAs (refs: pack B + glass) */}
-          <div className="w-full max-w-[560px]">
+          <div className="w-full max-w-[640px]">
             <span className="sr-only">{brand}</span>
 
             <m.h1
@@ -280,7 +280,7 @@ export function HeroVideo({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease, delay: 0.22 }}
             >
-              <p className="hero-copy-lead text-pretty text-[14px] font-semibold leading-[1.55] sm:text-[15.5px] sm:leading-[1.6]">
+              <p className="hero-copy-lead text-pretty text-[14px] font-semibold leading-[1.55] sm:text-[15.5px] sm:leading-[1.65]">
                 {subcopy}
               </p>
 
