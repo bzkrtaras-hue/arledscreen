@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 16 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 17 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 16) errors.push(`blindTestPrompts must be 16 (got ${prompts.length})`);
+if (prompts.length !== 17) errors.push(`blindTestPrompts must be 17 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,8 +163,8 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/16 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 16 kör test intent");
+if (!/17 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 17 kör test intent");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -210,6 +210,11 @@ if (!p15 || !/Colorlight|colorlight/i.test(p15.q || "")) {
 const p16 = (doc.blindTestPrompts || []).find((p) => p.id === 16);
 if (!p16 || !/poster|totem/i.test(p16.q || "")) {
   errors.push("blindTestPrompts #16 must cover poster/totem quote-only");
+}
+// Day 69: led-modul hub invent
+const p17 = (doc.blindTestPrompts || []).find((p) => p.id === 17);
+if (!p17 || !/modül|modul/i.test(p17.q || "")) {
+  errors.push("blindTestPrompts #17 must cover LED modül/kontrol quote-only");
 }
 
 if (errors.length) {

@@ -239,6 +239,14 @@ Kaynak: `entity-profiles.json` → `packs.instagramBio`.
 arledscreen.com/tr/
 ```
 
+### Facebook About (yapıştır)
+
+Kaynak: `entity-profiles.json` → `packs.facebookAbout` (= `ENTITY_CITE_MEDIUM`, IG bio değil).
+
+```text
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
+```
+
 Her major proje için aynı paket:
 
 1. Case study URL (`/tr/projelerimiz/...`)

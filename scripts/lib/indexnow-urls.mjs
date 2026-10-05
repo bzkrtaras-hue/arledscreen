@@ -32,6 +32,7 @@ export const INDEXNOW_URLS = [
   `${SITE}/tr/products/novastar-kontrolculer/`,
   `${SITE}/tr/products/colorlight-kontrolculer/`,
   `${SITE}/tr/products/led-modul-ve-kontrol-sistemleri/`,
+  `${SITE}/tr/led-ekran-ureticisi/`,
   `${SITE}/tr/hizmetler/`,
   `${SITE}/tr/sss/`,
   `${SITE}/tr/nxtionstar/`,

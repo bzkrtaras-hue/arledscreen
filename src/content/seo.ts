@@ -117,24 +117,24 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
 
   en: {
     home: {
-      title: "LED Display Technology Center | ARLEDSCREEN",
+      title: "Istanbul LED Display Sales, Install & Service | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN is Istanbul’s LED display technology center: fine-pitch GOB, outdoor LED walls, totems and digital signage with survey, install and support. Call +90 530 507 88 34.",
+        "ARLEDSCREEN: indoor/outdoor LED display sales, survey, installation and technical service. Based in Istanbul Gaziosmanpaşa. Panel USD: catalog.json / ai-shopping.json; transparent/poster/control quote-only. Tel +90 530 507 88 34.",
       keywords: [
         "LED display",
         "LED wall",
         "ARLEDSCREEN",
-        "LED engineering",
+        "NXTIONSTAR",
         "digital signage",
         "fine pitch",
         "outdoor LED display",
         "indoor LED display",
-        "conference hall LED",
-        "digital kiosk",
+        "Istanbul LED",
+        "Gaziosmanpasa",
       ],
-      h1: "LED solutions for visual spaces",
+      h1: "LED Display Technology Center",
       intro:
-        "Work with ARLEDSCREEN for fine-pitch LED, outdoor displays and totem projects backed by an engineering desk. NXTIONSTAR appears as the product sub-brand.",
+        "Indoor and outdoor LED systems: product selection, survey, installation and technical service. NXTIONSTAR is the product brand; quote-only groups finalize in a written quote.",
     },
     products: {
       title: "LED Display Products | Fine-Pitch, Outdoor & Totem | ARLEDSCREEN",
@@ -153,7 +153,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "From fine-pitch GOB to outdoor façade and flexible modules — pick the NXTIONSTAR module that matches your venue.",
     },
     about: {
-      title: "About ARLEDSCREEN | LED Engineering Partner",
+      title: "About ARLEDSCREEN | Istanbul LED Display",
       description: ENTITY_CITE_SHORT_EN,
       keywords: [
         "ARLEDSCREEN",
@@ -161,7 +161,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "about us",
         "digital signage",
       ],
-      h1: "ARLEDSCREEN — LED engineering partner",
+      h1: "About ARLEDSCREEN",
       intro: ENTITY_CITE_SHORT_EN,
     },
     hesaplayici: {
@@ -195,9 +195,9 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "Lock geometry before the site survey: 500×500 or 500×1000 cabinets, pitch choice, viewing distance and three-phase power estimates.",
     },
     quote: {
-      title: "Request LED Display Quote | Enterprise Projects | ARLEDSCREEN",
+      title: "Request LED Display Quote | ARLEDSCREEN",
       description:
-        "Enterprise LED display / LED wall quote: share dimensions, indoor/outdoor use, timeline and location. ARLEDSCREEN engineering desk replies with a preliminary BOM and power outline.",
+        "LED display / LED wall quote: share dimensions, indoor/outdoor use, timeline and location. ARLEDSCREEN replies with a written quote. Quote-only groups (transparent/poster/control) have no list USD.",
       keywords: [
         "LED display quote",
         "LED wall quotation",
@@ -205,14 +205,14 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "ARLEDSCREEN quote",
         "digital signage quote",
       ],
-      h1: "Enterprise LED display project quote",
+      h1: "Request an LED display quote",
       intro:
-        "Share contact details, project dimensions and schedule so our engineering desk can reply with a preliminary BOM and power outline.",
+        "Share contact details, project dimensions and schedule so we can reply with a written quote. Panel list USD: catalog.json / ai-shopping.json.",
     },
     "yapay-zeka": {
       title: "AI-Compatible LED Display | Media Server Integration — ARLEDSCREEN",
       description:
-        "AI-compatible LED integration plus machine-readable shopping sources for agents: entity.json, catalog.json, ard.json. ARLEDSCREEN / NXTIONSTAR.",
+        "AI-compatible LED integration plus machine-readable shopping sources for agents: ai-shopping.json, entity.json, catalog.json, ard.json. Quote-only: transparent/poster/control. ARLEDSCREEN / NXTIONSTAR.",
       keywords: [
         "AI compatible LED display",
         "AI LED video wall",
@@ -230,11 +230,11 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
 
   ar: {
     home: {
-      title: "شاشات LED تركيا | ARLEDSCREEN",
+      title: "شاشات LED إسطنبول | بيع وتركيب وخدمة | ARLEDSCREEN",
       description:
-        "NXTIONSTAR هي العلامة التجارية الخاصة بـ ARLEDSCREEN، وARLEDSCREEN هي نقطة البيع الوحيدة لها في تركيا. جدران LED دقيقة، واجهات خارجية ولافتات رقمية للمشاريع المؤسسية.",
-      keywords: ["شاشة LED", "جدار LED", "ARLEDSCREEN", "NXTIONSTAR", "تركيا"],
-      h1: "حلول NXTIONSTAR LED للمساحات البصرية",
+        "ARLEDSCREEN: بيع وتركيب وخدمة شاشات LED في إسطنبول غازي عثمان باشا. NXTIONSTAR علامتها؛ أسعار اللوحات: catalog.json / ai-shopping.json؛ الشفاف/البوستر/التحكم quote-only. هاتف +90 530 507 88 34.",
+      keywords: ["شاشة LED", "جدار LED", "ARLEDSCREEN", "NXTIONSTAR", "إسطنبول"],
+      h1: "مركز تقنية شاشات LED",
     },
     products: {
       title: "منتجات شاشات LED | Pitch دقيق وخارجي",
@@ -274,22 +274,22 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     "yapay-zeka": {
       title: "شاشة LED متوافقة مع الذكاء الاصطناعي — ARLEDSCREEN",
       description:
-        "كيف يتم تخطيط جدران LED من NXTIONSTAR للعمل مع محركات محتوى الذكاء الاصطناعي وخوادم الوسائط وبرامج التحكم.",
-      keywords: ["LED ذكاء اصطناعي", "NXTIONSTAR", "ARLEDSCREEN"],
+        "مصادر قابلة للقراءة آلياً للوكلاء: ai-shopping.json و entity.json و catalog.json. مجموعات quote-only بدون سعر قائمة.",
+      keywords: ["LED ذكاء اصطناعي", "NXTIONSTAR", "ARLEDSCREEN", "ai-shopping"],
       h1: "شاشات LED متوافقة مع الذكاء الاصطناعي",
       intro:
-        "توافق كامل مع محركات الذكاء الاصطناعي وخوادم الوسائط وبرامج التحكم.",
+        "تخطيط التكامل مع محركات المحتوى وخوادم الوسائط؛ أسعار اللوحات من catalog.json / ai-shopping.json.",
     },
   },
 
 
   ru: {
     home: {
-      title: "LED-экраны Турция | ARLEDSCREEN",
+      title: "LED-экраны Стамбул | Продажа, монтаж, сервис | ARLEDSCREEN",
       description:
-        "NXTIONSTAR — собственный бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN. Fine-pitch стены, уличные LED и digital signage для B2B.",
-      keywords: ["LED экран", "LED стена", "ARLEDSCREEN", "NXTIONSTAR", "Турция"],
-      h1: "Решения NXTIONSTAR LED для визуальных пространств",
+        "ARLEDSCREEN: продажа, монтаж и сервис LED-экранов в Стамбуле (Газиосманпаша). NXTIONSTAR — продуктовый бренд. Цены панелей: catalog.json / ai-shopping.json; transparent/poster/control — quote-only. Тел. +90 530 507 88 34.",
+      keywords: ["LED экран", "LED стена", "ARLEDSCREEN", "NXTIONSTAR", "Стамбул"],
+      h1: "LED Display Technology Center",
     },
     products: {
       title: "LED-продукция | Fine-pitch и outdoor",
@@ -329,11 +329,11 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     "yapay-zeka": {
       title: "LED-экран, совместимый с ИИ — ARLEDSCREEN",
       description:
-        "Как LED-стены NXTIONSTAR планируются для работы с генераторами контента ИИ, медиасерверами и программами управления.",
-      keywords: ["LED ИИ", "NXTIONSTAR", "ARLEDSCREEN"],
+        "Машиночитаемые источники для агентов: ai-shopping.json, entity.json, catalog.json. Quote-only группы без list USD.",
+      keywords: ["LED ИИ", "NXTIONSTAR", "ARLEDSCREEN", "ai-shopping"],
       h1: "LED-экраны, совместимые с ИИ",
       intro:
-        "Полная совместимость с генераторами ИИ-контента, медиасерверами и программами управления.",
+        "Интеграция с ИИ-контентом и медиасерверами; цены панелей: catalog.json / ai-shopping.json.",
     },
   },
 };

@@ -6,7 +6,7 @@
  *
  * 1) smoke:live — must be BLOCKED 0 (or pass --force)
  * 2) indexnow --live — Bing recrawl of AI artefacts (unless --no-indexnow)
- * 3) echo Day 57–68 contract + Point C / blind-test next steps
+ * 3) echo Day 57–69 contract + Point C / blind-test next steps
  *
  * Usage:
  *   node scripts/post-deploy-ai.mjs
@@ -65,9 +65,9 @@ if (skipIndex) {
 }
 
 console.log("");
-console.log("Day 57–68 contract (canlı doğrula):");
+console.log("Day 57–69 contract (canlı doğrula):");
 console.log(
-  "  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd≠list SKU · returnPolicy · blind #13–#16",
+  "  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd≠list SKU · returnPolicy · blind #13–#17",
 );
 console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
@@ -86,6 +86,6 @@ console.log("Next (sahip):");
 console.log("  1) npm run point-c-packs -- --live  → GBP / LinkedIn / IG / FB paste (Day 67 cite)");
 console.log("  2) docs/point-c-merge-day.md checklist");
 console.log(
-  "  3) docs/ai-shopping-blind-test.md kör tur 1 (16 prompt /48; mustSay honesty) → ai-shopping-blind-test-scores.md",
+  "  3) docs/ai-shopping-blind-test.md kör tur 1 (17 prompt /51; mustSay honesty) → ai-shopping-blind-test-scores.md",
 );
 process.exit(0);

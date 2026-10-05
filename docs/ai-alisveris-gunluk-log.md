@@ -58,6 +58,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 66 | 2026-10-05 | fiyat-hesap UI extrasUsd honesty · catalog extrasUsdNote · kontrol brand FAQs · blind #15 Colorlight | ✅ |
 | 67 | 2026-10-05 | Point C citeMedium honesty · GEO kapsül · blind #16 poster · IndexNow quote hubs · smoke fiyat-hesap | ✅ |
 | 68 | 2026-10-05 | Hero 81-il invent kill · citeShort/IG/playbook honesty · led-modul FAQ · IndexNow kiralık | ✅ |
+| 69 | 2026-10-05 | EN/AR/RU home meta honesty · üretici page · blind #17 led-modul · FB playbook | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -356,3 +357,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `ENTITY_CITE_SHORT` + Instagram bio + offsite playbook GBP/LinkedIn = Day 67 cite honesty
 - led-modul-ve-kontrol hub FAQ: list fiyatı yok / extrasUsd ≠ list SKU
 - IndexNow kiralık hub · smoke home · cite-parity hero 81-il guard (16 checks)
+
+## Gün 69 notları
+
+- EN/AR/RU `seo.ts` home (+ EN quote/about): Gaziosmanpaşa + quote-only; kill visual spaces / engineering desk invent
+- `led-ekran-ureticisi`: üretici/fabrika invent soft; NXTIONSTAR tek satış noktası honesty
+- Blind #17 LED modül/kontrol · IndexNow üretici · cite-parity EN home · ENTITY_CITE_SHORT_EN quote-only
+- Playbook Facebook About paste (= citeMedium)

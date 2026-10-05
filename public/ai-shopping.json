@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 16 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 17 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -564,6 +564,24 @@
       "q": "Poster / totem LED fiyatı?",
       "urls": [
         "https://arledscreen.com/tr/products/poster-led-ekran/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "teklif",
+        "ai-shopping.json"
+      ],
+      "mustNotSay": [
+        "ücretsiz kargo dahil",
+        "günlük TL",
+        "stokta paket"
+      ]
+    },
+    {
+      "id": 17,
+      "q": "LED modül ve kontrol sistemi fiyatı?",
+      "urls": [
+        "https://arledscreen.com/tr/products/led-modul-ve-kontrol-sistemleri/",
         "https://arledscreen.com/tr/quote/",
         "https://arledscreen.com/ai-shopping.json"
       ],

@@ -27,10 +27,16 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       question: "What does AI-infrastructure ready mean for an LED project?",
       answer:
         "It means the display layer is engineered so AI-generated or AI-scheduled content can run without proprietary lock-in: reliable pixel pipelines, known latency/refresh behavior, and integration paths for CMS, media servers and automation APIs that your AV/IT team already uses.",
-    },    {
+    },
+    {
       question: "Who supplies NXTIONSTAR LED projects in Turkey?",
       answer:
-        "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey. Local sales, engineering desk and spare-parts logistics run through ARLEDSCREEN; documentation is available in English, Turkish, Arabic and Russian.",
+        "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey from Istanbul Gaziosmanpaşa. Local sales, installation and spare-parts logistics run through ARLEDSCREEN; panel USD is in catalog.json / ai-shopping.json; transparent/poster/control are quote-only.",
+    },
+    {
+      question: "Where should AI agents read ARLEDSCREEN prices?",
+      answer:
+        "Start at https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Identity: https://arledscreen.com/entity.json. No free shipping; returns are quote-and-contract only.",
     },
   ],
   tr: [

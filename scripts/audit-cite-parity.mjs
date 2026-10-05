@@ -236,6 +236,16 @@ if (homeHtml) {
     errors.push("out/tr/index.html hero should state 81 il kapısı yok (honest GEO)");
   }
 }
+// Day 69: EN home meta must not invent “visual spaces / engineering desk”
+const enHome = read("out/en/index.html");
+if (enHome) {
+  if (/visual spaces|engineering desk/i.test(enHome)) {
+    errors.push("out/en/index.html must not invent visual spaces / engineering desk meta");
+  }
+  if (!/Gaziosmanpaşa|Gaziosmanpasa|quote-only/i.test(enHome)) {
+    errors.push("out/en/index.html home meta should cite Gaziosmanpaşa or quote-only honesty");
+  }
+}
 
 if (errors.length) {
   console.error(`audit-cite-parity: FAIL (${errors.length})`);

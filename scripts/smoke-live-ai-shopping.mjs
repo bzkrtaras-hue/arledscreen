@@ -81,6 +81,7 @@ export const CHECKS = [
       "Esnek LED ekran fiyatı?",
       "Colorlight kontrol kartı fiyatı?",
       "Poster / totem LED fiyatı?",
+      "LED modül ve kontrol sistemi fiyatı?",
       "extrasUsd.controlCard",
       "list SKU",
     ],
