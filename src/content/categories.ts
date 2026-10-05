@@ -458,7 +458,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     family: "Dış Mekân LED Ekranlar",
     types: ["Vitrin arkası", "Showroom camı", "Asma (askılı) kurulum", "İç / yarı outdoor cam"],
     image: "/projects/applications/seffaf-led-vitrin.jpg",
-    cardImage: "/projects/applications/seffaf-led-film.jpg",
+    cardImage: "/projects/applications/seffaf-led-vitrin.jpg",
     imageAlt: "AVM mağaza vitrininde şeffaf LED ekran — pembe kalp içeriği, içerideki ürünler görünür",
     intro: [
       "Şeffaf LED ekranlarda LED’ler cam üzerinde ince bir film veya açık ızgara hâlinde dizilir; aralarında boşluk bırakıldığı için ekran çalışırken de camın arkası görülebilir. Mağaza içi gün ışığı ve ürün teşhiri büyük ölçüde korunur.",
@@ -629,9 +629,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     tag: "Mağaza · Lobi · Etkinlik",
     family: "Poster ve Totem LED Ekranlar",
     types: ["Ayaklı poster ekran", "Duvara montaj", "Yan yana birleştirme", "İç ve dış mekân totem", "Menuboard (kafe / restoran)"],
-    image: "/projects/totem-indoor.jpg",
+    image: "/projects/applications/led-poster-totems.jpg",
     cardImage: "/projects/applications/led-poster-totems.jpg",
-    imageAlt: "İç mekânda konumlandırılmış dikey totem LED ekran",
+    imageAlt: "Dikey LED poster ve totem ekranları — yan yana dört ayaklı ünite",
     intro: [
       "Poster LED ekranlar, basılı afiş ve standların dijital karşılığıdır. Dikey formatları sayesinde giriş, koridor ve kasa önü gibi dar alanlara sığar; içerik birkaç dakika içinde değiştirilebilir.",
       "Ayaklı olarak tek başına kullanılabilir veya birkaç ekran yan yana getirilerek daha geniş bir yüzey oluşturulabilir. Dış mekân totemlerde ise gövde ve sabitleme detayları konuma göre planlanır.",
