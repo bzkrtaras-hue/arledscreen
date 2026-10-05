@@ -59,8 +59,8 @@ export function Hero({ locale }: HeroProps) {
       headline={tr ? "LED EKRAN TEKNOLOJİ MERKEZİ" : "LED DISPLAY TECHNOLOGY CENTER"}
       subcopy={
         tr
-          ? "Projenin ilk keşif aşamasından tasarım, üretim, montaj ve satış sonrası teknik destek süreçlerine kadar tüm operasyonu uçtan uca yönetiyoruz. İstanbul merkezli üretim tesisimizde yüksek kalite standartlarında hazırlanan LED ekran sistemleri, Türkiye’nin 81 ilindeki yaygın bayi ve servis ağımız aracılığıyla sahada profesyonellikle hayata geçirilmektedir."
-          : "We manage the full operation end to end — from the first survey through design, production, installation and after-sales technical support. LED display systems built to high quality standards at our Istanbul facility are delivered on site across Turkey’s 81 provinces through our dealer and service network."
+          ? "Projenin ilk keşif aşamasından tasarım, üretim, montaj ve satış sonrası teknik destek süreçlerine kadar tüm operasyonu uçtan uca yönetiyoruz. Merkezimiz İstanbul Gaziosmanpaşa’dadır; kurulum taleplerini Türkiye geneli alıyoruz."
+          : "We manage the full operation end to end — from the first survey through design, production, installation and after-sales technical support. Our headquarters is in Gaziosmanpaşa, Istanbul; we take installation requests across Turkey."
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Yazılı teklif alın" : "Request a written quote"}
