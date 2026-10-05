@@ -60,6 +60,7 @@ Hedef: “ARLEDSCREEN kimdir?” cevabı **yalnızca kendi siteden** gelmesin; 1
 
 - [x] Machine-readable `public/entity.json` (Organization + cite + FAQs)
 - [x] Off-site playbook: gap audit + 14-gün P0 sıra + 20-kaynak tracker (yapıştırma metinleri repo içi)
+- [ ] **Owner P0:** Canlı `/entity.json` + `/catalog.json` + `/.well-known/ard.json` 200 (2026-10-05 soft-404; PR #55 merge + CF redeploy)
 - [ ] **Owner P0:** `arleds.com` → `arledscreen.com/tr/` 301 (entity bölünmesini kes)
 - [ ] **Owner P0:** GBP + LinkedIn/IG/FB About = playbook pack (aynı NAP)
 - [ ] LinkedIn company + founder posts per major project
