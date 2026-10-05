@@ -967,3 +967,10 @@ details > summary::-webkit-details-marker {
     right: calc(84px + env(safe-area-inset-right, 0px));
   }
 }
+
+/* MailerLite embed injects its own <h4> inside the footer newsletter slot. We already expose an <h2>
+   (“Bültenimize abone olun”), so the duplicate heading skips levels (h2→h4) and fails Lighthouse
+   heading-order. Hide the embed title from layout + a11y tree. */
+.ml-form-embedContent > h4 {
+  display: none !important;
+}
