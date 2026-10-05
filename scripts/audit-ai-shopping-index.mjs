@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 12 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 13 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 12) errors.push(`blindTestPrompts must be 12 (got ${prompts.length})`);
+if (prompts.length !== 13) errors.push(`blindTestPrompts must be 13 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -137,6 +137,10 @@ if (!entity.aiShoppingJson?.includes("/ai-shopping.json")) {
 if (!entity.hasOfferCatalog?.url?.includes("/catalog.json")) {
   errors.push("entity.json missing hasOfferCatalog → catalog.json");
 }
+// Day 63: hasOfferCatalog description must close kontrol invent
+if (!/kontrol/i.test(entity.hasOfferCatalog?.description || "")) {
+  errors.push("entity.json hasOfferCatalog.description must mention kontrol quote-only");
+}
 
 const headers = fs.readFileSync(path.join(out, "_headers"), "utf8");
 if (!/\/ai-shopping\.json[\s\S]*?Access-Control-Allow-Origin:\s*\*/.test(headers)) {
@@ -154,6 +158,9 @@ if (!ard.includes("/ai-shopping.json")) {
 }
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
+}
+if (!/13 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 13 kör test intent");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -179,6 +186,11 @@ if (!fs.existsSync(aiCatPath)) {
 const p6 = (doc.blindTestPrompts || []).find((p) => p.id === 6);
 if (!p6?.urls?.[0]?.includes("/ai-shopping.json")) {
   errors.push("blindTestPrompts #6 must lead with ai-shopping.json");
+}
+// Day 63: kontrol invent blind prompt
+const p13 = (doc.blindTestPrompts || []).find((p) => p.id === 13);
+if (!p13 || !/kontrol/i.test(p13.q || "")) {
+  errors.push("blindTestPrompts #13 must cover kontrol kartı quote-only");
 }
 
 if (errors.length) {

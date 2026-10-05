@@ -92,6 +92,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["ARLEDSCREEN", "NXTIONSTAR"],
     mustNotSay: ["NEXTSTAR", "distribütör"],
   },
+  {
+    id: 13,
+    q: "Huidu / NovaStar kontrol kartı fiyatı?",
+    paths: [
+      "/tr/products/huidu-kontrol-kartlari/",
+      "/tr/products/novastar-kontrolculer/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["teklif", "ai-shopping.json"],
+    mustNotSay: ["ücretsiz kargo dahil", "günlük TL", "stokta paket"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

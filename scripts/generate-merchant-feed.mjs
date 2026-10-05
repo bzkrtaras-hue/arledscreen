@@ -51,6 +51,7 @@ const HEADER = [
   "identifier_exists",
   "shipping",
   "tax",
+  "return_policy_label",
 ];
 
 const rows = [HEADER.join("\t")];
@@ -98,6 +99,9 @@ for (const p of dataset) {
       "",
       // TR:0:n = VAT not included in list price (NOT "0% VAT / tax-free")
       "TR:0:n",
+      // Day 63: maps to Merchant Center return policy label (owner configures);
+      // honesty token for agents — no free/fixed site return window.
+      "quote_contract_only",
     ].join("\t"),
   );
 }

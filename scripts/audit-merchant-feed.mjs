@@ -59,6 +59,10 @@ function auditFeed(parsed, catalogSkus, catalogBySku) {
   for (const c of REQUIRED_COLS) {
     if (!header.includes(c)) errors.push(`${rel}: missing column ${c}`);
   }
+  // Day 63: return_policy_label honesty column
+  if (!header.includes("return_policy_label")) {
+    errors.push(`${rel}: missing column return_policy_label`);
+  }
   if (rows.length !== 12) {
     errors.push(`${rel}: expected 12 product rows, got ${rows.length}`);
   }
@@ -117,6 +121,12 @@ function auditFeed(parsed, catalogSkus, catalogBySku) {
     }
     if (r.tax === "TR:0:n" && !/KDV/i.test(r.description || "")) {
       errors.push(`${rel}: ${r.id} description must explain KDV when tax=TR:0:n`);
+    }
+    // Day 63: return_policy_label honesty — no free/fixed return window claim
+    if (header.includes("return_policy_label") && r.return_policy_label !== "quote_contract_only") {
+      errors.push(
+        `${rel}: ${r.id} return_policy_label must be quote_contract_only (got ${r.return_policy_label || "empty"})`,
+      );
     }
   }
   for (const sku of catalogSkus) {

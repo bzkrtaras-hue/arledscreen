@@ -1,7 +1,7 @@
 # AI alışveriş — kör test skor kartı
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (deploy sonrası) ≥ **18/36** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **27/36**  
+Hedef: Tur 1 (deploy sonrası) ≥ **20/39** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **29/39**  
 Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-profiles.json` · `ard.json`
 
 ## Site readiness (repo)
@@ -9,21 +9,21 @@ Spam blog / 81-il yok. Kaynaklar: `entity.json` · `catalog.json` · `entity-pro
 | Kontrol | Durum |
 |---------|--------|
 | `npm run audit:blind-test` | build/postbuild |
-| `npm run smoke:live` | deploy sonrası 12/12 |
+| `npm run smoke:live` | deploy sonrası 14/14 |
 
 ## Tur kayıtları
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /36.
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /39.
 
 ### Tur 1 — deploy sonrası (PR #55 canlı)
 
-| Model | Tarih | Konum | Incognito | Skor /36 | Not |
+| Model | Tarih | Konum | Incognito | Skor /39 | Not |
 |-------|-------|-------|-----------|----------|-----|
-| ChatGPT | | TR / | evet | /36 | |
-| Gemini | | | | /36 | |
-| Perplexity | | | | /36 | |
-| Bing Copilot | | | | /36 | |
-| **Ortalama** | | | | **/36** | Hedef ≥ 18 |
+| ChatGPT | | TR / | evet | /39 | |
+| Gemini | | | | /39 | |
+| Perplexity | | | | /39 | |
+| Bing Copilot | | | | /39 | |
+| **Ortalama** | | | | **/39** | Hedef ≥ 20 |
 
 Detay (örnek — her model için kopyalayın):
 
@@ -43,20 +43,21 @@ Model:
 10 | Şeffaf/transparan fiyatı? |  |  | list yok → teklif
 11 | İstanbul LED telefon? |  |  | +90 530 507 88 34
 12 | NXTIONSTAR nedir? |  |  |
-Toplam: /36
+13 | Huidu / NovaStar kontrol kartı fiyatı? |  |  | list yok → teklif
+Toplam: /39
 ```
 
 ### Tur 2 — Point C sonrası (≤ 2026-11-04)
 
 Önkoşul: GBP + LinkedIn/IG/FB About = `entity-profiles.json` packs · `arleds.com` 301
 
-| Model | Tarih | Skor /36 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /39 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|----------|---------------------------|-----|
-| ChatGPT | | /36 | | |
-| Gemini | | /36 | | |
-| Perplexity | | /36 | | |
-| Bing Copilot | | /36 | | |
-| **Ortalama** | | **/36** | | Hedef ≥ 27 |
+| ChatGPT | | /39 | | |
+| Gemini | | /39 | | |
+| Perplexity | | /39 | | |
+| Bing Copilot | | /39 | | |
+| **Ortalama** | | **/39** | | Hedef ≥ 29 |
 
 ## Point C sayaç (tur 2 ile birlikte)
 
@@ -68,6 +69,3 @@ Toplam: /36
 | Facebook | | ☐ |
 | Dizin 1 | | ☐ |
 | Dizin 2 | | ☐ |
-| **Toplam bağımsız** | | **/10–20** |
-
-Merge-gün: [`point-c-merge-day.md`](./point-c-merge-day.md) · Pano: [`ai-alisveris-ay-sonu-pano.md`](./ai-alisveris-ay-sonu-pano.md)

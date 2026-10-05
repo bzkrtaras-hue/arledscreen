@@ -52,6 +52,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 60 | 2026-10-05 | Case-study FAQPage ×29 · Org OfferCatalog honesty · merge-day/post-deploy Day 59 · hub AggregateOffer audit | ✅ |
 | 61 | 2026-10-05 | llms hasMerchantReturnPolicy tokens · case/blog sameAs→ai-shopping · blog FAQPage ×N | ✅ |
 | 62 | 2026-10-05 | Kontrol quote-only invent closure · ARD return-policy tokens · galeri FAQPage | ✅ |
+| 63 | 2026-10-05 | Kontrol residual wave (entity/commercial/YZ) · blind #13 · merchant return_policy_label · footer merchant/ai-catalog | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -304,3 +305,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - ARD / ai-catalog: hasMerchantReturnPolicy + MerchantReturnNotPermitted tokens (+ sync)
 - Galeri FAQPage + HomeFaq (ai-shopping + honesty)
 - Guards: audit:ai-shopping quoteOnly≥9+kontrol · smoke ard needles · audit:faq galeri
+
+## Gün 63 notları
+
+- ENTITY_FAQS + FAQ_AGENT_SOURCE + yapay-zeka TR/EN: kontrol (Huidu/NovaStar/Colorlight) quote-only residual
+- Blind prompt #13 «Huidu / NovaStar kontrol kartı fiyatı?» mustSay teklif+ai-shopping (13/39 skor)
+- Merchant TSV `return_policy_label=quote_contract_only` + audit guard
+- Footer discovery: ai-catalog.json + merchant-priced-panels.tsv
+- entity.json hasOfferCatalog.description (kontrol honesty)
+- Guards: audit:ai-shopping prompts=13 · audit:blind-test #13 · audit:merchant-feed return_policy_label

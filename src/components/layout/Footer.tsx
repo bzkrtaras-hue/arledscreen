@@ -248,6 +248,14 @@ export function Footer({ locale }: FooterProps) {
               llms-full.txt
             </a>
             {" · "}
+            <a href="/.well-known/ai-catalog.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
+              ai-catalog.json
+            </a>
+            {" · "}
+            <a href="/feeds/merchant-priced-panels.tsv" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
+              merchant-priced-panels.tsv
+            </a>
+            {" · "}
             <a href="/sitemap.xml" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
               sitemap.xml
             </a>

@@ -149,6 +149,8 @@ const doc = {
     name: "NXTIONSTAR yayımlanmış panel USD (2026)",
     url: `${SITE}/catalog.json`,
     numberOfItems: 12,
+    description:
+      "Yalnızca 12 priced panel (shippingDetails: nakliye hariç, ücretsiz kargo yok; hasMerchantReturnPolicy: MerchantReturnNotPermitted). Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yok — yazılı teklif; kontrol kartına USD uydurulmaz.",
   },
   citeOneLiner: ENTITY_CITE_ONE_LINER,
   citeShort: ENTITY_CITE_SHORT,
