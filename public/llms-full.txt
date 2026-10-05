@@ -55,7 +55,9 @@ Kanonik piksel aralıkları (tek liste; eski P1.8 / P3.9 / P3.8 pazarlama adlar�
 - GOB: P1.25, P1.53, P1.86
 - İnce pitch: P0.9, P1.25
 - Esnek: P1.86, P2.5
-- Ayrıca: şeffaf, kiralık, poster/totem, menuboard, kiosk, dijital ekran (üst küme), modül ve kontrol sistemleri
+- Ayrıca: şeffaf (vitrin), transparan/mesh (cephe), kiralık, poster/totem, menuboard, kiosk, dijital ekran (üst küme), modül ve kontrol sistemleri
+- Şeffaf: https://arledscreen.com/tr/products/seffaf-led-ekran/
+- Transparan (mesh): https://arledscreen.com/tr/products/transparan-led-ekran/
 
 Model bazında teknik özellik sayfaları için https://arledscreen.com/llms.txt dosyasındaki "NXTIONSTAR modelleri" listesine bakın.
 

@@ -33,6 +33,7 @@ export const CANONICAL_LINEUP = {
   },
   otherGroups: [
     { label: "Şeffaf LED ekran", href: "/tr/products/seffaf-led-ekran/" },
+    { label: "Transparan (mesh) LED ekran", href: "/tr/products/transparan-led-ekran/" },
     { label: "Kiralık LED ekran", href: "/tr/products/kiralik-led-ekran/" },
     { label: "Poster / totem LED ekran", href: "/tr/products/poster-led-ekran/" },
     { label: "Menuboard (kafe / restoran dikey içerik)", href: "/tr/rehber/vitrin-led-ekran/" },

@@ -128,6 +128,7 @@ function productClusterLinks(except?: string): CommercialLink[] {
     ["dis-mekan-led-ekran", "Dış mekan LED ekran"],
     ["gob-led-ekran", "GOB LED"],
     ["seffaf-led-ekran", "Şeffaf LED"],
+    ["transparan-led-ekran", "Transparan LED"],
     ["esnek-led-ekran", "Esnek LED"],
     ["poster-led-ekran", "Poster / Totem LED"],
     ["kiralik-led-ekran", "Kiralık LED"],
@@ -651,7 +652,7 @@ const USE_PAGES: CommercialPage[] = [
       { src: "/projects/modules/outdoor-facade.jpg", alt: "Cephe LED ekran" },
       { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekan cephe LED" },
     ],
-    products: ["dis-mekan-led-ekran"],
+    products: ["dis-mekan-led-ekran", "transparan-led-ekran"],
   }),
   usagePage({
     slug: "billboard-led-ekran",

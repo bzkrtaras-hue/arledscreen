@@ -448,43 +448,49 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
   {
     slug: "seffaf-led-ekran",
     name: "Şeffaf LED Ekran",
-    h1: "Şeffaf (Transparan) LED Ekran",
-    lead: "Cam yüzeylerde görüşü kapatmadan dijital içerik",
-    title: "Şeffaf LED Ekran | Vitrin ve Cam Cephe Uygulamaları | ARLEDSCREEN",
+    h1: "Şeffaf LED Ekran",
+    lead: "Cam vitrinde arkadaki ürünü göstererek dijital içerik",
+    title: "Şeffaf LED Ekran | Vitrin ve Cam Uygulamaları | ARLEDSCREEN",
     description:
-      "Mağaza vitrini, cam cephe ve showroom için şeffaf LED ekran. Cam ölçüsü, montaj tipi ve izleme mesafesi keşifte belirlenir; teklif, montaj ve servis ARLEDSCREEN'den.",
-    short: "Cam vitrin ve cephelerde arkadaki görüşü koruyan açık yapılı ekranlar.",
-    tag: "Vitrin · Cam cephe · Showroom",
+      "Mağaza vitrini ve showroom camı için şeffaf LED ekran. Yüksek şeffaflıklı açık yapı; cam ölçüsü, montaj tipi ve izleme mesafesi keşifte belirlenir. Transparan (mesh) cephe LED ile karıştırılmamalıdır.",
+    short: "Vitrin camında arkadaki teşhiri koruyan yüksek şeffaflıklı LED.",
+    tag: "Vitrin · Showroom · Yüksek şeffaflık",
     family: "Dış Mekân LED Ekranlar",
-    types: ["Vitrin arkası", "Cam cephe", "Asma (askılı) kurulum", "Showroom bölmesi"],
-    image: "/projects/applications/led-poster-totems.jpg",
-    imageAlt: "Cam vitrin önünde konumlanmış ince profilli LED ekranlar",
+    types: ["Vitrin arkası", "Showroom camı", "Asma (askılı) kurulum", "İç / yarı outdoor cam"],
+    image: "/projects/applications/seffaf-led-vitrin.jpg",
+    imageAlt: "Mağaza vitrin camında şeffaf LED ekran — arkadaki ürünler görünür",
     intro: [
-      "Şeffaf LED ekranlarda LED'ler ince çubuklar hâlinde dizilir ve aralarında boşluk bırakılır. Bu sayede ekran çalışırken de camın arkası görülebilir, mağaza içi gün ışığından tamamen kopmaz.",
-      "Ekranın ne kadar şeffaf görüneceği ile görüntü keskinliği arasında bir denge vardır. Doğru seçim cam ölçüsüne, izleyicinin uzaklığına ve ekranın gün içinde maruz kalacağı ışığa göre keşifte yapılır.",
+      "Şeffaf LED ekranlarda LED’ler ince çubuklar hâlinde dizilir ve aralarında boşluk bırakılır. Bu sayede ekran çalışırken de camın arkası görülebilir; mağaza içi gün ışığından tamamen kopmaz.",
+      "Bu grup perakende vitrin ve showroom camı için planlanır. Bina cephesi ölçeğinde, dış hava koşullarına açık mesh/ızgara form faktörü için ayrı ürün grubumuz vardır: Transparan LED ekran.",
+      "Ekranın ne kadar şeffaf görüneceği ile görüntü keskinliği arasında bir denge vardır. Doğru seçim cam ölçüsüne, izleyicinin uzaklığına ve ışığa göre keşifte yapılır.",
     ],
     highlights: [
-      "Camın arkasındaki görüşü büyük ölçüde korur",
-      "İnce ve hafif yapı, cam yüzeye yakın montaj",
-      "Vitrin ve cephe ölçüsüne göre planlama",
+      "Camın arkasındaki ürün teşhirini büyük ölçüde korur",
+      "İnce ve hafif yapı, vitrin camına yakın montaj",
+      "Vitrin ölçüsüne göre planlama",
       "Keşif, montaj ve teknik servis tek ekipten",
     ],
     uses: [
       { title: "Mağaza vitrini", body: "Ürün teşhirini kapatmadan kampanya ve marka içeriği gösterme." },
-      { title: "Cam cephe", body: "Bina cephesindeki camları dijital yüzeye dönüştürme." },
       { title: "Showroom", body: "Bölmeler ve iç camlarda hafif, göz yormayan içerik alanı." },
       { title: "Fuar ve sergi", body: "Stantlarda katmanlı ve derinlik hissi veren tasarımlar." },
+      { title: "Perakende lobi", body: "Cam bölmelerde yönlendirme ve kampanya yayını." },
     ],
     pitches: [],
     seriesCategories: ["transparent"],
     guide: { href: "/tr/rehber/vitrin-led-ekran/", label: "Vitrin LED ekran rehberi" },
     projectType: "magaza",
-    whatsapp: "Merhaba, vitrin / cam cephe için şeffaf LED ekran hakkında bilgi almak istiyorum. Cam ölçüsü ve konum:",
+    whatsapp: "Merhaba, vitrin / showroom için şeffaf LED ekran hakkında bilgi almak istiyorum. Cam ölçüsü ve konum:",
     faqs: [
+      {
+        question: "Şeffaf LED ile transparan LED aynı şey mi?",
+        answer:
+          "Hayır. Şeffaf LED bu sitede vitrin/showroom camı için yüksek şeffaflıklı açık yapıyı ifade eder. Transparan LED, cephe ölçeğinde mesh/ızgara form faktörünü ifade eder — ayrı ürün sayfasında anlatılır.",
+      },
       {
         question: "Şeffaf LED ekran ne zaman tercih edilir?",
         answer:
-          "Vitrin veya cam cephe gibi arkadaki görüşün korunması gereken yüzeylerde tercih edilir. Tam kapalı bir görüntü yüzeyi gerekiyorsa standart LED ekran daha uygun olabilir.",
+          "Vitrin veya showroom gibi arkadaki ürünün görünür kalması gereken cam yüzeylerde tercih edilir. Tam kapalı bir görüntü yüzeyi gerekiyorsa standart LED ekran daha uygun olabilir.",
       },
       {
         question: "Gündüz vitrinde içerik okunur mu?",
@@ -495,6 +501,60 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
         question: "Montaj cama mı yapılır?",
         answer:
           "Çoğunlukla cama yakın bir taşıyıcıya, tavana asılarak veya zemine oturan bir çerçeveyle kurulur. Yöntem, cam ve tavan yapısına göre keşifte belirlenir.",
+      },
+    ],
+  },
+  {
+    slug: "transparan-led-ekran",
+    name: "Transparan LED Ekran",
+    h1: "Transparan (Mesh) LED Ekran",
+    lead: "Cam cephe ve dış mekân için ızgara yapılı şeffaf form",
+    title: "Transparan LED Ekran | Cam Cephe ve Mesh LED | ARLEDSCREEN",
+    description:
+      "Bina cam cephesi ve dış mekân uygulamaları için transparan (mesh/ızgara) LED ekran. Açık yapı ile arkadaki mimari görünür kalır. Vitrin odaklı şeffaf LED grubundan ayrı planlanır; keşif ve teklif ARLEDSCREEN’den.",
+    short: "Cephe ölçeğinde mesh/ızgara transparan LED — mimari görünürlüğü korur.",
+    tag: "Cam cephe · Mesh · Dış / yarı outdoor",
+    family: "Dış Mekân LED Ekranlar",
+    types: ["Cam cephe mesh", "Izgara / grid panel", "Yarı outdoor cephe", "AVM cam koridor"],
+    image: "/projects/applications/transparan-led-cephe.jpg",
+    imageAlt: "Cam bina cephesinde transparan mesh LED ekran — arkadaki katlar görünür",
+    intro: [
+      "Transparan LED ekran, LED’lerin ızgara/mesh düzeninde boşluklu yerleştirildiği açık bir form faktördür. Amaç, cephe ölçeğinde dijital içerik gösterirken mimari derinliği ve ışık geçişini tamamen kapatmamaktır.",
+      "Bu grup, mağaza vitrinindeki yüksek şeffaflıklı Şeffaf LED ekrandan ayrıdır. Cephe yüksekliği, rüzgâr/yağmur maruziyeti ve izleme mesafesi keşifte netleşir; model önerisi buna göre yapılır.",
+      "Parlaklık, IP sınıfı ve şeffaflık oranı sitede sabit yayımlanmaz; yazılı teklifte proje koşullarına göre belirtilir.",
+    ],
+    highlights: [
+      "Cephe ölçeğinde açık yapı",
+      "Arkada mimari / kat görünürlüğü korunabilir",
+      "Cam cephe ve yarı outdoor senaryolara uygun planlama",
+      "Keşif, montaj ve teknik servis tek ekipten",
+    ],
+    uses: [
+      { title: "Cam cephe", body: "Bina cephesindeki camları dijital yüzeye dönüştürme." },
+      { title: "AVM dış / ara cephe", body: "Geniş cam yüzeylerde marka ve kampanya yayını." },
+      { title: "Showroom cephe", body: "Dışarıdan görünen ama içeriyi tamamen kesmeyen uygulamalar." },
+      { title: "Etkinlik mimarisi", body: "Geçici veya sabit cephe katmanlı tasarımlar." },
+    ],
+    pitches: [],
+    seriesCategories: ["transparent"],
+    guide: { href: "/tr/rehber/dis-mekan-led-ekran/", label: "Dış mekân LED ekran rehberi" },
+    projectType: "dis-mekan",
+    whatsapp: "Merhaba, cam cephe için transparan (mesh) LED ekran hakkında bilgi almak istiyorum. Cephe ölçüsü ve konum:",
+    faqs: [
+      {
+        question: "Transparan LED ile şeffaf LED farkı nedir?",
+        answer:
+          "Şeffaf LED vitrin/showroom camı için yüksek şeffaflıklı uygulamayı; transparan LED cephe ölçeğinde mesh/ızgara formu ifade eder. İkisi de ‘arkası görünen’ ailede olsa da kullanım yeri ve form faktörü farklıdır.",
+      },
+      {
+        question: "Her dış cephe için transparan LED uygun mu?",
+        answer:
+          "Hayır. Yoğun güneş, rüzgâr ve uzun mesafe izleme koşullarında standart dış mekân LED veya başka bir çözüm daha uygun olabilir. Karar keşifte verilir.",
+      },
+      {
+        question: "Şeffaflık oranı nedir?",
+        answer:
+          "Model ve piksel düzenine göre değişir. Sitede sabit yüzde yayımlamayız; keşif sonrası teklifte paylaşılır.",
       },
     ],
   },

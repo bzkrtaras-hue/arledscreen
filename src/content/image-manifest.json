@@ -237,6 +237,24 @@
 500
 ]
 },
+"/projects/applications/seffaf-led-vitrin.jpg": {
+"h": 720,
+"w": 1280,
+"widths": [
+480,
+960,
+1280
+]
+},
+"/projects/applications/transparan-led-cephe.jpg": {
+"h": 720,
+"w": 1280,
+"widths": [
+480,
+960,
+1280
+]
+},
 "/projects/billboard-arled.jpg": {
 "h": 3840,
 "w": 2160,

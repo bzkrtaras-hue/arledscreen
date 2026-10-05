@@ -137,7 +137,7 @@ export default async function ProductsPage({ params }: PageProps) {
                   <li><span className="font-semibold">GOB:</span> {CANONICAL_LINEUP.gob.pitches.join(", ")}</li>
                   <li><span className="font-semibold">İnce pitch:</span> {CANONICAL_LINEUP.finePitch.pitches.join(", ")}</li>
                   <li><span className="font-semibold">Esnek:</span> {CANONICAL_LINEUP.flexible.pitches.join(", ")}</li>
-                  <li><span className="font-semibold">Diğer:</span> şeffaf, kiralık, poster/totem, menuboard, kiosk, dijital ekran; modül ve kontrol; Huidu / NovaStar / Colorlight kontrolcüler</li>
+                  <li><span className="font-semibold">Diğer:</span> şeffaf (vitrin), transparan/mesh (cephe), kiralık, poster/totem, menuboard, kiosk, dijital ekran; modül ve kontrol; Huidu / NovaStar / Colorlight kontrolcüler</li>
                 </ul>
               </aside>
               <div className="space-y-12">
@@ -189,7 +189,8 @@ export default async function ProductsPage({ params }: PageProps) {
                     { title: "Mağaza, lobi ve salon", body: "Mağaza içi, showroom, otel lobisi ve etkinlik salonları.", href: "/tr/rehber/ic-mekan-led-ekran/" },
                     { title: "Dış mekân ve cephe", body: "Cephe, reklam alanı ve tabela uygulamaları.", href: "/tr/rehber/dis-mekan-led-ekran/" },
                     { title: "Kiralık sahne ve etkinlik", body: "Konser, fuar ve lansmanlar için kiralama kabinleri.", href: "/tr/rehber/led-ekran/" },
-                    { title: "Vitrin ve şeffaf LED", body: "Cam cephe ve vitrinlerde görüş hattını koruyan uygulamalar.", href: "/tr/rehber/vitrin-led-ekran/" },
+                    { title: "Vitrin ve şeffaf LED", body: "Mağaza vitrininde ürün teşhirini koruyan yüksek şeffaflıklı uygulamalar.", href: "/tr/products/seffaf-led-ekran/" },
+                    { title: "Transparan / mesh LED", body: "Cam cephe ölçeğinde arkası görünen ızgara form faktörü.", href: "/tr/products/transparan-led-ekran/" },
                     { title: "Totem ve LED poster", body: "Dikey LED poster ve dijital totem uygulamaları.", href: "/tr/rehber/poster-led-ekran/" },
                   ].map((item) => (
                     <Link
