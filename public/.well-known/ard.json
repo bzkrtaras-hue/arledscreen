@@ -95,6 +95,51 @@
       "updatedAt": "2026-10-05T18:44:09Z"
     },
     {
+      "identifier": "urn:air:arledscreen.com:entity:about",
+      "displayName": "ARLEDSCREEN hakkımızda (kimlik)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/about/",
+      "description": "Firma kimliği: Gaziosmanpaşa; NXTIONSTAR ürün markası; satıcı ARLEDSCREEN. Blind #26 seller invent.",
+      "representativeQueries": [
+        "ARLEDSCREEN kimdir?",
+        "NXTIONSTAR mı ARLEDSCREEN mi satıyor?",
+        "ARLEDSCREEN anahtar teslim platformu mu?"
+      ],
+      "tags": ["about", "entity", "GEO", "disambiguation"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T00:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:calculator",
+      "displayName": "LED ekran fiyat hesaplayıcı",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/hesaplayici/",
+      "description": "Yaklaşık m² maliyet; catalog.json / ai-shopping.json ile aynı panel USD. Ücretsiz kargo yok; nihai tutar yazılı teklif.",
+      "representativeQueries": [
+        "LED ekran m2 fiyat hesaplayıcı",
+        "panel maliyet yaklaşık",
+        "extrasUsd kontrol kartı"
+      ],
+      "tags": ["pricing", "calculator", "commerce"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T00:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:kontrol-hub",
+      "displayName": "Huidu kontrol kartları (quote-only)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/huidu-kontrol-kartlari/",
+      "description": "Kontrol kartları quote-only — list USD yok; extrasUsd.controlCard ≠ marka list SKU. Yazılı teklif.",
+      "representativeQueries": [
+        "Huidu kontrol kartı fiyatı",
+        "NovaStar kontrol fiyatı",
+        "Colorlight kontrol kartı"
+      ],
+      "tags": ["kontrol", "quote-only", "shopping"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T00:30:00Z"
+    },
+    {
       "identifier": "urn:air:arledscreen.com:proof:case-studies",
       "displayName": "ARLEDSCREEN yayımlanmış LED proje kayıtları",
       "type": "text/html",
@@ -160,7 +205,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 26 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 27 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",

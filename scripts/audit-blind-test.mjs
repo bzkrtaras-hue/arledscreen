@@ -381,6 +381,18 @@ if (
 ) {
   errors.push("blind prompt #26 mustSay must include ARLEDSCREEN + ürün markası + Gaziosmanpaşa");
 }
+const pBlind27 = PROMPTS.find((x) => x.id === 27);
+if (!pBlind27 || !/turnkey|tek süreç|anahtar teslim/i.test(pBlind27.q)) {
+  errors.push("blind prompt #27 must cover turnkey / tek süreç / anahtar teslim invent");
+}
+if (
+  pBlind27 &&
+  (!pBlind27.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind27.mustSay?.includes("yazılı teklif") ||
+    !pBlind27.mustSay?.includes("ARLEDSCREEN"))
+) {
+  errors.push("blind prompt #27 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

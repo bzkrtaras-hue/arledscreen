@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 26 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 27 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 26) errors.push(`blindTestPrompts must be 26 (got ${prompts.length})`);
+if (prompts.length !== 27) errors.push(`blindTestPrompts must be 27 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/26 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 26 kör test intent");
+if (!/27 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 27 kör test intent");
 }
-if (/2[0-5] kör test/i.test(ard) && !/26 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–25 kör test without 26");
+if (/2[0-6] kör test/i.test(ard) && !/27 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–26 kör test without 27");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -263,6 +263,11 @@ if (!p25 || !/mühendislik|engineering/i.test(p25.q || "")) {
 const p26 = (doc.blindTestPrompts || []).find((p) => p.id === 26);
 if (!p26 || !/satıyor|satiyor/i.test(p26.q || "")) {
   errors.push("blindTestPrompts #26 must cover NXTIONSTAR vs ARLEDSCREEN seller invent");
+}
+// Day 79: turnkey / tek süreç / platform invent
+const p27 = (doc.blindTestPrompts || []).find((p) => p.id === 27);
+if (!p27 || !/turnkey|tek süreç|anahtar teslim/i.test(p27.q || "")) {
+  errors.push("blindTestPrompts #27 must cover turnkey / tek süreç / anahtar teslim invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

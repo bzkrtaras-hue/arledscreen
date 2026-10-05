@@ -36,7 +36,7 @@ export function AiCompatSection({ locale }: Props) {
       <p className="mt-6 max-w-3xl text-sm text-ink-muted">
         {locale === "tr"
           ? "Arama ve proje ekipleri için net ifade: yapay zekâ uyumlu LED ekran, AI medya sunucu entegrasyonu ve kontrol yazılımı hattı — entegrasyon Gaziosmanpaşa keşif ve yazılı teklifte tanımlanır; sıralama iddiası yoktur."
-          : "For search and project teams: AI-compatible LED displays, media-server integration and control-software pipelines — integration is defined in the Gaziosmanpaşa survey and written quote; no ranking claim."}
+          : "For search and project teams: LED displays sized for AI content, media-server integration and control-software pipelines — matching is defined in the Gaziosmanpaşa survey and written quote; no ranking claim."}
       </p>
       <p className="mt-4">
         <Link

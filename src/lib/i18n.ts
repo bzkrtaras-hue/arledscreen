@@ -271,12 +271,12 @@ const en: Dictionary = {
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },
       { value: "Istanbul", label: "Gaziosmanpaşa HQ" },
-      { value: "Turnkey", label: "Survey · install · service" },
+      { value: "B2B", label: "Survey · install · service" },
     ],
   },
   sections: {
     modules: {
-      eyebrow: "Platform modules",
+      eyebrow: "Site tools",
       title: "Everything you need — without the clutter",
       description:
         "Explore products, calculator, configurator and project references. Each tool lives on its own page; here we show what it does.",
@@ -316,7 +316,7 @@ const en: Dictionary = {
       title: "Answers enterprise buyers ask first",
     },
     aiCompat: {
-      eyebrow: "AI infrastructure",
+      eyebrow: "AI integration",
       title: "LED walls for AI content and media-server workflows",
       description:
         "NXTIONSTAR displays are specified by ARLEDSCREEN so AI content engines, media servers and control software can be matched in the Gaziosmanpaşa survey and written quote — not sold as an invented AI-ready or engineering-standard SKU.",
@@ -338,7 +338,7 @@ const en: Dictionary = {
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },
       { value: "Istanbul", label: "Gaziosmanpaşa HQ" },
-      { value: "Turnkey", label: "Survey · install · service" },
+      { value: "B2B", label: "Survey · install · service" },
     ],
   },
   references: {
@@ -510,7 +510,7 @@ const en: Dictionary = {
   footer: {
     tagline: "NXTIONSTAR LED displays · sold and installed by ARLEDSCREEN (Gaziosmanpaşa).",
     rights: "All rights reserved.",
-    productLine: "Platform",
+    productLine: "Products",
     engineering: "Survey, installation and technical service",
   },
   common: {
@@ -573,12 +573,12 @@ const tr: Dictionary = {
     stats: [
       { value: "NXTIONSTAR", label: "Kendi markamız" },
       { value: "İstanbul", label: "Gaziosmanpaşa merkez" },
-      { value: "Anahtar teslim", label: "Keşif · montaj · servis" },
+      { value: "B2B", label: "Keşif · montaj · servis" },
     ],
   },
   sections: {
     modules: {
-      eyebrow: "Platform modülleri",
+      eyebrow: "Site araçları",
       title: "Projeyi netleştiren araçlar",
       description:
         "NXTIONSTAR ürünleri, fiyat hesaplayıcı, ekran konfigüratörü ve saha referansları. Her araç kendi sayfasında; burada işlevlerini özetliyoruz.",
@@ -618,7 +618,7 @@ const tr: Dictionary = {
       title: "LED ekran projelerinde sık sorulan sorular",
     },
     aiCompat: {
-      eyebrow: "Yapay zekâ altyapısı",
+      eyebrow: "YZ entegrasyonu",
       title: "Yapay zekâ içerik ve medya sunucu hatları için LED duvarlar",
       description:
         "NXTIONSTAR ekranlar, yapay zekâ ile üretilen veya zamanlanan içeriği oynatan medya sunucuları ve kontrol yazılımlarıyla Gaziosmanpaşa keşif ve yazılı teklifte eşleştirilir — uydurma tam uyumluluk SKU’su yoktur.",
@@ -640,7 +640,7 @@ const tr: Dictionary = {
     stats: [
       { value: "NXTIONSTAR", label: "Kendi markamız" },
       { value: "İstanbul", label: "Gaziosmanpaşa merkez" },
-      { value: "Anahtar teslim", label: "Keşif · montaj · servis" },
+      { value: "B2B", label: "Keşif · montaj · servis" },
     ],
   },
   references: {
@@ -812,7 +812,7 @@ const tr: Dictionary = {
   footer: {
     tagline: "NXTIONSTAR, ARLEDSCREEN’in kendi markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç ve dış mekân LED ekran satışı, montajı ve teknik servisi.",
     rights: "Tüm hakları saklıdır.",
-    productLine: "Platform",
+    productLine: "Ürünler",
     engineering: "Telefon, WhatsApp ve e-posta ile proje desteği",
   },
   common: {
@@ -901,7 +901,7 @@ const ar: Dictionary = {
     stats: [
       { value: "NXTIONSTAR", label: "علامتنا الخاصة" },
       { value: "إسطنبول", label: "المقر: غازي عثمان باشا" },
-      { value: "تسليم متكامل", label: "معاينة · تركيب · صيانة" },
+      { value: "B2B", label: "معاينة · تركيب · صيانة" },
     ],
   },
   hero: {
@@ -914,13 +914,13 @@ const ar: Dictionary = {
     stats: [
       { value: "NXTIONSTAR", label: "علامتنا الخاصة" },
       { value: "إسطنبول", label: "المقر: غازي عثمان باشا" },
-      { value: "تسليم متكامل", label: "معاينة · تركيب · صيانة" },
+      { value: "B2B", label: "معاينة · تركيب · صيانة" },
     ],
   },
   footer: {
-    tagline: "أنظمة شاشات LED للشركات للبيئات البصرية الحرجة.",
+    tagline: "بيع وتركيب وخدمة شاشات LED للشركات من غازي عثمان باشا.",
     rights: "جميع الحقوق محفوظة.",
-    productLine: "المنصة",
+    productLine: "المنتجات",
     engineering: "المعاينة والتركيب والخدمة الفنية",
   },
   common: {
@@ -988,7 +988,7 @@ const ru: Dictionary = {
     stats: [
       { value: "NXTIONSTAR", label: "Наш собственный бренд" },
       { value: "Стамбул", label: "Офис: Газиосманпаша" },
-      { value: "Под ключ", label: "Обследование · монтаж · сервис" },
+      { value: "B2B", label: "Обследование · монтаж · сервис" },
     ],
   },
   hero: {
@@ -1001,13 +1001,13 @@ const ru: Dictionary = {
     stats: [
       { value: "NXTIONSTAR", label: "Наш собственный бренд" },
       { value: "Стамбул", label: "Офис: Газиосманпаша" },
-      { value: "Под ключ", label: "Обследование · монтаж · сервис" },
+      { value: "B2B", label: "Обследование · монтаж · сервис" },
     ],
   },
   footer: {
-    tagline: "B2B LED-системы для критически важных визуальных сред.",
+    tagline: "Продажа, монтаж и сервис B2B LED из Газиосманпаши.",
     rights: "Все права защищены.",
-    productLine: "Платформа",
+    productLine: "Продукты",
     engineering: "Обследование, монтаж и техническое обслуживание",
   },
   common: {

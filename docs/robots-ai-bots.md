@@ -20,6 +20,7 @@ Amaç: ChatGPT / Gemini / Perplexity / Bing Copilot / Amazon search ajanlarını
 | Amazon | `Amzn-SearchBot`, `Amazonbot` → Allow |
 | Apple | `Applebot`, `Applebot-Extended` → Allow |
 | Yandex (TR GEO) | `YandexBot`, `Yandex` → Allow |
+| DuckDuckGo | `DuckAssistBot`, `DuckDuckBot` → Allow |
 | **Host** | `arledscreen.com` (şemasız — Bing Host) |
 | **Sitemap** | `https://arledscreen.com/sitemap.xml` |
 

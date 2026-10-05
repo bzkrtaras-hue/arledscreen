@@ -24,8 +24,8 @@ export function getTrustItems() {
     },
     {
       Icon: ClipboardList,
-      title: "Keşiften devreye almaya tek süreç",
-      body: "İhtiyaç analizi, keşif, ürün seçimi, montaj ve devreye alma aynı proje ekibiyle planlanır.",
+      title: "Keşiften devreye alma aynı ekiple planlanır",
+      body: "İhtiyaç analizi, keşif, ürün seçimi, montaj ve devreye alma Gaziosmanpaşa merkezli aynı proje ekibiyle planlanır; yazılı teklifle netleşir.",
     },
     {
       Icon: Wrench,

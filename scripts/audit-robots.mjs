@@ -80,6 +80,7 @@ const REQUIRED = [
   "Amzn-SearchBot",
   "Amazonbot",
   "DuckAssistBot",
+  "DuckDuckBot",
   "Applebot",
   "YandexBot",
 ];

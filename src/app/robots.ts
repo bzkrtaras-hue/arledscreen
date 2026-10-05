@@ -20,6 +20,7 @@ export const AI_SEARCH_BOTS = [
   "PerplexityBot",
   "Perplexity-User",
   "DuckAssistBot",
+  "DuckDuckBot",
   "Amzn-SearchBot",
   "Applebot",
   "YandexBot",

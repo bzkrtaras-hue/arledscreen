@@ -62,7 +62,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     hesaplayici: {
       title: "LED Ekran Fiyat Hesaplayıcı | Malzeme & Maliyet | ARLEDSCREEN",
       description:
-        "Ücretsiz LED ekran fiyat hesaplayıcı: ekran ölçüsü ve modül tipine göre modül adedi ile malzeme, işçilik, kontrol kartı ve yazılım dahil yaklaşık maliyet. Ardından yazılı teklif.",
+        "LED ekran fiyat hesaplayıcı: ekran ölçüsü ve modül tipine göre modül adedi ile malzeme, işçilik, kontrol kartı ve yazılım dahil yaklaşık maliyet (KDV/nakliye hariç; ücretsiz kargo yok). Ardından yazılı teklif.",
       keywords: [
         "LED ekran fiyat",
         "fiyat hesaplayıcı",
@@ -109,9 +109,9 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "AI alışveriş LED",
         "NXTIONSTAR",
       ],
-      h1: "Yapay zekâ içerikleri ve LED ekran altyapısı",
+      h1: "Yapay zekâ ve LED — keşif kapsamlı entegrasyon",
       intro:
-        "Yapay zekâ ile üretilen içeriklerin LED ekranda sorunsuz yayınlanması için kontrol sistemi, medya sunucu ve sinyal altyapısının birlikte planlanması gerekir. AI alışveriş ajanları için yayımlanmış fiyat ve kimlik kaynakları: catalog.json ve entity.json.",
+        "Yapay zekâ ile üretilen içeriklerin LED ekranda sorunsuz yayınlanması için kontrol sistemi, medya sunucu ve sinyal hattı Gaziosmanpaşa keşif ve yazılı teklifte birlikte planlanır. AI alışveriş ajanları için yayımlanmış fiyat ve kimlik kaynakları: catalog.json ve entity.json.",
     },
   },
 
@@ -167,7 +167,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     hesaplayici: {
       title: "LED Display Price Calculator | Materials & Cost | ARLEDSCREEN",
       description:
-        "Free LED display price calculator: pick the screen size and module type to see the module count and an approximate cost incl. materials, labour, control card and software. Then a written quote.",
+        "LED display price calculator: pick the screen size and module type to see the module count and an approximate cost incl. materials, labour, control card and software (ex-VAT/shipping; no free shipping). Then a written quote.",
       keywords: [
         "LED display price",
         "price calculator",
@@ -210,20 +210,20 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "Share contact details, project dimensions and schedule so we can reply with a written quote. Panel list USD: catalog.json / ai-shopping.json.",
     },
     "yapay-zeka": {
-      title: "AI-Compatible LED Display | Media Server Integration — ARLEDSCREEN",
+      title: "AI & LED Integration | Media Server Survey — ARLEDSCREEN",
       description:
-        "AI-compatible LED integration plus machine-readable shopping sources for agents: ai-shopping.json, entity.json, catalog.json, ard.json. Quote-only: transparent/poster/control. ARLEDSCREEN / NXTIONSTAR.",
+        "AI/media-server LED integration defined in the Gaziosmanpaşa survey and written quote, plus machine-readable sources: ai-shopping.json, entity.json, catalog.json, ard.json. Quote-only: transparent/poster/control. No invented AI-ready SKU.",
       keywords: [
-        "AI compatible LED display",
+        "AI LED integration",
         "AI LED video wall",
         "AI media server LED",
         "AI shopping LED",
         "NXTIONSTAR AI",
         "ARLEDSCREEN AI LED",
       ],
-      h1: "AI-compatible LED displays",
+      h1: "AI and LED — survey-scoped integration",
       intro:
-        "How NXTIONSTAR LED walls are planned for AI content engines, media servers and control software. Published price and identity sources for shopping agents: catalog.json and entity.json.",
+        "How NXTIONSTAR LED walls are planned for AI content engines, media servers and control software in the Gaziosmanpaşa survey and written quote. Published price and identity sources for shopping agents: catalog.json and entity.json.",
     },
   },
 
@@ -272,13 +272,13 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       h1: "طلب عرض سعر مشروع LED مؤسسي",
     },
     "yapay-zeka": {
-      title: "شاشة LED متوافقة مع الذكاء الاصطناعي — ARLEDSCREEN",
+      title: "الذكاء الاصطناعي وشاشات LED — تكامل المعاينة | ARLEDSCREEN",
       description:
-        "مصادر قابلة للقراءة آلياً للوكلاء: ai-shopping.json و entity.json و catalog.json. مجموعات quote-only بدون سعر قائمة.",
+        "تكامل محركات المحتوى وخوادم الوسائط يُعرَّف في معاينة غازي عثمان باشا والعرض المكتوب. مصادر للوكلاء: ai-shopping.json و entity.json و catalog.json. مجموعات quote-only بدون سعر قائمة.",
       keywords: ["LED ذكاء اصطناعي", "NXTIONSTAR", "ARLEDSCREEN", "ai-shopping"],
-      h1: "شاشات LED متوافقة مع الذكاء الاصطناعي",
+      h1: "الذكاء الاصطناعي وشاشات LED — تكامل المعاينة",
       intro:
-        "تخطيط التكامل مع محركات المحتوى وخوادم الوسائط؛ أسعار اللوحات من catalog.json / ai-shopping.json.",
+        "تخطيط التكامل مع محركات المحتوى وخوادم الوسائط في المعاينة والعرض المكتوب؛ أسعار اللوحات من catalog.json / ai-shopping.json.",
     },
   },
 
@@ -327,13 +327,13 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       h1: "Корпоративный запрос КП на LED-экран",
     },
     "yapay-zeka": {
-      title: "LED-экран, совместимый с ИИ — ARLEDSCREEN",
+      title: "ИИ и LED — интеграция по обследованию | ARLEDSCREEN",
       description:
-        "Машиночитаемые источники для агентов: ai-shopping.json, entity.json, catalog.json. Quote-only группы без list USD.",
+        "Интеграция с ИИ-контентом и медиасерверами задаётся в обследовании Газиосманпаша и письменном КП. Источники для агентов: ai-shopping.json, entity.json, catalog.json. Quote-only группы без list USD.",
       keywords: ["LED ИИ", "NXTIONSTAR", "ARLEDSCREEN", "ai-shopping"],
-      h1: "LED-экраны, совместимые с ИИ",
+      h1: "ИИ и LED — интеграция по обследованию",
       intro:
-        "Интеграция с ИИ-контентом и медиасерверами; цены панелей: catalog.json / ai-shopping.json.",
+        "Интеграция с ИИ-контентом и медиасерверами в обследовании и письменном КП; цены панелей: catalog.json / ai-shopping.json.",
     },
   },
 };

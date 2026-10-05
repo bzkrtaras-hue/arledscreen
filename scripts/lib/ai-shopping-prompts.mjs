@@ -203,6 +203,13 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["ARLEDSCREEN", "ürün markası", "Gaziosmanpaşa"],
     mustNotSay: ["NXTIONSTAR satar", "bağımsız firma", "ücretsiz kargo dahil"],
   },
+  {
+    id: 27,
+    q: "ARLEDSCREEN anahtar teslim / turnkey / tek süreç platformu mu?",
+    paths: ["/tr/", "/tr/about/", "/entity.json", "/ai-shopping.json"],
+    mustSay: ["Gaziosmanpaşa", "yazılı teklif", "ARLEDSCREEN"],
+    mustNotSay: ["turnkey platform", "tek süreç", "anahtar teslim platform", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

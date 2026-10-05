@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-05 (Gün 78: blind #26 NXTIONSTAR vs ARLEDSCREEN seller + AR/RU invent)  
+Son güncelleme: 2026-10-05 (Gün 79: blind #27 turnkey / tek süreç invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 26 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 27 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 26 prompt (alışveriş + varlık)
+## 27 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -50,6 +50,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 24 | NXTIONSTAR NationStar ile aynı mı? | nxtionstar · entity · llms-full | **farklı** + **ARLEDSCREEN** + Gaziosmanpaşa | aynı marka / distribütör |
 | 25 | NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı? | `/tr/` · `/tr/yapay-zeka/` · entity · ai-shopping | **Gaziosmanpaşa** + **yazılı teklif** + **ARLEDSCREEN** | engineering standard / mühendislik standardı / küresel standard |
 | 26 | NXTIONSTAR mı ARLEDSCREEN mi satıyor? | nxtionstar · entity · about · llms-full | **ARLEDSCREEN** + **ürün markası** + Gaziosmanpaşa | NXTIONSTAR satar / bağımsız firma |
+| 27 | ARLEDSCREEN anahtar teslim / turnkey / tek süreç platformu mu? | `/tr/` · about · entity · ai-shopping | **Gaziosmanpaşa** + **yazılı teklif** + **ARLEDSCREEN** | turnkey platform / tek süreç |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -60,7 +61,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 78. Hedef tur 1 ≥ 39/78; tur 2 (Point C sonrası) ≥ 59/78.
+**Tur skoru** = toplam / 81. Hedef tur 1 ≥ 41/81; tur 2 (Point C sonrası) ≥ 61/81.
 
 ### Canlı tur kayıt şablonu
 
@@ -73,21 +74,21 @@ Incognito: evet/hayır
 # | Prompt | Skor 0-3 | Atıf URL | Not
 1 | ... |  |  |
 ...
-Toplam: /78
+Toplam: /81
 ```
 
 Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md) altına yazın (sahip).
 
 ## Site readiness kontrolleri (`audit:blind-test`)
 
-1. 26 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
+1. 27 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
 2. `entity.json`: telephone, Gaziosmanpaşa, citeOneLiner, disambiguatingDescription, NXTIONSTAR
 3. `catalog.json`: 12 dataset SKU; P2.5 iç = 32.18; groupAggregateOffers ≥ 3; shippingDetails; hasMerchantReturnPolicy (MerchantReturnNotPermitted)
 4. `ai-shopping.json`: 12 `pricedPanels` + `agentRules` (NationStar/NEXTSTAR/Alman ARLED) + ücretsiz kargo yok + quote-and-contract-only
 5. `llms-full.txt` §5 intent tablosu (dizin/slogan/AI-ready/Alman ARLED/NEXTSTAR/NationStar/mühendislik/seller/kurucu); slogan = ARLEDSCREEN ürün markası
 6. Quote-only gruplar (`kiralik`, `seffaf`, `transparan`) catalog `dataset`’te fiyat **yok**
 7. `/tr/yapay-zeka/` HTML’de ai-shopping + catalog + entity + priceValidUntil + Gaziosmanpaşa
-8. `ard.json` entity-profiles + ai-shopping discovery (**26 kör test**) + nxtionstar/founder/rehber; packs + Crunchbase/Merchant readiness
+8. `ard.json` entity-profiles + ai-shopping discovery (**27 kör test**) + nxtionstar/founder/rehber; packs + Crunchbase/Merchant readiness
 9. `/tr/rehber/` + `/en/rehber/`: engineering desk invent yok; catalog/ai-shopping cite
 10. `/tr/yapay-zeka/` + `/en/yapay-zeka/`: AI-ready SKU / uçtan uca / end-to-end invent yok
 11. Slogan: küresel/global standard ranking invent yok; NXTIONSTAR = ARLEDSCREEN ürün markası
@@ -98,5 +99,5 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 1. PR #55 merge + CF redeploy  
 2. `npm run post-deploy` (smoke GREEN → IndexNow; Day 51–53 contract echo)  
 3. `curl -sI` entity / catalog / ard / ai-shopping / entity-profiles → 200  
-4. Canlı kör tur 1 (26 prompt) → skor kartı  
+4. Canlı kör tur 1 (27 prompt) → skor kartı  
 5. Point C (GBP + LinkedIn + dizin + **Bing Places NAP**) → tur 2

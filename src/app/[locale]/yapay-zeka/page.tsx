@@ -258,7 +258,7 @@ export default async function YapayZekaPage({ params }: PageProps) {
       />
       <Section
         titleAs="h1"
-        eyebrow={locale === "tr" ? "Yapay zekâ altyapısı" : "AI infrastructure"}
+        eyebrow={locale === "tr" ? "YZ entegrasyonu" : "AI integration"}
         title={seo.h1 ?? c.navLabel}
         description={seo.intro}
         className="min-w-0 prose-seo"

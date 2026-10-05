@@ -40,7 +40,7 @@ const SOLUTIONS = [
   },
   {
     title: "Özel form ve kavisli",
-    body: "Kavisli, oval veya mimariye entegre ekranlar için projeye özel mühendislik.",
+    body: "Kavisli, oval veya mimariye entegre ekranlar için keşif ve yazılı teklifte boyutlandırma.",
     image: "/projects/applications/curved-led-tulips.jpg",
     alt: "Kavisli iç mekân LED duvar",
     guide: "/tr/rehber/mimari-muhendislik-led/",

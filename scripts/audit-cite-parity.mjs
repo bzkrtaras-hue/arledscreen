@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–78: ARD discovery prompt count must not drift behind blind suite
+// Day 74–79: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/26 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 26 kör test intent (not stale 17–25)");
+if (ardTxt && !/27 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 27 kör test intent (not stale 17–26)");
 }
-if (ardTxt && /1[7-9] kör test|2[0-5] kör test/i.test(ardTxt) && !/26 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–25 kör test without 26");
+if (ardTxt && /1[7-9] kör test|2[0-6] kör test/i.test(ardTxt) && !/27 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–26 kör test without 27");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -343,8 +343,30 @@ for (const rel of ["out/ar/index.html", "out/ru/index.html", "out/ar/about/index
 for (const rel of ["out/tr/yapay-zeka/index.html", "out/en/yapay-zeka/index.html"]) {
   const html = read(rel);
   if (!html) continue;
-  if (/uçtan uca uyum|end-to-end (fit|compatibility)/i.test(html)) {
-    errors.push(`${rel} must not invent uçtan uca / end-to-end compatibility`);
+  if (/uçtan uca uyum|end-to-end (fit|compatibility)|AI-Compatible LED Display/i.test(html)) {
+    errors.push(`${rel} must not invent uçtan uca / end-to-end / AI-Compatible SKU title`);
+  }
+}
+// Day 79: turnkey / tek süreç / ücretsiz calculator invent
+for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/tek süreç|turnkey platform|Anahtar teslim|Turnkey/i.test(html)) {
+    errors.push(`${rel} must not invent tek süreç / turnkey / Anahtar teslim`);
+  }
+}
+for (const rel of ["out/tr/hesaplayici/index.html", "out/en/hesaplayici/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/Ücretsiz LED ekran fiyat|Free LED display price/i.test(html)) {
+    errors.push(`${rel} must not lead with Ücretsiz/Free calculator invent`);
+  }
+}
+for (const rel of ["out/ar/index.html", "out/ru/index.html"]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/البيئات البصرية الحرجة|критически важных визуальных/i.test(html)) {
+    errors.push(`${rel} must not invent critical visual-spaces footer tagline`);
   }
 }
 

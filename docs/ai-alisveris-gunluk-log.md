@@ -68,6 +68,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 76 | 2026-10-05 | NationStar invent #24 · agentRules disambiguation · Bing Places NAP · skor hedef drift fix | ✅ |
 | 77 | 2026-10-05 | mühendislik/engineering standard invent #25 · masa invent · Apple BC/Yandex/Wikidata packs · YandexBot · ARD brand/founder/rehber | ✅ |
 | 78 | 2026-10-05 | AR/RU invent #26 seller · tek çatı/uçtan uca · Crunchbase/Merchant packs · IndexNow hubs | ✅ |
+| 79 | 2026-10-05 | turnkey/tek süreç #27 · Ücretsiz calculator · DuckDuckBot · ARD about/hesap/kontrol | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -448,3 +449,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Point C packs: `crunchbaseDraft` · `googleMerchantReadiness`
 - IndexNow: EN hubs + ic/dis/gob/ince-pitch + led-tabela rehber
 - skor hedef Tur 1 ≥ 39/78 · Tur 2 ≥ 59/78
+
+## Gün 79 notları
+
+- Blind #27 «anahtar teslim / turnkey / tek süreç platformu mu?» — skor **/81**; ARD **27 kör test**
+- TrustFacts tek süreç · Turnkey/Anahtar teslim stats · AR/RU visual footer invent kill
+- hesaplayici Ücretsiz/Free meta kill · EN/AR/RU yapay-zeka AI-Compatible soften
+- ARD: about + hesaplayici + huidu kontrol · IndexNow fiyat-hesap + ic/dis rehber
+- robots: **DuckDuckBot** · skor Tur 1 ≥ 41/81 · Tur 2 ≥ 61/81

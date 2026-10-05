@@ -51,7 +51,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       slug: "led-ekran",
       title: "LED Ekran Rehberi | Dijital Ekran Seçimi — ARLEDSCREEN",
       description:
-        "LED ekran nedir, dijital ekran projelerinde pitch, parlaklık ve kabin nasıl seçilir? ARLEDSCREEN / NXTIONSTAR ile İstanbul Gaziosmanpaşa’dan B2B keşif, teklif ve mühendislik kurulumu.",
+        "LED ekran nedir, dijital ekran projelerinde pitch, parlaklık ve kabin nasıl seçilir? ARLEDSCREEN / NXTIONSTAR ile İstanbul Gaziosmanpaşa’dan B2B keşif, yazılı teklif ve montaj.",
       keywords: [
         "LED ekran",
         "dijital ekran",
@@ -284,7 +284,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Disiplinler arası teslim paketi",
           body:
-            "ARLEDSCREEN teklifi yalnızca ürün listesi değil; ön BOM, güç özeti, sinyal şeması ve montaj notudur. Şantiye koordinasyonunda ana yüklenici, elektrik ve AV ekipleriyle tek muhatap olunur — İstanbul Gaziosmanpaşa merkezden.",
+            "ARLEDSCREEN teklifi yalnızca ürün listesi değil; ön BOM, güç özeti, sinyal şeması ve montaj notudur. Şantiye koordinasyonunda ana yüklenici, elektrik ve AV ekipleriyle Gaziosmanpaşa merkezinden yazılı muhatap olunur.",
         },
       ],
       faqs: [
