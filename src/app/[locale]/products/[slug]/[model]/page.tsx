@@ -19,7 +19,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { whatsappHref } from "@/lib/whatsapp";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string; model: string }>;
