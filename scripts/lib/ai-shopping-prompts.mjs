@@ -3113,6 +3113,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit InFocus yok"],
     mustNotSay: ["InFocus garantidir", "sabit InFocus True1", "tüm modeller InFocus", "Mondopad garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 271,
+    q: "LED ekran fascia cleat / saçak altı kleyt var mı? ARLEDSCREEN sabit fascia cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fascia cleat yok"],
+    mustNotSay: ["fascia cleat garantidir", "sabit fascia cleat True1", "tüm modeller fascia cleat", "saçak altı kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

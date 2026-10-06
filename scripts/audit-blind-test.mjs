@@ -3553,6 +3553,20 @@ if (
   errors.push("blind prompt #270 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit InFocus yok");
 }
 
+const pBlind271 = PROMPTS.find((x) => x.id === 271);
+if (!pBlind271 || !/fascia cleat|saçak altı kleyt/i.test(pBlind271.q)) {
+  errors.push("blind prompt #271 must cover sabit fascia cleat invent");
+}
+if (
+  pBlind271 &&
+  (!pBlind271.mustSay?.includes("yazılı teklif") ||
+    !pBlind271.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind271.mustSay?.includes("sabit fascia cleat yok"))
+) {
+  errors.push("blind prompt #271 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia cleat yok");
+}
+
+
 
 
 
