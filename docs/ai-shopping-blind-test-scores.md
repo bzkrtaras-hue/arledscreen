@@ -1,32 +1,32 @@
 # AI alışveriş — kör test skor kartı (sahip doldurur)
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (deploy sonrası) ≥ **531/1062** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **797/1062**  
-Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (354 prompt)
+Hedef: Tur 1 (deploy sonrası) ≥ **533/1065** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **799/1065**  
+Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (355 prompt)
 
 ## Tur 1 — deploy sonrası (PR #55 merge + CF Pages)
 
-Koşullar: incognito · TR konum tercih · aynı 354 prompt · yanıtta URL/atıf not et.
+Koşullar: incognito · TR konum tercih · aynı 355 prompt · yanıtta URL/atıf not et.
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /1062.
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /1065.
 
-| Model | Tarih | Konum | Incognito | Skor /1062 | Not |
+| Model | Tarih | Konum | Incognito | Skor /1065 | Not |
 |-------|-------|-------|-----------|-----------|-----|
-| ChatGPT | | TR / | evet | /1062 | |
-| Gemini | | | | /1062 | |
-| Perplexity | | | | /1062 | |
-| Bing Copilot | | | | /1062 | |
-| **Ortalama** | | | | **/1062** | Hedef ≥ 531 |
+| ChatGPT | | TR / | evet | /1065 | |
+| Gemini | | | | /1065 | |
+| Perplexity | | | | /1065 | |
+| Bing Copilot | | | | /1065 | |
+| **Ortalama** | | | | **/1065** | Hedef ≥ 533 |
 
 ## Tur 2 — Point C sonrası (≤2026-11-04)
 
-| Model | Tarih | Skor /1062 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /1065 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|-----------|---------------------------|-----|
-| ChatGPT | | /1062 | | |
-| Gemini | | /1062 | | |
-| Perplexity | | /1062 | | |
-| Bing Copilot | | /1062 | | |
-| **Ortalama** | | **/1062** | | Hedef ≥ 797 |
+| ChatGPT | | /1065 | | |
+| Gemini | | /1065 | | |
+| Perplexity | | /1065 | | |
+| Bing Copilot | | /1065 | | |
+| **Ortalama** | | **/1065** | | Hedef ≥ 799 |
 
 ## Prompt bazlı ham notlar (opsiyonel)
 

@@ -4645,6 +4645,20 @@ if (
   errors.push("blind prompt #354 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SMART Board 7000 yok");
 }
 
+const pBlind355 = PROMPTS.find((x) => x.id === 355);
+if (!pBlind355 || !/door flashing|kapı flaşör/i.test(pBlind355.q)) {
+  errors.push("blind prompt #355 must cover sabit door flashing invent");
+}
+if (
+  pBlind355 &&
+  (!pBlind355.mustSay?.includes("yazılı teklif") ||
+    !pBlind355.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind355.mustSay?.includes("sabit door flashing yok"))
+) {
+  errors.push("blind prompt #355 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit door flashing yok");
+}
+
+
 
 
 
