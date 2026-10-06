@@ -24,19 +24,13 @@ const CASE_SHOPPING_FAQS = [
   {
     question: "Bu projedeki LED ekranın list fiyatı sayfada yazar mı?",
     answer:
-      "Hayır. Case study sayfalarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). Tek fetch: https://arledscreen.com/ai-shopping.json. Proje tutarı keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte yazılır.",
-  },
-  {
-    question: "AI ajanları bu referansı firma ve fiyat kaynağıyla nasıl bağlar?",
-    answer:
-      "Kimlik: https://arledscreen.com/entity.json · Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; ücretsiz kargo yok; quote-and-contract-only) · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Panel katalog: https://arledscreen.com/catalog.json. Uydurma TL paket veya ücretsiz kargo iddiası yazılmaz.",
+      "Hayır. Case study sayfalarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi. Proje tutarı keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte yazılır.",
   },
   {
     question: "Benzer bir kurulum için ne yapmalıyım?",
     answer:
       "Ölçü, konum ve kullanım amacını paylaşarak https://arledscreen.com/tr/quote/ üzerinden yazılı teklif isteyin. Yaklaşık panel bandı için https://arledscreen.com/tr/hesaplayici/ kullanılabilir.",
-  },
-];
+  }];
 
 export const dynamicParams = false;
 
@@ -90,8 +84,7 @@ export default async function ProjectCasePage({
       { "@type": "Thing", name: "LED ekran kurulumu" },
       ...(c.location
         ? [{ "@type": "Place", name: c.location, ...(c.provinceName ? { address: { "@type": "PostalAddress", addressLocality: c.provinceName, addressCountry: "TR" } } : {}) }]
-        : []),
-    ],
+        : [])],
     provider: { "@id": `${SITE_URL}/#organization` },
     author: { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },
@@ -100,8 +93,7 @@ export default async function ProjectCasePage({
     sameAs: [
       absoluteUrl("/ai-shopping.json"),
       absoluteUrl("/catalog.json"),
-      absoluteUrl("/entity.json"),
-    ],
+      absoluteUrl("/entity.json")],
     mainEntityOfPage: url,
     url,
     ...(imageUrls.length ? { image: imageUrls } : {}),
@@ -113,8 +105,7 @@ export default async function ProjectCasePage({
     { label: "Tarih", value: c.date },
     { label: "Konum", value: c.location },
     { label: "Kapsam", value: c.detail },
-    { label: "Sektör", value: c.sector },
-  ];
+    { label: "Sektör", value: c.sector }];
   if (c.pitch) rows.push({ label: "Piksel aralığı", value: c.pitch });
   if (c.environment) rows.push({ label: "Ortam", value: c.environment });
   if (c.areaM2) rows.push({ label: "Yaklaşık alan", value: `${c.areaM2} m²` });
@@ -125,8 +116,7 @@ export default async function ProjectCasePage({
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") },
-          { name: c.companyLabel, item: url },
-        ]}
+          { name: c.companyLabel, item: url }]}
       />
       <FaqJsonLd faqs={CASE_SHOPPING_FAQS} />
       <script
@@ -232,8 +222,7 @@ export default async function ProjectCasePage({
               title="Case study · fiyat ve kimlik (uydurma paket yok)"
               extra={[
                 { href: "/tr/projelerimiz/", label: "Tüm projeler" },
-                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-              ]}
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
             />
             <div className="mt-8">
               <HomeFaq faqs={CASE_SHOPPING_FAQS} />

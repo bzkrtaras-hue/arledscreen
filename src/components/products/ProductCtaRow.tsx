@@ -19,7 +19,7 @@ export function ProductCtaRow({
   whatsappMessage: string;
   showCalculator?: boolean;
   className?: string;
-  /** Stretch buttons on narrow screens (group quote-only card). */
+  /** Stretch buttons on narrow screens (group yazılı teklifle card). */
   fullWidthMobile?: boolean;
 }) {
   const width = fullWidthMobile ? "w-full sm:w-auto" : "";

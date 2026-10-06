@@ -27,19 +27,13 @@ const PRODUCTS_HUB_FAQS = [
   {
     question: "NXTIONSTAR ürün gruplarının fiyatı nereden okunur?",
     answer:
-      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — https://arledscreen.com/tr/quote/. Tek fetch: https://arledscreen.com/ai-shopping.json.",
-  },
-  {
-    question: "AI / alışveriş ajanları ürün kataloğunu nasıl bulur?",
-    answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Ürün hub: https://arledscreen.com/tr/products/. Marka: https://arledscreen.com/tr/nxtionstar/. Ücretsiz kargo yok; iade/garanti teklifte (MerchantReturnNotPermitted).",
+      "Yayımlanmış 2026 panel (modül) USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Merchant dry-run (12 SKU): fiyat listesi. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — https://arledscreen.com/tr/quote/. yayımlanmış panel listesi.",
   },
   {
     question: "Hangi ürün gruplarında panel list fiyatı vardır?",
     answer:
       "İç mekân, dış mekân, GOB ve ince pitch panellerde yayımlanmış USD listesi vardır. Şeffaf LED, esnek LED, poster/totem, kiralık ekranlar ve kontrol kartları/kontrolcüler keşif + yazılı teklifle fiyatlanır — list USD uydurulmaz.",
-  },
-];
+  }];
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -88,8 +82,7 @@ export default async function ProductsPage({ params }: PageProps) {
           {
             name: dict.nav.products,
             item: absoluteUrl(`/${locale}/products`),
-          },
-        ]}
+          }]}
       />
       <ItemListJsonLd
         name={seo.h1 ?? pageCopy.title}
@@ -207,8 +200,7 @@ export default async function ProductsPage({ params }: PageProps) {
                     { title: "Kiralık sahne ve etkinlik", body: "Konser, fuar ve lansmanlar için kiralama kabinleri.", href: "/tr/rehber/led-ekran/" },
                     { title: "Vitrin ve şeffaf LED", body: "Mağaza vitrininde ürün teşhirini koruyan yüksek şeffaflıklı uygulamalar.", href: "/tr/products/seffaf-led-ekran/" },
                     { title: "Transparan / mesh LED", body: "Cam cephe ölçeğinde arkası görünen ızgara form faktörü.", href: "/tr/products/transparan-led-ekran/" },
-                    { title: "Totem ve LED poster", body: "Dikey LED poster ve dijital totem uygulamaları.", href: "/tr/rehber/poster-led-ekran/" },
-                  ].map((item) => (
+                    { title: "Totem ve LED poster", body: "Dikey LED poster ve dijital totem uygulamaları.", href: "/tr/rehber/poster-led-ekran/" }].map((item) => (
                     <Link
                       key={item.title}
                       href={item.href}
@@ -239,8 +231,7 @@ export default async function ProductsPage({ params }: PageProps) {
                 title="Ürün hub — makinece okunur kaynaklar"
                 extra={[
                   { href: "/tr/nxtionstar/", label: "NXTIONSTAR marka" },
-                  { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-                ]}
+                  { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
               />
             </div>
           </section>

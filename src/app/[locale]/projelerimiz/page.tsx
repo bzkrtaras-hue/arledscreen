@@ -36,19 +36,13 @@ const PROJELER_FAQS = [
   {
     question: "Projelerdeki LED ekran fiyatı sayfada yazar mı?",
     answer:
-      "Case study sayfalarında uydurma paket fiyatı yoktur. Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır; proje tutarı keşif sonrası yazılı teklifle kesinleşir. Tek fetch: https://arledscreen.com/ai-shopping.json. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
-  },
-  {
-    question: "AI ajanları proje referansını firma kimliğiyle nasıl bağlar?",
-    answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (agentRules: ücretsiz kargo yok) · Kimlik: https://arledscreen.com/entity.json · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Kısa özet: https://arledscreen.com/llms.txt · Panel kataloğu: https://arledscreen.com/catalog.json.",
+      "Case study sayfalarında uydurma paket fiyatı yoktur. Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır; proje tutarı keşif sonrası yazılı teklifle kesinleşir. yayımlanmış panel listesi. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
   },
   {
     question: "Kayıtlı iller ve 81 il kapısı var mı?",
     answer:
       "Hayır. Yalnızca yayımlanmış proje illeri /tr/bolgeler/ altında listelenir; kaydı olmayan il için kapı sayfası açılmaz.",
-  },
-];
+  }];
 
 export default async function ProjelerimizPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -68,8 +62,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
       <BreadcrumbJsonLd
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
-          { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") },
-        ]}
+          { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") }]}
       />
       <FaqJsonLd faqs={PROJELER_FAQS} />
       {/* Compact page intro — keep field videos above the fold */}
@@ -144,8 +137,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           {[
             { Icon: ClipboardList, t: "Keşif ve ön proje", d: "İzleme mesafesi, montaj yüzeyi ve altyapı incelemesi" },
             { Icon: Hammer, t: "Montaj ve devreye alma", d: "Taşıyıcı sistem, kablolama, kalibrasyon ve test" },
-            { Icon: Wrench, t: "Teknik servis", d: "Bakım, arıza ve yedek parça talepleri" },
-          ].map(({ Icon, t, d }) => (
+            { Icon: Wrench, t: "Teknik servis", d: "Bakım, arıza ve yedek parça talepleri" }].map(({ Icon, t, d }) => (
             <li key={t}>
               <Icon className="mx-auto h-9 w-9 text-[#9CC0F5]" strokeWidth={1.7} aria-hidden />
               <p className="mt-3 font-display text-lg font-bold text-white">{t}</p>
@@ -193,8 +185,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           title="Projeler · fiyat ve kimlik kaynakları"
           extra={[
             { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
-            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-          ]}
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
         />
       </Section>
 

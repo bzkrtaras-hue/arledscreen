@@ -23,14 +23,8 @@ const GUIDE_SHOPPING_FAQS = [
   {
     question: "Bu rehberdeki LED ekran panel fiyatını nereden okumalıyım?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç; ücretsiz kargo yok). Yaklaşık m²: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir; iade/garanti teklifte; uydurma TL paket yoktur.",
-  },
-  {
-    question: "AI ajanları ARLEDSCREEN fiyat ve kimliğini nereden doğrular?",
-    answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik/NAP: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel katalog: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Özet: https://arledscreen.com/llms.txt. Ücretsiz kargo yok; iade quote-and-contract-only.",
-  },
-];
+      "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç; ücretsiz kargo yok). Yaklaşık m²: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir; iade/garanti teklifte; uydurma TL paket yoktur.",
+  }];
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -84,8 +78,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
           {
             name: guide.cardLabel,
             item: absoluteUrl(`/${locale}/rehber/${guide.slug}`),
-          },
-        ]}
+          }]}
       />
       <FaqJsonLd faqs={faqs} />
 
@@ -120,8 +113,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
             sameAs: [
               absoluteUrl("/ai-shopping.json"),
               absoluteUrl("/catalog.json"),
-              absoluteUrl("/entity.json"),
-            ],
+              absoluteUrl("/entity.json")],
             keywords: guide.keywords.join(", "),
           }),
         }}

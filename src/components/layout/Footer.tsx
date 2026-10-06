@@ -142,8 +142,7 @@ export function Footer({ locale }: FooterProps) {
               unoptimized
             />
           </div>
-          <p className="mt-4 max-w-sm text-sm font-semibold leading-snug text-[#9CC0F5]">{dict.brand.slogan}</p>
-          <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/70">{dict.footer.tagline}</p>
+                    <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/70">{dict.footer.tagline}</p>
         </div>
 
         {columns.map((col) => (

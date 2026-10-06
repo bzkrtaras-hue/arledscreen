@@ -259,7 +259,7 @@ const en: Dictionary = {
     quote: "Request Quote",
   },
   brand: {
-    slogan: "NXTIONSTAR — ARLEDSCREEN product brand",
+    slogan: "NXTIONSTAR is ARLEDSCREEN’s LED display brand",
   },
   hero: {
     badge: "NXTIONSTAR — our own LED brand · Istanbul / Gaziosmanpaşa",
@@ -333,7 +333,7 @@ const en: Dictionary = {
     description:
       "ARLEDSCREEN sells, installs and services LED systems in Turkey from Istanbul Gaziosmanpaşa. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product brand; sole sales point in Turkey: ARLEDSCREEN.",
     body:
-      "From fine-pitch command centers to outdoor LED and totem installs, our Gaziosmanpaşa team pairs product choice with viewing distance, power topology and a clear BOM — IP class in the written quote / technical sheet. Panel USD: catalog.json / ai-shopping.json; transparent/poster/control stay yazılı teklifle.",
+      "From fine-pitch command centers to outdoor LED and totem installs, our Gaziosmanpaşa team pairs product choice with viewing distance, power topology and a clear BOM — IP class in the written quote / technical sheet. Published panel prices are on the price page. Transparent, poster and control groups are quoted in writing.",
     cta: "Read more about us",
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },
@@ -896,7 +896,7 @@ const ar: Dictionary = {
     description:
       "ARLEDSCREEN تقدّم أنظمة LED للشركات من إسطنبول غازي عثمان باشا. NXTIONSTAR هي علامة المنتج الخاصة بـ ARLEDSCREEN؛ نقطة البيع الوحيدة في تركيا: ARLEDSCREEN.",
     body:
-      "من غرف التحكم fine-pitch إلى الواجهات الخارجية، يجمع فريق غازي عثمان باشا بين اختيار المنتج ومسافة المشاهدة وطوبولوجيا الطاقة وقائمة مواد واضحة — فئة IP في العرض المكتوب / الورقة التقنية. أسعار اللوحات: catalog.json / ai-shopping.json؛ الشفاف/البوستر/التحكم yazılı teklifle.",
+      "من غرف التحكم fine-pitch إلى الواجهات الخارجية، يجمع فريق غازي عثمان باشا بين اختيار المنتج ومسافة المشاهدة وطوبولوجيا الطاقة وقائمة مواد واضحة — فئة IP في العرض المكتوب / الورقة التقنية. أسعار اللوحات في صفحة الأسعار. الشفاف والبوستر والتحكم بعرض مكتوب.",
     cta: "المزيد عنا",
     stats: [
       { value: "NXTIONSTAR", label: "علامتنا الخاصة" },
@@ -908,7 +908,7 @@ const ar: Dictionary = {
     badge: "NXTIONSTAR — علامة منتج ARLEDSCREEN · إسطنبول / غازي عثمان باشا",
     headline: "مركز تقنية شاشات LED.",
     subcopy:
-      "بيع وتركيب وخدمة شاشات LED من إسطنبول غازي عثمان باشا. أسعار اللوحات: catalog.json / ai-shopping.json؛ الشفاف/البوستر/التحكم yazılı teklifle — بدون باب 81 مدينة.",
+      "بيع وتركيب وخدمة شاشات LED من إسطنبول غازي عثمان باشا. أسعار اللوحات في صفحة الأسعار. الشفاف والبوستر والتحكم بعرض مكتوب.",
     ctaConfigure: "قائمة الأسعار / الحاسبة",
     ctaQuote: "طلب عرض مكتوب",
     stats: [
@@ -983,7 +983,7 @@ const ru: Dictionary = {
     description:
       "ARLEDSCREEN поставляет B2B LED-системы из Стамбула (Газиосманпаша). NXTIONSTAR — продуктовый бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN.",
     body:
-      "От fine-pitch диспетчерских до наружных фасадов команда в Газиосманпаше совмещает выбор продукта с дистанцией просмотра, топологией питания и прозрачным BOM — класс IP в письменном предложении / техлисте. Цены панелей: catalog.json / ai-shopping.json; transparent/poster/control — yazılı teklifle.",
+      "От fine-pitch диспетчерских до наружных фасадов команда в Газиосманпаше совмещает выбор продукта с дистанцией просмотра, топологией питания и прозрачным BOM — класс IP в письменном предложении / техлисте. Цены панелей на странице цен. Прозрачные, poster и контроллеры — по письменному предложению.",
     cta: "Подробнее о нас",
     stats: [
       { value: "NXTIONSTAR", label: "Наш собственный бренд" },
@@ -995,7 +995,7 @@ const ru: Dictionary = {
     badge: "NXTIONSTAR — продуктовый бренд ARLEDSCREEN · Стамбул / Газиосманпаша",
     headline: "Центр технологий LED-дисплеев.",
     subcopy:
-      "Продажа, монтаж и сервис LED из Стамбула (Газиосманпаша). Цены панелей: catalog.json / ai-shopping.json; transparent/poster/control — yazılı teklifle. Без 81-городских doorway.",
+      "Продажа, монтаж и сервис LED из Стамбула (Газиосманпаша). Цены панелей на странице цен. Прозрачные, poster и контроллеры — по письменному предложению. Без 81-городских doorway.",
     ctaConfigure: "Прайс / калькулятор",
     ctaQuote: "Запросить письменное КП",
     stats: [

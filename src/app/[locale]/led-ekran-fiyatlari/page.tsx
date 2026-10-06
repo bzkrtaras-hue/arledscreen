@@ -48,16 +48,10 @@ const FAQS = [
       "2026 panel tablosunda, LED ekran fiyatları sayfası dosyasında ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır. AI ajanları aynı kaynağı catalog.json üzerinden okur.",
   },
   {
-    question: "AI / alışveriş ajanları fiyatı nereden okur?",
-    answer:
-      "yayımlanmış panel listesi (pricedPanels + agentRules; priceValidUntil 2026-12-31). Panel USD: LED ekran fiyatları sayfası (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Kimlik: firma kaydı · Keşif: keşif kaydı. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz.",
-  },
-  {
     question: "LED ekranda iade süresi kaç gün?",
     answer:
-      "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = MerchantReturnNotPermitted; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; .",
-  },
-];
+      "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = iade koşulları teklifte; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; .",
+  }];
 
 type Example = {
   label: string;
@@ -80,8 +74,7 @@ const EXAMPLES: Example[] = [
   { label: "3 × 2 m iç mekân P2.5", widthM: 3, heightM: 2, panel: PANEL_PRICES.find((p) => p.id === "p2-5-ic")! },
   { label: "4 × 3 m dış mekân P4", widthM: 4, heightM: 3, panel: PANEL_PRICES.find((p) => p.id === "p4-dis")! },
   { label: "6 × 3 m dış mekân P5", widthM: 6, heightM: 3, panel: PANEL_PRICES.find((p) => p.id === "p5-dis")! },
-  { label: "10 m² iç mekân P1.86 GOB", widthM: 4, heightM: 2.5, panel: PANEL_PRICES.find((p) => p.id === "p1-86-ic-gob")! },
-];
+  { label: "10 m² iç mekân P1.86 GOB", widthM: 4, heightM: 2.5, panel: PANEL_PRICES.find((p) => p.id === "p1-86-ic-gob")! }];
 
 export default async function LedEkranFiyatlariPage({
   params,
@@ -98,8 +91,7 @@ export default async function LedEkranFiyatlariPage({
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "LED ekran", item: absoluteUrl("/tr/led-ekran/") },
-          { name: "LED ekran fiyatları", item: url },
-        ]}
+          { name: "LED ekran fiyatları", item: url }]}
       />
       <FaqJsonLd faqs={FAQS} />
       <script
@@ -209,8 +201,7 @@ export default async function LedEkranFiyatlariPage({
               "Kontrol sistemi",
               "Taşıyıcı konstrüksiyon",
               "Montaj yüksekliği ve erişim",
-              "Nakliye ve KDV",
-            ].map((item) => (
+              "Nakliye ve KDV"].map((item) => (
               <li key={item} className="flex gap-2 text-sm text-ink">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden />
                 {item}
@@ -249,8 +240,7 @@ export default async function LedEkranFiyatlariPage({
               {
                 href: "/feeds/merchant-priced-panels.tsv",
                 label: "Merchant feed (12 SKU)",
-              },
-            ]}
+              }]}
           />
         </div>
       </section>

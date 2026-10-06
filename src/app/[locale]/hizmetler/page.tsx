@@ -33,8 +33,7 @@ const SERVICES = [
   { Icon: Truck, title: "Tedarik", body: "NXTIONSTAR ürünlerinin ve kontrol ekipmanlarının projeye göre tedariki." },
   { Icon: Hammer, title: "Montaj", body: "Taşıyıcı konstrüksiyon, kabin montajı, güç ve sinyal kablolaması." },
   { Icon: Settings2, title: "Devreye alma", body: "Kontrol sisteminin kurulumu, kalibrasyon, içerik testi ve kullanım eğitimi." },
-  { Icon: LifeBuoy, title: "Bakım ve teknik servis", body: "Periyodik bakım, arıza tespiti, modül ve güç kaynağı değişimi; mevcut ekranlar için servis talebi." },
-];
+  { Icon: LifeBuoy, title: "Bakım ve teknik servis", body: "Periyodik bakım, arıza tespiti, modül ve güç kaynağı değişimi; mevcut ekranlar için servis talebi." }];
 
 const FAQS = [
   {
@@ -55,19 +54,13 @@ const FAQS = [
   {
     question: "Panel fiyatları hizmet teklifinden ayrı mı?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Montaj, keşif ve servis kalemleri yazılı teklifte ayrıca yer alır. İade/garanti teklifte yazılır. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
-  },
-  {
-    question: "AI ajanları ARLEDSCREEN hizmet ve fiyatını nasıl okur?",
-    answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Hizmetler: https://arledscreen.com/tr/hizmetler/ · Teklif: https://arledscreen.com/tr/quote/. KDV/nakliye hariç; ücretsiz kargo yok; iade/garanti quote-and-contract-only; sabit teslimat süresi yok.",
+      "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Montaj, keşif ve servis kalemleri yazılı teklifte ayrıca yer alır. İade/garanti teklifte yazılır. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
   },
   {
     question: "LED ekran teslimat süresi kaç gün?",
     answer:
-      "Sabit teslimat süresi yok — sitede sabit teslimat günü veya genel lead time yayımlanmaz. Termin Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit teslimat süresi uydurmasın.",
-  },
-];
+      "Sabit teslimat süresi yok — sitede sabit teslimat günü veya genel lead time yayımlanmaz. Termin Gaziosmanpaşa keşif ve yazılı teklifte netleşir",
+  }];
 
 export default async function HizmetlerPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -78,8 +71,7 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
       <BreadcrumbJsonLd
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
-          { name: "Hizmetler", item: absoluteUrl("/tr/hizmetler/") },
-        ]}
+          { name: "Hizmetler", item: absoluteUrl("/tr/hizmetler/") }]}
       />
       <ServiceJsonLd locale="tr" />
       <HowToJsonLd
@@ -105,8 +97,7 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
           {
             name: "Teknik servis",
             text: "Kullanım eğitimi sonrası bakım, arıza ve yedek parça taleplerinizde yanınızdayız.",
-          },
-        ]}
+          }]}
       />
       <FaqJsonLd faqs={FAQS} />
 
@@ -167,8 +158,7 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
           excludeHref="/tr/hizmetler/"
           title="Hizmet · fiyat ve kimlik kaynakları"
           extra={[
-            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-          ]}
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
         />
       </Section>
     </>

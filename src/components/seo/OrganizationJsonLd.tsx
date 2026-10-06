@@ -44,7 +44,7 @@ export function OrganizationJsonLd() {
           absoluteUrl("/tr/led-ekran-fiyatlari/"),
         ],
         // No SearchAction: site has no public search endpoint — fake urlTemplate would be dishonest.
-        // Honest CTA: written quote (same pattern as quote-only Product potentialAction).
+        // Honest CTA: written quote (same pattern as yazılı teklifle Product potentialAction).
         potentialAction: {
           "@type": "CommunicateAction",
           name: "LED ekran yazılı teklif",
@@ -100,7 +100,7 @@ export function OrganizationJsonLd() {
           url: absoluteUrl("/catalog.json"),
           numberOfItems: 12,
           description:
-            "Yalnızca yayımlanmış iç/dış/GOB panel listesi (shippingDetails: nakliye hariç, ücretsiz kargo yok; hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade teklif/sözleşme). Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yok — yazılı teklif.",
+            "Yalnızca yayımlanmış iç/dış/GOB panel listesi (shippingDetails: nakliye hariç, ücretsiz kargo yok; hasMerchantReturnPolicy: iade koşulları teklifte — iade teklif/sözleşme). Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yok — yazılı teklif.",
         },
         subjectOf: [
           {
@@ -109,7 +109,7 @@ export function OrganizationJsonLd() {
             encodingFormat: "application/ld+json",
             contentUrl: absoluteUrl("/ai-shopping.json"),
             description:
-              "Tek fetch: 12 pricedPanels + agentRules + extrasUsd + returnPolicy + ücretsiz kargo yok + cite",
+              "12 pricedPanels + agentRules + extrasUsd + returnPolicy + ücretsiz kargo yok + cite",
           },
           {
             "@type": "DataDownload",

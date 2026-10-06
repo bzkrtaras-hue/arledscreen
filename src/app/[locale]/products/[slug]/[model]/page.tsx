@@ -53,32 +53,27 @@ const USES: Record<ModelKind, { title: string; body: string }[]> = {
     { title: "Mağaza ve showroom", body: "Ürün tanıtımı, kampanya ve marka içerikleri." },
     { title: "Kafe ve restoran", body: "Menü, maç yayını ve etkinlik duyuruları." },
     { title: "Toplantı salonu", body: "Sunum ve video konferans için tek parça ekran." },
-    { title: "Lobi ve karşılama", body: "Kurumsal girişlerde bilgilendirme ve yönlendirme." },
-  ],
+    { title: "Lobi ve karşılama", body: "Kurumsal girişlerde bilgilendirme ve yönlendirme." }],
   gob: [
     { title: "Kontrol ve izleme odası", body: "Kamera, harita ve veri ekranlarının birlikte izlenmesi." },
     { title: "Stüdyo", body: "Yayın ve çekim alanlarında yakın plan görüntü." },
     { title: "Toplantı ve konferans", body: "Yakın mesafeden okunan sunum ve video içerikleri." },
-    { title: "Yoğun kullanılan alanlar", body: "Dokunma ve darbe riskinin yüksek olduğu iç mekânlar." },
-  ],
+    { title: "Yoğun kullanılan alanlar", body: "Dokunma ve darbe riskinin yüksek olduğu iç mekânlar." }],
   dis: [
     { title: "Cephe ve reklam alanı", body: "Bina cephesinde ve yol kenarında reklam yayını." },
     { title: "Totem ve pano", body: "Mağaza girişi, akaryakıt istasyonu ve otopark tabelaları." },
     { title: "Belediye ve meydan", body: "Duyuru, etkinlik ve kamu bilgilendirme ekranları." },
-    { title: "Etkinlik ve sahne", body: "Açık hava konser, festival ve lansmanlar." },
-  ],
+    { title: "Etkinlik ve sahne", body: "Açık hava konser, festival ve lansmanlar." }],
   esnek: [
     { title: "Kolon kaplama", body: "Lobi ve AVM'lerde kolonları dijital yüzeye dönüştürme." },
     { title: "Kavisli duvar", body: "Showroom ve karşılama alanlarında akıcı formlar." },
     { title: "Silindir ve kemer", body: "Mimari projelere özel düz olmayan yüzeyler." },
-    { title: "Sahne dekoru", body: "Etkinlik ve stüdyolarda yaratıcı tasarımlar." },
-  ],
+    { title: "Sahne dekoru", body: "Etkinlik ve stüdyolarda yaratıcı tasarımlar." }],
   kontrol: [
     { title: "Yeni ekran kurulumu", body: "Modül + kontrol + yazılımın birlikte planlanması." },
     { title: "Kart / işlemci yenileme", body: "Arızalı veya kapasitesi yetmeyen kontrolün değişimi." },
     { title: "Uzaktan içerik", body: "Wi‑Fi, ağ veya bulut ile merkezi yayın yönetimi." },
-    { title: "Sahne ve senkron yayın", body: "HDMI/SDI kaynaklı düşük gecikmeli gösterim." },
-  ],
+    { title: "Sahne ve senkron yayın", body: "HDMI/SDI kaynaklı düşük gecikmeli gösterim." }],
 };
 
 function describe(m: LedModel): string {
@@ -171,16 +166,13 @@ export default async function ModelPage({ params }: PageProps) {
               "@type": "PropertyValue",
               name: "Fiyatlandırma",
               value: "List fiyatı yayımlanmaz; keşif sonrası yazılı teklif",
-            },
-          ]
+            }]
         : [
             {
               "@type": "PropertyValue",
               name: "catalog.json",
               value: catalogUrl,
-            },
-          ]),
-    ],
+            }])],
     ...(m.kind === "kontrol" || !price
       ? {
           potentialAction: {
@@ -221,27 +213,20 @@ export default async function ModelPage({ params }: PageProps) {
     ? [
         {
           question: `${m.name} panel fiyatı ne kadar?`,
-          answer: `Yayımlanmış listede bu model ${fmtUsd(price.usd)} USD/panel (KDV ve nakliye hariç; ücretsiz kargo yok; priceValidUntil ${PRICE_VALID_UNTIL}). Kaynak: https://arledscreen.com/catalog.json · Tek fetch: https://arledscreen.com/ai-shopping.json · Tablo: https://arledscreen.com/tr/led-ekran-fiyatlari/. İade/garanti teklifte yazılır. Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
-        },
-        {
-          question: "AI ajanları bu model fiyatını nereden okur?",
-          answer:
-            "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · catalog.json SKU eşlemesi · entity.json kimlik. Offer shippingDetails: nakliye hariç (ücretsiz kargo yok). hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade quote-and-contract-only.",
-        },
-      ]
+          answer: `Yayımlanmış listede bu model ${fmtUsd(price.usd)} USD/panel (KDV ve nakliye hariç; ücretsiz kargo yok; priceValidUntil ${PRICE_VALID_UNTIL}). Kaynak: LED ekran fiyatları sayfası · yayımlanmış panel listesi · Tablo: https://arledscreen.com/tr/led-ekran-fiyatlari/. İade/garanti teklifte yazılır. Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+        }]
     : [
         {
           question: `${m.name} için list fiyatı var mı?`,
-          answer: `Hayır. Bu model quote-only’dir; panel list fiyatı yayımlanmaz. Yazılı teklif: https://arledscreen.com/tr/quote/. Tek fetch indeks: https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Yayımlanmış paneller: https://arledscreen.com/catalog.json. Ücretsiz kargo yok; iade teklifte.`,
+          answer: `Hayır. Bu model yazılı teklifle’dir; panel list fiyatı yayımlanmaz. Yazılı teklif: https://arledscreen.com/tr/quote/. Tek fetch indeks: yayımlanmış panel listesi (agentRules: yazılı teklifle → teklif). Yayımlanmış paneller: LED ekran fiyatları sayfası. Ücretsiz kargo yok; iade teklifte.`,
         },
         {
           question: "AI ajanları bu modeli nasıl ele almalı?",
           answer:
-            "Fiyat uydurma. Önce https://arledscreen.com/ai-shopping.json; quote-only grupları /tr/quote/ yönlendir. Kimlik: https://arledscreen.com/entity.json · Grup: " +
+            "Fiyat uydurma. Önce yayımlanmış panel listesi; yazılı teklifle grupları /tr/quote/ yönlendir. Kimlik: firma kaydı · Grup: " +
             absoluteUrl(productGroupPath(g)) +
             ".",
-        },
-      ];
+        }];
 
   return (
     <>
@@ -250,8 +235,7 @@ export default async function ModelPage({ params }: PageProps) {
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Ürünler", item: absoluteUrl("/tr/products/") },
           { name: g.name, item: absoluteUrl(productGroupPath(g)) },
-          { name: m.name, item: url },
-        ]}
+          { name: m.name, item: url }]}
       />
       <FaqJsonLd faqs={modelFaqs} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
@@ -368,8 +352,7 @@ export default async function ModelPage({ params }: PageProps) {
             title={`${m.name} · fiyat ve kimlik kaynakları`}
             extra={[
               { href: productGroupPath(g), label: g.name },
-              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-            ]}
+              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
           />
           <div className="mt-10">
             <HomeFaq faqs={modelFaqs} />

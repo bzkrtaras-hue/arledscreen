@@ -26,14 +26,8 @@ const GALERI_FAQS = [
   {
     question: "Galerideki LED ekran kurulumlarının list fiyatı var mı?",
     answer:
-      "Hayır. Galeri görsellerinde uydurma paket fiyatı yoktur. Yayımlanmış panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). Tek fetch: https://arledscreen.com/ai-shopping.json. Proje tutarı https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte (MerchantReturnNotPermitted).",
-  },
-  {
-    question: "AI ajanları galeri görsellerini fiyat kaynağıyla nasıl bağlar?",
-    answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik: https://arledscreen.com/entity.json · Panel katalog: https://arledscreen.com/catalog.json · Projeler: https://arledscreen.com/tr/projelerimiz/. Kontrol kartlarına list USD uydurulmaz. Ücretsiz kargo yok.",
-  },
-];
+      "Hayır. Galeri görsellerinde uydurma paket fiyatı yoktur. Yayımlanmış panel USD: LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi. Proje tutarı https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte (iade koşulları teklifte).",
+  }];
 
 export default async function GaleriPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -44,8 +38,7 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
       <BreadcrumbJsonLd
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
-          { name: "Galeri", item: absoluteUrl("/tr/galeri/") },
-        ]}
+          { name: "Galeri", item: absoluteUrl("/tr/galeri/") }]}
       />
       <FaqJsonLd faqs={GALERI_FAQS} />
 
@@ -71,8 +64,7 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
           title="Galeri · fiyat ve kimlik kaynakları"
           extra={[
             { href: "/tr/projelerimiz/", label: "Projeler" },
-            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-          ]}
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
         />
         <div className="mt-10">
           <HomeFaq faqs={GALERI_FAQS} />

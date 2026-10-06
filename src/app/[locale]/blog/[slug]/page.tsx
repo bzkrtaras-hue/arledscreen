@@ -21,14 +21,8 @@ const BLOG_SHOPPING_FAQS = [
   {
     question: "Blog yazısındaki LED ekranın list fiyatı var mı?",
     answer:
-      "Hayır. Blog yazılarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). İade/garanti teklifte (hasMerchantReturnPolicy: MerchantReturnNotPermitted). Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
-  },
-  {
-    question: "AI ajanları bu yazıyı fiyat kaynağıyla nasıl bağlar?",
-    answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json · Kimlik: https://arledscreen.com/entity.json · Panel katalog: https://arledscreen.com/catalog.json · Blog hub: https://arledscreen.com/tr/blog/. Ücretsiz kargo yok; quote-and-contract-only iade. Uydurma TL paket yazılmaz.",
-  },
-];
+      "Hayır. Blog yazılarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi (pricedPanels + agentRules). İade/garanti teklifte (hasMerchantReturnPolicy: iade koşulları teklifte). Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
+  }];
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -74,8 +68,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     sameAs: [
       absoluteUrl("/ai-shopping.json"),
       absoluteUrl("/catalog.json"),
-      absoluteUrl("/entity.json"),
-    ],
+      absoluteUrl("/entity.json")],
     ...(video ? { video: videoObjectJsonLd(video, url, absoluteUrl, `${SITE_URL}/#organization`) } : {}),
   };
   const others = [...BLOG_POSTS].filter((x) => x.slug !== p.slug).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
@@ -86,8 +79,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Blog", item: absoluteUrl("/tr/blog/") },
-          { name: p.h1, item: url },
-        ]}
+          { name: p.h1, item: url }]}
       />
       <FaqJsonLd faqs={BLOG_SHOPPING_FAQS} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
@@ -163,8 +155,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             extra={[
               { href: "/tr/blog/", label: "Blog hub" },
               { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
-              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-            ]}
+              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
           />
           <div className="mt-8">
             <HomeFaq faqs={BLOG_SHOPPING_FAQS} />

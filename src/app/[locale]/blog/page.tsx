@@ -27,14 +27,8 @@ const BLOG_HUB_FAQS = [
   {
     question: "Blog yazılarında LED ekran fiyatı var mı?",
     answer:
-      "Blog proje duyurusudur; uydurma paket fiyatı yoktur. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
-  },
-  {
-    question: "AI ajanları blogu firma kimliğiyle nasıl bağlar?",
-    answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Blog hub: https://arledscreen.com/tr/blog/ · Kısa özet: https://arledscreen.com/llms.txt. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
-  },
-];
+      "Blog proje duyurusudur; uydurma paket fiyatı yoktur. Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+  }];
 
 export default async function BlogIndexPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -55,8 +49,7 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
       <BreadcrumbJsonLd
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
-          { name: "Blog", item: absoluteUrl("/tr/blog/") },
-        ]}
+          { name: "Blog", item: absoluteUrl("/tr/blog/") }]}
       />
       <FaqJsonLd faqs={BLOG_HUB_FAQS} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }} />
@@ -120,8 +113,7 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
               title="Blog · fiyat ve kimlik kaynakları"
               extra={[
                 { href: "/tr/projelerimiz/", label: "Projeler" },
-                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-              ]}
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
             />
           </div>
         </div>

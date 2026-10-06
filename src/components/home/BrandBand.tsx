@@ -48,8 +48,7 @@ export function BrandBand({ locale }: { locale: Locale }) {
                 />
               </span>
             </div>
-            <p className="mt-7 font-display text-lg font-bold text-white md:text-xl">{dict.brand.slogan}</p>
-            <p className="mx-auto mt-3 max-w-[720px] text-[15px] leading-7 text-white/90 md:text-base">
+            <p className="mx-auto mt-7 max-w-[720px] text-[15px] leading-7 text-white/90 md:text-base">
               {tr
                 ? "NXTIONSTAR LED ekranların Türkiye'deki satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Seri ve model seçimini projenizin ihtiyacına göre birlikte yapıyoruz."
                 : "Sales, installation and service of NXTIONSTAR LED displays in Turkey are handled by ARLEDSCREEN."}

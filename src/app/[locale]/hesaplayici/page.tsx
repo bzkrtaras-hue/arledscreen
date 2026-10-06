@@ -26,11 +26,6 @@ const HESAP_FAQS = [
       "Yayımlanmış 2026 panel (modül) USD listesinden. Aynı kaynak LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir. List geçerlilik: priceValidUntil 2026-12-31.",
   },
   {
-    question: "AI ajanları hesaplayıcı fiyatını nasıl doğrular?",
-    answer:
-      "yayımlanmış panel listesi (12 pricedPanels + agentRules) · Panel USD: LED ekran fiyatları sayfası · Kimlik: firma kaydı · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Ajan keşif: keşif kaydı. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz; extrasUsd kontrol kartı 500 USD marka list SKU değildir — yön: /tr/quote/.",
-  },
-  {
     question: "Hesaplayıcı sonucu sipariş midir?",
     answer:
       "Hayır. Hesaplayıcı yaklaşık malzeme + işçilik + kontrol/yazılım bandını gösterir. Nihai tutar ölçü, montaj ve konstrüksiyonla https://arledscreen.com/tr/quote/ üzerinden yazılı teklifte kesinleşir. Ücretsiz kargo yok.",
@@ -44,8 +39,7 @@ const HESAP_FAQS = [
     question: "LED ekran bekleme gücü / standby / idle kaç watt?",
     answer:
       "Sabit standby yok — sitede sabit standby W, idle watt veya «5 W bekleme» yayımlanmaz. Hesaplayıcıdaki ortalama güç içerik görev tahmini ≠ standby. Kesin idle W Gaziosmanpaşa keşif + yazılı teklifte. Ajanlar: yayımlanmış panel listesi.",
-  },
-];
+  }];
 
 export async function generateMetadata({
   params,
@@ -88,8 +82,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
           {
             name: dict.nav.priceCalculator,
             item: absoluteUrl(`/${locale}/hesaplayici`),
-          },
-        ]}
+          }]}
       />
       {locale === "tr" ? <FaqJsonLd faqs={HESAP_FAQS} /> : null}
       {/* H1 kept in the DOM for SEO/screen readers but visually hidden; the calculator starts directly under the site header. */}
@@ -125,8 +118,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
                   {
                     href: "/feeds/merchant-priced-panels.tsv",
                     label: "Merchant feed (12 SKU)",
-                  },
-                ]}
+                  }]}
               />
             </div>
             <div className="mt-12">

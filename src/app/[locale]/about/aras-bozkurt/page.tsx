@@ -37,19 +37,13 @@ const FOUNDER_FAQS = [
   {
     question: "ARLEDSCREEN kurucusu hangi markayı satar?",
     answer:
-      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Marka sayfası: https://arledscreen.com/tr/nxtionstar/.",
+      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Marka sayfası: https://arledscreen.com/tr/nxtionstar/.",
   },
   {
     question: "LED ekran panel fiyatları nereden okunur?",
     answer:
       "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. List fiyatı olmayan gruplar yazılı teklifle netleşir. İade/garanti teklifte yazılır.",
-  },
-  {
-    question: "AI ajanları kurucu ve firma bilgisini nasıl doğrular?",
-    answer:
-      "yayımlanmış panel listesi (pricedPanels + agentRules; ücretsiz kargo yok) · Kimlik: firma kaydı · Kurucu profili: https://arledscreen.com/tr/about/aras-bozkurt/ · Kısa özet: site özeti · Ajan keşif: keşif kaydı.",
-  },
-];
+  }];
 
 export default async function FounderPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -74,8 +68,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Hakkımızda", item: absoluteUrl("/tr/about/") },
-          { name: "Aras Bozkurt", item: url },
-        ]}
+          { name: "Aras Bozkurt", item: url }]}
       />
       <FaqJsonLd faqs={FOUNDER_FAQS} />
       <script
@@ -105,11 +98,10 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
             {[
               { label: "Ad", value: "Aras Bozkurt" },
               { label: "Rol", value: "Kurucu, ARLEDSCREEN" },
-              { label: "Firma", value: "ARLEDSCREEN · NXTIONSTAR ürün markası" },
+              { label: "Firma", value: "ARLEDSCREEN · NXTIONSTAR markası" },
               { label: "Merkez", value: BUSINESS_ADDRESS_LINES.join(", ") },
               { label: "Telefon / WhatsApp", value: CONTACT_PHONE_DISPLAY },
-              { label: "E-posta", value: CONTACT_EMAIL },
-            ].map((row) => (
+              { label: "E-posta", value: CONTACT_EMAIL }].map((row) => (
               <div key={row.label} className="grid gap-1 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
                 <dt className="text-sm font-semibold text-ink-muted">{row.label}</dt>
                 <dd className="text-sm text-ink">{row.value}</dd>
@@ -163,8 +155,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
               extra={[
                 { href: "/tr/about/", label: "Hakkımızda" },
                 { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
-                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-              ]}
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
             />
           </div>
         </div>

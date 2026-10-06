@@ -64,12 +64,12 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
       (lo.moduleMm || hi.moduleMm
         ? ""
         : `1 m² yaklaşık 19,53 panel ettiği için yalnızca modül bedeli m² başına yaklaşık ${fmtM2(lo.usd)} – ${fmtM2(hi.usd)} USD olur. `) +
-      `Makinece aynı kaynak: https://arledscreen.com/catalog.json · insan okunur: https://arledscreen.com/tr/led-ekran-fiyatlari/ · hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. ` +
+      `Makinece aynı kaynak: LED ekran fiyatları sayfası · insan okunur: https://arledscreen.com/tr/led-ekran-fiyatlari/ · hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. ` +
       `Toplam maliyete atölye işçiliği (${CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı (${CALC_EXTRAS.controlCard} USD) ve sürücü + yazılım (${CALC_EXTRAS.driverSoftware} USD) eklenir (extrasUsd tahmini — Huidu/NovaStar/Colorlight list SKU değildir); nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`,
   };
 }
 
-/** AI alışveriş: her ürün grubunda catalog/fiyat/teklif kaynağı (priced + quote-only). */
+/** AI alışveriş: her ürün grubunda catalog/fiyat/teklif kaynağı (priced + yazılı teklifle). */
 function shoppingSourceFaq(
   name: string,
   prices: PanelPrice[],
@@ -78,13 +78,13 @@ function shoppingSourceFaq(
     return {
       question: `${name} panel fiyatları ajanlar nereden okur?`,
       answer:
-        `Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). KDV ve nakliye hariç; Offer shippingDetails nakliyeyi list dışı bırakır (ücretsiz kargo yok). İade/garanti teklifte yazılır. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+        `Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: firma kaydı · Point C pack: firma kaydı · yayımlanmış panel listesi (pricedPanels + agentRules). KDV ve nakliye hariç; Offer shippingDetails nakliyeyi list dışı bırakır (ücretsiz kargo yok). İade/garanti teklifte yazılır. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
     };
   }
   return {
     question: `${name} için list fiyatı var mı?`,
     answer:
-      `${name} için yayımlanmış list fiyatı yoktur; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. Tek fetch indeks: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; quote-only → teklif). Hesaplayıcı extrasUsd kontrol kartı 500 USD marka list SKU değildir. Yayımlanmış paneller: https://arledscreen.com/catalog.json · https://arledscreen.com/tr/led-ekran-fiyatlari/. Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json. İade/garanti teklifte yazılır; ücretsiz kargo yok.`,
+      `${name} için yayımlanmış list fiyatı yoktur; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. Hesaplayıcı kontrol kartı bedeli yazılı teklifte kalemlenir. Yayımlanmış paneller: LED ekran fiyatları sayfası · https://arledscreen.com/tr/led-ekran-fiyatlari/. Kimlik: firma kaydı · Point C: firma kaydı. İade/garanti teklifte yazılır; ücretsiz kargo yok.`,
   };
 }
 
@@ -146,7 +146,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
             offerCount: prices.length,
             priceValidUntil: PRICE_VALID_UNTIL,
             description:
-              "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme. Kaynak: catalog.json groupAggregateOffers.",
+              "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme. Kaynak: yayımlanmış panel listesi.",
             seller: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/catalog.json` },
           },
@@ -163,7 +163,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
         }),
   };
   const productsLd = prices.length ? panelProductsJsonLd(prices, url, undefined, modelUrlForPrice(absoluteUrl)) : null;
-  // Control / quote-only hubs: ItemList of model Products (no offers) for agent discovery.
+  // Control / yazılı teklifle hubs: ItemList of model Products (no offers) for agent discovery.
   const controlItemListLd =
     isControlGroup && models.length && !prices.length
       ? {

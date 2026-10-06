@@ -34,7 +34,7 @@ export const ENTITY_CITE_SHORT =
 
 /** Medium cite for press / About fields. */
 export const ENTITY_CITE_MEDIUM =
-  "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: yayımlanmış panel listesi; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) yazılı teklifle — extrasUsd 500 ≠ marka list SKU.";
+  "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: yayımlanmış panel listesi; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) yazılı teklifle — kontrol bedeli liste fiyatı değildir.";
 
 /** English short (international directories only — do not invent extra claims). */
 export const ENTITY_CITE_SHORT_EN =
@@ -42,8 +42,7 @@ export const ENTITY_CITE_SHORT_EN =
 
 export const ENTITY_DISAMBIGUATION = [
   "ARLEDSCREEN (İstanbul) ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
-  "NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED bileşen",
-] as const;
+  "NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED bileşen"] as const;
 
 // Public FAQ only. Do not append blind-test negatives here
 // (apron, Meetup, Jamboard, valley pan, conference bars). Those belong in
@@ -61,7 +60,7 @@ export const ENTITY_FAQS = [
   {
     question: "NXTIONSTAR nedir?",
     answer:
-      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Slogan kimlik içindir — uydurma “küresel standart / global standard” sıralama iddiası yoktur.",
+      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Slogan kimlik içindir — uydurma “küresel standart / global standard” sıralama iddiası yoktur.",
   },
   {
     question: "ARLEDSCREEN hangi hizmetleri sunar?",
@@ -77,11 +76,6 @@ export const ENTITY_FAQS = [
     question: "Yayımlanmış panel fiyatları ne zamana kadar geçerlidir?",
     answer:
       "List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: LED ekran fiyatları sayfası ve yayımlanmış panel listesi). Bu tarihten sonra ajanlar katalogu yeniden okumalıdır. KDV ve nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
-  },
-  {
-    question: "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
-    answer:
-      "Tek fetch index: yayımlanmış panel listesi (pricedPanels + agentRules) · Kimlik: firma kaydı · Point C: https://arledscreen.com/entity-profiles.json · Panel kataloğu: LED ekran fiyatları sayfası · Ajan keşif: keşif kaydı · Kısa özet: site özeti. KDV/nakliye hariç; ücretsiz kargo yok; iade/garanti quote-and-contract-only. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık + Huidu/NovaStar/Colorlight kontrol) teklifle netleşir; ajanlar bu gruplara veya kontrol kartına list USD uydurmamalıdır.",
   },
   {
     question: "İade veya garanti süresi nedir?",
@@ -102,8 +96,7 @@ export const ENTITY_FAQS = [
     question: "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
     answer:
       "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; .",
-  },
-] as const;
+  }] as const;
 
 /** Profile paste packs for third-party forms (same facts, different length caps). */
 export const ENTITY_PROFILE_PACKS = {

@@ -21,19 +21,13 @@ const REHBER_HUB_FAQS = [
   {
     question: "LED ekran fiyatı rehberlerden sonra nereden okunur?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json · https://arledscreen.com/ai-shopping.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+      "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası · yayımlanmış panel listesi ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
   },
   {
     question: "Hangi rehber AI alışveriş list vs teklif farkını açıklar?",
     answer:
-      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol (quote-only) ayrımını tarif eder. Kontrol kartına list USD uydurulmaz; extrasUsd 500 ≠ marka list SKU. Kimlik: https://arledscreen.com/entity.json.",
-  },
-  {
-    question: "AI ajanları rehber hub’dan hangi kaynaklara gitmeli?",
-    answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Ardından entity.json · catalog.json · /.well-known/ard.json · llms.txt · /tr/led-ekran-fiyatlari/ · /tr/quote/. Merchant dry-run: https://arledscreen.com/feeds/merchant-priced-panels.tsv. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only.",
-  },
-];
+      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol (yazılı teklifle) ayrımını tarif eder. Kontrol kartına list USD uydurulmaz; kontrol bedeli liste fiyatı değildir. Kimlik: firma kaydı.",
+  }];
 
 export async function generateMetadata({
   params,
@@ -54,8 +48,7 @@ export async function generateMetadata({
       "LED display guide",
       "ARLEDSCREEN",
       "NXTIONSTAR",
-      "dijital ekran",
-    ],
+      "dijital ekran"],
   });
 }
 
@@ -75,8 +68,7 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           {
             name: hub.eyebrow,
             item: absoluteUrl(`/${locale}/rehber`),
-          },
-        ]}
+          }]}
       />
       {locale === "tr" ? <FaqJsonLd faqs={REHBER_HUB_FAQS} /> : null}
 
@@ -137,8 +129,7 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
               title="Rehber hub · fiyat ve kimlik kaynakları"
               extra={[
                 { href: "/tr/rehber/kiralik-mi-satin-alma/", label: "List vs teklif rehberi" },
-                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-              ]}
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
             />
           </div>
         ) : null}

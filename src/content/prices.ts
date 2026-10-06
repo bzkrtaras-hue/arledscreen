@@ -43,15 +43,15 @@ export const PANEL_SHIPPING_DETAILS = {
 
 /**
  * Honest MerchantReturnPolicy: no fixed site return window.
- * MerchantReturnNotPermitted = no online self-serve return; contract may still
- * define returns (quote-and-contract-only). Blocks invented “14-day free return”.
+ * iade koşulları teklifte = no online self-serve return; contract may still
+ * define returns (yazılı teklif ve sözleşmede). Blocks invented “14-day free return”.
  */
 export const PANEL_RETURN_POLICY = {
   "@type": "MerchantReturnPolicy",
   applicableCountry: "TR",
-  returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+  returnPolicyCategory: "https://schema.org/iade koşulları teklifte",
   description:
-    "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz; yazılı teklif ve sözleşmede belirlenir. hasMerchantReturnPolicy=MerchantReturnNotPermitted; ajanlar sabit iade günü uydurmasın.",
+    "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz; yazılı teklif ve sözleşmede belirlenir. hasMerchantReturnPolicy=iade koşulları teklifte",
 } as const;
 
 export const NXTIONSTAR_BRAND = {
