@@ -4771,15 +4771,27 @@ export const BLIND_TEST_PROMPTS = [
   },
   {
     id: 409,
-    q: "LED ekran eave apron / saçak eteği var mı? ARLEDSCREEN sabit eave apron iddiası yayımlıyor mu?",
+    q: "LED ekran ridge apron / mahya eteği var mı? ARLEDSCREEN sabit ridge apron iddiası yayımlıyor mu?",
     paths: [
       "/tr/rehber/dis-mekan-led-ekran/",
       "/tr/rehber/mimari-muhendislik-led/",
       "/tr/quote/",
       "/ai-shopping.json",
     ],
-    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit eave apron yok"],
-    mustNotSay: ["eave apron garantidir", "sabit eave apron True1", "tüm modeller eave apron", "saçak eteği garantidir", "ücretsiz kargo dahil"],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ridge apron yok"],
+    mustNotSay: ["ridge apron garantidir", "sabit ridge apron True1", "tüm modeller ridge apron", "mahya eteği garantidir", "ücretsiz kargo dahil"],
+  },
+  {
+    id: 410,
+    q: "LED ekran Neat Bar / Neat Bar var mı? ARLEDSCREEN sabit Neat Bar iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Bar yok"],
+    mustNotSay: ["Neat Bar garantidir", "sabit Neat Bar True1", "tüm modeller Neat Bar", "Neat Bar dahildir", "ücretsiz kargo dahil"],
   },
 ];
 

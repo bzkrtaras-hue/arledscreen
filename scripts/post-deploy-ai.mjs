@@ -74,7 +74,7 @@ console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → Day 461 ARD 409 kör test · #409 eave apron · dis/mimari ARD refresh",
+  "  entity-profiles → Day 462 ARD 410 kör test · #410 Neat Bar · ic/konferans ARD refresh",
 );
 console.log(
   "  home hero → NO 81-il bayi invent · 81 il kapısı yok + quote-only",
