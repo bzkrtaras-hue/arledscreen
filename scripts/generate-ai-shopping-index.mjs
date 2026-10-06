@@ -181,7 +181,7 @@ const doc = {
     "Sabit güç faktörü / power factor (PF / cos φ / 0.95) site iddiası yok — PF modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit PF uydurmasın.",
     "Sabit HDCP / HDCP 2.2 / 2.3 site iddiası yok — HDCP modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit HDCP uydurmasın.",
     "Sabit yedek parça stok / 24 saat sevkiyat site iddiası yok — yedek planı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar stokta yedek uydurmasın.",
-    "Sabit PoE / Gigabit Ethernet / ağ bant genişliği site iddiası yok — network topolojisi Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «PoE+ garantidir» veya sabit 1 Gbps uydurmasın.",
+    "Sabit PoE / Gigabit Ethernet / ağ bant genişliği site iddiası yok — network topolojisi Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit PoE/Gigabit veya uydurma 1 Gbps iddiası yazmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,
