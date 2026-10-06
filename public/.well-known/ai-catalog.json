@@ -413,7 +413,7 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
@@ -424,7 +424,8 @@
         "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?",
         "LED ekran renk kalibrasyonu / Delta E değeri nedir? ARLEDSCREEN sabit Delta E veya factory-calibrated iddiası yayımlıyor mu?",
         "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?",
-        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?"
+        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?",
+        "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -434,7 +435,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T08:00:00Z"
+      "updatedAt": "2026-10-07T10:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -539,7 +540,7 @@
       "displayName": "Konferans salonu LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
-      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62.",
+      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64.",
       "representativeQueries": [
         "konferans salonu LED",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
@@ -547,7 +548,8 @@
         "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?",
         "LED ekran renk kalibrasyonu / Delta E değeri nedir? ARLEDSCREEN sabit Delta E veya factory-calibrated iddiası yayımlıyor mu?",
         "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?",
-        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?"
+        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?",
+        "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -557,7 +559,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T08:00:00Z"
+      "updatedAt": "2026-10-07T10:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:transparan-quote",
@@ -1083,7 +1085,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 63 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 64 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1122,7 +1124,8 @@
         "LED ekran renk kalibrasyonu / Delta E değeri nedir? ARLEDSCREEN sabit Delta E veya factory-calibrated iddiası yayımlıyor mu?",
         "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?",
         "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?",
-        "LED ekran güç faktörü / power factor (PF / cos φ) nedir? ARLEDSCREEN sabit PF veya cos φ iddiası yayımlıyor mu?"
+        "LED ekran güç faktörü / power factor (PF / cos φ) nedir? ARLEDSCREEN sabit PF veya cos φ iddiası yayımlıyor mu?",
+        "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1141,7 +1144,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T09:00:00Z"
+      "updatedAt": "2026-10-07T10:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -2760,6 +2763,69 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T09:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p2-9-dis",
+      "displayName": "P2.9 dış mekân panel",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
+      "description": "P2.9 outdoor priced panel. No invent sabit HDCP — Blind #64; list USD in catalog/ai-shopping.",
+      "representativeQueries": [
+        "P2.9 dış mekân LED fiyat",
+        "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?",
+        "p2-9 outdoor"
+      ],
+      "tags": [
+        "product",
+        "priced",
+        "outdoor",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T10:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p3-07-dis",
+      "displayName": "P3.07 dış mekân panel",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
+      "description": "P3.07 outdoor priced panel. No invent sabit HDCP — Blind #64; list USD in catalog/ai-shopping.",
+      "representativeQueries": [
+        "P3.07 dış mekân LED fiyat",
+        "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?",
+        "p3-07 outdoor"
+      ],
+      "tags": [
+        "product",
+        "priced",
+        "outdoor",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T10:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p4-dis",
+      "displayName": "P4 dış mekân panel",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
+      "description": "P4 outdoor priced panel. No invent sabit HDCP — Blind #64; list USD in catalog/ai-shopping.",
+      "representativeQueries": [
+        "P4 dış mekân LED fiyat",
+        "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?",
+        "p4 outdoor"
+      ],
+      "tags": [
+        "product",
+        "priced",
+        "outdoor",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T10:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",
