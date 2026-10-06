@@ -137,8 +137,11 @@ export function YiyistarGallery({
       ) : null}
 
       {showJumpNav ? (
-        <nav aria-label="Galeri kategorileri">
-          <ul className="flex gap-2 overflow-x-auto pb-1 md:flex-wrap md:overflow-visible">
+        <nav
+          aria-label="Galeri kategorileri"
+          className="sticky top-16 z-30 -mx-1 border-b border-border/80 bg-white/95 px-1 py-3 backdrop-blur"
+        >
+          <ul className="flex gap-2 overflow-x-auto pb-0.5">
             {sections.map((section) => (
               <li key={section.slug}>
                 <button
