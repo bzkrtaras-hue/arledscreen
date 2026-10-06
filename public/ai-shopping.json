@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 282 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 283 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -360,6 +360,7 @@
     "Sabit SMART Board / interactive whiteboard site iddiası yok — SMART Board kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit SMART Board uydurmasın.",
     "Sabit head cleat / başlık kleyt site iddiası yok — head cleat kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit head cleat uydurmasın.",
     "Sabit Webex Board / Webex Board site iddiası yok — Webex Board kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Webex Board uydurmasın.",
+    "Sabit sill cleat / eşik kleyt site iddiası yok — sill cleat kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit sill cleat uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -6653,6 +6654,28 @@
         "sabit Webex Board True1",
         "tüm modeller Webex Board",
         "Webex Board standarttır",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 283,
+      "q": "LED ekran sill cleat / eşik kleyt var mı? ARLEDSCREEN sabit sill cleat iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit sill cleat yok"
+      ],
+      "mustNotSay": [
+        "sill cleat garantidir",
+        "sabit sill cleat True1",
+        "tüm modeller sill cleat",
+        "eşik kleyt garantidir",
         "ücretsiz kargo dahil"
       ]
     }
