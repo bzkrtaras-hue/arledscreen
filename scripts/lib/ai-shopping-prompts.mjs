@@ -5237,6 +5237,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit plinth apron yok"],
     mustNotSay: ["plinth apron garantidir", "sabit plinth apron True1", "tüm modeller plinth apron", "kaide eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 448,
+    q: "LED ekran Cisco Desk Pro / Cisco Desk Pro var mı? ARLEDSCREEN sabit Cisco Desk Pro iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Cisco Desk Pro yok"],
+    mustNotSay: ["Cisco Desk Pro garantidir", "sabit Cisco Desk Pro True1", "tüm modeller Cisco Desk Pro", "Cisco Desk Pro dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
