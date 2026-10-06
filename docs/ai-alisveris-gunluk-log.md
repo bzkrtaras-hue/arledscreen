@@ -356,6 +356,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 364 | 2026-10-06 | sabit Newline LYRA #312 · ic/konferans ARD refresh · skor /936 | ✅ |
 | 365 | 2026-10-06 | sabit eave cleat #313 · dis/mimari ARD refresh · skor /939 | ✅ |
 | 366 | 2026-10-06 | sabit ViewSonic ViewBoard #314 · ic/konferans ARD refresh · skor /942 | ✅ |
+| 367 | 2026-10-06 | sabit gutter cleat #315 · dis/mimari ARD refresh · skor /945 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2587,3 +2588,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #314 «ViewSonic ViewBoard / ViewBoard IFP?» — skor **/942**; ARD **314 kör test**
 - TR/EN ic-mekan + TR/EN konferans ViewSonic ViewBoard invent · llms deny · sabit ViewSonic ViewBoard yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit ViewSonic ViewBoard
+
+## Gün 367 notları
+
+- Blind #315 «gutter cleat / oluk kleyt?» — skor **/945**; ARD **315 kör test**
+- TR/EN dis-mekan + TR/EN mimari gutter cleat invent · llms deny · sabit gutter cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit gutter cleat

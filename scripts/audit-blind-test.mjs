@@ -4125,6 +4125,20 @@ if (
   errors.push("blind prompt #314 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ViewSonic ViewBoard yok");
 }
 
+const pBlind315 = PROMPTS.find((x) => x.id === 315);
+if (!pBlind315 || !/gutter cleat|oluk kleyt/i.test(pBlind315.q)) {
+  errors.push("blind prompt #315 must cover sabit gutter cleat invent");
+}
+if (
+  pBlind315 &&
+  (!pBlind315.mustSay?.includes("yazılı teklif") ||
+    !pBlind315.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind315.mustSay?.includes("sabit gutter cleat yok"))
+) {
+  errors.push("blind prompt #315 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gutter cleat yok");
+}
+
+
 
 
 

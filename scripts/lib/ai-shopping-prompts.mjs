@@ -3641,6 +3641,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ViewSonic ViewBoard yok"],
     mustNotSay: ["ViewSonic ViewBoard garantidir", "sabit ViewSonic ViewBoard True1", "tüm modeller ViewSonic ViewBoard", "ViewBoard IFP garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 315,
+    q: "LED ekran gutter cleat / oluk kleyt var mı? ARLEDSCREEN sabit gutter cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gutter cleat yok"],
+    mustNotSay: ["gutter cleat garantidir", "sabit gutter cleat True1", "tüm modeller gutter cleat", "oluk kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
