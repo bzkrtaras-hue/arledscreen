@@ -3185,6 +3185,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Samsung Flip yok"],
     mustNotSay: ["Samsung Flip garantidir", "sabit Samsung Flip True1", "tüm modeller Samsung Flip", "flip board garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 277,
+    q: "LED ekran drip cleat / damlalık kleyt var mı? ARLEDSCREEN sabit drip cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit drip cleat yok"],
+    mustNotSay: ["drip cleat garantidir", "sabit drip cleat True1", "tüm modeller drip cleat", "damlalık kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

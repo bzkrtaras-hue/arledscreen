@@ -3631,6 +3631,20 @@ if (
   errors.push("blind prompt #276 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Samsung Flip yok");
 }
 
+const pBlind277 = PROMPTS.find((x) => x.id === 277);
+if (!pBlind277 || !/drip cleat|damlalık kleyt/i.test(pBlind277.q)) {
+  errors.push("blind prompt #277 must cover sabit drip cleat invent");
+}
+if (
+  pBlind277 &&
+  (!pBlind277.mustSay?.includes("yazılı teklif") ||
+    !pBlind277.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind277.mustSay?.includes("sabit drip cleat yok"))
+) {
+  errors.push("blind prompt #277 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drip cleat yok");
+}
+
+
 
 
 
