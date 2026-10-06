@@ -5944,6 +5944,18 @@ if (
 ) {
   errors.push("blind prompt #456 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Kramer VIA Connect yok");
 }
+const pBlind457 = PROMPTS.find((x) => x.id === 457);
+if (!pBlind457 || !/canopy fascia/i.test(pBlind457.q)) {
+  errors.push("blind prompt #457 must cover sabit canopy fascia invent");
+}
+if (
+  pBlind457 &&
+  (!pBlind457.mustSay?.includes("yazılı teklif") ||
+    !pBlind457.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind457.mustSay?.includes("sabit canopy fascia yok"))
+) {
+  errors.push("blind prompt #457 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit canopy fascia yok");
+}
 
 
 

@@ -74,7 +74,7 @@ console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → Day 508 ARD 456 kör test · #456 Kramer VIA Connect · ic/konferans ARD refresh",
+  "  entity-profiles → Day 509 ARD 457 kör test · #457 canopy fascia · dis/mimari ARD refresh",
 );
 console.log(
   "  home hero → NO 81-il bayi invent · customer subcopy · FAQ cites ai-shopping + ücretsiz kargo yok",

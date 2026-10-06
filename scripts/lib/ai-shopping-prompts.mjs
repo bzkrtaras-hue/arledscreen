@@ -5345,6 +5345,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Kramer VIA Connect yok"],
     mustNotSay: ["Kramer VIA Connect garantidir", "sabit Kramer VIA Connect True1", "tüm modeller Kramer VIA Connect", "VIA Connect garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 457,
+    q: "LED ekran canopy fascia / tente saçağı var mı? ARLEDSCREEN sabit canopy fascia iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit canopy fascia yok"],
+    mustNotSay: ["canopy fascia garantidir", "sabit canopy fascia True1", "tüm modeller canopy fascia", "tente saçağı garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
