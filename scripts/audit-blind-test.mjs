@@ -4242,6 +4242,20 @@ if (
   errors.push("blind prompt #323 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit z-flashing yok");
 }
 
+const pBlind324 = PROMPTS.find((x) => x.id === 324);
+if (!pBlind324 || !/Hisense GoBoard|Hisense GoBoard Pro/i.test(pBlind324.q)) {
+  errors.push("blind prompt #324 must cover sabit Hisense GoBoard invent");
+}
+if (
+  pBlind324 &&
+  (!pBlind324.mustSay?.includes("yazılı teklif") ||
+    !pBlind324.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind324.mustSay?.includes("sabit Hisense GoBoard yok"))
+) {
+  errors.push("blind prompt #324 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Hisense GoBoard yok");
+}
+
+
 
 
 

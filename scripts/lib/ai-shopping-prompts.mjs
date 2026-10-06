@@ -3749,6 +3749,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit z-flashing yok"],
     mustNotSay: ["z-flashing garantidir", "sabit z-flashing True1", "tüm modeller z-flashing", "Z flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 324,
+    q: "LED ekran Hisense GoBoard / Hisense GoBoard Pro var mı? ARLEDSCREEN sabit Hisense GoBoard iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Hisense GoBoard yok"],
+    mustNotSay: ["Hisense GoBoard garantidir", "sabit Hisense GoBoard True1", "tüm modeller Hisense GoBoard", "Hisense GoBoard Pro garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
