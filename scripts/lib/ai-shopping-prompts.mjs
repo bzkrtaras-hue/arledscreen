@@ -3509,6 +3509,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit counter cleat yok"],
     mustNotSay: ["counter cleat garantidir", "sabit counter cleat True1", "tüm modeller counter cleat", "counter kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 304,
+    q: "LED ekran Google Meet Series / Meet Series var mı? ARLEDSCREEN sabit Google Meet Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Google Meet Series yok"],
+    mustNotSay: ["Google Meet Series garantidir", "sabit Google Meet Series True1", "tüm modeller Google Meet Series", "Meet Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

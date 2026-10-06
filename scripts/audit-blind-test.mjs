@@ -3982,6 +3982,20 @@ if (
   errors.push("blind prompt #303 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit counter cleat yok");
 }
 
+const pBlind304 = PROMPTS.find((x) => x.id === 304);
+if (!pBlind304 || !/Google Meet Series|Meet Series/i.test(pBlind304.q)) {
+  errors.push("blind prompt #304 must cover sabit Google Meet Series invent");
+}
+if (
+  pBlind304 &&
+  (!pBlind304.mustSay?.includes("yazılı teklif") ||
+    !pBlind304.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind304.mustSay?.includes("sabit Google Meet Series yok"))
+) {
+  errors.push("blind prompt #304 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Meet Series yok");
+}
+
+
 
 
 
