@@ -1475,6 +1475,20 @@ if (
   errors.push("blind prompt #112 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit panel size yok");
 }
 
+
+const pBlind113 = PROMPTS.find((x) => x.id === 113);
+if (!pBlind113 || !/waterproof glue|su geçirmez yapıştırıcı/i.test(pBlind113.q)) {
+  errors.push("blind prompt #113 must cover sabit waterproof glue invent");
+}
+if (
+  pBlind113 &&
+  (!pBlind113.mustSay?.includes("yazılı teklif") ||
+    !pBlind113.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind113.mustSay?.includes("sabit waterproof glue yok"))
+) {
+  errors.push("blind prompt #113 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit waterproof glue yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

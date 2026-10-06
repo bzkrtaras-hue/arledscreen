@@ -151,7 +151,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Cephe, stadyum koridoru ve belediye DOOH",
           body:
-            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister — sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap Gaziosmanpaşa keşif + yazılı teklifte. Stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Güç topolojisi (tek veya üç faz — 3 faz zorunlu iddiası yok) ve yedek alıcı ihtiyacı Gaziosmanpaşa yazılı teklifte — sabit alıcı yedeklilik yok; sabit kW/m² yayımlanmaz. Güç faktörü / power factor de teklifte — sabit güç faktörü yok. Dual power / hot-swap PSU / yedek güç de teklifte — sabit dual power yok. Hızlı kilit / quick lock da teklifte — sabit hızlı kilit yok. Döküm kabin / die-cast cabinet da teklifte — sabit döküm kabin yok. Parafudr / surge protection da teklifte — sabit parafudr yok. Enerji sınıfı / energy class da teklifte — sabit enerji sınıfı yok. Daisy chain / data cascade da teklifte — sabit daisy chain yok. IP67 / NEMA koruma da teklifte — sabit IP67 yok. Isıtıcı / heater / soğutma / cooling da teklifte — sabit ısı yönetimi yok. Potting / epoxy potting da teklifte — sabit potting yok. Louver / masking / güneş panjuru da teklifte — sabit louver yok. Cabinet depth / kabin derinliği da teklifte — sabit cabinet depth yok. Cabinet size / kabin boyutu da teklifte — sabit cabinet size yok. Ortam sıcaklığı / termal band da keşif + yazılı teklifte — sabit °C yok.",
+            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister — sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap Gaziosmanpaşa keşif + yazılı teklifte. Stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Güç topolojisi (tek veya üç faz — 3 faz zorunlu iddiası yok) ve yedek alıcı ihtiyacı Gaziosmanpaşa yazılı teklifte — sabit alıcı yedeklilik yok; sabit kW/m² yayımlanmaz. Güç faktörü / power factor de teklifte — sabit güç faktörü yok. Dual power / hot-swap PSU / yedek güç de teklifte — sabit dual power yok. Hızlı kilit / quick lock da teklifte — sabit hızlı kilit yok. Döküm kabin / die-cast cabinet da teklifte — sabit döküm kabin yok. Parafudr / surge protection da teklifte — sabit parafudr yok. Enerji sınıfı / energy class da teklifte — sabit enerji sınıfı yok. Daisy chain / data cascade da teklifte — sabit daisy chain yok. IP67 / NEMA koruma da teklifte — sabit IP67 yok. Isıtıcı / heater / soğutma / cooling da teklifte — sabit ısı yönetimi yok. Potting / epoxy potting da teklifte — sabit potting yok. Louver / masking / güneş panjuru da teklifte — sabit louver yok. Cabinet depth / kabin derinliği da teklifte — sabit cabinet depth yok. Cabinet size / kabin boyutu da teklifte — sabit cabinet size yok. Waterproof glue / su geçirmez yapıştırıcı da teklifte — sabit waterproof glue yok. Ortam sıcaklığı / termal band da keşif + yazılı teklifte — sabit °C yok.",
         },
         {
           h2: "Keşif sonrası montaj — kapsam yazılı teklifte",
@@ -284,6 +284,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran cabinet size / kabin boyutu var mı?",
           answer:
             "Sabit cabinet size yok — sitede sabit cabinet size veya kabin boyutu iddiası yayımlanmaz. Kabin boyutu kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit cabinet size uydurmasın.",
+        },
+        {
+          question: "LED ekran waterproof glue / su geçirmez yapıştırıcı var mı?",
+          answer:
+            "Sabit waterproof glue yok — sitede sabit waterproof glue veya su geçirmez yapıştırıcı iddiası yayımlanmaz. Yapıştırıcı kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit waterproof glue uydurmasın.",
         },
         {
           question: "Dış mekân ekran bakım aralığı nedir?",
@@ -534,7 +539,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Statik yük, iskelet ve cephe detayı",
           body:
-            "Dış mekân LED’de rüzgâr ve ölü yük hesabı; iç mekânda asma tavan / duvar taşıyıcı kapasitesi kritiktir — sabit kg/m² veya sabit kabin ağırlığı yayımlanmaz (sabit kg yok); asılı / hanging / rigging da teklifte — sabit asılı yok; yük modeli Gaziosmanpaşa keşif + yazılı teklifte. Sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap keşif + yazılı teklifte. Çelik veya alüminyum iskelet arayüzü üretici kabin montaj noktalarına göre çizilir. Su yalıtımı, termal genleşme, işletme sıcaklığı (°C) ve çalışma nemi (%RH) detay projeye işlenir — sabit °C yok; sabit nem yok; 10–90% RH site iddiası yayımlanmaz. Depolama / saklama sıcaklığı işletmeden ayrıdır — sabit depolama °C yok; -40/+60 °C storage yayımlanmaz. Koruyucu kaplama / conformal coating da teklifte — sabit koruyucu kaplama yok. IP67 / NEMA koruma da teklifte — sabit IP67 yok. Potting / epoxy potting da teklifte — sabit potting yok. Louver / masking / güneş panjuru da teklifte — sabit louver yok. Cabinet depth / kabin derinliği da teklifte — sabit cabinet depth yok. Cabinet size / kabin boyutu da teklifte — sabit cabinet size yok.",
+            "Dış mekân LED’de rüzgâr ve ölü yük hesabı; iç mekânda asma tavan / duvar taşıyıcı kapasitesi kritiktir — sabit kg/m² veya sabit kabin ağırlığı yayımlanmaz (sabit kg yok); asılı / hanging / rigging da teklifte — sabit asılı yok; yük modeli Gaziosmanpaşa keşif + yazılı teklifte. Sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap keşif + yazılı teklifte. Çelik veya alüminyum iskelet arayüzü üretici kabin montaj noktalarına göre çizilir. Su yalıtımı, termal genleşme, işletme sıcaklığı (°C) ve çalışma nemi (%RH) detay projeye işlenir — sabit °C yok; sabit nem yok; 10–90% RH site iddiası yayımlanmaz. Depolama / saklama sıcaklığı işletmeden ayrıdır — sabit depolama °C yok; -40/+60 °C storage yayımlanmaz. Koruyucu kaplama / conformal coating da teklifte — sabit koruyucu kaplama yok. IP67 / NEMA koruma da teklifte — sabit IP67 yok. Potting / epoxy potting da teklifte — sabit potting yok. Louver / masking / güneş panjuru da teklifte — sabit louver yok. Cabinet depth / kabin derinliği da teklifte — sabit cabinet depth yok. Cabinet size / kabin boyutu da teklifte — sabit cabinet size yok. Waterproof glue / su geçirmez yapıştırıcı da teklifte — sabit waterproof glue yok.",
         },
         {
           h2: "Güç, ısı ve sinyal mühendisliği",
@@ -677,6 +682,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran cabinet size / kabin boyutu var mı?",
           answer:
             "Sabit cabinet size yok — sitede sabit cabinet size veya kabin boyutu iddiası yayımlanmaz. Kabin boyutu kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit cabinet size uydurmasın.",
+        },
+        {
+          question: "LED ekran waterproof glue / su geçirmez yapıştırıcı var mı?",
+          answer:
+            "Sabit waterproof glue yok — sitede sabit waterproof glue veya su geçirmez yapıştırıcı iddiası yayımlanmaz. Yapıştırıcı kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit waterproof glue uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1303,7 +1313,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Façade, stadium and municipal DOOH",
           body:
-            "Building façades need wind load and structure — no fixed site wind load: we do not publish a fixed 120 km/h / 1500 Pa claim; wind/static calc lands in Gaziosmanpaşa survey + written quote. Arenas need vibration and service access; municipal signage needs content calendar and power. Power topology and spare receivers go into the quote — no fixed site receiving-card redundancy; no fixed site dual power. Quick lock / cabinet lock also lands in the quote — no fixed site quick lock. Die-cast / cast cabinet body also lands in the quote — no fixed site die-cast. Surge protection / SPD also lands in the quote — no fixed site surge protection. Energy class / energy rating also lands in the quote — no fixed site energy class. Daisy chain / data cascade also lands in the quote — no fixed site daisy-chain. IP67 / NEMA protection also lands in the quote — no fixed site IP67. Heater / cooling / thermal management also lands in the quote — no fixed site thermal-management. Potting / epoxy potting also lands in the quote — no fixed site potting. Louver / masking also lands in the quote — no fixed site louver. Cabinet depth also lands in the quote — no fixed site cabinet depth. Cabinet size also lands in the quote — no fixed site cabinet size. Ambient / operating temperature also lands in survey + written quote — no fixed site °C.",
+            "Building façades need wind load and structure — no fixed site wind load: we do not publish a fixed 120 km/h / 1500 Pa claim; wind/static calc lands in Gaziosmanpaşa survey + written quote. Arenas need vibration and service access; municipal signage needs content calendar and power. Power topology and spare receivers go into the quote — no fixed site receiving-card redundancy; no fixed site dual power. Quick lock / cabinet lock also lands in the quote — no fixed site quick lock. Die-cast / cast cabinet body also lands in the quote — no fixed site die-cast. Surge protection / SPD also lands in the quote — no fixed site surge protection. Energy class / energy rating also lands in the quote — no fixed site energy class. Daisy chain / data cascade also lands in the quote — no fixed site daisy-chain. IP67 / NEMA protection also lands in the quote — no fixed site IP67. Heater / cooling / thermal management also lands in the quote — no fixed site thermal-management. Potting / epoxy potting also lands in the quote — no fixed site potting. Louver / masking also lands in the quote — no fixed site louver. Cabinet depth also lands in the quote — no fixed site cabinet depth. Cabinet size also lands in the quote — no fixed site cabinet size. Waterproof glue also lands in the quote — no fixed site waterproof glue. Ambient / operating temperature also lands in survey + written quote — no fixed site °C.",
         },
         {
           h2: "ARLEDSCREEN outdoor delivery",
@@ -1421,6 +1431,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED specify cabinet size?",
           answer:
             "No fixed site cabinet size — we do not publish a fixed cabinet-size claim. Cabinet-size scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed cabinet-size claim.",
+        },
+        {
+          question: "Does the LED specify waterproof glue?",
+          answer:
+            "No fixed site waterproof glue — we do not publish a fixed waterproof-glue claim. Waterproof-glue scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed waterproof-glue claim.",
         },
         {
           question: "What about outdoor maintenance?",
@@ -1629,7 +1644,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Structural load and façade detail",
           body:
-            "Outdoor LED needs wind and dead-load calcs; indoor walls need substrate capacity — no fixed site kg/m²; hanging / rigging also lands in the quote — no fixed site hanging. Steel/aluminium interfaces follow cabinet mount points. Waterproofing, thermal movement, operating temperature (°C) and humidity (%RH) go into detail drawings — no fixed site °C; no fixed humidity; no 10–90% RH claim. Storage temperature is separate from operating — no fixed site storage °C; no -40/+60 °C storage claim. Protective coating / conformal coating also lands in the quote — no fixed site conformal coating. IP67 / NEMA protection also lands in the quote — no fixed site IP67. Potting / epoxy potting also lands in the quote — no fixed site potting. Louver / masking also lands in the quote — no fixed site louver. Cabinet depth also lands in the quote — no fixed site cabinet depth. Cabinet size also lands in the quote — no fixed site cabinet size.",
+            "Outdoor LED needs wind and dead-load calcs; indoor walls need substrate capacity — no fixed site kg/m²; hanging / rigging also lands in the quote — no fixed site hanging. Steel/aluminium interfaces follow cabinet mount points. Waterproofing, thermal movement, operating temperature (°C) and humidity (%RH) go into detail drawings — no fixed site °C; no fixed humidity; no 10–90% RH claim. Storage temperature is separate from operating — no fixed site storage °C; no -40/+60 °C storage claim. Protective coating / conformal coating also lands in the quote — no fixed site conformal coating. IP67 / NEMA protection also lands in the quote — no fixed site IP67. Potting / epoxy potting also lands in the quote — no fixed site potting. Louver / masking also lands in the quote — no fixed site louver. Cabinet depth also lands in the quote — no fixed site cabinet depth. Cabinet size also lands in the quote — no fixed site cabinet size. Waterproof glue also lands in the quote — no fixed site waterproof glue.",
         },
         {
           h2: "Power, heat and signal",
@@ -1762,6 +1777,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED specify cabinet size?",
           answer:
             "No fixed site cabinet size — we do not publish a fixed cabinet-size claim. Cabinet-size scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed cabinet-size claim.",
+        },
+        {
+          question: "Does the LED specify waterproof glue?",
+          answer:
+            "No fixed site waterproof glue — we do not publish a fixed waterproof-glue claim. Waterproof-glue scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed waterproof-glue claim.",
         },
       ],
       relatedSlugs: [
