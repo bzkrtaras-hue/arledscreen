@@ -665,6 +665,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit PoE yok"],
     mustNotSay: ["PoE+ garantidir", "sabit Gigabit 1000", "1 Gbps garantidir", "tüm modeller PoE", "ücretsiz kargo dahil"],
   },
+  {
+    id: 67,
+    q: "LED ekran HDMI / DisplayPort / SDI video girişi var mı? ARLEDSCREEN sabit HDMI 2.1 veya SDI iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HDMI/SDI yok"],
+    mustNotSay: ["HDMI 2.1 garantidir", "sabit 4K60 HDMI", "tüm modeller SDI", "DisplayPort garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

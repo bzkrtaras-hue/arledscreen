@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 66) errors.push(`blindTestPrompts must be 66 (got ${prompts.length})`);
+if (prompts.length !== 67) errors.push(`blindTestPrompts must be 67 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/66 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 66 kör test intent");
+if (!/67 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 67 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-5]) kör test/i.test(ard) && !/66 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–65 kör test without 66");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-6]) kör test/i.test(ard) && !/66 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–66 kör test without 67");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -581,6 +581,15 @@ if (!p66 || !/PoE|Gigabit|bant genişliği/i.test(p66.q || "")) {
 }
 if (!/PoE|Gigabit|bant genişliği|sabit PoE/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit PoE / Gigabit invent");
+}
+
+// Day 119: sabit HDMI / SDI invent
+const p67 = (doc.blindTestPrompts || []).find((p) => p.id === 67);
+if (!p67 || !/HDMI|DisplayPort|SDI/i.test(p67.q || "")) {
+  errors.push("blindTestPrompts #67 must cover sabit HDMI / SDI invent");
+}
+if (!/HDMI|DisplayPort|SDI|sabit HDMI/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit HDMI / SDI invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

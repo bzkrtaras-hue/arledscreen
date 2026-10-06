@@ -868,6 +868,19 @@ if (
 ) {
   errors.push("blind prompt #66 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit PoE yok");
 }
+
+const pBlind67 = PROMPTS.find((x) => x.id === 67);
+if (!pBlind67 || !/HDMI|DisplayPort|SDI/i.test(pBlind67.q)) {
+  errors.push("blind prompt #67 must cover sabit HDMI / SDI invent");
+}
+if (
+  pBlind67 &&
+  (!pBlind67.mustSay?.includes("yazılı teklif") ||
+    !pBlind67.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind67.mustSay?.includes("sabit HDMI/SDI yok"))
+) {
+  errors.push("blind prompt #67 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HDMI/SDI yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

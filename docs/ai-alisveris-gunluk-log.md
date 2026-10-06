@@ -108,6 +108,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 116 | 2026-10-06 | sabit HDCP #64 · TR dis p2-9/p3-07/p4 ARD · skor /192 | ✅ |
 | 117 | 2026-10-06 | sabit yedek parça stok #65 · TR dis p4-on-servis/p5/p8 ARD · skor /195 | ✅ |
 | 118 | 2026-10-06 | sabit PoE / Gigabit #66 · TR GOB p1-25/p1-53/p1-86 ARD · skor /198 | ✅ |
+| 119 | 2026-10-06 | sabit HDMI/SDI #67 · TR NovaStar mctrl660-pro/tb50/vx600 ARD · skor /201 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -770,3 +771,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN kiosk + mimari PoE invent · llms deny · sabit PoE yok
 - ARD: TR GOB p1-25/p1-53/p1-86 · IndexNow +3 · agentRules sabit PoE/Gigabit
 - skor hedef Tur 1 ≥ 99/198 · Tur 2 ≥ 149/198
+
+## Gün 119 notları
+
+- Blind #67 «HDMI / DisplayPort / SDI video girişi?» — skor **/201**; ARD **67 kör test**
+- TR/EN konferans + TR ic-mekan HDMI/SDI invent · llms deny · sabit HDMI/SDI yok
+- ARD: TR NovaStar mctrl660-pro/tb50/vx600 · IndexNow +3 · agentRules sabit HDMI/SDI
+- skor hedef Tur 1 ≥ 101/201 · Tur 2 ≥ 151/201

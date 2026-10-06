@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/66 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 66 kör test intent (not stale 17–65)");
+if (ardTxt && !/67 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 67 kör test intent (not stale 17–66)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-5]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–65 kör test without 66");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-6]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–66 kör test without 67");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -976,6 +976,21 @@ for (const rel of [
   }
   if (/PoE\+ garantidir|sabit Gigabit 1000|1 Gbps garantidir|tüm modeller PoE/i.test(html)) {
     errors.push(`${rel} must not invent sabit PoE / Gigabit`);
+  }
+}
+
+// Day 119: sabit HDMI / SDI — honesty presence
+for (const rel of [
+  "out/tr/rehber/konferans-salonu-led/index.html",
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit HDMI\/SDI yok|no fixed site HDMI\/SDI/i.test(html)) {
+    errors.push(`${rel} should hedge sabit HDMI / SDI`);
+  }
+  if (/HDMI 2\.1 garantidir|sabit 4K60 HDMI|tüm modeller SDI|DisplayPort garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit HDMI / SDI`);
   }
 }
 
