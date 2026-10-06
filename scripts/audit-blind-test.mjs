@@ -2955,6 +2955,20 @@ if (
   errors.push("blind prompt #224 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit PTZOptics yok");
 }
 
+const pBlind225 = PROMPTS.find((x) => x.id === 225);
+if (!pBlind225 || !/fascia flashing|fascia flaş/i.test(pBlind225.q)) {
+  errors.push("blind prompt #225 must cover sabit fascia flashing invent");
+}
+if (
+  pBlind225 &&
+  (!pBlind225.mustSay?.includes("yazılı teklif") ||
+    !pBlind225.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind225.mustSay?.includes("sabit fascia flashing yok"))
+) {
+  errors.push("blind prompt #225 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia flashing yok");
+}
+
+
 
 
 

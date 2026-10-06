@@ -2561,6 +2561,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit PTZOptics yok"],
     mustNotSay: ["PTZOptics garantidir", "sabit PTZOptics True1", "tüm modeller PTZOptics", "USB PTZ garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 225,
+    q: "LED ekran fascia flashing / fascia flaş var mı? ARLEDSCREEN sabit fascia flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fascia flashing yok"],
+    mustNotSay: ["fascia flashing garantidir", "sabit fascia flashing True1", "tüm modeller fascia flashing", "fascia flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
