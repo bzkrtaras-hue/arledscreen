@@ -3773,6 +3773,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit balcony cleat yok"],
     mustNotSay: ["balcony cleat garantidir", "sabit balcony cleat True1", "tüm modeller balcony cleat", "balkon kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 326,
+    q: "LED ekran CTOUCH Riva / CTOUCH Leddura var mı? ARLEDSCREEN sabit CTOUCH Riva iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit CTOUCH Riva yok"],
+    mustNotSay: ["CTOUCH Riva garantidir", "sabit CTOUCH Riva True1", "tüm modeller CTOUCH Riva", "CTOUCH Leddura garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

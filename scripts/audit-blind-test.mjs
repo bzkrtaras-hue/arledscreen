@@ -4268,6 +4268,20 @@ if (
   errors.push("blind prompt #325 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit balcony cleat yok");
 }
 
+const pBlind326 = PROMPTS.find((x) => x.id === 326);
+if (!pBlind326 || !/CTOUCH Riva|CTOUCH Leddura/i.test(pBlind326.q)) {
+  errors.push("blind prompt #326 must cover sabit CTOUCH Riva invent");
+}
+if (
+  pBlind326 &&
+  (!pBlind326.mustSay?.includes("yazılı teklif") ||
+    !pBlind326.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind326.mustSay?.includes("sabit CTOUCH Riva yok"))
+) {
+  errors.push("blind prompt #326 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CTOUCH Riva yok");
+}
+
+
 
 
 

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 377: blind #325 sabit balcony cleat invent)  
+Son güncelleme: 2026-10-06 (Gün 378: blind #326 sabit CTOUCH Riva invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 325 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 326 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 325 prompt (alışveriş + varlık)
+## 326 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -349,6 +349,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 323 | LED ekran z-flashing / Z flaşör var mı? ARLEDSCREEN sabit z-flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit z-flashing yok** | z-flashing garantidir / sabit z-flashing True1 / tüm modeller z-flashing / Z flaşör garantidir |
 | 324 | LED ekran Hisense GoBoard / Hisense GoBoard Pro var mı? ARLEDSCREEN sabit Hisense GoBoard iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Hisense GoBoard yok** | Hisense GoBoard garantidir / sabit Hisense GoBoard True1 / tüm modeller Hisense GoBoard / Hisense GoBoard Pro garantidir |
 | 325 | LED ekran balcony cleat / balkon kleyt var mı? ARLEDSCREEN sabit balcony cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit balcony cleat yok** | balcony cleat garantidir / sabit balcony cleat True1 / tüm modeller balcony cleat / balkon kleyt garantidir |
+| 326 | LED ekran CTOUCH Riva / CTOUCH Leddura var mı? ARLEDSCREEN sabit CTOUCH Riva iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit CTOUCH Riva yok** | CTOUCH Riva garantidir / sabit CTOUCH Riva True1 / tüm modeller CTOUCH Riva / CTOUCH Leddura garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -359,7 +360,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 975. Hedef tur 1 ≥ 488/975; tur 2 (Point C sonrası) ≥ 732/975.
+**Tur skoru** = toplam / 978. Hedef tur 1 ≥ 489/978; tur 2 (Point C sonrası) ≥ 734/978.
 
 ### Canlı tur kayıt şablonu
 
