@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 173 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 174 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -251,6 +251,7 @@
     "Sabit sun shade / güneş siperi site iddiası yok — sun shade kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit sun shade uydurmasın.",
     "Sabit Zoom Room / soft codec site iddiası yok — Zoom Room kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Zoom Room uydurmasın.",
     "Sabit vandal guard / vandal koruma site iddiası yok — vandal guard kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit vandal guard uydurmasın.",
+    "Sabit Teams Room / soft conferencing site iddiası yok — Teams Room kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Teams Room uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -4146,6 +4147,28 @@
         "sabit vandal guard True1",
         "tüm modeller vandal guard",
         "vandal koruma garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 174,
+      "q": "LED ekran Teams Room / soft conferencing var mı? ARLEDSCREEN sabit Teams Room iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit Teams Room yok"
+      ],
+      "mustNotSay": [
+        "Teams Room garantidir",
+        "sabit Teams Room True1",
+        "tüm modeller Teams Room",
+        "soft conferencing garantidir",
         "ücretsiz kargo dahil"
       ]
     }
