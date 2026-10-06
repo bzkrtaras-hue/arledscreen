@@ -808,7 +808,9 @@ const USE_PAGES: CommercialPage[] = [
     slug: "sahne-led-ekran",
     name: "Sahne LED ekran",
     lead: "Konser, tiyatro ve etkinlik sahnesi LED ekranları.",
-    intro: ["Kadıköy Matiz Sahne kaydı sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir."],
+    intro: [
+      "Kadıköy Matiz Sahne kaydı sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir. Art-Net / sACN / DMX ışık kontrol entegrasyonu yazılı teklifte — sabit Art-Net yok.",
+    ],
     proof: (r) => /Sahne|sahne|kiralama|stand/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Sahne kiralık LED kabin" },

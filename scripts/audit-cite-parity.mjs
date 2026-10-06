@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/71 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 71 kör test intent (not stale 17–70)");
+if (ardTxt && !/72 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 72 kör test intent (not stale 17–71)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|70) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–70 kör test without 71");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[01]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–71 kör test without 72");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1055,6 +1055,22 @@ for (const rel of [
   }
   if (/genlock garantidir|sabit frame sync|tüm modeller genlock|PTP sync garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit genlock`);
+  }
+}
+
+
+// Day 124: sabit Art-Net / DMX — honesty presence
+for (const rel of [
+  "out/tr/rehber/konferans-salonu-led/index.html",
+  "out/tr/sahne-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit Art-Net yok|no fixed site Art-Net/i.test(html)) {
+    errors.push(`${rel} should hedge sabit Art-Net / DMX`);
+  }
+  if (/Art-Net garantidir|sabit sACN|tüm modeller DMX|DMX512 garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit Art-Net / DMX`);
   }
 }
 

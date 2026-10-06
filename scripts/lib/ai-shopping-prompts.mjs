@@ -725,6 +725,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit genlock yok"],
     mustNotSay: ["genlock garantidir", "sabit frame sync", "tüm modeller genlock", "PTP sync garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 72,
+    q: "LED ekran Art-Net / sACN / DMX ışık kontrolü var mı? ARLEDSCREEN sabit Art-Net veya DMX512 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/sahne-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Art-Net yok"],
+    mustNotSay: ["Art-Net garantidir", "sabit sACN", "tüm modeller DMX", "DMX512 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

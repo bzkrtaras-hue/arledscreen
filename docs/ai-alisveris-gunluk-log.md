@@ -113,6 +113,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 121 | 2026-10-06 | sabit CMS SLA #69 · TR Huidu hd-a7/hd-c16/hd-w60 ARD · skor /207 | ✅ |
 | 122 | 2026-10-06 | sabit dual power #70 · TR esnek p1-86/p2-5 + Colorlight x40m ARD · skor /210 | ✅ |
 | 123 | 2026-10-06 | sabit genlock #71 · TR bolgeler istanbul/antalya/bursa ARD · skor /213 | ✅ |
+| 124 | 2026-10-06 | sabit Art-Net/DMX #72 · TR bolgeler izmir/eskisehir/manisa ARD · skor /216 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -810,3 +811,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR ic-mekan genlock invent · llms deny · sabit genlock yok
 - ARD: TR bolgeler istanbul/antalya/bursa (gerçek bölge hub; 81-il kapısı değil) · IndexNow +3 · agentRules sabit genlock
 - skor hedef Tur 1 ≥ 107/213 · Tur 2 ≥ 160/213
+
+## Gün 124 notları
+
+- Blind #72 «Art-Net / sACN / DMX ışık kontrolü?» — skor **/216**; ARD **72 kör test**
+- TR/EN konferans + TR sahne Art-Net invent · llms deny · sabit Art-Net yok
+- ARD: TR bolgeler izmir/eskisehir/manisa (gerçek bölge hub; 81-il kapısı değil) · IndexNow +3 · agentRules sabit Art-Net
+- skor hedef Tur 1 ≥ 108/216 · Tur 2 ≥ 162/216

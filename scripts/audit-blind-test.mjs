@@ -933,6 +933,19 @@ if (
 ) {
   errors.push("blind prompt #71 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit genlock yok");
 }
+
+const pBlind72 = PROMPTS.find((x) => x.id === 72);
+if (!pBlind72 || !/Art-Net|sACN|DMX/i.test(pBlind72.q)) {
+  errors.push("blind prompt #72 must cover sabit Art-Net / DMX invent");
+}
+if (
+  pBlind72 &&
+  (!pBlind72.mustSay?.includes("yazılı teklif") ||
+    !pBlind72.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind72.mustSay?.includes("sabit Art-Net yok"))
+) {
+  errors.push("blind prompt #72 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Art-Net yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
