@@ -3017,6 +3017,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Horion yok"],
     mustNotSay: ["Horion garantidir", "sabit Horion True1", "tüm modeller Horion", "interactive panel garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 263,
+    q: "LED ekran standing seam cleat / standing seam kleyt var mı? ARLEDSCREEN sabit standing seam cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit standing seam cleat yok"],
+    mustNotSay: ["standing seam cleat garantidir", "sabit standing seam cleat True1", "tüm modeller standing seam cleat", "standing seam kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

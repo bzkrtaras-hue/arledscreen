@@ -304,6 +304,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 312 | 2026-10-06 | sabit Boxlight #260 · ic/konferans ARD refresh · skor /780 | ✅ |
 | 313 | 2026-10-06 | sabit extruded cleat #261 · dis/mimari ARD refresh · skor /783 | ✅ |
 | 314 | 2026-10-06 | sabit Horion #262 · ic/konferans ARD refresh · skor /786 | ✅ |
+| 315 | 2026-10-06 | sabit standing seam cleat #263 · dis/mimari ARD refresh · skor /789 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2223,3 +2224,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #262 «Horion / interactive panel?» — skor **/786**; ARD **262 kör test**
 - TR/EN ic-mekan + TR/EN konferans Horion invent · llms deny · sabit Horion yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Horion
+
+## Gün 315 notları
+
+- Blind #263 «standing seam cleat / standing seam kleyt?» — skor **/789**; ARD **263 kör test**
+- TR/EN dis-mekan + TR/EN mimari standing seam cleat invent · llms deny · sabit standing seam cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit standing seam cleat

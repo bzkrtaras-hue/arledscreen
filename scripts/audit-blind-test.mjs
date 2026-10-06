@@ -3449,6 +3449,20 @@ if (
   errors.push("blind prompt #262 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Horion yok");
 }
 
+const pBlind263 = PROMPTS.find((x) => x.id === 263);
+if (!pBlind263 || !/standing seam cleat|standing seam kleyt/i.test(pBlind263.q)) {
+  errors.push("blind prompt #263 must cover sabit standing seam cleat invent");
+}
+if (
+  pBlind263 &&
+  (!pBlind263.mustSay?.includes("yazılı teklif") ||
+    !pBlind263.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind263.mustSay?.includes("sabit standing seam cleat yok"))
+) {
+  errors.push("blind prompt #263 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit standing seam cleat yok");
+}
+
+
 
 
 
