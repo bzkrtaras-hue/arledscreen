@@ -5273,6 +5273,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Cisco Room Kit EQ yok"],
     mustNotSay: ["Cisco Room Kit EQ garantidir", "sabit Cisco Room Kit EQ True1", "tüm modeller Cisco Room Kit EQ", "Room Kit EQ garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 451,
+    q: "LED ekran curtain wall / giydirme cephe var mı? ARLEDSCREEN sabit curtain wall iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit curtain wall yok"],
+    mustNotSay: ["curtain wall garantidir", "sabit curtain wall True1", "tüm modeller curtain wall", "giydirme cephe garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
