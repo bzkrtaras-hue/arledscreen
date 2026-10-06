@@ -4710,6 +4710,20 @@ if (
   errors.push("blind prompt #359 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dormer flashing yok");
 }
 
+const pBlind360 = PROMPTS.find((x) => x.id === 360);
+if (!pBlind360 || !/BenQ RP Series|BenQ RM Series/i.test(pBlind360.q)) {
+  errors.push("blind prompt #360 must cover sabit BenQ RP Series invent");
+}
+if (
+  pBlind360 &&
+  (!pBlind360.mustSay?.includes("yazılı teklif") ||
+    !pBlind360.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind360.mustSay?.includes("sabit BenQ RP Series yok"))
+) {
+  errors.push("blind prompt #360 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BenQ RP Series yok");
+}
+
+
 
 
 

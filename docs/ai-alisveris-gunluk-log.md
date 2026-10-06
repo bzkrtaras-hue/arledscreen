@@ -401,6 +401,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 409 | 2026-10-06 | sabit skylight flashing #357 · dis/mimari ARD refresh · skor /1071 | ✅ |
 | 410 | 2026-10-06 | sabit Newline VN Series #358 · ic/konferans ARD refresh · skor /1074 | ✅ |
 | 411 | 2026-10-06 | sabit dormer flashing #359 · dis/mimari ARD refresh · skor /1077 | ✅ |
+| 412 | 2026-10-06 | sabit BenQ RP Series #360 · ic/konferans ARD refresh · skor /1080 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2902,3 +2903,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #359 «dormer flashing / çatı çıkma flaşör?» — skor **/1077**; ARD **359 kör test**
 - TR/EN dis-mekan + TR/EN mimari dormer flashing invent · llms deny · sabit dormer flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit dormer flashing
+
+## Gün 412 notları
+
+- Blind #360 «BenQ RP Series / BenQ RM Series?» — skor **/1080**; ARD **360 kör test**
+- TR/EN ic-mekan + TR/EN konferans BenQ RP Series invent · llms deny · sabit BenQ RP Series yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit BenQ RP Series

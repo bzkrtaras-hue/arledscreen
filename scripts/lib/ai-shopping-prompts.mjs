@@ -4181,6 +4181,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit dormer flashing yok"],
     mustNotSay: ["dormer flashing garantidir", "sabit dormer flashing True1", "tüm modeller dormer flashing", "çatı çıkma flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 360,
+    q: "LED ekran BenQ RP Series / BenQ RM Series var mı? ARLEDSCREEN sabit BenQ RP Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BenQ RP Series yok"],
+    mustNotSay: ["BenQ RP Series garantidir", "sabit BenQ RP Series True1", "tüm modeller BenQ RP Series", "BenQ RM Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
