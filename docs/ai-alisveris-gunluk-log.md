@@ -101,6 +101,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 109 | 2026-10-06 | sabit iade günü #57 · AR/RU rehber-ic ARD · skor /171 | ✅ |
 | 110 | 2026-10-06 | sabit teslimat süresi #58 · AR/RU rehber-dis ARD · skor /174 | ✅ |
 | 111 | 2026-10-06 | sabit gürültü/dB #59 · AR/RU konferans ARD · skor /177 | ✅ |
+| 112 | 2026-10-06 | sabit Delta E #60 · AR/RU vitrin ARD · skor /180 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -714,3 +715,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR ic-mekan gürültü invent · llms deny · sabit gürültü/dB yok
 - ARD: AR/RU konferans + RU mimari · IndexNow +3 · agentRules sabit gürültü
 - skor hedef Tur 1 ≥ 89/177 · Tur 2 ≥ 133/177
+
+## Gün 112 notları
+
+- Blind #60 «renk kalibrasyonu / Delta E?» — skor **/180**; ARD **60 kör test**
+- TR/EN ic-mekan + konferans Delta E invent · llms deny · sabit Delta E yok
+- ARD: AR/RU vitrin + AR poster · IndexNow +3 · agentRules sabit Delta E
+- skor hedef Tur 1 ≥ 90/180 · Tur 2 ≥ 135/180

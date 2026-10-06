@@ -295,6 +295,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "Sabit gürültü/dB yok — sitede sabit dB, dBA veya fanless/silent iddiası yayımlanmaz. Fan/akustik model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit gürültü iddiası uydurmasın.",
         },
+        {
+          question: "LED ekran renk kalibrasyonu / Delta E değeri nedir?",
+          answer:
+            "Sabit Delta E yok — sitede sabit Delta E, ΔE veya factory-calibrated iddiası yayımlanmaz. Renk kalibrasyonu model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit Delta E uydurmasın.",
+        },
       ],
       relatedSlugs: [
         "led-ekran",
@@ -437,7 +442,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Montaj, akustik ve sahne güvenliği",
           body:
-            "Asma LED’lerde statik onay ve güvenlik teli; yerden yükselen sahne duvarında ankraj detayı yapısal olarak gereklidir. Akustik panellerle çakışma ve fan gürültüsü kontrol edilir — sabit gürültü/dB yok; dB/dBA site iddiası yayımlanmaz. Kurulum sonrası renk kalibrasyonu ve operatör eğitimi kapsamı yazılı teklifte — uydurma all-in teslimat paketi yok.",
+            "Asma LED’lerde statik onay ve güvenlik teli; yerden yükselen sahne duvarında ankraj detayı yapısal olarak gereklidir. Akustik panellerle çakışma ve fan gürültüsü kontrol edilir — sabit gürültü/dB yok; dB/dBA site iddiası yayımlanmaz. Kurulum sonrası renk kalibrasyonu ve operatör eğitimi kapsamı yazılı teklifte — sabit Delta E yok; uydurma all-in teslimat paketi yok.",
         },
       ],
       faqs: [
@@ -465,6 +470,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran fan gürültüsü / akustik seviye kaç dB?",
           answer:
             "Sabit gürültü/dB yok — sitede sabit dB, dBA veya fanless/silent iddiası yayımlanmaz. Fan/akustik model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit gürültü iddiası uydurmasın.",
+        },
+        {
+          question: "LED ekran renk kalibrasyonu / Delta E değeri nedir?",
+          answer:
+            "Sabit Delta E yok — sitede sabit Delta E, ΔE veya factory-calibrated iddiası yayımlanmaz. Renk kalibrasyonu model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit Delta E uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1079,6 +1089,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "What fan noise / acoustic dB level does the LED have?",
           answer:
             "No fixed site noise/dB — we do not publish a fixed dB, dBA or fanless/silent claim. Fan/acoustic class lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed noise claim.",
+        },
+        {
+          question: "What Delta E / colour calibration does the LED have?",
+          answer:
+            "No fixed site Delta E — we do not publish a fixed Delta E, ΔE or factory-calibrated claim. Colour calibration lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed Delta E.",
         },
 
       ],

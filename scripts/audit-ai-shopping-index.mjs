@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 59) errors.push(`blindTestPrompts must be 59 (got ${prompts.length})`);
+if (prompts.length !== 60) errors.push(`blindTestPrompts must be 60 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/59 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 59 kör test intent");
+if (!/60 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 60 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-8]) kör test/i.test(ard) && !/59 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–58 kör test without 59");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]) kör test/i.test(ard) && !/60 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–59 kör test without 60");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -521,6 +521,14 @@ if (!p59 || !/gürültü|dB|noise|fan/i.test(p59.q || "")) {
 }
 if (!/gürültü|dB|fanless|akustik|sabit gürültü/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit gürültü / dB invent");
+}
+// Day 112: sabit Delta E / renk kalibrasyonu invent
+const p60 = (doc.blindTestPrompts || []).find((p) => p.id === 60);
+if (!p60 || !/Delta E|kalibrasyon|colour|color/i.test(p60.q || "")) {
+  errors.push("blindTestPrompts #60 must cover sabit Delta E invent");
+}
+if (!/Delta E|renk kalibrasyonu|factory-calibrated|sabit Delta E/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit Delta E invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

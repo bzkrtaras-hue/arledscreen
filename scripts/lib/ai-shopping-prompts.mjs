@@ -581,6 +581,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gürültü/dB yok"],
     mustNotSay: ["35 dB garantidir", "sabit 40 dB", "fanless silent garantidir", "30 dBA yayımlanır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 60,
+    q: "LED ekran renk kalibrasyonu / Delta E değeri nedir? ARLEDSCREEN sabit Delta E veya factory-calibrated iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Delta E yok"],
+    mustNotSay: ["Delta E <2 garantidir", "sabit Delta E 2", "factory calibrated Delta E", "ΔE<1 yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

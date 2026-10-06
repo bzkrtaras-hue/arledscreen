@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/59 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 59 kör test intent (not stale 17–58)");
+if (ardTxt && !/60 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 60 kör test intent (not stale 17–59)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-8]) kör test/i.test(ardTxt) && !/59 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–58 kör test without 59");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]) kör test/i.test(ardTxt) && !/60 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–59 kör test without 60");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -868,6 +868,21 @@ for (const rel of [
   }
   if (/35 dB garantidir|sabit 40 dB|fanless silent garantidir|30 dBA yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit gürültü / dB`);
+  }
+}
+
+// Day 112: sabit Delta E — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit Delta E yok|no fixed site Delta E/i.test(html)) {
+    errors.push(`${rel} should hedge sabit Delta E`);
+  }
+  if (/Delta E <2 garantidir|sabit Delta E 2|factory calibrated Delta E|ΔE<1 yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit Delta E`);
   }
 }
 

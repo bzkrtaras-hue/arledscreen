@@ -780,6 +780,18 @@ if (
 ) {
   errors.push("blind prompt #59 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gürültü/dB yok");
 }
+const pBlind60 = PROMPTS.find((x) => x.id === 60);
+if (!pBlind60 || !/Delta E|kalibrasyon|colour|color/i.test(pBlind60.q)) {
+  errors.push("blind prompt #60 must cover sabit Delta E invent");
+}
+if (
+  pBlind60 &&
+  (!pBlind60.mustSay?.includes("yazılı teklif") ||
+    !pBlind60.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind60.mustSay?.includes("sabit Delta E yok"))
+) {
+  errors.push("blind prompt #60 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Delta E yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
