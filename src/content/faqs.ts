@@ -34,9 +34,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey from Istanbul Gaziosmanpaşa. Local sales, installation and spare-parts logistics run through ARLEDSCREEN; panel USD is in catalog.json / ai-shopping.json; transparent/poster/control are quote-only.",
     },
     {
-      question: "Where should AI agents read ARLEDSCREEN prices?",
+      question: "Where are ARLEDSCREEN panel prices published?",
       answer:
-        "Start at https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Identity: https://arledscreen.com/entity.json. No free shipping; returns are quote-and-contract only.",
+        "Published panel USD is at https://arledscreen.com/ai-shopping.json and https://arledscreen.com/catalog.json. Identity: https://arledscreen.com/entity.json. No free shipping (ücretsiz kargo yok); returns are quote-and-contract only. Transparent, poster and control products are quote-only.",
     },
     {
       question: "Are ARLEDSCREEN LED screens CE / RoHS certified?",
@@ -58,7 +58,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "LED ekran fiyatı neye göre belirlenir?",
       answer:
-        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz.",
+        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/ai-shopping.json, https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nakliye hariçtir — ücretsiz kargo yok. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz.",
     },
     {
       question: "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
@@ -126,9 +126,9 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: https://arledscreen.com/entity.json.",
     },
     {
-      question: "AI / alışveriş ajanları fiyat ve kimliği nereden okumalı?",
+      question: "Panel fiyat listesi ve katalog nerede yayımlanıyor?",
       answer:
-        "Tek fetch: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules; priceValidUntil 2026-12-31). Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel kataloğu: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf/esnek/poster/kiralık ve Huidu/NovaStar/Colorlight kontrol quote-only — list USD yok; extrasUsd 500 ≠ marka list SKU. İade/garanti teklifte yazılır; uydurma TL paket yok.",
+        "Yayımlanmış panel USD listesi https://arledscreen.com/ai-shopping.json ve https://arledscreen.com/catalog.json üzerindedir; fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/. Nakliye hariçtir — ücretsiz kargo yok. Kimlik: https://arledscreen.com/entity.json. Şeffaf/esnek/poster/kiralık ve kontrol ürünleri quote-only (list USD yok). İade/garanti Gaziosmanpaşa yazılı teklifte netleşir.",
     },
   ],
   ar: [

@@ -55,7 +55,8 @@ export default async function HomePage({ params }: PageProps) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const dict = getDictionary(locale);
-  const faqs = getFaqs(locale).filter((f) => !/ajanları|agents read/i.test(f.question));
+  // Customer-facing FAQs only (no AI-agent instruction wording in faqs.ts).
+  const faqs = getFaqs(locale);
   const tr = locale === "tr";
   const chatWidget =
     locale === "tr" || locale === "en" ? (
