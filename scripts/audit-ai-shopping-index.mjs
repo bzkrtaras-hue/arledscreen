@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 122) errors.push(`blindTestPrompts must be 122 (got ${prompts.length})`);
+if (prompts.length !== 123) errors.push(`blindTestPrompts must be 123 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/122 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 122 kör test intent");
+if (!/123 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 123 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–121 kör test without 122");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–122 kör test without 123");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1087,6 +1087,16 @@ if (!p122 || !/EDID/i.test(p122.q || "")) {
 }
 if (!/EDID|sabit EDID/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit EDID invent");
+}
+
+
+// Day 175: sabit HDBaseT / HDBaseT iletim invent
+const p123 = (doc.blindTestPrompts || []).find((p) => p.id === 123);
+if (!p123 || !/HDBaseT/i.test(p123.q || "")) {
+  errors.push("blindTestPrompts #123 must cover sabit HDBaseT invent");
+}
+if (!/HDBaseT|sabit HDBaseT/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit HDBaseT invent");
 }
 
 // Day 76: agentRules full disambiguation
