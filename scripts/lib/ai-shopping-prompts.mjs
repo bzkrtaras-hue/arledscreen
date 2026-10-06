@@ -4589,6 +4589,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit valley apron yok"],
     mustNotSay: ["valley apron garantidir", "sabit valley apron True1", "tüm modeller valley apron", "vadi eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 394,
+    q: "LED ekran DTEN Bar Plus / DTEN Bar var mı? ARLEDSCREEN sabit DTEN Bar Plus iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit DTEN Bar Plus yok"],
+    mustNotSay: ["DTEN Bar Plus garantidir", "sabit DTEN Bar Plus True1", "tüm modeller DTEN Bar Plus", "DTEN Bar garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

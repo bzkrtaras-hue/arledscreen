@@ -5152,6 +5152,20 @@ if (
   errors.push("blind prompt #393 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley apron yok");
 }
 
+const pBlind394 = PROMPTS.find((x) => x.id === 394);
+if (!pBlind394 || !/DTEN Bar Plus|DTEN Bar/i.test(pBlind394.q)) {
+  errors.push("blind prompt #394 must cover sabit DTEN Bar Plus invent");
+}
+if (
+  pBlind394 &&
+  (!pBlind394.mustSay?.includes("yazılı teklif") ||
+    !pBlind394.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind394.mustSay?.includes("sabit DTEN Bar Plus yok"))
+) {
+  errors.push("blind prompt #394 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit DTEN Bar Plus yok");
+}
+
+
 
 
 
