@@ -290,6 +290,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 298 | 2026-10-06 | sabit Mersive #246 · ic/konferans ARD refresh · skor /738 | ✅ |
 | 299 | 2026-10-06 | sabit cleat #247 · dis/mimari ARD refresh · skor /741 | ✅ |
 | 300 | 2026-10-06 | sabit Vivitek #248 · ic/konferans ARD refresh · skor /744 | ✅ |
+| 301 | 2026-10-06 | sabit surface cleat #249 · dis/mimari ARD refresh · skor /747 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2125,3 +2126,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #248 «Vivitek / installation projector?» — skor **/744**; ARD **248 kör test**
 - TR/EN ic-mekan + TR/EN konferans Vivitek invent · llms deny · sabit Vivitek yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Vivitek
+
+## Gün 301 notları
+
+- Blind #249 «surface cleat / yüzey kleyt?» — skor **/747**; ARD **249 kör test**
+- TR/EN dis-mekan + TR/EN mimari surface cleat invent · llms deny · sabit surface cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit surface cleat

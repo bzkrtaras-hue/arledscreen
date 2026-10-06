@@ -2849,6 +2849,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Vivitek yok"],
     mustNotSay: ["Vivitek garantidir", "sabit Vivitek True1", "tüm modeller Vivitek", "installation projector garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 249,
+    q: "LED ekran surface cleat / yüzey kleyt var mı? ARLEDSCREEN sabit surface cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit surface cleat yok"],
+    mustNotSay: ["surface cleat garantidir", "sabit surface cleat True1", "tüm modeller surface cleat", "yüzey kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
