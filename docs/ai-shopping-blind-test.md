@@ -481,6 +481,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 455 | LED ekran transom / yatay kayıt var mı? ARLEDSCREEN sabit transom iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit transom yok** | transom garantidir / sabit transom True1 / tüm modeller transom / yatay kayıt garantidir |
 | 456 | LED ekran Kramer VIA Connect / VIA Connect var mı? ARLEDSCREEN sabit Kramer VIA Connect iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Kramer VIA Connect yok** | Kramer VIA Connect garantidir / sabit Kramer VIA Connect True1 / tüm modeller Kramer VIA Connect / VIA Connect garantidir |
 | 457 | LED ekran canopy fascia / tente saçağı var mı? ARLEDSCREEN sabit canopy fascia iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit canopy fascia yok** | canopy fascia garantidir / sabit canopy fascia True1 / tüm modeller canopy fascia / tente saçağı garantidir |
+| 458 | LED ekran Bose VB1 / VB1 soundbar var mı? ARLEDSCREEN sabit Bose VB1 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Bose VB1 yok** | Bose VB1 garantidir / sabit Bose VB1 True1 / tüm modeller Bose VB1 / VB1 soundbar garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -527,7 +528,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (457 /1371)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (458 /1374)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)

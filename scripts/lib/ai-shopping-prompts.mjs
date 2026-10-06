@@ -5357,6 +5357,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit canopy fascia yok"],
     mustNotSay: ["canopy fascia garantidir", "sabit canopy fascia True1", "tüm modeller canopy fascia", "tente saçağı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 458,
+    q: "LED ekran Bose VB1 / VB1 soundbar var mı? ARLEDSCREEN sabit Bose VB1 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Bose VB1 yok"],
+    mustNotSay: ["Bose VB1 garantidir", "sabit Bose VB1 True1", "tüm modeller Bose VB1", "VB1 soundbar garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

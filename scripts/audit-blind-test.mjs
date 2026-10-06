@@ -5956,6 +5956,18 @@ if (
 ) {
   errors.push("blind prompt #457 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit canopy fascia yok");
 }
+const pBlind458 = PROMPTS.find((x) => x.id === 458);
+if (!pBlind458 || !/Bose VB1/i.test(pBlind458.q)) {
+  errors.push("blind prompt #458 must cover sabit Bose VB1 invent");
+}
+if (
+  pBlind458 &&
+  (!pBlind458.mustSay?.includes("yazılı teklif") ||
+    !pBlind458.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind458.mustSay?.includes("sabit Bose VB1 yok"))
+) {
+  errors.push("blind prompt #458 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Bose VB1 yok");
+}
 
 
 
