@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/63 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 63 kör test intent (not stale 17–62)");
+if (ardTxt && !/64 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 64 kör test intent (not stale 17–63)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-2]) kör test/i.test(ardTxt) && !/63 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–62 kör test without 63");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-3]) kör test/i.test(ardTxt) && !/64 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–63 kör test without 64");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -929,6 +929,22 @@ for (const rel of [
   }
   if (/PF 0\.95 garantidir|sabit cos φ 0,9|power factor 0\.98|güç faktörü 1\.0 yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit güç faktörü / power factor`);
+  }
+}
+
+
+// Day 116: sabit HDCP — honesty presence
+for (const rel of [
+  "out/tr/rehber/konferans-salonu-led/index.html",
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit HDCP yok|no fixed site HDCP/i.test(html)) {
+    errors.push(`${rel} should hedge sabit HDCP`);
+  }
+  if (/HDCP 2\.2 garantidir|sabit HDCP 2\.3|HDCP compliant garantidir|tüm modeller HDCP/i.test(html)) {
+    errors.push(`${rel} must not invent sabit HDCP`);
   }
 }
 

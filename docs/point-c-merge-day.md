@@ -28,11 +28,11 @@ Hedef: **16/16 PASS** (BLOCKED 0).
 
 | URL | Beklenen |
 |-----|----------|
-| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · extrasUsd≠list SKU · ücretsiz kargo yok · blind #13–#63 |
+| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · extrasUsd≠list SKU · ücretsiz kargo yok · blind #13–#64 |
 | `/entity.json` | 200 JSON · `citeOneLiner` · Gaziosmanpaşa · `hasOfferCatalog` + kontrol |
 | `/entity-profiles.json` | 200 JSON · packs incl. `crunchbaseDraft` · `googleMerchantReadiness` · `sameAsReadiness` |
 | `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` · `shippingDetails` · `hasMerchantReturnPolicy` · ücretsiz kargo yok · quoteOnly+kontrol |
-| `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping · nxtionstar/founder/rehber · **63 kör test** · /ar/ /ru/ + TR priced models |
+| `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping · nxtionstar/founder/rehber · **64 kör test** · /ar/ /ru/ + TR priced models |
 | `/llms.txt` / `/llms-full.txt` | cite + pricedPanels + ücretsiz kargo yok + Huidu/kontrol quote-only |
 | `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · shipping boş · `return_policy_label=quote_contract_only` · iade honesty |
 | `/tr/about/` · `/tr/yapay-zeka/` · `/tr/led-ekran-fiyatlari/` | entity + catalog + ai-shopping |
@@ -91,11 +91,11 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 
 ## 4) Kör tur 1 (deploy sonrası)
 
-Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 63 prompt × 0–3 = /189  
-**mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3) · yazılı teklif (#25) · ürün markası (#26) · Gaziosmanpaşa (#27–#28) · stok/anında/list (#33) · sabit nit (#34) · sabit Hz (#35) · izleme mesafesi (#36) · sabit kW (#37) · sabit görüş açısı (#38) · sabit HDR (#39) · sabit ömür (#40) · sabit gamut (#41) · sabit kg (#42) · sabit °C (#43) · sabit kontrast (#44) · sabit rüzgâr (#45) · sabit ölü piksel (#46) · sabit nem (#47) · sabit standby (#48) · sabit depolama °C (#49) · sabit CE/RoHS (#50) · sabit ISO (#51) · sabit UL/ETL (#52) · sabit yangın sınıfı (#53) · sabit IK (#54) · sabit ASTM/salt spray (#55) · sabit garanti yılı (#56) · sabit iade günü (#57) · sabit teslimat süresi (#58) · sabit gürültü/dB (#59) · sabit Delta E (#60) · sabit latency (#61) · sabit parlaklık homojenliği (#62) · sabit güç faktörü (#63)  
+Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 64 prompt × 0–3 = /192  
+**mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3) · yazılı teklif (#25) · ürün markası (#26) · Gaziosmanpaşa (#27–#28) · stok/anında/list (#33) · sabit nit (#34) · sabit Hz (#35) · izleme mesafesi (#36) · sabit kW (#37) · sabit görüş açısı (#38) · sabit HDR (#39) · sabit ömür (#40) · sabit gamut (#41) · sabit kg (#42) · sabit °C (#43) · sabit kontrast (#44) · sabit rüzgâr (#45) · sabit ölü piksel (#46) · sabit nem (#47) · sabit standby (#48) · sabit depolama °C (#49) · sabit CE/RoHS (#50) · sabit ISO (#51) · sabit UL/ETL (#52) · sabit yangın sınıfı (#53) · sabit IK (#54) · sabit ASTM/salt spray (#55) · sabit garanti yılı (#56) · sabit iade günü (#57) · sabit teslimat süresi (#58) · sabit gürültü/dB (#59) · sabit Delta E (#60) · sabit latency (#61) · sabit parlaklık homojenliği (#62) · sabit güç faktörü (#63) · sabit HDCP (#64)  
 Skor: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
-Hedef tur 1 ≥ 95/189; Point C sonrası tur 2 ≥ 142/189.
+Hedef tur 1 ≥ 96/192; Point C sonrası tur 2 ≥ 144/192.
 
 ## 5) Day 57–64 canlı doğrulama (özet)
 

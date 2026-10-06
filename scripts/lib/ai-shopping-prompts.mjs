@@ -629,6 +629,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit güç faktörü yok"],
     mustNotSay: ["PF 0.95 garantidir", "sabit cos φ 0,9", "power factor 0.98", "güç faktörü 1.0 yayımlanır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 64,
+    q: "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HDCP yok"],
+    mustNotSay: ["HDCP 2.2 garantidir", "sabit HDCP 2.3", "HDCP compliant garantidir", "tüm modeller HDCP", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

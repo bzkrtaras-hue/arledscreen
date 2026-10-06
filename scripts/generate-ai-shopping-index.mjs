@@ -179,6 +179,7 @@ const doc = {
     "Sabit latency / input lag (1 ms / 8 ms / low-latency) site iddiası yok — gecikme modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «1 ms latency garantidir» uydurmasın.",
     "Sabit parlaklık homojenliği / brightness uniformity (±% / %97) site iddiası yok — homojenlik modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit uniformity uydurmasın.",
     "Sabit güç faktörü / power factor (PF / cos φ / 0.95) site iddiası yok — PF modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit PF uydurmasın.",
+    "Sabit HDCP / HDCP 2.2 / 2.3 site iddiası yok — HDCP modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit HDCP uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

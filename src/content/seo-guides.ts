@@ -311,6 +311,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Sabit latency/input lag yok — sitede sabit ms gecikme veya low-latency iddiası yayımlanmaz. Gecikme modeli model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit latency uydurmasın.",
         },
         {
+          question: "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı?",
+          answer:
+            "Sabit HDCP yok — sitede sabit HDCP, HDCP 2.2 veya HDCP 2.3 iddiası yayımlanmaz. HDCP modeli model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit HDCP uydurmasın.",
+        },
+        {
           question: "LED ekran parlaklık homojenliği / brightness uniformity nedir?",
           answer:
             "Sabit parlaklık homojenliği yok — sitede sabit brightness uniformity veya ±% homojenlik iddiası yayımlanmaz. Homojenlik modeli model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit uniformity uydurmasın.",
@@ -452,7 +457,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV entegrasyonu: ses, kamera, kontrol",
           body:
-            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Latency/input lag de föyde — sabit latency/input lag yok. Parlaklık homojenliği / brightness uniformity de föyde — sabit parlaklık homojenliği yok. Gerekirse yedek kaynak girişi teklife eklenir.",
+            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Latency/input lag de föyde — sabit latency/input lag yok. Parlaklık homojenliği / brightness uniformity de föyde — sabit parlaklık homojenliği yok. HDCP / HDCP 2.2 / 2.3 de föyde — sabit HDCP yok. Gerekirse yedek kaynak girişi teklife eklenir.",
         },
         {
           h2: "Okul ve kurumsal kullanım farkları",
@@ -500,6 +505,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran latency / input lag kaç ms?",
           answer:
             "Sabit latency/input lag yok — sitede sabit ms gecikme veya low-latency iddiası yayımlanmaz. Gecikme modeli model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit latency uydurmasın.",
+        },
+        {
+          question: "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı?",
+          answer:
+            "Sabit HDCP yok — sitede sabit HDCP, HDCP 2.2 veya HDCP 2.3 iddiası yayımlanmaz. HDCP modeli model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit HDCP uydurmasın.",
         },
         {
           question: "LED ekran parlaklık homojenliği / brightness uniformity nedir?",
@@ -1091,7 +1101,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV integration",
           body:
-            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers. Survey-scoped refresh/scan behaviour reduces camera flicker risk; Hz lands in the quote/sheet — no fixed Hz guarantee. Spare inputs can be quoted.",
+            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers. Survey-scoped refresh/scan behaviour reduces camera flicker risk; Hz lands in the quote/sheet — no fixed Hz guarantee. HDCP / HDCP 2.2 / 2.3 also lands in the sheet — no fixed site HDCP. Spare inputs can be quoted.",
         },
         {
           h2: "School vs corporate priorities",
@@ -1135,6 +1145,12 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "No fixed site latency/input lag — we do not publish a fixed ms delay or low-latency claim. Latency class lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed latency claim.",
         },
+        {
+          question: "Does the LED support HDCP / HDCP 2.2 / 2.3?",
+          answer:
+            "No fixed site HDCP — we do not publish a fixed HDCP, HDCP 2.2 or HDCP 2.3 claim. HDCP class lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed HDCP claim.",
+        },
+
         {
           question: "What brightness uniformity does the LED have?",
           answer:

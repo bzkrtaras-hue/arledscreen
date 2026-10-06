@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 63) errors.push(`blindTestPrompts must be 63 (got ${prompts.length})`);
+if (prompts.length !== 64) errors.push(`blindTestPrompts must be 64 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/63 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 63 kör test intent");
+if (!/64 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 64 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-2]) kör test/i.test(ard) && !/63 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–62 kör test without 63");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-3]) kör test/i.test(ard) && !/64 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–63 kör test without 64");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -554,6 +554,15 @@ if (!p63 || !/güç faktörü|power factor|PF|cos/i.test(p63.q || "")) {
 }
 if (!/güç faktörü|power factor|PF|cos φ|sabit güç/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit güç faktörü / power factor invent");
+}
+
+// Day 116: sabit HDCP invent
+const p64 = (doc.blindTestPrompts || []).find((p) => p.id === 64);
+if (!p64 || !/HDCP/i.test(p64.q || "")) {
+  errors.push("blindTestPrompts #64 must cover sabit HDCP invent");
+}
+if (!/HDCP|sabit HDCP/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit HDCP invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

@@ -105,6 +105,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 113 | 2026-10-06 | sabit latency/input lag #61 · AR/RU kiosk ARD · skor /183 | ✅ |
 | 114 | 2026-10-06 | sabit parlaklık homojenliği #62 · AR/RU products + TR p2-5 ARD · skor /186 | ✅ |
 | 115 | 2026-10-06 | sabit güç faktörü #63 · TR p3-07/p4/dis p2-5 ARD · skor /189 | ✅ |
+| 116 | 2026-10-06 | sabit HDCP #64 · TR dis p2-9/p3-07/p4 ARD · skor /192 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -746,3 +747,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN mimari + TR dis-mekan PF invent · llms deny · sabit güç faktörü yok
 - ARD: TR p3-07/p4 ic + dis p2-5 · IndexNow +3 · agentRules sabit güç faktörü
 - skor hedef Tur 1 ≥ 95/189 · Tur 2 ≥ 142/189
+
+## Gün 116 notları
+
+- Blind #64 «HDCP / HDCP 2.2 / 2.3?» — skor **/192**; ARD **64 kör test**
+- TR/EN konferans + TR ic-mekan HDCP invent · llms deny · sabit HDCP yok
+- ARD: TR dis p2-9/p3-07/p4 · IndexNow +3 · agentRules sabit HDCP
+- skor hedef Tur 1 ≥ 96/192 · Tur 2 ≥ 144/192
