@@ -1,0 +1,33 @@
+name: GEO prod CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [cursor/geo-prod-guard-5666]
+
+jobs:
+  build-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Assert GEO in out/
+        run: |
+          set -euo pipefail
+          for f in out/ai-shopping.json out/catalog.json out/entity.json out/llms.txt out/sitemap.xml; do
+            test -f "$f" || { echo "missing $f" >&2; exit 1; }
+          done
+          for needle in ai-shopping.json catalog.json citeOneLiner pricedPanels "ücretsiz kargo yok"; do
+            grep -q "$needle" out/llms.txt || { echo "llms missing $needle" >&2; exit 1; }
+          done
+          for needle in ai-shopping.json entity.json llms.txt catalog.json; do
+            grep -q "$needle" out/sitemap.xml || { echo "sitemap missing $needle" >&2; exit 1; }
+          done
+          echo "OK GEO out/ artefacts"
