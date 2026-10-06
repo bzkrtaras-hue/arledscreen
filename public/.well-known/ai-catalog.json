@@ -413,7 +413,7 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
@@ -423,7 +423,8 @@
         "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?",
         "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?",
         "LED ekran renk kalibrasyonu / Delta E değeri nedir? ARLEDSCREEN sabit Delta E veya factory-calibrated iddiası yayımlıyor mu?",
-        "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?"
+        "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?",
+        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -433,7 +434,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T07:00:00Z"
+      "updatedAt": "2026-10-07T08:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -536,14 +537,15 @@
       "displayName": "Konferans salonu LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
-      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61.",
+      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62.",
       "representativeQueries": [
         "konferans salonu LED",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
         "salon LED AV entegrasyon",
         "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?",
         "LED ekran renk kalibrasyonu / Delta E değeri nedir? ARLEDSCREEN sabit Delta E veya factory-calibrated iddiası yayımlıyor mu?",
-        "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?"
+        "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?",
+        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -553,7 +555,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T07:00:00Z"
+      "updatedAt": "2026-10-07T08:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:transparan-quote",
@@ -1079,7 +1081,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 61 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 62 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1116,7 +1118,8 @@
         "ARLEDSCREEN LED ekran teslimat süresi kaç gün? Sitede sabit 7 iş günü / 48 saat teslimat yayımlanıyor mu?",
         "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?",
         "LED ekran renk kalibrasyonu / Delta E değeri nedir? ARLEDSCREEN sabit Delta E veya factory-calibrated iddiası yayımlıyor mu?",
-        "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?"
+        "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?",
+        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1135,7 +1138,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T07:00:00Z"
+      "updatedAt": "2026-10-07T08:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -2630,6 +2633,69 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T07:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ar-hizmetler",
+      "displayName": "AR Hizmetler",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ar/hizmetler/",
+      "description": "AR services hub. No invent sabit parlaklık homojenliği / brightness uniformity — Blind #62.",
+      "representativeQueries": [
+        "خدمات شاشات LED",
+        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?",
+        "hizmetler AR"
+      ],
+      "tags": [
+        "services",
+        "hizmetler",
+        "AR",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T08:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ru-hizmetler",
+      "displayName": "RU Hizmetler",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ru/hizmetler/",
+      "description": "RU services hub. No invent sabit parlaklık homojenliği / brightness uniformity — Blind #62.",
+      "representativeQueries": [
+        "услуги LED",
+        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?",
+        "hizmetler RU"
+      ],
+      "tags": [
+        "services",
+        "hizmetler",
+        "RU",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T08:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ar-sss",
+      "displayName": "AR SSS / FAQ",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ar/sss/",
+      "description": "AR FAQ hub. No invent sabit parlaklık homojenliği / brightness uniformity — Blind #62.",
+      "representativeQueries": [
+        "أسئلة شائعة LED",
+        "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?",
+        "sss AR"
+      ],
+      "tags": [
+        "faq",
+        "sss",
+        "AR",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T08:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

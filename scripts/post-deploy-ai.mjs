@@ -73,7 +73,7 @@ console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → Day 114 ARD 62 kör test · #62 parlaklık homojenliği · AR/RU hizmetler + AR SSS ARD",
+  "  entity-profiles → Day 114 ARD 62 kör test · #62 parlaklık homojenliği · AR/RU products + TR p2-5 ARD",
 );
 console.log(
   "  home hero → NO 81-il bayi invent · 81 il kapısı yok + quote-only",

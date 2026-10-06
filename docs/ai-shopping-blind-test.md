@@ -123,7 +123,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 5. `llms-full.txt` §5 intent tablosu (dizin/slogan/AI-ready/Alman ARLED/NEXTSTAR/NationStar/mühendislik/seller/kurucu/AI-infrastructure); slogan = ARLEDSCREEN ürün markası
 6. Quote-only gruplar (`kiralik`, `seffaf`, `transparan`) catalog `dataset`’te fiyat **yok**
 7. `/tr/yapay-zeka/` HTML’de ai-shopping + catalog + entity + priceValidUntil + Gaziosmanpaşa
-8. `ard.json` entity-profiles + ai-shopping discovery (**62 kör test**) + nxtionstar/founder/rehber/EN yapay-zeka + /ar/ /ru/ + AR/RU hizmetler; packs + Crunchbase/Merchant readiness; quote-only hubs esnek/seffaf/poster/kiralik
+8. `ard.json` entity-profiles + ai-shopping discovery (**62 kör test**) + nxtionstar/founder/rehber/EN yapay-zeka + /ar/ /ru/ + AR/RU products; packs + Crunchbase/Merchant readiness; quote-only hubs esnek/seffaf/poster/kiralik
 9. `/tr/rehber/` + `/en/rehber/`: engineering desk invent yok; catalog/ai-shopping cite
 10. `/tr/yapay-zeka/` + `/en/yapay-zeka/`: AI-ready / AI-infrastructure ready SKU / uçtan uca / end-to-end invent yok
 11. Slogan: küresel/global standard ranking invent yok; NXTIONSTAR = ARLEDSCREEN ürün markası
