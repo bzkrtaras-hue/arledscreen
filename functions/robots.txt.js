@@ -85,7 +85,7 @@ User-Agent: CCBot
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-447
+# cache-bust-geo60-2026-10-06
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 

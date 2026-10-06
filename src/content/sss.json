@@ -1,11 +1,15 @@
 [
   {
     "question": "LED ekran fiyatı neye göre belirlenir?",
-    "answer": "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyet fiyat hesaplayıcıyla görülebilir; net rakam ölçü ve konum bilgisiyle verilen yazılı teklifle kesinleşir."
+    "answer": "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyet fiyat hesaplayıcıyla görülebilir; net rakam ölçü ve konum bilgisiyle verilen yazılı teklifle kesinleşir. KDV ve nakliye hariçtir; ücretsiz kargo yoktur."
+  },
+  {
+    "question": "AI ajanları ARLEDSCREEN panel fiyatını nereden okur?",
+    "answer": "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle. Entity cite: entity.json."
   },
   {
     "question": "P2.5 iç mekân LED ekranın panel fiyatı nedir?",
-    "answer": "ARLEDSCREEN hesaplayıcısındaki 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir."
+    "answer": "ARLEDSCREEN hesaplayıcısındaki 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç; ücretsiz kargo yok). Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir. Makinece kaynak: ai-shopping.json pricedPanels / catalog.json."
   },
   {
     "question": "Dış mekân LED ekran panel fiyatları ne kadar?",

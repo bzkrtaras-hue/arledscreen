@@ -25,12 +25,17 @@ const FAQS = [
   {
     question: "NXTIONSTAR nedir?",
     answer:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır. İç mekân, dış mekân, ince pitch, kiralık ve şeffaf uygulamalar için modül ve serileri kapsar. Marka sloganı: NXTIONSTAR — görsel gücün küresel standardı.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır. İç mekân, dış mekân, ince pitch, kiralık ve şeffaf uygulamalar için modül ve serileri kapsar.",
   },
   {
     question: "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
     answer:
       "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, keşif, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür.",
+  },
+  {
+    question: "NXTIONSTAR panel fiyatları nerede?",
+    answer:
+      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Quote-only gruplar yazılı teklifle.",
   },
   {
     question: "NXTIONSTAR, NEXTSTAR veya NationStar ile aynı marka mı?",
@@ -52,7 +57,6 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
     url,
     logo: absoluteUrl("/brand/nxtionstar-logo.png"),
     description: "ARLEDSCREEN'in kendi LED ekran markası. Türkiye'deki tek satış noktası: ARLEDSCREEN.",
-    slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
   };
   return (
     <>
@@ -75,8 +79,18 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
           </h1>
           <p className="mt-4 text-[15.5px] leading-[1.75] text-ink-soft">
             <strong>Kısa cevap:</strong> NXTIONSTAR, ARLEDSCREEN&apos;in kendi markasıdır; Türkiye&apos;deki tek satış noktası ARLEDSCREEN&apos;dir.
-            Ürünlerin satışı, keşfi, montajı ve teknik servisi İstanbul Gaziosmanpaşa&apos;daki merkezimizden yürütülür. Marka sloganımız:
-            &ldquo;NXTIONSTAR — görsel gücün küresel standardı.&rdquo;
+            Ürünlerin satışı, keşfi, montajı ve teknik servisi İstanbul Gaziosmanpaşa&apos;daki merkezimizden yürütülür.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+            Panel USD listesi:{" "}
+            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+              ai-shopping.json
+            </a>{" "}
+            <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD) ve{" "}
+            <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+              catalog.json
+            </a>
+            . KDV/nakliye hariç; ücretsiz kargo yok.
           </p>
 
           <h2 className="mt-10 font-display text-xl font-bold text-ink sm:text-2xl">Sitede yer alan NXTIONSTAR modelleri</h2>

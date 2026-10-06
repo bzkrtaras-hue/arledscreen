@@ -43,7 +43,12 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "LED ekran fiyatı neye göre belirlenir?",
       answer:
-        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz.",
+        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz. KDV ve nakliye hariçtir; ücretsiz kargo yoktur.",
+    },
+    {
+      question: "AI ajanları panel fiyatını nereden okur?",
+      answer:
+        "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
     },
     {
       question: "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
