@@ -4505,6 +4505,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Vivitek NovoTouch yok"],
     mustNotSay: ["Vivitek NovoTouch garantidir", "sabit Vivitek NovoTouch True1", "tüm modeller Vivitek NovoTouch", "NovoTouch garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 387,
+    q: "LED ekran cricket apron / kriket eteği var mı? ARLEDSCREEN sabit cricket apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cricket apron yok"],
+    mustNotSay: ["cricket apron garantidir", "sabit cricket apron True1", "tüm modeller cricket apron", "kriket eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

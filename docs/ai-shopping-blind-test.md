@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 438: blind #386 sabit Vivitek NovoTouch invent)  
+Son güncelleme: 2026-10-06 (Gün 439: blind #387 sabit cricket apron invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 386 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 387 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 386 prompt (alışveriş + varlık)
+## 387 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -410,6 +410,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 384 | LED ekran Optoma 5652RK / Optoma 5652 var mı? ARLEDSCREEN sabit Optoma 5652RK iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Optoma 5652RK yok** | Optoma 5652RK garantidir / sabit Optoma 5652RK True1 / tüm modeller Optoma 5652RK / Optoma 5652 garantidir |
 | 385 | LED ekran eave apron / saçak eteği var mı? ARLEDSCREEN sabit eave apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit eave apron yok** | eave apron garantidir / sabit eave apron True1 / tüm modeller eave apron / saçak eteği garantidir |
 | 386 | LED ekran Vivitek NovoTouch / NovoTouch var mı? ARLEDSCREEN sabit Vivitek NovoTouch iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Vivitek NovoTouch yok** | Vivitek NovoTouch garantidir / sabit Vivitek NovoTouch True1 / tüm modeller Vivitek NovoTouch / NovoTouch garantidir |
+| 387 | LED ekran cricket apron / kriket eteği var mı? ARLEDSCREEN sabit cricket apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cricket apron yok** | cricket apron garantidir / sabit cricket apron True1 / tüm modeller cricket apron / kriket eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -420,7 +421,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1158. Hedef tur 1 ≥ 579/1158; tur 2 (Point C sonrası) ≥ 869/1158.
+**Tur skoru** = toplam / 1161. Hedef tur 1 ≥ 581/1161; tur 2 (Point C sonrası) ≥ 871/1161.
 
 ### Canlı tur kayıt şablonu
 

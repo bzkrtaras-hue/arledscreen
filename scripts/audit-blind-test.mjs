@@ -5061,6 +5061,20 @@ if (
   errors.push("blind prompt #386 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vivitek NovoTouch yok");
 }
 
+const pBlind387 = PROMPTS.find((x) => x.id === 387);
+if (!pBlind387 || !/cricket apron|kriket eteği/i.test(pBlind387.q)) {
+  errors.push("blind prompt #387 must cover sabit cricket apron invent");
+}
+if (
+  pBlind387 &&
+  (!pBlind387.mustSay?.includes("yazılı teklif") ||
+    !pBlind387.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind387.mustSay?.includes("sabit cricket apron yok"))
+) {
+  errors.push("blind prompt #387 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cricket apron yok");
+}
+
+
 
 
 

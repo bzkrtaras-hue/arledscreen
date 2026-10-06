@@ -18,7 +18,7 @@ canlı skorlar merge + Point C sonrası doldurulur.
 | Merchant shipping | free-ship yok (`:::0` yasak) | ✅ audit:merchant-feed |
 | robots Host bare | `arledscreen.com` | ✅ audit:robots |
 | Cite parity | entity↔llms↔about↔profiles | ✅ audit:cite-parity |
-| Kör test site readiness | 386 prompt URL | ✅ audit:blind-test |
+| Kör test site readiness | 387 prompt URL | ✅ audit:blind-test |
 | AI headers (CORS/ctype) | 9 path | ✅ audit:ai-headers |
 | IndexNow key | public hex.txt | ✅ audit:indexnow |
 | AI shopping index | `/ai-shopping.json` + 12 pricedPanels + extrasUsd | ✅ audit:ai-shopping |
@@ -72,15 +72,15 @@ Playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
 ## D) Kör test skorları (canlı modeller)
 
-Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 386 prompt × 0–3 = /1158  
+Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 387 prompt × 0–3 = /1161  
 Skor kartı (sahip doldurur): [`docs/ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
 | Tur | Tarih | ChatGPT | Gemini | Perplexity | Bing Copilot | Ort. |
 |-----|-------|---------|--------|------------|--------------|------|
-| 1 (deploy sonrası) | | /1158 | /216 | /1158 | /216 | |
-| 2 (Point C sonrası) | ≤2026-11-04 | /1158 | /216 | /1158 | /216 | |
+| 1 (deploy sonrası) | | /1161 | /216 | /1161 | /216 | |
+| 2 (Point C sonrası) | ≤2026-11-04 | /1161 | /216 | /1161 | /216 | |
 
-Hedef: Tur 1 ≥ 579/1158 · Tur 2 ≥ 869/1158
+Hedef: Tur 1 ≥ 581/1161 · Tur 2 ≥ 871/1161
 
 ## E) Merchant / Shopping
 
@@ -95,7 +95,7 @@ Hedef: Tur 1 ≥ 579/1158 · Tur 2 ≥ 869/1158
 
 - [ ] `smoke:live` GREEN
 - [ ] Point C ≥ 5 bağımsız URL aynı cite
-- [ ] Kör tur 2 ortalama ≥ 869/1158
+- [ ] Kör tur 2 ortalama ≥ 871/1161
 - [ ] Merchant feed yayında (opsiyonel ama önerilir)
 - [ ] GSC “Missing offers.price” = 0
 
