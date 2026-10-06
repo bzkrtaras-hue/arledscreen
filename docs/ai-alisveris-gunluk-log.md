@@ -1,6 +1,6 @@
-## Gün 504 — invent Blind #452 Logitech Rally Bar Huddle
+## Gün 504 — invent Blind #452 Logitech Rally Bar Huddle LIVE
 
-- Blind #452 Logitech Rally Bar Huddle / Rally Bar Huddle · ic/konferans · prompts=452 · /1356 · build pending
+- Blind #452 Logitech Rally Bar Huddle / Rally Bar Huddle · ic/konferans · prompts=452 · /1356 · CF deploy · smoke:live 20/20
 - sahibe iş yok
 
 ## Gün 503 — invent Blind #451 curtain wall LIVE
