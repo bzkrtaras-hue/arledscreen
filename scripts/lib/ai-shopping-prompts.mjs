@@ -2957,6 +2957,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit interlocking cleat yok"],
     mustNotSay: ["interlocking cleat garantidir", "sabit interlocking cleat True1", "tüm modeller interlocking cleat", "kenetli kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 258,
+    q: "LED ekran Sharp / AQUOS board var mı? ARLEDSCREEN sabit Sharp iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Sharp yok"],
+    mustNotSay: ["Sharp garantidir", "sabit Sharp True1", "tüm modeller Sharp", "AQUOS board garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

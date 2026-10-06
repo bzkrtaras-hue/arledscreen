@@ -3384,6 +3384,20 @@ if (
   errors.push("blind prompt #257 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit interlocking cleat yok");
 }
 
+const pBlind258 = PROMPTS.find((x) => x.id === 258);
+if (!pBlind258 || !/Sharp|AQUOS board/i.test(pBlind258.q)) {
+  errors.push("blind prompt #258 must cover sabit Sharp invent");
+}
+if (
+  pBlind258 &&
+  (!pBlind258.mustSay?.includes("yazılı teklif") ||
+    !pBlind258.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind258.mustSay?.includes("sabit Sharp yok"))
+) {
+  errors.push("blind prompt #258 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sharp yok");
+}
+
+
 
 
 
