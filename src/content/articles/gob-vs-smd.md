@@ -10,7 +10,7 @@ last_reviewed: 2026-10-05
 
 # GOB vs SMD LED ekran: hangisi ne zaman?
 
-**Kısa cevap:** **SMD**, LED diyotların PCB üzerine yüzey montajıyla yerleştirildiği yaygın üretim yöntemidir. **GOB** (Glue on Board), SMD modülün üzerine şeffaf koruyucu bir kaplama uygulanmış varyanttır; yüzey darbeye ve toza daha dayanıklı hale gelir, yakın izlemede noktasal diyot hasarı riski azalır. ARLEDSCREEN her iki yaklaşımı da projelendirir; seçim izleme mesafesi, kullanım yeri ve bakım ihtiyacına göre yazılı teklifle netleşir.
+**Kısa cevap:** **SMD**, LED diyotların PCB üzerine yüzey montajıyla yerleştirildiği yaygın üretim yöntemidir. **GOB** (Glue on Board), SMD modülün üzerine şeffaf koruyucu bir kaplama uygulanmış varyanttır; yüzey darbeye ve toza daha dayanıklı hale gelir, yakın izlemede noktasal diyot hasarı riski azalır. ARLEDSCREEN her iki yaklaşımı da projelendirir; seçim izleme mesafesi, kullanım yeri ve bakım ihtiyacına göre yazılı teklifle netleşir. Görüş açısı (yatay/dikey) model föyündedir — sabit 140°/160° yayımlanmaz (sabit görüş açısı yok); Gaziosmanpaşa keşif + yazılı teklif.
 
 Bu sayfada abartılı “en dayanıklı / en net” iddiaları yoktur. Amaç: karar için doğru soruları sormak ve yayımlanmış fiyat kaynağına bağlamak.
 

@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 37 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 38 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 37) errors.push(`blindTestPrompts must be 37 (got ${prompts.length})`);
+if (prompts.length !== 38) errors.push(`blindTestPrompts must be 38 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/37 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 37 kör test intent");
+if (!/38 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 38 kör test intent");
 }
-if (/(?:2[0-9]|3[0-6]) kör test/i.test(ard) && !/37 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–36 kör test without 37");
+if (/(?:2[0-9]|3[0-7]) kör test/i.test(ard) && !/38 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–37 kör test without 38");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -345,6 +345,14 @@ if (!p37 || !/kW|3 faz/i.test(p37.q || "")) {
 }
 if (!/0,45|0,75|3 faz zorunlu|sabit kW/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit kW/m² / 3 faz zorunlu invent");
+}
+// Day 90: sabit görüş açısı 140°/160° invent
+const p38 = (doc.blindTestPrompts || []).find((p) => p.id === 38);
+if (!p38 || !/görüş açısı|140|160/i.test(p38.q || "")) {
+  errors.push("blindTestPrompts #38 must cover sabit görüş açısı 140°/160° invent");
+}
+if (!/140|160|görüş açısı|sabit görüş/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit 140°/160° görüş açısı invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

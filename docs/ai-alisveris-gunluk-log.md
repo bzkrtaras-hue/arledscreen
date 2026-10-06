@@ -79,6 +79,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 87 | 2026-10-06 | sabit Hz/kamera #35 · ince-pitch/konferans ARD · skor /105 | ✅ |
 | 88 | 2026-10-06 | izleme mesafesi #36 · piksel-araligi/p4/p5 ARD · skor /108 | ✅ |
 | 89 | 2026-10-06 | sabit kW/3faz #37 · mimari/poster/kiosk ARD · skor /111 | ✅ |
+| 90 | 2026-10-06 | sabit görüş açısı #38 · gob-vs-smd/led-tabela/p1-25 ARD · skor /114 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -538,3 +539,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - power calculator / mimari / seo 3 faz soften · hesaplayici kW FAQ
 - ARD: poster + kiosk + led-ekran rehber · IndexNow +3 · agentRules sabit kW
 - skor hedef Tur 1 ≥ 56/111 · Tur 2 ≥ 83/111
+
+## Gün 90 notları
+
+- Blind #38 «LED ekran görüş açısı kaç derece / sabit 140°/160°?» — skor **/114**; ARD **38 kör test**
+- seo-guides + gob-vs-smd + led-tabela görüş açısı invent · control «dahildir» residual
+- ARD: gob-vs-smd + led-tabela + p1-25 · IndexNow p1-25/p3-07 · agentRules sabit görüş açısı
+- skor hedef Tur 1 ≥ 57/114 · Tur 2 ≥ 86/114

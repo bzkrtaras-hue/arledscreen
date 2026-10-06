@@ -383,11 +383,11 @@
       "displayName": "GOB LED ekran (priced hub)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/",
-      "description": "GOB priced panel grubu. Panel USD catalog/ai-shopping; rehber gob-vs-smd.",
+      "description": "GOB priced panel grubu. Panel USD catalog/ai-shopping; Blind #7 rehber gob-vs-smd; sabit görüş açısı yok — Blind #38.",
       "representativeQueries": [
         "GOB LED ekran fiyat",
         "GOB mi SMD mi?",
-        "GOB panel USD"
+        "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?"
       ],
       "tags": [
         "commerce",
@@ -1039,7 +1039,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 37 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 38 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1052,7 +1052,8 @@
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı? ARLEDSCREEN sabit 3840 Hz veya yüksek yenileme garantisi yayımlıyor mu?",
         "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?",
-        "LED ekran için m² başına kaç kW gerekir? ARLEDSCREEN sabit 0,45/0,75 kW/m² veya her projede 3 faz zorunlu yayımlıyor mu?"
+        "LED ekran için m² başına kaç kW gerekir? ARLEDSCREEN sabit 0,45/0,75 kW/m² veya her projede 3 faz zorunlu yayımlıyor mu?",
+        "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1202,11 +1203,11 @@
       "displayName": "LED ekran çözüm rehberi (ana)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/led-ekran/",
-      "description": "Ana LED ekran rehber. Panel USD catalog/ai-shopping; Blind #18. Sabit kW yok.",
+      "description": "Ana LED ekran rehber. Panel USD catalog/ai-shopping; Blind #18. Sabit kW yok; sabit görüş açısı yok — Blind #38.",
       "representativeQueries": [
         "LED ekran çözüm rehberi panel fiyatı nereden okunur?",
         "LED ekran nedir rehber",
-        "LED ekran için m² başına kaç kW gerekir?"
+        "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -1215,7 +1216,68 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T07:00:00Z"
+      "updatedAt": "2026-10-06T08:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-gob-vs-smd",
+      "displayName": "GOB vs SMD rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/gob-vs-smd/",
+      "description": "GOB vs SMD rehber. Blind #7; panel USD catalog; sabit görüş açısı yok — Blind #38.",
+      "representativeQueries": [
+        "GOB mi SMD mi?",
+        "GOB LED nedir",
+        "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "GOB",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T08:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-led-tabela",
+      "displayName": "LED tabela mı LED ekran mı rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/",
+      "description": "LED tabela vs LED ekran rehber. Blind #8; sabit görüş açısı yok — Blind #38.",
+      "representativeQueries": [
+        "LED tabela mı LED ekran mı?",
+        "dijital tabela LED",
+        "LED tabela ile LED ekran farkı"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "tabela",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T08:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p125-hub",
+      "displayName": "P1.25 LED ekran (priced pitch hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/p1-25-led-ekran/",
+      "description": "P1.25 priced pitch hub; GOB panel USD catalog/ai-shopping (ör. p1-25-ic-gob). Sabit görüş açısı yok.",
+      "representativeQueries": [
+        "P1.25 LED ekran fiyat",
+        "P1.25 GOB panel USD",
+        "ince pitch P1.25"
+      ],
+      "tags": [
+        "commerce",
+        "pricing",
+        "pitch",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T08:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

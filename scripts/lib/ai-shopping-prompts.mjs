@@ -310,6 +310,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kW yok"],
     mustNotSay: ["0,45 kW", "0,75 kW", "3 faz zorunlu", "sabit kW/m²", "ücretsiz kargo dahil"],
   },
+  {
+    id: 38,
+    q: "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/led-ekran/",
+      "/tr/rehber/gob-vs-smd/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit görüş açısı yok"],
+    mustNotSay: ["sabit 140°", "sabit 160°", "140°/160° garanti", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

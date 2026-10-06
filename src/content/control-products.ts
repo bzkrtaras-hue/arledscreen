@@ -131,7 +131,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       {
         question: "Yazılım lisansı ve eğitim var mı?",
         answer:
-          "NovaLCT / Unico ile yapılandırma ve temel operatör anlatımı kurulum paketimize dahildir. Bulut abonelikleri ayrı değerlendirilir.",
+          "NovaLCT / Unico ile yapılandırma ve temel operatör anlatımı teklif kapsamına yazılır — sabit «dahildir» paketi yoktur. Bulut abonelikleri ayrı değerlendirilir.",
       },
     ],
   },
@@ -153,7 +153,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     brandName: "Colorlight",
     intro: [
       "Colorlight Cloud Tech kontrol ürünleri; X ve VX serisi işlemciler ile S serisi gönderici kartlarda toplanır. Çoklu HDMI/DP/DVI girişi, serbest katman yerleşimi ve Gigabit Ethernet / fiber çıkışları sabit kurulumdan sahne işlerine kadar geniş bir aralığı kapsar.",
-      "ARLEDSCREEN, Colorlight modelini ekranın piksel yükü, kaynak sayısı ve yedek fiber ihtiyacına göre önerir. iSet veya web arayüzüyle ilk yayın testi, parlaklık/gri ton ayarı ve operatör notları teslimata dahildir.",
+      "ARLEDSCREEN, Colorlight modelini ekranın piksel yükü, kaynak sayısı ve yedek fiber ihtiyacına göre önerir. iSet veya web arayüzüyle ilk yayın testi, parlaklık/gri ton ayarı ve operatör notları yazılı teklifte kapsama alınır — sabit «teslimata dahildir» paketi yoktur.",
     ],
     highlights: [
       "X20 / X40m: yüksek yükleme ve çoklu katman splicing",

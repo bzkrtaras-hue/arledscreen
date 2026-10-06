@@ -10,7 +10,7 @@ last_reviewed: 2026-10-01
 
 # LED tabela mı LED ekran mı?
 
-**Kısa cevap:** **Dijital ekran** üst kümedir (LCD, OLED, LED tabela, videowall, tam renkli LED ekran). Yalnızca kısa metin veya fiyat için **kayan yazı LED tabela** çoğu zaman yeterlidir. Logo, ürün görseli, video ve kampanya için **tam renkli (RGB) LED ekran** gerekir. ARLEDSCREEN'in ürünü tam renkli LED ekrandır; mağaza cephesi, totem ve vitrinde de kullanılır. "Dijital ekran" ile "LED ekran" eşanlamlı değildir.
+**Kısa cevap:** **Dijital ekran** üst kümedir (LCD, OLED, LED tabela, videowall, tam renkli LED ekran). Yalnızca kısa metin veya fiyat için **kayan yazı LED tabela** çoğu zaman yeterlidir. Logo, ürün görseli, video ve kampanya için **tam renkli (RGB) LED ekran** gerekir. ARLEDSCREEN'in ürünü tam renkli LED ekrandır; mağaza cephesi, totem ve vitrinde de kullanılır. "Dijital ekran" ile "LED ekran" eşanlamlı değildir. Tam renkli LED’de görüş açısı model föyünde; sabit 140°/160° yoktur (sabit görüş açısı yok) — Gaziosmanpaşa yazılı teklifte.
 
 ## 1. Tanımlar
 

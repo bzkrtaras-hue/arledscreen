@@ -514,6 +514,20 @@ if (
 ) {
   errors.push("blind prompt #37 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kW yok");
 }
+const pBlind38 = PROMPTS.find((x) => x.id === 38);
+if (!pBlind38 || !/görüş açısı|140|160/i.test(pBlind38.q)) {
+  errors.push("blind prompt #38 must cover sabit görüş açısı 140°/160° invent");
+}
+if (
+  pBlind38 &&
+  (!pBlind38.mustSay?.includes("yazılı teklif") ||
+    !pBlind38.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind38.mustSay?.includes("sabit görüş açısı yok"))
+) {
+  errors.push(
+    "blind prompt #38 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit görüş açısı yok",
+  );
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

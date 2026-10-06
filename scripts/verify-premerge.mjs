@@ -94,9 +94,12 @@ if (!fs.existsSync(aiPath)) {
     } else if (!/0,45|0,75|3 faz zorunlu|sabit kW/i.test(JSON.stringify(doc.agentRules))) {
       console.error("verify:premerge: agentRules must forbid sabit kW/m² / 3 faz zorunlu invent");
       failed += 1;
+    } else if (!/140|160|görüş açısı|sabit görüş/i.test(JSON.stringify(doc.agentRules))) {
+      console.error("verify:premerge: agentRules must forbid sabit 140°/160° görüş açısı invent");
+      failed += 1;
     } else {
       console.log(
-        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=37 OK`,
+        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=38 OK`,
       );
     }
     // Day 66: catalog extrasUsdNote
