@@ -857,6 +857,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit mıknatıslı modül yok"],
     mustNotSay: ["mıknatıslı modül garantidir", "sabit magnetic module", "tüm modeller magnetic module", "magnetic module garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 83,
+    q: "LED ekran koruyucu kaplama / conformal coating var mı? ARLEDSCREEN sabit koruyucu kaplama iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit koruyucu kaplama yok"],
+    mustNotSay: ["koruyucu kaplama garantidir", "sabit conformal coating", "tüm modeller conformal coating", "conformal coating garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

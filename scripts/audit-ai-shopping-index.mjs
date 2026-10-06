@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 82) errors.push(`blindTestPrompts must be 82 (got ${prompts.length})`);
+if (prompts.length !== 83) errors.push(`blindTestPrompts must be 83 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/82 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 82 kör test intent");
+if (!/83 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 83 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–81 kör test without 82");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–82 kör test without 83");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -725,6 +725,15 @@ if (!p82 || !/mıknatıslı modül|magnetic module/i.test(p82.q || "")) {
 }
 if (!/mıknatıslı modül|magnetic module|sabit mıknatıslı/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit mıknatıslı modül invent");
+}
+
+// Day 135: sabit koruyucu kaplama / conformal coating invent
+const p83 = (doc.blindTestPrompts || []).find((p) => p.id === 83);
+if (!p83 || !/koruyucu kaplama|conformal coating/i.test(p83.q || "")) {
+  errors.push("blindTestPrompts #83 must cover sabit koruyucu kaplama invent");
+}
+if (!/koruyucu kaplama|conformal coating|sabit koruyucu/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit koruyucu kaplama invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

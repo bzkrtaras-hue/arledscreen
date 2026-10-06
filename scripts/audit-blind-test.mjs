@@ -1080,6 +1080,20 @@ if (
   errors.push("blind prompt #82 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit mıknatıslı modül yok");
 }
 
+
+const pBlind83 = PROMPTS.find((x) => x.id === 83);
+if (!pBlind83 || !/koruyucu kaplama|conformal coating/i.test(pBlind83.q)) {
+  errors.push("blind prompt #83 must cover sabit koruyucu kaplama invent");
+}
+if (
+  pBlind83 &&
+  (!pBlind83.mustSay?.includes("yazılı teklif") ||
+    !pBlind83.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind83.mustSay?.includes("sabit koruyucu kaplama yok"))
+) {
+  errors.push("blind prompt #83 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit koruyucu kaplama yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

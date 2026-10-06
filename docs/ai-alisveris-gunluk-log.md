@@ -124,6 +124,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 132 | 2026-10-06 | sabit canlı modül #80 · azerbaycan/gnd-triko/ouka proje ARD · skor /240 | ✅ |
 | 133 | 2026-10-06 | sabit dokunmatik #81 · beylikduzu-yasam/bireysel/bursa proje ARD · skor /243 | ✅ |
 | 134 | 2026-10-06 | sabit mıknatıslı modül #82 · hair/drama/manisa-2 proje ARD · skor /246 | ✅ |
+| 135 | 2026-10-06 | sabit koruyucu kaplama #83 · manisa-proje/prestij/sinan-polat proje ARD · skor /249 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -898,3 +899,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN mimari mıknatıslı modül invent · llms deny · sabit mıknatıslı modül yok
 - ARD: gerçek proje hub hair-make-up-studio / istanbul-drama-sanat-atolyesi / manisa-2-adet (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit mıknatıslı modül
 - skor hedef Tur 1 ≥ 123/246 · Tur 2 ≥ 185/246
+
+## Gün 135 notları
+
+- Blind #83 «koruyucu kaplama / conformal coating?» — skor **/249**; ARD **83 kör test**
+- TR/EN dis-mekan + TR/EN mimari koruyucu kaplama invent · llms deny · sabit koruyucu kaplama yok
+- ARD: gerçek proje hub manisa-proje / prestij-cafe / sinan-polat-sigorta (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit koruyucu kaplama
+- skor hedef Tur 1 ≥ 125/249 · Tur 2 ≥ 187/249

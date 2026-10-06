@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/82 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 82 kör test intent (not stale 17–81)");
+if (ardTxt && !/83 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 83 kör test intent (not stale 17–82)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–81 kör test without 82");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–82 kör test without 83");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1229,6 +1229,22 @@ for (const rel of [
   }
   if (/mıknatıslı modül garantidir|sabit magnetic module|tüm modeller magnetic module|magnetic module garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit mıknatıslı modül`);
+  }
+}
+
+
+// Day 135: sabit koruyucu kaplama / conformal coating — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit koruyucu kaplama yok|no fixed site conformal coating/i.test(html)) {
+    errors.push(`${rel} should hedge sabit koruyucu kaplama / conformal coating`);
+  }
+  if (/koruyucu kaplama garantidir|sabit conformal coating|tüm modeller conformal coating|conformal coating garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit koruyucu kaplama`);
   }
 }
 
