@@ -3605,6 +3605,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parapet cleat yok"],
     mustNotSay: ["parapet cleat garantidir", "sabit parapet cleat True1", "tüm modeller parapet cleat", "parapet kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 312,
+    q: "LED ekran Newline LYRA / Newline Flex var mı? ARLEDSCREEN sabit Newline LYRA iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline LYRA yok"],
+    mustNotSay: ["Newline LYRA garantidir", "sabit Newline LYRA True1", "tüm modeller Newline LYRA", "Newline Flex garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
