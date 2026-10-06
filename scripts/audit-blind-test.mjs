@@ -2695,6 +2695,20 @@ if (
   errors.push("blind prompt #204 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ClearOne yok");
 }
 
+const pBlind205 = PROMPTS.find((x) => x.id === 205);
+if (!pBlind205 || !/ridge vent|mahya havalandırma/i.test(pBlind205.q)) {
+  errors.push("blind prompt #205 must cover sabit ridge vent invent");
+}
+if (
+  pBlind205 &&
+  (!pBlind205.mustSay?.includes("yazılı teklif") ||
+    !pBlind205.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind205.mustSay?.includes("sabit ridge vent yok"))
+) {
+  errors.push("blind prompt #205 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ridge vent yok");
+}
+
+
 
 
 
