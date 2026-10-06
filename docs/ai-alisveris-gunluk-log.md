@@ -394,6 +394,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 402 | 2026-10-06 | sabit ActivPanel 9 #350 · ic/konferans ARD refresh · skor /1050 | ✅ |
 | 403 | 2026-10-06 | sabit deck flashing #351 · dis/mimari ARD refresh · skor /1053 | ✅ |
 | 404 | 2026-10-06 | sabit Avocor F Series #352 · ic/konferans ARD refresh · skor /1056 | ✅ |
+| 405 | 2026-10-06 | sabit window flashing #353 · dis/mimari ARD refresh · skor /1059 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2853,3 +2854,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #352 «Avocor F Series / Avocor W Series?» — skor **/1056**; ARD **352 kör test**
 - TR/EN ic-mekan + TR/EN konferans Avocor F Series invent · llms deny · sabit Avocor F Series yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Avocor F Series
+
+## Gün 405 notları
+
+- Blind #353 «window flashing / pencere flaşör?» — skor **/1059**; ARD **353 kör test**
+- TR/EN dis-mekan + TR/EN mimari window flashing invent · llms deny · sabit window flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit window flashing

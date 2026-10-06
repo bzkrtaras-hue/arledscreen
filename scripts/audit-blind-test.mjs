@@ -4619,6 +4619,20 @@ if (
   errors.push("blind prompt #352 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Avocor F Series yok");
 }
 
+const pBlind353 = PROMPTS.find((x) => x.id === 353);
+if (!pBlind353 || !/window flashing|pencere flaşör/i.test(pBlind353.q)) {
+  errors.push("blind prompt #353 must cover sabit window flashing invent");
+}
+if (
+  pBlind353 &&
+  (!pBlind353.mustSay?.includes("yazılı teklif") ||
+    !pBlind353.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind353.mustSay?.includes("sabit window flashing yok"))
+) {
+  errors.push("blind prompt #353 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit window flashing yok");
+}
+
+
 
 
 

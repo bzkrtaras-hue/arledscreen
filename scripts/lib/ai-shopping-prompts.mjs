@@ -4097,6 +4097,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Avocor F Series yok"],
     mustNotSay: ["Avocor F Series garantidir", "sabit Avocor F Series True1", "tüm modeller Avocor F Series", "Avocor W Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 353,
+    q: "LED ekran window flashing / pencere flaşör var mı? ARLEDSCREEN sabit window flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit window flashing yok"],
+    mustNotSay: ["window flashing garantidir", "sabit window flashing True1", "tüm modeller window flashing", "pencere flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
