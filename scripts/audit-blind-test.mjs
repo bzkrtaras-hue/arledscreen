@@ -3943,6 +3943,20 @@ if (
   errors.push("blind prompt #300 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BenQ Board yok");
 }
 
+const pBlind301 = PROMPTS.find((x) => x.id === 301);
+if (!pBlind301 || !/termination cleat|termination kleyt/i.test(pBlind301.q)) {
+  errors.push("blind prompt #301 must cover sabit termination cleat invent");
+}
+if (
+  pBlind301 &&
+  (!pBlind301.mustSay?.includes("yazılı teklif") ||
+    !pBlind301.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind301.mustSay?.includes("sabit termination cleat yok"))
+) {
+  errors.push("blind prompt #301 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit termination cleat yok");
+}
+
+
 
 
 

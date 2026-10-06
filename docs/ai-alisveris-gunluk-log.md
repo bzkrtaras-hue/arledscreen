@@ -342,6 +342,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 350 | 2026-10-06 | sabit Microsoft Teams Display #298 · ic/konferans ARD refresh · skor /894 | ✅ |
 | 351 | 2026-10-06 | sabit reglet cleat #299 · dis/mimari ARD refresh · skor /897 | ✅ |
 | 352 | 2026-10-06 | sabit BenQ Board #300 · ic/konferans ARD refresh · skor /900 | ✅ |
+| 353 | 2026-10-06 | sabit termination cleat #301 · dis/mimari ARD refresh · skor /903 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2489,3 +2490,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #300 «BenQ Board / BenQ IFP?» — skor **/900**; ARD **300 kör test**
 - TR/EN ic-mekan + TR/EN konferans BenQ Board invent · llms deny · sabit BenQ Board yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit BenQ Board
+
+## Gün 353 notları
+
+- Blind #301 «termination cleat / termination kleyt?» — skor **/903**; ARD **301 kör test**
+- TR/EN dis-mekan + TR/EN mimari termination cleat invent · llms deny · sabit termination cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit termination cleat

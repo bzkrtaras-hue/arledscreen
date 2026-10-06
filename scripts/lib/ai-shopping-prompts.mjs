@@ -3473,6 +3473,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BenQ Board yok"],
     mustNotSay: ["BenQ Board garantidir", "sabit BenQ Board True1", "tüm modeller BenQ Board", "BenQ IFP garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 301,
+    q: "LED ekran termination cleat / termination kleyt var mı? ARLEDSCREEN sabit termination cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit termination cleat yok"],
+    mustNotSay: ["termination cleat garantidir", "sabit termination cleat True1", "tüm modeller termination cleat", "termination kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
