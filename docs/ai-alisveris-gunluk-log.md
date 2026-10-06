@@ -255,6 +255,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 263 | 2026-10-06 | sabit kick-out flashing #211 · dis/mimari ARD refresh · skor /633 | ✅ |
 | 264 | 2026-10-06 | sabit Vaddio #212 · ic/konferans ARD refresh · skor /636 | ✅ |
 | 265 | 2026-10-06 | sabit valley flashing #213 · dis/mimari ARD refresh · skor /639 | ✅ |
+| 266 | 2026-10-06 | sabit Lifesize #214 · ic/konferans ARD refresh · skor /642 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1880,3 +1881,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #213 «valley flashing / vadi flaşı?» — skor **/639**; ARD **213 kör test**
 - TR/EN dis-mekan + TR/EN mimari valley flashing invent · llms deny · sabit valley flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit valley flashing
+
+## Gün 266 notları
+
+- Blind #214 «Lifesize / video room?» — skor **/642**; ARD **214 kör test**
+- TR/EN ic-mekan + TR/EN konferans Lifesize invent · llms deny · sabit Lifesize yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Lifesize

@@ -2812,6 +2812,20 @@ if (
   errors.push("blind prompt #213 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley flashing yok");
 }
 
+const pBlind214 = PROMPTS.find((x) => x.id === 214);
+if (!pBlind214 || !/Lifesize|video room/i.test(pBlind214.q)) {
+  errors.push("blind prompt #214 must cover sabit Lifesize invent");
+}
+if (
+  pBlind214 &&
+  (!pBlind214.mustSay?.includes("yazılı teklif") ||
+    !pBlind214.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind214.mustSay?.includes("sabit Lifesize yok"))
+) {
+  errors.push("blind prompt #214 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Lifesize yok");
+}
+
+
 
 
 

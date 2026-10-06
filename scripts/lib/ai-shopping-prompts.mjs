@@ -2429,6 +2429,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit valley flashing yok"],
     mustNotSay: ["valley flashing garantidir", "sabit valley flashing True1", "tüm modeller valley flashing", "vadi flaşı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 214,
+    q: "LED ekran Lifesize / video room var mı? ARLEDSCREEN sabit Lifesize iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Lifesize yok"],
+    mustNotSay: ["Lifesize garantidir", "sabit Lifesize True1", "tüm modeller Lifesize", "video room garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
