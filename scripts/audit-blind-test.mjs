@@ -2786,6 +2786,20 @@ if (
   errors.push("blind prompt #211 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kick-out flashing yok");
 }
 
+const pBlind212 = PROMPTS.find((x) => x.id === 212);
+if (!pBlind212 || !/Vaddio|PTZ camera/i.test(pBlind212.q)) {
+  errors.push("blind prompt #212 must cover sabit Vaddio invent");
+}
+if (
+  pBlind212 &&
+  (!pBlind212.mustSay?.includes("yazılı teklif") ||
+    !pBlind212.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind212.mustSay?.includes("sabit Vaddio yok"))
+) {
+  errors.push("blind prompt #212 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vaddio yok");
+}
+
+
 
 
 

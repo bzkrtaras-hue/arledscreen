@@ -2405,6 +2405,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kick-out flashing yok"],
     mustNotSay: ["kick-out flashing garantidir", "sabit kick-out flashing True1", "tüm modeller kick-out flashing", "çıkış flaşı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 212,
+    q: "LED ekran Vaddio / PTZ camera var mı? ARLEDSCREEN sabit Vaddio iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Vaddio yok"],
+    mustNotSay: ["Vaddio garantidir", "sabit Vaddio True1", "tüm modeller Vaddio", "PTZ camera garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
