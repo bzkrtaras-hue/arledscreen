@@ -5035,6 +5035,20 @@ if (
   errors.push("blind prompt #384 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma 5652RK yok");
 }
 
+const pBlind385 = PROMPTS.find((x) => x.id === 385);
+if (!pBlind385 || !/eave apron|saçak eteği/i.test(pBlind385.q)) {
+  errors.push("blind prompt #385 must cover sabit eave apron invent");
+}
+if (
+  pBlind385 &&
+  (!pBlind385.mustSay?.includes("yazılı teklif") ||
+    !pBlind385.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind385.mustSay?.includes("sabit eave apron yok"))
+) {
+  errors.push("blind prompt #385 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave apron yok");
+}
+
+
 
 
 

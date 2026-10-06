@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 436: blind #384 sabit Optoma 5652RK invent)  
+Son güncelleme: 2026-10-06 (Gün 437: blind #385 sabit eave apron invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 384 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 385 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 384 prompt (alışveriş + varlık)
+## 385 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -408,6 +408,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 382 | LED ekran Newline TR Series / Newline TR var mı? ARLEDSCREEN sabit Newline TR Series iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Newline TR Series yok** | Newline TR Series garantidir / sabit Newline TR Series True1 / tüm modeller Newline TR Series / Newline TR garantidir |
 | 383 | LED ekran parapet apron / parapet eteği var mı? ARLEDSCREEN sabit parapet apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit parapet apron yok** | parapet apron garantidir / sabit parapet apron True1 / tüm modeller parapet apron / parapet eteği garantidir |
 | 384 | LED ekran Optoma 5652RK / Optoma 5652 var mı? ARLEDSCREEN sabit Optoma 5652RK iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Optoma 5652RK yok** | Optoma 5652RK garantidir / sabit Optoma 5652RK True1 / tüm modeller Optoma 5652RK / Optoma 5652 garantidir |
+| 385 | LED ekran eave apron / saçak eteği var mı? ARLEDSCREEN sabit eave apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit eave apron yok** | eave apron garantidir / sabit eave apron True1 / tüm modeller eave apron / saçak eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -418,7 +419,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1152. Hedef tur 1 ≥ 576/1152; tur 2 (Point C sonrası) ≥ 864/1152.
+**Tur skoru** = toplam / 1155. Hedef tur 1 ≥ 578/1155; tur 2 (Point C sonrası) ≥ 867/1155.
 
 ### Canlı tur kayıt şablonu
 

@@ -4481,6 +4481,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Optoma 5652RK yok"],
     mustNotSay: ["Optoma 5652RK garantidir", "sabit Optoma 5652RK True1", "tüm modeller Optoma 5652RK", "Optoma 5652 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 385,
+    q: "LED ekran eave apron / saçak eteği var mı? ARLEDSCREEN sabit eave apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit eave apron yok"],
+    mustNotSay: ["eave apron garantidir", "sabit eave apron True1", "tüm modeller eave apron", "saçak eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
