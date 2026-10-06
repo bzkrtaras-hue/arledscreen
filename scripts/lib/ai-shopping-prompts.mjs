@@ -4553,6 +4553,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Horion Canvas Pro yok"],
     mustNotSay: ["Horion Canvas Pro garantidir", "sabit Horion Canvas Pro True1", "tüm modeller Horion Canvas Pro", "Horion Canvas garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 391,
+    q: "LED ekran rake apron / rake eteği var mı? ARLEDSCREEN sabit rake apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rake apron yok"],
+    mustNotSay: ["rake apron garantidir", "sabit rake apron True1", "tüm modeller rake apron", "rake eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -5113,6 +5113,20 @@ if (
   errors.push("blind prompt #390 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Horion Canvas Pro yok");
 }
 
+const pBlind391 = PROMPTS.find((x) => x.id === 391);
+if (!pBlind391 || !/rake apron|rake eteği/i.test(pBlind391.q)) {
+  errors.push("blind prompt #391 must cover sabit rake apron invent");
+}
+if (
+  pBlind391 &&
+  (!pBlind391.mustSay?.includes("yazılı teklif") ||
+    !pBlind391.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind391.mustSay?.includes("sabit rake apron yok"))
+) {
+  errors.push("blind prompt #391 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit rake apron yok");
+}
+
+
 
 
 
