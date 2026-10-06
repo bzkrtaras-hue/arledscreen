@@ -2285,6 +2285,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit downspout yok"],
     mustNotSay: ["downspout garantidir", "sabit downspout True1", "tüm modeller downspout", "yağmur inişi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 202,
+    q: "LED ekran Maxhub / interactive panel var mı? ARLEDSCREEN sabit Maxhub iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Maxhub yok"],
+    mustNotSay: ["Maxhub garantidir", "sabit Maxhub True1", "tüm modeller Maxhub", "interactive panel garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

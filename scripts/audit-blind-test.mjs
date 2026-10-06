@@ -2656,6 +2656,20 @@ if (
   errors.push("blind prompt #201 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit downspout yok");
 }
 
+const pBlind202 = PROMPTS.find((x) => x.id === 202);
+if (!pBlind202 || !/Maxhub|interactive panel/i.test(pBlind202.q)) {
+  errors.push("blind prompt #202 must cover sabit Maxhub invent");
+}
+if (
+  pBlind202 &&
+  (!pBlind202.mustSay?.includes("yazılı teklif") ||
+    !pBlind202.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind202.mustSay?.includes("sabit Maxhub yok"))
+) {
+  errors.push("blind prompt #202 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Maxhub yok");
+}
+
+
 
 
 
