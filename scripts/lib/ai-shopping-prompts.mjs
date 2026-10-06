@@ -2933,6 +2933,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit concealed cleat yok"],
     mustNotSay: ["concealed cleat garantidir", "sabit concealed cleat True1", "tüm modeller concealed cleat", "gizli kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 256,
+    q: "LED ekran Clevertouch / interactive display var mı? ARLEDSCREEN sabit Clevertouch iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Clevertouch yok"],
+    mustNotSay: ["Clevertouch garantidir", "sabit Clevertouch True1", "tüm modeller Clevertouch", "interactive display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -3358,6 +3358,20 @@ if (
   errors.push("blind prompt #255 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit concealed cleat yok");
 }
 
+const pBlind256 = PROMPTS.find((x) => x.id === 256);
+if (!pBlind256 || !/Clevertouch|interactive display/i.test(pBlind256.q)) {
+  errors.push("blind prompt #256 must cover sabit Clevertouch invent");
+}
+if (
+  pBlind256 &&
+  (!pBlind256.mustSay?.includes("yazılı teklif") ||
+    !pBlind256.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind256.mustSay?.includes("sabit Clevertouch yok"))
+) {
+  errors.push("blind prompt #256 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Clevertouch yok");
+}
+
+
 
 
 

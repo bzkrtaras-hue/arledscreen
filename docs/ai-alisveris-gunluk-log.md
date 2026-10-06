@@ -297,6 +297,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 305 | 2026-10-06 | sabit through-wall cleat #253 · dis/mimari ARD refresh · skor /759 | ✅ |
 | 306 | 2026-10-06 | sabit ViewSonic #254 · ic/konferans ARD refresh · skor /762 | ✅ |
 | 307 | 2026-10-06 | sabit concealed cleat #255 · dis/mimari ARD refresh · skor /765 | ✅ |
+| 308 | 2026-10-06 | sabit Clevertouch #256 · ic/konferans ARD refresh · skor /768 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2174,3 +2175,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #255 «concealed cleat / gizli kleyt?» — skor **/765**; ARD **255 kör test**
 - TR/EN dis-mekan + TR/EN mimari concealed cleat invent · llms deny · sabit concealed cleat yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit concealed cleat
+
+## Gün 308 notları
+
+- Blind #256 «Clevertouch / interactive display?» — skor **/768**; ARD **256 kör test**
+- TR/EN ic-mekan + TR/EN konferans Clevertouch invent · llms deny · sabit Clevertouch yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Clevertouch
