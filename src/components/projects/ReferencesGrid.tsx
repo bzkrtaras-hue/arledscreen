@@ -2,6 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 import { getReferences } from "@/content/references";
 import { displayCompany } from "@/content/trust";
+import { formatProjectDate } from "@/lib/dates";
 
 interface Props {
   locale: Locale;
@@ -41,7 +42,7 @@ export function ReferencesGrid({ locale, collapsible = false }: Props) {
                 key={ref.id}
                 className={i % 2 === 0 ? "border-b border-border/60 bg-white" : "border-b border-border/60 bg-surface/40"}
               >
-                <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{ref.date}</td>
+                <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{formatProjectDate(ref.date, locale)}</td>
                 <td className="px-4 py-3 align-top font-display text-[15px] font-semibold tracking-[-0.01em] text-ink sm:px-5">
                   {displayCompany(ref)}
                 </td>
@@ -55,7 +56,11 @@ export function ReferencesGrid({ locale, collapsible = false }: Props) {
       <p className="border-t border-border/60 px-4 py-3 text-xs text-ink-muted sm:px-5">
         {locale === "tr"
           ? "Kaynak: ARLEDSCREEN proje kayıtları. Bireysel müşteri adları gizlilik nedeniyle gösterilmemektedir."
-          : "Source: ARLEDSCREEN project log. Private individuals are anonymised."}
+          : locale === "ru"
+            ? "Источник: журнал проектов ARLEDSCREEN. Частные лица скрыты. Текст объёма — на языке записи."
+            : locale === "ar"
+              ? "المصدر: سجل مشاريع ARLEDSCREEN. أسماء الأفراد مخفية. نص النطاق بلغة السجل."
+              : "Source: ARLEDSCREEN project log. Private individuals are anonymised. Scope text stays in the log language."}
       </p>
     </div>
   );
