@@ -3485,6 +3485,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit termination cleat yok"],
     mustNotSay: ["termination cleat garantidir", "sabit termination cleat True1", "tüm modeller termination cleat", "termination kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 302,
+    q: "LED ekran Zoom Rooms Display / Zoom Display var mı? ARLEDSCREEN sabit Zoom Rooms Display iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Zoom Rooms Display yok"],
+    mustNotSay: ["Zoom Rooms Display garantidir", "sabit Zoom Rooms Display True1", "tüm modeller Zoom Rooms Display", "Zoom Display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

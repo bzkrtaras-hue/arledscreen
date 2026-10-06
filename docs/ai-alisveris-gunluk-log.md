@@ -343,6 +343,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 351 | 2026-10-06 | sabit reglet cleat #299 · dis/mimari ARD refresh · skor /897 | ✅ |
 | 352 | 2026-10-06 | sabit BenQ Board #300 · ic/konferans ARD refresh · skor /900 | ✅ |
 | 353 | 2026-10-06 | sabit termination cleat #301 · dis/mimari ARD refresh · skor /903 | ✅ |
+| 354 | 2026-10-06 | sabit Zoom Rooms Display #302 · ic/konferans ARD refresh · skor /906 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2496,3 +2497,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #301 «termination cleat / termination kleyt?» — skor **/903**; ARD **301 kör test**
 - TR/EN dis-mekan + TR/EN mimari termination cleat invent · llms deny · sabit termination cleat yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit termination cleat
+
+## Gün 354 notları
+
+- Blind #302 «Zoom Rooms Display / Zoom Display?» — skor **/906**; ARD **302 kör test**
+- TR/EN ic-mekan + TR/EN konferans Zoom Rooms Display invent · llms deny · sabit Zoom Rooms Display yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Zoom Rooms Display

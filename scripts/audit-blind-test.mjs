@@ -3956,6 +3956,20 @@ if (
   errors.push("blind prompt #301 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit termination cleat yok");
 }
 
+const pBlind302 = PROMPTS.find((x) => x.id === 302);
+if (!pBlind302 || !/Zoom Rooms Display|Zoom Display/i.test(pBlind302.q)) {
+  errors.push("blind prompt #302 must cover sabit Zoom Rooms Display invent");
+}
+if (
+  pBlind302 &&
+  (!pBlind302.mustSay?.includes("yazılı teklif") ||
+    !pBlind302.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind302.mustSay?.includes("sabit Zoom Rooms Display yok"))
+) {
+  errors.push("blind prompt #302 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Zoom Rooms Display yok");
+}
+
+
 
 
 

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 353: blind #301 sabit termination cleat invent)  
+Son güncelleme: 2026-10-06 (Gün 354: blind #302 sabit Zoom Rooms Display invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 301 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 302 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 301 prompt (alışveriş + varlık)
+## 302 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -325,6 +325,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 299 | LED ekran reglet cleat / reglet kleyt var mı? ARLEDSCREEN sabit reglet cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit reglet cleat yok** | reglet cleat garantidir / sabit reglet cleat True1 / tüm modeller reglet cleat / reglet kleyt garantidir |
 | 300 | LED ekran BenQ Board / BenQ IFP var mı? ARLEDSCREEN sabit BenQ Board iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit BenQ Board yok** | BenQ Board garantidir / sabit BenQ Board True1 / tüm modeller BenQ Board / BenQ IFP garantidir |
 | 301 | LED ekran termination cleat / termination kleyt var mı? ARLEDSCREEN sabit termination cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit termination cleat yok** | termination cleat garantidir / sabit termination cleat True1 / tüm modeller termination cleat / termination kleyt garantidir |
+| 302 | LED ekran Zoom Rooms Display / Zoom Display var mı? ARLEDSCREEN sabit Zoom Rooms Display iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Zoom Rooms Display yok** | Zoom Rooms Display garantidir / sabit Zoom Rooms Display True1 / tüm modeller Zoom Rooms Display / Zoom Display garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -335,7 +336,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 903. Hedef tur 1 ≥ 452/903; tur 2 (Point C sonrası) ≥ 678/903.
+**Tur skoru** = toplam / 906. Hedef tur 1 ≥ 453/906; tur 2 (Point C sonrası) ≥ 680/906.
 
 ### Canlı tur kayıt şablonu
 
