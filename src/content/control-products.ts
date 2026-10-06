@@ -25,7 +25,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     brandName: "Huidu",
     intro: [
       "Huidu (Shenzhen Huidu Technology) kontrol kartları, asenkron LED tabela ve orta boy reklam yüzeylerinde yaygın kullanılan kontrol hattıdır. Kart üzerinde depolama vardır; program bilgisayar veya telefonda hazırlanıp Wi‑Fi, USB ya da ağ üzerinden ekrana gönderilir.",
-      "ARLEDSCREEN olarak Huidu kart seçimini ekran ölçüsüne, piksel yüküne ve yayın senaryosuna göre yapıyoruz. Kurulumda HDPlayer / LedArt yazılımı, ekran haritası ve uzaktan erişim ayarları birlikte teslim edilir. Nihai model keşif sonrası yazılı teklifle netleşir.",
+      "ARLEDSCREEN olarak Huidu kart seçimini ekran ölçüsüne, piksel yüküne ve yayın senaryosuna göre yapıyoruz. Kurulumda HDPlayer / LedArt yazılımı, ekran haritası ve uzaktan erişim ayarları yazılı teklifte kapsama alınır — sabit «birlikte teslim» paketi yoktur. Nihai model keşif sonrası yazılı teklifle netleşir.",
     ],
     highlights: [
       "Wi‑Fi ve USB ile sahada hızlı içerik güncelleme",
@@ -153,7 +153,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     brandName: "Colorlight",
     intro: [
       "Colorlight Cloud Tech kontrol ürünleri; X ve VX serisi işlemciler ile S serisi gönderici kartlarda toplanır. Çoklu HDMI/DP/DVI girişi, serbest katman yerleşimi ve Gigabit Ethernet / fiber çıkışları sabit kurulumdan sahne işlerine kadar geniş bir aralığı kapsar.",
-      "ARLEDSCREEN, Colorlight modelini ekranın piksel yükü, kaynak sayısı ve yedek fiber ihtiyacına göre önerir. iSet veya web arayüzüyle ilk yayın testi, parlaklık/gri ton ayarı ve operatör notları yazılı teklifte kapsama alınır — sabit «teslimata dahildir» paketi yoktur.",
+      "ARLEDSCREEN, Colorlight modelini ekranın piksel yükü, kaynak sayısı ve yedek fiber ihtiyacına göre önerir. iSet veya web arayüzüyle ilk yayın testi, parlaklık/gri ton ayarı (kurulum adımı — 16-bit gri skala / sabit HDR garantisi değil) ve operatör notları yazılı teklifte kapsama alınır — sabit «teslimata dahildir» paketi yoktur.",
     ],
     highlights: [
       "X20 / X40m: yüksek yükleme ve çoklu katman splicing",

@@ -46,7 +46,7 @@ last_reviewed: 2026-10-01
 ## 4. Tabela yerine LED ekran kullanırken nelere dikkat etmeli?
 
 1. **Dış mekân mı iç mekân mı?** Cepheye veya vitrinin dışına bakan ekranlar gün ışığında okunabilmek için dış mekân modül gerektirir. Camın arkasındaki vitrin ekranlarında ise kullanım koşulları keşifte değerlendirilir.
-2. **Piksel aralığı.** Yoldan geçen yayaya hitap eden bir cephe ekranı ile yoldaki araca hitap eden bir ekran farklı P değerleri gerektirir. Pratik kural: her 1 mm piksel aralığı için yaklaşık 1 m minimum izleme mesafesi.
+2. **Piksel aralığı.** Yoldan geçen yayaya hitap eden bir cephe ekranı ile yoldaki araca hitap eden bir ekran farklı P değerleri gerektirir. Pratik başlangıç tahmini: her 1 mm piksel aralığı için yaklaşık 1 m — «1 mm = 1 m garanti» değildir; kesin pitch Gaziosmanpaşa keşif + yazılı teklifte.
 3. **İzin ve ruhsat.** Dış mekân reklam ve cephe ekranlarında ilgili belediyenin izin ve ruhsat koşulları geçerli olabilir. Başvuru öncesinde belediyeden bilgi alın.
 4. **Elektrik ve montaj yüzeyi.** Cephe ekranlarında taşıyıcı konstrüksiyon ve elektrik altyapısı keşifte planlanır.
 5. **İçerik yönetimi.** İçeriği kimin, nasıl (bilgisayar, USB, uzaktan) güncelleyeceğini baştan belirleyin.

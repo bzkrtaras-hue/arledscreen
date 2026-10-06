@@ -80,6 +80,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 88 | 2026-10-06 | izleme mesafesi #36 · piksel-araligi/p4/p5 ARD · skor /108 | ✅ |
 | 89 | 2026-10-06 | sabit kW/3faz #37 · mimari/poster/kiosk ARD · skor /111 | ✅ |
 | 90 | 2026-10-06 | sabit görüş açısı #38 · gob-vs-smd/led-tabela/p1-25 ARD · skor /114 | ✅ |
+| 91 | 2026-10-06 | sabit HDR/gri skala #39 · p3-07/p1-86/kiralik-mi ARD · skor /117 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -546,3 +547,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - seo-guides + gob-vs-smd + led-tabela görüş açısı invent · control «dahildir» residual
 - ARD: gob-vs-smd + led-tabela + p1-25 · IndexNow p1-25/p3-07 · agentRules sabit görüş açısı
 - skor hedef Tur 1 ≥ 57/114 · Tur 2 ≥ 86/114
+
+## Gün 91 notları
+
+- Blind #39 «LED ekran HDR mı / kaç bit gri skala / sabit HDR?» — skor **/117**; ARD **39 kör test**
+- models P1.86 HDR soften · ic-mekan/ince-pitch invent · control teslim/dahil residual · led-tabela pitch hedge
+- ARD: p3-07 + p1-86 + kiralik-mi-satin-alma · IndexNow p1-86 · agentRules sabit HDR
+- skor hedef Tur 1 ≥ 59/117 · Tur 2 ≥ 88/117

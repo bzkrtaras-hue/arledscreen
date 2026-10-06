@@ -153,7 +153,7 @@ export const LED_MODELS: LedModel[] = [
       ledType: k("RGB, GOB (Glue on Board) kaplama"),
       voltage: DC5,
       service: k("Önden bakım ve mıknatıslı montaj"),
-      control: k("Gönderici/alıcı kartlı sistemler (ör. Novastar, Huidu); HDR desteği"),
+      control: k("Gönderici/alıcı kartlı sistemler (ör. Novastar, Huidu); HDR / gri skala / bit derinliği model föyü + yazılı teklifte — sitede sabit HDR yok"),
     },
     note: "Önden bakım yapılabildiği için duvara yakın kurulumlarda servis alanı gerektirmez; toplantı, sergi ve izleme merkezlerinde kullanılır.",
   },

@@ -322,6 +322,19 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit görüş açısı yok"],
     mustNotSay: ["sabit 140°", "sabit 160°", "140°/160° garanti", "ücretsiz kargo dahil"],
   },
+  {
+    id: 39,
+    q: "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/products/ince-pitch-led-ekran/",
+      "/tr/products/gob-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HDR yok"],
+    mustNotSay: ["HDR garanti", "sabit 16-bit", "14-bit gri skala yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

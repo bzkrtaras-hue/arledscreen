@@ -404,11 +404,11 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34. Panel USD catalog/ai-shopping.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39. Panel USD catalog/ai-shopping.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
-        "iç mekan LED rehber",
-        "iç mekan nit"
+        "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
+        "iç mekan LED rehber"
       ],
       "tags": [
         "guide",
@@ -487,11 +487,11 @@
       "displayName": "İnce pitch LED ekran",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/ince-pitch-led-ekran/",
-      "description": "İnce pitch / stüdyo LED. Sabit Hz (3840/1920) yok — Blind #35; yenileme model föyü + yazılı teklif.",
+      "description": "İnce pitch / stüdyo LED. Sabit Hz (3840/1920) yok — Blind #35; sabit HDR/gri skala yok — Blind #39; yenileme/HDR model föyü + yazılı teklif.",
       "representativeQueries": [
         "ince pitch LED ekran",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
-        "stüdyo LED fiyat"
+        "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?"
       ],
       "tags": [
         "commerce",
@@ -501,7 +501,7 @@
         "studio"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T05:00:00Z"
+      "updatedAt": "2026-10-06T09:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-konferans",
@@ -1039,7 +1039,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 38 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 39 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1053,7 +1053,8 @@
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı? ARLEDSCREEN sabit 3840 Hz veya yüksek yenileme garantisi yayımlıyor mu?",
         "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?",
         "LED ekran için m² başına kaç kW gerekir? ARLEDSCREEN sabit 0,45/0,75 kW/m² veya her projede 3 faz zorunlu yayımlıyor mu?",
-        "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?"
+        "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?",
+        "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1278,6 +1279,68 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T08:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p307-hub",
+      "displayName": "P3.07 LED ekran (priced pitch hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/p3-07-led-ekran/",
+      "description": "P3.07 priced pitch hub; iç/dış panel USD catalog/ai-shopping. Sabit HDR yok — Blind #39.",
+      "representativeQueries": [
+        "P3.07 LED ekran fiyat",
+        "P3.07 iç mekan panel USD",
+        "LED pitch P3.07"
+      ],
+      "tags": [
+        "commerce",
+        "pricing",
+        "pitch",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T09:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p186-hub",
+      "displayName": "P1.86 LED ekran (priced pitch hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/p1-86-led-ekran/",
+      "description": "P1.86 priced pitch hub; GOB panel USD catalog/ai-shopping. HDR/gri skala model föyünde — sabit HDR yok (Blind #39).",
+      "representativeQueries": [
+        "P1.86 LED ekran fiyat",
+        "P1.86 GOB panel USD",
+        "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "pricing",
+        "pitch",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T09:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-kiralik-mi",
+      "displayName": "Kiralık mı satın alma rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/",
+      "description": "Kiralık vs satın alma rehber. Quote-only kiralık; list fiyatı / stok paket invent yok. Blind #9/#33.",
+      "representativeQueries": [
+        "LED ekran kiralık mı satın alma",
+        "Kiralık LED ekran fiyatı?",
+        "LED kiralama vs satın alma"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "rental",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T09:00:00Z"
     }
   ]
 }
