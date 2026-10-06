@@ -1,8 +1,9 @@
-## Gün 490 — invent Blind #438 Room Navigator
+## Gün 490 — invent Blind #438 Room Navigator LIVE
 
-- Blind #438 Room Navigator · ic/konferans · prompts=438 · /1314 · CF deploy pending
-- Point C paste yok · Tur 1a skor boş · Drive Doc prompts stale→438
-- Point C + Tur 1a hâlâ sahip
+- Blind #438 Room Navigator · ic/konferans · prompts=438 · /1314 · CF deploy · smoke:live 20/20 · IndexNow same-day OK
+- CI audit GREEN tip `29f5e36` · post-deploy OK · live blindTestPrompts=438
+- Point C paste yok · Tur 1a skor boş · Drive Doc prompts=438
+- Point C + Tur 1a hâlâ sahip · genel kontrol kapanış
 
 ## Gün 489 — invent Blind #437 cornice apron LIVE
 
