@@ -202,7 +202,7 @@ const profiles = {
       "bingPlaces = GBP ile aynı NAP + kısa cite; kategori LED display / Digital signage; web yalnızca /tr/.",
       "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
       "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar; NXTIONSTAR ürün markası — satıcı ARLEDSCREEN.",
-      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 412 kör test)`,
+      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 413 kör test)`,
     ],
   },
   canonicalUrls: {

@@ -5392,6 +5392,19 @@ if (
   errors.push("blind prompt #412 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Rally Bar Huddle yok");
 }
 
+const pBlind413 = PROMPTS.find((x) => x.id === 413);
+if (!pBlind413 || !/skirt apron|etek eteği/i.test(pBlind413.q)) {
+  errors.push("blind prompt #413 must cover sabit skirt apron invent");
+}
+if (
+  pBlind413 &&
+  (!pBlind413.mustSay?.includes("yazılı teklif") ||
+    !pBlind413.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind413.mustSay?.includes("sabit skirt apron yok"))
+) {
+  errors.push("blind prompt #413 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit skirt apron yok");
+}
+
 
 
 

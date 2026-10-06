@@ -4817,6 +4817,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Rally Bar Huddle yok"],
     mustNotSay: ["Rally Bar Huddle garantidir", "sabit Rally Bar Huddle True1", "tüm modeller Rally Bar Huddle", "Rally Bar Huddle garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 413,
+    q: "LED ekran skirt apron / etek eteği var mı? ARLEDSCREEN sabit skirt apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit skirt apron yok"],
+    mustNotSay: ["skirt apron garantidir", "sabit skirt apron True1", "tüm modeller skirt apron", "etek eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
