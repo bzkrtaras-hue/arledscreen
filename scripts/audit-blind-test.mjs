@@ -2591,6 +2591,20 @@ if (
   errors.push("blind prompt #196 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Meeting Owl yok");
 }
 
+const pBlind197 = PROMPTS.find((x) => x.id === 197);
+if (!pBlind197 || !/parapet flashing|parapet flaşörü/i.test(pBlind197.q)) {
+  errors.push("blind prompt #197 must cover sabit parapet flashing invent");
+}
+if (
+  pBlind197 &&
+  (!pBlind197.mustSay?.includes("yazılı teklif") ||
+    !pBlind197.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind197.mustSay?.includes("sabit parapet flashing yok"))
+) {
+  errors.push("blind prompt #197 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet flashing yok");
+}
+
+
 
 
 

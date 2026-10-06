@@ -2225,6 +2225,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Meeting Owl yok"],
     mustNotSay: ["Meeting Owl garantidir", "sabit Meeting Owl True1", "tüm modeller Meeting Owl", "Owl Labs garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 197,
+    q: "LED ekran parapet flashing / parapet flaşörü var mı? ARLEDSCREEN sabit parapet flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parapet flashing yok"],
+    mustNotSay: ["parapet flashing garantidir", "sabit parapet flashing True1", "tüm modeller parapet flashing", "parapet flaşörü garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

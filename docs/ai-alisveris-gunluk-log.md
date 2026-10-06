@@ -238,6 +238,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 246 | 2026-10-06 | sabit Jabra #194 · ic/konferans ARD refresh · skor /582 | ✅ |
 | 247 | 2026-10-06 | sabit scupper #195 · dis/mimari ARD refresh · skor /585 | ✅ |
 | 248 | 2026-10-06 | sabit Meeting Owl #196 · ic/konferans ARD refresh · skor /588 | ✅ |
+| 249 | 2026-10-06 | sabit parapet flashing #197 · dis/mimari ARD refresh · skor /591 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1761,3 +1762,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #196 «Meeting Owl / Owl Labs?» — skor **/588**; ARD **196 kör test**
 - TR/EN ic-mekan + TR/EN konferans Meeting Owl invent · llms deny · sabit Meeting Owl yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Meeting Owl
+
+## Gün 249 notları
+
+- Blind #197 «parapet flashing / parapet flaşörü?» — skor **/591**; ARD **197 kör test**
+- TR/EN dis-mekan + TR/EN mimari parapet flashing invent · llms deny · sabit parapet flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit parapet flashing
