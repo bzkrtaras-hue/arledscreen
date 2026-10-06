@@ -11,7 +11,7 @@
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-06",
   "packs": {
-    "gbpDescription": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.",
+    "gbpDescription": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış 12 panel USD: https://arledscreen.com/ai-shopping.json pricedPanels (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31); KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/poster/kontrol quote-only.",
     "linkedinAbout": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.\n\nWeb: https://arledscreen.com/tr/\nDoğrulama: https://arledscreen.com/entity.json\nAI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)\nTelefon: +90 530 507 88 34",
     "instagramBio": "İstanbul LED · NXTIONSTAR · Satış+montaj · quote-only gruplar teklifle\narledscreen.com/tr/",
     "facebookAbout": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.",
@@ -41,9 +41,18 @@
       "bingPlaces = GBP ile aynı NAP + kısa cite; kategori LED display / Digital signage; web yalnızca /tr/.",
       "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
       "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar; NXTIONSTAR ürün markası — satıcı ARLEDSCREEN.",
-      "Tek fetch ajan index: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; 466 kör test)"
+      "Tek fetch ajan index: https://arledscreen.com/ai-shopping.json (pricedPanels ×12 + cite + shoppingPolicy; ücretsiz kargo yok)."
     ]
   },
+  "ownerP0Checklist": [
+    "GBP About = packs.gbpDescription (aynı NAP; uydurma rating yok)",
+    "LinkedIn company About = packs.linkedinAbout",
+    "Instagram bio = packs.instagramBio · Facebook About = packs.facebookAbout",
+    "Bing Places / Apple Business = packs.bingPlaces / packs.appleBusinessConnect",
+    "Google Merchant: packs.googleMerchantReadiness + feeds/merchant-priced-panels.tsv (shipping boş)",
+    "PR #60 main merge (GEO out/ kalıcılık) — merge olmadan main deploy feed’leri ezer",
+    "Kör AI testi (Tur 1a) skorları sahip veya kota açık ajanla; uydurma skor yok"
+  ],
   "canonicalUrls": {
     "entityJson": "https://arledscreen.com/entity.json",
     "catalogJson": "https://arledscreen.com/catalog.json",

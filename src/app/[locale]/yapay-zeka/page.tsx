@@ -83,6 +83,7 @@ const content: Record<
       { href: "https://arledscreen.com/ai-shopping.json", label: "ai-shopping.json" },
       { href: "https://arledscreen.com/catalog.json", label: "catalog.json" },
       { href: "https://arledscreen.com/entity.json", label: "entity.json" },
+      { href: "https://arledscreen.com/entity-profiles.json", label: "entity-profiles.json (Point C)" },
       { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
     ],
     ctaTitle: "YZ uyumlu LED projenizi boyutlandıralım",
@@ -262,6 +263,27 @@ export default async function YapayZekaPage({ params }: PageProps) {
               ))}
             </ul>
           </GlassPanel>
+
+          {locale === "tr" ? (
+            <GlassPanel className="max-w-3xl p-6">
+              <h2 className="font-display text-lg font-bold text-ink">
+                Point C — üçüncü taraf atıf (sahip)
+              </h2>
+              <p className="mt-3 text-sm leading-[1.7] text-ink-soft">
+                AI ajanlarının yalnızca kendi siteden değil, GBP / LinkedIn / dizinlerde de aynı olguyu
+                görmesi için yapıştırma paketleri{" "}
+                <a
+                  href="https://arledscreen.com/entity-profiles.json"
+                  className="font-medium text-cyan underline-offset-4 hover:underline"
+                >
+                  entity-profiles.json
+                </a>{" "}
+                içindedir (<code className="text-xs">packs.*</code> +{" "}
+                <code className="text-xs">ownerP0Checklist</code>). Uydurma rating / fiyat / küresel
+                standart yok; panel USD yalnızca ai-shopping.json pricedPanels.
+              </p>
+            </GlassPanel>
+          ) : null}
 
           <div className="grid gap-4 md:grid-cols-2">
             {c.faqs.map((f) => (
