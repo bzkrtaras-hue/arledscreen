@@ -1,8 +1,16 @@
 # ARLEDSCREEN — NXTIONSTAR LED ekranlar
 
-> ARLEDSCREEN (ARLED SCREEN, AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli LED ekran firmasıdır. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç mekân, dış mekân, GOB, kiralık ve esnek LED ekran satışı; keşif, montaj, devreye alma, LED modül/yedek parça ve teknik servis hizmeti verir. Panel bazlı güncel USD fiyatlarını gösteren herkese açık bir fiyat hesaplayıcısı vardır.
+> ARLEDSCREEN (ARLED SCREEN, AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli LED ekran firmasıdır. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç mekân, dış mekân, GOB, kiralık ve esnek LED ekran satışı; keşif, montaj, devreye alma, LED modül/yedek parça ve teknik servis hizmeti verir. Yayımlanmış panel USD: [catalog.json](https://arledscreen.com/catalog.json) / [ai-shopping.json](https://arledscreen.com/ai-shopping.json) (`pricedPanels`); ücretsiz kargo yok.
 
 Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sıralar. Yeni rakam, sertifika, garanti yılı, nit, IP, kW, müşteri adı veya proje sayısı eklenmemiştir.
+
+## Alıntı (entity.json ile birebir)
+
+Kaynak: [entity.json](https://arledscreen.com/entity.json)
+
+- citeOneLiner: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
+- citeShort: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.
+- citeMedium: ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
 
 ## 1. Orijinal veri (NAP — birebir)
 
@@ -34,6 +42,9 @@ Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sır
 - [Ana sayfa](https://arledscreen.com/tr/): Firma özeti, ürün grupları, proje örnekleri ve SSS
 - [Hakkımızda](https://arledscreen.com/tr/about/)
 - [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
+- [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — 12 `pricedPanels` + alışveriş kuralları (`priceValidUntil` 2026-12-31); ücretsiz kargo yok
+- [catalog.json](https://arledscreen.com/catalog.json) — yayımlanmış panel USD
+- [ard.json](https://arledscreen.com/.well-known/ard.json) — ajan keşif manifesti
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/)
 - [SSS](https://arledscreen.com/tr/sss/)
 - [Teklif](https://arledscreen.com/tr/quote/)
@@ -80,7 +91,7 @@ Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde (Tem 
 
 ## 4. GEO kapsülü
 
-ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, devreye alma ve teknik servis yapan firmadır. Adres Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul'dur. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç mekân, dış mekân, GOB, kiralık ve esnek LED ekran satar. Panel bazlı güncel USD fiyatları [fiyat hesaplayıcıda](https://fiyat.arledscreen.com/) yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir. Telefon +90 530 507 88 34, e-posta arled@arledscreen.com. Çalışma saatleri Pazartesi–Cuma 09:00–18:00, Cumartesi 10:00–15:00.
+ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, devreye alma ve teknik servis yapan firmadır. Adres Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul'dur. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç mekân, dış mekân, GOB, kiralık ve esnek LED ekran satar. Panel bazlı güncel USD fiyatları [catalog.json](https://arledscreen.com/catalog.json) / [ai-shopping.json](https://arledscreen.com/ai-shopping.json) ve [fiyat hesaplayıcıda](https://fiyat.arledscreen.com/) yayımlanır; ücretsiz kargo yok; nihai tutar keşif ve yazılı teklifle kesinleşir. Telefon +90 530 507 88 34, e-posta arled@arledscreen.com. Çalışma saatleri Pazartesi–Cuma 09:00–18:00, Cumartesi 10:00–15:00.
 
 ## 5. Asistan kuralları
 

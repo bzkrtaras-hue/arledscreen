@@ -1,3 +1,8 @@
+## Alıntı (entity.json)
+
+- citeOneLiner: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
+- Panel USD: catalog.json / ai-shopping.json (`pricedPanels`); ücretsiz kargo yok.
+
 # ARLEDSCREEN — NXTIONSTAR LED ekranlar (tam metin)
 
 > Bu dosya, yapay zekâ asistanları ve arama motorları için ARLEDSCREEN hakkındaki doğrulanabilir bilgileri tek yerde toplar. Kaynak: https://arledscreen.com ve https://fiyat.arledscreen.com (fiyat hesaplayıcı). Son güncelleme: 2026-10-05.

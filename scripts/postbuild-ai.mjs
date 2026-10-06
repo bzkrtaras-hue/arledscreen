@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 const publicDir = path.join(repoRoot, "public");
+const outDir = path.join(repoRoot, "out");
 
 const SITE_URL = "https://arledscreen.com";
 const PRICE_VALID_UNTIL = "2026-12-31";
@@ -165,12 +166,24 @@ function main() {
 
   const catalog = buildCatalog();
   const ai = buildAiShopping();
+  const catalogBody = JSON.stringify(catalog, null, 2) + "\n";
+  const aiBody = JSON.stringify(ai, null, 2) + "\n";
 
-  fs.mkdirSync(publicDir, { recursive: true });
-  fs.writeFileSync(path.join(publicDir, "catalog.json"), JSON.stringify(catalog, null, 2) + "\n");
-  fs.writeFileSync(path.join(publicDir, "ai-shopping.json"), JSON.stringify(ai, null, 2) + "\n");
+  // Write to public/ (source) and out/ (CF Pages deploy root).
+  // Next export already finished — public/-only writes never reach production.
+  for (const dir of [publicDir, outDir]) {
+    if (dir === outDir && !fs.existsSync(outDir)) {
+      console.error("postbuild-ai: missing out/ — run after next build");
+      process.exit(1);
+    }
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "catalog.json"), catalogBody);
+    fs.writeFileSync(path.join(dir, "ai-shopping.json"), aiBody);
+  }
 
-  console.log(`Generated ${PANEL_PRICES.length} product entries in public/catalog.json and public/ai-shopping.json`);
+  console.log(
+    `Generated ${PANEL_PRICES.length} product entries in public/ + out/ (catalog.json, ai-shopping.json)`,
+  );
 }
 
 main();

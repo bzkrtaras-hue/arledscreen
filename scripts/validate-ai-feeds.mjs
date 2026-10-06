@@ -89,4 +89,18 @@ function validateAIFeeds() {
   console.log("   - https://arledscreen.com/llms-full.txt");
 }
 
+
+// After next build + postbuild-ai, out/ must carry deployable AI feeds.
+const outDir = path.join(repoRoot, "out");
+if (fs.existsSync(outDir)) {
+  for (const file of ["catalog.json", "ai-shopping.json", "entity.json", "llms.txt"]) {
+    const fp = path.join(outDir, file);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ Missing in out/: ${file} (CF deploy would wipe GEO)`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ out/ AI feeds present (catalog, ai-shopping, entity, llms)");
+}
+
 validateAIFeeds();

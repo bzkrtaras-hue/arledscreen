@@ -172,5 +172,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: region.isHq ? 0.9 : 0.75,
     });
   }
+
+  // Machine-readable AI / GEO discovery surfaces
+  for (const path of [
+    "/ai-shopping.json",
+    "/catalog.json",
+    "/entity.json",
+    "/llms.txt",
+    "/llms-full.txt",
+    "/.well-known/ard.json",
+    "/feeds/merchant-priced-panels.tsv",
+  ]) {
+    entries.push({
+      url: absoluteUrl(path),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.55,
+    });
+  }
+
   return entries;
 }

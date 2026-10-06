@@ -10,10 +10,9 @@ Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /feeds/
 
-# Deny crawl of private/temp paths
+# Deny crawl of private/temp paths (do not Disallow *.json — AI feeds must stay crawlable)
 Disallow: /admin/
 Disallow: /_next/
-Disallow: /*.json$
 Disallow: /api/
 Disallow: /private/
 
