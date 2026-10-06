@@ -263,6 +263,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 271 | 2026-10-06 | sabit chimney flashing #219 · dis/mimari ARD refresh · skor /657 | ✅ |
 | 272 | 2026-10-06 | sabit Pexip #220 · ic/konferans ARD refresh · skor /660 | ✅ |
 | 273 | 2026-10-06 | sabit hip flashing #221 · dis/mimari ARD refresh · skor /663 | ✅ |
+| 274 | 2026-10-06 | sabit Lumens #222 · ic/konferans ARD refresh · skor /666 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1936,3 +1937,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #221 «hip flashing / kalça flaş?» — skor **/663**; ARD **221 kör test**
 - TR/EN dis-mekan + TR/EN mimari hip flashing invent · llms deny · sabit hip flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit hip flashing
+
+## Gün 274 notları
+
+- Blind #222 «Lumens / PTZ camera?» — skor **/666**; ARD **222 kör test**
+- TR/EN ic-mekan + TR/EN konferans Lumens invent · llms deny · sabit Lumens yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Lumens

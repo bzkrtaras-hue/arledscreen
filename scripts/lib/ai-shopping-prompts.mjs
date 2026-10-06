@@ -2525,6 +2525,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hip flashing yok"],
     mustNotSay: ["hip flashing garantidir", "sabit hip flashing True1", "tüm modeller hip flashing", "kalça flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 222,
+    q: "LED ekran Lumens / PTZ camera var mı? ARLEDSCREEN sabit Lumens iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Lumens yok"],
+    mustNotSay: ["Lumens garantidir", "sabit Lumens True1", "tüm modeller Lumens", "PTZ camera garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

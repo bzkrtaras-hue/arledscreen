@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 273: blind #221 sabit hip flashing invent)  
+Son güncelleme: 2026-10-06 (Gün 274: blind #222 sabit Lumens invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 221 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 222 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 221 prompt (alışveriş + varlık)
+## 222 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -245,6 +245,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 219 | LED ekran chimney flashing / baca flaşı var mı? ARLEDSCREEN sabit chimney flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit chimney flashing yok** | chimney flashing garantidir / sabit chimney flashing True1 / tüm modeller chimney flashing / baca flaşı garantidir |
 | 220 | LED ekran Pexip / conference platform var mı? ARLEDSCREEN sabit Pexip iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Pexip yok** | Pexip garantidir / sabit Pexip True1 / tüm modeller Pexip / conference platform garantidir |
 | 221 | LED ekran hip flashing / kalça flaş var mı? ARLEDSCREEN sabit hip flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit hip flashing yok** | hip flashing garantidir / sabit hip flashing True1 / tüm modeller hip flashing / kalça flaş garantidir |
+| 222 | LED ekran Lumens / PTZ camera var mı? ARLEDSCREEN sabit Lumens iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Lumens yok** | Lumens garantidir / sabit Lumens True1 / tüm modeller Lumens / PTZ camera garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -255,7 +256,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 663. Hedef tur 1 ≥ 332/663; tur 2 (Point C sonrası) ≥ 498/663.
+**Tur skoru** = toplam / 666. Hedef tur 1 ≥ 333/666; tur 2 (Point C sonrası) ≥ 500/666.
 
 ### Canlı tur kayıt şablonu
 

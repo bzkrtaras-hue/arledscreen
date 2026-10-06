@@ -2916,6 +2916,20 @@ if (
   errors.push("blind prompt #221 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip flashing yok");
 }
 
+const pBlind222 = PROMPTS.find((x) => x.id === 222);
+if (!pBlind222 || !/Lumens|PTZ camera/i.test(pBlind222.q)) {
+  errors.push("blind prompt #222 must cover sabit Lumens invent");
+}
+if (
+  pBlind222 &&
+  (!pBlind222.mustSay?.includes("yazılı teklif") ||
+    !pBlind222.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind222.mustSay?.includes("sabit Lumens yok"))
+) {
+  errors.push("blind prompt #222 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Lumens yok");
+}
+
+
 
 
 
