@@ -82,7 +82,7 @@ export function QuoteWizard({ locale = "en" }: QuoteWizardProps) {
       setValue("pitchPreference", `P${primary.pitchMm}`);
       const noteLine =
         locale === "tr"
-          ? `İlgilenilen ürün(ler): ${next.map((i) => i.name).join("; ")}`
+          ? `\u0130lgilenilen \u00fcr\u00fcn(ler): ${next.map((i) => i.name).join("; ")}`
           : `Interested product(s): ${next.map((i) => i.name).join("; ")}`;
       setValue("notes", noteLine);
     }
@@ -151,7 +151,7 @@ export function QuoteWizard({ locale = "en" }: QuoteWizardProps) {
             {cart.map((item) => (
               <li key={item.id}>
                 <span className="font-medium">{item.name}</span>
-                <span className="text-ink-muted"> — P{item.pitchMm} · {item.series}</span>
+                <span className="text-ink-muted"> \u2014 P{item.pitchMm} \u00b7 {item.series}</span>
               </li>
             ))}
           </ul>
@@ -191,8 +191,13 @@ export function QuoteWizard({ locale = "en" }: QuoteWizardProps) {
                 autoComplete="tel"
               />
             </Field>
-            <Field label={dict.fields.country} error={errors.country?.message}>
-              <input {...register("country")} className={inputClass} />
+            <Field label={locale === "tr" ? "\u015eehir" : "City"} error={errors.country?.message}>
+              <input
+                {...register("country")}
+                className={inputClass}
+                autoComplete="address-level2"
+                placeholder={locale === "tr" ? "\u0130stanbul / Gaziosmanpa\u015fa" : "City"}
+              />
             </Field>
           </>
         )}
