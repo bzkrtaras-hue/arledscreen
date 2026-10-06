@@ -2643,6 +2643,20 @@ if (
   errors.push("blind prompt #200 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit DTEN yok");
 }
 
+const pBlind201 = PROMPTS.find((x) => x.id === 201);
+if (!pBlind201 || !/downspout|yağmur inişi/i.test(pBlind201.q)) {
+  errors.push("blind prompt #201 must cover sabit downspout invent");
+}
+if (
+  pBlind201 &&
+  (!pBlind201.mustSay?.includes("yazılı teklif") ||
+    !pBlind201.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind201.mustSay?.includes("sabit downspout yok"))
+) {
+  errors.push("blind prompt #201 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit downspout yok");
+}
+
+
 
 
 

@@ -2273,6 +2273,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit DTEN yok"],
     mustNotSay: ["DTEN garantidir", "sabit DTEN True1", "tüm modeller DTEN", "all-in-one garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 201,
+    q: "LED ekran downspout / yağmur inişi var mı? ARLEDSCREEN sabit downspout iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit downspout yok"],
+    mustNotSay: ["downspout garantidir", "sabit downspout True1", "tüm modeller downspout", "yağmur inişi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

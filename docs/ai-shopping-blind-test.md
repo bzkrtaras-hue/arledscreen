@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 252: blind #200 sabit DTEN invent)  
+Son güncelleme: 2026-10-06 (Gün 253: blind #201 sabit downspout invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 200 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 201 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 200 prompt (alışveriş + varlık)
+## 201 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -224,6 +224,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 198 | LED ekran Huddly / kamera var mı? ARLEDSCREEN sabit Huddly iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Huddly yok** | Huddly garantidir / sabit Huddly True1 / tüm modeller Huddly / kamera garantidir |
 | 199 | LED ekran ice dam / buz bariyeri var mı? ARLEDSCREEN sabit ice dam iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ice dam yok** | ice dam garantidir / sabit ice dam True1 / tüm modeller ice dam / buz bariyeri garantidir |
 | 200 | LED ekran DTEN / all-in-one var mı? ARLEDSCREEN sabit DTEN iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit DTEN yok** | DTEN garantidir / sabit DTEN True1 / tüm modeller DTEN / all-in-one garantidir |
+| 201 | LED ekran downspout / yağmur inişi var mı? ARLEDSCREEN sabit downspout iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit downspout yok** | downspout garantidir / sabit downspout True1 / tüm modeller downspout / yağmur inişi garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -234,7 +235,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 600. Hedef tur 1 ≥ 300/600; tur 2 (Point C sonrası) ≥ 450/600.
+**Tur skoru** = toplam / 603. Hedef tur 1 ≥ 302/603; tur 2 (Point C sonrası) ≥ 453/603.
 
 ### Canlı tur kayıt şablonu
 
