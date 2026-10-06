@@ -1,3 +1,8 @@
+## Gün 517 — invent Blind #465 spandrel glass
+
+- Blind #465 spandrel glass / spandrel cam · dis/mimari · prompts=465 · /1395 · build pending
+- IndexNow 429 · sahibe iş yok
+
 ## Gün 516 — invent Blind #464 ClearTouch 65 LIVE
 
 - Blind #464 ClearTouch 65 · ic/konferans · prompts=464 · /1392 · CF deploy · smoke:live 20/20

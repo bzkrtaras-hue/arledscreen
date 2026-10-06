@@ -6040,6 +6040,18 @@ if (
 ) {
   errors.push("blind prompt #464 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ClearTouch 65 yok");
 }
+const pBlind465 = PROMPTS.find((x) => x.id === 465);
+if (!pBlind465 || !/spandrel glass/i.test(pBlind465.q)) {
+  errors.push("blind prompt #465 must cover sabit spandrel glass invent");
+}
+if (
+  pBlind465 &&
+  (!pBlind465.mustSay?.includes("yazılı teklif") ||
+    !pBlind465.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind465.mustSay?.includes("sabit spandrel glass yok"))
+) {
+  errors.push("blind prompt #465 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit spandrel glass yok");
+}
 
 
 

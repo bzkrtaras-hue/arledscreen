@@ -5441,6 +5441,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ClearTouch 65 yok"],
     mustNotSay: ["ClearTouch 65 garantidir", "sabit ClearTouch 65 True1", "tüm modeller ClearTouch 65", "ClearTouch 65 standarttır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 465,
+    q: "LED ekran spandrel glass / spandrel cam var mı? ARLEDSCREEN sabit spandrel glass iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit spandrel glass yok"],
+    mustNotSay: ["spandrel glass garantidir", "sabit spandrel glass True1", "tüm modeller spandrel glass", "spandrel cam garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
