@@ -2175,6 +2175,20 @@ if (
   errors.push("blind prompt #164 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Kramer yok");
 }
 
+const pBlind165 = PROMPTS.find((x) => x.id === 165);
+if (!pBlind165 || !/expansion joint|genleşme derzi/i.test(pBlind165.q)) {
+  errors.push("blind prompt #165 must cover sabit expansion joint invent");
+}
+if (
+  pBlind165 &&
+  (!pBlind165.mustSay?.includes("yazılı teklif") ||
+    !pBlind165.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind165.mustSay?.includes("sabit expansion joint yok"))
+) {
+  errors.push("blind prompt #165 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit expansion joint yok");
+}
+
+
 
 
 

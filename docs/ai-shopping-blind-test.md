@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 216: blind #164 sabit Kramer invent)  
+Son güncelleme: 2026-10-06 (Gün 217: blind #165 sabit expansion joint invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 164 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 165 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 164 prompt (alışveriş + varlık)
+## 165 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -188,6 +188,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 162 | LED ekran RS-485 / seri bus var mı? ARLEDSCREEN sabit RS-485 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit RS-485 yok** | RS-485 garantidir / sabit RS-485 True1 / tüm modeller RS-485 / seri bus garantidir |
 | 163 | LED ekran bird spike / kuş dikeni var mı? ARLEDSCREEN sabit bird spike iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit bird spike yok** | bird spike garantidir / sabit bird spike True1 / tüm modeller bird spike / kuş dikeni garantidir |
 | 164 | LED ekran Kramer / AV matrix var mı? ARLEDSCREEN sabit Kramer iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Kramer yok** | Kramer garantidir / sabit Kramer True1 / tüm modeller Kramer / AV matrix garantidir |
+| 165 | LED ekran expansion joint / genleşme derzi var mı? ARLEDSCREEN sabit expansion joint iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit expansion joint yok** | expansion joint garantidir / sabit expansion joint True1 / tüm modeller expansion joint / genleşme derzi garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -198,7 +199,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 492. Hedef tur 1 ≥ 246/492; tur 2 (Point C sonrası) ≥ 369/492.
+**Tur skoru** = toplam / 495. Hedef tur 1 ≥ 248/495; tur 2 (Point C sonrası) ≥ 372/495.
 
 ### Canlı tur kayıt şablonu
 

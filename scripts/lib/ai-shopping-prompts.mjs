@@ -1841,6 +1841,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Kramer yok"],
     mustNotSay: ["Kramer garantidir", "sabit Kramer True1", "tüm modeller Kramer", "AV matrix garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 165,
+    q: "LED ekran expansion joint / genleşme derzi var mı? ARLEDSCREEN sabit expansion joint iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit expansion joint yok"],
+    mustNotSay: ["expansion joint garantidir", "sabit expansion joint True1", "tüm modeller expansion joint", "genleşme derzi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
