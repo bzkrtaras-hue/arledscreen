@@ -29,7 +29,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
         "It means the display layer is engineered so AI-generated or AI-scheduled content can run without proprietary lock-in: reliable pixel pipelines, known latency/refresh behavior, and integration paths for CMS, media servers and automation APIs that your AV/IT team already uses.",
     },
     {
-      question: "Is there a fixed warranty term on the website?",
+      question: "How long is the warranty?",
       answer:
         "Warranty length depends on the series and the project. The written quote and contract state the term. After installation, faults, service and spare parts are handled by phone, WhatsApp or email.",
     },
@@ -64,11 +64,6 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       question: "Hangi şehirlerde kurulum yapıyorsunuz?",
       answer:
         "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Kurulum ve servis Türkiye genelindedir. Tamamlanan işler Temmuz 2025 – Temmuz 2026 arasında 13 il ile Almanya ve Azerbaycan'da kayıtlıdır. İliniz bu listede olmasa da keşif ve teklif için konumunuzu yazmanız yeterli.",
-    },
-    {
-      question: "İade veya garanti süresi nedir?",
-      answer:
-        "Garanti süresi ürüne ve projeye göre değişir. Teklif ve sözleşmede net yazarız. Kurulumdan sonra arıza ve yedek parça için telefon, WhatsApp veya e-posta yeterlidir.",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",
