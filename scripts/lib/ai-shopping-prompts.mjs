@@ -424,6 +424,19 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ölü piksel yok"],
     mustNotSay: ["0.0001%", "Class II", "sabit ölü piksel", "pixel failure rate garanti", "ücretsiz kargo dahil"],
   },
+  {
+    id: 47,
+    q: "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/products/gob-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit nem yok"],
+    mustNotSay: ["10–90%", "10-90% RH", "sabit nem", "%RH garanti", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

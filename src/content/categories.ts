@@ -285,7 +285,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "GOB LED modül üzerinde su damlası — koruyucu kaplama yüzeyi",
     techGallery: FINE_PITCH_TECH_GALLERY,
     intro: [
-      "GOB (Glue on Board) teknolojisinde LED'lerin üzeri şeffaf bir koruyucu katmanla kaplanır. Bu katman, LED yüzeyini darbe, nem ve toza karşı korumaya yardımcı olur — sabit ölü piksel yok: sitede sabit ölü piksel oranı / pixel failure rate / 0.0001% / Class II yayımlanmaz; tolerans Gaziosmanpaşa keşif + yazılı teklifte.",
+      "GOB (Glue on Board) teknolojisinde LED'lerin üzeri şeffaf bir koruyucu katmanla kaplanır. Bu katman, LED yüzeyini darbe, nem ve toza karşı korumaya yardımcı olur — sabit ölü piksel yok: sitede sabit ölü piksel oranı / pixel failure rate / 0.0001% / Class II yayımlanmaz; tolerans Gaziosmanpaşa keşif + yazılı teklifte. Sabit nem yok: sitede sabit 10–90% RH işletme nemi yayımlanmaz; nem bandı model föyü + yazılı teklifte.",
       "İnsanların ekrana yaklaşabildiği, dokunabildiği veya yoğun trafiğin olduğu alanlarda GOB seçenekleri değerlendirilir. Uygunluğu keşifte kullanım koşullarına göre birlikte netleştiriyoruz.",
     ],
     highlights: [
@@ -623,7 +623,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "SMD, COB ve GOB arasındaki fark nedir?",
         answer:
-          "SMD'de her LED ayrı paket olarak karta lehimlenir. COB'da çipler doğrudan karta yerleştirilip ortak yüzeyle kapatılır. GOB'da SMD yüzeyi ek şeffaf tutkal katmanıyla kaplanır; darbe, nem ve toza karşı koruma artar. Uygun seçenek projeye göre önerilir.",
+          "SMD'de her LED ayrı paket olarak karta lehimlenir. COB'da çipler doğrudan karta yerleştirilip ortak yüzeyle kapatılır. GOB'da SMD yüzeyi ek şeffaf tutkal katmanıyla kaplanır; darbe, nem ve toza karşı koruma artar — sabit nem yok: 10–90% RH site iddiası yayımlanmaz. Uygun seçenek projeye göre önerilir.",
       },
       {
         question: "Toplantı sistemleriyle birlikte çalışır mı?",

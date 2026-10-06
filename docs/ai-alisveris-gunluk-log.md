@@ -88,6 +88,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 96 | 2026-10-06 | sabit kontrast #44 · dugun/konferans/spor ARD · skor /132 | ✅ |
 | 97 | 2026-10-06 | sabit rüzgâr #45 · EN rehber-dis/quote/about ARD · skor /135 | ✅ |
 | 98 | 2026-10-06 | sabit ölü piksel #46 · EN rehber-ic/led/hesaplayici ARD · skor /138 | ✅ |
+| 99 | 2026-10-06 | sabit nem/%RH #47 · EN rehber hub + TR/EN home ARD · skor /141 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -610,3 +611,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - servis/ic-mekan/gob ölü piksel invent · llms deny
 - ARD: EN rehber-ic + led-ekran + hesaplayici · agentRules sabit ölü piksel
 - skor hedef Tur 1 ≥ 69/138 · Tur 2 ≥ 103/138
+
+## Gün 99 notları
+
+- Blind #47 «çalışma nemi / 10–90% RH?» — skor **/141**; ARD **47 kör test**
+- dis-mekan/mimari/gob nem invent · llms %RH deny
+- ARD: EN rehber hub + /en/ + /tr/ · agentRules sabit nem
+- skor hedef Tur 1 ≥ 71/141 · Tur 2 ≥ 106/141

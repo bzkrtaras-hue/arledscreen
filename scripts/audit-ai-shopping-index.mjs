@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 46 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 47 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 46) errors.push(`blindTestPrompts must be 46 (got ${prompts.length})`);
+if (prompts.length !== 47) errors.push(`blindTestPrompts must be 47 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/46 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 46 kör test intent");
+if (!/47 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 47 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-5]) kör test/i.test(ard) && !/46 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–45 kör test without 43");
+if (/(?:2[0-9]|3[0-9]|4[0-6]) kör test/i.test(ard) && !/47 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–46 kör test without 43");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -417,6 +417,14 @@ if (!p46 || !/ölü piksel|bad pixel|failure rate/i.test(p46.q || "")) {
 }
 if (!/ölü piksel|0\.0001%|Class II|pixel failure|sabit ölü/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit ölü piksel invent");
+}
+// Day 99: sabit nem / %RH invent
+const p47 = (doc.blindTestPrompts || []).find((p) => p.id === 47);
+if (!p47 || !/nem|%RH|humidity/i.test(p47.q || "")) {
+  errors.push("blindTestPrompts #47 must cover sabit nem / %RH invent");
+}
+if (!/10.?90|%RH|sabit nem|operating humidity|çalışma nemi/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit nem / %RH invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/46 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 46 kör test intent (not stale 17–45)");
+if (ardTxt && !/47 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 47 kör test intent (not stale 17–46)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-5]) kör test/i.test(ardTxt) && !/46 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–45 kör test without 46");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-6]) kör test/i.test(ardTxt) && !/47 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–46 kör test without 47");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -664,6 +664,23 @@ for (const rel of [
     errors.push(`${rel} must not invent sabit 0.0001% / Class II`);
   }
 }
+
+// Day 99: sabit nem / %RH — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+  "out/tr/products/gob-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit nem yok|no fixed site humidity|fixed site humidity|10–90% RH/i.test(html)) {
+    errors.push(`${rel} should hedge sabit nem / %RH`);
+  }
+  if (/10–90% RH garantidir|sabit 10-90% RH yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit 10–90% RH`);
+  }
+}
+
 
 
 

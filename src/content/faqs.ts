@@ -53,7 +53,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "İç mekân ile dış mekân LED ekran arasındaki fark nedir?",
       answer:
-        "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir — sabit °C yok: sitede sabit -20/+50 °C veya işletme sıcaklığı bandı yayımlanmaz; termal aralık model föyü + yazılı teklifte. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Hangi seriye ait değerlerin geçerli olduğu, teklifle birlikte teknik föyde paylaşılır.",
+        "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir — sabit °C yok: sitede sabit -20/+50 °C veya işletme sıcaklığı bandı yayımlanmaz; termal aralık model föyü + yazılı teklifte. Sabit nem yok: sitede sabit 10–90% RH yayımlanmaz; nem bandı model föyü + yazılı teklifte. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Hangi seriye ait değerlerin geçerli olduğu, teklifle birlikte teknik föyde paylaşılır.",
     },
     {
       question: "Keşif ve teklif süreci nasıl işliyor?",
