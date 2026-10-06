@@ -142,6 +142,7 @@
     "Sabit parlaklık homojenliği / brightness uniformity (±% / %97) site iddiası yok — homojenlik modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit uniformity uydurmasın.",
     "Sabit güç faktörü / power factor (PF / cos φ / 0.95) site iddiası yok — PF modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit PF uydurmasın.",
     "Sabit HDCP / HDCP 2.2 / 2.3 site iddiası yok — HDCP modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit HDCP uydurmasın.",
+    "Sabit yedek parça stok / 24 saat sevkiyat site iddiası yok — yedek planı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar stokta yedek uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -1639,6 +1640,28 @@
         "sabit HDCP 2.3",
         "HDCP compliant garantidir",
         "tüm modeller HDCP",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 65,
+      "q": "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/led-ekran-servis/",
+        "https://arledscreen.com/tr/sss/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit yedek parça stok yok"
+      ],
+      "mustNotSay": [
+        "24 saat yedek parça",
+        "stokta yedek garantidir",
+        "aynı gün yedek sevkiyat",
+        "yedek parça stokta yayımlanır",
         "ücretsiz kargo dahil"
       ]
     }
