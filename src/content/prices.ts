@@ -27,6 +27,37 @@ export const CALC_EXTRAS = {
   driverSoftware: 500,
 };
 
+/** Published list validity — keep in sync with ai-shopping.json / catalog.json. */
+export const PRICE_VALID_UNTIL = "2026-12-31";
+
+/** Honest Offer fields for GEO / Merchant: no free-shipping invent, return = quote contract. */
+export function panelOffer(url: string, usd: number) {
+  return {
+    "@type": "Offer" as const,
+    url,
+    price: usd.toFixed(2),
+    priceCurrency: "USD",
+    priceValidUntil: PRICE_VALID_UNTIL,
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+    description:
+      "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: usd.toFixed(2),
+      priceCurrency: "USD",
+      valueAddedTaxIncluded: false,
+      referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
+    },
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "TR",
+      returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+    },
+    seller: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 export const PANEL_PRICES: PanelPrice[] = [
   { id: "p1-25-ic-gob", pitch: "P1.25", pitchMm: 1.25, use: "ic", surface: "GOB", usd: 95.88, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
   { id: "p1-53-ic-gob", pitch: "P1.53", pitchMm: 1.53, use: "ic", surface: "GOB", usd: 62.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
@@ -94,20 +125,7 @@ export function panelProductsJsonLd(
       { "@type": "PropertyValue", name: "Modül ölçüsü", value: panelModule(p) },
       { "@type": "PropertyValue", name: "Kullanım", value: p.use === "ic" ? "İç mekân" : "Dış mekân" },
     ],
-    offers: {
-      "@type": "Offer",
-      url: u,
-      price: p.usd.toFixed(2),
-      priceCurrency: "USD",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: p.usd.toFixed(2),
-        priceCurrency: "USD",
-        valueAddedTaxIncluded: false,
-        referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
-      },
-      seller: org,
-    },
+    offers: panelOffer(u, p.usd),
   };
   });
   const usd = panels.map((p) => p.usd);
@@ -127,7 +145,9 @@ export function panelProductsJsonLd(
         lowPrice: Math.min(...usd).toFixed(2),
         highPrice: Math.max(...usd).toFixed(2),
         offerCount: panels.length,
-        description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç.",
+        priceValidUntil: PRICE_VALID_UNTIL,
+        description:
+          "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. İade: yazılı teklif/sözleşme (MerchantReturnNotPermitted).",
         seller: org,
       },
     });

@@ -14,7 +14,7 @@ import {
   type LedModel,
   type ModelKind,
 } from "@/content/models";
-import { CALC_EXTRAS, fmtUsd, panelM2, panelModule } from "@/content/prices";
+import { CALC_EXTRAS, fmtUsd, panelM2, panelModule, panelOffer } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import { buildTrOnlyMetadata } from "@/lib/seo";
@@ -136,26 +136,7 @@ export default async function ModelPage({ params }: PageProps) {
     additionalProperty: specRows
       .filter((r) => r.spec)
       .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
-    ...(price
-      ? {
-          offers: {
-            "@type": "Offer",
-            url,
-            price: price.usd.toFixed(2),
-            priceCurrency: "USD",
-            availability: "https://schema.org/InStock",
-            itemCondition: "https://schema.org/NewCondition",
-            priceSpecification: {
-              "@type": "UnitPriceSpecification",
-              price: price.usd.toFixed(2),
-              priceCurrency: "USD",
-              valueAddedTaxIncluded: false,
-              referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
-            },
-            seller: { "@id": `${SITE_URL}/#organization` },
-          },
-        }
-      : {}),
+    ...(price ? { offers: panelOffer(url, price.usd) } : {}),
   };
 
   return (

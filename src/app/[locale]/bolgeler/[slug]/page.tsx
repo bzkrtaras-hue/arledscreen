@@ -222,6 +222,18 @@ export default async function ServiceRegionPage({
             </Link>
           </li>
         </ul>
+        <p className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-muted">
+          Yayımlanmış 12 panel USD:{" "}
+          <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+            ai-shopping.json
+          </a>{" "}
+          <code className="text-xs">pricedPanels</code> (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31).
+          KDV/nakliye hariç; ücretsiz kargo yok. Entity:{" "}
+          <a href="https://arledscreen.com/entity.json" className="font-semibold text-cyan hover:underline">
+            entity.json
+          </a>
+          .
+        </p>
       </Section>
 
       <Section eyebrow="SSS" title={`${region.name} LED ekran soruları`} className="border-t border-border prose-seo">
