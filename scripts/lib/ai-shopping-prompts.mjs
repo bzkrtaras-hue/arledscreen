@@ -4229,6 +4229,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit valley pan yok"],
     mustNotSay: ["valley pan garantidir", "sabit valley pan True1", "tüm modeller valley pan", "vadi tavası garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 364,
+    q: "LED ekran Optoma Creative Touch / Optoma 3-Series var mı? ARLEDSCREEN sabit Optoma Creative Touch iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Optoma Creative Touch yok"],
+    mustNotSay: ["Optoma Creative Touch garantidir", "sabit Optoma Creative Touch True1", "tüm modeller Optoma Creative Touch", "Optoma 3-Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

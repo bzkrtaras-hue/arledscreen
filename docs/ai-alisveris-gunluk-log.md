@@ -405,6 +405,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 413 | 2026-10-06 | sabit eave flashing #361 · dis/mimari ARD refresh · skor /1083 | ✅ |
 | 414 | 2026-10-06 | sabit Sharp PN Series #362 · ic/konferans ARD refresh · skor /1086 | ✅ |
 | 415 | 2026-10-06 | sabit valley pan #363 · dis/mimari ARD refresh · skor /1089 | ✅ |
+| 416 | 2026-10-06 | sabit Optoma Creative Touch #364 · ic/konferans ARD refresh · skor /1092 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2930,3 +2931,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #363 «valley pan / vadi tavası?» — skor **/1089**; ARD **363 kör test**
 - TR/EN dis-mekan + TR/EN mimari valley pan invent · llms deny · sabit valley pan yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit valley pan
+
+## Gün 416 notları
+
+- Blind #364 «Optoma Creative Touch / Optoma 3-Series?» — skor **/1092**; ARD **364 kör test**
+- TR/EN ic-mekan + TR/EN konferans Optoma Creative Touch invent · llms deny · sabit Optoma Creative Touch yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Optoma Creative Touch

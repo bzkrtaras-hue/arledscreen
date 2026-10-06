@@ -4762,6 +4762,20 @@ if (
   errors.push("blind prompt #363 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley pan yok");
 }
 
+const pBlind364 = PROMPTS.find((x) => x.id === 364);
+if (!pBlind364 || !/Optoma Creative Touch|Optoma 3-Series/i.test(pBlind364.q)) {
+  errors.push("blind prompt #364 must cover sabit Optoma Creative Touch invent");
+}
+if (
+  pBlind364 &&
+  (!pBlind364.mustSay?.includes("yazılı teklif") ||
+    !pBlind364.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind364.mustSay?.includes("sabit Optoma Creative Touch yok"))
+) {
+  errors.push("blind prompt #364 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma Creative Touch yok");
+}
+
+
 
 
 
