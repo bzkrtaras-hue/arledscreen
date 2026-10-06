@@ -133,8 +133,8 @@ export function estimatePowerInfrastructure(
     breakerAmps3Phase,
     signalNote:
       environment === "outdoor"
-        ? "Prefer multimode/single-mode fiber beyond 80 m; CAT6A up to ~70 m with shielded runs."
-        : "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies.",
+        ? "Prefer multimode/single-mode fiber beyond 80 m; CAT6A up to ~70 m with shielded runs — no fixed site fiber distance; final run length in survey/quote."
+        : "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies — no fixed site fiber distance; final run length in survey/quote.",
     rstNote:
       "Estimate only — balance R-S-T when three-phase applies; final phase model in survey/quote. Isolate LED load from AV control UPS where possible.",
   };
