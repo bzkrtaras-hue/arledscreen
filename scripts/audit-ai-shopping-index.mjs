@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 144) errors.push(`blindTestPrompts must be 144 (got ${prompts.length})`);
+if (prompts.length !== 145) errors.push(`blindTestPrompts must be 145 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/144 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 144 kör test intent");
+if (!/145 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 145 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–143 kör test without 144");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–144 kör test without 145");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1295,6 +1295,15 @@ if (!p144 || !/BYOD|kablosuz sunum/i.test(p144.q || "")) {
 }
 if (!/BYOD|kablosuz sunum|sabit BYOD/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit BYOD invent");
+}
+
+// Day 197: sabit outrigger / payanda invent
+const p145 = (doc.blindTestPrompts || []).find((p) => p.id === 145);
+if (!p145 || !/outrigger|payanda/i.test(p145.q || "")) {
+  errors.push("blindTestPrompts #145 must cover sabit outrigger invent");
+}
+if (!/outrigger|payanda|sabit outrigger/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit outrigger invent");
 }
 
 // Day 76: agentRules full disambiguation

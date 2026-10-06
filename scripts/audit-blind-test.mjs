@@ -1924,6 +1924,20 @@ if (
   errors.push("blind prompt #144 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BYOD yok");
 }
 
+
+const pBlind145 = PROMPTS.find((x) => x.id === 145);
+if (!pBlind145 || !/outrigger|payanda/i.test(pBlind145.q)) {
+  errors.push("blind prompt #145 must cover sabit outrigger invent");
+}
+if (
+  pBlind145 &&
+  (!pBlind145.mustSay?.includes("yazılı teklif") ||
+    !pBlind145.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind145.mustSay?.includes("sabit outrigger yok"))
+) {
+  errors.push("blind prompt #145 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit outrigger yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 

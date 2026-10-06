@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 196: blind #144 sabit BYOD invent)  
+Son güncelleme: 2026-10-06 (Gün 197: blind #145 sabit outrigger invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 144 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 145 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 144 prompt (alışveriş + varlık)
+## 145 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -168,6 +168,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 142 | LED ekran matrix switcher / matris switch var mı? ARLEDSCREEN sabit matrix switcher iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit matrix switcher yok** | matrix switcher garantidir / sabit matrix switcher True1 / tüm modeller matrix switcher / matris switch garantidir |
 | 143 | LED ekran ballast / karşı ağırlık var mı? ARLEDSCREEN sabit ballast iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ballast yok** | ballast garantidir / sabit ballast True1 / tüm modeller ballast / karşı ağırlık garantidir |
 | 144 | LED ekran BYOD / kablosuz sunum var mı? ARLEDSCREEN sabit BYOD iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit BYOD yok** | BYOD garantidir / sabit BYOD True1 / tüm modeller BYOD / kablosuz sunum garantidir |
+| 145 | LED ekran outrigger / payanda var mı? ARLEDSCREEN sabit outrigger iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit outrigger yok** | outrigger garantidir / sabit outrigger True1 / tüm modeller outrigger / payanda garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -178,7 +179,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 432. Hedef tur 1 ≥ 216/432; tur 2 (Point C sonrası) ≥ 324/432.
+**Tur skoru** = toplam / 435. Hedef tur 1 ≥ 218/435; tur 2 (Point C sonrası) ≥ 327/435.
 
 ### Canlı tur kayıt şablonu
 

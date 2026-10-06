@@ -186,6 +186,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 194 | 2026-10-06 | sabit matrix switcher #142 · ic/konferans ARD refresh · skor /426 | ✅ |
 | 195 | 2026-10-06 | sabit ballast #143 · dis/mimari ARD refresh · skor /429 | ✅ |
 | 196 | 2026-10-06 | sabit BYOD #144 · ic/konferans ARD refresh · skor /432 | ✅ |
+| 197 | 2026-10-06 | sabit outrigger #145 · dis/mimari ARD refresh · skor /435 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1395,4 +1396,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans BYOD invent · llms deny · sabit BYOD yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit BYOD
 - skor hedef Tur 1 ≥ 216/432 · Tur 2 ≥ 324/432
+
+## Gün 197 notları
+
+- Blind #145 «outrigger / payanda?» — skor **/435**; ARD **145 kör test**
+- TR/EN dis-mekan + TR/EN mimari outrigger invent · llms deny · sabit outrigger yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit outrigger
+- skor hedef Tur 1 ≥ 218/435 · Tur 2 ≥ 327/435
 

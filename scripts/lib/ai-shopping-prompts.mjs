@@ -1601,6 +1601,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BYOD yok"],
     mustNotSay: ["BYOD garantidir", "sabit BYOD True1", "tüm modeller BYOD", "kablosuz sunum garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 145,
+    q: "LED ekran outrigger / payanda var mı? ARLEDSCREEN sabit outrigger iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit outrigger yok"],
+    mustNotSay: ["outrigger garantidir", "sabit outrigger True1", "tüm modeller outrigger", "payanda garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
