@@ -2729,6 +2729,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Optoma yok"],
     mustNotSay: ["Optoma garantidir", "sabit Optoma True1", "tüm modeller Optoma", "DLP projector garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 239,
+    q: "LED ekran termination bar / bitiş çubuğu var mı? ARLEDSCREEN sabit termination bar iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit termination bar yok"],
+    mustNotSay: ["termination bar garantidir", "sabit termination bar True1", "tüm modeller termination bar", "bitiş çubuğu garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
