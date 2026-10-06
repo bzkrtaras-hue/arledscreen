@@ -1986,6 +1986,20 @@ if (
     !pBlind149.mustSay?.includes("sabit base plate yok"))
 ) {
   errors.push("blind prompt #149 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base plate yok");
+
+const pBlind150 = PROMPTS.find((x) => x.id === 150);
+if (!pBlind150 || !/RS-232|seri port/i.test(pBlind150.q)) {
+  errors.push("blind prompt #150 must cover sabit RS-232 invent");
+}
+if (
+  pBlind150 &&
+  (!pBlind150.mustSay?.includes("yazılı teklif") ||
+    !pBlind150.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind150.mustSay?.includes("sabit RS-232 yok"))
+) {
+  errors.push("blind prompt #150 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit RS-232 yok");
+}
+
 }
 
 }

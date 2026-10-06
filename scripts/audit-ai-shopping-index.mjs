@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 149) errors.push(`blindTestPrompts must be 149 (got ${prompts.length})`);
+if (prompts.length !== 150) errors.push(`blindTestPrompts must be 150 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/149 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 149 kör test intent");
+if (!/150 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 150 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–148 kör test without 149");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–149 kör test without 150");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1334,6 +1334,15 @@ if (!p149 || !/base plate|taban plakası/i.test(p149.q || "")) {
 }
 if (!/base plate|taban plakası|sabit base plate/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit base plate invent");
+
+const p150 = (doc.blindTestPrompts || []).find((p) => p.id === 150);
+if (!p150 || !/RS-232|seri port/i.test(p150.q || "")) {
+  errors.push("blindTestPrompts #150 must cover sabit RS-232 invent");
+}
+if (!/RS-232|seri port|sabit RS-232/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit RS-232 invent");
+}
+
 }
 
 }

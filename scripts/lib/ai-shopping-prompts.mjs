@@ -1661,6 +1661,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit base plate yok"],
     mustNotSay: ["base plate garantidir", "sabit base plate True1", "tüm modeller base plate", "taban plakası garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 150,
+    q: "LED ekran RS-232 / seri port var mı? ARLEDSCREEN sabit RS-232 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit RS-232 yok"],
+    mustNotSay: ["RS-232 garantidir", "sabit RS-232 True1", "tüm modeller RS-232", "seri port garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
