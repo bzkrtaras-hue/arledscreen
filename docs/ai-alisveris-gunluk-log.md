@@ -422,6 +422,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 430 | 2026-10-06 | sabit Planar Simplicity Touch #378 · ic/konferans ARD refresh · skor /1134 | ✅ |
 | 431 | 2026-10-06 | sabit chimney apron #379 · dis/mimari ARD refresh · skor /1137 | ✅ |
 | 432 | 2026-10-06 | sabit Yealink MeetingBoard 65 #380 · ic/konferans ARD refresh · skor /1140 | ✅ |
+| 433 | 2026-10-06 | sabit roof apron #381 · dis/mimari ARD refresh · skor /1143 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3049,3 +3050,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #380 «Yealink MeetingBoard 65 / MeetingBoard 65?» — skor **/1140**; ARD **380 kör test**
 - TR/EN ic-mekan + TR/EN konferans Yealink MeetingBoard 65 invent · llms deny · sabit Yealink MeetingBoard 65 yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Yealink MeetingBoard 65
+
+## Gün 433 notları
+
+- Blind #381 «roof apron / çatı eteği?» — skor **/1143**; ARD **381 kör test**
+- TR/EN dis-mekan + TR/EN mimari roof apron invent · llms deny · sabit roof apron yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit roof apron
