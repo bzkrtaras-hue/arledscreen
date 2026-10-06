@@ -2093,6 +2093,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit neoprene gasket yok"],
     mustNotSay: ["neoprene gasket garantidir", "sabit neoprene gasket True1", "tüm modeller neoprene gasket", "neopren conta garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 186,
+    q: "LED ekran Yealink / UC endpoint var mı? ARLEDSCREEN sabit Yealink iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Yealink yok"],
+    mustNotSay: ["Yealink garantidir", "sabit Yealink True1", "tüm modeller Yealink", "UC endpoint garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

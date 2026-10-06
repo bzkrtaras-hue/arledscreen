@@ -227,6 +227,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 235 | 2026-10-06 | sabit counter flashing #183 · dis/mimari ARD refresh · skor /549 | ✅ |
 | 236 | 2026-10-06 | sabit Google Meet #184 · ic/konferans ARD refresh · skor /552 | ✅ |
 | 237 | 2026-10-06 | sabit neoprene gasket #185 · dis/mimari ARD refresh · skor /555 | ✅ |
+| 238 | 2026-10-06 | sabit Yealink #186 · ic/konferans ARD refresh · skor /558 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1684,3 +1685,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #185 «neoprene gasket / neopren conta?» — skor **/555**; ARD **185 kör test**
 - TR/EN dis-mekan + TR/EN mimari neoprene gasket invent · llms deny · sabit neoprene gasket yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit neoprene gasket
+
+## Gün 238 notları
+
+- Blind #186 «Yealink / UC endpoint?» — skor **/558**; ARD **186 kör test**
+- TR/EN ic-mekan + TR/EN konferans Yealink invent · llms deny · sabit Yealink yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Yealink

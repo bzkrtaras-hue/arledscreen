@@ -2448,6 +2448,20 @@ if (
   errors.push("blind prompt #185 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit neoprene gasket yok");
 }
 
+const pBlind186 = PROMPTS.find((x) => x.id === 186);
+if (!pBlind186 || !/Yealink|UC endpoint/i.test(pBlind186.q)) {
+  errors.push("blind prompt #186 must cover sabit Yealink invent");
+}
+if (
+  pBlind186 &&
+  (!pBlind186.mustSay?.includes("yazılı teklif") ||
+    !pBlind186.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind186.mustSay?.includes("sabit Yealink yok"))
+) {
+  errors.push("blind prompt #186 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Yealink yok");
+}
+
+
 
 
 
