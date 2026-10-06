@@ -2237,6 +2237,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parapet flashing yok"],
     mustNotSay: ["parapet flashing garantidir", "sabit parapet flashing True1", "tüm modeller parapet flashing", "parapet flaşörü garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 198,
+    q: "LED ekran Huddly / kamera var mı? ARLEDSCREEN sabit Huddly iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Huddly yok"],
+    mustNotSay: ["Huddly garantidir", "sabit Huddly True1", "tüm modeller Huddly", "kamera garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 249: blind #197 sabit parapet flashing invent)  
+Son güncelleme: 2026-10-06 (Gün 250: blind #198 sabit Huddly invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 197 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 198 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 197 prompt (alışveriş + varlık)
+## 198 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -221,6 +221,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 195 | LED ekran scupper / scupper drenaj var mı? ARLEDSCREEN sabit scupper iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit scupper yok** | scupper garantidir / sabit scupper True1 / tüm modeller scupper / scupper drenaj garantidir |
 | 196 | LED ekran Meeting Owl / Owl Labs var mı? ARLEDSCREEN sabit Meeting Owl iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Meeting Owl yok** | Meeting Owl garantidir / sabit Meeting Owl True1 / tüm modeller Meeting Owl / Owl Labs garantidir |
 | 197 | LED ekran parapet flashing / parapet flaşörü var mı? ARLEDSCREEN sabit parapet flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit parapet flashing yok** | parapet flashing garantidir / sabit parapet flashing True1 / tüm modeller parapet flashing / parapet flaşörü garantidir |
+| 198 | LED ekran Huddly / kamera var mı? ARLEDSCREEN sabit Huddly iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Huddly yok** | Huddly garantidir / sabit Huddly True1 / tüm modeller Huddly / kamera garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -231,7 +232,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 591. Hedef tur 1 ≥ 296/591; tur 2 (Point C sonrası) ≥ 444/591.
+**Tur skoru** = toplam / 594. Hedef tur 1 ≥ 297/594; tur 2 (Point C sonrası) ≥ 446/594.
 
 ### Canlı tur kayıt şablonu
 

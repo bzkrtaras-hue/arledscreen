@@ -2604,6 +2604,20 @@ if (
   errors.push("blind prompt #197 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet flashing yok");
 }
 
+const pBlind198 = PROMPTS.find((x) => x.id === 198);
+if (!pBlind198 || !/Huddly|kamera/i.test(pBlind198.q)) {
+  errors.push("blind prompt #198 must cover sabit Huddly invent");
+}
+if (
+  pBlind198 &&
+  (!pBlind198.mustSay?.includes("yazılı teklif") ||
+    !pBlind198.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind198.mustSay?.includes("sabit Huddly yok"))
+) {
+  errors.push("blind prompt #198 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Huddly yok");
+}
+
+
 
 
 

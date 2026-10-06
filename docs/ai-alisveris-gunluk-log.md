@@ -239,6 +239,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 247 | 2026-10-06 | sabit scupper #195 · dis/mimari ARD refresh · skor /585 | ✅ |
 | 248 | 2026-10-06 | sabit Meeting Owl #196 · ic/konferans ARD refresh · skor /588 | ✅ |
 | 249 | 2026-10-06 | sabit parapet flashing #197 · dis/mimari ARD refresh · skor /591 | ✅ |
+| 250 | 2026-10-06 | sabit Huddly #198 · ic/konferans ARD refresh · skor /594 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1768,3 +1769,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #197 «parapet flashing / parapet flaşörü?» — skor **/591**; ARD **197 kör test**
 - TR/EN dis-mekan + TR/EN mimari parapet flashing invent · llms deny · sabit parapet flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit parapet flashing
+
+## Gün 250 notları
+
+- Blind #198 «Huddly / kamera?» — skor **/594**; ARD **198 kör test**
+- TR/EN ic-mekan + TR/EN konferans Huddly invent · llms deny · sabit Huddly yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Huddly
