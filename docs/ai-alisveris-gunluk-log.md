@@ -155,6 +155,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 163 | 2026-10-06 | sabit cabinet size #111 · dis/mimari ARD refresh · skor /333 | ✅ |
 | 164 | 2026-10-06 | sabit panel size #112 · ic/konferans ARD refresh · skor /336 | ✅ |
 | 165 | 2026-10-06 | sabit waterproof glue #113 · dis/mimari ARD refresh · skor /339 | ✅ |
+| 166 | 2026-10-06 | sabit mask pitch #114 · ic/konferans ARD refresh · skor /342 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1147,4 +1148,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari waterproof glue invent · llms deny · sabit waterproof glue yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit waterproof glue
 - skor hedef Tur 1 ≥ 170/339 · Tur 2 ≥ 255/339
+
+## Gün 166 notları
+
+- Blind #114 «mask pitch / maske pitch?» — skor **/342**; ARD **114 kör test**
+- TR/EN ic-mekan + TR/EN konferans mask pitch invent · llms deny · sabit mask pitch yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit mask pitch
+- skor hedef Tur 1 ≥ 171/342 · Tur 2 ≥ 257/342
 

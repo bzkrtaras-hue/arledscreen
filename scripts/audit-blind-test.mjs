@@ -1489,6 +1489,20 @@ if (
   errors.push("blind prompt #113 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit waterproof glue yok");
 }
 
+
+const pBlind114 = PROMPTS.find((x) => x.id === 114);
+if (!pBlind114 || !/mask pitch|maske pitch/i.test(pBlind114.q)) {
+  errors.push("blind prompt #114 must cover sabit mask pitch invent");
+}
+if (
+  pBlind114 &&
+  (!pBlind114.mustSay?.includes("yazılı teklif") ||
+    !pBlind114.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind114.mustSay?.includes("sabit mask pitch yok"))
+) {
+  errors.push("blind prompt #114 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit mask pitch yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

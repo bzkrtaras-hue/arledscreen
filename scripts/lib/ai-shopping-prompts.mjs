@@ -1229,6 +1229,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit waterproof glue yok"],
     mustNotSay: ["waterproof glue garantidir", "sabit su geçirmez yapıştırıcı", "tüm modeller waterproof glue", "su geçirmez yapıştırıcı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 114,
+    q: "LED ekran mask pitch / maske pitch var mı? ARLEDSCREEN sabit mask pitch iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit mask pitch yok"],
+    mustNotSay: ["mask pitch garantidir", "sabit maske pitch", "tüm modeller mask pitch", "maske pitch garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

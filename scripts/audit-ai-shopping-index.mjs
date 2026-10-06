@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 113) errors.push(`blindTestPrompts must be 113 (got ${prompts.length})`);
+if (prompts.length !== 114) errors.push(`blindTestPrompts must be 114 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/113 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 113 kör test intent");
+if (!/114 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 114 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–112 kör test without 113");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–113 kör test without 114");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1004,6 +1004,15 @@ if (!p113 || !/waterproof glue|su geçirmez yapıştırıcı/i.test(p113.q || ""
 }
 if (!/waterproof glue|su geçirmez yapıştırıcı|sabit waterproof glue/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit waterproof glue invent");
+}
+
+// Day 166: sabit mask pitch / maske pitch invent
+const p114 = (doc.blindTestPrompts || []).find((p) => p.id === 114);
+if (!p114 || !/mask pitch|maske pitch/i.test(p114.q || "")) {
+  errors.push("blindTestPrompts #114 must cover sabit mask pitch invent");
+}
+if (!/mask pitch|maske pitch|sabit mask pitch/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit mask pitch invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
