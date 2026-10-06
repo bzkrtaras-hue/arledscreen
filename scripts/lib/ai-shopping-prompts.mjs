@@ -5417,6 +5417,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit QSC Core Nano yok"],
     mustNotSay: ["QSC Core Nano garantidir", "sabit QSC Core Nano True1", "tüm modeller QSC Core Nano", "Core Nano garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 463,
+    q: "LED ekran awning box / tente kutusu var mı? ARLEDSCREEN sabit awning box iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit awning box yok"],
+    mustNotSay: ["awning box garantidir", "sabit awning box True1", "tüm modeller awning box", "tente kutusu garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

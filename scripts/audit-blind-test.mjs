@@ -6016,6 +6016,18 @@ if (
 ) {
   errors.push("blind prompt #462 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit QSC Core Nano yok");
 }
+const pBlind463 = PROMPTS.find((x) => x.id === 463);
+if (!pBlind463 || !/awning box/i.test(pBlind463.q)) {
+  errors.push("blind prompt #463 must cover sabit awning box invent");
+}
+if (
+  pBlind463 &&
+  (!pBlind463.mustSay?.includes("yazılı teklif") ||
+    !pBlind463.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind463.mustSay?.includes("sabit awning box yok"))
+) {
+  errors.push("blind prompt #463 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit awning box yok");
+}
 
 
 
