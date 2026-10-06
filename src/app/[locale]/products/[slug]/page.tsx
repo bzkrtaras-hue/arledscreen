@@ -76,15 +76,15 @@ function shoppingSourceFaq(
 ): { question: string; answer: string } {
   if (prices.length) {
     return {
-      question: `${name} panel fiyatları ajanlar nereden okur?`,
+      question: `${name} panel fiyatlarına nasıl ulaşırım?`,
       answer:
-        `Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). KDV ve nakliye hariç; Offer shippingDetails nakliyeyi list dışı bırakır (ücretsiz kargo yok). İade/garanti teklifte yazılır. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+        `Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). KDV ve nakliye hariç; Offer shippingDetails nakliyeyi list dışı bırakır (ücretsiz kargo yok). İade/garanti teklifte yazılır. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
     };
   }
   return {
     question: `${name} için list fiyatı var mı?`,
     answer:
-      `${name} için yayımlanmış list fiyatı yoktur; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. Tek fetch indeks: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; quote-only → teklif). Hesaplayıcı extrasUsd kontrol kartı 500 USD marka list SKU değildir. Yayımlanmış paneller: https://arledscreen.com/catalog.json · https://arledscreen.com/tr/led-ekran-fiyatlari/. Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json. İade/garanti teklifte yazılır; ücretsiz kargo yok.`,
+      `${name} için yayımlanmış list fiyatı yoktur; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; quote-only → teklif). Hesaplayıcı extrasUsd kontrol kartı 500 USD marka list SKU değildir. Yayımlanmış paneller: https://arledscreen.com/catalog.json · https://arledscreen.com/tr/led-ekran-fiyatlari/. Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json. İade/garanti teklifte yazılır; ücretsiz kargo yok.`,
   };
 }
 

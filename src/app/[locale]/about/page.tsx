@@ -183,7 +183,7 @@ export default async function AboutPage({ params }: PageProps) {
             </ul>
             <ShoppingLinkCloud excludeHref="/tr/about/" />
           </Section>
-          <Section eyebrow="Sık sorulanlar" title="Kimlik, fiyat ve AI ajanları" className="border-t border-border prose-seo">
+          <Section eyebrow="Sık sorulanlar" title="Kimlik, fiyat ve sık sorulanlar" className="border-t border-border prose-seo">
             <HomeFaq faqs={[...ENTITY_FAQS]} />
           </Section>
           <Section eyebrow="Neden ARLEDSCREEN?" title="Doğrulanabilir bilgiler" className="bg-surface/60 prose-seo">

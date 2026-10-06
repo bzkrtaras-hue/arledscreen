@@ -1,7 +1,15 @@
-## Gün 472 — invent Blind #420 Neat Bar Pro
+## Gün 473 — müşteri SSS ajan jargonu temizliği
 
-- Blind #420 Neat Bar Pro · ic/konferans · prompts=420 · /1260
-- ENTITY_FAQS clean (about’ta blind yok) · Point C + Tur 1a sahip
+- Ana sayfa /about /sss ve diğer görünen SSS: «ajanlar uydurmasın», «Tek fetch», «ajan keşif» kaldırıldı
+- Doğal müşteri dili: garanti/iade/sertifika → yazılı teklifte; roller (satıcı / marka sahibi / servis) net
+- agentRules yalnızca ai-shopping.json vb. makine yüzeylerinde kaldı
+- audit-faq-jsonld + cite-parity: müşteri FAQ’da ajan jargonu yasak
+- Point C + Tur 1a hâlâ sahip · kanonik arledscreen.com
+
+## Gün 472 — invent Blind #420 Neat Bar Pro LIVE
+
+- Blind #420 Neat Bar Pro · ic/konferans · prompts=420 · /1260 · CF deploy main
+- ENTITY_FAQS clean · kanonik yalnızca arledscreen.com · Point C + Tur 1a sahip
 
 ## Gün 471 — invent Blind #419 window apron
 
@@ -75,7 +83,8 @@
 - Stale 405/1215 → **408/1224**; PR draft → **ready**; skor Tur2 hedef **918**
 - Point C Drive Doc + paste-bundle güncellendi
 - Canlı: JSON 200 · robots 3× BYPASS Host bare · prompts=408 · CI yeşil
-- **Açık sahip:** Point C paste · Tur 1a · arleds.com 301
+- **Açık sahip:** Point C paste · Tur 1a
+- ~~arleds.com 301~~ iptal (bizim site değil; kanonik yalnızca arledscreen.com)
 - Yeni invent yok bu turda
 
 ## Gün 458e — Point C paste bundle
@@ -87,7 +96,7 @@
 ## Gün 458d — kör tur P0 + sameAs
 
 - Tur 1a: canlı ai-shopping #1–#20 → skor kartı /60 (sahip doldurur)
-- sameAs IG/FB/LinkedIn GET **200**; arleds.com TLS fail → 301 yok
+- sameAs IG/FB/LinkedIn GET **200**; arleds.com bizim değil → 301 görevi yok
 - Invent/deploy/purge/merge yok; PR #55 draft
 
 

@@ -40,7 +40,7 @@ const QUOTE_FAQS = [
       "Yaklaşık ölçü, iç/dış mekân, konum, kullanım amacı ve zaman planı yeterlidir. Fotoğraf veya kısa video süreci hızlandırır. Firma kimliği: https://arledscreen.com/entity.json.",
   },
   {
-    question: "AI ajanları fiyatı bu formdan mı okusun?",
+    question: "Bu form fiyat listesi midir?",
     answer:
       "Hayır. Ajanlar önce https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) okumalı; panel USD için https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok). Quote-only ürünlere fiyat uydurulmaz. Bu sayfa yazılı teklif kanalıdır. Keşif: https://arledscreen.com/.well-known/ard.json · Kimlik: https://arledscreen.com/entity.json.",
   },

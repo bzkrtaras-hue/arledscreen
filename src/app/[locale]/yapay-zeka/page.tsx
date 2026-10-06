@@ -75,7 +75,7 @@ const content: Record<
       {
         h2: "AI alışveriş ve ajan keşfi (makinece okunur)",
         body:
-          "ChatGPT, Gemini, Perplexity ve benzeri ajanlar LED ekran fiyatı / kim satar sorularında uydurma rakam üretmemeli. Önce tek fetch index: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules + P2.5=32,18 USD; priceValidUntil 2026-12-31). Offer shippingDetails: KDV ve nakliye hariç, ücretsiz kargo yok. hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade/garanti teklif ve sözleşmede yazılır. Ardından entity.json, catalog.json, llms.txt ve /.well-known/ard.json. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık + Huidu/NovaStar/Colorlight kontrol) yazılı teklifle netleşir; kontrol kartına list USD uydurulmaz.",
+          "Yayımlanmış panel fiyatları https://arledscreen.com/ai-shopping.json ve https://arledscreen.com/catalog.json adreslerindedir (örnek: P2.5 iç mekân 32,18 USD; 31 Aralık 2026’ya kadar geçerli). KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — yazılı teklifle netleşir.",
       },
     ],
     bulletsTitle: "Proje ekiplerinin sorduğu üç net nokta",
@@ -86,7 +86,7 @@ const content: Record<
     ],
     agentTitle: "Ajanlar için kanonik URL’ler",
     agentLinks: [
-      { href: "/ai-shopping.json", label: "ai-shopping.json", note: "Tek fetch: pricedPanels + agentRules + cite" },
+      { href: "/ai-shopping.json", label: "ai-shopping.json", note: "pricedPanels + agentRules + cite" },
       { href: "/entity.json", label: "entity.json", note: "Organization + NAP + cite" },
       { href: "/catalog.json", label: "catalog.json", note: "Panel USD + shippingDetails + hasMerchantReturnPolicy" },
       { href: "/entity-profiles.json", label: "entity-profiles.json", note: "Point C paste packs" },
@@ -117,7 +117,7 @@ const content: Record<
           "NXTIONSTAR ürünlerinin keşif, montaj, kalibrasyon ve teknik destek süreçleri İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN üzerinden yürütülür; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Uydurma “AI-ready” ürün SKU’su yoktur — entegrasyon keşif ve yazılı teklifte tanımlanır.",
       },
       {
-        question: "AI ajanları ARLEDSCREEN fiyatını nereden okumalı?",
+        question: "Panel fiyat listesine nasıl ulaşırım?",
         answer:
           "Önce https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Fiyat: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Kimlik: https://arledscreen.com/entity.json. İade/garanti teklifte yazılır. Uydurma TL paket veya stok fiyatı eklenmez. Huidu/NovaStar/Colorlight kontrol kartları quote-only — list USD yok, yazılı teklif.",
       },
@@ -149,7 +149,7 @@ const content: Record<
       {
         h2: "AI shopping & agent discovery (machine-readable)",
         body:
-          "Shopping and answer agents must not invent LED panel prices. Start with https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules + P2.5=32.18 USD; priceValidUntil 2026-12-31). Offer shippingDetails: VAT and freight excluded — no free shipping. hasMerchantReturnPolicy: MerchantReturnNotPermitted — returns/warranty are quote-and-contract only. Then entity.json, catalog.json, llms.txt and /.well-known/ard.json. Quote-only groups (transparent, flexible, poster, rental + Huidu/NovaStar/Colorlight control cards) finalize in a written quote — never invent list USD for controllers.",
+          "Published panel prices are at https://arledscreen.com/ai-shopping.json and https://arledscreen.com/catalog.json (P2.5 indoor module list example: 32.18 USD; valid through 2026-12-31). VAT and freight are excluded — no free shipping. Returns and warranty are stated in the written quote. Transparent, flexible, poster, rental and control cards (Huidu/NovaStar/Colorlight) have no list USD — finalize via written quote.",
       },
     ],
     bulletsTitle: "Three questions project teams clarify first",

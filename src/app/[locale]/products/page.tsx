@@ -27,12 +27,12 @@ const PRODUCTS_HUB_FAQS = [
   {
     question: "NXTIONSTAR ürün gruplarının fiyatı nereden okunur?",
     answer:
-      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — https://arledscreen.com/tr/quote/. Tek fetch: https://arledscreen.com/ai-shopping.json.",
+      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — https://arledscreen.com/tr/quote/. https://arledscreen.com/ai-shopping.json.",
   },
   {
-    question: "AI / alışveriş ajanları ürün kataloğunu nasıl bulur?",
+    question: "Ürün kataloğuna ve fiyat listesine nasıl ulaşırım?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Ürün hub: https://arledscreen.com/tr/products/. Marka: https://arledscreen.com/tr/nxtionstar/. Ücretsiz kargo yok; iade/garanti teklifte (MerchantReturnNotPermitted).",
+      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · https://arledscreen.com/.well-known/ard.json · Ürün hub: https://arledscreen.com/tr/products/. Marka: https://arledscreen.com/tr/nxtionstar/. Ücretsiz kargo yok; iade/garanti teklifte (MerchantReturnNotPermitted).",
   },
   {
     question: "Hangi ürün gruplarında panel list fiyatı vardır?",
@@ -229,7 +229,7 @@ export default async function ProductsPage({ params }: PageProps) {
           <section className="border-t border-border bg-band py-14 md:py-16 prose-seo">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <h2 className="font-display text-xl font-bold text-ink md:text-2xl">
-                Fiyat, katalog ve AI ajan kaynakları
+                Fiyat ve katalog kaynakları
               </h2>
               <div className="mt-6">
                 <HomeFaq faqs={PRODUCTS_HUB_FAQS} />

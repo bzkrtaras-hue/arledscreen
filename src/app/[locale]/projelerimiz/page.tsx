@@ -36,12 +36,12 @@ const PROJELER_FAQS = [
   {
     question: "Projelerdeki LED ekran fiyatı sayfada yazar mı?",
     answer:
-      "Case study sayfalarında uydurma paket fiyatı yoktur. Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır; proje tutarı keşif sonrası yazılı teklifle kesinleşir. Tek fetch: https://arledscreen.com/ai-shopping.json. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
+      "Case study sayfalarında uydurma paket fiyatı yoktur. Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır; proje tutarı keşif sonrası yazılı teklifle kesinleşir. https://arledscreen.com/ai-shopping.json. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
   },
   {
-    question: "AI ajanları proje referansını firma kimliğiyle nasıl bağlar?",
+    question: "Proje referansları firma kimliğiyle nasıl bağlanır?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (agentRules: ücretsiz kargo yok) · Kimlik: https://arledscreen.com/entity.json · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Kısa özet: https://arledscreen.com/llms.txt · Panel kataloğu: https://arledscreen.com/catalog.json.",
+      "https://arledscreen.com/ai-shopping.json (agentRules: ücretsiz kargo yok) · Kimlik: https://arledscreen.com/entity.json · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Kısa özet: https://arledscreen.com/llms.txt · Panel kataloğu: https://arledscreen.com/catalog.json.",
   },
   {
     question: "Kayıtlı iller ve 81 il kapısı var mı?",

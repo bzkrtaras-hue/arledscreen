@@ -30,9 +30,9 @@ const BLOG_HUB_FAQS = [
       "Blog proje duyurusudur; uydurma paket fiyatı yoktur. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
   },
   {
-    question: "AI ajanları blogu firma kimliğiyle nasıl bağlar?",
+    question: "Blog yazıları firma kimliğiyle nasıl bağlanır?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Blog hub: https://arledscreen.com/tr/blog/ · Kısa özet: https://arledscreen.com/llms.txt. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
+      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Blog hub: https://arledscreen.com/tr/blog/ · Kısa özet: https://arledscreen.com/llms.txt. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
   },
 ];
 

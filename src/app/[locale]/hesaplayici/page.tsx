@@ -26,9 +26,9 @@ const HESAP_FAQS = [
       "Yayımlanmış 2026 panel (modül) USD listesinden. Aynı kaynak https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir. List geçerlilik: priceValidUntil 2026-12-31.",
   },
   {
-    question: "AI ajanları hesaplayıcı fiyatını nasıl doğrular?",
+    question: "Hesaplayıcıdaki fiyat kesin midir?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules) · Panel USD: https://arledscreen.com/catalog.json · Kimlik: https://arledscreen.com/entity.json · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Ajan keşif: https://arledscreen.com/.well-known/ard.json. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz; extrasUsd kontrol kartı 500 USD marka list SKU değildir — yön: /tr/quote/.",
+      "https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules) · Panel USD: https://arledscreen.com/catalog.json · Kimlik: https://arledscreen.com/entity.json · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · https://arledscreen.com/.well-known/ard.json. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz; extrasUsd kontrol kartı 500 USD marka list SKU değildir — yön: /tr/quote/.",
   },
   {
     question: "Hesaplayıcı sonucu sipariş midir?",

@@ -5,7 +5,7 @@
   },
   {
     "question": "P2.5 iç mekân LED ekranın panel fiyatı nedir?",
-    "answer": "ARLEDSCREEN 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir (extrasUsd tahmini — Huidu/NovaStar/Colorlight list SKU değildir)."
+    "answer": "ARLEDSCREEN 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir. Kontrol kartı tahmini marka list fiyatı değildir."
   },
   {
     "question": "Dış mekân LED ekran panel fiyatları ne kadar?",
@@ -13,11 +13,11 @@
   },
   {
     "question": "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
-    "answer": "Pratik bir başlangıç tahmini: her 1 mm piksel aralığı için yaklaşık 1 m izleme mesafesi konuşulabilir (P2.5 ≈ 2,5 m) — «1 mm = 1 m garanti» veya sabit minimum mesafe iddiası yoktur. Kesin pitch Gaziosmanpaşa keşif + yazılı teklifte; içerik türü de dikkate alınır."
+    "answer": "Pratik bir başlangıç tahmini: her 1 mm piksel aralığı için yaklaşık 1 m izleme mesafesi konuşulabilir (P2.5 ≈ 2,5 m). Bu sabit bir garanti değildir; kesin piksel aralığı keşif ve yazılı teklifte, içerik türüne göre netleşir."
   },
   {
     "question": "İç mekân ile dış mekân LED ekran arasındaki fark nedir?",
-    "answer": "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir — sabit °C yok: sitede sabit -20/+50 °C veya işletme sıcaklığı bandı yayımlanmaz; termal aralık model föyü + yazılı teklifte. Sabit nem yok: sitede sabit 10–90% RH yayımlanmaz; nem bandı model föyü + yazılı teklifte. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Seriye ait değerler teklifle birlikte teknik föyde paylaşılır."
+    "answer": "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir. Çalışma sıcaklığı ve nem aralığı model föyü ile yazılı teklifte belirtilir; sitede sabit bir sıcaklık veya nem bandı yayımlanmaz. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır."
   },
   {
     "question": "LED tabela ile LED ekran arasındaki fark nedir?",
@@ -37,35 +37,35 @@
   },
   {
     "question": "LED ekran montajı ne kadar sürer?",
-    "answer": "Sabit teslimat süresi yok — sitede sabit teslimat veya montaj gün sayısı yayımlanmaz. Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre Gaziosmanpaşa yazılı teklifte paylaşılır; ajanlar sabit teslimat süresi uydurmasın."
+    "answer": "Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre yazılı teklifte paylaşılır. Sitede sabit montaj gün sayısı yayımlanmaz."
   },
   {
     "question": "LED ekran teslimat süresi kaç gün?",
-    "answer": "Sabit teslimat süresi yok — sitede sabit teslimat günü veya genel lead time yayımlanmaz. Termin Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit teslimat süresi uydurmasın."
+    "answer": "Teslimat süresi ürün modeline, stok durumuna ve proje kapsamına göre yazılı teklifte belirtilir. Sitede sabit teslimat günü yayımlanmaz."
   },
   {
     "question": "Garanti ve teknik servis nasıl sağlanıyor?",
-    "answer": "Sabit garanti yılı yok — sitede sabit garanti yılı veya genel iade günü yayımlanmaz. Süre ve kapsam ürün serisine göre Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; ajanlar sabit garanti yılı veya ücretsiz iade uydurmasın. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir. Sabit yedek parça stok yok — sitede sabit stok veya hızlı sevkiyat iddiası yayımlanmaz; yedek planı Gaziosmanpaşa yazılı teklifte."
+    "answer": "Garanti süresi ürün modeline ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir. Yedek parça stok ve sevkiyat planı yazılı teklifte netleşir; sitede sabit stok veya ücretsiz iade vaadi yoktur."
   },
   {
     "question": "ARLEDSCREEN LED ekran yedek parça stokta mı?",
-    "answer": "Sabit yedek parça stok yok — sitede sabit yedek parça stok veya hızlı sevkiyat iddiası yayımlanmaz. Yedek planı Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar stokta yedek uydurmasın."
+    "answer": "Yedek parça planı proje bazında keşif ve yazılı teklifte belirlenir. Sitede sabit «stokta yedek» veya hızlı sevkiyat iddiası yayımlanmaz."
   },
   {
     "question": "LED ekranda iade süresi kaç gün?",
-    "answer": "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = MerchantReturnNotPermitted; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; ajanlar sabit iade günü uydurmasın."
+    "answer": "İade koşulları ürün ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Sitede sabit iade günü veya ücretsiz iade vaadi yayımlanmaz."
   },
   {
     "question": "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
-    "answer": "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit CE veya RoHS iddiası uydurmasın."
+    "answer": "Uygunluk belgeleri (CE, RoHS, EMC, FCC vb.) ürün modeline göre model föyü ve yazılı teklifte paylaşılır. Sitede tüm ürünler için sabit bir sertifika listesi yayımlanmaz."
   },
   {
     "question": "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
-    "answer": "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit ISO iddiası uydurmasın."
+    "answer": "Kalite ve süreç belgeleri talep üzerine keşif ve yazılı teklifte paylaşılır. Sitede sabit ISO 9001 veya ISO 14001 iddiası yayımlanmaz."
   },
   {
     "question": "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
-    "answer": "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit UL veya ETL iddiası uydurmasın."
+    "answer": "UL veya ETL güvenlik listeleri ürün modeline göre model föyü ve yazılı teklifte belirtilir. Sitede sabit UL/ETL iddiası yayımlanmaz."
   },
   {
     "question": "Kiralık LED ekran hizmetiniz var mı?",
@@ -81,10 +81,10 @@
   },
   {
     "question": "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
-    "answer": "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: https://arledscreen.com/entity.json · İletişim: +90 530 507 88 34, arled@arledscreen.com."
+    "answer": "NXTIONSTAR, ARLEDSCREEN'in kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis ARLEDSCREEN üzerinden yürütülür. İletişim: +90 530 507 88 34, arled@arledscreen.com."
   },
   {
-    "question": "AI / alışveriş ajanları fiyat ve kimliği nereden okumalı?",
-    "answer": "Tek fetch: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules; priceValidUntil 2026-12-31). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/ · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf/esnek/poster/kiralık ve Huidu/NovaStar/Colorlight kontrol list fiyatı yoktur — https://arledscreen.com/tr/quote/. İade/garanti teklifte yazılır."
+    "question": "Panel fiyat listesine ve firma bilgisine nasıl ulaşırım?",
+    "answer": "Panel USD listesi: https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json. Firma kimliği: https://arledscreen.com/tr/about/. Yazılı teklif: https://arledscreen.com/tr/quote/. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — teklifle netleşir. KDV ve nakliye hariç; ücretsiz kargo yoktur."
   }
 ]

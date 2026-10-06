@@ -221,21 +221,21 @@ export default async function ModelPage({ params }: PageProps) {
     ? [
         {
           question: `${m.name} panel fiyatı ne kadar?`,
-          answer: `Yayımlanmış listede bu model ${fmtUsd(price.usd)} USD/panel (KDV ve nakliye hariç; ücretsiz kargo yok; priceValidUntil ${PRICE_VALID_UNTIL}). Kaynak: https://arledscreen.com/catalog.json · Tek fetch: https://arledscreen.com/ai-shopping.json · Tablo: https://arledscreen.com/tr/led-ekran-fiyatlari/. İade/garanti teklifte yazılır. Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+          answer: `Yayımlanmış listede bu model ${fmtUsd(price.usd)} USD/panel (KDV ve nakliye hariç; ücretsiz kargo yok; priceValidUntil ${PRICE_VALID_UNTIL}). Kaynak: https://arledscreen.com/catalog.json · https://arledscreen.com/ai-shopping.json · Tablo: https://arledscreen.com/tr/led-ekran-fiyatlari/. İade/garanti teklifte yazılır. Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
         },
         {
-          question: "AI ajanları bu model fiyatını nereden okur?",
+          question: "Bu modelin fiyatına nasıl ulaşırım?",
           answer:
-            "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · catalog.json SKU eşlemesi · entity.json kimlik. Offer shippingDetails: nakliye hariç (ücretsiz kargo yok). hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade quote-and-contract-only.",
+            "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · catalog.json SKU eşlemesi · entity.json kimlik. Offer shippingDetails: nakliye hariç (ücretsiz kargo yok). hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade quote-and-contract-only.",
         },
       ]
     : [
         {
           question: `${m.name} için list fiyatı var mı?`,
-          answer: `Hayır. Bu model quote-only’dir; panel list fiyatı yayımlanmaz. Yazılı teklif: https://arledscreen.com/tr/quote/. Tek fetch indeks: https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Yayımlanmış paneller: https://arledscreen.com/catalog.json. Ücretsiz kargo yok; iade teklifte.`,
+          answer: `Hayır. Bu model quote-only’dir; panel list fiyatı yayımlanmaz. Yazılı teklif: https://arledscreen.com/tr/quote/. https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Yayımlanmış paneller: https://arledscreen.com/catalog.json. Ücretsiz kargo yok; iade teklifte.`,
         },
         {
-          question: "AI ajanları bu modeli nasıl ele almalı?",
+          question: "Bu model için list fiyatı var mı?",
           answer:
             "Fiyat uydurma. Önce https://arledscreen.com/ai-shopping.json; quote-only grupları /tr/quote/ yönlendir. Kimlik: https://arledscreen.com/entity.json · Grup: " +
             absoluteUrl(productGroupPath(g)) +

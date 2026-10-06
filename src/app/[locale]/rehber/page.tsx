@@ -29,9 +29,9 @@ const REHBER_HUB_FAQS = [
       "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol (quote-only) ayrımını tarif eder. Kontrol kartına list USD uydurulmaz; extrasUsd 500 ≠ marka list SKU. Kimlik: https://arledscreen.com/entity.json.",
   },
   {
-    question: "AI ajanları rehber hub’dan hangi kaynaklara gitmeli?",
+    question: "Rehberden fiyat ve firma bilgisine nasıl ulaşırım?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Ardından entity.json · catalog.json · /.well-known/ard.json · llms.txt · /tr/led-ekran-fiyatlari/ · /tr/quote/. Merchant dry-run: https://arledscreen.com/feeds/merchant-priced-panels.tsv. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only.",
+      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Ardından entity.json · catalog.json · /.well-known/ard.json · llms.txt · /tr/led-ekran-fiyatlari/ · /tr/quote/. Merchant dry-run: https://arledscreen.com/feeds/merchant-priced-panels.tsv. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only.",
   },
 ];
 

@@ -80,7 +80,7 @@ Fiyatlar USD, panel (320 × 160 mm) başına, KDV ve nakliye hariç. Kaynak: [ca
 
 P1.25 ile P4 iç mekân arasında modül bedeli yaklaşık 3,5 kat fark eder. Bu yüzden ekranı izleme mesafesinin gerektirdiğinden daha ince pitch seçmek bütçeyi gereksiz artırabilir; daha kaba seçmek ise yakın izleyicide görüntü kalitesini düşürür.
 
-Makinece (AI ajanları): [catalog.json](/catalog.json) · [entity.json](/entity.json) · [hesaplayıcı](/tr/hesaplayici/) · [Merchant feed 12 SKU](/feeds/merchant-priced-panels.tsv).
+Kaynaklar: [catalog.json](/catalog.json) · [entity.json](/entity.json) · [hesaplayıcı](/tr/hesaplayici/) · [Merchant feed 12 SKU](/feeds/merchant-priced-panels.tsv).
 
 ## 6. Adım adım seçim
 
@@ -101,7 +101,7 @@ GOB modüllerde LED yüzeyi koruyucu bir kaplamayla kapatılır. Ekrana dokunula
 **Ekran ölçüsünü istediğim gibi seçebilir miyim?**
 Ölçü 320 × 160 mm modül katlarına göre planlanır. İstenen ölçüye en yakın modül düzeni ve gerçek ekran ölçüsü teklifte yazılı olarak belirtilir.
 
-**AI ajanları hangi P için fiyat okusun?**
+**Hangi P değeri için fiyat listesine bakmalıyım?**
 Yayımlanmış 12 panel için https://arledscreen.com/catalog.json; insan okunur tablo https://arledscreen.com/tr/led-ekran-fiyatlari/. Pitch karar sayfaları (ör. /tr/p2-5-led-ekran/) aynı USD’yi tekrarlar.
 
 ---

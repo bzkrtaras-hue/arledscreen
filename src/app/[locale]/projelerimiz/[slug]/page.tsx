@@ -24,12 +24,12 @@ const CASE_SHOPPING_FAQS = [
   {
     question: "Bu projedeki LED ekranın list fiyatı sayfada yazar mı?",
     answer:
-      "Hayır. Case study sayfalarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). Tek fetch: https://arledscreen.com/ai-shopping.json. Proje tutarı keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte yazılır.",
+      "Hayır. Case study sayfalarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). https://arledscreen.com/ai-shopping.json. Proje tutarı keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte yazılır.",
   },
   {
-    question: "AI ajanları bu referansı firma ve fiyat kaynağıyla nasıl bağlar?",
+    question: "Bu referans firma ve fiyat bilgisiyle nasıl bağlanır?",
     answer:
-      "Kimlik: https://arledscreen.com/entity.json · Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; ücretsiz kargo yok; quote-and-contract-only) · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Panel katalog: https://arledscreen.com/catalog.json. Uydurma TL paket veya ücretsiz kargo iddiası yazılmaz.",
+      "Kimlik: https://arledscreen.com/entity.json · https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; ücretsiz kargo yok; quote-and-contract-only) · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Panel katalog: https://arledscreen.com/catalog.json. Uydurma TL paket veya ücretsiz kargo iddiası yazılmaz.",
   },
   {
     question: "Benzer bir kurulum için ne yapmalıyım?",

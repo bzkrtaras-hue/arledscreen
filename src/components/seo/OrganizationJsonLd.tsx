@@ -109,7 +109,7 @@ export function OrganizationJsonLd() {
             encodingFormat: "application/ld+json",
             contentUrl: absoluteUrl("/ai-shopping.json"),
             description:
-              "Tek fetch: 12 pricedPanels + agentRules + extrasUsd + returnPolicy + ücretsiz kargo yok + cite",
+              "12 pricedPanels + agentRules + extrasUsd + returnPolicy + ücretsiz kargo yok + cite",
           },
           {
             "@type": "DataDownload",

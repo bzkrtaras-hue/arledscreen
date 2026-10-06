@@ -57,7 +57,7 @@ Yalnızca `PANEL_PRICES` / [catalog.json](/catalog.json) kaynağındaki GOB pane
 
 Standart (kaplamasız) iç/dış SMD panel bandı ve m² örnekleri: [LED ekran fiyatları](/tr/led-ekran-fiyatlari/). Ölçünüze göre yaklaşık toplam: [hesaplayıcı](/tr/hesaplayici/). Nihai tutar keşif sonrası [yazılı teklifle](/tr/quote/) kesinleşir.
 
-Makinece kaynaklar (AI ajanları): [catalog.json](/catalog.json) · [entity.json](/entity.json) · [fiyat hub](/tr/led-ekran-fiyatlari/).
+Kaynaklar: [catalog.json](/catalog.json) · [entity.json](/entity.json) · [fiyat hub](/tr/led-ekran-fiyatlari/).
 
 ## 5. Karıştırılmaması gerekenler
 

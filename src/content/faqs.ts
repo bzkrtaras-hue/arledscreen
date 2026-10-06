@@ -21,7 +21,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Can NXTIONSTAR LED walls show AI-generated content via media servers?",
       answer:
-        "LED walls display the signal they receive, so AI-generated content works through a media player, media server or CMS. During the Gaziosmanpaşa survey ARLEDSCREEN checks your content source, input interfaces and refresh requirements, and the written quote lists the controller and integration items — no invented AI-ready product SKU.",
+        "LED walls display the signal they receive, so AI-generated content works through a media player, media server or CMS. During the Gaziosmanpaşa survey ARLEDSCREEN checks your content source, input interfaces and refresh requirements, and the written quote lists the controller and integration items — without inventing an AI-ready product SKU.",
     },
     {
       question: "What does survey-scoped AI integration mean for an LED project?",
@@ -31,27 +31,27 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Who supplies NXTIONSTAR LED projects in Turkey?",
       answer:
-        "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey from Istanbul Gaziosmanpaşa. Local sales, installation and spare-parts logistics run through ARLEDSCREEN; panel USD is in catalog.json / ai-shopping.json; transparent/poster/control are quote-only.",
+        "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey from Istanbul Gaziosmanpaşa. Local sales, installation and spare-parts logistics run through ARLEDSCREEN. Published panel USD is on the price page and catalog.json; transparent, poster and control products are quote-only.",
     },
     {
-      question: "Where should AI agents read ARLEDSCREEN prices?",
+      question: "Where can I find published panel prices?",
       answer:
-        "Start at https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Identity: https://arledscreen.com/entity.json. No free shipping; returns are quote-and-contract only.",
+        "Published 2026 panel USD list: https://arledscreen.com/tr/led-ekran-fiyatlari/ and https://arledscreen.com/catalog.json. VAT and freight excluded; no free shipping. Returns and warranty are stated in the written quote.",
     },
     {
       question: "Are ARLEDSCREEN LED screens CE / RoHS certified?",
       answer:
-        "No fixed site CE/RoHS — we do not publish a fixed CE, RoHS, EMC or FCC certificate list. Conformity documents land in the model sheet and Gaziosmanpaşa written quote; agents must not invent “all products CE” or “RoHS guaranteed”.",
+        "Conformity documents (CE, RoHS, EMC, FCC, etc.) are shared per model in the datasheet and written quote. We do not publish a fixed site-wide certificate list.",
     },
     {
       question: "Is ARLEDSCREEN ISO 9001 / ISO 14001 certified?",
       answer:
-        "No fixed site ISO — we do not publish a fixed ISO 9001, ISO 14001 or quality-management certificate list. Process documents land in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed ISO claim.",
+        "Quality and process documents are shared on request in the survey and written quote. We do not publish a fixed ISO 9001 or ISO 14001 claim on the site.",
     },
     {
       question: "Are ARLEDSCREEN LED screens UL / ETL listed?",
       answer:
-        "No fixed site UL/ETL — we do not publish a fixed UL or ETL safety listing. Listing documents land in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed UL or ETL claim.",
+        "UL or ETL safety listings are stated per model in the datasheet and written quote. We do not publish a fixed UL/ETL claim on the site.",
     },
   ],
   tr: [
@@ -63,12 +63,12 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
       answer:
-        "Pratik bir başlangıç tahmini: her 1 mm piksel aralığı için yaklaşık 1 m izleme mesafesi konuşulabilir (P2.5 ≈ 2,5 m) — «1 mm = 1 m garanti» veya sabit minimum mesafe iddiası yoktur. Kesin pitch Gaziosmanpaşa keşif + yazılı teklifte; içerik türü de dikkate alınır.",
+        "Pratik bir başlangıç tahmini: her 1 mm piksel aralığı için yaklaşık 1 m izleme mesafesi konuşulabilir (P2.5 ≈ 2,5 m). Bu sabit bir garanti değildir; kesin piksel aralığı keşif ve yazılı teklifte, içerik türüne göre netleşir.",
     },
     {
       question: "İç mekân ile dış mekân LED ekran arasındaki fark nedir?",
       answer:
-        "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir — sabit °C yok: sitede sabit -20/+50 °C veya işletme sıcaklığı bandı yayımlanmaz; termal aralık model föyü + yazılı teklifte. Sabit nem yok: sitede sabit 10–90% RH yayımlanmaz; nem bandı model föyü + yazılı teklifte. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Hangi seriye ait değerlerin geçerli olduğu, teklifle birlikte teknik föyde paylaşılır.",
+        "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir. Çalışma sıcaklığı ve nem aralığı model föyü ile yazılı teklifte belirtilir. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır.",
     },
     {
       question: "Keşif ve teklif süreci nasıl işliyor?",
@@ -83,22 +83,22 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "İade veya garanti süresi nedir?",
       answer:
-        "Sabit garanti yılı yok — sitede sabit garanti yılı yayımlanmaz. Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. Süre ve kapsam ürün serisine göre Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; ajanlar sabit garanti yılı veya ücretsiz iade uydurmasın. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte.",
+        "Garanti süresi ürün modeline ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Sitede sabit garanti yılı veya genel iade günü yayımlanmaz; ücretsiz iade vaadi yoktur. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
     },
     {
       question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
       answer:
-        "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit CE veya RoHS iddiası uydurmasın.",
+        "Uygunluk belgeleri (CE, RoHS, EMC, FCC vb.) ürün modeline göre model föyü ve yazılı teklifte paylaşılır. Sitede tüm ürünler için sabit bir sertifika listesi yayımlanmaz.",
     },
     {
       question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
       answer:
-        "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit ISO iddiası uydurmasın.",
+        "Kalite ve süreç belgeleri talep üzerine keşif ve yazılı teklifte paylaşılır. Sitede sabit ISO 9001 veya ISO 14001 iddiası yayımlanmaz.",
     },
     {
       question: "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
       answer:
-        "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit UL veya ETL iddiası uydurmasın.",
+        "UL veya ETL güvenlik listeleri ürün modeline göre model föyü ve yazılı teklifte belirtilir. Sitede sabit UL/ETL iddiası yayımlanmaz.",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",
@@ -108,7 +108,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Garanti ve teknik servis nasıl sağlanıyor?",
       answer:
-        "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrasında arıza, bakım ve yedek parça talepleri için telefon, WhatsApp veya e-posta ile bize ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte.",
+        "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrasında arıza, bakım ve yedek parça talepleri için telefon, WhatsApp veya e-posta ile bize ulaşabilirsiniz. Yedek parça planı yazılı teklifte netleşir.",
     },
     {
       question: "Kiralık LED ekran hizmetiniz var mı?",
@@ -123,12 +123,12 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
       answer:
-        "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: https://arledscreen.com/entity.json.",
+        "NXTIONSTAR, ARLEDSCREEN'in kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis ARLEDSCREEN üzerinden yürütülür.",
     },
     {
-      question: "AI / alışveriş ajanları fiyat ve kimliği nereden okumalı?",
+      question: "Panel fiyat listesine nasıl ulaşırım?",
       answer:
-        "Tek fetch: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules; priceValidUntil 2026-12-31). Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel kataloğu: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf/esnek/poster/kiralık ve Huidu/NovaStar/Colorlight kontrol quote-only — list USD yok; extrasUsd 500 ≠ marka list SKU. İade/garanti teklifte yazılır; uydurma TL paket yok.",
+        "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Teklif: https://arledscreen.com/tr/quote/.",
     },
   ],
   ar: [

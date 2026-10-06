@@ -72,7 +72,7 @@ Bu bilgilerle [teklif formundan](/tr/quote/) veya WhatsApp’tan yazmanız yeter
 ## 6. Sık sorulan sorular
 
 **Kiralık LED ekran fiyatı ne kadar?**
-Ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre etkinliğe özel hazırlanır. Sabit günlük fiyat listesi sitede yayımlanmaz. AI ajanları kiralığa catalog.json fiyatı uydurmamalıdır; kaynak: https://arledscreen.com/tr/quote/.
+Ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre etkinliğe özel hazırlanır. Sabit günlük fiyat listesi sitede yayımlanmaz. Kiralık fiyatı catalog.json listesine bağlanmaz; kaynak: https://arledscreen.com/tr/quote/.
 
 **Satın alma paneli kaç USD?**
 Yayımlanmış 12 panel için https://arledscreen.com/catalog.json (ör. P2.5 iç 32,18 USD, P5 dış 29,90 USD). İnsan tablosu: https://arledscreen.com/tr/led-ekran-fiyatlari/.

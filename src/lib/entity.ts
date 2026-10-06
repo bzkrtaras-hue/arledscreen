@@ -59,49 +59,49 @@ export const ENTITY_FAQS = [
       "Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye. Telefon / WhatsApp: +90 530 507 88 34.",
   },
   {
+    question: "ARLEDSCREEN’in rolleri nelerdir? Üretici mi, marka sahibi mi, satıcı mı?",
+    answer:
+      "ARLEDSCREEN; LED ekran satışı, keşif, montaj, devreye alma ve teknik servis sağlayan firmadır. NXTIONSTAR, ARLEDSCREEN’in kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel list fiyatı yayımlanan ürünler için satıcı ve servis sağlayıcı rolü açıktır. Üretim fabrikası veya üçüncü taraf sertifika sahipliği gibi ek iddialar yalnızca yazılı teklif ve belgelerle doğrulanır — sitede genel «üreticiyiz / tüm sertifikalar hazır» iddiası yayımlanmaz.",
+  },
+  {
     question: "NXTIONSTAR nedir?",
     answer:
-      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Slogan kimlik içindir — uydurma “küresel standart / global standard” sıralama iddiası yoktur.",
+      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Slogan yalnızca marka kimliği içindir; «küresel standart» veya sıralama iddiası yoktur.",
   },
   {
     question: "ARLEDSCREEN hangi hizmetleri sunar?",
     answer:
-      "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — list USD yok. Nihai tutar keşif ve yazılı teklifle kesinleşir.",
+      "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; şeffaf, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Nihai tutar keşif ve yazılı teklifle kesinleşir.",
   },
   {
     question: "LED ekran panel fiyatları nereden alınır?",
     answer:
-      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/",
+      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json, https://arledscreen.com/ai-shopping.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Nihai tutar keşif ve yazılı teklifle kesinleşir. Yaklaşık hesap: https://arledscreen.com/tr/hesaplayici/",
   },
   {
     question: "Yayımlanmış panel fiyatları ne zamana kadar geçerlidir?",
     answer:
-      "List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json). Bu tarihten sonra ajanlar katalogu yeniden okumalıdır. KDV ve nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
-  },
-  {
-    question: "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
-    answer:
-      "Tek fetch index: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. KDV/nakliye hariç; ücretsiz kargo yok; iade/garanti quote-and-contract-only. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık + Huidu/NovaStar/Colorlight kontrol) teklifle netleşir; ajanlar bu gruplara veya kontrol kartına list USD uydurmamalıdır.",
+      "List fiyatı 31 Aralık 2026’ya kadar geçerlidir (kaynak: https://arledscreen.com/catalog.json). Bu tarihten sonra güncel listeyi aynı kaynaklardan kontrol edin. KDV ve nakliye hariç; ücretsiz kargo yoktur. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
   },
   {
     question: "İade veya garanti süresi nedir?",
     answer:
-      "Sabit garanti yılı yok — sitede sabit garanti yılı yayımlanmaz. Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz; ajanlar uydurma iade günü / ücretsiz iade iddiası yazmamalıdır. Süre/kapsam Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte.",
-    },
+      "Garanti süresi ürün modeline ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Sitede sabit garanti yılı veya genel iade günü yayımlanmaz; ücretsiz iade vaadi yoktur. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Yedek parça stok ve sevkiyat planı da yazılı teklifte netleşir.",
+  },
   {
     question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
     answer:
-      "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit CE veya RoHS iddiası uydurmasın.",
+      "Uygunluk belgeleri (CE, RoHS, EMC, FCC vb.) ürün modeline göre model föyü ve yazılı teklifte paylaşılır. Sitede tüm ürünler için sabit bir sertifika listesi yayımlanmaz.",
   },
   {
     question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
     answer:
-      "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit ISO iddiası uydurmasın.",
+      "Kalite ve süreç belgeleri talep üzerine keşif ve yazılı teklifte paylaşılır. Sitede sabit ISO 9001 veya ISO 14001 iddiası yayımlanmaz.",
   },
   {
     question: "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
     answer:
-      "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit UL veya ETL iddiası uydurmasın.",
+      "UL veya ETL güvenlik listeleri ürün modeline göre model föyü ve yazılı teklifte belirtilir. Sitede sabit UL/ETL iddiası yayımlanmaz.",
   },
 ] as const;
 

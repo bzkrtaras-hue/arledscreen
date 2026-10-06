@@ -38,6 +38,18 @@ const FORBIDDEN = [
   /garanti\s*\d+\s*yıl/i,
 ];
 
+/** Customer-visible FAQ must not address AI agents / invent instructions. */
+const AGENT_JARGON = [
+  /\bajanlar\b/i,
+  /uydurmasın/i,
+  /Tek fetch/i,
+  /ajan keşif/i,
+  /AI\s*\/\s*alışveriş ajan/i,
+  /AI ajanları/i,
+  /agents must not/i,
+  /ajan index/i,
+];
+
 const PRICE_HINT = /catalog\.json|led-ekran-fiyatlari/;
 const AI_SHOPPING_HINT = /ai-shopping\.json/;
 
@@ -86,6 +98,11 @@ function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShoppi
     if (/ücretsiz kargo yok/i.test(ans) || /quote-and-contract/i.test(ans)) honestyOk = true;
     for (const re of FORBIDDEN) {
       if (re.test(ans) || re.test(name)) errors.push(`${rel}: forbidden claim in FAQ`);
+    }
+    for (const re of AGENT_JARGON) {
+      if (re.test(ans) || re.test(name)) {
+        errors.push(`${rel}: customer FAQ must not contain agent jargon (${re}) in "${name.slice(0, 50)}"`);
+      }
     }
   }
   if (requirePriceHint && !priceOk) {

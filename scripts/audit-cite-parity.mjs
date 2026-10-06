@@ -6882,6 +6882,15 @@ const faqBody = publicFaq.slice(faqStart, faqEnd > faqStart ? faqEnd : faqStart 
 if (/apron|meetup|jamboard|valley pan|neat frame|rally bar/i.test(faqBody)) {
   errors.push("ENTITY_FAQS must not contain blind-test product negatives (apron/Meetup/Jamboard)");
 }
+if (/ajanlar|uydurmasın|Tek fetch|ajan keşif|AI\s*\/\s*alışveriş ajan|AI ajanları/i.test(faqBody)) {
+  errors.push("ENTITY_FAQS must be customer-facing — no agent jargon (ajanlar/Tek fetch/uydurmasın)");
+}
+for (const rel of ["src/content/faqs.ts", "src/content/sss.json"]) {
+  const body = read(rel);
+  if (/ajanlar|uydurmasın|Tek fetch|ajan keşif|AI\s*\/\s*alışveriş ajan|AI ajanları/i.test(body)) {
+    errors.push(`${rel}: customer FAQ must not contain agent jargon`);
+  }
+}
 
 if (errors.length) {
   console.error(`audit-cite-parity: FAIL (${errors.length})`);

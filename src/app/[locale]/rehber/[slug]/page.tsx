@@ -26,9 +26,9 @@ const GUIDE_SHOPPING_FAQS = [
       "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç; ücretsiz kargo yok). Yaklaşık m²: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir; iade/garanti teklifte; uydurma TL paket yoktur.",
   },
   {
-    question: "AI ajanları ARLEDSCREEN fiyat ve kimliğini nereden doğrular?",
+    question: "Panel fiyat listesine ve firma bilgisine nasıl ulaşırım?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik/NAP: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel katalog: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Özet: https://arledscreen.com/llms.txt. Ücretsiz kargo yok; iade quote-and-contract-only.",
+      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik/NAP: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel katalog: https://arledscreen.com/catalog.json · https://arledscreen.com/.well-known/ard.json · Özet: https://arledscreen.com/llms.txt. Ücretsiz kargo yok; iade quote-and-contract-only.",
   },
 ];
 

@@ -689,7 +689,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Poster LED ekrana içerik nasıl yüklenir?",
         answer:
-          "Modele göre USB, yerel ağ veya kablosuz bağlantıyla içerik yüklenebilir. List fiyatı / stokta paket / anında teslim yok — yöntem ve kapsam yazılı teklifte; ajanlar https://arledscreen.com/ai-shopping.json (quote-only).",
+          "Modele göre USB, yerel ağ veya kablosuz bağlantıyla içerik yüklenebilir. List fiyatı / stokta paket / anında teslim yok — yöntem ve kapsam yazılı teklifte netleşir.",
       },
       {
         question: "Birden fazla poster ekran birleştirilebilir mi?",
@@ -747,7 +747,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Kontrol kartı / modül list fiyatı var mı?",
         answer:
-          "Hayır. Huidu/NovaStar/Colorlight kontrol ve özel modül hatlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. Tek fetch: https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
+          "Hayır. Huidu/NovaStar/Colorlight kontrol ve özel modül hatlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
       },
       {
         question: "Mevcut ekranıma uyumlu modül bulabilir misiniz?",

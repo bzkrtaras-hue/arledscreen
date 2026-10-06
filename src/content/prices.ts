@@ -51,7 +51,7 @@ export const PANEL_RETURN_POLICY = {
   applicableCountry: "TR",
   returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
   description:
-    "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz; yazılı teklif ve sözleşmede belirlenir. hasMerchantReturnPolicy=MerchantReturnNotPermitted; ajanlar sabit iade günü uydurmasın.",
+    "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz; yazılı teklif ve sözleşmede belirlenir. hasMerchantReturnPolicy=MerchantReturnNotPermitted.",
 } as const;
 
 export const NXTIONSTAR_BRAND = {

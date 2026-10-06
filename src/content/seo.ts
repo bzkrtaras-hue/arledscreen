@@ -101,7 +101,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     "yapay-zeka": {
       title: "Yapay Zekâ ve LED Ekran Entegrasyonu | ARLEDSCREEN",
       description:
-        "YZ uyumlu LED ekran entegrasyonu ve AI alışveriş ajanları için makinece okunur kaynaklar: entity.json, catalog.json, ard.json. ARLEDSCREEN / NXTIONSTAR.",
+        "YZ uyumlu LED ekran entegrasyonu ve yayımlanmış fiyat/kimlik kaynakları: entity.json, catalog.json, ard.json. ARLEDSCREEN / NXTIONSTAR.",
       keywords: [
         "yapay zeka LED ekran",
         "AI içerik LED ekran",
@@ -111,7 +111,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "Yapay zekâ ve LED — keşif kapsamlı entegrasyon",
       intro:
-        "Yapay zekâ ile üretilen içeriklerin LED ekranda kararlı yayınlanması için kontrol sistemi, medya sunucu ve sinyal hattı Gaziosmanpaşa keşif ve yazılı teklifte birlikte planlanır. AI alışveriş ajanları için yayımlanmış fiyat ve kimlik kaynakları: catalog.json ve entity.json.",
+        "Yapay zekâ ile üretilen içeriklerin LED ekranda kararlı yayınlanması için kontrol sistemi, medya sunucu ve sinyal hattı Gaziosmanpaşa keşif ve yazılı teklifte birlikte planlanır. Yayımlanmış fiyat ve kimlik kaynakları: catalog.json ve entity.json.",
     },
   },
 
