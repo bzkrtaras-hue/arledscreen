@@ -4840,6 +4840,20 @@ if (
   errors.push("blind prompt #369 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chimney cricket flashing yok");
 }
 
+const pBlind370 = PROMPTS.find((x) => x.id === 370);
+if (!pBlind370 || !/Planar UltraRes|Planar UltraRes X/i.test(pBlind370.q)) {
+  errors.push("blind prompt #370 must cover sabit Planar UltraRes invent");
+}
+if (
+  pBlind370 &&
+  (!pBlind370.mustSay?.includes("yazılı teklif") ||
+    !pBlind370.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind370.mustSay?.includes("sabit Planar UltraRes yok"))
+) {
+  errors.push("blind prompt #370 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Planar UltraRes yok");
+}
+
+
 
 
 

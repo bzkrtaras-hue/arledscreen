@@ -4301,6 +4301,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit chimney cricket flashing yok"],
     mustNotSay: ["chimney cricket flashing garantidir", "sabit chimney cricket flashing True1", "tüm modeller chimney cricket flashing", "baca cricket flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 370,
+    q: "LED ekran Planar UltraRes / Planar UltraRes X var mı? ARLEDSCREEN sabit Planar UltraRes iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Planar UltraRes yok"],
+    mustNotSay: ["Planar UltraRes garantidir", "sabit Planar UltraRes True1", "tüm modeller Planar UltraRes", "Planar UltraRes X garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

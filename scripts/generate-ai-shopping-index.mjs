@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 369 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 370 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -485,6 +485,7 @@ const doc = {
     "Sabit parapet coping cap / parapet kapak flaşör site iddiası yok — parapet coping cap kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit parapet coping cap uydurmasın.",
     "Sabit Newline NT Series / Newline NT Touch site iddiası yok — Newline NT Series kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Newline NT Series uydurmasın.",
     "Sabit chimney cricket flashing / baca cricket flaşör site iddiası yok — chimney cricket flashing kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit chimney cricket flashing uydurmasın.",
+    "Sabit Planar UltraRes / Planar UltraRes X site iddiası yok — Planar UltraRes kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Planar UltraRes uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,
