@@ -1817,6 +1817,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit RS-485 yok"],
     mustNotSay: ["RS-485 garantidir", "sabit RS-485 True1", "tüm modeller RS-485", "seri bus garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 163,
+    q: "LED ekran bird spike / kuş dikeni var mı? ARLEDSCREEN sabit bird spike iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit bird spike yok"],
+    mustNotSay: ["bird spike garantidir", "sabit bird spike True1", "tüm modeller bird spike", "kuş dikeni garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -2149,6 +2149,20 @@ if (
   errors.push("blind prompt #162 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit RS-485 yok");
 }
 
+const pBlind163 = PROMPTS.find((x) => x.id === 163);
+if (!pBlind163 || !/bird spike|kuş dikeni/i.test(pBlind163.q)) {
+  errors.push("blind prompt #163 must cover sabit bird spike invent");
+}
+if (
+  pBlind163 &&
+  (!pBlind163.mustSay?.includes("yazılı teklif") ||
+    !pBlind163.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind163.mustSay?.includes("sabit bird spike yok"))
+) {
+  errors.push("blind prompt #163 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit bird spike yok");
+}
+
+
 
 
 
