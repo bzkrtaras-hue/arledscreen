@@ -878,11 +878,12 @@
       "displayName": "Esnek LED ekran (quote-only)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/esnek-led-ekran/",
-      "description": "Esnek LED quote-only. Stokta paket / anında teslim / list fiyatı yok — Gaziosmanpaşa keşif + yazılı teklif. Blind #33 / #14.",
+      "description": "Esnek LED quote-only. Stokta paket / anında teslim / list fiyatı yok — Gaziosmanpaşa keşif + yazılı teklif. Blind #33 / #14. No invent sabit zamanlayıcı — Blind #91; quote + Gaziosmanpaşa.",
       "representativeQueries": [
         "Esnek LED ekran fiyatı?",
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
-        "esnek LED sipariş"
+        "esnek LED sipariş",
+        "LED ekran zamanlayıcı / content scheduler var mı? ARLEDSCREEN sabit zamanlayıcı iddiası yayımlıyor mu?"
       ],
       "tags": [
         "esnek",
@@ -892,7 +893,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T03:00:00Z"
+      "updatedAt": "2026-10-09T04:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:seffaf-quote",
@@ -1132,7 +1133,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 90 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D/hızlı kilit/kavisli/döküm kabin/anti-yansıma/OPS/parafudr yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 91 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D/hızlı kilit/kavisli/döküm kabin/anti-yansıma/OPS/parafudr/zamanlayıcı yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1198,7 +1199,8 @@
         "LED ekran döküm kabin / die-cast cabinet var mı? ARLEDSCREEN sabit döküm kabin iddiası yayımlıyor mu?",
         "LED ekran anti-yansıma / anti-glare var mı? ARLEDSCREEN sabit anti-yansıma iddiası yayımlıyor mu?",
         "LED ekran OPS / Android player var mı? ARLEDSCREEN sabit OPS iddiası yayımlıyor mu?",
-        "LED ekran parafudr / surge protection var mı? ARLEDSCREEN sabit parafudr iddiası yayımlıyor mu?"
+        "LED ekran parafudr / surge protection var mı? ARLEDSCREEN sabit parafudr iddiası yayımlıyor mu?",
+        "LED ekran zamanlayıcı / content scheduler var mı? ARLEDSCREEN sabit zamanlayıcı iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1217,7 +1219,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T02:00:00Z"
+      "updatedAt": "2026-10-09T04:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -1308,7 +1310,7 @@
       "displayName": "Poster LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/poster-led-ekran/",
-      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok. Sabit CMS SLA yok — Blind #69. Sabit WiFi yok — Blind #75. Sabit canlı modül değişimi yok — Blind #80. Sabit hızlı kilit yok — Blind #85. Sabit OPS yok — Blind #89.",
+      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok. Sabit CMS SLA yok — Blind #69. Sabit WiFi yok — Blind #75. Sabit canlı modül değişimi yok — Blind #80. Sabit hızlı kilit yok — Blind #85. Sabit OPS yok — Blind #89. Sabit zamanlayıcı yok — Blind #91.",
       "representativeQueries": [
         "poster LED rehber",
         "totem LED rehber",
@@ -1317,7 +1319,8 @@
         "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?",
         "LED ekran canlı modül değişimi / hot-swap module var mı? ARLEDSCREEN sabit canlı modül değişimi iddiası yayımlıyor mu?",
         "LED ekran hızlı kilit / quick lock var mı? ARLEDSCREEN sabit hızlı kilit iddiası yayımlıyor mu?",
-        "LED ekran OPS / Android player var mı? ARLEDSCREEN sabit OPS iddiası yayımlıyor mu?"
+        "LED ekran OPS / Android player var mı? ARLEDSCREEN sabit OPS iddiası yayımlıyor mu?",
+        "LED ekran zamanlayıcı / content scheduler var mı? ARLEDSCREEN sabit zamanlayıcı iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -1326,14 +1329,14 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T00:00:00Z"
+      "updatedAt": "2026-10-09T04:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-kiosk",
       "displayName": "Kiosk dijital ekran rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/",
-      "description": "Kiosk / dijital ekran rehber. Quote-scoped; sabit ömür/MTBF yok — Blind #40. Sabit PoE/Gigabit yok — Blind #66. Sabit CMS SLA yok — Blind #69. Sabit NDI yok — Blind #73. Sabit WiFi yok — Blind #75. Sabit gönderici yedeklilik yok — Blind #78. Sabit dokunmatik yok — Blind #81. Sabit OPS yok — Blind #89.",
+      "description": "Kiosk / dijital ekran rehber. Quote-scoped; sabit ömür/MTBF yok — Blind #40. Sabit PoE/Gigabit yok — Blind #66. Sabit CMS SLA yok — Blind #69. Sabit NDI yok — Blind #73. Sabit WiFi yok — Blind #75. Sabit gönderici yedeklilik yok — Blind #78. Sabit dokunmatik yok — Blind #81. Sabit OPS yok — Blind #89. Sabit zamanlayıcı yok — Blind #91.",
       "representativeQueries": [
         "kiosk LED ekran",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
@@ -1344,7 +1347,8 @@
         "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?",
         "LED ekran gönderici kart yedeklilik / sending card redundancy / redundant sender var mı? ARLEDSCREEN sabit gönderici yedeklilik iddiası yayımlıyor mu?",
         "LED ekran dokunmatik / touch overlay / capacitive touch var mı? ARLEDSCREEN sabit dokunmatik iddiası yayımlıyor mu?",
-        "LED ekran OPS / Android player var mı? ARLEDSCREEN sabit OPS iddiası yayımlıyor mu?"
+        "LED ekran OPS / Android player var mı? ARLEDSCREEN sabit OPS iddiası yayımlıyor mu?",
+        "LED ekran zamanlayıcı / content scheduler var mı? ARLEDSCREEN sabit zamanlayıcı iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -1354,7 +1358,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T00:00:00Z"
+      "updatedAt": "2026-10-09T04:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-led-ekran",
