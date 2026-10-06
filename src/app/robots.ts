@@ -37,7 +37,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/" as const,
       })),
     ],
-    host: "https://arledscreen.com",
+    // Bing Host directive prefers bare hostname (no scheme).
+    host: "arledscreen.com",
     sitemap: absoluteUrl("/sitemap.xml"),
   };
 }

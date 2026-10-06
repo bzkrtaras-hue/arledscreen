@@ -107,6 +107,17 @@ export default async function ProductsPage({ params }: PageProps) {
                   {seo.h1 ?? pageCopy.title}
                 </h1>
                 <p className="mt-4 max-w-xl text-pretty text-base leading-[1.75] text-ink-soft">{seo.intro ?? pageCopy.description}</p>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
+                  Panel list fiyatı:{" "}
+                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                    ai-shopping.json
+                  </a>{" "}
+                  <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD) ve{" "}
+                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                    catalog.json
+                  </a>
+                  . KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only.
+                </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link href="/tr/quote/" className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600">
                     <FileText className="h-4 w-4" aria-hidden />

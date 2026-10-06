@@ -48,3 +48,16 @@ if (!fs.existsSync(routesJson)) {
 } else {
   console.log("postbuild: out/_routes.json present (Function scoped to /)");
 }
+
+// robots.txt served by functions/robots.txt.js (no-store, bare Host).
+const robotsOut = path.join("out", "robots.txt");
+if (fs.existsSync(robotsOut)) {
+  fs.rmSync(robotsOut);
+  console.log("postbuild: removed out/robots.txt — Functions/robots.txt.js serves live");
+}
+const routesLive = JSON.parse(fs.readFileSync(path.join("out", "_routes.json"), "utf8"));
+if (!(routesLive.include || []).includes("/robots.txt")) {
+  console.warn("postbuild: WARNING _routes.json include missing /robots.txt");
+} else {
+  console.log("postbuild: robots.txt → Pages Function (include /, /robots.txt)");
+}

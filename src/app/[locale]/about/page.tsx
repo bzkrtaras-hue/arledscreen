@@ -148,7 +148,25 @@ export default async function AboutPage({ params }: PageProps) {
                   llms.txt
                 </a>
               </li>
+              <li>
+                <a href="https://arledscreen.com/entity.json" className="font-semibold text-cyan hover:underline">
+                  entity.json
+                </a>
+              </li>
+              <li>
+                <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                  ai-shopping.json
+                </a>
+              </li>
             </ul>
+            <p className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-muted">
+              Yayımlanmış 12 panel USD:{" "}
+              <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                ai-shopping.json
+              </a>{" "}
+              <code className="text-xs">pricedPanels</code> (ör. P1.25 GOB 95.88 USD). KDV/nakliye
+              hariç; ücretsiz kargo yok. Cite kaynağı: entity.json.
+            </p>
           </Section>
           <Section eyebrow="Neden ARLEDSCREEN?" title="Doğrulanabilir bilgiler" className="bg-surface/60 prose-seo">
             <TrustFacts />
