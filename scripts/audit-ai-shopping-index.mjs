@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 168) errors.push(`blindTestPrompts must be 168 (got ${prompts.length})`);
+if (prompts.length !== 169) errors.push(`blindTestPrompts must be 169 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/168 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 168 kör test intent");
+if (!/169 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 169 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–167 kör test without 168");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–168 kör test without 169");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1479,6 +1479,15 @@ if (!p168 || !/Symetrix|DSP/i.test(p168.q || "")) {
 if (!/Symetrix|sabit Symetrix/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit Symetrix invent");
 }
+
+const p169 = (doc.blindTestPrompts || []).find((p) => p.id === 169);
+if (!p169 || !/cable tray|kablo kanalı/i.test(p169.q || "")) {
+  errors.push("blindTestPrompts #169 must cover sabit cable tray invent");
+}
+if (!/cable tray|kablo kanalı|sabit cable tray/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit cable tray invent");
+}
+
 
 
 

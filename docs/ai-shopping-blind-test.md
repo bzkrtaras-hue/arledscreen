@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 220: blind #168 sabit Symetrix invent)  
+Son güncelleme: 2026-10-06 (Gün 221: blind #169 sabit cable tray invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 168 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 169 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 168 prompt (alışveriş + varlık)
+## 169 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -192,6 +192,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 166 | LED ekran Shure / mikrofon var mı? ARLEDSCREEN sabit Shure iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Shure yok** | Shure garantidir / sabit Shure True1 / tüm modeller Shure / mikrofon garantidir |
 | 167 | LED ekran snow load / kar yükü var mı? ARLEDSCREEN sabit snow load iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit snow load yok** | snow load garantidir / sabit snow load True1 / tüm modeller snow load / kar yükü garantidir |
 | 168 | LED ekran Symetrix / DSP var mı? ARLEDSCREEN sabit Symetrix iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Symetrix yok** | Symetrix garantidir / sabit Symetrix True1 / tüm modeller Symetrix / Symetrix DSP garantidir |
+| 169 | LED ekran cable tray / kablo kanalı var mı? ARLEDSCREEN sabit cable tray iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cable tray yok** | cable tray garantidir / sabit cable tray True1 / tüm modeller cable tray / kablo kanalı garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -202,7 +203,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 504. Hedef tur 1 ≥ 252/504; tur 2 (Point C sonrası) ≥ 378/504.
+**Tur skoru** = toplam / 507. Hedef tur 1 ≥ 254/507; tur 2 (Point C sonrası) ≥ 381/507.
 
 ### Canlı tur kayıt şablonu
 

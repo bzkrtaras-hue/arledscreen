@@ -1889,6 +1889,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Symetrix yok"],
     mustNotSay: ["Symetrix garantidir", "sabit Symetrix True1", "tüm modeller Symetrix", "Symetrix DSP garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 169,
+    q: "LED ekran cable tray / kablo kanalı var mı? ARLEDSCREEN sabit cable tray iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cable tray yok"],
+    mustNotSay: ["cable tray garantidir", "sabit cable tray True1", "tüm modeller cable tray", "kablo kanalı garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

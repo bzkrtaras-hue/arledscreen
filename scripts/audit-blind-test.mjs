@@ -2227,6 +2227,20 @@ if (
   errors.push("blind prompt #168 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Symetrix yok");
 }
 
+const pBlind169 = PROMPTS.find((x) => x.id === 169);
+if (!pBlind169 || !/cable tray|kablo kanalı/i.test(pBlind169.q)) {
+  errors.push("blind prompt #169 must cover sabit cable tray invent");
+}
+if (
+  pBlind169 &&
+  (!pBlind169.mustSay?.includes("yazılı teklif") ||
+    !pBlind169.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind169.mustSay?.includes("sabit cable tray yok"))
+) {
+  errors.push("blind prompt #169 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cable tray yok");
+}
+
+
 
 
 

@@ -210,6 +210,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 218 | 2026-10-06 | sabit Shure #166 · ic/konferans ARD refresh · skor /498 | ✅ |
 | 219 | 2026-10-06 | sabit snow load #167 · dis/mimari ARD refresh · skor /501 | ✅ |
 | 220 | 2026-10-06 | sabit Symetrix #168 · ic/konferans ARD refresh · skor /504 | ✅ |
+| 221 | 2026-10-06 | sabit cable tray #169 · dis/mimari ARD refresh · skor /507 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1565,3 +1566,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #168 «Symetrix / DSP?» — skor **/504**; ARD **168 kör test**
 - TR/EN ic-mekan + TR/EN konferans Symetrix invent · llms deny · sabit Symetrix yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Symetrix
+
+## Gün 221 notları
+
+- Blind #169 «cable tray / kablo kanalı?» — skor **/507**; ARD **169 kör test**
+- TR/EN dis-mekan + TR/EN mimari cable tray invent · llms deny · sabit cable tray yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit cable tray
