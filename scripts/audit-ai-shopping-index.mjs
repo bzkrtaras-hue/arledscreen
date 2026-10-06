@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 179) errors.push(`blindTestPrompts must be 179 (got ${prompts.length})`);
+if (prompts.length !== 180) errors.push(`blindTestPrompts must be 180 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/179 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 179 kör test intent");
+if (!/180 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 180 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173|174|175|176|177|178) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–178 kör test without 179");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173|174|175|176|177|178|179) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–179 kör test without 180");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1567,6 +1567,15 @@ if (!p179 || !/seismic brace|sismik destek/i.test(p179.q || "")) {
 if (!/seismic brace|sismik destek|sabit seismic brace/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit seismic brace invent");
 }
+
+const p180 = (doc.blindTestPrompts || []).find((p) => p.id === 180);
+if (!p180 || !/AirMedia|kablosuz paylaşım/i.test(p180.q || "")) {
+  errors.push("blindTestPrompts #180 must cover sabit AirMedia invent");
+}
+if (!/AirMedia|kablosuz paylaşım|sabit AirMedia/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit AirMedia invent");
+}
+
 
 
 

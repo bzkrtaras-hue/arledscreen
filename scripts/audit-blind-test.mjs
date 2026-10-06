@@ -2370,6 +2370,20 @@ if (
   errors.push("blind prompt #179 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit seismic brace yok");
 }
 
+const pBlind180 = PROMPTS.find((x) => x.id === 180);
+if (!pBlind180 || !/AirMedia|kablosuz paylaşım/i.test(pBlind180.q)) {
+  errors.push("blind prompt #180 must cover sabit AirMedia invent");
+}
+if (
+  pBlind180 &&
+  (!pBlind180.mustSay?.includes("yazılı teklif") ||
+    !pBlind180.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind180.mustSay?.includes("sabit AirMedia yok"))
+) {
+  errors.push("blind prompt #180 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit AirMedia yok");
+}
+
+
 
 
 

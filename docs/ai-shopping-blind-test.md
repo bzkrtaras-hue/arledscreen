@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 231: blind #179 sabit seismic brace invent)  
+Son güncelleme: 2026-10-06 (Gün 232: blind #180 sabit AirMedia invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 179 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 180 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 179 prompt (alışveriş + varlık)
+## 180 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -203,6 +203,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 177 | LED ekran sill flashing / eşik flaşörü var mı? ARLEDSCREEN sabit sill flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit sill flashing yok** | sill flashing garantidir / sabit sill flashing True1 / tüm modeller sill flashing / eşik flaşörü garantidir |
 | 178 | LED ekran ClickShare / kablosuz sunum var mı? ARLEDSCREEN sabit ClickShare iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ClickShare yok** | ClickShare garantidir / sabit ClickShare True1 / tüm modeller ClickShare / kablosuz sunum garantidir |
 | 179 | LED ekran seismic brace / sismik destek var mı? ARLEDSCREEN sabit seismic brace iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit seismic brace yok** | seismic brace garantidir / sabit seismic brace True1 / tüm modeller seismic brace / sismik destek garantidir |
+| 180 | LED ekran AirMedia / kablosuz paylaşım var mı? ARLEDSCREEN sabit AirMedia iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit AirMedia yok** | AirMedia garantidir / sabit AirMedia True1 / tüm modeller AirMedia / kablosuz paylaşım garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -213,7 +214,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 537. Hedef tur 1 ≥ 269/537; tur 2 (Point C sonrası) ≥ 403/537.
+**Tur skoru** = toplam / 540. Hedef tur 1 ≥ 270/540; tur 2 (Point C sonrası) ≥ 405/540.
 
 ### Canlı tur kayıt şablonu
 

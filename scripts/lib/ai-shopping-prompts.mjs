@@ -2021,6 +2021,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit seismic brace yok"],
     mustNotSay: ["seismic brace garantidir", "sabit seismic brace True1", "tüm modeller seismic brace", "sismik destek garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 180,
+    q: "LED ekran AirMedia / kablosuz paylaşım var mı? ARLEDSCREEN sabit AirMedia iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit AirMedia yok"],
+    mustNotSay: ["AirMedia garantidir", "sabit AirMedia True1", "tüm modeller AirMedia", "kablosuz paylaşım garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
