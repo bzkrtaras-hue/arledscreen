@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 124) errors.push(`blindTestPrompts must be 124 (got ${prompts.length})`);
+if (prompts.length !== 125) errors.push(`blindTestPrompts must be 125 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/124 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 124 kör test intent");
+if (!/125 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 125 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–123 kör test without 124");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–124 kör test without 125");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1107,6 +1107,16 @@ if (!p124 || !/video processor|video işlemci/i.test(p124.q || "")) {
 }
 if (!/video processor|video işlemci|sabit video processor/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit video processor invent");
+}
+
+
+// Day 177: sabit truss clamp / truss kelepçe invent
+const p125 = (doc.blindTestPrompts || []).find((p) => p.id === 125);
+if (!p125 || !/truss clamp|truss kelepçe/i.test(p125.q || "")) {
+  errors.push("blindTestPrompts #125 must cover sabit truss clamp invent");
+}
+if (!/truss clamp|truss kelepçe|sabit truss clamp/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit truss clamp invent");
 }
 
 // Day 76: agentRules full disambiguation

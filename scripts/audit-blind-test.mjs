@@ -1643,6 +1643,20 @@ if (
   errors.push("blind prompt #124 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit video processor yok");
 }
 
+
+const pBlind125 = PROMPTS.find((x) => x.id === 125);
+if (!pBlind125 || !/truss clamp|truss kelepçe/i.test(pBlind125.q)) {
+  errors.push("blind prompt #125 must cover sabit truss clamp invent");
+}
+if (
+  pBlind125 &&
+  (!pBlind125.mustSay?.includes("yazılı teklif") ||
+    !pBlind125.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind125.mustSay?.includes("sabit truss clamp yok"))
+) {
+  errors.push("blind prompt #125 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit truss clamp yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

@@ -166,6 +166,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 174 | 2026-10-06 | sabit EDID #122 · ic/konferans ARD refresh · skor /366 | ✅ |
 | 175 | 2026-10-06 | sabit HDBaseT #123 · dis/mimari ARD refresh · skor /369 | ✅ |
 | 176 | 2026-10-06 | sabit video processor #124 · ic/konferans ARD refresh · skor /372 | ✅ |
+| 177 | 2026-10-06 | sabit truss clamp #125 · dis/mimari ARD refresh · skor /375 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1235,4 +1236,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans video processor invent · llms deny · sabit video processor yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit video processor
 - skor hedef Tur 1 ≥ 186/372 · Tur 2 ≥ 279/372
+
+## Gün 177 notları
+
+- Blind #125 «truss clamp / truss kelepçe?» — skor **/375**; ARD **125 kör test**
+- TR/EN dis-mekan + TR/EN mimari truss clamp invent · llms deny · sabit truss clamp yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit truss clamp
+- skor hedef Tur 1 ≥ 188/375 · Tur 2 ≥ 282/375
 

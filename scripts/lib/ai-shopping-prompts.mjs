@@ -1361,6 +1361,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit video processor yok"],
     mustNotSay: ["video processor garantidir", "sabit video işlemci", "tüm modeller video processor", "video işlemci garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 125,
+    q: "LED ekran truss clamp / truss kelepçe var mı? ARLEDSCREEN sabit truss clamp iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit truss clamp yok"],
+    mustNotSay: ["truss clamp garantidir", "sabit truss kelepçe", "tüm modeller truss clamp", "truss kelepçe garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
