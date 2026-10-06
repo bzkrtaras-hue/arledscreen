@@ -68,7 +68,17 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             />
             <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">2026 panel fiyat listesi</h2>
             <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
-              Hesaplayıcıda kullanılan 12 modülün panel fiyatları aşağıdadır. Tutarlar yaklaşıktır; nihai fiyat keşif ve malzeme listesiyle birlikte yazılı teklifte paylaşılır. Fiyatların nasıl oluştuğunu{" "}
+              Hesaplayıcıda kullanılan 12 modülün panel fiyatları aşağıdadır (ör. P1.25 GOB 95.88 USD).
+              Makinece okunan kopya:{" "}
+              <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                ai-shopping.json
+              </a>{" "}
+              <code className="text-xs">pricedPanels</code> ve{" "}
+              <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                catalog.json
+              </a>
+              . KDV ve nakliye hariç; ücretsiz kargo yok. Tutarlar yaklaşıktır; nihai fiyat keşif ve
+              malzeme listesiyle yazılı teklifte paylaşılır. Fiyatların nasıl oluştuğunu{" "}
               <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                 LED ekran fiyatları rehberinde
               </Link>{" "}

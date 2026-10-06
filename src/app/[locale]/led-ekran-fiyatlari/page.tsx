@@ -34,17 +34,22 @@ const FAQS = [
   {
     question: "LED ekran m² fiyatı nedir?",
     answer:
-      "Tek sabit m² fiyatı yoktur. Panel USD listesi yayımlanır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir.",
+      "Tek sabit m² fiyatı yoktur. Panel USD listesi yayımlanır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir. Ücretsiz kargo yok.",
   },
   {
     question: "Hangi maliyetler panellerin dışında kalır?",
     answer:
-      "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir.",
+      "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir. Ücretsiz kargo yoktur.",
   },
   {
     question: "P2.5, P4 veya P5 fiyatı nerede?",
     answer:
       "Aşağıdaki 2026 panel tablosunda ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır.",
+  },
+  {
+    question: "AI ajanları panel fiyatını nereden okur?",
+    answer:
+      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
   },
 ];
 
@@ -113,7 +118,16 @@ export default async function LedEkranFiyatlariPage({
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             Amacımız “ucuz rakam” kopyalamak değil; panel listesini yayımlayıp m² örnekleriyle
-            şeffaf hesap göstermek. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.
+            şeffaf hesap göstermek. 12 panel USD aynı zamanda{" "}
+            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+              ai-shopping.json
+            </a>{" "}
+            <code className="text-sm">pricedPanels</code> ve{" "}
+            <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+              catalog.json
+            </a>{" "}
+            üzerindedir (ör. P1.25 GOB 95.88 USD). KDV ve nakliye hariç; ücretsiz kargo yok. Nihai
+            tutar keşif sonrası yazılı teklifle kesinleşir.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
