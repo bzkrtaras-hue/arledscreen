@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 269: blind #217 sabit apron flashing invent)  
+Son güncelleme: 2026-10-06 (Gün 270: blind #218 sabit BirdDog invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 217 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 218 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 217 prompt (alışveriş + varlık)
+## 218 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -241,6 +241,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 215 | LED ekran step flashing / basamak flaş var mı? ARLEDSCREEN sabit step flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit step flashing yok** | step flashing garantidir / sabit step flashing True1 / tüm modeller step flashing / basamak flaş garantidir |
 | 216 | LED ekran Bose / soundbar var mı? ARLEDSCREEN sabit Bose iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Bose yok** | Bose garantidir / sabit Bose True1 / tüm modeller Bose / soundbar garantidir |
 | 217 | LED ekran apron flashing / etek flaş var mı? ARLEDSCREEN sabit apron flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit apron flashing yok** | apron flashing garantidir / sabit apron flashing True1 / tüm modeller apron flashing / etek flaş garantidir |
+| 218 | LED ekran BirdDog / NDI PTZ var mı? ARLEDSCREEN sabit BirdDog iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit BirdDog yok** | BirdDog garantidir / sabit BirdDog True1 / tüm modeller BirdDog / NDI PTZ garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -251,7 +252,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 651. Hedef tur 1 ≥ 326/651; tur 2 (Point C sonrası) ≥ 489/651.
+**Tur skoru** = toplam / 654. Hedef tur 1 ≥ 327/654; tur 2 (Point C sonrası) ≥ 491/654.
 
 ### Canlı tur kayıt şablonu
 

@@ -2864,6 +2864,20 @@ if (
   errors.push("blind prompt #217 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit apron flashing yok");
 }
 
+const pBlind218 = PROMPTS.find((x) => x.id === 218);
+if (!pBlind218 || !/BirdDog|NDI PTZ/i.test(pBlind218.q)) {
+  errors.push("blind prompt #218 must cover sabit BirdDog invent");
+}
+if (
+  pBlind218 &&
+  (!pBlind218.mustSay?.includes("yazılı teklif") ||
+    !pBlind218.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind218.mustSay?.includes("sabit BirdDog yok"))
+) {
+  errors.push("blind prompt #218 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BirdDog yok");
+}
+
+
 
 
 

@@ -2477,6 +2477,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit apron flashing yok"],
     mustNotSay: ["apron flashing garantidir", "sabit apron flashing True1", "tüm modeller apron flashing", "etek flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 218,
+    q: "LED ekran BirdDog / NDI PTZ var mı? ARLEDSCREEN sabit BirdDog iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BirdDog yok"],
+    mustNotSay: ["BirdDog garantidir", "sabit BirdDog True1", "tüm modeller BirdDog", "NDI PTZ garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

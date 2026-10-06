@@ -259,6 +259,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 267 | 2026-10-06 | sabit step flashing #215 · dis/mimari ARD refresh · skor /645 | ✅ |
 | 268 | 2026-10-06 | sabit Bose #216 · ic/konferans ARD refresh · skor /648 | ✅ |
 | 269 | 2026-10-06 | sabit apron flashing #217 · dis/mimari ARD refresh · skor /651 | ✅ |
+| 270 | 2026-10-06 | sabit BirdDog #218 · ic/konferans ARD refresh · skor /654 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1908,3 +1909,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #217 «apron flashing / etek flaş?» — skor **/651**; ARD **217 kör test**
 - TR/EN dis-mekan + TR/EN mimari apron flashing invent · llms deny · sabit apron flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit apron flashing
+
+## Gün 270 notları
+
+- Blind #218 «BirdDog / NDI PTZ?» — skor **/654**; ARD **218 kör test**
+- TR/EN ic-mekan + TR/EN konferans BirdDog invent · llms deny · sabit BirdDog yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit BirdDog
