@@ -220,6 +220,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 228 | 2026-10-06 | sabit Webex Room #176 · ic/konferans ARD refresh · skor /528 | ✅ |
 | 229 | 2026-10-06 | sabit sill flashing #177 · dis/mimari ARD refresh · skor /531 | ✅ |
 | 230 | 2026-10-06 | sabit ClickShare #178 · ic/konferans ARD refresh · skor /534 | ✅ |
+| 231 | 2026-10-06 | sabit seismic brace #179 · dis/mimari ARD refresh · skor /537 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1635,3 +1636,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #178 «ClickShare / kablosuz sunum?» — skor **/534**; ARD **178 kör test**
 - TR/EN ic-mekan + TR/EN konferans ClickShare invent · llms deny · sabit ClickShare yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit ClickShare
+
+## Gün 231 notları
+
+- Blind #179 «seismic brace / sismik destek?» — skor **/537**; ARD **179 kör test**
+- TR/EN dis-mekan + TR/EN mimari seismic brace invent · llms deny · sabit seismic brace yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit seismic brace

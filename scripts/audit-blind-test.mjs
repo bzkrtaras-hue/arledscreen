@@ -2357,6 +2357,20 @@ if (
   errors.push("blind prompt #178 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ClickShare yok");
 }
 
+const pBlind179 = PROMPTS.find((x) => x.id === 179);
+if (!pBlind179 || !/seismic brace|sismik destek/i.test(pBlind179.q)) {
+  errors.push("blind prompt #179 must cover sabit seismic brace invent");
+}
+if (
+  pBlind179 &&
+  (!pBlind179.mustSay?.includes("yazılı teklif") ||
+    !pBlind179.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind179.mustSay?.includes("sabit seismic brace yok"))
+) {
+  errors.push("blind prompt #179 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit seismic brace yok");
+}
+
+
 
 
 

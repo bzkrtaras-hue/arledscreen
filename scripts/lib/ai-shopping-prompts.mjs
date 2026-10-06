@@ -2009,6 +2009,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ClickShare yok"],
     mustNotSay: ["ClickShare garantidir", "sabit ClickShare True1", "tüm modeller ClickShare", "kablosuz sunum garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 179,
+    q: "LED ekran seismic brace / sismik destek var mı? ARLEDSCREEN sabit seismic brace iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit seismic brace yok"],
+    mustNotSay: ["seismic brace garantidir", "sabit seismic brace True1", "tüm modeller seismic brace", "sismik destek garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
