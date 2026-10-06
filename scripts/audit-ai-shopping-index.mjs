@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 77) errors.push(`blindTestPrompts must be 77 (got ${prompts.length})`);
+if (prompts.length !== 78) errors.push(`blindTestPrompts must be 78 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/77 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 77 kör test intent");
+if (!/78 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 78 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-6]) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–76 kör test without 77");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-7]) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–77 kör test without 78");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -680,6 +680,15 @@ if (!p77 || !/alıcı|receiving card|backup loop/i.test(p77.q || "")) {
 }
 if (!/alıcı yedeklilik|receiving card redundancy|backup loop|sabit alıcı/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit alıcı yedeklilik invent");
+}
+
+// Day 130: sabit gönderici yedeklilik / sending card redundancy invent
+const p78 = (doc.blindTestPrompts || []).find((p) => p.id === 78);
+if (!p78 || !/gönderici|sending card|redundant sender/i.test(p78.q || "")) {
+  errors.push("blindTestPrompts #78 must cover sabit gönderici yedeklilik invent");
+}
+if (!/gönderici yedeklilik|sending card redundancy|redundant sender|sabit gönderici/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit gönderici yedeklilik invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

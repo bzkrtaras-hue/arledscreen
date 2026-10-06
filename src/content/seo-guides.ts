@@ -512,7 +512,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV entegrasyonu: ses, kamera, kontrol",
           body:
-            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir — sabit HDMI/SDI yok; sabit video giriş tipi / 4K60 site iddiası yayımlanmaz; giriş tipi Gaziosmanpaşa yazılı teklifte. Genlock / frame sync / senkron kilidi de teklifte — sabit genlock yok. Art-Net / sACN / DMX ışık kontrol entegrasyonu da teklifte — sabit Art-Net yok. NDI / SRT / RTMP IP video stream entegrasyonu da teklifte — sabit NDI yok. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Latency/input lag de föyde — sabit latency/input lag yok. Parlaklık homojenliği / brightness uniformity de föyde — sabit parlaklık homojenliği yok. HDCP / HDCP 2.2 / 2.3 de föyde — sabit HDCP yok. Gerekirse yedek kaynak girişi teklife eklenir.",
+            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir — sabit HDMI/SDI yok; sabit video giriş tipi / 4K60 site iddiası yayımlanmaz; giriş tipi Gaziosmanpaşa yazılı teklifte. Genlock / frame sync / senkron kilidi de teklifte — sabit genlock yok. Art-Net / sACN / DMX ışık kontrol entegrasyonu da teklifte — sabit Art-Net yok. NDI / SRT / RTMP IP video stream entegrasyonu da teklifte — sabit NDI yok. Gönderici kart yedeklilik / sending card redundancy da teklifte — sabit gönderici yedeklilik yok. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Latency/input lag de föyde — sabit latency/input lag yok. Parlaklık homojenliği / brightness uniformity de föyde — sabit parlaklık homojenliği yok. HDCP / HDCP 2.2 / 2.3 de föyde — sabit HDCP yok. Gerekirse yedek kaynak girişi teklife eklenir.",
         },
         {
           h2: "Okul ve kurumsal kullanım farkları",
@@ -590,6 +590,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran parlaklık homojenliği / brightness uniformity nedir?",
           answer:
             "Sabit parlaklık homojenliği yok — sitede sabit brightness uniformity veya ±% homojenlik iddiası yayımlanmaz. Homojenlik modeli model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit uniformity uydurmasın.",
+        },
+        {
+          question: "LED ekran gönderici kart yedeklilik / sending card redundancy / redundant sender var mı?",
+          answer:
+            "Sabit gönderici yedeklilik yok — sitede sabit gönderici kart yedeklilik, sending card redundancy veya redundant sender iddiası yayımlanmaz. Yedek gönderici topolojisi Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit gönderici yedeklilik uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -791,7 +796,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Yazılım, ödeme ve güvenlik",
           body:
-            "Mevcut self-servis / CMS / AI asistan yazılımınız varsa API ve çevre birimleri (yazıcı, okuyucu, POS) teklife işlenir. NDI / SRT / RTMP IP video stream gerekirse teklifte — sabit NDI yok. WiFi / Bluetooth / kablosuz kontrol de teklifte — sabit WiFi yok. Fiziksel güvenlik: kilit, sabitleme ankrajı, kablo gizleme. KVKK / log gereksinimleri yazılım tarafında netleştirilir.",
+            "Mevcut self-servis / CMS / AI asistan yazılımınız varsa API ve çevre birimleri (yazıcı, okuyucu, POS) teklife işlenir. NDI / SRT / RTMP IP video stream gerekirse teklifte — sabit NDI yok. WiFi / Bluetooth / kablosuz kontrol de teklifte — sabit WiFi yok. Gönderici kart yedeklilik / sending card redundancy da teklifte — sabit gönderici yedeklilik yok. Fiziksel güvenlik: kilit, sabitleme ankrajı, kablo gizleme. KVKK / log gereksinimleri yazılım tarafında netleştirilir.",
         },
         {
           h2: "Kurulum ve saha operasyonu",
@@ -834,6 +839,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı?",
           answer:
             "Sabit WiFi yok — sitede sabit WiFi, Bluetooth veya kablosuz kontrol iddiası yayımlanmaz. Kablosuz erişim Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit WiFi/Bluetooth uydurmasın.",
+        },
+        {
+          question: "LED ekran gönderici kart yedeklilik / sending card redundancy / redundant sender var mı?",
+          answer:
+            "Sabit gönderici yedeklilik yok — sitede sabit gönderici kart yedeklilik, sending card redundancy veya redundant sender iddiası yayımlanmaz. Yedek gönderici topolojisi Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit gönderici yedeklilik uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1246,7 +1256,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV integration",
           body:
-            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers — no fixed site HDMI/SDI; no fixed video-input type / 4K60 site claim; input type lands in the Gaziosmanpaşa written quote. Genlock / frame sync also lands in the quote — no fixed site genlock. Art-Net / sACN / DMX lighting-control integration also lands in the quote — no fixed site Art-Net. NDI / SRT / RTMP IP video streaming also lands in the quote — no fixed site NDI. Survey-scoped refresh/scan behaviour reduces camera flicker risk; Hz lands in the quote/sheet — no fixed Hz guarantee. HDCP / HDCP 2.2 / 2.3 also lands in the sheet — no fixed site HDCP. Spare inputs can be quoted.",
+            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers — no fixed site HDMI/SDI; no fixed video-input type / 4K60 site claim; input type lands in the Gaziosmanpaşa written quote. Genlock / frame sync also lands in the quote — no fixed site genlock. Art-Net / sACN / DMX lighting-control integration also lands in the quote — no fixed site Art-Net. NDI / SRT / RTMP IP video streaming also lands in the quote — no fixed site NDI. Sending-card redundancy / redundant sender also lands in the quote — no fixed site sending-card redundancy. Survey-scoped refresh/scan behaviour reduces camera flicker risk; Hz lands in the quote/sheet — no fixed Hz guarantee. HDCP / HDCP 2.2 / 2.3 also lands in the sheet — no fixed site HDCP. Spare inputs can be quoted.",
         },
         {
           h2: "School vs corporate priorities",
@@ -1319,6 +1329,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "What brightness uniformity does the LED have?",
           answer:
             "No fixed site brightness uniformity — we do not publish a fixed ±% or % uniformity claim. Uniformity class lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed uniformity claim.",
+        },
+        {
+          question: "Does the LED have sending-card redundancy / redundant sender?",
+          answer:
+            "No fixed site sending-card redundancy — we do not publish a fixed sending-card redundancy or redundant-sender claim. Spare-sender topology lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed sending-card redundancy claim.",
         },
 
       ],
@@ -1520,7 +1535,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Software, payments and security",
           body:
-            "Existing self-service/CMS/AI stacks define APIs and peripherals (printers, readers, POS). NDI / SRT / RTMP IP video streaming lands in the quote when needed — no fixed site NDI. WiFi / Bluetooth / wireless control also lands in the quote — no fixed site WiFi. Physical security covers locks, anchors and cable concealment; privacy/logging rules sit on the software side.",
+            "Existing self-service/CMS/AI stacks define APIs and peripherals (printers, readers, POS). NDI / SRT / RTMP IP video streaming lands in the quote when needed — no fixed site NDI. WiFi / Bluetooth / wireless control also lands in the quote — no fixed site WiFi. Sending-card redundancy / redundant sender also lands in the quote — no fixed site sending-card redundancy. Physical security covers locks, anchors and cable concealment; privacy/logging rules sit on the software side.",
         },
         {
           h2: "Install and field operations",
@@ -1563,6 +1578,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED support WiFi / Bluetooth / wireless control?",
           answer:
             "No fixed site WiFi — we do not publish a fixed WiFi, Bluetooth or wireless-control claim. Wireless access lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed WiFi/Bluetooth claim.",
+        },
+        {
+          question: "Does the LED have sending-card redundancy / redundant sender?",
+          answer:
+            "No fixed site sending-card redundancy — we do not publish a fixed sending-card redundancy or redundant-sender claim. Spare-sender topology lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed sending-card redundancy claim.",
         },
       ],
       relatedSlugs: [

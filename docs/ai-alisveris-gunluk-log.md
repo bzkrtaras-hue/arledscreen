@@ -119,6 +119,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 127 | 2026-10-06 | sabit WiFi/Bluetooth #75 · edirne + matiz/beylikduzu proje ARD · skor /225 | ✅ |
 | 128 | 2026-10-06 | sabit 0mm/seamless #76 · white-city/manisa-bb/unye proje ARD · skor /228 | ✅ |
 | 129 | 2026-10-06 | sabit alıcı yedeklilik #77 · giresun/yalova-malt/barcelona proje ARD · skor /231 | ✅ |
+| 130 | 2026-10-06 | sabit gönderici yedeklilik #78 · ayberk/dogu-produksiyon/umut-radyoloji proje ARD · skor /234 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -858,3 +859,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari alıcı yedeklilik invent · llms deny · sabit alıcı yedeklilik yok
 - ARD: gerçek proje hub giresun-proje / yalova-malt / barcelona-club (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit alıcı yedeklilik
 - skor hedef Tur 1 ≥ 116/231 · Tur 2 ≥ 174/231
+
+## Gün 130 notları
+
+- Blind #78 «gönderici kart yedeklilik / sending card redundancy / redundant sender?» — skor **/234**; ARD **78 kör test**
+- TR/EN konferans + TR/EN kiosk gönderici yedeklilik invent · llms deny · sabit gönderici yedeklilik yok
+- ARD: gerçek proje hub ayberk-sigorta / dogu-produksiyon / umut-radyoloji (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit gönderici yedeklilik
+- skor hedef Tur 1 ≥ 117/234 · Tur 2 ≥ 176/234
