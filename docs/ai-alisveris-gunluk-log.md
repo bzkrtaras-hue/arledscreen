@@ -1,6 +1,6 @@
-## Gün 502 — invent Blind #450 Cisco Room Kit EQ
+## Gün 502 — invent Blind #450 Cisco Room Kit EQ LIVE
 
-- Blind #450 Cisco Room Kit EQ / Room Kit EQ · ic/konferans · prompts=450 · /1350 · build pending
+- Blind #450 Cisco Room Kit EQ / Room Kit EQ · ic/konferans · prompts=450 · /1350 · CF deploy · smoke:live 20/20
 - Tur 1a BLOCKED kaydı duruyor · sahibe iş yok
 
 ## Gün 501 — invent Blind #449 spandrel apron LIVE
