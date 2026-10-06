@@ -1829,6 +1829,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit bird spike yok"],
     mustNotSay: ["bird spike garantidir", "sabit bird spike True1", "tüm modeller bird spike", "kuş dikeni garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 164,
+    q: "LED ekran Kramer / AV matrix var mı? ARLEDSCREEN sabit Kramer iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Kramer yok"],
+    mustNotSay: ["Kramer garantidir", "sabit Kramer True1", "tüm modeller Kramer", "AV matrix garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

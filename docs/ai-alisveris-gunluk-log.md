@@ -205,6 +205,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 213 | 2026-10-06 | sabit anti-theft screw #161 · dis/mimari ARD refresh · skor /483 | ✅ |
 | 214 | 2026-10-06 | sabit RS-485 #162 · ic/konferans ARD refresh · skor /486 | ✅ |
 | 215 | 2026-10-06 | sabit bird spike #163 · dis/mimari ARD refresh · skor /489 | ✅ |
+| 216 | 2026-10-06 | sabit Kramer #164 · ic/konferans ARD refresh · skor /492 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1530,3 +1531,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #163 «bird spike / kuş dikeni?» — skor **/489**; ARD **163 kör test**
 - TR/EN dis-mekan + TR/EN mimari bird spike invent · llms deny · sabit bird spike yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit bird spike
+
+## Gün 216 notları
+
+- Blind #164 «Kramer / AV matrix?» — skor **/492**; ARD **164 kör test**
+- TR/EN ic-mekan + TR/EN konferans Kramer invent · llms deny · sabit Kramer yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Kramer

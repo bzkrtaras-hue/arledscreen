@@ -2162,6 +2162,20 @@ if (
   errors.push("blind prompt #163 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit bird spike yok");
 }
 
+const pBlind164 = PROMPTS.find((x) => x.id === 164);
+if (!pBlind164 || !/Kramer|AV matrix/i.test(pBlind164.q)) {
+  errors.push("blind prompt #164 must cover sabit Kramer invent");
+}
+if (
+  pBlind164 &&
+  (!pBlind164.mustSay?.includes("yazılı teklif") ||
+    !pBlind164.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind164.mustSay?.includes("sabit Kramer yok"))
+) {
+  errors.push("blind prompt #164 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Kramer yok");
+}
+
+
 
 
 
