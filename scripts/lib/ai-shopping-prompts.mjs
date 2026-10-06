@@ -2645,6 +2645,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit threshold flashing yok"],
     mustNotSay: ["threshold flashing garantidir", "sabit threshold flashing True1", "tüm modeller threshold flashing", "eşik flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 232,
+    q: "LED ekran Epson / LCD projector var mı? ARLEDSCREEN sabit Epson iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Epson yok"],
+    mustNotSay: ["Epson garantidir", "sabit Epson True1", "tüm modeller Epson", "LCD projector garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -3046,6 +3046,20 @@ if (
   errors.push("blind prompt #231 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit threshold flashing yok");
 }
 
+const pBlind232 = PROMPTS.find((x) => x.id === 232);
+if (!pBlind232 || !/Epson|LCD projector/i.test(pBlind232.q)) {
+  errors.push("blind prompt #232 must cover sabit Epson invent");
+}
+if (
+  pBlind232 &&
+  (!pBlind232.mustSay?.includes("yazılı teklif") ||
+    !pBlind232.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind232.mustSay?.includes("sabit Epson yok"))
+) {
+  errors.push("blind prompt #232 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Epson yok");
+}
+
+
 
 
 
