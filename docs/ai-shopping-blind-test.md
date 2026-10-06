@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 461: blind #411 coping apron)  
+Son güncelleme: 2026-10-06 (Gün 461: blind #412 Rally Bar Huddle)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 411 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 412 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 411 prompt (alışveriş + varlık)
+## 412 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -435,6 +435,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 409 | LED ekran ridge apron / mahya eteği var mı? ARLEDSCREEN sabit ridge apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ridge apron yok** | ridge apron garantidir / sabit ridge apron True1 / tüm modeller ridge apron / mahya eteği garantidir |
 | 410 | LED ekran Neat Bar / Neat Bar var mı? ARLEDSCREEN sabit Neat Bar iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Neat Bar yok** | Neat Bar garantidir / sabit Neat Bar True1 / tüm modeller Neat Bar / Neat Bar dahildir |
 | 411 | LED ekran coping apron / parapet kapak eteği var mı? ARLEDSCREEN sabit coping apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit coping apron yok** | coping apron garantidir / sabit coping apron True1 / tüm modeller coping apron / parapet kapak eteği garantidir |
+| 412 | LED ekran Rally Bar Huddle / Rally Bar Huddle var mı? ARLEDSCREEN sabit Rally Bar Huddle iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Rally Bar Huddle yok** | Rally Bar Huddle garantidir / sabit Rally Bar Huddle True1 / tüm modeller Rally Bar Huddle |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -445,7 +446,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1233 (411 × 0–3). Hedef tur 1 ≥ 617/1233; tur 2 (Point C sonrası) ≥ 925/1233.
+**Tur skoru** = toplam / 1236 (412 × 0–3). Hedef tur 1 ≥ 618/1236; tur 2 (Point C sonrası) ≥ 927/1236.
 
 ### Canlı tur kayıt şablonu
 
@@ -481,7 +482,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (411 /1233)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (412 /1236)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. `arleds.com` → `arledscreen.com/tr/` 301 (CF zone yoksa DNS/registrar)  
 5. Tur 2 (Point C sonrası, ≤2026-11-04)

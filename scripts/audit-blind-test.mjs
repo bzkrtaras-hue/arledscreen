@@ -5379,6 +5379,18 @@ if (
 ) {
   errors.push("blind prompt #411 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit coping apron yok");
 }
+const pBlind412 = PROMPTS.find((x) => x.id === 412);
+if (!pBlind412 || !/Rally Bar Huddle/i.test(pBlind412.q)) {
+  errors.push("blind prompt #412 must cover sabit Rally Bar Huddle invent");
+}
+if (
+  pBlind412 &&
+  (!pBlind412.mustSay?.includes("yazılı teklif") ||
+    !pBlind412.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind412.mustSay?.includes("sabit Rally Bar Huddle yok"))
+) {
+  errors.push("blind prompt #412 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Rally Bar Huddle yok");
+}
 
 
 

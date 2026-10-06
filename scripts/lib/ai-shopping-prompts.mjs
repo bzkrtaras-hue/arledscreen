@@ -4805,6 +4805,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit coping apron yok"],
     mustNotSay: ["coping apron garantidir", "sabit coping apron True1", "tüm modeller coping apron", "parapet kapak eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 412,
+    q: "LED ekran Rally Bar Huddle / Rally Bar Huddle var mı? ARLEDSCREEN sabit Rally Bar Huddle iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Rally Bar Huddle yok"],
+    mustNotSay: ["Rally Bar Huddle garantidir", "sabit Rally Bar Huddle True1", "tüm modeller Rally Bar Huddle", "Rally Bar Huddle garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

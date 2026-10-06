@@ -1,3 +1,8 @@
+## Gün 464 — invent Blind #412 Rally Bar Huddle
+
+- Blind #412 Rally Bar Huddle · ic/konferans · prompts=412 · /1236
+- Point C + Tur 1a hâlâ sahip
+
 ## Gün 463 — invent Blind #411 coping apron
 
 - Blind #411 coping apron / parapet kapak eteği · dis/mimari · prompts=411 · /1233
