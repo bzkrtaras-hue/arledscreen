@@ -2409,6 +2409,20 @@ if (
   errors.push("blind prompt #182 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Solstice yok");
 }
 
+const pBlind183 = PROMPTS.find((x) => x.id === 183);
+if (!pBlind183 || !/counter flashing|karşı flaşör/i.test(pBlind183.q)) {
+  errors.push("blind prompt #183 must cover sabit counter flashing invent");
+}
+if (
+  pBlind183 &&
+  (!pBlind183.mustSay?.includes("yazılı teklif") ||
+    !pBlind183.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind183.mustSay?.includes("sabit counter flashing yok"))
+) {
+  errors.push("blind prompt #183 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit counter flashing yok");
+}
+
+
 
 
 

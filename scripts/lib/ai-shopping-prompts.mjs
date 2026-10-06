@@ -2057,6 +2057,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Solstice yok"],
     mustNotSay: ["Solstice garantidir", "sabit Solstice True1", "tüm modeller Solstice", "kablosuz collab garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 183,
+    q: "LED ekran counter flashing / karşı flaşör var mı? ARLEDSCREEN sabit counter flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit counter flashing yok"],
+    mustNotSay: ["counter flashing garantidir", "sabit counter flashing True1", "tüm modeller counter flashing", "karşı flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

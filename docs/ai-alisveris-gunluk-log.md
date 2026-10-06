@@ -224,6 +224,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 232 | 2026-10-06 | sabit AirMedia #180 · ic/konferans ARD refresh · skor /540 | ✅ |
 | 233 | 2026-10-06 | sabit chemical anchor #181 · dis/mimari ARD refresh · skor /543 | ✅ |
 | 234 | 2026-10-06 | sabit Solstice #182 · ic/konferans ARD refresh · skor /546 | ✅ |
+| 235 | 2026-10-06 | sabit counter flashing #183 · dis/mimari ARD refresh · skor /549 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1663,3 +1664,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #182 «Solstice / kablosuz collab?» — skor **/546**; ARD **182 kör test**
 - TR/EN ic-mekan + TR/EN konferans Solstice invent · llms deny · sabit Solstice yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Solstice
+
+## Gün 235 notları
+
+- Blind #183 «counter flashing / karşı flaşör?» — skor **/549**; ARD **183 kör test**
+- TR/EN dis-mekan + TR/EN mimari counter flashing invent · llms deny · sabit counter flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit counter flashing

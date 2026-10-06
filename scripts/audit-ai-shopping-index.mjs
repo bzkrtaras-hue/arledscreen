@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 182) errors.push(`blindTestPrompts must be 182 (got ${prompts.length})`);
+if (prompts.length !== 183) errors.push(`blindTestPrompts must be 183 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/182 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 182 kör test intent");
+if (!/183 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 183 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173|174|175|176|177|178|179|180|181) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–181 kör test without 182");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173|174|175|176|177|178|179|180|181|182) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–182 kör test without 183");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1591,6 +1591,15 @@ if (!p182 || !/Solstice|kablosuz collab/i.test(p182.q || "")) {
 if (!/Solstice|kablosuz collab|sabit Solstice/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit Solstice invent");
 }
+
+const p183 = (doc.blindTestPrompts || []).find((p) => p.id === 183);
+if (!p183 || !/counter flashing|karşı flaşör/i.test(p183.q || "")) {
+  errors.push("blindTestPrompts #183 must cover sabit counter flashing invent");
+}
+if (!/counter flashing|karşı flaşör|sabit counter flashing/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit counter flashing invent");
+}
+
 
 
 
