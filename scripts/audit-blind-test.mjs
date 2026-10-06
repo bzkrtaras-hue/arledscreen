@@ -4450,6 +4450,20 @@ if (
   errors.push("blind prompt #339 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit skirt flashing yok");
 }
 
+const pBlind340 = PROMPTS.find((x) => x.id === 340);
+if (!pBlind340 || !/CTOUCH Laser|CTOUCH Canvas/i.test(pBlind340.q)) {
+  errors.push("blind prompt #340 must cover sabit CTOUCH Laser invent");
+}
+if (
+  pBlind340 &&
+  (!pBlind340.mustSay?.includes("yazılı teklif") ||
+    !pBlind340.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind340.mustSay?.includes("sabit CTOUCH Laser yok"))
+) {
+  errors.push("blind prompt #340 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CTOUCH Laser yok");
+}
+
+
 
 
 

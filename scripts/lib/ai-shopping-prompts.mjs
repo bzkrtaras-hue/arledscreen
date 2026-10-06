@@ -3941,6 +3941,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit skirt flashing yok"],
     mustNotSay: ["skirt flashing garantidir", "sabit skirt flashing True1", "tüm modeller skirt flashing", "etek flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 340,
+    q: "LED ekran CTOUCH Laser / CTOUCH Canvas var mı? ARLEDSCREEN sabit CTOUCH Laser iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit CTOUCH Laser yok"],
+    mustNotSay: ["CTOUCH Laser garantidir", "sabit CTOUCH Laser True1", "tüm modeller CTOUCH Laser", "CTOUCH Canvas garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
