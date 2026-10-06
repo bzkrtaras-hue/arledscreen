@@ -3029,6 +3029,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit standing seam cleat yok"],
     mustNotSay: ["standing seam cleat garantidir", "sabit standing seam cleat True1", "tüm modeller standing seam cleat", "standing seam kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 264,
+    q: "LED ekran Hisense / GoBoard var mı? ARLEDSCREEN sabit Hisense iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Hisense yok"],
+    mustNotSay: ["Hisense garantidir", "sabit Hisense True1", "tüm modeller Hisense", "GoBoard garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 315: blind #263 sabit standing seam cleat invent)  
+Son güncelleme: 2026-10-06 (Gün 316: blind #264 sabit Hisense invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 263 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 264 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 263 prompt (alışveriş + varlık)
+## 264 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -287,6 +287,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 261 | LED ekran extruded cleat / ekstrüzyon kleyt var mı? ARLEDSCREEN sabit extruded cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit extruded cleat yok** | extruded cleat garantidir / sabit extruded cleat True1 / tüm modeller extruded cleat / ekstrüzyon kleyt garantidir |
 | 262 | LED ekran Horion / interactive panel var mı? ARLEDSCREEN sabit Horion iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Horion yok** | Horion garantidir / sabit Horion True1 / tüm modeller Horion / interactive panel garantidir |
 | 263 | LED ekran standing seam cleat / standing seam kleyt var mı? ARLEDSCREEN sabit standing seam cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit standing seam cleat yok** | standing seam cleat garantidir / sabit standing seam cleat True1 / tüm modeller standing seam cleat / standing seam kleyt garantidir |
+| 264 | LED ekran Hisense / GoBoard var mı? ARLEDSCREEN sabit Hisense iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Hisense yok** | Hisense garantidir / sabit Hisense True1 / tüm modeller Hisense / GoBoard garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -297,7 +298,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 789. Hedef tur 1 ≥ 395/789; tur 2 (Point C sonrası) ≥ 592/789.
+**Tur skoru** = toplam / 792. Hedef tur 1 ≥ 396/792; tur 2 (Point C sonrası) ≥ 594/792.
 
 ### Canlı tur kayıt şablonu
 

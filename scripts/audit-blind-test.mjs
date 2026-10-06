@@ -3462,6 +3462,20 @@ if (
   errors.push("blind prompt #263 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit standing seam cleat yok");
 }
 
+const pBlind264 = PROMPTS.find((x) => x.id === 264);
+if (!pBlind264 || !/Hisense|GoBoard/i.test(pBlind264.q)) {
+  errors.push("blind prompt #264 must cover sabit Hisense invent");
+}
+if (
+  pBlind264 &&
+  (!pBlind264.mustSay?.includes("yazılı teklif") ||
+    !pBlind264.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind264.mustSay?.includes("sabit Hisense yok"))
+) {
+  errors.push("blind prompt #264 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Hisense yok");
+}
+
+
 
 
 
