@@ -3317,6 +3317,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit apron cleat yok"],
     mustNotSay: ["apron cleat garantidir", "sabit apron cleat True1", "tüm modeller apron cleat", "etek kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 288,
+    q: "LED ekran Lenovo ThinkSmart / ThinkSmart var mı? ARLEDSCREEN sabit Lenovo ThinkSmart iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Lenovo ThinkSmart yok"],
+    mustNotSay: ["Lenovo ThinkSmart garantidir", "sabit Lenovo ThinkSmart True1", "tüm modeller Lenovo ThinkSmart", "ThinkSmart garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

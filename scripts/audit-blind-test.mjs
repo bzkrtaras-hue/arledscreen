@@ -3774,6 +3774,20 @@ if (
   errors.push("blind prompt #287 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit apron cleat yok");
 }
 
+const pBlind288 = PROMPTS.find((x) => x.id === 288);
+if (!pBlind288 || !/Lenovo ThinkSmart|ThinkSmart/i.test(pBlind288.q)) {
+  errors.push("blind prompt #288 must cover sabit Lenovo ThinkSmart invent");
+}
+if (
+  pBlind288 &&
+  (!pBlind288.mustSay?.includes("yazılı teklif") ||
+    !pBlind288.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind288.mustSay?.includes("sabit Lenovo ThinkSmart yok"))
+) {
+  errors.push("blind prompt #288 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Lenovo ThinkSmart yok");
+}
+
+
 
 
 
