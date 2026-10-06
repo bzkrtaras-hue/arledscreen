@@ -1200,6 +1200,19 @@ if (
   errors.push("blind prompt #91 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit zamanlayıcı yok");
 }
 
+const pBlind92 = PROMPTS.find((x) => x.id === 92);
+if (!pBlind92 || !/flight case|taşıma çantası/i.test(pBlind92.q)) {
+  errors.push("blind prompt #92 must cover sabit flight case invent");
+}
+if (
+  pBlind92 &&
+  (!pBlind92.mustSay?.includes("yazılı teklif") ||
+    !pBlind92.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind92.mustSay?.includes("sabit flight case yok"))
+) {
+  errors.push("blind prompt #92 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit flight case yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

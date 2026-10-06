@@ -965,6 +965,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit zamanlayıcı yok"],
     mustNotSay: ["zamanlayıcı garantidir", "sabit content scheduler", "tüm modeller content scheduler", "content scheduler garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 92,
+    q: "LED ekran flight case / taşıma çantası var mı? ARLEDSCREEN sabit flight case iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/rehber/poster-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit flight case yok"],
+    mustNotSay: ["flight case garantidir", "sabit flightcase", "tüm modeller flightcase", "flightcase garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
