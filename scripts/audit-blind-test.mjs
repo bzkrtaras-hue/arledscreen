@@ -4034,6 +4034,20 @@ if (
   errors.push("blind prompt #307 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cricket cleat yok");
 }
 
+const pBlind308 = PROMPTS.find((x) => x.id === 308);
+if (!pBlind308 || !/Optoma Interactive|Optoma IFP/i.test(pBlind308.q)) {
+  errors.push("blind prompt #308 must cover sabit Optoma Interactive invent");
+}
+if (
+  pBlind308 &&
+  (!pBlind308.mustSay?.includes("yazılı teklif") ||
+    !pBlind308.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind308.mustSay?.includes("sabit Optoma Interactive yok"))
+) {
+  errors.push("blind prompt #308 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma Interactive yok");
+}
+
+
 
 
 

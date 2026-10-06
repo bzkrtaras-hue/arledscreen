@@ -349,6 +349,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 357 | 2026-10-06 | sabit kick-out cleat #305 · dis/mimari ARD refresh · skor /915 | ✅ |
 | 358 | 2026-10-06 | sabit Ricoh Interactive #306 · ic/konferans ARD refresh · skor /918 | ✅ |
 | 359 | 2026-10-06 | sabit cricket cleat #307 · dis/mimari ARD refresh · skor /921 | ✅ |
+| 360 | 2026-10-06 | sabit Optoma Interactive #308 · ic/konferans ARD refresh · skor /924 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2538,3 +2539,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #307 «cricket cleat / cricket kleyt?» — skor **/921**; ARD **307 kör test**
 - TR/EN dis-mekan + TR/EN mimari cricket cleat invent · llms deny · sabit cricket cleat yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit cricket cleat
+
+## Gün 360 notları
+
+- Blind #308 «Optoma Interactive / Optoma IFP?» — skor **/924**; ARD **308 kör test**
+- TR/EN ic-mekan + TR/EN konferans Optoma Interactive invent · llms deny · sabit Optoma Interactive yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Optoma Interactive

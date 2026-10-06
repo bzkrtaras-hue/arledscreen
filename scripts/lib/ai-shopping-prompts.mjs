@@ -3557,6 +3557,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cricket cleat yok"],
     mustNotSay: ["cricket cleat garantidir", "sabit cricket cleat True1", "tüm modeller cricket cleat", "cricket kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 308,
+    q: "LED ekran Optoma Interactive / Optoma IFP var mı? ARLEDSCREEN sabit Optoma Interactive iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Optoma Interactive yok"],
+    mustNotSay: ["Optoma Interactive garantidir", "sabit Optoma Interactive True1", "tüm modeller Optoma Interactive", "Optoma IFP garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
