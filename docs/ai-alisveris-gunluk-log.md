@@ -170,6 +170,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 178 | 2026-10-06 | sabit scaler #126 · ic/konferans ARD refresh · skor /378 | ✅ |
 | 179 | 2026-10-06 | sabit backup battery #127 · dis/mimari ARD refresh · skor /381 | ✅ |
 | 180 | 2026-10-06 | sabit ribbon cable #128 · ic/konferans ARD refresh · skor /384 | ✅ |
+| 181 | 2026-10-06 | sabit hoist #129 · dis/mimari ARD refresh · skor /387 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1267,4 +1268,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans ribbon cable invent · llms deny · sabit ribbon cable yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit ribbon cable
 - skor hedef Tur 1 ≥ 192/384 · Tur 2 ≥ 288/384
+
+## Gün 181 notları
+
+- Blind #129 «hoist / vinç?» — skor **/387**; ARD **129 kör test**
+- TR/EN dis-mekan + TR/EN mimari hoist invent · llms deny · sabit hoist yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit hoist
+- skor hedef Tur 1 ≥ 194/387 · Tur 2 ≥ 291/387
 

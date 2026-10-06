@@ -1409,6 +1409,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ribbon cable yok"],
     mustNotSay: ["ribbon cable garantidir", "sabit ribbon kablo", "tüm modeller ribbon cable", "ribbon kablo garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 129,
+    q: "LED ekran hoist / vinç var mı? ARLEDSCREEN sabit hoist iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hoist yok"],
+    mustNotSay: ["hoist garantidir", "sabit vinç", "tüm modeller hoist", "vinç garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
