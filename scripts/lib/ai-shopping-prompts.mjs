@@ -4133,6 +4133,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit door flashing yok"],
     mustNotSay: ["door flashing garantidir", "sabit door flashing True1", "tüm modeller door flashing", "kapı flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 356,
+    q: "LED ekran i3TOUCH E-ONE / i3TOUCH EX var mı? ARLEDSCREEN sabit i3TOUCH E-ONE iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit i3TOUCH E-ONE yok"],
+    mustNotSay: ["i3TOUCH E-ONE garantidir", "sabit i3TOUCH E-ONE True1", "tüm modeller i3TOUCH E-ONE", "i3TOUCH EX garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

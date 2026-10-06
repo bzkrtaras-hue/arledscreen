@@ -4658,6 +4658,20 @@ if (
   errors.push("blind prompt #355 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit door flashing yok");
 }
 
+const pBlind356 = PROMPTS.find((x) => x.id === 356);
+if (!pBlind356 || !/i3TOUCH E-ONE|i3TOUCH EX/i.test(pBlind356.q)) {
+  errors.push("blind prompt #356 must cover sabit i3TOUCH E-ONE invent");
+}
+if (
+  pBlind356 &&
+  (!pBlind356.mustSay?.includes("yazılı teklif") ||
+    !pBlind356.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind356.mustSay?.includes("sabit i3TOUCH E-ONE yok"))
+) {
+  errors.push("blind prompt #356 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH E-ONE yok");
+}
+
+
 
 
 

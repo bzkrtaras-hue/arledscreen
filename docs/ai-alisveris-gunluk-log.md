@@ -397,6 +397,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 405 | 2026-10-06 | sabit window flashing #353 · dis/mimari ARD refresh · skor /1059 | ✅ |
 | 406 | 2026-10-06 | sabit SMART Board 7000 #354 · ic/konferans ARD refresh · skor /1062 | ✅ |
 | 407 | 2026-10-06 | sabit door flashing #355 · dis/mimari ARD refresh · skor /1065 | ✅ |
+| 408 | 2026-10-06 | sabit i3TOUCH E-ONE #356 · ic/konferans ARD refresh · skor /1068 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2874,3 +2875,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #355 «door flashing / kapı flaşör?» — skor **/1065**; ARD **355 kör test**
 - TR/EN dis-mekan + TR/EN mimari door flashing invent · llms deny · sabit door flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit door flashing
+
+## Gün 408 notları
+
+- Blind #356 «i3TOUCH E-ONE / i3TOUCH EX?» — skor **/1068**; ARD **356 kör test**
+- TR/EN ic-mekan + TR/EN konferans i3TOUCH E-ONE invent · llms deny · sabit i3TOUCH E-ONE yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit i3TOUCH E-ONE
