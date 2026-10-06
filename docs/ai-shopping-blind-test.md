@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 149: blind #97 sabit daisy chain invent)  
+Son güncelleme: 2026-10-06 (Gün 150: blind #98 sabit IP67 invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 97 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 98 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 97 prompt (alışveriş + varlık)
+## 98 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -121,6 +121,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 95 | LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit düşük mavi ışık yok** | düşük mavi ışık garantidir / sabit low blue light / tüm modeller low blue light / low blue light garantidir |
 | 96 | LED ekran asılı / hanging / rigging montaj var mı? ARLEDSCREEN sabit asılı montaj iddiası yayımlıyor mu? | `/tr/rehber/konferans-salonu-led/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit asılı yok** | asılı garantidir / sabit hanging / tüm modeller hanging / hanging garantidir |
 | 97 | LED ekran daisy chain / data cascade var mı? ARLEDSCREEN sabit daisy chain iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · dis-mekan · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit daisy chain yok** | daisy chain garantidir / sabit data cascade / tüm modeller data cascade / data cascade garantidir |
+| 98 | LED ekran IP67 / NEMA koruma var mı? ARLEDSCREEN sabit IP67 veya NEMA iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit IP67 yok** | IP67 garantidir / sabit NEMA / tüm modeller NEMA / NEMA garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -131,7 +132,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 291. Hedef tur 1 ≥ 146/291; tur 2 (Point C sonrası) ≥ 219/291.
+**Tur skoru** = toplam / 294. Hedef tur 1 ≥ 147/294; tur 2 (Point C sonrası) ≥ 221/294.
 
 ### Canlı tur kayıt şablonu
 

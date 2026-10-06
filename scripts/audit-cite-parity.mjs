@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–97: ARD discovery prompt count must not drift behind blind suite
+// Day 74–98: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/97 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 97 kör test intent (not stale 17–96)");
+if (ardTxt && !/98 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 98 kör test intent (not stale 17–97)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–96 kör test without 97");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–97 kör test without 98");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1457,6 +1457,21 @@ for (const rel of [
   }
   if (/daisy chain garantidir|sabit data cascade|tüm modeller data cascade|data cascade garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit daisy chain`);
+  }
+}
+
+// Day 150: sabit IP67 / NEMA — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit IP67 yok|no fixed site IP67/i.test(html)) {
+    errors.push(`${rel} should hedge sabit IP67 / NEMA`);
+  }
+  if (/IP67 garantidir|sabit NEMA|tüm modeller NEMA|NEMA garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit IP67`);
   }
 }
 

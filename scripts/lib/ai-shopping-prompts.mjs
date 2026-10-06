@@ -1037,6 +1037,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit daisy chain yok"],
     mustNotSay: ["daisy chain garantidir", "sabit data cascade", "tüm modeller data cascade", "data cascade garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 98,
+    q: "LED ekran IP67 / NEMA koruma var mı? ARLEDSCREEN sabit IP67 veya NEMA iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit IP67 yok"],
+    mustNotSay: ["IP67 garantidir", "sabit NEMA", "tüm modeller NEMA", "NEMA garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
