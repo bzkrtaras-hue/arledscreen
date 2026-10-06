@@ -430,14 +430,15 @@
       "displayName": "Dış mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
-      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47.",
+      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit depolama °C yok — Blind #49.",
       "representativeQueries": [
         "Dış mekân LED ekran kaç nit olmalı?",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
         "LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu?",
         "dış mekan LED rehber",
         "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?",
-        "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?"
+        "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?",
+        "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -447,7 +448,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T17:00:00Z"
+      "updatedAt": "2026-10-06T19:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:totem",
@@ -474,7 +475,7 @@
       "displayName": "Mimari / mühendislik LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
-      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48.",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48; sabit depolama °C yok — Blind #49.",
       "representativeQueries": [
         "mimari LED mühendislik",
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
@@ -483,7 +484,8 @@
         "LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu?",
         "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?",
         "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?",
-        "LED ekran bekleme gücü / standby / idle kaç watt? ARLEDSCREEN sabit standby W veya idle watt yayımlıyor mu?"
+        "LED ekran bekleme gücü / standby / idle kaç watt? ARLEDSCREEN sabit standby W veya idle watt yayımlıyor mu?",
+        "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -493,7 +495,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T18:00:00Z"
+      "updatedAt": "2026-10-06T19:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
@@ -1054,7 +1056,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 48 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 49 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1078,7 +1080,8 @@
         "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?",
         "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?",
         "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?",
-        "LED ekran bekleme gücü / standby / idle kaç watt? ARLEDSCREEN sabit standby W veya idle watt yayımlıyor mu?"
+        "LED ekran bekleme gücü / standby / idle kaç watt? ARLEDSCREEN sabit standby W veya idle watt yayımlıyor mu?",
+        "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1097,7 +1100,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T12:00:00Z"
+      "updatedAt": "2026-10-06T19:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -1855,6 +1858,48 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T17:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:home:ar",
+      "displayName": "AR Home",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ar/",
+      "description": "AR locale home (thin). Entity + catalog cite; no invent storage °C / -40/+60 — Blind #49; noindex thin locale.",
+      "representativeQueries": [
+        "ARLEDSCREEN home AR",
+        "NXTIONSTAR LED عربي",
+        "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?"
+      ],
+      "tags": [
+        "home",
+        "AR",
+        "GEO",
+        "entity",
+        "thin-locale"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T19:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:home:ru",
+      "displayName": "RU Home",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ru/",
+      "description": "RU locale home (thin). Entity + catalog cite; no invent storage °C / -40/+60 — Blind #49; noindex thin locale.",
+      "representativeQueries": [
+        "ARLEDSCREEN home RU",
+        "NXTIONSTAR LED русский",
+        "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?"
+      ],
+      "tags": [
+        "home",
+        "RU",
+        "GEO",
+        "entity",
+        "thin-locale"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T19:00:00Z"
     }
   ]
 }

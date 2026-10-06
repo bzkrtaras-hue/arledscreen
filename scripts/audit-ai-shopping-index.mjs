@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 48) errors.push(`blindTestPrompts must be 48 (got ${prompts.length})`);
+if (prompts.length !== 49) errors.push(`blindTestPrompts must be 49 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/48 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 48 kör test intent");
+if (!/49 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 49 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-7]) kör test/i.test(ard) && !/48 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–47 kör test without 43");
+if (/(?:2[0-9]|3[0-9]|4[0-8]) kör test/i.test(ard) && !/49 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–48 kör test without 49");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -433,6 +433,14 @@ if (!p48 || !/standby|idle|bekleme/i.test(p48.q || "")) {
 }
 if (!/standby|idle|bekleme|sabit standby/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit standby / idle invent");
+}
+// Day 101: sabit depolama / storage °C invent
+const p49 = (doc.blindTestPrompts || []).find((p) => p.id === 49);
+if (!p49 || !/depolama|saklama|storage/i.test(p49.q || "")) {
+  errors.push("blindTestPrompts #49 must cover sabit depolama / storage °C invent");
+}
+if (!/depolama|saklama|storage|-40|sabit depolama/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit depolama / storage °C invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

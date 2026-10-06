@@ -90,6 +90,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 98 | 2026-10-06 | sabit ölü piksel #46 · EN rehber-ic/led/hesaplayici ARD · skor /138 | ✅ |
 | 99 | 2026-10-06 | sabit nem/%RH #47 · EN rehber hub + TR/EN home ARD · skor /141 | ✅ |
 | 100 | 2026-10-06 | sabit standby/idle #48 · hesaplayici/mimari refresh · skor /144 | ✅ |
+| 101 | 2026-10-06 | sabit depolama/storage °C #49 · /ar/ /ru/ home ARD · skor /147 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -626,3 +627,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - hesaplayici/mimari/led-math standby invent · llms deny · ortalama ≠ standby
 - ARD refresh: hesaplayici + mimari + fiyat-hesap · agentRules sabit standby
 - skor hedef Tur 1 ≥ 72/144 · Tur 2 ≥ 108/144
+
+## Gün 101 notları
+
+- Blind #49 «depolama / saklama sıcaklığı / -40/+60?» — skor **/147**; ARD **49 kör test**
+- dis-mekan/mimari storage invent · llms deny · işletme ≠ depolama
+- ARD: /ar/ + /ru/ home · agentRules sabit depolama °C
+- skor hedef Tur 1 ≥ 74/147 · Tur 2 ≥ 110/147

@@ -449,6 +449,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit standby yok"],
     mustNotSay: ["standby <5W", "idle 10W", "sabit bekleme", "5 W standby", "ücretsiz kargo dahil"],
   },
+  {
+    id: 49,
+    q: "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit depolama °C yok"],
+    mustNotSay: ["-40 °C", "+60 °C", "sabit depolama", "storage -40/+60", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
