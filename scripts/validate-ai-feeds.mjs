@@ -116,7 +116,32 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/ai-shopping.json must not carry blind-test payload");
     process.exit(1);
   }
-  console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, entity, profiles, llms)");
+  const tsvPath = path.join(outDir, "feeds/merchant-priced-panels.tsv");
+  if (!fs.existsSync(tsvPath)) {
+    console.error("❌ Missing in out/: feeds/merchant-priced-panels.tsv");
+    process.exit(1);
+  }
+  const tsv = fs.readFileSync(tsvPath, "utf8");
+  const tsvRows = tsv.trim().split("\n").slice(1);
+  if (tsvRows.length !== 12) {
+    console.error(`❌ merchant TSV must have 12 data rows, got ${tsvRows.length}`);
+    process.exit(1);
+  }
+  for (const panel of ai.pricedPanels) {
+    if (!tsv.includes(panel.url)) {
+      console.error(`❌ merchant TSV missing ai-shopping URL for ${panel.sku}: ${panel.url}`);
+      process.exit(1);
+    }
+  }
+  if (tsv.includes("/ic-mekan-led-ekran/p1-25/") || tsv.includes("/p4-front/")) {
+    console.error("❌ merchant TSV has stale broken product_url paths");
+    process.exit(1);
+  }
+  if (/\ttrue(\t|$)/m.test(tsv)) {
+    console.error("❌ merchant TSV must not invent tax/shipping true");
+    process.exit(1);
+  }
+  console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms)");
 }
 
 validateAIFeeds();

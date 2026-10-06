@@ -332,6 +332,60 @@ function writeJson(dir, name, value) {
   fs.writeFileSync(path.join(dir, name), JSON.stringify(value, null, 2) + "\n");
 }
 
+/** Merchant TSV from the same PANEL_PRICES as ai-shopping (shipping_included always false). */
+function buildMerchantTsv() {
+  const header = [
+    "id",
+    "pitch",
+    "pitch_mm",
+    "use",
+    "surface",
+    "front_service",
+    "module_size",
+    "price_usd",
+    "price_currency",
+    "valid_until",
+    "seller",
+    "seller_url",
+    "seller_email",
+    "product_url",
+    "availability",
+    "tax_included",
+    "shipping_included",
+  ];
+  const lines = [header.join("\t")];
+  for (const panel of PANEL_PRICES) {
+    lines.push(
+      [
+        panel.id,
+        panel.pitch,
+        String(panel.pitchMm),
+        panel.use,
+        panel.surface || "none",
+        panel.frontService ? "yes" : "no",
+        panel.moduleMm ?? "320 × 160 mm",
+        panel.usd.toFixed(2),
+        "USD",
+        PRICE_VALID_UNTIL,
+        "ARLEDSCREEN",
+        SITE_URL,
+        "arled@arledscreen.com",
+        panel.productUrl,
+        "InStock",
+        "false",
+        "false",
+      ].join("\t"),
+    );
+  }
+  return `${lines.join("\n")}\n`;
+}
+
+function writeText(dir, relPath, text) {
+  const dest = path.join(dir, relPath);
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.writeFileSync(dest, text);
+}
+
 function copyPublicToOut(relPath) {
   const src = path.join(publicDir, relPath);
   const dest = path.join(outDir, relPath);
@@ -365,10 +419,12 @@ function main() {
 
   const catalog = buildCatalog();
   const ai = buildAiShopping();
+  const merchantTsv = buildMerchantTsv();
 
   for (const dir of [publicDir, outDir]) {
     writeJson(dir, "catalog.json", catalog);
     writeJson(dir, "ai-shopping.json", ai);
+    writeText(dir, "feeds/merchant-priced-panels.tsv", merchantTsv);
   }
 
   // Entity + Point C paste packs must survive CF deploy (live surface, not agent runbooks).
@@ -398,9 +454,24 @@ function main() {
     console.error("postbuild-ai: refuse blind-test payload in ai-shopping.json");
     process.exit(1);
   }
+  for (const panel of PANEL_PRICES) {
+    if (panel.surface === "GOB" && !panel.productUrl.includes("/gob-led-ekran/")) {
+      console.error(`postbuild-ai: GOB panel ${panel.id} must use gob-led-ekran productUrl`);
+      process.exit(1);
+    }
+    if (panel.frontService && !panel.productUrl.includes("p4-on-servis")) {
+      console.error(`postbuild-ai: front-service panel ${panel.id} must use p4-on-servis URL`);
+      process.exit(1);
+    }
+    const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
+    if (!row || !row.includes(panel.productUrl) || row.includes("\ttrue")) {
+      console.error(`postbuild-ai: merchant TSV mismatch or free-ship invent for ${panel.id}`);
+      process.exit(1);
+    }
+  }
 
   console.log(
-    `Generated ${PANEL_PRICES.length} pricedPanels in public/ + out/ (catalog.json, ai-shopping.json); entity-profiles → out/`,
+    `Generated ${PANEL_PRICES.length} pricedPanels + merchant TSV in public/ + out/ (catalog, ai-shopping, feeds); entity-profiles → out/`,
   );
 }
 
