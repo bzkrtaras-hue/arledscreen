@@ -2188,6 +2188,20 @@ if (
   errors.push("blind prompt #165 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit expansion joint yok");
 }
 
+const pBlind166 = PROMPTS.find((x) => x.id === 166);
+if (!pBlind166 || !/Shure|mikrofon/i.test(pBlind166.q)) {
+  errors.push("blind prompt #166 must cover sabit Shure invent");
+}
+if (
+  pBlind166 &&
+  (!pBlind166.mustSay?.includes("yazılı teklif") ||
+    !pBlind166.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind166.mustSay?.includes("sabit Shure yok"))
+) {
+  errors.push("blind prompt #166 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Shure yok");
+}
+
+
 
 
 

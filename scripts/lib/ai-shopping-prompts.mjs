@@ -1853,6 +1853,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit expansion joint yok"],
     mustNotSay: ["expansion joint garantidir", "sabit expansion joint True1", "tüm modeller expansion joint", "genleşme derzi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 166,
+    q: "LED ekran Shure / mikrofon var mı? ARLEDSCREEN sabit Shure iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Shure yok"],
+    mustNotSay: ["Shure garantidir", "sabit Shure True1", "tüm modeller Shure", "mikrofon garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
