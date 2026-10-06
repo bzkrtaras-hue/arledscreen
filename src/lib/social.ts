@@ -64,8 +64,7 @@ export const ORGANIZATION_SAME_AS = [
   SOCIAL_LINKS.instagram.href,
   SOCIAL_LINKS.facebook.href,
   "https://www.linkedin.com/company/arleds",
-  // "https://arleds.com" removed 2026-10-04: no valid TLS certificate since 2024-09 and no
-  // working redirect. Re-add only once it 301-redirects to https://arledscreen.com/.
+  // arleds.com is NOT our site — never sameAs. Canonical web: https://arledscreen.com only.
 ] as const;
 
 

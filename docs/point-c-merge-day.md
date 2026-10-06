@@ -9,9 +9,9 @@ Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/
 - `smoke:live` **20/20 PASS** · CI tip success · invent hedge = prompt/agentRules (sayfa URL 404 beklenen, kırık değil)
 - PR #55 ready for review; merge sahip onayı (Point C paste merge beklemez)
 
-**Hâlâ sahip (ajan kapatamaz):** (1) Point C paste GBP→LI→IG→FB — Drive https://docs.google.com/document/d/1JCU3RoL-ZJeOBHl73LRPrxRijDKD4FYdUscBKGOY1jc/edit · packs https://arledscreen.com/entity-profiles.json (2) Tur 1a skor kartı (uydurma skor yok) (3) `arleds.com` 301 — CF zone’da yok; TLS timeout; `blockedUntil301`
+**Hâlâ sahip (ajan kapatamaz):** (1) Point C paste GBP→LI→IG→FB — Drive https://docs.google.com/document/d/1JCU3RoL-ZJeOBHl73LRPrxRijDKD4FYdUscBKGOY1jc/edit · packs https://arledscreen.com/entity-profiles.json (2) Tur 1a skor kartı (uydurma skor yok)
 
-**arleds.com (2026-10-06):** SSL timeout — 301 yok. `sameAs`’a ekleme. IG/FB/LI sameAs URL’leri **200**.
+**Kanonik site:** yalnızca `https://arledscreen.com`. `arleds.com` bizim site değil — sameAs yok, sahip 301 görevi yok. IG/FB/LI sameAs URL’leri **200**.
 
 Pre-merge (opsiyonel, zaten yeşil olmalı):
 
@@ -92,7 +92,7 @@ Canlı tek dosya yapıştırma: [`point-c-paste-bundle.md`](./point-c-paste-bund
 5. **Dizin short/long** → `packs.directoryShort` / `directoryLong`
 6. **Bing Places** → `packs.bingPlaces` (NAP birebir; LED display / Digital signage)
 7. (İsteğe) YouTube / Apple Business / Yandex — aynı cite; uydurma rating/fiyat yok
-8. `arleds.com` → `arledscreen.com/tr/` **301** yoksa sameAs’a ekleme (`blockedUntil301`)
+8. ~~arleds.com 301~~ — **iptal**: arleds.com bizim site değil; kanonik yalnızca arledscreen.com
 
 Yapıştırma bitince: kör tur 1 tarihini skor kartına yaz; Tur 2’yi Point C sonrası planla.
 
@@ -122,7 +122,7 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 
 ## 3) Domain birleştirme
 
-- `arleds.com` → `https://arledscreen.com/tr/` **301** (entity bölünmesini kes)
+- Kanonik web: `https://arledscreen.com` only (`arleds.com` bizim değil)
 - Aynı telefonla iki domain indekste kalmasın
 
 ## 4) Kör tur 1 (deploy sonrası)

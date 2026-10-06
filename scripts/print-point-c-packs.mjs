@@ -80,11 +80,12 @@ function validate(doc) {
   if (!doc.sameAsReadiness?.live || !Array.isArray(doc.sameAsReadiness.blockedUntil301)) {
     errors.push("sameAsReadiness.live / blockedUntil301 required");
   }
-  if (doc.sameAsReadiness?.blockedUntil301?.some((u) => !/arleds\.com/i.test(String(u)))) {
-    // ok if list empty of arleds — but we expect arleds blocked note
+  if ((doc.sameAsReadiness?.blockedUntil301 || []).length !== 0) {
+    errors.push("sameAsReadiness.blockedUntil301 must be empty (arleds.com is not our site)");
   }
-  if (!JSON.stringify(doc.sameAsReadiness || {}).includes("arleds.com")) {
-    errors.push("sameAsReadiness must mention arleds.com blocked-until-301");
+  const readinessNotes = JSON.stringify(doc.sameAsReadiness?.notes || []);
+  if (!/arleds\.com/i.test(readinessNotes) || !/bizim site değil|not our site|kanonik.*arledscreen/i.test(readinessNotes)) {
+    errors.push("sameAsReadiness.notes must state arleds.com is not our site; canonical arledscreen.com");
   }
   if (!doc.canonicalUrls?.aiShoppingJson?.includes("/ai-shopping.json")) {
     errors.push("canonicalUrls.aiShoppingJson missing");

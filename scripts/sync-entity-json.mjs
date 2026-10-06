@@ -96,7 +96,7 @@ function parseEntityFaqs(src) {
 const faqs = parseEntityFaqs(entitySrc);
 
 if (ORGANIZATION_SAME_AS.some((u) => /arleds\.com/i.test(u))) {
-  throw new Error("sync-entity: arleds.com must not be in sameAs until 301 works");
+  throw new Error("sync-entity: arleds.com is not our site — never add to sameAs (canonical: arledscreen.com)");
 }
 
 const doc = {
@@ -192,10 +192,11 @@ const profiles = {
   },
   sameAsReadiness: {
     live: ORGANIZATION_SAME_AS,
-    blockedUntil301: ["https://arleds.com/ (apex → arledscreen.com/tr/ 301 sonrası sameAs)"],
+    // Empty: arleds.com bizim site değil — 301/sameAs adayı yok. Kanonik yalnızca arledscreen.com.
+    blockedUntil301: [],
     notes: [
       "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
-      "arleds.com sameAs’a eklenmez ta ki 301 canlı doğrulanana kadar.",
+      "Kanonik site yalnızca https://arledscreen.com — arleds.com bizim site değil; sameAs’a eklenmez; sahip 301 görevi yok.",
       "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directory/appleBusinessConnect/bingPlaces/yandexBusiness/crunchbaseDraft) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
       "wikidataReadiness = alan checklist + kanıt URL; uydurma QID yok; notability yoksa atlayın.",
       "googleMerchantReadiness = 12 SKU TSV only; shipping boş; quote-only yok.",

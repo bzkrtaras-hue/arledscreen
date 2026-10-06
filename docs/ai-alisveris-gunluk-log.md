@@ -1,3 +1,8 @@
+## Gün 467b — arleds.com bizim değil (kanonik arledscreen.com)
+
+- `blockedUntil301` boş · sahip 301 görevi kaldırıldı
+- sameAs yalnızca IG/FB/LI · Point C + Tur 1a hâlâ sahip
+
 ## Gün 467 — invent Blind #415 counter apron
 
 - Blind #415 counter apron / counter eteği · dis/mimari · prompts=415 · /1245

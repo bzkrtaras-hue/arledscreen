@@ -19,7 +19,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] Tek-fetch AI alışveriş index: `/ai-shopping.json` + `npm run post-deploy`
 - [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok) — checklist: [`docs/merchant-priced-panels.md`](./merchant-priced-panels.md); dry-run TSV: `/feeds/merchant-priced-panels.tsv` (`audit:merchant-feed`)
 - [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn) — packs: `/entity-profiles.json`
-- [ ] **Owner:** `arleds.com` → `arledscreen.com/tr/` 301
+- [x] **Kanonik:** yalnızca `arledscreen.com` (`arleds.com` bizim değil — 301 yok)
 - [x] Canlı entity/catalog/ard/profiles/ai-shopping **200**; robots Function bare Host hazır — CDN HIT hâlâ şemalı Host gösterebilir (PR #55 draft; invent yok)
 
 ## P0 — Immediate (site + measurement)
@@ -80,7 +80,7 @@ Durum (2026-10-06): JSON 200; robots Function bare / CDN HIT şemalı Host; Poin
 - [x] Off-site playbook: gap audit + 14-gün P0 sıra + 20-kaynak tracker (yapıştırma metinleri repo içi)
 - [x] Point C tracker güncellendi (Site hazır / Sahip durum / sayaç + panosu)
 - [x] Canlı `/entity.json` + `/catalog.json` + `/.well-known/ard.json` + `/ai-shopping.json` **200** (2026-10-06 `smoke:live` 20/20)
-- [ ] **Owner P0:** `arleds.com` → `arledscreen.com/tr/` 301 (entity bölünmesini kes)
+- [x] **Kanonik P0:** `arledscreen.com` only — `arleds.com` bizim site değil
 - [ ] **Owner P0:** GBP + LinkedIn/IG/FB About = playbook pack (aynı NAP)
 - [ ] LinkedIn company + founder posts per major project
 - [ ] Instagram / YouTube: install clips with transcript + embed on case study

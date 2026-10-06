@@ -254,6 +254,12 @@ if (profiles) {
   if (!profiles.sameAsReadiness?.live || !Array.isArray(profiles.sameAsReadiness.blockedUntil301)) {
     errors.push("entity-profiles.json sameAsReadiness must list live + blockedUntil301");
   }
+  if ((profiles.sameAsReadiness?.blockedUntil301 || []).length !== 0) {
+    errors.push("sameAsReadiness.blockedUntil301 must be empty (arleds.com is not our site)");
+  }
+  if (!/bizim site değil|not our site|kanonik.*arledscreen/i.test(JSON.stringify(profiles.sameAsReadiness?.notes || []))) {
+    errors.push("sameAsReadiness.notes must state arleds.com is not our site; canonical arledscreen.com");
+  }
 }
 
 const ard = readJson(".well-known/ard.json");

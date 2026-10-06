@@ -487,5 +487,5 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
 2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (415 /1245)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
-4. `arleds.com` → `arledscreen.com/tr/` 301 (CF zone yoksa DNS/registrar)  
-5. Tur 2 (Point C sonrası, ≤2026-11-04)
+4. Tur 2 (Point C sonrası, ≤2026-11-04)  
+   (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)

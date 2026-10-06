@@ -45,7 +45,7 @@ if (!fs.existsSync(entityPath)) {
     errors.push(`entity.json sameAs ${JSON.stringify(got)} != ORGANIZATION_SAME_AS ${JSON.stringify(expectedSameAs)}`);
   }
   if (got.some((u) => /arleds\.com/i.test(u))) {
-    errors.push("entity.json sameAs must not include arleds.com until TLS+301");
+    errors.push("entity.json sameAs must never include arleds.com (not our site; canonical arledscreen.com)");
   }
   const dis = entity.disambiguatingDescription || "";
   for (const needle of ["ARLED Solutions", "NEXTSTAR", "NationStar"]) {

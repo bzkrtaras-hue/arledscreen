@@ -23,7 +23,7 @@ yayımlanmaz** — yalnızca burada.
 | `/entity.json` | **404** (Next soft-404 HTML) | Repo’da var; prod artifact eksik → **PR #55 merge + CF Pages redeploy** |
 | `/catalog.json` | **404** | AI alışveriş branch’inde; merge sonrası |
 | `/.well-known/ard.json` | **404** | Aynı |
-| Ana sayfa Organization `sameAs` | IG + FB + LinkedIn | `arleds.com` yok (doğru; 301 yokken eklenmez) |
+| Ana sayfa Organization `sameAs` | IG + FB + LinkedIn | `arleds.com` yok (doğru — bizim site değil; kanonik arledscreen.com) |
 | Canlı `disambiguatingDescription` | Eski/kısmi | Repo’da Almanya ARLED Solutions + NEXTSTAR/NationStar tam; redeploy ile güncellenir |
 
 Build: `npm run entity` + `npm run audit:entity` (postbuild).
@@ -39,10 +39,9 @@ Build: `npm run entity` + `npm run audit:entity` (postbuild).
 
 **Bu hafta sahip sırası (blokaj sırasına göre):**
 1. PR #55 merge + Cloudflare Pages redeploy → entity/catalog/ard **200** doğrula
-2. `arleds.com` → `arledscreen.com/tr/` 301
-3. GBP doldur (§1 pack birebir) + IG/FB/LinkedIn About
-4. 2 sektör/yerel dizin başvurusu (§4 e-posta)
-5. İlk müşteri mention veya yerel haber denemesi
+2. GBP doldur (§1 pack birebir) + IG/FB/LinkedIn About
+3. 2 sektör/yerel dizin başvurusu (§4 e-posta)
+4. İlk müşteri mention veya yerel haber denemesi
 
 ---
 
@@ -53,9 +52,9 @@ Web’de “İstanbul LED ekran” / “ARLEDSCREEN” taramasında:
 | Gözlem | Sonuç |
 |---|---|
 | Kendi site yoğunluğu | Yüksek (45 proje, ürün, fiyat, bölge, teknik) |
-| Bağımsız üçüncü taraf | **Zayıf** — çoğunlukla LinkedIn kurucu postları + eski `arleds.com` |
+| Bağımsız üçüncü taraf | **Zayıf** — çoğunlukla LinkedIn kurucu postları |
 | Rakip görünürlük | Freeled, Led Garaj, LedEkranistanbul vb. kendi sitelerinde entity cümlelerini tekrarlıyor |
-| Domain bölünmesi | Aynı telefonla `arleds.com` hâlâ indekste → entity parçalanıyor |
+| Domain | Kanonik yalnızca `arledscreen.com` — `arleds.com` bizim site değil |
 
 Sonuç: “ARLEDSCREEN kimdir?” cevabı bugün pratikte **birinci taraf** kaynaklara kilitli.
 Hedef: aynı abartısız olgunun **10–20 farklı güvenilir domain**’de doğrulanması.
@@ -152,17 +151,12 @@ Yalnızca 12 priced panel SKU. Feed: `https://arledscreen.com/feeds/merchant-pri
 
 ---
 
-## 0b) Domain birleştirme (kritik entity notu)
+## 0b) Kanonik domain
 
-Aynı telefon (+90 530 507 88 34) ile görünen eski/yan site **arleds.com** hâlâ indekste rakip/kafa karışıklığı yaratabilir.
-Önceki karar: TLS/redirect yoksa `sameAs`’a eklenmez.
+**Bizim site yalnızca `https://arledscreen.com`.** `arleds.com` bizim domain değil — 301 görevi yok, `sameAs`’a eklenmez.
 
-- [ ] `https://arleds.com` → `https://arledscreen.com/tr/` **301** (tüm sayfalar)
-- [ ] www/http varyantları da apex’e
-- [ ] GSC’de eski domain property varsa adres değişikliği / sitemap temizliği
-- [ ] Bio/GBP/web alanında yalnızca `arledscreen.com`
-
-Bu yapılmadan “ARLEDSCREEN kimdir?” cevabı iki domain arasında bölünür.
+- [x] Bio/GBP/web alanında yalnızca `https://arledscreen.com/tr/`
+- [x] Organization `sameAs`: IG + FB + LinkedIn (arleds.com yok)
 
 ---
 
@@ -221,7 +215,7 @@ Kod tarafı hazır (`entity.json`, catalog, ard, playbook, case study cite). Sı
 | Gün | İş | Neden | Blok |
 |---|---|---|---|
 | 0 | **PR #55 merge + CF Pages redeploy**; `entity.json` / `catalog.json` / `ard.json` **200** doğrula | Ajanlar kimlik+fiyat okuyabilsin | Deploy |
-| 1 | `arleds.com` → `arledscreen.com/tr/` 301 | Entity bölünmesini kes | DNS/hosting |
+| 1 | Point C paste (GBP→LI→IG→FB) | Bağımsız atıf | Sahip |
 | 1–2 | GBP oluştur/doldur: kategori, NAP, saat, WhatsApp, web, orta cite | Maps + yerel AI | Sahip |
 | 2 | LinkedIn şirket About + kurucu Featured’a entity.json | Sosyal entity | Sahip |
 | 2 | Instagram bio + Facebook About aynı pack | Tutarlılık | Sahip |
@@ -240,7 +234,7 @@ Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** k
 - [ ] Birincil kategori: LED display / Digital signage’e en yakın TR kategori
 - [ ] İkincil: Tabela, görsel iletişim vb. (gerçek hizmetlerle uyumlu)
 - [ ] Adres / telefon / web / saatler = yukarıdaki NAP
-- [ ] Web: `https://arledscreen.com/tr/` (arleds.com değil)
+- [ ] Web: `https://arledscreen.com/tr/` (yalnızca bu; arleds.com bizim değil)
 - [ ] Açıklama: playbook §1 GBP pack (birebir)
 - [ ] WhatsApp iş bağlantısı
 - [ ] Hizmetler: LED ekran satışı, montaj, kiralama, teknik servis, keşif
@@ -470,4 +464,4 @@ Beklenen: kendi site dışında en az birkaç URL aynı NAP/olguyu taşır; fiya
 - 81 il doorway
 - “Türkiye’nin en büyüğü / en çok tercih edilen”
 - Olmayan YouTube / sertifika / rating’i schema’ya yazmak
-- arleds.com’u `sameAs`’a eklemek (301 olmadan)
+- arleds.com’u `sameAs`’a eklemek (bizim site değil)
