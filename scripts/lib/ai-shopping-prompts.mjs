@@ -4109,6 +4109,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit window flashing yok"],
     mustNotSay: ["window flashing garantidir", "sabit window flashing True1", "tüm modeller window flashing", "pencere flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 354,
+    q: "LED ekran SMART Board 7000 / SMART Board 6000S var mı? ARLEDSCREEN sabit SMART Board 7000 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit SMART Board 7000 yok"],
+    mustNotSay: ["SMART Board 7000 garantidir", "sabit SMART Board 7000 True1", "tüm modeller SMART Board 7000", "SMART Board 6000S garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
