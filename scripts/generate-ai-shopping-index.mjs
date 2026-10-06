@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 356 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 357 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -472,6 +472,7 @@ const doc = {
     "Sabit SMART Board 7000 / SMART Board 6000S site iddiası yok — SMART Board 7000 kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit SMART Board 7000 uydurmasın.",
     "Sabit door flashing / kapı flaşör site iddiası yok — door flashing kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit door flashing uydurmasın.",
     "Sabit i3TOUCH E-ONE / i3TOUCH EX site iddiası yok — i3TOUCH E-ONE kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit i3TOUCH E-ONE uydurmasın.",
+    "Sabit skylight flashing / ışıklık flaşör site iddiası yok — skylight flashing kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit skylight flashing uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

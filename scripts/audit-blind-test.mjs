@@ -4671,6 +4671,20 @@ if (
   errors.push("blind prompt #356 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH E-ONE yok");
 }
 
+const pBlind357 = PROMPTS.find((x) => x.id === 357);
+if (!pBlind357 || !/skylight flashing|ışıklık flaşör/i.test(pBlind357.q)) {
+  errors.push("blind prompt #357 must cover sabit skylight flashing invent");
+}
+if (
+  pBlind357 &&
+  (!pBlind357.mustSay?.includes("yazılı teklif") ||
+    !pBlind357.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind357.mustSay?.includes("sabit skylight flashing yok"))
+) {
+  errors.push("blind prompt #357 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit skylight flashing yok");
+}
+
+
 
 
 
