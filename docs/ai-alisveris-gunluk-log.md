@@ -1,3 +1,9 @@
+## Gün 494d — Point C paste paket hazır (ajan login yok)
+
+- Invent yok · paste-bundle + Drive Doc yenilendi · `npm run point-c-write`
+- **Ajan GBP/LI/IG/FB’ye giriş yapamaz** — sahip yapıştırır + kanıt
+- Point C paste + Tur 1a hâlâ sahip · hedef aktif
+
 ## Gün 494 — invent Blind #442 Logitech Sight LIVE
 
 - Blind #442 Logitech Sight · ic/konferans · prompts=442 · /1326 · CF deploy · smoke:live 20/20 · IndexNow 193×

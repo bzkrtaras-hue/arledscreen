@@ -15,6 +15,7 @@
     "entity": "node scripts/sync-entity-json.mjs",
     "point-c-packs": "node scripts/print-point-c-packs.mjs",
     "point-c-check": "node scripts/print-point-c-packs.mjs --check",
+    "point-c-write": "node scripts/print-point-c-packs.mjs --write",
     "audit:offers": "node scripts/audit-product-offers.mjs",
     "audit:images": "node scripts/audit-product-images.mjs",
     "audit:shopping-links": "node scripts/audit-shopping-links.mjs",

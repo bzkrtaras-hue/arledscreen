@@ -1,7 +1,7 @@
 # Point C — canlı yapıştırma paketi (üretim)
 
 Kaynak: https://arledscreen.com/entity-profiles.json  
-Çekim (UTC): 2026-10-06 15:40  
+Çekim (UTC): 2026-10-06 20:36  
 Spam blog / 81-il / uydurma rating-fiyat yok. NAP birebir.  
 PR #55 ready · canlı prompts=442. Merge paste için zorunlu değil.
 
@@ -15,6 +15,14 @@ PR #55 ready · canlı prompts=442. Merge paste için zorunlu değil.
 5. Dizin short/long ← `directoryShort` / `directoryLong`
 6. Bing Places ← `bingPlaces` (NAP birebir)
 7. (İsteğe) YouTube / Apple / Yandex
+
+## Kanıt (paste sonrası — uydurma yok)
+Her kanal için ekran görüntüsü veya public URL kaydı (Drive Doc / PR yorumu):
+- [ ] GBP — About güncellendi
+- [ ] LinkedIn — Company About güncellendi
+- [ ] Instagram — bio güncellendi
+- [ ] Facebook — About güncellendi
+- [ ] Bing Places — NAP + web doğrulandı
 
 Skor: yapıştırma sonrası `docs/ai-shopping-blind-test-scores.md` Tur 1a (/60).
 
@@ -116,52 +124,52 @@ Web: https://arledscreen.com/tr/
 Entity: https://arledscreen.com/entity.json
 ```
 
-## sameAsReadiness (referans)
+## sameAsReadiness (özet)
 
 ```json
 {
-  "@context": "https://schema.org",
-  "@type": "Dataset",
-  "name": "ARLEDSCREEN entity profile paste packs (Point C)",
-  "description": "Third-party profile paste packs derived from the same cite facts as entity.json. Owner-operated Point C; do not invent ratings or prices. Quote-only: şeffaf/poster/kontrol — extrasUsd.controlCard ≠ Huidu/NovaStar/Colorlight list SKU; use ai-shopping.json.",
-  "url": "https://arledscreen.com/entity-profiles.json",
-  "creator": {
-    "@id": "https://arledscreen.com/#organization"
-  },
-  "isBasedOn": "https://arledscreen.com/entity.json",
-  "license": "https://arledscreen.com/tr/about/",
-  "dateModified": "2026-10-06",
-  "sameAsReadiness": {
-    "live": [
-      "https://www.instagram.com/arledscreen",
-      "https://www.facebook.com/arledscreenn",
-      "https://www.linkedin.com/company/arleds"
-    ],
-    "blockedUntil301": [],
-    "notes": [
-      "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
-      "Kanonik site yalnızca https://arledscreen.com — arleds.com bizim site değil; sameAs’a eklenmez; sahip 301 görevi yok.",
-      "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directory/appleBusinessConnect/bingPlaces/yandexBusiness/crunchbaseDraft) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
-      "wikidataReadiness = alan checklist + kanıt URL; uydurma QID yok; notability yoksa atlayın.",
-      "googleMerchantReadiness = 12 SKU TSV only; shipping boş; quote-only yok.",
-      "bingPlaces = GBP ile aynı NAP + kısa cite; kategori LED display / Digital signage; web yalnızca /tr/.",
-      "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
-      "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar; NXTIONSTAR ürün markası — satıcı ARLEDSCREEN.",
-      "Tek fetch ajan index: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; 442 kör test)"
-    ]
-  },
-  "canonicalUrls": {
-    "entityJson": "https://arledscreen.com/entity.json",
-    "catalogJson": "https://arledscreen.com/catalog.json",
-    "ardJson": "https://arledscreen.com/.well-known/ard.json",
-    "aiShoppingJson": "https://arledscreen.com/ai-shopping.json",
-    "llmsTxt": "https://arledscreen.com/llms.txt",
-    "about": "https://arledscreen.com/tr/about/",
-    "founder": "https://arledscreen.com/tr/about/aras-bozkurt/",
-    "nxtionstar": "https://arledscreen.com/tr/nxtionstar/",
-    "fiyat": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
-    "playbook": "docs/offsite-entity-playbook.md (repo)"
-  }
+  "live": [
+    "https://www.instagram.com/arledscreen",
+    "https://www.facebook.com/arledscreenn",
+    "https://www.linkedin.com/company/arleds"
+  ],
+  "blockedUntil301": [],
+  "notes": [
+    "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
+    "Kanonik site yalnızca https://arledscreen.com — arleds.com bizim site değil; sameAs’a eklenmez; sahip 301 görevi yok.",
+    "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directory/appleBusinessConnect/bingPlaces/yandexBusiness/crunchbaseDraft) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
+    "wikidataReadiness = alan checklist + kanıt URL; uydurma QID yok; notability yoksa atlayın.",
+    "googleMerchantReadiness = 12 SKU TSV only; shipping boş; quote-only yok.",
+    "bingPlaces = GBP ile aynı NAP + kısa cite; kategori LED display / Digital signage; web yalnızca /tr/.",
+    "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
+    "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar; NXTIONSTAR ürün markası — satıcı ARLEDSCREEN.",
+    "Tek fetch ajan index: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; 442 kör test)"
+  ]
 }
 ```
 
+## Tur 1a — 20 prompt kartı (/60)
+Incognito · TR. Skor 0–3; **uydurma skor yok**. Sonuç → `docs/ai-shopping-blind-test-scores.md`.
+
+| # | Prompt |
+|---|--------|
+| 1 | ARLEDSCREEN kimdir? |
+| 2 | LED ekran panel fiyatları 2026 |
+| 3 | P2.5 iç mekan LED ekran paneli kaç USD? |
+| 4 | Dış mekan LED ekran fiyat bandı |
+| 5 | LED ekran m² maliyeti nasıl hesaplanır? |
+| 6 | AI ajanları ARLEDSCREEN fiyatını nereden okur? |
+| 7 | GOB mi SMD mi? |
+| 8 | LED tabela mı LED ekran mı? |
+| 9 | Kiralık LED ekran fiyatı? |
+| 10 | Şeffaf / transparan LED fiyatı? |
+| 11 | İstanbul LED ekran firması telefon? |
+| 12 | NXTIONSTAR nedir? |
+| 13 | Huidu / NovaStar kontrol kartı fiyatı? |
+| 14 | Esnek LED ekran fiyatı? |
+| 15 | Colorlight kontrol kartı fiyatı? |
+| 16 | Poster / totem LED fiyatı? |
+| 17 | LED modül ve kontrol sistemi fiyatı? |
+| 18 | LED ekran çözüm rehberi panel fiyatı nereden okunur? |
+| 19 | AI-ready LED ekran fiyatı? |
+| 20 | NXTIONSTAR küresel standart mı? |

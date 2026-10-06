@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const live = process.argv.includes("--live");
 const checkOnly = process.argv.includes("--check");
+const writeBundle = process.argv.includes("--write");
 const ORDER = [
   "gbpDescription",
   "linkedinAbout",
@@ -105,6 +106,76 @@ function validate(doc) {
   return errors;
 }
 
+
+async function writePasteBundle(doc) {
+  const packs = doc.packs || {};
+  const utc = new Date().toISOString().slice(0, 16).replace("T", " ");
+  const order = [
+    "gbpDescription",
+    "linkedinAbout",
+    "instagramBio",
+    "facebookAbout",
+    "directoryShort",
+    "directoryLong",
+    "youtubeAbout",
+    "appleBusinessConnect",
+    "bingPlaces",
+    "yandexBusiness",
+  ];
+  let promptsN = "?";
+  try {
+    const ai = JSON.parse(fs.readFileSync(path.join(root, "public/ai-shopping.json"), "utf8"));
+    promptsN = String((ai.blindTestPrompts || []).length);
+  } catch {}
+  const lines = [];
+  lines.push("# Point C — canlı yapıştırma paketi (üretim)");
+  lines.push("");
+  lines.push("Kaynak: https://arledscreen.com/entity-profiles.json  ");
+  lines.push(`Çekim (UTC): ${utc}  `);
+  lines.push("Spam blog / 81-il / uydurma rating-fiyat yok. NAP birebir.  ");
+  lines.push(`PR #55 ready · canlı prompts=${promptsN}. Merge paste için zorunlu değil.`);
+  lines.push("");
+  lines.push("**Sahip Drive Doc (kopyala-yapıştır):** https://docs.google.com/document/d/1JCU3RoL-ZJeOBHl73LRPrxRijDKD4FYdUscBKGOY1jc/edit");
+  lines.push("");
+  lines.push("## Sıra (P0)");
+  lines.push("1. Google Business Profile ← `gbpDescription`");
+  lines.push("2. LinkedIn Company About ← `linkedinAbout`");
+  lines.push("3. Instagram bio ← `instagramBio`");
+  lines.push("4. Facebook About ← `facebookAbout`");
+  lines.push("5. Dizin short/long ← `directoryShort` / `directoryLong`");
+  lines.push("6. Bing Places ← `bingPlaces` (NAP birebir)");
+  lines.push("7. (İsteğe) YouTube / Apple / Yandex");
+  lines.push("");
+  lines.push("## Kanıt (paste sonrası — uydurma yok)");
+  lines.push("Her kanal için ekran görüntüsü veya public URL kaydı (Drive Doc / PR yorumu):");
+  lines.push("- [ ] GBP — About güncellendi");
+  lines.push("- [ ] LinkedIn — Company About güncellendi");
+  lines.push("- [ ] Instagram — bio güncellendi");
+  lines.push("- [ ] Facebook — About güncellendi");
+  lines.push("- [ ] Bing Places — NAP + web doğrulandı");
+  lines.push("");
+  lines.push("Skor: yapıştırma sonrası `docs/ai-shopping-blind-test-scores.md` Tur 1a (/60).");
+  for (const key of order) {
+    lines.push("");
+    lines.push(`## ${key}`);
+    lines.push("");
+    lines.push("```");
+    lines.push(String(packs[key] || "").trim());
+    lines.push("```");
+  }
+  lines.push("");
+  lines.push("## sameAsReadiness (özet)");
+  lines.push("");
+  lines.push("```json");
+  lines.push(JSON.stringify(doc.sameAsReadiness || {}, null, 2));
+  lines.push("```");
+  lines.push("");
+  const out = path.join(root, "docs/point-c-paste-bundle.md");
+  fs.writeFileSync(out, `${lines.join("\n")}\n`);
+  console.log(`point-c-packs --write: wrote ${out}`);
+}
+
+
 const doc = await load();
 
 if (checkOnly) {
@@ -117,6 +188,17 @@ if (checkOnly) {
   console.log(
     `point-c-packs --check: OK — packs=${ORDER.length} sameAsReadiness + ai-shopping cite (${live ? "LIVE" : "local"})`,
   );
+  process.exit(0);
+}
+
+if (writeBundle) {
+  const errors = validate(doc);
+  if (errors.length) {
+    console.error(`point-c-packs --write: FAIL check (${errors.length})`);
+    for (const e of errors) console.error(" -", e);
+    process.exit(1);
+  }
+  await writePasteBundle(doc);
   process.exit(0);
 }
 
