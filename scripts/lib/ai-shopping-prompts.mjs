@@ -3005,6 +3005,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit extruded cleat yok"],
     mustNotSay: ["extruded cleat garantidir", "sabit extruded cleat True1", "tüm modeller extruded cleat", "ekstrüzyon kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 262,
+    q: "LED ekran Horion / interactive panel var mı? ARLEDSCREEN sabit Horion iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Horion yok"],
+    mustNotSay: ["Horion garantidir", "sabit Horion True1", "tüm modeller Horion", "interactive panel garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

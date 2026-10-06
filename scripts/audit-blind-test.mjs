@@ -3436,6 +3436,20 @@ if (
   errors.push("blind prompt #261 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit extruded cleat yok");
 }
 
+const pBlind262 = PROMPTS.find((x) => x.id === 262);
+if (!pBlind262 || !/Horion|interactive panel/i.test(pBlind262.q)) {
+  errors.push("blind prompt #262 must cover sabit Horion invent");
+}
+if (
+  pBlind262 &&
+  (!pBlind262.mustSay?.includes("yazılı teklif") ||
+    !pBlind262.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind262.mustSay?.includes("sabit Horion yok"))
+) {
+  errors.push("blind prompt #262 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Horion yok");
+}
+
+
 
 
 
