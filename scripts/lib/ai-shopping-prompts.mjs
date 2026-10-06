@@ -4349,6 +4349,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit roof valley pan yok"],
     mustNotSay: ["roof valley pan garantidir", "sabit roof valley pan True1", "tüm modeller roof valley pan", "çatı vadi tavası garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 374,
+    q: "LED ekran Avocor AVG Series / Avocor AVG var mı? ARLEDSCREEN sabit Avocor AVG Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Avocor AVG Series yok"],
+    mustNotSay: ["Avocor AVG Series garantidir", "sabit Avocor AVG Series True1", "tüm modeller Avocor AVG Series", "Avocor AVG garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

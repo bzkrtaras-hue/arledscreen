@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 425: blind #373 sabit roof valley pan invent)  
+Son güncelleme: 2026-10-06 (Gün 426: blind #374 sabit Avocor AVG Series invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 373 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 374 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 373 prompt (alışveriş + varlık)
+## 374 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -397,6 +397,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 371 | LED ekran step apron / basamak eteği var mı? ARLEDSCREEN sabit step apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit step apron yok** | step apron garantidir / sabit step apron True1 / tüm modeller step apron / basamak eteği garantidir |
 | 372 | LED ekran i3TOUCH P2 / i3TOUCH P2+ var mı? ARLEDSCREEN sabit i3TOUCH P2 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit i3TOUCH P2 yok** | i3TOUCH P2 garantidir / sabit i3TOUCH P2 True1 / tüm modeller i3TOUCH P2 / i3TOUCH P2+ garantidir |
 | 373 | LED ekran roof valley pan / çatı vadi tavası var mı? ARLEDSCREEN sabit roof valley pan iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit roof valley pan yok** | roof valley pan garantidir / sabit roof valley pan True1 / tüm modeller roof valley pan / çatı vadi tavası garantidir |
+| 374 | LED ekran Avocor AVG Series / Avocor AVG var mı? ARLEDSCREEN sabit Avocor AVG Series iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Avocor AVG Series yok** | Avocor AVG Series garantidir / sabit Avocor AVG Series True1 / tüm modeller Avocor AVG Series / Avocor AVG garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -407,7 +408,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1119. Hedef tur 1 ≥ 560/1119; tur 2 (Point C sonrası) ≥ 840/1119.
+**Tur skoru** = toplam / 1122. Hedef tur 1 ≥ 561/1122; tur 2 (Point C sonrası) ≥ 842/1122.
 
 ### Canlı tur kayıt şablonu
 
