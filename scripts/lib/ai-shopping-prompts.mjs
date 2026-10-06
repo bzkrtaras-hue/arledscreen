@@ -1157,6 +1157,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit louver yok"],
     mustNotSay: ["louver garantidir", "sabit masking", "tüm modeller masking", "masking garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 108,
+    q: "LED ekran module size / modül boyutu var mı? ARLEDSCREEN sabit module size iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit module size yok"],
+    mustNotSay: ["module size garantidir", "sabit modül boyutu", "tüm modeller module size", "modül boyutu garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

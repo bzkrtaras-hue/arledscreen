@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–107: ARD discovery prompt count must not drift behind blind suite
+// Day 74–108: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/107 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 107 kör test intent (not stale 17–106)");
+if (ardTxt && !/108 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 108 kör test intent (not stale 17–107)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–106 kör test without 107");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–107 kör test without 108");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1607,6 +1607,21 @@ for (const rel of [
   }
   if (/louver garantidir|sabit masking|tüm modeller masking|masking garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit louver`);
+  }
+}
+
+// Day 160: sabit module size / modül boyutu — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit module size yok|no fixed site module size/i.test(html)) {
+    errors.push(`${rel} should hedge sabit module size / modül boyutu`);
+  }
+  if (/module size garantidir|sabit modül boyutu|tüm modeller module size|modül boyutu garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit module size`);
   }
 }
 

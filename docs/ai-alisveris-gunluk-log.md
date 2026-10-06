@@ -149,6 +149,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 157 | 2026-10-06 | sabit gamma/white balance #105 · ic/konferans ARD refresh · skor /315 | ✅ |
 | 158 | 2026-10-06 | sabit potting #106 · dis/mimari ARD refresh · skor /318 | ✅ |
 | 159 | 2026-10-06 | sabit louver/masking #107 · dis/mimari ARD refresh · skor /321 | ✅ |
+| 160 | 2026-10-06 | sabit module size #108 · ic/konferans ARD refresh · skor /324 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1099,4 +1100,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari louver invent · llms deny · sabit louver yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit louver
 - skor hedef Tur 1 ≥ 161/321 · Tur 2 ≥ 241/321
+
+## Gün 160 notları
+
+- Blind #108 «module size / modül boyutu?» — skor **/324**; ARD **108 kör test**
+- TR/EN ic-mekan + TR/EN konferans module size invent · llms deny · sabit module size yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit module size
+- skor hedef Tur 1 ≥ 162/324 · Tur 2 ≥ 243/324
 
