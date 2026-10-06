@@ -5321,6 +5321,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HP Presence Mini yok"],
     mustNotSay: ["HP Presence Mini garantidir", "sabit HP Presence Mini True1", "tüm modeller HP Presence Mini", "Presence Mini garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 455,
+    q: "LED ekran transom / yatay kayıt var mı? ARLEDSCREEN sabit transom iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit transom yok"],
+    mustNotSay: ["transom garantidir", "sabit transom True1", "tüm modeller transom", "yatay kayıt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
