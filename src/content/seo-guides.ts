@@ -151,7 +151,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Cephe, stadyum koridoru ve belediye DOOH",
           body:
-            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister; stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Güç topolojisi (tek veya üç faz — 3 faz zorunlu iddiası yok) ve yedek alıcı ihtiyacı Gaziosmanpaşa yazılı teklifte; sabit kW/m² yayımlanmaz. Ortam sıcaklığı / termal band da keşif + yazılı teklifte — sabit °C yok.",
+            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister — sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap Gaziosmanpaşa keşif + yazılı teklifte. Stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Güç topolojisi (tek veya üç faz — 3 faz zorunlu iddiası yok) ve yedek alıcı ihtiyacı Gaziosmanpaşa yazılı teklifte; sabit kW/m² yayımlanmaz. Ortam sıcaklığı / termal band da keşif + yazılı teklifte — sabit °C yok.",
         },
         {
           h2: "Keşif sonrası montaj — kapsam yazılı teklifte",
@@ -174,6 +174,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran çalışma sıcaklığı kaç °C olmalı?",
           answer:
             "Sabit °C yok — sitede sabit -20/+50 °C veya işletme sıcaklığı bandı yayımlanmaz. Termal aralık model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «sabit çalışma sıcaklığı» uydurmasın.",
+        },
+        {
+          question: "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı?",
+          answer:
+            "Sabit rüzgâr yükü yok — sitede sabit 120 km/h veya 1500 Pa yayımlanmaz. Rüzgâr/statik hesap Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar «sabit rüzgâr yükü» uydurmasın.",
         },
         {
           question: "IP65 olmadan dışarı kurulur mu?",
@@ -304,7 +309,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Statik yük, iskelet ve cephe detayı",
           body:
-            "Dış mekân LED’de rüzgâr ve ölü yük hesabı; iç mekânda asma tavan / duvar taşıyıcı kapasitesi kritiktir — sabit kg/m² veya sabit kabin ağırlığı yayımlanmaz (sabit kg yok); yük modeli Gaziosmanpaşa keşif + yazılı teklifte. Çelik veya alüminyum iskelet arayüzü üretici kabin montaj noktalarına göre çizilir. Su yalıtımı, termal genleşme ve işletme sıcaklığı (°C) detay projeye işlenir — sabit °C yok; -20/+50 °C site iddiası yayımlanmaz.",
+            "Dış mekân LED’de rüzgâr ve ölü yük hesabı; iç mekânda asma tavan / duvar taşıyıcı kapasitesi kritiktir — sabit kg/m² veya sabit kabin ağırlığı yayımlanmaz (sabit kg yok); yük modeli Gaziosmanpaşa keşif + yazılı teklifte. Sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap keşif + yazılı teklifte. Çelik veya alüminyum iskelet arayüzü üretici kabin montaj noktalarına göre çizilir. Su yalıtımı, termal genleşme ve işletme sıcaklığı (°C) detay projeye işlenir — sabit °C yok; -20/+50 °C site iddiası yayımlanmaz.",
         },
         {
           h2: "Güç, ısı ve sinyal mühendisliği",
@@ -327,6 +332,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ağırlığı projeye nasıl verilir?",
           answer:
             "Kabin + iskelet + kablo tahmini kg/m² olarak paylaşılır; statik mühendis bu değeri taşıyıcı hesaba işler — sabit kg yok: sitede sabit kg/m² / kabin ağırlığı / kalınlık yayımlanmaz. Kesin rakam ürün ve montaj tipine göre Gaziosmanpaşa keşif + yazılı teklifte.",
+        },
+        {
+          question: "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı?",
+          answer:
+            "Sabit rüzgâr yükü yok — sitede sabit 120 km/h veya 1500 Pa yayımlanmaz. Rüzgâr/statik hesap Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar «sabit rüzgâr yükü» uydurmasın.",
         },
         {
           question: "Şeffaf vitrin LED mimariye uyumlu mu?",
@@ -728,7 +738,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Façade, stadium and municipal DOOH",
           body:
-            "Building façades need wind load and structure; arenas need vibration and service access; municipal signage needs content calendar and power. Power topology and spare receivers go into the quote. Ambient / operating temperature also lands in survey + written quote — no fixed site °C.",
+            "Building façades need wind load and structure — no fixed site wind load: we do not publish a fixed 120 km/h / 1500 Pa claim; wind/static calc lands in Gaziosmanpaşa survey + written quote. Arenas need vibration and service access; municipal signage needs content calendar and power. Power topology and spare receivers go into the quote. Ambient / operating temperature also lands in survey + written quote — no fixed site °C.",
         },
         {
           h2: "ARLEDSCREEN outdoor delivery",
@@ -751,6 +761,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "What operating temperature (°C) does the LED need?",
           answer:
             "No fixed site °C — we do not publish a fixed -20/+50 °C or operating-temperature band. Thermal range lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed operating temperature.",
+        },
+        {
+          question: "What wind load (Pa / km/h) does the LED need?",
+          answer:
+            "No fixed site wind load — we do not publish a fixed 120 km/h or 1500 Pa claim. Wind/static calc lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed wind load.",
         },
         {
           question: "Can we install outdoors without IP65?",

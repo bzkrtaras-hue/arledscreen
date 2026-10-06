@@ -294,7 +294,7 @@ const INTENT_PAGES: CommercialPage[] = [
     eyebrow: "Montaj",
     lead: "Taşıyıcı konstrüksiyondan kabin yerleşimine, güç/sinyal kablolamasından kalibrasyona kadar montajı sahada yönetiyoruz.",
     intro: [
-      "LED ekran montajı; yüzey, rüzgâr/yük hesabı (dış mekân), elektrik ve sinyal hattı ile birlikte planlanır.",
+      "LED ekran montajı; yüzey, rüzgâr/yük hesabı (dış mekân — sabit rüzgâr yükü yok; 120 km/h / 1500 Pa yayımlanmaz), elektrik ve sinyal hattı ile birlikte planlanır.",
       "Süreç: keşif → projelendirme → montaj → devreye alma → kullanım eğitimi. Detaylı adımlar Hizmetler sayfasında da yer alır.",
       NAP,
     ],
@@ -709,7 +709,7 @@ const USE_PAGES: CommercialPage[] = [
     slug: "cephe-led-ekran",
     name: "Cephe LED ekran",
     lead: "Bina cephesi ve meydan için dış mekan LED ekran.",
-    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa kayıtları geniş dış yüzey örnekleridir."],
+    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü (sabit rüzgâr yükü yok — 120 km/h / 1500 Pa yayımlanmaz; keşif + yazılı teklif) ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa kayıtları geniş dış yüzey örnekleridir."],
     proof: (r) => /dış mekân|dış mekan|P4|P5|1344|576/i.test(r.detail),
     images: [
       { src: "/projects/modules/outdoor-facade.jpg", alt: "Cephe LED ekran" },

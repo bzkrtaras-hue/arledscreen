@@ -86,6 +86,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 94 | 2026-10-06 | sabit kg/m² #42 · otel/avm/fuar ARD · skor /126 | ✅ |
 | 95 | 2026-10-06 | sabit °C #43 · stadyum/belediye/restoran ARD · skor /129 | ✅ |
 | 96 | 2026-10-06 | sabit kontrast #44 · dugun/konferans/spor ARD · skor /132 | ✅ |
+| 97 | 2026-10-06 | sabit rüzgâr #45 · EN rehber-dis/quote/about ARD · skor /135 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -594,3 +595,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - ic-mekan/konferans kontrast invent · llms kontrast deny
 - ARD: dugun + konferans-salonu + spor-salonu · IndexNow +3 · agentRules sabit kontrast
 - skor hedef Tur 1 ≥ 66/132 · Tur 2 ≥ 99/132
+
+## Gün 97 notları
+
+- Blind #45 «rüzgâr yükü / 120 km/h / 1500 Pa?» — skor **/135**; ARD **45 kör test**
+- mimari/dis-mekan/cephe rüzgâr invent · llms rüzgâr deny
+- ARD: EN rehber-dis + quote + about · agentRules sabit rüzgâr
+- skor hedef Tur 1 ≥ 68/135 · Tur 2 ≥ 101/135

@@ -427,12 +427,13 @@
       "displayName": "Dış mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
-      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa.",
+      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa; sabit rüzgâr yükü yok — Blind #45.",
       "representativeQueries": [
         "Dış mekân LED ekran kaç nit olmalı?",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
         "LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu?",
-        "dış mekan LED rehber"
+        "dış mekan LED rehber",
+        "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -442,7 +443,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T13:00:00Z"
+      "updatedAt": "2026-10-06T15:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:totem",
@@ -469,13 +470,14 @@
       "displayName": "Mimari / mühendislik LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
-      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43.",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45.",
       "representativeQueries": [
         "mimari LED mühendislik",
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
         "esnek LED mimari",
         "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?",
-        "LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu?"
+        "LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu?",
+        "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -485,7 +487,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T13:00:00Z"
+      "updatedAt": "2026-10-06T15:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
@@ -1044,7 +1046,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 44 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 45 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1064,7 +1066,8 @@
         "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?",
         "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?",
         "LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu?",
-        "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?"
+        "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?",
+        "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1378,11 +1381,12 @@
       "displayName": "Cephe LED ekran",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/cephe-led-ekran/",
-      "description": "Cephe / DOOH LED intent. Sabit ömür/MTBF yok — Blind #40; IP/nit teklifte.",
+      "description": "Cephe / DOOH LED intent. Sabit ömür/MTBF yok — Blind #40; IP/nit teklifte. Sabit rüzgâr yükü yok — Blind #45.",
       "representativeQueries": [
         "cephe LED ekran",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
-        "bina cephesi LED"
+        "bina cephesi LED",
+        "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?"
       ],
       "tags": [
         "commerce",
@@ -1391,7 +1395,7 @@
         "shopping"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T10:00:00Z"
+      "updatedAt": "2026-10-06T15:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:billboard-hub",
@@ -1652,6 +1656,69 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T14:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:en-rehber-dis",
+      "displayName": "EN Outdoor LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/rehber/dis-mekan-led-ekran/",
+      "description": "EN outdoor LED guide twin. No fixed site wind load — Blind #45; survey + written quote Gaziosmanpaşa.",
+      "representativeQueries": [
+        "outdoor LED wind load",
+        "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?",
+        "outdoor LED IP65 guide"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "outdoor",
+        "EN",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T15:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:en-quote",
+      "displayName": "EN Quote",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/quote/",
+      "description": "EN quote form. Final price after Gaziosmanpaşa survey; no fixed wind load / nit / kg invent — Blind #45.",
+      "representativeQueries": [
+        "ARLEDSCREEN quote",
+        "LED display written quote",
+        "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "quote",
+        "EN",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T15:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:en-about",
+      "displayName": "EN About",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/about/",
+      "description": "EN about / entity page. Gaziosmanpaşa NAP; cite entity.json + ai-shopping.json.",
+      "representativeQueries": [
+        "ARLEDSCREEN about",
+        "NXTIONSTAR brand seller",
+        "Gaziosmanpaşa LED company"
+      ],
+      "tags": [
+        "entity",
+        "about",
+        "EN",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T15:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

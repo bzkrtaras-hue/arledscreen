@@ -398,6 +398,19 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kontrast yok"],
     mustNotSay: ["5000:1", "3000:1", "sabit kontrast oranı", "ücretsiz kargo dahil"],
   },
+  {
+    id: 45,
+    q: "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/cephe-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rüzgâr yükü yok"],
+    mustNotSay: ["120 km/h", "1500 Pa", "sabit rüzgâr yükü", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

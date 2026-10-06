@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 44 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 45 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 44) errors.push(`blindTestPrompts must be 44 (got ${prompts.length})`);
+if (prompts.length !== 45) errors.push(`blindTestPrompts must be 45 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/44 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 44 kör test intent");
+if (!/45 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 45 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-3]) kör test/i.test(ard) && !/44 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–43 kör test without 43");
+if (/(?:2[0-9]|3[0-9]|4[0-4]) kör test/i.test(ard) && !/45 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–44 kör test without 43");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -401,6 +401,14 @@ if (!p44 || !/kontrast|5000:1|3000:1/i.test(p44.q || "")) {
 }
 if (!/5000:1|3000:1|kontrast|sabit kontrast/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit kontrast invent");
+}
+// Day 97: sabit rüzgâr yükü invent
+const p45 = (doc.blindTestPrompts || []).find((p) => p.id === 45);
+if (!p45 || !/rüzgâr|ruzgar|Pa|km\/h/i.test(p45.q || "")) {
+  errors.push("blindTestPrompts #45 must cover sabit rüzgâr yükü invent");
+}
+if (!/120 km\/h|1500 Pa|rüzgâr yükü|sabit rüzgâr/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit rüzgâr yükü invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
