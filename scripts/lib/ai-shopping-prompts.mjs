@@ -2993,6 +2993,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Boxlight yok"],
     mustNotSay: ["Boxlight garantidir", "sabit Boxlight True1", "tüm modeller Boxlight", "MimioBoard garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 261,
+    q: "LED ekran extruded cleat / ekstrüzyon kleyt var mı? ARLEDSCREEN sabit extruded cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit extruded cleat yok"],
+    mustNotSay: ["extruded cleat garantidir", "sabit extruded cleat True1", "tüm modeller extruded cleat", "ekstrüzyon kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

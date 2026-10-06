@@ -302,6 +302,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 310 | 2026-10-06 | sabit Sharp #258 · ic/konferans ARD refresh · skor /774 | ✅ |
 | 311 | 2026-10-06 | sabit snap cleat #259 · dis/mimari ARD refresh · skor /777 | ✅ |
 | 312 | 2026-10-06 | sabit Boxlight #260 · ic/konferans ARD refresh · skor /780 | ✅ |
+| 313 | 2026-10-06 | sabit extruded cleat #261 · dis/mimari ARD refresh · skor /783 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2209,3 +2210,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #260 «Boxlight / MimioBoard?» — skor **/780**; ARD **260 kör test**
 - TR/EN ic-mekan + TR/EN konferans Boxlight invent · llms deny · sabit Boxlight yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Boxlight
+
+## Gün 313 notları
+
+- Blind #261 «extruded cleat / ekstrüzyon kleyt?» — skor **/783**; ARD **261 kör test**
+- TR/EN dis-mekan + TR/EN mimari extruded cleat invent · llms deny · sabit extruded cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit extruded cleat

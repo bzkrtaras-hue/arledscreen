@@ -3423,6 +3423,20 @@ if (
   errors.push("blind prompt #260 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Boxlight yok");
 }
 
+const pBlind261 = PROMPTS.find((x) => x.id === 261);
+if (!pBlind261 || !/extruded cleat|ekstrüzyon kleyt/i.test(pBlind261.q)) {
+  errors.push("blind prompt #261 must cover sabit extruded cleat invent");
+}
+if (
+  pBlind261 &&
+  (!pBlind261.mustSay?.includes("yazılı teklif") ||
+    !pBlind261.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind261.mustSay?.includes("sabit extruded cleat yok"))
+) {
+  errors.push("blind prompt #261 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit extruded cleat yok");
+}
+
+
 
 
 
