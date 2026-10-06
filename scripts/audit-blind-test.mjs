@@ -2214,6 +2214,20 @@ if (
   errors.push("blind prompt #167 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit snow load yok");
 }
 
+const pBlind168 = PROMPTS.find((x) => x.id === 168);
+if (!pBlind168 || !/Symetrix|DSP/i.test(pBlind168.q)) {
+  errors.push("blind prompt #168 must cover sabit Symetrix invent");
+}
+if (
+  pBlind168 &&
+  (!pBlind168.mustSay?.includes("yazılı teklif") ||
+    !pBlind168.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind168.mustSay?.includes("sabit Symetrix yok"))
+) {
+  errors.push("blind prompt #168 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Symetrix yok");
+}
+
+
 
 
 

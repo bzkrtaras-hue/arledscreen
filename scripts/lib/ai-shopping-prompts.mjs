@@ -1877,6 +1877,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit snow load yok"],
     mustNotSay: ["snow load garantidir", "sabit snow load True1", "tüm modeller snow load", "kar yükü garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 168,
+    q: "LED ekran Symetrix / DSP var mı? ARLEDSCREEN sabit Symetrix iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Symetrix yok"],
+    mustNotSay: ["Symetrix garantidir", "sabit Symetrix True1", "tüm modeller Symetrix", "Symetrix DSP garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
