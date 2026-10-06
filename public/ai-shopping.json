@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 321 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 322 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -399,6 +399,7 @@
     "Sabit weep screed / süzme şerit site iddiası yok — weep screed kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit weep screed uydurmasın.",
     "Sabit Clevertouch Impact / Clevertouch Lux site iddiası yok — Clevertouch Impact kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Clevertouch Impact uydurmasın.",
     "Sabit cornice cleat / korniş kleyt site iddiası yok — cornice cleat kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit cornice cleat uydurmasın.",
+    "Sabit Horion Interactive / Horion HO Series site iddiası yok — Horion Interactive kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Horion Interactive uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -7550,6 +7551,28 @@
         "sabit cornice cleat True1",
         "tüm modeller cornice cleat",
         "korniş kleyt garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 322,
+      "q": "LED ekran Horion Interactive / Horion HO Series var mı? ARLEDSCREEN sabit Horion Interactive iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit Horion Interactive yok"
+      ],
+      "mustNotSay": [
+        "Horion Interactive garantidir",
+        "sabit Horion Interactive True1",
+        "tüm modeller Horion Interactive",
+        "Horion HO Series garantidir",
         "ücretsiz kargo dahil"
       ]
     }
