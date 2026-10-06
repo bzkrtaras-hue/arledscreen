@@ -4853,6 +4853,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit counter apron yok"],
     mustNotSay: ["counter apron garantidir", "sabit counter apron True1", "tüm modeller counter apron", "counter eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 416,
+    q: "LED ekran Neat Frame / Neat Frame var mı? ARLEDSCREEN sabit Neat Frame iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Frame yok"],
+    mustNotSay: ["Neat Frame garantidir", "sabit Neat Frame True1", "tüm modeller Neat Frame", "Neat Frame dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
