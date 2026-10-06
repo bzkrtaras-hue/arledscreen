@@ -3657,6 +3657,20 @@ if (
   errors.push("blind prompt #278 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit LG CreateBoard yok");
 }
 
+const pBlind279 = PROMPTS.find((x) => x.id === 279);
+if (!pBlind279 || !/valley cleat|vadi kleyt/i.test(pBlind279.q)) {
+  errors.push("blind prompt #279 must cover sabit valley cleat invent");
+}
+if (
+  pBlind279 &&
+  (!pBlind279.mustSay?.includes("yazılı teklif") ||
+    !pBlind279.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind279.mustSay?.includes("sabit valley cleat yok"))
+) {
+  errors.push("blind prompt #279 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley cleat yok");
+}
+
+
 
 
 

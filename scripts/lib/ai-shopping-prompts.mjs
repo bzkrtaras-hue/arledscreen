@@ -3209,6 +3209,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit LG CreateBoard yok"],
     mustNotSay: ["LG CreateBoard garantidir", "sabit LG CreateBoard True1", "tüm modeller LG CreateBoard", "CreateBoard garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 279,
+    q: "LED ekran valley cleat / vadi kleyt var mı? ARLEDSCREEN sabit valley cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit valley cleat yok"],
+    mustNotSay: ["valley cleat garantidir", "sabit valley cleat True1", "tüm modeller valley cleat", "vadi kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
