@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/53 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 53 kör test intent (not stale 17–52)");
+if (ardTxt && !/54 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 54 kör test intent (not stale 17–53)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-2]) kör test/i.test(ardTxt) && !/53 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–52 kör test without 53");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-3]) kör test/i.test(ardTxt) && !/54 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–53 kör test without 54");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -776,6 +776,22 @@ for (const rel of [
   }
   if (/Class A garantidir|B-s1-d0 yayımlanır|sabit fire rating yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit yangın sınıfı`);
+  }
+}
+
+// Day 106: sabit IK / impact rating — honesty presence
+for (const rel of [
+  "out/tr/products/gob-led-ekran/index.html",
+  "out/tr/rehber/vitrin-led-ekran/index.html",
+  "out/en/rehber/vitrin-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit IK yok|no fixed site IK|IK08|IK10/i.test(html)) {
+    errors.push(`${rel} should hedge sabit IK / impact rating`);
+  }
+  if (/IK10 garantidir|sabit IK08 yayımlanır|tüm yüzeyler IK10/i.test(html)) {
+    errors.push(`${rel} must not invent sabit IK`);
   }
 }
 

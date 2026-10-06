@@ -509,6 +509,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit yangın sınıfı yok"],
     mustNotSay: ["Class A garantidir", "B-s1-d0 yayımlanır", "sabit fire rating", "tüm kabinler Class A", "ücretsiz kargo dahil"],
   },
+  {
+    id: 54,
+    q: "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?",
+    paths: [
+      "/tr/products/gob-led-ekran/",
+      "/tr/rehber/vitrin-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit IK yok"],
+    mustNotSay: ["IK10 garantidir", "sabit IK08", "tüm yüzeyler IK10", "IK rating yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

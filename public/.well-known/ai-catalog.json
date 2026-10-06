@@ -386,13 +386,14 @@
       "displayName": "GOB LED ekran (priced hub)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/",
-      "description": "GOB priced panel grubu. Panel USD catalog/ai-shopping; Blind #7 rehber gob-vs-smd; sabit görüş açısı yok — Blind #38. Sabit ölü piksel yok — Blind #46. Sabit nem/%RH yok — Blind #47.",
+      "description": "GOB priced panel grubu. Panel USD catalog/ai-shopping; Blind #7 rehber gob-vs-smd; sabit görüş açısı yok — Blind #38. Sabit ölü piksel yok — Blind #46. Sabit nem/%RH yok — Blind #47. Sabit IK yok — Blind #54.",
       "representativeQueries": [
         "GOB LED ekran fiyat",
         "GOB mi SMD mi?",
         "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?",
         "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?",
-        "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?"
+        "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?",
+        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?"
       ],
       "tags": [
         "commerce",
@@ -402,7 +403,7 @@
         "shopping"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T17:00:00Z"
+      "updatedAt": "2026-10-07T00:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-ic",
@@ -651,11 +652,12 @@
       "displayName": "Vitrin LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/vitrin-led-ekran/",
-      "description": "Vitrin / perakende LED rehber. Quote-only şeffaf/poster; stok paket invent yok; sabit kalınlık/kg yok — Blind #42.",
+      "description": "Vitrin / perakende LED rehber. Quote-only şeffaf/poster; stok paket invent yok; sabit kalınlık/kg yok — Blind #42. Sabit IK yok — Blind #54.",
       "representativeQueries": [
         "vitrin LED ekran",
         "mağaza vitrin LED",
-        "şeffaf vitrin LED"
+        "şeffaf vitrin LED",
+        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -664,7 +666,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T12:00:00Z"
+      "updatedAt": "2026-10-07T00:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:kiralama-intent",
@@ -1063,7 +1065,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 53 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 54 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1092,7 +1094,8 @@
         "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
         "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?",
         "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
-        "LED ekran yangın sınıfı / fire rating nedir? ARLEDSCREEN sabit Class A / B-s1 veya yangın sınıfı yayımlıyor mu?"
+        "LED ekran yangın sınıfı / fire rating nedir? ARLEDSCREEN sabit Class A / B-s1 veya yangın sınıfı yayımlıyor mu?",
+        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1111,7 +1114,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T23:00:00Z"
+      "updatedAt": "2026-10-07T00:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -2139,6 +2142,72 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T23:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:en-rehber-vitrin",
+      "displayName": "EN Shopfront LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/rehber/vitrin-led-ekran/",
+      "description": "EN shopfront/vitrin LED guide. No invent IK08/IK10 — Blind #54; cite written quote.",
+      "representativeQueries": [
+        "shopfront LED EN",
+        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?",
+        "vitrin LED"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "EN",
+        "retail",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:en-rehber-poster",
+      "displayName": "EN Poster LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/rehber/poster-led-ekran/",
+      "description": "EN poster/totem LED guide. No invent IK impact rating — Blind #54.",
+      "representativeQueries": [
+        "poster LED EN",
+        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?",
+        "totem LED"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "EN",
+        "poster",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:en-rehber-kiosk",
+      "displayName": "EN Kiosk LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/rehber/kiosk-dijital-ekran/",
+      "description": "EN kiosk digital display guide. No invent IK08/IK10 — Blind #54.",
+      "representativeQueries": [
+        "kiosk LED EN",
+        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?",
+        "dijital kiosk"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "EN",
+        "kiosk",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T00:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

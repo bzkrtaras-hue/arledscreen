@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 53) errors.push(`blindTestPrompts must be 53 (got ${prompts.length})`);
+if (prompts.length !== 54) errors.push(`blindTestPrompts must be 54 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/53 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 53 kör test intent");
+if (!/54 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 54 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-2]) kör test/i.test(ard) && !/53 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–52 kör test without 53");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-3]) kör test/i.test(ard) && !/54 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–53 kör test without 54");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -473,6 +473,14 @@ if (!p53 || !/yangın|fire rating|Class A|B-s1/i.test(p53.q || "")) {
 }
 if (!/yangın sınıfı|fire rating|Class A|B-s1|sabit yangın/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit yangın sınıfı / fire rating invent");
+}
+// Day 106: sabit IK / impact rating invent
+const p54 = (doc.blindTestPrompts || []).find((p) => p.id === 54);
+if (!p54 || !/IK|impact|darbe/i.test(p54.q || "")) {
+  errors.push("blindTestPrompts #54 must cover sabit IK / impact rating invent");
+}
+if (!/IK08|IK10|sabit IK|impact rating|darbe sınıfı/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit IK / impact rating invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
