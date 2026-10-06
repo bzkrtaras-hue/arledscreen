@@ -4346,6 +4346,20 @@ if (
   errors.push("blind prompt #331 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit lintel flashing yok");
 }
 
+const pBlind332 = PROMPTS.find((x) => x.id === 332);
+if (!pBlind332 || !/Newline Q Series|Newline TruTouch/i.test(pBlind332.q)) {
+  errors.push("blind prompt #332 must cover sabit Newline Q Series invent");
+}
+if (
+  pBlind332 &&
+  (!pBlind332.mustSay?.includes("yazılı teklif") ||
+    !pBlind332.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind332.mustSay?.includes("sabit Newline Q Series yok"))
+) {
+  errors.push("blind prompt #332 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline Q Series yok");
+}
+
+
 
 
 

@@ -3845,6 +3845,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit lintel flashing yok"],
     mustNotSay: ["lintel flashing garantidir", "sabit lintel flashing True1", "tüm modeller lintel flashing", "lintel flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 332,
+    q: "LED ekran Newline Q Series / Newline TruTouch var mı? ARLEDSCREEN sabit Newline Q Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline Q Series yok"],
+    mustNotSay: ["Newline Q Series garantidir", "sabit Newline Q Series True1", "tüm modeller Newline Q Series", "Newline TruTouch garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
