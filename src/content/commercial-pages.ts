@@ -94,7 +94,11 @@ const FAQ_PRICE_SOURCE = {
     "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç). Nihai tutar keşif sonrası yazılı teklifle kesinleşir; uydurma TL paket veya stok fiyatı yoktur.",
 };
 
-const FAQ_AGENT_SOURCE = ;
+const FAQ_AGENT_SOURCE = {
+  question: "Net fiyat ne zaman belli olur?",
+  answer:
+    "Yayımlanmış panel listesi yaklaşık maliyeti gösterir. Nihai tutar ölçü, konum ve montaj koşullarıyla keşif sonrası yazılı teklifte kesinleşir.",
+};
 
 const CORE_CITIES = cityLinks(["istanbul", "antalya", "bursa", "izmir", "eskisehir", "manisa", "yalova"]);
 
