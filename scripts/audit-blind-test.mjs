@@ -5630,6 +5630,19 @@ if (
 ) {
   errors.push("blind prompt #430 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Kit Plus yok");
 }
+const pBlind431 = PROMPTS.find((x) => x.id === 431);
+if (!pBlind431 || !/skylight apron/i.test(pBlind431.q)) {
+  errors.push("blind prompt #431 must cover sabit skylight apron invent");
+}
+if (
+  pBlind431 &&
+  (!pBlind431.mustSay?.includes("yazılı teklif") ||
+    !pBlind431.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind431.mustSay?.includes("sabit skylight apron yok"))
+) {
+  errors.push("blind prompt #431 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit skylight apron yok");
+}
+
 
 
 

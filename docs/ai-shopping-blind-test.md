@@ -454,6 +454,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 428 | LED ekran MeetingBar A30 / MeetingBar A30 var mı? ARLEDSCREEN sabit MeetingBar A30 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit MeetingBar A30 yok** | MeetingBar A30 garantidir / sabit MeetingBar A30 True1 / tüm modeller MeetingBar A30 |
 | 429 | LED ekran canopy apron / kanopi eteği var mı? ARLEDSCREEN sabit canopy apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit canopy apron yok** | canopy apron garantidir / sabit canopy apron True1 / tüm modeller canopy apron / kanopi eteği garantidir |
 | 430 | LED ekran Room Kit Plus / Room Kit Plus var mı? ARLEDSCREEN sabit Room Kit Plus iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Room Kit Plus yok** | Room Kit Plus garantidir / sabit Room Kit Plus True1 / tüm modeller Room Kit Plus / Room Kit Plus dahildir |
+| 431 | LED ekran skylight apron / ışıklık eteği var mı? ARLEDSCREEN sabit skylight apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit skylight apron yok** | skylight apron garantidir / sabit skylight apron True1 / tüm modeller skylight apron / ışıklık eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -464,7 +465,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1287 (429 × 0–3). Hedef tur 1 ≥ 644/1290; tur 2 (Point C sonrası) ≥ 966/1290.
+**Tur skoru** = toplam / 1287 (429 × 0–3). Hedef tur 1 ≥ 644/1293; tur 2 (Point C sonrası) ≥ 966/1293.
 
 ### Canlı tur kayıt şablonu
 
@@ -500,7 +501,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (421 /1290)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (421 /1293)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)

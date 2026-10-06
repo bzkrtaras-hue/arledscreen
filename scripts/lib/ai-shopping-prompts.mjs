@@ -5033,6 +5033,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Room Kit Plus yok"],
     mustNotSay: ["Room Kit Plus garantidir", "sabit Room Kit Plus True1", "tüm modeller Room Kit Plus", "Room Kit Plus dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 431,
+    q: "LED ekran skylight apron / ışıklık eteği var mı? ARLEDSCREEN sabit skylight apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit skylight apron yok"],
+    mustNotSay: ["skylight apron garantidir", "sabit skylight apron True1", "tüm modeller skylight apron", "ışıklık eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
