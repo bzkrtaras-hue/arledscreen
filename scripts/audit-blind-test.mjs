@@ -4216,6 +4216,20 @@ if (
   errors.push("blind prompt #321 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cornice cleat yok");
 }
 
+const pBlind322 = PROMPTS.find((x) => x.id === 322);
+if (!pBlind322 || !/Horion Interactive|Horion HO Series/i.test(pBlind322.q)) {
+  errors.push("blind prompt #322 must cover sabit Horion Interactive invent");
+}
+if (
+  pBlind322 &&
+  (!pBlind322.mustSay?.includes("yazılı teklif") ||
+    !pBlind322.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind322.mustSay?.includes("sabit Horion Interactive yok"))
+) {
+  errors.push("blind prompt #322 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Horion Interactive yok");
+}
+
+
 
 
 

@@ -3725,6 +3725,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cornice cleat yok"],
     mustNotSay: ["cornice cleat garantidir", "sabit cornice cleat True1", "tüm modeller cornice cleat", "korniş kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 322,
+    q: "LED ekran Horion Interactive / Horion HO Series var mı? ARLEDSCREEN sabit Horion Interactive iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Horion Interactive yok"],
+    mustNotSay: ["Horion Interactive garantidir", "sabit Horion Interactive True1", "tüm modeller Horion Interactive", "Horion HO Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
