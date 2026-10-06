@@ -4810,23 +4810,6 @@ for (const rel of [
 }
 
 
-// Day 376: sabit Horion Interactive / Horion HO Series — honesty presence
-for (const rel of [
-  "out/tr/rehber/ic-mekan-led-ekran/index.html",
-  "out/tr/rehber/konferans-salonu-led/index.html",
-]) {
-  const html = read(rel);
-  if (!html) continue;
-  if (!/sabit Horion Interactive yok|no fixed site Horion Interactive/i.test(html)) {
-    errors.push(`${rel} should hedge sabit Horion Interactive / Horion HO Series`);
-  }
-  if (/Horion Interactive\ garantidir|sabit\ Horion Interactive\ True1|tüm\ modeller\ Horion Interactive|Horion HO Series\ garantidir/i.test(html)) {
-    errors.push(`${rel} must not invent sabit Horion Interactive`);
-  }
-}
-
-
-
 // Day 374: sabit Horion Interactive / Horion HO Series — honesty presence
 for (const rel of [
   "out/tr/rehber/ic-mekan-led-ekran/index.html",
@@ -4857,6 +4840,23 @@ for (const rel of [
     errors.push(`${rel} must not invent sabit z-flashing`);
   }
 }
+
+// Day 376: sabit Hisense GoBoard / Hisense GoBoard Pro — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit Hisense GoBoard yok|no fixed site Hisense GoBoard/i.test(html)) {
+    errors.push(`${rel} should hedge sabit Hisense GoBoard / Hisense GoBoard Pro`);
+  }
+  if (/Hisense GoBoard\ garantidir|sabit\ Hisense GoBoard\ True1|tüm\ modeller\ Hisense GoBoard|Hisense GoBoard Pro\ garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit Hisense GoBoard`);
+  }
+}
+
+
 
 
 
