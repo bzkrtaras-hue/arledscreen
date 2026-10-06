@@ -118,3 +118,15 @@ Kurallar: Incognito · TR · skor 0–3 · **uydurma skor yok**.
 | 20 | NXTIONSTAR küresel standart mı? | | | | |
 
 Skor anahtarı: 0=yanlış/uydurma · 1=kısmi · 2=doğru cite zayıf · 3=doğru + arledscreen.com cite
+
+## Tur 1a — ajan koşusu BLOCKED (2026-10-06)
+
+Sahibe iş atanmadı. Ajan kendisi koşturmaya çalıştı; **skor tablosu yok** (uydurma 0/60 silindi).
+
+| Kanal | Sonuç |
+|-------|--------|
+| ChatGPT (computerUse) | Kota tükendi — subagent start fail |
+| Perplexity (puppeteer + Chrome) | Cloudflare Turnstile bot check — cevap alınamadı |
+
+Kanıt: `/cursor/stores/self/artifacts/tur1a-p1-nobox.png` · JSON: `tur-1a-chatgpt.json` (`blocked: true`)
+
