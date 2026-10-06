@@ -5139,6 +5139,20 @@ if (
   errors.push("blind prompt #392 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Seewo Board Pro yok");
 }
 
+const pBlind393 = PROMPTS.find((x) => x.id === 393);
+if (!pBlind393 || !/valley apron|vadi eteği/i.test(pBlind393.q)) {
+  errors.push("blind prompt #393 must cover sabit valley apron invent");
+}
+if (
+  pBlind393 &&
+  (!pBlind393.mustSay?.includes("yazılı teklif") ||
+    !pBlind393.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind393.mustSay?.includes("sabit valley apron yok"))
+) {
+  errors.push("blind prompt #393 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley apron yok");
+}
+
+
 
 
 

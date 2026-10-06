@@ -4577,6 +4577,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Seewo Board Pro yok"],
     mustNotSay: ["Seewo Board Pro garantidir", "sabit Seewo Board Pro True1", "tüm modeller Seewo Board Pro", "Seewo Board garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 393,
+    q: "LED ekran valley apron / vadi eteği var mı? ARLEDSCREEN sabit valley apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit valley apron yok"],
+    mustNotSay: ["valley apron garantidir", "sabit valley apron True1", "tüm modeller valley apron", "vadi eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

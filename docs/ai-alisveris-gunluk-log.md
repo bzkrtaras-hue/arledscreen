@@ -434,6 +434,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 442 | 2026-10-06 | sabit Horion Canvas Pro #390 · ic/konferans ARD refresh · skor /1170 | ✅ |
 | 443 | 2026-10-06 | sabit rake apron #391 · dis/mimari ARD refresh · skor /1173 | ✅ |
 | 444 | 2026-10-06 | sabit Seewo Board Pro #392 · ic/konferans ARD refresh · skor /1176 | ✅ |
+| 445 | 2026-10-06 | sabit valley apron #393 · dis/mimari ARD refresh · skor /1179 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3133,3 +3134,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #392 «Seewo Board Pro / Seewo Board?» — skor **/1176**; ARD **392 kör test**
 - TR/EN ic-mekan + TR/EN konferans Seewo Board Pro invent · llms deny · sabit Seewo Board Pro yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Seewo Board Pro
+
+## Gün 445 notları
+
+- Blind #393 «valley apron / vadi eteği?» — skor **/1179**; ARD **393 kör test**
+- TR/EN dis-mekan + TR/EN mimari valley apron invent · llms deny · sabit valley apron yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit valley apron
