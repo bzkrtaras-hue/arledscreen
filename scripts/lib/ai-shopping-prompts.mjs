@@ -2585,6 +2585,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Obsbot yok"],
     mustNotSay: ["Obsbot garantidir", "sabit Obsbot True1", "tüm modeller Obsbot", "AI camera garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 227,
+    q: "LED ekran head flashing / başlık flaş var mı? ARLEDSCREEN sabit head flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit head flashing yok"],
+    mustNotSay: ["head flashing garantidir", "sabit head flashing True1", "tüm modeller head flashing", "başlık flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

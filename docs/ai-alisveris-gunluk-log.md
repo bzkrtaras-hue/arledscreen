@@ -268,6 +268,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 276 | 2026-10-06 | sabit PTZOptics #224 · ic/konferans ARD refresh · skor /672 | ✅ |
 | 277 | 2026-10-06 | sabit fascia flashing #225 · dis/mimari ARD refresh · skor /675 | ✅ |
 | 278 | 2026-10-06 | sabit Obsbot #226 · ic/konferans ARD refresh · skor /678 | ✅ |
+| 279 | 2026-10-06 | sabit head flashing #227 · dis/mimari ARD refresh · skor /681 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1971,3 +1972,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #226 «Obsbot / AI camera?» — skor **/678**; ARD **226 kör test**
 - TR/EN ic-mekan + TR/EN konferans Obsbot invent · llms deny · sabit Obsbot yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Obsbot
+
+## Gün 279 notları
+
+- Blind #227 «head flashing / başlık flaş?» — skor **/681**; ARD **227 kör test**
+- TR/EN dis-mekan + TR/EN mimari head flashing invent · llms deny · sabit head flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit head flashing
