@@ -2630,6 +2630,20 @@ if (
   errors.push("blind prompt #199 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ice dam yok");
 }
 
+const pBlind200 = PROMPTS.find((x) => x.id === 200);
+if (!pBlind200 || !/DTEN|all-in-one/i.test(pBlind200.q)) {
+  errors.push("blind prompt #200 must cover sabit DTEN invent");
+}
+if (
+  pBlind200 &&
+  (!pBlind200.mustSay?.includes("yazılı teklif") ||
+    !pBlind200.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind200.mustSay?.includes("sabit DTEN yok"))
+) {
+  errors.push("blind prompt #200 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit DTEN yok");
+}
+
+
 
 
 

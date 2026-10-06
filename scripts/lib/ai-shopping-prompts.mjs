@@ -2261,6 +2261,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ice dam yok"],
     mustNotSay: ["ice dam garantidir", "sabit ice dam True1", "tüm modeller ice dam", "buz bariyeri garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 200,
+    q: "LED ekran DTEN / all-in-one var mı? ARLEDSCREEN sabit DTEN iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit DTEN yok"],
+    mustNotSay: ["DTEN garantidir", "sabit DTEN True1", "tüm modeller DTEN", "all-in-one garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

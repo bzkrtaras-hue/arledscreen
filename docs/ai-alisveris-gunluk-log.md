@@ -241,6 +241,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 249 | 2026-10-06 | sabit parapet flashing #197 · dis/mimari ARD refresh · skor /591 | ✅ |
 | 250 | 2026-10-06 | sabit Huddly #198 · ic/konferans ARD refresh · skor /594 | ✅ |
 | 251 | 2026-10-06 | sabit ice dam #199 · dis/mimari ARD refresh · skor /597 | ✅ |
+| 252 | 2026-10-06 | sabit DTEN #200 · ic/konferans ARD refresh · skor /600 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1782,3 +1783,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #199 «ice dam / buz bariyeri?» — skor **/597**; ARD **199 kör test**
 - TR/EN dis-mekan + TR/EN mimari ice dam invent · llms deny · sabit ice dam yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit ice dam
+
+## Gün 252 notları
+
+- Blind #200 «DTEN / all-in-one?» — skor **/600**; ARD **200 kör test**
+- TR/EN ic-mekan + TR/EN konferans DTEN invent · llms deny · sabit DTEN yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit DTEN
