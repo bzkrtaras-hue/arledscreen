@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/67 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 67 kör test intent (not stale 17–66)");
+if (ardTxt && !/68 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 68 kör test intent (not stale 17–67)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-6]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–66 kör test without 67");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-7]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–67 kör test without 68");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -991,6 +991,22 @@ for (const rel of [
   }
   if (/HDMI 2\.1 garantidir|sabit 4K60 HDMI|tüm modeller SDI|DisplayPort garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit HDMI / SDI`);
+  }
+}
+
+
+// Day 120: sabit fiber mesafe — honesty presence
+for (const rel of [
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit fiber mesafe yok|no fixed site fiber distance/i.test(html)) {
+    errors.push(`${rel} should hedge sabit fiber mesafe`);
+  }
+  if (/100 m fiber garantidir|sabit 300 m fiber|fiber 10 km garantidir|CAT6A 100 m garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit fiber mesafe`);
   }
 }
 

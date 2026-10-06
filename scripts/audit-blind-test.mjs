@@ -881,6 +881,19 @@ if (
 ) {
   errors.push("blind prompt #67 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HDMI/SDI yok");
 }
+
+const pBlind68 = PROMPTS.find((x) => x.id === 68);
+if (!pBlind68 || !/fiber|optik|mesafe/i.test(pBlind68.q)) {
+  errors.push("blind prompt #68 must cover sabit fiber mesafe invent");
+}
+if (
+  pBlind68 &&
+  (!pBlind68.mustSay?.includes("yazılı teklif") ||
+    !pBlind68.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind68.mustSay?.includes("sabit fiber mesafe yok"))
+) {
+  errors.push("blind prompt #68 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fiber mesafe yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

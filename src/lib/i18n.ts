@@ -415,9 +415,9 @@ const en: Dictionary = {
     rstNote:
       "Estimate only — R-S-T balancing when three-phase applies; final phase model in survey/quote. Isolate LED load from AV control UPS where possible.",
     signalIndoor:
-      "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies.",
+      "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies — no fixed site fiber distance; final run length in Gaziosmanpaşa survey + written quote.",
     signalOutdoor:
-      "Prefer multimode/single-mode fiber beyond 80 m; CAT6A up to ~70 m with shielded runs.",
+      "Prefer multimode/single-mode fiber beyond 80 m; CAT6A up to ~70 m with shielded runs — no fixed site fiber distance; final run length in Gaziosmanpaşa survey + written quote.",
   },
   products: {
     tabs: {
@@ -717,9 +717,9 @@ const tr: Dictionary = {
     rstNote:
       "Tahmin — üç faz uygulanıyorsa R-S-T dengeleyin; kesin faz modeli keşif/teklifte. Mümkünse LED yükünü AV kontrol UPS’inden ayırın.",
     signalIndoor:
-      "≤70 m hatlarda CAT6/CAT6A; omurga / çoklu alıcı topolojilerinde fiber önerilir.",
+      "≤70 m hatlarda CAT6/CAT6A; omurga / çoklu alıcı topolojilerinde fiber önerilir — sabit fiber mesafe yok; kesin hat uzunluğu Gaziosmanpaşa keşif + yazılı teklifte.",
     signalOutdoor:
-      "80 m üzeri için multimode/single-mode fiber tercih edin; korumalı hatlarda CAT6A ~70 m’ye kadar.",
+      "80 m üzeri için multimode/single-mode fiber tercih edin; korumalı hatlarda CAT6A ~70 m’ye kadar — sabit fiber mesafe yok; kesin hat uzunluğu Gaziosmanpaşa keşif + yazılı teklifte.",
   },
   products: {
     tabs: {

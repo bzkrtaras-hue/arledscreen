@@ -109,6 +109,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 117 | 2026-10-06 | sabit yedek parça stok #65 · TR dis p4-on-servis/p5/p8 ARD · skor /195 | ✅ |
 | 118 | 2026-10-06 | sabit PoE / Gigabit #66 · TR GOB p1-25/p1-53/p1-86 ARD · skor /198 | ✅ |
 | 119 | 2026-10-06 | sabit HDMI/SDI #67 · TR NovaStar mctrl660-pro/tb50/vx600 ARD · skor /201 | ✅ |
+| 120 | 2026-10-06 | sabit fiber mesafe #68 · TR Colorlight s20/vx20/x20 ARD · skor /204 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -778,3 +779,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR ic-mekan HDMI/SDI invent · llms deny · sabit HDMI/SDI yok
 - ARD: TR NovaStar mctrl660-pro/tb50/vx600 · IndexNow +3 · agentRules sabit HDMI/SDI
 - skor hedef Tur 1 ≥ 101/201 · Tur 2 ≥ 151/201
+
+## Gün 120 notları
+
+- Blind #68 «fiber / optik iletim mesafesi?» — skor **/204**; ARD **68 kör test**
+- TR/EN mimari + TR/EN dis-mekan fiber mesafe invent · llms deny · sabit fiber mesafe yok
+- ARD: TR Colorlight s20/vx20/x20 · IndexNow +3 · agentRules sabit fiber mesafe
+- skor hedef Tur 1 ≥ 102/204 · Tur 2 ≥ 153/204

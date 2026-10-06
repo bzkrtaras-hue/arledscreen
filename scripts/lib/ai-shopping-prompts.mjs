@@ -677,6 +677,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HDMI/SDI yok"],
     mustNotSay: ["HDMI 2.1 garantidir", "sabit 4K60 HDMI", "tüm modeller SDI", "DisplayPort garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 68,
+    q: "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fiber mesafe yok"],
+    mustNotSay: ["100 m fiber garantidir", "sabit 300 m fiber", "fiber 10 km garantidir", "CAT6A 100 m garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
