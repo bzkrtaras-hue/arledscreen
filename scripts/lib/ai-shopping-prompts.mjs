@@ -3101,6 +3101,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rake cleat yok"],
     mustNotSay: ["rake cleat garantidir", "sabit rake cleat True1", "tüm modeller rake cleat", "saçak kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 270,
+    q: "LED ekran InFocus / Mondopad var mı? ARLEDSCREEN sabit InFocus iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit InFocus yok"],
+    mustNotSay: ["InFocus garantidir", "sabit InFocus True1", "tüm modeller InFocus", "Mondopad garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

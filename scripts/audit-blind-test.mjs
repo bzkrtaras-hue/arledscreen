@@ -3540,6 +3540,20 @@ if (
   errors.push("blind prompt #269 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit rake cleat yok");
 }
 
+const pBlind270 = PROMPTS.find((x) => x.id === 270);
+if (!pBlind270 || !/InFocus|Mondopad/i.test(pBlind270.q)) {
+  errors.push("blind prompt #270 must cover sabit InFocus invent");
+}
+if (
+  pBlind270 &&
+  (!pBlind270.mustSay?.includes("yazılı teklif") ||
+    !pBlind270.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind270.mustSay?.includes("sabit InFocus yok"))
+) {
+  errors.push("blind prompt #270 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit InFocus yok");
+}
+
+
 
 
 

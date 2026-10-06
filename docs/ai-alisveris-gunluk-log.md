@@ -311,6 +311,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 319 | 2026-10-06 | sabit coping cleat #267 · dis/mimari ARD refresh · skor /801 | ✅ |
 | 320 | 2026-10-06 | sabit Avocor #268 · ic/konferans ARD refresh · skor /804 | ✅ |
 | 321 | 2026-10-06 | sabit rake cleat #269 · dis/mimari ARD refresh · skor /807 | ✅ |
+| 322 | 2026-10-06 | sabit InFocus #270 · ic/konferans ARD refresh · skor /810 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2272,3 +2273,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #269 «rake cleat / saçak kleyt?» — skor **/807**; ARD **269 kör test**
 - TR/EN dis-mekan + TR/EN mimari rake cleat invent · llms deny · sabit rake cleat yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit rake cleat
+
+## Gün 322 notları
+
+- Blind #270 «InFocus / Mondopad?» — skor **/810**; ARD **270 kör test**
+- TR/EN ic-mekan + TR/EN konferans InFocus invent · llms deny · sabit InFocus yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit InFocus
