@@ -5087,6 +5087,20 @@ if (
   errors.push("blind prompt #388 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH P3 Series yok");
 }
 
+const pBlind389 = PROMPTS.find((x) => x.id === 389);
+if (!pBlind389 || !/fascia apron|fascia eteği/i.test(pBlind389.q)) {
+  errors.push("blind prompt #389 must cover sabit fascia apron invent");
+}
+if (
+  pBlind389 &&
+  (!pBlind389.mustSay?.includes("yazılı teklif") ||
+    !pBlind389.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind389.mustSay?.includes("sabit fascia apron yok"))
+) {
+  errors.push("blind prompt #389 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia apron yok");
+}
+
+
 
 
 

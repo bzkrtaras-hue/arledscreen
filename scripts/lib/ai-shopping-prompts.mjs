@@ -4529,6 +4529,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit i3TOUCH P3 Series yok"],
     mustNotSay: ["i3TOUCH P3 Series garantidir", "sabit i3TOUCH P3 Series True1", "tüm modeller i3TOUCH P3 Series", "i3TOUCH P3 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 389,
+    q: "LED ekran fascia apron / fascia eteği var mı? ARLEDSCREEN sabit fascia apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fascia apron yok"],
+    mustNotSay: ["fascia apron garantidir", "sabit fascia apron True1", "tüm modeller fascia apron", "fascia eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
