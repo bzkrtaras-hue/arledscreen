@@ -153,6 +153,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 161 | 2026-10-06 | sabit cabinet depth #109 · dis/mimari ARD refresh · skor /327 | ✅ |
 | 162 | 2026-10-06 | sabit drive IC #110 · ic/konferans ARD refresh · skor /330 | ✅ |
 | 163 | 2026-10-06 | sabit cabinet size #111 · dis/mimari ARD refresh · skor /333 | ✅ |
+| 164 | 2026-10-06 | sabit panel size #112 · ic/konferans ARD refresh · skor /336 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1131,4 +1132,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari cabinet size invent · llms deny · sabit cabinet size yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit cabinet size
 - skor hedef Tur 1 ≥ 167/333 · Tur 2 ≥ 250/333
+
+## Gün 164 notları
+
+- Blind #112 «panel size / panel boyutu?» — skor **/336**; ARD **112 kör test**
+- TR/EN ic-mekan + TR/EN konferans panel size invent · llms deny · sabit panel size yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit panel size
+- skor hedef Tur 1 ≥ 168/336 · Tur 2 ≥ 252/336
 

@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 111) errors.push(`blindTestPrompts must be 111 (got ${prompts.length})`);
+if (prompts.length !== 112) errors.push(`blindTestPrompts must be 112 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/111 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 111 kör test intent");
+if (!/112 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 112 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–110 kör test without 111");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–111 kör test without 112");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -986,6 +986,15 @@ if (!p111 || !/cabinet size|kabin boyutu/i.test(p111.q || "")) {
 }
 if (!/cabinet size|kabin boyutu|sabit cabinet size/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit cabinet size invent");
+}
+
+// Day 164: sabit panel size / panel boyutu invent
+const p112 = (doc.blindTestPrompts || []).find((p) => p.id === 112);
+if (!p112 || !/panel size|panel boyutu/i.test(p112.q || "")) {
+  errors.push("blindTestPrompts #112 must cover sabit panel size invent");
+}
+if (!/panel size|panel boyutu|sabit panel size/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit panel size invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

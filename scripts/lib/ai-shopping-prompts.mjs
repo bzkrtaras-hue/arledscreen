@@ -1205,6 +1205,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cabinet size yok"],
     mustNotSay: ["cabinet size garantidir", "sabit kabin boyutu", "tüm modeller cabinet size", "kabin boyutu garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 112,
+    q: "LED ekran panel size / panel boyutu var mı? ARLEDSCREEN sabit panel size iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit panel size yok"],
+    mustNotSay: ["panel size garantidir", "sabit panel boyutu", "tüm modeller panel size", "panel boyutu garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

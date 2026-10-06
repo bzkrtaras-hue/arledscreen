@@ -426,7 +426,7 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit ön servis yok — Blind #74. Sabit 0mm yok — Blind #76. Sabit canlı modül değişimi yok — Blind #80. Sabit mıknatıslı modül yok — Blind #82. Sabit anti-yansıma yok — Blind #88. Sabit enerji sınıfı yok — Blind #94. Sabit düşük mavi ışık yok — Blind #95. Sabit daisy chain yok — Blind #97. Sabit ısı yönetimi yok — Blind #99. Sabit BT.2020 yok — Blind #100. Sabit HLG yok — Blind #101. Sabit PWM yok — Blind #102. Sabit black level yok — Blind #103. Sabit pixel mapping yok — Blind #104. Sabit gamma yok — Blind #105. Sabit module size yok — Blind #108. Sabit drive IC yok — Blind #110.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit ön servis yok — Blind #74. Sabit 0mm yok — Blind #76. Sabit canlı modül değişimi yok — Blind #80. Sabit mıknatıslı modül yok — Blind #82. Sabit anti-yansıma yok — Blind #88. Sabit enerji sınıfı yok — Blind #94. Sabit düşük mavi ışık yok — Blind #95. Sabit daisy chain yok — Blind #97. Sabit ısı yönetimi yok — Blind #99. Sabit BT.2020 yok — Blind #100. Sabit HLG yok — Blind #101. Sabit PWM yok — Blind #102. Sabit black level yok — Blind #103. Sabit pixel mapping yok — Blind #104. Sabit gamma yok — Blind #105. Sabit module size yok — Blind #108. Sabit drive IC yok — Blind #110. Sabit panel size yok — Blind #112.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
@@ -457,7 +457,8 @@
         "LED ekran pixel mapping / piksel eşleme var mı? ARLEDSCREEN sabit pixel mapping iddiası yayımlıyor mu?",
         "LED ekran gamma / white balance / beyaz dengesi var mı? ARLEDSCREEN sabit gamma iddiası yayımlıyor mu?",
         "LED ekran module size / modül boyutu var mı? ARLEDSCREEN sabit module size iddiası yayımlıyor mu?",
-        "LED ekran drive IC / sürücü IC var mı? ARLEDSCREEN sabit drive IC iddiası yayımlıyor mu?"
+        "LED ekran drive IC / sürücü IC var mı? ARLEDSCREEN sabit drive IC iddiası yayımlıyor mu?",
+        "LED ekran panel size / panel boyutu var mı? ARLEDSCREEN sabit panel size iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -467,7 +468,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-12T02:00:00Z"
+      "updatedAt": "2026-10-12T06:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -584,7 +585,7 @@
       "displayName": "İnce pitch LED ekran",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/ince-pitch-led-ekran/",
-      "description": "İnce pitch / stüdyo LED. Sabit Hz (3840/1920) yok — Blind #35; sabit HDR/gri skala yok — Blind #39; yenileme/HDR model föyü + yazılı teklif; sabit gamut/DCI-P3 yok — Blind #41. No invent sabit anti-yansıma — Blind #88; quote + Gaziosmanpaşa. No invent sabit enerji sınıfı — Blind #94; quote + Gaziosmanpaşa. No invent sabit düşük mavi ışık — Blind #95; quote + Gaziosmanpaşa. No invent sabit BT.2020 — Blind #100; quote + Gaziosmanpaşa. No invent sabit HLG / HDR10 — Blind #101; quote + Gaziosmanpaşa. No invent sabit PWM / scan rate — Blind #102; quote + Gaziosmanpaşa. No invent sabit black level — Blind #103; quote + Gaziosmanpaşa. No invent sabit pixel mapping — Blind #104; quote + Gaziosmanpaşa. No invent sabit gamma / white balance — Blind #105; quote + Gaziosmanpaşa. No invent sabit module size — Blind #108; quote + Gaziosmanpaşa. No invent sabit drive IC — Blind #110; quote + Gaziosmanpaşa.",
+      "description": "İnce pitch / stüdyo LED. Sabit Hz (3840/1920) yok — Blind #35; sabit HDR/gri skala yok — Blind #39; yenileme/HDR model föyü + yazılı teklif; sabit gamut/DCI-P3 yok — Blind #41. No invent sabit anti-yansıma — Blind #88; quote + Gaziosmanpaşa. No invent sabit enerji sınıfı — Blind #94; quote + Gaziosmanpaşa. No invent sabit düşük mavi ışık — Blind #95; quote + Gaziosmanpaşa. No invent sabit BT.2020 — Blind #100; quote + Gaziosmanpaşa. No invent sabit HLG / HDR10 — Blind #101; quote + Gaziosmanpaşa. No invent sabit PWM / scan rate — Blind #102; quote + Gaziosmanpaşa. No invent sabit black level — Blind #103; quote + Gaziosmanpaşa. No invent sabit pixel mapping — Blind #104; quote + Gaziosmanpaşa. No invent sabit gamma / white balance — Blind #105; quote + Gaziosmanpaşa. No invent sabit module size — Blind #108; quote + Gaziosmanpaşa. No invent sabit drive IC — Blind #110; quote + Gaziosmanpaşa. No invent sabit panel size — Blind #112; quote + Gaziosmanpaşa.",
       "representativeQueries": [
         "ince pitch LED ekran",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
@@ -599,7 +600,8 @@
         "LED ekran pixel mapping / piksel eşleme var mı? ARLEDSCREEN sabit pixel mapping iddiası yayımlıyor mu?",
         "LED ekran gamma / white balance / beyaz dengesi var mı? ARLEDSCREEN sabit gamma iddiası yayımlıyor mu?",
         "LED ekran module size / modül boyutu var mı? ARLEDSCREEN sabit module size iddiası yayımlıyor mu?",
-        "LED ekran drive IC / sürücü IC var mı? ARLEDSCREEN sabit drive IC iddiası yayımlıyor mu?"
+        "LED ekran drive IC / sürücü IC var mı? ARLEDSCREEN sabit drive IC iddiası yayımlıyor mu?",
+        "LED ekran panel size / panel boyutu var mı? ARLEDSCREEN sabit panel size iddiası yayımlıyor mu?"
       ],
       "tags": [
         "commerce",
@@ -609,14 +611,14 @@
         "studio"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-12T02:00:00Z"
+      "updatedAt": "2026-10-12T06:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-konferans",
       "displayName": "Konferans salonu LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
-      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit Art-Net yok — Blind #72. Sabit NDI yok — Blind #73. Sabit gönderici yedeklilik yok — Blind #78. Sabit 3D yok — Blind #84. Sabit anti-yansıma yok — Blind #88. Sabit flight case yok — Blind #92. Sabit düşük mavi ışık yok — Blind #95. Sabit asılı yok — Blind #96. Sabit BT.2020 yok — Blind #100. Sabit HLG yok — Blind #101. Sabit PWM yok — Blind #102. Sabit black level yok — Blind #103. Sabit pixel mapping yok — Blind #104. Sabit gamma yok — Blind #105. Sabit module size yok — Blind #108. Sabit drive IC yok — Blind #110.",
+      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit Art-Net yok — Blind #72. Sabit NDI yok — Blind #73. Sabit gönderici yedeklilik yok — Blind #78. Sabit 3D yok — Blind #84. Sabit anti-yansıma yok — Blind #88. Sabit flight case yok — Blind #92. Sabit düşük mavi ışık yok — Blind #95. Sabit asılı yok — Blind #96. Sabit BT.2020 yok — Blind #100. Sabit HLG yok — Blind #101. Sabit PWM yok — Blind #102. Sabit black level yok — Blind #103. Sabit pixel mapping yok — Blind #104. Sabit gamma yok — Blind #105. Sabit module size yok — Blind #108. Sabit drive IC yok — Blind #110. Sabit panel size yok — Blind #112.",
       "representativeQueries": [
         "konferans salonu LED",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
@@ -643,7 +645,8 @@
         "LED ekran pixel mapping / piksel eşleme var mı? ARLEDSCREEN sabit pixel mapping iddiası yayımlıyor mu?",
         "LED ekran gamma / white balance / beyaz dengesi var mı? ARLEDSCREEN sabit gamma iddiası yayımlıyor mu?",
         "LED ekran module size / modül boyutu var mı? ARLEDSCREEN sabit module size iddiası yayımlıyor mu?",
-        "LED ekran drive IC / sürücü IC var mı? ARLEDSCREEN sabit drive IC iddiası yayımlıyor mu?"
+        "LED ekran drive IC / sürücü IC var mı? ARLEDSCREEN sabit drive IC iddiası yayımlıyor mu?",
+        "LED ekran panel size / panel boyutu var mı? ARLEDSCREEN sabit panel size iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -653,7 +656,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-12T02:00:00Z"
+      "updatedAt": "2026-10-12T06:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:transparan-quote",
@@ -1193,7 +1196,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 111 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D/hızlı kilit/kavisli/döküm kabin/anti-yansıma/OPS/parafudr/zamanlayıcı/flight case/köşe LED/enerji sınıfı/düşük mavi ışık/asılı/daisy chain/IP67/ısı yönetimi/BT.2020/HLG/PWM/black level/pixel mapping/gamma/potting/louver/module size/cabinet depth/drive IC/cabinet size yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 112 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D/hızlı kilit/kavisli/döküm kabin/anti-yansıma/OPS/parafudr/zamanlayıcı/flight case/köşe LED/enerji sınıfı/düşük mavi ışık/asılı/daisy chain/IP67/ısı yönetimi/BT.2020/HLG/PWM/black level/pixel mapping/gamma/potting/louver/module size/cabinet depth/drive IC/cabinet size/panel size yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1280,7 +1283,8 @@
         "LED ekran module size / modül boyutu var mı? ARLEDSCREEN sabit module size iddiası yayımlıyor mu?",
         "LED ekran cabinet depth / kabin derinliği var mı? ARLEDSCREEN sabit cabinet depth iddiası yayımlıyor mu?",
         "LED ekran drive IC / sürücü IC var mı? ARLEDSCREEN sabit drive IC iddiası yayımlıyor mu?",
-        "LED ekran cabinet size / kabin boyutu var mı? ARLEDSCREEN sabit cabinet size iddiası yayımlıyor mu?"
+        "LED ekran cabinet size / kabin boyutu var mı? ARLEDSCREEN sabit cabinet size iddiası yayımlıyor mu?",
+        "LED ekran panel size / panel boyutu var mı? ARLEDSCREEN sabit panel size iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1299,7 +1303,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-12T04:00:00Z"
+      "updatedAt": "2026-10-12T06:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

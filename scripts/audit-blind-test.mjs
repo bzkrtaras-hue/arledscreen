@@ -1461,6 +1461,20 @@ if (
   errors.push("blind prompt #111 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cabinet size yok");
 }
 
+
+const pBlind112 = PROMPTS.find((x) => x.id === 112);
+if (!pBlind112 || !/panel size|panel boyutu/i.test(pBlind112.q)) {
+  errors.push("blind prompt #112 must cover sabit panel size invent");
+}
+if (
+  pBlind112 &&
+  (!pBlind112.mustSay?.includes("yazılı teklif") ||
+    !pBlind112.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind112.mustSay?.includes("sabit panel size yok"))
+) {
+  errors.push("blind prompt #112 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit panel size yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
