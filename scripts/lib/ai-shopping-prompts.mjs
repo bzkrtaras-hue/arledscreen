@@ -1385,6 +1385,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit scaler yok"],
     mustNotSay: ["scaler garantidir", "sabit ölçekleyici", "tüm modeller scaler", "ölçekleyici garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 127,
+    q: "LED ekran backup battery / yedek batarya var mı? ARLEDSCREEN sabit backup battery iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit backup battery yok"],
+    mustNotSay: ["backup battery garantidir", "sabit yedek batarya", "tüm modeller backup battery", "yedek batarya garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

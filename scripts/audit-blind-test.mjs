@@ -1671,6 +1671,20 @@ if (
   errors.push("blind prompt #126 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit scaler yok");
 }
 
+
+const pBlind127 = PROMPTS.find((x) => x.id === 127);
+if (!pBlind127 || !/backup battery|yedek batarya/i.test(pBlind127.q)) {
+  errors.push("blind prompt #127 must cover sabit backup battery invent");
+}
+if (
+  pBlind127 &&
+  (!pBlind127.mustSay?.includes("yazılı teklif") ||
+    !pBlind127.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind127.mustSay?.includes("sabit backup battery yok"))
+) {
+  errors.push("blind prompt #127 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit backup battery yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

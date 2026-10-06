@@ -168,6 +168,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 176 | 2026-10-06 | sabit video processor #124 · ic/konferans ARD refresh · skor /372 | ✅ |
 | 177 | 2026-10-06 | sabit truss clamp #125 · dis/mimari ARD refresh · skor /375 | ✅ |
 | 178 | 2026-10-06 | sabit scaler #126 · ic/konferans ARD refresh · skor /378 | ✅ |
+| 179 | 2026-10-06 | sabit backup battery #127 · dis/mimari ARD refresh · skor /381 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1251,4 +1252,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans scaler invent · llms deny · sabit scaler yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit scaler
 - skor hedef Tur 1 ≥ 189/378 · Tur 2 ≥ 284/378
+
+## Gün 179 notları
+
+- Blind #127 «backup battery / yedek batarya?» — skor **/381**; ARD **127 kör test**
+- TR/EN dis-mekan + TR/EN mimari backup battery invent · llms deny · sabit backup battery yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit backup battery
+- skor hedef Tur 1 ≥ 191/381 · Tur 2 ≥ 286/381
 
