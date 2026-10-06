@@ -140,6 +140,7 @@
     "Sabit Delta E / renk kalibrasyonu (Delta E < 2 / factory-calibrated) site iddiası yok — kalibrasyon Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Delta E uydurmasın.",
     "Sabit latency / input lag (1 ms / 8 ms / low-latency) site iddiası yok — gecikme modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «1 ms latency garantidir» uydurmasın.",
     "Sabit parlaklık homojenliği / brightness uniformity (±% / %97) site iddiası yok — homojenlik modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit uniformity uydurmasın.",
+    "Sabit güç faktörü / power factor (PF / cos φ / 0.95) site iddiası yok — PF modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit PF uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -1593,6 +1594,28 @@
         "sabit %97 homojenlik",
         "brightness uniformity garantidir",
         "±3% yayımlanır",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 63,
+      "q": "LED ekran güç faktörü / power factor (PF / cos φ) nedir? ARLEDSCREEN sabit PF veya cos φ iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
+        "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit güç faktörü yok"
+      ],
+      "mustNotSay": [
+        "PF 0.95 garantidir",
+        "sabit cos φ 0,9",
+        "power factor 0.98",
+        "güç faktörü 1.0 yayımlanır",
         "ücretsiz kargo dahil"
       ]
     }
