@@ -170,7 +170,7 @@ export default async function QuotePage({ params }: PageProps) {
 
           <section className="bg-band py-12 md:py-16">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <h2 className="font-display text-xl font-bold text-ink">Proje türüne göre WhatsApp'tan hızlı mesaj</h2>
+              <h2 className="font-display text-xl font-bold text-ink">Proje türüne göre WhatsApp’tan hızlı mesaj</h2>
               <p className="mb-5 mt-1 text-sm text-ink-muted">Formu doldurmak istemiyorsanız proje türünü seçin; mesaj hazır açılır.</p>
               <WhatsAppProjectPicker />
             </div>
