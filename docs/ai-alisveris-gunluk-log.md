@@ -1,7 +1,7 @@
-## Gün 518 — invent Blind #466 Google Meet Series One
+## Gün 518 — invent Blind #466 Google Meet Series One LIVE
 
-- Blind #466 Google Meet Series One / Meet Series One · ic/konferans · prompts=466 · /1398 · build pending
-- IndexNow 429 · sahibe iş yok
+- Blind #466 Google Meet Series One / Meet Series One · ic/konferans · prompts=466 · /1398 · CF deploy · smoke:live 20/20
+- IndexNow 429 (ping atlandı) · sahibe iş yok
 
 ## Gün 517 — invent Blind #465 spandrel glass LIVE
 
