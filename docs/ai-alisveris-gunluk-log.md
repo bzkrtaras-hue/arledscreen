@@ -1,7 +1,7 @@
-## Gün 494 — invent Blind #442 Logitech Sight
+## Gün 494 — invent Blind #442 Logitech Sight LIVE
 
-- Blind #442 Logitech Sight · ic/konferans · prompts=442 · /1326 · build pending
-- Point C paste yok · Tur 1a skor boş
+- Blind #442 Logitech Sight · ic/konferans · prompts=442 · /1326 · CF deploy · smoke:live 20/20 · IndexNow 193×
+- Point C paste yok · Tur 1a skor boş · Drive Doc prompts→442
 - Point C + Tur 1a hâlâ sahip
 
 ## Gün 493 — invent Blind #441 frieze apron LIVE
