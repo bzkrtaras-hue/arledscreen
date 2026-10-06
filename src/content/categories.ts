@@ -222,7 +222,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     image: "/projects/urun-dis-mekan.jpg",
     imageAlt: "Bina önünde taşıyıcı sisteme kurulu dış mekân LED ekran",
     intro: [
-      "Dış mekânda ekran; güneş, yağmur ve toz koşullarında okunabilir kalmalıdır. Piksel aralığını montaj yüksekliği ve izleme mesafesiyle birlikte seçtiğimizde mesaj uzaktan okunur ve bütçe gereksiz çözünürlüğe harcanmaz.",
+      "Dış mekânda ekran; güneş, yağmur ve toz koşullarında okunabilir kalmalıdır. Piksel aralığını montaj yüksekliği ve izleme mesafesiyle birlikte seçtiğimizde mesaj uzaktan okunur ve bütçe gereksiz çözünürlüğe harcanmaz. Sabit ASTM/salt spray yok: sitede sabit ASTM B117, tuz sisi saati veya salt spray sonucu yayımlanmaz; korozyon/test belgeleri model föyü + Gaziosmanpaşa yazılı teklifte.",
       "Taşıyıcı sistem, elektrik altyapısı ve sinyal bağlantısı keşifte birlikte planlanır; montaj ve devreye alma yazılı teklifte tanımlanan kapsamda tamamlanır.",
     ],
     highlights: [

@@ -720,6 +720,18 @@ if (
 ) {
   errors.push("blind prompt #54 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit IK yok");
 }
+const pBlind55 = PROMPTS.find((x) => x.id === 55);
+if (!pBlind55 || !/ASTM|salt spray|tuz sisi/i.test(pBlind55.q)) {
+  errors.push("blind prompt #55 must cover sabit ASTM / salt spray invent");
+}
+if (
+  pBlind55 &&
+  (!pBlind55.mustSay?.includes("yazılı teklif") ||
+    !pBlind55.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind55.mustSay?.includes("sabit ASTM/salt spray yok"))
+) {
+  errors.push("blind prompt #55 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ASTM/salt spray yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

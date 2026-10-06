@@ -54,6 +54,7 @@ export const INDEXNOW_URLS = [
   `${SITE}/tr/blog/`,
   `${SITE}/tr/rehber/`,
   `${SITE}/tr/rehber/led-ekran/`,
+  `${SITE}/tr/rehber/led-ekran-fiyatlari/`,
   `${SITE}/tr/rehber/ic-mekan-led-ekran/`,
   `${SITE}/tr/rehber/dis-mekan-led-ekran/`,
   `${SITE}/tr/rehber/gob-vs-smd/`,

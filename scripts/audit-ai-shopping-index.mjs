@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 54) errors.push(`blindTestPrompts must be 54 (got ${prompts.length})`);
+if (prompts.length !== 55) errors.push(`blindTestPrompts must be 55 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/54 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 54 kör test intent");
+if (!/55 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 55 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-3]) kör test/i.test(ard) && !/54 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–53 kör test without 54");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-4]) kör test/i.test(ard) && !/55 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–54 kör test without 55");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -481,6 +481,14 @@ if (!p54 || !/IK|impact|darbe/i.test(p54.q || "")) {
 }
 if (!/IK08|IK10|sabit IK|impact rating|darbe sınıfı/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit IK / impact rating invent");
+}
+// Day 107: sabit ASTM / salt spray invent
+const p55 = (doc.blindTestPrompts || []).find((p) => p.id === 55);
+if (!p55 || !/ASTM|salt spray|tuz sisi/i.test(p55.q || "")) {
+  errors.push("blindTestPrompts #55 must cover sabit ASTM / salt spray invent");
+}
+if (!/ASTM|salt spray|tuz sisi|B117|sabit ASTM/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit ASTM / salt spray invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

@@ -434,7 +434,7 @@
       "displayName": "Dış mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
-      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit depolama °C yok — Blind #49.",
+      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit depolama °C yok — Blind #49. Sabit ASTM/salt spray yok — Blind #55.",
       "representativeQueries": [
         "Dış mekân LED ekran kaç nit olmalı?",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
@@ -442,7 +442,8 @@
         "dış mekan LED rehber",
         "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?",
         "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?",
-        "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?"
+        "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?",
+        "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -452,7 +453,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T19:00:00Z"
+      "updatedAt": "2026-10-07T01:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:totem",
@@ -479,7 +480,7 @@
       "displayName": "Mimari / mühendislik LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
-      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48; sabit depolama °C yok — Blind #49; sabit yangın sınıfı yok — Blind #53.",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48; sabit depolama °C yok — Blind #49; sabit yangın sınıfı yok — Blind #53. Sabit ASTM/salt spray yok — Blind #55.",
       "representativeQueries": [
         "mimari LED mühendislik",
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
@@ -490,7 +491,8 @@
         "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?",
         "LED ekran bekleme gücü / standby / idle kaç watt? ARLEDSCREEN sabit standby W veya idle watt yayımlıyor mu?",
         "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?",
-        "LED ekran yangın sınıfı / fire rating nedir? ARLEDSCREEN sabit Class A / B-s1 veya yangın sınıfı yayımlıyor mu?"
+        "LED ekran yangın sınıfı / fire rating nedir? ARLEDSCREEN sabit Class A / B-s1 veya yangın sınıfı yayımlıyor mu?",
+        "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -500,7 +502,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T23:00:00Z"
+      "updatedAt": "2026-10-07T01:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
@@ -1065,7 +1067,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 54 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 55 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1095,7 +1097,8 @@
         "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?",
         "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
         "LED ekran yangın sınıfı / fire rating nedir? ARLEDSCREEN sabit Class A / B-s1 veya yangın sınıfı yayımlıyor mu?",
-        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?"
+        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?",
+        "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1114,7 +1117,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T00:00:00Z"
+      "updatedAt": "2026-10-07T01:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -2208,6 +2211,27 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T00:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-fiyat",
+      "displayName": "Rehber — LED ekran fiyatları",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/led-ekran-fiyatlari/",
+      "description": "SEO rehber fiyat sayfası. catalog/ai-shopping panel USD; ücretsiz kargo yok; no invent ASTM/salt spray — Blind #55.",
+      "representativeQueries": [
+        "LED ekran fiyatları rehber",
+        "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?",
+        "panel USD catalog"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "pricing",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T01:00:00Z"
     }
   ]
 }

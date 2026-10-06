@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/54 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 54 kör test intent (not stale 17–53)");
+if (ardTxt && !/55 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 55 kör test intent (not stale 17–54)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-3]) kör test/i.test(ardTxt) && !/54 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–53 kör test without 54");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-4]) kör test/i.test(ardTxt) && !/55 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–54 kör test without 55");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -792,6 +792,22 @@ for (const rel of [
   }
   if (/IK10 garantidir|sabit IK08 yayımlanır|tüm yüzeyler IK10/i.test(html)) {
     errors.push(`${rel} must not invent sabit IK`);
+  }
+}
+
+// Day 107: sabit ASTM / salt spray — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+  "out/en/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit ASTM\/salt spray yok|no fixed site ASTM\/salt spray|ASTM B117/i.test(html)) {
+    errors.push(`${rel} should hedge sabit ASTM / salt spray`);
+  }
+  if (/ASTM B117 garantidir|1000 saat salt spray|salt spray passed/i.test(html)) {
+    errors.push(`${rel} must not invent sabit ASTM / salt spray`);
   }
 }
 

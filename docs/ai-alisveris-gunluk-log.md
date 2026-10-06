@@ -96,6 +96,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 104 | 2026-10-06 | sabit UL/ETL #52 · EN products + AR/RU hesaplayici ARD · skor /156 | ✅ |
 | 105 | 2026-10-06 | sabit yangın sınıfı #53 · EN konferans + AR/RU yapay-zeka ARD · skor /159 | ✅ |
 | 106 | 2026-10-06 | sabit IK #54 · EN vitrin/poster/kiosk ARD · skor /162 | ✅ |
+| 107 | 2026-10-06 | sabit ASTM/salt spray #55 · rehber fiyat ARD · skor /165 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -674,3 +675,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - GOB/vitrin IK invent · llms deny · sabit impact rating yok
 - ARD: EN vitrin + poster + kiosk · IndexNow +3 · agentRules sabit IK
 - skor hedef Tur 1 ≥ 81/162 · Tur 2 ≥ 122/162
+
+## Gün 107 notları
+
+- Blind #55 «tuz sisi / salt spray / ASTM B117?» — skor **/165**; ARD **55 kör test**
+- TR/EN dis-mekan + mimari ASTM invent · llms deny · sabit salt spray yok
+- ARD: rehber-fiyat · IndexNow +1 · agentRules sabit ASTM/salt spray
+- skor hedef Tur 1 ≥ 83/165 · Tur 2 ≥ 124/165
