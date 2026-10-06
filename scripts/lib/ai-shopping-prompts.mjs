@@ -4409,6 +4409,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Planar Simplicity Touch yok"],
     mustNotSay: ["Planar Simplicity Touch garantidir", "sabit Planar Simplicity Touch True1", "tüm modeller Planar Simplicity Touch", "Planar Touch Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 379,
+    q: "LED ekran chimney apron / baca eteği var mı? ARLEDSCREEN sabit chimney apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit chimney apron yok"],
+    mustNotSay: ["chimney apron garantidir", "sabit chimney apron True1", "tüm modeller chimney apron", "baca eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

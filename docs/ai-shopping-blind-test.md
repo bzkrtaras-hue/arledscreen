@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 430: blind #378 sabit Planar Simplicity Touch invent)  
+Son güncelleme: 2026-10-06 (Gün 431: blind #379 sabit chimney apron invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 378 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 379 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 378 prompt (alışveriş + varlık)
+## 379 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -402,6 +402,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 376 | LED ekran Samsung WM Series / Samsung WM var mı? ARLEDSCREEN sabit Samsung WM Series iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Samsung WM Series yok** | Samsung WM Series garantidir / sabit Samsung WM Series True1 / tüm modeller Samsung WM Series / Samsung WM garantidir |
 | 377 | LED ekran rake edge flashing / saçak kenar flaşör var mı? ARLEDSCREEN sabit rake edge flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit rake edge flashing yok** | rake edge flashing garantidir / sabit rake edge flashing True1 / tüm modeller rake edge flashing / saçak kenar flaşör garantidir |
 | 378 | LED ekran Planar Simplicity Touch / Planar Touch Series var mı? ARLEDSCREEN sabit Planar Simplicity Touch iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Planar Simplicity Touch yok** | Planar Simplicity Touch garantidir / sabit Planar Simplicity Touch True1 / tüm modeller Planar Simplicity Touch / Planar Touch Series garantidir |
+| 379 | LED ekran chimney apron / baca eteği var mı? ARLEDSCREEN sabit chimney apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit chimney apron yok** | chimney apron garantidir / sabit chimney apron True1 / tüm modeller chimney apron / baca eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -412,7 +413,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1134. Hedef tur 1 ≥ 567/1134; tur 2 (Point C sonrası) ≥ 851/1134.
+**Tur skoru** = toplam / 1137. Hedef tur 1 ≥ 569/1137; tur 2 (Point C sonrası) ≥ 853/1137.
 
 ### Canlı tur kayıt şablonu
 

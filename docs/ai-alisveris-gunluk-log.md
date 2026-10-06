@@ -420,6 +420,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 428 | 2026-10-06 | sabit Samsung WM Series #376 · ic/konferans ARD refresh · skor /1128 | ✅ |
 | 429 | 2026-10-06 | sabit rake edge flashing #377 · dis/mimari ARD refresh · skor /1131 | ✅ |
 | 430 | 2026-10-06 | sabit Planar Simplicity Touch #378 · ic/konferans ARD refresh · skor /1134 | ✅ |
+| 431 | 2026-10-06 | sabit chimney apron #379 · dis/mimari ARD refresh · skor /1137 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3035,3 +3036,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #378 «Planar Simplicity Touch / Planar Touch Series?» — skor **/1134**; ARD **378 kör test**
 - TR/EN ic-mekan + TR/EN konferans Planar Simplicity Touch invent · llms deny · sabit Planar Simplicity Touch yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Planar Simplicity Touch
+
+## Gün 431 notları
+
+- Blind #379 «chimney apron / baca eteği?» — skor **/1137**; ARD **379 kör test**
+- TR/EN dis-mekan + TR/EN mimari chimney apron invent · llms deny · sabit chimney apron yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit chimney apron

@@ -4957,6 +4957,20 @@ if (
   errors.push("blind prompt #378 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Planar Simplicity Touch yok");
 }
 
+const pBlind379 = PROMPTS.find((x) => x.id === 379);
+if (!pBlind379 || !/chimney apron|baca eteği/i.test(pBlind379.q)) {
+  errors.push("blind prompt #379 must cover sabit chimney apron invent");
+}
+if (
+  pBlind379 &&
+  (!pBlind379.mustSay?.includes("yazılı teklif") ||
+    !pBlind379.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind379.mustSay?.includes("sabit chimney apron yok"))
+) {
+  errors.push("blind prompt #379 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chimney apron yok");
+}
+
+
 
 
 
