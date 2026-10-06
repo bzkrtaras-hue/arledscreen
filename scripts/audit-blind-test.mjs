@@ -1998,6 +1998,20 @@ if (
     !pBlind150.mustSay?.includes("sabit RS-232 yok"))
 ) {
   errors.push("blind prompt #150 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit RS-232 yok");
+
+const pBlind151 = PROMPTS.find((x) => x.id === 151);
+if (!pBlind151 || !/weather drain|su tahliyesi/i.test(pBlind151.q)) {
+  errors.push("blind prompt #151 must cover sabit weather drain invent");
+}
+if (
+  pBlind151 &&
+  (!pBlind151.mustSay?.includes("yazılı teklif") ||
+    !pBlind151.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind151.mustSay?.includes("sabit weather drain yok"))
+) {
+  errors.push("blind prompt #151 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit weather drain yok");
+}
+
 }
 
 }

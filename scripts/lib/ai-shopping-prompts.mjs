@@ -1673,6 +1673,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit RS-232 yok"],
     mustNotSay: ["RS-232 garantidir", "sabit RS-232 True1", "tüm modeller RS-232", "seri port garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 151,
+    q: "LED ekran weather drain / su tahliyesi var mı? ARLEDSCREEN sabit weather drain iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit weather drain yok"],
+    mustNotSay: ["weather drain garantidir", "sabit weather drain True1", "tüm modeller weather drain", "su tahliyesi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -192,6 +192,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 200 | 2026-10-06 | sabit IR remote #148 · ic/konferans ARD refresh · skor /444 | ✅ |
 | 201 | 2026-10-06 | sabit base plate #149 · dis/mimari ARD refresh · skor /447 | ✅ |
 | 202 | 2026-10-06 | sabit RS-232 #150 · ic/konferans ARD refresh · skor /450 | ✅ |
+| 203 | 2026-10-06 | sabit weather drain #151 · dis/mimari ARD refresh · skor /453 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1439,3 +1440,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #150 «RS-232 / seri port?» — skor **/450**; ARD **150 kör test**
 - TR/EN ic-mekan + TR/EN konferans RS-232 invent · llms deny · sabit RS-232 yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit RS-232
+
+## Gün 203 notları
+
+- Blind #151 «weather drain / su tahliyesi?» — skor **/453**; ARD **151 kör test**
+- TR/EN dis-mekan + TR/EN mimari weather drain invent · llms deny · sabit weather drain yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit weather drain
