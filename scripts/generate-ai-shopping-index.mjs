@@ -547,13 +547,17 @@ const doc = {
   indexNow: {
     keyLocation: `${SITE}/e8e6f86598e94e95a323f807c39843ad.txt`,
     pingAfterDeploy: "npm run indexnow -- --live",
+    policy:
+      "Only live-200 catalog URLs whose body changed; once per UTC day; 200/202=notify only (not index/AI/P0); 403/422/429→docs/indexnow-sahip-listesi.md and stop",
   },
   ownerOps: {
     mergePr: "PR #55 → Cloudflare Pages redeploy",
     smoke: "npm run smoke:live",
     pointC: `${SITE}/entity-profiles.json`,
     postDeploy: "npm run post-deploy",
+    indexNowOwnerList: "docs/indexnow-sahip-listesi.md",
   },
+
 };
 
 const out = path.join(root, "public/ai-shopping.json");

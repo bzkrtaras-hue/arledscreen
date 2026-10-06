@@ -5,7 +5,8 @@
  *   npm run post-deploy
  *
  * 1) smoke:live — must be BLOCKED 0 (or pass --force)
- * 2) indexnow --live — Bing recrawl of AI artefacts (unless --no-indexnow)
+ * 2) indexnow --live — changed live-200 catalog URLs only (unless --no-indexnow)
+ *    200/202 = notification gate only (not indexing / AI mention / P0)
  * 3) echo Day 57–69 contract + Point C / blind-test next steps
  *
  * Usage:

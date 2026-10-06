@@ -50,10 +50,15 @@ done
 
 ## 1b) IndexNow ping (smoke yeşil olduktan sonra)
 
+Yalnızca kataloğdaki **değişmiş** + canlı **200** URL’ler, günde bir kez.
+200/202 = bildirim kapısı; **indeks / AI anılması / P0 açılmaz**.
+403/422/429 → [`indexnow-sahip-listesi.md`](./indexnow-sahip-listesi.md) + dur.
+
 `npm run post-deploy` zaten IndexNow çalıştırır. Ayrı:
 
 ```bash
-npm run indexnow -- --live
+npm run indexnow -- --baseline   # ilk hash kaydı (POST yok)
+npm run indexnow -- --live       # değişmiş URL’leri tek tek POST
 ```
 
 Tek fetch ajan index: https://arledscreen.com/ai-shopping.json  

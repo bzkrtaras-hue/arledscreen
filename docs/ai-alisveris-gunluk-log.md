@@ -443,6 +443,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 451 | 2026-10-06 | sabit drip apron #399 · dis/mimari ARD refresh · skor /1197 | ✅ |
 | 452 | 2026-10-06 | sabit Logitech Tap Scheduler #400 · ic/konferans ARD refresh · skor /1200 | ✅ |
 | 453 | 2026-10-06 | sabit hip apron #401 · dis/mimari ARD refresh · skor /1203 | ✅ |
+| 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3196,3 +3197,12 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #401 «hip apron / mahiye eteği?» — skor **/1203**; ARD **401 kör test**
 - TR/EN dis-mekan + TR/EN mimari hip apron invent · llms deny · sabit hip apron yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit hip apron
+
+## Gün 453b notları — IndexNow kapı kuralları
+
+- Ping yalnızca katalog + canlı **200** + yerel artefact hash değişmiş URL
+- Aynı URL aynı UTC günü tekrar yok; POST tek URL (`urlList: […]` )
+- **200/202** = bildirim kapısı (indeks / AI anılması / P0 açılmaz)
+- **403/422/429** → `docs/indexnow-sahip-listesi.md` + dur; yeni sayfa yok
+- State: `.cache/indexnow-state.json` (gitignore)
+
