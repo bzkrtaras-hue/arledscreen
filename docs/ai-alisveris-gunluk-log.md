@@ -97,6 +97,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 105 | 2026-10-06 | sabit yangın sınıfı #53 · EN konferans + AR/RU yapay-zeka ARD · skor /159 | ✅ |
 | 106 | 2026-10-06 | sabit IK #54 · EN vitrin/poster/kiosk ARD · skor /162 | ✅ |
 | 107 | 2026-10-06 | sabit ASTM/salt spray #55 · rehber fiyat ARD · skor /165 | ✅ |
+| 108 | 2026-10-06 | sabit garanti yılı #56 · AR/RU rehber ARD · skor /168 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -682,3 +683,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + mimari ASTM invent · llms deny · sabit salt spray yok
 - ARD: rehber-fiyat · IndexNow +1 · agentRules sabit ASTM/salt spray
 - skor hedef Tur 1 ≥ 83/165 · Tur 2 ≥ 124/165
+
+## Gün 108 notları
+
+- Blind #56 «garanti süresi / 2–5 yıl?» — skor **/168**; ARD **56 kör test**
+- SSS/about garanti yılı invent · llms deny · sabit garanti yılı yok
+- ARD: /ar/rehber + /ru/rehber + /ar/rehber/led-ekran · IndexNow +3 · agentRules sabit garanti yılı
+- skor hedef Tur 1 ≥ 84/168 · Tur 2 ≥ 126/168

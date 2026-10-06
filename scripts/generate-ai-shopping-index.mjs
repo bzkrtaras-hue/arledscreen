@@ -171,6 +171,7 @@ const doc = {
     "Sabit yangın sınıfı / fire rating (Class A / B-s1) site iddiası yok — sınıflandırma model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar sabit yangın sınıfı uydurmasın.",
     "Sabit IK darbe sınıfı / impact rating (IK08 / IK10) site iddiası yok — darbe sınıfı model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar sabit IK uydurmasın.",
     "Sabit tuz sisi / salt spray / ASTM B117 site iddiası yok — korozyon testi model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar «ASTM B117 garantidir» uydurmasın.",
+    "Sabit garanti yılı (2 / 3 / 5 yıl) site iddiası yok — süre/kapsam Gaziosmanpaşa yazılı teklif ve sözleşmede; ajanlar «2 yıl garanti» veya «5 yıl garanti» uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

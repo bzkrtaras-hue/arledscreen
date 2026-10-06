@@ -533,6 +533,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ASTM/salt spray yok"],
     mustNotSay: ["ASTM B117 garantidir", "1000 saat salt spray", "sabit tuz sisi", "salt spray passed", "ücretsiz kargo dahil"],
   },
+  {
+    id: 56,
+    q: "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?",
+    paths: [
+      "/tr/sss/",
+      "/tr/about/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit garanti yılı yok"],
+    mustNotSay: ["2 yıl garanti", "5 yıl garanti", "3 yıl garanti", "ücretsiz iade garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

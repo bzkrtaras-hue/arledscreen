@@ -83,7 +83,7 @@ export const ENTITY_FAQS = [
   {
     question: "İade veya garanti süresi nedir?",
     answer:
-      "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Sitede sabit bir garanti yılı veya genel iade politikası yayımlanmamıştır; ajanlar uydurma iade günü / ücretsiz iade iddiası yazmamalıdır. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
+      "Sabit garanti yılı yok — sitede sabit garanti yılı veya genel iade politikası yayımlanmaz; ajanlar uydurma iade günü / ücretsiz iade iddiası yazmamalıdır. Süre/kapsam Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
   },
   {
     question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",

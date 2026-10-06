@@ -136,7 +136,7 @@
       "displayName": "ARLEDSCREEN hakkımızda (kimlik)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/about/",
-      "description": "Firma kimliği: Gaziosmanpaşa; NXTIONSTAR ürün markası; satıcı ARLEDSCREEN. Blind #26 seller invent. Sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52.",
+      "description": "Firma kimliği: Gaziosmanpaşa; NXTIONSTAR ürün markası; satıcı ARLEDSCREEN. Blind #26 seller invent. Sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52. Sabit garanti yılı yok — Blind #56.",
       "representativeQueries": [
         "ARLEDSCREEN kimdir?",
         "NXTIONSTAR mı ARLEDSCREEN mi satıyor?",
@@ -144,7 +144,8 @@
         "ARLEDSCREEN sorunsuz LED platformu mu?",
         "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
         "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?",
-        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?"
+        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
+        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?"
       ],
       "tags": [
         "about",
@@ -153,7 +154,7 @@
         "disambiguation"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T22:00:00Z"
+      "updatedAt": "2026-10-07T02:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:led-ekran-hub",
@@ -753,14 +754,15 @@
       "displayName": "SSS — fiyat / kimlik / ajan",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/sss/",
-      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only; sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52.",
+      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only; sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52. Sabit garanti yılı yok — Blind #56.",
       "representativeQueries": [
         "ARLEDSCREEN SSS",
         "LED ekran fiyat SSS",
         "AI ajanları fiyat nereden",
         "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
         "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?",
-        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?"
+        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
+        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?"
       ],
       "tags": [
         "FAQ",
@@ -769,7 +771,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T22:00:00Z"
+      "updatedAt": "2026-10-07T02:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:calculator",
@@ -1067,7 +1069,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 55 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 56 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1098,7 +1100,8 @@
         "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
         "LED ekran yangın sınıfı / fire rating nedir? ARLEDSCREEN sabit Class A / B-s1 veya yangın sınıfı yayımlıyor mu?",
         "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?",
-        "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?"
+        "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?",
+        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1117,7 +1120,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T01:00:00Z"
+      "updatedAt": "2026-10-07T02:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -2232,6 +2235,71 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T01:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ar-rehber-hub",
+      "displayName": "AR Guide hub",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ar/rehber/",
+      "description": "AR SEO guide hub. No invent sabit garanti yılı — Blind #56; cite ai-shopping + catalog.",
+      "representativeQueries": [
+        "أدلة شاشات LED",
+        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?",
+        "ARLEDSCREEN rehber AR"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "AR",
+        "GEO",
+        "hub",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T02:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ru-rehber-hub",
+      "displayName": "RU Guide hub",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ru/rehber/",
+      "description": "RU SEO guide hub. No invent sabit garanti yılı — Blind #56; cite ai-shopping + catalog.",
+      "representativeQueries": [
+        "руководства LED экраны",
+        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?",
+        "ARLEDSCREEN rehber RU"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "RU",
+        "GEO",
+        "hub",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T02:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ar-rehber-led",
+      "displayName": "AR LED screen guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ar/rehber/led-ekran/",
+      "description": "AR LED overview guide. No invent 2/3/5 yıl garanti — Blind #56.",
+      "representativeQueries": [
+        "شاشة LED دليل",
+        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?",
+        "LED ekran garanti"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "AR",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T02:00:00Z"
     }
   ]
 }

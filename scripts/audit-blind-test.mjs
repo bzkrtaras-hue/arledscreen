@@ -732,6 +732,18 @@ if (
 ) {
   errors.push("blind prompt #55 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ASTM/salt spray yok");
 }
+const pBlind56 = PROMPTS.find((x) => x.id === 56);
+if (!pBlind56 || !/garanti|warranty/i.test(pBlind56.q)) {
+  errors.push("blind prompt #56 must cover sabit garanti yılı invent");
+}
+if (
+  pBlind56 &&
+  (!pBlind56.mustSay?.includes("yazılı teklif") ||
+    !pBlind56.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind56.mustSay?.includes("sabit garanti yılı yok"))
+) {
+  errors.push("blind prompt #56 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit garanti yılı yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
