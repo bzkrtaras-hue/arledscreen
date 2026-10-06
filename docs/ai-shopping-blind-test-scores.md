@@ -4,11 +4,11 @@ Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)
 Hedef: Tur 1 (canlı 200 sonrası) ≥ **612/1224** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **918/1224**  
 Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (408 prompt)
 
-## Tur 1 — canlı JSON 200 sonrası (merge zorunlu değil; PR #55 draft)
+## Tur 1 — canlı JSON 200 sonrası (merge zorunlu değil; PR #55 ready)
 
 ### Sahip tur 1 açılış (2026-10-06)
 - Canlı kapı: entity/catalog/ai-shopping/ard **200**; robots Host bare (3× BYPASS)
-- Prompt kaynağı: canlı `https://arledscreen.com/ai-shopping.json` → `blindTestPrompts` (405)
+- Prompt kaynağı: canlı `https://arledscreen.com/ai-shopping.json` → `blindTestPrompts` (**408**)
 - Point C paste paralel veya tur 1 sonrası; tur 2 Point C sonrası
 - Skor satırlarını aşağıdaki tabloya doldur (ajan uydurma skor yazmaz)
 
@@ -71,7 +71,7 @@ Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
 | Gemini | | /1224 | | |
 | Perplexity | | /1224 | | |
 | Bing Copilot | | /1224 | | |
-| **Ortalama** | | **/1224** | | Hedef ≥ 912 |
+| **Ortalama** | | **/1224** | | Hedef ≥ 918 |
 
 ## Prompt bazlı ham notlar (opsiyonel)
 

@@ -1,3 +1,11 @@
+## Gün 461 — ajan kapanış (stale docs + timer)
+
+- Stale 405/1215 → **408/1224**; PR draft → **ready**; skor Tur2 hedef **918**
+- Point C Drive Doc + paste-bundle güncellendi
+- Canlı: JSON 200 · robots 3× BYPASS Host bare · prompts=408 · CI yeşil
+- **Açık sahip:** Point C paste · Tur 1a · arleds.com 301
+- Yeni invent yok bu turda
+
 ## Gün 458e — Point C paste bundle
 
 - `docs/point-c-paste-bundle.md` üretim entity-profiles çekimi

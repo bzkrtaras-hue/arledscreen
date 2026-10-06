@@ -1,6 +1,6 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 458: blind #408 sabit Crestron Flex invent)  
+Son güncelleme: 2026-10-06 (Gün 460: blind #406–#408 Crestron Flex / head apron / Cisco Room Bar Pro)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
 Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 408 prompt’u çalıştırır.
 
@@ -442,7 +442,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1215. Hedef tur 1 ≥ 612/1224; tur 2 (Point C sonrası) ≥ 918/1224.
+**Tur skoru** = toplam / 1224 (408 × 0–3). Hedef tur 1 ≥ 612/1224; tur 2 (Point C sonrası) ≥ 918/1224.
 
 ### Canlı tur kayıt şablonu
 
@@ -477,8 +477,8 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 
 ## Owner sırası
 
-1. PR #55 merge + CF redeploy  
-2. `npm run post-deploy` (smoke GREEN → IndexNow; Day 51–53 contract echo)  
-3. `curl -sI` entity / catalog / ard / ai-shopping / entity-profiles → 200  
-4. Canlı kör tur 1 (90 prompt) → skor kartı  
-5. Point C (GBP + LinkedIn + dizin + **Bing Places NAP**) → tur 2
+1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (408 /1224)  
+3. PR #55 merge (opsiyonel; üretim zaten deploy)  
+4. `arleds.com` → `arledscreen.com/tr/` 301 (CF zone yoksa DNS/registrar)  
+5. Tur 2 (Point C sonrası, ≤2026-11-04)
