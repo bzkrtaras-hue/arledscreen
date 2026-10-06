@@ -1997,6 +1997,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit sill flashing yok"],
     mustNotSay: ["sill flashing garantidir", "sabit sill flashing True1", "tüm modeller sill flashing", "eşik flaşörü garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 178,
+    q: "LED ekran ClickShare / kablosuz sunum var mı? ARLEDSCREEN sabit ClickShare iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ClickShare yok"],
+    mustNotSay: ["ClickShare garantidir", "sabit ClickShare True1", "tüm modeller ClickShare", "kablosuz sunum garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

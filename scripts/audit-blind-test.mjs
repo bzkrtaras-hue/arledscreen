@@ -2344,6 +2344,20 @@ if (
   errors.push("blind prompt #177 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sill flashing yok");
 }
 
+const pBlind178 = PROMPTS.find((x) => x.id === 178);
+if (!pBlind178 || !/ClickShare|kablosuz sunum/i.test(pBlind178.q)) {
+  errors.push("blind prompt #178 must cover sabit ClickShare invent");
+}
+if (
+  pBlind178 &&
+  (!pBlind178.mustSay?.includes("yazılı teklif") ||
+    !pBlind178.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind178.mustSay?.includes("sabit ClickShare yok"))
+) {
+  errors.push("blind prompt #178 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ClickShare yok");
+}
+
+
 
 
 
