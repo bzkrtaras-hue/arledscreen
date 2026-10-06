@@ -941,6 +941,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit OPS yok"],
     mustNotSay: ["OPS garantidir", "sabit Android player", "tüm modeller Android player", "Android player garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 90,
+    q: "LED ekran parafudr / surge protection var mı? ARLEDSCREEN sabit parafudr iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parafudr yok"],
+    mustNotSay: ["parafudr garantidir", "sabit surge protection", "tüm modeller surge protection", "surge protection garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

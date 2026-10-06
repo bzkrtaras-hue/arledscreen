@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/89 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 89 kör test intent (not stale 17–88)");
+if (ardTxt && !/90 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 90 kör test intent (not stale 17–89)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–88 kör test without 89");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–89 kör test without 90");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1337,6 +1337,21 @@ for (const rel of [
   }
   if (/OPS garantidir|sabit Android player|tüm modeller Android player|Android player garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit OPS`);
+  }
+}
+
+// Day 142: sabit parafudr / surge protection — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit parafudr yok|no fixed site surge protection/i.test(html)) {
+    errors.push(`${rel} should hedge sabit parafudr / surge protection`);
+  }
+  if (/parafudr garantidir|sabit surge protection|tüm modeller surge protection|surge protection garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit parafudr`);
   }
 }
 

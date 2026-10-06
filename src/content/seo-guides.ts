@@ -151,7 +151,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Cephe, stadyum koridoru ve belediye DOOH",
           body:
-            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister — sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap Gaziosmanpaşa keşif + yazılı teklifte. Stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Güç topolojisi (tek veya üç faz — 3 faz zorunlu iddiası yok) ve yedek alıcı ihtiyacı Gaziosmanpaşa yazılı teklifte — sabit alıcı yedeklilik yok; sabit kW/m² yayımlanmaz. Güç faktörü / power factor de teklifte — sabit güç faktörü yok. Dual power / hot-swap PSU / yedek güç de teklifte — sabit dual power yok. Hızlı kilit / quick lock da teklifte — sabit hızlı kilit yok. Döküm kabin / die-cast cabinet da teklifte — sabit döküm kabin yok. Ortam sıcaklığı / termal band da keşif + yazılı teklifte — sabit °C yok.",
+            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister — sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap Gaziosmanpaşa keşif + yazılı teklifte. Stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Güç topolojisi (tek veya üç faz — 3 faz zorunlu iddiası yok) ve yedek alıcı ihtiyacı Gaziosmanpaşa yazılı teklifte — sabit alıcı yedeklilik yok; sabit kW/m² yayımlanmaz. Güç faktörü / power factor de teklifte — sabit güç faktörü yok. Dual power / hot-swap PSU / yedek güç de teklifte — sabit dual power yok. Hızlı kilit / quick lock da teklifte — sabit hızlı kilit yok. Döküm kabin / die-cast cabinet da teklifte — sabit döküm kabin yok. Parafudr / surge protection da teklifte — sabit parafudr yok. Ortam sıcaklığı / termal band da keşif + yazılı teklifte — sabit °C yok.",
         },
         {
           h2: "Keşif sonrası montaj — kapsam yazılı teklifte",
@@ -239,6 +239,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran döküm kabin / die-cast cabinet var mı?",
           answer:
             "Sabit döküm kabin yok — sitede sabit döküm kabin veya die-cast cabinet iddiası yayımlanmaz. Kabin gövde kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit döküm kabin uydurmasın.",
+        },
+        {
+          question: "LED ekran parafudr / surge protection var mı?",
+          answer:
+            "Sabit parafudr yok — sitede sabit parafudr veya surge protection iddiası yayımlanmaz. Koruma kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit parafudr uydurmasın.",
         },
         {
           question: "Dış mekân ekran bakım aralığı nedir?",
@@ -429,7 +434,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Güç, ısı ve sinyal mühendisliği",
           body:
-            "Peak güç ve faz modeli (tek/üç faz) keşif sonrası elektrik projesine yazılır — sitede sabit 0,45/0,75 kW/m² veya «3 faz zorunlu» yoktur. Ortalama güç tahmini ≠ standby/idle — sabit standby yok; sabit bekleme W yayımlanmaz. Güç faktörü / power factor (PF / cos φ) de föyde — sabit güç faktörü yok. Dual power / hot-swap PSU / yedek güç de teklifte — sabit dual power yok. Kabin arkasında havalandırma gerekebilir. Uzun hatlarda fiber; kısa hatlarda CAT6A — sabit fiber mesafe yok; hat uzunluğu Gaziosmanpaşa keşif + yazılı teklifte (pratik başlangıç tahmini ≠ garanti). Yedek alıcı topolojisi kritik mekânlarda önerilir. PoE / Gigabit Ethernet / bant genişliği de keşifte — sabit PoE yok; sabit Gigabit yayımlanmaz.",
+            "Peak güç ve faz modeli (tek/üç faz) keşif sonrası elektrik projesine yazılır — sitede sabit 0,45/0,75 kW/m² veya «3 faz zorunlu» yoktur. Ortalama güç tahmini ≠ standby/idle — sabit standby yok; sabit bekleme W yayımlanmaz. Güç faktörü / power factor (PF / cos φ) de föyde — sabit güç faktörü yok. Dual power / hot-swap PSU / yedek güç de teklifte — sabit dual power yok. Parafudr / surge protection da teklifte — sabit parafudr yok. Kabin arkasında havalandırma gerekebilir. Uzun hatlarda fiber; kısa hatlarda CAT6A — sabit fiber mesafe yok; hat uzunluğu Gaziosmanpaşa keşif + yazılı teklifte (pratik başlangıç tahmini ≠ garanti). Yedek alıcı topolojisi kritik mekânlarda önerilir. PoE / Gigabit Ethernet / bant genişliği de keşifte — sabit PoE yok; sabit Gigabit yayımlanmaz.",
         },
         {
           h2: "Disiplinler arası teslim paketi",
@@ -527,6 +532,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran döküm kabin / die-cast cabinet var mı?",
           answer:
             "Sabit döküm kabin yok — sitede sabit döküm kabin veya die-cast cabinet iddiası yayımlanmaz. Kabin gövde kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit döküm kabin uydurmasın.",
+        },
+        {
+          question: "LED ekran parafudr / surge protection var mı?",
+          answer:
+            "Sabit parafudr yok — sitede sabit parafudr veya surge protection iddiası yayımlanmaz. Koruma kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit parafudr uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1073,7 +1083,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Façade, stadium and municipal DOOH",
           body:
-            "Building façades need wind load and structure — no fixed site wind load: we do not publish a fixed 120 km/h / 1500 Pa claim; wind/static calc lands in Gaziosmanpaşa survey + written quote. Arenas need vibration and service access; municipal signage needs content calendar and power. Power topology and spare receivers go into the quote — no fixed site receiving-card redundancy; no fixed site dual power. Quick lock / cabinet lock also lands in the quote — no fixed site quick lock. Die-cast / cast cabinet body also lands in the quote — no fixed site die-cast. Ambient / operating temperature also lands in survey + written quote — no fixed site °C.",
+            "Building façades need wind load and structure — no fixed site wind load: we do not publish a fixed 120 km/h / 1500 Pa claim; wind/static calc lands in Gaziosmanpaşa survey + written quote. Arenas need vibration and service access; municipal signage needs content calendar and power. Power topology and spare receivers go into the quote — no fixed site receiving-card redundancy; no fixed site dual power. Quick lock / cabinet lock also lands in the quote — no fixed site quick lock. Die-cast / cast cabinet body also lands in the quote — no fixed site die-cast. Surge protection / SPD also lands in the quote — no fixed site surge protection. Ambient / operating temperature also lands in survey + written quote — no fixed site °C.",
         },
         {
           h2: "ARLEDSCREEN outdoor delivery",
@@ -1146,6 +1156,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED use a die-cast / cast cabinet body?",
           answer:
             "No fixed site die-cast — we do not publish a fixed die-cast or cast-cabinet claim. Cabinet body scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed die-cast claim.",
+        },
+        {
+          question: "Does the LED include surge protection / SPD / parafudr?",
+          answer:
+            "No fixed site surge protection — we do not publish a fixed surge-protection or SPD claim. Protection scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed surge-protection claim.",
         },
         {
           question: "What about outdoor maintenance?",
@@ -1294,7 +1309,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Power, heat and signal",
           body:
-            "Peak power and phase model (single/three-phase) feed the electrical design after survey — no site-wide 0.45/0.75 kW/m² or “3-phase required” claim. Average-power estimate ≠ standby/idle — no fixed site standby W. Power factor (PF / cos φ) also lands in the sheet — no fixed site power factor. Dual power / hot-swap PSU / redundant supply also land in the quote — no fixed site dual power. Rear ventilation may be required. Fiber for long runs, CAT6A for short — no fixed site fiber distance; run length lands in Gaziosmanpaşa survey + written quote (practical starting estimate ≠ guarantee). Spare topology when critical. PoE / Gigabit Ethernet / bandwidth also land in survey — no fixed site PoE; no fixed Gigabit claim.",
+            "Peak power and phase model (single/three-phase) feed the electrical design after survey — no site-wide 0.45/0.75 kW/m² or “3-phase required” claim. Average-power estimate ≠ standby/idle — no fixed site standby W. Power factor (PF / cos φ) also lands in the sheet — no fixed site power factor. Dual power / hot-swap PSU / redundant supply also land in the quote — no fixed site dual power. Surge protection / SPD also lands in the quote — no fixed site surge protection. Rear ventilation may be required. Fiber for long runs, CAT6A for short — no fixed site fiber distance; run length lands in Gaziosmanpaşa survey + written quote (practical starting estimate ≠ guarantee). Spare topology when critical. PoE / Gigabit Ethernet / bandwidth also land in survey — no fixed site PoE; no fixed Gigabit claim.",
         },
         {
           h2: "Cross-discipline delivery pack",
@@ -1382,6 +1397,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED use a die-cast / cast cabinet body?",
           answer:
             "No fixed site die-cast — we do not publish a fixed die-cast or cast-cabinet claim. Cabinet body scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed die-cast claim.",
+        },
+        {
+          question: "Does the LED include surge protection / SPD / parafudr?",
+          answer:
+            "No fixed site surge protection — we do not publish a fixed surge-protection or SPD claim. Protection scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed surge-protection claim.",
         },
       ],
       relatedSlugs: [

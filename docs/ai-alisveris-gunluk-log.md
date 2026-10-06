@@ -131,6 +131,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 139 | 2026-10-06 | sabit döküm kabin #87 · priced dis/ic/gob ARD refresh · skor /261 | ✅ |
 | 140 | 2026-10-06 | sabit anti-yansıma #88 · ic/konferans/ince-pitch ARD refresh · skor /264 | ✅ |
 | 141 | 2026-10-06 | sabit OPS #89 · kiosk/poster ARD refresh · skor /267 | ✅ |
+| 142 | 2026-10-06 | sabit parafudr #90 · dis/mimari ARD refresh · skor /270 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -955,3 +956,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN kiosk + TR/EN poster OPS invent · llms deny · sabit OPS yok
 - ARD refresh: rehber kiosk/poster + products poster/kiralik (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit OPS
 - skor hedef Tur 1 ≥ 134/267 · Tur 2 ≥ 201/267
+
+## Gün 142 notları
+
+- Blind #90 «parafudr / surge protection?» — skor **/270**; ARD **90 kör test**
+- TR/EN dis-mekan + TR/EN mimari parafudr invent · llms deny · sabit parafudr yok
+- ARD refresh: rehber dis/mimari + priced dis/transparan (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit parafudr
+- skor hedef Tur 1 ≥ 135/270 · Tur 2 ≥ 203/270
