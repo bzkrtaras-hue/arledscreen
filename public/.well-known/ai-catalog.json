@@ -1100,7 +1100,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 74 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 75 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1150,7 +1150,8 @@
         "LED ekran genlock / frame sync / senkron kilidi var mı? ARLEDSCREEN sabit genlock veya PTP sync iddiası yayımlıyor mu?",
         "LED ekran Art-Net / sACN / DMX ışık kontrolü var mı? ARLEDSCREEN sabit Art-Net veya DMX512 iddiası yayımlıyor mu?",
         "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?",
-        "LED ekran ön servis / arka servis mi? ARLEDSCREEN sabit ön servis veya rear service iddiası yayımlıyor mu?"
+        "LED ekran ön servis / arka servis mi? ARLEDSCREEN sabit ön servis veya rear service iddiası yayımlıyor mu?",
+        "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1260,12 +1261,13 @@
       "displayName": "Poster LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/poster-led-ekran/",
-      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok. Sabit CMS SLA yok — Blind #69.",
+      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok. Sabit CMS SLA yok — Blind #69. Sabit WiFi yok — Blind #75.",
       "representativeQueries": [
         "poster LED rehber",
         "totem LED rehber",
         "Poster / totem LED fiyatı?",
-        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?"
+        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?",
+        "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -1274,21 +1276,22 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T15:00:00Z"
+      "updatedAt": "2026-10-07T21:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-kiosk",
       "displayName": "Kiosk dijital ekran rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/",
-      "description": "Kiosk / dijital ekran rehber. Quote-scoped; sabit ömür/MTBF yok — Blind #40. Sabit PoE/Gigabit yok — Blind #66. Sabit CMS SLA yok — Blind #69. Sabit NDI yok — Blind #73.",
+      "description": "Kiosk / dijital ekran rehber. Quote-scoped; sabit ömür/MTBF yok — Blind #40. Sabit PoE/Gigabit yok — Blind #66. Sabit CMS SLA yok — Blind #69. Sabit NDI yok — Blind #73. Sabit WiFi yok — Blind #75.",
       "representativeQueries": [
         "kiosk LED ekran",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
         "LED ekran PoE / Gigabit Ethernet / ağ bant genişliği gereksinimi nedir? ARLEDSCREEN sabit PoE veya Gigabit iddiası yayımlıyor mu?",
         "kiosk ekran fiyat",
         "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?",
-        "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?"
+        "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?",
+        "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -1298,7 +1301,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T19:00:00Z"
+      "updatedAt": "2026-10-07T21:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-led-ekran",
@@ -3460,6 +3463,63 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T20:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:geo:bolge-edirne",
+      "displayName": "Edirne LED bölge",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/bolgeler/edirne/",
+      "description": "Real region hub (edirne) — not an 81-il doorway. No invent sabit WiFi — Blind #75; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Edirne LED bölge LED ekran",
+        "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?",
+        "edirne LED"
+      ],
+      "tags": [
+        "region",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T21:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:cases:matiz-sahne",
+      "displayName": "Matiz Sahne LED proje",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/projelerimiz/matiz-sahne-led-ekran/",
+      "description": "Real project case (Matiz Sahne) — not a spam doorway. No invent sabit WiFi — Blind #75; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Matiz Sahne LED ekran",
+        "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?",
+        "sahne LED proje"
+      ],
+      "tags": [
+        "case",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T21:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:cases:beylikduzu-belediyesi",
+      "displayName": "Beylikdüzü Belediyesi LED proje",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/projelerimiz/beylikduzu-belediyesi-led-ekran/",
+      "description": "Real project case (Beylikdüzü Belediyesi) — not a spam doorway. No invent sabit WiFi — Blind #75; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Beylikdüzü Belediyesi LED ekran",
+        "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?",
+        "belediye LED proje"
+      ],
+      "tags": [
+        "case",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T21:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",
