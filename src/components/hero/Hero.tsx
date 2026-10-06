@@ -64,8 +64,8 @@ export function Hero({ locale }: HeroProps) {
       }
       subcopy={
         tr
-          ? "Projenin ilk keşif aşamasından tasarım, üretim, montaj ve satış sonrası teknik destek süreçlerine kadar tüm operasyonu uçtan uca yönetiyoruz. İstanbul merkezli üretim tesisimizde yüksek kalite standartlarında hazırlanan LED ekran sistemleri, Türkiye’nin 81 ilindeki yaygın bayi ve servis ağımız aracılığıyla sahada profesyonellikle hayata geçirilmektedir."
-          : "We manage the full operation end to end — from the first site survey through design, production, installation and after-sales technical support. LED display systems prepared to high quality standards at our Istanbul-based production facility are delivered on site through our dealer and service network across Turkey’s 81 provinces."
+          ? "Keşiften montaja ve kurulum sonrası teknik servise kadar süreci aynı ekip yürütür. Merkezimiz İstanbul Gaziosmanpaşa’dır; satış, montaj ve servis Türkiye genelindedir. Şehir sayfalarında yalnızca kayıtlı projeler yer alır."
+          : "Survey, supply, installation and after-sales service are run by the same team. Headquarters is in Gaziosmanpaşa, Istanbul; sales, installation and service cover Turkey. City pages list only recorded projects."
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Teklif Al" : "Get a quote"}
