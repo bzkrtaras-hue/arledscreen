@@ -3371,6 +3371,20 @@ if (
   errors.push("blind prompt #256 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Clevertouch yok");
 }
 
+const pBlind257 = PROMPTS.find((x) => x.id === 257);
+if (!pBlind257 || !/interlocking cleat|kenetli kleyt/i.test(pBlind257.q)) {
+  errors.push("blind prompt #257 must cover sabit interlocking cleat invent");
+}
+if (
+  pBlind257 &&
+  (!pBlind257.mustSay?.includes("yazılı teklif") ||
+    !pBlind257.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind257.mustSay?.includes("sabit interlocking cleat yok"))
+) {
+  errors.push("blind prompt #257 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit interlocking cleat yok");
+}
+
+
 
 
 

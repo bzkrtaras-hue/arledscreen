@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 308: blind #256 sabit Clevertouch invent)  
+Son güncelleme: 2026-10-06 (Gün 309: blind #257 sabit interlocking cleat invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 256 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 257 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 256 prompt (alışveriş + varlık)
+## 257 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -280,6 +280,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 254 | LED ekran ViewSonic / interactive display var mı? ARLEDSCREEN sabit ViewSonic iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ViewSonic yok** | ViewSonic garantidir / sabit ViewSonic True1 / tüm modeller ViewSonic / interactive display garantidir |
 | 255 | LED ekran concealed cleat / gizli kleyt var mı? ARLEDSCREEN sabit concealed cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit concealed cleat yok** | concealed cleat garantidir / sabit concealed cleat True1 / tüm modeller concealed cleat / gizli kleyt garantidir |
 | 256 | LED ekran Clevertouch / interactive display var mı? ARLEDSCREEN sabit Clevertouch iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Clevertouch yok** | Clevertouch garantidir / sabit Clevertouch True1 / tüm modeller Clevertouch / interactive display garantidir |
+| 257 | LED ekran interlocking cleat / kenetli kleyt var mı? ARLEDSCREEN sabit interlocking cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit interlocking cleat yok** | interlocking cleat garantidir / sabit interlocking cleat True1 / tüm modeller interlocking cleat / kenetli kleyt garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -290,7 +291,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 768. Hedef tur 1 ≥ 384/768; tur 2 (Point C sonrası) ≥ 576/768.
+**Tur skoru** = toplam / 771. Hedef tur 1 ≥ 386/771; tur 2 (Point C sonrası) ≥ 579/771.
 
 ### Canlı tur kayıt şablonu
 

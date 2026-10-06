@@ -2945,6 +2945,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Clevertouch yok"],
     mustNotSay: ["Clevertouch garantidir", "sabit Clevertouch True1", "tüm modeller Clevertouch", "interactive display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 257,
+    q: "LED ekran interlocking cleat / kenetli kleyt var mı? ARLEDSCREEN sabit interlocking cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit interlocking cleat yok"],
+    mustNotSay: ["interlocking cleat garantidir", "sabit interlocking cleat True1", "tüm modeller interlocking cleat", "kenetli kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
