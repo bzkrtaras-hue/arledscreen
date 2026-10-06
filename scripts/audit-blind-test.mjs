@@ -1713,6 +1713,20 @@ if (
   errors.push("blind prompt #129 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hoist yok");
 }
 
+
+const pBlind130 = PROMPTS.find((x) => x.id === 130);
+if (!pBlind130 || !/SFP/i.test(pBlind130.q)) {
+  errors.push("blind prompt #130 must cover sabit SFP invent");
+}
+if (
+  pBlind130 &&
+  (!pBlind130.mustSay?.includes("yazılı teklif") ||
+    !pBlind130.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind130.mustSay?.includes("sabit SFP yok"))
+) {
+  errors.push("blind prompt #130 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SFP yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

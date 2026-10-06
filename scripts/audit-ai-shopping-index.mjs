@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 129) errors.push(`blindTestPrompts must be 129 (got ${prompts.length})`);
+if (prompts.length !== 130) errors.push(`blindTestPrompts must be 130 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/129 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 129 kör test intent");
+if (!/130 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 130 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–128 kör test without 129");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–129 kör test without 130");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1157,6 +1157,16 @@ if (!p129 || !/hoist|vinç/i.test(p129.q || "")) {
 }
 if (!/hoist|vinç|sabit hoist/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit hoist invent");
+}
+
+
+// Day 182: sabit SFP / SFP modül invent
+const p130 = (doc.blindTestPrompts || []).find((p) => p.id === 130);
+if (!p130 || !/SFP/i.test(p130.q || "")) {
+  errors.push("blindTestPrompts #130 must cover sabit SFP invent");
+}
+if (!/SFP|sabit SFP/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit SFP invent");
 }
 
 // Day 76: agentRules full disambiguation

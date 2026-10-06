@@ -1421,6 +1421,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hoist yok"],
     mustNotSay: ["hoist garantidir", "sabit vinç", "tüm modeller hoist", "vinç garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 130,
+    q: "LED ekran SFP / SFP modül var mı? ARLEDSCREEN sabit SFP iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit SFP yok"],
+    mustNotSay: ["SFP garantidir", "sabit SFP modül", "tüm modeller SFP", "SFP modül garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

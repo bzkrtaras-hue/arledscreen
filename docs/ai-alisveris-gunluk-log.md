@@ -171,6 +171,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 179 | 2026-10-06 | sabit backup battery #127 · dis/mimari ARD refresh · skor /381 | ✅ |
 | 180 | 2026-10-06 | sabit ribbon cable #128 · ic/konferans ARD refresh · skor /384 | ✅ |
 | 181 | 2026-10-06 | sabit hoist #129 · dis/mimari ARD refresh · skor /387 | ✅ |
+| 182 | 2026-10-06 | sabit SFP #130 · ic/konferans ARD refresh · skor /390 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1275,4 +1276,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari hoist invent · llms deny · sabit hoist yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit hoist
 - skor hedef Tur 1 ≥ 194/387 · Tur 2 ≥ 291/387
+
+## Gün 182 notları
+
+- Blind #130 «SFP / SFP modül?» — skor **/390**; ARD **130 kör test**
+- TR/EN ic-mekan + TR/EN konferans SFP invent · llms deny · sabit SFP yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit SFP
+- skor hedef Tur 1 ≥ 195/390 · Tur 2 ≥ 293/390
 
