@@ -1,6 +1,6 @@
-## Gün 510 — invent Blind #458 Bose VB1
+## Gün 510 — invent Blind #458 Bose VB1 LIVE
 
-- Blind #458 Bose VB1 / VB1 soundbar · ic/konferans · prompts=458 · /1374 · build pending
+- Blind #458 Bose VB1 / VB1 soundbar · ic/konferans · prompts=458 · /1374 · CF deploy · smoke:live 20/20
 - sahibe iş yok
 
 ## Gün 509 — invent Blind #457 canopy fascia LIVE
