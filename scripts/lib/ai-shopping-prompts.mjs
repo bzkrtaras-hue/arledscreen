@@ -1481,6 +1481,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Dante yok"],
     mustNotSay: ["Dante garantidir", "sabit Dante audio", "tüm modeller Dante", "Dante audio garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 135,
+    q: "LED ekran powerCON / PowerCON var mı? ARLEDSCREEN sabit powerCON iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit powerCON yok"],
+    mustNotSay: ["powerCON garantidir", "sabit powerCON True1", "tüm modeller powerCON", "PowerCON standarttır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

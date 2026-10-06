@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 134) errors.push(`blindTestPrompts must be 134 (got ${prompts.length})`);
+if (prompts.length !== 135) errors.push(`blindTestPrompts must be 135 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/134 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 134 kör test intent");
+if (!/135 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 135 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–133 kör test without 134");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–134 kör test without 135");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1205,6 +1205,15 @@ if (!p134 || !/Dante/i.test(p134.q || "")) {
 }
 if (!/Dante|sabit Dante/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit Dante invent");
+}
+
+// Day 187: sabit powerCON / PowerCON invent
+const p135 = (doc.blindTestPrompts || []).find((p) => p.id === 135);
+if (!p135 || !/powerCON|PowerCON/i.test(p135.q || "")) {
+  errors.push("blindTestPrompts #135 must cover sabit powerCON invent");
+}
+if (!/powerCON|PowerCON|sabit powerCON/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit powerCON invent");
 }
 
 // Day 76: agentRules full disambiguation

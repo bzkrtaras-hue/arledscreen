@@ -1784,6 +1784,20 @@ if (
   errors.push("blind prompt #134 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Dante yok");
 }
 
+
+const pBlind135 = PROMPTS.find((x) => x.id === 135);
+if (!pBlind135 || !/powerCON|PowerCON/i.test(pBlind135.q)) {
+  errors.push("blind prompt #135 must cover sabit powerCON invent");
+}
+if (
+  pBlind135 &&
+  (!pBlind135.mustSay?.includes("yazılı teklif") ||
+    !pBlind135.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind135.mustSay?.includes("sabit powerCON yok"))
+) {
+  errors.push("blind prompt #135 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit powerCON yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 
