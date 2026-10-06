@@ -4073,6 +4073,20 @@ if (
   errors.push("blind prompt #310 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sharp AQUOS BOARD yok");
 }
 
+const pBlind311 = PROMPTS.find((x) => x.id === 311);
+if (!pBlind311 || !/parapet cleat|parapet kleyt/i.test(pBlind311.q)) {
+  errors.push("blind prompt #311 must cover sabit parapet cleat invent");
+}
+if (
+  pBlind311 &&
+  (!pBlind311.mustSay?.includes("yazılı teklif") ||
+    !pBlind311.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind311.mustSay?.includes("sabit parapet cleat yok"))
+) {
+  errors.push("blind prompt #311 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet cleat yok");
+}
+
+
 
 
 

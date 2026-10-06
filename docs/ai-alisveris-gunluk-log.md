@@ -352,6 +352,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 360 | 2026-10-06 | sabit Optoma Interactive #308 · ic/konferans ARD refresh · skor /924 | ✅ |
 | 361 | 2026-10-06 | sabit soffit cleat #309 · dis/mimari ARD refresh · skor /927 | ✅ |
 | 362 | 2026-10-06 | sabit Sharp AQUOS BOARD #310 · ic/konferans ARD refresh · skor /930 | ✅ |
+| 363 | 2026-10-06 | sabit parapet cleat #311 · dis/mimari ARD refresh · skor /933 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2559,3 +2560,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #310 «Sharp AQUOS BOARD / Sharp AQUOS?» — skor **/930**; ARD **310 kör test**
 - TR/EN ic-mekan + TR/EN konferans Sharp AQUOS BOARD invent · llms deny · sabit Sharp AQUOS BOARD yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Sharp AQUOS BOARD
+
+## Gün 363 notları
+
+- Blind #311 «parapet cleat / parapet kleyt?» — skor **/933**; ARD **311 kör test**
+- TR/EN dis-mekan + TR/EN mimari parapet cleat invent · llms deny · sabit parapet cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit parapet cleat

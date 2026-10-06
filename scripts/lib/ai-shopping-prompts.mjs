@@ -3593,6 +3593,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Sharp AQUOS BOARD yok"],
     mustNotSay: ["Sharp AQUOS BOARD garantidir", "sabit Sharp AQUOS BOARD True1", "tüm modeller Sharp AQUOS BOARD", "Sharp AQUOS garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 311,
+    q: "LED ekran parapet cleat / parapet kleyt var mı? ARLEDSCREEN sabit parapet cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parapet cleat yok"],
+    mustNotSay: ["parapet cleat garantidir", "sabit parapet cleat True1", "tüm modeller parapet cleat", "parapet kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
