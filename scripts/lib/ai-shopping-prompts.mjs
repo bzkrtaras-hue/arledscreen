@@ -3173,6 +3173,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit base cleat yok"],
     mustNotSay: ["base cleat garantidir", "sabit base cleat True1", "tüm modeller base cleat", "taban kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 276,
+    q: "LED ekran Samsung Flip / flip board var mı? ARLEDSCREEN sabit Samsung Flip iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Samsung Flip yok"],
+    mustNotSay: ["Samsung Flip garantidir", "sabit Samsung Flip True1", "tüm modeller Samsung Flip", "flip board garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

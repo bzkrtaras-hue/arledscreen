@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 327: blind #275 sabit base cleat invent)  
+Son güncelleme: 2026-10-06 (Gün 328: blind #276 sabit Samsung Flip invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 275 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 276 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 275 prompt (alışveriş + varlık)
+## 276 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -299,6 +299,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 273 | LED ekran ridge cleat / mahya kleyt var mı? ARLEDSCREEN sabit ridge cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ridge cleat yok** | ridge cleat garantidir / sabit ridge cleat True1 / tüm modeller ridge cleat / mahya kleyt garantidir |
 | 274 | LED ekran Surface Hub / Microsoft Hub var mı? ARLEDSCREEN sabit Surface Hub iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Surface Hub yok** | Surface Hub garantidir / sabit Surface Hub True1 / tüm modeller Surface Hub / Microsoft Hub garantidir |
 | 275 | LED ekran base cleat / taban kleyt var mı? ARLEDSCREEN sabit base cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit base cleat yok** | base cleat garantidir / sabit base cleat True1 / tüm modeller base cleat / taban kleyt garantidir |
+| 276 | LED ekran Samsung Flip / flip board var mı? ARLEDSCREEN sabit Samsung Flip iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Samsung Flip yok** | Samsung Flip garantidir / sabit Samsung Flip True1 / tüm modeller Samsung Flip / flip board garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -309,7 +310,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 825. Hedef tur 1 ≥ 413/825; tur 2 (Point C sonrası) ≥ 619/825.
+**Tur skoru** = toplam / 828. Hedef tur 1 ≥ 414/828; tur 2 (Point C sonrası) ≥ 621/828.
 
 ### Canlı tur kayıt şablonu
 

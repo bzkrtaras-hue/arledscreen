@@ -317,6 +317,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 325 | 2026-10-06 | sabit ridge cleat #273 · dis/mimari ARD refresh · skor /819 | ✅ |
 | 326 | 2026-10-06 | sabit Surface Hub #274 · ic/konferans ARD refresh · skor /822 | ✅ |
 | 327 | 2026-10-06 | sabit base cleat #275 · dis/mimari ARD refresh · skor /825 | ✅ |
+| 328 | 2026-10-06 | sabit Samsung Flip #276 · ic/konferans ARD refresh · skor /828 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2314,3 +2315,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #275 «base cleat / taban kleyt?» — skor **/825**; ARD **275 kör test**
 - TR/EN dis-mekan + TR/EN mimari base cleat invent · llms deny · sabit base cleat yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit base cleat
+
+## Gün 328 notları
+
+- Blind #276 «Samsung Flip / flip board?» — skor **/828**; ARD **276 kör test**
+- TR/EN ic-mekan + TR/EN konferans Samsung Flip invent · llms deny · sabit Samsung Flip yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Samsung Flip
