@@ -3269,6 +3269,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit sill cleat yok"],
     mustNotSay: ["sill cleat garantidir", "sabit sill cleat True1", "tüm modeller sill cleat", "eşik kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 284,
+    q: "LED ekran HUAWEI IdeaHub / IdeaHub var mı? ARLEDSCREEN sabit HUAWEI IdeaHub iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HUAWEI IdeaHub yok"],
+    mustNotSay: ["HUAWEI IdeaHub garantidir", "sabit HUAWEI IdeaHub True1", "tüm modeller HUAWEI IdeaHub", "IdeaHub garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
