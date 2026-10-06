@@ -2537,6 +2537,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Lumens yok"],
     mustNotSay: ["Lumens garantidir", "sabit Lumens True1", "tüm modeller Lumens", "PTZ camera garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 223,
+    q: "LED ekran rake flashing / saçak flaş var mı? ARLEDSCREEN sabit rake flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rake flashing yok"],
+    mustNotSay: ["rake flashing garantidir", "sabit rake flashing True1", "tüm modeller rake flashing", "saçak flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
