@@ -222,6 +222,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 230 | 2026-10-06 | sabit ClickShare #178 · ic/konferans ARD refresh · skor /534 | ✅ |
 | 231 | 2026-10-06 | sabit seismic brace #179 · dis/mimari ARD refresh · skor /537 | ✅ |
 | 232 | 2026-10-06 | sabit AirMedia #180 · ic/konferans ARD refresh · skor /540 | ✅ |
+| 233 | 2026-10-06 | sabit chemical anchor #181 · dis/mimari ARD refresh · skor /543 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1649,3 +1650,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #180 «AirMedia / kablosuz paylaşım?» — skor **/540**; ARD **180 kör test**
 - TR/EN ic-mekan + TR/EN konferans AirMedia invent · llms deny · sabit AirMedia yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit AirMedia
+
+## Gün 233 notları
+
+- Blind #181 «chemical anchor / kimyasal dübel?» — skor **/543**; ARD **181 kör test**
+- TR/EN dis-mekan + TR/EN mimari chemical anchor invent · llms deny · sabit chemical anchor yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit chemical anchor

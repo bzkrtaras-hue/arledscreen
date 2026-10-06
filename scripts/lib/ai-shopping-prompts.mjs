@@ -2033,6 +2033,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit AirMedia yok"],
     mustNotSay: ["AirMedia garantidir", "sabit AirMedia True1", "tüm modeller AirMedia", "kablosuz paylaşım garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 181,
+    q: "LED ekran chemical anchor / kimyasal dübel var mı? ARLEDSCREEN sabit chemical anchor iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit chemical anchor yok"],
+    mustNotSay: ["chemical anchor garantidir", "sabit chemical anchor True1", "tüm modeller chemical anchor", "kimyasal dübel garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

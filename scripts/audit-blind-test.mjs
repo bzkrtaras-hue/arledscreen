@@ -2383,6 +2383,20 @@ if (
   errors.push("blind prompt #180 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit AirMedia yok");
 }
 
+const pBlind181 = PROMPTS.find((x) => x.id === 181);
+if (!pBlind181 || !/chemical anchor|kimyasal dübel/i.test(pBlind181.q)) {
+  errors.push("blind prompt #181 must cover sabit chemical anchor invent");
+}
+if (
+  pBlind181 &&
+  (!pBlind181.mustSay?.includes("yazılı teklif") ||
+    !pBlind181.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind181.mustSay?.includes("sabit chemical anchor yok"))
+) {
+  errors.push("blind prompt #181 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chemical anchor yok");
+}
+
+
 
 
 
