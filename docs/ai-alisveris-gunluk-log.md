@@ -128,6 +128,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 136 | 2026-10-06 | sabit 3D #84 · bireysel-2/orta-sekerli proje ARD · skor /252 | ✅ |
 | 137 | 2026-10-06 | sabit hızlı kilit #85 · blog 256/kafe/eskisehir ARD · skor /255 | ✅ |
 | 138 | 2026-10-06 | sabit kavisli #86 · blog alanya/unye/ic-mekan ARD · skor /258 | ✅ |
+| 139 | 2026-10-06 | sabit döküm kabin #87 · priced dis/ic/gob ARD refresh · skor /261 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -931,3 +932,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN vitrin + TR/EN mimari kavisli invent · llms deny · sabit kavisli yok
 - ARD/IndexNow: gerçek yayımlanmış blog hub alanya-white-city / unye-belediyesi-384 / ic-mekan-markanizi-gorunur (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit kavisli
 - skor hedef Tur 1 ≥ 129/258 · Tur 2 ≥ 194/258
+
+## Gün 139 notları
+
+- Blind #87 «döküm kabin / die-cast cabinet?» — skor **/261**; ARD **87 kör test**
+- TR/EN dis-mekan + TR/EN mimari döküm kabin invent · llms deny · sabit döküm kabin yok
+- ARD refresh: priced hub dis-mekan / ic-mekan / gob (sitemap/IndexNow doygun — yeni kapı yok) · IndexNow 200 · agentRules sabit döküm kabin
+- skor hedef Tur 1 ≥ 131/261 · Tur 2 ≥ 196/261

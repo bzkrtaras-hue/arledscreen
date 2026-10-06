@@ -905,6 +905,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kavisli yok"],
     mustNotSay: ["kavisli garantidir", "sabit curved", "tüm modeller curved", "curved garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 87,
+    q: "LED ekran döküm kabin / die-cast cabinet var mı? ARLEDSCREEN sabit döküm kabin iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit döküm kabin yok"],
+    mustNotSay: ["döküm kabin garantidir", "sabit die-cast", "tüm modeller die-cast", "die-cast garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

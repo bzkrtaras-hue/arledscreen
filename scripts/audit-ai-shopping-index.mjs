@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 86) errors.push(`blindTestPrompts must be 86 (got ${prompts.length})`);
+if (prompts.length !== 87) errors.push(`blindTestPrompts must be 87 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/86 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 86 kör test intent");
+if (!/87 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 87 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–85 kör test without 86");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–86 kör test without 87");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -761,6 +761,15 @@ if (!p86 || !/kavisli|curved/i.test(p86.q || "")) {
 }
 if (!/kavisli|curved|sabit kavisli/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit kavisli invent");
+}
+
+// Day 139: sabit döküm kabin / die-cast invent
+const p87 = (doc.blindTestPrompts || []).find((p) => p.id === 87);
+if (!p87 || !/döküm kabin|die-cast/i.test(p87.q || "")) {
+  errors.push("blindTestPrompts #87 must cover sabit döküm kabin invent");
+}
+if (!/döküm kabin|die-cast|sabit döküm/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit döküm kabin invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
