@@ -4047,6 +4047,20 @@ if (
   errors.push("blind prompt #308 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma Interactive yok");
 }
 
+const pBlind309 = PROMPTS.find((x) => x.id === 309);
+if (!pBlind309 || !/soffit cleat|soffit kleyt/i.test(pBlind309.q)) {
+  errors.push("blind prompt #309 must cover sabit soffit cleat invent");
+}
+if (
+  pBlind309 &&
+  (!pBlind309.mustSay?.includes("yazılı teklif") ||
+    !pBlind309.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind309.mustSay?.includes("sabit soffit cleat yok"))
+) {
+  errors.push("blind prompt #309 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit soffit cleat yok");
+}
+
+
 
 
 

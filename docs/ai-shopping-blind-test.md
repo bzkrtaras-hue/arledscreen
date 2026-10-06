@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 360: blind #308 sabit Optoma Interactive invent)  
+Son güncelleme: 2026-10-06 (Gün 361: blind #309 sabit soffit cleat invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 308 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 309 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 308 prompt (alışveriş + varlık)
+## 309 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -332,6 +332,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 306 | LED ekran Ricoh Interactive / Ricoh IFP var mı? ARLEDSCREEN sabit Ricoh Interactive iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Ricoh Interactive yok** | Ricoh Interactive garantidir / sabit Ricoh Interactive True1 / tüm modeller Ricoh Interactive / Ricoh IFP garantidir |
 | 307 | LED ekran cricket cleat / cricket kleyt var mı? ARLEDSCREEN sabit cricket cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cricket cleat yok** | cricket cleat garantidir / sabit cricket cleat True1 / tüm modeller cricket cleat / cricket kleyt garantidir |
 | 308 | LED ekran Optoma Interactive / Optoma IFP var mı? ARLEDSCREEN sabit Optoma Interactive iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Optoma Interactive yok** | Optoma Interactive garantidir / sabit Optoma Interactive True1 / tüm modeller Optoma Interactive / Optoma IFP garantidir |
+| 309 | LED ekran soffit cleat / soffit kleyt var mı? ARLEDSCREEN sabit soffit cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit soffit cleat yok** | soffit cleat garantidir / sabit soffit cleat True1 / tüm modeller soffit cleat / soffit kleyt garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -342,7 +343,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 924. Hedef tur 1 ≥ 462/924; tur 2 (Point C sonrası) ≥ 693/924.
+**Tur skoru** = toplam / 927. Hedef tur 1 ≥ 464/927; tur 2 (Point C sonrası) ≥ 696/927.
 
 ### Canlı tur kayıt şablonu
 

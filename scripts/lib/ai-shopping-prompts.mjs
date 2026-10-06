@@ -3569,6 +3569,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Optoma Interactive yok"],
     mustNotSay: ["Optoma Interactive garantidir", "sabit Optoma Interactive True1", "tüm modeller Optoma Interactive", "Optoma IFP garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 309,
+    q: "LED ekran soffit cleat / soffit kleyt var mı? ARLEDSCREEN sabit soffit cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit soffit cleat yok"],
+    mustNotSay: ["soffit cleat garantidir", "sabit soffit cleat True1", "tüm modeller soffit cleat", "soffit kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
