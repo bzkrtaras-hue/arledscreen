@@ -2885,6 +2885,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit continuous cleat yok"],
     mustNotSay: ["continuous cleat garantidir", "sabit continuous cleat True1", "tüm modeller continuous cleat", "sürekli kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 252,
+    q: "LED ekran Newline / IFP display var mı? ARLEDSCREEN sabit Newline iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline yok"],
+    mustNotSay: ["Newline garantidir", "sabit Newline True1", "tüm modeller Newline", "IFP display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

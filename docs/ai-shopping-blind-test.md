@@ -2,7 +2,7 @@
 
 Son güncelleme: 2026-10-06 (Gün 301: blind #249 sabit surface cleat invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 251 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 252 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 251 prompt (alışveriş + varlık)
+## 252 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -275,6 +275,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 249 | LED ekran surface cleat / yüzey kleyt var mı? ARLEDSCREEN sabit surface cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit surface cleat yok** | surface cleat garantidir / sabit surface cleat True1 / tüm modeller surface cleat / yüzey kleyt garantidir |
 | 250 | LED ekran Promethean / ActivPanel var mı? ARLEDSCREEN sabit Promethean iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Promethean yok** | Promethean garantidir / sabit Promethean True1 / tüm modeller Promethean / ActivPanel garantidir |
 | 251 | LED ekran continuous cleat / sürekli kleyt var mı? ARLEDSCREEN sabit continuous cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit continuous cleat yok** | continuous cleat garantidir / sabit continuous cleat True1 / tüm modeller continuous cleat / sürekli kleyt garantidir |
+| 252 | LED ekran Newline / IFP display var mı? ARLEDSCREEN sabit Newline iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Newline yok** | Newline garantidir / sabit Newline True1 / tüm modeller Newline / IFP display garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -285,7 +286,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 753. Hedef tur 1 ≥ 377/753; tur 2 (Point C sonrası) ≥ 565/753.
+**Tur skoru** = toplam / 756. Hedef tur 1 ≥ 378/756; tur 2 (Point C sonrası) ≥ 567/756.
 
 ### Canlı tur kayıt şablonu
 

@@ -293,6 +293,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 301 | 2026-10-06 | sabit surface cleat #249 · dis/mimari ARD refresh · skor /747 | ✅ |
 | 302 | 2026-10-06 | sabit Promethean #250 · ic/konferans ARD refresh · skor /750 | ✅ |
 | 303 | 2026-10-06 | sabit continuous cleat #251 · dis/mimari ARD refresh · skor /753 | ✅ |
+| 304 | 2026-10-06 | sabit Newline #252 · ic/konferans ARD refresh · skor /756 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2146,3 +2147,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #251 «continuous cleat / sürekli kleyt?» — skor **/753**; ARD **251 kör test**
 - TR/EN dis-mekan + TR/EN mimari continuous cleat invent · llms deny · sabit continuous cleat yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit continuous cleat
+
+## Gün 304 notları
+
+- Blind #252 «Newline / IFP display?» — skor **/756**; ARD **252 kör test**
+- TR/EN ic-mekan + TR/EN konferans Newline invent · llms deny · sabit Newline yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Newline
