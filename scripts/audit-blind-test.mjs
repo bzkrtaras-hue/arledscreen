@@ -5752,6 +5752,18 @@ if (
 ) {
   errors.push("blind prompt #440 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Center yok");
 }
+const pBlind441 = PROMPTS.find((x) => x.id === 441);
+if (!pBlind441 || !/frieze apron/i.test(pBlind441.q)) {
+  errors.push("blind prompt #441 must cover sabit frieze apron invent");
+}
+if (
+  pBlind441 &&
+  (!pBlind441.mustSay?.includes("yazılı teklif") ||
+    !pBlind441.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind441.mustSay?.includes("sabit frieze apron yok"))
+) {
+  errors.push("blind prompt #441 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit frieze apron yok");
+}
 
 
 

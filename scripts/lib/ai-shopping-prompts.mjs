@@ -5153,6 +5153,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Center yok"],
     mustNotSay: ["Neat Center garantidir", "sabit Neat Center True1", "tüm modeller Neat Center", "Neat Center dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 441,
+    q: "LED ekran frieze apron / friz eteği var mı? ARLEDSCREEN sabit frieze apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit frieze apron yok"],
+    mustNotSay: ["frieze apron garantidir", "sabit frieze apron True1", "tüm modeller frieze apron", "friz eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
