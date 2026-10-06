@@ -773,6 +773,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit WiFi yok"],
     mustNotSay: ["WiFi garantidir", "sabit Bluetooth", "tüm modeller WiFi", "Bluetooth garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 76,
+    q: "LED ekran 0mm / seamless / bezelsiz birleşim var mı? ARLEDSCREEN sabit 0mm veya seamless iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/vitrin-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit 0mm yok"],
+    mustNotSay: ["0mm garantidir", "sabit seamless", "tüm modeller bezelsiz", "seamless garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

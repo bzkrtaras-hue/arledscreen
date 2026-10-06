@@ -414,7 +414,7 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit ön servis yok — Blind #74.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit ön servis yok — Blind #74. Sabit 0mm yok — Blind #76.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
@@ -429,7 +429,8 @@
         "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?",
         "LED ekran HDMI / DisplayPort / SDI video girişi var mı? ARLEDSCREEN sabit HDMI 2.1 veya SDI iddiası yayımlıyor mu?",
         "LED ekran genlock / frame sync / senkron kilidi var mı? ARLEDSCREEN sabit genlock veya PTP sync iddiası yayımlıyor mu?",
-        "LED ekran ön servis / arka servis mi? ARLEDSCREEN sabit ön servis veya rear service iddiası yayımlıyor mu?"
+        "LED ekran ön servis / arka servis mi? ARLEDSCREEN sabit ön servis veya rear service iddiası yayımlıyor mu?",
+        "LED ekran 0mm / seamless / bezelsiz birleşim var mı? ARLEDSCREEN sabit 0mm veya seamless iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -439,7 +440,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T20:00:00Z"
+      "updatedAt": "2026-10-07T22:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -683,12 +684,13 @@
       "displayName": "Vitrin LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/vitrin-led-ekran/",
-      "description": "Vitrin / perakende LED rehber. Quote-only şeffaf/poster; stok paket invent yok; sabit kalınlık/kg yok — Blind #42. Sabit IK yok — Blind #54.",
+      "description": "Vitrin / perakende LED rehber. Quote-only şeffaf/poster; stok paket invent yok; sabit kalınlık/kg yok — Blind #42. Sabit IK yok — Blind #54. Sabit 0mm yok — Blind #76.",
       "representativeQueries": [
         "vitrin LED ekran",
         "mağaza vitrin LED",
         "şeffaf vitrin LED",
-        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?"
+        "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?",
+        "LED ekran 0mm / seamless / bezelsiz birleşim var mı? ARLEDSCREEN sabit 0mm veya seamless iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -697,7 +699,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T00:00:00Z"
+      "updatedAt": "2026-10-07T22:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:kiralama-intent",
@@ -1100,7 +1102,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 75 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 76 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1151,7 +1153,8 @@
         "LED ekran Art-Net / sACN / DMX ışık kontrolü var mı? ARLEDSCREEN sabit Art-Net veya DMX512 iddiası yayımlıyor mu?",
         "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?",
         "LED ekran ön servis / arka servis mi? ARLEDSCREEN sabit ön servis veya rear service iddiası yayımlıyor mu?",
-        "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?"
+        "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?",
+        "LED ekran 0mm / seamless / bezelsiz birleşim var mı? ARLEDSCREEN sabit 0mm veya seamless iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -3520,6 +3523,63 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T21:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:cases:white-city",
+      "displayName": "White City Resort Hotel LED proje",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/projelerimiz/white-city-resort-hotel-led-ekran/",
+      "description": "Real project case (White City Resort Hotel) — not a spam doorway. No invent sabit 0mm — Blind #76; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "White City Resort Hotel LED ekran",
+        "LED ekran 0mm / seamless / bezelsiz birleşim var mı? ARLEDSCREEN sabit 0mm veya seamless iddiası yayımlıyor mu?",
+        "LED proje"
+      ],
+      "tags": [
+        "case",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T22:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:cases:manisa-bb",
+      "displayName": "Manisa Büyükşehir Belediyesi LED proje",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/projelerimiz/manisa-buyuksehir-belediyesi-led-ekran/",
+      "description": "Real project case (Manisa Büyükşehir Belediyesi) — not a spam doorway. No invent sabit 0mm — Blind #76; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Manisa Büyükşehir Belediyesi LED ekran",
+        "LED ekran 0mm / seamless / bezelsiz birleşim var mı? ARLEDSCREEN sabit 0mm veya seamless iddiası yayımlıyor mu?",
+        "LED proje"
+      ],
+      "tags": [
+        "case",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T22:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:cases:unye-belediye",
+      "displayName": "Ünye Belediyesi Ordu Günleri LED proje",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/projelerimiz/unye-belediyesi-ordu-gunleri-led-ekran/",
+      "description": "Real project case (Ünye Belediyesi Ordu Günleri) — not a spam doorway. No invent sabit 0mm — Blind #76; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Ünye Belediyesi Ordu Günleri LED ekran",
+        "LED ekran 0mm / seamless / bezelsiz birleşim var mı? ARLEDSCREEN sabit 0mm veya seamless iddiası yayımlıyor mu?",
+        "LED proje"
+      ],
+      "tags": [
+        "case",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T22:00:00Z"
     }
   ]
 }

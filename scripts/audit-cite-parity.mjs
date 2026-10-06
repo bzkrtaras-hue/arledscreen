@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/75 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 75 kör test intent (not stale 17–74)");
+if (ardTxt && !/76 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 76 kör test intent (not stale 17–75)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-4]) kör test/i.test(ardTxt) && !/75 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–74 kör test without 75");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-5]) kör test/i.test(ardTxt) && !/76 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–75 kör test without 76");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1118,6 +1118,22 @@ for (const rel of [
   }
   if (/WiFi garantidir|sabit Bluetooth|tüm modeller WiFi|Bluetooth garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit WiFi / Bluetooth`);
+  }
+}
+
+
+// Day 128: sabit 0mm / seamless — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/vitrin-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit 0mm yok|no fixed site 0mm/i.test(html)) {
+    errors.push(`${rel} should hedge sabit 0mm / seamless`);
+  }
+  if (/0mm garantidir|sabit seamless|tüm modeller bezelsiz|seamless garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit 0mm / seamless`);
   }
 }
 

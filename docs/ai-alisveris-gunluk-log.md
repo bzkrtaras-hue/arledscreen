@@ -117,6 +117,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 125 | 2026-10-06 | sabit NDI/SRT/RTMP #73 · TR bolgeler aksaray/van/yozgat ARD · skor /219 | ✅ |
 | 126 | 2026-10-06 | sabit ön/arka servis #74 · TR bolgeler giresun/yalova/nigde ARD · skor /222 | ✅ |
 | 127 | 2026-10-06 | sabit WiFi/Bluetooth #75 · edirne + matiz/beylikduzu proje ARD · skor /225 | ✅ |
+| 128 | 2026-10-06 | sabit 0mm/seamless #76 · white-city/manisa-bb/unye proje ARD · skor /228 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -842,3 +843,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN kiosk + TR/EN poster WiFi invent · llms deny · sabit WiFi yok
 - ARD: TR bolge edirne + gerçek proje hub matiz-sahne / beylikduzu-belediyesi (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit WiFi
 - skor hedef Tur 1 ≥ 113/225 · Tur 2 ≥ 169/225
+
+## Gün 128 notları
+
+- Blind #76 «0mm / seamless / bezelsiz birleşim?» — skor **/228**; ARD **76 kör test**
+- TR/EN ic-mekan + TR/EN vitrin 0mm invent · llms deny · sabit 0mm yok
+- ARD: gerçek proje hub white-city / manisa-bb / unye-belediye (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit 0mm
+- skor hedef Tur 1 ≥ 114/228 · Tur 2 ≥ 171/228
