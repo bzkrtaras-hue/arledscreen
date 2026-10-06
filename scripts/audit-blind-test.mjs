@@ -5740,6 +5740,18 @@ if (
 ) {
   errors.push("blind prompt #439 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pediment apron yok");
 }
+const pBlind440 = PROMPTS.find((x) => x.id === 440);
+if (!pBlind440 || !/Neat Center/i.test(pBlind440.q)) {
+  errors.push("blind prompt #440 must cover sabit Neat Center invent");
+}
+if (
+  pBlind440 &&
+  (!pBlind440.mustSay?.includes("yazılı teklif") ||
+    !pBlind440.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind440.mustSay?.includes("sabit Neat Center yok"))
+) {
+  errors.push("blind prompt #440 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Center yok");
+}
 
 
 

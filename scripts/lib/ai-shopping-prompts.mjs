@@ -5140,15 +5140,16 @@ export const BLIND_TEST_PROMPTS = [
     ],
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit pediment apron yok"],
     mustNotSay: ["pediment apron garantidir", "sabit pediment apron True1", "tüm modeller pediment apron", "alınlık eteği garantidir", "ücretsiz kargo dahil"],
+  },  {
+    id: 440,
+    q: "LED ekran Neat Center / Neat Center var mı? ARLEDSCREEN sabit Neat Center iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Center yok"],
+    mustNotSay: ["Neat Center garantidir", "sabit Neat Center True1", "tüm modeller Neat Center", "Neat Center dahildir", "ücretsiz kargo dahil"],
   },
 ];
-
-export function promptsWithAbsoluteUrls() {
-  return BLIND_TEST_PROMPTS.map((p) => ({
-    id: p.id,
-    q: p.q,
-    urls: p.paths.map((path) => (path.startsWith("http") ? path : `${SITE}${path}`)),
-    mustSay: p.mustSay || [],
-    mustNotSay: p.mustNotSay || [],
-  }));
-}
