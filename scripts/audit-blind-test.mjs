@@ -3475,6 +3475,20 @@ if (
   errors.push("blind prompt #264 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Hisense yok");
 }
 
+const pBlind265 = PROMPTS.find((x) => x.id === 265);
+if (!pBlind265 || !/hook cleat|kanca kleyt/i.test(pBlind265.q)) {
+  errors.push("blind prompt #265 must cover sabit hook cleat invent");
+}
+if (
+  pBlind265 &&
+  (!pBlind265.mustSay?.includes("yazılı teklif") ||
+    !pBlind265.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind265.mustSay?.includes("sabit hook cleat yok"))
+) {
+  errors.push("blind prompt #265 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hook cleat yok");
+}
+
+
 
 
 

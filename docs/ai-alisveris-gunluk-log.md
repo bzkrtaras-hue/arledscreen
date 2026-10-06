@@ -306,6 +306,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 314 | 2026-10-06 | sabit Horion #262 · ic/konferans ARD refresh · skor /786 | ✅ |
 | 315 | 2026-10-06 | sabit standing seam cleat #263 · dis/mimari ARD refresh · skor /789 | ✅ |
 | 316 | 2026-10-06 | sabit Hisense #264 · ic/konferans ARD refresh · skor /792 | ✅ |
+| 317 | 2026-10-06 | sabit hook cleat #265 · dis/mimari ARD refresh · skor /795 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2237,3 +2238,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #264 «Hisense / GoBoard?» — skor **/792**; ARD **264 kör test**
 - TR/EN ic-mekan + TR/EN konferans Hisense invent · llms deny · sabit Hisense yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Hisense
+
+## Gün 317 notları
+
+- Blind #265 «hook cleat / kanca kleyt?» — skor **/795**; ARD **265 kör test**
+- TR/EN dis-mekan + TR/EN mimari hook cleat invent · llms deny · sabit hook cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit hook cleat

@@ -3041,6 +3041,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Hisense yok"],
     mustNotSay: ["Hisense garantidir", "sabit Hisense True1", "tüm modeller Hisense", "GoBoard garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 265,
+    q: "LED ekran hook cleat / kanca kleyt var mı? ARLEDSCREEN sabit hook cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hook cleat yok"],
+    mustNotSay: ["hook cleat garantidir", "sabit hook cleat True1", "tüm modeller hook cleat", "kanca kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
