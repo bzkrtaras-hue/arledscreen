@@ -1,7 +1,7 @@
-## Gün 495 — invent Blind #443 verge apron
+## Gün 495 — invent Blind #443 verge apron LIVE
 
-- Blind #443 verge apron / saçak kenarı eteği · dis/mimari · prompts=443 · /1329 · build pending
-- Point C paste yok · Tur 1a skor boş
+- Blind #443 verge apron / saçak kenarı eteği · dis/mimari · prompts=443 · /1329 · CF deploy · smoke:live 20/20 · IndexNow OK
+- Point C paste yok · Tur 1a skor boş · Drive Doc prompts→443
 - Point C + Tur 1a hâlâ sahip
 
 ## Gün 494d — Point C paste paket hazır (ajan login yok)
