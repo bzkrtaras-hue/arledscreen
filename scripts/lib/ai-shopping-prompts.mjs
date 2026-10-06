@@ -2249,6 +2249,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Huddly yok"],
     mustNotSay: ["Huddly garantidir", "sabit Huddly True1", "tüm modeller Huddly", "kamera garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 199,
+    q: "LED ekran ice dam / buz bariyeri var mı? ARLEDSCREEN sabit ice dam iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ice dam yok"],
+    mustNotSay: ["ice dam garantidir", "sabit ice dam True1", "tüm modeller ice dam", "buz bariyeri garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

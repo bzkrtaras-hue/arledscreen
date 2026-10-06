@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 198 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 199 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -314,6 +314,7 @@ const doc = {
     "Sabit Meeting Owl / Owl Labs site iddiası yok — Meeting Owl kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Meeting Owl uydurmasın.",
     "Sabit parapet flashing / parapet flaşörü site iddiası yok — parapet flashing kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit parapet flashing uydurmasın.",
     "Sabit Huddly / kamera site iddiası yok — Huddly kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Huddly uydurmasın.",
+    "Sabit ice dam / buz bariyeri site iddiası yok — ice dam kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit ice dam uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

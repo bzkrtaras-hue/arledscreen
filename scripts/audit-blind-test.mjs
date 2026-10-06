@@ -2617,6 +2617,20 @@ if (
   errors.push("blind prompt #198 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Huddly yok");
 }
 
+const pBlind199 = PROMPTS.find((x) => x.id === 199);
+if (!pBlind199 || !/ice dam|buz bariyeri/i.test(pBlind199.q)) {
+  errors.push("blind prompt #199 must cover sabit ice dam invent");
+}
+if (
+  pBlind199 &&
+  (!pBlind199.mustSay?.includes("yazılı teklif") ||
+    !pBlind199.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind199.mustSay?.includes("sabit ice dam yok"))
+) {
+  errors.push("blind prompt #199 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ice dam yok");
+}
+
+
 
 
 
