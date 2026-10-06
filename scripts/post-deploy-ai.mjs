@@ -67,13 +67,13 @@ if (skipIndex) {
 console.log("");
 console.log("Day 57–69 contract (canlı doğrula):");
 console.log(
-  "  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd≠list SKU · returnPolicy · blind #13–#79",
+  "  ai-shopping.json → pricedPanels=12 · agentRules · extrasUsd≠list SKU · returnPolicy · blind #13–#80",
 );
 console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → Day 131 ARD 79 kör test · #79 ışık sensörü · babil/beren/kesan-golet proje ARD",
+  "  entity-profiles → Day 132 ARD 80 kör test · #80 canlı modül · azerbaycan/gnd-triko/ouka proje ARD",
 );
 console.log(
   "  home hero → NO 81-il bayi invent · 81 il kapısı yok + quote-only",
@@ -86,6 +86,6 @@ console.log("Next (sahip):");
 console.log("  1) npm run point-c-packs -- --live  → GBP / LinkedIn / IG / FB paste (Day 67 cite)");
 console.log("  2) docs/point-c-merge-day.md checklist");
 console.log(
-  "  3) docs/ai-shopping-blind-test.md kör tur 1 (79 prompt /237; mustSay honesty) → ai-shopping-blind-test-scores.md",
+  "  3) docs/ai-shopping-blind-test.md kör tur 1 (80 prompt /240; mustSay honesty) → ai-shopping-blind-test-scores.md",
 );
 process.exit(0);

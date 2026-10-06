@@ -821,6 +821,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ışık sensörü yok"],
     mustNotSay: ["ışık sensörü garantidir", "sabit adaptive brightness", "tüm modeller ambient light sensor", "adaptive brightness garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 80,
+    q: "LED ekran canlı modül değişimi / hot-swap module var mı? ARLEDSCREEN sabit canlı modül değişimi iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/poster-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit canlı modül değişimi yok"],
+    mustNotSay: ["canlı modül değişimi garantidir", "sabit hot-swap module", "tüm modeller hot-swap module", "hot-swap module garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

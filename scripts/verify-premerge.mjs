@@ -28,7 +28,7 @@ function run(script, args = []) {
 }
 
 console.log("");
-console.log("=== verify:premerge (Day 131) ===");
+console.log("=== verify:premerge (Day 132) ===");
 
 if (!fs.existsSync(out)) {
   console.error("verify:premerge: missing out/ — run npm run build first");
@@ -62,9 +62,9 @@ if (!fs.existsSync(aiPath)) {
     } else if (!/extrasUsd\.controlCard|list SKU/i.test(JSON.stringify(doc.agentRules))) {
       console.error("verify:premerge: agentRules must disambiguate extrasUsd.controlCard ≠ list SKU");
       failed += 1;
-    } else if (!Array.isArray(doc.blindTestPrompts) || doc.blindTestPrompts.length !== 79) {
+    } else if (!Array.isArray(doc.blindTestPrompts) || doc.blindTestPrompts.length !== 80) {
       console.error(
-        `verify:premerge: blindTestPrompts must be 79 (got ${doc.blindTestPrompts?.length})`,
+        `verify:premerge: blindTestPrompts must be 80 (got ${doc.blindTestPrompts?.length})`,
       );
       failed += 1;
     } else if (!/AI-infrastructure ready/i.test(JSON.stringify(doc.agentRules))) {
@@ -220,9 +220,12 @@ if (!fs.existsSync(aiPath)) {
     } else if (!/ışık sensörü|adaptive brightness|ambient light sensor|sabit ışık sensörü/i.test(JSON.stringify(doc.agentRules))) {
       console.error("verify:premerge: agentRules must forbid sabit ışık sensörü invent");
       failed += 1;
+    } else if (!/canlı modül değişimi|hot-swap module|sabit canlı modül/i.test(JSON.stringify(doc.agentRules))) {
+      console.error("verify:premerge: agentRules must forbid sabit canlı modül değişimi invent");
+      failed += 1;
     } else {
       console.log(
-        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=79 OK`,
+        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=80 OK`,
       );
     }
     // Day 66: catalog extrasUsdNote

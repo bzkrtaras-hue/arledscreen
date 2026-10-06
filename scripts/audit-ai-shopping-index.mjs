@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 79) errors.push(`blindTestPrompts must be 79 (got ${prompts.length})`);
+if (prompts.length !== 80) errors.push(`blindTestPrompts must be 80 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/79 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 79 kör test intent");
+if (!/80 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 80 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-8]) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–78 kör test without 79");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–79 kör test without 80");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -698,6 +698,15 @@ if (!p79 || !/ışık sensörü|adaptive brightness|ambient light/i.test(p79.q |
 }
 if (!/ışık sensörü|adaptive brightness|ambient light sensor|sabit ışık sensörü/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit ışık sensörü invent");
+}
+
+// Day 132: sabit canlı modül değişimi / hot-swap module invent
+const p80 = (doc.blindTestPrompts || []).find((p) => p.id === 80);
+if (!p80 || !/canlı modül|hot-swap module/i.test(p80.q || "")) {
+  errors.push("blindTestPrompts #80 must cover sabit canlı modül değişimi invent");
+}
+if (!/canlı modül değişimi|hot-swap module|sabit canlı modül/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit canlı modül değişimi invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

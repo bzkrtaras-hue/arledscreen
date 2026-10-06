@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/79 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 79 kör test intent (not stale 17–78)");
+if (ardTxt && !/80 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 80 kör test intent (not stale 17–79)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-8]) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–78 kör test without 79");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–79 kör test without 80");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1182,6 +1182,22 @@ for (const rel of [
   }
   if (/ışık sensörü garantidir|sabit adaptive brightness|tüm modeller ambient light sensor|adaptive brightness garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit ışık sensörü`);
+  }
+}
+
+
+// Day 132: sabit canlı modül değişimi / hot-swap module — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/poster-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit canlı modül değişimi yok|no fixed site hot-swap module/i.test(html)) {
+    errors.push(`${rel} should hedge sabit canlı modül değişimi / hot-swap module`);
+  }
+  if (/canlı modül değişimi garantidir|sabit hot-swap module|tüm modeller hot-swap module|hot-swap module garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit canlı modül değişimi`);
   }
 }
 
