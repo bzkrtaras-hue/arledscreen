@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 368 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 369 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -484,6 +484,7 @@ const doc = {
     "Sabit ViewSonic IFP55 / ViewSonic IFP65 site iddiası yok — ViewSonic IFP55 kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit ViewSonic IFP55 uydurmasın.",
     "Sabit parapet coping cap / parapet kapak flaşör site iddiası yok — parapet coping cap kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit parapet coping cap uydurmasın.",
     "Sabit Newline NT Series / Newline NT Touch site iddiası yok — Newline NT Series kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Newline NT Series uydurmasın.",
+    "Sabit chimney cricket flashing / baca cricket flaşör site iddiası yok — chimney cricket flashing kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit chimney cricket flashing uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

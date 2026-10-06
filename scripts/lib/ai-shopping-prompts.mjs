@@ -4289,6 +4289,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline NT Series yok"],
     mustNotSay: ["Newline NT Series garantidir", "sabit Newline NT Series True1", "tüm modeller Newline NT Series", "Newline NT Touch garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 369,
+    q: "LED ekran chimney cricket flashing / baca cricket flaşör var mı? ARLEDSCREEN sabit chimney cricket flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit chimney cricket flashing yok"],
+    mustNotSay: ["chimney cricket flashing garantidir", "sabit chimney cricket flashing True1", "tüm modeller chimney cricket flashing", "baca cricket flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
