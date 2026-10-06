@@ -3929,6 +3929,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Samsung Flip Pro yok"],
     mustNotSay: ["Samsung Flip Pro garantidir", "sabit Samsung Flip Pro True1", "tüm modeller Samsung Flip Pro", "Samsung Flip WM garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 339,
+    q: "LED ekran skirt flashing / etek flaşör var mı? ARLEDSCREEN sabit skirt flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit skirt flashing yok"],
+    mustNotSay: ["skirt flashing garantidir", "sabit skirt flashing True1", "tüm modeller skirt flashing", "etek flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 390: blind #338 sabit Samsung Flip Pro invent)  
+Son güncelleme: 2026-10-06 (Gün 391: blind #339 sabit skirt flashing invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 338 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 339 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 338 prompt (alışveriş + varlık)
+## 339 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -362,6 +362,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 336 | LED ekran i3TOUCH X-ONE / i3TOUCH Sixty var mı? ARLEDSCREEN sabit i3TOUCH X-ONE iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit i3TOUCH X-ONE yok** | i3TOUCH X-ONE garantidir / sabit i3TOUCH X-ONE True1 / tüm modeller i3TOUCH X-ONE / i3TOUCH Sixty garantidir |
 | 337 | LED ekran roof curb / çatı curb var mı? ARLEDSCREEN sabit roof curb iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit roof curb yok** | roof curb garantidir / sabit roof curb True1 / tüm modeller roof curb / çatı curb garantidir |
 | 338 | LED ekran Samsung Flip Pro / Samsung Flip WM var mı? ARLEDSCREEN sabit Samsung Flip Pro iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Samsung Flip Pro yok** | Samsung Flip Pro garantidir / sabit Samsung Flip Pro True1 / tüm modeller Samsung Flip Pro / Samsung Flip WM garantidir |
+| 339 | LED ekran skirt flashing / etek flaşör var mı? ARLEDSCREEN sabit skirt flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit skirt flashing yok** | skirt flashing garantidir / sabit skirt flashing True1 / tüm modeller skirt flashing / etek flaşör garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -372,7 +373,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1014. Hedef tur 1 ≥ 507/1014; tur 2 (Point C sonrası) ≥ 761/1014.
+**Tur skoru** = toplam / 1017. Hedef tur 1 ≥ 509/1017; tur 2 (Point C sonrası) ≥ 763/1017.
 
 ### Canlı tur kayıt şablonu
 

@@ -380,6 +380,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 388 | 2026-10-06 | sabit i3TOUCH X-ONE #336 · ic/konferans ARD refresh · skor /1008 | ✅ |
 | 389 | 2026-10-06 | sabit roof curb #337 · dis/mimari ARD refresh · skor /1011 | ✅ |
 | 390 | 2026-10-06 | sabit Samsung Flip Pro #338 · ic/konferans ARD refresh · skor /1014 | ✅ |
+| 391 | 2026-10-06 | sabit skirt flashing #339 · dis/mimari ARD refresh · skor /1017 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2755,3 +2756,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #338 «Samsung Flip Pro / Samsung Flip WM?» — skor **/1014**; ARD **338 kör test**
 - TR/EN ic-mekan + TR/EN konferans Samsung Flip Pro invent · llms deny · sabit Samsung Flip Pro yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Samsung Flip Pro
+
+## Gün 391 notları
+
+- Blind #339 «skirt flashing / etek flaşör?» — skor **/1017**; ARD **339 kör test**
+- TR/EN dis-mekan + TR/EN mimari skirt flashing invent · llms deny · sabit skirt flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit skirt flashing
