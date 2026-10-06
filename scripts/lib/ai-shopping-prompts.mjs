@@ -2081,6 +2081,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Google Meet yok"],
     mustNotSay: ["Google Meet garantidir", "sabit Google Meet True1", "tüm modeller Google Meet", "soft conferencing garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 185,
+    q: "LED ekran neoprene gasket / neopren conta var mı? ARLEDSCREEN sabit neoprene gasket iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit neoprene gasket yok"],
+    mustNotSay: ["neoprene gasket garantidir", "sabit neoprene gasket True1", "tüm modeller neoprene gasket", "neopren conta garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -2435,6 +2435,20 @@ if (
   errors.push("blind prompt #184 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Meet yok");
 }
 
+const pBlind185 = PROMPTS.find((x) => x.id === 185);
+if (!pBlind185 || !/neoprene gasket|neopren conta/i.test(pBlind185.q)) {
+  errors.push("blind prompt #185 must cover sabit neoprene gasket invent");
+}
+if (
+  pBlind185 &&
+  (!pBlind185.mustSay?.includes("yazılı teklif") ||
+    !pBlind185.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind185.mustSay?.includes("sabit neoprene gasket yok"))
+) {
+  errors.push("blind prompt #185 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit neoprene gasket yok");
+}
+
+
 
 
 
