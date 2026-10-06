@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 345 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 346 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -423,6 +423,7 @@
     "Sabit pipe boot / boru boot site iddiası yok — pipe boot kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit pipe boot uydurmasın.",
     "Sabit InFocus Mondopad / InFocus JTouch site iddiası yok — InFocus Mondopad kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit InFocus Mondopad uydurmasın.",
     "Sabit edge metal / kenar metal site iddiası yok — edge metal kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit edge metal uydurmasın.",
+    "Sabit Newline Elite / Newline RS Series site iddiası yok — Newline Elite kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Newline Elite uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -8102,6 +8103,28 @@
         "sabit edge metal True1",
         "tüm modeller edge metal",
         "kenar metal garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 346,
+      "q": "LED ekran Newline Elite / Newline RS Series var mı? ARLEDSCREEN sabit Newline Elite iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit Newline Elite yok"
+      ],
+      "mustNotSay": [
+        "Newline Elite garantidir",
+        "sabit Newline Elite True1",
+        "tüm modeller Newline Elite",
+        "Newline RS Series garantidir",
         "ücretsiz kargo dahil"
       ]
     }
