@@ -1901,6 +1901,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cable tray yok"],
     mustNotSay: ["cable tray garantidir", "sabit cable tray True1", "tüm modeller cable tray", "kablo kanalı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 170,
+    q: "LED ekran Atlona / AV over IP var mı? ARLEDSCREEN sabit Atlona iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Atlona yok"],
+    mustNotSay: ["Atlona garantidir", "sabit Atlona True1", "tüm modeller Atlona", "AV over IP garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -2240,6 +2240,20 @@ if (
   errors.push("blind prompt #169 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cable tray yok");
 }
 
+const pBlind170 = PROMPTS.find((x) => x.id === 170);
+if (!pBlind170 || !/Atlona|AV over IP/i.test(pBlind170.q)) {
+  errors.push("blind prompt #170 must cover sabit Atlona invent");
+}
+if (
+  pBlind170 &&
+  (!pBlind170.mustSay?.includes("yazılı teklif") ||
+    !pBlind170.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind170.mustSay?.includes("sabit Atlona yok"))
+) {
+  errors.push("blind prompt #170 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Atlona yok");
+}
+
+
 
 
 
