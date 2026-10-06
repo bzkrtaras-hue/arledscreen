@@ -1865,6 +1865,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Shure yok"],
     mustNotSay: ["Shure garantidir", "sabit Shure True1", "tüm modeller Shure", "mikrofon garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 167,
+    q: "LED ekran snow load / kar yükü var mı? ARLEDSCREEN sabit snow load iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit snow load yok"],
+    mustNotSay: ["snow load garantidir", "sabit snow load True1", "tüm modeller snow load", "kar yükü garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

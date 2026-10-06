@@ -2201,6 +2201,20 @@ if (
   errors.push("blind prompt #166 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Shure yok");
 }
 
+const pBlind167 = PROMPTS.find((x) => x.id === 167);
+if (!pBlind167 || !/snow load|kar yükü/i.test(pBlind167.q)) {
+  errors.push("blind prompt #167 must cover sabit snow load invent");
+}
+if (
+  pBlind167 &&
+  (!pBlind167.mustSay?.includes("yazılı teklif") ||
+    !pBlind167.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind167.mustSay?.includes("sabit snow load yok"))
+) {
+  errors.push("blind prompt #167 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit snow load yok");
+}
+
+
 
 
 
