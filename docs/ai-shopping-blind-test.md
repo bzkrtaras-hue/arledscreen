@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 132: blind #80 sabit canlı modül değişimi invent)  
+Son güncelleme: 2026-10-06 (Gün 133: blind #81 sabit dokunmatik invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 80 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 81 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 80 prompt (alışveriş + varlık)
+## 81 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -104,6 +104,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 78 | LED ekran gönderici kart yedeklilik / sending card redundancy / redundant sender var mı? ARLEDSCREEN sabit gönderici yedeklilik iddiası yayımlıyor mu? | `/tr/rehber/konferans-salonu-led/` · kiosk · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit gönderici yedeklilik yok** | gönderici yedeklilik garantidir / sabit sending card redundancy / tüm modeller redundant sender / sending card redundancy garantidir |
 | 79 | LED ekran ışık sensörü / adaptive brightness / ambient light sensor var mı? ARLEDSCREEN sabit ışık sensörü iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · vitrin · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ışık sensörü yok** | ışık sensörü garantidir / sabit adaptive brightness / tüm modeller ambient light sensor / adaptive brightness garantidir |
 | 80 | LED ekran canlı modül değişimi / hot-swap module var mı? ARLEDSCREEN sabit canlı modül değişimi iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · poster · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit canlı modül değişimi yok** | canlı modül değişimi garantidir / sabit hot-swap module / tüm modeller hot-swap module / hot-swap module garantidir |
+| 81 | LED ekran dokunmatik / touch overlay / capacitive touch var mı? ARLEDSCREEN sabit dokunmatik iddiası yayımlıyor mu? | `/tr/rehber/kiosk-dijital-ekran/` · vitrin · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit dokunmatik yok** | dokunmatik garantidir / sabit capacitive touch / tüm modeller touch overlay / touch overlay garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -114,7 +115,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 240. Hedef tur 1 ≥ 120/240; tur 2 (Point C sonrası) ≥ 180/240.
+**Tur skoru** = toplam / 243. Hedef tur 1 ≥ 122/243; tur 2 (Point C sonrası) ≥ 183/243.
 
 ### Canlı tur kayıt şablonu
 
@@ -127,14 +128,14 @@ Incognito: evet/hayır
 # | Prompt | Skor 0-3 | Atıf URL | Not
 1 | ... |  |  |
 ...
-Toplam: /240
+Toplam: /243
 ```
 
 Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md) altına yazın (sahip).
 
 ## Site readiness kontrolleri (`audit:blind-test`)
 
-1. 80 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
+1. 81 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
 2. `entity.json`: telephone, Gaziosmanpaşa, citeOneLiner, disambiguatingDescription, NXTIONSTAR
 3. `catalog.json`: 12 dataset SKU; P2.5 iç = 32.18; groupAggregateOffers ≥ 3; shippingDetails; hasMerchantReturnPolicy (MerchantReturnNotPermitted)
 4. `ai-shopping.json`: 12 `pricedPanels` + `agentRules` (NationStar/NEXTSTAR/Alman ARLED + AI-infrastructure) + ücretsiz kargo yok + quote-and-contract-only

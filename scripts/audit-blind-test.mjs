@@ -1053,6 +1053,19 @@ if (
   errors.push("blind prompt #80 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit canlı modül değişimi yok");
 }
 
+const pBlind81 = PROMPTS.find((x) => x.id === 81);
+if (!pBlind81 || !/dokunmatik|touch overlay|capacitive touch/i.test(pBlind81.q)) {
+  errors.push("blind prompt #81 must cover sabit dokunmatik invent");
+}
+if (
+  pBlind81 &&
+  (!pBlind81.mustSay?.includes("yazılı teklif") ||
+    !pBlind81.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind81.mustSay?.includes("sabit dokunmatik yok"))
+) {
+  errors.push("blind prompt #81 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dokunmatik yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

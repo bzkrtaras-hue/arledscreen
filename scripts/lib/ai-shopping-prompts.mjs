@@ -833,6 +833,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit canlı modül değişimi yok"],
     mustNotSay: ["canlı modül değişimi garantidir", "sabit hot-swap module", "tüm modeller hot-swap module", "hot-swap module garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 81,
+    q: "LED ekran dokunmatik / touch overlay / capacitive touch var mı? ARLEDSCREEN sabit dokunmatik iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/kiosk-dijital-ekran/",
+      "/tr/rehber/vitrin-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit dokunmatik yok"],
+    mustNotSay: ["dokunmatik garantidir", "sabit capacitive touch", "tüm modeller touch overlay", "touch overlay garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
