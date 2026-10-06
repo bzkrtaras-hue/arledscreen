@@ -3833,6 +3833,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Planar Interactive yok"],
     mustNotSay: ["Planar Interactive garantidir", "sabit Planar Interactive True1", "tüm modeller Planar Interactive", "Planar Simplicity garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 331,
+    q: "LED ekran lintel flashing / lintel flaşör var mı? ARLEDSCREEN sabit lintel flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit lintel flashing yok"],
+    mustNotSay: ["lintel flashing garantidir", "sabit lintel flashing True1", "tüm modeller lintel flashing", "lintel flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

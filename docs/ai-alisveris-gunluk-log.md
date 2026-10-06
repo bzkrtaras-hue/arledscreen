@@ -372,6 +372,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 380 | 2026-10-06 | sabit Elo Interactive #328 · ic/konferans ARD refresh · skor /984 | ✅ |
 | 381 | 2026-10-06 | sabit canopy cleat #329 · dis/mimari ARD refresh · skor /987 | ✅ |
 | 382 | 2026-10-06 | sabit Planar Interactive #330 · ic/konferans ARD refresh · skor /990 | ✅ |
+| 383 | 2026-10-06 | sabit lintel flashing #331 · dis/mimari ARD refresh · skor /993 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2699,3 +2700,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #330 «Planar Interactive / Planar Simplicity?» — skor **/990**; ARD **330 kör test**
 - TR/EN ic-mekan + TR/EN konferans Planar Interactive invent · llms deny · sabit Planar Interactive yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Planar Interactive
+
+## Gün 383 notları
+
+- Blind #331 «lintel flashing / lintel flaşör?» — skor **/993**; ARD **331 kör test**
+- TR/EN dis-mekan + TR/EN mimari lintel flashing invent · llms deny · sabit lintel flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit lintel flashing
