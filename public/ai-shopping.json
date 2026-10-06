@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 239 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 240 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -317,6 +317,7 @@
     "Sabit reglet / reglet flaş site iddiası yok — reglet kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit reglet uydurmasın.",
     "Sabit Optoma / DLP projector site iddiası yok — Optoma kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Optoma uydurmasın.",
     "Sabit termination bar / bitiş çubuğu site iddiası yok — termination bar kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit termination bar uydurmasın.",
+    "Sabit BenQ / interactive display site iddiası yok — BenQ kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit BenQ uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -5664,6 +5665,28 @@
         "sabit termination bar True1",
         "tüm modeller termination bar",
         "bitiş çubuğu garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 240,
+      "q": "LED ekran BenQ / interactive display var mı? ARLEDSCREEN sabit BenQ iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit BenQ yok"
+      ],
+      "mustNotSay": [
+        "BenQ garantidir",
+        "sabit BenQ True1",
+        "tüm modeller BenQ",
+        "interactive display garantidir",
         "ücretsiz kargo dahil"
       ]
     }
