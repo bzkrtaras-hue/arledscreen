@@ -3857,6 +3857,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline Q Series yok"],
     mustNotSay: ["Newline Q Series garantidir", "sabit Newline Q Series True1", "tüm modeller Newline Q Series", "Newline TruTouch garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 333,
+    q: "LED ekran scupper flashing / scupper flaşör var mı? ARLEDSCREEN sabit scupper flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit scupper flashing yok"],
+    mustNotSay: ["scupper flashing garantidir", "sabit scupper flashing True1", "tüm modeller scupper flashing", "scupper flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

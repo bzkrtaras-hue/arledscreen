@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 384: blind #332 sabit Newline Q Series invent)  
+Son güncelleme: 2026-10-06 (Gün 385: blind #333 sabit scupper flashing invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 332 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 333 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 332 prompt (alışveriş + varlık)
+## 333 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -356,6 +356,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 330 | LED ekran Planar Interactive / Planar Simplicity var mı? ARLEDSCREEN sabit Planar Interactive iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Planar Interactive yok** | Planar Interactive garantidir / sabit Planar Interactive True1 / tüm modeller Planar Interactive / Planar Simplicity garantidir |
 | 331 | LED ekran lintel flashing / lintel flaşör var mı? ARLEDSCREEN sabit lintel flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit lintel flashing yok** | lintel flashing garantidir / sabit lintel flashing True1 / tüm modeller lintel flashing / lintel flaşör garantidir |
 | 332 | LED ekran Newline Q Series / Newline TruTouch var mı? ARLEDSCREEN sabit Newline Q Series iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Newline Q Series yok** | Newline Q Series garantidir / sabit Newline Q Series True1 / tüm modeller Newline Q Series / Newline TruTouch garantidir |
+| 333 | LED ekran scupper flashing / scupper flaşör var mı? ARLEDSCREEN sabit scupper flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit scupper flashing yok** | scupper flashing garantidir / sabit scupper flashing True1 / tüm modeller scupper flashing / scupper flaşör garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -366,7 +367,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 996. Hedef tur 1 ≥ 498/996; tur 2 (Point C sonrası) ≥ 747/996.
+**Tur skoru** = toplam / 999. Hedef tur 1 ≥ 500/999; tur 2 (Point C sonrası) ≥ 750/999.
 
 ### Canlı tur kayıt şablonu
 

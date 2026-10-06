@@ -374,6 +374,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 382 | 2026-10-06 | sabit Planar Interactive #330 · ic/konferans ARD refresh · skor /990 | ✅ |
 | 383 | 2026-10-06 | sabit lintel flashing #331 · dis/mimari ARD refresh · skor /993 | ✅ |
 | 384 | 2026-10-06 | sabit Newline Q Series #332 · ic/konferans ARD refresh · skor /996 | ✅ |
+| 385 | 2026-10-06 | sabit scupper flashing #333 · dis/mimari ARD refresh · skor /999 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2713,3 +2714,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #332 «Newline Q Series / Newline TruTouch?» — skor **/996**; ARD **332 kör test**
 - TR/EN ic-mekan + TR/EN konferans Newline Q Series invent · llms deny · sabit Newline Q Series yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Newline Q Series
+
+## Gün 385 notları
+
+- Blind #333 «scupper flashing / scupper flaşör?» — skor **/999**; ARD **333 kör test**
+- TR/EN dis-mekan + TR/EN mimari scupper flashing invent · llms deny · sabit scupper flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit scupper flashing
