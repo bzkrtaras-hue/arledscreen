@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "include": ["/"],
+  "include": ["/", "/robots.txt"],
   "exclude": [
     "/entity.json",
     "/entity-profiles.json",
@@ -10,7 +10,6 @@
     "/.well-known/*",
     "/llms.txt",
     "/llms-full.txt",
-    "/robots.txt",
     "/sitemap.xml",
     "/tr/*",
     "/en/*",
