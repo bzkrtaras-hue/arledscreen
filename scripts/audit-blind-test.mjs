@@ -3410,6 +3410,20 @@ if (
   errors.push("blind prompt #259 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit snap cleat yok");
 }
 
+const pBlind260 = PROMPTS.find((x) => x.id === 260);
+if (!pBlind260 || !/Boxlight|MimioBoard/i.test(pBlind260.q)) {
+  errors.push("blind prompt #260 must cover sabit Boxlight invent");
+}
+if (
+  pBlind260 &&
+  (!pBlind260.mustSay?.includes("yazılı teklif") ||
+    !pBlind260.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind260.mustSay?.includes("sabit Boxlight yok"))
+) {
+  errors.push("blind prompt #260 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Boxlight yok");
+}
+
+
 
 
 

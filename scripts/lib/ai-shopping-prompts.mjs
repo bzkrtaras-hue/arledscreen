@@ -2981,6 +2981,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit snap cleat yok"],
     mustNotSay: ["snap cleat garantidir", "sabit snap cleat True1", "tüm modeller snap cleat", "snap kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 260,
+    q: "LED ekran Boxlight / MimioBoard var mı? ARLEDSCREEN sabit Boxlight iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Boxlight yok"],
+    mustNotSay: ["Boxlight garantidir", "sabit Boxlight True1", "tüm modeller Boxlight", "MimioBoard garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
