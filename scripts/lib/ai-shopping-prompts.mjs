@@ -4625,6 +4625,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Poly Studio X70 yok"],
     mustNotSay: ["Poly Studio X70 garantidir", "sabit Poly Studio X70 True1", "tüm modeller Poly Studio X70", "Poly X70 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 397,
+    q: "LED ekran sill apron / denizlik eteği var mı? ARLEDSCREEN sabit sill apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit sill apron yok"],
+    mustNotSay: ["sill apron garantidir", "sabit sill apron True1", "tüm modeller sill apron", "denizlik eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

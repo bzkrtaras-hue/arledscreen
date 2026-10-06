@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 448: blind #396 sabit Poly Studio X70 invent)  
+Son güncelleme: 2026-10-06 (Gün 449: blind #397 sabit sill apron invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 396 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 397 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 396 prompt (alışveriş + varlık)
+## 397 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -420,6 +420,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 394 | LED ekran DTEN Bar Plus / DTEN Bar var mı? ARLEDSCREEN sabit DTEN Bar Plus iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit DTEN Bar Plus yok** | DTEN Bar Plus garantidir / sabit DTEN Bar Plus True1 / tüm modeller DTEN Bar Plus / DTEN Bar garantidir |
 | 395 | LED ekran cap apron / kapak eteği var mı? ARLEDSCREEN sabit cap apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cap apron yok** | cap apron garantidir / sabit cap apron True1 / tüm modeller cap apron / kapak eteği garantidir |
 | 396 | LED ekran Poly Studio X70 / Poly X70 var mı? ARLEDSCREEN sabit Poly Studio X70 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Poly Studio X70 yok** | Poly Studio X70 garantidir / sabit Poly Studio X70 True1 / tüm modeller Poly Studio X70 / Poly X70 garantidir |
+| 397 | LED ekran sill apron / denizlik eteği var mı? ARLEDSCREEN sabit sill apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit sill apron yok** | sill apron garantidir / sabit sill apron True1 / tüm modeller sill apron / denizlik eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -430,7 +431,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1188. Hedef tur 1 ≥ 594/1188; tur 2 (Point C sonrası) ≥ 891/1188.
+**Tur skoru** = toplam / 1191. Hedef tur 1 ≥ 596/1191; tur 2 (Point C sonrası) ≥ 894/1191.
 
 ### Canlı tur kayıt şablonu
 
