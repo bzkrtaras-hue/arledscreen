@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Collection",
   "name": "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
-  "description": "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir.",
+  "description": "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir.",
   "publisher": {
     "@type": "Organization",
     "@id": "https://arledscreen.com/#organization",
@@ -17,16 +17,16 @@
     "itemListElement": [
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p1-25-ic-gob",
+        "@id": "https://arledscreen.com/catalog.json#p1-25-ic-gob",
         "position": 1,
-        "name": "P1.25 İç mekân (GOB) LED ekran modülü (320 × 160 mm)",
-        "description": "P1.25 İç mekân (GOB) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P1.25 İç mekân (GOB) LED Modül (320 × 160 mm)",
+        "description": "P1.25 İç mekân (GOB) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -82,16 +82,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p1-53-ic-gob",
+        "@id": "https://arledscreen.com/catalog.json#p1-53-ic-gob",
         "position": 2,
-        "name": "P1.53 İç mekân (GOB) LED ekran modülü (320 × 160 mm)",
-        "description": "P1.53 İç mekân (GOB) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P1.53 İç mekân (GOB) LED Modül (320 × 160 mm)",
+        "description": "P1.53 İç mekân (GOB) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -147,16 +147,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p1-86-ic-gob",
+        "@id": "https://arledscreen.com/catalog.json#p1-86-ic-gob",
         "position": 3,
-        "name": "P1.86 İç mekân (GOB) LED ekran modülü (320 × 160 mm)",
-        "description": "P1.86 İç mekân (GOB) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P1.86 İç mekân (GOB) LED Modül (320 × 160 mm)",
+        "description": "P1.86 İç mekân (GOB) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -212,16 +212,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p2-5-ic",
+        "@id": "https://arledscreen.com/catalog.json#p2-5-ic",
         "position": 4,
-        "name": "P2.5 İç mekân LED ekran modülü (320 × 160 mm)",
-        "description": "P2.5 İç mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P2.5 İç mekân LED Modül (320 × 160 mm)",
+        "description": "P2.5 İç mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -272,16 +272,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p3-07-ic",
+        "@id": "https://arledscreen.com/catalog.json#p3-07-ic",
         "position": 5,
-        "name": "P3.07 İç mekân LED ekran modülü (320 × 160 mm)",
-        "description": "P3.07 İç mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P3.07 İç mekân LED Modül (320 × 160 mm)",
+        "description": "P3.07 İç mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -332,16 +332,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p4-ic",
+        "@id": "https://arledscreen.com/catalog.json#p4-ic",
         "position": 6,
-        "name": "P4 İç mekân LED ekran modülü (320 × 160 mm)",
-        "description": "P4 İç mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P4 İç mekân LED Modül (320 × 160 mm)",
+        "description": "P4 İç mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -392,16 +392,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p2-5-dis",
+        "@id": "https://arledscreen.com/catalog.json#p2-5-dis",
         "position": 7,
-        "name": "P2.5 Dış mekân LED ekran modülü (320 × 160 mm)",
-        "description": "P2.5 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P2.5 Dış mekân LED Modül (320 × 160 mm)",
+        "description": "P2.5 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -452,16 +452,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p2-9-dis",
+        "@id": "https://arledscreen.com/catalog.json#p2-9-dis",
         "position": 8,
-        "name": "P2.9 Dış mekân LED ekran modülü (250 × 250 mm)",
-        "description": "P2.9 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P2.9 Dış mekân LED Modül (250 × 250 mm)",
+        "description": "P2.9 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -512,16 +512,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p3-07-dis",
+        "@id": "https://arledscreen.com/catalog.json#p3-07-dis",
         "position": 9,
-        "name": "P3.07 Dış mekân LED ekran modülü (320 × 160 mm)",
-        "description": "P3.07 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P3.07 Dış mekân LED Modül (320 × 160 mm)",
+        "description": "P3.07 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -572,16 +572,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p4-dis",
+        "@id": "https://arledscreen.com/catalog.json#p4-dis",
         "position": 10,
-        "name": "P4 Dış mekân LED ekran modülü (320 × 160 mm)",
-        "description": "P4 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P4 Dış mekân LED Modül (320 × 160 mm)",
+        "description": "P4 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -632,16 +632,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p4-dis-front",
+        "@id": "https://arledscreen.com/catalog.json#p4-dis-front",
         "position": 11,
-        "name": "P4 Dış mekân (önden servis) LED ekran modülü (320 × 160 mm)",
-        "description": "P4 Dış mekân (önden servis) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P4 Dış mekân (önden servis) LED Modül (320 × 160 mm)",
+        "description": "P4 Dış mekân (önden servis) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -692,16 +692,16 @@
       },
       {
         "@type": "Product",
-        "@id": "https://arledscreen.com/products/p5-dis",
+        "@id": "https://arledscreen.com/catalog.json#p5-dis",
         "position": 12,
-        "name": "P5 Dış mekân LED ekran modülü (320 × 160 mm)",
-        "description": "P5 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.",
+        "name": "NXTIONSTAR P5 Dış mekân LED Modül (320 × 160 mm)",
+        "description": "P5 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
           "name": "NXTIONSTAR"
         },
         "category": "LED ekran paneli",
-        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
         "additionalProperty": [
           {
             "@type": "PropertyValue",

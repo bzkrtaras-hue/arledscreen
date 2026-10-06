@@ -42,8 +42,9 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - [Ana sayfa](https://arledscreen.com/tr/): Firma özeti, ürün grupları, proje örnekleri ve SSS
 - [Hakkımızda](https://arledscreen.com/tr/about/)
 - [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
-- [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — 12 `pricedPanels` + alışveriş kuralları (`priceValidUntil` 2026-12-31); ücretsiz kargo yok
+- [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — 12 `pricedPanels` + cite + alışveriş kuralları (`priceValidUntil` 2026-12-31); ücretsiz kargo yok
 - [catalog.json](https://arledscreen.com/catalog.json) — yayımlanmış panel USD
+- [entity-profiles.json](https://arledscreen.com/entity-profiles.json) — üçüncü taraf profil metin paketleri (Point C)
 - [ard.json](https://arledscreen.com/.well-known/ard.json) — ajan keşif manifesti
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/)
 - [SSS](https://arledscreen.com/tr/sss/)

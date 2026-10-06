@@ -178,6 +178,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ai-shopping.json",
     "/catalog.json",
     "/entity.json",
+    "/entity-profiles.json",
     "/llms.txt",
     "/llms-full.txt",
     "/.well-known/ard.json",

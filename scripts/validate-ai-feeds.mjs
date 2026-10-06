@@ -16,6 +16,7 @@ const REQUIRED_FILES = [
   "catalog.json",
   "ai-shopping.json",
   "entity.json",
+  "entity-profiles.json",
   ".well-known/ard.json",
   "llms.txt",
   "llms-full.txt",
@@ -43,7 +44,7 @@ function validateAIFeeds() {
   // Validate JSON structure
   const jsonFiles = [
     { path: "catalog.json", type: "Collection" },
-    { path: "ai-shopping.json", type: "Organization" },
+    { path: "ai-shopping.json", type: "Dataset" },
     { path: "entity.json", type: "Organization" },
     { path: ".well-known/ard.json", type: "WebSite" },
   ];
@@ -93,14 +94,29 @@ function validateAIFeeds() {
 // After next build + postbuild-ai, out/ must carry deployable AI feeds.
 const outDir = path.join(repoRoot, "out");
 if (fs.existsSync(outDir)) {
-  for (const file of ["catalog.json", "ai-shopping.json", "entity.json", "llms.txt"]) {
+  for (const file of [
+    "catalog.json",
+    "ai-shopping.json",
+    "entity.json",
+    "entity-profiles.json",
+    "llms.txt",
+  ]) {
     const fp = path.join(outDir, file);
     if (!fs.existsSync(fp)) {
       console.error(`❌ Missing in out/: ${file} (CF deploy would wipe GEO)`);
       process.exit(1);
     }
   }
-  console.log("✅ out/ AI feeds present (catalog, ai-shopping, entity, llms)");
+  const ai = JSON.parse(fs.readFileSync(path.join(outDir, "ai-shopping.json"), "utf8"));
+  if (!Array.isArray(ai.pricedPanels) || ai.pricedPanels.length !== 12) {
+    console.error("❌ out/ai-shopping.json pricedPanels must be length 12");
+    process.exit(1);
+  }
+  if (/blindTestPrompts|kör test/i.test(JSON.stringify(ai))) {
+    console.error("❌ out/ai-shopping.json must not carry blind-test payload");
+    process.exit(1);
+  }
+  console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, entity, profiles, llms)");
 }
 
 validateAIFeeds();

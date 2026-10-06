@@ -47,7 +47,7 @@ jobs:
       - name: Guard — GEO artefacts present in out/ before deploy
         run: |
           set -euo pipefail
-          for f in out/llms.txt out/llms-full.txt out/ai-shopping.json out/entity.json out/catalog.json out/sitemap.xml; do
+          for f in out/llms.txt out/llms-full.txt out/ai-shopping.json out/entity.json out/catalog.json out/entity-profiles.json out/sitemap.xml; do
             test -f "$f" || { echo "Refuse deploy: missing $f" >&2; exit 1; }
           done
           for needle in ai-shopping.json catalog.json citeOneLiner pricedPanels "ücretsiz kargo yok"; do
@@ -56,6 +56,14 @@ jobs:
               exit 1
             }
           done
+          grep -q '"pricedPanels"' out/ai-shopping.json || {
+            echo "Refuse deploy: out/ai-shopping.json missing pricedPanels" >&2
+            exit 1
+          }
+          grep -q 'blindTestPrompts\|kör test' out/ai-shopping.json && {
+            echo "Refuse deploy: ai-shopping.json must not carry blind-test payload" >&2
+            exit 1
+          }
           for needle in ai-shopping.json entity.json llms.txt catalog.json; do
             grep -q "$needle" out/sitemap.xml || {
               echo "Refuse deploy: out/sitemap.xml missing '$needle'" >&2
