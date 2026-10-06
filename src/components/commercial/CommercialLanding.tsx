@@ -149,7 +149,15 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
                 Hesaplayıcı
               </Link>
             </p>
-            <p className="mt-3 text-xs text-ink-muted">
+            <p className="mt-3 text-xs leading-relaxed text-ink-muted">
+              Panel USD:{" "}
+              <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                ai-shopping.json
+              </a>{" "}
+              <code className="text-[10px]">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye
+              hariç; ücretsiz kargo yok.
+            </p>
+            <p className="mt-2 text-xs text-ink-muted">
               Şehir sayfaları yalnızca yayımlanmış proje kaydı olan illerde açılır; 81 il spam’i yoktur.
             </p>
           </aside>

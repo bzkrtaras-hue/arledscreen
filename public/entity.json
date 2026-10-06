@@ -3,9 +3,13 @@
   "@type": "Organization",
   "@id": "https://arledscreen.com/#organization",
   "name": "ARLEDSCREEN",
-  "alternateName": ["ARLED SCREEN", "AR-LED", "AR-LED Ekran Teknoloji Merkezi"],
+  "alternateName": [
+    "ARLED SCREEN",
+    "AR-LED",
+    "AR-LED Ekran Teknoloji Merkezi"
+  ],
   "url": "https://arledscreen.com",
-  "description": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
+  "description": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
   "disambiguatingDescription": "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.",
   "email": "arled@arledscreen.com",
   "telephone": "+905305078834",
@@ -41,19 +45,37 @@
     "@type": "Person",
     "name": "Aras Bozkurt",
     "url": "https://arledscreen.com/tr/about/aras-bozkurt/",
-    "sameAs": ["https://www.linkedin.com/in/bozkurtaras"]
+    "sameAs": [
+      "https://www.linkedin.com/in/bozkurtaras"
+    ]
   },
   "citationPage": "https://arledscreen.com/tr/about/",
   "llmsTxt": "https://arledscreen.com/llms.txt",
   "entityJson": "https://arledscreen.com/entity.json",
+  "aiShopping": "https://arledscreen.com/ai-shopping.json",
+  "catalogJson": "https://arledscreen.com/catalog.json",
+  "subjectOf": [
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/ai-shopping.json",
+      "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
+      "url": "https://arledscreen.com/ai-shopping.json"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/catalog.json",
+      "name": "ARLEDSCREEN priced panel catalog",
+      "url": "https://arledscreen.com/catalog.json"
+    }
+  ],
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
-  "citeShort": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
-  "citeMedium": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
+  "citeShort": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.",
+  "citeMedium": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
   "citeShortEn": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.",
   "faqs": [
     {
       "question": "ARLEDSCREEN kimdir?",
-      "answer": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar."
+      "answer": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar."
     },
     {
       "question": "ARLEDSCREEN nerede?",
@@ -61,11 +83,15 @@
     },
     {
       "question": "NXTIONSTAR nedir?",
-      "answer": "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran ürün markasıdır. Türkiye'deki tek satış noktası ARLEDSCREEN'dir."
+      "answer": "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir."
     },
     {
       "question": "ARLEDSCREEN hangi hizmetleri sunar?",
       "answer": "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir."
+    },
+    {
+      "question": "AI ajanları panel fiyatını nereden okur?",
+      "answer": "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle."
     }
   ]
 }

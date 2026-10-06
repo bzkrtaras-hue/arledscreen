@@ -57,6 +57,11 @@ export const ENTITY_FAQS = [
     answer:
       "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir.",
   },
+  {
+    question: "AI ajanları panel fiyatını nereden okur?",
+    answer:
+      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
+  },
 ] as const;
 
 /** Profile paste packs for third-party forms (same facts, different length caps). */
@@ -115,6 +120,14 @@ export type EntityDocument = {
   citationPage: string;
   llmsTxt: string;
   entityJson: string;
+  aiShopping: string;
+  catalogJson: string;
+  subjectOf: Array<{
+    "@type": "Dataset";
+    "@id": string;
+    name: string;
+    url: string;
+  }>;
   citeOneLiner: string;
   citeShort: string;
   citeMedium: string;
@@ -165,6 +178,22 @@ export function buildEntityDocument(): EntityDocument {
     citationPage: `${SITE_URL}/tr/about/`,
     llmsTxt: `${SITE_URL}/llms.txt`,
     entityJson: `${SITE_URL}/entity.json`,
+    aiShopping: `${SITE_URL}/ai-shopping.json`,
+    catalogJson: `${SITE_URL}/catalog.json`,
+    subjectOf: [
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/ai-shopping.json`,
+        name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
+        url: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/catalog.json`,
+        name: "ARLEDSCREEN priced panel catalog",
+        url: `${SITE_URL}/catalog.json`,
+      },
+    ],
     citeOneLiner: ENTITY_CITE_ONE_LINER,
     citeShort: ENTITY_CITE_SHORT,
     citeMedium: ENTITY_CITE_MEDIUM,
