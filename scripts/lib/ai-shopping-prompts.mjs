@@ -4517,6 +4517,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cricket apron yok"],
     mustNotSay: ["cricket apron garantidir", "sabit cricket apron True1", "tüm modeller cricket apron", "kriket eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 388,
+    q: "LED ekran i3TOUCH P3 Series / i3TOUCH P3 var mı? ARLEDSCREEN sabit i3TOUCH P3 Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit i3TOUCH P3 Series yok"],
+    mustNotSay: ["i3TOUCH P3 Series garantidir", "sabit i3TOUCH P3 Series True1", "tüm modeller i3TOUCH P3 Series", "i3TOUCH P3 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -5074,6 +5074,20 @@ if (
   errors.push("blind prompt #387 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cricket apron yok");
 }
 
+const pBlind388 = PROMPTS.find((x) => x.id === 388);
+if (!pBlind388 || !/i3TOUCH P3 Series|i3TOUCH P3/i.test(pBlind388.q)) {
+  errors.push("blind prompt #388 must cover sabit i3TOUCH P3 Series invent");
+}
+if (
+  pBlind388 &&
+  (!pBlind388.mustSay?.includes("yazılı teklif") ||
+    !pBlind388.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind388.mustSay?.includes("sabit i3TOUCH P3 Series yok"))
+) {
+  errors.push("blind prompt #388 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH P3 Series yok");
+}
+
+
 
 
 

@@ -429,6 +429,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 437 | 2026-10-06 | sabit eave apron #385 · dis/mimari ARD refresh · skor /1155 | ✅ |
 | 438 | 2026-10-06 | sabit Vivitek NovoTouch #386 · ic/konferans ARD refresh · skor /1158 | ✅ |
 | 439 | 2026-10-06 | sabit cricket apron #387 · dis/mimari ARD refresh · skor /1161 | ✅ |
+| 440 | 2026-10-06 | sabit i3TOUCH P3 Series #388 · ic/konferans ARD refresh · skor /1164 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3098,3 +3099,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #387 «cricket apron / kriket eteği?» — skor **/1161**; ARD **387 kör test**
 - TR/EN dis-mekan + TR/EN mimari cricket apron invent · llms deny · sabit cricket apron yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit cricket apron
+
+## Gün 440 notları
+
+- Blind #388 «i3TOUCH P3 Series / i3TOUCH P3?» — skor **/1164**; ARD **388 kör test**
+- TR/EN ic-mekan + TR/EN konferans i3TOUCH P3 Series invent · llms deny · sabit i3TOUCH P3 Series yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit i3TOUCH P3 Series
