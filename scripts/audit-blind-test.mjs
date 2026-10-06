@@ -4580,6 +4580,20 @@ if (
   errors.push("blind prompt #349 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit wall flashing yok");
 }
 
+const pBlind350 = PROMPTS.find((x) => x.id === 350);
+if (!pBlind350 || !/ActivPanel 9|ActivPanel Nickel/i.test(pBlind350.q)) {
+  errors.push("blind prompt #350 must cover sabit ActivPanel 9 invent");
+}
+if (
+  pBlind350 &&
+  (!pBlind350.mustSay?.includes("yazılı teklif") ||
+    !pBlind350.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind350.mustSay?.includes("sabit ActivPanel 9 yok"))
+) {
+  errors.push("blind prompt #350 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ActivPanel 9 yok");
+}
+
+
 
 
 

@@ -4061,6 +4061,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit wall flashing yok"],
     mustNotSay: ["wall flashing garantidir", "sabit wall flashing True1", "tüm modeller wall flashing", "duvar flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 350,
+    q: "LED ekran ActivPanel 9 / ActivPanel Nickel var mı? ARLEDSCREEN sabit ActivPanel 9 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ActivPanel 9 yok"],
+    mustNotSay: ["ActivPanel 9 garantidir", "sabit ActivPanel 9 True1", "tüm modeller ActivPanel 9", "ActivPanel Nickel garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
