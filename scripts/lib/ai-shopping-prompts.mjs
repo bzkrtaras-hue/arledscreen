@@ -1073,6 +1073,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BT.2020 yok"],
     mustNotSay: ["BT.2020 garantidir", "sabit Rec.2020", "tüm modeller Rec.2020", "Rec.2020 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 101,
+    q: "LED ekran HLG / HDR10 / PQ var mı? ARLEDSCREEN sabit HLG veya HDR10 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HLG yok"],
+    mustNotSay: ["HLG garantidir", "sabit HDR10", "tüm modeller HDR10", "HDR10 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
