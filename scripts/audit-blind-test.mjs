@@ -2084,6 +2084,20 @@ if (
   errors.push("blind prompt #157 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit weep hole yok");
 }
 
+const pBlind158 = PROMPTS.find((x) => x.id === 158);
+if (!pBlind158 || !/Biamp|DSP/i.test(pBlind158.q)) {
+  errors.push("blind prompt #158 must cover sabit Biamp invent");
+}
+if (
+  pBlind158 &&
+  (!pBlind158.mustSay?.includes("yazılı teklif") ||
+    !pBlind158.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind158.mustSay?.includes("sabit Biamp yok"))
+) {
+  errors.push("blind prompt #158 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Biamp yok");
+}
+
+
 }
 
 }

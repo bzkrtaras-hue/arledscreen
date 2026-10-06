@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 209: blind #157 sabit weep hole invent)  
+Son güncelleme: 2026-10-06 (Gün 210: blind #158 sabit Biamp invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 157 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 158 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 157 prompt (alışveriş + varlık)
+## 158 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -181,6 +181,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 155 | LED ekran drip edge / damlacık kenarı var mı? ARLEDSCREEN sabit drip edge iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit drip edge yok** | drip edge garantidir / sabit drip edge True1 / tüm modeller drip edge / damlacık kenarı garantidir |
 | 156 | LED ekran Control4 / akıllı ev var mı? ARLEDSCREEN sabit Control4 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Control4 yok** | Control4 garantidir / sabit Control4 True1 / tüm modeller Control4 / akıllı ev garantidir |
 | 157 | LED ekran weep hole / drenaj deliği var mı? ARLEDSCREEN sabit weep hole iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit weep hole yok** | weep hole garantidir / sabit weep hole True1 / tüm modeller weep hole / drenaj deliği garantidir |
+| 158 | LED ekran Biamp / DSP var mı? ARLEDSCREEN sabit Biamp iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Biamp yok** | Biamp garantidir / sabit Biamp True1 / tüm modeller Biamp / DSP garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -191,7 +192,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 471. Hedef tur 1 ≥ 236/471; tur 2 (Point C sonrası) ≥ 354/471.
+**Tur skoru** = toplam / 474. Hedef tur 1 ≥ 237/474; tur 2 (Point C sonrası) ≥ 356/474.
 
 ### Canlı tur kayıt şablonu
 

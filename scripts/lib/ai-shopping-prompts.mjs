@@ -1757,6 +1757,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit weep hole yok"],
     mustNotSay: ["weep hole garantidir", "sabit weep hole True1", "tüm modeller weep hole", "drenaj deliği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 158,
+    q: "LED ekran Biamp / DSP var mı? ARLEDSCREEN sabit Biamp iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Biamp yok"],
+    mustNotSay: ["Biamp garantidir", "sabit Biamp True1", "tüm modeller Biamp", "DSP garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
