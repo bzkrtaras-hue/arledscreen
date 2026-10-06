@@ -3813,6 +3813,20 @@ if (
   errors.push("blind prompt #290 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vibe Board yok");
 }
 
+const pBlind291 = PROMPTS.find((x) => x.id === 291);
+if (!pBlind291 || !/chimney cleat|baca kleyt/i.test(pBlind291.q)) {
+  errors.push("blind prompt #291 must cover sabit chimney cleat invent");
+}
+if (
+  pBlind291 &&
+  (!pBlind291.mustSay?.includes("yazılı teklif") ||
+    !pBlind291.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind291.mustSay?.includes("sabit chimney cleat yok"))
+) {
+  errors.push("blind prompt #291 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chimney cleat yok");
+}
+
+
 
 
 
