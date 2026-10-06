@@ -31,7 +31,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Is there a fixed warranty term on the website?",
       answer:
-        "No fixed warranty year or general return policy is published on the site. Term and coverage are set in the written quote and contract for that series and project. After installation, faults, service and spare parts are handled by phone, WhatsApp or email.",
+        "Warranty length depends on the series and the project. The written quote and contract state the term. After installation, faults, service and spare parts are handled by phone, WhatsApp or email.",
     },
     {
       question: "Who supplies NXTIONSTAR LED projects in Turkey?",
@@ -63,12 +63,12 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Hangi şehirlerde kurulum yapıyorsunuz?",
       answer:
-        "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Hizmetimiz Türkiye geneli; tamamlanan iş listemiz kayıtlı illerde yer alır (Tem 2025 – Tem 2026: 13 il ile Almanya ve Azerbaycan). Kayıtlı iller için /tr/bolgeler/ sayfasına bakın; projenizin konumunu teklif formunda belirtmeniz yeterlidir.",
+        "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Kurulum ve servis Türkiye genelindedir. Tamamlanan işler Temmuz 2025 – Temmuz 2026 arasında 13 il ile Almanya ve Azerbaycan'da kayıtlıdır. İliniz bu listede olmasa da keşif ve teklif için konumunuzu yazmanız yeterli.",
     },
     {
       question: "İade veya garanti süresi nedir?",
       answer:
-        "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Sitede sabit bir garanti yılı veya genel iade politikası yayımlanmamıştır; kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
+        "Garanti süresi ürüne ve projeye göre değişir. Teklif ve sözleşmede net yazarız. Kurulumdan sonra arıza ve yedek parça için telefon, WhatsApp veya e-posta yeterlidir.",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",
