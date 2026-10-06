@@ -445,6 +445,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 453 | 2026-10-06 | sabit hip apron #401 · dis/mimari ARD refresh · skor /1203 | ✅ |
 | 454 | 2026-10-06 | sabit Yealink MeetingBoard 86 #402 · ic/konferans ARD refresh · skor /1206 | ✅ |
 | 455 | 2026-10-06 | sabit gable apron #403 · dis/mimari ARD refresh · skor /1209 | ✅ |
+| 456 | 2026-10-06 | sabit Surface Hub 3 #404 · ic/konferans ARD refresh · skor /1212 | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti
@@ -3219,3 +3220,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #403 «gable apron / kalkan eteği?» — skor **/1209**; ARD **403 kör test**
 - TR/EN dis-mekan + TR/EN mimari gable apron invent · llms deny · sabit gable apron yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow policy (live-200 once) · agentRules sabit gable apron
+
+## Gün 456 notları
+
+- Blind #404 «Surface Hub 3 / Hub 3?» — skor **/1212**; ARD **404 kör test**
+- TR/EN ic-mekan + TR/EN konferans Surface Hub 3 invent · llms deny · sabit Surface Hub 3 yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow policy · agentRules sabit Surface Hub 3
