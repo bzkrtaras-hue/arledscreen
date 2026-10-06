@@ -1,6 +1,6 @@
-## Gün 506 — invent Blind #454 HP Presence Mini
+## Gün 506 — invent Blind #454 HP Presence Mini LIVE
 
-- Blind #454 HP Presence Mini / Presence Mini · ic/konferans · prompts=454 · /1362 · build pending
+- Blind #454 HP Presence Mini / Presence Mini · ic/konferans · prompts=454 · /1362 · CF deploy · smoke:live 20/20
 - sahibe iş yok
 
 ## Gün 505 — invent Blind #453 mullion LIVE
