@@ -1,0 +1,150 @@
+# Point C — canlı yapıştırma paketi (üretim)
+
+Kaynak: https://arledscreen.com/entity-profiles.json  
+Çekim (UTC): 2026-10-06 14:36  
+Spam blog / 81-il / uydurma rating-fiyat yok. NAP birebir.  
+PR #55 draft; invent yok. Merge paste için zorunlu değil.
+
+## Sıra (P0)
+1. Google Business Profile ← `gbpDescription`
+2. LinkedIn Company About ← `linkedinAbout`
+3. Instagram bio ← `instagramBio`
+4. Facebook About ← `facebookAbout`
+5. Dizin short/long ← `directoryShort` / `directoryLong`
+6. (İsteğe) YouTube / Apple / Yandex
+
+Skor: yapıştırma sonrası `docs/ai-shopping-blind-test-scores.md` Tur 1a (/60).
+
+## gbpDescription
+
+```
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
+```
+
+## linkedinAbout
+
+```
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
+
+Web: https://arledscreen.com/tr/
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
+Telefon: +90 530 507 88 34
+```
+
+## instagramBio
+
+```
+İstanbul LED · NXTIONSTAR · Satış+montaj · quote-only gruplar teklifle
+arledscreen.com/tr/
+```
+
+## facebookAbout
+
+```
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
+```
+
+## directoryShort
+
+```
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
+```
+
+## directoryLong
+
+```
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
+
+Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul
+Telefon: +90 530 507 88 34
+E-posta: arled@arledscreen.com
+Web: https://arledscreen.com/tr/
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
+```
+
+## youtubeAbout
+
+```
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol quote-only.
+
+Site: https://arledscreen.com/tr/
+Entity: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
+```
+
+## appleBusinessConnect
+
+```
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol quote-only.
+
+Merkez Mah. Tuna Sok. No:15-17 Kat 1
+34245 Gaziosmanpaşa / İstanbul
++90 530 507 88 34
+arled@arledscreen.com
+https://arledscreen.com/tr/
+https://arledscreen.com/entity.json
+```
+
+## yandexBusiness
+
+```
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
+
+Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul
+Telefon: +90 530 507 88 34
+Web: https://arledscreen.com/tr/
+Entity: https://arledscreen.com/entity.json
+```
+
+## sameAsReadiness (referans)
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "ARLEDSCREEN entity profile paste packs (Point C)",
+  "description": "Third-party profile paste packs derived from the same cite facts as entity.json. Owner-operated Point C; do not invent ratings or prices. Quote-only: şeffaf/poster/kontrol — extrasUsd.controlCard ≠ Huidu/NovaStar/Colorlight list SKU; use ai-shopping.json.",
+  "url": "https://arledscreen.com/entity-profiles.json",
+  "creator": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "isBasedOn": "https://arledscreen.com/entity.json",
+  "license": "https://arledscreen.com/tr/about/",
+  "dateModified": "2026-10-06",
+  "sameAsReadiness": {
+    "live": [
+      "https://www.instagram.com/arledscreen",
+      "https://www.facebook.com/arledscreenn",
+      "https://www.linkedin.com/company/arleds"
+    ],
+    "blockedUntil301": [
+      "https://arleds.com/ (apex → arledscreen.com/tr/ 301 sonrası sameAs)"
+    ],
+    "notes": [
+      "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
+      "arleds.com sameAs’a eklenmez ta ki 301 canlı doğrulanana kadar.",
+      "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directory/appleBusinessConnect/yandexBusiness/crunchbaseDraft) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
+      "wikidataReadiness = alan checklist + kanıt URL; uydurma QID yok; notability yoksa atlayın.",
+      "googleMerchantReadiness = 12 SKU TSV only; shipping boş; quote-only yok.",
+      "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
+      "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar; NXTIONSTAR ürün markası — satıcı ARLEDSCREEN.",
+      "Tek fetch ajan index: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; 405 kör test)"
+    ]
+  },
+  "canonicalUrls": {
+    "entityJson": "https://arledscreen.com/entity.json",
+    "catalogJson": "https://arledscreen.com/catalog.json",
+    "ardJson": "https://arledscreen.com/.well-known/ard.json",
+    "aiShoppingJson": "https://arledscreen.com/ai-shopping.json",
+    "llmsTxt": "https://arledscreen.com/llms.txt",
+    "about": "https://arledscreen.com/tr/about/",
+    "founder": "https://arledscreen.com/tr/about/aras-bozkurt/",
+    "nxtionstar": "https://arledscreen.com/tr/nxtionstar/",
+    "fiyat": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+    "playbook": "docs/offsite-entity-playbook.md (repo)"
+  }
+}
+```
+

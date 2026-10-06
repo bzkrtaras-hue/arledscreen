@@ -1,3 +1,8 @@
+## Gün 458e — Point C paste bundle
+
+- `docs/point-c-paste-bundle.md` üretim entity-profiles çekimi
+- Invent/deploy/merge yok; PR draft
+
 
 ## Gün 458d — kör tur P0 + sameAs
 
@@ -489,6 +494,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 458b | 2026-10-06 | smoke:live 20/20 · robots bare Host · IndexNow 173×200 · Point C packs --live · invent yok | ✅ |
 | 458c | 2026-10-06 | Point C paste sırası + kör tur 1 merge’siz açıldı · invent/deploy yok · PR draft | ✅ |
 | 458d | 2026-10-06 | Tur 1a P0 20-prompt skor kartı · sameAs 200 · arleds TLS fail · invent yok | ✅ |
+| 458e | 2026-10-06 | point-c-paste-bundle.md canlı pack · Tur1a/PointC sahip · invent yok | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti

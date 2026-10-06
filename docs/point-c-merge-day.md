@@ -75,6 +75,9 @@ Dokümantasyon: [`indexnow.md`](./indexnow.md)
 
 Canlı pack kaynağı: `npm run point-c-packs -- --live` veya https://arledscreen.com/entity-profiles.json
 
+Canlı tek dosya yapıştırma: [`point-c-paste-bundle.md`](./point-c-paste-bundle.md) (üretim `entity-profiles.json` çekimi).
+
+
 1. **Google Business Profile** → `packs.gbpDescription` (NAP birebir)
 2. **LinkedIn Company About** → `packs.linkedinAbout`
 3. **Instagram bio** → `packs.instagramBio`
