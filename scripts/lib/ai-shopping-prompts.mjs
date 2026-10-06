@@ -4085,6 +4085,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit deck flashing yok"],
     mustNotSay: ["deck flashing garantidir", "sabit deck flashing True1", "tüm modeller deck flashing", "güverte flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 352,
+    q: "LED ekran Avocor F Series / Avocor W Series var mı? ARLEDSCREEN sabit Avocor F Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Avocor F Series yok"],
+    mustNotSay: ["Avocor F Series garantidir", "sabit Avocor F Series True1", "tüm modeller Avocor F Series", "Avocor W Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
