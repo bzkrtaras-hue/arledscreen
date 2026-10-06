@@ -4313,6 +4313,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Planar UltraRes yok"],
     mustNotSay: ["Planar UltraRes garantidir", "sabit Planar UltraRes True1", "tüm modeller Planar UltraRes", "Planar UltraRes X garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 371,
+    q: "LED ekran step apron / basamak eteği var mı? ARLEDSCREEN sabit step apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit step apron yok"],
+    mustNotSay: ["step apron garantidir", "sabit step apron True1", "tüm modeller step apron", "basamak eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

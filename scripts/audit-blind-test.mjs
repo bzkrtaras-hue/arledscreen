@@ -4853,6 +4853,20 @@ if (
   errors.push("blind prompt #370 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Planar UltraRes yok");
 }
 
+const pBlind371 = PROMPTS.find((x) => x.id === 371);
+if (!pBlind371 || !/step apron|basamak eteği/i.test(pBlind371.q)) {
+  errors.push("blind prompt #371 must cover sabit step apron invent");
+}
+if (
+  pBlind371 &&
+  (!pBlind371.mustSay?.includes("yazılı teklif") ||
+    !pBlind371.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind371.mustSay?.includes("sabit step apron yok"))
+) {
+  errors.push("blind prompt #371 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit step apron yok");
+}
+
+
 
 
 
