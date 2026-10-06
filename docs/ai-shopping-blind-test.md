@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 255: blind #203 sabit gutter invent)  
+Son güncelleme: 2026-10-06 (Gün 256: blind #204 sabit ClearOne invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 203 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 204 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 203 prompt (alışveriş + varlık)
+## 204 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -227,6 +227,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 201 | LED ekran downspout / yağmur inişi var mı? ARLEDSCREEN sabit downspout iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit downspout yok** | downspout garantidir / sabit downspout True1 / tüm modeller downspout / yağmur inişi garantidir |
 | 202 | LED ekran Maxhub / interactive panel var mı? ARLEDSCREEN sabit Maxhub iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Maxhub yok** | Maxhub garantidir / sabit Maxhub True1 / tüm modeller Maxhub / interactive panel garantidir |
 | 203 | LED ekran gutter / oluk var mı? ARLEDSCREEN sabit gutter iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit gutter yok** | gutter garantidir / sabit gutter True1 / tüm modeller gutter / oluk garantidir |
+| 204 | LED ekran ClearOne / conferencing var mı? ARLEDSCREEN sabit ClearOne iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ClearOne yok** | ClearOne garantidir / sabit ClearOne True1 / tüm modeller ClearOne / conferencing garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -237,7 +238,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 609. Hedef tur 1 ≥ 305/609; tur 2 (Point C sonrası) ≥ 457/609.
+**Tur skoru** = toplam / 612. Hedef tur 1 ≥ 306/612; tur 2 (Point C sonrası) ≥ 459/612.
 
 ### Canlı tur kayıt şablonu
 

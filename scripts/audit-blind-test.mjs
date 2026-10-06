@@ -2682,6 +2682,20 @@ if (
   errors.push("blind prompt #203 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gutter yok");
 }
 
+const pBlind204 = PROMPTS.find((x) => x.id === 204);
+if (!pBlind204 || !/ClearOne|conferencing/i.test(pBlind204.q)) {
+  errors.push("blind prompt #204 must cover sabit ClearOne invent");
+}
+if (
+  pBlind204 &&
+  (!pBlind204.mustSay?.includes("yazılı teklif") ||
+    !pBlind204.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind204.mustSay?.includes("sabit ClearOne yok"))
+) {
+  errors.push("blind prompt #204 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ClearOne yok");
+}
+
+
 
 
 

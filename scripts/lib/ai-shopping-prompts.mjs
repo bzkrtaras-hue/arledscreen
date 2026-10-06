@@ -2309,6 +2309,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gutter yok"],
     mustNotSay: ["gutter garantidir", "sabit gutter True1", "tüm modeller gutter", "oluk garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 204,
+    q: "LED ekran ClearOne / conferencing var mı? ARLEDSCREEN sabit ClearOne iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ClearOne yok"],
+    mustNotSay: ["ClearOne garantidir", "sabit ClearOne True1", "tüm modeller ClearOne", "conferencing garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
