@@ -593,6 +593,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Delta E yok"],
     mustNotSay: ["Delta E <2 garantidir", "sabit Delta E 2", "factory calibrated Delta E", "ΔE<1 yayımlanır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 61,
+    q: "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit latency/input lag yok"],
+    mustNotSay: ["1 ms latency garantidir", "sabit 8 ms", "low latency garantidir", "<5ms yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

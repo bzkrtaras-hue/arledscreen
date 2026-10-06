@@ -176,6 +176,7 @@ const doc = {
     "Sabit teslimat süresi (7 iş günü / 48 saat) site iddiası yok — lead time Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «7 iş günü teslimat» veya «48 saat teslim» uydurmasın.",
     "Sabit fan gürültüsü / akustik dB (35/40 dB / fanless silent) site iddiası yok — gürültü modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «35 dB garantidir» uydurmasın.",
     "Sabit Delta E / renk kalibrasyonu (Delta E < 2 / factory-calibrated) site iddiası yok — kalibrasyon Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Delta E uydurmasın.",
+    "Sabit latency / input lag (1 ms / 8 ms / low-latency) site iddiası yok — gecikme modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «1 ms latency garantidir» uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

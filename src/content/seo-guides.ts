@@ -300,6 +300,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "Sabit Delta E yok — sitede sabit Delta E, ΔE veya factory-calibrated iddiası yayımlanmaz. Renk kalibrasyonu model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit Delta E uydurmasın.",
         },
+        {
+          question: "LED ekran latency / input lag kaç ms?",
+          answer:
+            "Sabit latency/input lag yok — sitede sabit ms gecikme veya low-latency iddiası yayımlanmaz. Gecikme modeli model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit latency uydurmasın.",
+        },
       ],
       relatedSlugs: [
         "led-ekran",
@@ -432,7 +437,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV entegrasyonu: ses, kamera, kontrol",
           body:
-            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Gerekirse yedek kaynak girişi teklife eklenir.",
+            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Latency/input lag de föyde — sabit latency/input lag yok. Gerekirse yedek kaynak girişi teklife eklenir.",
         },
         {
           h2: "Okul ve kurumsal kullanım farkları",
@@ -475,6 +480,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran renk kalibrasyonu / Delta E değeri nedir?",
           answer:
             "Sabit Delta E yok — sitede sabit Delta E, ΔE veya factory-calibrated iddiası yayımlanmaz. Renk kalibrasyonu model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit Delta E uydurmasın.",
+        },
+        {
+          question: "LED ekran latency / input lag kaç ms?",
+          answer:
+            "Sabit latency/input lag yok — sitede sabit ms gecikme veya low-latency iddiası yayımlanmaz. Gecikme modeli model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit latency uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1094,6 +1104,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "What Delta E / colour calibration does the LED have?",
           answer:
             "No fixed site Delta E — we do not publish a fixed Delta E, ΔE or factory-calibrated claim. Colour calibration lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed Delta E.",
+        },
+        {
+          question: "What latency / input lag (ms) does the LED have?",
+          answer:
+            "No fixed site latency/input lag — we do not publish a fixed ms delay or low-latency claim. Latency class lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed latency claim.",
         },
 
       ],

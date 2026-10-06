@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 60) errors.push(`blindTestPrompts must be 60 (got ${prompts.length})`);
+if (prompts.length !== 61) errors.push(`blindTestPrompts must be 61 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/60 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 60 kör test intent");
+if (!/61 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 61 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]) kör test/i.test(ard) && !/60 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–59 kör test without 60");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|60) kör test/i.test(ard) && !/61 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–60 kör test without 61");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -529,6 +529,14 @@ if (!p60 || !/Delta E|kalibrasyon|colour|color/i.test(p60.q || "")) {
 }
 if (!/Delta E|renk kalibrasyonu|factory-calibrated|sabit Delta E/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit Delta E invent");
+}
+// Day 113: sabit latency / input lag invent
+const p61 = (doc.blindTestPrompts || []).find((p) => p.id === 61);
+if (!p61 || !/latency|input lag|ms/i.test(p61.q || "")) {
+  errors.push("blindTestPrompts #61 must cover sabit latency / input lag invent");
+}
+if (!/latency|input lag|low-latency|sabit latency/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit latency / input lag invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

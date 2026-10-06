@@ -102,6 +102,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 110 | 2026-10-06 | sabit teslimat süresi #58 · AR/RU rehber-dis ARD · skor /174 | ✅ |
 | 111 | 2026-10-06 | sabit gürültü/dB #59 · AR/RU konferans ARD · skor /177 | ✅ |
 | 112 | 2026-10-06 | sabit Delta E #60 · AR/RU vitrin ARD · skor /180 | ✅ |
+| 113 | 2026-10-06 | sabit latency/input lag #61 · AR/RU kiosk ARD · skor /183 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -722,3 +723,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + konferans Delta E invent · llms deny · sabit Delta E yok
 - ARD: AR/RU vitrin + AR poster · IndexNow +3 · agentRules sabit Delta E
 - skor hedef Tur 1 ≥ 90/180 · Tur 2 ≥ 135/180
+
+## Gün 113 notları
+
+- Blind #61 «latency / input lag / ms?» — skor **/183**; ARD **61 kör test**
+- TR/EN konferans + ic-mekan latency invent · llms deny · sabit latency/input lag yok
+- ARD: AR/RU kiosk + RU poster · IndexNow +3 · agentRules sabit latency
+- skor hedef Tur 1 ≥ 92/183 · Tur 2 ≥ 138/183

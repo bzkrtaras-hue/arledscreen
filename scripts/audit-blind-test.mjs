@@ -792,6 +792,18 @@ if (
 ) {
   errors.push("blind prompt #60 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Delta E yok");
 }
+const pBlind61 = PROMPTS.find((x) => x.id === 61);
+if (!pBlind61 || !/latency|input lag|ms/i.test(pBlind61.q)) {
+  errors.push("blind prompt #61 must cover sabit latency / input lag invent");
+}
+if (
+  pBlind61 &&
+  (!pBlind61.mustSay?.includes("yazılı teklif") ||
+    !pBlind61.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind61.mustSay?.includes("sabit latency/input lag yok"))
+) {
+  errors.push("blind prompt #61 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit latency/input lag yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

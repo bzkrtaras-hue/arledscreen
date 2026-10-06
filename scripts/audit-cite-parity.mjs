@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/60 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 60 kör test intent (not stale 17–59)");
+if (ardTxt && !/61 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 61 kör test intent (not stale 17–60)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]) kör test/i.test(ardTxt) && !/60 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–59 kör test without 60");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|60) kör test/i.test(ardTxt) && !/61 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–60 kör test without 61");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -883,6 +883,21 @@ for (const rel of [
   }
   if (/Delta E <2 garantidir|sabit Delta E 2|factory calibrated Delta E|ΔE<1 yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit Delta E`);
+  }
+}
+
+// Day 113: sabit latency / input lag — honesty presence
+for (const rel of [
+  "out/tr/rehber/konferans-salonu-led/index.html",
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit latency\/input lag yok|no fixed site latency\/input lag/i.test(html)) {
+    errors.push(`${rel} should hedge sabit latency / input lag`);
+  }
+  if (/1 ms latency garantidir|sabit 8 ms|low latency garantidir|<5ms yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit latency / input lag`);
   }
 }
 
