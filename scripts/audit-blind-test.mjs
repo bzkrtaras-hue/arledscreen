@@ -4697,6 +4697,20 @@ if (
   errors.push("blind prompt #358 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline VN Series yok");
 }
 
+const pBlind359 = PROMPTS.find((x) => x.id === 359);
+if (!pBlind359 || !/dormer flashing|çatı çıkma flaşör/i.test(pBlind359.q)) {
+  errors.push("blind prompt #359 must cover sabit dormer flashing invent");
+}
+if (
+  pBlind359 &&
+  (!pBlind359.mustSay?.includes("yazılı teklif") ||
+    !pBlind359.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind359.mustSay?.includes("sabit dormer flashing yok"))
+) {
+  errors.push("blind prompt #359 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dormer flashing yok");
+}
+
+
 
 
 

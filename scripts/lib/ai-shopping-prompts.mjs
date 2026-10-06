@@ -4169,6 +4169,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline VN Series yok"],
     mustNotSay: ["Newline VN Series garantidir", "sabit Newline VN Series True1", "tüm modeller Newline VN Series", "Newline Z Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 359,
+    q: "LED ekran dormer flashing / çatı çıkma flaşör var mı? ARLEDSCREEN sabit dormer flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit dormer flashing yok"],
+    mustNotSay: ["dormer flashing garantidir", "sabit dormer flashing True1", "tüm modeller dormer flashing", "çatı çıkma flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
