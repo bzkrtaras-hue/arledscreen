@@ -2633,6 +2633,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Christie yok"],
     mustNotSay: ["Christie garantidir", "sabit Christie True1", "tüm modeller Christie", "laser projector garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 231,
+    q: "LED ekran threshold flashing / eşik flaş var mı? ARLEDSCREEN sabit threshold flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit threshold flashing yok"],
+    mustNotSay: ["threshold flashing garantidir", "sabit threshold flashing True1", "tüm modeller threshold flashing", "eşik flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

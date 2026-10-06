@@ -272,6 +272,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 280 | 2026-10-06 | sabit Barco #228 · ic/konferans ARD refresh · skor /684 | ✅ |
 | 281 | 2026-10-06 | sabit jamb flashing #229 · dis/mimari ARD refresh · skor /687 | ✅ |
 | 282 | 2026-10-06 | sabit Christie #230 · ic/konferans ARD refresh · skor /690 | ✅ |
+| 283 | 2026-10-06 | sabit threshold flashing #231 · dis/mimari ARD refresh · skor /693 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1999,3 +2000,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #230 «Christie / laser projector?» — skor **/690**; ARD **230 kör test**
 - TR/EN ic-mekan + TR/EN konferans Christie invent · llms deny · sabit Christie yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Christie
+
+## Gün 283 notları
+
+- Blind #231 «threshold flashing / eşik flaş?» — skor **/693**; ARD **231 kör test**
+- TR/EN dis-mekan + TR/EN mimari threshold flashing invent · llms deny · sabit threshold flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit threshold flashing

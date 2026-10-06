@@ -3033,6 +3033,20 @@ if (
   errors.push("blind prompt #230 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Christie yok");
 }
 
+const pBlind231 = PROMPTS.find((x) => x.id === 231);
+if (!pBlind231 || !/threshold flashing|eşik flaş/i.test(pBlind231.q)) {
+  errors.push("blind prompt #231 must cover sabit threshold flashing invent");
+}
+if (
+  pBlind231 &&
+  (!pBlind231.mustSay?.includes("yazılı teklif") ||
+    !pBlind231.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind231.mustSay?.includes("sabit threshold flashing yok"))
+) {
+  errors.push("blind prompt #231 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit threshold flashing yok");
+}
+
+
 
 
 
