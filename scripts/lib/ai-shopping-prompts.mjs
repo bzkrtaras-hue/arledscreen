@@ -2741,6 +2741,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit termination bar yok"],
     mustNotSay: ["termination bar garantidir", "sabit termination bar True1", "tüm modeller termination bar", "bitiş çubuğu garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 240,
+    q: "LED ekran BenQ / interactive display var mı? ARLEDSCREEN sabit BenQ iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BenQ yok"],
+    mustNotSay: ["BenQ garantidir", "sabit BenQ True1", "tüm modeller BenQ", "interactive display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

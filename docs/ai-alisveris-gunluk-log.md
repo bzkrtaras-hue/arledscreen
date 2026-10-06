@@ -281,6 +281,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 289 | 2026-10-06 | sabit reglet #237 · dis/mimari ARD refresh · skor /711 | ✅ |
 | 290 | 2026-10-06 | sabit Optoma #238 · ic/konferans ARD refresh · skor /714 | ✅ |
 | 291 | 2026-10-06 | sabit termination bar #239 · dis/mimari ARD refresh · skor /717 | ✅ |
+| 292 | 2026-10-06 | sabit BenQ #240 · ic/konferans ARD refresh · skor /720 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2062,3 +2063,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #239 «termination bar / bitiş çubuğu?» — skor **/717**; ARD **239 kör test**
 - TR/EN dis-mekan + TR/EN mimari termination bar invent · llms deny · sabit termination bar yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit termination bar
+
+## Gün 292 notları
+
+- Blind #240 «BenQ / interactive display?» — skor **/720**; ARD **240 kör test**
+- TR/EN ic-mekan + TR/EN konferans BenQ invent · llms deny · sabit BenQ yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit BenQ

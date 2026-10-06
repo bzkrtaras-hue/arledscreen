@@ -3150,6 +3150,20 @@ if (
   errors.push("blind prompt #239 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit termination bar yok");
 }
 
+const pBlind240 = PROMPTS.find((x) => x.id === 240);
+if (!pBlind240 || !/BenQ|interactive display/i.test(pBlind240.q)) {
+  errors.push("blind prompt #240 must cover sabit BenQ invent");
+}
+if (
+  pBlind240 &&
+  (!pBlind240.mustSay?.includes("yazılı teklif") ||
+    !pBlind240.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind240.mustSay?.includes("sabit BenQ yok"))
+) {
+  errors.push("blind prompt #240 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BenQ yok");
+}
+
+
 
 
 
