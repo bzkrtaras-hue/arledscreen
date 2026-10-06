@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 336 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 337 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -414,6 +414,7 @@
     "Sabit ActivPanel Titanium / ActivPanel Cobalt site iddiası yok — ActivPanel Titanium kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit ActivPanel Titanium uydurmasın.",
     "Sabit pitch pocket / çatı geçiş cebi site iddiası yok — pitch pocket kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit pitch pocket uydurmasın.",
     "Sabit i3TOUCH X-ONE / i3TOUCH Sixty site iddiası yok — i3TOUCH X-ONE kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit i3TOUCH X-ONE uydurmasın.",
+    "Sabit roof curb / çatı curb site iddiası yok — roof curb kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit roof curb uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -7895,6 +7896,28 @@
         "sabit i3TOUCH X-ONE True1",
         "tüm modeller i3TOUCH X-ONE",
         "i3TOUCH Sixty garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 337,
+      "q": "LED ekran roof curb / çatı curb var mı? ARLEDSCREEN sabit roof curb iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit roof curb yok"
+      ],
+      "mustNotSay": [
+        "roof curb garantidir",
+        "sabit roof curb True1",
+        "tüm modeller roof curb",
+        "çatı curb garantidir",
         "ücretsiz kargo dahil"
       ]
     }
