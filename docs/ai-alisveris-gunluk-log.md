@@ -300,6 +300,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 308 | 2026-10-06 | sabit Clevertouch #256 · ic/konferans ARD refresh · skor /768 | ✅ |
 | 309 | 2026-10-06 | sabit interlocking cleat #257 · dis/mimari ARD refresh · skor /771 | ✅ |
 | 310 | 2026-10-06 | sabit Sharp #258 · ic/konferans ARD refresh · skor /774 | ✅ |
+| 311 | 2026-10-06 | sabit snap cleat #259 · dis/mimari ARD refresh · skor /777 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2195,3 +2196,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #258 «Sharp / AQUOS board?» — skor **/774**; ARD **258 kör test**
 - TR/EN ic-mekan + TR/EN konferans Sharp invent · llms deny · sabit Sharp yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Sharp
+
+## Gün 311 notları
+
+- Blind #259 «snap cleat / snap kleyt?» — skor **/777**; ARD **259 kör test**
+- TR/EN dis-mekan + TR/EN mimari snap cleat invent · llms deny · sabit snap cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit snap cleat
