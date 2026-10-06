@@ -5908,6 +5908,18 @@ if (
 ) {
   errors.push("blind prompt #453 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit mullion yok");
 }
+const pBlind454 = PROMPTS.find((x) => x.id === 454);
+if (!pBlind454 || !/HP Presence Mini/i.test(pBlind454.q)) {
+  errors.push("blind prompt #454 must cover sabit HP Presence Mini invent");
+}
+if (
+  pBlind454 &&
+  (!pBlind454.mustSay?.includes("yazılı teklif") ||
+    !pBlind454.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind454.mustSay?.includes("sabit HP Presence Mini yok"))
+) {
+  errors.push("blind prompt #454 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HP Presence Mini yok");
+}
 
 
 

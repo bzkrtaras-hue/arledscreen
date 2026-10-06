@@ -477,6 +477,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 451 | LED ekran curtain wall / giydirme cephe var mı? ARLEDSCREEN sabit curtain wall iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit curtain wall yok** | curtain wall garantidir / sabit curtain wall True1 / tüm modeller curtain wall / giydirme cephe garantidir |
 | 452 | LED ekran Logitech Rally Bar Huddle / Rally Bar Huddle var mı? ARLEDSCREEN sabit Logitech Rally Bar Huddle iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Logitech Rally Bar Huddle yok** | Logitech Rally Bar Huddle garantidir / sabit Logitech Rally Bar Huddle True1 / tüm modeller Logitech Rally Bar Huddle / Rally Bar Huddle garantidir |
 | 453 | LED ekran mullion / dikme profil var mı? ARLEDSCREEN sabit mullion iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit mullion yok** | mullion garantidir / sabit mullion True1 / tüm modeller mullion / dikme profil garantidir |
+| 454 | LED ekran HP Presence Mini / Presence Mini var mı? ARLEDSCREEN sabit HP Presence Mini iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit HP Presence Mini yok** | HP Presence Mini garantidir / sabit HP Presence Mini True1 / tüm modeller HP Presence Mini / Presence Mini garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -523,7 +524,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (453 /1359)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (454 /1362)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)

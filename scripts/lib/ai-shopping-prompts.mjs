@@ -5309,6 +5309,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit mullion yok"],
     mustNotSay: ["mullion garantidir", "sabit mullion True1", "tüm modeller mullion", "dikme profil garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 454,
+    q: "LED ekran HP Presence Mini / Presence Mini var mı? ARLEDSCREEN sabit HP Presence Mini iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HP Presence Mini yok"],
+    mustNotSay: ["HP Presence Mini garantidir", "sabit HP Presence Mini True1", "tüm modeller HP Presence Mini", "Presence Mini garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
