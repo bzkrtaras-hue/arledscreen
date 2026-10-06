@@ -4985,6 +4985,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit MeetingBar A20 yok"],
     mustNotSay: ["MeetingBar A20 garantidir", "sabit MeetingBar A20 True1", "tüm modeller MeetingBar A20", "MeetingBar A20 dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 427,
+    q: "LED ekran balcony apron / balkon eteği var mı? ARLEDSCREEN sabit balcony apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit balcony apron yok"],
+    mustNotSay: ["balcony apron garantidir", "sabit balcony apron True1", "tüm modeller balcony apron", "balkon eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
