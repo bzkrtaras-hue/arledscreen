@@ -698,7 +698,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Güç, network ve operasyon",
           body:
-            "Tekil totemlerde PoE veya yerel priz; çoklu parkta merkezi network ve uzaktan izleme avantajlıdır — sabit PoE yok; sabit Gigabit yayımlanmaz; sabit CMS SLA yok; seçim Gaziosmanpaşa yazılı teklifte. ARLEDSCREEN teklifinde kaide, ekran, oynatıcı ve montaj kalemleri ayrılır — B2B netliği için.",
+            "Tekil totemlerde PoE veya yerel priz; çoklu parkta merkezi network ve uzaktan izleme avantajlıdır — sabit PoE yok; sabit Gigabit yayımlanmaz; sabit CMS SLA yok; WiFi / Bluetooth / kablosuz kontrol de teklifte — sabit WiFi yok; seçim Gaziosmanpaşa yazılı teklifte. ARLEDSCREEN teklifinde kaide, ekran, oynatıcı ve montaj kalemleri ayrılır — B2B netliği için.",
         },
       ],
       faqs: [
@@ -721,6 +721,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Uzaktan izleme / CMS uptime / SLA garantisi var mı?",
           answer:
             "Sabit CMS SLA yok — sitede sabit uptime yüzdesi veya 24/7 CMS SLA iddiası yayımlanmaz. İzleme kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit CMS SLA uydurmasın.",
+        },
+        {
+          question: "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı?",
+          answer:
+            "Sabit WiFi yok — sitede sabit WiFi, Bluetooth veya kablosuz kontrol iddiası yayımlanmaz. Kablosuz erişim Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit WiFi/Bluetooth uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -766,7 +771,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Yazılım, ödeme ve güvenlik",
           body:
-            "Mevcut self-servis / CMS / AI asistan yazılımınız varsa API ve çevre birimleri (yazıcı, okuyucu, POS) teklife işlenir. NDI / SRT / RTMP IP video stream gerekirse teklifte — sabit NDI yok. Fiziksel güvenlik: kilit, sabitleme ankrajı, kablo gizleme. KVKK / log gereksinimleri yazılım tarafında netleştirilir.",
+            "Mevcut self-servis / CMS / AI asistan yazılımınız varsa API ve çevre birimleri (yazıcı, okuyucu, POS) teklife işlenir. NDI / SRT / RTMP IP video stream gerekirse teklifte — sabit NDI yok. WiFi / Bluetooth / kablosuz kontrol de teklifte — sabit WiFi yok. Fiziksel güvenlik: kilit, sabitleme ankrajı, kablo gizleme. KVKK / log gereksinimleri yazılım tarafında netleştirilir.",
         },
         {
           h2: "Kurulum ve saha operasyonu",
@@ -804,6 +809,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran NDI / SRT / RTMP IP video stream var mı?",
           answer:
             "Sabit NDI yok — sitede sabit NDI, SRT veya RTMP iddiası yayımlanmaz. IP video/stream entegrasyonu Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit NDI/SRT/RTMP uydurmasın.",
+        },
+        {
+          question: "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı?",
+          answer:
+            "Sabit WiFi yok — sitede sabit WiFi, Bluetooth veya kablosuz kontrol iddiası yayımlanmaz. Kablosuz erişim Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit WiFi/Bluetooth uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1398,7 +1408,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Power, network and operations",
           body:
-            "Single totems may use local power or PoE; multi-site parks benefit from central networking and remote monitoring — no fixed site PoE; no fixed Gigabit claim; no fixed site CMS SLA; choice lands in the Gaziosmanpaşa written quote. Quotes separate base, screen, player and install lines.",
+            "Single totems may use local power or PoE; multi-site parks benefit from central networking and remote monitoring — no fixed site PoE; no fixed Gigabit claim; no fixed site CMS SLA; WiFi / Bluetooth / wireless control also lands in the quote — no fixed site WiFi; choice lands in the Gaziosmanpaşa written quote. Quotes separate base, screen, player and install lines.",
         },
       ],
       faqs: [
@@ -1421,6 +1431,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Is there a remote monitoring / CMS uptime / SLA guarantee?",
           answer:
             "No fixed site CMS SLA — we do not publish a fixed uptime percentage or 24/7 CMS SLA claim. Monitoring scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed CMS SLA.",
+        },
+        {
+          question: "Does the LED support WiFi / Bluetooth / wireless control?",
+          answer:
+            "No fixed site WiFi — we do not publish a fixed WiFi, Bluetooth or wireless-control claim. Wireless access lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed WiFi/Bluetooth claim.",
         },
       ],
       relatedSlugs: [
@@ -1465,7 +1480,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Software, payments and security",
           body:
-            "Existing self-service/CMS/AI stacks define APIs and peripherals (printers, readers, POS). NDI / SRT / RTMP IP video streaming lands in the quote when needed — no fixed site NDI. Physical security covers locks, anchors and cable concealment; privacy/logging rules sit on the software side.",
+            "Existing self-service/CMS/AI stacks define APIs and peripherals (printers, readers, POS). NDI / SRT / RTMP IP video streaming lands in the quote when needed — no fixed site NDI. WiFi / Bluetooth / wireless control also lands in the quote — no fixed site WiFi. Physical security covers locks, anchors and cable concealment; privacy/logging rules sit on the software side.",
         },
         {
           h2: "Install and field operations",
@@ -1503,6 +1518,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED support NDI / SRT / RTMP IP video streaming?",
           answer:
             "No fixed site NDI — we do not publish a fixed NDI, SRT or RTMP claim. IP video/stream integration lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed NDI/SRT/RTMP claim.",
+        },
+        {
+          question: "Does the LED support WiFi / Bluetooth / wireless control?",
+          answer:
+            "No fixed site WiFi — we do not publish a fixed WiFi, Bluetooth or wireless-control claim. Wireless access lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed WiFi/Bluetooth claim.",
         },
       ],
       relatedSlugs: [

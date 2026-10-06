@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 74) errors.push(`blindTestPrompts must be 74 (got ${prompts.length})`);
+if (prompts.length !== 75) errors.push(`blindTestPrompts must be 75 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/74 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 74 kör test intent");
+if (!/75 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 75 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-3]) kör test/i.test(ard) && !/74 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–73 kör test without 74");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-4]) kör test/i.test(ard) && !/75 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–74 kör test without 75");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -653,6 +653,15 @@ if (!p74 || !/ön servis|arka servis|front|rear/i.test(p74.q || "")) {
 }
 if (!/ön servis|arka servis|front service|rear service|sabit ön servis/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit ön/arka servis invent");
+}
+
+// Day 127: sabit WiFi / Bluetooth invent
+const p75 = (doc.blindTestPrompts || []).find((p) => p.id === 75);
+if (!p75 || !/WiFi|Bluetooth|kablosuz/i.test(p75.q || "")) {
+  errors.push("blindTestPrompts #75 must cover sabit WiFi / Bluetooth invent");
+}
+if (!/WiFi|Bluetooth|kablosuz|sabit WiFi/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit WiFi / Bluetooth invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

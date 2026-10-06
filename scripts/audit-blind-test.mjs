@@ -973,6 +973,20 @@ if (
   errors.push("blind prompt #74 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ön servis yok");
 }
 
+
+const pBlind75 = PROMPTS.find((x) => x.id === 75);
+if (!pBlind75 || !/WiFi|Bluetooth|kablosuz/i.test(pBlind75.q)) {
+  errors.push("blind prompt #75 must cover sabit WiFi / Bluetooth invent");
+}
+if (
+  pBlind75 &&
+  (!pBlind75.mustSay?.includes("yazılı teklif") ||
+    !pBlind75.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind75.mustSay?.includes("sabit WiFi yok"))
+) {
+  errors.push("blind prompt #75 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit WiFi yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

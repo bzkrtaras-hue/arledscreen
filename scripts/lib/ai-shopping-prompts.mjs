@@ -761,6 +761,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ön servis yok"],
     mustNotSay: ["ön servis garantidir", "sabit arka servis", "tüm modeller ön servis", "front service garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 75,
+    q: "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/kiosk-dijital-ekran/",
+      "/tr/rehber/poster-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit WiFi yok"],
+    mustNotSay: ["WiFi garantidir", "sabit Bluetooth", "tüm modeller WiFi", "Bluetooth garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
