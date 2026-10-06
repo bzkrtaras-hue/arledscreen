@@ -5405,6 +5405,19 @@ if (
   errors.push("blind prompt #413 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit skirt apron yok");
 }
 
+const pBlind414 = PROMPTS.find((x) => x.id === 414);
+if (!pBlind414 || !/Logitech Meetup/i.test(pBlind414.q)) {
+  errors.push("blind prompt #414 must cover sabit Logitech Meetup invent");
+}
+if (
+  pBlind414 &&
+  (!pBlind414.mustSay?.includes("yazılı teklif") ||
+    !pBlind414.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind414.mustSay?.includes("sabit Logitech Meetup yok"))
+) {
+  errors.push("blind prompt #414 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Meetup yok");
+}
+
 
 
 
