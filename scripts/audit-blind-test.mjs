@@ -2422,6 +2422,20 @@ if (
   errors.push("blind prompt #183 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit counter flashing yok");
 }
 
+const pBlind184 = PROMPTS.find((x) => x.id === 184);
+if (!pBlind184 || !/Google Meet|soft conferencing/i.test(pBlind184.q)) {
+  errors.push("blind prompt #184 must cover sabit Google Meet invent");
+}
+if (
+  pBlind184 &&
+  (!pBlind184.mustSay?.includes("yazılı teklif") ||
+    !pBlind184.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind184.mustSay?.includes("sabit Google Meet yok"))
+) {
+  errors.push("blind prompt #184 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Meet yok");
+}
+
+
 
 
 

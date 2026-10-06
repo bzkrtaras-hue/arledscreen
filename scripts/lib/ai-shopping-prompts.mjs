@@ -2069,6 +2069,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit counter flashing yok"],
     mustNotSay: ["counter flashing garantidir", "sabit counter flashing True1", "tüm modeller counter flashing", "karşı flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 184,
+    q: "LED ekran Google Meet / soft conferencing var mı? ARLEDSCREEN sabit Google Meet iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Google Meet yok"],
+    mustNotSay: ["Google Meet garantidir", "sabit Google Meet True1", "tüm modeller Google Meet", "soft conferencing garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

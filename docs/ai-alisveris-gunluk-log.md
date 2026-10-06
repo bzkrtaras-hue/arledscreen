@@ -225,6 +225,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 233 | 2026-10-06 | sabit chemical anchor #181 · dis/mimari ARD refresh · skor /543 | ✅ |
 | 234 | 2026-10-06 | sabit Solstice #182 · ic/konferans ARD refresh · skor /546 | ✅ |
 | 235 | 2026-10-06 | sabit counter flashing #183 · dis/mimari ARD refresh · skor /549 | ✅ |
+| 236 | 2026-10-06 | sabit Google Meet #184 · ic/konferans ARD refresh · skor /552 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1670,3 +1671,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #183 «counter flashing / karşı flaşör?» — skor **/549**; ARD **183 kör test**
 - TR/EN dis-mekan + TR/EN mimari counter flashing invent · llms deny · sabit counter flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit counter flashing
+
+## Gün 236 notları
+
+- Blind #184 «Google Meet / soft conferencing?» — skor **/552**; ARD **184 kör test**
+- TR/EN ic-mekan + TR/EN konferans Google Meet invent · llms deny · sabit Google Meet yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Google Meet
