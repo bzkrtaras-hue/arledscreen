@@ -182,6 +182,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 190 | 2026-10-06 | sabit multi-window #138 · ic/konferans ARD refresh · skor /414 | ✅ |
 | 191 | 2026-10-06 | sabit guy wire #139 · dis/mimari ARD refresh · skor /417 | ✅ |
 | 192 | 2026-10-06 | sabit junction box #140 · ic/konferans ARD refresh · skor /420 | ✅ |
+| 193 | 2026-10-06 | sabit leveling foot #141 · dis/mimari ARD refresh · skor /423 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1363,4 +1364,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans junction box invent · llms deny · sabit junction box yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit junction box
 - skor hedef Tur 1 ≥ 210/420 · Tur 2 ≥ 315/420
+
+## Gün 193 notları
+
+- Blind #141 «leveling foot / ayar ayağı?» — skor **/423**; ARD **141 kör test**
+- TR/EN dis-mekan + TR/EN mimari leveling foot invent · llms deny · sabit leveling foot yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit leveling foot
+- skor hedef Tur 1 ≥ 212/423 · Tur 2 ≥ 318/423
 

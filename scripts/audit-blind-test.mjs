@@ -1868,6 +1868,20 @@ if (
   errors.push("blind prompt #140 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit junction box yok");
 }
 
+
+const pBlind141 = PROMPTS.find((x) => x.id === 141);
+if (!pBlind141 || !/leveling foot|ayar ayağı/i.test(pBlind141.q)) {
+  errors.push("blind prompt #141 must cover sabit leveling foot invent");
+}
+if (
+  pBlind141 &&
+  (!pBlind141.mustSay?.includes("yazılı teklif") ||
+    !pBlind141.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind141.mustSay?.includes("sabit leveling foot yok"))
+) {
+  errors.push("blind prompt #141 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit leveling foot yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 

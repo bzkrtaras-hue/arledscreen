@@ -1553,6 +1553,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit junction box yok"],
     mustNotSay: ["junction box garantidir", "sabit junction box True1", "tüm modeller junction box", "buat garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 141,
+    q: "LED ekran leveling foot / ayar ayağı var mı? ARLEDSCREEN sabit leveling foot iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit leveling foot yok"],
+    mustNotSay: ["leveling foot garantidir", "sabit leveling foot True1", "tüm modeller leveling foot", "ayar ayağı garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
