@@ -4699,6 +4699,23 @@ for (const rel of [
   }
 }
 
+// Day 367: sabit gutter cleat / oluk kleyt — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit gutter cleat yok|no fixed site gutter cleat/i.test(html)) {
+    errors.push(`${rel} should hedge sabit gutter cleat / oluk kleyt`);
+  }
+  if (/gutter cleat\ garantidir|sabit\ gutter cleat\ True1|tüm\ modeller\ gutter cleat|oluk\ kleyt\ garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit gutter cleat`);
+  }
+}
+
+
+
 
 
 
