@@ -3,6 +3,8 @@
 Hedef: PR #55 deploy olduktan **aynı gün** canlı AI yüzeyleri + bağımsız atıf başlasın.
 Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/entity-profiles.json) · playbook: [`offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
+**Durum (2026-10-06 doğrulama):** PR #55 henüz birleşmedi. Canlı `arledscreen.com` hâlâ eski fiyat hub (P1.25–P5, 1 Ekim 2026) + Gaziosmanpaşa; Yealink MeetingBoard / gable apron / drip apron / Maxhub / Horion / Surface Hub 3 hedge’leri **yok**. `/entity.json` · `/ai-shopping.json` · `/.well-known/ard.json` canlı **404**. Blind #402+# sayaçları yalnızca dal içi; canlı kör tur / arama / asistan cevabı etkisi **sıfır** ta ki merge + redeploy.
+
 Pre-merge (opsiyonel, zaten yeşil olmalı):
 
 ```bash

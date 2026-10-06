@@ -3213,16 +3213,24 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 
 - Blind #402 «Yealink MeetingBoard 86 / MeetingBoard 86?» — skor **/1206**; ARD **402 kör test**
 - TR/EN ic-mekan + TR/EN konferans Yealink MeetingBoard 86 invent · llms deny · sabit Yealink MeetingBoard 86 yok
-- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Yealink MeetingBoard 86
+- ARD refresh: rehber ic/konferans + priced ince-pitch · dal içi agentRules · **canlı etki yok** (PR #55 merge bekliyor)
 
 ## Gün 455 notları
 
 - Blind #403 «gable apron / kalkan eteği?» — skor **/1209**; ARD **403 kör test**
 - TR/EN dis-mekan + TR/EN mimari gable apron invent · llms deny · sabit gable apron yok
-- ARD refresh: rehber dis/mimari + priced gob · IndexNow policy (live-200 once) · agentRules sabit gable apron
+- ARD refresh: rehber dis/mimari + priced gob · dal içi · **canlı etki yok**
 
 ## Gün 456 notları
 
 - Blind #404 «Surface Hub 3 / Hub 3?» — skor **/1212**; ARD **404 kör test**
 - TR/EN ic-mekan + TR/EN konferans Surface Hub 3 invent · llms deny · sabit Surface Hub 3 yok
-- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow policy · agentRules sabit Surface Hub 3
+- ARD refresh: rehber ic/konferans + priced ince-pitch · dal içi · **canlı etki yok**
+
+## Merge kapısı (2026-10-06) — sahip
+
+- Canlı kontrol: fiyat hub P1.25–P5 + «1 Ekim 2026»; iletişim Gaziosmanpaşa; Yealink/gable/drip/Maxhub/Horion **yok**
+- Canlı AI artefact: `entity.json` / `ai-shopping.json` / `ard.json` → **404**
+- `verify:premerge` GREEN = yalnızca `cursor/ai-alisveris-katalog-5666` (PR #55); üretim değil
+- IndexNow: canlıda değişen URL yok → bildirim işe yaramaz; kör tur yok; Blind #N sayaç
+- Sonraki değerli adım: PR #55 **Ready → merge → CF Pages redeploy** → `smoke:live` → sonra IndexNow / Point C / kör tur

@@ -4,6 +4,8 @@ Amaç: Katalogdaki **içeriği değişmiş** ve canlıda **HTTP 200** dönen URL
 
 Spam blog / 81-il yok. IndexNow **indeks, AI anılması veya P0 kapısını açmaz** — yalnızca bildirim kapısıdır (HTTP 200/202).
 
+**Merge kapısı:** PR #55 `main`’e birleşip Cloudflare production’a çıkmadan canlı URL değişmez. Dal içi invent/sync commit’leri (`verify:premerge` GREEN dahil) canlı gövdeyi değiştirmez → IndexNow’a gönderilecek “değişmiş canlı URL” yoktur. `entity.json` / `ai-shopping.json` / `ard.json` hâlâ canlı 404 iken ping işe yaramaz.
+
 ## Kurallar (sahip)
 
 1. Yalnızca `scripts/lib/indexnow-urls.mjs` kataloğundaki URL’ler
