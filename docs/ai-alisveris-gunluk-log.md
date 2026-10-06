@@ -1,7 +1,7 @@
-## Gün 497 — invent Blind #445 architrave apron
+## Gün 497 — invent Blind #445 architrave apron LIVE
 
-- Blind #445 architrave apron / arşitrav eteği · dis/mimari · prompts=445 · /1335 · build pending
-- Point C paste yok · Tur 1a skor boş
+- Blind #445 architrave apron / arşitrav eteği · dis/mimari · prompts=445 · /1335 · CF deploy · smoke:live 20/20 · IndexNow OK
+- Point C paste yok · Tur 1a skor boş · Drive Doc prompts→445
 - Point C + Tur 1a hâlâ sahip
 
 ## Gün 496 — invent Blind #444 Room Bar Mini LIVE
