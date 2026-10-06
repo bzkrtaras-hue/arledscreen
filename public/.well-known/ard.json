@@ -1,0 +1,119 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ARLEDSCREEN",
+  "url": "https://arledscreen.com",
+  "description": "Agentic Resource Discovery (ARD) endpoint for AI discovery and integration.",
+  "agentic": {
+    "discovery": {
+      "version": "1.0",
+      "lastUpdated": "2026-10-06",
+      "scope": "AI shopping agents, LLM assistants, and semantic search engines"
+    },
+    "resources": {
+      "entity": {
+        "type": "Organization",
+        "url": "https://arledscreen.com/entity.json",
+        "format": "application/ld+json",
+        "description": "Canonical organization metadata: NAP, cite, FAQs, contact"
+      },
+      "catalog": {
+        "type": "Product Catalog",
+        "url": "https://arledscreen.com/catalog.json",
+        "format": "application/ld+json",
+        "description": "2026 panel prices (12 SKU), USD per module, VAT/shipping excluded",
+        "priceValidUntil": "2026-12-31"
+      },
+      "aiShopping": {
+        "type": "Agent Index",
+        "url": "https://arledscreen.com/ai-shopping.json",
+        "format": "application/ld+json",
+        "description": "Single-fetch resource: prices, agent rules, resource links"
+      },
+      "llmsText": {
+        "type": "Text Summary",
+        "url": "https://arledscreen.com/llms.txt",
+        "format": "text/plain",
+        "description": "Human-readable AI summary: NAP, definitions, page map, assistant rules"
+      },
+      "llmsFullText": {
+        "type": "Text Reference",
+        "url": "https://arledscreen.com/llms-full.txt",
+        "format": "text/plain",
+        "description": "Extended AI guide with deeper context and edge cases"
+      },
+      "priceHub": {
+        "type": "Price Landing Page",
+        "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+        "format": "text/html",
+        "description": "Human-readable 2026 panel price table and examples"
+      },
+      "quoteForm": {
+        "type": "Custom Quote Request",
+        "url": "https://arledscreen.com/tr/quote/",
+        "format": "text/html",
+        "description": "Entry point for quote-only product groups (transparent, flexible, rental, control)"
+      },
+      "calculator": {
+        "type": "Interactive Tool",
+        "url": "https://arledscreen.com/tr/hesaplayici/",
+        "format": "text/html",
+        "description": "Live 2026 panel price calculator; approximate totals for planning"
+      }
+    },
+    "pricedProducts": {
+      "count": 12,
+      "currency": "USD",
+      "priceScope": "Per-module (320 × 160 mm standard); VAT and shipping excluded",
+      "validation": "priceValidUntil: 2026-12-31"
+    },
+    "agentGuidelines": {
+      "priceSource": "Use only https://arledscreen.com/catalog.json; do not invent prices",
+      "shippingAndVat": "All prices exclude VAT and freight; no free shipping claim",
+      "returnPolicy": "MerchantReturnNotPermitted; conditions in written quote",
+      "quoteOnlyGroups": [
+        "Transparent / vitrin",
+        "Flexible / esnek",
+        "Poster",
+        "Rental / kiralık",
+        "Control cards (Huidu/NovaStar/Colorlight)"
+      ],
+      "noFixedClaims": [
+        "Certification (CE/RoHS/ISO/UL/ETL) — per model in datasheet",
+        "Nits, IP rating, kW consumption — per model or quote",
+        "Warranty years or return days — per contract",
+        "Staffing, revenue, customer counts, ranking — not published"
+      ],
+      "roleClarity": {
+        "entity": "ARLEDSCREEN (Istanbul Gaziosmanpaşa)",
+        "roles": "LED sales, survey, installation, commissioning, technical support",
+        "brand": "NXTIONSTAR (own product brand; sole sales point in Turkey)",
+        "manufacturing": "Only claimed in writing with evidence; no blanket 'manufacturer' claim"
+      }
+    },
+    "semanticMapping": {
+      "led_screen": "Full-color (RGB) modular display; plays video/graphics; scales by modules",
+      "led_sign": "Text/number LED sign (scrolling text); not a full-color video wall",
+      "digital_display": "Superset: LCD, OLED, LED sign, digital totem, LED wall — not all are LED screens"
+    },
+    "redirects": {
+      "old_price_guide": "https://arledscreen.com/tr/rehber/led-ekran-fiyatlari/ → https://arledscreen.com/tr/led-ekran-fiyatlari/ (301)"
+    }
+  },
+  "robotsPolicy": {
+    "userAgent": "*",
+    "allow": [
+      "/catalog.json",
+      "/ai-shopping.json",
+      "/entity.json",
+      "/llms.txt",
+      "/.well-known/ard.json"
+    ],
+    "disallow": []
+  },
+  "contact": {
+    "email": "arled@arledscreen.com",
+    "phone": "+905305078834",
+    "web": "https://arledscreen.com/tr/about/"
+  }
+}
