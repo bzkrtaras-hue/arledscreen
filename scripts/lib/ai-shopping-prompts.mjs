@@ -1949,6 +1949,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit vandal guard yok"],
     mustNotSay: ["vandal guard garantidir", "sabit vandal guard True1", "tüm modeller vandal guard", "vandal koruma garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 174,
+    q: "LED ekran Teams Room / soft conferencing var mı? ARLEDSCREEN sabit Teams Room iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Teams Room yok"],
+    mustNotSay: ["Teams Room garantidir", "sabit Teams Room True1", "tüm modeller Teams Room", "soft conferencing garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

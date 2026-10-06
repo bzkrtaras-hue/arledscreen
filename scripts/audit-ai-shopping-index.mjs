@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 173) errors.push(`blindTestPrompts must be 173 (got ${prompts.length})`);
+if (prompts.length !== 174) errors.push(`blindTestPrompts must be 174 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/173 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 173 kör test intent");
+if (!/174 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 174 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–172 kör test without 173");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–173 kör test without 174");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1519,6 +1519,15 @@ if (!p173 || !/vandal guard|vandal koruma/i.test(p173.q || "")) {
 if (!/vandal guard|vandal koruma|sabit vandal guard/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit vandal guard invent");
 }
+
+const p174 = (doc.blindTestPrompts || []).find((p) => p.id === 174);
+if (!p174 || !/Teams Room|soft conferencing/i.test(p174.q || "")) {
+  errors.push("blindTestPrompts #174 must cover sabit Teams Room invent");
+}
+if (!/Teams Room|soft conferencing|sabit Teams Room/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit Teams Room invent");
+}
+
 
 
 

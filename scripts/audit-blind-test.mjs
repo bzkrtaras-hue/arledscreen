@@ -2292,6 +2292,20 @@ if (
   errors.push("blind prompt #173 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit vandal guard yok");
 }
 
+const pBlind174 = PROMPTS.find((x) => x.id === 174);
+if (!pBlind174 || !/Teams Room|soft conferencing/i.test(pBlind174.q)) {
+  errors.push("blind prompt #174 must cover sabit Teams Room invent");
+}
+if (
+  pBlind174 &&
+  (!pBlind174.mustSay?.includes("yazılı teklif") ||
+    !pBlind174.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind174.mustSay?.includes("sabit Teams Room yok"))
+) {
+  errors.push("blind prompt #174 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Teams Room yok");
+}
+
+
 
 
 
