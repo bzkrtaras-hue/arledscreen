@@ -1,7 +1,7 @@
-## Gün 516 — invent Blind #464 ClearTouch 65
+## Gün 516 — invent Blind #464 ClearTouch 65 LIVE
 
-- Blind #464 ClearTouch 65 · ic/konferans · prompts=464 · /1392 · build pending
-- IndexNow 429 · sahibe iş yok
+- Blind #464 ClearTouch 65 · ic/konferans · prompts=464 · /1392 · CF deploy · smoke:live 20/20
+- IndexNow 429 (ping atlandı) · sahibe iş yok
 
 ## Gün 515 — invent Blind #463 awning box LIVE
 
