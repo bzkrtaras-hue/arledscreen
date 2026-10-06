@@ -2539,6 +2539,20 @@ if (
   errors.push("blind prompt #192 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Polycom yok");
 }
 
+const pBlind193 = PROMPTS.find((x) => x.id === 193);
+if (!pBlind193 || !/vapor barrier|buhar bariyeri/i.test(pBlind193.q)) {
+  errors.push("blind prompt #193 must cover sabit vapor barrier invent");
+}
+if (
+  pBlind193 &&
+  (!pBlind193.mustSay?.includes("yazılı teklif") ||
+    !pBlind193.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind193.mustSay?.includes("sabit vapor barrier yok"))
+) {
+  errors.push("blind prompt #193 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit vapor barrier yok");
+}
+
+
 
 
 

@@ -234,6 +234,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 242 | 2026-10-06 | sabit Neat Board #190 · ic/konferans ARD refresh · skor /570 | ✅ |
 | 243 | 2026-10-06 | sabit condensation drain #191 · dis/mimari ARD refresh · skor /573 | ✅ |
 | 244 | 2026-10-06 | sabit Polycom #192 · ic/konferans ARD refresh · skor /576 | ✅ |
+| 245 | 2026-10-06 | sabit vapor barrier #193 · dis/mimari ARD refresh · skor /579 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1733,3 +1734,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #192 «Polycom / Poly Studio?» — skor **/576**; ARD **192 kör test**
 - TR/EN ic-mekan + TR/EN konferans Polycom invent · llms deny · sabit Polycom yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Polycom
+
+## Gün 245 notları
+
+- Blind #193 «vapor barrier / buhar bariyeri?» — skor **/579**; ARD **193 kör test**
+- TR/EN dis-mekan + TR/EN mimari vapor barrier invent · llms deny · sabit vapor barrier yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit vapor barrier

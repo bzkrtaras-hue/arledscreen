@@ -2177,6 +2177,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Polycom yok"],
     mustNotSay: ["Polycom garantidir", "sabit Polycom True1", "tüm modeller Polycom", "Poly Studio garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 193,
+    q: "LED ekran vapor barrier / buhar bariyeri var mı? ARLEDSCREEN sabit vapor barrier iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit vapor barrier yok"],
+    mustNotSay: ["vapor barrier garantidir", "sabit vapor barrier True1", "tüm modeller vapor barrier", "buhar bariyeri garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
