@@ -3020,6 +3020,20 @@ if (
   errors.push("blind prompt #229 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit jamb flashing yok");
 }
 
+const pBlind230 = PROMPTS.find((x) => x.id === 230);
+if (!pBlind230 || !/Christie|laser projector/i.test(pBlind230.q)) {
+  errors.push("blind prompt #230 must cover sabit Christie invent");
+}
+if (
+  pBlind230 &&
+  (!pBlind230.mustSay?.includes("yazılı teklif") ||
+    !pBlind230.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind230.mustSay?.includes("sabit Christie yok"))
+) {
+  errors.push("blind prompt #230 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Christie yok");
+}
+
+
 
 
 

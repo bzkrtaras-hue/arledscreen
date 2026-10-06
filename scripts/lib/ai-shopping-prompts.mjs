@@ -2621,6 +2621,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit jamb flashing yok"],
     mustNotSay: ["jamb flashing garantidir", "sabit jamb flashing True1", "tüm modeller jamb flashing", "jamb flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 230,
+    q: "LED ekran Christie / laser projector var mı? ARLEDSCREEN sabit Christie iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Christie yok"],
+    mustNotSay: ["Christie garantidir", "sabit Christie True1", "tüm modeller Christie", "laser projector garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
