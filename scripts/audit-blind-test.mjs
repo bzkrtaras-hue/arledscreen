@@ -3605,6 +3605,20 @@ if (
   errors.push("blind prompt #274 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Surface Hub yok");
 }
 
+const pBlind275 = PROMPTS.find((x) => x.id === 275);
+if (!pBlind275 || !/base cleat|taban kleyt/i.test(pBlind275.q)) {
+  errors.push("blind prompt #275 must cover sabit base cleat invent");
+}
+if (
+  pBlind275 &&
+  (!pBlind275.mustSay?.includes("yazılı teklif") ||
+    !pBlind275.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind275.mustSay?.includes("sabit base cleat yok"))
+) {
+  errors.push("blind prompt #275 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base cleat yok");
+}
+
+
 
 
 

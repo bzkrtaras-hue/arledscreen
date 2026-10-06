@@ -3161,6 +3161,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Surface Hub yok"],
     mustNotSay: ["Surface Hub garantidir", "sabit Surface Hub True1", "tüm modeller Surface Hub", "Microsoft Hub garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 275,
+    q: "LED ekran base cleat / taban kleyt var mı? ARLEDSCREEN sabit base cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit base cleat yok"],
+    mustNotSay: ["base cleat garantidir", "sabit base cleat True1", "tüm modeller base cleat", "taban kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

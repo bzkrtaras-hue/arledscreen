@@ -316,6 +316,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 324 | 2026-10-06 | sabit Elo #272 · ic/konferans ARD refresh · skor /816 | ✅ |
 | 325 | 2026-10-06 | sabit ridge cleat #273 · dis/mimari ARD refresh · skor /819 | ✅ |
 | 326 | 2026-10-06 | sabit Surface Hub #274 · ic/konferans ARD refresh · skor /822 | ✅ |
+| 327 | 2026-10-06 | sabit base cleat #275 · dis/mimari ARD refresh · skor /825 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2307,3 +2308,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #274 «Surface Hub / Microsoft Hub?» — skor **/822**; ARD **274 kör test**
 - TR/EN ic-mekan + TR/EN konferans Surface Hub invent · llms deny · sabit Surface Hub yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Surface Hub
+
+## Gün 327 notları
+
+- Blind #275 «base cleat / taban kleyt?» — skor **/825**; ARD **275 kör test**
+- TR/EN dis-mekan + TR/EN mimari base cleat invent · llms deny · sabit base cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit base cleat
