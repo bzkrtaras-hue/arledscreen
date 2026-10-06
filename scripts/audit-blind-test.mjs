@@ -4424,6 +4424,20 @@ if (
   errors.push("blind prompt #337 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit roof curb yok");
 }
 
+const pBlind338 = PROMPTS.find((x) => x.id === 338);
+if (!pBlind338 || !/Samsung Flip Pro|Samsung Flip WM/i.test(pBlind338.q)) {
+  errors.push("blind prompt #338 must cover sabit Samsung Flip Pro invent");
+}
+if (
+  pBlind338 &&
+  (!pBlind338.mustSay?.includes("yazılı teklif") ||
+    !pBlind338.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind338.mustSay?.includes("sabit Samsung Flip Pro yok"))
+) {
+  errors.push("blind prompt #338 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Samsung Flip Pro yok");
+}
+
+
 
 
 

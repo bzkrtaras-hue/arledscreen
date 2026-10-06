@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 337 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 338 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -453,6 +453,7 @@ const doc = {
     "Sabit pitch pocket / çatı geçiş cebi site iddiası yok — pitch pocket kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit pitch pocket uydurmasın.",
     "Sabit i3TOUCH X-ONE / i3TOUCH Sixty site iddiası yok — i3TOUCH X-ONE kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit i3TOUCH X-ONE uydurmasın.",
     "Sabit roof curb / çatı curb site iddiası yok — roof curb kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit roof curb uydurmasın.",
+    "Sabit Samsung Flip Pro / Samsung Flip WM site iddiası yok — Samsung Flip Pro kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Samsung Flip Pro uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

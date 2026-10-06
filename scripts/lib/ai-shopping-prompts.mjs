@@ -3917,6 +3917,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit roof curb yok"],
     mustNotSay: ["roof curb garantidir", "sabit roof curb True1", "tüm modeller roof curb", "çatı curb garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 338,
+    q: "LED ekran Samsung Flip Pro / Samsung Flip WM var mı? ARLEDSCREEN sabit Samsung Flip Pro iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Samsung Flip Pro yok"],
+    mustNotSay: ["Samsung Flip Pro garantidir", "sabit Samsung Flip Pro True1", "tüm modeller Samsung Flip Pro", "Samsung Flip WM garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
