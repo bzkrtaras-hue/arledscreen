@@ -2141,6 +2141,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit insect screen yok"],
     mustNotSay: ["insect screen garantidir", "sabit insect screen True1", "tüm modeller insect screen", "böcek filesi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 190,
+    q: "LED ekran Neat Board / collab bar var mı? ARLEDSCREEN sabit Neat Board iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Board yok"],
+    mustNotSay: ["Neat Board garantidir", "sabit Neat Board True1", "tüm modeller Neat Board", "collab bar garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

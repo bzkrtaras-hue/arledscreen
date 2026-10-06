@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 241: blind #189 sabit insect screen invent)  
+Son güncelleme: 2026-10-06 (Gün 242: blind #190 sabit Neat Board invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 189 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 190 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 189 prompt (alışveriş + varlık)
+## 190 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -213,6 +213,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 187 | LED ekran frost heave / don kabarması var mı? ARLEDSCREEN sabit frost heave iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit frost heave yok** | frost heave garantidir / sabit frost heave True1 / tüm modeller frost heave / don kabarması garantidir |
 | 188 | LED ekran Logitech Rally / kamera bar var mı? ARLEDSCREEN sabit Logitech Rally iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Logitech Rally yok** | Logitech Rally garantidir / sabit Logitech Rally True1 / tüm modeller Logitech Rally / kamera bar garantidir |
 | 189 | LED ekran insect screen / böcek filesi var mı? ARLEDSCREEN sabit insect screen iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit insect screen yok** | insect screen garantidir / sabit insect screen True1 / tüm modeller insect screen / böcek filesi garantidir |
+| 190 | LED ekran Neat Board / collab bar var mı? ARLEDSCREEN sabit Neat Board iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Neat Board yok** | Neat Board garantidir / sabit Neat Board True1 / tüm modeller Neat Board / collab bar garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -223,7 +224,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 567. Hedef tur 1 ≥ 284/567; tur 2 (Point C sonrası) ≥ 426/567.
+**Tur skoru** = toplam / 570. Hedef tur 1 ≥ 285/570; tur 2 (Point C sonrası) ≥ 428/570.
 
 ### Canlı tur kayıt şablonu
 

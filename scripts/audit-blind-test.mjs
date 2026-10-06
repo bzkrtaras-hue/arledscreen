@@ -2500,6 +2500,20 @@ if (
   errors.push("blind prompt #189 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit insect screen yok");
 }
 
+const pBlind190 = PROMPTS.find((x) => x.id === 190);
+if (!pBlind190 || !/Neat Board|collab bar/i.test(pBlind190.q)) {
+  errors.push("blind prompt #190 must cover sabit Neat Board invent");
+}
+if (
+  pBlind190 &&
+  (!pBlind190.mustSay?.includes("yazılı teklif") ||
+    !pBlind190.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind190.mustSay?.includes("sabit Neat Board yok"))
+) {
+  errors.push("blind prompt #190 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Board yok");
+}
+
+
 
 
 
