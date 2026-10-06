@@ -2070,6 +2070,20 @@ if (
     !pBlind156.mustSay?.includes("sabit Control4 yok"))
 ) {
   errors.push("blind prompt #156 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Control4 yok");
+
+const pBlind157 = PROMPTS.find((x) => x.id === 157);
+if (!pBlind157 || !/weep hole|drenaj deliği/i.test(pBlind157.q)) {
+  errors.push("blind prompt #157 must cover sabit weep hole invent");
+}
+if (
+  pBlind157 &&
+  (!pBlind157.mustSay?.includes("yazılı teklif") ||
+    !pBlind157.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind157.mustSay?.includes("sabit weep hole yok"))
+) {
+  errors.push("blind prompt #157 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit weep hole yok");
+}
+
 }
 
 }

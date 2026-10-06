@@ -198,6 +198,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 206 | 2026-10-06 | sabit AMX #154 · ic/konferans ARD refresh · skor /462 | ✅ |
 | 207 | 2026-10-06 | sabit drip edge #155 · dis/mimari ARD refresh · skor /465 | ✅ |
 | 208 | 2026-10-06 | sabit Control4 #156 · ic/konferans ARD refresh · skor /468 | ✅ |
+| 209 | 2026-10-06 | sabit weep hole #157 · dis/mimari ARD refresh · skor /471 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1481,3 +1482,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #156 «Control4 / akıllı ev?» — skor **/468**; ARD **156 kör test**
 - TR/EN ic-mekan + TR/EN konferans Control4 invent · llms deny · sabit Control4 yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Control4
+
+## Gün 209 notları
+
+- Blind #157 «weep hole / drenaj deliği?» — skor **/471**; ARD **157 kör test**
+- TR/EN dis-mekan + TR/EN mimari weep hole invent · llms deny · sabit weep hole yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit weep hole

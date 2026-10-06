@@ -1745,6 +1745,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Control4 yok"],
     mustNotSay: ["Control4 garantidir", "sabit Control4 True1", "tüm modeller Control4", "akıllı ev garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 157,
+    q: "LED ekran weep hole / drenaj deliği var mı? ARLEDSCREEN sabit weep hole iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit weep hole yok"],
+    mustNotSay: ["weep hole garantidir", "sabit weep hole True1", "tüm modeller weep hole", "drenaj deliği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
