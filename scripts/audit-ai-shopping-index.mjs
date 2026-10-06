@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 121) errors.push(`blindTestPrompts must be 121 (got ${prompts.length})`);
+if (prompts.length !== 122) errors.push(`blindTestPrompts must be 122 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/121 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 121 kör test intent");
+if (!/122 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 122 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–120 kör test without 121");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–121 kör test without 122");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1077,6 +1077,16 @@ if (!p121 || !/magnesium|magnezyum/i.test(p121.q || "")) {
 }
 if (!/magnesium|magnezyum|sabit magnesium/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit magnesium invent");
+}
+
+
+// Day 174: sabit EDID / EDID yönetimi invent
+const p122 = (doc.blindTestPrompts || []).find((p) => p.id === 122);
+if (!p122 || !/EDID/i.test(p122.q || "")) {
+  errors.push("blindTestPrompts #122 must cover sabit EDID invent");
+}
+if (!/EDID|sabit EDID/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit EDID invent");
 }
 
 // Day 76: agentRules full disambiguation

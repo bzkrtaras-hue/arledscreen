@@ -163,6 +163,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 171 | 2026-10-06 | sabit safety cable #119 · dis/mimari ARD refresh · skor /357 | ✅ |
 | 172 | 2026-10-06 | sabit thermal pad #120 · ic/konferans ARD refresh · skor /360 | ✅ |
 | 173 | 2026-10-06 | sabit magnesium #121 · dis/mimari ARD refresh · skor /363 | ✅ |
+| 174 | 2026-10-06 | sabit EDID #122 · ic/konferans ARD refresh · skor /366 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1211,4 +1212,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari magnesium invent · llms deny · sabit magnesium yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit magnesium
 - skor hedef Tur 1 ≥ 182/363 · Tur 2 ≥ 273/363
+
+## Gün 174 notları
+
+- Blind #122 «EDID / EDID yönetimi?» — skor **/366**; ARD **122 kör test**
+- TR/EN ic-mekan + TR/EN konferans EDID invent · llms deny · sabit EDID yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit EDID
+- skor hedef Tur 1 ≥ 183/366 · Tur 2 ≥ 275/366
 

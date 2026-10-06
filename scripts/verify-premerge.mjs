@@ -28,7 +28,7 @@ function run(script, args = []) {
 }
 
 console.log("");
-console.log("=== verify:premerge (Day 173) ===");
+console.log("=== verify:premerge (Day 174) ===");
 
 if (!fs.existsSync(out)) {
   console.error("verify:premerge: missing out/ — run npm run build first");
@@ -62,9 +62,9 @@ if (!fs.existsSync(aiPath)) {
     } else if (!/extrasUsd\.controlCard|list SKU/i.test(JSON.stringify(doc.agentRules))) {
       console.error("verify:premerge: agentRules must disambiguate extrasUsd.controlCard ≠ list SKU");
       failed += 1;
-    } else if (!Array.isArray(doc.blindTestPrompts) || doc.blindTestPrompts.length !== 121) {
+    } else if (!Array.isArray(doc.blindTestPrompts) || doc.blindTestPrompts.length !== 122) {
       console.error(
-        `verify:premerge: blindTestPrompts must be 121 (got ${doc.blindTestPrompts?.length})`,
+        `verify:premerge: blindTestPrompts must be 122 (got ${doc.blindTestPrompts?.length})`,
       );
       failed += 1;
     } else if (!/AI-infrastructure ready/i.test(JSON.stringify(doc.agentRules))) {
@@ -346,9 +346,12 @@ if (!fs.existsSync(aiPath)) {
     } else if (!/magnesium|magnezyum|sabit magnesium/i.test(JSON.stringify(doc.agentRules))) {
       console.error("verify:premerge: agentRules must forbid sabit magnesium invent");
       failed += 1;
+    } else if (!/EDID|sabit EDID/i.test(JSON.stringify(doc.agentRules))) {
+      console.error("verify:premerge: agentRules must forbid sabit EDID invent");
+      failed += 1;
     } else {
       console.log(
-        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=121 OK`,
+        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=122 OK`,
       );
     }
     // Day 66: catalog extrasUsdNote

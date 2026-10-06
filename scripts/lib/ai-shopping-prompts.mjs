@@ -1325,6 +1325,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit magnesium yok"],
     mustNotSay: ["magnesium garantidir", "sabit magnezyum", "tüm modeller magnesium", "magnezyum garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 122,
+    q: "LED ekran EDID / EDID yönetimi var mı? ARLEDSCREEN sabit EDID iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit EDID yok"],
+    mustNotSay: ["EDID garantidir", "sabit EDID yönetimi", "tüm modeller EDID", "EDID yönetimi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
