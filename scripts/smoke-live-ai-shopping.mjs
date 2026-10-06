@@ -309,6 +309,8 @@ export const CHECKS = [
       "MerchantReturnNotPermitted",
       "Huidu",
       "kontrol",
+      "ai-shopping.json",
+      "catalog.json",
     ],
     cors: true,
     contentType: "text/plain",

@@ -1,3 +1,10 @@
+## Kritik: production overwrite — 2026-10-06
+
+- `main` commit `7ca5d87` CF Production’a yazıldı → canlı `llms.txt` / `sitemap` AI artefaktları **ezildi**
+- pages.dev (PR #55 build) doğru; arledscreen.com eski llms’e döndü
+- Aksiyon: PR #55 out yeniden deploy + smoke’a `ai-shopping.json` zorunlu
+- Kalıcı çözüm: PR #55 merge (main deploy yarışı bitmeden GEO canlıda kalıcı olmaz)
+
 ## Kontrol audit — 2026-10-06 (tekrar/halüsinasyon freni)
 
 ### Kanıt (işe yarayan)
