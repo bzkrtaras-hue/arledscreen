@@ -3059,6 +3059,20 @@ if (
   errors.push("blind prompt #232 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Epson yok");
 }
 
+const pBlind233 = PROMPTS.find((x) => x.id === 233);
+if (!pBlind233 || !/gravel stop|çakıl stoper/i.test(pBlind233.q)) {
+  errors.push("blind prompt #233 must cover sabit gravel stop invent");
+}
+if (
+  pBlind233 &&
+  (!pBlind233.mustSay?.includes("yazılı teklif") ||
+    !pBlind233.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind233.mustSay?.includes("sabit gravel stop yok"))
+) {
+  errors.push("blind prompt #233 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gravel stop yok");
+}
+
+
 
 
 

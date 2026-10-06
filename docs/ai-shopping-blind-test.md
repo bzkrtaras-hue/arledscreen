@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 284: blind #232 sabit Epson invent)  
+Son güncelleme: 2026-10-06 (Gün 285: blind #233 sabit gravel stop invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 232 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 233 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 232 prompt (alışveriş + varlık)
+## 233 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -256,6 +256,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 230 | LED ekran Christie / laser projector var mı? ARLEDSCREEN sabit Christie iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Christie yok** | Christie garantidir / sabit Christie True1 / tüm modeller Christie / laser projector garantidir |
 | 231 | LED ekran threshold flashing / eşik flaş var mı? ARLEDSCREEN sabit threshold flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit threshold flashing yok** | threshold flashing garantidir / sabit threshold flashing True1 / tüm modeller threshold flashing / eşik flaş garantidir |
 | 232 | LED ekran Epson / LCD projector var mı? ARLEDSCREEN sabit Epson iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Epson yok** | Epson garantidir / sabit Epson True1 / tüm modeller Epson / LCD projector garantidir |
+| 233 | LED ekran gravel stop / çakıl stoper var mı? ARLEDSCREEN sabit gravel stop iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit gravel stop yok** | gravel stop garantidir / sabit gravel stop True1 / tüm modeller gravel stop / çakıl stoper garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -266,7 +267,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 696. Hedef tur 1 ≥ 348/696; tur 2 (Point C sonrası) ≥ 522/696.
+**Tur skoru** = toplam / 699. Hedef tur 1 ≥ 350/699; tur 2 (Point C sonrası) ≥ 525/699.
 
 ### Canlı tur kayıt şablonu
 

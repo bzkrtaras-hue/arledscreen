@@ -2657,6 +2657,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Epson yok"],
     mustNotSay: ["Epson garantidir", "sabit Epson True1", "tüm modeller Epson", "LCD projector garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 233,
+    q: "LED ekran gravel stop / çakıl stoper var mı? ARLEDSCREEN sabit gravel stop iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gravel stop yok"],
+    mustNotSay: ["gravel stop garantidir", "sabit gravel stop True1", "tüm modeller gravel stop", "çakıl stoper garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

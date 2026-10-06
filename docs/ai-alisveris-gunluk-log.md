@@ -274,6 +274,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 282 | 2026-10-06 | sabit Christie #230 · ic/konferans ARD refresh · skor /690 | ✅ |
 | 283 | 2026-10-06 | sabit threshold flashing #231 · dis/mimari ARD refresh · skor /693 | ✅ |
 | 284 | 2026-10-06 | sabit Epson #232 · ic/konferans ARD refresh · skor /696 | ✅ |
+| 285 | 2026-10-06 | sabit gravel stop #233 · dis/mimari ARD refresh · skor /699 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2013,3 +2014,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #232 «Epson / LCD projector?» — skor **/696**; ARD **232 kör test**
 - TR/EN ic-mekan + TR/EN konferans Epson invent · llms deny · sabit Epson yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Epson
+
+## Gün 285 notları
+
+- Blind #233 «gravel stop / çakıl stoper?» — skor **/699**; ARD **233 kör test**
+- TR/EN dis-mekan + TR/EN mimari gravel stop invent · llms deny · sabit gravel stop yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit gravel stop
