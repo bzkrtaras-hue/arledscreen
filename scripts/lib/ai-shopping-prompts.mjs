@@ -2513,6 +2513,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Pexip yok"],
     mustNotSay: ["Pexip garantidir", "sabit Pexip True1", "tüm modeller Pexip", "conference platform garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 221,
+    q: "LED ekran hip flashing / kalça flaş var mı? ARLEDSCREEN sabit hip flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hip flashing yok"],
+    mustNotSay: ["hip flashing garantidir", "sabit hip flashing True1", "tüm modeller hip flashing", "kalça flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

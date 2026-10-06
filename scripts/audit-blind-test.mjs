@@ -2903,6 +2903,20 @@ if (
   errors.push("blind prompt #220 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Pexip yok");
 }
 
+const pBlind221 = PROMPTS.find((x) => x.id === 221);
+if (!pBlind221 || !/hip flashing|kalça flaş/i.test(pBlind221.q)) {
+  errors.push("blind prompt #221 must cover sabit hip flashing invent");
+}
+if (
+  pBlind221 &&
+  (!pBlind221.mustSay?.includes("yazılı teklif") ||
+    !pBlind221.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind221.mustSay?.includes("sabit hip flashing yok"))
+) {
+  errors.push("blind prompt #221 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip flashing yok");
+}
+
+
 
 
 
