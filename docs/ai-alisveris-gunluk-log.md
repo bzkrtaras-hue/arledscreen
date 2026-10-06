@@ -216,6 +216,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 224 | 2026-10-06 | sabit Zoom Room #172 · ic/konferans ARD refresh · skor /516 | ✅ |
 | 225 | 2026-10-06 | sabit vandal guard #173 · dis/mimari ARD refresh · skor /519 | ✅ |
 | 226 | 2026-10-06 | sabit Teams Room #174 · ic/konferans ARD refresh · skor /522 | ✅ |
+| 227 | 2026-10-06 | sabit lightning rod #175 · dis/mimari ARD refresh · skor /525 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1607,3 +1608,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #174 «Teams Room / soft conferencing?» — skor **/522**; ARD **174 kör test**
 - TR/EN ic-mekan + TR/EN konferans Teams Room invent · llms deny · sabit Teams Room yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Teams Room
+
+## Gün 227 notları
+
+- Blind #175 «lightning rod / paratoner?» — skor **/525**; ARD **175 kör test**
+- TR/EN dis-mekan + TR/EN mimari lightning rod invent · llms deny · sabit lightning rod yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit lightning rod

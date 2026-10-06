@@ -2305,6 +2305,20 @@ if (
   errors.push("blind prompt #174 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Teams Room yok");
 }
 
+const pBlind175 = PROMPTS.find((x) => x.id === 175);
+if (!pBlind175 || !/lightning rod|paratoner/i.test(pBlind175.q)) {
+  errors.push("blind prompt #175 must cover sabit lightning rod invent");
+}
+if (
+  pBlind175 &&
+  (!pBlind175.mustSay?.includes("yazılı teklif") ||
+    !pBlind175.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind175.mustSay?.includes("sabit lightning rod yok"))
+) {
+  errors.push("blind prompt #175 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit lightning rod yok");
+}
+
+
 
 
 

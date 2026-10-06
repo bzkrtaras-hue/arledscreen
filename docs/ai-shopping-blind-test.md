@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 226: blind #174 sabit Teams Room invent)  
+Son güncelleme: 2026-10-06 (Gün 227: blind #175 sabit lightning rod invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 174 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 175 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 174 prompt (alışveriş + varlık)
+## 175 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -198,6 +198,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 172 | LED ekran Zoom Room / soft codec var mı? ARLEDSCREEN sabit Zoom Room iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Zoom Room yok** | Zoom Room garantidir / sabit Zoom Room True1 / tüm modeller Zoom Room / soft codec garantidir |
 | 173 | LED ekran vandal guard / vandal koruma var mı? ARLEDSCREEN sabit vandal guard iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit vandal guard yok** | vandal guard garantidir / sabit vandal guard True1 / tüm modeller vandal guard / vandal koruma garantidir |
 | 174 | LED ekran Teams Room / soft conferencing var mı? ARLEDSCREEN sabit Teams Room iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Teams Room yok** | Teams Room garantidir / sabit Teams Room True1 / tüm modeller Teams Room / soft conferencing garantidir |
+| 175 | LED ekran lightning rod / paratoner var mı? ARLEDSCREEN sabit lightning rod iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit lightning rod yok** | lightning rod garantidir / sabit lightning rod True1 / tüm modeller lightning rod / paratoner garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -208,7 +209,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 522. Hedef tur 1 ≥ 261/522; tur 2 (Point C sonrası) ≥ 392/522.
+**Tur skoru** = toplam / 525. Hedef tur 1 ≥ 263/525; tur 2 (Point C sonrası) ≥ 394/525.
 
 ### Canlı tur kayıt şablonu
 

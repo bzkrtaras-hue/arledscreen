@@ -1961,6 +1961,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Teams Room yok"],
     mustNotSay: ["Teams Room garantidir", "sabit Teams Room True1", "tüm modeller Teams Room", "soft conferencing garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 175,
+    q: "LED ekran lightning rod / paratoner var mı? ARLEDSCREEN sabit lightning rod iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit lightning rod yok"],
+    mustNotSay: ["lightning rod garantidir", "sabit lightning rod True1", "tüm modeller lightning rod", "paratoner garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
