@@ -213,6 +213,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 221 | 2026-10-06 | sabit cable tray #169 · dis/mimari ARD refresh · skor /507 | ✅ |
 | 222 | 2026-10-06 | sabit Atlona #170 · ic/konferans ARD refresh · skor /510 | ✅ |
 | 223 | 2026-10-06 | sabit sun shade #171 · dis/mimari ARD refresh · skor /513 | ✅ |
+| 224 | 2026-10-06 | sabit Zoom Room #172 · ic/konferans ARD refresh · skor /516 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1586,3 +1587,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #171 «sun shade / güneş siperi?» — skor **/513**; ARD **171 kör test**
 - TR/EN dis-mekan + TR/EN mimari sun shade invent · llms deny · sabit sun shade yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit sun shade
+
+## Gün 224 notları
+
+- Blind #172 «Zoom Room / soft codec?» — skor **/516**; ARD **172 kör test**
+- TR/EN ic-mekan + TR/EN konferans Zoom Room invent · llms deny · sabit Zoom Room yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Zoom Room

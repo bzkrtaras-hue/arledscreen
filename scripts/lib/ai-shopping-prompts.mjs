@@ -1925,6 +1925,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit sun shade yok"],
     mustNotSay: ["sun shade garantidir", "sabit sun shade True1", "tüm modeller sun shade", "güneş siperi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 172,
+    q: "LED ekran Zoom Room / soft codec var mı? ARLEDSCREEN sabit Zoom Room iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Zoom Room yok"],
+    mustNotSay: ["Zoom Room garantidir", "sabit Zoom Room True1", "tüm modeller Zoom Room", "soft codec garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

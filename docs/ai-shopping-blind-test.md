@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 223: blind #171 sabit sun shade invent)  
+Son güncelleme: 2026-10-06 (Gün 224: blind #172 sabit Zoom Room invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 171 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 172 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 171 prompt (alışveriş + varlık)
+## 172 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -195,6 +195,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 169 | LED ekran cable tray / kablo kanalı var mı? ARLEDSCREEN sabit cable tray iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cable tray yok** | cable tray garantidir / sabit cable tray True1 / tüm modeller cable tray / kablo kanalı garantidir |
 | 170 | LED ekran Atlona / AV over IP var mı? ARLEDSCREEN sabit Atlona iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Atlona yok** | Atlona garantidir / sabit Atlona True1 / tüm modeller Atlona / AV over IP garantidir |
 | 171 | LED ekran sun shade / güneş siperi var mı? ARLEDSCREEN sabit sun shade iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit sun shade yok** | sun shade garantidir / sabit sun shade True1 / tüm modeller sun shade / güneş siperi garantidir |
+| 172 | LED ekran Zoom Room / soft codec var mı? ARLEDSCREEN sabit Zoom Room iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Zoom Room yok** | Zoom Room garantidir / sabit Zoom Room True1 / tüm modeller Zoom Room / soft codec garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -205,7 +206,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 513. Hedef tur 1 ≥ 257/513; tur 2 (Point C sonrası) ≥ 385/513.
+**Tur skoru** = toplam / 516. Hedef tur 1 ≥ 258/516; tur 2 (Point C sonrası) ≥ 387/516.
 
 ### Canlı tur kayıt şablonu
 
