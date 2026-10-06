@@ -2129,6 +2129,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Logitech Rally yok"],
     mustNotSay: ["Logitech Rally garantidir", "sabit Logitech Rally True1", "tüm modeller Logitech Rally", "kamera bar garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 189,
+    q: "LED ekran insect screen / böcek filesi var mı? ARLEDSCREEN sabit insect screen iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit insect screen yok"],
+    mustNotSay: ["insect screen garantidir", "sabit insect screen True1", "tüm modeller insect screen", "böcek filesi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

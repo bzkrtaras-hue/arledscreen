@@ -2487,6 +2487,20 @@ if (
   errors.push("blind prompt #188 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Rally yok");
 }
 
+const pBlind189 = PROMPTS.find((x) => x.id === 189);
+if (!pBlind189 || !/insect screen|böcek filesi/i.test(pBlind189.q)) {
+  errors.push("blind prompt #189 must cover sabit insect screen invent");
+}
+if (
+  pBlind189 &&
+  (!pBlind189.mustSay?.includes("yazılı teklif") ||
+    !pBlind189.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind189.mustSay?.includes("sabit insect screen yok"))
+) {
+  errors.push("blind prompt #189 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit insect screen yok");
+}
+
+
 
 
 
