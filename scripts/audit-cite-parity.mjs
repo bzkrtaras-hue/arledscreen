@@ -4714,6 +4714,23 @@ for (const rel of [
   }
 }
 
+// Day 368: sabit Promethean ActivPanel / ActivPanel Nickel — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit Promethean ActivPanel yok|no fixed site Promethean ActivPanel/i.test(html)) {
+    errors.push(`${rel} should hedge sabit Promethean ActivPanel / ActivPanel Nickel`);
+  }
+  if (/Promethean ActivPanel\ garantidir|sabit\ Promethean ActivPanel\ True1|tüm\ modeller\ Promethean ActivPanel|ActivPanel Nickel\ garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit Promethean ActivPanel`);
+  }
+}
+
+
+
 
 
 
