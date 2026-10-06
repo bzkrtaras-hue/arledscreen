@@ -5703,6 +5703,20 @@ if (
   errors.push("blind prompt #436 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Mate yok");
 }
 
+const pBlind437 = PROMPTS.find((x) => x.id === 437);
+if (!pBlind437 || !/cornice apron/i.test(pBlind437.q)) {
+  errors.push("blind prompt #437 must cover sabit cornice apron invent");
+}
+if (
+  pBlind437 &&
+  (!pBlind437.mustSay?.includes("yazılı teklif") ||
+    !pBlind437.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind437.mustSay?.includes("sabit cornice apron yok"))
+) {
+  errors.push("blind prompt #437 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cornice apron yok");
+}
+
+
 
 
 

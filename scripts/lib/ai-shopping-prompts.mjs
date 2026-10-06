@@ -5105,6 +5105,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Room Mate yok"],
     mustNotSay: ["Room Mate garantidir", "sabit Room Mate True1", "tüm modeller Room Mate", "Room Mate dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 437,
+    q: "LED ekran cornice apron / korniş eteği var mı? ARLEDSCREEN sabit cornice apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cornice apron yok"],
+    mustNotSay: ["cornice apron garantidir", "sabit cornice apron True1", "tüm modeller cornice apron", "korniş eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
