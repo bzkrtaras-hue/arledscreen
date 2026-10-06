@@ -2318,6 +2318,20 @@ if (
   errors.push("blind prompt #175 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit lightning rod yok");
 }
 
+const pBlind176 = PROMPTS.find((x) => x.id === 176);
+if (!pBlind176 || !/Webex Room|soft conferencing/i.test(pBlind176.q)) {
+  errors.push("blind prompt #176 must cover sabit Webex Room invent");
+}
+if (
+  pBlind176 &&
+  (!pBlind176.mustSay?.includes("yazılı teklif") ||
+    !pBlind176.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind176.mustSay?.includes("sabit Webex Room yok"))
+) {
+  errors.push("blind prompt #176 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Webex Room yok");
+}
+
+
 
 
 

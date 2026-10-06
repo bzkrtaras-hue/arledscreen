@@ -1973,6 +1973,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit lightning rod yok"],
     mustNotSay: ["lightning rod garantidir", "sabit lightning rod True1", "tüm modeller lightning rod", "paratoner garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 176,
+    q: "LED ekran Webex Room / soft conferencing var mı? ARLEDSCREEN sabit Webex Room iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Webex Room yok"],
+    mustNotSay: ["Webex Room garantidir", "sabit Webex Room True1", "tüm modeller Webex Room", "soft conferencing garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
