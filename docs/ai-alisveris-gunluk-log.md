@@ -89,6 +89,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 97 | 2026-10-06 | sabit rüzgâr #45 · EN rehber-dis/quote/about ARD · skor /135 | ✅ |
 | 98 | 2026-10-06 | sabit ölü piksel #46 · EN rehber-ic/led/hesaplayici ARD · skor /138 | ✅ |
 | 99 | 2026-10-06 | sabit nem/%RH #47 · EN rehber hub + TR/EN home ARD · skor /141 | ✅ |
+| 100 | 2026-10-06 | sabit standby/idle #48 · hesaplayici/mimari refresh · skor /144 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -618,3 +619,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - dis-mekan/mimari/gob nem invent · llms %RH deny
 - ARD: EN rehber hub + /en/ + /tr/ · agentRules sabit nem
 - skor hedef Tur 1 ≥ 71/141 · Tur 2 ≥ 106/141
+
+## Gün 100 notları (milestone)
+
+- Blind #48 «standby / idle watt?» — skor **/144**; ARD **48 kör test**
+- hesaplayici/mimari/led-math standby invent · llms deny · ortalama ≠ standby
+- ARD refresh: hesaplayici + mimari + fiyat-hesap · agentRules sabit standby
+- skor hedef Tur 1 ≥ 72/144 · Tur 2 ≥ 108/144

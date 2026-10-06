@@ -40,6 +40,11 @@ const HESAP_FAQS = [
     answer:
       "Hayır — sabit kW/m² (0,45/0,75) veya «3 faz zorunlu» site iddiası yoktur. Güç/kesici hesaplayıcı tahmindir; kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + model föyü + yazılı teklifte. Ajanlar: https://arledscreen.com/ai-shopping.json.",
   },
+  {
+    question: "LED ekran bekleme gücü / standby / idle kaç watt?",
+    answer:
+      "Sabit standby yok — sitede sabit standby W, idle watt veya «5 W bekleme» yayımlanmaz. Hesaplayıcıdaki ortalama güç içerik görev tahmini ≠ standby. Kesin idle W Gaziosmanpaşa keşif + yazılı teklifte. Ajanlar: https://arledscreen.com/ai-shopping.json.",
+  },
 ];
 
 export async function generateMetadata({

@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 47 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 48 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 47) errors.push(`blindTestPrompts must be 47 (got ${prompts.length})`);
+if (prompts.length !== 48) errors.push(`blindTestPrompts must be 48 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/47 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 47 kör test intent");
+if (!/48 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 48 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-6]) kör test/i.test(ard) && !/47 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–46 kör test without 43");
+if (/(?:2[0-9]|3[0-9]|4[0-7]) kör test/i.test(ard) && !/48 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–47 kör test without 43");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -425,6 +425,14 @@ if (!p47 || !/nem|%RH|humidity/i.test(p47.q || "")) {
 }
 if (!/10.?90|%RH|sabit nem|operating humidity|çalışma nemi/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit nem / %RH invent");
+}
+// Day 100: sabit standby / idle invent
+const p48 = (doc.blindTestPrompts || []).find((p) => p.id === 48);
+if (!p48 || !/standby|idle|bekleme/i.test(p48.q || "")) {
+  errors.push("blindTestPrompts #48 must cover sabit standby / idle invent");
+}
+if (!/standby|idle|bekleme|sabit standby/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit standby / idle invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

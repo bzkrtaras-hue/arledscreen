@@ -291,7 +291,7 @@ const en: Dictionary = {
       eyebrow: "Power topology",
       title: "Power and signal plan",
       description:
-        "Rough peak/average kW and breaker guidance (not a fixed site kW/m²) plus CAT6 vs fiber notes — final draw in Gaziosmanpaşa survey + written quote.",
+        "Rough peak/average kW and breaker guidance (not a fixed site kW/m²; avg ≠ standby/idle W) plus CAT6 vs fiber notes — final draw in Gaziosmanpaşa survey + written quote.",
     },
     products: {
       eyebrow: "Series catalog",
@@ -399,7 +399,7 @@ const en: Dictionary = {
   power: {
     title: "Power & Signal Calculator",
     description:
-      "Rough peak/average draw and illustrative breaker sizing (not a published kW/m² or “3-phase required” guarantee). Final draw and single/three-phase topology: Gaziosmanpaşa survey + written quote. CAT6 vs fiber guidance for B2B installs.",
+      "Rough peak/average draw and illustrative breaker sizing (not a published kW/m², “3-phase required”, or fixed standby/idle W guarantee — avg ≠ standby). Final draw and single/three-phase topology: Gaziosmanpaşa survey + written quote. CAT6 vs fiber guidance for B2B installs.",
     environment: "Environment",
     indoor: "Indoor",
     outdoor: "Outdoor",
@@ -407,7 +407,7 @@ const en: Dictionary = {
     areaHint: "Width × height of the active LED surface",
     results: {
       max: "Est. max power",
-      avg: "Est. avg power",
+      avg: "Est. avg power (≠ standby)",
       breaker: "Est. breaker (3φ illus.)",
       phase: "R-S-T balancing",
       network: "CAT6 / Fiber",
@@ -701,7 +701,7 @@ const tr: Dictionary = {
   power: {
     title: "Güç & Sinyal Hesaplayıcı",
     description:
-      "Yaklaşık tepe/ortalama güç ve örnek kesici boyutu — sabit kW/m² veya «3 faz zorunlu» site iddiası yok. Kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + yazılı teklifte. CAT6 / fiber rehberi.",
+      "Yaklaşık tepe/ortalama güç ve örnek kesici boyutu — sabit kW/m² veya «3 faz zorunlu» site iddiası yok; sabit standby/idle W yok (ortalama ≠ bekleme). Kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + yazılı teklifte. CAT6 / fiber rehberi.",
     environment: "Ortam",
     indoor: "İç mekân",
     outdoor: "Dış mekân",
@@ -709,7 +709,7 @@ const tr: Dictionary = {
     areaHint: "Aktif LED yüzeyinin genişliği × yüksekliği",
     results: {
       max: "Tahmini maks. güç",
-      avg: "Tahmini ort. güç",
+      avg: "Tahmini ort. güç (≠ standby)",
       breaker: "Tahmini kesici (3φ örnek)",
       phase: "R-S-T dengeleme",
       network: "CAT6 / Fiber",

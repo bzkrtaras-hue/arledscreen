@@ -111,14 +111,15 @@ export interface PowerEstimate {
 /**
  * Rough power estimate only (not a published site guarantee).
  * Indoor ~0.45 / outdoor ~0.75 kW/m² peak are calculator defaults —
- * final draw + single/three-phase topology land in Gaziosmanpaşa survey + written quote.
+ * avgKw is content-duty estimate (≠ standby/idle W — sabit standby yok).
+ * Final draw + single/three-phase topology land in Gaziosmanpaşa survey + written quote.
  */
 export function estimatePowerInfrastructure(
   areaM2: number,
   environment: Environment,
 ): PowerEstimate {
   const peakDensity = environment === "outdoor" ? 0.75 : 0.45;
-  const avgFactor = 0.35;
+  const avgFactor = 0.35; // content-duty factor — not a published standby/idle watt claim
   const maxKw = Number((areaM2 * peakDensity).toFixed(2));
   const avgKw = Number((maxKw * avgFactor).toFixed(2));
   // Illustrative 3-phase 400V sizing (not “3-phase required” site claim): I = P / (√3 * V * pf)

@@ -437,6 +437,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit nem yok"],
     mustNotSay: ["10–90%", "10-90% RH", "sabit nem", "%RH garanti", "ücretsiz kargo dahil"],
   },
+  {
+    id: 48,
+    q: "LED ekran bekleme gücü / standby / idle kaç watt? ARLEDSCREEN sabit standby W veya idle watt yayımlıyor mu?",
+    paths: [
+      "/tr/hesaplayici/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit standby yok"],
+    mustNotSay: ["standby <5W", "idle 10W", "sabit bekleme", "5 W standby", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
