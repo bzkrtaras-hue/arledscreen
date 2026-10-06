@@ -3800,6 +3800,20 @@ if (
   errors.push("blind prompt #289 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit step cleat yok");
 }
 
+const pBlind290 = PROMPTS.find((x) => x.id === 290);
+if (!pBlind290 || !/Vibe Board|Vibe/i.test(pBlind290.q)) {
+  errors.push("blind prompt #290 must cover sabit Vibe Board invent");
+}
+if (
+  pBlind290 &&
+  (!pBlind290.mustSay?.includes("yazılı teklif") ||
+    !pBlind290.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind290.mustSay?.includes("sabit Vibe Board yok"))
+) {
+  errors.push("blind prompt #290 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vibe Board yok");
+}
+
+
 
 
 

@@ -3341,6 +3341,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit step cleat yok"],
     mustNotSay: ["step cleat garantidir", "sabit step cleat True1", "tüm modeller step cleat", "basamak kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 290,
+    q: "LED ekran Vibe Board / Vibe var mı? ARLEDSCREEN sabit Vibe Board iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Vibe Board yok"],
+    mustNotSay: ["Vibe Board garantidir", "sabit Vibe Board True1", "tüm modeller Vibe Board", "Vibe garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
