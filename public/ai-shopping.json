@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 71 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 72 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -149,6 +149,7 @@
     "Sabit uzaktan izleme / CMS uptime / SLA site iddiası yok — izleme kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit 99.9% uptime veya 24/7 CMS SLA uydurmasın.",
     "Sabit dual power / hot-swap PSU / yedek güç site iddiası yok — güç yedekliliği Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit redundant PSU uydurmasın.",
     "Sabit genlock / frame sync / senkron kilidi site iddiası yok — sync modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit genlock veya PTP sync uydurmasın.",
+    "Sabit Art-Net / sACN / DMX ışık kontrol site iddiası yok — entegrasyon Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Art-Net veya DMX512 uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -1800,6 +1801,28 @@
         "sabit frame sync",
         "tüm modeller genlock",
         "PTP sync garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 72,
+      "q": "LED ekran Art-Net / sACN / DMX ışık kontrolü var mı? ARLEDSCREEN sabit Art-Net veya DMX512 iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+        "https://arledscreen.com/tr/sahne-led-ekran/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit Art-Net yok"
+      ],
+      "mustNotSay": [
+        "Art-Net garantidir",
+        "sabit sACN",
+        "tüm modeller DMX",
+        "DMX512 garantidir",
         "ücretsiz kargo dahil"
       ]
     }
