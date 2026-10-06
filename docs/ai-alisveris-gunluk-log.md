@@ -399,6 +399,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 407 | 2026-10-06 | sabit door flashing #355 · dis/mimari ARD refresh · skor /1065 | ✅ |
 | 408 | 2026-10-06 | sabit i3TOUCH E-ONE #356 · ic/konferans ARD refresh · skor /1068 | ✅ |
 | 409 | 2026-10-06 | sabit skylight flashing #357 · dis/mimari ARD refresh · skor /1071 | ✅ |
+| 410 | 2026-10-06 | sabit Newline VN Series #358 · ic/konferans ARD refresh · skor /1074 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2888,3 +2889,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #357 «skylight flashing / ışıklık flaşör?» — skor **/1071**; ARD **357 kör test**
 - TR/EN dis-mekan + TR/EN mimari skylight flashing invent · llms deny · sabit skylight flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit skylight flashing
+
+## Gün 410 notları
+
+- Blind #358 «Newline VN Series / Newline Z Series?» — skor **/1074**; ARD **358 kör test**
+- TR/EN ic-mekan + TR/EN konferans Newline VN Series invent · llms deny · sabit Newline VN Series yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Newline VN Series
