@@ -3,7 +3,7 @@
 Hedef: PR #55 deploy olduktan **aynı gün** canlı AI yüzeyleri + bağımsız atıf başlasın.
 Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/entity-profiles.json) · playbook: [`offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
-**Durum (2026-10-06 doğrulama):** Canlı AI JSON **GET 200**. `robots.txt` **çift cevap**: (1) Function/BYPASS/no-store → bare `Host: arledscreen.com` + Yandex/DuckDuck; (2) CDN **HIT** `max-age=14400` → hâlâ `Host: https://arledscreen.com` (şemalı; Yandex/DuckDuck yok). Önbellek iddiası tek başına yetmez; şemalı satır HIT kopyasında duruyor. Zone purge token yok — TTL bitene veya sahip purge. `pages.dev` sürekli bare. PR #55 **draft**; invent yok. IndexNow bildirim yapıldı. **Sahip:** Point C paste + kör tur + (isteğe) CF cache purge `/robots.txt`.
+**Durum (2026-10-06 doğrulama):** Canlı AI JSON **GET 200** (entity/catalog/ai-shopping/ard/profiles). `robots.txt` 3× GET: `cf-cache-status: BYPASS` · `Host: arledscreen.com` (şemasız). `smoke:live` 20/20 (araç; canlı AI anılması değil). PR #55 **draft**; yeni invent yok; merge Point C paste için zorunlu değil. **Sahip sırası (şimdi):** (1) Point C paste GBP→LinkedIn→IG→FB→directory (packs: https://arledscreen.com/entity-profiles.json) (2) Kör tur 1 skor kartı `docs/ai-shopping-blind-test-scores.md` (3) Tur 2 Point C sonrası ≤2026-11-04.
 
 Pre-merge (opsiyonel, zaten yeşil olmalı):
 
@@ -12,11 +12,11 @@ npm run build          # postbuild audits + smoke:local
 npm run verify:premerge
 ```
 
-## 0) Merge + redeploy (blok)
+## 0) Canlı kapı (doğrulandı — merge zorunlu değil)
 
-1. PR #55 merge → `main`
-2. Cloudflare Pages production redeploy (artifact = bu branch build çıktısı)
-3. Beklenen static dosyalar Functions dışında (`_routes.json` exclude)
+1. AI JSON canlı **200** (üretim deploy zaten servis ediyor)
+2. Point C paste **şimdi** yapılabilir — merge beklemeyin
+3. PR #55 draft: ek invent/hedge birleşmesi isteğe bağlı; Point C’yi bloklamaz
 
 ## 1) Canlı smoke (zorunlu)
 
@@ -26,7 +26,7 @@ npm run smoke:live
 npm run post-deploy
 ```
 
-Hedef: **20/20 PASS**. JSON 200 sabit; robots smoke CDN HIT yüzünden ara sıra CONTENT (19/20).
+Hedef: **20/20 PASS**. Son ölçüm 2026-10-06: 20/20; robots Host bare (3× BYPASS).
 
 | URL | Beklenen |
 |-----|----------|
@@ -67,6 +67,21 @@ Tek fetch ajan index: https://arledscreen.com/ai-shopping.json
 Dokümantasyon: [`indexnow.md`](./indexnow.md)
 
 ## 2) Point C yapıştırma (aynı NAP / cite)
+
+## 2a) Sahip yapıştırma sırası (P0)
+
+Canlı pack kaynağı: `npm run point-c-packs -- --live` veya https://arledscreen.com/entity-profiles.json
+
+1. **Google Business Profile** → `packs.gbpDescription` (NAP birebir)
+2. **LinkedIn Company About** → `packs.linkedinAbout`
+3. **Instagram bio** → `packs.instagramBio`
+4. **Facebook About** → `packs.facebookAbout`
+5. **Dizin short/long** → `packs.directoryShort` / `directoryLong`
+6. (İsteğe) YouTube / Apple Business / Yandex — aynı cite; uydurma rating/fiyat yok
+7. `arleds.com` → `arledscreen.com/tr/` **301** yoksa sameAs’a ekleme (`blockedUntil301`)
+
+Yapıştırma bitince: kör tur 1 tarihini skor kartına yaz; Tur 2’yi Point C sonrası planla.
+
 
 ```bash
 npm run point-c-packs -- --live

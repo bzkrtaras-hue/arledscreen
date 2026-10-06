@@ -1,4 +1,12 @@
 
+## Gün 458c — Point C / kör tur (merge’siz)
+
+- Canlı JSON 200 + robots 3× BYPASS bare Host doğrulandı
+- `point-c-merge-day.md`: paste P0 sırası; merge Point C bloğu kaldırıldı
+- Kör tur 1 skor kartı: merge şartı kalktı — sahip doldurur
+- Invent / deploy / purge / merge yok; PR #55 draft
+
+
 ## Host — çift cevap gerçeği (2026-10-06)
 
 - Function/BYPASS: `Host: arledscreen.com` (doğru)
@@ -472,6 +480,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 456 | 2026-10-06 | sabit Surface Hub 3 #404 · ic/konferans ARD refresh · skor /1212 | ✅ |
 | 457 | 2026-10-06 | sabit base apron #405 · dis/mimari ARD refresh · skor /1215 | ✅ |
 | 458b | 2026-10-06 | smoke:live 20/20 · robots bare Host · IndexNow 173×200 · Point C packs --live · invent yok | ✅ |
+| 458c | 2026-10-06 | Point C paste sırası + kör tur 1 merge’siz açıldı · invent/deploy yok · PR draft | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti

@@ -1,10 +1,17 @@
 # AI alışveriş — kör test skor kartı (sahip doldurur)
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (deploy sonrası) ≥ **608/1215** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **912/1215**  
+Hedef: Tur 1 (canlı 200 sonrası) ≥ **608/1215** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **912/1215**  
 Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (405 prompt)
 
-## Tur 1 — deploy sonrası (PR #55 merge + CF Pages)
+## Tur 1 — canlı JSON 200 sonrası (merge zorunlu değil; PR #55 draft)
+
+### Sahip tur 1 açılış (2026-10-06)
+- Canlı kapı: entity/catalog/ai-shopping/ard **200**; robots Host bare (3× BYPASS)
+- Prompt kaynağı: canlı `https://arledscreen.com/ai-shopping.json` → `blindTestPrompts` (405)
+- Point C paste paralel veya tur 1 sonrası; tur 2 Point C sonrası
+- Skor satırlarını aşağıdaki tabloya doldur (ajan uydurma skor yazmaz)
+
 
 Koşullar: incognito · TR konum tercih · aynı 405 prompt · yanıtta URL/atıf not et.
 
