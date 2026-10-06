@@ -6857,6 +6857,15 @@ for (const rel of [
   }
 }
 
+
+const publicFaq = read("src/lib/entity.ts");
+const faqStart = publicFaq.indexOf("export const ENTITY_FAQS");
+const faqEnd = publicFaq.indexOf("export const", faqStart + 10);
+const faqBody = publicFaq.slice(faqStart, faqEnd > faqStart ? faqEnd : faqStart + 8000);
+if (/apron|meetup|jamboard|valley pan|neat frame|rally bar/i.test(faqBody)) {
+  errors.push("ENTITY_FAQS must not contain blind-test product negatives (apron/Meetup/Jamboard)");
+}
+
 if (errors.length) {
   console.error(`audit-cite-parity: FAIL (${errors.length})`);
   for (const e of errors) console.error(" -", e);
