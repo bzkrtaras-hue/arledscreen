@@ -2597,6 +2597,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit head flashing yok"],
     mustNotSay: ["head flashing garantidir", "sabit head flashing True1", "tüm modeller head flashing", "başlık flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 228,
+    q: "LED ekran Barco / projector var mı? ARLEDSCREEN sabit Barco iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Barco yok"],
+    mustNotSay: ["Barco garantidir", "sabit Barco True1", "tüm modeller Barco", "projector garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

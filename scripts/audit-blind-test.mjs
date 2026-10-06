@@ -2994,6 +2994,20 @@ if (
   errors.push("blind prompt #227 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit head flashing yok");
 }
 
+const pBlind228 = PROMPTS.find((x) => x.id === 228);
+if (!pBlind228 || !/Barco|projector/i.test(pBlind228.q)) {
+  errors.push("blind prompt #228 must cover sabit Barco invent");
+}
+if (
+  pBlind228 &&
+  (!pBlind228.mustSay?.includes("yazılı teklif") ||
+    !pBlind228.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind228.mustSay?.includes("sabit Barco yok"))
+) {
+  errors.push("blind prompt #228 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Barco yok");
+}
+
+
 
 
 
