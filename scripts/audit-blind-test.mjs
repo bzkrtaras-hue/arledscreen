@@ -2565,6 +2565,20 @@ if (
   errors.push("blind prompt #194 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Jabra yok");
 }
 
+const pBlind195 = PROMPTS.find((x) => x.id === 195);
+if (!pBlind195 || !/scupper|scupper drenaj/i.test(pBlind195.q)) {
+  errors.push("blind prompt #195 must cover sabit scupper invent");
+}
+if (
+  pBlind195 &&
+  (!pBlind195.mustSay?.includes("yazılı teklif") ||
+    !pBlind195.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind195.mustSay?.includes("sabit scupper yok"))
+) {
+  errors.push("blind prompt #195 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit scupper yok");
+}
+
+
 
 
 

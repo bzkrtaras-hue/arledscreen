@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 246: blind #194 sabit Jabra invent)  
+Son güncelleme: 2026-10-06 (Gün 247: blind #195 sabit scupper invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 194 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 195 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 194 prompt (alışveriş + varlık)
+## 195 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -218,6 +218,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 192 | LED ekran Polycom / Poly Studio var mı? ARLEDSCREEN sabit Polycom iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Polycom yok** | Polycom garantidir / sabit Polycom True1 / tüm modeller Polycom / Poly Studio garantidir |
 | 193 | LED ekran vapor barrier / buhar bariyeri var mı? ARLEDSCREEN sabit vapor barrier iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit vapor barrier yok** | vapor barrier garantidir / sabit vapor barrier True1 / tüm modeller vapor barrier / buhar bariyeri garantidir |
 | 194 | LED ekran Jabra / PanaCast var mı? ARLEDSCREEN sabit Jabra iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Jabra yok** | Jabra garantidir / sabit Jabra True1 / tüm modeller Jabra / PanaCast garantidir |
+| 195 | LED ekran scupper / scupper drenaj var mı? ARLEDSCREEN sabit scupper iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit scupper yok** | scupper garantidir / sabit scupper True1 / tüm modeller scupper / scupper drenaj garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -228,7 +229,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 582. Hedef tur 1 ≥ 291/582; tur 2 (Point C sonrası) ≥ 437/582.
+**Tur skoru** = toplam / 585. Hedef tur 1 ≥ 293/585; tur 2 (Point C sonrası) ≥ 439/585.
 
 ### Canlı tur kayıt şablonu
 

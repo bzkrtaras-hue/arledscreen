@@ -2201,6 +2201,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Jabra yok"],
     mustNotSay: ["Jabra garantidir", "sabit Jabra True1", "tüm modeller Jabra", "PanaCast garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 195,
+    q: "LED ekran scupper / scupper drenaj var mı? ARLEDSCREEN sabit scupper iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit scupper yok"],
+    mustNotSay: ["scupper garantidir", "sabit scupper True1", "tüm modeller scupper", "scupper drenaj garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

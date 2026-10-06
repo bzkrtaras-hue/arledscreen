@@ -236,6 +236,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 244 | 2026-10-06 | sabit Polycom #192 · ic/konferans ARD refresh · skor /576 | ✅ |
 | 245 | 2026-10-06 | sabit vapor barrier #193 · dis/mimari ARD refresh · skor /579 | ✅ |
 | 246 | 2026-10-06 | sabit Jabra #194 · ic/konferans ARD refresh · skor /582 | ✅ |
+| 247 | 2026-10-06 | sabit scupper #195 · dis/mimari ARD refresh · skor /585 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1747,3 +1748,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #194 «Jabra / PanaCast?» — skor **/582**; ARD **194 kör test**
 - TR/EN ic-mekan + TR/EN konferans Jabra invent · llms deny · sabit Jabra yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Jabra
+
+## Gün 247 notları
+
+- Blind #195 «scupper / scupper drenaj?» — skor **/585**; ARD **195 kör test**
+- TR/EN dis-mekan + TR/EN mimari scupper invent · llms deny · sabit scupper yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit scupper
