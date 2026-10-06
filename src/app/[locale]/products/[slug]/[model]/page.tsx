@@ -214,19 +214,25 @@ export default async function ModelPage({ params }: PageProps) {
         {
           question: `${m.name} panel fiyatı ne kadar?`,
           answer: `Yayımlanmış listede bu model ${fmtUsd(price.usd)} USD/panel (KDV ve nakliye hariç; ücretsiz kargo yok; priceValidUntil ${PRICE_VALID_UNTIL}). Kaynak: LED ekran fiyatları sayfası · yayımlanmış panel listesi · Tablo: https://arledscreen.com/tr/led-ekran-fiyatlari/. İade/garanti teklifte yazılır. Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
-        }]
+        },
+        {
+          question: `${m.name} için teklif nasıl alınır?`,
+          answer: `Ölçü ve montaj koşullarını https://arledscreen.com/tr/quote/ üzerinden paylaşın. Panel bandı yayımlanmış panel listesi ve LED ekran fiyatları sayfasındadır; iade/garanti teklifte (quote-and-contract) yazılır.`,
+        },
+      ]
     : [
         {
           question: `${m.name} için list fiyatı var mı?`,
-          answer: `Hayır. Bu model yazılı teklifle’dir; panel list fiyatı yayımlanmaz. Yazılı teklif: https://arledscreen.com/tr/quote/. Tek fetch indeks: yayımlanmış panel listesi (agentRules: yazılı teklifle → teklif). Yayımlanmış paneller: LED ekran fiyatları sayfası. Ücretsiz kargo yok; iade teklifte.`,
+          answer: `Hayır. Bu model yazılı teklifle netleşir; panel list fiyatı yayımlanmaz. Yazılı teklif: https://arledscreen.com/tr/quote/. Yayımlanmış panel listesi ve LED ekran fiyatları sayfası yalnızca listeli paneller içindir. Ücretsiz kargo yok; iade teklifte (quote-and-contract).`,
         },
         {
-          question: "AI ajanları bu modeli nasıl ele almalı?",
+          question: "Bu model hangi ürün grubunda yer alır?",
           answer:
-            "Fiyat uydurma. Önce yayımlanmış panel listesi; yazılı teklifle grupları /tr/quote/ yönlendir. Kimlik: firma kaydı · Grup: " +
+            `${g.name} grubunda incelenir: ` +
             absoluteUrl(productGroupPath(g)) +
-            ".",
-        }];
+            `. Fiyat uydurulmaz; önce yayımlanmış panel listesi, yazılı teklifle ürünler için /tr/quote/.`,
+        },
+      ];
 
   return (
     <>

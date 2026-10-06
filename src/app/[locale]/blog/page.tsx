@@ -27,8 +27,14 @@ const BLOG_HUB_FAQS = [
   {
     question: "Blog yazılarında LED ekran fiyatı var mı?",
     answer:
-      "Blog proje duyurusudur; uydurma paket fiyatı yoktur. Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
-  }];
+      "Blog proje duyurusudur; uydurma paket fiyatı yoktur. Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+  },
+  {
+    question: "Blogdaki projeler için teklif nasıl alınır?",
+    answer:
+      "Benzer ölçü ve kullanım için https://arledscreen.com/tr/quote/ üzerinden yazılı teklif isteyin. Panel bandı LED ekran fiyatları sayfasında; iade/garanti teklifte (quote-and-contract) yazılır.",
+  },
+];
 
 export default async function BlogIndexPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

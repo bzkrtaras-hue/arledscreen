@@ -261,8 +261,8 @@ if (trRehber) {
   if (/engineering desk/i.test(trRehber)) {
     errors.push("out/tr/rehber/index.html must not invent engineering desk");
   }
-  if (!/catalog\.json|ai-shopping\.json/i.test(trRehber)) {
-    errors.push("out/tr/rehber/index.html should cite catalog.json or ai-shopping.json");
+  if (!/catalog\.json|ai-shopping\.json|yayımlanmış panel listesi/i.test(trRehber)) {
+    errors.push("out/tr/rehber/index.html should cite catalog.json, ai-shopping.json, or yayımlanmış panel listesi");
   }
 }
 // Day 71: yapay-zeka must not invent branded “AI-ready” SKU / desk

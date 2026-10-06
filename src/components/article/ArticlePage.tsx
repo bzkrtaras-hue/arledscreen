@@ -13,7 +13,7 @@ const ARTICLE_SHOPPING_FAQS = [
   {
     question: "Bu rehberdeki LED ekran panel fiyatını nereden okumalıyım?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç; ücretsiz kargo yok). Yaklaşık m²: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir; uydurma TL paket yoktur.",
+      "Yayımlanmış panel listesi (2026 panel USD) LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç; ücretsiz kargo yok). Yaklaşık m²: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir; uydurma TL paket yoktur.",
   }];
 
 export function articleMetadata(slug: (typeof ARTICLE_SLUGS)[number]): Metadata {

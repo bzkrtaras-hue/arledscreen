@@ -26,8 +26,14 @@ const GALERI_FAQS = [
   {
     question: "Galerideki LED ekran kurulumlarının list fiyatı var mı?",
     answer:
-      "Hayır. Galeri görsellerinde uydurma paket fiyatı yoktur. Yayımlanmış panel USD: LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi. Proje tutarı https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte (iade koşulları teklifte).",
-  }];
+      "Hayır. Galeri görsellerinde uydurma paket fiyatı yoktur. Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir (KDV/nakliye hariç; ücretsiz kargo yok). Proje tutarı https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte yazılır.",
+  },
+  {
+    question: "Galeri görselleri hangi ürün gruplarını kapsar?",
+    answer:
+      "İç mekân, dış mekân, kavisli ve sinema uygulamaları yer alır. Model seçimi ve panel bandı için LED ekran fiyatları sayfası ile ürün gruplarını birlikte kullanın; nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+  },
+];
 
 export default async function GaleriPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

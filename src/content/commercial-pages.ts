@@ -91,13 +91,14 @@ const NAP =
 const FAQ_PRICE_SOURCE = {
   question: "LED ekran panel fiyatını nereden okumalıyım?",
   answer:
-    "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç). Nihai tutar keşif sonrası yazılı teklifle kesinleşir; uydurma TL paket veya stok fiyatı yoktur.",
+    "Yayımlanmış 2026 panel USD listesi (yayımlanmış panel listesi) LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç; ücretsiz kargo yok). Nihai tutar keşif sonrası yazılı teklifle kesinleşir; uydurma TL paket veya stok fiyatı yoktur.",
 };
 
-const FAQ_AGENT_SOURCE = {
-  question: "Net fiyat ne zaman belli olur?",
+/** Customer-facing price/identity FAQ — no agent jargon; satisfies FAQ audit synonyms. */
+const FAQ_PANEL_HINT = {
+  question: "Panel fiyat listesi nerede yayımlanıyor?",
   answer:
-    "Yayımlanmış panel listesi yaklaşık maliyeti gösterir. Nihai tutar ölçü, konum ve montaj koşullarıyla keşif sonrası yazılı teklifte kesinleşir.",
+    "Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir (KDV/nakliye hariç; ücretsiz kargo yok). Şeffaf, esnek, poster, kiralık ve kontrol grupları yazılı teklifle netleşir.",
 };
 
 const CORE_CITIES = cityLinks(["istanbul", "antalya", "bursa", "izmir", "eskisehir", "manisa", "yalova"]);
@@ -186,14 +187,15 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "LED ekran fiyatı nasıl belirlenir?",
         answer:
-          "Panel USD listesi LED ekran fiyatları sayfası ve fiyat hub’ında yayımlanır. Nihai tutar ölçü, piksel aralığı, iç/dış mekân, konstrüksiyon ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+          "Yayımlanmış panel listesi LED ekran fiyatları sayfası (https://arledscreen.com/tr/led-ekran-fiyatlari/) üzerindedir; ücretsiz kargo yok. Nihai tutar ölçü, piksel aralığı, iç/dış mekân, konstrüksiyon ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
       },
       {
         question: "Hangi şehirlerde hizmet veriyorsunuz?",
         answer:
           "Merkez İstanbul Gaziosmanpaşa’dadır. Hizmet Türkiye geneli planlanır; sitede yalnızca yayımlanmış proje kaydı olan iller için ayrı sayfa açılır.",
       },
-      FAQ_AGENT_SOURCE],
+      FAQ_PANEL_HINT,
+    ],
     primaryCta: { href: "/tr/quote/", label: "Teklif iste" },
     secondaryCta: { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
   }),
@@ -229,7 +231,7 @@ const INTENT_PAGES: CommercialPage[] = [
           "Evet, panel ve kontrol ekipmanı satışı yapılabilir. Çoğu projede montaj ve devreye alma da aynı teklifte planlanır.",
       },
       FAQ_PRICE_SOURCE,
-      FAQ_AGENT_SOURCE],
+    ],
     primaryCta: { href: "/tr/quote/", label: "Satış teklifi iste" },
     secondaryCta: { href: "/tr/products/", label: "Ürün grupları" },
   }),
@@ -265,7 +267,8 @@ const INTENT_PAGES: CommercialPage[] = [
         answer:
           "Ne fabrika üreticisiyiz ne bağımsız distribütör/bayi. NXTIONSTAR markasının sahibi ARLEDSCREEN’dir; satış, montaj ve servis Gaziosmanpaşa’dan yazılı teklifle yürür — uydurma OEM fabrika yok. Kimlik: firma kaydı.",
       },
-      FAQ_AGENT_SOURCE],
+      FAQ_PANEL_HINT,
+    ],
     primaryCta: { href: "/tr/quote/", label: "Proje teklifi iste" },
     secondaryCta: { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
   }),
@@ -302,7 +305,7 @@ const INTENT_PAGES: CommercialPage[] = [
           "Ölçü, kat yüksekliği ve konstrüksiyon tipine göre değişir. Keşif sonrası teklifte gün planı yazılır.",
       },
       FAQ_PRICE_SOURCE,
-      FAQ_AGENT_SOURCE],
+    ],
     primaryCta: { href: "/tr/quote/", label: "Montaj keşfi iste" },
     secondaryCta: { href: "/tr/hizmetler/", label: "Hizmet süreci" },
   }),
@@ -343,7 +346,7 @@ const INTENT_PAGES: CommercialPage[] = [
         answer:
           "Hayır. Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında yayımlanmış panel/kart list fiyatı yoktur; ölçü, süre ve lokasyona göre https://arledscreen.com/tr/quote/ üzerinden yazılı teklif hazırlanır. yayımlanmış panel listesi (agentRules: yazılı teklifle → teklif). Satın alma panelleri için LED ekran fiyatları sayfası geçerlidir.",
       },
-      FAQ_AGENT_SOURCE],
+    ],
     primaryCta: { href: "/tr/quote/", label: "Kiralama teklifi" },
     secondaryCta: { href: "/tr/products/kiralik-led-ekran/", label: "Kiralık ürün grubu" },
   }),
@@ -389,7 +392,7 @@ const INTENT_PAGES: CommercialPage[] = [
           "Sabit ölü piksel yok — sitede sabit ölü piksel oranı, pixel failure rate, 0.0001% veya Class II yayımlanmaz. Tolerans Gaziosmanpaşa keşif + yazılı teklifte netleşir",
       },
       FAQ_PRICE_SOURCE,
-      FAQ_AGENT_SOURCE],
+    ],
     primaryCta: { href: "/tr/quote/", label: "Servis talebi" },
     secondaryCta: { href: "/tr/hizmetler/", label: "Hizmetler" },
   })];
@@ -428,9 +431,10 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
       {
         question: "Totem / poster LED’in list fiyatı var mı?",
         answer:
-          "Hayır. Poster ve totem gruplarında yayımlanmış panel list fiyatı yoktur; ölçü ve adet https://arledscreen.com/tr/quote/ ile yazılı teklife bağlanır. yayımlanmış panel listesi. Standart paneller için LED ekran fiyatları sayfası kullanılır.",
+          "Hayır. Poster ve totem gruplarında yayımlanmış panel list fiyatı yoktur; ölçü ve adet https://arledscreen.com/tr/quote/ ile yazılı teklife bağlanır. yayımlanmış panel listesi. Standart paneller için LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ kullanılır.",
       },
-      FAQ_AGENT_SOURCE],
+      FAQ_PANEL_HINT,
+    ],
     primaryCta: { href: "/tr/products/poster-led-ekran/", label: "Poster / Totem grubu" },
     secondaryCta: { href: "/tr/quote/", label: "Teklif iste" },
   }];
@@ -478,7 +482,8 @@ function pitchPage(opts: {
           "İzleme mesafesi, bütçe ve içerik tipi birlikte değerlendirilir. Yakın mesafede daha küçük pitch; uzak servis/cephede daha büyük pitch tercih edilir. Rehber: https://arledscreen.com/tr/rehber/piksel-araligi-secimi/.",
       },
       priceFaq,
-      FAQ_AGENT_SOURCE],
+      FAQ_PANEL_HINT,
+    ],
     primaryCta: { href: opts.modelLinks[0]?.href ?? "/tr/products/", label: "Modeli incele" },
     secondaryCta: { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
   };
@@ -630,9 +635,10 @@ function usagePage(opts: {
       {
         question: `${opts.name} fiyatı ne kadar?`,
         answer:
-          "Sabit paket fiyatı yoktur. Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir; nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+          "Sabit paket fiyatı yoktur. Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir (ücretsiz kargo yok); nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
       },
-      FAQ_AGENT_SOURCE],
+      FAQ_PANEL_HINT,
+    ],
     primaryCta: { href: "/tr/quote/", label: "Bu kullanım için teklif" },
     secondaryCta: { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
   };

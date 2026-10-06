@@ -84,7 +84,7 @@ function shoppingSourceFaq(
   return {
     question: `${name} için list fiyatı var mı?`,
     answer:
-      `${name} için yayımlanmış list fiyatı yoktur; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. Hesaplayıcı kontrol kartı bedeli yazılı teklifte kalemlenir. Yayımlanmış paneller: LED ekran fiyatları sayfası · https://arledscreen.com/tr/led-ekran-fiyatlari/. Kimlik: firma kaydı · Point C: firma kaydı. İade/garanti teklifte yazılır; ücretsiz kargo yok.`,
+      `${name} için yayımlanmış list fiyatı yoktur; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. Hesaplayıcı kontrol kartı bedeli yazılı teklifte kalemlenir. Yayımlanmış panel listesi ve LED ekran fiyatları sayfası · https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir. Kimlik: firma kaydı. İade/garanti teklifte yazılır; ücretsiz kargo yok.`,
   };
 }
 

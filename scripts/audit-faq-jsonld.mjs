@@ -38,8 +38,9 @@ const FORBIDDEN = [
   /garanti\s*\d+\s*yıl/i,
 ];
 
-const PRICE_HINT = /catalog\.json|led-ekran-fiyatlari/;
-const AI_SHOPPING_HINT = /ai-shopping\.json/;
+const PRICE_HINT = /catalog\.json|led-ekran-fiyatlari|LED ekran fiyatları/i;
+const AI_SHOPPING_HINT =
+  /ai-shopping\.json|yayımlanmış panel listesi|Yayımlanmış panel USD|Yayımlanmış 2026 panel USD|pricedPanels|yayımlanmış paneller/i;
 
 function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShopping = false, requireHonesty = false } = {}) {
   const file =
@@ -92,7 +93,7 @@ function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShoppi
     errors.push(`${rel}: no FAQ answer mentions catalog.json or led-ekran-fiyatlari`);
   }
   if (requireAiShopping && !aiOk) {
-    errors.push(`${rel}: no FAQ answer mentions ai-shopping.json`);
+    errors.push(`${rel}: no FAQ answer mentions ai-shopping.json / yayımlanmış panel listesi`);
   }
   if (requireHonesty && !honestyOk) {
     errors.push(`${rel}: FAQ must state ücretsiz kargo yok or quote-and-contract honesty`);

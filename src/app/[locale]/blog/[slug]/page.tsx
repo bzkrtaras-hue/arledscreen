@@ -21,8 +21,14 @@ const BLOG_SHOPPING_FAQS = [
   {
     question: "Blog yazısındaki LED ekranın list fiyatı var mı?",
     answer:
-      "Hayır. Blog yazılarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi (pricedPanels + agentRules). İade/garanti teklifte (hasMerchantReturnPolicy: iade koşulları teklifte). Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
-  }];
+      "Hayır. Blog yazılarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir (KDV/nakliye hariç; ücretsiz kargo yok). İade/garanti teklifte (quote-and-contract) yazılır. Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
+  },
+  {
+    question: "Bu projedeki ölçü için yaklaşık maliyet nasıl bakılır?",
+    answer:
+      "Yayımlanmış panel USD bandı için LED ekran fiyatları sayfası ve https://arledscreen.com/tr/hesaplayici/ kullanılabilir. Montaj ve saha koşulları yazılı teklifte netleşir; ücretsiz kargo yok.",
+  },
+];
 
 export const dynamicParams = false;
 export function generateStaticParams() {

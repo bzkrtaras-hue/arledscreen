@@ -54,7 +54,7 @@ const FAQS = [
   {
     question: "Panel fiyatları hizmet teklifinden ayrı mı?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Montaj, keşif ve servis kalemleri yazılı teklifte ayrıca yer alır. İade/garanti teklifte yazılır. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
+      "Yayımlanmış panel listesi (2026 panel USD) LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Montaj, keşif ve servis kalemleri yazılı teklifte ayrıca yer alır. İade/garanti teklifte yazılır. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
   },
   {
     question: "LED ekran teslimat süresi kaç gün?",

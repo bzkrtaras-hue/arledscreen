@@ -35,7 +35,7 @@ const FAQS = [
   {
     question: "LED ekran m² fiyatı nedir?",
     answer:
-      "Tek sabit m² fiyatı yoktur. Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve bu sayfada yer alır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir; nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
+      "Tek sabit m² fiyatı yoktur. Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve bu sayfada yer alır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir (ücretsiz kargo yok); nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
   },
   {
     question: "Hangi maliyetler panellerin dışında kalır?",
@@ -50,7 +50,7 @@ const FAQS = [
   {
     question: "LED ekranda iade süresi kaç gün?",
     answer:
-      "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = iade koşulları teklifte; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; .",
+      "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = MerchantReturnNotPermitted; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir.",
   }];
 
 type Example = {

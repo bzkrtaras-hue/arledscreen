@@ -354,7 +354,7 @@ export const CHECKS = [
     url: `${SITE}/tr/led-ekran-fiyatlari/`,
     outRel: "tr/led-ekran-fiyatlari/index.html",
     expect: "html",
-    mustInclude: ["catalog.json"],
+    mustInclude: ["catalog.json", "yazılı teklif"],
   },
   {
     id: "yapay-zeka",
@@ -362,12 +362,9 @@ export const CHECKS = [
     outRel: "tr/yapay-zeka/index.html",
     expect: "html",
     mustInclude: [
-      "entity.json",
-      "catalog.json",
-      "ai-shopping.json",
-      "priceValidUntil",
-      "ücretsiz kargo yok",
       "Gaziosmanpaşa",
+      "yayımlanmış panel listesi",
+      "yazılı teklif",
     ],
   },
   {
@@ -375,7 +372,7 @@ export const CHECKS = [
     url: `${SITE}/en/yapay-zeka/`,
     outRel: "en/yapay-zeka/index.html",
     expect: "html",
-    mustInclude: ["ai-shopping.json", "catalog.json", "Gaziosmanpaşa"],
+    mustInclude: ["Gaziosmanpaşa", "yayımlanmış panel listesi"],
   },
   {
     id: "about",
@@ -392,8 +389,8 @@ export const CHECKS = [
     mustInclude: [
       "Gaziosmanpaşa",
       "yazılı teklif",
-      "ai-shopping.json",
       "ücretsiz kargo yok",
+      "yayımlanmış panel listesi",
     ],
   },
   {
@@ -422,7 +419,7 @@ export const CHECKS = [
     url: `${SITE}/tr/rehber/`,
     outRel: "tr/rehber/index.html",
     expect: "html",
-    mustInclude: ["catalog.json", "ai-shopping.json", "Gaziosmanpaşa"],
+    mustInclude: ["Gaziosmanpaşa", "yayımlanmış panel listesi"],
   },
   {
     id: "nxtionstar",
@@ -430,9 +427,8 @@ export const CHECKS = [
     outRel: "tr/nxtionstar/index.html",
     expect: "html",
     mustInclude: [
-      "ARLEDSCREEN ürün markası",
+      "LED ekran markasıdır",
       "Gaziosmanpaşa",
-      "entity.json",
       "NEXTSTAR",
       "NationStar",
     ],
@@ -442,7 +438,7 @@ export const CHECKS = [
     url: `${SITE}/tr/about/aras-bozkurt/`,
     outRel: "tr/about/aras-bozkurt/index.html",
     expect: "html",
-    mustInclude: ["Gaziosmanpaşa", "entity.json", "ai-shopping.json"],
+    mustInclude: ["Gaziosmanpaşa", "ücretsiz kargo yok", "yayımlanmış panel listesi"],
   },
 ];
 

@@ -43,7 +43,7 @@ export const PANEL_SHIPPING_DETAILS = {
 
 /**
  * Honest MerchantReturnPolicy: no fixed site return window.
- * iade koşulları teklifte = no online self-serve return; contract may still
+ * MerchantReturnNotPermitted (schema) / iade koşulları teklifte (customer copy); contract may still
  * define returns (yazılı teklif ve sözleşmede). Blocks invented “14-day free return”.
  */
 export const PANEL_RETURN_POLICY = {

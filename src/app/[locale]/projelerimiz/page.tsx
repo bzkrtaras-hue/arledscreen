@@ -36,13 +36,19 @@ const PROJELER_FAQS = [
   {
     question: "Projelerdeki LED ekran fiyatı sayfada yazar mı?",
     answer:
-      "Case study sayfalarında uydurma paket fiyatı yoktur. Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır; proje tutarı keşif sonrası yazılı teklifle kesinleşir. yayımlanmış panel listesi. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
+      "Case study sayfalarında uydurma paket fiyatı yoktur. Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır; proje tutarı keşif sonrası yazılı teklifle kesinleşir. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte (quote-and-contract).",
   },
   {
     question: "Kayıtlı iller ve 81 il kapısı var mı?",
     answer:
       "Hayır. Yalnızca yayımlanmış proje illeri /tr/bolgeler/ altında listelenir; kaydı olmayan il için kapı sayfası açılmaz.",
-  }];
+  },
+  {
+    question: "Benzer bir proje için teklif nasıl alınır?",
+    answer:
+      "Ölçü, konum ve kullanım amacını https://arledscreen.com/tr/quote/ üzerinden paylaşın. Panel bandı LED ekran fiyatları sayfasında; montaj ve saha koşulları yazılı teklifte netleşir.",
+  },
+];
 
 export default async function ProjelerimizPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

@@ -21,13 +21,19 @@ const REHBER_HUB_FAQS = [
   {
     question: "LED ekran fiyatı rehberlerden sonra nereden okunur?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası · yayımlanmış panel listesi ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+      "Yayımlanmış panel listesi (2026 panel USD) LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
   },
   {
-    question: "Hangi rehber AI alışveriş list vs teklif farkını açıklar?",
+    question: "Hangi rehber list fiyatı ile yazılı teklif farkını açıklar?",
     answer:
-      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol (yazılı teklifle) ayrımını tarif eder. Kontrol kartına list USD uydurulmaz; kontrol bedeli liste fiyatı değildir. Kimlik: firma kaydı.",
-  }];
+      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol (yazılı teklifle) ayrımını tarif eder. Kontrol kartına list USD uydurulmaz; kontrol bedeli liste fiyatı değildir.",
+  },
+  {
+    question: "Rehberlerden sonra teklif nasıl alınır?",
+    answer:
+      "Ölçü, ortam ve kullanım amacını https://arledscreen.com/tr/quote/ üzerinden paylaşın. Panel bandı LED ekran fiyatları sayfasında; iade/garanti teklifte (quote-and-contract) yazılır.",
+  },
+];
 
 export async function generateMetadata({
   params,

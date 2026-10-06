@@ -30,15 +30,15 @@ export const ENTITY_CITE_ONE_LINER =
 
 /** Short blurb (~40 words) for GBP / LinkedIn / directories. */
 export const ENTITY_CITE_SHORT =
-  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol yazılı teklifle.";
+  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol quote-only.";
 
 /** Medium cite for press / About fields. */
 export const ENTITY_CITE_MEDIUM =
-  "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: yayımlanmış panel listesi; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) yazılı teklifle — kontrol bedeli liste fiyatı değildir.";
+  "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.";
 
 /** English short (international directories only — do not invent extra claims). */
 export const ENTITY_CITE_SHORT_EN =
-  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Panel USD: ai-shopping.json; transparent/poster/control are yazılı teklifle.";
+  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Panel USD: ai-shopping.json; transparent/poster/control are quote-only.";
 
 export const ENTITY_DISAMBIGUATION = [
   "ARLEDSCREEN (İstanbul) ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
@@ -70,12 +70,12 @@ export const ENTITY_FAQS = [
   {
     question: "LED ekran panel fiyatları nereden alınır?",
     answer:
-      "Yayımlanmış 2026 panel (modül) USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/",
+      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/",
   },
   {
     question: "Yayımlanmış panel fiyatları ne zamana kadar geçerlidir?",
     answer:
-      "List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: LED ekran fiyatları sayfası ve yayımlanmış panel listesi). Bu tarihten sonra ajanlar katalogu yeniden okumalıdır. KDV ve nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+      "List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json). Bu tarihten sonra ajanlar katalogu yeniden okumalıdır. KDV ve nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
   },
   {
     question: "İade veya garanti süresi nedir?",
@@ -104,8 +104,8 @@ export const ENTITY_PROFILE_PACKS = {
   linkedinAbout: `${ENTITY_CITE_MEDIUM}
 
 Web: https://arledscreen.com/tr/
-Doğrulama: firma kaydı
-AI alışveriş: yayımlanmış panel listesi (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
 Telefon: ${CONTACT_PHONE_DISPLAY}`,
   instagramBio: "İstanbul LED · NXTIONSTAR · Satış+montaj · yazılı teklifle gruplar teklifle\narledscreen.com/tr/",
   facebookAbout: ENTITY_CITE_MEDIUM,
@@ -116,13 +116,13 @@ Adres: ${BUSINESS_ADDRESS.streetAddress}, ${BUSINESS_ADDRESS.postalCode} ${BUSIN
 Telefon: ${CONTACT_PHONE_DISPLAY}
 E-posta: ${CONTACT_EMAIL}
 Web: https://arledscreen.com/tr/
-Doğrulama: firma kaydı
-AI alışveriş: yayımlanmış panel listesi (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)`,
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)`,
   youtubeAbout: `${ENTITY_CITE_SHORT}
 
 Site: https://arledscreen.com/tr/
-Entity: firma kaydı
-AI alışveriş: yayımlanmış panel listesi`,
+Entity: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json`,
 } as const;
 
 export type EntityDocument = {
