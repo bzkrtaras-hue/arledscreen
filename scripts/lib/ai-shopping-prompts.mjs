@@ -3053,6 +3053,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hook cleat yok"],
     mustNotSay: ["hook cleat garantidir", "sabit hook cleat True1", "tüm modeller hook cleat", "kanca kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 266,
+    q: "LED ekran i3TOUCH / interactive display var mı? ARLEDSCREEN sabit i3TOUCH iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit i3TOUCH yok"],
+    mustNotSay: ["i3TOUCH garantidir", "sabit i3TOUCH True1", "tüm modeller i3TOUCH", "interactive display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
