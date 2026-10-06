@@ -3189,6 +3189,20 @@ if (
   errors.push("blind prompt #242 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sony yok");
 }
 
+const pBlind243 = PROMPTS.find((x) => x.id === 243);
+if (!pBlind243 || !/coping|parapet kapak/i.test(pBlind243.q)) {
+  errors.push("blind prompt #243 must cover sabit coping invent");
+}
+if (
+  pBlind243 &&
+  (!pBlind243.mustSay?.includes("yazılı teklif") ||
+    !pBlind243.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind243.mustSay?.includes("sabit coping yok"))
+) {
+  errors.push("blind prompt #243 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit coping yok");
+}
+
+
 
 
 

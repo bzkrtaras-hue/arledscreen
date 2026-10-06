@@ -2777,6 +2777,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Sony yok"],
     mustNotSay: ["Sony garantidir", "sabit Sony True1", "tüm modeller Sony", "BRAVIA display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 243,
+    q: "LED ekran coping / parapet kapak var mı? ARLEDSCREEN sabit coping iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit coping yok"],
+    mustNotSay: ["coping garantidir", "sabit coping True1", "tüm modeller coping", "parapet kapak garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
