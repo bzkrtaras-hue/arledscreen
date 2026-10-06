@@ -687,7 +687,7 @@ const USE_PAGES: CommercialPage[] = [
     intro: ["Alanya White City Resort Hotel kaydı otel ölçeğinde bir uygulamadır. Lobi ince pitch; dış alan daha büyük pitch ister."],
     proof: (r) => /Hotel|Resort|otel/i.test(`${r.company} ${r.detail}`),
     images: [
-      { src: "/blog/alanya-otel-led-ekran.jpg", alt: "Alanya otel LED ekran uygulaması" },
+      { src: "/opt/blog/alanya-otel-led-ekran.jpg", alt: "Alanya otel LED ekran uygulaması" },
       { src: "/projects/lounge-football.jpg", alt: "Lobi / lounge LED ekran" },
     ],
     products: ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran"],
@@ -702,7 +702,7 @@ const USE_PAGES: CommercialPage[] = [
     proof: (r) => /Cafe|Kafe|cafe|kafe|Malt|Lounge/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/kafe.jpg", alt: "Restoran / kafe LED ekran" },
-      { src: "/blog/kafe-restoran-led-ekran.jpg", alt: "Restoran LED ekran yayını" },
+      { src: "/opt/blog/kafe-restoran-led-ekran.jpg", alt: "Restoran LED ekran yayını" },
       { src: "/projects/lounge-football.jpg", alt: "Lounge maç yayını LED" },
     ],
     products: ["ic-mekan-led-ekran", "gob-led-ekran"],
@@ -754,7 +754,7 @@ const USE_PAGES: CommercialPage[] = [
     images: [
       { src: "/projects/unye.jpg", alt: "Fuar / stand LED ekran — Ünye Belediyesi" },
       { src: "/projects/custom-booth.jpg", alt: "Fuar standı LED" },
-      { src: "/blog/unye-belediyesi-led-ekran.jpg", alt: "Ordu Günleri stand LED ekran" },
+      { src: "/opt/blog/unye-belediyesi-led-ekran.jpg", alt: "Ordu Günleri stand LED ekran" },
     ],
     products: ["kiralik-led-ekran", "ic-mekan-led-ekran", "poster-led-ekran"],
   }),

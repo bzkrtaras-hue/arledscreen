@@ -125,9 +125,9 @@ const IMAGE_BY_REF: Record<string, { src: string; alt: string }[]> = {
   ],
   "ref-26": [
     { src: "/projects/unye.jpg", alt: "Ünye Belediyesi Ordu Günleri LED ekran kurulumu" },
-    { src: "/blog/unye-belediyesi-led-ekran.jpg", alt: "Ordu Günleri standında 384×160 cm LED ekran" },
+    { src: "/opt/blog/unye-belediyesi-led-ekran.jpg", alt: "Ordu Günleri standında 384×160 cm LED ekran" },
   ],
-  "ref-22": [{ src: "/blog/alanya-otel-led-ekran.jpg", alt: "Alanya White City Resort Hotel LED ekran" }],
+  "ref-22": [{ src: "/opt/blog/alanya-otel-led-ekran.jpg", alt: "Alanya White City Resort Hotel LED ekran" }],
   "ref-38": [
     {
       src: "/videos/istanbul-drama-sanat-atolyesi-dis-mekan-led.jpg",
@@ -135,15 +135,15 @@ const IMAGE_BY_REF: Record<string, { src: string; alt: string }[]> = {
     },
   ],
   "ref-39": [
-    { src: "/blog/eskisehir-sigorta-led-ekran.jpg", alt: "Eskişehir sigorta şubesi LED ekran montajı" },
-    { src: "/blog/eskisehir-sigorta-led-ekran-2.jpg", alt: "Eskişehir şube LED kabin kablolaması" },
-    { src: "/blog/eskisehir-sigorta-led-ekran-3.jpg", alt: "Eskişehir şube LED ekran test ve montaj" },
+    { src: "/opt/blog/eskisehir-sigorta-led-ekran.jpg", alt: "Eskişehir sigorta şubesi LED ekran montajı" },
+    { src: "/opt/blog/eskisehir-sigorta-led-ekran-2.jpg", alt: "Eskişehir şube LED kabin kablolaması" },
+    { src: "/opt/blog/eskisehir-sigorta-led-ekran-3.jpg", alt: "Eskişehir şube LED ekran test ve montaj" },
     { src: "/videos/eskisehir-sigorta-led-ekran-ic.jpg", alt: "Eskişehir sigorta şubesi iç mekân LED ekran" },
     { src: "/videos/eskisehir-sigorta-led-ekran-vitrin.jpg", alt: "Eskişehir sigorta şubesi vitrin LED ekran" },
   ],
   "ref-14": [
     { src: "/projects/kafe.jpg", alt: "Kafe / yaşam alanı LED ekran uygulaması" },
-    { src: "/blog/kafe-restoran-led-ekran.jpg", alt: "Restoran / kafe LED ekran yayını" },
+    { src: "/opt/blog/kafe-restoran-led-ekran.jpg", alt: "Restoran / kafe LED ekran yayını" },
     { src: "/videos/kafe-led-ekran-uygulamasi.jpg", alt: "Kafe LED ekran uygulaması" },
   ],
   "ref-05": [{ src: "/projects/modules/outdoor-facade.jpg", alt: "Geniş dış mekân / belediye ölçeği LED yüzey" }],
