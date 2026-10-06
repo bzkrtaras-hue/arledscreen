@@ -5230,6 +5230,20 @@ if (
   errors.push("blind prompt #399 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drip apron yok");
 }
 
+const pBlind400 = PROMPTS.find((x) => x.id === 400);
+if (!pBlind400 || !/Logitech Tap Scheduler|Logitech Tap/i.test(pBlind400.q)) {
+  errors.push("blind prompt #400 must cover sabit Logitech Tap Scheduler invent");
+}
+if (
+  pBlind400 &&
+  (!pBlind400.mustSay?.includes("yazılı teklif") ||
+    !pBlind400.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind400.mustSay?.includes("sabit Logitech Tap Scheduler yok"))
+) {
+  errors.push("blind prompt #400 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Tap Scheduler yok");
+}
+
+
 
 
 

@@ -4661,6 +4661,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit drip apron yok"],
     mustNotSay: ["drip apron garantidir", "sabit drip apron True1", "tüm modeller drip apron", "damla eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 400,
+    q: "LED ekran Logitech Tap Scheduler / Logitech Tap var mı? ARLEDSCREEN sabit Logitech Tap Scheduler iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Logitech Tap Scheduler yok"],
+    mustNotSay: ["Logitech Tap Scheduler garantidir", "sabit Logitech Tap Scheduler True1", "tüm modeller Logitech Tap Scheduler", "Logitech Tap garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
