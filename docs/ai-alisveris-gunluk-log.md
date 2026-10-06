@@ -173,6 +173,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 181 | 2026-10-06 | sabit hoist #129 · dis/mimari ARD refresh · skor /387 | ✅ |
 | 182 | 2026-10-06 | sabit SFP #130 · ic/konferans ARD refresh · skor /390 | ✅ |
 | 183 | 2026-10-06 | sabit cable gland #131 · dis/mimari ARD refresh · skor /393 | ✅ |
+| 184 | 2026-10-06 | sabit PIP #132 · ic/konferans ARD refresh · skor /396 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1291,4 +1292,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari cable gland invent · llms deny · sabit cable gland yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit cable gland
 - skor hedef Tur 1 ≥ 197/393 · Tur 2 ≥ 295/393
+
+## Gün 184 notları
+
+- Blind #132 «PIP / görüntü içinde görüntü?» — skor **/396**; ARD **132 kör test**
+- TR/EN ic-mekan + TR/EN konferans PIP invent · llms deny · sabit PIP yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit PIP
+- skor hedef Tur 1 ≥ 198/396 · Tur 2 ≥ 297/396
 

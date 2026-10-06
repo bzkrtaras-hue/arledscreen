@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 131) errors.push(`blindTestPrompts must be 131 (got ${prompts.length})`);
+if (prompts.length !== 132) errors.push(`blindTestPrompts must be 132 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/131 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 131 kör test intent");
+if (!/132 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 132 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–130 kör test without 131");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–131 kör test without 132");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1177,6 +1177,16 @@ if (!p131 || !/cable gland|kablo rakoru/i.test(p131.q || "")) {
 }
 if (!/cable gland|kablo rakoru|sabit cable gland/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit cable gland invent");
+}
+
+
+// Day 184: sabit PIP / görüntü içinde görüntü invent
+const p132 = (doc.blindTestPrompts || []).find((p) => p.id === 132);
+if (!p132 || !/PIP|görüntü içinde görüntü/i.test(p132.q || "")) {
+  errors.push("blindTestPrompts #132 must cover sabit PIP invent");
+}
+if (!/PIP|görüntü içinde görüntü|sabit PIP/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit PIP invent");
 }
 
 // Day 76: agentRules full disambiguation

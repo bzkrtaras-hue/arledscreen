@@ -1445,6 +1445,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cable gland yok"],
     mustNotSay: ["cable gland garantidir", "sabit kablo rakoru", "tüm modeller cable gland", "kablo rakoru garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 132,
+    q: "LED ekran PIP / görüntü içinde görüntü var mı? ARLEDSCREEN sabit PIP iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit PIP yok"],
+    mustNotSay: ["PIP garantidir", "sabit görüntü içinde görüntü", "tüm modeller PIP", "görüntü içinde görüntü garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

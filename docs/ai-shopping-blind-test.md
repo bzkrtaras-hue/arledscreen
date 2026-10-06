@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 183: blind #131 sabit cable gland invent)  
+Son güncelleme: 2026-10-06 (Gün 184: blind #132 sabit PIP invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 131 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 132 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 131 prompt (alışveriş + varlık)
+## 132 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -155,6 +155,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 129 | LED ekran hoist / vinç var mı? ARLEDSCREEN sabit hoist iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit hoist yok** | hoist garantidir / sabit vinç / tüm modeller hoist / vinç garantidir |
 | 130 | LED ekran SFP / SFP modül var mı? ARLEDSCREEN sabit SFP iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit SFP yok** | SFP garantidir / sabit SFP modül / tüm modeller SFP / SFP modül garantidir |
 | 131 | LED ekran cable gland / kablo rakoru var mı? ARLEDSCREEN sabit cable gland iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cable gland yok** | cable gland garantidir / sabit kablo rakoru / tüm modeller cable gland / kablo rakoru garantidir |
+| 132 | LED ekran PIP / görüntü içinde görüntü var mı? ARLEDSCREEN sabit PIP iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit PIP yok** | PIP garantidir / sabit görüntü içinde görüntü / tüm modeller PIP / görüntü içinde görüntü garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -165,7 +166,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 393. Hedef tur 1 ≥ 197/393; tur 2 (Point C sonrası) ≥ 295/393.
+**Tur skoru** = toplam / 396. Hedef tur 1 ≥ 198/396; tur 2 (Point C sonrası) ≥ 297/396.
 
 ### Canlı tur kayıt şablonu
 
