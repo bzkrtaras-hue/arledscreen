@@ -1066,6 +1066,20 @@ if (
   errors.push("blind prompt #81 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dokunmatik yok");
 }
 
+
+const pBlind82 = PROMPTS.find((x) => x.id === 82);
+if (!pBlind82 || !/mıknatıslı modül|magnetic module/i.test(pBlind82.q)) {
+  errors.push("blind prompt #82 must cover sabit mıknatıslı modül invent");
+}
+if (
+  pBlind82 &&
+  (!pBlind82.mustSay?.includes("yazılı teklif") ||
+    !pBlind82.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind82.mustSay?.includes("sabit mıknatıslı modül yok"))
+) {
+  errors.push("blind prompt #82 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit mıknatıslı modül yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

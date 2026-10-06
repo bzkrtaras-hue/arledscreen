@@ -845,6 +845,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit dokunmatik yok"],
     mustNotSay: ["dokunmatik garantidir", "sabit capacitive touch", "tüm modeller touch overlay", "touch overlay garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 82,
+    q: "LED ekran mıknatıslı modül / magnetic module var mı? ARLEDSCREEN sabit mıknatıslı modül iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit mıknatıslı modül yok"],
+    mustNotSay: ["mıknatıslı modül garantidir", "sabit magnetic module", "tüm modeller magnetic module", "magnetic module garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
