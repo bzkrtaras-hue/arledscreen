@@ -336,6 +336,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 344 | 2026-10-06 | sabit Seewo #292 · ic/konferans ARD refresh · skor /876 | ✅ |
 | 345 | 2026-10-06 | sabit hip cleat #293 · dis/mimari ARD refresh · skor /879 | ✅ |
 | 346 | 2026-10-06 | sabit Dell Canvas #294 · ic/konferans ARD refresh · skor /882 | ✅ |
+| 347 | 2026-10-06 | sabit threshold cleat #295 · dis/mimari ARD refresh · skor /885 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2447,3 +2448,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #294 «Dell Canvas / Canvas?» — skor **/882**; ARD **294 kör test**
 - TR/EN ic-mekan + TR/EN konferans Dell Canvas invent · llms deny · sabit Dell Canvas yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Dell Canvas
+
+## Gün 347 notları
+
+- Blind #295 «threshold cleat / eşik kleyt?» — skor **/885**; ARD **295 kör test**
+- TR/EN dis-mekan + TR/EN mimari threshold cleat invent · llms deny · sabit threshold cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit threshold cleat

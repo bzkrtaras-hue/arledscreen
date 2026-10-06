@@ -3401,6 +3401,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Dell Canvas yok"],
     mustNotSay: ["Dell Canvas garantidir", "sabit Dell Canvas True1", "tüm modeller Dell Canvas", "Canvas garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 295,
+    q: "LED ekran threshold cleat / eşik kleyt var mı? ARLEDSCREEN sabit threshold cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit threshold cleat yok"],
+    mustNotSay: ["threshold cleat garantidir", "sabit threshold cleat True1", "tüm modeller threshold cleat", "eşik kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

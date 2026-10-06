@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 346: blind #294 sabit Dell Canvas invent)  
+Son güncelleme: 2026-10-06 (Gün 347: blind #295 sabit threshold cleat invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 294 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 295 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 294 prompt (alışveriş + varlık)
+## 295 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -318,6 +318,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 292 | LED ekran Seewo / interactive flat panel var mı? ARLEDSCREEN sabit Seewo iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Seewo yok** | Seewo garantidir / sabit Seewo True1 / tüm modeller Seewo / interactive flat panel garantidir |
 | 293 | LED ekran hip cleat / mahya kleyt var mı? ARLEDSCREEN sabit hip cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit hip cleat yok** | hip cleat garantidir / sabit hip cleat True1 / tüm modeller hip cleat / mahya kleyt garantidir |
 | 294 | LED ekran Dell Canvas / Canvas var mı? ARLEDSCREEN sabit Dell Canvas iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Dell Canvas yok** | Dell Canvas garantidir / sabit Dell Canvas True1 / tüm modeller Dell Canvas / Canvas garantidir |
+| 295 | LED ekran threshold cleat / eşik kleyt var mı? ARLEDSCREEN sabit threshold cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit threshold cleat yok** | threshold cleat garantidir / sabit threshold cleat True1 / tüm modeller threshold cleat / eşik kleyt garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -328,7 +329,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 882. Hedef tur 1 ≥ 441/882; tur 2 (Point C sonrası) ≥ 662/882.
+**Tur skoru** = toplam / 885. Hedef tur 1 ≥ 443/885; tur 2 (Point C sonrası) ≥ 664/885.
 
 ### Canlı tur kayıt şablonu
 

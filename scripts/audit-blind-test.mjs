@@ -3865,6 +3865,20 @@ if (
   errors.push("blind prompt #294 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Dell Canvas yok");
 }
 
+const pBlind295 = PROMPTS.find((x) => x.id === 295);
+if (!pBlind295 || !/threshold cleat|eşik kleyt/i.test(pBlind295.q)) {
+  errors.push("blind prompt #295 must cover sabit threshold cleat invent");
+}
+if (
+  pBlind295 &&
+  (!pBlind295.mustSay?.includes("yazılı teklif") ||
+    !pBlind295.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind295.mustSay?.includes("sabit threshold cleat yok"))
+) {
+  errors.push("blind prompt #295 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit threshold cleat yok");
+}
+
+
 
 
 
