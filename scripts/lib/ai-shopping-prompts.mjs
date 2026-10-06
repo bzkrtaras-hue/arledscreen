@@ -2921,6 +2921,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ViewSonic yok"],
     mustNotSay: ["ViewSonic garantidir", "sabit ViewSonic True1", "tüm modeller ViewSonic", "interactive display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 255,
+    q: "LED ekran concealed cleat / gizli kleyt var mı? ARLEDSCREEN sabit concealed cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit concealed cleat yok"],
+    mustNotSay: ["concealed cleat garantidir", "sabit concealed cleat True1", "tüm modeller concealed cleat", "gizli kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
