@@ -4241,6 +4241,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Optoma Creative Touch yok"],
     mustNotSay: ["Optoma Creative Touch garantidir", "sabit Optoma Creative Touch True1", "tüm modeller Optoma Creative Touch", "Optoma 3-Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 365,
+    q: "LED ekran gutter apron / oluk eteği var mı? ARLEDSCREEN sabit gutter apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gutter apron yok"],
+    mustNotSay: ["gutter apron garantidir", "sabit gutter apron True1", "tüm modeller gutter apron", "oluk eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

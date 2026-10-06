@@ -406,6 +406,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 414 | 2026-10-06 | sabit Sharp PN Series #362 · ic/konferans ARD refresh · skor /1086 | ✅ |
 | 415 | 2026-10-06 | sabit valley pan #363 · dis/mimari ARD refresh · skor /1089 | ✅ |
 | 416 | 2026-10-06 | sabit Optoma Creative Touch #364 · ic/konferans ARD refresh · skor /1092 | ✅ |
+| 417 | 2026-10-06 | sabit gutter apron #365 · dis/mimari ARD refresh · skor /1095 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2937,3 +2938,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #364 «Optoma Creative Touch / Optoma 3-Series?» — skor **/1092**; ARD **364 kör test**
 - TR/EN ic-mekan + TR/EN konferans Optoma Creative Touch invent · llms deny · sabit Optoma Creative Touch yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Optoma Creative Touch
+
+## Gün 417 notları
+
+- Blind #365 «gutter apron / oluk eteği?» — skor **/1095**; ARD **365 kör test**
+- TR/EN dis-mekan + TR/EN mimari gutter apron invent · llms deny · sabit gutter apron yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit gutter apron

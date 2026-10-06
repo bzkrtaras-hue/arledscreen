@@ -4775,6 +4775,20 @@ if (
   errors.push("blind prompt #364 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma Creative Touch yok");
 }
 
+const pBlind365 = PROMPTS.find((x) => x.id === 365);
+if (!pBlind365 || !/gutter apron|oluk eteği/i.test(pBlind365.q)) {
+  errors.push("blind prompt #365 must cover sabit gutter apron invent");
+}
+if (
+  pBlind365 &&
+  (!pBlind365.mustSay?.includes("yazılı teklif") ||
+    !pBlind365.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind365.mustSay?.includes("sabit gutter apron yok"))
+) {
+  errors.push("blind prompt #365 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gutter apron yok");
+}
+
+
 
 
 
