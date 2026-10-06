@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 95) errors.push(`blindTestPrompts must be 95 (got ${prompts.length})`);
+if (prompts.length !== 96) errors.push(`blindTestPrompts must be 96 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/95 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 95 kör test intent");
+if (!/96 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 96 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–94 kör test without 95");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–95 kör test without 96");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -842,6 +842,15 @@ if (!p95 || !/düşük mavi ışık|low blue light/i.test(p95.q || "")) {
 }
 if (!/düşük mavi ışık|low blue light|sabit düşük mavi ışık/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit düşük mavi ışık invent");
+}
+
+// Day 148: sabit asılı / hanging / rigging invent
+const p96 = (doc.blindTestPrompts || []).find((p) => p.id === 96);
+if (!p96 || !/asılı|hanging|rigging/i.test(p96.q || "")) {
+  errors.push("blindTestPrompts #96 must cover sabit asılı invent");
+}
+if (!/asılı|hanging|rigging|sabit asılı/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit asılı invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

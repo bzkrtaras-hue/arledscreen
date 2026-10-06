@@ -1013,6 +1013,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit düşük mavi ışık yok"],
     mustNotSay: ["düşük mavi ışık garantidir", "sabit low blue light", "tüm modeller low blue light", "low blue light garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 96,
+    q: "LED ekran asılı / hanging / rigging montaj var mı? ARLEDSCREEN sabit asılı montaj iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit asılı yok"],
+    mustNotSay: ["asılı garantidir", "sabit hanging", "tüm modeller hanging", "hanging garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -513,7 +513,7 @@
       "displayName": "Mimari / mühendislik LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
-      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48; sabit depolama °C yok — Blind #49; sabit yangın sınıfı yok — Blind #53. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63. Sabit PoE/Gigabit yok — Blind #66. Sabit fiber mesafe yok — Blind #68. Sabit dual power yok — Blind #70. Sabit ön servis yok — Blind #74. Sabit alıcı yedeklilik yok — Blind #77. Sabit mıknatıslı modül yok — Blind #82. Sabit koruyucu kaplama yok — Blind #83. Sabit kavisli yok — Blind #86. Sabit döküm kabin yok — Blind #87. Sabit parafudr yok — Blind #90. Sabit köşe LED yok — Blind #93.",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48; sabit depolama °C yok — Blind #49; sabit yangın sınıfı yok — Blind #53. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63. Sabit PoE/Gigabit yok — Blind #66. Sabit fiber mesafe yok — Blind #68. Sabit dual power yok — Blind #70. Sabit ön servis yok — Blind #74. Sabit alıcı yedeklilik yok — Blind #77. Sabit mıknatıslı modül yok — Blind #82. Sabit koruyucu kaplama yok — Blind #83. Sabit kavisli yok — Blind #86. Sabit döküm kabin yok — Blind #87. Sabit parafudr yok — Blind #90. Sabit köşe LED yok — Blind #93. Sabit asılı yok — Blind #96.",
       "representativeQueries": [
         "mimari LED mühendislik",
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
@@ -537,7 +537,8 @@
         "LED ekran kavisli / curved var mı? ARLEDSCREEN sabit kavisli iddiası yayımlıyor mu?",
         "LED ekran döküm kabin / die-cast cabinet var mı? ARLEDSCREEN sabit döküm kabin iddiası yayımlıyor mu?",
         "LED ekran parafudr / surge protection var mı? ARLEDSCREEN sabit parafudr iddiası yayımlıyor mu?",
-        "LED ekran köşe LED / corner LED var mı? ARLEDSCREEN sabit köşe LED iddiası yayımlıyor mu?"
+        "LED ekran köşe LED / corner LED var mı? ARLEDSCREEN sabit köşe LED iddiası yayımlıyor mu?",
+        "LED ekran asılı / hanging / rigging montaj var mı? ARLEDSCREEN sabit asılı montaj iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -547,7 +548,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T08:00:00Z"
+      "updatedAt": "2026-10-09T18:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
@@ -578,7 +579,7 @@
       "displayName": "Konferans salonu LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
-      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit Art-Net yok — Blind #72. Sabit NDI yok — Blind #73. Sabit gönderici yedeklilik yok — Blind #78. Sabit 3D yok — Blind #84. Sabit anti-yansıma yok — Blind #88. Sabit flight case yok — Blind #92. Sabit düşük mavi ışık yok — Blind #95.",
+      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit Art-Net yok — Blind #72. Sabit NDI yok — Blind #73. Sabit gönderici yedeklilik yok — Blind #78. Sabit 3D yok — Blind #84. Sabit anti-yansıma yok — Blind #88. Sabit flight case yok — Blind #92. Sabit düşük mavi ışık yok — Blind #95. Sabit asılı yok — Blind #96.",
       "representativeQueries": [
         "konferans salonu LED",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
@@ -596,7 +597,8 @@
         "LED ekran naked-eye 3D / glasses-free 3D var mı? ARLEDSCREEN sabit 3D iddiası yayımlıyor mu?",
         "LED ekran anti-yansıma / anti-glare var mı? ARLEDSCREEN sabit anti-yansıma iddiası yayımlıyor mu?",
         "LED ekran flight case / taşıma çantası var mı? ARLEDSCREEN sabit flight case iddiası yayımlıyor mu?",
-        "LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu?"
+        "LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu?",
+        "LED ekran asılı / hanging / rigging montaj var mı? ARLEDSCREEN sabit asılı montaj iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -606,7 +608,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T14:00:00Z"
+      "updatedAt": "2026-10-09T18:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:transparan-quote",
@@ -954,13 +956,14 @@
       "displayName": "Kiralık LED ekran ürün hub (quote-only)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/kiralik-led-ekran/",
-      "description": "Kiralık LED ürün hub quote-only. Stokta paket / anında teslim / list fiyatı yok — yazılı teklif. Blind #33 / #9. No invent sabit OPS — Blind #89; quote + Gaziosmanpaşa. No invent sabit flight case — Blind #92; quote + Gaziosmanpaşa.",
+      "description": "Kiralık LED ürün hub quote-only. Stokta paket / anında teslim / list fiyatı yok — yazılı teklif. Blind #33 / #9. No invent sabit OPS — Blind #89; quote + Gaziosmanpaşa. No invent sabit flight case — Blind #92; quote + Gaziosmanpaşa. No invent sabit asılı / hanging — Blind #96; quote + Gaziosmanpaşa.",
       "representativeQueries": [
         "Kiralık LED ekran fiyatı?",
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
         "etkinlik kiralık LED",
         "LED ekran OPS / Android player var mı? ARLEDSCREEN sabit OPS iddiası yayımlıyor mu?",
-        "LED ekran flight case / taşıma çantası var mı? ARLEDSCREEN sabit flight case iddiası yayımlıyor mu?"
+        "LED ekran flight case / taşıma çantası var mı? ARLEDSCREEN sabit flight case iddiası yayımlıyor mu?",
+        "LED ekran asılı / hanging / rigging montaj var mı? ARLEDSCREEN sabit asılı montaj iddiası yayımlıyor mu?"
       ],
       "tags": [
         "kiralik",
@@ -970,7 +973,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T06:00:00Z"
+      "updatedAt": "2026-10-09T18:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:novastar-quote",
@@ -1145,7 +1148,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 95 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D/hızlı kilit/kavisli/döküm kabin/anti-yansıma/OPS/parafudr/zamanlayıcı/flight case/köşe LED/enerji sınıfı/düşük mavi ışık yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 96 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D/hızlı kilit/kavisli/döküm kabin/anti-yansıma/OPS/parafudr/zamanlayıcı/flight case/köşe LED/enerji sınıfı/düşük mavi ışık/asılı yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1216,7 +1219,8 @@
         "LED ekran flight case / taşıma çantası var mı? ARLEDSCREEN sabit flight case iddiası yayımlıyor mu?",
         "LED ekran köşe LED / corner LED var mı? ARLEDSCREEN sabit köşe LED iddiası yayımlıyor mu?",
         "LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu?",
-        "LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu?"
+        "LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu?",
+        "LED ekran asılı / hanging / rigging montaj var mı? ARLEDSCREEN sabit asılı montaj iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1235,7 +1239,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T14:00:00Z"
+      "updatedAt": "2026-10-09T18:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

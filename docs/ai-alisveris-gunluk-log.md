@@ -137,6 +137,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 145 | 2026-10-06 | sabit köşe LED #93 · vitrin/mimari ARD refresh · skor /279 | ✅ |
 | 146 | 2026-10-06 | sabit enerji sınıfı #94 · dis/ic ARD refresh · skor /282 | ✅ |
 | 147 | 2026-10-06 | sabit düşük mavi ışık #95 · ic/konferans ARD refresh · skor /285 | ✅ |
+| 148 | 2026-10-06 | sabit asılı/hanging #96 · konferans/mimari ARD refresh · skor /288 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1003,3 +1004,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans düşük mavi ışık invent · llms deny · sabit düşük mavi ışık yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit düşük mavi ışık
 - skor hedef Tur 1 ≥ 143/285 · Tur 2 ≥ 214/285
+
+## Gün 148 notları
+
+- Blind #96 «asılı / hanging / rigging?» — skor **/288**; ARD **96 kör test**
+- TR/EN konferans + TR/EN mimari asılı invent · llms deny · sabit asılı yok
+- ARD refresh: rehber konferans/mimari + kiralik product (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit asılı
+- skor hedef Tur 1 ≥ 144/288 · Tur 2 ≥ 216/288
