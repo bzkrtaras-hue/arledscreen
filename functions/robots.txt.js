@@ -1,6 +1,9 @@
 /**
- * Live robots.txt via Pages Function — bypasses stale CDN static cache.
- * Keep in sync with src/app/robots.ts (Host bare hostname + AI bot Allows).
+ * Live robots.txt via Pages Function — Host must be bare hostname (no https://).
+ * Keep in sync with src/app/robots.ts (AI bot Allows + Sitemap).
+ *
+ * Apex CDN: Cloudflare Page Rule cache_level=bypass for arledscreen.com/robots.txt
+ * (id a34310c8cc7c12ba4d368b8c7f2cb1ed, 2026-10-06) — purge token yokken stale HIT’i kırar.
  */
 const BODY = `# ARLEDSCREEN AI/GEO crawl policy — Allow entity.json + catalog.json
 User-Agent: *

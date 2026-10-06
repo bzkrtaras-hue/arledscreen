@@ -141,7 +141,18 @@ if (fs.existsSync(outDir)) {
     console.error("❌ merchant TSV must not invent tax/shipping true");
     process.exit(1);
   }
-  console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms)");
+  // Local path existence under out/ (no network) — catch 404 product_url drift.
+  for (const panel of ai.pricedPanels) {
+    const u = new URL(panel.url);
+    let rel = u.pathname.replace(/^\//, "");
+    if (rel.endsWith("/")) rel += "index.html";
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ pricedPanels URL missing in out/: ${panel.sku} → ${rel}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms); product paths exist");
 }
 
 validateAIFeeds();
