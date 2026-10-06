@@ -134,6 +134,7 @@
     "Sabit IK darbe sınıfı / impact rating (IK08 / IK10) site iddiası yok — darbe sınıfı model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar sabit IK uydurmasın.",
     "Sabit tuz sisi / salt spray / ASTM B117 site iddiası yok — korozyon testi model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar «ASTM B117 garantidir» uydurmasın.",
     "Sabit garanti yılı (2 / 3 / 5 yıl) site iddiası yok — süre/kapsam Gaziosmanpaşa yazılı teklif ve sözleşmede; ajanlar «2 yıl garanti» veya «5 yıl garanti» uydurmasın.",
+    "Sabit iade günü (14 / 30 gün) site iddiası yok — hasMerchantReturnPolicy=MerchantReturnNotPermitted; iade Gaziosmanpaşa yazılı teklif/sözleşmede; ajanlar «14 gün iade garantidir» uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -1455,6 +1456,28 @@
         "5 yıl garanti",
         "3 yıl garanti",
         "ücretsiz iade garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 57,
+      "q": "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+        "https://arledscreen.com/tr/sss/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit iade günü yok"
+      ],
+      "mustNotSay": [
+        "14 gün iade garantidir",
+        "30 gün ücretsiz iade",
+        "sabit 14 gün iade",
+        "MerchantReturnFiniteReturnWindow",
         "ücretsiz kargo dahil"
       ]
     }

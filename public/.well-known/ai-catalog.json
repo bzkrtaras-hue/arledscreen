@@ -98,11 +98,12 @@
       "displayName": "LED ekran fiyatları 2026 (insan + ajan)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
-      "description": "Yayımlanmış panel tablosu ve örnek m² hesapları. catalog.json ile aynı fiyat kaynağı.",
+      "description": "Yayımlanmış panel tablosu ve örnek m² hesapları. catalog.json ile aynı fiyat kaynağı. Sabit iade günü yok — Blind #57.",
       "representativeQueries": [
         "LED ekran fiyatları 2026",
         "LED ekran m2 fiyatı",
-        "panel başına LED fiyatı USD"
+        "panel başına LED fiyatı USD",
+        "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?"
       ],
       "tags": [
         "pricing",
@@ -110,7 +111,7 @@
         "TR"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-05T18:44:09Z"
+      "updatedAt": "2026-10-07T03:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:quote",
@@ -754,7 +755,7 @@
       "displayName": "SSS — fiyat / kimlik / ajan",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/sss/",
-      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only; sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52. Sabit garanti yılı yok — Blind #56.",
+      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only; sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52. Sabit garanti yılı yok — Blind #56. Sabit iade günü yok — Blind #57.",
       "representativeQueries": [
         "ARLEDSCREEN SSS",
         "LED ekran fiyat SSS",
@@ -762,7 +763,8 @@
         "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
         "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?",
         "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
-        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?"
+        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?",
+        "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?"
       ],
       "tags": [
         "FAQ",
@@ -771,7 +773,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T02:00:00Z"
+      "updatedAt": "2026-10-07T03:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:calculator",
@@ -1069,7 +1071,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 56 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 57 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1101,7 +1103,8 @@
         "LED ekran yangın sınıfı / fire rating nedir? ARLEDSCREEN sabit Class A / B-s1 veya yangın sınıfı yayımlıyor mu?",
         "LED ekran IK darbe sınıfı / impact rating nedir? ARLEDSCREEN sabit IK08 / IK10 yayımlıyor mu?",
         "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?",
-        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?"
+        "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?",
+        "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1120,7 +1123,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T02:00:00Z"
+      "updatedAt": "2026-10-07T03:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -2300,6 +2303,69 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T02:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ru-rehber-led",
+      "displayName": "RU LED screen guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ru/rehber/led-ekran/",
+      "description": "RU LED overview guide. No invent sabit iade günü — Blind #57.",
+      "representativeQueries": [
+        "руководство LED экран",
+        "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?",
+        "LED ekran iade"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "RU",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T03:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ar-rehber-ic",
+      "displayName": "AR Indoor LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ar/rehber/ic-mekan-led-ekran/",
+      "description": "AR indoor LED guide. No invent sabit iade günü / return window — Blind #57.",
+      "representativeQueries": [
+        "شاشة LED داخلية",
+        "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?",
+        "indoor LED AR"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "AR",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T03:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ru-rehber-ic",
+      "displayName": "RU Indoor LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ru/rehber/ic-mekan-led-ekran/",
+      "description": "RU indoor LED guide. No invent sabit iade günü — Blind #57.",
+      "representativeQueries": [
+        "внутренний LED экран",
+        "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?",
+        "indoor LED RU"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "RU",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T03:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",
