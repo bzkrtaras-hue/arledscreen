@@ -106,6 +106,10 @@
 /kullanim-kosullari/ /tr/about/ 301
 /blog /tr/rehber/ 301
 /blog/ /tr/rehber/ 301
+/blog/*.jpg /opt/blog/:splat 200
+/blog/*.jpeg /opt/blog/:splat 200
+/blog/*.png /opt/blog/:splat 200
+/blog/*.webp /opt/blog/:splat 200
 /blog/* /tr/rehber/ 301
 /blogarticle /tr/rehber/ 301
 /blogdetail /tr/rehber/ 301

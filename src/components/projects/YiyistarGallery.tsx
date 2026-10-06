@@ -137,8 +137,8 @@ export function YiyistarGallery({
       ) : null}
 
       {showJumpNav ? (
-        <nav aria-label="Galeri kategorileri" className="overflow-x-auto">
-          <ul className="flex min-w-max gap-2 pb-1">
+        <nav aria-label="Galeri kategorileri">
+          <ul className="flex gap-2 overflow-x-auto pb-1 md:flex-wrap md:overflow-visible">
             {sections.map((section) => (
               <li key={section.slug}>
                 <button
@@ -164,8 +164,7 @@ export function YiyistarGallery({
             <h2 className="font-display text-[1.35rem] font-extrabold tracking-[-0.03em] text-ink sm:text-2xl">
               {section.title}
             </h2>
-            <p className="mt-1 text-sm text-ink-muted">{section.titleEn}</p>
-            <ul className="mt-5 grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4">
+            <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
               {section.images.map((src) => (
                 <li key={src}>
                   <figure className="group relative aspect-square overflow-hidden rounded-lg bg-surface">
