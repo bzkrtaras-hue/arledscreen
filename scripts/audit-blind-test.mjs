@@ -5418,6 +5418,19 @@ if (
   errors.push("blind prompt #414 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Meetup yok");
 }
 
+const pBlind415 = PROMPTS.find((x) => x.id === 415);
+if (!pBlind415 || !/counter apron|counter eteği/i.test(pBlind415.q)) {
+  errors.push("blind prompt #415 must cover sabit counter apron invent");
+}
+if (
+  pBlind415 &&
+  (!pBlind415.mustSay?.includes("yazılı teklif") ||
+    !pBlind415.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind415.mustSay?.includes("sabit counter apron yok"))
+) {
+  errors.push("blind prompt #415 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit counter apron yok");
+}
+
 
 
 

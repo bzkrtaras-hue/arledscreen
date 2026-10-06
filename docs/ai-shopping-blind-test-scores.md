@@ -1,34 +1,34 @@
 # AI alışveriş — kör test skor kartı (sahip doldurur)
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (canlı 200 sonrası) ≥ **621/1242** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **932/1242**  
-Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (414 prompt)
+Hedef: Tur 1 (canlı 200 sonrası) ≥ **623/1245** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **934/1245**  
+Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (415 prompt)
 
 ## Tur 1 — canlı JSON 200 sonrası (merge zorunlu değil; PR #55 ready)
 
 ### Sahip tur 1 açılış (2026-10-06)
 - Canlı kapı: entity/catalog/ai-shopping/ard **200**; robots Host bare (3× BYPASS)
-- Prompt kaynağı: canlı `https://arledscreen.com/ai-shopping.json` → `blindTestPrompts` (**414**)
+- Prompt kaynağı: canlı `https://arledscreen.com/ai-shopping.json` → `blindTestPrompts` (**415**)
 - Point C paste paralel veya tur 1 sonrası; tur 2 Point C sonrası
 - Skor satırlarını aşağıdaki tabloya doldur (ajan uydurma skor yazmaz)
 
 
-Koşullar: incognito · TR konum tercih · aynı 414 prompt · yanıtta URL/atıf not et.
+Koşullar: incognito · TR konum tercih · aynı 415 prompt · yanıtta URL/atıf not et.
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /1242.
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /1245.
 
-| Model | Tarih | Konum | Incognito | Skor /1242 | Not |
+| Model | Tarih | Konum | Incognito | Skor /1245 | Not |
 |-------|-------|-------|-----------|-----------|-----|
-| ChatGPT | | TR / | evet | /1242 | |
-| Gemini | | | | /1242 | |
-| Perplexity | | | | /1242 | |
-| Bing Copilot | | | | /1242 | |
-| **Ortalama** | | | | **/1242** | Hedef ≥ 621 |
+| ChatGPT | | TR / | evet | /1245 | |
+| Gemini | | | | /1245 | |
+| Perplexity | | | | /1245 | |
+| Bing Copilot | | | | /1245 | |
+| **Ortalama** | | | | **/1245** | Hedef ≥ 623 |
 
 ## Tur 1a — P0 hızlı ölçüm (20 prompt · /60)
 
 Canlı kaynak: https://arledscreen.com/ai-shopping.json (`blindTestPrompts` #1–#20), çekim 2026-10-06.  
-Tam suite hâlâ 414 prompt /1242 (`ai-shopping-blind-test.md`). Bu tablo sahip için **ilk gün** ölçümü — uydurma skor yok.
+Tam suite hâlâ 415 prompt /1245 (`ai-shopping-blind-test.md`). Bu tablo sahip için **ilk gün** ölçümü — uydurma skor yok.
 
 Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
 
@@ -65,13 +65,13 @@ Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
 
 ## Tur 2 — Point C sonrası (≤2026-11-04)
 
-| Model | Tarih | Skor /1242 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /1245 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|-----------|---------------------------|-----|
-| ChatGPT | | /1242 | | |
-| Gemini | | /1242 | | |
-| Perplexity | | /1242 | | |
-| Bing Copilot | | /1242 | | |
-| **Ortalama** | | **/1242** | | Hedef ≥ 932 |
+| ChatGPT | | /1245 | | |
+| Gemini | | /1245 | | |
+| Perplexity | | /1245 | | |
+| Bing Copilot | | /1245 | | |
+| **Ortalama** | | **/1245** | | Hedef ≥ 934 |
 
 ## Prompt bazlı ham notlar (opsiyonel)
 

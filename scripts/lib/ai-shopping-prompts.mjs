@@ -4841,6 +4841,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Logitech Meetup yok"],
     mustNotSay: ["Logitech Meetup garantidir", "sabit Logitech Meetup True1", "tüm modeller Logitech Meetup", "Logitech Meetup dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 415,
+    q: "LED ekran counter apron / counter eteği var mı? ARLEDSCREEN sabit counter apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit counter apron yok"],
+    mustNotSay: ["counter apron garantidir", "sabit counter apron True1", "tüm modeller counter apron", "counter eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
