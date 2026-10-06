@@ -100,6 +100,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 108 | 2026-10-06 | sabit garanti yılı #56 · AR/RU rehber ARD · skor /168 | ✅ |
 | 109 | 2026-10-06 | sabit iade günü #57 · AR/RU rehber-ic ARD · skor /171 | ✅ |
 | 110 | 2026-10-06 | sabit teslimat süresi #58 · AR/RU rehber-dis ARD · skor /174 | ✅ |
+| 111 | 2026-10-06 | sabit gürültü/dB #59 · AR/RU konferans ARD · skor /177 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -706,3 +707,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - SSS/hizmetler teslimat invent · llms deny · sabit teslimat süresi yok
 - ARD: AR/RU rehber-dis + AR mimari · IndexNow +3 · agentRules sabit teslimat
 - skor hedef Tur 1 ≥ 87/174 · Tur 2 ≥ 131/174
+
+## Gün 111 notları
+
+- Blind #59 «fan gürültüsü / dB / fanless?» — skor **/177**; ARD **59 kör test**
+- TR/EN konferans + TR ic-mekan gürültü invent · llms deny · sabit gürültü/dB yok
+- ARD: AR/RU konferans + RU mimari · IndexNow +3 · agentRules sabit gürültü
+- skor hedef Tur 1 ≥ 89/177 · Tur 2 ≥ 133/177

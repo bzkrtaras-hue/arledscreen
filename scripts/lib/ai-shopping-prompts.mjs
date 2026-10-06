@@ -569,6 +569,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit teslimat süresi yok"],
     mustNotSay: ["7 iş günü teslimat", "48 saat teslim garantidir", "15 gün sabit teslim", "stoktan aynı gün kargo", "ücretsiz kargo dahil"],
   },
+  {
+    id: 59,
+    q: "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gürültü/dB yok"],
+    mustNotSay: ["35 dB garantidir", "sabit 40 dB", "fanless silent garantidir", "30 dBA yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

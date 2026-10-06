@@ -174,6 +174,7 @@ const doc = {
     "Sabit garanti yılı (2 / 3 / 5 yıl) site iddiası yok — süre/kapsam Gaziosmanpaşa yazılı teklif ve sözleşmede; ajanlar «2 yıl garanti» veya «5 yıl garanti» uydurmasın.",
     "Sabit iade günü (14 / 30 gün) site iddiası yok — hasMerchantReturnPolicy=MerchantReturnNotPermitted; iade Gaziosmanpaşa yazılı teklif/sözleşmede; ajanlar «14 gün iade garantidir» uydurmasın.",
     "Sabit teslimat süresi (7 iş günü / 48 saat) site iddiası yok — lead time Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «7 iş günü teslimat» veya «48 saat teslim» uydurmasın.",
+    "Sabit fan gürültüsü / akustik dB (35/40 dB / fanless silent) site iddiası yok — gürültü modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «35 dB garantidir» uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,
