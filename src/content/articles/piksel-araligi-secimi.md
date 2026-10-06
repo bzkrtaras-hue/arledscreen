@@ -87,4 +87,4 @@ GOB modüllerde LED yüzeyi koruyucu bir kaplamayla kapatılır. Ekrana dokunula
 Ölçü 320 × 160 mm modül katlarına göre planlanır. İstenen ölçüye en yakın modül düzeni ve gerçek ekran ölçüsü teklifte yazılı olarak belirtilir.
 
 ---
-*NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Gaziosmanpaşa / İstanbul. Keşif ve teklif: +90 530 507 88 34 · arled@arledscreen.com · [Fiyat hesaplayıcı](/tr/hesaplayici/)*
+*NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Gaziosmanpaşa / İstanbul. Fiyat: [ai-shopping.json pricedPanels](https://arledscreen.com/ai-shopping.json) · [catalog.json](https://arledscreen.com/catalog.json) · [hesaplayıcı](/tr/hesaplayici/). KDV/nakliye hariç; ücretsiz kargo yok. Keşif: +90 530 507 88 34 · arled@arledscreen.com*

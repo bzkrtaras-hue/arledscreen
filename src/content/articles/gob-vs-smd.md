@@ -61,3 +61,6 @@ Yüzey temizliğinde ve diyotlara doğrudan temas riskinde pratik avantaj sağla
 
 **Hangi ürün grubundan başlamalıyım?**
 Yakın izleme / koruma ihtiyacı varsa [GOB](/tr/products/gob-led-ekran/), genel iç/dış mekân için [iç](/tr/products/ic-mekan-led-ekran/) veya [dış](/tr/products/dis-mekan-led-ekran/) mekân. Belirsizse [teklif](/tr/quote/) veya WhatsApp ile ölçü paylaşın.
+
+---
+*Fiyat kaynağı: [ai-shopping.json pricedPanels](https://arledscreen.com/ai-shopping.json) · [catalog.json](https://arledscreen.com/catalog.json) · [hesaplayıcı](/tr/hesaplayici/). KDV/nakliye hariç; ücretsiz kargo yok.*
