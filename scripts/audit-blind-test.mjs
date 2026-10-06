@@ -2799,6 +2799,20 @@ if (
   errors.push("blind prompt #212 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vaddio yok");
 }
 
+const pBlind213 = PROMPTS.find((x) => x.id === 213);
+if (!pBlind213 || !/valley flashing|vadi flaşı/i.test(pBlind213.q)) {
+  errors.push("blind prompt #213 must cover sabit valley flashing invent");
+}
+if (
+  pBlind213 &&
+  (!pBlind213.mustSay?.includes("yazılı teklif") ||
+    !pBlind213.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind213.mustSay?.includes("sabit valley flashing yok"))
+) {
+  errors.push("blind prompt #213 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley flashing yok");
+}
+
+
 
 
 

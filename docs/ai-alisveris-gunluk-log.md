@@ -254,6 +254,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 262 | 2026-10-06 | sabit Sennheiser #210 · ic/konferans ARD refresh · skor /630 | ✅ |
 | 263 | 2026-10-06 | sabit kick-out flashing #211 · dis/mimari ARD refresh · skor /633 | ✅ |
 | 264 | 2026-10-06 | sabit Vaddio #212 · ic/konferans ARD refresh · skor /636 | ✅ |
+| 265 | 2026-10-06 | sabit valley flashing #213 · dis/mimari ARD refresh · skor /639 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1873,3 +1874,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #212 «Vaddio / PTZ camera?» — skor **/636**; ARD **212 kör test**
 - TR/EN ic-mekan + TR/EN konferans Vaddio invent · llms deny · sabit Vaddio yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Vaddio
+
+## Gün 265 notları
+
+- Blind #213 «valley flashing / vadi flaşı?» — skor **/639**; ARD **213 kör test**
+- TR/EN dis-mekan + TR/EN mimari valley flashing invent · llms deny · sabit valley flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit valley flashing

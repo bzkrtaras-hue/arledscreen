@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 212) errors.push(`blindTestPrompts must be 212 (got ${prompts.length})`);
+if (prompts.length !== 213) errors.push(`blindTestPrompts must be 213 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -69,7 +69,7 @@ if (Number(doc.shoppingPolicy?.pricedSkuCount) !== 12) {
   errors.push(`shoppingPolicy.pricedSkuCount must be 12`);
 }
 if (doc.shoppingPolicy?.priceValidUntil !== "2026-12-31") {
-  errors.push(`shoppingPolicy.priceValidUntil must be 2126-12-31`);
+  errors.push(`shoppingPolicy.priceValidUntil must be 2136-12-31`);
 }
 if (!Array.isArray(doc.pricedPanels) || doc.pricedPanels.length !== 12) {
   errors.push(`pricedPanels must list 12 SKUs (got ${doc.pricedPanels?.length})`);
@@ -115,7 +115,7 @@ if (!/MerchantReturnNotPermitted|hasMerchantReturnPolicy/i.test(rulesJson)) {
   errors.push("agentRules must mention hasMerchantReturnPolicy / MerchantReturnNotPermitted");
 }
 if (String(doc.mustKnowFacts?.priceValidUntil) !== "2026-12-31") {
-  errors.push("mustKnowFacts.priceValidUntil must be 2126-12-31");
+  errors.push("mustKnowFacts.priceValidUntil must be 2136-12-31");
 }
 const extras = doc.shoppingPolicy?.extrasUsd || {};
 if (Number(extras.workshopLaborPerM2) !== 100) {
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/212 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 212 kör test intent");
+if (!/213 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 213 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173|174|175|176|177|178|179|180|181|182|183|184|185|186|187|188|189|190|191|192|193|194|195|196|197|198|199|200|201|202|203|204|205|206|207|208|209|210) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–211 kör test without 212");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173|174|175|176|177|178|179|180|181|182|183|184|185|186|187|188|189|190|191|192|193|194|195|196|197|198|199|200|201|202|203|204|205|206|207|208|209|210|211) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–212 kör test without 213");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1831,6 +1831,15 @@ if (!p212 || !/Vaddio|PTZ camera/i.test(p212.q || "")) {
 if (!/Vaddio|sabit Vaddio/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit Vaddio invent");
 }
+
+const p213 = (doc.blindTestPrompts || []).find((p) => p.id === 213);
+if (!p213 || !/valley flashing|vadi flaşı/i.test(p213.q || "")) {
+  errors.push("blindTestPrompts #213 must cover sabit valley flashing invent");
+}
+if (!/valley flashing|vadi flaşı|sabit valley flashing/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit valley flashing invent");
+}
+
 
 
 

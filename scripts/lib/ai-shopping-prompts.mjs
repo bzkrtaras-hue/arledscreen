@@ -2417,6 +2417,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Vaddio yok"],
     mustNotSay: ["Vaddio garantidir", "sabit Vaddio True1", "tüm modeller Vaddio", "PTZ camera garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 213,
+    q: "LED ekran valley flashing / vadi flaşı var mı? ARLEDSCREEN sabit valley flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit valley flashing yok"],
+    mustNotSay: ["valley flashing garantidir", "sabit valley flashing True1", "tüm modeller valley flashing", "vadi flaşı garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 264: blind #212 sabit Vaddio invent)  
+Son güncelleme: 2026-10-06 (Gün 265: blind #213 sabit valley flashing invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 212 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 213 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 212 prompt (alışveriş + varlık)
+## 213 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -236,6 +236,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 210 | LED ekran Sennheiser / ceiling mic var mı? ARLEDSCREEN sabit Sennheiser iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Sennheiser yok** | Sennheiser garantidir / sabit Sennheiser True1 / tüm modeller Sennheiser / ceiling mic garantidir |
 | 211 | LED ekran kick-out flashing / çıkış flaşı var mı? ARLEDSCREEN sabit kick-out flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit kick-out flashing yok** | kick-out flashing garantidir / sabit kick-out flashing True1 / tüm modeller kick-out flashing / çıkış flaşı garantidir |
 | 212 | LED ekran Vaddio / PTZ camera var mı? ARLEDSCREEN sabit Vaddio iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Vaddio yok** | Vaddio garantidir / sabit Vaddio True1 / tüm modeller Vaddio / PTZ camera garantidir |
+| 213 | LED ekran valley flashing / vadi flaşı var mı? ARLEDSCREEN sabit valley flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit valley flashing yok** | valley flashing garantidir / sabit valley flashing True1 / tüm modeller valley flashing / vadi flaşı garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -246,7 +247,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 636. Hedef tur 1 ≥ 318/636; tur 2 (Point C sonrası) ≥ 477/636.
+**Tur skoru** = toplam / 639. Hedef tur 1 ≥ 320/639; tur 2 (Point C sonrası) ≥ 480/639.
 
 ### Canlı tur kayıt şablonu
 
