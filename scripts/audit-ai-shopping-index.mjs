@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 103) errors.push(`blindTestPrompts must be 103 (got ${prompts.length})`);
+if (prompts.length !== 104) errors.push(`blindTestPrompts must be 104 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/103 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 103 kör test intent");
+if (!/104 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 104 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–102 kör test without 103");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–103 kör test without 104");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -914,6 +914,15 @@ if (!p103 || !/black level|siyah seviye/i.test(p103.q || "")) {
 }
 if (!/black level|siyah seviye|sabit black level/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit black level invent");
+}
+
+// Day 156: sabit pixel mapping / piksel eşleme invent
+const p104 = (doc.blindTestPrompts || []).find((p) => p.id === 104);
+if (!p104 || !/pixel mapping|piksel eşleme/i.test(p104.q || "")) {
+  errors.push("blindTestPrompts #104 must cover sabit pixel mapping invent");
+}
+if (!/pixel mapping|piksel eşleme|sabit pixel mapping/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit pixel mapping invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

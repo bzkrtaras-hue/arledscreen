@@ -1356,6 +1356,19 @@ if (
   errors.push("blind prompt #103 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit black level yok");
 }
 
+const pBlind104 = PROMPTS.find((x) => x.id === 104);
+if (!pBlind104 || !/pixel mapping|piksel eşleme/i.test(pBlind104.q)) {
+  errors.push("blind prompt #104 must cover sabit pixel mapping invent");
+}
+if (
+  pBlind104 &&
+  (!pBlind104.mustSay?.includes("yazılı teklif") ||
+    !pBlind104.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind104.mustSay?.includes("sabit pixel mapping yok"))
+) {
+  errors.push("blind prompt #104 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pixel mapping yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

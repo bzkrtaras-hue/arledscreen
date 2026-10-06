@@ -1109,6 +1109,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit black level yok"],
     mustNotSay: ["black level garantidir", "sabit siyah seviye", "tüm modeller black level", "siyah seviye garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 104,
+    q: "LED ekran pixel mapping / piksel eşleme var mı? ARLEDSCREEN sabit pixel mapping iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit pixel mapping yok"],
+    mustNotSay: ["pixel mapping garantidir", "sabit piksel eşleme", "tüm modeller pixel mapping", "piksel eşleme garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
