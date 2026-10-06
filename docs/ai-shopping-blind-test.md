@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 199: blind #147 sabit USB-C invent)  
+Son güncelleme: 2026-10-06 (Gün 200: blind #148 sabit IR remote invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 147 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 148 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 147 prompt (alışveriş + varlık)
+## 148 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -171,6 +171,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 145 | LED ekran outrigger / payanda var mı? ARLEDSCREEN sabit outrigger iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit outrigger yok** | outrigger garantidir / sabit outrigger True1 / tüm modeller outrigger / payanda garantidir |
 | 146 | LED ekran Crestron / kontrol sistemi var mı? ARLEDSCREEN sabit Crestron iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Crestron yok** | Crestron garantidir / sabit Crestron True1 / tüm modeller Crestron / kontrol sistemi garantidir |
 | 147 | LED ekran USB-C / USB Type-C var mı? ARLEDSCREEN sabit USB-C iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit USB-C yok** | USB-C garantidir / sabit USB-C True1 / tüm modeller USB-C / USB Type-C garantidir |
+| 148 | LED ekran IR remote / kızılötesi kumanda var mı? ARLEDSCREEN sabit IR remote iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit IR remote yok** | IR remote garantidir / sabit IR remote True1 / tüm modeller IR remote / kızılötesi kumanda garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -181,7 +182,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 441. Hedef tur 1 ≥ 221/441; tur 2 (Point C sonrası) ≥ 331/441.
+**Tur skoru** = toplam / 444. Hedef tur 1 ≥ 222/444; tur 2 (Point C sonrası) ≥ 333/444.
 
 ### Canlı tur kayıt şablonu
 

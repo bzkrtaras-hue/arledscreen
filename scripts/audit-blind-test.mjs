@@ -1962,6 +1962,20 @@ if (
     !pBlind147.mustSay?.includes("sabit USB-C yok"))
 ) {
   errors.push("blind prompt #147 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit USB-C yok");
+
+const pBlind148 = PROMPTS.find((x) => x.id === 148);
+if (!pBlind148 || !/IR remote|kızılötesi kumanda/i.test(pBlind148.q)) {
+  errors.push("blind prompt #148 must cover sabit IR remote invent");
+}
+if (
+  pBlind148 &&
+  (!pBlind148.mustSay?.includes("yazılı teklif") ||
+    !pBlind148.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind148.mustSay?.includes("sabit IR remote yok"))
+) {
+  errors.push("blind prompt #148 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit IR remote yok");
+}
+
 }
 
 }

@@ -1637,6 +1637,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit USB-C yok"],
     mustNotSay: ["USB-C garantidir", "sabit USB-C True1", "tüm modeller USB-C", "USB Type-C garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 148,
+    q: "LED ekran IR remote / kızılötesi kumanda var mı? ARLEDSCREEN sabit IR remote iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit IR remote yok"],
+    mustNotSay: ["IR remote garantidir", "sabit IR remote True1", "tüm modeller IR remote", "kızılötesi kumanda garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
