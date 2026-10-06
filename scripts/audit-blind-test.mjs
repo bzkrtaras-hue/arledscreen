@@ -4021,6 +4021,20 @@ if (
   errors.push("blind prompt #306 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Ricoh Interactive yok");
 }
 
+const pBlind307 = PROMPTS.find((x) => x.id === 307);
+if (!pBlind307 || !/cricket cleat|cricket kleyt/i.test(pBlind307.q)) {
+  errors.push("blind prompt #307 must cover sabit cricket cleat invent");
+}
+if (
+  pBlind307 &&
+  (!pBlind307.mustSay?.includes("yazılı teklif") ||
+    !pBlind307.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind307.mustSay?.includes("sabit cricket cleat yok"))
+) {
+  errors.push("blind prompt #307 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cricket cleat yok");
+}
+
+
 
 
 

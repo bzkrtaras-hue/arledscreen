@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 358: blind #306 sabit Ricoh Interactive invent)  
+Son güncelleme: 2026-10-06 (Gün 359: blind #307 sabit cricket cleat invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 306 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 307 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 306 prompt (alışveriş + varlık)
+## 307 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -330,6 +330,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 304 | LED ekran Google Meet Series / Meet Series var mı? ARLEDSCREEN sabit Google Meet Series iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Google Meet Series yok** | Google Meet Series garantidir / sabit Google Meet Series True1 / tüm modeller Google Meet Series / Meet Series garantidir |
 | 305 | LED ekran kick-out cleat / kick-out kleyt var mı? ARLEDSCREEN sabit kick-out cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit kick-out cleat yok** | kick-out cleat garantidir / sabit kick-out cleat True1 / tüm modeller kick-out cleat / kick-out kleyt garantidir |
 | 306 | LED ekran Ricoh Interactive / Ricoh IFP var mı? ARLEDSCREEN sabit Ricoh Interactive iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Ricoh Interactive yok** | Ricoh Interactive garantidir / sabit Ricoh Interactive True1 / tüm modeller Ricoh Interactive / Ricoh IFP garantidir |
+| 307 | LED ekran cricket cleat / cricket kleyt var mı? ARLEDSCREEN sabit cricket cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cricket cleat yok** | cricket cleat garantidir / sabit cricket cleat True1 / tüm modeller cricket cleat / cricket kleyt garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -340,7 +341,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 918. Hedef tur 1 ≥ 459/918; tur 2 (Point C sonrası) ≥ 689/918.
+**Tur skoru** = toplam / 921. Hedef tur 1 ≥ 461/921; tur 2 (Point C sonrası) ≥ 691/921.
 
 ### Canlı tur kayıt şablonu
 
