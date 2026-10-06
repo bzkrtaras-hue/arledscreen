@@ -1181,6 +1181,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cabinet depth yok"],
     mustNotSay: ["cabinet depth garantidir", "sabit kabin derinliği", "tüm modeller cabinet depth", "kabin derinliği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 110,
+    q: "LED ekran drive IC / sürücü IC var mı? ARLEDSCREEN sabit drive IC iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit drive IC yok"],
+    mustNotSay: ["drive IC garantidir", "sabit sürücü IC", "tüm modeller drive IC", "sürücü IC garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

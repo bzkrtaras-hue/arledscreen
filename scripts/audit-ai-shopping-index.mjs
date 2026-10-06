@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 109) errors.push(`blindTestPrompts must be 109 (got ${prompts.length})`);
+if (prompts.length !== 110) errors.push(`blindTestPrompts must be 110 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/109 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 109 kör test intent");
+if (!/110 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 110 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–108 kör test without 109");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–109 kör test without 110");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -968,6 +968,15 @@ if (!p109 || !/cabinet depth|kabin derinliği/i.test(p109.q || "")) {
 }
 if (!/cabinet depth|kabin derinliği|sabit cabinet depth/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit cabinet depth invent");
+}
+
+// Day 162: sabit drive IC / sürücü IC invent
+const p110 = (doc.blindTestPrompts || []).find((p) => p.id === 110);
+if (!p110 || !/drive IC|sürücü IC/i.test(p110.q || "")) {
+  errors.push("blindTestPrompts #110 must cover sabit drive IC invent");
+}
+if (!/drive IC|sürücü IC|sabit drive IC/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit drive IC invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

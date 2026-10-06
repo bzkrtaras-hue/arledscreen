@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 161: blind #109 sabit cabinet depth invent)  
+Son güncelleme: 2026-10-06 (Gün 162: blind #110 sabit drive IC invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 109 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 110 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 109 prompt (alışveriş + varlık)
+## 110 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -133,6 +133,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 107 | LED ekran louver / masking / güneş panjuru var mı? ARLEDSCREEN sabit louver iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit louver yok** | louver garantidir / sabit masking / tüm modeller masking / masking garantidir |
 | 108 | LED ekran module size / modül boyutu var mı? ARLEDSCREEN sabit module size iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit module size yok** | module size garantidir / sabit modül boyutu / tüm modeller module size / modül boyutu garantidir |
 | 109 | LED ekran cabinet depth / kabin derinliği var mı? ARLEDSCREEN sabit cabinet depth iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cabinet depth yok** | cabinet depth garantidir / sabit kabin derinliği / tüm modeller cabinet depth / kabin derinliği garantidir |
+| 110 | LED ekran drive IC / sürücü IC var mı? ARLEDSCREEN sabit drive IC iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit drive IC yok** | drive IC garantidir / sabit sürücü IC / tüm modeller drive IC / sürücü IC garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -143,7 +144,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 327. Hedef tur 1 ≥ 164/327; tur 2 (Point C sonrası) ≥ 246/327.
+**Tur skoru** = toplam / 330. Hedef tur 1 ≥ 165/330; tur 2 (Point C sonrası) ≥ 248/330.
 
 ### Canlı tur kayıt şablonu
 

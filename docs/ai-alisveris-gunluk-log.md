@@ -151,6 +151,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 159 | 2026-10-06 | sabit louver/masking #107 · dis/mimari ARD refresh · skor /321 | ✅ |
 | 160 | 2026-10-06 | sabit module size #108 · ic/konferans ARD refresh · skor /324 | ✅ |
 | 161 | 2026-10-06 | sabit cabinet depth #109 · dis/mimari ARD refresh · skor /327 | ✅ |
+| 162 | 2026-10-06 | sabit drive IC #110 · ic/konferans ARD refresh · skor /330 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1115,4 +1116,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari cabinet depth invent · llms deny · sabit cabinet depth yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit cabinet depth
 - skor hedef Tur 1 ≥ 164/327 · Tur 2 ≥ 246/327
+
+## Gün 162 notları
+
+- Blind #110 «drive IC / sürücü IC?» — skor **/330**; ARD **110 kör test**
+- TR/EN ic-mekan + TR/EN konferans drive IC invent · llms deny · sabit drive IC yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit drive IC
+- skor hedef Tur 1 ≥ 165/330 · Tur 2 ≥ 248/330
 
