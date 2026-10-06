@@ -3581,6 +3581,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit soffit cleat yok"],
     mustNotSay: ["soffit cleat garantidir", "sabit soffit cleat True1", "tüm modeller soffit cleat", "soffit kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 310,
+    q: "LED ekran Sharp AQUOS BOARD / Sharp AQUOS var mı? ARLEDSCREEN sabit Sharp AQUOS BOARD iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Sharp AQUOS BOARD yok"],
+    mustNotSay: ["Sharp AQUOS BOARD garantidir", "sabit Sharp AQUOS BOARD True1", "tüm modeller Sharp AQUOS BOARD", "Sharp AQUOS garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

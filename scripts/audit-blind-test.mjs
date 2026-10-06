@@ -4060,6 +4060,20 @@ if (
   errors.push("blind prompt #309 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit soffit cleat yok");
 }
 
+const pBlind310 = PROMPTS.find((x) => x.id === 310);
+if (!pBlind310 || !/Sharp AQUOS BOARD|Sharp AQUOS/i.test(pBlind310.q)) {
+  errors.push("blind prompt #310 must cover sabit Sharp AQUOS BOARD invent");
+}
+if (
+  pBlind310 &&
+  (!pBlind310.mustSay?.includes("yazılı teklif") ||
+    !pBlind310.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind310.mustSay?.includes("sabit Sharp AQUOS BOARD yok"))
+) {
+  errors.push("blind prompt #310 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sharp AQUOS BOARD yok");
+}
+
+
 
 
 

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 361: blind #309 sabit soffit cleat invent)  
+Son güncelleme: 2026-10-06 (Gün 362: blind #310 sabit Sharp AQUOS BOARD invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 309 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 310 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 309 prompt (alışveriş + varlık)
+## 310 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -333,6 +333,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 307 | LED ekran cricket cleat / cricket kleyt var mı? ARLEDSCREEN sabit cricket cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cricket cleat yok** | cricket cleat garantidir / sabit cricket cleat True1 / tüm modeller cricket cleat / cricket kleyt garantidir |
 | 308 | LED ekran Optoma Interactive / Optoma IFP var mı? ARLEDSCREEN sabit Optoma Interactive iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Optoma Interactive yok** | Optoma Interactive garantidir / sabit Optoma Interactive True1 / tüm modeller Optoma Interactive / Optoma IFP garantidir |
 | 309 | LED ekran soffit cleat / soffit kleyt var mı? ARLEDSCREEN sabit soffit cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit soffit cleat yok** | soffit cleat garantidir / sabit soffit cleat True1 / tüm modeller soffit cleat / soffit kleyt garantidir |
+| 310 | LED ekran Sharp AQUOS BOARD / Sharp AQUOS var mı? ARLEDSCREEN sabit Sharp AQUOS BOARD iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Sharp AQUOS BOARD yok** | Sharp AQUOS BOARD garantidir / sabit Sharp AQUOS BOARD True1 / tüm modeller Sharp AQUOS BOARD / Sharp AQUOS garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -343,7 +344,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 927. Hedef tur 1 ≥ 464/927; tur 2 (Point C sonrası) ≥ 696/927.
+**Tur skoru** = toplam / 930. Hedef tur 1 ≥ 465/930; tur 2 (Point C sonrası) ≥ 698/930.
 
 ### Canlı tur kayıt şablonu
 
