@@ -816,6 +816,19 @@ if (
 ) {
   errors.push("blind prompt #62 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parlaklık homojenliği yok");
 }
+
+const pBlind63 = PROMPTS.find((x) => x.id === 63);
+if (!pBlind63 || !/güç faktörü|power factor|PF|cos/i.test(pBlind63.q)) {
+  errors.push("blind prompt #63 must cover sabit güç faktörü / power factor invent");
+}
+if (
+  pBlind63 &&
+  (!pBlind63.mustSay?.includes("yazılı teklif") ||
+    !pBlind63.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind63.mustSay?.includes("sabit güç faktörü yok"))
+) {
+  errors.push("blind prompt #63 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit güç faktörü yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 62) errors.push(`blindTestPrompts must be 62 (got ${prompts.length})`);
+if (prompts.length !== 63) errors.push(`blindTestPrompts must be 63 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/62 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 62 kör test intent");
+if (!/63 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 63 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[01]) kör test/i.test(ard) && !/62 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–61 kör test without 62");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-2]) kör test/i.test(ard) && !/63 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–62 kör test without 63");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -545,6 +545,15 @@ if (!p62 || !/homojen|uniformity|parlaklık/i.test(p62.q || "")) {
 }
 if (!/homojen|uniformity|parlaklık homojenliği|sabit parlaklık/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit parlaklık homojenliği / brightness uniformity invent");
+}
+
+// Day 115: sabit güç faktörü / power factor invent
+const p63 = (doc.blindTestPrompts || []).find((p) => p.id === 63);
+if (!p63 || !/güç faktörü|power factor|PF|cos/i.test(p63.q || "")) {
+  errors.push("blindTestPrompts #63 must cover sabit güç faktörü / power factor invent");
+}
+if (!/güç faktörü|power factor|PF|cos φ|sabit güç/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit güç faktörü / power factor invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

@@ -617,6 +617,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parlaklık homojenliği yok"],
     mustNotSay: ["±5% uniformity garantidir", "sabit %97 homojenlik", "brightness uniformity garantidir", "±3% yayımlanır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 63,
+    q: "LED ekran güç faktörü / power factor (PF / cos φ) nedir? ARLEDSCREEN sabit PF veya cos φ iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit güç faktörü yok"],
+    mustNotSay: ["PF 0.95 garantidir", "sabit cos φ 0,9", "power factor 0.98", "güç faktörü 1.0 yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

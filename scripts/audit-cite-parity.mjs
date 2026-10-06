@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/62 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 62 kör test intent (not stale 17–61)");
+if (ardTxt && !/63 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 63 kör test intent (not stale 17–62)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[01]) kör test/i.test(ardTxt) && !/62 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–61 kör test without 62");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-2]) kör test/i.test(ardTxt) && !/63 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–62 kör test without 63");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -913,6 +913,22 @@ for (const rel of [
   }
   if (/±5% uniformity garantidir|sabit %97 homojenlik|brightness uniformity garantidir|±3% yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit parlaklık homojenliği / brightness uniformity`);
+  }
+}
+
+
+// Day 115: sabit güç faktörü / power factor — honesty presence
+for (const rel of [
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit güç faktörü yok|no fixed site power factor/i.test(html)) {
+    errors.push(`${rel} should hedge sabit güç faktörü / power factor`);
+  }
+  if (/PF 0\.95 garantidir|sabit cos φ 0,9|power factor 0\.98|güç faktörü 1\.0 yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit güç faktörü / power factor`);
   }
 }
 

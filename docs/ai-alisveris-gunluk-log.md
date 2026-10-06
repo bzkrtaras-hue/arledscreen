@@ -104,6 +104,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 112 | 2026-10-06 | sabit Delta E #60 · AR/RU vitrin ARD · skor /180 | ✅ |
 | 113 | 2026-10-06 | sabit latency/input lag #61 · AR/RU kiosk ARD · skor /183 | ✅ |
 | 114 | 2026-10-06 | sabit parlaklık homojenliği #62 · AR/RU products + TR p2-5 ARD · skor /186 | ✅ |
+| 115 | 2026-10-06 | sabit güç faktörü #63 · TR p3-07/p4/dis p2-5 ARD · skor /189 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -738,3 +739,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR ic-mekan uniformity invent · llms deny · sabit parlaklık homojenliği yok
 - ARD: AR/RU products + TR p2-5 · IndexNow +3 · agentRules sabit parlaklık homojenliği
 - skor hedef Tur 1 ≥ 93/186 · Tur 2 ≥ 140/186
+
+## Gün 115 notları
+
+- Blind #63 «güç faktörü / power factor / PF?» — skor **/189**; ARD **63 kör test**
+- TR/EN mimari + TR dis-mekan PF invent · llms deny · sabit güç faktörü yok
+- ARD: TR p3-07/p4 ic + dis p2-5 · IndexNow +3 · agentRules sabit güç faktörü
+- skor hedef Tur 1 ≥ 95/189 · Tur 2 ≥ 142/189
