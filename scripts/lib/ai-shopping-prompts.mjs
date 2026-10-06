@@ -4445,6 +4445,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit roof apron yok"],
     mustNotSay: ["roof apron garantidir", "sabit roof apron True1", "tüm modeller roof apron", "çatı eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 382,
+    q: "LED ekran Newline TR Series / Newline TR var mı? ARLEDSCREEN sabit Newline TR Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline TR Series yok"],
+    mustNotSay: ["Newline TR Series garantidir", "sabit Newline TR Series True1", "tüm modeller Newline TR Series", "Newline TR garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
