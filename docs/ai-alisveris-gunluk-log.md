@@ -330,6 +330,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 338 | 2026-10-06 | sabit Google Jamboard #286 · ic/konferans ARD refresh · skor /858 | ✅ |
 | 339 | 2026-10-06 | sabit apron cleat #287 · dis/mimari ARD refresh · skor /861 | ✅ |
 | 340 | 2026-10-06 | sabit Lenovo ThinkSmart #288 · ic/konferans ARD refresh · skor /864 | ✅ |
+| 341 | 2026-10-06 | sabit step cleat #289 · dis/mimari ARD refresh · skor /867 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2405,3 +2406,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #288 «Lenovo ThinkSmart / ThinkSmart?» — skor **/864**; ARD **288 kör test**
 - TR/EN ic-mekan + TR/EN konferans Lenovo ThinkSmart invent · llms deny · sabit Lenovo ThinkSmart yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Lenovo ThinkSmart
+
+## Gün 341 notları
+
+- Blind #289 «step cleat / basamak kleyt?» — skor **/867**; ARD **289 kör test**
+- TR/EN dis-mekan + TR/EN mimari step cleat invent · llms deny · sabit step cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit step cleat

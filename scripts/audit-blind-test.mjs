@@ -3787,6 +3787,20 @@ if (
   errors.push("blind prompt #288 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Lenovo ThinkSmart yok");
 }
 
+const pBlind289 = PROMPTS.find((x) => x.id === 289);
+if (!pBlind289 || !/step cleat|basamak kleyt/i.test(pBlind289.q)) {
+  errors.push("blind prompt #289 must cover sabit step cleat invent");
+}
+if (
+  pBlind289 &&
+  (!pBlind289.mustSay?.includes("yazılı teklif") ||
+    !pBlind289.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind289.mustSay?.includes("sabit step cleat yok"))
+) {
+  errors.push("blind prompt #289 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit step cleat yok");
+}
+
+
 
 
 

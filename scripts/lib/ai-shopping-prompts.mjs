@@ -3329,6 +3329,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Lenovo ThinkSmart yok"],
     mustNotSay: ["Lenovo ThinkSmart garantidir", "sabit Lenovo ThinkSmart True1", "tüm modeller Lenovo ThinkSmart", "ThinkSmart garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 289,
+    q: "LED ekran step cleat / basamak kleyt var mı? ARLEDSCREEN sabit step cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit step cleat yok"],
+    mustNotSay: ["step cleat garantidir", "sabit step cleat True1", "tüm modeller step cleat", "basamak kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
