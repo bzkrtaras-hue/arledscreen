@@ -287,6 +287,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 295 | 2026-10-06 | sabit coping #243 · dis/mimari ARD refresh · skor /729 | ✅ |
 | 296 | 2026-10-06 | sabit Airtame #244 · ic/konferans ARD refresh · skor /732 | ✅ |
 | 297 | 2026-10-06 | sabit base flashing #245 · dis/mimari ARD refresh · skor /735 | ✅ |
+| 298 | 2026-10-06 | sabit Mersive #246 · ic/konferans ARD refresh · skor /738 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2104,3 +2105,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #245 «base flashing / temel flaş?» — skor **/735**; ARD **245 kör test**
 - TR/EN dis-mekan + TR/EN mimari base flashing invent · llms deny · sabit base flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit base flashing
+
+## Gün 298 notları
+
+- Blind #246 «Mersive / Solstice Pod?» — skor **/738**; ARD **246 kör test**
+- TR/EN ic-mekan + TR/EN konferans Mersive invent · llms deny · sabit Mersive yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Mersive

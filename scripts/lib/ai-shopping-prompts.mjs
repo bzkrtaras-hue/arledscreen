@@ -2813,6 +2813,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit base flashing yok"],
     mustNotSay: ["base flashing garantidir", "sabit base flashing True1", "tüm modeller base flashing", "temel flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 246,
+    q: "LED ekran Mersive / Solstice Pod var mı? ARLEDSCREEN sabit Mersive iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Mersive yok"],
+    mustNotSay: ["Mersive garantidir", "sabit Mersive True1", "tüm modeller Mersive", "Solstice Pod garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

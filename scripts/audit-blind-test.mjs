@@ -3228,6 +3228,20 @@ if (
   errors.push("blind prompt #245 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base flashing yok");
 }
 
+const pBlind246 = PROMPTS.find((x) => x.id === 246);
+if (!pBlind246 || !/Mersive|Solstice Pod/i.test(pBlind246.q)) {
+  errors.push("blind prompt #246 must cover sabit Mersive invent");
+}
+if (
+  pBlind246 &&
+  (!pBlind246.mustSay?.includes("yazılı teklif") ||
+    !pBlind246.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind246.mustSay?.includes("sabit Mersive yok"))
+) {
+  errors.push("blind prompt #246 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Mersive yok");
+}
+
+
 
 
 
