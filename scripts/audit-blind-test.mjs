@@ -1161,6 +1161,19 @@ if (
   errors.push("blind prompt #88 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit anti-yansıma yok");
 }
 
+const pBlind89 = PROMPTS.find((x) => x.id === 89);
+if (!pBlind89 || !/OPS|Android player/i.test(pBlind89.q)) {
+  errors.push("blind prompt #89 must cover sabit OPS invent");
+}
+if (
+  pBlind89 &&
+  (!pBlind89.mustSay?.includes("yazılı teklif") ||
+    !pBlind89.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind89.mustSay?.includes("sabit OPS yok"))
+) {
+  errors.push("blind prompt #89 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit OPS yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

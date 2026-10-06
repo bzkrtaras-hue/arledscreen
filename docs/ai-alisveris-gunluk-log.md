@@ -130,6 +130,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 138 | 2026-10-06 | sabit kavisli #86 · blog alanya/unye/ic-mekan ARD · skor /258 | ✅ |
 | 139 | 2026-10-06 | sabit döküm kabin #87 · priced dis/ic/gob ARD refresh · skor /261 | ✅ |
 | 140 | 2026-10-06 | sabit anti-yansıma #88 · ic/konferans/ince-pitch ARD refresh · skor /264 | ✅ |
+| 141 | 2026-10-06 | sabit OPS #89 · kiosk/poster ARD refresh · skor /267 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -947,3 +948,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans anti-yansıma invent · llms deny · sabit anti-yansıma yok
 - ARD refresh: rehber ic/konferans + priced ic/ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit anti-yansıma
 - skor hedef Tur 1 ≥ 132/264 · Tur 2 ≥ 198/264
+
+## Gün 141 notları
+
+- Blind #89 «OPS / Android player?» — skor **/267**; ARD **89 kör test**
+- TR/EN kiosk + TR/EN poster OPS invent · llms deny · sabit OPS yok
+- ARD refresh: rehber kiosk/poster + products poster/kiralik (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit OPS
+- skor hedef Tur 1 ≥ 134/267 · Tur 2 ≥ 201/267

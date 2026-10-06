@@ -929,6 +929,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit anti-yansıma yok"],
     mustNotSay: ["anti-yansıma garantidir", "sabit anti-glare", "tüm modeller anti-glare", "anti-glare garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 89,
+    q: "LED ekran OPS / Android player var mı? ARLEDSCREEN sabit OPS iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/kiosk-dijital-ekran/",
+      "/tr/rehber/poster-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit OPS yok"],
+    mustNotSay: ["OPS garantidir", "sabit Android player", "tüm modeller Android player", "Android player garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
