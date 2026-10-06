@@ -1733,6 +1733,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit drip edge yok"],
     mustNotSay: ["drip edge garantidir", "sabit drip edge True1", "tüm modeller drip edge", "damlacık kenarı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 156,
+    q: "LED ekran Control4 / akıllı ev var mı? ARLEDSCREEN sabit Control4 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Control4 yok"],
+    mustNotSay: ["Control4 garantidir", "sabit Control4 True1", "tüm modeller Control4", "akıllı ev garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

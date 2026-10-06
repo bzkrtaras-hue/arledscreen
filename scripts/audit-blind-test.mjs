@@ -2058,6 +2058,20 @@ if (
     !pBlind155.mustSay?.includes("sabit drip edge yok"))
 ) {
   errors.push("blind prompt #155 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drip edge yok");
+
+const pBlind156 = PROMPTS.find((x) => x.id === 156);
+if (!pBlind156 || !/Control4|akıllı ev/i.test(pBlind156.q)) {
+  errors.push("blind prompt #156 must cover sabit Control4 invent");
+}
+if (
+  pBlind156 &&
+  (!pBlind156.mustSay?.includes("yazılı teklif") ||
+    !pBlind156.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind156.mustSay?.includes("sabit Control4 yok"))
+) {
+  errors.push("blind prompt #156 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Control4 yok");
+}
+
 }
 
 }

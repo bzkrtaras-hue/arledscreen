@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–132: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/155 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 155 kör test intent (not stale 17–154)");
+if (ardTxt && !/156 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 156 kör test intent (not stale 17–155)");
 }
-if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–154 kör test without 155");
+if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–155 kör test without 156");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -2156,6 +2156,22 @@ for (const rel of [
     errors.push(`${rel} must not invent sabit drip edge`);
   }
 }
+
+// Day 208: sabit Control4 / akıllı ev — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit Control4 yok|no fixed site Control4/i.test(html)) {
+    errors.push(`${rel} should hedge sabit Control4 / akıllı ev`);
+  }
+  if (/Control4\ garantidir|sabit\ Control4\ True1|tüm\ modeller\ Control4|akıllı\ ev\ garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit Control4`);
+  }
+}
+
 
 
 
