@@ -4541,6 +4541,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fascia apron yok"],
     mustNotSay: ["fascia apron garantidir", "sabit fascia apron True1", "tüm modeller fascia apron", "fascia eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 390,
+    q: "LED ekran Horion Canvas Pro / Horion Canvas var mı? ARLEDSCREEN sabit Horion Canvas Pro iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Horion Canvas Pro yok"],
+    mustNotSay: ["Horion Canvas Pro garantidir", "sabit Horion Canvas Pro True1", "tüm modeller Horion Canvas Pro", "Horion Canvas garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

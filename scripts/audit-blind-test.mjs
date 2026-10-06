@@ -5100,6 +5100,20 @@ if (
   errors.push("blind prompt #389 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia apron yok");
 }
 
+const pBlind390 = PROMPTS.find((x) => x.id === 390);
+if (!pBlind390 || !/Horion Canvas Pro|Horion Canvas/i.test(pBlind390.q)) {
+  errors.push("blind prompt #390 must cover sabit Horion Canvas Pro invent");
+}
+if (
+  pBlind390 &&
+  (!pBlind390.mustSay?.includes("yazılı teklif") ||
+    !pBlind390.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind390.mustSay?.includes("sabit Horion Canvas Pro yok"))
+) {
+  errors.push("blind prompt #390 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Horion Canvas Pro yok");
+}
+
+
 
 
 
