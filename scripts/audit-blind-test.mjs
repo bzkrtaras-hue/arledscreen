@@ -4476,6 +4476,20 @@ if (
   errors.push("blind prompt #341 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ridge flashing yok");
 }
 
+const pBlind342 = PROMPTS.find((x) => x.id === 342);
+if (!pBlind342 || !/Avocor E Series|Avocor G Series/i.test(pBlind342.q)) {
+  errors.push("blind prompt #342 must cover sabit Avocor E Series invent");
+}
+if (
+  pBlind342 &&
+  (!pBlind342.mustSay?.includes("yazılı teklif") ||
+    !pBlind342.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind342.mustSay?.includes("sabit Avocor E Series yok"))
+) {
+  errors.push("blind prompt #342 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Avocor E Series yok");
+}
+
+
 
 
 

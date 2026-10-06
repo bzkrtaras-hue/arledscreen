@@ -3965,6 +3965,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ridge flashing yok"],
     mustNotSay: ["ridge flashing garantidir", "sabit ridge flashing True1", "tüm modeller ridge flashing", "sırt flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 342,
+    q: "LED ekran Avocor E Series / Avocor G Series var mı? ARLEDSCREEN sabit Avocor E Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Avocor E Series yok"],
+    mustNotSay: ["Avocor E Series garantidir", "sabit Avocor E Series True1", "tüm modeller Avocor E Series", "Avocor G Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
