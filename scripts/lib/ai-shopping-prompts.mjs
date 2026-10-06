@@ -5261,6 +5261,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit spandrel apron yok"],
     mustNotSay: ["spandrel apron garantidir", "sabit spandrel apron True1", "tüm modeller spandrel apron", "spandrel eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 450,
+    q: "LED ekran Cisco Room Kit EQ / Room Kit EQ var mı? ARLEDSCREEN sabit Cisco Room Kit EQ iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Cisco Room Kit EQ yok"],
+    mustNotSay: ["Cisco Room Kit EQ garantidir", "sabit Cisco Room Kit EQ True1", "tüm modeller Cisco Room Kit EQ", "Room Kit EQ garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

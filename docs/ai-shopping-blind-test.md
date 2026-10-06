@@ -473,6 +473,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 447 | LED ekran plinth apron / kaide eteği var mı? ARLEDSCREEN sabit plinth apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit plinth apron yok** | plinth apron garantidir / sabit plinth apron True1 / tüm modeller plinth apron / kaide eteği garantidir |
 | 448 | LED ekran Cisco Desk Pro / Cisco Desk Pro var mı? ARLEDSCREEN sabit Cisco Desk Pro iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Cisco Desk Pro yok** | Cisco Desk Pro garantidir / sabit Cisco Desk Pro True1 / tüm modeller Cisco Desk Pro / Cisco Desk Pro dahildir |
 | 449 | LED ekran spandrel apron / spandrel eteği var mı? ARLEDSCREEN sabit spandrel apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit spandrel apron yok** | spandrel apron garantidir / sabit spandrel apron True1 / tüm modeller spandrel apron / spandrel eteği garantidir |
+| 450 | LED ekran Cisco Room Kit EQ / Room Kit EQ var mı? ARLEDSCREEN sabit Cisco Room Kit EQ iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Cisco Room Kit EQ yok** | Cisco Room Kit EQ garantidir / sabit Cisco Room Kit EQ True1 / tüm modeller Cisco Room Kit EQ / Room Kit EQ garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -519,7 +520,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (449 /1347)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (450 /1350)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)

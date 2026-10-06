@@ -5860,6 +5860,18 @@ if (
 ) {
   errors.push("blind prompt #449 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit spandrel apron yok");
 }
+const pBlind450 = PROMPTS.find((x) => x.id === 450);
+if (!pBlind450 || !/Cisco Room Kit EQ/i.test(pBlind450.q)) {
+  errors.push("blind prompt #450 must cover sabit Cisco Room Kit EQ invent");
+}
+if (
+  pBlind450 &&
+  (!pBlind450.mustSay?.includes("yazılı teklif") ||
+    !pBlind450.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind450.mustSay?.includes("sabit Cisco Room Kit EQ yok"))
+) {
+  errors.push("blind prompt #450 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Cisco Room Kit EQ yok");
+}
 
 
 
