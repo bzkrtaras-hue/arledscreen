@@ -1649,6 +1649,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit IR remote yok"],
     mustNotSay: ["IR remote garantidir", "sabit IR remote True1", "tüm modeller IR remote", "kızılötesi kumanda garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 149,
+    q: "LED ekran base plate / taban plakası var mı? ARLEDSCREEN sabit base plate iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit base plate yok"],
+    mustNotSay: ["base plate garantidir", "sabit base plate True1", "tüm modeller base plate", "taban plakası garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

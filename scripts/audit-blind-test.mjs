@@ -1974,6 +1974,20 @@ if (
     !pBlind148.mustSay?.includes("sabit IR remote yok"))
 ) {
   errors.push("blind prompt #148 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit IR remote yok");
+
+const pBlind149 = PROMPTS.find((x) => x.id === 149);
+if (!pBlind149 || !/base plate|taban plakası/i.test(pBlind149.q)) {
+  errors.push("blind prompt #149 must cover sabit base plate invent");
+}
+if (
+  pBlind149 &&
+  (!pBlind149.mustSay?.includes("yazılı teklif") ||
+    !pBlind149.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind149.mustSay?.includes("sabit base plate yok"))
+) {
+  errors.push("blind prompt #149 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base plate yok");
+}
+
 }
 
 }
