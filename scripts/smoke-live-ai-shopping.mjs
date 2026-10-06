@@ -40,6 +40,7 @@ export const CHECKS = [
       "gbpDescription",
       "linkedinAbout",
       "appleBusinessConnect",
+      "bingPlaces",
       "yandexBusiness",
       "wikidataReadiness",
       "crunchbaseDraft",

@@ -208,19 +208,24 @@ for (const url of catalog) {
   }
 
   if (prev.lastSentDate === day) {
-    skipped.sameDay += 1;
-    console.log(`  SKIP same-day ${url}`);
-    state.urls[url] = {
-      ...prev,
-      contentHash: local.hash,
-      bytes: local.bytes,
-      artefact: path.relative(root, local.file),
-      lastLiveStatus: 200,
-    };
-    continue;
+    // Same calendar day: skip only if content hash unchanged.
+    // If invent/deploy changed the artefact after today's POST, re-notify
+    // (otherwise updating contentHash here would swallow the change forever).
+    if (prev.contentHash === local.hash) {
+      skipped.sameDay += 1;
+      console.log(`  SKIP same-day ${url}`);
+      state.urls[url] = {
+        ...prev,
+        lastLiveStatus: 200,
+        bytes: local.bytes,
+        artefact: path.relative(root, local.file),
+      };
+      continue;
+    }
+    console.log(`  CANDIDATE same-day-changed ${url}`);
   }
 
-  if (prev.contentHash === local.hash) {
+  if (prev.lastSentDate !== day && prev.contentHash === local.hash) {
     skipped.unchanged += 1;
     console.log(`  SKIP unchanged ${url}`);
     state.urls[url] = {
@@ -233,7 +238,7 @@ for (const url of catalog) {
   }
 
   candidates.push({ url, hash: local.hash, bytes: local.bytes, file: local.file });
-  console.log(`  CANDIDATE ${url}`);
+  if (prev.lastSentDate !== day) console.log(`  CANDIDATE ${url}`);
 }
 
 saveState(state);

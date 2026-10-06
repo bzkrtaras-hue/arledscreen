@@ -13,7 +13,8 @@ PR #55 ready · canlı prompts=410. Merge paste için zorunlu değil.
 3. Instagram bio ← `instagramBio`
 4. Facebook About ← `facebookAbout`
 5. Dizin short/long ← `directoryShort` / `directoryLong`
-6. (İsteğe) YouTube / Apple / Yandex
+6. Bing Places ← `bingPlaces` (NAP birebir)
+7. (İsteğe) YouTube / Apple / Yandex
 
 Skor: yapıştırma sonrası `docs/ai-shopping-blind-test-scores.md` Tur 1a (/60).
 
@@ -89,6 +90,21 @@ https://arledscreen.com/tr/
 https://arledscreen.com/entity.json
 ```
 
+## bingPlaces
+
+```
+ARLEDSCREEN
+Merkez Mah. Tuna Sok. No:15-17 Kat 1
+34245 Gaziosmanpaşa / İstanbul
++90 530 507 88 34
+arled@arledscreen.com
+https://arledscreen.com/tr/
+https://arledscreen.com/entity.json
+
+Kısa: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
+Kategori: LED display / Digital signage. Web yalnızca https://arledscreen.com/tr/. Uydurma rating / saat / küresel standart yok.
+```
+
 ## yandexBusiness
 
 ```
@@ -127,7 +143,7 @@ Entity: https://arledscreen.com/entity.json
     "notes": [
       "Instagram / Facebook / LinkedIn company URL’leri entity.sameAs ile birebir.",
       "arleds.com sameAs’a eklenmez ta ki 301 canlı doğrulanana kadar.",
-      "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directory/appleBusinessConnect/yandexBusiness/crunchbaseDraft) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
+      "Point C paste: packs.* (GBP/LinkedIn/IG/FB/YouTube/directory/appleBusinessConnect/bingPlaces/yandexBusiness/crunchbaseDraft) üçüncü taraf formlara birebir; uydurma rating/fiyat/küresel standart yok.",
       "wikidataReadiness = alan checklist + kanıt URL; uydurma QID yok; notability yoksa atlayın.",
       "googleMerchantReadiness = 12 SKU TSV only; shipping boş; quote-only yok.",
       "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",

@@ -22,6 +22,7 @@ const ORDER = [
   "directoryLong",
   "youtubeAbout",
   "appleBusinessConnect",
+  "bingPlaces",
   "yandexBusiness",
   "wikidataReadiness",
   "crunchbaseDraft",

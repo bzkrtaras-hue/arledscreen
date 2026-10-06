@@ -90,8 +90,9 @@ Canlı tek dosya yapıştırma: [`point-c-paste-bundle.md`](./point-c-paste-bund
 3. **Instagram bio** → `packs.instagramBio`
 4. **Facebook About** → `packs.facebookAbout`
 5. **Dizin short/long** → `packs.directoryShort` / `directoryLong`
-6. (İsteğe) YouTube / Apple Business / Yandex — aynı cite; uydurma rating/fiyat yok
-7. `arleds.com` → `arledscreen.com/tr/` **301** yoksa sameAs’a ekleme (`blockedUntil301`)
+6. **Bing Places** → `packs.bingPlaces` (NAP birebir; LED display / Digital signage)
+7. (İsteğe) YouTube / Apple Business / Yandex — aynı cite; uydurma rating/fiyat yok
+8. `arleds.com` → `arledscreen.com/tr/` **301** yoksa sameAs’a ekleme (`blockedUntil301`)
 
 Yapıştırma bitince: kör tur 1 tarihini skor kartına yaz; Tur 2’yi Point C sonrası planla.
 

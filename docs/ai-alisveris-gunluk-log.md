@@ -1,3 +1,9 @@
+## Gün 462b — IndexNow same-day fix + Bing Places pack
+
+- IndexNow: hash değişince same-day skip yutmaz (invent sonrası bildirim)
+- Point C `bingPlaces` pack (packs=13)
+- Spam/81-il yok; Point C + Tur 1a hâlâ sahip
+
 ## Gün 462 — invent Blind #410 Neat Bar + ARD temizliği
 
 - Blind #410 Neat Bar · ic/konferans · prompts=410 · /1230
