@@ -3826,6 +3826,20 @@ if (
   errors.push("blind prompt #291 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chimney cleat yok");
 }
 
+const pBlind292 = PROMPTS.find((x) => x.id === 292);
+if (!pBlind292 || !/Seewo|interactive flat panel/i.test(pBlind292.q)) {
+  errors.push("blind prompt #292 must cover sabit Seewo invent");
+}
+if (
+  pBlind292 &&
+  (!pBlind292.mustSay?.includes("yazılı teklif") ||
+    !pBlind292.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind292.mustSay?.includes("sabit Seewo yok"))
+) {
+  errors.push("blind prompt #292 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Seewo yok");
+}
+
+
 
 
 

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 343: blind #291 sabit chimney cleat invent)  
+Son güncelleme: 2026-10-06 (Gün 344: blind #292 sabit Seewo invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 291 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 292 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 291 prompt (alışveriş + varlık)
+## 292 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -315,6 +315,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 289 | LED ekran step cleat / basamak kleyt var mı? ARLEDSCREEN sabit step cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit step cleat yok** | step cleat garantidir / sabit step cleat True1 / tüm modeller step cleat / basamak kleyt garantidir |
 | 290 | LED ekran Vibe Board / Vibe var mı? ARLEDSCREEN sabit Vibe Board iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Vibe Board yok** | Vibe Board garantidir / sabit Vibe Board True1 / tüm modeller Vibe Board / Vibe garantidir |
 | 291 | LED ekran chimney cleat / baca kleyt var mı? ARLEDSCREEN sabit chimney cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit chimney cleat yok** | chimney cleat garantidir / sabit chimney cleat True1 / tüm modeller chimney cleat / baca kleyt garantidir |
+| 292 | LED ekran Seewo / interactive flat panel var mı? ARLEDSCREEN sabit Seewo iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Seewo yok** | Seewo garantidir / sabit Seewo True1 / tüm modeller Seewo / interactive flat panel garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -325,7 +326,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 873. Hedef tur 1 ≥ 437/873; tur 2 (Point C sonrası) ≥ 655/873.
+**Tur skoru** = toplam / 876. Hedef tur 1 ≥ 438/876; tur 2 (Point C sonrası) ≥ 657/876.
 
 ### Canlı tur kayıt şablonu
 

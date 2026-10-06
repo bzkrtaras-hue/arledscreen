@@ -3365,6 +3365,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit chimney cleat yok"],
     mustNotSay: ["chimney cleat garantidir", "sabit chimney cleat True1", "tüm modeller chimney cleat", "baca kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 292,
+    q: "LED ekran Seewo / interactive flat panel var mı? ARLEDSCREEN sabit Seewo iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Seewo yok"],
+    mustNotSay: ["Seewo garantidir", "sabit Seewo True1", "tüm modeller Seewo", "interactive flat panel garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
