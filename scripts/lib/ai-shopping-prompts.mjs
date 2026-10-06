@@ -2609,6 +2609,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Barco yok"],
     mustNotSay: ["Barco garantidir", "sabit Barco True1", "tüm modeller Barco", "projector garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 229,
+    q: "LED ekran jamb flashing / jamb flaş var mı? ARLEDSCREEN sabit jamb flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit jamb flashing yok"],
+    mustNotSay: ["jamb flashing garantidir", "sabit jamb flashing True1", "tüm modeller jamb flashing", "jamb flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

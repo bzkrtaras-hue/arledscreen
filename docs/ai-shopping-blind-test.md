@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 280: blind #228 sabit Barco invent)  
+Son güncelleme: 2026-10-06 (Gün 281: blind #229 sabit jamb flashing invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 228 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 229 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 228 prompt (alışveriş + varlık)
+## 229 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -252,6 +252,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 226 | LED ekran Obsbot / AI camera var mı? ARLEDSCREEN sabit Obsbot iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Obsbot yok** | Obsbot garantidir / sabit Obsbot True1 / tüm modeller Obsbot / AI camera garantidir |
 | 227 | LED ekran head flashing / başlık flaş var mı? ARLEDSCREEN sabit head flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit head flashing yok** | head flashing garantidir / sabit head flashing True1 / tüm modeller head flashing / başlık flaş garantidir |
 | 228 | LED ekran Barco / projector var mı? ARLEDSCREEN sabit Barco iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Barco yok** | Barco garantidir / sabit Barco True1 / tüm modeller Barco / projector garantidir |
+| 229 | LED ekran jamb flashing / jamb flaş var mı? ARLEDSCREEN sabit jamb flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit jamb flashing yok** | jamb flashing garantidir / sabit jamb flashing True1 / tüm modeller jamb flashing / jamb flaş garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -262,7 +263,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 684. Hedef tur 1 ≥ 342/684; tur 2 (Point C sonrası) ≥ 513/684.
+**Tur skoru** = toplam / 687. Hedef tur 1 ≥ 344/687; tur 2 (Point C sonrası) ≥ 516/687.
 
 ### Canlı tur kayıt şablonu
 
