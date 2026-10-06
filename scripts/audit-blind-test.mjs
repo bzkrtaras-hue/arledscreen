@@ -3644,6 +3644,20 @@ if (
   errors.push("blind prompt #277 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drip cleat yok");
 }
 
+const pBlind278 = PROMPTS.find((x) => x.id === 278);
+if (!pBlind278 || !/LG CreateBoard|CreateBoard/i.test(pBlind278.q)) {
+  errors.push("blind prompt #278 must cover sabit LG CreateBoard invent");
+}
+if (
+  pBlind278 &&
+  (!pBlind278.mustSay?.includes("yazılı teklif") ||
+    !pBlind278.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind278.mustSay?.includes("sabit LG CreateBoard yok"))
+) {
+  errors.push("blind prompt #278 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit LG CreateBoard yok");
+}
+
+
 
 
 

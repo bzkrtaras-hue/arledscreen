@@ -3197,6 +3197,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit drip cleat yok"],
     mustNotSay: ["drip cleat garantidir", "sabit drip cleat True1", "tüm modeller drip cleat", "damlalık kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 278,
+    q: "LED ekran LG CreateBoard / CreateBoard var mı? ARLEDSCREEN sabit LG CreateBoard iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit LG CreateBoard yok"],
+    mustNotSay: ["LG CreateBoard garantidir", "sabit LG CreateBoard True1", "tüm modeller LG CreateBoard", "CreateBoard garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

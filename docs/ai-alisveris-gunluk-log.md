@@ -319,6 +319,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 327 | 2026-10-06 | sabit base cleat #275 · dis/mimari ARD refresh · skor /825 | ✅ |
 | 328 | 2026-10-06 | sabit Samsung Flip #276 · ic/konferans ARD refresh · skor /828 | ✅ |
 | 329 | 2026-10-06 | sabit drip cleat #277 · dis/mimari ARD refresh · skor /831 | ✅ |
+| 330 | 2026-10-06 | sabit LG CreateBoard #278 · ic/konferans ARD refresh · skor /834 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2328,3 +2329,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #277 «drip cleat / damlalık kleyt?» — skor **/831**; ARD **277 kör test**
 - TR/EN dis-mekan + TR/EN mimari drip cleat invent · llms deny · sabit drip cleat yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit drip cleat
+
+## Gün 330 notları
+
+- Blind #278 «LG CreateBoard / CreateBoard?» — skor **/834**; ARD **278 kör test**
+- TR/EN ic-mekan + TR/EN konferans LG CreateBoard invent · llms deny · sabit LG CreateBoard yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit LG CreateBoard
