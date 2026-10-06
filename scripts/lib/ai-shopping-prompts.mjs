@@ -2897,6 +2897,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline yok"],
     mustNotSay: ["Newline garantidir", "sabit Newline True1", "tüm modeller Newline", "IFP display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 253,
+    q: "LED ekran through-wall cleat / duvar geçiş kleyt var mı? ARLEDSCREEN sabit through-wall cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit through-wall cleat yok"],
+    mustNotSay: ["through-wall cleat garantidir", "sabit through-wall cleat True1", "tüm modeller through-wall cleat", "duvar geçiş kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -3319,6 +3319,20 @@ if (
   errors.push("blind prompt #252 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline yok");
 }
 
+const pBlind253 = PROMPTS.find((x) => x.id === 253);
+if (!pBlind253 || !/through-wall cleat|duvar geçiş kleyt/i.test(pBlind253.q)) {
+  errors.push("blind prompt #253 must cover sabit through-wall cleat invent");
+}
+if (
+  pBlind253 &&
+  (!pBlind253.mustSay?.includes("yazılı teklif") ||
+    !pBlind253.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind253.mustSay?.includes("sabit through-wall cleat yok"))
+) {
+  errors.push("blind prompt #253 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit through-wall cleat yok");
+}
+
+
 
 
 
