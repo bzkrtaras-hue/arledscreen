@@ -485,6 +485,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ISO yok"],
     mustNotSay: ["ISO 9001 sertifikalıdır", "ISO 14001 belgelidir", "sabit ISO listesi", "tüm süreçler ISO", "ücretsiz kargo dahil"],
   },
+  {
+    id: 52,
+    q: "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
+    paths: [
+      "/tr/about/",
+      "/tr/sss/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit UL/ETL yok"],
+    mustNotSay: ["UL listed garantidir", "ETL sertifikalıdır", "tüm ürünler UL", "sabit UL listesi", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

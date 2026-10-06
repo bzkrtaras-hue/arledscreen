@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 51) errors.push(`blindTestPrompts must be 51 (got ${prompts.length})`);
+if (prompts.length !== 52) errors.push(`blindTestPrompts must be 52 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/51 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 51 kör test intent");
+if (!/52 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 52 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|50) kör test/i.test(ard) && !/51 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–50 kör test without 51");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[01]) kör test/i.test(ard) && !/52 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–51 kör test without 52");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -457,6 +457,14 @@ if (!p51 || !/ISO 9001|ISO 14001|ISO/i.test(p51.q || "")) {
 }
 if (!/ISO 9001|ISO 14001|sabit ISO/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit ISO invent");
+}
+// Day 104: sabit UL / ETL invent
+const p52 = (doc.blindTestPrompts || []).find((p) => p.id === 52);
+if (!p52 || !/UL|ETL/i.test(p52.q || "")) {
+  errors.push("blindTestPrompts #52 must cover sabit UL / ETL invent");
+}
+if (!/UL|ETL|sabit UL/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit UL / ETL invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

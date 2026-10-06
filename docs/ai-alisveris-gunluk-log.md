@@ -93,6 +93,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 101 | 2026-10-06 | sabit depolama/storage °C #49 · /ar/ /ru/ home ARD · skor /147 | ✅ |
 | 102 | 2026-10-06 | sabit CE/RoHS #50 · /ar/ /ru/ about ARD · skor /150 | ✅ |
 | 103 | 2026-10-06 | sabit ISO #51 · EN mimari + AR/RU quote ARD · skor /153 | ✅ |
+| 104 | 2026-10-06 | sabit UL/ETL #52 · EN products + AR/RU hesaplayici ARD · skor /156 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -650,3 +651,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - about/sss/mimari ISO invent · llms deny · sabit kalite belgesi yok
 - ARD: EN mimari + /ar/quote + /ru/quote · IndexNow +3 · agentRules sabit ISO
 - skor hedef Tur 1 ≥ 77/153 · Tur 2 ≥ 115/153
+
+## Gün 104 notları
+
+- Blind #52 «UL / ETL listeli mi?» — skor **/156**; ARD **52 kör test**
+- about/sss/entity FAQ UL/ETL invent · llms deny · sabit güvenlik listesi yok
+- ARD: EN products + /ar/hesaplayici + /ru/hesaplayici · IndexNow +3 · agentRules sabit UL/ETL
+- skor hedef Tur 1 ≥ 78/156 · Tur 2 ≥ 117/156

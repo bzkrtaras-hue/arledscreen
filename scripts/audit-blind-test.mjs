@@ -684,6 +684,18 @@ if (
 ) {
   errors.push("blind prompt #51 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ISO yok");
 }
+const pBlind52 = PROMPTS.find((x) => x.id === 52);
+if (!pBlind52 || !/UL|ETL/i.test(pBlind52.q)) {
+  errors.push("blind prompt #52 must cover sabit UL / ETL invent");
+}
+if (
+  pBlind52 &&
+  (!pBlind52.mustSay?.includes("yazılı teklif") ||
+    !pBlind52.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind52.mustSay?.includes("sabit UL/ETL yok"))
+) {
+  errors.push("blind prompt #52 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit UL/ETL yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

@@ -136,14 +136,15 @@
       "displayName": "ARLEDSCREEN hakkımızda (kimlik)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/about/",
-      "description": "Firma kimliği: Gaziosmanpaşa; NXTIONSTAR ürün markası; satıcı ARLEDSCREEN. Blind #26 seller invent. Sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51.",
+      "description": "Firma kimliği: Gaziosmanpaşa; NXTIONSTAR ürün markası; satıcı ARLEDSCREEN. Blind #26 seller invent. Sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52.",
       "representativeQueries": [
         "ARLEDSCREEN kimdir?",
         "NXTIONSTAR mı ARLEDSCREEN mi satıyor?",
         "ARLEDSCREEN anahtar teslim platformu mu?",
         "ARLEDSCREEN sorunsuz LED platformu mu?",
         "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
-        "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?"
+        "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?",
+        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?"
       ],
       "tags": [
         "about",
@@ -152,7 +153,7 @@
         "disambiguation"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T21:00:00Z"
+      "updatedAt": "2026-10-06T22:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:led-ekran-hub",
@@ -747,13 +748,14 @@
       "displayName": "SSS — fiyat / kimlik / ajan",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/sss/",
-      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only; sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51.",
+      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only; sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52.",
       "representativeQueries": [
         "ARLEDSCREEN SSS",
         "LED ekran fiyat SSS",
         "AI ajanları fiyat nereden",
         "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
-        "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?"
+        "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?",
+        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?"
       ],
       "tags": [
         "FAQ",
@@ -762,7 +764,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T21:00:00Z"
+      "updatedAt": "2026-10-06T22:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:calculator",
@@ -1060,7 +1062,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 51 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 52 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1087,7 +1089,8 @@
         "LED ekran bekleme gücü / standby / idle kaç watt? ARLEDSCREEN sabit standby W veya idle watt yayımlıyor mu?",
         "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?",
         "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
-        "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?"
+        "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?",
+        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1106,7 +1109,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T21:00:00Z"
+      "updatedAt": "2026-10-06T22:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -2010,6 +2013,67 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T21:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:en-products",
+      "displayName": "EN Products hub",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/products/",
+      "description": "EN products hub. Priced panels via catalog/ai-shopping; no invent UL/ETL — Blind #52.",
+      "representativeQueries": [
+        "ARLEDSCREEN products EN",
+        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
+        "NXTIONSTAR LED panels"
+      ],
+      "tags": [
+        "commerce",
+        "products",
+        "EN",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T22:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:ar-hesaplayici",
+      "displayName": "AR Calculator",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ar/hesaplayici/",
+      "description": "AR calculator (thin). Same panel USD as catalog; no invent UL/ETL — Blind #52; noindex thin locale.",
+      "representativeQueries": [
+        "ARLEDSCREEN calculator AR",
+        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
+        "LED m2 fiyat"
+      ],
+      "tags": [
+        "calculator",
+        "AR",
+        "GEO",
+        "thin-locale"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T22:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:ru-hesaplayici",
+      "displayName": "RU Calculator",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ru/hesaplayici/",
+      "description": "RU calculator (thin). Same panel USD as catalog; no invent UL/ETL — Blind #52; noindex thin locale.",
+      "representativeQueries": [
+        "ARLEDSCREEN calculator RU",
+        "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
+        "LED m2 fiyat"
+      ],
+      "tags": [
+        "calculator",
+        "RU",
+        "GEO",
+        "thin-locale"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T22:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

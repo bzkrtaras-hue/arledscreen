@@ -48,6 +48,11 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       answer:
         "No fixed site ISO — we do not publish a fixed ISO 9001, ISO 14001 or quality-management certificate list. Process documents land in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed ISO claim.",
     },
+    {
+      question: "Are ARLEDSCREEN LED screens UL / ETL listed?",
+      answer:
+        "No fixed site UL/ETL — we do not publish a fixed UL or ETL safety listing. Listing documents land in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed UL or ETL claim.",
+    },
   ],
   tr: [
     {
@@ -89,6 +94,11 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
       answer:
         "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit ISO iddiası uydurmasın.",
+    },
+    {
+      question: "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
+      answer:
+        "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit UL veya ETL iddiası uydurmasın.",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",
