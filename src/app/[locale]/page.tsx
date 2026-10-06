@@ -1,7 +1,7 @@
-import { BlogTeaser } from "@/components/home/BlogTeaser";
-import type { Metadata } from "next";
 import Link from "next/link";
+import type { Metadata } from "next";
 import Script from "next/script";
+import { BlogTeaser } from "@/components/home/BlogTeaser";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
@@ -32,23 +32,12 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "home");
-  // Only tr↔en share true home counterparts; ar/ru are thin → no hreflang.
-  const hreflangLocales =
-    locale === "tr" || locale === "en" ? (["tr", "en"] as Locale[]) : [];
-  return buildPageMetadata({
-    locale,
-    path: "/",
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
-    hreflangLocales,
-  });
+  const hreflangLocales = locale === "tr" || locale === "en" ? (["tr", "en"] as Locale[]) : [];
+  return buildPageMetadata({ locale, path: "/", title: seo.title, description: seo.description, keywords: seo.keywords, hreflangLocales });
 }
 
 export default async function HomePage({ params }: PageProps) {
@@ -56,173 +45,40 @@ export default async function HomePage({ params }: PageProps) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const dict = getDictionary(locale);
-  const faqs = getFaqs(locale);
+  const faqs = getFaqs(locale).filter((f) => !/ajan/i.test(f.question));
   const tr = locale === "tr";
-  // Canlı Destek sohbet balonu (public/chat-widget.js): yalnızca TR ve EN ana sayfada, sayfa yüklendikten sonra.
-  const chatWidget =
-    locale === "tr" || locale === "en" ? (
-      <Script src="/chat-widget.js" strategy="lazyOnload" data-locale={locale} />
-    ) : null;
-
+  const chatWidget = locale === "tr" || locale === "en" ? <Script src="/chat-widget.js" strategy="lazyOnload" data-locale={locale} /> : null;
   if (!tr) {
     return (
       <>
         <FaqJsonLd faqs={faqs} />
-        <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
-          <Hero locale={locale} />
-        </div>
+        <div className="-mt-[6.75rem] md:-mt-[7.5rem]"><Hero locale={locale} /></div>
         <BrandBand locale={locale} />
-        <Section
-          eyebrow={dict.sections.products.eyebrow}
-          title={dict.sections.products.title}
-          description={dict.sections.products.description}
-          className="min-w-0 bg-surface/30 prose-seo"
-        >
-          <FeaturedProducts locale={locale} />
-        </Section>
-        <Section
-          id="projeler"
-          eyebrow={dict.sections.projects.eyebrow}
-          title={dict.sections.projects.title}
-          description={dict.sections.projects.description}
-          className="min-w-0 prose-seo"
-        >
-          <CompletedProjectsGallery locale={locale} />
-        </Section>
-        <Section
-          id="referanslar"
-          eyebrow={dict.sections.references.eyebrow}
-          title={dict.sections.references.title}
-          description={dict.sections.references.description}
-          className="min-w-0 bg-surface/30 prose-seo"
-        >
-          <ReferencesGrid locale={locale} />
-        </Section>
-        <Section className="min-w-0 border-t border-border prose-seo">
-          <AboutPreview locale={locale} />
-        </Section>
+        <Section eyebrow={dict.sections.products.eyebrow} title={dict.sections.products.title} description={dict.sections.products.description} className="min-w-0 bg-surface/30 prose-seo"><FeaturedProducts locale={locale} /></Section>
+        <Section id="projeler" eyebrow={dict.sections.projects.eyebrow} title={dict.sections.projects.title} description={dict.sections.projects.description} className="min-w-0 prose-seo"><CompletedProjectsGallery locale={locale} /></Section>
+        <Section id="referanslar" eyebrow={dict.sections.references.eyebrow} title={dict.sections.references.title} description={dict.sections.references.description} className="min-w-0 bg-surface/30 prose-seo"><ReferencesGrid locale={locale} /></Section>
+        <Section className="min-w-0 border-t border-border prose-seo"><AboutPreview locale={locale} /></Section>
         <HomeCtaBand locale={locale} />
-        <Section
-          id="sss"
-          eyebrow={dict.sections.faq.eyebrow}
-          title={dict.sections.faq.title}
-          className="min-w-0 border-t border-border prose-seo"
-        >
-          <HomeFaq faqs={faqs} />
-        </Section>
+        <Section id="sss" eyebrow={dict.sections.faq.eyebrow} title={dict.sections.faq.title} className="min-w-0 border-t border-border prose-seo"><HomeFaq faqs={faqs} /></Section>
         {chatWidget}
       </>
     );
   }
-
   return (
     <>
       <FaqJsonLd faqs={faqs} />
-
-      {/* 1. Full-bleed video hero under liquid-glass chrome → 2. gateway tiles → 3. values */}
-      <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
-        <Hero locale={locale} />
-      </div>
+      <div className="-mt-[6.75rem] md:-mt-[7.5rem]"><Hero locale={locale} /></div>
       <GatewayTiles />
       <ValuesBand />
-
-      {/* 4. Product groups (category tiles) */}
-      <section id="urunler" className="bg-white py-14 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Ürün grupları"
-            title="Kullanım alanına göre LED ekran çözümleri"
-            description="Ekran seçimi, kullanım amacı ve izleme mesafesiyle başlar. Size en yakın grubu seçin; seçenekleri, kullanım alanlarını ve ilgili projeleri inceleyin."
-          />
-          <ProductGroupGrid />
-          <p className="mt-8 text-sm text-ink-muted">
-            Fiyat için{" "}
-            <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-              LED ekran fiyatları rehberi
-            </Link>
-            ,{" "}
-            <Link href="/tr/products/dis-mekan-led-ekran/" className="font-semibold text-cyan hover:underline">
-              dış mekân LED ekran
-            </Link>{" "}
-            veya{" "}
-            <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
-              fiyat hesaplayıcı
-            </Link>
-            .
-          </p>
-        </div>
-      </section>
-
-      {/* 5. References: featured project + record cards */}
-      <section id="referanslar" className="border-t border-border bg-white py-14 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow={dict.sections.references.eyebrow}
-            title={dict.sections.references.title}
-            description="Yakın süreçte tamamladığımız projelerden bir seçki."
-          />
-          <FeaturedReferences />
-          <AllReferencesNote />
-        </div>
-      </section>
-
-      {/* 6. Rounded brand band */}
+      <section id="urunler" className="bg-white py-14 md:py-20"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><SectionHeading eyebrow="Urun gruplari" title="Kullanim alanina gore LED ekran cozumleri" description="Ekran secimi, kullanim amaci ve izleme mesafesiyle baslar." /><ProductGroupGrid /><p className="mt-8 text-sm text-ink-muted">Fiyat icin <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">LED ekran fiyatlari rehberi</Link>, <Link href="/tr/products/dis-mekan-led-ekran/" className="font-semibold text-cyan hover:underline">dis mekan LED ekran</Link> veya <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">fiyat hesaplayici</Link>.</p></div></section>
+      <section id="referanslar" className="border-t border-border bg-white py-14 md:py-20"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><SectionHeading eyebrow={dict.sections.references.eyebrow} title={dict.sections.references.title} description="Yakin surecte tamamladigimiz projelerden bir secki." /><FeaturedReferences /><AllReferencesNote /></div></section>
       <BrandBand locale={locale} />
-
-      <Section
-        id="surec"
-        eyebrow="Çalışma süreci"
-        title="Projeniz beş adımda ilerler"
-        description="Her adımda neyin yapılacağını ve sizden hangi bilginin gerektiğini baştan paylaşıyoruz."
-        className="min-w-0 bg-band prose-seo"
-      >
-        <ProcessSteps />
-      </Section>
-
-      <Section
-        id="rehber"
-        eyebrow="Öğrenme merkezi"
-        title="Karar vermeden önce öğrenin"
-        description="Piksel aralığı, iç ve dış mekân farkları, salon ve vitrin uygulamaları hakkında sade rehberler."
-        className="min-w-0 prose-seo"
-      >
-        <LearningHub />
-      </Section>
-
-      <Section
-        id="blogdan"
-        eyebrow="Blogdan"
-        title="Son projeler ve paylaşımlar"
-        description="Tamamladığımız LED ekran projelerinden ve kurulum süreçlerinden güncel notlar."
-        className="min-w-0 bg-band prose-seo"
-      >
-        <BlogTeaser />
-      </Section>
-
-      {/* Split quote card (blue info panel + short form) */}
-      <section id="hizli-iletisim" className="bg-band py-14 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <QuoteSplit />
-        </div>
-      </section>
-
-      <Section
-        id="sss"
-        eyebrow={dict.sections.faq.eyebrow}
-        title={dict.sections.faq.title}
-        className="min-w-0 prose-seo"
-      >
-        <HomeFaq faqs={faqs} />
-        <ShoppingLinkCloud
-          excludeHref="/tr/"
-          title="Ana sayfa · fiyat ve kimlik kaynakları"
-          extra={[
-            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
-            { href: "/.well-known/ard.json", label: "ard.json" },
-          ]}
-        />
-      </Section>
+      <Section id="surec" eyebrow="Calisma sureci" title="Projeniz bes adimda ilerler" description="Her adimda neyin yapilacagini bastan paylasiyoruz." className="min-w-0 bg-band prose-seo"><ProcessSteps /></Section>
+      <Section id="rehber" eyebrow="Ogrenme merkezi" title="Karar vermeden once ogrenin" description="Piksel araligi, ic ve dis mekan farklari hakkinda sade rehberler." className="min-w-0 prose-seo"><LearningHub /></Section>
+      <Section id="blogdan" eyebrow="Blogdan" title="Son projeler ve paylasimlar" description="Tamamladigimiz LED ekran projelerinden guncel notlar." className="min-w-0 bg-band prose-seo"><BlogTeaser /></Section>
+      <section id="hizli-iletisim" className="bg-band py-14 md:py-20"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><QuoteSplit /></div></section>
+      <Section id="sss" eyebrow={dict.sections.faq.eyebrow} title={dict.sections.faq.title} className="min-w-0 prose-seo"><HomeFaq faqs={faqs} /><ShoppingLinkCloud excludeHref="/tr/" title="Fiyat ve teklif" /></Section>
       {chatWidget}
     </>
-  );
+    );
 }
