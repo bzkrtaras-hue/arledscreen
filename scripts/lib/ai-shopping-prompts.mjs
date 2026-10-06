@@ -4277,6 +4277,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parapet coping cap yok"],
     mustNotSay: ["parapet coping cap garantidir", "sabit parapet coping cap True1", "tüm modeller parapet coping cap", "parapet kapak flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 368,
+    q: "LED ekran Newline NT Series / Newline NT Touch var mı? ARLEDSCREEN sabit Newline NT Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline NT Series yok"],
+    mustNotSay: ["Newline NT Series garantidir", "sabit Newline NT Series True1", "tüm modeller Newline NT Series", "Newline NT Touch garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

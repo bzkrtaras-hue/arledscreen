@@ -409,6 +409,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 417 | 2026-10-06 | sabit gutter apron #365 · dis/mimari ARD refresh · skor /1095 | ✅ |
 | 418 | 2026-10-06 | sabit ViewSonic IFP55 #366 · ic/konferans ARD refresh · skor /1098 | ✅ |
 | 419 | 2026-10-06 | sabit parapet coping cap #367 · dis/mimari ARD refresh · skor /1101 | ✅ |
+| 420 | 2026-10-06 | sabit Newline NT Series #368 · ic/konferans ARD refresh · skor /1104 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2958,3 +2959,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #367 «parapet coping cap / parapet kapak flaşör?» — skor **/1101**; ARD **367 kör test**
 - TR/EN dis-mekan + TR/EN mimari parapet coping cap invent · llms deny · sabit parapet coping cap yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit parapet coping cap
+
+## Gün 420 notları
+
+- Blind #368 «Newline NT Series / Newline NT Touch?» — skor **/1104**; ARD **368 kör test**
+- TR/EN ic-mekan + TR/EN konferans Newline NT Series invent · llms deny · sabit Newline NT Series yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Newline NT Series
