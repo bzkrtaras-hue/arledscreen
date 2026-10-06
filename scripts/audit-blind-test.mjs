@@ -5788,6 +5788,18 @@ if (
 ) {
   errors.push("blind prompt #443 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit verge apron yok");
 }
+const pBlind444 = PROMPTS.find((x) => x.id === 444);
+if (!pBlind444 || !/Room Bar Mini/i.test(pBlind444.q)) {
+  errors.push("blind prompt #444 must cover sabit Room Bar Mini invent");
+}
+if (
+  pBlind444 &&
+  (!pBlind444.mustSay?.includes("yazılı teklif") ||
+    !pBlind444.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind444.mustSay?.includes("sabit Room Bar Mini yok"))
+) {
+  errors.push("blind prompt #444 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Bar Mini yok");
+}
 
 
 
