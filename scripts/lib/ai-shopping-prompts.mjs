@@ -2357,6 +2357,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit soffit vent yok"],
     mustNotSay: ["soffit vent garantidir", "sabit soffit vent True1", "tüm modeller soffit vent", "saçak havalandırma garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 208,
+    q: "LED ekran Nureva / microphone array var mı? ARLEDSCREEN sabit Nureva iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Nureva yok"],
+    mustNotSay: ["Nureva garantidir", "sabit Nureva True1", "tüm modeller Nureva", "microphone array garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

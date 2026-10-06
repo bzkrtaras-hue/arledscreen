@@ -2734,6 +2734,20 @@ if (
   errors.push("blind prompt #207 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit soffit vent yok");
 }
 
+const pBlind208 = PROMPTS.find((x) => x.id === 208);
+if (!pBlind208 || !/Nureva|microphone array/i.test(pBlind208.q)) {
+  errors.push("blind prompt #208 must cover sabit Nureva invent");
+}
+if (
+  pBlind208 &&
+  (!pBlind208.mustSay?.includes("yazılı teklif") ||
+    !pBlind208.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind208.mustSay?.includes("sabit Nureva yok"))
+) {
+  errors.push("blind prompt #208 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Nureva yok");
+}
+
+
 
 
 

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 259: blind #207 sabit soffit vent invent)  
+Son güncelleme: 2026-10-06 (Gün 260: blind #208 sabit Nureva invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 207 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 208 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 207 prompt (alışveriş + varlık)
+## 208 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -231,6 +231,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 205 | LED ekran ridge vent / mahya havalandırma var mı? ARLEDSCREEN sabit ridge vent iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ridge vent yok** | ridge vent garantidir / sabit ridge vent True1 / tüm modeller ridge vent / mahya havalandırma garantidir |
 | 206 | LED ekran AVer / PTZ var mı? ARLEDSCREEN sabit AVer iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit AVer yok** | AVer garantidir / sabit AVer True1 / tüm modeller AVer / PTZ garantidir |
 | 207 | LED ekran soffit vent / saçak havalandırma var mı? ARLEDSCREEN sabit soffit vent iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit soffit vent yok** | soffit vent garantidir / sabit soffit vent True1 / tüm modeller soffit vent / saçak havalandırma garantidir |
+| 208 | LED ekran Nureva / microphone array var mı? ARLEDSCREEN sabit Nureva iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Nureva yok** | Nureva garantidir / sabit Nureva True1 / tüm modeller Nureva / microphone array garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -241,7 +242,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 621. Hedef tur 1 ≥ 311/621; tur 2 (Point C sonrası) ≥ 466/621.
+**Tur skoru** = toplam / 624. Hedef tur 1 ≥ 312/624; tur 2 (Point C sonrası) ≥ 468/624.
 
 ### Canlı tur kayıt şablonu
 
