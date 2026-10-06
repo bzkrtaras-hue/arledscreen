@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 137) errors.push(`blindTestPrompts must be 137 (got ${prompts.length})`);
+if (prompts.length !== 138) errors.push(`blindTestPrompts must be 138 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/137 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 137 kör test intent");
+if (!/138 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 138 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–136 kör test without 137");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–137 kör test without 138");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1232,6 +1232,15 @@ if (!p137 || !/Neutrik/i.test(p137.q || "")) {
 }
 if (!/Neutrik|sabit Neutrik/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit Neutrik invent");
+}
+
+// Day 190: sabit multi-window / çoklu pencere invent
+const p138 = (doc.blindTestPrompts || []).find((p) => p.id === 138);
+if (!p138 || !/multi-window|çoklu pencere/i.test(p138.q || "")) {
+  errors.push("blindTestPrompts #138 must cover sabit multi-window invent");
+}
+if (!/multi-window|çoklu pencere|sabit multi-window/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit multi-window invent");
 }
 
 // Day 76: agentRules full disambiguation

@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–132: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/137 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 137 kör test intent (not stale 17–136)");
+if (ardTxt && !/138 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 138 kör test intent (not stale 17–137)");
 }
-if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–136 kör test without 137");
+if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–137 kör test without 138");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -2004,6 +2004,21 @@ for (const rel of [
   }
   if (/PIP garantidir|sabit görüntü içinde görüntü|tüm modeller PIP|görüntü içinde görüntü garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit PIP`);
+  }
+}
+
+// Day 190: sabit multi-window / çoklu pencere — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit multi-window yok|no fixed site multi-window/i.test(html)) {
+    errors.push(`${rel} should hedge sabit multi-window / çoklu pencere`);
+  }
+  if (/multi\-window\ garantidir|sabit\ multi\-window\ True1|tüm\ modeller\ multi\-window|çoklu\ pencere\ garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit multi-window`);
   }
 }
 

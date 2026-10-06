@@ -1826,6 +1826,20 @@ if (
   errors.push("blind prompt #137 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neutrik yok");
 }
 
+
+const pBlind138 = PROMPTS.find((x) => x.id === 138);
+if (!pBlind138 || !/multi-window|çoklu pencere/i.test(pBlind138.q)) {
+  errors.push("blind prompt #138 must cover sabit multi-window invent");
+}
+if (
+  pBlind138 &&
+  (!pBlind138.mustSay?.includes("yazılı teklif") ||
+    !pBlind138.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind138.mustSay?.includes("sabit multi-window yok"))
+) {
+  errors.push("blind prompt #138 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit multi-window yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 

@@ -179,6 +179,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 187 | 2026-10-06 | sabit powerCON #135 · dis/mimari ARD refresh · skor /405 | ✅ |
 | 188 | 2026-10-06 | sabit KVM #136 · ic/konferans ARD refresh · skor /408 | ✅ |
 | 189 | 2026-10-06 | sabit Neutrik #137 · dis/mimari ARD refresh · skor /411 | ✅ |
+| 190 | 2026-10-06 | sabit multi-window #138 · ic/konferans ARD refresh · skor /414 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1339,4 +1340,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari Neutrik invent · llms deny · sabit Neutrik yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit Neutrik
 - skor hedef Tur 1 ≥ 206/411 · Tur 2 ≥ 309/411
+
+## Gün 190 notları
+
+- Blind #138 «multi-window / çoklu pencere?» — skor **/414**; ARD **138 kör test**
+- TR/EN ic-mekan + TR/EN konferans multi-window invent · llms deny · sabit multi-window yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit multi-window
+- skor hedef Tur 1 ≥ 207/414 · Tur 2 ≥ 311/414
 

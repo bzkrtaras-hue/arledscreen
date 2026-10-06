@@ -1517,6 +1517,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neutrik yok"],
     mustNotSay: ["Neutrik garantidir", "sabit Neutrik True1", "tüm modeller Neutrik", "Neutrik standarttır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 138,
+    q: "LED ekran multi-window / çoklu pencere var mı? ARLEDSCREEN sabit multi-window iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit multi-window yok"],
+    mustNotSay: ["multi-window garantidir", "sabit multi-window True1", "tüm modeller multi-window", "çoklu pencere garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
