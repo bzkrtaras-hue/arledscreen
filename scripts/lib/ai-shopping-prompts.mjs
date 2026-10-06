@@ -2489,6 +2489,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BirdDog yok"],
     mustNotSay: ["BirdDog garantidir", "sabit BirdDog True1", "tüm modeller BirdDog", "NDI PTZ garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 219,
+    q: "LED ekran chimney flashing / baca flaşı var mı? ARLEDSCREEN sabit chimney flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit chimney flashing yok"],
+    mustNotSay: ["chimney flashing garantidir", "sabit chimney flashing True1", "tüm modeller chimney flashing", "baca flaşı garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
