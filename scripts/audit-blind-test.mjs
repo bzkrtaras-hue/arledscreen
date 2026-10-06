@@ -4281,6 +4281,20 @@ if (
   errors.push("blind prompt #326 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CTOUCH Riva yok");
 }
 
+const pBlind327 = PROMPTS.find((x) => x.id === 327);
+if (!pBlind327 || !/cap flashing|kapak flaşör/i.test(pBlind327.q)) {
+  errors.push("blind prompt #327 must cover sabit cap flashing invent");
+}
+if (
+  pBlind327 &&
+  (!pBlind327.mustSay?.includes("yazılı teklif") ||
+    !pBlind327.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind327.mustSay?.includes("sabit cap flashing yok"))
+) {
+  errors.push("blind prompt #327 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cap flashing yok");
+}
+
+
 
 
 

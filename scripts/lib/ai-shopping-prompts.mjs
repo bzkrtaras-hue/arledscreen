@@ -3785,6 +3785,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit CTOUCH Riva yok"],
     mustNotSay: ["CTOUCH Riva garantidir", "sabit CTOUCH Riva True1", "tüm modeller CTOUCH Riva", "CTOUCH Leddura garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 327,
+    q: "LED ekran cap flashing / kapak flaşör var mı? ARLEDSCREEN sabit cap flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cap flashing yok"],
+    mustNotSay: ["cap flashing garantidir", "sabit cap flashing True1", "tüm modeller cap flashing", "kapak flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

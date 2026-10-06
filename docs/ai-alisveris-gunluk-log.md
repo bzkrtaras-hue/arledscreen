@@ -368,6 +368,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 376 | 2026-10-06 | sabit Hisense GoBoard #324 · ic/konferans ARD refresh · skor /972 | ✅ |
 | 377 | 2026-10-06 | sabit balcony cleat #325 · dis/mimari ARD refresh · skor /975 | ✅ |
 | 378 | 2026-10-06 | sabit CTOUCH Riva #326 · ic/konferans ARD refresh · skor /978 | ✅ |
+| 379 | 2026-10-06 | sabit cap flashing #327 · dis/mimari ARD refresh · skor /981 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2671,3 +2672,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #326 «CTOUCH Riva / CTOUCH Leddura?» — skor **/978**; ARD **326 kör test**
 - TR/EN ic-mekan + TR/EN konferans CTOUCH Riva invent · llms deny · sabit CTOUCH Riva yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit CTOUCH Riva
+
+## Gün 379 notları
+
+- Blind #327 «cap flashing / kapak flaşör?» — skor **/981**; ARD **327 kör test**
+- TR/EN dis-mekan + TR/EN mimari cap flashing invent · llms deny · sabit cap flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit cap flashing
