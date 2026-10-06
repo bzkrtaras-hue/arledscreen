@@ -5045,6 +5045,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit skylight apron yok"],
     mustNotSay: ["skylight apron garantidir", "sabit skylight apron True1", "tüm modeller skylight apron", "ışıklık eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 432,
+    q: "LED ekran Owl Bar / Owl Bar var mı? ARLEDSCREEN sabit Owl Bar iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Owl Bar yok"],
+    mustNotSay: ["Owl Bar garantidir", "sabit Owl Bar True1", "tüm modeller Owl Bar", "Owl Bar dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
