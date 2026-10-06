@@ -5165,6 +5165,20 @@ if (
   errors.push("blind prompt #394 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit DTEN Bar Plus yok");
 }
 
+const pBlind395 = PROMPTS.find((x) => x.id === 395);
+if (!pBlind395 || !/cap apron|kapak eteği/i.test(pBlind395.q)) {
+  errors.push("blind prompt #395 must cover sabit cap apron invent");
+}
+if (
+  pBlind395 &&
+  (!pBlind395.mustSay?.includes("yazılı teklif") ||
+    !pBlind395.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind395.mustSay?.includes("sabit cap apron yok"))
+) {
+  errors.push("blind prompt #395 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cap apron yok");
+}
+
+
 
 
 

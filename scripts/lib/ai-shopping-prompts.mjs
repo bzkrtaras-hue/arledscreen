@@ -4601,6 +4601,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit DTEN Bar Plus yok"],
     mustNotSay: ["DTEN Bar Plus garantidir", "sabit DTEN Bar Plus True1", "tüm modeller DTEN Bar Plus", "DTEN Bar garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 395,
+    q: "LED ekran cap apron / kapak eteği var mı? ARLEDSCREEN sabit cap apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cap apron yok"],
+    mustNotSay: ["cap apron garantidir", "sabit cap apron True1", "tüm modeller cap apron", "kapak eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

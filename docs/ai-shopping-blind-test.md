@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 446: blind #394 sabit DTEN Bar Plus invent)  
+Son güncelleme: 2026-10-06 (Gün 447: blind #395 sabit cap apron invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 394 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 395 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 394 prompt (alışveriş + varlık)
+## 395 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -418,6 +418,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 392 | LED ekran Seewo Board Pro / Seewo Board var mı? ARLEDSCREEN sabit Seewo Board Pro iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Seewo Board Pro yok** | Seewo Board Pro garantidir / sabit Seewo Board Pro True1 / tüm modeller Seewo Board Pro / Seewo Board garantidir |
 | 393 | LED ekran valley apron / vadi eteği var mı? ARLEDSCREEN sabit valley apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit valley apron yok** | valley apron garantidir / sabit valley apron True1 / tüm modeller valley apron / vadi eteği garantidir |
 | 394 | LED ekran DTEN Bar Plus / DTEN Bar var mı? ARLEDSCREEN sabit DTEN Bar Plus iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit DTEN Bar Plus yok** | DTEN Bar Plus garantidir / sabit DTEN Bar Plus True1 / tüm modeller DTEN Bar Plus / DTEN Bar garantidir |
+| 395 | LED ekran cap apron / kapak eteği var mı? ARLEDSCREEN sabit cap apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cap apron yok** | cap apron garantidir / sabit cap apron True1 / tüm modeller cap apron / kapak eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -428,7 +429,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1182. Hedef tur 1 ≥ 591/1182; tur 2 (Point C sonrası) ≥ 887/1182.
+**Tur skoru** = toplam / 1185. Hedef tur 1 ≥ 593/1185; tur 2 (Point C sonrası) ≥ 889/1185.
 
 ### Canlı tur kayıt şablonu
 

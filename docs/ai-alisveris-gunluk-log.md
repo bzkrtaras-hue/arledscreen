@@ -436,6 +436,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 444 | 2026-10-06 | sabit Seewo Board Pro #392 · ic/konferans ARD refresh · skor /1176 | ✅ |
 | 445 | 2026-10-06 | sabit valley apron #393 · dis/mimari ARD refresh · skor /1179 | ✅ |
 | 446 | 2026-10-06 | sabit DTEN Bar Plus #394 · ic/konferans ARD refresh · skor /1182 | ✅ |
+| 447 | 2026-10-06 | sabit cap apron #395 · dis/mimari ARD refresh · skor /1185 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3147,3 +3148,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #394 «DTEN Bar Plus / DTEN Bar?» — skor **/1182**; ARD **394 kör test**
 - TR/EN ic-mekan + TR/EN konferans DTEN Bar Plus invent · llms deny · sabit DTEN Bar Plus yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit DTEN Bar Plus
+
+## Gün 447 notları
+
+- Blind #395 «cap apron / kapak eteği?» — skor **/1185**; ARD **395 kör test**
+- TR/EN dis-mekan + TR/EN mimari cap apron invent · llms deny · sabit cap apron yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit cap apron
