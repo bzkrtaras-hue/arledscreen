@@ -1,7 +1,7 @@
-## Gün 496 — invent Blind #444 Room Bar Mini
+## Gün 496 — invent Blind #444 Room Bar Mini LIVE
 
-- Blind #444 Room Bar Mini · ic/konferans · prompts=444 · /1332 · build pending
-- Point C paste yok · Tur 1a skor boş
+- Blind #444 Room Bar Mini · ic/konferans · prompts=444 · /1332 · CF deploy · smoke:live 20/20 · IndexNow OK
+- Point C paste yok · Tur 1a skor boş · Drive Doc prompts→444
 - Point C + Tur 1a hâlâ sahip
 
 ## Gün 495 — invent Blind #443 verge apron LIVE
