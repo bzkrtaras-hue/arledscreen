@@ -1,3 +1,8 @@
+## Gün 477 — invent Blind #425 jamb apron
+
+- Blind #425 jamb apron / jamb eteği · dis/mimari · prompts=425 · /1275
+- Point C + Tur 1a hâlâ sahip
+
 ## Gün 476 — invent Blind #424 Room Kit Mini
 
 - Blind #424 Room Kit Mini · ic/konferans · prompts=424 · /1272

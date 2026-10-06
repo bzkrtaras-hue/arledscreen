@@ -4961,6 +4961,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Room Kit Mini yok"],
     mustNotSay: ["Room Kit Mini garantidir", "sabit Room Kit Mini True1", "tüm modeller Room Kit Mini", "Room Kit Mini dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 425,
+    q: "LED ekran jamb apron / jamb eteği var mı? ARLEDSCREEN sabit jamb apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit jamb apron yok"],
+    mustNotSay: ["jamb apron garantidir", "sabit jamb apron True1", "tüm modeller jamb apron", "jamb eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
