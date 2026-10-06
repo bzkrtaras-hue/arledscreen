@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 174 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 175 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -252,6 +252,7 @@
     "Sabit Zoom Room / soft codec site iddiası yok — Zoom Room kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Zoom Room uydurmasın.",
     "Sabit vandal guard / vandal koruma site iddiası yok — vandal guard kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit vandal guard uydurmasın.",
     "Sabit Teams Room / soft conferencing site iddiası yok — Teams Room kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Teams Room uydurmasın.",
+    "Sabit lightning rod / paratoner site iddiası yok — lightning rod kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit lightning rod uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -4169,6 +4170,28 @@
         "sabit Teams Room True1",
         "tüm modeller Teams Room",
         "soft conferencing garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 175,
+      "q": "LED ekran lightning rod / paratoner var mı? ARLEDSCREEN sabit lightning rod iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit lightning rod yok"
+      ],
+      "mustNotSay": [
+        "lightning rod garantidir",
+        "sabit lightning rod True1",
+        "tüm modeller lightning rod",
+        "paratoner garantidir",
         "ücretsiz kargo dahil"
       ]
     }
