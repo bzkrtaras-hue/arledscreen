@@ -104,3 +104,19 @@ for (const need of ["/entity.json", "/entity-profiles.json", "/catalog.json", "/
 }
 console.log("postbuild: AI static artefacts OK (entity/catalog/ard/profiles/ai-shopping/llms/feed + CORS)");
 
+// robots.txt is served by functions/robots.txt.js (no-store). Static out/robots.txt
+// would win over the Function and can stick in CDN cache with a stale Host: https://…
+const robotsOut = path.join("out", "robots.txt");
+if (fs.existsSync(robotsOut)) {
+  fs.rmSync(robotsOut);
+  console.log("postbuild: removed out/robots.txt — Functions/robots.txt.js serves live");
+}
+const routesLive = JSON.parse(fs.readFileSync(routesJson, "utf8"));
+if (!(routesLive.include || []).includes("/robots.txt")) {
+  console.warn("postbuild: WARNING _routes.json include missing /robots.txt (Function will not run)");
+} else if ((routesLive.exclude || []).includes("/robots.txt")) {
+  console.warn("postbuild: WARNING _routes.json excludes /robots.txt (Function blocked)");
+} else {
+  console.log("postbuild: robots.txt → Pages Function (include /, /robots.txt)");
+}
+
