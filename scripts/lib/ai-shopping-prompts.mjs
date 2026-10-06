@@ -5093,6 +5093,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit soffit apron yok"],
     mustNotSay: ["soffit apron garantidir", "sabit soffit apron True1", "tüm modeller soffit apron", "saçak altı eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 436,
+    q: "LED ekran Room Mate / Room Mate var mı? ARLEDSCREEN sabit Room Mate iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Room Mate yok"],
+    mustNotSay: ["Room Mate garantidir", "sabit Room Mate True1", "tüm modeller Room Mate", "Room Mate dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

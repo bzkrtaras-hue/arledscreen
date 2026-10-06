@@ -459,6 +459,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 433 | LED ekran dormer apron / çatı çıkma eteği var mı? ARLEDSCREEN sabit dormer apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit dormer apron yok** | dormer apron garantidir / sabit dormer apron True1 / tüm modeller dormer apron / çatı çıkma eteği garantidir |
 | 434 | LED ekran Tap IP / Tap IP var mı? ARLEDSCREEN sabit Tap IP iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Tap IP yok** | Tap IP garantidir / sabit Tap IP True1 / tüm modeller Tap IP / Tap IP dahildir |
 | 435 | LED ekran soffit apron / saçak altı eteği var mı? ARLEDSCREEN sabit soffit apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit soffit apron yok** | soffit apron garantidir / sabit soffit apron True1 / tüm modeller soffit apron / saçak altı eteği garantidir |
+| 436 | LED ekran Room Mate / Room Mate var mı? ARLEDSCREEN sabit Room Mate iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Room Mate yok** | Room Mate garantidir / sabit Room Mate True1 / tüm modeller Room Mate / Room Mate dahildir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -469,7 +470,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1287 (429 × 0–3). Hedef tur 1 ≥ 644/1305; tur 2 (Point C sonrası) ≥ 966/1305.
+**Tur skoru** = toplam / 1308 (436 × 0–3). Hedef tur 1 ≥ 654/1308; tur 2 (Point C sonrası) ≥ 981/1308.
 
 ### Canlı tur kayıt şablonu
 
@@ -505,7 +506,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (421 /1305)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (436 /1308)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)
