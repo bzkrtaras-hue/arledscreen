@@ -3592,6 +3592,20 @@ if (
   errors.push("blind prompt #273 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ridge cleat yok");
 }
 
+const pBlind274 = PROMPTS.find((x) => x.id === 274);
+if (!pBlind274 || !/Surface Hub|Microsoft Hub/i.test(pBlind274.q)) {
+  errors.push("blind prompt #274 must cover sabit Surface Hub invent");
+}
+if (
+  pBlind274 &&
+  (!pBlind274.mustSay?.includes("yazılı teklif") ||
+    !pBlind274.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind274.mustSay?.includes("sabit Surface Hub yok"))
+) {
+  errors.push("blind prompt #274 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Surface Hub yok");
+}
+
+
 
 
 

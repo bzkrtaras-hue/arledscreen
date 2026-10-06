@@ -3149,6 +3149,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ridge cleat yok"],
     mustNotSay: ["ridge cleat garantidir", "sabit ridge cleat True1", "tüm modeller ridge cleat", "mahya kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 274,
+    q: "LED ekran Surface Hub / Microsoft Hub var mı? ARLEDSCREEN sabit Surface Hub iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Surface Hub yok"],
+    mustNotSay: ["Surface Hub garantidir", "sabit Surface Hub True1", "tüm modeller Surface Hub", "Microsoft Hub garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
