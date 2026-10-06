@@ -3077,6 +3077,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit coping cleat yok"],
     mustNotSay: ["coping cleat garantidir", "sabit coping cleat True1", "tüm modeller coping cleat", "parapet kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 268,
+    q: "LED ekran Avocor / collaboration display var mı? ARLEDSCREEN sabit Avocor iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Avocor yok"],
+    mustNotSay: ["Avocor garantidir", "sabit Avocor True1", "tüm modeller Avocor", "collaboration display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

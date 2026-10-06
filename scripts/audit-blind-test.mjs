@@ -3514,6 +3514,20 @@ if (
   errors.push("blind prompt #267 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit coping cleat yok");
 }
 
+const pBlind268 = PROMPTS.find((x) => x.id === 268);
+if (!pBlind268 || !/Avocor|collaboration display/i.test(pBlind268.q)) {
+  errors.push("blind prompt #268 must cover sabit Avocor invent");
+}
+if (
+  pBlind268 &&
+  (!pBlind268.mustSay?.includes("yazılı teklif") ||
+    !pBlind268.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind268.mustSay?.includes("sabit Avocor yok"))
+) {
+  errors.push("blind prompt #268 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Avocor yok");
+}
+
+
 
 
 
