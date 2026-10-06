@@ -467,11 +467,12 @@
       "displayName": "Mimari / mühendislik LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
-      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif.",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42.",
       "representativeQueries": [
         "mimari LED mühendislik",
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
-        "esnek LED mimari"
+        "esnek LED mimari",
+        "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -481,7 +482,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T07:00:00Z"
+      "updatedAt": "2026-10-06T12:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
@@ -633,7 +634,7 @@
       "displayName": "Vitrin LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/vitrin-led-ekran/",
-      "description": "Vitrin / perakende LED rehber. Quote-only şeffaf/poster; stok paket invent yok.",
+      "description": "Vitrin / perakende LED rehber. Quote-only şeffaf/poster; stok paket invent yok; sabit kalınlık/kg yok — Blind #42.",
       "representativeQueries": [
         "vitrin LED ekran",
         "mağaza vitrin LED",
@@ -646,7 +647,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T06:00:00Z"
+      "updatedAt": "2026-10-06T12:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:kiralama-intent",
@@ -1040,7 +1041,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 41 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 42 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1057,7 +1058,8 @@
         "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
-        "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?"
+        "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?",
+        "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1076,7 +1078,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T11:00:00Z"
+      "updatedAt": "2026-10-06T12:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -1465,6 +1467,66 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T11:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:otel-hub",
+      "displayName": "Otel LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/otel-led-ekran/",
+      "description": "Otel / hospitality LED intent. Sabit kg/m² yok — Blind #42; keşif + yazılı teklif.",
+      "representativeQueries": [
+        "otel LED ekran",
+        "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?",
+        "otel lobi LED"
+      ],
+      "tags": [
+        "commerce",
+        "hotel",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T12:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:avm-hub",
+      "displayName": "AVM LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/avm-led-ekran/",
+      "description": "AVM / mall LED intent. Sabit kg/m² / kalınlık yok — Blind #42.",
+      "representativeQueries": [
+        "AVM LED ekran",
+        "alışveriş merkezi LED",
+        "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "mall",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T12:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:fuar-hub",
+      "displayName": "Fuar LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/fuar-led-ekran/",
+      "description": "Fuar / exhibition LED intent. Sabit kg/m² yok — Blind #42.",
+      "representativeQueries": [
+        "fuar LED ekran",
+        "exhibition LED",
+        "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "fair",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T12:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

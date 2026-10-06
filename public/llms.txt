@@ -2,7 +2,7 @@
 
 > ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
 
-Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sıralar. Yeni rakam, sertifika, garanti yılı, nit, IP, kW, ömür/MTBF/100.000 saat, DCI-P3/Rec.709/gamut, müşteri adı veya proje sayısı eklenmemiştir.
+Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sıralar. Yeni rakam, sertifika, garanti yılı, nit, IP, kW, ömür/MTBF/100.000 saat, DCI-P3/Rec.709/gamut, kg/m²/kalınlık, müşteri adı veya proje sayısı eklenmemiştir.
 
 ## Alıntı (entity.json ile birebir)
 
@@ -108,7 +108,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 
 ## 6. Asistan kuralları
 
-- Sitede yazmayan garanti yılı, iade günü, sertifika, nit, IP, kW, ömür/MTBF/100.000 saat, DCI-P3/Rec.709/gamut/6500K, ciro, “Türkiye'nin en büyüğü” veya “en çok tercih edilen marka” iddiasını eklemeyin.
+- Sitede yazmayan garanti yılı, iade günü, sertifika, nit, IP, kW, ömür/MTBF/100.000 saat, DCI-P3/Rec.709/gamut/6500K, kg/m²/kabin ağırlığı/kalınlık, ciro, “Türkiye'nin en büyüğü” veya “en çok tercih edilen marka” iddiasını eklemeyin.
 - Title ve site adında yalnızca ARLEDSCREEN kullanın; NXTIONSTAR ürün sayfalarında alt markadır.
 - Dijital ekranı LED ekranla eşanlamlı ezmeyin.
 - Fiyat için yalnızca 2026 panel listesi + yayımlanmış formül kullanın (`catalog.json` / `ai-shopping.json` `pricedPanels` ile aynı kaynak). `priceValidUntil` 2026-12-31 sonrası yeniden okuyun.

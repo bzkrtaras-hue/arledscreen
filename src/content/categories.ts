@@ -482,7 +482,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     ],
     highlights: [
       "Camın arkasındaki ürün teşhirini büyük ölçüde korur",
-      "İnce ve hafif yapı, vitrin camına yakın montaj",
+      "İnce ve hafif form faktörü (sabit kg/m² / kalınlık yok — teklifte), vitrin camına yakın montaj",
       "Vitrin ölçüsüne göre planlama",
       "Keşif, montaj ve teknik servis yazılı teklifte",
     ],

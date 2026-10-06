@@ -83,6 +83,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 91 | 2026-10-06 | sabit HDR/gri skala #39 · p3-07/p1-86/kiralik-mi ARD · skor /117 | ✅ |
 | 92 | 2026-10-06 | sabit ömür/MTBF #40 · p2-9/cephe/billboard ARD · skor /120 | ✅ |
 | 93 | 2026-10-06 | sabit gamut/DCI-P3 #41 · magaza/sahne/vitrin ARD · skor /123 | ✅ |
+| 94 | 2026-10-06 | sabit kg/m² #42 · otel/avm/fuar ARD · skor /126 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -570,3 +571,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - ic-mekan/konferans gamut invent · llms DCI-P3 deny
 - ARD: magaza + sahne + vitrin · IndexNow +3 · agentRules sabit gamut
 - skor hedef Tur 1 ≥ 62/123 · Tur 2 ≥ 92/123
+
+## Gün 94 notları
+
+- Blind #42 «m² başına kaç kg / sabit kg/m² / kalınlık?» — skor **/126**; ARD **42 kör test**
+- mimari/vitrin/şeffaf kg invent · llms kg deny
+- ARD: otel + avm + fuar · IndexNow +3 · agentRules sabit kg
+- skor hedef Tur 1 ≥ 63/126 · Tur 2 ≥ 95/126

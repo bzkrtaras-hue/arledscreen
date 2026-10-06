@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 41 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 42 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 41) errors.push(`blindTestPrompts must be 41 (got ${prompts.length})`);
+if (prompts.length !== 42) errors.push(`blindTestPrompts must be 42 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/41 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 41 kör test intent");
+if (!/42 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 42 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|40) kör test/i.test(ard) && !/41 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–40 kör test without 41");
+if (/(?:2[0-9]|3[0-9]|4[01]) kör test/i.test(ard) && !/42 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–41 kör test without 42");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -377,6 +377,14 @@ if (!p41 || !/renk sıcaklığı|DCI-P3|Rec\.709|gamut/i.test(p41.q || "")) {
 }
 if (!/DCI-P3|Rec\.709|gamut|6500K|renk sıcaklığı/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit DCI-P3 / Rec.709 / gamut invent");
+}
+// Day 94: sabit kg/m² / kabin ağırlığı / kalınlık invent
+const p42 = (doc.blindTestPrompts || []).find((p) => p.id === 42);
+if (!p42 || !/kg|ağırlık|kalınlık/i.test(p42.q || "")) {
+  errors.push("blindTestPrompts #42 must cover sabit kg/m² / kalınlık invent");
+}
+if (!/kg\/m²|kabin ağırlığı|kalınlık|sabit kg/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit kg/m² / kabin ağırlığı / kalınlık invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

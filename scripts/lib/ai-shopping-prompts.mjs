@@ -361,6 +361,19 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gamut yok"],
     mustNotSay: ["DCI-P3 garanti", "Rec.709 yayımlanır", "sabit 6500K", "ücretsiz kargo dahil"],
   },
+  {
+    id: 42,
+    q: "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/rehber/vitrin-led-ekran/",
+      "/tr/products/seffaf-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kg yok"],
+    mustNotSay: ["sabit 25 kg", "30 kg/m² garanti", "sabit kalınlık", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

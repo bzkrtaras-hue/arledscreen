@@ -294,7 +294,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Statik yük, iskelet ve cephe detayı",
           body:
-            "Dış mekân LED’de rüzgâr ve ölü yük hesabı; iç mekânda asma tavan / duvar taşıyıcı kapasitesi kritiktir. Çelik veya alüminyum iskelet arayüzü üretici kabin montaj noktalarına göre çizilir. Su yalıtımı, termal genleşme ve servis paneli boşlukları detay projeye işlenir.",
+            "Dış mekân LED’de rüzgâr ve ölü yük hesabı; iç mekânda asma tavan / duvar taşıyıcı kapasitesi kritiktir — sabit kg/m² veya sabit kabin ağırlığı yayımlanmaz (sabit kg yok); yük modeli Gaziosmanpaşa keşif + yazılı teklifte. Çelik veya alüminyum iskelet arayüzü üretici kabin montaj noktalarına göre çizilir. Su yalıtımı, termal genleşme ve servis paneli boşlukları detay projeye işlenir.",
         },
         {
           h2: "Güç, ısı ve sinyal mühendisliği",
@@ -316,7 +316,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "LED ağırlığı projeye nasıl verilir?",
           answer:
-            "Kabin + iskelet + kablo tahmini kg/m² olarak paylaşılır; statik mühendis bu değeri taşıyıcı hesaba işler. Kesin rakam ürün ve montaj tipine bağlıdır.",
+            "Kabin + iskelet + kablo tahmini kg/m² olarak paylaşılır; statik mühendis bu değeri taşıyıcı hesaba işler — sabit kg yok: sitede sabit kg/m² / kabin ağırlığı / kalınlık yayımlanmaz. Kesin rakam ürün ve montaj tipine göre Gaziosmanpaşa keşif + yazılı teklifte.",
         },
         {
           question: "Şeffaf vitrin LED mimariye uyumlu mu?",
@@ -435,7 +435,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Montaj: cam önü, cam arkası, asma",
           body:
-            "Cam arkası montajda derinlik ve servis erişimi; cam önünde güvenlik ve yaya mesafesi kritiktir. Kablo gizleme ve güç panosu mağaza operasyonunu bozmayacak şekilde yerleştirilir. Yangın ve kaçış güzergâhı ile çakışma kontrol edilir.",
+            "Cam arkası montajda derinlik ve servis erişimi; cam önünde güvenlik ve yaya mesafesi kritiktir — sabit kabin kalınlığı / mm iddiası yok; derinlik keşif + yazılı teklifte. Kablo gizleme ve güç panosu mağaza operasyonunu bozmayacak şekilde yerleştirilir. Yangın ve kaçış güzergâhı ile çakışma kontrol edilir.",
         },
         {
           h2: "İçerik ve YZ / CMS hattı",
@@ -876,7 +876,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "How is LED weight provided?",
           answer:
-            "As estimated kg/m² for cabinet + frame + cabling; structural engineers fold it into load calcs. Final numbers depend on product and mount.",
+            "As estimated kg/m² for cabinet + frame + cabling; structural engineers fold it into load calcs — no fixed site kg/m² / cabinet weight / thickness claim. Final numbers land in the Gaziosmanpaşa survey and written quote.",
         },
         {
           question: "Are transparent retail LEDs architecture-friendly?",
@@ -994,7 +994,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Mounting: behind glass, in front, hung",
           body:
-            "Behind-glass depth and service access matter; in-front mounts need pedestrian clearance. Cable concealment and power boards must not disrupt store ops or egress.",
+            "Behind-glass depth and service access matter; in-front mounts need pedestrian clearance — no fixed cabinet thickness/mm claim; depth lands in the survey and written quote. Cable concealment and power boards must not disrupt store ops or egress.",
         },
         {
           h2: "Content and AI/CMS pipelines",
