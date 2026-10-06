@@ -1589,6 +1589,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ballast yok"],
     mustNotSay: ["ballast garantidir", "sabit ballast True1", "tüm modeller ballast", "karşı ağırlık garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 144,
+    q: "LED ekran BYOD / kablosuz sunum var mı? ARLEDSCREEN sabit BYOD iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BYOD yok"],
+    mustNotSay: ["BYOD garantidir", "sabit BYOD True1", "tüm modeller BYOD", "kablosuz sunum garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

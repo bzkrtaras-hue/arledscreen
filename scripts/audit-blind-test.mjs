@@ -1910,6 +1910,20 @@ if (
   errors.push("blind prompt #143 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ballast yok");
 }
 
+
+const pBlind144 = PROMPTS.find((x) => x.id === 144);
+if (!pBlind144 || !/BYOD|kablosuz sunum/i.test(pBlind144.q)) {
+  errors.push("blind prompt #144 must cover sabit BYOD invent");
+}
+if (
+  pBlind144 &&
+  (!pBlind144.mustSay?.includes("yazılı teklif") ||
+    !pBlind144.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind144.mustSay?.includes("sabit BYOD yok"))
+) {
+  errors.push("blind prompt #144 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BYOD yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 

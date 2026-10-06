@@ -185,6 +185,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 193 | 2026-10-06 | sabit leveling foot #141 · dis/mimari ARD refresh · skor /423 | ✅ |
 | 194 | 2026-10-06 | sabit matrix switcher #142 · ic/konferans ARD refresh · skor /426 | ✅ |
 | 195 | 2026-10-06 | sabit ballast #143 · dis/mimari ARD refresh · skor /429 | ✅ |
+| 196 | 2026-10-06 | sabit BYOD #144 · ic/konferans ARD refresh · skor /432 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1387,4 +1388,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari ballast invent · llms deny · sabit ballast yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit ballast
 - skor hedef Tur 1 ≥ 215/429 · Tur 2 ≥ 322/429
+
+## Gün 196 notları
+
+- Blind #144 «BYOD / kablosuz sunum?» — skor **/432**; ARD **144 kör test**
+- TR/EN ic-mekan + TR/EN konferans BYOD invent · llms deny · sabit BYOD yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit BYOD
+- skor hedef Tur 1 ≥ 216/432 · Tur 2 ≥ 324/432
 

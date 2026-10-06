@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 143) errors.push(`blindTestPrompts must be 143 (got ${prompts.length})`);
+if (prompts.length !== 144) errors.push(`blindTestPrompts must be 144 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/143 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 143 kör test intent");
+if (!/144 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 144 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–142 kör test without 143");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–143 kör test without 144");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1286,6 +1286,15 @@ if (!p143 || !/ballast|karşı ağırlık/i.test(p143.q || "")) {
 }
 if (!/ballast|karşı ağırlık|sabit ballast/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit ballast invent");
+}
+
+// Day 196: sabit BYOD / kablosuz sunum invent
+const p144 = (doc.blindTestPrompts || []).find((p) => p.id === 144);
+if (!p144 || !/BYOD|kablosuz sunum/i.test(p144.q || "")) {
+  errors.push("blindTestPrompts #144 must cover sabit BYOD invent");
+}
+if (!/BYOD|kablosuz sunum|sabit BYOD/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit BYOD invent");
 }
 
 // Day 76: agentRules full disambiguation
