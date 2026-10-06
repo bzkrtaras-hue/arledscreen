@@ -2474,6 +2474,20 @@ if (
   errors.push("blind prompt #187 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit frost heave yok");
 }
 
+const pBlind188 = PROMPTS.find((x) => x.id === 188);
+if (!pBlind188 || !/Logitech Rally|kamera bar/i.test(pBlind188.q)) {
+  errors.push("blind prompt #188 must cover sabit Logitech Rally invent");
+}
+if (
+  pBlind188 &&
+  (!pBlind188.mustSay?.includes("yazılı teklif") ||
+    !pBlind188.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind188.mustSay?.includes("sabit Logitech Rally yok"))
+) {
+  errors.push("blind prompt #188 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Rally yok");
+}
+
+
 
 
 

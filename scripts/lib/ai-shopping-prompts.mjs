@@ -2117,6 +2117,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit frost heave yok"],
     mustNotSay: ["frost heave garantidir", "sabit frost heave True1", "tüm modeller frost heave", "don kabarması garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 188,
+    q: "LED ekran Logitech Rally / kamera bar var mı? ARLEDSCREEN sabit Logitech Rally iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Logitech Rally yok"],
+    mustNotSay: ["Logitech Rally garantidir", "sabit Logitech Rally True1", "tüm modeller Logitech Rally", "kamera bar garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

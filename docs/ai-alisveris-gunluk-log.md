@@ -229,6 +229,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 237 | 2026-10-06 | sabit neoprene gasket #185 · dis/mimari ARD refresh · skor /555 | ✅ |
 | 238 | 2026-10-06 | sabit Yealink #186 · ic/konferans ARD refresh · skor /558 | ✅ |
 | 239 | 2026-10-06 | sabit frost heave #187 · dis/mimari ARD refresh · skor /561 | ✅ |
+| 240 | 2026-10-06 | sabit Logitech Rally #188 · ic/konferans ARD refresh · skor /564 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1698,3 +1699,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #187 «frost heave / don kabarması?» — skor **/561**; ARD **187 kör test**
 - TR/EN dis-mekan + TR/EN mimari frost heave invent · llms deny · sabit frost heave yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit frost heave
+
+## Gün 240 notları
+
+- Blind #188 «Logitech Rally / kamera bar?» — skor **/564**; ARD **188 kör test**
+- TR/EN ic-mekan + TR/EN konferans Logitech Rally invent · llms deny · sabit Logitech Rally yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Logitech Rally
