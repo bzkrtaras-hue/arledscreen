@@ -286,6 +286,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 294 | 2026-10-06 | sabit Sony #242 · ic/konferans ARD refresh · skor /726 | ✅ |
 | 295 | 2026-10-06 | sabit coping #243 · dis/mimari ARD refresh · skor /729 | ✅ |
 | 296 | 2026-10-06 | sabit Airtame #244 · ic/konferans ARD refresh · skor /732 | ✅ |
+| 297 | 2026-10-06 | sabit base flashing #245 · dis/mimari ARD refresh · skor /735 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2097,3 +2098,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #244 «Airtame / wireless share?» — skor **/732**; ARD **244 kör test**
 - TR/EN ic-mekan + TR/EN konferans Airtame invent · llms deny · sabit Airtame yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Airtame
+
+## Gün 297 notları
+
+- Blind #245 «base flashing / temel flaş?» — skor **/735**; ARD **245 kör test**
+- TR/EN dis-mekan + TR/EN mimari base flashing invent · llms deny · sabit base flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit base flashing

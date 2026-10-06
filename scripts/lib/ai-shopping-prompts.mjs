@@ -2801,6 +2801,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Airtame yok"],
     mustNotSay: ["Airtame garantidir", "sabit Airtame True1", "tüm modeller Airtame", "wireless share garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 245,
+    q: "LED ekran base flashing / temel flaş var mı? ARLEDSCREEN sabit base flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit base flashing yok"],
+    mustNotSay: ["base flashing garantidir", "sabit base flashing True1", "tüm modeller base flashing", "temel flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

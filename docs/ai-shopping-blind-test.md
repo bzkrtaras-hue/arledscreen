@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 296: blind #244 sabit Airtame invent)  
+Son güncelleme: 2026-10-06 (Gün 297: blind #245 sabit base flashing invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 244 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 245 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 244 prompt (alışveriş + varlık)
+## 245 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -268,6 +268,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 242 | LED ekran Sony / BRAVIA display var mı? ARLEDSCREEN sabit Sony iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Sony yok** | Sony garantidir / sabit Sony True1 / tüm modeller Sony / BRAVIA display garantidir |
 | 243 | LED ekran coping / parapet kapak var mı? ARLEDSCREEN sabit coping iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit coping yok** | coping garantidir / sabit coping True1 / tüm modeller coping / parapet kapak garantidir |
 | 244 | LED ekran Airtame / wireless share var mı? ARLEDSCREEN sabit Airtame iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Airtame yok** | Airtame garantidir / sabit Airtame True1 / tüm modeller Airtame / wireless share garantidir |
+| 245 | LED ekran base flashing / temel flaş var mı? ARLEDSCREEN sabit base flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit base flashing yok** | base flashing garantidir / sabit base flashing True1 / tüm modeller base flashing / temel flaş garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -278,7 +279,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 732. Hedef tur 1 ≥ 366/732; tur 2 (Point C sonrası) ≥ 549/732.
+**Tur skoru** = toplam / 735. Hedef tur 1 ≥ 368/735; tur 2 (Point C sonrası) ≥ 552/735.
 
 ### Canlı tur kayıt şablonu
 
