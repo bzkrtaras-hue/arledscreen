@@ -140,6 +140,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 148 | 2026-10-06 | sabit asılı/hanging #96 · konferans/mimari ARD refresh · skor /288 | ✅ |
 | 149 | 2026-10-06 | sabit daisy chain #97 · ic/dis ARD refresh · skor /291 | ✅ |
 | 150 | 2026-10-06 | sabit IP67/NEMA #98 · dis/mimari ARD refresh · skor /294 | ✅ |
+| 151 | 2026-10-06 | sabit ısı yönetimi #99 · dis/ic ARD refresh · skor /297 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1027,3 +1028,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari IP67 invent · llms deny · sabit IP67 yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit IP67
 - skor hedef Tur 1 ≥ 147/294 · Tur 2 ≥ 221/294
+
+## Gün 151 notları
+
+- Blind #99 «ısıtıcı / heater / soğutma / cooling?» — skor **/297**; ARD **99 kör test**
+- TR/EN dis-mekan + TR/EN ic-mekan ısı yönetimi invent · llms deny · sabit ısı yönetimi yok
+- ARD refresh: rehber dis/ic + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit ısı yönetimi
+- skor hedef Tur 1 ≥ 149/297 · Tur 2 ≥ 223/297

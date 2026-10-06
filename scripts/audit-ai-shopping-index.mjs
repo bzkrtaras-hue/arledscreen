@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 98) errors.push(`blindTestPrompts must be 98 (got ${prompts.length})`);
+if (prompts.length !== 99) errors.push(`blindTestPrompts must be 99 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/98 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 98 kör test intent");
+if (!/99 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 99 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–97 kör test without 98");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–98 kör test without 99");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -869,6 +869,15 @@ if (!p98 || !/IP67|NEMA/i.test(p98.q || "")) {
 }
 if (!/IP67|NEMA|sabit IP67/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit IP67 invent");
+}
+
+// Day 151: sabit ısı yönetimi / heater / cooling invent
+const p99 = (doc.blindTestPrompts || []).find((p) => p.id === 99);
+if (!p99 || !/ısıtıcı|heater|soğutma|cooling|ısı yönetimi/i.test(p99.q || "")) {
+  errors.push("blindTestPrompts #99 must cover sabit ısı yönetimi invent");
+}
+if (!/ısı yönetimi|heater|cooling|sabit ısı yönetimi/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit ısı yönetimi invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

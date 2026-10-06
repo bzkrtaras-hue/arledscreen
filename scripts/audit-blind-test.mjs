@@ -1291,6 +1291,19 @@ if (
   errors.push("blind prompt #98 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit IP67 yok");
 }
 
+const pBlind99 = PROMPTS.find((x) => x.id === 99);
+if (!pBlind99 || !/ısıtıcı|heater|soğutma|cooling|ısı yönetimi/i.test(pBlind99.q)) {
+  errors.push("blind prompt #99 must cover sabit ısı yönetimi invent");
+}
+if (
+  pBlind99 &&
+  (!pBlind99.mustSay?.includes("yazılı teklif") ||
+    !pBlind99.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind99.mustSay?.includes("sabit ısı yönetimi yok"))
+) {
+  errors.push("blind prompt #99 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ısı yönetimi yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

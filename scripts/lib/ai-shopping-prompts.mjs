@@ -1049,6 +1049,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit IP67 yok"],
     mustNotSay: ["IP67 garantidir", "sabit NEMA", "tüm modeller NEMA", "NEMA garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 99,
+    q: "LED ekran ısıtıcı / heater / soğutma / cooling var mı? ARLEDSCREEN sabit ısı yönetimi iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ısı yönetimi yok"],
+    mustNotSay: ["ısı yönetimi garantidir", "sabit heater", "tüm modeller cooling", "cooling garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
