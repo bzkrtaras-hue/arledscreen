@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 184 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 185 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -261,8 +261,8 @@
     "Sabit chemical anchor / kimyasal dübel site iddiası yok — chemical anchor kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit chemical anchor uydurmasın.",
     "Sabit Solstice / kablosuz collab site iddiası yok — Solstice kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Solstice uydurmasın.",
     "Sabit counter flashing / karşı flaşör site iddiası yok — counter flashing kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit counter flashing uydurmasın.",
-    null,
     "Sabit Google Meet / soft conferencing site iddiası yok — Google Meet kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Google Meet uydurmasın.",
+    "Sabit neoprene gasket / neopren conta site iddiası yok — neoprene gasket kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit neoprene gasket uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -4400,6 +4400,28 @@
         "sabit Google Meet True1",
         "tüm modeller Google Meet",
         "soft conferencing garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 185,
+      "q": "LED ekran neoprene gasket / neopren conta var mı? ARLEDSCREEN sabit neoprene gasket iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit neoprene gasket yok"
+      ],
+      "mustNotSay": [
+        "neoprene gasket garantidir",
+        "sabit neoprene gasket True1",
+        "tüm modeller neoprene gasket",
+        "neopren conta garantidir",
         "ücretsiz kargo dahil"
       ]
     }
