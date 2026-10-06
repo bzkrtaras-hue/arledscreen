@@ -1,7 +1,7 @@
-## Gün 515 — invent Blind #463 awning box
+## Gün 515 — invent Blind #463 awning box LIVE
 
-- Blind #463 awning box / tente kutusu · dis/mimari · prompts=463 · /1389 · build pending
-- IndexNow 429 · sahibe iş yok
+- Blind #463 awning box / tente kutusu · dis/mimari · prompts=463 · /1389 · CF deploy · smoke:live 20/20
+- IndexNow 429 (ping atlandı) · sahibe iş yok
 
 ## Gün 514 — invent Blind #462 QSC Core Nano LIVE
 
