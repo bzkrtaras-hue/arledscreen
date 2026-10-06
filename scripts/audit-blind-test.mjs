@@ -3085,6 +3085,20 @@ if (
   errors.push("blind prompt #234 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit NEC yok");
 }
 
+const pBlind235 = PROMPTS.find((x) => x.id === 235);
+if (!pBlind235 || !/cant strip|eğimli şerit/i.test(pBlind235.q)) {
+  errors.push("blind prompt #235 must cover sabit cant strip invent");
+}
+if (
+  pBlind235 &&
+  (!pBlind235.mustSay?.includes("yazılı teklif") ||
+    !pBlind235.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind235.mustSay?.includes("sabit cant strip yok"))
+) {
+  errors.push("blind prompt #235 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cant strip yok");
+}
+
+
 
 
 

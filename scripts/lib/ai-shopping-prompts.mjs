@@ -2681,6 +2681,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit NEC yok"],
     mustNotSay: ["NEC garantidir", "sabit NEC True1", "tüm modeller NEC", "display wall garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 235,
+    q: "LED ekran cant strip / eğimli şerit var mı? ARLEDSCREEN sabit cant strip iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cant strip yok"],
+    mustNotSay: ["cant strip garantidir", "sabit cant strip True1", "tüm modeller cant strip", "eğimli şerit garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
