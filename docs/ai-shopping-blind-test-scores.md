@@ -1,7 +1,7 @@
 # AI alışveriş — kör test skor kartı (sahip doldurur)
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (canlı 200 sonrası) ≥ **644/1287** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **966/1287**  
+Hedef: Tur 1 (canlı 200 sonrası) ≥ **644/1290** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **966/1290**  
 Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (429 prompt)
 
 ## Tur 1 — canlı JSON 200 sonrası (merge zorunlu değil; PR #55 ready)
@@ -15,20 +15,20 @@ Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (429 prompt)
 
 Koşullar: incognito · TR konum tercih · aynı 429 prompt · yanıtta URL/atıf not et.
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /1287.
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /1290.
 
-| Model | Tarih | Konum | Incognito | Skor /1287 | Not |
+| Model | Tarih | Konum | Incognito | Skor /1290 | Not |
 |-------|-------|-------|-----------|-----------|-----|
-| ChatGPT | | TR / | evet | /1287 | |
-| Gemini | | | | /1287 | |
-| Perplexity | | | | /1287 | |
-| Bing Copilot | | | | /1287 | |
-| **Ortalama** | | | | **/1287** | Hedef ≥ 630 |
+| ChatGPT | | TR / | evet | /1290 | |
+| Gemini | | | | /1290 | |
+| Perplexity | | | | /1290 | |
+| Bing Copilot | | | | /1290 | |
+| **Ortalama** | | | | **/1290** | Hedef ≥ 630 |
 
 ## Tur 1a — P0 hızlı ölçüm (20 prompt · /60)
 
 Canlı kaynak: https://arledscreen.com/ai-shopping.json (`blindTestPrompts` #1–#20), çekim 2026-10-06.  
-Tam suite hâlâ 429 prompt /1287 (`ai-shopping-blind-test.md`). Bu tablo sahip için **ilk gün** ölçümü — uydurma skor yok.
+Tam suite hâlâ 429 prompt /1290 (`ai-shopping-blind-test.md`). Bu tablo sahip için **ilk gün** ölçümü — uydurma skor yok.
 
 Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
 
@@ -65,13 +65,13 @@ Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
 
 ## Tur 2 — Point C sonrası (≤2026-11-04)
 
-| Model | Tarih | Skor /1287 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /1290 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|-----------|---------------------------|-----|
-| ChatGPT | | /1287 | | |
-| Gemini | | /1287 | | |
-| Perplexity | | /1287 | | |
-| Bing Copilot | | /1287 | | |
-| **Ortalama** | | **/1287** | | Hedef ≥ 945 |
+| ChatGPT | | /1290 | | |
+| Gemini | | /1290 | | |
+| Perplexity | | /1290 | | |
+| Bing Copilot | | /1290 | | |
+| **Ortalama** | | **/1290** | | Hedef ≥ 945 |
 
 ## Prompt bazlı ham notlar (opsiyonel)
 

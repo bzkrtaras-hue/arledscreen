@@ -5021,6 +5021,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit canopy apron yok"],
     mustNotSay: ["canopy apron garantidir", "sabit canopy apron True1", "tüm modeller canopy apron", "kanopi eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 430,
+    q: "LED ekran Room Kit Plus / Room Kit Plus var mı? ARLEDSCREEN sabit Room Kit Plus iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Room Kit Plus yok"],
+    mustNotSay: ["Room Kit Plus garantidir", "sabit Room Kit Plus True1", "tüm modeller Room Kit Plus", "Room Kit Plus dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
