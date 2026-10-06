@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 157: blind #105 sabit gamma invent)  
+Son güncelleme: 2026-10-06 (Gün 158: blind #106 sabit potting invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 105 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 106 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 105 prompt (alışveriş + varlık)
+## 106 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -129,6 +129,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 103 | LED ekran black level / siyah seviye var mı? ARLEDSCREEN sabit black level iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit black level yok** | black level garantidir / sabit siyah seviye / tüm modeller black level / siyah seviye garantidir |
 | 104 | LED ekran pixel mapping / piksel eşleme var mı? ARLEDSCREEN sabit pixel mapping iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit pixel mapping yok** | pixel mapping garantidir / sabit piksel eşleme / tüm modeller pixel mapping / piksel eşleme garantidir |
 | 105 | LED ekran gamma / white balance / beyaz dengesi var mı? ARLEDSCREEN sabit gamma iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit gamma yok** | gamma garantidir / sabit white balance / tüm modeller white balance / white balance garantidir |
+| 106 | LED ekran potting / epoxy potting var mı? ARLEDSCREEN sabit potting iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit potting yok** | potting garantidir / sabit epoxy potting / tüm modeller potting / epoxy potting garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -139,7 +140,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 315. Hedef tur 1 ≥ 158/315; tur 2 (Point C sonrası) ≥ 237/315.
+**Tur skoru** = toplam / 318. Hedef tur 1 ≥ 159/318; tur 2 (Point C sonrası) ≥ 239/318.
 
 ### Canlı tur kayıt şablonu
 

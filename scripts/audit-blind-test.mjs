@@ -1382,6 +1382,19 @@ if (
   errors.push("blind prompt #105 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gamma yok");
 }
 
+const pBlind106 = PROMPTS.find((x) => x.id === 106);
+if (!pBlind106 || !/potting|epoxy/i.test(pBlind106.q)) {
+  errors.push("blind prompt #106 must cover sabit potting invent");
+}
+if (
+  pBlind106 &&
+  (!pBlind106.mustSay?.includes("yazılı teklif") ||
+    !pBlind106.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind106.mustSay?.includes("sabit potting yok"))
+) {
+  errors.push("blind prompt #106 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit potting yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

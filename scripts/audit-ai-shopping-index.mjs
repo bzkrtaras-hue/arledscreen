@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 105) errors.push(`blindTestPrompts must be 105 (got ${prompts.length})`);
+if (prompts.length !== 106) errors.push(`blindTestPrompts must be 106 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/105 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 105 kör test intent");
+if (!/106 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 106 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–104 kör test without 105");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–105 kör test without 106");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -932,6 +932,15 @@ if (!p105 || !/gamma|white balance|beyaz dengesi/i.test(p105.q || "")) {
 }
 if (!/gamma|white balance|beyaz dengesi|sabit gamma/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit gamma invent");
+}
+
+// Day 158: sabit potting / epoxy potting invent
+const p106 = (doc.blindTestPrompts || []).find((p) => p.id === 106);
+if (!p106 || !/potting|epoxy/i.test(p106.q || "")) {
+  errors.push("blindTestPrompts #106 must cover sabit potting invent");
+}
+if (!/potting|epoxy potting|sabit potting/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit potting invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
