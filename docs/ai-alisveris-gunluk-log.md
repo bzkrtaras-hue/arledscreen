@@ -1,3 +1,8 @@
+## Gün 471 — invent Blind #419 window apron
+
+- Blind #419 window apron / pencere eteği · dis/mimari · prompts=419 · /1257
+- Point C + Tur 1a hâlâ sahip
+
 ## Gün 470 — invent Blind #418 Rally Bar Mini
 
 - Blind #418 Rally Bar Mini · ic/konferans · prompts=418 · /1254

@@ -4889,6 +4889,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Rally Bar Mini yok"],
     mustNotSay: ["Rally Bar Mini garantidir", "sabit Rally Bar Mini True1", "tüm modeller Rally Bar Mini", "Rally Bar Mini dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 419,
+    q: "LED ekran window apron / pencere eteği var mı? ARLEDSCREEN sabit window apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit window apron yok"],
+    mustNotSay: ["window apron garantidir", "sabit window apron True1", "tüm modeller window apron", "pencere eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
