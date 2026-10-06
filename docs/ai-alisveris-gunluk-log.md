@@ -159,6 +159,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 167 | 2026-10-06 | sabit silicone seal #115 · dis/mimari ARD refresh · skor /345 | ✅ |
 | 168 | 2026-10-06 | sabit connector type #116 · ic/konferans ARD refresh · skor /348 | ✅ |
 | 169 | 2026-10-06 | sabit locating pin #117 · dis/mimari ARD refresh · skor /351 | ✅ |
+| 170 | 2026-10-06 | sabit flat cable #118 · ic/konferans ARD refresh · skor /354 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1179,4 +1180,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari locating pin invent · llms deny · sabit locating pin yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit locating pin
 - skor hedef Tur 1 ≥ 176/351 · Tur 2 ≥ 264/351
+
+## Gün 170 notları
+
+- Blind #118 «flat cable / flat kablo?» — skor **/354**; ARD **118 kör test**
+- TR/EN ic-mekan + TR/EN konferans flat cable invent · llms deny · sabit flat cable yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit flat cable
+- skor hedef Tur 1 ≥ 177/354 · Tur 2 ≥ 266/354
 

@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 117) errors.push(`blindTestPrompts must be 117 (got ${prompts.length})`);
+if (prompts.length !== 118) errors.push(`blindTestPrompts must be 118 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/117 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 117 kör test intent");
+if (!/118 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 118 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–116 kör test without 117");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–117 kör test without 118");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1040,6 +1040,15 @@ if (!p117 || !/locating pin|konumlandırma pimi/i.test(p117.q || "")) {
 }
 if (!/locating pin|konumlandırma pimi|sabit locating pin/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit locating pin invent");
+}
+
+// Day 170: sabit flat cable / flat kablo invent
+const p118 = (doc.blindTestPrompts || []).find((p) => p.id === 118);
+if (!p118 || !/flat cable|flat kablo/i.test(p118.q || "")) {
+  errors.push("blindTestPrompts #118 must cover sabit flat cable invent");
+}
+if (!/flat cable|flat kablo|sabit flat cable/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit flat cable invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

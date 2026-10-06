@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–117: ARD discovery prompt count must not drift behind blind suite
+// Day 74–118: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/117 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 117 kör test intent (not stale 17–116)");
+if (ardTxt && !/118 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 118 kör test intent (not stale 17–117)");
 }
-if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–116 kör test without 117");
+if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–117 kör test without 118");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1764,6 +1764,22 @@ for (const rel of [
   }
   if (/locating pin garantidir|sabit konumlandırma pimi|tüm modeller locating pin|konumlandırma pimi garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit locating pin`);
+  }
+}
+
+
+// Day 170: sabit flat cable / flat kablo — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit flat cable yok|no fixed site flat cable/i.test(html)) {
+    errors.push(`${rel} should hedge sabit flat cable / flat kablo`);
+  }
+  if (/flat cable garantidir|sabit flat kablo|tüm modeller flat cable|flat kablo garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit flat cable`);
   }
 }
 

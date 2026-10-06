@@ -1277,6 +1277,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit locating pin yok"],
     mustNotSay: ["locating pin garantidir", "sabit konumlandırma pimi", "tüm modeller locating pin", "konumlandırma pimi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 118,
+    q: "LED ekran flat cable / flat kablo var mı? ARLEDSCREEN sabit flat cable iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit flat cable yok"],
+    mustNotSay: ["flat cable garantidir", "sabit flat kablo", "tüm modeller flat cable", "flat kablo garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
