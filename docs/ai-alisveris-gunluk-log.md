@@ -443,6 +443,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 451 | 2026-10-06 | sabit drip apron #399 · dis/mimari ARD refresh · skor /1197 | ✅ |
 | 452 | 2026-10-06 | sabit Logitech Tap Scheduler #400 · ic/konferans ARD refresh · skor /1200 | ✅ |
 | 453 | 2026-10-06 | sabit hip apron #401 · dis/mimari ARD refresh · skor /1203 | ✅ |
+| 454 | 2026-10-06 | sabit Yealink MeetingBoard 86 #402 · ic/konferans ARD refresh · skor /1206 | ✅ |
+| 455 | 2026-10-06 | sabit gable apron #403 · dis/mimari ARD refresh · skor /1209 | ✅ |
+| 456 | 2026-10-06 | sabit Surface Hub 3 #404 · ic/konferans ARD refresh · skor /1212 | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti
@@ -3206,3 +3209,28 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - **403/422/429** → `docs/indexnow-sahip-listesi.md` + dur; yeni sayfa yok
 - State: `.cache/indexnow-state.json` (gitignore)
 
+## Gün 454 notları
+
+- Blind #402 «Yealink MeetingBoard 86 / MeetingBoard 86?» — skor **/1206**; ARD **402 kör test**
+- TR/EN ic-mekan + TR/EN konferans Yealink MeetingBoard 86 invent · llms deny · sabit Yealink MeetingBoard 86 yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · dal içi agentRules · **canlı etki yok** (PR #55 merge bekliyor)
+
+## Gün 455 notları
+
+- Blind #403 «gable apron / kalkan eteği?» — skor **/1209**; ARD **403 kör test**
+- TR/EN dis-mekan + TR/EN mimari gable apron invent · llms deny · sabit gable apron yok
+- ARD refresh: rehber dis/mimari + priced gob · dal içi · **canlı etki yok**
+
+## Gün 456 notları
+
+- Blind #404 «Surface Hub 3 / Hub 3?» — skor **/1212**; ARD **404 kör test**
+- TR/EN ic-mekan + TR/EN konferans Surface Hub 3 invent · llms deny · sabit Surface Hub 3 yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · dal içi · **canlı etki yok**
+
+## Merge kapısı (2026-10-06) — sahip
+
+- Canlı kontrol: fiyat hub P1.25–P5 + «1 Ekim 2026»; iletişim Gaziosmanpaşa; Yealink/gable/drip/Maxhub/Horion **yok**
+- Canlı AI artefact: `entity.json` / `ai-shopping.json` / `ard.json` → **404**
+- `verify:premerge` GREEN = yalnızca `cursor/ai-alisveris-katalog-5666` (PR #55); üretim değil
+- IndexNow: canlıda değişen URL yok → bildirim işe yaramaz; kör tur yok; Blind #N sayaç
+- Sonraki değerli adım: PR #55 **Ready → merge → CF Pages redeploy** → `smoke:live` → sonra IndexNow / Point C / kör tur
