@@ -1,6 +1,6 @@
-## Gün 483 — invent Blind #431 skylight apron
+## Gün 483 — invent Blind #431 skylight apron LIVE
 
-- Blind #431 skylight apron / ışıklık eteği · dis/mimari · prompts=431 · /1293
+- Blind #431 skylight apron / ışıklık eteği · dis/mimari · prompts=431 · /1293 · CF deploy · smoke:live GREEN · IndexNow 193×
 - Point C + Tur 1a hâlâ sahip
 
 ## Gün 482 — invent Blind #430 Room Kit Plus LIVE
