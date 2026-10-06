@@ -462,6 +462,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 436 | LED ekran Room Mate / Room Mate var mı? ARLEDSCREEN sabit Room Mate iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Room Mate yok** | Room Mate garantidir / sabit Room Mate True1 / tüm modeller Room Mate / Room Mate dahildir |
 | 437 | LED ekran cornice apron / korniş eteği var mı? ARLEDSCREEN sabit cornice apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cornice apron yok** | cornice apron garantidir / sabit cornice apron True1 / tüm modeller cornice apron / korniş eteği garantidir |
 | 438 | LED ekran Room Navigator / Room Navigator var mı? ARLEDSCREEN sabit Room Navigator iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Room Navigator yok** | Room Navigator garantidir / sabit Room Navigator True1 / tüm modeller Room Navigator / Room Navigator dahildir |
+| 439 | LED ekran pediment apron / alınlık eteği var mı? ARLEDSCREEN sabit pediment apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit pediment apron yok** | pediment apron garantidir / sabit pediment apron True1 / tüm modeller pediment apron / alınlık eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -508,7 +509,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (438 /1314)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (439 /1317)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)

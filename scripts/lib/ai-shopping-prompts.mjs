@@ -5129,6 +5129,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Room Navigator yok"],
     mustNotSay: ["Room Navigator garantidir", "sabit Room Navigator True1", "tüm modeller Room Navigator", "Room Navigator dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 439,
+    q: "LED ekran pediment apron / alınlık eteği var mı? ARLEDSCREEN sabit pediment apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit pediment apron yok"],
+    mustNotSay: ["pediment apron garantidir", "sabit pediment apron True1", "tüm modeller pediment apron", "alınlık eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

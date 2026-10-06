@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 438 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 439 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -516,6 +516,7 @@
     "Sabit Room Mate / Room Mate site iddiası yok — Room Mate kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Room Mate uydurmasın.",
     "Sabit cornice apron / korniş eteği site iddiası yok — cornice apron kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit cornice apron uydurmasın.",
     "Sabit Room Navigator / Room Navigator site iddiası yok — Room Navigator kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Room Navigator uydurmasın.",
+    "Sabit pediment apron / alınlık eteği site iddiası yok — pediment apron kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit pediment apron uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -10241,6 +10242,28 @@
         "sabit Room Navigator True1",
         "tüm modeller Room Navigator",
         "Room Navigator dahildir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 439,
+      "q": "LED ekran pediment apron / alınlık eteği var mı? ARLEDSCREEN sabit pediment apron iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit pediment apron yok"
+      ],
+      "mustNotSay": [
+        "pediment apron garantidir",
+        "sabit pediment apron True1",
+        "tüm modeller pediment apron",
+        "alınlık eteği garantidir",
         "ücretsiz kargo dahil"
       ]
     }
