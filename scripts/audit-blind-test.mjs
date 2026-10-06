@@ -2123,6 +2123,20 @@ if (
   errors.push("blind prompt #160 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit QSC yok");
 }
 
+const pBlind161 = PROMPTS.find((x) => x.id === 161);
+if (!pBlind161 || !/anti-theft screw|hırsızlık önleyici vida/i.test(pBlind161.q)) {
+  errors.push("blind prompt #161 must cover sabit anti-theft screw invent");
+}
+if (
+  pBlind161 &&
+  (!pBlind161.mustSay?.includes("yazılı teklif") ||
+    !pBlind161.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind161.mustSay?.includes("sabit anti-theft screw yok"))
+) {
+  errors.push("blind prompt #161 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit anti-theft screw yok");
+}
+
+
 
 
 

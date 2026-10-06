@@ -1793,6 +1793,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit QSC yok"],
     mustNotSay: ["QSC garantidir", "sabit QSC True1", "tüm modeller QSC", "amfi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 161,
+    q: "LED ekran anti-theft screw / hırsızlık önleyici vida var mı? ARLEDSCREEN sabit anti-theft screw iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit anti-theft screw yok"],
+    mustNotSay: ["anti-theft screw garantidir", "sabit anti-theft screw True1", "tüm modeller anti-theft screw", "hırsızlık önleyici vida garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 212: blind #160 sabit QSC invent)  
+Son güncelleme: 2026-10-06 (Gün 213: blind #161 sabit anti-theft screw invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 160 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 161 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 160 prompt (alışveriş + varlık)
+## 161 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -184,6 +184,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 158 | LED ekran Biamp / DSP var mı? ARLEDSCREEN sabit Biamp iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Biamp yok** | Biamp garantidir / sabit Biamp True1 / tüm modeller Biamp / DSP garantidir |
 | 159 | LED ekran bird mesh / kuş filesi var mı? ARLEDSCREEN sabit bird mesh iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit bird mesh yok** | bird mesh garantidir / sabit bird mesh True1 / tüm modeller bird mesh / kuş filesi garantidir |
 | 160 | LED ekran QSC / amfi var mı? ARLEDSCREEN sabit QSC iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit QSC yok** | QSC garantidir / sabit QSC True1 / tüm modeller QSC / amfi garantidir |
+| 161 | LED ekran anti-theft screw / hırsızlık önleyici vida var mı? ARLEDSCREEN sabit anti-theft screw iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit anti-theft screw yok** | anti-theft screw garantidir / sabit anti-theft screw True1 / tüm modeller anti-theft screw / hırsızlık önleyici vida garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -194,7 +195,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 480. Hedef tur 1 ≥ 240/480; tur 2 (Point C sonrası) ≥ 360/480.
+**Tur skoru** = toplam / 483. Hedef tur 1 ≥ 242/483; tur 2 (Point C sonrası) ≥ 363/483.
 
 ### Canlı tur kayıt şablonu
 
