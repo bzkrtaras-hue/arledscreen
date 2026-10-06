@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 381: blind #329 sabit canopy cleat invent)  
+Son güncelleme: 2026-10-06 (Gün 382: blind #330 sabit Planar Interactive invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 329 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 330 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 329 prompt (alışveriş + varlık)
+## 330 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -353,6 +353,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 327 | LED ekran cap flashing / kapak flaşör var mı? ARLEDSCREEN sabit cap flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cap flashing yok** | cap flashing garantidir / sabit cap flashing True1 / tüm modeller cap flashing / kapak flaşör garantidir |
 | 328 | LED ekran Elo Interactive / Elo I-Series var mı? ARLEDSCREEN sabit Elo Interactive iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Elo Interactive yok** | Elo Interactive garantidir / sabit Elo Interactive True1 / tüm modeller Elo Interactive / Elo I-Series garantidir |
 | 329 | LED ekran canopy cleat / kanopi kleyt var mı? ARLEDSCREEN sabit canopy cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit canopy cleat yok** | canopy cleat garantidir / sabit canopy cleat True1 / tüm modeller canopy cleat / kanopi kleyt garantidir |
+| 330 | LED ekran Planar Interactive / Planar Simplicity var mı? ARLEDSCREEN sabit Planar Interactive iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Planar Interactive yok** | Planar Interactive garantidir / sabit Planar Interactive True1 / tüm modeller Planar Interactive / Planar Simplicity garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -363,7 +364,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 987. Hedef tur 1 ≥ 494/987; tur 2 (Point C sonrası) ≥ 741/987.
+**Tur skoru** = toplam / 990. Hedef tur 1 ≥ 495/990; tur 2 (Point C sonrası) ≥ 743/990.
 
 ### Canlı tur kayıt şablonu
 

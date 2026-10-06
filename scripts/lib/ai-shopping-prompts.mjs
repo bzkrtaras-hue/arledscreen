@@ -3821,6 +3821,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit canopy cleat yok"],
     mustNotSay: ["canopy cleat garantidir", "sabit canopy cleat True1", "tüm modeller canopy cleat", "kanopi kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 330,
+    q: "LED ekran Planar Interactive / Planar Simplicity var mı? ARLEDSCREEN sabit Planar Interactive iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Planar Interactive yok"],
+    mustNotSay: ["Planar Interactive garantidir", "sabit Planar Interactive True1", "tüm modeller Planar Interactive", "Planar Simplicity garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
