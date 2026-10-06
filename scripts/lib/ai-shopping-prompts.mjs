@@ -3413,6 +3413,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit threshold cleat yok"],
     mustNotSay: ["threshold cleat garantidir", "sabit threshold cleat True1", "tüm modeller threshold cleat", "eşik kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 296,
+    q: "LED ekran Cisco Board / Board var mı? ARLEDSCREEN sabit Cisco Board iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Cisco Board yok"],
+    mustNotSay: ["Cisco Board garantidir", "sabit Cisco Board True1", "tüm modeller Cisco Board", "Board garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
