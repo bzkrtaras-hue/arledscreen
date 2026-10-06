@@ -1,4 +1,11 @@
 
+
+## Host satırı — üretim düzeltildi (2026-10-06)
+
+- CF Pages redeploy: Function gövdesi canlı — **`Host: arledscreen.com`** (şemasız)
+- YandexBot + DuckDuckBot Allow; Disallow yok; Sitemap duruyor; no-store/BYPASS
+- `smoke:live` **20/20**; dört JSON 200; invent yok; PR draft
+
 ## Host satırı — 2026-10-06 düzeltme kaydı
 
 - Önbellek iddiası yetmez: üretim `robots.txt` BYPASS/no-store iken gövde **`Host: https://arledscreen.com`** (şemalı)
