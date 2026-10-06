@@ -3449,6 +3449,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Microsoft Teams Display yok"],
     mustNotSay: ["Microsoft Teams Display garantidir", "sabit Microsoft Teams Display True1", "tüm modeller Microsoft Teams Display", "Teams Display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 299,
+    q: "LED ekran reglet cleat / reglet kleyt var mı? ARLEDSCREEN sabit reglet cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit reglet cleat yok"],
+    mustNotSay: ["reglet cleat garantidir", "sabit reglet cleat True1", "tüm modeller reglet cleat", "reglet kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

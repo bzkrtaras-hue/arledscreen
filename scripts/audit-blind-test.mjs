@@ -3917,6 +3917,20 @@ if (
   errors.push("blind prompt #298 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Microsoft Teams Display yok");
 }
 
+const pBlind299 = PROMPTS.find((x) => x.id === 299);
+if (!pBlind299 || !/reglet cleat|reglet kleyt/i.test(pBlind299.q)) {
+  errors.push("blind prompt #299 must cover sabit reglet cleat invent");
+}
+if (
+  pBlind299 &&
+  (!pBlind299.mustSay?.includes("yazılı teklif") ||
+    !pBlind299.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind299.mustSay?.includes("sabit reglet cleat yok"))
+) {
+  errors.push("blind prompt #299 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit reglet cleat yok");
+}
+
+
 
 
 

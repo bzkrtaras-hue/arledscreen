@@ -340,6 +340,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 348 | 2026-10-06 | sabit Cisco Board #296 · ic/konferans ARD refresh · skor /888 | ✅ |
 | 349 | 2026-10-06 | sabit cant cleat #297 · dis/mimari ARD refresh · skor /891 | ✅ |
 | 350 | 2026-10-06 | sabit Microsoft Teams Display #298 · ic/konferans ARD refresh · skor /894 | ✅ |
+| 351 | 2026-10-06 | sabit reglet cleat #299 · dis/mimari ARD refresh · skor /897 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2475,3 +2476,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #298 «Microsoft Teams Display / Teams Display?» — skor **/894**; ARD **298 kör test**
 - TR/EN ic-mekan + TR/EN konferans Microsoft Teams Display invent · llms deny · sabit Microsoft Teams Display yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Microsoft Teams Display
+
+## Gün 351 notları
+
+- Blind #299 «reglet cleat / reglet kleyt?» — skor **/897**; ARD **299 kör test**
+- TR/EN dis-mekan + TR/EN mimari reglet cleat invent · llms deny · sabit reglet cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit reglet cleat
