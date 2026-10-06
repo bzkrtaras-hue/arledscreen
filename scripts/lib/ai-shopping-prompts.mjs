@@ -386,6 +386,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit °C yok"],
     mustNotSay: ["-20 °C", "+50 °C", "sabit çalışma sıcaklığı", "ücretsiz kargo dahil"],
   },
+  {
+    id: 44,
+    q: "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kontrast yok"],
+    mustNotSay: ["5000:1", "3000:1", "sabit kontrast oranı", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

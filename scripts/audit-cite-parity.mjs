@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/43 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 43 kör test intent (not stale 17–42)");
+if (ardTxt && !/44 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 44 kör test intent (not stale 17–43)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-2]) kör test/i.test(ardTxt) && !/43 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–42 kör test without 43");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-3]) kör test/i.test(ardTxt) && !/44 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–43 kör test without 44");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -615,6 +615,21 @@ for (const rel of [
   }
   if (/-20\/\+50 °C garantidir|sabit -20 °C yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit -20/+50 °C`);
+  }
+}
+
+// Day 96: sabit kontrast — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit kontrast yok|fixed site contrast|no fixed site contrast/i.test(html)) {
+    errors.push(`${rel} should hedge sabit kontrast`);
+  }
+  if (/5000:1 garantidir|sabit 3000:1 yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit 5000:1 / 3000:1`);
   }
 }
 

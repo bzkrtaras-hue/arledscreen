@@ -785,8 +785,8 @@ const USE_PAGES: CommercialPage[] = [
   usagePage({
     slug: "konferans-salonu-led-ekran",
     name: "Konferans salonu LED ekran",
-    lead: "Konferans ve toplantı salonları için yüksek okunabilirlikli LED.",
-    intro: ["Konferans salonunda izleme mesafesi ve sunum içeriği pitch seçimini belirler. İnce pitch GOB ve iç mekan serileri sık değerlendirilir."],
+    lead: "Konferans ve toplantı salonları için okunabilir LED — kontrast oranı model föyü + yazılı teklifte (sabit kontrast yok).",
+    intro: ["Konferans salonunda izleme mesafesi ve sunum içeriği pitch seçimini belirler. İnce pitch GOB ve iç mekan serileri sık değerlendirilir. Sabit 5000:1 / 3000:1 kontrast yayımlanmaz."],
     proof: (r) => /P1\.|P2\.5|konferans|lobi/i.test(`${r.detail} ${r.company}`),
     images: [
       { src: "/projects/neu-kutuphane.jpg", alt: "Konferans / kurumsal LED ekran" },

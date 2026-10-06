@@ -85,6 +85,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 93 | 2026-10-06 | sabit gamut/DCI-P3 #41 · magaza/sahne/vitrin ARD · skor /123 | ✅ |
 | 94 | 2026-10-06 | sabit kg/m² #42 · otel/avm/fuar ARD · skor /126 | ✅ |
 | 95 | 2026-10-06 | sabit °C #43 · stadyum/belediye/restoran ARD · skor /129 | ✅ |
+| 96 | 2026-10-06 | sabit kontrast #44 · dugun/konferans/spor ARD · skor /132 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -586,3 +587,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - dış mekân/mimari °C invent · faqs/sss/llms °C deny
 - ARD: stadyum + belediye + restoran · IndexNow +3 · agentRules sabit °C
 - skor hedef Tur 1 ≥ 65/129 · Tur 2 ≥ 97/129
+
+## Gün 96 notları
+
+- Blind #44 «kontrast oranı / sabit 5000:1 / 3000:1?» — skor **/132**; ARD **44 kör test**
+- ic-mekan/konferans kontrast invent · llms kontrast deny
+- ARD: dugun + konferans-salonu + spor-salonu · IndexNow +3 · agentRules sabit kontrast
+- skor hedef Tur 1 ≥ 66/132 · Tur 2 ≥ 99/132

@@ -404,12 +404,13 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41. Panel USD catalog/ai-shopping.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
         "iç mekan LED rehber",
-        "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?"
+        "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?",
+        "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -419,7 +420,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T11:00:00Z"
+      "updatedAt": "2026-10-06T14:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -1043,7 +1044,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 43 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 44 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1062,7 +1063,8 @@
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
         "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?",
         "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?",
-        "LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu?"
+        "LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu?",
+        "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1590,6 +1592,66 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T13:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:dugun-hub",
+      "displayName": "Düğün salonu LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/dugun-salonu-led-ekran/",
+      "description": "Düğün / event salonu LED intent. Sabit kontrast yok — Blind #44; keşif + yazılı teklif.",
+      "representativeQueries": [
+        "düğün salonu LED ekran",
+        "düğün LED sahne",
+        "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "wedding",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T14:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:konferans-salon-hub",
+      "displayName": "Konferans salonu LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/konferans-salonu-led-ekran/",
+      "description": "Konferans / toplantı salonu LED intent. Sabit kontrast yok — Blind #44.",
+      "representativeQueries": [
+        "konferans salonu LED ekran",
+        "toplantı salonu LED",
+        "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "conference",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T14:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:spor-salon-hub",
+      "displayName": "Spor salonu LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/spor-salonu-led-ekran/",
+      "description": "Spor salonu / gym LED intent. Sabit kontrast yok — Blind #44; keşif + yazılı teklif.",
+      "representativeQueries": [
+        "spor salonu LED ekran",
+        "gym LED skorboard",
+        "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "sports",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T14:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

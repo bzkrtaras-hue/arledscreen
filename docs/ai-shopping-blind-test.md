@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 95: blind #43 sabit °C / çalışma sıcaklığı invent)  
+Son güncelleme: 2026-10-06 (Gün 96: blind #44 sabit kontrast oranı invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 43 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 44 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 43 prompt (alışveriş + varlık)
+## 44 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -67,6 +67,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 41 | LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · ince-pitch · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit gamut yok** | DCI-P3 garanti / Rec.709 yayımlanır / sabit 6500K |
 | 42 | LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu? | `/tr/rehber/mimari-muhendislik-led/` · vitrin rehber · şeffaf · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit kg yok** | sabit 25 kg / 30 kg/m² garanti / sabit kalınlık |
 | 43 | LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari rehber · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit °C yok** | -20 °C / +50 °C / sabit çalışma sıcaklığı |
+| 44 | LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans rehber · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit kontrast yok** | 5000:1 / 3000:1 / sabit kontrast oranı |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -77,7 +78,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 129. Hedef tur 1 ≥ 65/129; tur 2 (Point C sonrası) ≥ 97/129.
+**Tur skoru** = toplam / 132. Hedef tur 1 ≥ 66/132; tur 2 (Point C sonrası) ≥ 99/132.
 
 ### Canlı tur kayıt şablonu
 
@@ -90,21 +91,21 @@ Incognito: evet/hayır
 # | Prompt | Skor 0-3 | Atıf URL | Not
 1 | ... |  |  |
 ...
-Toplam: /129
+Toplam: /132
 ```
 
 Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md) altına yazın (sahip).
 
 ## Site readiness kontrolleri (`audit:blind-test`)
 
-1. 43 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
+1. 44 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
 2. `entity.json`: telephone, Gaziosmanpaşa, citeOneLiner, disambiguatingDescription, NXTIONSTAR
 3. `catalog.json`: 12 dataset SKU; P2.5 iç = 32.18; groupAggregateOffers ≥ 3; shippingDetails; hasMerchantReturnPolicy (MerchantReturnNotPermitted)
 4. `ai-shopping.json`: 12 `pricedPanels` + `agentRules` (NationStar/NEXTSTAR/Alman ARLED + AI-infrastructure) + ücretsiz kargo yok + quote-and-contract-only
 5. `llms-full.txt` §5 intent tablosu (dizin/slogan/AI-ready/Alman ARLED/NEXTSTAR/NationStar/mühendislik/seller/kurucu/AI-infrastructure); slogan = ARLEDSCREEN ürün markası
 6. Quote-only gruplar (`kiralik`, `seffaf`, `transparan`) catalog `dataset`’te fiyat **yok**
 7. `/tr/yapay-zeka/` HTML’de ai-shopping + catalog + entity + priceValidUntil + Gaziosmanpaşa
-8. `ard.json` entity-profiles + ai-shopping discovery (**43 kör test**) + nxtionstar/founder/rehber/EN yapay-zeka; packs + Crunchbase/Merchant readiness; quote-only hubs esnek/seffaf/poster/kiralik
+8. `ard.json` entity-profiles + ai-shopping discovery (**44 kör test**) + nxtionstar/founder/rehber/EN yapay-zeka; packs + Crunchbase/Merchant readiness; quote-only hubs esnek/seffaf/poster/kiralik
 9. `/tr/rehber/` + `/en/rehber/`: engineering desk invent yok; catalog/ai-shopping cite
 10. `/tr/yapay-zeka/` + `/en/yapay-zeka/`: AI-ready / AI-infrastructure ready SKU / uçtan uca / end-to-end invent yok
 11. Slogan: küresel/global standard ranking invent yok; NXTIONSTAR = ARLEDSCREEN ürün markası
@@ -115,5 +116,5 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 1. PR #55 merge + CF redeploy  
 2. `npm run post-deploy` (smoke GREEN → IndexNow; Day 51–53 contract echo)  
 3. `curl -sI` entity / catalog / ard / ai-shopping / entity-profiles → 200  
-4. Canlı kör tur 1 (43 prompt) → skor kartı  
+4. Canlı kör tur 1 (44 prompt) → skor kartı  
 5. Point C (GBP + LinkedIn + dizin + **Bing Places NAP**) → tur 2
