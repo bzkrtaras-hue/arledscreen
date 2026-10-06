@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–88: ARD discovery prompt count must not drift behind blind suite
+// Day 74–89: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/36 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 36 kör test intent (not stale 17–35)");
+if (ardTxt && !/37 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 37 kör test intent (not stale 17–36)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-5]) kör test/i.test(ardTxt) && !/36 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–35 kör test without 36");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-6]) kör test/i.test(ardTxt) && !/37 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–36 kör test without 37");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -525,6 +525,21 @@ for (const rel of [
   }
   if (/sabit 2,5 m şart|P2\.5 için 2\.5 m şart|sabit minimum mesafe garantisi yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit mesafe şartı`);
+  }
+}
+
+// Day 89: sabit kW / 3 faz — honesty presence; forbid affirmative şart invent
+for (const rel of [
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+  "out/tr/hesaplayici/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit kW|0,45\/0,75|3 faz zorunlu/i.test(html)) {
+    errors.push(`${rel} should hedge sabit kW/m² / 3 faz zorunlu`);
+  }
+  if (/her projede 3 faz zorunludur|sabit 0,45 kW\/m² yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit kW / 3 faz şartı`);
   }
 }
 

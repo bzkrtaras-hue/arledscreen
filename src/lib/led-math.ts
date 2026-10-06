@@ -108,7 +108,11 @@ export interface PowerEstimate {
   rstNote: string;
 }
 
-/** Rough power density: indoor ~0.45 kW/m² peak, outdoor ~0.75 kW/m² peak. */
+/**
+ * Rough power estimate only (not a published site guarantee).
+ * Indoor ~0.45 / outdoor ~0.75 kW/m² peak are calculator defaults —
+ * final draw + single/three-phase topology land in Gaziosmanpaşa survey + written quote.
+ */
 export function estimatePowerInfrastructure(
   areaM2: number,
   environment: Environment,
@@ -117,7 +121,7 @@ export function estimatePowerInfrastructure(
   const avgFactor = 0.35;
   const maxKw = Number((areaM2 * peakDensity).toFixed(2));
   const avgKw = Number((maxKw * avgFactor).toFixed(2));
-  // 3-phase 400V: I = P / (√3 * V * pf), pf≈0.9
+  // Illustrative 3-phase 400V sizing (not “3-phase required” site claim): I = P / (√3 * V * pf)
   const breakerAmps3Phase = Math.ceil(
     (maxKw * 1000) / (Math.sqrt(3) * 400 * 0.9),
   );
@@ -131,6 +135,6 @@ export function estimatePowerInfrastructure(
         ? "Prefer multimode/single-mode fiber beyond 80 m; CAT6A up to ~70 m with shielded runs."
         : "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies.",
     rstNote:
-      "Balance R-S-T phases across power cabinets; isolate LED load from AV control UPS where possible.",
+      "Estimate only — balance R-S-T when three-phase applies; final phase model in survey/quote. Isolate LED load from AV control UPS where possible.",
   };
 }

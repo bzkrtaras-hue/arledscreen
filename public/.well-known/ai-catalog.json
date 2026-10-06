@@ -466,7 +466,7 @@
       "displayName": "Mimari / mühendislik LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
-      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); keşif + yazılı teklif.",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif.",
       "representativeQueries": [
         "mimari LED mühendislik",
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
@@ -480,7 +480,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T04:00:00Z"
+      "updatedAt": "2026-10-06T07:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
@@ -1039,7 +1039,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 36 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 37 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1051,7 +1051,8 @@
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı? ARLEDSCREEN sabit 3840 Hz veya yüksek yenileme garantisi yayımlıyor mu?",
-        "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?"
+        "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?",
+        "LED ekran için m² başına kaç kW gerekir? ARLEDSCREEN sabit 0,45/0,75 kW/m² veya her projede 3 faz zorunlu yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1070,7 +1071,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T06:00:00Z"
+      "updatedAt": "2026-10-06T07:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -1155,6 +1156,66 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T20:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-poster",
+      "displayName": "Poster LED rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/poster-led-ekran/",
+      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok.",
+      "representativeQueries": [
+        "poster LED rehber",
+        "totem LED rehber",
+        "Poster / totem LED fiyatı?"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "poster",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T07:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-kiosk",
+      "displayName": "Kiosk dijital ekran rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/",
+      "description": "Kiosk / dijital ekran rehber. Quote-scoped; spam doorway yok.",
+      "representativeQueries": [
+        "kiosk LED ekran",
+        "dijital kiosk",
+        "kiosk ekran fiyat"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "kiosk",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T07:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-led-ekran",
+      "displayName": "LED ekran çözüm rehberi (ana)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/led-ekran/",
+      "description": "Ana LED ekran rehber. Panel USD catalog/ai-shopping; Blind #18. Sabit kW yok.",
+      "representativeQueries": [
+        "LED ekran çözüm rehberi panel fiyatı nereden okunur?",
+        "LED ekran nedir rehber",
+        "LED ekran için m² başına kaç kW gerekir?"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "shopping",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T07:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

@@ -16,7 +16,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "How is power and signal infrastructure sized?",
       answer:
-        "We derive peak and average kW from active area and indoor/outdoor duty, recommend three-phase R-S-T balancing, and choose CAT6A or fiber from run length and receiver count — then fold that into the quote pack.",
+        "We estimate peak/average kW from area and indoor/outdoor duty (calculator defaults are not published guarantees — no fixed site kW/m²). Single vs three-phase and R-S-T balancing land in the Gaziosmanpaşa survey and written quote; CAT6A or fiber from run length and receiver count.",
     },
     {
       question: "Can NXTIONSTAR LED walls show AI-generated content via media servers?",

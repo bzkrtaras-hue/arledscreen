@@ -291,7 +291,7 @@ const en: Dictionary = {
       eyebrow: "Power topology",
       title: "Power and signal plan",
       description:
-        "Translate area and environment into peak/average kW, breaker guidance, and CAT6 vs fiber notes.",
+        "Rough peak/average kW and breaker guidance (not a fixed site kW/m²) plus CAT6 vs fiber notes — final draw in Gaziosmanpaşa survey + written quote.",
     },
     products: {
       eyebrow: "Series catalog",
@@ -399,21 +399,21 @@ const en: Dictionary = {
   power: {
     title: "Power & Signal Calculator",
     description:
-      "Estimate peak/average draw, 3-phase breaker sizing, and CAT6 vs fiber guidance for B2B / fixed installs.",
+      "Rough peak/average draw and illustrative breaker sizing (not a published kW/m² or “3-phase required” guarantee). Final draw and single/three-phase topology: Gaziosmanpaşa survey + written quote. CAT6 vs fiber guidance for B2B installs.",
     environment: "Environment",
     indoor: "Indoor",
     outdoor: "Outdoor",
     area: "Display area (m²)",
     areaHint: "Width × height of the active LED surface",
     results: {
-      max: "Max power",
-      avg: "Avg power",
-      breaker: "Breaker (3φ)",
+      max: "Est. max power",
+      avg: "Est. avg power",
+      breaker: "Est. breaker (3φ illus.)",
       phase: "R-S-T balancing",
       network: "CAT6 / Fiber",
     },
     rstNote:
-      "Balance R-S-T phases across power cabinets; isolate LED load from AV control UPS where possible.",
+      "Estimate only — R-S-T balancing when three-phase applies; final phase model in survey/quote. Isolate LED load from AV control UPS where possible.",
     signalIndoor:
       "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies.",
     signalOutdoor:
@@ -593,7 +593,7 @@ const tr: Dictionary = {
       eyebrow: "Güç topolojisi",
       title: "Güç ve sinyal planı",
       description:
-        "Alan ve ortamı tepe/ortalama kW, kesici önerisi ve CAT6 / fiber notlarına dönüştürün.",
+        "Yaklaşık tepe/ortalama kW ve kesici önerisi (sabit kW/m² yok) + CAT6 / fiber notları — kesin çekiş Gaziosmanpaşa keşif + yazılı teklifte.",
     },
     products: {
       eyebrow: "Seri kataloğu",
@@ -701,21 +701,21 @@ const tr: Dictionary = {
   power: {
     title: "Güç & Sinyal Hesaplayıcı",
     description:
-      "Kurumsal kurulumlar için tepe ve ortalama güç çekişini, 3 fazlı kesici boyutunu ve CAT6 / fiber rehberini tahmin edin.",
+      "Yaklaşık tepe/ortalama güç ve örnek kesici boyutu — sabit kW/m² veya «3 faz zorunlu» site iddiası yok. Kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + yazılı teklifte. CAT6 / fiber rehberi.",
     environment: "Ortam",
     indoor: "İç mekân",
     outdoor: "Dış mekân",
     area: "Ekran alanı (m²)",
     areaHint: "Aktif LED yüzeyinin genişliği × yüksekliği",
     results: {
-      max: "Maks. güç",
-      avg: "Ort. güç",
-      breaker: "Kesici (3φ)",
+      max: "Tahmini maks. güç",
+      avg: "Tahmini ort. güç",
+      breaker: "Tahmini kesici (3φ örnek)",
       phase: "R-S-T dengeleme",
       network: "CAT6 / Fiber",
     },
     rstNote:
-      "Güç kabinlerinde R-S-T fazlarını dengeleyin; mümkünse LED yükünü AV kontrol UPS’inden ayırın.",
+      "Tahmin — üç faz uygulanıyorsa R-S-T dengeleyin; kesin faz modeli keşif/teklifte. Mümkünse LED yükünü AV kontrol UPS’inden ayırın.",
     signalIndoor:
       "≤70 m hatlarda CAT6/CAT6A; omurga / çoklu alıcı topolojilerinde fiber önerilir.",
     signalOutdoor:

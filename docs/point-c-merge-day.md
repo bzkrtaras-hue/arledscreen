@@ -28,11 +28,11 @@ Hedef: **16/16 PASS** (BLOCKED 0).
 
 | URL | Beklenen |
 |-----|----------|
-| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · extrasUsd≠list SKU · ücretsiz kargo yok · blind #13–#36 |
+| `/ai-shopping.json` | 200 · `pricedPanels=12` · `agentRules` · extrasUsd≠list SKU · ücretsiz kargo yok · blind #13–#37 |
 | `/entity.json` | 200 JSON · `citeOneLiner` · Gaziosmanpaşa · `hasOfferCatalog` + kontrol |
 | `/entity-profiles.json` | 200 JSON · packs incl. `crunchbaseDraft` · `googleMerchantReadiness` · `sameAsReadiness` |
 | `/catalog.json` | 200 · `dataset` · `groupAggregateOffers` · `shippingDetails` · `hasMerchantReturnPolicy` · ücretsiz kargo yok · quoteOnly+kontrol |
-| `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping · nxtionstar/founder/rehber · **36 kör test** |
+| `/.well-known/ard.json` | 200 · catalog + entity-profiles + ai-shopping · nxtionstar/founder/rehber · **37 kör test** |
 | `/llms.txt` / `/llms-full.txt` | cite + pricedPanels + ücretsiz kargo yok + Huidu/kontrol quote-only |
 | `/feeds/merchant-priced-panels.tsv` | 12 SKU · `p2-5-ic` · shipping boş · `return_policy_label=quote_contract_only` · iade honesty |
 | `/tr/about/` · `/tr/yapay-zeka/` · `/tr/led-ekran-fiyatlari/` | entity + catalog + ai-shopping |
@@ -91,11 +91,11 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 
 ## 4) Kör tur 1 (deploy sonrası)
 
-Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 36 prompt × 0–3 = /108  
-**mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3) · yazılı teklif (#25) · ürün markası (#26) · Gaziosmanpaşa (#27–#28) · stok/anında/list (#33) · sabit nit (#34) · sabit Hz (#35) · izleme mesafesi (#36)  
+Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 37 prompt × 0–3 = /111  
+**mustSay:** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3) · yazılı teklif (#25) · ürün markası (#26) · Gaziosmanpaşa (#27–#28) · stok/anında/list (#33) · sabit nit (#34) · sabit Hz (#35) · izleme mesafesi (#36) · sabit kW (#37)  
 Skor: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
-Hedef tur 1 ≥ 54/108; Point C sonrası tur 2 ≥ 81/108.
+Hedef tur 1 ≥ 56/111; Point C sonrası tur 2 ≥ 83/111.
 
 ## 5) Day 57–64 canlı doğrulama (özet)
 

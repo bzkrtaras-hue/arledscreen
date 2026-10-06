@@ -77,7 +77,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     configurator: {
       title: "LED Duvar Konfigüratörü | Pitch, Kabin, Çözünürlük | ARLEDSCREEN",
       description:
-        "LED duvar konfigüratörü: genişlik × yükseklik, 500×500 / 500×1000 kabin, pitch seçimi. Anlık çözünürlük, izleme mesafesi, kabin adedi ve 3 faz güç tahmini — ARLEDSCREEN.",
+        "LED duvar konfigüratörü: genişlik × yükseklik, 500×500 / 500×1000 kabin, pitch seçimi. Anlık çözünürlük, izleme mesafesi, kabin adedi ve yaklaşık güç tahmini (sabit kW yok) — ARLEDSCREEN.",
       keywords: [
         "LED duvar konfigüratör",
         "piksel pitch",
@@ -87,7 +87,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "LED duvar boyutlandırma konfigüratörü",
       intro:
-        "Saha keşfinden önce duvar geometrisini netleştirin: 500×500 veya 500×1000 kabin, pitch seçimi, izleme mesafesi ve 3 fazlı güç tahmini.",
+        "Saha keşfinden önce duvar geometrisini netleştirin: 500×500 veya 500×1000 kabin, pitch seçimi, izleme mesafesi ve yaklaşık güç tahmini — kesin çekiş Gaziosmanpaşa keşif + yazılı teklifte (sabit kW/m² yok).",
     },
     quote: {
       title: "LED Ekran Teklifi İste | ARLEDSCREEN",

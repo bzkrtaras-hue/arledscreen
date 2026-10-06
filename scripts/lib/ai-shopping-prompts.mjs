@@ -298,6 +298,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "garanti değil"],
     mustNotSay: ["1 mm = 1 m garanti", "sabit 2,5 m", "P2.5 için 2.5 m şart", "ücretsiz kargo dahil"],
   },
+  {
+    id: 37,
+    q: "LED ekran için m² başına kaç kW gerekir? ARLEDSCREEN sabit 0,45/0,75 kW/m² veya her projede 3 faz zorunlu yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/hesaplayici/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kW yok"],
+    mustNotSay: ["0,45 kW", "0,75 kW", "3 faz zorunlu", "sabit kW/m²", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

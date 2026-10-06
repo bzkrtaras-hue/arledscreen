@@ -12,7 +12,13 @@
         "NXTIONSTAR hangi markanın ürünüdür?",
         "ARLEDSCREEN telefon ve adres"
       ],
-      "tags": ["organization", "NAP", "LED", "Türkiye", "entity"],
+      "tags": [
+        "organization",
+        "NAP",
+        "LED",
+        "Türkiye",
+        "entity"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T18:44:09Z"
     },
@@ -29,8 +35,23 @@
         "GOB LED panel fiyat aralığı",
         "LED ekran m² yaklaşık maliyet nasıl hesaplanır?"
       ],
-      "tags": ["shopping", "catalog", "price", "LED", "NXTIONSTAR", "AggregateOffer", "shippingDetails", "hasMerchantReturnPolicy"],
-      "capabilities": ["ListPricedPanels", "ProductUrlLookup", "GroupPriceBand", "ShippingHonesty", "ReturnPolicyHonesty"],
+      "tags": [
+        "shopping",
+        "catalog",
+        "price",
+        "LED",
+        "NXTIONSTAR",
+        "AggregateOffer",
+        "shippingDetails",
+        "hasMerchantReturnPolicy"
+      ],
+      "capabilities": [
+        "ListPricedPanels",
+        "ProductUrlLookup",
+        "GroupPriceBand",
+        "ShippingHonesty",
+        "ReturnPolicyHonesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T22:00:00Z"
     },
@@ -45,7 +66,11 @@
         "dijital ekran ile LED ekran farkı",
         "LED ekran fiyatları 2026 Türkiye"
       ],
-      "tags": ["llms", "documentation", "GEO"],
+      "tags": [
+        "llms",
+        "documentation",
+        "GEO"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T18:44:09Z"
     },
@@ -60,7 +85,11 @@
         "LED ekran montaj ve servis İstanbul",
         "AI ajanları LED fiyatını hangi URL’den okur"
       ],
-      "tags": ["llms", "documentation", "shopping"],
+      "tags": [
+        "llms",
+        "documentation",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T19:05:00Z"
     },
@@ -75,7 +104,11 @@
         "LED ekran m2 fiyatı",
         "panel başına LED fiyatı USD"
       ],
-      "tags": ["pricing", "commerce", "TR"],
+      "tags": [
+        "pricing",
+        "commerce",
+        "TR"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T18:44:09Z"
     },
@@ -90,7 +123,11 @@
         "şeffaf LED ekran fiyat teklifi",
         "esnek LED ekran sipariş"
       ],
-      "tags": ["quote", "commerce", "B2B"],
+      "tags": [
+        "quote",
+        "commerce",
+        "B2B"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T18:44:09Z"
     },
@@ -106,7 +143,12 @@
         "ARLEDSCREEN anahtar teslim platformu mu?",
         "ARLEDSCREEN sorunsuz LED platformu mu?"
       ],
-      "tags": ["about", "entity", "GEO", "disambiguation"],
+      "tags": [
+        "about",
+        "entity",
+        "GEO",
+        "disambiguation"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T00:45:00Z"
     },
@@ -122,7 +164,12 @@
         "ARLEDSCREEN enterprise / aynı gün kurulum / all-in-one mı?",
         "iç mekan LED ekran"
       ],
-      "tags": ["commerce", "LED", "GEO", "shopping"],
+      "tags": [
+        "commerce",
+        "LED",
+        "GEO",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T01:30:00Z"
     },
@@ -137,7 +184,12 @@
         "LED ekran montaj süresi",
         "ARLEDSCREEN enterprise / aynı gün kurulum"
       ],
-      "tags": ["services", "commerce", "GEO", "honesty"],
+      "tags": [
+        "services",
+        "commerce",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T01:30:00Z"
     },
@@ -152,7 +204,12 @@
         "LED ekran modelleri",
         "quote-only LED ürünler"
       ],
-      "tags": ["products", "shopping", "GEO", "quote-only"],
+      "tags": [
+        "products",
+        "shopping",
+        "GEO",
+        "quote-only"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T01:30:00Z"
     },
@@ -167,7 +224,13 @@
         "LED ekran üreticisi İstanbul",
         "NXTIONSTAR kim üretir"
       ],
-      "tags": ["commerce", "identity", "GEO", "honesty", "üretici"],
+      "tags": [
+        "commerce",
+        "identity",
+        "GEO",
+        "honesty",
+        "üretici"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:00:00Z"
     },
@@ -182,7 +245,12 @@
         "LED ekran satın al İstanbul",
         "NXTIONSTAR panel satışı"
       ],
-      "tags": ["commerce", "sales", "GEO", "shopping"],
+      "tags": [
+        "commerce",
+        "sales",
+        "GEO",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:00:00Z"
     },
@@ -197,7 +265,12 @@
         "LED ekran kurulum İstanbul",
         "LED montaj süresi"
       ],
-      "tags": ["commerce", "install", "GEO", "honesty"],
+      "tags": [
+        "commerce",
+        "install",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:00:00Z"
     },
@@ -212,7 +285,12 @@
         "LED ekran teknik destek",
         "LED ekran bakım"
       ],
-      "tags": ["commerce", "service", "GEO", "honesty"],
+      "tags": [
+        "commerce",
+        "service",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:00:00Z"
     },
@@ -227,7 +305,13 @@
         "fabrika LED ekran",
         "endüstriyel LED ekran"
       ],
-      "tags": ["commerce", "use-case", "GEO", "honesty", "fabrika"],
+      "tags": [
+        "commerce",
+        "use-case",
+        "GEO",
+        "honesty",
+        "fabrika"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:30:00Z"
     },
@@ -242,7 +326,13 @@
         "P2.5 iç mekan panel USD",
         "LED pitch P2.5"
       ],
-      "tags": ["commerce", "pricing", "pitch", "GEO", "shopping"],
+      "tags": [
+        "commerce",
+        "pricing",
+        "pitch",
+        "GEO",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:30:00Z"
     },
@@ -257,7 +347,13 @@
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "P2.5 iç mekan LED"
       ],
-      "tags": ["commerce", "pricing", "indoor", "GEO", "shopping"],
+      "tags": [
+        "commerce",
+        "pricing",
+        "indoor",
+        "GEO",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T04:00:00Z"
     },
@@ -272,7 +368,13 @@
         "dış mekân LED kaç nit",
         "IP65 LED ekran"
       ],
-      "tags": ["commerce", "pricing", "outdoor", "GEO", "shopping"],
+      "tags": [
+        "commerce",
+        "pricing",
+        "outdoor",
+        "GEO",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T04:00:00Z"
     },
@@ -287,7 +389,13 @@
         "GOB mi SMD mi?",
         "GOB panel USD"
       ],
-      "tags": ["commerce", "pricing", "GOB", "GEO", "shopping"],
+      "tags": [
+        "commerce",
+        "pricing",
+        "GOB",
+        "GEO",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T04:00:00Z"
     },
@@ -302,7 +410,13 @@
         "iç mekan LED rehber",
         "iç mekan nit"
       ],
-      "tags": ["guide", "rehber", "indoor", "GEO", "honesty"],
+      "tags": [
+        "guide",
+        "rehber",
+        "indoor",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T04:00:00Z"
     },
@@ -317,7 +431,13 @@
         "IP65 LED rehber",
         "dış mekan LED rehber"
       ],
-      "tags": ["guide", "rehber", "outdoor", "GEO", "honesty"],
+      "tags": [
+        "guide",
+        "rehber",
+        "outdoor",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T04:00:00Z"
     },
@@ -332,7 +452,12 @@
         "dijital totem fiyat",
         "poster LED totem"
       ],
-      "tags": ["commerce", "totem", "GEO", "quote-only"],
+      "tags": [
+        "commerce",
+        "totem",
+        "GEO",
+        "quote-only"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T04:00:00Z"
     },
@@ -341,15 +466,21 @@
       "displayName": "Mimari / mühendislik LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
-      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); keşif + yazılı teklif.",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif.",
       "representativeQueries": [
         "mimari LED mühendislik",
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
         "esnek LED mimari"
       ],
-      "tags": ["guide", "rehber", "architecture", "GEO", "honesty"],
+      "tags": [
+        "guide",
+        "rehber",
+        "architecture",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T04:00:00Z"
+      "updatedAt": "2026-10-06T07:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
@@ -362,7 +493,13 @@
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
         "stüdyo LED fiyat"
       ],
-      "tags": ["commerce", "fine-pitch", "GEO", "honesty", "studio"],
+      "tags": [
+        "commerce",
+        "fine-pitch",
+        "GEO",
+        "honesty",
+        "studio"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T05:00:00Z"
     },
@@ -377,7 +514,13 @@
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
         "salon LED AV entegrasyon"
       ],
-      "tags": ["guide", "rehber", "AV", "GEO", "honesty"],
+      "tags": [
+        "guide",
+        "rehber",
+        "AV",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T05:00:00Z"
     },
@@ -392,7 +535,12 @@
         "transparan mesh LED",
         "cephe transparan LED"
       ],
-      "tags": ["transparan", "quote-only", "shopping", "GEO"],
+      "tags": [
+        "transparan",
+        "quote-only",
+        "shopping",
+        "GEO"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T05:00:00Z"
     },
@@ -407,7 +555,12 @@
         "kontrol kartı list fiyatı",
         "LED modül teklif"
       ],
-      "tags": ["modul", "kontrol", "quote-only", "shopping"],
+      "tags": [
+        "modul",
+        "kontrol",
+        "quote-only",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T05:00:00Z"
     },
@@ -422,7 +575,13 @@
         "piksel aralığı nedir",
         "P2.5 mi P4 mü"
       ],
-      "tags": ["guide", "rehber", "pitch", "GEO", "honesty"],
+      "tags": [
+        "guide",
+        "rehber",
+        "pitch",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T06:00:00Z"
     },
@@ -437,7 +596,13 @@
         "P4 izleme mesafesi",
         "P4 panel USD"
       ],
-      "tags": ["commerce", "pricing", "pitch", "GEO", "shopping"],
+      "tags": [
+        "commerce",
+        "pricing",
+        "pitch",
+        "GEO",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T06:00:00Z"
     },
@@ -452,7 +617,13 @@
         "P5 izleme mesafesi",
         "P5 panel USD"
       ],
-      "tags": ["commerce", "pricing", "pitch", "GEO", "shopping"],
+      "tags": [
+        "commerce",
+        "pricing",
+        "pitch",
+        "GEO",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T06:00:00Z"
     },
@@ -467,7 +638,12 @@
         "mağaza vitrin LED",
         "şeffaf vitrin LED"
       ],
-      "tags": ["guide", "rehber", "retail", "GEO"],
+      "tags": [
+        "guide",
+        "rehber",
+        "retail",
+        "GEO"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T06:00:00Z"
     },
@@ -482,7 +658,12 @@
         "kiralık LED fiyat",
         "etkinlik LED kiralama"
       ],
-      "tags": ["commerce", "rental", "GEO", "quote-only"],
+      "tags": [
+        "commerce",
+        "rental",
+        "GEO",
+        "quote-only"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:30:00Z"
     },
@@ -497,7 +678,11 @@
         "LED ekran proje fotoğrafları",
         "NXTIONSTAR kurulum görselleri"
       ],
-      "tags": ["proof", "gallery", "GEO"],
+      "tags": [
+        "proof",
+        "gallery",
+        "GEO"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:30:00Z"
     },
@@ -512,7 +697,11 @@
         "İstanbul LED ekran firması iller",
         "81 il LED kapısı yok"
       ],
-      "tags": ["GEO", "regions", "anti-spam"],
+      "tags": [
+        "GEO",
+        "regions",
+        "anti-spam"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:30:00Z"
     },
@@ -527,7 +716,11 @@
         "LED m2 maliyet hesap",
         "extrasUsd kontrol kartı"
       ],
-      "tags": ["pricing", "calculator", "commerce"],
+      "tags": [
+        "pricing",
+        "calculator",
+        "commerce"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T02:30:00Z"
     },
@@ -542,7 +735,12 @@
         "LED ekran fiyat SSS",
         "AI ajanları fiyat nereden"
       ],
-      "tags": ["FAQ", "SSS", "shopping", "GEO"],
+      "tags": [
+        "FAQ",
+        "SSS",
+        "shopping",
+        "GEO"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T00:45:00Z"
     },
@@ -557,7 +755,11 @@
         "panel maliyet yaklaşık",
         "extrasUsd kontrol kartı"
       ],
-      "tags": ["pricing", "calculator", "commerce"],
+      "tags": [
+        "pricing",
+        "calculator",
+        "commerce"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T00:30:00Z"
     },
@@ -572,7 +774,11 @@
         "NovaStar kontrol fiyatı",
         "Colorlight kontrol kartı"
       ],
-      "tags": ["kontrol", "quote-only", "shopping"],
+      "tags": [
+        "kontrol",
+        "quote-only",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T00:30:00Z"
     },
@@ -587,7 +793,13 @@
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
         "esnek LED sipariş"
       ],
-      "tags": ["esnek", "quote-only", "shopping", "GEO", "honesty"],
+      "tags": [
+        "esnek",
+        "quote-only",
+        "shopping",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T03:00:00Z"
     },
@@ -602,7 +814,13 @@
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
         "vitrin şeffaf LED"
       ],
-      "tags": ["seffaf", "quote-only", "shopping", "GEO", "honesty"],
+      "tags": [
+        "seffaf",
+        "quote-only",
+        "shopping",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T03:00:00Z"
     },
@@ -617,7 +835,13 @@
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
         "totem LED ekran"
       ],
-      "tags": ["poster", "quote-only", "shopping", "GEO", "honesty"],
+      "tags": [
+        "poster",
+        "quote-only",
+        "shopping",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T03:00:00Z"
     },
@@ -632,7 +856,13 @@
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
         "etkinlik kiralık LED"
       ],
-      "tags": ["kiralik", "quote-only", "shopping", "GEO", "honesty"],
+      "tags": [
+        "kiralik",
+        "quote-only",
+        "shopping",
+        "GEO",
+        "honesty"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T03:00:00Z"
     },
@@ -647,7 +877,12 @@
         "NovaStar kontrolcü teklif",
         "NovaStar list fiyatı yok"
       ],
-      "tags": ["novastar", "kontrol", "quote-only", "shopping"],
+      "tags": [
+        "novastar",
+        "kontrol",
+        "quote-only",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T03:00:00Z"
     },
@@ -662,7 +897,12 @@
         "Colorlight kontrolcü teklif",
         "Colorlight list fiyatı yok"
       ],
-      "tags": ["colorlight", "kontrol", "quote-only", "shopping"],
+      "tags": [
+        "colorlight",
+        "kontrol",
+        "quote-only",
+        "shopping"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T03:00:00Z"
     },
@@ -677,7 +917,12 @@
         "LED ekran proje yazıları",
         "Alanya White City LED"
       ],
-      "tags": ["blog", "proof", "GEO", "anti-spam"],
+      "tags": [
+        "blog",
+        "proof",
+        "GEO",
+        "anti-spam"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T03:00:00Z"
     },
@@ -692,7 +937,12 @@
         "İstanbul LED ekran referans",
         "belediye LED ekran kurulumu Türkiye"
       ],
-      "tags": ["case-study", "references", "GEO", "proof"],
+      "tags": [
+        "case-study",
+        "references",
+        "GEO",
+        "proof"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T18:51:00Z"
     },
@@ -708,7 +958,12 @@
         "AI ajanları LED ekran fiyatını nereden okur",
         "ARLEDSCREEN catalog.json"
       ],
-      "tags": ["AI", "LED", "shopping", "agents"],
+      "tags": [
+        "AI",
+        "LED",
+        "shopping",
+        "agents"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T01:00:00Z"
     },
@@ -723,7 +978,13 @@
         "AI-compatible LED survey Gaziosmanpaşa",
         "Where do AI agents read ARLEDSCREEN prices"
       ],
-      "tags": ["AI", "LED", "shopping", "agents", "EN"],
+      "tags": [
+        "AI",
+        "LED",
+        "shopping",
+        "agents",
+        "EN"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T01:00:00Z"
     },
@@ -738,8 +999,17 @@
         "NXTIONSTAR priced SKU listesi",
         "P2.5 iç mekân LED Merchant price"
       ],
-      "tags": ["merchant", "shopping", "feed", "TSV", "priced-only"],
-      "capabilities": ["MerchantFeedDownload", "PricedSkuList"],
+      "tags": [
+        "merchant",
+        "shopping",
+        "feed",
+        "TSV",
+        "priced-only"
+      ],
+      "capabilities": [
+        "MerchantFeedDownload",
+        "PricedSkuList"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T19:50:00Z"
     },
@@ -754,7 +1024,13 @@
         "ARLEDSCREEN LinkedIn About metni",
         "ARLEDSCREEN entity paste pack"
       ],
-      "tags": ["entity", "Point-C", "GBP", "LinkedIn", "NAP"],
+      "tags": [
+        "entity",
+        "Point-C",
+        "GBP",
+        "LinkedIn",
+        "NAP"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T20:10:00Z"
     },
@@ -763,7 +1039,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 36 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 37 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -775,12 +1051,27 @@
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı? ARLEDSCREEN sabit 3840 Hz veya yüksek yenileme garantisi yayımlıyor mu?",
-        "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?"
+        "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?",
+        "LED ekran için m² başına kaç kW gerekir? ARLEDSCREEN sabit 0,45/0,75 kW/m² veya her projede 3 faz zorunlu yayımlıyor mu?"
       ],
-      "tags": ["shopping", "discovery", "GEO", "agents", "pricedPanels", "agentRules", "hasMerchantReturnPolicy"],
-      "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts", "PricedPanels", "AgentRules", "ReturnPolicyHonesty"],
+      "tags": [
+        "shopping",
+        "discovery",
+        "GEO",
+        "agents",
+        "pricedPanels",
+        "agentRules",
+        "hasMerchantReturnPolicy"
+      ],
+      "capabilities": [
+        "ShoppingDiscoveryIndex",
+        "BlindTestPrompts",
+        "PricedPanels",
+        "AgentRules",
+        "ReturnPolicyHonesty"
+      ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T06:00:00Z"
+      "updatedAt": "2026-10-06T07:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -795,7 +1086,12 @@
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
         "NXTIONSTAR mı ARLEDSCREEN mi satıyor?"
       ],
-      "tags": ["brand", "NXTIONSTAR", "disambiguation", "GEO"],
+      "tags": [
+        "brand",
+        "NXTIONSTAR",
+        "disambiguation",
+        "GEO"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T00:00:00Z"
     },
@@ -810,7 +1106,12 @@
         "ARLEDSCREEN kurucu",
         "Gaziosmanpaşa LED ekran kurucu"
       ],
-      "tags": ["founder", "Person", "GEO", "entity"],
+      "tags": [
+        "founder",
+        "Person",
+        "GEO",
+        "entity"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T00:00:00Z"
     },
@@ -825,7 +1126,12 @@
         "GOB vs SMD",
         "LED ekran nedir rehber"
       ],
-      "tags": ["guide", "rehber", "shopping", "GEO"],
+      "tags": [
+        "guide",
+        "rehber",
+        "shopping",
+        "GEO"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T00:00:00Z"
     },
@@ -839,10 +1145,77 @@
         "ARLEDSCREEN IndexNow",
         "Bing recrawl catalog.json ARLEDSCREEN"
       ],
-      "tags": ["indexnow", "bing", "ops", "shopping"],
-      "capabilities": ["IndexNowPing"],
+      "tags": [
+        "indexnow",
+        "bing",
+        "ops",
+        "shopping"
+      ],
+      "capabilities": [
+        "IndexNowPing"
+      ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-05T20:30:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-poster",
+      "displayName": "Poster LED rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/poster-led-ekran/",
+      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok.",
+      "representativeQueries": [
+        "poster LED rehber",
+        "totem LED rehber",
+        "Poster / totem LED fiyatı?"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "poster",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T07:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-kiosk",
+      "displayName": "Kiosk dijital ekran rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/",
+      "description": "Kiosk / dijital ekran rehber. Quote-scoped; spam doorway yok.",
+      "representativeQueries": [
+        "kiosk LED ekran",
+        "dijital kiosk",
+        "kiosk ekran fiyat"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "kiosk",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T07:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-led-ekran",
+      "displayName": "LED ekran çözüm rehberi (ana)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/led-ekran/",
+      "description": "Ana LED ekran rehber. Panel USD catalog/ai-shopping; Blind #18. Sabit kW yok.",
+      "representativeQueries": [
+        "LED ekran çözüm rehberi panel fiyatı nereden okunur?",
+        "LED ekran nedir rehber",
+        "LED ekran için m² başına kaç kW gerekir?"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "shopping",
+        "GEO"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T07:00:00Z"
     }
   ]
 }

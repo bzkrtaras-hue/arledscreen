@@ -35,6 +35,11 @@ const HESAP_FAQS = [
     answer:
       "Hayır. Hesaplayıcı yaklaşık malzeme + işçilik + kontrol/yazılım bandını gösterir. Nihai tutar ölçü, montaj ve konstrüksiyonla https://arledscreen.com/tr/quote/ üzerinden yazılı teklifte kesinleşir. Ücretsiz kargo yok.",
   },
+  {
+    question: "m² başına sabit kW veya 3 faz zorunlu mu?",
+    answer:
+      "Hayır — sabit kW/m² (0,45/0,75) veya «3 faz zorunlu» site iddiası yoktur. Güç/kesici hesaplayıcı tahmindir; kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + model föyü + yazılı teklifte. Ajanlar: https://arledscreen.com/ai-shopping.json.",
+  },
 ];
 
 export async function generateMetadata({

@@ -146,7 +146,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Cephe, stadyum koridoru ve belediye DOOH",
           body:
-            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister; stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Her senaryoda güç topolojisi (tek / üç faz) ve yedek alıcı ihtiyacı teklife yazılır.",
+            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister; stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Güç topolojisi (tek veya üç faz — 3 faz zorunlu iddiası yok) ve yedek alıcı ihtiyacı Gaziosmanpaşa yazılı teklifte; sabit kW/m² yayımlanmaz.",
         },
         {
           h2: "Keşif sonrası montaj — kapsam yazılı teklifte",
@@ -279,7 +279,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Güç, ısı ve sinyal mühendisliği",
           body:
-            "Peak güç, eşzamanlılık faktörü ve üç faz dengesi elektrik projesine verilir. Kabin arkasında havalandırma veya aktif soğutma gerekebilir. Uzun hatlarda fiber; kısa hatlarda CAT6A; yedek gönderici / alıcı topolojisi kritik mekânlarda önerilir. YZ / medya sunucu hattı varsa port ve gecikme bütçesi eklenir.",
+            "Peak güç ve faz modeli (tek/üç faz) keşif sonrası elektrik projesine yazılır — sitede sabit 0,45/0,75 kW/m² veya «3 faz zorunlu» yoktur. Kabin arkasında havalandırma gerekebilir. Uzun hatlarda fiber; kısa hatlarda CAT6A; yedek alıcı topolojisi kritik mekânlarda önerilir.",
         },
         {
           h2: "Disiplinler arası teslim paketi",
@@ -352,7 +352,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Montaj, akustik ve sahne güvenliği",
           body:
-            "Asma LED’lerde statik onay ve güvenlik teli; yerden yükselen sahne duvarında ankraj detayı şarttır. Akustik panellerle çakışma ve fan gürültüsü kontrol edilir. Kurulum sonrası renk kalibrasyonu ve operatör eğitimi ARLEDSCREEN teslimatına dahildir.",
+            "Asma LED’lerde statik onay ve güvenlik teli; yerden yükselen sahne duvarında ankraj detayı yapısal olarak gereklidir. Akustik panellerle çakışma ve fan gürültüsü kontrol edilir. Kurulum sonrası renk kalibrasyonu ve operatör eğitimi kapsamı yazılı teklifte — uydurma all-in teslimat paketi yok.",
         },
       ],
       faqs: [
@@ -819,7 +819,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Power, heat and signal",
           body:
-            "Peak power and three-phase balance feed the electrical design. Rear ventilation may be required. Fiber for long runs, CAT6A for short; critical spaces get spare sender/receiver topology. AI/media ports and latency budgets are added when needed.",
+            "Peak power and phase model (single/three-phase) feed the electrical design after survey — no site-wide 0.45/0.75 kW/m² or “3-phase required” claim. Rear ventilation may be required. Fiber for long runs, CAT6A for short; spare topology when critical.",
         },
         {
           h2: "Cross-discipline delivery pack",

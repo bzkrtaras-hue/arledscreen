@@ -502,6 +502,18 @@ if (
 ) {
   errors.push("blind prompt #36 mustSay must include yazılı teklif + Gaziosmanpaşa + garanti değil");
 }
+const pBlind37 = PROMPTS.find((x) => x.id === 37);
+if (!pBlind37 || !/kW|3 faz/i.test(pBlind37.q)) {
+  errors.push("blind prompt #37 must cover sabit kW/m² / 3 faz zorunlu invent");
+}
+if (
+  pBlind37 &&
+  (!pBlind37.mustSay?.includes("yazılı teklif") ||
+    !pBlind37.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind37.mustSay?.includes("sabit kW yok"))
+) {
+  errors.push("blind prompt #37 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kW yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

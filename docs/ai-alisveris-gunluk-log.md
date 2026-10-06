@@ -78,6 +78,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 86 | 2026-10-05 | sabit nit/IP #34 · keşiften-montaja residual · ic/dis/gob ARD · skor /102 | ✅ |
 | 87 | 2026-10-06 | sabit Hz/kamera #35 · ince-pitch/konferans ARD · skor /105 | ✅ |
 | 88 | 2026-10-06 | izleme mesafesi #36 · piksel-araligi/p4/p5 ARD · skor /108 | ✅ |
+| 89 | 2026-10-06 | sabit kW/3faz #37 · mimari/poster/kiosk ARD · skor /111 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -530,3 +531,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - FAQ/SSS/rehber/articles pitch kuralı soften · P4/P5 viewDistance · calculator Optimal labels
 - ARD: piksel-araligi + p4 + p5 + vitrin · IndexNow vitrin/p4/p5 · agentRules izleme mesafesi
 - skor hedef Tur 1 ≥ 54/108 · Tur 2 ≥ 81/108
+
+## Gün 89 notları
+
+- Blind #37 «m² başına kaç kW / 3 faz zorunlu?» — skor **/111**; ARD **37 kör test**
+- power calculator / mimari / seo 3 faz soften · hesaplayici kW FAQ
+- ARD: poster + kiosk + led-ekran rehber · IndexNow +3 · agentRules sabit kW
+- skor hedef Tur 1 ≥ 56/111 · Tur 2 ≥ 83/111
