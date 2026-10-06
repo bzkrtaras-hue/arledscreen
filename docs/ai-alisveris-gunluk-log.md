@@ -1,3 +1,10 @@
+## PR #55 kapatıldı → #58 — 2026-10-06
+
+- Sahip PR #55’i **merge etmeden** kapattı
+- Canlı smoke hâlâ **20/20**; `main` hâlâ `ai-shopping.json` yok
+- Aynı daldan yeni PR: **#58** (CI yeşil tip `57624e8`)
+- Tur 1a BLOCKED · invent yok
+
 ## Kontrol — merge conflict + canlı kanıt — 2026-10-06
 
 ### Ölçülen (uydurma yok)
