@@ -5776,6 +5776,18 @@ if (
 ) {
   errors.push("blind prompt #442 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Sight yok");
 }
+const pBlind443 = PROMPTS.find((x) => x.id === 443);
+if (!pBlind443 || !/verge apron/i.test(pBlind443.q)) {
+  errors.push("blind prompt #443 must cover sabit verge apron invent");
+}
+if (
+  pBlind443 &&
+  (!pBlind443.mustSay?.includes("yazılı teklif") ||
+    !pBlind443.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind443.mustSay?.includes("sabit verge apron yok"))
+) {
+  errors.push("blind prompt #443 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit verge apron yok");
+}
 
 
 

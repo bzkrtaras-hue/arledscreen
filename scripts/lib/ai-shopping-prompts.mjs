@@ -5177,6 +5177,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Logitech Sight yok"],
     mustNotSay: ["Logitech Sight garantidir", "sabit Logitech Sight True1", "tüm modeller Logitech Sight", "Logitech Sight dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 443,
+    q: "LED ekran verge apron / saçak kenarı eteği var mı? ARLEDSCREEN sabit verge apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit verge apron yok"],
+    mustNotSay: ["verge apron garantidir", "sabit verge apron True1", "tüm modeller verge apron", "saçak kenarı eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
