@@ -1937,6 +1937,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Zoom Room yok"],
     mustNotSay: ["Zoom Room garantidir", "sabit Zoom Room True1", "tüm modeller Zoom Room", "soft codec garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 173,
+    q: "LED ekran vandal guard / vandal koruma var mı? ARLEDSCREEN sabit vandal guard iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit vandal guard yok"],
+    mustNotSay: ["vandal guard garantidir", "sabit vandal guard True1", "tüm modeller vandal guard", "vandal koruma garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

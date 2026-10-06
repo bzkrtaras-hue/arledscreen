@@ -214,6 +214,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 222 | 2026-10-06 | sabit Atlona #170 · ic/konferans ARD refresh · skor /510 | ✅ |
 | 223 | 2026-10-06 | sabit sun shade #171 · dis/mimari ARD refresh · skor /513 | ✅ |
 | 224 | 2026-10-06 | sabit Zoom Room #172 · ic/konferans ARD refresh · skor /516 | ✅ |
+| 225 | 2026-10-06 | sabit vandal guard #173 · dis/mimari ARD refresh · skor /519 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1593,3 +1594,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #172 «Zoom Room / soft codec?» — skor **/516**; ARD **172 kör test**
 - TR/EN ic-mekan + TR/EN konferans Zoom Room invent · llms deny · sabit Zoom Room yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Zoom Room
+
+## Gün 225 notları
+
+- Blind #173 «vandal guard / vandal koruma?» — skor **/519**; ARD **173 kör test**
+- TR/EN dis-mekan + TR/EN mimari vandal guard invent · llms deny · sabit vandal guard yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit vandal guard
