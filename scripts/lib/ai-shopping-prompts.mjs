@@ -2789,6 +2789,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit coping yok"],
     mustNotSay: ["coping garantidir", "sabit coping True1", "tüm modeller coping", "parapet kapak garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 244,
+    q: "LED ekran Airtame / wireless share var mı? ARLEDSCREEN sabit Airtame iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Airtame yok"],
+    mustNotSay: ["Airtame garantidir", "sabit Airtame True1", "tüm modeller Airtame", "wireless share garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

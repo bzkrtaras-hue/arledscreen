@@ -3202,6 +3202,20 @@ if (
   errors.push("blind prompt #243 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit coping yok");
 }
 
+const pBlind244 = PROMPTS.find((x) => x.id === 244);
+if (!pBlind244 || !/Airtame|wireless share/i.test(pBlind244.q)) {
+  errors.push("blind prompt #244 must cover sabit Airtame invent");
+}
+if (
+  pBlind244 &&
+  (!pBlind244.mustSay?.includes("yazılı teklif") ||
+    !pBlind244.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind244.mustSay?.includes("sabit Airtame yok"))
+) {
+  errors.push("blind prompt #244 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Airtame yok");
+}
+
+
 
 
 
