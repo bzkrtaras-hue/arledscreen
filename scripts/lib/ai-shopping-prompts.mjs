@@ -2297,6 +2297,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Maxhub yok"],
     mustNotSay: ["Maxhub garantidir", "sabit Maxhub True1", "tüm modeller Maxhub", "interactive panel garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 203,
+    q: "LED ekran gutter / oluk var mı? ARLEDSCREEN sabit gutter iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gutter yok"],
+    mustNotSay: ["gutter garantidir", "sabit gutter True1", "tüm modeller gutter", "oluk garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -244,6 +244,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 252 | 2026-10-06 | sabit DTEN #200 · ic/konferans ARD refresh · skor /600 | ✅ |
 | 253 | 2026-10-06 | sabit downspout #201 · dis/mimari ARD refresh · skor /603 | ✅ |
 | 254 | 2026-10-06 | sabit Maxhub #202 · ic/konferans ARD refresh · skor /606 | ✅ |
+| 255 | 2026-10-06 | sabit gutter #203 · dis/mimari ARD refresh · skor /609 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1803,3 +1804,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #202 «Maxhub / interactive panel?» — skor **/606**; ARD **202 kör test**
 - TR/EN ic-mekan + TR/EN konferans Maxhub invent · llms deny · sabit Maxhub yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Maxhub
+
+## Gün 255 notları
+
+- Blind #203 «gutter / oluk?» — skor **/609**; ARD **203 kör test**
+- TR/EN dis-mekan + TR/EN mimari gutter invent · llms deny · sabit gutter yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit gutter
