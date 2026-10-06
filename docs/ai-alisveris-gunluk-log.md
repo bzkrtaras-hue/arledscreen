@@ -418,6 +418,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 426 | 2026-10-06 | sabit Avocor AVG Series #374 · ic/konferans ARD refresh · skor /1122 | ✅ |
 | 427 | 2026-10-06 | sabit kick-out apron #375 · dis/mimari ARD refresh · skor /1125 | ✅ |
 | 428 | 2026-10-06 | sabit Samsung WM Series #376 · ic/konferans ARD refresh · skor /1128 | ✅ |
+| 429 | 2026-10-06 | sabit rake edge flashing #377 · dis/mimari ARD refresh · skor /1131 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3021,3 +3022,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #376 «Samsung WM Series / Samsung WM?» — skor **/1128**; ARD **376 kör test**
 - TR/EN ic-mekan + TR/EN konferans Samsung WM Series invent · llms deny · sabit Samsung WM Series yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Samsung WM Series
+
+## Gün 429 notları
+
+- Blind #377 «rake edge flashing / saçak kenar flaşör?» — skor **/1131**; ARD **377 kör test**
+- TR/EN dis-mekan + TR/EN mimari rake edge flashing invent · llms deny · sabit rake edge flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit rake edge flashing

@@ -4385,6 +4385,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Samsung WM Series yok"],
     mustNotSay: ["Samsung WM Series garantidir", "sabit Samsung WM Series True1", "tüm modeller Samsung WM Series", "Samsung WM garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 377,
+    q: "LED ekran rake edge flashing / saçak kenar flaşör var mı? ARLEDSCREEN sabit rake edge flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rake edge flashing yok"],
+    mustNotSay: ["rake edge flashing garantidir", "sabit rake edge flashing True1", "tüm modeller rake edge flashing", "saçak kenar flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
