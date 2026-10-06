@@ -235,6 +235,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 243 | 2026-10-06 | sabit condensation drain #191 · dis/mimari ARD refresh · skor /573 | ✅ |
 | 244 | 2026-10-06 | sabit Polycom #192 · ic/konferans ARD refresh · skor /576 | ✅ |
 | 245 | 2026-10-06 | sabit vapor barrier #193 · dis/mimari ARD refresh · skor /579 | ✅ |
+| 246 | 2026-10-06 | sabit Jabra #194 · ic/konferans ARD refresh · skor /582 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1740,3 +1741,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #193 «vapor barrier / buhar bariyeri?» — skor **/579**; ARD **193 kör test**
 - TR/EN dis-mekan + TR/EN mimari vapor barrier invent · llms deny · sabit vapor barrier yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit vapor barrier
+
+## Gün 246 notları
+
+- Blind #194 «Jabra / PanaCast?» — skor **/582**; ARD **194 kör test**
+- TR/EN ic-mekan + TR/EN konferans Jabra invent · llms deny · sabit Jabra yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Jabra

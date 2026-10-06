@@ -2552,6 +2552,20 @@ if (
   errors.push("blind prompt #193 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit vapor barrier yok");
 }
 
+const pBlind194 = PROMPTS.find((x) => x.id === 194);
+if (!pBlind194 || !/Jabra|PanaCast/i.test(pBlind194.q)) {
+  errors.push("blind prompt #194 must cover sabit Jabra invent");
+}
+if (
+  pBlind194 &&
+  (!pBlind194.mustSay?.includes("yazılı teklif") ||
+    !pBlind194.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind194.mustSay?.includes("sabit Jabra yok"))
+) {
+  errors.push("blind prompt #194 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Jabra yok");
+}
+
+
 
 
 

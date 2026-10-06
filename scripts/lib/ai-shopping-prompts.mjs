@@ -2189,6 +2189,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit vapor barrier yok"],
     mustNotSay: ["vapor barrier garantidir", "sabit vapor barrier True1", "tüm modeller vapor barrier", "buhar bariyeri garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 194,
+    q: "LED ekran Jabra / PanaCast var mı? ARLEDSCREEN sabit Jabra iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Jabra yok"],
+    mustNotSay: ["Jabra garantidir", "sabit Jabra True1", "tüm modeller Jabra", "PanaCast garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
