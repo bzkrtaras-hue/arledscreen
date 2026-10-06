@@ -3881,6 +3881,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ActivPanel Titanium yok"],
     mustNotSay: ["ActivPanel Titanium garantidir", "sabit ActivPanel Titanium True1", "tüm modeller ActivPanel Titanium", "ActivPanel Cobalt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 335,
+    q: "LED ekran pitch pocket / çatı geçiş cebi var mı? ARLEDSCREEN sabit pitch pocket iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit pitch pocket yok"],
+    mustNotSay: ["pitch pocket garantidir", "sabit pitch pocket True1", "tüm modeller pitch pocket", "çatı geçiş cebi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

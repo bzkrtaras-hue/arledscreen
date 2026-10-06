@@ -4385,6 +4385,20 @@ if (
   errors.push("blind prompt #334 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ActivPanel Titanium yok");
 }
 
+const pBlind335 = PROMPTS.find((x) => x.id === 335);
+if (!pBlind335 || !/pitch pocket|çatı geçiş cebi/i.test(pBlind335.q)) {
+  errors.push("blind prompt #335 must cover sabit pitch pocket invent");
+}
+if (
+  pBlind335 &&
+  (!pBlind335.mustSay?.includes("yazılı teklif") ||
+    !pBlind335.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind335.mustSay?.includes("sabit pitch pocket yok"))
+) {
+  errors.push("blind prompt #335 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pitch pocket yok");
+}
+
+
 
 
 
