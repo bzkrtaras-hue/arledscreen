@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/76 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 76 kör test intent (not stale 17–75)");
+if (ardTxt && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 77 kör test intent (not stale 17–76)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-5]) kör test/i.test(ardTxt) && !/76 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–75 kör test without 76");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-6]) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–76 kör test without 77");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1134,6 +1134,22 @@ for (const rel of [
   }
   if (/0mm garantidir|sabit seamless|tüm modeller bezelsiz|seamless garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit 0mm / seamless`);
+  }
+}
+
+
+// Day 129: sabit alıcı yedeklilik / receiving card redundancy — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit alıcı yedeklilik yok|no fixed site receiving-card redundancy/i.test(html)) {
+    errors.push(`${rel} should hedge sabit alıcı yedeklilik / receiving card redundancy`);
+  }
+  if (/alıcı yedeklilik garantidir|sabit backup loop|tüm modeller redundant receiver|receiving card redundancy garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit alıcı yedeklilik`);
   }
 }
 

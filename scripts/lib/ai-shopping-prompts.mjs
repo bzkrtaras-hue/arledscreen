@@ -785,6 +785,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit 0mm yok"],
     mustNotSay: ["0mm garantidir", "sabit seamless", "tüm modeller bezelsiz", "seamless garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 77,
+    q: "LED ekran alıcı kart yedeklilik / receiving card redundancy / backup loop var mı? ARLEDSCREEN sabit alıcı yedeklilik iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit alıcı yedeklilik yok"],
+    mustNotSay: ["alıcı yedeklilik garantidir", "sabit backup loop", "tüm modeller redundant receiver", "receiving card redundancy garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

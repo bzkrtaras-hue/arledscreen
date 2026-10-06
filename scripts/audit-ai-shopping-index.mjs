@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 76) errors.push(`blindTestPrompts must be 76 (got ${prompts.length})`);
+if (prompts.length !== 77) errors.push(`blindTestPrompts must be 77 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/76 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 76 kör test intent");
+if (!/77 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 77 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-5]) kör test/i.test(ard) && !/76 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–75 kör test without 76");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-6]) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–76 kör test without 77");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -671,6 +671,15 @@ if (!p76 || !/0mm|seamless|bezelsiz/i.test(p76.q || "")) {
 }
 if (!/0mm|seamless|bezelsiz|sabit 0mm/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit 0mm / seamless invent");
+}
+
+// Day 129: sabit alıcı yedeklilik / receiving card redundancy invent
+const p77 = (doc.blindTestPrompts || []).find((p) => p.id === 77);
+if (!p77 || !/alıcı|receiving card|backup loop/i.test(p77.q || "")) {
+  errors.push("blindTestPrompts #77 must cover sabit alıcı yedeklilik invent");
+}
+if (!/alıcı yedeklilik|receiving card redundancy|backup loop|sabit alıcı/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit alıcı yedeklilik invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
