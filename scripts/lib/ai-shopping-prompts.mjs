@@ -2165,6 +2165,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit condensation drain yok"],
     mustNotSay: ["condensation drain garantidir", "sabit condensation drain True1", "tüm modeller condensation drain", "yoğuşma drenajı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 192,
+    q: "LED ekran Polycom / Poly Studio var mı? ARLEDSCREEN sabit Polycom iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Polycom yok"],
+    mustNotSay: ["Polycom garantidir", "sabit Polycom True1", "tüm modeller Polycom", "Poly Studio garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

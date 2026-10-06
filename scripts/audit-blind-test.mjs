@@ -2526,6 +2526,20 @@ if (
   errors.push("blind prompt #191 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit condensation drain yok");
 }
 
+const pBlind192 = PROMPTS.find((x) => x.id === 192);
+if (!pBlind192 || !/Polycom|Poly Studio/i.test(pBlind192.q)) {
+  errors.push("blind prompt #192 must cover sabit Polycom invent");
+}
+if (
+  pBlind192 &&
+  (!pBlind192.mustSay?.includes("yazılı teklif") ||
+    !pBlind192.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind192.mustSay?.includes("sabit Polycom yok"))
+) {
+  errors.push("blind prompt #192 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Polycom yok");
+}
+
+
 
 
 
