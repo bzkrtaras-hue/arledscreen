@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/65 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 65 kör test intent (not stale 17–64)");
+if (ardTxt && !/66 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 66 kör test intent (not stale 17–65)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-4]) kör test/i.test(ardTxt) && !/65 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–64 kör test without 65");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-5]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–65 kör test without 66");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -961,6 +961,21 @@ for (const rel of [
   }
   if (/24 saat yedek parça|stokta yedek garantidir|aynı gün yedek sevkiyat|yedek parça stokta yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit yedek parça stok`);
+  }
+}
+
+// Day 118: sabit PoE / Gigabit — honesty presence
+for (const rel of [
+  "out/tr/rehber/kiosk-dijital-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit PoE yok|no fixed site PoE/i.test(html)) {
+    errors.push(`${rel} should hedge sabit PoE / Gigabit`);
+  }
+  if (/PoE\+ garantidir|sabit Gigabit 1000|1 Gbps garantidir|tüm modeller PoE/i.test(html)) {
+    errors.push(`${rel} must not invent sabit PoE / Gigabit`);
   }
 }
 

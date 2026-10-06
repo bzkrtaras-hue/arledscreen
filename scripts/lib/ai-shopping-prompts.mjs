@@ -653,6 +653,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit yedek parça stok yok"],
     mustNotSay: ["24 saat yedek parça", "stokta yedek garantidir", "aynı gün yedek sevkiyat", "yedek parça stokta yayımlanır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 66,
+    q: "LED ekran PoE / Gigabit Ethernet / ağ bant genişliği gereksinimi nedir? ARLEDSCREEN sabit PoE veya Gigabit iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/kiosk-dijital-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit PoE yok"],
+    mustNotSay: ["PoE+ garantidir", "sabit Gigabit 1000", "1 Gbps garantidir", "tüm modeller PoE", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

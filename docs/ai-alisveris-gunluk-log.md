@@ -107,6 +107,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 115 | 2026-10-06 | sabit güç faktörü #63 · TR p3-07/p4/dis p2-5 ARD · skor /189 | ✅ |
 | 116 | 2026-10-06 | sabit HDCP #64 · TR dis p2-9/p3-07/p4 ARD · skor /192 | ✅ |
 | 117 | 2026-10-06 | sabit yedek parça stok #65 · TR dis p4-on-servis/p5/p8 ARD · skor /195 | ✅ |
+| 118 | 2026-10-06 | sabit PoE / Gigabit #66 · TR GOB p1-25/p1-53/p1-86 ARD · skor /198 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -762,3 +763,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR servis + SSS yedek stok invent · llms deny · sabit yedek parça stok yok
 - ARD: TR dis p4-on-servis/p5/p8 · IndexNow +3 · agentRules sabit yedek stok
 - skor hedef Tur 1 ≥ 98/195 · Tur 2 ≥ 147/195
+
+## Gün 118 notları
+
+- Blind #66 «PoE / Gigabit Ethernet / ağ bant genişliği?» — skor **/198**; ARD **66 kör test**
+- TR/EN kiosk + mimari PoE invent · llms deny · sabit PoE yok
+- ARD: TR GOB p1-25/p1-53/p1-86 · IndexNow +3 · agentRules sabit PoE/Gigabit
+- skor hedef Tur 1 ≥ 99/198 · Tur 2 ≥ 149/198

@@ -855,6 +855,19 @@ if (
 ) {
   errors.push("blind prompt #65 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit yedek parça stok yok");
 }
+
+const pBlind66 = PROMPTS.find((x) => x.id === 66);
+if (!pBlind66 || !/PoE|Gigabit|bant genişliği/i.test(pBlind66.q)) {
+  errors.push("blind prompt #66 must cover sabit PoE / Gigabit invent");
+}
+if (
+  pBlind66 &&
+  (!pBlind66.mustSay?.includes("yazılı teklif") ||
+    !pBlind66.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind66.mustSay?.includes("sabit PoE yok"))
+) {
+  errors.push("blind prompt #66 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit PoE yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
