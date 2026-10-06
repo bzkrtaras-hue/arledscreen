@@ -370,6 +370,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 378 | 2026-10-06 | sabit CTOUCH Riva #326 · ic/konferans ARD refresh · skor /978 | ✅ |
 | 379 | 2026-10-06 | sabit cap flashing #327 · dis/mimari ARD refresh · skor /981 | ✅ |
 | 380 | 2026-10-06 | sabit Elo Interactive #328 · ic/konferans ARD refresh · skor /984 | ✅ |
+| 381 | 2026-10-06 | sabit canopy cleat #329 · dis/mimari ARD refresh · skor /987 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2685,3 +2686,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #328 «Elo Interactive / Elo I-Series?» — skor **/984**; ARD **328 kör test**
 - TR/EN ic-mekan + TR/EN konferans Elo Interactive invent · llms deny · sabit Elo Interactive yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Elo Interactive
+
+## Gün 381 notları
+
+- Blind #329 «canopy cleat / kanopi kleyt?» — skor **/987**; ARD **329 kör test**
+- TR/EN dis-mekan + TR/EN mimari canopy cleat invent · llms deny · sabit canopy cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit canopy cleat

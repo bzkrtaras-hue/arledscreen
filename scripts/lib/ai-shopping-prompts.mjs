@@ -3809,6 +3809,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Elo Interactive yok"],
     mustNotSay: ["Elo Interactive garantidir", "sabit Elo Interactive True1", "tüm modeller Elo Interactive", "Elo I-Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 329,
+    q: "LED ekran canopy cleat / kanopi kleyt var mı? ARLEDSCREEN sabit canopy cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit canopy cleat yok"],
+    mustNotSay: ["canopy cleat garantidir", "sabit canopy cleat True1", "tüm modeller canopy cleat", "kanopi kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

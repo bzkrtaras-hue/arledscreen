@@ -4307,6 +4307,20 @@ if (
   errors.push("blind prompt #328 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Elo Interactive yok");
 }
 
+const pBlind329 = PROMPTS.find((x) => x.id === 329);
+if (!pBlind329 || !/canopy cleat|kanopi kleyt/i.test(pBlind329.q)) {
+  errors.push("blind prompt #329 must cover sabit canopy cleat invent");
+}
+if (
+  pBlind329 &&
+  (!pBlind329.mustSay?.includes("yazılı teklif") ||
+    !pBlind329.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind329.mustSay?.includes("sabit canopy cleat yok"))
+) {
+  errors.push("blind prompt #329 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit canopy cleat yok");
+}
+
+
 
 
 
