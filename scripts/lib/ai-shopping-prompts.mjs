@@ -5069,6 +5069,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit dormer apron yok"],
     mustNotSay: ["dormer apron garantidir", "sabit dormer apron True1", "tüm modeller dormer apron", "çatı çıkma eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 434,
+    q: "LED ekran Tap IP / Tap IP var mı? ARLEDSCREEN sabit Tap IP iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Tap IP yok"],
+    mustNotSay: ["Tap IP garantidir", "sabit Tap IP True1", "tüm modeller Tap IP", "Tap IP dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

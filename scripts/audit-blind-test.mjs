@@ -5666,6 +5666,19 @@ if (
 ) {
   errors.push("blind prompt #433 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dormer apron yok");
 }
+const pBlind434 = PROMPTS.find((x) => x.id === 434);
+if (!pBlind434 || !/Tap IP/i.test(pBlind434.q)) {
+  errors.push("blind prompt #434 must cover sabit Tap IP invent");
+}
+if (
+  pBlind434 &&
+  (!pBlind434.mustSay?.includes("yazılı teklif") ||
+    !pBlind434.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind434.mustSay?.includes("sabit Tap IP yok"))
+) {
+  errors.push("blind prompt #434 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Tap IP yok");
+}
+
 
 
 
