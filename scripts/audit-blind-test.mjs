@@ -5848,6 +5848,18 @@ if (
 ) {
   errors.push("blind prompt #448 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Cisco Desk Pro yok");
 }
+const pBlind449 = PROMPTS.find((x) => x.id === 449);
+if (!pBlind449 || !/spandrel apron/i.test(pBlind449.q)) {
+  errors.push("blind prompt #449 must cover sabit spandrel apron invent");
+}
+if (
+  pBlind449 &&
+  (!pBlind449.mustSay?.includes("yazılı teklif") ||
+    !pBlind449.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind449.mustSay?.includes("sabit spandrel apron yok"))
+) {
+  errors.push("blind prompt #449 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit spandrel apron yok");
+}
 
 
 

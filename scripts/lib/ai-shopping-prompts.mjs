@@ -5249,6 +5249,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Cisco Desk Pro yok"],
     mustNotSay: ["Cisco Desk Pro garantidir", "sabit Cisco Desk Pro True1", "tüm modeller Cisco Desk Pro", "Cisco Desk Pro dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 449,
+    q: "LED ekran spandrel apron / spandrel eteği var mı? ARLEDSCREEN sabit spandrel apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit spandrel apron yok"],
+    mustNotSay: ["spandrel apron garantidir", "sabit spandrel apron True1", "tüm modeller spandrel apron", "spandrel eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

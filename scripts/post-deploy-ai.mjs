@@ -74,7 +74,7 @@ console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → Day 500 ARD 448 kör test · #448 Cisco Desk Pro · ic/konferans ARD refresh",
+  "  entity-profiles → Day 501 ARD 449 kör test · #449 spandrel apron · dis/mimari ARD refresh",
 );
 console.log(
   "  home hero → NO 81-il bayi invent · customer subcopy · FAQ cites ai-shopping + ücretsiz kargo yok",
