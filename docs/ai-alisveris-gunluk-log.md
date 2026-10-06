@@ -382,6 +382,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 390 | 2026-10-06 | sabit Samsung Flip Pro #338 · ic/konferans ARD refresh · skor /1014 | ✅ |
 | 391 | 2026-10-06 | sabit skirt flashing #339 · dis/mimari ARD refresh · skor /1017 | ✅ |
 | 392 | 2026-10-06 | sabit CTOUCH Laser #340 · ic/konferans ARD refresh · skor /1020 | ✅ |
+| 393 | 2026-10-06 | sabit ridge flashing #341 · dis/mimari ARD refresh · skor /1023 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2769,3 +2770,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #340 «CTOUCH Laser / CTOUCH Canvas?» — skor **/1020**; ARD **340 kör test**
 - TR/EN ic-mekan + TR/EN konferans CTOUCH Laser invent · llms deny · sabit CTOUCH Laser yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit CTOUCH Laser
+
+## Gün 393 notları
+
+- Blind #341 «ridge flashing / sırt flaşör?» — skor **/1023**; ARD **341 kör test**
+- TR/EN dis-mekan + TR/EN mimari ridge flashing invent · llms deny · sabit ridge flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit ridge flashing

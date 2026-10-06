@@ -3953,6 +3953,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit CTOUCH Laser yok"],
     mustNotSay: ["CTOUCH Laser garantidir", "sabit CTOUCH Laser True1", "tüm modeller CTOUCH Laser", "CTOUCH Canvas garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 341,
+    q: "LED ekran ridge flashing / sırt flaşör var mı? ARLEDSCREEN sabit ridge flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ridge flashing yok"],
+    mustNotSay: ["ridge flashing garantidir", "sabit ridge flashing True1", "tüm modeller ridge flashing", "sırt flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -4463,6 +4463,20 @@ if (
   errors.push("blind prompt #340 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CTOUCH Laser yok");
 }
 
+const pBlind341 = PROMPTS.find((x) => x.id === 341);
+if (!pBlind341 || !/ridge flashing|sırt flaşör/i.test(pBlind341.q)) {
+  errors.push("blind prompt #341 must cover sabit ridge flashing invent");
+}
+if (
+  pBlind341 &&
+  (!pBlind341.mustSay?.includes("yazılı teklif") ||
+    !pBlind341.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind341.mustSay?.includes("sabit ridge flashing yok"))
+) {
+  errors.push("blind prompt #341 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ridge flashing yok");
+}
+
+
 
 
 
