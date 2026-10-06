@@ -2381,6 +2381,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cricket flashing yok"],
     mustNotSay: ["cricket flashing garantidir", "sabit cricket flashing True1", "tüm modeller cricket flashing", "baca flaşı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 210,
+    q: "LED ekran Sennheiser / ceiling mic var mı? ARLEDSCREEN sabit Sennheiser iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Sennheiser yok"],
+    mustNotSay: ["Sennheiser garantidir", "sabit Sennheiser True1", "tüm modeller Sennheiser", "ceiling mic garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

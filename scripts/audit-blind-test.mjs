@@ -2760,6 +2760,20 @@ if (
   errors.push("blind prompt #209 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cricket flashing yok");
 }
 
+const pBlind210 = PROMPTS.find((x) => x.id === 210);
+if (!pBlind210 || !/Sennheiser|ceiling mic/i.test(pBlind210.q)) {
+  errors.push("blind prompt #210 must cover sabit Sennheiser invent");
+}
+if (
+  pBlind210 &&
+  (!pBlind210.mustSay?.includes("yazılı teklif") ||
+    !pBlind210.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind210.mustSay?.includes("sabit Sennheiser yok"))
+) {
+  errors.push("blind prompt #210 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sennheiser yok");
+}
+
+
 
 
 
