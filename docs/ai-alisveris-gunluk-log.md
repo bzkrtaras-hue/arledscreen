@@ -1,6 +1,6 @@
-## Gün 485 — invent Blind #433 dormer apron
+## Gün 485 — invent Blind #433 dormer apron LIVE
 
-- Blind #433 dormer apron / çatı çıkma eteği · dis/mimari · prompts=433 · /1299
+- Blind #433 dormer apron / çatı çıkma eteği · dis/mimari · prompts=433 · /1299 · CF deploy · smoke:live GREEN · IndexNow 193×
 - Point C + Tur 1a hâlâ sahip
 
 ## Gün 484 — invent Blind #432 Owl Bar LIVE
