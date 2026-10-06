@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 141) errors.push(`blindTestPrompts must be 141 (got ${prompts.length})`);
+if (prompts.length !== 142) errors.push(`blindTestPrompts must be 142 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/141 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 141 kör test intent");
+if (!/142 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 142 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–140 kör test without 141");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–141 kör test without 142");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1268,6 +1268,15 @@ if (!p141 || !/leveling foot|ayar ayağı/i.test(p141.q || "")) {
 }
 if (!/leveling foot|ayar ayağı|sabit leveling foot/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit leveling foot invent");
+}
+
+// Day 194: sabit matrix switcher / matris switch invent
+const p142 = (doc.blindTestPrompts || []).find((p) => p.id === 142);
+if (!p142 || !/matrix switcher|matris switch/i.test(p142.q || "")) {
+  errors.push("blindTestPrompts #142 must cover sabit matrix switcher invent");
+}
+if (!/matrix switcher|matris switch|sabit matrix switcher/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit matrix switcher invent");
 }
 
 // Day 76: agentRules full disambiguation

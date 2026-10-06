@@ -1565,6 +1565,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit leveling foot yok"],
     mustNotSay: ["leveling foot garantidir", "sabit leveling foot True1", "tüm modeller leveling foot", "ayar ayağı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 142,
+    q: "LED ekran matrix switcher / matris switch var mı? ARLEDSCREEN sabit matrix switcher iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit matrix switcher yok"],
+    mustNotSay: ["matrix switcher garantidir", "sabit matrix switcher True1", "tüm modeller matrix switcher", "matris switch garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
