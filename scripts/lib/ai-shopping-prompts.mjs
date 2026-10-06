@@ -5201,6 +5201,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Room Bar Mini yok"],
     mustNotSay: ["Room Bar Mini garantidir", "sabit Room Bar Mini True1", "tüm modeller Room Bar Mini", "Room Bar Mini dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 445,
+    q: "LED ekran architrave apron / arşitrav eteği var mı? ARLEDSCREEN sabit architrave apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit architrave apron yok"],
+    mustNotSay: ["architrave apron garantidir", "sabit architrave apron True1", "tüm modeller architrave apron", "arşitrav eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

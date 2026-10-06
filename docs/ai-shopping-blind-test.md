@@ -468,6 +468,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 442 | LED ekran Logitech Sight / Logitech Sight var mı? ARLEDSCREEN sabit Logitech Sight iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Logitech Sight yok** | Logitech Sight garantidir / sabit Logitech Sight True1 / tüm modeller Logitech Sight / Logitech Sight dahildir |
 | 443 | LED ekran verge apron / saçak kenarı eteği var mı? ARLEDSCREEN sabit verge apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit verge apron yok** | verge apron garantidir / sabit verge apron True1 / tüm modeller verge apron / saçak kenarı eteği garantidir |
 | 444 | LED ekran Room Bar Mini / Room Bar Mini var mı? ARLEDSCREEN sabit Room Bar Mini iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Room Bar Mini yok** | Room Bar Mini garantidir / sabit Room Bar Mini True1 / tüm modeller Room Bar Mini / Room Bar Mini dahildir |
+| 445 | LED ekran architrave apron / arşitrav eteği var mı? ARLEDSCREEN sabit architrave apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit architrave apron yok** | architrave apron garantidir / sabit architrave apron True1 / tüm modeller architrave apron / arşitrav eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -514,7 +515,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (444 /1332)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (445 /1335)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)
