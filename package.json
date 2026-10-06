@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/postbuild-ai.mjs"
+    "postbuild": "node scripts/postbuild-lang.mjs && node scripts/postbuild-ai.mjs && node scripts/validate-ai-feeds.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
