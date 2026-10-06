@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 import { getReferences } from "@/content/references";
 import { displayCompany } from "@/content/trust";
-import { formatProjectDate } from "@/lib/dates";
+import { formatProjectDate, formatProjectDetail } from "@/lib/dates";
 
 interface Props {
   locale: Locale;
@@ -46,7 +46,7 @@ export function ReferencesGrid({ locale, collapsible = false }: Props) {
                 <td className="px-4 py-3 align-top font-display text-[15px] font-semibold tracking-[-0.01em] text-ink sm:px-5">
                   {displayCompany(ref)}
                 </td>
-                <td className="px-4 py-3 align-top text-ink-soft sm:px-5">{ref.detail}</td>
+                <td className="px-4 py-3 align-top text-ink-soft sm:px-5">{formatProjectDetail(ref.detail, locale)}</td>
                 <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{ref.location || "—"}</td>
               </tr>
             ))}
@@ -60,7 +60,7 @@ export function ReferencesGrid({ locale, collapsible = false }: Props) {
             ? "Источник: журнал проектов ARLEDSCREEN. Частные лица скрыты. Текст объёма — на языке записи."
             : locale === "ar"
               ? "المصدر: سجل مشاريع ARLEDSCREEN. أسماء الأفراد مخفية. نص النطاق بلغة السجل."
-              : "Source: ARLEDSCREEN project log. Private individuals are anonymised. Scope text stays in the log language."}
+              : "Source: ARLEDSCREEN project log. Private individuals are anonymised. Scope is translated from the project log; dimensions stay as recorded."}
       </p>
     </div>
   );

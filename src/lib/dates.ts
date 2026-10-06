@@ -18,3 +18,34 @@ export function formatProjectDate(value: string, locale: Locale): string {
   if (index < 0) return value;
   return `${MONTHS[locale][index]} ${match[2]}`;
 }
+
+const DETAIL_PHRASES: [string, string][] = [
+  ["Montaj tamamlandı", "Installation completed"],
+  ["LED ekran projesi", "LED display project"],
+  ["Sahne arkası LED ekran", "Backstage LED display"],
+  ["Yüksek çözünürlüklü LED", "High-resolution LED"],
+  ["Dev LED ekran", "Large-format LED display"],
+  ["outdoor kiralama kabin", "outdoor rental cabinet"],
+  ["Türkiye'nin en büyük mağazası", "Flagship store (as logged)"],
+  ["Yeşilpınar şube", "Yeşilpınar branch"],
+  ["Eskişehir şube", "Eskişehir branch"],
+  ["çift yön", "double-sided"],
+  ["dış mekân", "outdoor"],
+  ["Dış mekân", "Outdoor"],
+  ["ev içi", "indoor home"],
+  ["vitrin", "storefront"],
+  ["kolon", "column"],
+  ["Yeni nesil", "Next-generation"],
+  ["Dev ekran", "Large-format display"],
+  ["Oval ekran", "Oval display"],
+  ["LED ekran", "LED display"],
+  ["adet", "pcs"],
+];
+
+/** Translate logged Turkish scope fragments for EN. Dimensions and pitch stay. */
+export function formatProjectDetail(value: string, locale: Locale): string {
+  if (locale !== "en" || !value) return value;
+  let out = value;
+  for (const [tr, en] of DETAIL_PHRASES) out = out.replaceAll(tr, en);
+  return out;
+}
