@@ -20,7 +20,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok) — checklist: [`docs/merchant-priced-panels.md`](./merchant-priced-panels.md); dry-run TSV: `/feeds/merchant-priced-panels.tsv` (`audit:merchant-feed`)
 - [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn) — packs: `/entity-profiles.json`
 - [ ] **Owner:** `arleds.com` → `arledscreen.com/tr/` 301
-- [ ] **Owner:** PR #55 merge + CF redeploy → canlı entity/catalog/ard/profiles 200
+- [x] Canlı entity/catalog/ard/profiles/ai-shopping **200** (üretim deploy; `smoke:live` 20/20) — PR #55 draft invent birleşmesi ayrı
 
 ## P0 — Immediate (site + measurement)
 
@@ -74,12 +74,12 @@ Makinece atıf: `/entity.json` · katalog: `/catalog.json` · metin: `/llms.txt`
 
 Hedef: “ARLEDSCREEN kimdir?” cevabı **yalnızca kendi siteden** gelmesin; 10–20 güvenilir dış kaynakta aynı olgu doğrulansın.
 
-Durum (2026-10-05): site A/B kod hazır; canlı entity/catalog/ard soft-404 → PR #55; bağımsız C tamamlanan = 0. Tracker: playbook §0d.
+Durum (2026-10-06): site A/B canlı 200 (`smoke:live` 20/20); bağımsız Point C paste tamamlanan = 0 (sahip). Tracker: playbook §0d.
 
 - [x] Machine-readable `public/entity.json` (Organization + cite + FAQs)
 - [x] Off-site playbook: gap audit + 14-gün P0 sıra + 20-kaynak tracker (yapıştırma metinleri repo içi)
 - [x] Point C tracker güncellendi (Site hazır / Sahip durum / sayaç + panosu)
-- [ ] **Owner P0:** Canlı `/entity.json` + `/catalog.json` + `/.well-known/ard.json` 200 (2026-10-05 soft-404; PR #55 merge + CF redeploy)
+- [x] Canlı `/entity.json` + `/catalog.json` + `/.well-known/ard.json` + `/ai-shopping.json` **200** (2026-10-06 `smoke:live` 20/20)
 - [ ] **Owner P0:** `arleds.com` → `arledscreen.com/tr/` 301 (entity bölünmesini kes)
 - [ ] **Owner P0:** GBP + LinkedIn/IG/FB About = playbook pack (aynı NAP)
 - [ ] LinkedIn company + founder posts per major project

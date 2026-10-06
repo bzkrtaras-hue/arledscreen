@@ -3,7 +3,7 @@
 Hedef: PR #55 deploy olduktan **aynı gün** canlı AI yüzeyleri + bağımsız atıf başlasın.
 Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/entity-profiles.json) · playbook: [`offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
-**Durum (2026-10-06 doğrulama):** PR #55 henüz birleşmedi. Canlı `arledscreen.com` hâlâ eski fiyat hub (P1.25–P5, 1 Ekim 2026) + Gaziosmanpaşa; Yealink MeetingBoard / gable apron / drip apron / Maxhub / Horion / Surface Hub 3 hedge’leri **yok**. `/entity.json` · `/ai-shopping.json` · `/.well-known/ard.json` canlı **404**. Blind #402+# sayaçları yalnızca dal içi; canlı kör tur / arama / asistan cevabı etkisi **sıfır** ta ki merge + redeploy.
+**Durum (2026-10-06 doğrulama):** Canlı `entity.json` · `catalog.json` · `ai-shopping.json` · `ard.json` · `entity-profiles.json` → **GET 200**. `npm run smoke:live` → **20/20 PASS** (robots Function: bare `Host: arledscreen.com` + Yandex/DuckDuck). IndexNow: değişmiş canlı URL’ler POST **200** (bildirim only). PR #55 **draft** — invent dalı birleşmeden ek hedge’ler canlıya gitmez; üretim JSON kapısı zaten açık. **Sahip sırası:** Point C paste (GBP/LinkedIn/IG/FB) + canlı kör tur.
 
 Pre-merge (opsiyonel, zaten yeşil olmalı):
 
@@ -26,7 +26,7 @@ npm run smoke:live
 npm run post-deploy
 ```
 
-Hedef: **16/16 PASS** (BLOCKED 0).
+Hedef: **20/20 PASS** (BLOCKED 0). Doğrulandı 2026-10-06.
 
 | URL | Beklenen |
 |-----|----------|

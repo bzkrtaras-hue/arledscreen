@@ -447,6 +447,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 455 | 2026-10-06 | sabit gable apron #403 · dis/mimari ARD refresh · skor /1209 | ✅ |
 | 456 | 2026-10-06 | sabit Surface Hub 3 #404 · ic/konferans ARD refresh · skor /1212 | ✅ |
 | 457 | 2026-10-06 | sabit base apron #405 · dis/mimari ARD refresh · skor /1215 | ✅ |
+| 458b | 2026-10-06 | smoke:live 20/20 · robots bare Host · IndexNow 173×200 · Point C packs --live · invent yok | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti
@@ -3235,6 +3236,15 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `verify:premerge` GREEN = yalnızca `cursor/ai-alisveris-katalog-5666` (PR #55); üretim değil
 - IndexNow: canlıda değişen URL yok → bildirim işe yaramaz; kör tur yok; Blind #N sayaç
 - Sonraki değerli adım: PR #55 **Ready → merge → CF Pages redeploy** → `smoke:live` → sonra IndexNow / Point C / kör tur
+
+
+## Gün 458b notları (canlı kapı / invent yok)
+
+- `smoke:live` **20/20 PASS** — entity/catalog/ai-shopping/ard/profiles + robots bare Host
+- IndexNow: **173** değişmiş canlı URL POST **200** (bildirim; P0/AI açılmaz)
+- `point-c-packs --live` OK — sahip paste bekleniyor (GBP/LinkedIn/IG/FB)
+- Day 458 invent yok (emir); PR #55 **draft**; CI robots Function audit yeşil
+- CDN robots ara sıra eski HIT gösterebilir; Function no-store + smoke PASS
 
 ## Gün 457 notları
 
