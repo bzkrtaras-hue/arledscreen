@@ -444,7 +444,7 @@
       "displayName": "Dış mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
-      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit depolama °C yok — Blind #49. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63.",
+      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit depolama °C yok — Blind #49. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63. Sabit fiber mesafe yok — Blind #68.",
       "representativeQueries": [
         "Dış mekân LED ekran kaç nit olmalı?",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
@@ -454,7 +454,8 @@
         "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?",
         "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?",
         "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?",
-        "LED ekran güç faktörü / power factor (PF / cos φ) nedir? ARLEDSCREEN sabit PF veya cos φ iddiası yayımlıyor mu?"
+        "LED ekran güç faktörü / power factor (PF / cos φ) nedir? ARLEDSCREEN sabit PF veya cos φ iddiası yayımlıyor mu?",
+        "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -464,7 +465,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T09:00:00Z"
+      "updatedAt": "2026-10-07T14:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:totem",
@@ -491,7 +492,7 @@
       "displayName": "Mimari / mühendislik LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
-      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48; sabit depolama °C yok — Blind #49; sabit yangın sınıfı yok — Blind #53. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63. Sabit PoE/Gigabit yok — Blind #66.",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48; sabit depolama °C yok — Blind #49; sabit yangın sınıfı yok — Blind #53. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63. Sabit PoE/Gigabit yok — Blind #66. Sabit fiber mesafe yok — Blind #68.",
       "representativeQueries": [
         "mimari LED mühendislik",
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
@@ -505,7 +506,8 @@
         "LED ekran yangın sınıfı / fire rating nedir? ARLEDSCREEN sabit Class A / B-s1 veya yangın sınıfı yayımlıyor mu?",
         "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?",
         "LED ekran güç faktörü / power factor (PF / cos φ) nedir? ARLEDSCREEN sabit PF veya cos φ iddiası yayımlıyor mu?",
-        "LED ekran PoE / Gigabit Ethernet / ağ bant genişliği gereksinimi nedir? ARLEDSCREEN sabit PoE veya Gigabit iddiası yayımlıyor mu?"
+        "LED ekran PoE / Gigabit Ethernet / ağ bant genişliği gereksinimi nedir? ARLEDSCREEN sabit PoE veya Gigabit iddiası yayımlıyor mu?",
+        "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -515,7 +517,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T09:00:00Z"
+      "updatedAt": "2026-10-07T14:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
@@ -1090,7 +1092,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 67 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 68 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1133,7 +1135,8 @@
         "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?",
         "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?",
         "LED ekran PoE / Gigabit Ethernet / ağ bant genişliği gereksinimi nedir? ARLEDSCREEN sabit PoE veya Gigabit iddiası yayımlıyor mu?",
-        "LED ekran HDMI / DisplayPort / SDI video girişi var mı? ARLEDSCREEN sabit HDMI 2.1 veya SDI iddiası yayımlıyor mu?"
+        "LED ekran HDMI / DisplayPort / SDI video girişi var mı? ARLEDSCREEN sabit HDMI 2.1 veya SDI iddiası yayımlıyor mu?",
+        "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1152,7 +1155,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T13:00:00Z"
+      "updatedAt": "2026-10-07T14:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -3025,6 +3028,69 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T13:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:colorlight-s20",
+      "displayName": "Colorlight S20",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/colorlight-kontrolculer/s20/",
+      "description": "Colorlight quote-only controller. No invent sabit fiber mesafe — Blind #68; list USD yok — yazılı teklif.",
+      "representativeQueries": [
+        "Colorlight S20 fiyat",
+        "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?",
+        "colorlight s20"
+      ],
+      "tags": [
+        "product",
+        "quote-only",
+        "kontrol",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T14:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:colorlight-vx20",
+      "displayName": "Colorlight VX20",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/colorlight-kontrolculer/vx20/",
+      "description": "Colorlight quote-only controller. No invent sabit fiber mesafe — Blind #68; list USD yok — yazılı teklif.",
+      "representativeQueries": [
+        "Colorlight VX20 fiyat",
+        "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?",
+        "colorlight vx20"
+      ],
+      "tags": [
+        "product",
+        "quote-only",
+        "kontrol",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T14:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:colorlight-x20",
+      "displayName": "Colorlight X20",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/colorlight-kontrolculer/x20/",
+      "description": "Colorlight quote-only controller. No invent sabit fiber mesafe — Blind #68; list USD yok — yazılı teklif.",
+      "representativeQueries": [
+        "Colorlight X20 fiyat",
+        "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?",
+        "colorlight x20"
+      ],
+      "tags": [
+        "product",
+        "quote-only",
+        "kontrol",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T14:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",
