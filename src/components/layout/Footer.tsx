@@ -21,8 +21,7 @@ interface FooterProps {
 }
 
 /**
- * Dark footer: centred quick-link row + outlined social icons (template rhythm),
- * followed by ARLEDSCREEN's information columns (products, guides, NAP).
+ * Dark footer. Machine-readable files stay on their URLs; they are not linked here.
  */
 export function Footer({ locale }: FooterProps) {
   const dict = getDictionary(locale);
@@ -86,7 +85,6 @@ export function Footer({ locale }: FooterProps) {
         },
       ]
     : [];
-
 
   return (
     <footer className="bg-foot text-white">
@@ -219,47 +217,6 @@ export function Footer({ locale }: FooterProps) {
         <p>
           © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}
         </p>
-        <p className="mt-2">
-            <a href="/ai-shopping.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              ai-shopping.json
-            </a>
-            {" · "}
-            <a href="/entity.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              entity.json
-            </a>
-            {" · "}
-            <a href="/entity-profiles.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              entity-profiles.json
-            </a>
-            {" · "}
-            <a href="/catalog.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              catalog.json
-            </a>
-            {" · "}
-            <a href="/.well-known/ard.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              ard.json
-            </a>
-            {" · "}
-            <a href="/llms.txt" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              llms.txt
-            </a>
-            {" · "}
-            <a href="/llms-full.txt" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              llms-full.txt
-            </a>
-            {" · "}
-            <a href="/.well-known/ai-catalog.json" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              ai-catalog.json
-            </a>
-            {" · "}
-            <a href="/feeds/merchant-priced-panels.tsv" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              merchant-priced-panels.tsv
-            </a>
-            {" · "}
-            <a href="/sitemap.xml" className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline">
-              sitemap.xml
-            </a>
-          </p>
       </div>
     </footer>
   );
