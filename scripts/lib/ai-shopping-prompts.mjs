@@ -5057,6 +5057,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Owl Bar yok"],
     mustNotSay: ["Owl Bar garantidir", "sabit Owl Bar True1", "tüm modeller Owl Bar", "Owl Bar dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 433,
+    q: "LED ekran dormer apron / çatı çıkma eteği var mı? ARLEDSCREEN sabit dormer apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit dormer apron yok"],
+    mustNotSay: ["dormer apron garantidir", "sabit dormer apron True1", "tüm modeller dormer apron", "çatı çıkma eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
