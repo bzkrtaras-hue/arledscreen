@@ -3977,6 +3977,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Avocor E Series yok"],
     mustNotSay: ["Avocor E Series garantidir", "sabit Avocor E Series True1", "tüm modeller Avocor E Series", "Avocor G Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 343,
+    q: "LED ekran pipe boot / boru boot var mı? ARLEDSCREEN sabit pipe boot iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit pipe boot yok"],
+    mustNotSay: ["pipe boot garantidir", "sabit pipe boot True1", "tüm modeller pipe boot", "boru boot garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
