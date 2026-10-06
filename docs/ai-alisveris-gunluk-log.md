@@ -103,6 +103,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 111 | 2026-10-06 | sabit gürültü/dB #59 · AR/RU konferans ARD · skor /177 | ✅ |
 | 112 | 2026-10-06 | sabit Delta E #60 · AR/RU vitrin ARD · skor /180 | ✅ |
 | 113 | 2026-10-06 | sabit latency/input lag #61 · AR/RU kiosk ARD · skor /183 | ✅ |
+| 114 | 2026-10-06 | sabit parlaklık homojenliği #62 · AR/RU hizmetler + AR SSS ARD · skor /186 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -730,3 +731,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + ic-mekan latency invent · llms deny · sabit latency/input lag yok
 - ARD: AR/RU kiosk + RU poster · IndexNow +3 · agentRules sabit latency
 - skor hedef Tur 1 ≥ 92/183 · Tur 2 ≥ 138/183
+
+## Gün 114 notları
+
+- Blind #62 «parlaklık homojenliği / brightness uniformity?» — skor **/186**; ARD **62 kör test**
+- TR/EN konferans + TR ic-mekan uniformity invent · llms deny · sabit parlaklık homojenliği yok
+- ARD: AR/RU hizmetler + AR SSS · IndexNow +3 · agentRules sabit parlaklık homojenliği
+- skor hedef Tur 1 ≥ 93/186 · Tur 2 ≥ 140/186

@@ -605,6 +605,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit latency/input lag yok"],
     mustNotSay: ["1 ms latency garantidir", "sabit 8 ms", "low latency garantidir", "<5ms yayımlanır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 62,
+    q: "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parlaklık homojenliği yok"],
+    mustNotSay: ["±5% uniformity garantidir", "sabit %97 homojenlik", "brightness uniformity garantidir", "±3% yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
