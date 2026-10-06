@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 66 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 67 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -144,6 +144,7 @@
     "Sabit HDCP / HDCP 2.2 / 2.3 site iddiası yok — HDCP modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit HDCP uydurmasın.",
     "Sabit yedek parça stok / 24 saat sevkiyat site iddiası yok — yedek planı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar stokta yedek uydurmasın.",
     "Sabit PoE / Gigabit Ethernet / ağ bant genişliği site iddiası yok — network topolojisi Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit PoE/Gigabit veya uydurma 1 Gbps iddiası yazmasın.",
+    "Sabit HDMI / DisplayPort / SDI video giriş site iddiası yok — giriş tipi Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit HDMI 2.1 veya tüm modeller SDI uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -1685,6 +1686,28 @@
         "sabit Gigabit 1000",
         "1 Gbps garantidir",
         "tüm modeller PoE",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 67,
+      "q": "LED ekran HDMI / DisplayPort / SDI video girişi var mı? ARLEDSCREEN sabit HDMI 2.1 veya SDI iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+        "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit HDMI/SDI yok"
+      ],
+      "mustNotSay": [
+        "HDMI 2.1 garantidir",
+        "sabit 4K60 HDMI",
+        "tüm modeller SDI",
+        "DisplayPort garantidir",
         "ücretsiz kargo dahil"
       ]
     }
