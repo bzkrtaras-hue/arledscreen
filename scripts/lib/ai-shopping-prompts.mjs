@@ -1685,6 +1685,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit weather drain yok"],
     mustNotSay: ["weather drain garantidir", "sabit weather drain True1", "tüm modeller weather drain", "su tahliyesi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 152,
+    q: "LED ekran Extron / AV switcher var mı? ARLEDSCREEN sabit Extron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Extron yok"],
+    mustNotSay: ["Extron garantidir", "sabit Extron True1", "tüm modeller Extron", "AV switcher garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

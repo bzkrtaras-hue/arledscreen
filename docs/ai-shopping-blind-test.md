@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 203: blind #151 sabit weather drain invent)  
+Son güncelleme: 2026-10-06 (Gün 204: blind #152 sabit Extron invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 151 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 152 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 151 prompt (alışveriş + varlık)
+## 152 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -175,6 +175,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 149 | LED ekran base plate / taban plakası var mı? ARLEDSCREEN sabit base plate iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit base plate yok** | base plate garantidir / sabit base plate True1 / tüm modeller base plate / taban plakası garantidir |
 | 150 | LED ekran RS-232 / seri port var mı? ARLEDSCREEN sabit RS-232 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit RS-232 yok** | RS-232 garantidir / sabit RS-232 True1 / tüm modeller RS-232 / seri port garantidir |
 | 151 | LED ekran weather drain / su tahliyesi var mı? ARLEDSCREEN sabit weather drain iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit weather drain yok** | weather drain garantidir / sabit weather drain True1 / tüm modeller weather drain / su tahliyesi garantidir |
+| 152 | LED ekran Extron / AV switcher var mı? ARLEDSCREEN sabit Extron iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Extron yok** | Extron garantidir / sabit Extron True1 / tüm modeller Extron / AV switcher garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -185,7 +186,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 453. Hedef tur 1 ≥ 227/453; tur 2 (Point C sonrası) ≥ 340/453.
+**Tur skoru** = toplam / 456. Hedef tur 1 ≥ 228/456; tur 2 (Point C sonrası) ≥ 342/456.
 
 ### Canlı tur kayıt şablonu
 

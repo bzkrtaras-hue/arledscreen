@@ -2010,6 +2010,20 @@ if (
     !pBlind151.mustSay?.includes("sabit weather drain yok"))
 ) {
   errors.push("blind prompt #151 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit weather drain yok");
+
+const pBlind152 = PROMPTS.find((x) => x.id === 152);
+if (!pBlind152 || !/Extron|AV switcher/i.test(pBlind152.q)) {
+  errors.push("blind prompt #152 must cover sabit Extron invent");
+}
+if (
+  pBlind152 &&
+  (!pBlind152.mustSay?.includes("yazılı teklif") ||
+    !pBlind152.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind152.mustSay?.includes("sabit Extron yok"))
+) {
+  errors.push("blind prompt #152 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Extron yok");
+}
+
 }
 
 }
