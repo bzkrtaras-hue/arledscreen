@@ -402,7 +402,13 @@ export const CHECKS = [
     url: `${SITE}/sitemap.xml`,
     outRel: "sitemap.xml",
     expect: "xml",
-    mustInclude: ["led-ekran-fiyatlari", "catalog.json"],
+    mustInclude: [
+      "led-ekran-fiyatlari",
+      "catalog.json",
+      "ai-shopping.json",
+      "entity.json",
+      "llms.txt",
+    ],
   },
   {
     id: "indexnow-key",
