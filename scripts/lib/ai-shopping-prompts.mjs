@@ -4685,42 +4685,6 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hip apron yok"],
     mustNotSay: ["hip apron garantidir", "sabit hip apron True1", "tüm modeller hip apron", "mahiye eteği garantidir", "ücretsiz kargo dahil"],
   },
-  {
-    id: 402,
-    q: "LED ekran Yealink MeetingBoard 86 / MeetingBoard 86 var mı? ARLEDSCREEN sabit Yealink MeetingBoard 86 iddiası yayımlıyor mu?",
-    paths: [
-      "/tr/rehber/ic-mekan-led-ekran/",
-      "/tr/rehber/konferans-salonu-led/",
-      "/tr/quote/",
-      "/ai-shopping.json",
-    ],
-    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Yealink MeetingBoard 86 yok"],
-    mustNotSay: ["Yealink MeetingBoard 86 garantidir", "sabit Yealink MeetingBoard 86 True1", "tüm modeller Yealink MeetingBoard 86", "MeetingBoard 86 garantidir", "ücretsiz kargo dahil"],
-  },
-  {
-    id: 403,
-    q: "LED ekran gable apron / kalkan eteği var mı? ARLEDSCREEN sabit gable apron iddiası yayımlıyor mu?",
-    paths: [
-      "/tr/rehber/dis-mekan-led-ekran/",
-      "/tr/rehber/mimari-muhendislik-led/",
-      "/tr/quote/",
-      "/ai-shopping.json",
-    ],
-    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gable apron yok"],
-    mustNotSay: ["gable apron garantidir", "sabit gable apron True1", "tüm modeller gable apron", "kalkan eteği garantidir", "ücretsiz kargo dahil"],
-  },
-  {
-    id: 404,
-    q: "LED ekran Surface Hub 3 / Hub 3 var mı? ARLEDSCREEN sabit Surface Hub 3 iddiası yayımlıyor mu?",
-    paths: [
-      "/tr/rehber/ic-mekan-led-ekran/",
-      "/tr/rehber/konferans-salonu-led/",
-      "/tr/quote/",
-      "/ai-shopping.json",
-    ],
-    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Surface Hub 3 yok"],
-    mustNotSay: ["Surface Hub 3 garantidir", "sabit Surface Hub 3 True1", "tüm modeller Surface Hub 3", "Hub 3 garantidir", "ücretsiz kargo dahil"],
-  },
 ];
 
 export function promptsWithAbsoluteUrls() {

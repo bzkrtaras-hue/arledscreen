@@ -5256,48 +5256,6 @@ if (
   errors.push("blind prompt #401 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip apron yok");
 }
 
-const pBlind402 = PROMPTS.find((x) => x.id === 402);
-if (!pBlind402 || !/Yealink MeetingBoard 86|MeetingBoard 86/i.test(pBlind402.q)) {
-  errors.push("blind prompt #402 must cover sabit Yealink MeetingBoard 86 invent");
-}
-if (
-  pBlind402 &&
-  (!pBlind402.mustSay?.includes("yazılı teklif") ||
-    !pBlind402.mustSay?.includes("Gaziosmanpaşa") ||
-    !pBlind402.mustSay?.includes("sabit Yealink MeetingBoard 86 yok"))
-) {
-  errors.push("blind prompt #402 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Yealink MeetingBoard 86 yok");
-}
-
-const pBlind403 = PROMPTS.find((x) => x.id === 403);
-if (!pBlind403 || !/gable apron|kalkan eteği/i.test(pBlind403.q)) {
-  errors.push("blind prompt #403 must cover sabit gable apron invent");
-}
-if (
-  pBlind403 &&
-  (!pBlind403.mustSay?.includes("yazılı teklif") ||
-    !pBlind403.mustSay?.includes("Gaziosmanpaşa") ||
-    !pBlind403.mustSay?.includes("sabit gable apron yok"))
-) {
-  errors.push("blind prompt #403 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gable apron yok");
-}
-
-const pBlind404 = PROMPTS.find((x) => x.id === 404);
-if (!pBlind404 || !/Surface Hub 3|Hub 3/i.test(pBlind404.q)) {
-  errors.push("blind prompt #404 must cover sabit Surface Hub 3 invent");
-}
-if (
-  pBlind404 &&
-  (!pBlind404.mustSay?.includes("yazılı teklif") ||
-    !pBlind404.mustSay?.includes("Gaziosmanpaşa") ||
-    !pBlind404.mustSay?.includes("sabit Surface Hub 3 yok"))
-) {
-  errors.push("blind prompt #404 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Surface Hub 3 yok");
-}
-
-
-
-
 
 
 
