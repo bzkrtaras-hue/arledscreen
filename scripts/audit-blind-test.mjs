@@ -3839,6 +3839,20 @@ if (
   errors.push("blind prompt #292 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Seewo yok");
 }
 
+const pBlind293 = PROMPTS.find((x) => x.id === 293);
+if (!pBlind293 || !/hip cleat|mahya kleyt/i.test(pBlind293.q)) {
+  errors.push("blind prompt #293 must cover sabit hip cleat invent");
+}
+if (
+  pBlind293 &&
+  (!pBlind293.mustSay?.includes("yazılı teklif") ||
+    !pBlind293.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind293.mustSay?.includes("sabit hip cleat yok"))
+) {
+  errors.push("blind prompt #293 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip cleat yok");
+}
+
+
 
 
 

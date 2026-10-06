@@ -334,6 +334,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 342 | 2026-10-06 | sabit Vibe Board #290 · ic/konferans ARD refresh · skor /870 | ✅ |
 | 343 | 2026-10-06 | sabit chimney cleat #291 · dis/mimari ARD refresh · skor /873 | ✅ |
 | 344 | 2026-10-06 | sabit Seewo #292 · ic/konferans ARD refresh · skor /876 | ✅ |
+| 345 | 2026-10-06 | sabit hip cleat #293 · dis/mimari ARD refresh · skor /879 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2433,3 +2434,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #292 «Seewo / interactive flat panel?» — skor **/876**; ARD **292 kör test**
 - TR/EN ic-mekan + TR/EN konferans Seewo invent · llms deny · sabit Seewo yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Seewo
+
+## Gün 345 notları
+
+- Blind #293 «hip cleat / mahya kleyt?» — skor **/879**; ARD **293 kör test**
+- TR/EN dis-mekan + TR/EN mimari hip cleat invent · llms deny · sabit hip cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit hip cleat

@@ -3377,6 +3377,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Seewo yok"],
     mustNotSay: ["Seewo garantidir", "sabit Seewo True1", "tüm modeller Seewo", "interactive flat panel garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 293,
+    q: "LED ekran hip cleat / mahya kleyt var mı? ARLEDSCREEN sabit hip cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hip cleat yok"],
+    mustNotSay: ["hip cleat garantidir", "sabit hip cleat True1", "tüm modeller hip cleat", "mahya kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
