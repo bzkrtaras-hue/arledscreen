@@ -5367,6 +5367,18 @@ if (
 ) {
   errors.push("blind prompt #410 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Bar yok");
 }
+const pBlind411 = PROMPTS.find((x) => x.id === 411);
+if (!pBlind411 || !/coping apron|parapet kapak eteği/i.test(pBlind411.q)) {
+  errors.push("blind prompt #411 must cover sabit coping apron invent");
+}
+if (
+  pBlind411 &&
+  (!pBlind411.mustSay?.includes("yazılı teklif") ||
+    !pBlind411.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind411.mustSay?.includes("sabit coping apron yok"))
+) {
+  errors.push("blind prompt #411 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit coping apron yok");
+}
 
 
 

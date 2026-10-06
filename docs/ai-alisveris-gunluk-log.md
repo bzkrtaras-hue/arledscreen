@@ -1,3 +1,8 @@
+## Gün 463 — invent Blind #411 coping apron
+
+- Blind #411 coping apron / parapet kapak eteği · dis/mimari · prompts=411 · /1233
+- Point C + Tur 1a hâlâ sahip
+
 ## Gün 462b — IndexNow same-day fix + Bing Places pack
 
 - IndexNow: hash değişince same-day skip yutmaz (invent sonrası bildirim)

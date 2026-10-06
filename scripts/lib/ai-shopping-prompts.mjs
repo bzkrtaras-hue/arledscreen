@@ -4793,6 +4793,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Bar yok"],
     mustNotSay: ["Neat Bar garantidir", "sabit Neat Bar True1", "tüm modeller Neat Bar", "Neat Bar dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 411,
+    q: "LED ekran coping apron / parapet kapak eteği var mı? ARLEDSCREEN sabit coping apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit coping apron yok"],
+    mustNotSay: ["coping apron garantidir", "sabit coping apron True1", "tüm modeller coping apron", "parapet kapak eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
