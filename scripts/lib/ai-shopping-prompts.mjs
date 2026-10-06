@@ -4049,6 +4049,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline X Series yok"],
     mustNotSay: ["Newline X Series garantidir", "sabit Newline X Series True1", "tüm modeller Newline X Series", "Newline C Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 349,
+    q: "LED ekran wall flashing / duvar flaşör var mı? ARLEDSCREEN sabit wall flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit wall flashing yok"],
+    mustNotSay: ["wall flashing garantidir", "sabit wall flashing True1", "tüm modeller wall flashing", "duvar flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
