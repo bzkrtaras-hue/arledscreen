@@ -3125,6 +3125,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fascia cleat yok"],
     mustNotSay: ["fascia cleat garantidir", "sabit fascia cleat True1", "tüm modeller fascia cleat", "saçak altı kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 272,
+    q: "LED ekran Elo / touch display var mı? ARLEDSCREEN sabit Elo iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Elo yok"],
+    mustNotSay: ["Elo garantidir", "sabit Elo True1", "tüm modeller Elo", "touch display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

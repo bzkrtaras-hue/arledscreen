@@ -3566,6 +3566,20 @@ if (
   errors.push("blind prompt #271 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia cleat yok");
 }
 
+const pBlind272 = PROMPTS.find((x) => x.id === 272);
+if (!pBlind272 || !/Elo|touch display/i.test(pBlind272.q)) {
+  errors.push("blind prompt #272 must cover sabit Elo invent");
+}
+if (
+  pBlind272 &&
+  (!pBlind272.mustSay?.includes("yazılı teklif") ||
+    !pBlind272.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind272.mustSay?.includes("sabit Elo yok"))
+) {
+  errors.push("blind prompt #272 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Elo yok");
+}
+
+
 
 
 
