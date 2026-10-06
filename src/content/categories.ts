@@ -285,7 +285,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "GOB LED modül üzerinde su damlası — koruyucu kaplama yüzeyi",
     techGallery: FINE_PITCH_TECH_GALLERY,
     intro: [
-      "GOB (Glue on Board) teknolojisinde LED'lerin üzeri şeffaf bir koruyucu katmanla kaplanır. Bu katman, LED yüzeyini darbe, nem ve toza karşı korumaya yardımcı olur.",
+      "GOB (Glue on Board) teknolojisinde LED'lerin üzeri şeffaf bir koruyucu katmanla kaplanır. Bu katman, LED yüzeyini darbe, nem ve toza karşı korumaya yardımcı olur — sabit ölü piksel yok: sitede sabit ölü piksel oranı / pixel failure rate / 0.0001% / Class II yayımlanmaz; tolerans Gaziosmanpaşa keşif + yazılı teklifte.",
       "İnsanların ekrana yaklaşabildiği, dokunabildiği veya yoğun trafiğin olduğu alanlarda GOB seçenekleri değerlendirilir. Uygunluğu keşifte kullanım koşullarına göre birlikte netleştiriyoruz.",
     ],
     highlights: [

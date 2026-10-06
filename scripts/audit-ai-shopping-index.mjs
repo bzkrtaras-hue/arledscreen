@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 45 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 46 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 45) errors.push(`blindTestPrompts must be 45 (got ${prompts.length})`);
+if (prompts.length !== 46) errors.push(`blindTestPrompts must be 46 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/45 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 45 kör test intent");
+if (!/46 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 46 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-4]) kör test/i.test(ard) && !/45 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–44 kör test without 43");
+if (/(?:2[0-9]|3[0-9]|4[0-5]) kör test/i.test(ard) && !/46 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–45 kör test without 43");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -409,6 +409,14 @@ if (!p45 || !/rüzgâr|ruzgar|Pa|km\/h/i.test(p45.q || "")) {
 }
 if (!/120 km\/h|1500 Pa|rüzgâr yükü|sabit rüzgâr/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit rüzgâr yükü invent");
+}
+// Day 98: sabit ölü piksel invent
+const p46 = (doc.blindTestPrompts || []).find((p) => p.id === 46);
+if (!p46 || !/ölü piksel|bad pixel|failure rate/i.test(p46.q || "")) {
+  errors.push("blindTestPrompts #46 must cover sabit ölü piksel invent");
+}
+if (!/ölü piksel|0\.0001%|Class II|pixel failure|sabit ölü/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit ölü piksel invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

@@ -87,6 +87,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 95 | 2026-10-06 | sabit °C #43 · stadyum/belediye/restoran ARD · skor /129 | ✅ |
 | 96 | 2026-10-06 | sabit kontrast #44 · dugun/konferans/spor ARD · skor /132 | ✅ |
 | 97 | 2026-10-06 | sabit rüzgâr #45 · EN rehber-dis/quote/about ARD · skor /135 | ✅ |
+| 98 | 2026-10-06 | sabit ölü piksel #46 · EN rehber-ic/led/hesaplayici ARD · skor /138 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -602,3 +603,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - mimari/dis-mekan/cephe rüzgâr invent · llms rüzgâr deny
 - ARD: EN rehber-dis + quote + about · agentRules sabit rüzgâr
 - skor hedef Tur 1 ≥ 68/135 · Tur 2 ≥ 101/135
+
+## Gün 98 notları
+
+- Blind #46 «ölü piksel / bad pixel / failure rate?» — skor **/138**; ARD **46 kör test**
+- servis/ic-mekan/gob ölü piksel invent · llms deny
+- ARD: EN rehber-ic + led-ekran + hesaplayici · agentRules sabit ölü piksel
+- skor hedef Tur 1 ≥ 69/138 · Tur 2 ≥ 103/138

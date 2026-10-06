@@ -383,11 +383,12 @@
       "displayName": "GOB LED ekran (priced hub)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/",
-      "description": "GOB priced panel grubu. Panel USD catalog/ai-shopping; Blind #7 rehber gob-vs-smd; sabit görüş açısı yok — Blind #38.",
+      "description": "GOB priced panel grubu. Panel USD catalog/ai-shopping; Blind #7 rehber gob-vs-smd; sabit görüş açısı yok — Blind #38. Sabit ölü piksel yok — Blind #46.",
       "representativeQueries": [
         "GOB LED ekran fiyat",
         "GOB mi SMD mi?",
-        "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?"
+        "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?",
+        "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?"
       ],
       "tags": [
         "commerce",
@@ -397,20 +398,21 @@
         "shopping"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T04:00:00Z"
+      "updatedAt": "2026-10-06T16:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-ic",
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
         "iç mekan LED rehber",
         "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?",
-        "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?"
+        "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?",
+        "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -420,7 +422,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T14:00:00Z"
+      "updatedAt": "2026-10-06T16:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -1046,7 +1048,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 45 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 46 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1067,7 +1069,8 @@
         "LED ekran m² başına kaç kg olmalı? ARLEDSCREEN sabit kg/m² / kabin ağırlığı / kalınlık yayımlıyor mu?",
         "LED ekran çalışma sıcaklığı kaç °C olmalı? ARLEDSCREEN sabit -20/+50 °C veya işletme sıcaklığı yayımlıyor mu?",
         "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?",
-        "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?"
+        "LED ekran rüzgâr yükü / dayanımı kaç Pa veya km/h olmalı? ARLEDSCREEN sabit 120 km/h / 1500 Pa rüzgâr yükü yayımlıyor mu?",
+        "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1719,6 +1722,70 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T15:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:en-rehber-ic",
+      "displayName": "EN Indoor LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/rehber/ic-mekan-led-ekran/",
+      "description": "EN indoor LED guide twin. No fixed dead-pixel / failure-rate claim — Blind #46; survey + written quote.",
+      "representativeQueries": [
+        "indoor LED dead pixel",
+        "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?",
+        "indoor LED guide"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "indoor",
+        "EN",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T16:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:en-rehber-led",
+      "displayName": "EN LED display guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/rehber/led-ekran/",
+      "description": "EN LED display solutions guide. No fixed dead-pixel invent — Blind #46.",
+      "representativeQueries": [
+        "LED display guide",
+        "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?",
+        "what is LED display"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "EN",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T16:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:en-hesaplayici",
+      "displayName": "EN Calculator",
+      "type": "text/html",
+      "url": "https://arledscreen.com/en/hesaplayici/",
+      "description": "EN m² cost calculator. Same catalog USD; no fixed dead-pixel / wind / nit invent.",
+      "representativeQueries": [
+        "LED display cost calculator",
+        "ARLEDSCREEN calculator",
+        "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "calculator",
+        "EN",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T16:00:00Z"
     }
   ]
 }

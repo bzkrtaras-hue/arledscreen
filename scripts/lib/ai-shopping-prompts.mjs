@@ -411,6 +411,19 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rüzgâr yükü yok"],
     mustNotSay: ["120 km/h", "1500 Pa", "sabit rüzgâr yükü", "ücretsiz kargo dahil"],
   },
+  {
+    id: 46,
+    q: "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?",
+    paths: [
+      "/tr/led-ekran-servis/",
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/products/gob-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ölü piksel yok"],
+    mustNotSay: ["0.0001%", "Class II", "sabit ölü piksel", "pixel failure rate garanti", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
