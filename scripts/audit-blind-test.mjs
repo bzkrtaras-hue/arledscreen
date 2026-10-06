@@ -3683,6 +3683,20 @@ if (
   errors.push("blind prompt #280 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SMART Board yok");
 }
 
+const pBlind281 = PROMPTS.find((x) => x.id === 281);
+if (!pBlind281 || !/head cleat|başlık kleyt/i.test(pBlind281.q)) {
+  errors.push("blind prompt #281 must cover sabit head cleat invent");
+}
+if (
+  pBlind281 &&
+  (!pBlind281.mustSay?.includes("yazılı teklif") ||
+    !pBlind281.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind281.mustSay?.includes("sabit head cleat yok"))
+) {
+  errors.push("blind prompt #281 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit head cleat yok");
+}
+
+
 
 
 
