@@ -200,7 +200,7 @@ const profiles = {
       "googleMerchantReadiness = 12 SKU TSV only; shipping boş; quote-only yok.",
       "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
       "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar; NXTIONSTAR ürün markası — satıcı ARLEDSCREEN.",
-      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 296 kör test)`,
+      `Tek fetch ajan index: ${SITE}/ai-shopping.json (pricedPanels + agentRules; 297 kör test)`,
     ],
   },
   canonicalUrls: {

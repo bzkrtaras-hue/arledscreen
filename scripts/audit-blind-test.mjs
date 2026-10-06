@@ -3891,6 +3891,20 @@ if (
   errors.push("blind prompt #296 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Cisco Board yok");
 }
 
+const pBlind297 = PROMPTS.find((x) => x.id === 297);
+if (!pBlind297 || !/cant cleat|kant kleyt/i.test(pBlind297.q)) {
+  errors.push("blind prompt #297 must cover sabit cant cleat invent");
+}
+if (
+  pBlind297 &&
+  (!pBlind297.mustSay?.includes("yazılı teklif") ||
+    !pBlind297.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind297.mustSay?.includes("sabit cant cleat yok"))
+) {
+  errors.push("blind prompt #297 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cant cleat yok");
+}
+
+
 
 
 
