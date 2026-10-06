@@ -293,9 +293,9 @@ export const LED_MODELS: LedModel[] = [
       control: SR,
       media: MEDIA,
       current: k("Ortalama 5–10 A"),
-      viewDistance: k("4 m"),
+      viewDistance: k("~4 m başlangıç (garanti değil)"),
     },
-    note: "Orta ve büyük ölçekli cephe, totem ve meydan ekranlarında yaygın kullanılan bir piksel aralığıdır.",
+    note: "Orta ve büyük ölçekli cephe, totem ve meydan ekranlarında yaygın kullanılan bir piksel aralığıdır; kesin mesafe keşif + yazılı teklifte.",
   },
   {
     slug: "p4-on-servis",
@@ -334,9 +334,9 @@ export const LED_MODELS: LedModel[] = [
       control: SR,
       media: MEDIA,
       current: k("5–10 A (parlaklık ayarı ve ortam koşullarına göre)"),
-      viewDistance: k("5 m ve üzeri"),
+      viewDistance: k("~5 m+ başlangıç (garanti değil)"),
     },
-    note: "Orta ve uzak mesafeden izlenen reklam panoları, belediye bilgilendirme ekranları ve etkinlik alanları için uygundur.",
+    note: "Orta ve uzak mesafeden izlenen reklam panoları, belediye bilgilendirme ekranları ve etkinlik alanları için uygundur; kesin mesafe keşif + yazılı teklifte.",
   },
   {
     slug: "p8",

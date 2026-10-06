@@ -391,7 +391,7 @@ const en: Dictionary = {
     metrics: {
       resolution: "Resolution",
       aspect: "Aspect ratio",
-      viewing: "Optimal viewing",
+      viewing: "Est. viewing (not a guarantee)",
       cabinets: "Cabinets",
       area: "Area",
     },
@@ -693,7 +693,7 @@ const tr: Dictionary = {
     metrics: {
       resolution: "Çözünürlük",
       aspect: "En-boy oranı",
-      viewing: "Optimum izleme",
+      viewing: "Tahmini izleme (garanti değil)",
       cabinets: "Kabinler",
       area: "Alan",
     },

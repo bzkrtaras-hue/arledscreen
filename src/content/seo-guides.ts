@@ -72,7 +72,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Pitch ve montaj — seçim sırası",
           body:
-            "Kritik izleme mesafesi piksel aralığını belirler: pratik kural her 1 mm P değeri ≈ 1 m minimum mesafe (P2.5 ≈ 2,5 m). Yakın izlemede küçük P, uzak cephede daha büyük P tercih edilir. Kabin/modül düzeni ve servis erişimi keşifte netleşir. Model bazında parlaklık, koruma sınıfı ve güç değerleri sitede genel iddia olarak yazılmaz; yazılı teklif ve teknik föyde paylaşılır.",
+            "Kritik izleme mesafesi piksel aralığını belirler: pratik başlangıç tahmini her 1 mm P ≈ 1 m (P2.5 ≈ 2,5 m) — «1 mm = 1 m garanti» veya sabit mesafe şartı yoktur. Kesin pitch Gaziosmanpaşa keşif + yazılı teklifte. Kabin/modül düzeni ve servis erişimi keşifte netleşir. Parlaklık, koruma sınıfı ve güç değerleri teknik föyde paylaşılır.",
         },
         {
           h2: "B2B süreç: keşif, teklif, montaj",
@@ -201,7 +201,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İç mekân ekranda pitch ve izleme mesafesi",
           body:
-            "İç mekân NXTIONSTAR aralıkları: P1.25, P2.5, P3.07 ve P4 (P1.25 GOB seçenekli). Lobi ve showroom’da daha ince P; uzak koridorlarda P3.07–P4 tercih edilebilir. İnce pitch grubunda ayrıca P0.9 / P1.25 yayımlanır. Kabaca her 1 mm pitch için ~1 m kritik mesafe kuralı başlangıç noktasıdır — ARLEDSCREEN keşfinde gerçek oturma / ayakta izleme mesafesi ölçülür.",
+            "İç mekân NXTIONSTAR aralıkları: P1.25, P2.5, P3.07 ve P4 (P1.25 GOB seçenekli). Lobi ve showroom’da daha ince P; uzak koridorlarda P3.07–P4 tercih edilebilir. İnce pitch grubunda ayrıca P0.9 / P1.25 yayımlanır. Her 1 mm pitch ≈ 1 m başlangıç tahmini garanti değildir — ARLEDSCREEN Gaziosmanpaşa keşfinde gerçek oturma / ayakta izleme mesafesi ölçülür; kesin pitch yazılı teklifte.",
         },
         {
           h2: "Kamera önü yenileme ve renk (föyde)",

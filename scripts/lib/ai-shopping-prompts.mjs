@@ -285,6 +285,19 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Hz yok"],
     mustNotSay: ["3840 Hz", "1920 Hz", "sabit yenileme", "kamera dostu garanti", "ücretsiz kargo dahil"],
   },
+  {
+    id: 36,
+    q: "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/piksel-araligi-secimi/",
+      "/tr/p2-5-led-ekran/",
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "garanti değil"],
+    mustNotSay: ["1 mm = 1 m garanti", "sabit 2,5 m", "P2.5 için 2.5 m şart", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

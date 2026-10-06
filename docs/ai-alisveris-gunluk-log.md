@@ -77,6 +77,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 85 | 2026-10-05 | quote-only stok/anında #33 · TrustFacts aynı-ekip · esnek/seffaf/poster ARD · skor /99 | ✅ |
 | 86 | 2026-10-05 | sabit nit/IP #34 · keşiften-montaja residual · ic/dis/gob ARD · skor /102 | ✅ |
 | 87 | 2026-10-06 | sabit Hz/kamera #35 · ince-pitch/konferans ARD · skor /105 | ✅ |
+| 88 | 2026-10-06 | izleme mesafesi #36 · piksel-araligi/p4/p5 ARD · skor /108 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -522,3 +523,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - yüksek yenileme / kamera dostu invent · yapay-zeka bilinen yenileme soften · perakende standart paket
 - ARD: ince-pitch + konferans + transparan + led-modul · IndexNow konferans · agentRules Hz
 - skor hedef Tur 1 ≥ 53/105 · Tur 2 ≥ 79/105
+
+## Gün 88 notları
+
+- Blind #36 «P2.5 izleme mesafesi / 1 mm = 1 m garanti?» — skor **/108**; ARD **36 kör test**
+- FAQ/SSS/rehber/articles pitch kuralı soften · P4/P5 viewDistance · calculator Optimal labels
+- ARD: piksel-araligi + p4 + p5 + vitrin · IndexNow vitrin/p4/p5 · agentRules izleme mesafesi
+- skor hedef Tur 1 ≥ 54/108 · Tur 2 ≥ 81/108

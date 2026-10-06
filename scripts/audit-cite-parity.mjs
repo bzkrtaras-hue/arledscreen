@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–87: ARD discovery prompt count must not drift behind blind suite
+// Day 74–88: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/35 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 35 kör test intent (not stale 17–34)");
+if (ardTxt && !/36 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 36 kör test intent (not stale 17–35)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-4]) kör test/i.test(ardTxt) && !/35 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–34 kör test without 35");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-5]) kör test/i.test(ardTxt) && !/36 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–35 kör test without 36");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -511,6 +511,24 @@ for (const rel of [
   const html = read("out/tr/rehber/ic-mekan-led-ekran/index.html");
   if (html && !/sabit 3840|sabit Hz yok|no site-wide 3840/i.test(html)) {
     errors.push("out/tr/rehber/ic-mekan-led-ekran/ should state sabit Hz yok honesty");
+  }
+}
+// Day 88: 1 mm = 1 m garanti invent
+for (const rel of [
+  "out/tr/rehber/piksel-araligi-secimi/index.html",
+  "out/tr/sss/index.html",
+  "out/tr/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/1 mm = 1 m garanti|sabit 2,5 m şart|P2\.5 için 2\.5 m şart/i.test(html)) {
+    errors.push(`${rel} must not invent 1 mm = 1 m / sabit mesafe garanti`);
+  }
+}
+{
+  const html = read("out/tr/rehber/piksel-araligi-secimi/index.html");
+  if (html && !/garanti değil|garanti değildir/i.test(html)) {
+    errors.push("out/tr/rehber/piksel-araligi-secimi/ should state izleme mesafesi garanti değil");
   }
 }
 

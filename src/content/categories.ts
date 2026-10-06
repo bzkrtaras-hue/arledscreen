@@ -618,7 +618,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Hangi piksel aralığını seçmeliyim?",
         answer:
-          "İnce pitch grubunda yayımlanan aralıklar P0.9 ve P1.25'tir. Pratik kural: her 1 mm P ≈ 1 m minimum mesafe. Kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz; P0.9 için teknik föy talep üzerine paylaşılır.",
+          "İnce pitch grubunda yayımlanan aralıklar P0.9 ve P1.25'tir. Pratik başlangıç tahmini: her 1 mm P ≈ 1 m — «1 mm = 1 m garanti» yoktur. Kesin pitch Gaziosmanpaşa keşif + yazılı teklifte; P0.9 için teknik föy talep üzerine paylaşılır.",
       },
       {
         question: "SMD, COB ve GOB arasındaki fark nedir?",

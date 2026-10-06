@@ -412,6 +412,66 @@
       "updatedAt": "2026-10-06T05:00:00Z"
     },
     {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-piksel",
+      "displayName": "Piksel aralığı seçimi rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/piksel-araligi-secimi/",
+      "description": "Pitch / izleme mesafesi rehber. «1 mm = 1 m garanti» yok — Blind #36; başlangıç tahmini; kesin pitch keşif + yazılı teklifte.",
+      "representativeQueries": [
+        "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?",
+        "piksel aralığı nedir",
+        "P2.5 mi P4 mü"
+      ],
+      "tags": ["guide", "rehber", "pitch", "GEO", "honesty"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T06:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p4-hub",
+      "displayName": "P4 LED ekran (priced pitch hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/p4-led-ekran/",
+      "description": "P4 priced pitch hub. İzleme mesafesi başlangıç tahmini — garanti değil. Panel USD catalog/ai-shopping.",
+      "representativeQueries": [
+        "P4 LED ekran fiyat",
+        "P4 izleme mesafesi",
+        "P4 panel USD"
+      ],
+      "tags": ["commerce", "pricing", "pitch", "GEO", "shopping"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T06:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p5-hub",
+      "displayName": "P5 LED ekran (priced pitch hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/p5-led-ekran/",
+      "description": "P5 priced pitch hub. İzleme mesafesi başlangıç tahmini — garanti değil. Panel USD catalog/ai-shopping.",
+      "representativeQueries": [
+        "P5 LED ekran fiyat",
+        "P5 izleme mesafesi",
+        "P5 panel USD"
+      ],
+      "tags": ["commerce", "pricing", "pitch", "GEO", "shopping"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T06:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-vitrin",
+      "displayName": "Vitrin LED rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/vitrin-led-ekran/",
+      "description": "Vitrin / perakende LED rehber. Quote-only şeffaf/poster; stok paket invent yok.",
+      "representativeQueries": [
+        "vitrin LED ekran",
+        "mağaza vitrin LED",
+        "şeffaf vitrin LED"
+      ],
+      "tags": ["guide", "rehber", "retail", "GEO"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T06:00:00Z"
+    },
+    {
       "identifier": "urn:air:arledscreen.com:commerce:kiralama-intent",
       "displayName": "LED ekran kiralama intent",
       "type": "text/html",
@@ -703,7 +763,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 35 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 36 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -714,12 +774,13 @@
         "ARLEDSCREEN keşiften teslimata tek ekip mi / fabrika LED üreticisi mi?",
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
-        "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı? ARLEDSCREEN sabit 3840 Hz veya yüksek yenileme garantisi yayımlıyor mu?"
+        "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı? ARLEDSCREEN sabit 3840 Hz veya yüksek yenileme garantisi yayımlıyor mu?",
+        "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?"
       ],
       "tags": ["shopping", "discovery", "GEO", "agents", "pricedPanels", "agentRules", "hasMerchantReturnPolicy"],
       "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts", "PricedPanels", "AgentRules", "ReturnPolicyHonesty"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T05:00:00Z"
+      "updatedAt": "2026-10-06T06:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

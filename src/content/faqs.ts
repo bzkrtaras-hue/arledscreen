@@ -6,7 +6,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "How do I pick pixel pitch for my viewing distance?",
       answer:
-        "For ARLEDSCREEN / NXTIONSTAR walls we start from the closest critical viewer: roughly 1 m of distance per 1 mm of pitch (P1.25 ≈ 1.25 m). Control rooms and lobbies usually need finer pitch; outdoor façades and totems can step up when average viewers stand farther back.",
+        "For ARLEDSCREEN / NXTIONSTAR walls we start from the closest critical viewer: a rough starting estimate is ~1 m per 1 mm of pitch (P1.25 ≈ 1.25 m) — not a published guarantee. Final pitch is set in the Gaziosmanpaşa survey and written quote. Control rooms and lobbies usually need finer pitch; outdoor façades and totems can step up when viewers stand farther back.",
     },
     {
       question: "Can you mix 500×500 and 500×1000 mm cabinets?",
@@ -48,7 +48,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
       answer:
-        "Pratik bir başlangıç kuralı olarak her 1 mm piksel aralığı için yaklaşık 1 m minimum izleme mesafesi alınır (P2.5 ≈ 2,5 m). Toplantı salonu ve mağaza içi gibi yakın izlemede küçük P değerleri, cephe ve yol kenarı gibi uzak izlemede daha büyük P değerleri tercih edilir. Kesin seçimi keşifte, içerik türünü de dikkate alarak birlikte yaparız.",
+        "Pratik bir başlangıç tahmini: her 1 mm piksel aralığı için yaklaşık 1 m izleme mesafesi konuşulabilir (P2.5 ≈ 2,5 m) — «1 mm = 1 m garanti» veya sabit minimum mesafe iddiası yoktur. Kesin pitch Gaziosmanpaşa keşif + yazılı teklifte; içerik türü de dikkate alınır.",
     },
     {
       question: "İç mekân ile dış mekân LED ekran arasındaki fark nedir?",
@@ -105,7 +105,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "كيف أختار الـ pitch لمسافة المشاهدة؟",
       answer:
-        "في مشاريع ARLEDSCREEN / NXTIONSTAR نبدأ من أقرب مشاهد حرج: تقريباً 1 م لكل 1 مم pitch. غرف التحكم تحتاج pitch أدق؛ الواجهات الخارجية والـ totem قد تستخدم pitch أكبر.",
+        "في مشاريع ARLEDSCREEN / NXTIONSTAR نبدأ من أقرب مشاهد حرج: تقدير تقريبي ~1 م لكل 1 مم pitch — ليس ضماناً ثابتاً. يُحدَّد pitch النهائي في مسح غازي عثمان باشا والعرض المكتوب. غرف التحكم تحتاج pitch أدق؛ الواجهات الخارجية والـ totem قد تستخدم pitch أكبر.",
     },
     {
       question: "هل تدعمون خزائن 500×500 و500×1000؟",
@@ -127,7 +127,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Как выбрать pixel pitch под дистанцию просмотра?",
       answer:
-        "В проектах ARLEDSCREEN / NXTIONSTAR ориентируемся на ближайшего критичного зрителя: ≈1 м на 1 мм pitch. Для control room — мельче; для outdoor и totem можно крупнее.",
+        "В проектах ARLEDSCREEN / NXTIONSTAR ориентируемся на ближайшего критичного зрителя: ориентировочно ≈1 м на 1 мм pitch — не фиксированная гарантия. Итоговый pitch — в обследовании Gaziosmanpaşa и письменном предложении. Для control room — мельче; для outdoor и totem можно крупнее.",
     },
     {
       question: "Поддерживаете кабинеты 500×500 и 500×1000?",

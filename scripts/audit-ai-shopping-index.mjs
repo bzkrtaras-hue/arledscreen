@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 35 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 36 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 35) errors.push(`blindTestPrompts must be 35 (got ${prompts.length})`);
+if (prompts.length !== 36) errors.push(`blindTestPrompts must be 36 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/35 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 35 kör test intent");
+if (!/36 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 36 kör test intent");
 }
-if (/(?:2[0-9]|3[0-4]) kör test/i.test(ard) && !/35 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–34 kör test without 35");
+if (/(?:2[0-9]|3[0-5]) kör test/i.test(ard) && !/36 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–35 kör test without 36");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -329,6 +329,14 @@ if (!p35 || !/Hz|yenileme|kamera/i.test(p35.q || "")) {
 }
 if (!/3840|1920|kamera dostu garanti|sabit yenileme Hz/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit Hz / kamera dostu garanti invent");
+}
+// Day 88: izleme mesafesi / 1 mm = 1 m garanti invent
+const p36 = (doc.blindTestPrompts || []).find((p) => p.id === 36);
+if (!p36 || !/izleme mesafesi|1 mm/i.test(p36.q || "")) {
+  errors.push("blindTestPrompts #36 must cover izleme mesafesi / 1 mm = 1 m invent");
+}
+if (!/1 mm = 1 m garanti|izleme mesafesi|P2\.5=2,5/i.test(rulesJson)) {
+  errors.push("agentRules must forbid 1 mm = 1 m / izleme mesafesi garanti invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

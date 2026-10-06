@@ -10,7 +10,7 @@ last_reviewed: 2026-10-05
 
 # İç mekân LED ekran seçerken piksel aralığı nasıl belirlenir?
 
-**Kısa cevap:** Piksel aralığını belirleyen ilk ölçüt **izleyicinin ekrana en yakın mesafesidir**. Pratik başlangıç kuralı: her 1 mm piksel aralığı için yaklaşık **1 m minimum izleme mesafesi** (P2.5 ≈ 2,5 m, P4 ≈ 4 m). Ardından ekran ölçüsü, gösterilecek içerik (yazı, video, sunum) ve bütçe birlikte değerlendirilir. ARLEDSCREEN iç mekânda P1.25'ten P4'e kadar modüller sunar; dış mekân P2.5–P5 bandı da yayımlıdır.
+**Kısa cevap:** Piksel aralığını belirleyen ilk ölçüt **izleyicinin ekrana en yakın mesafesidir**. Pratik başlangıç tahmini (garanti değil): her 1 mm piksel aralığı için yaklaşık **1 m izleme mesafesi** konuşulabilir (P2.5 ≈ 2,5 m, P4 ≈ 4 m) — «1 mm = 1 m garanti» veya sabit minimum mesafe yoktur. Kesin pitch Gaziosmanpaşa keşif + yazılı teklifte; ardından ekran ölçüsü, içerik ve bütçe birlikte değerlendirilir. ARLEDSCREEN iç mekânda P1.25'ten P4'e kadar modüller sunar; dış mekân P2.5–P5 bandı da yayımlıdır.
 
 ## 1. Piksel aralığı (P değeri) nedir?
 
@@ -44,7 +44,7 @@ Bir kenardaki piksel sayısı = kenar uzunluğu (mm) ÷ piksel aralığı (mm).
 | 2,5 – 4 m | P2.5 – P3.07 | Kafe, restoran, lobi |
 | 4 m ve üzeri | P3.07 – P4 | Geniş salon, sahne arkası, yüksek montaj |
 
-Bu tablo "1 mm ≈ 1 m" kuralına dayanan bir başlangıç noktasıdır; kesin seçim keşifte yapılır. Pitch sayfaları: [P1.25](/tr/p1-25-led-ekran/), [P2.5](/tr/p2-5-led-ekran/), [P4](/tr/p4-led-ekran/), [P5](/tr/p5-led-ekran/).
+Bu tablo "1 mm ≈ 1 m" başlangıç tahminine dayanır — garanti veya sabit mesafe şartı değildir; kesin seçim Gaziosmanpaşa keşif + yazılı teklifte yapılır. Pitch sayfaları: [P1.25](/tr/p1-25-led-ekran/), [P2.5](/tr/p2-5-led-ekran/), [P4](/tr/p4-led-ekran/), [P5](/tr/p5-led-ekran/).
 
 ## 4. İçerik türü seçimi nasıl etkiler?
 
@@ -87,8 +87,8 @@ Makinece (AI ajanları): [catalog.json](/catalog.json) · [entity.json](/entity.
 1. İzleyicinin ekrana **en yakın** duracağı mesafeyi ölçün.
 2. Ekranın yaklaşık **genişlik ve yüksekliğini** belirleyin (320 × 160 mm modül katlarına yuvarlanır).
 3. Gösterilecek **içerik türünü** not edin (yazı, video, sunum, kamera çekimi).
-4. "1 mm ≈ 1 m" kuralıyla bir P aralığı belirleyin ve hesaplayıcıda iki üç seçeneği karşılaştırın.
-5. Keşifte montaj yüzeyi, elektrik ve sinyal altyapısıyla birlikte son kararı verin.
+4. "1 mm ≈ 1 m" başlangıç tahminiyle (garanti değil) bir P aralığı belirleyin ve hesaplayıcıda iki üç seçeneği karşılaştırın.
+5. Gaziosmanpaşa keşifte montaj yüzeyi, elektrik ve sinyal altyapısıyla birlikte son kararı yazılı teklifte verin.
 
 ## 7. Sık sorulan sorular
 

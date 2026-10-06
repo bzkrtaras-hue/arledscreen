@@ -66,7 +66,7 @@ Tabloda görüldüğü gibi küçük ekranlarda sabit kalemlerin (kontrol kartı
 ## 5. Teklif alırken nelere dikkat etmeli?
 
 - Teklifte **gerçek ekran ölçüsü** ve **modül adedi** yazıyor mu?
-- Piksel aralığı **izleme mesafesine** göre mi seçilmiş? (Pratik kural: her 1 mm piksel aralığı için yaklaşık 1 m minimum izleme mesafesi.)
+- Piksel aralığı **izleme mesafesine** göre mi seçilmiş? (Başlangıç tahmini, garanti değil: her 1 mm ≈ 1 m; kesin pitch Gaziosmanpaşa keşif + yazılı teklifte.)
 - KDV, nakliye, konstrüksiyon, elektrik ve montaj **dahil mi, hariç mi** açıkça belirtilmiş mi?
 - **Garanti süresi ve kapsamı** yazılı mı? Teknik föy ve ürün belgeleri teklifle veriliyor mu?
 - Kurulum sonrası **teknik servis ve yedek modül** nasıl sağlanacak?
