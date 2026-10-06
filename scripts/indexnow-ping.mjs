@@ -27,13 +27,59 @@ const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const HOST = "arledscreen.com";
 const ENDPOINT = "https://api.indexnow.org/indexnow";
 const STATE_PATH = path.join(root, ".cache", "indexnow-state.json");
+const COOLDOWN_PATH = path.join(root, ".cache", "indexnow-cooldown.json");
 const OWNER_LIST = path.join(root, "docs", "indexnow-sahip-listesi.md");
 const STOP_STATUSES = new Set([403, 422, 429]);
+/** After HTTP 429, skip live pings until this many ms elapse (deploy-storm guard). */
+const COOLDOWN_MS = 24 * 60 * 60 * 1000;
 
 const live = process.argv.includes("--live");
 const baselineOnly = process.argv.includes("--baseline");
+const forceCooldown = process.argv.includes("--force-cooldown");
 const forceUrlArg = process.argv.find((a) => a.startsWith("--url="));
 const forceUrl = forceUrlArg ? forceUrlArg.slice("--url=".length).trim() : null;
+
+function readCooldown() {
+  try {
+    return JSON.parse(fs.readFileSync(COOLDOWN_PATH, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function writeCooldown(status, url) {
+  fs.mkdirSync(path.dirname(COOLDOWN_PATH), { recursive: true });
+  const until = new Date(Date.now() + COOLDOWN_MS).toISOString();
+  fs.writeFileSync(
+    COOLDOWN_PATH,
+    JSON.stringify(
+      {
+        until,
+        status,
+        url: url || null,
+        setAt: new Date().toISOString(),
+        reason: "IndexNow rate limit — wait before next --live ping",
+      },
+      null,
+      2,
+    ) + "\n",
+  );
+  console.error(`indexnow-ping: cooldown until ${until} → ${path.relative(root, COOLDOWN_PATH)}`);
+}
+
+function assertNotInCooldown() {
+  if (!live || forceCooldown || baselineOnly) return;
+  const cd = readCooldown();
+  if (!cd?.until) return;
+  const untilMs = Date.parse(cd.until);
+  if (!Number.isFinite(untilMs) || Date.now() >= untilMs) return;
+  console.error(
+    `indexnow-ping: STOP — cooldown active until ${cd.until} (last HTTP ${cd.status || "?"}).`,
+  );
+  console.error("  retry later, or: node scripts/indexnow-ping.mjs --live --force-cooldown");
+  console.error("  post-deploy: npm run post-deploy -- --no-indexnow");
+  process.exit(1);
+}
 
 function todayUtc() {
   return new Date().toISOString().slice(0, 10);
@@ -145,6 +191,8 @@ if (!resolved) {
   console.error("indexnow-ping: missing public/<32-hex>.txt key file");
   process.exit(1);
 }
+
+assertNotInCooldown();
 
 let catalog = [...INDEXNOW_URLS];
 if (forceUrl) {
@@ -318,6 +366,7 @@ for (const item of candidates) {
       url: item.url,
       detail: text.slice(0, 180) || "IndexNow stop status",
     });
+    if (res.status === 429) writeCooldown(429, item.url);
     console.error(
       `indexnow-ping: STOP — HTTP ${res.status}. Owner list updated. Do not invent new pages.`,
     );

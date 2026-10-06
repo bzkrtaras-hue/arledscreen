@@ -1,3 +1,21 @@
+## Kontrol audit — 2026-10-06 (tekrar/halüsinasyon freni)
+
+### Kanıt (işe yarayan)
+- smoke:live **20/20** · canlı `ai-shopping.json` prompts=466 · pricedPanels=12 · P1.25=95.88 USD vb.
+- entity + about + fiyat: Gaziosmanpaşa · +90 530 507 88 34 · **ücretsiz kargo yok** · 81-il doorway yok
+- audit-blind-test / ai-shopping / cite-parity **OK**
+- son invent hedge’ler canlı HTML’de (ClearTouch / Meet Series One / spandrel glass)
+
+### Kanıt (işe yaramayan / risk)
+- Blind invent oranı **~%88** → niche AV/mimari hedge tekrarı; Tur 1a (entity+fiyat) skor **yok** (BLOCKED, uydurma skor yok)
+- Web arama “ARLEDSCREEN …” → **arledscreen.com üst sonuçlarda görünmüyor** (GEO asıl boşluk)
+- IndexNow **HTTP 429** — sık deploy ping’i zarar verdi → **24h cooldown** eklendi
+
+### Karar
+- Bu turda mekanik #467 invent **yok**
+- IndexNow cooldown + post-deploy auto-skip
+- Sonraki iş: Tur 1a çekirdek yüzey / marka görünürlük; invent temposu düşürülür
+
 ## Gün 518 — invent Blind #466 Google Meet Series One LIVE
 
 - Blind #466 Google Meet Series One / Meet Series One · ic/konferans · prompts=466 · /1398 · CF deploy · smoke:live 20/20

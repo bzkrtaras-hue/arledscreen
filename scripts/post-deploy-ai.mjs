@@ -14,13 +14,31 @@
  *   node scripts/post-deploy-ai.mjs --force
  *   node scripts/post-deploy-ai.mjs --no-indexnow
  */
+import fs from "node:fs";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const force = process.argv.includes("--force");
-const skipIndex = process.argv.includes("--no-indexnow");
+let skipIndex = process.argv.includes("--no-indexnow");
+
+/** Auto-skip IndexNow while 429 cooldown file is active (avoids deploy-storm). */
+function indexnowCooldownActive() {
+  try {
+    const cd = JSON.parse(
+      fs.readFileSync(path.join(root, ".cache", "indexnow-cooldown.json"), "utf8"),
+    );
+    const untilMs = Date.parse(cd?.until || "");
+    return Number.isFinite(untilMs) && Date.now() < untilMs;
+  } catch {
+    return false;
+  }
+}
+if (!skipIndex && indexnowCooldownActive()) {
+  console.log("post-deploy: IndexNow cooldown active → auto --no-indexnow");
+  skipIndex = true;
+}
 
 function run(script, args = []) {
   const r = spawnSync(process.execPath, [path.join(root, "scripts", script), ...args], {
