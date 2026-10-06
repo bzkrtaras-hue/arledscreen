@@ -10,7 +10,7 @@ last_reviewed: 2026-10-01
 
 # İç mekân LED ekran seçerken piksel aralığı nasıl belirlenir?
 
-**Kısa cevap:** Piksel aralığını belirleyen ilk ölçüt **izleyicinin ekrana en yakın mesafesidir**. Pratik başlangıç kuralı: her 1 mm piksel aralığı için yaklaşık **1 m minimum izleme mesafesi** (P2.5 ≈ 2,5 m, P4 ≈ 4 m). Ardından ekran ölçüsü, gösterilecek içerik (yazı, video, sunum) ve bütçe birlikte değerlendirilir. ARLEDSCREEN iç mekânda P1.25'ten P4'e kadar modüller sunar.
+**Kısa cevap:** Piksel aralığını belirleyen ilk ölçüt **izleyicinin ekrana en yakın mesafesidir**. Pratik başlangıç kuralı: her 1 mm piksel aralığı için yaklaşık **1 m minimum izleme mesafesi** (P2.5 ≈ 2,5 m, P4 ≈ 4 m). Ardından ekran ölçüsü, gösterilecek içerik (yazı, video, sunum) ve bütçe birlikte değerlendirilir. ARLEDSCREEN iç mekânda P1.25'ten P4'e kadar modüller sunar. Panel USD: [ai-shopping.json](https://arledscreen.com/ai-shopping.json) `pricedPanels` (ör. P1.25 GOB 95.88 USD); KDV/nakliye hariç; ücretsiz kargo yok.
 
 ## 1. Piksel aralığı (P değeri) nedir?
 

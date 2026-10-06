@@ -52,7 +52,8 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
   return {
     question: `${name} fiyatı ne kadar?`,
     answer:
-      `2026 fiyat listemizde NXTIONSTAR ${name} panelleri, panel başına ${fmtUsd(lo.usd)} USD (${priceLabel(lo)}) ile ${fmtUsd(hi.usd)} USD (${priceLabel(hi)}) arasındadır; KDV ve nakliye hariçtir. ` +
+      `2026 fiyat listemizde NXTIONSTAR ${name} panelleri, panel başına ${fmtUsd(lo.usd)} USD (${priceLabel(lo)}) ile ${fmtUsd(hi.usd)} USD (${priceLabel(hi)}) arasındadır; KDV ve nakliye hariçtir; ücretsiz kargo yoktur. ` +
+      `Makinece kaynak: ai-shopping.json pricedPanels ve catalog.json. ` +
       (lo.moduleMm || hi.moduleMm
         ? ""
         : `1 m² yaklaşık 19,53 panel ettiği için yalnızca modül bedeli m² başına yaklaşık ${fmtM2(lo.usd)} – ${fmtM2(hi.usd)} USD olur. `) +
@@ -376,6 +377,17 @@ export default async function ProductGroupPage({ params }: PageProps) {
               ) : null}
               <h2 className="mb-4 font-display text-xl font-bold text-ink sm:text-2xl">Panel fiyatları (2026 listesi)</h2>
               <PanelPriceTable panels={prices} caption={`${g.name}: hesaplayıcıdaki panel fiyatları`} showUse={false} />
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-muted">
+                Makinece kaynak:{" "}
+                <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                  ai-shopping.json
+                </a>{" "}
+                <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) ve{" "}
+                <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                  catalog.json
+                </a>
+                . KDV/nakliye hariç; ücretsiz kargo yok.
+              </p>
             </div>
           ) : null}
 

@@ -108,6 +108,18 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
               </Link>{" "}
               sayfasına bakın.
             </p>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
+              Yayımlanmış panel USD:{" "}
+              <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                ai-shopping.json
+              </a>{" "}
+              <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz
+              kargo yok.{" "}
+              <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
+                Hesaplayıcı
+              </Link>
+              .
+            </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link href="/tr/quote/" className="btn-soft inline-flex min-h-12 items-center justify-center bg-cyan px-6 text-white hover:bg-cyan-600">
                 Keşif ve teklif iste
