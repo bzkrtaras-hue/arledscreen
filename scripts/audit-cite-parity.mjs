@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–132: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/159 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 159 kör test intent (not stale 17–158)");
+if (ardTxt && !/160 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 160 kör test intent (not stale 17–159)");
 }
-if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–158 kör test without 159");
+if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–159 kör test without 160");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -2218,6 +2218,23 @@ for (const rel of [
     errors.push(`${rel} must not invent sabit bird mesh`);
   }
 }
+
+
+// Day 212: sabit QSC / amfi — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit QSC yok|no fixed site QSC/i.test(html)) {
+    errors.push(`${rel} should hedge sabit QSC / amfi`);
+  }
+  if (/QSC\ garantidir|sabit\ QSC\ True1|tüm\ modeller\ QSC|amfi\ garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit QSC`);
+  }
+}
+
 
 
 

@@ -1781,6 +1781,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit bird mesh yok"],
     mustNotSay: ["bird mesh garantidir", "sabit bird mesh True1", "tüm modeller bird mesh", "kuş filesi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 160,
+    q: "LED ekran QSC / amfi var mı? ARLEDSCREEN sabit QSC iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit QSC yok"],
+    mustNotSay: ["QSC garantidir", "sabit QSC True1", "tüm modeller QSC", "amfi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

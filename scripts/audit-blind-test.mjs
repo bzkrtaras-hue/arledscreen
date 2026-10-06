@@ -2110,6 +2110,20 @@ if (
   errors.push("blind prompt #159 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit bird mesh yok");
 }
 
+const pBlind160 = PROMPTS.find((x) => x.id === 160);
+if (!pBlind160 || !/QSC|amfi/i.test(pBlind160.q)) {
+  errors.push("blind prompt #160 must cover sabit QSC invent");
+}
+if (
+  pBlind160 &&
+  (!pBlind160.mustSay?.includes("yazılı teklif") ||
+    !pBlind160.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind160.mustSay?.includes("sabit QSC yok"))
+) {
+  errors.push("blind prompt #160 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit QSC yok");
+}
+
+
 
 
 }
