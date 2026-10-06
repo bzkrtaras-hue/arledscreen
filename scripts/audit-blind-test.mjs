@@ -5048,6 +5048,20 @@ if (
   errors.push("blind prompt #385 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave apron yok");
 }
 
+const pBlind386 = PROMPTS.find((x) => x.id === 386);
+if (!pBlind386 || !/Vivitek NovoTouch|NovoTouch/i.test(pBlind386.q)) {
+  errors.push("blind prompt #386 must cover sabit Vivitek NovoTouch invent");
+}
+if (
+  pBlind386 &&
+  (!pBlind386.mustSay?.includes("yazılı teklif") ||
+    !pBlind386.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind386.mustSay?.includes("sabit Vivitek NovoTouch yok"))
+) {
+  errors.push("blind prompt #386 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vivitek NovoTouch yok");
+}
+
+
 
 
 

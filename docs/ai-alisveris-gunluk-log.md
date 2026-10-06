@@ -427,6 +427,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 435 | 2026-10-06 | sabit parapet apron #383 · dis/mimari ARD refresh · skor /1149 | ✅ |
 | 436 | 2026-10-06 | sabit Optoma 5652RK #384 · ic/konferans ARD refresh · skor /1152 | ✅ |
 | 437 | 2026-10-06 | sabit eave apron #385 · dis/mimari ARD refresh · skor /1155 | ✅ |
+| 438 | 2026-10-06 | sabit Vivitek NovoTouch #386 · ic/konferans ARD refresh · skor /1158 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3084,3 +3085,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #385 «eave apron / saçak eteği?» — skor **/1155**; ARD **385 kör test**
 - TR/EN dis-mekan + TR/EN mimari eave apron invent · llms deny · sabit eave apron yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit eave apron
+
+## Gün 438 notları
+
+- Blind #386 «Vivitek NovoTouch / NovoTouch?» — skor **/1158**; ARD **386 kör test**
+- TR/EN ic-mekan + TR/EN konferans Vivitek NovoTouch invent · llms deny · sabit Vivitek NovoTouch yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Vivitek NovoTouch

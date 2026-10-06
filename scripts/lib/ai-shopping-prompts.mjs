@@ -4493,6 +4493,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit eave apron yok"],
     mustNotSay: ["eave apron garantidir", "sabit eave apron True1", "tüm modeller eave apron", "saçak eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 386,
+    q: "LED ekran Vivitek NovoTouch / NovoTouch var mı? ARLEDSCREEN sabit Vivitek NovoTouch iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Vivitek NovoTouch yok"],
+    mustNotSay: ["Vivitek NovoTouch garantidir", "sabit Vivitek NovoTouch True1", "tüm modeller Vivitek NovoTouch", "NovoTouch garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
