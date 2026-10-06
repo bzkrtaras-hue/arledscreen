@@ -41,6 +41,7 @@ export function YiyistarGallery({
 
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [currentSlug, setCurrentSlug] = useState(sections[0]?.slug ?? "");
 
   const go = useCallback(
     (dir: 1 | -1) => {
@@ -54,6 +55,25 @@ export function YiyistarGallery({
     const id = window.setInterval(() => go(1), 5200);
     return () => window.clearInterval(id);
   }, [featured.length, go, paused, reduce, showFeatured]);
+
+  useEffect(() => {
+    const nodes = sections
+      .map((section) => document.getElementById(`galeri-${section.slug}`))
+      .filter((node): node is HTMLElement => Boolean(node));
+    if (!nodes.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        const id = visible?.target.id.replace("galeri-", "");
+        if (id) setCurrentSlug(id);
+      },
+      { rootMargin: "-30% 0px -55% 0px", threshold: [0.15, 0.4] },
+    );
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, [sections]);
 
   const scrollTo = (slug: string) => {
     const el = document.getElementById(`galeri-${slug}`);
@@ -137,14 +157,23 @@ export function YiyistarGallery({
       ) : null}
 
       {showJumpNav ? (
-        <nav aria-label="Galeri kategorileri" className="overflow-x-auto">
-          <ul className="flex min-w-max gap-2 pb-1">
+        <nav
+          aria-label="Galeri kategorileri"
+          className="sticky top-16 z-30 -mx-1 border-b border-border/80 bg-white/95 px-1 py-3 backdrop-blur"
+        >
+          <ul className="flex gap-2 overflow-x-auto pb-0.5">
             {sections.map((section) => (
               <li key={section.slug}>
                 <button
                   type="button"
                   onClick={() => scrollTo(section.slug)}
-                  className="rounded-full border border-border bg-white px-3.5 py-2 text-[13px] font-semibold text-ink-soft transition hover:border-cyan/45 hover:text-cyan"
+                  aria-current={section.slug === currentSlug ? "true" : undefined}
+                  className={cn(
+                    "rounded-full border px-3.5 py-2 text-[13px] font-semibold transition",
+                    section.slug === currentSlug
+                      ? "border-cyan bg-cyan text-white"
+                      : "border-border bg-white text-ink-soft hover:border-cyan/45 hover:text-cyan",
+                  )}
                 >
                   {section.title}
                 </button>
@@ -164,8 +193,7 @@ export function YiyistarGallery({
             <h2 className="font-display text-[1.35rem] font-extrabold tracking-[-0.03em] text-ink sm:text-2xl">
               {section.title}
             </h2>
-            <p className="mt-1 text-sm text-ink-muted">{section.titleEn}</p>
-            <ul className="mt-5 grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4">
+            <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
               {section.images.map((src) => (
                 <li key={src}>
                   <figure className="group relative aspect-square overflow-hidden rounded-lg bg-surface">

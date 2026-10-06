@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import Script from "next/script";
+import { Montserrat } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
+import { aiDiscoveryMetadata, aiDiscoveryLinks } from "@/lib/ai-discovery";
 import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
   variable: "--font-montserrat",
   display: "swap",
-  // Variable font: a single file per subset covers all weights (400–800).
 });
 
 export const metadata: Metadata = {
@@ -30,10 +30,12 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
   },
-  other: {
-    ard: `${SITE_URL}/.well-known/ard.json`,
-  },
+  alternates: aiDiscoveryMetadata.alternates,
+  other: aiDiscoveryMetadata.other,
 };
 
 export default function RootLayout({
@@ -48,56 +50,40 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="ard" href={`${SITE_URL}/.well-known/ard.json`} />
-        <link
-          rel="alternate"
+        {aiDiscoveryLinks.map((link, index) => (
+          <link
+            key={index}
+            rel={link.rel}
+            type={link.type}
+            href={link.href}
+            title={link.title}
+          />
+        ))}
+        <script
           type="application/ld+json"
-          href={`${SITE_URL}/entity.json`}
-          title="ARLEDSCREEN entity"
-        />
-        <link
-          rel="alternate"
-          type="application/ld+json"
-          href={`${SITE_URL}/entity-profiles.json`}
-          title="Point C profile paste packs"
-        />
-        <link
-          rel="alternate"
-          type="application/ld+json"
-          href={`${SITE_URL}/catalog.json`}
-          title="NXTIONSTAR panel catalog"
-        />
-        <link
-          rel="alternate"
-          type="application/ld+json"
-          href={`${SITE_URL}/ai-shopping.json`}
-          title="AI alışveriş discovery index"
-        />
-        <link
-          rel="alternate"
-          type="text/tab-separated-values"
-          href={`${SITE_URL}/feeds/merchant-priced-panels.tsv`}
-          title="Merchant priced panels (12 SKU)"
-        />
-        <link
-          rel="alternate"
-          type="text/plain"
-          href={`${SITE_URL}/llms.txt`}
-          title="llms.txt"
-        />
-        <link
-          rel="alternate"
-          type="text/plain"
-          href={`${SITE_URL}/llms-full.txt`}
-          title="llms-full.txt"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": `${SITE_URL}/#organization`,
+              name: "ARLEDSCREEN",
+              url: SITE_URL,
+              logo: `${SITE_URL}/apple-touch-icon.png`,
+              sameAs: [
+                "https://www.instagram.com/arledscreen",
+                "https://www.facebook.com/arledscreenn",
+                "https://www.linkedin.com/company/arleds",
+              ],
+            }),
+          }}
         />
       </head>
       <body className="min-h-screen bg-bg font-sans antialiased">
         {children}
-        {/* MailerLite Universal (newsletter form in the footer). Loaded after the page is idle so it does not
-            compete with first paint; CSP allows assets.mailerlite.com / *.mailerlite.com / *.mlcdn.com. */}
+        {/* MailerLite Universal */}
         <Script id="mailerlite-universal" strategy="lazyOnload">
-          {`(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');ml('account','2682439');`}
+          {`(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n)})(window, document, 'script', 'https://cdn.mailerlite.com/js/universal.js', 'ml');
+          ml('account', '1021147');`}
         </Script>
       </body>
     </html>

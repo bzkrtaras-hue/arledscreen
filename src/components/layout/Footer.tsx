@@ -21,7 +21,9 @@ interface FooterProps {
 }
 
 /**
- * Dark footer. Machine-readable files stay on their URLs; they are not linked here.
+ * Dark footer: centred quick-link row + outlined social icons (template rhythm),
+ * followed by ARLEDSCREEN's information columns (products, guides, NAP).
+ * Machine-readable files stay on their URLs; they are not linked in the footer.
  */
 export function Footer({ locale }: FooterProps) {
   const dict = getDictionary(locale);
@@ -142,7 +144,8 @@ export function Footer({ locale }: FooterProps) {
               unoptimized
             />
           </div>
-                    <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/70">{dict.footer.tagline}</p>
+          <p className="mt-4 max-w-sm text-sm font-semibold leading-snug text-[#9CC0F5]">{dict.brand.slogan}</p>
+          <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/70">{dict.footer.tagline}</p>
         </div>
 
         {columns.map((col) => (

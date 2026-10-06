@@ -24,7 +24,7 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   },
   {
     slug: "sphere-led-showroom",
-    labelTr: "Küre LED",
+    labelTr: "Küresel LED",
     labelEn: "Sphere LED",
   },
   {
@@ -64,8 +64,8 @@ export function Hero({ locale }: HeroProps) {
       }
       subcopy={
         tr
-          ? "Keşif, tasarım, tedarik, montaj ve satış sonrası teknik desteği Gaziosmanpaşa merkezinden yürütüyoruz. Hizmet Türkiye genelinde planlanır. Net fiyat, keşif sonrası yazılı teklifle belirlenir."
-          : "Survey, design, supply, installation and after-sales support run from our Gaziosmanpaşa centre. Service is planned across Turkey. The final price is set in a written quote after the survey."
+          ? "Keşiften montaja ve kurulum sonrası teknik servise kadar süreci aynı ekip yürütür. Merkezimiz İstanbul Gaziosmanpaşa’dır; satış, montaj ve servis Türkiye genelindedir. Şehir sayfalarında yalnızca kayıtlı projeler yer alır."
+          : "Survey, supply, installation and after-sales service are run by the same team. Headquarters is in Gaziosmanpaşa, Istanbul; sales, installation and service cover Turkey. City pages list only recorded projects."
       }
       quoteHref={`/${locale}/quote/`}
       quoteLabel={tr ? "Teklif Al" : "Get a quote"}

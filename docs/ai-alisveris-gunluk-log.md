@@ -1,3 +1,19 @@
+## Kontrol — merge conflict + canlı kanıt — 2026-10-06
+
+### Ölçülen (uydurma yok)
+- `smoke:live` **20/20 PASS** (entity, ai-shopping, llms, sitemap GEO iğneleri)
+- Canlı `llms.txt` içinde `ai-shopping.json` ×8; `sitemap.xml` GEO loc’lar var
+- `origin/main` hâlâ `public/ai-shopping.json` **yok** · main `llms.txt` ai-shopping count=0
+- PR #55 `mergeable=CONFLICTING` idi → main merge + 13 dosya conflict çözüldü
+- `public/robots.txt` (main) `Disallow: /*.json$` getiriyordu → **silindi** (Function `functions/robots.txt.js` sahipliği)
+- IndexNow cooldown aktif → 2026-10-07T22:39Z
+- Tur 1a skor: **BLOCKED** (kota/Turnstile) — skor uydurulmadı
+- Niche invent: **yok** (tekrar freni)
+
+### Karar
+- Kalıcı çözüm hâlâ PR #55 → main merge (artık conflict’siz olmalı)
+- Guard workflow birleşik: push+dispatch + GEO pre/post smoke
+
 ## Deploy race guard — 2026-10-06
 
 - Kök neden: `.github/workflows/deploy-cloudflare-pages.yml` her `main` push’ta CF Production yazar

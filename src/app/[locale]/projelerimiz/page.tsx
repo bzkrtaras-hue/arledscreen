@@ -90,8 +90,8 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
             Tamamlanan projeler
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-white/85 sm:mt-3.5 sm:text-[0.95rem]">
-            Dikkat! Ucuz teknoloji bir illüzyondur ve ucuz mal edilen her teknoloji gelecekte büyük
-            büyük maliyetler doğurur.
+            Belediye, mağaza, kafe, otel ve dış mekân kurulumları. Ölçü, piksel aralığı ve konum
+            proje kaydındaki gibidir.
           </p>
         </div>
       </section>

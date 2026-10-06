@@ -112,7 +112,7 @@ export function getCaseStudies(): CaseStudy[] {
         refId: ref.id,
         title: displayCompany(ref),
         sector,
-        location: ref.location,
+        location: ref.id === "ref-26" ? "İstanbul · Ordu Günleri" : ref.location,
         date: ref.date,
         scope: ref.detail,
         pitch: pitchOf(ref.detail),

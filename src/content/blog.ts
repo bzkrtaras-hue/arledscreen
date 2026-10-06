@@ -38,8 +38,8 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-04-05",
     category: "Proje",
     excerpt: "Duvara monte edilen 256 × 128 cm LED ekran, klasik televizyon ölçülerinin ötesinde, çerçevesiz ve kesintisiz bir görüntü yüzeyi sunuyor.",
-    hero: { src: "/blog/ic-mekan-256x128-led-ekran.jpg", alt: "Salon duvarına monte edilmiş 256 × 128 cm iç mekân LED ekran" },
-    gallery: [{ src: "/blog/ic-mekan-256x128-led-ekran-2.jpg", alt: "256 × 128 cm LED ekranda yayın görüntüsü" }],
+    hero: { src: "/opt/blog/ic-mekan-256x128-led-ekran.jpg", alt: "Salon duvarına monte edilmiş 256 × 128 cm iç mekân LED ekran" },
+    gallery: [{ src: "/opt/blog/ic-mekan-256x128-led-ekran-2.jpg", alt: "256 × 128 cm LED ekranda yayın görüntüsü" }],
     sections: [
       {
         p: [
@@ -76,7 +76,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2025-12-21",
     category: "Proje",
     excerpt: "Alanya'daki White City Resort Hotel'de, mermer duvar yüzeyine entegre edilen geniş formatlı iç mekân LED ekranın kurulumunu tamamladık.",
-    hero: { src: "/blog/alanya-otel-led-ekran.jpg", alt: "Alanya White City Resort Hotel'de mermer duvara entegre edilmiş geniş LED ekran" },
+    hero: { src: "/opt/blog/alanya-otel-led-ekran.jpg", alt: "Alanya White City Resort Hotel'de mermer duvara entegre edilmiş geniş LED ekran" },
     sections: [
       {
         p: [
@@ -123,7 +123,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2025-11-23",
     category: "Proje",
     excerpt: "Atatürk Havalimanı Millet Bahçesi'nde düzenlenen Ordu Günleri'nde, Ünye Belediyesi standında 384 × 160 cm P3 premium LED ekran kullanıldı.",
-    hero: { src: "/blog/unye-belediyesi-led-ekran.jpg", alt: "Ordu Günleri'nde Ünye Belediyesi standındaki 384 × 160 cm LED ekran" },
+    hero: { src: "/opt/blog/unye-belediyesi-led-ekran.jpg", alt: "Ordu Günleri'nde Ünye Belediyesi standındaki 384 × 160 cm LED ekran" },
     sections: [
       {
         p: [
@@ -160,7 +160,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2025-08-17",
     category: "Uygulama",
     excerpt: "Geniş bir LED ekran; maç yayınlarından menü ve kampanya duyurularına kadar kafe ve restoranlarda müşteri deneyimini doğrudan etkiliyor.",
-    hero: { src: "/blog/kafe-restoran-led-ekran.jpg", alt: "Bir restoranın oturma alanında maç yayını gösteren geniş LED ekran" },
+    hero: { src: "/opt/blog/kafe-restoran-led-ekran.jpg", alt: "Bir restoranın oturma alanında maç yayını gösteren geniş LED ekran" },
     sections: [
       {
         p: [
@@ -206,10 +206,10 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2025-08-14",
     category: "Proje",
     excerpt: "Sinan Polat Sigorta'nın Eskişehir Şubesi için gerçekleştirdiğimiz NXTIONSTAR LED ekran uygulaması tamamlanarak teslim edildi.",
-    hero: { src: "/blog/eskisehir-sigorta-led-ekran.jpg", alt: "Eskişehir'deki sigorta şubesinde LED ekran modüllerinin montajı" },
+    hero: { src: "/opt/blog/eskisehir-sigorta-led-ekran.jpg", alt: "Eskişehir'deki sigorta şubesinde LED ekran modüllerinin montajı" },
     gallery: [
-      { src: "/blog/eskisehir-sigorta-led-ekran-2.jpg", alt: "Şube duvarında LED ekran kabinlerinin kablolanması" },
-      { src: "/blog/eskisehir-sigorta-led-ekran-3.jpg", alt: "LED ekran montajı sırasında modüllerin test edilmesi" },
+      { src: "/opt/blog/eskisehir-sigorta-led-ekran-2.jpg", alt: "Şube duvarında LED ekran kabinlerinin kablolanması" },
+      { src: "/opt/blog/eskisehir-sigorta-led-ekran-3.jpg", alt: "LED ekran montajı sırasında modüllerin test edilmesi" },
     ],
     sections: [
       {
@@ -254,10 +254,10 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2025-08-03",
     category: "Ürün",
     excerpt: "Statik afişlerin yerini alan iç mekân LED ekranlar; mağaza içi kampanyalardan showroom ve fuar alanlarına kadar markanızı dijital olarak öne çıkarıyor.",
-    hero: { src: "/blog/ic-mekan-led-ekran-kalibrasyon.jpg", alt: "Kurulumu tamamlanan iç mekân LED ekranda kabin yerleşiminin yazılımla ayarlanması" },
+    hero: { src: "/opt/blog/ic-mekan-led-ekran-kalibrasyon.jpg", alt: "Kurulumu tamamlanan iç mekân LED ekranda kabin yerleşiminin yazılımla ayarlanması" },
     gallery: [
-      { src: "/blog/ic-mekan-led-ekran-montaj.jpg", alt: "İç mekân LED ekranın arka yüzünde kabin ve kablo bağlantıları" },
-      { src: "/blog/ic-mekan-led-ekran-kabin.jpg", alt: "Duvara yerleştirilen iç mekân LED ekran kabinleri" },
+      { src: "/opt/blog/ic-mekan-led-ekran-montaj.jpg", alt: "İç mekân LED ekranın arka yüzünde kabin ve kablo bağlantıları" },
+      { src: "/opt/blog/ic-mekan-led-ekran-kabin.jpg", alt: "Duvara yerleştirilen iç mekân LED ekran kabinleri" },
     ],
     sections: [
       {
@@ -301,7 +301,7 @@ export const getBlogPost = (slug: string) => BLOG_POSTS.find((p) => p.slug === s
 export const blogPath = (slug: string) => `/tr/blog/${slug}/`;
 /**
  * Public URL of an original blog photo (used for og:image / JSON-LD).
- * Originals live in public/opt/blog/ because the legacy "/blog/*" 301 rule in
+ * Originals live in public/opt/blog/ because the legacy "/opt/blog/*" 301 rule in
  * _redirects would otherwise redirect /blog/<file>.jpg to /tr/rehber/.
  */
 export const blogImageUrl = (src: string) => src.replace(/^\/blog\//, "/opt/blog/");

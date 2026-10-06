@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      ref_note:
+        description: Dispatch target is the selected branch
+        required: false
+        default: catalog
 
 concurrency:
   group: cloudflare-pages-production
@@ -40,7 +45,7 @@ jobs:
           test -f out/_redirects
           test -d out/tr
 
-      # Pre-deploy GEO gate: refuse main builds that would wipe AI alışveriş surfaces
+      # Pre-deploy GEO gate: refuse builds that would wipe AI alışveriş surfaces
       # (2026-10-06: main without PR #55 overwrote production llms.txt / sitemap).
       - name: Guard — GEO artefacts present in out/ before deploy
         run: |
@@ -69,7 +74,7 @@ jobs:
           accountId: "4a0f179229f3c6a21d076df944b850e8"
           command: pages deploy out --project-name=arledscreen --branch=main --commit-dirty=true
 
-      - name: Smoke — Product Offer JSON-LD on three model pages
+      - name: Smoke — Product Offer JSON-LD + AI artefacts + GEO llms/sitemap
         run: |
           set -euo pipefail
           sleep 8
@@ -83,8 +88,14 @@ jobs:
             echo "$body" | grep -q 'hasMerchantReturnPolicy' || { echo "MISSING return policy on $url" >&2; exit 1; }
             echo "OK Offer on $url"
           done
-          curl -fsSI -A 'Mozilla/5.0' https://arledscreen.com/ | grep -qi 'location: /tr/'
-          echo "OK apex / → /tr/"
+          loc=$(curl -fsSI -A 'Mozilla/5.0' https://arledscreen.com/ | awk 'tolower($1)=="location:" {print $2}' | tr -d '\r')
+          case "$loc" in
+            /tr/|/tr|https://arledscreen.com/tr/|https://arledscreen.com/tr)
+              echo "OK apex / → $loc" ;;
+            *)
+              echo "Unexpected Location: ${loc:-<empty>}" >&2
+              exit 1 ;;
+          esac
 
           # AI alışveriş static artefacts must be real JSON 200 (not soft-404 HTML)
           for path in /entity.json /catalog.json /ai-shopping.json /.well-known/ard.json; do
