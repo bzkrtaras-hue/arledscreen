@@ -2708,6 +2708,20 @@ if (
   errors.push("blind prompt #205 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ridge vent yok");
 }
 
+const pBlind206 = PROMPTS.find((x) => x.id === 206);
+if (!pBlind206 || !/AVer|PTZ/i.test(pBlind206.q)) {
+  errors.push("blind prompt #206 must cover sabit AVer invent");
+}
+if (
+  pBlind206 &&
+  (!pBlind206.mustSay?.includes("yazılı teklif") ||
+    !pBlind206.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind206.mustSay?.includes("sabit AVer yok"))
+) {
+  errors.push("blind prompt #206 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit AVer yok");
+}
+
+
 
 
 

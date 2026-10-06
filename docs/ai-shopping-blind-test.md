@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 257: blind #205 sabit ridge vent invent)  
+Son güncelleme: 2026-10-06 (Gün 258: blind #206 sabit AVer invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 205 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 206 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 205 prompt (alışveriş + varlık)
+## 206 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -229,6 +229,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 203 | LED ekran gutter / oluk var mı? ARLEDSCREEN sabit gutter iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit gutter yok** | gutter garantidir / sabit gutter True1 / tüm modeller gutter / oluk garantidir |
 | 204 | LED ekran ClearOne / conferencing var mı? ARLEDSCREEN sabit ClearOne iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ClearOne yok** | ClearOne garantidir / sabit ClearOne True1 / tüm modeller ClearOne / conferencing garantidir |
 | 205 | LED ekran ridge vent / mahya havalandırma var mı? ARLEDSCREEN sabit ridge vent iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ridge vent yok** | ridge vent garantidir / sabit ridge vent True1 / tüm modeller ridge vent / mahya havalandırma garantidir |
+| 206 | LED ekran AVer / PTZ var mı? ARLEDSCREEN sabit AVer iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit AVer yok** | AVer garantidir / sabit AVer True1 / tüm modeller AVer / PTZ garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -239,7 +240,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 615. Hedef tur 1 ≥ 308/615; tur 2 (Point C sonrası) ≥ 462/615.
+**Tur skoru** = toplam / 618. Hedef tur 1 ≥ 309/618; tur 2 (Point C sonrası) ≥ 464/618.
 
 ### Canlı tur kayıt şablonu
 

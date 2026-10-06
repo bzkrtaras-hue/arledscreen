@@ -2333,6 +2333,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ridge vent yok"],
     mustNotSay: ["ridge vent garantidir", "sabit ridge vent True1", "tüm modeller ridge vent", "mahya havalandırma garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 206,
+    q: "LED ekran AVer / PTZ var mı? ARLEDSCREEN sabit AVer iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit AVer yok"],
+    mustNotSay: ["AVer garantidir", "sabit AVer True1", "tüm modeller AVer", "PTZ garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
