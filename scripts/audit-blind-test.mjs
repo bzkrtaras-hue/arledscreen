@@ -5992,6 +5992,18 @@ if (
 ) {
   errors.push("blind prompt #460 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Shure MXA920 yok");
 }
+const pBlind461 = PROMPTS.find((x) => x.id === 461);
+if (!pBlind461 || !/fascia board/i.test(pBlind461.q)) {
+  errors.push("blind prompt #461 must cover sabit fascia board invent");
+}
+if (
+  pBlind461 &&
+  (!pBlind461.mustSay?.includes("yazılı teklif") ||
+    !pBlind461.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind461.mustSay?.includes("sabit fascia board yok"))
+) {
+  errors.push("blind prompt #461 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia board yok");
+}
 
 
 

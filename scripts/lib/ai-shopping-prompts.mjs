@@ -5393,6 +5393,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Shure MXA920 yok"],
     mustNotSay: ["Shure MXA920 garantidir", "sabit Shure MXA920 True1", "tüm modeller Shure MXA920", "MXA920 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 461,
+    q: "LED ekran fascia board / saçak paneli var mı? ARLEDSCREEN sabit fascia board iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fascia board yok"],
+    mustNotSay: ["fascia board garantidir", "sabit fascia board True1", "tüm modeller fascia board", "saçak paneli garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

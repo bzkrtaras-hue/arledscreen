@@ -1,3 +1,8 @@
+## Gün 513 — invent Blind #461 fascia board
+
+- Blind #461 fascia board / saçak paneli · dis/mimari · prompts=461 · /1383 · build pending
+- sahibe iş yok
+
 ## Gün 512 — invent Blind #460 Shure MXA920 LIVE
 
 - Blind #460 Shure MXA920 / MXA920 · ic/konferans · prompts=460 · /1380 · CF deploy · smoke:live 20/20
