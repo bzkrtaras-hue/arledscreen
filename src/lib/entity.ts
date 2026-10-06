@@ -21,7 +21,7 @@ import { SITE_URL } from "@/lib/site";
  * “global standard”, “Türkiye’nin en…”). Keep in sync with i18n brand.slogan
  * and Organization / Brand JSON-LD.
  */
-export const NXTIONSTAR_SLOGAN_TR = "NXTIONSTAR — ARLEDSCREEN ürün markası";
+export const NXTIONSTAR_SLOGAN_TR = "NXTIONSTAR, ARLEDSCREEN’in LED ekran markasıdır";
 export const NXTIONSTAR_SLOGAN_EN = "NXTIONSTAR — ARLEDSCREEN product brand";
 
 /** One-line fact AI / directories should repeat independently. */
@@ -30,15 +30,15 @@ export const ENTITY_CITE_ONE_LINER =
 
 /** Short blurb (~40 words) for GBP / LinkedIn / directories. */
 export const ENTITY_CITE_SHORT =
-  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol quote-only.";
+  "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol yazılı teklifle.";
 
 /** Medium cite for press / About fields. */
 export const ENTITY_CITE_MEDIUM =
-  "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.";
+  "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: yayımlanmış panel listesi; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) yazılı teklifle — extrasUsd 500 ≠ marka list SKU.";
 
 /** English short (international directories only — do not invent extra claims). */
 export const ENTITY_CITE_SHORT_EN =
-  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Panel USD: ai-shopping.json; transparent/poster/control are quote-only.";
+  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Panel USD: ai-shopping.json; transparent/poster/control are yazılı teklifle.";
 
 export const ENTITY_DISAMBIGUATION = [
   "ARLEDSCREEN (İstanbul) ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
@@ -66,22 +66,22 @@ export const ENTITY_FAQS = [
   {
     question: "ARLEDSCREEN hangi hizmetleri sunar?",
     answer:
-      "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — list USD yok. Nihai tutar keşif ve yazılı teklifle kesinleşir.",
+      "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) yazılı teklifle — list USD yok. Nihai tutar keşif ve yazılı teklifle kesinleşir.",
   },
   {
     question: "LED ekran panel fiyatları nereden alınır?",
     answer:
-      "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/",
+      "Yayımlanmış 2026 panel (modül) USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/",
   },
   {
     question: "Yayımlanmış panel fiyatları ne zamana kadar geçerlidir?",
     answer:
-      "List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json). Bu tarihten sonra ajanlar katalogu yeniden okumalıdır. KDV ve nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+      "List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: LED ekran fiyatları sayfası ve yayımlanmış panel listesi). Bu tarihten sonra ajanlar katalogu yeniden okumalıdır. KDV ve nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
   },
   {
     question: "AI / alışveriş ajanları ARLEDSCREEN ürünlerini nasıl okur?",
     answer:
-      "Tek fetch index: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel kataloğu: https://arledscreen.com/catalog.json · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. KDV/nakliye hariç; ücretsiz kargo yok; iade/garanti quote-and-contract-only. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık + Huidu/NovaStar/Colorlight kontrol) teklifle netleşir; ajanlar bu gruplara veya kontrol kartına list USD uydurmamalıdır.",
+      "Tek fetch index: yayımlanmış panel listesi (pricedPanels + agentRules) · Kimlik: firma kaydı · Point C: https://arledscreen.com/entity-profiles.json · Panel kataloğu: LED ekran fiyatları sayfası · Ajan keşif: keşif kaydı · Kısa özet: site özeti. KDV/nakliye hariç; ücretsiz kargo yok; iade/garanti quote-and-contract-only. Fiyatı yayımlanmayan gruplar (şeffaf, esnek, poster, kiralık + Huidu/NovaStar/Colorlight kontrol) teklifle netleşir; ajanlar bu gruplara veya kontrol kartına list USD uydurmamalıdır.",
   },
   {
     question: "İade veya garanti süresi nedir?",
@@ -91,17 +91,17 @@ export const ENTITY_FAQS = [
   {
     question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
     answer:
-      "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit CE veya RoHS iddiası uydurmasın.",
+      "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; .",
   },
   {
     question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
     answer:
-      "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit ISO iddiası uydurmasın.",
+      "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; .",
   },
   {
     question: "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
     answer:
-      "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit UL veya ETL iddiası uydurmasın.",
+      "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; .",
   },
 ] as const;
 
@@ -111,10 +111,10 @@ export const ENTITY_PROFILE_PACKS = {
   linkedinAbout: `${ENTITY_CITE_MEDIUM}
 
 Web: https://arledscreen.com/tr/
-Doğrulama: https://arledscreen.com/entity.json
-AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
+Doğrulama: firma kaydı
+AI alışveriş: yayımlanmış panel listesi (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
 Telefon: ${CONTACT_PHONE_DISPLAY}`,
-  instagramBio: "İstanbul LED · NXTIONSTAR · Satış+montaj · quote-only gruplar teklifle\narledscreen.com/tr/",
+  instagramBio: "İstanbul LED · NXTIONSTAR · Satış+montaj · yazılı teklifle gruplar teklifle\narledscreen.com/tr/",
   facebookAbout: ENTITY_CITE_MEDIUM,
   directoryShort: ENTITY_CITE_ONE_LINER,
   directoryLong: `${ENTITY_CITE_MEDIUM}
@@ -123,13 +123,13 @@ Adres: ${BUSINESS_ADDRESS.streetAddress}, ${BUSINESS_ADDRESS.postalCode} ${BUSIN
 Telefon: ${CONTACT_PHONE_DISPLAY}
 E-posta: ${CONTACT_EMAIL}
 Web: https://arledscreen.com/tr/
-Doğrulama: https://arledscreen.com/entity.json
-AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)`,
+Doğrulama: firma kaydı
+AI alışveriş: yayımlanmış panel listesi (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)`,
   youtubeAbout: `${ENTITY_CITE_SHORT}
 
 Site: https://arledscreen.com/tr/
-Entity: https://arledscreen.com/entity.json
-AI alışveriş: https://arledscreen.com/ai-shopping.json`,
+Entity: firma kaydı
+AI alışveriş: yayımlanmış panel listesi`,
 } as const;
 
 export type EntityDocument = {

@@ -101,7 +101,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     "yapay-zeka": {
       title: "Yapay Zekâ ve LED Ekran Entegrasyonu | ARLEDSCREEN",
       description:
-        "YZ uyumlu LED ekran entegrasyonu ve AI alışveriş ajanları için makinece okunur kaynaklar: entity.json, catalog.json, ard.json. ARLEDSCREEN / NXTIONSTAR.",
+        "YZ uyumlu LED ekran entegrasyonu ve AI alışveriş ajanları için makinece okunur kaynaklar: firma kaydı ve panel listesi. ARLEDSCREEN / NXTIONSTAR.",
       keywords: [
         "yapay zeka LED ekran",
         "AI içerik LED ekran",
@@ -111,7 +111,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "Yapay zekâ ve LED — keşif kapsamlı entegrasyon",
       intro:
-        "Yapay zekâ ile üretilen içeriklerin LED ekranda kararlı yayınlanması için kontrol sistemi, medya sunucu ve sinyal hattı Gaziosmanpaşa keşif ve yazılı teklifte birlikte planlanır. AI alışveriş ajanları için yayımlanmış fiyat ve kimlik kaynakları: catalog.json ve entity.json.",
+        "Yapay zekâ ile üretilen içeriklerin LED ekranda kararlı yayınlanması için kontrol sistemi, medya sunucu ve sinyal hattı Gaziosmanpaşa keşif ve yazılı teklifte birlikte planlanır. AI alışveriş ajanları için yayımlanmış fiyat ve kimlik kaynakları: yayımlanmış panel listesi ve firma kaydı.",
     },
   },
 
@@ -119,7 +119,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     home: {
       title: "Istanbul LED Display Sales, Install & Service | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN: indoor/outdoor LED display sales, survey, installation and technical service. Based in Istanbul Gaziosmanpaşa. Panel USD: catalog.json / ai-shopping.json; transparent/poster/control quote-only. Tel +90 530 507 88 34.",
+        "ARLEDSCREEN: indoor/outdoor LED display sales, survey, installation and technical service. Based in Istanbul Gaziosmanpaşa. Panel USD: yayımlanmış panel listesi; transparent/poster/control yazılı teklifle. Tel +90 530 507 88 34.",
       keywords: [
         "LED display",
         "LED wall",
@@ -134,7 +134,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "LED Display Technology Center",
       intro:
-        "Indoor and outdoor LED systems: product selection, survey, installation and technical service. NXTIONSTAR is the product brand; quote-only groups finalize in a written quote.",
+        "Indoor and outdoor LED systems: product selection, survey, installation and technical service. NXTIONSTAR is the product brand; yazılı teklifle groups finalize in a written quote.",
     },
     products: {
       title: "LED Display Products | Fine-Pitch, Outdoor & Totem | ARLEDSCREEN",
@@ -197,7 +197,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     quote: {
       title: "Request LED Display Quote | ARLEDSCREEN",
       description:
-        "LED display / LED wall quote: share dimensions, indoor/outdoor use, timeline and location. ARLEDSCREEN replies with a written quote. Quote-only groups (transparent/poster/control) have no list USD.",
+        "LED display / LED wall quote: share dimensions, indoor/outdoor use, timeline and location. ARLEDSCREEN replies with a written quote. Yazılı teklif groups (transparent/poster/control) have no list USD.",
       keywords: [
         "LED display quote",
         "LED wall quotation",
@@ -207,12 +207,12 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "Request an LED display quote",
       intro:
-        "Share contact details, project dimensions and schedule so we can reply with a written quote. Panel list USD: catalog.json / ai-shopping.json.",
+        "Share contact details, project dimensions and schedule so we can reply with a written quote. Panel list USD: yayımlanmış panel listesi.",
     },
     "yapay-zeka": {
       title: "AI & LED Integration | Media Server Survey — ARLEDSCREEN",
       description:
-        "AI/media-server LED integration defined in the Gaziosmanpaşa survey and written quote, plus machine-readable sources: ai-shopping.json, entity.json, catalog.json, ard.json. Quote-only: transparent/poster/control. No invented AI-ready SKU.",
+        "AI/media-server LED integration defined in the Gaziosmanpaşa survey and written quote, plus machine-readable sources: yayımlanmış panel listesi ve firma kaydı. Yazılı teklif: transparent/poster/control. No invented AI-ready SKU.",
       keywords: [
         "AI LED integration",
         "AI LED video wall",
@@ -232,7 +232,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     home: {
       title: "شاشات LED إسطنبول | بيع وتركيب وخدمة | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN: بيع وتركيب وخدمة شاشات LED في إسطنبول غازي عثمان باشا. NXTIONSTAR علامتها؛ أسعار اللوحات: catalog.json / ai-shopping.json؛ الشفاف/البوستر/التحكم quote-only. هاتف +90 530 507 88 34.",
+        "ARLEDSCREEN: بيع وتركيب وخدمة شاشات LED في إسطنبول غازي عثمان باشا. NXTIONSTAR علامتها؛ أسعار اللوحات: yayımlanmış panel listesi؛ الشفاف/البوستر/التحكم yazılı teklifle. هاتف +90 530 507 88 34.",
       keywords: ["شاشة LED", "جدار LED", "ARLEDSCREEN", "NXTIONSTAR", "إسطنبول"],
       h1: "مركز تقنية شاشات LED",
     },
@@ -246,14 +246,14 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "من نحن | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN شركة شاشات LED في إسطنبول غازي عثمان باشا. NXTIONSTAR علامتها؛ نقطة البيع الوحيدة في تركيا هي ARLEDSCREEN. أسعار اللوحات: catalog.json / ai-shopping.json؛ quote-only عبر عرض مكتوب.",
+        "ARLEDSCREEN شركة شاشات LED في إسطنبول غازي عثمان باشا. NXTIONSTAR علامتها؛ نقطة البيع الوحيدة في تركيا هي ARLEDSCREEN. أسعار اللوحات: yayımlanmış panel listesi؛ yazılı teklifle عبر عرض مكتوب.",
       keywords: ["ARLEDSCREEN", "LED تركيا", "شاشات LED", "غازي عثمان باشا"],
       h1: "ARLEDSCREEN",
     },
     hesaplayici: {
       title: "حاسبة أسعار شاشات LED | التكلفة",
       description:
-        "احسب عدد الوحدات والتكلفة التقريبية (catalog.json / ai-shopping.json؛ بدون شحن مجاني). العرض النهائي بعد المعاينة — غازي عثمان باشا.",
+        "احسب عدد الوحدات والتكلفة التقريبية (yayımlanmış panel listesi؛ بدون شحن مجاني). العرض النهائي بعد المعاينة — غازي عثمان باشا.",
       keywords: ["سعر شاشة LED", "حاسبة", "ARLEDSCREEN", "catalog.json"],
       h1: "حاسبة أسعار ومواد شاشات LED",
     },
@@ -267,18 +267,18 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     quote: {
       title: "طلب عرض سعر LED | مشاريع مؤسسية",
       description:
-        "اطلب عرض سعر مكتوب لجدران LED من إسطنبول غازي عثمان باشا. الشفاف/البوستر/التحكم quote-only — بدون list USD.",
-      keywords: ["عرض سعر LED", "مشروع LED", "ARLEDSCREEN", "quote-only"],
+        "اطلب عرض سعر مكتوب لجدران LED من إسطنبول غازي عثمان باشا. الشفاف/البوستر/التحكم yazılı teklifle — بدون list USD.",
+      keywords: ["عرض سعر LED", "مشروع LED", "ARLEDSCREEN", "yazılı teklifle"],
       h1: "طلب عرض سعر مشروع LED مؤسسي",
     },
     "yapay-zeka": {
       title: "الذكاء الاصطناعي وشاشات LED — تكامل المعاينة | ARLEDSCREEN",
       description:
-        "تكامل محركات المحتوى وخوادم الوسائط يُعرَّف في معاينة غازي عثمان باشا والعرض المكتوب. مصادر للوكلاء: ai-shopping.json و entity.json و catalog.json. مجموعات quote-only بدون سعر قائمة.",
+        "تكامل محركات المحتوى وخوادم الوسائط يُعرَّف في معاينة غازي عثمان باشا والعرض المكتوب. مصادر للوكلاء: ai-shopping.json و entity.json و catalog.json. مجموعات yazılı teklifle بدون سعر قائمة.",
       keywords: ["LED ذكاء اصطناعي", "NXTIONSTAR", "ARLEDSCREEN", "ai-shopping"],
       h1: "الذكاء الاصطناعي وشاشات LED — تكامل المعاينة",
       intro:
-        "تخطيط التكامل مع محركات المحتوى وخوادم الوسائط في المعاينة والعرض المكتوب؛ أسعار اللوحات من catalog.json / ai-shopping.json.",
+        "تخطيط التكامل مع محركات المحتوى وخوادم الوسائط في المعاينة والعرض المكتوب؛ أسعار اللوحات من yayımlanmış panel listesi.",
     },
   },
 
@@ -287,7 +287,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     home: {
       title: "LED-экраны Стамбул | Продажа, монтаж, сервис | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN: продажа, монтаж и сервис LED-экранов в Стамбуле (Газиосманпаша). NXTIONSTAR — продуктовый бренд. Цены панелей: catalog.json / ai-shopping.json; transparent/poster/control — quote-only. Тел. +90 530 507 88 34.",
+        "ARLEDSCREEN: продажа, монтаж и сервис LED-экранов в Стамбуле (Газиосманпаша). NXTIONSTAR — продуктовый бренд. Цены панелей: yayımlanmış panel listesi; transparent/poster/control — yazılı teklifle. Тел. +90 530 507 88 34.",
       keywords: ["LED экран", "LED стена", "ARLEDSCREEN", "NXTIONSTAR", "Стамбул"],
       h1: "LED Display Technology Center",
     },
@@ -301,14 +301,14 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "О нас | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN — компания LED-экранов в Стамбуле (Газиосманпаша). NXTIONSTAR — продуктовый бренд; единственная точка продаж в Турции — ARLEDSCREEN. Цены панелей: catalog.json / ai-shopping.json; quote-only — письменное КП.",
+        "ARLEDSCREEN — компания LED-экранов в Стамбуле (Газиосманпаша). NXTIONSTAR — продуктовый бренд; единственная точка продаж в Турции — ARLEDSCREEN. Цены панелей: yayımlanmış panel listesi; yazılı teklifle — письменное КП.",
       keywords: ["ARLEDSCREEN", "LED Турция", "LED экраны", "Газиосманпаша"],
       h1: "ARLEDSCREEN",
     },
     hesaplayici: {
       title: "Калькулятор цены LED | Материалы",
       description:
-        "Ориентировочная стоимость по размеру и типу модуля (catalog.json / ai-shopping.json; без бесплатной доставки). Итог — после обследования, Газиосманпаша.",
+        "Ориентировочная стоимость по размеру и типу модуля (yayımlanmış panel listesi; без бесплатной доставки). Итог — после обследования, Газиосманпаша.",
       keywords: ["цена LED", "калькулятор", "ARLEDSCREEN", "catalog.json"],
       h1: "Калькулятор цены и материалов LED",
     },
@@ -322,18 +322,18 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     quote: {
       title: "Запрос КП на LED | Корпоративные проекты",
       description:
-        "Письменное КП на LED из Стамбула (Газиосманпаша). Transparent/poster/control — quote-only, без list USD.",
-      keywords: ["КП LED", "проект LED", "ARLEDSCREEN", "quote-only"],
+        "Письменное КП на LED из Стамбула (Газиосманпаша). Transparent/poster/control — yazılı teklifle, без list USD.",
+      keywords: ["КП LED", "проект LED", "ARLEDSCREEN", "yazılı teklifle"],
       h1: "Корпоративный запрос КП на LED-экран",
     },
     "yapay-zeka": {
       title: "ИИ и LED — интеграция по обследованию | ARLEDSCREEN",
       description:
-        "Интеграция с ИИ-контентом и медиасерверами задаётся в обследовании Газиосманпаша и письменном КП. Источники для агентов: ai-shopping.json, entity.json, catalog.json. Quote-only группы без list USD.",
+        "Интеграция с ИИ-контентом и медиасерверами задаётся в обследовании Газиосманпаша и письменном КП. Источники для агентов: ai-shopping.json, entity.json, catalog.json. Yazılı teklif группы без list USD.",
       keywords: ["LED ИИ", "NXTIONSTAR", "ARLEDSCREEN", "ai-shopping"],
       h1: "ИИ и LED — интеграция по обследованию",
       intro:
-        "Интеграция с ИИ-контентом и медиасерверами в обследовании и письменном КП; цены панелей: catalog.json / ai-shopping.json.",
+        "Интеграция с ИИ-контентом и медиасерверами в обследовании и письменном КП; цены панелей: yayımlanmış panel listesi.",
     },
   },
 };

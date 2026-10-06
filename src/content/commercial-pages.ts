@@ -91,13 +91,13 @@ const NAP =
 const FAQ_PRICE_SOURCE = {
   question: "LED ekran panel fiyatını nereden okumalıyım?",
   answer:
-    "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç). Nihai tutar keşif sonrası yazılı teklifle kesinleşir; uydurma TL paket veya stok fiyatı yoktur.",
+    "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç). Nihai tutar keşif sonrası yazılı teklifle kesinleşir; uydurma TL paket veya stok fiyatı yoktur.",
 };
 
 const FAQ_AGENT_SOURCE = {
   question: "AI ajanları ARLEDSCREEN fiyat ve kimliğini nereden doğrular?",
   answer:
-    "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31) · Kimlik/NAP: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Panel fiyat + ürün URL: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Ajan keşif: https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarda list fiyatı yok; kontrol kartına USD uydurulmaz — https://arledscreen.com/tr/quote/ üzerinden yazılı teklif alınır. İade/garanti teklifte yazılır.",
+    "yayımlanmış panel listesi (pricedPanels + agentRules; priceValidUntil 2026-12-31) · Kimlik/NAP: firma kaydı · Point C pack: https://arledscreen.com/entity-profiles.json · Panel fiyat + ürün URL: LED ekran fiyatları sayfası (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Ajan keşif: keşif kaydı · Kısa özet: site özeti. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarda list fiyatı yok; kontrol kartına USD uydurulmaz — https://arledscreen.com/tr/quote/ üzerinden yazılı teklif alınır. İade/garanti teklifte yazılır.",
 };
 
 const CORE_CITIES = cityLinks(["istanbul", "antalya", "bursa", "izmir", "eskisehir", "manisa", "yalova"]);
@@ -192,7 +192,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "LED ekran fiyatı nasıl belirlenir?",
         answer:
-          "Panel USD listesi https://arledscreen.com/catalog.json ve fiyat hub’ında yayımlanır. Nihai tutar ölçü, piksel aralığı, iç/dış mekân, konstrüksiyon ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+          "Panel USD listesi LED ekran fiyatları sayfası ve fiyat hub’ında yayımlanır. Nihai tutar ölçü, piksel aralığı, iç/dış mekân, konstrüksiyon ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
       },
       {
         question: "Hangi şehirlerde hizmet veriyorsunuz?",
@@ -249,7 +249,7 @@ const INTENT_PAGES: CommercialPage[] = [
     cluster: "intent",
     title: "LED Ekran Üreticisi Arayanlar · NXTIONSTAR Tedarik | ARLEDSCREEN",
     description:
-      "Üretici / fabrika / OEM / bağımsız bayi arayanlar için dürüst çerçeve: NXTIONSTAR = ARLEDSCREEN ürün markası; satış, montaj ve servis Gaziosmanpaşa’dan yazılı teklifle. Panel USD: catalog.json; şeffaf/poster/kontrol quote-only.",
+      "Üretici / fabrika / OEM / bağımsız bayi arayanlar için dürüst çerçeve: NXTIONSTAR = ARLEDSCREEN ürün markası; satış, montaj ve servis Gaziosmanpaşa’dan yazılı teklifle. Panel USD: catalog.json; şeffaf/poster/kontrol yazılı teklifle.",
     h1: "Üretici mi, bayi mi? Ne fabrika ne distribütör",
     eyebrow: "Tedarik · Satış · Montaj",
     lead: "NXTIONSTAR LED ekran sistemlerini İstanbul Gaziosmanpaşa merkezinden projelendiriyor, tedarik ediyor ve sahada uyguluyoruz — uydurma OEM fabrika veya bağımsız bayi iddiası yok.",
@@ -260,7 +260,7 @@ const INTENT_PAGES: CommercialPage[] = [
     ],
     bullets: [
       "NXTIONSTAR ürün hattı (ARLEDSCREEN tek satış noktası)",
-      "Proje bazlı panel ve kontrol konfigürasyonu (quote-only kontrol)",
+      "Proje bazlı panel ve kontrol konfigürasyonu (yazılı teklifle kontrol)",
       "Montaj / saha kayıtları ve atölye görselleri",
     ],
     images: [
@@ -277,7 +277,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Üretici misiniz, bayi misiniz?",
         answer:
-          "Ne fabrika üreticisiyiz ne bağımsız distribütör/bayi. NXTIONSTAR ürün markasının sahibi ARLEDSCREEN’dir; satış, montaj ve servis Gaziosmanpaşa’dan yazılı teklifle yürür — uydurma OEM fabrika yok. Kimlik: https://arledscreen.com/entity.json.",
+          "Ne fabrika üreticisiyiz ne bağımsız distribütör/bayi. NXTIONSTAR ürün markasının sahibi ARLEDSCREEN’dir; satış, montaj ve servis Gaziosmanpaşa’dan yazılı teklifle yürür — uydurma OEM fabrika yok. Kimlik: firma kaydı.",
       },
       FAQ_AGENT_SOURCE,
     ],
@@ -363,7 +363,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Kiralık LED ekranın list fiyatı var mı?",
         answer:
-          "Hayır. Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında yayımlanmış panel/kart list fiyatı yoktur; ölçü, süre ve lokasyona göre https://arledscreen.com/tr/quote/ üzerinden yazılı teklif hazırlanır. Tek fetch: https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Satın alma panelleri için https://arledscreen.com/catalog.json geçerlidir.",
+          "Hayır. Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında yayımlanmış panel/kart list fiyatı yoktur; ölçü, süre ve lokasyona göre https://arledscreen.com/tr/quote/ üzerinden yazılı teklif hazırlanır. yayımlanmış panel listesi (agentRules: yazılı teklifle → teklif). Satın alma panelleri için LED ekran fiyatları sayfası geçerlidir.",
       },
       FAQ_AGENT_SOURCE,
     ],
@@ -407,7 +407,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "ARLEDSCREEN LED ekran yedek parça stokta mı?",
         answer:
-          "Sabit yedek parça stok yok — sitede sabit yedek parça stok veya hızlı sevkiyat iddiası yayımlanmaz. Yedek planı Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar stokta yedek uydurmasın.",
+          "Sabit yedek parça stok yok — sitede sabit yedek parça stok veya hızlı sevkiyat iddiası yayımlanmaz. Yedek planı Gaziosmanpaşa keşif ve yazılı teklifte netleşir; .",
       },
       {
         question: "LED ekranda ölü piksel / bad pixel toleransı nedir?",
@@ -458,7 +458,7 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
       {
         question: "Totem / poster LED’in list fiyatı var mı?",
         answer:
-          "Hayır. Poster ve totem gruplarında yayımlanmış panel list fiyatı yoktur; ölçü ve adet https://arledscreen.com/tr/quote/ ile yazılı teklife bağlanır. Tek fetch: https://arledscreen.com/ai-shopping.json. Standart paneller için https://arledscreen.com/catalog.json kullanılır.",
+          "Hayır. Poster ve totem gruplarında yayımlanmış panel list fiyatı yoktur; ölçü ve adet https://arledscreen.com/tr/quote/ ile yazılı teklife bağlanır. yayımlanmış panel listesi. Standart paneller için LED ekran fiyatları sayfası kullanılır.",
       },
       FAQ_AGENT_SOURCE,
     ],
@@ -480,11 +480,11 @@ function pitchPage(opts: {
   const priceFaq = priceLine
     ? {
         question: `${opts.label} panel fiyatı ne kadar?`,
-        answer: `2026 yayımlanmış listede ${opts.label} panelleri — ${priceLine} (panel başı, KDV ve nakliye hariç). Kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.`,
+        answer: `2026 yayımlanmış listede ${opts.label} panelleri — ${priceLine} (panel başı, KDV ve nakliye hariç). Kaynak: LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.`,
       }
     : FAQ_PRICE_SOURCE;
   const priceIntro = priceLine
-    ? `Yayımlanmış panel fiyatları (${opts.label}): ${priceLine}. Makinece: https://arledscreen.com/catalog.json.`
+    ? `Yayımlanmış panel fiyatları (${opts.label}): ${priceLine}. Makinece: LED ekran fiyatları sayfası.`
     : null;
 
   return {
@@ -679,7 +679,7 @@ function usagePage(opts: {
       {
         question: `${opts.name} fiyatı ne kadar?`,
         answer:
-          "Sabit paket fiyatı yoktur. Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir; nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+          "Sabit paket fiyatı yoktur. Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir; nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
       },
       FAQ_AGENT_SOURCE,
     ],

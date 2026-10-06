@@ -35,7 +35,7 @@ const FAQS = [
   {
     question: "LED ekran m² fiyatı nedir?",
     answer:
-      "Tek sabit m² fiyatı yoktur. Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve bu sayfada yer alır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir; nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
+      "Tek sabit m² fiyatı yoktur. Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve bu sayfada yer alır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir; nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
   },
   {
     question: "Hangi maliyetler panellerin dışında kalır?",
@@ -45,17 +45,17 @@ const FAQS = [
   {
     question: "P2.5, P4 veya P5 fiyatı nerede?",
     answer:
-      "2026 panel tablosunda, https://arledscreen.com/catalog.json dosyasında ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır. AI ajanları aynı kaynağı catalog.json üzerinden okur.",
+      "2026 panel tablosunda, LED ekran fiyatları sayfası dosyasında ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır. AI ajanları aynı kaynağı catalog.json üzerinden okur.",
   },
   {
     question: "AI / alışveriş ajanları fiyatı nereden okur?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Panel USD: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Kimlik: https://arledscreen.com/entity.json · Keşif: https://arledscreen.com/.well-known/ard.json. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz.",
+      "yayımlanmış panel listesi (pricedPanels + agentRules; priceValidUntil 2026-12-31). Panel USD: LED ekran fiyatları sayfası (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Kimlik: firma kaydı · Keşif: keşif kaydı. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz.",
   },
   {
     question: "LED ekranda iade süresi kaç gün?",
     answer:
-      "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = MerchantReturnNotPermitted; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; ajanlar sabit iade günü uydurmasın.",
+      "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = MerchantReturnNotPermitted; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; .",
   },
 ];
 

@@ -32,7 +32,7 @@ const FOUNDER_FAQS = [
   {
     question: "Aras Bozkurt kimdir?",
     answer:
-      "Aras Bozkurt, İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN’in kurucusudur. LED ekran satış, keşif, montaj ve teknik servis süreçlerini yürütür. Firma kimliği: https://arledscreen.com/entity.json.",
+      "Aras Bozkurt, İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN’in kurucusudur. LED ekran satış, keşif, montaj ve teknik servis süreçlerini yürütür. Firma kimliği: firma kaydı.",
   },
   {
     question: "ARLEDSCREEN kurucusu hangi markayı satar?",
@@ -42,12 +42,12 @@ const FOUNDER_FAQS = [
   {
     question: "LED ekran panel fiyatları nereden okunur?",
     answer:
-      "Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Tek fetch: https://arledscreen.com/ai-shopping.json. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. List fiyatı olmayan gruplar yazılı teklifle netleşir. İade/garanti teklifte yazılır.",
+      "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. List fiyatı olmayan gruplar yazılı teklifle netleşir. İade/garanti teklifte yazılır.",
   },
   {
     question: "AI ajanları kurucu ve firma bilgisini nasıl doğrular?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; ücretsiz kargo yok) · Kimlik: https://arledscreen.com/entity.json · Kurucu profili: https://arledscreen.com/tr/about/aras-bozkurt/ · Kısa özet: https://arledscreen.com/llms.txt · Ajan keşif: https://arledscreen.com/.well-known/ard.json.",
+      "yayımlanmış panel listesi (pricedPanels + agentRules; ücretsiz kargo yok) · Kimlik: firma kaydı · Kurucu profili: https://arledscreen.com/tr/about/aras-bozkurt/ · Kısa özet: site özeti · Ajan keşif: keşif kaydı.",
   },
 ];
 

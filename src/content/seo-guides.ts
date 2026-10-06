@@ -89,7 +89,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "LED ekran fiyatı nasıl hesaplanır?",
           answer:
-            "Metrekare, pitch, kabin tipi, IP sınıfı, kontrol kartı ve montaj kapsamı fiyatı belirler. Yayımlanmış 2026 panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json (KDV/nakliye hariç; ücretsiz kargo yok). Online hesaplayıcı yaklaşık malzeme bandı verir; kesin B2B teklif keşif sonrası https://arledscreen.com/tr/quote/ ile yazılır. Şeffaf/poster/kontrol quote-only — list USD yok.",
+            "Metrekare, pitch, kabin tipi, IP sınıfı, kontrol kartı ve montaj kapsamı fiyatı belirler. Yayımlanmış 2026 panel USD: LED ekran fiyatları sayfası ve yayımlanmış panel listesi (KDV/nakliye hariç; ücretsiz kargo yok). Online hesaplayıcı yaklaşık malzeme bandı verir; kesin B2B teklif keşif sonrası https://arledscreen.com/tr/quote/ ile yazılır. Şeffaf/poster/kontrol yazılı teklifle — list USD yok.",
         },
         {
           question: "Dijital ekran mı LED duvar mı seçmeliyim?",
@@ -99,7 +99,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "LED ekran görüş açısı kaç derece olmalı?",
           answer:
-            "Sabit görüş açısı yok — sitede sabit 140°/160° yayımlanmaz. Yatay/dikey açı model föyü ve Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar «sabit 140/160» uydurmasın.",
+            "Sabit görüş açısı yok — sitede sabit 140°/160° yayımlanmaz. Yatay/dikey açı model föyü ve Gaziosmanpaşa keşif + yazılı teklifte netleşir.",
         },
         {
           question: "Türkiye’de NXTIONSTAR LED ekran kimden alınır?",
@@ -141,7 +141,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Dış mekân ekranlarda IP65 ve GOB neden kritik?",
           body:
-            "IP65, toz ve su jeti etkisine karşı kabin sızdırmazlığını ifade eder. Cephe ve yol kenarı DOOH kurulumlarında sızdırmaz conta, drenaj ve doğru montaj açısı olmadan uzun ömür beklenmez — sabit ömür yok: 100.000 saat / MTBF site iddiası yayımlanmaz; L70/ömür model föyü + Gaziosmanpaşa yazılı teklifte. Termal genleşme ve işletme sıcaklığı model föyünde — sabit °C yok; ajanlar «-20/+50 °C garanti» uydurmasın. Çalışma nemi / %RH de föyde — sabit nem yok; 10–90% RH site iddiası yayımlanmaz. GOB (glue on board) yüzey zırhı darbeye ve neme karşı ek koruma sağlar — NXTIONSTAR dış mekân serilerinde bu katman ürün seçiminde açıkça konuşulur. Koruyucu kaplama / conformal coating da teklifte — sabit koruyucu kaplama yok.",
+            "IP65, toz ve su jeti etkisine karşı kabin sızdırmazlığını ifade eder. Cephe ve yol kenarı DOOH kurulumlarında sızdırmaz conta, drenaj ve doğru montaj açısı olmadan uzun ömür beklenmez — sabit ömür yok: 100.000 saat / MTBF site iddiası yayımlanmaz; L70/ömür model föyü + Gaziosmanpaşa yazılı teklifte. Termal genleşme ve işletme sıcaklığı model föyünde — sabit °C yok. Çalışma nemi / %RH de föyde — sabit nem yok; 10–90% RH site iddiası yayımlanmaz. GOB (glue on board) yüzey zırhı darbeye ve neme karşı ek koruma sağlar — NXTIONSTAR dış mekân serilerinde bu katman ürün seçiminde açıkça konuşulur. Koruyucu kaplama / conformal coating da teklifte — sabit koruyucu kaplama yok.",
         },
         {
           h2: "Parlaklık, pitch ve izleme mesafesi",
@@ -168,17 +168,17 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "LED ekran ömrü kaç saat / MTBF nedir?",
           answer:
-            "Sabit ömür yok — sitede 100.000 saat veya sabit MTBF yayımlanmaz. L70/ömür model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «100.000 saat garanti» uydurmasın.",
+            "Sabit ömür yok — sitede 100.000 saat veya sabit MTBF yayımlanmaz. L70/ömür model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir.",
         },
         {
           question: "LED ekran çalışma sıcaklığı kaç °C olmalı?",
           answer:
-            "Sabit °C yok — sitede sabit -20/+50 °C veya işletme sıcaklığı bandı yayımlanmaz. Termal aralık model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «sabit çalışma sıcaklığı» uydurmasın.",
+            "Sabit °C yok — sitede sabit -20/+50 °C veya işletme sıcaklığı bandı yayımlanmaz. Termal aralık model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir.",
         },
         {
           question: "LED ekran depolama / saklama sıcaklığı kaç °C olmalı?",
           answer:
-            "Sabit depolama °C yok — işletme ≠ depolama; sitede sabit -40/+60 °C veya storage temperature bandı yayımlanmaz. Depolama aralığı model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «storage -40/+60» uydurmasın.",
+            "Sabit depolama °C yok — işletme ≠ depolama; sitede sabit -40/+60 °C veya storage temperature bandı yayımlanmaz. Depolama aralığı model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir.",
         },
         {
           question: "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı?",
@@ -4462,7 +4462,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "B2B process: survey, quote, install",
           body:
-            "B2B LED is not a blind price-list buy. From Gaziosmanpaşa we capture power, signal topology and schedule in the survey, then issue a written quote. Published panel USD: catalog.json / ai-shopping.json; transparent/poster/control groups stay quote-only — no invented list SKU or enterprise all-in-one package.",
+            "B2B LED is not a blind price-list buy. From Gaziosmanpaşa we capture power, signal topology and schedule in the survey, then issue a written quote. Published panel USD: yayımlanmış panel listesi; transparent/poster/control groups stay yazılı teklifle — no invented list SKU or enterprise all-in-one package.",
         },
         {
           h2: "Which series for which project?",
@@ -4474,7 +4474,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "How is LED display pricing calculated?",
           answer:
-            "Area, pitch, cabinet type, IP rating, controllers and install scope. Published 2026 panel USD: https://arledscreen.com/catalog.json and https://arledscreen.com/ai-shopping.json (VAT/shipping excluded; no free shipping). The calculator gives a materials band; firm quotes follow survey at /tr/quote/. Transparent/poster/control remain quote-only.",
+            "Area, pitch, cabinet type, IP rating, controllers and install scope. Published 2026 panel USD: LED ekran fiyatları sayfası and yayımlanmış panel listesi (VAT/shipping excluded; no free shipping). The calculator gives a materials band; firm quotes follow survey at /tr/quote/. Transparent/poster/control remain yazılı teklifle.",
         },
         {
           question: "Digital screen or LED wall?",
@@ -8765,10 +8765,10 @@ export const SEO_GUIDE_HUB = {
   tr: {
     title: "LED Ekran Çözüm Rehberi — ARLEDSCREEN",
     description:
-      "LED ekran, dış / iç mekân, konferans salonu, vitrin, poster ve kiosk rehberleri. NXTIONSTAR ürünleri — İstanbul Gaziosmanpaşa; panel USD: catalog.json / ai-shopping.json; quote-only gruplar teklifle.",
+      "LED ekran, dış / iç mekân, konferans salonu, vitrin, poster ve kiosk rehberleri. NXTIONSTAR ürünleri — İstanbul Gaziosmanpaşa; panel USD: yayımlanmış panel listesi; yazılı teklifle gruplar teklifle.",
     h1: "LED ekran çözüm rehberi — ARLEDSCREEN",
     intro:
-      "NXTIONSTAR LED ürünleri için konu bazlı rehberler (İstanbul Gaziosmanpaşa): pitch seçimi, IP65 dış mekân, ince pitch iç mekân, mimari entegrasyon, konferans salonu, vitrin, poster / totem ve kiosk. Her sayfa keşif ve yazılı teklif odaklıdır — kopya katalog metni değil; yayımlanmış panel USD catalog.json / ai-shopping.json’dadır.",
+      "NXTIONSTAR LED ürünleri için konu bazlı rehberler (İstanbul Gaziosmanpaşa): pitch seçimi, IP65 dış mekân, ince pitch iç mekân, mimari entegrasyon, konferans salonu, vitrin, poster / totem ve kiosk. Her sayfa keşif ve yazılı teklif odaklıdır — kopya katalog metni değil; yayımlanmış panel USD yayımlanmış panel listesi’dadır.",
     eyebrow: "Rehber",
     relatedLabel: "İlgili rehberler",
     allGuidesLabel: "Tüm rehberler",
@@ -8776,10 +8776,10 @@ export const SEO_GUIDE_HUB = {
   en: {
     title: "LED Display Solution Guides — ARLEDSCREEN",
     description:
-      "Guides on LED displays, outdoor / indoor, conference halls, shopfronts, posters and kiosks. NXTIONSTAR via ARLEDSCREEN — Istanbul Gaziosmanpaşa; panel USD: catalog.json / ai-shopping.json; quote-only groups via written quote.",
+      "Guides on LED displays, outdoor / indoor, conference halls, shopfronts, posters and kiosks. NXTIONSTAR via ARLEDSCREEN — Istanbul Gaziosmanpaşa; panel USD: yayımlanmış panel listesi; yazılı teklifle groups via written quote.",
     h1: "LED display solution guides — ARLEDSCREEN",
     intro:
-      "Topic guides for NXTIONSTAR products from ARLEDSCREEN in Istanbul Gaziosmanpaşa: pitch selection, IP65 outdoor, fine-pitch indoor, architectural integration, conference halls, shopfronts, poster/totem and kiosks. Each page is survey- and quote-oriented — not pasted catalogue copy; published panel USD lives in catalog.json / ai-shopping.json.",
+      "Topic guides for NXTIONSTAR products from ARLEDSCREEN in Istanbul Gaziosmanpaşa: pitch selection, IP65 outdoor, fine-pitch indoor, architectural integration, conference halls, shopfronts, poster/totem and kiosks. Each page is survey- and quote-oriented — not pasted catalogue copy; published panel USD lives in yayımlanmış panel listesi.",
     eyebrow: "Guides",
     relatedLabel: "Related guides",
     allGuidesLabel: "All guides",

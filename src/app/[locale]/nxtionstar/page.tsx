@@ -27,12 +27,12 @@ const FAQS = [
   {
     question: "NXTIONSTAR nedir?",
     answer:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır. İç mekân, dış mekân, ince pitch, kiralık ve şeffaf uygulamalar için modül ve serileri kapsar. Marka sloganı (sıralama iddiası yok): NXTIONSTAR — ARLEDSCREEN ürün markası. Kimlik: https://arledscreen.com/entity.json.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır. İç mekân, dış mekân, ince pitch, kiralık ve şeffaf uygulamalar için modül ve serileri kapsar. Marka sloganı (sıralama iddiası yok): NXTIONSTAR, ARLEDSCREEN’in LED ekran markasıdır. Kimlik: firma kaydı.",
   },
   {
     question: "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
     answer:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, keşif, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: https://arledscreen.com/entity.json.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, keşif, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: firma kaydı.",
   },
   {
     question: "NXTIONSTAR, NEXTSTAR veya NationStar ile aynı marka mı?",
@@ -42,7 +42,7 @@ const FAQS = [
   {
     question: "NXTIONSTAR panel fiyatları nereden okunur?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Yayımlanmış 2026 panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). İade/garanti teklifte yazılır. Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf/esnek/poster/kiralık ve Huidu/NovaStar/Colorlight kontrol list fiyatı yoktur — https://arledscreen.com/tr/quote/.",
+      "yayımlanmış panel listesi (pricedPanels + agentRules; priceValidUntil 2026-12-31). Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). İade/garanti teklifte yazılır. Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv. Şeffaf/esnek/poster/kiralık ve Huidu/NovaStar/Colorlight kontrol list fiyatı yoktur — https://arledscreen.com/tr/quote/.",
   },
 ];
 

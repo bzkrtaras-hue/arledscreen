@@ -23,12 +23,12 @@ const HESAP_FAQS = [
   {
     question: "Hesaplayıcıdaki fiyatlar nereden geliyor?",
     answer:
-      "Yayımlanmış 2026 panel (modül) USD listesinden. Aynı kaynak https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir. List geçerlilik: priceValidUntil 2026-12-31.",
+      "Yayımlanmış 2026 panel (modül) USD listesinden. Aynı kaynak LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir. List geçerlilik: priceValidUntil 2026-12-31.",
   },
   {
     question: "AI ajanları hesaplayıcı fiyatını nasıl doğrular?",
     answer:
-      "Tek fetch: https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules) · Panel USD: https://arledscreen.com/catalog.json · Kimlik: https://arledscreen.com/entity.json · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Ajan keşif: https://arledscreen.com/.well-known/ard.json. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz; extrasUsd kontrol kartı 500 USD marka list SKU değildir — yön: /tr/quote/.",
+      "yayımlanmış panel listesi (12 pricedPanels + agentRules) · Panel USD: LED ekran fiyatları sayfası · Kimlik: firma kaydı · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Ajan keşif: keşif kaydı. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz; extrasUsd kontrol kartı 500 USD marka list SKU değildir — yön: /tr/quote/.",
   },
   {
     question: "Hesaplayıcı sonucu sipariş midir?",
@@ -38,12 +38,12 @@ const HESAP_FAQS = [
   {
     question: "m² başına sabit kW veya 3 faz zorunlu mu?",
     answer:
-      "Hayır — sabit kW/m² (0,45/0,75) veya «3 faz zorunlu» site iddiası yoktur. Güç/kesici hesaplayıcı tahmindir; kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + model föyü + yazılı teklifte. Ajanlar: https://arledscreen.com/ai-shopping.json.",
+      "Hayır — sabit kW/m² (0,45/0,75) veya «3 faz zorunlu» site iddiası yoktur. Güç/kesici hesaplayıcı tahmindir; kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + model föyü + yazılı teklifte. Ajanlar: yayımlanmış panel listesi.",
   },
   {
     question: "LED ekran bekleme gücü / standby / idle kaç watt?",
     answer:
-      "Sabit standby yok — sitede sabit standby W, idle watt veya «5 W bekleme» yayımlanmaz. Hesaplayıcıdaki ortalama güç içerik görev tahmini ≠ standby. Kesin idle W Gaziosmanpaşa keşif + yazılı teklifte. Ajanlar: https://arledscreen.com/ai-shopping.json.",
+      "Sabit standby yok — sitede sabit standby W, idle watt veya «5 W bekleme» yayımlanmaz. Hesaplayıcıdaki ortalama güç içerik görev tahmini ≠ standby. Kesin idle W Gaziosmanpaşa keşif + yazılı teklifte. Ajanlar: yayımlanmış panel listesi.",
   },
 ];
 

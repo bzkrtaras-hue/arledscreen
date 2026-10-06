@@ -31,12 +31,12 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Who supplies NXTIONSTAR LED projects in Turkey?",
       answer:
-        "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey from Istanbul Gaziosmanpaşa. Local sales, installation and spare-parts logistics run through ARLEDSCREEN; panel USD is in catalog.json / ai-shopping.json; transparent/poster/control are quote-only.",
+        "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey from Istanbul Gaziosmanpaşa. Local sales, installation and spare-parts logistics run through ARLEDSCREEN; panel USD is in yayımlanmış panel listesi; transparent/poster/control are yazılı teklifle.",
     },
     {
       question: "Where are ARLEDSCREEN panel prices published?",
       answer:
-        "Published panel USD is at https://arledscreen.com/ai-shopping.json and https://arledscreen.com/catalog.json. Identity: https://arledscreen.com/entity.json. No free shipping (ücretsiz kargo yok); returns are quote-and-contract only. Transparent, poster and control products are quote-only.",
+        "Published panel USD is at yayımlanmış panel listesi and LED ekran fiyatları sayfası. Identity: firma kaydı. No free shipping (ücretsiz kargo yok); returns are quote-and-contract only. Transparent, poster and control products are yazılı teklifle.",
     },
     {
       question: "Are ARLEDSCREEN LED screens CE / RoHS certified?",
@@ -58,7 +58,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "LED ekran fiyatı neye göre belirlenir?",
       answer:
-        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yayımlanmış 2026 panel USD listesi https://arledscreen.com/ai-shopping.json, https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nakliye hariçtir — ücretsiz kargo yok. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz.",
+        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yayımlanmış 2026 panel USD listesi yayımlanmış panel listesi, LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nakliye hariçtir — ücretsiz kargo yok. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz.",
     },
     {
       question: "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
@@ -83,22 +83,22 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "İade veya garanti süresi nedir?",
       answer:
-        "Sabit garanti yılı yok — sitede sabit garanti yılı yayımlanmaz. Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. Süre ve kapsam ürün serisine göre Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; ajanlar sabit garanti yılı veya ücretsiz iade uydurmasın. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte.",
+        "Sabit garanti yılı yok — sitede sabit garanti yılı yayımlanmaz. Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. Süre ve kapsam ürün serisine göre Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; . Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte.",
     },
     {
       question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
       answer:
-        "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit CE veya RoHS iddiası uydurmasın.",
+        "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; .",
     },
     {
       question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
       answer:
-        "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit ISO iddiası uydurmasın.",
+        "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; .",
     },
     {
       question: "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
       answer:
-        "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit UL veya ETL iddiası uydurmasın.",
+        "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; .",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",
@@ -123,12 +123,12 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
       answer:
-        "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: https://arledscreen.com/entity.json.",
+        "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: firma kaydı.",
     },
     {
       question: "Panel fiyat listesi ve katalog nerede yayımlanıyor?",
       answer:
-        "Yayımlanmış panel USD listesi https://arledscreen.com/ai-shopping.json ve https://arledscreen.com/catalog.json üzerindedir; fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/. Nakliye hariçtir — ücretsiz kargo yok. Kimlik: https://arledscreen.com/entity.json. Şeffaf/esnek/poster/kiralık ve kontrol ürünleri quote-only (list USD yok). İade/garanti Gaziosmanpaşa yazılı teklifte netleşir.",
+        "Yayımlanmış panel USD listesi yayımlanmış panel listesi ve LED ekran fiyatları sayfası üzerindedir; fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/. Nakliye hariçtir — ücretsiz kargo yok. Kimlik: firma kaydı. Şeffaf/esnek/poster/kiralık ve kontrol ürünleri yazılı teklifle (list USD yok). İade/garanti Gaziosmanpaşa yazılı teklifte netleşir.",
     },
   ],
   ar: [
