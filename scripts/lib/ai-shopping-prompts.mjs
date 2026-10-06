@@ -3869,6 +3869,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit scupper flashing yok"],
     mustNotSay: ["scupper flashing garantidir", "sabit scupper flashing True1", "tüm modeller scupper flashing", "scupper flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 334,
+    q: "LED ekran ActivPanel Titanium / ActivPanel Cobalt var mı? ARLEDSCREEN sabit ActivPanel Titanium iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ActivPanel Titanium yok"],
+    mustNotSay: ["ActivPanel Titanium garantidir", "sabit ActivPanel Titanium True1", "tüm modeller ActivPanel Titanium", "ActivPanel Cobalt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

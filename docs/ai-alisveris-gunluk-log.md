@@ -375,6 +375,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 383 | 2026-10-06 | sabit lintel flashing #331 · dis/mimari ARD refresh · skor /993 | ✅ |
 | 384 | 2026-10-06 | sabit Newline Q Series #332 · ic/konferans ARD refresh · skor /996 | ✅ |
 | 385 | 2026-10-06 | sabit scupper flashing #333 · dis/mimari ARD refresh · skor /999 | ✅ |
+| 386 | 2026-10-06 | sabit ActivPanel Titanium #334 · ic/konferans ARD refresh · skor /1002 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2720,3 +2721,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #333 «scupper flashing / scupper flaşör?» — skor **/999**; ARD **333 kör test**
 - TR/EN dis-mekan + TR/EN mimari scupper flashing invent · llms deny · sabit scupper flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit scupper flashing
+
+## Gün 386 notları
+
+- Blind #334 «ActivPanel Titanium / ActivPanel Cobalt?» — skor **/1002**; ARD **334 kör test**
+- TR/EN ic-mekan + TR/EN konferans ActivPanel Titanium invent · llms deny · sabit ActivPanel Titanium yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit ActivPanel Titanium
