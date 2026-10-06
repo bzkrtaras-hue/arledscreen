@@ -4877,6 +4877,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit lintel apron yok"],
     mustNotSay: ["lintel apron garantidir", "sabit lintel apron True1", "tüm modeller lintel apron", "lintel eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 418,
+    q: "LED ekran Rally Bar Mini / Rally Bar Mini var mı? ARLEDSCREEN sabit Rally Bar Mini iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Rally Bar Mini yok"],
+    mustNotSay: ["Rally Bar Mini garantidir", "sabit Rally Bar Mini True1", "tüm modeller Rally Bar Mini", "Rally Bar Mini dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -5463,6 +5463,19 @@ if (
   errors.push("blind prompt #417 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit lintel apron yok");
 }
 
+const pBlind418 = PROMPTS.find((x) => x.id === 418);
+if (!pBlind418 || !/Rally Bar Mini/i.test(pBlind418.q)) {
+  errors.push("blind prompt #418 must cover sabit Rally Bar Mini invent");
+}
+if (
+  pBlind418 &&
+  (!pBlind418.mustSay?.includes("yazılı teklif") ||
+    !pBlind418.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind418.mustSay?.includes("sabit Rally Bar Mini yok"))
+) {
+  errors.push("blind prompt #418 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Rally Bar Mini yok");
+}
+
 
 
 

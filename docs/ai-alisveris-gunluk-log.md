@@ -1,3 +1,8 @@
+## Gün 470 — invent Blind #418 Rally Bar Mini
+
+- Blind #418 Rally Bar Mini · ic/konferans · prompts=418 · /1254
+- Point C + Tur 1a hâlâ sahip
+
 ## Gün 469 — invent Blind #417 lintel apron
 
 - Blind #417 lintel apron / lintel eteği · dis/mimari · prompts=417 · /1251
