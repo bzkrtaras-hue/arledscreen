@@ -138,6 +138,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 146 | 2026-10-06 | sabit enerji sınıfı #94 · dis/ic ARD refresh · skor /282 | ✅ |
 | 147 | 2026-10-06 | sabit düşük mavi ışık #95 · ic/konferans ARD refresh · skor /285 | ✅ |
 | 148 | 2026-10-06 | sabit asılı/hanging #96 · konferans/mimari ARD refresh · skor /288 | ✅ |
+| 149 | 2026-10-06 | sabit daisy chain #97 · ic/dis ARD refresh · skor /291 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1011,3 +1012,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR/EN mimari asılı invent · llms deny · sabit asılı yok
 - ARD refresh: rehber konferans/mimari + kiralik product (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit asılı
 - skor hedef Tur 1 ≥ 144/288 · Tur 2 ≥ 216/288
+
+## Gün 149 notları
+
+- Blind #97 «daisy chain / data cascade?» — skor **/291**; ARD **97 kör test**
+- TR/EN ic-mekan + TR/EN dis-mekan daisy chain invent · llms deny · sabit daisy chain yok
+- ARD refresh: rehber ic/dis + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit daisy chain
+- skor hedef Tur 1 ≥ 146/291 · Tur 2 ≥ 219/291

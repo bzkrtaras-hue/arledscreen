@@ -1025,6 +1025,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit asılı yok"],
     mustNotSay: ["asılı garantidir", "sabit hanging", "tüm modeller hanging", "hanging garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 97,
+    q: "LED ekran daisy chain / data cascade var mı? ARLEDSCREEN sabit daisy chain iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit daisy chain yok"],
+    mustNotSay: ["daisy chain garantidir", "sabit data cascade", "tüm modeller data cascade", "data cascade garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

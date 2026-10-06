@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 148: blind #96 sabit asılı invent)  
+Son güncelleme: 2026-10-06 (Gün 149: blind #97 sabit daisy chain invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 96 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 97 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 96 prompt (alışveriş + varlık)
+## 97 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -120,6 +120,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 94 | LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · ic-mekan · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit enerji sınıfı yok** | enerji sınıfı garantidir / sabit energy class / tüm modeller energy class / energy class garantidir |
 | 95 | LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit düşük mavi ışık yok** | düşük mavi ışık garantidir / sabit low blue light / tüm modeller low blue light / low blue light garantidir |
 | 96 | LED ekran asılı / hanging / rigging montaj var mı? ARLEDSCREEN sabit asılı montaj iddiası yayımlıyor mu? | `/tr/rehber/konferans-salonu-led/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit asılı yok** | asılı garantidir / sabit hanging / tüm modeller hanging / hanging garantidir |
+| 97 | LED ekran daisy chain / data cascade var mı? ARLEDSCREEN sabit daisy chain iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · dis-mekan · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit daisy chain yok** | daisy chain garantidir / sabit data cascade / tüm modeller data cascade / data cascade garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -130,7 +131,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 288. Hedef tur 1 ≥ 144/288; tur 2 (Point C sonrası) ≥ 216/288.
+**Tur skoru** = toplam / 291. Hedef tur 1 ≥ 146/291; tur 2 (Point C sonrası) ≥ 219/291.
 
 ### Canlı tur kayıt şablonu
 

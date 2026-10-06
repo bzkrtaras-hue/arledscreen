@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–96: ARD discovery prompt count must not drift behind blind suite
+// Day 74–97: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/96 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 96 kör test intent (not stale 17–95)");
+if (ardTxt && !/97 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 97 kör test intent (not stale 17–96)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–95 kör test without 96");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–96 kör test without 97");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1442,6 +1442,21 @@ for (const rel of [
   }
   if (/asılı garantidir|sabit hanging|tüm modeller hanging|hanging garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit asılı`);
+  }
+}
+
+// Day 149: sabit daisy chain / data cascade — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit daisy chain yok|no fixed site daisy-chain/i.test(html)) {
+    errors.push(`${rel} should hedge sabit daisy chain / data cascade`);
+  }
+  if (/daisy chain garantidir|sabit data cascade|tüm modeller data cascade|data cascade garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit daisy chain`);
   }
 }
 

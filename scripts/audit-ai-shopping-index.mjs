@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 96) errors.push(`blindTestPrompts must be 96 (got ${prompts.length})`);
+if (prompts.length !== 97) errors.push(`blindTestPrompts must be 97 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/96 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 96 kör test intent");
+if (!/97 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 97 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–95 kör test without 96");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–96 kör test without 97");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -851,6 +851,15 @@ if (!p96 || !/asılı|hanging|rigging/i.test(p96.q || "")) {
 }
 if (!/asılı|hanging|rigging|sabit asılı/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit asılı invent");
+}
+
+// Day 149: sabit daisy chain / data cascade invent
+const p97 = (doc.blindTestPrompts || []).find((p) => p.id === 97);
+if (!p97 || !/daisy chain|data cascade/i.test(p97.q || "")) {
+  errors.push("blindTestPrompts #97 must cover sabit daisy chain invent");
+}
+if (!/daisy chain|data cascade|sabit daisy chain/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit daisy chain invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
