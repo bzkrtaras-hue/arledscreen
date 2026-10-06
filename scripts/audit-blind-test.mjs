@@ -2890,6 +2890,20 @@ if (
   errors.push("blind prompt #219 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chimney flashing yok");
 }
 
+const pBlind220 = PROMPTS.find((x) => x.id === 220);
+if (!pBlind220 || !/Pexip|conference platform/i.test(pBlind220.q)) {
+  errors.push("blind prompt #220 must cover sabit Pexip invent");
+}
+if (
+  pBlind220 &&
+  (!pBlind220.mustSay?.includes("yazılı teklif") ||
+    !pBlind220.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind220.mustSay?.includes("sabit Pexip yok"))
+) {
+  errors.push("blind prompt #220 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Pexip yok");
+}
+
+
 
 
 

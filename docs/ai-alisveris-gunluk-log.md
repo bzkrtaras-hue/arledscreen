@@ -261,6 +261,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 269 | 2026-10-06 | sabit apron flashing #217 · dis/mimari ARD refresh · skor /651 | ✅ |
 | 270 | 2026-10-06 | sabit BirdDog #218 · ic/konferans ARD refresh · skor /654 | ✅ |
 | 271 | 2026-10-06 | sabit chimney flashing #219 · dis/mimari ARD refresh · skor /657 | ✅ |
+| 272 | 2026-10-06 | sabit Pexip #220 · ic/konferans ARD refresh · skor /660 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1922,3 +1923,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #219 «chimney flashing / baca flaşı?» — skor **/657**; ARD **219 kör test**
 - TR/EN dis-mekan + TR/EN mimari chimney flashing invent · llms deny · sabit chimney flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit chimney flashing
+
+## Gün 272 notları
+
+- Blind #220 «Pexip / conference platform?» — skor **/660**; ARD **220 kör test**
+- TR/EN ic-mekan + TR/EN konferans Pexip invent · llms deny · sabit Pexip yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Pexip

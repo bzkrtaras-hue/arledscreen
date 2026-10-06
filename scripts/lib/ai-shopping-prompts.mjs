@@ -2501,6 +2501,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit chimney flashing yok"],
     mustNotSay: ["chimney flashing garantidir", "sabit chimney flashing True1", "tüm modeller chimney flashing", "baca flaşı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 220,
+    q: "LED ekran Pexip / conference platform var mı? ARLEDSCREEN sabit Pexip iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Pexip yok"],
+    mustNotSay: ["Pexip garantidir", "sabit Pexip True1", "tüm modeller Pexip", "conference platform garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
