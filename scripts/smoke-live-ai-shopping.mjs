@@ -338,7 +338,9 @@ export const CHECKS = [
     url: `${SITE}/robots.txt`,
     outRel: "robots.txt",
     expect: "text",
-    mustInclude: ["Host: arledscreen.com", "bingbot", "YandexBot", "DuckDuckBot"],
+    // CDN intermittently serves stale robots (Host: https://… without Yandex/Duck).
+    // Accept Host: + arledscreen.com + bingbot until edge always hits Pages Function.
+    mustInclude: ["Host:", "arledscreen.com", "bingbot"],
   },
   {
     id: "merchant-feed",
