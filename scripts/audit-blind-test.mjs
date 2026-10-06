@@ -6052,6 +6052,18 @@ if (
 ) {
   errors.push("blind prompt #465 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit spandrel glass yok");
 }
+const pBlind466 = PROMPTS.find((x) => x.id === 466);
+if (!pBlind466 || !/Google Meet Series One/i.test(pBlind466.q)) {
+  errors.push("blind prompt #466 must cover sabit Google Meet Series One invent");
+}
+if (
+  pBlind466 &&
+  (!pBlind466.mustSay?.includes("yazılı teklif") ||
+    !pBlind466.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind466.mustSay?.includes("sabit Google Meet Series One yok"))
+) {
+  errors.push("blind prompt #466 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Meet Series One yok");
+}
 
 
 

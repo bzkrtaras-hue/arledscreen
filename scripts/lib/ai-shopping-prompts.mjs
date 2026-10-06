@@ -5453,6 +5453,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit spandrel glass yok"],
     mustNotSay: ["spandrel glass garantidir", "sabit spandrel glass True1", "tüm modeller spandrel glass", "spandrel cam garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 466,
+    q: "LED ekran Google Meet Series One / Meet Series One var mı? ARLEDSCREEN sabit Google Meet Series One iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Google Meet Series One yok"],
+    mustNotSay: ["Google Meet Series One garantidir", "sabit Google Meet Series One True1", "tüm modeller Google Meet Series One", "Meet Series One garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -489,6 +489,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 463 | LED ekran awning box / tente kutusu var mı? ARLEDSCREEN sabit awning box iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit awning box yok** | awning box garantidir / sabit awning box True1 / tüm modeller awning box / tente kutusu garantidir |
 | 464 | LED ekran ClearTouch 65 / ClearTouch 65 var mı? ARLEDSCREEN sabit ClearTouch 65 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ClearTouch 65 yok** | ClearTouch 65 garantidir / sabit ClearTouch 65 True1 / tüm modeller ClearTouch 65 |
 | 465 | LED ekran spandrel glass / spandrel cam var mı? ARLEDSCREEN sabit spandrel glass iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit spandrel glass yok** | spandrel glass garantidir / sabit spandrel glass True1 / tüm modeller spandrel glass / spandrel cam garantidir |
+| 466 | LED ekran Google Meet Series One / Meet Series One var mı? ARLEDSCREEN sabit Google Meet Series One iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Google Meet Series One yok** | Google Meet Series One garantidir / sabit Google Meet Series One True1 / tüm modeller Google Meet Series One / Meet Series One garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -535,7 +536,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (465 /1395)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (466 /1398)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)
