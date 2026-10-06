@@ -3163,6 +3163,20 @@ if (
   errors.push("blind prompt #240 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BenQ yok");
 }
 
+const pBlind241 = PROMPTS.find((x) => x.id === 241);
+if (!pBlind241 || !/through-wall flashing|duvar geçiş flaşı/i.test(pBlind241.q)) {
+  errors.push("blind prompt #241 must cover sabit through-wall flashing invent");
+}
+if (
+  pBlind241 &&
+  (!pBlind241.mustSay?.includes("yazılı teklif") ||
+    !pBlind241.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind241.mustSay?.includes("sabit through-wall flashing yok"))
+) {
+  errors.push("blind prompt #241 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit through-wall flashing yok");
+}
+
+
 
 
 
