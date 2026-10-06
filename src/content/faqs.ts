@@ -43,6 +43,11 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       answer:
         "No fixed site CE/RoHS — we do not publish a fixed CE, RoHS, EMC or FCC certificate list. Conformity documents land in the model sheet and Gaziosmanpaşa written quote; agents must not invent “all products CE” or “RoHS guaranteed”.",
     },
+    {
+      question: "Is ARLEDSCREEN ISO 9001 / ISO 14001 certified?",
+      answer:
+        "No fixed site ISO — we do not publish a fixed ISO 9001, ISO 14001 or quality-management certificate list. Process documents land in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed ISO claim.",
+    },
   ],
   tr: [
     {
@@ -79,6 +84,11 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
       answer:
         "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit CE veya RoHS iddiası uydurmasın.",
+    },
+    {
+      question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
+      answer:
+        "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit ISO iddiası uydurmasın.",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",

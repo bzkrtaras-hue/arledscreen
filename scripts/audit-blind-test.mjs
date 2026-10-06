@@ -672,6 +672,18 @@ if (
 ) {
   errors.push("blind prompt #50 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CE/RoHS yok");
 }
+const pBlind51 = PROMPTS.find((x) => x.id === 51);
+if (!pBlind51 || !/ISO 9001|ISO 14001|ISO/i.test(pBlind51.q)) {
+  errors.push("blind prompt #51 must cover sabit ISO invent");
+}
+if (
+  pBlind51 &&
+  (!pBlind51.mustSay?.includes("yazılı teklif") ||
+    !pBlind51.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind51.mustSay?.includes("sabit ISO yok"))
+) {
+  errors.push("blind prompt #51 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ISO yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

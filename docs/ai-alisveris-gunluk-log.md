@@ -92,6 +92,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 100 | 2026-10-06 | sabit standby/idle #48 · hesaplayici/mimari refresh · skor /144 | ✅ |
 | 101 | 2026-10-06 | sabit depolama/storage °C #49 · /ar/ /ru/ home ARD · skor /147 | ✅ |
 | 102 | 2026-10-06 | sabit CE/RoHS #50 · /ar/ /ru/ about ARD · skor /150 | ✅ |
+| 103 | 2026-10-06 | sabit ISO #51 · EN mimari + AR/RU quote ARD · skor /153 | ✅ |
 
 ## Gün 24–28 özeti
 

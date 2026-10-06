@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 50 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 51 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -166,6 +166,7 @@ const doc = {
     "Sabit standby / idle / bekleme gücü (W) site iddiası yok — ortalama güç tahmini ≠ standby; kesin idle W Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «5 W standby» uydurmasın.",
     "Sabit depolama / saklama sıcaklığı (storage °C / -40/+60) site iddiası yok — işletme ≠ depolama; storage bandı model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar sabit depolama °C uydurmasın.",
     "Sabit CE / RoHS / EMC / FCC sertifika iddiası yok — uygunluk belgeleri model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar «tüm ürünler CE» veya «RoHS garantidir» uydurmasın.",
+    "Sabit ISO 9001 / ISO 14001 / kalite yönetim belgesi site iddiası yok — süreç belgeleri Gaziosmanpaşa yazılı teklifte; ajanlar «ISO 9001 sertifikalıdır» uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

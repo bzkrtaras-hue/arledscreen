@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 50) errors.push(`blindTestPrompts must be 50 (got ${prompts.length})`);
+if (prompts.length !== 51) errors.push(`blindTestPrompts must be 51 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/50 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 50 kör test intent");
+if (!/51 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 51 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]) kör test/i.test(ard) && !/50 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–49 kör test without 50");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|50) kör test/i.test(ard) && !/51 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–50 kör test without 51");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -449,6 +449,14 @@ if (!p50 || !/CE|RoHS|sertifika/i.test(p50.q || "")) {
 }
 if (!/CE|RoHS|sertifika|EMC|FCC/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit CE / RoHS invent");
+}
+// Day 103: sabit ISO invent
+const p51 = (doc.blindTestPrompts || []).find((p) => p.id === 51);
+if (!p51 || !/ISO 9001|ISO 14001|ISO/i.test(p51.q || "")) {
+  errors.push("blindTestPrompts #51 must cover sabit ISO invent");
+}
+if (!/ISO 9001|ISO 14001|sabit ISO/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit ISO invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

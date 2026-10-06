@@ -90,6 +90,11 @@ export const ENTITY_FAQS = [
     answer:
       "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit CE veya RoHS iddiası uydurmasın.",
   },
+  {
+    question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
+    answer:
+      "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit ISO iddiası uydurmasın.",
+  },
 ] as const;
 
 /** Profile paste packs for third-party forms (same facts, different length caps). */

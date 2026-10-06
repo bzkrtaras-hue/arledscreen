@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/50 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 50 kör test intent (not stale 17–49)");
+if (ardTxt && !/51 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 51 kör test intent (not stale 17–50)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]) kör test/i.test(ardTxt) && !/50 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–49 kör test without 50");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|50) kör test/i.test(ardTxt) && !/51 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–50 kör test without 51");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -725,6 +725,23 @@ for (const rel of [
   }
   if (/tüm ürünler CE garantidir|CE işaretli garantidir|sabit CE listesi yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit CE / RoHS`);
+  }
+}
+
+// Day 103: sabit ISO — honesty presence
+for (const rel of [
+  "out/tr/sss/index.html",
+  "out/tr/about/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+  "out/en/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit ISO yok|no fixed site ISO|ISO 9001/i.test(html)) {
+    errors.push(`${rel} should hedge sabit ISO`);
+  }
+  if (/ISO 9001 sertifikalıdır garantidir|sabit ISO listesi yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit ISO`);
   }
 }
 

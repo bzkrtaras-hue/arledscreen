@@ -473,6 +473,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit CE/RoHS yok"],
     mustNotSay: ["tüm ürünler CE", "RoHS uyumlu garantidir", "CE işaretli", "sabit sertifika listesi", "ücretsiz kargo dahil"],
   },
+  {
+    id: 51,
+    q: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı? Sitede sabit ISO kalite belgesi yayımlanıyor mu?",
+    paths: [
+      "/tr/about/",
+      "/tr/sss/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ISO yok"],
+    mustNotSay: ["ISO 9001 sertifikalıdır", "ISO 14001 belgelidir", "sabit ISO listesi", "tüm süreçler ISO", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
