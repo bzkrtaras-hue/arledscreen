@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 64) errors.push(`blindTestPrompts must be 64 (got ${prompts.length})`);
+if (prompts.length !== 65) errors.push(`blindTestPrompts must be 65 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/64 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 64 kör test intent");
+if (!/65 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 65 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-3]) kör test/i.test(ard) && !/64 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–63 kör test without 64");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-4]) kör test/i.test(ard) && !/65 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–64 kör test without 65");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -563,6 +563,15 @@ if (!p64 || !/HDCP/i.test(p64.q || "")) {
 }
 if (!/HDCP|sabit HDCP/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit HDCP invent");
+}
+
+// Day 117: sabit yedek parça stok invent
+const p65 = (doc.blindTestPrompts || []).find((p) => p.id === 65);
+if (!p65 || !/yedek parça|spare|stok/i.test(p65.q || "")) {
+  errors.push("blindTestPrompts #65 must cover sabit yedek parça stok invent");
+}
+if (!/yedek parça stok|spare parts|sabit yedek/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit yedek parça stok invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

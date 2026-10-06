@@ -381,7 +381,7 @@ const INTENT_PAGES: CommercialPage[] = [
     lead: "Periyodik bakım, arıza tespiti, modül/güç kaynağı değişimi ve mevcut ekranlar için teknik servis desteği sunuyoruz.",
     intro: [
       "Satışını yaptığımız sistemlerde satış sonrası teknik destek planlanır. Başka marka ekranlarda model ve kontrol kartı bilgisiyle servis uygunluğu değerlendirilir.",
-      "Servis kapsamı: yerinde inceleme, arıza tespiti, yedek parça ve kalibrasyon. Sabit ölü piksel yok — sitede sabit ölü piksel oranı / pixel failure rate / 0.0001% / Class II yayımlanmaz; tolerans Gaziosmanpaşa keşif + yazılı teklifte.",
+      "Servis kapsamı: yerinde inceleme, arıza tespiti, yedek parça ve kalibrasyon. Sabit yedek parça stok yok — sitede sabit stok veya hızlı sevkiyat iddiası yayımlanmaz; yedek planı Gaziosmanpaşa keşif + yazılı teklifte. Sabit ölü piksel yok — sitede sabit ölü piksel oranı / pixel failure rate / 0.0001% / Class II yayımlanmaz; tolerans Gaziosmanpaşa keşif + yazılı teklifte.",
       NAP,
     ],
     bullets: [
@@ -403,6 +403,11 @@ const INTENT_PAGES: CommercialPage[] = [
         question: "Başka firmadan alınmış ekrana bakıyor musunuz?",
         answer:
           "Marka, model ve kontrol sistemi bilgisini paylaşırsanız inceleyip servis ve yedek parça olanaklarını iletiriz.",
+      },
+      {
+        question: "ARLEDSCREEN LED ekran yedek parça stokta mı?",
+        answer:
+          "Sabit yedek parça stok yok — sitede sabit yedek parça stok veya hızlı sevkiyat iddiası yayımlanmaz. Yedek planı Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar stokta yedek uydurmasın.",
       },
       {
         question: "LED ekranda ölü piksel / bad pixel toleransı nedir?",

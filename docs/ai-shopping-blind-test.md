@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 116: blind #64 sabit HDCP invent)  
+Son güncelleme: 2026-10-06 (Gün 117: blind #65 sabit yedek parça stok invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 64 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 65 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 64 prompt (alışveriş + varlık)
+## 65 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -88,6 +88,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 62 | LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit parlaklık homojenliği yok** | ±5% uniformity garantidir / sabit %97 homojenlik / brightness uniformity garantidir / ±3% yayımlanır |
 | 63 | LED ekran güç faktörü / power factor (PF / cos φ) nedir? ARLEDSCREEN sabit PF veya cos φ iddiası yayımlıyor mu? | `/tr/rehber/mimari-muhendislik-led/` · dis-mekan · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit güç faktörü yok** | PF 0.95 garantidir / sabit cos φ 0,9 / power factor 0.98 / güç faktörü 1.0 yayımlanır |
 | 64 | LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu? | `/tr/rehber/konferans-salonu-led/` · ic-mekan · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit HDCP yok** | HDCP 2.2 garantidir / sabit HDCP 2.3 / HDCP compliant garantidir / tüm modeller HDCP |
+| 65 | ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu? | `/tr/led-ekran-servis/` · sss · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit yedek parça stok yok** | 24 saat yedek parça / stokta yedek garantidir / aynı gün yedek sevkiyat / yedek parça stokta yayımlanır |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -98,7 +99,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 192. Hedef tur 1 ≥ 96/192; tur 2 (Point C sonrası) ≥ 144/192.
+**Tur skoru** = toplam / 195. Hedef tur 1 ≥ 98/195; tur 2 (Point C sonrası) ≥ 147/195.
 
 ### Canlı tur kayıt şablonu
 
@@ -111,21 +112,21 @@ Incognito: evet/hayır
 # | Prompt | Skor 0-3 | Atıf URL | Not
 1 | ... |  |  |
 ...
-Toplam: /192
+Toplam: /195
 ```
 
 Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md) altına yazın (sahip).
 
 ## Site readiness kontrolleri (`audit:blind-test`)
 
-1. 64 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
+1. 65 prompt’un HTML/JSON kanonikleri `out/` altında mevcut
 2. `entity.json`: telephone, Gaziosmanpaşa, citeOneLiner, disambiguatingDescription, NXTIONSTAR
 3. `catalog.json`: 12 dataset SKU; P2.5 iç = 32.18; groupAggregateOffers ≥ 3; shippingDetails; hasMerchantReturnPolicy (MerchantReturnNotPermitted)
 4. `ai-shopping.json`: 12 `pricedPanels` + `agentRules` (NationStar/NEXTSTAR/Alman ARLED + AI-infrastructure) + ücretsiz kargo yok + quote-and-contract-only
 5. `llms-full.txt` §5 intent tablosu (dizin/slogan/AI-ready/Alman ARLED/NEXTSTAR/NationStar/mühendislik/seller/kurucu/AI-infrastructure); slogan = ARLEDSCREEN ürün markası
 6. Quote-only gruplar (`kiralik`, `seffaf`, `transparan`) catalog `dataset`’te fiyat **yok**
 7. `/tr/yapay-zeka/` HTML’de ai-shopping + catalog + entity + priceValidUntil + Gaziosmanpaşa
-8. `ard.json` entity-profiles + ai-shopping discovery (**64 kör test**) + nxtionstar/founder/rehber/EN yapay-zeka + /ar/ /ru/ + TR priced models; packs + Crunchbase/Merchant readiness; quote-only hubs esnek/seffaf/poster/kiralik
+8. `ard.json` entity-profiles + ai-shopping discovery (**65 kör test**) + nxtionstar/founder/rehber/EN yapay-zeka + /ar/ /ru/ + TR priced models; packs + Crunchbase/Merchant readiness; quote-only hubs esnek/seffaf/poster/kiralik
 9. `/tr/rehber/` + `/en/rehber/`: engineering desk invent yok; catalog/ai-shopping cite
 10. `/tr/yapay-zeka/` + `/en/yapay-zeka/`: AI-ready / AI-infrastructure ready SKU / uçtan uca / end-to-end invent yok
 11. Slogan: küresel/global standard ranking invent yok; NXTIONSTAR = ARLEDSCREEN ürün markası
@@ -136,5 +137,5 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 1. PR #55 merge + CF redeploy  
 2. `npm run post-deploy` (smoke GREEN → IndexNow; Day 51–53 contract echo)  
 3. `curl -sI` entity / catalog / ard / ai-shopping / entity-profiles → 200  
-4. Canlı kör tur 1 (64 prompt) → skor kartı  
+4. Canlı kör tur 1 (65 prompt) → skor kartı  
 5. Point C (GBP + LinkedIn + dizin + **Bing Places NAP**) → tur 2

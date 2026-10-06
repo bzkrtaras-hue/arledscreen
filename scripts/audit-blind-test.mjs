@@ -842,6 +842,19 @@ if (
 ) {
   errors.push("blind prompt #64 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HDCP yok");
 }
+
+const pBlind65 = PROMPTS.find((x) => x.id === 65);
+if (!pBlind65 || !/yedek parça|spare|stok/i.test(pBlind65.q)) {
+  errors.push("blind prompt #65 must cover sabit yedek parça stok invent");
+}
+if (
+  pBlind65 &&
+  (!pBlind65.mustSay?.includes("yazılı teklif") ||
+    !pBlind65.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind65.mustSay?.includes("sabit yedek parça stok yok"))
+) {
+  errors.push("blind prompt #65 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit yedek parça stok yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

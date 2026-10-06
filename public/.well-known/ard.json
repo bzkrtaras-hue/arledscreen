@@ -285,11 +285,12 @@
       "displayName": "LED ekran servis intent",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/led-ekran-servis/",
-      "description": "Teknik servis / bakım intent. Garanti/iade teklifte; sabit yıl yok. Gaziosmanpaşa.",
+      "description": "Teknik servis / bakım intent. Garanti/iade teklifte; sabit yıl yok. Gaziosmanpaşa. Sabit yedek parça stok yok — Blind #65.",
       "representativeQueries": [
         "LED ekran servis",
         "LED ekran teknik destek",
-        "LED ekran bakım"
+        "LED ekran bakım",
+        "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?"
       ],
       "tags": [
         "commerce",
@@ -298,7 +299,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T02:00:00Z"
+      "updatedAt": "2026-10-07T11:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:fabrika-use",
@@ -768,7 +769,7 @@
       "displayName": "SSS — fiyat / kimlik / ajan",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/sss/",
-      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only; sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52. Sabit garanti yılı yok — Blind #56. Sabit iade günü yok — Blind #57. Sabit teslimat süresi yok — Blind #58.",
+      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only; sabit CE/RoHS yok — Blind #50. Sabit ISO yok — Blind #51. Sabit UL/ETL yok — Blind #52. Sabit garanti yılı yok — Blind #56. Sabit iade günü yok — Blind #57. Sabit teslimat süresi yok — Blind #58. Sabit yedek parça stok yok — Blind #65.",
       "representativeQueries": [
         "ARLEDSCREEN SSS",
         "LED ekran fiyat SSS",
@@ -778,7 +779,8 @@
         "ARLEDSCREEN LED ekranları UL / ETL listeli mi? Sitede sabit UL veya ETL iddiası yayımlanıyor mu?",
         "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?",
         "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?",
-        "ARLEDSCREEN LED ekran teslimat süresi kaç gün? Sitede sabit 7 iş günü / 48 saat teslimat yayımlanıyor mu?"
+        "ARLEDSCREEN LED ekran teslimat süresi kaç gün? Sitede sabit 7 iş günü / 48 saat teslimat yayımlanıyor mu?",
+        "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?"
       ],
       "tags": [
         "FAQ",
@@ -787,7 +789,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T04:00:00Z"
+      "updatedAt": "2026-10-07T11:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:calculator",
@@ -1085,7 +1087,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 64 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 65 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1125,7 +1127,8 @@
         "LED ekran latency / input lag kaç ms? ARLEDSCREEN sabit ms veya low-latency iddiası yayımlıyor mu?",
         "LED ekran parlaklık homojenliği / brightness uniformity nedir? ARLEDSCREEN sabit % veya ±% uniformity iddiası yayımlıyor mu?",
         "LED ekran güç faktörü / power factor (PF / cos φ) nedir? ARLEDSCREEN sabit PF veya cos φ iddiası yayımlıyor mu?",
-        "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?"
+        "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?",
+        "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1144,7 +1147,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T10:00:00Z"
+      "updatedAt": "2026-10-07T11:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -2826,6 +2829,69 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T10:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p4-on-servis-dis",
+      "displayName": "P4 önden servis dış mekân panel",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
+      "description": "P4 front-service outdoor priced panel. No invent sabit yedek parça stok — Blind #65; list USD in catalog/ai-shopping.",
+      "representativeQueries": [
+        "P4 önden servis LED fiyat",
+        "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?",
+        "p4 front service outdoor"
+      ],
+      "tags": [
+        "product",
+        "priced",
+        "outdoor",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T11:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p5-dis",
+      "displayName": "P5 dış mekân panel",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
+      "description": "P5 outdoor priced panel. No invent sabit yedek parça stok — Blind #65; list USD in catalog/ai-shopping.",
+      "representativeQueries": [
+        "P5 dış mekân LED fiyat",
+        "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?",
+        "p5 outdoor"
+      ],
+      "tags": [
+        "product",
+        "priced",
+        "outdoor",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T11:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p8-dis",
+      "displayName": "P8 dış mekân panel",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p8/",
+      "description": "P8 outdoor priced panel. No invent sabit yedek parça stok — Blind #65; list USD in catalog/ai-shopping.",
+      "representativeQueries": [
+        "P8 dış mekân LED fiyat",
+        "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?",
+        "p8 outdoor"
+      ],
+      "tags": [
+        "product",
+        "priced",
+        "outdoor",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T11:00:00Z"
     }
   ]
 }

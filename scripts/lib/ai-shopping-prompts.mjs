@@ -641,6 +641,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HDCP yok"],
     mustNotSay: ["HDCP 2.2 garantidir", "sabit HDCP 2.3", "HDCP compliant garantidir", "tüm modeller HDCP", "ücretsiz kargo dahil"],
   },
+  {
+    id: 65,
+    q: "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?",
+    paths: [
+      "/tr/led-ekran-servis/",
+      "/tr/sss/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit yedek parça stok yok"],
+    mustNotSay: ["24 saat yedek parça", "stokta yedek garantidir", "aynı gün yedek sevkiyat", "yedek parça stokta yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

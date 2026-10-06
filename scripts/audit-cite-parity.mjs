@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/64 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 64 kör test intent (not stale 17–63)");
+if (ardTxt && !/65 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 65 kör test intent (not stale 17–64)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-3]) kör test/i.test(ardTxt) && !/64 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–63 kör test without 64");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-4]) kör test/i.test(ardTxt) && !/65 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–64 kör test without 65");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -945,6 +945,22 @@ for (const rel of [
   }
   if (/HDCP 2\.2 garantidir|sabit HDCP 2\.3|HDCP compliant garantidir|tüm modeller HDCP/i.test(html)) {
     errors.push(`${rel} must not invent sabit HDCP`);
+  }
+}
+
+
+// Day 117: sabit yedek parça stok — honesty presence
+for (const rel of [
+  "out/tr/led-ekran-servis/index.html",
+  "out/tr/sss/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit yedek parça stok yok/i.test(html)) {
+    errors.push(`${rel} should hedge sabit yedek parça stok`);
+  }
+  if (/24 saat yedek parça|stokta yedek garantidir|aynı gün yedek sevkiyat|yedek parça stokta yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit yedek parça stok`);
   }
 }
 

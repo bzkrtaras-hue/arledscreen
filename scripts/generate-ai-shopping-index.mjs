@@ -180,6 +180,7 @@ const doc = {
     "Sabit parlaklık homojenliği / brightness uniformity (±% / %97) site iddiası yok — homojenlik modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit uniformity uydurmasın.",
     "Sabit güç faktörü / power factor (PF / cos φ / 0.95) site iddiası yok — PF modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit PF uydurmasın.",
     "Sabit HDCP / HDCP 2.2 / 2.3 site iddiası yok — HDCP modeli Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit HDCP uydurmasın.",
+    "Sabit yedek parça stok / 24 saat sevkiyat site iddiası yok — yedek planı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar stokta yedek uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

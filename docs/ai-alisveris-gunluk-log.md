@@ -106,6 +106,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 114 | 2026-10-06 | sabit parlaklık homojenliği #62 · AR/RU products + TR p2-5 ARD · skor /186 | ✅ |
 | 115 | 2026-10-06 | sabit güç faktörü #63 · TR p3-07/p4/dis p2-5 ARD · skor /189 | ✅ |
 | 116 | 2026-10-06 | sabit HDCP #64 · TR dis p2-9/p3-07/p4 ARD · skor /192 | ✅ |
+| 117 | 2026-10-06 | sabit yedek parça stok #65 · TR dis p4-on-servis/p5/p8 ARD · skor /195 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -754,3 +755,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR ic-mekan HDCP invent · llms deny · sabit HDCP yok
 - ARD: TR dis p2-9/p3-07/p4 · IndexNow +3 · agentRules sabit HDCP
 - skor hedef Tur 1 ≥ 96/192 · Tur 2 ≥ 144/192
+
+## Gün 117 notları
+
+- Blind #65 «yedek parça stok / 24 saat sevkiyat?» — skor **/195**; ARD **65 kör test**
+- TR servis + SSS yedek stok invent · llms deny · sabit yedek parça stok yok
+- ARD: TR dis p4-on-servis/p5/p8 · IndexNow +3 · agentRules sabit yedek stok
+- skor hedef Tur 1 ≥ 98/195 · Tur 2 ≥ 147/195

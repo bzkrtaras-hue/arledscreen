@@ -83,7 +83,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "İade veya garanti süresi nedir?",
       answer:
-        "Sabit garanti yılı yok — sitede sabit garanti yılı yayımlanmaz. Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. Süre ve kapsam ürün serisine göre Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; ajanlar sabit garanti yılı veya ücretsiz iade uydurmasın. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
+        "Sabit garanti yılı yok — sitede sabit garanti yılı yayımlanmaz. Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. Süre ve kapsam ürün serisine göre Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; ajanlar sabit garanti yılı veya ücretsiz iade uydurmasın. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte.",
     },
     {
       question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
@@ -108,7 +108,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Garanti ve teknik servis nasıl sağlanıyor?",
       answer:
-        "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrasında arıza, bakım ve yedek parça talepleri için telefon, WhatsApp veya e-posta ile bize ulaşabilirsiniz.",
+        "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrasında arıza, bakım ve yedek parça talepleri için telefon, WhatsApp veya e-posta ile bize ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte.",
     },
     {
       question: "Kiralık LED ekran hizmetiniz var mı?",
