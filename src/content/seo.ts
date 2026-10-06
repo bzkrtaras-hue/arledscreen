@@ -22,7 +22,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     home: {
       title: "İstanbul LED Ekran Satış, Montaj ve Servis | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN: iç ve dış mekân LED ekran seçimi, keşif, montaj ve teknik servis. Hizmet Türkiye geneli; tamamlanan iş listesi kayıtlı illerde. İstanbul / Gaziosmanpaşa. Tel: +90 530 507 88 34",
+        "ARLEDSCREEN — İstanbul Gaziosmanpaşa LED ekran satış, keşif, montaj ve teknik servis. NXTIONSTAR kendi markamız. Tel: +90 530 507 88 34",
       keywords: [
         "LED ekran",
         "iç mekân LED ekran",
@@ -54,7 +54,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "Hakkımızda | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
+        "ARLEDSCREEN, İstanbul Gaziosmanpaşa LED ekran satış, montaj ve teknik servis. NXTIONSTAR kendi markası; Türkiye'deki tek satış noktası ARLEDSCREEN.",
       keywords: ["ARLEDSCREEN", "LED ekran firması İstanbul", "LED ekran montaj", "NXTIONSTAR"],
       h1: "ARLEDSCREEN hakkında",
       intro:
@@ -63,7 +63,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     hesaplayici: {
       title: "LED Ekran Fiyat Hesaplayıcı | Malzeme & Maliyet | ARLEDSCREEN",
       description:
-        "Ücretsiz LED ekran fiyat hesaplayıcı: ekran ölçüsü ve modül tipine göre modül adedi ile malzeme, işçilik, kontrol kartı ve yazılım dahil yaklaşık maliyet. Ardından yazılı teklif.",
+        "LED ekran fiyat hesaplayıcı: ölçü ve modül tipine göre modül adedi ile yaklaşık maliyet (KDV/nakliye hariç). Nihai tutar yazılı teklifle.",
       keywords: [
         "LED ekran fiyat",
         "fiyat hesaplayıcı",

@@ -270,17 +270,25 @@ export default async function YapayZekaPage({ params }: PageProps) {
                 Point C — üçüncü taraf atıf (sahip)
               </h2>
               <p className="mt-3 text-sm leading-[1.7] text-ink-soft">
-                AI ajanlarının yalnızca kendi siteden değil, GBP / LinkedIn / dizinlerde de aynı olguyu
-                görmesi için yapıştırma paketleri{" "}
+                GBP / Instagram / Facebook / LinkedIn için insan metinleri{" "}
                 <a
                   href="https://arledscreen.com/entity-profiles.json"
                   className="font-medium text-cyan underline-offset-4 hover:underline"
                 >
                   entity-profiles.json
                 </a>{" "}
-                içindedir (<code className="text-xs">packs.*</code> +{" "}
-                <code className="text-xs">ownerP0Checklist</code>). Uydurma rating / fiyat / küresel
-                standart yok; panel USD yalnızca ai-shopping.json pricedPanels.
+                <code className="text-xs">packs.gbpDescription</code>,{" "}
+                <code className="text-xs">instagramBio</code>,{" "}
+                <code className="text-xs">instagramName</code> alanlarındadır — tek kez yapıştırın.
+                <code className="text-xs"> catalog.json</code> / quote-only / extrasUsd kamu biyografisine
+                konmaz (yalnızca Merchant pack). Posta kodu <strong>34245</strong>. Panel USD:{" "}
+                <a
+                  href="https://arledscreen.com/ai-shopping.json"
+                  className="font-medium text-cyan underline-offset-4 hover:underline"
+                >
+                  ai-shopping.json
+                </a>
+                .
               </p>
             </GlassPanel>
           ) : null}

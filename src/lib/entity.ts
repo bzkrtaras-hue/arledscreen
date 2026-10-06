@@ -64,15 +64,19 @@ export const ENTITY_FAQS = [
   },
 ] as const;
 
-/** Profile paste packs for third-party forms (same facts, different length caps). */
+/** Human-facing Point C paste packs (no catalog.json / quote-only / extrasUsd jargon). */
 export const ENTITY_PROFILE_PACKS = {
   gbpDescription: ENTITY_CITE_MEDIUM,
   linkedinAbout: `${ENTITY_CITE_MEDIUM}
 
 Web: https://arledscreen.com/tr/
-Doğrulama: https://arledscreen.com/entity.json
-Telefon: ${CONTACT_PHONE_DISPLAY}`,
-  instagramBio: "İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis\narledscreen.com/tr/",
+Telefon: ${CONTACT_PHONE_DISPLAY}
+Doğrulama: https://arledscreen.com/entity.json`,
+  instagramName: "ARLEDSCREEN",
+  instagramBio: `İstanbul LED · NXTIONSTAR
+Satış · montaj · teknik servis
+arledscreen.com/tr/
+${CONTACT_PHONE_DISPLAY}`,
   facebookAbout: ENTITY_CITE_MEDIUM,
   directoryShort: ENTITY_CITE_ONE_LINER,
   directoryLong: `${ENTITY_CITE_MEDIUM}
@@ -80,12 +84,11 @@ Telefon: ${CONTACT_PHONE_DISPLAY}`,
 Adres: ${BUSINESS_ADDRESS.streetAddress}, ${BUSINESS_ADDRESS.postalCode} ${BUSINESS_ADDRESS.addressLocality} / ${BUSINESS_ADDRESS.addressRegion}
 Telefon: ${CONTACT_PHONE_DISPLAY}
 E-posta: ${CONTACT_EMAIL}
-Web: https://arledscreen.com/tr/
-Doğrulama: https://arledscreen.com/entity.json`,
+Web: https://arledscreen.com/tr/`,
   youtubeAbout: `${ENTITY_CITE_SHORT}
 
 Site: https://arledscreen.com/tr/
-Entity: https://arledscreen.com/entity.json`,
+Tel: ${CONTACT_PHONE_DISPLAY}`,
 } as const;
 
 export type EntityDocument = {
