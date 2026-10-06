@@ -95,7 +95,7 @@ Hedef: Tur 1 ≥ 144/288 · Tur 2 ≥ 216/288
 
 - [ ] `smoke:live` GREEN
 - [ ] Point C ≥ 5 bağımsız URL aynı cite
-- [ ] Kör tur 2 ortalama ≥ 214/288
+- [ ] Kör tur 2 ortalama ≥ 216/288
 - [ ] Merchant feed yayında (opsiyonel ama önerilir)
 - [ ] GSC “Missing offers.price” = 0
 
