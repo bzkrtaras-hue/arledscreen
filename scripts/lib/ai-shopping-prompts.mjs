@@ -1625,6 +1625,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Crestron yok"],
     mustNotSay: ["Crestron garantidir", "sabit Crestron True1", "tüm modeller Crestron", "kontrol sistemi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 147,
+    q: "LED ekran USB-C / USB Type-C var mı? ARLEDSCREEN sabit USB-C iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit USB-C yok"],
+    mustNotSay: ["USB-C garantidir", "sabit USB-C True1", "tüm modeller USB-C", "USB Type-C garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

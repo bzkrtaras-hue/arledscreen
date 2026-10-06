@@ -1950,6 +1950,20 @@ if (
     !pBlind146.mustSay?.includes("sabit Crestron yok"))
 ) {
   errors.push("blind prompt #146 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Crestron yok");
+
+const pBlind147 = PROMPTS.find((x) => x.id === 147);
+if (!pBlind147 || !/USB-C|USB Type-C/i.test(pBlind147.q)) {
+  errors.push("blind prompt #147 must cover sabit USB-C invent");
+}
+if (
+  pBlind147 &&
+  (!pBlind147.mustSay?.includes("yazılı teklif") ||
+    !pBlind147.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind147.mustSay?.includes("sabit USB-C yok"))
+) {
+  errors.push("blind prompt #147 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit USB-C yok");
+}
+
 }
 
 errors.push("every blind prompt must declare non-empty mustSay");

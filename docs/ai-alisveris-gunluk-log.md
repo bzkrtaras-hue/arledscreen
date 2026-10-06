@@ -188,6 +188,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 196 | 2026-10-06 | sabit BYOD #144 · ic/konferans ARD refresh · skor /432 | ✅ |
 | 197 | 2026-10-06 | sabit outrigger #145 · dis/mimari ARD refresh · skor /435 | ✅ |
 | 198 | 2026-10-06 | sabit Crestron #146 · ic/konferans ARD refresh · skor /438 | ✅ |
+| 199 | 2026-10-06 | sabit USB-C #147 · dis/mimari ARD refresh · skor /441 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1412,3 +1413,8 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit Crestron
 - skor hedef Tur 1 ≥ 219/438 · Tur 2 ≥ 329/438
 
+## Gün 199 notları
+
+- Blind #147 «USB-C / USB Type-C?» — skor **/441**; ARD **147 kör test**
+- TR/EN dis-mekan + TR/EN mimari USB-C invent · llms deny · sabit USB-C yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit USB-C

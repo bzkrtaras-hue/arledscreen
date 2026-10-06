@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/146 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 146 kör test intent");
+if (!/147 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 147 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–145 kör test without 146");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–146 kör test without 147");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1313,6 +1313,15 @@ if (!p146 || !/Crestron|kontrol sistemi/i.test(p146.q || "")) {
 }
 if (!/Crestron|kontrol sistemi|sabit Crestron/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit Crestron invent");
+
+const p147 = (doc.blindTestPrompts || []).find((p) => p.id === 147);
+if (!p147 || !/USB-C|USB Type-C/i.test(p147.q || "")) {
+  errors.push("blindTestPrompts #147 must cover sabit USB-C invent");
+}
+if (!/USB-C|USB Type-C|sabit USB-C/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit USB-C invent");
+}
+
 }
 
 // Day 76: agentRules full disambiguation
