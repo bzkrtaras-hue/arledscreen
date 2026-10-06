@@ -1,0 +1,24 @@
+User-Agent: *
+Allow: /
+
+# AI discovery endpoints — high priority crawl
+Allow: /entity.json
+Allow: /catalog.json
+Allow: /ai-shopping.json
+Allow: /.well-known/ard.json
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /feeds/
+
+# Deny crawl of private/temp paths
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /*.json$
+Disallow: /api/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://arledscreen.com/sitemap.xml
+
+# Crawl delay for responsible indexing
+Crawl-delay: 1
