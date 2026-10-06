@@ -1,3 +1,11 @@
+
+## Host satırı — 2026-10-06 düzeltme kaydı
+
+- Önbellek iddiası yetmez: üretim `robots.txt` BYPASS/no-store iken gövde **`Host: https://arledscreen.com`** (şemalı)
+- `pages.dev` Function: bare `Host: arledscreen.com` + Yandex/DuckDuck
+- Dört JSON 200; invent yok; PR draft; smoke robots CONTENT (19/20)
+- Docs’taki “canlı bare Host / 20/20” iddiası geri çekildi
+
 # AI alışveriş / GEO — 30 günlük çalışma günlüğü
 
 Hedef: arledscreen.com’u AI alışveriş ajanları için makinece okunabilir lider konumda tutmak.

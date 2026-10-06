@@ -3,7 +3,7 @@
 Hedef: PR #55 deploy olduktan **aynı gün** canlı AI yüzeyleri + bağımsız atıf başlasın.
 Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/entity-profiles.json) · playbook: [`offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
-**Durum (2026-10-06 doğrulama):** Canlı `entity.json` · `catalog.json` · `ai-shopping.json` · `ard.json` · `entity-profiles.json` → **GET 200**. `npm run smoke:live` → **20/20 PASS** (robots Function: bare `Host: arledscreen.com` + Yandex/DuckDuck). IndexNow: değişmiş canlı URL’ler POST **200** (bildirim only). PR #55 **draft** — invent dalı birleşmeden ek hedge’ler canlıya gitmez; üretim JSON kapısı zaten açık. **Sahip sırası:** Point C paste (GBP/LinkedIn/IG/FB) + canlı kör tur.
+**Durum (2026-10-06 doğrulama):** Canlı `entity.json` · `catalog.json` · `ai-shopping.json` · `ard.json` · `entity-profiles.json` → **GET 200**. `robots.txt` üretimde **BYPASS/no-store** olsa da gövde hâlâ `Host: https://arledscreen.com` (şemalı; bare değil); Yandex/DuckDuck bu kopyada yok. `pages.dev` Function gövdesi bare `Host: arledscreen.com`. `smoke:live` robots CONTENT → **19/20**. IndexNow bildirim POST 200 yapıldı. PR #55 **draft**; yeni invent yok. **Sahip sırası:** Point C paste + kör tur; canlı Host satırı üretim deploy ile düzeltilmeli.
 
 Pre-merge (opsiyonel, zaten yeşil olmalı):
 
@@ -26,7 +26,7 @@ npm run smoke:live
 npm run post-deploy
 ```
 
-Hedef: **20/20 PASS** (BLOCKED 0). Doğrulandı 2026-10-06.
+Hedef: **20/20 PASS**. Son ölçüm: JSON 200 OK; robots üretim Host şemalı → smoke **19/20**.
 
 | URL | Beklenen |
 |-----|----------|
