@@ -1169,6 +1169,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit module size yok"],
     mustNotSay: ["module size garantidir", "sabit modül boyutu", "tüm modeller module size", "modül boyutu garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 109,
+    q: "LED ekran cabinet depth / kabin derinliği var mı? ARLEDSCREEN sabit cabinet depth iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cabinet depth yok"],
+    mustNotSay: ["cabinet depth garantidir", "sabit kabin derinliği", "tüm modeller cabinet depth", "kabin derinliği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

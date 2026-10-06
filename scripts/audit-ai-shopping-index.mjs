@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 108) errors.push(`blindTestPrompts must be 108 (got ${prompts.length})`);
+if (prompts.length !== 109) errors.push(`blindTestPrompts must be 109 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/108 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 108 kör test intent");
+if (!/109 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 109 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–107 kör test without 108");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–108 kör test without 109");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -959,6 +959,15 @@ if (!p108 || !/module size|modül boyutu/i.test(p108.q || "")) {
 }
 if (!/module size|modül boyutu|sabit module size/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit module size invent");
+}
+
+// Day 161: sabit cabinet depth / kabin derinliği invent
+const p109 = (doc.blindTestPrompts || []).find((p) => p.id === 109);
+if (!p109 || !/cabinet depth|kabin derinliği/i.test(p109.q || "")) {
+  errors.push("blindTestPrompts #109 must cover sabit cabinet depth invent");
+}
+if (!/cabinet depth|kabin derinliği|sabit cabinet depth/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit cabinet depth invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
