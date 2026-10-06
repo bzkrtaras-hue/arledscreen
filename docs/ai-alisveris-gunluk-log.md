@@ -98,6 +98,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 106 | 2026-10-06 | sabit IK #54 · EN vitrin/poster/kiosk ARD · skor /162 | ✅ |
 | 107 | 2026-10-06 | sabit ASTM/salt spray #55 · rehber fiyat ARD · skor /165 | ✅ |
 | 108 | 2026-10-06 | sabit garanti yılı #56 · AR/RU rehber ARD · skor /168 | ✅ |
+| 109 | 2026-10-06 | sabit iade günü #57 · AR/RU rehber-ic ARD · skor /171 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -690,3 +691,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - SSS/about garanti yılı invent · llms deny · sabit garanti yılı yok
 - ARD: /ar/rehber + /ru/rehber + /ar/rehber/led-ekran · IndexNow +3 · agentRules sabit garanti yılı
 - skor hedef Tur 1 ≥ 84/168 · Tur 2 ≥ 126/168
+
+## Gün 109 notları
+
+- Blind #57 «iade süresi / 14–30 gün?» — skor **/171**; ARD **57 kör test**
+- Fiyat hub + SSS iade günü invent · llms deny · sabit iade günü yok
+- ARD: /ru/rehber/led-ekran + AR/RU rehber-ic · IndexNow +3 · agentRules sabit iade günü
+- skor hedef Tur 1 ≥ 86/171 · Tur 2 ≥ 129/171

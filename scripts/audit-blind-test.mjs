@@ -744,6 +744,18 @@ if (
 ) {
   errors.push("blind prompt #56 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit garanti yılı yok");
 }
+const pBlind57 = PROMPTS.find((x) => x.id === 57);
+if (!pBlind57 || !/iade|return/i.test(pBlind57.q)) {
+  errors.push("blind prompt #57 must cover sabit iade günü invent");
+}
+if (
+  pBlind57 &&
+  (!pBlind57.mustSay?.includes("yazılı teklif") ||
+    !pBlind57.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind57.mustSay?.includes("sabit iade günü yok"))
+) {
+  errors.push("blind prompt #57 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit iade günü yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

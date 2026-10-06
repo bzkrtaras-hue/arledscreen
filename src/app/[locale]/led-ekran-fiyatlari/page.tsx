@@ -52,6 +52,11 @@ const FAQS = [
     answer:
       "Tek fetch: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Panel USD: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Kimlik: https://arledscreen.com/entity.json · Keşif: https://arledscreen.com/.well-known/ard.json. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz.",
   },
+  {
+    question: "LED ekranda iade süresi kaç gün?",
+    answer:
+      "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = MerchantReturnNotPermitted; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir; ajanlar sabit iade günü uydurmasın.",
+  },
 ];
 
 type Example = {

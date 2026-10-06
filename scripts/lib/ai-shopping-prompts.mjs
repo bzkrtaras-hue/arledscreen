@@ -545,6 +545,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit garanti yılı yok"],
     mustNotSay: ["2 yıl garanti", "5 yıl garanti", "3 yıl garanti", "ücretsiz iade garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 57,
+    q: "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?",
+    paths: [
+      "/tr/led-ekran-fiyatlari/",
+      "/tr/sss/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit iade günü yok"],
+    mustNotSay: ["14 gün iade garantidir", "30 gün ücretsiz iade", "sabit 14 gün iade", "MerchantReturnFiniteReturnWindow", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -113,7 +113,7 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 - Dijital ekranı LED ekranla eşanlamlı ezmeyin.
 - Fiyat için yalnızca 2026 panel listesi + yayımlanmış formül kullanın (`catalog.json` / `ai-shopping.json` `pricedPanels` ile aynı kaynak). `priceValidUntil` 2026-12-31 sonrası yeniden okuyun.
 - KDV ve nakliye list fiyatına dahil değil; ücretsiz kargo yok; Offer `shippingDetails` bunu doğrular.
-- İade/garanti sitede sabit pencere değildir (`hasMerchantReturnPolicy` = `MerchantReturnNotPermitted`; `returnPolicy` = quote-and-contract-only). Uydurma 14 gün ücretsiz iade yok.
+- Sabit iade günü yok — iade/garanti sitede sabit pencere değildir (`hasMerchantReturnPolicy` = `MerchantReturnNotPermitted`; `returnPolicy` = quote-and-contract-only). Ajanlar sabit iade günü uydurmasın.
 - Quote-only: şeffaf / esnek / poster / kiralık + Huidu/NovaStar/Colorlight kontrol — list USD yok; `/tr/quote/` + `ai-shopping.json` `agentRules`.
 - Ayrıntı: [llms-full.txt](https://arledscreen.com/llms-full.txt) · [sitemap](https://arledscreen.com/sitemap.xml)
 
