@@ -4502,6 +4502,20 @@ if (
   errors.push("blind prompt #343 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pipe boot yok");
 }
 
+const pBlind344 = PROMPTS.find((x) => x.id === 344);
+if (!pBlind344 || !/InFocus Mondopad|InFocus JTouch/i.test(pBlind344.q)) {
+  errors.push("blind prompt #344 must cover sabit InFocus Mondopad invent");
+}
+if (
+  pBlind344 &&
+  (!pBlind344.mustSay?.includes("yazılı teklif") ||
+    !pBlind344.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind344.mustSay?.includes("sabit InFocus Mondopad yok"))
+) {
+  errors.push("blind prompt #344 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit InFocus Mondopad yok");
+}
+
+
 
 
 

@@ -3989,6 +3989,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit pipe boot yok"],
     mustNotSay: ["pipe boot garantidir", "sabit pipe boot True1", "tüm modeller pipe boot", "boru boot garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 344,
+    q: "LED ekran InFocus Mondopad / InFocus JTouch var mı? ARLEDSCREEN sabit InFocus Mondopad iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit InFocus Mondopad yok"],
+    mustNotSay: ["InFocus Mondopad garantidir", "sabit InFocus Mondopad True1", "tüm modeller InFocus Mondopad", "InFocus JTouch garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
