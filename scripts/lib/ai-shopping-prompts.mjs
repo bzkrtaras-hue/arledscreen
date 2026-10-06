@@ -4397,6 +4397,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rake edge flashing yok"],
     mustNotSay: ["rake edge flashing garantidir", "sabit rake edge flashing True1", "tüm modeller rake edge flashing", "saçak kenar flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 378,
+    q: "LED ekran Planar Simplicity Touch / Planar Touch Series var mı? ARLEDSCREEN sabit Planar Simplicity Touch iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Planar Simplicity Touch yok"],
+    mustNotSay: ["Planar Simplicity Touch garantidir", "sabit Planar Simplicity Touch True1", "tüm modeller Planar Simplicity Touch", "Planar Touch Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

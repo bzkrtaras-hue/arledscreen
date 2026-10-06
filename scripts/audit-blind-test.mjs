@@ -4944,6 +4944,20 @@ if (
   errors.push("blind prompt #377 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit rake edge flashing yok");
 }
 
+const pBlind378 = PROMPTS.find((x) => x.id === 378);
+if (!pBlind378 || !/Planar Simplicity Touch|Planar Touch Series/i.test(pBlind378.q)) {
+  errors.push("blind prompt #378 must cover sabit Planar Simplicity Touch invent");
+}
+if (
+  pBlind378 &&
+  (!pBlind378.mustSay?.includes("yazılı teklif") ||
+    !pBlind378.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind378.mustSay?.includes("sabit Planar Simplicity Touch yok"))
+) {
+  errors.push("blind prompt #378 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Planar Simplicity Touch yok");
+}
+
+
 
 
 
