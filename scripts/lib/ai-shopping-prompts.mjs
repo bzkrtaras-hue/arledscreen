@@ -893,6 +893,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hızlı kilit yok"],
     mustNotSay: ["hızlı kilit garantidir", "sabit quick lock", "tüm modeller quick lock", "quick lock garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 86,
+    q: "LED ekran kavisli / curved var mı? ARLEDSCREEN sabit kavisli iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/vitrin-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kavisli yok"],
+    mustNotSay: ["kavisli garantidir", "sabit curved", "tüm modeller curved", "curved garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

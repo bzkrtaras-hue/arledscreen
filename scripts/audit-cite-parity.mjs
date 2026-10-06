@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/85 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 85 kör test intent (not stale 17–84)");
+if (ardTxt && !/86 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 86 kör test intent (not stale 17–85)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–84 kör test without 85");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–85 kör test without 86");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1277,6 +1277,21 @@ for (const rel of [
   }
   if (/hızlı kilit garantidir|sabit quick lock|tüm modeller quick lock|quick lock garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit hızlı kilit`);
+  }
+}
+
+// Day 138: sabit kavisli / curved — honesty presence
+for (const rel of [
+  "out/tr/rehber/vitrin-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit kavisli yok|no fixed site curved/i.test(html)) {
+    errors.push(`${rel} should hedge sabit kavisli / curved`);
+  }
+  if (/kavisli garantidir|sabit curved|tüm modeller curved|curved garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit kavisli`);
   }
 }
 

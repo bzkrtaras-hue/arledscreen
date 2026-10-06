@@ -409,7 +409,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Erken fazda LED kararları",
           body:
-            "Konsept ve uygulama projesinde pitch / kabin kararı geç bırakılırsa iskelet ve kablo şaftı yetmez. ARLEDSCREEN keşif notunda yüzey alanı, izleme açıları, bakım platformu ve yangın / kaçış güzergâhı ile çakışmalar işaretlenir — sabit ön servis yok; ön/arka servis erişimi Gaziosmanpaşa yazılı teklifte. Alıcı kart yedeklilik / backup loop da teklifte — sabit alıcı yedeklilik yok. Mıknatıslı modül / magnetic module da teklifte — sabit mıknatıslı modül yok. Mimari render’a gerçek kabin modülü oturtulabilir.",
+            "Konsept ve uygulama projesinde pitch / kabin kararı geç bırakılırsa iskelet ve kablo şaftı yetmez. ARLEDSCREEN keşif notunda yüzey alanı, izleme açıları, bakım platformu ve yangın / kaçış güzergâhı ile çakışmalar işaretlenir — sabit ön servis yok; ön/arka servis erişimi Gaziosmanpaşa yazılı teklifte. Alıcı kart yedeklilik / backup loop da teklifte — sabit alıcı yedeklilik yok. Mıknatıslı modül / magnetic module da teklifte — sabit mıknatıslı modül yok. Kavisli / curved yüzey de teklifte — sabit kavisli yok. Mimari render’a gerçek kabin modülü oturtulabilir.",
         },
         {
           h2: "Statik yük, iskelet ve cephe detayı",
@@ -507,6 +507,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran koruyucu kaplama / conformal coating var mı?",
           answer:
             "Sabit koruyucu kaplama yok — sitede sabit koruyucu kaplama veya conformal coating iddiası yayımlanmaz. Kaplama kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit koruyucu kaplama uydurmasın.",
+        },
+        {
+          question: "LED ekran kavisli / curved var mı?",
+          answer:
+            "Sabit kavisli yok — sitede sabit kavisli veya curved LED iddiası yayımlanmaz. Kavis/radius kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit kavisli uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -685,7 +690,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İçerik ve YZ / CMS hattı",
           body:
-            "Vitrin içeriği sık değişir: kampanya, stok, AI ile üretilen görseller. Medya oynatıcı veya CMS / AI motoru ile alıcı uyumu teklifte yazılır. İnteraktif vitrin dokunmatik / touch overlay / capacitive touch da teklifte — sabit dokunmatik yok. Naked-eye 3D / glasses-free 3D da teklifte — sabit 3D yok.",
+            "Vitrin içeriği sık değişir: kampanya, stok, AI ile üretilen görseller. Medya oynatıcı veya CMS / AI motoru ile alıcı uyumu teklifte yazılır. İnteraktif vitrin dokunmatik / touch overlay / capacitive touch da teklifte — sabit dokunmatik yok. Naked-eye 3D / glasses-free 3D da teklifte — sabit 3D yok. Kavisli / curved yüzey de teklifte — sabit kavisli yok.",
         },
       ],
       faqs: [
@@ -728,6 +733,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran naked-eye 3D / glasses-free 3D var mı?",
           answer:
             "Sabit 3D yok — sitede sabit 3D, naked-eye veya glasses-free 3D iddiası yayımlanmaz. 3D kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit 3D uydurmasın.",
+        },
+        {
+          question: "LED ekran kavisli / curved var mı?",
+          answer:
+            "Sabit kavisli yok — sitede sabit kavisli veya curved LED iddiası yayımlanmaz. Kavis/radius kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit kavisli uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1234,7 +1244,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Early-phase LED decisions",
           body:
-            "Late pitch/cabinet choices break cable shafts and framing. Survey notes mark area, viewing angles, maintenance platforms and fire-escape conflicts — no fixed site fire rating / Class A / B-s1 claim; no fixed site front service — front/rear service access lands in the Gaziosmanpaşa written quote. Receiving-card redundancy / backup loop also lands in the quote — no fixed site receiving-card redundancy. Magnetic module fastening also lands in the quote — no fixed site magnetic module. Real cabinet modules can sit in architectural renders.",
+            "Late pitch/cabinet choices break cable shafts and framing. Survey notes mark area, viewing angles, maintenance platforms and fire-escape conflicts — no fixed site fire rating / Class A / B-s1 claim; no fixed site front service — front/rear service access lands in the Gaziosmanpaşa written quote. Receiving-card redundancy / backup loop also lands in the quote — no fixed site receiving-card redundancy. Magnetic module fastening also lands in the quote — no fixed site magnetic module. Curved / radius surfaces also land in the quote — no fixed site curved. Real cabinet modules can sit in architectural renders.",
         },
         {
           h2: "Structural load and façade detail",
@@ -1322,6 +1332,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED have protective coating / conformal coating?",
           answer:
             "No fixed site conformal coating — we do not publish a fixed protective-coating or conformal-coating claim. Coating scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed conformal-coating claim.",
+        },
+        {
+          question: "Does the LED support curved / radius surfaces?",
+          answer:
+            "No fixed site curved — we do not publish a fixed curved or radius-surface LED claim. Curve/radius scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed curved claim.",
         },
       ],
       relatedSlugs: [
@@ -1494,7 +1509,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Content and AI/CMS pipelines",
           body:
-            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the written quote from Gaziosmanpaşa — the same survey-scoped integration approach used on other ARLEDSCREEN projects (no invented AI-ready or AI-infrastructure ready product SKU). Interactive shopfront touch / touch overlay / capacitive touch also lands in the quote — no fixed site touch. Naked-eye 3D / glasses-free 3D also lands in the quote — no fixed site 3D.",
+            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the written quote from Gaziosmanpaşa — the same survey-scoped integration approach used on other ARLEDSCREEN projects (no invented AI-ready or AI-infrastructure ready product SKU). Interactive shopfront touch / touch overlay / capacitive touch also lands in the quote — no fixed site touch. Naked-eye 3D / glasses-free 3D also lands in the quote — no fixed site 3D. Curved / radius surfaces also land in the quote — no fixed site curved.",
         },
       ],
       faqs: [
@@ -1537,6 +1552,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED support naked-eye 3D / glasses-free 3D?",
           answer:
             "No fixed site 3D — we do not publish a fixed 3D, naked-eye or glasses-free 3D claim. 3D scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed 3D claim.",
+        },
+        {
+          question: "Does the LED support curved / radius surfaces?",
+          answer:
+            "No fixed site curved — we do not publish a fixed curved or radius-surface LED claim. Curve/radius scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed curved claim.",
         },
       ],
       relatedSlugs: [
