@@ -460,6 +460,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 434 | LED ekran Tap IP / Tap IP var mı? ARLEDSCREEN sabit Tap IP iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Tap IP yok** | Tap IP garantidir / sabit Tap IP True1 / tüm modeller Tap IP / Tap IP dahildir |
 | 435 | LED ekran soffit apron / saçak altı eteği var mı? ARLEDSCREEN sabit soffit apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit soffit apron yok** | soffit apron garantidir / sabit soffit apron True1 / tüm modeller soffit apron / saçak altı eteği garantidir |
 | 436 | LED ekran Room Mate / Room Mate var mı? ARLEDSCREEN sabit Room Mate iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Room Mate yok** | Room Mate garantidir / sabit Room Mate True1 / tüm modeller Room Mate / Room Mate dahildir |
+| 437 | LED ekran cornice apron / korniş eteği var mı? ARLEDSCREEN sabit cornice apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cornice apron yok** | cornice apron garantidir / sabit cornice apron True1 / tüm modeller cornice apron / korniş eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -506,7 +507,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (436 /1308)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (437 /1311)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)
