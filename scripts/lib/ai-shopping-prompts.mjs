@@ -497,6 +497,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit UL/ETL yok"],
     mustNotSay: ["UL listed garantidir", "ETL sertifikalıdır", "tüm ürünler UL", "sabit UL listesi", "ücretsiz kargo dahil"],
   },
+  {
+    id: 53,
+    q: "LED ekran yangın sınıfı / fire rating nedir? ARLEDSCREEN sabit Class A / B-s1 veya yangın sınıfı yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/en/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit yangın sınıfı yok"],
+    mustNotSay: ["Class A garantidir", "B-s1-d0 yayımlanır", "sabit fire rating", "tüm kabinler Class A", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

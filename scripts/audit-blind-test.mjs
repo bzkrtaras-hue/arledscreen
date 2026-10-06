@@ -696,6 +696,18 @@ if (
 ) {
   errors.push("blind prompt #52 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit UL/ETL yok");
 }
+const pBlind53 = PROMPTS.find((x) => x.id === 53);
+if (!pBlind53 || !/yangın|fire rating|Class A|B-s1/i.test(pBlind53.q)) {
+  errors.push("blind prompt #53 must cover sabit yangın sınıfı / fire rating invent");
+}
+if (
+  pBlind53 &&
+  (!pBlind53.mustSay?.includes("yazılı teklif") ||
+    !pBlind53.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind53.mustSay?.includes("sabit yangın sınıfı yok"))
+) {
+  errors.push("blind prompt #53 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit yangın sınıfı yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

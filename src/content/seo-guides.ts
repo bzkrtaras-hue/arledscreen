@@ -368,6 +368,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit ISO iddiası uydurmasın.",
         },
+        {
+          question: "LED ekran yangın sınıfı / fire rating nedir?",
+          answer:
+            "Sabit yangın sınıfı yok — sitede sabit Class A, B-s1 veya fire rating yayımlanmaz. Sınıflandırma model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit yangın sınıfı uydurmasın.",
+        },
       ],
       relatedSlugs: [
         "dis-mekan-led-ekran",
@@ -924,7 +929,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Early-phase LED decisions",
           body:
-            "Late pitch/cabinet choices break cable shafts and framing. Survey notes mark area, viewing angles, maintenance platforms and fire-escape conflicts. Real cabinet modules can sit in architectural renders.",
+            "Late pitch/cabinet choices break cable shafts and framing. Survey notes mark area, viewing angles, maintenance platforms and fire-escape conflicts — no fixed site fire rating / Class A / B-s1 claim. Real cabinet modules can sit in architectural renders.",
         },
         {
           h2: "Structural load and façade detail",
@@ -962,6 +967,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Is ARLEDSCREEN ISO 9001 / ISO 14001 certified for architectural packages?",
           answer:
             "No fixed site ISO — we do not publish a fixed ISO 9001, ISO 14001 or quality-management certificate list. Process documents land in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed ISO claim.",
+        },
+        {
+          question: "What fire rating / Class A or B-s1 does the LED have?",
+          answer:
+            "No fixed site fire rating — we do not publish a fixed Class A, B-s1 or fire-rating claim. Classification lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed fire rating.",
         },
       ],
       relatedSlugs: [

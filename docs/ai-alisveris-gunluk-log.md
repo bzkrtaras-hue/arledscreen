@@ -94,6 +94,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 102 | 2026-10-06 | sabit CE/RoHS #50 · /ar/ /ru/ about ARD · skor /150 | ✅ |
 | 103 | 2026-10-06 | sabit ISO #51 · EN mimari + AR/RU quote ARD · skor /153 | ✅ |
 | 104 | 2026-10-06 | sabit UL/ETL #52 · EN products + AR/RU hesaplayici ARD · skor /156 | ✅ |
+| 105 | 2026-10-06 | sabit yangın sınıfı #53 · EN konferans + AR/RU yapay-zeka ARD · skor /159 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -658,3 +659,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - about/sss/entity FAQ UL/ETL invent · llms deny · sabit güvenlik listesi yok
 - ARD: EN products + /ar/hesaplayici + /ru/hesaplayici · IndexNow +3 · agentRules sabit UL/ETL
 - skor hedef Tur 1 ≥ 78/156 · Tur 2 ≥ 117/156
+
+## Gün 105 notları
+
+- Blind #53 «yangın sınıfı / fire rating / Class A / B-s1?» — skor **/159**; ARD **53 kör test**
+- TR/EN mimari fire-rating invent · llms deny · sabit yangın sınıfı yok
+- ARD: EN konferans + /ar/yapay-zeka + /ru/yapay-zeka · IndexNow +3 · agentRules sabit yangın sınıfı
+- skor hedef Tur 1 ≥ 80/159 · Tur 2 ≥ 119/159
