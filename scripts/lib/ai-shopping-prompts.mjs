@@ -5297,6 +5297,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Logitech Rally Bar Huddle yok"],
     mustNotSay: ["Logitech Rally Bar Huddle garantidir", "sabit Logitech Rally Bar Huddle True1", "tüm modeller Logitech Rally Bar Huddle", "Rally Bar Huddle garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 453,
+    q: "LED ekran mullion / dikme profil var mı? ARLEDSCREEN sabit mullion iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit mullion yok"],
+    mustNotSay: ["mullion garantidir", "sabit mullion True1", "tüm modeller mullion", "dikme profil garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

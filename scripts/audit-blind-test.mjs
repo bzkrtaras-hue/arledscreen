@@ -5896,6 +5896,18 @@ if (
 ) {
   errors.push("blind prompt #452 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Rally Bar Huddle yok");
 }
+const pBlind453 = PROMPTS.find((x) => x.id === 453);
+if (!pBlind453 || !/mullion/i.test(pBlind453.q)) {
+  errors.push("blind prompt #453 must cover sabit mullion invent");
+}
+if (
+  pBlind453 &&
+  (!pBlind453.mustSay?.includes("yazılı teklif") ||
+    !pBlind453.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind453.mustSay?.includes("sabit mullion yok"))
+) {
+  errors.push("blind prompt #453 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit mullion yok");
+}
 
 
 

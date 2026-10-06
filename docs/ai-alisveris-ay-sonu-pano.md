@@ -72,15 +72,15 @@ Playbook: [`docs/offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
 ## D) Kör test skorları (canlı modeller)
 
-Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 429 prompt × 0–3 = /1356  
+Protokol: [`docs/ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — 429 prompt × 0–3 = /1359  
 Skor kartı (sahip doldurur): [`docs/ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
 | Tur | Tarih | ChatGPT | Gemini | Perplexity | Bing Copilot | Ort. |
 |-----|-------|---------|--------|------------|--------------|------|
-| 1 (deploy sonrası) | | /1356 | /216 | /1356 | /216 | |
-| 2 (Point C sonrası) | ≤2026-11-04 | /1356 | /216 | /1356 | /216 | |
+| 1 (deploy sonrası) | | /1359 | /216 | /1359 | /216 | |
+| 2 (Point C sonrası) | ≤2026-11-04 | /1359 | /216 | /1359 | /216 | |
 
-Hedef: Tur 1 ≥ 654/1356 · Tur 2 ≥ 981/1356
+Hedef: Tur 1 ≥ 654/1359 · Tur 2 ≥ 981/1359
 
 ## E) Merchant / Shopping
 
@@ -95,7 +95,7 @@ Hedef: Tur 1 ≥ 654/1356 · Tur 2 ≥ 981/1356
 
 - [ ] `smoke:live` GREEN
 - [ ] Point C ≥ 5 bağımsız URL aynı cite
-- [ ] Kör tur 2 ortalama ≥ 981/1356
+- [ ] Kör tur 2 ortalama ≥ 981/1359
 - [ ] Merchant feed yayında (opsiyonel ama önerilir)
 - [ ] GSC “Missing offers.price” = 0
 
