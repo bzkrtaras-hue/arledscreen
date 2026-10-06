@@ -3689,6 +3689,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit SMART Board GX yok"],
     mustNotSay: ["SMART Board GX garantidir", "sabit SMART Board GX True1", "tüm modeller SMART Board GX", "SMART Board MX garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 319,
+    q: "LED ekran weep screed / süzme şerit var mı? ARLEDSCREEN sabit weep screed iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit weep screed yok"],
+    mustNotSay: ["weep screed garantidir", "sabit weep screed True1", "tüm modeller weep screed", "süzme şerit garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
