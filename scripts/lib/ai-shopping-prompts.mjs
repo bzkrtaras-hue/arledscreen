@@ -4937,6 +4937,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Pad yok"],
     mustNotSay: ["Neat Pad garantidir", "sabit Neat Pad True1", "tüm modeller Neat Pad", "Neat Pad dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 423,
+    q: "LED ekran threshold apron / eşik eteği var mı? ARLEDSCREEN sabit threshold apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit threshold apron yok"],
+    mustNotSay: ["threshold apron garantidir", "sabit threshold apron True1", "tüm modeller threshold apron", "eşik eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

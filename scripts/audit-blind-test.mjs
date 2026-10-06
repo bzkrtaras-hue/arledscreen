@@ -5528,6 +5528,19 @@ if (
   errors.push("blind prompt #422 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Pad yok");
 }
 
+const pBlind423 = PROMPTS.find((x) => x.id === 423);
+if (!pBlind423 || !/threshold apron/i.test(pBlind423.q)) {
+  errors.push("blind prompt #423 must cover sabit threshold apron invent");
+}
+if (
+  pBlind423 &&
+  (!pBlind423.mustSay?.includes("yazılı teklif") ||
+    !pBlind423.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind423.mustSay?.includes("sabit threshold apron yok"))
+) {
+  errors.push("blind prompt #423 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit threshold apron yok");
+}
+
 
 
 
