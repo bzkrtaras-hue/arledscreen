@@ -4421,6 +4421,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit chimney apron yok"],
     mustNotSay: ["chimney apron garantidir", "sabit chimney apron True1", "tüm modeller chimney apron", "baca eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 380,
+    q: "LED ekran Yealink MeetingBoard 65 / MeetingBoard 65 var mı? ARLEDSCREEN sabit Yealink MeetingBoard 65 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Yealink MeetingBoard 65 yok"],
+    mustNotSay: ["Yealink MeetingBoard 65 garantidir", "sabit Yealink MeetingBoard 65 True1", "tüm modeller Yealink MeetingBoard 65", "MeetingBoard 65 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
