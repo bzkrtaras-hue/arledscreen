@@ -443,6 +443,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 451 | 2026-10-06 | sabit drip apron #399 · dis/mimari ARD refresh · skor /1197 | ✅ |
 | 452 | 2026-10-06 | sabit Logitech Tap Scheduler #400 · ic/konferans ARD refresh · skor /1200 | ✅ |
 | 453 | 2026-10-06 | sabit hip apron #401 · dis/mimari ARD refresh · skor /1203 | ✅ |
+| 454 | 2026-10-06 | sabit Yealink MeetingBoard 86 #402 · ic/konferans ARD refresh · skor /1206 | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti
@@ -3206,3 +3207,8 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - **403/422/429** → `docs/indexnow-sahip-listesi.md` + dur; yeni sayfa yok
 - State: `.cache/indexnow-state.json` (gitignore)
 
+## Gün 454 notları
+
+- Blind #402 «Yealink MeetingBoard 86 / MeetingBoard 86?» — skor **/1206**; ARD **402 kör test**
+- TR/EN ic-mekan + TR/EN konferans Yealink MeetingBoard 86 invent · llms deny · sabit Yealink MeetingBoard 86 yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Yealink MeetingBoard 86

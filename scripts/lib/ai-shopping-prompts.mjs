@@ -4685,6 +4685,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hip apron yok"],
     mustNotSay: ["hip apron garantidir", "sabit hip apron True1", "tüm modeller hip apron", "mahiye eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 402,
+    q: "LED ekran Yealink MeetingBoard 86 / MeetingBoard 86 var mı? ARLEDSCREEN sabit Yealink MeetingBoard 86 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Yealink MeetingBoard 86 yok"],
+    mustNotSay: ["Yealink MeetingBoard 86 garantidir", "sabit Yealink MeetingBoard 86 True1", "tüm modeller Yealink MeetingBoard 86", "MeetingBoard 86 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

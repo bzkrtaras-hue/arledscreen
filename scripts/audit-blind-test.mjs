@@ -5256,6 +5256,20 @@ if (
   errors.push("blind prompt #401 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip apron yok");
 }
 
+const pBlind402 = PROMPTS.find((x) => x.id === 402);
+if (!pBlind402 || !/Yealink MeetingBoard 86|MeetingBoard 86/i.test(pBlind402.q)) {
+  errors.push("blind prompt #402 must cover sabit Yealink MeetingBoard 86 invent");
+}
+if (
+  pBlind402 &&
+  (!pBlind402.mustSay?.includes("yazılı teklif") ||
+    !pBlind402.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind402.mustSay?.includes("sabit Yealink MeetingBoard 86 yok"))
+) {
+  errors.push("blind prompt #402 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Yealink MeetingBoard 86 yok");
+}
+
+
 
 
 
