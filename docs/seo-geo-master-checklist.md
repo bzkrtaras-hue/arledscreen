@@ -20,7 +20,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [ ] **Owner:** Google Merchant / Shopping deneyleri (yalnızca fiyatı yayımlanan paneller; uydurma fiyat yok) — checklist: [`docs/merchant-priced-panels.md`](./merchant-priced-panels.md); dry-run TSV: `/feeds/merchant-priced-panels.tsv` (`audit:merchant-feed`)
 - [ ] **Owner:** Point C — 10–20 bağımsız kaynakta aynı cite (GBP, dizin, LinkedIn) — packs: `/entity-profiles.json`
 - [ ] **Owner:** `arleds.com` → `arledscreen.com/tr/` 301
-- [x] Canlı entity/catalog/ard/profiles/ai-shopping **200** + robots bare Host — `smoke:live` **20/20** (PR #55 draft; invent yok)
+- [x] Canlı entity/catalog/ard/profiles/ai-shopping **200**; robots Function bare Host hazır — CDN HIT hâlâ şemalı Host gösterebilir (PR #55 draft; invent yok)
 
 ## P0 — Immediate (site + measurement)
 
@@ -29,7 +29,7 @@ Do **not** invent ratings, certificates, prices outside the published panel list
 - [x] City pages only for published provinces (`/tr/bolgeler/…`); Ankara/Ordu not fabricated
 - [x] `/` → `/tr/` 301; www → apex; http → https
 - [x] Home canonical = `https://arledscreen.com/tr/`; hreflang tr↔en + x-default
-- [x] `robots.txt` canlı üretim bare `Host: arledscreen.com` (Function no-store) + audit Function BODY — [`docs/robots-ai-bots.md`](./robots-ai-bots.md) (`npm run audit:robots`)
+- [x] `robots.txt` Function BODY + audit bare Host; **canlı CDN HIT** kopyası `Host: https://…` olabilir — [`docs/robots-ai-bots.md`](./robots-ai-bots.md)
 - [x] `sitemap.xml` `application/xml`, includes commercial + case study URLs
 - [x] Sitemap completeness guard — [`docs/sitemap-completeness.md`](./sitemap-completeness.md) (`npm run audit:sitemap`; 155 URLs)
 - [x] Live technical audit documented in [`docs/technical-seo-audit.md`](./technical-seo-audit.md) (canonical/hreflang/redirects/robots/sitemap PASS)
@@ -74,7 +74,7 @@ Makinece atıf: `/entity.json` · katalog: `/catalog.json` · metin: `/llms.txt`
 
 Hedef: “ARLEDSCREEN kimdir?” cevabı **yalnızca kendi siteden** gelmesin; 10–20 güvenilir dış kaynakta aynı olgu doğrulansın.
 
-Durum (2026-10-06): site A/B JSON 200 + robots bare Host (`smoke:live` 20/20); Point C paste = 0 (sahip). Tracker: playbook §0d.
+Durum (2026-10-06): JSON 200; robots Function bare / CDN HIT şemalı Host; Point C paste = 0 (sahip). Tracker: playbook §0d.
 
 - [x] Machine-readable `public/entity.json` (Organization + cite + FAQs)
 - [x] Off-site playbook: gap audit + 14-gün P0 sıra + 20-kaynak tracker (yapıştırma metinleri repo içi)

@@ -1,4 +1,13 @@
 
+## Host — çift cevap gerçeği (2026-10-06)
+
+- Function/BYPASS: `Host: arledscreen.com` (doğru)
+- CDN HIT max-age=14400: `Host: https://arledscreen.com` (şemalı; hâlâ duruyor)
+- Zone cache purge 401 (token) — sahip purge veya TTL
+- “Canlı Host düzeldi” iddiası HIT bitmeden doğru değil
+- JSON 200; invent yok; PR draft; `_headers` /robots.txt → no-store
+
+
 
 ## Host satırı — üretim düzeltildi (2026-10-06)
 

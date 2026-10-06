@@ -1,5 +1,7 @@
 # robots.txt — Bing / AI bot Allow + Host (Gün 24)
 
+> **Canlı not (2026-10-06):** Custom domain ara sıra CDN HIT ile eski `Host: https://arledscreen.com` döndürebilir. Function/origin bare `Host: arledscreen.com`. Purge veya TTL.
+
 Son güncelleme: 2026-10-05  
 Guard: `npm run audit:robots` (postbuild)
 

@@ -3,7 +3,7 @@
 Hedef: PR #55 deploy olduktan **aynı gün** canlı AI yüzeyleri + bağımsız atıf başlasın.
 Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/entity-profiles.json) · playbook: [`offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
-**Durum (2026-10-06 doğrulama):** Canlı `entity.json` · `catalog.json` · `ai-shopping.json` · `ard.json` · `entity-profiles.json` → **GET 200**. `robots.txt` üretim Function: bare `Host: arledscreen.com` + Yandex/DuckDuck + no-store (şemalı Host giderildi). `smoke:live` **20/20**. IndexNow bildirim POST 200 yapıldı. PR #55 **draft**; yeni invent yok. **Sahip sırası:** Point C paste + kör tur.
+**Durum (2026-10-06 doğrulama):** Canlı AI JSON **GET 200**. `robots.txt` **çift cevap**: (1) Function/BYPASS/no-store → bare `Host: arledscreen.com` + Yandex/DuckDuck; (2) CDN **HIT** `max-age=14400` → hâlâ `Host: https://arledscreen.com` (şemalı; Yandex/DuckDuck yok). Önbellek iddiası tek başına yetmez; şemalı satır HIT kopyasında duruyor. Zone purge token yok — TTL bitene veya sahip purge. `pages.dev` sürekli bare. PR #55 **draft**; invent yok. IndexNow bildirim yapıldı. **Sahip:** Point C paste + kör tur + (isteğe) CF cache purge `/robots.txt`.
 
 Pre-merge (opsiyonel, zaten yeşil olmalı):
 
@@ -26,7 +26,7 @@ npm run smoke:live
 npm run post-deploy
 ```
 
-Hedef: **20/20 PASS**. Doğrulandı 2026-10-06 (JSON 200 + robots bare Host).
+Hedef: **20/20 PASS**. JSON 200 sabit; robots smoke CDN HIT yüzünden ara sıra CONTENT (19/20).
 
 | URL | Beklenen |
 |-----|----------|

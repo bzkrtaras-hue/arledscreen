@@ -27,9 +27,9 @@
   Cache-Control: public, max-age=3600
 
 /robots.txt
-  Cache-Control: public, max-age=60, must-revalidate
-  CDN-Cache-Control: max-age=60
-  Cloudflare-CDN-Cache-Control: max-age=60
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
   Content-Type: text/plain; charset=utf-8
 
 
