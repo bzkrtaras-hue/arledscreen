@@ -135,6 +135,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 143 | 2026-10-06 | sabit zamanlayıcı #91 · kiosk/poster ARD refresh · skor /273 | ✅ |
 | 144 | 2026-10-06 | sabit flight case #92 · konferans/kiralik ARD refresh · skor /276 | ✅ |
 | 145 | 2026-10-06 | sabit köşe LED #93 · vitrin/mimari ARD refresh · skor /279 | ✅ |
+| 146 | 2026-10-06 | sabit enerji sınıfı #94 · dis/ic ARD refresh · skor /282 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -987,3 +988,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN vitrin + TR/EN mimari köşe LED invent · llms deny · sabit köşe LED yok
 - ARD refresh: rehber vitrin/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit köşe LED
 - skor hedef Tur 1 ≥ 140/279 · Tur 2 ≥ 210/279
+
+## Gün 146 notları
+
+- Blind #94 «enerji sınıfı / energy class?» — skor **/282**; ARD **94 kör test**
+- TR/EN dis-mekan + TR/EN ic-mekan enerji sınıfı invent · llms deny · sabit enerji sınıfı yok
+- ARD refresh: rehber dis/ic + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit enerji sınıfı
+- skor hedef Tur 1 ≥ 141/282 · Tur 2 ≥ 212/282

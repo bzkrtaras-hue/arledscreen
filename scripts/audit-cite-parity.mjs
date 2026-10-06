@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/93 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 93 kör test intent (not stale 17–92)");
+if (ardTxt && !/94 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 94 kör test intent (not stale 17–93)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–92 kör test without 93");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–93 kör test without 94");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1397,6 +1397,21 @@ for (const rel of [
   }
   if (/köşe LED garantidir|sabit corner LED|tüm modeller corner LED|corner LED garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit köşe LED`);
+  }
+}
+
+// Day 146: sabit enerji sınıfı / energy class — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit enerji sınıfı yok|no fixed site energy class/i.test(html)) {
+    errors.push(`${rel} should hedge sabit enerji sınıfı / energy class`);
+  }
+  if (/enerji sınıfı garantidir|sabit energy class|tüm modeller energy class|energy class garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit enerji sınıfı`);
   }
 }
 

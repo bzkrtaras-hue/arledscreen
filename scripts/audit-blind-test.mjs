@@ -1226,6 +1226,19 @@ if (
   errors.push("blind prompt #93 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit köşe LED yok");
 }
 
+const pBlind94 = PROMPTS.find((x) => x.id === 94);
+if (!pBlind94 || !/enerji sınıfı|energy class/i.test(pBlind94.q)) {
+  errors.push("blind prompt #94 must cover sabit enerji sınıfı invent");
+}
+if (
+  pBlind94 &&
+  (!pBlind94.mustSay?.includes("yazılı teklif") ||
+    !pBlind94.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind94.mustSay?.includes("sabit enerji sınıfı yok"))
+) {
+  errors.push("blind prompt #94 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit enerji sınıfı yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

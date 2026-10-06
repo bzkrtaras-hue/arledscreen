@@ -151,7 +151,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Cephe, stadyum koridoru ve belediye DOOH",
           body:
-            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister — sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap Gaziosmanpaşa keşif + yazılı teklifte. Stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Güç topolojisi (tek veya üç faz — 3 faz zorunlu iddiası yok) ve yedek alıcı ihtiyacı Gaziosmanpaşa yazılı teklifte — sabit alıcı yedeklilik yok; sabit kW/m² yayımlanmaz. Güç faktörü / power factor de teklifte — sabit güç faktörü yok. Dual power / hot-swap PSU / yedek güç de teklifte — sabit dual power yok. Hızlı kilit / quick lock da teklifte — sabit hızlı kilit yok. Döküm kabin / die-cast cabinet da teklifte — sabit döküm kabin yok. Parafudr / surge protection da teklifte — sabit parafudr yok. Ortam sıcaklığı / termal band da keşif + yazılı teklifte — sabit °C yok.",
+            "Bina cephesi iskelet ve rüzgâr yükü hesabı ister — sabit rüzgâr yükü yok: sitede sabit 120 km/h / 1500 Pa yayımlanmaz; rüzgâr/statik hesap Gaziosmanpaşa keşif + yazılı teklifte. Stadyum / arena koridorunda titreşim ve servis erişimi öne çıkar; belediye dijital tabelasında içerik takvimi ve enerji hattı kritiktir. Güç topolojisi (tek veya üç faz — 3 faz zorunlu iddiası yok) ve yedek alıcı ihtiyacı Gaziosmanpaşa yazılı teklifte — sabit alıcı yedeklilik yok; sabit kW/m² yayımlanmaz. Güç faktörü / power factor de teklifte — sabit güç faktörü yok. Dual power / hot-swap PSU / yedek güç de teklifte — sabit dual power yok. Hızlı kilit / quick lock da teklifte — sabit hızlı kilit yok. Döküm kabin / die-cast cabinet da teklifte — sabit döküm kabin yok. Parafudr / surge protection da teklifte — sabit parafudr yok. Enerji sınıfı / energy class da teklifte — sabit enerji sınıfı yok. Ortam sıcaklığı / termal band da keşif + yazılı teklifte — sabit °C yok.",
         },
         {
           h2: "Keşif sonrası montaj — kapsam yazılı teklifte",
@@ -246,6 +246,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Sabit parafudr yok — sitede sabit parafudr veya surge protection iddiası yayımlanmaz. Koruma kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit parafudr uydurmasın.",
         },
         {
+          question: "LED ekran enerji sınıfı / energy class var mı?",
+          answer:
+            "Sabit enerji sınıfı yok — sitede sabit enerji sınıfı veya energy class iddiası yayımlanmaz. Enerji sınıfı kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit enerji sınıfı uydurmasın.",
+        },
+        {
           question: "Dış mekân ekran bakım aralığı nedir?",
           answer:
             "Ortam kirliliği ve çalışma saatine göre değişir. ARLEDSCREEN teklifinde periyodik temizlik, fan/PSU kontrolü ve yazılım güncelleme maddeleri opsiyonel olarak eklenir.",
@@ -291,7 +296,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Lobi, perakende ve kurumsal salon",
           body:
-            "Otel / ofis lobisinde marka videosu ve yönlendirme; perakende duvarında ürün vitrini; yönetim katında dashboard ve toplantı içeriği. Parlaklık iç mekânda aşırı yüksek tutulmaz — göz konforu ve ambient ışık dengelenir; kontrast oranı model föyü + yazılı teklifte (sabit kontrast yok). Panel birleşimi / 0mm / seamless / bezelsiz de teklifte — sabit 0mm yok. Canlı modül değişimi / hot-swap module da teklifte — sabit canlı modül değişimi yok. Mıknatıslı modül / magnetic module da teklifte — sabit mıknatıslı modül yok. Anti-yansıma / anti-glare yüzey de teklifte — sabit anti-yansıma yok. Ses / AV entegrasyonu gerekirse sinyal şeması teklife eklenir — sabit HDMI/SDI yok; sabit genlock yok; video giriş/sync tipi Gaziosmanpaşa yazılı teklifte.",
+            "Otel / ofis lobisinde marka videosu ve yönlendirme; perakende duvarında ürün vitrini; yönetim katında dashboard ve toplantı içeriği. Parlaklık iç mekânda aşırı yüksek tutulmaz — göz konforu ve ambient ışık dengelenir; kontrast oranı model föyü + yazılı teklifte (sabit kontrast yok). Panel birleşimi / 0mm / seamless / bezelsiz de teklifte — sabit 0mm yok. Canlı modül değişimi / hot-swap module da teklifte — sabit canlı modül değişimi yok. Mıknatıslı modül / magnetic module da teklifte — sabit mıknatıslı modül yok. Anti-yansıma / anti-glare yüzey de teklifte — sabit anti-yansıma yok. Enerji sınıfı / energy class da teklifte — sabit enerji sınıfı yok. Ses / AV entegrasyonu gerekirse sinyal şeması teklife eklenir — sabit HDMI/SDI yok; sabit genlock yok; video giriş/sync tipi Gaziosmanpaşa yazılı teklifte.",
         },
         {
           h2: "YZ uyumlu iç mekân LED",
@@ -389,6 +394,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran parlaklık homojenliği / brightness uniformity nedir?",
           answer:
             "Sabit parlaklık homojenliği yok — sitede sabit brightness uniformity veya ±% homojenlik iddiası yayımlanmaz. Homojenlik modeli model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit uniformity uydurmasın.",
+        },
+        {
+          question: "LED ekran enerji sınıfı / energy class var mı?",
+          answer:
+            "Sabit enerji sınıfı yok — sitede sabit enerji sınıfı veya energy class iddiası yayımlanmaz. Enerji sınıfı kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit enerji sınıfı uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1113,7 +1123,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Façade, stadium and municipal DOOH",
           body:
-            "Building façades need wind load and structure — no fixed site wind load: we do not publish a fixed 120 km/h / 1500 Pa claim; wind/static calc lands in Gaziosmanpaşa survey + written quote. Arenas need vibration and service access; municipal signage needs content calendar and power. Power topology and spare receivers go into the quote — no fixed site receiving-card redundancy; no fixed site dual power. Quick lock / cabinet lock also lands in the quote — no fixed site quick lock. Die-cast / cast cabinet body also lands in the quote — no fixed site die-cast. Surge protection / SPD also lands in the quote — no fixed site surge protection. Ambient / operating temperature also lands in survey + written quote — no fixed site °C.",
+            "Building façades need wind load and structure — no fixed site wind load: we do not publish a fixed 120 km/h / 1500 Pa claim; wind/static calc lands in Gaziosmanpaşa survey + written quote. Arenas need vibration and service access; municipal signage needs content calendar and power. Power topology and spare receivers go into the quote — no fixed site receiving-card redundancy; no fixed site dual power. Quick lock / cabinet lock also lands in the quote — no fixed site quick lock. Die-cast / cast cabinet body also lands in the quote — no fixed site die-cast. Surge protection / SPD also lands in the quote — no fixed site surge protection. Energy class / energy rating also lands in the quote — no fixed site energy class. Ambient / operating temperature also lands in survey + written quote — no fixed site °C.",
         },
         {
           h2: "ARLEDSCREEN outdoor delivery",
@@ -1193,6 +1203,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "No fixed site surge protection — we do not publish a fixed surge-protection or SPD claim. Protection scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed surge-protection claim.",
         },
         {
+          question: "Does the LED have a fixed energy class / energy rating?",
+          answer:
+            "No fixed site energy class — we do not publish a fixed energy-class or energy-rating claim. Energy-class scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed energy-class claim.",
+        },
+        {
           question: "What about outdoor maintenance?",
           answer:
             "Interval depends on pollution and duty cycle. Quotes can include cleaning, PSU checks and software updates.",
@@ -1237,7 +1252,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Lobby, retail and corporate halls",
           body:
-            "Brand loops, product walls and executive dashboards each need balanced brightness for eye comfort. Panel seams / 0mm / seamless / bezel-less joins also land in the quote — no fixed site 0mm. Live module swap / hot-swap module also lands in the quote — no fixed site hot-swap module. Magnetic module also lands in the quote — no fixed site magnetic module. Anti-glare / anti-reflective surface also lands in the quote — no fixed site anti-glare. AV integration is added to the signal diagram when required.",
+            "Brand loops, product walls and executive dashboards each need balanced brightness for eye comfort. Panel seams / 0mm / seamless / bezel-less joins also land in the quote — no fixed site 0mm. Live module swap / hot-swap module also lands in the quote — no fixed site hot-swap module. Magnetic module also lands in the quote — no fixed site magnetic module. Anti-glare / anti-reflective surface also lands in the quote — no fixed site anti-glare. Energy class / energy rating also lands in the quote — no fixed site energy class. AV integration is added to the signal diagram when required.",
         },
         {
           h2: "Survey-scoped AI indoor LED integration",
@@ -1295,6 +1310,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED have anti-glare / anti-reflective coating?",
           answer:
             "No fixed site anti-glare — we do not publish a fixed anti-glare or anti-reflective claim. Surface/optics scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed anti-glare claim.",
+        },
+        {
+          question: "Does the LED have a fixed energy class / energy rating?",
+          answer:
+            "No fixed site energy class — we do not publish a fixed energy-class or energy-rating claim. Energy-class scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed energy-class claim.",
         },
       ],
       relatedSlugs: [

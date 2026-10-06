@@ -989,6 +989,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit köşe LED yok"],
     mustNotSay: ["köşe LED garantidir", "sabit corner LED", "tüm modeller corner LED", "corner LED garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 94,
+    q: "LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit enerji sınıfı yok"],
+    mustNotSay: ["enerji sınıfı garantidir", "sabit energy class", "tüm modeller energy class", "energy class garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
