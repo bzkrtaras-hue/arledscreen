@@ -3392,3 +3392,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #405 «base apron / taban eteği?» — skor **/1215**; ARD **405 kör test**
 - TR/EN dis-mekan + TR/EN mimari base apron invent · llms deny · sabit base apron yok
 - ARD refresh: rehber dis/mimari + priced gob · agentRules sabit base apron
+
+## Gün 474 — SEO denetim checklist
+
+- Canonical/www/HTTPS/robots/sitemap/schema/iç bağlantı: geçti (canlı)
+- Lighthouse mobil home Perf 89 / SEO 100; video poster JPG→WebP
+- Google indeksleme: sahip GSC URL Inspection
+

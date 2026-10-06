@@ -21,7 +21,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "lounge-fine-pitch-fox",
     src: "/videos/lounge-fine-pitch-fox.mp4",
-    poster: "/videos/lounge-fine-pitch-fox.jpg",
+    poster: "/videos/lounge-fine-pitch-fox.webp",
     width: 1080,
     height: 1920,
     title: "Lounge — İnce Pitch LED Duvar",
@@ -30,7 +30,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "lounge-gob-install",
     src: "/videos/lounge-gob-install.mp4",
-    poster: "/videos/lounge-gob-install.jpg",
+    poster: "/videos/lounge-gob-install.webp",
     width: 1080,
     height: 1920,
     title: "Lounge — GOB LED Montaj",
@@ -39,7 +39,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "event-lounge-led-wall",
     src: "/videos/event-lounge-led-wall.mp4",
-    poster: "/videos/event-lounge-led-wall.jpg",
+    poster: "/videos/event-lounge-led-wall.webp",
     width: 720,
     height: 1280,
     title: "Etkinlik Lounge — LED Sahne Duvarı",
@@ -48,7 +48,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "immersive-ceiling-led-tunnel",
     src: "/videos/immersive-ceiling-led-tunnel.mp4",
-    poster: "/videos/immersive-ceiling-led-tunnel.jpg",
+    poster: "/videos/immersive-ceiling-led-tunnel.webp",
     width: 720,
     height: 986,
     title: "İmmersif LED — Tavan ve Yan Duvar",
@@ -57,7 +57,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "club-immersive-led-stage",
     src: "/videos/club-immersive-led-stage.mp4",
-    poster: "/videos/club-immersive-led-stage.jpg",
+    poster: "/videos/club-immersive-led-stage.webp",
     width: 1080,
     height: 1920,
     title: "Kulüp — İmmersif LED Sahne",
@@ -66,7 +66,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "lounge-aquarium-wall",
     src: "/videos/lounge-aquarium-wall.mp4",
-    poster: "/videos/lounge-aquarium-wall.jpg",
+    poster: "/videos/lounge-aquarium-wall.webp",
     width: 1280,
     height: 720,
     title: "Lounge — Akvaryum İçerikli LED Duvar",
@@ -75,7 +75,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "lounge-football-night",
     src: "/videos/lounge-football-night.mp4",
-    poster: "/videos/lounge-football-night.jpg",
+    poster: "/videos/lounge-football-night.webp",
     width: 848,
     height: 480,
     title: "Lounge — Gece Maç Yayını",
@@ -84,7 +84,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "curved-mobile-led-podium",
     src: "/videos/curved-mobile-led-podium.mp4",
-    poster: "/videos/curved-mobile-led-podium.jpg",
+    poster: "/videos/curved-mobile-led-podium.webp",
     width: 1280,
     height: 720,
     title: "Kavisli Mobil LED Podyum",
@@ -93,7 +93,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "showroom-wall-arled-branding",
     src: "/videos/showroom-wall-arled-branding.mp4",
-    poster: "/videos/showroom-wall-arled-branding.jpg",
+    poster: "/videos/showroom-wall-arled-branding.webp",
     width: 848,
     height: 478,
     title: "Showroom — Marka İçerikli LED Duvar",
@@ -102,7 +102,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "outdoor-event-led-truss",
     src: "/videos/outdoor-event-led-truss.mp4",
-    poster: "/videos/outdoor-event-led-truss.jpg",
+    poster: "/videos/outdoor-event-led-truss.webp",
     width: 1280,
     height: 720,
     title: "Açık Hava Etkinlik — LED Truss Montajı",
@@ -111,7 +111,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "sphere-led-showroom",
     src: "/videos/sphere-led-showroom.mp4",
-    poster: "/videos/sphere-led-showroom.jpg",
+    poster: "/videos/sphere-led-showroom.webp",
     width: 1280,
     height: 720,
     title: "Küre LED Ekran — Showroom",
@@ -120,7 +120,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "flexible-module-bend-demo",
     src: "/videos/flexible-module-bend-demo.mp4",
-    poster: "/videos/flexible-module-bend-demo.jpg",
+    poster: "/videos/flexible-module-bend-demo.webp",
     width: 1080,
     height: 1920,
     title: "Esnek LED Modül — Bükülme Demo",
@@ -129,7 +129,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "club-curved-led-ribbon",
     src: "/videos/club-curved-led-ribbon.mp4",
-    poster: "/videos/club-curved-led-ribbon.jpg",
+    poster: "/videos/club-curved-led-ribbon.webp",
     width: 848,
     height: 480,
     title: "Kulüp — Kavisli LED ve Şerit Ekran",
@@ -138,7 +138,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "eskisehir-sigorta-led-ekran-vitrin",
     src: "/videos/eskisehir-sigorta-led-ekran-vitrin.mp4",
-    poster: "/videos/eskisehir-sigorta-led-ekran-vitrin.jpg",
+    poster: "/videos/eskisehir-sigorta-led-ekran-vitrin.webp",
     width: 1280,
     height: 720,
     title: "Sinan Polat Sigorta Eskişehir Şubesi",
@@ -148,7 +148,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "kafe-led-ekran-uygulamasi",
     src: "/videos/kafe-led-ekran-uygulamasi.mp4",
-    poster: "/videos/kafe-led-ekran-uygulamasi.jpg",
+    poster: "/videos/kafe-led-ekran-uygulamasi.webp",
     width: 720,
     height: 1280,
     title: "Kafe ve Lounge İçin Üç Ekranlı Uygulama",
@@ -158,7 +158,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "ic-mekan-led-ekran-montaji",
     src: "/videos/ic-mekan-led-ekran-montaji.mp4",
-    poster: "/videos/ic-mekan-led-ekran-montaji.jpg",
+    poster: "/videos/ic-mekan-led-ekran-montaji.webp",
     width: 720,
     height: 1280,
     title: "İç Mekân LED Duvar: Montajdan İlk Görüntüye",
@@ -167,7 +167,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "istanbul-drama-sanat-atolyesi-dis-mekan-led",
     src: "/videos/istanbul-drama-sanat-atolyesi-dis-mekan-led.mp4",
-    poster: "/videos/istanbul-drama-sanat-atolyesi-dis-mekan-led.jpg",
+    poster: "/videos/istanbul-drama-sanat-atolyesi-dis-mekan-led.webp",
     width: 720,
     height: 960,
     title: "İstanbul'da Cephe Uygulaması",
@@ -177,7 +177,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "manisa-kulup-oval-led-ekran",
     src: "/videos/manisa-kulup-oval-led-ekran.mp4",
-    poster: "/videos/manisa-kulup-oval-led-ekran.jpg",
+    poster: "/videos/manisa-kulup-oval-led-ekran.webp",
     width: 720,
     height: 1280,
     title: "Manisa'da Kulüp İçi Oval LED Ekran",
@@ -187,7 +187,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "eskisehir-sigorta-led-ekran-ic",
     src: "/videos/eskisehir-sigorta-led-ekran-ic.mp4",
-    poster: "/videos/eskisehir-sigorta-led-ekran-ic.jpg",
+    poster: "/videos/eskisehir-sigorta-led-ekran-ic.webp",
     width: 1280,
     height: 720,
     title: "Eskişehir Şubesi: Cepheden İç Mekâna",
@@ -197,7 +197,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
   {
     slug: "aslanturk-yesilpinar-led-ekran",
     src: "/videos/aslanturk-yesilpinar-led-ekran.mp4",
-    poster: "/videos/aslanturk-yesilpinar-led-ekran.jpg",
+    poster: "/videos/aslanturk-yesilpinar-led-ekran.webp",
     width: 720,
     height: 1280,
     title: "Yeşilpınar'da Restoran Cephesi",
