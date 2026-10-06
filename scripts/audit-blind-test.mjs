@@ -1896,6 +1896,20 @@ if (
   errors.push("blind prompt #142 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit matrix switcher yok");
 }
 
+
+const pBlind143 = PROMPTS.find((x) => x.id === 143);
+if (!pBlind143 || !/ballast|karşı ağırlık/i.test(pBlind143.q)) {
+  errors.push("blind prompt #143 must cover sabit ballast invent");
+}
+if (
+  pBlind143 &&
+  (!pBlind143.mustSay?.includes("yazılı teklif") ||
+    !pBlind143.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind143.mustSay?.includes("sabit ballast yok"))
+) {
+  errors.push("blind prompt #143 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ballast yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 

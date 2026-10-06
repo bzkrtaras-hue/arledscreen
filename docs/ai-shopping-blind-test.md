@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 194: blind #142 sabit matrix switcher invent)  
+Son güncelleme: 2026-10-06 (Gün 195: blind #143 sabit ballast invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 142 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 143 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 142 prompt (alışveriş + varlık)
+## 143 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -166,6 +166,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 140 | LED ekran junction box / buat var mı? ARLEDSCREEN sabit junction box iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit junction box yok** | junction box garantidir / sabit junction box True1 / tüm modeller junction box / buat garantidir |
 | 141 | LED ekran leveling foot / ayar ayağı var mı? ARLEDSCREEN sabit leveling foot iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit leveling foot yok** | leveling foot garantidir / sabit leveling foot True1 / tüm modeller leveling foot / ayar ayağı garantidir |
 | 142 | LED ekran matrix switcher / matris switch var mı? ARLEDSCREEN sabit matrix switcher iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit matrix switcher yok** | matrix switcher garantidir / sabit matrix switcher True1 / tüm modeller matrix switcher / matris switch garantidir |
+| 143 | LED ekran ballast / karşı ağırlık var mı? ARLEDSCREEN sabit ballast iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ballast yok** | ballast garantidir / sabit ballast True1 / tüm modeller ballast / karşı ağırlık garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -176,7 +177,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 426. Hedef tur 1 ≥ 213/426; tur 2 (Point C sonrası) ≥ 320/426.
+**Tur skoru** = toplam / 429. Hedef tur 1 ≥ 215/429; tur 2 (Point C sonrası) ≥ 322/429.
 
 ### Canlı tur kayıt şablonu
 

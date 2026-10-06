@@ -184,6 +184,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 192 | 2026-10-06 | sabit junction box #140 · ic/konferans ARD refresh · skor /420 | ✅ |
 | 193 | 2026-10-06 | sabit leveling foot #141 · dis/mimari ARD refresh · skor /423 | ✅ |
 | 194 | 2026-10-06 | sabit matrix switcher #142 · ic/konferans ARD refresh · skor /426 | ✅ |
+| 195 | 2026-10-06 | sabit ballast #143 · dis/mimari ARD refresh · skor /429 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1379,4 +1380,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans matrix switcher invent · llms deny · sabit matrix switcher yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit matrix switcher
 - skor hedef Tur 1 ≥ 213/426 · Tur 2 ≥ 320/426
+
+## Gün 195 notları
+
+- Blind #143 «ballast / karşı ağırlık?» — skor **/429**; ARD **143 kör test**
+- TR/EN dis-mekan + TR/EN mimari ballast invent · llms deny · sabit ballast yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit ballast
+- skor hedef Tur 1 ≥ 215/429 · Tur 2 ≥ 322/429
 

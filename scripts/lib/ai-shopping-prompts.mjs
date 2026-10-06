@@ -1577,6 +1577,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit matrix switcher yok"],
     mustNotSay: ["matrix switcher garantidir", "sabit matrix switcher True1", "tüm modeller matrix switcher", "matris switch garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 143,
+    q: "LED ekran ballast / karşı ağırlık var mı? ARLEDSCREEN sabit ballast iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ballast yok"],
+    mustNotSay: ["ballast garantidir", "sabit ballast True1", "tüm modeller ballast", "karşı ağırlık garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
