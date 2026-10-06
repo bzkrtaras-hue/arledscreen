@@ -4913,6 +4913,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Bar Pro yok"],
     mustNotSay: ["Neat Bar Pro garantidir", "sabit Neat Bar Pro True1", "tüm modeller Neat Bar Pro", "Neat Bar Pro dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 421,
+    q: "LED ekran door apron / kapı eteği var mı? ARLEDSCREEN sabit door apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit door apron yok"],
+    mustNotSay: ["door apron garantidir", "sabit door apron True1", "tüm modeller door apron", "kapı eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
