@@ -2838,6 +2838,20 @@ if (
   errors.push("blind prompt #215 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit step flashing yok");
 }
 
+const pBlind216 = PROMPTS.find((x) => x.id === 216);
+if (!pBlind216 || !/Bose|soundbar/i.test(pBlind216.q)) {
+  errors.push("blind prompt #216 must cover sabit Bose invent");
+}
+if (
+  pBlind216 &&
+  (!pBlind216.mustSay?.includes("yazılı teklif") ||
+    !pBlind216.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind216.mustSay?.includes("sabit Bose yok"))
+) {
+  errors.push("blind prompt #216 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Bose yok");
+}
+
+
 
 
 

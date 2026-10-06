@@ -2453,6 +2453,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit step flashing yok"],
     mustNotSay: ["step flashing garantidir", "sabit step flashing True1", "tüm modeller step flashing", "basamak flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 216,
+    q: "LED ekran Bose / soundbar var mı? ARLEDSCREEN sabit Bose iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Bose yok"],
+    mustNotSay: ["Bose garantidir", "sabit Bose True1", "tüm modeller Bose", "soundbar garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

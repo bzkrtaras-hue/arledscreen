@@ -257,6 +257,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 265 | 2026-10-06 | sabit valley flashing #213 · dis/mimari ARD refresh · skor /639 | ✅ |
 | 266 | 2026-10-06 | sabit Lifesize #214 · ic/konferans ARD refresh · skor /642 | ✅ |
 | 267 | 2026-10-06 | sabit step flashing #215 · dis/mimari ARD refresh · skor /645 | ✅ |
+| 268 | 2026-10-06 | sabit Bose #216 · ic/konferans ARD refresh · skor /648 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1894,3 +1895,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #215 «step flashing / basamak flaş?» — skor **/645**; ARD **215 kör test**
 - TR/EN dis-mekan + TR/EN mimari step flashing invent · llms deny · sabit step flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit step flashing
+
+## Gün 268 notları
+
+- Blind #216 «Bose / soundbar?» — skor **/648**; ARD **216 kör test**
+- TR/EN ic-mekan + TR/EN konferans Bose invent · llms deny · sabit Bose yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Bose
