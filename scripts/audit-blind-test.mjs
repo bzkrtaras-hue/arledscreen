@@ -4918,6 +4918,20 @@ if (
   errors.push("blind prompt #375 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kick-out apron yok");
 }
 
+const pBlind376 = PROMPTS.find((x) => x.id === 376);
+if (!pBlind376 || !/Samsung WM Series|Samsung WM/i.test(pBlind376.q)) {
+  errors.push("blind prompt #376 must cover sabit Samsung WM Series invent");
+}
+if (
+  pBlind376 &&
+  (!pBlind376.mustSay?.includes("yazılı teklif") ||
+    !pBlind376.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind376.mustSay?.includes("sabit Samsung WM Series yok"))
+) {
+  errors.push("blind prompt #376 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Samsung WM Series yok");
+}
+
+
 
 
 

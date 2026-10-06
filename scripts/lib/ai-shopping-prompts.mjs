@@ -4373,6 +4373,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kick-out apron yok"],
     mustNotSay: ["kick-out apron garantidir", "sabit kick-out apron True1", "tüm modeller kick-out apron", "çıkış eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 376,
+    q: "LED ekran Samsung WM Series / Samsung WM var mı? ARLEDSCREEN sabit Samsung WM Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Samsung WM Series yok"],
+    mustNotSay: ["Samsung WM Series garantidir", "sabit Samsung WM Series True1", "tüm modeller Samsung WM Series", "Samsung WM garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
