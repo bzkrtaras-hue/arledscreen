@@ -4865,6 +4865,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Frame yok"],
     mustNotSay: ["Neat Frame garantidir", "sabit Neat Frame True1", "tüm modeller Neat Frame", "Neat Frame dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 417,
+    q: "LED ekran lintel apron / lintel eteği var mı? ARLEDSCREEN sabit lintel apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit lintel apron yok"],
+    mustNotSay: ["lintel apron garantidir", "sabit lintel apron True1", "tüm modeller lintel apron", "lintel eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

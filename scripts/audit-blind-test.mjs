@@ -5450,6 +5450,19 @@ if (
   errors.push("blind prompt #416 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Frame yok");
 }
 
+const pBlind417 = PROMPTS.find((x) => x.id === 417);
+if (!pBlind417 || !/lintel apron|lintel eteği/i.test(pBlind417.q)) {
+  errors.push("blind prompt #417 must cover sabit lintel apron invent");
+}
+if (
+  pBlind417 &&
+  (!pBlind417.mustSay?.includes("yazılı teklif") ||
+    !pBlind417.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind417.mustSay?.includes("sabit lintel apron yok"))
+) {
+  errors.push("blind prompt #417 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit lintel apron yok");
+}
+
 
 
 
