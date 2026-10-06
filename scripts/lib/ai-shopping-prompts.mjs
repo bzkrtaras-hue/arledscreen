@@ -3437,6 +3437,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cant cleat yok"],
     mustNotSay: ["cant cleat garantidir", "sabit cant cleat True1", "tüm modeller cant cleat", "kant kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 298,
+    q: "LED ekran Microsoft Teams Display / Teams Display var mı? ARLEDSCREEN sabit Microsoft Teams Display iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Microsoft Teams Display yok"],
+    mustNotSay: ["Microsoft Teams Display garantidir", "sabit Microsoft Teams Display True1", "tüm modeller Microsoft Teams Display", "Teams Display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

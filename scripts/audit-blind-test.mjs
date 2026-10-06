@@ -3904,6 +3904,20 @@ if (
   errors.push("blind prompt #297 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cant cleat yok");
 }
 
+const pBlind298 = PROMPTS.find((x) => x.id === 298);
+if (!pBlind298 || !/Microsoft Teams Display|Teams Display/i.test(pBlind298.q)) {
+  errors.push("blind prompt #298 must cover sabit Microsoft Teams Display invent");
+}
+if (
+  pBlind298 &&
+  (!pBlind298.mustSay?.includes("yazılı teklif") ||
+    !pBlind298.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind298.mustSay?.includes("sabit Microsoft Teams Display yok"))
+) {
+  errors.push("blind prompt #298 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Microsoft Teams Display yok");
+}
+
+
 
 
 
