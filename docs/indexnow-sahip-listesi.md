@@ -6,3 +6,4 @@ IndexNow bildirimi **indeks / AI anılması / P0 kapısını açmaz**.
 | Zaman (UTC) | HTTP | URL | Not |
 |-------------|------|-----|-----|
 | 2026-10-06T22:18:33.652Z | 429 | https://arledscreen.com/tr/rehber/piksel-araligi-secimi/ | {"errorCode":"TooManyRequests","message":"We're sorry, but you have sent too many requests to us recently.","details":null} |
+| 2026-10-06T22:26:37.767Z | 429 | https://arledscreen.com/ai-shopping.json | {"errorCode":"TooManyRequests","message":"We're sorry, but you have sent too many requests to us recently.","details":null} |
