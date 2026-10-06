@@ -388,6 +388,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 396 | 2026-10-06 | sabit InFocus Mondopad #344 · ic/konferans ARD refresh · skor /1032 | ✅ |
 | 397 | 2026-10-06 | sabit edge metal #345 · dis/mimari ARD refresh · skor /1035 | ✅ |
 | 398 | 2026-10-06 | sabit Newline Elite #346 · ic/konferans ARD refresh · skor /1038 | ✅ |
+| 399 | 2026-10-06 | sabit vent flashing #347 · dis/mimari ARD refresh · skor /1041 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2811,3 +2812,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #346 «Newline Elite / Newline RS Series?» — skor **/1038**; ARD **346 kör test**
 - TR/EN ic-mekan + TR/EN konferans Newline Elite invent · llms deny · sabit Newline Elite yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Newline Elite
+
+## Gün 399 notları
+
+- Blind #347 «vent flashing / havalandırma flaşör?» — skor **/1041**; ARD **347 kör test**
+- TR/EN dis-mekan + TR/EN mimari vent flashing invent · llms deny · sabit vent flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit vent flashing
