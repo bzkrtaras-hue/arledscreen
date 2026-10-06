@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 115) errors.push(`blindTestPrompts must be 115 (got ${prompts.length})`);
+if (prompts.length !== 116) errors.push(`blindTestPrompts must be 116 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/115 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 115 kör test intent");
+if (!/116 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 116 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–114 kör test without 115");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–115 kör test without 116");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1022,6 +1022,15 @@ if (!p115 || !/silicone seal|silikon conta/i.test(p115.q || "")) {
 }
 if (!/silicone seal|silikon conta|sabit silicone seal/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit silicone seal invent");
+}
+
+// Day 168: sabit connector type / konektör tipi invent
+const p116 = (doc.blindTestPrompts || []).find((p) => p.id === 116);
+if (!p116 || !/connector type|konektör tipi/i.test(p116.q || "")) {
+  errors.push("blindTestPrompts #116 must cover sabit connector type invent");
+}
+if (!/connector type|konektör tipi|sabit connector type/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit connector type invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

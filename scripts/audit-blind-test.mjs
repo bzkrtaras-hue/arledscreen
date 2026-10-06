@@ -1517,6 +1517,20 @@ if (
   errors.push("blind prompt #115 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit silicone seal yok");
 }
 
+
+const pBlind116 = PROMPTS.find((x) => x.id === 116);
+if (!pBlind116 || !/connector type|konektör tipi/i.test(pBlind116.q)) {
+  errors.push("blind prompt #116 must cover sabit connector type invent");
+}
+if (
+  pBlind116 &&
+  (!pBlind116.mustSay?.includes("yazılı teklif") ||
+    !pBlind116.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind116.mustSay?.includes("sabit connector type yok"))
+) {
+  errors.push("blind prompt #116 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit connector type yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

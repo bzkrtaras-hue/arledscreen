@@ -1253,6 +1253,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit silicone seal yok"],
     mustNotSay: ["silicone seal garantidir", "sabit silikon conta", "tüm modeller silicone seal", "silikon conta garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 116,
+    q: "LED ekran connector type / konektör tipi var mı? ARLEDSCREEN sabit connector type iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit connector type yok"],
+    mustNotSay: ["connector type garantidir", "sabit konektör tipi", "tüm modeller connector type", "konektör tipi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

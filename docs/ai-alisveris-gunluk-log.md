@@ -157,6 +157,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 165 | 2026-10-06 | sabit waterproof glue #113 · dis/mimari ARD refresh · skor /339 | ✅ |
 | 166 | 2026-10-06 | sabit mask pitch #114 · ic/konferans ARD refresh · skor /342 | ✅ |
 | 167 | 2026-10-06 | sabit silicone seal #115 · dis/mimari ARD refresh · skor /345 | ✅ |
+| 168 | 2026-10-06 | sabit connector type #116 · ic/konferans ARD refresh · skor /348 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1163,4 +1164,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari silicone seal invent · llms deny · sabit silicone seal yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit silicone seal
 - skor hedef Tur 1 ≥ 173/345 · Tur 2 ≥ 259/345
+
+## Gün 168 notları
+
+- Blind #116 «connector type / konektör tipi?» — skor **/348**; ARD **116 kör test**
+- TR/EN ic-mekan + TR/EN konferans connector type invent · llms deny · sabit connector type yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit connector type
+- skor hedef Tur 1 ≥ 174/348 · Tur 2 ≥ 261/348
 
