@@ -497,6 +497,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 458e | 2026-10-06 | point-c-paste-bundle.md canlı pack · Tur1a/PointC sahip · invent yok | ✅ |
 | 458f | 2026-10-06 | Point C Drive Doc link · paste-bundle · invent/deploy/merge yok · PR draft | ✅ |
 | 458g | 2026-10-06 | Host/smoke/JSON KAPALI · invent-URL 404 beklenen · sahip: Point C+Tur1a+arleds | ✅ |
+| 458h | 2026-10-06 | Blind #406 Crestron Flex invent · prompts=406 · skor /1218 · deploy | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti
