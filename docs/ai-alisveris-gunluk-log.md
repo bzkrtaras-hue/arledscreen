@@ -354,6 +354,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 362 | 2026-10-06 | sabit Sharp AQUOS BOARD #310 · ic/konferans ARD refresh · skor /930 | ✅ |
 | 363 | 2026-10-06 | sabit parapet cleat #311 · dis/mimari ARD refresh · skor /933 | ✅ |
 | 364 | 2026-10-06 | sabit Newline LYRA #312 · ic/konferans ARD refresh · skor /936 | ✅ |
+| 365 | 2026-10-06 | sabit eave cleat #313 · dis/mimari ARD refresh · skor /939 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2573,3 +2574,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #312 «Newline LYRA / Newline Flex?» — skor **/936**; ARD **312 kör test**
 - TR/EN ic-mekan + TR/EN konferans Newline LYRA invent · llms deny · sabit Newline LYRA yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Newline LYRA
+
+## Gün 365 notları
+
+- Blind #313 «eave cleat / saçak kleyt?» — skor **/939**; ARD **313 kör test**
+- TR/EN dis-mekan + TR/EN mimari eave cleat invent · llms deny · sabit eave cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit eave cleat

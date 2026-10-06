@@ -4099,6 +4099,20 @@ if (
   errors.push("blind prompt #312 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline LYRA yok");
 }
 
+const pBlind313 = PROMPTS.find((x) => x.id === 313);
+if (!pBlind313 || !/eave cleat|saçak kleyt/i.test(pBlind313.q)) {
+  errors.push("blind prompt #313 must cover sabit eave cleat invent");
+}
+if (
+  pBlind313 &&
+  (!pBlind313.mustSay?.includes("yazılı teklif") ||
+    !pBlind313.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind313.mustSay?.includes("sabit eave cleat yok"))
+) {
+  errors.push("blind prompt #313 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave cleat yok");
+}
+
+
 
 
 

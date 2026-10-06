@@ -3617,6 +3617,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline LYRA yok"],
     mustNotSay: ["Newline LYRA garantidir", "sabit Newline LYRA True1", "tüm modeller Newline LYRA", "Newline Flex garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 313,
+    q: "LED ekran eave cleat / saçak kleyt var mı? ARLEDSCREEN sabit eave cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit eave cleat yok"],
+    mustNotSay: ["eave cleat garantidir", "sabit eave cleat True1", "tüm modeller eave cleat", "saçak kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

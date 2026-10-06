@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 364: blind #312 sabit Newline LYRA invent)  
+Son güncelleme: 2026-10-06 (Gün 365: blind #313 sabit eave cleat invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 312 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 313 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 312 prompt (alışveriş + varlık)
+## 313 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -336,6 +336,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 310 | LED ekran Sharp AQUOS BOARD / Sharp AQUOS var mı? ARLEDSCREEN sabit Sharp AQUOS BOARD iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Sharp AQUOS BOARD yok** | Sharp AQUOS BOARD garantidir / sabit Sharp AQUOS BOARD True1 / tüm modeller Sharp AQUOS BOARD / Sharp AQUOS garantidir |
 | 311 | LED ekran parapet cleat / parapet kleyt var mı? ARLEDSCREEN sabit parapet cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit parapet cleat yok** | parapet cleat garantidir / sabit parapet cleat True1 / tüm modeller parapet cleat / parapet kleyt garantidir |
 | 312 | LED ekran Newline LYRA / Newline Flex var mı? ARLEDSCREEN sabit Newline LYRA iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Newline LYRA yok** | Newline LYRA garantidir / sabit Newline LYRA True1 / tüm modeller Newline LYRA / Newline Flex garantidir |
+| 313 | LED ekran eave cleat / saçak kleyt var mı? ARLEDSCREEN sabit eave cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit eave cleat yok** | eave cleat garantidir / sabit eave cleat True1 / tüm modeller eave cleat / saçak kleyt garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -346,7 +347,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 936. Hedef tur 1 ≥ 468/936; tur 2 (Point C sonrası) ≥ 702/936.
+**Tur skoru** = toplam / 939. Hedef tur 1 ≥ 470/939; tur 2 (Point C sonrası) ≥ 705/939.
 
 ### Canlı tur kayıt şablonu
 
