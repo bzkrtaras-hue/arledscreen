@@ -4649,6 +4649,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Maxhub V5 Classic yok"],
     mustNotSay: ["Maxhub V5 Classic garantidir", "sabit Maxhub V5 Classic True1", "tüm modeller Maxhub V5 Classic", "Maxhub V5 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 399,
+    q: "LED ekran drip apron / damla eteği var mı? ARLEDSCREEN sabit drip apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit drip apron yok"],
+    mustNotSay: ["drip apron garantidir", "sabit drip apron True1", "tüm modeller drip apron", "damla eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

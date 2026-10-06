@@ -5217,6 +5217,20 @@ if (
   errors.push("blind prompt #398 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Maxhub V5 Classic yok");
 }
 
+const pBlind399 = PROMPTS.find((x) => x.id === 399);
+if (!pBlind399 || !/drip apron|damla eteği/i.test(pBlind399.q)) {
+  errors.push("blind prompt #399 must cover sabit drip apron invent");
+}
+if (
+  pBlind399 &&
+  (!pBlind399.mustSay?.includes("yazılı teklif") ||
+    !pBlind399.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind399.mustSay?.includes("sabit drip apron yok"))
+) {
+  errors.push("blind prompt #399 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drip apron yok");
+}
+
+
 
 
 

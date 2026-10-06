@@ -440,6 +440,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 448 | 2026-10-06 | sabit Poly Studio X70 #396 · ic/konferans ARD refresh · skor /1188 | ✅ |
 | 449 | 2026-10-06 | sabit sill apron #397 · dis/mimari ARD refresh · skor /1191 | ✅ |
 | 450 | 2026-10-06 | sabit Maxhub V5 Classic #398 · ic/konferans ARD refresh · skor /1194 | ✅ |
+| 451 | 2026-10-06 | sabit drip apron #399 · dis/mimari ARD refresh · skor /1197 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3175,3 +3176,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #398 «Maxhub V5 Classic / Maxhub V5?» — skor **/1194**; ARD **398 kör test**
 - TR/EN ic-mekan + TR/EN konferans Maxhub V5 Classic invent · llms deny · sabit Maxhub V5 Classic yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Maxhub V5 Classic
+
+## Gün 451 notları
+
+- Blind #399 «drip apron / damla eteği?» — skor **/1197**; ARD **399 kör test**
+- TR/EN dis-mekan + TR/EN mimari drip apron invent · llms deny · sabit drip apron yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit drip apron
