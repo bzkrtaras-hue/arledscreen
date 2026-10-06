@@ -27,7 +27,7 @@ export const metadata: Metadata = buildTrOnlyMetadata({
   path: "/led-ekran-fiyatlari",
   title: "LED Ekran Fiyatları 2026 | m² Hesaplama | ARLEDSCREEN",
   description:
-    "LED ekran fiyatları 2026: panel USD listesi, m² örnek hesaplar (3×2, 4×3, 10 m²), montaj ve kontrol ekleri. Sabit m² fiyatı yoktur; nihai tutar yazılı teklifle kesinleşir.",
+    "LED ekran fiyatları 2026: panel USD listesi, m² örnek hesaplar, montaj ve kontrol ekleri. Sabit m² fiyatı yok; nihai tutar yazılı teklifle.",
 });
 
 const FAQS = [

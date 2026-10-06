@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Montserrat } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
 import { aiDiscoveryMetadata, aiDiscoveryLinks } from "@/lib/ai-discovery";
+import { clampMetaDescription } from "@/lib/seo";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -17,8 +18,9 @@ export const metadata: Metadata = {
     default: "LED Ekran Teknoloji Merkezi | ARLEDSCREEN",
     template: "%s",
   },
-  description:
-    "ARLEDSCREEN: iç ve dış mekân LED ekran seçimi, keşif, montaj ve teknik servis. İstanbul / Gaziosmanpaşa. NXTIONSTAR ürün sayfalarında alt marka olarak yer alır.",
+  description: clampMetaDescription(
+    "ARLEDSCREEN — İstanbul Gaziosmanpaşa LED ekran satış, keşif, montaj ve teknik servis. NXTIONSTAR kendi markamız.",
+  ),
   openGraph: {
     type: "website",
     siteName: "ARLEDSCREEN",

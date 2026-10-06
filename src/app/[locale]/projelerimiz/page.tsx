@@ -26,7 +26,7 @@ export const metadata: Metadata = buildTrOnlyMetadata({
   path: "/projelerimiz",
   title: "LED Ekran Projeleri ve Referanslar | ARLEDSCREEN",
   description:
-    "ARLEDSCREEN tarafından tamamlanan LED ekran projeleri: belediye, kafe, mağaza, etkinlik ve dış mekân kurulumları. Ölçü, piksel aralığı, konum ve tarih bilgileriyle.",
+    "ARLEDSCREEN LED ekran projeleri: belediye, kafe, mağaza, etkinlik ve dış mekân kurulumları. Ölçü, pitch, konum ve tarih bilgileriyle.",
 });
 
 export default async function ProjelerimizPage({ params }: { params: Promise<{ locale: string }> }) {

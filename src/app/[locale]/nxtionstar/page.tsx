@@ -17,7 +17,7 @@ export function generateMetadata() {
     path: "/nxtionstar/",
     title: "NXTIONSTAR LED Ekran | ARLEDSCREEN'in Kendi Markası",
     description:
-      "NXTIONSTAR LED ekran serileri ve ürün grupları. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İstanbul / Gaziosmanpaşa.",
+      "NXTIONSTAR LED ekran serileri: ARLEDSCREEN'in kendi markası; Türkiye'deki tek satış noktası ARLEDSCREEN. İstanbul Gaziosmanpaşa.",
   });
 }
 

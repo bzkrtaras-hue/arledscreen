@@ -23,7 +23,7 @@ export const metadata: Metadata = buildTrOnlyMetadata({
   path: "/hizmetler",
   title: "LED Ekran Montaj ve Teknik Servis | ARLEDSCREEN İstanbul",
   description:
-    "LED ekran keşfi, projelendirme, montaj, devreye alma, bakım ve teknik servis. İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN ile Türkiye geneli LED ekran projeleri.",
+    "LED ekran keşfi, montaj, devreye alma, bakım ve teknik servis. İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN — Türkiye geneli projeler.",
 });
 
 const SERVICES = [
