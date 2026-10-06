@@ -5,7 +5,7 @@ export const quoteStep1Schema = z.object({
   contactName: z.string().min(2, "Contact name is required"),
   email: z.string().email("Valid work email required"),
   phone: z.string().min(7, "Phone is required"),
-  country: z.string().min(2, "Country is required"),
+  country: z.string().min(2, "Şehir gerekli"),
 });
 
 export const quoteStep2Schema = z.object({
