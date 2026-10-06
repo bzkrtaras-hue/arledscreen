@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 142: blind #90 sabit parafudr invent)  
+Son güncelleme: 2026-10-06 (Gün 143: blind #91 sabit zamanlayıcı invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 90 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 91 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 90 prompt (alışveriş + varlık)
+## 91 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -114,6 +114,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 88 | LED ekran anti-yansıma / anti-glare var mı? ARLEDSCREEN sabit anti-yansıma iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit anti-yansıma yok** | anti-yansıma garantidir / sabit anti-glare / tüm modeller anti-glare / anti-glare garantidir |
 | 89 | LED ekran OPS / Android player var mı? ARLEDSCREEN sabit OPS iddiası yayımlıyor mu? | `/tr/rehber/kiosk-dijital-ekran/` · poster · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit OPS yok** | OPS garantidir / sabit Android player / tüm modeller Android player / Android player garantidir |
 | 90 | LED ekran parafudr / surge protection var mı? ARLEDSCREEN sabit parafudr iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit parafudr yok** | parafudr garantidir / sabit surge protection / tüm modeller surge protection / surge protection garantidir |
+| 91 | LED ekran zamanlayıcı / content scheduler var mı? ARLEDSCREEN sabit zamanlayıcı iddiası yayımlıyor mu? | `/tr/rehber/kiosk-dijital-ekran/` · poster · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit zamanlayıcı yok** | zamanlayıcı garantidir / sabit content scheduler / tüm modeller content scheduler / content scheduler garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -124,7 +125,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 270. Hedef tur 1 ≥ 135/270; tur 2 (Point C sonrası) ≥ 203/270.
+**Tur skoru** = toplam / 273. Hedef tur 1 ≥ 137/273; tur 2 (Point C sonrası) ≥ 205/273.
 
 ### Canlı tur kayıt şablonu
 

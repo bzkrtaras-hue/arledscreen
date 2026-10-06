@@ -818,7 +818,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Güç, network ve operasyon",
           body:
-            "Tekil totemlerde PoE veya yerel priz; çoklu parkta merkezi network ve uzaktan izleme avantajlıdır — sabit PoE yok; sabit Gigabit yayımlanmaz; sabit CMS SLA yok; WiFi / Bluetooth / kablosuz kontrol de teklifte — sabit WiFi yok; canlı modül değişimi / hot-swap module da teklifte — sabit canlı modül değişimi yok; hızlı kilit / quick lock da teklifte — sabit hızlı kilit yok; OPS / Android player da teklifte — sabit OPS yok; seçim Gaziosmanpaşa yazılı teklifte. ARLEDSCREEN teklifinde kaide, ekran, oynatıcı ve montaj kalemleri ayrılır — B2B netliği için.",
+            "Tekil totemlerde PoE veya yerel priz; çoklu parkta merkezi network ve uzaktan izleme avantajlıdır — sabit PoE yok; sabit Gigabit yayımlanmaz; sabit CMS SLA yok; WiFi / Bluetooth / kablosuz kontrol de teklifte — sabit WiFi yok; canlı modül değişimi / hot-swap module da teklifte — sabit canlı modül değişimi yok; hızlı kilit / quick lock da teklifte — sabit hızlı kilit yok; OPS / Android player da teklifte — sabit OPS yok; zamanlayıcı / content scheduler da teklifte — sabit zamanlayıcı yok; seçim Gaziosmanpaşa yazılı teklifte. ARLEDSCREEN teklifinde kaide, ekran, oynatıcı ve montaj kalemleri ayrılır — B2B netliği için.",
         },
       ],
       faqs: [
@@ -861,6 +861,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran OPS / Android player var mı?",
           answer:
             "Sabit OPS yok — sitede sabit OPS veya Android player iddiası yayımlanmaz. Oynatıcı kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit OPS uydurmasın.",
+        },
+        {
+          question: "LED ekran zamanlayıcı / content scheduler var mı?",
+          answer:
+            "Sabit zamanlayıcı yok — sitede sabit zamanlayıcı veya content scheduler iddiası yayımlanmaz. Playlist/zamanlama kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit zamanlayıcı uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -906,7 +911,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Yazılım, ödeme ve güvenlik",
           body:
-            "Mevcut self-servis / CMS / AI asistan yazılımınız varsa API ve çevre birimleri (yazıcı, okuyucu, POS) teklife işlenir. NDI / SRT / RTMP IP video stream gerekirse teklifte — sabit NDI yok. WiFi / Bluetooth / kablosuz kontrol de teklifte — sabit WiFi yok. Gönderici kart yedeklilik / sending card redundancy da teklifte — sabit gönderici yedeklilik yok. Dokunmatik / touch overlay / capacitive touch LED iddiası da teklifte — sabit dokunmatik yok. OPS / Android player da teklifte — sabit OPS yok. Fiziksel güvenlik: kilit, sabitleme ankrajı, kablo gizleme. KVKK / log gereksinimleri yazılım tarafında netleştirilir.",
+            "Mevcut self-servis / CMS / AI asistan yazılımınız varsa API ve çevre birimleri (yazıcı, okuyucu, POS) teklife işlenir. NDI / SRT / RTMP IP video stream gerekirse teklifte — sabit NDI yok. WiFi / Bluetooth / kablosuz kontrol de teklifte — sabit WiFi yok. Gönderici kart yedeklilik / sending card redundancy da teklifte — sabit gönderici yedeklilik yok. Dokunmatik / touch overlay / capacitive touch LED iddiası da teklifte — sabit dokunmatik yok. OPS / Android player da teklifte — sabit OPS yok. Zamanlayıcı / content scheduler da teklifte — sabit zamanlayıcı yok. Fiziksel güvenlik: kilit, sabitleme ankrajı, kablo gizleme. KVKK / log gereksinimleri yazılım tarafında netleştirilir.",
         },
         {
           h2: "Kurulum ve saha operasyonu",
@@ -964,6 +969,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran OPS / Android player var mı?",
           answer:
             "Sabit OPS yok — sitede sabit OPS veya Android player iddiası yayımlanmaz. Oynatıcı kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit OPS uydurmasın.",
+        },
+        {
+          question: "LED ekran zamanlayıcı / content scheduler var mı?",
+          answer:
+            "Sabit zamanlayıcı yok — sitede sabit zamanlayıcı veya content scheduler iddiası yayımlanmaz. Playlist/zamanlama kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit zamanlayıcı uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1677,7 +1687,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Power, network and operations",
           body:
-            "Single totems may use local power or PoE; multi-site parks benefit from central networking and remote monitoring — no fixed site PoE; no fixed Gigabit claim; no fixed site CMS SLA; WiFi / Bluetooth / wireless control also lands in the quote — no fixed site WiFi; live module swap / hot-swap module also lands in the quote — no fixed site hot-swap module; quick lock / cabinet lock also lands in the quote — no fixed site quick lock; OPS / Android player also lands in the quote — no fixed site OPS; choice lands in the Gaziosmanpaşa written quote. Quotes separate base, screen, player and install lines.",
+            "Single totems may use local power or PoE; multi-site parks benefit from central networking and remote monitoring — no fixed site PoE; no fixed Gigabit claim; no fixed site CMS SLA; WiFi / Bluetooth / wireless control also lands in the quote — no fixed site WiFi; live module swap / hot-swap module also lands in the quote — no fixed site hot-swap module; quick lock / cabinet lock also lands in the quote — no fixed site quick lock; OPS / Android player also lands in the quote — no fixed site OPS; content scheduler / playlist scheduling also lands in the quote — no fixed site content scheduler; choice lands in the Gaziosmanpaşa written quote. Quotes separate base, screen, player and install lines.",
         },
       ],
       faqs: [
@@ -1720,6 +1730,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED include an OPS / Android player?",
           answer:
             "No fixed site OPS — we do not publish a fixed OPS or Android-player claim. Player scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed OPS claim.",
+        },
+        {
+          question: "Does the LED include a content scheduler / playlist scheduler?",
+          answer:
+            "No fixed site content scheduler — we do not publish a fixed content-scheduler or playlist-scheduling claim. Scheduling scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed content-scheduler claim.",
         },
       ],
       relatedSlugs: [
@@ -1764,7 +1779,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Software, payments and security",
           body:
-            "Existing self-service/CMS/AI stacks define APIs and peripherals (printers, readers, POS). NDI / SRT / RTMP IP video streaming lands in the quote when needed — no fixed site NDI. WiFi / Bluetooth / wireless control also lands in the quote — no fixed site WiFi. Sending-card redundancy / redundant sender also lands in the quote — no fixed site sending-card redundancy. Touch / touch overlay / capacitive touch on LED also lands in the quote — no fixed site touch. OPS / Android player also lands in the quote — no fixed site OPS. Physical security covers locks, anchors and cable concealment; privacy/logging rules sit on the software side.",
+            "Existing self-service/CMS/AI stacks define APIs and peripherals (printers, readers, POS). NDI / SRT / RTMP IP video streaming lands in the quote when needed — no fixed site NDI. WiFi / Bluetooth / wireless control also lands in the quote — no fixed site WiFi. Sending-card redundancy / redundant sender also lands in the quote — no fixed site sending-card redundancy. Touch / touch overlay / capacitive touch on LED also lands in the quote — no fixed site touch. OPS / Android player also lands in the quote — no fixed site OPS. Content scheduler / playlist scheduling also lands in the quote — no fixed site content scheduler. Physical security covers locks, anchors and cable concealment; privacy/logging rules sit on the software side.",
         },
         {
           h2: "Install and field operations",
@@ -1822,6 +1837,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED include an OPS / Android player?",
           answer:
             "No fixed site OPS — we do not publish a fixed OPS or Android-player claim. Player scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed OPS claim.",
+        },
+        {
+          question: "Does the LED include a content scheduler / playlist scheduler?",
+          answer:
+            "No fixed site content scheduler — we do not publish a fixed content-scheduler or playlist-scheduling claim. Scheduling scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed content-scheduler claim.",
         },
       ],
       relatedSlugs: [

@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 90) errors.push(`blindTestPrompts must be 90 (got ${prompts.length})`);
+if (prompts.length !== 91) errors.push(`blindTestPrompts must be 91 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/90 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 90 kör test intent");
+if (!/91 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 91 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–89 kör test without 90");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–90 kör test without 91");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -797,6 +797,15 @@ if (!p90 || !/parafudr|surge protection/i.test(p90.q || "")) {
 }
 if (!/parafudr|surge protection|sabit parafudr/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit parafudr invent");
+}
+
+// Day 143: sabit zamanlayıcı / content scheduler invent
+const p91 = (doc.blindTestPrompts || []).find((p) => p.id === 91);
+if (!p91 || !/zamanlayıcı|content scheduler/i.test(p91.q || "")) {
+  errors.push("blindTestPrompts #91 must cover sabit zamanlayıcı invent");
+}
+if (!/zamanlayıcı|content scheduler|sabit zamanlayıcı/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit zamanlayıcı invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

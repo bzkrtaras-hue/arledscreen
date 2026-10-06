@@ -132,6 +132,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 140 | 2026-10-06 | sabit anti-yansıma #88 · ic/konferans/ince-pitch ARD refresh · skor /264 | ✅ |
 | 141 | 2026-10-06 | sabit OPS #89 · kiosk/poster ARD refresh · skor /267 | ✅ |
 | 142 | 2026-10-06 | sabit parafudr #90 · dis/mimari ARD refresh · skor /270 | ✅ |
+| 143 | 2026-10-06 | sabit zamanlayıcı #91 · kiosk/poster ARD refresh · skor /273 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -963,3 +964,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari parafudr invent · llms deny · sabit parafudr yok
 - ARD refresh: rehber dis/mimari + priced dis/transparan (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit parafudr
 - skor hedef Tur 1 ≥ 135/270 · Tur 2 ≥ 203/270
+
+## Gün 143 notları
+
+- Blind #91 «zamanlayıcı / content scheduler?» — skor **/273**; ARD **91 kör test**
+- TR/EN kiosk + TR/EN poster zamanlayıcı invent · llms deny · sabit zamanlayıcı yok
+- ARD refresh: rehber kiosk/poster + esnek quote (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit zamanlayıcı
+- skor hedef Tur 1 ≥ 137/273 · Tur 2 ≥ 205/273

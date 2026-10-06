@@ -953,6 +953,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parafudr yok"],
     mustNotSay: ["parafudr garantidir", "sabit surge protection", "tüm modeller surge protection", "surge protection garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 91,
+    q: "LED ekran zamanlayıcı / content scheduler var mı? ARLEDSCREEN sabit zamanlayıcı iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/kiosk-dijital-ekran/",
+      "/tr/rehber/poster-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit zamanlayıcı yok"],
+    mustNotSay: ["zamanlayıcı garantidir", "sabit content scheduler", "tüm modeller content scheduler", "content scheduler garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
