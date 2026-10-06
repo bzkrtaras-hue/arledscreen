@@ -2717,6 +2717,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit reglet yok"],
     mustNotSay: ["reglet garantidir", "sabit reglet True1", "tüm modeller reglet", "reglet flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 238,
+    q: "LED ekran Optoma / DLP projector var mı? ARLEDSCREEN sabit Optoma iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Optoma yok"],
+    mustNotSay: ["Optoma garantidir", "sabit Optoma True1", "tüm modeller Optoma", "DLP projector garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

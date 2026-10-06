@@ -3124,6 +3124,20 @@ if (
   errors.push("blind prompt #237 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit reglet yok");
 }
 
+const pBlind238 = PROMPTS.find((x) => x.id === 238);
+if (!pBlind238 || !/Optoma|DLP projector/i.test(pBlind238.q)) {
+  errors.push("blind prompt #238 must cover sabit Optoma invent");
+}
+if (
+  pBlind238 &&
+  (!pBlind238.mustSay?.includes("yazılı teklif") ||
+    !pBlind238.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind238.mustSay?.includes("sabit Optoma yok"))
+) {
+  errors.push("blind prompt #238 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma yok");
+}
+
+
 
 
 

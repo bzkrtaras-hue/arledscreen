@@ -279,6 +279,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 287 | 2026-10-06 | sabit cant strip #235 · dis/mimari ARD refresh · skor /705 | ✅ |
 | 288 | 2026-10-06 | sabit Panasonic #236 · ic/konferans ARD refresh · skor /708 | ✅ |
 | 289 | 2026-10-06 | sabit reglet #237 · dis/mimari ARD refresh · skor /711 | ✅ |
+| 290 | 2026-10-06 | sabit Optoma #238 · ic/konferans ARD refresh · skor /714 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2048,3 +2049,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #237 «reglet / reglet flaş?» — skor **/711**; ARD **237 kör test**
 - TR/EN dis-mekan + TR/EN mimari reglet invent · llms deny · sabit reglet yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit reglet
+
+## Gün 290 notları
+
+- Blind #238 «Optoma / DLP projector?» — skor **/714**; ARD **238 kör test**
+- TR/EN ic-mekan + TR/EN konferans Optoma invent · llms deny · sabit Optoma yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Optoma
