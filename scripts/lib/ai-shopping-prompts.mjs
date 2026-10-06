@@ -2909,6 +2909,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit through-wall cleat yok"],
     mustNotSay: ["through-wall cleat garantidir", "sabit through-wall cleat True1", "tüm modeller through-wall cleat", "duvar geçiş kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 254,
+    q: "LED ekran ViewSonic / interactive display var mı? ARLEDSCREEN sabit ViewSonic iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ViewSonic yok"],
+    mustNotSay: ["ViewSonic garantidir", "sabit ViewSonic True1", "tüm modeller ViewSonic", "interactive display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
