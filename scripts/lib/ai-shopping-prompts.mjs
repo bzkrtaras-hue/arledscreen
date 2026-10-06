@@ -2213,6 +2213,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit scupper yok"],
     mustNotSay: ["scupper garantidir", "sabit scupper True1", "tüm modeller scupper", "scupper drenaj garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 196,
+    q: "LED ekran Meeting Owl / Owl Labs var mı? ARLEDSCREEN sabit Meeting Owl iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Meeting Owl yok"],
+    mustNotSay: ["Meeting Owl garantidir", "sabit Meeting Owl True1", "tüm modeller Meeting Owl", "Owl Labs garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
