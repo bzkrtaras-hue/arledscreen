@@ -2023,8 +2023,11 @@ for (const rel of [
 }
 
 // Day 199: sabit USB-C / USB Type-C — honesty presence
-for (const rel of ["tr/rehber/dis-mekan-led-ekran/index.html", "tr/rehber/mimari-muhendislik-led/index.html", "en/rehber/dis-mekan-led-ekran/index.html", "en/rehber/mimari-muhendislik-led/index.html"]) {
-  const html = readOutHtml(rel);
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
   if (!html) continue;
   if (!/sabit USB-C yok|no fixed site USB-C/i.test(html)) {
     errors.push(`${rel} should hedge sabit USB-C / USB Type-C`);
