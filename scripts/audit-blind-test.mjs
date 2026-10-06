@@ -4190,6 +4190,20 @@ if (
   errors.push("blind prompt #319 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit weep screed yok");
 }
 
+const pBlind320 = PROMPTS.find((x) => x.id === 320);
+if (!pBlind320 || !/Clevertouch Impact|Clevertouch Lux/i.test(pBlind320.q)) {
+  errors.push("blind prompt #320 must cover sabit Clevertouch Impact invent");
+}
+if (
+  pBlind320 &&
+  (!pBlind320.mustSay?.includes("yazılı teklif") ||
+    !pBlind320.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind320.mustSay?.includes("sabit Clevertouch Impact yok"))
+) {
+  errors.push("blind prompt #320 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Clevertouch Impact yok");
+}
+
+
 
 
 

@@ -3701,6 +3701,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit weep screed yok"],
     mustNotSay: ["weep screed garantidir", "sabit weep screed True1", "tüm modeller weep screed", "süzme şerit garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 320,
+    q: "LED ekran Clevertouch Impact / Clevertouch Lux var mı? ARLEDSCREEN sabit Clevertouch Impact iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Clevertouch Impact yok"],
+    mustNotSay: ["Clevertouch Impact garantidir", "sabit Clevertouch Impact True1", "tüm modeller Clevertouch Impact", "Clevertouch Lux garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

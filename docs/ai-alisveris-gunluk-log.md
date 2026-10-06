@@ -361,6 +361,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 369 | 2026-10-06 | sabit sill pan #317 · dis/mimari ARD refresh · skor /951 | ✅ |
 | 370 | 2026-10-06 | sabit SMART Board GX #318 · ic/konferans ARD refresh · skor /954 | ✅ |
 | 371 | 2026-10-06 | sabit weep screed #319 · dis/mimari ARD refresh · skor /957 | ✅ |
+| 372 | 2026-10-06 | sabit Clevertouch Impact #320 · ic/konferans ARD refresh · skor /960 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2622,3 +2623,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #319 «weep screed / süzme şerit?» — skor **/957**; ARD **319 kör test**
 - TR/EN dis-mekan + TR/EN mimari weep screed invent · llms deny · sabit weep screed yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit weep screed
+
+## Gün 372 notları
+
+- Blind #320 «Clevertouch Impact / Clevertouch Lux?» — skor **/960**; ARD **320 kör test**
+- TR/EN ic-mekan + TR/EN konferans Clevertouch Impact invent · llms deny · sabit Clevertouch Impact yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Clevertouch Impact
