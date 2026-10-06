@@ -2253,6 +2253,20 @@ if (
   errors.push("blind prompt #170 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Atlona yok");
 }
 
+const pBlind171 = PROMPTS.find((x) => x.id === 171);
+if (!pBlind171 || !/sun shade|güneş siperi/i.test(pBlind171.q)) {
+  errors.push("blind prompt #171 must cover sabit sun shade invent");
+}
+if (
+  pBlind171 &&
+  (!pBlind171.mustSay?.includes("yazılı teklif") ||
+    !pBlind171.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind171.mustSay?.includes("sabit sun shade yok"))
+) {
+  errors.push("blind prompt #171 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sun shade yok");
+}
+
+
 
 
 

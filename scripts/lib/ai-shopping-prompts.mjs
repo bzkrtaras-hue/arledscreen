@@ -1913,6 +1913,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Atlona yok"],
     mustNotSay: ["Atlona garantidir", "sabit Atlona True1", "tüm modeller Atlona", "AV over IP garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 171,
+    q: "LED ekran sun shade / güneş siperi var mı? ARLEDSCREEN sabit sun shade iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit sun shade yok"],
+    mustNotSay: ["sun shade garantidir", "sabit sun shade True1", "tüm modeller sun shade", "güneş siperi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
