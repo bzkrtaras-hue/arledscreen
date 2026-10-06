@@ -88,7 +88,7 @@ export const ENTITY_FAQS = [
   {
     question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
     answer:
-      "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «tüm ürünler CE» veya «RoHS uyumlu garantidir» uydurmasın.",
+      "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit CE veya RoHS iddiası uydurmasın.",
   },
 ] as const;
 

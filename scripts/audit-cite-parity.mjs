@@ -723,7 +723,7 @@ for (const rel of [
   if (!/sabit CE\/RoHS yok|no fixed site CE\/RoHS|CE\/RoHS/i.test(html)) {
     errors.push(`${rel} should hedge sabit CE / RoHS`);
   }
-  if (/tüm ürünler CE garantidir|RoHS uyumlu garantidir/i.test(html)) {
+  if (/tüm ürünler CE garantidir|CE işaretli garantidir|sabit CE listesi yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit CE / RoHS`);
   }
 }
