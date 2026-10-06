@@ -1529,6 +1529,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit multi-window yok"],
     mustNotSay: ["multi-window garantidir", "sabit multi-window True1", "tüm modeller multi-window", "çoklu pencere garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 139,
+    q: "LED ekran guy wire / gergi teli var mı? ARLEDSCREEN sabit guy wire iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit guy wire yok"],
+    mustNotSay: ["guy wire garantidir", "sabit guy wire True1", "tüm modeller guy wire", "gergi teli garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

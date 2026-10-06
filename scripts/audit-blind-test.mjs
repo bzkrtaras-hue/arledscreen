@@ -1840,6 +1840,20 @@ if (
   errors.push("blind prompt #138 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit multi-window yok");
 }
 
+
+const pBlind139 = PROMPTS.find((x) => x.id === 139);
+if (!pBlind139 || !/guy wire|gergi teli/i.test(pBlind139.q)) {
+  errors.push("blind prompt #139 must cover sabit guy wire invent");
+}
+if (
+  pBlind139 &&
+  (!pBlind139.mustSay?.includes("yazılı teklif") ||
+    !pBlind139.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind139.mustSay?.includes("sabit guy wire yok"))
+) {
+  errors.push("blind prompt #139 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit guy wire yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 

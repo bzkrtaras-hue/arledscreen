@@ -180,6 +180,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 188 | 2026-10-06 | sabit KVM #136 · ic/konferans ARD refresh · skor /408 | ✅ |
 | 189 | 2026-10-06 | sabit Neutrik #137 · dis/mimari ARD refresh · skor /411 | ✅ |
 | 190 | 2026-10-06 | sabit multi-window #138 · ic/konferans ARD refresh · skor /414 | ✅ |
+| 191 | 2026-10-06 | sabit guy wire #139 · dis/mimari ARD refresh · skor /417 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1347,4 +1348,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans multi-window invent · llms deny · sabit multi-window yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit multi-window
 - skor hedef Tur 1 ≥ 207/414 · Tur 2 ≥ 311/414
+
+## Gün 191 notları
+
+- Blind #139 «guy wire / gergi teli?» — skor **/417**; ARD **139 kör test**
+- TR/EN dis-mekan + TR/EN mimari guy wire invent · llms deny · sabit guy wire yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit guy wire
+- skor hedef Tur 1 ≥ 209/417 · Tur 2 ≥ 313/417
 
