@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 110) errors.push(`blindTestPrompts must be 110 (got ${prompts.length})`);
+if (prompts.length !== 111) errors.push(`blindTestPrompts must be 111 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/110 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 110 kör test intent");
+if (!/111 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 111 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–109 kör test without 110");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–110 kör test without 111");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -977,6 +977,15 @@ if (!p110 || !/drive IC|sürücü IC/i.test(p110.q || "")) {
 }
 if (!/drive IC|sürücü IC|sabit drive IC/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit drive IC invent");
+}
+
+// Day 163: sabit cabinet size / kabin boyutu invent
+const p111 = (doc.blindTestPrompts || []).find((p) => p.id === 111);
+if (!p111 || !/cabinet size|kabin boyutu/i.test(p111.q || "")) {
+  errors.push("blindTestPrompts #111 must cover sabit cabinet size invent");
+}
+if (!/cabinet size|kabin boyutu|sabit cabinet size/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit cabinet size invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
