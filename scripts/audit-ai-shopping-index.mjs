@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 120) errors.push(`blindTestPrompts must be 120 (got ${prompts.length})`);
+if (prompts.length !== 121) errors.push(`blindTestPrompts must be 121 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/120 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 120 kör test intent");
+if (!/121 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 121 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–119 kör test without 120");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–120 kör test without 121");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1067,6 +1067,16 @@ if (!p120 || !/thermal pad|termal pad/i.test(p120.q || "")) {
 }
 if (!/thermal pad|termal pad|sabit thermal pad/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit thermal pad invent");
+}
+
+
+// Day 173: sabit magnesium / magnezyum invent
+const p121 = (doc.blindTestPrompts || []).find((p) => p.id === 121);
+if (!p121 || !/magnesium|magnezyum/i.test(p121.q || "")) {
+  errors.push("blindTestPrompts #121 must cover sabit magnesium invent");
+}
+if (!/magnesium|magnezyum|sabit magnesium/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit magnesium invent");
 }
 
 // Day 76: agentRules full disambiguation

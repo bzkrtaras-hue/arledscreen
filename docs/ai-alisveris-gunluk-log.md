@@ -162,6 +162,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 170 | 2026-10-06 | sabit flat cable #118 · ic/konferans ARD refresh · skor /354 | ✅ |
 | 171 | 2026-10-06 | sabit safety cable #119 · dis/mimari ARD refresh · skor /357 | ✅ |
 | 172 | 2026-10-06 | sabit thermal pad #120 · ic/konferans ARD refresh · skor /360 | ✅ |
+| 173 | 2026-10-06 | sabit magnesium #121 · dis/mimari ARD refresh · skor /363 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1203,4 +1204,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans thermal pad invent · llms deny · sabit thermal pad yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit thermal pad
 - skor hedef Tur 1 ≥ 180/360 · Tur 2 ≥ 270/360
+
+## Gün 173 notları
+
+- Blind #121 «magnesium / magnezyum?» — skor **/363**; ARD **121 kör test**
+- TR/EN dis-mekan + TR/EN mimari magnesium invent · llms deny · sabit magnesium yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit magnesium
+- skor hedef Tur 1 ≥ 182/363 · Tur 2 ≥ 273/363
 

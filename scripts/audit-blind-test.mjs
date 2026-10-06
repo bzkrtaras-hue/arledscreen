@@ -1587,6 +1587,20 @@ if (
   errors.push("blind prompt #120 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit thermal pad yok");
 }
 
+
+const pBlind121 = PROMPTS.find((x) => x.id === 121);
+if (!pBlind121 || !/magnesium|magnezyum/i.test(pBlind121.q)) {
+  errors.push("blind prompt #121 must cover sabit magnesium invent");
+}
+if (
+  pBlind121 &&
+  (!pBlind121.mustSay?.includes("yazılı teklif") ||
+    !pBlind121.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind121.mustSay?.includes("sabit magnesium yok"))
+) {
+  errors.push("blind prompt #121 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit magnesium yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
