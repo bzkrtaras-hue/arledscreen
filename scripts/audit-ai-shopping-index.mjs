@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 146) errors.push(`blindTestPrompts must be 146 (got ${prompts.length})`);
+if (prompts.length !== 147) errors.push(`blindTestPrompts must be 147 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
