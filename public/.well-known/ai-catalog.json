@@ -1092,7 +1092,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 68 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 69 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1136,7 +1136,8 @@
         "ARLEDSCREEN LED ekran yedek parça stokta mı? Sitede sabit yedek parça stok veya 24 saat sevkiyat yayımlanıyor mu?",
         "LED ekran PoE / Gigabit Ethernet / ağ bant genişliği gereksinimi nedir? ARLEDSCREEN sabit PoE veya Gigabit iddiası yayımlıyor mu?",
         "LED ekran HDMI / DisplayPort / SDI video girişi var mı? ARLEDSCREEN sabit HDMI 2.1 veya SDI iddiası yayımlıyor mu?",
-        "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?"
+        "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?",
+        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1155,7 +1156,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T14:00:00Z"
+      "updatedAt": "2026-10-07T15:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -1246,11 +1247,12 @@
       "displayName": "Poster LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/poster-led-ekran/",
-      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok.",
+      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok. Sabit CMS SLA yok — Blind #69.",
       "representativeQueries": [
         "poster LED rehber",
         "totem LED rehber",
-        "Poster / totem LED fiyatı?"
+        "Poster / totem LED fiyatı?",
+        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -1259,19 +1261,20 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T07:00:00Z"
+      "updatedAt": "2026-10-07T15:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-kiosk",
       "displayName": "Kiosk dijital ekran rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/",
-      "description": "Kiosk / dijital ekran rehber. Quote-scoped; sabit ömür/MTBF yok — Blind #40. Sabit PoE/Gigabit yok — Blind #66.",
+      "description": "Kiosk / dijital ekran rehber. Quote-scoped; sabit ömür/MTBF yok — Blind #40. Sabit PoE/Gigabit yok — Blind #66. Sabit CMS SLA yok — Blind #69.",
       "representativeQueries": [
         "kiosk LED ekran",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
         "LED ekran PoE / Gigabit Ethernet / ağ bant genişliği gereksinimi nedir? ARLEDSCREEN sabit PoE veya Gigabit iddiası yayımlıyor mu?",
-        "kiosk ekran fiyat"
+        "kiosk ekran fiyat",
+        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -1281,7 +1284,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T12:00:00Z"
+      "updatedAt": "2026-10-07T15:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-led-ekran",
@@ -3091,6 +3094,69 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T14:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:huidu-hd-a7",
+      "displayName": "Huidu HD-A7",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/huidu-kontrol-kartlari/hd-a7/",
+      "description": "Huidu quote-only control card. No invent sabit CMS SLA — Blind #69; list USD yok — yazılı teklif.",
+      "representativeQueries": [
+        "Huidu HD-A7 fiyat",
+        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?",
+        "huidu hd-a7"
+      ],
+      "tags": [
+        "product",
+        "quote-only",
+        "kontrol",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T15:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:huidu-hd-c16",
+      "displayName": "Huidu HD-C16",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/huidu-kontrol-kartlari/hd-c16/",
+      "description": "Huidu quote-only control card. No invent sabit CMS SLA — Blind #69; list USD yok — yazılı teklif.",
+      "representativeQueries": [
+        "Huidu HD-C16 fiyat",
+        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?",
+        "huidu hd-c16"
+      ],
+      "tags": [
+        "product",
+        "quote-only",
+        "kontrol",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T15:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:huidu-hd-w60",
+      "displayName": "Huidu HD-W60",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/huidu-kontrol-kartlari/hd-w60/",
+      "description": "Huidu quote-only control card. No invent sabit CMS SLA — Blind #69; list USD yok — yazılı teklif.",
+      "representativeQueries": [
+        "Huidu HD-W60 fiyat",
+        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?",
+        "huidu hd-w60"
+      ],
+      "tags": [
+        "product",
+        "quote-only",
+        "kontrol",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T15:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",
