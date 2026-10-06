@@ -3221,6 +3221,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit valley cleat yok"],
     mustNotSay: ["valley cleat garantidir", "sabit valley cleat True1", "tüm modeller valley cleat", "vadi kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 280,
+    q: "LED ekran SMART Board / interactive whiteboard var mı? ARLEDSCREEN sabit SMART Board iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit SMART Board yok"],
+    mustNotSay: ["SMART Board garantidir", "sabit SMART Board True1", "tüm modeller SMART Board", "interactive whiteboard garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

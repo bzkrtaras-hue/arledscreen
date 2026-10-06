@@ -321,6 +321,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 329 | 2026-10-06 | sabit drip cleat #277 · dis/mimari ARD refresh · skor /831 | ✅ |
 | 330 | 2026-10-06 | sabit LG CreateBoard #278 · ic/konferans ARD refresh · skor /834 | ✅ |
 | 331 | 2026-10-06 | sabit valley cleat #279 · dis/mimari ARD refresh · skor /837 | ✅ |
+| 332 | 2026-10-06 | sabit SMART Board #280 · ic/konferans ARD refresh · skor /840 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2342,3 +2343,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #279 «valley cleat / vadi kleyt?» — skor **/837**; ARD **279 kör test**
 - TR/EN dis-mekan + TR/EN mimari valley cleat invent · llms deny · sabit valley cleat yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit valley cleat
+
+## Gün 332 notları
+
+- Blind #280 «SMART Board / interactive whiteboard?» — skor **/840**; ARD **280 kör test**
+- TR/EN ic-mekan + TR/EN konferans SMART Board invent · llms deny · sabit SMART Board yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit SMART Board

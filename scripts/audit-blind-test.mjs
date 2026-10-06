@@ -3670,6 +3670,20 @@ if (
   errors.push("blind prompt #279 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley cleat yok");
 }
 
+const pBlind280 = PROMPTS.find((x) => x.id === 280);
+if (!pBlind280 || !/SMART Board|interactive whiteboard/i.test(pBlind280.q)) {
+  errors.push("blind prompt #280 must cover sabit SMART Board invent");
+}
+if (
+  pBlind280 &&
+  (!pBlind280.mustSay?.includes("yazılı teklif") ||
+    !pBlind280.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind280.mustSay?.includes("sabit SMART Board yok"))
+) {
+  errors.push("blind prompt #280 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SMART Board yok");
+}
+
+
 
 
 
