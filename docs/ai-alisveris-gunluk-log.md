@@ -1,6 +1,6 @@
-## Gün 503 — invent Blind #451 curtain wall
+## Gün 503 — invent Blind #451 curtain wall LIVE
 
-- Blind #451 curtain wall / giydirme cephe · dis/mimari · prompts=451 · /1353 · build pending
+- Blind #451 curtain wall / giydirme cephe · dis/mimari · prompts=451 · /1353 · CF deploy · smoke:live 20/20
 - sahibe iş yok
 
 ## Gün 502 — invent Blind #450 Cisco Room Kit EQ LIVE
