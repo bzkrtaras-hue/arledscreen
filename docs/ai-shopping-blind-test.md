@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 334: blind #282 sabit Webex Board invent)  
+Son güncelleme: 2026-10-06 (Gün 335: blind #283 sabit sill cleat invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 282 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 283 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 282 prompt (alışveriş + varlık)
+## 283 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -306,6 +306,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 280 | LED ekran SMART Board / interactive whiteboard var mı? ARLEDSCREEN sabit SMART Board iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit SMART Board yok** | SMART Board garantidir / sabit SMART Board True1 / tüm modeller SMART Board / interactive whiteboard garantidir |
 | 281 | LED ekran head cleat / başlık kleyt var mı? ARLEDSCREEN sabit head cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit head cleat yok** | head cleat garantidir / sabit head cleat True1 / tüm modeller head cleat / başlık kleyt garantidir |
 | 282 | LED ekran Webex Board / Webex Board var mı? ARLEDSCREEN sabit Webex Board iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Webex Board yok** | Webex Board garantidir / sabit Webex Board True1 / tüm modeller Webex Board / Webex Board standarttır |
+| 283 | LED ekran sill cleat / eşik kleyt var mı? ARLEDSCREEN sabit sill cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit sill cleat yok** | sill cleat garantidir / sabit sill cleat True1 / tüm modeller sill cleat / eşik kleyt garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -316,7 +317,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 846. Hedef tur 1 ≥ 423/846; tur 2 (Point C sonrası) ≥ 635/846.
+**Tur skoru** = toplam / 849. Hedef tur 1 ≥ 425/849; tur 2 (Point C sonrası) ≥ 637/849.
 
 ### Canlı tur kayıt şablonu
 

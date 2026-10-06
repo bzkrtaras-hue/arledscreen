@@ -3709,6 +3709,20 @@ if (
   errors.push("blind prompt #282 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Webex Board yok");
 }
 
+const pBlind283 = PROMPTS.find((x) => x.id === 283);
+if (!pBlind283 || !/sill cleat|eşik kleyt/i.test(pBlind283.q)) {
+  errors.push("blind prompt #283 must cover sabit sill cleat invent");
+}
+if (
+  pBlind283 &&
+  (!pBlind283.mustSay?.includes("yazılı teklif") ||
+    !pBlind283.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind283.mustSay?.includes("sabit sill cleat yok"))
+) {
+  errors.push("blind prompt #283 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sill cleat yok");
+}
+
+
 
 
 

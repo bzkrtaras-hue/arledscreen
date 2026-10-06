@@ -3257,6 +3257,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Webex Board yok"],
     mustNotSay: ["Webex Board garantidir", "sabit Webex Board True1", "tüm modeller Webex Board", "Webex Board standarttır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 283,
+    q: "LED ekran sill cleat / eşik kleyt var mı? ARLEDSCREEN sabit sill cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit sill cleat yok"],
+    mustNotSay: ["sill cleat garantidir", "sabit sill cleat True1", "tüm modeller sill cleat", "eşik kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
