@@ -228,6 +228,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 236 | 2026-10-06 | sabit Google Meet #184 · ic/konferans ARD refresh · skor /552 | ✅ |
 | 237 | 2026-10-06 | sabit neoprene gasket #185 · dis/mimari ARD refresh · skor /555 | ✅ |
 | 238 | 2026-10-06 | sabit Yealink #186 · ic/konferans ARD refresh · skor /558 | ✅ |
+| 239 | 2026-10-06 | sabit frost heave #187 · dis/mimari ARD refresh · skor /561 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1691,3 +1692,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #186 «Yealink / UC endpoint?» — skor **/558**; ARD **186 kör test**
 - TR/EN ic-mekan + TR/EN konferans Yealink invent · llms deny · sabit Yealink yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Yealink
+
+## Gün 239 notları
+
+- Blind #187 «frost heave / don kabarması?» — skor **/561**; ARD **187 kör test**
+- TR/EN dis-mekan + TR/EN mimari frost heave invent · llms deny · sabit frost heave yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit frost heave

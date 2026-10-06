@@ -2105,6 +2105,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Yealink yok"],
     mustNotSay: ["Yealink garantidir", "sabit Yealink True1", "tüm modeller Yealink", "UC endpoint garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 187,
+    q: "LED ekran frost heave / don kabarması var mı? ARLEDSCREEN sabit frost heave iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit frost heave yok"],
+    mustNotSay: ["frost heave garantidir", "sabit frost heave True1", "tüm modeller frost heave", "don kabarması garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

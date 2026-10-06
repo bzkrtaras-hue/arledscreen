@@ -2461,6 +2461,20 @@ if (
   errors.push("blind prompt #186 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Yealink yok");
 }
 
+const pBlind187 = PROMPTS.find((x) => x.id === 187);
+if (!pBlind187 || !/frost heave|don kabarması/i.test(pBlind187.q)) {
+  errors.push("blind prompt #187 must cover sabit frost heave invent");
+}
+if (
+  pBlind187 &&
+  (!pBlind187.mustSay?.includes("yazılı teklif") ||
+    !pBlind187.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind187.mustSay?.includes("sabit frost heave yok"))
+) {
+  errors.push("blind prompt #187 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit frost heave yok");
+}
+
+
 
 
 
