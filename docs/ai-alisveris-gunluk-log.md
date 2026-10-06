@@ -110,6 +110,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 118 | 2026-10-06 | sabit PoE / Gigabit #66 · TR GOB p1-25/p1-53/p1-86 ARD · skor /198 | ✅ |
 | 119 | 2026-10-06 | sabit HDMI/SDI #67 · TR NovaStar mctrl660-pro/tb50/vx600 ARD · skor /201 | ✅ |
 | 120 | 2026-10-06 | sabit fiber mesafe #68 · TR Colorlight s20/vx20/x20 ARD · skor /204 | ✅ |
+| 121 | 2026-10-06 | sabit CMS SLA #69 · TR Huidu hd-a7/hd-c16/hd-w60 ARD · skor /207 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -786,3 +787,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN mimari + TR/EN dis-mekan fiber mesafe invent · llms deny · sabit fiber mesafe yok
 - ARD: TR Colorlight s20/vx20/x20 · IndexNow +3 · agentRules sabit fiber mesafe
 - skor hedef Tur 1 ≥ 102/204 · Tur 2 ≥ 153/204
+
+## Gün 121 notları
+
+- Blind #69 «uzaktan izleme / CMS uptime / SLA?» — skor **/207**; ARD **69 kör test**
+- TR/EN kiosk + poster CMS SLA invent · llms deny · sabit CMS SLA yok
+- ARD: TR Huidu hd-a7/hd-c16/hd-w60 · IndexNow +3 · agentRules sabit CMS SLA
+- skor hedef Tur 1 ≥ 104/207 · Tur 2 ≥ 156/207

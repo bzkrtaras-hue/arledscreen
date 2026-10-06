@@ -689,6 +689,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fiber mesafe yok"],
     mustNotSay: ["100 m fiber garantidir", "sabit 300 m fiber", "fiber 10 km garantidir", "CAT6A 100 m garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 69,
+    q: "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/kiosk-dijital-ekran/",
+      "/tr/rehber/poster-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit CMS SLA yok"],
+    mustNotSay: ["99.9% uptime garantidir", "sabit 24/7 CMS", "uzaktan izleme SLA garantidir", "cloud CMS uptime yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

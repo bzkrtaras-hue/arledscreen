@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/68 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 68 kör test intent (not stale 17–67)");
+if (ardTxt && !/69 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 69 kör test intent (not stale 17–68)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-7]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–67 kör test without 68");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-8]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–68 kör test without 69");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1007,6 +1007,22 @@ for (const rel of [
   }
   if (/100 m fiber garantidir|sabit 300 m fiber|fiber 10 km garantidir|CAT6A 100 m garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit fiber mesafe`);
+  }
+}
+
+
+// Day 121: sabit CMS SLA — honesty presence
+for (const rel of [
+  "out/tr/rehber/kiosk-dijital-ekran/index.html",
+  "out/tr/rehber/poster-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit CMS SLA yok|no fixed site CMS SLA/i.test(html)) {
+    errors.push(`${rel} should hedge sabit CMS SLA`);
+  }
+  if (/99\.9% uptime garantidir|sabit 24\/7 CMS|uzaktan izleme SLA garantidir|cloud CMS uptime yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit CMS SLA`);
   }
 }
 

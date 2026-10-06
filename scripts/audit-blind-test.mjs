@@ -894,6 +894,19 @@ if (
 ) {
   errors.push("blind prompt #68 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fiber mesafe yok");
 }
+
+const pBlind69 = PROMPTS.find((x) => x.id === 69);
+if (!pBlind69 || !/CMS|uptime|SLA|uzaktan izleme/i.test(pBlind69.q)) {
+  errors.push("blind prompt #69 must cover sabit CMS SLA invent");
+}
+if (
+  pBlind69 &&
+  (!pBlind69.mustSay?.includes("yazılı teklif") ||
+    !pBlind69.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind69.mustSay?.includes("sabit CMS SLA yok"))
+) {
+  errors.push("blind prompt #69 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CMS SLA yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
