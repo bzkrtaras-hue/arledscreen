@@ -84,6 +84,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 92 | 2026-10-06 | sabit ömür/MTBF #40 · p2-9/cephe/billboard ARD · skor /120 | ✅ |
 | 93 | 2026-10-06 | sabit gamut/DCI-P3 #41 · magaza/sahne/vitrin ARD · skor /123 | ✅ |
 | 94 | 2026-10-06 | sabit kg/m² #42 · otel/avm/fuar ARD · skor /126 | ✅ |
+| 95 | 2026-10-06 | sabit °C #43 · stadyum/belediye/restoran ARD · skor /129 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -578,3 +579,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - mimari/vitrin/şeffaf kg invent · llms kg deny
 - ARD: otel + avm + fuar · IndexNow +3 · agentRules sabit kg
 - skor hedef Tur 1 ≥ 63/126 · Tur 2 ≥ 95/126
+
+## Gün 95 notları
+
+- Blind #43 «çalışma sıcaklığı / sabit -20/+50 °C?» — skor **/129**; ARD **43 kör test**
+- dış mekân/mimari °C invent · faqs/sss/llms °C deny
+- ARD: stadyum + belediye + restoran · IndexNow +3 · agentRules sabit °C
+- skor hedef Tur 1 ≥ 65/129 · Tur 2 ≥ 97/129

@@ -576,6 +576,18 @@ if (
 ) {
   errors.push("blind prompt #42 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kg yok");
 }
+const pBlind43 = PROMPTS.find((x) => x.id === 43);
+if (!pBlind43 || !/°C|sıcaklık|-20|işletme/i.test(pBlind43.q)) {
+  errors.push("blind prompt #43 must cover sabit °C / çalışma sıcaklığı invent");
+}
+if (
+  pBlind43 &&
+  (!pBlind43.mustSay?.includes("yazılı teklif") ||
+    !pBlind43.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind43.mustSay?.includes("sabit °C yok"))
+) {
+  errors.push("blind prompt #43 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit °C yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

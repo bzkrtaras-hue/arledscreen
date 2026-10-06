@@ -92,6 +92,9 @@ export const INDEXNOW_URLS = [
   `${SITE}/tr/otel-led-ekran/`,
   `${SITE}/tr/avm-led-ekran/`,
   `${SITE}/tr/fuar-led-ekran/`,
+  `${SITE}/tr/stadyum-led-ekran/`,
+  `${SITE}/tr/belediye-led-ekran/`,
+  `${SITE}/tr/restoran-led-ekran/`,
 ];
 
 /** Must-have hubs for audit (subset of INDEXNOW_URLS). */

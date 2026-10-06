@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/42 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 42 kör test intent (not stale 17–41)");
+if (ardTxt && !/43 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 43 kör test intent (not stale 17–42)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[01]) kör test/i.test(ardTxt) && !/42 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–41 kör test without 42");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-2]) kör test/i.test(ardTxt) && !/43 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–42 kör test without 43");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -600,6 +600,21 @@ for (const rel of [
   }
   if (/30 kg\/m² garantidir|sabit 25 kg yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit kg/m² / 25 kg`);
+  }
+}
+
+// Day 95: sabit °C / çalışma sıcaklığı — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit °C yok|fixed site °C|no fixed site °C/i.test(html)) {
+    errors.push(`${rel} should hedge sabit °C / çalışma sıcaklığı`);
+  }
+  if (/-20\/\+50 °C garantidir|sabit -20 °C yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit -20/+50 °C`);
   }
 }
 
