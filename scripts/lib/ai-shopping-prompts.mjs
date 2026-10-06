@@ -917,6 +917,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit döküm kabin yok"],
     mustNotSay: ["döküm kabin garantidir", "sabit die-cast", "tüm modeller die-cast", "die-cast garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 88,
+    q: "LED ekran anti-yansıma / anti-glare var mı? ARLEDSCREEN sabit anti-yansıma iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit anti-yansıma yok"],
+    mustNotSay: ["anti-yansıma garantidir", "sabit anti-glare", "tüm modeller anti-glare", "anti-glare garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

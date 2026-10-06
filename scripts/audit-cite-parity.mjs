@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/87 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 87 kör test intent (not stale 17–86)");
+if (ardTxt && !/88 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 88 kör test intent (not stale 17–87)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–86 kör test without 87");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–87 kör test without 88");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1307,6 +1307,21 @@ for (const rel of [
   }
   if (/döküm kabin garantidir|sabit die-cast|tüm modeller die-cast|die-cast garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit döküm kabin`);
+  }
+}
+
+// Day 140: sabit anti-yansıma / anti-glare — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit anti-yansıma yok|no fixed site anti-glare/i.test(html)) {
+    errors.push(`${rel} should hedge sabit anti-yansıma / anti-glare`);
+  }
+  if (/anti-yansıma garantidir|sabit anti-glare|tüm modeller anti-glare|anti-glare garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit anti-yansıma`);
   }
 }
 

@@ -129,6 +129,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 137 | 2026-10-06 | sabit hızlı kilit #85 · blog 256/kafe/eskisehir ARD · skor /255 | ✅ |
 | 138 | 2026-10-06 | sabit kavisli #86 · blog alanya/unye/ic-mekan ARD · skor /258 | ✅ |
 | 139 | 2026-10-06 | sabit döküm kabin #87 · priced dis/ic/gob ARD refresh · skor /261 | ✅ |
+| 140 | 2026-10-06 | sabit anti-yansıma #88 · ic/konferans/ince-pitch ARD refresh · skor /264 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -939,3 +940,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari döküm kabin invent · llms deny · sabit döküm kabin yok
 - ARD refresh: priced hub dis-mekan / ic-mekan / gob (sitemap/IndexNow doygun — yeni kapı yok) · IndexNow 200 · agentRules sabit döküm kabin
 - skor hedef Tur 1 ≥ 131/261 · Tur 2 ≥ 196/261
+
+## Gün 140 notları
+
+- Blind #88 «anti-yansıma / anti-glare?» — skor **/264**; ARD **88 kör test**
+- TR/EN ic-mekan + TR/EN konferans anti-yansıma invent · llms deny · sabit anti-yansıma yok
+- ARD refresh: rehber ic/konferans + priced ic/ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit anti-yansıma
+- skor hedef Tur 1 ≥ 132/264 · Tur 2 ≥ 198/264
