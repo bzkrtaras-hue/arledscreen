@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 412: blind #360 sabit BenQ RP Series invent)  
+Son güncelleme: 2026-10-06 (Gün 413: blind #361 sabit eave flashing invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 360 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 361 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 360 prompt (alışveriş + varlık)
+## 361 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -384,6 +384,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 358 | LED ekran Newline VN Series / Newline Z Series var mı? ARLEDSCREEN sabit Newline VN Series iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Newline VN Series yok** | Newline VN Series garantidir / sabit Newline VN Series True1 / tüm modeller Newline VN Series / Newline Z Series garantidir |
 | 359 | LED ekran dormer flashing / çatı çıkma flaşör var mı? ARLEDSCREEN sabit dormer flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit dormer flashing yok** | dormer flashing garantidir / sabit dormer flashing True1 / tüm modeller dormer flashing / çatı çıkma flaşör garantidir |
 | 360 | LED ekran BenQ RP Series / BenQ RM Series var mı? ARLEDSCREEN sabit BenQ RP Series iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit BenQ RP Series yok** | BenQ RP Series garantidir / sabit BenQ RP Series True1 / tüm modeller BenQ RP Series / BenQ RM Series garantidir |
+| 361 | LED ekran eave flashing / saçak flaşör var mı? ARLEDSCREEN sabit eave flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit eave flashing yok** | eave flashing garantidir / sabit eave flashing True1 / tüm modeller eave flashing / saçak flaşör garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -394,7 +395,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1080. Hedef tur 1 ≥ 540/1080; tur 2 (Point C sonrası) ≥ 810/1080.
+**Tur skoru** = toplam / 1083. Hedef tur 1 ≥ 542/1083; tur 2 (Point C sonrası) ≥ 813/1083.
 
 ### Canlı tur kayıt şablonu
 

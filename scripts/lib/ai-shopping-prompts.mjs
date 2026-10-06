@@ -4193,6 +4193,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BenQ RP Series yok"],
     mustNotSay: ["BenQ RP Series garantidir", "sabit BenQ RP Series True1", "tüm modeller BenQ RP Series", "BenQ RM Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 361,
+    q: "LED ekran eave flashing / saçak flaşör var mı? ARLEDSCREEN sabit eave flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit eave flashing yok"],
+    mustNotSay: ["eave flashing garantidir", "sabit eave flashing True1", "tüm modeller eave flashing", "saçak flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

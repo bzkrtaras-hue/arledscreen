@@ -4723,6 +4723,20 @@ if (
   errors.push("blind prompt #360 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BenQ RP Series yok");
 }
 
+const pBlind361 = PROMPTS.find((x) => x.id === 361);
+if (!pBlind361 || !/eave flashing|saçak flaşör/i.test(pBlind361.q)) {
+  errors.push("blind prompt #361 must cover sabit eave flashing invent");
+}
+if (
+  pBlind361 &&
+  (!pBlind361.mustSay?.includes("yazılı teklif") ||
+    !pBlind361.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind361.mustSay?.includes("sabit eave flashing yok"))
+) {
+  errors.push("blind prompt #361 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave flashing yok");
+}
+
+
 
 
 
