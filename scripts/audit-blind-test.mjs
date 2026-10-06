@@ -4879,6 +4879,20 @@ if (
   errors.push("blind prompt #372 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH P2 yok");
 }
 
+const pBlind373 = PROMPTS.find((x) => x.id === 373);
+if (!pBlind373 || !/roof valley pan|çatı vadi tavası/i.test(pBlind373.q)) {
+  errors.push("blind prompt #373 must cover sabit roof valley pan invent");
+}
+if (
+  pBlind373 &&
+  (!pBlind373.mustSay?.includes("yazılı teklif") ||
+    !pBlind373.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind373.mustSay?.includes("sabit roof valley pan yok"))
+) {
+  errors.push("blind prompt #373 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit roof valley pan yok");
+}
+
+
 
 
 

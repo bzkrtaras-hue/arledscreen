@@ -4337,6 +4337,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit i3TOUCH P2 yok"],
     mustNotSay: ["i3TOUCH P2 garantidir", "sabit i3TOUCH P2 True1", "tüm modeller i3TOUCH P2", "i3TOUCH P2+ garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 373,
+    q: "LED ekran roof valley pan / çatı vadi tavası var mı? ARLEDSCREEN sabit roof valley pan iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit roof valley pan yok"],
+    mustNotSay: ["roof valley pan garantidir", "sabit roof valley pan True1", "tüm modeller roof valley pan", "çatı vadi tavası garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
