@@ -5541,6 +5541,19 @@ if (
   errors.push("blind prompt #423 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit threshold apron yok");
 }
 
+const pBlind424 = PROMPTS.find((x) => x.id === 424);
+if (!pBlind424 || !/Room Kit Mini/i.test(pBlind424.q)) {
+  errors.push("blind prompt #424 must cover sabit Room Kit Mini invent");
+}
+if (
+  pBlind424 &&
+  (!pBlind424.mustSay?.includes("yazılı teklif") ||
+    !pBlind424.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind424.mustSay?.includes("sabit Room Kit Mini yok"))
+) {
+  errors.push("blind prompt #424 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Kit Mini yok");
+}
+
 
 
 

@@ -4949,6 +4949,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit threshold apron yok"],
     mustNotSay: ["threshold apron garantidir", "sabit threshold apron True1", "tüm modeller threshold apron", "eşik eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 424,
+    q: "LED ekran Room Kit Mini / Room Kit Mini var mı? ARLEDSCREEN sabit Room Kit Mini iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Room Kit Mini yok"],
+    mustNotSay: ["Room Kit Mini garantidir", "sabit Room Kit Mini True1", "tüm modeller Room Kit Mini", "Room Kit Mini dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
