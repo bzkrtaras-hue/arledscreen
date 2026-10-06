@@ -3665,6 +3665,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Promethean ActivPanel yok"],
     mustNotSay: ["Promethean ActivPanel garantidir", "sabit Promethean ActivPanel True1", "tüm modeller Promethean ActivPanel", "ActivPanel Nickel garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 317,
+    q: "LED ekran sill pan / eşik tavası var mı? ARLEDSCREEN sabit sill pan iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit sill pan yok"],
+    mustNotSay: ["sill pan garantidir", "sabit sill pan True1", "tüm modeller sill pan", "eşik tavası garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

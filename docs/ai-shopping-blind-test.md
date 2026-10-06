@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 368: blind #316 sabit Promethean ActivPanel invent)  
+Son güncelleme: 2026-10-06 (Gün 369: blind #317 sabit sill pan invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 316 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 317 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 316 prompt (alışveriş + varlık)
+## 317 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -340,6 +340,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 314 | LED ekran ViewSonic ViewBoard / ViewBoard IFP var mı? ARLEDSCREEN sabit ViewSonic ViewBoard iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ViewSonic ViewBoard yok** | ViewSonic ViewBoard garantidir / sabit ViewSonic ViewBoard True1 / tüm modeller ViewSonic ViewBoard / ViewBoard IFP garantidir |
 | 315 | LED ekran gutter cleat / oluk kleyt var mı? ARLEDSCREEN sabit gutter cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit gutter cleat yok** | gutter cleat garantidir / sabit gutter cleat True1 / tüm modeller gutter cleat / oluk kleyt garantidir |
 | 316 | LED ekran Promethean ActivPanel / ActivPanel Nickel var mı? ARLEDSCREEN sabit Promethean ActivPanel iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Promethean ActivPanel yok** | Promethean ActivPanel garantidir / sabit Promethean ActivPanel True1 / tüm modeller Promethean ActivPanel / ActivPanel Nickel garantidir |
+| 317 | LED ekran sill pan / eşik tavası var mı? ARLEDSCREEN sabit sill pan iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit sill pan yok** | sill pan garantidir / sabit sill pan True1 / tüm modeller sill pan / eşik tavası garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -350,7 +351,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 948. Hedef tur 1 ≥ 474/948; tur 2 (Point C sonrası) ≥ 711/948.
+**Tur skoru** = toplam / 951. Hedef tur 1 ≥ 476/951; tur 2 (Point C sonrası) ≥ 714/951.
 
 ### Canlı tur kayıt şablonu
 

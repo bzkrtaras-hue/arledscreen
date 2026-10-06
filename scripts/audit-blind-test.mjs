@@ -4151,6 +4151,20 @@ if (
   errors.push("blind prompt #316 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Promethean ActivPanel yok");
 }
 
+const pBlind317 = PROMPTS.find((x) => x.id === 317);
+if (!pBlind317 || !/sill pan|eşik tavası/i.test(pBlind317.q)) {
+  errors.push("blind prompt #317 must cover sabit sill pan invent");
+}
+if (
+  pBlind317 &&
+  (!pBlind317.mustSay?.includes("yazılı teklif") ||
+    !pBlind317.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind317.mustSay?.includes("sabit sill pan yok"))
+) {
+  errors.push("blind prompt #317 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sill pan yok");
+}
+
+
 
 
 
