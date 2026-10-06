@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 205: blind #153 sabit wall bracket invent)  
+Son güncelleme: 2026-10-06 (Gün 206: blind #154 sabit AMX invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 153 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 154 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 153 prompt (alışveriş + varlık)
+## 154 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -177,6 +177,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 151 | LED ekran weather drain / su tahliyesi var mı? ARLEDSCREEN sabit weather drain iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit weather drain yok** | weather drain garantidir / sabit weather drain True1 / tüm modeller weather drain / su tahliyesi garantidir |
 | 152 | LED ekran Extron / AV switcher var mı? ARLEDSCREEN sabit Extron iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Extron yok** | Extron garantidir / sabit Extron True1 / tüm modeller Extron / AV switcher garantidir |
 | 153 | LED ekran wall bracket / duvar braketi var mı? ARLEDSCREEN sabit wall bracket iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit wall bracket yok** | wall bracket garantidir / sabit wall bracket True1 / tüm modeller wall bracket / duvar braketi garantidir |
+| 154 | LED ekran AMX / oda kontrol var mı? ARLEDSCREEN sabit AMX iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit AMX yok** | AMX garantidir / sabit AMX True1 / tüm modeller AMX / oda kontrol garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -187,7 +188,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 459. Hedef tur 1 ≥ 230/459; tur 2 (Point C sonrası) ≥ 345/459.
+**Tur skoru** = toplam / 462. Hedef tur 1 ≥ 231/462; tur 2 (Point C sonrası) ≥ 347/462.
 
 ### Canlı tur kayıt şablonu
 

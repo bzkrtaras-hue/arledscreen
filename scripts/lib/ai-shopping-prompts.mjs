@@ -1709,6 +1709,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit wall bracket yok"],
     mustNotSay: ["wall bracket garantidir", "sabit wall bracket True1", "tüm modeller wall bracket", "duvar braketi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 154,
+    q: "LED ekran AMX / oda kontrol var mı? ARLEDSCREEN sabit AMX iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit AMX yok"],
+    mustNotSay: ["AMX garantidir", "sabit AMX True1", "tüm modeller AMX", "oda kontrol garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

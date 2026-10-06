@@ -2034,6 +2034,20 @@ if (
     !pBlind153.mustSay?.includes("sabit wall bracket yok"))
 ) {
   errors.push("blind prompt #153 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit wall bracket yok");
+
+const pBlind154 = PROMPTS.find((x) => x.id === 154);
+if (!pBlind154 || !/AMX|oda kontrol/i.test(pBlind154.q)) {
+  errors.push("blind prompt #154 must cover sabit AMX invent");
+}
+if (
+  pBlind154 &&
+  (!pBlind154.mustSay?.includes("yazılı teklif") ||
+    !pBlind154.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind154.mustSay?.includes("sabit AMX yok"))
+) {
+  errors.push("blind prompt #154 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit AMX yok");
+}
+
 }
 
 }

@@ -195,6 +195,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 203 | 2026-10-06 | sabit weather drain #151 · dis/mimari ARD refresh · skor /453 | ✅ |
 | 204 | 2026-10-06 | sabit Extron #152 · ic/konferans ARD refresh · skor /456 | ✅ |
 | 205 | 2026-10-06 | sabit wall bracket #153 · dis/mimari ARD refresh · skor /459 | ✅ |
+| 206 | 2026-10-06 | sabit AMX #154 · ic/konferans ARD refresh · skor /462 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1460,3 +1461,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #153 «wall bracket / duvar braketi?» — skor **/459**; ARD **153 kör test**
 - TR/EN dis-mekan + TR/EN mimari wall bracket invent · llms deny · sabit wall bracket yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit wall bracket
+
+## Gün 206 notları
+
+- Blind #154 «AMX / oda kontrol?» — skor **/462**; ARD **154 kör test**
+- TR/EN ic-mekan + TR/EN konferans AMX invent · llms deny · sabit AMX yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit AMX

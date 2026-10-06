@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 153) errors.push(`blindTestPrompts must be 153 (got ${prompts.length})`);
+if (prompts.length !== 154) errors.push(`blindTestPrompts must be 154 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/153 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 153 kör test intent");
+if (!/154 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 154 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–152 kör test without 153");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–153 kör test without 154");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1362,6 +1362,15 @@ if (!p153 || !/wall bracket|duvar braketi/i.test(p153.q || "")) {
 }
 if (!/wall bracket|duvar braketi|sabit wall bracket/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit wall bracket invent");
+
+const p154 = (doc.blindTestPrompts || []).find((p) => p.id === 154);
+if (!p154 || !/AMX|oda kontrol/i.test(p154.q || "")) {
+  errors.push("blindTestPrompts #154 must cover sabit AMX invent");
+}
+if (!/AMX|oda kontrol|sabit AMX/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit AMX invent");
+}
+
 }
 
 }
