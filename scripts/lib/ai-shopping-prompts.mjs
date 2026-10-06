@@ -4001,6 +4001,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit InFocus Mondopad yok"],
     mustNotSay: ["InFocus Mondopad garantidir", "sabit InFocus Mondopad True1", "tüm modeller InFocus Mondopad", "InFocus JTouch garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 345,
+    q: "LED ekran edge metal / kenar metal var mı? ARLEDSCREEN sabit edge metal iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit edge metal yok"],
+    mustNotSay: ["edge metal garantidir", "sabit edge metal True1", "tüm modeller edge metal", "kenar metal garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

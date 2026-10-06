@@ -4515,6 +4515,20 @@ if (
   errors.push("blind prompt #344 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit InFocus Mondopad yok");
 }
 
+const pBlind345 = PROMPTS.find((x) => x.id === 345);
+if (!pBlind345 || !/edge metal|kenar metal/i.test(pBlind345.q)) {
+  errors.push("blind prompt #345 must cover sabit edge metal invent");
+}
+if (
+  pBlind345 &&
+  (!pBlind345.mustSay?.includes("yazılı teklif") ||
+    !pBlind345.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind345.mustSay?.includes("sabit edge metal yok"))
+) {
+  errors.push("blind prompt #345 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit edge metal yok");
+}
+
+
 
 
 

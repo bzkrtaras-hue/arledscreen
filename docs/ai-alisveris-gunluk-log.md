@@ -386,6 +386,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 394 | 2026-10-06 | sabit Avocor E Series #342 · ic/konferans ARD refresh · skor /1026 | ✅ |
 | 395 | 2026-10-06 | sabit pipe boot #343 · dis/mimari ARD refresh · skor /1029 | ✅ |
 | 396 | 2026-10-06 | sabit InFocus Mondopad #344 · ic/konferans ARD refresh · skor /1032 | ✅ |
+| 397 | 2026-10-06 | sabit edge metal #345 · dis/mimari ARD refresh · skor /1035 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2797,3 +2798,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #344 «InFocus Mondopad / InFocus JTouch?» — skor **/1032**; ARD **344 kör test**
 - TR/EN ic-mekan + TR/EN konferans InFocus Mondopad invent · llms deny · sabit InFocus Mondopad yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit InFocus Mondopad
+
+## Gün 397 notları
+
+- Blind #345 «edge metal / kenar metal?» — skor **/1035**; ARD **345 kör test**
+- TR/EN dis-mekan + TR/EN mimari edge metal invent · llms deny · sabit edge metal yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit edge metal
