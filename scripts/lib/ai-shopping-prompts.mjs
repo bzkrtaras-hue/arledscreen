@@ -701,6 +701,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit CMS SLA yok"],
     mustNotSay: ["99.9% uptime garantidir", "sabit 24/7 CMS", "uzaktan izleme SLA garantidir", "cloud CMS uptime yayımlanır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 70,
+    q: "LED ekran dual power / hot-swap PSU / yedek güç var mı? ARLEDSCREEN sabit redundant PSU iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit dual power yok"],
+    mustNotSay: ["dual power garantidir", "hot-swap PSU garantidir", "sabit redundant PSU", "tüm modeller dual power", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

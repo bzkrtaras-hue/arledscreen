@@ -907,6 +907,19 @@ if (
 ) {
   errors.push("blind prompt #69 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CMS SLA yok");
 }
+
+const pBlind70 = PROMPTS.find((x) => x.id === 70);
+if (!pBlind70 || !/dual power|hot-swap|yedek güç|redundant/i.test(pBlind70.q)) {
+  errors.push("blind prompt #70 must cover sabit dual power invent");
+}
+if (
+  pBlind70 &&
+  (!pBlind70.mustSay?.includes("yazılı teklif") ||
+    !pBlind70.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind70.mustSay?.includes("sabit dual power yok"))
+) {
+  errors.push("blind prompt #70 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dual power yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

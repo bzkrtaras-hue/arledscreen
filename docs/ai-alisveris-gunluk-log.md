@@ -111,6 +111,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 119 | 2026-10-06 | sabit HDMI/SDI #67 · TR NovaStar mctrl660-pro/tb50/vx600 ARD · skor /201 | ✅ |
 | 120 | 2026-10-06 | sabit fiber mesafe #68 · TR Colorlight s20/vx20/x20 ARD · skor /204 | ✅ |
 | 121 | 2026-10-06 | sabit CMS SLA #69 · TR Huidu hd-a7/hd-c16/hd-w60 ARD · skor /207 | ✅ |
+| 122 | 2026-10-06 | sabit dual power #70 · TR esnek p1-86/p2-5 + Colorlight x40m ARD · skor /210 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -794,3 +795,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN kiosk + poster CMS SLA invent · llms deny · sabit CMS SLA yok
 - ARD: TR Huidu hd-a7/hd-c16/hd-w60 · IndexNow +3 · agentRules sabit CMS SLA
 - skor hedef Tur 1 ≥ 104/207 · Tur 2 ≥ 156/207
+
+## Gün 122 notları
+
+- Blind #70 «dual power / hot-swap PSU / yedek güç?» — skor **/210**; ARD **70 kör test**
+- TR/EN mimari + dis-mekan dual power invent · llms deny · sabit dual power yok
+- ARD: TR esnek p1-86/p2-5 + Colorlight x40m · IndexNow +3 · agentRules sabit dual power
+- skor hedef Tur 1 ≥ 105/210 · Tur 2 ≥ 158/210

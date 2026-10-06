@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/69 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 69 kör test intent (not stale 17–68)");
+if (ardTxt && !/70 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 70 kör test intent (not stale 17–69)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-8]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–68 kör test without 69");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–69 kör test without 70");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1023,6 +1023,22 @@ for (const rel of [
   }
   if (/99\.9% uptime garantidir|sabit 24\/7 CMS|uzaktan izleme SLA garantidir|cloud CMS uptime yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit CMS SLA`);
+  }
+}
+
+
+// Day 122: sabit dual power — honesty presence
+for (const rel of [
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit dual power yok|no fixed site dual power/i.test(html)) {
+    errors.push(`${rel} should hedge sabit dual power`);
+  }
+  if (/dual power garantidir|hot-swap PSU garantidir|sabit redundant PSU|tüm modeller dual power/i.test(html)) {
+    errors.push(`${rel} must not invent sabit dual power`);
   }
 }
 
