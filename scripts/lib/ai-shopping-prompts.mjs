@@ -3905,6 +3905,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit i3TOUCH X-ONE yok"],
     mustNotSay: ["i3TOUCH X-ONE garantidir", "sabit i3TOUCH X-ONE True1", "tüm modeller i3TOUCH X-ONE", "i3TOUCH Sixty garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 337,
+    q: "LED ekran roof curb / çatı curb var mı? ARLEDSCREEN sabit roof curb iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit roof curb yok"],
+    mustNotSay: ["roof curb garantidir", "sabit roof curb True1", "tüm modeller roof curb", "çatı curb garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

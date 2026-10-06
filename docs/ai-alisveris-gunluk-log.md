@@ -378,6 +378,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 386 | 2026-10-06 | sabit ActivPanel Titanium #334 · ic/konferans ARD refresh · skor /1002 | ✅ |
 | 387 | 2026-10-06 | sabit pitch pocket #335 · dis/mimari ARD refresh · skor /1005 | ✅ |
 | 388 | 2026-10-06 | sabit i3TOUCH X-ONE #336 · ic/konferans ARD refresh · skor /1008 | ✅ |
+| 389 | 2026-10-06 | sabit roof curb #337 · dis/mimari ARD refresh · skor /1011 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2741,3 +2742,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #336 «i3TOUCH X-ONE / i3TOUCH Sixty?» — skor **/1008**; ARD **336 kör test**
 - TR/EN ic-mekan + TR/EN konferans i3TOUCH X-ONE invent · llms deny · sabit i3TOUCH X-ONE yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit i3TOUCH X-ONE
+
+## Gün 389 notları
+
+- Blind #337 «roof curb / çatı curb?» — skor **/1011**; ARD **337 kör test**
+- TR/EN dis-mekan + TR/EN mimari roof curb invent · llms deny · sabit roof curb yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit roof curb

@@ -4411,6 +4411,20 @@ if (
   errors.push("blind prompt #336 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH X-ONE yok");
 }
 
+const pBlind337 = PROMPTS.find((x) => x.id === 337);
+if (!pBlind337 || !/roof curb|çatı curb/i.test(pBlind337.q)) {
+  errors.push("blind prompt #337 must cover sabit roof curb invent");
+}
+if (
+  pBlind337 &&
+  (!pBlind337.mustSay?.includes("yazılı teklif") ||
+    !pBlind337.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind337.mustSay?.includes("sabit roof curb yok"))
+) {
+  errors.push("blind prompt #337 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit roof curb yok");
+}
+
+
 
 
 
