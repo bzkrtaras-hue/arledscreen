@@ -392,6 +392,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 400 | 2026-10-06 | sabit Newline X Series #348 · ic/konferans ARD refresh · skor /1044 | ✅ |
 | 401 | 2026-10-06 | sabit wall flashing #349 · dis/mimari ARD refresh · skor /1047 | ✅ |
 | 402 | 2026-10-06 | sabit ActivPanel 9 #350 · ic/konferans ARD refresh · skor /1050 | ✅ |
+| 403 | 2026-10-06 | sabit deck flashing #351 · dis/mimari ARD refresh · skor /1053 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2839,3 +2840,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #350 «ActivPanel 9 / ActivPanel Nickel?» — skor **/1050**; ARD **350 kör test**
 - TR/EN ic-mekan + TR/EN konferans ActivPanel 9 invent · llms deny · sabit ActivPanel 9 yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit ActivPanel 9
+
+## Gün 403 notları
+
+- Blind #351 «deck flashing / güverte flaşör?» — skor **/1053**; ARD **351 kör test**
+- TR/EN dis-mekan + TR/EN mimari deck flashing invent · llms deny · sabit deck flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit deck flashing

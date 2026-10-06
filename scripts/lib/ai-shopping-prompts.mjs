@@ -4073,6 +4073,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ActivPanel 9 yok"],
     mustNotSay: ["ActivPanel 9 garantidir", "sabit ActivPanel 9 True1", "tüm modeller ActivPanel 9", "ActivPanel Nickel garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 351,
+    q: "LED ekran deck flashing / güverte flaşör var mı? ARLEDSCREEN sabit deck flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit deck flashing yok"],
+    mustNotSay: ["deck flashing garantidir", "sabit deck flashing True1", "tüm modeller deck flashing", "güverte flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

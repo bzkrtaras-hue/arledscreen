@@ -4593,6 +4593,20 @@ if (
   errors.push("blind prompt #350 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ActivPanel 9 yok");
 }
 
+const pBlind351 = PROMPTS.find((x) => x.id === 351);
+if (!pBlind351 || !/deck flashing|güverte flaşör/i.test(pBlind351.q)) {
+  errors.push("blind prompt #351 must cover sabit deck flashing invent");
+}
+if (
+  pBlind351 &&
+  (!pBlind351.mustSay?.includes("yazılı teklif") ||
+    !pBlind351.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind351.mustSay?.includes("sabit deck flashing yok"))
+) {
+  errors.push("blind prompt #351 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit deck flashing yok");
+}
+
+
 
 
 
