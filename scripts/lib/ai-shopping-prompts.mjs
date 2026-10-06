@@ -4697,6 +4697,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Yealink MeetingBoard 86 yok"],
     mustNotSay: ["Yealink MeetingBoard 86 garantidir", "sabit Yealink MeetingBoard 86 True1", "tüm modeller Yealink MeetingBoard 86", "MeetingBoard 86 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 403,
+    q: "LED ekran gable apron / kalkan eteği var mı? ARLEDSCREEN sabit gable apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gable apron yok"],
+    mustNotSay: ["gable apron garantidir", "sabit gable apron True1", "tüm modeller gable apron", "kalkan eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

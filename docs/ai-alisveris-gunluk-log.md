@@ -444,6 +444,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 452 | 2026-10-06 | sabit Logitech Tap Scheduler #400 · ic/konferans ARD refresh · skor /1200 | ✅ |
 | 453 | 2026-10-06 | sabit hip apron #401 · dis/mimari ARD refresh · skor /1203 | ✅ |
 | 454 | 2026-10-06 | sabit Yealink MeetingBoard 86 #402 · ic/konferans ARD refresh · skor /1206 | ✅ |
+| 455 | 2026-10-06 | sabit gable apron #403 · dis/mimari ARD refresh · skor /1209 | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti
@@ -3212,3 +3213,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #402 «Yealink MeetingBoard 86 / MeetingBoard 86?» — skor **/1206**; ARD **402 kör test**
 - TR/EN ic-mekan + TR/EN konferans Yealink MeetingBoard 86 invent · llms deny · sabit Yealink MeetingBoard 86 yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Yealink MeetingBoard 86
+
+## Gün 455 notları
+
+- Blind #403 «gable apron / kalkan eteği?» — skor **/1209**; ARD **403 kör test**
+- TR/EN dis-mekan + TR/EN mimari gable apron invent · llms deny · sabit gable apron yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow policy (live-200 once) · agentRules sabit gable apron
