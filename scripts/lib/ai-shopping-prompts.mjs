@@ -5285,6 +5285,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit curtain wall yok"],
     mustNotSay: ["curtain wall garantidir", "sabit curtain wall True1", "tüm modeller curtain wall", "giydirme cephe garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 452,
+    q: "LED ekran Logitech Rally Bar Huddle / Rally Bar Huddle var mı? ARLEDSCREEN sabit Logitech Rally Bar Huddle iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Logitech Rally Bar Huddle yok"],
+    mustNotSay: ["Logitech Rally Bar Huddle garantidir", "sabit Logitech Rally Bar Huddle True1", "tüm modeller Logitech Rally Bar Huddle", "Rally Bar Huddle garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
