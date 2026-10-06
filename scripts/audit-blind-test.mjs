@@ -1629,6 +1629,20 @@ if (
   errors.push("blind prompt #123 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HDBaseT yok");
 }
 
+
+const pBlind124 = PROMPTS.find((x) => x.id === 124);
+if (!pBlind124 || !/video processor|video işlemci/i.test(pBlind124.q)) {
+  errors.push("blind prompt #124 must cover sabit video processor invent");
+}
+if (
+  pBlind124 &&
+  (!pBlind124.mustSay?.includes("yazılı teklif") ||
+    !pBlind124.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind124.mustSay?.includes("sabit video processor yok"))
+) {
+  errors.push("blind prompt #124 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit video processor yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

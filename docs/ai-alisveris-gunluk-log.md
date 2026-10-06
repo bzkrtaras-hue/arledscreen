@@ -165,6 +165,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 173 | 2026-10-06 | sabit magnesium #121 · dis/mimari ARD refresh · skor /363 | ✅ |
 | 174 | 2026-10-06 | sabit EDID #122 · ic/konferans ARD refresh · skor /366 | ✅ |
 | 175 | 2026-10-06 | sabit HDBaseT #123 · dis/mimari ARD refresh · skor /369 | ✅ |
+| 176 | 2026-10-06 | sabit video processor #124 · ic/konferans ARD refresh · skor /372 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1227,4 +1228,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari HDBaseT invent · llms deny · sabit HDBaseT yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit HDBaseT
 - skor hedef Tur 1 ≥ 185/369 · Tur 2 ≥ 277/369
+
+## Gün 176 notları
+
+- Blind #124 «video processor / video işlemci?» — skor **/372**; ARD **124 kör test**
+- TR/EN ic-mekan + TR/EN konferans video processor invent · llms deny · sabit video processor yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit video processor
+- skor hedef Tur 1 ≥ 186/372 · Tur 2 ≥ 279/372
 

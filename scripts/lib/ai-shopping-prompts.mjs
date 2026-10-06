@@ -1349,6 +1349,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HDBaseT yok"],
     mustNotSay: ["HDBaseT garantidir", "sabit HDBaseT iletim", "tüm modeller HDBaseT", "HDBaseT iletim garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 124,
+    q: "LED ekran video processor / video işlemci var mı? ARLEDSCREEN sabit video processor iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit video processor yok"],
+    mustNotSay: ["video processor garantidir", "sabit video işlemci", "tüm modeller video processor", "video işlemci garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
