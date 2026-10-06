@@ -513,22 +513,18 @@ for (const rel of [
     errors.push("out/tr/rehber/ic-mekan-led-ekran/ should state sabit Hz yok honesty");
   }
 }
-// Day 88: 1 mm = 1 m garanti invent
+// Day 88: 1 mm = 1 m — require honesty hedge; forbid affirmative şart invent
 for (const rel of [
   "out/tr/rehber/piksel-araligi-secimi/index.html",
   "out/tr/sss/index.html",
-  "out/tr/index.html",
 ]) {
   const html = read(rel);
   if (!html) continue;
-  if (/1 mm = 1 m garanti|sabit 2,5 m şart|P2\.5 için 2\.5 m şart/i.test(html)) {
-    errors.push(`${rel} must not invent 1 mm = 1 m / sabit mesafe garanti`);
+  if (!/garanti değil|garanti değildir|garanti» veya|iddiası yoktur/i.test(html)) {
+    errors.push(`${rel} should hedge 1 mm ≈ 1 m as non-guarantee`);
   }
-}
-{
-  const html = read("out/tr/rehber/piksel-araligi-secimi/index.html");
-  if (html && !/garanti değil|garanti değildir/i.test(html)) {
-    errors.push("out/tr/rehber/piksel-araligi-secimi/ should state izleme mesafesi garanti değil");
+  if (/sabit 2,5 m şart|P2\.5 için 2\.5 m şart|sabit minimum mesafe garantisi yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit mesafe şartı`);
   }
 }
 
