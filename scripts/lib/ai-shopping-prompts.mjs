@@ -2765,6 +2765,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit through-wall flashing yok"],
     mustNotSay: ["through-wall flashing garantidir", "sabit through-wall flashing True1", "tüm modeller through-wall flashing", "duvar geçiş flaşı garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 242,
+    q: "LED ekran Sony / BRAVIA display var mı? ARLEDSCREEN sabit Sony iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Sony yok"],
+    mustNotSay: ["Sony garantidir", "sabit Sony True1", "tüm modeller Sony", "BRAVIA display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

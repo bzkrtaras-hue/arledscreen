@@ -3176,6 +3176,20 @@ if (
   errors.push("blind prompt #241 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit through-wall flashing yok");
 }
 
+const pBlind242 = PROMPTS.find((x) => x.id === 242);
+if (!pBlind242 || !/Sony|BRAVIA display/i.test(pBlind242.q)) {
+  errors.push("blind prompt #242 must cover sabit Sony invent");
+}
+if (
+  pBlind242 &&
+  (!pBlind242.mustSay?.includes("yazılı teklif") ||
+    !pBlind242.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind242.mustSay?.includes("sabit Sony yok"))
+) {
+  errors.push("blind prompt #242 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sony yok");
+}
+
+
 
 
 

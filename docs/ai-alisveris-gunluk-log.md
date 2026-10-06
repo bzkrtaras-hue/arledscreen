@@ -283,6 +283,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 291 | 2026-10-06 | sabit termination bar #239 · dis/mimari ARD refresh · skor /717 | ✅ |
 | 292 | 2026-10-06 | sabit BenQ #240 · ic/konferans ARD refresh · skor /720 | ✅ |
 | 293 | 2026-10-06 | sabit through-wall flashing #241 · dis/mimari ARD refresh · skor /723 | ✅ |
+| 294 | 2026-10-06 | sabit Sony #242 · ic/konferans ARD refresh · skor /726 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2076,3 +2077,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #241 «through-wall flashing / duvar geçiş flaşı?» — skor **/723**; ARD **241 kör test**
 - TR/EN dis-mekan + TR/EN mimari through-wall flashing invent · llms deny · sabit through-wall flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit through-wall flashing
+
+## Gün 294 notları
+
+- Blind #242 «Sony / BRAVIA display?» — skor **/726**; ARD **242 kör test**
+- TR/EN ic-mekan + TR/EN konferans Sony invent · llms deny · sabit Sony yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Sony
