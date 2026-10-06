@@ -250,6 +250,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 258 | 2026-10-06 | sabit AVer #206 · ic/konferans ARD refresh · skor /618 | ✅ |
 | 259 | 2026-10-06 | sabit soffit vent #207 · dis/mimari ARD refresh · skor /621 | ✅ |
 | 260 | 2026-10-06 | sabit Nureva #208 · ic/konferans ARD refresh · skor /624 | ✅ |
+| 261 | 2026-10-06 | sabit cricket flashing #209 · dis/mimari ARD refresh · skor /627 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1845,3 +1846,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #208 «Nureva / microphone array?» — skor **/624**; ARD **208 kör test**
 - TR/EN ic-mekan + TR/EN konferans Nureva invent · llms deny · sabit Nureva yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Nureva
+
+## Gün 261 notları
+
+- Blind #209 «cricket flashing / baca flaşı?» — skor **/627**; ARD **209 kör test**
+- TR/EN dis-mekan + TR/EN mimari cricket flashing invent · llms deny · sabit cricket flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit cricket flashing

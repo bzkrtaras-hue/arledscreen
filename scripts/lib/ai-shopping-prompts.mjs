@@ -2369,6 +2369,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Nureva yok"],
     mustNotSay: ["Nureva garantidir", "sabit Nureva True1", "tüm modeller Nureva", "microphone array garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 209,
+    q: "LED ekran cricket flashing / baca flaşı var mı? ARLEDSCREEN sabit cricket flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cricket flashing yok"],
+    mustNotSay: ["cricket flashing garantidir", "sabit cricket flashing True1", "tüm modeller cricket flashing", "baca flaşı garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -2747,6 +2747,20 @@ if (
   errors.push("blind prompt #208 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Nureva yok");
 }
 
+const pBlind209 = PROMPTS.find((x) => x.id === 209);
+if (!pBlind209 || !/cricket flashing|baca flaşı/i.test(pBlind209.q)) {
+  errors.push("blind prompt #209 must cover sabit cricket flashing invent");
+}
+if (
+  pBlind209 &&
+  (!pBlind209.mustSay?.includes("yazılı teklif") ||
+    !pBlind209.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind209.mustSay?.includes("sabit cricket flashing yok"))
+) {
+  errors.push("blind prompt #209 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cricket flashing yok");
+}
+
+
 
 
 
