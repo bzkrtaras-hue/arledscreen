@@ -4905,6 +4905,20 @@ if (
   errors.push("blind prompt #374 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Avocor AVG Series yok");
 }
 
+const pBlind375 = PROMPTS.find((x) => x.id === 375);
+if (!pBlind375 || !/kick-out apron|çıkış eteği/i.test(pBlind375.q)) {
+  errors.push("blind prompt #375 must cover sabit kick-out apron invent");
+}
+if (
+  pBlind375 &&
+  (!pBlind375.mustSay?.includes("yazılı teklif") ||
+    !pBlind375.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind375.mustSay?.includes("sabit kick-out apron yok"))
+) {
+  errors.push("blind prompt #375 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kick-out apron yok");
+}
+
+
 
 
 

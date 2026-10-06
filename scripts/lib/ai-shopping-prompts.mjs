@@ -4361,6 +4361,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Avocor AVG Series yok"],
     mustNotSay: ["Avocor AVG Series garantidir", "sabit Avocor AVG Series True1", "tüm modeller Avocor AVG Series", "Avocor AVG garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 375,
+    q: "LED ekran kick-out apron / çıkış eteği var mı? ARLEDSCREEN sabit kick-out apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kick-out apron yok"],
+    mustNotSay: ["kick-out apron garantidir", "sabit kick-out apron True1", "tüm modeller kick-out apron", "çıkış eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

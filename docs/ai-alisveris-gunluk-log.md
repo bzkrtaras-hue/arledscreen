@@ -416,6 +416,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 424 | 2026-10-06 | sabit i3TOUCH P2 #372 · ic/konferans ARD refresh · skor /1116 | ✅ |
 | 425 | 2026-10-06 | sabit roof valley pan #373 · dis/mimari ARD refresh · skor /1119 | ✅ |
 | 426 | 2026-10-06 | sabit Avocor AVG Series #374 · ic/konferans ARD refresh · skor /1122 | ✅ |
+| 427 | 2026-10-06 | sabit kick-out apron #375 · dis/mimari ARD refresh · skor /1125 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3007,3 +3008,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #374 «Avocor AVG Series / Avocor AVG?» — skor **/1122**; ARD **374 kör test**
 - TR/EN ic-mekan + TR/EN konferans Avocor AVG Series invent · llms deny · sabit Avocor AVG Series yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Avocor AVG Series
+
+## Gün 427 notları
+
+- Blind #375 «kick-out apron / çıkış eteği?» — skor **/1125**; ARD **375 kör test**
+- TR/EN dis-mekan + TR/EN mimari kick-out apron invent · llms deny · sabit kick-out apron yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit kick-out apron
