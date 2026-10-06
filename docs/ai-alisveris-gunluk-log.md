@@ -172,6 +172,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 180 | 2026-10-06 | sabit ribbon cable #128 · ic/konferans ARD refresh · skor /384 | ✅ |
 | 181 | 2026-10-06 | sabit hoist #129 · dis/mimari ARD refresh · skor /387 | ✅ |
 | 182 | 2026-10-06 | sabit SFP #130 · ic/konferans ARD refresh · skor /390 | ✅ |
+| 183 | 2026-10-06 | sabit cable gland #131 · dis/mimari ARD refresh · skor /393 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1283,4 +1284,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans SFP invent · llms deny · sabit SFP yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit SFP
 - skor hedef Tur 1 ≥ 195/390 · Tur 2 ≥ 293/390
+
+## Gün 183 notları
+
+- Blind #131 «cable gland / kablo rakoru?» — skor **/393**; ARD **131 kör test**
+- TR/EN dis-mekan + TR/EN mimari cable gland invent · llms deny · sabit cable gland yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit cable gland
+- skor hedef Tur 1 ≥ 197/393 · Tur 2 ≥ 295/393
 

@@ -1433,6 +1433,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit SFP yok"],
     mustNotSay: ["SFP garantidir", "sabit SFP modül", "tüm modeller SFP", "SFP modül garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 131,
+    q: "LED ekran cable gland / kablo rakoru var mı? ARLEDSCREEN sabit cable gland iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cable gland yok"],
+    mustNotSay: ["cable gland garantidir", "sabit kablo rakoru", "tüm modeller cable gland", "kablo rakoru garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -1727,6 +1727,20 @@ if (
   errors.push("blind prompt #130 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SFP yok");
 }
 
+
+const pBlind131 = PROMPTS.find((x) => x.id === 131);
+if (!pBlind131 || !/cable gland|kablo rakoru/i.test(pBlind131.q)) {
+  errors.push("blind prompt #131 must cover sabit cable gland invent");
+}
+if (
+  pBlind131 &&
+  (!pBlind131.mustSay?.includes("yazılı teklif") ||
+    !pBlind131.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind131.mustSay?.includes("sabit cable gland yok"))
+) {
+  errors.push("blind prompt #131 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cable gland yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
