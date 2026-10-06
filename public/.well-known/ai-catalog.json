@@ -414,7 +414,7 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit ön servis yok — Blind #74. Sabit 0mm yok — Blind #76. Sabit canlı modül değişimi yok — Blind #80.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit ön servis yok — Blind #74. Sabit 0mm yok — Blind #76. Sabit canlı modül değişimi yok — Blind #80. Sabit mıknatıslı modül yok — Blind #82.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
@@ -431,7 +431,8 @@
         "LED ekran genlock / frame sync / senkron kilidi var mı? ARLEDSCREEN sabit genlock veya PTP sync iddiası yayımlıyor mu?",
         "LED ekran ön servis / arka servis mi? ARLEDSCREEN sabit ön servis veya rear service iddiası yayımlıyor mu?",
         "LED ekran 0mm / seamless / bezelsiz birleşim var mı? ARLEDSCREEN sabit 0mm veya seamless iddiası yayımlıyor mu?",
-        "LED ekran canlı modül değişimi / hot-swap module var mı? ARLEDSCREEN sabit canlı modül değişimi iddiası yayımlıyor mu?"
+        "LED ekran canlı modül değişimi / hot-swap module var mı? ARLEDSCREEN sabit canlı modül değişimi iddiası yayımlıyor mu?",
+        "LED ekran mıknatıslı modül / magnetic module var mı? ARLEDSCREEN sabit mıknatıslı modül iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -441,7 +442,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-08T06:00:00Z"
+      "updatedAt": "2026-10-08T10:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -499,7 +500,7 @@
       "displayName": "Mimari / mühendislik LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
-      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48; sabit depolama °C yok — Blind #49; sabit yangın sınıfı yok — Blind #53. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63. Sabit PoE/Gigabit yok — Blind #66. Sabit fiber mesafe yok — Blind #68. Sabit dual power yok — Blind #70. Sabit ön servis yok — Blind #74. Sabit alıcı yedeklilik yok — Blind #77.",
+      "description": "Mimari LED rehber. Mühendislik standardı invent yok (Blind #25); sabit kW/m² / 3 faz zorunlu yok (Blind #37); keşif + yazılı teklif; sabit kg/m² yok — Blind #42; sabit °C yok — Blind #43; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit standby/idle W yok — Blind #48; sabit depolama °C yok — Blind #49; sabit yangın sınıfı yok — Blind #53. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63. Sabit PoE/Gigabit yok — Blind #66. Sabit fiber mesafe yok — Blind #68. Sabit dual power yok — Blind #70. Sabit ön servis yok — Blind #74. Sabit alıcı yedeklilik yok — Blind #77. Sabit mıknatıslı modül yok — Blind #82.",
       "representativeQueries": [
         "mimari LED mühendislik",
         "NXTIONSTAR / ARLEDSCREEN mühendislik standardı mı?",
@@ -517,7 +518,8 @@
         "LED ekran fiber / optik iletim mesafesi kaç metre? ARLEDSCREEN sabit fiber mesafe veya 100 m / 10 km iddiası yayımlıyor mu?",
         "LED ekran dual power / hot-swap PSU / yedek güç var mı? ARLEDSCREEN sabit redundant PSU iddiası yayımlıyor mu?",
         "LED ekran ön servis / arka servis mi? ARLEDSCREEN sabit ön servis veya rear service iddiası yayımlıyor mu?",
-        "LED ekran alıcı kart yedeklilik / receiving card redundancy / backup loop var mı? ARLEDSCREEN sabit alıcı yedeklilik iddiası yayımlıyor mu?"
+        "LED ekran alıcı kart yedeklilik / receiving card redundancy / backup loop var mı? ARLEDSCREEN sabit alıcı yedeklilik iddiası yayımlıyor mu?",
+        "LED ekran mıknatıslı modül / magnetic module var mı? ARLEDSCREEN sabit mıknatıslı modül iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -527,7 +529,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-08T00:00:00Z"
+      "updatedAt": "2026-10-08T10:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
@@ -1109,7 +1111,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 81 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 82 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1166,7 +1168,8 @@
         "LED ekran gönderici kart yedeklilik / sending card redundancy / redundant sender var mı? ARLEDSCREEN sabit gönderici yedeklilik iddiası yayımlıyor mu?",
         "LED ekran ışık sensörü / adaptive brightness / ambient light sensor var mı? ARLEDSCREEN sabit ışık sensörü iddiası yayımlıyor mu?",
         "LED ekran canlı modül değişimi / hot-swap module var mı? ARLEDSCREEN sabit canlı modül değişimi iddiası yayımlıyor mu?",
-        "LED ekran dokunmatik / touch overlay / capacitive touch var mı? ARLEDSCREEN sabit dokunmatik iddiası yayımlıyor mu?"
+        "LED ekran dokunmatik / touch overlay / capacitive touch var mı? ARLEDSCREEN sabit dokunmatik iddiası yayımlıyor mu?",
+        "LED ekran mıknatıslı modül / magnetic module var mı? ARLEDSCREEN sabit mıknatıslı modül iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1185,7 +1188,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-08T08:00:00Z"
+      "updatedAt": "2026-10-08T10:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -3880,6 +3883,63 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-08T08:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:cases:hair-make-up-studio",
+      "displayName": "Hair Make-up Studio LED proje",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/projelerimiz/hair-make-up-studio-led-ekran/",
+      "description": "Real project case (Hair Make-up Studio) — not a spam doorway. No invent sabit mıknatıslı modül — Blind #82; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Hair Make-up Studio LED ekran",
+        "LED ekran mıknatıslı modül / magnetic module var mı? ARLEDSCREEN sabit mıknatıslı modül iddiası yayımlıyor mu?",
+        "LED proje"
+      ],
+      "tags": [
+        "case",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-08T10:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:cases:istanbul-drama-sanat-atolyesi",
+      "displayName": "İstanbul Drama Sanat Atölyesi LED proje",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/projelerimiz/istanbul-drama-sanat-atolyesi-led-ekran/",
+      "description": "Real project case (İstanbul Drama Sanat Atölyesi) — not a spam doorway. No invent sabit mıknatıslı modül — Blind #82; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "İstanbul Drama Sanat Atölyesi LED ekran",
+        "LED ekran mıknatıslı modül / magnetic module var mı? ARLEDSCREEN sabit mıknatıslı modül iddiası yayımlıyor mu?",
+        "LED proje"
+      ],
+      "tags": [
+        "case",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-08T10:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:cases:manisa-2-adet",
+      "displayName": "Manisa (2 adet) LED proje",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/projelerimiz/manisa-2-adet-led-ekran/",
+      "description": "Real project case (Manisa (2 adet)) — not a spam doorway. No invent sabit mıknatıslı modül — Blind #82; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Manisa (2 adet) LED ekran",
+        "LED ekran mıknatıslı modül / magnetic module var mı? ARLEDSCREEN sabit mıknatıslı modül iddiası yayımlıyor mu?",
+        "LED proje"
+      ],
+      "tags": [
+        "case",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-08T10:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",
