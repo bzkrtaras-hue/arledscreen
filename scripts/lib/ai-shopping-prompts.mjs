@@ -5429,6 +5429,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit awning box yok"],
     mustNotSay: ["awning box garantidir", "sabit awning box True1", "tüm modeller awning box", "tente kutusu garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 464,
+    q: "LED ekran ClearTouch 65 / ClearTouch 65 var mı? ARLEDSCREEN sabit ClearTouch 65 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ClearTouch 65 yok"],
+    mustNotSay: ["ClearTouch 65 garantidir", "sabit ClearTouch 65 True1", "tüm modeller ClearTouch 65", "ClearTouch 65 standarttır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

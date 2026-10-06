@@ -6028,6 +6028,18 @@ if (
 ) {
   errors.push("blind prompt #463 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit awning box yok");
 }
+const pBlind464 = PROMPTS.find((x) => x.id === 464);
+if (!pBlind464 || !/ClearTouch 65/i.test(pBlind464.q)) {
+  errors.push("blind prompt #464 must cover sabit ClearTouch 65 invent");
+}
+if (
+  pBlind464 &&
+  (!pBlind464.mustSay?.includes("yazılı teklif") ||
+    !pBlind464.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind464.mustSay?.includes("sabit ClearTouch 65 yok"))
+) {
+  errors.push("blind prompt #464 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ClearTouch 65 yok");
+}
 
 
 

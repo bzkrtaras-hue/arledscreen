@@ -74,7 +74,7 @@ console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → Day 515 ARD 463 kör test · #463 awning box · dis/mimari ARD refresh",
+  "  entity-profiles → Day 516 ARD 464 kör test · #464 ClearTouch 65 · ic/konferans ARD refresh",
 );
 console.log(
   "  home hero → NO 81-il bayi invent · customer subcopy · FAQ cites ai-shopping + ücretsiz kargo yok",
