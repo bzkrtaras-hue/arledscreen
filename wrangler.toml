@@ -1,0 +1,6 @@
+# Cloudflare Pages — static export from `out/` (see npm run build + postbuild).
+# Deploy: npx wrangler pages deploy out --project-name=arledscreen
+name = "arledscreen"
+compatibility_date = "2026-10-04"
+pages_build_output_dir = "out"
+account_id = "4a0f179229f3c6a21d076df944b850e8"

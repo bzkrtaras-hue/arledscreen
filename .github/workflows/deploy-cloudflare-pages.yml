@@ -1,0 +1,65 @@
+name: Deploy Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: cloudflare-pages-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Guard — no out/index.html (must not shadow / → /tr/ 301)
+        run: |
+          if [ -f out/index.html ]; then
+            echo "Refuse deploy: out/index.html would serve 200 at / and block _redirects" >&2
+            exit 1
+          fi
+          test -f out/_redirects
+          test -d out/tr
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: "4a0f179229f3c6a21d076df944b850e8"
+          command: pages deploy out --project-name=arledscreen --branch=main --commit-dirty=true
+
+      - name: Smoke — Product Offer JSON-LD on three model pages
+        run: |
+          set -euo pipefail
+          sleep 8
+          for path in \
+            /tr/products/dis-mekan-led-ekran/p8/ \
+            /tr/products/esnek-led-ekran/p2-5-esnek/ \
+            /tr/products/esnek-led-ekran/p1-86-esnek/; do
+            url="https://arledscreen.com${path}"
+            body="$(curl -fsSL -A 'Mozilla/5.0' "$url")"
+            echo "$body" | grep -q '"@type":"Offer"' || { echo "MISSING Offer on $url" >&2; exit 1; }
+            echo "$body" | grep -q 'hasMerchantReturnPolicy' || { echo "MISSING return policy on $url" >&2; exit 1; }
+            echo "OK Offer on $url"
+          done
+          curl -fsSI -A 'Mozilla/5.0' https://arledscreen.com/ | grep -qi 'location: /tr/'
+          echo "OK apex / → /tr/"
