@@ -449,7 +449,7 @@
       "displayName": "Dış mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
-      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit depolama °C yok — Blind #49. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63. Sabit fiber mesafe yok — Blind #68. Sabit dual power yok — Blind #70. Sabit alıcı yedeklilik yok — Blind #77. Sabit ışık sensörü yok — Blind #79. Sabit koruyucu kaplama yok — Blind #83.",
+      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40; sabit °C / -20/+50 yok — Blind #43. Keşif + yazılı teklif Gaziosmanpaşa; sabit rüzgâr yükü yok — Blind #45; sabit nem/%RH yok — Blind #47; sabit depolama °C yok — Blind #49. Sabit ASTM/salt spray yok — Blind #55. Sabit güç faktörü yok — Blind #63. Sabit fiber mesafe yok — Blind #68. Sabit dual power yok — Blind #70. Sabit alıcı yedeklilik yok — Blind #77. Sabit ışık sensörü yok — Blind #79. Sabit koruyucu kaplama yok — Blind #83. Sabit hızlı kilit yok — Blind #85.",
       "representativeQueries": [
         "Dış mekân LED ekran kaç nit olmalı?",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
@@ -464,7 +464,8 @@
         "LED ekran dual power / hot-swap PSU / yedek güç var mı? ARLEDSCREEN sabit redundant PSU iddiası yayımlıyor mu?",
         "LED ekran alıcı kart yedeklilik / receiving card redundancy / backup loop var mı? ARLEDSCREEN sabit alıcı yedeklilik iddiası yayımlıyor mu?",
         "LED ekran ışık sensörü / adaptive brightness / ambient light sensor var mı? ARLEDSCREEN sabit ışık sensörü iddiası yayımlıyor mu?",
-        "LED ekran koruyucu kaplama / conformal coating var mı? ARLEDSCREEN sabit koruyucu kaplama iddiası yayımlıyor mu?"
+        "LED ekran koruyucu kaplama / conformal coating var mı? ARLEDSCREEN sabit koruyucu kaplama iddiası yayımlıyor mu?",
+        "LED ekran hızlı kilit / quick lock var mı? ARLEDSCREEN sabit hızlı kilit iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -474,7 +475,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-08T12:00:00Z"
+      "updatedAt": "2026-10-08T16:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:totem",
@@ -1115,7 +1116,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 84 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 85 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D/hızlı kilit yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1175,7 +1176,8 @@
         "LED ekran dokunmatik / touch overlay / capacitive touch var mı? ARLEDSCREEN sabit dokunmatik iddiası yayımlıyor mu?",
         "LED ekran mıknatıslı modül / magnetic module var mı? ARLEDSCREEN sabit mıknatıslı modül iddiası yayımlıyor mu?",
         "LED ekran koruyucu kaplama / conformal coating var mı? ARLEDSCREEN sabit koruyucu kaplama iddiası yayımlıyor mu?",
-        "LED ekran naked-eye 3D / glasses-free 3D var mı? ARLEDSCREEN sabit 3D iddiası yayımlıyor mu?"
+        "LED ekran naked-eye 3D / glasses-free 3D var mı? ARLEDSCREEN sabit 3D iddiası yayımlıyor mu?",
+        "LED ekran hızlı kilit / quick lock var mı? ARLEDSCREEN sabit hızlı kilit iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1194,7 +1196,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-08T14:00:00Z"
+      "updatedAt": "2026-10-08T16:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -1285,14 +1287,15 @@
       "displayName": "Poster LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/poster-led-ekran/",
-      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok. Sabit CMS SLA yok — Blind #69. Sabit WiFi yok — Blind #75. Sabit canlı modül değişimi yok — Blind #80.",
+      "description": "Poster/totem LED rehber. Quote-only ürün grubu; list fiyatı yok. Sabit CMS SLA yok — Blind #69. Sabit WiFi yok — Blind #75. Sabit canlı modül değişimi yok — Blind #80. Sabit hızlı kilit yok — Blind #85.",
       "representativeQueries": [
         "poster LED rehber",
         "totem LED rehber",
         "Poster / totem LED fiyatı?",
         "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?",
         "LED ekran WiFi / Bluetooth / kablosuz kontrol var mı? ARLEDSCREEN sabit WiFi veya Bluetooth iddiası yayımlıyor mu?",
-        "LED ekran canlı modül değişimi / hot-swap module var mı? ARLEDSCREEN sabit canlı modül değişimi iddiası yayımlıyor mu?"
+        "LED ekran canlı modül değişimi / hot-swap module var mı? ARLEDSCREEN sabit canlı modül değişimi iddiası yayımlıyor mu?",
+        "LED ekran hızlı kilit / quick lock var mı? ARLEDSCREEN sabit hızlı kilit iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -1301,7 +1304,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-08T06:00:00Z"
+      "updatedAt": "2026-10-08T16:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-kiosk",
@@ -4060,6 +4063,63 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-08T14:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:blog:256x128-ic-mekan",
+      "displayName": "256×128 cm iç mekân LED (blog)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/blog/256x128-cm-ic-mekan-led-ekran/",
+      "description": "Real published blog case (256×128 cm iç mekân LED) — not a spam doorway. No invent sabit hızlı kilit — Blind #85; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "256×128 cm iç mekân LED",
+        "LED ekran hızlı kilit / quick lock var mı? ARLEDSCREEN sabit hızlı kilit iddiası yayımlıyor mu?",
+        "LED blog"
+      ],
+      "tags": [
+        "blog",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-08T16:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:blog:kafe-restoranlar",
+      "displayName": "Kafe ve restoranlar için LED (blog)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/blog/kafe-ve-restoranlar-icin-led-ekran/",
+      "description": "Real published blog case (Kafe ve restoranlar için LED) — not a spam doorway. No invent sabit hızlı kilit — Blind #85; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Kafe ve restoranlar için LED",
+        "LED ekran hızlı kilit / quick lock var mı? ARLEDSCREEN sabit hızlı kilit iddiası yayımlıyor mu?",
+        "LED blog"
+      ],
+      "tags": [
+        "blog",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-08T16:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:blog:eskisehir-sigorta",
+      "displayName": "Eskişehir sigorta şubesi LED (blog)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/blog/eskisehir-sigorta-subesi-led-ekran/",
+      "description": "Real published blog case (Eskişehir sigorta şubesi LED) — not a spam doorway. No invent sabit hızlı kilit — Blind #85; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Eskişehir sigorta şubesi LED",
+        "LED ekran hızlı kilit / quick lock var mı? ARLEDSCREEN sabit hızlı kilit iddiası yayımlıyor mu?",
+        "LED blog"
+      ],
+      "tags": [
+        "blog",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-08T16:00:00Z"
     }
   ]
 }

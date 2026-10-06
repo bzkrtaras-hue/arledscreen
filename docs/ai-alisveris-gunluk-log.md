@@ -126,6 +126,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 134 | 2026-10-06 | sabit mıknatıslı modül #82 · hair/drama/manisa-2 proje ARD · skor /246 | ✅ |
 | 135 | 2026-10-06 | sabit koruyucu kaplama #83 · manisa-proje/prestij/sinan-polat proje ARD · skor /249 | ✅ |
 | 136 | 2026-10-06 | sabit 3D #84 · bireysel-2/orta-sekerli proje ARD · skor /252 | ✅ |
+| 137 | 2026-10-06 | sabit hızlı kilit #85 · blog 256/kafe/eskisehir ARD · skor /255 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -915,3 +916,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - ARD: gerçek proje hub bireysel-musteri-2 / orta-sekerli-kampus / orta-sekerli-kentpark (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit 3D
 - skor hedef Tur 1 ≥ 126/252 · Tur 2 ≥ 189/252
 - Not: yayımlanmış proje case hub’ları IndexNow/ARD’de tükendi; sonraki günler bölge/rehber/ürün hub veya yeni soft invent + mevcut case refresh
+
+## Gün 137 notları
+
+- Blind #85 «hızlı kilit / quick lock?» — skor **/255**; ARD **85 kör test**
+- TR/EN dis-mekan + TR/EN poster hızlı kilit invent · llms deny · sabit hızlı kilit yok
+- ARD/IndexNow: gerçek yayımlanmış blog hub 256×128 / kafe-restoran / eskisehir-sigorta (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit hızlı kilit
+- skor hedef Tur 1 ≥ 128/255 · Tur 2 ≥ 192/255

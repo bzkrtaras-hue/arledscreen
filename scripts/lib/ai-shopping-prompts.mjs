@@ -881,6 +881,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit 3D yok"],
     mustNotSay: ["3D garantidir", "sabit naked-eye 3D", "tüm modeller glasses-free 3D", "naked-eye 3D garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 85,
+    q: "LED ekran hızlı kilit / quick lock var mı? ARLEDSCREEN sabit hızlı kilit iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/poster-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hızlı kilit yok"],
+    mustNotSay: ["hızlı kilit garantidir", "sabit quick lock", "tüm modeller quick lock", "quick lock garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

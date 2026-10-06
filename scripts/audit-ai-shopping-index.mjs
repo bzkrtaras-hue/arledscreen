@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 84) errors.push(`blindTestPrompts must be 84 (got ${prompts.length})`);
+if (prompts.length !== 85) errors.push(`blindTestPrompts must be 85 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/84 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 84 kör test intent");
+if (!/85 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 85 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–83 kör test without 84");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–84 kör test without 85");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -743,6 +743,15 @@ if (!p84 || !/naked-eye 3D|glasses-free 3D|sabit 3D/i.test(p84.q || "")) {
 }
 if (!/naked-eye 3D|glasses-free 3D|sabit 3D/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit 3D invent");
+}
+
+// Day 137: sabit hızlı kilit / quick lock invent
+const p85 = (doc.blindTestPrompts || []).find((p) => p.id === 85);
+if (!p85 || !/hızlı kilit|quick lock/i.test(p85.q || "")) {
+  errors.push("blindTestPrompts #85 must cover sabit hızlı kilit invent");
+}
+if (!/hızlı kilit|quick lock|sabit hızlı/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit hızlı kilit invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
