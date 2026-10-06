@@ -3072,6 +3072,20 @@ if (
   errors.push("blind prompt #233 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gravel stop yok");
 }
 
+const pBlind234 = PROMPTS.find((x) => x.id === 234);
+if (!pBlind234 || !/NEC|display wall/i.test(pBlind234.q)) {
+  errors.push("blind prompt #234 must cover sabit NEC invent");
+}
+if (
+  pBlind234 &&
+  (!pBlind234.mustSay?.includes("yazılı teklif") ||
+    !pBlind234.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind234.mustSay?.includes("sabit NEC yok"))
+) {
+  errors.push("blind prompt #234 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit NEC yok");
+}
+
+
 
 
 

@@ -2669,6 +2669,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gravel stop yok"],
     mustNotSay: ["gravel stop garantidir", "sabit gravel stop True1", "tüm modeller gravel stop", "çakıl stoper garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 234,
+    q: "LED ekran NEC / display wall var mı? ARLEDSCREEN sabit NEC iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit NEC yok"],
+    mustNotSay: ["NEC garantidir", "sabit NEC True1", "tüm modeller NEC", "display wall garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
