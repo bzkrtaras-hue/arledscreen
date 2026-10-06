@@ -314,6 +314,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 322 | 2026-10-06 | sabit InFocus #270 · ic/konferans ARD refresh · skor /810 | ✅ |
 | 323 | 2026-10-06 | sabit fascia cleat #271 · dis/mimari ARD refresh · skor /813 | ✅ |
 | 324 | 2026-10-06 | sabit Elo #272 · ic/konferans ARD refresh · skor /816 | ✅ |
+| 325 | 2026-10-06 | sabit ridge cleat #273 · dis/mimari ARD refresh · skor /819 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2293,3 +2294,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #272 «Elo / touch display?» — skor **/816**; ARD **272 kör test**
 - TR/EN ic-mekan + TR/EN konferans Elo invent · llms deny · sabit Elo yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Elo
+
+## Gün 325 notları
+
+- Blind #273 «ridge cleat / mahya kleyt?» — skor **/819**; ARD **273 kör test**
+- TR/EN dis-mekan + TR/EN mimari ridge cleat invent · llms deny · sabit ridge cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit ridge cleat

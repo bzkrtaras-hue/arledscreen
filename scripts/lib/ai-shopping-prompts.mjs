@@ -3137,6 +3137,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Elo yok"],
     mustNotSay: ["Elo garantidir", "sabit Elo True1", "tüm modeller Elo", "touch display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 273,
+    q: "LED ekran ridge cleat / mahya kleyt var mı? ARLEDSCREEN sabit ridge cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ridge cleat yok"],
+    mustNotSay: ["ridge cleat garantidir", "sabit ridge cleat True1", "tüm modeller ridge cleat", "mahya kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
