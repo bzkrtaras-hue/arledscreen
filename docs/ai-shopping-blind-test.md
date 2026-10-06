@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 277: blind #225 sabit fascia flashing invent)  
+Son güncelleme: 2026-10-06 (Gün 278: blind #226 sabit Obsbot invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 225 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 226 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 225 prompt (alışveriş + varlık)
+## 226 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -249,6 +249,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 223 | LED ekran rake flashing / saçak flaş var mı? ARLEDSCREEN sabit rake flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit rake flashing yok** | rake flashing garantidir / sabit rake flashing True1 / tüm modeller rake flashing / saçak flaş garantidir |
 | 224 | LED ekran PTZOptics / USB PTZ var mı? ARLEDSCREEN sabit PTZOptics iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit PTZOptics yok** | PTZOptics garantidir / sabit PTZOptics True1 / tüm modeller PTZOptics / USB PTZ garantidir |
 | 225 | LED ekran fascia flashing / fascia flaş var mı? ARLEDSCREEN sabit fascia flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit fascia flashing yok** | fascia flashing garantidir / sabit fascia flashing True1 / tüm modeller fascia flashing / fascia flaş garantidir |
+| 226 | LED ekran Obsbot / AI camera var mı? ARLEDSCREEN sabit Obsbot iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Obsbot yok** | Obsbot garantidir / sabit Obsbot True1 / tüm modeller Obsbot / AI camera garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -259,7 +260,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 675. Hedef tur 1 ≥ 338/675; tur 2 (Point C sonrası) ≥ 507/675.
+**Tur skoru** = toplam / 678. Hedef tur 1 ≥ 339/678; tur 2 (Point C sonrası) ≥ 509/678.
 
 ### Canlı tur kayıt şablonu
 

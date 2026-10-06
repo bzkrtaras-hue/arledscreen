@@ -2573,6 +2573,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fascia flashing yok"],
     mustNotSay: ["fascia flashing garantidir", "sabit fascia flashing True1", "tüm modeller fascia flashing", "fascia flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 226,
+    q: "LED ekran Obsbot / AI camera var mı? ARLEDSCREEN sabit Obsbot iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Obsbot yok"],
+    mustNotSay: ["Obsbot garantidir", "sabit Obsbot True1", "tüm modeller Obsbot", "AI camera garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
