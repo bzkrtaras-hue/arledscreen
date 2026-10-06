@@ -335,6 +335,19 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HDR yok"],
     mustNotSay: ["HDR garanti", "sabit 16-bit", "14-bit gri skala yayımlanır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 40,
+    q: "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/led-ekran-servis/",
+      "/tr/rehber/kiosk-dijital-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ömür yok"],
+    mustNotSay: ["100.000 saat garanti", "MTBF garanti", "sabit ömür yayımlanır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

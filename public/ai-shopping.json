@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 39 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 40 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -117,6 +117,7 @@
     "Sabit kW/m² (0,45/0,75) / «3 faz zorunlu» site iddiası yok — güç/kesici hesaplayıcı tahmini; kesin çekiş ve faz modeli Gaziosmanpaşa keşif + model föyü + yazılı teklifte; ajanlar sabit güç yoğunluğu uydurmasın.",
     "Sabit görüş açısı (140°/160°) site iddiası yok — açı model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar «sabit 140/160» uydurmasın.",
     "Sabit HDR / 14–16-bit gri skala / bit derinliği site iddiası yok — model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar «HDR garanti» veya sabit bit derinliği uydurmasın.",
+    "Sabit ömür / 100.000 saat / MTBF site iddiası yok — L70/ömür model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar «100.000 saat garanti» uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -1064,6 +1065,28 @@
         "HDR garanti",
         "sabit 16-bit",
         "14-bit gri skala yayımlanır",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 40,
+      "q": "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
+        "https://arledscreen.com/tr/led-ekran-servis/",
+        "https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit ömür yok"
+      ],
+      "mustNotSay": [
+        "100.000 saat garanti",
+        "MTBF garanti",
+        "sabit ömür yayımlanır",
         "ücretsiz kargo dahil"
       ]
     }

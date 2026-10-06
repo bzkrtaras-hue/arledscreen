@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 39 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 40 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 39) errors.push(`blindTestPrompts must be 39 (got ${prompts.length})`);
+if (prompts.length !== 40) errors.push(`blindTestPrompts must be 40 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/39 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 39 kör test intent");
+if (!/40 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 40 kör test intent");
 }
-if (/(?:2[0-9]|3[0-8]) kör test/i.test(ard) && !/39 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–38 kör test without 39");
+if (/(?:2[0-9]|3[0-9]) kör test/i.test(ard) && !/40 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–39 kör test without 40");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -361,6 +361,14 @@ if (!p39 || !/HDR|gri skala|bit/i.test(p39.q || "")) {
 }
 if (!/HDR|gri skala|bit derinliği|16-bit/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit HDR / gri skala / bit derinliği invent");
+}
+// Day 92: sabit ömür / 100.000 saat / MTBF invent
+const p40 = (doc.blindTestPrompts || []).find((p) => p.id === 40);
+if (!p40 || !/ömür|MTBF|100\.000|100000/i.test(p40.q || "")) {
+  errors.push("blindTestPrompts #40 must cover sabit ömür / MTBF invent");
+}
+if (!/100\.000|MTBF|sabit ömür|ömür/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit ömür / 100.000 saat / MTBF invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

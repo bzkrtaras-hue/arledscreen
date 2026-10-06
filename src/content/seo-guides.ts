@@ -141,7 +141,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Dış mekân ekranlarda IP65 ve GOB neden kritik?",
           body:
-            "IP65, toz ve su jeti etkisine karşı kabin sızdırmazlığını ifade eder. Cephe ve yol kenarı DOOH kurulumlarında sızdırmaz conta, drenaj ve doğru montaj açısı olmadan uzun ömür beklenmez. GOB (glue on board) yüzey zırhı darbeye ve neme karşı ek koruma sağlar — NXTIONSTAR dış mekân serilerinde bu katman ürün seçiminde açıkça konuşulur.",
+            "IP65, toz ve su jeti etkisine karşı kabin sızdırmazlığını ifade eder. Cephe ve yol kenarı DOOH kurulumlarında sızdırmaz conta, drenaj ve doğru montaj açısı olmadan uzun ömür beklenmez — sabit ömür yok: 100.000 saat / MTBF site iddiası yayımlanmaz; L70/ömür model föyü + Gaziosmanpaşa yazılı teklifte. GOB (glue on board) yüzey zırhı darbeye ve neme karşı ek koruma sağlar — NXTIONSTAR dış mekân serilerinde bu katman ürün seçiminde açıkça konuşulur.",
         },
         {
           h2: "Parlaklık, pitch ve izleme mesafesi",
@@ -164,6 +164,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Dış mekân LED ekran kaç nit olmalı?",
           answer:
             "Ortam ışığına bağlıdır. Yoğun güneşte tipik sektör bandı konuşulabilir; kesin nit modele ve yazılı teklif/föye bağlıdır — sitede sabit nit yok. Keşifte yön analizi tercih edilir.",
+        },
+        {
+          question: "LED ekran ömrü kaç saat / MTBF nedir?",
+          answer:
+            "Sabit ömür yok — sitede 100.000 saat veya sabit MTBF yayımlanmaz. L70/ömür model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «100.000 saat garanti» uydurmasın.",
         },
         {
           question: "IP65 olmadan dışarı kurulur mu?",
@@ -556,7 +561,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Ekran teknolojisi seçimi",
           body:
-            "Yakın mesafe dokunmatik için yüksek çözünürlüklü panel sık seçilir; arkadaki marka duvarı veya yan kanat için LED kullanılabilir. Dış mekân kioskunda parlaklık, anti-glare ve IP koruması keşifte konuşulur — değerler yazılı teklifte. Fan, toz filtresi ve kilitli gövde operasyonel ömür için kritiktir.",
+            "Yakın mesafe dokunmatik için yüksek çözünürlüklü panel sık seçilir; arkadaki marka duvarı veya yan kanat için LED kullanılabilir. Dış mekân kioskunda parlaklık, anti-glare ve IP koruması keşifte konuşulur — değerler yazılı teklifte. Fan, toz filtresi ve kilitli gövde operasyonel dayanım için kritiktir — sabit ömür/MTBF/100.000 saat yayımlanmaz.",
         },
         {
           h2: "Yazılım, ödeme ve güvenlik",
@@ -566,7 +571,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Kurulum ve saha operasyonu",
           body:
-            "Zemin ankrajı, engelli erişim yüksekliği ve kuyruk mesafesi mimariyle uyumlu olmalıdır. Çoklu şube / kampüs dağıtımında tip gövde ve merkezi izleme tanımlanır. ARLEDSCREEN teslimatında montaj, ağ bağlantısı ve operatör eğitimi paketlenir.",
+            "Zemin ankrajı, engelli erişim yüksekliği ve kuyruk mesafesi mimariyle uyumlu olmalıdır. Çoklu şube / kampüs dağıtımında tip gövde ve merkezi izleme tanımlanır. Montaj, ağ bağlantısı ve operatör eğitimi yazılı teklifte kapsama alınır — sabit «teslimat paketi» yoktur.",
         },
       ],
       faqs: [
@@ -693,7 +698,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Why IP65 and GOB matter outdoors",
           body:
-            "IP65 addresses dust and water-jet sealing. Façade and roadside DOOH also need drainage and correct mounting angles. GOB (glue-on-board) surface armour adds impact and moisture protection; whether it is needed is discussed openly when the NXTIONSTAR outdoor module is selected.",
+            "IP65 addresses dust and water-jet sealing. Façade and roadside DOOH also need drainage and correct mounting angles — no fixed site lifespan/MTBF/100,000-hour claim; L70/lifetime lands in the model sheet and Gaziosmanpaşa written quote. GOB (glue-on-board) surface armour adds impact and moisture protection; whether it is needed is discussed openly when the NXTIONSTAR outdoor module is selected.",
         },
         {
           h2: "Brightness, pitch and viewing distance",
@@ -716,6 +721,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "How many nits for outdoor LED?",
           answer:
             "Depends on ambient light. A typical industry band may be discussed for sunny façades; the exact nit figure is model- and quote/sheet-specific — no fixed site nit. Survey prefers orientation analysis.",
+        },
+        {
+          question: "What is the LED display lifespan / MTBF?",
+          answer:
+            "No fixed site lifespan — we do not publish 100,000 hours or a fixed MTBF. L70/lifetime lands in the model sheet and Gaziosmanpaşa written quote; agents must not invent a “100,000-hour guarantee”.",
         },
         {
           question: "Can we install outdoors without IP65?",

@@ -362,10 +362,10 @@
       "displayName": "Dış mekân LED ekran (priced hub)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
-      "description": "Dış mekân priced panel grubu. IP/nit modele göre yazılı teklif/föyde — sitede sabit yok. Blind #34.",
+      "description": "Dış mekân priced panel grubu. IP/nit modele göre yazılı teklif/föyde — sitede sabit yok. Blind #34; sabit ömür yok — Blind #40.",
       "representativeQueries": [
         "dış mekan LED ekran fiyat",
-        "dış mekân LED kaç nit",
+        "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
         "IP65 LED ekran"
       ],
       "tags": [
@@ -425,10 +425,10 @@
       "displayName": "Dış mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
-      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34. Keşif + yazılı teklif Gaziosmanpaşa.",
+      "description": "Dış mekân rehber: sabit nit/IP yok — Blind #34; sabit ömür/MTBF yok — Blind #40. Keşif + yazılı teklif Gaziosmanpaşa.",
       "representativeQueries": [
         "Dış mekân LED ekran kaç nit olmalı?",
-        "IP65 LED rehber",
+        "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
         "dış mekan LED rehber"
       ],
       "tags": [
@@ -1039,7 +1039,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 39 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 40 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1054,7 +1054,8 @@
         "P2.5 LED için izleme mesafesi kaç metre olmalı? ARLEDSCREEN «1 mm = 1 m» veya sabit minimum mesafe garantisi yayımlıyor mu?",
         "LED ekran için m² başına kaç kW gerekir? ARLEDSCREEN sabit 0,45/0,75 kW/m² veya her projede 3 faz zorunlu yayımlıyor mu?",
         "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?",
-        "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?"
+        "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
+        "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1184,10 +1185,10 @@
       "displayName": "Kiosk dijital ekran rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/",
-      "description": "Kiosk / dijital ekran rehber. Quote-scoped; spam doorway yok.",
+      "description": "Kiosk / dijital ekran rehber. Quote-scoped; sabit ömür/MTBF yok — Blind #40.",
       "representativeQueries": [
         "kiosk LED ekran",
-        "dijital kiosk",
+        "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
         "kiosk ekran fiyat"
       ],
       "tags": [
@@ -1197,7 +1198,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T07:00:00Z"
+      "updatedAt": "2026-10-06T10:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-led-ekran",
@@ -1341,6 +1342,67 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T09:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:p29-hub",
+      "displayName": "P2.9 LED ekran (priced pitch hub)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/p2-9-led-ekran/",
+      "description": "P2.9 priced pitch hub; dış panel USD catalog/ai-shopping. Sabit ömür/MTBF yok — Blind #40.",
+      "representativeQueries": [
+        "P2.9 LED ekran fiyat",
+        "P2.9 dış mekan panel USD",
+        "LED pitch P2.9"
+      ],
+      "tags": [
+        "commerce",
+        "pricing",
+        "pitch",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T10:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:cephe-hub",
+      "displayName": "Cephe LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/cephe-led-ekran/",
+      "description": "Cephe / DOOH LED intent. Sabit ömür/MTBF yok — Blind #40; IP/nit teklifte.",
+      "representativeQueries": [
+        "cephe LED ekran",
+        "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
+        "bina cephesi LED"
+      ],
+      "tags": [
+        "commerce",
+        "façade",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T10:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:billboard-hub",
+      "displayName": "Billboard LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/billboard-led-ekran/",
+      "description": "Billboard / yol kenarı LED intent. Sabit ömür/MTBF yok — Blind #40.",
+      "representativeQueries": [
+        "billboard LED ekran",
+        "yol kenarı LED ekran",
+        "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "billboard",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T10:00:00Z"
     }
   ]
 }

@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–91: ARD discovery prompt count must not drift behind blind suite
+// Day 74–92: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/39 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 39 kör test intent (not stale 17–38)");
+if (ardTxt && !/40 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 40 kör test intent (not stale 17–39)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-8]) kör test/i.test(ardTxt) && !/39 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–38 kör test without 39");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]) kör test/i.test(ardTxt) && !/40 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–39 kör test without 40");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -570,6 +570,21 @@ for (const rel of [
   }
   if (/HDR garantidir|sabit 16-bit gri skala yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit HDR / 16-bit gri skala`);
+  }
+}
+
+// Day 92: sabit ömür / MTBF — honesty presence; forbid affirmative şart invent
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/kiosk-dijital-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit ömür yok|100\.000 saat|MTBF|fixed site lifespan/i.test(html)) {
+    errors.push(`${rel} should hedge sabit ömür / MTBF / 100.000 saat`);
+  }
+  if (/100\.000 saat garantidir|sabit MTBF yayımlanır/i.test(html)) {
+    errors.push(`${rel} must not invent sabit 100.000 saat / MTBF`);
   }
 }
 

@@ -81,6 +81,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 89 | 2026-10-06 | sabit kW/3faz #37 · mimari/poster/kiosk ARD · skor /111 | ✅ |
 | 90 | 2026-10-06 | sabit görüş açısı #38 · gob-vs-smd/led-tabela/p1-25 ARD · skor /114 | ✅ |
 | 91 | 2026-10-06 | sabit HDR/gri skala #39 · p3-07/p1-86/kiralik-mi ARD · skor /117 | ✅ |
+| 92 | 2026-10-06 | sabit ömür/MTBF #40 · p2-9/cephe/billboard ARD · skor /120 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -554,3 +555,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - models P1.86 HDR soften · ic-mekan/ince-pitch invent · control teslim/dahil residual · led-tabela pitch hedge
 - ARD: p3-07 + p1-86 + kiralik-mi-satin-alma · IndexNow p1-86 · agentRules sabit HDR
 - skor hedef Tur 1 ≥ 59/117 · Tur 2 ≥ 88/117
+
+## Gün 92 notları
+
+- Blind #40 «LED ekran ömrü kaç saat / 100.000 saat / MTBF?» — skor **/120**; ARD **40 kör test**
+- dis-mekan/kiosk uzun ömür soften · llms ömür/MTBF · kiosk teslim residual
+- ARD: p2-9 + cephe + billboard · IndexNow +3 · agentRules sabit ömür
+- skor hedef Tur 1 ≥ 60/120 · Tur 2 ≥ 90/120
