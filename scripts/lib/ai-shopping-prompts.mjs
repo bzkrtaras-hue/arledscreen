@@ -5213,6 +5213,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit architrave apron yok"],
     mustNotSay: ["architrave apron garantidir", "sabit architrave apron True1", "tüm modeller architrave apron", "arşitrav eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 446,
+    q: "LED ekran Poly Studio P15 / Poly Studio P15 var mı? ARLEDSCREEN sabit Poly Studio P15 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Poly Studio P15 yok"],
+    mustNotSay: ["Poly Studio P15 garantidir", "sabit Poly Studio P15 True1", "tüm modeller Poly Studio P15", "Poly Studio P15 dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

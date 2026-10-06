@@ -74,7 +74,7 @@ console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → Day 497 ARD 445 kör test · #445 architrave apron · dis/mimari ARD refresh",
+  "  entity-profiles → Day 498 ARD 446 kör test · #446 Poly Studio P15 · ic/konferans ARD refresh",
 );
 console.log(
   "  home hero → NO 81-il bayi invent · customer subcopy · FAQ cites ai-shopping + ücretsiz kargo yok",
