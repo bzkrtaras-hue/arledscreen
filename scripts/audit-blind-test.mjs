@@ -4203,6 +4203,20 @@ if (
   errors.push("blind prompt #320 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Clevertouch Impact yok");
 }
 
+const pBlind321 = PROMPTS.find((x) => x.id === 321);
+if (!pBlind321 || !/cornice cleat|korniş kleyt/i.test(pBlind321.q)) {
+  errors.push("blind prompt #321 must cover sabit cornice cleat invent");
+}
+if (
+  pBlind321 &&
+  (!pBlind321.mustSay?.includes("yazılı teklif") ||
+    !pBlind321.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind321.mustSay?.includes("sabit cornice cleat yok"))
+) {
+  errors.push("blind prompt #321 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cornice cleat yok");
+}
+
+
 
 
 

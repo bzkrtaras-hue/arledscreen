@@ -362,6 +362,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 370 | 2026-10-06 | sabit SMART Board GX #318 · ic/konferans ARD refresh · skor /954 | ✅ |
 | 371 | 2026-10-06 | sabit weep screed #319 · dis/mimari ARD refresh · skor /957 | ✅ |
 | 372 | 2026-10-06 | sabit Clevertouch Impact #320 · ic/konferans ARD refresh · skor /960 | ✅ |
+| 373 | 2026-10-06 | sabit cornice cleat #321 · dis/mimari ARD refresh · skor /963 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2629,3 +2630,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #320 «Clevertouch Impact / Clevertouch Lux?» — skor **/960**; ARD **320 kör test**
 - TR/EN ic-mekan + TR/EN konferans Clevertouch Impact invent · llms deny · sabit Clevertouch Impact yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Clevertouch Impact
+
+## Gün 373 notları
+
+- Blind #321 «cornice cleat / korniş kleyt?» — skor **/963**; ARD **321 kör test**
+- TR/EN dis-mekan + TR/EN mimari cornice cleat invent · llms deny · sabit cornice cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit cornice cleat

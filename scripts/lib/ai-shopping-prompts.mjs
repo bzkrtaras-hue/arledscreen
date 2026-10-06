@@ -3713,6 +3713,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Clevertouch Impact yok"],
     mustNotSay: ["Clevertouch Impact garantidir", "sabit Clevertouch Impact True1", "tüm modeller Clevertouch Impact", "Clevertouch Lux garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 321,
+    q: "LED ekran cornice cleat / korniş kleyt var mı? ARLEDSCREEN sabit cornice cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cornice cleat yok"],
+    mustNotSay: ["cornice cleat garantidir", "sabit cornice cleat True1", "tüm modeller cornice cleat", "korniş kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
