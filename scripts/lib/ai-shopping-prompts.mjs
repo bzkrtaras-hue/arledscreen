@@ -2837,6 +2837,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cleat yok"],
     mustNotSay: ["cleat garantidir", "sabit cleat True1", "tüm modeller cleat", "kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 248,
+    q: "LED ekran Vivitek / installation projector var mı? ARLEDSCREEN sabit Vivitek iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Vivitek yok"],
+    mustNotSay: ["Vivitek garantidir", "sabit Vivitek True1", "tüm modeller Vivitek", "installation projector garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -3254,6 +3254,20 @@ if (
   errors.push("blind prompt #247 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cleat yok");
 }
 
+const pBlind248 = PROMPTS.find((x) => x.id === 248);
+if (!pBlind248 || !/Vivitek|installation projector/i.test(pBlind248.q)) {
+  errors.push("blind prompt #248 must cover sabit Vivitek invent");
+}
+if (
+  pBlind248 &&
+  (!pBlind248.mustSay?.includes("yazılı teklif") ||
+    !pBlind248.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind248.mustSay?.includes("sabit Vivitek yok"))
+) {
+  errors.push("blind prompt #248 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vivitek yok");
+}
+
+
 
 
 
