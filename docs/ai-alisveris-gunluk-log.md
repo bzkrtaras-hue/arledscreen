@@ -158,6 +158,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 166 | 2026-10-06 | sabit mask pitch #114 · ic/konferans ARD refresh · skor /342 | ✅ |
 | 167 | 2026-10-06 | sabit silicone seal #115 · dis/mimari ARD refresh · skor /345 | ✅ |
 | 168 | 2026-10-06 | sabit connector type #116 · ic/konferans ARD refresh · skor /348 | ✅ |
+| 169 | 2026-10-06 | sabit locating pin #117 · dis/mimari ARD refresh · skor /351 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1171,4 +1172,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans connector type invent · llms deny · sabit connector type yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit connector type
 - skor hedef Tur 1 ≥ 174/348 · Tur 2 ≥ 261/348
+
+## Gün 169 notları
+
+- Blind #117 «locating pin / konumlandırma pimi?» — skor **/351**; ARD **117 kör test**
+- TR/EN dis-mekan + TR/EN mimari locating pin invent · llms deny · sabit locating pin yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit locating pin
+- skor hedef Tur 1 ≥ 176/351 · Tur 2 ≥ 264/351
 

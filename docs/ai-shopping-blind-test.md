@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 168: blind #116 sabit connector type invent)  
+Son güncelleme: 2026-10-06 (Gün 169: blind #117 sabit locating pin invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 116 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 117 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 116 prompt (alışveriş + varlık)
+## 117 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -140,6 +140,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 114 | LED ekran mask pitch / maske pitch var mı? ARLEDSCREEN sabit mask pitch iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit mask pitch yok** | mask pitch garantidir / sabit maske pitch / tüm modeller mask pitch / maske pitch garantidir |
 | 115 | LED ekran silicone seal / silikon conta var mı? ARLEDSCREEN sabit silicone seal iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit silicone seal yok** | silicone seal garantidir / sabit silikon conta / tüm modeller silicone seal / silikon conta garantidir |
 | 116 | LED ekran connector type / konektör tipi var mı? ARLEDSCREEN sabit connector type iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit connector type yok** | connector type garantidir / sabit konektör tipi / tüm modeller connector type / konektör tipi garantidir |
+| 117 | LED ekran locating pin / konumlandırma pimi var mı? ARLEDSCREEN sabit locating pin iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit locating pin yok** | locating pin garantidir / sabit konumlandırma pimi / tüm modeller locating pin / konumlandırma pimi garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -150,7 +151,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 348. Hedef tur 1 ≥ 174/348; tur 2 (Point C sonrası) ≥ 261/348.
+**Tur skoru** = toplam / 351. Hedef tur 1 ≥ 176/351; tur 2 (Point C sonrası) ≥ 264/351.
 
 ### Canlı tur kayıt şablonu
 

@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–116: ARD discovery prompt count must not drift behind blind suite
+// Day 74–117: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/116 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 116 kör test intent (not stale 17–115)");
+if (ardTxt && !/117 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 117 kör test intent (not stale 17–116)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–115 kör test without 116");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–116 kör test without 117");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1748,6 +1748,22 @@ for (const rel of [
   }
   if (/connector type garantidir|sabit konektör tipi|tüm modeller connector type|konektör tipi garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit connector type`);
+  }
+}
+
+
+// Day 169: sabit locating pin / konumlandırma pimi — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit locating pin yok|no fixed site locating pin/i.test(html)) {
+    errors.push(`${rel} should hedge sabit locating pin / konumlandırma pimi`);
+  }
+  if (/locating pin garantidir|sabit konumlandırma pimi|tüm modeller locating pin|konumlandırma pimi garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit locating pin`);
   }
 }
 

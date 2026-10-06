@@ -1531,6 +1531,20 @@ if (
   errors.push("blind prompt #116 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit connector type yok");
 }
 
+
+const pBlind117 = PROMPTS.find((x) => x.id === 117);
+if (!pBlind117 || !/locating pin|konumlandırma pimi/i.test(pBlind117.q)) {
+  errors.push("blind prompt #117 must cover sabit locating pin invent");
+}
+if (
+  pBlind117 &&
+  (!pBlind117.mustSay?.includes("yazılı teklif") ||
+    !pBlind117.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind117.mustSay?.includes("sabit locating pin yok"))
+) {
+  errors.push("blind prompt #117 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit locating pin yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

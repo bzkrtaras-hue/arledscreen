@@ -1265,6 +1265,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit connector type yok"],
     mustNotSay: ["connector type garantidir", "sabit konektör tipi", "tüm modeller connector type", "konektör tipi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 117,
+    q: "LED ekran locating pin / konumlandırma pimi var mı? ARLEDSCREEN sabit locating pin iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit locating pin yok"],
+    mustNotSay: ["locating pin garantidir", "sabit konumlandırma pimi", "tüm modeller locating pin", "konumlandırma pimi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
