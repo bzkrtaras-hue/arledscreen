@@ -278,6 +278,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 286 | 2026-10-06 | sabit NEC #234 · ic/konferans ARD refresh · skor /702 | ✅ |
 | 287 | 2026-10-06 | sabit cant strip #235 · dis/mimari ARD refresh · skor /705 | ✅ |
 | 288 | 2026-10-06 | sabit Panasonic #236 · ic/konferans ARD refresh · skor /708 | ✅ |
+| 289 | 2026-10-06 | sabit reglet #237 · dis/mimari ARD refresh · skor /711 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2041,3 +2042,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #236 «Panasonic / pro display?» — skor **/708**; ARD **236 kör test**
 - TR/EN ic-mekan + TR/EN konferans Panasonic invent · llms deny · sabit Panasonic yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Panasonic
+
+## Gün 289 notları
+
+- Blind #237 «reglet / reglet flaş?» — skor **/711**; ARD **237 kör test**
+- TR/EN dis-mekan + TR/EN mimari reglet invent · llms deny · sabit reglet yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit reglet

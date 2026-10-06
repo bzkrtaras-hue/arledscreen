@@ -2705,6 +2705,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Panasonic yok"],
     mustNotSay: ["Panasonic garantidir", "sabit Panasonic True1", "tüm modeller Panasonic", "pro display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 237,
+    q: "LED ekran reglet / reglet flaş var mı? ARLEDSCREEN sabit reglet iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit reglet yok"],
+    mustNotSay: ["reglet garantidir", "sabit reglet True1", "tüm modeller reglet", "reglet flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

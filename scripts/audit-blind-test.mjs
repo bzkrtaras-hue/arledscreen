@@ -3111,6 +3111,20 @@ if (
   errors.push("blind prompt #236 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Panasonic yok");
 }
 
+const pBlind237 = PROMPTS.find((x) => x.id === 237);
+if (!pBlind237 || !/reglet|reglet flaş/i.test(pBlind237.q)) {
+  errors.push("blind prompt #237 must cover sabit reglet invent");
+}
+if (
+  pBlind237 &&
+  (!pBlind237.mustSay?.includes("yazılı teklif") ||
+    !pBlind237.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind237.mustSay?.includes("sabit reglet yok"))
+) {
+  errors.push("blind prompt #237 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit reglet yok");
+}
+
+
 
 
 
