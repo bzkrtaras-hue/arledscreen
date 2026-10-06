@@ -2773,6 +2773,20 @@ if (
   errors.push("blind prompt #210 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sennheiser yok");
 }
 
+const pBlind211 = PROMPTS.find((x) => x.id === 211);
+if (!pBlind211 || !/kick-out flashing|çıkış flaşı/i.test(pBlind211.q)) {
+  errors.push("blind prompt #211 must cover sabit kick-out flashing invent");
+}
+if (
+  pBlind211 &&
+  (!pBlind211.mustSay?.includes("yazılı teklif") ||
+    !pBlind211.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind211.mustSay?.includes("sabit kick-out flashing yok"))
+) {
+  errors.push("blind prompt #211 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kick-out flashing yok");
+}
+
+
 
 
 
