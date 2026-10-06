@@ -4265,6 +4265,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ViewSonic IFP55 yok"],
     mustNotSay: ["ViewSonic IFP55 garantidir", "sabit ViewSonic IFP55 True1", "tüm modeller ViewSonic IFP55", "ViewSonic IFP65 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 367,
+    q: "LED ekran parapet coping cap / parapet kapak flaşör var mı? ARLEDSCREEN sabit parapet coping cap iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parapet coping cap yok"],
+    mustNotSay: ["parapet coping cap garantidir", "sabit parapet coping cap True1", "tüm modeller parapet coping cap", "parapet kapak flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

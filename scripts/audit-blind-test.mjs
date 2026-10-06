@@ -4801,6 +4801,20 @@ if (
   errors.push("blind prompt #366 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ViewSonic IFP55 yok");
 }
 
+const pBlind367 = PROMPTS.find((x) => x.id === 367);
+if (!pBlind367 || !/parapet coping cap|parapet kapak flaşör/i.test(pBlind367.q)) {
+  errors.push("blind prompt #367 must cover sabit parapet coping cap invent");
+}
+if (
+  pBlind367 &&
+  (!pBlind367.mustSay?.includes("yazılı teklif") ||
+    !pBlind367.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind367.mustSay?.includes("sabit parapet coping cap yok"))
+) {
+  errors.push("blind prompt #367 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet coping cap yok");
+}
+
+
 
 
 

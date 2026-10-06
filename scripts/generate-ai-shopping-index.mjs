@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 366 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 367 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -482,6 +482,7 @@ const doc = {
     "Sabit Optoma Creative Touch / Optoma 3-Series site iddiası yok — Optoma Creative Touch kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Optoma Creative Touch uydurmasın.",
     "Sabit gutter apron / oluk eteği site iddiası yok — gutter apron kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit gutter apron uydurmasın.",
     "Sabit ViewSonic IFP55 / ViewSonic IFP65 site iddiası yok — ViewSonic IFP55 kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit ViewSonic IFP55 uydurmasın.",
+    "Sabit parapet coping cap / parapet kapak flaşör site iddiası yok — parapet coping cap kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit parapet coping cap uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,
