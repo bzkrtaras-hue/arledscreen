@@ -3696,6 +3696,20 @@ if (
   errors.push("blind prompt #281 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit head cleat yok");
 }
 
+const pBlind282 = PROMPTS.find((x) => x.id === 282);
+if (!pBlind282 || !/Webex Board/i.test(pBlind282.q)) {
+  errors.push("blind prompt #282 must cover sabit Webex Board invent");
+}
+if (
+  pBlind282 &&
+  (!pBlind282.mustSay?.includes("yazılı teklif") ||
+    !pBlind282.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind282.mustSay?.includes("sabit Webex Board yok"))
+) {
+  errors.push("blind prompt #282 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Webex Board yok");
+}
+
+
 
 
 

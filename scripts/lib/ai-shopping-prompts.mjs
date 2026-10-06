@@ -3245,6 +3245,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit head cleat yok"],
     mustNotSay: ["head cleat garantidir", "sabit head cleat True1", "tüm modeller head cleat", "başlık kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 282,
+    q: "LED ekran Webex Board / Webex Board var mı? ARLEDSCREEN sabit Webex Board iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Webex Board yok"],
+    mustNotSay: ["Webex Board garantidir", "sabit Webex Board True1", "tüm modeller Webex Board", "Webex Board standarttır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
