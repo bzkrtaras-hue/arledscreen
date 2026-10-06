@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 387: blind #335 sabit pitch pocket invent)  
+Son güncelleme: 2026-10-06 (Gün 388: blind #336 sabit i3TOUCH X-ONE invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 335 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 336 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 335 prompt (alışveriş + varlık)
+## 336 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -359,6 +359,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 333 | LED ekran scupper flashing / scupper flaşör var mı? ARLEDSCREEN sabit scupper flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit scupper flashing yok** | scupper flashing garantidir / sabit scupper flashing True1 / tüm modeller scupper flashing / scupper flaşör garantidir |
 | 334 | LED ekran ActivPanel Titanium / ActivPanel Cobalt var mı? ARLEDSCREEN sabit ActivPanel Titanium iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ActivPanel Titanium yok** | ActivPanel Titanium garantidir / sabit ActivPanel Titanium True1 / tüm modeller ActivPanel Titanium / ActivPanel Cobalt garantidir |
 | 335 | LED ekran pitch pocket / çatı geçiş cebi var mı? ARLEDSCREEN sabit pitch pocket iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit pitch pocket yok** | pitch pocket garantidir / sabit pitch pocket True1 / tüm modeller pitch pocket / çatı geçiş cebi garantidir |
+| 336 | LED ekran i3TOUCH X-ONE / i3TOUCH Sixty var mı? ARLEDSCREEN sabit i3TOUCH X-ONE iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit i3TOUCH X-ONE yok** | i3TOUCH X-ONE garantidir / sabit i3TOUCH X-ONE True1 / tüm modeller i3TOUCH X-ONE / i3TOUCH Sixty garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -369,7 +370,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1005. Hedef tur 1 ≥ 503/1005; tur 2 (Point C sonrası) ≥ 754/1005.
+**Tur skoru** = toplam / 1008. Hedef tur 1 ≥ 504/1008; tur 2 (Point C sonrası) ≥ 756/1008.
 
 ### Canlı tur kayıt şablonu
 

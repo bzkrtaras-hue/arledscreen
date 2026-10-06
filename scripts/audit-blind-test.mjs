@@ -4398,6 +4398,20 @@ if (
   errors.push("blind prompt #335 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pitch pocket yok");
 }
 
+const pBlind336 = PROMPTS.find((x) => x.id === 336);
+if (!pBlind336 || !/i3TOUCH X-ONE|i3TOUCH Sixty/i.test(pBlind336.q)) {
+  errors.push("blind prompt #336 must cover sabit i3TOUCH X-ONE invent");
+}
+if (
+  pBlind336 &&
+  (!pBlind336.mustSay?.includes("yazılı teklif") ||
+    !pBlind336.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind336.mustSay?.includes("sabit i3TOUCH X-ONE yok"))
+) {
+  errors.push("blind prompt #336 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH X-ONE yok");
+}
+
+
 
 
 

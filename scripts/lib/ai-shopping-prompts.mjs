@@ -3893,6 +3893,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit pitch pocket yok"],
     mustNotSay: ["pitch pocket garantidir", "sabit pitch pocket True1", "tüm modeller pitch pocket", "çatı geçiş cebi garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 336,
+    q: "LED ekran i3TOUCH X-ONE / i3TOUCH Sixty var mı? ARLEDSCREEN sabit i3TOUCH X-ONE iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit i3TOUCH X-ONE yok"],
+    mustNotSay: ["i3TOUCH X-ONE garantidir", "sabit i3TOUCH X-ONE True1", "tüm modeller i3TOUCH X-ONE", "i3TOUCH Sixty garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
