@@ -258,6 +258,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 266 | 2026-10-06 | sabit Lifesize #214 · ic/konferans ARD refresh · skor /642 | ✅ |
 | 267 | 2026-10-06 | sabit step flashing #215 · dis/mimari ARD refresh · skor /645 | ✅ |
 | 268 | 2026-10-06 | sabit Bose #216 · ic/konferans ARD refresh · skor /648 | ✅ |
+| 269 | 2026-10-06 | sabit apron flashing #217 · dis/mimari ARD refresh · skor /651 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1901,3 +1902,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #216 «Bose / soundbar?» — skor **/648**; ARD **216 kör test**
 - TR/EN ic-mekan + TR/EN konferans Bose invent · llms deny · sabit Bose yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Bose
+
+## Gün 269 notları
+
+- Blind #217 «apron flashing / etek flaş?» — skor **/651**; ARD **217 kör test**
+- TR/EN dis-mekan + TR/EN mimari apron flashing invent · llms deny · sabit apron flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit apron flashing

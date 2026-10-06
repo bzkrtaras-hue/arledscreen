@@ -2465,6 +2465,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Bose yok"],
     mustNotSay: ["Bose garantidir", "sabit Bose True1", "tüm modeller Bose", "soundbar garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 217,
+    q: "LED ekran apron flashing / etek flaş var mı? ARLEDSCREEN sabit apron flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit apron flashing yok"],
+    mustNotSay: ["apron flashing garantidir", "sabit apron flashing True1", "tüm modeller apron flashing", "etek flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
