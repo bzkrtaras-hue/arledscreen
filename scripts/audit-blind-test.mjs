@@ -5764,6 +5764,18 @@ if (
 ) {
   errors.push("blind prompt #441 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit frieze apron yok");
 }
+const pBlind442 = PROMPTS.find((x) => x.id === 442);
+if (!pBlind442 || !/Logitech Sight/i.test(pBlind442.q)) {
+  errors.push("blind prompt #442 must cover sabit Logitech Sight invent");
+}
+if (
+  pBlind442 &&
+  (!pBlind442.mustSay?.includes("yazılı teklif") ||
+    !pBlind442.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind442.mustSay?.includes("sabit Logitech Sight yok"))
+) {
+  errors.push("blind prompt #442 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Sight yok");
+}
 
 
 

@@ -74,7 +74,7 @@ console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → Day 493 ARD 441 kör test · #441 frieze apron · dis/mimari ARD refresh",
+  "  entity-profiles → Day 494 ARD 442 kör test · #442 Logitech Sight · ic/konferans ARD refresh",
 );
 console.log(
   "  home hero → NO 81-il bayi invent · customer subcopy · FAQ cites ai-shopping + ücretsiz kargo yok",

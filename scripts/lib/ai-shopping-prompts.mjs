@@ -5165,6 +5165,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit frieze apron yok"],
     mustNotSay: ["frieze apron garantidir", "sabit frieze apron True1", "tüm modeller frieze apron", "friz eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 442,
+    q: "LED ekran Logitech Sight / Logitech Sight var mı? ARLEDSCREEN sabit Logitech Sight iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Logitech Sight yok"],
+    mustNotSay: ["Logitech Sight garantidir", "sabit Logitech Sight True1", "tüm modeller Logitech Sight", "Logitech Sight dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
