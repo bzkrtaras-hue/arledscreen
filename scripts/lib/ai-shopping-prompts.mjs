@@ -4757,6 +4757,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit head apron yok"],
     mustNotSay: ["head apron garantidir", "sabit head apron True1", "tüm modeller head apron", "başlık eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 408,
+    q: "LED ekran Cisco Room Bar Pro / Room Bar Pro var mı? ARLEDSCREEN sabit Cisco Room Bar Pro iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Cisco Room Bar Pro yok"],
+    mustNotSay: ["Cisco Room Bar Pro garantidir", "sabit Cisco Room Bar Pro True1", "tüm modeller Cisco Room Bar Pro", "Room Bar Pro garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

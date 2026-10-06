@@ -499,6 +499,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 458g | 2026-10-06 | Host/smoke/JSON KAPALI · invent-URL 404 beklenen · sahip: Point C+Tur1a+arleds | ✅ |
 | 458h | 2026-10-06 | Blind #406 Crestron Flex invent · prompts=406 · skor /1218 · deploy | ✅ |
 | 458i | 2026-10-06 | Blind #407 head apron invent · prompts=407 · skor /1221 · deploy | ✅ |
+| 458j | 2026-10-06 | Blind #408 Cisco Room Bar Pro invent · prompts=408 · /1224 · deploy | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti

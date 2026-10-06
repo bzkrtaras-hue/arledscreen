@@ -5331,6 +5331,19 @@ if (
 ) {
   errors.push("blind prompt #407 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit head apron yok");
 }
+const pBlind408 = PROMPTS.find((x) => x.id === 408);
+if (!pBlind408 || !/Cisco Room Bar Pro|Room Bar Pro/i.test(pBlind408.q)) {
+  errors.push("blind prompt #408 must cover sabit Cisco Room Bar Pro invent");
+}
+if (
+  pBlind408 &&
+  (!pBlind408.mustSay?.includes("yazılı teklif") ||
+    !pBlind408.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind408.mustSay?.includes("sabit Cisco Room Bar Pro yok"))
+) {
+  errors.push("blind prompt #408 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Cisco Room Bar Pro yok");
+}
+
 
 
 

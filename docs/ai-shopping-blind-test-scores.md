@@ -1,8 +1,8 @@
 # AI alışveriş — kör test skor kartı (sahip doldurur)
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
-Hedef: Tur 1 (canlı 200 sonrası) ≥ **610/1221** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **916/1221**  
-Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (407 prompt)
+Hedef: Tur 1 (canlı 200 sonrası) ≥ **612/1224** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **918/1224**  
+Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (408 prompt)
 
 ## Tur 1 — canlı JSON 200 sonrası (merge zorunlu değil; PR #55 draft)
 
@@ -13,22 +13,22 @@ Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (407 prompt)
 - Skor satırlarını aşağıdaki tabloya doldur (ajan uydurma skor yazmaz)
 
 
-Koşullar: incognito · TR konum tercih · aynı 407 prompt · yanıtta URL/atıf not et.
+Koşullar: incognito · TR konum tercih · aynı 408 prompt · yanıtta URL/atıf not et.
 
-Skor: prompt başına **0–3** (bkz. protokol). Toplam /1221.
+Skor: prompt başına **0–3** (bkz. protokol). Toplam /1224.
 
-| Model | Tarih | Konum | Incognito | Skor /1221 | Not |
+| Model | Tarih | Konum | Incognito | Skor /1224 | Not |
 |-------|-------|-------|-----------|-----------|-----|
-| ChatGPT | | TR / | evet | /1221 | |
-| Gemini | | | | /1221 | |
-| Perplexity | | | | /1221 | |
-| Bing Copilot | | | | /1221 | |
-| **Ortalama** | | | | **/1221** | Hedef ≥ 610 |
+| ChatGPT | | TR / | evet | /1224 | |
+| Gemini | | | | /1224 | |
+| Perplexity | | | | /1224 | |
+| Bing Copilot | | | | /1224 | |
+| **Ortalama** | | | | **/1224** | Hedef ≥ 612 |
 
 ## Tur 1a — P0 hızlı ölçüm (20 prompt · /60)
 
 Canlı kaynak: https://arledscreen.com/ai-shopping.json (`blindTestPrompts` #1–#20), çekim 2026-10-06.  
-Tam suite hâlâ 407 prompt /1221 (`ai-shopping-blind-test.md`). Bu tablo sahip için **ilk gün** ölçümü — uydurma skor yok.
+Tam suite hâlâ 408 prompt /1224 (`ai-shopping-blind-test.md`). Bu tablo sahip için **ilk gün** ölçümü — uydurma skor yok.
 
 Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
 
@@ -65,13 +65,13 @@ Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
 
 ## Tur 2 — Point C sonrası (≤2026-11-04)
 
-| Model | Tarih | Skor /1221 | Bağımsız atıf görüldü mü? | Not |
+| Model | Tarih | Skor /1224 | Bağımsız atıf görüldü mü? | Not |
 |-------|-------|-----------|---------------------------|-----|
-| ChatGPT | | /1221 | | |
-| Gemini | | /1221 | | |
-| Perplexity | | /1221 | | |
-| Bing Copilot | | /1221 | | |
-| **Ortalama** | | **/1221** | | Hedef ≥ 912 |
+| ChatGPT | | /1224 | | |
+| Gemini | | /1224 | | |
+| Perplexity | | /1224 | | |
+| Bing Copilot | | /1224 | | |
+| **Ortalama** | | **/1224** | | Hedef ≥ 912 |
 
 ## Prompt bazlı ham notlar (opsiyonel)
 
