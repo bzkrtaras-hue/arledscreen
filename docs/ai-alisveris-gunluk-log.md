@@ -1,8 +1,7 @@
-## Gün 501 — invent Blind #449 spandrel apron
+## Gün 501 — invent Blind #449 spandrel apron LIVE
 
-- Blind #449 spandrel apron / spandrel eteği · dis/mimari · prompts=449 · /1347 · build pending
-- Point C sahip yapıldı · Tur 1a ajan browser kota (skor yok)
-- sahip işi yok
+- Blind #449 spandrel apron / spandrel eteği · dis/mimari · prompts=449 · /1347 · CF deploy · smoke:live 20/20
+- Tur 1a: ajan Perplexity koşusu (sahibe iş yok)
 
 ## Gün 500 — invent Blind #448 Cisco Desk Pro LIVE
 
