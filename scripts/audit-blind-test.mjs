@@ -5204,6 +5204,20 @@ if (
   errors.push("blind prompt #397 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sill apron yok");
 }
 
+const pBlind398 = PROMPTS.find((x) => x.id === 398);
+if (!pBlind398 || !/Maxhub V5 Classic|Maxhub V5/i.test(pBlind398.q)) {
+  errors.push("blind prompt #398 must cover sabit Maxhub V5 Classic invent");
+}
+if (
+  pBlind398 &&
+  (!pBlind398.mustSay?.includes("yazılı teklif") ||
+    !pBlind398.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind398.mustSay?.includes("sabit Maxhub V5 Classic yok"))
+) {
+  errors.push("blind prompt #398 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Maxhub V5 Classic yok");
+}
+
+
 
 
 

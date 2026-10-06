@@ -4637,6 +4637,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit sill apron yok"],
     mustNotSay: ["sill apron garantidir", "sabit sill apron True1", "tüm modeller sill apron", "denizlik eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 398,
+    q: "LED ekran Maxhub V5 Classic / Maxhub V5 var mı? ARLEDSCREEN sabit Maxhub V5 Classic iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Maxhub V5 Classic yok"],
+    mustNotSay: ["Maxhub V5 Classic garantidir", "sabit Maxhub V5 Classic True1", "tüm modeller Maxhub V5 Classic", "Maxhub V5 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
