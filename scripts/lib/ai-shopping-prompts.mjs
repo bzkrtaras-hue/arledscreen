@@ -5081,6 +5081,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Tap IP yok"],
     mustNotSay: ["Tap IP garantidir", "sabit Tap IP True1", "tüm modeller Tap IP", "Tap IP dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 435,
+    q: "LED ekran soffit apron / saçak altı eteği var mı? ARLEDSCREEN sabit soffit apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit soffit apron yok"],
+    mustNotSay: ["soffit apron garantidir", "sabit soffit apron True1", "tüm modeller soffit apron", "saçak altı eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

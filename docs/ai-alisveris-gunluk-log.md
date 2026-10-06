@@ -1,3 +1,8 @@
+## Gün 487 — invent Blind #435 soffit apron
+
+- Blind #435 soffit apron / saçak altı eteği · dis/mimari · prompts=435 · /1305
+- Point C + Tur 1a hâlâ sahip
+
 ## Gün 486 — invent Blind #434 Tap IP LIVE
 
 - Blind #434 Tap IP · ic/konferans · prompts=434 · /1302 · CF deploy · smoke:live GREEN · IndexNow 193×

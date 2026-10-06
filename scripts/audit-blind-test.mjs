@@ -5678,6 +5678,19 @@ if (
 ) {
   errors.push("blind prompt #434 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Tap IP yok");
 }
+const pBlind435 = PROMPTS.find((x) => x.id === 435);
+if (!pBlind435 || !/soffit apron/i.test(pBlind435.q)) {
+  errors.push("blind prompt #435 must cover sabit soffit apron invent");
+}
+if (
+  pBlind435 &&
+  (!pBlind435.mustSay?.includes("yazılı teklif") ||
+    !pBlind435.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind435.mustSay?.includes("sabit soffit apron yok"))
+) {
+  errors.push("blind prompt #435 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit soffit apron yok");
+}
+
 
 
 
