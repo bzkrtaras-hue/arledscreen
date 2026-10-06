@@ -643,3 +643,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - SSS/about/entity FAQ CE/RoHS invent · llms deny · sabit sertifika listesi yok
 - ARD: /ar/about + /ru/about · IndexNow +2 · agentRules sabit CE/RoHS
 - skor hedef Tur 1 ≥ 75/150 · Tur 2 ≥ 113/150
+
+## Gün 103 notları
+
+- Blind #51 «ISO 9001 / ISO 14001?» — skor **/153**; ARD **51 kör test**
+- about/sss/mimari ISO invent · llms deny · sabit kalite belgesi yok
+- ARD: EN mimari + /ar/quote + /ru/quote · IndexNow +3 · agentRules sabit ISO
+- skor hedef Tur 1 ≥ 77/153 · Tur 2 ≥ 115/153
