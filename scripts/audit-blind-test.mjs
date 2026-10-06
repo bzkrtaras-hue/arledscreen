@@ -3748,6 +3748,20 @@ if (
   errors.push("blind prompt #285 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit jamb cleat yok");
 }
 
+const pBlind286 = PROMPTS.find((x) => x.id === 286);
+if (!pBlind286 || !/Google Jamboard|Jamboard/i.test(pBlind286.q)) {
+  errors.push("blind prompt #286 must cover sabit Google Jamboard invent");
+}
+if (
+  pBlind286 &&
+  (!pBlind286.mustSay?.includes("yazılı teklif") ||
+    !pBlind286.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind286.mustSay?.includes("sabit Google Jamboard yok"))
+) {
+  errors.push("blind prompt #286 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Jamboard yok");
+}
+
+
 
 
 

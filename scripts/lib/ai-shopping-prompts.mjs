@@ -3293,6 +3293,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit jamb cleat yok"],
     mustNotSay: ["jamb cleat garantidir", "sabit jamb cleat True1", "tüm modeller jamb cleat", "jamb kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 286,
+    q: "LED ekran Google Jamboard / Jamboard var mı? ARLEDSCREEN sabit Google Jamboard iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Google Jamboard yok"],
+    mustNotSay: ["Google Jamboard garantidir", "sabit Google Jamboard True1", "tüm modeller Google Jamboard", "Jamboard garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
