@@ -2153,6 +2153,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Board yok"],
     mustNotSay: ["Neat Board garantidir", "sabit Neat Board True1", "tüm modeller Neat Board", "collab bar garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 191,
+    q: "LED ekran condensation drain / yoğuşma drenajı var mı? ARLEDSCREEN sabit condensation drain iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit condensation drain yok"],
+    mustNotSay: ["condensation drain garantidir", "sabit condensation drain True1", "tüm modeller condensation drain", "yoğuşma drenajı garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

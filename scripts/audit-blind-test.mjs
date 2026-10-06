@@ -2513,6 +2513,20 @@ if (
   errors.push("blind prompt #190 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Board yok");
 }
 
+const pBlind191 = PROMPTS.find((x) => x.id === 191);
+if (!pBlind191 || !/condensation drain|yoğuşma drenajı/i.test(pBlind191.q)) {
+  errors.push("blind prompt #191 must cover sabit condensation drain invent");
+}
+if (
+  pBlind191 &&
+  (!pBlind191.mustSay?.includes("yazılı teklif") ||
+    !pBlind191.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind191.mustSay?.includes("sabit condensation drain yok"))
+) {
+  errors.push("blind prompt #191 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit condensation drain yok");
+}
+
+
 
 
 

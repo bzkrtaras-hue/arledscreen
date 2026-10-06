@@ -232,6 +232,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 240 | 2026-10-06 | sabit Logitech Rally #188 · ic/konferans ARD refresh · skor /564 | ✅ |
 | 241 | 2026-10-06 | sabit insect screen #189 · dis/mimari ARD refresh · skor /567 | ✅ |
 | 242 | 2026-10-06 | sabit Neat Board #190 · ic/konferans ARD refresh · skor /570 | ✅ |
+| 243 | 2026-10-06 | sabit condensation drain #191 · dis/mimari ARD refresh · skor /573 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1719,3 +1720,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #190 «Neat Board / collab bar?» — skor **/570**; ARD **190 kör test**
 - TR/EN ic-mekan + TR/EN konferans Neat Board invent · llms deny · sabit Neat Board yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Neat Board
+
+## Gün 243 notları
+
+- Blind #191 «condensation drain / yoğuşma drenajı?» — skor **/573**; ARD **191 kör test**
+- TR/EN dis-mekan + TR/EN mimari condensation drain invent · llms deny · sabit condensation drain yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit condensation drain
