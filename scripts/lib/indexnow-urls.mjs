@@ -69,6 +69,8 @@ export const INDEXNOW_URLS = [
   `${SITE}/tr/led-ekran-montaj/`,
   `${SITE}/ar/`,
   `${SITE}/ru/`,
+  `${SITE}/ar/about/`,
+  `${SITE}/ru/about/`,
   `${SITE}/tr/led-ekran-servis/`,
   `${SITE}/tr/fabrika-led-ekran/`,
   `${SITE}/tr/led-ekran-kiralama/`,

@@ -91,6 +91,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 99 | 2026-10-06 | sabit nem/%RH #47 · EN rehber hub + TR/EN home ARD · skor /141 | ✅ |
 | 100 | 2026-10-06 | sabit standby/idle #48 · hesaplayici/mimari refresh · skor /144 | ✅ |
 | 101 | 2026-10-06 | sabit depolama/storage °C #49 · /ar/ /ru/ home ARD · skor /147 | ✅ |
+| 102 | 2026-10-06 | sabit CE/RoHS #50 · /ar/ /ru/ about ARD · skor /150 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -634,3 +635,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - dis-mekan/mimari storage invent · llms deny · işletme ≠ depolama
 - ARD: /ar/ + /ru/ home · agentRules sabit depolama °C
 - skor hedef Tur 1 ≥ 74/147 · Tur 2 ≥ 110/147
+
+## Gün 102 notları (milestone)
+
+- Blind #50 «CE / RoHS sertifikalı mı?» — skor **/150**; ARD **50 kör test**
+- SSS/about/entity FAQ CE/RoHS invent · llms deny · sabit sertifika listesi yok
+- ARD: /ar/about + /ru/about · IndexNow +2 · agentRules sabit CE/RoHS
+- skor hedef Tur 1 ≥ 75/150 · Tur 2 ≥ 113/150

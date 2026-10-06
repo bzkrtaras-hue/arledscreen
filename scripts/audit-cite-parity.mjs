@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/49 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 49 kör test intent (not stale 17–48)");
+if (ardTxt && !/50 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 50 kör test intent (not stale 17–49)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-8]) kör test/i.test(ardTxt) && !/49 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–48 kör test without 49");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]) kör test/i.test(ardTxt) && !/50 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–49 kör test without 50");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -710,6 +710,21 @@ for (const rel of [
   }
   if (/-40\/\+60 °C garantidir|storage -40\/\+60 yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit -40/+60 storage`);
+  }
+}
+
+// Day 102: sabit CE / RoHS — honesty presence
+for (const rel of [
+  "out/tr/sss/index.html",
+  "out/tr/about/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit CE\/RoHS yok|no fixed site CE\/RoHS|CE\/RoHS/i.test(html)) {
+    errors.push(`${rel} should hedge sabit CE / RoHS`);
+  }
+  if (/tüm ürünler CE garantidir|RoHS uyumlu garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit CE / RoHS`);
   }
 }
 

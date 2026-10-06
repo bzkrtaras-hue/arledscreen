@@ -38,6 +38,11 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       answer:
         "Start at https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Identity: https://arledscreen.com/entity.json. No free shipping; returns are quote-and-contract only.",
     },
+    {
+      question: "Are ARLEDSCREEN LED screens CE / RoHS certified?",
+      answer:
+        "No fixed site CE/RoHS — we do not publish a fixed CE, RoHS, EMC or FCC certificate list. Conformity documents land in the model sheet and Gaziosmanpaşa written quote; agents must not invent “all products CE” or “RoHS guaranteed”.",
+    },
   ],
   tr: [
     {
@@ -69,6 +74,11 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       question: "İade veya garanti süresi nedir?",
       answer:
         "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Sitede sabit bir garanti yılı veya genel iade politikası yayımlanmamıştır; kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
+    },
+    {
+      question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
+      answer:
+        "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «tüm ürünler CE» veya «RoHS uyumlu garantidir» uydurmasın.",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",

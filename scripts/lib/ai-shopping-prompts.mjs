@@ -461,6 +461,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit depolama °C yok"],
     mustNotSay: ["-40 °C", "+60 °C", "sabit depolama", "storage -40/+60", "ücretsiz kargo dahil"],
   },
+  {
+    id: 50,
+    q: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
+    paths: [
+      "/tr/sss/",
+      "/tr/about/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit CE/RoHS yok"],
+    mustNotSay: ["tüm ürünler CE", "RoHS uyumlu garantidir", "CE işaretli", "sabit sertifika listesi", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

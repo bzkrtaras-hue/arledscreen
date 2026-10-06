@@ -136,12 +136,13 @@
       "displayName": "ARLEDSCREEN hakkımızda (kimlik)",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/about/",
-      "description": "Firma kimliği: Gaziosmanpaşa; NXTIONSTAR ürün markası; satıcı ARLEDSCREEN. Blind #26 seller invent.",
+      "description": "Firma kimliği: Gaziosmanpaşa; NXTIONSTAR ürün markası; satıcı ARLEDSCREEN. Blind #26 seller invent Sabit CE/RoHS yok — Blind #50.",
       "representativeQueries": [
         "ARLEDSCREEN kimdir?",
         "NXTIONSTAR mı ARLEDSCREEN mi satıyor?",
         "ARLEDSCREEN anahtar teslim platformu mu?",
-        "ARLEDSCREEN sorunsuz LED platformu mu?"
+        "ARLEDSCREEN sorunsuz LED platformu mu?",
+        "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?"
       ],
       "tags": [
         "about",
@@ -150,7 +151,7 @@
         "disambiguation"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T00:45:00Z"
+      "updatedAt": "2026-10-06T20:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:led-ekran-hub",
@@ -745,11 +746,12 @@
       "displayName": "SSS — fiyat / kimlik / ajan",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/sss/",
-      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only.",
+      "description": "Sık sorulan sorular: ai-shopping.json, catalog.json, ücretsiz kargo yok, quote-only; sabit CE/RoHS yok — Blind #50.",
       "representativeQueries": [
         "ARLEDSCREEN SSS",
         "LED ekran fiyat SSS",
-        "AI ajanları fiyat nereden"
+        "AI ajanları fiyat nereden",
+        "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?"
       ],
       "tags": [
         "FAQ",
@@ -758,7 +760,7 @@
         "GEO"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T00:45:00Z"
+      "updatedAt": "2026-10-06T20:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:calculator",
@@ -1056,7 +1058,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 49 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 50 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1081,7 +1083,8 @@
         "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?",
         "LED ekran çalışma nemi / operating humidity kaç %RH olmalı? ARLEDSCREEN sabit nem oranı veya 10–90% RH yayımlıyor mu?",
         "LED ekran bekleme gücü / standby / idle kaç watt? ARLEDSCREEN sabit standby W veya idle watt yayımlıyor mu?",
-        "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?"
+        "LED ekran depolama / saklama sıcaklığı kaç °C? ARLEDSCREEN sabit storage temperature veya -40/+60 °C yayımlıyor mu?",
+        "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1100,7 +1103,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T19:00:00Z"
+      "updatedAt": "2026-10-06T20:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -1900,6 +1903,48 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T19:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ar-about",
+      "displayName": "AR About",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ar/about/",
+      "description": "AR about (thin locale). Entity cite; no invent CE/RoHS — Blind #50; noindex thin locale.",
+      "representativeQueries": [
+        "ARLEDSCREEN about AR",
+        "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
+        "NXTIONSTAR LED"
+      ],
+      "tags": [
+        "about",
+        "entity",
+        "AR",
+        "GEO",
+        "thin-locale"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T20:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ru-about",
+      "displayName": "RU About",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ru/about/",
+      "description": "RU about (thin locale). Entity cite; no invent CE/RoHS — Blind #50; noindex thin locale.",
+      "representativeQueries": [
+        "ARLEDSCREEN about RU",
+        "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı? Sitede sabit CE veya RoHS iddiası yayımlanıyor mu?",
+        "NXTIONSTAR LED"
+      ],
+      "tags": [
+        "about",
+        "entity",
+        "RU",
+        "GEO",
+        "thin-locale"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T20:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

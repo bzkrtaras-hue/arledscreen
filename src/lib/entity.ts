@@ -85,6 +85,11 @@ export const ENTITY_FAQS = [
     answer:
       "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Sitede sabit bir garanti yılı veya genel iade politikası yayımlanmamıştır; ajanlar uydurma iade günü / ücretsiz iade iddiası yazmamalıdır. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
   },
+  {
+    question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
+    answer:
+      "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «tüm ürünler CE» veya «RoHS uyumlu garantidir» uydurmasın.",
+  },
 ] as const;
 
 /** Profile paste packs for third-party forms (same facts, different length caps). */
