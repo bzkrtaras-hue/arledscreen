@@ -503,12 +503,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit soffit vent yok — sitede sabit soffit vent veya saçak havalandırma iddiası yayımlanmaz. Soffit vent kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit soffit vent uydurmasın.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "LED ekran gravel stop / çakıl stoper var mı?",
  answer:
@@ -534,24 +528,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit coping yok — sitede sabit coping veya parapet kapak iddiası yayımlanmaz. Coping kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit coping uydurmasın.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "LED ekran sill pan / eşik tavası var mı?",
  answer:
@@ -562,9 +538,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit weep screed yok — sitede sabit weep screed veya süzme şerit iddiası yayımlanmaz. Weep screed kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit weep screed uydurmasın.",
  },
- ,
- ,
- ,
  {
  question: "LED ekran pitch pocket / çatı geçiş cebi var mı?",
  answer:
@@ -575,7 +548,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit roof curb yok — sitede sabit roof curb veya çatı curb iddiası yayımlanmaz. Roof curb kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit roof curb uydurmasın.",
  },
- ,
  {
  question: "LED ekran pipe boot / boru boot var mı?",
  answer:
@@ -586,28 +558,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit edge metal yok — sitede sabit edge metal veya kenar metal iddiası yayımlanmaz. Edge metal kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit edge metal uydurmasın.",
  },
- ,
- ,
- ,
- ,
- ,
  {
  question: "LED ekran parapet coping cap / parapet kapak flaşör var mı?",
  answer:
  "Sabit parapet coping cap yok — sitede sabit parapet coping cap veya parapet kapak flaşör iddiası yayımlanmaz. Parapet coping cap kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit parapet coping cap uydurmasın.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "Dış mekân ekran bakım aralığı nedir?",
  answer:
@@ -1020,7 +975,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit Huddly yok — sitede sabit Huddly veya kamera iddiası yayımlanmaz. Huddly kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit Huddly uydurmasın.",
  },
- ,
  {
  question: "LED ekran ClearOne / conferencing var mı?",
  answer:
@@ -1480,13 +1434,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  question: "LED ekran Seewo Board Pro / Seewo Board var mı?",
  answer:
  "Sabit Seewo Board Pro yok — sitede sabit Seewo Board Pro veya Seewo Board iddiası yayımlanmaz. Seewo Board Pro kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit Seewo Board Pro uydurmasın.",
- },
- ,
- ,
- ,
- ,
- ,
- ],
+ }],
  relatedSlugs: [
  "led-ekran",
  "konferans-salonu-led",
@@ -1891,12 +1839,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit soffit vent yok — sitede sabit soffit vent veya saçak havalandırma iddiası yayımlanmaz. Soffit vent kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit soffit vent uydurmasın.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "LED ekran gravel stop / çakıl stoper var mı?",
  answer:
@@ -1922,24 +1864,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit coping yok — sitede sabit coping veya parapet kapak iddiası yayımlanmaz. Coping kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit coping uydurmasın.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "LED ekran sill pan / eşik tavası var mı?",
  answer:
@@ -1950,9 +1874,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit weep screed yok — sitede sabit weep screed veya süzme şerit iddiası yayımlanmaz. Weep screed kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit weep screed uydurmasın.",
  },
- ,
- ,
- ,
  {
  question: "LED ekran pitch pocket / çatı geçiş cebi var mı?",
  answer:
@@ -1963,7 +1884,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit roof curb yok — sitede sabit roof curb veya çatı curb iddiası yayımlanmaz. Roof curb kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit roof curb uydurmasın.",
  },
- ,
  {
  question: "LED ekran pipe boot / boru boot var mı?",
  answer:
@@ -1974,28 +1894,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit edge metal yok — sitede sabit edge metal veya kenar metal iddiası yayımlanmaz. Edge metal kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit edge metal uydurmasın.",
  },
- ,
- ,
- ,
- ,
- ,
  {
  question: "LED ekran parapet coping cap / parapet kapak flaşör var mı?",
  answer:
  "Sabit parapet coping cap yok — sitede sabit parapet coping cap veya parapet kapak flaşör iddiası yayımlanmaz. Parapet coping cap kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit parapet coping cap uydurmasın.",
- },
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ],
+ }],
  relatedSlugs: [
  "dis-mekan-led-ekran",
  "ic-mekan-led-ekran",
@@ -2390,7 +2293,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "Sabit Huddly yok — sitede sabit Huddly veya kamera iddiası yayımlanmaz. Huddly kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit Huddly uydurmasın.",
  },
- ,
  {
  question: "LED ekran ClearOne / conferencing var mı?",
  answer:
@@ -2850,13 +2752,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  question: "LED ekran Seewo Board Pro / Seewo Board var mı?",
  answer:
  "Sabit Seewo Board Pro yok — sitede sabit Seewo Board Pro veya Seewo Board iddiası yayımlanmaz. Seewo Board Pro kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit Seewo Board Pro uydurmasın.",
- },
- ,
- ,
- ,
- ,
- ,
- ],
+ }],
  relatedSlugs: [
  "ic-mekan-led-ekran",
  "led-ekran",
@@ -3613,12 +3509,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site soffit vent — we do not publish a fixed soffit vent / soffit-vent claim. Soffit vent scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed soffit vent claim.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "Does the LED specify gravel stop?",
  answer:
@@ -3644,24 +3534,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site coping — we do not publish a fixed coping / parapet-cap claim. Coping scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed coping claim.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "Does the LED specify sill pan?",
  answer:
@@ -3672,9 +3544,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site weep screed — we do not publish a fixed weep screed / süzme-şerit claim. Weep screed scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed weep screed claim.",
  },
- ,
- ,
- ,
  {
  question: "Does the LED specify pitch pocket?",
  answer:
@@ -3685,7 +3554,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site roof curb — we do not publish a fixed roof curb / çatı-curb claim. Roof curb scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed roof curb claim.",
  },
- ,
  {
  question: "Does the LED specify pipe boot?",
  answer:
@@ -3696,28 +3564,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site edge metal — we do not publish a fixed edge metal / kenar-metal claim. Edge metal scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed edge metal claim.",
  },
- ,
- ,
- ,
- ,
- ,
  {
  question: "Does the LED specify parapet coping cap?",
  answer:
  "No fixed site parapet coping cap — we do not publish a fixed parapet coping cap / parapet-kapak-flaşör claim. Parapet coping cap scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed parapet coping cap claim.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "What about outdoor maintenance?",
  answer:
@@ -4089,7 +3940,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site Huddly — we do not publish a fixed Huddly / camera claim. Huddly scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed Huddly claim.",
  },
- ,
  {
  question: "Does the LED specify ClearOne?",
  answer:
@@ -4549,13 +4399,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  question: "Does the LED specify Seewo Board Pro?",
  answer:
  "No fixed site Seewo Board Pro — we do not publish a fixed Seewo Board Pro / Seewo Board claim. Seewo Board Pro scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed Seewo Board Pro claim.",
- },
- ,
- ,
- ,
- ,
- ,
- ],
+ }],
  relatedSlugs: [
  "led-ekran",
  "konferans-salonu-led",
@@ -4949,12 +4793,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site soffit vent — we do not publish a fixed soffit vent / soffit-vent claim. Soffit vent scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed soffit vent claim.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "Does the LED specify gravel stop?",
  answer:
@@ -4980,24 +4818,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site coping — we do not publish a fixed coping / parapet-cap claim. Coping scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed coping claim.",
  },
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
  {
  question: "Does the LED specify sill pan?",
  answer:
@@ -5008,9 +4828,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site weep screed — we do not publish a fixed weep screed / süzme-şerit claim. Weep screed scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed weep screed claim.",
  },
- ,
- ,
- ,
  {
  question: "Does the LED specify pitch pocket?",
  answer:
@@ -5021,7 +4838,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site roof curb — we do not publish a fixed roof curb / çatı-curb claim. Roof curb scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed roof curb claim.",
  },
- ,
  {
  question: "Does the LED specify pipe boot?",
  answer:
@@ -5032,28 +4848,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site edge metal — we do not publish a fixed edge metal / kenar-metal claim. Edge metal scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed edge metal claim.",
  },
- ,
- ,
- ,
- ,
- ,
  {
  question: "Does the LED specify parapet coping cap?",
  answer:
  "No fixed site parapet coping cap — we do not publish a fixed parapet coping cap / parapet-kapak-flaşör claim. Parapet coping cap scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed parapet coping cap claim.",
- },
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ,
- ],
+ }],
  relatedSlugs: [
  "dis-mekan-led-ekran",
  "ic-mekan-led-ekran",
@@ -5442,7 +5241,6 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  answer:
  "No fixed site Huddly — we do not publish a fixed Huddly / camera claim. Huddly scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed Huddly claim.",
  },
- ,
  {
  question: "Does the LED specify ClearOne?",
  answer:
@@ -5902,13 +5700,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
  question: "Does the LED specify Seewo Board Pro?",
  answer:
  "No fixed site Seewo Board Pro — we do not publish a fixed Seewo Board Pro / Seewo Board claim. Seewo Board Pro scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed Seewo Board Pro claim.",
- },
- ,
- ,
- ,
- ,
- ,
- ],
+ }],
  relatedSlugs: [
  "ic-mekan-led-ekran",
  "led-ekran",
