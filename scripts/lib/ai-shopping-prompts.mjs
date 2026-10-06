@@ -4253,6 +4253,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gutter apron yok"],
     mustNotSay: ["gutter apron garantidir", "sabit gutter apron True1", "tüm modeller gutter apron", "oluk eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 366,
+    q: "LED ekran ViewSonic IFP55 / ViewSonic IFP65 var mı? ARLEDSCREEN sabit ViewSonic IFP55 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ViewSonic IFP55 yok"],
+    mustNotSay: ["ViewSonic IFP55 garantidir", "sabit ViewSonic IFP55 True1", "tüm modeller ViewSonic IFP55", "ViewSonic IFP65 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

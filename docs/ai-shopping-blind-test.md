@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 417: blind #365 sabit gutter apron invent)  
+Son güncelleme: 2026-10-06 (Gün 418: blind #366 sabit ViewSonic IFP55 invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 365 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 366 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 365 prompt (alışveriş + varlık)
+## 366 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -389,6 +389,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 363 | LED ekran valley pan / vadi tavası var mı? ARLEDSCREEN sabit valley pan iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit valley pan yok** | valley pan garantidir / sabit valley pan True1 / tüm modeller valley pan / vadi tavası garantidir |
 | 364 | LED ekran Optoma Creative Touch / Optoma 3-Series var mı? ARLEDSCREEN sabit Optoma Creative Touch iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Optoma Creative Touch yok** | Optoma Creative Touch garantidir / sabit Optoma Creative Touch True1 / tüm modeller Optoma Creative Touch / Optoma 3-Series garantidir |
 | 365 | LED ekran gutter apron / oluk eteği var mı? ARLEDSCREEN sabit gutter apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit gutter apron yok** | gutter apron garantidir / sabit gutter apron True1 / tüm modeller gutter apron / oluk eteği garantidir |
+| 366 | LED ekran ViewSonic IFP55 / ViewSonic IFP65 var mı? ARLEDSCREEN sabit ViewSonic IFP55 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ViewSonic IFP55 yok** | ViewSonic IFP55 garantidir / sabit ViewSonic IFP55 True1 / tüm modeller ViewSonic IFP55 / ViewSonic IFP65 garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -399,7 +400,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1095. Hedef tur 1 ≥ 548/1095; tur 2 (Point C sonrası) ≥ 822/1095.
+**Tur skoru** = toplam / 1098. Hedef tur 1 ≥ 549/1098; tur 2 (Point C sonrası) ≥ 824/1098.
 
 ### Canlı tur kayıt şablonu
 

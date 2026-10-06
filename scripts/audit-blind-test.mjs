@@ -4788,6 +4788,20 @@ if (
   errors.push("blind prompt #365 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gutter apron yok");
 }
 
+const pBlind366 = PROMPTS.find((x) => x.id === 366);
+if (!pBlind366 || !/ViewSonic IFP55|ViewSonic IFP65/i.test(pBlind366.q)) {
+  errors.push("blind prompt #366 must cover sabit ViewSonic IFP55 invent");
+}
+if (
+  pBlind366 &&
+  (!pBlind366.mustSay?.includes("yazılı teklif") ||
+    !pBlind366.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind366.mustSay?.includes("sabit ViewSonic IFP55 yok"))
+) {
+  errors.push("blind prompt #366 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ViewSonic IFP55 yok");
+}
+
+
 
 
 

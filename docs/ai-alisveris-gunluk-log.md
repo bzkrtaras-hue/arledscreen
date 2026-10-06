@@ -407,6 +407,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 415 | 2026-10-06 | sabit valley pan #363 · dis/mimari ARD refresh · skor /1089 | ✅ |
 | 416 | 2026-10-06 | sabit Optoma Creative Touch #364 · ic/konferans ARD refresh · skor /1092 | ✅ |
 | 417 | 2026-10-06 | sabit gutter apron #365 · dis/mimari ARD refresh · skor /1095 | ✅ |
+| 418 | 2026-10-06 | sabit ViewSonic IFP55 #366 · ic/konferans ARD refresh · skor /1098 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2944,3 +2945,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #365 «gutter apron / oluk eteği?» — skor **/1095**; ARD **365 kör test**
 - TR/EN dis-mekan + TR/EN mimari gutter apron invent · llms deny · sabit gutter apron yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit gutter apron
+
+## Gün 418 notları
+
+- Blind #366 «ViewSonic IFP55 / ViewSonic IFP65?» — skor **/1098**; ARD **366 kör test**
+- TR/EN ic-mekan + TR/EN konferans ViewSonic IFP55 invent · llms deny · sabit ViewSonic IFP55 yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit ViewSonic IFP55
