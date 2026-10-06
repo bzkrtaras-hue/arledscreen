@@ -1,6 +1,6 @@
-## Gün 511 — invent Blind #459 blade sign
+## Gün 511 — invent Blind #459 blade sign LIVE
 
-- Blind #459 blade sign / bıçak tabela · dis/mimari · prompts=459 · /1377 · build pending
+- Blind #459 blade sign / bıçak tabela · dis/mimari · prompts=459 · /1377 · CF deploy · smoke:live 20/20
 - sahibe iş yok
 
 ## Gün 510 — invent Blind #458 Bose VB1 LIVE
