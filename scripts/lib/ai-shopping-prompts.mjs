@@ -3089,6 +3089,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Avocor yok"],
     mustNotSay: ["Avocor garantidir", "sabit Avocor True1", "tüm modeller Avocor", "collaboration display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 269,
+    q: "LED ekran rake cleat / saçak kleyt var mı? ARLEDSCREEN sabit rake cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rake cleat yok"],
+    mustNotSay: ["rake cleat garantidir", "sabit rake cleat True1", "tüm modeller rake cleat", "saçak kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
