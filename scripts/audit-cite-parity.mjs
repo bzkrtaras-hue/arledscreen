@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–94: ARD discovery prompt count must not drift behind blind suite
+// Day 74–95: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/94 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 94 kör test intent (not stale 17–93)");
+if (ardTxt && !/95 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 95 kör test intent (not stale 17–94)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–93 kör test without 94");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–94 kör test without 95");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1412,6 +1412,21 @@ for (const rel of [
   }
   if (/enerji sınıfı garantidir|sabit energy class|tüm modeller energy class|energy class garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit enerji sınıfı`);
+  }
+}
+
+// Day 147: sabit düşük mavi ışık / low blue light — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit düşük mavi ışık yok|no fixed site low-blue-light/i.test(html)) {
+    errors.push(`${rel} should hedge sabit düşük mavi ışık / low blue light`);
+  }
+  if (/düşük mavi ışık garantidir|sabit low blue light|tüm modeller low blue light|low blue light garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit düşük mavi ışık`);
   }
 }
 

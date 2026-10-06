@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 94) errors.push(`blindTestPrompts must be 94 (got ${prompts.length})`);
+if (prompts.length !== 95) errors.push(`blindTestPrompts must be 95 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/94 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 94 kör test intent");
+if (!/95 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 95 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–93 kör test without 94");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–94 kör test without 95");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -833,6 +833,15 @@ if (!p94 || !/enerji sınıfı|energy class/i.test(p94.q || "")) {
 }
 if (!/enerji sınıfı|energy class|sabit enerji sınıfı/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit enerji sınıfı invent");
+}
+
+// Day 147: sabit düşük mavi ışık / low blue light invent
+const p95 = (doc.blindTestPrompts || []).find((p) => p.id === 95);
+if (!p95 || !/düşük mavi ışık|low blue light/i.test(p95.q || "")) {
+  errors.push("blindTestPrompts #95 must cover sabit düşük mavi ışık invent");
+}
+if (!/düşük mavi ışık|low blue light|sabit düşük mavi ışık/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit düşük mavi ışık invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

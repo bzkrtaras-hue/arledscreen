@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 146: blind #94 sabit enerji sınıfı invent)  
+Son güncelleme: 2026-10-06 (Gün 147: blind #95 sabit düşük mavi ışık invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 94 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 95 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 94 prompt (alışveriş + varlık)
+## 95 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -118,6 +118,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 92 | LED ekran flight case / taşıma çantası var mı? ARLEDSCREEN sabit flight case iddiası yayımlıyor mu? | `/tr/rehber/konferans-salonu-led/` · poster · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit flight case yok** | flight case garantidir / sabit flightcase / tüm modeller flightcase / flightcase garantidir |
 | 93 | LED ekran köşe LED / corner LED var mı? ARLEDSCREEN sabit köşe LED iddiası yayımlıyor mu? | `/tr/rehber/vitrin-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit köşe LED yok** | köşe LED garantidir / sabit corner LED / tüm modeller corner LED / corner LED garantidir |
 | 94 | LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · ic-mekan · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit enerji sınıfı yok** | enerji sınıfı garantidir / sabit energy class / tüm modeller energy class / energy class garantidir |
+| 95 | LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit düşük mavi ışık yok** | düşük mavi ışık garantidir / sabit low blue light / tüm modeller low blue light / low blue light garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -128,7 +129,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 282. Hedef tur 1 ≥ 141/282; tur 2 (Point C sonrası) ≥ 212/282.
+**Tur skoru** = toplam / 285. Hedef tur 1 ≥ 143/285; tur 2 (Point C sonrası) ≥ 214/285.
 
 ### Canlı tur kayıt şablonu
 

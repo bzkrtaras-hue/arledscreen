@@ -136,6 +136,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 144 | 2026-10-06 | sabit flight case #92 · konferans/kiralik ARD refresh · skor /276 | ✅ |
 | 145 | 2026-10-06 | sabit köşe LED #93 · vitrin/mimari ARD refresh · skor /279 | ✅ |
 | 146 | 2026-10-06 | sabit enerji sınıfı #94 · dis/ic ARD refresh · skor /282 | ✅ |
+| 147 | 2026-10-06 | sabit düşük mavi ışık #95 · ic/konferans ARD refresh · skor /285 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -995,3 +996,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN ic-mekan enerji sınıfı invent · llms deny · sabit enerji sınıfı yok
 - ARD refresh: rehber dis/ic + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit enerji sınıfı
 - skor hedef Tur 1 ≥ 141/282 · Tur 2 ≥ 212/282
+
+## Gün 147 notları
+
+- Blind #95 «düşük mavi ışık / low blue light?» — skor **/285**; ARD **95 kör test**
+- TR/EN ic-mekan + TR/EN konferans düşük mavi ışık invent · llms deny · sabit düşük mavi ışık yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit düşük mavi ışık
+- skor hedef Tur 1 ≥ 143/285 · Tur 2 ≥ 214/285

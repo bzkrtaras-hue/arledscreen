@@ -1001,6 +1001,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit enerji sınıfı yok"],
     mustNotSay: ["enerji sınıfı garantidir", "sabit energy class", "tüm modeller energy class", "energy class garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 95,
+    q: "LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit düşük mavi ışık yok"],
+    mustNotSay: ["düşük mavi ışık garantidir", "sabit low blue light", "tüm modeller low blue light", "low blue light garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
