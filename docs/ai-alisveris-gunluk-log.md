@@ -146,6 +146,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 154 | 2026-10-06 | sabit PWM/scan rate #102 · ic/konferans ARD refresh · skor /306 | ✅ |
 | 155 | 2026-10-06 | sabit black level #103 · ic/konferans ARD refresh · skor /309 | ✅ |
 | 156 | 2026-10-06 | sabit pixel mapping #104 · ic/konferans ARD refresh · skor /312 | ✅ |
+| 157 | 2026-10-06 | sabit gamma/white balance #105 · ic/konferans ARD refresh · skor /315 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1075,4 +1076,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans pixel mapping invent · llms deny · sabit pixel mapping yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit pixel mapping
 - skor hedef Tur 1 ≥ 156/312 · Tur 2 ≥ 234/312
+
+## Gün 157 notları
+
+- Blind #105 «gamma / white balance / beyaz dengesi?» — skor **/315**; ARD **105 kör test**
+- TR/EN ic-mekan + TR/EN konferans gamma invent · llms deny · sabit gamma yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit gamma
+- skor hedef Tur 1 ≥ 158/315 · Tur 2 ≥ 237/315
 

@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 104) errors.push(`blindTestPrompts must be 104 (got ${prompts.length})`);
+if (prompts.length !== 105) errors.push(`blindTestPrompts must be 105 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/104 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 104 kör test intent");
+if (!/105 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 105 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–103 kör test without 104");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–104 kör test without 105");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -923,6 +923,15 @@ if (!p104 || !/pixel mapping|piksel eşleme/i.test(p104.q || "")) {
 }
 if (!/pixel mapping|piksel eşleme|sabit pixel mapping/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit pixel mapping invent");
+}
+
+// Day 157: sabit gamma / white balance invent
+const p105 = (doc.blindTestPrompts || []).find((p) => p.id === 105);
+if (!p105 || !/gamma|white balance|beyaz dengesi/i.test(p105.q || "")) {
+  errors.push("blindTestPrompts #105 must cover sabit gamma invent");
+}
+if (!/gamma|white balance|beyaz dengesi|sabit gamma/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit gamma invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

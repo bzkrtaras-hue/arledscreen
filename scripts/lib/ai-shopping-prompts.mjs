@@ -1121,6 +1121,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit pixel mapping yok"],
     mustNotSay: ["pixel mapping garantidir", "sabit piksel eşleme", "tüm modeller pixel mapping", "piksel eşleme garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 105,
+    q: "LED ekran gamma / white balance / beyaz dengesi var mı? ARLEDSCREEN sabit gamma iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gamma yok"],
+    mustNotSay: ["gamma garantidir", "sabit white balance", "tüm modeller white balance", "white balance garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

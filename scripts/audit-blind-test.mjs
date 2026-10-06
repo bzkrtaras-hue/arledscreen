@@ -1369,6 +1369,19 @@ if (
   errors.push("blind prompt #104 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pixel mapping yok");
 }
 
+const pBlind105 = PROMPTS.find((x) => x.id === 105);
+if (!pBlind105 || !/gamma|white balance|beyaz dengesi/i.test(pBlind105.q)) {
+  errors.push("blind prompt #105 must cover sabit gamma invent");
+}
+if (
+  pBlind105 &&
+  (!pBlind105.mustSay?.includes("yazılı teklif") ||
+    !pBlind105.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind105.mustSay?.includes("sabit gamma yok"))
+) {
+  errors.push("blind prompt #105 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gamma yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
