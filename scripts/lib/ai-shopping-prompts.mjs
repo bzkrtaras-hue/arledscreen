@@ -749,6 +749,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit NDI yok"],
     mustNotSay: ["NDI garantidir", "sabit SRT", "tüm modeller RTMP", "RTMP garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 74,
+    q: "LED ekran ön servis / arka servis mi? ARLEDSCREEN sabit ön servis veya rear service iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ön servis yok"],
+    mustNotSay: ["ön servis garantidir", "sabit arka servis", "tüm modeller ön servis", "front service garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

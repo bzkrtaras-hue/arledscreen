@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 73) errors.push(`blindTestPrompts must be 73 (got ${prompts.length})`);
+if (prompts.length !== 74) errors.push(`blindTestPrompts must be 74 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/73 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 73 kör test intent");
+if (!/74 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 74 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-2]) kör test/i.test(ard) && !/73 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–72 kör test without 73");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-3]) kör test/i.test(ard) && !/74 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–73 kör test without 74");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -644,6 +644,15 @@ if (!p73 || !/NDI|SRT|RTMP/i.test(p73.q || "")) {
 }
 if (!/NDI|SRT|RTMP|sabit NDI/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit NDI / SRT / RTMP invent");
+}
+
+// Day 126: sabit ön / arka servis invent
+const p74 = (doc.blindTestPrompts || []).find((p) => p.id === 74);
+if (!p74 || !/ön servis|arka servis|front|rear/i.test(p74.q || "")) {
+  errors.push("blindTestPrompts #74 must cover sabit ön/arka servis invent");
+}
+if (!/ön servis|arka servis|front service|rear service|sabit ön servis/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit ön/arka servis invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

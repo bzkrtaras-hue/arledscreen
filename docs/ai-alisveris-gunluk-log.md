@@ -115,6 +115,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 123 | 2026-10-06 | sabit genlock #71 · TR bolgeler istanbul/antalya/bursa ARD · skor /213 | ✅ |
 | 124 | 2026-10-06 | sabit Art-Net/DMX #72 · TR bolgeler izmir/eskisehir/manisa ARD · skor /216 | ✅ |
 | 125 | 2026-10-06 | sabit NDI/SRT/RTMP #73 · TR bolgeler aksaray/van/yozgat ARD · skor /219 | ✅ |
+| 126 | 2026-10-06 | sabit ön/arka servis #74 · TR bolgeler giresun/yalova/nigde ARD · skor /222 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -826,3 +827,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR/EN kiosk NDI invent · llms deny · sabit NDI yok
 - ARD: TR bolgeler aksaray/van/yozgat (gerçek bölge hub; 81-il kapısı değil) · IndexNow +3 · agentRules sabit NDI
 - skor hedef Tur 1 ≥ 110/219 · Tur 2 ≥ 165/219
+
+## Gün 126 notları
+
+- Blind #74 «ön servis / arka servis?» — skor **/222**; ARD **74 kör test**
+- TR/EN ic-mekan + TR/EN mimari ön/arka servis invent · llms deny · sabit ön servis yok
+- ARD: TR bolgeler giresun/yalova/nigde (gerçek bölge hub; 81-il kapısı değil) · IndexNow +3 · agentRules sabit ön servis
+- skor hedef Tur 1 ≥ 111/222 · Tur 2 ≥ 167/222
