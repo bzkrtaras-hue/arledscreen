@@ -446,6 +446,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 454 | 2026-10-06 | sabit Yealink MeetingBoard 86 #402 · ic/konferans ARD refresh · skor /1206 | ✅ |
 | 455 | 2026-10-06 | sabit gable apron #403 · dis/mimari ARD refresh · skor /1209 | ✅ |
 | 456 | 2026-10-06 | sabit Surface Hub 3 #404 · ic/konferans ARD refresh · skor /1212 | ✅ |
+| 457 | 2026-10-06 | sabit base apron #405 · dis/mimari ARD refresh · skor /1215 | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti
@@ -3234,3 +3235,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `verify:premerge` GREEN = yalnızca `cursor/ai-alisveris-katalog-5666` (PR #55); üretim değil
 - IndexNow: canlıda değişen URL yok → bildirim işe yaramaz; kör tur yok; Blind #N sayaç
 - Sonraki değerli adım: PR #55 **Ready → merge → CF Pages redeploy** → `smoke:live` → sonra IndexNow / Point C / kör tur
+
+## Gün 457 notları
+
+- Blind #405 «base apron / taban eteği?» — skor **/1215**; ARD **405 kör test**
+- TR/EN dis-mekan + TR/EN mimari base apron invent · llms deny · sabit base apron yok
+- ARD refresh: rehber dis/mimari + priced gob · agentRules sabit base apron

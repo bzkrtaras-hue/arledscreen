@@ -4721,6 +4721,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Surface Hub 3 yok"],
     mustNotSay: ["Surface Hub 3 garantidir", "sabit Surface Hub 3 True1", "tüm modeller Surface Hub 3", "Hub 3 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 405,
+    q: "LED ekran base apron / taban eteği var mı? ARLEDSCREEN sabit base apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit base apron yok"],
+    mustNotSay: ["base apron garantidir", "sabit base apron True1", "tüm modeller base apron", "taban eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

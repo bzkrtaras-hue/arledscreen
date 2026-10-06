@@ -5295,6 +5295,20 @@ if (
   errors.push("blind prompt #404 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Surface Hub 3 yok");
 }
 
+const pBlind405 = PROMPTS.find((x) => x.id === 405);
+if (!pBlind405 || !/base apron|taban eteği/i.test(pBlind405.q)) {
+  errors.push("blind prompt #405 must cover sabit base apron invent");
+}
+if (
+  pBlind405 &&
+  (!pBlind405.mustSay?.includes("yazılı teklif") ||
+    !pBlind405.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind405.mustSay?.includes("sabit base apron yok"))
+) {
+  errors.push("blind prompt #405 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base apron yok");
+}
+
+
 
 
 
