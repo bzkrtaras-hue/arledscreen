@@ -4613,6 +4613,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cap apron yok"],
     mustNotSay: ["cap apron garantidir", "sabit cap apron True1", "tüm modeller cap apron", "kapak eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 396,
+    q: "LED ekran Poly Studio X70 / Poly X70 var mı? ARLEDSCREEN sabit Poly Studio X70 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Poly Studio X70 yok"],
+    mustNotSay: ["Poly Studio X70 garantidir", "sabit Poly Studio X70 True1", "tüm modeller Poly Studio X70", "Poly X70 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -5178,6 +5178,20 @@ if (
   errors.push("blind prompt #395 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cap apron yok");
 }
 
+const pBlind396 = PROMPTS.find((x) => x.id === 396);
+if (!pBlind396 || !/Poly Studio X70|Poly X70/i.test(pBlind396.q)) {
+  errors.push("blind prompt #396 must cover sabit Poly Studio X70 invent");
+}
+if (
+  pBlind396 &&
+  (!pBlind396.mustSay?.includes("yazılı teklif") ||
+    !pBlind396.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind396.mustSay?.includes("sabit Poly Studio X70 yok"))
+) {
+  errors.push("blind prompt #396 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Poly Studio X70 yok");
+}
+
+
 
 
 

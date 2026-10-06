@@ -437,6 +437,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 445 | 2026-10-06 | sabit valley apron #393 · dis/mimari ARD refresh · skor /1179 | ✅ |
 | 446 | 2026-10-06 | sabit DTEN Bar Plus #394 · ic/konferans ARD refresh · skor /1182 | ✅ |
 | 447 | 2026-10-06 | sabit cap apron #395 · dis/mimari ARD refresh · skor /1185 | ✅ |
+| 448 | 2026-10-06 | sabit Poly Studio X70 #396 · ic/konferans ARD refresh · skor /1188 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3154,3 +3155,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #395 «cap apron / kapak eteği?» — skor **/1185**; ARD **395 kör test**
 - TR/EN dis-mekan + TR/EN mimari cap apron invent · llms deny · sabit cap apron yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit cap apron
+
+## Gün 448 notları
+
+- Blind #396 «Poly Studio X70 / Poly X70?» — skor **/1188**; ARD **396 kör test**
+- TR/EN ic-mekan + TR/EN konferans Poly Studio X70 invent · llms deny · sabit Poly Studio X70 yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Poly Studio X70
