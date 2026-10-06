@@ -4164,6 +4164,20 @@ if (
   errors.push("blind prompt #317 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sill pan yok");
 }
 
+const pBlind318 = PROMPTS.find((x) => x.id === 318);
+if (!pBlind318 || !/SMART Board GX|SMART Board MX/i.test(pBlind318.q)) {
+  errors.push("blind prompt #318 must cover sabit SMART Board GX invent");
+}
+if (
+  pBlind318 &&
+  (!pBlind318.mustSay?.includes("yazılı teklif") ||
+    !pBlind318.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind318.mustSay?.includes("sabit SMART Board GX yok"))
+) {
+  errors.push("blind prompt #318 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SMART Board GX yok");
+}
+
+
 
 
 

@@ -3677,6 +3677,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit sill pan yok"],
     mustNotSay: ["sill pan garantidir", "sabit sill pan True1", "tüm modeller sill pan", "eşik tavası garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 318,
+    q: "LED ekran SMART Board GX / SMART Board MX var mı? ARLEDSCREEN sabit SMART Board GX iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit SMART Board GX yok"],
+    mustNotSay: ["SMART Board GX garantidir", "sabit SMART Board GX True1", "tüm modeller SMART Board GX", "SMART Board MX garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

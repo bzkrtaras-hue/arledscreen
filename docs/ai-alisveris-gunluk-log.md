@@ -359,6 +359,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 367 | 2026-10-06 | sabit gutter cleat #315 · dis/mimari ARD refresh · skor /945 | ✅ |
 | 368 | 2026-10-06 | sabit Promethean ActivPanel #316 · ic/konferans ARD refresh · skor /948 | ✅ |
 | 369 | 2026-10-06 | sabit sill pan #317 · dis/mimari ARD refresh · skor /951 | ✅ |
+| 370 | 2026-10-06 | sabit SMART Board GX #318 · ic/konferans ARD refresh · skor /954 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2608,3 +2609,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #317 «sill pan / eşik tavası?» — skor **/951**; ARD **317 kör test**
 - TR/EN dis-mekan + TR/EN mimari sill pan invent · llms deny · sabit sill pan yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit sill pan
+
+## Gün 370 notları
+
+- Blind #318 «SMART Board GX / SMART Board MX?» — skor **/954**; ARD **318 kör test**
+- TR/EN ic-mekan + TR/EN konferans SMART Board GX invent · llms deny · sabit SMART Board GX yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit SMART Board GX
