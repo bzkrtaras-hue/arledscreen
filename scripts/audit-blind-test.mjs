@@ -1395,6 +1395,19 @@ if (
   errors.push("blind prompt #106 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit potting yok");
 }
 
+const pBlind107 = PROMPTS.find((x) => x.id === 107);
+if (!pBlind107 || !/louver|masking|güneş panjuru/i.test(pBlind107.q)) {
+  errors.push("blind prompt #107 must cover sabit louver invent");
+}
+if (
+  pBlind107 &&
+  (!pBlind107.mustSay?.includes("yazılı teklif") ||
+    !pBlind107.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind107.mustSay?.includes("sabit louver yok"))
+) {
+  errors.push("blind prompt #107 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit louver yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

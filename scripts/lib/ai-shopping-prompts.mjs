@@ -1145,6 +1145,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit potting yok"],
     mustNotSay: ["potting garantidir", "sabit epoxy potting", "tüm modeller potting", "epoxy potting garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 107,
+    q: "LED ekran louver / masking / güneş panjuru var mı? ARLEDSCREEN sabit louver iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit louver yok"],
+    mustNotSay: ["louver garantidir", "sabit masking", "tüm modeller masking", "masking garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
