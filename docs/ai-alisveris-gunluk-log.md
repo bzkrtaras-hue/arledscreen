@@ -496,6 +496,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 458d | 2026-10-06 | Tur 1a P0 20-prompt skor kartı · sameAs 200 · arleds TLS fail · invent yok | ✅ |
 | 458e | 2026-10-06 | point-c-paste-bundle.md canlı pack · Tur1a/PointC sahip · invent yok | ✅ |
 | 458f | 2026-10-06 | Point C Drive Doc link · paste-bundle · invent/deploy/merge yok · PR draft | ✅ |
+| 458g | 2026-10-06 | Host/smoke/JSON KAPALI · invent-URL 404 beklenen · sahip: Point C+Tur1a+arleds | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti

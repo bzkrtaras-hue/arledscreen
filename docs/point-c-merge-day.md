@@ -3,10 +3,15 @@
 Hedef: PR #55 deploy olduktan **aynı gün** canlı AI yüzeyleri + bağımsız atıf başlasın.
 Spam blog / 81-il yok. Kaynak: [`entity-profiles.json`](https://arledscreen.com/entity-profiles.json) · playbook: [`offsite-entity-playbook.md`](./offsite-entity-playbook.md)
 
-**Durum (2026-10-06 doğrulama):** Canlı AI JSON **GET 200** (entity/catalog/ai-shopping/ard/profiles). `robots.txt` 3× GET: `cf-cache-status: BYPASS` · `Host: arledscreen.com` (şemasız). `smoke:live` 20/20 (araç; canlı AI anılması değil). PR #55 **draft**; yeni invent yok; merge Point C paste için zorunlu değil. 
-**arleds.com (2026-10-06):** `https://arleds.com/` TLS bağlantı hatası (SSL_ERROR_SYSCALL) — 301 doğrulanamadı. `sameAs`’a ekleme; `blockedUntil301` duruyor. Instagram/Facebook/LinkedIn sameAs canlı **200**.
+**Durum (2026-10-06 kapanış — ajan tamamlayabildikleri):**
+- Canlı AI JSON **GET 200**: entity / catalog / ai-shopping / ard / profiles / ai-catalog
+- `robots.txt` 3×: `cf-cache-status: BYPASS` · `Host: arledscreen.com` — **Host turu KAPALI**
+- `smoke:live` **20/20 PASS** · CI tip success · invent hedge = prompt/agentRules (sayfa URL 404 beklenen, kırık değil)
+- PR #55 ready for review; merge sahip onayı (Point C paste merge beklemez)
 
-**Sahip sırası (şimdi):** (1) Point C paste GBP→LinkedIn→IG→FB→directory (packs: https://arledscreen.com/entity-profiles.json) (2) Kör tur 1 skor kartı `docs/ai-shopping-blind-test-scores.md` (3) Tur 2 Point C sonrası ≤2026-11-04.
+**Hâlâ sahip (ajan kapatamaz):** (1) Point C paste GBP→LI→IG→FB — Drive https://docs.google.com/document/d/1JCU3RoL-ZJeOBHl73LRPrxRijDKD4FYdUscBKGOY1jc/edit · packs https://arledscreen.com/entity-profiles.json (2) Tur 1a skor kartı (uydurma skor yok) (3) `arleds.com` 301 — CF zone’da yok; TLS timeout; `blockedUntil301`
+
+**arleds.com (2026-10-06):** SSL timeout — 301 yok. `sameAs`’a ekleme. IG/FB/LI sameAs URL’leri **200**.
 
 Pre-merge (opsiyonel, zaten yeşil olmalı):
 
@@ -15,11 +20,12 @@ npm run build          # postbuild audits + smoke:local
 npm run verify:premerge
 ```
 
-## 0) Canlı kapı (doğrulandı — merge zorunlu değil)
+## 0) Canlı kapı (KAPALI — ajan; merge zorunlu değil)
 
 1. AI JSON canlı **200** (üretim deploy zaten servis ediyor)
-2. Point C paste **şimdi** yapılabilir — merge beklemeyin
-3. PR #55 draft: ek invent/hedge birleşmesi isteğe bağlı; Point C’yi bloklamaz
+2. robots Host bare 3× BYPASS — tur kapalı
+3. Point C paste **şimdi** yapılabilir — merge beklemeyin
+4. Invent hedge sayfaları yok (prompt/agentRules); URL 404 beklenen
 
 ## 1) Canlı smoke (zorunlu)
 
@@ -75,7 +81,8 @@ Dokümantasyon: [`indexnow.md`](./indexnow.md)
 
 Canlı pack kaynağı: `npm run point-c-packs -- --live` veya https://arledscreen.com/entity-profiles.json
 
-Canlı tek dosya yapıştırma: [`point-c-paste-bundle.md`](./point-c-paste-bundle.md) (üretim `entity-profiles.json` çekimi).
+Canlı tek dosya yapıştırma: [`point-c-paste-bundle.md`](./point-c-paste-bundle.md) (üretim `entity-profiles.json` çekimi).  
+**Drive Doc:** https://docs.google.com/document/d/1JCU3RoL-ZJeOBHl73LRPrxRijDKD4FYdUscBKGOY1jc/edit
 
 
 1. **Google Business Profile** → `packs.gbpDescription` (NAP birebir)
