@@ -946,6 +946,19 @@ if (
 ) {
   errors.push("blind prompt #72 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Art-Net yok");
 }
+
+const pBlind73 = PROMPTS.find((x) => x.id === 73);
+if (!pBlind73 || !/NDI|SRT|RTMP/i.test(pBlind73.q)) {
+  errors.push("blind prompt #73 must cover sabit NDI / SRT / RTMP invent");
+}
+if (
+  pBlind73 &&
+  (!pBlind73.mustSay?.includes("yazılı teklif") ||
+    !pBlind73.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind73.mustSay?.includes("sabit NDI yok"))
+) {
+  errors.push("blind prompt #73 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit NDI yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

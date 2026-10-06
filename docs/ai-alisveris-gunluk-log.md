@@ -114,6 +114,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 122 | 2026-10-06 | sabit dual power #70 · TR esnek p1-86/p2-5 + Colorlight x40m ARD · skor /210 | ✅ |
 | 123 | 2026-10-06 | sabit genlock #71 · TR bolgeler istanbul/antalya/bursa ARD · skor /213 | ✅ |
 | 124 | 2026-10-06 | sabit Art-Net/DMX #72 · TR bolgeler izmir/eskisehir/manisa ARD · skor /216 | ✅ |
+| 125 | 2026-10-06 | sabit NDI/SRT/RTMP #73 · TR bolgeler aksaray/van/yozgat ARD · skor /219 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -818,3 +819,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR sahne Art-Net invent · llms deny · sabit Art-Net yok
 - ARD: TR bolgeler izmir/eskisehir/manisa (gerçek bölge hub; 81-il kapısı değil) · IndexNow +3 · agentRules sabit Art-Net
 - skor hedef Tur 1 ≥ 108/216 · Tur 2 ≥ 162/216
+
+## Gün 125 notları
+
+- Blind #73 «NDI / SRT / RTMP IP video stream?» — skor **/219**; ARD **73 kör test**
+- TR/EN konferans + TR/EN kiosk NDI invent · llms deny · sabit NDI yok
+- ARD: TR bolgeler aksaray/van/yozgat (gerçek bölge hub; 81-il kapısı değil) · IndexNow +3 · agentRules sabit NDI
+- skor hedef Tur 1 ≥ 110/219 · Tur 2 ≥ 165/219

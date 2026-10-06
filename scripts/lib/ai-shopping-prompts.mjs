@@ -737,6 +737,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Art-Net yok"],
     mustNotSay: ["Art-Net garantidir", "sabit sACN", "tüm modeller DMX", "DMX512 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 73,
+    q: "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/rehber/kiosk-dijital-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit NDI yok"],
+    mustNotSay: ["NDI garantidir", "sabit SRT", "tüm modeller RTMP", "RTMP garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

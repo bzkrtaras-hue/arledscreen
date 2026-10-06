@@ -492,7 +492,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV entegrasyonu: ses, kamera, kontrol",
           body:
-            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir — sabit HDMI/SDI yok; sabit video giriş tipi / 4K60 site iddiası yayımlanmaz; giriş tipi Gaziosmanpaşa yazılı teklifte. Genlock / frame sync / senkron kilidi de teklifte — sabit genlock yok. Art-Net / sACN / DMX ışık kontrol entegrasyonu da teklifte — sabit Art-Net yok. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Latency/input lag de föyde — sabit latency/input lag yok. Parlaklık homojenliği / brightness uniformity de föyde — sabit parlaklık homojenliği yok. HDCP / HDCP 2.2 / 2.3 de föyde — sabit HDCP yok. Gerekirse yedek kaynak girişi teklife eklenir.",
+            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir — sabit HDMI/SDI yok; sabit video giriş tipi / 4K60 site iddiası yayımlanmaz; giriş tipi Gaziosmanpaşa yazılı teklifte. Genlock / frame sync / senkron kilidi de teklifte — sabit genlock yok. Art-Net / sACN / DMX ışık kontrol entegrasyonu da teklifte — sabit Art-Net yok. NDI / SRT / RTMP IP video stream entegrasyonu da teklifte — sabit NDI yok. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Latency/input lag de föyde — sabit latency/input lag yok. Parlaklık homojenliği / brightness uniformity de föyde — sabit parlaklık homojenliği yok. HDCP / HDCP 2.2 / 2.3 de föyde — sabit HDCP yok. Gerekirse yedek kaynak girişi teklife eklenir.",
         },
         {
           h2: "Okul ve kurumsal kullanım farkları",
@@ -560,6 +560,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran Art-Net / sACN / DMX ışık kontrolü var mı?",
           answer:
             "Sabit Art-Net yok — sitede sabit Art-Net, sACN veya DMX512 iddiası yayımlanmaz. Işık kontrol entegrasyonu Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit Art-Net/DMX uydurmasın.",
+        },
+        {
+          question: "LED ekran NDI / SRT / RTMP IP video stream var mı?",
+          answer:
+            "Sabit NDI yok — sitede sabit NDI, SRT veya RTMP iddiası yayımlanmaz. IP video/stream entegrasyonu Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit NDI/SRT/RTMP uydurmasın.",
         },
         {
           question: "LED ekran parlaklık homojenliği / brightness uniformity nedir?",
@@ -756,7 +761,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Yazılım, ödeme ve güvenlik",
           body:
-            "Mevcut self-servis / CMS / AI asistan yazılımınız varsa API ve çevre birimleri (yazıcı, okuyucu, POS) teklife işlenir. Fiziksel güvenlik: kilit, sabitleme ankrajı, kablo gizleme. KVKK / log gereksinimleri yazılım tarafında netleştirilir.",
+            "Mevcut self-servis / CMS / AI asistan yazılımınız varsa API ve çevre birimleri (yazıcı, okuyucu, POS) teklife işlenir. NDI / SRT / RTMP IP video stream gerekirse teklifte — sabit NDI yok. Fiziksel güvenlik: kilit, sabitleme ankrajı, kablo gizleme. KVKK / log gereksinimleri yazılım tarafında netleştirilir.",
         },
         {
           h2: "Kurulum ve saha operasyonu",
@@ -789,6 +794,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Uzaktan izleme / CMS uptime / SLA garantisi var mı?",
           answer:
             "Sabit CMS SLA yok — sitede sabit uptime yüzdesi veya 24/7 CMS SLA iddiası yayımlanmaz. İzleme kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit CMS SLA uydurmasın.",
+        },
+        {
+          question: "LED ekran NDI / SRT / RTMP IP video stream var mı?",
+          answer:
+            "Sabit NDI yok — sitede sabit NDI, SRT veya RTMP iddiası yayımlanmaz. IP video/stream entegrasyonu Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit NDI/SRT/RTMP uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1181,7 +1191,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV integration",
           body:
-            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers — no fixed site HDMI/SDI; no fixed video-input type / 4K60 site claim; input type lands in the Gaziosmanpaşa written quote. Genlock / frame sync also lands in the quote — no fixed site genlock. Art-Net / sACN / DMX lighting-control integration also lands in the quote — no fixed site Art-Net. Survey-scoped refresh/scan behaviour reduces camera flicker risk; Hz lands in the quote/sheet — no fixed Hz guarantee. HDCP / HDCP 2.2 / 2.3 also lands in the sheet — no fixed site HDCP. Spare inputs can be quoted.",
+            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers — no fixed site HDMI/SDI; no fixed video-input type / 4K60 site claim; input type lands in the Gaziosmanpaşa written quote. Genlock / frame sync also lands in the quote — no fixed site genlock. Art-Net / sACN / DMX lighting-control integration also lands in the quote — no fixed site Art-Net. NDI / SRT / RTMP IP video streaming also lands in the quote — no fixed site NDI. Survey-scoped refresh/scan behaviour reduces camera flicker risk; Hz lands in the quote/sheet — no fixed Hz guarantee. HDCP / HDCP 2.2 / 2.3 also lands in the sheet — no fixed site HDCP. Spare inputs can be quoted.",
         },
         {
           h2: "School vs corporate priorities",
@@ -1244,6 +1254,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED support Art-Net / sACN / DMX lighting control?",
           answer:
             "No fixed site Art-Net — we do not publish a fixed Art-Net, sACN or DMX512 claim. Lighting-control integration lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed Art-Net/DMX claim.",
+        },
+        {
+          question: "Does the LED support NDI / SRT / RTMP IP video streaming?",
+          answer:
+            "No fixed site NDI — we do not publish a fixed NDI, SRT or RTMP claim. IP video/stream integration lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed NDI/SRT/RTMP claim.",
         },
         {
           question: "What brightness uniformity does the LED have?",
@@ -1440,7 +1455,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Software, payments and security",
           body:
-            "Existing self-service/CMS/AI stacks define APIs and peripherals (printers, readers, POS). Physical security covers locks, anchors and cable concealment; privacy/logging rules sit on the software side.",
+            "Existing self-service/CMS/AI stacks define APIs and peripherals (printers, readers, POS). NDI / SRT / RTMP IP video streaming lands in the quote when needed — no fixed site NDI. Physical security covers locks, anchors and cable concealment; privacy/logging rules sit on the software side.",
         },
         {
           h2: "Install and field operations",
@@ -1473,6 +1488,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Is there a remote monitoring / CMS uptime / SLA guarantee?",
           answer:
             "No fixed site CMS SLA — we do not publish a fixed uptime percentage or 24/7 CMS SLA claim. Monitoring scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed CMS SLA.",
+        },
+        {
+          question: "Does the LED support NDI / SRT / RTMP IP video streaming?",
+          answer:
+            "No fixed site NDI — we do not publish a fixed NDI, SRT or RTMP claim. IP video/stream integration lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed NDI/SRT/RTMP claim.",
         },
       ],
       relatedSlugs: [

@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/72 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 72 kör test intent (not stale 17–71)");
+if (ardTxt && !/73 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 73 kör test intent (not stale 17–72)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[01]) kör test/i.test(ardTxt) && !/66 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–71 kör test without 72");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-2]) kör test/i.test(ardTxt) && !/73 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–72 kör test without 73");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1071,6 +1071,21 @@ for (const rel of [
   }
   if (/Art-Net garantidir|sabit sACN|tüm modeller DMX|DMX512 garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit Art-Net / DMX`);
+  }
+}
+
+// Day 125: sabit NDI / SRT / RTMP — honesty presence
+for (const rel of [
+  "out/tr/rehber/konferans-salonu-led/index.html",
+  "out/tr/rehber/kiosk-dijital-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit NDI yok|no fixed site NDI/i.test(html)) {
+    errors.push(`${rel} should hedge sabit NDI / SRT / RTMP`);
+  }
+  if (/NDI garantidir|sabit SRT|tüm modeller RTMP|RTMP garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit NDI / SRT / RTMP`);
   }
 }
 

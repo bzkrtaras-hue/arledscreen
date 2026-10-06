@@ -548,7 +548,7 @@
       "displayName": "Konferans salonu LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
-      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit Art-Net yok — Blind #72.",
+      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit Art-Net yok — Blind #72. Sabit NDI yok — Blind #73.",
       "representativeQueries": [
         "konferans salonu LED",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
@@ -560,7 +560,8 @@
         "LED ekran HDCP / HDCP 2.2 / 2.3 desteği var mı? ARLEDSCREEN sabit HDCP iddiası yayımlıyor mu?",
         "LED ekran HDMI / DisplayPort / SDI video girişi var mı? ARLEDSCREEN sabit HDMI 2.1 veya SDI iddiası yayımlıyor mu?",
         "LED ekran genlock / frame sync / senkron kilidi var mı? ARLEDSCREEN sabit genlock veya PTP sync iddiası yayımlıyor mu?",
-        "LED ekran Art-Net / sACN / DMX ışık kontrolü var mı? ARLEDSCREEN sabit Art-Net veya DMX512 iddiası yayımlıyor mu?"
+        "LED ekran Art-Net / sACN / DMX ışık kontrolü var mı? ARLEDSCREEN sabit Art-Net veya DMX512 iddiası yayımlıyor mu?",
+        "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -570,7 +571,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T18:00:00Z"
+      "updatedAt": "2026-10-07T19:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:transparan-quote",
@@ -1097,7 +1098,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 72 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 73 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1145,7 +1146,8 @@
         "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?",
         "LED ekran dual power / hot-swap PSU / yedek güç var mı? ARLEDSCREEN sabit redundant PSU iddiası yayımlıyor mu?",
         "LED ekran genlock / frame sync / senkron kilidi var mı? ARLEDSCREEN sabit genlock veya PTP sync iddiası yayımlıyor mu?",
-        "LED ekran Art-Net / sACN / DMX ışık kontrolü var mı? ARLEDSCREEN sabit Art-Net veya DMX512 iddiası yayımlıyor mu?"
+        "LED ekran Art-Net / sACN / DMX ışık kontrolü var mı? ARLEDSCREEN sabit Art-Net veya DMX512 iddiası yayımlıyor mu?",
+        "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1276,13 +1278,14 @@
       "displayName": "Kiosk dijital ekran rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/",
-      "description": "Kiosk / dijital ekran rehber. Quote-scoped; sabit ömür/MTBF yok — Blind #40. Sabit PoE/Gigabit yok — Blind #66. Sabit CMS SLA yok — Blind #69.",
+      "description": "Kiosk / dijital ekran rehber. Quote-scoped; sabit ömür/MTBF yok — Blind #40. Sabit PoE/Gigabit yok — Blind #66. Sabit CMS SLA yok — Blind #69. Sabit NDI yok — Blind #73.",
       "representativeQueries": [
         "kiosk LED ekran",
         "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
         "LED ekran PoE / Gigabit Ethernet / ağ bant genişliği gereksinimi nedir? ARLEDSCREEN sabit PoE veya Gigabit iddiası yayımlıyor mu?",
         "kiosk ekran fiyat",
-        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?"
+        "LED ekran uzaktan izleme / CMS uptime / SLA nedir? ARLEDSCREEN sabit 99.9% uptime veya 24/7 CMS SLA iddiası yayımlıyor mu?",
+        "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -1292,7 +1295,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T15:00:00Z"
+      "updatedAt": "2026-10-07T19:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-led-ekran",
@@ -3340,6 +3343,63 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T18:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:geo:bolge-aksaray",
+      "displayName": "Aksaray LED bölge",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/bolgeler/aksaray/",
+      "description": "Real region hub (aksaray) — not an 81-il doorway. No invent sabit NDI — Blind #73; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Aksaray LED bölge LED ekran",
+        "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?",
+        "aksaray LED"
+      ],
+      "tags": [
+        "region",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T19:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:geo:bolge-van",
+      "displayName": "Van LED bölge",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/bolgeler/van/",
+      "description": "Real region hub (van) — not an 81-il doorway. No invent sabit NDI — Blind #73; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Van LED bölge LED ekran",
+        "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?",
+        "van LED"
+      ],
+      "tags": [
+        "region",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T19:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:geo:bolge-yozgat",
+      "displayName": "Yozgat LED bölge",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/bolgeler/yozgat/",
+      "description": "Real region hub (yozgat) — not an 81-il doorway. No invent sabit NDI — Blind #73; quote + Gaziosmanpaşa.",
+      "representativeQueries": [
+        "Yozgat LED bölge LED ekran",
+        "LED ekran NDI / SRT / RTMP IP video stream var mı? ARLEDSCREEN sabit NDI veya SRT iddiası yayımlıyor mu?",
+        "yozgat LED"
+      ],
+      "tags": [
+        "region",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T19:00:00Z"
     }
   ]
 }
