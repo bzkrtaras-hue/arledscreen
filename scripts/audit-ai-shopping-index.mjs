@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 101) errors.push(`blindTestPrompts must be 101 (got ${prompts.length})`);
+if (prompts.length !== 102) errors.push(`blindTestPrompts must be 102 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/101 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 101 kör test intent");
+if (!/102 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 102 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–100 kör test without 101");
+if (/(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–101 kör test without 102");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -896,6 +896,15 @@ if (!p101 || !/HLG|HDR10|PQ/i.test(p101.q || "")) {
 }
 if (!/HLG|HDR10|PQ|sabit HLG/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit HLG invent");
+}
+
+// Day 154: sabit PWM / scan rate invent
+const p102 = (doc.blindTestPrompts || []).find((p) => p.id === 102);
+if (!p102 || !/PWM|scan rate/i.test(p102.q || "")) {
+  errors.push("blindTestPrompts #102 must cover sabit PWM invent");
+}
+if (!/PWM|scan rate|sabit PWM/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit PWM invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

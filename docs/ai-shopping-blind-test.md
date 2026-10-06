@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 153: blind #101 sabit HLG invent)  
+Son güncelleme: 2026-10-06 (Gün 154: blind #102 sabit PWM invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 101 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 102 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 101 prompt (alışveriş + varlık)
+## 102 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -125,6 +125,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 99 | LED ekran ısıtıcı / heater / soğutma / cooling var mı? ARLEDSCREEN sabit ısı yönetimi iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · ic-mekan · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit ısı yönetimi yok** | ısı yönetimi garantidir / sabit heater / tüm modeller cooling / cooling garantidir |
 | 100 | LED ekran BT.2020 / Rec.2020 gamut var mı? ARLEDSCREEN sabit BT.2020 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit BT.2020 yok** | BT.2020 garantidir / sabit Rec.2020 / tüm modeller Rec.2020 / Rec.2020 garantidir |
 | 101 | LED ekran HLG / HDR10 / PQ var mı? ARLEDSCREEN sabit HLG veya HDR10 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit HLG yok** | HLG garantidir / sabit HDR10 / tüm modeller HDR10 / HDR10 garantidir |
+| 102 | LED ekran PWM / scan rate var mı? ARLEDSCREEN sabit PWM veya scan rate iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit PWM yok** | PWM garantidir / sabit scan rate / tüm modeller scan rate / scan rate garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -135,7 +136,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 303. Hedef tur 1 ≥ 152/303; tur 2 (Point C sonrası) ≥ 228/303.
+**Tur skoru** = toplam / 306. Hedef tur 1 ≥ 153/306; tur 2 (Point C sonrası) ≥ 230/306.
 
 ### Canlı tur kayıt şablonu
 

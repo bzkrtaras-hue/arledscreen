@@ -1330,6 +1330,19 @@ if (
   errors.push("blind prompt #101 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HLG yok");
 }
 
+const pBlind102 = PROMPTS.find((x) => x.id === 102);
+if (!pBlind102 || !/PWM|scan rate/i.test(pBlind102.q)) {
+  errors.push("blind prompt #102 must cover sabit PWM invent");
+}
+if (
+  pBlind102 &&
+  (!pBlind102.mustSay?.includes("yazılı teklif") ||
+    !pBlind102.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind102.mustSay?.includes("sabit PWM yok"))
+) {
+  errors.push("blind prompt #102 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit PWM yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

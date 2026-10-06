@@ -1085,6 +1085,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HLG yok"],
     mustNotSay: ["HLG garantidir", "sabit HDR10", "tüm modeller HDR10", "HDR10 garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 102,
+    q: "LED ekran PWM / scan rate var mı? ARLEDSCREEN sabit PWM veya scan rate iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit PWM yok"],
+    mustNotSay: ["PWM garantidir", "sabit scan rate", "tüm modeller scan rate", "scan rate garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

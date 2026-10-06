@@ -143,6 +143,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 151 | 2026-10-06 | sabit ısı yönetimi #99 · dis/ic ARD refresh · skor /297 | ✅ |
 | 152 | 2026-10-06 | sabit BT.2020 #100 · ic/konferans ARD refresh · skor /300 | ✅ |
 | 153 | 2026-10-06 | sabit HLG/HDR10 #101 · ic/konferans ARD refresh · skor /303 | ✅ |
+| 154 | 2026-10-06 | sabit PWM/scan rate #102 · ic/konferans ARD refresh · skor /306 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1051,3 +1052,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans HLG invent · llms deny · sabit HLG yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit HLG
 - skor hedef Tur 1 ≥ 152/303 · Tur 2 ≥ 228/303
+
+## Gün 154 notları
+
+- Blind #102 «PWM / scan rate?» — skor **/306**; ARD **102 kör test**
+- TR/EN ic-mekan + TR/EN konferans PWM invent · llms deny · sabit PWM yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit PWM
+- skor hedef Tur 1 ≥ 153/306 · Tur 2 ≥ 230/306
