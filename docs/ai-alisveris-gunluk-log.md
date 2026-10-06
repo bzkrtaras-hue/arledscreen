@@ -125,6 +125,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 133 | 2026-10-06 | sabit dokunmatik #81 · beylikduzu-yasam/bireysel/bursa proje ARD · skor /243 | ✅ |
 | 134 | 2026-10-06 | sabit mıknatıslı modül #82 · hair/drama/manisa-2 proje ARD · skor /246 | ✅ |
 | 135 | 2026-10-06 | sabit koruyucu kaplama #83 · manisa-proje/prestij/sinan-polat proje ARD · skor /249 | ✅ |
+| 136 | 2026-10-06 | sabit 3D #84 · bireysel-2/orta-sekerli proje ARD · skor /252 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -906,3 +907,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari koruyucu kaplama invent · llms deny · sabit koruyucu kaplama yok
 - ARD: gerçek proje hub manisa-proje / prestij-cafe / sinan-polat-sigorta (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit koruyucu kaplama
 - skor hedef Tur 1 ≥ 125/249 · Tur 2 ≥ 187/249
+
+## Gün 136 notları
+
+- Blind #84 «naked-eye 3D / glasses-free 3D?» — skor **/252**; ARD **84 kör test**
+- TR/EN vitrin + TR/EN konferans 3D invent · llms deny · sabit 3D yok
+- ARD: gerçek proje hub bireysel-musteri-2 / orta-sekerli-kampus / orta-sekerli-kentpark (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit 3D
+- skor hedef Tur 1 ≥ 126/252 · Tur 2 ≥ 189/252
+- Not: yayımlanmış proje case hub’ları IndexNow/ARD’de tükendi; sonraki günler bölge/rehber/ürün hub veya yeni soft invent + mevcut case refresh

@@ -1094,6 +1094,20 @@ if (
   errors.push("blind prompt #83 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit koruyucu kaplama yok");
 }
 
+
+const pBlind84 = PROMPTS.find((x) => x.id === 84);
+if (!pBlind84 || !/naked-eye 3D|glasses-free 3D|sabit 3D/i.test(pBlind84.q)) {
+  errors.push("blind prompt #84 must cover sabit 3D invent");
+}
+if (
+  pBlind84 &&
+  (!pBlind84.mustSay?.includes("yazılı teklif") ||
+    !pBlind84.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind84.mustSay?.includes("sabit 3D yok"))
+) {
+  errors.push("blind prompt #84 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit 3D yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

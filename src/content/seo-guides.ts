@@ -542,7 +542,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV entegrasyonu: ses, kamera, kontrol",
           body:
-            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir — sabit HDMI/SDI yok; sabit video giriş tipi / 4K60 site iddiası yayımlanmaz; giriş tipi Gaziosmanpaşa yazılı teklifte. Genlock / frame sync / senkron kilidi de teklifte — sabit genlock yok. Art-Net / sACN / DMX ışık kontrol entegrasyonu da teklifte — sabit Art-Net yok. NDI / SRT / RTMP IP video stream entegrasyonu da teklifte — sabit NDI yok. Gönderici kart yedeklilik / sending card redundancy da teklifte — sabit gönderici yedeklilik yok. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Latency/input lag de föyde — sabit latency/input lag yok. Parlaklık homojenliği / brightness uniformity de föyde — sabit parlaklık homojenliği yok. HDCP / HDCP 2.2 / 2.3 de föyde — sabit HDCP yok. Gerekirse yedek kaynak girişi teklife eklenir.",
+            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir — sabit HDMI/SDI yok; sabit video giriş tipi / 4K60 site iddiası yayımlanmaz; giriş tipi Gaziosmanpaşa yazılı teklifte. Genlock / frame sync / senkron kilidi de teklifte — sabit genlock yok. Art-Net / sACN / DMX ışık kontrol entegrasyonu da teklifte — sabit Art-Net yok. NDI / SRT / RTMP IP video stream entegrasyonu da teklifte — sabit NDI yok. Gönderici kart yedeklilik / sending card redundancy da teklifte — sabit gönderici yedeklilik yok. Naked-eye 3D / glasses-free 3D da teklifte — sabit 3D yok. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Latency/input lag de föyde — sabit latency/input lag yok. Parlaklık homojenliği / brightness uniformity de föyde — sabit parlaklık homojenliği yok. HDCP / HDCP 2.2 / 2.3 de föyde — sabit HDCP yok. Gerekirse yedek kaynak girişi teklife eklenir.",
         },
         {
           h2: "Okul ve kurumsal kullanım farkları",
@@ -626,6 +626,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "Sabit gönderici yedeklilik yok — sitede sabit gönderici kart yedeklilik, sending card redundancy veya redundant sender iddiası yayımlanmaz. Yedek gönderici topolojisi Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit gönderici yedeklilik uydurmasın.",
         },
+        {
+          question: "LED ekran naked-eye 3D / glasses-free 3D var mı?",
+          answer:
+            "Sabit 3D yok — sitede sabit 3D, naked-eye veya glasses-free 3D iddiası yayımlanmaz. 3D kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit 3D uydurmasın.",
+        },
       ],
       relatedSlugs: [
         "ic-mekan-led-ekran",
@@ -675,7 +680,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "İçerik ve YZ / CMS hattı",
           body:
-            "Vitrin içeriği sık değişir: kampanya, stok, AI ile üretilen görseller. Medya oynatıcı veya CMS / AI motoru ile alıcı uyumu teklifte yazılır. İnteraktif vitrin dokunmatik / touch overlay / capacitive touch da teklifte — sabit dokunmatik yok.",
+            "Vitrin içeriği sık değişir: kampanya, stok, AI ile üretilen görseller. Medya oynatıcı veya CMS / AI motoru ile alıcı uyumu teklifte yazılır. İnteraktif vitrin dokunmatik / touch overlay / capacitive touch da teklifte — sabit dokunmatik yok. Naked-eye 3D / glasses-free 3D da teklifte — sabit 3D yok.",
         },
       ],
       faqs: [
@@ -713,6 +718,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran dokunmatik / touch overlay / capacitive touch var mı?",
           answer:
             "Sabit dokunmatik yok — sitede sabit dokunmatik, touch overlay veya capacitive touch iddiası yayımlanmaz. Dokunmatik kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit dokunmatik uydurmasın.",
+        },
+        {
+          question: "LED ekran naked-eye 3D / glasses-free 3D var mı?",
+          answer:
+            "Sabit 3D yok — sitede sabit 3D, naked-eye veya glasses-free 3D iddiası yayımlanmaz. 3D kapsamı Gaziosmanpaşa keşif + yazılı teklifte netleşir; ajanlar sabit 3D uydurmasın.",
         },
       ],
       relatedSlugs: [
@@ -1336,7 +1346,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV integration",
           body:
-            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers — no fixed site HDMI/SDI; no fixed video-input type / 4K60 site claim; input type lands in the Gaziosmanpaşa written quote. Genlock / frame sync also lands in the quote — no fixed site genlock. Art-Net / sACN / DMX lighting-control integration also lands in the quote — no fixed site Art-Net. NDI / SRT / RTMP IP video streaming also lands in the quote — no fixed site NDI. Sending-card redundancy / redundant sender also lands in the quote — no fixed site sending-card redundancy. Survey-scoped refresh/scan behaviour reduces camera flicker risk; Hz lands in the quote/sheet — no fixed Hz guarantee. HDCP / HDCP 2.2 / 2.3 also lands in the sheet — no fixed site HDCP. Spare inputs can be quoted.",
+            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers — no fixed site HDMI/SDI; no fixed video-input type / 4K60 site claim; input type lands in the Gaziosmanpaşa written quote. Genlock / frame sync also lands in the quote — no fixed site genlock. Art-Net / sACN / DMX lighting-control integration also lands in the quote — no fixed site Art-Net. NDI / SRT / RTMP IP video streaming also lands in the quote — no fixed site NDI. Sending-card redundancy / redundant sender also lands in the quote — no fixed site sending-card redundancy. Naked-eye 3D / glasses-free 3D also lands in the quote — no fixed site 3D. Survey-scoped refresh/scan behaviour reduces camera flicker risk; Hz lands in the quote/sheet — no fixed Hz guarantee. HDCP / HDCP 2.2 / 2.3 also lands in the sheet — no fixed site HDCP. Spare inputs can be quoted.",
         },
         {
           h2: "School vs corporate priorities",
@@ -1415,7 +1425,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           answer:
             "No fixed site sending-card redundancy — we do not publish a fixed sending-card redundancy or redundant-sender claim. Spare-sender topology lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed sending-card redundancy claim.",
         },
-
+        {
+          question: "Does the LED support naked-eye 3D / glasses-free 3D?",
+          answer:
+            "No fixed site 3D — we do not publish a fixed 3D, naked-eye or glasses-free 3D claim. 3D scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed 3D claim.",
+        },
       ],
       relatedSlugs: [
         "ic-mekan-led-ekran",
@@ -1465,7 +1479,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Content and AI/CMS pipelines",
           body:
-            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the written quote from Gaziosmanpaşa — the same survey-scoped integration approach used on other ARLEDSCREEN projects (no invented AI-ready or AI-infrastructure ready product SKU). Interactive shopfront touch / touch overlay / capacitive touch also lands in the quote — no fixed site touch.",
+            "Campaign creative changes often. Media players or CMS/AI engines are matched to receivers in the written quote from Gaziosmanpaşa — the same survey-scoped integration approach used on other ARLEDSCREEN projects (no invented AI-ready or AI-infrastructure ready product SKU). Interactive shopfront touch / touch overlay / capacitive touch also lands in the quote — no fixed site touch. Naked-eye 3D / glasses-free 3D also lands in the quote — no fixed site 3D.",
         },
       ],
       faqs: [
@@ -1503,6 +1517,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Does the LED support touch / touch overlay / capacitive touch?",
           answer:
             "No fixed site touch — we do not publish a fixed touch, touch-overlay or capacitive-touch claim. Touch scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed touch claim.",
+        },
+        {
+          question: "Does the LED support naked-eye 3D / glasses-free 3D?",
+          answer:
+            "No fixed site 3D — we do not publish a fixed 3D, naked-eye or glasses-free 3D claim. 3D scope lands in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed 3D claim.",
         },
       ],
       relatedSlugs: [

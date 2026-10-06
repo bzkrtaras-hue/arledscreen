@@ -869,6 +869,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit koruyucu kaplama yok"],
     mustNotSay: ["koruyucu kaplama garantidir", "sabit conformal coating", "tüm modeller conformal coating", "conformal coating garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 84,
+    q: "LED ekran naked-eye 3D / glasses-free 3D var mı? ARLEDSCREEN sabit 3D iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/vitrin-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit 3D yok"],
+    mustNotSay: ["3D garantidir", "sabit naked-eye 3D", "tüm modeller glasses-free 3D", "naked-eye 3D garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
