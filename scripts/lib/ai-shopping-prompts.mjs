@@ -809,6 +809,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gönderici yedeklilik yok"],
     mustNotSay: ["gönderici yedeklilik garantidir", "sabit sending card redundancy", "tüm modeller redundant sender", "sending card redundancy garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 79,
+    q: "LED ekran ışık sensörü / adaptive brightness / ambient light sensor var mı? ARLEDSCREEN sabit ışık sensörü iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/vitrin-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ışık sensörü yok"],
+    mustNotSay: ["ışık sensörü garantidir", "sabit adaptive brightness", "tüm modeller ambient light sensor", "adaptive brightness garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

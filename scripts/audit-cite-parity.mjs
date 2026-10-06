@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/78 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 78 kör test intent (not stale 17–77)");
+if (ardTxt && !/79 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 79 kör test intent (not stale 17–78)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-7]) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–77 kör test without 78");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-8]) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–78 kör test without 79");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1166,6 +1166,22 @@ for (const rel of [
   }
   if (/gönderici yedeklilik garantidir|sabit sending card redundancy|tüm modeller redundant sender|sending card redundancy garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit gönderici yedeklilik`);
+  }
+}
+
+
+// Day 131: sabit ışık sensörü / adaptive brightness — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/vitrin-led-ekran/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit ışık sensörü yok|no fixed site light sensor/i.test(html)) {
+    errors.push(`${rel} should hedge sabit ışık sensörü / adaptive brightness`);
+  }
+  if (/ışık sensörü garantidir|sabit adaptive brightness|tüm modeller ambient light sensor|adaptive brightness garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit ışık sensörü`);
   }
 }
 

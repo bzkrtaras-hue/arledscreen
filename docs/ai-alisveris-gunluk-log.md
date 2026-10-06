@@ -120,6 +120,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 128 | 2026-10-06 | sabit 0mm/seamless #76 · white-city/manisa-bb/unye proje ARD · skor /228 | ✅ |
 | 129 | 2026-10-06 | sabit alıcı yedeklilik #77 · giresun/yalova-malt/barcelona proje ARD · skor /231 | ✅ |
 | 130 | 2026-10-06 | sabit gönderici yedeklilik #78 · ayberk/dogu-produksiyon/umut-radyoloji proje ARD · skor /234 | ✅ |
+| 131 | 2026-10-06 | sabit ışık sensörü #79 · babil/beren/kesan-golet proje ARD · skor /237 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -866,3 +867,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR/EN kiosk gönderici yedeklilik invent · llms deny · sabit gönderici yedeklilik yok
 - ARD: gerçek proje hub ayberk-sigorta / dogu-produksiyon / umut-radyoloji (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit gönderici yedeklilik
 - skor hedef Tur 1 ≥ 117/234 · Tur 2 ≥ 176/234
+
+## Gün 131 notları
+
+- Blind #79 «ışık sensörü / adaptive brightness / ambient light sensor?» — skor **/237**; ARD **79 kör test**
+- TR/EN dis-mekan + TR/EN vitrin ışık sensörü invent · llms deny · sabit ışık sensörü yok
+- ARD: gerçek proje hub babil-cafe / beren-kirtasiye / kesan-golet (spam/81-il kapısı değil) · IndexNow +3 · agentRules sabit ışık sensörü
+- skor hedef Tur 1 ≥ 119/237 · Tur 2 ≥ 178/237
