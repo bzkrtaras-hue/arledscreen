@@ -28,7 +28,21 @@
         "type": "Agent Index",
         "url": "https://arledscreen.com/ai-shopping.json",
         "format": "application/ld+json",
-        "description": "Single-fetch resource: prices, agent rules, resource links"
+        "description": "Single-fetch Dataset: cite + pricedPanels (12 USD SKU) + shoppingPolicy; no free shipping; no invented TL packs",
+        "pricedPanels": 12,
+        "priceValidUntil": "2026-12-31",
+        "sampleSku": {
+          "sku": "p1-25-ic-gob",
+          "price": "95.88",
+          "priceCurrency": "USD",
+          "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/"
+        }
+      },
+      "entityProfiles": {
+        "type": "Profile Paste Packs",
+        "url": "https://arledscreen.com/entity-profiles.json",
+        "format": "application/ld+json",
+        "description": "Third-party profile text packs (Point C) aligned with entity.json cite"
       },
       "llmsText": {
         "type": "Text Summary",
@@ -61,15 +75,21 @@
         "description": "Live 2026 panel price calculator; approximate totals for planning"
       }
     },
+    "cite": {
+      "oneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
+      "source": "https://arledscreen.com/entity.json"
+    },
     "pricedProducts": {
       "count": 12,
       "currency": "USD",
-      "priceScope": "Per-module (320 × 160 mm standard); VAT and shipping excluded",
-      "validation": "priceValidUntil: 2026-12-31"
+      "priceScope": "Per-module (320 × 160 mm standard; P2.9 outdoor 250 × 250 mm); VAT and shipping excluded",
+      "validation": "priceValidUntil: 2026-12-31",
+      "index": "https://arledscreen.com/ai-shopping.json#pricedPanels",
+      "freeShipping": false
     },
     "agentGuidelines": {
-      "priceSource": "Use only https://arledscreen.com/catalog.json; do not invent prices",
-      "shippingAndVat": "All prices exclude VAT and freight; no free shipping claim",
+      "priceSource": "Use https://arledscreen.com/ai-shopping.json pricedPanels or https://arledscreen.com/catalog.json only; do not invent prices",
+      "shippingAndVat": "All prices exclude VAT and freight; ücretsiz kargo yok / no free shipping",
       "returnPolicy": "MerchantReturnNotPermitted; conditions in written quote",
       "quoteOnlyGroups": [
         "Transparent / vitrin",
@@ -106,6 +126,7 @@
       "/catalog.json",
       "/ai-shopping.json",
       "/entity.json",
+      "/entity-profiles.json",
       "/llms.txt",
       "/.well-known/ard.json"
     ],

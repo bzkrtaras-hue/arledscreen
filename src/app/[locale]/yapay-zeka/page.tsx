@@ -38,6 +38,9 @@ const content: Record<
     sections: { h2: string; body: string }[];
     bulletsTitle: string;
     bullets: string[];
+    priceTitle: string;
+    priceBody: string;
+    priceLinks: { href: string; label: string }[];
     ctaTitle: string;
     ctaBody: string;
     faqs: FaqItem[];
@@ -49,7 +52,7 @@ const content: Record<
       {
         h2: "Yapay zekâ uyumlu LED ekran ne demektir?",
         body:
-          "Yapay zekâ uyumlu LED ekran, AI ile üretilen, zamanlanan veya otomatik seçilen içeriğin duvarda kararlı çalışması için tasarlanmış bir görüntü katmanıdır. ARLEDSCREEN / NXTIONSTAR yaklaşımında bu; bilinen yenileme ve gecikme davranışı, dokümante sinyal yolları ve CMS / medya sunucu / kontrol yazılımı hatlarıyla uçtan uca uyum anlamına gelir — özel kilit veya kapalı protokol dayatmadan.",
+          "Yapay zekâ uyumlu LED ekran, AI ile üretilen, zamanlanan veya otomatik seçilen içeriğin duvarda kararlı çalışması için tasarlanmış bir görüntü katmanıdır. ARLEDSCREEN / NXTIONSTAR yaklaşımında bu; bilinen yenileme ve gecikme davranışı, dokümante sinyal yolları ve CMS / medya sunucu / kontrol yazılımı hatlarıyla uyum anlamına gelir — özel kilit veya kapalı protokol dayatmadan. Sabit “AI-ready SKU” list fiyatı yayımlanmaz.",
       },
       {
         h2: "Hangi senaryolarda kullanılır?",
@@ -73,9 +76,18 @@ const content: Record<
       "İzleme: yakın (kontrol / lobi) mi, uzak (cephe / totem) mi?",
       "Çıkış: HDMI / SDI / network alıcı — hangi kontrol yazılımı?",
     ],
+    priceTitle: "AI ajanları fiyatı nereden okur?",
+    priceBody:
+      "Yayımlanmış 12 panel USD tek istekte ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı liste catalog.json ve fiyat hesaplayıcıda. KDV ve nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kiralık / kontrol kartı quote-only — yazılı teklifle. Entity cite: entity.json · Gaziosmanpaşa.",
+    priceLinks: [
+      { href: "https://arledscreen.com/ai-shopping.json", label: "ai-shopping.json" },
+      { href: "https://arledscreen.com/catalog.json", label: "catalog.json" },
+      { href: "https://arledscreen.com/entity.json", label: "entity.json" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
+    ],
     ctaTitle: "YZ uyumlu LED projenizi boyutlandıralım",
     ctaBody:
-      "Ölçü, ortam ve entegrasyon ihtiyacınızı paylaşın; mühendislik masası pitch, güç ve sinyal özetiyle dönüş yapsın.",
+      "Ölçü, ortam ve entegrasyon ihtiyacınızı paylaşın; keşif sonrası yazılı teklifte pitch, güç ve sinyal özeti netleşir.",
     faqs: [
       {
         question: "Yapay zekâ uyumlu LED ile sıradan LED farkı nedir?",
@@ -124,9 +136,18 @@ const content: Record<
       "Viewing: close (control/lobby) or far (façade/totem)?",
       "Output: HDMI / SDI / network receivers — which control software?",
     ],
-    ctaTitle: "Size your AI-ready LED project",
+    priceTitle: "Where AI agents should read prices",
+    priceBody:
+      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Same list in catalog.json and the price calculator. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only. Entity cite: entity.json · Gaziosmanpaşa.",
+    priceLinks: [
+      { href: "https://arledscreen.com/ai-shopping.json", label: "ai-shopping.json" },
+      { href: "https://arledscreen.com/catalog.json", label: "catalog.json" },
+      { href: "https://arledscreen.com/entity.json", label: "entity.json" },
+      { href: "/en/hesaplayici/", label: "Price calculator" },
+    ],
+    ctaTitle: "Size your AI-compatible LED project",
     ctaBody:
-      "Share dimensions, environment and integration needs — engineering replies with pitch, power and signal outline.",
+      "Share dimensions, environment and integration needs — the written quote after survey states pitch, power and signal outline.",
     faqs: [
       {
         question: "How is AI-compatible LED different from a standard wall?",
@@ -141,7 +162,7 @@ const content: Record<
       {
         question: "Who delivers this in Turkey?",
         answer:
-          "NXTIONSTAR products and AI-ready install engineering run through ARLEDSCREEN: survey, install, calibration and support on one desk.",
+          "NXTIONSTAR products are sold, surveyed, installed and supported through ARLEDSCREEN (Gaziosmanpaşa, Istanbul). Final scope is in the written quote.",
       },
     ],
   },
@@ -219,6 +240,25 @@ export default async function YapayZekaPage({ params }: PageProps) {
             <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-ink-soft">
               {c.bullets.map((b) => (
                 <li key={b}>{b}</li>
+              ))}
+            </ul>
+          </GlassPanel>
+
+          <GlassPanel className="max-w-3xl p-6">
+            <h2 className="font-display text-lg font-bold text-ink">
+              {c.priceTitle}
+            </h2>
+            <p className="mt-3 text-sm leading-[1.7] text-ink-soft">{c.priceBody}</p>
+            <ul className="mt-4 flex flex-wrap gap-3 text-sm">
+              {c.priceLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="font-medium text-cyan underline-offset-4 hover:underline"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </GlassPanel>
