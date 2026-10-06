@@ -4736,6 +4736,20 @@ if (
   errors.push("blind prompt #361 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave flashing yok");
 }
 
+const pBlind362 = PROMPTS.find((x) => x.id === 362);
+if (!pBlind362 || !/Sharp PN Series|Sharp PN-L Series/i.test(pBlind362.q)) {
+  errors.push("blind prompt #362 must cover sabit Sharp PN Series invent");
+}
+if (
+  pBlind362 &&
+  (!pBlind362.mustSay?.includes("yazılı teklif") ||
+    !pBlind362.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind362.mustSay?.includes("sabit Sharp PN Series yok"))
+) {
+  errors.push("blind prompt #362 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sharp PN Series yok");
+}
+
+
 
 
 

@@ -4205,6 +4205,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit eave flashing yok"],
     mustNotSay: ["eave flashing garantidir", "sabit eave flashing True1", "tüm modeller eave flashing", "saçak flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 362,
+    q: "LED ekran Sharp PN Series / Sharp PN-L Series var mı? ARLEDSCREEN sabit Sharp PN Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Sharp PN Series yok"],
+    mustNotSay: ["Sharp PN Series garantidir", "sabit Sharp PN Series True1", "tüm modeller Sharp PN Series", "Sharp PN-L Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
