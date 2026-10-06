@@ -4013,6 +4013,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit edge metal yok"],
     mustNotSay: ["edge metal garantidir", "sabit edge metal True1", "tüm modeller edge metal", "kenar metal garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 346,
+    q: "LED ekran Newline Elite / Newline RS Series var mı? ARLEDSCREEN sabit Newline Elite iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline Elite yok"],
+    mustNotSay: ["Newline Elite garantidir", "sabit Newline Elite True1", "tüm modeller Newline Elite", "Newline RS Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
