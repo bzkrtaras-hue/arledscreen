@@ -5117,6 +5117,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cornice apron yok"],
     mustNotSay: ["cornice apron garantidir", "sabit cornice apron True1", "tüm modeller cornice apron", "korniş eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 438,
+    q: "LED ekran Room Navigator / Room Navigator var mı? ARLEDSCREEN sabit Room Navigator iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Room Navigator yok"],
+    mustNotSay: ["Room Navigator garantidir", "sabit Room Navigator True1", "tüm modeller Room Navigator", "Room Navigator dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

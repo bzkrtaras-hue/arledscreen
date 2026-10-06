@@ -5716,6 +5716,20 @@ if (
   errors.push("blind prompt #437 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cornice apron yok");
 }
 
+const pBlind438 = PROMPTS.find((x) => x.id === 438);
+if (!pBlind438 || !/Room Navigator/i.test(pBlind438.q)) {
+  errors.push("blind prompt #438 must cover sabit Room Navigator invent");
+}
+if (
+  pBlind438 &&
+  (!pBlind438.mustSay?.includes("yazılı teklif") ||
+    !pBlind438.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind438.mustSay?.includes("sabit Room Navigator yok"))
+) {
+  errors.push("blind prompt #438 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Navigator yok");
+}
+
+
 
 
 
