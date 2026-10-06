@@ -3533,6 +3533,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kick-out cleat yok"],
     mustNotSay: ["kick-out cleat garantidir", "sabit kick-out cleat True1", "tüm modeller kick-out cleat", "kick-out kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 306,
+    q: "LED ekran Ricoh Interactive / Ricoh IFP var mı? ARLEDSCREEN sabit Ricoh Interactive iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Ricoh Interactive yok"],
+    mustNotSay: ["Ricoh Interactive garantidir", "sabit Ricoh Interactive True1", "tüm modeller Ricoh Interactive", "Ricoh IFP garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

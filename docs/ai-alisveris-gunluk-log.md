@@ -347,6 +347,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 355 | 2026-10-06 | sabit counter cleat #303 · dis/mimari ARD refresh · skor /909 | ✅ |
 | 356 | 2026-10-06 | sabit Google Meet Series #304 · ic/konferans ARD refresh · skor /912 | ✅ |
 | 357 | 2026-10-06 | sabit kick-out cleat #305 · dis/mimari ARD refresh · skor /915 | ✅ |
+| 358 | 2026-10-06 | sabit Ricoh Interactive #306 · ic/konferans ARD refresh · skor /918 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2524,3 +2525,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #305 «kick-out cleat / kick-out kleyt?» — skor **/915**; ARD **305 kör test**
 - TR/EN dis-mekan + TR/EN mimari kick-out cleat invent · llms deny · sabit kick-out cleat yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit kick-out cleat
+
+## Gün 358 notları
+
+- Blind #306 «Ricoh Interactive / Ricoh IFP?» — skor **/918**; ARD **306 kör test**
+- TR/EN ic-mekan + TR/EN konferans Ricoh Interactive invent · llms deny · sabit Ricoh Interactive yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Ricoh Interactive
