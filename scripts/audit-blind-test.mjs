@@ -4112,6 +4112,20 @@ if (
   errors.push("blind prompt #313 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave cleat yok");
 }
 
+const pBlind314 = PROMPTS.find((x) => x.id === 314);
+if (!pBlind314 || !/ViewSonic ViewBoard|ViewBoard IFP/i.test(pBlind314.q)) {
+  errors.push("blind prompt #314 must cover sabit ViewSonic ViewBoard invent");
+}
+if (
+  pBlind314 &&
+  (!pBlind314.mustSay?.includes("yazılı teklif") ||
+    !pBlind314.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind314.mustSay?.includes("sabit ViewSonic ViewBoard yok"))
+) {
+  errors.push("blind prompt #314 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ViewSonic ViewBoard yok");
+}
+
+
 
 
 

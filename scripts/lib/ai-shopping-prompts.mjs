@@ -3629,6 +3629,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit eave cleat yok"],
     mustNotSay: ["eave cleat garantidir", "sabit eave cleat True1", "tüm modeller eave cleat", "saçak kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 314,
+    q: "LED ekran ViewSonic ViewBoard / ViewBoard IFP var mı? ARLEDSCREEN sabit ViewSonic ViewBoard iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ViewSonic ViewBoard yok"],
+    mustNotSay: ["ViewSonic ViewBoard garantidir", "sabit ViewSonic ViewBoard True1", "tüm modeller ViewSonic ViewBoard", "ViewBoard IFP garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
