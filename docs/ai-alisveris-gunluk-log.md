@@ -175,6 +175,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 183 | 2026-10-06 | sabit cable gland #131 · dis/mimari ARD refresh · skor /393 | ✅ |
 | 184 | 2026-10-06 | sabit PIP #132 · ic/konferans ARD refresh · skor /396 | ✅ |
 | 185 | 2026-10-06 | sabit grounding #133 · dis/mimari ARD refresh · skor /399 | ✅ |
+| 186 | 2026-10-06 | sabit Dante #134 · ic/konferans ARD refresh · skor /402 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1307,4 +1308,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari grounding invent · llms deny · sabit grounding yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit grounding
 - skor hedef Tur 1 ≥ 200/399 · Tur 2 ≥ 300/399
+
+## Gün 186 notları
+
+- Blind #134 «Dante / Dante audio?» — skor **/402**; ARD **134 kör test**
+- TR/EN ic-mekan + TR/EN konferans Dante invent · llms deny · sabit Dante yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit Dante
+- skor hedef Tur 1 ≥ 201/402 · Tur 2 ≥ 302/402
 

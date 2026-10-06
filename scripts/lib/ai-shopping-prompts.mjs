@@ -1469,6 +1469,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit grounding yok"],
     mustNotSay: ["grounding garantidir", "sabit topraklama", "tüm modeller grounding", "topraklama garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 134,
+    q: "LED ekran Dante / Dante audio var mı? ARLEDSCREEN sabit Dante iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Dante yok"],
+    mustNotSay: ["Dante garantidir", "sabit Dante audio", "tüm modeller Dante", "Dante audio garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -1770,6 +1770,20 @@ if (
   errors.push("blind prompt #133 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit grounding yok");
 }
 
+
+const pBlind134 = PROMPTS.find((x) => x.id === 134);
+if (!pBlind134 || !/Dante/i.test(pBlind134.q)) {
+  errors.push("blind prompt #134 must cover sabit Dante invent");
+}
+if (
+  pBlind134 &&
+  (!pBlind134.mustSay?.includes("yazılı teklif") ||
+    !pBlind134.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind134.mustSay?.includes("sabit Dante yok"))
+) {
+  errors.push("blind prompt #134 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Dante yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 
