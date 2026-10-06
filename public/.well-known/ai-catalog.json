@@ -413,14 +413,15 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
         "iç mekan LED rehber",
         "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?",
         "LED ekran kontrast oranı kaç olmalı? ARLEDSCREEN sabit 5000:1 / 3000:1 kontrast yayımlıyor mu?",
-        "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?"
+        "LED ekranda ölü piksel / bad pixel toleransı nedir? ARLEDSCREEN sabit ölü piksel oranı veya pixel failure rate yayımlıyor mu?",
+        "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -430,7 +431,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T16:00:00Z"
+      "updatedAt": "2026-10-07T05:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -533,11 +534,12 @@
       "displayName": "Konferans salonu LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
-      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41.",
+      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59.",
       "representativeQueries": [
         "konferans salonu LED",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
-        "salon LED AV entegrasyon"
+        "salon LED AV entegrasyon",
+        "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -547,7 +549,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T11:00:00Z"
+      "updatedAt": "2026-10-07T05:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:transparan-quote",
@@ -1073,7 +1075,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 58 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 59 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1107,7 +1109,8 @@
         "LED ekran tuz sisi / salt spray / ASTM B117 testi var mı? ARLEDSCREEN sabit salt spray veya ASTM iddiası yayımlıyor mu?",
         "ARLEDSCREEN LED ekran garanti süresi kaç yıl? Sitede sabit 2 / 3 / 5 yıl garanti yayımlanıyor mu?",
         "ARLEDSCREEN LED ekranda iade süresi kaç gün? Sitede sabit 14 / 30 gün ücretsiz iade yayımlanıyor mu?",
-        "ARLEDSCREEN LED ekran teslimat süresi kaç gün? Sitede sabit 7 iş günü / 48 saat teslimat yayımlanıyor mu?"
+        "ARLEDSCREEN LED ekran teslimat süresi kaç gün? Sitede sabit 7 iş günü / 48 saat teslimat yayımlanıyor mu?",
+        "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1126,7 +1129,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-07T04:00:00Z"
+      "updatedAt": "2026-10-07T05:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -2432,6 +2435,69 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-07T04:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ar-rehber-konferans",
+      "displayName": "AR Conference LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ar/rehber/konferans-salonu-led/",
+      "description": "AR conference LED guide. No invent sabit gürültü/dB — Blind #59.",
+      "representativeQueries": [
+        "شاشة LED قاعة مؤتمرات",
+        "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?",
+        "konferans LED AR"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "AR",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T05:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ru-rehber-konferans",
+      "displayName": "RU Conference LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ru/rehber/konferans-salonu-led/",
+      "description": "RU conference LED guide. No invent sabit gürültü/dB — Blind #59.",
+      "representativeQueries": [
+        "LED конференц-зал",
+        "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?",
+        "konferans LED RU"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "RU",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T05:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:ru-rehber-mimari",
+      "displayName": "RU Architectural LED guide",
+      "type": "text/html",
+      "url": "https://arledscreen.com/ru/rehber/mimari-muhendislik-led/",
+      "description": "RU architectural LED guide. No invent sabit gürültü/dB / fan noise — Blind #59.",
+      "representativeQueries": [
+        "архитектурный LED",
+        "LED ekran fan gürültüsü / akustik seviye kaç dB? ARLEDSCREEN sabit dB veya silent/fanless iddiası yayımlıyor mu?",
+        "mimari LED RU"
+      ],
+      "tags": [
+        "guide",
+        "rehber",
+        "RU",
+        "GEO",
+        "honesty"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-07T05:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",
