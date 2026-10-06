@@ -53,5 +53,11 @@ jobs:
       - name: Smoke — apex redirect
         run: |
           sleep 8
-          curl -fsSI -A 'Mozilla/5.0' https://arledscreen.com/ | grep -qi 'location: /tr/'
-          echo "OK apex / → /tr/"
+          loc=$(curl -fsSI -A 'Mozilla/5.0' https://arledscreen.com/ | awk 'tolower($1)=="location:" {print $2}' | tr -d '\r')
+          case "$loc" in
+            /tr/|/tr|https://arledscreen.com/tr/|https://arledscreen.com/tr)
+              echo "OK apex / → $loc" ;;
+            *)
+              echo "Unexpected Location: ${loc:-<empty>}" >&2
+              exit 1 ;;
+          esac
