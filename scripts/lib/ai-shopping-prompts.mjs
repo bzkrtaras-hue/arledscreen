@@ -5369,6 +5369,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Bose VB1 yok"],
     mustNotSay: ["Bose VB1 garantidir", "sabit Bose VB1 True1", "tüm modeller Bose VB1", "VB1 soundbar garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 459,
+    q: "LED ekran blade sign / bıçak tabela var mı? ARLEDSCREEN sabit blade sign iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit blade sign yok"],
+    mustNotSay: ["blade sign garantidir", "sabit blade sign True1", "tüm modeller blade sign", "bıçak tabela garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

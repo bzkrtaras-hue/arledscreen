@@ -5968,6 +5968,18 @@ if (
 ) {
   errors.push("blind prompt #458 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Bose VB1 yok");
 }
+const pBlind459 = PROMPTS.find((x) => x.id === 459);
+if (!pBlind459 || !/blade sign/i.test(pBlind459.q)) {
+  errors.push("blind prompt #459 must cover sabit blade sign invent");
+}
+if (
+  pBlind459 &&
+  (!pBlind459.mustSay?.includes("yazılı teklif") ||
+    !pBlind459.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind459.mustSay?.includes("sabit blade sign yok"))
+) {
+  errors.push("blind prompt #459 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit blade sign yok");
+}
 
 
 
