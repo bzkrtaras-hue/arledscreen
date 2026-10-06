@@ -57,6 +57,12 @@ export function YiyistarGallery({
   }, [featured.length, go, paused, reduce, showFeatured]);
 
   useEffect(() => {
+    if (!currentSlug) return;
+    const button = document.querySelector<HTMLButtonElement>(`[data-galeri-slug="${currentSlug}"]`);
+    button?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [currentSlug]);
+
+  useEffect(() => {
     const nodes = sections
       .map((section) => document.getElementById(`galeri-${section.slug}`))
       .filter((node): node is HTMLElement => Boolean(node));
@@ -167,6 +173,7 @@ export function YiyistarGallery({
                 <button
                   type="button"
                   onClick={() => scrollTo(section.slug)}
+                  data-galeri-slug={section.slug}
                   aria-current={section.slug === currentSlug ? "true" : undefined}
                   className={cn(
                     "rounded-full border px-3.5 py-2 text-[13px] font-semibold transition",
