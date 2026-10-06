@@ -419,7 +419,7 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit ön servis yok — Blind #74. Sabit 0mm yok — Blind #76. Sabit canlı modül değişimi yok — Blind #80. Sabit mıknatıslı modül yok — Blind #82. Sabit anti-yansıma yok — Blind #88. Sabit enerji sınıfı yok — Blind #94.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41; sabit kontrast yok — Blind #44. Panel USD catalog/ai-shopping; sabit ölü piksel yok — Blind #46. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit ön servis yok — Blind #74. Sabit 0mm yok — Blind #76. Sabit canlı modül değişimi yok — Blind #80. Sabit mıknatıslı modül yok — Blind #82. Sabit anti-yansıma yok — Blind #88. Sabit enerji sınıfı yok — Blind #94. Sabit düşük mavi ışık yok — Blind #95.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
@@ -439,7 +439,8 @@
         "LED ekran canlı modül değişimi / hot-swap module var mı? ARLEDSCREEN sabit canlı modül değişimi iddiası yayımlıyor mu?",
         "LED ekran mıknatıslı modül / magnetic module var mı? ARLEDSCREEN sabit mıknatıslı modül iddiası yayımlıyor mu?",
         "LED ekran anti-yansıma / anti-glare var mı? ARLEDSCREEN sabit anti-yansıma iddiası yayımlıyor mu?",
-        "LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu?"
+        "LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu?",
+        "LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -449,7 +450,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T10:00:00Z"
+      "updatedAt": "2026-10-09T14:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -553,13 +554,14 @@
       "displayName": "İnce pitch LED ekran",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/ince-pitch-led-ekran/",
-      "description": "İnce pitch / stüdyo LED. Sabit Hz (3840/1920) yok — Blind #35; sabit HDR/gri skala yok — Blind #39; yenileme/HDR model föyü + yazılı teklif; sabit gamut/DCI-P3 yok — Blind #41. No invent sabit anti-yansıma — Blind #88; quote + Gaziosmanpaşa. No invent sabit enerji sınıfı — Blind #94; quote + Gaziosmanpaşa.",
+      "description": "İnce pitch / stüdyo LED. Sabit Hz (3840/1920) yok — Blind #35; sabit HDR/gri skala yok — Blind #39; yenileme/HDR model föyü + yazılı teklif; sabit gamut/DCI-P3 yok — Blind #41. No invent sabit anti-yansıma — Blind #88; quote + Gaziosmanpaşa. No invent sabit enerji sınıfı — Blind #94; quote + Gaziosmanpaşa. No invent sabit düşük mavi ışık — Blind #95; quote + Gaziosmanpaşa.",
       "representativeQueries": [
         "ince pitch LED ekran",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
         "LED ekran anti-yansıma / anti-glare var mı? ARLEDSCREEN sabit anti-yansıma iddiası yayımlıyor mu?",
-        "LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu?"
+        "LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu?",
+        "LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu?"
       ],
       "tags": [
         "commerce",
@@ -569,14 +571,14 @@
         "studio"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T10:00:00Z"
+      "updatedAt": "2026-10-09T14:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-konferans",
       "displayName": "Konferans salonu LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
-      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit Art-Net yok — Blind #72. Sabit NDI yok — Blind #73. Sabit gönderici yedeklilik yok — Blind #78. Sabit 3D yok — Blind #84. Sabit anti-yansıma yok — Blind #88. Sabit flight case yok — Blind #92.",
+      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41. Sabit gürültü/dB yok — Blind #59. Sabit Delta E yok — Blind #60. Sabit latency/input lag yok — Blind #61. Sabit parlaklık homojenliği yok — Blind #62. Sabit HDCP yok — Blind #64. Sabit HDMI/SDI yok — Blind #67. Sabit genlock yok — Blind #71. Sabit Art-Net yok — Blind #72. Sabit NDI yok — Blind #73. Sabit gönderici yedeklilik yok — Blind #78. Sabit 3D yok — Blind #84. Sabit anti-yansıma yok — Blind #88. Sabit flight case yok — Blind #92. Sabit düşük mavi ışık yok — Blind #95.",
       "representativeQueries": [
         "konferans salonu LED",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
@@ -593,7 +595,8 @@
         "LED ekran gönderici kart yedeklilik / sending card redundancy / redundant sender var mı? ARLEDSCREEN sabit gönderici yedeklilik iddiası yayımlıyor mu?",
         "LED ekran naked-eye 3D / glasses-free 3D var mı? ARLEDSCREEN sabit 3D iddiası yayımlıyor mu?",
         "LED ekran anti-yansıma / anti-glare var mı? ARLEDSCREEN sabit anti-yansıma iddiası yayımlıyor mu?",
-        "LED ekran flight case / taşıma çantası var mı? ARLEDSCREEN sabit flight case iddiası yayımlıyor mu?"
+        "LED ekran flight case / taşıma çantası var mı? ARLEDSCREEN sabit flight case iddiası yayımlıyor mu?",
+        "LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -603,7 +606,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T06:00:00Z"
+      "updatedAt": "2026-10-09T14:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:transparan-quote",
@@ -1142,7 +1145,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 94 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D/hızlı kilit/kavisli/döküm kabin/anti-yansıma/OPS/parafudr/zamanlayıcı/flight case/köşe LED/enerji sınıfı yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 95 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut/kg/°C/kontrast/rüzgâr/ölü piksel/nem/standby/depolama/CE/RoHS/ISO/UL/ETL/yangın sınıfı/IK/ASTM/garanti yılı/iade günü/teslimat süresi/gürültü-dB/Delta E/latency/parlaklık homojenliği/güç faktörü/HDCP/yedek parça stok/PoE/Gigabit/HDMI-SDI/fiber mesafe/CMS SLA/dual power/genlock/Art-Net/NDI/ön-servis/WiFi/0mm/alıcı yedeklilik/gönderici yedeklilik/ışık sensörü/canlı modül değişimi/dokunmatik/mıknatıslı modül/koruyucu kaplama/3D/hızlı kilit/kavisli/döküm kabin/anti-yansıma/OPS/parafudr/zamanlayıcı/flight case/köşe LED/enerji sınıfı/düşük mavi ışık yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1212,7 +1215,8 @@
         "LED ekran zamanlayıcı / content scheduler var mı? ARLEDSCREEN sabit zamanlayıcı iddiası yayımlıyor mu?",
         "LED ekran flight case / taşıma çantası var mı? ARLEDSCREEN sabit flight case iddiası yayımlıyor mu?",
         "LED ekran köşe LED / corner LED var mı? ARLEDSCREEN sabit köşe LED iddiası yayımlıyor mu?",
-        "LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu?"
+        "LED ekran enerji sınıfı / energy class var mı? ARLEDSCREEN sabit enerji sınıfı iddiası yayımlıyor mu?",
+        "LED ekran düşük mavi ışık / low blue light var mı? ARLEDSCREEN sabit düşük mavi ışık iddiası yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1231,7 +1235,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-09T10:00:00Z"
+      "updatedAt": "2026-10-09T14:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
