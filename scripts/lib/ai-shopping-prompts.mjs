@@ -1769,6 +1769,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Biamp yok"],
     mustNotSay: ["Biamp garantidir", "sabit Biamp True1", "tüm modeller Biamp", "DSP garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 159,
+    q: "LED ekran bird mesh / kuş filesi var mı? ARLEDSCREEN sabit bird mesh iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit bird mesh yok"],
+    mustNotSay: ["bird mesh garantidir", "sabit bird mesh True1", "tüm modeller bird mesh", "kuş filesi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

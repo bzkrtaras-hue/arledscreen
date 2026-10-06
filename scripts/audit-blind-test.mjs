@@ -2097,6 +2097,20 @@ if (
   errors.push("blind prompt #158 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Biamp yok");
 }
 
+const pBlind159 = PROMPTS.find((x) => x.id === 159);
+if (!pBlind159 || !/bird mesh|kuş filesi/i.test(pBlind159.q)) {
+  errors.push("blind prompt #159 must cover sabit bird mesh invent");
+}
+if (
+  pBlind159 &&
+  (!pBlind159.mustSay?.includes("yazılı teklif") ||
+    !pBlind159.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind159.mustSay?.includes("sabit bird mesh yok"))
+) {
+  errors.push("blind prompt #159 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit bird mesh yok");
+}
+
+
 
 }
 

@@ -200,6 +200,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 208 | 2026-10-06 | sabit Control4 #156 · ic/konferans ARD refresh · skor /468 | ✅ |
 | 209 | 2026-10-06 | sabit weep hole #157 · dis/mimari ARD refresh · skor /471 | ✅ |
 | 210 | 2026-10-06 | sabit Biamp #158 · ic/konferans ARD refresh · skor /474 | ✅ |
+| 211 | 2026-10-06 | sabit bird mesh #159 · dis/mimari ARD refresh · skor /477 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1495,3 +1496,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #158 «Biamp / DSP?» — skor **/474**; ARD **158 kör test**
 - TR/EN ic-mekan + TR/EN konferans Biamp invent · llms deny · sabit Biamp yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Biamp
+
+## Gün 211 notları
+
+- Blind #159 «bird mesh / kuş filesi?» — skor **/477**; ARD **159 kör test**
+- TR/EN dis-mekan + TR/EN mimari bird mesh invent · llms deny · sabit bird mesh yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit bird mesh
