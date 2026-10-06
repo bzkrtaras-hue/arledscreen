@@ -5,6 +5,8 @@ Kaynak: https://arledscreen.com/entity-profiles.json
 Spam blog / 81-il / uydurma rating-fiyat yok. NAP birebir.  
 PR #55 draft; invent yok. Merge paste için zorunlu değil.
 
+**Sahip Drive Doc (kopyala-yapıştır):** https://docs.google.com/document/d/1JCU3RoL-ZJeOBHl73LRPrxRijDKD4FYdUscBKGOY1jc/edit
+
 ## Sıra (P0)
 1. Google Business Profile ← `gbpDescription`
 2. LinkedIn Company About ← `linkedinAbout`
