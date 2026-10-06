@@ -4229,6 +4229,20 @@ if (
   errors.push("blind prompt #322 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Horion Interactive yok");
 }
 
+const pBlind323 = PROMPTS.find((x) => x.id === 323);
+if (!pBlind323 || !/z-flashing|Z flaşör/i.test(pBlind323.q)) {
+  errors.push("blind prompt #323 must cover sabit z-flashing invent");
+}
+if (
+  pBlind323 &&
+  (!pBlind323.mustSay?.includes("yazılı teklif") ||
+    !pBlind323.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind323.mustSay?.includes("sabit z-flashing yok"))
+) {
+  errors.push("blind prompt #323 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit z-flashing yok");
+}
+
+
 
 
 

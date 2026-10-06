@@ -364,6 +364,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 372 | 2026-10-06 | sabit Clevertouch Impact #320 · ic/konferans ARD refresh · skor /960 | ✅ |
 | 373 | 2026-10-06 | sabit cornice cleat #321 · dis/mimari ARD refresh · skor /963 | ✅ |
 | 374 | 2026-10-06 | sabit Horion Interactive #322 · ic/konferans ARD refresh · skor /966 | ✅ |
+| 375 | 2026-10-06 | sabit z-flashing #323 · dis/mimari ARD refresh · skor /969 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2643,3 +2644,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #322 «Horion Interactive / Horion HO Series?» — skor **/966**; ARD **322 kör test**
 - TR/EN ic-mekan + TR/EN konferans Horion Interactive invent · llms deny · sabit Horion Interactive yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Horion Interactive
+
+## Gün 375 notları
+
+- Blind #323 «z-flashing / Z flaşör?» — skor **/969**; ARD **323 kör test**
+- TR/EN dis-mekan + TR/EN mimari z-flashing invent · llms deny · sabit z-flashing yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit z-flashing

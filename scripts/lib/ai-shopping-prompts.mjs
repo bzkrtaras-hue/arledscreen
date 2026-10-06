@@ -3737,6 +3737,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Horion Interactive yok"],
     mustNotSay: ["Horion Interactive garantidir", "sabit Horion Interactive True1", "tüm modeller Horion Interactive", "Horion HO Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 323,
+    q: "LED ekran z-flashing / Z flaşör var mı? ARLEDSCREEN sabit z-flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit z-flashing yok"],
+    mustNotSay: ["z-flashing garantidir", "sabit z-flashing True1", "tüm modeller z-flashing", "Z flaşör garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
