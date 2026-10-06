@@ -48,7 +48,7 @@ export const CHECKS = [
       "extrasUsd 500",
       "quote-only",
       "Huidu",
-      "405 kör test",
+      "406 kör test",
     ],
     cors: true,
     contentType: "application/json",
@@ -179,7 +179,7 @@ export const CHECKS = [
       "pricedPanels",
       "hasMerchantReturnPolicy",
       "MerchantReturnNotPermitted",
-      "405 kör test",
+      "406 kör test",
       "nxtionstar",
       "aras-bozkurt",
       "/tr/rehber/",
@@ -446,9 +446,41 @@ export const CHECKS = [
   },
 ];
 
+function robotsBodyFromFunction() {
+  const fnPath = path.join(root, "functions/robots.txt.js");
+  if (!fs.existsSync(fnPath)) return null;
+  const m = fs.readFileSync(fnPath, "utf8").match(/const BODY = `([\s\S]*?)`;/);
+  return m ? m[1] : null;
+}
+
 function checkLocal(c) {
   const started = Date.now();
   const file = path.join(outDir, c.outRel);
+  // robots.txt is served by Pages Function; postbuild strips out/robots.txt.
+  if (c.id === "robots" && !fs.existsSync(file)) {
+    const text = robotsBodyFromFunction();
+    if (!text) {
+      return {
+        id: c.id,
+        url: "functions/robots.txt.js",
+        status: "MISSING",
+        ms: Date.now() - started,
+        missing: [],
+        headerGaps: [],
+        http: 0,
+      };
+    }
+    const missing = (c.mustInclude || []).filter((n) => !text.includes(n));
+    return {
+      id: c.id,
+      url: "functions/robots.txt.js",
+      status: missing.length ? "CONTENT" : "PASS",
+      ms: Date.now() - started,
+      missing,
+      headerGaps: [],
+      http: 200,
+    };
+  }
   if (!fs.existsSync(file)) {
     return {
       id: c.id,

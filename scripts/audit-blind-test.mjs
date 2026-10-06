@@ -5307,6 +5307,20 @@ if (
 ) {
   errors.push("blind prompt #405 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base apron yok");
 }
+const pBlind406 = PROMPTS.find((x) => x.id === 406);
+if (!pBlind406 || !/Crestron Flex/i.test(pBlind406.q)) {
+  errors.push("blind prompt #406 must cover sabit Crestron Flex invent");
+}
+if (
+  pBlind406 &&
+  (!pBlind406.mustSay?.includes("yazılı teklif") ||
+    !pBlind406.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind406.mustSay?.includes("sabit Crestron Flex yok"))
+) {
+  errors.push("blind prompt #406 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Crestron Flex yok");
+}
+
+
 
 
 

@@ -4733,6 +4733,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit base apron yok"],
     mustNotSay: ["base apron garantidir", "sabit base apron True1", "tüm modeller base apron", "taban eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 406,
+    q: "LED ekran Crestron Flex / Flex var mı? ARLEDSCREEN sabit Crestron Flex iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Crestron Flex yok"],
+    mustNotSay: ["Crestron Flex garantidir", "sabit Crestron Flex True1", "tüm modeller Crestron Flex", "Flex garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

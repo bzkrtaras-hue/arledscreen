@@ -447,6 +447,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 455 | 2026-10-06 | sabit gable apron #403 · dis/mimari ARD refresh · skor /1209 | ✅ |
 | 456 | 2026-10-06 | sabit Surface Hub 3 #404 · ic/konferans ARD refresh · skor /1212 | ✅ |
 | 457 | 2026-10-06 | sabit base apron #405 · dis/mimari ARD refresh · skor /1215 | ✅ |
+| 458 | 2026-10-06 | sabit Crestron Flex #406 · ic/konferans ARD refresh · skor /1218 | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti
@@ -3235,6 +3236,15 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - `verify:premerge` GREEN = yalnızca `cursor/ai-alisveris-katalog-5666` (PR #55); üretim değil
 - IndexNow: canlıda değişen URL yok → bildirim işe yaramaz; kör tur yok; Blind #N sayaç
 - Sonraki değerli adım: PR #55 **Ready → merge → CF Pages redeploy** → `smoke:live` → sonra IndexNow / Point C / kör tur
+
+
+## Gün 458 notları
+
+- Blind #406 «Crestron Flex / Flex?» — skor **/1218**; ARD **406 kör test**
+- TR/EN ic-mekan + TR/EN konferans Crestron Flex invent · llms deny · sabit Crestron Flex yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · agentRules sabit Crestron Flex
+- Canlı kapı ayrı: entity/catalog/ai-shopping/ard üretim **200** (invent yerine geçmez)
+- robots custom domain CDN HIT (Host: https://… stale); Function pages.dev doğru; TTL ~14400
 
 ## Gün 457 notları
 

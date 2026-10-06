@@ -1,7 +1,10 @@
 /**
  * robots.txt Bing/AI Allow + Host audit (Gün 24).
  *
- * Verifies out/robots.txt:
+ * Source of truth: functions/robots.txt.js (Pages Function, no-store).
+ * Static out/robots.txt is stripped in postbuild so CDN cannot serve a stale Host.
+ *
+ * Verifies:
  * - User-agent: * Allow: /
  * - Required AI/search bots each have Allow: /
  * - Host: arledscreen.com (bare hostname)
@@ -17,13 +20,20 @@ import { fileURLToPath } from "node:url";
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
 
-const robotsPath = path.join(root, "out/robots.txt");
-if (!fs.existsSync(robotsPath)) {
-  console.error("Missing out/robots.txt — run npm run build first");
+const fnPath = path.join(root, "functions/robots.txt.js");
+if (!fs.existsSync(fnPath)) {
+  console.error("Missing functions/robots.txt.js — live robots Function source");
   process.exit(1);
 }
 
-const text = fs.readFileSync(robotsPath, "utf8");
+const fnSrc = fs.readFileSync(fnPath, "utf8");
+const bodyMatch = fnSrc.match(/const BODY = `([\s\S]*?)`;/);
+if (!bodyMatch) {
+  console.error("functions/robots.txt.js: missing const BODY = `...` template");
+  process.exit(1);
+}
+
+const text = bodyMatch[1];
 const normalized = text.replace(/\r\n/g, "\n");
 
 /** Parse into blocks keyed by user-agent (lowercased). */
@@ -98,6 +108,23 @@ if (sitemap !== "https://arledscreen.com/sitemap.xml") {
   errors.push(`Sitemap must be https://arledscreen.com/sitemap.xml (got ${sitemap})`);
 }
 
+// Static out/robots.txt must stay absent so the Function owns /robots.txt.
+const robotsOut = path.join(root, "out/robots.txt");
+if (fs.existsSync(robotsOut)) {
+  errors.push("out/robots.txt must be removed (Function owns /robots.txt; static wins over Pages Function)");
+}
+
+const routesPath = path.join(root, "out/_routes.json");
+if (fs.existsSync(routesPath)) {
+  const routes = JSON.parse(fs.readFileSync(routesPath, "utf8"));
+  if (!(routes.include || []).includes("/robots.txt")) {
+    errors.push("out/_routes.json include must list /robots.txt");
+  }
+  if ((routes.exclude || []).includes("/robots.txt")) {
+    errors.push("out/_routes.json must not exclude /robots.txt");
+  }
+}
+
 if (errors.length) {
   console.error(`audit-robots: FAIL (${errors.length})`);
   for (const e of errors) console.error(" -", e);
@@ -105,5 +132,5 @@ if (errors.length) {
 }
 
 console.log(
-  `audit-robots: OK — bots_allowed=${REQUIRED.length}+* host=arledscreen.com sitemap=ok`,
+  `audit-robots: OK — Function BODY bots_allowed=${REQUIRED.length}+* host=arledscreen.com sitemap=ok`,
 );
