@@ -26,7 +26,7 @@ Skor: prompt başına **0–3** (bkz. protokol). Toplam /258.
 | Gemini | | /258 | | |
 | Perplexity | | /258 | | |
 | Bing Copilot | | /258 | | |
-| **Ortalama** | | **/258** | | Hedef ≥ 192 |
+| **Ortalama** | | **/258** | | Hedef ≥ 194 |
 
 ## Prompt bazlı ham notlar (opsiyonel)
 
