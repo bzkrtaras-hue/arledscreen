@@ -1657,6 +1657,20 @@ if (
   errors.push("blind prompt #125 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit truss clamp yok");
 }
 
+
+const pBlind126 = PROMPTS.find((x) => x.id === 126);
+if (!pBlind126 || !/scaler|ölçekleyici/i.test(pBlind126.q)) {
+  errors.push("blind prompt #126 must cover sabit scaler invent");
+}
+if (
+  pBlind126 &&
+  (!pBlind126.mustSay?.includes("yazılı teklif") ||
+    !pBlind126.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind126.mustSay?.includes("sabit scaler yok"))
+) {
+  errors.push("blind prompt #126 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit scaler yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

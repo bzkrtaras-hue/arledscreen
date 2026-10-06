@@ -1373,6 +1373,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit truss clamp yok"],
     mustNotSay: ["truss clamp garantidir", "sabit truss kelepçe", "tüm modeller truss clamp", "truss kelepçe garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 126,
+    q: "LED ekran scaler / ölçekleyici var mı? ARLEDSCREEN sabit scaler iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit scaler yok"],
+    mustNotSay: ["scaler garantidir", "sabit ölçekleyici", "tüm modeller scaler", "ölçekleyici garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

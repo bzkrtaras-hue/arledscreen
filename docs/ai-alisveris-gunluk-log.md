@@ -167,6 +167,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 175 | 2026-10-06 | sabit HDBaseT #123 · dis/mimari ARD refresh · skor /369 | ✅ |
 | 176 | 2026-10-06 | sabit video processor #124 · ic/konferans ARD refresh · skor /372 | ✅ |
 | 177 | 2026-10-06 | sabit truss clamp #125 · dis/mimari ARD refresh · skor /375 | ✅ |
+| 178 | 2026-10-06 | sabit scaler #126 · ic/konferans ARD refresh · skor /378 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1243,4 +1244,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari truss clamp invent · llms deny · sabit truss clamp yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit truss clamp
 - skor hedef Tur 1 ≥ 188/375 · Tur 2 ≥ 282/375
+
+## Gün 178 notları
+
+- Blind #126 «scaler / ölçekleyici?» — skor **/378**; ARD **126 kör test**
+- TR/EN ic-mekan + TR/EN konferans scaler invent · llms deny · sabit scaler yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit scaler
+- skor hedef Tur 1 ≥ 189/378 · Tur 2 ≥ 284/378
 
