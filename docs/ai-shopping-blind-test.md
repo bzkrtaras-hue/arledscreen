@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 479: blind #427 balcony apron)  
+Son güncelleme: 2026-10-06 (Gün 480: blind #428 MeetingBar A30)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 427 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 428 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 427 prompt (alışveriş + varlık)
+## 428 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -451,6 +451,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 425 | LED ekran jamb apron / jamb eteği var mı? ARLEDSCREEN sabit jamb apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit jamb apron yok** | jamb apron garantidir / sabit jamb apron True1 / tüm modeller jamb apron / jamb eteği garantidir |
 | 426 | LED ekran MeetingBar A20 / MeetingBar A20 var mı? ARLEDSCREEN sabit MeetingBar A20 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit MeetingBar A20 yok** | MeetingBar A20 garantidir / sabit MeetingBar A20 True1 / tüm modeller MeetingBar A20 |
 | 427 | LED ekran balcony apron / balkon eteği var mı? ARLEDSCREEN sabit balcony apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit balcony apron yok** | balcony apron garantidir / sabit balcony apron True1 / tüm modeller balcony apron / balkon eteği garantidir |
+| 428 | LED ekran MeetingBar A30 / MeetingBar A30 var mı? ARLEDSCREEN sabit MeetingBar A30 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit MeetingBar A30 yok** | MeetingBar A30 garantidir / sabit MeetingBar A30 True1 / tüm modeller MeetingBar A30 |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -461,7 +462,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1281 (427 × 0–3). Hedef tur 1 ≥ 641/1281; tur 2 (Point C sonrası) ≥ 961/1281.
+**Tur skoru** = toplam / 1284 (428 × 0–3). Hedef tur 1 ≥ 642/1284; tur 2 (Point C sonrası) ≥ 963/1284.
 
 ### Canlı tur kayıt şablonu
 
@@ -497,7 +498,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (421 /1281)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (421 /1284)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)

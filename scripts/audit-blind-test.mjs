@@ -5593,6 +5593,19 @@ if (
   errors.push("blind prompt #427 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit balcony apron yok");
 }
 
+const pBlind428 = PROMPTS.find((x) => x.id === 428);
+if (!pBlind428 || !/MeetingBar A30/i.test(pBlind428.q)) {
+  errors.push("blind prompt #428 must cover sabit MeetingBar A30 invent");
+}
+if (
+  pBlind428 &&
+  (!pBlind428.mustSay?.includes("yazılı teklif") ||
+    !pBlind428.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind428.mustSay?.includes("sabit MeetingBar A30 yok"))
+) {
+  errors.push("blind prompt #428 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit MeetingBar A30 yok");
+}
+
 
 
 
