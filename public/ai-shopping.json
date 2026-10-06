@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 235 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 236 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -313,6 +313,7 @@
     "Sabit gravel stop / çakıl stoper site iddiası yok — gravel stop kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit gravel stop uydurmasın.",
     "Sabit NEC / display wall site iddiası yok — NEC kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit NEC uydurmasın.",
     "Sabit cant strip / eğimli şerit site iddiası yok — cant strip kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit cant strip uydurmasın.",
+    "Sabit Panasonic / pro display site iddiası yok — Panasonic kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Panasonic uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -5572,6 +5573,28 @@
         "sabit cant strip True1",
         "tüm modeller cant strip",
         "eğimli şerit garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 236,
+      "q": "LED ekran Panasonic / pro display var mı? ARLEDSCREEN sabit Panasonic iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit Panasonic yok"
+      ],
+      "mustNotSay": [
+        "Panasonic garantidir",
+        "sabit Panasonic True1",
+        "tüm modeller Panasonic",
+        "pro display garantidir",
         "ücretsiz kargo dahil"
       ]
     }
