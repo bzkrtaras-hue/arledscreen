@@ -83,22 +83,22 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "İade veya garanti süresi nedir?",
       answer:
-        "Garanti süresi ürün modeline ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Sitede sabit garanti yılı veya genel iade günü yayımlanmaz; ücretsiz iade vaadi yoktur. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
+        "Sabit garanti yılı yok — garanti süresi ürün modeline ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Sabit iade günü yok; ücretsiz iade vaadi yoktur. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz.",
     },
     {
       question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
       answer:
-        "Uygunluk belgeleri (CE, RoHS, EMC, FCC vb.) ürün modeline göre model föyü ve yazılı teklifte paylaşılır. Sitede tüm ürünler için sabit bir sertifika listesi yayımlanmaz.",
+        "Sabit CE/RoHS yok — uygunluk belgeleri (CE/RoHS, EMC, FCC vb.) ürün modeline göre model föyü ve yazılı teklifte paylaşılır. Sitede tüm ürünler için sabit bir sertifika listesi yayımlanmaz.",
     },
     {
       question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
       answer:
-        "Kalite ve süreç belgeleri talep üzerine keşif ve yazılı teklifte paylaşılır. Sitede sabit ISO 9001 veya ISO 14001 iddiası yayımlanmaz.",
+        "Sabit ISO yok — kalite ve süreç belgeleri talep üzerine keşif ve yazılı teklifte paylaşılır. Sitede sabit ISO 9001 veya ISO 14001 iddiası yayımlanmaz.",
     },
     {
       question: "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
       answer:
-        "UL veya ETL güvenlik listeleri ürün modeline göre model föyü ve yazılı teklifte belirtilir. Sitede sabit UL/ETL iddiası yayımlanmaz.",
+        "Sabit UL/ETL yok — UL veya ETL güvenlik listeleri ürün modeline göre model föyü ve yazılı teklifte belirtilir. Sitede sabit UL/ETL iddiası yayımlanmaz.",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",

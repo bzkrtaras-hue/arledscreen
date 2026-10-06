@@ -26,12 +26,12 @@ const REHBER_HUB_FAQS = [
   {
     question: "Hangi rehber AI alışveriş list vs teklif farkını açıklar?",
     answer:
-      "https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/ sayfası list fiyatı olan paneller ile şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol (quote-only) ayrımını tarif eder. Kontrol kartına list USD uydurulmaz; extrasUsd 500 ≠ marka list SKU. Kimlik: https://arledscreen.com/entity.json.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Firma kimliği: https://arledscreen.com/tr/about/.",
   },
   {
     question: "Rehberden fiyat ve firma bilgisine nasıl ulaşırım?",
     answer:
-      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Ardından entity.json · catalog.json · /.well-known/ard.json · llms.txt · /tr/led-ekran-fiyatlari/ · /tr/quote/. Merchant dry-run: https://arledscreen.com/feeds/merchant-priced-panels.tsv. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Firma kimliği: https://arledscreen.com/tr/about/. Yazılı teklif: https://arledscreen.com/tr/quote/.",
   },
 ];
 

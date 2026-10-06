@@ -21,12 +21,12 @@ const BLOG_SHOPPING_FAQS = [
   {
     question: "Blog yazısındaki LED ekranın list fiyatı var mı?",
     answer:
-      "Hayır. Blog yazılarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). İade/garanti teklifte (hasMerchantReturnPolicy: MerchantReturnNotPermitted). Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Yazılı teklif: https://arledscreen.com/tr/quote/.",
   },
   {
     question: "Bu yazıdaki bilgiler fiyat listesi midir?",
     answer:
-      "https://arledscreen.com/ai-shopping.json · Kimlik: https://arledscreen.com/entity.json · Panel katalog: https://arledscreen.com/catalog.json · Blog hub: https://arledscreen.com/tr/blog/. Ücretsiz kargo yok; quote-and-contract-only iade. Uydurma TL paket yazılmaz.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Firma kimliği: https://arledscreen.com/tr/about/. Blog: https://arledscreen.com/tr/blog/.",
   },
 ];
 

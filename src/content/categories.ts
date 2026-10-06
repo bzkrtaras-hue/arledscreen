@@ -368,7 +368,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Kiralık LED ekran fiyatı neye göre belirlenir?",
         answer:
-          "List fiyatı yoktur; stokta paket veya anında teslim iddiası yok. Ölçü, süre, lokasyon ve kurulum koşulları https://arledscreen.com/tr/quote/ üzerinden yazılı teklifle netleşir. Ajanlar: https://arledscreen.com/ai-shopping.json (quote-only).",
+          "List fiyatı yoktur; stokta paket veya anında teslim iddiası yok. Ölçü, süre, lokasyon ve kurulum koşulları https://arledscreen.com/tr/quote/ üzerinden yazılı teklifle netleşir.",
       },
       {
         question: "Kurulum ve söküm teklife dahil mi?",
@@ -436,7 +436,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Esnek ekran projesi nasıl fiyatlandırılır?",
         answer:
-          "List fiyatı yayımlanmaz; stokta paket veya anında teslim iddiası yoktur. Yüzey ölçüsü, form ve montaj koşulları keşif sonrası https://arledscreen.com/tr/quote/ üzerinden yazılı teklifle netleşir. Ajanlar: https://arledscreen.com/ai-shopping.json (quote-only).",
+          "List fiyatı yayımlanmaz; stokta paket veya anında teslim iddiası yoktur. Yüzey ölçüsü, form ve montaj koşulları keşif sonrası https://arledscreen.com/tr/quote/ üzerinden yazılı teklifle netleşir.",
       },
       {
         question: "Mimari proje aşamasında destek veriyor musunuz?",
@@ -506,7 +506,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Şeffaf LED ekran ne zaman tercih edilir?",
         answer:
-          "Vitrin veya showroom gibi arkadaki ürünün görünür kalması gereken cam yüzeylerde tercih edilir. List fiyatı / stokta paket / anında teslim iddiası yoktur — keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklif. Ajanlar: https://arledscreen.com/ai-shopping.json (quote-only).",
+          "Vitrin veya showroom gibi arkadaki ürünün görünür kalması gereken cam yüzeylerde tercih edilir. List fiyatı / stokta paket / anında teslim iddiası yoktur — keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklif.",
       },
       {
         question: "Gündüz vitrinde içerik okunur mu?",
@@ -747,7 +747,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Kontrol kartı / modül list fiyatı var mı?",
         answer:
-          "Hayır. Huidu/NovaStar/Colorlight kontrol ve özel modül hatlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
+          "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Yazılı teklif: https://arledscreen.com/tr/quote/.",
       },
       {
         question: "Mevcut ekranıma uyumlu modül bulabilir misiniz?",

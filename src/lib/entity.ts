@@ -81,27 +81,27 @@ export const ENTITY_FAQS = [
   {
     question: "Yayımlanmış panel fiyatları ne zamana kadar geçerlidir?",
     answer:
-      "List fiyatı 31 Aralık 2026’ya kadar geçerlidir (kaynak: https://arledscreen.com/catalog.json). Bu tarihten sonra güncel listeyi aynı kaynaklardan kontrol edin. KDV ve nakliye hariç; ücretsiz kargo yoktur. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+      "List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: https://arledscreen.com/catalog.json). Bu tarihten sonra güncel listeyi aynı kaynaklardan kontrol edin. KDV ve nakliye hariç; ücretsiz kargo yoktur. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
   },
   {
     question: "İade veya garanti süresi nedir?",
     answer:
-      "Garanti süresi ürün modeline ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Sitede sabit garanti yılı veya genel iade günü yayımlanmaz; ücretsiz iade vaadi yoktur. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Yedek parça stok ve sevkiyat planı da yazılı teklifte netleşir.",
+      "Sabit garanti yılı yok — garanti süresi ürün modeline ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Sabit iade günü yok; ücretsiz iade vaadi yoktur. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Sabit yedek parça stok yok — stok ve sevkiyat planı yazılı teklifte netleşir.",
   },
   {
     question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
     answer:
-      "Uygunluk belgeleri (CE, RoHS, EMC, FCC vb.) ürün modeline göre model föyü ve yazılı teklifte paylaşılır. Sitede tüm ürünler için sabit bir sertifika listesi yayımlanmaz.",
+      "Sabit CE/RoHS yok — uygunluk belgeleri (CE/RoHS, EMC, FCC vb.) ürün modeline göre model föyü ve yazılı teklifte paylaşılır. Sitede tüm ürünler için sabit bir sertifika listesi yayımlanmaz.",
   },
   {
     question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
     answer:
-      "Kalite ve süreç belgeleri talep üzerine keşif ve yazılı teklifte paylaşılır. Sitede sabit ISO 9001 veya ISO 14001 iddiası yayımlanmaz.",
+      "Sabit ISO yok — kalite ve süreç belgeleri talep üzerine keşif ve yazılı teklifte paylaşılır. Sitede sabit ISO 9001 veya ISO 14001 iddiası yayımlanmaz.",
   },
   {
     question: "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
     answer:
-      "UL veya ETL güvenlik listeleri ürün modeline göre model föyü ve yazılı teklifte belirtilir. Sitede sabit UL/ETL iddiası yayımlanmaz.",
+      "Sabit UL/ETL yok — UL veya ETL güvenlik listeleri ürün modeline göre model föyü ve yazılı teklifte belirtilir. Sitede sabit UL/ETL iddiası yayımlanmaz.",
   },
 ] as const;
 
@@ -112,9 +112,9 @@ export const ENTITY_PROFILE_PACKS = {
 
 Web: https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json
-AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
+Panel fiyatları: https://arledscreen.com/ai-shopping.json · https://arledscreen.com/catalog.json
 Telefon: ${CONTACT_PHONE_DISPLAY}`,
-  instagramBio: "İstanbul LED · NXTIONSTAR · Satış+montaj · quote-only gruplar teklifle\narledscreen.com/tr/",
+  instagramBio: "İstanbul LED · NXTIONSTAR · Satış+montaj · teklifle netleşen gruplar\narledscreen.com/tr/",
   facebookAbout: ENTITY_CITE_MEDIUM,
   directoryShort: ENTITY_CITE_ONE_LINER,
   directoryLong: `${ENTITY_CITE_MEDIUM}
@@ -124,12 +124,12 @@ Telefon: ${CONTACT_PHONE_DISPLAY}
 E-posta: ${CONTACT_EMAIL}
 Web: https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json
-AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)`,
+Panel fiyatları: https://arledscreen.com/ai-shopping.json · https://arledscreen.com/catalog.json`,
   youtubeAbout: `${ENTITY_CITE_SHORT}
 
 Site: https://arledscreen.com/tr/
 Entity: https://arledscreen.com/entity.json
-AI alışveriş: https://arledscreen.com/ai-shopping.json`,
+Panel fiyatları: https://arledscreen.com/ai-shopping.json`,
 } as const;
 
 export type EntityDocument = {

@@ -32,7 +32,7 @@ const PRODUCTS_HUB_FAQS = [
   {
     question: "Ürün kataloğuna ve fiyat listesine nasıl ulaşırım?",
     answer:
-      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · https://arledscreen.com/.well-known/ard.json · Ürün hub: https://arledscreen.com/tr/products/. Marka: https://arledscreen.com/tr/nxtionstar/. Ücretsiz kargo yok; iade/garanti teklifte (MerchantReturnNotPermitted).",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Firma kimliği: https://arledscreen.com/tr/about/. Yazılı teklif: https://arledscreen.com/tr/quote/.",
   },
   {
     question: "Hangi ürün gruplarında panel list fiyatı vardır?",

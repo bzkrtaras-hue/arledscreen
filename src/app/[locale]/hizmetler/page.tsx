@@ -60,7 +60,7 @@ const FAQS = [
   {
     question: "Hizmet ve fiyat bilgisine nasıl ulaşırım?",
     answer:
-      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Hizmetler: https://arledscreen.com/tr/hizmetler/ · Teklif: https://arledscreen.com/tr/quote/. KDV/nakliye hariç; ücretsiz kargo yok; iade/garanti quote-and-contract-only; sabit teslimat süresi yok.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Firma kimliği: https://arledscreen.com/tr/about/. Yazılı teklif: https://arledscreen.com/tr/quote/.",
   },
   {
     question: "LED ekran teslimat süresi kaç gün?",

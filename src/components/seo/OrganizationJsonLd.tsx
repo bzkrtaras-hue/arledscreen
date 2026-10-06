@@ -100,7 +100,7 @@ export function OrganizationJsonLd() {
           url: absoluteUrl("/catalog.json"),
           numberOfItems: 12,
           description:
-            "Yalnızca yayımlanmış iç/dış/GOB panel listesi (shippingDetails: nakliye hariç, ücretsiz kargo yok; hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade teklif/sözleşme). Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yok — yazılı teklif.",
+            "Yayımlanmış iç/dış/GOB panel USD listesi (KDV ve nakliye hariç; ücretsiz kargo yoktur; hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade yazılı teklif/sözleşmede). Kiralık, şeffaf, esnek, poster ve kontrol gruplarında list fiyatı yoktur — yazılı teklif.",
         },
         subjectOf: [
           {
@@ -109,7 +109,7 @@ export function OrganizationJsonLd() {
             encodingFormat: "application/ld+json",
             contentUrl: absoluteUrl("/ai-shopping.json"),
             description:
-              "12 pricedPanels + agentRules + extrasUsd + returnPolicy + ücretsiz kargo yok + cite",
+              "Yayımlanmış panel fiyatları, alışveriş kuralları ve atıf kaynakları (ücretsiz kargo yok).",
           },
           {
             "@type": "DataDownload",

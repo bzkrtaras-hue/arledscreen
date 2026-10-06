@@ -32,7 +32,7 @@ const BLOG_HUB_FAQS = [
   {
     question: "Blog yazıları firma kimliğiyle nasıl bağlanır?",
     answer:
-      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). Kimlik: https://arledscreen.com/entity.json · Panel kataloğu: https://arledscreen.com/catalog.json · Blog hub: https://arledscreen.com/tr/blog/ · Kısa özet: https://arledscreen.com/llms.txt. KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Firma kimliği: https://arledscreen.com/tr/about/. Blog: https://arledscreen.com/tr/blog/. Yazılı teklif: https://arledscreen.com/tr/quote/.",
   },
 ];
 

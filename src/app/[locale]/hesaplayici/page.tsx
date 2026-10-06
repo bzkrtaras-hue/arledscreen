@@ -28,7 +28,7 @@ const HESAP_FAQS = [
   {
     question: "Hesaplayıcıdaki fiyat kesin midir?",
     answer:
-      "https://arledscreen.com/ai-shopping.json (12 pricedPanels + agentRules) · Panel USD: https://arledscreen.com/catalog.json · Kimlik: https://arledscreen.com/entity.json · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · https://arledscreen.com/.well-known/ard.json. KDV/nakliye hariç; ücretsiz kargo yok; iade quote-and-contract-only. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz; extrasUsd kontrol kartı 500 USD marka list SKU değildir — yön: /tr/quote/.",
+      "Hayır. Hesaplayıcı yaklaşık bir band gösterir. Yayımlanmış panel listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir (KDV ve nakliye hariç; ücretsiz kargo yoktur). Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir.",
   },
   {
     question: "Hesaplayıcı sonucu sipariş midir?",
@@ -38,12 +38,12 @@ const HESAP_FAQS = [
   {
     question: "m² başına sabit kW veya 3 faz zorunlu mu?",
     answer:
-      "Hayır — sabit kW/m² (0,45/0,75) veya «3 faz zorunlu» site iddiası yoktur. Güç/kesici hesaplayıcı tahmindir; kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + model föyü + yazılı teklifte. Ajanlar: https://arledscreen.com/ai-shopping.json.",
+      "Hayır — sitede sabit kW/m² veya «3 faz zorunlu» iddiası yoktur. Güç ve kesici hesabı hesaplayıcıda tahmindir; kesin çekiş ile tek/üç faz seçimi keşif, model föyü ve yazılı teklifte netleşir.",
   },
   {
     question: "LED ekran bekleme gücü / standby / idle kaç watt?",
     answer:
-      "Sabit standby yok — sitede sabit standby W, idle watt veya «5 W bekleme» yayımlanmaz. Hesaplayıcıdaki ortalama güç içerik görev tahmini ≠ standby. Kesin idle W Gaziosmanpaşa keşif + yazılı teklifte. Ajanlar: https://arledscreen.com/ai-shopping.json.",
+      "Sabit standby yok — sitede sabit bekleme (standby/idle) watt değeri yayımlanmaz. Hesaplayıcıdaki ortalama güç, içerik görevine göre tahmindir; kesin idle güç keşif ve yazılı teklifte belirtilir.",
   },
 ];
 

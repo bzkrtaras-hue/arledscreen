@@ -226,13 +226,13 @@ export default async function ModelPage({ params }: PageProps) {
         {
           question: "Bu modelin fiyatına nasıl ulaşırım?",
           answer:
-            "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · catalog.json SKU eşlemesi · entity.json kimlik. Offer shippingDetails: nakliye hariç (ücretsiz kargo yok). hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade quote-and-contract-only.",
+            "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Firma kimliği: https://arledscreen.com/tr/about/.",
         },
       ]
     : [
         {
           question: `${m.name} için list fiyatı var mı?`,
-          answer: `Hayır. Bu model quote-only’dir; panel list fiyatı yayımlanmaz. Yazılı teklif: https://arledscreen.com/tr/quote/. https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Yayımlanmış paneller: https://arledscreen.com/catalog.json. Ücretsiz kargo yok; iade teklifte.`,
+          answer: `Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Yazılı teklif: https://arledscreen.com/tr/quote/.`,
         },
         {
           question: "Bu model için list fiyatı var mı?",

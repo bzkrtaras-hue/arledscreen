@@ -52,7 +52,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       {
         question: "Huidu kontrol kartının list fiyatı var mı?",
         answer:
-          "Hayır. Huidu (ve NovaStar/Colorlight) kontrol kartlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd kontrol kartı 500 USD marka list SKU değildir. https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
+          "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Yazılı teklif: https://arledscreen.com/tr/quote/.",
       },
       {
         question: "Huidu kart hangi ekran ölçüsüne yeter?",
@@ -116,7 +116,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       {
         question: "NovaStar kontrolcünün list fiyatı var mı?",
         answer:
-          "Hayır. NovaStar (ve Huidu/Colorlight) kontrol hatlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
+          "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Yazılı teklif: https://arledscreen.com/tr/quote/.",
       },
       {
         question: "VX600 ne kadar piksel sürer?",
@@ -181,7 +181,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       {
         question: "Colorlight kontrolcünün list fiyatı var mı?",
         answer:
-          "Hayır. Colorlight (ve Huidu/NovaStar) kontrol hatlarında yayımlanmış list USD yoktur — quote-only. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. https://arledscreen.com/ai-shopping.json · teklif: https://arledscreen.com/tr/quote/.",
+          "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Yazılı teklif: https://arledscreen.com/tr/quote/.",
       },
       {
         question: "X20 ile VX20 arasındaki fark nedir?",

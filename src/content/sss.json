@@ -37,35 +37,35 @@
   },
   {
     "question": "LED ekran montajı ne kadar sürer?",
-    "answer": "Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre yazılı teklifte paylaşılır. Sitede sabit montaj gün sayısı yayımlanmaz."
+    "answer": "Sabit teslimat süresi yok — süre ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre yazılı teklifte paylaşılır."
   },
   {
     "question": "LED ekran teslimat süresi kaç gün?",
-    "answer": "Teslimat süresi ürün modeline, stok durumuna ve proje kapsamına göre yazılı teklifte belirtilir. Sitede sabit teslimat günü yayımlanmaz."
+    "answer": "Sabit teslimat süresi yok — teslimat süresi ürün modeline, stok durumuna ve proje kapsamına göre yazılı teklifte belirtilir."
   },
   {
     "question": "Garanti ve teknik servis nasıl sağlanıyor?",
-    "answer": "Garanti süresi ürün modeline ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir. Yedek parça stok ve sevkiyat planı yazılı teklifte netleşir; sitede sabit stok veya ücretsiz iade vaadi yoktur."
+    "answer": "Sabit garanti yılı yok — garanti süresi ürün modeline ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Sabit iade günü yok; ücretsiz iade vaadi yoktur. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir. Sabit yedek parça stok yok — stok ve sevkiyat planı yazılı teklifte netleşir."
   },
   {
     "question": "ARLEDSCREEN LED ekran yedek parça stokta mı?",
-    "answer": "Yedek parça planı proje bazında keşif ve yazılı teklifte belirlenir. Sitede sabit «stokta yedek» veya hızlı sevkiyat iddiası yayımlanmaz."
+    "answer": "Sabit yedek parça stok yok — yedek parça planı proje bazında keşif ve yazılı teklifte belirlenir. Sitede sabit «stokta yedek» veya hızlı sevkiyat iddiası yayımlanmaz."
   },
   {
     "question": "LED ekranda iade süresi kaç gün?",
-    "answer": "İade koşulları ürün ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Sitede sabit iade günü veya ücretsiz iade vaadi yayımlanmaz."
+    "answer": "Sabit iade günü yok — iade koşulları ürün ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Ücretsiz iade vaadi yoktur."
   },
   {
     "question": "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
-    "answer": "Uygunluk belgeleri (CE, RoHS, EMC, FCC vb.) ürün modeline göre model föyü ve yazılı teklifte paylaşılır. Sitede tüm ürünler için sabit bir sertifika listesi yayımlanmaz."
+    "answer": "Sabit CE/RoHS yok — uygunluk belgeleri (CE/RoHS, EMC, FCC vb.) ürün modeline göre model föyü ve yazılı teklifte paylaşılır. Sitede tüm ürünler için sabit bir sertifika listesi yayımlanmaz."
   },
   {
     "question": "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
-    "answer": "Kalite ve süreç belgeleri talep üzerine keşif ve yazılı teklifte paylaşılır. Sitede sabit ISO 9001 veya ISO 14001 iddiası yayımlanmaz."
+    "answer": "Sabit ISO yok — kalite ve süreç belgeleri talep üzerine keşif ve yazılı teklifte paylaşılır. Sitede sabit ISO 9001 veya ISO 14001 iddiası yayımlanmaz."
   },
   {
     "question": "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
-    "answer": "UL veya ETL güvenlik listeleri ürün modeline göre model föyü ve yazılı teklifte belirtilir. Sitede sabit UL/ETL iddiası yayımlanmaz."
+    "answer": "Sabit UL/ETL yok — UL veya ETL güvenlik listeleri ürün modeline göre model föyü ve yazılı teklifte belirtilir. Sitede sabit UL/ETL iddiası yayımlanmaz."
   },
   {
     "question": "Kiralık LED ekran hizmetiniz var mı?",

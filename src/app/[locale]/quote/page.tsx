@@ -32,7 +32,7 @@ const QUOTE_FAQS = [
   {
     question: "Yazılı teklif ne zaman gerekir?",
     answer:
-      "Nihai proje tutarı her zaman keşif sonrası yazılı teklifle kesinleşir. Yayımlanmış 12 panel için yaklaşık USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir; kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — bu form veya WhatsApp ile teklif alınır. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Yazılı teklif: https://arledscreen.com/tr/quote/.",
   },
   {
     question: "Teklif için hangi bilgiler yeterli?",
@@ -42,7 +42,7 @@ const QUOTE_FAQS = [
   {
     question: "Bu form fiyat listesi midir?",
     answer:
-      "Hayır. Ajanlar önce https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) okumalı; panel USD için https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok). Quote-only ürünlere fiyat uydurulmaz. Bu sayfa yazılı teklif kanalıdır. Keşif: https://arledscreen.com/.well-known/ard.json · Kimlik: https://arledscreen.com/entity.json.",
+      "Hayır. Bu form yazılı teklif kanalıdır; panel list fiyatı değildir. Yayımlanmış panel USD: https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json (KDV ve nakliye hariç; ücretsiz kargo yoktur). List fiyatı olmayan ürünler bu form üzerinden netleşir. Firma kimliği: https://arledscreen.com/tr/about/.",
   },
 ];
 

@@ -29,7 +29,7 @@ const CASE_SHOPPING_FAQS = [
   {
     question: "Bu referans firma ve fiyat bilgisiyle nasıl bağlanır?",
     answer:
-      "Kimlik: https://arledscreen.com/entity.json · https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; ücretsiz kargo yok; quote-and-contract-only) · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Panel katalog: https://arledscreen.com/catalog.json. Uydurma TL paket veya ücretsiz kargo iddiası yazılmaz.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. Firma kimliği: https://arledscreen.com/tr/about/. Projeler: https://arledscreen.com/tr/projelerimiz/.",
   },
   {
     question: "Benzer bir kurulum için ne yapmalıyım?",

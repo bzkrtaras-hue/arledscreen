@@ -34,19 +34,19 @@ Satın alma şu durumlarda öne çıkar:
 
 İç/dış mekân, GOB ve (projeye özel) esnek paneller satın alma tarafındadır. **Yayımlanmış** panel USD listesi [catalog.json](/catalog.json) ve [fiyat hub](/tr/led-ekran-fiyatlari/) üzerindedir; nihai tutar keşif ve yazılı teklifle kesinleşir.
 
-## 3. AI alışveriş: list fiyatı vs teklif
+## 3. List fiyatı ile yazılı teklif ayrımı
 
-Ajanlar ve asistanlar fiyat üretirken bu ayrımı bozmamalıdır:
+Satın alma panellerinde yayımlanmış liste vardır; kiralık ve bazı özel gruplarda yoktur:
 
 | Durum | Kaynak | Not |
 |---|---|---|
 | 12 priced panel (iç/dış/GOB) | [catalog.json](/catalog.json) · [Merchant TSV](/feeds/merchant-priced-panels.tsv) | Panel başı USD; KDV/nakliye hariç |
 | Kiralık LED | [Kiralık ürün](/tr/products/kiralik-led-ekran/) · [teklif](/tr/quote/) | **List fiyatı yok** — süre/lokasyon teklifi |
 | Şeffaf / transparan / poster / esnek | İlgili ürün grubu · [teklif](/tr/quote/) | **List fiyatı yok** |
-| Huidu / NovaStar / Colorlight kontrol | [Huidu](/tr/products/huidu-kontrol-kartlari/) · [NovaStar](/tr/products/novastar-kontrolculer/) · [Colorlight](/tr/products/colorlight-kontrolculer/) · [ai-shopping](/ai-shopping.json) · [teklif](/tr/quote/) | **List fiyatı yok** — extrasUsd 500 ≠ marka list SKU |
-| Firma kimliği | [entity.json](/entity.json) | NAP + cite |
+| Huidu / NovaStar / Colorlight kontrol | [Huidu](/tr/products/huidu-kontrol-kartlari/) · [NovaStar](/tr/products/novastar-kontrolculer/) · [Colorlight](/tr/products/colorlight-kontrolculer/) · [teklif](/tr/quote/) | **List fiyatı yok** — kontrol kartı tahmini marka listesi değildir |
+| Firma kimliği | [Hakkımızda](/tr/about/) · [entity.json](/entity.json) | Adres, telefon, marka |
 
-Uydurma günlük TL veya “stok paket” fiyatı eklenmez.
+Sitede uydurma günlük TL veya “stok paket” fiyatı yayımlanmaz.
 
 ## 4. Karşılaştırma
 

@@ -28,7 +28,7 @@ const GUIDE_SHOPPING_FAQS = [
   {
     question: "Panel fiyat listesine ve firma bilgisine nasıl ulaşırım?",
     answer:
-      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik/NAP: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json · Panel katalog: https://arledscreen.com/catalog.json · https://arledscreen.com/.well-known/ard.json · Özet: https://arledscreen.com/llms.txt. Ücretsiz kargo yok; iade quote-and-contract-only.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Firma kimliği: https://arledscreen.com/tr/about/.",
   },
 ];
 

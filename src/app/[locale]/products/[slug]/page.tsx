@@ -65,7 +65,7 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
         ? ""
         : `1 m² yaklaşık 19,53 panel ettiği için yalnızca modül bedeli m² başına yaklaşık ${fmtM2(lo.usd)} – ${fmtM2(hi.usd)} USD olur. `) +
       `Makinece aynı kaynak: https://arledscreen.com/catalog.json · insan okunur: https://arledscreen.com/tr/led-ekran-fiyatlari/ · hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. ` +
-      `Toplam maliyete atölye işçiliği (${CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı (${CALC_EXTRAS.controlCard} USD) ve sürücü + yazılım (${CALC_EXTRAS.driverSoftware} USD) eklenir (extrasUsd tahmini — Huidu/NovaStar/Colorlight list SKU değildir); nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`,
+      `Toplam maliyete atölye işçiliği (${CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı (${CALC_EXTRAS.controlCard} USD) ve sürücü + yazılım (${CALC_EXTRAS.driverSoftware} USD) eklenir (Kontrol kartı tahmini marka list fiyatı değildir.`,
   };
 }
 
@@ -78,13 +78,13 @@ function shoppingSourceFaq(
     return {
       question: `${name} panel fiyatlarına nasıl ulaşırım?`,
       answer:
-        `Yayımlanmış panel USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules). KDV ve nakliye hariç; Offer shippingDetails nakliyeyi list dışı bırakır (ücretsiz kargo yok). İade/garanti teklifte yazılır. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+        `Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Yaklaşık hesap: https://arledscreen.com/tr/hesaplayici/. Firma kimliği: https://arledscreen.com/tr/about/. Yazılı teklif: https://arledscreen.com/tr/quote/.`,
     };
   }
   return {
     question: `${name} için list fiyatı var mı?`,
     answer:
-      `${name} için yayımlanmış list fiyatı yoktur; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; quote-only → teklif). Hesaplayıcı extrasUsd kontrol kartı 500 USD marka list SKU değildir. Yayımlanmış paneller: https://arledscreen.com/catalog.json · https://arledscreen.com/tr/led-ekran-fiyatlari/. Kimlik: https://arledscreen.com/entity.json · Point C: https://arledscreen.com/entity-profiles.json. İade/garanti teklifte yazılır; ücretsiz kargo yok.`,
+      `${name} için yayımlanmış list fiyatı yoktur; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. https://arledscreen.com/ai-shopping.json. Hesaplayıcı Kontrol kartı tahmini marka list fiyatı değildir. Yayımlanmış paneller: https://arledscreen.com/catalog.json · https://arledscreen.com/tr/led-ekran-fiyatlari/. Kimlik: https://arledscreen.com/entity.json · https://arledscreen.com/entity-profiles.json. İade/garanti teklifte yazılır; ücretsiz kargo yok.`,
   };
 }
 

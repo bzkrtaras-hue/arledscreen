@@ -41,7 +41,7 @@ const PROJELER_FAQS = [
   {
     question: "Proje referansları firma kimliğiyle nasıl bağlanır?",
     answer:
-      "https://arledscreen.com/ai-shopping.json (agentRules: ücretsiz kargo yok) · Kimlik: https://arledscreen.com/entity.json · Projeler hub: https://arledscreen.com/tr/projelerimiz/ · Kısa özet: https://arledscreen.com/llms.txt · Panel kataloğu: https://arledscreen.com/catalog.json.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. Firma kimliği: https://arledscreen.com/tr/about/. Projeler: https://arledscreen.com/tr/projelerimiz/.",
   },
   {
     question: "Kayıtlı iller ve 81 il kapısı var mı?",

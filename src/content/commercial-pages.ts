@@ -97,7 +97,7 @@ const FAQ_PRICE_SOURCE = {
 const FAQ_AGENT_SOURCE = {
   question: "Panel fiyat listesine ve firma bilgisine nasıl ulaşırım?",
   answer:
-    "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31) · Kimlik/NAP: https://arledscreen.com/entity.json · Point C pack: https://arledscreen.com/entity-profiles.json · Panel fiyat + ürün URL: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · https://arledscreen.com/.well-known/ard.json · Kısa özet: https://arledscreen.com/llms.txt. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarda list fiyatı yok; kontrol kartına USD uydurulmaz — https://arledscreen.com/tr/quote/ üzerinden yazılı teklif alınır. İade/garanti teklifte yazılır.",
+    "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Firma kimliği: https://arledscreen.com/tr/about/. Yazılı teklif: https://arledscreen.com/tr/quote/.",
 };
 
 const CORE_CITIES = cityLinks(["istanbul", "antalya", "bursa", "izmir", "eskisehir", "manisa", "yalova"]);
@@ -363,7 +363,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Kiralık LED ekranın list fiyatı var mı?",
         answer:
-          "Hayır. Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında yayımlanmış panel/kart list fiyatı yoktur; ölçü, süre ve lokasyona göre https://arledscreen.com/tr/quote/ üzerinden yazılı teklif hazırlanır. https://arledscreen.com/ai-shopping.json (agentRules: quote-only → teklif). Satın alma panelleri için https://arledscreen.com/catalog.json geçerlidir.",
+          "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Yazılı teklif: https://arledscreen.com/tr/quote/.",
       },
       FAQ_AGENT_SOURCE,
     ],

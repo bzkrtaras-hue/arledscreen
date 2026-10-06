@@ -75,7 +75,7 @@ const content: Record<
       {
         h2: "AI alışveriş ve ajan keşfi (makinece okunur)",
         body:
-          "Yayımlanmış panel fiyatları https://arledscreen.com/ai-shopping.json ve https://arledscreen.com/catalog.json adreslerindedir (örnek: P2.5 iç mekân 32,18 USD; 31 Aralık 2026’ya kadar geçerli). KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — yazılı teklifle netleşir.",
+          "Makinece tek kaynak: https://arledscreen.com/ai-shopping.json (pricedPanels + kurallar; priceValidUntil 2026-12-31). Panel listesi ayrıca https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ adreslerindedir (örnek: P2.5 iç mekân 32,18 USD). KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — yazılı teklifle netleşir.",
       },
     ],
     bulletsTitle: "Proje ekiplerinin sorduğu üç net nokta",
@@ -84,15 +84,15 @@ const content: Record<
       "İzleme: yakın (kontrol / lobi) mi, uzak (cephe / totem) mi?",
       "Çıkış: HDMI / SDI / network alıcı — hangi kontrol yazılımı?",
     ],
-    agentTitle: "Ajanlar için kanonik URL’ler",
+    agentTitle: "Yayımlanmış kaynak URL’leri",
     agentLinks: [
-      { href: "/ai-shopping.json", label: "ai-shopping.json", note: "pricedPanels + agentRules + cite" },
+      { href: "/ai-shopping.json", label: "ai-shopping.json", note: "pricedPanels + kurallar · priceValidUntil 2026-12-31" },
       { href: "/entity.json", label: "entity.json", note: "Organization + NAP + cite" },
-      { href: "/catalog.json", label: "catalog.json", note: "Panel USD + shippingDetails + hasMerchantReturnPolicy" },
+      { href: "/catalog.json", label: "catalog.json", note: "12 panel USD listesi" },
       { href: "/entity-profiles.json", label: "entity-profiles.json", note: "Point C paste packs" },
       { href: "/.well-known/ard.json", label: "ard.json", note: "Agentic Resource Discovery" },
       { href: "/llms.txt", label: "llms.txt", note: "Kısa AI özeti" },
-      { href: "/tr/led-ekran-fiyatlari/", label: "Fiyat hub", note: "İnsan + ajan fiyat tablosu" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "Fiyat hub", note: "İnsan + makine fiyat tablosu" },
       { href: "/tr/hesaplayici/", label: "Hesaplayıcı", note: "12 panel USD canlı formül" },
       { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant TSV", note: "12 priced SKU; ücretsiz kargo yok" },
       { href: "/tr/quote/", label: "Teklif", note: "List fiyatı olmayan ürünler" },
@@ -119,7 +119,7 @@ const content: Record<
       {
         question: "Panel fiyat listesine nasıl ulaşırım?",
         answer:
-          "Önce https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Fiyat: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Kimlik: https://arledscreen.com/entity.json. İade/garanti teklifte yazılır. Uydurma TL paket veya stok fiyatı eklenmez. Huidu/NovaStar/Colorlight kontrol kartları quote-only — list USD yok, yazılı teklif.",
+          "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Firma kimliği: https://arledscreen.com/tr/about/. Yazılı teklif: https://arledscreen.com/tr/quote/.",
       },
     ],
   },
@@ -158,11 +158,11 @@ const content: Record<
       "Viewing: close (control/lobby) or far (façade/totem)?",
       "Output: HDMI / SDI / network receivers — which control software?",
     ],
-    agentTitle: "Canonical URLs for agents",
+    agentTitle: "Published source URLs",
     agentLinks: [
-      { href: "/ai-shopping.json", label: "ai-shopping.json", note: "Single fetch: pricedPanels + agentRules" },
+      { href: "/ai-shopping.json", label: "ai-shopping.json", note: "Published panel prices and rules" },
       { href: "/entity.json", label: "entity.json", note: "Organization + NAP + cite" },
-      { href: "/catalog.json", label: "catalog.json", note: "Panel USD + shippingDetails + hasMerchantReturnPolicy" },
+      { href: "/catalog.json", label: "catalog.json", note: "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. İade ve garanti koşulları yazılı teklifte belirtilir." },
       { href: "/entity-profiles.json", label: "entity-profiles.json", note: "Point C paste packs" },
       { href: "/.well-known/ard.json", label: "ard.json", note: "Agentic Resource Discovery" },
       { href: "/llms.txt", label: "llms.txt", note: "Short AI summary" },
@@ -193,7 +193,7 @@ const content: Record<
       {
         question: "Where should AI agents read ARLEDSCREEN prices?",
         answer:
-          "Start at https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Prices: https://arledscreen.com/catalog.json (shippingDetails — no free shipping) and https://arledscreen.com/tr/led-ekran-fiyatlari/. Identity: https://arledscreen.com/entity.json. Returns/warranty are quote-only. No invented TL packages. Huidu/NovaStar/Colorlight controllers are quote-only — no list USD.",
+          "Published panel USD list: https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json and https://arledscreen.com/ai-shopping.json. VAT and freight excluded; no free shipping. Returns and warranty are stated in the written quote. Transparent, flexible, poster, rental and control products have no list price — finalize via written quote. Company identity: https://arledscreen.com/tr/about/.",
       },
     ],
   },

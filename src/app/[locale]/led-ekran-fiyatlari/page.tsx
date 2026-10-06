@@ -40,7 +40,7 @@ const FAQS = [
   {
     question: "Hangi maliyetler panellerin dışında kalır?",
     answer:
-      "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir. Kontrol 500 USD hesaplayıcı extrasUsd tahminidir — Huidu/NovaStar/Colorlight list SKU değildir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
+      "Yaklaşık hesap: https://arledscreen.com/tr/hesaplayici/. Yazılı teklif: https://arledscreen.com/tr/quote/.",
   },
   {
     question: "P2.5, P4 veya P5 fiyatı nerede?",
@@ -50,12 +50,12 @@ const FAQS = [
   {
     question: "Panel fiyat listesine nasıl ulaşırım?",
     answer:
-      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; priceValidUntil 2026-12-31). Panel USD: https://arledscreen.com/catalog.json (shippingDetails: nakliye hariç, ücretsiz kargo yok) · Merchant dry-run (12 SKU): https://arledscreen.com/feeds/merchant-priced-panels.tsv · Kimlik: https://arledscreen.com/entity.json · Keşif: https://arledscreen.com/.well-known/ard.json. Quote-only gruplara (şeffaf/esnek/poster/kiralık + Huidu/NovaStar/Colorlight kontrol) fiyat uydurulmaz.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Firma kimliği: https://arledscreen.com/tr/about/.",
   },
   {
     question: "LED ekranda iade süresi kaç gün?",
     answer:
-      "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = MerchantReturnNotPermitted; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir.",
+      "Sabit iade günü yok — iade koşulları ürün ve projeye göre yazılı teklifte ve sözleşmede belirtilir. Ücretsiz iade vaadi yoktur. Yazılı teklif: https://arledscreen.com/tr/quote/.",
   },
 ];
 

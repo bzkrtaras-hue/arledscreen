@@ -26,12 +26,12 @@ const GALERI_FAQS = [
   {
     question: "Galerideki LED ekran kurulumlarının list fiyatı var mı?",
     answer:
-      "Hayır. Galeri görsellerinde uydurma paket fiyatı yoktur. Yayımlanmış panel USD: https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). https://arledscreen.com/ai-shopping.json. Proje tutarı https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte (MerchantReturnNotPermitted).",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. İade ve garanti koşulları yazılı teklifte belirtilir. Yazılı teklif: https://arledscreen.com/tr/quote/.",
   },
   {
     question: "Galeri görselleri ile fiyat listesi nasıl ilişkilendirilir?",
     answer:
-      "https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules) · Kimlik: https://arledscreen.com/entity.json · Panel katalog: https://arledscreen.com/catalog.json · Projeler: https://arledscreen.com/tr/projelerimiz/. Kontrol kartlarına list USD uydurulmaz. Ücretsiz kargo yok.",
+      "Yayımlanmış panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/, https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json adreslerindedir. KDV ve nakliye hariç; ücretsiz kargo yoktur. Şeffaf, esnek, poster, kiralık ve kontrol gruplarında list fiyatı yoktur — yazılı teklifle netleşir. Firma kimliği: https://arledscreen.com/tr/about/. Projeler: https://arledscreen.com/tr/projelerimiz/.",
   },
 ];
 
