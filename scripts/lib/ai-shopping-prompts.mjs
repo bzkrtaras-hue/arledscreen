@@ -3389,6 +3389,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hip cleat yok"],
     mustNotSay: ["hip cleat garantidir", "sabit hip cleat True1", "tüm modeller hip cleat", "mahya kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 294,
+    q: "LED ekran Dell Canvas / Canvas var mı? ARLEDSCREEN sabit Dell Canvas iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Dell Canvas yok"],
+    mustNotSay: ["Dell Canvas garantidir", "sabit Dell Canvas True1", "tüm modeller Dell Canvas", "Canvas garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

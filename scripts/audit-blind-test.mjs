@@ -3852,6 +3852,20 @@ if (
   errors.push("blind prompt #293 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip cleat yok");
 }
 
+const pBlind294 = PROMPTS.find((x) => x.id === 294);
+if (!pBlind294 || !/Dell Canvas|Canvas/i.test(pBlind294.q)) {
+  errors.push("blind prompt #294 must cover sabit Dell Canvas invent");
+}
+if (
+  pBlind294 &&
+  (!pBlind294.mustSay?.includes("yazılı teklif") ||
+    !pBlind294.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind294.mustSay?.includes("sabit Dell Canvas yok"))
+) {
+  errors.push("blind prompt #294 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Dell Canvas yok");
+}
+
+
 
 
 
