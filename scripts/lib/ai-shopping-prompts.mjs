@@ -1397,6 +1397,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit backup battery yok"],
     mustNotSay: ["backup battery garantidir", "sabit yedek batarya", "tüm modeller backup battery", "yedek batarya garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 128,
+    q: "LED ekran ribbon cable / ribbon kablo var mı? ARLEDSCREEN sabit ribbon cable iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ribbon cable yok"],
+    mustNotSay: ["ribbon cable garantidir", "sabit ribbon kablo", "tüm modeller ribbon cable", "ribbon kablo garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
