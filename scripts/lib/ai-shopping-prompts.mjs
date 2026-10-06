@@ -4565,6 +4565,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rake apron yok"],
     mustNotSay: ["rake apron garantidir", "sabit rake apron True1", "tüm modeller rake apron", "rake eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 392,
+    q: "LED ekran Seewo Board Pro / Seewo Board var mı? ARLEDSCREEN sabit Seewo Board Pro iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Seewo Board Pro yok"],
+    mustNotSay: ["Seewo Board Pro garantidir", "sabit Seewo Board Pro True1", "tüm modeller Seewo Board Pro", "Seewo Board garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

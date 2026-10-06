@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 443: blind #391 sabit rake apron invent)  
+Son güncelleme: 2026-10-06 (Gün 444: blind #392 sabit Seewo Board Pro invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 391 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 392 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 391 prompt (alışveriş + varlık)
+## 392 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -415,6 +415,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 389 | LED ekran fascia apron / fascia eteği var mı? ARLEDSCREEN sabit fascia apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit fascia apron yok** | fascia apron garantidir / sabit fascia apron True1 / tüm modeller fascia apron / fascia eteği garantidir |
 | 390 | LED ekran Horion Canvas Pro / Horion Canvas var mı? ARLEDSCREEN sabit Horion Canvas Pro iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Horion Canvas Pro yok** | Horion Canvas Pro garantidir / sabit Horion Canvas Pro True1 / tüm modeller Horion Canvas Pro / Horion Canvas garantidir |
 | 391 | LED ekran rake apron / rake eteği var mı? ARLEDSCREEN sabit rake apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit rake apron yok** | rake apron garantidir / sabit rake apron True1 / tüm modeller rake apron / rake eteği garantidir |
+| 392 | LED ekran Seewo Board Pro / Seewo Board var mı? ARLEDSCREEN sabit Seewo Board Pro iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Seewo Board Pro yok** | Seewo Board Pro garantidir / sabit Seewo Board Pro True1 / tüm modeller Seewo Board Pro / Seewo Board garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -425,7 +426,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1173. Hedef tur 1 ≥ 587/1173; tur 2 (Point C sonrası) ≥ 880/1173.
+**Tur skoru** = toplam / 1176. Hedef tur 1 ≥ 588/1176; tur 2 (Point C sonrası) ≥ 882/1176.
 
 ### Canlı tur kayıt şablonu
 

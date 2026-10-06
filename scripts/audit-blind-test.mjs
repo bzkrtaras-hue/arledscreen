@@ -5126,6 +5126,20 @@ if (
   errors.push("blind prompt #391 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit rake apron yok");
 }
 
+const pBlind392 = PROMPTS.find((x) => x.id === 392);
+if (!pBlind392 || !/Seewo Board Pro|Seewo Board/i.test(pBlind392.q)) {
+  errors.push("blind prompt #392 must cover sabit Seewo Board Pro invent");
+}
+if (
+  pBlind392 &&
+  (!pBlind392.mustSay?.includes("yazılı teklif") ||
+    !pBlind392.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind392.mustSay?.includes("sabit Seewo Board Pro yok"))
+) {
+  errors.push("blind prompt #392 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Seewo Board Pro yok");
+}
+
+
 
 
 
