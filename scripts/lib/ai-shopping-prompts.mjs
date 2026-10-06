@@ -4925,6 +4925,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit door apron yok"],
     mustNotSay: ["door apron garantidir", "sabit door apron True1", "tüm modeller door apron", "kapı eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 422,
+    q: "LED ekran Neat Pad / Neat Pad var mı? ARLEDSCREEN sabit Neat Pad iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Pad yok"],
+    mustNotSay: ["Neat Pad garantidir", "sabit Neat Pad True1", "tüm modeller Neat Pad", "Neat Pad dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
