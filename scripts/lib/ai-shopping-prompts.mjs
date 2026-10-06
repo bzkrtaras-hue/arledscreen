@@ -2861,6 +2861,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit surface cleat yok"],
     mustNotSay: ["surface cleat garantidir", "sabit surface cleat True1", "tüm modeller surface cleat", "yüzey kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 250,
+    q: "LED ekran Promethean / ActivPanel var mı? ARLEDSCREEN sabit Promethean iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Promethean yok"],
+    mustNotSay: ["Promethean garantidir", "sabit Promethean True1", "tüm modeller Promethean", "ActivPanel garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

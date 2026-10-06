@@ -3280,6 +3280,20 @@ if (
   errors.push("blind prompt #249 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit surface cleat yok");
 }
 
+const pBlind250 = PROMPTS.find((x) => x.id === 250);
+if (!pBlind250 || !/Promethean|ActivPanel/i.test(pBlind250.q)) {
+  errors.push("blind prompt #250 must cover sabit Promethean invent");
+}
+if (
+  pBlind250 &&
+  (!pBlind250.mustSay?.includes("yazılı teklif") ||
+    !pBlind250.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind250.mustSay?.includes("sabit Promethean yok"))
+) {
+  errors.push("blind prompt #250 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Promethean yok");
+}
+
+
 
 
 
