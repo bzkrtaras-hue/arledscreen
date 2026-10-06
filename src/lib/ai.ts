@@ -45,7 +45,7 @@ export interface AiCatalogFeed {
 }
 
 export interface AiShoppingIndex {
-  "@context": string[];
+  "@context": (string | Record<string, unknown>)[];
   "@type": "Organization";
   "@id": string;
   name: string;
