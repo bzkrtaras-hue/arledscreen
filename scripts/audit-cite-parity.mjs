@@ -305,7 +305,7 @@ const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.
 if (ardTxt && !/117 kör test/i.test(ardTxt)) {
   errors.push("ard.json ai-shopping discovery must cite 117 kör test intent (not stale 17–116)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
   errors.push("ard.json must not cite stale 17–116 kör test without 117");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
