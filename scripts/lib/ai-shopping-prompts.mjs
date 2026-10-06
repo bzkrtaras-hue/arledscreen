@@ -3653,6 +3653,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gutter cleat yok"],
     mustNotSay: ["gutter cleat garantidir", "sabit gutter cleat True1", "tüm modeller gutter cleat", "oluk kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 316,
+    q: "LED ekran Promethean ActivPanel / ActivPanel Nickel var mı? ARLEDSCREEN sabit Promethean ActivPanel iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Promethean ActivPanel yok"],
+    mustNotSay: ["Promethean ActivPanel garantidir", "sabit Promethean ActivPanel True1", "tüm modeller Promethean ActivPanel", "ActivPanel Nickel garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

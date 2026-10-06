@@ -4138,6 +4138,20 @@ if (
   errors.push("blind prompt #315 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gutter cleat yok");
 }
 
+const pBlind316 = PROMPTS.find((x) => x.id === 316);
+if (!pBlind316 || !/Promethean ActivPanel|ActivPanel Nickel/i.test(pBlind316.q)) {
+  errors.push("blind prompt #316 must cover sabit Promethean ActivPanel invent");
+}
+if (
+  pBlind316 &&
+  (!pBlind316.mustSay?.includes("yazılı teklif") ||
+    !pBlind316.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind316.mustSay?.includes("sabit Promethean ActivPanel yok"))
+) {
+  errors.push("blind prompt #316 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Promethean ActivPanel yok");
+}
+
+
 
 
 
