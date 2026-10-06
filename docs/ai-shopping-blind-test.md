@@ -485,6 +485,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 459 | LED ekran blade sign / bıçak tabela var mı? ARLEDSCREEN sabit blade sign iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit blade sign yok** | blade sign garantidir / sabit blade sign True1 / tüm modeller blade sign / bıçak tabela garantidir |
 | 460 | LED ekran Shure MXA920 / MXA920 var mı? ARLEDSCREEN sabit Shure MXA920 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Shure MXA920 yok** | Shure MXA920 garantidir / sabit Shure MXA920 True1 / tüm modeller Shure MXA920 / MXA920 garantidir |
 | 461 | LED ekran fascia board / saçak paneli var mı? ARLEDSCREEN sabit fascia board iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit fascia board yok** | fascia board garantidir / sabit fascia board True1 / tüm modeller fascia board / saçak paneli garantidir |
+| 462 | LED ekran QSC Core Nano / Core Nano var mı? ARLEDSCREEN sabit QSC Core Nano iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit QSC Core Nano yok** | QSC Core Nano garantidir / sabit QSC Core Nano True1 / tüm modeller QSC Core Nano / Core Nano garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -531,7 +532,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (461 /1383)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (462 /1386)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)

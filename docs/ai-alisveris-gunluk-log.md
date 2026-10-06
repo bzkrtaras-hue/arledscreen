@@ -1,3 +1,8 @@
+## Gün 514 — invent Blind #462 QSC Core Nano
+
+- Blind #462 QSC Core Nano / Core Nano · ic/konferans · prompts=462 · /1386 · build pending
+- sahibe iş yok
+
 ## Gün 513 — invent Blind #461 fascia board LIVE
 
 - Blind #461 fascia board / saçak paneli · dis/mimari · prompts=461 · /1383 · CF deploy · smoke:live 20/20

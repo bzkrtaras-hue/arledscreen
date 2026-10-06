@@ -6004,6 +6004,18 @@ if (
 ) {
   errors.push("blind prompt #461 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia board yok");
 }
+const pBlind462 = PROMPTS.find((x) => x.id === 462);
+if (!pBlind462 || !/QSC Core Nano/i.test(pBlind462.q)) {
+  errors.push("blind prompt #462 must cover sabit QSC Core Nano invent");
+}
+if (
+  pBlind462 &&
+  (!pBlind462.mustSay?.includes("yazılı teklif") ||
+    !pBlind462.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind462.mustSay?.includes("sabit QSC Core Nano yok"))
+) {
+  errors.push("blind prompt #462 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit QSC Core Nano yok");
+}
 
 
 

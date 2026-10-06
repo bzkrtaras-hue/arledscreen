@@ -5405,6 +5405,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit fascia board yok"],
     mustNotSay: ["fascia board garantidir", "sabit fascia board True1", "tüm modeller fascia board", "saçak paneli garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 462,
+    q: "LED ekran QSC Core Nano / Core Nano var mı? ARLEDSCREEN sabit QSC Core Nano iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit QSC Core Nano yok"],
+    mustNotSay: ["QSC Core Nano garantidir", "sabit QSC Core Nano True1", "tüm modeller QSC Core Nano", "Core Nano garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

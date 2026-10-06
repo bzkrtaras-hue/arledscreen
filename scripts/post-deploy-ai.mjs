@@ -74,7 +74,7 @@ console.log(
   "  catalog.json → shippingDetails · hasMerchantReturnPolicy · extrasUsdNote · quoteOnly≥9+kontrol",
 );
 console.log(
-  "  entity-profiles → Day 513 ARD 461 kör test · #461 fascia board · dis/mimari ARD refresh",
+  "  entity-profiles → Day 514 ARD 462 kör test · #462 QSC Core Nano · ic/konferans ARD refresh",
 );
 console.log(
   "  home hero → NO 81-il bayi invent · customer subcopy · FAQ cites ai-shopping + ücretsiz kargo yok",
