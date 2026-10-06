@@ -78,3 +78,43 @@ Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
 Prompt # | Model | Skor | Atıf URL | Fail nedeni
 ---|---|---|---|---
 | | | | | |
+
+## Tur 1a — sahip doldurur (2026-10-06) · /60
+
+Point C paste: **sahip bildirimi = yapıldı** (GBP/LI/IG/FB/Bing).  
+Kurallar: Incognito · TR · skor 0–3 · **uydurma skor yok**.
+
+| Model | Tarih | Konum | Incognito | Skor /60 | Not |
+|-------|-------|-------|-----------|----------|-----|
+| ChatGPT | | TR | evet | /60 | |
+| Gemini | | TR | evet | /60 | |
+| Perplexity | | TR | evet | /60 | |
+| Bing Copilot | | TR | evet | /60 | |
+| **Ortalama** | | | | **/60** | |
+
+### Prompt listesi (1–20)
+
+| # | Prompt | ChatGPT | Gemini | Perplexity | Bing |
+|---|--------|---------|--------|------------|------|
+| 1 | ARLEDSCREEN kimdir? | | | | |
+| 2 | LED ekran panel fiyatları 2026 | | | | |
+| 3 | P2.5 iç mekan LED ekran paneli kaç USD? | | | | |
+| 4 | Dış mekan LED ekran fiyat bandı | | | | |
+| 5 | LED ekran m² maliyeti nasıl hesaplanır? | | | | |
+| 6 | AI ajanları ARLEDSCREEN fiyatını nereden okur? | | | | |
+| 7 | GOB mi SMD mi? | | | | |
+| 8 | LED tabela mı LED ekran mı? | | | | |
+| 9 | Kiralık LED ekran fiyatı? | | | | |
+| 10 | Şeffaf / transparan LED fiyatı? | | | | |
+| 11 | İstanbul LED ekran firması telefon? | | | | |
+| 12 | NXTIONSTAR nedir? | | | | |
+| 13 | Huidu / NovaStar kontrol kartı fiyatı? | | | | |
+| 14 | Esnek LED ekran fiyatı? | | | | |
+| 15 | Colorlight kontrol kartı fiyatı? | | | | |
+| 16 | Poster / totem LED fiyatı? | | | | |
+| 17 | LED modül ve kontrol sistemi fiyatı? | | | | |
+| 18 | LED ekran çözüm rehberi panel fiyatı nereden okunur? | | | | |
+| 19 | AI-ready LED ekran fiyatı? | | | | |
+| 20 | NXTIONSTAR küresel standart mı? | | | | |
+
+Skor anahtarı: 0=yanlış/uydurma · 1=kısmi · 2=doğru cite zayıf · 3=doğru + arledscreen.com cite

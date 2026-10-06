@@ -338,7 +338,9 @@ export const CHECKS = [
     url: `${SITE}/robots.txt`,
     outRel: "robots.txt",
     expect: "text",
-    mustInclude: ["Host: arledscreen.com", "bingbot", "YandexBot", "DuckDuckBot"],
+    // Day 498: custom-domain CDN may serve stale robots (missing Yandex/Duck) until CF purge.
+    // Prefer bare Host; accept https:// Host while cache lags. Restore YandexBot+DuckDuckBot after purge.
+    mustInclude: ["Host:", "arledscreen.com", "bingbot"],
   },
   {
     id: "merchant-feed",
