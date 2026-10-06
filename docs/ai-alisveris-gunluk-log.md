@@ -1,3 +1,8 @@
+## Gün 472 — invent Blind #420 Neat Bar Pro
+
+- Blind #420 Neat Bar Pro · ic/konferans · prompts=420 · /1260
+- ENTITY_FAQS clean (about’ta blind yok) · Point C + Tur 1a sahip
+
 ## Gün 471 — invent Blind #419 window apron
 
 - Blind #419 window apron / pencere eteği · dis/mimari · prompts=419 · /1257

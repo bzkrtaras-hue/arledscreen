@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 461: blind #419 window apron)  
+Son güncelleme: 2026-10-06 (Gün 461: blind #420 Neat Bar Pro)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 419 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 420 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 419 prompt (alışveriş + varlık)
+## 420 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -443,6 +443,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 417 | LED ekran lintel apron / lintel eteği var mı? ARLEDSCREEN sabit lintel apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit lintel apron yok** | lintel apron garantidir / sabit lintel apron True1 / tüm modeller lintel apron / lintel eteği garantidir |
 | 418 | LED ekran Rally Bar Mini / Rally Bar Mini var mı? ARLEDSCREEN sabit Rally Bar Mini iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Rally Bar Mini yok** | Rally Bar Mini garantidir / sabit Rally Bar Mini True1 / tüm modeller Rally Bar Mini |
 | 419 | LED ekran window apron / pencere eteği var mı? ARLEDSCREEN sabit window apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit window apron yok** | window apron garantidir / sabit window apron True1 / tüm modeller window apron / pencere eteği garantidir |
+| 420 | LED ekran Neat Bar Pro / Neat Bar Pro var mı? ARLEDSCREEN sabit Neat Bar Pro iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Neat Bar Pro yok** | Neat Bar Pro garantidir / sabit Neat Bar Pro True1 / tüm modeller Neat Bar Pro |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -453,7 +454,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1257 (419 × 0–3). Hedef tur 1 ≥ 629/1257; tur 2 (Point C sonrası) ≥ 943/1257.
+**Tur skoru** = toplam / 1260 (420 × 0–3). Hedef tur 1 ≥ 630/1260; tur 2 (Point C sonrası) ≥ 945/1260.
 
 ### Canlı tur kayıt şablonu
 
@@ -489,7 +490,7 @@ Sonuçları [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores
 ## Owner sırası
 
 1. Point C paste (GBP→LI→IG→FB) — Drive Doc / `entity-profiles.json` packs (merge beklemeyin)  
-2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (419 /1257)  
+2. Tur 1a skor kartı (20 prompt /60) → sonra tam Tur 1 (420 /1260)  
 3. PR #55 merge (opsiyonel; üretim zaten deploy)  
 4. Tur 2 (Point C sonrası, ≤2026-11-04)  
    (Not: `arleds.com` bizim site değil — 301 görevi yok; kanonik `arledscreen.com`)

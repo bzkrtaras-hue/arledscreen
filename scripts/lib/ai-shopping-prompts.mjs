@@ -4901,6 +4901,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit window apron yok"],
     mustNotSay: ["window apron garantidir", "sabit window apron True1", "tüm modeller window apron", "pencere eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 420,
+    q: "LED ekran Neat Bar Pro / Neat Bar Pro var mı? ARLEDSCREEN sabit Neat Bar Pro iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neat Bar Pro yok"],
+    mustNotSay: ["Neat Bar Pro garantidir", "sabit Neat Bar Pro True1", "tüm modeller Neat Bar Pro", "Neat Bar Pro dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

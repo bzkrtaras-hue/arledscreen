@@ -127,11 +127,11 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 
 ## 4) Kör tur 1 (deploy sonrası)
 
-Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — **419** prompt × 0–3 = **/1257**  
-**mustSay (özet):** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3) · yazılı teklif + Gaziosmanpaşa + sabit X yok (#25–#408 hedge zinciri; son: #406 Crestron Flex · #407 head apron · #408 Cisco Room Bar Pro · #409 ridge apron · #410 Neat Bar · #411 coping apron · #412 Rally Bar Huddle · #413 skirt apron · #414 Logitech Meetup · #415 counter apron · #416 Neat Frame · #417 lintel apron · #418 Rally Bar Mini · #419 window apron). Tam liste: `ai-shopping-blind-test.md`.
+Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — **420** prompt × 0–3 = **/1260**  
+**mustSay (özet):** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3) · yazılı teklif + Gaziosmanpaşa + sabit X yok (#25–#408 hedge zinciri; son: #406 Crestron Flex · #407 head apron · #408 Cisco Room Bar Pro · #409 ridge apron · #410 Neat Bar · #411 coping apron · #412 Rally Bar Huddle · #413 skirt apron · #414 Logitech Meetup · #415 counter apron · #416 Neat Frame · #417 lintel apron · #418 Rally Bar Mini · #419 window apron · #420 Neat Bar Pro). Tam liste: `ai-shopping-blind-test.md`.
 Skor: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
-Hedef tur 1 ≥ **629/1257**; Point C sonrası tur 2 ≥ **943/1257**.
+Hedef tur 1 ≥ **630/1260**; Point C sonrası tur 2 ≥ **945/1260**.
 
 ## 5) Day 57–64 canlı doğrulama (özet)
 
