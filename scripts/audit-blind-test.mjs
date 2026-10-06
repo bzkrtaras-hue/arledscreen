@@ -5980,6 +5980,18 @@ if (
 ) {
   errors.push("blind prompt #459 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit blade sign yok");
 }
+const pBlind460 = PROMPTS.find((x) => x.id === 460);
+if (!pBlind460 || !/Shure MXA920/i.test(pBlind460.q)) {
+  errors.push("blind prompt #460 must cover sabit Shure MXA920 invent");
+}
+if (
+  pBlind460 &&
+  (!pBlind460.mustSay?.includes("yazılı teklif") ||
+    !pBlind460.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind460.mustSay?.includes("sabit Shure MXA920 yok"))
+) {
+  errors.push("blind prompt #460 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Shure MXA920 yok");
+}
 
 
 

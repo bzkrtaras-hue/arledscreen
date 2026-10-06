@@ -1,3 +1,8 @@
+## Gün 512 — invent Blind #460 Shure MXA920
+
+- Blind #460 Shure MXA920 / MXA920 · ic/konferans · prompts=460 · /1380 · build pending
+- sahibe iş yok
+
 ## Gün 511 — invent Blind #459 blade sign LIVE
 
 - Blind #459 blade sign / bıçak tabela · dis/mimari · prompts=459 · /1377 · CF deploy · smoke:live 20/20

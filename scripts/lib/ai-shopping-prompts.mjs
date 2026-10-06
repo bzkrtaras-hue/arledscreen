@@ -5381,6 +5381,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit blade sign yok"],
     mustNotSay: ["blade sign garantidir", "sabit blade sign True1", "tüm modeller blade sign", "bıçak tabela garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 460,
+    q: "LED ekran Shure MXA920 / MXA920 var mı? ARLEDSCREEN sabit Shure MXA920 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Shure MXA920 yok"],
+    mustNotSay: ["Shure MXA920 garantidir", "sabit Shure MXA920 True1", "tüm modeller Shure MXA920", "MXA920 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
