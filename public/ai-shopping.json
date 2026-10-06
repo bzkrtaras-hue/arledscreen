@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 87 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 88 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -165,6 +165,7 @@
     "Sabit hızlı kilit / quick lock site iddiası yok — kilit/tutturma kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit hızlı kilit uydurmasın.",
     "Sabit kavisli / curved LED site iddiası yok — kavis/radius kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit kavisli uydurmasın.",
     "Sabit döküm kabin / die-cast cabinet site iddiası yok — kabin gövde kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit döküm kabin uydurmasın.",
+    "Sabit anti-yansıma / anti-glare site iddiası yok — yüzey/optik kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit anti-yansıma uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -2168,6 +2169,28 @@
         "sabit die-cast",
         "tüm modeller die-cast",
         "die-cast garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 88,
+      "q": "LED ekran anti-yansıma / anti-glare var mı? ARLEDSCREEN sabit anti-yansıma iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit anti-yansıma yok"
+      ],
+      "mustNotSay": [
+        "anti-yansıma garantidir",
+        "sabit anti-glare",
+        "tüm modeller anti-glare",
+        "anti-glare garantidir",
         "ücretsiz kargo dahil"
       ]
     }
