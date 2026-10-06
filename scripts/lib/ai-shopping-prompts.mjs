@@ -3281,6 +3281,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit HUAWEI IdeaHub yok"],
     mustNotSay: ["HUAWEI IdeaHub garantidir", "sabit HUAWEI IdeaHub True1", "tüm modeller HUAWEI IdeaHub", "IdeaHub garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 285,
+    q: "LED ekran jamb cleat / jamb kleyt var mı? ARLEDSCREEN sabit jamb cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit jamb cleat yok"],
+    mustNotSay: ["jamb cleat garantidir", "sabit jamb cleat True1", "tüm modeller jamb cleat", "jamb kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

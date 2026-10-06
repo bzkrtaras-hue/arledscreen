@@ -3735,6 +3735,20 @@ if (
   errors.push("blind prompt #284 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HUAWEI IdeaHub yok");
 }
 
+const pBlind285 = PROMPTS.find((x) => x.id === 285);
+if (!pBlind285 || !/jamb cleat|jamb kleyt/i.test(pBlind285.q)) {
+  errors.push("blind prompt #285 must cover sabit jamb cleat invent");
+}
+if (
+  pBlind285 &&
+  (!pBlind285.mustSay?.includes("yazılı teklif") ||
+    !pBlind285.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind285.mustSay?.includes("sabit jamb cleat yok"))
+) {
+  errors.push("blind prompt #285 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit jamb cleat yok");
+}
+
+
 
 
 

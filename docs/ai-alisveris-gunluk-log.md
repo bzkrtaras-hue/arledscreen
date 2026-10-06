@@ -326,6 +326,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 334 | 2026-10-06 | sabit Webex Board #282 · ic/konferans ARD refresh · skor /846 | ✅ |
 | 335 | 2026-10-06 | sabit sill cleat #283 · dis/mimari ARD refresh · skor /849 | ✅ |
 | 336 | 2026-10-06 | sabit HUAWEI IdeaHub #284 · ic/konferans ARD refresh · skor /852 | ✅ |
+| 337 | 2026-10-06 | sabit jamb cleat #285 · dis/mimari ARD refresh · skor /855 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2377,3 +2378,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #284 «HUAWEI IdeaHub / IdeaHub?» — skor **/852**; ARD **284 kör test**
 - TR/EN ic-mekan + TR/EN konferans HUAWEI IdeaHub invent · llms deny · sabit HUAWEI IdeaHub yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit HUAWEI IdeaHub
+
+## Gün 337 notları
+
+- Blind #285 «jamb cleat / jamb kleyt?» — skor **/855**; ARD **285 kör test**
+- TR/EN dis-mekan + TR/EN mimari jamb cleat invent · llms deny · sabit jamb cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit jamb cleat
