@@ -3501,6 +3501,20 @@ if (
   errors.push("blind prompt #266 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH yok");
 }
 
+const pBlind267 = PROMPTS.find((x) => x.id === 267);
+if (!pBlind267 || !/coping cleat|parapet kleyt/i.test(pBlind267.q)) {
+  errors.push("blind prompt #267 must cover sabit coping cleat invent");
+}
+if (
+  pBlind267 &&
+  (!pBlind267.mustSay?.includes("yazılı teklif") ||
+    !pBlind267.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind267.mustSay?.includes("sabit coping cleat yok"))
+) {
+  errors.push("blind prompt #267 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit coping cleat yok");
+}
+
+
 
 
 

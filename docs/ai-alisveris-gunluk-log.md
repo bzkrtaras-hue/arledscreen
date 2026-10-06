@@ -308,6 +308,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 316 | 2026-10-06 | sabit Hisense #264 · ic/konferans ARD refresh · skor /792 | ✅ |
 | 317 | 2026-10-06 | sabit hook cleat #265 · dis/mimari ARD refresh · skor /795 | ✅ |
 | 318 | 2026-10-06 | sabit i3TOUCH #266 · ic/konferans ARD refresh · skor /798 | ✅ |
+| 319 | 2026-10-06 | sabit coping cleat #267 · dis/mimari ARD refresh · skor /801 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2251,3 +2252,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #266 «i3TOUCH / interactive display?» — skor **/798**; ARD **266 kör test**
 - TR/EN ic-mekan + TR/EN konferans i3TOUCH invent · llms deny · sabit i3TOUCH yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit i3TOUCH
+
+## Gün 319 notları
+
+- Blind #267 «coping cleat / parapet kleyt?» — skor **/801**; ARD **267 kör test**
+- TR/EN dis-mekan + TR/EN mimari coping cleat invent · llms deny · sabit coping cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit coping cleat

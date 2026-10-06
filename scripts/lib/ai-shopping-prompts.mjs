@@ -3065,6 +3065,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit i3TOUCH yok"],
     mustNotSay: ["i3TOUCH garantidir", "sabit i3TOUCH True1", "tüm modeller i3TOUCH", "interactive display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 267,
+    q: "LED ekran coping cleat / parapet kleyt var mı? ARLEDSCREEN sabit coping cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit coping cleat yok"],
+    mustNotSay: ["coping cleat garantidir", "sabit coping cleat True1", "tüm modeller coping cleat", "parapet kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 318: blind #266 sabit i3TOUCH invent)  
+Son güncelleme: 2026-10-06 (Gün 319: blind #267 sabit coping cleat invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 266 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 267 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 266 prompt (alışveriş + varlık)
+## 267 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -290,6 +290,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 264 | LED ekran Hisense / GoBoard var mı? ARLEDSCREEN sabit Hisense iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Hisense yok** | Hisense garantidir / sabit Hisense True1 / tüm modeller Hisense / GoBoard garantidir |
 | 265 | LED ekran hook cleat / kanca kleyt var mı? ARLEDSCREEN sabit hook cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit hook cleat yok** | hook cleat garantidir / sabit hook cleat True1 / tüm modeller hook cleat / kanca kleyt garantidir |
 | 266 | LED ekran i3TOUCH / interactive display var mı? ARLEDSCREEN sabit i3TOUCH iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit i3TOUCH yok** | i3TOUCH garantidir / sabit i3TOUCH True1 / tüm modeller i3TOUCH / interactive display garantidir |
+| 267 | LED ekran coping cleat / parapet kleyt var mı? ARLEDSCREEN sabit coping cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit coping cleat yok** | coping cleat garantidir / sabit coping cleat True1 / tüm modeller coping cleat / parapet kleyt garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -300,7 +301,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 798. Hedef tur 1 ≥ 399/798; tur 2 (Point C sonrası) ≥ 599/798.
+**Tur skoru** = toplam / 801. Hedef tur 1 ≥ 401/801; tur 2 (Point C sonrası) ≥ 601/801.
 
 ### Canlı tur kayıt şablonu
 
