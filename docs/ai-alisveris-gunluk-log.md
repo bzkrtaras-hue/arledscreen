@@ -328,6 +328,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 336 | 2026-10-06 | sabit HUAWEI IdeaHub #284 · ic/konferans ARD refresh · skor /852 | ✅ |
 | 337 | 2026-10-06 | sabit jamb cleat #285 · dis/mimari ARD refresh · skor /855 | ✅ |
 | 338 | 2026-10-06 | sabit Google Jamboard #286 · ic/konferans ARD refresh · skor /858 | ✅ |
+| 339 | 2026-10-06 | sabit apron cleat #287 · dis/mimari ARD refresh · skor /861 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2391,3 +2392,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #286 «Google Jamboard / Jamboard?» — skor **/858**; ARD **286 kör test**
 - TR/EN ic-mekan + TR/EN konferans Google Jamboard invent · llms deny · sabit Google Jamboard yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Google Jamboard
+
+## Gün 339 notları
+
+- Blind #287 «apron cleat / etek kleyt?» — skor **/861**; ARD **287 kör test**
+- TR/EN dis-mekan + TR/EN mimari apron cleat invent · llms deny · sabit apron cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit apron cleat

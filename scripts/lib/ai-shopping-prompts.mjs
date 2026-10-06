@@ -3305,6 +3305,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Google Jamboard yok"],
     mustNotSay: ["Google Jamboard garantidir", "sabit Google Jamboard True1", "tüm modeller Google Jamboard", "Jamboard garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 287,
+    q: "LED ekran apron cleat / etek kleyt var mı? ARLEDSCREEN sabit apron cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit apron cleat yok"],
+    mustNotSay: ["apron cleat garantidir", "sabit apron cleat True1", "tüm modeller apron cleat", "etek kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

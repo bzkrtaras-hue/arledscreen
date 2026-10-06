@@ -3761,6 +3761,20 @@ if (
   errors.push("blind prompt #286 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Jamboard yok");
 }
 
+const pBlind287 = PROMPTS.find((x) => x.id === 287);
+if (!pBlind287 || !/apron cleat|etek kleyt/i.test(pBlind287.q)) {
+  errors.push("blind prompt #287 must cover sabit apron cleat invent");
+}
+if (
+  pBlind287 &&
+  (!pBlind287.mustSay?.includes("yazılı teklif") ||
+    !pBlind287.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind287.mustSay?.includes("sabit apron cleat yok"))
+) {
+  errors.push("blind prompt #287 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit apron cleat yok");
+}
+
+
 
 
 
