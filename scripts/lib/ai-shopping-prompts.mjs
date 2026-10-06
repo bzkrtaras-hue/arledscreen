@@ -1541,6 +1541,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit guy wire yok"],
     mustNotSay: ["guy wire garantidir", "sabit guy wire True1", "tüm modeller guy wire", "gergi teli garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 140,
+    q: "LED ekran junction box / buat var mı? ARLEDSCREEN sabit junction box iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit junction box yok"],
+    mustNotSay: ["junction box garantidir", "sabit junction box True1", "tüm modeller junction box", "buat garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

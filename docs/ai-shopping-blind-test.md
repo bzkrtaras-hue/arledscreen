@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 191: blind #139 sabit guy wire invent)  
+Son güncelleme: 2026-10-06 (Gün 192: blind #140 sabit junction box invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 139 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 140 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 139 prompt (alışveriş + varlık)
+## 140 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -163,6 +163,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 137 | LED ekran Neutrik / Neutrik connector var mı? ARLEDSCREEN sabit Neutrik iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Neutrik yok** | Neutrik garantidir / sabit Neutrik True1 / tüm modeller Neutrik / Neutrik standarttır |
 | 138 | LED ekran multi-window / çoklu pencere var mı? ARLEDSCREEN sabit multi-window iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit multi-window yok** | multi-window garantidir / sabit multi-window True1 / tüm modeller multi-window / çoklu pencere garantidir |
 | 139 | LED ekran guy wire / gergi teli var mı? ARLEDSCREEN sabit guy wire iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit guy wire yok** | guy wire garantidir / sabit guy wire True1 / tüm modeller guy wire / gergi teli garantidir |
+| 140 | LED ekran junction box / buat var mı? ARLEDSCREEN sabit junction box iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit junction box yok** | junction box garantidir / sabit junction box True1 / tüm modeller junction box / buat garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -173,7 +174,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 417. Hedef tur 1 ≥ 209/417; tur 2 (Point C sonrası) ≥ 313/417.
+**Tur skoru** = toplam / 420. Hedef tur 1 ≥ 210/420; tur 2 (Point C sonrası) ≥ 315/420.
 
 ### Canlı tur kayıt şablonu
 

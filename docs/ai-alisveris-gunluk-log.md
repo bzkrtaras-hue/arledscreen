@@ -181,6 +181,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 189 | 2026-10-06 | sabit Neutrik #137 · dis/mimari ARD refresh · skor /411 | ✅ |
 | 190 | 2026-10-06 | sabit multi-window #138 · ic/konferans ARD refresh · skor /414 | ✅ |
 | 191 | 2026-10-06 | sabit guy wire #139 · dis/mimari ARD refresh · skor /417 | ✅ |
+| 192 | 2026-10-06 | sabit junction box #140 · ic/konferans ARD refresh · skor /420 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1355,4 +1356,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari guy wire invent · llms deny · sabit guy wire yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit guy wire
 - skor hedef Tur 1 ≥ 209/417 · Tur 2 ≥ 313/417
+
+## Gün 192 notları
+
+- Blind #140 «junction box / buat?» — skor **/420**; ARD **140 kör test**
+- TR/EN ic-mekan + TR/EN konferans junction box invent · llms deny · sabit junction box yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit junction box
+- skor hedef Tur 1 ≥ 210/420 · Tur 2 ≥ 315/420
 

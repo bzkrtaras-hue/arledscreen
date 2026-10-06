@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 139) errors.push(`blindTestPrompts must be 139 (got ${prompts.length})`);
+if (prompts.length !== 140) errors.push(`blindTestPrompts must be 140 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/139 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 139 kör test intent");
+if (!/140 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 140 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–138 kör test without 139");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–139 kör test without 140");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1250,6 +1250,15 @@ if (!p139 || !/guy wire|gergi teli/i.test(p139.q || "")) {
 }
 if (!/guy wire|gergi teli|sabit guy wire/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit guy wire invent");
+}
+
+// Day 192: sabit junction box / buat invent
+const p140 = (doc.blindTestPrompts || []).find((p) => p.id === 140);
+if (!p140 || !/junction box|buat/i.test(p140.q || "")) {
+  errors.push("blindTestPrompts #140 must cover sabit junction box invent");
+}
+if (!/junction box|buat|sabit junction box/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit junction box invent");
 }
 
 // Day 76: agentRules full disambiguation

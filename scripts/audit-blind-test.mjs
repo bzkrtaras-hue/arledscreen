@@ -1854,6 +1854,20 @@ if (
   errors.push("blind prompt #139 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit guy wire yok");
 }
 
+
+const pBlind140 = PROMPTS.find((x) => x.id === 140);
+if (!pBlind140 || !/junction box|buat/i.test(pBlind140.q)) {
+  errors.push("blind prompt #140 must cover sabit junction box invent");
+}
+if (
+  pBlind140 &&
+  (!pBlind140.mustSay?.includes("yazılı teklif") ||
+    !pBlind140.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind140.mustSay?.includes("sabit junction box yok"))
+) {
+  errors.push("blind prompt #140 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit junction box yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 
