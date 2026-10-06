@@ -557,6 +557,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit iade günü yok"],
     mustNotSay: ["14 gün iade garantidir", "30 gün ücretsiz iade", "sabit 14 gün iade", "MerchantReturnFiniteReturnWindow", "ücretsiz kargo dahil"],
   },
+  {
+    id: 58,
+    q: "ARLEDSCREEN LED ekran teslimat süresi kaç gün? Sitede sabit 7 iş günü / 48 saat teslimat yayımlanıyor mu?",
+    paths: [
+      "/tr/sss/",
+      "/tr/hizmetler/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit teslimat süresi yok"],
+    mustNotSay: ["7 iş günü teslimat", "48 saat teslim garantidir", "15 gün sabit teslim", "stoktan aynı gün kargo", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

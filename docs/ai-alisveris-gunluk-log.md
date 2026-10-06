@@ -99,6 +99,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 107 | 2026-10-06 | sabit ASTM/salt spray #55 · rehber fiyat ARD · skor /165 | ✅ |
 | 108 | 2026-10-06 | sabit garanti yılı #56 · AR/RU rehber ARD · skor /168 | ✅ |
 | 109 | 2026-10-06 | sabit iade günü #57 · AR/RU rehber-ic ARD · skor /171 | ✅ |
+| 110 | 2026-10-06 | sabit teslimat süresi #58 · AR/RU rehber-dis ARD · skor /174 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -698,3 +699,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Fiyat hub + SSS iade günü invent · llms deny · sabit iade günü yok
 - ARD: /ru/rehber/led-ekran + AR/RU rehber-ic · IndexNow +3 · agentRules sabit iade günü
 - skor hedef Tur 1 ≥ 86/171 · Tur 2 ≥ 129/171
+
+## Gün 110 notları
+
+- Blind #58 «teslimat süresi / 7 iş günü / 48 saat?» — skor **/174**; ARD **58 kör test**
+- SSS/hizmetler teslimat invent · llms deny · sabit teslimat süresi yok
+- ARD: AR/RU rehber-dis + AR mimari · IndexNow +3 · agentRules sabit teslimat
+- skor hedef Tur 1 ≥ 87/174 · Tur 2 ≥ 131/174

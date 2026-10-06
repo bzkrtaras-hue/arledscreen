@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/57 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 57 kör test intent (not stale 17–56)");
+if (ardTxt && !/58 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 58 kör test intent (not stale 17–57)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-6]) kör test/i.test(ardTxt) && !/57 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–56 kör test without 57");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-7]) kör test/i.test(ardTxt) && !/58 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–57 kör test without 58");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -838,6 +838,21 @@ for (const rel of [
   }
   if (/14 gün iade garantidir|30 gün ücretsiz iade|sabit 14 gün iade yayımlanır/i.test(html)) {
     errors.push(`${rel} must not invent sabit iade günü`);
+  }
+}
+
+// Day 110: sabit teslimat süresi — honesty presence
+for (const rel of [
+  "out/tr/sss/index.html",
+  "out/tr/hizmetler/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit teslimat süresi yok/i.test(html)) {
+    errors.push(`${rel} should hedge sabit teslimat süresi`);
+  }
+  if (/7 iş günü teslimat|48 saat teslim garantidir|15 gün sabit teslim|stoktan aynı gün kargo/i.test(html)) {
+    errors.push(`${rel} must not invent sabit teslimat süresi`);
   }
 }
 

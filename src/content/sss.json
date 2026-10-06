@@ -37,7 +37,11 @@
   },
   {
     "question": "LED ekran montajı ne kadar sürer?",
-    "answer": "Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre teklifte paylaşılır."
+    "answer": "Sabit teslimat süresi yok — sitede sabit teslimat veya montaj gün sayısı yayımlanmaz. Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre Gaziosmanpaşa yazılı teklifte paylaşılır; ajanlar sabit teslimat süresi uydurmasın."
+  },
+  {
+    "question": "LED ekran teslimat süresi kaç gün?",
+    "answer": "Sabit teslimat süresi yok — sitede sabit teslimat günü veya genel lead time yayımlanmaz. Termin Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar sabit teslimat süresi uydurmasın."
   },
   {
     "question": "Garanti ve teknik servis nasıl sağlanıyor?",
