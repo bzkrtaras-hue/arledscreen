@@ -1,3 +1,9 @@
+## Gün 499 — invent Blind #447 plinth apron
+
+- Blind #447 plinth apron / kaide eteği · dis/mimari · prompts=447 · /1341 · build pending
+- Point C sahip yapıldı · Tur 1a skor boş · `docs/tur-1a-prompts.md` hazır
+- Tur 1a hâlâ sahip
+
 ## Gün 498b — Point C paste sahip bildirimi + Tur 1a
 
 - Sahip: Point C paste (GBP→LI→IG→FB→Bing) **yapıldı** bildirdi · kanıt ekran görüntüsü opsiyonel

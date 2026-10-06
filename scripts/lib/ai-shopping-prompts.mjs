@@ -5225,6 +5225,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Poly Studio P15 yok"],
     mustNotSay: ["Poly Studio P15 garantidir", "sabit Poly Studio P15 True1", "tüm modeller Poly Studio P15", "Poly Studio P15 dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 447,
+    q: "LED ekran plinth apron / kaide eteği var mı? ARLEDSCREEN sabit plinth apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit plinth apron yok"],
+    mustNotSay: ["plinth apron garantidir", "sabit plinth apron True1", "tüm modeller plinth apron", "kaide eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

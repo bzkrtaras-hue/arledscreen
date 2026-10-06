@@ -85,7 +85,7 @@ User-Agent: CCBot
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-446
+# cache-bust-447
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 
@@ -97,6 +97,8 @@ export async function onRequest() {
       "Cache-Control": "no-store, must-revalidate",
       "CDN-Cache-Control": "no-store",
       "Cloudflare-CDN-Cache-Control": "no-store",
+      "Surrogate-Control": "no-store",
+      "Pragma": "no-cache",
       "Access-Control-Allow-Origin": "*",
     },
   });
