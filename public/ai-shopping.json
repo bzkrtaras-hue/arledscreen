@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 195 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 196 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -273,6 +273,7 @@
     "Sabit vapor barrier / buhar bariyeri site iddiası yok — vapor barrier kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit vapor barrier uydurmasın.",
     "Sabit Jabra / PanaCast site iddiası yok — Jabra kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Jabra uydurmasın.",
     "Sabit scupper / scupper drenaj site iddiası yok — scupper kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit scupper uydurmasın.",
+    "Sabit Meeting Owl / Owl Labs site iddiası yok — Meeting Owl kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Meeting Owl uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -4652,6 +4653,28 @@
         "sabit scupper True1",
         "tüm modeller scupper",
         "scupper drenaj garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 196,
+      "q": "LED ekran Meeting Owl / Owl Labs var mı? ARLEDSCREEN sabit Meeting Owl iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit Meeting Owl yok"
+      ],
+      "mustNotSay": [
+        "Meeting Owl garantidir",
+        "sabit Meeting Owl True1",
+        "tüm modeller Meeting Owl",
+        "Owl Labs garantidir",
         "ücretsiz kargo dahil"
       ]
     }
