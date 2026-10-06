@@ -3497,6 +3497,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Zoom Rooms Display yok"],
     mustNotSay: ["Zoom Rooms Display garantidir", "sabit Zoom Rooms Display True1", "tüm modeller Zoom Rooms Display", "Zoom Display garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 303,
+    q: "LED ekran counter cleat / counter kleyt var mı? ARLEDSCREEN sabit counter cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit counter cleat yok"],
+    mustNotSay: ["counter cleat garantidir", "sabit counter cleat True1", "tüm modeller counter cleat", "counter kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
