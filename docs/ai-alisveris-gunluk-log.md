@@ -196,6 +196,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 204 | 2026-10-06 | sabit Extron #152 · ic/konferans ARD refresh · skor /456 | ✅ |
 | 205 | 2026-10-06 | sabit wall bracket #153 · dis/mimari ARD refresh · skor /459 | ✅ |
 | 206 | 2026-10-06 | sabit AMX #154 · ic/konferans ARD refresh · skor /462 | ✅ |
+| 207 | 2026-10-06 | sabit drip edge #155 · dis/mimari ARD refresh · skor /465 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1467,3 +1468,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #154 «AMX / oda kontrol?» — skor **/462**; ARD **154 kör test**
 - TR/EN ic-mekan + TR/EN konferans AMX invent · llms deny · sabit AMX yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit AMX
+
+## Gün 207 notları
+
+- Blind #155 «drip edge / damlacık kenarı?» — skor **/465**; ARD **155 kör test**
+- TR/EN dis-mekan + TR/EN mimari drip edge invent · llms deny · sabit drip edge yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit drip edge

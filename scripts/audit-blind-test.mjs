@@ -2046,6 +2046,20 @@ if (
     !pBlind154.mustSay?.includes("sabit AMX yok"))
 ) {
   errors.push("blind prompt #154 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit AMX yok");
+
+const pBlind155 = PROMPTS.find((x) => x.id === 155);
+if (!pBlind155 || !/drip edge|damlacık kenarı/i.test(pBlind155.q)) {
+  errors.push("blind prompt #155 must cover sabit drip edge invent");
+}
+if (
+  pBlind155 &&
+  (!pBlind155.mustSay?.includes("yazılı teklif") ||
+    !pBlind155.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind155.mustSay?.includes("sabit drip edge yok"))
+) {
+  errors.push("blind prompt #155 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drip edge yok");
+}
+
 }
 
 }
