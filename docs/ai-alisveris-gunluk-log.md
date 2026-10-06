@@ -112,6 +112,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 120 | 2026-10-06 | sabit fiber mesafe #68 · TR Colorlight s20/vx20/x20 ARD · skor /204 | ✅ |
 | 121 | 2026-10-06 | sabit CMS SLA #69 · TR Huidu hd-a7/hd-c16/hd-w60 ARD · skor /207 | ✅ |
 | 122 | 2026-10-06 | sabit dual power #70 · TR esnek p1-86/p2-5 + Colorlight x40m ARD · skor /210 | ✅ |
+| 123 | 2026-10-06 | sabit genlock #71 · TR bolgeler istanbul/antalya/bursa ARD · skor /213 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -802,3 +803,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN mimari + dis-mekan dual power invent · llms deny · sabit dual power yok
 - ARD: TR esnek p1-86/p2-5 + Colorlight x40m · IndexNow +3 · agentRules sabit dual power
 - skor hedef Tur 1 ≥ 105/210 · Tur 2 ≥ 158/210
+
+## Gün 123 notları
+
+- Blind #71 «genlock / frame sync / senkron kilidi?» — skor **/213**; ARD **71 kör test**
+- TR/EN konferans + TR ic-mekan genlock invent · llms deny · sabit genlock yok
+- ARD: TR bolgeler istanbul/antalya/bursa (gerçek bölge hub; 81-il kapısı değil) · IndexNow +3 · agentRules sabit genlock
+- skor hedef Tur 1 ≥ 107/213 · Tur 2 ≥ 160/213

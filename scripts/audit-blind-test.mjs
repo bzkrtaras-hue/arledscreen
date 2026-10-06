@@ -920,6 +920,19 @@ if (
 ) {
   errors.push("blind prompt #70 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dual power yok");
 }
+
+const pBlind71 = PROMPTS.find((x) => x.id === 71);
+if (!pBlind71 || !/genlock|frame sync|senkron/i.test(pBlind71.q)) {
+  errors.push("blind prompt #71 must cover sabit genlock invent");
+}
+if (
+  pBlind71 &&
+  (!pBlind71.mustSay?.includes("yazılı teklif") ||
+    !pBlind71.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind71.mustSay?.includes("sabit genlock yok"))
+) {
+  errors.push("blind prompt #71 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit genlock yok");
+}
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

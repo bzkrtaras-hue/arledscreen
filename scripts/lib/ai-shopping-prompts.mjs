@@ -713,6 +713,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit dual power yok"],
     mustNotSay: ["dual power garantidir", "hot-swap PSU garantidir", "sabit redundant PSU", "tüm modeller dual power", "ücretsiz kargo dahil"],
   },
+  {
+    id: 71,
+    q: "LED ekran genlock / frame sync / senkron kilidi var mı? ARLEDSCREEN sabit genlock veya PTP sync iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit genlock yok"],
+    mustNotSay: ["genlock garantidir", "sabit frame sync", "tüm modeller genlock", "PTP sync garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
