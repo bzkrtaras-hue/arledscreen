@@ -1,6 +1,6 @@
-## Gün 482 — invent Blind #430 Room Kit Plus
+## Gün 482 — invent Blind #430 Room Kit Plus LIVE
 
-- Blind #430 Room Kit Plus · ic/konferans · prompts=430 · /1290
+- Blind #430 Room Kit Plus · ic/konferans · prompts=430 · /1290 · CF deploy · smoke:live GREEN · IndexNow 193×
 - Point C + Tur 1a hâlâ sahip
 
 ## Gün 481 — invent Blind #429 canopy apron LIVE

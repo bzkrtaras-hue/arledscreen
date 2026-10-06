@@ -2,18 +2,18 @@
 
 Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md)  
 Hedef: Tur 1 (canlı 200 sonrası) ≥ **644/1290** · Tur 2 (Point C sonrası, ≤2026-11-04) ≥ **966/1290**  
-Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (429 prompt)
+Kaynak prompt’lar: `scripts/lib/ai-shopping-prompts.mjs` (430 prompt)
 
 ## Tur 1 — canlı JSON 200 sonrası (merge zorunlu değil; PR #55 ready)
 
 ### Sahip tur 1 açılış (2026-10-06)
 - Canlı kapı: entity/catalog/ai-shopping/ard **200**; robots Host bare (3× BYPASS)
-- Prompt kaynağı: canlı `https://arledscreen.com/ai-shopping.json` → `blindTestPrompts` (**429**)
+- Prompt kaynağı: canlı `https://arledscreen.com/ai-shopping.json` → `blindTestPrompts` (**430**)
 - Point C paste paralel veya tur 1 sonrası; tur 2 Point C sonrası
 - Skor satırlarını aşağıdaki tabloya doldur (ajan uydurma skor yazmaz)
 
 
-Koşullar: incognito · TR konum tercih · aynı 429 prompt · yanıtta URL/atıf not et.
+Koşullar: incognito · TR konum tercih · aynı 430 prompt · yanıtta URL/atıf not et.
 
 Skor: prompt başına **0–3** (bkz. protokol). Toplam /1290.
 
@@ -28,7 +28,7 @@ Skor: prompt başına **0–3** (bkz. protokol). Toplam /1290.
 ## Tur 1a — P0 hızlı ölçüm (20 prompt · /60)
 
 Canlı kaynak: https://arledscreen.com/ai-shopping.json (`blindTestPrompts` #1–#20), çekim 2026-10-06.  
-Tam suite hâlâ 429 prompt /1290 (`ai-shopping-blind-test.md`). Bu tablo sahip için **ilk gün** ölçümü — uydurma skor yok.
+Tam suite hâlâ 430 prompt /1290 (`ai-shopping-blind-test.md`). Bu tablo sahip için **ilk gün** ölçümü — uydurma skor yok.
 
 Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
 
