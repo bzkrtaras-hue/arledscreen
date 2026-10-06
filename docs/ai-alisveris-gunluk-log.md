@@ -1,4 +1,11 @@
 
+## Gün 458d — kör tur P0 + sameAs
+
+- Tur 1a: canlı ai-shopping #1–#20 → skor kartı /60 (sahip doldurur)
+- sameAs IG/FB/LinkedIn GET **200**; arleds.com TLS fail → 301 yok
+- Invent/deploy/purge/merge yok; PR #55 draft
+
+
 ## Gün 458c — Point C / kör tur (merge’siz)
 
 - Canlı JSON 200 + robots 3× BYPASS bare Host doğrulandı
@@ -481,6 +488,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 457 | 2026-10-06 | sabit base apron #405 · dis/mimari ARD refresh · skor /1215 | ✅ |
 | 458b | 2026-10-06 | smoke:live 20/20 · robots bare Host · IndexNow 173×200 · Point C packs --live · invent yok | ✅ |
 | 458c | 2026-10-06 | Point C paste sırası + kör tur 1 merge’siz açıldı · invent/deploy yok · PR draft | ✅ |
+| 458d | 2026-10-06 | Tur 1a P0 20-prompt skor kartı · sameAs 200 · arleds TLS fail · invent yok | ✅ |
 | 453b | 2026-10-06 | IndexNow: live-200 + değişmiş artefact + günde bir · 403/422/429 sahip listesi | ✅ |
 
 ## Gün 24–28 özeti

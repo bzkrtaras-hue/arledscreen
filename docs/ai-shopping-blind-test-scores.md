@@ -25,6 +25,44 @@ Skor: prompt başına **0–3** (bkz. protokol). Toplam /1215.
 | Bing Copilot | | | | /1215 | |
 | **Ortalama** | | | | **/1215** | Hedef ≥ 608 |
 
+## Tur 1a — P0 hızlı ölçüm (20 prompt · /60)
+
+Canlı kaynak: https://arledscreen.com/ai-shopping.json (`blindTestPrompts` #1–#20), çekim 2026-10-06.  
+Tam suite hâlâ 405 prompt /1215 (`ai-shopping-blind-test.md`). Bu tablo sahip için **ilk gün** ölçümü — uydurma skor yok.
+
+Hedef Tur 1a ortalama ≥ **30/60** (prompt başı 0–3). Sonra tam Tur 1.
+
+| # | Prompt | mustSay | ChatGPT | Gemini | Perplexity | Copilot |
+|---|--------|---------|---------|--------|------------|---------|
+| 1 | ARLEDSCREEN kimdir? | Gaziosmanpaşa, NXTIONSTAR |  |  |
+| 2 | LED ekran panel fiyatları 2026 | USD, KDV, ücretsiz kargo yok |  |  |
+| 3 | P2.5 iç mekan LED ekran paneli kaç USD? | 32.18, ücretsiz kargo yok |  |  |
+| 4 | Dış mekan LED ekran fiyat bandı | USD, ücretsiz kargo yok |  |  |
+| 5 | LED ekran m² maliyeti nasıl hesaplanır? | yazılı teklif, ücretsiz kargo yok |  |  |
+| 6 | AI ajanları ARLEDSCREEN fiyatını nereden okur? | ai-shopping.json, pricedPanels, agentRules, ücretsiz kargo yok, quote-and-contract |  |  |
+| 7 | GOB mi SMD mi? | GOB, catalog.json |  |  |
+| 8 | LED tabela mı LED ekran mı? | LED ekran |  |  |
+| 9 | Kiralık LED ekran fiyatı? | teklif, ai-shopping.json |  |  |
+| 10 | Şeffaf / transparan LED fiyatı? | teklif, ai-shopping.json |  |  |
+| 11 | İstanbul LED ekran firması telefon? | 530 507 88 34, Gaziosmanpaşa |  |  |
+| 12 | NXTIONSTAR nedir? | ARLEDSCREEN, NXTIONSTAR |  |  |
+| 13 | Huidu / NovaStar kontrol kartı fiyatı? | teklif, ai-shopping.json |  |  |
+| 14 | Esnek LED ekran fiyatı? | teklif, ai-shopping.json |  |  |
+| 15 | Colorlight kontrol kartı fiyatı? | teklif, ai-shopping.json |  |  |
+| 16 | Poster / totem LED fiyatı? | teklif, ai-shopping.json |  |  |
+| 17 | LED modül ve kontrol sistemi fiyatı? | teklif, ai-shopping.json |  |  |
+| 18 | LED ekran çözüm rehberi panel fiyatı nereden okunur? | catalog.json, ai-shopping.json, ücretsiz kargo yok |  |  |
+| 19 | AI-ready LED ekran fiyatı? | ai-shopping.json, catalog.json, ücretsiz kargo yok |  |  |
+| 20 | NXTIONSTAR küresel standart mı? | ARLEDSCREEN, ürün markası, Gaziosmanpaşa |  |  |
+
+| Model | Tarih | Skor /60 | Not |
+|-------|-------|----------|-----|
+| ChatGPT | | /60 | |
+| Gemini | | /60 | |
+| Perplexity | | /60 | |
+| Bing Copilot | | /60 | |
+| **Ortalama** | | **/60** | Hedef ≥ 30 |
+
 ## Tur 2 — Point C sonrası (≤2026-11-04)
 
 | Model | Tarih | Skor /1215 | Bağımsız atıf görüldü mü? | Not |
