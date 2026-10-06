@@ -413,6 +413,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 421 | 2026-10-06 | sabit chimney cricket flashing #369 · dis/mimari ARD refresh · skor /1107 | ✅ |
 | 422 | 2026-10-06 | sabit Planar UltraRes #370 · ic/konferans ARD refresh · skor /1110 | ✅ |
 | 423 | 2026-10-06 | sabit step apron #371 · dis/mimari ARD refresh · skor /1113 | ✅ |
+| 424 | 2026-10-06 | sabit i3TOUCH P2 #372 · ic/konferans ARD refresh · skor /1116 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2986,3 +2987,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #371 «step apron / basamak eteği?» — skor **/1113**; ARD **371 kör test**
 - TR/EN dis-mekan + TR/EN mimari step apron invent · llms deny · sabit step apron yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit step apron
+
+## Gün 424 notları
+
+- Blind #372 «i3TOUCH P2 / i3TOUCH P2+?» — skor **/1116**; ARD **372 kör test**
+- TR/EN ic-mekan + TR/EN konferans i3TOUCH P2 invent · llms deny · sabit i3TOUCH P2 yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit i3TOUCH P2

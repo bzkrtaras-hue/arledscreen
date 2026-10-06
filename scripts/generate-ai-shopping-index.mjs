@@ -106,7 +106,7 @@ const doc = {
   "@id": `${SITE}/ai-shopping.json`,
   name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
   description:
-    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 371 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+    "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 372 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   url: `${SITE}/ai-shopping.json`,
   creator: { "@id": `${SITE}/#organization` },
   isBasedOn: [`${SITE}/entity.json`, `${SITE}/catalog.json`, `${SITE}/.well-known/ard.json`],
@@ -487,6 +487,7 @@ const doc = {
     "Sabit chimney cricket flashing / baca cricket flaşör site iddiası yok — chimney cricket flashing kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit chimney cricket flashing uydurmasın.",
     "Sabit Planar UltraRes / Planar UltraRes X site iddiası yok — Planar UltraRes kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Planar UltraRes uydurmasın.",
     "Sabit step apron / basamak eteği site iddiası yok — step apron kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit step apron uydurmasın.",
+    "Sabit i3TOUCH P2 / i3TOUCH P2+ site iddiası yok — i3TOUCH P2 kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit i3TOUCH P2 uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok.",
   ],
   pricedPanels,

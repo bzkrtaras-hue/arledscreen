@@ -4325,6 +4325,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit step apron yok"],
     mustNotSay: ["step apron garantidir", "sabit step apron True1", "tüm modeller step apron", "basamak eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 372,
+    q: "LED ekran i3TOUCH P2 / i3TOUCH P2+ var mı? ARLEDSCREEN sabit i3TOUCH P2 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit i3TOUCH P2 yok"],
+    mustNotSay: ["i3TOUCH P2 garantidir", "sabit i3TOUCH P2 True1", "tüm modeller i3TOUCH P2", "i3TOUCH P2+ garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

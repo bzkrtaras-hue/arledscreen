@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 423: blind #371 sabit step apron invent)  
+Son güncelleme: 2026-10-06 (Gün 424: blind #372 sabit i3TOUCH P2 invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 371 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 372 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 371 prompt (alışveriş + varlık)
+## 372 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -395,6 +395,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 369 | LED ekran chimney cricket flashing / baca cricket flaşör var mı? ARLEDSCREEN sabit chimney cricket flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit chimney cricket flashing yok** | chimney cricket flashing garantidir / sabit chimney cricket flashing True1 / tüm modeller chimney cricket flashing / baca cricket flaşör garantidir |
 | 370 | LED ekran Planar UltraRes / Planar UltraRes X var mı? ARLEDSCREEN sabit Planar UltraRes iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Planar UltraRes yok** | Planar UltraRes garantidir / sabit Planar UltraRes True1 / tüm modeller Planar UltraRes / Planar UltraRes X garantidir |
 | 371 | LED ekran step apron / basamak eteği var mı? ARLEDSCREEN sabit step apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit step apron yok** | step apron garantidir / sabit step apron True1 / tüm modeller step apron / basamak eteği garantidir |
+| 372 | LED ekran i3TOUCH P2 / i3TOUCH P2+ var mı? ARLEDSCREEN sabit i3TOUCH P2 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit i3TOUCH P2 yok** | i3TOUCH P2 garantidir / sabit i3TOUCH P2 True1 / tüm modeller i3TOUCH P2 / i3TOUCH P2+ garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -405,7 +406,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1113. Hedef tur 1 ≥ 557/1113; tur 2 (Point C sonrası) ≥ 835/1113.
+**Tur skoru** = toplam / 1116. Hedef tur 1 ≥ 558/1116; tur 2 (Point C sonrası) ≥ 837/1116.
 
 ### Canlı tur kayıt şablonu
 
