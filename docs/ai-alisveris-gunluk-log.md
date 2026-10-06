@@ -1,3 +1,10 @@
+## Deploy race guard — 2026-10-06
+
+- Kök neden: `.github/workflows/deploy-cloudflare-pages.yml` her `main` push’ta CF Production yazar
+- main (GEO’suz) → canlı llms/sitemap ezilir
+- Guard eklendi: deploy öncesi `out/llms.txt` + `out/sitemap.xml` AI artefakt zorunlu; live smoke llms/sitemap
+- **Kalıcı: PR #55 merge** (guard + GEO içeriği main’e girmeden yarış sürer)
+
 ## Kritik: production overwrite — 2026-10-06
 
 - `main` commit `7ca5d87` CF Production’a yazıldı → canlı `llms.txt` / `sitemap` AI artefaktları **ezildi**
