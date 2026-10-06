@@ -1812,6 +1812,20 @@ if (
   errors.push("blind prompt #136 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit KVM yok");
 }
 
+
+const pBlind137 = PROMPTS.find((x) => x.id === 137);
+if (!pBlind137 || !/Neutrik/i.test(pBlind137.q)) {
+  errors.push("blind prompt #137 must cover sabit Neutrik invent");
+}
+if (
+  pBlind137 &&
+  (!pBlind137.mustSay?.includes("yazılı teklif") ||
+    !pBlind137.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind137.mustSay?.includes("sabit Neutrik yok"))
+) {
+  errors.push("blind prompt #137 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neutrik yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 

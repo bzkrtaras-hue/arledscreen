@@ -1505,6 +1505,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit KVM yok"],
     mustNotSay: ["KVM garantidir", "sabit KVM switch", "tüm modeller KVM", "KVM switch garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 137,
+    q: "LED ekran Neutrik / Neutrik connector var mı? ARLEDSCREEN sabit Neutrik iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Neutrik yok"],
+    mustNotSay: ["Neutrik garantidir", "sabit Neutrik True1", "tüm modeller Neutrik", "Neutrik standarttır", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
