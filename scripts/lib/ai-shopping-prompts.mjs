@@ -5009,6 +5009,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit MeetingBar A30 yok"],
     mustNotSay: ["MeetingBar A30 garantidir", "sabit MeetingBar A30 True1", "tüm modeller MeetingBar A30", "MeetingBar A30 dahildir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 429,
+    q: "LED ekran canopy apron / kanopi eteği var mı? ARLEDSCREEN sabit canopy apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit canopy apron yok"],
+    mustNotSay: ["canopy apron garantidir", "sabit canopy apron True1", "tüm modeller canopy apron", "kanopi eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
