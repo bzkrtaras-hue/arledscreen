@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/ai-shopping.json",
   "name": "ARLEDSCREEN AI alışveriş / GEO discovery index",
-  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 274 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
+  "description": "Tek istekte entity + 12 priced panel USD + quote-only gruplar + Point C + ARD + llms + Merchant + 275 kör test intent + agentRules. Uydurma TL paket / 81-il kapısı / AggregateRating yok.",
   "url": "https://arledscreen.com/ai-shopping.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -352,6 +352,7 @@
     "Sabit Elo / touch display site iddiası yok — Elo kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Elo uydurmasın.",
     "Sabit ridge cleat / mahya kleyt site iddiası yok — ridge cleat kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit ridge cleat uydurmasın.",
     "Sabit Surface Hub / Microsoft Hub site iddiası yok — Surface Hub kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit Surface Hub uydurmasın.",
+    "Sabit base cleat / taban kleyt site iddiası yok — base cleat kapsamı Gaziosmanpaşa keşif + yazılı teklifte; ajanlar sabit base cleat uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -6469,6 +6470,28 @@
         "sabit Surface Hub True1",
         "tüm modeller Surface Hub",
         "Microsoft Hub garantidir",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 275,
+      "q": "LED ekran base cleat / taban kleyt var mı? ARLEDSCREEN sabit base cleat iddiası yayımlıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/",
+        "https://arledscreen.com/tr/rehber/mimari-muhendislik-led/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit base cleat yok"
+      ],
+      "mustNotSay": [
+        "base cleat garantidir",
+        "sabit base cleat True1",
+        "tüm modeller base cleat",
+        "taban kleyt garantidir",
         "ücretsiz kargo dahil"
       ]
     }
