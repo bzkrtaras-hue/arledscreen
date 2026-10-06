@@ -2045,6 +2045,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit chemical anchor yok"],
     mustNotSay: ["chemical anchor garantidir", "sabit chemical anchor True1", "tüm modeller chemical anchor", "kimyasal dübel garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 182,
+    q: "LED ekran Solstice / kablosuz collab var mı? ARLEDSCREEN sabit Solstice iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Solstice yok"],
+    mustNotSay: ["Solstice garantidir", "sabit Solstice True1", "tüm modeller Solstice", "kablosuz collab garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

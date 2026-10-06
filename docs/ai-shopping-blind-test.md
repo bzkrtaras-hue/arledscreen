@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 233: blind #181 sabit chemical anchor invent)  
+Son güncelleme: 2026-10-06 (Gün 234: blind #182 sabit Solstice invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 181 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 182 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 181 prompt (alışveriş + varlık)
+## 182 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -205,6 +205,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 179 | LED ekran seismic brace / sismik destek var mı? ARLEDSCREEN sabit seismic brace iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit seismic brace yok** | seismic brace garantidir / sabit seismic brace True1 / tüm modeller seismic brace / sismik destek garantidir |
 | 180 | LED ekran AirMedia / kablosuz paylaşım var mı? ARLEDSCREEN sabit AirMedia iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit AirMedia yok** | AirMedia garantidir / sabit AirMedia True1 / tüm modeller AirMedia / kablosuz paylaşım garantidir |
 | 181 | LED ekran chemical anchor / kimyasal dübel var mı? ARLEDSCREEN sabit chemical anchor iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit chemical anchor yok** | chemical anchor garantidir / sabit chemical anchor True1 / tüm modeller chemical anchor / kimyasal dübel garantidir |
+| 182 | LED ekran Solstice / kablosuz collab var mı? ARLEDSCREEN sabit Solstice iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Solstice yok** | Solstice garantidir / sabit Solstice True1 / tüm modeller Solstice / kablosuz collab garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -215,7 +216,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 543. Hedef tur 1 ≥ 272/543; tur 2 (Point C sonrası) ≥ 408/543.
+**Tur skoru** = toplam / 546. Hedef tur 1 ≥ 273/546; tur 2 (Point C sonrası) ≥ 410/546.
 
 ### Canlı tur kayıt şablonu
 

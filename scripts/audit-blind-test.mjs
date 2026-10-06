@@ -2396,6 +2396,20 @@ if (
   errors.push("blind prompt #181 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chemical anchor yok");
 }
 
+const pBlind182 = PROMPTS.find((x) => x.id === 182);
+if (!pBlind182 || !/Solstice|kablosuz collab/i.test(pBlind182.q)) {
+  errors.push("blind prompt #182 must cover sabit Solstice invent");
+}
+if (
+  pBlind182 &&
+  (!pBlind182.mustSay?.includes("yazılı teklif") ||
+    !pBlind182.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind182.mustSay?.includes("sabit Solstice yok"))
+) {
+  errors.push("blind prompt #182 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Solstice yok");
+}
+
+
 
 
 
