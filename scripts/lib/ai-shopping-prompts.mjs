@@ -3797,6 +3797,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cap flashing yok"],
     mustNotSay: ["cap flashing garantidir", "sabit cap flashing True1", "tüm modeller cap flashing", "kapak flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 328,
+    q: "LED ekran Elo Interactive / Elo I-Series var mı? ARLEDSCREEN sabit Elo Interactive iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Elo Interactive yok"],
+    mustNotSay: ["Elo Interactive garantidir", "sabit Elo Interactive True1", "tüm modeller Elo Interactive", "Elo I-Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

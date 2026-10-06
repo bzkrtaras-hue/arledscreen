@@ -4294,6 +4294,20 @@ if (
   errors.push("blind prompt #327 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cap flashing yok");
 }
 
+const pBlind328 = PROMPTS.find((x) => x.id === 328);
+if (!pBlind328 || !/Elo Interactive|Elo I-Series/i.test(pBlind328.q)) {
+  errors.push("blind prompt #328 must cover sabit Elo Interactive invent");
+}
+if (
+  pBlind328 &&
+  (!pBlind328.mustSay?.includes("yazılı teklif") ||
+    !pBlind328.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind328.mustSay?.includes("sabit Elo Interactive yok"))
+) {
+  errors.push("blind prompt #328 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Elo Interactive yok");
+}
+
+
 
 
 
