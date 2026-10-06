@@ -2441,6 +2441,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Lifesize yok"],
     mustNotSay: ["Lifesize garantidir", "sabit Lifesize True1", "tüm modeller Lifesize", "video room garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 215,
+    q: "LED ekran step flashing / basamak flaş var mı? ARLEDSCREEN sabit step flashing iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit step flashing yok"],
+    mustNotSay: ["step flashing garantidir", "sabit step flashing True1", "tüm modeller step flashing", "basamak flaş garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
