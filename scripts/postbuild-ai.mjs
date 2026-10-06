@@ -371,9 +371,18 @@ function main() {
     writeJson(dir, "ai-shopping.json", ai);
   }
 
-  // Point C paste packs must survive CF deploy (live surface, not agent runbooks).
+  // Entity + Point C paste packs must survive CF deploy (live surface, not agent runbooks).
+  if (!copyPublicToOut("entity.json")) {
+    console.warn("postbuild-ai: public/entity.json missing — entity surface not copied");
+  }
   if (!copyPublicToOut("entity-profiles.json")) {
     console.warn("postbuild-ai: public/entity-profiles.json missing — Point C surface not copied");
+  }
+  if (!copyPublicToOut("llms.txt")) {
+    console.warn("postbuild-ai: public/llms.txt missing — llms surface not copied");
+  }
+  if (!copyPublicToOut("llms-full.txt")) {
+    console.warn("postbuild-ai: public/llms-full.txt missing — llms-full surface not copied");
   }
 
   if (!ai.pricedPanels || ai.pricedPanels.length !== 12) {

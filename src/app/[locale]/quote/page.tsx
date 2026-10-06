@@ -133,6 +133,13 @@ export default async function QuotePage({ params }: PageProps) {
                     <Calculator className="h-4 w-4" aria-hidden />
                     Fiyat hesaplayıcıyı açın
                   </Link>
+                  <p className="mt-3 text-xs leading-relaxed text-ink-muted">
+                    Yayımlanmış 12 panel USD:{" "}
+                    <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                      ai-shopping.json
+                    </a>{" "}
+                    <code className="text-[10px]">pricedPanels</code> (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
+                  </p>
                 </div>
               </aside>
               <div className="min-w-0">
