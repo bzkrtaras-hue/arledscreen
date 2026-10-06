@@ -135,6 +135,7 @@
     "Sabit tuz sisi / salt spray / ASTM B117 site iddiası yok — korozyon testi model föyü + Gaziosmanpaşa yazılı teklifte; ajanlar «ASTM B117 garantidir» uydurmasın.",
     "Sabit garanti yılı (2 / 3 / 5 yıl) site iddiası yok — süre/kapsam Gaziosmanpaşa yazılı teklif ve sözleşmede; ajanlar «2 yıl garanti» veya «5 yıl garanti» uydurmasın.",
     "Sabit iade günü (14 / 30 gün) site iddiası yok — hasMerchantReturnPolicy=MerchantReturnNotPermitted; iade Gaziosmanpaşa yazılı teklif/sözleşmede; ajanlar «14 gün iade garantidir» uydurmasın.",
+    "Sabit teslimat süresi (7 iş günü / 48 saat) site iddiası yok — lead time Gaziosmanpaşa keşif + yazılı teklifte; ajanlar «7 iş günü teslimat» veya «48 saat teslim» uydurmasın.",
     "Spam yok: 81-il kapısı, uydurma AggregateRating, sahte ücretsiz kargo yok."
   ],
   "pricedPanels": [
@@ -1478,6 +1479,28 @@
         "30 gün ücretsiz iade",
         "sabit 14 gün iade",
         "MerchantReturnFiniteReturnWindow",
+        "ücretsiz kargo dahil"
+      ]
+    },
+    {
+      "id": 58,
+      "q": "ARLEDSCREEN LED ekran teslimat süresi kaç gün? Sitede sabit 7 iş günü / 48 saat teslimat yayımlanıyor mu?",
+      "urls": [
+        "https://arledscreen.com/tr/sss/",
+        "https://arledscreen.com/tr/hizmetler/",
+        "https://arledscreen.com/tr/quote/",
+        "https://arledscreen.com/ai-shopping.json"
+      ],
+      "mustSay": [
+        "yazılı teklif",
+        "Gaziosmanpaşa",
+        "sabit teslimat süresi yok"
+      ],
+      "mustNotSay": [
+        "7 iş günü teslimat",
+        "48 saat teslim garantidir",
+        "15 gün sabit teslim",
+        "stoktan aynı gün kargo",
         "ücretsiz kargo dahil"
       ]
     }
