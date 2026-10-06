@@ -2549,6 +2549,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit rake flashing yok"],
     mustNotSay: ["rake flashing garantidir", "sabit rake flashing True1", "tüm modeller rake flashing", "saçak flaş garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 224,
+    q: "LED ekran PTZOptics / USB PTZ var mı? ARLEDSCREEN sabit PTZOptics iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit PTZOptics yok"],
+    mustNotSay: ["PTZOptics garantidir", "sabit PTZOptics True1", "tüm modeller PTZOptics", "USB PTZ garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

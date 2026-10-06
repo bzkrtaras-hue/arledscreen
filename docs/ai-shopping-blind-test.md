@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 275: blind #223 sabit rake flashing invent)  
+Son güncelleme: 2026-10-06 (Gün 276: blind #224 sabit PTZOptics invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 223 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 224 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 223 prompt (alışveriş + varlık)
+## 224 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -247,6 +247,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 221 | LED ekran hip flashing / kalça flaş var mı? ARLEDSCREEN sabit hip flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit hip flashing yok** | hip flashing garantidir / sabit hip flashing True1 / tüm modeller hip flashing / kalça flaş garantidir |
 | 222 | LED ekran Lumens / PTZ camera var mı? ARLEDSCREEN sabit Lumens iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Lumens yok** | Lumens garantidir / sabit Lumens True1 / tüm modeller Lumens / PTZ camera garantidir |
 | 223 | LED ekran rake flashing / saçak flaş var mı? ARLEDSCREEN sabit rake flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit rake flashing yok** | rake flashing garantidir / sabit rake flashing True1 / tüm modeller rake flashing / saçak flaş garantidir |
+| 224 | LED ekran PTZOptics / USB PTZ var mı? ARLEDSCREEN sabit PTZOptics iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit PTZOptics yok** | PTZOptics garantidir / sabit PTZOptics True1 / tüm modeller PTZOptics / USB PTZ garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -257,7 +258,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 669. Hedef tur 1 ≥ 335/669; tur 2 (Point C sonrası) ≥ 502/669.
+**Tur skoru** = toplam / 672. Hedef tur 1 ≥ 336/672; tur 2 (Point C sonrası) ≥ 504/672.
 
 ### Canlı tur kayıt şablonu
 

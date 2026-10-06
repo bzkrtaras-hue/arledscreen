@@ -265,6 +265,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 273 | 2026-10-06 | sabit hip flashing #221 · dis/mimari ARD refresh · skor /663 | ✅ |
 | 274 | 2026-10-06 | sabit Lumens #222 · ic/konferans ARD refresh · skor /666 | ✅ |
 | 275 | 2026-10-06 | sabit rake flashing #223 · dis/mimari ARD refresh · skor /669 | ✅ |
+| 276 | 2026-10-06 | sabit PTZOptics #224 · ic/konferans ARD refresh · skor /672 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1950,3 +1951,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #223 «rake flashing / saçak flaş?» — skor **/669**; ARD **223 kör test**
 - TR/EN dis-mekan + TR/EN mimari rake flashing invent · llms deny · sabit rake flashing yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit rake flashing
+
+## Gün 276 notları
+
+- Blind #224 «PTZOptics / USB PTZ?» — skor **/672**; ARD **224 kör test**
+- TR/EN ic-mekan + TR/EN konferans PTZOptics invent · llms deny · sabit PTZOptics yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit PTZOptics
