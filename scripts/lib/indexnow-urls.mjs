@@ -74,6 +74,7 @@ export const INDEXNOW_URLS = [
   `${SITE}/tr/led-ekran-kiralama/`,
   `${SITE}/tr/totem-led-ekran/`,
   `${SITE}/tr/rehber/mimari-muhendislik-led/`,
+  `${SITE}/tr/rehber/konferans-salonu-led/`,
 ];
 
 /** Must-have hubs for audit (subset of INDEXNOW_URLS). */

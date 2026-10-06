@@ -271,6 +271,20 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit nit yok"],
     mustNotSay: ["600–1.200", "600-1200", "sabit nit var", "IP65 garanti", "ücretsiz kargo dahil"],
   },
+  {
+    id: 35,
+    q: "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı? ARLEDSCREEN sabit 3840 Hz veya yüksek yenileme garantisi yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/products/ince-pitch-led-ekran/",
+      "/tr/yapay-zeka/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Hz yok"],
+    mustNotSay: ["3840 Hz", "1920 Hz", "sabit yenileme", "kamera dostu garanti", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

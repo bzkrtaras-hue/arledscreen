@@ -352,6 +352,66 @@
       "updatedAt": "2026-10-06T04:00:00Z"
     },
     {
+      "identifier": "urn:air:arledscreen.com:commerce:ince-pitch",
+      "displayName": "İnce pitch LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/ince-pitch-led-ekran/",
+      "description": "İnce pitch / stüdyo LED. Sabit Hz (3840/1920) yok — Blind #35; yenileme model föyü + yazılı teklif.",
+      "representativeQueries": [
+        "ince pitch LED ekran",
+        "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
+        "stüdyo LED fiyat"
+      ],
+      "tags": ["commerce", "fine-pitch", "GEO", "honesty", "studio"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T05:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:docs:rehber-konferans",
+      "displayName": "Konferans salonu LED rehber",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
+      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35.",
+      "representativeQueries": [
+        "konferans salonu LED",
+        "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
+        "salon LED AV entegrasyon"
+      ],
+      "tags": ["guide", "rehber", "AV", "GEO", "honesty"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T05:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:transparan-quote",
+      "displayName": "Transparan LED ekran (quote-only)",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/transparan-led-ekran/",
+      "description": "Transparan/mesh LED quote-only. List fiyatı / stokta paket yok. Blind #10.",
+      "representativeQueries": [
+        "Şeffaf / transparan LED fiyatı?",
+        "transparan mesh LED",
+        "cephe transparan LED"
+      ],
+      "tags": ["transparan", "quote-only", "shopping", "GEO"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T05:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:modul-kontrol",
+      "displayName": "LED modül ve kontrol sistemleri",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/products/led-modul-ve-kontrol-sistemleri/",
+      "description": "Modül/kontrol quote-only hub. extrasUsd.controlCard ≠ marka list SKU. Blind #17.",
+      "representativeQueries": [
+        "LED modül ve kontrol sistemi fiyatı?",
+        "kontrol kartı list fiyatı",
+        "LED modül teklif"
+      ],
+      "tags": ["modul", "kontrol", "quote-only", "shopping"],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T05:00:00Z"
+    },
+    {
       "identifier": "urn:air:arledscreen.com:commerce:kiralama-intent",
       "displayName": "LED ekran kiralama intent",
       "type": "text/html",
@@ -643,7 +703,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 34 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 35 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -653,12 +713,13 @@
         "ARLEDSCREEN LED ekran üreticisi / fabrika / OEM mi, yoksa bayi mi?",
         "ARLEDSCREEN keşiften teslimata tek ekip mi / fabrika LED üreticisi mi?",
         "Esnek / şeffaf / poster / kiralık LED stokta mı, anında teslim mi, list fiyatı var mı?",
-        "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?"
+        "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
+        "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı? ARLEDSCREEN sabit 3840 Hz veya yüksek yenileme garantisi yayımlıyor mu?"
       ],
       "tags": ["shopping", "discovery", "GEO", "agents", "pricedPanels", "agentRules", "hasMerchantReturnPolicy"],
       "capabilities": ["ShoppingDiscoveryIndex", "BlindTestPrompts", "PricedPanels", "AgentRules", "ReturnPolicyHonesty"],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T04:00:00Z"
+      "updatedAt": "2026-10-06T05:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",

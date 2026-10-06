@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 34 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 35 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 34) errors.push(`blindTestPrompts must be 34 (got ${prompts.length})`);
+if (prompts.length !== 35) errors.push(`blindTestPrompts must be 35 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/34 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 34 kör test intent");
+if (!/35 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 35 kör test intent");
 }
-if (/(?:2[0-9]|3[0-3]) kör test/i.test(ard) && !/34 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–33 kör test without 34");
+if (/(?:2[0-9]|3[0-4]) kör test/i.test(ard) && !/35 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–34 kör test without 35");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -321,6 +321,14 @@ if (!p34 || !/nit|IP/i.test(p34.q || "")) {
 }
 if (!/sabit nit|IP65 garanti|600.?1200/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit nit / IP65 garanti invent");
+}
+// Day 87: sabit Hz / kamera dostu yenileme invent
+const p35 = (doc.blindTestPrompts || []).find((p) => p.id === 35);
+if (!p35 || !/Hz|yenileme|kamera/i.test(p35.q || "")) {
+  errors.push("blindTestPrompts #35 must cover sabit Hz / kamera dostu yenileme invent");
+}
+if (!/3840|1920|kamera dostu garanti|sabit yenileme Hz/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit Hz / kamera dostu garanti invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {

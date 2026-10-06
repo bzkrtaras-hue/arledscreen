@@ -184,7 +184,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       slug: "ic-mekan-led-ekran",
       title: "İç Mekân LED Ekran | Lobi, Stüdyo, Salon — ARLEDSCREEN",
       description:
-        "İç mekân LED ekran ve iç mekân ekran seçimi: ince pitch, kamera dostu yenileme, lobi / stüdyo / konferans. NXTIONSTAR iç mekân modülleri — ARLEDSCREEN mühendisliği, İstanbul.",
+        "İç mekân LED ekran ve iç mekân ekran seçimi: ince pitch, kamera önü kullanımda yenileme model föyünde; lobi / stüdyo / konferans. NXTIONSTAR iç mekân — ARLEDSCREEN keşif + yazılı teklif, İstanbul.",
       keywords: [
         "iç mekân LED ekran",
         "iç mekân ekran",
@@ -204,9 +204,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "İç mekân NXTIONSTAR aralıkları: P1.25, P2.5, P3.07 ve P4 (P1.25 GOB seçenekli). Lobi ve showroom’da daha ince P; uzak koridorlarda P3.07–P4 tercih edilebilir. İnce pitch grubunda ayrıca P0.9 / P1.25 yayımlanır. Kabaca her 1 mm pitch için ~1 m kritik mesafe kuralı başlangıç noktasıdır — ARLEDSCREEN keşfinde gerçek oturma / ayakta izleme mesafesi ölçülür.",
         },
         {
-          h2: "Kamera dostu yenileme ve renk",
+          h2: "Kamera önü yenileme ve renk (föyde)",
           body:
-            "Yayın, kurumsal etkinlik kaydı veya sosyal medya çekiminde tarama çizgisi ve flicker istenmez. Yüksek yenileme oranı, kalibre beyaz nokta ve tutarlı gamut stüdyo / sahne iç mekân LED’inde şarttır. Bu değerler keşifte seçilen NXTIONSTAR modelinin teknik föyüyle teyit edilir.",
+            "Yayın, kurumsal etkinlik kaydı veya sosyal medya çekiminde tarama çizgisi ve flicker istenmez. Flicker riski kamera önü kullanımda konuşulur; kesin yenileme (Hz) seçilen NXTIONSTAR modelinin teknik föyü + yazılı teklifte — sitede sabit Hz yok (3840/1920 uydurma yok). Kalibre beyaz nokta ve gamut da föyde teyit edilir. Keşif Gaziosmanpaşa merkezinden planlanır.",
         },
         {
           h2: "Lobi, perakende ve kurumsal salon",
@@ -342,7 +342,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV entegrasyonu: ses, kamera, kontrol",
           body:
-            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir. Yüksek yenileme, kamera çekiminde flicker riskini düşürür. Gerekirse yedek kaynak girişi teklife eklenir.",
+            "HDMI / SDI matris, kablosuz sunum, kamera kaydı ve salona ait kontrol paneli LED alıcıyla aynı topolojide düşünülmelidir. Keşifte seçilen yenileme/tarama davranışı kamera flicker riskini düşürmeye yardım eder; Hz değeri teklif/föyde — sabit Hz garantisi yok. Gerekirse yedek kaynak girişi teklife eklenir.",
         },
         {
           h2: "Okul ve kurumsal kullanım farkları",
@@ -437,7 +437,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           question: "Perakende zincirinde standart paket var mı?",
           answer:
-            "Evet — tekrarlayan mağaza ölçüleri için tip proje ve merkezi CMS senkronu tasarlanabilir. Teklifte şube adedi ölçeklenir.",
+            "Tekrarlayan mağaza ölçüleri için tip proje ve merkezi CMS senkronu tasarlanabilir; uydurma all-in-one / stok paket yok — şube kapsamı yazılı teklifte.",
         },
       ],
       relatedSlugs: [
@@ -726,7 +726,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       slug: "ic-mekan-led-ekran",
       title: "Indoor LED Display | Lobby, Studio, Hall — ARLEDSCREEN",
       description:
-        "Indoor LED displays: fine pitch, camera-friendly refresh, lobby / studio / conference. NXTIONSTAR indoor series — ARLEDSCREEN engineering, Istanbul.",
+        "Indoor LED displays: fine pitch; camera-facing refresh in the model sheet / written quote; lobby / studio / conference. NXTIONSTAR indoor — ARLEDSCREEN survey + quote, Istanbul.",
       keywords: [
         "indoor LED display",
         "fine pitch LED",
@@ -745,9 +745,9 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Indoor NXTIONSTAR pitches: P1.25, P2.5, P3.07 and P4 (P1.25 available with GOB). Fine-pitch group also publishes P0.9 and P1.25. Lobbies often use finer P; longer corridors may step to P3.07–P4. We measure real standing/seated distance rather than rules of thumb alone.",
         },
         {
-          h2: "Camera-friendly refresh and colour",
+          h2: "Camera-facing refresh and colour (datasheet)",
           body:
-            "Broadcast and event capture hate scan lines and flicker. High refresh, calibrated white point and stable gamut are required for studio indoor LED; they are confirmed against the datasheet of the selected NXTIONSTAR model during the survey.",
+            "Broadcast and event capture hate scan lines and flicker. Camera-facing refresh needs are matched to the selected NXTIONSTAR datasheet in the Gaziosmanpaşa survey — no site-wide 3840/1920 Hz claim. White point and gamut are confirmed in the sheet / written quote.",
         },
         {
           h2: "Lobby, retail and corporate halls",
@@ -881,7 +881,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "AV integration",
           body:
-            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers. High refresh reduces flicker on camera. Spare inputs can be quoted.",
+            "HDMI/SDI matrices, wireless presenters, cameras and hall control panels must share one topology with LED receivers. Survey-scoped refresh/scan behaviour reduces camera flicker risk; Hz lands in the quote/sheet — no fixed Hz guarantee. Spare inputs can be quoted.",
         },
         {
           h2: "School vs corporate priorities",

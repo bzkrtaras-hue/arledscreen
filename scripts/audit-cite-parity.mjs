@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–86: ARD discovery prompt count must not drift behind blind suite
+// Day 74–87: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/34 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 34 kör test intent (not stale 17–33)");
+if (ardTxt && !/35 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 35 kör test intent (not stale 17–34)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-3]) kör test/i.test(ardTxt) && !/34 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–33 kör test without 34");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-4]) kör test/i.test(ardTxt) && !/35 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–34 kör test without 35");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -493,6 +493,24 @@ for (const rel of [
   const html = read("out/tr/hizmetler/index.html");
   if (html && /tüm adımlarını planlıyoruz|Keşiften devreye almaya/i.test(html)) {
     errors.push("out/tr/hizmetler/ must not invent keşiften–devreye tüm adımlar platform");
+  }
+}
+// Day 87: sabit Hz / yüksek yenileme invent
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/index.html",
+  "out/tr/yapay-zeka/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (/yüksek yenileme oranı|yüksek yenileme ve kararlı|kamera dostu yenileme|High refresh.*required|sabit 3840|3840 Hz garanti/i.test(html)) {
+    errors.push(`${rel} must not invent yüksek yenileme / kamera dostu / sabit Hz`);
+  }
+}
+{
+  const html = read("out/tr/rehber/ic-mekan-led-ekran/index.html");
+  if (html && !/sabit 3840|sabit Hz yok|no site-wide 3840/i.test(html)) {
+    errors.push("out/tr/rehber/ic-mekan-led-ekran/ should state sabit Hz yok honesty");
   }
 }
 

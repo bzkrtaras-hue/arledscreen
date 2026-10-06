@@ -322,7 +322,7 @@ const en: Dictionary = {
         "NXTIONSTAR displays are specified by ARLEDSCREEN so AI content engines, media servers and control software can be matched in the Gaziosmanpaşa survey and written quote — not sold as an invented AI-ready or engineering-standard SKU.",
       points: [
         "Signal paths for CMS, media servers and automation APIs sized in the Gaziosmanpaşa survey and written quote",
-        "Refresh and receiver paths matched in the Gaziosmanpaşa survey for AI-driven or camera-facing content",
+        "Refresh/scan needs matched in the Gaziosmanpaşa survey + datasheet for AI-driven or camera-facing content — no fixed Hz SKU",
         "Gaziosmanpaşa survey team that sizes pitch, power and receivers around your CMS / media-server path",
       ],
     },
@@ -624,7 +624,7 @@ const tr: Dictionary = {
         "NXTIONSTAR ekranlar, yapay zekâ ile üretilen veya zamanlanan içeriği oynatan medya sunucuları ve kontrol yazılımlarıyla Gaziosmanpaşa keşif ve yazılı teklifte eşleştirilir — uydurma tam uyumluluk SKU’su yoktur.",
       points: [
         "CMS, medya sunucu ve otomasyon API’leri için dokümante sinyal yolları",
-        "YZ destekli veya kamera önü içerik için yüksek yenileme ve kararlı piksel hattı",
+        "YZ destekli veya kamera önü içerikte yenileme/tarama davranışı Gaziosmanpaşa keşif + model föyüyle eşleştirilir — sitede sabit Hz (3840/1920) iddiası yok",
         "Pitch, güç ve alıcı mimarisini CMS / medya sunucu hattınıza göre boyutlandıran Gaziosmanpaşa keşif ekibi",
       ],
     },

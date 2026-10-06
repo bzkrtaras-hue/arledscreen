@@ -55,7 +55,7 @@ const content: Record<
       {
         h2: "Yapay zekâ uyumlu LED ekran ne demektir?",
         body:
-          "Yapay zekâ uyumlu LED ekran, AI ile üretilen, zamanlanan veya otomatik seçilen içeriğin duvarda kararlı çalışması için boyutlandırılmış bir görüntü katmanıdır. ARLEDSCREEN / NXTIONSTAR yaklaşımında bu; bilinen yenileme ve gecikme davranışı, dokümante sinyal yolları ve CMS / medya sunucu / kontrol yazılımı hatlarının Gaziosmanpaşa keşif ve yazılı teklifte eşleştirilmesi demektir — özel kilit veya kapalı protokol dayatmadan; uydurma tam uyumluluk SKU’su yoktur.",
+          "Yapay zekâ uyumlu LED ekran, AI ile üretilen, zamanlanan veya otomatik seçilen içeriğin duvarda kararlı çalışması için boyutlandırılmış bir görüntü katmanıdır. ARLEDSCREEN / NXTIONSTAR yaklaşımında yenileme/gecikme davranışı model föyü + Gaziosmanpaşa keşif/teklifte eşleştirilir — sabit Hz SKU yok; CMS / medya sunucu / kontrol yazılımı hatları da yazılı teklifte; özel kilit veya kapalı protokol dayatılmaz.",
       },
       {
         h2: "Hangi senaryolarda kullanılır?",

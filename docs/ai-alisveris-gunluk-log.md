@@ -76,6 +76,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 84 | 2026-10-05 | tek ekip/fabrika use-case #32 · p2-5/galeri/bolgeler ARD · skor /96 | ✅ |
 | 85 | 2026-10-05 | quote-only stok/anında #33 · TrustFacts aynı-ekip · esnek/seffaf/poster ARD · skor /99 | ✅ |
 | 86 | 2026-10-05 | sabit nit/IP #34 · keşiften-montaja residual · ic/dis/gob ARD · skor /102 | ✅ |
+| 87 | 2026-10-06 | sabit Hz/kamera #35 · ince-pitch/konferans ARD · skor /105 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -514,3 +515,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - indoor FAQ 600–1.200 invent · keşiften montaja / tüm adımlar residual · EN i18n soften
 - ARD: ic/dis/gob priced + rehber ic/dis + totem + mimari · IndexNow totem/mimari · agentRules nit/IP
 - skor hedef Tur 1 ≥ 51/102 · Tur 2 ≥ 77/102
+
+## Gün 87 notları
+
+- Blind #35 «kamera dostu / stüdyo LED kaç Hz / sabit 3840?» — skor **/105**; ARD **35 kör test**
+- yüksek yenileme / kamera dostu invent · yapay-zeka bilinen yenileme soften · perakende standart paket
+- ARD: ince-pitch + konferans + transparan + led-modul · IndexNow konferans · agentRules Hz
+- skor hedef Tur 1 ≥ 53/105 · Tur 2 ≥ 79/105
