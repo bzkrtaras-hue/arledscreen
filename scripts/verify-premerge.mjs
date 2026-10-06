@@ -28,7 +28,7 @@ function run(script, args = []) {
 }
 
 console.log("");
-console.log("=== verify:premerge (Day 92) ===");
+console.log("=== verify:premerge (Day 93) ===");
 
 if (!fs.existsSync(out)) {
   console.error("verify:premerge: missing out/ — run npm run build first");
@@ -62,9 +62,9 @@ if (!fs.existsSync(aiPath)) {
     } else if (!/extrasUsd\.controlCard|list SKU/i.test(JSON.stringify(doc.agentRules))) {
       console.error("verify:premerge: agentRules must disambiguate extrasUsd.controlCard ≠ list SKU");
       failed += 1;
-    } else if (!Array.isArray(doc.blindTestPrompts) || doc.blindTestPrompts.length !== 40) {
+    } else if (!Array.isArray(doc.blindTestPrompts) || doc.blindTestPrompts.length !== 41) {
       console.error(
-        `verify:premerge: blindTestPrompts must be 40 (got ${doc.blindTestPrompts?.length})`,
+        `verify:premerge: blindTestPrompts must be 41 (got ${doc.blindTestPrompts?.length})`,
       );
       failed += 1;
     } else if (!/AI-infrastructure ready/i.test(JSON.stringify(doc.agentRules))) {
@@ -103,9 +103,12 @@ if (!fs.existsSync(aiPath)) {
     } else if (!/100\.000|MTBF|sabit ömür|ömür/i.test(JSON.stringify(doc.agentRules))) {
       console.error("verify:premerge: agentRules must forbid sabit ömür / MTBF invent");
       failed += 1;
+    } else if (!/DCI-P3|Rec\.709|gamut|6500K|renk sıcaklığı/i.test(JSON.stringify(doc.agentRules))) {
+      console.error("verify:premerge: agentRules must forbid sabit DCI-P3 / gamut invent");
+      failed += 1;
     } else {
       console.log(
-        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=40 OK`,
+        `verify:premerge: ai-shopping pricedPanels=12 · agentRules=${doc.agentRules.length} · prompts=41 OK`,
       );
     }
     // Day 66: catalog extrasUsdNote

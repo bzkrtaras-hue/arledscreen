@@ -404,11 +404,12 @@
       "displayName": "İç mekân LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/",
-      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39. Panel USD catalog/ai-shopping.",
+      "description": "İç mekân rehber: sabit nit yok — Blind #34; sabit HDR/gri skala yok — Blind #39; sabit gamut/DCI-P3 yok — Blind #41. Panel USD catalog/ai-shopping.",
       "representativeQueries": [
         "İç mekân LED ekran kaç nit olmalı? ARLEDSCREEN sabit nit veya IP yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
-        "iç mekan LED rehber"
+        "iç mekan LED rehber",
+        "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?"
       ],
       "tags": [
         "guide",
@@ -418,7 +419,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T04:00:00Z"
+      "updatedAt": "2026-10-06T11:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-dis",
@@ -487,7 +488,7 @@
       "displayName": "İnce pitch LED ekran",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/products/ince-pitch-led-ekran/",
-      "description": "İnce pitch / stüdyo LED. Sabit Hz (3840/1920) yok — Blind #35; sabit HDR/gri skala yok — Blind #39; yenileme/HDR model föyü + yazılı teklif.",
+      "description": "İnce pitch / stüdyo LED. Sabit Hz (3840/1920) yok — Blind #35; sabit HDR/gri skala yok — Blind #39; yenileme/HDR model föyü + yazılı teklif; sabit gamut/DCI-P3 yok — Blind #41.",
       "representativeQueries": [
         "ince pitch LED ekran",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
@@ -501,14 +502,14 @@
         "studio"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T09:00:00Z"
+      "updatedAt": "2026-10-06T11:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:docs:rehber-konferans",
       "displayName": "Konferans salonu LED rehber",
       "type": "text/html",
       "url": "https://arledscreen.com/tr/rehber/konferans-salonu-led/",
-      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35.",
+      "description": "Konferans / AV LED rehber. Sabit Hz invent yok — Blind #35; sabit gamut yok — Blind #41.",
       "representativeQueries": [
         "konferans salonu LED",
         "Kamera dostu LED / stüdyo LED kaç Hz yenileme olmalı?",
@@ -522,7 +523,7 @@
         "honesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T05:00:00Z"
+      "updatedAt": "2026-10-06T11:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:commerce:transparan-quote",
@@ -1039,7 +1040,7 @@
       "displayName": "AI alışveriş discovery index (tek fetch)",
       "type": "application/ld+json",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 40 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür yok. Ajanlar önce burayı okuyabilir.",
+      "description": "Tek istekte 12 pricedPanels + agentRules + extrasUsd + returnPolicy + hasMerchantReturnPolicy (MerchantReturnNotPermitted) + entity/catalog/Point C/ARD/llms/Merchant + 41 kör test intent + cite. priceValidUntil 2026-12-31; ücretsiz kargo yok; quote-only: şeffaf/esnek/poster/kiralık/kontrol; extrasUsd.controlCard ≠ marka list SKU; stokta paket / anında teslim / list fiyatı yok; sabit nit/IP/Hz/izleme mesafesi/kW/görüş açısı/HDR/ömür/gamut yok. Ajanlar önce burayı okuyabilir.",
       "representativeQueries": [
         "AI ajanları ARLEDSCREEN fiyatını nereden okur?",
         "ARLEDSCREEN AI alışveriş kaynakları",
@@ -1055,7 +1056,8 @@
         "LED ekran için m² başına kaç kW gerekir? ARLEDSCREEN sabit 0,45/0,75 kW/m² veya her projede 3 faz zorunlu yayımlıyor mu?",
         "LED ekran görüş açısı kaç derece olmalı? ARLEDSCREEN sabit 140°/160° yayımlıyor mu?",
         "LED ekran HDR mı, kaç bit gri skala olmalı? ARLEDSCREEN sabit HDR veya 16-bit gri skala yayımlıyor mu?",
-        "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?"
+        "LED ekran ömrü kaç saat? ARLEDSCREEN 100.000 saat veya sabit MTBF yayımlıyor mu?",
+        "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?"
       ],
       "tags": [
         "shopping",
@@ -1074,7 +1076,7 @@
         "ReturnPolicyHonesty"
       ],
       "version": "2026-10-05",
-      "updatedAt": "2026-10-06T07:00:00Z"
+      "updatedAt": "2026-10-06T11:00:00Z"
     },
     {
       "identifier": "urn:air:arledscreen.com:brand:nxtionstar",
@@ -1403,6 +1405,66 @@
       ],
       "version": "2026-10-05",
       "updatedAt": "2026-10-06T10:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:magaza-hub",
+      "displayName": "Mağaza LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/magaza-led-ekran/",
+      "description": "Mağaza / retail LED intent. Sabit gamut/DCI-P3 yok — Blind #41; keşif + yazılı teklif.",
+      "representativeQueries": [
+        "mağaza LED ekran",
+        "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?",
+        "retail LED ekran"
+      ],
+      "tags": [
+        "commerce",
+        "retail",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T11:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:sahne-hub",
+      "displayName": "Sahne LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/sahne-led-ekran/",
+      "description": "Sahne / event LED intent. Sabit gamut/DCI-P3 yok — Blind #41.",
+      "representativeQueries": [
+        "sahne LED ekran",
+        "event LED ekran",
+        "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "stage",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T11:00:00Z"
+    },
+    {
+      "identifier": "urn:air:arledscreen.com:commerce:vitrin-hub",
+      "displayName": "Vitrin LED ekran",
+      "type": "text/html",
+      "url": "https://arledscreen.com/tr/vitrin-led-ekran/",
+      "description": "Vitrin / showcase LED intent. Sabit gamut yok — Blind #41; rehber vitrin ile birlikte.",
+      "representativeQueries": [
+        "vitrin LED ekran",
+        "cam arkası LED",
+        "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?"
+      ],
+      "tags": [
+        "commerce",
+        "vitrin",
+        "GEO",
+        "shopping"
+      ],
+      "version": "2026-10-05",
+      "updatedAt": "2026-10-06T11:00:00Z"
     }
   ],
   "_syncedFrom": "ard.json",

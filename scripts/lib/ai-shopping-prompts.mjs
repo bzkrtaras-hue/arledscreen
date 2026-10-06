@@ -348,6 +348,19 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ömür yok"],
     mustNotSay: ["100.000 saat garanti", "MTBF garanti", "sabit ömür yayımlanır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 41,
+    q: "LED ekran renk sıcaklığı kaç Kelvin olmalı? ARLEDSCREEN sabit DCI-P3 / Rec.709 / gamut veya beyaz nokta yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/products/ince-pitch-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit gamut yok"],
+    mustNotSay: ["DCI-P3 garanti", "Rec.709 yayımlanır", "sabit 6500K", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

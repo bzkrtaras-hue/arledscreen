@@ -82,6 +82,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 90 | 2026-10-06 | sabit görüş açısı #38 · gob-vs-smd/led-tabela/p1-25 ARD · skor /114 | ✅ |
 | 91 | 2026-10-06 | sabit HDR/gri skala #39 · p3-07/p1-86/kiralik-mi ARD · skor /117 | ✅ |
 | 92 | 2026-10-06 | sabit ömür/MTBF #40 · p2-9/cephe/billboard ARD · skor /120 | ✅ |
+| 93 | 2026-10-06 | sabit gamut/DCI-P3 #41 · magaza/sahne/vitrin ARD · skor /123 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -562,3 +563,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - dis-mekan/kiosk uzun ömür soften · llms ömür/MTBF · kiosk teslim residual
 - ARD: p2-9 + cephe + billboard · IndexNow +3 · agentRules sabit ömür
 - skor hedef Tur 1 ≥ 60/120 · Tur 2 ≥ 90/120
+
+## Gün 93 notları
+
+- Blind #41 «renk sıcaklığı / DCI-P3 / Rec.709 / sabit gamut?» — skor **/123**; ARD **41 kör test**
+- ic-mekan/konferans gamut invent · llms DCI-P3 deny
+- ARD: magaza + sahne + vitrin · IndexNow +3 · agentRules sabit gamut
+- skor hedef Tur 1 ≥ 62/123 · Tur 2 ≥ 92/123

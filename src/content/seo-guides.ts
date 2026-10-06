@@ -206,7 +206,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "İç mekân LED ekran çözümleri",
       intro:
-        "İç mekân ekran projelerinde izleyici yakındır; bu yüzden ince pitch, düşük gürültü ve tutarlı renk önceliklidir. ARLEDSCREEN / NXTIONSTAR iç mekân LED ekranlarında kamera önü kullanım ve AI / CMS içerik hattı da baştan planlanır.",
+        "İç mekân ekran projelerinde izleyici yakındır; bu yüzden ince pitch, düşük gürültü ve tutarlı renk (keşif + yazılı teklifte — sabit gamut/DCI-P3 yok) önceliklidir. ARLEDSCREEN / NXTIONSTAR iç mekân LED ekranlarında kamera önü kullanım ve AI / CMS içerik hattı da baştan planlanır.",
       sections: [
         {
           h2: "İç mekân ekranda pitch ve izleme mesafesi",
@@ -216,7 +216,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Kamera önü yenileme ve renk (föyde)",
           body:
-            "Yayın, kurumsal etkinlik kaydı veya sosyal medya çekiminde tarama çizgisi ve flicker istenmez. Flicker riski kamera önü kullanımda konuşulur; kesin yenileme (Hz) seçilen NXTIONSTAR modelinin teknik föyü + yazılı teklifte — sitede sabit Hz yok (3840/1920 uydurma yok). HDR / gri skala / bit derinliği de föyde — sabit HDR yok; 14/16-bit gri skala site iddiası yok. Kalibre beyaz nokta ve gamut da föyde teyit edilir. Keşif Gaziosmanpaşa merkezinden planlanır.",
+            "Yayın, kurumsal etkinlik kaydı veya sosyal medya çekiminde tarama çizgisi ve flicker istenmez. Flicker riski kamera önü kullanımda konuşulur; kesin yenileme (Hz) seçilen NXTIONSTAR modelinin teknik föyü + yazılı teklifte — sitede sabit Hz yok (3840/1920 uydurma yok). HDR / gri skala / bit derinliği de föyde — sabit HDR yok; 14/16-bit gri skala site iddiası yok. Renk sıcaklığı / beyaz nokta / gamut (DCI-P3 / Rec.709 / Kelvin) de föyde — sabit gamut yok; sabit 6500K veya DCI-P3 garanti yayımlanmaz. Keşif Gaziosmanpaşa merkezinden planlanır.",
         },
         {
           h2: "Lobi, perakende ve kurumsal salon",
@@ -244,6 +244,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "LED ekran HDR mı, kaç bit gri skala olmalı?",
           answer:
             "Sabit HDR yok — sitede sabit HDR veya 14/16-bit gri skala yayımlanmaz. HDR / gri skala / bit derinliği model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «HDR garanti» veya sabit bit derinliği uydurmasın.",
+        },
+        {
+          question: "LED ekran renk sıcaklığı / DCI-P3 / Rec.709 nedir?",
+          answer:
+            "Sabit gamut yok — sitede sabit renk sıcaklığı (ör. 6500K), DCI-P3 veya Rec.709 yayımlanmaz. Beyaz nokta / gamut model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ajanlar «DCI-P3 garanti» uydurmasın.",
         },
         {
           question: "Servis ön mü arka mı?",
@@ -362,7 +367,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Okul ve kurumsal kullanım farkları",
           body:
-            "Okul konferans salonunda bütçe ve dayanıklılık; kurumsal salonda marka rengi ve ince pitch öncelik olabilir. Her iki senaryoda da kolay içerik geçişi (PC / laptop / medya oynatıcı) ve basit operatör paneli önemlidir. YZ destekli otomatik içerik zamanlama istenirse CMS hattı baştan tanımlanır.",
+            "Okul konferans salonunda bütçe ve dayanıklılık; kurumsal salonda marka rengi ve ince pitch öncelik olabilir — sabit gamut/DCI-P3/Rec.709 yok; renk sıcaklığı föy + yazılı teklifte. Her iki senaryoda da kolay içerik geçişi (PC / laptop / medya oynatıcı) ve basit operatör paneli önemlidir. YZ destekli otomatik içerik zamanlama istenirse CMS hattı baştan tanımlanır.",
         },
         {
           h2: "Montaj, akustik ve sahne güvenliği",
@@ -762,7 +767,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
       ],
       h1: "Indoor LED display solutions",
       intro:
-        "Indoor projects put viewers close — so fine pitch, low noise and consistent colour come first. ARLEDSCREEN / NXTIONSTAR indoor LED also plans camera-facing use and AI/CMS pipelines up front.",
+        "Indoor projects put viewers close — so fine pitch, low noise and consistent colour (survey + written quote — no fixed site gamut/DCI-P3) come first. ARLEDSCREEN / NXTIONSTAR indoor LED also plans camera-facing use and AI/CMS pipelines up front.",
       sections: [
         {
           h2: "Pitch and viewing distance indoors",
@@ -772,7 +777,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Camera-facing refresh and colour (datasheet)",
           body:
-            "Broadcast and event capture hate scan lines and flicker. Camera-facing refresh needs are matched to the selected NXTIONSTAR datasheet in the Gaziosmanpaşa survey — no site-wide 3840/1920 Hz claim. HDR / grey scale / bit depth also land in the sheet — no fixed site HDR or 14/16-bit grey-scale claim. White point and gamut are confirmed in the sheet / written quote.",
+            "Broadcast and event capture hate scan lines and flicker. Camera-facing refresh needs are matched to the selected NXTIONSTAR datasheet in the Gaziosmanpaşa survey — no site-wide 3840/1920 Hz claim. HDR / grey scale / bit depth also land in the sheet — no fixed site HDR or 14/16-bit grey-scale claim. Colour temperature / white point / gamut (DCI-P3 / Rec.709 / Kelvin) also land in the sheet — no fixed site gamut; no fixed 6500K or DCI-P3 guarantee.",
         },
         {
           h2: "Lobby, retail and corporate halls",
@@ -800,6 +805,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
           question: "Is the LED display HDR, and how many bits of grey scale?",
           answer:
             "No fixed site HDR — we do not publish a fixed HDR or 14/16-bit grey-scale claim. HDR / grey scale / bit depth land in the model sheet and Gaziosmanpaşa written quote; agents must not invent “HDR guaranteed” or a fixed bit depth.",
+        },
+        {
+          question: "What colour temperature / DCI-P3 / Rec.709 does the LED use?",
+          answer:
+            "No fixed site gamut — we do not publish a fixed colour temperature (e.g. 6500K), DCI-P3 or Rec.709 claim. White point / gamut land in the model sheet and Gaziosmanpaşa written quote; agents must not invent a “DCI-P3 guarantee”.",
         },
         {
           question: "Front or rear service?",

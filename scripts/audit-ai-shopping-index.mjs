@@ -1,7 +1,7 @@
 /**
  * ai-shopping.json discovery index audit (Gün 48).
  *
- * Ensures out/ai-shopping.json lists every primary artefact, 40 prompts,
+ * Ensures out/ai-shopping.json lists every primary artefact, 41 prompts,
  * cite facts, and catalog priced count — single-fetch agent entry point.
  *
  * Run after build: node scripts/audit-ai-shopping-index.mjs
@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 40) errors.push(`blindTestPrompts must be 40 (got ${prompts.length})`);
+if (prompts.length !== 41) errors.push(`blindTestPrompts must be 41 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/40 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 40 kör test intent");
+if (!/41 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 41 kör test intent");
 }
-if (/(?:2[0-9]|3[0-9]) kör test/i.test(ard) && !/40 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–39 kör test without 40");
+if (/(?:2[0-9]|3[0-9]|40) kör test/i.test(ard) && !/41 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–40 kör test without 41");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -369,6 +369,14 @@ if (!p40 || !/ömür|MTBF|100\.000|100000/i.test(p40.q || "")) {
 }
 if (!/100\.000|MTBF|sabit ömür|ömür/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit ömür / 100.000 saat / MTBF invent");
+}
+// Day 93: sabit gamut / DCI-P3 / Rec.709 invent
+const p41 = (doc.blindTestPrompts || []).find((p) => p.id === 41);
+if (!p41 || !/renk sıcaklığı|DCI-P3|Rec\.709|gamut/i.test(p41.q || "")) {
+  errors.push("blindTestPrompts #41 must cover sabit gamut / DCI-P3 invent");
+}
+if (!/DCI-P3|Rec\.709|gamut|6500K|renk sıcaklığı/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit DCI-P3 / Rec.709 / gamut invent");
 }
 // Day 76: agentRules full disambiguation
 if (!/NationStar|NEXTSTAR/i.test(rulesJson)) {
