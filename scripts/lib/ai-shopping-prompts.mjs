@@ -4973,6 +4973,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit jamb apron yok"],
     mustNotSay: ["jamb apron garantidir", "sabit jamb apron True1", "tüm modeller jamb apron", "jamb eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 426,
+    q: "LED ekran MeetingBar A20 / MeetingBar A20 var mı? ARLEDSCREEN sabit MeetingBar A20 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit MeetingBar A20 yok"],
+    mustNotSay: ["MeetingBar A20 garantidir", "sabit MeetingBar A20 True1", "tüm modeller MeetingBar A20", "MeetingBar A20 dahildir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
