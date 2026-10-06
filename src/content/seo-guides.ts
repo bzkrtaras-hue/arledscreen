@@ -787,6 +787,11 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
             "Brightness depends on ambient light and model; exact nits in the written quote / sheet — no fixed site nit. Sunlit atriums may need more; excess brightness hurts dark halls. Survey is planned from Gaziosmanpaşa.",
         },
         {
+          question: "Is the LED display HDR, and how many bits of grey scale?",
+          answer:
+            "No fixed site HDR — we do not publish a fixed HDR or 14/16-bit grey-scale claim. HDR / grey scale / bit depth land in the model sheet and Gaziosmanpaşa written quote; agents must not invent “HDR guaranteed” or a fixed bit depth.",
+        },
+        {
           question: "Front or rear service?",
           answer:
             "Wall depth and access decide. Thin lobby walls favour front service; tech rooms behind the wall favour rear service.",
