@@ -3761,6 +3761,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Hisense GoBoard yok"],
     mustNotSay: ["Hisense GoBoard garantidir", "sabit Hisense GoBoard True1", "tüm modeller Hisense GoBoard", "Hisense GoBoard Pro garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 325,
+    q: "LED ekran balcony cleat / balkon kleyt var mı? ARLEDSCREEN sabit balcony cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit balcony cleat yok"],
+    mustNotSay: ["balcony cleat garantidir", "sabit balcony cleat True1", "tüm modeller balcony cleat", "balkon kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

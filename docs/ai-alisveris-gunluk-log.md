@@ -366,6 +366,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 374 | 2026-10-06 | sabit Horion Interactive #322 · ic/konferans ARD refresh · skor /966 | ✅ |
 | 375 | 2026-10-06 | sabit z-flashing #323 · dis/mimari ARD refresh · skor /969 | ✅ |
 | 376 | 2026-10-06 | sabit Hisense GoBoard #324 · ic/konferans ARD refresh · skor /972 | ✅ |
+| 377 | 2026-10-06 | sabit balcony cleat #325 · dis/mimari ARD refresh · skor /975 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2657,3 +2658,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #324 «Hisense GoBoard / Hisense GoBoard Pro?» — skor **/972**; ARD **324 kör test**
 - TR/EN ic-mekan + TR/EN konferans Hisense GoBoard invent · llms deny · sabit Hisense GoBoard yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Hisense GoBoard
+
+## Gün 377 notları
+
+- Blind #325 «balcony cleat / balkon kleyt?» — skor **/975**; ARD **325 kör test**
+- TR/EN dis-mekan + TR/EN mimari balcony cleat invent · llms deny · sabit balcony cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit balcony cleat

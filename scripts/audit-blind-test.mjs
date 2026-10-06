@@ -4255,6 +4255,20 @@ if (
   errors.push("blind prompt #324 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Hisense GoBoard yok");
 }
 
+const pBlind325 = PROMPTS.find((x) => x.id === 325);
+if (!pBlind325 || !/balcony cleat|balkon kleyt/i.test(pBlind325.q)) {
+  errors.push("blind prompt #325 must cover sabit balcony cleat invent");
+}
+if (
+  pBlind325 &&
+  (!pBlind325.mustSay?.includes("yazılı teklif") ||
+    !pBlind325.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind325.mustSay?.includes("sabit balcony cleat yok"))
+) {
+  errors.push("blind prompt #325 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit balcony cleat yok");
+}
+
+
 
 
 
