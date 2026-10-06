@@ -1,7 +1,7 @@
 ## Gün 501 — invent Blind #449 spandrel apron LIVE
 
 - Blind #449 spandrel apron / spandrel eteği · dis/mimari · prompts=449 · /1347 · CF deploy · smoke:live 20/20
-- Tur 1a: ajan Perplexity koşusu (sahibe iş yok)
+- Tur 1a: ajan BLOCKED (ChatGPT kota + Perplexity Turnstile) · skor uydurulmadı · sahibe iş yok
 
 ## Gün 500 — invent Blind #448 Cisco Desk Pro LIVE
 
