@@ -1,0 +1,304 @@
+/**
+ * FAQPage JSON-LD audit for commercial landings + service regions.
+ *
+ * Requires:
+ * - FAQPage present with ≥ minCount Question entities
+ * - question ≥10 chars, answer ≥40 chars
+ * - At least one answer on commercial/region pages mentions catalog.json
+ *   or led-ekran-fiyatlari (AI shopping price source)
+ * - Forbidden: fake AggregateRating-style claims / invented TL package language
+ *
+ * Run after build: node scripts/audit-faq-jsonld.mjs
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const errors = [];
+const outTr = path.join(root, "out/tr");
+
+if (!fs.existsSync(outTr)) {
+  console.error("Missing out/tr — run npm run build first");
+  process.exit(1);
+}
+
+const commercialSrc = fs.readFileSync(path.join(root, "src/content/commercial-pages.ts"), "utf8");
+const commercialSlugs = [...new Set([...commercialSrc.matchAll(/\n    slug:\s*"([^"]+)"/g)].map((m) => m[1]))];
+
+const regionDirs = fs
+  .readdirSync(path.join(outTr, "bolgeler"), { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => d.name);
+
+const FORBIDDEN = [
+  /türkiye.?nin en (büyük|iyi|çok)/i,
+  /aggregateRating/i,
+  /\d+\s*TL\s*\/\s*m/i,
+  /garanti\s*\d+\s*yıl/i,
+];
+
+const PRICE_HINT = /catalog\.json|led-ekran-fiyatlari|LED ekran fiyatları/i;
+const AI_SHOPPING_HINT =
+  /ai-shopping\.json|yayımlanmış panel listesi|Yayımlanmış panel USD|Yayımlanmış 2026 panel USD|pricedPanels|yayımlanmış paneller/i;
+
+function auditPage(rel, { minCount = 2, requirePriceHint = true, requireAiShopping = false, requireHonesty = false } = {}) {
+  const file =
+    rel === "." || rel === ""
+      ? path.join(outTr, "index.html")
+      : path.join(outTr, rel, "index.html");
+  if (!fs.existsSync(file)) {
+    errors.push(`missing HTML: ${rel === "." || rel === "" ? "home (tr/)" : rel}`);
+    return;
+  }
+  const html = fs.readFileSync(file, "utf8");
+  let faq = null;
+  for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+    let data;
+    try {
+      data = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    if (data?.["@type"] === "FAQPage") {
+      faq = data;
+      break;
+    }
+  }
+  if (!faq) {
+    errors.push(`${rel}: no FAQPage JSON-LD`);
+    return;
+  }
+  const ents = faq.mainEntity || [];
+  if (!Array.isArray(ents) || ents.length < minCount) {
+    errors.push(`${rel}: FAQPage has ${ents.length} Qs (need ≥${minCount})`);
+  }
+  let priceOk = false;
+  let aiOk = false;
+  let honestyOk = false;
+  for (const q of ents) {
+    const name = q?.name || "";
+    const ans = q?.acceptedAnswer?.text || "";
+    if (q?.["@type"] !== "Question") errors.push(`${rel}: entity not Question`);
+    if (name.trim().length < 10) errors.push(`${rel}: short question "${name}"`);
+    if (ans.trim().length < 40) errors.push(`${rel}: short answer for "${name.slice(0, 40)}"`);
+    if (PRICE_HINT.test(ans) || PRICE_HINT.test(name)) priceOk = true;
+    if (AI_SHOPPING_HINT.test(ans) || AI_SHOPPING_HINT.test(name)) aiOk = true;
+    if (/ücretsiz kargo yok/i.test(ans) || /quote-and-contract/i.test(ans)) honestyOk = true;
+    for (const re of FORBIDDEN) {
+      if (re.test(ans) || re.test(name)) errors.push(`${rel}: forbidden claim in FAQ`);
+    }
+  }
+  if (requirePriceHint && !priceOk) {
+    errors.push(`${rel}: no FAQ answer mentions catalog.json or led-ekran-fiyatlari`);
+  }
+  if (requireAiShopping && !aiOk) {
+    errors.push(`${rel}: no FAQ answer mentions ai-shopping.json / yayımlanmış panel listesi`);
+  }
+  if (requireHonesty && !honestyOk) {
+    errors.push(`${rel}: FAQ must state ücretsiz kargo yok or quote-and-contract honesty`);
+  }
+}
+
+let checked = 0;
+for (const slug of commercialSlugs) {
+  checked += 1;
+  auditPage(slug, { minCount: 2, requirePriceHint: true, requireAiShopping: true });
+}
+auditPage("bolgeler", { minCount: 3, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+for (const slug of regionDirs) {
+  checked += 1;
+  auditPage(`bolgeler/${slug}`, {
+    minCount: 3,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
+}
+
+const productDirs = fs
+  .readdirSync(path.join(outTr, "products"), { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => d.name);
+for (const slug of productDirs) {
+  checked += 1;
+  auditPage(`products/${slug}`, {
+    minCount: 2,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
+}
+auditPage("led-ekran-fiyatlari", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("hesaplayici", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("quote", { minCount: 2, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("about", { minCount: 4, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("nxtionstar", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("products", { minCount: 2, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("about/aras-bozkurt", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("yapay-zeka", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("sss", { minCount: 4, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("hizmetler", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage(".", { minCount: 4, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("rehber", { minCount: 3, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("projelerimiz", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("blog", { minCount: 2, requirePriceHint: true, requireAiShopping: true, requireHonesty: true });
+auditPage("galeri", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("bolgeler", {
+  minCount: 3,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/piksel-araligi-secimi", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/kiralik-mi-satin-alma", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/gob-vs-smd", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/led-tabela-mi-led-ekran-mi", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+auditPage("rehber/led-ekran-fiyatlari", {
+  minCount: 2,
+  requirePriceHint: true,
+  requireAiShopping: true,
+  requireHonesty: true,
+});
+
+// Day 59: model pages must ship FAQPage + ai-shopping cite (blind #3)
+let modelFaqChecked = 0;
+for (const group of productDirs) {
+  const groupDir = path.join(outTr, "products", group);
+  for (const ent of fs.readdirSync(groupDir, { withFileTypes: true })) {
+    if (!ent.isDirectory()) continue;
+    modelFaqChecked += 1;
+    auditPage(`products/${group}/${ent.name}`, {
+      minCount: 2,
+      requirePriceHint: true,
+      requireAiShopping: true,
+      requireHonesty: true,
+    });
+  }
+}
+
+// Day 60: every case study must ship FAQPage + ai-shopping + honesty
+const caseDirs = fs.existsSync(path.join(outTr, "projelerimiz"))
+  ? fs
+      .readdirSync(path.join(outTr, "projelerimiz"), { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name)
+  : [];
+let caseFaqChecked = 0;
+for (const slug of caseDirs) {
+  caseFaqChecked += 1;
+  auditPage(`projelerimiz/${slug}`, {
+    minCount: 2,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
+  // Day 61: CreativeWork sameAs → ai-shopping
+  const caseHtml = fs.readFileSync(path.join(outTr, "projelerimiz", slug, "index.html"), "utf8");
+  if (!caseHtml.includes("/ai-shopping.json") || !/sameAs/i.test(caseHtml)) {
+    errors.push(`projelerimiz/${slug}: CreativeWork/FAQ must sameAs or cite ai-shopping.json`);
+  }
+}
+
+// Day 61: blog posts FAQPage + honesty
+const blogDirs = fs.existsSync(path.join(outTr, "blog"))
+  ? fs
+      .readdirSync(path.join(outTr, "blog"), { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name)
+  : [];
+let blogFaqChecked = 0;
+for (const slug of blogDirs) {
+  blogFaqChecked += 1;
+  auditPage(`blog/${slug}`, {
+    minCount: 2,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
+}
+
+const seoGuideSrc = fs.readFileSync(path.join(root, "src/content/seo-guides.ts"), "utf8");
+const seoGuideBlock = seoGuideSrc.match(/export const SEO_GUIDE_SLUGS = \[([\s\S]*?)\] as const/);
+const seoGuideSlugs = seoGuideBlock
+  ? [...seoGuideBlock[1].matchAll(/"([^"]+)"/g)].map((m) => m[1])
+  : [];
+for (const slug of seoGuideSlugs) {
+  checked += 1;
+  auditPage(`rehber/${slug}`, {
+    minCount: 3,
+    requirePriceHint: true,
+    requireAiShopping: true,
+    requireHonesty: true,
+  });
+}
+
+console.log(
+  `Checked FAQ JSON-LD on ${commercialSlugs.length} commercial + ${regionDirs.length} regions + ${productDirs.length} product groups + ${modelFaqChecked} models + ${caseFaqChecked} cases + ${blogFaqChecked} blog posts + home + fiyat + hesaplayici + quote + about + nxtionstar + products hub + founder + yapay-zeka + sss + hizmetler + rehber hub + projeler + blog + rehber articles + ${seoGuideSlugs.length} seo-guides`,
+);
+if (errors.length) {
+  console.error("FAIL:");
+  for (const e of errors) console.error(" -", e);
+  process.exit(1);
+}
+console.log("OK: commercial/region/product FAQPage guards passed");

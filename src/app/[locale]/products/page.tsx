@@ -10,13 +10,30 @@ import { ItemListJsonLd } from "@/components/seo/ItemListJsonLd";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { getProducts } from "@/content/products";
 import { getSeo } from "@/content/seo";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildThinLocaleMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PRODUCT_GROUPS, groupsByFamily, productGroupPath } from "@/content/categories";
 import { CANONICAL_LINEUP } from "@/content/product-lineup";
-import { ArrowRight, Calculator, FileText } from "lucide-react";
+import { ProductCtaRow } from "@/components/products/ProductCtaRow";
+import { ArrowRight } from "lucide-react";
+import { GENERIC_WHATSAPP_MESSAGE } from "@/lib/whatsapp";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
+
+const PRODUCTS_HUB_FAQS = [
+  {
+    question: "NXTIONSTAR ürün gruplarının fiyatı nereden okunur?",
+    answer:
+      "Yayımlanmış 2026 panel (modül) USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Merchant dry-run (12 SKU): fiyat listesi. Şeffaf, esnek, poster, kiralık ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yoktur — https://arledscreen.com/tr/quote/. yayımlanmış panel listesi.",
+  },
+  {
+    question: "Hangi ürün gruplarında panel list fiyatı vardır?",
+    answer:
+      "İç mekân, dış mekân, GOB ve ince pitch panellerde yayımlanmış USD listesi vardır. Şeffaf LED, esnek LED, poster/totem, kiralık ekranlar ve kontrol kartları/kontrolcüler keşif + yazılı teklifle fiyatlanır — list USD uydurulmaz.",
+  }];
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -28,19 +45,15 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "products");
-  // Full product catalog is TR-only; EN/AR/RU hubs are thin shells → noindex, no hreflang.
+  // Full product catalog is TR-only; EN/AR/RU hubs are thin shells → noindex → TR.
   if (locale !== "tr") {
-    return {
-      ...buildPageMetadata({
-        locale,
-        path: "/products",
-        title: seo.title,
-        description: seo.description,
-        keywords: seo.keywords,
-        hreflangLocales: [],
-      }),
-      robots: { index: false, follow: true },
-    };
+    return buildThinLocaleMetadata({
+      locale,
+      path: "/products",
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
+    });
   }
   return buildPageMetadata({
     locale,
@@ -69,8 +82,7 @@ export default async function ProductsPage({ params }: PageProps) {
           {
             name: dict.nav.products,
             item: absoluteUrl(`/${locale}/products`),
-          },
-        ]}
+          }]}
       />
       <ItemListJsonLd
         name={seo.h1 ?? pageCopy.title}
@@ -84,6 +96,7 @@ export default async function ProductsPage({ params }: PageProps) {
       <ServiceJsonLd locale={locale} />
       {locale === "tr" ? (
         <>
+          <FaqJsonLd faqs={PRODUCTS_HUB_FAQS} />
           <ItemListJsonLd
             name="LED ekran ürün grupları"
             items={PRODUCT_GROUPS.map((g) => ({ name: g.name, url: absoluteUrl(productGroupPath(g)), image: g.image }))}
@@ -107,15 +120,11 @@ export default async function ProductsPage({ params }: PageProps) {
                   {seo.h1 ?? pageCopy.title}
                 </h1>
                 <p className="mt-4 max-w-xl text-pretty text-base leading-[1.75] text-ink-soft">{seo.intro ?? pageCopy.description}</p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <Link href="/tr/quote/" className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600">
-                    <FileText className="h-4 w-4" aria-hidden />
-                    Teklif isteyin
-                  </Link>
-                  <Link href="/tr/hesaplayici/" className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan">
-                    <Calculator className="h-4 w-4" aria-hidden />
-                    Fiyatı hesaplayın
-                  </Link>
+                <div className="mt-6">
+                  <ProductCtaRow
+                    quoteHref="/tr/quote/"
+                    whatsappMessage={GENERIC_WHATSAPP_MESSAGE}
+                  />
                 </div>
               </div>
             </div>
@@ -191,8 +200,7 @@ export default async function ProductsPage({ params }: PageProps) {
                     { title: "Kiralık sahne ve etkinlik", body: "Konser, fuar ve lansmanlar için kiralama kabinleri.", href: "/tr/rehber/led-ekran/" },
                     { title: "Vitrin ve şeffaf LED", body: "Mağaza vitrininde ürün teşhirini koruyan yüksek şeffaflıklı uygulamalar.", href: "/tr/products/seffaf-led-ekran/" },
                     { title: "Transparan / mesh LED", body: "Cam cephe ölçeğinde arkası görünen ızgara form faktörü.", href: "/tr/products/transparan-led-ekran/" },
-                    { title: "Totem ve LED poster", body: "Dikey LED poster ve dijital totem uygulamaları.", href: "/tr/rehber/poster-led-ekran/" },
-                  ].map((item) => (
+                    { title: "Totem ve LED poster", body: "Dikey LED poster ve dijital totem uygulamaları.", href: "/tr/rehber/poster-led-ekran/" }].map((item) => (
                     <Link
                       key={item.title}
                       href={item.href}
@@ -207,6 +215,24 @@ export default async function ProductsPage({ params }: PageProps) {
                   ))}
                 </nav>
               </div>
+            </div>
+          </section>
+
+          <section className="border-t border-border bg-band py-14 md:py-16 prose-seo">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <h2 className="font-display text-xl font-bold text-ink md:text-2xl">
+                Fiyat, katalog ve AI ajan kaynakları
+              </h2>
+              <div className="mt-6">
+                <HomeFaq faqs={PRODUCTS_HUB_FAQS} />
+              </div>
+              <ShoppingLinkCloud
+                excludeHref="/tr/products/"
+                title="Ürün hub — makinece okunur kaynaklar"
+                extra={[
+                  { href: "/tr/nxtionstar/", label: "NXTIONSTAR marka" },
+                  { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
+              />
             </div>
           </section>
         </>

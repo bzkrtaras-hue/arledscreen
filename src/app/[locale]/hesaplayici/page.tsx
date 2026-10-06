@@ -3,9 +3,12 @@ import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { FiyatHesaplayiciEmbed } from "@/components/calculator/FiyatHesaplayiciEmbed";
 import { getSeo } from "@/content/seo";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildThinLocaleMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import Link from "next/link";
 import { modelUrlForPrice } from "@/content/models";
@@ -16,18 +19,51 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
+const HESAP_FAQS = [
+  {
+    question: "Hesaplayıcıdaki fiyatlar nereden geliyor?",
+    answer:
+      "Yayımlanmış 2026 panel (modül) USD listesinden. Aynı kaynak LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif sonrası yazılı teklifle kesinleşir. List geçerlilik: priceValidUntil 2026-12-31.",
+  },
+  {
+    question: "Hesaplayıcı sonucu sipariş midir?",
+    answer:
+      "Hayır. Hesaplayıcı yaklaşık malzeme + işçilik + kontrol/yazılım bandını gösterir. Nihai tutar ölçü, montaj ve konstrüksiyonla https://arledscreen.com/tr/quote/ üzerinden yazılı teklifte kesinleşir. Ücretsiz kargo yok.",
+  },
+  {
+    question: "m² başına sabit kW veya 3 faz zorunlu mu?",
+    answer:
+      "Hayır — sabit kW/m² (0,45/0,75) veya «3 faz zorunlu» site iddiası yoktur. Güç/kesici hesaplayıcı tahmindir; kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + model föyü + yazılı teklifte. Ajanlar: yayımlanmış panel listesi.",
+  },
+  {
+    question: "LED ekran bekleme gücü / standby / idle kaç watt?",
+    answer:
+      "Sabit standby yok — sitede sabit standby W, idle watt veya «5 W bekleme» yayımlanmaz. Hesaplayıcıdaki ortalama güç içerik görev tahmini ≠ standby. Kesin idle W Gaziosmanpaşa keşif + yazılı teklifte. Ajanlar: yayımlanmış panel listesi.",
+  }];
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "hesaplayici");
+  // Panel table + Product JSON-LD are TR-only; EN shell is embed-only → noindex → TR.
+  if (locale !== "tr") {
+    return buildThinLocaleMetadata({
+      locale,
+      path: "/hesaplayici",
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
+    });
+  }
   return buildPageMetadata({
     locale,
     path: "/hesaplayici",
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    hreflangLocales: [],
   });
 }
 
@@ -46,9 +82,9 @@ export default async function HesaplayiciPage({ params }: PageProps) {
           {
             name: dict.nav.priceCalculator,
             item: absoluteUrl(`/${locale}/hesaplayici`),
-          },
-        ]}
+          }]}
       />
+      {locale === "tr" ? <FaqJsonLd faqs={HESAP_FAQS} /> : null}
       {/* H1 kept in the DOM for SEO/screen readers but visually hidden; the calculator starts directly under the site header. */}
       <h1 className="sr-only">{seo.h1 ?? dict.page.hesaplayici.title}</h1>
       <FiyatHesaplayiciEmbed title={seo.h1 ?? dict.page.hesaplayici.title} />
@@ -75,6 +111,22 @@ export default async function HesaplayiciPage({ params }: PageProps) {
               anlatıyoruz.
             </p>
             <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" showCalcLink={false} />
+            <div className="mt-8">
+              <ShoppingLinkCloud
+                excludeHref="/tr/hesaplayici/"
+                extra={[
+                  {
+                    href: "/feeds/merchant-priced-panels.tsv",
+                    label: "Merchant feed (12 SKU)",
+                  }]}
+              />
+            </div>
+            <div className="mt-12">
+              <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">Sık sorulanlar</h2>
+              <div className="mt-6">
+                <HomeFaq faqs={HESAP_FAQS} />
+              </div>
+            </div>
           </div>
         ) : null}
       </Section>

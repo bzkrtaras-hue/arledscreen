@@ -108,16 +108,21 @@ export interface PowerEstimate {
   rstNote: string;
 }
 
-/** Rough power density: indoor ~0.45 kW/m² peak, outdoor ~0.75 kW/m² peak. */
+/**
+ * Rough power estimate only (not a published site guarantee).
+ * Indoor ~0.45 / outdoor ~0.75 kW/m² peak are calculator defaults —
+ * avgKw is content-duty estimate (≠ standby/idle W — sabit standby yok).
+ * Final draw + single/three-phase topology land in Gaziosmanpaşa survey + written quote.
+ */
 export function estimatePowerInfrastructure(
   areaM2: number,
   environment: Environment,
 ): PowerEstimate {
   const peakDensity = environment === "outdoor" ? 0.75 : 0.45;
-  const avgFactor = 0.35;
+  const avgFactor = 0.35; // content-duty factor — not a published standby/idle watt claim
   const maxKw = Number((areaM2 * peakDensity).toFixed(2));
   const avgKw = Number((maxKw * avgFactor).toFixed(2));
-  // 3-phase 400V: I = P / (√3 * V * pf), pf≈0.9
+  // Illustrative 3-phase 400V sizing (not “3-phase required” site claim): I = P / (√3 * V * pf)
   const breakerAmps3Phase = Math.ceil(
     (maxKw * 1000) / (Math.sqrt(3) * 400 * 0.9),
   );
@@ -128,9 +133,9 @@ export function estimatePowerInfrastructure(
     breakerAmps3Phase,
     signalNote:
       environment === "outdoor"
-        ? "Prefer multimode/single-mode fiber beyond 80 m; CAT6A up to ~70 m with shielded runs."
-        : "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies.",
+        ? "Prefer multimode/single-mode fiber beyond 80 m; CAT6A up to ~70 m with shielded runs — no fixed site fiber distance; final run length in survey/quote."
+        : "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies — no fixed site fiber distance; final run length in survey/quote.",
     rstNote:
-      "Balance R-S-T phases across power cabinets; isolate LED load from AV control UPS where possible.",
+      "Estimate only — balance R-S-T when three-phase applies; final phase model in survey/quote. Isolate LED load from AV control UPS where possible.",
   };
 }

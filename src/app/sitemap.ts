@@ -13,8 +13,8 @@ export const dynamic = "force-static";
 /**
  * Sitemap lists only indexable, substantive URLs.
  * - TR: full site (products, models, bölgeler, blog, rehber…)
- * - EN: pages with real EN copy (home, about, hesaplayici, quote, yapay-zeka, rehber)
- * - Thin /en/products hub, /ar/* and /ru/* are omitted (no false language pairs).
+ * - EN: pages with real EN copy (home, yapay-zeka, rehber + guides)
+ * - Thin EN shells (/products, /about, /hesaplayici, /quote), /ar/*, /ru/* omitted
  */
 
 const TR_CORE: {
@@ -40,9 +40,6 @@ const EN_CORE: {
   { path: "/", priority: 0.9, changeFrequency: "daily" },
   { path: "/yapay-zeka/", priority: 0.85, changeFrequency: "weekly" },
   { path: "/rehber/", priority: 0.75, changeFrequency: "weekly" },
-  { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/hesaplayici/", priority: 0.65, changeFrequency: "weekly" },
-  { path: "/quote/", priority: 0.7, changeFrequency: "weekly" },
 ];
 
 function withTrailingSlash(path: string): string {
@@ -138,6 +135,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/nxtionstar/",
     "/about/aras-bozkurt/",
     "/rehber/piksel-araligi-secimi/",
+    "/rehber/led-ekran-fiyatlari/",
     "/rehber/led-tabela-mi-led-ekran-mi/",
     "/rehber/kiralik-mi-satin-alma/",
     "/rehber/gob-vs-smd/",
@@ -172,5 +170,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: region.isHq ? 0.9 : 0.75,
     });
   }
+
+  // Machine-readable AI alışveriş artefacts (agents + Bing/GSC discovery after deploy)
+  for (const [path, priority] of [
+    ["/ai-shopping.json", 0.99],
+    ["/catalog.json", 0.98],
+    ["/entity.json", 0.97],
+    ["/entity-profiles.json", 0.9],
+    ["/.well-known/ard.json", 0.95],
+    ["/.well-known/ai-catalog.json", 0.94],
+    ["/llms.txt", 0.92],
+    ["/llms-full.txt", 0.88],
+    ["/feeds/merchant-priced-panels.tsv", 0.93],
+  ] as const) {
+    entries.push({
+      url: absoluteUrl(path),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority,
+    });
+  }
+
   return entries;
 }

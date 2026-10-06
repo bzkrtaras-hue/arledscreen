@@ -27,6 +27,39 @@ export const CALC_EXTRAS = {
   driverSoftware: 500,
 };
 
+/** Published list year window — agents/Merchant may treat prices as dated. */
+export const PRICE_VALID_UNTIL = "2026-12-31";
+
+/** Honest OfferShippingDetails: list USD excludes freight; final = quote. */
+export const PANEL_SHIPPING_DETAILS = {
+  "@type": "OfferShippingDetails",
+  shippingDestination: {
+    "@type": "DefinedRegion",
+    addressCountry: "TR",
+  },
+  description:
+    "Nakliye list fiyatına dahil değildir; keşif sonrası yazılı teklifle netleşir. Uydurma ücretsiz kargo yok.",
+} as const;
+
+/**
+ * Honest MerchantReturnPolicy: no fixed site return window.
+ * MerchantReturnNotPermitted (schema) / iade koşulları teklifte (customer copy); contract may still
+ * define returns (yazılı teklif ve sözleşmede). Blocks invented “14-day free return”.
+ */
+export const PANEL_RETURN_POLICY = {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "TR",
+  returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+  description:
+    "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz; yazılı teklif ve sözleşmede belirlenir. hasMerchantReturnPolicy=iade koşulları teklifte",
+} as const;
+
+export const NXTIONSTAR_BRAND = {
+  "@type": "Brand",
+  name: "NXTIONSTAR",
+  url: `${SITE_URL}/tr/nxtionstar/`,
+} as const;
+
 export const PANEL_PRICES: PanelPrice[] = [
   { id: "p1-25-ic-gob", pitch: "P1.25", pitchMm: 1.25, use: "ic", surface: "GOB", usd: 95.88, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
   { id: "p1-53-ic-gob", pitch: "P1.53", pitchMm: 1.53, use: "ic", surface: "GOB", usd: 62.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
@@ -81,14 +114,22 @@ export function panelProductsJsonLd(
   const org = { "@id": `${SITE_URL}/#organization` };
   const products = panels.map((p) => {
     const u = urlFor?.(p) ?? pageUrl;
+    const catalogUrl = `${SITE_URL}/catalog.json`;
     return {
     "@type": "Product",
     "@id": urlFor?.(p) ? `${u}#product` : `${pageUrl}#${p.id}`,
     name: `${panelLabel(p)} LED ekran modülü (${panelModule(p)})`,
-    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    sku: p.id,
+    brand: { ...NXTIONSTAR_BRAND },
     category: "LED ekran modülü",
     description: `${panelLabel(p)} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.`,
     url: u,
+    isPartOf: {
+      "@type": "DataCatalog",
+      "@id": catalogUrl,
+      url: catalogUrl,
+      name: "NXTIONSTAR yayımlanmış panel USD katalog",
+    },
     additionalProperty: [
       { "@type": "PropertyValue", name: "Piksel aralığı", value: p.pitchMm, unitText: "mm" },
       { "@type": "PropertyValue", name: "Modül ölçüsü", value: panelModule(p) },
@@ -99,6 +140,11 @@ export function panelProductsJsonLd(
       url: u,
       price: p.usd.toFixed(2),
       priceCurrency: "USD",
+      priceValidUntil: PRICE_VALID_UNTIL,
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      shippingDetails: { ...PANEL_SHIPPING_DETAILS },
+      hasMerchantReturnPolicy: { ...PANEL_RETURN_POLICY },
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         price: p.usd.toFixed(2),
@@ -107,6 +153,7 @@ export function panelProductsJsonLd(
         referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
       },
       seller: org,
+      isPartOf: { "@id": catalogUrl },
     },
   };
   });
@@ -118,17 +165,21 @@ export function panelProductsJsonLd(
       "@id": `${pageUrl}#service`,
       name: serviceName,
       provider: org,
-      brand: { "@type": "Brand", name: "NXTIONSTAR" },
+      brand: { ...NXTIONSTAR_BRAND },
       areaServed: { "@type": "Country", name: "Türkiye" },
       url: pageUrl,
       offers: {
         "@type": "AggregateOffer",
+        "@id": `${SITE_URL}/catalog.json#all-priced-panels`,
         priceCurrency: "USD",
         lowPrice: Math.min(...usd).toFixed(2),
         highPrice: Math.max(...usd).toFixed(2),
         offerCount: panels.length,
-        description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç.",
+        priceValidUntil: PRICE_VALID_UNTIL,
+        description:
+          "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme. Kaynak: catalog.json.",
         seller: org,
+        isPartOf: { "@id": `${SITE_URL}/catalog.json` },
       },
     });
   }

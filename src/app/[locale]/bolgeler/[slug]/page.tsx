@@ -11,6 +11,7 @@ import {
   getServiceRegion,
   serviceRegionPath,
 } from "@/content/service-regions";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -61,12 +62,12 @@ export default async function ServiceRegionPage({
     {
       question: `${region.name} LED ekran fiyatı ne kadar?`,
       answer:
-        "Sabit m² fiyatı yoktur. Panel USD listesi fiyat hesaplayıcıda yayımlanır; nihai tutar ölçü, piksel aralığı, iç/dış mekân ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+        "Sabit m² fiyatı yoktur. Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır; nihai tutar ölçü, piksel aralığı, iç/dış mekân ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir. yayımlanmış panel listesi (pricedPanels + agentRules). KDV/nakliye hariç; ücretsiz kargo yok; iade teklifte.",
     },
     {
       question: "Keşif için ne paylaşmalıyım?",
       answer:
-        "Yaklaşık ölçü, montaj yeri, kullanım amacı ve izleme mesafesi yeterlidir. Fotoğraf veya kısa video süreci hızlandırır.",
+        "Yaklaşık ölçü, montaj yeri, kullanım amacı ve izleme mesafesi yeterlidir. Fotoğraf veya kısa video süreci hızlandırır. Firma kimliği için firma kaydı kullanılabilir.",
     },
   ];
 
@@ -226,6 +227,13 @@ export default async function ServiceRegionPage({
 
       <Section eyebrow="SSS" title={`${region.name} LED ekran soruları`} className="border-t border-border prose-seo">
         <HomeFaq faqs={faqs} />
+        <ShoppingLinkCloud
+          excludeHref={`/tr/bolgeler/${region.slug}/`}
+          title={`${region.name} · fiyat ve kimlik kaynakları`}
+          extra={[
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+          ]}
+        />
       </Section>
     </>
   );

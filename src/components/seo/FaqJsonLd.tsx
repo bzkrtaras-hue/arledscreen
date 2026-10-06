@@ -4,16 +4,29 @@ interface FaqJsonLdProps {
   faqs: FaqItem[];
 }
 
+function usableFaqs(faqs: FaqItem[]): FaqItem[] {
+  return faqs.filter(
+    (f) =>
+      typeof f?.question === "string" &&
+      typeof f?.answer === "string" &&
+      f.question.trim().length >= 10 &&
+      f.answer.trim().length >= 40,
+  );
+}
+
 export function FaqJsonLd({ faqs }: FaqJsonLdProps) {
+  const items = usableFaqs(faqs);
+  if (!items.length) return null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: items.map((faq) => ({
       "@type": "Question",
-      name: faq.question,
+      name: faq.question.trim(),
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.answer,
+        text: faq.answer.trim(),
       },
     })),
   };

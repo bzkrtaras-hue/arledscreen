@@ -10,8 +10,38 @@ yayımlanmaz** — yalnızca burada.
 | Kaynak | URL |
 |---|---|
 | Makinece entity (NAP + cite) | https://arledscreen.com/entity.json |
+| Point C paste packs | https://arledscreen.com/entity-profiles.json |
+| Merge-gün checklist | [`point-c-merge-day.md`](./point-c-merge-day.md) |
 | Kısa AI özeti | https://arledscreen.com/llms.txt |
 | Hakkımızda | https://arledscreen.com/tr/about/ |
+
+### P0 — Canlı entity / catalog yayın (doğrulama 2026-10-05)
+
+| URL | Canlı | Not |
+|-----|-------|-----|
+| `/llms.txt` | 200 | OK |
+| `/entity.json` | **404** (Next soft-404 HTML) | Repo’da var; prod artifact eksik → **PR #55 merge + CF Pages redeploy** |
+| `/catalog.json` | **404** | AI alışveriş branch’inde; merge sonrası |
+| `/.well-known/ard.json` | **404** | Aynı |
+| Ana sayfa Organization `sameAs` | IG + FB + LinkedIn | `arleds.com` yok (doğru — bizim site değil; kanonik arledscreen.com) |
+| Canlı `disambiguatingDescription` | Eski/kısmi | Repo’da Almanya ARLED Solutions + NEXTSTAR/NationStar tam; redeploy ile güncellenir |
+
+Build: `npm run entity` + `npm run audit:entity` (postbuild).
+
+### Point C durum panosu (2026-10-05 — site hazır / sahip bekliyor)
+
+| Katman | Durum | Kanıt / blok |
+|--------|-------|--------------|
+| A — Birinci taraf kimlik | **Kod hazır** | `entity.json`, `llms.txt`, About cite, NAP footer |
+| B — Makinece alışveriş | **Kod hazır, canlı değil** | `catalog.json` + `ard.json` + Offer audit → **PR #55 merge** |
+| C — Bağımsız atıf | **Sahip** | GBP + dizin + LinkedIn/IG/FB pack (§0d tracker) |
+| Spam koruması | **OK** | 81 il kapısı yok; AggregateRating yok; quote-only Offer yok |
+
+**Bu hafta sahip sırası (blokaj sırasına göre):**
+1. PR #55 merge + Cloudflare Pages redeploy → entity/catalog/ard **200** doğrula
+2. GBP doldur (§1 pack birebir) + IG/FB/LinkedIn About
+3. 2 sektör/yerel dizin başvurusu (§4 e-posta)
+4. İlk müşteri mention veya yerel haber denemesi
 
 ---
 
@@ -22,9 +52,9 @@ Web’de “İstanbul LED ekran” / “ARLEDSCREEN” taramasında:
 | Gözlem | Sonuç |
 |---|---|
 | Kendi site yoğunluğu | Yüksek (45 proje, ürün, fiyat, bölge, teknik) |
-| Bağımsız üçüncü taraf | **Zayıf** — çoğunlukla LinkedIn kurucu postları + eski `arleds.com` |
+| Bağımsız üçüncü taraf | **Zayıf** — çoğunlukla LinkedIn kurucu postları |
 | Rakip görünürlük | Freeled, Led Garaj, LedEkranistanbul vb. kendi sitelerinde entity cümlelerini tekrarlıyor |
-| Domain bölünmesi | Aynı telefonla `arleds.com` hâlâ indekste → entity parçalanıyor |
+| Domain | Kanonik yalnızca `arledscreen.com` — `arleds.com` bizim site değil |
 
 Sonuç: “ARLEDSCREEN kimdir?” cevabı bugün pratikte **birinci taraf** kaynaklara kilitli.
 Hedef: aynı abartısız olgunun **10–20 farklı güvenilir domain**’de doğrulanması.
@@ -51,19 +81,82 @@ Marka yazılışları: **ARLEDSCREEN** (birincil) · ARLED SCREEN · AR-LED Ekra
 
 Karıştırma yasağı: Almanya ARLED Solutions GmbH / ARLED Cinema · Next&NextStar (NEXTSTAR) TV · NationStar
 
+### Bing Places / Apple Maps (yapıştır — NAP birebir)
+
+GBP ile aynı NAP + kısa cite. Kategori: LED display / Digital signage / Electronics store (uygun olan). Web yalnızca `https://arledscreen.com/tr/`.
+
+```text
+ARLEDSCREEN
+Merkez Mah. Tuna Sok. No:15-17 Kat 1
+34245 Gaziosmanpaşa / İstanbul
++90 530 507 88 34
+arled@arledscreen.com
+https://arledscreen.com/tr/
+https://arledscreen.com/entity.json
+
+Kısa: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır (sıralama iddiası yok).
+```
+
+### Apple Business Connect (yapıştır — pack `appleBusinessConnect`)
+
+NAP birebir; web yalnızca `arledscreen.com/tr/`. Uydurma rating / saat dışı iddia yok.
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
+
+Merkez Mah. Tuna Sok. No:15-17 Kat 1
+34245 Gaziosmanpaşa / İstanbul
++90 530 507 88 34
+arled@arledscreen.com
+https://arledscreen.com/tr/
+https://arledscreen.com/entity.json
+```
+
+### Yandex Business / Maps (yapıştır — pack `yandexBusiness`)
+
+TR GEO için aynı NAP + orta cite. Kategori: LED ekran / dijital tabela. Web: `https://arledscreen.com/tr/`.
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
+
+Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul
+Telefon: +90 530 507 88 34
+Web: https://arledscreen.com/tr/
+Entity: https://arledscreen.com/entity.json
+```
+
+### Wikidata readiness (yalnızca notability varsa — pack `wikidataReadiness`)
+
+Zorlamayın. Uydurma QID yok. Kanıt URL’leri: `/tr/about/` · `entity.json` · `/tr/projelerimiz/` · LinkedIn company. Alan taslağı: label=ARLEDSCREEN; description=İstanbul Gaziosmanpaşa LED ekran firması; country=Turkey; headquarters=Gaziosmanpaşa; official website=`https://arledscreen.com/tr/`.
+
+### Crunchbase draft (yapıştır — pack `crunchbaseDraft`)
+
+Uydurma funding / headcount / valuation / rating yok. Yalnızca NAP + citeShort.
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
+
+Organization name: ARLEDSCREEN
+HQ: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul
+Phone: +90 530 507 88 34
+Email: arled@arledscreen.com
+Website: https://arledscreen.com/tr/
+Entity: https://arledscreen.com/entity.json
+Categories: LED display, Digital signage, B2B
+```
+
+### Google Merchant readiness (pack `googleMerchantReadiness`)
+
+Yalnızca 12 priced panel SKU. Feed: `https://arledscreen.com/feeds/merchant-priced-panels.tsv`. Shipping sütunu **boş**; quote-only gruplar yok; ücretsiz kargo / sahte rating yok. Checklist: [`merchant-priced-panels.md`](./merchant-priced-panels.md).
+
 ---
 
-## 0b) Domain birleştirme (kritik entity notu)
+## 0b) Kanonik domain
 
-Aynı telefon (+90 530 507 88 34) ile görünen eski/yan site **arleds.com** hâlâ indekste rakip/kafa karışıklığı yaratabilir.
-Önceki karar: TLS/redirect yoksa `sameAs`’a eklenmez.
+**Bizim site yalnızca `https://arledscreen.com`.** `arleds.com` bizim domain değil — 301 görevi yok, `sameAs`’a eklenmez.
 
-- [ ] `https://arleds.com` → `https://arledscreen.com/tr/` **301** (tüm sayfalar)
-- [ ] www/http varyantları da apex’e
-- [ ] GSC’de eski domain property varsa adres değişikliği / sitemap temizliği
-- [ ] Bio/GBP/web alanında yalnızca `arledscreen.com`
-
-Bu yapılmadan “ARLEDSCREEN kimdir?” cevabı iki domain arasında bölünür.
+- [x] Bio/GBP/web alanında yalnızca `https://arledscreen.com/tr/`
+- [x] Organization `sameAs`: IG + FB + LinkedIn (arleds.com yok)
 
 ---
 
@@ -83,49 +176,53 @@ Daha uzun varyantlar: bu dosyada §1 GBP, §3 LinkedIn/Instagram pack’leri.
 
 ## 0d) 20 bağımsız kaynak takip listesi
 
-Birinci taraf (zaten var — tek başına yetmez): site, entity.json, llms.txt.
+Birinci taraf (kod hazır — tek başına Point C sayılmaz): site, `entity.json`, `llms.txt`, `catalog.json`, `ard.json`.
+Canlı 200 için **PR #55 merge + CF redeploy** gerekir (2026-10-05’te entity/catalog/ard soft-404).
 
-| # | Kaynak tipi | Aksiyon (yapıştırma metni playbook’ta) | Durum | Canlı URL |
-|---|---|---|---|---|
-| 1 | Google Business Profile | Açıklama = orta cite; web = arledscreen.com/tr/ | [ ] | |
-| 2 | Bing Places / Microsoft | Aynı NAP | [ ] | |
-| 3 | LinkedIn şirket | company/arleds — About = linkedinAbout pack | [ ] | https://www.linkedin.com/company/arleds |
-| 4 | LinkedIn kurucu | bozkurtaras — şirket linki + proje postları | [ ] | https://www.linkedin.com/in/bozkurtaras |
-| 5 | Instagram | @arledscreen bio pack | [ ] | https://www.instagram.com/arledscreen |
-| 6 | Facebook | arledscreenn About = orta cite + NAP | [ ] | https://www.facebook.com/arledscreenn |
-| 7 | YouTube kanalı | About + banner; sonra schema `sameAs` | [ ] | |
-| 8 | TR işletme / sektör dizini #1 | Kısa + uzun dizin pack + entity.json | [ ] | |
-| 9 | TR işletme / sektör dizini #2 | Farklı domain | [ ] | |
-| 10 | Yerel İstanbul / Gaziosmanpaşa dizini | Tabela / LED kategori | [ ] | |
-| 11 | Global üretici/uygulayıcı listesi | Inclusion + entity.json | [ ] | |
-| 12 | Haber / fuar notu #1 | Müşteri onaylı; tek cümle + link | [ ] | |
-| 13 | Haber #2 | Farklı yayın | [ ] | |
-| 14 | Müşteri web referansı #1 | “LED ekran: ARLEDSCREEN” + link | [ ] | |
-| 15 | Müşteri referansı #2 | Farklı domain | [ ] | |
-| 16 | PDF datasheet / 3. taraf katalog cite | Gerçek föy; site + dış cite | [ ] | |
-| 17 | Ticaret/fuar katılımcı listesi | İsim + URL | [ ] | |
-| 18 | ProAV / mimarlık / yerel basın | Proje özeti | [ ] | |
-| 19 | Apple Maps / ek harita dizini | NAP aynı | [ ] | |
-| 20 | Wikidata **yalnızca** notability varsa | Zorlamayın | [ ] opsiyonel | |
+| # | Kaynak tipi | Aksiyon | Site hazır | Sahip durum | Canlı URL |
+|---|---|---|---|---|---|
+| 1 | Google Business Profile | Açıklama = orta cite; web = arledscreen.com/tr/ | Pack §1 | [ ] | |
+| 2 | Bing Places / Microsoft | Aynı NAP | Pack §0 | [ ] | |
+| 3 | LinkedIn şirket | company/arleds — About = linkedin pack | Pack §3 | [ ] profil var | https://www.linkedin.com/company/arleds |
+| 4 | LinkedIn kurucu | bozkurtaras — şirket linki + proje postları | Case study citeOneLiner | [ ] profil var | https://www.linkedin.com/in/bozkurtaras |
+| 5 | Instagram | @arledscreen bio pack | Pack §3 + sameAs | [ ] | https://www.instagram.com/arledscreen |
+| 6 | Facebook | arledscreenn About = orta cite + NAP | Pack §3 + sameAs | [ ] | https://www.facebook.com/arledscreenn |
+| 7 | YouTube kanalı | About + banner; sonra schema `sameAs` | Pack youtubeAbout | [ ] kanal yok | |
+| 8 | TR işletme / sektör dizini #1 | Kısa + uzun dizin pack + entity.json | §4 e-posta | [ ] | |
+| 9 | TR işletme / sektör dizini #2 | Farklı domain | §4 e-posta | [ ] | |
+| 10 | Yerel İstanbul / Gaziosmanpaşa dizini | Tabela / LED kategori | §4 | [ ] | |
+| 11 | Global üretici/uygulayıcı listesi | Inclusion + entity.json | §4 | [ ] | |
+| 12 | Haber / fuar notu #1 | Müşteri onaylı; tek cümle + link | §5 cümle | [ ] | |
+| 13 | Haber #2 | Farklı yayın | §5 | [ ] | |
+| 14 | Müşteri web referansı #1 | “LED ekran: ARLEDSCREEN” + link | §6 mail | [ ] | |
+| 15 | Müşteri referansı #2 | Farklı domain | §6 | [ ] | |
+| 16 | PDF datasheet / 3. taraf katalog cite | Gerçek föy; site + dış cite | [ ] föy yok | [ ] | |
+| 17 | Ticaret/fuar katılımcı listesi | İsim + URL | §4 | [ ] | |
+| 18 | ProAV / mimarlık / yerel basın | Proje özeti | §5 | [ ] | |
+| 19 | Apple Maps / ek harita dizini | NAP aynı | Pack §0 | [ ] | |
+| 20 | Wikidata **yalnızca** notability varsa | Zorlamayın | — | [ ] opsiyonel | |
 
 **Başarı ölçütü:** “ARLEDSCREEN kimdir?” sorusunda **kendi siteniz dışında ≥5–10 güvenilir URL** aynı olguyu taşır; ideal 10–20.
+
+**Sayaç (2026-10-05):** bağımsız tamamlanan = **0** · profil URL’si var ama About pack henüz doğrulanmadı = 3 (LI şirket, LI kurucu, IG/FB) · birinci taraf canlı = llms.txt only.
 
 ---
 
 ## 0e) İlk 14 gün — sahip aksiyon sırası (P0)
 
-Kod tarafı hazır (`entity.json`, playbook). Sıra operasyonda:
+Kod tarafı hazır (`entity.json`, catalog, ard, playbook, case study cite). Sıra operasyonda:
 
-| Gün | İş | Neden |
-|---|---|---|
-| 1 | `arleds.com` → `arledscreen.com/tr/` 301 | Entity bölünmesini kes |
-| 1–2 | GBP oluştur/doldur: kategori, NAP, saat, WhatsApp, web, orta cite | Maps + yerel AI |
-| 2 | LinkedIn şirket About + kurucu Featured’a entity.json | Sosyal entity |
-| 2 | Instagram bio + Facebook About aynı pack | Tutarlılık |
-| 3–5 | GBP’ye 20+ gerçek foto (fabrika/montaj/proje) | Güven sinyali |
-| 3–7 | 2 sektör/yerel dizin başvurusu (aşağıdaki e-posta) | İlk bağımsız domain’ler |
-| 7–14 | 1 müşteri sitesi mention + 1 yerel haber/fuar denemesi | Gerçek 3. taraf |
-| Sürekli | Teslim sonrası etik Google yorum daveti | Yorum = bağımsız kanıt |
+| Gün | İş | Neden | Blok |
+|---|---|---|---|
+| 0 | **PR #55 merge + CF Pages redeploy**; `entity.json` / `catalog.json` / `ard.json` **200** doğrula | Ajanlar kimlik+fiyat okuyabilsin | Deploy |
+| 1 | Point C paste (GBP→LI→IG→FB) | Bağımsız atıf | Sahip |
+| 1–2 | GBP oluştur/doldur: kategori, NAP, saat, WhatsApp, web, orta cite | Maps + yerel AI | Sahip |
+| 2 | LinkedIn şirket About + kurucu Featured’a entity.json | Sosyal entity | Sahip |
+| 2 | Instagram bio + Facebook About aynı pack | Tutarlılık | Sahip |
+| 3–5 | GBP’ye 20+ gerçek foto (fabrika/montaj/proje) | Güven sinyali | Sahip |
+| 3–7 | 2 sektör/yerel dizin başvurusu (aşağıdaki e-posta) | İlk bağımsız domain’ler | Sahip |
+| 7–14 | 1 müşteri sitesi mention + 1 yerel haber/fuar denemesi | Gerçek 3. taraf | Sahip |
+| Sürekli | Teslim sonrası etik Google yorum daveti | Yorum = bağımsız kanıt | Sahip |
 
 Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** koyun.
 
@@ -137,7 +234,7 @@ Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** k
 - [ ] Birincil kategori: LED display / Digital signage’e en yakın TR kategori
 - [ ] İkincil: Tabela, görsel iletişim vb. (gerçek hizmetlerle uyumlu)
 - [ ] Adres / telefon / web / saatler = yukarıdaki NAP
-- [ ] Web: `https://arledscreen.com/tr/` (arleds.com değil)
+- [ ] Web: `https://arledscreen.com/tr/` (yalnızca bu; arleds.com bizim değil)
 - [ ] Açıklama: playbook §1 GBP pack (birebir)
 - [ ] WhatsApp iş bağlantısı
 - [ ] Hizmetler: LED ekran satışı, montaj, kiralama, teknik servis, keşif
@@ -148,10 +245,14 @@ Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** k
 
 ### GBP açıklama (yapıştır)
 
+Kaynak gerçeği: `entity-profiles.json` → `packs.gbpDescription` (= `ENTITY_CITE_MEDIUM`). Aşağıyı birebir kullanın:
+
 ```text
-ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
 
 https://arledscreen.com/tr/
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
 ```
 
 ---
@@ -180,19 +281,44 @@ Anahtar kelime yazmanıza gerek yok — kendi cümleleriniz yeterli.
 
 ### LinkedIn şirket About (yapıştır)
 
+Kaynak: `entity-profiles.json` → `packs.linkedinAbout` (birebir).
+
 ```text
-ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
 
 Web: https://arledscreen.com/tr/
 Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
 Telefon: +90 530 507 88 34
 ```
 
 ### Instagram bio (yapıştır)
 
+Kaynak: `entity-profiles.json` → `packs.instagramBio`.
+
 ```text
-İstanbul LED ekran · NXTIONSTAR · Satış + montaj + servis
+İstanbul LED · NXTIONSTAR · Satış+montaj · quote-only gruplar teklifle
 arledscreen.com/tr/
+```
+
+### Facebook About (yapıştır)
+
+Kaynak: `entity-profiles.json` → `packs.facebookAbout` (= `ENTITY_CITE_MEDIUM`, IG bio değil).
+
+```text
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
+```
+
+### YouTube kanal About (yapıştır — kanal açılınca)
+
+Kaynak: `entity-profiles.json` → `packs.youtubeAbout` (= `ENTITY_CITE_SHORT` + URL’ler). Kanal yokken schema `sameAs`’a ekleme.
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol quote-only.
+
+Site: https://arledscreen.com/tr/
+Entity: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
 ```
 
 Her major proje için aynı paket:
@@ -225,6 +351,29 @@ Hedef tip (spam directory satın almayın):
 | Mimarlık / ProAV | Proje özeti gönderimi | proje adı + ARLEDSCREEN |
 | Global LED listeleri | Düzeltme / inclusion + entity.json | ARLEDSCREEN |
 
+### Dizin kısa açıklama (yapıştır)
+
+Kaynak: `entity-profiles.json` → `packs.directoryShort` (= `ENTITY_CITE_ONE_LINER`).
+
+```text
+ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
+```
+
+### Dizin uzun açıklama (yapıştır)
+
+Kaynak: `entity-profiles.json` → `packs.directoryLong` (= medium cite + NAP). Sıralama iddiası / “küresel standart” / AggregateRating yok.
+
+```text
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.
+
+Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul
+Telefon: +90 530 507 88 34
+E-posta: arled@arledscreen.com
+Web: https://arledscreen.com/tr/
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; extrasUsd ≠ marka list SKU)
+```
+
 Başvuru e-postası:
 
 ```text
@@ -234,14 +383,15 @@ Merhaba,
 Türkiye LED ekran uygulayıcı/üretici listenize ARLEDSCREEN’i eklemenizi veya
 mevcut kaydı düzeltmenizi rica ederiz.
 
-Kısa özet:
+Kısa özet (directoryShort):
 ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve
-teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır.
+teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır (sıralama iddiası yok).
 
 Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
 Web: https://arledscreen.com/tr/
 Telefon: +90 530 507 88 34
-NAP bu playbook §0 bloğu ile birebir.
+NAP bu playbook §0 bloğu ile birebir. Uzun metin: entity-profiles.json → directoryLong.
 
 Teşekkürler
 Aras Bozkurt
@@ -261,7 +411,9 @@ Haber için önerilen cümle (müşteri onayıyla):
 
 ```text
 LED ekran uygulaması ARLEDSCREEN (İstanbul Gaziosmanpaşa) tarafından gerçekleştirildi.
-https://arledscreen.com/entity.json
+Doğrulama: https://arledscreen.com/entity.json
+AI alışveriş: https://arledscreen.com/ai-shopping.json
+(Sıralama / “küresel standart” / AggregateRating iddiası yok.)
 ```
 
 ---
@@ -293,15 +445,16 @@ Aynı cümlenin çeşitleri (abartısız) şuralarda görünsün:
 7. 2–3 haber / fuar  
 8. 2+ müşteri sitesi mention  
 9. Bing Places (varsa)  
-10. entity.json + llms.txt (birinci taraf; tek başına yetmez)
+10. entity.json + catalog.json + llms.txt + ard.json (birinci taraf; tek başına yetmez)
 
 Kontrol soruları (ayda bir, tarayıcı/incognito + Perplexity/ChatGPT):
 
 - “ARLEDSCREEN kimdir?”
 - “İstanbul Gaziosmanpaşa LED ekran firması”
 - “NXTIONSTAR LED ekran Türkiye”
+- “LED ekran panel fiyatı USD ARLEDSCREEN” → beklenen: catalog.json / led-ekran-fiyatlari
 
-Beklenen: kendi site dışında en az birkaç URL aynı NAP/olguyu taşır.
+Beklenen: kendi site dışında en az birkaç URL aynı NAP/olguyu taşır; fiyat sorusunda uydurma TL paket yok.
 
 ---
 
@@ -311,4 +464,4 @@ Beklenen: kendi site dışında en az birkaç URL aynı NAP/olguyu taşır.
 - 81 il doorway
 - “Türkiye’nin en büyüğü / en çok tercih edilen”
 - Olmayan YouTube / sertifika / rating’i schema’ya yazmak
-- arleds.com’u `sameAs`’a eklemek (301 olmadan)
+- arleds.com’u `sameAs`’a eklemek (bizim site değil)

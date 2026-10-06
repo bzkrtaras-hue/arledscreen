@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
   },
   alternates: aiDiscoveryMetadata.alternates,
+  other: aiDiscoveryMetadata.other,
 };
 
 export default function RootLayout({
@@ -49,7 +50,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* AI Discovery & LLM Context Links */}
         {aiDiscoveryLinks.map((link, index) => (
           <link
             key={index}
@@ -59,7 +59,6 @@ export default function RootLayout({
             title={link.title}
           />
         ))}
-        {/* Structured data: Organization + canonical */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

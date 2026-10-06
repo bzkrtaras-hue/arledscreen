@@ -43,7 +43,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     width: 720,
     height: 1280,
     title: "Etkinlik Lounge — LED Sahne Duvarı",
-    caption: "Karanlık lounge’da yüksek kontrast içerikli iç mekân LED duvar",
+    caption: "Karanlık lounge’da iç mekân LED duvar — kontrast oranı model föyü + yazılı teklifte (sabit kontrast yok)",
   },
   {
     slug: "immersive-ceiling-led-tunnel",
@@ -114,7 +114,7 @@ export const PROJECT_VIDEOS: SiteVideo[] = [
     poster: "/videos/sphere-led-showroom.webp",
     width: 1280,
     height: 720,
-    title: "Küresel LED Ekran — Showroom",
+    title: "Küre LED Ekran — Showroom",
     caption: "Asılı küresel LED ekran, yüksek çözünürlüklü içerik yayını",
   },
   {

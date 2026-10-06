@@ -9,6 +9,19 @@ const OG_LOCALE: Record<Locale, string> = {
   ru: "ru_RU",
 };
 
+/**
+ * Paths whose non-TR locales are thin shells (TR-gated UI / no dedicated copy).
+ * Non-TR → noindex + canonical→TR + no hreflang. Keep out of EN sitemap.
+ */
+export const THIN_LOCALE_PATHS = ["/products", "/about", "/hesaplayici", "/quote"] as const;
+
+export type ThinLocalePath = (typeof THIN_LOCALE_PATHS)[number];
+
+export function isThinLocalePath(path: string): path is ThinLocalePath {
+  const clean = path.replace(/\/$/, "") || "/";
+  return (THIN_LOCALE_PATHS as readonly string[]).includes(clean);
+}
+
 export interface BuildPageMetadataInput {
   locale: Locale;
   /** Path after locale, e.g. "" | "/" | "/products" */
@@ -23,6 +36,20 @@ export interface BuildPageMetadataInput {
   canonicalLocale?: Locale;
   /** Restrict hreflang alternates to locales that have their own text. */
   hreflangLocales?: Locale[];
+}
+
+/** Shared metadata for thin non-TR shells: noindex, consolidate to TR canonical. */
+export function buildThinLocaleMetadata(
+  input: Omit<BuildPageMetadataInput, "hreflangLocales" | "canonicalLocale">,
+): Metadata {
+  return {
+    ...buildPageMetadata({
+      ...input,
+      canonicalLocale: "tr",
+      hreflangLocales: [],
+    }),
+    robots: { index: false, follow: true },
+  };
 }
 
 function normalizePath(path: string): string {

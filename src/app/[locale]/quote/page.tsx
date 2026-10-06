@@ -14,16 +14,32 @@ import {
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { getSeo } from "@/content/seo";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildThinLocaleMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
+
+const QUOTE_FAQS = [
+  {
+    question: "Yazılı teklif ne zaman gerekir?",
+    answer:
+      "Nihai proje tutarı her zaman keşif sonrası yazılı teklifle kesinleşir. Yaklaşık panel USD listesi https://arledscreen.com/tr/led-ekran-fiyatlari/ ve yayımlanmış panel listesi üzerindedir; nakliye hariçtir — ücretsiz kargo yok. Kiralık, şeffaf, esnek, poster ve kontrol gruplarında list fiyatı yoktur; bu form veya WhatsApp ile teklif alınır.",
+  },
+  {
+    question: "Teklif için hangi bilgiler yeterli?",
+    answer:
+      "Yaklaşık ölçü, iç veya dış mekân, konum, kullanım amacı ve zaman planı yeterlidir. Fotoğraf veya kısa video süreci hızlandırır. Panel kataloğu: LED ekran fiyatları sayfası.",
+  },
+];
 
 export async function generateMetadata({
   params,
@@ -31,12 +47,22 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "quote");
+  if (locale !== "tr") {
+    return buildThinLocaleMetadata({
+      locale,
+      path: "/quote",
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
+    });
+  }
   return buildPageMetadata({
     locale,
     path: "/quote",
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    hreflangLocales: [],
   });
 }
 
@@ -55,9 +81,9 @@ export default async function QuotePage({ params }: PageProps) {
           { name: dict.nav.quote, item: absoluteUrl(`/${locale}/quote`) },
         ]}
       />
+      {locale === "tr" ? <FaqJsonLd faqs={QUOTE_FAQS} /> : null}
       {locale === "tr" ? (
         <>
-          {/* Rounded photo banner with centred H1 */}
           <section className="bg-white px-0 pt-0 md:px-6 md:pt-6 lg:px-8">
             <div className="relative isolate mx-auto max-w-7xl overflow-hidden bg-navy md:rounded-[2rem]">
               <OptImage
@@ -144,9 +170,19 @@ export default async function QuotePage({ params }: PageProps) {
 
           <section className="bg-band py-12 md:py-16">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <h2 className="font-display text-xl font-bold text-ink">Proje türüne göre WhatsApp&apos;tan hızlı mesaj</h2>
+              <h2 className="font-display text-xl font-bold text-ink">Proje türüne göre WhatsApp’tan hızlı mesaj</h2>
               <p className="mb-5 mt-1 text-sm text-ink-muted">Formu doldurmak istemiyorsanız proje türünü seçin; mesaj hazır açılır.</p>
               <WhatsAppProjectPicker />
+            </div>
+          </section>
+
+          <section className="border-t border-border bg-white py-12 md:py-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <h2 className="font-display text-xl font-bold text-ink md:text-2xl">Sık sorulanlar</h2>
+              <div className="mt-6">
+                <HomeFaq faqs={QUOTE_FAQS} />
+              </div>
+              <ShoppingLinkCloud excludeHref="/tr/quote/" title="Fiyat ve teklif" />
             </div>
           </section>
         </>
@@ -158,25 +194,23 @@ export default async function QuotePage({ params }: PageProps) {
         description={seo.intro ?? dict.page.quote.description}
         className="prose-seo"
       >
-        {(
-          <div className="grid gap-4 sm:grid-cols-3">
-            <a href={CONTACT_EMAIL_HREF} className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">E-mail</p>
-              <p className="mt-2 font-display font-bold text-ink">{CONTACT_EMAIL}</p>
-            </a>
-            <a href={GENERIC_WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">WhatsApp</p>
-              <p className="mt-2 font-display font-bold text-ink">{CONTACT_PHONE_DISPLAY}</p>
-            </a>
-            <a href={CONTACT_PHONE_HREF} className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">Phone</p>
-              <p className="mt-2 font-display font-bold text-ink">{CONTACT_PHONE_DISPLAY}</p>
-            </a>
-            <p className="text-sm text-ink-muted sm:col-span-3">
-              Please share dimensions, indoor/outdoor use, location and timeline. ARLEDSCREEN · Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa, Istanbul, Turkey · Mon–Fri 09:00–18:00, Sat 10:00–15:00.
-            </p>
-          </div>
-        )}
+        <div className="grid gap-4 sm:grid-cols-3">
+          <a href={CONTACT_EMAIL_HREF} className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">E-mail</p>
+            <p className="mt-2 font-display font-bold text-ink">{CONTACT_EMAIL}</p>
+          </a>
+          <a href={GENERIC_WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">WhatsApp</p>
+            <p className="mt-2 font-display font-bold text-ink">{CONTACT_PHONE_DISPLAY}</p>
+          </a>
+          <a href={CONTACT_PHONE_HREF} className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">Phone</p>
+            <p className="mt-2 font-display font-bold text-ink">{CONTACT_PHONE_DISPLAY}</p>
+          </a>
+          <p className="text-sm text-ink-muted sm:col-span-3">
+            Please share dimensions, indoor/outdoor use, location and timeline. ARLEDSCREEN · Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa, Istanbul, Turkey · Mon–Fri 09:00–18:00, Sat 10:00–15:00.
+          </p>
+        </div>
       </Section>
       )}
     </>

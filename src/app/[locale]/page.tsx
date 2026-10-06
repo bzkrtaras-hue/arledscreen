@@ -26,6 +26,7 @@ import { BrandBand } from "@/components/home/BrandBand";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -37,7 +38,6 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "home");
-  // Only tr↔en share true home counterparts; ar/ru are thin → no hreflang.
   const hreflangLocales =
     locale === "tr" || locale === "en" ? (["tr", "en"] as Locale[]) : [];
   return buildPageMetadata({
@@ -55,9 +55,9 @@ export default async function HomePage({ params }: PageProps) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const dict = getDictionary(locale);
+  // Customer-facing FAQs only (no AI-agent instruction wording in faqs.ts).
   const faqs = getFaqs(locale);
   const tr = locale === "tr";
-  // Canlı Destek sohbet balonu (public/chat-widget.js): yalnızca TR ve EN ana sayfada, sayfa yüklendikten sonra.
   const chatWidget =
     locale === "tr" || locale === "en" ? (
       <Script src="/chat-widget.js" strategy="lazyOnload" data-locale={locale} />
@@ -117,15 +117,11 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <FaqJsonLd faqs={faqs} />
-
-      {/* 1. Full-bleed video hero under liquid-glass chrome → 2. gateway tiles → 3. values */}
       <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
         <Hero locale={locale} />
       </div>
       <GatewayTiles />
       <ValuesBand />
-
-      {/* 4. Product groups (category tiles) */}
       <section id="urunler" className="bg-white py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -151,8 +147,6 @@ export default async function HomePage({ params }: PageProps) {
           </p>
         </div>
       </section>
-
-      {/* 5. References: featured project + record cards */}
       <section id="referanslar" className="border-t border-border bg-white py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
@@ -164,10 +158,7 @@ export default async function HomePage({ params }: PageProps) {
           <AllReferencesNote />
         </div>
       </section>
-
-      {/* 6. Rounded brand band */}
       <BrandBand locale={locale} />
-
       <Section
         id="surec"
         eyebrow="Çalışma süreci"
@@ -177,7 +168,6 @@ export default async function HomePage({ params }: PageProps) {
       >
         <ProcessSteps />
       </Section>
-
       <Section
         id="rehber"
         eyebrow="Öğrenme merkezi"
@@ -187,7 +177,6 @@ export default async function HomePage({ params }: PageProps) {
       >
         <LearningHub />
       </Section>
-
       <Section
         id="blogdan"
         eyebrow="Blogdan"
@@ -197,14 +186,11 @@ export default async function HomePage({ params }: PageProps) {
       >
         <BlogTeaser />
       </Section>
-
-      {/* Split quote card (blue info panel + short form) */}
       <section id="hizli-iletisim" className="bg-band py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <QuoteSplit />
         </div>
       </section>
-
       <Section
         id="sss"
         eyebrow={dict.sections.faq.eyebrow}
@@ -212,6 +198,7 @@ export default async function HomePage({ params }: PageProps) {
         className="min-w-0 prose-seo"
       >
         <HomeFaq faqs={faqs} />
+        <ShoppingLinkCloud excludeHref="/tr/" title="Fiyat ve teklif" />
       </Section>
       {chatWidget}
     </>

@@ -1,23 +1,23 @@
 [
   {
     "question": "LED ekran fiyatı neye göre belirlenir?",
-    "answer": "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyet fiyat hesaplayıcıyla görülebilir; net rakam ölçü ve konum bilgisiyle verilen yazılı teklifle kesinleşir."
+    "answer": "Fiyatı en çok ekran ölçüsü, piksel aralığı, iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yayımlanmış panel listesi https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nakliye hariçtir — ücretsiz kargo yok. Yaklaşık maliyeti hesaplayıcıda görebilirsiniz; net tutar ölçü ve konum bilgisiyle verilen yazılı teklifte kesinleşir."
   },
   {
     "question": "P2.5 iç mekân LED ekranın panel fiyatı nedir?",
-    "answer": "ARLEDSCREEN hesaplayıcısındaki 2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). Bu, 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir; işçilik, kontrol kartı ve yazılım ayrıca eklenir."
+    "answer": "2026 listesine göre P2.5 iç mekân modül 32,18 USD/paneldir (320 × 160 mm, KDV ve nakliye hariç). 1 m² için yaklaşık 629 USD modül bedeline karşılık gelir. İşçilik, kontrol kartı ve yazılım ayrıca eklenir. Güncel liste LED ekran fiyatları sayfasındadır."
   },
   {
     "question": "Dış mekân LED ekran panel fiyatları ne kadar?",
-    "answer": "Hesaplayıcıda dış mekân modüller P5 için 29,90 USD, P4 için 33,80 USD, P4 önden servisli için 36,40 USD, P3.07 için 44,20 USD, P2.9 için 53,30 USD ve P2.5 için 63,70 USD/paneldir (KDV ve nakliye hariç)."
+    "answer": "Yayımlanmış dış mekân modül listesinde P5 29,90 USD, P4 33,80 USD, P4 önden servisli 36,40 USD, P3.07 44,20 USD, P2.9 53,30 USD ve P2.5 63,70 USD/paneldir. Fiyatlar KDV ve nakliye hariçtir. Ayrıntı LED ekran fiyatları sayfasındadır."
   },
   {
     "question": "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
-    "answer": "Pratik bir başlangıç kuralı olarak her 1 mm piksel aralığı için yaklaşık 1 m minimum izleme mesafesi alınır (P2.5 ≈ 2,5 m). Yakın izlemede küçük P değerleri, cephe ve yol kenarı gibi uzak izlemede daha büyük P değerleri tercih edilir. Kesin seçim keşifte içerik türü de dikkate alınarak yapılır."
+    "answer": "Pratik bir başlangıç tahmini: her 1 mm piksel aralığı için yaklaşık 1 m izleme mesafesi konuşulabilir (P2.5 ≈ 2,5 m) — «1 mm = 1 m garanti» veya sabit minimum mesafe iddiası yoktur. Kesin pitch Gaziosmanpaşa keşif + yazılı teklifte; içerik türü de dikkate alınır."
   },
   {
     "question": "İç mekân ile dış mekân LED ekran arasındaki fark nedir?",
-    "answer": "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Seriye ait değerler teklifle birlikte teknik föyde paylaşılır."
+    "answer": "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa, yağmur ve toza karşı daha yüksek koruma sınıfına sahiptir. Çalışma sıcaklığı ve nem aralığı modele göre değişir; sabit bir derece veya nem bandı sitede yayımlanmaz, teknik föy ve yazılı teklifte belirtilir. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır."
   },
   {
     "question": "LED tabela ile LED ekran arasındaki fark nedir?",
@@ -37,11 +37,35 @@
   },
   {
     "question": "LED ekran montajı ne kadar sürer?",
-    "answer": "Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre teklifte paylaşılır."
+    "answer": "Sabit bir montaj günü yayımlanmaz. Süre ekran ölçüsüne, konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası iş planı ve tahmini süre yazılı teklifte paylaşılır."
+  },
+  {
+    "question": "LED ekran teslimat süresi kaç gün?",
+    "answer": "Sabit teslimat süresi yok — sitede sabit teslimat günü yayımlanmaz. Termin ölçüye, stok durumuna ve montaj planına göre Gaziosmanpaşa keşif sonrası yazılı teklifte netleşir."
   },
   {
     "question": "Garanti ve teknik servis nasıl sağlanıyor?",
-    "answer": "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Süre ürüne ve projeye göre değişir; teklifte net yazarız. Kurulumdan sonra arıza, bakım ve yedek parça için telefon, WhatsApp veya e-posta yeterlidir."
+    "answer": "Sabit garanti yılı yok — sitede sabit garanti yılı yayımlanmaz. Süre ve kapsam ürün serisine göre Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir. Sabit yedek parça stok yok — stok/sevkiyat yazılı teklifte."
+  },
+  {
+    "question": "ARLEDSCREEN LED ekran yedek parça stokta mı?",
+    "answer": "Sabit yedek parça stok yok — sitede sabit yedek parça stok veya hızlı sevkiyat iddiası yayımlanmaz. Hangi parçanın hazır olacağı proje ve modele göre Gaziosmanpaşa yazılı teklifte belirtilir."
+  },
+  {
+    "question": "LED ekranda iade süresi kaç gün?",
+    "answer": "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. İade koşulları proje sözleşmesinde ve Gaziosmanpaşa yazılı teklifte belirtilir."
+  },
+  {
+    "question": "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
+    "answer": "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü ve Gaziosmanpaşa yazılı teklifte paylaşılır."
+  },
+  {
+    "question": "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
+    "answer": "Sitede sabit ISO 9001 veya ISO 14001 belgesi yayımlanmaz. Varsa süreç belgeleri keşif ve yazılı teklifte belirtilir."
+  },
+  {
+    "question": "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
+    "answer": "Sitede sabit UL veya ETL listesi yayımlanmaz. Güvenlik uygunluğu model föyünde ve yazılı teklifte netleşir."
   },
   {
     "question": "Kiralık LED ekran hizmetiniz var mı?",
@@ -57,6 +81,6 @@
   },
   {
     "question": "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
-    "answer": "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. İletişim: +90 530 507 88 34, arled@arledscreen.com."
+    "answer": "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran markasıdır. Türkiye’deki satış, montaj ve teknik servis ARLEDSCREEN üzerinden yürür. İletişim: +90 530 507 88 34, arled@arledscreen.com."
   }
 ]

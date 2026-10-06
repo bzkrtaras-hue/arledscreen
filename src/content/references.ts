@@ -103,7 +103,7 @@ export const references: Reference[] = [
     id: "ref-12",
     date: "Mar 2026",
     company: "\u0130stikbal Mobilya",
-    detail: "T\u00fcrkiye'nin en b\u00fcy\u00fck ma\u011fazas\u0131",
+    detail: "Geni\u015f ma\u011faza LED kurulum kapsam\u0131",
     location: "",
     source: "Hikaye",
   },

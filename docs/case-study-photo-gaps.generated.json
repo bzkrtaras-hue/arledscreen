@@ -1,0 +1,38 @@
+{
+  "generated": "2026-10-06",
+  "withGallery": [
+    "barcelona-club-led-ekran",
+    "beylikduzu-yasam-cafe-led-ekran",
+    "bursa-led-ekran",
+    "istanbul-drama-sanat-atolyesi-led-ekran",
+    "manisa-buyuksehir-belediyesi-led-ekran",
+    "sinan-polat-sigorta-led-ekran",
+    "unye-belediyesi-ordu-gunleri-led-ekran",
+    "white-city-resort-hotel-led-ekran"
+  ],
+  "gaps": [
+    "ayberk-sigorta-led-ekran",
+    "azerbaycan-led-ekran",
+    "babil-cafe-led-ekran",
+    "beren-kirtasiye-led-ekran",
+    "beylikduzu-belediyesi-led-ekran",
+    "bireysel-musteri-led-ekran",
+    "bireysel-musteri-led-ekran-2",
+    "dogu-produksiyon-led-ekran",
+    "giresun-proje-led-ekran",
+    "gnd-triko-led-ekran",
+    "hair-make-up-studio-led-ekran",
+    "kesan-golet-led-ekran",
+    "manisa-2-adet-led-ekran",
+    "manisa-proje-led-ekran",
+    "matiz-sahne-led-ekran",
+    "orta-sekerli-kampus-caffe-lounge-led-ekran",
+    "orta-sekerli-kentpark-cafe-led-ekran",
+    "ouka-kafe-led-ekran",
+    "prestij-cafe-led-ekran",
+    "umut-radyoloji-led-ekran",
+    "yalova-malt-led-ekran"
+  ],
+  "mappedFiles": 16,
+  "rule": "Do not invent photos; attach only identity-clear project files to IMAGE_BY_REF"
+}

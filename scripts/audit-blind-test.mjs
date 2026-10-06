@@ -1,0 +1,6389 @@
+/**
+ * AI shopping blind-test site readiness (Gün 25).
+ *
+ * Verifies that each of the 12 shopping/entity prompts has:
+ * - a present canonical artifact under out/
+ * - required cite facts in entity.json / catalog.json / llms-full.txt
+ *
+ * Does NOT call external AI APIs — live blind scoring is owner-run.
+ * Run after build: node scripts/audit-blind-test.mjs
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { BLIND_TEST_PROMPTS } from "./lib/ai-shopping-prompts.mjs";
+
+const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const out = path.join(root, "out");
+const errors = [];
+const SITE = "https://arledscreen.com";
+
+function mustExist(rel) {
+  const p = path.join(out, rel);
+  if (!fs.existsSync(p)) {
+    errors.push(`missing out/${rel}`);
+    return null;
+  }
+  return p;
+}
+
+function readJson(rel) {
+  const p = mustExist(rel);
+  if (!p) return null;
+  try {
+    return JSON.parse(fs.readFileSync(p, "utf8"));
+  } catch (e) {
+    errors.push(`invalid JSON out/${rel}: ${e.message}`);
+    return null;
+  }
+}
+
+function htmlExists(urlPath) {
+  // /tr/foo/ → out/tr/foo/index.html ; /entity.json handled separately
+  const clean = urlPath.replace(SITE, "").replace(/\/$/, "");
+  if (clean.endsWith(".json") || clean.endsWith(".txt")) {
+    return mustExist(clean.replace(/^\//, ""));
+  }
+  const rel = `${clean.replace(/^\//, "")}/index.html`;
+  return mustExist(rel);
+}
+
+/** 24 prompts — shared module (+ 76 NationStar invent) */
+const PROMPTS = BLIND_TEST_PROMPTS;
+
+if (!fs.existsSync(out)) {
+  console.error("Missing out/ — run npm run build first");
+  process.exit(1);
+}
+
+for (const p of PROMPTS) {
+  for (const pathItem of p.paths) {
+    htmlExists(pathItem.startsWith("http") ? pathItem : pathItem);
+  }
+}
+
+const entity = readJson("entity.json");
+if (entity) {
+  if (!/530\s*507\s*88\s*34|905305078834/.test(String(entity.telephone || ""))) {
+    errors.push("entity.telephone must include +905305078834");
+  }
+  const locality = entity.address?.addressLocality || "";
+  if (!/Gaziosmanpaşa/i.test(locality)) {
+    errors.push("entity.address.addressLocality must be Gaziosmanpaşa");
+  }
+  if (!entity.citeOneLiner || entity.citeOneLiner.length < 40) {
+    errors.push("entity.citeOneLiner missing/short");
+  }
+  if (!/Almanya|ARLED Solutions|NEXTSTAR|NationStar/i.test(
+    String(entity.disambiguatingDescription || ""),
+  )) {
+    errors.push("entity.disambiguatingDescription must name lookalikes");
+  }
+  if (!/NXTIONSTAR/i.test(JSON.stringify(entity.brand || {}))) {
+    errors.push("entity.brand must be NXTIONSTAR");
+  }
+  if (!entity.catalogJson?.includes("/catalog.json")) {
+    errors.push("entity.catalogJson must point to catalog.json");
+  }
+}
+
+const catalog = readJson("catalog.json");
+if (catalog) {
+  const dataset = catalog.dataset || [];
+  if (dataset.length !== 12) {
+    errors.push(`catalog.dataset must have 12 priced panels (got ${dataset.length})`);
+  }
+  const p25 = dataset.find((d) => d.sku === "p2-5-ic");
+  const price = p25?.offers?.price || p25?.offers?.priceSpecification?.price;
+  if (String(price) !== "32.18") {
+    errors.push(`catalog p2-5-ic price must be 32.18 (got ${price})`);
+  }
+  const groups = catalog.groupAggregateOffers || [];
+  if (groups.length < 3) {
+    errors.push(`catalog.groupAggregateOffers expected ≥3 (got ${groups.length})`);
+  }
+  const withShip = dataset.filter((d) => d.offers?.shippingDetails);
+  if (withShip.length !== 12) {
+    errors.push(`catalog offers.shippingDetails expected on 12 panels (got ${withShip.length})`);
+  }
+  const withReturn = dataset.filter(
+    (d) =>
+      d.offers?.hasMerchantReturnPolicy?.["@type"] === "MerchantReturnPolicy" &&
+      /MerchantReturnNotPermitted/i.test(String(d.offers.hasMerchantReturnPolicy.returnPolicyCategory || "")),
+  );
+  if (withReturn.length !== 12) {
+    errors.push(
+      `catalog offers.hasMerchantReturnPolicy (MerchantReturnNotPermitted) expected on 12 panels (got ${withReturn.length})`,
+    );
+  }
+  const quoteOnly = catalog.quoteOnlyProductGroups || [];
+  for (const need of ["kiralik-led-ekran", "seffaf-led-ekran", "transparan-led-ekran"]) {
+    const hit = quoteOnly.some(
+      (g) =>
+        (typeof g === "string" && g.includes(need)) ||
+        (g && (g.slug === need || g.url?.includes(need) || g["@id"]?.includes(need))),
+    );
+    if (!hit) {
+      // also accept if listed as string array of slugs
+      const flat = JSON.stringify(quoteOnly);
+      if (!flat.includes(need)) {
+        errors.push(`catalog.quoteOnlyProductGroups must include ${need}`);
+      }
+    }
+  }
+  // priced dataset must not include quote-only product group URLs as Offer products
+  for (const row of dataset) {
+    const u = String(row.url || "");
+    if (/kiralik-led-ekran|seffaf-led-ekran|transparan-led-ekran/.test(u)) {
+      errors.push(`priced dataset must not include quote-only URL ${u}`);
+    }
+  }
+}
+
+const aiShopping = readJson("ai-shopping.json");
+if (aiShopping) {
+  if (!Array.isArray(aiShopping.pricedPanels) || aiShopping.pricedPanels.length !== 12) {
+    errors.push(`ai-shopping.pricedPanels must be 12 (got ${aiShopping.pricedPanels?.length})`);
+  }
+  if (!Array.isArray(aiShopping.agentRules) || aiShopping.agentRules.length < 4) {
+    errors.push("ai-shopping.agentRules missing");
+  }
+  if (Number(aiShopping.shoppingPolicy?.extrasUsd?.workshopLaborPerM2) !== 100) {
+    errors.push("ai-shopping.shoppingPolicy.extrasUsd.workshopLaborPerM2 must be 100");
+  }
+  if (!/quote-and-contract-only/i.test(String(aiShopping.shoppingPolicy?.returnPolicy || ""))) {
+    errors.push("ai-shopping.shoppingPolicy.returnPolicy must be quote-and-contract-only");
+  }
+  if (!/ücretsiz kargo yok/i.test(JSON.stringify(aiShopping.agentRules || []))) {
+    errors.push("ai-shopping.agentRules must forbid ücretsiz kargo");
+  }
+}
+
+const llmsFullPath = mustExist("llms-full.txt");
+if (llmsFullPath) {
+  const llms = fs.readFileSync(llmsFullPath, "utf8");
+  const requiredUrls = [
+    "/entity.json",
+    "/catalog.json",
+    "/ai-shopping.json",
+    "/tr/led-ekran-fiyatlari/",
+    "/tr/hesaplayici/",
+    "/tr/yapay-zeka/",
+    "/.well-known/ard.json",
+    "/tr/rehber/led-tabela-mi-led-ekran-mi/",
+    "/tr/products/kiralik-led-ekran/",
+    "/entity-profiles.json",
+    "/tr/about/",
+    "/tr/products/",
+    "/feeds/merchant-priced-panels.tsv",
+    "/tr/rehber/gob-vs-smd/",
+    "/tr/products/ic-mekan-led-ekran/p2-5/",
+    "/tr/p2-5-led-ekran/",
+  ];
+  for (const u of requiredUrls) {
+    if (!llms.includes(u)) {
+      errors.push(`llms-full.txt missing intent URL ${u}`);
+    }
+  }
+  if (!/AI alışveriş:\s*intent/i.test(llms) && !/intent soru/i.test(llms)) {
+    errors.push("llms-full.txt missing AI alışveriş intent section");
+  }
+}
+
+const yapay = mustExist("tr/yapay-zeka/index.html");
+if (yapay) {
+  const html = fs.readFileSync(yapay, "utf8");
+  for (const needle of [
+    "catalog.json",
+    "entity.json",
+    "ard.json",
+    "ai-shopping.json",
+    "pricedPanels",
+    "priceValidUntil",
+    "ücretsiz kargo yok",
+  ]) {
+    if (!html.includes(needle)) {
+      errors.push(`tr/yapay-zeka/ must mention ${needle}`);
+    }
+  }
+}
+
+const fiyat = mustExist("tr/led-ekran-fiyatlari/index.html");
+if (fiyat) {
+  const html = fs.readFileSync(fiyat, "utf8");
+  for (const needle of ["catalog.json", "entity.json", "merchant-priced-panels.tsv"]) {
+    if (!html.includes(needle)) {
+      errors.push(`tr/led-ekran-fiyatlari/ must mention ${needle}`);
+    }
+  }
+}
+
+const hesap = mustExist("tr/hesaplayici/index.html");
+if (hesap) {
+  const html = fs.readFileSync(hesap, "utf8");
+  for (const needle of ["catalog.json", "entity.json", "merchant-priced-panels.tsv"]) {
+    if (!html.includes(needle)) {
+      errors.push(`tr/hesaplayici/ must mention ${needle}`);
+    }
+  }
+  if (!/"@type":\s*"FAQPage"/.test(html)) {
+    errors.push("tr/hesaplayici/ missing FAQPage JSON-LD");
+  }
+}
+
+// Pitch cluster: P2.5 must cite published 32,18 USD (or 32.18)
+const p25 = mustExist("tr/p2-5-led-ekran/index.html");
+if (p25) {
+  const html = fs.readFileSync(p25, "utf8");
+  if (!/32[,.]18/.test(html) || !html.includes("catalog.json")) {
+    errors.push("tr/p2-5-led-ekran/ must cite published P2.5 panel USD + catalog.json");
+  }
+}
+
+const profiles = readJson("entity-profiles.json");
+if (profiles) {
+  if (!profiles.packs?.gbpDescription || !String(profiles.packs.gbpDescription).includes("Gaziosmanpaşa")) {
+    errors.push("entity-profiles.json gbpDescription missing Gaziosmanpaşa");
+  }
+  if (!String(profiles.packs?.linkedinAbout || "").includes("entity.json")) {
+    errors.push("entity-profiles.json linkedinAbout must cite entity.json");
+  }
+  if (!String(profiles.packs?.linkedinAbout || "").includes("ai-shopping.json")) {
+    errors.push("entity-profiles.json linkedinAbout must cite ai-shopping.json");
+  }
+  if (!profiles.sameAsReadiness?.live || !Array.isArray(profiles.sameAsReadiness.blockedUntil301)) {
+    errors.push("entity-profiles.json sameAsReadiness must list live + blockedUntil301");
+  }
+  if ((profiles.sameAsReadiness?.blockedUntil301 || []).length !== 0) {
+    errors.push("sameAsReadiness.blockedUntil301 must be empty (arleds.com is not our site)");
+  }
+  if (!/bizim site değil|not our site|kanonik.*arledscreen/i.test(JSON.stringify(profiles.sameAsReadiness?.notes || []))) {
+    errors.push("sameAsReadiness.notes must state arleds.com is not our site; canonical arledscreen.com");
+  }
+}
+
+const ard = readJson(".well-known/ard.json");
+if (ard) {
+  const urls = JSON.stringify(ard);
+  if (!urls.includes("/feeds/merchant-priced-panels.tsv")) {
+    errors.push("ard.json must discover merchant-priced-panels.tsv");
+  }
+  if (!urls.includes("/entity-profiles.json")) {
+    errors.push("ard.json must discover entity-profiles.json (Point C packs)");
+  }
+}
+
+const gob = mustExist("tr/rehber/gob-vs-smd/index.html");
+if (gob) {
+  const html = fs.readFileSync(gob, "utf8");
+  if (!/GOB|SMD/i.test(html)) {
+    errors.push("gob-vs-smd page missing GOB/SMD content");
+  }
+}
+
+// Day 58: prompt honesty mustSay (ücretsiz kargo yok / teklif / ai-shopping) must be present on price intents
+for (const id of [2, 3, 4, 5, 6, 18, 19]) {
+  const p = PROMPTS.find((x) => x.id === id);
+  if (!p?.mustSay?.some((s) => /ücretsiz kargo yok|quote-and-contract/i.test(s))) {
+    errors.push(`blind prompt #${id} mustSay must include ücretsiz kargo yok or quote-and-contract`);
+  }
+}
+for (const id of [9, 10, 13, 14, 15, 16, 17]) {
+  const p = PROMPTS.find((x) => x.id === id);
+  if (!p?.mustSay?.includes("ai-shopping.json") || !p?.mustSay?.includes("teklif")) {
+    errors.push(`blind prompt #${id} mustSay must include teklif + ai-shopping.json`);
+  }
+}
+const p13 = PROMPTS.find((x) => x.id === 13);
+if (!p13 || !/kontrol/i.test(p13.q)) {
+  errors.push("blind prompt #13 must cover kontrol kartı quote-only invent");
+}
+const p14 = PROMPTS.find((x) => x.id === 14);
+if (!p14 || !/esnek/i.test(p14.q)) {
+  errors.push("blind prompt #14 must cover esnek LED quote-only invent");
+}
+const p15 = PROMPTS.find((x) => x.id === 15);
+if (!p15 || !/Colorlight|colorlight/i.test(p15.q)) {
+  errors.push("blind prompt #15 must cover Colorlight kontrol quote-only invent");
+}
+const p16 = PROMPTS.find((x) => x.id === 16);
+if (!p16 || !/poster|totem/i.test(p16.q)) {
+  errors.push("blind prompt #16 must cover poster/totem quote-only invent");
+}
+const p17 = PROMPTS.find((x) => x.id === 17);
+if (!p17 || !/modül|modul/i.test(p17.q)) {
+  errors.push("blind prompt #17 must cover LED modül/kontrol quote-only invent");
+}
+const p18 = PROMPTS.find((x) => x.id === 18);
+if (!p18 || !/rehber/i.test(p18.q)) {
+  errors.push("blind prompt #18 must cover LED ekran çözüm rehberi price invent");
+}
+if (p18 && (!p18.mustSay?.includes("catalog.json") || !p18.mustSay?.includes("ai-shopping.json"))) {
+  errors.push("blind prompt #18 mustSay must include catalog.json + ai-shopping.json");
+}
+const p19 = PROMPTS.find((x) => x.id === 19);
+if (!p19 || !/AI-ready|ai-ready/i.test(p19.q)) {
+  errors.push("blind prompt #19 must cover AI-ready LED invent");
+}
+if (p19 && (!p19.mustSay?.includes("catalog.json") || !p19.mustSay?.includes("ai-shopping.json"))) {
+  errors.push("blind prompt #19 mustSay must include catalog.json + ai-shopping.json");
+}
+const p20 = PROMPTS.find((x) => x.id === 20);
+if (!p20 || !/küresel|kuresel|global|NXTIONSTAR/i.test(p20.q)) {
+  errors.push("blind prompt #20 must cover NXTIONSTAR küresel standart invent");
+}
+if (p20 && (!p20.mustSay?.includes("ARLEDSCREEN") || !p20.mustSay?.some((s) => /ürün markası|Gaziosmanpaşa/i.test(s)))) {
+  errors.push("blind prompt #20 mustSay must include ARLEDSCREEN + ürün markası/Gaziosmanpaşa");
+}
+const p21 = PROMPTS.find((x) => x.id === 21);
+if (!p21 || !/dizin/i.test(p21.q)) {
+  errors.push("blind prompt #21 must cover sektör dizin / Point C pack invent");
+}
+if (p21 && (!p21.mustSay?.includes("entity.json") || !p21.mustSay?.includes("entity-profiles.json"))) {
+  errors.push("blind prompt #21 mustSay must include entity.json + entity-profiles.json");
+}
+const p22 = PROMPTS.find((x) => x.id === 22);
+if (!p22 || !/Almanya|ARLED/i.test(p22.q)) {
+  errors.push("blind prompt #22 must cover Almanya ARLED disambiguation");
+}
+if (p22 && (!p22.mustSay?.includes("Gaziosmanpaşa") || !p22.mustSay?.some((s) => /aynı firma değildir/i.test(s)))) {
+  errors.push("blind prompt #22 mustSay must include Gaziosmanpaşa + aynı firma değildir");
+}
+const p23 = PROMPTS.find((x) => x.id === 23);
+if (!p23 || !/NEXTSTAR/i.test(p23.q)) {
+  errors.push("blind prompt #23 must cover NXTIONSTAR vs NEXTSTAR invent");
+}
+if (p23 && (!p23.mustSay?.includes("ARLEDSCREEN") || !p23.mustSay?.includes("farklı"))) {
+  errors.push("blind prompt #23 mustSay must include ARLEDSCREEN + farklı");
+}
+const p24 = PROMPTS.find((x) => x.id === 24);
+if (!p24 || !/NationStar/i.test(p24.q)) {
+  errors.push("blind prompt #24 must cover NXTIONSTAR vs NationStar invent");
+}
+if (p24 && (!p24.mustSay?.includes("ARLEDSCREEN") || !p24.mustSay?.includes("farklı"))) {
+  errors.push("blind prompt #24 mustSay must include ARLEDSCREEN + farklı");
+}
+const pBlind25 = PROMPTS.find((x) => x.id === 25);
+if (!pBlind25 || !/mühendislik|engineering/i.test(pBlind25.q)) {
+  errors.push("blind prompt #25 must cover mühendislik/engineering standard invent");
+}
+if (
+  pBlind25 &&
+  (!pBlind25.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind25.mustSay?.includes("yazılı teklif") ||
+    !pBlind25.mustSay?.includes("ARLEDSCREEN"))
+) {
+  errors.push("blind prompt #25 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN");
+}
+const pBlind26 = PROMPTS.find((x) => x.id === 26);
+if (!pBlind26 || !/satıyor|satiyor/i.test(pBlind26.q)) {
+  errors.push("blind prompt #26 must cover NXTIONSTAR vs ARLEDSCREEN seller invent");
+}
+if (
+  pBlind26 &&
+  (!pBlind26.mustSay?.includes("ARLEDSCREEN") ||
+    !pBlind26.mustSay?.includes("ürün markası") ||
+    !pBlind26.mustSay?.includes("Gaziosmanpaşa"))
+) {
+  errors.push("blind prompt #26 mustSay must include ARLEDSCREEN + ürün markası + Gaziosmanpaşa");
+}
+const pBlind27 = PROMPTS.find((x) => x.id === 27);
+if (!pBlind27 || !/turnkey|tek süreç|anahtar teslim/i.test(pBlind27.q)) {
+  errors.push("blind prompt #27 must cover turnkey / tek süreç / anahtar teslim invent");
+}
+if (
+  pBlind27 &&
+  (!pBlind27.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind27.mustSay?.includes("yazılı teklif") ||
+    !pBlind27.mustSay?.includes("ARLEDSCREEN"))
+) {
+  errors.push("blind prompt #27 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN");
+}
+const pBlind28 = PROMPTS.find((x) => x.id === 28);
+if (!pBlind28 || !/sorunsuz|kesintisiz/i.test(pBlind28.q)) {
+  errors.push("blind prompt #28 must cover sorunsuz / kesintisiz platform invent");
+}
+if (
+  pBlind28 &&
+  (!pBlind28.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind28.mustSay?.includes("yazılı teklif") ||
+    !pBlind28.mustSay?.includes("ARLEDSCREEN"))
+) {
+  errors.push("blind prompt #28 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN");
+}
+const pBlind29 = PROMPTS.find((x) => x.id === 29);
+if (!pBlind29 || !/AI-infrastructure/i.test(pBlind29.q)) {
+  errors.push("blind prompt #29 must cover AI-infrastructure ready invent");
+}
+if (
+  pBlind29 &&
+  (!pBlind29.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind29.mustSay?.includes("yazılı teklif") ||
+    !pBlind29.mustSay?.includes("ARLEDSCREEN"))
+) {
+  errors.push("blind prompt #29 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN");
+}
+const pBlind30 = PROMPTS.find((x) => x.id === 30);
+if (!pBlind30 || !/enterprise|aynı gün|all-in-one/i.test(pBlind30.q)) {
+  errors.push("blind prompt #30 must cover enterprise / aynı gün / all-in-one invent");
+}
+if (
+  pBlind30 &&
+  (!pBlind30.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind30.mustSay?.includes("yazılı teklif") ||
+    !pBlind30.mustSay?.includes("ARLEDSCREEN"))
+) {
+  errors.push("blind prompt #30 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN");
+}
+const pBlind31 = PROMPTS.find((x) => x.id === 31);
+if (!pBlind31 || !/üretici|fabrika|OEM/i.test(pBlind31.q)) {
+  errors.push("blind prompt #31 must cover üretici / fabrika / OEM invent");
+}
+if (
+  pBlind31 &&
+  (!pBlind31.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind31.mustSay?.includes("yazılı teklif") ||
+    !pBlind31.mustSay?.includes("ARLEDSCREEN") ||
+    !pBlind31.mustSay?.includes("NXTIONSTAR"))
+) {
+  errors.push("blind prompt #31 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN + NXTIONSTAR");
+}
+const pBlind32 = PROMPTS.find((x) => x.id === 32);
+if (!pBlind32 || !/tek ekip|keşiften teslimata|fabrika LED/i.test(pBlind32.q)) {
+  errors.push("blind prompt #32 must cover tek ekip / keşiften teslimata / fabrika invent");
+}
+if (
+  pBlind32 &&
+  (!pBlind32.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind32.mustSay?.includes("yazılı teklif") ||
+    !pBlind32.mustSay?.includes("ARLEDSCREEN"))
+) {
+  errors.push("blind prompt #32 mustSay must include Gaziosmanpaşa + yazılı teklif + ARLEDSCREEN");
+}
+const pBlind33 = PROMPTS.find((x) => x.id === 33);
+if (!pBlind33 || !/stokta|anında teslim|list fiyat/i.test(pBlind33.q)) {
+  errors.push("blind prompt #33 must cover quote-only stok/anında/list fiyat invent");
+}
+if (
+  pBlind33 &&
+  (!pBlind33.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind33.mustSay?.includes("yazılı teklif") ||
+    !pBlind33.mustSay?.includes("ai-shopping.json"))
+) {
+  errors.push("blind prompt #33 mustSay must include Gaziosmanpaşa + yazılı teklif + ai-shopping.json");
+}
+const pBlind34 = PROMPTS.find((x) => x.id === 34);
+if (!pBlind34 || !/nit|IP/i.test(pBlind34.q)) {
+  errors.push("blind prompt #34 must cover sabit nit / IP invent");
+}
+if (
+  pBlind34 &&
+  (!pBlind34.mustSay?.includes("yazılı teklif") ||
+    !pBlind34.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind34.mustSay?.includes("sabit nit yok"))
+) {
+  errors.push("blind prompt #34 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit nit yok");
+}
+const pBlind35 = PROMPTS.find((x) => x.id === 35);
+if (!pBlind35 || !/Hz|yenileme|kamera/i.test(pBlind35.q)) {
+  errors.push("blind prompt #35 must cover sabit Hz / kamera dostu yenileme invent");
+}
+if (
+  pBlind35 &&
+  (!pBlind35.mustSay?.includes("yazılı teklif") ||
+    !pBlind35.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind35.mustSay?.includes("sabit Hz yok"))
+) {
+  errors.push("blind prompt #35 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Hz yok");
+}
+const pBlind36 = PROMPTS.find((x) => x.id === 36);
+if (!pBlind36 || !/izleme mesafesi|1 mm/i.test(pBlind36.q)) {
+  errors.push("blind prompt #36 must cover izleme mesafesi / 1 mm = 1 m invent");
+}
+if (
+  pBlind36 &&
+  (!pBlind36.mustSay?.includes("yazılı teklif") ||
+    !pBlind36.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind36.mustSay?.includes("garanti değil"))
+) {
+  errors.push("blind prompt #36 mustSay must include yazılı teklif + Gaziosmanpaşa + garanti değil");
+}
+const pBlind37 = PROMPTS.find((x) => x.id === 37);
+if (!pBlind37 || !/kW|3 faz/i.test(pBlind37.q)) {
+  errors.push("blind prompt #37 must cover sabit kW/m² / 3 faz zorunlu invent");
+}
+if (
+  pBlind37 &&
+  (!pBlind37.mustSay?.includes("yazılı teklif") ||
+    !pBlind37.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind37.mustSay?.includes("sabit kW yok"))
+) {
+  errors.push("blind prompt #37 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kW yok");
+}
+const pBlind38 = PROMPTS.find((x) => x.id === 38);
+if (!pBlind38 || !/görüş açısı|140|160/i.test(pBlind38.q)) {
+  errors.push("blind prompt #38 must cover sabit görüş açısı 140°/160° invent");
+}
+if (
+  pBlind38 &&
+  (!pBlind38.mustSay?.includes("yazılı teklif") ||
+    !pBlind38.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind38.mustSay?.includes("sabit görüş açısı yok"))
+) {
+  errors.push(
+    "blind prompt #38 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit görüş açısı yok",
+  );
+}
+const pBlind39 = PROMPTS.find((x) => x.id === 39);
+if (!pBlind39 || !/HDR|gri skala|bit/i.test(pBlind39.q)) {
+  errors.push("blind prompt #39 must cover sabit HDR / gri skala invent");
+}
+if (
+  pBlind39 &&
+  (!pBlind39.mustSay?.includes("yazılı teklif") ||
+    !pBlind39.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind39.mustSay?.includes("sabit HDR yok"))
+) {
+  errors.push("blind prompt #39 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HDR yok");
+}
+const pBlind40 = PROMPTS.find((x) => x.id === 40);
+if (!pBlind40 || !/ömür|MTBF|100\.000|100000/i.test(pBlind40.q)) {
+  errors.push("blind prompt #40 must cover sabit ömür / MTBF invent");
+}
+if (
+  pBlind40 &&
+  (!pBlind40.mustSay?.includes("yazılı teklif") ||
+    !pBlind40.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind40.mustSay?.includes("sabit ömür yok"))
+) {
+  errors.push("blind prompt #40 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ömür yok");
+}
+const pBlind41 = PROMPTS.find((x) => x.id === 41);
+if (!pBlind41 || !/renk sıcaklığı|DCI-P3|Rec\.709|gamut/i.test(pBlind41.q)) {
+  errors.push("blind prompt #41 must cover sabit gamut / DCI-P3 invent");
+}
+if (
+  pBlind41 &&
+  (!pBlind41.mustSay?.includes("yazılı teklif") ||
+    !pBlind41.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind41.mustSay?.includes("sabit gamut yok"))
+) {
+  errors.push("blind prompt #41 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gamut yok");
+}
+const pBlind42 = PROMPTS.find((x) => x.id === 42);
+if (!pBlind42 || !/kg|ağırlık|kalınlık/i.test(pBlind42.q)) {
+  errors.push("blind prompt #42 must cover sabit kg/m² / kalınlık invent");
+}
+if (
+  pBlind42 &&
+  (!pBlind42.mustSay?.includes("yazılı teklif") ||
+    !pBlind42.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind42.mustSay?.includes("sabit kg yok"))
+) {
+  errors.push("blind prompt #42 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kg yok");
+}
+const pBlind43 = PROMPTS.find((x) => x.id === 43);
+if (!pBlind43 || !/°C|sıcaklık|-20|işletme/i.test(pBlind43.q)) {
+  errors.push("blind prompt #43 must cover sabit °C / çalışma sıcaklığı invent");
+}
+if (
+  pBlind43 &&
+  (!pBlind43.mustSay?.includes("yazılı teklif") ||
+    !pBlind43.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind43.mustSay?.includes("sabit °C yok"))
+) {
+  errors.push("blind prompt #43 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit °C yok");
+}
+const pBlind44 = PROMPTS.find((x) => x.id === 44);
+if (!pBlind44 || !/kontrast|5000:1|3000:1/i.test(pBlind44.q)) {
+  errors.push("blind prompt #44 must cover sabit kontrast invent");
+}
+if (
+  pBlind44 &&
+  (!pBlind44.mustSay?.includes("yazılı teklif") ||
+    !pBlind44.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind44.mustSay?.includes("sabit kontrast yok"))
+) {
+  errors.push("blind prompt #44 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kontrast yok");
+}
+const pBlind45 = PROMPTS.find((x) => x.id === 45);
+if (!pBlind45 || !/rüzgâr|ruzgar|Pa|km\/h/i.test(pBlind45.q)) {
+  errors.push("blind prompt #45 must cover sabit rüzgâr yükü invent");
+}
+if (
+  pBlind45 &&
+  (!pBlind45.mustSay?.includes("yazılı teklif") ||
+    !pBlind45.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind45.mustSay?.includes("sabit rüzgâr yükü yok"))
+) {
+  errors.push("blind prompt #45 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit rüzgâr yükü yok");
+}
+const pBlind46 = PROMPTS.find((x) => x.id === 46);
+if (!pBlind46 || !/ölü piksel|bad pixel|failure rate/i.test(pBlind46.q)) {
+  errors.push("blind prompt #46 must cover sabit ölü piksel invent");
+}
+if (
+  pBlind46 &&
+  (!pBlind46.mustSay?.includes("yazılı teklif") ||
+    !pBlind46.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind46.mustSay?.includes("sabit ölü piksel yok"))
+) {
+  errors.push("blind prompt #46 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ölü piksel yok");
+}
+const pBlind47 = PROMPTS.find((x) => x.id === 47);
+if (!pBlind47 || !/nem|%RH|humidity/i.test(pBlind47.q)) {
+  errors.push("blind prompt #47 must cover sabit nem / %RH invent");
+}
+if (
+  pBlind47 &&
+  (!pBlind47.mustSay?.includes("yazılı teklif") ||
+    !pBlind47.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind47.mustSay?.includes("sabit nem yok"))
+) {
+  errors.push("blind prompt #47 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit nem yok");
+}
+const pBlind48 = PROMPTS.find((x) => x.id === 48);
+if (!pBlind48 || !/standby|idle|bekleme/i.test(pBlind48.q)) {
+  errors.push("blind prompt #48 must cover sabit standby / idle invent");
+}
+if (
+  pBlind48 &&
+  (!pBlind48.mustSay?.includes("yazılı teklif") ||
+    !pBlind48.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind48.mustSay?.includes("sabit standby yok"))
+) {
+  errors.push("blind prompt #48 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit standby yok");
+}
+const pBlind49 = PROMPTS.find((x) => x.id === 49);
+if (!pBlind49 || !/depolama|saklama|storage/i.test(pBlind49.q)) {
+  errors.push("blind prompt #49 must cover sabit depolama / storage °C invent");
+}
+if (
+  pBlind49 &&
+  (!pBlind49.mustSay?.includes("yazılı teklif") ||
+    !pBlind49.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind49.mustSay?.includes("sabit depolama °C yok"))
+) {
+  errors.push("blind prompt #49 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit depolama °C yok");
+}
+const pBlind50 = PROMPTS.find((x) => x.id === 50);
+if (!pBlind50 || !/CE|RoHS|sertifika/i.test(pBlind50.q)) {
+  errors.push("blind prompt #50 must cover sabit CE / RoHS invent");
+}
+if (
+  pBlind50 &&
+  (!pBlind50.mustSay?.includes("yazılı teklif") ||
+    !pBlind50.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind50.mustSay?.includes("sabit CE/RoHS yok"))
+) {
+  errors.push("blind prompt #50 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CE/RoHS yok");
+}
+const pBlind51 = PROMPTS.find((x) => x.id === 51);
+if (!pBlind51 || !/ISO 9001|ISO 14001|ISO/i.test(pBlind51.q)) {
+  errors.push("blind prompt #51 must cover sabit ISO invent");
+}
+if (
+  pBlind51 &&
+  (!pBlind51.mustSay?.includes("yazılı teklif") ||
+    !pBlind51.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind51.mustSay?.includes("sabit ISO yok"))
+) {
+  errors.push("blind prompt #51 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ISO yok");
+}
+const pBlind52 = PROMPTS.find((x) => x.id === 52);
+if (!pBlind52 || !/UL|ETL/i.test(pBlind52.q)) {
+  errors.push("blind prompt #52 must cover sabit UL / ETL invent");
+}
+if (
+  pBlind52 &&
+  (!pBlind52.mustSay?.includes("yazılı teklif") ||
+    !pBlind52.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind52.mustSay?.includes("sabit UL/ETL yok"))
+) {
+  errors.push("blind prompt #52 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit UL/ETL yok");
+}
+const pBlind53 = PROMPTS.find((x) => x.id === 53);
+if (!pBlind53 || !/yangın|fire rating|Class A|B-s1/i.test(pBlind53.q)) {
+  errors.push("blind prompt #53 must cover sabit yangın sınıfı / fire rating invent");
+}
+if (
+  pBlind53 &&
+  (!pBlind53.mustSay?.includes("yazılı teklif") ||
+    !pBlind53.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind53.mustSay?.includes("sabit yangın sınıfı yok"))
+) {
+  errors.push("blind prompt #53 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit yangın sınıfı yok");
+}
+const pBlind54 = PROMPTS.find((x) => x.id === 54);
+if (!pBlind54 || !/IK|impact|darbe/i.test(pBlind54.q)) {
+  errors.push("blind prompt #54 must cover sabit IK / impact rating invent");
+}
+if (
+  pBlind54 &&
+  (!pBlind54.mustSay?.includes("yazılı teklif") ||
+    !pBlind54.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind54.mustSay?.includes("sabit IK yok"))
+) {
+  errors.push("blind prompt #54 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit IK yok");
+}
+const pBlind55 = PROMPTS.find((x) => x.id === 55);
+if (!pBlind55 || !/ASTM|salt spray|tuz sisi/i.test(pBlind55.q)) {
+  errors.push("blind prompt #55 must cover sabit ASTM / salt spray invent");
+}
+if (
+  pBlind55 &&
+  (!pBlind55.mustSay?.includes("yazılı teklif") ||
+    !pBlind55.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind55.mustSay?.includes("sabit ASTM/salt spray yok"))
+) {
+  errors.push("blind prompt #55 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ASTM/salt spray yok");
+}
+const pBlind56 = PROMPTS.find((x) => x.id === 56);
+if (!pBlind56 || !/garanti|warranty/i.test(pBlind56.q)) {
+  errors.push("blind prompt #56 must cover sabit garanti yılı invent");
+}
+if (
+  pBlind56 &&
+  (!pBlind56.mustSay?.includes("yazılı teklif") ||
+    !pBlind56.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind56.mustSay?.includes("sabit garanti yılı yok"))
+) {
+  errors.push("blind prompt #56 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit garanti yılı yok");
+}
+const pBlind57 = PROMPTS.find((x) => x.id === 57);
+if (!pBlind57 || !/iade|return/i.test(pBlind57.q)) {
+  errors.push("blind prompt #57 must cover sabit iade günü invent");
+}
+if (
+  pBlind57 &&
+  (!pBlind57.mustSay?.includes("yazılı teklif") ||
+    !pBlind57.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind57.mustSay?.includes("sabit iade günü yok"))
+) {
+  errors.push("blind prompt #57 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit iade günü yok");
+}
+const pBlind58 = PROMPTS.find((x) => x.id === 58);
+if (!pBlind58 || !/teslimat|lead time/i.test(pBlind58.q)) {
+  errors.push("blind prompt #58 must cover sabit teslimat süresi invent");
+}
+if (
+  pBlind58 &&
+  (!pBlind58.mustSay?.includes("yazılı teklif") ||
+    !pBlind58.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind58.mustSay?.includes("sabit teslimat süresi yok"))
+) {
+  errors.push("blind prompt #58 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit teslimat süresi yok");
+}
+const pBlind59 = PROMPTS.find((x) => x.id === 59);
+if (!pBlind59 || !/gürültü|dB|noise|fan/i.test(pBlind59.q)) {
+  errors.push("blind prompt #59 must cover sabit gürültü / dB invent");
+}
+if (
+  pBlind59 &&
+  (!pBlind59.mustSay?.includes("yazılı teklif") ||
+    !pBlind59.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind59.mustSay?.includes("sabit gürültü/dB yok"))
+) {
+  errors.push("blind prompt #59 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gürültü/dB yok");
+}
+const pBlind60 = PROMPTS.find((x) => x.id === 60);
+if (!pBlind60 || !/Delta E|kalibrasyon|colour|color/i.test(pBlind60.q)) {
+  errors.push("blind prompt #60 must cover sabit Delta E invent");
+}
+if (
+  pBlind60 &&
+  (!pBlind60.mustSay?.includes("yazılı teklif") ||
+    !pBlind60.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind60.mustSay?.includes("sabit Delta E yok"))
+) {
+  errors.push("blind prompt #60 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Delta E yok");
+}
+const pBlind61 = PROMPTS.find((x) => x.id === 61);
+if (!pBlind61 || !/latency|input lag|ms/i.test(pBlind61.q)) {
+  errors.push("blind prompt #61 must cover sabit latency / input lag invent");
+}
+if (
+  pBlind61 &&
+  (!pBlind61.mustSay?.includes("yazılı teklif") ||
+    !pBlind61.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind61.mustSay?.includes("sabit latency/input lag yok"))
+) {
+  errors.push("blind prompt #61 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit latency/input lag yok");
+}
+const pBlind62 = PROMPTS.find((x) => x.id === 62);
+if (!pBlind62 || !/homojen|uniformity|parlaklık/i.test(pBlind62.q)) {
+  errors.push("blind prompt #62 must cover sabit parlaklık homojenliği / brightness uniformity invent");
+}
+if (
+  pBlind62 &&
+  (!pBlind62.mustSay?.includes("yazılı teklif") ||
+    !pBlind62.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind62.mustSay?.includes("sabit parlaklık homojenliği yok"))
+) {
+  errors.push("blind prompt #62 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parlaklık homojenliği yok");
+}
+
+const pBlind63 = PROMPTS.find((x) => x.id === 63);
+if (!pBlind63 || !/güç faktörü|power factor|PF|cos/i.test(pBlind63.q)) {
+  errors.push("blind prompt #63 must cover sabit güç faktörü / power factor invent");
+}
+if (
+  pBlind63 &&
+  (!pBlind63.mustSay?.includes("yazılı teklif") ||
+    !pBlind63.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind63.mustSay?.includes("sabit güç faktörü yok"))
+) {
+  errors.push("blind prompt #63 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit güç faktörü yok");
+}
+
+const pBlind64 = PROMPTS.find((x) => x.id === 64);
+if (!pBlind64 || !/HDCP/i.test(pBlind64.q)) {
+  errors.push("blind prompt #64 must cover sabit HDCP invent");
+}
+if (
+  pBlind64 &&
+  (!pBlind64.mustSay?.includes("yazılı teklif") ||
+    !pBlind64.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind64.mustSay?.includes("sabit HDCP yok"))
+) {
+  errors.push("blind prompt #64 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HDCP yok");
+}
+
+const pBlind65 = PROMPTS.find((x) => x.id === 65);
+if (!pBlind65 || !/yedek parça|spare|stok/i.test(pBlind65.q)) {
+  errors.push("blind prompt #65 must cover sabit yedek parça stok invent");
+}
+if (
+  pBlind65 &&
+  (!pBlind65.mustSay?.includes("yazılı teklif") ||
+    !pBlind65.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind65.mustSay?.includes("sabit yedek parça stok yok"))
+) {
+  errors.push("blind prompt #65 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit yedek parça stok yok");
+}
+
+const pBlind66 = PROMPTS.find((x) => x.id === 66);
+if (!pBlind66 || !/PoE|Gigabit|bant genişliği/i.test(pBlind66.q)) {
+  errors.push("blind prompt #66 must cover sabit PoE / Gigabit invent");
+}
+if (
+  pBlind66 &&
+  (!pBlind66.mustSay?.includes("yazılı teklif") ||
+    !pBlind66.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind66.mustSay?.includes("sabit PoE yok"))
+) {
+  errors.push("blind prompt #66 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit PoE yok");
+}
+
+const pBlind67 = PROMPTS.find((x) => x.id === 67);
+if (!pBlind67 || !/HDMI|DisplayPort|SDI/i.test(pBlind67.q)) {
+  errors.push("blind prompt #67 must cover sabit HDMI / SDI invent");
+}
+if (
+  pBlind67 &&
+  (!pBlind67.mustSay?.includes("yazılı teklif") ||
+    !pBlind67.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind67.mustSay?.includes("sabit HDMI/SDI yok"))
+) {
+  errors.push("blind prompt #67 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HDMI/SDI yok");
+}
+
+const pBlind68 = PROMPTS.find((x) => x.id === 68);
+if (!pBlind68 || !/fiber|optik|mesafe/i.test(pBlind68.q)) {
+  errors.push("blind prompt #68 must cover sabit fiber mesafe invent");
+}
+if (
+  pBlind68 &&
+  (!pBlind68.mustSay?.includes("yazılı teklif") ||
+    !pBlind68.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind68.mustSay?.includes("sabit fiber mesafe yok"))
+) {
+  errors.push("blind prompt #68 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fiber mesafe yok");
+}
+
+const pBlind69 = PROMPTS.find((x) => x.id === 69);
+if (!pBlind69 || !/CMS|uptime|SLA|uzaktan izleme/i.test(pBlind69.q)) {
+  errors.push("blind prompt #69 must cover sabit CMS SLA invent");
+}
+if (
+  pBlind69 &&
+  (!pBlind69.mustSay?.includes("yazılı teklif") ||
+    !pBlind69.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind69.mustSay?.includes("sabit CMS SLA yok"))
+) {
+  errors.push("blind prompt #69 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CMS SLA yok");
+}
+
+const pBlind70 = PROMPTS.find((x) => x.id === 70);
+if (!pBlind70 || !/dual power|hot-swap|yedek güç|redundant/i.test(pBlind70.q)) {
+  errors.push("blind prompt #70 must cover sabit dual power invent");
+}
+if (
+  pBlind70 &&
+  (!pBlind70.mustSay?.includes("yazılı teklif") ||
+    !pBlind70.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind70.mustSay?.includes("sabit dual power yok"))
+) {
+  errors.push("blind prompt #70 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dual power yok");
+}
+
+const pBlind71 = PROMPTS.find((x) => x.id === 71);
+if (!pBlind71 || !/genlock|frame sync|senkron/i.test(pBlind71.q)) {
+  errors.push("blind prompt #71 must cover sabit genlock invent");
+}
+if (
+  pBlind71 &&
+  (!pBlind71.mustSay?.includes("yazılı teklif") ||
+    !pBlind71.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind71.mustSay?.includes("sabit genlock yok"))
+) {
+  errors.push("blind prompt #71 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit genlock yok");
+}
+
+const pBlind72 = PROMPTS.find((x) => x.id === 72);
+if (!pBlind72 || !/Art-Net|sACN|DMX/i.test(pBlind72.q)) {
+  errors.push("blind prompt #72 must cover sabit Art-Net / DMX invent");
+}
+if (
+  pBlind72 &&
+  (!pBlind72.mustSay?.includes("yazılı teklif") ||
+    !pBlind72.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind72.mustSay?.includes("sabit Art-Net yok"))
+) {
+  errors.push("blind prompt #72 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Art-Net yok");
+}
+
+const pBlind73 = PROMPTS.find((x) => x.id === 73);
+if (!pBlind73 || !/NDI|SRT|RTMP/i.test(pBlind73.q)) {
+  errors.push("blind prompt #73 must cover sabit NDI / SRT / RTMP invent");
+}
+if (
+  pBlind73 &&
+  (!pBlind73.mustSay?.includes("yazılı teklif") ||
+    !pBlind73.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind73.mustSay?.includes("sabit NDI yok"))
+) {
+  errors.push("blind prompt #73 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit NDI yok");
+}
+
+const pBlind74 = PROMPTS.find((x) => x.id === 74);
+if (!pBlind74 || !/ön servis|arka servis|front|rear/i.test(pBlind74.q)) {
+  errors.push("blind prompt #74 must cover sabit ön/arka servis invent");
+}
+if (
+  pBlind74 &&
+  (!pBlind74.mustSay?.includes("yazılı teklif") ||
+    !pBlind74.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind74.mustSay?.includes("sabit ön servis yok"))
+) {
+  errors.push("blind prompt #74 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ön servis yok");
+}
+
+
+const pBlind75 = PROMPTS.find((x) => x.id === 75);
+if (!pBlind75 || !/WiFi|Bluetooth|kablosuz/i.test(pBlind75.q)) {
+  errors.push("blind prompt #75 must cover sabit WiFi / Bluetooth invent");
+}
+if (
+  pBlind75 &&
+  (!pBlind75.mustSay?.includes("yazılı teklif") ||
+    !pBlind75.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind75.mustSay?.includes("sabit WiFi yok"))
+) {
+  errors.push("blind prompt #75 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit WiFi yok");
+}
+
+
+const pBlind76 = PROMPTS.find((x) => x.id === 76);
+if (!pBlind76 || !/0mm|seamless|bezelsiz/i.test(pBlind76.q)) {
+  errors.push("blind prompt #76 must cover sabit 0mm / seamless invent");
+}
+if (
+  pBlind76 &&
+  (!pBlind76.mustSay?.includes("yazılı teklif") ||
+    !pBlind76.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind76.mustSay?.includes("sabit 0mm yok"))
+) {
+  errors.push("blind prompt #76 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit 0mm yok");
+}
+
+const pBlind77 = PROMPTS.find((x) => x.id === 77);
+if (!pBlind77 || !/alıcı|receiving card|backup loop/i.test(pBlind77.q)) {
+  errors.push("blind prompt #77 must cover sabit alıcı yedeklilik invent");
+}
+if (
+  pBlind77 &&
+  (!pBlind77.mustSay?.includes("yazılı teklif") ||
+    !pBlind77.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind77.mustSay?.includes("sabit alıcı yedeklilik yok"))
+) {
+  errors.push("blind prompt #77 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit alıcı yedeklilik yok");
+}
+
+const pBlind78 = PROMPTS.find((x) => x.id === 78);
+if (!pBlind78 || !/gönderici|sending card|redundant sender/i.test(pBlind78.q)) {
+  errors.push("blind prompt #78 must cover sabit gönderici yedeklilik invent");
+}
+if (
+  pBlind78 &&
+  (!pBlind78.mustSay?.includes("yazılı teklif") ||
+    !pBlind78.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind78.mustSay?.includes("sabit gönderici yedeklilik yok"))
+) {
+  errors.push("blind prompt #78 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gönderici yedeklilik yok");
+}
+
+const pBlind79 = PROMPTS.find((x) => x.id === 79);
+if (!pBlind79 || !/ışık sensörü|adaptive brightness|ambient light/i.test(pBlind79.q)) {
+  errors.push("blind prompt #79 must cover sabit ışık sensörü invent");
+}
+if (
+  pBlind79 &&
+  (!pBlind79.mustSay?.includes("yazılı teklif") ||
+    !pBlind79.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind79.mustSay?.includes("sabit ışık sensörü yok"))
+) {
+  errors.push("blind prompt #79 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ışık sensörü yok");
+}
+
+const pBlind80 = PROMPTS.find((x) => x.id === 80);
+if (!pBlind80 || !/canlı modül|hot-swap module/i.test(pBlind80.q)) {
+  errors.push("blind prompt #80 must cover sabit canlı modül değişimi invent");
+}
+if (
+  pBlind80 &&
+  (!pBlind80.mustSay?.includes("yazılı teklif") ||
+    !pBlind80.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind80.mustSay?.includes("sabit canlı modül değişimi yok"))
+) {
+  errors.push("blind prompt #80 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit canlı modül değişimi yok");
+}
+
+const pBlind81 = PROMPTS.find((x) => x.id === 81);
+if (!pBlind81 || !/dokunmatik|touch overlay|capacitive touch/i.test(pBlind81.q)) {
+  errors.push("blind prompt #81 must cover sabit dokunmatik invent");
+}
+if (
+  pBlind81 &&
+  (!pBlind81.mustSay?.includes("yazılı teklif") ||
+    !pBlind81.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind81.mustSay?.includes("sabit dokunmatik yok"))
+) {
+  errors.push("blind prompt #81 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dokunmatik yok");
+}
+
+
+const pBlind82 = PROMPTS.find((x) => x.id === 82);
+if (!pBlind82 || !/mıknatıslı modül|magnetic module/i.test(pBlind82.q)) {
+  errors.push("blind prompt #82 must cover sabit mıknatıslı modül invent");
+}
+if (
+  pBlind82 &&
+  (!pBlind82.mustSay?.includes("yazılı teklif") ||
+    !pBlind82.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind82.mustSay?.includes("sabit mıknatıslı modül yok"))
+) {
+  errors.push("blind prompt #82 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit mıknatıslı modül yok");
+}
+
+
+const pBlind83 = PROMPTS.find((x) => x.id === 83);
+if (!pBlind83 || !/koruyucu kaplama|conformal coating/i.test(pBlind83.q)) {
+  errors.push("blind prompt #83 must cover sabit koruyucu kaplama invent");
+}
+if (
+  pBlind83 &&
+  (!pBlind83.mustSay?.includes("yazılı teklif") ||
+    !pBlind83.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind83.mustSay?.includes("sabit koruyucu kaplama yok"))
+) {
+  errors.push("blind prompt #83 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit koruyucu kaplama yok");
+}
+
+
+const pBlind84 = PROMPTS.find((x) => x.id === 84);
+if (!pBlind84 || !/naked-eye 3D|glasses-free 3D|sabit 3D/i.test(pBlind84.q)) {
+  errors.push("blind prompt #84 must cover sabit 3D invent");
+}
+if (
+  pBlind84 &&
+  (!pBlind84.mustSay?.includes("yazılı teklif") ||
+    !pBlind84.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind84.mustSay?.includes("sabit 3D yok"))
+) {
+  errors.push("blind prompt #84 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit 3D yok");
+}
+
+
+const pBlind85 = PROMPTS.find((x) => x.id === 85);
+if (!pBlind85 || !/hızlı kilit|quick lock/i.test(pBlind85.q)) {
+  errors.push("blind prompt #85 must cover sabit hızlı kilit invent");
+}
+if (
+  pBlind85 &&
+  (!pBlind85.mustSay?.includes("yazılı teklif") ||
+    !pBlind85.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind85.mustSay?.includes("sabit hızlı kilit yok"))
+) {
+  errors.push("blind prompt #85 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hızlı kilit yok");
+}
+
+const pBlind86 = PROMPTS.find((x) => x.id === 86);
+if (!pBlind86 || !/kavisli|curved/i.test(pBlind86.q)) {
+  errors.push("blind prompt #86 must cover sabit kavisli invent");
+}
+if (
+  pBlind86 &&
+  (!pBlind86.mustSay?.includes("yazılı teklif") ||
+    !pBlind86.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind86.mustSay?.includes("sabit kavisli yok"))
+) {
+  errors.push("blind prompt #86 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kavisli yok");
+}
+
+const pBlind87 = PROMPTS.find((x) => x.id === 87);
+if (!pBlind87 || !/döküm kabin|die-cast/i.test(pBlind87.q)) {
+  errors.push("blind prompt #87 must cover sabit döküm kabin invent");
+}
+if (
+  pBlind87 &&
+  (!pBlind87.mustSay?.includes("yazılı teklif") ||
+    !pBlind87.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind87.mustSay?.includes("sabit döküm kabin yok"))
+) {
+  errors.push("blind prompt #87 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit döküm kabin yok");
+}
+
+const pBlind88 = PROMPTS.find((x) => x.id === 88);
+if (!pBlind88 || !/anti-yansıma|anti-glare/i.test(pBlind88.q)) {
+  errors.push("blind prompt #88 must cover sabit anti-yansıma invent");
+}
+if (
+  pBlind88 &&
+  (!pBlind88.mustSay?.includes("yazılı teklif") ||
+    !pBlind88.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind88.mustSay?.includes("sabit anti-yansıma yok"))
+) {
+  errors.push("blind prompt #88 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit anti-yansıma yok");
+}
+
+const pBlind89 = PROMPTS.find((x) => x.id === 89);
+if (!pBlind89 || !/OPS|Android player/i.test(pBlind89.q)) {
+  errors.push("blind prompt #89 must cover sabit OPS invent");
+}
+if (
+  pBlind89 &&
+  (!pBlind89.mustSay?.includes("yazılı teklif") ||
+    !pBlind89.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind89.mustSay?.includes("sabit OPS yok"))
+) {
+  errors.push("blind prompt #89 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit OPS yok");
+}
+
+const pBlind90 = PROMPTS.find((x) => x.id === 90);
+if (!pBlind90 || !/parafudr|surge protection/i.test(pBlind90.q)) {
+  errors.push("blind prompt #90 must cover sabit parafudr invent");
+}
+if (
+  pBlind90 &&
+  (!pBlind90.mustSay?.includes("yazılı teklif") ||
+    !pBlind90.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind90.mustSay?.includes("sabit parafudr yok"))
+) {
+  errors.push("blind prompt #90 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parafudr yok");
+}
+
+const pBlind91 = PROMPTS.find((x) => x.id === 91);
+if (!pBlind91 || !/zamanlayıcı|content scheduler/i.test(pBlind91.q)) {
+  errors.push("blind prompt #91 must cover sabit zamanlayıcı invent");
+}
+if (
+  pBlind91 &&
+  (!pBlind91.mustSay?.includes("yazılı teklif") ||
+    !pBlind91.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind91.mustSay?.includes("sabit zamanlayıcı yok"))
+) {
+  errors.push("blind prompt #91 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit zamanlayıcı yok");
+}
+
+const pBlind92 = PROMPTS.find((x) => x.id === 92);
+if (!pBlind92 || !/flight case|taşıma çantası/i.test(pBlind92.q)) {
+  errors.push("blind prompt #92 must cover sabit flight case invent");
+}
+if (
+  pBlind92 &&
+  (!pBlind92.mustSay?.includes("yazılı teklif") ||
+    !pBlind92.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind92.mustSay?.includes("sabit flight case yok"))
+) {
+  errors.push("blind prompt #92 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit flight case yok");
+}
+
+const pBlind93 = PROMPTS.find((x) => x.id === 93);
+if (!pBlind93 || !/köşe LED|corner LED/i.test(pBlind93.q)) {
+  errors.push("blind prompt #93 must cover sabit köşe LED invent");
+}
+if (
+  pBlind93 &&
+  (!pBlind93.mustSay?.includes("yazılı teklif") ||
+    !pBlind93.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind93.mustSay?.includes("sabit köşe LED yok"))
+) {
+  errors.push("blind prompt #93 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit köşe LED yok");
+}
+
+const pBlind94 = PROMPTS.find((x) => x.id === 94);
+if (!pBlind94 || !/enerji sınıfı|energy class/i.test(pBlind94.q)) {
+  errors.push("blind prompt #94 must cover sabit enerji sınıfı invent");
+}
+if (
+  pBlind94 &&
+  (!pBlind94.mustSay?.includes("yazılı teklif") ||
+    !pBlind94.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind94.mustSay?.includes("sabit enerji sınıfı yok"))
+) {
+  errors.push("blind prompt #94 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit enerji sınıfı yok");
+}
+
+const pBlind95 = PROMPTS.find((x) => x.id === 95);
+if (!pBlind95 || !/düşük mavi ışık|low blue light/i.test(pBlind95.q)) {
+  errors.push("blind prompt #95 must cover sabit düşük mavi ışık invent");
+}
+if (
+  pBlind95 &&
+  (!pBlind95.mustSay?.includes("yazılı teklif") ||
+    !pBlind95.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind95.mustSay?.includes("sabit düşük mavi ışık yok"))
+) {
+  errors.push("blind prompt #95 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit düşük mavi ışık yok");
+}
+
+const pBlind96 = PROMPTS.find((x) => x.id === 96);
+if (!pBlind96 || !/asılı|hanging|rigging/i.test(pBlind96.q)) {
+  errors.push("blind prompt #96 must cover sabit asılı invent");
+}
+if (
+  pBlind96 &&
+  (!pBlind96.mustSay?.includes("yazılı teklif") ||
+    !pBlind96.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind96.mustSay?.includes("sabit asılı yok"))
+) {
+  errors.push("blind prompt #96 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit asılı yok");
+}
+
+const pBlind97 = PROMPTS.find((x) => x.id === 97);
+if (!pBlind97 || !/daisy chain|data cascade/i.test(pBlind97.q)) {
+  errors.push("blind prompt #97 must cover sabit daisy chain invent");
+}
+if (
+  pBlind97 &&
+  (!pBlind97.mustSay?.includes("yazılı teklif") ||
+    !pBlind97.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind97.mustSay?.includes("sabit daisy chain yok"))
+) {
+  errors.push("blind prompt #97 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit daisy chain yok");
+}
+
+const pBlind98 = PROMPTS.find((x) => x.id === 98);
+if (!pBlind98 || !/IP67|NEMA/i.test(pBlind98.q)) {
+  errors.push("blind prompt #98 must cover sabit IP67 invent");
+}
+if (
+  pBlind98 &&
+  (!pBlind98.mustSay?.includes("yazılı teklif") ||
+    !pBlind98.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind98.mustSay?.includes("sabit IP67 yok"))
+) {
+  errors.push("blind prompt #98 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit IP67 yok");
+}
+
+const pBlind99 = PROMPTS.find((x) => x.id === 99);
+if (!pBlind99 || !/ısıtıcı|heater|soğutma|cooling|ısı yönetimi/i.test(pBlind99.q)) {
+  errors.push("blind prompt #99 must cover sabit ısı yönetimi invent");
+}
+if (
+  pBlind99 &&
+  (!pBlind99.mustSay?.includes("yazılı teklif") ||
+    !pBlind99.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind99.mustSay?.includes("sabit ısı yönetimi yok"))
+) {
+  errors.push("blind prompt #99 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ısı yönetimi yok");
+}
+
+const pBlind100 = PROMPTS.find((x) => x.id === 100);
+if (!pBlind100 || !/BT\.2020|Rec\.2020/i.test(pBlind100.q)) {
+  errors.push("blind prompt #100 must cover sabit BT.2020 invent");
+}
+if (
+  pBlind100 &&
+  (!pBlind100.mustSay?.includes("yazılı teklif") ||
+    !pBlind100.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind100.mustSay?.includes("sabit BT.2020 yok"))
+) {
+  errors.push("blind prompt #100 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BT.2020 yok");
+}
+
+const pBlind101 = PROMPTS.find((x) => x.id === 101);
+if (!pBlind101 || !/HLG|HDR10|PQ/i.test(pBlind101.q)) {
+  errors.push("blind prompt #101 must cover sabit HLG invent");
+}
+if (
+  pBlind101 &&
+  (!pBlind101.mustSay?.includes("yazılı teklif") ||
+    !pBlind101.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind101.mustSay?.includes("sabit HLG yok"))
+) {
+  errors.push("blind prompt #101 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HLG yok");
+}
+
+const pBlind102 = PROMPTS.find((x) => x.id === 102);
+if (!pBlind102 || !/PWM|scan rate/i.test(pBlind102.q)) {
+  errors.push("blind prompt #102 must cover sabit PWM invent");
+}
+if (
+  pBlind102 &&
+  (!pBlind102.mustSay?.includes("yazılı teklif") ||
+    !pBlind102.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind102.mustSay?.includes("sabit PWM yok"))
+) {
+  errors.push("blind prompt #102 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit PWM yok");
+}
+
+const pBlind103 = PROMPTS.find((x) => x.id === 103);
+if (!pBlind103 || !/black level|siyah seviye/i.test(pBlind103.q)) {
+  errors.push("blind prompt #103 must cover sabit black level invent");
+}
+if (
+  pBlind103 &&
+  (!pBlind103.mustSay?.includes("yazılı teklif") ||
+    !pBlind103.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind103.mustSay?.includes("sabit black level yok"))
+) {
+  errors.push("blind prompt #103 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit black level yok");
+}
+
+const pBlind104 = PROMPTS.find((x) => x.id === 104);
+if (!pBlind104 || !/pixel mapping|piksel eşleme/i.test(pBlind104.q)) {
+  errors.push("blind prompt #104 must cover sabit pixel mapping invent");
+}
+if (
+  pBlind104 &&
+  (!pBlind104.mustSay?.includes("yazılı teklif") ||
+    !pBlind104.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind104.mustSay?.includes("sabit pixel mapping yok"))
+) {
+  errors.push("blind prompt #104 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pixel mapping yok");
+}
+
+const pBlind105 = PROMPTS.find((x) => x.id === 105);
+if (!pBlind105 || !/gamma|white balance|beyaz dengesi/i.test(pBlind105.q)) {
+  errors.push("blind prompt #105 must cover sabit gamma invent");
+}
+if (
+  pBlind105 &&
+  (!pBlind105.mustSay?.includes("yazılı teklif") ||
+    !pBlind105.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind105.mustSay?.includes("sabit gamma yok"))
+) {
+  errors.push("blind prompt #105 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gamma yok");
+}
+
+const pBlind106 = PROMPTS.find((x) => x.id === 106);
+if (!pBlind106 || !/potting|epoxy/i.test(pBlind106.q)) {
+  errors.push("blind prompt #106 must cover sabit potting invent");
+}
+if (
+  pBlind106 &&
+  (!pBlind106.mustSay?.includes("yazılı teklif") ||
+    !pBlind106.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind106.mustSay?.includes("sabit potting yok"))
+) {
+  errors.push("blind prompt #106 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit potting yok");
+}
+
+const pBlind107 = PROMPTS.find((x) => x.id === 107);
+if (!pBlind107 || !/louver|masking|güneş panjuru/i.test(pBlind107.q)) {
+  errors.push("blind prompt #107 must cover sabit louver invent");
+}
+if (
+  pBlind107 &&
+  (!pBlind107.mustSay?.includes("yazılı teklif") ||
+    !pBlind107.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind107.mustSay?.includes("sabit louver yok"))
+) {
+  errors.push("blind prompt #107 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit louver yok");
+}
+
+const pBlind108 = PROMPTS.find((x) => x.id === 108);
+if (!pBlind108 || !/module size|modül boyutu/i.test(pBlind108.q)) {
+  errors.push("blind prompt #108 must cover sabit module size invent");
+}
+if (
+  pBlind108 &&
+  (!pBlind108.mustSay?.includes("yazılı teklif") ||
+    !pBlind108.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind108.mustSay?.includes("sabit module size yok"))
+) {
+  errors.push("blind prompt #108 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit module size yok");
+}
+
+const pBlind109 = PROMPTS.find((x) => x.id === 109);
+if (!pBlind109 || !/cabinet depth|kabin derinliği/i.test(pBlind109.q)) {
+  errors.push("blind prompt #109 must cover sabit cabinet depth invent");
+}
+if (
+  pBlind109 &&
+  (!pBlind109.mustSay?.includes("yazılı teklif") ||
+    !pBlind109.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind109.mustSay?.includes("sabit cabinet depth yok"))
+) {
+  errors.push("blind prompt #109 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cabinet depth yok");
+}
+
+const pBlind110 = PROMPTS.find((x) => x.id === 110);
+if (!pBlind110 || !/drive IC|sürücü IC/i.test(pBlind110.q)) {
+  errors.push("blind prompt #110 must cover sabit drive IC invent");
+}
+if (
+  pBlind110 &&
+  (!pBlind110.mustSay?.includes("yazılı teklif") ||
+    !pBlind110.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind110.mustSay?.includes("sabit drive IC yok"))
+) {
+  errors.push("blind prompt #110 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drive IC yok");
+}
+
+
+const pBlind111 = PROMPTS.find((x) => x.id === 111);
+if (!pBlind111 || !/cabinet size|kabin boyutu/i.test(pBlind111.q)) {
+  errors.push("blind prompt #111 must cover sabit cabinet size invent");
+}
+if (
+  pBlind111 &&
+  (!pBlind111.mustSay?.includes("yazılı teklif") ||
+    !pBlind111.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind111.mustSay?.includes("sabit cabinet size yok"))
+) {
+  errors.push("blind prompt #111 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cabinet size yok");
+}
+
+
+const pBlind112 = PROMPTS.find((x) => x.id === 112);
+if (!pBlind112 || !/panel size|panel boyutu/i.test(pBlind112.q)) {
+  errors.push("blind prompt #112 must cover sabit panel size invent");
+}
+if (
+  pBlind112 &&
+  (!pBlind112.mustSay?.includes("yazılı teklif") ||
+    !pBlind112.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind112.mustSay?.includes("sabit panel size yok"))
+) {
+  errors.push("blind prompt #112 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit panel size yok");
+}
+
+
+const pBlind113 = PROMPTS.find((x) => x.id === 113);
+if (!pBlind113 || !/waterproof glue|su geçirmez yapıştırıcı/i.test(pBlind113.q)) {
+  errors.push("blind prompt #113 must cover sabit waterproof glue invent");
+}
+if (
+  pBlind113 &&
+  (!pBlind113.mustSay?.includes("yazılı teklif") ||
+    !pBlind113.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind113.mustSay?.includes("sabit waterproof glue yok"))
+) {
+  errors.push("blind prompt #113 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit waterproof glue yok");
+}
+
+
+const pBlind114 = PROMPTS.find((x) => x.id === 114);
+if (!pBlind114 || !/mask pitch|maske pitch/i.test(pBlind114.q)) {
+  errors.push("blind prompt #114 must cover sabit mask pitch invent");
+}
+if (
+  pBlind114 &&
+  (!pBlind114.mustSay?.includes("yazılı teklif") ||
+    !pBlind114.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind114.mustSay?.includes("sabit mask pitch yok"))
+) {
+  errors.push("blind prompt #114 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit mask pitch yok");
+}
+
+
+const pBlind115 = PROMPTS.find((x) => x.id === 115);
+if (!pBlind115 || !/silicone seal|silikon conta/i.test(pBlind115.q)) {
+  errors.push("blind prompt #115 must cover sabit silicone seal invent");
+}
+if (
+  pBlind115 &&
+  (!pBlind115.mustSay?.includes("yazılı teklif") ||
+    !pBlind115.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind115.mustSay?.includes("sabit silicone seal yok"))
+) {
+  errors.push("blind prompt #115 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit silicone seal yok");
+}
+
+
+const pBlind116 = PROMPTS.find((x) => x.id === 116);
+if (!pBlind116 || !/connector type|konektör tipi/i.test(pBlind116.q)) {
+  errors.push("blind prompt #116 must cover sabit connector type invent");
+}
+if (
+  pBlind116 &&
+  (!pBlind116.mustSay?.includes("yazılı teklif") ||
+    !pBlind116.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind116.mustSay?.includes("sabit connector type yok"))
+) {
+  errors.push("blind prompt #116 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit connector type yok");
+}
+
+
+const pBlind117 = PROMPTS.find((x) => x.id === 117);
+if (!pBlind117 || !/locating pin|konumlandırma pimi/i.test(pBlind117.q)) {
+  errors.push("blind prompt #117 must cover sabit locating pin invent");
+}
+if (
+  pBlind117 &&
+  (!pBlind117.mustSay?.includes("yazılı teklif") ||
+    !pBlind117.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind117.mustSay?.includes("sabit locating pin yok"))
+) {
+  errors.push("blind prompt #117 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit locating pin yok");
+}
+
+
+const pBlind118 = PROMPTS.find((x) => x.id === 118);
+if (!pBlind118 || !/flat cable|flat kablo/i.test(pBlind118.q)) {
+  errors.push("blind prompt #118 must cover sabit flat cable invent");
+}
+if (
+  pBlind118 &&
+  (!pBlind118.mustSay?.includes("yazılı teklif") ||
+    !pBlind118.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind118.mustSay?.includes("sabit flat cable yok"))
+) {
+  errors.push("blind prompt #118 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit flat cable yok");
+}
+
+
+const pBlind119 = PROMPTS.find((x) => x.id === 119);
+if (!pBlind119 || !/safety cable|emniyet kablosu/i.test(pBlind119.q)) {
+  errors.push("blind prompt #119 must cover sabit safety cable invent");
+}
+if (
+  pBlind119 &&
+  (!pBlind119.mustSay?.includes("yazılı teklif") ||
+    !pBlind119.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind119.mustSay?.includes("sabit safety cable yok"))
+) {
+  errors.push("blind prompt #119 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit safety cable yok");
+}
+
+
+const pBlind120 = PROMPTS.find((x) => x.id === 120);
+if (!pBlind120 || !/thermal pad|termal pad/i.test(pBlind120.q)) {
+  errors.push("blind prompt #120 must cover sabit thermal pad invent");
+}
+if (
+  pBlind120 &&
+  (!pBlind120.mustSay?.includes("yazılı teklif") ||
+    !pBlind120.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind120.mustSay?.includes("sabit thermal pad yok"))
+) {
+  errors.push("blind prompt #120 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit thermal pad yok");
+}
+
+
+const pBlind121 = PROMPTS.find((x) => x.id === 121);
+if (!pBlind121 || !/magnesium|magnezyum/i.test(pBlind121.q)) {
+  errors.push("blind prompt #121 must cover sabit magnesium invent");
+}
+if (
+  pBlind121 &&
+  (!pBlind121.mustSay?.includes("yazılı teklif") ||
+    !pBlind121.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind121.mustSay?.includes("sabit magnesium yok"))
+) {
+  errors.push("blind prompt #121 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit magnesium yok");
+}
+
+
+const pBlind122 = PROMPTS.find((x) => x.id === 122);
+if (!pBlind122 || !/EDID/i.test(pBlind122.q)) {
+  errors.push("blind prompt #122 must cover sabit EDID invent");
+}
+if (
+  pBlind122 &&
+  (!pBlind122.mustSay?.includes("yazılı teklif") ||
+    !pBlind122.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind122.mustSay?.includes("sabit EDID yok"))
+) {
+  errors.push("blind prompt #122 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit EDID yok");
+}
+
+
+const pBlind123 = PROMPTS.find((x) => x.id === 123);
+if (!pBlind123 || !/HDBaseT/i.test(pBlind123.q)) {
+  errors.push("blind prompt #123 must cover sabit HDBaseT invent");
+}
+if (
+  pBlind123 &&
+  (!pBlind123.mustSay?.includes("yazılı teklif") ||
+    !pBlind123.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind123.mustSay?.includes("sabit HDBaseT yok"))
+) {
+  errors.push("blind prompt #123 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HDBaseT yok");
+}
+
+
+const pBlind124 = PROMPTS.find((x) => x.id === 124);
+if (!pBlind124 || !/video processor|video işlemci/i.test(pBlind124.q)) {
+  errors.push("blind prompt #124 must cover sabit video processor invent");
+}
+if (
+  pBlind124 &&
+  (!pBlind124.mustSay?.includes("yazılı teklif") ||
+    !pBlind124.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind124.mustSay?.includes("sabit video processor yok"))
+) {
+  errors.push("blind prompt #124 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit video processor yok");
+}
+
+
+const pBlind125 = PROMPTS.find((x) => x.id === 125);
+if (!pBlind125 || !/truss clamp|truss kelepçe/i.test(pBlind125.q)) {
+  errors.push("blind prompt #125 must cover sabit truss clamp invent");
+}
+if (
+  pBlind125 &&
+  (!pBlind125.mustSay?.includes("yazılı teklif") ||
+    !pBlind125.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind125.mustSay?.includes("sabit truss clamp yok"))
+) {
+  errors.push("blind prompt #125 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit truss clamp yok");
+}
+
+
+const pBlind126 = PROMPTS.find((x) => x.id === 126);
+if (!pBlind126 || !/scaler|ölçekleyici/i.test(pBlind126.q)) {
+  errors.push("blind prompt #126 must cover sabit scaler invent");
+}
+if (
+  pBlind126 &&
+  (!pBlind126.mustSay?.includes("yazılı teklif") ||
+    !pBlind126.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind126.mustSay?.includes("sabit scaler yok"))
+) {
+  errors.push("blind prompt #126 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit scaler yok");
+}
+
+
+const pBlind127 = PROMPTS.find((x) => x.id === 127);
+if (!pBlind127 || !/backup battery|yedek batarya/i.test(pBlind127.q)) {
+  errors.push("blind prompt #127 must cover sabit backup battery invent");
+}
+if (
+  pBlind127 &&
+  (!pBlind127.mustSay?.includes("yazılı teklif") ||
+    !pBlind127.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind127.mustSay?.includes("sabit backup battery yok"))
+) {
+  errors.push("blind prompt #127 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit backup battery yok");
+}
+
+
+const pBlind128 = PROMPTS.find((x) => x.id === 128);
+if (!pBlind128 || !/ribbon cable|ribbon kablo/i.test(pBlind128.q)) {
+  errors.push("blind prompt #128 must cover sabit ribbon cable invent");
+}
+if (
+  pBlind128 &&
+  (!pBlind128.mustSay?.includes("yazılı teklif") ||
+    !pBlind128.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind128.mustSay?.includes("sabit ribbon cable yok"))
+) {
+  errors.push("blind prompt #128 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ribbon cable yok");
+}
+
+
+const pBlind129 = PROMPTS.find((x) => x.id === 129);
+if (!pBlind129 || !/hoist|vinç/i.test(pBlind129.q)) {
+  errors.push("blind prompt #129 must cover sabit hoist invent");
+}
+if (
+  pBlind129 &&
+  (!pBlind129.mustSay?.includes("yazılı teklif") ||
+    !pBlind129.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind129.mustSay?.includes("sabit hoist yok"))
+) {
+  errors.push("blind prompt #129 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hoist yok");
+}
+
+
+const pBlind130 = PROMPTS.find((x) => x.id === 130);
+if (!pBlind130 || !/SFP/i.test(pBlind130.q)) {
+  errors.push("blind prompt #130 must cover sabit SFP invent");
+}
+if (
+  pBlind130 &&
+  (!pBlind130.mustSay?.includes("yazılı teklif") ||
+    !pBlind130.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind130.mustSay?.includes("sabit SFP yok"))
+) {
+  errors.push("blind prompt #130 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SFP yok");
+}
+
+
+const pBlind131 = PROMPTS.find((x) => x.id === 131);
+if (!pBlind131 || !/cable gland|kablo rakoru/i.test(pBlind131.q)) {
+  errors.push("blind prompt #131 must cover sabit cable gland invent");
+}
+if (
+  pBlind131 &&
+  (!pBlind131.mustSay?.includes("yazılı teklif") ||
+    !pBlind131.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind131.mustSay?.includes("sabit cable gland yok"))
+) {
+  errors.push("blind prompt #131 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cable gland yok");
+}
+
+
+const pBlind132 = PROMPTS.find((x) => x.id === 132);
+if (!pBlind132 || !/PIP|görüntü içinde görüntü/i.test(pBlind132.q)) {
+  errors.push("blind prompt #132 must cover sabit PIP invent");
+}
+if (
+  pBlind132 &&
+  (!pBlind132.mustSay?.includes("yazılı teklif") ||
+    !pBlind132.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind132.mustSay?.includes("sabit PIP yok"))
+) {
+  errors.push("blind prompt #132 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit PIP yok");
+}
+
+if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
+  
+const pBlind133 = PROMPTS.find((x) => x.id === 133);
+if (!pBlind133 || !/grounding|topraklama/i.test(pBlind133.q)) {
+  errors.push("blind prompt #133 must cover sabit grounding invent");
+}
+if (
+  pBlind133 &&
+  (!pBlind133.mustSay?.includes("yazılı teklif") ||
+    !pBlind133.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind133.mustSay?.includes("sabit grounding yok"))
+) {
+  errors.push("blind prompt #133 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit grounding yok");
+}
+
+
+const pBlind134 = PROMPTS.find((x) => x.id === 134);
+if (!pBlind134 || !/Dante/i.test(pBlind134.q)) {
+  errors.push("blind prompt #134 must cover sabit Dante invent");
+}
+if (
+  pBlind134 &&
+  (!pBlind134.mustSay?.includes("yazılı teklif") ||
+    !pBlind134.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind134.mustSay?.includes("sabit Dante yok"))
+) {
+  errors.push("blind prompt #134 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Dante yok");
+}
+
+
+const pBlind135 = PROMPTS.find((x) => x.id === 135);
+if (!pBlind135 || !/powerCON|PowerCON/i.test(pBlind135.q)) {
+  errors.push("blind prompt #135 must cover sabit powerCON invent");
+}
+if (
+  pBlind135 &&
+  (!pBlind135.mustSay?.includes("yazılı teklif") ||
+    !pBlind135.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind135.mustSay?.includes("sabit powerCON yok"))
+) {
+  errors.push("blind prompt #135 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit powerCON yok");
+}
+
+
+const pBlind136 = PROMPTS.find((x) => x.id === 136);
+if (!pBlind136 || !/KVM/i.test(pBlind136.q)) {
+  errors.push("blind prompt #136 must cover sabit KVM invent");
+}
+if (
+  pBlind136 &&
+  (!pBlind136.mustSay?.includes("yazılı teklif") ||
+    !pBlind136.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind136.mustSay?.includes("sabit KVM yok"))
+) {
+  errors.push("blind prompt #136 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit KVM yok");
+}
+
+
+const pBlind137 = PROMPTS.find((x) => x.id === 137);
+if (!pBlind137 || !/Neutrik/i.test(pBlind137.q)) {
+  errors.push("blind prompt #137 must cover sabit Neutrik invent");
+}
+if (
+  pBlind137 &&
+  (!pBlind137.mustSay?.includes("yazılı teklif") ||
+    !pBlind137.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind137.mustSay?.includes("sabit Neutrik yok"))
+) {
+  errors.push("blind prompt #137 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neutrik yok");
+}
+
+
+const pBlind138 = PROMPTS.find((x) => x.id === 138);
+if (!pBlind138 || !/multi-window|çoklu pencere/i.test(pBlind138.q)) {
+  errors.push("blind prompt #138 must cover sabit multi-window invent");
+}
+if (
+  pBlind138 &&
+  (!pBlind138.mustSay?.includes("yazılı teklif") ||
+    !pBlind138.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind138.mustSay?.includes("sabit multi-window yok"))
+) {
+  errors.push("blind prompt #138 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit multi-window yok");
+}
+
+
+const pBlind139 = PROMPTS.find((x) => x.id === 139);
+if (!pBlind139 || !/guy wire|gergi teli/i.test(pBlind139.q)) {
+  errors.push("blind prompt #139 must cover sabit guy wire invent");
+}
+if (
+  pBlind139 &&
+  (!pBlind139.mustSay?.includes("yazılı teklif") ||
+    !pBlind139.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind139.mustSay?.includes("sabit guy wire yok"))
+) {
+  errors.push("blind prompt #139 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit guy wire yok");
+}
+
+
+const pBlind140 = PROMPTS.find((x) => x.id === 140);
+if (!pBlind140 || !/junction box|buat/i.test(pBlind140.q)) {
+  errors.push("blind prompt #140 must cover sabit junction box invent");
+}
+if (
+  pBlind140 &&
+  (!pBlind140.mustSay?.includes("yazılı teklif") ||
+    !pBlind140.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind140.mustSay?.includes("sabit junction box yok"))
+) {
+  errors.push("blind prompt #140 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit junction box yok");
+}
+
+
+const pBlind141 = PROMPTS.find((x) => x.id === 141);
+if (!pBlind141 || !/leveling foot|ayar ayağı/i.test(pBlind141.q)) {
+  errors.push("blind prompt #141 must cover sabit leveling foot invent");
+}
+if (
+  pBlind141 &&
+  (!pBlind141.mustSay?.includes("yazılı teklif") ||
+    !pBlind141.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind141.mustSay?.includes("sabit leveling foot yok"))
+) {
+  errors.push("blind prompt #141 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit leveling foot yok");
+}
+
+
+const pBlind142 = PROMPTS.find((x) => x.id === 142);
+if (!pBlind142 || !/matrix switcher|matris switch/i.test(pBlind142.q)) {
+  errors.push("blind prompt #142 must cover sabit matrix switcher invent");
+}
+if (
+  pBlind142 &&
+  (!pBlind142.mustSay?.includes("yazılı teklif") ||
+    !pBlind142.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind142.mustSay?.includes("sabit matrix switcher yok"))
+) {
+  errors.push("blind prompt #142 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit matrix switcher yok");
+}
+
+
+const pBlind143 = PROMPTS.find((x) => x.id === 143);
+if (!pBlind143 || !/ballast|karşı ağırlık/i.test(pBlind143.q)) {
+  errors.push("blind prompt #143 must cover sabit ballast invent");
+}
+if (
+  pBlind143 &&
+  (!pBlind143.mustSay?.includes("yazılı teklif") ||
+    !pBlind143.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind143.mustSay?.includes("sabit ballast yok"))
+) {
+  errors.push("blind prompt #143 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ballast yok");
+}
+
+
+const pBlind144 = PROMPTS.find((x) => x.id === 144);
+if (!pBlind144 || !/BYOD|kablosuz sunum/i.test(pBlind144.q)) {
+  errors.push("blind prompt #144 must cover sabit BYOD invent");
+}
+if (
+  pBlind144 &&
+  (!pBlind144.mustSay?.includes("yazılı teklif") ||
+    !pBlind144.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind144.mustSay?.includes("sabit BYOD yok"))
+) {
+  errors.push("blind prompt #144 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BYOD yok");
+}
+
+
+const pBlind145 = PROMPTS.find((x) => x.id === 145);
+if (!pBlind145 || !/outrigger|payanda/i.test(pBlind145.q)) {
+  errors.push("blind prompt #145 must cover sabit outrigger invent");
+}
+if (
+  pBlind145 &&
+  (!pBlind145.mustSay?.includes("yazılı teklif") ||
+    !pBlind145.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind145.mustSay?.includes("sabit outrigger yok"))
+) {
+  errors.push("blind prompt #145 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit outrigger yok");
+}
+
+
+const pBlind146 = PROMPTS.find((x) => x.id === 146);
+if (!pBlind146 || !/Crestron|kontrol sistemi/i.test(pBlind146.q)) {
+  errors.push("blind prompt #146 must cover sabit Crestron invent");
+}
+if (
+  pBlind146 &&
+  (!pBlind146.mustSay?.includes("yazılı teklif") ||
+    !pBlind146.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind146.mustSay?.includes("sabit Crestron yok"))
+) {
+  errors.push("blind prompt #146 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Crestron yok");
+
+const pBlind147 = PROMPTS.find((x) => x.id === 147);
+if (!pBlind147 || !/USB-C|USB Type-C/i.test(pBlind147.q)) {
+  errors.push("blind prompt #147 must cover sabit USB-C invent");
+}
+if (
+  pBlind147 &&
+  (!pBlind147.mustSay?.includes("yazılı teklif") ||
+    !pBlind147.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind147.mustSay?.includes("sabit USB-C yok"))
+) {
+  errors.push("blind prompt #147 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit USB-C yok");
+
+const pBlind148 = PROMPTS.find((x) => x.id === 148);
+if (!pBlind148 || !/IR remote|kızılötesi kumanda/i.test(pBlind148.q)) {
+  errors.push("blind prompt #148 must cover sabit IR remote invent");
+}
+if (
+  pBlind148 &&
+  (!pBlind148.mustSay?.includes("yazılı teklif") ||
+    !pBlind148.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind148.mustSay?.includes("sabit IR remote yok"))
+) {
+  errors.push("blind prompt #148 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit IR remote yok");
+
+const pBlind149 = PROMPTS.find((x) => x.id === 149);
+if (!pBlind149 || !/base plate|taban plakası/i.test(pBlind149.q)) {
+  errors.push("blind prompt #149 must cover sabit base plate invent");
+}
+if (
+  pBlind149 &&
+  (!pBlind149.mustSay?.includes("yazılı teklif") ||
+    !pBlind149.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind149.mustSay?.includes("sabit base plate yok"))
+) {
+  errors.push("blind prompt #149 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base plate yok");
+
+const pBlind150 = PROMPTS.find((x) => x.id === 150);
+if (!pBlind150 || !/RS-232|seri port/i.test(pBlind150.q)) {
+  errors.push("blind prompt #150 must cover sabit RS-232 invent");
+}
+if (
+  pBlind150 &&
+  (!pBlind150.mustSay?.includes("yazılı teklif") ||
+    !pBlind150.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind150.mustSay?.includes("sabit RS-232 yok"))
+) {
+  errors.push("blind prompt #150 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit RS-232 yok");
+
+const pBlind151 = PROMPTS.find((x) => x.id === 151);
+if (!pBlind151 || !/weather drain|su tahliyesi/i.test(pBlind151.q)) {
+  errors.push("blind prompt #151 must cover sabit weather drain invent");
+}
+if (
+  pBlind151 &&
+  (!pBlind151.mustSay?.includes("yazılı teklif") ||
+    !pBlind151.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind151.mustSay?.includes("sabit weather drain yok"))
+) {
+  errors.push("blind prompt #151 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit weather drain yok");
+
+const pBlind152 = PROMPTS.find((x) => x.id === 152);
+if (!pBlind152 || !/Extron|AV switcher/i.test(pBlind152.q)) {
+  errors.push("blind prompt #152 must cover sabit Extron invent");
+}
+if (
+  pBlind152 &&
+  (!pBlind152.mustSay?.includes("yazılı teklif") ||
+    !pBlind152.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind152.mustSay?.includes("sabit Extron yok"))
+) {
+  errors.push("blind prompt #152 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Extron yok");
+
+const pBlind153 = PROMPTS.find((x) => x.id === 153);
+if (!pBlind153 || !/wall bracket|duvar braketi/i.test(pBlind153.q)) {
+  errors.push("blind prompt #153 must cover sabit wall bracket invent");
+}
+if (
+  pBlind153 &&
+  (!pBlind153.mustSay?.includes("yazılı teklif") ||
+    !pBlind153.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind153.mustSay?.includes("sabit wall bracket yok"))
+) {
+  errors.push("blind prompt #153 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit wall bracket yok");
+
+const pBlind154 = PROMPTS.find((x) => x.id === 154);
+if (!pBlind154 || !/AMX|oda kontrol/i.test(pBlind154.q)) {
+  errors.push("blind prompt #154 must cover sabit AMX invent");
+}
+if (
+  pBlind154 &&
+  (!pBlind154.mustSay?.includes("yazılı teklif") ||
+    !pBlind154.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind154.mustSay?.includes("sabit AMX yok"))
+) {
+  errors.push("blind prompt #154 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit AMX yok");
+
+const pBlind155 = PROMPTS.find((x) => x.id === 155);
+if (!pBlind155 || !/drip edge|damlacık kenarı/i.test(pBlind155.q)) {
+  errors.push("blind prompt #155 must cover sabit drip edge invent");
+}
+if (
+  pBlind155 &&
+  (!pBlind155.mustSay?.includes("yazılı teklif") ||
+    !pBlind155.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind155.mustSay?.includes("sabit drip edge yok"))
+) {
+  errors.push("blind prompt #155 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drip edge yok");
+
+const pBlind156 = PROMPTS.find((x) => x.id === 156);
+if (!pBlind156 || !/Control4|akıllı ev/i.test(pBlind156.q)) {
+  errors.push("blind prompt #156 must cover sabit Control4 invent");
+}
+if (
+  pBlind156 &&
+  (!pBlind156.mustSay?.includes("yazılı teklif") ||
+    !pBlind156.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind156.mustSay?.includes("sabit Control4 yok"))
+) {
+  errors.push("blind prompt #156 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Control4 yok");
+
+const pBlind157 = PROMPTS.find((x) => x.id === 157);
+if (!pBlind157 || !/weep hole|drenaj deliği/i.test(pBlind157.q)) {
+  errors.push("blind prompt #157 must cover sabit weep hole invent");
+}
+if (
+  pBlind157 &&
+  (!pBlind157.mustSay?.includes("yazılı teklif") ||
+    !pBlind157.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind157.mustSay?.includes("sabit weep hole yok"))
+) {
+  errors.push("blind prompt #157 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit weep hole yok");
+}
+
+const pBlind158 = PROMPTS.find((x) => x.id === 158);
+if (!pBlind158 || !/Biamp|DSP/i.test(pBlind158.q)) {
+  errors.push("blind prompt #158 must cover sabit Biamp invent");
+}
+if (
+  pBlind158 &&
+  (!pBlind158.mustSay?.includes("yazılı teklif") ||
+    !pBlind158.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind158.mustSay?.includes("sabit Biamp yok"))
+) {
+  errors.push("blind prompt #158 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Biamp yok");
+}
+
+const pBlind159 = PROMPTS.find((x) => x.id === 159);
+if (!pBlind159 || !/bird mesh|kuş filesi/i.test(pBlind159.q)) {
+  errors.push("blind prompt #159 must cover sabit bird mesh invent");
+}
+if (
+  pBlind159 &&
+  (!pBlind159.mustSay?.includes("yazılı teklif") ||
+    !pBlind159.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind159.mustSay?.includes("sabit bird mesh yok"))
+) {
+  errors.push("blind prompt #159 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit bird mesh yok");
+}
+
+const pBlind160 = PROMPTS.find((x) => x.id === 160);
+if (!pBlind160 || !/QSC|amfi/i.test(pBlind160.q)) {
+  errors.push("blind prompt #160 must cover sabit QSC invent");
+}
+if (
+  pBlind160 &&
+  (!pBlind160.mustSay?.includes("yazılı teklif") ||
+    !pBlind160.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind160.mustSay?.includes("sabit QSC yok"))
+) {
+  errors.push("blind prompt #160 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit QSC yok");
+}
+
+const pBlind161 = PROMPTS.find((x) => x.id === 161);
+if (!pBlind161 || !/anti-theft screw|hırsızlık önleyici vida/i.test(pBlind161.q)) {
+  errors.push("blind prompt #161 must cover sabit anti-theft screw invent");
+}
+if (
+  pBlind161 &&
+  (!pBlind161.mustSay?.includes("yazılı teklif") ||
+    !pBlind161.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind161.mustSay?.includes("sabit anti-theft screw yok"))
+) {
+  errors.push("blind prompt #161 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit anti-theft screw yok");
+}
+
+const pBlind162 = PROMPTS.find((x) => x.id === 162);
+if (!pBlind162 || !/RS-485|seri bus/i.test(pBlind162.q)) {
+  errors.push("blind prompt #162 must cover sabit RS-485 invent");
+}
+if (
+  pBlind162 &&
+  (!pBlind162.mustSay?.includes("yazılı teklif") ||
+    !pBlind162.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind162.mustSay?.includes("sabit RS-485 yok"))
+) {
+  errors.push("blind prompt #162 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit RS-485 yok");
+}
+
+const pBlind163 = PROMPTS.find((x) => x.id === 163);
+if (!pBlind163 || !/bird spike|kuş dikeni/i.test(pBlind163.q)) {
+  errors.push("blind prompt #163 must cover sabit bird spike invent");
+}
+if (
+  pBlind163 &&
+  (!pBlind163.mustSay?.includes("yazılı teklif") ||
+    !pBlind163.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind163.mustSay?.includes("sabit bird spike yok"))
+) {
+  errors.push("blind prompt #163 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit bird spike yok");
+}
+
+const pBlind164 = PROMPTS.find((x) => x.id === 164);
+if (!pBlind164 || !/Kramer|AV matrix/i.test(pBlind164.q)) {
+  errors.push("blind prompt #164 must cover sabit Kramer invent");
+}
+if (
+  pBlind164 &&
+  (!pBlind164.mustSay?.includes("yazılı teklif") ||
+    !pBlind164.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind164.mustSay?.includes("sabit Kramer yok"))
+) {
+  errors.push("blind prompt #164 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Kramer yok");
+}
+
+const pBlind165 = PROMPTS.find((x) => x.id === 165);
+if (!pBlind165 || !/expansion joint|genleşme derzi/i.test(pBlind165.q)) {
+  errors.push("blind prompt #165 must cover sabit expansion joint invent");
+}
+if (
+  pBlind165 &&
+  (!pBlind165.mustSay?.includes("yazılı teklif") ||
+    !pBlind165.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind165.mustSay?.includes("sabit expansion joint yok"))
+) {
+  errors.push("blind prompt #165 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit expansion joint yok");
+}
+
+const pBlind166 = PROMPTS.find((x) => x.id === 166);
+if (!pBlind166 || !/Shure|mikrofon/i.test(pBlind166.q)) {
+  errors.push("blind prompt #166 must cover sabit Shure invent");
+}
+if (
+  pBlind166 &&
+  (!pBlind166.mustSay?.includes("yazılı teklif") ||
+    !pBlind166.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind166.mustSay?.includes("sabit Shure yok"))
+) {
+  errors.push("blind prompt #166 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Shure yok");
+}
+
+const pBlind167 = PROMPTS.find((x) => x.id === 167);
+if (!pBlind167 || !/snow load|kar yükü/i.test(pBlind167.q)) {
+  errors.push("blind prompt #167 must cover sabit snow load invent");
+}
+if (
+  pBlind167 &&
+  (!pBlind167.mustSay?.includes("yazılı teklif") ||
+    !pBlind167.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind167.mustSay?.includes("sabit snow load yok"))
+) {
+  errors.push("blind prompt #167 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit snow load yok");
+}
+
+const pBlind168 = PROMPTS.find((x) => x.id === 168);
+if (!pBlind168 || !/Symetrix|DSP/i.test(pBlind168.q)) {
+  errors.push("blind prompt #168 must cover sabit Symetrix invent");
+}
+if (
+  pBlind168 &&
+  (!pBlind168.mustSay?.includes("yazılı teklif") ||
+    !pBlind168.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind168.mustSay?.includes("sabit Symetrix yok"))
+) {
+  errors.push("blind prompt #168 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Symetrix yok");
+}
+
+const pBlind169 = PROMPTS.find((x) => x.id === 169);
+if (!pBlind169 || !/cable tray|kablo kanalı/i.test(pBlind169.q)) {
+  errors.push("blind prompt #169 must cover sabit cable tray invent");
+}
+if (
+  pBlind169 &&
+  (!pBlind169.mustSay?.includes("yazılı teklif") ||
+    !pBlind169.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind169.mustSay?.includes("sabit cable tray yok"))
+) {
+  errors.push("blind prompt #169 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cable tray yok");
+}
+
+const pBlind170 = PROMPTS.find((x) => x.id === 170);
+if (!pBlind170 || !/Atlona|AV over IP/i.test(pBlind170.q)) {
+  errors.push("blind prompt #170 must cover sabit Atlona invent");
+}
+if (
+  pBlind170 &&
+  (!pBlind170.mustSay?.includes("yazılı teklif") ||
+    !pBlind170.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind170.mustSay?.includes("sabit Atlona yok"))
+) {
+  errors.push("blind prompt #170 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Atlona yok");
+}
+
+const pBlind171 = PROMPTS.find((x) => x.id === 171);
+if (!pBlind171 || !/sun shade|güneş siperi/i.test(pBlind171.q)) {
+  errors.push("blind prompt #171 must cover sabit sun shade invent");
+}
+if (
+  pBlind171 &&
+  (!pBlind171.mustSay?.includes("yazılı teklif") ||
+    !pBlind171.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind171.mustSay?.includes("sabit sun shade yok"))
+) {
+  errors.push("blind prompt #171 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sun shade yok");
+}
+
+const pBlind172 = PROMPTS.find((x) => x.id === 172);
+if (!pBlind172 || !/Zoom Room|soft codec/i.test(pBlind172.q)) {
+  errors.push("blind prompt #172 must cover sabit Zoom Room invent");
+}
+if (
+  pBlind172 &&
+  (!pBlind172.mustSay?.includes("yazılı teklif") ||
+    !pBlind172.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind172.mustSay?.includes("sabit Zoom Room yok"))
+) {
+  errors.push("blind prompt #172 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Zoom Room yok");
+}
+
+const pBlind173 = PROMPTS.find((x) => x.id === 173);
+if (!pBlind173 || !/vandal guard|vandal koruma/i.test(pBlind173.q)) {
+  errors.push("blind prompt #173 must cover sabit vandal guard invent");
+}
+if (
+  pBlind173 &&
+  (!pBlind173.mustSay?.includes("yazılı teklif") ||
+    !pBlind173.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind173.mustSay?.includes("sabit vandal guard yok"))
+) {
+  errors.push("blind prompt #173 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit vandal guard yok");
+}
+
+const pBlind174 = PROMPTS.find((x) => x.id === 174);
+if (!pBlind174 || !/Teams Room|soft conferencing/i.test(pBlind174.q)) {
+  errors.push("blind prompt #174 must cover sabit Teams Room invent");
+}
+if (
+  pBlind174 &&
+  (!pBlind174.mustSay?.includes("yazılı teklif") ||
+    !pBlind174.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind174.mustSay?.includes("sabit Teams Room yok"))
+) {
+  errors.push("blind prompt #174 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Teams Room yok");
+}
+
+const pBlind175 = PROMPTS.find((x) => x.id === 175);
+if (!pBlind175 || !/lightning rod|paratoner/i.test(pBlind175.q)) {
+  errors.push("blind prompt #175 must cover sabit lightning rod invent");
+}
+if (
+  pBlind175 &&
+  (!pBlind175.mustSay?.includes("yazılı teklif") ||
+    !pBlind175.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind175.mustSay?.includes("sabit lightning rod yok"))
+) {
+  errors.push("blind prompt #175 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit lightning rod yok");
+}
+
+const pBlind176 = PROMPTS.find((x) => x.id === 176);
+if (!pBlind176 || !/Webex Room|soft conferencing/i.test(pBlind176.q)) {
+  errors.push("blind prompt #176 must cover sabit Webex Room invent");
+}
+if (
+  pBlind176 &&
+  (!pBlind176.mustSay?.includes("yazılı teklif") ||
+    !pBlind176.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind176.mustSay?.includes("sabit Webex Room yok"))
+) {
+  errors.push("blind prompt #176 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Webex Room yok");
+}
+
+const pBlind177 = PROMPTS.find((x) => x.id === 177);
+if (!pBlind177 || !/sill flashing|eşik flaşörü/i.test(pBlind177.q)) {
+  errors.push("blind prompt #177 must cover sabit sill flashing invent");
+}
+if (
+  pBlind177 &&
+  (!pBlind177.mustSay?.includes("yazılı teklif") ||
+    !pBlind177.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind177.mustSay?.includes("sabit sill flashing yok"))
+) {
+  errors.push("blind prompt #177 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sill flashing yok");
+}
+
+const pBlind178 = PROMPTS.find((x) => x.id === 178);
+if (!pBlind178 || !/ClickShare|kablosuz sunum/i.test(pBlind178.q)) {
+  errors.push("blind prompt #178 must cover sabit ClickShare invent");
+}
+if (
+  pBlind178 &&
+  (!pBlind178.mustSay?.includes("yazılı teklif") ||
+    !pBlind178.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind178.mustSay?.includes("sabit ClickShare yok"))
+) {
+  errors.push("blind prompt #178 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ClickShare yok");
+}
+
+const pBlind179 = PROMPTS.find((x) => x.id === 179);
+if (!pBlind179 || !/seismic brace|sismik destek/i.test(pBlind179.q)) {
+  errors.push("blind prompt #179 must cover sabit seismic brace invent");
+}
+if (
+  pBlind179 &&
+  (!pBlind179.mustSay?.includes("yazılı teklif") ||
+    !pBlind179.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind179.mustSay?.includes("sabit seismic brace yok"))
+) {
+  errors.push("blind prompt #179 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit seismic brace yok");
+}
+
+const pBlind180 = PROMPTS.find((x) => x.id === 180);
+if (!pBlind180 || !/AirMedia|kablosuz paylaşım/i.test(pBlind180.q)) {
+  errors.push("blind prompt #180 must cover sabit AirMedia invent");
+}
+if (
+  pBlind180 &&
+  (!pBlind180.mustSay?.includes("yazılı teklif") ||
+    !pBlind180.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind180.mustSay?.includes("sabit AirMedia yok"))
+) {
+  errors.push("blind prompt #180 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit AirMedia yok");
+}
+
+const pBlind181 = PROMPTS.find((x) => x.id === 181);
+if (!pBlind181 || !/chemical anchor|kimyasal dübel/i.test(pBlind181.q)) {
+  errors.push("blind prompt #181 must cover sabit chemical anchor invent");
+}
+if (
+  pBlind181 &&
+  (!pBlind181.mustSay?.includes("yazılı teklif") ||
+    !pBlind181.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind181.mustSay?.includes("sabit chemical anchor yok"))
+) {
+  errors.push("blind prompt #181 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chemical anchor yok");
+}
+
+const pBlind182 = PROMPTS.find((x) => x.id === 182);
+if (!pBlind182 || !/Solstice|kablosuz collab/i.test(pBlind182.q)) {
+  errors.push("blind prompt #182 must cover sabit Solstice invent");
+}
+if (
+  pBlind182 &&
+  (!pBlind182.mustSay?.includes("yazılı teklif") ||
+    !pBlind182.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind182.mustSay?.includes("sabit Solstice yok"))
+) {
+  errors.push("blind prompt #182 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Solstice yok");
+}
+
+const pBlind183 = PROMPTS.find((x) => x.id === 183);
+if (!pBlind183 || !/counter flashing|karşı flaşör/i.test(pBlind183.q)) {
+  errors.push("blind prompt #183 must cover sabit counter flashing invent");
+}
+if (
+  pBlind183 &&
+  (!pBlind183.mustSay?.includes("yazılı teklif") ||
+    !pBlind183.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind183.mustSay?.includes("sabit counter flashing yok"))
+) {
+  errors.push("blind prompt #183 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit counter flashing yok");
+}
+
+const pBlind184 = PROMPTS.find((x) => x.id === 184);
+if (!pBlind184 || !/Google Meet|soft conferencing/i.test(pBlind184.q)) {
+  errors.push("blind prompt #184 must cover sabit Google Meet invent");
+}
+if (
+  pBlind184 &&
+  (!pBlind184.mustSay?.includes("yazılı teklif") ||
+    !pBlind184.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind184.mustSay?.includes("sabit Google Meet yok"))
+) {
+  errors.push("blind prompt #184 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Meet yok");
+}
+
+const pBlind185 = PROMPTS.find((x) => x.id === 185);
+if (!pBlind185 || !/neoprene gasket|neopren conta/i.test(pBlind185.q)) {
+  errors.push("blind prompt #185 must cover sabit neoprene gasket invent");
+}
+if (
+  pBlind185 &&
+  (!pBlind185.mustSay?.includes("yazılı teklif") ||
+    !pBlind185.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind185.mustSay?.includes("sabit neoprene gasket yok"))
+) {
+  errors.push("blind prompt #185 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit neoprene gasket yok");
+}
+
+const pBlind186 = PROMPTS.find((x) => x.id === 186);
+if (!pBlind186 || !/Yealink|UC endpoint/i.test(pBlind186.q)) {
+  errors.push("blind prompt #186 must cover sabit Yealink invent");
+}
+if (
+  pBlind186 &&
+  (!pBlind186.mustSay?.includes("yazılı teklif") ||
+    !pBlind186.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind186.mustSay?.includes("sabit Yealink yok"))
+) {
+  errors.push("blind prompt #186 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Yealink yok");
+}
+
+const pBlind187 = PROMPTS.find((x) => x.id === 187);
+if (!pBlind187 || !/frost heave|don kabarması/i.test(pBlind187.q)) {
+  errors.push("blind prompt #187 must cover sabit frost heave invent");
+}
+if (
+  pBlind187 &&
+  (!pBlind187.mustSay?.includes("yazılı teklif") ||
+    !pBlind187.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind187.mustSay?.includes("sabit frost heave yok"))
+) {
+  errors.push("blind prompt #187 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit frost heave yok");
+}
+
+const pBlind188 = PROMPTS.find((x) => x.id === 188);
+if (!pBlind188 || !/Logitech Rally|kamera bar/i.test(pBlind188.q)) {
+  errors.push("blind prompt #188 must cover sabit Logitech Rally invent");
+}
+if (
+  pBlind188 &&
+  (!pBlind188.mustSay?.includes("yazılı teklif") ||
+    !pBlind188.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind188.mustSay?.includes("sabit Logitech Rally yok"))
+) {
+  errors.push("blind prompt #188 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Rally yok");
+}
+
+const pBlind189 = PROMPTS.find((x) => x.id === 189);
+if (!pBlind189 || !/insect screen|böcek filesi/i.test(pBlind189.q)) {
+  errors.push("blind prompt #189 must cover sabit insect screen invent");
+}
+if (
+  pBlind189 &&
+  (!pBlind189.mustSay?.includes("yazılı teklif") ||
+    !pBlind189.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind189.mustSay?.includes("sabit insect screen yok"))
+) {
+  errors.push("blind prompt #189 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit insect screen yok");
+}
+
+const pBlind190 = PROMPTS.find((x) => x.id === 190);
+if (!pBlind190 || !/Neat Board|collab bar/i.test(pBlind190.q)) {
+  errors.push("blind prompt #190 must cover sabit Neat Board invent");
+}
+if (
+  pBlind190 &&
+  (!pBlind190.mustSay?.includes("yazılı teklif") ||
+    !pBlind190.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind190.mustSay?.includes("sabit Neat Board yok"))
+) {
+  errors.push("blind prompt #190 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Board yok");
+}
+
+const pBlind191 = PROMPTS.find((x) => x.id === 191);
+if (!pBlind191 || !/condensation drain|yoğuşma drenajı/i.test(pBlind191.q)) {
+  errors.push("blind prompt #191 must cover sabit condensation drain invent");
+}
+if (
+  pBlind191 &&
+  (!pBlind191.mustSay?.includes("yazılı teklif") ||
+    !pBlind191.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind191.mustSay?.includes("sabit condensation drain yok"))
+) {
+  errors.push("blind prompt #191 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit condensation drain yok");
+}
+
+const pBlind192 = PROMPTS.find((x) => x.id === 192);
+if (!pBlind192 || !/Polycom|Poly Studio/i.test(pBlind192.q)) {
+  errors.push("blind prompt #192 must cover sabit Polycom invent");
+}
+if (
+  pBlind192 &&
+  (!pBlind192.mustSay?.includes("yazılı teklif") ||
+    !pBlind192.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind192.mustSay?.includes("sabit Polycom yok"))
+) {
+  errors.push("blind prompt #192 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Polycom yok");
+}
+
+const pBlind193 = PROMPTS.find((x) => x.id === 193);
+if (!pBlind193 || !/vapor barrier|buhar bariyeri/i.test(pBlind193.q)) {
+  errors.push("blind prompt #193 must cover sabit vapor barrier invent");
+}
+if (
+  pBlind193 &&
+  (!pBlind193.mustSay?.includes("yazılı teklif") ||
+    !pBlind193.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind193.mustSay?.includes("sabit vapor barrier yok"))
+) {
+  errors.push("blind prompt #193 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit vapor barrier yok");
+}
+
+const pBlind194 = PROMPTS.find((x) => x.id === 194);
+if (!pBlind194 || !/Jabra|PanaCast/i.test(pBlind194.q)) {
+  errors.push("blind prompt #194 must cover sabit Jabra invent");
+}
+if (
+  pBlind194 &&
+  (!pBlind194.mustSay?.includes("yazılı teklif") ||
+    !pBlind194.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind194.mustSay?.includes("sabit Jabra yok"))
+) {
+  errors.push("blind prompt #194 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Jabra yok");
+}
+
+const pBlind195 = PROMPTS.find((x) => x.id === 195);
+if (!pBlind195 || !/scupper|scupper drenaj/i.test(pBlind195.q)) {
+  errors.push("blind prompt #195 must cover sabit scupper invent");
+}
+if (
+  pBlind195 &&
+  (!pBlind195.mustSay?.includes("yazılı teklif") ||
+    !pBlind195.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind195.mustSay?.includes("sabit scupper yok"))
+) {
+  errors.push("blind prompt #195 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit scupper yok");
+}
+
+const pBlind196 = PROMPTS.find((x) => x.id === 196);
+if (!pBlind196 || !/Meeting Owl|Owl Labs/i.test(pBlind196.q)) {
+  errors.push("blind prompt #196 must cover sabit Meeting Owl invent");
+}
+if (
+  pBlind196 &&
+  (!pBlind196.mustSay?.includes("yazılı teklif") ||
+    !pBlind196.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind196.mustSay?.includes("sabit Meeting Owl yok"))
+) {
+  errors.push("blind prompt #196 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Meeting Owl yok");
+}
+
+const pBlind197 = PROMPTS.find((x) => x.id === 197);
+if (!pBlind197 || !/parapet flashing|parapet flaşörü/i.test(pBlind197.q)) {
+  errors.push("blind prompt #197 must cover sabit parapet flashing invent");
+}
+if (
+  pBlind197 &&
+  (!pBlind197.mustSay?.includes("yazılı teklif") ||
+    !pBlind197.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind197.mustSay?.includes("sabit parapet flashing yok"))
+) {
+  errors.push("blind prompt #197 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet flashing yok");
+}
+
+const pBlind198 = PROMPTS.find((x) => x.id === 198);
+if (!pBlind198 || !/Huddly|kamera/i.test(pBlind198.q)) {
+  errors.push("blind prompt #198 must cover sabit Huddly invent");
+}
+if (
+  pBlind198 &&
+  (!pBlind198.mustSay?.includes("yazılı teklif") ||
+    !pBlind198.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind198.mustSay?.includes("sabit Huddly yok"))
+) {
+  errors.push("blind prompt #198 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Huddly yok");
+}
+
+const pBlind199 = PROMPTS.find((x) => x.id === 199);
+if (!pBlind199 || !/ice dam|buz bariyeri/i.test(pBlind199.q)) {
+  errors.push("blind prompt #199 must cover sabit ice dam invent");
+}
+if (
+  pBlind199 &&
+  (!pBlind199.mustSay?.includes("yazılı teklif") ||
+    !pBlind199.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind199.mustSay?.includes("sabit ice dam yok"))
+) {
+  errors.push("blind prompt #199 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ice dam yok");
+}
+
+const pBlind200 = PROMPTS.find((x) => x.id === 200);
+if (!pBlind200 || !/DTEN|all-in-one/i.test(pBlind200.q)) {
+  errors.push("blind prompt #200 must cover sabit DTEN invent");
+}
+if (
+  pBlind200 &&
+  (!pBlind200.mustSay?.includes("yazılı teklif") ||
+    !pBlind200.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind200.mustSay?.includes("sabit DTEN yok"))
+) {
+  errors.push("blind prompt #200 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit DTEN yok");
+}
+
+const pBlind201 = PROMPTS.find((x) => x.id === 201);
+if (!pBlind201 || !/downspout|yağmur inişi/i.test(pBlind201.q)) {
+  errors.push("blind prompt #201 must cover sabit downspout invent");
+}
+if (
+  pBlind201 &&
+  (!pBlind201.mustSay?.includes("yazılı teklif") ||
+    !pBlind201.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind201.mustSay?.includes("sabit downspout yok"))
+) {
+  errors.push("blind prompt #201 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit downspout yok");
+}
+
+const pBlind202 = PROMPTS.find((x) => x.id === 202);
+if (!pBlind202 || !/Maxhub|interactive panel/i.test(pBlind202.q)) {
+  errors.push("blind prompt #202 must cover sabit Maxhub invent");
+}
+if (
+  pBlind202 &&
+  (!pBlind202.mustSay?.includes("yazılı teklif") ||
+    !pBlind202.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind202.mustSay?.includes("sabit Maxhub yok"))
+) {
+  errors.push("blind prompt #202 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Maxhub yok");
+}
+
+const pBlind203 = PROMPTS.find((x) => x.id === 203);
+if (!pBlind203 || !/gutter|oluk/i.test(pBlind203.q)) {
+  errors.push("blind prompt #203 must cover sabit gutter invent");
+}
+if (
+  pBlind203 &&
+  (!pBlind203.mustSay?.includes("yazılı teklif") ||
+    !pBlind203.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind203.mustSay?.includes("sabit gutter yok"))
+) {
+  errors.push("blind prompt #203 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gutter yok");
+}
+
+const pBlind204 = PROMPTS.find((x) => x.id === 204);
+if (!pBlind204 || !/ClearOne|conferencing/i.test(pBlind204.q)) {
+  errors.push("blind prompt #204 must cover sabit ClearOne invent");
+}
+if (
+  pBlind204 &&
+  (!pBlind204.mustSay?.includes("yazılı teklif") ||
+    !pBlind204.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind204.mustSay?.includes("sabit ClearOne yok"))
+) {
+  errors.push("blind prompt #204 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ClearOne yok");
+}
+
+const pBlind205 = PROMPTS.find((x) => x.id === 205);
+if (!pBlind205 || !/ridge vent|mahya havalandırma/i.test(pBlind205.q)) {
+  errors.push("blind prompt #205 must cover sabit ridge vent invent");
+}
+if (
+  pBlind205 &&
+  (!pBlind205.mustSay?.includes("yazılı teklif") ||
+    !pBlind205.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind205.mustSay?.includes("sabit ridge vent yok"))
+) {
+  errors.push("blind prompt #205 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ridge vent yok");
+}
+
+const pBlind206 = PROMPTS.find((x) => x.id === 206);
+if (!pBlind206 || !/AVer|PTZ/i.test(pBlind206.q)) {
+  errors.push("blind prompt #206 must cover sabit AVer invent");
+}
+if (
+  pBlind206 &&
+  (!pBlind206.mustSay?.includes("yazılı teklif") ||
+    !pBlind206.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind206.mustSay?.includes("sabit AVer yok"))
+) {
+  errors.push("blind prompt #206 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit AVer yok");
+}
+
+const pBlind207 = PROMPTS.find((x) => x.id === 207);
+if (!pBlind207 || !/soffit vent|saçak havalandırma/i.test(pBlind207.q)) {
+  errors.push("blind prompt #207 must cover sabit soffit vent invent");
+}
+if (
+  pBlind207 &&
+  (!pBlind207.mustSay?.includes("yazılı teklif") ||
+    !pBlind207.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind207.mustSay?.includes("sabit soffit vent yok"))
+) {
+  errors.push("blind prompt #207 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit soffit vent yok");
+}
+
+const pBlind208 = PROMPTS.find((x) => x.id === 208);
+if (!pBlind208 || !/Nureva|microphone array/i.test(pBlind208.q)) {
+  errors.push("blind prompt #208 must cover sabit Nureva invent");
+}
+if (
+  pBlind208 &&
+  (!pBlind208.mustSay?.includes("yazılı teklif") ||
+    !pBlind208.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind208.mustSay?.includes("sabit Nureva yok"))
+) {
+  errors.push("blind prompt #208 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Nureva yok");
+}
+
+const pBlind209 = PROMPTS.find((x) => x.id === 209);
+if (!pBlind209 || !/cricket flashing|baca flaşı/i.test(pBlind209.q)) {
+  errors.push("blind prompt #209 must cover sabit cricket flashing invent");
+}
+if (
+  pBlind209 &&
+  (!pBlind209.mustSay?.includes("yazılı teklif") ||
+    !pBlind209.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind209.mustSay?.includes("sabit cricket flashing yok"))
+) {
+  errors.push("blind prompt #209 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cricket flashing yok");
+}
+
+const pBlind210 = PROMPTS.find((x) => x.id === 210);
+if (!pBlind210 || !/Sennheiser|ceiling mic/i.test(pBlind210.q)) {
+  errors.push("blind prompt #210 must cover sabit Sennheiser invent");
+}
+if (
+  pBlind210 &&
+  (!pBlind210.mustSay?.includes("yazılı teklif") ||
+    !pBlind210.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind210.mustSay?.includes("sabit Sennheiser yok"))
+) {
+  errors.push("blind prompt #210 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sennheiser yok");
+}
+
+const pBlind211 = PROMPTS.find((x) => x.id === 211);
+if (!pBlind211 || !/kick-out flashing|çıkış flaşı/i.test(pBlind211.q)) {
+  errors.push("blind prompt #211 must cover sabit kick-out flashing invent");
+}
+if (
+  pBlind211 &&
+  (!pBlind211.mustSay?.includes("yazılı teklif") ||
+    !pBlind211.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind211.mustSay?.includes("sabit kick-out flashing yok"))
+) {
+  errors.push("blind prompt #211 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kick-out flashing yok");
+}
+
+const pBlind212 = PROMPTS.find((x) => x.id === 212);
+if (!pBlind212 || !/Vaddio|PTZ camera/i.test(pBlind212.q)) {
+  errors.push("blind prompt #212 must cover sabit Vaddio invent");
+}
+if (
+  pBlind212 &&
+  (!pBlind212.mustSay?.includes("yazılı teklif") ||
+    !pBlind212.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind212.mustSay?.includes("sabit Vaddio yok"))
+) {
+  errors.push("blind prompt #212 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vaddio yok");
+}
+
+const pBlind213 = PROMPTS.find((x) => x.id === 213);
+if (!pBlind213 || !/valley flashing|vadi flaşı/i.test(pBlind213.q)) {
+  errors.push("blind prompt #213 must cover sabit valley flashing invent");
+}
+if (
+  pBlind213 &&
+  (!pBlind213.mustSay?.includes("yazılı teklif") ||
+    !pBlind213.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind213.mustSay?.includes("sabit valley flashing yok"))
+) {
+  errors.push("blind prompt #213 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley flashing yok");
+}
+
+const pBlind214 = PROMPTS.find((x) => x.id === 214);
+if (!pBlind214 || !/Lifesize|video room/i.test(pBlind214.q)) {
+  errors.push("blind prompt #214 must cover sabit Lifesize invent");
+}
+if (
+  pBlind214 &&
+  (!pBlind214.mustSay?.includes("yazılı teklif") ||
+    !pBlind214.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind214.mustSay?.includes("sabit Lifesize yok"))
+) {
+  errors.push("blind prompt #214 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Lifesize yok");
+}
+
+const pBlind215 = PROMPTS.find((x) => x.id === 215);
+if (!pBlind215 || !/step flashing|basamak flaş/i.test(pBlind215.q)) {
+  errors.push("blind prompt #215 must cover sabit step flashing invent");
+}
+if (
+  pBlind215 &&
+  (!pBlind215.mustSay?.includes("yazılı teklif") ||
+    !pBlind215.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind215.mustSay?.includes("sabit step flashing yok"))
+) {
+  errors.push("blind prompt #215 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit step flashing yok");
+}
+
+const pBlind216 = PROMPTS.find((x) => x.id === 216);
+if (!pBlind216 || !/Bose|soundbar/i.test(pBlind216.q)) {
+  errors.push("blind prompt #216 must cover sabit Bose invent");
+}
+if (
+  pBlind216 &&
+  (!pBlind216.mustSay?.includes("yazılı teklif") ||
+    !pBlind216.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind216.mustSay?.includes("sabit Bose yok"))
+) {
+  errors.push("blind prompt #216 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Bose yok");
+}
+
+const pBlind217 = PROMPTS.find((x) => x.id === 217);
+if (!pBlind217 || !/apron flashing|etek flaş/i.test(pBlind217.q)) {
+  errors.push("blind prompt #217 must cover sabit apron flashing invent");
+}
+if (
+  pBlind217 &&
+  (!pBlind217.mustSay?.includes("yazılı teklif") ||
+    !pBlind217.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind217.mustSay?.includes("sabit apron flashing yok"))
+) {
+  errors.push("blind prompt #217 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit apron flashing yok");
+}
+
+const pBlind218 = PROMPTS.find((x) => x.id === 218);
+if (!pBlind218 || !/BirdDog|NDI PTZ/i.test(pBlind218.q)) {
+  errors.push("blind prompt #218 must cover sabit BirdDog invent");
+}
+if (
+  pBlind218 &&
+  (!pBlind218.mustSay?.includes("yazılı teklif") ||
+    !pBlind218.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind218.mustSay?.includes("sabit BirdDog yok"))
+) {
+  errors.push("blind prompt #218 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BirdDog yok");
+}
+
+const pBlind219 = PROMPTS.find((x) => x.id === 219);
+if (!pBlind219 || !/chimney flashing|baca flaşı/i.test(pBlind219.q)) {
+  errors.push("blind prompt #219 must cover sabit chimney flashing invent");
+}
+if (
+  pBlind219 &&
+  (!pBlind219.mustSay?.includes("yazılı teklif") ||
+    !pBlind219.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind219.mustSay?.includes("sabit chimney flashing yok"))
+) {
+  errors.push("blind prompt #219 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chimney flashing yok");
+}
+
+const pBlind220 = PROMPTS.find((x) => x.id === 220);
+if (!pBlind220 || !/Pexip|conference platform/i.test(pBlind220.q)) {
+  errors.push("blind prompt #220 must cover sabit Pexip invent");
+}
+if (
+  pBlind220 &&
+  (!pBlind220.mustSay?.includes("yazılı teklif") ||
+    !pBlind220.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind220.mustSay?.includes("sabit Pexip yok"))
+) {
+  errors.push("blind prompt #220 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Pexip yok");
+}
+
+const pBlind221 = PROMPTS.find((x) => x.id === 221);
+if (!pBlind221 || !/hip flashing|kalça flaş/i.test(pBlind221.q)) {
+  errors.push("blind prompt #221 must cover sabit hip flashing invent");
+}
+if (
+  pBlind221 &&
+  (!pBlind221.mustSay?.includes("yazılı teklif") ||
+    !pBlind221.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind221.mustSay?.includes("sabit hip flashing yok"))
+) {
+  errors.push("blind prompt #221 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip flashing yok");
+}
+
+const pBlind222 = PROMPTS.find((x) => x.id === 222);
+if (!pBlind222 || !/Lumens|PTZ camera/i.test(pBlind222.q)) {
+  errors.push("blind prompt #222 must cover sabit Lumens invent");
+}
+if (
+  pBlind222 &&
+  (!pBlind222.mustSay?.includes("yazılı teklif") ||
+    !pBlind222.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind222.mustSay?.includes("sabit Lumens yok"))
+) {
+  errors.push("blind prompt #222 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Lumens yok");
+}
+
+const pBlind223 = PROMPTS.find((x) => x.id === 223);
+if (!pBlind223 || !/rake flashing|saçak flaş/i.test(pBlind223.q)) {
+  errors.push("blind prompt #223 must cover sabit rake flashing invent");
+}
+if (
+  pBlind223 &&
+  (!pBlind223.mustSay?.includes("yazılı teklif") ||
+    !pBlind223.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind223.mustSay?.includes("sabit rake flashing yok"))
+) {
+  errors.push("blind prompt #223 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit rake flashing yok");
+}
+
+const pBlind224 = PROMPTS.find((x) => x.id === 224);
+if (!pBlind224 || !/PTZOptics|USB PTZ/i.test(pBlind224.q)) {
+  errors.push("blind prompt #224 must cover sabit PTZOptics invent");
+}
+if (
+  pBlind224 &&
+  (!pBlind224.mustSay?.includes("yazılı teklif") ||
+    !pBlind224.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind224.mustSay?.includes("sabit PTZOptics yok"))
+) {
+  errors.push("blind prompt #224 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit PTZOptics yok");
+}
+
+const pBlind225 = PROMPTS.find((x) => x.id === 225);
+if (!pBlind225 || !/fascia flashing|fascia flaş/i.test(pBlind225.q)) {
+  errors.push("blind prompt #225 must cover sabit fascia flashing invent");
+}
+if (
+  pBlind225 &&
+  (!pBlind225.mustSay?.includes("yazılı teklif") ||
+    !pBlind225.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind225.mustSay?.includes("sabit fascia flashing yok"))
+) {
+  errors.push("blind prompt #225 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia flashing yok");
+}
+
+const pBlind226 = PROMPTS.find((x) => x.id === 226);
+if (!pBlind226 || !/Obsbot|AI camera/i.test(pBlind226.q)) {
+  errors.push("blind prompt #226 must cover sabit Obsbot invent");
+}
+if (
+  pBlind226 &&
+  (!pBlind226.mustSay?.includes("yazılı teklif") ||
+    !pBlind226.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind226.mustSay?.includes("sabit Obsbot yok"))
+) {
+  errors.push("blind prompt #226 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Obsbot yok");
+}
+
+const pBlind227 = PROMPTS.find((x) => x.id === 227);
+if (!pBlind227 || !/head flashing|başlık flaş/i.test(pBlind227.q)) {
+  errors.push("blind prompt #227 must cover sabit head flashing invent");
+}
+if (
+  pBlind227 &&
+  (!pBlind227.mustSay?.includes("yazılı teklif") ||
+    !pBlind227.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind227.mustSay?.includes("sabit head flashing yok"))
+) {
+  errors.push("blind prompt #227 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit head flashing yok");
+}
+
+const pBlind228 = PROMPTS.find((x) => x.id === 228);
+if (!pBlind228 || !/Barco|projector/i.test(pBlind228.q)) {
+  errors.push("blind prompt #228 must cover sabit Barco invent");
+}
+if (
+  pBlind228 &&
+  (!pBlind228.mustSay?.includes("yazılı teklif") ||
+    !pBlind228.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind228.mustSay?.includes("sabit Barco yok"))
+) {
+  errors.push("blind prompt #228 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Barco yok");
+}
+
+const pBlind229 = PROMPTS.find((x) => x.id === 229);
+if (!pBlind229 || !/jamb flashing|jamb flaş/i.test(pBlind229.q)) {
+  errors.push("blind prompt #229 must cover sabit jamb flashing invent");
+}
+if (
+  pBlind229 &&
+  (!pBlind229.mustSay?.includes("yazılı teklif") ||
+    !pBlind229.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind229.mustSay?.includes("sabit jamb flashing yok"))
+) {
+  errors.push("blind prompt #229 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit jamb flashing yok");
+}
+
+const pBlind230 = PROMPTS.find((x) => x.id === 230);
+if (!pBlind230 || !/Christie|laser projector/i.test(pBlind230.q)) {
+  errors.push("blind prompt #230 must cover sabit Christie invent");
+}
+if (
+  pBlind230 &&
+  (!pBlind230.mustSay?.includes("yazılı teklif") ||
+    !pBlind230.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind230.mustSay?.includes("sabit Christie yok"))
+) {
+  errors.push("blind prompt #230 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Christie yok");
+}
+
+const pBlind231 = PROMPTS.find((x) => x.id === 231);
+if (!pBlind231 || !/threshold flashing|eşik flaş/i.test(pBlind231.q)) {
+  errors.push("blind prompt #231 must cover sabit threshold flashing invent");
+}
+if (
+  pBlind231 &&
+  (!pBlind231.mustSay?.includes("yazılı teklif") ||
+    !pBlind231.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind231.mustSay?.includes("sabit threshold flashing yok"))
+) {
+  errors.push("blind prompt #231 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit threshold flashing yok");
+}
+
+const pBlind232 = PROMPTS.find((x) => x.id === 232);
+if (!pBlind232 || !/Epson|LCD projector/i.test(pBlind232.q)) {
+  errors.push("blind prompt #232 must cover sabit Epson invent");
+}
+if (
+  pBlind232 &&
+  (!pBlind232.mustSay?.includes("yazılı teklif") ||
+    !pBlind232.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind232.mustSay?.includes("sabit Epson yok"))
+) {
+  errors.push("blind prompt #232 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Epson yok");
+}
+
+const pBlind233 = PROMPTS.find((x) => x.id === 233);
+if (!pBlind233 || !/gravel stop|çakıl stoper/i.test(pBlind233.q)) {
+  errors.push("blind prompt #233 must cover sabit gravel stop invent");
+}
+if (
+  pBlind233 &&
+  (!pBlind233.mustSay?.includes("yazılı teklif") ||
+    !pBlind233.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind233.mustSay?.includes("sabit gravel stop yok"))
+) {
+  errors.push("blind prompt #233 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gravel stop yok");
+}
+
+const pBlind234 = PROMPTS.find((x) => x.id === 234);
+if (!pBlind234 || !/NEC|display wall/i.test(pBlind234.q)) {
+  errors.push("blind prompt #234 must cover sabit NEC invent");
+}
+if (
+  pBlind234 &&
+  (!pBlind234.mustSay?.includes("yazılı teklif") ||
+    !pBlind234.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind234.mustSay?.includes("sabit NEC yok"))
+) {
+  errors.push("blind prompt #234 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit NEC yok");
+}
+
+const pBlind235 = PROMPTS.find((x) => x.id === 235);
+if (!pBlind235 || !/cant strip|eğimli şerit/i.test(pBlind235.q)) {
+  errors.push("blind prompt #235 must cover sabit cant strip invent");
+}
+if (
+  pBlind235 &&
+  (!pBlind235.mustSay?.includes("yazılı teklif") ||
+    !pBlind235.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind235.mustSay?.includes("sabit cant strip yok"))
+) {
+  errors.push("blind prompt #235 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cant strip yok");
+}
+
+const pBlind236 = PROMPTS.find((x) => x.id === 236);
+if (!pBlind236 || !/Panasonic|pro display/i.test(pBlind236.q)) {
+  errors.push("blind prompt #236 must cover sabit Panasonic invent");
+}
+if (
+  pBlind236 &&
+  (!pBlind236.mustSay?.includes("yazılı teklif") ||
+    !pBlind236.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind236.mustSay?.includes("sabit Panasonic yok"))
+) {
+  errors.push("blind prompt #236 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Panasonic yok");
+}
+
+const pBlind237 = PROMPTS.find((x) => x.id === 237);
+if (!pBlind237 || !/reglet|reglet flaş/i.test(pBlind237.q)) {
+  errors.push("blind prompt #237 must cover sabit reglet invent");
+}
+if (
+  pBlind237 &&
+  (!pBlind237.mustSay?.includes("yazılı teklif") ||
+    !pBlind237.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind237.mustSay?.includes("sabit reglet yok"))
+) {
+  errors.push("blind prompt #237 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit reglet yok");
+}
+
+const pBlind238 = PROMPTS.find((x) => x.id === 238);
+if (!pBlind238 || !/Optoma|DLP projector/i.test(pBlind238.q)) {
+  errors.push("blind prompt #238 must cover sabit Optoma invent");
+}
+if (
+  pBlind238 &&
+  (!pBlind238.mustSay?.includes("yazılı teklif") ||
+    !pBlind238.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind238.mustSay?.includes("sabit Optoma yok"))
+) {
+  errors.push("blind prompt #238 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma yok");
+}
+
+const pBlind239 = PROMPTS.find((x) => x.id === 239);
+if (!pBlind239 || !/termination bar|bitiş çubuğu/i.test(pBlind239.q)) {
+  errors.push("blind prompt #239 must cover sabit termination bar invent");
+}
+if (
+  pBlind239 &&
+  (!pBlind239.mustSay?.includes("yazılı teklif") ||
+    !pBlind239.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind239.mustSay?.includes("sabit termination bar yok"))
+) {
+  errors.push("blind prompt #239 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit termination bar yok");
+}
+
+const pBlind240 = PROMPTS.find((x) => x.id === 240);
+if (!pBlind240 || !/BenQ|interactive display/i.test(pBlind240.q)) {
+  errors.push("blind prompt #240 must cover sabit BenQ invent");
+}
+if (
+  pBlind240 &&
+  (!pBlind240.mustSay?.includes("yazılı teklif") ||
+    !pBlind240.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind240.mustSay?.includes("sabit BenQ yok"))
+) {
+  errors.push("blind prompt #240 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BenQ yok");
+}
+
+const pBlind241 = PROMPTS.find((x) => x.id === 241);
+if (!pBlind241 || !/through-wall flashing|duvar geçiş flaşı/i.test(pBlind241.q)) {
+  errors.push("blind prompt #241 must cover sabit through-wall flashing invent");
+}
+if (
+  pBlind241 &&
+  (!pBlind241.mustSay?.includes("yazılı teklif") ||
+    !pBlind241.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind241.mustSay?.includes("sabit through-wall flashing yok"))
+) {
+  errors.push("blind prompt #241 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit through-wall flashing yok");
+}
+
+const pBlind242 = PROMPTS.find((x) => x.id === 242);
+if (!pBlind242 || !/Sony|BRAVIA display/i.test(pBlind242.q)) {
+  errors.push("blind prompt #242 must cover sabit Sony invent");
+}
+if (
+  pBlind242 &&
+  (!pBlind242.mustSay?.includes("yazılı teklif") ||
+    !pBlind242.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind242.mustSay?.includes("sabit Sony yok"))
+) {
+  errors.push("blind prompt #242 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sony yok");
+}
+
+const pBlind243 = PROMPTS.find((x) => x.id === 243);
+if (!pBlind243 || !/coping|parapet kapak/i.test(pBlind243.q)) {
+  errors.push("blind prompt #243 must cover sabit coping invent");
+}
+if (
+  pBlind243 &&
+  (!pBlind243.mustSay?.includes("yazılı teklif") ||
+    !pBlind243.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind243.mustSay?.includes("sabit coping yok"))
+) {
+  errors.push("blind prompt #243 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit coping yok");
+}
+
+const pBlind244 = PROMPTS.find((x) => x.id === 244);
+if (!pBlind244 || !/Airtame|wireless share/i.test(pBlind244.q)) {
+  errors.push("blind prompt #244 must cover sabit Airtame invent");
+}
+if (
+  pBlind244 &&
+  (!pBlind244.mustSay?.includes("yazılı teklif") ||
+    !pBlind244.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind244.mustSay?.includes("sabit Airtame yok"))
+) {
+  errors.push("blind prompt #244 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Airtame yok");
+}
+
+const pBlind245 = PROMPTS.find((x) => x.id === 245);
+if (!pBlind245 || !/base flashing|temel flaş/i.test(pBlind245.q)) {
+  errors.push("blind prompt #245 must cover sabit base flashing invent");
+}
+if (
+  pBlind245 &&
+  (!pBlind245.mustSay?.includes("yazılı teklif") ||
+    !pBlind245.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind245.mustSay?.includes("sabit base flashing yok"))
+) {
+  errors.push("blind prompt #245 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base flashing yok");
+}
+
+const pBlind246 = PROMPTS.find((x) => x.id === 246);
+if (!pBlind246 || !/Mersive|Solstice Pod/i.test(pBlind246.q)) {
+  errors.push("blind prompt #246 must cover sabit Mersive invent");
+}
+if (
+  pBlind246 &&
+  (!pBlind246.mustSay?.includes("yazılı teklif") ||
+    !pBlind246.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind246.mustSay?.includes("sabit Mersive yok"))
+) {
+  errors.push("blind prompt #246 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Mersive yok");
+}
+
+const pBlind247 = PROMPTS.find((x) => x.id === 247);
+if (!pBlind247 || !/cleat|kleyt/i.test(pBlind247.q)) {
+  errors.push("blind prompt #247 must cover sabit cleat invent");
+}
+if (
+  pBlind247 &&
+  (!pBlind247.mustSay?.includes("yazılı teklif") ||
+    !pBlind247.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind247.mustSay?.includes("sabit cleat yok"))
+) {
+  errors.push("blind prompt #247 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cleat yok");
+}
+
+const pBlind248 = PROMPTS.find((x) => x.id === 248);
+if (!pBlind248 || !/Vivitek|installation projector/i.test(pBlind248.q)) {
+  errors.push("blind prompt #248 must cover sabit Vivitek invent");
+}
+if (
+  pBlind248 &&
+  (!pBlind248.mustSay?.includes("yazılı teklif") ||
+    !pBlind248.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind248.mustSay?.includes("sabit Vivitek yok"))
+) {
+  errors.push("blind prompt #248 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vivitek yok");
+}
+
+const pBlind249 = PROMPTS.find((x) => x.id === 249);
+if (!pBlind249 || !/surface cleat|yüzey kleyt/i.test(pBlind249.q)) {
+  errors.push("blind prompt #249 must cover sabit surface cleat invent");
+}
+if (
+  pBlind249 &&
+  (!pBlind249.mustSay?.includes("yazılı teklif") ||
+    !pBlind249.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind249.mustSay?.includes("sabit surface cleat yok"))
+) {
+  errors.push("blind prompt #249 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit surface cleat yok");
+}
+
+const pBlind250 = PROMPTS.find((x) => x.id === 250);
+if (!pBlind250 || !/Promethean|ActivPanel/i.test(pBlind250.q)) {
+  errors.push("blind prompt #250 must cover sabit Promethean invent");
+}
+if (
+  pBlind250 &&
+  (!pBlind250.mustSay?.includes("yazılı teklif") ||
+    !pBlind250.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind250.mustSay?.includes("sabit Promethean yok"))
+) {
+  errors.push("blind prompt #250 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Promethean yok");
+}
+
+const pBlind251 = PROMPTS.find((x) => x.id === 251);
+if (!pBlind251 || !/continuous cleat|sürekli kleyt/i.test(pBlind251.q)) {
+  errors.push("blind prompt #251 must cover sabit continuous cleat invent");
+}
+if (
+  pBlind251 &&
+  (!pBlind251.mustSay?.includes("yazılı teklif") ||
+    !pBlind251.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind251.mustSay?.includes("sabit continuous cleat yok"))
+) {
+  errors.push("blind prompt #251 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit continuous cleat yok");
+}
+
+const pBlind252 = PROMPTS.find((x) => x.id === 252);
+if (!pBlind252 || !/Newline|IFP display/i.test(pBlind252.q)) {
+  errors.push("blind prompt #252 must cover sabit Newline invent");
+}
+if (
+  pBlind252 &&
+  (!pBlind252.mustSay?.includes("yazılı teklif") ||
+    !pBlind252.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind252.mustSay?.includes("sabit Newline yok"))
+) {
+  errors.push("blind prompt #252 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline yok");
+}
+
+const pBlind253 = PROMPTS.find((x) => x.id === 253);
+if (!pBlind253 || !/through-wall cleat|duvar geçiş kleyt/i.test(pBlind253.q)) {
+  errors.push("blind prompt #253 must cover sabit through-wall cleat invent");
+}
+if (
+  pBlind253 &&
+  (!pBlind253.mustSay?.includes("yazılı teklif") ||
+    !pBlind253.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind253.mustSay?.includes("sabit through-wall cleat yok"))
+) {
+  errors.push("blind prompt #253 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit through-wall cleat yok");
+}
+
+const pBlind254 = PROMPTS.find((x) => x.id === 254);
+if (!pBlind254 || !/ViewSonic|interactive display/i.test(pBlind254.q)) {
+  errors.push("blind prompt #254 must cover sabit ViewSonic invent");
+}
+if (
+  pBlind254 &&
+  (!pBlind254.mustSay?.includes("yazılı teklif") ||
+    !pBlind254.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind254.mustSay?.includes("sabit ViewSonic yok"))
+) {
+  errors.push("blind prompt #254 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ViewSonic yok");
+}
+
+const pBlind255 = PROMPTS.find((x) => x.id === 255);
+if (!pBlind255 || !/concealed cleat|gizli kleyt/i.test(pBlind255.q)) {
+  errors.push("blind prompt #255 must cover sabit concealed cleat invent");
+}
+if (
+  pBlind255 &&
+  (!pBlind255.mustSay?.includes("yazılı teklif") ||
+    !pBlind255.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind255.mustSay?.includes("sabit concealed cleat yok"))
+) {
+  errors.push("blind prompt #255 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit concealed cleat yok");
+}
+
+const pBlind256 = PROMPTS.find((x) => x.id === 256);
+if (!pBlind256 || !/Clevertouch|interactive display/i.test(pBlind256.q)) {
+  errors.push("blind prompt #256 must cover sabit Clevertouch invent");
+}
+if (
+  pBlind256 &&
+  (!pBlind256.mustSay?.includes("yazılı teklif") ||
+    !pBlind256.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind256.mustSay?.includes("sabit Clevertouch yok"))
+) {
+  errors.push("blind prompt #256 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Clevertouch yok");
+}
+
+const pBlind257 = PROMPTS.find((x) => x.id === 257);
+if (!pBlind257 || !/interlocking cleat|kenetli kleyt/i.test(pBlind257.q)) {
+  errors.push("blind prompt #257 must cover sabit interlocking cleat invent");
+}
+if (
+  pBlind257 &&
+  (!pBlind257.mustSay?.includes("yazılı teklif") ||
+    !pBlind257.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind257.mustSay?.includes("sabit interlocking cleat yok"))
+) {
+  errors.push("blind prompt #257 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit interlocking cleat yok");
+}
+
+const pBlind258 = PROMPTS.find((x) => x.id === 258);
+if (!pBlind258 || !/Sharp|AQUOS board/i.test(pBlind258.q)) {
+  errors.push("blind prompt #258 must cover sabit Sharp invent");
+}
+if (
+  pBlind258 &&
+  (!pBlind258.mustSay?.includes("yazılı teklif") ||
+    !pBlind258.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind258.mustSay?.includes("sabit Sharp yok"))
+) {
+  errors.push("blind prompt #258 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sharp yok");
+}
+
+const pBlind259 = PROMPTS.find((x) => x.id === 259);
+if (!pBlind259 || !/snap cleat|snap kleyt/i.test(pBlind259.q)) {
+  errors.push("blind prompt #259 must cover sabit snap cleat invent");
+}
+if (
+  pBlind259 &&
+  (!pBlind259.mustSay?.includes("yazılı teklif") ||
+    !pBlind259.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind259.mustSay?.includes("sabit snap cleat yok"))
+) {
+  errors.push("blind prompt #259 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit snap cleat yok");
+}
+
+const pBlind260 = PROMPTS.find((x) => x.id === 260);
+if (!pBlind260 || !/Boxlight|MimioBoard/i.test(pBlind260.q)) {
+  errors.push("blind prompt #260 must cover sabit Boxlight invent");
+}
+if (
+  pBlind260 &&
+  (!pBlind260.mustSay?.includes("yazılı teklif") ||
+    !pBlind260.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind260.mustSay?.includes("sabit Boxlight yok"))
+) {
+  errors.push("blind prompt #260 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Boxlight yok");
+}
+
+const pBlind261 = PROMPTS.find((x) => x.id === 261);
+if (!pBlind261 || !/extruded cleat|ekstrüzyon kleyt/i.test(pBlind261.q)) {
+  errors.push("blind prompt #261 must cover sabit extruded cleat invent");
+}
+if (
+  pBlind261 &&
+  (!pBlind261.mustSay?.includes("yazılı teklif") ||
+    !pBlind261.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind261.mustSay?.includes("sabit extruded cleat yok"))
+) {
+  errors.push("blind prompt #261 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit extruded cleat yok");
+}
+
+const pBlind262 = PROMPTS.find((x) => x.id === 262);
+if (!pBlind262 || !/Horion|interactive panel/i.test(pBlind262.q)) {
+  errors.push("blind prompt #262 must cover sabit Horion invent");
+}
+if (
+  pBlind262 &&
+  (!pBlind262.mustSay?.includes("yazılı teklif") ||
+    !pBlind262.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind262.mustSay?.includes("sabit Horion yok"))
+) {
+  errors.push("blind prompt #262 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Horion yok");
+}
+
+const pBlind263 = PROMPTS.find((x) => x.id === 263);
+if (!pBlind263 || !/standing seam cleat|standing seam kleyt/i.test(pBlind263.q)) {
+  errors.push("blind prompt #263 must cover sabit standing seam cleat invent");
+}
+if (
+  pBlind263 &&
+  (!pBlind263.mustSay?.includes("yazılı teklif") ||
+    !pBlind263.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind263.mustSay?.includes("sabit standing seam cleat yok"))
+) {
+  errors.push("blind prompt #263 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit standing seam cleat yok");
+}
+
+const pBlind264 = PROMPTS.find((x) => x.id === 264);
+if (!pBlind264 || !/Hisense|GoBoard/i.test(pBlind264.q)) {
+  errors.push("blind prompt #264 must cover sabit Hisense invent");
+}
+if (
+  pBlind264 &&
+  (!pBlind264.mustSay?.includes("yazılı teklif") ||
+    !pBlind264.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind264.mustSay?.includes("sabit Hisense yok"))
+) {
+  errors.push("blind prompt #264 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Hisense yok");
+}
+
+const pBlind265 = PROMPTS.find((x) => x.id === 265);
+if (!pBlind265 || !/hook cleat|kanca kleyt/i.test(pBlind265.q)) {
+  errors.push("blind prompt #265 must cover sabit hook cleat invent");
+}
+if (
+  pBlind265 &&
+  (!pBlind265.mustSay?.includes("yazılı teklif") ||
+    !pBlind265.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind265.mustSay?.includes("sabit hook cleat yok"))
+) {
+  errors.push("blind prompt #265 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hook cleat yok");
+}
+
+const pBlind266 = PROMPTS.find((x) => x.id === 266);
+if (!pBlind266 || !/i3TOUCH|interactive display/i.test(pBlind266.q)) {
+  errors.push("blind prompt #266 must cover sabit i3TOUCH invent");
+}
+if (
+  pBlind266 &&
+  (!pBlind266.mustSay?.includes("yazılı teklif") ||
+    !pBlind266.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind266.mustSay?.includes("sabit i3TOUCH yok"))
+) {
+  errors.push("blind prompt #266 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH yok");
+}
+
+const pBlind267 = PROMPTS.find((x) => x.id === 267);
+if (!pBlind267 || !/coping cleat|parapet kleyt/i.test(pBlind267.q)) {
+  errors.push("blind prompt #267 must cover sabit coping cleat invent");
+}
+if (
+  pBlind267 &&
+  (!pBlind267.mustSay?.includes("yazılı teklif") ||
+    !pBlind267.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind267.mustSay?.includes("sabit coping cleat yok"))
+) {
+  errors.push("blind prompt #267 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit coping cleat yok");
+}
+
+const pBlind268 = PROMPTS.find((x) => x.id === 268);
+if (!pBlind268 || !/Avocor|collaboration display/i.test(pBlind268.q)) {
+  errors.push("blind prompt #268 must cover sabit Avocor invent");
+}
+if (
+  pBlind268 &&
+  (!pBlind268.mustSay?.includes("yazılı teklif") ||
+    !pBlind268.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind268.mustSay?.includes("sabit Avocor yok"))
+) {
+  errors.push("blind prompt #268 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Avocor yok");
+}
+
+const pBlind269 = PROMPTS.find((x) => x.id === 269);
+if (!pBlind269 || !/rake cleat|saçak kleyt/i.test(pBlind269.q)) {
+  errors.push("blind prompt #269 must cover sabit rake cleat invent");
+}
+if (
+  pBlind269 &&
+  (!pBlind269.mustSay?.includes("yazılı teklif") ||
+    !pBlind269.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind269.mustSay?.includes("sabit rake cleat yok"))
+) {
+  errors.push("blind prompt #269 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit rake cleat yok");
+}
+
+const pBlind270 = PROMPTS.find((x) => x.id === 270);
+if (!pBlind270 || !/InFocus|Mondopad/i.test(pBlind270.q)) {
+  errors.push("blind prompt #270 must cover sabit InFocus invent");
+}
+if (
+  pBlind270 &&
+  (!pBlind270.mustSay?.includes("yazılı teklif") ||
+    !pBlind270.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind270.mustSay?.includes("sabit InFocus yok"))
+) {
+  errors.push("blind prompt #270 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit InFocus yok");
+}
+
+const pBlind271 = PROMPTS.find((x) => x.id === 271);
+if (!pBlind271 || !/fascia cleat|saçak altı kleyt/i.test(pBlind271.q)) {
+  errors.push("blind prompt #271 must cover sabit fascia cleat invent");
+}
+if (
+  pBlind271 &&
+  (!pBlind271.mustSay?.includes("yazılı teklif") ||
+    !pBlind271.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind271.mustSay?.includes("sabit fascia cleat yok"))
+) {
+  errors.push("blind prompt #271 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia cleat yok");
+}
+
+const pBlind272 = PROMPTS.find((x) => x.id === 272);
+if (!pBlind272 || !/Elo|touch display/i.test(pBlind272.q)) {
+  errors.push("blind prompt #272 must cover sabit Elo invent");
+}
+if (
+  pBlind272 &&
+  (!pBlind272.mustSay?.includes("yazılı teklif") ||
+    !pBlind272.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind272.mustSay?.includes("sabit Elo yok"))
+) {
+  errors.push("blind prompt #272 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Elo yok");
+}
+
+const pBlind273 = PROMPTS.find((x) => x.id === 273);
+if (!pBlind273 || !/ridge cleat|mahya kleyt/i.test(pBlind273.q)) {
+  errors.push("blind prompt #273 must cover sabit ridge cleat invent");
+}
+if (
+  pBlind273 &&
+  (!pBlind273.mustSay?.includes("yazılı teklif") ||
+    !pBlind273.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind273.mustSay?.includes("sabit ridge cleat yok"))
+) {
+  errors.push("blind prompt #273 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ridge cleat yok");
+}
+
+const pBlind274 = PROMPTS.find((x) => x.id === 274);
+if (!pBlind274 || !/Surface Hub|Microsoft Hub/i.test(pBlind274.q)) {
+  errors.push("blind prompt #274 must cover sabit Surface Hub invent");
+}
+if (
+  pBlind274 &&
+  (!pBlind274.mustSay?.includes("yazılı teklif") ||
+    !pBlind274.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind274.mustSay?.includes("sabit Surface Hub yok"))
+) {
+  errors.push("blind prompt #274 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Surface Hub yok");
+}
+
+const pBlind275 = PROMPTS.find((x) => x.id === 275);
+if (!pBlind275 || !/base cleat|taban kleyt/i.test(pBlind275.q)) {
+  errors.push("blind prompt #275 must cover sabit base cleat invent");
+}
+if (
+  pBlind275 &&
+  (!pBlind275.mustSay?.includes("yazılı teklif") ||
+    !pBlind275.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind275.mustSay?.includes("sabit base cleat yok"))
+) {
+  errors.push("blind prompt #275 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base cleat yok");
+}
+
+const pBlind276 = PROMPTS.find((x) => x.id === 276);
+if (!pBlind276 || !/Samsung Flip|flip board/i.test(pBlind276.q)) {
+  errors.push("blind prompt #276 must cover sabit Samsung Flip invent");
+}
+if (
+  pBlind276 &&
+  (!pBlind276.mustSay?.includes("yazılı teklif") ||
+    !pBlind276.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind276.mustSay?.includes("sabit Samsung Flip yok"))
+) {
+  errors.push("blind prompt #276 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Samsung Flip yok");
+}
+
+const pBlind277 = PROMPTS.find((x) => x.id === 277);
+if (!pBlind277 || !/drip cleat|damlalık kleyt/i.test(pBlind277.q)) {
+  errors.push("blind prompt #277 must cover sabit drip cleat invent");
+}
+if (
+  pBlind277 &&
+  (!pBlind277.mustSay?.includes("yazılı teklif") ||
+    !pBlind277.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind277.mustSay?.includes("sabit drip cleat yok"))
+) {
+  errors.push("blind prompt #277 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drip cleat yok");
+}
+
+const pBlind278 = PROMPTS.find((x) => x.id === 278);
+if (!pBlind278 || !/LG CreateBoard|CreateBoard/i.test(pBlind278.q)) {
+  errors.push("blind prompt #278 must cover sabit LG CreateBoard invent");
+}
+if (
+  pBlind278 &&
+  (!pBlind278.mustSay?.includes("yazılı teklif") ||
+    !pBlind278.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind278.mustSay?.includes("sabit LG CreateBoard yok"))
+) {
+  errors.push("blind prompt #278 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit LG CreateBoard yok");
+}
+
+const pBlind279 = PROMPTS.find((x) => x.id === 279);
+if (!pBlind279 || !/valley cleat|vadi kleyt/i.test(pBlind279.q)) {
+  errors.push("blind prompt #279 must cover sabit valley cleat invent");
+}
+if (
+  pBlind279 &&
+  (!pBlind279.mustSay?.includes("yazılı teklif") ||
+    !pBlind279.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind279.mustSay?.includes("sabit valley cleat yok"))
+) {
+  errors.push("blind prompt #279 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley cleat yok");
+}
+
+const pBlind280 = PROMPTS.find((x) => x.id === 280);
+if (!pBlind280 || !/SMART Board|interactive whiteboard/i.test(pBlind280.q)) {
+  errors.push("blind prompt #280 must cover sabit SMART Board invent");
+}
+if (
+  pBlind280 &&
+  (!pBlind280.mustSay?.includes("yazılı teklif") ||
+    !pBlind280.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind280.mustSay?.includes("sabit SMART Board yok"))
+) {
+  errors.push("blind prompt #280 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SMART Board yok");
+}
+
+const pBlind281 = PROMPTS.find((x) => x.id === 281);
+if (!pBlind281 || !/head cleat|başlık kleyt/i.test(pBlind281.q)) {
+  errors.push("blind prompt #281 must cover sabit head cleat invent");
+}
+if (
+  pBlind281 &&
+  (!pBlind281.mustSay?.includes("yazılı teklif") ||
+    !pBlind281.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind281.mustSay?.includes("sabit head cleat yok"))
+) {
+  errors.push("blind prompt #281 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit head cleat yok");
+}
+
+const pBlind282 = PROMPTS.find((x) => x.id === 282);
+if (!pBlind282 || !/Webex Board/i.test(pBlind282.q)) {
+  errors.push("blind prompt #282 must cover sabit Webex Board invent");
+}
+if (
+  pBlind282 &&
+  (!pBlind282.mustSay?.includes("yazılı teklif") ||
+    !pBlind282.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind282.mustSay?.includes("sabit Webex Board yok"))
+) {
+  errors.push("blind prompt #282 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Webex Board yok");
+}
+
+const pBlind283 = PROMPTS.find((x) => x.id === 283);
+if (!pBlind283 || !/sill cleat|eşik kleyt/i.test(pBlind283.q)) {
+  errors.push("blind prompt #283 must cover sabit sill cleat invent");
+}
+if (
+  pBlind283 &&
+  (!pBlind283.mustSay?.includes("yazılı teklif") ||
+    !pBlind283.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind283.mustSay?.includes("sabit sill cleat yok"))
+) {
+  errors.push("blind prompt #283 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sill cleat yok");
+}
+
+const pBlind284 = PROMPTS.find((x) => x.id === 284);
+if (!pBlind284 || !/HUAWEI IdeaHub|IdeaHub/i.test(pBlind284.q)) {
+  errors.push("blind prompt #284 must cover sabit HUAWEI IdeaHub invent");
+}
+if (
+  pBlind284 &&
+  (!pBlind284.mustSay?.includes("yazılı teklif") ||
+    !pBlind284.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind284.mustSay?.includes("sabit HUAWEI IdeaHub yok"))
+) {
+  errors.push("blind prompt #284 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HUAWEI IdeaHub yok");
+}
+
+const pBlind285 = PROMPTS.find((x) => x.id === 285);
+if (!pBlind285 || !/jamb cleat|jamb kleyt/i.test(pBlind285.q)) {
+  errors.push("blind prompt #285 must cover sabit jamb cleat invent");
+}
+if (
+  pBlind285 &&
+  (!pBlind285.mustSay?.includes("yazılı teklif") ||
+    !pBlind285.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind285.mustSay?.includes("sabit jamb cleat yok"))
+) {
+  errors.push("blind prompt #285 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit jamb cleat yok");
+}
+
+const pBlind286 = PROMPTS.find((x) => x.id === 286);
+if (!pBlind286 || !/Google Jamboard|Jamboard/i.test(pBlind286.q)) {
+  errors.push("blind prompt #286 must cover sabit Google Jamboard invent");
+}
+if (
+  pBlind286 &&
+  (!pBlind286.mustSay?.includes("yazılı teklif") ||
+    !pBlind286.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind286.mustSay?.includes("sabit Google Jamboard yok"))
+) {
+  errors.push("blind prompt #286 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Jamboard yok");
+}
+
+const pBlind287 = PROMPTS.find((x) => x.id === 287);
+if (!pBlind287 || !/apron cleat|etek kleyt/i.test(pBlind287.q)) {
+  errors.push("blind prompt #287 must cover sabit apron cleat invent");
+}
+if (
+  pBlind287 &&
+  (!pBlind287.mustSay?.includes("yazılı teklif") ||
+    !pBlind287.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind287.mustSay?.includes("sabit apron cleat yok"))
+) {
+  errors.push("blind prompt #287 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit apron cleat yok");
+}
+
+const pBlind288 = PROMPTS.find((x) => x.id === 288);
+if (!pBlind288 || !/Lenovo ThinkSmart|ThinkSmart/i.test(pBlind288.q)) {
+  errors.push("blind prompt #288 must cover sabit Lenovo ThinkSmart invent");
+}
+if (
+  pBlind288 &&
+  (!pBlind288.mustSay?.includes("yazılı teklif") ||
+    !pBlind288.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind288.mustSay?.includes("sabit Lenovo ThinkSmart yok"))
+) {
+  errors.push("blind prompt #288 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Lenovo ThinkSmart yok");
+}
+
+const pBlind289 = PROMPTS.find((x) => x.id === 289);
+if (!pBlind289 || !/step cleat|basamak kleyt/i.test(pBlind289.q)) {
+  errors.push("blind prompt #289 must cover sabit step cleat invent");
+}
+if (
+  pBlind289 &&
+  (!pBlind289.mustSay?.includes("yazılı teklif") ||
+    !pBlind289.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind289.mustSay?.includes("sabit step cleat yok"))
+) {
+  errors.push("blind prompt #289 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit step cleat yok");
+}
+
+const pBlind290 = PROMPTS.find((x) => x.id === 290);
+if (!pBlind290 || !/Vibe Board|Vibe/i.test(pBlind290.q)) {
+  errors.push("blind prompt #290 must cover sabit Vibe Board invent");
+}
+if (
+  pBlind290 &&
+  (!pBlind290.mustSay?.includes("yazılı teklif") ||
+    !pBlind290.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind290.mustSay?.includes("sabit Vibe Board yok"))
+) {
+  errors.push("blind prompt #290 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vibe Board yok");
+}
+
+const pBlind291 = PROMPTS.find((x) => x.id === 291);
+if (!pBlind291 || !/chimney cleat|baca kleyt/i.test(pBlind291.q)) {
+  errors.push("blind prompt #291 must cover sabit chimney cleat invent");
+}
+if (
+  pBlind291 &&
+  (!pBlind291.mustSay?.includes("yazılı teklif") ||
+    !pBlind291.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind291.mustSay?.includes("sabit chimney cleat yok"))
+) {
+  errors.push("blind prompt #291 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chimney cleat yok");
+}
+
+const pBlind292 = PROMPTS.find((x) => x.id === 292);
+if (!pBlind292 || !/Seewo|interactive flat panel/i.test(pBlind292.q)) {
+  errors.push("blind prompt #292 must cover sabit Seewo invent");
+}
+if (
+  pBlind292 &&
+  (!pBlind292.mustSay?.includes("yazılı teklif") ||
+    !pBlind292.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind292.mustSay?.includes("sabit Seewo yok"))
+) {
+  errors.push("blind prompt #292 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Seewo yok");
+}
+
+const pBlind293 = PROMPTS.find((x) => x.id === 293);
+if (!pBlind293 || !/hip cleat|mahya kleyt/i.test(pBlind293.q)) {
+  errors.push("blind prompt #293 must cover sabit hip cleat invent");
+}
+if (
+  pBlind293 &&
+  (!pBlind293.mustSay?.includes("yazılı teklif") ||
+    !pBlind293.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind293.mustSay?.includes("sabit hip cleat yok"))
+) {
+  errors.push("blind prompt #293 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip cleat yok");
+}
+
+const pBlind294 = PROMPTS.find((x) => x.id === 294);
+if (!pBlind294 || !/Dell Canvas|Canvas/i.test(pBlind294.q)) {
+  errors.push("blind prompt #294 must cover sabit Dell Canvas invent");
+}
+if (
+  pBlind294 &&
+  (!pBlind294.mustSay?.includes("yazılı teklif") ||
+    !pBlind294.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind294.mustSay?.includes("sabit Dell Canvas yok"))
+) {
+  errors.push("blind prompt #294 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Dell Canvas yok");
+}
+
+const pBlind295 = PROMPTS.find((x) => x.id === 295);
+if (!pBlind295 || !/threshold cleat|eşik kleyt/i.test(pBlind295.q)) {
+  errors.push("blind prompt #295 must cover sabit threshold cleat invent");
+}
+if (
+  pBlind295 &&
+  (!pBlind295.mustSay?.includes("yazılı teklif") ||
+    !pBlind295.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind295.mustSay?.includes("sabit threshold cleat yok"))
+) {
+  errors.push("blind prompt #295 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit threshold cleat yok");
+}
+
+const pBlind296 = PROMPTS.find((x) => x.id === 296);
+if (!pBlind296 || !/Cisco Board/i.test(pBlind296.q)) {
+  errors.push("blind prompt #296 must cover sabit Cisco Board invent");
+}
+if (
+  pBlind296 &&
+  (!pBlind296.mustSay?.includes("yazılı teklif") ||
+    !pBlind296.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind296.mustSay?.includes("sabit Cisco Board yok"))
+) {
+  errors.push("blind prompt #296 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Cisco Board yok");
+}
+
+const pBlind297 = PROMPTS.find((x) => x.id === 297);
+if (!pBlind297 || !/cant cleat|kant kleyt/i.test(pBlind297.q)) {
+  errors.push("blind prompt #297 must cover sabit cant cleat invent");
+}
+if (
+  pBlind297 &&
+  (!pBlind297.mustSay?.includes("yazılı teklif") ||
+    !pBlind297.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind297.mustSay?.includes("sabit cant cleat yok"))
+) {
+  errors.push("blind prompt #297 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cant cleat yok");
+}
+
+const pBlind298 = PROMPTS.find((x) => x.id === 298);
+if (!pBlind298 || !/Microsoft Teams Display|Teams Display/i.test(pBlind298.q)) {
+  errors.push("blind prompt #298 must cover sabit Microsoft Teams Display invent");
+}
+if (
+  pBlind298 &&
+  (!pBlind298.mustSay?.includes("yazılı teklif") ||
+    !pBlind298.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind298.mustSay?.includes("sabit Microsoft Teams Display yok"))
+) {
+  errors.push("blind prompt #298 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Microsoft Teams Display yok");
+}
+
+const pBlind299 = PROMPTS.find((x) => x.id === 299);
+if (!pBlind299 || !/reglet cleat|reglet kleyt/i.test(pBlind299.q)) {
+  errors.push("blind prompt #299 must cover sabit reglet cleat invent");
+}
+if (
+  pBlind299 &&
+  (!pBlind299.mustSay?.includes("yazılı teklif") ||
+    !pBlind299.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind299.mustSay?.includes("sabit reglet cleat yok"))
+) {
+  errors.push("blind prompt #299 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit reglet cleat yok");
+}
+
+const pBlind300 = PROMPTS.find((x) => x.id === 300);
+if (!pBlind300 || !/BenQ Board|BenQ IFP/i.test(pBlind300.q)) {
+  errors.push("blind prompt #300 must cover sabit BenQ Board invent");
+}
+if (
+  pBlind300 &&
+  (!pBlind300.mustSay?.includes("yazılı teklif") ||
+    !pBlind300.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind300.mustSay?.includes("sabit BenQ Board yok"))
+) {
+  errors.push("blind prompt #300 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BenQ Board yok");
+}
+
+const pBlind301 = PROMPTS.find((x) => x.id === 301);
+if (!pBlind301 || !/termination cleat|termination kleyt/i.test(pBlind301.q)) {
+  errors.push("blind prompt #301 must cover sabit termination cleat invent");
+}
+if (
+  pBlind301 &&
+  (!pBlind301.mustSay?.includes("yazılı teklif") ||
+    !pBlind301.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind301.mustSay?.includes("sabit termination cleat yok"))
+) {
+  errors.push("blind prompt #301 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit termination cleat yok");
+}
+
+const pBlind302 = PROMPTS.find((x) => x.id === 302);
+if (!pBlind302 || !/Zoom Rooms Display|Zoom Display/i.test(pBlind302.q)) {
+  errors.push("blind prompt #302 must cover sabit Zoom Rooms Display invent");
+}
+if (
+  pBlind302 &&
+  (!pBlind302.mustSay?.includes("yazılı teklif") ||
+    !pBlind302.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind302.mustSay?.includes("sabit Zoom Rooms Display yok"))
+) {
+  errors.push("blind prompt #302 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Zoom Rooms Display yok");
+}
+
+const pBlind303 = PROMPTS.find((x) => x.id === 303);
+if (!pBlind303 || !/counter cleat|counter kleyt/i.test(pBlind303.q)) {
+  errors.push("blind prompt #303 must cover sabit counter cleat invent");
+}
+if (
+  pBlind303 &&
+  (!pBlind303.mustSay?.includes("yazılı teklif") ||
+    !pBlind303.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind303.mustSay?.includes("sabit counter cleat yok"))
+) {
+  errors.push("blind prompt #303 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit counter cleat yok");
+}
+
+const pBlind304 = PROMPTS.find((x) => x.id === 304);
+if (!pBlind304 || !/Google Meet Series|Meet Series/i.test(pBlind304.q)) {
+  errors.push("blind prompt #304 must cover sabit Google Meet Series invent");
+}
+if (
+  pBlind304 &&
+  (!pBlind304.mustSay?.includes("yazılı teklif") ||
+    !pBlind304.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind304.mustSay?.includes("sabit Google Meet Series yok"))
+) {
+  errors.push("blind prompt #304 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Meet Series yok");
+}
+
+const pBlind305 = PROMPTS.find((x) => x.id === 305);
+if (!pBlind305 || !/kick-out cleat|kick-out kleyt/i.test(pBlind305.q)) {
+  errors.push("blind prompt #305 must cover sabit kick-out cleat invent");
+}
+if (
+  pBlind305 &&
+  (!pBlind305.mustSay?.includes("yazılı teklif") ||
+    !pBlind305.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind305.mustSay?.includes("sabit kick-out cleat yok"))
+) {
+  errors.push("blind prompt #305 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kick-out cleat yok");
+}
+
+const pBlind306 = PROMPTS.find((x) => x.id === 306);
+if (!pBlind306 || !/Ricoh Interactive|Ricoh IFP/i.test(pBlind306.q)) {
+  errors.push("blind prompt #306 must cover sabit Ricoh Interactive invent");
+}
+if (
+  pBlind306 &&
+  (!pBlind306.mustSay?.includes("yazılı teklif") ||
+    !pBlind306.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind306.mustSay?.includes("sabit Ricoh Interactive yok"))
+) {
+  errors.push("blind prompt #306 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Ricoh Interactive yok");
+}
+
+const pBlind307 = PROMPTS.find((x) => x.id === 307);
+if (!pBlind307 || !/cricket cleat|cricket kleyt/i.test(pBlind307.q)) {
+  errors.push("blind prompt #307 must cover sabit cricket cleat invent");
+}
+if (
+  pBlind307 &&
+  (!pBlind307.mustSay?.includes("yazılı teklif") ||
+    !pBlind307.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind307.mustSay?.includes("sabit cricket cleat yok"))
+) {
+  errors.push("blind prompt #307 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cricket cleat yok");
+}
+
+const pBlind308 = PROMPTS.find((x) => x.id === 308);
+if (!pBlind308 || !/Optoma Interactive|Optoma IFP/i.test(pBlind308.q)) {
+  errors.push("blind prompt #308 must cover sabit Optoma Interactive invent");
+}
+if (
+  pBlind308 &&
+  (!pBlind308.mustSay?.includes("yazılı teklif") ||
+    !pBlind308.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind308.mustSay?.includes("sabit Optoma Interactive yok"))
+) {
+  errors.push("blind prompt #308 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma Interactive yok");
+}
+
+const pBlind309 = PROMPTS.find((x) => x.id === 309);
+if (!pBlind309 || !/soffit cleat|soffit kleyt/i.test(pBlind309.q)) {
+  errors.push("blind prompt #309 must cover sabit soffit cleat invent");
+}
+if (
+  pBlind309 &&
+  (!pBlind309.mustSay?.includes("yazılı teklif") ||
+    !pBlind309.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind309.mustSay?.includes("sabit soffit cleat yok"))
+) {
+  errors.push("blind prompt #309 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit soffit cleat yok");
+}
+
+const pBlind310 = PROMPTS.find((x) => x.id === 310);
+if (!pBlind310 || !/Sharp AQUOS BOARD|Sharp AQUOS/i.test(pBlind310.q)) {
+  errors.push("blind prompt #310 must cover sabit Sharp AQUOS BOARD invent");
+}
+if (
+  pBlind310 &&
+  (!pBlind310.mustSay?.includes("yazılı teklif") ||
+    !pBlind310.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind310.mustSay?.includes("sabit Sharp AQUOS BOARD yok"))
+) {
+  errors.push("blind prompt #310 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sharp AQUOS BOARD yok");
+}
+
+const pBlind311 = PROMPTS.find((x) => x.id === 311);
+if (!pBlind311 || !/parapet cleat|parapet kleyt/i.test(pBlind311.q)) {
+  errors.push("blind prompt #311 must cover sabit parapet cleat invent");
+}
+if (
+  pBlind311 &&
+  (!pBlind311.mustSay?.includes("yazılı teklif") ||
+    !pBlind311.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind311.mustSay?.includes("sabit parapet cleat yok"))
+) {
+  errors.push("blind prompt #311 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet cleat yok");
+}
+
+const pBlind312 = PROMPTS.find((x) => x.id === 312);
+if (!pBlind312 || !/Newline LYRA|Newline Flex/i.test(pBlind312.q)) {
+  errors.push("blind prompt #312 must cover sabit Newline LYRA invent");
+}
+if (
+  pBlind312 &&
+  (!pBlind312.mustSay?.includes("yazılı teklif") ||
+    !pBlind312.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind312.mustSay?.includes("sabit Newline LYRA yok"))
+) {
+  errors.push("blind prompt #312 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline LYRA yok");
+}
+
+const pBlind313 = PROMPTS.find((x) => x.id === 313);
+if (!pBlind313 || !/eave cleat|saçak kleyt/i.test(pBlind313.q)) {
+  errors.push("blind prompt #313 must cover sabit eave cleat invent");
+}
+if (
+  pBlind313 &&
+  (!pBlind313.mustSay?.includes("yazılı teklif") ||
+    !pBlind313.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind313.mustSay?.includes("sabit eave cleat yok"))
+) {
+  errors.push("blind prompt #313 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave cleat yok");
+}
+
+const pBlind314 = PROMPTS.find((x) => x.id === 314);
+if (!pBlind314 || !/ViewSonic ViewBoard|ViewBoard IFP/i.test(pBlind314.q)) {
+  errors.push("blind prompt #314 must cover sabit ViewSonic ViewBoard invent");
+}
+if (
+  pBlind314 &&
+  (!pBlind314.mustSay?.includes("yazılı teklif") ||
+    !pBlind314.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind314.mustSay?.includes("sabit ViewSonic ViewBoard yok"))
+) {
+  errors.push("blind prompt #314 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ViewSonic ViewBoard yok");
+}
+
+const pBlind315 = PROMPTS.find((x) => x.id === 315);
+if (!pBlind315 || !/gutter cleat|oluk kleyt/i.test(pBlind315.q)) {
+  errors.push("blind prompt #315 must cover sabit gutter cleat invent");
+}
+if (
+  pBlind315 &&
+  (!pBlind315.mustSay?.includes("yazılı teklif") ||
+    !pBlind315.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind315.mustSay?.includes("sabit gutter cleat yok"))
+) {
+  errors.push("blind prompt #315 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gutter cleat yok");
+}
+
+const pBlind316 = PROMPTS.find((x) => x.id === 316);
+if (!pBlind316 || !/Promethean ActivPanel|ActivPanel Nickel/i.test(pBlind316.q)) {
+  errors.push("blind prompt #316 must cover sabit Promethean ActivPanel invent");
+}
+if (
+  pBlind316 &&
+  (!pBlind316.mustSay?.includes("yazılı teklif") ||
+    !pBlind316.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind316.mustSay?.includes("sabit Promethean ActivPanel yok"))
+) {
+  errors.push("blind prompt #316 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Promethean ActivPanel yok");
+}
+
+const pBlind317 = PROMPTS.find((x) => x.id === 317);
+if (!pBlind317 || !/sill pan|eşik tavası/i.test(pBlind317.q)) {
+  errors.push("blind prompt #317 must cover sabit sill pan invent");
+}
+if (
+  pBlind317 &&
+  (!pBlind317.mustSay?.includes("yazılı teklif") ||
+    !pBlind317.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind317.mustSay?.includes("sabit sill pan yok"))
+) {
+  errors.push("blind prompt #317 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sill pan yok");
+}
+
+const pBlind318 = PROMPTS.find((x) => x.id === 318);
+if (!pBlind318 || !/SMART Board GX|SMART Board MX/i.test(pBlind318.q)) {
+  errors.push("blind prompt #318 must cover sabit SMART Board GX invent");
+}
+if (
+  pBlind318 &&
+  (!pBlind318.mustSay?.includes("yazılı teklif") ||
+    !pBlind318.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind318.mustSay?.includes("sabit SMART Board GX yok"))
+) {
+  errors.push("blind prompt #318 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SMART Board GX yok");
+}
+
+const pBlind319 = PROMPTS.find((x) => x.id === 319);
+if (!pBlind319 || !/weep screed|süzme şerit/i.test(pBlind319.q)) {
+  errors.push("blind prompt #319 must cover sabit weep screed invent");
+}
+if (
+  pBlind319 &&
+  (!pBlind319.mustSay?.includes("yazılı teklif") ||
+    !pBlind319.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind319.mustSay?.includes("sabit weep screed yok"))
+) {
+  errors.push("blind prompt #319 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit weep screed yok");
+}
+
+const pBlind320 = PROMPTS.find((x) => x.id === 320);
+if (!pBlind320 || !/Clevertouch Impact|Clevertouch Lux/i.test(pBlind320.q)) {
+  errors.push("blind prompt #320 must cover sabit Clevertouch Impact invent");
+}
+if (
+  pBlind320 &&
+  (!pBlind320.mustSay?.includes("yazılı teklif") ||
+    !pBlind320.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind320.mustSay?.includes("sabit Clevertouch Impact yok"))
+) {
+  errors.push("blind prompt #320 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Clevertouch Impact yok");
+}
+
+const pBlind321 = PROMPTS.find((x) => x.id === 321);
+if (!pBlind321 || !/cornice cleat|korniş kleyt/i.test(pBlind321.q)) {
+  errors.push("blind prompt #321 must cover sabit cornice cleat invent");
+}
+if (
+  pBlind321 &&
+  (!pBlind321.mustSay?.includes("yazılı teklif") ||
+    !pBlind321.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind321.mustSay?.includes("sabit cornice cleat yok"))
+) {
+  errors.push("blind prompt #321 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cornice cleat yok");
+}
+
+const pBlind322 = PROMPTS.find((x) => x.id === 322);
+if (!pBlind322 || !/Horion Interactive|Horion HO Series/i.test(pBlind322.q)) {
+  errors.push("blind prompt #322 must cover sabit Horion Interactive invent");
+}
+if (
+  pBlind322 &&
+  (!pBlind322.mustSay?.includes("yazılı teklif") ||
+    !pBlind322.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind322.mustSay?.includes("sabit Horion Interactive yok"))
+) {
+  errors.push("blind prompt #322 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Horion Interactive yok");
+}
+
+const pBlind323 = PROMPTS.find((x) => x.id === 323);
+if (!pBlind323 || !/z-flashing|Z flaşör/i.test(pBlind323.q)) {
+  errors.push("blind prompt #323 must cover sabit z-flashing invent");
+}
+if (
+  pBlind323 &&
+  (!pBlind323.mustSay?.includes("yazılı teklif") ||
+    !pBlind323.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind323.mustSay?.includes("sabit z-flashing yok"))
+) {
+  errors.push("blind prompt #323 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit z-flashing yok");
+}
+
+const pBlind324 = PROMPTS.find((x) => x.id === 324);
+if (!pBlind324 || !/Hisense GoBoard|Hisense GoBoard Pro/i.test(pBlind324.q)) {
+  errors.push("blind prompt #324 must cover sabit Hisense GoBoard invent");
+}
+if (
+  pBlind324 &&
+  (!pBlind324.mustSay?.includes("yazılı teklif") ||
+    !pBlind324.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind324.mustSay?.includes("sabit Hisense GoBoard yok"))
+) {
+  errors.push("blind prompt #324 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Hisense GoBoard yok");
+}
+
+const pBlind325 = PROMPTS.find((x) => x.id === 325);
+if (!pBlind325 || !/balcony cleat|balkon kleyt/i.test(pBlind325.q)) {
+  errors.push("blind prompt #325 must cover sabit balcony cleat invent");
+}
+if (
+  pBlind325 &&
+  (!pBlind325.mustSay?.includes("yazılı teklif") ||
+    !pBlind325.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind325.mustSay?.includes("sabit balcony cleat yok"))
+) {
+  errors.push("blind prompt #325 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit balcony cleat yok");
+}
+
+const pBlind326 = PROMPTS.find((x) => x.id === 326);
+if (!pBlind326 || !/CTOUCH Riva|CTOUCH Leddura/i.test(pBlind326.q)) {
+  errors.push("blind prompt #326 must cover sabit CTOUCH Riva invent");
+}
+if (
+  pBlind326 &&
+  (!pBlind326.mustSay?.includes("yazılı teklif") ||
+    !pBlind326.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind326.mustSay?.includes("sabit CTOUCH Riva yok"))
+) {
+  errors.push("blind prompt #326 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CTOUCH Riva yok");
+}
+
+const pBlind327 = PROMPTS.find((x) => x.id === 327);
+if (!pBlind327 || !/cap flashing|kapak flaşör/i.test(pBlind327.q)) {
+  errors.push("blind prompt #327 must cover sabit cap flashing invent");
+}
+if (
+  pBlind327 &&
+  (!pBlind327.mustSay?.includes("yazılı teklif") ||
+    !pBlind327.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind327.mustSay?.includes("sabit cap flashing yok"))
+) {
+  errors.push("blind prompt #327 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cap flashing yok");
+}
+
+const pBlind328 = PROMPTS.find((x) => x.id === 328);
+if (!pBlind328 || !/Elo Interactive|Elo I-Series/i.test(pBlind328.q)) {
+  errors.push("blind prompt #328 must cover sabit Elo Interactive invent");
+}
+if (
+  pBlind328 &&
+  (!pBlind328.mustSay?.includes("yazılı teklif") ||
+    !pBlind328.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind328.mustSay?.includes("sabit Elo Interactive yok"))
+) {
+  errors.push("blind prompt #328 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Elo Interactive yok");
+}
+
+const pBlind329 = PROMPTS.find((x) => x.id === 329);
+if (!pBlind329 || !/canopy cleat|kanopi kleyt/i.test(pBlind329.q)) {
+  errors.push("blind prompt #329 must cover sabit canopy cleat invent");
+}
+if (
+  pBlind329 &&
+  (!pBlind329.mustSay?.includes("yazılı teklif") ||
+    !pBlind329.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind329.mustSay?.includes("sabit canopy cleat yok"))
+) {
+  errors.push("blind prompt #329 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit canopy cleat yok");
+}
+
+const pBlind330 = PROMPTS.find((x) => x.id === 330);
+if (!pBlind330 || !/Planar Interactive|Planar Simplicity/i.test(pBlind330.q)) {
+  errors.push("blind prompt #330 must cover sabit Planar Interactive invent");
+}
+if (
+  pBlind330 &&
+  (!pBlind330.mustSay?.includes("yazılı teklif") ||
+    !pBlind330.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind330.mustSay?.includes("sabit Planar Interactive yok"))
+) {
+  errors.push("blind prompt #330 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Planar Interactive yok");
+}
+
+const pBlind331 = PROMPTS.find((x) => x.id === 331);
+if (!pBlind331 || !/lintel flashing|lintel flaşör/i.test(pBlind331.q)) {
+  errors.push("blind prompt #331 must cover sabit lintel flashing invent");
+}
+if (
+  pBlind331 &&
+  (!pBlind331.mustSay?.includes("yazılı teklif") ||
+    !pBlind331.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind331.mustSay?.includes("sabit lintel flashing yok"))
+) {
+  errors.push("blind prompt #331 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit lintel flashing yok");
+}
+
+const pBlind332 = PROMPTS.find((x) => x.id === 332);
+if (!pBlind332 || !/Newline Q Series|Newline TruTouch/i.test(pBlind332.q)) {
+  errors.push("blind prompt #332 must cover sabit Newline Q Series invent");
+}
+if (
+  pBlind332 &&
+  (!pBlind332.mustSay?.includes("yazılı teklif") ||
+    !pBlind332.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind332.mustSay?.includes("sabit Newline Q Series yok"))
+) {
+  errors.push("blind prompt #332 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline Q Series yok");
+}
+
+const pBlind333 = PROMPTS.find((x) => x.id === 333);
+if (!pBlind333 || !/scupper flashing|scupper flaşör/i.test(pBlind333.q)) {
+  errors.push("blind prompt #333 must cover sabit scupper flashing invent");
+}
+if (
+  pBlind333 &&
+  (!pBlind333.mustSay?.includes("yazılı teklif") ||
+    !pBlind333.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind333.mustSay?.includes("sabit scupper flashing yok"))
+) {
+  errors.push("blind prompt #333 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit scupper flashing yok");
+}
+
+const pBlind334 = PROMPTS.find((x) => x.id === 334);
+if (!pBlind334 || !/ActivPanel Titanium|ActivPanel Cobalt/i.test(pBlind334.q)) {
+  errors.push("blind prompt #334 must cover sabit ActivPanel Titanium invent");
+}
+if (
+  pBlind334 &&
+  (!pBlind334.mustSay?.includes("yazılı teklif") ||
+    !pBlind334.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind334.mustSay?.includes("sabit ActivPanel Titanium yok"))
+) {
+  errors.push("blind prompt #334 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ActivPanel Titanium yok");
+}
+
+const pBlind335 = PROMPTS.find((x) => x.id === 335);
+if (!pBlind335 || !/pitch pocket|çatı geçiş cebi/i.test(pBlind335.q)) {
+  errors.push("blind prompt #335 must cover sabit pitch pocket invent");
+}
+if (
+  pBlind335 &&
+  (!pBlind335.mustSay?.includes("yazılı teklif") ||
+    !pBlind335.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind335.mustSay?.includes("sabit pitch pocket yok"))
+) {
+  errors.push("blind prompt #335 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pitch pocket yok");
+}
+
+const pBlind336 = PROMPTS.find((x) => x.id === 336);
+if (!pBlind336 || !/i3TOUCH X-ONE|i3TOUCH Sixty/i.test(pBlind336.q)) {
+  errors.push("blind prompt #336 must cover sabit i3TOUCH X-ONE invent");
+}
+if (
+  pBlind336 &&
+  (!pBlind336.mustSay?.includes("yazılı teklif") ||
+    !pBlind336.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind336.mustSay?.includes("sabit i3TOUCH X-ONE yok"))
+) {
+  errors.push("blind prompt #336 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH X-ONE yok");
+}
+
+const pBlind337 = PROMPTS.find((x) => x.id === 337);
+if (!pBlind337 || !/roof curb|çatı curb/i.test(pBlind337.q)) {
+  errors.push("blind prompt #337 must cover sabit roof curb invent");
+}
+if (
+  pBlind337 &&
+  (!pBlind337.mustSay?.includes("yazılı teklif") ||
+    !pBlind337.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind337.mustSay?.includes("sabit roof curb yok"))
+) {
+  errors.push("blind prompt #337 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit roof curb yok");
+}
+
+const pBlind338 = PROMPTS.find((x) => x.id === 338);
+if (!pBlind338 || !/Samsung Flip Pro|Samsung Flip WM/i.test(pBlind338.q)) {
+  errors.push("blind prompt #338 must cover sabit Samsung Flip Pro invent");
+}
+if (
+  pBlind338 &&
+  (!pBlind338.mustSay?.includes("yazılı teklif") ||
+    !pBlind338.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind338.mustSay?.includes("sabit Samsung Flip Pro yok"))
+) {
+  errors.push("blind prompt #338 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Samsung Flip Pro yok");
+}
+
+const pBlind339 = PROMPTS.find((x) => x.id === 339);
+if (!pBlind339 || !/skirt flashing|etek flaşör/i.test(pBlind339.q)) {
+  errors.push("blind prompt #339 must cover sabit skirt flashing invent");
+}
+if (
+  pBlind339 &&
+  (!pBlind339.mustSay?.includes("yazılı teklif") ||
+    !pBlind339.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind339.mustSay?.includes("sabit skirt flashing yok"))
+) {
+  errors.push("blind prompt #339 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit skirt flashing yok");
+}
+
+const pBlind340 = PROMPTS.find((x) => x.id === 340);
+if (!pBlind340 || !/CTOUCH Laser|CTOUCH Canvas/i.test(pBlind340.q)) {
+  errors.push("blind prompt #340 must cover sabit CTOUCH Laser invent");
+}
+if (
+  pBlind340 &&
+  (!pBlind340.mustSay?.includes("yazılı teklif") ||
+    !pBlind340.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind340.mustSay?.includes("sabit CTOUCH Laser yok"))
+) {
+  errors.push("blind prompt #340 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit CTOUCH Laser yok");
+}
+
+const pBlind341 = PROMPTS.find((x) => x.id === 341);
+if (!pBlind341 || !/ridge flashing|sırt flaşör/i.test(pBlind341.q)) {
+  errors.push("blind prompt #341 must cover sabit ridge flashing invent");
+}
+if (
+  pBlind341 &&
+  (!pBlind341.mustSay?.includes("yazılı teklif") ||
+    !pBlind341.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind341.mustSay?.includes("sabit ridge flashing yok"))
+) {
+  errors.push("blind prompt #341 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ridge flashing yok");
+}
+
+const pBlind342 = PROMPTS.find((x) => x.id === 342);
+if (!pBlind342 || !/Avocor E Series|Avocor G Series/i.test(pBlind342.q)) {
+  errors.push("blind prompt #342 must cover sabit Avocor E Series invent");
+}
+if (
+  pBlind342 &&
+  (!pBlind342.mustSay?.includes("yazılı teklif") ||
+    !pBlind342.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind342.mustSay?.includes("sabit Avocor E Series yok"))
+) {
+  errors.push("blind prompt #342 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Avocor E Series yok");
+}
+
+const pBlind343 = PROMPTS.find((x) => x.id === 343);
+if (!pBlind343 || !/pipe boot|boru boot/i.test(pBlind343.q)) {
+  errors.push("blind prompt #343 must cover sabit pipe boot invent");
+}
+if (
+  pBlind343 &&
+  (!pBlind343.mustSay?.includes("yazılı teklif") ||
+    !pBlind343.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind343.mustSay?.includes("sabit pipe boot yok"))
+) {
+  errors.push("blind prompt #343 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pipe boot yok");
+}
+
+const pBlind344 = PROMPTS.find((x) => x.id === 344);
+if (!pBlind344 || !/InFocus Mondopad|InFocus JTouch/i.test(pBlind344.q)) {
+  errors.push("blind prompt #344 must cover sabit InFocus Mondopad invent");
+}
+if (
+  pBlind344 &&
+  (!pBlind344.mustSay?.includes("yazılı teklif") ||
+    !pBlind344.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind344.mustSay?.includes("sabit InFocus Mondopad yok"))
+) {
+  errors.push("blind prompt #344 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit InFocus Mondopad yok");
+}
+
+const pBlind345 = PROMPTS.find((x) => x.id === 345);
+if (!pBlind345 || !/edge metal|kenar metal/i.test(pBlind345.q)) {
+  errors.push("blind prompt #345 must cover sabit edge metal invent");
+}
+if (
+  pBlind345 &&
+  (!pBlind345.mustSay?.includes("yazılı teklif") ||
+    !pBlind345.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind345.mustSay?.includes("sabit edge metal yok"))
+) {
+  errors.push("blind prompt #345 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit edge metal yok");
+}
+
+const pBlind346 = PROMPTS.find((x) => x.id === 346);
+if (!pBlind346 || !/Newline Elite|Newline RS Series/i.test(pBlind346.q)) {
+  errors.push("blind prompt #346 must cover sabit Newline Elite invent");
+}
+if (
+  pBlind346 &&
+  (!pBlind346.mustSay?.includes("yazılı teklif") ||
+    !pBlind346.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind346.mustSay?.includes("sabit Newline Elite yok"))
+) {
+  errors.push("blind prompt #346 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline Elite yok");
+}
+
+const pBlind347 = PROMPTS.find((x) => x.id === 347);
+if (!pBlind347 || !/vent flashing|havalandırma flaşör/i.test(pBlind347.q)) {
+  errors.push("blind prompt #347 must cover sabit vent flashing invent");
+}
+if (
+  pBlind347 &&
+  (!pBlind347.mustSay?.includes("yazılı teklif") ||
+    !pBlind347.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind347.mustSay?.includes("sabit vent flashing yok"))
+) {
+  errors.push("blind prompt #347 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit vent flashing yok");
+}
+
+const pBlind348 = PROMPTS.find((x) => x.id === 348);
+if (!pBlind348 || !/Newline X Series|Newline C Series/i.test(pBlind348.q)) {
+  errors.push("blind prompt #348 must cover sabit Newline X Series invent");
+}
+if (
+  pBlind348 &&
+  (!pBlind348.mustSay?.includes("yazılı teklif") ||
+    !pBlind348.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind348.mustSay?.includes("sabit Newline X Series yok"))
+) {
+  errors.push("blind prompt #348 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline X Series yok");
+}
+
+const pBlind349 = PROMPTS.find((x) => x.id === 349);
+if (!pBlind349 || !/wall flashing|duvar flaşör/i.test(pBlind349.q)) {
+  errors.push("blind prompt #349 must cover sabit wall flashing invent");
+}
+if (
+  pBlind349 &&
+  (!pBlind349.mustSay?.includes("yazılı teklif") ||
+    !pBlind349.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind349.mustSay?.includes("sabit wall flashing yok"))
+) {
+  errors.push("blind prompt #349 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit wall flashing yok");
+}
+
+const pBlind350 = PROMPTS.find((x) => x.id === 350);
+if (!pBlind350 || !/ActivPanel 9|ActivPanel Nickel/i.test(pBlind350.q)) {
+  errors.push("blind prompt #350 must cover sabit ActivPanel 9 invent");
+}
+if (
+  pBlind350 &&
+  (!pBlind350.mustSay?.includes("yazılı teklif") ||
+    !pBlind350.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind350.mustSay?.includes("sabit ActivPanel 9 yok"))
+) {
+  errors.push("blind prompt #350 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ActivPanel 9 yok");
+}
+
+const pBlind351 = PROMPTS.find((x) => x.id === 351);
+if (!pBlind351 || !/deck flashing|güverte flaşör/i.test(pBlind351.q)) {
+  errors.push("blind prompt #351 must cover sabit deck flashing invent");
+}
+if (
+  pBlind351 &&
+  (!pBlind351.mustSay?.includes("yazılı teklif") ||
+    !pBlind351.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind351.mustSay?.includes("sabit deck flashing yok"))
+) {
+  errors.push("blind prompt #351 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit deck flashing yok");
+}
+
+const pBlind352 = PROMPTS.find((x) => x.id === 352);
+if (!pBlind352 || !/Avocor F Series|Avocor W Series/i.test(pBlind352.q)) {
+  errors.push("blind prompt #352 must cover sabit Avocor F Series invent");
+}
+if (
+  pBlind352 &&
+  (!pBlind352.mustSay?.includes("yazılı teklif") ||
+    !pBlind352.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind352.mustSay?.includes("sabit Avocor F Series yok"))
+) {
+  errors.push("blind prompt #352 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Avocor F Series yok");
+}
+
+const pBlind353 = PROMPTS.find((x) => x.id === 353);
+if (!pBlind353 || !/window flashing|pencere flaşör/i.test(pBlind353.q)) {
+  errors.push("blind prompt #353 must cover sabit window flashing invent");
+}
+if (
+  pBlind353 &&
+  (!pBlind353.mustSay?.includes("yazılı teklif") ||
+    !pBlind353.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind353.mustSay?.includes("sabit window flashing yok"))
+) {
+  errors.push("blind prompt #353 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit window flashing yok");
+}
+
+const pBlind354 = PROMPTS.find((x) => x.id === 354);
+if (!pBlind354 || !/SMART Board 7000|SMART Board 6000S/i.test(pBlind354.q)) {
+  errors.push("blind prompt #354 must cover sabit SMART Board 7000 invent");
+}
+if (
+  pBlind354 &&
+  (!pBlind354.mustSay?.includes("yazılı teklif") ||
+    !pBlind354.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind354.mustSay?.includes("sabit SMART Board 7000 yok"))
+) {
+  errors.push("blind prompt #354 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit SMART Board 7000 yok");
+}
+
+const pBlind355 = PROMPTS.find((x) => x.id === 355);
+if (!pBlind355 || !/door flashing|kapı flaşör/i.test(pBlind355.q)) {
+  errors.push("blind prompt #355 must cover sabit door flashing invent");
+}
+if (
+  pBlind355 &&
+  (!pBlind355.mustSay?.includes("yazılı teklif") ||
+    !pBlind355.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind355.mustSay?.includes("sabit door flashing yok"))
+) {
+  errors.push("blind prompt #355 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit door flashing yok");
+}
+
+const pBlind356 = PROMPTS.find((x) => x.id === 356);
+if (!pBlind356 || !/i3TOUCH E-ONE|i3TOUCH EX/i.test(pBlind356.q)) {
+  errors.push("blind prompt #356 must cover sabit i3TOUCH E-ONE invent");
+}
+if (
+  pBlind356 &&
+  (!pBlind356.mustSay?.includes("yazılı teklif") ||
+    !pBlind356.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind356.mustSay?.includes("sabit i3TOUCH E-ONE yok"))
+) {
+  errors.push("blind prompt #356 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH E-ONE yok");
+}
+
+const pBlind357 = PROMPTS.find((x) => x.id === 357);
+if (!pBlind357 || !/skylight flashing|ışıklık flaşör/i.test(pBlind357.q)) {
+  errors.push("blind prompt #357 must cover sabit skylight flashing invent");
+}
+if (
+  pBlind357 &&
+  (!pBlind357.mustSay?.includes("yazılı teklif") ||
+    !pBlind357.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind357.mustSay?.includes("sabit skylight flashing yok"))
+) {
+  errors.push("blind prompt #357 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit skylight flashing yok");
+}
+
+const pBlind358 = PROMPTS.find((x) => x.id === 358);
+if (!pBlind358 || !/Newline VN Series|Newline Z Series/i.test(pBlind358.q)) {
+  errors.push("blind prompt #358 must cover sabit Newline VN Series invent");
+}
+if (
+  pBlind358 &&
+  (!pBlind358.mustSay?.includes("yazılı teklif") ||
+    !pBlind358.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind358.mustSay?.includes("sabit Newline VN Series yok"))
+) {
+  errors.push("blind prompt #358 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline VN Series yok");
+}
+
+const pBlind359 = PROMPTS.find((x) => x.id === 359);
+if (!pBlind359 || !/dormer flashing|çatı çıkma flaşör/i.test(pBlind359.q)) {
+  errors.push("blind prompt #359 must cover sabit dormer flashing invent");
+}
+if (
+  pBlind359 &&
+  (!pBlind359.mustSay?.includes("yazılı teklif") ||
+    !pBlind359.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind359.mustSay?.includes("sabit dormer flashing yok"))
+) {
+  errors.push("blind prompt #359 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dormer flashing yok");
+}
+
+const pBlind360 = PROMPTS.find((x) => x.id === 360);
+if (!pBlind360 || !/BenQ RP Series|BenQ RM Series/i.test(pBlind360.q)) {
+  errors.push("blind prompt #360 must cover sabit BenQ RP Series invent");
+}
+if (
+  pBlind360 &&
+  (!pBlind360.mustSay?.includes("yazılı teklif") ||
+    !pBlind360.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind360.mustSay?.includes("sabit BenQ RP Series yok"))
+) {
+  errors.push("blind prompt #360 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BenQ RP Series yok");
+}
+
+const pBlind361 = PROMPTS.find((x) => x.id === 361);
+if (!pBlind361 || !/eave flashing|saçak flaşör/i.test(pBlind361.q)) {
+  errors.push("blind prompt #361 must cover sabit eave flashing invent");
+}
+if (
+  pBlind361 &&
+  (!pBlind361.mustSay?.includes("yazılı teklif") ||
+    !pBlind361.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind361.mustSay?.includes("sabit eave flashing yok"))
+) {
+  errors.push("blind prompt #361 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave flashing yok");
+}
+
+const pBlind362 = PROMPTS.find((x) => x.id === 362);
+if (!pBlind362 || !/Sharp PN Series|Sharp PN-L Series/i.test(pBlind362.q)) {
+  errors.push("blind prompt #362 must cover sabit Sharp PN Series invent");
+}
+if (
+  pBlind362 &&
+  (!pBlind362.mustSay?.includes("yazılı teklif") ||
+    !pBlind362.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind362.mustSay?.includes("sabit Sharp PN Series yok"))
+) {
+  errors.push("blind prompt #362 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sharp PN Series yok");
+}
+
+const pBlind363 = PROMPTS.find((x) => x.id === 363);
+if (!pBlind363 || !/valley pan|vadi tavası/i.test(pBlind363.q)) {
+  errors.push("blind prompt #363 must cover sabit valley pan invent");
+}
+if (
+  pBlind363 &&
+  (!pBlind363.mustSay?.includes("yazılı teklif") ||
+    !pBlind363.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind363.mustSay?.includes("sabit valley pan yok"))
+) {
+  errors.push("blind prompt #363 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley pan yok");
+}
+
+const pBlind364 = PROMPTS.find((x) => x.id === 364);
+if (!pBlind364 || !/Optoma Creative Touch|Optoma 3-Series/i.test(pBlind364.q)) {
+  errors.push("blind prompt #364 must cover sabit Optoma Creative Touch invent");
+}
+if (
+  pBlind364 &&
+  (!pBlind364.mustSay?.includes("yazılı teklif") ||
+    !pBlind364.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind364.mustSay?.includes("sabit Optoma Creative Touch yok"))
+) {
+  errors.push("blind prompt #364 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma Creative Touch yok");
+}
+
+const pBlind365 = PROMPTS.find((x) => x.id === 365);
+if (!pBlind365 || !/gutter apron|oluk eteği/i.test(pBlind365.q)) {
+  errors.push("blind prompt #365 must cover sabit gutter apron invent");
+}
+if (
+  pBlind365 &&
+  (!pBlind365.mustSay?.includes("yazılı teklif") ||
+    !pBlind365.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind365.mustSay?.includes("sabit gutter apron yok"))
+) {
+  errors.push("blind prompt #365 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gutter apron yok");
+}
+
+const pBlind366 = PROMPTS.find((x) => x.id === 366);
+if (!pBlind366 || !/ViewSonic IFP55|ViewSonic IFP65/i.test(pBlind366.q)) {
+  errors.push("blind prompt #366 must cover sabit ViewSonic IFP55 invent");
+}
+if (
+  pBlind366 &&
+  (!pBlind366.mustSay?.includes("yazılı teklif") ||
+    !pBlind366.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind366.mustSay?.includes("sabit ViewSonic IFP55 yok"))
+) {
+  errors.push("blind prompt #366 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ViewSonic IFP55 yok");
+}
+
+const pBlind367 = PROMPTS.find((x) => x.id === 367);
+if (!pBlind367 || !/parapet coping cap|parapet kapak flaşör/i.test(pBlind367.q)) {
+  errors.push("blind prompt #367 must cover sabit parapet coping cap invent");
+}
+if (
+  pBlind367 &&
+  (!pBlind367.mustSay?.includes("yazılı teklif") ||
+    !pBlind367.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind367.mustSay?.includes("sabit parapet coping cap yok"))
+) {
+  errors.push("blind prompt #367 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet coping cap yok");
+}
+
+const pBlind368 = PROMPTS.find((x) => x.id === 368);
+if (!pBlind368 || !/Newline NT Series|Newline NT Touch/i.test(pBlind368.q)) {
+  errors.push("blind prompt #368 must cover sabit Newline NT Series invent");
+}
+if (
+  pBlind368 &&
+  (!pBlind368.mustSay?.includes("yazılı teklif") ||
+    !pBlind368.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind368.mustSay?.includes("sabit Newline NT Series yok"))
+) {
+  errors.push("blind prompt #368 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline NT Series yok");
+}
+
+const pBlind369 = PROMPTS.find((x) => x.id === 369);
+if (!pBlind369 || !/chimney cricket flashing|baca cricket flaşör/i.test(pBlind369.q)) {
+  errors.push("blind prompt #369 must cover sabit chimney cricket flashing invent");
+}
+if (
+  pBlind369 &&
+  (!pBlind369.mustSay?.includes("yazılı teklif") ||
+    !pBlind369.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind369.mustSay?.includes("sabit chimney cricket flashing yok"))
+) {
+  errors.push("blind prompt #369 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chimney cricket flashing yok");
+}
+
+const pBlind370 = PROMPTS.find((x) => x.id === 370);
+if (!pBlind370 || !/Planar UltraRes|Planar UltraRes X/i.test(pBlind370.q)) {
+  errors.push("blind prompt #370 must cover sabit Planar UltraRes invent");
+}
+if (
+  pBlind370 &&
+  (!pBlind370.mustSay?.includes("yazılı teklif") ||
+    !pBlind370.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind370.mustSay?.includes("sabit Planar UltraRes yok"))
+) {
+  errors.push("blind prompt #370 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Planar UltraRes yok");
+}
+
+const pBlind371 = PROMPTS.find((x) => x.id === 371);
+if (!pBlind371 || !/step apron|basamak eteği/i.test(pBlind371.q)) {
+  errors.push("blind prompt #371 must cover sabit step apron invent");
+}
+if (
+  pBlind371 &&
+  (!pBlind371.mustSay?.includes("yazılı teklif") ||
+    !pBlind371.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind371.mustSay?.includes("sabit step apron yok"))
+) {
+  errors.push("blind prompt #371 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit step apron yok");
+}
+
+const pBlind372 = PROMPTS.find((x) => x.id === 372);
+if (!pBlind372 || !/i3TOUCH P2|i3TOUCH P2\+/i.test(pBlind372.q)) {
+  errors.push("blind prompt #372 must cover sabit i3TOUCH P2 invent");
+}
+if (
+  pBlind372 &&
+  (!pBlind372.mustSay?.includes("yazılı teklif") ||
+    !pBlind372.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind372.mustSay?.includes("sabit i3TOUCH P2 yok"))
+) {
+  errors.push("blind prompt #372 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH P2 yok");
+}
+
+const pBlind373 = PROMPTS.find((x) => x.id === 373);
+if (!pBlind373 || !/roof valley pan|çatı vadi tavası/i.test(pBlind373.q)) {
+  errors.push("blind prompt #373 must cover sabit roof valley pan invent");
+}
+if (
+  pBlind373 &&
+  (!pBlind373.mustSay?.includes("yazılı teklif") ||
+    !pBlind373.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind373.mustSay?.includes("sabit roof valley pan yok"))
+) {
+  errors.push("blind prompt #373 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit roof valley pan yok");
+}
+
+const pBlind374 = PROMPTS.find((x) => x.id === 374);
+if (!pBlind374 || !/Avocor AVG Series|Avocor AVG/i.test(pBlind374.q)) {
+  errors.push("blind prompt #374 must cover sabit Avocor AVG Series invent");
+}
+if (
+  pBlind374 &&
+  (!pBlind374.mustSay?.includes("yazılı teklif") ||
+    !pBlind374.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind374.mustSay?.includes("sabit Avocor AVG Series yok"))
+) {
+  errors.push("blind prompt #374 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Avocor AVG Series yok");
+}
+
+const pBlind375 = PROMPTS.find((x) => x.id === 375);
+if (!pBlind375 || !/kick-out apron|çıkış eteği/i.test(pBlind375.q)) {
+  errors.push("blind prompt #375 must cover sabit kick-out apron invent");
+}
+if (
+  pBlind375 &&
+  (!pBlind375.mustSay?.includes("yazılı teklif") ||
+    !pBlind375.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind375.mustSay?.includes("sabit kick-out apron yok"))
+) {
+  errors.push("blind prompt #375 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kick-out apron yok");
+}
+
+const pBlind376 = PROMPTS.find((x) => x.id === 376);
+if (!pBlind376 || !/Samsung WM Series|Samsung WM/i.test(pBlind376.q)) {
+  errors.push("blind prompt #376 must cover sabit Samsung WM Series invent");
+}
+if (
+  pBlind376 &&
+  (!pBlind376.mustSay?.includes("yazılı teklif") ||
+    !pBlind376.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind376.mustSay?.includes("sabit Samsung WM Series yok"))
+) {
+  errors.push("blind prompt #376 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Samsung WM Series yok");
+}
+
+const pBlind377 = PROMPTS.find((x) => x.id === 377);
+if (!pBlind377 || !/rake edge flashing|saçak kenar flaşör/i.test(pBlind377.q)) {
+  errors.push("blind prompt #377 must cover sabit rake edge flashing invent");
+}
+if (
+  pBlind377 &&
+  (!pBlind377.mustSay?.includes("yazılı teklif") ||
+    !pBlind377.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind377.mustSay?.includes("sabit rake edge flashing yok"))
+) {
+  errors.push("blind prompt #377 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit rake edge flashing yok");
+}
+
+const pBlind378 = PROMPTS.find((x) => x.id === 378);
+if (!pBlind378 || !/Planar Simplicity Touch|Planar Touch Series/i.test(pBlind378.q)) {
+  errors.push("blind prompt #378 must cover sabit Planar Simplicity Touch invent");
+}
+if (
+  pBlind378 &&
+  (!pBlind378.mustSay?.includes("yazılı teklif") ||
+    !pBlind378.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind378.mustSay?.includes("sabit Planar Simplicity Touch yok"))
+) {
+  errors.push("blind prompt #378 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Planar Simplicity Touch yok");
+}
+
+const pBlind379 = PROMPTS.find((x) => x.id === 379);
+if (!pBlind379 || !/chimney apron|baca eteği/i.test(pBlind379.q)) {
+  errors.push("blind prompt #379 must cover sabit chimney apron invent");
+}
+if (
+  pBlind379 &&
+  (!pBlind379.mustSay?.includes("yazılı teklif") ||
+    !pBlind379.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind379.mustSay?.includes("sabit chimney apron yok"))
+) {
+  errors.push("blind prompt #379 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit chimney apron yok");
+}
+
+const pBlind380 = PROMPTS.find((x) => x.id === 380);
+if (!pBlind380 || !/Yealink MeetingBoard 65|MeetingBoard 65/i.test(pBlind380.q)) {
+  errors.push("blind prompt #380 must cover sabit Yealink MeetingBoard 65 invent");
+}
+if (
+  pBlind380 &&
+  (!pBlind380.mustSay?.includes("yazılı teklif") ||
+    !pBlind380.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind380.mustSay?.includes("sabit Yealink MeetingBoard 65 yok"))
+) {
+  errors.push("blind prompt #380 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Yealink MeetingBoard 65 yok");
+}
+
+const pBlind381 = PROMPTS.find((x) => x.id === 381);
+if (!pBlind381 || !/roof apron|çatı eteği/i.test(pBlind381.q)) {
+  errors.push("blind prompt #381 must cover sabit roof apron invent");
+}
+if (
+  pBlind381 &&
+  (!pBlind381.mustSay?.includes("yazılı teklif") ||
+    !pBlind381.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind381.mustSay?.includes("sabit roof apron yok"))
+) {
+  errors.push("blind prompt #381 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit roof apron yok");
+}
+
+const pBlind382 = PROMPTS.find((x) => x.id === 382);
+if (!pBlind382 || !/Newline TR Series|Newline TR/i.test(pBlind382.q)) {
+  errors.push("blind prompt #382 must cover sabit Newline TR Series invent");
+}
+if (
+  pBlind382 &&
+  (!pBlind382.mustSay?.includes("yazılı teklif") ||
+    !pBlind382.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind382.mustSay?.includes("sabit Newline TR Series yok"))
+) {
+  errors.push("blind prompt #382 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline TR Series yok");
+}
+
+const pBlind383 = PROMPTS.find((x) => x.id === 383);
+if (!pBlind383 || !/parapet apron|parapet eteği/i.test(pBlind383.q)) {
+  errors.push("blind prompt #383 must cover sabit parapet apron invent");
+}
+if (
+  pBlind383 &&
+  (!pBlind383.mustSay?.includes("yazılı teklif") ||
+    !pBlind383.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind383.mustSay?.includes("sabit parapet apron yok"))
+) {
+  errors.push("blind prompt #383 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet apron yok");
+}
+
+const pBlind384 = PROMPTS.find((x) => x.id === 384);
+if (!pBlind384 || !/Optoma 5652RK|Optoma 5652/i.test(pBlind384.q)) {
+  errors.push("blind prompt #384 must cover sabit Optoma 5652RK invent");
+}
+if (
+  pBlind384 &&
+  (!pBlind384.mustSay?.includes("yazılı teklif") ||
+    !pBlind384.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind384.mustSay?.includes("sabit Optoma 5652RK yok"))
+) {
+  errors.push("blind prompt #384 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma 5652RK yok");
+}
+
+const pBlind385 = PROMPTS.find((x) => x.id === 385);
+if (!pBlind385 || !/eave apron|saçak eteği/i.test(pBlind385.q)) {
+  errors.push("blind prompt #385 must cover sabit eave apron invent");
+}
+if (
+  pBlind385 &&
+  (!pBlind385.mustSay?.includes("yazılı teklif") ||
+    !pBlind385.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind385.mustSay?.includes("sabit eave apron yok"))
+) {
+  errors.push("blind prompt #385 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave apron yok");
+}
+
+const pBlind386 = PROMPTS.find((x) => x.id === 386);
+if (!pBlind386 || !/Vivitek NovoTouch|NovoTouch/i.test(pBlind386.q)) {
+  errors.push("blind prompt #386 must cover sabit Vivitek NovoTouch invent");
+}
+if (
+  pBlind386 &&
+  (!pBlind386.mustSay?.includes("yazılı teklif") ||
+    !pBlind386.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind386.mustSay?.includes("sabit Vivitek NovoTouch yok"))
+) {
+  errors.push("blind prompt #386 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Vivitek NovoTouch yok");
+}
+
+const pBlind387 = PROMPTS.find((x) => x.id === 387);
+if (!pBlind387 || !/cricket apron|kriket eteği/i.test(pBlind387.q)) {
+  errors.push("blind prompt #387 must cover sabit cricket apron invent");
+}
+if (
+  pBlind387 &&
+  (!pBlind387.mustSay?.includes("yazılı teklif") ||
+    !pBlind387.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind387.mustSay?.includes("sabit cricket apron yok"))
+) {
+  errors.push("blind prompt #387 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cricket apron yok");
+}
+
+const pBlind388 = PROMPTS.find((x) => x.id === 388);
+if (!pBlind388 || !/i3TOUCH P3 Series|i3TOUCH P3/i.test(pBlind388.q)) {
+  errors.push("blind prompt #388 must cover sabit i3TOUCH P3 Series invent");
+}
+if (
+  pBlind388 &&
+  (!pBlind388.mustSay?.includes("yazılı teklif") ||
+    !pBlind388.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind388.mustSay?.includes("sabit i3TOUCH P3 Series yok"))
+) {
+  errors.push("blind prompt #388 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit i3TOUCH P3 Series yok");
+}
+
+const pBlind389 = PROMPTS.find((x) => x.id === 389);
+if (!pBlind389 || !/fascia apron|fascia eteği/i.test(pBlind389.q)) {
+  errors.push("blind prompt #389 must cover sabit fascia apron invent");
+}
+if (
+  pBlind389 &&
+  (!pBlind389.mustSay?.includes("yazılı teklif") ||
+    !pBlind389.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind389.mustSay?.includes("sabit fascia apron yok"))
+) {
+  errors.push("blind prompt #389 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia apron yok");
+}
+
+const pBlind390 = PROMPTS.find((x) => x.id === 390);
+if (!pBlind390 || !/Horion Canvas Pro|Horion Canvas/i.test(pBlind390.q)) {
+  errors.push("blind prompt #390 must cover sabit Horion Canvas Pro invent");
+}
+if (
+  pBlind390 &&
+  (!pBlind390.mustSay?.includes("yazılı teklif") ||
+    !pBlind390.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind390.mustSay?.includes("sabit Horion Canvas Pro yok"))
+) {
+  errors.push("blind prompt #390 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Horion Canvas Pro yok");
+}
+
+const pBlind391 = PROMPTS.find((x) => x.id === 391);
+if (!pBlind391 || !/rake apron|rake eteği/i.test(pBlind391.q)) {
+  errors.push("blind prompt #391 must cover sabit rake apron invent");
+}
+if (
+  pBlind391 &&
+  (!pBlind391.mustSay?.includes("yazılı teklif") ||
+    !pBlind391.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind391.mustSay?.includes("sabit rake apron yok"))
+) {
+  errors.push("blind prompt #391 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit rake apron yok");
+}
+
+const pBlind392 = PROMPTS.find((x) => x.id === 392);
+if (!pBlind392 || !/Seewo Board Pro|Seewo Board/i.test(pBlind392.q)) {
+  errors.push("blind prompt #392 must cover sabit Seewo Board Pro invent");
+}
+if (
+  pBlind392 &&
+  (!pBlind392.mustSay?.includes("yazılı teklif") ||
+    !pBlind392.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind392.mustSay?.includes("sabit Seewo Board Pro yok"))
+) {
+  errors.push("blind prompt #392 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Seewo Board Pro yok");
+}
+
+const pBlind393 = PROMPTS.find((x) => x.id === 393);
+if (!pBlind393 || !/valley apron|vadi eteği/i.test(pBlind393.q)) {
+  errors.push("blind prompt #393 must cover sabit valley apron invent");
+}
+if (
+  pBlind393 &&
+  (!pBlind393.mustSay?.includes("yazılı teklif") ||
+    !pBlind393.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind393.mustSay?.includes("sabit valley apron yok"))
+) {
+  errors.push("blind prompt #393 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley apron yok");
+}
+
+const pBlind394 = PROMPTS.find((x) => x.id === 394);
+if (!pBlind394 || !/DTEN Bar Plus|DTEN Bar/i.test(pBlind394.q)) {
+  errors.push("blind prompt #394 must cover sabit DTEN Bar Plus invent");
+}
+if (
+  pBlind394 &&
+  (!pBlind394.mustSay?.includes("yazılı teklif") ||
+    !pBlind394.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind394.mustSay?.includes("sabit DTEN Bar Plus yok"))
+) {
+  errors.push("blind prompt #394 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit DTEN Bar Plus yok");
+}
+
+const pBlind395 = PROMPTS.find((x) => x.id === 395);
+if (!pBlind395 || !/cap apron|kapak eteği/i.test(pBlind395.q)) {
+  errors.push("blind prompt #395 must cover sabit cap apron invent");
+}
+if (
+  pBlind395 &&
+  (!pBlind395.mustSay?.includes("yazılı teklif") ||
+    !pBlind395.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind395.mustSay?.includes("sabit cap apron yok"))
+) {
+  errors.push("blind prompt #395 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cap apron yok");
+}
+
+const pBlind396 = PROMPTS.find((x) => x.id === 396);
+if (!pBlind396 || !/Poly Studio X70|Poly X70/i.test(pBlind396.q)) {
+  errors.push("blind prompt #396 must cover sabit Poly Studio X70 invent");
+}
+if (
+  pBlind396 &&
+  (!pBlind396.mustSay?.includes("yazılı teklif") ||
+    !pBlind396.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind396.mustSay?.includes("sabit Poly Studio X70 yok"))
+) {
+  errors.push("blind prompt #396 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Poly Studio X70 yok");
+}
+
+const pBlind397 = PROMPTS.find((x) => x.id === 397);
+if (!pBlind397 || !/sill apron|denizlik eteği/i.test(pBlind397.q)) {
+  errors.push("blind prompt #397 must cover sabit sill apron invent");
+}
+if (
+  pBlind397 &&
+  (!pBlind397.mustSay?.includes("yazılı teklif") ||
+    !pBlind397.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind397.mustSay?.includes("sabit sill apron yok"))
+) {
+  errors.push("blind prompt #397 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit sill apron yok");
+}
+
+const pBlind398 = PROMPTS.find((x) => x.id === 398);
+if (!pBlind398 || !/Maxhub V5 Classic|Maxhub V5/i.test(pBlind398.q)) {
+  errors.push("blind prompt #398 must cover sabit Maxhub V5 Classic invent");
+}
+if (
+  pBlind398 &&
+  (!pBlind398.mustSay?.includes("yazılı teklif") ||
+    !pBlind398.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind398.mustSay?.includes("sabit Maxhub V5 Classic yok"))
+) {
+  errors.push("blind prompt #398 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Maxhub V5 Classic yok");
+}
+
+const pBlind399 = PROMPTS.find((x) => x.id === 399);
+if (!pBlind399 || !/drip apron|damla eteği/i.test(pBlind399.q)) {
+  errors.push("blind prompt #399 must cover sabit drip apron invent");
+}
+if (
+  pBlind399 &&
+  (!pBlind399.mustSay?.includes("yazılı teklif") ||
+    !pBlind399.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind399.mustSay?.includes("sabit drip apron yok"))
+) {
+  errors.push("blind prompt #399 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit drip apron yok");
+}
+
+const pBlind400 = PROMPTS.find((x) => x.id === 400);
+if (!pBlind400 || !/Logitech Tap Scheduler|Logitech Tap/i.test(pBlind400.q)) {
+  errors.push("blind prompt #400 must cover sabit Logitech Tap Scheduler invent");
+}
+if (
+  pBlind400 &&
+  (!pBlind400.mustSay?.includes("yazılı teklif") ||
+    !pBlind400.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind400.mustSay?.includes("sabit Logitech Tap Scheduler yok"))
+) {
+  errors.push("blind prompt #400 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Tap Scheduler yok");
+}
+
+const pBlind401 = PROMPTS.find((x) => x.id === 401);
+if (!pBlind401 || !/hip apron|mahiye eteği/i.test(pBlind401.q)) {
+  errors.push("blind prompt #401 must cover sabit hip apron invent");
+}
+if (
+  pBlind401 &&
+  (!pBlind401.mustSay?.includes("yazılı teklif") ||
+    !pBlind401.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind401.mustSay?.includes("sabit hip apron yok"))
+) {
+  errors.push("blind prompt #401 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip apron yok");
+}
+
+const pBlind402 = PROMPTS.find((x) => x.id === 402);
+if (!pBlind402 || !/Yealink MeetingBoard 86|MeetingBoard 86/i.test(pBlind402.q)) {
+  errors.push("blind prompt #402 must cover sabit Yealink MeetingBoard 86 invent");
+}
+if (
+  pBlind402 &&
+  (!pBlind402.mustSay?.includes("yazılı teklif") ||
+    !pBlind402.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind402.mustSay?.includes("sabit Yealink MeetingBoard 86 yok"))
+) {
+  errors.push("blind prompt #402 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Yealink MeetingBoard 86 yok");
+}
+
+const pBlind403 = PROMPTS.find((x) => x.id === 403);
+if (!pBlind403 || !/gable apron|kalkan eteği/i.test(pBlind403.q)) {
+  errors.push("blind prompt #403 must cover sabit gable apron invent");
+}
+if (
+  pBlind403 &&
+  (!pBlind403.mustSay?.includes("yazılı teklif") ||
+    !pBlind403.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind403.mustSay?.includes("sabit gable apron yok"))
+) {
+  errors.push("blind prompt #403 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit gable apron yok");
+}
+
+const pBlind404 = PROMPTS.find((x) => x.id === 404);
+if (!pBlind404 || !/Surface Hub 3|Hub 3/i.test(pBlind404.q)) {
+  errors.push("blind prompt #404 must cover sabit Surface Hub 3 invent");
+}
+if (
+  pBlind404 &&
+  (!pBlind404.mustSay?.includes("yazılı teklif") ||
+    !pBlind404.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind404.mustSay?.includes("sabit Surface Hub 3 yok"))
+) {
+  errors.push("blind prompt #404 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Surface Hub 3 yok");
+}
+
+const pBlind405 = PROMPTS.find((x) => x.id === 405);
+if (!pBlind405 || !/base apron|taban eteği/i.test(pBlind405.q)) {
+  errors.push("blind prompt #405 must cover sabit base apron invent");
+}
+if (
+  pBlind405 &&
+  (!pBlind405.mustSay?.includes("yazılı teklif") ||
+    !pBlind405.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind405.mustSay?.includes("sabit base apron yok"))
+) {
+  errors.push("blind prompt #405 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit base apron yok");
+}
+const pBlind406 = PROMPTS.find((x) => x.id === 406);
+if (!pBlind406 || !/Crestron Flex/i.test(pBlind406.q)) {
+  errors.push("blind prompt #406 must cover sabit Crestron Flex invent");
+}
+if (
+  pBlind406 &&
+  (!pBlind406.mustSay?.includes("yazılı teklif") ||
+    !pBlind406.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind406.mustSay?.includes("sabit Crestron Flex yok"))
+) {
+  errors.push("blind prompt #406 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Crestron Flex yok");
+}
+const pBlind407 = PROMPTS.find((x) => x.id === 407);
+if (!pBlind407 || !/head apron|başlık eteği/i.test(pBlind407.q)) {
+  errors.push("blind prompt #407 must cover sabit head apron invent");
+}
+if (
+  pBlind407 &&
+  (!pBlind407.mustSay?.includes("yazılı teklif") ||
+    !pBlind407.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind407.mustSay?.includes("sabit head apron yok"))
+) {
+  errors.push("blind prompt #407 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit head apron yok");
+}
+const pBlind408 = PROMPTS.find((x) => x.id === 408);
+if (!pBlind408 || !/Cisco Room Bar Pro|Room Bar Pro/i.test(pBlind408.q)) {
+  errors.push("blind prompt #408 must cover sabit Cisco Room Bar Pro invent");
+}
+if (
+  pBlind408 &&
+  (!pBlind408.mustSay?.includes("yazılı teklif") ||
+    !pBlind408.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind408.mustSay?.includes("sabit Cisco Room Bar Pro yok"))
+) {
+  errors.push("blind prompt #408 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Cisco Room Bar Pro yok");
+}
+const pBlind409 = PROMPTS.find((x) => x.id === 409);
+if (!pBlind409 || !/ridge apron|mahya eteği/i.test(pBlind409.q)) {
+  errors.push("blind prompt #409 must cover sabit ridge apron invent");
+}
+if (
+  pBlind409 &&
+  (!pBlind409.mustSay?.includes("yazılı teklif") ||
+    !pBlind409.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind409.mustSay?.includes("sabit ridge apron yok"))
+) {
+  errors.push("blind prompt #409 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ridge apron yok");
+}
+const pBlind410 = PROMPTS.find((x) => x.id === 410);
+if (!pBlind410 || !/Neat Bar/i.test(pBlind410.q)) {
+  errors.push("blind prompt #410 must cover sabit Neat Bar invent");
+}
+if (
+  pBlind410 &&
+  (!pBlind410.mustSay?.includes("yazılı teklif") ||
+    !pBlind410.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind410.mustSay?.includes("sabit Neat Bar yok"))
+) {
+  errors.push("blind prompt #410 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Bar yok");
+}
+const pBlind411 = PROMPTS.find((x) => x.id === 411);
+if (!pBlind411 || !/coping apron|parapet kapak eteği/i.test(pBlind411.q)) {
+  errors.push("blind prompt #411 must cover sabit coping apron invent");
+}
+if (
+  pBlind411 &&
+  (!pBlind411.mustSay?.includes("yazılı teklif") ||
+    !pBlind411.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind411.mustSay?.includes("sabit coping apron yok"))
+) {
+  errors.push("blind prompt #411 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit coping apron yok");
+}
+const pBlind412 = PROMPTS.find((x) => x.id === 412);
+if (!pBlind412 || !/Rally Bar Huddle/i.test(pBlind412.q)) {
+  errors.push("blind prompt #412 must cover sabit Rally Bar Huddle invent");
+}
+if (
+  pBlind412 &&
+  (!pBlind412.mustSay?.includes("yazılı teklif") ||
+    !pBlind412.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind412.mustSay?.includes("sabit Rally Bar Huddle yok"))
+) {
+  errors.push("blind prompt #412 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Rally Bar Huddle yok");
+}
+
+const pBlind413 = PROMPTS.find((x) => x.id === 413);
+if (!pBlind413 || !/skirt apron|etek eteği/i.test(pBlind413.q)) {
+  errors.push("blind prompt #413 must cover sabit skirt apron invent");
+}
+if (
+  pBlind413 &&
+  (!pBlind413.mustSay?.includes("yazılı teklif") ||
+    !pBlind413.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind413.mustSay?.includes("sabit skirt apron yok"))
+) {
+  errors.push("blind prompt #413 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit skirt apron yok");
+}
+
+const pBlind414 = PROMPTS.find((x) => x.id === 414);
+if (!pBlind414 || !/Logitech Meetup/i.test(pBlind414.q)) {
+  errors.push("blind prompt #414 must cover sabit Logitech Meetup invent");
+}
+if (
+  pBlind414 &&
+  (!pBlind414.mustSay?.includes("yazılı teklif") ||
+    !pBlind414.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind414.mustSay?.includes("sabit Logitech Meetup yok"))
+) {
+  errors.push("blind prompt #414 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Meetup yok");
+}
+
+const pBlind415 = PROMPTS.find((x) => x.id === 415);
+if (!pBlind415 || !/counter apron|counter eteği/i.test(pBlind415.q)) {
+  errors.push("blind prompt #415 must cover sabit counter apron invent");
+}
+if (
+  pBlind415 &&
+  (!pBlind415.mustSay?.includes("yazılı teklif") ||
+    !pBlind415.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind415.mustSay?.includes("sabit counter apron yok"))
+) {
+  errors.push("blind prompt #415 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit counter apron yok");
+}
+
+const pBlind416 = PROMPTS.find((x) => x.id === 416);
+if (!pBlind416 || !/Neat Frame/i.test(pBlind416.q)) {
+  errors.push("blind prompt #416 must cover sabit Neat Frame invent");
+}
+if (
+  pBlind416 &&
+  (!pBlind416.mustSay?.includes("yazılı teklif") ||
+    !pBlind416.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind416.mustSay?.includes("sabit Neat Frame yok"))
+) {
+  errors.push("blind prompt #416 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Frame yok");
+}
+
+const pBlind417 = PROMPTS.find((x) => x.id === 417);
+if (!pBlind417 || !/lintel apron|lintel eteği/i.test(pBlind417.q)) {
+  errors.push("blind prompt #417 must cover sabit lintel apron invent");
+}
+if (
+  pBlind417 &&
+  (!pBlind417.mustSay?.includes("yazılı teklif") ||
+    !pBlind417.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind417.mustSay?.includes("sabit lintel apron yok"))
+) {
+  errors.push("blind prompt #417 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit lintel apron yok");
+}
+
+const pBlind418 = PROMPTS.find((x) => x.id === 418);
+if (!pBlind418 || !/Rally Bar Mini/i.test(pBlind418.q)) {
+  errors.push("blind prompt #418 must cover sabit Rally Bar Mini invent");
+}
+if (
+  pBlind418 &&
+  (!pBlind418.mustSay?.includes("yazılı teklif") ||
+    !pBlind418.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind418.mustSay?.includes("sabit Rally Bar Mini yok"))
+) {
+  errors.push("blind prompt #418 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Rally Bar Mini yok");
+}
+
+const pBlind419 = PROMPTS.find((x) => x.id === 419);
+if (!pBlind419 || !/window apron|pencere eteği/i.test(pBlind419.q)) {
+  errors.push("blind prompt #419 must cover sabit window apron invent");
+}
+if (
+  pBlind419 &&
+  (!pBlind419.mustSay?.includes("yazılı teklif") ||
+    !pBlind419.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind419.mustSay?.includes("sabit window apron yok"))
+) {
+  errors.push("blind prompt #419 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit window apron yok");
+}
+
+const pBlind420 = PROMPTS.find((x) => x.id === 420);
+if (!pBlind420 || !/Neat Bar Pro/i.test(pBlind420.q)) {
+  errors.push("blind prompt #420 must cover sabit Neat Bar Pro invent");
+}
+if (
+  pBlind420 &&
+  (!pBlind420.mustSay?.includes("yazılı teklif") ||
+    !pBlind420.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind420.mustSay?.includes("sabit Neat Bar Pro yok"))
+) {
+  errors.push("blind prompt #420 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Bar Pro yok");
+}
+
+const pBlind421 = PROMPTS.find((x) => x.id === 421);
+if (!pBlind421 || !/door apron/i.test(pBlind421.q)) {
+  errors.push("blind prompt #421 must cover sabit door apron invent");
+}
+if (
+  pBlind421 &&
+  (!pBlind421.mustSay?.includes("yazılı teklif") ||
+    !pBlind421.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind421.mustSay?.includes("sabit door apron yok"))
+) {
+  errors.push("blind prompt #421 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit door apron yok");
+}
+
+const pBlind422 = PROMPTS.find((x) => x.id === 422);
+if (!pBlind422 || !/Neat Pad/i.test(pBlind422.q)) {
+  errors.push("blind prompt #422 must cover sabit Neat Pad invent");
+}
+if (
+  pBlind422 &&
+  (!pBlind422.mustSay?.includes("yazılı teklif") ||
+    !pBlind422.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind422.mustSay?.includes("sabit Neat Pad yok"))
+) {
+  errors.push("blind prompt #422 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Pad yok");
+}
+
+const pBlind423 = PROMPTS.find((x) => x.id === 423);
+if (!pBlind423 || !/threshold apron/i.test(pBlind423.q)) {
+  errors.push("blind prompt #423 must cover sabit threshold apron invent");
+}
+if (
+  pBlind423 &&
+  (!pBlind423.mustSay?.includes("yazılı teklif") ||
+    !pBlind423.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind423.mustSay?.includes("sabit threshold apron yok"))
+) {
+  errors.push("blind prompt #423 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit threshold apron yok");
+}
+
+const pBlind424 = PROMPTS.find((x) => x.id === 424);
+if (!pBlind424 || !/Room Kit Mini/i.test(pBlind424.q)) {
+  errors.push("blind prompt #424 must cover sabit Room Kit Mini invent");
+}
+if (
+  pBlind424 &&
+  (!pBlind424.mustSay?.includes("yazılı teklif") ||
+    !pBlind424.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind424.mustSay?.includes("sabit Room Kit Mini yok"))
+) {
+  errors.push("blind prompt #424 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Kit Mini yok");
+}
+
+const pBlind425 = PROMPTS.find((x) => x.id === 425);
+if (!pBlind425 || !/jamb apron/i.test(pBlind425.q)) {
+  errors.push("blind prompt #425 must cover sabit jamb apron invent");
+}
+if (
+  pBlind425 &&
+  (!pBlind425.mustSay?.includes("yazılı teklif") ||
+    !pBlind425.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind425.mustSay?.includes("sabit jamb apron yok"))
+) {
+  errors.push("blind prompt #425 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit jamb apron yok");
+}
+
+const pBlind426 = PROMPTS.find((x) => x.id === 426);
+if (!pBlind426 || !/MeetingBar A20/i.test(pBlind426.q)) {
+  errors.push("blind prompt #426 must cover sabit MeetingBar A20 invent");
+}
+if (
+  pBlind426 &&
+  (!pBlind426.mustSay?.includes("yazılı teklif") ||
+    !pBlind426.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind426.mustSay?.includes("sabit MeetingBar A20 yok"))
+) {
+  errors.push("blind prompt #426 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit MeetingBar A20 yok");
+}
+
+const pBlind427 = PROMPTS.find((x) => x.id === 427);
+if (!pBlind427 || !/balcony apron/i.test(pBlind427.q)) {
+  errors.push("blind prompt #427 must cover sabit balcony apron invent");
+}
+if (
+  pBlind427 &&
+  (!pBlind427.mustSay?.includes("yazılı teklif") ||
+    !pBlind427.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind427.mustSay?.includes("sabit balcony apron yok"))
+) {
+  errors.push("blind prompt #427 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit balcony apron yok");
+}
+
+const pBlind428 = PROMPTS.find((x) => x.id === 428);
+if (!pBlind428 || !/MeetingBar A30/i.test(pBlind428.q)) {
+  errors.push("blind prompt #428 must cover sabit MeetingBar A30 invent");
+}
+if (
+  pBlind428 &&
+  (!pBlind428.mustSay?.includes("yazılı teklif") ||
+    !pBlind428.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind428.mustSay?.includes("sabit MeetingBar A30 yok"))
+) {
+  errors.push("blind prompt #428 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit MeetingBar A30 yok");
+}
+
+const pBlind429 = PROMPTS.find((x) => x.id === 429);
+if (!pBlind429 || !/canopy apron/i.test(pBlind429.q)) {
+  errors.push("blind prompt #429 must cover sabit canopy apron invent");
+}
+if (
+  pBlind429 &&
+  (!pBlind429.mustSay?.includes("yazılı teklif") ||
+    !pBlind429.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind429.mustSay?.includes("sabit canopy apron yok"))
+) {
+  errors.push("blind prompt #429 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit canopy apron yok");
+}
+const pBlind430 = PROMPTS.find((x) => x.id === 430);
+if (!pBlind430 || !/Room Kit Plus/i.test(pBlind430.q)) {
+  errors.push("blind prompt #430 must cover sabit Room Kit Plus invent");
+}
+if (
+  pBlind430 &&
+  (!pBlind430.mustSay?.includes("yazılı teklif") ||
+    !pBlind430.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind430.mustSay?.includes("sabit Room Kit Plus yok"))
+) {
+  errors.push("blind prompt #430 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Kit Plus yok");
+}
+const pBlind431 = PROMPTS.find((x) => x.id === 431);
+if (!pBlind431 || !/skylight apron/i.test(pBlind431.q)) {
+  errors.push("blind prompt #431 must cover sabit skylight apron invent");
+}
+if (
+  pBlind431 &&
+  (!pBlind431.mustSay?.includes("yazılı teklif") ||
+    !pBlind431.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind431.mustSay?.includes("sabit skylight apron yok"))
+) {
+  errors.push("blind prompt #431 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit skylight apron yok");
+}
+const pBlind432 = PROMPTS.find((x) => x.id === 432);
+if (!pBlind432 || !/Owl Bar/i.test(pBlind432.q)) {
+  errors.push("blind prompt #432 must cover sabit Owl Bar invent");
+}
+if (
+  pBlind432 &&
+  (!pBlind432.mustSay?.includes("yazılı teklif") ||
+    !pBlind432.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind432.mustSay?.includes("sabit Owl Bar yok"))
+) {
+  errors.push("blind prompt #432 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Owl Bar yok");
+}
+const pBlind433 = PROMPTS.find((x) => x.id === 433);
+if (!pBlind433 || !/dormer apron/i.test(pBlind433.q)) {
+  errors.push("blind prompt #433 must cover sabit dormer apron invent");
+}
+if (
+  pBlind433 &&
+  (!pBlind433.mustSay?.includes("yazılı teklif") ||
+    !pBlind433.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind433.mustSay?.includes("sabit dormer apron yok"))
+) {
+  errors.push("blind prompt #433 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit dormer apron yok");
+}
+const pBlind434 = PROMPTS.find((x) => x.id === 434);
+if (!pBlind434 || !/Tap IP/i.test(pBlind434.q)) {
+  errors.push("blind prompt #434 must cover sabit Tap IP invent");
+}
+if (
+  pBlind434 &&
+  (!pBlind434.mustSay?.includes("yazılı teklif") ||
+    !pBlind434.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind434.mustSay?.includes("sabit Tap IP yok"))
+) {
+  errors.push("blind prompt #434 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Tap IP yok");
+}
+const pBlind435 = PROMPTS.find((x) => x.id === 435);
+if (!pBlind435 || !/soffit apron/i.test(pBlind435.q)) {
+  errors.push("blind prompt #435 must cover sabit soffit apron invent");
+}
+if (
+  pBlind435 &&
+  (!pBlind435.mustSay?.includes("yazılı teklif") ||
+    !pBlind435.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind435.mustSay?.includes("sabit soffit apron yok"))
+) {
+  errors.push("blind prompt #435 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit soffit apron yok");
+}
+const pBlind436 = PROMPTS.find((x) => x.id === 436);
+if (!pBlind436 || !/Room Mate/i.test(pBlind436.q)) {
+  errors.push("blind prompt #436 must cover sabit Room Mate invent");
+}
+if (
+  pBlind436 &&
+  (!pBlind436.mustSay?.includes("yazılı teklif") ||
+    !pBlind436.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind436.mustSay?.includes("sabit Room Mate yok"))
+) {
+  errors.push("blind prompt #436 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Mate yok");
+}
+
+const pBlind437 = PROMPTS.find((x) => x.id === 437);
+if (!pBlind437 || !/cornice apron/i.test(pBlind437.q)) {
+  errors.push("blind prompt #437 must cover sabit cornice apron invent");
+}
+if (
+  pBlind437 &&
+  (!pBlind437.mustSay?.includes("yazılı teklif") ||
+    !pBlind437.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind437.mustSay?.includes("sabit cornice apron yok"))
+) {
+  errors.push("blind prompt #437 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cornice apron yok");
+}
+
+const pBlind438 = PROMPTS.find((x) => x.id === 438);
+if (!pBlind438 || !/Room Navigator/i.test(pBlind438.q)) {
+  errors.push("blind prompt #438 must cover sabit Room Navigator invent");
+}
+if (
+  pBlind438 &&
+  (!pBlind438.mustSay?.includes("yazılı teklif") ||
+    !pBlind438.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind438.mustSay?.includes("sabit Room Navigator yok"))
+) {
+  errors.push("blind prompt #438 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Navigator yok");
+}
+const pBlind439 = PROMPTS.find((x) => x.id === 439);
+if (!pBlind439 || !/pediment apron/i.test(pBlind439.q)) {
+  errors.push("blind prompt #439 must cover sabit pediment apron invent");
+}
+if (
+  pBlind439 &&
+  (!pBlind439.mustSay?.includes("yazılı teklif") ||
+    !pBlind439.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind439.mustSay?.includes("sabit pediment apron yok"))
+) {
+  errors.push("blind prompt #439 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit pediment apron yok");
+}
+const pBlind440 = PROMPTS.find((x) => x.id === 440);
+if (!pBlind440 || !/Neat Center/i.test(pBlind440.q)) {
+  errors.push("blind prompt #440 must cover sabit Neat Center invent");
+}
+if (
+  pBlind440 &&
+  (!pBlind440.mustSay?.includes("yazılı teklif") ||
+    !pBlind440.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind440.mustSay?.includes("sabit Neat Center yok"))
+) {
+  errors.push("blind prompt #440 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Neat Center yok");
+}
+const pBlind441 = PROMPTS.find((x) => x.id === 441);
+if (!pBlind441 || !/frieze apron/i.test(pBlind441.q)) {
+  errors.push("blind prompt #441 must cover sabit frieze apron invent");
+}
+if (
+  pBlind441 &&
+  (!pBlind441.mustSay?.includes("yazılı teklif") ||
+    !pBlind441.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind441.mustSay?.includes("sabit frieze apron yok"))
+) {
+  errors.push("blind prompt #441 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit frieze apron yok");
+}
+const pBlind442 = PROMPTS.find((x) => x.id === 442);
+if (!pBlind442 || !/Logitech Sight/i.test(pBlind442.q)) {
+  errors.push("blind prompt #442 must cover sabit Logitech Sight invent");
+}
+if (
+  pBlind442 &&
+  (!pBlind442.mustSay?.includes("yazılı teklif") ||
+    !pBlind442.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind442.mustSay?.includes("sabit Logitech Sight yok"))
+) {
+  errors.push("blind prompt #442 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Sight yok");
+}
+const pBlind443 = PROMPTS.find((x) => x.id === 443);
+if (!pBlind443 || !/verge apron/i.test(pBlind443.q)) {
+  errors.push("blind prompt #443 must cover sabit verge apron invent");
+}
+if (
+  pBlind443 &&
+  (!pBlind443.mustSay?.includes("yazılı teklif") ||
+    !pBlind443.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind443.mustSay?.includes("sabit verge apron yok"))
+) {
+  errors.push("blind prompt #443 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit verge apron yok");
+}
+const pBlind444 = PROMPTS.find((x) => x.id === 444);
+if (!pBlind444 || !/Room Bar Mini/i.test(pBlind444.q)) {
+  errors.push("blind prompt #444 must cover sabit Room Bar Mini invent");
+}
+if (
+  pBlind444 &&
+  (!pBlind444.mustSay?.includes("yazılı teklif") ||
+    !pBlind444.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind444.mustSay?.includes("sabit Room Bar Mini yok"))
+) {
+  errors.push("blind prompt #444 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Room Bar Mini yok");
+}
+const pBlind445 = PROMPTS.find((x) => x.id === 445);
+if (!pBlind445 || !/architrave apron/i.test(pBlind445.q)) {
+  errors.push("blind prompt #445 must cover sabit architrave apron invent");
+}
+if (
+  pBlind445 &&
+  (!pBlind445.mustSay?.includes("yazılı teklif") ||
+    !pBlind445.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind445.mustSay?.includes("sabit architrave apron yok"))
+) {
+  errors.push("blind prompt #445 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit architrave apron yok");
+}
+const pBlind446 = PROMPTS.find((x) => x.id === 446);
+if (!pBlind446 || !/Poly Studio P15/i.test(pBlind446.q)) {
+  errors.push("blind prompt #446 must cover sabit Poly Studio P15 invent");
+}
+if (
+  pBlind446 &&
+  (!pBlind446.mustSay?.includes("yazılı teklif") ||
+    !pBlind446.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind446.mustSay?.includes("sabit Poly Studio P15 yok"))
+) {
+  errors.push("blind prompt #446 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Poly Studio P15 yok");
+}
+const pBlind447 = PROMPTS.find((x) => x.id === 447);
+if (!pBlind447 || !/plinth apron/i.test(pBlind447.q)) {
+  errors.push("blind prompt #447 must cover sabit plinth apron invent");
+}
+if (
+  pBlind447 &&
+  (!pBlind447.mustSay?.includes("yazılı teklif") ||
+    !pBlind447.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind447.mustSay?.includes("sabit plinth apron yok"))
+) {
+  errors.push("blind prompt #447 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit plinth apron yok");
+}
+const pBlind448 = PROMPTS.find((x) => x.id === 448);
+if (!pBlind448 || !/Cisco Desk Pro/i.test(pBlind448.q)) {
+  errors.push("blind prompt #448 must cover sabit Cisco Desk Pro invent");
+}
+if (
+  pBlind448 &&
+  (!pBlind448.mustSay?.includes("yazılı teklif") ||
+    !pBlind448.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind448.mustSay?.includes("sabit Cisco Desk Pro yok"))
+) {
+  errors.push("blind prompt #448 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Cisco Desk Pro yok");
+}
+const pBlind449 = PROMPTS.find((x) => x.id === 449);
+if (!pBlind449 || !/spandrel apron/i.test(pBlind449.q)) {
+  errors.push("blind prompt #449 must cover sabit spandrel apron invent");
+}
+if (
+  pBlind449 &&
+  (!pBlind449.mustSay?.includes("yazılı teklif") ||
+    !pBlind449.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind449.mustSay?.includes("sabit spandrel apron yok"))
+) {
+  errors.push("blind prompt #449 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit spandrel apron yok");
+}
+const pBlind450 = PROMPTS.find((x) => x.id === 450);
+if (!pBlind450 || !/Cisco Room Kit EQ/i.test(pBlind450.q)) {
+  errors.push("blind prompt #450 must cover sabit Cisco Room Kit EQ invent");
+}
+if (
+  pBlind450 &&
+  (!pBlind450.mustSay?.includes("yazılı teklif") ||
+    !pBlind450.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind450.mustSay?.includes("sabit Cisco Room Kit EQ yok"))
+) {
+  errors.push("blind prompt #450 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Cisco Room Kit EQ yok");
+}
+const pBlind451 = PROMPTS.find((x) => x.id === 451);
+if (!pBlind451 || !/curtain wall/i.test(pBlind451.q)) {
+  errors.push("blind prompt #451 must cover sabit curtain wall invent");
+}
+if (
+  pBlind451 &&
+  (!pBlind451.mustSay?.includes("yazılı teklif") ||
+    !pBlind451.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind451.mustSay?.includes("sabit curtain wall yok"))
+) {
+  errors.push("blind prompt #451 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit curtain wall yok");
+}
+const pBlind452 = PROMPTS.find((x) => x.id === 452);
+if (!pBlind452 || !/Logitech Rally Bar Huddle/i.test(pBlind452.q)) {
+  errors.push("blind prompt #452 must cover sabit Logitech Rally Bar Huddle invent");
+}
+if (
+  pBlind452 &&
+  (!pBlind452.mustSay?.includes("yazılı teklif") ||
+    !pBlind452.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind452.mustSay?.includes("sabit Logitech Rally Bar Huddle yok"))
+) {
+  errors.push("blind prompt #452 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Rally Bar Huddle yok");
+}
+const pBlind453 = PROMPTS.find((x) => x.id === 453);
+if (!pBlind453 || !/mullion/i.test(pBlind453.q)) {
+  errors.push("blind prompt #453 must cover sabit mullion invent");
+}
+if (
+  pBlind453 &&
+  (!pBlind453.mustSay?.includes("yazılı teklif") ||
+    !pBlind453.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind453.mustSay?.includes("sabit mullion yok"))
+) {
+  errors.push("blind prompt #453 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit mullion yok");
+}
+const pBlind454 = PROMPTS.find((x) => x.id === 454);
+if (!pBlind454 || !/HP Presence Mini/i.test(pBlind454.q)) {
+  errors.push("blind prompt #454 must cover sabit HP Presence Mini invent");
+}
+if (
+  pBlind454 &&
+  (!pBlind454.mustSay?.includes("yazılı teklif") ||
+    !pBlind454.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind454.mustSay?.includes("sabit HP Presence Mini yok"))
+) {
+  errors.push("blind prompt #454 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit HP Presence Mini yok");
+}
+const pBlind455 = PROMPTS.find((x) => x.id === 455);
+if (!pBlind455 || !/transom/i.test(pBlind455.q)) {
+  errors.push("blind prompt #455 must cover sabit transom invent");
+}
+if (
+  pBlind455 &&
+  (!pBlind455.mustSay?.includes("yazılı teklif") ||
+    !pBlind455.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind455.mustSay?.includes("sabit transom yok"))
+) {
+  errors.push("blind prompt #455 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit transom yok");
+}
+const pBlind456 = PROMPTS.find((x) => x.id === 456);
+if (!pBlind456 || !/Kramer VIA Connect/i.test(pBlind456.q)) {
+  errors.push("blind prompt #456 must cover sabit Kramer VIA Connect invent");
+}
+if (
+  pBlind456 &&
+  (!pBlind456.mustSay?.includes("yazılı teklif") ||
+    !pBlind456.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind456.mustSay?.includes("sabit Kramer VIA Connect yok"))
+) {
+  errors.push("blind prompt #456 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Kramer VIA Connect yok");
+}
+const pBlind457 = PROMPTS.find((x) => x.id === 457);
+if (!pBlind457 || !/canopy fascia/i.test(pBlind457.q)) {
+  errors.push("blind prompt #457 must cover sabit canopy fascia invent");
+}
+if (
+  pBlind457 &&
+  (!pBlind457.mustSay?.includes("yazılı teklif") ||
+    !pBlind457.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind457.mustSay?.includes("sabit canopy fascia yok"))
+) {
+  errors.push("blind prompt #457 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit canopy fascia yok");
+}
+const pBlind458 = PROMPTS.find((x) => x.id === 458);
+if (!pBlind458 || !/Bose VB1/i.test(pBlind458.q)) {
+  errors.push("blind prompt #458 must cover sabit Bose VB1 invent");
+}
+if (
+  pBlind458 &&
+  (!pBlind458.mustSay?.includes("yazılı teklif") ||
+    !pBlind458.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind458.mustSay?.includes("sabit Bose VB1 yok"))
+) {
+  errors.push("blind prompt #458 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Bose VB1 yok");
+}
+const pBlind459 = PROMPTS.find((x) => x.id === 459);
+if (!pBlind459 || !/blade sign/i.test(pBlind459.q)) {
+  errors.push("blind prompt #459 must cover sabit blade sign invent");
+}
+if (
+  pBlind459 &&
+  (!pBlind459.mustSay?.includes("yazılı teklif") ||
+    !pBlind459.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind459.mustSay?.includes("sabit blade sign yok"))
+) {
+  errors.push("blind prompt #459 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit blade sign yok");
+}
+const pBlind460 = PROMPTS.find((x) => x.id === 460);
+if (!pBlind460 || !/Shure MXA920/i.test(pBlind460.q)) {
+  errors.push("blind prompt #460 must cover sabit Shure MXA920 invent");
+}
+if (
+  pBlind460 &&
+  (!pBlind460.mustSay?.includes("yazılı teklif") ||
+    !pBlind460.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind460.mustSay?.includes("sabit Shure MXA920 yok"))
+) {
+  errors.push("blind prompt #460 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Shure MXA920 yok");
+}
+const pBlind461 = PROMPTS.find((x) => x.id === 461);
+if (!pBlind461 || !/fascia board/i.test(pBlind461.q)) {
+  errors.push("blind prompt #461 must cover sabit fascia board invent");
+}
+if (
+  pBlind461 &&
+  (!pBlind461.mustSay?.includes("yazılı teklif") ||
+    !pBlind461.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind461.mustSay?.includes("sabit fascia board yok"))
+) {
+  errors.push("blind prompt #461 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit fascia board yok");
+}
+const pBlind462 = PROMPTS.find((x) => x.id === 462);
+if (!pBlind462 || !/QSC Core Nano/i.test(pBlind462.q)) {
+  errors.push("blind prompt #462 must cover sabit QSC Core Nano invent");
+}
+if (
+  pBlind462 &&
+  (!pBlind462.mustSay?.includes("yazılı teklif") ||
+    !pBlind462.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind462.mustSay?.includes("sabit QSC Core Nano yok"))
+) {
+  errors.push("blind prompt #462 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit QSC Core Nano yok");
+}
+const pBlind463 = PROMPTS.find((x) => x.id === 463);
+if (!pBlind463 || !/awning box/i.test(pBlind463.q)) {
+  errors.push("blind prompt #463 must cover sabit awning box invent");
+}
+if (
+  pBlind463 &&
+  (!pBlind463.mustSay?.includes("yazılı teklif") ||
+    !pBlind463.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind463.mustSay?.includes("sabit awning box yok"))
+) {
+  errors.push("blind prompt #463 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit awning box yok");
+}
+const pBlind464 = PROMPTS.find((x) => x.id === 464);
+if (!pBlind464 || !/ClearTouch 65/i.test(pBlind464.q)) {
+  errors.push("blind prompt #464 must cover sabit ClearTouch 65 invent");
+}
+if (
+  pBlind464 &&
+  (!pBlind464.mustSay?.includes("yazılı teklif") ||
+    !pBlind464.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind464.mustSay?.includes("sabit ClearTouch 65 yok"))
+) {
+  errors.push("blind prompt #464 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ClearTouch 65 yok");
+}
+const pBlind465 = PROMPTS.find((x) => x.id === 465);
+if (!pBlind465 || !/spandrel glass/i.test(pBlind465.q)) {
+  errors.push("blind prompt #465 must cover sabit spandrel glass invent");
+}
+if (
+  pBlind465 &&
+  (!pBlind465.mustSay?.includes("yazılı teklif") ||
+    !pBlind465.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind465.mustSay?.includes("sabit spandrel glass yok"))
+) {
+  errors.push("blind prompt #465 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit spandrel glass yok");
+}
+const pBlind466 = PROMPTS.find((x) => x.id === 466);
+if (!pBlind466 || !/Google Meet Series One/i.test(pBlind466.q)) {
+  errors.push("blind prompt #466 must cover sabit Google Meet Series One invent");
+}
+if (
+  pBlind466 &&
+  (!pBlind466.mustSay?.includes("yazılı teklif") ||
+    !pBlind466.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind466.mustSay?.includes("sabit Google Meet Series One yok"))
+) {
+  errors.push("blind prompt #466 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Meet Series One yok");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+}
+
+errors.push("every blind prompt must declare non-empty mustSay");
+}
+
+// Day 56: docs/ai-shopping-blind-test.md must not drift from shared prompts module
+const blindDoc = path.join(root, "docs/ai-shopping-blind-test.md");
+if (fs.existsSync(blindDoc)) {
+  const doc = fs.readFileSync(blindDoc, "utf8");
+  if (!doc.includes("scripts/lib/ai-shopping-prompts.mjs")) {
+    errors.push("docs/ai-shopping-blind-test.md must cite scripts/lib/ai-shopping-prompts.mjs as source of truth");
+  }
+  if (!doc.includes("ücretsiz kargo yok") || !doc.includes("mustSay")) {
+    errors.push("docs/ai-shopping-blind-test.md must document mustSay honesty (ücretsiz kargo yok)");
+  }
+  for (const p of PROMPTS) {
+    if (!doc.includes(p.q)) {
+      errors.push(`docs/ai-shopping-blind-test.md missing prompt #${p.id} text: ${p.q}`);
+    }
+    // Primary path (first) must appear in the doc table / text
+    const primary = p.paths[0];
+    if (primary && !doc.includes(primary) && !doc.includes(primary.replace(/\/$/, ""))) {
+      // Allow short segment for product hubs (e.g. seffaf)
+      const seg = primary.split("/").filter(Boolean).pop();
+      if (!seg || !doc.includes(seg)) {
+        errors.push(`docs/ai-shopping-blind-test.md missing primary path for #${p.id}: ${primary}`);
+      }
+    }
+  }
+} else {
+  errors.push("missing docs/ai-shopping-blind-test.md");
+}
+
+if (errors.length) {
+  console.error(`audit-blind-test: FAIL (${errors.length})`);
+  for (const e of errors) console.error(" -", e);
+  process.exit(1);
+}
+
+console.log(
+  `audit-blind-test: OK — prompts=${PROMPTS.length} entity+catalog+llms+profiles cite facts ready`,
+);

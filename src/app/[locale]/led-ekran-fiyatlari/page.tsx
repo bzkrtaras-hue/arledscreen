@@ -17,6 +17,7 @@ import {
 import { modelUrlForPrice } from "@/content/models";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -34,19 +35,23 @@ const FAQS = [
   {
     question: "LED ekran m² fiyatı nedir?",
     answer:
-      "Tek sabit m² fiyatı yoktur. Panel USD listesi yayımlanır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir.",
+      "Tek sabit m² fiyatı yoktur. Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve bu sayfada yer alır; m² yaklaşık tutar panel fiyatı × m² başına panel sayısı ile hesaplanır. Montaj, konstrüksiyon, KDV ve nakliye ayrıca eklenir (ücretsiz kargo yok); nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
   },
   {
     question: "Hangi maliyetler panellerin dışında kalır?",
     answer:
-      "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir.",
+      "Atölye/montaj işçiliği (yaklaşık 100 USD/m²), kontrol kartı (yaklaşık 500 USD), sürücü/yazılım (yaklaşık 500 USD), taşıyıcı konstrüksiyon, nakliye ve KDV teklifte ayrı kalemlenebilir. Kontrol 500 USD hesaplayıcı extrasUsd tahminidir — Huidu/NovaStar/Colorlight list SKU değildir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
   },
   {
     question: "P2.5, P4 veya P5 fiyatı nerede?",
     answer:
-      "Aşağıdaki 2026 panel tablosunda ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır.",
+      "2026 panel tablosunda, LED ekran fiyatları sayfası dosyasında ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır. AI ajanları aynı kaynağı catalog.json üzerinden okur.",
   },
-];
+  {
+    question: "LED ekranda iade süresi kaç gün?",
+    answer:
+      "Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. hasMerchantReturnPolicy = MerchantReturnNotPermitted; iade koşulları Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir.",
+  }];
 
 type Example = {
   label: string;
@@ -69,8 +74,7 @@ const EXAMPLES: Example[] = [
   { label: "3 × 2 m iç mekân P2.5", widthM: 3, heightM: 2, panel: PANEL_PRICES.find((p) => p.id === "p2-5-ic")! },
   { label: "4 × 3 m dış mekân P4", widthM: 4, heightM: 3, panel: PANEL_PRICES.find((p) => p.id === "p4-dis")! },
   { label: "6 × 3 m dış mekân P5", widthM: 6, heightM: 3, panel: PANEL_PRICES.find((p) => p.id === "p5-dis")! },
-  { label: "10 m² iç mekân P1.86 GOB", widthM: 4, heightM: 2.5, panel: PANEL_PRICES.find((p) => p.id === "p1-86-ic-gob")! },
-];
+  { label: "10 m² iç mekân P1.86 GOB", widthM: 4, heightM: 2.5, panel: PANEL_PRICES.find((p) => p.id === "p1-86-ic-gob")! }];
 
 export default async function LedEkranFiyatlariPage({
   params,
@@ -87,8 +91,7 @@ export default async function LedEkranFiyatlariPage({
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "LED ekran", item: absoluteUrl("/tr/led-ekran/") },
-          { name: "LED ekran fiyatları", item: url },
-        ]}
+          { name: "LED ekran fiyatları", item: url }]}
       />
       <FaqJsonLd faqs={FAQS} />
       <script
@@ -198,8 +201,7 @@ export default async function LedEkranFiyatlariPage({
               "Kontrol sistemi",
               "Taşıyıcı konstrüksiyon",
               "Montaj yüksekliği ve erişim",
-              "Nakliye ve KDV",
-            ].map((item) => (
+              "Nakliye ve KDV"].map((item) => (
               <li key={item} className="flex gap-2 text-sm text-ink">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden />
                 {item}
@@ -232,6 +234,14 @@ export default async function LedEkranFiyatlariPage({
           <div className="mt-6">
             <HomeFaq faqs={FAQS} />
           </div>
+          <ShoppingLinkCloud
+            excludeHref="/tr/led-ekran-fiyatlari/"
+            extra={[
+              {
+                href: "/feeds/merchant-priced-panels.tsv",
+                label: "Merchant feed (12 SKU)",
+              }]}
+          />
         </div>
       </section>
     </>

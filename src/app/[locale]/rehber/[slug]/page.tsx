@@ -16,6 +16,16 @@ import {
   isSeoGuideSlug,
   type SeoGuideSlug,
 } from "@/content/seo-guides";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+
+/** Shared AI-shopping cites — keep aligned with catalog.json / entity.json */
+const GUIDE_SHOPPING_FAQS = [
+  {
+    question: "Bu rehberdeki LED ekran panel fiyatını nereden okumalıyım?",
+    answer:
+      "Yayımlanmış panel listesi (2026 panel USD) LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç; ücretsiz kargo yok). Yaklaşık m²: https://arledscreen.com/tr/hesaplayici/. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir; iade/garanti teklifte (quote-and-contract); uydurma TL paket yoktur.",
+  }];
+
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
 }
@@ -54,6 +64,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
   const guide = getSeoGuide(locale, slug as SeoGuideSlug);
   const hub = getSeoGuideHub(locale);
   const dict = getDictionary(locale);
+  const faqs = [...guide.faqs, ...GUIDE_SHOPPING_FAQS];
 
   return (
     <>
@@ -67,10 +78,9 @@ export default async function SeoGuidePage({ params }: PageProps) {
           {
             name: guide.cardLabel,
             item: absoluteUrl(`/${locale}/rehber/${guide.slug}`),
-          },
-        ]}
+          }]}
       />
-      <FaqJsonLd faqs={guide.faqs} />
+      <FaqJsonLd faqs={faqs} />
 
       <script
         type="application/ld+json"
@@ -100,6 +110,10 @@ export default async function SeoGuidePage({ params }: PageProps) {
             mainEntityOfPage: absoluteUrl(
               `/${locale}/rehber/${guide.slug}/`,
             ),
+            sameAs: [
+              absoluteUrl("/ai-shopping.json"),
+              absoluteUrl("/catalog.json"),
+              absoluteUrl("/entity.json")],
             keywords: guide.keywords.join(", "),
           }),
         }}
@@ -125,7 +139,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
           ))}
 
           <div className="grid gap-4 md:grid-cols-2">
-            {guide.faqs.map((f) => (
+            {faqs.map((f) => (
               <GlassPanel key={f.question} className="p-5">
                 <h3 className="font-display text-base font-semibold text-ink">
                   {f.question}
@@ -134,6 +148,8 @@ export default async function SeoGuidePage({ params }: PageProps) {
               </GlassPanel>
             ))}
           </div>
+
+          <ShoppingLinkCloud excludeHref={`/tr/rehber/${guide.slug}/`} />
 
           <GlassPanel className="max-w-3xl p-6">
             <h2 className="font-display text-lg font-bold text-ink">

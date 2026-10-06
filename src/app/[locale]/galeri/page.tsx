@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -19,6 +22,19 @@ export const metadata: Metadata = buildTrOnlyMetadata({
     "İç mekân, dış mekân, kavisli ve sinema LED ekran uygulama galerisi. Kategorilere göre düzenlenmiş saha ve referans görselleri.",
 });
 
+const GALERI_FAQS = [
+  {
+    question: "Galerideki LED ekran kurulumlarının list fiyatı var mı?",
+    answer:
+      "Hayır. Galeri görsellerinde uydurma paket fiyatı yoktur. Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir (KDV/nakliye hariç; ücretsiz kargo yok). Proje tutarı https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte yazılır.",
+  },
+  {
+    question: "Galeri görselleri hangi ürün gruplarını kapsar?",
+    answer:
+      "İç mekân, dış mekân, kavisli ve sinema uygulamaları yer alır. Model seçimi ve panel bandı için LED ekran fiyatları sayfası ile ürün gruplarını birlikte kullanın; nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+  },
+];
+
 export default async function GaleriPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (locale !== "tr") notFound();
@@ -28,9 +44,9 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
       <BreadcrumbJsonLd
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
-          { name: "Galeri", item: absoluteUrl("/tr/galeri/") },
-        ]}
+          { name: "Galeri", item: absoluteUrl("/tr/galeri/") }]}
       />
+      <FaqJsonLd faqs={GALERI_FAQS} />
 
       <section className="bg-white pt-8 pb-2 sm:pt-10 md:pt-12">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
@@ -49,6 +65,16 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
 
       <Section className="prose-seo pt-6 sm:pt-8 md:pt-10" contained>
         <YiyistarGallery />
+        <ShoppingLinkCloud
+          excludeHref="/tr/galeri/"
+          title="Galeri · fiyat ve kimlik kaynakları"
+          extra={[
+            { href: "/tr/projelerimiz/", label: "Projeler" },
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
+        />
+        <div className="mt-10">
+          <HomeFaq faqs={GALERI_FAQS} />
+        </div>
       </Section>
 
       <section className="bg-band py-14 md:py-20">

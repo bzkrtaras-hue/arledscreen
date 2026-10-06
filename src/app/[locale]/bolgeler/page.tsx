@@ -10,6 +10,7 @@ import {
   serviceRegionPath,
   serviceRegionsHubSummary,
 } from "@/content/service-regions";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -40,6 +41,11 @@ const FAQS = [
     question: "Şehir sayfalarındaki proje sayıları neyi gösterir?",
     answer:
       "Yalnızca sitede yayımlanmış referans kayıtlarından türetilir. Her il sayfasında o ile ait konumlar ve örnek kayıtlar listelenir; kaydı olmayan il için sayfa üretilmez.",
+  },
+  {
+    question: "Bölgesel LED ekran fiyatı nereden okunur?",
+    answer:
+      "Sabit il/m² fiyatı yoktur. Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi. Nihai tutar keşif sonrası yazılı teklifle kesinleşir. İade/garanti teklifte. Kimlik: firma kaydı.",
   },
 ];
 
@@ -129,6 +135,13 @@ export default async function BolgelerHubPage({
 
       <Section eyebrow="SSS" title="Bölge hakkında sorular" className="border-t border-border prose-seo">
         <HomeFaq faqs={FAQS} />
+        <ShoppingLinkCloud
+          excludeHref="/tr/bolgeler/"
+          title="Bölge hub · fiyat ve kimlik kaynakları"
+          extra={[
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" },
+          ]}
+        />
       </Section>
     </>
   );

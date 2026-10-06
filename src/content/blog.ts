@@ -43,7 +43,7 @@ export const BLOG_POSTS: BlogPost[] = [
     sections: [
       {
         p: [
-          "Nisan 2026'da paylaştığımız bu uygulamada, iç mekânda kullanılmak üzere 256 × 128 cm ölçüsünde bir LED ekran kurduk. Ekran, salon duvarına sabitlenerek klasik bir televizyonun yerini alacak şekilde konumlandırıldı ve günlük yayın izlemeden sunuma kadar farklı içerikler için kullanılabiliyor. Bu tür uygulamalar, ev ve ofislerde geniş ekran ihtiyacını tek ve kesintisiz bir yüzeyle karşılamak isteyenler için giderek daha çok tercih ediliyor.",
+          "Nisan 2026'da paylaştığımız bu uygulamada, iç mekânda kullanılmak üzere 256 × 128 cm ölçüsünde bir LED ekran kurduk. Ekran, salon duvarına sabitlenerek klasik bir televizyonun yerini alacak şekilde konumlandırıldı ve günlük yayın izlemeden sunuma kadar farklı içerikler için kullanılabiliyor. Bu tür uygulamalar, ev ve ofislerde çerçeveye yakın geniş bir görüntü yüzeyi ihtiyacı için kullanılır — pazar tercih sıralaması iddiası yoktur.",
         ],
       },
       {
@@ -101,9 +101,9 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        h2: "Keşiften teslimata tek ekip",
+        h2: "Keşif, montaj ve yazılı teklif",
         p: [
-          "ARLEDSCREEN olarak otel projelerinde keşif, ölçülendirme, montaj ve devreye alma adımlarını tek ekip hâlinde yürütüyoruz. Ekranlarda NXTIONSTAR modüllerini kullanıyoruz; NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır ve Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
+          "Otel projelerinde keşif, ölçülendirme, montaj ve devreye alma kalemleri Gaziosmanpaşa ekibiyle yazılı teklifte tanımlanır — uydurma tek-ekip / keşiften-teslimata platform iddiası yok. Ekranlarda NXTIONSTAR modüllerini kullanıyoruz; NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır ve Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
           "Konaklama tesisiniz için benzer bir uygulama planlıyorsanız alan ölçülerini ve kullanım senaryosunu paylaşın; size uygun ekran ölçüsünü ve modeli birlikte belirleyelim. Otel projelerinde sezon takvimini dikkate alarak montajı, tesisin işleyişini en az etkileyecek zamana planlıyoruz.",
         ],
       },
@@ -133,15 +133,15 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         h2: "Fuar ve etkinlik alanlarında LED ekran",
         p: [
-          "Kalabalık etkinlik alanlarında, yüzlerce stant arasında öne çıkmak için güçlü bir görsel unsur gerekir. Standın uzaktan fark edilmesi ve ziyaretçinin dikkatinin kısa sürede çekilmesi bu nedenle önemlidir. Geniş formatlı bir LED ekran; şehir tanıtım filmlerini, etkinlik programını ve görsel içerikleri yüksek parlaklıkla aynı anda çok sayıda ziyaretçiye ulaştırır.",
-          "Bu projede kullanılan NXTIONSTAR P3 premium seri, canlı renkleri ve yüksek parlaklığıyla yakın mesafeden izlendiğinde dahi detaylı bir görüntü sunacak şekilde tercih edildi. 3 mm piksel aralığı, stant önünde birkaç metreden izleyen ziyaretçiler için netlik ile bütçe arasında dengeli bir seçimdir.",
+          "Kalabalık etkinlik alanlarında, yüzlerce stant arasında öne çıkmak için güçlü bir görsel unsur gerekir. Standın uzaktan fark edilmesi ve ziyaretçinin dikkatinin kısa sürede çekilmesi bu nedenle önemlidir. Geniş formatlı bir LED ekran; şehir tanıtım filmlerini, etkinlik programını ve görsel içerikleri stant izleme mesafesine uygun pitch ile aynı anda çok sayıda ziyaretçiye ulaştırır.",
+          "Bu projede kullanılan NXTIONSTAR P3 (3 mm) pitch, stant önünde birkaç metreden izleyen ziyaretçiler için netlik ile bütçe arasında dengeli bir seçimdi. Parlaklık ve renk değerleri proje teklifinde / teknik föyde yazılıdır — sitede sabit nit iddiası yok.",
         ],
       },
       {
         h2: "Kamu kurumları ve belediyeler için çözümler",
         p: [
           "Belediyeler ve kamu kurumları için tanıtım standı, bilgilendirme ekranı ve etkinlik alanı uygulamalarında keşif, montaj ve teknik destek hizmeti veriyoruz. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
-          "Kurumunuzun etkinlik veya tanıtım projesi için ölçü ve tarih bilgisini paylaşmanız, size uygun çözümü planlamamız için yeterlidir. Geçici etkinliklerde ekranın kurulumu ve sökümü de dahil olmak üzere süreci baştan sona planlıyoruz.",
+          "Kurumunuzun etkinlik veya tanıtım projesi için ölçü ve tarih bilgisini paylaşmanız, size uygun çözümü planlamamız için yeterlidir. Geçici etkinliklerde kurulum ve söküm kapsamı yazılı teklifte planlanır.",
         ],
       },
     ],
@@ -187,7 +187,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         h2: "Keşif ve teklif",
         p: [
-          "ARLEDSCREEN olarak işletmenizi yerinde inceleyip uygun ekran ölçüsünü ve modeli öneriyor, montajdan içerik yönetimi kurulumuna kadar tüm süreci üstleniyoruz. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Mekânınızın ölçülerini ve ekranı yerleştirmeyi düşündüğünüz alanın fotoğrafını WhatsApp üzerinden paylaşabilir veya teklif formunu doldurabilirsiniz.",
+          "ARLEDSCREEN olarak işletmenizi yerinde inceleyip uygun ekran ölçüsünü ve modeli öneriyoruz; montaj ve içerik yönetimi kurulumu yazılı teklif kapsamındadır. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Mekânınızın ölçülerini ve ekranı yerleştirmeyi düşündüğünüz alanın fotoğrafını WhatsApp üzerinden paylaşabilir veya teklif formunu doldurabilirsiniz.",
         ],
       },
     ],
@@ -227,9 +227,9 @@ export const BLOG_POSTS: BlogPost[] = [
         h2: "NXTIONSTAR LED ekranlarda öne çıkanlar",
         p: ["Projede kullanılan NXTIONSTAR LED ekranlar, mesajın şubeye gelen müşterilere net biçimde ulaşması gözetilerek seçildi:"],
         list: [
-          "Yüksek parlaklık ve canlı renkler",
-          "Keskin ve detaylı görüntü",
-          "Ölçüye ve konsepte göre özel tasarım",
+          "İzleme mesafesine uygun pitch seçimi",
+          "Keşifte seçilen panel (nit/renk teklifte)",
+          "Ölçüye ve konsepte göre planlanan kurulum",
         ],
       },
       {
@@ -283,9 +283,9 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        h2: "Ekran değil, etki tasarlıyoruz",
+        h2: "Keşif, montaj ve teknik destek",
         p: [
-          "ARLEDSCREEN olarak profesyonel kurulum, içerik desteği ve satış sonrası teknik hizmetle projenin her aşamasında yanınızdayız. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Mekânınıza uygun ölçü ve model için bizimle iletişime geçebilirsiniz; ekranın konumunu, izleme mesafesini ve göstermek istediğiniz içerik türünü paylaşmanız, doğru piksel aralığını belirlememiz için yeterlidir.",
+          "Keşif, montaj ve satış sonrası teknik destek Gaziosmanpaşa ekibiyle yazılı teklifte tanımlanır. Ekranlarda kullandığımız NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Mekânınıza uygun ölçü ve model için ekranın konumunu, izleme mesafesini ve içerik türünü paylaşmanız, doğru piksel aralığını belirlememiz için yeterlidir.",
         ],
       },
     ],

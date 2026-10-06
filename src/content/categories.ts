@@ -152,7 +152,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     slug: "ic-mekan-led-ekran",
     name: "İç Mekân LED Ekran",
     h1: "İç Mekân LED Ekran",
-    lead: "Yakın izleme mesafesinde net ve dikişsiz görüntü",
+    lead: "Yakın izleme mesafesine uygun ince pitch görüntü",
     title: "İç Mekân LED Ekran Fiyatları ve Modelleri | Mağaza, Kafe, Salon | ARLEDSCREEN",
     description:
       "Mağaza, kafe, showroom ve toplantı salonları için iç mekân LED ekran: piksel aralığı seçimi, keşif, montaj ve teknik servis. NXTIONSTAR markasıyla ARLEDSCREEN.",
@@ -164,7 +164,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "Toplantı salonunda duvara monte iç mekân LED ekran",
     intro: [
       "İç mekânda izleyici ekrana birkaç adım uzaklıkta durur; bu yüzden doğru piksel aralığı hem görüntü netliğini hem de bütçeyi doğrudan etkiler. Piksel aralığını izleme mesafesine, ekran ölçüsüne ve içerik türüne göre birlikte belirliyoruz.",
-      "Ölçünüzü modül katlarına göre planlıyor; keşif, montaj, devreye alma ve kurulum sonrası teknik servisi aynı ekiple yürütüyoruz.",
+      "Ölçünüzü modül katlarına göre planlıyor; keşif, montaj ve kurulum sonrası teknik servis Gaziosmanpaşa ekibiyle yazılı teklif kapsamında planlanır.",
     ],
     highlights: [
       "İzleme mesafesine göre piksel aralığı önerisi",
@@ -176,7 +176,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       { title: "Mağaza ve vitrin", body: "Ürün tanıtımı ve kampanya içerikleri için dikkat çeken yüzeyler." },
       { title: "Kafe ve restoran", body: "Maç yayını, menü ve atmosfer içerikleri için geniş ekranlar." },
       { title: "Showroom ve lobi", body: "Marka deneyimini destekleyen büyük formatlı video duvarları." },
-      { title: "Toplantı ve konferans", body: "Sunum ve video konferans için net, parlak ve dikişsiz görüntü." },
+      { title: "Toplantı ve konferans", body: "Sunum ve video konferans için yakın izlemeye uygun ince pitch görüntü." },
     ],
     pitches: [
       { label: "P1.25", note: "GOB seçenekli" },
@@ -222,8 +222,8 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     image: "/projects/urun-dis-mekan.jpg",
     imageAlt: "Bina önünde taşıyıcı sisteme kurulu dış mekân LED ekran",
     intro: [
-      "Dış mekânda ekran; güneş, yağmur ve toz koşullarında okunabilir kalmalıdır. Piksel aralığını montaj yüksekliği ve izleme mesafesiyle birlikte seçtiğimizde mesaj uzaktan okunur ve bütçe gereksiz çözünürlüğe harcanmaz.",
-      "Taşıyıcı sistem, elektrik altyapısı ve sinyal bağlantısı keşifte birlikte planlanır; montaj ve devreye alma aynı ekip tarafından tamamlanır.",
+      "Dış mekânda ekran; güneş, yağmur ve toz koşullarında okunabilir kalmalıdır. Piksel aralığını montaj yüksekliği ve izleme mesafesiyle birlikte seçtiğimizde mesaj uzaktan okunur ve bütçe gereksiz çözünürlüğe harcanmaz. Sabit ASTM/salt spray yok: sitede sabit ASTM B117, tuz sisi saati veya salt spray sonucu yayımlanmaz; korozyon/test belgeleri model föyü + Gaziosmanpaşa yazılı teklifte.",
+      "Taşıyıcı sistem, elektrik altyapısı ve sinyal bağlantısı keşifte birlikte planlanır; montaj ve devreye alma yazılı teklifte tanımlanan kapsamda tamamlanır.",
     ],
     highlights: [
       "Montaj yüksekliği ve izleme mesafesine göre seçim",
@@ -285,7 +285,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "GOB LED modül üzerinde su damlası — koruyucu kaplama yüzeyi",
     techGallery: FINE_PITCH_TECH_GALLERY,
     intro: [
-      "GOB (Glue on Board) teknolojisinde LED'lerin üzeri şeffaf bir koruyucu katmanla kaplanır. Bu katman, LED yüzeyini darbe, nem ve toza karşı korumaya yardımcı olur.",
+      "GOB (Glue on Board) teknolojisinde LED'lerin üzeri şeffaf bir koruyucu katmanla kaplanır. Bu katman, LED yüzeyini darbe, nem ve toza karşı korumaya yardımcı olur — sabit ölü piksel yok: sitede sabit ölü piksel oranı / pixel failure rate / 0.0001% / Class II yayımlanmaz; tolerans Gaziosmanpaşa keşif + yazılı teklifte. Sabit nem yok: sitede sabit 10–90% RH işletme nemi yayımlanmaz; nem bandı model föyü + yazılı teklifte. Sabit IK yok: sitede sabit IK08 / IK10 darbe sınıfı yayımlanmaz; IK/impact rating model föyü + Gaziosmanpaşa yazılı teklifte.",
       "İnsanların ekrana yaklaşabildiği, dokunabildiği veya yoğun trafiğin olduğu alanlarda GOB seçenekleri değerlendirilir. Uygunluğu keşifte kullanım koşullarına göre birlikte netleştiriyoruz.",
     ],
     highlights: [
@@ -335,19 +335,19 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     lead: "Konser, fuar ve lansmanlar için etkinliğe hazır sistemler",
     title: "Kiralık LED Ekran | Konser, Fuar, Lansman | ARLEDSCREEN",
     description:
-      "Konser, fuar, lansman ve açık hava etkinlikleri için kiralık LED ekran: hızlı kurulan kabinler, kurulum ve söküm planlaması. Etkinlik bilgilerinizle teklif isteyin.",
-    short: "Konser, fuar, lansman ve özel etkinlikler için hızlı kurulan kiralık sistemler.",
+      "Konser, fuar, lansman ve açık hava etkinlikleri için kiralık LED ekran: etkinlik takvimine göre kurulan kabinler, kurulum ve söküm planlaması. Etkinlik bilgilerinizle teklif isteyin.",
+    short: "Konser, fuar, lansman ve özel etkinlikler için etkinlik takvimine göre planlanan kiralık sistemler.",
     tag: "Etkinlik · Fuar · Sahne",
     family: "Kiralık LED Ekranlar",
     types: ["Sahne arka ekranı", "Konser ve festival", "Fuar standı", "Kurumsal etkinlik"],
     image: "/projects/modules/stage-led.jpg",
     imageAlt: "Konser sahnesinde LED ekran ve izleyiciler",
     intro: [
-      "Etkinlikte ekranın zamanında kurulması, gün boyu sorunsuz çalışması ve etkinlik bitince hızla sökülmesi gerekir. Kiralık projelerde bu süreci etkinlik takviminize göre planlıyoruz.",
+      "Etkinlikte ekranın zamanında kurulması, etkinlik takvimine göre çalışması ve bitince hızla sökülmesi gerekir. Kiralık projelerde bu süreci Gaziosmanpaşa ekibiyle yazılı teklifte planlıyoruz.",
       "Kiralık LED ekran fiyatı; ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre hazırlanır. Net teklif için etkinlik bilgilerinizi paylaşmanız yeterlidir.",
     ],
     highlights: [
-      "Hızlı kurulan kiralama kabinleri",
+      "Etkinlik takvimine göre kurulan kiralama kabinleri",
       "Kurulum ve söküm planlaması",
       "İç ve dış mekân etkinlikleri",
       "Etkinliğe özel yazılı teklif",
@@ -368,17 +368,17 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Kiralık LED ekran fiyatı neye göre belirlenir?",
         answer:
-          "Ekran ölçüsü, kiralama süresi, etkinlik lokasyonu ve kurulum koşulları fiyatı belirler. Bu bilgileri paylaştığınızda etkinliğe özel yazılı teklif hazırlıyoruz.",
+          "List fiyatı yoktur; stokta paket veya anında teslim iddiası yok. Ölçü, süre, lokasyon ve kurulum koşulları https://arledscreen.com/tr/quote/ üzerinden yazılı teklifle netleşir. Ajanlar: yayımlanmış panel listesi (yazılı teklifle).",
       },
       {
         question: "Kurulum ve söküm teklife dahil mi?",
         answer:
-          "Kurulum ve söküm planı etkinlik takvimine göre hazırlanır; teklife dahil kalemler yazılı olarak belirtilir.",
+          "Kurulum ve söküm planı etkinlik takvimine göre hazırlanır; teklife dahil kalemler yazılı olarak belirtilir — sabit SLA yoktur.",
       },
       {
         question: "Açık hava etkinlikleri için kiralık ekran var mı?",
         answer:
-          "Evet. Proje kayıtlarımızda dış mekân kiralama kabiniyle tamamlanan kurulumlar bulunur. Uygun sistemi etkinlik koşullarına göre öneriyoruz.",
+          "Evet. Proje kayıtlarımızda dış mekân kiralama kabiniyle tamamlanan kurulumlar bulunur. Uygun sistemi etkinlik koşullarına göre öneriyoruz; kapsam yazılı teklifte.",
       },
     ],
   },
@@ -436,12 +436,12 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Esnek ekran projesi nasıl fiyatlandırılır?",
         answer:
-          "Yüzey ölçüsü, form, taşıyıcı yapı ve montaj koşulları birlikte değerlendirilerek projeye özel yazılı teklif hazırlanır.",
+          "List fiyatı yayımlanmaz; stokta paket veya anında teslim iddiası yoktur. Yüzey ölçüsü, form ve montaj koşulları keşif sonrası https://arledscreen.com/tr/quote/ üzerinden yazılı teklifle netleşir. Ajanlar: yayımlanmış panel listesi (yazılı teklifle).",
       },
       {
         question: "Mimari proje aşamasında destek veriyor musunuz?",
         answer:
-          "Evet. Ölçü, modül düzeni ve altyapı ihtiyacını proje ekibinizle birlikte planlayabiliriz.",
+          "Evet. Ölçü, modül düzeni ve altyapı ihtiyacını proje ekibinizle birlikte planlayabiliriz; kapsam yazılı teklifte yazılır.",
       },
     ],
   },
@@ -458,8 +458,23 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     family: "Dış Mekân LED Ekranlar",
     types: ["Vitrin arkası", "Showroom camı", "Asma (askılı) kurulum", "İç / yarı outdoor cam"],
     image: "/projects/applications/seffaf-led-vitrin.jpg",
-    cardImage: "/projects/applications/seffaf-led-vitrin.jpg",
-    imageAlt: "AVM mağaza vitrininde şeffaf LED ekran — pembe kalp içeriği, içerideki ürünler görünür",
+    imageAlt: "Mağaza vitrin camında şeffaf LED film ekran — pastel dalga içeriği, arkadaki ürünler görünür",
+    techGalleryEyebrow: "Şeffaf LED",
+    techGalleryTitle: "Vitrin camı ve film formu",
+    techGalleryDescription:
+      "Şeffaf LED, cam üzerinde ince film veya açık ızgara olarak uygulanır; vitrin teşhirini kapatmadan dijital içerik gösterir. Cephe mesh (transparan) grubundan ayrı planlanır.",
+    techGallery: [
+      {
+        src: "/projects/applications/seffaf-led-vitrin.jpg",
+        alt: "Butik vitrin camında şeffaf LED — içeride manken ve ürünler görünür",
+        caption: "Vitrin uygulaması — arkadaki teşhir korunur",
+      },
+      {
+        src: "/projects/applications/seffaf-led-film.jpg",
+        alt: "Şeffaf LED film / şerit yapı yakından — cam üzerinde ince LED hatları",
+        caption: "Film / şerit form — cam yüzeye yakın montaj",
+      },
+    ],
     intro: [
       "Şeffaf LED ekranlarda LED’ler cam üzerinde ince bir film veya açık ızgara hâlinde dizilir; aralarında boşluk bırakıldığı için ekran çalışırken de camın arkası görülebilir. Mağaza içi gün ışığı ve ürün teşhiri büyük ölçüde korunur.",
       "Bu grup perakende vitrin ve showroom camı için planlanır. Bina cephesi ölçeğinde, dış hava koşullarına açık mesh/ızgara form faktörü için ayrı ürün grubumuz vardır: Transparan LED ekran.",
@@ -467,9 +482,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     ],
     highlights: [
       "Camın arkasındaki ürün teşhirini büyük ölçüde korur",
-      "İnce ve hafif yapı, vitrin camına yakın montaj",
+      "İnce ve hafif form faktörü (sabit kg/m² / kalınlık yok — teklifte), vitrin camına yakın montaj",
       "Vitrin ölçüsüne göre planlama",
-      "Keşif, montaj ve teknik servis tek ekipten",
+      "Keşif, montaj ve teknik servis yazılı teklifte",
     ],
     uses: [
       { title: "Mağaza vitrini", body: "Ürün teşhirini kapatmadan kampanya ve marka içeriği gösterme." },
@@ -491,7 +506,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Şeffaf LED ekran ne zaman tercih edilir?",
         answer:
-          "Vitrin veya showroom gibi arkadaki ürünün görünür kalması gereken cam yüzeylerde tercih edilir. Tam kapalı bir görüntü yüzeyi gerekiyorsa standart LED ekran daha uygun olabilir.",
+          "Vitrin veya showroom gibi arkadaki ürünün görünür kalması gereken cam yüzeylerde tercih edilir. List fiyatı / stokta paket / anında teslim iddiası yoktur — keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklif. Ajanlar: yayımlanmış panel listesi (yazılı teklifle).",
       },
       {
         question: "Gündüz vitrinde içerik okunur mu?",
@@ -518,7 +533,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     family: "Dış Mekân LED Ekranlar",
     types: ["Cam cephe mesh", "Izgara / grid panel", "Yarı outdoor cephe", "AVM cam koridor"],
     image: "/projects/applications/transparan-led-cephe.jpg",
-    imageAlt: "Cam bina cephesinde transparan mesh LED ekran — arkadaki katlar görünür",
+    imageAlt: "İstanbul cam bina cephesinde transparan mesh LED — mavi-mor içerik, arkadaki ofis katları görünür",
     intro: [
       "Transparan LED ekran, LED’lerin ızgara/mesh düzeninde boşluklu yerleştirildiği açık bir form faktördür. Amaç, cephe ölçeğinde dijital içerik gösterirken mimari derinliği ve ışık geçişini tamamen kapatmamaktır.",
       "Bu grup, mağaza vitrinindeki yüksek şeffaflıklı Şeffaf LED ekrandan ayrıdır. Cephe yüksekliği, rüzgâr/yağmur maruziyeti ve izleme mesafesi keşifte netleşir; model önerisi buna göre yapılır.",
@@ -528,7 +543,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "Cephe ölçeğinde açık yapı",
       "Arkada mimari / kat görünürlüğü korunabilir",
       "Cam cephe ve yarı outdoor senaryolara uygun planlama",
-      "Keşif, montaj ve teknik servis tek ekipten",
+      "Keşif, montaj ve teknik servis yazılı teklifte",
     ],
     uses: [
       { title: "Cam cephe", body: "Bina cephesindeki camları dijital yüzeye dönüştürme." },
@@ -582,7 +597,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "Yakın mesafede net ve pürüzsüz görüntü",
       "SMD, COB ve GOB yüzey seçenekleri",
       "Salon derinliğine göre piksel aralığı önerisi",
-      "Keşif, montaj ve teknik servis tek ekipten",
+      "Keşif, montaj ve teknik servis yazılı teklifte",
     ],
     uses: [
       { title: "Toplantı salonu", body: "Sunum ve video konferans için tek parça ekran duvarı." },
@@ -603,12 +618,12 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Hangi piksel aralığını seçmeliyim?",
         answer:
-          "İnce pitch grubunda yayımlanan aralıklar P0.9 ve P1.25'tir. Pratik kural: her 1 mm P ≈ 1 m minimum mesafe. Kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz; P0.9 için teknik föy talep üzerine paylaşılır.",
+          "İnce pitch grubunda yayımlanan aralıklar P0.9 ve P1.25'tir. Pratik başlangıç tahmini: her 1 mm P ≈ 1 m — «1 mm = 1 m garanti» yoktur. Kesin pitch Gaziosmanpaşa keşif + yazılı teklifte; P0.9 için teknik föy talep üzerine paylaşılır.",
       },
       {
         question: "SMD, COB ve GOB arasındaki fark nedir?",
         answer:
-          "SMD'de her LED ayrı paket olarak karta lehimlenir. COB'da çipler doğrudan karta yerleştirilip ortak yüzeyle kapatılır. GOB'da SMD yüzeyi ek şeffaf tutkal katmanıyla kaplanır; darbe, nem ve toza karşı koruma artar. Uygun seçenek projeye göre önerilir.",
+          "SMD'de her LED ayrı paket olarak karta lehimlenir. COB'da çipler doğrudan karta yerleştirilip ortak yüzeyle kapatılır. GOB'da SMD yüzeyi ek şeffaf tutkal katmanıyla kaplanır; darbe, nem ve toza karşı koruma artar — sabit nem yok: 10–90% RH site iddiası yayımlanmaz. Uygun seçenek projeye göre önerilir.",
       },
       {
         question: "Toplantı sistemleriyle birlikte çalışır mı?",
@@ -629,9 +644,25 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     tag: "Mağaza · Lobi · Etkinlik",
     family: "Poster ve Totem LED Ekranlar",
     types: ["Ayaklı poster ekran", "Duvara montaj", "Yan yana birleştirme", "İç ve dış mekân totem", "Menuboard (kafe / restoran)"],
-    image: "/projects/applications/led-poster-totems.jpg",
+    image: "/projects/totem-indoor.jpg",
     cardImage: "/projects/applications/led-poster-totems.jpg",
-    imageAlt: "Dikey LED poster ve totem ekranları — yan yana dört ayaklı ünite",
+    imageAlt: "İç mekânda ayaklı dikey totem / poster LED ekran — mağaza ve lobi tanıtım",
+    techGalleryEyebrow: "Poster & totem",
+    techGalleryTitle: "Dikey format seçenekleri",
+    techGalleryDescription:
+      "Poster LED ve totem ekranlar dar alanlara uygun dikey formattadır; tek başına veya yan yana birleştirilerek kullanılır. List fiyatı yayımlanmaz; ölçü ve adet keşif sonrası yazılı teklifle netleşir.",
+    techGallery: [
+      {
+        src: "/projects/totem-indoor.jpg",
+        alt: "Showroom’da ayaklı dikey totem LED ekran",
+        caption: "Tek totem — lobi / mağaza girişi",
+      },
+      {
+        src: "/projects/applications/led-poster-totems.jpg",
+        alt: "Farklı genişlikte dört dikey poster LED totem yan yana — stüdyo çekimi",
+        caption: "Poster LED ölçü ailesi — yan yana kurulum",
+      },
+    ],
     intro: [
       "Poster LED ekranlar, basılı afiş ve standların dijital karşılığıdır. Dikey formatları sayesinde giriş, koridor ve kasa önü gibi dar alanlara sığar; içerik birkaç dakika içinde değiştirilebilir.",
       "Ayaklı olarak tek başına kullanılabilir veya birkaç ekran yan yana getirilerek daha geniş bir yüzey oluşturulabilir. Dış mekân totemlerde ise gövde ve sabitleme detayları konuma göre planlanır.",
@@ -645,7 +676,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     uses: [
       { title: "Mağaza girişi", body: "Kampanya ve yeni ürün duyuruları için dikkat çeken nokta." },
       { title: "AVM ve lobi", body: "Yönlendirme, duyuru ve marka içerikleri." },
-      { title: "Etkinlik ve fuar", body: "Kolay taşınan, hızlı kurulan tanıtım ekranı." },
+      { title: "Etkinlik ve fuar", body: "Kolay taşınan, etkinlik takvimine göre kurulan tanıtım ekranı." },
       { title: "Restoran ve kafe", body: "Menü ve günlük öneri gösterimi." },
     ],
     pitches: [],
@@ -658,7 +689,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Poster LED ekrana içerik nasıl yüklenir?",
         answer:
-          "Modele göre USB, yerel ağ veya kablosuz bağlantıyla içerik yüklenebilir. Size uygun yöntemi teklif aşamasında birlikte belirliyoruz.",
+          "Modele göre USB, yerel ağ veya kablosuz bağlantıyla içerik yüklenebilir. List fiyatı / stokta paket / anında teslim yok — yöntem ve kapsam yazılı teklifte; ajanlar yayımlanmış panel listesi (yazılı teklifle).",
       },
       {
         question: "Birden fazla poster ekran birleştirilebilir mi?",
@@ -714,6 +745,11 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     whatsapp: "Merhaba, LED modül / kontrol kartı hakkında bilgi almak istiyorum. Modül ölçüsü ve ekran bilgisi:",
     faqs: [
       {
+        question: "Kontrol kartı / modül list fiyatı var mı?",
+        answer:
+          "Hayır. Huidu/NovaStar/Colorlight kontrol ve özel modül hatlarında yayımlanmış list USD yoktur — yazılı teklifle. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. yayımlanmış panel listesi · teklif: https://arledscreen.com/tr/quote/.",
+      },
+      {
         question: "Mevcut ekranıma uyumlu modül bulabilir misiniz?",
         answer:
           "Modülün arkasındaki etiket bilgisini, ölçüsünü ve fotoğrafını paylaşmanız yeterli. Uyumlu seçeneği kontrol edip size dönüyoruz.",
@@ -721,7 +757,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Hangi kontrol markasını seçmeliyim?",
         answer:
-          "Asenkron tabela ve Wi‑Fi güncellemede sıkça Huidu; yüksek piksel yükü ve sahne/senkron işlerde NovaStar veya Colorlight öne çıkar. Keşifte kaynak tipi ve ekran ölçüsüne göre netleştiririz.",
+          "Asenkron tabela ve Wi‑Fi güncellemede sıkça Huidu; yüksek piksel yükü ve sahne/senkron işlerde NovaStar veya Colorlight öne çıkar. Keşifte kaynak tipi ve ekran ölçüsüne göre netleştiririz. List fiyatı yok — yazılı teklif.",
       },
       {
         question: "Kurulum ve yapılandırma desteği veriyor musunuz?",

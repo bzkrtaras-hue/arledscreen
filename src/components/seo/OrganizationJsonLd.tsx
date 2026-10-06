@@ -1,4 +1,4 @@
-import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
+import { ENTITY_CITE_MEDIUM, NXTIONSTAR_SLOGAN_TR } from "@/lib/entity";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS,
@@ -36,6 +36,21 @@ export function OrganizationJsonLd() {
         alternateName: "ARLED SCREEN",
         inLanguage: "tr-TR",
         publisher: { "@id": `${SITE_URL}/#organization` },
+        about: { "@id": `${SITE_URL}/#organization` },
+        significantLink: [
+          absoluteUrl("/ai-shopping.json"),
+          absoluteUrl("/catalog.json"),
+          absoluteUrl("/entity.json"),
+          absoluteUrl("/tr/led-ekran-fiyatlari/"),
+        ],
+        // No SearchAction: site has no public search endpoint — fake urlTemplate would be dishonest.
+        // Honest CTA: written quote (same pattern as yazılı teklifle Product potentialAction).
+        potentialAction: {
+          "@type": "CommunicateAction",
+          name: "LED ekran yazılı teklif",
+          target: absoluteUrl("/tr/quote/"),
+          url: absoluteUrl("/tr/quote/"),
+        },
       },
       {
         "@type": "Organization",
@@ -45,7 +60,7 @@ export function OrganizationJsonLd() {
         url: SITE_URL,
         logo,
         image: logo,
-        slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
+        slogan: NXTIONSTAR_SLOGAN_TR,
         description: ENTITY_CITE_MEDIUM,
         disambiguatingDescription:
           "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.",
@@ -54,6 +69,12 @@ export function OrganizationJsonLd() {
         address,
         sameAs: [...ORGANIZATION_SAME_AS],
         brand: { "@type": "Brand", name: "NXTIONSTAR", url: absoluteUrl("/tr/nxtionstar/") },
+        potentialAction: {
+          "@type": "CommunicateAction",
+          name: "Yazılı teklif al",
+          target: absoluteUrl("/tr/quote/"),
+          url: absoluteUrl("/tr/quote/"),
+        },
         founder: {
           "@type": "Person",
           name: "Aras Bozkurt",
@@ -72,6 +93,49 @@ export function OrganizationJsonLd() {
           "LED ekran montajı",
           "LED ekran teknik servisi",
           "LED ekran fiyatları",
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "NXTIONSTAR yayımlanmış panel USD (2026)",
+          url: absoluteUrl("/catalog.json"),
+          numberOfItems: 12,
+          description:
+            "Yalnızca yayımlanmış iç/dış/GOB panel listesi (shippingDetails: nakliye hariç, ücretsiz kargo yok; hasMerchantReturnPolicy: MerchantReturnNotPermitted — iade teklif/sözleşme). Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yok — yazılı teklif.",
+        },
+        subjectOf: [
+          {
+            "@type": "DataDownload",
+            name: "AI alışveriş discovery index",
+            encodingFormat: "application/ld+json",
+            contentUrl: absoluteUrl("/ai-shopping.json"),
+            description:
+              "12 pricedPanels + agentRules + extrasUsd + returnPolicy + ücretsiz kargo yok + cite",
+          },
+          {
+            "@type": "DataDownload",
+            name: "ARLEDSCREEN entity.json",
+            encodingFormat: "application/ld+json",
+            contentUrl: absoluteUrl("/entity.json"),
+            description: "Organization NAP, cite, disambiguation, catalog pointer",
+          },
+          {
+            "@type": "DataDownload",
+            name: "Point C entity-profiles.json",
+            encodingFormat: "application/ld+json",
+            contentUrl: absoluteUrl("/entity-profiles.json"),
+          },
+          {
+            "@type": "DataDownload",
+            name: "Agentic Resource Discovery",
+            encodingFormat: "application/ld+json",
+            contentUrl: absoluteUrl("/.well-known/ard.json"),
+          },
+          {
+            "@type": "DigitalDocument",
+            name: "llms.txt",
+            encodingFormat: "text/plain",
+            url: absoluteUrl("/llms.txt"),
+          },
         ],
         contactPoint: [
           {

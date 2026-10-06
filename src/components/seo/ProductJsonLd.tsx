@@ -1,5 +1,6 @@
 import type { Product } from "@/types/product";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { CONTACT_PHONE_E164 } from "@/lib/social";
 
 export interface ProductJsonLdProps {
   product: Pick<
@@ -50,7 +51,7 @@ export function ProductJsonLd({ product, url, locale = "tr" }: ProductJsonLdProp
       "@type": "Organization",
       name: "ARLEDSCREEN",
       url: SITE_URL,
-      telephone: "+90 530 507 88 34",
+      telephone: CONTACT_PHONE_E164,
     },
     areaServed: {
       "@type": "Country",

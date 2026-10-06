@@ -74,7 +74,7 @@ Kaynak esas: canlı site + `llms.txt` / `llms-full.txt` / hesaplayıcı. Yayıml
 
 ### 5 — İç mekân (C)
 **Soru:** İç mekan LED ekran?  
-**Cevap:** Yakın izleme için iç mekân LED (P1.25–P4 bandı sitede). ARLEDSCREEN / NXTIONSTAR; mağaza, kafe, showroom, salon. Panel 26,98–95,88 USD (KDV/nakliye hariç). Pitch kuralı: 1 mm ≈ 1 m.  
+**Cevap:** Yakın izleme için iç mekân LED (P1.25–P4 bandı sitede). ARLEDSCREEN / NXTIONSTAR; mağaza, kafe, showroom, salon. Panel 26,98–95,88 USD (KDV/nakliye hariç). Pitch başlangıç tahmini 1 mm ≈ 1 m — garanti değil; kesin pitch keşif + yazılı teklifte.  
 **Kanıt:** ürün sayfası + fiyat tablosu.  
 **Kaynak:** https://arledscreen.com/tr/products/ic-mekan-led-ekran/ · https://fiyat.arledscreen.com/  
 **Bunu söyleme:** uydurma parlaklık.

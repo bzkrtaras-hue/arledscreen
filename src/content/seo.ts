@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { ENTITY_CITE_MEDIUM, ENTITY_CITE_SHORT, ENTITY_CITE_SHORT_EN } from "@/lib/entity";
 
 export type SeoPageKey =
   | "home"
@@ -53,17 +54,15 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     },
     about: {
       title: "Hakkımızda | ARLEDSCREEN",
-      description:
-        "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
+      description: ENTITY_CITE_SHORT,
       keywords: ["ARLEDSCREEN", "LED ekran firması İstanbul", "LED ekran montaj", "NXTIONSTAR"],
       h1: "ARLEDSCREEN hakkında",
-      intro:
-        "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
+      intro: ENTITY_CITE_MEDIUM,
     },
     hesaplayici: {
       title: "LED Ekran Fiyat Hesaplayıcı | Malzeme & Maliyet | ARLEDSCREEN",
       description:
-        "Ücretsiz LED ekran fiyat hesaplayıcı: ekran ölçüsü ve modül tipine göre modül adedi ile malzeme, işçilik, kontrol kartı ve yazılım dahil yaklaşık maliyet. Ardından yazılı teklif.",
+        "LED ekran fiyat hesaplayıcı: ekran ölçüsü ve modül tipine göre modül adedi ile malzeme, işçilik, kontrol kartı ve yazılım dahil yaklaşık maliyet (KDV/nakliye hariç; ücretsiz kargo yok). Ardından yazılı teklif.",
       keywords: [
         "LED ekran fiyat",
         "fiyat hesaplayıcı",
@@ -78,7 +77,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     configurator: {
       title: "LED Duvar Konfigüratörü | Pitch, Kabin, Çözünürlük | ARLEDSCREEN",
       description:
-        "LED duvar konfigüratörü: genişlik × yükseklik, 500×500 / 500×1000 kabin, pitch seçimi. Anlık çözünürlük, izleme mesafesi, kabin adedi ve 3 faz güç tahmini — ARLEDSCREEN.",
+        "LED duvar konfigüratörü: genişlik × yükseklik, 500×500 / 500×1000 kabin, pitch seçimi. Anlık çözünürlük, izleme mesafesi, kabin adedi ve yaklaşık güç tahmini (sabit kW yok) — ARLEDSCREEN.",
       keywords: [
         "LED duvar konfigüratör",
         "piksel pitch",
@@ -88,7 +87,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "LED duvar boyutlandırma konfigüratörü",
       intro:
-        "Saha keşfinden önce duvar geometrisini netleştirin: 500×500 veya 500×1000 kabin, pitch seçimi, izleme mesafesi ve 3 fazlı güç tahmini.",
+        "Saha keşfinden önce duvar geometrisini netleştirin: 500×500 veya 500×1000 kabin, pitch seçimi, izleme mesafesi ve yaklaşık güç tahmini — kesin çekiş Gaziosmanpaşa keşif + yazılı teklifte (sabit kW/m² yok).",
     },
     quote: {
       title: "LED Ekran Teklifi İste | ARLEDSCREEN",
@@ -102,40 +101,40 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     "yapay-zeka": {
       title: "Yapay Zekâ ve LED Ekran Entegrasyonu | ARLEDSCREEN",
       description:
-        "Yapay zekâ ile üretilen veya zamanlanan içeriği LED ekranda yayınlamak için medya sunucu, kontrol yazılımı ve sinyal altyapısı nasıl planlanır? ARLEDSCREEN rehberi.",
+        "YZ uyumlu LED ekran entegrasyonu ve AI alışveriş ajanları için makinece okunur kaynaklar: firma kaydı ve panel listesi. ARLEDSCREEN / NXTIONSTAR.",
       keywords: [
         "yapay zeka LED ekran",
         "AI içerik LED ekran",
         "LED ekran medya sunucu",
+        "AI alışveriş LED",
         "NXTIONSTAR",
       ],
-      h1: "Yapay zekâ içerikleri ve LED ekran altyapısı",
+      h1: "Yapay zekâ ve LED — keşif kapsamlı entegrasyon",
       intro:
-        "Yapay zekâ ile üretilen içeriklerin LED ekranda sorunsuz yayınlanması için kontrol sistemi, medya sunucu ve sinyal altyapısının birlikte planlanması gerekir. Uyumluluk, keşif aşamasında kullanılacak yazılım ve donanıma göre doğrulanır.",
+        "Yapay zekâ ile üretilen içeriklerin LED ekranda kararlı yayınlanması için kontrol sistemi, medya sunucu ve sinyal hattı Gaziosmanpaşa keşif ve yazılı teklifte birlikte planlanır. AI alışveriş ajanları için yayımlanmış fiyat ve kimlik kaynakları: yayımlanmış panel listesi ve firma kaydı.",
     },
   },
 
-
   en: {
     home: {
-      title: "LED Display Technology Center | ARLEDSCREEN",
+      title: "Istanbul LED Display Sales, Install & Service | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN is Istanbul’s LED display technology center: fine-pitch GOB, outdoor LED walls, totems and digital signage with survey, install and support. Call +90 530 507 88 34.",
+        "ARLEDSCREEN: indoor/outdoor LED display sales, survey, installation and technical service. Based in Istanbul Gaziosmanpaşa. Panel USD: yayımlanmış panel listesi; transparent/poster/control yazılı teklifle. Tel +90 530 507 88 34.",
       keywords: [
         "LED display",
         "LED wall",
         "ARLEDSCREEN",
-        "LED engineering",
+        "NXTIONSTAR",
         "digital signage",
         "fine pitch",
         "outdoor LED display",
         "indoor LED display",
-        "conference hall LED",
-        "digital kiosk",
+        "Istanbul LED",
+        "Gaziosmanpasa",
       ],
-      h1: "LED solutions for visual spaces",
+      h1: "LED Display Technology Center",
       intro:
-        "Work with ARLEDSCREEN for fine-pitch LED, outdoor displays and totem projects backed by an engineering desk. NXTIONSTAR appears as the product sub-brand.",
+        "Indoor and outdoor LED systems: product selection, survey, installation and technical service. NXTIONSTAR is the product brand; yazılı teklifle groups finalize in a written quote.",
     },
     products: {
       title: "LED Display Products | Fine-Pitch, Outdoor & Totem | ARLEDSCREEN",
@@ -154,23 +153,21 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "From fine-pitch GOB to outdoor façade and flexible modules — pick the NXTIONSTAR module that matches your venue.",
     },
     about: {
-      title: "About ARLEDSCREEN | LED Engineering Partner",
-      description:
-        "ARLEDSCREEN in Gaziosmanpaşa, Istanbul delivers LED engineering: site survey, installation, calibration and after-sales support for enterprise LED walls across Turkey.",
+      title: "About ARLEDSCREEN | Istanbul LED Display",
+      description: ENTITY_CITE_SHORT_EN,
       keywords: [
         "ARLEDSCREEN",
         "LED display Turkey",
         "about us",
         "digital signage",
       ],
-      h1: "ARLEDSCREEN — LED engineering partner",
-      intro:
-        "Our role is clear: we support integrators, agencies and facility owners with engineering-led LED wall projects across Turkey. NXTIONSTAR is our product sub-brand.",
+      h1: "About ARLEDSCREEN",
+      intro: ENTITY_CITE_SHORT_EN,
     },
     hesaplayici: {
       title: "LED Display Price Calculator | Materials & Cost | ARLEDSCREEN",
       description:
-        "Free LED display price calculator: pick the screen size and module type to see the module count and an approximate cost incl. materials, labour, control card and software. Then a written quote.",
+        "LED display price calculator: pick the screen size and module type to see the module count and an approximate cost incl. materials, labour, control card and software (ex-VAT/shipping; no free shipping). Then a written quote.",
       keywords: [
         "LED display price",
         "price calculator",
@@ -198,46 +195,46 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "Lock geometry before the site survey: 500×500 or 500×1000 cabinets, pitch choice, viewing distance and three-phase power estimates.",
     },
     quote: {
-      title: "Request LED Display Quote | Enterprise Projects | ARLEDSCREEN",
+      title: "Request LED Display Quote | ARLEDSCREEN",
       description:
-        "Enterprise LED display / LED wall quote: share dimensions, indoor/outdoor use, timeline and location. ARLEDSCREEN engineering desk replies with a preliminary BOM and power outline.",
+        "LED display / LED wall quote: share dimensions, indoor/outdoor use, timeline and location. ARLEDSCREEN replies with a written quote. Yazılı teklif groups (transparent/poster/control) have no list USD.",
       keywords: [
         "LED display quote",
         "LED wall quotation",
-        "enterprise LED project",
+        "B2B LED project",
         "ARLEDSCREEN quote",
         "digital signage quote",
       ],
-      h1: "Enterprise LED display project quote",
+      h1: "Request an LED display quote",
       intro:
-        "Share contact details, project dimensions and schedule so our engineering desk can reply with a preliminary BOM and power outline.",
+        "Share contact details, project dimensions and schedule so we can reply with a written quote. Panel list USD: yayımlanmış panel listesi.",
     },
     "yapay-zeka": {
-      title: "AI-Compatible LED Display | Media Server Integration — ARLEDSCREEN",
+      title: "AI & LED Integration | Media Server Survey — ARLEDSCREEN",
       description:
-        "What is an AI-compatible LED wall and how does it integrate with AI content engines and media servers? How ARLEDSCREEN plans pitch selection, signal topology and media-server integration for NXTIONSTAR installs.",
+        "AI/media-server LED integration defined in the Gaziosmanpaşa survey and written quote, plus machine-readable sources: yayımlanmış panel listesi ve firma kaydı. Yazılı teklif: transparent/poster/control. No invented AI-ready SKU.",
       keywords: [
-        "AI compatible LED display",
+        "AI LED integration",
         "AI LED video wall",
         "AI media server LED",
-        "artificial intelligence LED screen",
+        "AI shopping LED",
         "NXTIONSTAR AI",
         "ARLEDSCREEN AI LED",
       ],
-      h1: "AI-compatible LED displays",
+      h1: "AI and LED — survey-scoped integration",
       intro:
-        "How NXTIONSTAR LED walls are planned for AI content engines, media servers and control software: survey, interfaces and integration.",
+        "How NXTIONSTAR LED walls are planned for AI content engines, media servers and control software in the Gaziosmanpaşa survey and written quote. Published price and identity sources for shopping agents: catalog.json and entity.json.",
     },
   },
 
 
   ar: {
     home: {
-      title: "شاشات LED تركيا | ARLEDSCREEN",
+      title: "شاشات LED إسطنبول | بيع وتركيب وخدمة | ARLEDSCREEN",
       description:
-        "NXTIONSTAR هي العلامة التجارية الخاصة بـ ARLEDSCREEN، وARLEDSCREEN هي نقطة البيع الوحيدة لها في تركيا. جدران LED دقيقة، واجهات خارجية ولافتات رقمية للمشاريع المؤسسية.",
-      keywords: ["شاشة LED", "جدار LED", "ARLEDSCREEN", "NXTIONSTAR", "تركيا"],
-      h1: "حلول NXTIONSTAR LED للمساحات البصرية",
+        "ARLEDSCREEN: بيع وتركيب وخدمة شاشات LED في إسطنبول غازي عثمان باشا. NXTIONSTAR علامتها؛ أسعار اللوحات: yayımlanmış panel listesi؛ الشفاف/البوستر/التحكم yazılı teklifle. هاتف +90 530 507 88 34.",
+      keywords: ["شاشة LED", "جدار LED", "ARLEDSCREEN", "NXTIONSTAR", "إسطنبول"],
+      h1: "مركز تقنية شاشات LED",
     },
     products: {
       title: "منتجات شاشات LED | Pitch دقيق وخارجي",
@@ -249,50 +246,50 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "من نحن | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN شركة شاشات LED في إسطنبول. NXTIONSTAR علامتها الفرعية للمنتجات؛ نقطة البيع الوحيدة في تركيا هي ARLEDSCREEN.",
-      keywords: ["ARLEDSCREEN", "LED تركيا", "شاشات LED"],
+        "ARLEDSCREEN شركة شاشات LED في إسطنبول غازي عثمان باشا. NXTIONSTAR علامتها؛ نقطة البيع الوحيدة في تركيا هي ARLEDSCREEN. أسعار اللوحات: yayımlanmış panel listesi؛ yazılı teklifle عبر عرض مكتوب.",
+      keywords: ["ARLEDSCREEN", "LED تركيا", "شاشات LED", "غازي عثمان باشا"],
       h1: "ARLEDSCREEN",
     },
     hesaplayici: {
       title: "حاسبة أسعار شاشات LED | التكلفة",
       description:
-        "احسب عدد الوحدات والتكلفة التقريبية لشاشة LED حسب المقاس ونوع الوحدة عبر حاسبة ARLEDSCREEN قبل طلب العرض.",
-      keywords: ["سعر شاشة LED", "حاسبة", "ARLEDSCREEN"],
+        "احسب عدد الوحدات والتكلفة التقريبية (yayımlanmış panel listesi؛ بدون شحن مجاني). العرض النهائي بعد المعاينة — غازي عثمان باشا.",
+      keywords: ["سعر شاشة LED", "حاسبة", "ARLEDSCREEN", "catalog.json"],
       h1: "حاسبة أسعار ومواد شاشات LED",
     },
     configurator: {
       title: "مُكوِّن جدار LED | Pitch والخزائن",
       description:
-        "اضبط العرض والارتفاع والـ pitch؛ احصل على الدقة ومسافة المشاهدة وعدد الخزائن فوراً.",
+        "اضبط العرض والارتفاع والـ pitch؛ احصل على الدقة ومسافة المشاهدة وعدد الخزائن. السعر النهائي عرض مكتوب — ARLEDSCREEN غازي عثمان باشا.",
       keywords: ["مُكوِّن LED", "pixel pitch", "خزائن LED"],
       h1: "مُكوِّن أبعاد جدار LED",
     },
     quote: {
       title: "طلب عرض سعر LED | مشاريع مؤسسية",
       description:
-        "اطلب عرض سعر لجدران LED. شارك المقاسات والبيئة والجدول؛ نرد بقائمة مواد أولية.",
-      keywords: ["عرض سعر LED", "مشروع LED", "ARLEDSCREEN"],
+        "اطلب عرض سعر مكتوب لجدران LED من إسطنبول غازي عثمان باشا. الشفاف/البوستر/التحكم yazılı teklifle — بدون list USD.",
+      keywords: ["عرض سعر LED", "مشروع LED", "ARLEDSCREEN", "yazılı teklifle"],
       h1: "طلب عرض سعر مشروع LED مؤسسي",
     },
     "yapay-zeka": {
-      title: "شاشة LED متوافقة مع الذكاء الاصطناعي — ARLEDSCREEN",
+      title: "الذكاء الاصطناعي وشاشات LED — تكامل المعاينة | ARLEDSCREEN",
       description:
-        "كيف يتم تخطيط جدران LED من NXTIONSTAR للعمل مع محركات محتوى الذكاء الاصطناعي وخوادم الوسائط وبرامج التحكم.",
-      keywords: ["LED ذكاء اصطناعي", "NXTIONSTAR", "ARLEDSCREEN"],
-      h1: "شاشات LED متوافقة مع الذكاء الاصطناعي",
+        "تكامل محركات المحتوى وخوادم الوسائط يُعرَّف في معاينة غازي عثمان باشا والعرض المكتوب. مصادر للوكلاء: ai-shopping.json و entity.json و catalog.json. مجموعات yazılı teklifle بدون سعر قائمة.",
+      keywords: ["LED ذكاء اصطناعي", "NXTIONSTAR", "ARLEDSCREEN", "ai-shopping"],
+      h1: "الذكاء الاصطناعي وشاشات LED — تكامل المعاينة",
       intro:
-        "توافق كامل مع محركات الذكاء الاصطناعي وخوادم الوسائط وبرامج التحكم.",
+        "تخطيط التكامل مع محركات المحتوى وخوادم الوسائط في المعاينة والعرض المكتوب؛ أسعار اللوحات من yayımlanmış panel listesi.",
     },
   },
 
 
   ru: {
     home: {
-      title: "LED-экраны Турция | ARLEDSCREEN",
+      title: "LED-экраны Стамбул | Продажа, монтаж, сервис | ARLEDSCREEN",
       description:
-        "NXTIONSTAR — собственный бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN. Fine-pitch стены, уличные LED и digital signage для B2B.",
-      keywords: ["LED экран", "LED стена", "ARLEDSCREEN", "NXTIONSTAR", "Турция"],
-      h1: "Решения NXTIONSTAR LED для визуальных пространств",
+        "ARLEDSCREEN: продажа, монтаж и сервис LED-экранов в Стамбуле (Газиосманпаша). NXTIONSTAR — продуктовый бренд. Цены панелей: yayımlanmış panel listesi; transparent/poster/control — yazılı teklifle. Тел. +90 530 507 88 34.",
+      keywords: ["LED экран", "LED стена", "ARLEDSCREEN", "NXTIONSTAR", "Стамбул"],
+      h1: "LED Display Technology Center",
     },
     products: {
       title: "LED-продукция | Fine-pitch и outdoor",
@@ -304,39 +301,39 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     about: {
       title: "О нас | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN — компания LED-экранов в Стамбуле. NXTIONSTAR — продуктовый суббренд; единственная точка продаж в Турции — ARLEDSCREEN.",
-      keywords: ["ARLEDSCREEN", "LED Турция", "LED экраны"],
+        "ARLEDSCREEN — компания LED-экранов в Стамбуле (Газиосманпаша). NXTIONSTAR — продуктовый бренд; единственная точка продаж в Турции — ARLEDSCREEN. Цены панелей: yayımlanmış panel listesi; yazılı teklifle — письменное КП.",
+      keywords: ["ARLEDSCREEN", "LED Турция", "LED экраны", "Газиосманпаша"],
       h1: "ARLEDSCREEN",
     },
     hesaplayici: {
       title: "Калькулятор цены LED | Материалы",
       description:
-        "Рассчитайте число модулей и ориентировочную стоимость LED-экрана по размеру и типу модуля в калькуляторе ARLEDSCREEN перед запросом КП.",
-      keywords: ["цена LED", "калькулятор", "ARLEDSCREEN"],
+        "Ориентировочная стоимость по размеру и типу модуля (yayımlanmış panel listesi; без бесплатной доставки). Итог — после обследования, Газиосманпаша.",
+      keywords: ["цена LED", "калькулятор", "ARLEDSCREEN", "catalog.json"],
       h1: "Калькулятор цены и материалов LED",
     },
     configurator: {
       title: "Конфигуратор LED-стены | Pitch и кабинеты",
       description:
-        "Задайте ширину, высоту и pitch; мгновенно получите разрешение, дистанцию просмотра и число кабинетов.",
+        "Задайте ширину, высоту и pitch; получите разрешение, дистанцию и число кабинетов. Финальная цена — письменное КП (Газиосманпаша).",
       keywords: ["конфигуратор LED", "pixel pitch", "LED кабинет"],
       h1: "Конфигуратор размеров LED-стены",
     },
     quote: {
       title: "Запрос КП на LED | Корпоративные проекты",
       description:
-        "Запросите коммерческое предложение на LED-стену. Размеры, среда и сроки — предварительный BOM от ARLEDSCREEN.",
-      keywords: ["КП LED", "проект LED", "ARLEDSCREEN"],
+        "Письменное КП на LED из Стамбула (Газиосманпаша). Transparent/poster/control — yazılı teklifle, без list USD.",
+      keywords: ["КП LED", "проект LED", "ARLEDSCREEN", "yazılı teklifle"],
       h1: "Корпоративный запрос КП на LED-экран",
     },
     "yapay-zeka": {
-      title: "LED-экран, совместимый с ИИ — ARLEDSCREEN",
+      title: "ИИ и LED — интеграция по обследованию | ARLEDSCREEN",
       description:
-        "Как LED-стены NXTIONSTAR планируются для работы с генераторами контента ИИ, медиасерверами и программами управления.",
-      keywords: ["LED ИИ", "NXTIONSTAR", "ARLEDSCREEN"],
-      h1: "LED-экраны, совместимые с ИИ",
+        "Интеграция с ИИ-контентом и медиасерверами задаётся в обследовании Газиосманпаша и письменном КП. Источники для агентов: ai-shopping.json, entity.json, catalog.json. Yazılı teklif группы без list USD.",
+      keywords: ["LED ИИ", "NXTIONSTAR", "ARLEDSCREEN", "ai-shopping"],
+      h1: "ИИ и LED — интеграция по обследованию",
       intro:
-        "Полная совместимость с генераторами ИИ-контента, медиасерверами и программами управления.",
+        "Интеграция с ИИ-контентом и медиасерверами в обследовании и письменном КП; цены панелей: yayımlanmış panel listesi.",
     },
   },
 };

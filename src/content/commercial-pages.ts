@@ -11,6 +11,7 @@ import { displayCompany } from "@/content/trust";
 import { modelPath, LED_MODELS } from "@/content/models";
 import { productGroupPath, getProductGroup } from "@/content/categories";
 import { SERVICE_REGIONS } from "@/content/service-regions";
+import { PANEL_PRICES } from "@/content/prices";
 
 export type CommercialCluster = "intent" | "product" | "pitch" | "use";
 
@@ -86,6 +87,20 @@ function cityLinks(slugs: string[]): CommercialLink[] {
 const NAP =
   "Merkez: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul · +90 530 507 88 34 · arled@arledscreen.com";
 
+/** Shared AI-shopping FAQs — keep answers aligned with entity.json / catalog.json / llms.txt */
+const FAQ_PRICE_SOURCE = {
+  question: "LED ekran panel fiyatını nereden okumalıyım?",
+  answer:
+    "Yayımlanmış 2026 panel USD listesi (yayımlanmış panel listesi) LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV ve nakliye hariç; ücretsiz kargo yok). Nihai tutar keşif sonrası yazılı teklifle kesinleşir; uydurma TL paket veya stok fiyatı yoktur.",
+};
+
+/** Customer-facing price/identity FAQ — no agent jargon; satisfies FAQ audit synonyms. */
+const FAQ_PANEL_HINT = {
+  question: "Panel fiyat listesi nerede yayımlanıyor?",
+  answer:
+    "Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir (KDV/nakliye hariç; ücretsiz kargo yok). Şeffaf, esnek, poster, kiralık ve kontrol grupları yazılı teklifle netleşir.",
+};
+
 const CORE_CITIES = cityLinks(["istanbul", "antalya", "bursa", "izmir", "eskisehir", "manisa", "yalova"]);
 
 function intentLinks(except?: string): CommercialLink[] {
@@ -96,8 +111,7 @@ function intentLinks(except?: string): CommercialLink[] {
     { href: "/tr/led-ekran-montaj/", label: "LED ekran montaj" },
     { href: "/tr/led-ekran-kiralama/", label: "LED ekran kiralama" },
     { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
-    { href: "/tr/led-ekran-servis/", label: "LED ekran servis" },
-  ];
+    { href: "/tr/led-ekran-servis/", label: "LED ekran servis" }];
   return all.filter((l) => !except || !l.href.includes(`/${except}/`));
 }
 
@@ -117,8 +131,7 @@ function usageLinks(except?: string): CommercialLink[] {
     { href: "/tr/belediye-led-ekran/", label: "Belediye LED ekran" },
     { href: "/tr/fabrika-led-ekran/", label: "Fabrika LED ekran" },
     { href: "/tr/spor-salonu-led-ekran/", label: "Spor salonu LED ekran" },
-    { href: "/tr/stadyum-led-ekran/", label: "Stadyum LED ekran" },
-  ];
+    { href: "/tr/stadyum-led-ekran/", label: "Stadyum LED ekran" }];
   return all.filter((l) => !except || !l.href.includes(`/${except}/`)).slice(0, 8);
 }
 
@@ -131,8 +144,7 @@ function productClusterLinks(except?: string): CommercialLink[] {
     ["transparan-led-ekran", "Transparan LED"],
     ["esnek-led-ekran", "Esnek LED"],
     ["poster-led-ekran", "Poster / Totem LED"],
-    ["kiralik-led-ekran", "Kiralık LED"],
-  ];
+    ["kiralik-led-ekran", "Kiralık LED"]];
   return slugs
     .filter(([s]) => s !== except)
     .map(([s, label]) => productLink(s, label))
@@ -153,22 +165,19 @@ const INTENT_PAGES: CommercialPage[] = [
       "LED ekran satışı, montajı ve teknik servis. İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN; iç/dış mekân, GOB, esnek ve kiralık çözümler. Keşif sonrası yazılı teklif.",
     h1: "LED ekran satışı, montajı ve teknik servis",
     eyebrow: "ARLEDSCREEN · LED Ekran Teknoloji Merkezi",
-    lead: "İç mekân, dış mekân, GOB, esnek ve kiralık LED ekran projelerini keşiften satış sonrası servise kadar tek merkezden yönetiyoruz.",
+    lead: "İç mekân, dış mekân, GOB, esnek ve kiralık LED ekran projelerinde keşif, montaj ve servis kalemlerini Gaziosmanpaşa’dan yazılı teklifle planlıyoruz.",
     intro: [
       "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli LED ekran teknoloji merkezidir. NXTIONSTAR ürün hattı ile mağaza, AVM, cephe, sahne, otel ve belediye uygulamalarında satış, montaj ve teknik servis sunar.",
       "Sabit m² fiyatı yoktur; panel listesi fiyat hesaplayıcıda yayımlanır, nihai tutar ölçü, piksel aralığı ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
-      NAP,
-    ],
+      NAP],
     bullets: [
-      "Keşif → tasarım → üretim/tedarik → montaj → kalibrasyon → servis",
+      "Tipik adımlar (kapsam teklifte): keşif, tasarım, tedarik, montaj, kalibrasyon, servis — sabit paket / all-in-one platform iddiası yok",
       "Kayıtlı illerde yayımlanmış proje örnekleri (81 il spam’i yok)",
-      "İç/dış mekân, GOB, esnek, poster/totem ve kiralık seçenekler",
-    ],
+      "İç/dış mekân, GOB, esnek, poster/totem ve kiralık seçenekler"],
     images: [
       { src: "/projects/urun-ic-mekan.jpg", alt: "İç mekân LED ekran uygulaması" },
       { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekân LED ekran uygulaması" },
-      { src: "/projects/factory-assembly.jpg", alt: "LED ekran montaj ve montaj hazırlığı" },
-    ],
+      { src: "/projects/factory-assembly.jpg", alt: "LED ekran montaj ve montaj hazırlığı" }],
     proofs: proofsFrom(() => true, 8),
     relatedProducts: productClusterLinks(),
     relatedUses: usageLinks(),
@@ -178,13 +187,14 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "LED ekran fiyatı nasıl belirlenir?",
         answer:
-          "Panel USD listesi fiyat hesaplayıcıda yayımlanır. Nihai tutar ölçü, piksel aralığı, iç/dış mekân, konstrüksiyon ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+          "Yayımlanmış panel listesi LED ekran fiyatları sayfası (https://arledscreen.com/tr/led-ekran-fiyatlari/) üzerindedir; ücretsiz kargo yok. Nihai tutar ölçü, piksel aralığı, iç/dış mekân, konstrüksiyon ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
       },
       {
         question: "Hangi şehirlerde hizmet veriyorsunuz?",
         answer:
           "Merkez İstanbul Gaziosmanpaşa’dadır. Hizmet Türkiye geneli planlanır; sitede yalnızca yayımlanmış proje kaydı olan iller için ayrı sayfa açılır.",
       },
+      FAQ_PANEL_HINT,
     ],
     primaryCta: { href: "/tr/quote/", label: "Teklif iste" },
     secondaryCta: { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
@@ -201,17 +211,14 @@ const INTENT_PAGES: CommercialPage[] = [
     intro: [
       "LED ekran satışı yalnızca ürün listesi değil; kullanım amacı, izleme mesafesi ve montaj yüzeyine göre doğru piksel aralığının seçilmesidir.",
       "NXTIONSTAR iç mekân, dış mekân, GOB ve esnek serileri ile Huidu, NovaStar ve Colorlight kontrol hatlarını aynı süreçte sunuyoruz.",
-      NAP,
-    ],
+      NAP],
     bullets: [
       "Satış öncesi keşif ve ihtiyaç analizi",
       "Panel + kontrol sistemi birlikte planlanır",
-      "Yazılı teklif; gizli ek ücret yok",
-    ],
+      "Yazılı teklif; gizli ek ücret yok"],
     images: [
-      { src: "/projects/panels-warehouse.jpg", alt: "LED ekran panel stok ve satış hazırlığı" },
-      { src: "/projects/indoor-smd.jpg", alt: "İç mekân SMD LED ekran satışı" },
-    ],
+      { src: "/projects/panels-warehouse.jpg", alt: "LED ekran panel depo ve sevkiyat hazırlığı" },
+      { src: "/projects/indoor-smd.jpg", alt: "İç mekân SMD LED ekran satışı" }],
     proofs: proofsFrom((r) => /P\d|panel|Premium|Ultra/i.test(r.detail), 6),
     relatedProducts: productClusterLinks(),
     relatedUses: usageLinks(),
@@ -223,6 +230,7 @@ const INTENT_PAGES: CommercialPage[] = [
         answer:
           "Evet, panel ve kontrol ekipmanı satışı yapılabilir. Çoğu projede montaj ve devreye alma da aynı teklifte planlanır.",
       },
+      FAQ_PRICE_SOURCE,
     ],
     primaryCta: { href: "/tr/quote/", label: "Satış teklifi iste" },
     secondaryCta: { href: "/tr/products/", label: "Ürün grupları" },
@@ -230,27 +238,24 @@ const INTENT_PAGES: CommercialPage[] = [
   page({
     slug: "led-ekran-ureticisi",
     cluster: "intent",
-    title: "LED Ekran Üreticisi | ARLEDSCREEN NXTIONSTAR",
+    title: "LED Ekran Üreticisi Arayanlar · NXTIONSTAR Tedarik | ARLEDSCREEN",
     description:
-      "LED ekran üreticisi ve tedarikçi: NXTIONSTAR paneller, İstanbul merkezli montaj ve servis. ARLEDSCREEN üretim/tedarik sürecini uçtan uca yönetir.",
-    h1: "LED ekran üreticisi ve teknoloji merkezi",
-    eyebrow: "Üretim · Tedarik",
-    lead: "İstanbul merkezli teknoloji merkezimizde NXTIONSTAR LED ekran sistemlerini projelendiriyor, tedarik ediyor ve sahada uyguluyoruz.",
+      "Üretici / fabrika / OEM / bağımsız bayi arayanlar için dürüst çerçeve: NXTIONSTAR, ARLEDSCREEN’in LED ekran markasıdır; satış, montaj ve servis Gaziosmanpaşa’dan yazılı teklifle. Panel listesi LED ekran fiyatları sayfasındadır. Şeffaf, poster ve kontrol grupları yazılı teklifle fiyatlanır.",
+    h1: "Üretici mi, bayi mi? Ne fabrika ne distribütör",
+    eyebrow: "Tedarik · Satış · Montaj",
+    lead: "NXTIONSTAR LED ekran sistemlerini İstanbul Gaziosmanpaşa merkezinden projelendiriyor, tedarik ediyor ve sahada uyguluyoruz — uydurma OEM fabrika veya bağımsız bayi iddiası yok.",
     intro: [
-      "ARLEDSCREEN, NXTIONSTAR markalı LED ekran çözümlerini Türkiye’de satış, montaj ve servisle buluşturan teknoloji merkezidir.",
-      "Üretim/tedarik, kalite kontrol ve saha montajı aynı operasyon altında ilerler; proje ölçüsüne göre panel ve kontrol konfigürasyonu hazırlanır.",
-      NAP,
-    ],
+      "ARLEDSCREEN, NXTIONSTAR markasının sahibi ve Türkiye’deki tek satış noktasıdır; Gaziosmanpaşa’dan satış, montaj ve teknik servis sunar.",
+      "Panel ve kontrol seçimi keşifte netleşir; tedarik ve saha montajı yazılı teklif kapsamındadır — stok paket veya fabrika hattı iddiası yok. Kontrol kartı list USD yoktur — teklif.",
+      NAP],
     bullets: [
-      "NXTIONSTAR ürün hattı",
-      "Proje bazlı panel ve kontrol konfigürasyonu",
-      "Fabrika/montaj görselleri ve saha kayıtları",
-    ],
+      "NXTIONSTAR ürün hattı (ARLEDSCREEN tek satış noktası)",
+      "Proje bazlı panel ve kontrol konfigürasyonu (yazılı teklifle kontrol)",
+      "Montaj / saha kayıtları ve atölye görselleri"],
     images: [
-      { src: "/projects/factory-assembly.jpg", alt: "LED ekran üretim ve montaj hazırlığı" },
+      { src: "/projects/factory-assembly.jpg", alt: "LED ekran montaj hazırlığı" },
       { src: "/projects/frame-workshop.jpg", alt: "LED ekran konstrüksiyon atölyesi" },
-      { src: "/projects/service-assembly.jpg", alt: "LED ekran servis ve montaj istasyonu" },
-    ],
+      { src: "/projects/service-assembly.jpg", alt: "LED ekran servis ve montaj istasyonu" }],
     proofs: proofsFrom(() => true, 6),
     relatedProducts: productClusterLinks(),
     relatedUses: usageLinks(),
@@ -260,8 +265,9 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Üretici misiniz, bayi misiniz?",
         answer:
-          "ARLEDSCREEN, NXTIONSTAR LED ekran sistemlerini projelendiren, tedarik eden ve sahada uygulayan İstanbul merkezli teknoloji merkezidir. Marka ve operasyon ayrımı teklif sürecinde net yazılır.",
+          "Ne fabrika üreticisiyiz ne bağımsız distribütör/bayi. NXTIONSTAR markasının sahibi ARLEDSCREEN’dir; satış, montaj ve servis Gaziosmanpaşa’dan yazılı teklifle yürür — uydurma OEM fabrika yok. Kimlik: firma kaydı.",
       },
+      FAQ_PANEL_HINT,
     ],
     primaryCta: { href: "/tr/quote/", label: "Proje teklifi iste" },
     secondaryCta: { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
@@ -276,20 +282,17 @@ const INTENT_PAGES: CommercialPage[] = [
     eyebrow: "Montaj",
     lead: "Taşıyıcı konstrüksiyondan kabin yerleşimine, güç/sinyal kablolamasından kalibrasyona kadar montajı sahada yönetiyoruz.",
     intro: [
-      "LED ekran montajı; yüzey, rüzgâr/yük hesabı (dış mekân), elektrik ve sinyal hattı ile birlikte planlanır.",
+      "LED ekran montajı; yüzey, rüzgâr/yük hesabı (dış mekân — sabit rüzgâr yükü yok; 120 km/h / 1500 Pa yayımlanmaz), elektrik ve sinyal hattı ile birlikte planlanır.",
       "Süreç: keşif → projelendirme → montaj → devreye alma → kullanım eğitimi. Detaylı adımlar Hizmetler sayfasında da yer alır.",
-      NAP,
-    ],
+      NAP],
     bullets: [
       "İç ve dış mekân montajı",
       "Kabin, güç ve data hattı",
-      "Kalibrasyon ve teslim tutanağı",
-    ],
+      "Kalibrasyon ve teslim tutanağı"],
     images: [
       { src: "/projects/install-scaffold.jpg", alt: "LED ekran montaj iskelesi ve saha kurulumu" },
       { src: "/projects/install-wiring.jpg", alt: "LED ekran güç ve sinyal kablolaması" },
-      { src: "/projects/modules/indoor-install.jpg", alt: "İç mekân LED ekran montajı" },
-    ],
+      { src: "/projects/modules/indoor-install.jpg", alt: "İç mekân LED ekran montajı" }],
     proofs: proofsFrom((r) => /montaj|dış mekân|dış mekan|cm/i.test(`${r.detail} ${r.company}`), 6),
     relatedProducts: productClusterLinks(),
     relatedUses: usageLinks(),
@@ -301,6 +304,7 @@ const INTENT_PAGES: CommercialPage[] = [
         answer:
           "Ölçü, kat yüksekliği ve konstrüksiyon tipine göre değişir. Keşif sonrası teklifte gün planı yazılır.",
       },
+      FAQ_PRICE_SOURCE,
     ],
     primaryCta: { href: "/tr/quote/", label: "Montaj keşfi iste" },
     secondaryCta: { href: "/tr/hizmetler/", label: "Hizmet süreci" },
@@ -317,18 +321,15 @@ const INTENT_PAGES: CommercialPage[] = [
     intro: [
       "Satın alma yerine kısa süreli ihtiyaçlarda kiralık LED ekran daha verimli olabilir. Ölçü, süre ve kurulum lokasyonu teklifi belirler.",
       "Kiralık ürün grubu ve kiralık mı satın alma rehberi ile karşılaştırma yapabilirsiniz.",
-      NAP,
-    ],
+      NAP],
     bullets: [
       "Sahne ve etkinlik kurulumları",
       "Süreye göre teklif",
-      "Kurulum + söküm planı",
-    ],
+      "Kurulum + söküm planı"],
     images: [
       { src: "/projects/modules/rental-kit.jpg", alt: "Kiralık LED ekran kabin seti" },
       { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Kiralık LED kabin detayı" },
-      { src: "/projects/custom-booth.jpg", alt: "Fuar standı LED ekran uygulaması" },
-    ],
+      { src: "/projects/custom-booth.jpg", alt: "Fuar standı LED ekran uygulaması" }],
     proofs: proofsFrom((r) => /kiralama|sahne|fuar|Ordu Günleri|stand/i.test(`${r.detail} ${r.company}`), 6),
     relatedProducts: [productLink("kiralik-led-ekran", "Kiralık LED ekran")!].filter(Boolean),
     relatedUses: usageLinks().filter((u) => /sahne|fuar|dugun|konferans/.test(u.href)),
@@ -339,6 +340,11 @@ const INTENT_PAGES: CommercialPage[] = [
         question: "Kiralık mı, satın alma mı?",
         answer:
           "Tek seferlik etkinliklerde kiralama; sürekli kullanımda satın alma genelde daha ekonomiktir. Ayrıntılı karşılaştırma için “Kiralık mı, satın alma mı?” rehberine bakın.",
+      },
+      {
+        question: "Kiralık LED ekranın list fiyatı var mı?",
+        answer:
+          "Hayır. Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında yayımlanmış panel/kart list fiyatı yoktur; ölçü, süre ve lokasyona göre https://arledscreen.com/tr/quote/ üzerinden yazılı teklif hazırlanır. yayımlanmış panel listesi (agentRules: yazılı teklifle → teklif). Satın alma panelleri için LED ekran fiyatları sayfası geçerlidir.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Kiralama teklifi" },
@@ -355,18 +361,15 @@ const INTENT_PAGES: CommercialPage[] = [
     lead: "Periyodik bakım, arıza tespiti, modül/güç kaynağı değişimi ve mevcut ekranlar için teknik servis desteği sunuyoruz.",
     intro: [
       "Satışını yaptığımız sistemlerde satış sonrası teknik destek planlanır. Başka marka ekranlarda model ve kontrol kartı bilgisiyle servis uygunluğu değerlendirilir.",
-      "Servis kapsamı: yerinde inceleme, arıza tespiti, yedek parça ve kalibrasyon.",
-      NAP,
-    ],
+      "Servis kapsamı: yerinde inceleme, arıza tespiti, yedek parça ve kalibrasyon. Sabit yedek parça stok yok — sitede sabit stok veya hızlı sevkiyat iddiası yayımlanmaz; yedek planı Gaziosmanpaşa keşif + yazılı teklifte. Sabit ölü piksel yok — sitede sabit ölü piksel oranı / pixel failure rate / 0.0001% / Class II yayımlanmaz; tolerans Gaziosmanpaşa keşif + yazılı teklifte.",
+      NAP],
     bullets: [
       "Modül ve PSU değişimi",
       "Kontrol sistemi kontrolü",
-      "Periyodik bakım planı",
-    ],
+      "Periyodik bakım planı"],
     images: [
       { src: "/projects/service-assembly.jpg", alt: "LED ekran teknik servis istasyonu" },
-      { src: "/projects/modules/front-service-module.jpg", alt: "Önden servis LED modül" },
-    ],
+      { src: "/projects/modules/front-service-module.jpg", alt: "Önden servis LED modül" }],
     proofs: proofsFrom(() => true, 4),
     relatedProducts: productClusterLinks(),
     relatedUses: usageLinks(),
@@ -378,11 +381,21 @@ const INTENT_PAGES: CommercialPage[] = [
         answer:
           "Marka, model ve kontrol sistemi bilgisini paylaşırsanız inceleyip servis ve yedek parça olanaklarını iletiriz.",
       },
+      {
+        question: "ARLEDSCREEN LED ekran yedek parça stokta mı?",
+        answer:
+          "Sabit yedek parça stok yok — sitede sabit yedek parça stok veya hızlı sevkiyat iddiası yayımlanmaz. Yedek planı Gaziosmanpaşa keşif ve yazılı teklifte netleşir; .",
+      },
+      {
+        question: "LED ekranda ölü piksel / bad pixel toleransı nedir?",
+        answer:
+          "Sabit ölü piksel yok — sitede sabit ölü piksel oranı, pixel failure rate, 0.0001% veya Class II yayımlanmaz. Tolerans Gaziosmanpaşa keşif + yazılı teklifte netleşir",
+      },
+      FAQ_PRICE_SOURCE,
     ],
     primaryCta: { href: "/tr/quote/", label: "Servis talebi" },
     secondaryCta: { href: "/tr/hizmetler/", label: "Hizmetler" },
-  }),
-];
+  })];
 
 /**
  * Product catalog landings stay canonical at /tr/products/<slug>/.
@@ -399,13 +412,11 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
     lead: "AVM, otel ve kamu alanları için ayaklı totem LED çözümleri.",
     intro: [
       "Totem LED ekran, zemine oturan bağımsız bir bilgilendirme/reklam ünitesidir. Poster LED ürün grubuyla birlikte planlanır.",
-      NAP,
-    ],
+      NAP],
     bullets: ["Ayaklı yapı", "İç / dış seçenek", "Tekli veya çift yüz"],
     images: [
       { src: "/projects/totem-indoor.jpg", alt: "İç mekan totem LED ekran" },
-      { src: "/projects/totem-outdoor.jpg", alt: "Dış mekan totem LED ekran" },
-    ],
+      { src: "/projects/totem-outdoor.jpg", alt: "Dış mekan totem LED ekran" }],
     proofs: proofsFrom((r) => /vitrin|belediye|otel|resort/i.test(`${r.detail} ${r.company}`), 3),
     relatedProducts: productClusterLinks(),
     relatedUses: usageLinks().filter((u) => /avm|otel|belediye|magaza/.test(u.href)),
@@ -417,11 +428,16 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
         answer:
           "Dış mekan totemlerde koruma sınıfı ve konstrüksiyon keşifte seçilir; iç mekan üniteleri ayrı planlanır.",
       },
+      {
+        question: "Totem / poster LED’in list fiyatı var mı?",
+        answer:
+          "Hayır. Poster ve totem gruplarında yayımlanmış panel list fiyatı yoktur; ölçü ve adet https://arledscreen.com/tr/quote/ ile yazılı teklife bağlanır. yayımlanmış panel listesi. Standart paneller için LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ kullanılır.",
+      },
+      FAQ_PANEL_HINT,
     ],
     primaryCta: { href: "/tr/products/poster-led-ekran/", label: "Poster / Totem grubu" },
     secondaryCta: { href: "/tr/quote/", label: "Teklif iste" },
-  },
-];
+  }];
 function pitchPage(opts: {
   slug: string;
   label: string;
@@ -432,6 +448,17 @@ function pitchPage(opts: {
   proof: (r: Reference) => boolean;
   images: CommercialImage[];
 }): CommercialPage {
+  const priceLine = pitchPublishedPriceLine(opts.label);
+  const priceFaq = priceLine
+    ? {
+        question: `${opts.label} panel fiyatı ne kadar?`,
+        answer: `2026 yayımlanmış listede ${opts.label} panelleri — ${priceLine} (panel başı, KDV ve nakliye hariç). Kaynak: LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.`,
+      }
+    : FAQ_PRICE_SOURCE;
+  const priceIntro = priceLine
+    ? `Yayımlanmış panel fiyatları (${opts.label}): ${priceLine}. Makinece: LED ekran fiyatları sayfası.`
+    : null;
+
   return {
     slug: opts.slug,
     cluster: "pitch",
@@ -440,7 +467,7 @@ function pitchPage(opts: {
     h1: opts.h1,
     eyebrow: "Piksel aralığı",
     lead: opts.lead,
-    intro: [...opts.intro, NAP],
+    intro: [...opts.intro, ...(priceIntro ? [priceIntro] : []), NAP],
     bullets: ["İzleme mesafesine göre seçim", "Model sayfalarında teknik özet", "Fiyat hesaplayıcı + yazılı teklif"],
     images: opts.images,
     proofs: proofsFrom(opts.proof, 5),
@@ -452,12 +479,29 @@ function pitchPage(opts: {
       {
         question: `${opts.label} ne zaman seçilir?`,
         answer:
-          "İzleme mesafesi, bütçe ve içerik tipi birlikte değerlendirilir. Yakın mesafede daha küçük pitch; uzak servis/cephede daha büyük pitch tercih edilir.",
+          "İzleme mesafesi, bütçe ve içerik tipi birlikte değerlendirilir. Yakın mesafede daha küçük pitch; uzak servis/cephede daha büyük pitch tercih edilir. Rehber: https://arledscreen.com/tr/rehber/piksel-araligi-secimi/.",
       },
+      priceFaq,
+      FAQ_PANEL_HINT,
     ],
     primaryCta: { href: opts.modelLinks[0]?.href ?? "/tr/products/", label: "Modeli incele" },
     secondaryCta: { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
   };
+}
+
+/** Published USD band for a pitch landing (e.g. "P2.5 LED") — never invents prices. */
+function pitchPublishedPriceLine(label: string): string | null {
+  const pitch = label.replace(/\s*LED\s*$/i, "").trim();
+  const rows = PANEL_PRICES.filter((p) => p.pitch === pitch);
+  if (!rows.length) return null;
+  const fmt = (n: number) => n.toFixed(2).replace(".", ",");
+  return rows
+    .map((p) => {
+      const use = p.use === "ic" ? "iç mekân" : "dış mekân";
+      const extra = [p.surface, p.frontService ? "önden servis" : ""].filter(Boolean).join(", ");
+      return `${use}${extra ? ` (${extra})` : ""}: ${fmt(p.usd)} USD`;
+    })
+    .join("; ");
 }
 
 const PITCH_PAGES: CommercialPage[] = [
@@ -467,14 +511,12 @@ const PITCH_PAGES: CommercialPage[] = [
     h1: "P1.25 LED ekran",
     lead: "Çok yakın izleme için ince pitch GOB paneller.",
     intro: [
-      "P1.25, kontrol odası, lüks mağaza ve yakın mesafe lobilerde yüksek çözünürlük için tercih edilir. GOB korumalı model sayfasından teknik özete ulaşabilirsiniz.",
-    ],
+      "P1.25, kontrol odası, lüks mağaza ve yakın mesafe lobilerde yüksek çözünürlük için tercih edilir. GOB korumalı model sayfasından teknik özete ulaşabilirsiniz."],
     modelLinks: [modelLink("gob-led-ekran", "p1-25-gob", "P1.25 GOB model")!].filter(Boolean),
     proof: (r) => /P1\.25|P1\.2/i.test(r.detail),
     images: [
       { src: "/projects/modules/fine-pitch-panel.jpg", alt: "İnce pitch LED panel" },
-      { src: "/projects/modules/tech/cob-smd-gob-trio.jpg", alt: "İnce pitch yüzey teknolojileri" },
-    ],
+      { src: "/projects/modules/tech/cob-smd-gob-trio.jpg", alt: "İnce pitch yüzey teknolojileri" }],
   }),
   pitchPage({
     slug: "p1-86-led-ekran",
@@ -482,36 +524,30 @@ const PITCH_PAGES: CommercialPage[] = [
     h1: "P1.86 LED ekran",
     lead: "İnce pitch ile bütçe dengesi; GOB ve esnek seçenekler.",
     intro: [
-      "P1.86, kurumsal lobi ve mağaza ekranlarında sık kullanılan ince pitch bandıdır. GOB ve esnek varyantları model sayfalarındadır.",
-    ],
+      "P1.86, kurumsal lobi ve mağaza ekranlarında ince pitch katalog bandıdır. GOB ve esnek varyantları model sayfalarındadır."],
     modelLinks: [
       modelLink("gob-led-ekran", "p1-86-gob", "P1.86 GOB"),
-      modelLink("esnek-led-ekran", "p1-86-esnek", "P1.86 esnek"),
-    ].filter((x): x is CommercialLink => Boolean(x)),
+      modelLink("esnek-led-ekran", "p1-86-esnek", "P1.86 esnek")].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P1\.86/i.test(r.detail),
     images: [
       { src: "/projects/modules/fine-pitch-panel.jpg", alt: "P1.86 ince pitch LED" },
-      { src: "/projects/modules/indoor-wall.jpg", alt: "İç mekan ince pitch duvar" },
-    ],
+      { src: "/projects/modules/indoor-wall.jpg", alt: "İç mekan ince pitch duvar" }],
   }),
   pitchPage({
     slug: "p2-5-led-ekran",
     label: "P2.5 LED",
     h1: "P2.5 LED ekran",
-    lead: "İç ve dış mekân projelerinde en çok kullanılan pitch bandı.",
+    lead: "İç ve dış mekân kayıtlarında görülen orta pitch bandı.",
     intro: [
-      "P2.5; mağaza, kafe, sahne yakını ve orta mesafe dış mekânlarda dengeli çözünürlük sunar. Kayıtlı projelerde sık geçer.",
-    ],
+      "P2.5; mağaza, kafe, sahne yakını ve orta mesafe dış mekânlarda dengeli çözünürlük sunar. Referans listesinde P2.5 geçen kayıtlar vardır."],
     modelLinks: [
       modelLink("ic-mekan-led-ekran", "p2-5", "P2.5 iç mekan"),
       modelLink("dis-mekan-led-ekran", "p2-5", "P2.5 dış mekan"),
-      modelLink("esnek-led-ekran", "p2-5-esnek", "P2.5 esnek"),
-    ].filter((x): x is CommercialLink => Boolean(x)),
+      modelLink("esnek-led-ekran", "p2-5-esnek", "P2.5 esnek")].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P2\.5/i.test(r.detail),
     images: [
       { src: "/projects/indoor-smd.jpg", alt: "P2.5 iç mekan LED" },
-      { src: "/projects/modules/outdoor-cab.jpg", alt: "P2.5 dış mekan kabin" },
-    ],
+      { src: "/projects/modules/outdoor-cab.jpg", alt: "P2.5 dış mekan kabin" }],
   }),
   pitchPage({
     slug: "p2-9-led-ekran",
@@ -523,8 +559,7 @@ const PITCH_PAGES: CommercialPage[] = [
     proof: (r) => /P2\.9|P2\.97/i.test(r.detail),
     images: [
       { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Dış mekan halka açık LED ekran" },
-      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekan LED ekran" },
-    ],
+      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekan LED ekran" }],
   }),
   pitchPage({
     slug: "p3-07-led-ekran",
@@ -534,32 +569,27 @@ const PITCH_PAGES: CommercialPage[] = [
     intro: ["P3.07, iç ve dış mekân kataloglarında yer alan orta pitch seçeneğidir. Kullanım yerine göre iç veya dış seri seçilir."],
     modelLinks: [
       modelLink("ic-mekan-led-ekran", "p3-07", "P3.07 iç mekan"),
-      modelLink("dis-mekan-led-ekran", "p3-07", "P3.07 dış mekan"),
-    ].filter((x): x is CommercialLink => Boolean(x)),
+      modelLink("dis-mekan-led-ekran", "p3-07", "P3.07 dış mekan")].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P3|P3\.0/i.test(r.detail),
     images: [
       { src: "/projects/modules/indoor-smd-surface.jpg", alt: "P3 sınıfı iç mekan yüzey" },
-      { src: "/projects/modules/outdoor-cab.jpg", alt: "P3 sınıfı dış mekan kabin" },
-    ],
+      { src: "/projects/modules/outdoor-cab.jpg", alt: "P3 sınıfı dış mekan kabin" }],
   }),
   pitchPage({
     slug: "p4-led-ekran",
     label: "P4 LED",
     h1: "P4 LED ekran",
-    lead: "Cephe ve açık alan için sık tercih edilen P4 bandı.",
+    lead: "Cephe ve açık alan için yayımlı P4 bandı.",
     intro: [
-      "P4, Manisa Büyükşehir Belediyesi kaydındaki 1344×128 cm Ultra 2026 uygulaması gibi geniş dış mekân işlerinde kullanılır. Önden servis varyantı da vardır.",
-    ],
+      "P4, Manisa Büyükşehir Belediyesi kaydındaki 1344×128 cm Ultra 2026 uygulaması gibi geniş dış mekân işlerinde kullanılır. Önden servis varyantı da vardır."],
     modelLinks: [
       modelLink("ic-mekan-led-ekran", "p4", "P4 iç mekan"),
       modelLink("dis-mekan-led-ekran", "p4", "P4 dış mekan"),
-      modelLink("dis-mekan-led-ekran", "p4-on-servis", "P4 önden servis"),
-    ].filter((x): x is CommercialLink => Boolean(x)),
+      modelLink("dis-mekan-led-ekran", "p4-on-servis", "P4 önden servis")].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P4/i.test(r.detail),
     images: [
       { src: "/projects/modules/outdoor-facade.jpg", alt: "P4 cephe LED" },
-      { src: "/projects/modules/front-service-module.jpg", alt: "P4 önden servis modül" },
-    ],
+      { src: "/projects/modules/front-service-module.jpg", alt: "P4 önden servis modül" }],
   }),
   pitchPage({
     slug: "p5-led-ekran",
@@ -571,10 +601,8 @@ const PITCH_PAGES: CommercialPage[] = [
     proof: (r) => /P5/i.test(r.detail),
     images: [
       { src: "/projects/billboard-arled.jpg", alt: "P5 billboard / büyük yüzey LED" },
-      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Büyük dış mekan LED ekran" },
-    ],
-  }),
-];
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Büyük dış mekan LED ekran" }],
+  })];
 
 function usagePage(opts: {
   slug: string;
@@ -607,8 +635,9 @@ function usagePage(opts: {
       {
         question: `${opts.name} fiyatı ne kadar?`,
         answer:
-          "Sabit fiyat yoktur. Ölçü, pitch ve montaj koşullarına göre hesaplayıcı + keşif sonrası yazılı teklif hazırlanır.",
+          "Sabit paket fiyatı yoktur. Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir (ücretsiz kargo yok); nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
       },
+      FAQ_PANEL_HINT,
     ],
     primaryCta: { href: "/tr/quote/", label: "Bu kullanım için teklif" },
     secondaryCta: { href: "/tr/hesaplayici/", label: "Fiyat hesapla" },
@@ -621,13 +650,11 @@ const USE_PAGES: CommercialPage[] = [
     name: "Mağaza LED ekran",
     lead: "Vitrin, satış alanı ve marka duvarı için mağaza LED ekran çözümleri.",
     intro: [
-      "Mağaza LED ekranında vitrin mesafesi ve ürün aydınlatması önemlidir. Merter ve Osmanbey gibi perakende kayıtlarımız bu kullanıma yakındır.",
-    ],
+      "Mağaza LED ekranında vitrin mesafesi ve ürün aydınlatması önemlidir. Merter ve Osmanbey gibi perakende kayıtlarımız bu kullanıma yakındır."],
     proof: (r) => /triko|vitrin|mağaza|Prestij|Gnd/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/modules/indoor-wall.jpg", alt: "Mağaza iç mekan LED duvar" },
-      { src: "/projects/indoor-smd.jpg", alt: "Mağaza LED ekran" },
-    ],
+      { src: "/projects/indoor-smd.jpg", alt: "Mağaza LED ekran" }],
     products: ["ic-mekan-led-ekran", "gob-led-ekran", "poster-led-ekran"],
   }),
   usagePage({
@@ -638,20 +665,18 @@ const USE_PAGES: CommercialPage[] = [
     proof: (r) => /Yaşam Cafe|Belediyesi|dev|640|576/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/modules/outdoor-facade.jpg", alt: "AVM cephe LED" },
-      { src: "/projects/totem-indoor.jpg", alt: "AVM iç yönlendirme LED" },
-    ],
+      { src: "/projects/totem-indoor.jpg", alt: "AVM iç yönlendirme LED" }],
     products: ["dis-mekan-led-ekran", "ic-mekan-led-ekran", "poster-led-ekran"],
   }),
   usagePage({
     slug: "cephe-led-ekran",
     name: "Cephe LED ekran",
     lead: "Bina cephesi ve meydan için dış mekan LED ekran.",
-    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa kayıtları geniş dış yüzey örnekleridir."],
+    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü (sabit rüzgâr yükü yok — 120 km/h / 1500 Pa yayımlanmaz; keşif + yazılı teklif) ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa kayıtları geniş dış yüzey örnekleridir."],
     proof: (r) => /dış mekân|dış mekan|P4|P5|1344|576/i.test(r.detail),
     images: [
       { src: "/projects/modules/outdoor-facade.jpg", alt: "Cephe LED ekran" },
-      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekan cephe LED" },
-    ],
+      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekan cephe LED" }],
     products: ["dis-mekan-led-ekran", "transparan-led-ekran"],
   }),
   usagePage({
@@ -662,8 +687,7 @@ const USE_PAGES: CommercialPage[] = [
     proof: (r) => /dış mekân|dış mekan|P5|P4|Outdoor/i.test(r.detail),
     images: [
       { src: "/projects/billboard-arled.jpg", alt: "Billboard LED ekran" },
-      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Açık alan LED ekran" },
-    ],
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Açık alan LED ekran" }],
     products: ["dis-mekan-led-ekran"],
   }),
   usagePage({
@@ -671,13 +695,11 @@ const USE_PAGES: CommercialPage[] = [
     name: "Vitrin LED ekran",
     lead: "Mağaza vitrini ve kolon uygulamaları için LED ekran.",
     intro: [
-      "Aksaray Beren Kırtasiye kaydındaki 192×176 cm vitrin + kolon uygulaması bu kullanıma örnektir. Şeffaf LED alternatifi cam vitrinlerde değerlendirilir.",
-    ],
+      "Aksaray Beren Kırtasiye kaydındaki 192×176 cm vitrin + kolon uygulaması bu kullanıma örnektir. Şeffaf LED alternatifi cam vitrinlerde değerlendirilir."],
     proof: (r) => /vitrin|kolon/i.test(r.detail),
     images: [
       { src: "/projects/modules/indoor-wall.jpg", alt: "Vitrin LED ekran" },
-      { src: "/projects/indoor-led-lion.jpg", alt: "Vitrin yakın çekim LED" },
-    ],
+      { src: "/projects/indoor-led-lion.jpg", alt: "Vitrin yakın çekim LED" }],
     products: ["ic-mekan-led-ekran", "seffaf-led-ekran", "gob-led-ekran"],
   }),
   usagePage({
@@ -687,9 +709,8 @@ const USE_PAGES: CommercialPage[] = [
     intro: ["Alanya White City Resort Hotel kaydı otel ölçeğinde bir uygulamadır. Lobi ince pitch; dış alan daha büyük pitch ister."],
     proof: (r) => /Hotel|Resort|otel/i.test(`${r.company} ${r.detail}`),
     images: [
-      { src: "/opt/blog/alanya-otel-led-ekran.jpg", alt: "Alanya otel LED ekran uygulaması" },
-      { src: "/projects/lounge-football.jpg", alt: "Lobi / lounge LED ekran" },
-    ],
+      { src: "/blog/alanya-otel-led-ekran.jpg", alt: "Alanya otel LED ekran uygulaması" },
+      { src: "/projects/lounge-football.jpg", alt: "Lobi / lounge LED ekran" }],
     products: ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran"],
   }),
   usagePage({
@@ -697,14 +718,12 @@ const USE_PAGES: CommercialPage[] = [
     name: "Restoran LED ekran",
     lead: "Restoran ve kafe oturma alanları için LED ekran.",
     intro: [
-      "Kafe/restoran kayıtlarımız arasında Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe ve Yozgat kampüs cafe uygulamaları bulunur.",
-    ],
+      "Kafe/restoran kayıtlarımız arasında Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe ve Yozgat kampüs cafe uygulamaları bulunur."],
     proof: (r) => /Cafe|Kafe|cafe|kafe|Malt|Lounge/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/kafe.jpg", alt: "Restoran / kafe LED ekran" },
-      { src: "/opt/blog/kafe-restoran-led-ekran.jpg", alt: "Restoran LED ekran yayını" },
-      { src: "/projects/lounge-football.jpg", alt: "Lounge maç yayını LED" },
-    ],
+      { src: "/blog/kafe-restoran-led-ekran.jpg", alt: "Restoran LED ekran yayını" },
+      { src: "/projects/lounge-football.jpg", alt: "Lounge maç yayını LED" }],
     products: ["ic-mekan-led-ekran", "gob-led-ekran"],
   }),
   usagePage({
@@ -715,32 +734,30 @@ const USE_PAGES: CommercialPage[] = [
     proof: (r) => /Düğün|düğün|sahne|Sahne/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/dugun.jpg", alt: "Düğün salonu LED ekran" },
-      { src: "/projects/modules/rental-kit.jpg", alt: "Kiralık sahne LED" },
-    ],
+      { src: "/projects/modules/rental-kit.jpg", alt: "Kiralık sahne LED" }],
     products: ["ic-mekan-led-ekran", "kiralik-led-ekran"],
   }),
   usagePage({
     slug: "konferans-salonu-led-ekran",
     name: "Konferans salonu LED ekran",
-    lead: "Konferans ve toplantı salonları için yüksek okunabilirlikli LED.",
-    intro: ["Konferans salonunda izleme mesafesi ve sunum içeriği pitch seçimini belirler. İnce pitch GOB ve iç mekan serileri sık değerlendirilir."],
+    lead: "Konferans ve toplantı salonları için okunabilir LED — kontrast oranı model föyü + yazılı teklifte (sabit kontrast yok).",
+    intro: ["Konferans salonunda izleme mesafesi ve sunum içeriği pitch seçimini belirler. İnce pitch GOB ve iç mekan serileri sık değerlendirilir. Sabit 5000:1 / 3000:1 kontrast yayımlanmaz."],
     proof: (r) => /P1\.|P2\.5|konferans|lobi/i.test(`${r.detail} ${r.company}`),
     images: [
       { src: "/projects/neu-kutuphane.jpg", alt: "Konferans / kurumsal LED ekran" },
-      { src: "/projects/modules/indoor-wall.jpg", alt: "Salon LED duvar" },
-    ],
+      { src: "/projects/modules/indoor-wall.jpg", alt: "Salon LED duvar" }],
     products: ["ic-mekan-led-ekran", "gob-led-ekran", "ince-pitch-led-ekran"],
   }),
   usagePage({
     slug: "sahne-led-ekran",
     name: "Sahne LED ekran",
     lead: "Konser, tiyatro ve etkinlik sahnesi LED ekranları.",
-    intro: ["Kadıköy Matiz Sahne kaydı sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir."],
+    intro: [
+      "Kadıköy Matiz Sahne kaydı sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir. Art-Net / sACN / DMX ışık kontrol entegrasyonu yazılı teklifte — sabit Art-Net yok."],
     proof: (r) => /Sahne|sahne|kiralama|stand/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Sahne kiralık LED kabin" },
-      { src: "/projects/custom-booth.jpg", alt: "Etkinlik sahne/stand LED" },
-    ],
+      { src: "/projects/custom-booth.jpg", alt: "Etkinlik sahne/stand LED" }],
     products: ["kiralik-led-ekran", "dis-mekan-led-ekran", "ic-mekan-led-ekran"],
   }),
   usagePage({
@@ -748,14 +765,12 @@ const USE_PAGES: CommercialPage[] = [
     name: "Fuar LED ekran",
     lead: "Fuar standı ve geçici alan LED ekran kurulumları.",
     intro: [
-      "Ünye Belediyesi’nin Ordu Günleri standı (Atatürk Havalimanı Millet Bahçesi) fuar/stand kullanımına örnektir. Kiralık veya satış seçenekleri süreye göre konuşulur.",
-    ],
+      "Ünye Belediyesi’nin Ordu Günleri standı (Atatürk Havalimanı Millet Bahçesi) fuar/stand kullanımına örnektir. Kiralık veya satış seçenekleri süreye göre konuşulur."],
     proof: (r) => /Belediyesi|stand|Ordu|kiralama|fuar/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/unye.jpg", alt: "Fuar / stand LED ekran — Ünye Belediyesi" },
       { src: "/projects/custom-booth.jpg", alt: "Fuar standı LED" },
-      { src: "/opt/blog/unye-belediyesi-led-ekran.jpg", alt: "Ordu Günleri stand LED ekran" },
-    ],
+      { src: "/blog/unye-belediyesi-led-ekran.jpg", alt: "Ordu Günleri stand LED ekran" }],
     products: ["kiralik-led-ekran", "ic-mekan-led-ekran", "poster-led-ekran"],
   }),
   usagePage({
@@ -763,25 +778,24 @@ const USE_PAGES: CommercialPage[] = [
     name: "Belediye LED ekran",
     lead: "Belediye meydan, bilgilendirme ve etkinlik LED ekranları.",
     intro: [
-      "Manisa Büyükşehir Belediyesi ve Beylikdüzü Belediyesi kayıtları kamu/belediye ölçeğinde uygulamalardır. İzin süreçleri konuma göre değişir.",
-    ],
+      "Manisa Büyükşehir Belediyesi ve Beylikdüzü Belediyesi kayıtları kamu/belediye ölçeğinde uygulamalardır. İzin süreçleri konuma göre değişir."],
     proof: (r) => /Belediye/i.test(r.company),
     images: [
       { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Belediye açık alan LED" },
-      { src: "/projects/unye.jpg", alt: "Belediye etkinlik LED ekran" },
-    ],
+      { src: "/projects/unye.jpg", alt: "Belediye etkinlik LED ekran" }],
     products: ["dis-mekan-led-ekran", "ic-mekan-led-ekran"],
   }),
   usagePage({
     slug: "fabrika-led-ekran",
     name: "Fabrika LED ekran",
-    lead: "Üretim sahası, kantin ve fabrika girişi LED ekranları.",
-    intro: ["Fabrika ortamında toz, mesafe ve montaj yüksekliği seçimi etkiler. Keşifte ortam koşulları not edilir; abartılı IP/kW iddiası yapılmaz, değerler teklifte yazılır."],
+    lead: "Üretim sahası, kantin ve fabrika girişi LED ekranları — kullanım alanı; üretici/OEM iddiası değil.",
+    intro: [
+      "Bu sayfa fabrika / endüstriyel mekân kullanımını anlatır; ARLEDSCREEN’i fabrika üreticisi veya OEM olarak sunmaz. Üretici/bayi ayrımı: /tr/led-ekran-ureticisi/.",
+      "Fabrika ortamında toz, mesafe ve montaj yüksekliği seçimi etkiler. Keşifte ortam koşulları not edilir; abartılı IP/kW iddiası yapılmaz, değerler yazılı teklifte yazılır."],
     proof: (r) => /P2\.5|P3|P4|montaj/i.test(r.detail),
     images: [
       { src: "/projects/factory-assembly.jpg", alt: "Fabrika / endüstriyel LED bağlamı" },
-      { src: "/projects/panels-warehouse.jpg", alt: "Panel depo ve fabrika hazırlık" },
-    ],
+      { src: "/projects/panels-warehouse.jpg", alt: "Panel depo ve sevkiyat hazırlığı" }],
     products: ["dis-mekan-led-ekran", "ic-mekan-led-ekran"],
   }),
   usagePage({
@@ -792,8 +806,7 @@ const USE_PAGES: CommercialPage[] = [
     proof: (r) => /P2\.5|P3|P4|Premium/i.test(r.detail),
     images: [
       { src: "/projects/lounge-football.jpg", alt: "Spor yayını LED ekran" },
-      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Geniş alan LED ekran" },
-    ],
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Geniş alan LED ekran" }],
     products: ["ic-mekan-led-ekran", "dis-mekan-led-ekran", "gob-led-ekran"],
   }),
   usagePage({
@@ -801,23 +814,19 @@ const USE_PAGES: CommercialPage[] = [
     name: "Stadyum LED ekran",
     lead: "Stadyum ve büyük açık alan LED ekranları.",
     intro: [
-      "Stadyum ölçeği yüksek konstrüksiyon ve uzak izleme mesafesi ister. Bursa’daki 576×480 cm P5 Premium dış mekân kaydı büyük yüzey örneğidir; her stadyum için ayrı keşif gerekir.",
-    ],
+      "Stadyum ölçeği yüksek konstrüksiyon ve uzak izleme mesafesi ister. Bursa’daki 576×480 cm P5 Premium dış mekân kaydı büyük yüzey örneğidir; her stadyum için ayrı keşif gerekir."],
     proof: (r) => /P5|576|1344|dış mekân|dış mekan/i.test(r.detail),
     images: [
       { src: "/projects/billboard-arled.jpg", alt: "Büyük yüzey / stadyum ölçeği LED" },
-      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Açık alan büyük LED ekran" },
-    ],
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Açık alan büyük LED ekran" }],
     products: ["dis-mekan-led-ekran"],
-  }),
-];
+  })];
 
 export const COMMERCIAL_PAGES: CommercialPage[] = [
   ...INTENT_PAGES,
   ...PRODUCT_ALIAS_PAGES,
   ...PITCH_PAGES,
-  ...USE_PAGES,
-];
+  ...USE_PAGES];
 
 export const COMMERCIAL_SLUGS = COMMERCIAL_PAGES.map((p) => p.slug);
 

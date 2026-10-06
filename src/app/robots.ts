@@ -3,27 +3,45 @@ import { absoluteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-const AI_BOTS = [
-  "GPTBot",
+/**
+ * Explicit Allow for search + answer-engine + (optionally) training crawlers.
+ * Policy: AI alışveriş / GEO — ajanların entity.json + catalog.json okuması için açık.
+ * Do not Disallow training bots here; brand wants citation AND correct entity ingestion.
+ */
+export const AI_SEARCH_BOTS = [
+  "bingbot",
+  "BingPreview",
+  "Googlebot",
+  "GoogleOther",
   "OAI-SearchBot",
   "ChatGPT-User",
-  "Google-Extended",
-  "Googlebot",
-  "bingbot",
-  "DuckAssistBot",
-  "ClaudeBot",
   "Claude-SearchBot",
   "Claude-User",
-  "anthropic-ai",
   "PerplexityBot",
   "Perplexity-User",
-  "Bytespider",
-  "CCBot",
+  "DuckAssistBot",
+  "DuckDuckBot",
+  "Amzn-SearchBot",
   "Applebot",
-  "Applebot-Extended",
+  "YandexBot",
+  "Yandex",
   "FacebookBot",
   "meta-externalagent",
-];
+] as const;
+
+/** Training / foundation-model crawlers — also Allowed for entity discovery. */
+export const AI_TRAINING_BOTS = [
+  "GPTBot",
+  "ClaudeBot",
+  "anthropic-ai",
+  "Google-Extended",
+  "Applebot-Extended",
+  "Amazonbot",
+  "Bytespider",
+  "CCBot",
+] as const;
+
+export const AI_BOTS = [...AI_SEARCH_BOTS, ...AI_TRAINING_BOTS] as const;
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -37,7 +55,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/" as const,
       })),
     ],
-    host: "https://arledscreen.com",
+    // Bing Host directive prefers bare hostname (no scheme).
+    host: "arledscreen.com",
     sitemap: absoluteUrl("/sitemap.xml"),
   };
 }

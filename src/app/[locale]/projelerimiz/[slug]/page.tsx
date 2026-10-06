@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OptImage } from "@/components/ui/opt-image";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import {
   PROJECT_CASE_STUDIES,
   getProjectCaseStudy,
@@ -15,6 +18,19 @@ import {
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
+
+/** Shared AI-shopping FAQs for all case studies (Day 60) — no invented package prices. */
+const CASE_SHOPPING_FAQS = [
+  {
+    question: "Bu projedeki LED ekranın list fiyatı sayfada yazar mı?",
+    answer:
+      "Hayır. Case study sayfalarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel USD: LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi. Proje tutarı keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir. İade/garanti teklifte yazılır.",
+  },
+  {
+    question: "Benzer bir kurulum için ne yapmalıyım?",
+    answer:
+      "Ölçü, konum ve kullanım amacını paylaşarak https://arledscreen.com/tr/quote/ üzerinden yazılı teklif isteyin. Yaklaşık panel bandı için https://arledscreen.com/tr/hesaplayici/ kullanılabilir.",
+  }];
 
 export const dynamicParams = false;
 
@@ -49,19 +65,39 @@ export default async function ProjectCasePage({
   if (!c) notFound();
 
   const url = absoluteUrl(projectCasePath(c.slug));
+  const imageUrls = c.images.map((img) =>
+    absoluteUrl(img.src.startsWith("/blog/") ? img.src.replace("/blog/", "/opt/blog/") : img.src),
+  );
   const creativeWork = {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
+    "@type": ["CreativeWork", "Article"],
     "@id": `${url}#case`,
+    headline: c.h1,
     name: c.h1,
+    abstract: c.citeOneLiner,
     description: c.metaDescription,
+    text: c.citeOneLiner,
+    inLanguage: "tr",
     dateCreated: c.date,
-    about: "LED ekran kurulumu",
+    datePublished: c.date,
+    about: [
+      { "@type": "Thing", name: "LED ekran kurulumu" },
+      ...(c.location
+        ? [{ "@type": "Place", name: c.location, ...(c.provinceName ? { address: { "@type": "PostalAddress", addressLocality: c.provinceName, addressCountry: "TR" } } : {}) }]
+        : [])],
     provider: { "@id": `${SITE_URL}/#organization` },
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    sameAs: [
+      absoluteUrl("/ai-shopping.json"),
+      absoluteUrl("/catalog.json"),
+      absoluteUrl("/entity.json")],
+    mainEntityOfPage: url,
     url,
-    ...(c.images[0]
-      ? { image: absoluteUrl(c.images[0].src.startsWith("/blog/") ? c.images[0].src.replace("/blog/", "/opt/blog/") : c.images[0].src) }
-      : {}),
+    ...(imageUrls.length ? { image: imageUrls } : {}),
+    keywords: ["ARLEDSCREEN", "NXTIONSTAR", "LED ekran", c.sector, c.location].filter(Boolean).join(", "),
   };
 
   const rows: { label: string; value: string }[] = [
@@ -69,8 +105,7 @@ export default async function ProjectCasePage({
     { label: "Tarih", value: c.date },
     { label: "Konum", value: c.location },
     { label: "Kapsam", value: c.detail },
-    { label: "Sektör", value: c.sector },
-  ];
+    { label: "Sektör", value: c.sector }];
   if (c.pitch) rows.push({ label: "Piksel aralığı", value: c.pitch });
   if (c.environment) rows.push({ label: "Ortam", value: c.environment });
   if (c.areaM2) rows.push({ label: "Yaklaşık alan", value: `${c.areaM2} m²` });
@@ -81,9 +116,9 @@ export default async function ProjectCasePage({
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") },
-          { name: c.companyLabel, item: url },
-        ]}
+          { name: c.companyLabel, item: url }]}
       />
+      <FaqJsonLd faqs={CASE_SHOPPING_FAQS} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWork) }}
@@ -97,6 +132,10 @@ export default async function ProjectCasePage({
           <h1 className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.7rem,1.2rem+1.8vw,2.5rem)] font-extrabold tracking-[-0.03em] text-ink">
             {c.h1}
           </h1>
+          <blockquote className="mt-5 max-w-3xl rounded-2xl border border-border bg-white/80 p-5 text-base leading-relaxed text-ink">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">Atıf için kısa metin</p>
+            <p className="mt-2">{c.citeOneLiner}</p>
+          </blockquote>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             Bu sayfa ARLEDSCREEN referans listesindeki yayımlanmış alanlardan üretilir.
             Kontrol sistemi, garanti yılı, müşteri yorumu veya süre gibi sitede yazmayan
@@ -178,6 +217,16 @@ export default async function ProjectCasePage({
                 </Link>
               </li>
             </ul>
+            <ShoppingLinkCloud
+              excludeHref={`/tr/projelerimiz/${c.slug}/`}
+              title="Case study · fiyat ve kimlik (uydurma paket yok)"
+              extra={[
+                { href: "/tr/projelerimiz/", label: "Tüm projeler" },
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
+            />
+            <div className="mt-8">
+              <HomeFaq faqs={CASE_SHOPPING_FAQS} />
+            </div>
           </div>
           <aside className="rounded-2xl border border-border bg-band/40 p-5 text-sm text-ink-soft">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">Servis</p>
@@ -211,9 +260,9 @@ export default async function ProjectCasePage({
           </div>
         </section>
       ) : (
-        <section className="border-t border-border py-8">
+        <section className="border-t border-border py-8" data-case-photo-gap="true">
           <div className="mx-auto max-w-7xl px-4 text-sm text-ink-muted sm:px-6 lg:px-8">
-            Bu kayıt için henüz eşleşen stok/proje fotoğrafı bağlı değil. Genel galeri:{" "}
+            Bu kayıt için henüz eşleşen proje fotoğrafı bağlı değil (uydurma görsel eklenmez). Genel galeri:{" "}
             <Link href="/tr/galeri/" className="font-semibold text-cyan hover:underline">
               /tr/galeri/
             </Link>

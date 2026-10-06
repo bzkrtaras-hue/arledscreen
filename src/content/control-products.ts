@@ -24,8 +24,8 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     imageAlt: "Huidu LED asenkron kontrol kartı ürün görseli",
     brandName: "Huidu",
     intro: [
-      "Huidu (Shenzhen Huidu Technology) kontrol kartları, özellikle asenkron LED tabela ve orta boy reklam yüzeylerinde sık tercih edilir. Kart üzerinde depolama vardır; program bilgisayar veya telefonda hazırlanıp Wi‑Fi, USB ya da ağ üzerinden ekrana gönderilir.",
-      "ARLEDSCREEN olarak Huidu kart seçimini ekran ölçüsüne, piksel yüküne ve yayın senaryosuna göre yapıyoruz. Kurulumda HDPlayer / LedArt yazılımı, ekran haritası ve uzaktan erişim ayarları birlikte teslim edilir. Nihai model keşif sonrası yazılı teklifle netleşir.",
+      "Huidu (Shenzhen Huidu Technology) kontrol kartları, asenkron LED tabela ve orta boy reklam yüzeylerinde yaygın kullanılan kontrol hattıdır. Kart üzerinde depolama vardır; program bilgisayar veya telefonda hazırlanıp Wi‑Fi, USB ya da ağ üzerinden ekrana gönderilir.",
+      "ARLEDSCREEN olarak Huidu kart seçimini ekran ölçüsüne, piksel yüküne ve yayın senaryosuna göre yapıyoruz. Kurulumda HDPlayer / LedArt yazılımı, ekran haritası ve uzaktan erişim ayarları yazılı teklifte kapsama alınır — sabit «birlikte teslim» paketi yoktur. Nihai model keşif sonrası yazılı teklifle netleşir.",
     ],
     highlights: [
       "Wi‑Fi ve USB ile sahada hızlı içerik güncelleme",
@@ -49,6 +49,11 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     projectType: "servis",
     whatsapp: "Merhaba, Huidu kontrol kartı (model / ekran ölçüsü) için bilgi ve teklif almak istiyorum:",
     faqs: [
+      {
+        question: "Huidu kontrol kartının list fiyatı var mı?",
+        answer:
+          "Hayır. Huidu (ve NovaStar/Colorlight) kontrol kartlarında yayımlanmış list USD yoktur — yazılı teklifle. Hesaplayıcı kontrol kartı bedeli yazılı teklifte kalemlenir. yayımlanmış panel listesi · teklif: https://arledscreen.com/tr/quote/.",
+      },
       {
         question: "Huidu kart hangi ekran ölçüsüne yeter?",
         answer:
@@ -93,7 +98,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       "NovaLCT ile nokta kalibrasyonu ve ekran izleme",
     ],
     uses: [
-      { title: "Sabit reklam cephesi", body: "Yüksek piksel yükünde kesintisiz senkron yayın." },
+      { title: "Sabit reklam cephesi", body: "Yüksek piksel yükünde senkron yayın — kapsam yazılı teklifte." },
       { title: "Sahne ve kiralık", body: "Düşük gecikme ve çoklu kaynak geçişi." },
       { title: "Zincir mağaza", body: "Taurus + bulut ile merkezi içerik dağıtımı." },
       { title: "Kontrol odası", body: "Çoklu pencere ve kalibrasyon gerektiren duvarlar." },
@@ -109,6 +114,11 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     whatsapp: "Merhaba, NovaStar kontrolcü (VX / Taurus / MCTRL) için bilgi ve teklif almak istiyorum. Ekran ölçüsü:",
     faqs: [
       {
+        question: "NovaStar kontrolcünün list fiyatı var mı?",
+        answer:
+          "Hayır. NovaStar (ve Huidu/Colorlight) kontrol hatlarında yayımlanmış list USD yoktur — yazılı teklifle. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. yayımlanmış panel listesi · teklif: https://arledscreen.com/tr/quote/.",
+      },
+      {
         question: "VX600 ne kadar piksel sürer?",
         answer:
           "NovaStar VX600 föyünde tek ünite için yaklaşık 3,9 milyon piksel; maksimum genişlik 10.240, yükseklik 8.192 piksel olarak belirtilir. Altı Gigabit Ethernet çıkışı vardır.",
@@ -121,7 +131,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       {
         question: "Yazılım lisansı ve eğitim var mı?",
         answer:
-          "NovaLCT / Unico ile yapılandırma ve temel operatör anlatımı kurulum paketimize dahildir. Bulut abonelikleri ayrı değerlendirilir.",
+          "NovaLCT / Unico ile yapılandırma ve temel operatör anlatımı teklif kapsamına yazılır — sabit «dahildir» paketi yoktur. Bulut abonelikleri ayrı değerlendirilir.",
       },
     ],
   },
@@ -143,7 +153,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     brandName: "Colorlight",
     intro: [
       "Colorlight Cloud Tech kontrol ürünleri; X ve VX serisi işlemciler ile S serisi gönderici kartlarda toplanır. Çoklu HDMI/DP/DVI girişi, serbest katman yerleşimi ve Gigabit Ethernet / fiber çıkışları sabit kurulumdan sahne işlerine kadar geniş bir aralığı kapsar.",
-      "ARLEDSCREEN, Colorlight modelini ekranın piksel yükü, kaynak sayısı ve yedek fiber ihtiyacına göre önerir. iSet veya web arayüzüyle ilk yayın testi, parlaklık/gri ton ayarı ve operatör notları teslimata dahildir.",
+      "ARLEDSCREEN, Colorlight modelini ekranın piksel yükü, kaynak sayısı ve yedek fiber ihtiyacına göre önerir. iSet veya web arayüzüyle ilk yayın testi, parlaklık/gri ton ayarı (kurulum adımı — 16-bit gri skala / sabit HDR garantisi değil) ve operatör notları yazılı teklifte kapsama alınır — sabit «teslimata dahildir» paketi yoktur.",
     ],
     highlights: [
       "X20 / X40m: yüksek yükleme ve çoklu katman splicing",
@@ -169,6 +179,11 @@ export const CONTROL_GROUPS: ProductGroup[] = [
     whatsapp: "Merhaba, Colorlight kontrolcü (X / VX / S) için bilgi ve teklif almak istiyorum. Ekran ölçüsü:",
     faqs: [
       {
+        question: "Colorlight kontrolcünün list fiyatı var mı?",
+        answer:
+          "Hayır. Colorlight (ve Huidu/NovaStar) kontrol hatlarında yayımlanmış list USD yoktur — yazılı teklifle. Hesaplayıcı extrasUsd 500 USD marka list SKU değildir. yayımlanmış panel listesi · teklif: https://arledscreen.com/tr/quote/.",
+      },
+      {
         question: "X20 ile VX20 arasındaki fark nedir?",
         answer:
           "X serisi multimedya işlemciler katman, USB oynatma ve web kontrol odaklıdır. VX serisi daha çok profesyonel video işleme / kontrol sınıfına yakındır. Seçim kaynak tipi ve sahne ihtiyacına göre yapılır.",
@@ -181,7 +196,7 @@ export const CONTROL_GROUPS: ProductGroup[] = [
       {
         question: "Kurulum süresi ne kadar?",
         answer:
-          "Tek gönderici değişiminde çoğu zaman aynı gün yapılandırma biter. Yeni işlemci + fiber + çok katmanlı sahne için süre keşifte planlanır.",
+          "Süre keşif ve sahaya göre değişir; basit gönderici değişiminde kısa yapılandırma mümkün olabilir, karmaşık işlemci/fiber işleri yazılı teklifte planlanır — sabit aynı-gün SLA yoktur.",
       },
     ],
   },

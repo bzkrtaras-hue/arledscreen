@@ -26,10 +26,10 @@ export function HomeCtaBand({ locale }: HomeCtaBandProps) {
     locale === "tr"
       ? "Ölçü ve konum bilgisini paylaşın; size ekran önerisi, malzeme listesi ve yazılı teklif hazırlayalım. İsterseniz önce hesaplayıcıyla yaklaşık maliyeti görün."
       : locale === "ar"
-        ? "اطلب عرض سعر أو استكشف المواد والتكلفة عبر الحاسبة المباشرة."
+        ? "شارك المقاسات والموقع؛ نعدّ عرضاً مكتوباً من غازي عثمان باشا أو تقديراً عبر الحاسبة (بدون شحن مجاني)."
         : locale === "ru"
-          ? "Запросите КП или оцените материалы и стоимость в живом калькуляторе."
-          : "Reach our quote desk or explore materials and cost with the live calculator.";
+          ? "Пришлите размеры и место; подготовим письменное КП из Газиосманпаши или оценку в калькуляторе (без бесплатной доставки)."
+          : "Request a written quote from Gaziosmanpaşa, or explore materials and cost with the live calculator.";
 
   const waLabel = locale === "tr" ? "WhatsApp'tan yazın" : locale === "ar" ? "واتساب" : locale === "ru" ? "WhatsApp" : "WhatsApp us";
   const socialLabel = locale === "tr" ? "Bize ulaşın" : locale === "ar" ? "تواصل معنا" : locale === "ru" ? "Связаться" : "Contact us";
@@ -67,7 +67,7 @@ export function HomeCtaBand({ locale }: HomeCtaBandProps) {
             {waLabel}
           </a>
           <Link
-            href={"/tr/hesaplayici/"}
+            href={`/${locale}/hesaplayici/`}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-4 text-[15px] font-semibold text-white underline-offset-4 hover:underline"
           >
             <Calculator className="h-4 w-4" aria-hidden />

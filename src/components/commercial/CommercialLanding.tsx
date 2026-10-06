@@ -5,6 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import type { CommercialPage } from "@/content/commercial-pages";
 import { commercialPath } from "@/content/commercial-pages";
+import { PANEL_PRICES, PRICE_VALID_UNTIL } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
@@ -21,6 +22,13 @@ const CLUSTER_LABEL: Record<CommercialPage["cluster"], string> = {
   use: "Kullanım",
 };
 
+/** Map pitch landing slug (p2-5-led-ekran) → PANEL_PRICES.pitch (P2.5). */
+function pitchFromCommercialSlug(slug: string): string | null {
+  const m = slug.match(/^p(\d+(?:-\d+)?)-led-ekran$/i);
+  if (!m) return null;
+  return `P${m[1].replace("-", ".")}`;
+}
+
 function LinkCloud({
   title,
   links,
@@ -34,13 +42,22 @@ function LinkCloud({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="font-display text-lg font-bold text-ink md:text-xl">{title}</h2>
         <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
-          {links.map((l) => (
-            <li key={l.href}>
-              <Link href={l.href} className="text-sm font-semibold text-cyan hover:underline">
-                {l.label}
-              </Link>
-            </li>
-          ))}
+          {links.map((l) => {
+            const externalish = /\.(json|txt)$/i.test(l.href) || l.href.startsWith("/.well-known/");
+            return (
+              <li key={l.href}>
+                {externalish ? (
+                  <a href={l.href} className="text-sm font-semibold text-cyan hover:underline">
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link href={l.href} className="text-sm font-semibold text-cyan hover:underline">
+                    {l.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -49,7 +66,13 @@ function LinkCloud({
 
 export function CommercialLanding({ page }: { page: CommercialPage }) {
   const url = absoluteUrl(commercialPath(page.slug));
-  const serviceLd = {
+  const catalogUrl = absoluteUrl("/catalog.json");
+  const pitchLabel =
+    page.cluster === "pitch" ? pitchFromCommercialSlug(page.slug) : null;
+  const pitchPanels = pitchLabel
+    ? PANEL_PRICES.filter((p) => p.pitch === pitchLabel)
+    : [];
+  const serviceLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${url}#service`,
@@ -59,6 +82,28 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
     areaServed: { "@type": "Country", name: "Türkiye" },
     url,
   };
+  if (pitchPanels.length) {
+    const usd = pitchPanels.map((p) => p.usd);
+    serviceLd.offers = {
+      "@type": "AggregateOffer",
+      "@id": `${catalogUrl}#pitch-${page.slug}`,
+      url,
+      priceCurrency: "USD",
+      lowPrice: Math.min(...usd).toFixed(2),
+      highPrice: Math.max(...usd).toFixed(2),
+      offerCount: pitchPanels.length,
+      priceValidUntil: PRICE_VALID_UNTIL,
+      sku: pitchPanels.map((p) => p.id),
+      description: `${pitchLabel} yayımlanmış panel USD bandı; KDV ve nakliye hariç. Kaynak: catalog.json.`,
+      seller: { "@id": `${SITE_URL}/#organization` },
+      isPartOf: { "@id": catalogUrl },
+    };
+    serviceLd.isPartOf = {
+      "@type": "DataCatalog",
+      "@id": catalogUrl,
+      url: catalogUrl,
+    };
+  }
 
   return (
     <>
@@ -145,6 +190,12 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
               <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                 Fiyatlar
               </Link>
+              <a href="/catalog.json" className="font-semibold text-cyan hover:underline">
+                catalog.json
+              </a>
+              <Link href="/tr/quote/" className="font-semibold text-cyan hover:underline">
+                Teklif
+              </Link>
               <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
                 Hesaplayıcı
               </Link>
@@ -225,10 +276,14 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
       )}
 
       <LinkCloud
-        title="Fiyat ve seçim"
+        title="Fiyat, katalog ve teklif"
         links={[
           { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları 2026" },
+          { href: "/catalog.json", label: "catalog.json (panel USD)" },
+          { href: "/tr/quote/", label: "Yazılı teklif" },
           { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
+          { href: "/entity.json", label: "entity.json (kimlik)" },
+          { href: "/entity-profiles.json", label: "entity-profiles.json (Point C)" },
           { href: "/tr/rehber/piksel-araligi-secimi/", label: "Piksel aralığı seçimi" },
           { href: "/tr/rehber/gob-vs-smd/", label: "GOB vs SMD" },
           { href: "/tr/rehber/kiralik-mi-satin-alma/", label: "Kiralık mı, satın alma mı?" },

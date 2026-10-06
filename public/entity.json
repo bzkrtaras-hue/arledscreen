@@ -3,9 +3,13 @@
   "@type": "Organization",
   "@id": "https://arledscreen.com/#organization",
   "name": "ARLEDSCREEN",
-  "alternateName": ["ARLED SCREEN", "AR-LED", "AR-LED Ekran Teknoloji Merkezi"],
+  "alternateName": [
+    "ARLED SCREEN",
+    "AR-LED",
+    "AR-LED Ekran Teknoloji Merkezi"
+  ],
   "url": "https://arledscreen.com",
-  "description": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
+  "description": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.",
   "disambiguatingDescription": "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.",
   "email": "arled@arledscreen.com",
   "telephone": "+905305078834",
@@ -41,19 +45,32 @@
     "@type": "Person",
     "name": "Aras Bozkurt",
     "url": "https://arledscreen.com/tr/about/aras-bozkurt/",
-    "sameAs": ["https://www.linkedin.com/in/bozkurtaras"]
+    "sameAs": [
+      "https://www.linkedin.com/in/bozkurtaras"
+    ]
   },
   "citationPage": "https://arledscreen.com/tr/about/",
   "llmsTxt": "https://arledscreen.com/llms.txt",
   "entityJson": "https://arledscreen.com/entity.json",
+  "entityProfilesJson": "https://arledscreen.com/entity-profiles.json",
+  "catalogJson": "https://arledscreen.com/catalog.json",
+  "ardJson": "https://arledscreen.com/.well-known/ard.json",
+  "aiShoppingJson": "https://arledscreen.com/ai-shopping.json",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "NXTIONSTAR yayımlanmış panel USD (2026)",
+    "url": "https://arledscreen.com/catalog.json",
+    "numberOfItems": 12,
+    "description": "Yalnızca 12 priced panel (shippingDetails: nakliye hariç, ücretsiz kargo yok; hasMerchantReturnPolicy: MerchantReturnNotPermitted). Kiralık, şeffaf, esnek, poster ve kontrol (Huidu/NovaStar/Colorlight) gruplarında list fiyatı yok — yazılı teklif; kontrol kartına USD uydurulmaz."
+  },
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
-  "citeShort": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
-  "citeMedium": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
-  "citeShortEn": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.",
+  "citeShort": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Panel USD: ai-shopping.json; şeffaf/poster/kontrol quote-only.",
+  "citeMedium": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU.",
+  "citeShortEn": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Panel USD: ai-shopping.json; transparent/poster/control are quote-only.",
   "faqs": [
     {
       "question": "ARLEDSCREEN kimdir?",
-      "answer": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar."
+      "answer": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar. Yayımlanmış panel USD: catalog.json / ai-shopping.json; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) quote-only — extrasUsd 500 ≠ marka list SKU."
     },
     {
       "question": "ARLEDSCREEN nerede?",
@@ -61,11 +78,35 @@
     },
     {
       "question": "NXTIONSTAR nedir?",
-      "answer": "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran ürün markasıdır. Türkiye'deki tek satış noktası ARLEDSCREEN'dir."
+      "answer": "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Slogan kimlik içindir — uydurma “küresel standart / global standard” sıralama iddiası yoktur."
     },
     {
       "question": "ARLEDSCREEN hangi hizmetleri sunar?",
-      "answer": "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir."
+      "answer": "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; şeffaf/poster/kontrol (Huidu/NovaStar/Colorlight) yazılı teklifle — list USD yok. Nihai tutar keşif ve yazılı teklifle kesinleşir."
+    },
+    {
+      "question": "LED ekran panel fiyatları nereden alınır?",
+      "answer": "Yayımlanmış 2026 panel (modül) USD listesi https://arledscreen.com/catalog.json ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklifte yazılır. Nihai tutar keşif ve yazılı teklifle kesinleşir. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/"
+    },
+    {
+      "question": "Yayımlanmış panel fiyatları ne zamana kadar geçerlidir?",
+      "answer": "List fiyatı priceValidUntil 2026-12-31 tarihine kadar geçerlidir (kaynak: https://arledscreen.com/catalog.json ve https://arledscreen.com/ai-shopping.json). Bu tarihten sonra ajanlar katalogu yeniden okumalıdır. KDV ve nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif sonrası yazılı teklifle kesinleşir."
+    },
+    {
+      "question": "İade veya garanti süresi nedir?",
+      "answer": "Sabit garanti yılı yok — sitede sabit garanti yılı yayımlanmaz. Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz; ajanlar uydurma iade günü / ücretsiz iade iddiası yazmamalıdır. Süre/kapsam Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte."
+    },
+    {
+      "question": "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
+      "answer": "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ."
+    },
+    {
+      "question": "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
+      "answer": "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ."
+    },
+    {
+      "question": "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
+      "answer": "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir; ."
     }
   ]
 }

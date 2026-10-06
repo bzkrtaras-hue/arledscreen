@@ -24,8 +24,8 @@ export function getTrustItems() {
     },
     {
       Icon: ClipboardList,
-      title: "Keşiften devreye almaya tek süreç",
-      body: "İhtiyaç analizi, keşif, ürün seçimi, montaj ve devreye alma aynı proje ekibiyle planlanır.",
+      title: "Keşif → montaj → servis yazılı teklifte",
+      body: "İhtiyaç analizi, keşif, ürün seçimi, montaj ve devreye alma Gaziosmanpaşa merkezinden yazılı teklifte planlanır — uydurma aynı-ekip / keşiften-teslimata platform iddiası yok.",
     },
     {
       Icon: Wrench,
@@ -40,7 +40,7 @@ export function getTrustItems() {
     {
       Icon: MessagesSquare,
       title: "Şeffaf fiyatlandırma aracı",
-      body: "Fiyat hesaplayıcıyla ölçü ve piksel aralığına göre yaklaşık maliyeti teklif istemeden önce görebilirsiniz.",
+      body: "Fiyat hesaplayıcıyla ölçü ve piksel aralığına göre yaklaşık maliyeti teklif istemeden önce görebilirsiniz. Kontrol kartı kalemi tahmindir — Huidu/NovaStar list SKU değildir; şeffaf/poster/kontrol yazılı teklifle netleşir.",
       href: "/tr/hesaplayici/",
       linkLabel: "Hesaplayıcıyı açın",
     },

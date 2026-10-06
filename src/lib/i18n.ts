@@ -259,39 +259,39 @@ const en: Dictionary = {
     quote: "Request Quote",
   },
   brand: {
-    slogan: "NXTIONSTAR — the global standard in visual power.",
+    slogan: "NXTIONSTAR is ARLEDSCREEN’s LED display brand",
   },
   hero: {
     badge: "NXTIONSTAR — our own LED brand · Istanbul / Gaziosmanpaşa",
     headline: "LED Display Technology Center.",
     subcopy:
-      "Fine-pitch, outdoor LED, totems and digital signage. NXTIONSTAR products with end-to-end compatibility for AI, media servers and control software — engineered by ARLEDSCREEN.",
+      "Fine-pitch, outdoor LED, totems and digital signage. NXTIONSTAR is the ARLEDSCREEN product brand; AI/media-server fit is defined in the Gaziosmanpaşa survey and written quote — no invented full-compatibility SKU.",
     ctaConfigure: "Price List / Calculator",
-    ctaQuote: "Request Enterprise Quote",
+    ctaQuote: "Request written quote",
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },
       { value: "Istanbul", label: "Gaziosmanpaşa HQ" },
-      { value: "Turnkey", label: "Survey · install · service" },
+      { value: "B2B", label: "Survey · install · service" },
     ],
   },
   sections: {
     modules: {
-      eyebrow: "Platform modules",
-      title: "Everything you need — without the clutter",
+      eyebrow: "Site tools",
+      title: "Site tools — products, calculator, projects",
       description:
         "Explore products, calculator, configurator and project references. Each tool lives on its own page; here we show what it does.",
     },
     configurator: {
-      eyebrow: "Engineering desk",
+      eyebrow: "Project sizing",
       title: "Size the wall before the site survey",
       description:
         "Dial width, height, pitch and cabinet mode. Resolution, viewing distance and cabinet counts update instantly.",
     },
     power: {
       eyebrow: "Power topology",
-      title: "Infrastructure that keeps the wall online",
+      title: "Power and signal plan",
       description:
-        "Translate area and environment into peak/average kW, breaker guidance, and CAT6 vs fiber notes.",
+        "Rough peak/average kW and breaker guidance (not a fixed site kW/m²; avg ≠ standby/idle W) plus CAT6 vs fiber notes — final draw in Gaziosmanpaşa survey + written quote.",
     },
     products: {
       eyebrow: "Series catalog",
@@ -313,32 +313,32 @@ const en: Dictionary = {
     },
     faq: {
       eyebrow: "FAQ",
-      title: "Answers enterprise buyers ask first",
+      title: "Answers B2B buyers ask first",
     },
     aiCompat: {
-      eyebrow: "AI infrastructure",
-      title: "LED walls built for artificial-intelligence workflows",
+      eyebrow: "AI integration",
+      title: "LED walls for AI content and media-server workflows",
       description:
-        "NXTIONSTAR displays are specified by ARLEDSCREEN for full compatibility with AI content engines, media servers and control software — so generated, scheduled and automated visuals stay reliable on the wall.",
+        "NXTIONSTAR displays are specified by ARLEDSCREEN so AI content engines, media servers and control software can be matched in the Gaziosmanpaşa survey and written quote — not sold as an invented AI-ready or engineering-standard SKU.",
       points: [
-        "Documented signal paths for CMS, media servers and automation APIs",
-        "High refresh and stable pixel pipelines for AI-driven or camera-facing content",
-        "Engineering desk that sizes pitch, power and receivers around your AI stack",
+        "Signal paths for CMS, media servers and automation APIs sized in the Gaziosmanpaşa survey and written quote",
+        "Refresh/scan needs matched in the Gaziosmanpaşa survey + datasheet for AI-driven or camera-facing content — no fixed Hz SKU",
+        "Gaziosmanpaşa survey team that sizes pitch, power and receivers around your CMS / media-server path",
       ],
     },
   },
   about: {
     eyebrow: "Company",
-    title: "ARLEDSCREEN — LED engineering in Turkey",
+    title: "ARLEDSCREEN — LED sales, install & service in Turkey",
     description:
-      "ARLEDSCREEN delivers LED systems in Turkey. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product sub-brand.",
+      "ARLEDSCREEN sells, installs and services LED systems in Turkey from Istanbul Gaziosmanpaşa. We specify and support B2B LED walls for control rooms, retail, outdoor façades and digital signage. NXTIONSTAR is our product brand; sole sales point in Turkey: ARLEDSCREEN.",
     body:
-      "From fine-pitch command centers to IP65 outdoor LED and totem installs, our desk pairs product choice with viewing distance, power topology and a clear BOM. We serve integrators, agencies and facility owners who need field-ready engineering — not showroom theatre.",
+      "From fine-pitch command centers to outdoor LED and totem installs, our Gaziosmanpaşa team pairs product choice with viewing distance, power topology and a clear BOM — IP class in the written quote / technical sheet. Published panel prices are on the price page. Transparent, poster and control groups are quoted in writing.",
     cta: "Read more about us",
     stats: [
       { value: "NXTIONSTAR", label: "Our own brand" },
       { value: "Istanbul", label: "Gaziosmanpaşa HQ" },
-      { value: "Turnkey", label: "Survey · install · service" },
+      { value: "B2B", label: "Survey · install · service" },
     ],
   },
   references: {
@@ -380,7 +380,7 @@ const en: Dictionary = {
     },
   },
   configurator: {
-    eyebrow: "Real-time engineering",
+    eyebrow: "Live sizing",
     title: "LED Wall Configurator",
     cabinetMode: "Cabinet mode",
     cabinet500: "500×500 mm",
@@ -391,7 +391,7 @@ const en: Dictionary = {
     metrics: {
       resolution: "Resolution",
       aspect: "Aspect ratio",
-      viewing: "Optimal viewing",
+      viewing: "Est. viewing (not a guarantee)",
       cabinets: "Cabinets",
       area: "Area",
     },
@@ -399,25 +399,25 @@ const en: Dictionary = {
   power: {
     title: "Power & Signal Calculator",
     description:
-      "Estimate peak/average draw, 3-phase breaker sizing, and CAT6 vs fiber guidance for enterprise installs.",
+      "Rough peak/average draw and illustrative breaker sizing (not a published kW/m², “3-phase required”, or fixed standby/idle W guarantee — avg ≠ standby). Final draw and single/three-phase topology: Gaziosmanpaşa survey + written quote. CAT6 vs fiber guidance for B2B installs.",
     environment: "Environment",
     indoor: "Indoor",
     outdoor: "Outdoor",
     area: "Display area (m²)",
     areaHint: "Width × height of the active LED surface",
     results: {
-      max: "Max power",
-      avg: "Avg power",
-      breaker: "Breaker (3φ)",
+      max: "Est. max power",
+      avg: "Est. avg power (≠ standby)",
+      breaker: "Est. breaker (3φ illus.)",
       phase: "R-S-T balancing",
       network: "CAT6 / Fiber",
     },
     rstNote:
-      "Balance R-S-T phases across power cabinets; isolate LED load from AV control UPS where possible.",
+      "Estimate only — R-S-T balancing when three-phase applies; final phase model in survey/quote. Isolate LED load from AV control UPS where possible.",
     signalIndoor:
-      "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies.",
+      "CAT6/CAT6A for runs ≤70 m; fiber recommended for backbone / multi-receiver topologies — no fixed site fiber distance; final run length in Gaziosmanpaşa survey + written quote.",
     signalOutdoor:
-      "Prefer multimode/single-mode fiber beyond 80 m; CAT6A up to ~70 m with shielded runs.",
+      "Prefer multimode/single-mode fiber beyond 80 m; CAT6A up to ~70 m with shielded runs — no fixed site fiber distance; final run length in Gaziosmanpaşa survey + written quote.",
   },
   products: {
     tabs: {
@@ -449,8 +449,8 @@ const en: Dictionary = {
   quote: {
     title: "Request a project quote",
     description:
-      "Three steps — contact, project geometry, and timeline. Our engineering team responds with a preliminary BOM.",
-    eyebrow: "Enterprise desk",
+      "Three steps — contact, project geometry, and timeline. Our Gaziosmanpaşa team responds with a preliminary BOM and written quote.",
+    eyebrow: "Written quote",
     steps: {
       contact: "Contact",
       project: "Project",
@@ -504,13 +504,13 @@ const en: Dictionary = {
     sending: "Sending…",
     successTitle: "Quote request received",
     successBody:
-      "Our enterprise desk will respond within one business day with a preliminary BOM and power topology outline.",
+      "We will respond from Gaziosmanpaşa within one business day with a preliminary BOM and power topology outline — firm price is a written quote.",
     backHome: "Back to home",
   },
   footer: {
-    tagline: "NXTIONSTAR LED displays · engineered and delivered by ARLEDSCREEN.",
+    tagline: "NXTIONSTAR LED displays · sold and installed by ARLEDSCREEN (Gaziosmanpaşa).",
     rights: "All rights reserved.",
-    productLine: "Platform",
+    productLine: "Products",
     engineering: "Survey, installation and technical service",
   },
   common: {
@@ -534,10 +534,10 @@ const en: Dictionary = {
         "Each card below shows a real NXTIONSTAR module with its pixel pitch and use. The datasheet and price are shared with your quote.",
     },
     quote: {
-      eyebrow: "Enterprise desk",
+      eyebrow: "Written quote",
       title: "Request a project quote",
       description:
-        "Three steps — contact, project geometry, and timeline. Our engineering team responds with a preliminary BOM.",
+        "Three steps — contact, project geometry, and timeline. Our Gaziosmanpaşa team responds with a preliminary BOM and written quote.",
     },
     hesaplayici: {
       eyebrow: "Live catalog tool",
@@ -561,7 +561,7 @@ const tr: Dictionary = {
     quote: "Teklif al",
   },
   brand: {
-    slogan: "NXTIONSTAR — görsel gücün küresel standardı",
+    slogan: "NXTIONSTAR, ARLEDSCREEN’in LED ekran markasıdır",
   },
   hero: {
     badge: "NXTIONSTAR · ARLEDSCREEN’in kendi markası",
@@ -573,27 +573,27 @@ const tr: Dictionary = {
     stats: [
       { value: "NXTIONSTAR", label: "Kendi markamız" },
       { value: "İstanbul", label: "Gaziosmanpaşa merkez" },
-      { value: "Anahtar teslim", label: "Keşif · montaj · servis" },
+      { value: "B2B", label: "Keşif · montaj · servis" },
     ],
   },
   sections: {
     modules: {
-      eyebrow: "Platform modülleri",
+      eyebrow: "Site araçları",
       title: "Projeyi netleştiren araçlar",
       description:
         "NXTIONSTAR ürünleri, fiyat hesaplayıcı, ekran konfigüratörü ve saha referansları. Her araç kendi sayfasında; burada işlevlerini özetliyoruz.",
     },
     configurator: {
-      eyebrow: "Mühendislik masası",
+      eyebrow: "Proje boyutlandırma",
       title: "Saha keşfinden önce ekranı boyutlandırın",
       description:
         "Genişlik, yükseklik, pitch ve kabin modunu ayarlayın. Çözünürlük, izleme mesafesi ve kabin adedi anında güncellenir.",
     },
     power: {
       eyebrow: "Güç topolojisi",
-      title: "Ekranı güvenle çalıştıran altyapı",
+      title: "Güç ve sinyal planı",
       description:
-        "Alan ve ortamı tepe/ortalama kW, kesici önerisi ve CAT6 / fiber notlarına dönüştürün.",
+        "Yaklaşık tepe/ortalama kW ve kesici önerisi (sabit kW/m² yok) + CAT6 / fiber notları — kesin çekiş Gaziosmanpaşa keşif + yazılı teklifte.",
     },
     products: {
       eyebrow: "Seri kataloğu",
@@ -618,14 +618,14 @@ const tr: Dictionary = {
       title: "LED ekran projelerinde sık sorulan sorular",
     },
     aiCompat: {
-      eyebrow: "Yapay zekâ altyapısı",
-      title: "Yapay zekâ uygulamaları için tasarlanmış LED duvarlar",
+      eyebrow: "YZ entegrasyonu",
+      title: "Yapay zekâ içerik ve medya sunucu hatları için LED duvarlar",
       description:
-        "NXTIONSTAR ekranlar, yapay zekâ ile üretilen veya zamanlanan içeriği oynatan medya sunucuları ve kontrol yazılımlarıyla birlikte çalışacak şekilde projelendirilir. Uyumluluk, keşif aşamasında kullanılacak yazılım ve donanıma göre doğrulanır.",
+        "NXTIONSTAR ekranlar, yapay zekâ ile üretilen veya zamanlanan içeriği oynatan medya sunucuları ve kontrol yazılımlarıyla Gaziosmanpaşa keşif ve yazılı teklifte eşleştirilir — uydurma tam uyumluluk SKU’su yoktur.",
       points: [
         "CMS, medya sunucu ve otomasyon API’leri için dokümante sinyal yolları",
-        "YZ destekli veya kamera önü içerik için yüksek yenileme ve kararlı piksel hattı",
-        "Pitch, güç ve alıcı mimarisini sizin YZ yığınınıza göre boyutlandıran mühendislik masası",
+        "YZ destekli veya kamera önü içerikte yenileme/tarama davranışı Gaziosmanpaşa keşif + model föyüyle eşleştirilir — sitede sabit Hz (3840/1920) iddiası yok",
+        "Pitch, güç ve alıcı mimarisini CMS / medya sunucu hattınıza göre boyutlandıran Gaziosmanpaşa keşif ekibi",
       ],
     },
   },
@@ -633,14 +633,14 @@ const tr: Dictionary = {
     eyebrow: "Kurum",
     title: "LED ekran teknoloji merkezi — ARLEDSCREEN",
     description:
-      "ARLEDSCREEN, NXTIONSTAR LED ekran teknolojisini kurumsal projelerde ürün, keşif, montaj ve teknik destekle tek çatı altında yürütür.",
+      "ARLEDSCREEN, NXTIONSTAR LED ekran ürünlerini kurumsal projelerde keşif, montaj ve teknik destekle Gaziosmanpaşa merkezinden yürütür.",
     body:
-      "Toplantı salonlarından dış mekân cephelere, totem ve sahne kurulumlarına kadar ürün seçimini izleme mesafesi, güç planı ve net malzeme listesiyle birlikte ele alıyoruz. Amacımız, sahada sorunsuz çalışan ve bakımı planlanmış LED ekran sistemleri kurmak.",
+      "Toplantı salonlarından dış mekân cephelere, totem ve sahne kurulumlarına kadar ürün seçimini izleme mesafesi, güç planı ve net malzeme listesiyle birlikte ele alıyoruz. Amacımız, bakımı planlanmış ve keşifte tanımlanmış LED ekran sistemleri kurmak.",
     cta: "Hakkımızda daha fazla",
     stats: [
       { value: "NXTIONSTAR", label: "Kendi markamız" },
       { value: "İstanbul", label: "Gaziosmanpaşa merkez" },
-      { value: "Anahtar teslim", label: "Keşif · montaj · servis" },
+      { value: "B2B", label: "Keşif · montaj · servis" },
     ],
   },
   references: {
@@ -682,7 +682,7 @@ const tr: Dictionary = {
     },
   },
   configurator: {
-    eyebrow: "Gerçek zamanlı mühendislik",
+    eyebrow: "Canlı boyutlandırma",
     title: "LED Duvar Konfigüratörü",
     cabinetMode: "Kabin modu",
     cabinet500: "500×500 mm",
@@ -693,7 +693,7 @@ const tr: Dictionary = {
     metrics: {
       resolution: "Çözünürlük",
       aspect: "En-boy oranı",
-      viewing: "Optimum izleme",
+      viewing: "Tahmini izleme (garanti değil)",
       cabinets: "Kabinler",
       area: "Alan",
     },
@@ -701,25 +701,25 @@ const tr: Dictionary = {
   power: {
     title: "Güç & Sinyal Hesaplayıcı",
     description:
-      "Kurumsal kurulumlar için tepe ve ortalama güç çekişini, 3 fazlı kesici boyutunu ve CAT6 / fiber rehberini tahmin edin.",
+      "Yaklaşık tepe/ortalama güç ve örnek kesici boyutu — sabit kW/m² veya «3 faz zorunlu» site iddiası yok; sabit standby/idle W yok (ortalama ≠ bekleme). Kesin çekiş ve tek/üç faz Gaziosmanpaşa keşif + yazılı teklifte. CAT6 / fiber rehberi.",
     environment: "Ortam",
     indoor: "İç mekân",
     outdoor: "Dış mekân",
     area: "Ekran alanı (m²)",
     areaHint: "Aktif LED yüzeyinin genişliği × yüksekliği",
     results: {
-      max: "Maks. güç",
-      avg: "Ort. güç",
-      breaker: "Kesici (3φ)",
+      max: "Tahmini maks. güç",
+      avg: "Tahmini ort. güç (≠ standby)",
+      breaker: "Tahmini kesici (3φ örnek)",
       phase: "R-S-T dengeleme",
       network: "CAT6 / Fiber",
     },
     rstNote:
-      "Güç kabinlerinde R-S-T fazlarını dengeleyin; mümkünse LED yükünü AV kontrol UPS’inden ayırın.",
+      "Tahmin — üç faz uygulanıyorsa R-S-T dengeleyin; kesin faz modeli keşif/teklifte. Mümkünse LED yükünü AV kontrol UPS’inden ayırın.",
     signalIndoor:
-      "≤70 m hatlarda CAT6/CAT6A; omurga / çoklu alıcı topolojilerinde fiber önerilir.",
+      "≤70 m hatlarda CAT6/CAT6A; omurga / çoklu alıcı topolojilerinde fiber önerilir — sabit fiber mesafe yok; kesin hat uzunluğu Gaziosmanpaşa keşif + yazılı teklifte.",
     signalOutdoor:
-      "80 m üzeri için multimode/single-mode fiber tercih edin; korumalı hatlarda CAT6A ~70 m’ye kadar.",
+      "80 m üzeri için multimode/single-mode fiber tercih edin; korumalı hatlarda CAT6A ~70 m’ye kadar — sabit fiber mesafe yok; kesin hat uzunluğu Gaziosmanpaşa keşif + yazılı teklifte.",
   },
   products: {
     tabs: {
@@ -751,8 +751,8 @@ const tr: Dictionary = {
   quote: {
     title: "Proje teklifi talep edin",
     description:
-      "Üç adım: iletişim, proje ölçüleri ve zaman çizelgesi. Mühendislik ekibimiz ön malzeme listesi ile yanıtlar.",
-    eyebrow: "Kurumsal masa",
+      "Üç adım: iletişim, proje ölçüleri ve zaman çizelgesi. Gaziosmanpaşa ekibimiz ön malzeme listesi ve yazılı teklifle yanıtlar.",
+    eyebrow: "Yazılı teklif",
     steps: {
       contact: "İletişim",
       project: "Proje",
@@ -806,13 +806,13 @@ const tr: Dictionary = {
     sending: "Gönderiliyor…",
     successTitle: "Teklif talebiniz alındı",
     successBody:
-      "Kurumsal masamız bir iş günü içinde ön malzeme listesi ve güç özeti ile dönüş yapacaktır.",
+      "Gaziosmanpaşa ekibimiz bir iş günü içinde ön malzeme listesi ve güç özeti ile dönüş yapacaktır — nihai tutar yazılı teklifle kesinleşir.",
     backHome: "Ana sayfaya dön",
   },
   footer: {
     tagline: "NXTIONSTAR, ARLEDSCREEN’in kendi markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç ve dış mekân LED ekran satışı, montajı ve teknik servisi.",
     rights: "Tüm hakları saklıdır.",
-    productLine: "Platform",
+    productLine: "Ürünler",
     engineering: "Telefon, WhatsApp ve e-posta ile proje desteği",
   },
   common: {
@@ -836,10 +836,10 @@ const tr: Dictionary = {
         "Aşağıdaki görsel, modül seçeneklerine genel bir bakış sunar. Parlaklık, kabin ölçüsü ve koruma sınıfı gibi model bazlı değerler teklifle birlikte yazılı olarak iletilir.",
     },
     quote: {
-      eyebrow: "Kurumsal masa",
+      eyebrow: "Yazılı teklif",
       title: "Proje teklifi talep edin",
       description:
-        "Üç adım: iletişim, proje ölçüleri ve zaman çizelgesi. Mühendislik ekibimiz ön malzeme listesi ile yanıtlar.",
+        "Üç adım: iletişim, proje ölçüleri ve zaman çizelgesi. Gaziosmanpaşa ekibimiz ön malzeme listesi ve yazılı teklifle yanıtlar.",
     },
     hesaplayici: {
       eyebrow: "Canlı katalog aracı",
@@ -864,12 +864,12 @@ const ar: Dictionary = {
     quote: "طلب عرض سعر",
   },
   brand: {
-    slogan: "NXTIONSTAR — المعيار العالمي للقوة البصرية.",
+    slogan: "NXTIONSTAR — علامة منتجات ARLEDSCREEN",
   },
   sections: {
     ...en.sections,
     modules: {
-      eyebrow: "وحدات المنصة",
+      eyebrow: "أدوات الموقع",
       title: "كل ما تحتاجه — بدون تشويش",
       description:
         "استكشف المنتجات والحاسبة والمُكوِّن ومراجع المشاريع. كل أداة في صفحتها؛ هنا نوضح وظيفتها.",
@@ -892,35 +892,35 @@ const ar: Dictionary = {
   },
   about: {
     eyebrow: "الشركة",
-    title: "هندسة المساحات البصرية للمؤسسات",
+    title: "ARLEDSCREEN — بيع وتركيب وخدمة شاشات LED في تركيا",
     description:
-      "تصمم NXTIONSTAR وتنشر جدران LED للشركات لغرف التحكم والبث والتجزئة والأماكن الغامرة.",
+      "ARLEDSCREEN تقدّم أنظمة LED للشركات من إسطنبول غازي عثمان باشا. NXTIONSTAR هي علامة المنتج الخاصة بـ ARLEDSCREEN؛ نقطة البيع الوحيدة في تركيا: ARLEDSCREEN.",
     body:
-      "من مراكز القيادة fine-pitch COB إلى الواجهات الخارجية IP65، يجمع مكتب المشاريع بين اختيار المنتج وطوبولوجيا الطاقة ومسافة المشاهدة ووضوح قائمة المواد.",
+      "من غرف التحكم fine-pitch إلى الواجهات الخارجية، يجمع فريق غازي عثمان باشا بين اختيار المنتج ومسافة المشاهدة وطوبولوجيا الطاقة وقائمة مواد واضحة — فئة IP في العرض المكتوب / الورقة التقنية. أسعار اللوحات في صفحة الأسعار. الشفاف والبوستر والتحكم بعرض مكتوب.",
     cta: "المزيد عنا",
     stats: [
       { value: "NXTIONSTAR", label: "علامتنا الخاصة" },
       { value: "إسطنبول", label: "المقر: غازي عثمان باشا" },
-      { value: "تسليم متكامل", label: "معاينة · تركيب · صيانة" },
+      { value: "B2B", label: "معاينة · تركيب · صيانة" },
     ],
   },
   hero: {
-    badge: "NXTIONSTAR · منصة LED للشركات",
-    headline: "هندسة مستقبل المساحات البصرية.",
+    badge: "NXTIONSTAR — علامة منتج ARLEDSCREEN · إسطنبول / غازي عثمان باشا",
+    headline: "مركز تقنية شاشات LED.",
     subcopy:
-      "جدران LED للمؤسسات مصممة لغرف التحكم والبث والتجزئة والأماكن الغامرة. دقة في الـ pitch وموثوقية صناعية وانتشار عالمي.",
-    ctaConfigure: "تكوين جدار LED",
-    ctaQuote: "طلب عرض مؤسسي",
+      "بيع وتركيب وخدمة شاشات LED من إسطنبول غازي عثمان باشا. أسعار اللوحات في صفحة الأسعار. الشفاف والبوستر والتحكم بعرض مكتوب.",
+    ctaConfigure: "قائمة الأسعار / الحاسبة",
+    ctaQuote: "طلب عرض مكتوب",
     stats: [
       { value: "NXTIONSTAR", label: "علامتنا الخاصة" },
       { value: "إسطنبول", label: "المقر: غازي عثمان باشا" },
-      { value: "تسليم متكامل", label: "معاينة · تركيب · صيانة" },
+      { value: "B2B", label: "معاينة · تركيب · صيانة" },
     ],
   },
   footer: {
-    tagline: "أنظمة شاشات LED للشركات للبيئات البصرية الحرجة.",
+    tagline: "بيع وتركيب وخدمة شاشات LED للشركات من غازي عثمان باشا.",
     rights: "جميع الحقوق محفوظة.",
-    productLine: "المنصة",
+    productLine: "المنتجات",
     engineering: "المعاينة والتركيب والخدمة الفنية",
   },
   common: {
@@ -951,12 +951,12 @@ const ru: Dictionary = {
     quote: "Запросить КП",
   },
   brand: {
-    slogan: "NXTIONSTAR — мировой стандарт визуальной силы.",
+    slogan: "NXTIONSTAR — продуктовый бренд ARLEDSCREEN",
   },
   sections: {
     ...en.sections,
     modules: {
-      eyebrow: "Модули платформы",
+      eyebrow: "Инструменты сайта",
       title: "Всё нужное — без лишнего",
       description:
         "Продукты, калькулятор, конфигуратор и проекты. Каждый инструмент на своей странице; здесь — кратко о назначении.",
@@ -979,35 +979,35 @@ const ru: Dictionary = {
   },
   about: {
     eyebrow: "Компания",
-    title: "Инженерия визуальных пространств для бизнеса",
+    title: "ARLEDSCREEN — продажа, монтаж и сервис LED в Турции",
     description:
-      "NXTIONSTAR проектирует и внедряет B2B LED-стены для диспетчерских, вещания, ритейла и иммерсивных площадок.",
+      "ARLEDSCREEN поставляет B2B LED-системы из Стамбула (Газиосманпаша). NXTIONSTAR — продуктовый бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN.",
     body:
-      "От fine-pitch COB командных центров до IP65 фасадов — проектный стол совмещает выбор продукта с топологией питания, дистанцией просмотра и прозрачным BOM.",
+      "От fine-pitch диспетчерских до наружных фасадов команда в Газиосманпаше совмещает выбор продукта с дистанцией просмотра, топологией питания и прозрачным BOM — класс IP в письменном предложении / техлисте. Цены панелей на странице цен. Прозрачные, poster и контроллеры — по письменному предложению.",
     cta: "Подробнее о нас",
     stats: [
       { value: "NXTIONSTAR", label: "Наш собственный бренд" },
       { value: "Стамбул", label: "Офис: Газиосманпаша" },
-      { value: "Под ключ", label: "Обследование · монтаж · сервис" },
+      { value: "B2B", label: "Обследование · монтаж · сервис" },
     ],
   },
   hero: {
-    badge: "NXTIONSTAR · B2B LED-платформа",
-    headline: "Проектируем будущее визуальных пространств.",
+    badge: "NXTIONSTAR — продуктовый бренд ARLEDSCREEN · Стамбул / Газиосманпаша",
+    headline: "Центр технологий LED-дисплеев.",
     subcopy:
-      "Корпоративные LED-стены для диспетчерских, вещания, ритейла и иммерсивных площадок. Точный питч, промышленная надёжность, глобальное внедрение.",
-    ctaConfigure: "Сконфигурировать LED-стену",
-    ctaQuote: "Запросить корпоративное КП",
+      "Продажа, монтаж и сервис LED из Стамбула (Газиосманпаша). Цены панелей на странице цен. Прозрачные, poster и контроллеры — по письменному предложению. Без 81-городских doorway.",
+    ctaConfigure: "Прайс / калькулятор",
+    ctaQuote: "Запросить письменное КП",
     stats: [
       { value: "NXTIONSTAR", label: "Наш собственный бренд" },
       { value: "Стамбул", label: "Офис: Газиосманпаша" },
-      { value: "Под ключ", label: "Обследование · монтаж · сервис" },
+      { value: "B2B", label: "Обследование · монтаж · сервис" },
     ],
   },
   footer: {
-    tagline: "B2B LED-системы для критически важных визуальных сред.",
+    tagline: "Продажа, монтаж и сервис B2B LED из Газиосманпаши.",
     rights: "Все права защищены.",
-    productLine: "Платформа",
+    productLine: "Продукты",
     engineering: "Обследование, монтаж и техническое обслуживание",
   },
   common: {

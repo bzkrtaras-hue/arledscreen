@@ -11,6 +11,7 @@ import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { WhatsAppProjectPicker } from "@/components/home/WhatsAppProjectPicker";
 import { OptImage } from "@/components/ui/opt-image";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -32,8 +33,7 @@ const SERVICES = [
   { Icon: Truck, title: "Tedarik", body: "NXTIONSTAR ürünlerinin ve kontrol ekipmanlarının projeye göre tedariki." },
   { Icon: Hammer, title: "Montaj", body: "Taşıyıcı konstrüksiyon, kabin montajı, güç ve sinyal kablolaması." },
   { Icon: Settings2, title: "Devreye alma", body: "Kontrol sisteminin kurulumu, kalibrasyon, içerik testi ve kullanım eğitimi." },
-  { Icon: LifeBuoy, title: "Bakım ve teknik servis", body: "Periyodik bakım, arıza tespiti, modül ve güç kaynağı değişimi; mevcut ekranlar için servis talebi." },
-];
+  { Icon: LifeBuoy, title: "Bakım ve teknik servis", body: "Periyodik bakım, arıza tespiti, modül ve güç kaynağı değişimi; mevcut ekranlar için servis talebi." }];
 
 const FAQS = [
   {
@@ -51,7 +51,16 @@ const FAQS = [
     answer:
       "Dış mekân reklam ve cephe ekranlarında ilgili belediyenin izin ve ruhsat koşulları geçerli olabilir. Süreç konuma göre değiştiği için başvuru öncesinde belediyeden bilgi alınmasını öneririz.",
   },
-];
+  {
+    question: "Panel fiyatları hizmet teklifinden ayrı mı?",
+    answer:
+      "Yayımlanmış panel listesi (2026 panel USD) LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). Montaj, keşif ve servis kalemleri yazılı teklifte ayrıca yer alır. İade/garanti teklifte yazılır. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/.",
+  },
+  {
+    question: "LED ekran teslimat süresi kaç gün?",
+    answer:
+      "Sabit teslimat süresi yok — sitede sabit teslimat günü veya genel lead time yayımlanmaz. Termin Gaziosmanpaşa keşif ve yazılı teklifte netleşir",
+  }];
 
 export default async function HizmetlerPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -62,8 +71,7 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
       <BreadcrumbJsonLd
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
-          { name: "Hizmetler", item: absoluteUrl("/tr/hizmetler/") },
-        ]}
+          { name: "Hizmetler", item: absoluteUrl("/tr/hizmetler/") }]}
       />
       <ServiceJsonLd locale="tr" />
       <HowToJsonLd
@@ -89,8 +97,7 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
           {
             name: "Teknik servis",
             text: "Kullanım eğitimi sonrası bakım, arıza ve yedek parça taleplerinizde yanınızdayız.",
-          },
-        ]}
+          }]}
       />
       <FaqJsonLd faqs={FAQS} />
 
@@ -102,7 +109,7 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
               LED ekran montaj ve teknik servis hizmetleri
             </h1>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-soft">
-              Keşiften devreye almaya ve kurulum sonrası servise kadar LED ekran projenizin tüm adımlarını planlıyoruz. Merkezimiz İstanbul Gaziosmanpaşa&apos;dadır; Türkiye genelinde proje yürütüyoruz. Kayıtlı iller için{" "}
+              Keşif, montaj ve servis kalemlerini Gaziosmanpaşa&apos;dan yazılı teklifte planlıyoruz — sabit keşiften–devreye paket veya platform iddiası yok. Merkezimiz İstanbul Gaziosmanpaşa&apos;dadır; Türkiye genelinde proje yürütüyoruz. Kayıtlı iller için{" "}
               <Link href="/tr/bolgeler/" className="font-semibold text-cyan hover:underline">
                 hizmet bölgesi
               </Link>{" "}
@@ -147,6 +154,12 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
 
       <Section eyebrow="SSS" title="Hizmetlerle ilgili sorular" className="border-t border-border prose-seo">
         <HomeFaq faqs={FAQS} />
+        <ShoppingLinkCloud
+          excludeHref="/tr/hizmetler/"
+          title="Hizmet · fiyat ve kimlik kaynakları"
+          extra={[
+            { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
+        />
       </Section>
     </>
   );

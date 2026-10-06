@@ -1,6 +1,8 @@
 name: Deploy Cloudflare Pages
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       ref_note:
@@ -43,6 +45,28 @@ jobs:
           test -f out/_redirects
           test -d out/tr
 
+      # Pre-deploy GEO gate: refuse builds that would wipe AI alışveriş surfaces
+      # (2026-10-06: main without PR #55 overwrote production llms.txt / sitemap).
+      - name: Guard — GEO artefacts present in out/ before deploy
+        run: |
+          set -euo pipefail
+          for f in out/llms.txt out/llms-full.txt out/ai-shopping.json out/entity.json out/sitemap.xml; do
+            test -f "$f" || { echo "Refuse deploy: missing $f" >&2; exit 1; }
+          done
+          for needle in ai-shopping.json catalog.json citeOneLiner pricedPanels "ücretsiz kargo yok"; do
+            grep -q "$needle" out/llms.txt || {
+              echo "Refuse deploy: out/llms.txt missing '$needle' (would wipe GEO on arledscreen.com)" >&2
+              exit 1
+            }
+          done
+          for needle in ai-shopping.json entity.json llms.txt catalog.json; do
+            grep -q "$needle" out/sitemap.xml || {
+              echo "Refuse deploy: out/sitemap.xml missing '$needle'" >&2
+              exit 1
+            }
+          done
+          echo "OK GEO pre-deploy guard"
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
@@ -50,9 +74,20 @@ jobs:
           accountId: "4a0f179229f3c6a21d076df944b850e8"
           command: pages deploy out --project-name=arledscreen --branch=main --commit-dirty=true
 
-      - name: Smoke — apex redirect
+      - name: Smoke — Product Offer JSON-LD + AI artefacts + GEO llms/sitemap
         run: |
+          set -euo pipefail
           sleep 8
+          for path in \
+            /tr/products/dis-mekan-led-ekran/p8/ \
+            /tr/products/esnek-led-ekran/p2-5-esnek/ \
+            /tr/products/esnek-led-ekran/p1-86-esnek/; do
+            url="https://arledscreen.com${path}"
+            body="$(curl -fsSL -A 'Mozilla/5.0' "$url")"
+            echo "$body" | grep -q '"@type":"Offer"' || { echo "MISSING Offer on $url" >&2; exit 1; }
+            echo "$body" | grep -q 'hasMerchantReturnPolicy' || { echo "MISSING return policy on $url" >&2; exit 1; }
+            echo "OK Offer on $url"
+          done
           loc=$(curl -fsSI -A 'Mozilla/5.0' https://arledscreen.com/ | awk 'tolower($1)=="location:" {print $2}' | tr -d '\r')
           case "$loc" in
             /tr/|/tr|https://arledscreen.com/tr/|https://arledscreen.com/tr)
@@ -61,3 +96,21 @@ jobs:
               echo "Unexpected Location: ${loc:-<empty>}" >&2
               exit 1 ;;
           esac
+
+          # AI alışveriş static artefacts must be real JSON 200 (not soft-404 HTML)
+          for path in /entity.json /catalog.json /ai-shopping.json /.well-known/ard.json; do
+            url="https://arledscreen.com${path}"
+            code="$(curl -sS -o /tmp/ai-art.body -w '%{http_code}' -A 'Mozilla/5.0' "$url")"
+            test "$code" = "200" || { echo "FAIL $code $url" >&2; exit 1; }
+            head -c 1 /tmp/ai-art.body | grep -q '{' || { echo "FAIL not JSON $url" >&2; exit 1; }
+            echo "OK AI artefact $url"
+          done
+
+          # Live llms + sitemap must keep GEO (catch production overwrite)
+          llms="$(curl -fsSL -A 'Mozilla/5.0' https://arledscreen.com/llms.txt)"
+          echo "$llms" | grep -q 'ai-shopping.json' || { echo "FAIL live llms.txt missing ai-shopping.json" >&2; exit 1; }
+          echo "$llms" | grep -q 'citeOneLiner' || { echo "FAIL live llms.txt missing citeOneLiner" >&2; exit 1; }
+          sm="$(curl -fsSL -A 'Mozilla/5.0' https://arledscreen.com/sitemap.xml)"
+          echo "$sm" | grep -q 'ai-shopping.json' || { echo "FAIL live sitemap missing ai-shopping.json" >&2; exit 1; }
+          echo "$sm" | grep -q 'entity.json' || { echo "FAIL live sitemap missing entity.json" >&2; exit 1; }
+          echo "OK live GEO llms + sitemap"

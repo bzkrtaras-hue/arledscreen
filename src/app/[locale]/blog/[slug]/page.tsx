@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { OptImage } from "@/components/ui/opt-image";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import manifest from "@/content/image-manifest.json";
 import { BLOG_POSTS, blogImageUrl, blogPath, formatBlogDate, getBlogPost } from "@/content/blog";
 import { buildTrOnlyMetadata } from "@/lib/seo";
@@ -12,6 +15,20 @@ import { getVideo, videoObjectJsonLd } from "@/content/videos";
 import { LazyVideo } from "@/components/ui/lazy-video";
 
 const MANIFEST = manifest as Record<string, { w: number; h: number }>;
+
+/** Shared AI-shopping FAQs for blog posts (Day 61) — no invented package prices. */
+const BLOG_SHOPPING_FAQS = [
+  {
+    question: "Blog yazısındaki LED ekranın list fiyatı var mı?",
+    answer:
+      "Hayır. Blog yazılarında uydurma paket / stok fiyatı yoktur. Yayımlanmış panel listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir (KDV/nakliye hariç; ücretsiz kargo yok). İade/garanti teklifte (quote-and-contract) yazılır. Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.",
+  },
+  {
+    question: "Bu projedeki ölçü için yaklaşık maliyet nasıl bakılır?",
+    answer:
+      "Yayımlanmış panel USD bandı için LED ekran fiyatları sayfası ve https://arledscreen.com/tr/hesaplayici/ kullanılabilir. Montaj ve saha koşulları yazılı teklifte netleşir; ücretsiz kargo yok.",
+  },
+];
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -54,6 +71,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     author: { "@id": `${SITE_URL}/#organization` },
     isPartOf: { "@id": `${absoluteUrl("/tr/blog/")}#blog` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    sameAs: [
+      absoluteUrl("/ai-shopping.json"),
+      absoluteUrl("/catalog.json"),
+      absoluteUrl("/entity.json")],
     ...(video ? { video: videoObjectJsonLd(video, url, absoluteUrl, `${SITE_URL}/#organization`) } : {}),
   };
   const others = [...BLOG_POSTS].filter((x) => x.slug !== p.slug).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
@@ -64,9 +85,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Blog", item: absoluteUrl("/tr/blog/") },
-          { name: p.h1, item: url },
-        ]}
+          { name: p.h1, item: url }]}
       />
+      <FaqJsonLd faqs={BLOG_SHOPPING_FAQS} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <article className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
@@ -118,7 +139,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           <div className="mt-10 rounded-card bg-band p-6">
             <p className="font-display text-lg font-bold text-ink">Benzer bir proje mi planlıyorsunuz?</p>
             <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-              Ölçü, konum ve kullanım amacını paylaşın; keşif sonrası malzeme listesiyle birlikte yazılı teklif hazırlayalım.
+              Ölçü, konum ve kullanım amacını paylaşın; keşif sonrası malzeme listesiyle birlikte yazılı teklif hazırlayalım. Panel list fiyatı:{" "}
+              <a href="/catalog.json" className="font-semibold text-cyan hover:underline">catalog.json</a>
+              {" · "}
+              <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">fiyat hub</Link>
+              . Kimlik:{" "}
+              <a href="/entity.json" className="font-semibold text-cyan hover:underline">entity.json</a>.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#0F7A41] px-5 text-sm font-semibold text-white hover:bg-[#0B6435]">
@@ -127,6 +153,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               </a>
               <Link href="/tr/quote/" className="inline-flex min-h-11 items-center rounded-full bg-cyan px-5 text-sm font-semibold text-white hover:bg-cyan-600">Teklif isteyin</Link>
             </div>
+          </div>
+
+          <ShoppingLinkCloud
+            excludeHref={`/tr/blog/${p.slug}/`}
+            title="Blog yazısı · fiyat ve kimlik kaynakları"
+            extra={[
+              { href: "/tr/blog/", label: "Blog hub" },
+              { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
+              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
+          />
+          <div className="mt-8">
+            <HomeFaq faqs={BLOG_SHOPPING_FAQS} />
           </div>
 
           {p.related?.length ? (

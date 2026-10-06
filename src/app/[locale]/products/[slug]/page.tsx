@@ -5,15 +5,24 @@ import { ArrowRight, BookOpen, Calculator, CalendarDays, Check, ChevronRight, Fi
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
-import { CALC_EXTRAS, fmtM2, fmtUsd, panelProductsJsonLd, pricesForGroup, type PanelPrice } from "@/content/prices";
+import {
+  CALC_EXTRAS,
+  fmtM2,
+  fmtUsd,
+  panelProductsJsonLd,
+  pricesForGroup,
+  PRICE_VALID_UNTIL,
+  type PanelPrice,
+} from "@/content/prices";
 import { modelPath, modelsForGroup, modelUrlForPrice, SPEC_LABELS, type SpecKey } from "@/content/models";
 import { OptImage } from "@/components/ui/opt-image";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { HomeCtaBand } from "@/components/home/HomeCtaBand";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
+import { ProductCtaRow } from "@/components/products/ProductCtaRow";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
 import {
   PRODUCT_GROUPS,
   getProductGroup,
@@ -23,7 +32,6 @@ import {
 import { displayCompany } from "@/content/trust";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
-import { whatsappHref } from "@/lib/whatsapp";
 
 export const dynamicParams = false;
 
@@ -56,7 +64,27 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
       (lo.moduleMm || hi.moduleMm
         ? ""
         : `1 m² yaklaşık 19,53 panel ettiği için yalnızca modül bedeli m² başına yaklaşık ${fmtM2(lo.usd)} – ${fmtM2(hi.usd)} USD olur. `) +
-      `Toplam maliyete atölye işçiliği (${CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı (${CALC_EXTRAS.controlCard} USD) ve sürücü + yazılım (${CALC_EXTRAS.driverSoftware} USD) eklenir; nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`,
+      `Makinece aynı kaynak: LED ekran fiyatları sayfası · insan okunur: https://arledscreen.com/tr/led-ekran-fiyatlari/ · hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. ` +
+      `Toplam maliyete atölye işçiliği (${CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı (${CALC_EXTRAS.controlCard} USD) ve sürücü + yazılım (${CALC_EXTRAS.driverSoftware} USD) eklenir (extrasUsd tahmini — Huidu/NovaStar/Colorlight list SKU değildir); nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`,
+  };
+}
+
+/** AI alışveriş: her ürün grubunda catalog/fiyat/teklif kaynağı (priced + yazılı teklifle). */
+function shoppingSourceFaq(
+  name: string,
+  prices: PanelPrice[],
+): { question: string; answer: string } {
+  if (prices.length) {
+    return {
+      question: `${name} panel fiyatları ajanlar nereden okur?`,
+      answer:
+        `Yayımlanmış panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Yaklaşık m² hesabı: https://arledscreen.com/tr/hesaplayici/. Kimlik: firma kaydı · Point C pack: firma kaydı · yayımlanmış panel listesi (pricedPanels + agentRules). KDV ve nakliye hariç; Offer shippingDetails nakliyeyi list dışı bırakır (ücretsiz kargo yok). İade/garanti teklifte yazılır. Nihai tutar keşif sonrası https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+    };
+  }
+  return {
+    question: `${name} için list fiyatı var mı?`,
+    answer:
+      `${name} için yayımlanmış list fiyatı yoktur; ölçü, form ve kurulum koşullarına göre https://arledscreen.com/tr/quote/ yazılı teklifle netleşir. Hesaplayıcı kontrol kartı bedeli yazılı teklifte kalemlenir. Yayımlanmış panel listesi ve LED ekran fiyatları sayfası · https://arledscreen.com/tr/led-ekran-fiyatlari/ üzerindedir. Kimlik: firma kaydı. İade/garanti teklifte yazılır; ücretsiz kargo yok.`,
   };
 }
 
@@ -76,6 +104,8 @@ export default async function ProductGroupPage({ params }: PageProps) {
   const prices = pricesForGroup(g.slug);
   const models = modelsForGroup(g.slug);
   const quickPrice = priceAnswer(g.name, prices);
+  const sourceFaq = shoppingSourceFaq(g.name, prices);
+  const groupFaqs = [sourceFaq, ...(quickPrice ? [quickPrice] : []), ...g.faqs];
   const isControlGroup = models.some((m) => m.kind === "kontrol") || Boolean(g.brandName);
   const COMPARE_KEYS: SpecKey[] = isControlGroup
     ? ["ledType", "loadCapacity", "ethernetPorts", "videoInputs", "media", "software", "power", "control"]
@@ -108,17 +138,58 @@ export default async function ProductGroupPage({ params }: PageProps) {
       ? {
           offers: {
             "@type": "AggregateOffer",
+            "@id": `${SITE_URL}/catalog.json#group-${g.slug}`,
+            url,
             priceCurrency: "USD",
             lowPrice: Math.min(...prices.map((x) => x.usd)).toFixed(2),
             highPrice: Math.max(...prices.map((x) => x.usd)).toFixed(2),
             offerCount: prices.length,
-            description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç.",
+            priceValidUntil: PRICE_VALID_UNTIL,
+            description:
+              "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç; ücretsiz kargo yok. İade/garanti teklif/sözleşme. Kaynak: yayımlanmış panel listesi.",
             seller: { "@id": `${SITE_URL}/#organization` },
+            isPartOf: { "@id": `${SITE_URL}/catalog.json` },
           },
         }
-      : {}),
+      : {
+          // Quote-only groups (kontrol kartları, şeffaf, esnek, …): never emit
+          // AggregateOffer without prices — GSC Merchant treats incomplete offers as invalid.
+          potentialAction: {
+            "@type": "CommunicateAction",
+            name: "Yazılı teklif al",
+            target: absoluteUrl("/tr/quote/"),
+            url: absoluteUrl("/tr/quote/"),
+          },
+        }),
   };
   const productsLd = prices.length ? panelProductsJsonLd(prices, url, undefined, modelUrlForPrice(absoluteUrl)) : null;
+  // Control / yazılı teklifle hubs: ItemList of model Products (no offers) for agent discovery.
+  const controlItemListLd =
+    isControlGroup && models.length && !prices.length
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "@id": `${url}#models`,
+          name: `${g.name} modelleri`,
+          description:
+            "List fiyatı yayımlanmayan kontrol ürünleri; her model Product schema’sında offers yoktur. Fiyat keşif sonrası yazılı teklifle netleşir.",
+          numberOfItems: models.length,
+          itemListElement: models.map((m, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: absoluteUrl(modelPath(m)),
+            name: m.name,
+            item: {
+              "@type": "Product",
+              "@id": `${absoluteUrl(modelPath(m))}#product`,
+              name: m.name,
+              brand: { "@type": "Brand", name: m.brandName ?? g.brandName ?? "NXTIONSTAR" },
+              url: absoluteUrl(modelPath(m)),
+              image: absoluteUrl(m.image),
+            },
+          })),
+        }
+      : null;
 
   return (
     <>
@@ -129,10 +200,16 @@ export default async function ProductGroupPage({ params }: PageProps) {
           { name: g.name, item: url },
         ]}
       />
-      <FaqJsonLd faqs={quickPrice ? [quickPrice, ...g.faqs] : g.faqs} />
+      <FaqJsonLd faqs={groupFaqs} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {productsLd ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsLd) }} />
+      ) : null}
+      {controlItemListLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(controlItemListLd) }}
+        />
       ) : null}
 
       {/* Intro: framed photo left, breadcrumb + H1 + section tabs right */}
@@ -214,31 +291,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 </ul>
               </div>
             ) : null}
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a
-                href={whatsappHref(g.whatsapp)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-6 text-white hover:bg-[#0B6435]"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                WhatsApp&apos;tan sorun
-              </a>
-              <Link
-                href={quoteHref}
-                className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
-              >
-                <FileText className="h-4 w-4" aria-hidden />
-                Teklif isteyin
-              </Link>
-              <Link
-                href="/tr/hesaplayici/"
-                className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan"
-              >
-                <Calculator className="h-4 w-4" aria-hidden />
-                Fiyatı hesaplayın
-              </Link>
-            </div>
+            <ProductCtaRow className="mt-7" quoteHref={quoteHref} whatsappMessage={g.whatsapp} />
           </div>
         </div>
       </section>
@@ -347,21 +400,12 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 </p>
               </div>
               <div className="flex flex-col gap-3">
-                <a
-                  href={whatsappHref(g.whatsapp)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-soft inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-6 text-white hover:bg-[#0B6435]"
-                >
-                  <WhatsAppIcon className="h-4 w-4" />
-                  WhatsApp&apos;tan yazın
-                </a>
-                <Link
-                  href={quoteHref}
-                  className="btn-soft inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan"
-                >
-                  Teklif formunu doldurun
-                </Link>
+                <ProductCtaRow
+                  quoteHref={quoteHref}
+                  whatsappMessage={g.whatsapp}
+                  showCalculator={false}
+                  className="sm:flex-col"
+                />
               </div>
             </div>
           )}
@@ -521,7 +565,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
       <section id="sss" className="scroll-mt-28 bg-band py-14 md:py-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <SectionHeading eyebrow="Sık sorulan sorular" title={`${g.name} hakkında sorular`} />
-          <HomeFaq faqs={g.faqs} />
+          <HomeFaq faqs={groupFaqs} />
         </div>
       </section>
 
@@ -531,6 +575,18 @@ export default async function ProductGroupPage({ params }: PageProps) {
             Diğer ürün grupları
           </h2>
           <ProductGroupGrid groups={others} showService={false} />
+        </div>
+      </section>
+
+      <section className="border-t border-border bg-white py-10 md:py-12" aria-labelledby="alisveris-kaynaklari">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 id="alisveris-kaynaklari" className="sr-only">
+            Fiyat, katalog ve teklif
+          </h2>
+          <ShoppingLinkCloud
+            excludeHref={`/tr/products/${g.slug}/`}
+            extra={[{ href: quoteHref, label: "Yazılı teklif (bu ürün)" }]}
+          />
         </div>
       </section>
 

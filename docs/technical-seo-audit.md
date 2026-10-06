@@ -48,6 +48,20 @@ Sign in → property `https://arledscreen.com` (URL-prefix or Domain):
 5. Inspect sample URLs: `/tr/`, `/tr/led-ekran-fiyatlari/`, `/entity.json`, one case study
 6. Optional: Bing Webmaster Tools same sitemap
 
+## C. Sahip doğrulama checklist (2026-10-06)
+
+Aşağıdaki maddeler ajan ortamından **kesinleştirilemedi** veya kısmen canlı spot-check ile doğrulandı. GSC / PSI / gerçek cihaz gerektirenler sahip işi.
+
+| Kontrol | Öncelik | Durum | Yapılacak işlem |
+|---|---|---|---|
+| Google indeksleme | Kritik | **Sahip doğrula** | Search Console’da ana sayfa, ürün ve rehber URL’lerini inceleyin. |
+| Canonical ve yönlendirmeler | Yüksek | Canlı spot OK · **sahip teyit** | HTTP→HTTPS, www→apex, `/`→`/tr/` 301/308 canlıda görüldü; GSC’de tercih edilen URL’yi teyit edin. |
+| Sitemap ve robots.txt | Yüksek | Canlı spot OK · **sahip teyit** | `robots.txt` 200 · Host bare · Sitemap bildirimi; `sitemap.xml` 200 · **164** URL. Engellenen kritik sayfa yok (audit:robots/sitemap). GSC Sitemap “Success” sahibi. |
+| Mobil performans | Yüksek | **Sahip doğrula** | PageSpeed Insights + gerçek mobil cihaz: hız, görsel boyut, etkileşim gecikmesi. |
+| Yapılandırılmış veri | Yüksek | Canlı spot OK · **sahip teyit** | Ana sayfada Organization; ürün sayfasında Product/Offer + BreadcrumbList canlı HTML’de. Rich Results / GSC Enhancements sahibi. |
+| Görsel SEO | Orta | Kısmi kod · **sahip doğrula** | Açıklayıcı dosya adları + alt metin audit’leri var; boyut/CDN gerçek cihazla teyit. |
+| İç bağlantılar | Yüksek | Kod audit OK · **sahip teyit** | Rehber↔ürün↔proje↔teklif link audit’i yeşil; örnek sayfalarda manuel tıklama teyidi. |
+
 ## Verdict
 
-No code change required for A/B file health. Architecture matches intended TR-primary + EN alternate model. Remaining work is **GSC verification and indexing monitoring** by the site owner.
+No code change required for A/B file health. Architecture matches intended TR-primary + EN alternate model. Remaining work is **GSC verification, PSI/mobile, and indexing monitoring** by the site owner (section C).

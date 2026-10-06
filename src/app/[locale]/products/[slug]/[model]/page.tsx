@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Calculator, ChevronRight, FileText } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { getProductGroup, productGroupPath } from "@/content/categories";
 import {
   LED_MODELS,
@@ -14,11 +14,21 @@ import {
   type LedModel,
   type ModelKind,
 } from "@/content/models";
-import { CALC_EXTRAS, fmtUsd, panelM2, panelModule } from "@/content/prices";
+import {
+  CALC_EXTRAS,
+  fmtUsd,
+  panelM2,
+  panelModule,
+  PANEL_SHIPPING_DETAILS,
+  PANEL_RETURN_POLICY,
+  PRICE_VALID_UNTIL,
+} from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
-import { WhatsAppIcon } from "@/components/ui/brand-icons";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ProductCtaRow } from "@/components/products/ProductCtaRow";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { buildTrOnlyMetadata } from "@/lib/seo";
-import { whatsappHref } from "@/lib/whatsapp";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 interface PageProps {
@@ -43,32 +53,27 @@ const USES: Record<ModelKind, { title: string; body: string }[]> = {
     { title: "Mağaza ve showroom", body: "Ürün tanıtımı, kampanya ve marka içerikleri." },
     { title: "Kafe ve restoran", body: "Menü, maç yayını ve etkinlik duyuruları." },
     { title: "Toplantı salonu", body: "Sunum ve video konferans için tek parça ekran." },
-    { title: "Lobi ve karşılama", body: "Kurumsal girişlerde bilgilendirme ve yönlendirme." },
-  ],
+    { title: "Lobi ve karşılama", body: "Kurumsal girişlerde bilgilendirme ve yönlendirme." }],
   gob: [
     { title: "Kontrol ve izleme odası", body: "Kamera, harita ve veri ekranlarının birlikte izlenmesi." },
     { title: "Stüdyo", body: "Yayın ve çekim alanlarında yakın plan görüntü." },
     { title: "Toplantı ve konferans", body: "Yakın mesafeden okunan sunum ve video içerikleri." },
-    { title: "Yoğun kullanılan alanlar", body: "Dokunma ve darbe riskinin yüksek olduğu iç mekânlar." },
-  ],
+    { title: "Yoğun kullanılan alanlar", body: "Dokunma ve darbe riskinin yüksek olduğu iç mekânlar." }],
   dis: [
     { title: "Cephe ve reklam alanı", body: "Bina cephesinde ve yol kenarında reklam yayını." },
     { title: "Totem ve pano", body: "Mağaza girişi, akaryakıt istasyonu ve otopark tabelaları." },
     { title: "Belediye ve meydan", body: "Duyuru, etkinlik ve kamu bilgilendirme ekranları." },
-    { title: "Etkinlik ve sahne", body: "Açık hava konser, festival ve lansmanlar." },
-  ],
+    { title: "Etkinlik ve sahne", body: "Açık hava konser, festival ve lansmanlar." }],
   esnek: [
     { title: "Kolon kaplama", body: "Lobi ve AVM'lerde kolonları dijital yüzeye dönüştürme." },
     { title: "Kavisli duvar", body: "Showroom ve karşılama alanlarında akıcı formlar." },
     { title: "Silindir ve kemer", body: "Mimari projelere özel düz olmayan yüzeyler." },
-    { title: "Sahne dekoru", body: "Etkinlik ve stüdyolarda yaratıcı tasarımlar." },
-  ],
+    { title: "Sahne dekoru", body: "Etkinlik ve stüdyolarda yaratıcı tasarımlar." }],
   kontrol: [
     { title: "Yeni ekran kurulumu", body: "Modül + kontrol + yazılımın birlikte planlanması." },
     { title: "Kart / işlemci yenileme", body: "Arızalı veya kapasitesi yetmeyen kontrolün değişimi." },
     { title: "Uzaktan içerik", body: "Wi‑Fi, ağ veya bulut ile merkezi yayın yönetimi." },
-    { title: "Sahne ve senkron yayın", body: "HDMI/SDI kaynaklı düşük gecikmeli gösterim." },
-  ],
+    { title: "Sahne ve senkron yayın", body: "HDMI/SDI kaynaklı düşük gecikmeli gösterim." }],
 };
 
 function describe(m: LedModel): string {
@@ -113,7 +118,6 @@ export default async function ModelPage({ params }: PageProps) {
   const url = absoluteUrl(modelPath(m));
   const price = modelPrice(m);
   const related = modelsForGroup(m.group).filter((x) => !(x.group === m.group && x.slug === m.slug));
-  const wa = whatsappHref(`Merhaba, ${m.name} (${m.chip}) için bilgi ve teklif almak istiyorum. Yaklaşık ekran ölçüsü ve konum:`);
   const description = describe(m);
   const specRows = SPEC_ORDER.filter((key) => m.specs[key]).map((key) => ({ key, label: SPEC_LABELS[key], spec: m.specs[key] }));
 
@@ -121,21 +125,64 @@ export default async function ModelPage({ params }: PageProps) {
   // GSC Merchant listings require offers.price (or priceSpecification.price).
   // Quote-only models (P8, esnek, kontrol) have no published USD — omit Offer
   // entirely. An Offer without price marks the item invalid in Search Console.
+  // sku = catalog PANEL_PRICES id when priced so agents join Offer ↔ catalog.json.
+  const quoteUrl = absoluteUrl("/tr/quote/");
+  const catalogUrl = absoluteUrl("/catalog.json");
   const productLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${url}#product`,
     name: m.name,
-    sku: `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`,
+    sku: m.priceId ?? `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`,
     brand: { "@type": "Brand", name: brandName },
+    ...(m.kind === "kontrol"
+      ? {
+          manufacturer: { "@type": "Organization", name: brandName },
+          isRelatedTo: absoluteUrl(productGroupPath(g)),
+        }
+      : {}),
     itemCondition: "https://schema.org/NewCondition",
-    category: m.kind === "kontrol" ? `${g.name}` : `${g.name} modülü`,
+    category: m.kind === "kontrol" ? `LED kontrol sistemi · ${g.name}` : `${g.name} modülü`,
     image: absoluteUrl(m.image),
     description,
     url,
-    additionalProperty: specRows
-      .filter((r) => r.spec)
-      .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
+    ...(price
+      ? {
+          isPartOf: {
+            "@type": "DataCatalog",
+            "@id": catalogUrl,
+            url: catalogUrl,
+            name: "NXTIONSTAR yayımlanmış panel USD katalog",
+          },
+        }
+      : {}),
+    additionalProperty: [
+      ...specRows
+        .filter((r) => r.spec)
+        .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
+      ...(m.kind === "kontrol" || !price
+        ? [
+            {
+              "@type": "PropertyValue",
+              name: "Fiyatlandırma",
+              value: "List fiyatı yayımlanmaz; keşif sonrası yazılı teklif",
+            }]
+        : [
+            {
+              "@type": "PropertyValue",
+              name: "catalog.json",
+              value: catalogUrl,
+            }])],
+    ...(m.kind === "kontrol" || !price
+      ? {
+          potentialAction: {
+            "@type": "CommunicateAction",
+            name: "Yazılı teklif al",
+            target: quoteUrl,
+            url: quoteUrl,
+          },
+        }
+      : {}),
     ...(price
       ? {
           offers: {
@@ -143,8 +190,11 @@ export default async function ModelPage({ params }: PageProps) {
             url,
             price: price.usd.toFixed(2),
             priceCurrency: "USD",
+            priceValidUntil: PRICE_VALID_UNTIL,
             availability: "https://schema.org/InStock",
             itemCondition: "https://schema.org/NewCondition",
+            shippingDetails: { ...PANEL_SHIPPING_DETAILS },
+            hasMerchantReturnPolicy: { ...PANEL_RETURN_POLICY },
             priceSpecification: {
               "@type": "UnitPriceSpecification",
               price: price.usd.toFixed(2),
@@ -153,10 +203,36 @@ export default async function ModelPage({ params }: PageProps) {
               referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
             },
             seller: { "@id": `${SITE_URL}/#organization` },
+            isPartOf: { "@id": catalogUrl },
           },
         }
       : {}),
   };
+
+  const modelFaqs = price
+    ? [
+        {
+          question: `${m.name} panel fiyatı ne kadar?`,
+          answer: `Yayımlanmış listede bu model ${fmtUsd(price.usd)} USD/panel (KDV ve nakliye hariç; ücretsiz kargo yok; priceValidUntil ${PRICE_VALID_UNTIL}). Kaynak: LED ekran fiyatları sayfası · yayımlanmış panel listesi · Tablo: https://arledscreen.com/tr/led-ekran-fiyatlari/. İade/garanti teklifte yazılır. Nihai tutar https://arledscreen.com/tr/quote/ yazılı teklifle kesinleşir.`,
+        },
+        {
+          question: `${m.name} için teklif nasıl alınır?`,
+          answer: `Ölçü ve montaj koşullarını https://arledscreen.com/tr/quote/ üzerinden paylaşın. Panel bandı yayımlanmış panel listesi ve LED ekran fiyatları sayfasındadır; iade/garanti teklifte (quote-and-contract) yazılır.`,
+        },
+      ]
+    : [
+        {
+          question: `${m.name} için list fiyatı var mı?`,
+          answer: `Hayır. Bu model yazılı teklifle netleşir; panel list fiyatı yayımlanmaz. Yazılı teklif: https://arledscreen.com/tr/quote/. Yayımlanmış panel listesi ve LED ekran fiyatları sayfası yalnızca listeli paneller içindir. Ücretsiz kargo yok; iade teklifte (quote-and-contract).`,
+        },
+        {
+          question: "Bu model hangi ürün grubunda yer alır?",
+          answer:
+            `${g.name} grubunda incelenir: ` +
+            absoluteUrl(productGroupPath(g)) +
+            `. Fiyat uydurulmaz; önce yayımlanmış panel listesi, yazılı teklifle ürünler için /tr/quote/.`,
+        },
+      ];
 
   return (
     <>
@@ -165,9 +241,9 @@ export default async function ModelPage({ params }: PageProps) {
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Ürünler", item: absoluteUrl("/tr/products/") },
           { name: g.name, item: absoluteUrl(productGroupPath(g)) },
-          { name: m.name, item: url },
-        ]}
+          { name: m.name, item: url }]}
       />
+      <FaqJsonLd faqs={modelFaqs} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
 
       <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
@@ -221,33 +297,12 @@ export default async function ModelPage({ params }: PageProps) {
                 </p>
               )}
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link
-                  href={`/tr/quote/?tip=${g.projectType}`}
-                  className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600"
-                >
-                  <FileText className="h-4 w-4" aria-hidden />
-                  Teklif isteyin
-                </Link>
-                <a
-                  href={wa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-6 text-white hover:bg-[#0B6435]"
-                >
-                  <WhatsAppIcon className="h-4 w-4" />
-                  WhatsApp&apos;tan sorun
-                </a>
-                {m.kind !== "kontrol" ? (
-                  <Link
-                    href="/tr/hesaplayici/"
-                    className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-ink-soft hover:border-cyan/50 hover:text-cyan"
-                  >
-                    <Calculator className="h-4 w-4" aria-hidden />
-                    Fiyatı hesaplayın
-                  </Link>
-                ) : null}
-              </div>
+              <ProductCtaRow
+                className="mt-6"
+                quoteHref={`/tr/quote/?tip=${g.projectType}`}
+                whatsappMessage={`Merhaba, ${m.name} (${m.chip}) için bilgi ve teklif almak istiyorum. Yaklaşık ekran ölçüsü ve konum:`}
+                showCalculator={m.kind !== "kontrol"}
+              />
 
               <h2 id="teknik" className="mt-10 scroll-mt-28 font-display text-xl font-bold text-ink sm:text-2xl">Teknik özellikler</h2>
               <dl className="mt-4 overflow-hidden rounded-2xl border border-border bg-white">
@@ -298,6 +353,16 @@ export default async function ModelPage({ params }: PageProps) {
               </>
             )}
           </p>
+          <ShoppingLinkCloud
+            excludeHref={modelPath(m)}
+            title={`${m.name} · fiyat ve kimlik kaynakları`}
+            extra={[
+              { href: productGroupPath(g), label: g.name },
+              { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
+          />
+          <div className="mt-10">
+            <HomeFaq faqs={modelFaqs} />
+          </div>
         </div>
       </section>
 

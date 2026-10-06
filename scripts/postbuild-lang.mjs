@@ -46,5 +46,77 @@ const routesJson = path.join("out", "_routes.json");
 if (!fs.existsSync(routesJson)) {
   console.warn("postbuild: WARNING out/_routes.json missing — root Function may run on all paths");
 } else {
-  console.log("postbuild: out/_routes.json present (Function scoped to /)");
+  console.log("postbuild: out/_routes.json present (Function scoped to /; AI static paths excluded)");
+  const routes = JSON.parse(fs.readFileSync(routesJson, "utf8"));
+  const exclude = routes.exclude || [];
+  for (const need of ["/entity.json", "/entity-profiles.json", "/catalog.json", "/ai-shopping.json", "/.well-known/*", "/feeds/*"]) {
+    if (!exclude.includes(need)) {
+      console.warn(`postbuild: WARNING _routes.json exclude missing ${need}`);
+    }
+  }
 }
+
+/** AI alışveriş static artefacts must land in out/ (CF Pages static before Functions). */
+const AI_STATIC = [
+  "entity.json",
+  "entity-profiles.json",
+  "catalog.json",
+  "ai-shopping.json",
+  "llms.txt",
+  "llms-full.txt",
+  path.join(".well-known", "ard.json"),
+  path.join("feeds", "merchant-priced-panels.tsv"),
+  "_headers",
+  "_routes.json",
+];
+const missingAi = [];
+for (const rel of AI_STATIC) {
+  if (!fs.existsSync(path.join("out", rel))) missingAi.push(rel);
+}
+if (missingAi.length) {
+  console.error(`postbuild: FAIL missing AI static artefacts in out/: ${missingAi.join(", ")}`);
+  process.exit(1);
+}
+const headersOut = fs.readFileSync(path.join("out", "_headers"), "utf8");
+if (!/\/entity-profiles\.json[\s\S]*?Access-Control-Allow-Origin:\s*\*/.test(headersOut)) {
+  console.error("postbuild: FAIL out/_headers missing entity-profiles CORS");
+  process.exit(1);
+}
+if (!/\/ai-shopping\.json[\s\S]*?Access-Control-Allow-Origin:\s*\*/.test(headersOut)) {
+  console.error("postbuild: FAIL out/_headers missing ai-shopping CORS");
+  process.exit(1);
+}
+const entityOut = JSON.parse(fs.readFileSync(path.join("out", "entity.json"), "utf8"));
+if (!entityOut.entityProfilesJson?.includes("/entity-profiles.json")) {
+  console.error("postbuild: FAIL out/entity.json missing entityProfilesJson");
+  process.exit(1);
+}
+if (!entityOut.aiShoppingJson?.includes("/ai-shopping.json")) {
+  console.error("postbuild: FAIL out/entity.json missing aiShoppingJson");
+  process.exit(1);
+}
+const routes = JSON.parse(fs.readFileSync(path.join("out", "_routes.json"), "utf8"));
+const exclude = routes.exclude || [];
+for (const need of ["/entity.json", "/entity-profiles.json", "/catalog.json", "/ai-shopping.json", "/.well-known/*", "/feeds/*"]) {
+  if (!exclude.includes(need)) {
+    console.warn(`postbuild: WARNING _routes.json exclude missing ${need}`);
+  }
+}
+console.log("postbuild: AI static artefacts OK (entity/catalog/ard/profiles/ai-shopping/llms/feed + CORS)");
+
+// robots.txt is served by functions/robots.txt.js (no-store). Static out/robots.txt
+// would win over the Function and can stick in CDN cache with a stale Host: https://…
+const robotsOut = path.join("out", "robots.txt");
+if (fs.existsSync(robotsOut)) {
+  fs.rmSync(robotsOut);
+  console.log("postbuild: removed out/robots.txt — Functions/robots.txt.js serves live");
+}
+const routesLive = JSON.parse(fs.readFileSync(routesJson, "utf8"));
+if (!(routesLive.include || []).includes("/robots.txt")) {
+  console.warn("postbuild: WARNING _routes.json include missing /robots.txt (Function will not run)");
+} else if ((routesLive.exclude || []).includes("/robots.txt")) {
+  console.warn("postbuild: WARNING _routes.json excludes /robots.txt (Function blocked)");
+} else {
+  console.log("postbuild: robots.txt → Pages Function (include /, /robots.txt)");
+}
+

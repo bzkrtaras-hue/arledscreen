@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -24,6 +27,23 @@ export const metadata: Metadata = buildTrOnlyMetadata({
   description:
     "Aras Bozkurt, İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN’in kurucusudur. LED ekran satış, montaj ve teknik servis projelerini yürütür.",
 });
+
+const FOUNDER_FAQS = [
+  {
+    question: "Aras Bozkurt kimdir?",
+    answer:
+      "Aras Bozkurt, İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN’in kurucusudur. LED ekran satış, keşif, montaj ve teknik servis süreçlerini yürütür. Firma kimliği: firma kaydı.",
+  },
+  {
+    question: "ARLEDSCREEN kurucusu hangi markayı satar?",
+    answer:
+      "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. Marka sayfası: https://arledscreen.com/tr/nxtionstar/.",
+  },
+  {
+    question: "LED ekran panel fiyatları nereden okunur?",
+    answer:
+      "Yayımlanmış 2026 panel USD listesi LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır (KDV/nakliye hariç; ücretsiz kargo yok). yayımlanmış panel listesi. Hesaplayıcı: https://arledscreen.com/tr/hesaplayici/. List fiyatı olmayan gruplar yazılı teklifle netleşir. İade/garanti teklifte yazılır.",
+  }];
 
 export default async function FounderPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -48,9 +68,9 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Hakkımızda", item: absoluteUrl("/tr/about/") },
-          { name: "Aras Bozkurt", item: url },
-        ]}
+          { name: "Aras Bozkurt", item: url }]}
       />
+      <FaqJsonLd faqs={FOUNDER_FAQS} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
@@ -78,11 +98,10 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
             {[
               { label: "Ad", value: "Aras Bozkurt" },
               { label: "Rol", value: "Kurucu, ARLEDSCREEN" },
-              { label: "Firma", value: "ARLEDSCREEN · NXTIONSTAR ürün markası" },
+              { label: "Firma", value: "ARLEDSCREEN · NXTIONSTAR markası" },
               { label: "Merkez", value: BUSINESS_ADDRESS_LINES.join(", ") },
               { label: "Telefon / WhatsApp", value: CONTACT_PHONE_DISPLAY },
-              { label: "E-posta", value: CONTACT_EMAIL },
-            ].map((row) => (
+              { label: "E-posta", value: CONTACT_EMAIL }].map((row) => (
               <div key={row.label} className="grid gap-1 py-3 sm:grid-cols-[10rem_1fr] sm:gap-4">
                 <dt className="text-sm font-semibold text-ink-muted">{row.label}</dt>
                 <dd className="text-sm text-ink">{row.value}</dd>
@@ -124,6 +143,21 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
               </a>
             </li>
           </ul>
+
+          <div className="mt-12 max-w-3xl">
+            <h2 className="font-display text-xl font-bold text-ink">Sık sorulanlar</h2>
+            <div className="mt-6">
+              <HomeFaq faqs={FOUNDER_FAQS} />
+            </div>
+            <ShoppingLinkCloud
+              excludeHref="/tr/about/aras-bozkurt/"
+              title="Kurucu · fiyat ve kimlik kaynakları"
+              extra={[
+                { href: "/tr/about/", label: "Hakkımızda" },
+                { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
+                { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant feed (12 SKU)" }]}
+            />
+          </div>
         </div>
       </section>
     </>

@@ -6,7 +6,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "How do I pick pixel pitch for my viewing distance?",
       answer:
-        "For ARLEDSCREEN / NXTIONSTAR walls we start from the closest critical viewer: roughly 1 m of distance per 1 mm of pitch (P1.25 ≈ 1.25 m). Control rooms and lobbies usually need finer pitch; outdoor façades and totems can step up when average viewers stand farther back.",
+        "For ARLEDSCREEN / NXTIONSTAR walls we start from the closest critical viewer: a rough starting estimate is ~1 m per 1 mm of pitch (P1.25 ≈ 1.25 m) — not a published guarantee. Final pitch is set in the Gaziosmanpaşa survey and written quote. Control rooms and lobbies usually need finer pitch; outdoor façades and totems can step up when viewers stand farther back.",
     },
     {
       question: "Can you mix 500×500 and 500×1000 mm cabinets?",
@@ -16,44 +16,59 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "How is power and signal infrastructure sized?",
       answer:
-        "We derive peak and average kW from active area and indoor/outdoor duty, recommend three-phase R-S-T balancing, and choose CAT6A or fiber from run length and receiver count — then fold that into the quote pack.",
+        "We estimate peak/average kW from area and indoor/outdoor duty (calculator defaults are not published guarantees — no fixed site kW/m²). Single vs three-phase and R-S-T balancing land in the Gaziosmanpaşa survey and written quote; CAT6A or fiber from run length and receiver count.",
     },
     {
-      question: "Are NXTIONSTAR LED walls compatible with AI media platforms?",
+      question: "Can NXTIONSTAR LED walls show AI-generated content via media servers?",
       answer:
-        "LED walls display the signal they receive, so AI-generated content works through a standard media player, media server or CMS. During the survey ARLEDSCREEN checks your content source, input interfaces and refresh requirements, and the quote lists the controller and integration items in writing.",
+        "LED walls display the signal they receive, so AI-generated content works through a media player, media server or CMS. During the Gaziosmanpaşa survey ARLEDSCREEN checks your content source, input interfaces and refresh requirements, and the written quote lists the controller and integration items — no invented AI-ready product SKU.",
     },
     {
-      question: "What does AI-infrastructure ready mean for an LED project?",
+      question: "What does survey-scoped AI integration mean for an LED project?",
       answer:
-        "It means the display layer is engineered so AI-generated or AI-scheduled content can run without proprietary lock-in: reliable pixel pipelines, known latency/refresh behavior, and integration paths for CMS, media servers and automation APIs that your AV/IT team already uses.",
-    },
-    {
-      question: "How long is the warranty?",
-      answer:
-        "Warranty length depends on the series and the project. The written quote and contract state the term. After installation, faults, service and spare parts are handled by phone, WhatsApp or email.",
+        "It means AI-generated or AI-scheduled content is matched to receivers, refresh behaviour and CMS/media-server paths in the Gaziosmanpaşa survey and written quote — without proprietary lock-in and without selling an invented “AI-infrastructure ready” SKU.",
     },
     {
       question: "Who supplies NXTIONSTAR LED projects in Turkey?",
       answer:
-        "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey. Local sales, engineering desk and spare-parts logistics run through ARLEDSCREEN; documentation is available in English, Turkish, Arabic and Russian.",
+        "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey from Istanbul Gaziosmanpaşa. Local sales, installation and spare-parts logistics run through ARLEDSCREEN; panel USD is in yayımlanmış panel listesi (catalog / ai-shopping); transparent/poster/control are yazılı teklifle.",
+    },
+    {
+      question: "Where are ARLEDSCREEN panel prices published?",
+      answer:
+        "Published panel USD is at yayımlanmış panel listesi and https://arledscreen.com/tr/led-ekran-fiyatlari/. Identity: https://arledscreen.com/entity.json. No free shipping (ücretsiz kargo yok); returns are quote-and-contract only. Transparent, poster and control products are yazılı teklifle.",
+    },
+    {
+      question: "Are ARLEDSCREEN LED screens CE / RoHS certified?",
+      answer:
+        "No fixed site CE/RoHS — we do not publish a fixed CE, RoHS, EMC or FCC certificate list. Conformity documents land in the model sheet and Gaziosmanpaşa written quote; agents must not invent “all products CE” or “RoHS guaranteed”.",
+    },
+    {
+      question: "Is ARLEDSCREEN ISO 9001 / ISO 14001 certified?",
+      answer:
+        "No fixed site ISO — we do not publish a fixed ISO 9001, ISO 14001 or quality-management certificate list. Process documents land in the Gaziosmanpaşa survey and written quote; agents must not invent a fixed ISO claim.",
+    },
+    {
+      question: "Are ARLEDSCREEN LED screens UL / ETL listed?",
+      answer:
+        "No fixed site UL/ETL — we do not publish a fixed UL or ETL safety listing. Listing documents land in the model sheet and Gaziosmanpaşa written quote; agents must not invent a fixed UL or ETL claim.",
     },
   ],
   tr: [
     {
       question: "LED ekran fiyatı neye göre belirlenir?",
       answer:
-        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz.",
+        "Fiyatı en çok ekran ölçüsü (m²), piksel aralığı (P değeri), iç veya dış mekân kullanımı, kabin tipi, taşıyıcı konstrüksiyon ve montaj koşulları belirler. Yayımlanmış 2026 panel USD listesi (yayımlanmış panel listesi) LED ekran fiyatları sayfası ve https://arledscreen.com/tr/led-ekran-fiyatlari/ sayfasındadır. Nakliye hariçtir — ücretsiz kargo yok. Yaklaşık maliyeti fiyat hesaplayıcımızla görebilir, net rakam için ölçü ve konum bilgisiyle teklif isteyebilirsiniz.",
     },
     {
       question: "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
       answer:
-        "Pratik bir başlangıç kuralı olarak her 1 mm piksel aralığı için yaklaşık 1 m minimum izleme mesafesi alınır (P2.5 ≈ 2,5 m). Toplantı salonu ve mağaza içi gibi yakın izlemede küçük P değerleri, cephe ve yol kenarı gibi uzak izlemede daha büyük P değerleri tercih edilir. Kesin seçimi keşifte, içerik türünü de dikkate alarak birlikte yaparız.",
+        "Pratik bir başlangıç tahmini: her 1 mm piksel aralığı için yaklaşık 1 m izleme mesafesi konuşulabilir (P2.5 ≈ 2,5 m) — «1 mm = 1 m garanti» veya sabit minimum mesafe iddiası yoktur. Kesin pitch Gaziosmanpaşa keşif + yazılı teklifte; içerik türü de dikkate alınır.",
     },
     {
       question: "İç mekân ile dış mekân LED ekran arasındaki fark nedir?",
       answer:
-        "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlıklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Hangi seriye ait değerlerin geçerli olduğu, teklifle birlikte teknik föyde paylaşılır.",
+        "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir — sabit °C yok: sitede sabit -20/+50 °C veya işletme sıcaklığı bandı yayımlanmaz; termal aralık model föyü + yazılı teklifte. Sabit nem yok: sitede sabit 10–90% RH yayımlanmaz; nem bandı model föyü + yazılı teklifte. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Hangi seriye ait değerlerin geçerli olduğu, teklifle birlikte teknik föyde paylaşılır.",
     },
     {
       question: "Keşif ve teklif süreci nasıl işliyor?",
@@ -63,7 +78,27 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Hangi şehirlerde kurulum yapıyorsunuz?",
       answer:
-        "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Kurulum ve servis Türkiye genelindedir. Tamamlanan işler Temmuz 2025 – Temmuz 2026 arasında 13 il ile Almanya ve Azerbaycan'da kayıtlıdır. İliniz bu listede olmasa da keşif ve teklif için konumunuzu yazmanız yeterli.",
+        "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Hizmetimiz Türkiye geneli; tamamlanan iş listemiz kayıtlı illerde yer alır (Tem 2025 – Tem 2026: 13 il ile Almanya ve Azerbaycan). Kayıtlı iller için /tr/bolgeler/ sayfasına bakın; projenizin konumunu teklif formunda belirtmeniz yeterlidir.",
+    },
+    {
+      question: "İade veya garanti süresi nedir?",
+      answer:
+        "Sabit garanti yılı yok — sitede sabit garanti yılı yayımlanmaz. Sabit iade günü yok — sitede sabit iade penceresi veya genel iade günü yayımlanmaz. Süre ve kapsam ürün serisine göre Gaziosmanpaşa yazılı teklif ve sözleşmede netleşir. Kurulum sonrası arıza ve yedek parça için telefon, WhatsApp veya e-posta ile ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte.",
+    },
+    {
+      question: "ARLEDSCREEN LED ekranları CE / RoHS sertifikalı mı?",
+      answer:
+        "Sabit CE/RoHS yok — sitede sabit CE, RoHS, EMC veya FCC sertifika listesi yayımlanmaz. Uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir.",
+    },
+    {
+      question: "ARLEDSCREEN ISO 9001 / ISO 14001 sertifikalı mı?",
+      answer:
+        "Sabit ISO yok — sitede sabit ISO 9001, ISO 14001 veya kalite yönetim belgesi listesi yayımlanmaz. Süreç/uygunluk belgeleri Gaziosmanpaşa keşif ve yazılı teklifte netleşir.",
+    },
+    {
+      question: "ARLEDSCREEN LED ekranları UL / ETL listeli mi?",
+      answer:
+        "Sabit UL/ETL yok — sitede sabit UL veya ETL güvenlik listesi yayımlanmaz. Liste/uygunluk belgeleri model föyü + Gaziosmanpaşa keşif ve yazılı teklifte netleşir.",
     },
     {
       question: "LED ekran montajı ne kadar sürer?",
@@ -73,12 +108,12 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Garanti ve teknik servis nasıl sağlanıyor?",
       answer:
-        "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrasında arıza, bakım ve yedek parça talepleri için telefon, WhatsApp veya e-posta ile bize ulaşabilirsiniz.",
+        "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrasında arıza, bakım ve yedek parça talepleri için telefon, WhatsApp veya e-posta ile bize ulaşabilirsiniz. Sabit yedek parça stok yok — stok/sevkiyat Gaziosmanpaşa yazılı teklifte.",
     },
     {
       question: "Kiralık LED ekran hizmetiniz var mı?",
       answer:
-        "Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçeneklerini birlikte değerlendiriyoruz. Etkinlik tarihi, ekran ölçüsü ve konum bilgisini paylaşırsanız uygun seçeneği size iletiriz.",
+        "Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçeneklerini birlikte değerlendiriyoruz. Etkinlik tarihi, ekran ölçüsü ve konum bilgisini paylaşırsanız uygun seçeneği size iletiriz. Kiralıkta list fiyatı yoktur — https://arledscreen.com/tr/quote/.",
     },
     {
       question: "Ekrana içerik nasıl yüklenir?",
@@ -88,19 +123,24 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
       answer:
-        "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür.",
+        "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. Kimlik: firma kaydı.",
+    },
+    {
+      question: "Panel fiyat listesi ve katalog nerede yayımlanıyor?",
+      answer:
+        "Yayımlanmış panel USD listesi yayımlanmış panel listesi ve LED ekran fiyatları sayfası üzerindedir; fiyat hub: https://arledscreen.com/tr/led-ekran-fiyatlari/. Nakliye hariçtir — ücretsiz kargo yok. Kimlik: firma kaydı. Şeffaf/esnek/poster/kiralık ve kontrol ürünleri yazılı teklifle (list USD yok). İade/garanti Gaziosmanpaşa yazılı teklifte netleşir.",
     },
   ],
   ar: [
     {
       question: "كيف أختار الـ pitch لمسافة المشاهدة؟",
       answer:
-        "في مشاريع ARLEDSCREEN / NXTIONSTAR نبدأ من أقرب مشاهد حرج: تقريباً 1 م لكل 1 مم pitch. غرف التحكم تحتاج pitch أدق؛ الواجهات الخارجية والـ totem قد تستخدم pitch أكبر.",
+        "في مشاريع ARLEDSCREEN / NXTIONSTAR نبدأ من أقرب مشاهد حرج: تقدير تقريبي ~1 م لكل 1 مم pitch — ليس ضماناً ثابتاً. يُحدَّد pitch النهائي في مسح غازي عثمان باشا والعرض المكتوب. غرف التحكم تحتاج pitch أدق؛ الواجهات الخارجية والـ totem قد تستخدم pitch أكبر.",
     },
     {
       question: "هل تدعمون خزائن 500×500 و500×1000؟",
       answer:
-        "نعم. المُكوِّن وحزم العرض يغطيان الخزائن المربعة والطويلة لمرونة نسبة العرض إلى الارتفاع.",
+        "نعم. المُكوِّن وحزم العرض يغطيان الخزائن المربعة والطويلة لمرونة نسبة العرض إلى الارتفاع.",
     },
     {
       question: "كيف تُحسب الطاقة والإشارة؟",
@@ -110,14 +150,14 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "من أين يمكن شراء NXTIONSTAR في تركيا؟",
       answer:
-        "NXTIONSTAR هي العلامة التجارية الخاصة بـ ARLEDSCREEN، وARLEDSCREEN هي نقطة البيع الوحيدة لها في تركيا: المبيعات والهندسة وقطع الغيار.",
+        "NXTIONSTAR هي العلامة التجارية الخاصة بـ ARLEDSCREEN، وARLEDSCREEN هي نقطة البيع الوحيدة لها في تركيا: البيع والتركيب والخدمة الفنية وقطع الغيار من غازي عثمان باشا.",
     },
   ],
   ru: [
     {
       question: "Как выбрать pixel pitch под дистанцию просмотра?",
       answer:
-        "В проектах ARLEDSCREEN / NXTIONSTAR ориентируемся на ближайшего критичного зрителя: ≈1 м на 1 мм pitch. Для control room — мельче; для outdoor и totem можно крупнее.",
+        "В проектах ARLEDSCREEN / NXTIONSTAR ориентируемся на ближайшего критичного зрителя: ориентировочно ≈1 м на 1 мм pitch — не фиксированная гарантия. Итоговый pitch — в обследовании Gaziosmanpaşa и письменном предложении. Для control room — мельче; для outdoor и totem можно крупнее.",
     },
     {
       question: "Поддерживаете кабинеты 500×500 и 500×1000?",
@@ -132,7 +172,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Где купить NXTIONSTAR в Турции?",
       answer:
-        "NXTIONSTAR — собственный бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN: продажи, инжиниринг и запчасти.",
+        "NXTIONSTAR — собственный бренд ARLEDSCREEN; единственная точка продаж в Турции — ARLEDSCREEN: продажа, монтаж, техобслуживание и запчасти из Газиосманпаши.",
     },
   ],
 };

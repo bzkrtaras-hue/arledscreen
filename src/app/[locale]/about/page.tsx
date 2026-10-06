@@ -9,14 +9,17 @@ import {
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
-import { ENTITY_CITE_MEDIUM, ENTITY_DISAMBIGUATION } from "@/lib/entity";
+import { ENTITY_CITE_MEDIUM, ENTITY_DISAMBIGUATION, ENTITY_FAQS } from "@/lib/entity";
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { getSeo } from "@/content/seo";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildThinLocaleMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { ShoppingLinkCloud } from "@/components/seo/ShoppingLinkCloud";
+import { HomeFaq } from "@/components/home/HomeFaq";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -28,12 +31,23 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale = (isLocale(raw) ? raw : "en") as Locale;
   const seo = getSeo(locale, "about");
+  // EN/AR/RU about is a thin shell (TR-only TrustFacts / entity cite) → noindex → TR.
+  if (locale !== "tr") {
+    return buildThinLocaleMetadata({
+      locale,
+      path: "/about",
+      title: seo.title,
+      description: seo.description,
+      keywords: seo.keywords,
+    });
+  }
   return buildPageMetadata({
     locale,
     path: "/about",
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
+    hreflangLocales: [],
   });
 }
 
@@ -53,6 +67,9 @@ export default async function AboutPage({ params }: PageProps) {
           { name: dict.nav.about, item: absoluteUrl(`/${locale}/about`) },
         ]}
       />
+      {locale === "tr" ? (
+        <FaqJsonLd faqs={[...ENTITY_FAQS]} />
+      ) : null}
       <Section
         titleAs="h1"
         eyebrow={about.eyebrow}
@@ -148,7 +165,26 @@ export default async function AboutPage({ params }: PageProps) {
                   llms.txt
                 </a>
               </li>
+              <li>
+                <a href="/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                  ai-shopping.json
+                </a>
+              </li>
+              <li>
+                <a href="/entity.json" className="font-semibold text-cyan hover:underline">
+                  entity.json
+                </a>
+              </li>
+              <li>
+                <a href="/catalog.json" className="font-semibold text-cyan hover:underline">
+                  catalog.json
+                </a>
+              </li>
             </ul>
+            <ShoppingLinkCloud excludeHref="/tr/about/" />
+          </Section>
+          <Section eyebrow="Sık sorulanlar" title="Kimlik, fiyat ve AI ajanları" className="border-t border-border prose-seo">
+            <HomeFaq faqs={[...ENTITY_FAQS]} />
           </Section>
           <Section eyebrow="Neden ARLEDSCREEN?" title="Doğrulanabilir bilgiler" className="bg-surface/60 prose-seo">
             <TrustFacts />

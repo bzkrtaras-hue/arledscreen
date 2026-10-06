@@ -19,14 +19,14 @@ const SOLUTIONS = [
   },
   {
     title: "Toplantı ve konferans",
-    body: "Sunum, video konferans ve salon uygulamalarında dikişsiz görüntü için küçük piksel aralıkları.",
+    body: "Sunum, video konferans ve salon uygulamalarında yakın izlemeye uygun küçük piksel aralıkları.",
     image: "/projects/neu-kutuphane.jpg",
     alt: "Üniversite salonunda LED ekran",
     guide: "/tr/rehber/konferans-salonu-led/",
   },
   {
     title: "Sahne ve etkinlik",
-    body: "Konser, fuar ve lansmanlar için hızlı kurulan kabinler; kiralık veya satış seçenekleri.",
+    body: "Konser, fuar ve lansmanlar için etkinlik takvimine göre kurulan kabinler; kiralık veya satış seçenekleri.",
     image: "/projects/applications/mobile-led-stage-iveco.jpg",
     alt: "Mobil LED sahne uygulaması",
     guide: "/tr/rehber/led-ekran/",
@@ -40,7 +40,7 @@ const SOLUTIONS = [
   },
   {
     title: "Özel form ve kavisli",
-    body: "Kavisli, oval veya mimariye entegre ekranlar için projeye özel mühendislik.",
+    body: "Kavisli, oval veya mimariye entegre ekranlar için keşif ve yazılı teklifte boyutlandırma.",
     image: "/projects/applications/curved-led-tulips.jpg",
     alt: "Kavisli iç mekân LED duvar",
     guide: "/tr/rehber/mimari-muhendislik-led/",
