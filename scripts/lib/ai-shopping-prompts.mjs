@@ -1805,6 +1805,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit anti-theft screw yok"],
     mustNotSay: ["anti-theft screw garantidir", "sabit anti-theft screw True1", "tüm modeller anti-theft screw", "hırsızlık önleyici vida garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 162,
+    q: "LED ekran RS-485 / seri bus var mı? ARLEDSCREEN sabit RS-485 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit RS-485 yok"],
+    mustNotSay: ["RS-485 garantidir", "sabit RS-485 True1", "tüm modeller RS-485", "seri bus garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

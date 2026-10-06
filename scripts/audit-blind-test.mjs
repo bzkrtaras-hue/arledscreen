@@ -2136,6 +2136,20 @@ if (
   errors.push("blind prompt #161 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit anti-theft screw yok");
 }
 
+const pBlind162 = PROMPTS.find((x) => x.id === 162);
+if (!pBlind162 || !/RS-485|seri bus/i.test(pBlind162.q)) {
+  errors.push("blind prompt #162 must cover sabit RS-485 invent");
+}
+if (
+  pBlind162 &&
+  (!pBlind162.mustSay?.includes("yazılı teklif") ||
+    !pBlind162.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind162.mustSay?.includes("sabit RS-485 yok"))
+) {
+  errors.push("blind prompt #162 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit RS-485 yok");
+}
+
+
 
 
 

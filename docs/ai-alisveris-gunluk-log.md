@@ -203,6 +203,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 211 | 2026-10-06 | sabit bird mesh #159 · dis/mimari ARD refresh · skor /477 | ✅ |
 | 212 | 2026-10-06 | sabit QSC #160 · ic/konferans ARD refresh · skor /480 | ✅ |
 | 213 | 2026-10-06 | sabit anti-theft screw #161 · dis/mimari ARD refresh · skor /483 | ✅ |
+| 214 | 2026-10-06 | sabit RS-485 #162 · ic/konferans ARD refresh · skor /486 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1516,3 +1517,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #161 «anti-theft screw / hırsızlık önleyici vida?» — skor **/483**; ARD **161 kör test**
 - TR/EN dis-mekan + TR/EN mimari anti-theft screw invent · llms deny · sabit anti-theft screw yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit anti-theft screw
+
+## Gün 214 notları
+
+- Blind #162 «RS-485 / seri bus?» — skor **/486**; ARD **162 kör test**
+- TR/EN ic-mekan + TR/EN konferans RS-485 invent · llms deny · sabit RS-485 yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit RS-485
