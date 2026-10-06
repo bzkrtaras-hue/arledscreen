@@ -4457,6 +4457,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline TR Series yok"],
     mustNotSay: ["Newline TR Series garantidir", "sabit Newline TR Series True1", "tüm modeller Newline TR Series", "Newline TR garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 383,
+    q: "LED ekran parapet apron / parapet eteği var mı? ARLEDSCREEN sabit parapet apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parapet apron yok"],
+    mustNotSay: ["parapet apron garantidir", "sabit parapet apron True1", "tüm modeller parapet apron", "parapet eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

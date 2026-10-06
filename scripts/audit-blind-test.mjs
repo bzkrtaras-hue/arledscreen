@@ -5009,6 +5009,20 @@ if (
   errors.push("blind prompt #382 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline TR Series yok");
 }
 
+const pBlind383 = PROMPTS.find((x) => x.id === 383);
+if (!pBlind383 || !/parapet apron|parapet eteği/i.test(pBlind383.q)) {
+  errors.push("blind prompt #383 must cover sabit parapet apron invent");
+}
+if (
+  pBlind383 &&
+  (!pBlind383.mustSay?.includes("yazılı teklif") ||
+    !pBlind383.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind383.mustSay?.includes("sabit parapet apron yok"))
+) {
+  errors.push("blind prompt #383 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet apron yok");
+}
+
+
 
 
 
