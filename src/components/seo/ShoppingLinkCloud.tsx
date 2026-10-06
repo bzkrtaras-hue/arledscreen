@@ -1,6 +1,12 @@
 import Link from "next/link";
 
-/** Shared AI-alışveriş / fiyat keşif link strip (catalog + fiyat hub + quote). */
+const MACHINE_FILE = /\.(json|txt|tsv)$/i;
+
+function isCustomerLink(href: string) {
+  return !MACHINE_FILE.test(href) && !href.includes("/.well-known/");
+}
+
+/** Customer link strip. Machine files stay on their URLs and are not listed here. */
 export function ShoppingLinkCloud({
   title = "Fiyat, katalog ve teklif",
   excludeHref,
@@ -12,18 +18,12 @@ export function ShoppingLinkCloud({
 }) {
   const links = [
     { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları 2026" },
-    { href: "/catalog.json", label: "catalog.json (panel USD)" },
-    { href: "/ai-shopping.json", label: "ai-shopping.json (ajan index)" },
     { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
     { href: "/tr/quote/", label: "Yazılı teklif" },
-    { href: "/entity.json", label: "entity.json (kimlik)" },
-    { href: "/entity-profiles.json", label: "entity-profiles.json (Point C)" },
-    { href: "/.well-known/ard.json", label: "ard.json (ajan keşif)" },
-    { href: "/feeds/merchant-priced-panels.tsv", label: "Merchant TSV (12 SKU)" },
     { href: "/tr/products/gob-led-ekran/", label: "GOB LED ekran ürünleri" },
     { href: "/tr/rehber/gob-vs-smd/", label: "GOB vs SMD rehberi" },
     ...extra,
-  ].filter((l) => l.href !== excludeHref);
+  ].filter((l) => l.href !== excludeHref && isCustomerLink(l.href));
 
   if (!links.length) return null;
 
@@ -31,23 +31,13 @@ export function ShoppingLinkCloud({
     <nav aria-label={title} className="mt-10 border-t border-border pt-8">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">{title}</p>
       <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-        {links.map((l) => {
-          const fileish =
-            /\.(json|txt|tsv)$/i.test(l.href) || l.href.startsWith("/.well-known/");
-          return (
-            <li key={l.href}>
-              {fileish ? (
-                <a href={l.href} className="text-sm font-semibold text-cyan hover:underline">
-                  {l.label}
-                </a>
-              ) : (
-                <Link href={l.href} className="text-sm font-semibold text-cyan hover:underline">
-                  {l.label}
-                </Link>
-              )}
-            </li>
-          );
-        })}
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link href={l.href} className="text-sm font-semibold text-cyan hover:underline">
+              {l.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
