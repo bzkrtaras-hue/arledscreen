@@ -27,7 +27,13 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
       question: "What does AI-infrastructure ready mean for an LED project?",
       answer:
         "It means the display layer is engineered so AI-generated or AI-scheduled content can run without proprietary lock-in: reliable pixel pipelines, known latency/refresh behavior, and integration paths for CMS, media servers and automation APIs that your AV/IT team already uses.",
-    },    {
+    },
+    {
+      question: "Is there a fixed warranty term on the website?",
+      answer:
+        "No fixed warranty year or general return policy is published on the site. Term and coverage are set in the written quote and contract for that series and project. After installation, faults, service and spare parts are handled by phone, WhatsApp or email.",
+    },
+    {
       question: "Who supplies NXTIONSTAR LED projects in Turkey?",
       answer:
         "ARLEDSCREEN supplies and supports NXTIONSTAR LED products in Turkey. Local sales, engineering desk and spare-parts logistics run through ARLEDSCREEN; documentation is available in English, Turkish, Arabic and Russian.",
@@ -47,7 +53,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "İç mekân ile dış mekân LED ekran arasındaki fark nedir?",
       answer:
-        "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlaklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Hangi seriye ait değerlerin geçerli olduğu, teklifle birlikte teknik föyde paylaşılır.",
+        "Dış mekân ekranlar güneş altında okunabilmek için daha yüksek parlıklığa ve yağmur, toz ve sıcaklık değişimine karşı daha yüksek koruma sınıfına sahiptir. İç mekân ekranlar daha yakından izlendiği için genellikle daha küçük piksel aralığıyla kullanılır. Hangi seriye ait değerlerin geçerli olduğu, teklifle birlikte teknik föyde paylaşılır.",
     },
     {
       question: "Keşif ve teklif süreci nasıl işliyor?",
@@ -99,7 +105,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "هل تدعمون خزائن 500×500 و500×1000؟",
       answer:
-        "نعم. المُكوِّن وحزم العرض يغطيان الخزائن المربعة والطويلة لمرونة نسبة العرض إلى الارتفاع.",
+        "نعم. المُكوِّن وحزم العرض يغطيان الخزائن المربعة والطويلة لمرونة نسبة العرض إلى الارتفاع.",
     },
     {
       question: "كيف تُحسب الطاقة والإشارة؟",
