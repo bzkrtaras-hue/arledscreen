@@ -45,7 +45,6 @@ export function OrganizationJsonLd() {
         url: SITE_URL,
         logo,
         image: logo,
-        slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
         description: ENTITY_CITE_MEDIUM,
         disambiguatingDescription:
           "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.",
