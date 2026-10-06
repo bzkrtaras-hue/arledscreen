@@ -4037,6 +4037,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit vent flashing yok"],
     mustNotSay: ["vent flashing garantidir", "sabit vent flashing True1", "tüm modeller vent flashing", "havalandırma flaşör garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 348,
+    q: "LED ekran Newline X Series / Newline C Series var mı? ARLEDSCREEN sabit Newline X Series iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Newline X Series yok"],
+    mustNotSay: ["Newline X Series garantidir", "sabit Newline X Series True1", "tüm modeller Newline X Series", "Newline C Series garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

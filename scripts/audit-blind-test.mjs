@@ -4554,6 +4554,20 @@ if (
   errors.push("blind prompt #347 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit vent flashing yok");
 }
 
+const pBlind348 = PROMPTS.find((x) => x.id === 348);
+if (!pBlind348 || !/Newline X Series|Newline C Series/i.test(pBlind348.q)) {
+  errors.push("blind prompt #348 must cover sabit Newline X Series invent");
+}
+if (
+  pBlind348 &&
+  (!pBlind348.mustSay?.includes("yazılı teklif") ||
+    !pBlind348.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind348.mustSay?.includes("sabit Newline X Series yok"))
+) {
+  errors.push("blind prompt #348 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Newline X Series yok");
+}
+
+
 
 
 
