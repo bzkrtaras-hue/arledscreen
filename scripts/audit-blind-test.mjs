@@ -4749,6 +4749,20 @@ if (
   errors.push("blind prompt #362 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Sharp PN Series yok");
 }
 
+const pBlind363 = PROMPTS.find((x) => x.id === 363);
+if (!pBlind363 || !/valley pan|vadi tavası/i.test(pBlind363.q)) {
+  errors.push("blind prompt #363 must cover sabit valley pan invent");
+}
+if (
+  pBlind363 &&
+  (!pBlind363.mustSay?.includes("yazılı teklif") ||
+    !pBlind363.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind363.mustSay?.includes("sabit valley pan yok"))
+) {
+  errors.push("blind prompt #363 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit valley pan yok");
+}
+
+
 
 
 

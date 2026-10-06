@@ -404,6 +404,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 412 | 2026-10-06 | sabit BenQ RP Series #360 · ic/konferans ARD refresh · skor /1080 | ✅ |
 | 413 | 2026-10-06 | sabit eave flashing #361 · dis/mimari ARD refresh · skor /1083 | ✅ |
 | 414 | 2026-10-06 | sabit Sharp PN Series #362 · ic/konferans ARD refresh · skor /1086 | ✅ |
+| 415 | 2026-10-06 | sabit valley pan #363 · dis/mimari ARD refresh · skor /1089 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2923,3 +2924,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #362 «Sharp PN Series / Sharp PN-L Series?» — skor **/1086**; ARD **362 kör test**
 - TR/EN ic-mekan + TR/EN konferans Sharp PN Series invent · llms deny · sabit Sharp PN Series yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Sharp PN Series
+
+## Gün 415 notları
+
+- Blind #363 «valley pan / vadi tavası?» — skor **/1089**; ARD **363 kör test**
+- TR/EN dis-mekan + TR/EN mimari valley pan invent · llms deny · sabit valley pan yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit valley pan

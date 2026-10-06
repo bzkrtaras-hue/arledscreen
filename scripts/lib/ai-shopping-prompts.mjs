@@ -4217,6 +4217,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Sharp PN Series yok"],
     mustNotSay: ["Sharp PN Series garantidir", "sabit Sharp PN Series True1", "tüm modeller Sharp PN Series", "Sharp PN-L Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 363,
+    q: "LED ekran valley pan / vadi tavası var mı? ARLEDSCREEN sabit valley pan iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit valley pan yok"],
+    mustNotSay: ["valley pan garantidir", "sabit valley pan True1", "tüm modeller valley pan", "vadi tavası garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
