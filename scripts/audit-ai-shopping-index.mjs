@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 299) errors.push(`blindTestPrompts must be 299 (got ${prompts.length})`);
+if (prompts.length !== 300) errors.push(`blindTestPrompts must be 300 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/299 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 299 kör test intent");
+if (!/300 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 300 kör test intent");
 }
 if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145|146|147|148|149|150|151|152|153|154|155|156|157|158|159|160|161|162|163|164|165|166|167|168|169|170|171|172|173|174|175|176|177|178|179|180|181|182|183|184|185|186|187|188|189|190|191|192|193|194|195|196|197|198|199|200|201|202|203|204|205|206|207|208|209|210|211|212|213|214|215|216|217|218|219|220|221|222|223|224|225|226) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–298 kör test without 299");
+  errors.push("ard.json must not cite stale 20–299 kör test without 300");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -2527,6 +2527,15 @@ if (!p299 || !/reglet cleat|reglet kleyt/i.test(p299.q || "")) {
 if (!/reglet cleat|reglet kleyt|sabit reglet cleat/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit reglet cleat invent");
 }
+
+const p300 = (doc.blindTestPrompts || []).find((p) => p.id === 300);
+if (!p300 || !/BenQ Board|BenQ IFP/i.test(p300.q || "")) {
+  errors.push("blindTestPrompts #300 must cover sabit BenQ Board invent");
+}
+if (!/BenQ Board|sabit BenQ Board/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit BenQ Board invent");
+}
+
 
 
 

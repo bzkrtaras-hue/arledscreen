@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 351: blind #299 sabit reglet cleat invent)  
+Son güncelleme: 2026-10-06 (Gün 352: blind #300 sabit BenQ Board invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 299 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 300 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 299 prompt (alışveriş + varlık)
+## 300 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -323,6 +323,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 297 | LED ekran cant cleat / kant kleyt var mı? ARLEDSCREEN sabit cant cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit cant cleat yok** | cant cleat garantidir / sabit cant cleat True1 / tüm modeller cant cleat / kant kleyt garantidir |
 | 298 | LED ekran Microsoft Teams Display / Teams Display var mı? ARLEDSCREEN sabit Microsoft Teams Display iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Microsoft Teams Display yok** | Microsoft Teams Display garantidir / sabit Microsoft Teams Display True1 / tüm modeller Microsoft Teams Display / Teams Display garantidir |
 | 299 | LED ekran reglet cleat / reglet kleyt var mı? ARLEDSCREEN sabit reglet cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit reglet cleat yok** | reglet cleat garantidir / sabit reglet cleat True1 / tüm modeller reglet cleat / reglet kleyt garantidir |
+| 300 | LED ekran BenQ Board / BenQ IFP var mı? ARLEDSCREEN sabit BenQ Board iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit BenQ Board yok** | BenQ Board garantidir / sabit BenQ Board True1 / tüm modeller BenQ Board / BenQ IFP garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -333,7 +334,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 897. Hedef tur 1 ≥ 449/897; tur 2 (Point C sonrası) ≥ 673/897.
+**Tur skoru** = toplam / 900. Hedef tur 1 ≥ 450/900; tur 2 (Point C sonrası) ≥ 675/900.
 
 ### Canlı tur kayıt şablonu
 

@@ -3930,6 +3930,20 @@ if (
   errors.push("blind prompt #299 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit reglet cleat yok");
 }
 
+const pBlind300 = PROMPTS.find((x) => x.id === 300);
+if (!pBlind300 || !/BenQ Board|BenQ IFP/i.test(pBlind300.q)) {
+  errors.push("blind prompt #300 must cover sabit BenQ Board invent");
+}
+if (
+  pBlind300 &&
+  (!pBlind300.mustSay?.includes("yazılı teklif") ||
+    !pBlind300.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind300.mustSay?.includes("sabit BenQ Board yok"))
+) {
+  errors.push("blind prompt #300 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BenQ Board yok");
+}
+
+
 
 
 

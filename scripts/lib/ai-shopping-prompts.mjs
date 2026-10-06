@@ -3461,6 +3461,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit reglet cleat yok"],
     mustNotSay: ["reglet cleat garantidir", "sabit reglet cleat True1", "tüm modeller reglet cleat", "reglet kleyt garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 300,
+    q: "LED ekran BenQ Board / BenQ IFP var mı? ARLEDSCREEN sabit BenQ Board iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BenQ Board yok"],
+    mustNotSay: ["BenQ Board garantidir", "sabit BenQ Board True1", "tüm modeller BenQ Board", "BenQ IFP garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
