@@ -144,6 +144,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 152 | 2026-10-06 | sabit BT.2020 #100 · ic/konferans ARD refresh · skor /300 | ✅ |
 | 153 | 2026-10-06 | sabit HLG/HDR10 #101 · ic/konferans ARD refresh · skor /303 | ✅ |
 | 154 | 2026-10-06 | sabit PWM/scan rate #102 · ic/konferans ARD refresh · skor /306 | ✅ |
+| 155 | 2026-10-06 | sabit black level #103 · ic/konferans ARD refresh · skor /309 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1059,3 +1060,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans PWM invent · llms deny · sabit PWM yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit PWM
 - skor hedef Tur 1 ≥ 153/306 · Tur 2 ≥ 230/306
+
+## Gün 155 notları
+
+- Blind #103 «black level / siyah seviye?» — skor **/309**; ARD **103 kör test**
+- TR/EN ic-mekan + TR/EN konferans black level invent · llms deny · sabit black level yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit black level
+- skor hedef Tur 1 ≥ 155/309 · Tur 2 ≥ 232/309
+

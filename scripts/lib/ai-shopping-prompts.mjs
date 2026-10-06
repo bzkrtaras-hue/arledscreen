@@ -1097,6 +1097,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit PWM yok"],
     mustNotSay: ["PWM garantidir", "sabit scan rate", "tüm modeller scan rate", "scan rate garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 103,
+    q: "LED ekran black level / siyah seviye var mı? ARLEDSCREEN sabit black level iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit black level yok"],
+    mustNotSay: ["black level garantidir", "sabit siyah seviye", "tüm modeller black level", "siyah seviye garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
