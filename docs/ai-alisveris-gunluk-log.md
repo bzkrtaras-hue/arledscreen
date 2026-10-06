@@ -425,6 +425,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 433 | 2026-10-06 | sabit roof apron #381 · dis/mimari ARD refresh · skor /1143 | ✅ |
 | 434 | 2026-10-06 | sabit Newline TR Series #382 · ic/konferans ARD refresh · skor /1146 | ✅ |
 | 435 | 2026-10-06 | sabit parapet apron #383 · dis/mimari ARD refresh · skor /1149 | ✅ |
+| 436 | 2026-10-06 | sabit Optoma 5652RK #384 · ic/konferans ARD refresh · skor /1152 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3070,3 +3071,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #383 «parapet apron / parapet eteği?» — skor **/1149**; ARD **383 kör test**
 - TR/EN dis-mekan + TR/EN mimari parapet apron invent · llms deny · sabit parapet apron yok
 - ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit parapet apron
+
+## Gün 436 notları
+
+- Blind #384 «Optoma 5652RK / Optoma 5652?» — skor **/1152**; ARD **384 kör test**
+- TR/EN ic-mekan + TR/EN konferans Optoma 5652RK invent · llms deny · sabit Optoma 5652RK yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Optoma 5652RK

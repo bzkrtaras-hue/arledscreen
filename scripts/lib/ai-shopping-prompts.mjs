@@ -4469,6 +4469,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit parapet apron yok"],
     mustNotSay: ["parapet apron garantidir", "sabit parapet apron True1", "tüm modeller parapet apron", "parapet eteği garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 384,
+    q: "LED ekran Optoma 5652RK / Optoma 5652 var mı? ARLEDSCREEN sabit Optoma 5652RK iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Optoma 5652RK yok"],
+    mustNotSay: ["Optoma 5652RK garantidir", "sabit Optoma 5652RK True1", "tüm modeller Optoma 5652RK", "Optoma 5652 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

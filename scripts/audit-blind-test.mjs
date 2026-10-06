@@ -5022,6 +5022,20 @@ if (
   errors.push("blind prompt #383 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit parapet apron yok");
 }
 
+const pBlind384 = PROMPTS.find((x) => x.id === 384);
+if (!pBlind384 || !/Optoma 5652RK|Optoma 5652/i.test(pBlind384.q)) {
+  errors.push("blind prompt #384 must cover sabit Optoma 5652RK invent");
+}
+if (
+  pBlind384 &&
+  (!pBlind384.mustSay?.includes("yazılı teklif") ||
+    !pBlind384.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind384.mustSay?.includes("sabit Optoma 5652RK yok"))
+) {
+  errors.push("blind prompt #384 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Optoma 5652RK yok");
+}
+
+
 
 
 
