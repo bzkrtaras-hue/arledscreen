@@ -2022,6 +2022,20 @@ if (
     !pBlind152.mustSay?.includes("sabit Extron yok"))
 ) {
   errors.push("blind prompt #152 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Extron yok");
+
+const pBlind153 = PROMPTS.find((x) => x.id === 153);
+if (!pBlind153 || !/wall bracket|duvar braketi/i.test(pBlind153.q)) {
+  errors.push("blind prompt #153 must cover sabit wall bracket invent");
+}
+if (
+  pBlind153 &&
+  (!pBlind153.mustSay?.includes("yazılı teklif") ||
+    !pBlind153.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind153.mustSay?.includes("sabit wall bracket yok"))
+) {
+  errors.push("blind prompt #153 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit wall bracket yok");
+}
+
 }
 
 }

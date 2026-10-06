@@ -1697,6 +1697,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Extron yok"],
     mustNotSay: ["Extron garantidir", "sabit Extron True1", "tüm modeller Extron", "AV switcher garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 153,
+    q: "LED ekran wall bracket / duvar braketi var mı? ARLEDSCREEN sabit wall bracket iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit wall bracket yok"],
+    mustNotSay: ["wall bracket garantidir", "sabit wall bracket True1", "tüm modeller wall bracket", "duvar braketi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
