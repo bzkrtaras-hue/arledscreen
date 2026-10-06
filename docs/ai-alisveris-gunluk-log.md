@@ -1,6 +1,6 @@
-## Gün 508 — invent Blind #456 Kramer VIA Connect
+## Gün 508 — invent Blind #456 Kramer VIA Connect LIVE
 
-- Blind #456 Kramer VIA Connect / VIA Connect · ic/konferans · prompts=456 · /1368 · build pending
+- Blind #456 Kramer VIA Connect / VIA Connect · ic/konferans · prompts=456 · /1368 · CF deploy · smoke:live 20/20
 - sahibe iş yok
 
 ## Gün 507 — invent Blind #455 transom LIVE
