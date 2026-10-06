@@ -3293,6 +3293,20 @@ if (
   errors.push("blind prompt #250 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Promethean yok");
 }
 
+const pBlind251 = PROMPTS.find((x) => x.id === 251);
+if (!pBlind251 || !/continuous cleat|sürekli kleyt/i.test(pBlind251.q)) {
+  errors.push("blind prompt #251 must cover sabit continuous cleat invent");
+}
+if (
+  pBlind251 &&
+  (!pBlind251.mustSay?.includes("yazılı teklif") ||
+    !pBlind251.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind251.mustSay?.includes("sabit continuous cleat yok"))
+) {
+  errors.push("blind prompt #251 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit continuous cleat yok");
+}
+
+
 
 
 

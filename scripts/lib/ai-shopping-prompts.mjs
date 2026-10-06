@@ -2873,6 +2873,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Promethean yok"],
     mustNotSay: ["Promethean garantidir", "sabit Promethean True1", "tüm modeller Promethean", "ActivPanel garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 251,
+    q: "LED ekran continuous cleat / sürekli kleyt var mı? ARLEDSCREEN sabit continuous cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit continuous cleat yok"],
+    mustNotSay: ["continuous cleat garantidir", "sabit continuous cleat True1", "tüm modeller continuous cleat", "sürekli kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
