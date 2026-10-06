@@ -300,13 +300,13 @@ for (const rel of [
     errors.push(`${rel} should cite honest slogan NXTIONSTAR — ARLEDSCREEN ürün markası`);
   }
 }
-// Day 74–114: ARD discovery prompt count must not drift behind blind suite
+// Day 74–115: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/114 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 114 kör test intent (not stale 17–113)");
+if (ardTxt && !/115 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 115 kör test intent (not stale 17–114)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–113 kör test without 114");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–114 kör test without 115");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1716,6 +1716,22 @@ for (const rel of [
   }
   if (/mask pitch garantidir|sabit maske pitch|tüm modeller mask pitch|maske pitch garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit mask pitch`);
+  }
+}
+
+
+// Day 167: sabit silicone seal / silikon conta — honesty presence
+for (const rel of [
+  "out/tr/rehber/dis-mekan-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit silicone seal yok|no fixed site silicone seal/i.test(html)) {
+    errors.push(`${rel} should hedge sabit silicone seal / silikon conta`);
+  }
+  if (/silicone seal garantidir|sabit silikon conta|tüm modeller silicone seal|silikon conta garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit silicone seal`);
   }
 }
 

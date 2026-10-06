@@ -1241,6 +1241,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit mask pitch yok"],
     mustNotSay: ["mask pitch garantidir", "sabit maske pitch", "tüm modeller mask pitch", "maske pitch garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 115,
+    q: "LED ekran silicone seal / silikon conta var mı? ARLEDSCREEN sabit silicone seal iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit silicone seal yok"],
+    mustNotSay: ["silicone seal garantidir", "sabit silikon conta", "tüm modeller silicone seal", "silikon conta garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

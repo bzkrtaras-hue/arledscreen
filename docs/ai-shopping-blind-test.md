@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 166: blind #114 sabit mask pitch invent)  
+Son güncelleme: 2026-10-06 (Gün 167: blind #115 sabit silicone seal invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 114 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 115 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 114 prompt (alışveriş + varlık)
+## 115 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -138,6 +138,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 112 | LED ekran panel size / panel boyutu var mı? ARLEDSCREEN sabit panel size iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit panel size yok** | panel size garantidir / sabit panel boyutu / tüm modeller panel size / panel boyutu garantidir |
 | 113 | LED ekran waterproof glue / su geçirmez yapıştırıcı var mı? ARLEDSCREEN sabit waterproof glue iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit waterproof glue yok** | waterproof glue garantidir / sabit su geçirmez yapıştırıcı / tüm modeller waterproof glue / su geçirmez yapıştırıcı garantidir |
 | 114 | LED ekran mask pitch / maske pitch var mı? ARLEDSCREEN sabit mask pitch iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit mask pitch yok** | mask pitch garantidir / sabit maske pitch / tüm modeller mask pitch / maske pitch garantidir |
+| 115 | LED ekran silicone seal / silikon conta var mı? ARLEDSCREEN sabit silicone seal iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit silicone seal yok** | silicone seal garantidir / sabit silikon conta / tüm modeller silicone seal / silikon conta garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -148,7 +149,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 342. Hedef tur 1 ≥ 171/342; tur 2 (Point C sonrası) ≥ 257/342.
+**Tur skoru** = toplam / 345. Hedef tur 1 ≥ 173/345; tur 2 (Point C sonrası) ≥ 259/345.
 
 ### Canlı tur kayıt şablonu
 

@@ -1503,6 +1503,20 @@ if (
   errors.push("blind prompt #114 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit mask pitch yok");
 }
 
+
+const pBlind115 = PROMPTS.find((x) => x.id === 115);
+if (!pBlind115 || !/silicone seal|silikon conta/i.test(pBlind115.q)) {
+  errors.push("blind prompt #115 must cover sabit silicone seal invent");
+}
+if (
+  pBlind115 &&
+  (!pBlind115.mustSay?.includes("yazılı teklif") ||
+    !pBlind115.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind115.mustSay?.includes("sabit silicone seal yok"))
+) {
+  errors.push("blind prompt #115 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit silicone seal yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

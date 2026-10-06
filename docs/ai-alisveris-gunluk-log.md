@@ -156,6 +156,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 164 | 2026-10-06 | sabit panel size #112 · ic/konferans ARD refresh · skor /336 | ✅ |
 | 165 | 2026-10-06 | sabit waterproof glue #113 · dis/mimari ARD refresh · skor /339 | ✅ |
 | 166 | 2026-10-06 | sabit mask pitch #114 · ic/konferans ARD refresh · skor /342 | ✅ |
+| 167 | 2026-10-06 | sabit silicone seal #115 · dis/mimari ARD refresh · skor /345 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1155,4 +1156,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans mask pitch invent · llms deny · sabit mask pitch yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit mask pitch
 - skor hedef Tur 1 ≥ 171/342 · Tur 2 ≥ 257/342
+
+## Gün 167 notları
+
+- Blind #115 «silicone seal / silikon conta?» — skor **/345**; ARD **115 kör test**
+- TR/EN dis-mekan + TR/EN mimari silicone seal invent · llms deny · sabit silicone seal yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit silicone seal
+- skor hedef Tur 1 ≥ 173/345 · Tur 2 ≥ 259/345
 
