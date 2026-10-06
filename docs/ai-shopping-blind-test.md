@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 228: blind #176 sabit Webex Room invent)  
+Son güncelleme: 2026-10-06 (Gün 229: blind #177 sabit sill flashing invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 176 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 177 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 176 prompt (alışveriş + varlık)
+## 177 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -200,6 +200,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 174 | LED ekran Teams Room / soft conferencing var mı? ARLEDSCREEN sabit Teams Room iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Teams Room yok** | Teams Room garantidir / sabit Teams Room True1 / tüm modeller Teams Room / soft conferencing garantidir |
 | 175 | LED ekran lightning rod / paratoner var mı? ARLEDSCREEN sabit lightning rod iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit lightning rod yok** | lightning rod garantidir / sabit lightning rod True1 / tüm modeller lightning rod / paratoner garantidir |
 | 176 | LED ekran Webex Room / soft conferencing var mı? ARLEDSCREEN sabit Webex Room iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Webex Room yok** | Webex Room garantidir / sabit Webex Room True1 / tüm modeller Webex Room / soft conferencing garantidir |
+| 177 | LED ekran sill flashing / eşik flaşörü var mı? ARLEDSCREEN sabit sill flashing iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit sill flashing yok** | sill flashing garantidir / sabit sill flashing True1 / tüm modeller sill flashing / eşik flaşörü garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -210,7 +211,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 528. Hedef tur 1 ≥ 264/528; tur 2 (Point C sonrası) ≥ 396/528.
+**Tur skoru** = toplam / 531. Hedef tur 1 ≥ 266/531; tur 2 (Point C sonrası) ≥ 399/531.
 
 ### Canlı tur kayıt şablonu
 
