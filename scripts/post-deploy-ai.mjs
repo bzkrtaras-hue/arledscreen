@@ -77,7 +77,7 @@ console.log(
   "  entity-profiles → Day 487 ARD 435 kör test · #435 soffit apron · dis/mimari ARD refresh",
 );
 console.log(
-  "  home hero → NO 81-il bayi invent · 81 il kapısı yok + quote-only",
+  "  home hero → NO 81-il bayi invent · customer subcopy · FAQ cites ai-shopping + ücretsiz kargo yok",
 );
 console.log(
   "  merchant TSV → shipping boş · tax=TR:0:n · return_policy_label=quote_contract_only",

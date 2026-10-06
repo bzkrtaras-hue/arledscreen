@@ -391,10 +391,9 @@ export const CHECKS = [
     expect: "html",
     mustInclude: [
       "Gaziosmanpaşa",
-      "81 il kapısı yok",
-      "quote-only",
-      "ai-shopping.json",
       "yazılı teklif",
+      "ai-shopping.json",
+      "ücretsiz kargo yok",
     ],
   },
   {

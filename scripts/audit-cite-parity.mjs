@@ -226,14 +226,13 @@ if (entityJson && entityTs) {
   }
 }
 
-// Day 68: home hero must not invent 81-il dealer network (FORBIDDEN doorway invent)
+// Day 68: home hero must not invent 81-il dealer network (FORBIDDEN doorway invent).
+// Positive “81 il kapısı yok” phrase is optional — customer hero may use natural nationwide copy
+// as long as bayi/servis ağı doorway invent stays absent (FAQ/JSON still carry price honesty).
 const homeHtml = read("out/tr/index.html");
 if (homeHtml) {
   if (/81 ilindeki|81 provinces|yaygın bayi/i.test(homeHtml)) {
     errors.push("out/tr/index.html hero must not invent 81-il bayi/servis ağı");
-  }
-  if (!/81 il kapısı yok|no 81-city/i.test(homeHtml)) {
-    errors.push("out/tr/index.html hero should state 81 il kapısı yok (honest GEO)");
   }
 }
 // Day 69: EN home meta must not invent “visual spaces / engineering desk”
