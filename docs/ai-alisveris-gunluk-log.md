@@ -248,6 +248,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 256 | 2026-10-06 | sabit ClearOne #204 · ic/konferans ARD refresh · skor /612 | ✅ |
 | 257 | 2026-10-06 | sabit ridge vent #205 · dis/mimari ARD refresh · skor /615 | ✅ |
 | 258 | 2026-10-06 | sabit AVer #206 · ic/konferans ARD refresh · skor /618 | ✅ |
+| 259 | 2026-10-06 | sabit soffit vent #207 · dis/mimari ARD refresh · skor /621 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1831,3 +1832,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #206 «AVer / PTZ?» — skor **/618**; ARD **206 kör test**
 - TR/EN ic-mekan + TR/EN konferans AVer invent · llms deny · sabit AVer yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit AVer
+
+## Gün 259 notları
+
+- Blind #207 «soffit vent / saçak havalandırma?» — skor **/621**; ARD **207 kör test**
+- TR/EN dis-mekan + TR/EN mimari soffit vent invent · llms deny · sabit soffit vent yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit soffit vent

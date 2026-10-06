@@ -2345,6 +2345,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit AVer yok"],
     mustNotSay: ["AVer garantidir", "sabit AVer True1", "tüm modeller AVer", "PTZ garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 207,
+    q: "LED ekran soffit vent / saçak havalandırma var mı? ARLEDSCREEN sabit soffit vent iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit soffit vent yok"],
+    mustNotSay: ["soffit vent garantidir", "sabit soffit vent True1", "tüm modeller soffit vent", "saçak havalandırma garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

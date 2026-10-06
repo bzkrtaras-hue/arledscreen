@@ -2721,6 +2721,20 @@ if (
   errors.push("blind prompt #206 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit AVer yok");
 }
 
+const pBlind207 = PROMPTS.find((x) => x.id === 207);
+if (!pBlind207 || !/soffit vent|saçak havalandırma/i.test(pBlind207.q)) {
+  errors.push("blind prompt #207 must cover sabit soffit vent invent");
+}
+if (
+  pBlind207 &&
+  (!pBlind207.mustSay?.includes("yazılı teklif") ||
+    !pBlind207.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind207.mustSay?.includes("sabit soffit vent yok"))
+) {
+  errors.push("blind prompt #207 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit soffit vent yok");
+}
+
+
 
 
 
