@@ -1756,7 +1756,21 @@ if (
 }
 
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
-  errors.push("every blind prompt must declare non-empty mustSay");
+  
+const pBlind133 = PROMPTS.find((x) => x.id === 133);
+if (!pBlind133 || !/grounding|topraklama/i.test(pBlind133.q)) {
+  errors.push("blind prompt #133 must cover sabit grounding invent");
+}
+if (
+  pBlind133 &&
+  (!pBlind133.mustSay?.includes("yazılı teklif") ||
+    !pBlind133.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind133.mustSay?.includes("sabit grounding yok"))
+) {
+  errors.push("blind prompt #133 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit grounding yok");
+}
+
+errors.push("every blind prompt must declare non-empty mustSay");
 }
 
 // Day 56: docs/ai-shopping-blind-test.md must not drift from shared prompts module

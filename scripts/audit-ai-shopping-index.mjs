@@ -54,7 +54,7 @@ for (const name of needSources) {
 }
 
 const prompts = doc.blindTestPrompts || [];
-if (prompts.length !== 132) errors.push(`blindTestPrompts must be 132 (got ${prompts.length})`);
+if (prompts.length !== 133) errors.push(`blindTestPrompts must be 133 (got ${prompts.length})`);
 
 if (!doc.cite?.oneLiner || String(doc.cite.oneLiner).length < 40) {
   errors.push("cite.oneLiner missing/short");
@@ -163,11 +163,11 @@ if (!ard.includes("/ai-shopping.json")) {
 if (!ard.includes("pricedPanels") || !/ücretsiz kargo yok/i.test(ard)) {
   errors.push("ard.json discovery text must cite pricedPanels + ücretsiz kargo yok");
 }
-if (!/132 kör test/i.test(ard)) {
-  errors.push("ard.json ai-shopping discovery must cite 132 kör test intent");
+if (!/133 kör test/i.test(ard)) {
+  errors.push("ard.json ai-shopping discovery must cite 133 kör test intent");
 }
-if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
-  errors.push("ard.json must not cite stale 20–131 kör test without 132");
+if (/(?<![0-9])(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132) kör test/i.test(ard) && !/77 kör test/i.test(ard)) {
+  errors.push("ard.json must not cite stale 20–132 kör test without 133");
 }
 
 // Day 55: ai-catalog.json must be synced from ard.json (no hand-edit twin)
@@ -1187,6 +1187,15 @@ if (!p132 || !/PIP|görüntü içinde görüntü/i.test(p132.q || "")) {
 }
 if (!/PIP|görüntü içinde görüntü|sabit PIP/i.test(rulesJson)) {
   errors.push("agentRules must forbid sabit PIP invent");
+}
+
+// Day 185: sabit grounding / topraklama invent
+const p133 = (doc.blindTestPrompts || []).find((p) => p.id === 133);
+if (!p133 || !/grounding|topraklama/i.test(p133.q || "")) {
+  errors.push("blindTestPrompts #133 must cover sabit grounding invent");
+}
+if (!/grounding|topraklama|sabit grounding/i.test(rulesJson)) {
+  errors.push("agentRules must forbid sabit grounding invent");
 }
 
 // Day 76: agentRules full disambiguation

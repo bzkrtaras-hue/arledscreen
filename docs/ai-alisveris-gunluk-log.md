@@ -174,6 +174,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 182 | 2026-10-06 | sabit SFP #130 · ic/konferans ARD refresh · skor /390 | ✅ |
 | 183 | 2026-10-06 | sabit cable gland #131 · dis/mimari ARD refresh · skor /393 | ✅ |
 | 184 | 2026-10-06 | sabit PIP #132 · ic/konferans ARD refresh · skor /396 | ✅ |
+| 185 | 2026-10-06 | sabit grounding #133 · dis/mimari ARD refresh · skor /399 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1299,4 +1300,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN ic-mekan + TR/EN konferans PIP invent · llms deny · sabit PIP yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit PIP
 - skor hedef Tur 1 ≥ 198/396 · Tur 2 ≥ 297/396
+
+## Gün 185 notları
+
+- Blind #133 «grounding / topraklama?» — skor **/399**; ARD **133 kör test**
+- TR/EN dis-mekan + TR/EN mimari grounding invent · llms deny · sabit grounding yok
+- ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit grounding
+- skor hedef Tur 1 ≥ 200/399 · Tur 2 ≥ 300/399
 
