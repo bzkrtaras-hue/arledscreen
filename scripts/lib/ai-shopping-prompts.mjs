@@ -1613,6 +1613,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit outrigger yok"],
     mustNotSay: ["outrigger garantidir", "sabit outrigger True1", "tüm modeller outrigger", "payanda garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 146,
+    q: "LED ekran Crestron / kontrol sistemi var mı? ARLEDSCREEN sabit Crestron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Crestron yok"],
+    mustNotSay: ["Crestron garantidir", "sabit Crestron True1", "tüm modeller Crestron", "kontrol sistemi garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

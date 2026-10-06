@@ -1938,6 +1938,20 @@ if (
   errors.push("blind prompt #145 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit outrigger yok");
 }
 
+
+const pBlind146 = PROMPTS.find((x) => x.id === 146);
+if (!pBlind146 || !/Crestron|kontrol sistemi/i.test(pBlind146.q)) {
+  errors.push("blind prompt #146 must cover sabit Crestron invent");
+}
+if (
+  pBlind146 &&
+  (!pBlind146.mustSay?.includes("yazılı teklif") ||
+    !pBlind146.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind146.mustSay?.includes("sabit Crestron yok"))
+) {
+  errors.push("blind prompt #146 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Crestron yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 

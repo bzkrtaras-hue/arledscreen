@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–132: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/145 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 145 kör test intent (not stale 17–144)");
+if (ardTxt && !/146 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 146 kör test intent (not stale 17–145)");
 }
-if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–144 kör test without 145");
+if (ardTxt && /(?<![0-9])(?:1[7-9]|2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|121|122|123|124|125|126|127|128|129|130|131|132|133|134|135|136|137|138|139|140|141|142|143|144|145) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–145 kör test without 146");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -2004,6 +2004,21 @@ for (const rel of [
   }
   if (/PIP garantidir|sabit görüntü içinde görüntü|tüm modeller PIP|görüntü içinde görüntü garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit PIP`);
+  }
+}
+
+// Day 198: sabit Crestron / kontrol sistemi — honesty presence
+for (const rel of [
+  "out/tr/rehber/ic-mekan-led-ekran/index.html",
+  "out/tr/rehber/konferans-salonu-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit Crestron yok|no fixed site Crestron/i.test(html)) {
+    errors.push(`${rel} should hedge sabit Crestron / kontrol sistemi`);
+  }
+  if (/Crestron\ garantidir|sabit\ Crestron\ True1|tüm\ modeller\ Crestron|kontrol\ sistemi\ garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit Crestron`);
   }
 }
 
