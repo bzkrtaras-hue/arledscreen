@@ -177,6 +177,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 185 | 2026-10-06 | sabit grounding #133 · dis/mimari ARD refresh · skor /399 | ✅ |
 | 186 | 2026-10-06 | sabit Dante #134 · ic/konferans ARD refresh · skor /402 | ✅ |
 | 187 | 2026-10-06 | sabit powerCON #135 · dis/mimari ARD refresh · skor /405 | ✅ |
+| 188 | 2026-10-06 | sabit KVM #136 · ic/konferans ARD refresh · skor /408 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1323,4 +1324,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari powerCON invent · llms deny · sabit powerCON yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit powerCON
 - skor hedef Tur 1 ≥ 203/405 · Tur 2 ≥ 304/405
+
+## Gün 188 notları
+
+- Blind #136 «KVM / KVM switch?» — skor **/408**; ARD **136 kör test**
+- TR/EN ic-mekan + TR/EN konferans KVM invent · llms deny · sabit KVM yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit KVM
+- skor hedef Tur 1 ≥ 204/408 · Tur 2 ≥ 306/408
 

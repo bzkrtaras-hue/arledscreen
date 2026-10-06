@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 187: blind #135 sabit powerCON invent)  
+Son güncelleme: 2026-10-06 (Gün 188: blind #136 sabit KVM invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 135 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 136 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 135 prompt (alışveriş + varlık)
+## 136 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -159,6 +159,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 133 | LED ekran grounding / topraklama var mı? ARLEDSCREEN sabit grounding iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit grounding yok** | grounding garantidir / sabit topraklama / tüm modeller grounding / topraklama garantidir |
 | 134 | LED ekran Dante / Dante audio var mı? ARLEDSCREEN sabit Dante iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Dante yok** | Dante garantidir / sabit Dante audio / tüm modeller Dante / Dante audio garantidir |
 | 135 | LED ekran powerCON / PowerCON var mı? ARLEDSCREEN sabit powerCON iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit powerCON yok** | powerCON garantidir / sabit powerCON True1 / tüm modeller powerCON / PowerCON standarttır |
+| 136 | LED ekran KVM / KVM switch var mı? ARLEDSCREEN sabit KVM iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit KVM yok** | KVM garantidir / sabit KVM switch / tüm modeller KVM / KVM switch garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -169,7 +170,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 405. Hedef tur 1 ≥ 203/405; tur 2 (Point C sonrası) ≥ 304/405.
+**Tur skoru** = toplam / 408. Hedef tur 1 ≥ 204/408; tur 2 (Point C sonrası) ≥ 306/408.
 
 ### Canlı tur kayıt şablonu
 

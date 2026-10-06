@@ -1493,6 +1493,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit powerCON yok"],
     mustNotSay: ["powerCON garantidir", "sabit powerCON True1", "tüm modeller powerCON", "PowerCON standarttır", "ücretsiz kargo dahil"],
   },
+  {
+    id: 136,
+    q: "LED ekran KVM / KVM switch var mı? ARLEDSCREEN sabit KVM iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit KVM yok"],
+    mustNotSay: ["KVM garantidir", "sabit KVM switch", "tüm modeller KVM", "KVM switch garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

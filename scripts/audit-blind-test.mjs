@@ -1798,6 +1798,20 @@ if (
   errors.push("blind prompt #135 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit powerCON yok");
 }
 
+
+const pBlind136 = PROMPTS.find((x) => x.id === 136);
+if (!pBlind136 || !/KVM/i.test(pBlind136.q)) {
+  errors.push("blind prompt #136 must cover sabit KVM invent");
+}
+if (
+  pBlind136 &&
+  (!pBlind136.mustSay?.includes("yazılı teklif") ||
+    !pBlind136.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind136.mustSay?.includes("sabit KVM yok"))
+) {
+  errors.push("blind prompt #136 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit KVM yok");
+}
+
 errors.push("every blind prompt must declare non-empty mustSay");
 }
 
