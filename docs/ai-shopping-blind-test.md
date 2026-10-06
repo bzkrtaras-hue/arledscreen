@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 458: blind #406 sabit Crestron Flex invent)  
+Son güncelleme: 2026-10-06 (Gün 458: blind #407 sabit Crestron Flex invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 406 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 407 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 406 prompt (alışveriş + varlık)
+## 407 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -430,6 +430,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 404 | LED ekran Surface Hub 3 / Hub 3 var mı? ARLEDSCREEN sabit Surface Hub 3 iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Surface Hub 3 yok** | Surface Hub 3 garantidir / sabit Surface Hub 3 True1 / tüm modeller Surface Hub 3 / Hub 3 garantidir |
 | 405 | LED ekran base apron / taban eteği var mı? ARLEDSCREEN sabit base apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit base apron yok** | base apron garantidir / sabit base apron True1 / tüm modeller base apron / taban eteği garantidir |
 | 406 | LED ekran Crestron Flex / Flex var mı? ARLEDSCREEN sabit Crestron Flex iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Crestron Flex yok** | Crestron Flex garantidir / sabit Crestron Flex True1 / tüm modeller Crestron Flex / Flex garantidir |
+| 407 | LED ekran head apron / başlık eteği var mı? ARLEDSCREEN sabit head apron iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit head apron yok** | head apron garantidir / sabit head apron True1 / tüm modeller head apron / başlık eteği garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -440,7 +441,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 1215. Hedef tur 1 ≥ 609/1218; tur 2 (Point C sonrası) ≥ 914/1218.
+**Tur skoru** = toplam / 1215. Hedef tur 1 ≥ 610/1221; tur 2 (Point C sonrası) ≥ 916/1221.
 
 ### Canlı tur kayıt şablonu
 
