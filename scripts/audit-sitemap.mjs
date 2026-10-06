@@ -156,12 +156,33 @@ for (const file of walk(outTr)) {
   if (!locSet.has(url)) errors.push(`indexable page not in sitemap: ${url}`);
 }
 
-const robotsTxt = fs.readFileSync(path.join(root, "out/robots.txt"), "utf8");
-if (!/Sitemap:\s*https:\/\/arledscreen\.com\/sitemap\.xml/i.test(robotsTxt)) {
-  errors.push("robots.txt missing Sitemap: https://arledscreen.com/sitemap.xml");
-}
-if (!/Host:\s*https:\/\/arledscreen\.com/i.test(robotsTxt) && !robotsTxt.includes("arledscreen.com")) {
-  // Next may emit host differently; soft check
+// robots.txt is served by functions/robots.txt.js (postbuild strips out/robots.txt).
+const robotsFn = path.join(root, "functions/robots.txt.js");
+if (!fs.existsSync(robotsFn)) {
+  errors.push("missing functions/robots.txt.js (robots Function source)");
+} else {
+  const fnSrc = fs.readFileSync(robotsFn, "utf8");
+  const bodyMatch = fnSrc.match(/const BODY = `([\s\S]*?)`;/);
+  const robotsTxt = bodyMatch ? bodyMatch[1] : "";
+  if (!robotsTxt) {
+    errors.push("functions/robots.txt.js missing const BODY template");
+  } else {
+    if (!/Sitemap:\s*https:\/\/arledscreen\.com\/sitemap\.xml/i.test(robotsTxt)) {
+      errors.push("robots Function BODY missing Sitemap: https://arledscreen.com/sitemap.xml");
+    }
+    const host = robotsTxt.match(/^Host:\s*(.+)\s*$/im)?.[1]?.trim();
+    if (host !== "arledscreen.com") {
+      errors.push(
+        `robots Function BODY Host must be bare hostname arledscreen.com (got ${host || "missing"})`,
+      );
+    }
+    if (/^Disallow:\s*\/\s*$/im.test(robotsTxt)) {
+      errors.push("robots Function BODY must not Disallow: /");
+    }
+    if (!/^Allow:\s*\/\s*$/m.test(robotsTxt)) {
+      errors.push("robots Function BODY must Allow: /");
+    }
+  }
 }
 
 if (errors.length) {
