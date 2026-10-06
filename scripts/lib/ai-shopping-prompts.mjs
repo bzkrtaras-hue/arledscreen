@@ -1061,6 +1061,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit ısı yönetimi yok"],
     mustNotSay: ["ısı yönetimi garantidir", "sabit heater", "tüm modeller cooling", "cooling garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 100,
+    q: "LED ekran BT.2020 / Rec.2020 gamut var mı? ARLEDSCREEN sabit BT.2020 iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit BT.2020 yok"],
+    mustNotSay: ["BT.2020 garantidir", "sabit Rec.2020", "tüm modeller Rec.2020", "Rec.2020 garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

@@ -1304,6 +1304,19 @@ if (
   errors.push("blind prompt #99 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit ısı yönetimi yok");
 }
 
+const pBlind100 = PROMPTS.find((x) => x.id === 100);
+if (!pBlind100 || !/BT\.2020|Rec\.2020/i.test(pBlind100.q)) {
+  errors.push("blind prompt #100 must cover sabit BT.2020 invent");
+}
+if (
+  pBlind100 &&
+  (!pBlind100.mustSay?.includes("yazılı teklif") ||
+    !pBlind100.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind100.mustSay?.includes("sabit BT.2020 yok"))
+) {
+  errors.push("blind prompt #100 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit BT.2020 yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }
