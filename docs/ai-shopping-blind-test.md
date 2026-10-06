@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 171: blind #119 sabit safety cable invent)  
+Son güncelleme: 2026-10-06 (Gün 172: blind #120 sabit thermal pad invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 119 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 120 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 119 prompt (alışveriş + varlık)
+## 120 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -143,6 +143,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 117 | LED ekran locating pin / konumlandırma pimi var mı? ARLEDSCREEN sabit locating pin iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit locating pin yok** | locating pin garantidir / sabit konumlandırma pimi / tüm modeller locating pin / konumlandırma pimi garantidir |
 | 118 | LED ekran flat cable / flat kablo var mı? ARLEDSCREEN sabit flat cable iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit flat cable yok** | flat cable garantidir / sabit flat kablo / tüm modeller flat cable / flat kablo garantidir |
 | 119 | LED ekran safety cable / emniyet kablosu var mı? ARLEDSCREEN sabit safety cable iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit safety cable yok** | safety cable garantidir / sabit emniyet kablosu / tüm modeller safety cable / emniyet kablosu garantidir |
+| 120 | LED ekran thermal pad / termal pad var mı? ARLEDSCREEN sabit thermal pad iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit thermal pad yok** | thermal pad garantidir / sabit termal pad / tüm modeller thermal pad / termal pad garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -153,7 +154,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 357. Hedef tur 1 ≥ 179/357; tur 2 (Point C sonrası) ≥ 268/357.
+**Tur skoru** = toplam / 360. Hedef tur 1 ≥ 180/360; tur 2 (Point C sonrası) ≥ 270/360.
 
 ### Canlı tur kayıt şablonu
 

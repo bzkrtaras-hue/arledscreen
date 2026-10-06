@@ -1573,6 +1573,20 @@ if (
   errors.push("blind prompt #119 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit safety cable yok");
 }
 
+
+const pBlind120 = PROMPTS.find((x) => x.id === 120);
+if (!pBlind120 || !/thermal pad|termal pad/i.test(pBlind120.q)) {
+  errors.push("blind prompt #120 must cover sabit thermal pad invent");
+}
+if (
+  pBlind120 &&
+  (!pBlind120.mustSay?.includes("yazılı teklif") ||
+    !pBlind120.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind120.mustSay?.includes("sabit thermal pad yok"))
+) {
+  errors.push("blind prompt #120 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit thermal pad yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

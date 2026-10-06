@@ -161,6 +161,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 169 | 2026-10-06 | sabit locating pin #117 · dis/mimari ARD refresh · skor /351 | ✅ |
 | 170 | 2026-10-06 | sabit flat cable #118 · ic/konferans ARD refresh · skor /354 | ✅ |
 | 171 | 2026-10-06 | sabit safety cable #119 · dis/mimari ARD refresh · skor /357 | ✅ |
+| 172 | 2026-10-06 | sabit thermal pad #120 · ic/konferans ARD refresh · skor /360 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -1195,4 +1196,11 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN dis-mekan + TR/EN mimari safety cable invent · llms deny · sabit safety cable yok
 - ARD refresh: rehber dis/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit safety cable
 - skor hedef Tur 1 ≥ 179/357 · Tur 2 ≥ 268/357
+
+## Gün 172 notları
+
+- Blind #120 «thermal pad / termal pad?» — skor **/360**; ARD **120 kör test**
+- TR/EN ic-mekan + TR/EN konferans thermal pad invent · llms deny · sabit thermal pad yok
+- ARD refresh: rehber ic/konferans + priced ince-pitch (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit thermal pad
+- skor hedef Tur 1 ≥ 180/360 · Tur 2 ≥ 270/360
 

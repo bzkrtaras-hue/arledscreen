@@ -1301,6 +1301,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit safety cable yok"],
     mustNotSay: ["safety cable garantidir", "sabit emniyet kablosu", "tüm modeller safety cable", "emniyet kablosu garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 120,
+    q: "LED ekran thermal pad / termal pad var mı? ARLEDSCREEN sabit thermal pad iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit thermal pad yok"],
+    mustNotSay: ["thermal pad garantidir", "sabit termal pad", "tüm modeller thermal pad", "termal pad garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
