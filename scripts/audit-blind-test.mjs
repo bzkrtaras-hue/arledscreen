@@ -3098,6 +3098,20 @@ if (
   errors.push("blind prompt #235 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit cant strip yok");
 }
 
+const pBlind236 = PROMPTS.find((x) => x.id === 236);
+if (!pBlind236 || !/Panasonic|pro display/i.test(pBlind236.q)) {
+  errors.push("blind prompt #236 must cover sabit Panasonic invent");
+}
+if (
+  pBlind236 &&
+  (!pBlind236.mustSay?.includes("yazılı teklif") ||
+    !pBlind236.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind236.mustSay?.includes("sabit Panasonic yok"))
+) {
+  errors.push("blind prompt #236 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Panasonic yok");
+}
+
+
 
 
 

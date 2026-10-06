@@ -2693,6 +2693,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit cant strip yok"],
     mustNotSay: ["cant strip garantidir", "sabit cant strip True1", "tüm modeller cant strip", "eğimli şerit garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 236,
+    q: "LED ekran Panasonic / pro display var mı? ARLEDSCREEN sabit Panasonic iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/ic-mekan-led-ekran/",
+      "/tr/rehber/konferans-salonu-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Panasonic yok"],
+    mustNotSay: ["Panasonic garantidir", "sabit Panasonic True1", "tüm modeller Panasonic", "pro display garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
