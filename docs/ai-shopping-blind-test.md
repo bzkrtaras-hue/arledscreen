@@ -1,8 +1,8 @@
 # AI alışveriş — kör test protokolü (Gün 25)
 
-Son güncelleme: 2026-10-06 (Gün 356: blind #304 sabit Google Meet Series invent)  
+Son güncelleme: 2026-10-06 (Gün 357: blind #305 sabit kick-out cleat invent)  
 Site-side guard: `npm run audit:blind-test` (postbuild)  
-Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 304 prompt’u çalıştırır.
+Canlı tur: sahip ChatGPT / Gemini / Perplexity / Bing Copilot’ta aynı 305 prompt’u çalıştırır.
 
 **Kaynak gerçeği (kod):** `scripts/lib/ai-shopping-prompts.mjs` — generate-ai-shopping-index + audit-blind-test buradan okur. Bu tablonun prompt/URL/`mustSay` satırları o modülle birebir kalmalı; sapma → `audit:blind-test` FAIL.
 
@@ -20,7 +20,7 @@ Spam blog üretmek veya 81-il kapısı açmak yerine: her intent tek kanonik URL
 
 Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #55 deploy şart (`entity.json` / `catalog.json` / `ard.json` 200).
 
-## 304 prompt (alışveriş + varlık)
+## 305 prompt (alışveriş + varlık)
 
 | # | Prompt (TR) | Kanonik kaynak | Must-say (`mustSay`) | Must-not-say |
 |---|-------------|----------------|----------|--------------|
@@ -328,6 +328,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 302 | LED ekran Zoom Rooms Display / Zoom Display var mı? ARLEDSCREEN sabit Zoom Rooms Display iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Zoom Rooms Display yok** | Zoom Rooms Display garantidir / sabit Zoom Rooms Display True1 / tüm modeller Zoom Rooms Display / Zoom Display garantidir |
 | 303 | LED ekran counter cleat / counter kleyt var mı? ARLEDSCREEN sabit counter cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit counter cleat yok** | counter cleat garantidir / sabit counter cleat True1 / tüm modeller counter cleat / counter kleyt garantidir |
 | 304 | LED ekran Google Meet Series / Meet Series var mı? ARLEDSCREEN sabit Google Meet Series iddiası yayımlıyor mu? | `/tr/rehber/ic-mekan-led-ekran/` · konferans · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit Google Meet Series yok** | Google Meet Series garantidir / sabit Google Meet Series True1 / tüm modeller Google Meet Series / Meet Series garantidir |
+| 305 | LED ekran kick-out cleat / kick-out kleyt var mı? ARLEDSCREEN sabit kick-out cleat iddiası yayımlıyor mu? | `/tr/rehber/dis-mekan-led-ekran/` · mimari · quote · ai-shopping | **yazılı teklif** + **Gaziosmanpaşa** + **sabit kick-out cleat yok** | kick-out cleat garantidir / sabit kick-out cleat True1 / tüm modeller kick-out cleat / kick-out kleyt garantidir |
 
 ## Canlı skor kartı (prompt başına 0–3)
 
@@ -338,7 +339,7 @@ Site readiness yeşil olmadan canlı tur anlamlı değil. Canlı tur için PR #5
 | 2 | Doğru URL + doğru olgu, atıf zayıf |
 | 3 | Doğru URL + doğru olgu + site/entity atıf |
 
-**Tur skoru** = toplam / 912. Hedef tur 1 ≥ 456/912; tur 2 (Point C sonrası) ≥ 684/912.
+**Tur skoru** = toplam / 915. Hedef tur 1 ≥ 458/915; tur 2 (Point C sonrası) ≥ 687/915.
 
 ### Canlı tur kayıt şablonu
 

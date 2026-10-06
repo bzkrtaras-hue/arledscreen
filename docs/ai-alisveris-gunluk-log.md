@@ -346,6 +346,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 354 | 2026-10-06 | sabit Zoom Rooms Display #302 · ic/konferans ARD refresh · skor /906 | ✅ |
 | 355 | 2026-10-06 | sabit counter cleat #303 · dis/mimari ARD refresh · skor /909 | ✅ |
 | 356 | 2026-10-06 | sabit Google Meet Series #304 · ic/konferans ARD refresh · skor /912 | ✅ |
+| 357 | 2026-10-06 | sabit kick-out cleat #305 · dis/mimari ARD refresh · skor /915 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -2517,3 +2518,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #304 «Google Meet Series / Meet Series?» — skor **/912**; ARD **304 kör test**
 - TR/EN ic-mekan + TR/EN konferans Google Meet Series invent · llms deny · sabit Google Meet Series yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Google Meet Series
+
+## Gün 357 notları
+
+- Blind #305 «kick-out cleat / kick-out kleyt?» — skor **/915**; ARD **305 kör test**
+- TR/EN dis-mekan + TR/EN mimari kick-out cleat invent · llms deny · sabit kick-out cleat yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit kick-out cleat

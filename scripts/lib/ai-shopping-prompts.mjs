@@ -3521,6 +3521,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Google Meet Series yok"],
     mustNotSay: ["Google Meet Series garantidir", "sabit Google Meet Series True1", "tüm modeller Google Meet Series", "Meet Series garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 305,
+    q: "LED ekran kick-out cleat / kick-out kleyt var mı? ARLEDSCREEN sabit kick-out cleat iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit kick-out cleat yok"],
+    mustNotSay: ["kick-out cleat garantidir", "sabit kick-out cleat True1", "tüm modeller kick-out cleat", "kick-out kleyt garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

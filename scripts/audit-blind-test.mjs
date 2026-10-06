@@ -3995,6 +3995,20 @@ if (
   errors.push("blind prompt #304 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Google Meet Series yok");
 }
 
+const pBlind305 = PROMPTS.find((x) => x.id === 305);
+if (!pBlind305 || !/kick-out cleat|kick-out kleyt/i.test(pBlind305.q)) {
+  errors.push("blind prompt #305 must cover sabit kick-out cleat invent");
+}
+if (
+  pBlind305 &&
+  (!pBlind305.mustSay?.includes("yazılı teklif") ||
+    !pBlind305.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind305.mustSay?.includes("sabit kick-out cleat yok"))
+) {
+  errors.push("blind prompt #305 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit kick-out cleat yok");
+}
+
+
 
 
 
