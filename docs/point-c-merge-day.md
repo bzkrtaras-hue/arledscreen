@@ -126,11 +126,11 @@ curl -sS https://arledscreen.com/entity-profiles.json | jq -r '.packs | keys[]'
 
 ## 4) Kör tur 1 (deploy sonrası)
 
-Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — **408** prompt × 0–3 = **/1224**  
-**mustSay (özet):** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3) · yazılı teklif + Gaziosmanpaşa + sabit X yok (#25–#408 hedge zinciri; son: #406 Crestron Flex · #407 head apron · #408 Cisco Room Bar Pro). Tam liste: `ai-shopping-blind-test.md`.
+Protokol: [`ai-shopping-blind-test.md`](./ai-shopping-blind-test.md) — **409** prompt × 0–3 = **/1227**  
+**mustSay (özet):** ücretsiz kargo yok (#2–#6) · teklif + ai-shopping (#9–#10–#13–#17–#15) · 32.18 (#3) · yazılı teklif + Gaziosmanpaşa + sabit X yok (#25–#408 hedge zinciri; son: #406 Crestron Flex · #407 head apron · #408 Cisco Room Bar Pro · #409 eave apron). Tam liste: `ai-shopping-blind-test.md`.
 Skor: [`ai-shopping-blind-test-scores.md`](./ai-shopping-blind-test-scores.md)
 
-Hedef tur 1 ≥ **612/1224**; Point C sonrası tur 2 ≥ **918/1224**.
+Hedef tur 1 ≥ **614/1227**; Point C sonrası tur 2 ≥ **921/1227**.
 
 ## 5) Day 57–64 canlı doğrulama (özet)
 

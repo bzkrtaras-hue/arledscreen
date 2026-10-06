@@ -4769,6 +4769,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Cisco Room Bar Pro yok"],
     mustNotSay: ["Cisco Room Bar Pro garantidir", "sabit Cisco Room Bar Pro True1", "tüm modeller Cisco Room Bar Pro", "Room Bar Pro garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 409,
+    q: "LED ekran eave apron / saçak eteği var mı? ARLEDSCREEN sabit eave apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit eave apron yok"],
+    mustNotSay: ["eave apron garantidir", "sabit eave apron True1", "tüm modeller eave apron", "saçak eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

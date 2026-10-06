@@ -5343,6 +5343,18 @@ if (
 ) {
   errors.push("blind prompt #408 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Cisco Room Bar Pro yok");
 }
+const pBlind409 = PROMPTS.find((x) => x.id === 409);
+if (!pBlind409 || !/eave apron|saçak eteği/i.test(pBlind409.q)) {
+  errors.push("blind prompt #409 must cover sabit eave apron invent");
+}
+if (
+  pBlind409 &&
+  (!pBlind409.mustSay?.includes("yazılı teklif") ||
+    !pBlind409.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind409.mustSay?.includes("sabit eave apron yok"))
+) {
+  errors.push("blind prompt #409 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit eave apron yok");
+}
 
 
 

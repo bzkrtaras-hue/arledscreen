@@ -1,3 +1,8 @@
+## Gün 461b — invent Blind #409 eave apron
+
+- Blind #409 eave apron / saçak eteği · dis/mimari · prompts=409 · /1227
+- Point C + Tur 1a hâlâ sahip; spam/81-il yok
+
 ## Gün 461 — ajan kapanış (stale docs + timer)
 
 - Stale 405/1215 → **408/1224**; PR draft → **ready**; skor Tur2 hedef **918**

@@ -3,7 +3,7 @@
 Kaynak: https://arledscreen.com/entity-profiles.json  
 Çekim (UTC): 2026-10-06 15:40  
 Spam blog / 81-il / uydurma rating-fiyat yok. NAP birebir.  
-PR #55 ready · canlı prompts=408. Merge paste için zorunlu değil.
+PR #55 ready · canlı prompts=409. Merge paste için zorunlu değil.
 
 **Sahip Drive Doc (kopyala-yapıştır):** https://docs.google.com/document/d/1JCU3RoL-ZJeOBHl73LRPrxRijDKD4FYdUscBKGOY1jc/edit
 
@@ -132,7 +132,7 @@ Entity: https://arledscreen.com/entity.json
       "googleMerchantReadiness = 12 SKU TSV only; shipping boş; quote-only yok.",
       "Quote-only: şeffaf/poster/kiralık/esnek + Huidu/NovaStar/Colorlight kontrol — list USD yok; extrasUsd.controlCard 500 ≠ marka list SKU.",
       "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar; NXTIONSTAR ürün markası — satıcı ARLEDSCREEN.",
-      "Tek fetch ajan index: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; 408 kör test)"
+      "Tek fetch ajan index: https://arledscreen.com/ai-shopping.json (pricedPanels + agentRules; 409 kör test)"
     ]
   },
   "canonicalUrls": {
