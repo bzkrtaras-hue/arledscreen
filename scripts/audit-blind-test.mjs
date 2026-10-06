@@ -1213,6 +1213,19 @@ if (
   errors.push("blind prompt #92 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit flight case yok");
 }
 
+const pBlind93 = PROMPTS.find((x) => x.id === 93);
+if (!pBlind93 || !/köşe LED|corner LED/i.test(pBlind93.q)) {
+  errors.push("blind prompt #93 must cover sabit köşe LED invent");
+}
+if (
+  pBlind93 &&
+  (!pBlind93.mustSay?.includes("yazılı teklif") ||
+    !pBlind93.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind93.mustSay?.includes("sabit köşe LED yok"))
+) {
+  errors.push("blind prompt #93 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit köşe LED yok");
+}
+
 if (!PROMPTS.every((p) => Array.isArray(p.mustSay) && p.mustSay.length > 0)) {
   errors.push("every blind prompt must declare non-empty mustSay");
 }

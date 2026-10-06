@@ -977,6 +977,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit flight case yok"],
     mustNotSay: ["flight case garantidir", "sabit flightcase", "tüm modeller flightcase", "flightcase garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 93,
+    q: "LED ekran köşe LED / corner LED var mı? ARLEDSCREEN sabit köşe LED iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/vitrin-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit köşe LED yok"],
+    mustNotSay: ["köşe LED garantidir", "sabit corner LED", "tüm modeller corner LED", "corner LED garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {

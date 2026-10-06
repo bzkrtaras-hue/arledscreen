@@ -302,11 +302,11 @@ for (const rel of [
 }
 // Day 74–94: ARD discovery prompt count must not drift behind blind suite
 const ardTxt = read("public/.well-known/ard.json") || read("out/.well-known/ard.json");
-if (ardTxt && !/92 kör test/i.test(ardTxt)) {
-  errors.push("ard.json ai-shopping discovery must cite 92 kör test intent (not stale 17–91)");
+if (ardTxt && !/93 kör test/i.test(ardTxt)) {
+  errors.push("ard.json ai-shopping discovery must cite 93 kör test intent (not stale 17–92)");
 }
-if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
-  errors.push("ard.json must not cite stale 17–91 kör test without 92");
+if (ardTxt && /1[7-9] kör test|(?:2[0-9]|3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|80|81|82|83|84|85|86|87|88|89|90|91|92) kör test/i.test(ardTxt) && !/77 kör test/i.test(ardTxt)) {
+  errors.push("ard.json must not cite stale 17–92 kör test without 93");
 }
 // Day 77: home + rehber must not invent desk / engineering standard
 for (const rel of ["out/tr/index.html", "out/en/index.html"]) {
@@ -1382,6 +1382,21 @@ for (const rel of [
   }
   if (/flight case garantidir|sabit flightcase|tüm modeller flightcase|flightcase garantidir/i.test(html)) {
     errors.push(`${rel} must not invent sabit flight case`);
+  }
+}
+
+// Day 145: sabit köşe LED / corner LED — honesty presence
+for (const rel of [
+  "out/tr/rehber/vitrin-led-ekran/index.html",
+  "out/tr/rehber/mimari-muhendislik-led/index.html",
+]) {
+  const html = read(rel);
+  if (!html) continue;
+  if (!/sabit köşe LED yok|no fixed site corner LED/i.test(html)) {
+    errors.push(`${rel} should hedge sabit köşe LED / corner LED`);
+  }
+  if (/köşe LED garantidir|sabit corner LED|tüm modeller corner LED|corner LED garantidir/i.test(html)) {
+    errors.push(`${rel} must not invent sabit köşe LED`);
   }
 }
 

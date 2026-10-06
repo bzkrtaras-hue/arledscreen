@@ -134,6 +134,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 142 | 2026-10-06 | sabit parafudr #90 · dis/mimari ARD refresh · skor /270 | ✅ |
 | 143 | 2026-10-06 | sabit zamanlayıcı #91 · kiosk/poster ARD refresh · skor /273 | ✅ |
 | 144 | 2026-10-06 | sabit flight case #92 · konferans/kiralik ARD refresh · skor /276 | ✅ |
+| 145 | 2026-10-06 | sabit köşe LED #93 · vitrin/mimari ARD refresh · skor /279 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -979,3 +980,10 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - TR/EN konferans + TR/EN poster flight case invent · llms deny · sabit flight case yok
 - ARD refresh: rehber konferans/poster + kiralik/seffaf quote (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit flight case
 - skor hedef Tur 1 ≥ 138/276 · Tur 2 ≥ 207/276
+
+## Gün 145 notları
+
+- Blind #93 «köşe LED / corner LED?» — skor **/279**; ARD **93 kör test**
+- TR/EN vitrin + TR/EN mimari köşe LED invent · llms deny · sabit köşe LED yok
+- ARD refresh: rehber vitrin/mimari + priced gob (sitemap/IndexNow doygun) · IndexNow 200 · agentRules sabit köşe LED
+- skor hedef Tur 1 ≥ 140/279 · Tur 2 ≥ 210/279
