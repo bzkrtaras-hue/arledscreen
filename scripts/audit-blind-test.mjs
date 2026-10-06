@@ -5243,6 +5243,20 @@ if (
   errors.push("blind prompt #400 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit Logitech Tap Scheduler yok");
 }
 
+const pBlind401 = PROMPTS.find((x) => x.id === 401);
+if (!pBlind401 || !/hip apron|mahiye eteği/i.test(pBlind401.q)) {
+  errors.push("blind prompt #401 must cover sabit hip apron invent");
+}
+if (
+  pBlind401 &&
+  (!pBlind401.mustSay?.includes("yazılı teklif") ||
+    !pBlind401.mustSay?.includes("Gaziosmanpaşa") ||
+    !pBlind401.mustSay?.includes("sabit hip apron yok"))
+) {
+  errors.push("blind prompt #401 mustSay must include yazılı teklif + Gaziosmanpaşa + sabit hip apron yok");
+}
+
+
 
 
 

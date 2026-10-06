@@ -442,6 +442,7 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 | 450 | 2026-10-06 | sabit Maxhub V5 Classic #398 · ic/konferans ARD refresh · skor /1194 | ✅ |
 | 451 | 2026-10-06 | sabit drip apron #399 · dis/mimari ARD refresh · skor /1197 | ✅ |
 | 452 | 2026-10-06 | sabit Logitech Tap Scheduler #400 · ic/konferans ARD refresh · skor /1200 | ✅ |
+| 453 | 2026-10-06 | sabit hip apron #401 · dis/mimari ARD refresh · skor /1203 | ✅ |
 
 ## Gün 24–28 özeti
 
@@ -3189,3 +3190,9 @@ Spam blog / 81-il doorway yok. Point C = sahibi işletecek üçüncü taraf atı
 - Blind #400 «Logitech Tap Scheduler / Logitech Tap?» — skor **/1200**; ARD **400 kör test**
 - TR/EN ic-mekan + TR/EN konferans Logitech Tap Scheduler invent · llms deny · sabit Logitech Tap Scheduler yok
 - ARD refresh: rehber ic/konferans + priced ince-pitch · IndexNow 200 · agentRules sabit Logitech Tap Scheduler
+
+## Gün 453 notları
+
+- Blind #401 «hip apron / mahiye eteği?» — skor **/1203**; ARD **401 kör test**
+- TR/EN dis-mekan + TR/EN mimari hip apron invent · llms deny · sabit hip apron yok
+- ARD refresh: rehber dis/mimari + priced gob · IndexNow 200 · agentRules sabit hip apron

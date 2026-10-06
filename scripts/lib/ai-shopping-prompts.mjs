@@ -4673,6 +4673,18 @@ export const BLIND_TEST_PROMPTS = [
     mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit Logitech Tap Scheduler yok"],
     mustNotSay: ["Logitech Tap Scheduler garantidir", "sabit Logitech Tap Scheduler True1", "tüm modeller Logitech Tap Scheduler", "Logitech Tap garantidir", "ücretsiz kargo dahil"],
   },
+  {
+    id: 401,
+    q: "LED ekran hip apron / mahiye eteği var mı? ARLEDSCREEN sabit hip apron iddiası yayımlıyor mu?",
+    paths: [
+      "/tr/rehber/dis-mekan-led-ekran/",
+      "/tr/rehber/mimari-muhendislik-led/",
+      "/tr/quote/",
+      "/ai-shopping.json",
+    ],
+    mustSay: ["yazılı teklif", "Gaziosmanpaşa", "sabit hip apron yok"],
+    mustNotSay: ["hip apron garantidir", "sabit hip apron True1", "tüm modeller hip apron", "mahiye eteği garantidir", "ücretsiz kargo dahil"],
+  },
 ];
 
 export function promptsWithAbsoluteUrls() {
