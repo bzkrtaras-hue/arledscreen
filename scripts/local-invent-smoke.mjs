@@ -186,10 +186,12 @@ if (
     dist.includes("/prices.json") &&
     dist.includes("/catalog.json") &&
     dist.includes("/point-c.txt") &&
-    JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next")
+    JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") &&
+    String(profiles?.mainEntityOfPage?.["@id"] || "").includes("#website") &&
+    JSON.stringify(profiles?.isRelatedTo || []).includes("#website")
   ) {
-    ok("entity-profiles invent distribution + isBasedOn + geo:next");
-  } else fail("entity-profiles invent distribution + isBasedOn + geo:next");
+    ok("entity-profiles invent distribution + isBasedOn + geo:next + #website");
+  } else fail("entity-profiles invent distribution + isBasedOn + geo:next + #website");
 }
 
 const pointCEn = readText("point-c-en.txt");
@@ -291,12 +293,15 @@ if (
     dist.includes("/.well-known/price.json") &&
     dist.includes("/.well-known/pricing.json") &&
     dist.includes("/brand.json") &&
+    dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
+    dist.includes("/.well-known/entity.json") &&
+    dist.includes("/organization.json") &&
     dist.includes("/point-c.txt") &&
     dist.includes("/entity-profiles.json")
   ) {
-    ok("ai-shopping distribution → priceAliases + brand/entity/point-c/profiles reverse join");
-  } else fail("ai-shopping distribution → priceAliases + brand/entity/point-c/profiles reverse join");
+    ok("ai-shopping distribution → priceAliases + brand/entity wk/org/point-c/profiles reverse join");
+  } else fail("ai-shopping distribution → priceAliases + brand/entity wk/org/point-c/profiles reverse join");
 }
 
 {
@@ -379,10 +384,13 @@ if (
     blob.includes("/prices.json") &&
     blob.includes("/brand.json") &&
     blob.includes("/point-c.txt") &&
-    blob.includes("/entity-profiles.json")
+    blob.includes("/entity-profiles.json") &&
+    blob.includes("/geo-baseline.json") &&
+    blob.includes("/.well-known/brand.json") &&
+    blob.includes("/organization.json")
   ) {
-    ok("entity WebSite invent subjectOf/sameAs + entity-profiles");
-  } else fail("entity WebSite invent subjectOf/sameAs + entity-profiles");
+    ok("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org");
+  } else fail("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org");
 }
 
 {

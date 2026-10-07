@@ -194,8 +194,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
-  if (!Array.isArray(ai.distribution) || ai.distribution.length < 24) {
-    console.error("❌ ai-shopping.json Dataset.distribution must list ≥24 DataDownload encodings (invent aliases + brand/entity/point-c/profiles)");
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 27) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥27 DataDownload encodings (invent aliases + brand/entity well-known + org + point-c/profiles)");
     process.exit(1);
   }
   for (const needle of [
@@ -222,7 +222,10 @@ if (fs.existsSync(outDir)) {
     "/feeds/prices.rss",
     "/geo-baseline.json",
     "/brand.json",
+    "/.well-known/brand.json",
     "/entity.json",
+    "/.well-known/entity.json",
+    "/organization.json",
     "/point-c.txt",
     "/entity-profiles.json",
   ]) {
@@ -968,9 +971,12 @@ if (fs.existsSync(outDir)) {
       !siteBlob.includes("/catalog.json") ||
       !siteBlob.includes("/brand.json") ||
       !siteBlob.includes("/point-c.txt") ||
-      !siteBlob.includes("/entity-profiles.json")
+      !siteBlob.includes("/entity-profiles.json") ||
+      !siteBlob.includes("/geo-baseline.json") ||
+      !siteBlob.includes("/.well-known/brand.json") ||
+      !siteBlob.includes("/organization.json")
     ) {
-      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs + entity-profiles");
+      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs (profiles/geo/brand-wk/org)");
       process.exit(1);
     }
   }
@@ -1809,6 +1815,14 @@ if (fs.existsSync(outDir)) {
     }
     if (!profiles?.["@id"]?.includes("/entity-profiles.json")) {
       console.error("❌ entity-profiles.json @id required");
+      process.exit(1);
+    }
+    if (
+      !String(profiles?.mainEntityOfPage?.["@id"] || "").includes("#website") ||
+      !JSON.stringify(profiles?.isRelatedTo || []).includes("#website") ||
+      !JSON.stringify(profiles?.about || {}).includes("#website")
+    ) {
+      console.error("❌ entity-profiles.json must invent-join WebSite #website (mainEntityOfPage + about + isRelatedTo)");
       process.exit(1);
     }
     if (!JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next")) {

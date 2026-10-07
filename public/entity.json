@@ -3099,6 +3099,12 @@
       "@id": "https://arledscreen.com/entity-profiles.json",
       "name": "ARLEDSCREEN Point C entity profiles",
       "url": "https://arledscreen.com/entity-profiles.json"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://arledscreen.com/.well-known/brand.json",
+      "name": "NXTIONSTAR Brand invent alias",
+      "url": "https://arledscreen.com/.well-known/brand.json"
     }
   ],
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
@@ -3241,7 +3247,12 @@
       "https://arledscreen.com/prices.json",
       "https://arledscreen.com/catalog.json",
       "https://arledscreen.com/brand.json",
-      "https://arledscreen.com/entity.json"
+      "https://arledscreen.com/entity.json",
+      "https://arledscreen.com/.well-known/brand.json",
+      "https://arledscreen.com/.well-known/entity.json",
+      "https://arledscreen.com/organization.json",
+      "https://arledscreen.com/geo-baseline.json",
+      "https://arledscreen.com/entity-profiles.json"
     ],
     "subjectOf": [
       {
@@ -3280,6 +3291,30 @@
         "@id": "https://arledscreen.com/entity-profiles.json",
         "url": "https://arledscreen.com/entity-profiles.json",
         "name": "ARLEDSCREEN Point C entity profiles"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/geo-baseline.json",
+        "url": "https://arledscreen.com/geo-baseline.json",
+        "name": "ARLEDSCREEN GEO technical baseline"
+      },
+      {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/.well-known/brand.json",
+        "url": "https://arledscreen.com/.well-known/brand.json",
+        "name": "NXTIONSTAR Brand invent alias"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://arledscreen.com/.well-known/entity.json",
+        "url": "https://arledscreen.com/.well-known/entity.json",
+        "name": "Organization invent alias"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://arledscreen.com/organization.json",
+        "url": "https://arledscreen.com/organization.json",
+        "name": "Organization (alias)"
       }
     ]
   }

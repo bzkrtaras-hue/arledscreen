@@ -813,7 +813,25 @@ function buildAiShopping() {
       {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/brand.json`,
+        name: "NXTIONSTAR Brand invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/entity.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/entity.json`,
+        name: "Organization invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/organization.json`,
+        name: "Organization (alias)",
       },
       {
         "@type": "DataDownload",
@@ -1332,6 +1350,30 @@ function websiteInventSubjectOf() {
       url: `${SITE_URL}/entity-profiles.json`,
       name: "ARLEDSCREEN Point C entity profiles",
     },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/geo-baseline.json`,
+      url: `${SITE_URL}/geo-baseline.json`,
+      name: "ARLEDSCREEN GEO technical baseline",
+    },
+    {
+      "@type": "Brand",
+      "@id": `${SITE_URL}/.well-known/brand.json`,
+      url: `${SITE_URL}/.well-known/brand.json`,
+      name: "NXTIONSTAR Brand invent alias",
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/.well-known/entity.json`,
+      url: `${SITE_URL}/.well-known/entity.json`,
+      name: "Organization invent alias",
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/organization.json`,
+      url: `${SITE_URL}/organization.json`,
+      name: "Organization (alias)",
+    },
   ];
 }
 
@@ -1345,13 +1387,18 @@ function websiteNode() {
     inLanguage: ["tr-TR", "en-US"],
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@id": `${SITE_URL}/#organization` },
-    // Invent join: WebSite-only agents still reach pricedPanels + brand + Point C.
+    // Invent join: WebSite-only agents still reach pricedPanels + brand + GEO + Point C.
     sameAs: [
       `${SITE_URL}/ai-shopping.json`,
       `${SITE_URL}/prices.json`,
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/brand.json`,
+      `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/entity.json`,
+      `${SITE_URL}/.well-known/entity.json`,
+      `${SITE_URL}/organization.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/entity-profiles.json`,
     ],
     subjectOf: websiteInventSubjectOf(),
     potentialAction: quoteOrderActions(),
@@ -1415,7 +1462,12 @@ function enrichEntityDocument(entity) {
       `${SITE_URL}/prices.json`,
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/brand.json`,
+      `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/entity.json`,
+      `${SITE_URL}/.well-known/entity.json`,
+      `${SITE_URL}/organization.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/entity-profiles.json`,
     ]) {
       if (!same.includes(u)) same.push(u);
     }
@@ -1463,11 +1515,25 @@ function enrichEntityDocument(entity) {
     name: "ARLEDSCREEN Point C entity profiles",
     url: `${SITE_URL}/entity-profiles.json`,
   };
+  const brandWellKnownEntry = {
+    "@type": "Brand",
+    "@id": `${SITE_URL}/.well-known/brand.json`,
+    name: "NXTIONSTAR Brand invent alias",
+    url: `${SITE_URL}/.well-known/brand.json`,
+  };
+  const geoBaselineEntry = {
+    "@type": "Dataset",
+    "@id": `${SITE_URL}/geo-baseline.json`,
+    name: "ARLEDSCREEN GEO technical baseline",
+    url: `${SITE_URL}/geo-baseline.json`,
+  };
   let subjectOf = Array.isArray(entity.subjectOf) ? [...entity.subjectOf] : [];
   subjectOf = ensureSubjectNeedle(subjectOf, "/point-c.txt", pointCEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/brand.json", brandDocEntry);
+  subjectOf = ensureSubjectNeedle(subjectOf, "/.well-known/brand.json", brandWellKnownEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/prices.json", pricesAliasEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/entity-profiles.json", entityProfilesEntry);
+  subjectOf = ensureSubjectNeedle(subjectOf, "/geo-baseline.json", geoBaselineEntry);
   entity.subjectOf = subjectOf;
   // Nested Brand / LocalBusiness subjectOf invent parity with top-level (agents that walk brand|location).
   if (entity.brand && typeof entity.brand === "object") {
@@ -1585,7 +1651,25 @@ function enrichEntityProfiles(doc) {
       url: `${SITE_URL}/geo-baseline.json`,
       name: "ARLEDSCREEN GEO technical baseline",
     },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "ARLEDSCREEN",
+    },
   ];
+  doc.mainEntityOfPage = {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: "ARLEDSCREEN",
+  };
+  doc.about = {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: "ARLEDSCREEN",
+  };
 
   const geoNextLead =
     "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok)";

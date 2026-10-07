@@ -185,6 +185,24 @@
       "@id": "https://arledscreen.com/geo-baseline.json",
       "url": "https://arledscreen.com/geo-baseline.json",
       "name": "ARLEDSCREEN GEO technical baseline"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arledscreen.com/#website",
+      "url": "https://arledscreen.com",
+      "name": "ARLEDSCREEN"
     }
-  ]
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebSite",
+    "@id": "https://arledscreen.com/#website",
+    "url": "https://arledscreen.com",
+    "name": "ARLEDSCREEN"
+  },
+  "about": {
+    "@type": "WebSite",
+    "@id": "https://arledscreen.com/#website",
+    "url": "https://arledscreen.com",
+    "name": "ARLEDSCREEN"
+  }
 }
