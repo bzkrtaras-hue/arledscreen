@@ -495,10 +495,11 @@ if (
     String(g.en?.priceSource || "").includes("/.well-known/sku.json") &&
     String(ai.description || "").includes("/.well-known/pricing.json") &&
     humans.includes("/.well-known/modules.json") &&
+    humans.includes("/.well-known/security.txt") &&
     faq.includes("/.well-known/modules.json")
   ) {
-    ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing");
-  } else fail("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing");
+    ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security");
+  } else fail("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security");
 }
 
 if (

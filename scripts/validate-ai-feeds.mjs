@@ -183,6 +183,7 @@ if (fs.existsSync(outDir)) {
       "/llms.txt",
       "/humans.txt",
       "/AGENTS.md",
+      "/.well-known/security.txt",
     ]) {
       if (!aiSame.includes(needle)) {
         console.error(`❌ ai-shopping.json Dataset sameAs must join ${needle}`);
@@ -228,8 +229,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
-  if (!Array.isArray(ai.distribution) || ai.distribution.length < 33) {
-    console.error("❌ ai-shopping.json Dataset.distribution must list ≥33 DataDownload encodings (invent aliases + discovery agents/ard/ai.txt/llms/humans/AGENTS.md + brand/entity + point-c/profiles)");
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 34) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥34 DataDownload encodings (invent aliases + discovery agents/ard/ai.txt/llms/humans/AGENTS.md/security.txt + brand/entity + point-c/profiles)");
     process.exit(1);
   }
   for (const needle of [
@@ -256,6 +257,7 @@ if (fs.existsSync(outDir)) {
     "/llms.txt",
     "/humans.txt",
     "/AGENTS.md",
+    "/.well-known/security.txt",
     "/offer.json",
     "/catalog.json",
     "/feeds/merchant-priced-panels.tsv",
@@ -1697,9 +1699,11 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/entity-profiles.json") ||
       !humansLive.includes("/.well-known/brand.json") ||
       !humansLive.includes("#website") ||
-      !humansLive.includes("geo:ack")
+      !humansLive.includes("geo:ack") ||
+      !humansLive.includes("/.well-known/security.txt") ||
+      !humansLive.includes("/security.txt")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next/ack");
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next/ack + security.txt");
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
@@ -2207,6 +2211,8 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/point-c.txt"',
       'href="https://arledscreen.com/.well-known/agents.json"',
       'href="https://arledscreen.com/AGENTS.md"',
+      'href="https://arledscreen.com/humans.txt"',
+      'href="https://arledscreen.com/.well-known/security.txt"',
       'href="https://arledscreen.com/feeds/prices.rss"',
       'rel="describedby"',
     ]) {

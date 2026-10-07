@@ -21,6 +21,8 @@ Agent discovery: https://arledscreen.com/.well-known/agents.json
 Agent aliases: /agents.json · /agent.json · /AGENTS.md
 ARD: https://arledscreen.com/.well-known/ard.json
 AI pointer: https://arledscreen.com/.well-known/ai.txt
+Security (RFC 9116): https://arledscreen.com/.well-known/security.txt
+Security alias: https://arledscreen.com/security.txt
 Do not cite: arleds.com (legacy; not sameAs)
 Brand: NXTIONSTAR (≠ NationStar LED chip ≠ NEXTSTAR TV)
 Brand document: https://arledscreen.com/brand.json (AggregateOffer×12)

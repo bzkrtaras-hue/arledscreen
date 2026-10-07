@@ -23,6 +23,7 @@ const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
 const AI_TXT_URL = `${SITE_URL}/ai.txt`;
 const AGENTS_MD_URL = `${SITE_URL}/AGENTS.md`;
 const HUMANS_TXT_URL = `${SITE_URL}/humans.txt`;
+const SECURITY_TXT_URL = `${SITE_URL}/.well-known/security.txt`;
 
 export const aiDiscoveryMetadata: Metadata = {
   alternates: {
@@ -52,6 +53,7 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: LLMS_FULL_URL, title: "LLM Context (Full)" },
         { url: AI_TXT_URL, title: "AI Discovery Pointer" },
         { url: HUMANS_TXT_URL, title: "Humans.txt" },
+        { url: SECURITY_TXT_URL, title: "security.txt (RFC 9116)" },
         { url: POINT_C_TXT_URL, title: "Point C paste packs" },
       ],
       "text/markdown": [{ url: AGENTS_MD_URL, title: "AGENTS.md" }],
@@ -85,6 +87,7 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "text/plain", href: LLMS_FULL_URL, title: "LLM Context (Full)" },
   { rel: "alternate", type: "text/plain", href: AI_TXT_URL, title: "AI Discovery Pointer" },
   { rel: "alternate", type: "text/plain", href: HUMANS_TXT_URL, title: "Humans.txt" },
+  { rel: "alternate", type: "text/plain", href: SECURITY_TXT_URL, title: "security.txt (RFC 9116)" },
   { rel: "alternate", type: "text/plain", href: POINT_C_TXT_URL, title: "Point C paste packs" },
   { rel: "alternate", type: "text/markdown", href: AGENTS_MD_URL, title: "AGENTS.md" },
   // RFC 8288: machine agents that follow Link / describedby land on price + entity + brand.

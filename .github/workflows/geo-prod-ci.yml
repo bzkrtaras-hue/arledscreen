@@ -111,6 +111,8 @@ jobs:
           grep -q "/entity.json" out/catalog.json
           grep -q "/.well-known/sku.json" out/llms.txt
           grep -q "/.well-known/modules.json" out/humans.txt
+          grep -q "/.well-known/security.txt" out/humans.txt
+          grep -q "/.well-known/security.txt" out/ai-shopping.json
           grep -q "/.well-known/modules.json" out/ai-shopping.json
           grep -q "/.well-known/modules.json" out/entity.json
           grep -q "modulesWellKnown" out/geo-baseline.json
