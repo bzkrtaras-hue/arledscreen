@@ -13,4 +13,4 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Price: https://arledscreen.com/ai-shopping.json pricedPanels (aliases /prices.json · /.well-known/prices.json)
 # Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json
 # Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json
-# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge)
+# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack

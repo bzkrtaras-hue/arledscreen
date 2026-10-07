@@ -1129,6 +1129,7 @@ function buildMerchantTsv() {
     "point_c_url",
     "brand_well_known_url",
     "organization_url",
+    "website_url",
   ];
   const lines = [header.join("\t")];
   for (const panel of PANEL_PRICES) {
@@ -1177,6 +1178,7 @@ function buildMerchantTsv() {
         `${SITE_URL}/point-c.txt`,
         `${SITE_URL}/.well-known/brand.json`,
         `${SITE_URL}/organization.json`,
+        `${SITE_URL}/#website`,
       ].join("\t"),
     );
   }
@@ -1615,7 +1617,10 @@ function enrichEntityDocument(entity) {
     ls = ensureSubjectNeedle(ls, "/prices.json", pricesAliasEntry);
     ls = ensureSubjectNeedle(ls, "/point-c.txt", pointCEntry);
     ls = ensureSubjectNeedle(ls, "/brand.json", brandDocEntry);
+    ls = ensureSubjectNeedle(ls, "/.well-known/brand.json", brandWellKnownEntry);
+    ls = ensureSubjectNeedle(ls, "/entity.json", entityOrgEntry);
     ls = ensureSubjectNeedle(ls, "/entity-profiles.json", entityProfilesEntry);
+    ls = ensureSubjectNeedle(ls, "/geo-baseline.json", geoBaselineEntry);
     entity.location.subjectOf = ls;
   }
   return entity;
@@ -1831,7 +1836,9 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
     isBasedOn: [
       `${SITE_URL}/entity.json`,
       `${SITE_URL}/organization.json`,
+      `${SITE_URL}/.well-known/entity.json`,
       `${SITE_URL}/brand.json`,
+      `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/ai-shopping.json`,
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
@@ -2417,7 +2424,7 @@ prices-rss: ${SITE_URL}/feeds/prices.rss
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
-owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · ${SITE_URL}/point-c.txt
+owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · ${SITE_URL}/point-c.txt
 brand-json: ${SITE_URL}/brand.json
 brand-json-well-known: ${SITE_URL}/.well-known/brand.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/
@@ -2804,6 +2811,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         url: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "ARLEDSCREEN",
+      },
     ],
   };
   writeJson(publicDir, "brand.json", brandDoc);
@@ -2832,7 +2845,7 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Price: https://arledscreen.com/ai-shopping.json pricedPanels (aliases /prices.json · /.well-known/prices.json)
 # Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json
 # Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json
-# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge)
+# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);
@@ -3040,13 +3053,14 @@ Acknowledgments: https://arledscreen.com/brand.json
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
-    // Trailing invent cols: … tax, shipping, entity_profiles_url, point_c_url, brand_well_known_url, organization_url
-    const orgUrl = cells[cells.length - 1];
-    const brandWk = cells[cells.length - 2];
-    const pointCUrl = cells[cells.length - 3];
-    const profilesUrl = cells[cells.length - 4];
-    const shippingIncluded = cells[cells.length - 5];
-    const taxIncluded = cells[cells.length - 6];
+    // Trailing invent cols: … tax, shipping, profiles, point_c, brand_wk, organization_url, website_url
+    const websiteUrl = cells[cells.length - 1];
+    const orgUrl = cells[cells.length - 2];
+    const brandWk = cells[cells.length - 3];
+    const pointCUrl = cells[cells.length - 4];
+    const profilesUrl = cells[cells.length - 5];
+    const shippingIncluded = cells[cells.length - 6];
+    const taxIncluded = cells[cells.length - 7];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3059,6 +3073,7 @@ Acknowledgments: https://arledscreen.com/brand.json
       pointCUrl !== `${SITE_URL}/point-c.txt` ||
       brandWk !== `${SITE_URL}/.well-known/brand.json` ||
       orgUrl !== `${SITE_URL}/organization.json` ||
+      websiteUrl !== `${SITE_URL}/#website` ||
       /\ttrue(\t|$)/.test(row)
     ) {
       console.error(`postbuild-ai: merchant TSV mismatch or free-ship invent for ${panel.id}`);

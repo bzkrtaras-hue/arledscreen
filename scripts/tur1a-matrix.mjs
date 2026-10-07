@@ -149,11 +149,13 @@ function printNext(filled) {
   console.log("```");
   console.log("\n### Expected (do not invent if absent)");
   console.log("- Canonical site: https://arledscreen.com/tr/ (not arleds.com)");
+  console.log("- WebSite #website: https://arledscreen.com/#website (OrderAction → /tr/quote/ · /en/quote/)");
+  console.log("- Entity: https://arledscreen.com/entity.json (alias /organization.json · /.well-known/entity.json)");
   console.log("- Price source: https://arledscreen.com/ai-shopping.json pricedPanels");
   console.log(
     "- Inventable aliases (identical): /.well-known/modules.json · /.well-known/sku.json · /.well-known/price.json · /.well-known/pricing.json · /prices.json",
   );
-  console.log("- Brand AggregateOffer×12: https://arledscreen.com/brand.json");
+  console.log("- Brand AggregateOffer×12: https://arledscreen.com/brand.json (alias /.well-known/brand.json)");
   console.log("- prices.rss = change discovery only (not canonical price graph)");
   console.log("\n### After observing, one-shot log:");
   console.log(
@@ -163,7 +165,7 @@ function printNext(filled) {
   console.log(
     `npm run tur1a:log -- --dry-run --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping`,
   );
-  console.log("\nThen: npm run tur1a:matrix · npm run geo:status");
+  console.log("\nThen: npm run tur1a:matrix · npm run tur1a:next · npm run geo:status");
 }
 
 function runLog(filled) {

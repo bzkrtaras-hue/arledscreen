@@ -2102,6 +2102,21 @@
         "@id": "https://arledscreen.com/entity-profiles.json",
         "name": "ARLEDSCREEN Point C entity profiles",
         "url": "https://arledscreen.com/entity-profiles.json"
+      },
+      {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/.well-known/brand.json",
+        "name": "NXTIONSTAR Brand invent alias",
+        "url": "https://arledscreen.com/.well-known/brand.json"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://arledscreen.com/#organization",
+        "name": "ARLEDSCREEN",
+        "url": "https://arledscreen.com/entity.json",
+        "sameAs": [
+          "https://arledscreen.com/organization.json"
+        ]
       }
     ],
     "makesOffer": {

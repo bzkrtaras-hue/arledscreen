@@ -25,7 +25,7 @@ prices-rss: https://arledscreen.com/feeds/prices.rss
 geo-baseline: https://arledscreen.com/geo-baseline.json
 ard: https://arledscreen.com/.well-known/ard.json
 entity-profiles: https://arledscreen.com/entity-profiles.json
-owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · https://arledscreen.com/point-c.txt
+owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · https://arledscreen.com/point-c.txt
 brand-json: https://arledscreen.com/brand.json
 brand-json-well-known: https://arledscreen.com/.well-known/brand.json
 brand-tr: https://arledscreen.com/tr/nxtionstar/

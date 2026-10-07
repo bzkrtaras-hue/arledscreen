@@ -958,6 +958,12 @@
       "@id": "https://arledscreen.com/entity-profiles.json",
       "url": "https://arledscreen.com/entity-profiles.json",
       "name": "ARLEDSCREEN Point C entity profiles"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arledscreen.com/#website",
+      "url": "https://arledscreen.com",
+      "name": "ARLEDSCREEN"
     }
   ]
 }

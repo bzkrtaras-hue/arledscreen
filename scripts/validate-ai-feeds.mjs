@@ -541,7 +541,9 @@ if (fs.existsSync(outDir)) {
     for (const needle of [
       "/entity.json",
       "/organization.json",
+      "/.well-known/entity.json",
       "/brand.json",
+      "/.well-known/brand.json",
       "/ai-shopping.json",
       "/catalog.json",
       "/feeds/merchant-priced-panels.tsv",
@@ -1294,20 +1296,31 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/point-c.txt") ||
     !securityLive.includes("/entity-profiles.json") ||
     !securityLive.includes("#website") ||
-    !securityLive.includes("geo:next")
+    !securityLive.includes("geo:next") ||
+    !securityLive.includes("geo:ack")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C/entity-profiles/geo:next invent pointers");
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C/entity-profiles/geo:next/ack invent pointers");
     process.exit(1);
   }
   {
     const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
-    if (!llmsGeo.includes("geo:next") || !llmsGeo.includes("/.well-known/brand.json") || !llmsGeo.includes("#website")) {
-      console.error("❌ out/llms.txt must cite geo:next + /.well-known/brand.json + #website");
+    if (
+      !llmsGeo.includes("geo:next") ||
+      !llmsGeo.includes("geo:ack") ||
+      !llmsGeo.includes("/.well-known/brand.json") ||
+      !llmsGeo.includes("#website")
+    ) {
+      console.error("❌ out/llms.txt must cite geo:next + geo:ack + /.well-known/brand.json + #website");
       process.exit(1);
     }
     const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
-    if (!llmsFullLive.includes("geo:next") || !llmsFullLive.includes("/.well-known/brand.json") || !llmsFullLive.includes("#website")) {
-      console.error("❌ out/llms-full.txt must cite geo:next + /.well-known/brand.json + #website");
+    if (
+      !llmsFullLive.includes("geo:next") ||
+      !llmsFullLive.includes("geo:ack") ||
+      !llmsFullLive.includes("/.well-known/brand.json") ||
+      !llmsFullLive.includes("#website")
+    ) {
+      console.error("❌ out/llms-full.txt must cite geo:next + geo:ack + /.well-known/brand.json + #website");
       process.exit(1);
     }
   }
@@ -1343,19 +1356,20 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("geo:next") ||
       !humansLive.includes("/entity-profiles.json") ||
       !humansLive.includes("/.well-known/brand.json") ||
-      !humansLive.includes("#website")
+      !humansLive.includes("#website") ||
+      !humansLive.includes("geo:ack")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next");
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next/ack");
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
-    if (!agentsMdLive.includes("geo:next") || !agentsMdLive.includes("#website")) {
-      console.error("❌ out/AGENTS.md must cite npm run geo:next owner clipboard + WebSite #website");
+    if (!agentsMdLive.includes("geo:next") || !agentsMdLive.includes("geo:ack") || !agentsMdLive.includes("#website")) {
+      console.error("❌ out/AGENTS.md must cite npm run geo:next/ack owner clipboard + WebSite #website");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
-    if (!aiTxtLive.includes("geo:next")) {
-      console.error("❌ out/ai.txt must cite npm run geo:next owner clipboard");
+    if (!aiTxtLive.includes("geo:next") || !aiTxtLive.includes("geo:ack")) {
+      console.error("❌ out/ai.txt must cite npm run geo:next + geo:ack owner clipboard");
       process.exit(1);
     }
   }
@@ -2275,6 +2289,7 @@ if (fs.existsSync(outDir)) {
     "point_c_url",
     "brand_well_known_url",
     "organization_url",
+    "website_url",
   ]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
@@ -2299,6 +2314,7 @@ if (fs.existsSync(outDir)) {
   const pointCUrlIdx = tsvCols.indexOf("point_c_url");
   const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
   const orgUrlIdx = tsvCols.indexOf("organization_url");
+  const websiteUrlIdx = tsvCols.indexOf("website_url");
   for (const row of tsvRows) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
@@ -2343,6 +2359,10 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[orgUrlIdx] !== "https://arledscreen.com/organization.json") {
       console.error(`❌ merchant TSV organization_url must be /organization.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[websiteUrlIdx] !== "https://arledscreen.com/#website") {
+      console.error(`❌ merchant TSV website_url must be /#website for ${cells[idIdx]}`);
       process.exit(1);
     }
   }

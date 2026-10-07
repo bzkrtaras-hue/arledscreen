@@ -249,16 +249,18 @@ else fail("ard.resources.pointC");
     head.includes("point_c_url") &&
     head.includes("brand_well_known_url") &&
     head.includes("organization_url") &&
+    head.includes("website_url") &&
     tsv.includes(`${SITE}/#organization`) &&
     tsv.includes(`${SITE}/entity.json`) &&
     tsv.includes(`${SITE}/brand.json`) &&
     tsv.includes(`${SITE}/entity-profiles.json`) &&
     tsv.includes(`${SITE}/point-c.txt`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
-    tsv.includes(`${SITE}/organization.json`)
+    tsv.includes(`${SITE}/organization.json`) &&
+    tsv.includes(`${SITE}/#website`)
   ) {
-    ok("merchant TSV brand_url + organization_id + entity_url + profiles/point-c + brand-wk + org url");
-  } else fail("merchant TSV brand_url + organization_id + entity_url + profiles/point-c + brand-wk + org url");
+    ok("merchant TSV brand_url + org/entity/profiles/point-c/brand-wk/org/website invent cols");
+  } else fail("merchant TSV brand_url + org/entity/profiles/point-c/brand-wk/org/website invent cols");
 }
 
 if (
@@ -348,10 +350,13 @@ if (
     ls.includes("/prices.json") &&
     ls.includes("/point-c.txt") &&
     ls.includes("/brand.json") &&
-    ls.includes("/entity-profiles.json")
+    ls.includes("/.well-known/brand.json") &&
+    ls.includes("/entity.json") &&
+    ls.includes("/entity-profiles.json") &&
+    ls.includes("/geo-baseline.json")
   ) {
-    ok("entity nested brand/location subjectOf invent parity + brand-wk/geo");
-  } else fail("entity nested brand/location subjectOf invent parity + brand-wk/geo");
+    ok("entity nested brand/location subjectOf invent parity + brand-wk/geo/org");
+  } else fail("entity nested brand/location subjectOf invent parity + brand-wk/geo/org");
 }
 
 if (

@@ -12,7 +12,9 @@
   "isBasedOn": [
     "https://arledscreen.com/entity.json",
     "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/.well-known/entity.json",
     "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/.well-known/brand.json",
     "https://arledscreen.com/ai-shopping.json",
     "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
@@ -266,7 +268,7 @@
   "fingerprints": {
     "aiShoppingSha256": "eacf8668680296eef77254d61568cfcf1af5e933393c249b5e79244b15ed9e34",
     "catalogSha256": "4920a29ac69fb810a6ec2f25c8d6d0dd04eb10eb6eb48ce41b13dd309ab63435",
-    "merchantTsvSha256": "a76d94797426b28fdc73e1731e6cd549e4314418df13fa8df6f9faf02d1d01ac",
+    "merchantTsvSha256": "16300e86b8eb60bc16f3e1c1860670ef4ba67c38e4be7d56b31f1e183ddc2f35",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
   "discovery": {
