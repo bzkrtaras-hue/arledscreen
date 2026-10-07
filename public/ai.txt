@@ -37,6 +37,10 @@ invent-regions-en: https://arledscreen.com/en/regions/
 invent-services-en: https://arledscreen.com/en/services/
 invent-brand-en: https://arledscreen.com/en/brand/
 invent-teklif-en: https://arledscreen.com/en/teklif/
+invent-prices-en: https://arledscreen.com/en/prices/
+invent-pricing-en: https://arledscreen.com/en/pricing/
+invent-price-en: https://arledscreen.com/en/price/
+invent-cost-en: https://arledscreen.com/en/cost/
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/

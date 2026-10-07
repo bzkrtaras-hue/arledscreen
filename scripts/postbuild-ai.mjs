@@ -967,8 +967,8 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     console.error("postbuild-ai: ai-shopping resources.brand + brandId required");
     process.exit(1);
   }
-  if (!merchantTsv.startsWith("id\ttitle\tbrand\tbrand_id\t")) {
-    console.error("postbuild-ai: merchant TSV must include brand_id column after brand");
+  if (!merchantTsv.startsWith("id\ttitle\ttitle_en\tbrand\tbrand_id\t")) {
+    console.error("postbuild-ai: merchant TSV must include title_en + brand_id columns after title/brand");
     process.exit(1);
   }
   if (
