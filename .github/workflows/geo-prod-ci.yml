@@ -47,8 +47,11 @@ jobs:
           npm run point-c | grep -q "GBP About"
           npm run point-c | grep -q "Hostinger arleds.com"
           npm run point-c | grep -q "Hostinger support email"
+          npm run point-c | grep -q "mailto:support@hostinger.com"
           npm run point-c:next | grep -q "Point C next paste"
           npm run point-c:next | grep -q "directoryLong"
+          npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
+          test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
           test -f out/point-c.txt && grep -q "Hostinger arleds.com" out/point-c.txt
           test -f out/point-c.txt && grep -q "Hostinger support email" out/point-c.txt
@@ -113,6 +116,7 @@ jobs:
           grep -q "Hostinger clipboard" /tmp/arleds-verify.txt
           npm run geo:status >/tmp/geo-status.txt 2>&1 || true
           grep -q "Hostinger clipboard" /tmp/geo-status.txt
+          grep -q "mailto:support@hostinger.com" /tmp/geo-status.txt
           grep -q "Point C next paste" /tmp/geo-status.txt
           grep -q "Tur1a next clipboard" /tmp/geo-status.txt
           echo "OK owner tooling"

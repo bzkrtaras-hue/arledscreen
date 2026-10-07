@@ -1210,6 +1210,7 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("arledscreen.com/tr/") ||
       !pointC.includes("Hostinger arleds.com") ||
       !pointC.includes("Hostinger support email") ||
+      !pointC.includes("mailto:support@hostinger.com") ||
       !pointC.includes("point-c:next") ||
       !pointC.includes("verify:arleds-301") ||
       !pointC.includes("tur1a:log") ||
@@ -1219,11 +1220,12 @@ if (fs.existsSync(outDir)) {
       !pointCEn.includes("arledscreen.com/en/") ||
       !pointCEn.includes("Hostinger arleds.com") ||
       !pointCEn.includes("Hostinger support email") ||
+      !pointCEn.includes("mailto:support@hostinger.com") ||
       !pointCEn.includes("point-c:next") ||
       !pointCEn.includes("tur1a:log") ||
       !pointCEn.includes("/.well-known/modules.json")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email + point-c:next + tur1a:log + invent aliases");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto + point-c:next + tur1a:log + invent aliases");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
@@ -2984,11 +2986,16 @@ if (fs.existsSync(outDir)) {
               !dist.includes("/merchant.json") ||
               !dist.includes("/offer.json") ||
               !dist.includes("/panels.json") ||
+              !dist.includes("/modules.json") ||
+              !dist.includes("/sku.json") ||
+              !dist.includes("/.well-known/modules.json") ||
+              !dist.includes("/.well-known/sku.json") ||
+              !dist.includes("/.well-known/prices.json") ||
               !dist.includes("/brand.json") ||
               !dist.includes("/entity.json") ||
               !dist.includes("/point-c.txt")
             ) {
-              console.error(`❌ ${rel} Dataset.distribution must include panels/merchant/offer + brand/entity/point-c DataDownloads`);
+              console.error(`❌ ${rel} Dataset.distribution must include invent aliases (modules/sku/well-known) + brand/entity/point-c`);
               process.exit(1);
             }
             found = true;

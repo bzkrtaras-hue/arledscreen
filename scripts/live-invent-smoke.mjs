@@ -122,11 +122,12 @@ try {
     pc.includes("34245") &&
     pc.includes("Hostinger arleds.com") &&
     pc.includes("Hostinger support email") &&
+    pc.includes("mailto:support@hostinger.com") &&
     pc.includes("point-c:next") &&
     pc.includes("/.well-known/modules.json")
   ) {
-    ok("point-c.txt paste packs + Hostinger 301/email + invent aliases");
-  } else fail("point-c.txt paste packs + Hostinger 301/email + invent aliases");
+    ok("point-c.txt paste packs + Hostinger 301/email/mailto + invent aliases");
+  } else fail("point-c.txt paste packs + Hostinger 301/email/mailto + invent aliases");
 } catch (e) {
   fail(`point-c.txt ${e?.message || e}`);
 }

@@ -42,7 +42,7 @@ Domain: arleds.com (Hostinger DNS; not on Cloudflare for this account).
 Thank you.
 ```
 
-Also: `npm run point-c:next` (Hostinger step) · `npm run geo:status`
+Also: `npm run point-c:next` (Hostinger step) · `npm run geo:status` · `npm run point-c:hostinger-eml` (writes `docs/ops/arleds-301-hostinger.eml`) · mailto in `point-c.txt`
 
 ## Cloudflare (if DNS on CF)
 

@@ -137,11 +137,12 @@ if (
   pointC.includes("34245") &&
   pointC.includes("Hostinger arleds.com") &&
   pointC.includes("Hostinger support email") &&
+  pointC.includes("mailto:support@hostinger.com") &&
   pointC.includes("point-c:next") &&
   pointC.includes("/.well-known/modules.json")
 ) {
-  ok("point-c.txt paste packs + Hostinger 301/email + invent aliases");
-} else fail("point-c.txt paste packs + Hostinger 301/email + invent aliases");
+  ok("point-c.txt paste packs + Hostinger 301/email/mailto + invent aliases");
+} else fail("point-c.txt paste packs + Hostinger 301/email/mailto + invent aliases");
 
 const pointCEn = readText("point-c-en.txt");
 if (

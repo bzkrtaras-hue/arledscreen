@@ -80,11 +80,14 @@ if (!arledsOk) {
   console.log("  https://www.arleds.com/ → https://arledscreen.com/tr/");
   console.log("  Also: npm run point-c:next · https://arledscreen.com/point-c.txt");
   try {
-    const { buildHostingerEmailClipboard } = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
+    const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
     console.log("  Hostinger support email (select-all):");
     console.log("  ---");
-    for (const row of String(buildHostingerEmailClipboard()).split("\n")) console.log(`  ${row}`);
+    for (const row of String(mod.buildHostingerEmailClipboard()).split("\n")) console.log(`  ${row}`);
     console.log("  ---");
+    console.log("  Hostinger mailto:");
+    console.log(`  ${mod.buildHostingerMailto()}`);
+    console.log("  EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml");
   } catch {
     /* clipboard helper optional */
   }

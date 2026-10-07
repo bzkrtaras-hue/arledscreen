@@ -51,26 +51,56 @@ export const EN_ORDER = [
   ["EN Yandex Business", "yandexBusiness"],
 ];
 
+export const HOSTINGER_SUPPORT_TO = "support@hostinger.com";
+
+export function buildHostingerEmailParts() {
+  const subject = "Permanent 301 redirect arleds.com → https://arledscreen.com/tr/";
+  const body = [
+    "Hello Hostinger Support,",
+    "",
+    "Please set a permanent (301) redirect for the entire domain arleds.com",
+    "(including www and both http/https) to:",
+    "",
+    "https://arledscreen.com/tr/",
+    "",
+    "Required mappings:",
+    "http://arleds.com/ → https://arledscreen.com/tr/",
+    "http://www.arleds.com/ → https://arledscreen.com/tr/",
+    "https://arleds.com/ → https://arledscreen.com/tr/",
+    "https://www.arleds.com/ → https://arledscreen.com/tr/",
+    "",
+    "Domain: arleds.com (Hostinger DNS; not on Cloudflare for this account).",
+    "Thank you.",
+  ].join("\n");
+  return { to: HOSTINGER_SUPPORT_TO, subject, body };
+}
+
 export function buildHostingerEmailClipboard() {
-  const lines = [];
-  lines.push("Subject: Permanent 301 redirect arleds.com → https://arledscreen.com/tr/");
-  lines.push("");
-  lines.push("Hello Hostinger Support,");
-  lines.push("");
-  lines.push("Please set a permanent (301) redirect for the entire domain arleds.com");
-  lines.push("(including www and both http/https) to:");
-  lines.push("");
-  lines.push("https://arledscreen.com/tr/");
-  lines.push("");
-  lines.push("Required mappings:");
-  lines.push("http://arleds.com/ → https://arledscreen.com/tr/");
-  lines.push("http://www.arleds.com/ → https://arledscreen.com/tr/");
-  lines.push("https://arleds.com/ → https://arledscreen.com/tr/");
-  lines.push("https://www.arleds.com/ → https://arledscreen.com/tr/");
-  lines.push("");
-  lines.push("Domain: arleds.com (Hostinger DNS; not on Cloudflare for this account).");
-  lines.push("Thank you.");
-  return lines.join("\n");
+  const { subject, body } = buildHostingerEmailParts();
+  return `Subject: ${subject}\n\n${body}`;
+}
+
+/** Click-to-compose URI for the owner's mail client. */
+export function buildHostingerMailto() {
+  const { to, subject, body } = buildHostingerEmailParts();
+  return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+/** RFC 5322 .eml body (no multipart) for import into Gmail/Outlook. */
+export function buildHostingerEml() {
+  const { to, subject, body } = buildHostingerEmailParts();
+  const date = new Date().toUTCString();
+  return [
+    `To: ${to}`,
+    `Subject: ${subject}`,
+    `Date: ${date}`,
+    "MIME-Version: 1.0",
+    "Content-Type: text/plain; charset=UTF-8",
+    "Content-Transfer-Encoding: 8bit",
+    "",
+    body,
+    "",
+  ].join("\r\n");
 }
 
 /** Build plain-text Point C paste document (no markdown fences — easy select-all). */
@@ -115,6 +145,10 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     lines.push("");
     lines.push("--- Hostinger support email (select-all) ---");
     lines.push(buildHostingerEmailClipboard());
+    lines.push("");
+    lines.push("--- Hostinger mailto (click / open in mail client) ---");
+    lines.push(buildHostingerMailto());
+    lines.push("EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml");
     lines.push("");
     lines.push("--- Machine-only (do NOT paste into GBP/IG/FB bios) ---");
     if (en) {
@@ -191,9 +225,24 @@ function printNext(profiles, { en = false } = {}) {
   console.log(step.text);
   console.log("---");
   console.log("");
+  if (step.key === HOSTINGER_STEP) {
+    console.log("### mailto (open in mail client)");
+    console.log(buildHostingerMailto());
+    console.log("EML file: npm run point-c:hostinger-eml");
+    console.log("");
+  }
   console.log(`After paste: npm run point-c:ack -- --pack=${step.key}`);
   console.log("Or: npm run point-c:ack");
   console.log("Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt");
+}
+
+function writeHostingerEml() {
+  const dest = path.join(repoRoot, "docs/ops/arleds-301-hostinger.eml");
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.writeFileSync(dest, buildHostingerEml());
+  console.log(`Wrote ${dest}`);
+  console.log(`mailto: ${buildHostingerMailto()}`);
+  console.log("Open the .eml in Gmail/Outlook, or click the mailto URI.");
 }
 
 function ackStep(profiles, { en = false, pack = "" } = {}) {
@@ -232,7 +281,9 @@ if (isMain) {
   const profiles = JSON.parse(fs.readFileSync(profilesPath, "utf8"));
   const useEn = argFlag("en");
   const only = argValue("pack");
-  if (argFlag("next")) {
+  if (argFlag("eml") || argFlag("hostinger-eml")) {
+    writeHostingerEml();
+  } else if (argFlag("next")) {
     printNext(profiles, { en: useEn });
   } else if (argFlag("ack")) {
     ackStep(profiles, { en: useEn, pack: only });

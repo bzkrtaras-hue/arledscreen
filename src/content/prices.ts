@@ -165,6 +165,7 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
     isBasedOn: [...PRICE_DATASETS.map((d) => d.url), GEO_BASELINE_DATASET.url],
     /** Mirror ai-shopping.json Dataset→Product join on every HTML hub (incl. quote-only groups). */
     hasPart: pricedPanelsHasPartStubs(),
+    // Parity with ai-shopping.json Dataset.distribution invent set (HTML-first agents).
     distribution: [
       {
         "@type": "DataDownload",
@@ -190,6 +191,66 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/merchant.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/modules.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/sku.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/price.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/pricing.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/prices.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/panels.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/mpn.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/merchant.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/modules.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/sku.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/price.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/pricing.json`,
       },
       {
         "@type": "DataDownload",
