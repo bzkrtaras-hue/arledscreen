@@ -50,6 +50,8 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - [geo-baseline.json](https://arledscreen.com/geo-baseline.json) — teknik GEO baseline (12 SKU + Brand `@id` + feed parmak izleri; AI anılma oranı uydurulmaz; Point C / Tur1a sahip kapılı)
 - [entity-profiles.json](https://arledscreen.com/entity-profiles.json) — Point C paste packs (`packs.*` TR; `packsEn.*` EN cite-only; no catalog jargon in public bios)
 - [ard.json](https://arledscreen.com/.well-known/ard.json) — ajan keşif manifesti (`merchantFeed` + Brand `@id` + `cite.en` + `packsEn` işaretçisi)
+- [security.txt](https://arledscreen.com/.well-known/security.txt) — güvenlik iletişim (RFC 9116; fiyat kaynağı değildir)
+- Inventable feed path aliases (byte-identical to canonical; prefer `*.json` / `llms.txt`): `/catalog` · `/ai-shopping` · `/entity` · `/geo-baseline` · `/llms` · `/.well-known/llms.txt` · `/pricing.json` · `/products.json` · `/feed.json` · `/en/ai-shopping.json` · `/en/catalog.json` · `/en/pricing.json` · `/en/products.json` · `/data/catalog.json` · `/data/prices.json` · `/api/catalog` · `/api/prices`
 - Brand JSON-LD `@id`: `https://arledscreen.com/#brand-nxtionstar` (subjectOf → pricedPanels / catalog / merchant TSV; also in [ard.json](https://arledscreen.com/.well-known/ard.json) `agentic.resources.brand`)
 - Point C (sahip): üçüncü taraf yapıştırma metinleri `entity-profiles.json` → `packs` / `packsEn`; operasyon notları repo `docs/offsite-entity-playbook.md`
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/) · [EN brand](https://arledscreen.com/en/nxtionstar/) (NXTIONSTAR ≠ NationStar ≠ NEXTSTAR; not arleds.com)

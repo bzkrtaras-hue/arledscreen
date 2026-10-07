@@ -797,11 +797,22 @@ function writeFeedPathAliases(dir) {
     ["catalog.json", "products.json"],
     ["catalog.json", "en/catalog.json"],
     ["catalog.json", "tr/catalog.json"],
+    ["catalog.json", "en/products.json"],
+    ["catalog.json", "tr/products.json"],
+    ["catalog.json", "data/catalog.json"],
+    ["catalog.json", "api/catalog"],
+    ["catalog.json", "api/products"],
     ["ai-shopping.json", "ai-shopping"],
     ["ai-shopping.json", "pricing.json"],
     ["ai-shopping.json", "feed.json"],
     ["ai-shopping.json", "en/ai-shopping.json"],
     ["ai-shopping.json", "tr/ai-shopping.json"],
+    ["ai-shopping.json", "en/pricing.json"],
+    ["ai-shopping.json", "tr/pricing.json"],
+    ["ai-shopping.json", "en/feed.json"],
+    ["ai-shopping.json", "tr/feed.json"],
+    ["ai-shopping.json", "data/prices.json"],
+    ["ai-shopping.json", "api/prices"],
     ["entity.json", "entity"],
     ["entity.json", "en/entity.json"],
     ["entity.json", "tr/entity.json"],
@@ -973,6 +984,13 @@ feed-alias-en-ai-shopping-json: ${SITE_URL}/en/ai-shopping.json
 feed-alias-en-catalog-json: ${SITE_URL}/en/catalog.json
 feed-alias-pricing-json: ${SITE_URL}/pricing.json
 feed-alias-products-json: ${SITE_URL}/products.json
+feed-alias-en-pricing-json: ${SITE_URL}/en/pricing.json
+feed-alias-en-products-json: ${SITE_URL}/en/products.json
+feed-alias-data-catalog: ${SITE_URL}/data/catalog.json
+feed-alias-data-prices: ${SITE_URL}/data/prices.json
+feed-alias-api-catalog: ${SITE_URL}/api/catalog
+feed-alias-api-prices: ${SITE_URL}/api/prices
+security-txt: ${SITE_URL}/.well-known/security.txt
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/
@@ -1025,6 +1043,18 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     console.error(`postbuild-ai: expected ≥20 feed path aliases, got ${aliasCount}`);
     process.exit(1);
   }
+  // security.txt — trust / contact for agents & researchers (RFC 9116).
+  const securityTxt = `Contact: mailto:arled@arledscreen.com
+Contact: https://arledscreen.com/tr/quote/
+Preferred-Languages: tr, en
+Canonical: https://arledscreen.com/.well-known/security.txt
+Expires: 2027-10-07T00:00:00.000Z
+Policy: https://arledscreen.com/tr/gizlilik/
+Hiring: https://arledscreen.com/tr/about/
+`;
+  writeText(publicDir, ".well-known/security.txt", securityTxt);
+  writeText(outDir, ".well-known/security.txt", securityTxt);
+
   for (const must of [
     "catalog",
     "ai-shopping",
@@ -1032,10 +1062,17 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     "geo-baseline",
     "llms",
     ".well-known/llms.txt",
+    ".well-known/security.txt",
     "en/ai-shopping.json",
     "en/catalog.json",
+    "en/pricing.json",
+    "en/products.json",
     "pricing.json",
     "products.json",
+    "data/catalog.json",
+    "data/prices.json",
+    "api/catalog",
+    "api/prices",
     "en/ai-shopping/index.html",
   ]) {
     if (!fs.existsSync(path.join(outDir, must))) {

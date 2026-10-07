@@ -19,6 +19,7 @@ Allow: /ai.txt
 Allow: /feeds/
 Allow: /.well-known/ard.json
 Allow: /.well-known/llms.txt
+Allow: /.well-known/security.txt
 Allow: /catalog
 Allow: /ai-shopping
 Allow: /entity
@@ -30,7 +31,14 @@ Allow: /en/ai-shopping.json
 Allow: /en/catalog.json
 Allow: /en/entity.json
 Allow: /en/geo-baseline.json
+Allow: /en/pricing.json
+Allow: /en/products.json
 Allow: /en/llms.txt
+Allow: /data/catalog.json
+Allow: /data/prices.json
+Allow: /api/catalog
+Allow: /api/products
+Allow: /api/prices
 
 User-Agent: bingbot
 Allow: /

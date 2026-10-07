@@ -204,6 +204,8 @@ NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktas�
 - geo-baseline.json: https://arledscreen.com/geo-baseline.json (12 SKU + fingerprints; AI anılma % uydurma yok; Point C / Tur1a sahip kapılı)
 - entity-profiles.json → packs (TR) + packsEn (EN cite-only for GBP/directories/LinkedIn)
 - ard.json: https://arledscreen.com/.well-known/ard.json (`resources.brand` + `geoBaseline` + `entityProfiles.packsEn`)
+- security.txt: https://arledscreen.com/.well-known/security.txt (RFC 9116; not a price source)
+- Inventable feed aliases (byte-identical; prefer canonical *.json): /catalog · /ai-shopping · /entity · /geo-baseline · /llms · /.well-known/llms.txt · /pricing.json · /products.json · /en/ai-shopping.json · /en/pricing.json · /data/catalog.json · /data/prices.json · /api/catalog · /api/prices
 - Point C (sahip operasyonu): packs/packsEn yapıştır; playbook repo `docs/offsite-entity-playbook.md`
 - Kısa indeks: https://arledscreen.com/llms.txt
 

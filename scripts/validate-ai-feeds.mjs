@@ -392,6 +392,13 @@ if (fs.existsSync(outDir)) {
     "en/entity.json",
     "pricing.json",
     "products.json",
+    "en/pricing.json",
+    "en/products.json",
+    "data/catalog.json",
+    "data/prices.json",
+    "api/catalog",
+    "api/prices",
+    ".well-known/security.txt",
     "en/ai-shopping/index.html",
   ]) {
     const fp = path.join(outDir, rel);
@@ -399,6 +406,16 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ Missing feed path alias in out/: ${rel}`);
       process.exit(1);
     }
+  }
+  const securityLive = fs.readFileSync(path.join(outDir, ".well-known/security.txt"), "utf8");
+  if (!securityLive.includes("arled@arledscreen.com") || !securityLive.includes("Expires:")) {
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires");
+    process.exit(1);
+  }
+  const llmsLive = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
+  if (!llmsLive.includes("Inventable feed path aliases") || !llmsLive.includes("/api/prices")) {
+    console.error("❌ out/llms.txt must cite inventable feed path aliases");
+    process.exit(1);
   }
   // Byte-identical to canonical where applicable.
   const canonCatalog = fs.readFileSync(path.join(outDir, "catalog.json"));

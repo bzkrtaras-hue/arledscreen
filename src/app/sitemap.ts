@@ -244,7 +244,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  // Machine-readable AI / GEO discovery surfaces
+  // Machine-readable AI / GEO discovery surfaces (+ inventable path aliases)
   for (const path of [
     "/ai-shopping.json",
     "/catalog.json",
@@ -255,7 +255,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/llms-full.txt",
     "/ai.txt",
     "/.well-known/ard.json",
+    "/.well-known/llms.txt",
+    "/.well-known/security.txt",
     "/feeds/merchant-priced-panels.tsv",
+    "/catalog",
+    "/ai-shopping",
+    "/entity",
+    "/geo-baseline",
+    "/llms",
+    "/pricing.json",
+    "/products.json",
+    "/en/ai-shopping.json",
+    "/en/catalog.json",
+    "/en/pricing.json",
+    "/en/products.json",
+    "/data/catalog.json",
+    "/data/prices.json",
+    "/api/catalog",
+    "/api/prices",
   ]) {
     entries.push({
       url: absoluteUrl(path),
