@@ -1078,6 +1078,9 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/catalog.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/geo-baseline.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/point-c.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/.well-known/modules.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/sku.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/pricing.json" rel="related" type="application/ld+json"/>
     <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
@@ -1181,7 +1184,7 @@ function enrichEntityDocument(entity) {
   ) {
     entity.mainEntityOfPage = websiteNode();
   }
-  // Org → Point C reverse invent (not Brand.subjectOf / BRAND_SUBJECT_DATASETS — keep PDP graphs clean).
+  // Org → Point C + Brand document reverse invent (keep PDP graphs clean).
   const pointCEntry = {
     "@type": "DataDownload",
     "@id": `${SITE_URL}/point-c.txt`,
@@ -1189,10 +1192,20 @@ function enrichEntityDocument(entity) {
     url: `${SITE_URL}/point-c.txt`,
     encodingFormat: "text/plain",
   };
-  const subjectOf = Array.isArray(entity.subjectOf) ? entity.subjectOf : [];
+  const brandDocEntry = {
+    "@type": "Brand",
+    "@id": `${SITE_URL}/#brand-nxtionstar`,
+    name: "NXTIONSTAR",
+    url: `${SITE_URL}/brand.json`,
+  };
+  let subjectOf = Array.isArray(entity.subjectOf) ? [...entity.subjectOf] : [];
   if (!subjectOf.some((s) => String(s?.url || s?.["@id"] || "").includes("/point-c.txt"))) {
-    entity.subjectOf = [...subjectOf, pointCEntry];
+    subjectOf = [...subjectOf, pointCEntry];
   }
+  if (!subjectOf.some((s) => String(s?.url || "").includes("/brand.json"))) {
+    subjectOf = [...subjectOf, brandDocEntry];
+  }
+  entity.subjectOf = subjectOf;
   return entity;
 }
 

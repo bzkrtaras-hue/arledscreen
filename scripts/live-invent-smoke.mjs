@@ -215,8 +215,12 @@ try {
   fail(`ai-shopping/humans/entity FAQ invent ${e?.message || e}`);
 }
 
-if (JSON.stringify(ent.subjectOf || []).includes("/point-c.txt")) ok("entity.subjectOf → point-c");
-else fail("entity.subjectOf → point-c");
+if (
+  JSON.stringify(ent.subjectOf || []).includes("/point-c.txt") &&
+  JSON.stringify(ent.subjectOf || []).includes("/brand.json")
+) {
+  ok("entity.subjectOf → point-c + brand.json");
+} else fail("entity.subjectOf → point-c + brand.json");
 
 if (
   JSON.stringify(brand.subjectOf || []).includes("/point-c.txt") &&

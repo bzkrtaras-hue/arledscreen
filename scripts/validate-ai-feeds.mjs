@@ -1397,9 +1397,12 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/geo-baseline.json") ||
       !rssLive.includes("/point-c.txt") ||
       !rssLive.includes("/.well-known/modules.json") ||
-      !rssLive.includes("/.well-known/pricing.json")
+      !rssLive.includes("/.well-known/sku.json") ||
+      !rssLive.includes("/.well-known/pricing.json") ||
+      !rssLive.includes('rel="related"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/modules.json"')
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo-baseline/point-c + invent aliases");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c + well-known invent");
       process.exit(1);
     }
   }
@@ -1871,6 +1874,10 @@ if (fs.existsSync(outDir)) {
   }
   if (!subjectUrls.some((u) => u.includes("/point-c.txt"))) {
     console.error("❌ entity.json subjectOf must include /point-c.txt DataDownload (reverse invent)");
+    process.exit(1);
+  }
+  if (!subjectUrls.some((u) => u.includes("/brand.json"))) {
+    console.error("❌ entity.json subjectOf must include /brand.json Brand document (reverse invent)");
     process.exit(1);
   }
   {

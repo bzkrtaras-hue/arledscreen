@@ -58,6 +58,15 @@ line(
   "arleds.com → arledscreen.com/tr/ 301",
   arledsOk ? "all probes OK" : `see docs/ops/arleds-301-hostinger.md · npm run verify:arleds-301`,
 );
+if (!arledsOk) {
+  console.log("  Hostinger clipboard (permanent 301 entire domain):");
+  console.log("  hPanel → Domains → arleds.com → Redirects");
+  console.log("  http://arleds.com/ → https://arledscreen.com/tr/");
+  console.log("  http://www.arleds.com/ → https://arledscreen.com/tr/");
+  console.log("  https://arleds.com/ → https://arledscreen.com/tr/");
+  console.log("  https://www.arleds.com/ → https://arledscreen.com/tr/");
+  console.log("  Also: npm run point-c · https://arledscreen.com/point-c.txt");
+}
 
 // Tur1a observations (exclude code-harden platform noise for "human blind" count)
 const HUMAN_PLATFORMS = ["chatgpt", "gemini", "perplexity", "google_aio"];

@@ -96,6 +96,10 @@ jobs:
           grep -q '"modulesJson"' out/.well-known/ard.json
           grep -q '"skuJson"' out/.well-known/ard.json
           grep -q "/.well-known/modules.json" out/feeds/prices.rss
+          grep -q 'href="https://arledscreen.com/.well-known/modules.json"' out/feeds/prices.rss
+          grep -q "/brand.json" out/entity.json
           npm run verify:arleds-301 >/tmp/arleds-verify.txt 2>&1 || true
           grep -q "Hostinger clipboard" /tmp/arleds-verify.txt
+          npm run geo:status >/tmp/geo-status.txt 2>&1 || true
+          grep -q "Hostinger clipboard" /tmp/geo-status.txt
           echo "OK owner tooling"
