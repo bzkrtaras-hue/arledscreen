@@ -5,6 +5,7 @@ const ENTITY_JSON_URL = `${SITE_URL}/entity.json`;
 const CATALOG_JSON_URL = `${SITE_URL}/catalog.json`;
 const AI_SHOPPING_URL = `${SITE_URL}/ai-shopping.json`;
 const GEO_BASELINE_URL = `${SITE_URL}/geo-baseline.json`;
+const MERCHANT_TSV_URL = `${SITE_URL}/feeds/merchant-priced-panels.tsv`;
 const ARD_URL = `${SITE_URL}/.well-known/ard.json`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
@@ -18,6 +19,9 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: AI_SHOPPING_URL, title: "AI Shopping Index" },
         { url: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
         { url: ARD_URL, title: "Agentic Resource Discovery" },
+      ],
+      "text/tab-separated-values": [
+        { url: MERCHANT_TSV_URL, title: "Merchant Priced Panels TSV" },
       ],
       "text/plain": [
         { url: LLMS_URL, title: "LLM Context (Short)" },
@@ -33,6 +37,12 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping Index" },
   { rel: "alternate", type: "application/ld+json", href: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
   { rel: "alternate", type: "application/ld+json", href: ARD_URL, title: "Agentic Resource Discovery" },
+  {
+    rel: "alternate",
+    type: "text/tab-separated-values",
+    href: MERCHANT_TSV_URL,
+    title: "Merchant Priced Panels TSV",
+  },
   { rel: "alternate", type: "text/plain", href: LLMS_URL, title: "LLM Context (Short)" },
   { rel: "alternate", type: "text/plain", href: LLMS_FULL_URL, title: "LLM Context (Full)" },
 ];

@@ -183,7 +183,9 @@ function buildCatalog() {
       offers: {
         "@type": "Offer",
         "@id": `${SITE_URL}/catalog.json#offer-${panel.id}`,
-        url: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
+        // Per-SKU Offer URL = PDP (same as product.url / merchant TSV / ai-shopping).
+        // Collection.url stays the price hub; do not point every Offer at the hub.
+        url: panel.productUrl,
         price: panel.usd.toFixed(2),
         priceCurrency: "USD",
         priceSpecification: {
@@ -388,6 +390,7 @@ function buildAiShopping() {
       `${SITE_URL}/entity.json`,
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      `${SITE_URL}/geo-baseline.json`,
       `${SITE_URL}/.well-known/ard.json`,
     ],
     dateModified: new Date().toISOString().split("T")[0],

@@ -195,6 +195,35 @@ if (fs.existsSync(outDir)) {
     console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping and brand @id #brand-nxtionstar");
     process.exit(1);
   }
+  // Product↔Offer identity: each catalog Offer.url must equal its Product.url (PDP),
+  // not the price-hub Collection.url — keeps catalog aligned with ai-shopping + merchant TSV.
+  const catalogItems = catalogLive?.mainEntity?.itemListElement || [];
+  if (!Array.isArray(catalogItems) || catalogItems.length !== 12) {
+    console.error(
+      `❌ catalog.json mainEntity.itemListElement must list 12 products, got ${Array.isArray(catalogItems) ? catalogItems.length : typeof catalogItems}`,
+    );
+    process.exit(1);
+  }
+  for (const product of catalogItems) {
+    const productUrl = product?.url;
+    const offerUrl = product?.offers?.url;
+    const id = product?.["@id"] || productUrl || "?";
+    if (!productUrl || !offerUrl || productUrl !== offerUrl) {
+      console.error(
+        `❌ catalog Offer.url must equal Product.url (PDP): ${id} product=${productUrl} offer=${offerUrl}`,
+      );
+      process.exit(1);
+    }
+    if (offerUrl.includes("/led-ekran-fiyatlari/")) {
+      console.error(`❌ catalog Offer.url must not point at price hub: ${id}`);
+      process.exit(1);
+    }
+  }
+  const aiBasedOn = JSON.stringify(ai?.isBasedOn || []);
+  if (!aiBasedOn.includes("/geo-baseline.json")) {
+    console.error("❌ ai-shopping.json isBasedOn must include geo-baseline.json");
+    process.exit(1);
+  }
   if (!ai?.resources?.en?.home || !ai.resources.en.calculator) {
     console.error("❌ ai-shopping.json resources.en.home + calculator required");
     process.exit(1);
