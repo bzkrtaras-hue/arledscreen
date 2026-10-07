@@ -64,6 +64,13 @@ feed-alias-en-ai-shopping-json: https://arledscreen.com/en/ai-shopping.json
 feed-alias-en-catalog-json: https://arledscreen.com/en/catalog.json
 feed-alias-pricing-json: https://arledscreen.com/pricing.json
 feed-alias-products-json: https://arledscreen.com/products.json
+feed-alias-en-pricing-json: https://arledscreen.com/en/pricing.json
+feed-alias-en-products-json: https://arledscreen.com/en/products.json
+feed-alias-data-catalog: https://arledscreen.com/data/catalog.json
+feed-alias-data-prices: https://arledscreen.com/data/prices.json
+feed-alias-api-catalog: https://arledscreen.com/api/catalog
+feed-alias-api-prices: https://arledscreen.com/api/prices
+security-txt: https://arledscreen.com/.well-known/security.txt
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/

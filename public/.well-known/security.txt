@@ -1,0 +1,7 @@
+Contact: mailto:arled@arledscreen.com
+Contact: https://arledscreen.com/tr/quote/
+Preferred-Languages: tr, en
+Canonical: https://arledscreen.com/.well-known/security.txt
+Expires: 2027-10-07T00:00:00.000Z
+Policy: https://arledscreen.com/tr/gizlilik/
+Hiring: https://arledscreen.com/tr/about/
