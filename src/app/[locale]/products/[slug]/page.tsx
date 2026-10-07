@@ -11,6 +11,7 @@ import {
   PRICE_VALID_UNTIL,
   fmtM2,
   fmtUsd,
+  nxtionstarBrandRef,
   panelProductsJsonLd,
   pricedPanelsDatasetJsonLd,
   pricesForGroup,
@@ -113,7 +114,10 @@ export default async function ProductGroupPage({ params }: PageProps) {
     url,
     image: absoluteUrl(g.image),
     provider: { "@id": `${SITE_URL}/#organization` },
-    brand: { "@type": "Brand", name: g.brandName ?? "NXTIONSTAR" },
+    brand:
+      (g.brandName ?? "NXTIONSTAR") === "NXTIONSTAR"
+        ? nxtionstarBrandRef()
+        : { "@type": "Brand", name: g.brandName },
     areaServed: { "@type": "Country", name: "Türkiye" },
     isRelatedTo: PRICE_DATASETS,
     ...(prices.length

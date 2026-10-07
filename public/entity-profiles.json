@@ -9,7 +9,7 @@
   },
   "isBasedOn": "https://arledscreen.com/entity.json",
   "license": "https://arledscreen.com/tr/about/",
-  "dateModified": "2026-10-06",
+  "dateModified": "2026-10-07",
   "packs": {
     "gbpDescription": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
     "linkedinAbout": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nWeb: https://arledscreen.com/tr/\nTelefon: +90 530 507 88 34\nDoğrulama: https://arledscreen.com/entity.json",
@@ -39,7 +39,8 @@
       "Yapıştırırken bir kez yapıştırın; metni iki kez tekrarlamayın.",
       "Posta kodu 34245 (34242 değil). Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, Gaziosmanpaşa / İstanbul.",
       "Instagram Adı: packs.instagramName = ARLEDSCREEN (emoji / ‘Led Ekran…’ uydurma ek yok).",
-      "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar."
+      "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar.",
+      "EN human packs: packsEn.* (cite + NAP only; no catalog.json / quote-only jargon in public bios)."
     ]
   },
   "ownerP0Checklist": [
@@ -49,7 +50,8 @@
     "Bing Places / Apple = packs.bingPlaces / packs.appleBusinessConnect",
     "Merchant jargon yalnızca packs.googleMerchantReadiness — kamu biyografisine koyma",
     "PR #60 main merge (GEO kalıcılık)",
-    "Tur 1a skorları uydurma — kota/sahip ölçümü"
+    "Tur 1a skorları uydurma — kota/sahip ölçümü",
+    "EN profiles (if used): packsEn.gbpDescription / directoryLong — cite-only"
   ],
   "canonicalUrls": {
     "entityJson": "https://arledscreen.com/entity.json",
@@ -61,6 +63,15 @@
     "founder": "https://arledscreen.com/tr/about/aras-bozkurt/",
     "nxtionstar": "https://arledscreen.com/tr/nxtionstar/",
     "fiyat": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
-    "playbook": "docs/offsite-entity-playbook.md (repo)"
+    "playbook": "docs/offsite-entity-playbook.md (repo)",
+    "enHome": "https://arledscreen.com/en/"
+  },
+  "packsEn": {
+    "gbpDescription": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.",
+    "linkedinAbout": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.\n\nWeb: https://arledscreen.com/en/\nPhone: +90 530 507 88 34\nVerify: https://arledscreen.com/entity.json",
+    "instagramBio": "Istanbul LED · NXTIONSTAR\nSales · install · service\narledscreen.com/en/\n+90 530 507 88 34",
+    "directoryShort": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.",
+    "directoryLong": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nAddress: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul\nPhone: +90 530 507 88 34\nEmail: arled@arledscreen.com\nWeb: https://arledscreen.com/en/",
+    "bingPlaces": "ARLEDSCREEN\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / Istanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/en/\n\nShort: ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.\nCategory: LED display / Digital signage."
   }
 }

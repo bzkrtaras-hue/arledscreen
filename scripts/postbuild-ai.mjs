@@ -163,7 +163,12 @@ function buildCatalog() {
       position: index + 1,
       name: `NXTIONSTAR ${label} LED Modül (${moduleSize})`,
       description: `${label} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.`,
-      brand: { "@type": "Brand", name: "NXTIONSTAR" },
+      brand: {
+        "@type": "Brand",
+        "@id": `${SITE_URL}/#brand-nxtionstar`,
+        name: "NXTIONSTAR",
+        url: `${SITE_URL}/tr/nxtionstar/`,
+      },
       category: "LED ekran paneli",
       image: `${SITE_URL}${panel.image}`,
       url: panel.productUrl,

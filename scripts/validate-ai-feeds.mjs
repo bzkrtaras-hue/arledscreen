@@ -139,6 +139,15 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json must expose merchantFeed TSV URL");
     process.exit(1);
   }
+  if (entity?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar") {
+    console.error("❌ entity.json brand.@id must be #brand-nxtionstar");
+    process.exit(1);
+  }
+  const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
+  if (!profiles?.packsEn?.gbpDescription) {
+    console.error("❌ entity-profiles.json packsEn.gbpDescription required");
+    process.exit(1);
+  }
   const subjectUrls = (entity.subjectOf || []).map((s) => s.url || "");
   if (!subjectUrls.some((u) => u.includes("/feeds/merchant-priced-panels.tsv"))) {
     console.error("❌ entity.json subjectOf must include merchant TSV Dataset");

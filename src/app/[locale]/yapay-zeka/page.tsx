@@ -7,6 +7,7 @@ import { GlassPanel } from "@/components/ui/glass-panel";
 import { Button } from "@/components/ui/button";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { getSeo } from "@/content/seo";
 import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
@@ -193,12 +194,20 @@ export default async function YapayZekaPage({ params }: PageProps) {
       />
       <FaqJsonLd faqs={c.faqs} />
       {locale === "tr" || locale === "en" ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/yapay-zeka/`))),
-          }}
-        />
+        <>
+          <SpeakableJsonLd
+            pageUrl={absoluteUrl(`/${locale}/yapay-zeka/`)}
+            name={seo.h1 ?? c.navLabel}
+            description={seo.description}
+            cssSelectors={["#yz-price-title", "#yz-price-body"]}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/yapay-zeka/`))),
+            }}
+          />
+        </>
       ) : null}
 
       <script
@@ -257,10 +266,12 @@ export default async function YapayZekaPage({ params }: PageProps) {
           </GlassPanel>
 
           <GlassPanel className="max-w-3xl p-6">
-            <h2 className="font-display text-lg font-bold text-ink">
+            <h2 id="yz-price-title" className="font-display text-lg font-bold text-ink">
               {c.priceTitle}
             </h2>
-            <p className="mt-3 text-sm leading-[1.7] text-ink-soft">{c.priceBody}</p>
+            <p id="yz-price-body" className="mt-3 text-sm leading-[1.7] text-ink-soft">
+              {c.priceBody}
+            </p>
             <ul className="mt-4 flex flex-wrap gap-3 text-sm">
               {c.priceLinks.map((l) => (
                 <li key={l.href}>

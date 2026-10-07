@@ -1,5 +1,5 @@
 import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
-import { PRICE_DATASETS } from "@/content/prices";
+import { NXTIONSTAR_BRAND_ID, PRICE_DATASETS, nxtionstarBrandNode } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS,
@@ -38,6 +38,7 @@ export function OrganizationJsonLd() {
         inLanguage: ["tr-TR", "en-US"],
         publisher: { "@id": `${SITE_URL}/#organization` },
       },
+      nxtionstarBrandNode(),
       {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
@@ -53,7 +54,7 @@ export function OrganizationJsonLd() {
         telephone: CONTACT_PHONE_E164,
         address,
         sameAs: [...ORGANIZATION_SAME_AS],
-        brand: { "@type": "Brand", name: "NXTIONSTAR", url: absoluteUrl("/tr/nxtionstar/") },
+        brand: { "@id": NXTIONSTAR_BRAND_ID },
         subjectOf: PRICE_DATASETS,
         founder: {
           "@type": "Person",

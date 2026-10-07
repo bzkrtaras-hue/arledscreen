@@ -126,7 +126,7 @@ export type EntityDocument = {
   hasMap: string;
   openingHours: string[];
   sameAs: string[];
-  brand: { "@type": "Brand"; name: string; url: string };
+  brand: { "@type": "Brand"; "@id": string; name: string; url: string; subjectOf?: unknown };
   founder: { "@type": "Person"; name: string; url?: string; sameAs?: string[] };
   citationPage: string;
   llmsTxt: string;
@@ -180,8 +180,29 @@ export function buildEntityDocument(): EntityDocument {
     sameAs: [...ORGANIZATION_SAME_AS],
     brand: {
       "@type": "Brand",
+      "@id": `${SITE_URL}/#brand-nxtionstar`,
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
+      subjectOf: [
+        {
+          "@type": "Dataset",
+          "@id": `${SITE_URL}/ai-shopping.json`,
+          url: `${SITE_URL}/ai-shopping.json`,
+          name: "ARLEDSCREEN pricedPanels",
+        },
+        {
+          "@type": "Dataset",
+          "@id": `${SITE_URL}/catalog.json`,
+          url: `${SITE_URL}/catalog.json`,
+          name: "ARLEDSCREEN panel catalog",
+        },
+        {
+          "@type": "Dataset",
+          "@id": `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+          url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+          name: "ARLEDSCREEN merchant priced panels TSV",
+        },
+      ],
     },
     founder: {
       "@type": "Person",

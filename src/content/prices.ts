@@ -44,6 +44,27 @@ export const PRICE_DATASETS = [
   },
 ];
 
+/** Stable Brand @id — Org/Product graphs + catalog Offers point here. */
+export const NXTIONSTAR_BRAND_ID = `${SITE_URL}/#brand-nxtionstar`;
+
+/** Full Brand node (use once in @graph); Product/Org may reference via `@id` only. */
+export function nxtionstarBrandNode() {
+  return {
+    "@type": "Brand" as const,
+    "@id": NXTIONSTAR_BRAND_ID,
+    name: "NXTIONSTAR",
+    url: `${SITE_URL}/tr/nxtionstar/`,
+    subjectOf: PRICE_DATASETS,
+    description:
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV.",
+  };
+}
+
+/** Compact Brand ref for Product/Service nodes. */
+export function nxtionstarBrandRef() {
+  return { "@type": "Brand" as const, "@id": NXTIONSTAR_BRAND_ID, name: "NXTIONSTAR" };
+}
+
 export const PANELS_PER_M2 = 1 / (0.32 * 0.16);
 export const CALC_EXTRAS = {
   laborPerM2: 100,
@@ -205,7 +226,7 @@ export function panelProductsJsonLd(
     "@type": "Product",
     "@id": urlFor?.(p) ? `${u}#product` : `${pageUrl}#${p.id}`,
     name: `${panelLabel(p)} LED ekran modülü (${panelModule(p)})`,
-    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    brand: nxtionstarBrandRef(),
     category: "LED ekran modülü",
     description: `${panelLabel(p)} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.`,
     url: u,
@@ -220,14 +241,14 @@ export function panelProductsJsonLd(
   };
   });
   const usd = panels.map((p) => p.usd);
-  const graph: Record<string, unknown>[] = [...products];
+  const graph: Record<string, unknown>[] = [nxtionstarBrandNode(), ...products];
   if (serviceName) {
-    graph.unshift({
+    graph.splice(1, 0, {
       "@type": "Service",
       "@id": `${pageUrl}#service`,
       name: serviceName,
       provider: org,
-      brand: { "@type": "Brand", name: "NXTIONSTAR" },
+      brand: nxtionstarBrandRef(),
       areaServed: { "@type": "Country", name: "Türkiye" },
       url: pageUrl,
       isRelatedTo: PRICE_DATASETS,

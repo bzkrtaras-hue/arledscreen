@@ -38,8 +38,29 @@
   ],
   "brand": {
     "@type": "Brand",
+    "@id": "https://arledscreen.com/#brand-nxtionstar",
     "name": "NXTIONSTAR",
-    "url": "https://arledscreen.com/tr/nxtionstar/"
+    "url": "https://arledscreen.com/tr/nxtionstar/",
+    "subjectOf": [
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/ai-shopping.json",
+        "url": "https://arledscreen.com/ai-shopping.json",
+        "name": "ARLEDSCREEN pricedPanels"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/catalog.json",
+        "url": "https://arledscreen.com/catalog.json",
+        "name": "ARLEDSCREEN panel catalog"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+        "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+        "name": "ARLEDSCREEN merchant priced panels TSV"
+      }
+    ]
   },
   "founder": {
     "@type": "Person",

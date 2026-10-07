@@ -18,6 +18,7 @@ import {
   CALC_EXTRAS,
   PRICE_DATASETS,
   fmtUsd,
+  nxtionstarBrandRef,
   panelM2,
   panelModule,
   panelOffer,
@@ -135,7 +136,10 @@ export default async function ModelPage({ params }: PageProps) {
     "@id": `${url}#product`,
     name: m.name,
     sku: `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`,
-    brand: { "@type": "Brand", name: brandName },
+    brand:
+      brandName === "NXTIONSTAR"
+        ? nxtionstarBrandRef()
+        : { "@type": "Brand", name: brandName },
     itemCondition: "https://schema.org/NewCondition",
     category: m.kind === "kontrol" ? `${g.name}` : `${g.name} modülü`,
     image: absoluteUrl(m.image),

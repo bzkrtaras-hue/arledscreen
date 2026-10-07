@@ -8,6 +8,10 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
   contained?: boolean;
   /** Render the title as the page H1 (for top-of-page sections). */
   titleAs?: "h1" | "h2";
+  /** Optional DOM id on the title (e.g. SpeakableSpecification cssSelector). */
+  titleId?: string;
+  /** Optional DOM id on the description paragraph. */
+  descriptionId?: string;
   children?: ReactNode;
 }
 
@@ -18,6 +22,8 @@ export function Section({
   description,
   contained = true,
   titleAs = "h2",
+  titleId,
+  descriptionId,
   children,
   ...props
 }: SectionProps) {
@@ -44,12 +50,18 @@ export function Section({
               </p>
             )}
             {title && (
-              <TitleTag className="max-w-2xl text-balance font-display text-[clamp(1.5rem,1.15rem+1.6vw,2.35rem)] font-bold tracking-[-0.025em] text-ink">
+              <TitleTag
+                id={titleId}
+                className="max-w-2xl text-balance font-display text-[clamp(1.5rem,1.15rem+1.6vw,2.35rem)] font-bold tracking-[-0.025em] text-ink"
+              >
                 {title}
               </TitleTag>
             )}
             {description && (
-              <p className="mt-3 max-w-2xl text-pretty text-base leading-[1.65] text-ink-soft sm:mt-4 sm:text-[1.0625rem]">
+              <p
+                id={descriptionId}
+                className="mt-3 max-w-2xl text-pretty text-base leading-[1.65] text-ink-soft sm:mt-4 sm:text-[1.0625rem]"
+              >
                 {description}
               </p>
             )}

@@ -4,7 +4,7 @@ import { getProducts, CATEGORY_LABELS_TR } from "@/content/products";
 import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { nxtionstarBrandNode, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BUSINESS_NAP_LINE, CONTACT_EMAIL } from "@/lib/social";
@@ -52,12 +52,10 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
   const url = absoluteUrl("/tr/nxtionstar/");
   const brandLd = {
     "@context": "https://schema.org",
-    "@type": "Brand",
-    "@id": `${url}#brand`,
-    name: "NXTIONSTAR",
-    url,
+    ...nxtionstarBrandNode(),
     logo: absoluteUrl("/brand/nxtionstar-logo.png"),
-    description: "ARLEDSCREEN'in kendi LED ekran markası. Türkiye'deki tek satış noktası: ARLEDSCREEN.",
+    // Keep page URL as sameAs of the stable #brand-nxtionstar node.
+    sameAs: [url],
   };
   return (
     <>

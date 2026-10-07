@@ -14,6 +14,7 @@ import {
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
@@ -47,6 +48,7 @@ export default async function QuotePage({ params }: PageProps) {
   const locale = raw as Locale;
   const dict = getDictionary(locale);
   const seo = getSeo(locale, "quote");
+  const quoteUrl = absoluteUrl(`/${locale}/quote/`);
 
   return (
     <>
@@ -57,12 +59,20 @@ export default async function QuotePage({ params }: PageProps) {
         ]}
       />
       {(locale === "tr" || locale === "en") ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/quote/`))),
-          }}
-        />
+        <>
+          <SpeakableJsonLd
+            pageUrl={quoteUrl}
+            name={seo.h1 ?? dict.page.quote.title}
+            description={seo.description}
+            cssSelectors={["#quote-h1", "#quote-lead"]}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(quoteUrl)),
+            }}
+          />
+        </>
       ) : null}
       {locale === "tr" ? (
         <>
@@ -97,10 +107,16 @@ export default async function QuotePage({ params }: PageProps) {
               <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0B1B33]/90 to-[#0B1B33]/60" aria-hidden />
               <div className="mx-auto max-w-3xl px-5 py-12 text-center md:py-16">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#9CC0F5]">{dict.page.quote.eyebrow}</p>
-                <h1 className="mt-3 text-balance font-display text-[clamp(1.9rem,1.3rem+2.4vw,3rem)] font-extrabold tracking-[-0.03em] text-white">
+                <h1
+                  id="quote-h1"
+                  className="mt-3 text-balance font-display text-[clamp(1.9rem,1.3rem+2.4vw,3rem)] font-extrabold tracking-[-0.03em] text-white"
+                >
                   {seo.h1 ?? dict.page.quote.title}
                 </h1>
-                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/85">
+                <p
+                  id="quote-lead"
+                  className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/85"
+                >
                   {seo.intro ?? dict.page.quote.description}
                 </p>
               </div>
@@ -194,6 +210,8 @@ export default async function QuotePage({ params }: PageProps) {
       ) : (
       <Section
         titleAs="h1"
+        titleId="quote-h1"
+        descriptionId="quote-lead"
         eyebrow={dict.page.quote.eyebrow}
         title={seo.h1 ?? dict.page.quote.title}
         description={seo.intro ?? dict.page.quote.description}
