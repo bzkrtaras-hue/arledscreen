@@ -101,6 +101,9 @@ export function pricedPanelsHasPartStubs() {
       url,
       sku: p.id,
       mpn: p.id,
+      // Dataset→stub → catalog Collection identity (cheap join without expanding pricedPanels).
+      sameAs: [`${SITE_URL}/catalog.json#${p.id}`],
+      mainEntityOfPage: url,
     };
   });
 }
@@ -221,6 +224,8 @@ export function panelOffer(url: string, usd: number, opts?: { sku?: string; offe
             : {}),
         }
       : {}),
+    // Offer-only resolvers (shopping/Merchant merges) key price rows by sku/mpn.
+    ...(sku ? { sku, mpn: sku } : {}),
     url,
     price: usd.toFixed(2),
     priceCurrency: "USD",
@@ -314,6 +319,8 @@ export function panelProductsJsonLd(
     url: u,
     // Join AggregateOffer hub Product ↔ catalog.json#sku (PDP/ai-shopping parity).
     sameAs: [`${SITE_URL}/catalog.json#${p.id}`],
+    // Human price page join (catalog/ai-shopping parity) — PDP when urlFor resolves.
+    mainEntityOfPage: u,
     ...(p.image ? { image: `${SITE_URL}${p.image}` } : {}),
     additionalProperty: [
       { "@type": "PropertyValue", name: "Piksel aralığı", value: p.pitchMm, unitText: "mm" },

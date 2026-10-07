@@ -211,6 +211,9 @@ function buildCatalog() {
         "@id": `${SITE_URL}/catalog.json#offer-${panel.id}`,
         // Bidirectional join with ai-shopping Offer @id (pricedPanels).
         sameAs: [`${SITE_URL}/ai-shopping.json#offer-${panel.id}`],
+        // Offer-only resolvers key by sku/mpn (honest mpn=sku).
+        sku: panel.id,
+        mpn: panel.id,
         // Per-SKU Offer URL = PDP (same as product.url / merchant TSV / ai-shopping).
         // Collection.url stays the price hub; do not point every Offer at the hub.
         url: panel.productUrl,
@@ -407,6 +410,8 @@ function buildAiShopping() {
       isPartOf: { "@type": "Dataset", "@id": datasetId, url: datasetId, name: "ARLEDSCREEN pricedPanels" },
       // Join catalog Product @id (catalog.json#sku) ↔ PDP Product @id (…/#product).
       sameAs: [`${SITE_URL}/catalog.json#${panel.id}`],
+      // Catalog parity: agents that only fetch ai-shopping still get the human PDP join.
+      mainEntityOfPage: panel.productUrl,
       price,
       priceCurrency: "USD",
       priceValidUntil: PRICE_VALID_UNTIL,
@@ -420,6 +425,8 @@ function buildAiShopping() {
         "@id": `${SITE_URL}/ai-shopping.json#offer-${panel.id}`,
         // Parity with catalog Offer @id + HTML panelOffer() fields.
         sameAs: [`${SITE_URL}/catalog.json#offer-${panel.id}`],
+        sku: panel.id,
+        mpn: panel.id,
         url: panel.productUrl,
         price,
         priceCurrency: "USD",
@@ -497,6 +504,8 @@ function buildAiShopping() {
       url: p.url,
       sku: p.sku,
       mpn: p.sku, // honest mpn=sku; stub keeps Dataset→Product join cheap for agents
+      sameAs: [`${SITE_URL}/catalog.json#${p.sku}`],
+      mainEntityOfPage: p.url,
     })),
     // Schema.org DataDownload graph — parity with HTML Dataset on product hubs / yapay-zeka.
     // Agents that only fetch ai-shopping.json still see invent aliases as downloadable encodings.

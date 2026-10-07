@@ -207,6 +207,8 @@ export default async function ModelPage({ params }: PageProps) {
     image: absoluteUrl(m.image),
     description,
     url,
+    // Human page join (catalog/ai-shopping mainEntityOfPage parity).
+    mainEntityOfPage: url,
     // Join PDP Product ↔ catalog.json#sku (ai-shopping hasPart uses this @id).
     ...(price ? { sameAs: [`${SITE_URL}/catalog.json#${catalogSku}`] } : {}),
     additionalProperty: specRows

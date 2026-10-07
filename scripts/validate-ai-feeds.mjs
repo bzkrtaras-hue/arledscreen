@@ -125,6 +125,17 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/ai-shopping.json Dataset hasPart stubs must set mpn=sku");
     process.exit(1);
   }
+  if (
+    !ai.hasPart.every(
+      (p) =>
+        Array.isArray(p?.sameAs) &&
+        p.sameAs.some((u) => String(u).includes(`/catalog.json#${p.sku}`)) &&
+        p.mainEntityOfPage === p.url,
+    )
+  ) {
+    console.error("❌ out/ai-shopping.json hasPart stubs must sameAs catalog#sku + mainEntityOfPage=url");
+    process.exit(1);
+  }
   if (!ai.pricedPanels.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
     console.error("❌ every pricedPanels Product must isPartOf ai-shopping.json Dataset");
     process.exit(1);
@@ -313,6 +324,10 @@ if (fs.existsSync(outDir)) {
     }
     if (!offerSameAs.some((u) => String(u).includes(`/ai-shopping.json#offer-${sku}`))) {
       console.error(`❌ catalog Offer ${id} sameAs must join ai-shopping.json#offer-${sku}`);
+      process.exit(1);
+    }
+    if (product?.offers?.sku !== sku || product?.offers?.mpn !== sku) {
+      console.error(`❌ catalog Offer ${id} must set sku/mpn=${sku}`);
       process.exit(1);
     }
   }
@@ -1076,6 +1091,14 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ pricedPanels ${panel.sku} Offer.sameAs must join catalog offer @id`);
       process.exit(1);
     }
+    if (panel.mainEntityOfPage !== panel.url) {
+      console.error(`❌ pricedPanels ${panel.sku} mainEntityOfPage must be PDP url`);
+      process.exit(1);
+    }
+    if (panel.offers?.sku !== panel.sku || panel.offers?.mpn !== panel.sku) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer must set sku/mpn`);
+      process.exit(1);
+    }
     if (panel.offers?.seller?.["@id"] !== "https://arledscreen.com/#organization") {
       console.error(`❌ pricedPanels ${panel.sku} Offer.seller must be #organization`);
       process.exit(1);
@@ -1540,7 +1563,10 @@ if (fs.existsSync(outDir)) {
           sameAs.some((u) => String(u).includes("/catalog.json#p1-25-ic-gob")) &&
           offerSameAs.some((u) => String(u).includes("/catalog.json#offer-p1-25-ic-gob")) &&
           offerSameAs.some((u) => String(u).includes("/ai-shopping.json#offer-p1-25-ic-gob")) &&
-          String(offer["@id"] || "").endsWith("#offer")
+          String(offer["@id"] || "").endsWith("#offer") &&
+          offer.sku === "p1-25-ic-gob" &&
+          offer.mpn === "p1-25-ic-gob" &&
+          String(d.mainEntityOfPage || "").includes("/p1-25-gob/")
         ) {
           pdpOk = true;
           break;
@@ -1550,17 +1576,20 @@ if (fs.existsSync(outDir)) {
       }
     }
     if (!pdpOk) {
-      console.error("❌ PDP Product/Offer must sameAs catalog + ai-shopping offer @ids (p1-25-gob)");
+      console.error("❌ PDP Product/Offer must sameAs catalog + ai-shopping + Offer sku + mainEntityOfPage");
       process.exit(1);
     }
     console.log("✅ PDP Product/Offer sameAs joins catalog + ai-shopping");
   }
 
-  // AggregateOffer hubs (group + price + calculator) must sameAs catalog + ai-shopping Offers.
+  // AggregateOffer hubs (group + price + calculator; TR + EN) must sameAs catalog + ai-shopping Offers.
   for (const [rel, sku] of [
     ["tr/products/ince-pitch-led-ekran/index.html", "p1-25-ic-gob"],
     ["tr/led-ekran-fiyatlari/index.html", "p1-25-ic-gob"],
     ["tr/hesaplayici/index.html", "p2-5-ic"],
+    ["en/led-ekran-fiyatlari/index.html", "p1-25-ic-gob"],
+    ["en/hesaplayici/index.html", "p2-5-ic"],
+    ["en/quote/index.html", "p1-25-ic-gob"],
   ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     let hubOk = false;
@@ -1577,7 +1606,10 @@ if (fs.existsSync(outDir)) {
             sameAs.some((u) => String(u).includes(`/catalog.json#${sku}`)) &&
             offerSameAs.some((u) => String(u).includes(`/catalog.json#offer-${sku}`)) &&
             offerSameAs.some((u) => String(u).includes(`/ai-shopping.json#offer-${sku}`)) &&
-            String(offer["@id"] || "").includes("#offer")
+            String(offer["@id"] || "").includes("#offer") &&
+            offer.sku === sku &&
+            offer.mpn === sku &&
+            Boolean(node.mainEntityOfPage)
           ) {
             hubOk = true;
             break;
@@ -1589,11 +1621,11 @@ if (fs.existsSync(outDir)) {
       }
     }
     if (!hubOk) {
-      console.error(`❌ ${rel} Product ${sku} must sameAs catalog + Offer→catalog/ai-shopping`);
+      console.error(`❌ ${rel} Product ${sku} must sameAs catalog + Offer sku + mainEntityOfPage`);
       process.exit(1);
     }
   }
-  console.log("✅ AggregateOffer hubs (group/price/calculator) Product/Offer sameAs joins");
+  console.log("✅ AggregateOffer hubs (TR+EN group/price/calculator/quote) Product/Offer joins");
 
   // HTML Dataset on quote-only + priced hubs must hasPart 12 Product stubs (mpn=sku).
   for (const rel of [
@@ -1607,7 +1639,17 @@ if (fs.existsSync(outDir)) {
       try {
         const d = JSON.parse(m[1]);
         if (d?.["@type"] === "Dataset" && Array.isArray(d.hasPart) && d.hasPart.length === 12) {
-          if (d.hasPart.every((p) => p?.sku && p.mpn === p.sku && String(p["@id"] || "").includes("#product"))) {
+          if (
+            d.hasPart.every(
+              (p) =>
+                p?.sku &&
+                p.mpn === p.sku &&
+                String(p["@id"] || "").includes("#product") &&
+                Array.isArray(p.sameAs) &&
+                p.sameAs.some((u) => String(u).includes(`/catalog.json#${p.sku}`)) &&
+                p.mainEntityOfPage === p.url,
+            )
+          ) {
             const dist = JSON.stringify(d.distribution || []);
             if (!dist.includes("/merchant.json") || !dist.includes("/offer.json") || !dist.includes("/panels.json")) {
               console.error(`❌ ${rel} Dataset.distribution must include panels/merchant/offer DataDownloads`);
