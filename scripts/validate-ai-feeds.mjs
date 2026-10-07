@@ -147,6 +147,19 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json must set shippingIncluded:false (no free-shipping invent)");
     process.exit(1);
   }
+  if (!ard?.agentic?.resources?.entityProfiles?.packsEn) {
+    console.error("❌ ard.json entityProfiles.packsEn pointer required for Point C EN packs");
+    process.exit(1);
+  }
+  const tsvHead = fs.readFileSync(path.join(outDir, "feeds/merchant-priced-panels.tsv"), "utf8").split("\n")[0];
+  if (!tsvHead.includes("brand_id")) {
+    console.error("❌ merchant TSV must include brand_id column");
+    process.exit(1);
+  }
+  if (!ai?.resources?.brandId?.includes("#brand-nxtionstar") || !ai?.resources?.brand?.includes("/nxtionstar/")) {
+    console.error("❌ ai-shopping.json resources.brand + brandId required");
+    process.exit(1);
+  }
   if (!ai?.resources?.en?.home || !ai.resources.en.calculator) {
     console.error("❌ ai-shopping.json resources.en.home + calculator required");
     process.exit(1);
