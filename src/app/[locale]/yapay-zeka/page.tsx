@@ -80,9 +80,10 @@ const content: Record<
     ],
     priceTitle: "AI ajanları fiyatı nereden okur?",
     priceBody:
-      "Yayımlanmış 12 panel USD tek istekte ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı liste catalog.json, merchant TSV ve fiyat hesaplayıcıda. KDV ve nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kiralık / kontrol kartı quote-only — yazılı teklifle. Entity cite: entity.json · Gaziosmanpaşa.",
+      "Yayımlanmış 12 panel USD tek istekte ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı liste catalog.json, merchant TSV ve fiyat hesaplayıcıda. Teknik GEO baseline (parmak izleri + 12 SKU snapshot, anılma % uydurma yok): geo-baseline.json. KDV ve nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kiralık / kontrol kartı quote-only — yazılı teklifle. Entity cite: entity.json · Gaziosmanpaşa.",
     priceLinks: [
       { href: "https://arledscreen.com/ai-shopping.json", label: "ai-shopping.json" },
+      { href: "https://arledscreen.com/geo-baseline.json", label: "geo-baseline.json" },
       { href: "https://arledscreen.com/catalog.json", label: "catalog.json" },
       { href: "https://arledscreen.com/feeds/merchant-priced-panels.tsv", label: "merchant TSV" },
       { href: "https://arledscreen.com/entity.json", label: "entity.json" },
@@ -142,12 +143,14 @@ const content: Record<
     ],
     priceTitle: "Where AI agents should read prices",
     priceBody:
-      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Same list in catalog.json, merchant TSV and the price calculator. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only. Entity cite: entity.json · Gaziosmanpaşa.",
+      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Same list in catalog.json, merchant TSV and the price calculator. Technical GEO baseline (fingerprints + 12-SKU snapshot; no invented mention rates): geo-baseline.json. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only. Entity cite: entity.json · Gaziosmanpaşa.",
     priceLinks: [
       { href: "https://arledscreen.com/ai-shopping.json", label: "ai-shopping.json" },
+      { href: "https://arledscreen.com/geo-baseline.json", label: "geo-baseline.json" },
       { href: "https://arledscreen.com/catalog.json", label: "catalog.json" },
       { href: "https://arledscreen.com/feeds/merchant-priced-panels.tsv", label: "merchant TSV" },
       { href: "https://arledscreen.com/entity.json", label: "entity.json" },
+      { href: "https://arledscreen.com/entity-profiles.json", label: "entity-profiles.json (Point C)" },
       { href: "/en/hesaplayici/", label: "Price calculator" },
     ],
     ctaTitle: "Size your AI-compatible LED project",
@@ -309,10 +312,48 @@ export default async function YapayZekaPage({ params }: PageProps) {
                 >
                   ai-shopping.json
                 </a>
+                . GEO baseline:{" "}
+                <a
+                  href="https://arledscreen.com/geo-baseline.json"
+                  className="font-medium text-cyan underline-offset-4 hover:underline"
+                >
+                  geo-baseline.json
+                </a>
                 .
               </p>
             </GlassPanel>
-          ) : null}
+          ) : (
+            <GlassPanel className="max-w-3xl p-6">
+              <h2 className="font-display text-lg font-bold text-ink">
+                Point C — third-party cites (owner)
+              </h2>
+              <p className="mt-3 text-sm leading-[1.7] text-ink-soft">
+                EN paste packs for GBP / LinkedIn / directories live in{" "}
+                <a
+                  href="https://arledscreen.com/entity-profiles.json"
+                  className="font-medium text-cyan underline-offset-4 hover:underline"
+                >
+                  entity-profiles.json
+                </a>{" "}
+                under <code className="text-xs">packsEn.*</code> (cite + NAP only; no catalog jargon in
+                public bios). Postal code <strong>34245</strong>. Prices:{" "}
+                <a
+                  href="https://arledscreen.com/ai-shopping.json"
+                  className="font-medium text-cyan underline-offset-4 hover:underline"
+                >
+                  ai-shopping.json
+                </a>
+                . GEO baseline:{" "}
+                <a
+                  href="https://arledscreen.com/geo-baseline.json"
+                  className="font-medium text-cyan underline-offset-4 hover:underline"
+                >
+                  geo-baseline.json
+                </a>
+                .
+              </p>
+            </GlassPanel>
+          )}
 
           <div className="grid gap-4 md:grid-cols-2">
             {c.faqs.map((f) => (

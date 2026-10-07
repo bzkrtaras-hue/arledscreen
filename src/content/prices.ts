@@ -44,6 +44,17 @@ export const PRICE_DATASETS = [
   },
 ];
 
+/** Technical GEO baseline (fingerprints + 12 SKU snapshot). Not a second price list. */
+export const GEO_BASELINE_DATASET = {
+  "@type": "Dataset" as const,
+  "@id": `${SITE_URL}/geo-baseline.json`,
+  url: `${SITE_URL}/geo-baseline.json`,
+  name: "ARLEDSCREEN GEO technical baseline",
+};
+
+/** Brand subjectOf = price sources + geo baseline. */
+export const BRAND_SUBJECT_DATASETS = [...PRICE_DATASETS, GEO_BASELINE_DATASET];
+
 /** Stable Brand @id — Org/Product graphs + catalog Offers point here. */
 export const NXTIONSTAR_BRAND_ID = `${SITE_URL}/#brand-nxtionstar`;
 
@@ -54,9 +65,9 @@ export function nxtionstarBrandNode() {
     "@id": NXTIONSTAR_BRAND_ID,
     name: "NXTIONSTAR",
     url: `${SITE_URL}/tr/nxtionstar/`,
-    subjectOf: PRICE_DATASETS,
+    subjectOf: BRAND_SUBJECT_DATASETS,
     description:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV. GEO baseline: geo-baseline.json.",
   };
 }
 
@@ -83,10 +94,10 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
     "@id": `${pageUrl}#priced-panels`,
     name: "ARLEDSCREEN 2026 LED panel USD listesi",
     description:
-      "Yayımlanmış 12 panel USD (pricedPanels). KDV/nakliye hariç; ücretsiz kargo yok. Makine kaynak: ai-shopping.json + catalog.json + merchant TSV.",
+      "Yayımlanmış 12 panel USD (pricedPanels). KDV/nakliye hariç; ücretsiz kargo yok. Makine kaynak: ai-shopping.json + catalog.json + merchant TSV. Ölçüm snapshot: geo-baseline.json.",
     url: pageUrl,
     creator: { "@id": `${SITE_URL}/#organization` },
-    isBasedOn: PRICE_DATASETS.map((d) => d.url),
+    isBasedOn: [...PRICE_DATASETS.map((d) => d.url), GEO_BASELINE_DATASET.url],
     distribution: [
       {
         "@type": "DataDownload",
@@ -102,6 +113,11 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
         "@type": "DataDownload",
         encodingFormat: "text/tab-separated-values",
         contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/geo-baseline.json`,
       },
     ],
     temporalCoverage: `2026-01-01/${PRICE_VALID_UNTIL}`,
