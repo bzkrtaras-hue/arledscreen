@@ -18,6 +18,7 @@ import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -55,15 +56,24 @@ export default async function AboutPage({ params }: PageProps) {
         ]}
       />
       {(locale === "tr" || locale === "en") ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/about/`))),
-          }}
-        />
+        <>
+          <SpeakableJsonLd
+            pageUrl={absoluteUrl(`/${locale}/about/`)}
+            name={seo.h1 ?? about.title}
+            description={seo.description}
+            cssSelectors={["#about-h1", "#about-cite"]}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/about/`))),
+            }}
+          />
+        </>
       ) : null}
       <Section
         titleAs="h1"
+        titleId="about-h1"
         eyebrow={about.eyebrow}
         title={seo.h1 ?? about.title}
         description={dict.brand.slogan}
@@ -84,7 +94,7 @@ export default async function AboutPage({ params }: PageProps) {
             <p className="text-base font-semibold leading-snug text-cyan sm:text-lg">
               {dict.brand.slogan}
             </p>
-            <p className="text-sm leading-relaxed text-ink-muted sm:text-base">
+            <p id="about-cite" className="text-sm leading-relaxed text-ink-muted sm:text-base">
               {locale === "tr" ? ENTITY_CITE_MEDIUM : (seo.intro ?? about.description)}
             </p>
             <p className="text-sm leading-relaxed text-ink-soft sm:text-base">

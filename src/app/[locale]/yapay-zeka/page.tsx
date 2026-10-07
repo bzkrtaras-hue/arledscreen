@@ -9,9 +9,9 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { getSeo } from "@/content/seo";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { NXTIONSTAR_BRAND_ID, PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 import type { FaqItem } from "@/lib/schemas/cms";
 
 interface PageProps {
@@ -199,7 +199,7 @@ export default async function YapayZekaPage({ params }: PageProps) {
             pageUrl={absoluteUrl(`/${locale}/yapay-zeka/`)}
             name={seo.h1 ?? c.navLabel}
             description={seo.description}
-            cssSelectors={["#yz-price-title", "#yz-price-body"]}
+            cssSelectors={["#yz-h1", "#yz-intro", "#yz-price-title", "#yz-price-body"]}
           />
           <script
             type="application/ld+json"
@@ -219,26 +219,25 @@ export default async function YapayZekaPage({ params }: PageProps) {
             headline: seo.h1 ?? c.navLabel,
             description: seo.description,
             inLanguage: locale === "tr" ? "tr-TR" : "en-US",
-            author: { "@type": "Organization", name: "ARLEDSCREEN" },
-            publisher: {
-              "@type": "Organization",
-              name: "ARLEDSCREEN",
-              logo: {
-                "@type": "ImageObject",
-                url: absoluteUrl("/brand/arledscreen-logo-header.png"),
-              },
-            },
+            author: { "@id": `${SITE_URL}/#organization` },
+            publisher: { "@id": `${SITE_URL}/#organization` },
             mainEntityOfPage: absoluteUrl(`/${locale}/yapay-zeka/`),
             about: [
+              { "@id": `${SITE_URL}/#organization` },
+              { "@id": NXTIONSTAR_BRAND_ID },
               "yapay zeka uyumlu LED ekran",
               "AI media server LED",
-              "NXTIONSTAR",
             ],
+            isRelatedTo: PRICE_DATASETS,
+            citation: PRICE_DATASETS.map((d) => d.url),
+            isBasedOn: PRICE_DATASETS,
           }),
         }}
       />
       <Section
         titleAs="h1"
+        titleId="yz-h1"
+        descriptionId="yz-intro"
         eyebrow={locale === "tr" ? "Yapay zekâ altyapısı" : "AI infrastructure"}
         title={seo.h1 ?? c.navLabel}
         description={seo.intro}

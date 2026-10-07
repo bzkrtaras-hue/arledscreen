@@ -3,9 +3,10 @@ import { OptImage } from "@/components/ui/opt-image";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import type { CommercialPage } from "@/content/commercial-pages";
 import { commercialPath } from "@/content/commercial-pages";
-import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { PRICE_DATASETS, nxtionstarBrandRef, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
@@ -57,6 +58,7 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
     name: page.h1,
     description: page.description,
     provider: { "@id": `${SITE_URL}/#organization` },
+    brand: nxtionstarBrandRef(),
     areaServed: { "@type": "Country", name: "Türkiye" },
     url,
     isRelatedTo: PRICE_DATASETS,
@@ -72,6 +74,12 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
         ]}
       />
       <FaqJsonLd faqs={page.faqs} />
+      <SpeakableJsonLd
+        pageUrl={url}
+        name={page.h1}
+        description={page.description}
+        cssSelectors={["#commercial-h1", "#commercial-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
@@ -86,10 +94,15 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">
             {CLUSTER_LABEL[page.cluster]} · {page.eyebrow}
           </p>
-          <h1 className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
+          <h1
+            id="commercial-h1"
+            className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink"
+          >
             {page.h1}
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">{page.lead}</p>
+          <p id="commercial-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
+            {page.lead}
+          </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href={page.primaryCta.href}
