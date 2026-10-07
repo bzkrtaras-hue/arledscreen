@@ -35,6 +35,7 @@ const DISCOVERY_ALLOW = [
   "/entity-profiles.json",
   "/llms.txt",
   "/llms-full.txt",
+  "/ai.txt",
   "/feeds/",
   "/.well-known/ard.json",
 ] as const;

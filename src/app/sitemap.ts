@@ -182,6 +182,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/entity-profiles.json",
     "/llms.txt",
     "/llms-full.txt",
+    "/ai.txt",
     "/.well-known/ard.json",
     "/feeds/merchant-priced-panels.tsv",
   ]) {

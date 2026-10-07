@@ -24,6 +24,7 @@ const URLS = [
   `https://${HOST}/.well-known/ard.json`,
   `https://${HOST}/llms.txt`,
   `https://${HOST}/llms-full.txt`,
+  `https://${HOST}/ai.txt`,
   `https://${HOST}/feeds/merchant-priced-panels.tsv`,
   `https://${HOST}/tr/`,
   `https://${HOST}/en/`,

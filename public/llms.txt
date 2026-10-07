@@ -43,7 +43,8 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - [Ana sayfa](https://arledscreen.com/tr/): Firma özeti, ürün grupları, proje örnekleri ve SSS
 - [Hakkımızda](https://arledscreen.com/tr/about/)
 - [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
-- [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — 12 `pricedPanels` + cite + alışveriş kuralları (`priceValidUntil` 2026-12-31); ücretsiz kargo yok
+- [ai.txt](https://arledscreen.com/ai.txt) — kısa ajan keşif işaretçisi (llms/entity/fiyat feed URL’leri; arleds.com uyarısı)
+- [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — 12 `pricedPanels` + cite + FAQs + alışveriş kuralları (`priceValidUntil` 2026-12-31); ücretsiz kargo yok
 - [catalog.json](https://arledscreen.com/catalog.json) — yayımlanmış panel USD
 - [merchant-priced-panels.tsv](https://arledscreen.com/feeds/merchant-priced-panels.tsv) — 12 SKU feed (`brand` / `brand_id`=`#brand-nxtionstar` / `title` / `image_link`; `shipping_included=false`)
 - [geo-baseline.json](https://arledscreen.com/geo-baseline.json) — teknik GEO baseline (12 SKU + Brand `@id` + feed parmak izleri; AI anılma oranı uydurulmaz; Point C / Tur1a sahip kapılı)

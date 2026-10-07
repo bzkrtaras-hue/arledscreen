@@ -21,6 +21,7 @@ const REQUIRED_FILES = [
   ".well-known/ard.json",
   "llms.txt",
   "llms-full.txt",
+  "ai.txt",
   "feeds/merchant-priced-panels.tsv",
   "robots.txt",
   "_headers",
@@ -103,6 +104,7 @@ if (fs.existsSync(outDir)) {
     "entity.json",
     "entity-profiles.json",
     "llms.txt",
+    "ai.txt",
   ]) {
     const fp = path.join(outDir, file);
     if (!fs.existsSync(fp)) {
@@ -252,6 +254,19 @@ if (fs.existsSync(outDir)) {
   }
   if (!ai?.agentGuidelines?.en?.roleClarity?.legacyDomainNote?.includes("arleds.com")) {
     console.error("❌ ai-shopping agentGuidelines.en.roleClarity.legacyDomainNote required");
+    process.exit(1);
+  }
+  if (!Array.isArray(ai?.faqs) || !ai.faqs.some((f) => String(f?.question || "").includes("arleds.com"))) {
+    console.error("❌ ai-shopping.json faqs must mirror entity arleds.com Q&A");
+    process.exit(1);
+  }
+  const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
+  if (
+    !aiTxtLive.includes("/ai-shopping.json") ||
+    !aiTxtLive.includes("/entity.json") ||
+    !aiTxtLive.includes("arleds.com")
+  ) {
+    console.error("❌ out/ai.txt must point to price/entity feeds and warn on arleds.com");
     process.exit(1);
   }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
@@ -421,13 +436,16 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json faqs must include arleds.com vs arledscreen.com Q&A");
     process.exit(1);
   }
-  // FAQPage surfaces agents scrape for entity Q&A (SSS + home TR/EN + AI hub).
+  // FAQPage surfaces agents scrape for entity Q&A (SSS + home TR/EN + AI hub + commercial hubs).
   const faqArledsPages = [
     "tr/sss/index.html",
     "tr/index.html",
     "en/index.html",
     "tr/yapay-zeka/index.html",
     "en/yapay-zeka/index.html",
+    "tr/led-ekran/index.html",
+    "tr/led-ekran-fiyatlari/index.html",
+    "tr/nxtionstar/index.html",
   ];
   for (const rel of faqArledsPages) {
     const fp = path.join(outDir, rel);
@@ -446,16 +464,20 @@ if (fs.existsSync(outDir)) {
     }
   }
   const indexNowScript = fs.readFileSync(path.join(repoRoot, "scripts/submit-indexnow.mjs"), "utf8");
-  for (const must of ["/tr/about/", "/en/about/", "/tr/about/aras-bozkurt/", "/tr/sss/"]) {
+  for (const must of ["/tr/about/", "/en/about/", "/tr/about/aras-bozkurt/", "/tr/sss/", "/ai.txt"]) {
     if (!indexNowScript.includes(must)) {
       console.error(`❌ submit-indexnow.mjs must include ${must}`);
       process.exit(1);
     }
   }
-  console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms); product paths exist");
+  if (!profiles?.packs?.directoryLong?.includes("arleds.com") || !profiles?.packs?.linkedinAbout?.includes("arleds.com")) {
+    console.error("❌ entity-profiles packs.directoryLong + linkedinAbout must warn arleds.com");
+    process.exit(1);
+  }
+  console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms, ai.txt); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
   console.log(`✅ HTML/schema arleds.com disambiguation: ${orgSchemaPages.length} pages + about/founder body`);
-  console.log(`✅ FAQPage arleds Q&A: ${faqArledsPages.length} pages + IndexNow about/founder/sss`);
+  console.log(`✅ FAQPage arleds Q&A: ${faqArledsPages.length} pages + IndexNow about/founder/sss/ai.txt`);
 }
 
 // Live robots.txt is served by Pages Function — keep Allow list in sync.
@@ -466,7 +488,11 @@ if (fs.existsSync(robotsFn)) {
     console.error("❌ functions/robots.txt.js must Allow /geo-baseline.json");
     process.exit(1);
   }
-  console.log("✅ functions/robots.txt.js allows /geo-baseline.json");
+  if (!body.includes("/ai.txt")) {
+    console.error("❌ functions/robots.txt.js must Allow /ai.txt");
+    process.exit(1);
+  }
+  console.log("✅ functions/robots.txt.js allows /geo-baseline.json + /ai.txt");
 }
 
 validateAIFeeds();

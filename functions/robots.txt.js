@@ -15,6 +15,7 @@ Allow: /entity.json
 Allow: /entity-profiles.json
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /ai.txt
 Allow: /feeds/
 Allow: /.well-known/ard.json
 

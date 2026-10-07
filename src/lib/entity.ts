@@ -88,12 +88,15 @@ export const ENTITY_FAQS = [
   },
 ] as const;
 
+/** Shared FAQ for commercial/intent hubs — keep identical to ENTITY_FAQS arleds entry. */
+export const ENTITY_FAQ_CANONICAL_DOMAIN = ENTITY_FAQS[ENTITY_FAQS.length - 1];
+
 /** Human-facing Point C paste packs (no catalog.json / quote-only / extrasUsd jargon). */
 export const ENTITY_PROFILE_PACKS = {
   gbpDescription: ENTITY_CITE_MEDIUM,
   linkedinAbout: `${ENTITY_CITE_MEDIUM}
 
-Web: https://arledscreen.com/tr/
+Web: https://arledscreen.com/tr/ (arleds.com değil)
 Telefon: ${CONTACT_PHONE_DISPLAY}
 Doğrulama: https://arledscreen.com/entity.json`,
   instagramName: "ARLEDSCREEN",
@@ -108,7 +111,8 @@ ${CONTACT_PHONE_DISPLAY}`,
 Adres: ${BUSINESS_ADDRESS.streetAddress}, ${BUSINESS_ADDRESS.postalCode} ${BUSINESS_ADDRESS.addressLocality} / ${BUSINESS_ADDRESS.addressRegion}
 Telefon: ${CONTACT_PHONE_DISPLAY}
 E-posta: ${CONTACT_EMAIL}
-Web: https://arledscreen.com/tr/`,
+Web: https://arledscreen.com/tr/
+Not: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com kullanın.`,
   youtubeAbout: `${ENTITY_CITE_SHORT}
 
 Site: https://arledscreen.com/tr/

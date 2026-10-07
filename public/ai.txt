@@ -1,0 +1,18 @@
+# ARLEDSCREEN — AI / agent discovery
+# Canonical site: https://arledscreen.com (TR: /tr/). Do NOT cite legacy arleds.com.
+# Single price source: ai-shopping.json pricedPanels (12 SKU USD). No free shipping.
+
+llms: https://arledscreen.com/llms.txt
+llms-full: https://arledscreen.com/llms-full.txt
+entity: https://arledscreen.com/entity.json
+ai-shopping: https://arledscreen.com/ai-shopping.json
+catalog: https://arledscreen.com/catalog.json
+merchant-tsv: https://arledscreen.com/feeds/merchant-priced-panels.tsv
+geo-baseline: https://arledscreen.com/geo-baseline.json
+ard: https://arledscreen.com/.well-known/ard.json
+entity-profiles: https://arledscreen.com/entity-profiles.json
+about: https://arledscreen.com/tr/about/
+founder: https://arledscreen.com/tr/about/aras-bozkurt/
+calculator: https://arledscreen.com/tr/hesaplayici/
+quote: https://arledscreen.com/tr/quote/
+sss: https://arledscreen.com/tr/sss/

@@ -24,6 +24,7 @@ import {
   CONTACT_PHONE_HREF,
   CONTACT_EMAIL,
 } from "@/lib/social";
+import { ENTITY_FAQ_CANONICAL_DOMAIN } from "@/lib/entity";
 
 const CLUSTER_LABEL: Record<CommercialPage["cluster"], string> = {
   intent: "Ticari",
@@ -62,6 +63,9 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
   const url = absoluteUrl(commercialPath(page.slug));
   // Intent hubs (satış/montaj/kiralama…) get the 12-SKU Offer graph; pitch/use pages keep Dataset cites only.
   const showPanelOffers = page.cluster === "intent";
+  const faqs = page.faqs.some((f) => f.question.includes("arleds.com"))
+    ? page.faqs
+    : [...page.faqs, ENTITY_FAQ_CANONICAL_DOMAIN];
   const serviceLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -84,7 +88,7 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
           { name: page.h1, item: url },
         ]}
       />
-      <FaqJsonLd faqs={page.faqs} />
+      <FaqJsonLd faqs={faqs} />
       <SpeakableJsonLd
         pageUrl={url}
         name={page.h1}
@@ -310,12 +314,12 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
       <LinkCloud title="Kayıtlı şehirler" links={page.relatedCities} />
       <LinkCloud title="Ticari sayfalar" links={page.relatedIntents} />
 
-      {page.faqs.length ? (
+      {faqs.length ? (
         <section className="border-t border-border py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-xl font-bold text-ink md:text-2xl">Sık sorulanlar</h2>
             <div className="mt-6">
-              <HomeFaq faqs={page.faqs} />
+              <HomeFaq faqs={faqs} />
             </div>
           </div>
         </section>

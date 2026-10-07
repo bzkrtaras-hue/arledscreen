@@ -52,6 +52,11 @@ const FAQS = [
     answer:
       "Hayır. NXTIONSTAR; NEXTSTAR (televizyon markası) ve NationStar (LED bileşen markası) ile farklı markalardır. Doğru yazılış N-X-T-I-O-N-S-T-A-R şeklindedir.",
   },
+  {
+    question: "arleds.com ile arledscreen.com aynı mı?",
+    answer:
+      "Kanonik site https://arledscreen.com/tr/ adresidir. Eski/yan arleds.com atıf veya fiyat kaynağı değildir; NXTIONSTAR satış noktası yalnızca arledscreen.com üzerindedir. Doğrulama: entity.json.",
+  },
 ];
 
 export default async function NxtionstarPage({ params }: { params: Promise<{ locale: string }> }) {
