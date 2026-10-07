@@ -22,6 +22,7 @@ rental-en: https://arledscreen.com/en/led-ekran-kiralama/
 install-en: https://arledscreen.com/en/led-ekran-montaj/
 manufacturer-en: https://arledscreen.com/en/led-ekran-ureticisi/
 service-en: https://arledscreen.com/en/led-ekran-servis/
+products-en: https://arledscreen.com/en/products/
 products-gob-en: https://arledscreen.com/en/products/gob-led-ekran/
 products-indoor-en: https://arledscreen.com/en/products/ic-mekan-led-ekran/
 products-outdoor-en: https://arledscreen.com/en/products/dis-mekan-led-ekran/
