@@ -23,7 +23,9 @@
         "description": "P1.25 İç mekân (GOB) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p1-25-ic-mekan-modul.webp",
@@ -75,6 +77,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -89,7 +120,9 @@
         "description": "P1.53 İç mekân (GOB) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p1-53-ic-mekan-modul.webp",
@@ -141,6 +174,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -155,7 +217,9 @@
         "description": "P1.86 İç mekân (GOB) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p1-86-ic-mekan-modul.webp",
@@ -207,6 +271,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -221,7 +314,9 @@
         "description": "P2.5 İç mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p2-5-ic-mekan-modul.webp",
@@ -268,6 +363,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -282,7 +406,9 @@
         "description": "P3.07 İç mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/projects/modules/indoor-smd-surface.jpg",
@@ -329,6 +455,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -343,7 +498,9 @@
         "description": "P4 İç mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/projects/modules/indoor-wall.jpg",
@@ -390,6 +547,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -404,7 +590,9 @@
         "description": "P2.5 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p2-5-dis-mekan-modul.webp",
@@ -451,6 +639,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -465,7 +682,9 @@
         "description": "P2.9 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p2-97-dis-mekan-modul.webp",
@@ -512,6 +731,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -526,7 +774,9 @@
         "description": "P3.07 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p3-076-dis-mekan-modul.webp",
@@ -573,6 +823,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -587,7 +866,9 @@
         "description": "P4 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p4-dis-mekan-modul.webp",
@@ -634,6 +915,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -648,7 +958,9 @@
         "description": "P4 Dış mekân (önden servis) LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/projects/modules/front-service-module.jpg",
@@ -695,6 +1007,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
@@ -709,7 +1050,9 @@
         "description": "P5 Dış mekân LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.",
         "brand": {
           "@type": "Brand",
-          "name": "NXTIONSTAR"
+          "@id": "https://arledscreen.com/#brand-nxtionstar",
+          "name": "NXTIONSTAR",
+          "url": "https://arledscreen.com/tr/nxtionstar/"
         },
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p5-dis-mekan-modul.webp",
@@ -756,6 +1099,35 @@
           },
           "priceValidUntil": "2026-12-31",
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
           "seller": {
             "@type": "Organization",
             "@id": "https://arledscreen.com/#organization"
