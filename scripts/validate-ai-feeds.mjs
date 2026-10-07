@@ -429,7 +429,15 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("/.well-known/llms.txt") ||
     !aiTxtLive.includes("invent-teklif-tr:") ||
     !aiTxtLive.includes("/tr/teklif/") ||
-    !aiTxtLive.includes("/tr/fiyat-teklifi/")
+    !aiTxtLive.includes("/tr/fiyat-teklifi/") ||
+    !aiTxtLive.includes("invent-fiyat-tr:") ||
+    !aiTxtLive.includes("invent-prices-tr:") ||
+    !aiTxtLive.includes("invent-catalog-tr:") ||
+    !aiTxtLive.includes("invent-calculator-tr:") ||
+    !aiTxtLive.includes("invent-faq-tr:") ||
+    !aiTxtLive.includes("feed-alias-panels-json:") ||
+    !aiTxtLive.includes("feed-alias-merchant-json:") ||
+    !aiTxtLive.includes("feed-alias-mpn-json:")
   ) {
     console.error("❌ out/ai.txt must list invent bridges + feed path aliases");
     process.exit(1);
@@ -455,11 +463,20 @@ if (fs.existsSync(outDir)) {
     "api/prices",
     "prices.json",
     "price.json",
+    "panels.json",
+    "modules.json",
+    "sku.json",
+    "mpn.json",
+    "merchant.json",
+    "feeds/prices.json",
+    "feeds/catalog.json",
     "en/prices.json",
     "en/price.json",
     ".well-known/ai.txt",
     ".well-known/ai-shopping.json",
     ".well-known/prices.json",
+    ".well-known/merchant.json",
+    ".well-known/panels.json",
     ".well-known/entity.json",
     ".well-known/catalog.json",
     ".well-known/llms-full.txt",
@@ -681,24 +698,46 @@ if (fs.existsSync(outDir)) {
   const trInvent = ard?.agentic?.resources?.trInventBridges;
   const trExamples = trInvent?.examples;
   if (
-    !trInvent?.canonical?.includes("/tr/quote/") ||
+    !trInvent?.quoteCanonical?.includes("/tr/quote/") ||
+    !trInvent?.priceCanonical?.includes("/tr/led-ekran-fiyatlari/") ||
     !Array.isArray(trExamples) ||
     !trExamples.some((u) => String(u).includes("/tr/teklif/")) ||
-    !trExamples.some((u) => String(u).includes("/tr/teklif-al/")) ||
-    !trExamples.some((u) => String(u).includes("/tr/fiyat-teklifi/"))
+    !trExamples.some((u) => String(u).includes("/tr/fiyat/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/prices/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/catalog/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/calculator/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/faq/")) ||
+    !trExamples.some((u) => String(u).includes("/panels.json")) ||
+    !trExamples.some((u) => String(u).includes("/merchant.json"))
   ) {
-    console.error("❌ ard.json trInventBridges must list lean TR quote invents → /tr/quote/");
+    console.error("❌ ard.json trInventBridges must list TR quote/price/catalog invents + shopping feed aliases");
     process.exit(1);
   }
-  for (const rel of ["tr/teklif/index.html", "tr/teklif-al/index.html", "tr/fiyat-teklifi/index.html"]) {
+  const trBridgeChecks = [
+    ["tr/teklif/index.html", "/tr/quote/"],
+    ["tr/fiyat/index.html", "/tr/led-ekran-fiyatlari/"],
+    ["tr/prices/index.html", "/tr/led-ekran-fiyatlari/"],
+    ["tr/catalog/index.html", "/tr/products/"],
+    ["tr/calculator/index.html", "/tr/hesaplayici/"],
+    ["tr/faq/index.html", "/tr/sss/"],
+    ["tr/brand/index.html", "/tr/nxtionstar/"],
+  ];
+  for (const [rel, target] of trBridgeChecks) {
     const fp = path.join(outDir, rel);
     if (!fs.existsSync(fp)) {
-      console.error(`❌ TR quote invent bridge missing in out/: ${rel}`);
+      console.error(`❌ TR invent bridge missing in out/: ${rel}`);
       process.exit(1);
     }
     const html = fs.readFileSync(fp, "utf8");
-    if (!/noindex/i.test(html) || !/Canonical hub/i.test(html) || !/\/tr\/quote\//.test(html)) {
-      console.error(`❌ TR quote invent bridge must be noindex InventBridge → /tr/quote/: ${rel}`);
+    if (!/noindex/i.test(html) || !/Canonical hub/i.test(html) || !html.includes(target)) {
+      console.error(`❌ TR invent bridge must be noindex InventBridge → ${target}: ${rel}`);
+      process.exit(1);
+    }
+  }
+  for (const rel of ["panels.json", "modules.json", "sku.json", "mpn.json", "merchant.json", ".well-known/merchant.json", "feeds/prices.json", "feeds/catalog.json"]) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ shopping feed invent alias missing in out/: ${rel}`);
       process.exit(1);
     }
   }
@@ -887,6 +926,24 @@ if (fs.existsSync(outDir)) {
     "tr/teklif-iste/index.html",
     "tr/fiyat-teklifi/index.html",
     "tr/request-quote/index.html",
+    "tr/contact/index.html",
+    "tr/fiyat/index.html",
+    "tr/fiyatlar/index.html",
+    "tr/prices/index.html",
+    "tr/pricing/index.html",
+    "tr/price/index.html",
+    "tr/cost/index.html",
+    "tr/katalog/index.html",
+    "tr/catalog/index.html",
+    "tr/shop/index.html",
+    "tr/magaza/index.html",
+    "tr/calculator/index.html",
+    "tr/faq/index.html",
+    "tr/gallery/index.html",
+    "tr/projects/index.html",
+    "tr/regions/index.html",
+    "tr/services/index.html",
+    "tr/brand/index.html",
     "en/urunler/index.html",
     "en/catalog/index.html",
     "en/shop/index.html",
@@ -1102,6 +1159,15 @@ if (fs.existsSync(outDir)) {
     "/tr/teklif-al/",
     "/tr/fiyat-teklifi/",
     "/tr/quote/",
+    "/tr/fiyat/",
+    "/tr/prices/",
+    "/tr/catalog/",
+    "/tr/calculator/",
+    "/tr/faq/",
+    "/tr/brand/",
+    "/panels.json",
+    "/merchant.json",
+    "/mpn.json",
     "/en/bolgeler/istanbul/",
     "/en/about/aras-bozkurt/",
     "/en/contact/",

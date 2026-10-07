@@ -39,7 +39,7 @@
       "position": 5,
       "name": "Merchant priced panels TSV",
       "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
-      "description": "12 SKU merchant feed; shipping_included=false; no free shipping"
+      "description": "12 SKU merchant feed; mpn=id/sku (no invented GTIN); shipping_included=false; no free shipping. JSON invent aliases for same pricedPanels: /merchant.json · /panels.json · /mpn.json · /sku.json"
     },
     {
       "@type": "ListItem",

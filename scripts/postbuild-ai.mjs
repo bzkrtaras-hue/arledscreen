@@ -801,6 +801,15 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       inventTeklifTr: `${SITE_URL}/tr/teklif/`,
       inventTeklifAlTr: `${SITE_URL}/tr/teklif-al/`,
       inventFiyatTeklifiTr: `${SITE_URL}/tr/fiyat-teklifi/`,
+      inventFiyatTr: `${SITE_URL}/tr/fiyat/`,
+      inventPricesTr: `${SITE_URL}/tr/prices/`,
+      inventCatalogTr: `${SITE_URL}/tr/catalog/`,
+      inventCalculatorTr: `${SITE_URL}/tr/calculator/`,
+      inventFaqTr: `${SITE_URL}/tr/faq/`,
+      inventBrandTr: `${SITE_URL}/tr/brand/`,
+      panelsJson: `${SITE_URL}/panels.json`,
+      merchantJson: `${SITE_URL}/merchant.json`,
+      mpnJson: `${SITE_URL}/mpn.json`,
       productsHub: `${SITE_URL}/tr/products/`,
       productsHubEn: `${SITE_URL}/en/products/`,
       intentHub: `${SITE_URL}/tr/led-ekran/`,
@@ -876,10 +885,20 @@ function writeFeedPathAliases(dir) {
     ["ai-shopping.json", "offers.json"],
     ["ai-shopping.json", "offer.json"],
     ["ai-shopping.json", "dataset.json"],
+    // Shopping invent aliases agents often guess (byte-identical → pricedPanels).
+    ["ai-shopping.json", "panels.json"],
+    ["ai-shopping.json", "modules.json"],
+    ["ai-shopping.json", "sku.json"],
+    ["ai-shopping.json", "mpn.json"],
+    ["ai-shopping.json", "merchant.json"],
+    ["ai-shopping.json", "feeds/prices.json"],
     ["ai-shopping.json", ".well-known/ai-shopping.json"],
     ["ai-shopping.json", ".well-known/prices.json"],
     ["ai-shopping.json", ".well-known/price.json"],
     ["ai-shopping.json", ".well-known/pricing.json"],
+    ["ai-shopping.json", ".well-known/merchant.json"],
+    ["ai-shopping.json", ".well-known/panels.json"],
+    ["catalog.json", "feeds/catalog.json"],
     ["entity.json", "entity"],
     ["entity.json", "en/entity.json"],
     ["entity.json", "tr/entity.json"],
@@ -1057,6 +1076,32 @@ invent-teklif-al-tr: ${SITE_URL}/tr/teklif-al/
 invent-teklif-iste-tr: ${SITE_URL}/tr/teklif-iste/
 invent-fiyat-teklifi-tr: ${SITE_URL}/tr/fiyat-teklifi/
 invent-request-quote-tr: ${SITE_URL}/tr/request-quote/
+invent-contact-tr: ${SITE_URL}/tr/contact/
+invent-fiyat-tr: ${SITE_URL}/tr/fiyat/
+invent-fiyatlar-tr: ${SITE_URL}/tr/fiyatlar/
+invent-prices-tr: ${SITE_URL}/tr/prices/
+invent-pricing-tr: ${SITE_URL}/tr/pricing/
+invent-price-tr: ${SITE_URL}/tr/price/
+invent-cost-tr: ${SITE_URL}/tr/cost/
+invent-katalog-tr: ${SITE_URL}/tr/katalog/
+invent-catalog-tr: ${SITE_URL}/tr/catalog/
+invent-shop-tr: ${SITE_URL}/tr/shop/
+invent-magaza-tr: ${SITE_URL}/tr/magaza/
+invent-calculator-tr: ${SITE_URL}/tr/calculator/
+invent-faq-tr: ${SITE_URL}/tr/faq/
+invent-gallery-tr: ${SITE_URL}/tr/gallery/
+invent-projects-tr: ${SITE_URL}/tr/projects/
+invent-regions-tr: ${SITE_URL}/tr/regions/
+invent-services-tr: ${SITE_URL}/tr/services/
+invent-brand-tr: ${SITE_URL}/tr/brand/
+feed-alias-panels-json: ${SITE_URL}/panels.json
+feed-alias-modules-json: ${SITE_URL}/modules.json
+feed-alias-sku-json: ${SITE_URL}/sku.json
+feed-alias-mpn-json: ${SITE_URL}/mpn.json
+feed-alias-merchant-json: ${SITE_URL}/merchant.json
+feed-alias-well-known-merchant: ${SITE_URL}/.well-known/merchant.json
+feed-alias-feeds-prices: ${SITE_URL}/feeds/prices.json
+feed-alias-feeds-catalog: ${SITE_URL}/feeds/catalog.json
 invent-prices-en: ${SITE_URL}/en/prices/
 invent-pricing-en: ${SITE_URL}/en/pricing/
 invent-price-en: ${SITE_URL}/en/price/

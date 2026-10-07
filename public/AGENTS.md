@@ -5,11 +5,11 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 ## Price source (machines)
 
 - Canonical: https://arledscreen.com/ai-shopping.json (`pricedPanels`, 12 SKU USD)
-- Inventable aliases (byte-identical): `/prices.json` · `/price.json` · `/pricing.json` · `/api/prices` · `/.well-known/prices.json` · `/.well-known/ai-shopping.json`
-- Catalog: https://arledscreen.com/catalog.json
+- Inventable aliases (byte-identical): `/prices.json` · `/price.json` · `/pricing.json` · `/panels.json` · `/modules.json` · `/sku.json` · `/mpn.json` · `/merchant.json` · `/api/prices` · `/.well-known/prices.json` · `/.well-known/ai-shopping.json` · `/.well-known/merchant.json` · `/feeds/prices.json`
+- Catalog: https://arledscreen.com/catalog.json (also `/feeds/catalog.json`)
 - Merchant TSV: https://arledscreen.com/feeds/merchant-priced-panels.tsv (`mpn` = `id`/`sku`; no invented GTIN)
 - VAT and freight excluded; no free shipping. Quote-only for transparent / flexible / poster / rental / control cards.
-- Human quote form: https://arledscreen.com/tr/quote/ — inventable TR bridges: `/tr/teklif/` · `/tr/teklif-al/` · `/tr/fiyat-teklifi/` (noindex → quote)
+- Human hubs (TR): quote `/tr/quote/` · prices `/tr/led-ekran-fiyatlari/` · products `/tr/products/` — inventable noindex bridges e.g. `/tr/teklif/` · `/tr/fiyat/` · `/tr/prices/` · `/tr/catalog/` · `/tr/calculator/` · `/tr/faq/` · `/tr/brand/`
 
 ## Entity / brand
 
