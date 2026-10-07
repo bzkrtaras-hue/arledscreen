@@ -403,6 +403,25 @@ if (fs.existsSync(outDir)) {
     "en/prices.json",
     "en/price.json",
     ".well-known/ai.txt",
+    ".well-known/ai-shopping.json",
+    ".well-known/prices.json",
+    ".well-known/entity.json",
+    ".well-known/catalog.json",
+    ".well-known/llms-full.txt",
+    "organization.json",
+    "company.json",
+    "about.json",
+    "nap.json",
+    "brand.json",
+    "offers.json",
+    "dataset.json",
+    "api/entity",
+    "api/ai-shopping",
+    "api/v1/prices",
+    "v1/prices",
+    "security.txt",
+    ".well-known/security",
+    "AGENTS.md",
     "agent.json",
     ".well-known/agent.json",
     "pricing/index.html",
@@ -465,9 +484,37 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/en/ai-shopping.json must match ai-shopping.json");
     process.exit(1);
   }
-  for (const rel of ["prices.json", "price.json", "pricing.json", "en/prices.json", "en/price.json"]) {
+  for (const rel of [
+    "prices.json",
+    "price.json",
+    "pricing.json",
+    "en/prices.json",
+    "en/price.json",
+    "offers.json",
+    "dataset.json",
+    ".well-known/ai-shopping.json",
+    ".well-known/prices.json",
+    "api/ai-shopping",
+    "api/v1/prices",
+    "v1/prices",
+  ]) {
     if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAi)) {
       console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
+  }
+  const canonEntity = fs.readFileSync(path.join(outDir, "entity.json"));
+  for (const rel of [
+    "organization.json",
+    "company.json",
+    "about.json",
+    "nap.json",
+    "brand.json",
+    "api/entity",
+    ".well-known/entity.json",
+  ]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonEntity)) {
+      console.error(`❌ out/${rel} must match entity.json`);
       process.exit(1);
     }
   }
@@ -475,8 +522,16 @@ if (fs.existsSync(outDir)) {
     console.error("❌ /.well-known/ai.txt must match /ai.txt");
     process.exit(1);
   }
-  if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt")) {
-    console.error("❌ out/llms.txt must cite /prices.json + /.well-known/ai.txt");
+  if (!fs.readFileSync(path.join(outDir, "security.txt")).equals(fs.readFileSync(path.join(outDir, ".well-known/security.txt")))) {
+    console.error("❌ /security.txt must match /.well-known/security.txt");
+    process.exit(1);
+  }
+  if (!fs.existsSync(path.join(outDir, "AGENTS.md")) || !fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8").includes("ai-shopping.json")) {
+    console.error("❌ out/AGENTS.md must cite ai-shopping.json");
+    process.exit(1);
+  }
+  if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt") || !llmsLive.includes("organization.json") || !llmsLive.includes("AGENTS.md")) {
+    console.error("❌ out/llms.txt must cite /prices.json + /.well-known/ai.txt + organization.json + AGENTS.md");
     process.exit(1);
   }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));

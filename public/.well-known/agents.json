@@ -2,9 +2,9 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "ARLEDSCREEN agent discovery",
-  "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD); inventable aliases /prices.json · /price.json · /pricing.json · /api/prices. Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
+  "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD); inventable aliases /prices.json · /price.json · /pricing.json · /api/prices · /.well-known/prices.json · /offers.json · /api/v1/prices. Entity aliases /organization.json · /.well-known/entity.json. Also see /AGENTS.md. Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
   "url": "https://arledscreen.com/.well-known/agents.json",
-  "numberOfItems": 8,
+  "numberOfItems": 9,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -61,6 +61,13 @@
       "name": "AI discovery pointer",
       "url": "https://arledscreen.com/ai.txt",
       "description": "Compact URL index for agents"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "AGENTS.md",
+      "url": "https://arledscreen.com/AGENTS.md",
+      "description": "Short markdown agent discovery; points to ai-shopping.json + entity.json"
     }
   ],
   "provider": {

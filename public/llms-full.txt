@@ -205,9 +205,10 @@ NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktas�
 - entity-profiles.json → packs (TR) + packsEn (EN cite-only for GBP/directories/LinkedIn)
 - ard.json: https://arledscreen.com/.well-known/ard.json (`resources.brand` + `geoBaseline` + `entityProfiles.packsEn`)
 - agents.json: https://arledscreen.com/.well-known/agents.json (ItemList index → feeds; alias /agents.json)
+- AGENTS.md: https://arledscreen.com/AGENTS.md (short agent markdown pointer; prices → ai-shopping.json)
 - humans.txt: https://arledscreen.com/humans.txt (team/contact pointer; not a price source)
-- security.txt: https://arledscreen.com/.well-known/security.txt (RFC 9116; not a price source)
-- Inventable feed aliases (byte-identical; prefer canonical *.json): /catalog · /ai-shopping · /entity · /geo-baseline · /llms · /.well-known/llms.txt · /.well-known/ai.txt · /pricing.json · /prices.json · /price.json · /products.json · /en/ai-shopping.json · /en/pricing.json · /en/prices.json · /en/price.json · /data/catalog.json · /data/prices.json · /api/catalog · /api/prices · /agent.json · /.well-known/agent.json · HTML invent bridges /pricing/ · /prices/ · /price/ → price feed
+- security.txt: https://arledscreen.com/.well-known/security.txt (RFC 9116; not a price source; alias /security.txt)
+- Inventable feed aliases (byte-identical; prefer canonical *.json): /catalog · /ai-shopping · /entity · /geo-baseline · /llms · /.well-known/llms.txt · /.well-known/ai.txt · /.well-known/ai-shopping.json · /.well-known/prices.json · /.well-known/entity.json · /.well-known/catalog.json · /pricing.json · /prices.json · /price.json · /products.json · /offers.json · /organization.json · /company.json · /about.json · /nap.json · /brand.json · /en/ai-shopping.json · /en/pricing.json · /en/prices.json · /en/price.json · /data/catalog.json · /data/prices.json · /api/catalog · /api/prices · /api/entity · /api/ai-shopping · /api/v1/prices · /v1/prices · /agent.json · /.well-known/agent.json · HTML invent bridges /pricing/ · /prices/ · /price/ → price feed
 - Point C (sahip operasyonu): packs/packsEn yapıştır; playbook repo `docs/offsite-entity-playbook.md`
 - Kısa indeks: https://arledscreen.com/llms.txt
 

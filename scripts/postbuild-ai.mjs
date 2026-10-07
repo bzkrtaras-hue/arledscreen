@@ -819,9 +819,31 @@ function writeFeedPathAliases(dir) {
     ["ai-shopping.json", "tr/feed.json"],
     ["ai-shopping.json", "data/prices.json"],
     ["ai-shopping.json", "api/prices"],
+    ["ai-shopping.json", "api/ai-shopping"],
+    ["ai-shopping.json", "api/v1/prices"],
+    ["ai-shopping.json", "v1/prices"],
+    ["ai-shopping.json", "offers.json"],
+    ["ai-shopping.json", "offer.json"],
+    ["ai-shopping.json", "dataset.json"],
+    ["ai-shopping.json", ".well-known/ai-shopping.json"],
+    ["ai-shopping.json", ".well-known/prices.json"],
+    ["ai-shopping.json", ".well-known/price.json"],
+    ["ai-shopping.json", ".well-known/pricing.json"],
     ["entity.json", "entity"],
     ["entity.json", "en/entity.json"],
     ["entity.json", "tr/entity.json"],
+    ["entity.json", "organization.json"],
+    ["entity.json", "company.json"],
+    ["entity.json", "about.json"],
+    ["entity.json", "nap.json"],
+    ["entity.json", "brand.json"],
+    ["entity.json", "cite.json"],
+    ["entity.json", "faq.json"],
+    ["entity.json", "faqs.json"],
+    ["entity.json", "api/entity"],
+    ["entity.json", ".well-known/entity.json"],
+    ["catalog.json", ".well-known/catalog.json"],
+    ["catalog.json", "api/catalog.json"],
     ["geo-baseline.json", "geo-baseline"],
     ["geo-baseline.json", "en/geo-baseline.json"],
     ["geo-baseline.json", "tr/geo-baseline.json"],
@@ -830,6 +852,7 @@ function writeFeedPathAliases(dir) {
     ["llms.txt", ".well-known/llms.txt"],
     ["llms.txt", "en/llms.txt"],
     ["llms-full.txt", "llms-full"],
+    ["llms-full.txt", ".well-known/llms-full.txt"],
     ["ai.txt", "en/ai.txt"],
     ["ai.txt", ".well-known/ai.txt"],
     [".well-known/agents.json", "agents.json"],
@@ -1016,10 +1039,20 @@ feed-alias-data-prices: ${SITE_URL}/data/prices.json
 feed-alias-api-catalog: ${SITE_URL}/api/catalog
 feed-alias-api-prices: ${SITE_URL}/api/prices
 feed-alias-well-known-ai: ${SITE_URL}/.well-known/ai.txt
+feed-alias-well-known-ai-shopping: ${SITE_URL}/.well-known/ai-shopping.json
+feed-alias-well-known-prices: ${SITE_URL}/.well-known/prices.json
+feed-alias-well-known-entity: ${SITE_URL}/.well-known/entity.json
+feed-alias-organization-json: ${SITE_URL}/organization.json
+feed-alias-offers-json: ${SITE_URL}/offers.json
+feed-alias-api-entity: ${SITE_URL}/api/entity
+feed-alias-api-ai-shopping: ${SITE_URL}/api/ai-shopping
+feed-alias-api-v1-prices: ${SITE_URL}/api/v1/prices
 security-txt: ${SITE_URL}/.well-known/security.txt
+security-txt-alias: ${SITE_URL}/security.txt
 agents-json: ${SITE_URL}/.well-known/agents.json
 agents-json-alias: ${SITE_URL}/agents.json
 agent-json-alias: ${SITE_URL}/agent.json
+agents-md: ${SITE_URL}/AGENTS.md
 humans-txt: ${SITE_URL}/humans.txt
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
@@ -1084,6 +1117,21 @@ Hiring: https://arledscreen.com/tr/about/
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);
+  // Root / extensionless inventables (must run after security.txt exists).
+  for (const [srcRel, destRel] of [
+    [".well-known/security.txt", "security.txt"],
+    [".well-known/security.txt", ".well-known/security"],
+  ]) {
+    const src = path.join(outDir, srcRel);
+    const dest = path.join(outDir, destRel);
+    if (fs.existsSync(src)) {
+      fs.mkdirSync(path.dirname(dest), { recursive: true });
+      fs.copyFileSync(src, dest);
+    }
+  }
+  if (!copyPublicToOut("AGENTS.md")) {
+    console.warn("postbuild-ai: public/AGENTS.md missing — agent markdown pointer not copied");
+  }
 
   for (const must of [
     "catalog",
@@ -1112,6 +1160,27 @@ Hiring: https://arledscreen.com/tr/about/
     "agent.json",
     ".well-known/agent.json",
     ".well-known/ai.txt",
+    ".well-known/ai-shopping.json",
+    ".well-known/prices.json",
+    ".well-known/price.json",
+    ".well-known/pricing.json",
+    ".well-known/entity.json",
+    ".well-known/catalog.json",
+    ".well-known/llms-full.txt",
+    "organization.json",
+    "company.json",
+    "about.json",
+    "nap.json",
+    "brand.json",
+    "offers.json",
+    "dataset.json",
+    "api/entity",
+    "api/ai-shopping",
+    "api/v1/prices",
+    "v1/prices",
+    "security.txt",
+    ".well-known/security",
+    "AGENTS.md",
     "humans.txt",
     ".well-known/humans.txt",
     "en/ai-shopping/index.html",
