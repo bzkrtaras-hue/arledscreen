@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ARLEDSCREEN NXTIONSTAR panel USD price updates</title>
     <link>https://arledscreen.com/ai-shopping.json</link>
+    <atom:link href="https://arledscreen.com/feeds/prices.rss" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://arledscreen.com/ai-shopping.json" rel="alternate" type="application/ld+json"/>
+    <atom:link href="https://arledscreen.com/brand.json" rel="related" type="application/ld+json"/>
     <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: https://arledscreen.com/brand.json</description>
     <language>tr</language>
     <lastBuildDate>2026-10-07T00:00:00Z</lastBuildDate>

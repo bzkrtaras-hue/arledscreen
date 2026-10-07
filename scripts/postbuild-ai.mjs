@@ -539,6 +539,7 @@ function buildAiShopping() {
       `${SITE_URL}/entity.json`,
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      `${SITE_URL}/feeds/prices.rss`,
       `${SITE_URL}/geo-baseline.json`,
       `${SITE_URL}/.well-known/ard.json`,
       `${SITE_URL}/.well-known/agents.json`,
@@ -905,6 +906,67 @@ function buildMerchantTsv() {
   return `${lines.join("\n")}\n`;
 }
 
+/**
+ * Full AggregateOffer for Brand-only invent agents (/brand.json).
+ * Mirrors entity.json Organization.makesOffer so fetching Brand alone still yields 12 USD Offers.
+ */
+function buildBrandAggregateOffer(ai) {
+  const panels = ai.pricedPanels || [];
+  const nums = panels.map((p) => Number(p.price)).filter((n) => Number.isFinite(n));
+  const low = nums.length ? Math.min(...nums).toFixed(2) : "0";
+  const high = nums.length ? Math.max(...nums).toFixed(2) : "0";
+  return {
+    "@type": "AggregateOffer",
+    "@id": `${SITE_URL}/#priced-panels-aggregate`,
+    priceCurrency: "USD",
+    lowPrice: low,
+    highPrice: high,
+    offerCount: panels.length,
+    priceValidUntil: PRICE_VALID_UNTIL,
+    url: `${SITE_URL}/ai-shopping.json`,
+    availability: "https://schema.org/InStock",
+    description:
+      "Yayımlanmış 12 panel (modül) USD aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. Per-SKU Offer: ai-shopping.json / catalog.json / merchant TSV / prices.rss. Nihai fiyat yazılı teklifle kesinleşir.",
+    seller: { "@id": `${SITE_URL}/#organization` },
+    availableAtOrFrom: localBusinessRef(),
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "USD",
+      valueAddedTaxIncluded: false,
+    },
+    offers: panels.map((p) => ({
+      "@type": "Offer",
+      "@id": `${SITE_URL}/ai-shopping.json#offer-${p.sku}`,
+      sku: p.sku,
+      mpn: p.sku,
+      price: String(p.price),
+      priceCurrency: "USD",
+      priceValidUntil: p.priceValidUntil || PRICE_VALID_UNTIL,
+      url: p.url,
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      description:
+        "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+      sameAs: [`${SITE_URL}/catalog.json#offer-${p.sku}`, `${p.url}#offer`],
+      itemOffered: {
+        "@type": "Product",
+        "@id": `${p.url}#product`,
+        sku: p.sku,
+        mpn: p.sku,
+        brand: { "@type": "Brand", "@id": `${SITE_URL}/#brand-nxtionstar`, name: "NXTIONSTAR" },
+      },
+      seller: { "@id": `${SITE_URL}/#organization` },
+      shippingDetails: p.shippingDetails || panelShippingDetails(),
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "TR",
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+      },
+      availableAtOrFrom: localBusinessRef(),
+    })),
+  };
+}
+
 /** RSS 2.0 price-update feed — agents / price monitors that prefer feed readers over JSON-LD. */
 function buildPricesRss(ai) {
   const today = new Date().toISOString().split("T")[0];
@@ -923,10 +985,13 @@ function buildPricesRss(ai) {
     })
     .join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ARLEDSCREEN NXTIONSTAR panel USD price updates</title>
     <link>${SITE_URL}/ai-shopping.json</link>
+    <atom:link href="${SITE_URL}/feeds/prices.rss" rel="self" type="application/rss+xml"/>
+    <atom:link href="${SITE_URL}/ai-shopping.json" rel="alternate" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/brand.json" rel="related" type="application/ld+json"/>
     <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: ${SITE_URL}/brand.json</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
@@ -1616,6 +1681,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     process.exit(1);
   }
   // Brand-first invent: /brand.json is Brand (not Org alias of entity.json).
+  // makesOffer is a full AggregateOffer×12 — Brand-only agents must not need entity.json.
   const brandDoc = {
     "@context": "https://schema.org",
     "@type": "Brand",
@@ -1624,14 +1690,41 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     url: `${SITE_URL}/tr/nxtionstar/`,
     alternateName: ["NXTION STAR", "NXTIONSTAR LED"],
     description:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss.",
     disambiguatingDescription:
       "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
-    makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+    makesOffer: buildBrandAggregateOffer(ai),
     hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     manufacturer: { "@id": `${SITE_URL}/#organization` },
     seller: { "@id": `${SITE_URL}/#organization` },
     sameAs: [`${SITE_URL}/tr/nxtionstar/`, `${SITE_URL}/en/nxtionstar/`],
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/catalog.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/tab-separated-values",
+        contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/rss+xml",
+        contentUrl: `${SITE_URL}/feeds/prices.rss`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/geo-baseline.json`,
+      },
+    ],
     subjectOf: [
       {
         "@type": "Dataset",
@@ -1684,7 +1777,7 @@ Expires: 2027-10-07T00:00:00.000Z
 Policy: https://arledscreen.com/tr/gizlilik/
 Hiring: https://arledscreen.com/tr/about/
 Acknowledgments: https://arledscreen.com/brand.json
-# Brand: https://arledscreen.com/brand.json (#brand-nxtionstar makesOffer → #priced-panels-aggregate)
+# Brand: https://arledscreen.com/brand.json (#brand-nxtionstar AggregateOffer×12 + hasOfferCatalog → catalog.json)
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);

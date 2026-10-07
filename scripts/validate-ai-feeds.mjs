@@ -514,6 +514,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json isBasedOn must include geo-baseline.json");
     process.exit(1);
   }
+  if (!aiBasedOn.includes("/feeds/prices.rss")) {
+    console.error("❌ ai-shopping.json isBasedOn must include feeds/prices.rss");
+    process.exit(1);
+  }
   if (!ai?.resources?.en?.home || !ai.resources.en.calculator) {
     console.error("❌ ai-shopping.json resources.en.home + calculator required");
     process.exit(1);
@@ -983,13 +987,38 @@ if (fs.existsSync(outDir)) {
       brandLive?.["@type"] !== "Brand" ||
       brandLive?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar" ||
       !String(brandLive?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+      brandLive?.makesOffer?.["@type"] !== "AggregateOffer" ||
+      brandLive?.makesOffer?.offerCount !== 12 ||
+      !Array.isArray(brandLive?.makesOffer?.offers) ||
+      brandLive.makesOffer.offers.length !== 12 ||
       !String(brandLive?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
     ) {
-      console.error("❌ out/brand.json must be Brand #brand-nxtionstar with makesOffer + hasOfferCatalog");
+      console.error("❌ out/brand.json must be Brand #brand-nxtionstar with AggregateOffer×12 + hasOfferCatalog");
+      process.exit(1);
+    }
+    const brandDist = JSON.stringify(brandLive.distribution || []);
+    if (
+      !brandDist.includes("/feeds/prices.rss") ||
+      !brandDist.includes("/ai-shopping.json") ||
+      !brandDist.includes("/catalog.json")
+    ) {
+      console.error("❌ out/brand.json distribution must include ai-shopping + catalog + prices.rss");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/brand.json")).equals(fs.readFileSync(path.join(outDir, "brand.json")))) {
       console.error("❌ out/.well-known/brand.json must match brand.json");
+      process.exit(1);
+    }
+  }
+  {
+    const rssLive = fs.readFileSync(path.join(outDir, "feeds/prices.rss"), "utf8");
+    if (
+      !rssLive.includes('xmlns:atom="http://www.w3.org/2005/Atom"') ||
+      !rssLive.includes('rel="self"') ||
+      !rssLive.includes("/feeds/prices.rss") ||
+      !rssLive.includes("/ai-shopping.json")
+    ) {
+      console.error("❌ feeds/prices.rss must declare atom:link rel=self + alternate to ai-shopping.json");
       process.exit(1);
     }
   }
