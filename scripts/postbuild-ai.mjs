@@ -360,6 +360,13 @@ function buildCatalog() {
         name: "NXTIONSTAR",
       },
       {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        url: `${SITE_URL}/entity.json`,
+        name: "ARLEDSCREEN",
+        sameAs: [`${SITE_URL}/organization.json`],
+      },
+      {
         "@type": "DataDownload",
         "@id": `${SITE_URL}/point-c.txt`,
         url: `${SITE_URL}/point-c.txt`,
@@ -2088,6 +2095,19 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/geo-baseline.json`,
       },
+      // Reverse invent: Brand-only agents must reach Organization entity (+ alias).
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity.json`,
+        name: "ARLEDSCREEN Organization entity",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/organization.json`,
+        name: "ARLEDSCREEN Organization alias",
+      },
       {
         "@type": "DataDownload",
         encodingFormat: "text/plain",
@@ -2125,6 +2145,13 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         "@id": `${SITE_URL}/geo-baseline.json`,
         url: `${SITE_URL}/geo-baseline.json`,
         name: "ARLEDSCREEN GEO technical baseline",
+      },
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        url: `${SITE_URL}/entity.json`,
+        name: "ARLEDSCREEN",
+        sameAs: [`${SITE_URL}/organization.json`],
       },
       {
         "@type": "DataDownload",

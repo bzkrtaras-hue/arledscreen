@@ -92,6 +92,14 @@ jobs:
           grep -q "/.well-known/pricing.json" out/.well-known/ard.json
           grep -q "/.well-known/modules.json" out/AGENTS.md
           grep -q "/.well-known/modules.json" out/.well-known/agents.json
+          grep -q '"numberOfItems": 17' out/.well-known/agents.json
+          grep -q 'https://arledscreen.com/organization.json' out/.well-known/agents.json
+          grep -q 'https://arledscreen.com/prices.json' out/.well-known/agents.json
+          grep -q 'https://arledscreen.com/point-c-en.txt' out/.well-known/agents.json
+          grep -q 'ItemList (17)' out/.well-known/ard.json
+          grep -q "/entity.json" out/brand.json
+          grep -q "/organization.json" out/brand.json
+          grep -q "/entity.json" out/catalog.json
           grep -q "/.well-known/sku.json" out/llms.txt
           grep -q "/.well-known/modules.json" out/humans.txt
           grep -q "/.well-known/modules.json" out/ai-shopping.json

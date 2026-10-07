@@ -114,8 +114,8 @@ if (
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
 
-if ((agents?.itemListElement || []).length >= 14) ok(`agents.json ×${agents.itemListElement.length}`);
-else fail("agents.json ≥14");
+if ((agents?.itemListElement || []).length >= 17) ok(`agents.json ×${agents.itemListElement.length}`);
+else fail("agents.json ≥17");
 
 {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
@@ -262,10 +262,20 @@ if (
 
 if (
   JSON.stringify(brand?.subjectOf || []).includes("/point-c.txt") &&
-  JSON.stringify(brand?.distribution || []).includes("/point-c.txt")
+  JSON.stringify(brand?.distribution || []).includes("/point-c.txt") &&
+  JSON.stringify(brand?.subjectOf || []).includes("/entity.json") &&
+  JSON.stringify(brand?.distribution || []).includes("/entity.json") &&
+  JSON.stringify(brand?.distribution || []).includes("/organization.json")
 ) {
-  ok("brand.subjectOf+distribution → point-c");
-} else fail("brand.subjectOf+distribution → point-c");
+  ok("brand.subjectOf+distribution → point-c + entity/organization");
+} else fail("brand.subjectOf+distribution → point-c + entity/organization");
+
+{
+  const related = JSON.stringify(cat?.isRelatedTo || []);
+  if (related.includes("/entity.json") && related.includes("/brand.json")) {
+    ok("catalog isRelatedTo entity + brand");
+  } else fail("catalog isRelatedTo entity + brand");
+}
 
 {
   const geo = readJson("geo-baseline.json");

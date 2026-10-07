@@ -93,6 +93,15 @@
       "name": "NXTIONSTAR"
     },
     {
+      "@type": "Organization",
+      "@id": "https://arledscreen.com/#organization",
+      "url": "https://arledscreen.com/entity.json",
+      "name": "ARLEDSCREEN",
+      "sameAs": [
+        "https://arledscreen.com/organization.json"
+      ]
+    },
+    {
       "@type": "DataDownload",
       "@id": "https://arledscreen.com/point-c.txt",
       "url": "https://arledscreen.com/point-c.txt",

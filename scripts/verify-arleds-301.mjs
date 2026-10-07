@@ -70,7 +70,8 @@ if (fail) {
   console.error("http://www.arleds.com/ → https://arledscreen.com/tr/");
   console.error("https://arleds.com/ → https://arledscreen.com/tr/");
   console.error("https://www.arleds.com/ → https://arledscreen.com/tr/");
-  console.error("Also: npm run point-c · https://arledscreen.com/point-c.txt");
+  console.error("Also: npm run point-c:hostinger-eml · mailto in https://arledscreen.com/point-c.txt");
+  console.error("npm run point-c:next · npm run geo:status · docs/ops/arleds-301-hostinger.md");
   process.exit(1);
 }
 console.log(`\nOK all ${results.length} probes redirect to ${EXPECT}`);

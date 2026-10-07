@@ -612,10 +612,11 @@ if (fs.existsSync(outDir)) {
     !catalogRelated.includes("/ai-shopping.json") ||
     !catalogRelated.includes("/feeds/prices.rss") ||
     !catalogRelated.includes("/brand.json") ||
+    !catalogRelated.includes("/entity.json") ||
     !catalogRelated.includes("/point-c.txt") ||
     catalogLive?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar"
   ) {
-    console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping + prices.rss + brand.json + point-c.txt and brand @id #brand-nxtionstar");
+    console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping + prices.rss + brand.json + entity.json + point-c.txt and brand @id #brand-nxtionstar");
     process.exit(1);
   }
   {
@@ -1240,8 +1241,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 14) {
-    console.error("❌ agents.json must list ≥14 discovery items (incl. brand.json + prices.rss + entity-profiles + humans.txt + point-c.txt)");
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 17) {
+    console.error("❌ agents.json must list ≥17 discovery items (incl. brand/prices.rss/point-c/organization/prices/point-c-en)");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("entity-profiles.json"))) {
@@ -1262,6 +1263,18 @@ if (fs.existsSync(outDir)) {
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("point-c.txt"))) {
     console.error("❌ agents.json must list point-c.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/organization.json"))) {
+    console.error("❌ agents.json must list organization.json invent alias");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "") === "https://arledscreen.com/prices.json")) {
+    console.error("❌ agents.json must list prices.json invent alias");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("point-c-en.txt"))) {
+    console.error("❌ agents.json must list point-c-en.txt");
     process.exit(1);
   }
   {
@@ -1392,12 +1405,19 @@ if (fs.existsSync(outDir)) {
       }
     }
     const brandDist = JSON.stringify(brandLive.distribution || []);
+    const brandSubject = JSON.stringify(brandLive.subjectOf || []);
     if (
       !brandDist.includes("/feeds/prices.rss") ||
       !brandDist.includes("/ai-shopping.json") ||
-      !brandDist.includes("/catalog.json")
+      !brandDist.includes("/catalog.json") ||
+      !brandDist.includes("/entity.json") ||
+      !brandDist.includes("/organization.json")
     ) {
-      console.error("❌ out/brand.json distribution must include ai-shopping + catalog + prices.rss");
+      console.error("❌ out/brand.json distribution must include ai-shopping + catalog + prices.rss + entity/organization");
+      process.exit(1);
+    }
+    if (!brandSubject.includes("/entity.json") || !brandSubject.includes("#organization")) {
+      console.error("❌ out/brand.json subjectOf must reverse-join Organization entity.json");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/brand.json")).equals(fs.readFileSync(path.join(outDir, "brand.json")))) {
@@ -1914,6 +1934,10 @@ if (fs.existsSync(outDir)) {
     const brandDist = JSON.stringify(brandLive.distribution || []);
     if (!brandSubject.includes("/point-c.txt") || !brandDist.includes("/point-c.txt")) {
       console.error("❌ brand.json subjectOf + distribution must cite /point-c.txt");
+      process.exit(1);
+    }
+    if (!brandSubject.includes("/entity.json") || !brandDist.includes("/entity.json")) {
+      console.error("❌ brand.json subjectOf + distribution must reverse-join /entity.json");
       process.exit(1);
     }
   }
