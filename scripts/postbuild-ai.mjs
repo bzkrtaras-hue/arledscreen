@@ -824,14 +824,10 @@ function writeFeedPathAliases(dir) {
     fs.copyFileSync(src, dest);
     n += 1;
   }
-  // Trailing-slash HTML bridges for extensionless directories (dir/index.html).
-  // Do NOT overwrite /en/catalog/ — that Next invent bridge points at products hub.
+  // Trailing-slash HTML bridges only where they do NOT collide with extensionless
+  // files (cannot mkdir catalog/ when file "catalog" exists). Skip /en/catalog/
+  // (Next invent bridge → products hub).
   const slashBridges = [
-    ["catalog/", "/catalog.json", "Product catalog feed"],
-    ["ai-shopping/", "/ai-shopping.json", "AI shopping pricedPanels feed"],
-    ["entity/", "/entity.json", "Organization entity feed"],
-    ["geo-baseline/", "/geo-baseline.json", "GEO technical baseline"],
-    ["llms/", "/llms.txt", "LLM context (short)"],
     ["en/ai-shopping/", "/ai-shopping.json", "AI shopping pricedPanels feed"],
     ["en/entity/", "/entity.json", "Organization entity feed"],
     ["en/geo-baseline/", "/geo-baseline.json", "GEO technical baseline"],
@@ -1040,8 +1036,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     "en/catalog.json",
     "pricing.json",
     "products.json",
-    "catalog/index.html",
-    "ai-shopping/index.html",
+    "en/ai-shopping/index.html",
   ]) {
     if (!fs.existsSync(path.join(outDir, must))) {
       console.error(`postbuild-ai: missing feed alias in out/: ${must}`);

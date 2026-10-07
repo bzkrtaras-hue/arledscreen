@@ -448,8 +448,8 @@ if (fs.existsSync(outDir)) {
     !inventExamples.some((u) => String(u).includes("/en/shop/")) ||
     !inventExamples.some((u) => String(u).includes("/en/request-quote/")) ||
     !inventExamples.some((u) => String(u).includes("/en/products/gob/")) ||
-    !inventExamples.some((u) => /\/catalog\/?$/.test(String(u).replace(/["']/g, ""))) ||
-    !inventExamples.some((u) => String(u).includes("/ai-shopping") && !String(u).includes(".json")) ||
+    !inventExamples.some((u) => String(u) === "https://arledscreen.com/catalog" || String(u).endsWith("arledscreen.com/catalog")) ||
+    !inventExamples.some((u) => String(u).includes("arledscreen.com/ai-shopping") && !String(u).includes(".json")) ||
     !inventExamples.some((u) => String(u).includes("/en/ai-shopping.json")) ||
     !inventExamples.some((u) => String(u).includes("/.well-known/llms.txt"))
   ) {
