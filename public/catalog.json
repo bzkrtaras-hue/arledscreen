@@ -81,6 +81,7 @@
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
     "https://arledscreen.com/llms.txt",
+    "https://arledscreen.com/llms-full.txt",
     "https://arledscreen.com/humans.txt",
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/.well-known/security.txt"
@@ -111,6 +112,7 @@
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
     "https://arledscreen.com/llms.txt",
+    "https://arledscreen.com/llms-full.txt",
     "https://arledscreen.com/humans.txt",
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/.well-known/security.txt"
@@ -256,6 +258,12 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/llms.txt",
       "name": "LLM Context"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/llms-full.txt",
+      "name": "LLM Context (Full)"
     },
     {
       "@type": "DataDownload",

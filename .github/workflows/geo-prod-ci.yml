@@ -97,15 +97,18 @@ jobs:
           grep -q "/.well-known/pricing.json" out/.well-known/ard.json
           grep -q "/.well-known/modules.json" out/AGENTS.md
           grep -q "/.well-known/modules.json" out/.well-known/agents.json
-          grep -q '"numberOfItems": 19' out/.well-known/agents.json
+          grep -q '"numberOfItems": 20' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/#website' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/organization.json' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/prices.json' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/point-c-en.txt' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/.well-known/security.txt' out/.well-known/agents.json
-          grep -q 'ItemList (19)' out/.well-known/ard.json
+          grep -q 'https://arledscreen.com/llms-full.txt' out/.well-known/agents.json
+          grep -q 'ItemList (20)' out/.well-known/ard.json
           grep -q '/.well-known/security.txt' out/ai-shopping.json
+          grep -q '/llms-full.txt' out/ai-shopping.json
           grep -q 'security_txt_url' out/feeds/merchant-priced-panels.tsv
+          grep -q 'llms_full_url' out/feeds/merchant-priced-panels.tsv
           grep -q 'price_well_known_url' out/feeds/merchant-priced-panels.tsv
           grep -q '/.well-known/price.json' out/feeds/merchant-priced-panels.tsv
           grep -q '/.well-known/modules.json' out/tr/index.html
@@ -113,6 +116,7 @@ jobs:
           grep -q '"/.well-known/agents.json"' out/.well-known/ard.json
           grep -q '/.well-known/agents.json' out/llms.txt
           grep -q '/.well-known/security.txt' out/llms.txt
+          grep -q 'llms-full.txt' out/_headers
           grep -q "/entity.json" out/brand.json
           grep -q "/organization.json" out/brand.json
           grep -q "/entity.json" out/catalog.json

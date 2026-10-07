@@ -1185,6 +1185,7 @@ function buildMerchantTsv() {
     "ard_url",
     "ai_txt_url",
     "llms_url",
+    "llms_full_url",
     "humans_url",
     "agents_md_url",
     "security_txt_url",
@@ -1256,6 +1257,7 @@ function buildMerchantTsv() {
         `${SITE_URL}/.well-known/ard.json`,
         `${SITE_URL}/ai.txt`,
         `${SITE_URL}/llms.txt`,
+        `${SITE_URL}/llms-full.txt`,
         `${SITE_URL}/humans.txt`,
         `${SITE_URL}/AGENTS.md`,
         `${SITE_URL}/.well-known/security.txt`,
@@ -1404,10 +1406,11 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/.well-known/ard.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/ai.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/llms.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/llms-full.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/humans.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/AGENTS.md" rel="related" type="text/markdown"/>
     <atom:link href="${SITE_URL}/.well-known/security.txt" rel="related" type="text/plain"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
     <docs>${SITE_URL}/ai.txt</docs>
@@ -1654,7 +1657,7 @@ function inventAliasDistributionEntries() {
   ];
 }
 
-/** Agent discovery surfaces (ai.txt / llms / agents / ARD / humans / AGENTS.md / security.txt) for distribution walks. */
+/** Agent discovery surfaces (ai.txt / llms / llms-full / agents / ARD / humans / AGENTS.md / security.txt) for distribution walks. */
 function discoveryDistributionEntries() {
   return [
     {
@@ -1680,6 +1683,12 @@ function discoveryDistributionEntries() {
       encodingFormat: "text/plain",
       contentUrl: `${SITE_URL}/llms.txt`,
       name: "LLM Context",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/llms-full.txt`,
+      name: "LLM Context (Full)",
     },
     {
       "@type": "DataDownload",
@@ -1722,6 +1731,7 @@ function discoveryBasedOnUrls() {
     `${SITE_URL}/.well-known/ard.json`,
     `${SITE_URL}/ai.txt`,
     `${SITE_URL}/llms.txt`,
+    `${SITE_URL}/llms-full.txt`,
     `${SITE_URL}/humans.txt`,
     `${SITE_URL}/AGENTS.md`,
     `${SITE_URL}/.well-known/security.txt`,
@@ -3502,36 +3512,37 @@ Acknowledgments: https://arledscreen.com/brand.json
     // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
     // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, mpn_wk,
     // merchant_wk, prices_wk, price_wk, entity_wk, prices_rss, org, geo, website,
-    // agents, ard, ai_txt, llms, humans, agents_md, security_txt
+    // agents, ard, ai_txt, llms, llms_full, humans, agents_md, security_txt
     const securityTxtUrl = cells[cells.length - 1];
     const agentsMdUrl = cells[cells.length - 2];
     const humansUrl = cells[cells.length - 3];
-    const llmsUrl = cells[cells.length - 4];
-    const aiTxtUrl = cells[cells.length - 5];
-    const ardUrl = cells[cells.length - 6];
-    const agentsUrl = cells[cells.length - 7];
-    const websiteUrl = cells[cells.length - 8];
-    const geoBaselineUrl = cells[cells.length - 9];
-    const orgUrl = cells[cells.length - 10];
-    const pricesRssUrl = cells[cells.length - 11];
-    const entityWk = cells[cells.length - 12];
-    const priceWk = cells[cells.length - 13];
-    const pricesWk = cells[cells.length - 14];
-    const merchantWk = cells[cells.length - 15];
-    const mpnWk = cells[cells.length - 16];
-    const panelsWk = cells[cells.length - 17];
-    const pricingWk = cells[cells.length - 18];
-    const offerJsonUrl = cells[cells.length - 19];
-    const skuWk = cells[cells.length - 20];
-    const modulesWk = cells[cells.length - 21];
-    const brandWk = cells[cells.length - 22];
-    const pointCUrl = cells[cells.length - 23];
-    const profilesUrl = cells[cells.length - 24];
-    const catalogUrl = cells[cells.length - 25];
-    const pricesJsonUrl = cells[cells.length - 26];
-    const aiShoppingUrl = cells[cells.length - 27];
-    const shippingIncluded = cells[cells.length - 28];
-    const taxIncluded = cells[cells.length - 29];
+    const llmsFullUrl = cells[cells.length - 4];
+    const llmsUrl = cells[cells.length - 5];
+    const aiTxtUrl = cells[cells.length - 6];
+    const ardUrl = cells[cells.length - 7];
+    const agentsUrl = cells[cells.length - 8];
+    const websiteUrl = cells[cells.length - 9];
+    const geoBaselineUrl = cells[cells.length - 10];
+    const orgUrl = cells[cells.length - 11];
+    const pricesRssUrl = cells[cells.length - 12];
+    const entityWk = cells[cells.length - 13];
+    const priceWk = cells[cells.length - 14];
+    const pricesWk = cells[cells.length - 15];
+    const merchantWk = cells[cells.length - 16];
+    const mpnWk = cells[cells.length - 17];
+    const panelsWk = cells[cells.length - 18];
+    const pricingWk = cells[cells.length - 19];
+    const offerJsonUrl = cells[cells.length - 20];
+    const skuWk = cells[cells.length - 21];
+    const modulesWk = cells[cells.length - 22];
+    const brandWk = cells[cells.length - 23];
+    const pointCUrl = cells[cells.length - 24];
+    const profilesUrl = cells[cells.length - 25];
+    const catalogUrl = cells[cells.length - 26];
+    const pricesJsonUrl = cells[cells.length - 27];
+    const aiShoppingUrl = cells[cells.length - 28];
+    const shippingIncluded = cells[cells.length - 29];
+    const taxIncluded = cells[cells.length - 30];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3564,6 +3575,7 @@ Acknowledgments: https://arledscreen.com/brand.json
       ardUrl !== `${SITE_URL}/.well-known/ard.json` ||
       aiTxtUrl !== `${SITE_URL}/ai.txt` ||
       llmsUrl !== `${SITE_URL}/llms.txt` ||
+      llmsFullUrl !== `${SITE_URL}/llms-full.txt` ||
       humansUrl !== `${SITE_URL}/humans.txt` ||
       agentsMdUrl !== `${SITE_URL}/AGENTS.md` ||
       securityTxtUrl !== `${SITE_URL}/.well-known/security.txt` ||

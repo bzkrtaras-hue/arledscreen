@@ -108,25 +108,27 @@ if (
   rss.includes("/.well-known/ard.json") &&
   rss.includes("/ai.txt") &&
   rss.includes("/llms.txt") &&
+  rss.includes("/llms-full.txt") &&
   rss.includes("/humans.txt") &&
   rss.includes("/AGENTS.md") &&
   rss.includes("/.well-known/security.txt") &&
   rss.includes("geo:next") &&
   rss.includes("geo:ack")
 ) {
-  ok("prices.rss atom:link + invent aliases + discovery agents/ard/ai/llms/humans/AGENTS/security");
-} else fail("prices.rss atom:link + invent aliases + discovery agents/ard/ai/llms/humans/AGENTS/security");
+  ok("prices.rss atom:link + invent aliases + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
+} else fail("prices.rss atom:link + invent aliases + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
 
 if (
-  (agents.itemListElement || []).length >= 19 &&
+  (agents.itemListElement || []).length >= 20 &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("#website")) &&
-  (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/.well-known/security.txt"))
+  (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/.well-known/security.txt")) &&
+  (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/llms-full.txt"))
 ) {
-  ok(`agents.json ×${agents.itemListElement.length} incl #website + security.txt`);
-} else fail("agents.json ≥19 incl #website + security.txt");
+  ok(`agents.json ×${agents.itemListElement.length} incl #website + security + llms-full`);
+} else fail("agents.json ≥20 incl #website + security + llms-full");
 
 try {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
@@ -152,6 +154,7 @@ try {
     agentsBased.includes("/.well-known/merchant.json") &&
     agentsBased.includes("/ai.txt") &&
     agentsBased.includes("/llms.txt") &&
+    agentsBased.includes("/llms-full.txt") &&
     agentsBased.includes("/humans.txt") &&
     agentsBased.includes("/AGENTS.md") &&
     agentsBased.includes("/.well-known/security.txt") &&
@@ -166,6 +169,7 @@ try {
     agentsDist.includes("/.well-known/ard.json") &&
     agentsDist.includes("/ai.txt") &&
     agentsDist.includes("/llms.txt") &&
+    agentsDist.includes("/llms-full.txt") &&
     agentsDist.includes("/humans.txt") &&
     agentsDist.includes("/AGENTS.md") &&
     agentsDist.includes("/.well-known/security.txt") &&
@@ -203,6 +207,7 @@ try {
     pc.includes("/.well-known/ard.json") &&
     pc.includes("/ai.txt") &&
     pc.includes("/llms.txt") &&
+    pc.includes("/llms-full.txt") &&
     pc.includes("/humans.txt") &&
     pc.includes("/AGENTS.md") &&
     pc.includes("/.well-known/security.txt")
@@ -340,6 +345,7 @@ try {
     head.includes("ard_url") &&
     head.includes("ai_txt_url") &&
     head.includes("llms_url") &&
+    head.includes("llms_full_url") &&
     head.includes("humans_url") &&
     head.includes("agents_md_url") &&
     head.includes("security_txt_url") &&
@@ -365,6 +371,7 @@ try {
     tsv.includes(`${SITE}/.well-known/ard.json`) &&
     tsv.includes(`${SITE}/ai.txt`) &&
     tsv.includes(`${SITE}/llms.txt`) &&
+    tsv.includes(`${SITE}/llms-full.txt`) &&
     tsv.includes(`${SITE}/humans.txt`) &&
     tsv.includes(`${SITE}/AGENTS.md`) &&
     tsv.includes(`${SITE}/.well-known/security.txt`) &&
@@ -419,6 +426,7 @@ if (
     aiSame.includes("/entity-profiles.json") &&
     aiSame.includes("/.well-known/panels.json") &&
     aiSame.includes("/.well-known/agents.json") &&
+    aiSame.includes("/llms-full.txt") &&
     aiSame.includes("/humans.txt") &&
     aiSame.includes("/AGENTS.md") &&
     aiSame.includes("/.well-known/security.txt") &&
@@ -477,12 +485,13 @@ if (
     dist.includes("/.well-known/ard.json") &&
     dist.includes("/ai.txt") &&
     dist.includes("/llms.txt") &&
+    dist.includes("/llms-full.txt") &&
     dist.includes("/humans.txt") &&
     dist.includes("/AGENTS.md") &&
     dist.includes("/.well-known/security.txt")
   ) {
-    ok("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/humans/AGENTS/security");
-  } else fail("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/humans/AGENTS/security");
+    ok("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
+  } else fail("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
 }
 
 try {
@@ -692,11 +701,12 @@ try {
     link.includes("/.well-known/agents.json") &&
     link.includes("/humans.txt") &&
     link.includes("/.well-known/security.txt") &&
+    link.includes("/llms-full.txt") &&
     link.includes("/AGENTS.md") &&
     link.includes("#website")
   ) {
-    ok("live Link inventAlias + discovery agents/ard/humans/security/AGENTS");
-  } else fail("live Link inventAlias + discovery agents/ard/humans/security/AGENTS");
+    ok("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS");
+  } else fail("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS");
 } catch (e) {
   fail(`live Link invent ${e?.message || e}`);
 }

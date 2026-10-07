@@ -181,6 +181,7 @@ if (fs.existsSync(outDir)) {
       "/.well-known/ard.json",
       "/ai.txt",
       "/llms.txt",
+      "/llms-full.txt",
       "/humans.txt",
       "/AGENTS.md",
       "/.well-known/security.txt",
@@ -229,8 +230,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
-  if (!Array.isArray(ai.distribution) || ai.distribution.length < 34) {
-    console.error("❌ ai-shopping.json Dataset.distribution must list ≥34 DataDownload encodings (invent aliases + discovery agents/ard/ai.txt/llms/humans/AGENTS.md/security.txt + brand/entity + point-c/profiles)");
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 35) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥35 DataDownload encodings (invent aliases + discovery agents/ard/ai.txt/llms/llms-full/humans/AGENTS.md/security.txt + brand/entity + point-c/profiles)");
     process.exit(1);
   }
   for (const needle of [
@@ -255,6 +256,7 @@ if (fs.existsSync(outDir)) {
     "/.well-known/ard.json",
     "/ai.txt",
     "/llms.txt",
+    "/llms-full.txt",
     "/humans.txt",
     "/AGENTS.md",
     "/.well-known/security.txt",
@@ -1755,6 +1757,7 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("/.well-known/ard.json") ||
       !pointC.includes("/ai.txt") ||
       !pointC.includes("/llms.txt") ||
+      !pointC.includes("/llms-full.txt") ||
       !pointC.includes("/humans.txt") ||
       !pointC.includes("/AGENTS.md") ||
       !pointC.includes("/.well-known/security.txt") ||
@@ -1799,12 +1802,16 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agents.json description must cite geo:next/ack + #website");
     process.exit(1);
   }
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 19) {
-    console.error("❌ agents.json must list ≥19 discovery items (incl. brand/prices.rss/point-c/organization/prices/point-c-en/#website/security.txt)");
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 20) {
+    console.error("❌ agents.json must list ≥20 discovery items (incl. brand/prices.rss/point-c/organization/prices/point-c-en/#website/security/llms-full)");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/.well-known/security.txt"))) {
     console.error("❌ agents.json must list /.well-known/security.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/llms-full.txt"))) {
+    console.error("❌ agents.json must list /llms-full.txt");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("#website"))) {
@@ -1862,6 +1869,7 @@ if (fs.existsSync(outDir)) {
       "/.well-known/price.json",
       "/ai.txt",
       "/llms.txt",
+      "/llms-full.txt",
       "/humans.txt",
       "/AGENTS.md",
       "/.well-known/security.txt",
@@ -1892,6 +1900,7 @@ if (fs.existsSync(outDir)) {
       "/.well-known/ard.json",
       "/ai.txt",
       "/llms.txt",
+      "/llms-full.txt",
       "/humans.txt",
       "/AGENTS.md",
       "/.well-known/security.txt",
@@ -2092,12 +2101,13 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
       !rssLive.includes("/.well-known/security.txt") ||
+      !rssLive.includes("/llms-full.txt") ||
       !rssLive.includes("#website") ||
       !rssLive.includes("geo:next") ||
       !rssLive.includes("geo:ack") ||
       !rssLive.includes('rel="related"')
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + security + #website + geo:next/ack");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + security/llms-full + #website + geo:next/ack");
       process.exit(1);
     }
   }
@@ -2198,13 +2208,14 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/ard.json") ||
     !headersLive.includes("humans.txt") ||
     !headersLive.includes("/.well-known/security.txt") ||
+    !headersLive.includes("llms-full.txt") ||
     !headersLive.includes("#website") ||
     !headersLive.includes("/.well-known/entity.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security + point-c");
+    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security/llms-full + point-c");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -2788,6 +2799,7 @@ if (fs.existsSync(outDir)) {
     "ard_url",
     "ai_txt_url",
     "llms_url",
+    "llms_full_url",
     "humans_url",
     "agents_md_url",
     "security_txt_url",
@@ -2835,6 +2847,7 @@ if (fs.existsSync(outDir)) {
   const ardUrlIdx = tsvCols.indexOf("ard_url");
   const aiTxtUrlIdx = tsvCols.indexOf("ai_txt_url");
   const llmsUrlIdx = tsvCols.indexOf("llms_url");
+  const llmsFullUrlIdx = tsvCols.indexOf("llms_full_url");
   const humansUrlIdx = tsvCols.indexOf("humans_url");
   const agentsMdUrlIdx = tsvCols.indexOf("agents_md_url");
   const securityTxtUrlIdx = tsvCols.indexOf("security_txt_url");
@@ -2962,6 +2975,10 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[llmsUrlIdx] !== "https://arledscreen.com/llms.txt") {
       console.error(`❌ merchant TSV llms_url must be /llms.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[llmsFullUrlIdx] !== "https://arledscreen.com/llms-full.txt") {
+      console.error(`❌ merchant TSV llms_full_url must be /llms-full.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[humansUrlIdx] !== "https://arledscreen.com/humans.txt") {

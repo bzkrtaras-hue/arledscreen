@@ -25,6 +25,7 @@
   Link: <https://arledscreen.com/humans.txt>; rel="alternate"; type="text/plain"; title="humans.txt discovery"
   Link: <https://arledscreen.com/.well-known/security.txt>; rel="alternate"; type="text/plain"; title="security.txt (RFC 9116)"
   Link: <https://arledscreen.com/llms.txt>; rel="alternate"; type="text/plain"; title="LLM Context"
+  Link: <https://arledscreen.com/llms-full.txt>; rel="alternate"; type="text/plain"; title="LLM Context (Full)"
   Link: <https://arledscreen.com/catalog.json>; rel="describedby"; type="application/ld+json"; title="Panel Catalog OfferCatalog"
   Link: <https://arledscreen.com/geo-baseline.json>; rel="describedby"; type="application/ld+json"; title="GEO Technical Baseline"
   Link: <https://arledscreen.com/merchant.json>; rel="alternate"; type="application/ld+json"; title="Merchant pricedPanels alias"
