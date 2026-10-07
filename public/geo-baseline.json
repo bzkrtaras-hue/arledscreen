@@ -9,6 +9,35 @@
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
+  "isBasedOn": [
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+    "https://arledscreen.com/feeds/prices.rss"
+  ],
+  "isRelatedTo": [
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/point-c.txt",
+      "url": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/.well-known/ard.json",
+      "url": "https://arledscreen.com/.well-known/ard.json",
+      "name": "ARLEDSCREEN ARD"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/.well-known/agents.json",
+      "url": "https://arledscreen.com/.well-known/agents.json",
+      "name": "ARLEDSCREEN agents discovery"
+    }
+  ],
   "brand": {
     "@type": "Brand",
     "@id": "https://arledscreen.com/#brand-nxtionstar",
