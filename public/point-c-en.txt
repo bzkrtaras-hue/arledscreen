@@ -95,6 +95,8 @@ Do NOT add arleds.com to sameAs until 301 is live.
 
 --- Machine-only (do NOT paste into GBP/IG/FB bios) ---
 Merchant readiness: packsEn.googleMerchantReadiness (or packs.googleMerchantReadiness)
+Price source: https://arledscreen.com/ai-shopping.json pricedPanels
+Inventable aliases: /.well-known/modules.json · /.well-known/sku.json · /.well-known/price.json · /.well-known/pricing.json · /prices.json
 prices.rss: https://arledscreen.com/feeds/prices.rss
 Playbook: docs/offsite-entity-playbook.md
 

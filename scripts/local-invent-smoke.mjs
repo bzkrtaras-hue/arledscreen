@@ -185,6 +185,13 @@ if (
 } else fail("catalog isRelatedTo prices.rss + brand + point-c");
 
 if (
+  String(cat?.description || "").includes("/.well-known/modules.json") &&
+  String(brand?.description || "").includes("/.well-known/sku.json")
+) {
+  ok("catalog/brand description invent well-known modules/sku");
+} else fail("catalog/brand description invent well-known modules/sku");
+
+if (
   JSON.stringify(ai.isBasedOn || []).includes("/feeds/prices.rss") &&
   JSON.stringify(ai.isBasedOn || []).includes("/brand.json") &&
   JSON.stringify(ai.isBasedOn || []).includes("/point-c.txt")
