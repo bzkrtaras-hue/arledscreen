@@ -202,18 +202,23 @@ export function panelShippingDetails() {
 }
 
 /** Honest Offer fields for GEO / Merchant: no free-shipping invent, return = quote contract. */
-export function panelOffer(url: string, usd: number, opts?: { sku?: string }) {
+export function panelOffer(url: string, usd: number, opts?: { sku?: string; offerId?: string }) {
   const sku = opts?.sku;
+  const offerId = opts?.offerId ?? (sku ? `${url}#offer` : undefined);
   return {
     "@type": "Offer" as const,
-    ...(sku
+    ...(offerId
       ? {
-          "@id": `${url}#offer`,
+          "@id": offerId,
           // Join catalog + ai-shopping Offer @ids (agents merging feeds).
-          sameAs: [
-            `${SITE_URL}/catalog.json#offer-${sku}`,
-            `${SITE_URL}/ai-shopping.json#offer-${sku}`,
-          ],
+          ...(sku
+            ? {
+                sameAs: [
+                  `${SITE_URL}/catalog.json#offer-${sku}`,
+                  `${SITE_URL}/ai-shopping.json#offer-${sku}`,
+                ],
+              }
+            : {}),
         }
       : {}),
     url,
@@ -295,9 +300,10 @@ export function panelProductsJsonLd(
   const org = { "@id": `${SITE_URL}/#organization` };
   const products = panels.map((p) => {
     const u = urlFor?.(p) ?? pageUrl;
+    const hasPdp = Boolean(urlFor?.(p));
     return {
     "@type": "Product",
-    "@id": urlFor?.(p) ? `${u}#product` : `${pageUrl}#${p.id}`,
+    "@id": hasPdp ? `${u}#product` : `${pageUrl}#${p.id}`,
     name: `${panelLabel(p)} LED ekran modülü (${panelModule(p)})`,
     // Align with catalog / ai-shopping / merchant TSV: honest mpn=sku (= panel id).
     sku: p.id,
@@ -306,13 +312,19 @@ export function panelProductsJsonLd(
     category: "LED ekran modülü",
     description: `${panelLabel(p)} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.`,
     url: u,
+    // Join AggregateOffer hub Product ↔ catalog.json#sku (PDP/ai-shopping parity).
+    sameAs: [`${SITE_URL}/catalog.json#${p.id}`],
     ...(p.image ? { image: `${SITE_URL}${p.image}` } : {}),
     additionalProperty: [
       { "@type": "PropertyValue", name: "Piksel aralığı", value: p.pitchMm, unitText: "mm" },
       { "@type": "PropertyValue", name: "Modül ölçüsü", value: panelModule(p) },
       { "@type": "PropertyValue", name: "Kullanım", value: p.use === "ic" ? "İç mekân" : "Dış mekân" },
     ],
-    offers: panelOffer(u, p.usd),
+    // sku → Offer @id + sameAs catalog/ai-shopping offer @ids (unique when hub has no PDP url).
+    offers: panelOffer(u, p.usd, {
+      sku: p.id,
+      ...(hasPdp ? {} : { offerId: `${pageUrl}#offer-${p.id}` }),
+    }),
     isPartOf: PRICE_DATASETS[0],
     isRelatedTo: BRAND_SUBJECT_DATASETS,
   };

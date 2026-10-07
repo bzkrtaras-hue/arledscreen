@@ -1556,6 +1556,45 @@ if (fs.existsSync(outDir)) {
     console.log("✅ PDP Product/Offer sameAs joins catalog + ai-shopping");
   }
 
+  // AggregateOffer hubs (group + price + calculator) must sameAs catalog + ai-shopping Offers.
+  for (const [rel, sku] of [
+    ["tr/products/ince-pitch-led-ekran/index.html", "p1-25-ic-gob"],
+    ["tr/led-ekran-fiyatlari/index.html", "p1-25-ic-gob"],
+    ["tr/hesaplayici/index.html", "p2-5-ic"],
+  ]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    let hubOk = false;
+    for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "Product" || node?.sku !== sku) continue;
+          const sameAs = Array.isArray(node.sameAs) ? node.sameAs : [];
+          const offer = node.offers || {};
+          const offerSameAs = Array.isArray(offer.sameAs) ? offer.sameAs : [];
+          if (
+            sameAs.some((u) => String(u).includes(`/catalog.json#${sku}`)) &&
+            offerSameAs.some((u) => String(u).includes(`/catalog.json#offer-${sku}`)) &&
+            offerSameAs.some((u) => String(u).includes(`/ai-shopping.json#offer-${sku}`)) &&
+            String(offer["@id"] || "").includes("#offer")
+          ) {
+            hubOk = true;
+            break;
+          }
+        }
+        if (hubOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!hubOk) {
+      console.error(`❌ ${rel} Product ${sku} must sameAs catalog + Offer→catalog/ai-shopping`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ AggregateOffer hubs (group/price/calculator) Product/Offer sameAs joins");
+
   // HTML Dataset on quote-only + priced hubs must hasPart 12 Product stubs (mpn=sku).
   for (const rel of [
     "tr/products/esnek-led-ekran/index.html",
