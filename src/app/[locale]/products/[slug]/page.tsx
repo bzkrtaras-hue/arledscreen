@@ -33,7 +33,13 @@ import {
   relatedReferences,
 } from "@/content/categories";
 import { getProductGroupEn, PRODUCT_GROUP_EN_SLUGS } from "@/content/product-groups-en";
+import {
+  EN_PRODUCT_GROUP_BRIDGE_SLUGS,
+  getEnProductGroupBridge,
+  isEnProductGroupBridgeSlug,
+} from "@/content/en-product-group-bridges";
 import { ProductGroupEnLanding } from "@/components/products/ProductGroupEnLanding";
+import { InventBridge } from "@/components/seo/InventBridge";
 import { displayCompany } from "@/content/trust";
 import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n";
@@ -50,6 +56,10 @@ export function generateStaticParams() {
       params.push({ locale: "en", slug: g.slug });
     }
   }
+  // Inventable short EN group aliases (gob/indoor/outdoor/fine-pitch).
+  for (const slug of EN_PRODUCT_GROUP_BRIDGE_SLUGS) {
+    params.push({ locale: "en", slug });
+  }
   return params;
 }
 
@@ -59,6 +69,23 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale: raw, slug } = await params;
+
+  if (raw === "en" && isEnProductGroupBridgeSlug(slug)) {
+    const bridge = getEnProductGroupBridge(slug);
+    if (!bridge) return {};
+    return {
+      ...buildPageMetadata({
+        locale: "en" as Locale,
+        path: bridge.target.replace(/^\/en/, "") || "/",
+        title: bridge.title,
+        description: bridge.description,
+        hreflangLocales: [],
+      }),
+      robots: { index: false, follow: true },
+      alternates: { canonical: bridge.target },
+    };
+  }
+
   const g = getProductGroup(slug);
   if (!g) return {};
   if (raw === "en") {
@@ -106,6 +133,20 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
 export default async function ProductGroupPage({ params }: PageProps) {
   const { locale, slug } = await params;
   if (locale !== "tr" && locale !== "en") notFound();
+
+  if (locale === "en" && isEnProductGroupBridgeSlug(slug)) {
+    const bridge = getEnProductGroupBridge(slug);
+    if (!bridge) notFound();
+    return (
+      <InventBridge
+        h1={bridge.h1}
+        target={bridge.target}
+        cta={bridge.cta}
+        note="Short EN product-group aliases are inventable bridges; canonical hubs keep TR slug shapes under /en/products/."
+      />
+    );
+  }
+
   const g = getProductGroup(slug);
   if (!g) notFound();
   if (locale === "en") {

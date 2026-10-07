@@ -367,9 +367,13 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("/en/pricing/") ||
     !aiTxtLive.includes("/en/price/") ||
     !aiTxtLive.includes("/en/cost/") ||
-    !aiTxtLive.includes("/en/products/gob-led-ekran/p1-25-gob/")
+    !aiTxtLive.includes("/en/products/gob-led-ekran/p1-25-gob/") ||
+    !aiTxtLive.includes("/en/catalog/") ||
+    !aiTxtLive.includes("/en/shop/") ||
+    !aiTxtLive.includes("/en/request-quote/") ||
+    !aiTxtLive.includes("/en/products/gob/")
   ) {
-    console.error("❌ out/ai.txt must list invent price EN bridges + SKU locale-flip example");
+    console.error("❌ out/ai.txt must list invent price/SKU/catalog/shop/quote/products-gob bridges");
     process.exit(1);
   }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
@@ -403,6 +407,15 @@ if (fs.existsSync(outDir)) {
   }
   if (!inventExamples.some((u) => String(u).includes("/en/products/gob-led-ekran/p1-25-gob/"))) {
     console.error("❌ ard.json enInventBridges.examples must include SKU locale-flip /en/products/.../p1-25-gob/");
+    process.exit(1);
+  }
+  if (
+    !inventExamples.some((u) => String(u).includes("/en/catalog/")) ||
+    !inventExamples.some((u) => String(u).includes("/en/shop/")) ||
+    !inventExamples.some((u) => String(u).includes("/en/request-quote/")) ||
+    !inventExamples.some((u) => String(u).includes("/en/products/gob/"))
+  ) {
+    console.error("❌ ard.json enInventBridges.examples must include catalog/shop/request-quote/products-gob");
     process.exit(1);
   }
   if (!ard?.agentic?.resources?.aiTxt?.url?.includes("/ai.txt")) {
@@ -545,6 +558,18 @@ if (fs.existsSync(outDir)) {
     "en/brand/index.html",
     "en/teklif/index.html",
     "en/urunler/index.html",
+    "en/catalog/index.html",
+    "en/shop/index.html",
+    "en/modules/index.html",
+    "en/indoor-led/index.html",
+    "en/outdoor-led/index.html",
+    "en/gob/index.html",
+    "en/fine-pitch/index.html",
+    "en/request-quote/index.html",
+    "en/price-list/index.html",
+    "en/products/gob/index.html",
+    "en/products/indoor/index.html",
+    "en/products/outdoor/index.html",
     "en/kvkk/index.html",
     "en/bolgeler/istanbul/index.html",
     "en/about/aras-bozkurt/index.html",
