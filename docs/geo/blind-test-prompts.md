@@ -17,8 +17,8 @@
 | Fiyat kaynağı | https://arledscreen.com/ai-shopping.json `pricedPanels` (12 SKU; Product `isPartOf` Dataset; Dataset `hasPart`) |
 | Fiyat alias | `/prices.json` · `/.well-known/prices.json` · `/offers.json` · `/api/v1/prices` |
 | Fiyat RSS | https://arledscreen.com/feeds/prices.rss (değişim keşfi; kanonik graph hâlâ ai-shopping.json) |
-| Brand document | https://arledscreen.com/brand.json (`makesOffer` → `#priced-panels-aggregate`) |
-| Entity | https://arledscreen.com/entity.json (alias `/organization.json`) |
+| Brand document | https://arledscreen.com/brand.json (AggregateOffer×12 + OrderAction; `#priced-panels-aggregate`) |
+| Entity | https://arledscreen.com/entity.json (alias `/organization.json`; WebSite `#website` OrderAction) |
 | Ajan keşif | `/.well-known/agents.json` · `/AGENTS.md` · HTTP `Link: describedby` |
 | Eski domain | `arleds.com` — atıf kaynağı değil |
 
@@ -63,11 +63,14 @@
 Kayıt:
 
 ```bash
-node scripts/geo-blind-log.mjs --list
+npm run tur1a:print          # copy-ready TR prompts
+npm run tur1a:print:en       # EN prompts
+npm run tur1a:list
 node scripts/geo-blind-log.mjs --platform=chatgpt --promptId=5 --mentioned=yes \
   --brandCorrect=yes --priceSourceCited=ai-shopping \
   --sources=https://arledscreen.com/ai-shopping.json
-node scripts/geo-blind-log.mjs --summary
+npm run tur1a:summary
+npm run geo:status
 ```
 
 Yerel JSONL; repo’ya commit etme zorunlu değil. Skor / anılma % uydurmayın.
