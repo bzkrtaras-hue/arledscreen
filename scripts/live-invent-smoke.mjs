@@ -282,14 +282,17 @@ else fail("ard.resources.pointC");
     allow.includes("/.well-known/modules.json") &&
     allow.includes("/.well-known/sku.json") &&
     allow.includes("/.well-known/pricing.json") &&
+    allow.includes("/.well-known/agents.json") &&
+    allow.includes("/agents.json") &&
+    allow.includes("/.well-known/security.txt") &&
     trEx.includes("/.well-known/modules.json") &&
     trEx.includes("/.well-known/pricing.json") &&
     String(res.modulesJson?.wellKnown || "").includes("/.well-known/modules.json") &&
     String(res.skuJson?.wellKnown || "").includes("/.well-known/sku.json") &&
     String(res.aiShopping?.description || "").includes("/.well-known/modules.json")
   ) {
-    ok("ard invent allow + resources modules/sku + aiShopping invent");
-  } else fail("ard invent allow + resources modules/sku + aiShopping invent");
+    ok("ard invent allow + resources modules/sku + agents/security + aiShopping invent");
+  } else fail("ard invent allow + resources modules/sku + agents/security + aiShopping invent");
   if (
     allow.includes("/.well-known/entity.json") &&
     allow.includes("/.well-known/brand.json") &&

@@ -510,6 +510,10 @@ if (fs.existsSync(outDir)) {
       "/humans.txt",
       "/.well-known/security.txt",
       "/security.txt",
+      "/.well-known/agents.json",
+      "/.well-known/agent.json",
+      "/agents.json",
+      "/agent.json",
       "/brand.json",
       "/.well-known/brand.json",
       "/.well-known/entity.json",
@@ -1673,6 +1677,17 @@ if (fs.existsSync(outDir)) {
   }
   if (!llmsLive.includes("agents.json") || !llmsLive.includes("humans.txt")) {
     console.error("❌ out/llms.txt must cite agents.json + humans.txt");
+    process.exit(1);
+  }
+  if (
+    !llmsLive.includes("Inventable feed path aliases") ||
+    !llmsLive.includes("/.well-known/agents.json") ||
+    !llmsLive.includes("/.well-known/ard.json") ||
+    !llmsLive.includes("/.well-known/security.txt") ||
+    !llmsLive.includes("/AGENTS.md") ||
+    !llmsLive.includes("/humans.txt")
+  ) {
+    console.error("❌ out/llms.txt inventable aliases must cite agents/ard/security/humans/AGENTS.md");
     process.exit(1);
   }
   if (

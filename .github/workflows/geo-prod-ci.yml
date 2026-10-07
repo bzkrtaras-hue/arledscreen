@@ -110,6 +110,9 @@ jobs:
           grep -q '/.well-known/price.json' out/feeds/merchant-priced-panels.tsv
           grep -q '/.well-known/modules.json' out/tr/index.html
           grep -q '/.well-known/price.json' out/tr/index.html
+          grep -q '"/.well-known/agents.json"' out/.well-known/ard.json
+          grep -q '/.well-known/agents.json' out/llms.txt
+          grep -q '/.well-known/security.txt' out/llms.txt
           grep -q "/entity.json" out/brand.json
           grep -q "/organization.json" out/brand.json
           grep -q "/entity.json" out/catalog.json
