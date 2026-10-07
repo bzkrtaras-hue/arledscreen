@@ -152,6 +152,9 @@
     "productsHub": "https://arledscreen.com/tr/products/",
     "intentHub": "https://arledscreen.com/tr/led-ekran/",
     "intentHubEn": "https://arledscreen.com/en/led-ekran/",
+    "productsGobEn": "https://arledscreen.com/en/products/gob-led-ekran/",
+    "productsIndoorEn": "https://arledscreen.com/en/products/ic-mekan-led-ekran/",
+    "productsOutdoorEn": "https://arledscreen.com/en/products/dis-mekan-led-ekran/",
     "yapayZeka": "https://arledscreen.com/tr/yapay-zeka/"
   }
 }
