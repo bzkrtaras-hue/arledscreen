@@ -142,6 +142,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               pricedPanels,{" "}
               <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
                 merchant TSV
+              </a>
+              ,{" "}
+              <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+                geo-baseline.json
               </a>{" "}
               (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
             </p>

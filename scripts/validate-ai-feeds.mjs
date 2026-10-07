@@ -213,6 +213,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity-profiles.json packsEn must cover GBP/FB/Apple/YouTube/Yandex/IG name (cite-only)");
     process.exit(1);
   }
+  if (profiles?.brandId !== "https://arledscreen.com/#brand-nxtionstar") {
+    console.error("❌ entity-profiles.json brandId must be #brand-nxtionstar");
+    process.exit(1);
+  }
   if (!profiles?.canonicalUrls?.geoBaselineJson?.includes("/geo-baseline.json")) {
     console.error("❌ entity-profiles.json canonicalUrls.geoBaselineJson required");
     process.exit(1);

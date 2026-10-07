@@ -239,6 +239,10 @@ export default async function ModelPage({ params }: PageProps) {
                     <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
                       merchant TSV
                     </a>
+                    ,{" "}
+                    <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+                      geo-baseline.json
+                    </a>
                     .
                   </p>
                 </div>
@@ -255,6 +259,10 @@ export default async function ModelPage({ params }: PageProps) {
                   ,{" "}
                   <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
                     merchant TSV
+                  </a>
+                  ,{" "}
+                  <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+                    geo-baseline.json
                   </a>
                   . Ücretsiz kargo yok.
                 </p>

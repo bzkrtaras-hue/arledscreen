@@ -6,7 +6,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Where do AI agents read published panel prices?",
       answer:
-        "Published 12 panel USD prices are in ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only — final price in the written quote.",
+        "Published 12 panel USD prices are in ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Technical GEO baseline (fingerprints; no invented mention rates): geo-baseline.json. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only — final price in the written quote.",
     },
     {
       question: "How do I pick pixel pitch for my viewing distance?",
@@ -53,7 +53,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "AI ajanları panel fiyatını nereden okur?",
       answer:
-        "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
+        "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Teknik GEO baseline (parmak izleri; anılma % uydurma yok): geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
     },
     {
       question: "İzleme mesafeme göre hangi piksel aralığını seçmeliyim?",
