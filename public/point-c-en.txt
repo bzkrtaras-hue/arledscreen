@@ -121,7 +121,7 @@ Gmail draft (Send): https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#a
 --- Machine-only (do NOT paste into GBP/IG/FB bios) ---
 Merchant readiness: packsEn.googleMerchantReadiness (or packs.googleMerchantReadiness)
 Price source: https://arledscreen.com/ai-shopping.json pricedPanels
-Inventable aliases: /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/prices.json · /prices.json
+Inventable aliases: /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/prices.json · /.well-known/agents.json · /.well-known/ard.json · /prices.json
 prices.rss: https://arledscreen.com/feeds/prices.rss
 Playbook: docs/offsite-entity-playbook.md
 

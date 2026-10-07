@@ -40,7 +40,11 @@
     "https://arledscreen.com/.well-known/mpn.json",
     "https://arledscreen.com/.well-known/merchant.json",
     "https://arledscreen.com/.well-known/prices.json",
-    "https://arledscreen.com/.well-known/price.json"
+    "https://arledscreen.com/.well-known/price.json",
+    "https://arledscreen.com/.well-known/agents.json",
+    "https://arledscreen.com/.well-known/ard.json",
+    "https://arledscreen.com/ai.txt",
+    "https://arledscreen.com/llms.txt"
   ],
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-07",
@@ -250,6 +254,30 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/price.json",
       "name": "Price pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/agents.json",
+      "name": "Agent Discovery Index"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/ard.json",
+      "name": "ARLEDSCREEN ARD"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/ai.txt",
+      "name": "AI Agent Discovery Pointer"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/llms.txt",
+      "name": "LLM Context"
     },
     {
       "@type": "DataDownload",

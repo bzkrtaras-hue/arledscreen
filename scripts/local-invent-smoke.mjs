@@ -196,7 +196,9 @@ if (
   pointC.includes("/.well-known/modules.json") &&
   pointC.includes("/.well-known/panels.json") &&
   pointC.includes("/.well-known/mpn.json") &&
-  pointC.includes("/.well-known/merchant.json")
+  pointC.includes("/.well-known/merchant.json") &&
+  pointC.includes("/.well-known/agents.json") &&
+  pointC.includes("/.well-known/ard.json")
 ) {
   ok("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
 } else fail("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
@@ -314,6 +316,10 @@ else fail("ard.resources.pointC");
     head.includes("organization_url") &&
     head.includes("geo_baseline_url") &&
     head.includes("website_url") &&
+    head.includes("agents_url") &&
+    head.includes("ard_url") &&
+    head.includes("ai_txt_url") &&
+    head.includes("llms_url") &&
     tsv.includes(`${SITE}/#organization`) &&
     tsv.includes(`${SITE}/entity.json`) &&
     tsv.includes(`${SITE}/brand.json`) &&
@@ -331,14 +337,18 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/.well-known/merchant.json`) &&
     tsv.includes(`${SITE}/.well-known/prices.json`) &&
     tsv.includes(`${SITE}/.well-known/entity.json`) &&
+    tsv.includes(`${SITE}/.well-known/agents.json`) &&
+    tsv.includes(`${SITE}/.well-known/ard.json`) &&
+    tsv.includes(`${SITE}/ai.txt`) &&
+    tsv.includes(`${SITE}/llms.txt`) &&
     tsv.includes(`${SITE}/feeds/prices.rss`) &&
     tsv.includes(`${SITE}/offer.json`) &&
     tsv.includes(`${SITE}/organization.json`) &&
     tsv.includes(`${SITE}/geo-baseline.json`) &&
     tsv.includes(`${SITE}/#website`)
   ) {
-    ok("merchant TSV feed/wk/rss/org/entity/profiles/point-c/geo/website invent cols");
-  } else fail("merchant TSV feed/wk/rss/org/entity/profiles/point-c/geo/website invent cols");
+    ok("merchant TSV feed/wk/rss/org/entity/profiles/point-c/geo/website/discovery invent cols");
+  } else fail("merchant TSV feed/wk/rss/org/entity/profiles/point-c/geo/website/discovery invent cols");
 }
 
 if (
@@ -417,10 +427,14 @@ if (
     dist.includes("/organization.json") &&
     dist.includes("/point-c.txt") &&
     dist.includes("/entity-profiles.json") &&
-    dist.includes("#website")
+    dist.includes("#website") &&
+    dist.includes("/.well-known/agents.json") &&
+    dist.includes("/.well-known/ard.json") &&
+    dist.includes("/ai.txt") &&
+    dist.includes("/llms.txt")
   ) {
-    ok("ai-shopping distribution → priceAliases + brand/entity wk/org/point-c/profiles/#website");
-  } else fail("ai-shopping distribution → priceAliases + brand/entity wk/org/point-c/profiles/#website");
+    ok("ai-shopping distribution → inventAlias + discovery agents/ard/ai.txt/llms");
+  } else fail("ai-shopping distribution → inventAlias + discovery agents/ard/ai.txt/llms");
 }
 
 {
@@ -620,10 +634,12 @@ if (
     headers.includes("/.well-known/merchant.json") &&
     headers.includes("/.well-known/prices.json") &&
     headers.includes("/.well-known/price.json") &&
+    headers.includes("/.well-known/ard.json") &&
+    headers.includes("/.well-known/agents.json") &&
     headers.includes("#website")
   ) {
-    ok("_headers Link inventAlias panels/mpn/merchant/prices/price + modules/sku/pricing");
-  } else fail("_headers Link inventAlias panels/mpn/merchant/prices/price + modules/sku/pricing");
+    ok("_headers Link inventAlias + discovery agents/ard");
+  } else fail("_headers Link inventAlias + discovery agents/ard");
 }
 
 if (process.exitCode) {

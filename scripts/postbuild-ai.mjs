@@ -916,6 +916,7 @@ function buildAiShopping() {
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      ...discoveryDistributionEntries(),
       websiteDistributionEntry(),
     ],
     dateModified: new Date().toISOString().split("T")[0],
@@ -1175,6 +1176,11 @@ function buildMerchantTsv() {
     "organization_url",
     "geo_baseline_url",
     "website_url",
+    // Discovery invent for TSV-only agents (agents/ARD/ai.txt/llms).
+    "agents_url",
+    "ard_url",
+    "ai_txt_url",
+    "llms_url",
   ];
   const lines = [header.join("\t")];
   for (const panel of PANEL_PRICES) {
@@ -1238,6 +1244,10 @@ function buildMerchantTsv() {
         `${SITE_URL}/organization.json`,
         `${SITE_URL}/geo-baseline.json`,
         `${SITE_URL}/#website`,
+        `${SITE_URL}/.well-known/agents.json`,
+        `${SITE_URL}/.well-known/ard.json`,
+        `${SITE_URL}/ai.txt`,
+        `${SITE_URL}/llms.txt`,
       ].join("\t"),
     );
   }
@@ -1622,6 +1632,37 @@ function inventAliasDistributionEntries() {
       contentUrl: `${SITE_URL}/.well-known/price.json`,
       name: "Price pricedPanels invent alias",
     },
+    ...discoveryDistributionEntries(),
+  ];
+}
+
+/** Agent discovery surfaces (ai.txt / llms / agents / ARD) for distribution walks. */
+function discoveryDistributionEntries() {
+  return [
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/agents.json`,
+      name: "Agent Discovery Index",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/ard.json`,
+      name: "ARLEDSCREEN ARD",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/ai.txt`,
+      name: "AI Agent Discovery Pointer",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/llms.txt`,
+      name: "LLM Context",
+    },
   ];
 }
 
@@ -1635,6 +1676,16 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/.well-known/merchant.json`,
     `${SITE_URL}/.well-known/prices.json`,
     `${SITE_URL}/.well-known/price.json`,
+    ...discoveryBasedOnUrls(),
+  ];
+}
+
+function discoveryBasedOnUrls() {
+  return [
+    `${SITE_URL}/.well-known/agents.json`,
+    `${SITE_URL}/.well-known/ard.json`,
+    `${SITE_URL}/ai.txt`,
+    `${SITE_URL}/llms.txt`,
   ];
 }
 
@@ -2987,6 +3038,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
       `${SITE_URL}/entity.json`,
       `${SITE_URL}/organization.json`,
       `${SITE_URL}/.well-known/entity.json`,
+      `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/geo-baseline.json`,
       `${SITE_URL}/feeds/prices.rss`,
       `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
@@ -3390,28 +3442,33 @@ Acknowledgments: https://arledscreen.com/brand.json
     const cells = row ? row.split("\t") : [];
     // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
     // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, mpn_wk,
-    // merchant_wk, prices_wk, entity_wk, prices_rss, org, geo, website
-    const websiteUrl = cells[cells.length - 1];
-    const geoBaselineUrl = cells[cells.length - 2];
-    const orgUrl = cells[cells.length - 3];
-    const pricesRssUrl = cells[cells.length - 4];
-    const entityWk = cells[cells.length - 5];
-    const pricesWk = cells[cells.length - 6];
-    const merchantWk = cells[cells.length - 7];
-    const mpnWk = cells[cells.length - 8];
-    const panelsWk = cells[cells.length - 9];
-    const pricingWk = cells[cells.length - 10];
-    const offerJsonUrl = cells[cells.length - 11];
-    const skuWk = cells[cells.length - 12];
-    const modulesWk = cells[cells.length - 13];
-    const brandWk = cells[cells.length - 14];
-    const pointCUrl = cells[cells.length - 15];
-    const profilesUrl = cells[cells.length - 16];
-    const catalogUrl = cells[cells.length - 17];
-    const pricesJsonUrl = cells[cells.length - 18];
-    const aiShoppingUrl = cells[cells.length - 19];
-    const shippingIncluded = cells[cells.length - 20];
-    const taxIncluded = cells[cells.length - 21];
+    // merchant_wk, prices_wk, entity_wk, prices_rss, org, geo, website,
+    // agents, ard, ai_txt, llms
+    const llmsUrl = cells[cells.length - 1];
+    const aiTxtUrl = cells[cells.length - 2];
+    const ardUrl = cells[cells.length - 3];
+    const agentsUrl = cells[cells.length - 4];
+    const websiteUrl = cells[cells.length - 5];
+    const geoBaselineUrl = cells[cells.length - 6];
+    const orgUrl = cells[cells.length - 7];
+    const pricesRssUrl = cells[cells.length - 8];
+    const entityWk = cells[cells.length - 9];
+    const pricesWk = cells[cells.length - 10];
+    const merchantWk = cells[cells.length - 11];
+    const mpnWk = cells[cells.length - 12];
+    const panelsWk = cells[cells.length - 13];
+    const pricingWk = cells[cells.length - 14];
+    const offerJsonUrl = cells[cells.length - 15];
+    const skuWk = cells[cells.length - 16];
+    const modulesWk = cells[cells.length - 17];
+    const brandWk = cells[cells.length - 18];
+    const pointCUrl = cells[cells.length - 19];
+    const profilesUrl = cells[cells.length - 20];
+    const catalogUrl = cells[cells.length - 21];
+    const pricesJsonUrl = cells[cells.length - 22];
+    const aiShoppingUrl = cells[cells.length - 23];
+    const shippingIncluded = cells[cells.length - 24];
+    const taxIncluded = cells[cells.length - 25];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3439,6 +3496,10 @@ Acknowledgments: https://arledscreen.com/brand.json
       orgUrl !== `${SITE_URL}/organization.json` ||
       geoBaselineUrl !== `${SITE_URL}/geo-baseline.json` ||
       websiteUrl !== `${SITE_URL}/#website` ||
+      agentsUrl !== `${SITE_URL}/.well-known/agents.json` ||
+      ardUrl !== `${SITE_URL}/.well-known/ard.json` ||
+      aiTxtUrl !== `${SITE_URL}/ai.txt` ||
+      llmsUrl !== `${SITE_URL}/llms.txt` ||
       /\ttrue(\t|$)/.test(row)
     ) {
       console.error(`postbuild-ai: merchant TSV mismatch or free-ship invent for ${panel.id}`);
