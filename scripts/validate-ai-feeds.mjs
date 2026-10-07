@@ -244,6 +244,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json disambiguatingDescription must warn arleds.com vs arledscreen.com");
     process.exit(1);
   }
+  if (!disambig.includes("linkedin.com/company/arleds") || !disambig.includes("web sitesi arleds.com değildir")) {
+    console.error("❌ entity.json disambiguatingDescription must warn LinkedIn /company/arleds ≠ web arleds.com");
+    process.exit(1);
+  }
   if (JSON.stringify(entity?.sameAs || []).includes("arleds.com")) {
     console.error("❌ entity.json sameAs must NOT include legacy arleds.com (until 301)");
     process.exit(1);

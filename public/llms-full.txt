@@ -29,7 +29,7 @@
 - Teklif: https://arledscreen.com/tr/quote/ · EN: https://arledscreen.com/en/quote/ (12 panel Product/Offer JSON-LD + price-source feeds)
 - Instagram: https://www.instagram.com/arledscreen/
 - Facebook: https://www.facebook.com/arledscreenn
-- LinkedIn: https://www.linkedin.com/company/arleds
+- LinkedIn: https://www.linkedin.com/company/arleds (şirket slug; web arleds.com değildir)
 - Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde. Tem 2025 – Tem 2026 arasında 45 proje kaydı; 13 il ile Almanya ve Azerbaycan. Kaydı olmayan il için kapı sayfası yok. Garanti yılı / genel iade politikası sitede sabit yayımlanmaz; teklifte yazılır.
 
 Karıştırılmaması gerekenler:
