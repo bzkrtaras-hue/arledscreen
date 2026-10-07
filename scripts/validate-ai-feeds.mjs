@@ -421,9 +421,41 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json faqs must include arleds.com vs arledscreen.com Q&A");
     process.exit(1);
   }
+  // FAQPage surfaces agents scrape for entity Q&A (SSS + home TR/EN + AI hub).
+  const faqArledsPages = [
+    "tr/sss/index.html",
+    "tr/index.html",
+    "en/index.html",
+    "tr/yapay-zeka/index.html",
+    "en/yapay-zeka/index.html",
+  ];
+  for (const rel of faqArledsPages) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ FAQ arleds page missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    const hasFaqPage = html.includes("FAQPage");
+    const hasArledsFaq =
+      html.includes("arleds.com ile arledscreen.com") ||
+      html.includes("Is arleds.com the same as arledscreen.com");
+    if (!hasFaqPage || !hasArledsFaq) {
+      console.error(`❌ ${rel} FAQPage must include arleds.com vs arledscreen.com Q&A`);
+      process.exit(1);
+    }
+  }
+  const indexNowScript = fs.readFileSync(path.join(repoRoot, "scripts/submit-indexnow.mjs"), "utf8");
+  for (const must of ["/tr/about/", "/en/about/", "/tr/about/aras-bozkurt/", "/tr/sss/"]) {
+    if (!indexNowScript.includes(must)) {
+      console.error(`❌ submit-indexnow.mjs must include ${must}`);
+      process.exit(1);
+    }
+  }
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
   console.log(`✅ HTML/schema arleds.com disambiguation: ${orgSchemaPages.length} pages + about/founder body`);
+  console.log(`✅ FAQPage arleds Q&A: ${faqArledsPages.length} pages + IndexNow about/founder/sss`);
 }
 
 // Live robots.txt is served by Pages Function — keep Allow list in sync.

@@ -18,7 +18,7 @@ export function generateMetadata() {
     path: "/sss/",
     title: "LED Ekran Sık Sorulan Sorular: Fiyat, Piksel Aralığı, Montaj | ARLEDSCREEN",
     description:
-      "LED ekran fiyatı, panel fiyatları, piksel aralığı seçimi, montaj süresi, garanti, kiralama ve içerik yönetimi hakkında sık sorulan 15 soru ve kısa cevapları.",
+      "LED ekran fiyatı, panel fiyatları, piksel aralığı seçimi, montaj süresi, garanti, kiralama, içerik yönetimi ve arledscreen.com / arleds.com kanonik alan adı hakkında sık sorulan sorular.",
   });
 }
 

@@ -39,6 +39,9 @@ const URLS = [
   `https://${HOST}/en/quote/`,
   `https://${HOST}/tr/nxtionstar/`,
   `https://${HOST}/tr/sss/`,
+  `https://${HOST}/tr/about/`,
+  `https://${HOST}/en/about/`,
+  `https://${HOST}/tr/about/aras-bozkurt/`,
   `https://${HOST}/tr/products/gob-led-ekran/p1-25-gob/`,
   `https://${HOST}/sitemap.xml`,
 ];
