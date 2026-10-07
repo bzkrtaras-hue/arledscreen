@@ -2,9 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import { FIYAT_HESAPLAYICI_URL } from "@/lib/constants";
+import type { Locale } from "@/lib/i18n";
 
 interface Props {
   title?: string;
+  /** When `en`, loads `/fiyat-hesap/?lang=en` so iframe chrome is English. */
+  locale?: Locale;
 }
 
 const MIN_H = 200;
@@ -19,8 +22,11 @@ const MAX_H = 20000;
  */
 export function FiyatHesaplayiciEmbed({
   title = "ARLEDSCREEN LED Malzeme Hesaplayıcı",
+  locale = "tr",
 }: Props) {
   const ref = useRef<HTMLIFrameElement>(null);
+  const src =
+    locale === "en" ? `${FIYAT_HESAPLAYICI_URL}?lang=en` : FIYAT_HESAPLAYICI_URL;
 
   useEffect(() => {
     const frame = ref.current;
@@ -48,7 +54,7 @@ export function FiyatHesaplayiciEmbed({
   return (
     <iframe
       ref={ref}
-      src={FIYAT_HESAPLAYICI_URL}
+      src={src}
       title={title}
       className="calc-frame"
       scrolling="no"

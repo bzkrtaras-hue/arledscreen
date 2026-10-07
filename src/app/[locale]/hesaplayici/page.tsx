@@ -125,7 +125,10 @@ export default async function HesaplayiciPage({ params }: PageProps) {
       <h1 id="hesap-h1" className="sr-only">
         {seo.h1 ?? dict.page.hesaplayici.title}
       </h1>
-      <FiyatHesaplayiciEmbed title={seo.h1 ?? dict.page.hesaplayici.title} />
+      <FiyatHesaplayiciEmbed
+        title={seo.h1 ?? dict.page.hesaplayici.title}
+        locale={locale}
+      />
       <Section className="prose-seo">
         <p
           id="hesap-lead"
