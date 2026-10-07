@@ -1490,6 +1490,11 @@ if (fs.existsSync(outDir)) {
         const d = JSON.parse(m[1]);
         if (d?.["@type"] === "Dataset" && Array.isArray(d.hasPart) && d.hasPart.length === 12) {
           if (d.hasPart.every((p) => p?.sku && p.mpn === p.sku && String(p["@id"] || "").includes("#product"))) {
+            const dist = JSON.stringify(d.distribution || []);
+            if (!dist.includes("/merchant.json") || !dist.includes("/offer.json") || !dist.includes("/panels.json")) {
+              console.error(`❌ ${rel} Dataset.distribution must include panels/merchant/offer DataDownloads`);
+              process.exit(1);
+            }
             found = true;
             break;
           }
