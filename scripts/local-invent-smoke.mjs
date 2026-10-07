@@ -124,6 +124,20 @@ if (String(ard?.agentic?.resources?.pointC?.url || "").includes("/point-c.txt"))
 else fail("ard.resources.pointC");
 
 {
+  const allow = ard?.robotsPolicy?.allow || [];
+  const trEx = JSON.stringify(ard?.agentic?.resources?.trInventBridges?.examples || []);
+  if (
+    allow.includes("/.well-known/modules.json") &&
+    allow.includes("/.well-known/sku.json") &&
+    allow.includes("/.well-known/pricing.json") &&
+    trEx.includes("/.well-known/modules.json") &&
+    trEx.includes("/.well-known/pricing.json")
+  ) {
+    ok("ard invent allow + trInvent well-known modules/sku/pricing");
+  } else fail("ard invent allow + trInvent well-known modules/sku/pricing");
+}
+
+{
   const tsv = readText("feeds/merchant-priced-panels.tsv");
   const head = tsv.split("\n")[0] || "";
   if (
