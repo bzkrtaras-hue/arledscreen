@@ -6,7 +6,7 @@ import {
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return commercialGuideStaticParams("piksel-araligi-secimi");
+  return commercialGuideStaticParams();
 }
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

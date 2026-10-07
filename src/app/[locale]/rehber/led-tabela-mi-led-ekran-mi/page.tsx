@@ -6,7 +6,7 @@ import {
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return commercialGuideStaticParams("led-tabela-mi-led-ekran-mi");
+  return commercialGuideStaticParams();
 }
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

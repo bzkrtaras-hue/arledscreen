@@ -37,3 +37,7 @@ quote: https://arledscreen.com/tr/quote/
 quote-en: https://arledscreen.com/en/quote/
 sss: https://arledscreen.com/tr/sss/
 sss-en: https://arledscreen.com/en/sss/
+guide-pitch-en: https://arledscreen.com/en/rehber/piksel-araligi-secimi/
+guide-gob-en: https://arledscreen.com/en/rehber/gob-vs-smd/
+guide-rentbuy-en: https://arledscreen.com/en/rehber/kiralik-mi-satin-alma/
+guide-sign-vs-display-en: https://arledscreen.com/en/rehber/led-tabela-mi-led-ekran-mi/

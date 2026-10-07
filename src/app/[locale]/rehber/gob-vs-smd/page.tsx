@@ -6,7 +6,7 @@ import {
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return commercialGuideStaticParams("gob-vs-smd");
+  return commercialGuideStaticParams();
 }
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

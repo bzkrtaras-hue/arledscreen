@@ -13,7 +13,7 @@ import { ARTICLE_SLUGS, getArticle } from "@/lib/markdown";
 
 type ArticleSlug = (typeof ARTICLE_SLUGS)[number];
 
-export function commercialGuideStaticParams(_slug: CommercialGuideEnSlug) {
+export function commercialGuideStaticParams() {
   return [{ locale: "tr" }, { locale: "en" }];
 }
 
