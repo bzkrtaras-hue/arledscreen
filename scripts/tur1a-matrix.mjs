@@ -5,10 +5,12 @@
  *
  * Usage:
  *   npm run tur1a:matrix
+ *   npm run tur1a:csv
  *   npm run tur1a:next
  *   npm run tur1a:log -- --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping
  *   node scripts/tur1a-matrix.mjs --en
  *   node scripts/tur1a-matrix.mjs --next --en
+ *   node scripts/tur1a-matrix.mjs --csv
  *   node scripts/tur1a-matrix.mjs --log --dry-run --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping
  */
 import { spawnSync } from "node:child_process";
@@ -24,6 +26,7 @@ const logger = path.join(repoRoot, "scripts/geo-blind-log.mjs");
 
 const wantNext = process.argv.includes("--next");
 const wantLog = process.argv.includes("--log");
+const wantCsv = process.argv.includes("--csv");
 const includeEn = process.argv.includes("--en");
 const dryRun = process.argv.includes("--dry-run");
 
@@ -100,10 +103,30 @@ function printMatrix(filled) {
     const cells = HUMAN_PLATFORMS.map((p) => (filled.has(cellKey(p, id)) ? "●" : "○"));
     console.log([id, ...cells].join("\t"));
   }
-  console.log("\nNext empty: npm run tur1a:next");
+  console.log("\nNext empty: npm run tur1a:next · CSV: npm run tur1a:csv");
   console.log(
     "One-shot log: npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|…",
   );
+}
+
+/** Spreadsheet-ready empty-cell dump (owner tracking). Does not invent scores. */
+function printCsv(filled) {
+  const esc = (s) => `"${String(s).replace(/"/g, '""')}"`;
+  console.log("platform,promptId,locale,status,prompt,logCommand");
+  for (const id of promptIds) {
+    for (const platform of HUMAN_PLATFORMS) {
+      const filledCell = filled.has(cellKey(platform, id));
+      const locale = String(id).startsWith("en-") ? "en" : "tr-TR";
+      const status = filledCell ? "filled" : "empty";
+      const logCmd = filledCell
+        ? ""
+        : `npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json`;
+      console.log(
+        [platform, id, locale, status, esc(promptText(id)), esc(logCmd)].join(","),
+      );
+    }
+  }
+  console.error(`# coverage ${filled.size}/${totalCells} — do not invent mention %`);
 }
 
 function printNext(filled) {
@@ -198,6 +221,7 @@ const filled = filledSet(rows);
 
 if (wantLog) runLog(filled);
 else if (wantNext) printNext(filled);
+else if (wantCsv) printCsv(filled);
 else printMatrix(filled);
 
 process.exit(0);

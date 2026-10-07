@@ -1163,9 +1163,13 @@ if (fs.existsSync(outDir)) {
   if (
     !securityLive.includes("arled@arledscreen.com") ||
     !securityLive.includes("Expires:") ||
-    !securityLive.includes("/brand.json")
+    !securityLive.includes("/brand.json") ||
+    !securityLive.includes("/entity.json") ||
+    !securityLive.includes("/ai-shopping.json") ||
+    !securityLive.includes("/prices.json") ||
+    !securityLive.includes("/point-c.txt")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand /brand.json pointer");
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/Price/Point C invent pointers");
     process.exit(1);
   }
   const llmsLive = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
@@ -2613,6 +2617,18 @@ if (fs.existsSync(outDir)) {
     "/.well-known/pricing.json",
     "/modules.json",
     "/sku.json",
+    "/tr/ai-shopping.json",
+    "/tr/entity.json",
+    "/tr/prices.json",
+    "/tr/catalog.json",
+    "/tr/geo-baseline.json",
+    "/tr/price.json",
+    "/tr/pricing.json",
+    "/tr/products.json",
+    "/en/prices/",
+    "/en/pricing/",
+    "/en/price/",
+    "/en/cost/",
   ]) {
     if (!indexNowScript.includes(must)) {
       console.error(`❌ submit-indexnow.mjs must include ${must}`);

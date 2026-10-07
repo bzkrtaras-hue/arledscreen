@@ -64,6 +64,8 @@ jobs:
           npm run tur1a:print | grep -q "promptId=5"
           npm run tur1a:list | grep -q "en-1"
           npm run tur1a:matrix | grep -q "0/48"
+          npm run tur1a:csv | grep -q "platform,promptId,locale,status"
+          npm run tur1a:csv 2>/dev/null | grep -c ",empty," | grep -q "48"
           npm run tur1a:next | grep -q "promptId=1"
           npm run tur1a:next | grep -q "tur1a:log"
           npm run tur1a:log -- --dry-run --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping | grep -q "promptId"

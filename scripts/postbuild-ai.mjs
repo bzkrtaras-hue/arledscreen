@@ -2182,6 +2182,9 @@ Policy: https://arledscreen.com/tr/gizlilik/
 Hiring: https://arledscreen.com/tr/about/
 Acknowledgments: https://arledscreen.com/brand.json
 # Brand: https://arledscreen.com/brand.json (#brand-nxtionstar AggregateOffer×12 + hasOfferCatalog → catalog.json)
+# Entity: https://arledscreen.com/entity.json (alias /organization.json · /cite)
+# Price: https://arledscreen.com/ai-shopping.json pricedPanels (aliases /prices.json · /.well-known/prices.json)
+# Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json · Point C: https://arledscreen.com/point-c.txt
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);
