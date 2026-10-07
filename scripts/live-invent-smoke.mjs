@@ -578,6 +578,26 @@ try {
   fail(`geo-baseline reverse join ${e?.message || e}`);
 }
 
+try {
+  const r = await fetch(`${SITE}/tr/${bust()}`, { method: "HEAD", headers: { "cache-control": "no-cache" } });
+  const link = r.headers.get("link") || "";
+  if (
+    link.includes("/.well-known/modules.json") &&
+    link.includes("/.well-known/sku.json") &&
+    link.includes("/.well-known/pricing.json") &&
+    link.includes("/.well-known/panels.json") &&
+    link.includes("/.well-known/mpn.json") &&
+    link.includes("/.well-known/merchant.json") &&
+    link.includes("/.well-known/prices.json") &&
+    link.includes("/.well-known/price.json") &&
+    link.includes("#website")
+  ) {
+    ok("live Link inventAlias panels/mpn/merchant/prices/price + modules/sku/pricing");
+  } else fail("live Link inventAlias panels/mpn/merchant/prices/price + modules/sku/pricing");
+} catch (e) {
+  fail(`live Link invent ${e?.message || e}`);
+}
+
 if (process.exitCode) {
   console.error("\nlive-invent-smoke: FAILED");
   process.exit(1);

@@ -580,6 +580,23 @@ if (
   } else fail("geo discovery invent well-known modules/sku/pricing/brand/entity/#website");
 }
 
+{
+  const headers = readText("_headers");
+  if (
+    headers.includes("/.well-known/modules.json") &&
+    headers.includes("/.well-known/sku.json") &&
+    headers.includes("/.well-known/pricing.json") &&
+    headers.includes("/.well-known/panels.json") &&
+    headers.includes("/.well-known/mpn.json") &&
+    headers.includes("/.well-known/merchant.json") &&
+    headers.includes("/.well-known/prices.json") &&
+    headers.includes("/.well-known/price.json") &&
+    headers.includes("#website")
+  ) {
+    ok("_headers Link inventAlias panels/mpn/merchant/prices/price + modules/sku/pricing");
+  } else fail("_headers Link inventAlias panels/mpn/merchant/prices/price + modules/sku/pricing");
+}
+
 if (process.exitCode) {
   console.error("\nlocal-invent-smoke: FAILED");
   process.exit(1);

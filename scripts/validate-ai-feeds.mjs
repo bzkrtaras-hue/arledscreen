@@ -2034,13 +2034,18 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/modules.json") ||
     !headersLive.includes("/.well-known/sku.json") ||
     !headersLive.includes("/.well-known/pricing.json") ||
+    !headersLive.includes("/.well-known/panels.json") ||
+    !headersLive.includes("/.well-known/mpn.json") ||
+    !headersLive.includes("/.well-known/merchant.json") ||
+    !headersLive.includes("/.well-known/prices.json") ||
+    !headersLive.includes("/.well-known/price.json") ||
     !headersLive.includes("#website") ||
     !headersLive.includes("/.well-known/entity.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+well-known brand/entity/modules/sku/pricing+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt+prices.rss+merchant TSV+point-c");
+    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents + point-c");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
