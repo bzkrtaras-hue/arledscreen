@@ -368,6 +368,7 @@ export function buildEntityDocument(): EntityDocument {
       ],
       parentOrganization: { "@id": `${SITE_URL}/#organization` },
       sameAs: [...ORGANIZATION_SAME_AS],
+      brand: { "@id": `${SITE_URL}/#brand-nxtionstar` },
       makesOffer: organizationMakesOffer(),
       hasOfferCatalog: organizationHasOfferCatalog(),
     },

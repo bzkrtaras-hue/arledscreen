@@ -109,6 +109,7 @@ export function pricedPanelsHasPartStubs() {
       url,
       sku: p.id,
       mpn: p.id,
+      brand: nxtionstarBrandRef(),
       // Dataset→stub → catalog Collection identity (cheap join without expanding pricedPanels).
       sameAs: [`${SITE_URL}/catalog.json#${p.id}`],
       mainEntityOfPage: url,
@@ -130,6 +131,7 @@ export function pricedPanelsHasPartStubs() {
           "@id": `${url}#product`,
           sku: p.id,
           mpn: p.id,
+          brand: nxtionstarBrandRef(),
         },
         availableAtOrFrom: localBusinessRef(),
         seller: { "@id": `${SITE_URL}/#organization` },
@@ -379,6 +381,8 @@ export function organizationMakesOffer() {
     description:
       "Yayımlanmış 12 panel (modül) USD aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. Per-SKU Offer: ai-shopping.json / catalog.json / merchant TSV. Nihai fiyat yazılı teklifle kesinleşir.",
     seller: { "@id": `${SITE_URL}/#organization` },
+    // Band-only readers (no offers[] expand) still join Gaziosmanpaşa NAP.
+    availableAtOrFrom: localBusinessRef(),
     priceSpecification: {
       "@type": "PriceSpecification" as const,
       priceCurrency: "USD",

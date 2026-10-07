@@ -36,7 +36,8 @@
       "offerItemOffered": "PDP #product",
       "offerTriangle": "catalog ↔ ai-shopping ↔ PDP #offer",
       "datasetHasPartOffers": true,
-      "hasOfferCatalog": "https://arledscreen.com/catalog.json"
+      "hasOfferCatalog": "https://arledscreen.com/catalog.json",
+      "offerAvailableAtOrFrom": "https://arledscreen.com/#localbusiness"
     },
     "legacyDomain": {
       "host": "arleds.com",
@@ -134,9 +135,9 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "d8c6c612064d4d8c793a09dd2ab6be503e7e0453eb96e890bbc8347413d940f7",
+    "aiShoppingSha256": "f086e9289415f7b173007cbe6a7160b9d31f124cb7d32ed6907e752e7f83c5bb",
     "catalogSha256": "3cf998f45ce164bda1f37cf1d029fabc464612ae0a62fb79b13dbcb6723eb3ff",
-    "merchantTsvSha256": "c8da908693472ea7f7e71c9554826abad97355e027f0be70c34d99c9bfc7dc42",
+    "merchantTsvSha256": "d3baabd895019199ceb22f6f1493b76a41cfaf8dc999a13103a29d1ef5a1928a",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
   "discovery": {

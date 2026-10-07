@@ -242,6 +242,7 @@ export default async function ModelPage({ params }: PageProps) {
         name={m.name}
         description={description}
         cssSelectors={["#model-h1", "#model-lead"]}
+        {...(price ? { mainEntity: { "@id": `${url}#product` } } : {})}
       />
       <script
         type="application/ld+json"

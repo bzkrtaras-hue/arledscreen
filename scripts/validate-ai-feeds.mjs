@@ -138,12 +138,14 @@ if (fs.existsSync(outDir)) {
         p.offers.sameAs.some((u) => String(u).includes(`/catalog.json#offer-${p.sku}`)) &&
         p.offers.sameAs.some((u) => String(u) === `${p.url}#offer`) &&
         p?.offers?.itemOffered?.["@id"] === `${p.url}#product` &&
+        String(p?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
+        String(p?.offers?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
         String(p?.offers?.price || "") === String(p?.price || ai.pricedPanels.find((x) => x.sku === p.sku)?.price) &&
         String(p?.offers?.description || "").includes("Ücretsiz kargo yok") &&
         p?.offers?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
     )
   ) {
-    console.error("❌ out/ai-shopping.json hasPart Offer stubs must include USD + availableAtOrFrom #localbusiness");
+    console.error("❌ out/ai-shopping.json hasPart Offer stubs must include Brand + USD + availableAtOrFrom #localbusiness");
     process.exit(1);
   }
   if (!ai.pricedPanels.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
@@ -216,11 +218,15 @@ if (fs.existsSync(outDir)) {
   const ardMerchant = ard?.agentic?.resources?.merchantFeed;
   {
     const cols = Array.isArray(ardMerchant?.columns) ? ardMerchant.columns : [];
-    for (const need of ["product_ld_id", "catalog_id", "offer_id", "catalog_offer_id", "mpn"]) {
+    for (const need of ["product_ld_id", "catalog_id", "offer_id", "catalog_offer_id", "mpn", "local_business_id"]) {
       if (!cols.includes(need)) {
         console.error(`❌ ard.json merchantFeed.columns must include ${need}`);
         process.exit(1);
       }
+    }
+    if (ardMerchant?.localBusinessId !== "https://arledscreen.com/#localbusiness") {
+      console.error("❌ ard.json merchantFeed.localBusinessId must be #localbusiness");
+      process.exit(1);
     }
   }
   if (!ardMerchant?.url?.includes("/feeds/merchant-priced-panels.tsv") || ardMerchant.freeShipping !== false) {
@@ -301,9 +307,10 @@ if (fs.existsSync(outDir)) {
   if (
     !String(baseline?.baseline?.priceGraph?.entityMakesOffer || "").includes("#priced-panels-aggregate") ||
     !baseline?.baseline?.priceGraph?.datasetHasPartOffers ||
-    !String(baseline?.baseline?.priceGraph?.offerItemOffered || "").includes("#product")
+    !String(baseline?.baseline?.priceGraph?.offerItemOffered || "").includes("#product") ||
+    !String(baseline?.baseline?.priceGraph?.offerAvailableAtOrFrom || "").includes("#localbusiness")
   ) {
-    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + itemOffered + hasPart Offers");
+    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + itemOffered + hasPart Offers + #localbusiness");
     process.exit(1);
   }
   for (const key of ["pricesJson", "organization", "agentsJson", "agentsMd", "securityTxt", "humansTxt"]) {
@@ -513,9 +520,10 @@ if (fs.existsSync(outDir)) {
     entity?.makesOffer?.priceCurrency !== "USD" ||
     !String(entity?.makesOffer?.url || "").includes("/ai-shopping.json") ||
     String(entity?.makesOffer?.lowPrice) !== "26.98" ||
-    String(entity?.makesOffer?.highPrice) !== "95.88"
+    String(entity?.makesOffer?.highPrice) !== "95.88" ||
+    entity?.makesOffer?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness"
   ) {
-    console.error("❌ entity.json makesOffer must be AggregateOffer×12 USD 26.98–95.88 → ai-shopping");
+    console.error("❌ entity.json makesOffer must be AggregateOffer×12 USD 26.98–95.88 → ai-shopping + #localbusiness");
     process.exit(1);
   }
   if (
@@ -1177,6 +1185,7 @@ if (fs.existsSync(outDir)) {
     "catalog_id",
     "offer_id",
     "catalog_offer_id",
+    "local_business_id",
   ]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
@@ -1191,10 +1200,15 @@ if (fs.existsSync(outDir)) {
   const tsvCols = tsvHeader.split("\t");
   const mpnIdx = tsvCols.indexOf("mpn");
   const idIdx = tsvCols.indexOf("id");
+  const lbIdx = tsvCols.indexOf("local_business_id");
   for (const row of tsvRows) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
       console.error(`❌ merchant TSV mpn must equal id (sku) for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[lbIdx] !== "https://arledscreen.com/#localbusiness") {
+      console.error(`❌ merchant TSV local_business_id must be #localbusiness for ${cells[idIdx]}`);
       process.exit(1);
     }
   }
@@ -1528,6 +1542,9 @@ if (fs.existsSync(outDir)) {
             String(offer.highPrice) === "95.88" &&
             Array.isArray(offer.offers) &&
             offer.offers.length === 12 &&
+            offer?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness" &&
+            node?.location?.["@id"] === "https://arledscreen.com/#localbusiness" &&
+            node?.geo?.["@type"] === "GeoCoordinates" &&
             node?.hasOfferCatalog?.["@type"] === "OfferCatalog" &&
             String(node.hasOfferCatalog["@id"] || "").includes("/catalog.json")
           ) {
@@ -1541,7 +1558,7 @@ if (fs.existsSync(outDir)) {
       }
     }
     if (!makesOfferOk) {
-      console.error("❌ tr/index.html Organization must makesOffer×12 stubs + hasOfferCatalog");
+      console.error("❌ tr/index.html Organization must location #localbusiness + makesOffer×12 + hasOfferCatalog");
       process.exit(1);
     }
     let localOk = false;
@@ -1803,7 +1820,8 @@ if (fs.existsSync(outDir)) {
           offer.mpn === "p1-25-ic-gob" &&
           String(d.mainEntityOfPage || "").includes("/p1-25-gob/") &&
           String(offer.itemOffered?.["@id"] || "").includes("/p1-25-gob/") &&
-          String(offer.itemOffered?.["@id"] || "").endsWith("#product")
+          String(offer.itemOffered?.["@id"] || "").endsWith("#product") &&
+          offer?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness"
         ) {
           pdpOk = true;
           break;
@@ -1813,10 +1831,30 @@ if (fs.existsSync(outDir)) {
       }
     }
     if (!pdpOk) {
-      console.error("❌ PDP Product/Offer must sameAs catalog + ai-shopping + Offer sku + mainEntityOfPage");
+      console.error("❌ PDP Product/Offer must sameAs catalog + ai-shopping + Offer sku + mainEntityOfPage + #localbusiness");
       process.exit(1);
     }
-    console.log("✅ PDP Product/Offer sameAs joins catalog + ai-shopping");
+    let webpageOk = false;
+    for (const m of pdpHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "WebPage") continue;
+        if (
+          String(d.mainEntity?.["@id"] || "").includes("/p1-25-gob/") &&
+          String(d.mainEntity?.["@id"] || "").endsWith("#product")
+        ) {
+          webpageOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!webpageOk) {
+      console.error("❌ PDP WebPage.mainEntity must join #product");
+      process.exit(1);
+    }
+    console.log("✅ PDP Product/Offer sameAs joins catalog + ai-shopping; WebPage→Product");
   }
 
   // AggregateOffer hubs (group + price + calculator; TR + EN) must sameAs catalog + ai-shopping Offers.
@@ -1931,8 +1969,10 @@ if (fs.existsSync(outDir)) {
                 Array.isArray(p?.offers?.sameAs) &&
                 p.offers.sameAs.some((u) => String(u).includes("#offer")) &&
                 String(p?.offers?.itemOffered?.["@id"] || "").endsWith("#product") &&
+                String(p?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
                 Boolean(p?.offers?.price) &&
-                String(p?.offers?.description || "").includes("Ücretsiz kargo yok"),
+                String(p?.offers?.description || "").includes("Ücretsiz kargo yok") &&
+                p?.offers?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
             )
           ) {
             const dist = JSON.stringify(d.distribution || []);

@@ -7,6 +7,8 @@ interface SpeakableJsonLdProps {
   description: string;
   /** CSS selectors for speakable blocks (must exist in the page DOM). */
   cssSelectors: string[];
+  /** Optional page→Product forward join (priced PDPs). */
+  mainEntity?: { "@id": string };
 }
 
 /**
@@ -18,6 +20,7 @@ export function SpeakableJsonLd({
   name,
   description,
   cssSelectors,
+  mainEntity,
 }: SpeakableJsonLdProps) {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -28,6 +31,7 @@ export function SpeakableJsonLd({
     description,
     isPartOf: { "@id": `${SITE_URL}/#website` },
     about: { "@id": `${SITE_URL}/#organization` },
+    ...(mainEntity ? { mainEntity } : {}),
     isBasedOn: BRAND_SUBJECT_DATASETS,
     speakable: {
       "@type": "SpeakableSpecification",

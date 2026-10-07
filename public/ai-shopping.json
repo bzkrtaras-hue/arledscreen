@@ -34,6 +34,11 @@
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
       "sku": "p1-25-ic-gob",
       "mpn": "p1-25-ic-gob",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p1-25-ic-gob"
       ],
@@ -56,7 +61,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#product",
           "sku": "p1-25-ic-gob",
-          "mpn": "p1-25-ic-gob"
+          "mpn": "p1-25-ic-gob",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -73,6 +83,11 @@
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
       "sku": "p1-53-ic-gob",
       "mpn": "p1-53-ic-gob",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p1-53-ic-gob"
       ],
@@ -95,7 +110,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#product",
           "sku": "p1-53-ic-gob",
-          "mpn": "p1-53-ic-gob"
+          "mpn": "p1-53-ic-gob",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -112,6 +132,11 @@
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
       "sku": "p1-86-ic-gob",
       "mpn": "p1-86-ic-gob",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p1-86-ic-gob"
       ],
@@ -134,7 +159,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#product",
           "sku": "p1-86-ic-gob",
-          "mpn": "p1-86-ic-gob"
+          "mpn": "p1-86-ic-gob",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -151,6 +181,11 @@
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
       "sku": "p2-5-ic",
       "mpn": "p2-5-ic",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p2-5-ic"
       ],
@@ -173,7 +208,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#product",
           "sku": "p2-5-ic",
-          "mpn": "p2-5-ic"
+          "mpn": "p2-5-ic",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -190,6 +230,11 @@
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
       "sku": "p3-07-ic",
       "mpn": "p3-07-ic",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p3-07-ic"
       ],
@@ -212,7 +257,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#product",
           "sku": "p3-07-ic",
-          "mpn": "p3-07-ic"
+          "mpn": "p3-07-ic",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -229,6 +279,11 @@
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
       "sku": "p4-ic",
       "mpn": "p4-ic",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p4-ic"
       ],
@@ -251,7 +306,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#product",
           "sku": "p4-ic",
-          "mpn": "p4-ic"
+          "mpn": "p4-ic",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -268,6 +328,11 @@
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
       "sku": "p2-5-dis",
       "mpn": "p2-5-dis",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p2-5-dis"
       ],
@@ -290,7 +355,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#product",
           "sku": "p2-5-dis",
-          "mpn": "p2-5-dis"
+          "mpn": "p2-5-dis",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -307,6 +377,11 @@
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
       "sku": "p2-9-dis",
       "mpn": "p2-9-dis",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p2-9-dis"
       ],
@@ -329,7 +404,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#product",
           "sku": "p2-9-dis",
-          "mpn": "p2-9-dis"
+          "mpn": "p2-9-dis",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -346,6 +426,11 @@
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
       "sku": "p3-07-dis",
       "mpn": "p3-07-dis",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p3-07-dis"
       ],
@@ -368,7 +453,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#product",
           "sku": "p3-07-dis",
-          "mpn": "p3-07-dis"
+          "mpn": "p3-07-dis",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -385,6 +475,11 @@
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
       "sku": "p4-dis",
       "mpn": "p4-dis",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p4-dis"
       ],
@@ -407,7 +502,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#product",
           "sku": "p4-dis",
-          "mpn": "p4-dis"
+          "mpn": "p4-dis",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -424,6 +524,11 @@
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
       "sku": "p4-dis-front",
       "mpn": "p4-dis-front",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p4-dis-front"
       ],
@@ -446,7 +551,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#product",
           "sku": "p4-dis-front",
-          "mpn": "p4-dis-front"
+          "mpn": "p4-dis-front",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -463,6 +573,11 @@
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
       "sku": "p5-dis",
       "mpn": "p5-dis",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR"
+      },
       "sameAs": [
         "https://arledscreen.com/catalog.json#p5-dis"
       ],
@@ -485,7 +600,12 @@
           "@type": "Product",
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#product",
           "sku": "p5-dis",
-          "mpn": "p5-dis"
+          "mpn": "p5-dis",
+          "brand": {
+            "@type": "Brand",
+            "@id": "https://arledscreen.com/#brand-nxtionstar",
+            "name": "NXTIONSTAR"
+          }
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",

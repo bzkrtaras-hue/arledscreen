@@ -1,5 +1,6 @@
 import { ENTITY_CITE_MEDIUM, ENTITY_DISAMBIGUATING_DESCRIPTION } from "@/lib/entity";
 import {
+  LOCALBUSINESS_ID,
   NXTIONSTAR_BRAND_ID,
   BRAND_SUBJECT_DATASETS,
   nxtionstarBrandNode,
@@ -58,6 +59,9 @@ export function OrganizationJsonLd() {
         email: CONTACT_EMAIL,
         telephone: CONTACT_PHONE_E164,
         address,
+        geo: { "@type": "GeoCoordinates", ...BUSINESS_GEO },
+        // Org scrapers that skip the LocalBusiness sibling still join place↔price.
+        location: { "@id": LOCALBUSINESS_ID },
         sameAs: [...ORGANIZATION_SAME_AS],
         brand: { "@id": NXTIONSTAR_BRAND_ID },
         subjectOf: BRAND_SUBJECT_DATASETS,
@@ -114,6 +118,8 @@ export function OrganizationJsonLd() {
         ],
         parentOrganization: { "@id": `${SITE_URL}/#organization` },
         sameAs: [...ORGANIZATION_SAME_AS],
+        brand: { "@id": NXTIONSTAR_BRAND_ID },
+        subjectOf: BRAND_SUBJECT_DATASETS,
         // Local+shopping agents often key LocalBusiness — mirror Org price authority.
         makesOffer: organizationMakesOffer(),
         hasOfferCatalog: organizationHasOfferCatalog(),

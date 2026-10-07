@@ -534,6 +534,7 @@ function buildAiShopping() {
       url: p.url,
       sku: p.sku,
       mpn: p.sku, // honest mpn=sku; stub keeps Dataset→Product join cheap for agents
+      brand: { "@type": "Brand", "@id": `${SITE_URL}/#brand-nxtionstar`, name: "NXTIONSTAR" },
       sameAs: [`${SITE_URL}/catalog.json#${p.sku}`],
       mainEntityOfPage: p.url,
       offers: {
@@ -554,6 +555,7 @@ function buildAiShopping() {
           "@id": `${p.url}#product`,
           sku: p.sku,
           mpn: p.sku,
+          brand: { "@type": "Brand", "@id": `${SITE_URL}/#brand-nxtionstar`, name: "NXTIONSTAR" },
         },
         availableAtOrFrom: localBusinessRef(),
         seller: { "@id": `${SITE_URL}/#organization` },
@@ -811,6 +813,7 @@ function buildMerchantTsv() {
     "seller",
     "seller_url",
     "seller_email",
+    "local_business_id",
     "product_url",
     "product_ld_id",
     "catalog_id",
@@ -847,6 +850,7 @@ function buildMerchantTsv() {
         "ARLEDSCREEN",
         SITE_URL,
         "arled@arledscreen.com",
+        LOCALBUSINESS_ID,
         panel.productUrl,
         // JSON-LD join IDs for TSV-only merchant / shopping pipelines.
         `${panel.productUrl}#product`,
@@ -926,6 +930,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         offerTriangle: "catalog ↔ ai-shopping ↔ PDP #offer",
         datasetHasPartOffers: true,
         hasOfferCatalog: `${SITE_URL}/catalog.json`,
+        offerAvailableAtOrFrom: LOCALBUSINESS_ID,
       },
       legacyDomain: {
         host: "arleds.com",

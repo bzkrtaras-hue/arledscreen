@@ -110,6 +110,10 @@
     "seller": {
       "@id": "https://arledscreen.com/#organization"
     },
+    "availableAtOrFrom": {
+      "@type": "LocalBusiness",
+      "@id": "https://arledscreen.com/#localbusiness"
+    },
     "priceSpecification": {
       "@type": "PriceSpecification",
       "priceCurrency": "USD",
@@ -1017,6 +1021,9 @@
       "https://www.facebook.com/arledscreenn",
       "https://www.linkedin.com/company/arleds"
     ],
+    "brand": {
+      "@id": "https://arledscreen.com/#brand-nxtionstar"
+    },
     "makesOffer": {
       "@type": "AggregateOffer",
       "@id": "https://arledscreen.com/#priced-panels-aggregate",
@@ -1030,6 +1037,10 @@
       "description": "Yayımlanmış 12 panel (modül) USD aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. Per-SKU Offer: ai-shopping.json / catalog.json / merchant TSV. Nihai fiyat yazılı teklifle kesinleşir.",
       "seller": {
         "@id": "https://arledscreen.com/#organization"
+      },
+      "availableAtOrFrom": {
+        "@type": "LocalBusiness",
+        "@id": "https://arledscreen.com/#localbusiness"
       },
       "priceSpecification": {
         "@type": "PriceSpecification",
