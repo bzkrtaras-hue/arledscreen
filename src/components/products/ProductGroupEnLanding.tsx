@@ -73,6 +73,7 @@ export function ProductGroupEnLanding({
         name={en.h1}
         description={en.description}
         cssSelectors={["#pg-h1", "#pg-lead"]}
+        mainEntity={{ "@id": `${url}#service` }}
       />
       <script
         type="application/ld+json"

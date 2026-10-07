@@ -1,4 +1,4 @@
-import { BRAND_SUBJECT_DATASETS } from "@/content/prices";
+import { BRAND_SUBJECT_DATASETS, localBusinessRef } from "@/content/prices";
 
 interface HowToStep {
   name: string;
@@ -26,7 +26,12 @@ export function HowToJsonLd({
     name,
     description,
     ...(citePriceDatasets
-      ? { isBasedOn: BRAND_SUBJECT_DATASETS, citation: BRAND_SUBJECT_DATASETS.map((d) => d.url) }
+      ? {
+          isBasedOn: BRAND_SUBJECT_DATASETS,
+          citation: BRAND_SUBJECT_DATASETS.map((d) => d.url),
+          // Price HowTo → Gaziosmanpaşa NAP (same place Offers availableAtOrFrom).
+          provider: localBusinessRef(),
+        }
       : {}),
     step: steps.map((step, index) => ({
       "@type": "HowToStep",

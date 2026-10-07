@@ -86,7 +86,12 @@
       "@type": "Brand",
       "@id": "https://arledscreen.com/#brand-nxtionstar",
       "name": "NXTIONSTAR"
-    }
+    },
+    "location": {
+      "@type": "LocalBusiness",
+      "@id": "https://arledscreen.com/#localbusiness"
+    },
+    "makesOffer": "https://arledscreen.com/#priced-panels-aggregate"
   },
   "isBasedOn": [
     "https://arledscreen.com/.well-known/ard.json",

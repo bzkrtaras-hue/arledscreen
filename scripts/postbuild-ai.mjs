@@ -301,6 +301,8 @@ function buildCatalog() {
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
     },
+    // Catalog-root agents (no Offer expand) still join Gaziosmanpaşa NAP.
+    availableAtOrFrom: localBusinessRef(),
     datePublished: "2026-01-01",
     dateModified: new Date().toISOString().split("T")[0],
     url: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
@@ -516,6 +518,8 @@ function buildAiShopping() {
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
     },
+    // Dataset-root agents still join place without expanding hasPart Offers.
+    availableAtOrFrom: localBusinessRef(),
     // Dataset ↔ Collection identity (catalog.json products; this file pricedPanels).
     sameAs: [`${SITE_URL}/catalog.json`],
     mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,

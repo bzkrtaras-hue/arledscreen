@@ -125,6 +125,7 @@ export function CommercialLanding({
         name={page.h1}
         description={page.description}
         cssSelectors={["#commercial-h1", "#commercial-lead"]}
+        mainEntity={{ "@id": `${url}#service` }}
       />
       <script
         type="application/ld+json"

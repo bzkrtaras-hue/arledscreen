@@ -272,6 +272,13 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json resources.entity must cite makesOffer #priced-panels-aggregate");
     process.exit(1);
   }
+  if (
+    ard?.agentic?.resources?.entity?.location !== "https://arledscreen.com/#localbusiness" ||
+    ard?.agentic?.resources?.localBusiness?.["@id"] !== "https://arledscreen.com/#localbusiness"
+  ) {
+    console.error("❌ ard.json resources.entity.location + resources.localBusiness must be #localbusiness");
+    process.exit(1);
+  }
   if (!String(ard?.agentic?.resources?.aiShopping?.description || "").includes("itemOffered")) {
     console.error("❌ ard.json resources.aiShopping description must cite itemOffered");
     process.exit(1);
@@ -419,6 +426,14 @@ if (fs.existsSync(outDir)) {
     console.error("❌ catalog.json Collection sameAs must join ai-shopping.json");
     process.exit(1);
   }
+  if (catalogLive?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
+    console.error("❌ catalog.json Collection availableAtOrFrom must be #localbusiness");
+    process.exit(1);
+  }
+  if (ai?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
+    console.error("❌ ai-shopping.json Dataset availableAtOrFrom must be #localbusiness");
+    process.exit(1);
+  }
   const aiBasedOn = JSON.stringify(ai?.isBasedOn || []);
   if (!aiBasedOn.includes("/geo-baseline.json")) {
     console.error("❌ ai-shopping.json isBasedOn must include geo-baseline.json");
@@ -563,9 +578,10 @@ if (fs.existsSync(outDir)) {
   if (
     entity?.hasOfferCatalog?.["@type"] !== "OfferCatalog" ||
     !String(entity?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json") ||
-    entity?.hasOfferCatalog?.numberOfItems !== 12
+    entity?.hasOfferCatalog?.numberOfItems !== 12 ||
+    entity?.hasOfferCatalog?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness"
   ) {
-    console.error("❌ entity.json hasOfferCatalog must be OfferCatalog → catalog.json ×12");
+    console.error("❌ entity.json hasOfferCatalog must be OfferCatalog → catalog.json ×12 + #localbusiness");
     process.exit(1);
   }
   const disambig = String(entity?.disambiguatingDescription || "");
@@ -777,6 +793,13 @@ if (fs.existsSync(outDir)) {
   }
   if (!String(agents.description || "").includes("ai-shopping.json")) {
     console.error("❌ agents.json must point agents at ai-shopping.json price source");
+    process.exit(1);
+  }
+  if (
+    agents?.provider?.location?.["@id"] !== "https://arledscreen.com/#localbusiness" ||
+    !String(agents?.provider?.makesOffer || "").includes("#priced-panels-aggregate")
+  ) {
+    console.error("❌ agents.json provider must location #localbusiness + makesOffer AggregateOffer");
     process.exit(1);
   }
   if (!fs.readFileSync(path.join(outDir, "agents.json")).equals(fs.readFileSync(path.join(outDir, ".well-known/agents.json")))) {
@@ -1888,6 +1911,52 @@ if (fs.existsSync(outDir)) {
     }
     if (!hubPageOk) {
       console.error("❌ price hub WebPage.mainEntity must join #service");
+      process.exit(1);
+    }
+  }
+
+  // EN product group + commercial intent Speakable → #service; calculator HowTo → #localbusiness.
+  for (const [rel, needle] of [
+    ["en/products/gob-led-ekran/index.html", "/en/products/gob-led-ekran/"],
+    ["tr/led-ekran/index.html", "/tr/led-ekran/"],
+    ["en/led-ekran/index.html", "/en/led-ekran/"],
+  ]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    let pageOk = false;
+    for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "WebPage") continue;
+        if (String(d.mainEntity?.["@id"] || "").includes(needle) && String(d.mainEntity?.["@id"] || "").endsWith("#service")) {
+          pageOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!pageOk) {
+      console.error(`❌ ${rel} WebPage.mainEntity must join #service`);
+      process.exit(1);
+    }
+  }
+  {
+    const howHtml = fs.readFileSync(path.join(outDir, "tr/hesaplayici/index.html"), "utf8");
+    let howOk = false;
+    for (const m of howHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "HowTo") continue;
+        if (d?.provider?.["@id"] === "https://arledscreen.com/#localbusiness") {
+          howOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!howOk) {
+      console.error("❌ hesaplayici HowTo.provider must be #localbusiness");
       process.exit(1);
     }
   }

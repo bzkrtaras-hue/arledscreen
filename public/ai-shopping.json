@@ -14,6 +14,10 @@
     "name": "NXTIONSTAR",
     "url": "https://arledscreen.com/tr/nxtionstar/"
   },
+  "availableAtOrFrom": {
+    "@type": "LocalBusiness",
+    "@id": "https://arledscreen.com/#localbusiness"
+  },
   "sameAs": [
     "https://arledscreen.com/catalog.json"
   ],

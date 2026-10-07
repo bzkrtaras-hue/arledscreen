@@ -958,7 +958,11 @@
     "numberOfItems": 12,
     "sameAs": [
       "https://arledscreen.com/ai-shopping.json"
-    ]
+    ],
+    "availableAtOrFrom": {
+      "@type": "LocalBusiness",
+      "@id": "https://arledscreen.com/#localbusiness"
+    }
   },
   "location": {
     "@type": "LocalBusiness",
@@ -1912,7 +1916,11 @@
       "numberOfItems": 12,
       "sameAs": [
         "https://arledscreen.com/ai-shopping.json"
-      ]
+      ],
+      "availableAtOrFrom": {
+        "@type": "LocalBusiness",
+        "@id": "https://arledscreen.com/#localbusiness"
+      }
     }
   },
   "founder": {

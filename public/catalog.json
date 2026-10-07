@@ -18,6 +18,10 @@
     "name": "NXTIONSTAR",
     "url": "https://arledscreen.com/tr/nxtionstar/"
   },
+  "availableAtOrFrom": {
+    "@type": "LocalBusiness",
+    "@id": "https://arledscreen.com/#localbusiness"
+  },
   "datePublished": "2026-01-01",
   "dateModified": "2026-10-07",
   "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",

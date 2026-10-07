@@ -15,14 +15,25 @@
         "type": "Organization",
         "url": "https://arledscreen.com/entity.json",
         "format": "application/ld+json",
-        "description": "Canonical organization: NAP, cite, FAQs, logo, contactPoint, knowsAbout. Price graph: makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku} (itemOffered → PDP #product); hasOfferCatalog → catalog.json. Aliases: /organization.json · /cite.json · /.well-known/entity.json.",
+        "description": "Canonical organization: NAP, cite, FAQs, logo, contactPoint, knowsAbout. Price graph: makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku} (itemOffered → PDP #product); hasOfferCatalog → catalog.json; location → #localbusiness. Aliases: /organization.json · /cite.json · /.well-known/entity.json.",
         "brandId": "https://arledscreen.com/#brand-nxtionstar",
         "alias": "https://arledscreen.com/organization.json",
         "makesOffer": "https://arledscreen.com/#priced-panels-aggregate",
         "hasOfferCatalog": "https://arledscreen.com/catalog.json",
+        "location": "https://arledscreen.com/#localbusiness",
         "pricesJson": "https://arledscreen.com/prices.json",
         "agentsJson": "https://arledscreen.com/.well-known/agents.json",
         "agentsMd": "https://arledscreen.com/AGENTS.md"
+      },
+      "localBusiness": {
+        "type": "LocalBusiness",
+        "@id": "https://arledscreen.com/#localbusiness",
+        "url": "https://arledscreen.com/entity.json",
+        "format": "application/ld+json",
+        "description": "Gaziosmanpaşa NAP Place node (entity.location). Offers/AggregateOffer/catalog availableAtOrFrom and Org location join here. makesOffer×12 + hasOfferCatalog mirror Organization.",
+        "makesOffer": "https://arledscreen.com/#priced-panels-aggregate",
+        "hasOfferCatalog": "https://arledscreen.com/catalog.json",
+        "parentOrganization": "https://arledscreen.com/#organization"
       },
       "organization": {
         "type": "Organization alias",

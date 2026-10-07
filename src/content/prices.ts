@@ -402,6 +402,7 @@ export function organizationHasOfferCatalog() {
     url: `${SITE_URL}/catalog.json`,
     numberOfItems: PANEL_PRICES.length,
     sameAs: [`${SITE_URL}/ai-shopping.json`],
+    availableAtOrFrom: localBusinessRef(),
   };
 }
 
