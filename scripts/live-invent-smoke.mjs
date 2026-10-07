@@ -156,6 +156,24 @@ if (
   ok("brand.subjectOf+distribution → point-c");
 } else fail("brand.subjectOf+distribution → point-c");
 
+try {
+  const geo = await getJson("/geo-baseline.json");
+  const based = JSON.stringify(geo?.isBasedOn || []);
+  const related = JSON.stringify(geo?.isRelatedTo || []);
+  if (
+    based.includes("/entity.json") &&
+    based.includes("/brand.json") &&
+    based.includes("/ai-shopping.json") &&
+    based.includes("/catalog.json") &&
+    based.includes("/feeds/prices.rss") &&
+    related.includes("/point-c.txt")
+  ) {
+    ok("geo-baseline isBasedOn entity/brand/ai/catalog + isRelatedTo point-c");
+  } else fail("geo-baseline isBasedOn entity/brand/ai/catalog + isRelatedTo point-c");
+} catch (e) {
+  fail(`geo-baseline reverse join ${e?.message || e}`);
+}
+
 if (process.exitCode) {
   console.error("\nlive-invent-smoke: FAILED");
   process.exit(1);
