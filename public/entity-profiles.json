@@ -65,7 +65,7 @@
     "Bing Places / Apple = packs.bingPlaces / packs.appleBusinessConnect",
     "P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — npm run verify:arleds-301; docs/ops/arleds-301-hostinger.md",
     "Merchant jargon yalnızca packs.googleMerchantReadiness — kamu biyografisine koyma",
-    "Tur 1a / kör test: npm run tur1a:print → ChatGPT/Gemini/Perplexity · geo-blind-log · docs/geo/observation.schema.json — skor uydurma yok",
+    "Tur 1a / kör test: npm run tur1a:next → paste → geo-blind-log · tur1a:matrix (0/48) · docs/geo/observation.schema.json — skor uydurma yok",
     "PR #60 main merge (GEO kalıcılık)",
     "EN profiles (if used): npm run point-c:en — packsEn.* cite-only + LinkedIn slug note"
   ],
