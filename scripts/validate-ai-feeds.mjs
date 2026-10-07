@@ -336,6 +336,29 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json entityProfiles.packsEn pointer required for Point C EN packs");
     process.exit(1);
   }
+  {
+    const pc = ard?.agentic?.resources?.pointC;
+    const pcEn = ard?.agentic?.resources?.pointCEn;
+    if (
+      !String(pc?.url || "").includes("/point-c.txt") ||
+      !String(pc?.wellKnown || "").includes("/.well-known/point-c.txt") ||
+      !String(pc?.en || "").includes("/point-c-en.txt") ||
+      !String(pcEn?.url || "").includes("/point-c-en.txt")
+    ) {
+      console.error("❌ ard.json must expose resources.pointC + pointCEn → /point-c.txt (+ EN + well-known)");
+      process.exit(1);
+    }
+    if (!String(ard?.agentic?.resources?.humansTxt?.url || "").includes("/humans.txt")) {
+      console.error("❌ ard.json must expose resources.humansTxt");
+      process.exit(1);
+    }
+    for (const must of ["/point-c.txt", "/point-c-en.txt", "/.well-known/point-c.txt", "/humans.txt", "/brand.json"]) {
+      if (!ard.robotsPolicy.allow.includes(must)) {
+        console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
+        process.exit(1);
+      }
+    }
+  }
   if (!String(ard?.agentic?.resources?.entity?.makesOffer || "").includes("#priced-panels-aggregate")) {
     console.error("❌ ard.json resources.entity must cite makesOffer #priced-panels-aggregate");
     process.exit(1);
@@ -402,11 +425,35 @@ if (fs.existsSync(outDir)) {
     console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + Brand offer/catalog + #localbusiness location + serviceProvider");
     process.exit(1);
   }
-  for (const key of ["pricesJson", "organization", "agentsJson", "agentsMd", "securityTxt", "humansTxt", "pricesRss"]) {
+  for (const key of [
+    "pricesJson",
+    "organization",
+    "agentsJson",
+    "agentsMd",
+    "securityTxt",
+    "humansTxt",
+    "pricesRss",
+    "pointCTxt",
+    "pointCEnTxt",
+    "pointCWellKnown",
+    "brandJson",
+  ]) {
     if (!String(baseline?.discovery?.[key] || "").includes("arledscreen.com")) {
       console.error(`❌ geo-baseline.json discovery.${key} required for invent/agent surfaces`);
       process.exit(1);
     }
+  }
+  if (
+    !String(ai?.resources?.pointC || "").includes("/point-c.txt") ||
+    !String(ai?.resources?.pointCEn || "").includes("/point-c-en.txt") ||
+    !String(ai?.resources?.pointCWellKnown || "").includes("/.well-known/point-c.txt")
+  ) {
+    console.error("❌ ai-shopping.json resources.pointC + pointCEn + pointCWellKnown required");
+    process.exit(1);
+  }
+  if (!JSON.stringify(ai?.isBasedOn || []).includes("/brand.json") || !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt")) {
+    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + /point-c.txt");
+    process.exit(1);
   }
   if (!ard?.agentic?.resources?.pricesJson?.url?.includes("/prices.json") || !ard?.agentic?.resources?.agentsMd?.url?.includes("AGENTS.md")) {
     console.error("❌ ard.json must expose resources.pricesJson + agentsMd");
@@ -429,9 +476,11 @@ if (fs.existsSync(outDir)) {
     !catalogRelated.includes("/geo-baseline.json") ||
     !catalogRelated.includes("/ai-shopping.json") ||
     !catalogRelated.includes("/feeds/prices.rss") ||
+    !catalogRelated.includes("/brand.json") ||
+    !catalogRelated.includes("/point-c.txt") ||
     catalogLive?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar"
   ) {
-    console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping + prices.rss and brand @id #brand-nxtionstar");
+    console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping + prices.rss + brand.json + point-c.txt and brand @id #brand-nxtionstar");
     process.exit(1);
   }
   // Product↔Offer identity: each catalog Offer.url must equal its Product.url (PDP),
@@ -992,10 +1041,13 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("GBP About") ||
       !pointC.includes("34245") ||
       !pointC.includes("arledscreen.com/tr/") ||
+      !pointC.includes("Hostinger arleds.com") ||
+      !pointC.includes("verify:arleds-301") ||
       !pointCEn.includes("EN GBP About") ||
-      !pointCEn.includes("arledscreen.com/en/")
+      !pointCEn.includes("arledscreen.com/en/") ||
+      !pointCEn.includes("Hostinger arleds.com")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP paste packs");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP paste packs + Hostinger 301 clipboard");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {

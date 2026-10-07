@@ -83,6 +83,16 @@ Address: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul
 Phone: +90 530 507 88 34
 Web: https://arledscreen.com/en/
 
+--- Hostinger arleds.com → arledscreen.com/tr/ 301 (owner clipboard) ---
+hPanel → Domains → arleds.com → Redirects → permanent 301 entire domain.
+From → To (all four):
+http://arleds.com/ → https://arledscreen.com/tr/
+http://www.arleds.com/ → https://arledscreen.com/tr/
+https://arleds.com/ → https://arledscreen.com/tr/
+https://www.arleds.com/ → https://arledscreen.com/tr/
+Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md
+Do NOT add arleds.com to sameAs until 301 is live.
+
 --- Machine-only (do NOT paste into GBP/IG/FB bios) ---
 Merchant readiness: packsEn.googleMerchantReadiness (or packs.googleMerchantReadiness)
 prices.rss: https://arledscreen.com/feeds/prices.rss

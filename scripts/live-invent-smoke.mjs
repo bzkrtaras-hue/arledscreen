@@ -83,14 +83,34 @@ else fail("agents.json ≥14");
 
 try {
   const pc = await getText("/point-c.txt");
-  if (pc.includes("GBP About") && pc.includes("34245")) ok("point-c.txt paste packs");
-  else fail("point-c.txt paste packs");
+  if (pc.includes("GBP About") && pc.includes("34245") && pc.includes("Hostinger arleds.com")) {
+    ok("point-c.txt paste packs + Hostinger 301");
+  } else fail("point-c.txt paste packs + Hostinger 301");
 } catch (e) {
   fail(`point-c.txt ${e?.message || e}`);
 }
 
+try {
+  const pcEn = await getText("/point-c-en.txt");
+  if (pcEn.includes("EN GBP About") && pcEn.includes("arledscreen.com/en/")) ok("point-c-en.txt paste packs");
+  else fail("point-c-en.txt paste packs");
+} catch (e) {
+  fail(`point-c-en.txt ${e?.message || e}`);
+}
+
 if (ard?.agentic?.resources?.website?.["@id"] === `${SITE}/#website`) ok("ard.resources.website");
 else fail("ard.resources.website");
+
+if (String(ard?.agentic?.resources?.pointC?.url || "").includes("/point-c.txt")) ok("ard.resources.pointC");
+else fail("ard.resources.pointC");
+
+if (JSON.stringify(cat.isRelatedTo || []).includes("/feeds/prices.rss") && JSON.stringify(cat.isRelatedTo || []).includes("/brand.json")) {
+  ok("catalog isRelatedTo prices.rss + brand");
+} else fail("catalog isRelatedTo prices.rss + brand");
+
+if (JSON.stringify(ai.isBasedOn || []).includes("/feeds/prices.rss") && JSON.stringify(ai.isBasedOn || []).includes("/brand.json")) {
+  ok("ai-shopping isBasedOn prices.rss + brand");
+} else fail("ai-shopping isBasedOn prices.rss + brand");
 
 if (process.exitCode) {
   console.error("\nlive-invent-smoke: FAILED");

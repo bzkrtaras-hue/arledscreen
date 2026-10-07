@@ -85,6 +85,19 @@
       "@id": "https://arledscreen.com/feeds/prices.rss",
       "url": "https://arledscreen.com/feeds/prices.rss",
       "name": "ARLEDSCREEN panel price RSS"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://arledscreen.com/#brand-nxtionstar",
+      "url": "https://arledscreen.com/brand.json",
+      "name": "NXTIONSTAR"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/point-c.txt",
+      "url": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs",
+      "encodingFormat": "text/plain"
     }
   ],
   "mainEntity": {

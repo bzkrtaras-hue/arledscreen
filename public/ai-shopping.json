@@ -47,12 +47,14 @@
   "isBasedOn": [
     "https://arledscreen.com/entity.json",
     "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/brand.json",
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "https://arledscreen.com/feeds/prices.rss",
     "https://arledscreen.com/geo-baseline.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/.well-known/agents.json",
-    "https://arledscreen.com/AGENTS.md"
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/point-c.txt"
   ],
   "hasPart": [
     {
@@ -2777,6 +2779,9 @@
     "entity": "https://arledscreen.com/entity.json",
     "organization": "https://arledscreen.com/organization.json",
     "entityProfiles": "https://arledscreen.com/entity-profiles.json",
+    "pointC": "https://arledscreen.com/point-c.txt",
+    "pointCEn": "https://arledscreen.com/point-c-en.txt",
+    "pointCWellKnown": "https://arledscreen.com/.well-known/point-c.txt",
     "brand": "https://arledscreen.com/brand.json",
     "brandHub": "https://arledscreen.com/tr/nxtionstar/",
     "brandHubEn": "https://arledscreen.com/en/nxtionstar/",
@@ -2786,6 +2791,7 @@
     "ard": "https://arledscreen.com/.well-known/ard.json",
     "agents": "https://arledscreen.com/.well-known/agents.json",
     "agentsMd": "https://arledscreen.com/AGENTS.md",
+    "humansTxt": "https://arledscreen.com/humans.txt",
     "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "pricesRss": "https://arledscreen.com/feeds/prices.rss",
     "priceAliases": [

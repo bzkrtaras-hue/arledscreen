@@ -72,6 +72,16 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
   }
 
   if (!only) {
+    lines.push("--- Hostinger arleds.com → arledscreen.com/tr/ 301 (owner clipboard) ---");
+    lines.push("hPanel → Domains → arleds.com → Redirects → permanent 301 entire domain.");
+    lines.push("From → To (all four):");
+    lines.push("http://arleds.com/ → https://arledscreen.com/tr/");
+    lines.push("http://www.arleds.com/ → https://arledscreen.com/tr/");
+    lines.push("https://arleds.com/ → https://arledscreen.com/tr/");
+    lines.push("https://www.arleds.com/ → https://arledscreen.com/tr/");
+    lines.push("Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md");
+    lines.push("Do NOT add arleds.com to sameAs until 301 is live.");
+    lines.push("");
     lines.push("--- Machine-only (do NOT paste into GBP/IG/FB bios) ---");
     if (en) {
       lines.push("Merchant readiness: packsEn.googleMerchantReadiness (or packs.googleMerchantReadiness)");

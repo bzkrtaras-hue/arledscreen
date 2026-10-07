@@ -145,8 +145,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "3d9adf15370cffd9d5f067d0625c0c32ad933e503aafb6c26458c9c76d3c4763",
-    "catalogSha256": "aa9fe79771c50748c681f1da80b1903527f9b22e3dbdc25ccf8a8ec9b5efc8bd",
+    "aiShoppingSha256": "88df05750b5b9862902dd85c5567dbc6b63b55d200a16c109de7d791de30274c",
+    "catalogSha256": "01a49338e076f6b66f1708263c4e2c01fc933c8de2ede451ed666b8ed6e81ae0",
     "merchantTsvSha256": "bad2d21fdc09350e0cabb7d3b96b0ec29406e23e79dd1030f5951639bf4cf47b",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
@@ -175,6 +175,9 @@
     "organization": "https://arledscreen.com/organization.json",
     "brandJson": "https://arledscreen.com/brand.json",
     "entityProfiles": "https://arledscreen.com/entity-profiles.json",
+    "pointCTxt": "https://arledscreen.com/point-c.txt",
+    "pointCEnTxt": "https://arledscreen.com/point-c-en.txt",
+    "pointCWellKnown": "https://arledscreen.com/.well-known/point-c.txt",
     "ard": "https://arledscreen.com/.well-known/ard.json",
     "agentsJson": "https://arledscreen.com/.well-known/agents.json",
     "agentsMd": "https://arledscreen.com/AGENTS.md",

@@ -100,8 +100,9 @@ if ((agents?.itemListElement || []).length >= 14) ok(`agents.json ×${agents.ite
 else fail("agents.json ≥14");
 
 const pointC = readText("point-c.txt");
-if (pointC.includes("GBP About") && pointC.includes("34245")) ok("point-c.txt paste packs");
-else fail("point-c.txt paste packs");
+if (pointC.includes("GBP About") && pointC.includes("34245") && pointC.includes("Hostinger arleds.com")) {
+  ok("point-c.txt paste packs + Hostinger 301");
+} else fail("point-c.txt paste packs + Hostinger 301");
 
 const pointCEn = readText("point-c-en.txt");
 if (pointCEn.includes("EN GBP About") && pointCEn.includes("arledscreen.com/en/")) ok("point-c-en.txt paste packs");
@@ -110,8 +111,24 @@ else fail("point-c-en.txt paste packs");
 if (ard?.agentic?.resources?.website?.["@id"] === `${SITE}/#website`) ok("ard.resources.website");
 else fail("ard.resources.website");
 
-if (JSON.stringify(ai.isBasedOn || []).includes("/feeds/prices.rss")) ok("ai-shopping isBasedOn prices.rss");
-else fail("ai-shopping isBasedOn prices.rss");
+if (String(ard?.agentic?.resources?.pointC?.url || "").includes("/point-c.txt")) ok("ard.resources.pointC");
+else fail("ard.resources.pointC");
+
+if (
+  JSON.stringify(cat.isRelatedTo || []).includes("/feeds/prices.rss") &&
+  JSON.stringify(cat.isRelatedTo || []).includes("/brand.json") &&
+  JSON.stringify(cat.isRelatedTo || []).includes("/point-c.txt")
+) {
+  ok("catalog isRelatedTo prices.rss + brand + point-c");
+} else fail("catalog isRelatedTo prices.rss + brand + point-c");
+
+if (
+  JSON.stringify(ai.isBasedOn || []).includes("/feeds/prices.rss") &&
+  JSON.stringify(ai.isBasedOn || []).includes("/brand.json") &&
+  JSON.stringify(ai.isBasedOn || []).includes("/point-c.txt")
+) {
+  ok("ai-shopping isBasedOn prices.rss + brand + point-c");
+} else fail("ai-shopping isBasedOn prices.rss + brand + point-c");
 
 if (process.exitCode) {
   console.error("\nlocal-invent-smoke: FAILED");
