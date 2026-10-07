@@ -648,6 +648,36 @@ function buildAiShopping() {
       {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/modules.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/sku.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/modules.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/sku.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/price.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/pricing.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/offer.json`,
       },
       {

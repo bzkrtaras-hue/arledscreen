@@ -194,8 +194,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
-  if (!Array.isArray(ai.distribution) || ai.distribution.length < 7) {
-    console.error("❌ ai-shopping.json Dataset.distribution must list ≥7 DataDownload encodings (HTML hub parity)");
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 13) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥13 DataDownload encodings (HTML hub + invent aliases)");
     process.exit(1);
   }
   for (const needle of [
@@ -204,6 +204,12 @@ if (fs.existsSync(outDir)) {
     "/panels.json",
     "/mpn.json",
     "/merchant.json",
+    "/modules.json",
+    "/sku.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
     "/offer.json",
     "/catalog.json",
     "/feeds/merchant-priced-panels.tsv",

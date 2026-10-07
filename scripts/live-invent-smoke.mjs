@@ -200,6 +200,20 @@ if (
   ok("ai-shopping isBasedOn prices.rss + brand + point-c");
 } else fail("ai-shopping isBasedOn prices.rss + brand + point-c");
 
+{
+  const dist = JSON.stringify(ai.distribution || []);
+  if (
+    dist.includes("/modules.json") &&
+    dist.includes("/sku.json") &&
+    dist.includes("/.well-known/modules.json") &&
+    dist.includes("/.well-known/sku.json") &&
+    dist.includes("/.well-known/price.json") &&
+    dist.includes("/.well-known/pricing.json")
+  ) {
+    ok("ai-shopping distribution → modules/sku + well-known price aliases");
+  } else fail("ai-shopping distribution → modules/sku + well-known price aliases");
+}
+
 try {
   const g = ai.agentGuidelines || {};
   const humans = await getText("/humans.txt");

@@ -28,8 +28,9 @@ console.log("CODE invent is live on arledscreen.com; gates below are owner-gated
 
 // Point C packs
 let packsOk = false;
+let profiles = null;
 try {
-  const profiles = JSON.parse(fs.readFileSync(profilesPath, "utf8"));
+  profiles = JSON.parse(fs.readFileSync(profilesPath, "utf8"));
   const packs = profiles.packs || {};
   const need = ["directoryLong", "gbpDescription", "instagramBio", "linkedinAbout", "facebookAbout"];
   const missing = need.filter((k) => !packs[k]);
@@ -43,6 +44,14 @@ try {
   );
   const checklist = profiles.ownerP0Checklist || [];
   if (checklist[0]) line("INFO", "P0 next", checklist[0].slice(0, 120));
+  // First human paste: NAP / directoryLong (cite-only; no invent scores).
+  if (packsOk && packs.directoryLong) {
+    console.log("  Point C next paste — directoryLong (select-all):");
+    console.log("  ---");
+    for (const row of String(packs.directoryLong).split("\n")) console.log(`  ${row}`);
+    console.log("  ---");
+    console.log("  Then: npm run point-c -- --pack=gbpDescription · full: npm run point-c");
+  }
 } catch (e) {
   line("OPEN", "Point C packs", String(e?.message || e));
 }
@@ -104,6 +113,17 @@ line(
   "Tur1a blind observations",
   `${tur1aHuman} human-platform rows · ${tur1aCells}/${MATRIX_CELLS} TR cells · npm run tur1a:next · tur1a:log · tur1a:matrix`,
 );
+if (tur1aHuman === 0 || tur1aCells < MATRIX_CELLS) {
+  const next = spawnSync(process.execPath, [path.join(repoRoot, "scripts/tur1a-matrix.mjs"), "--next"], {
+    encoding: "utf8",
+    timeout: 15000,
+  });
+  const out = String(next.stdout || "").trim();
+  if (out) {
+    console.log("  Tur1a next clipboard:");
+    for (const row of out.split("\n")) console.log(`  ${row}`);
+  }
+}
 
 // Live invent smoke (non-blocking summary; full: npm run invent:smoke)
 try {
