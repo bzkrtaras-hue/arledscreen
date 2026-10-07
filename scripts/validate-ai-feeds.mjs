@@ -540,6 +540,7 @@ if (fs.existsSync(outDir)) {
     const geoRelated = JSON.stringify(baseline?.isRelatedTo || []);
     for (const needle of [
       "/entity.json",
+      "/organization.json",
       "/brand.json",
       "/ai-shopping.json",
       "/catalog.json",
@@ -644,11 +645,20 @@ if (fs.existsSync(outDir)) {
   }
   if (
     !JSON.stringify(ai?.isBasedOn || []).includes("/brand.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/brand.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/organization.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/entity-profiles.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + /organization.json + /point-c.txt + /entity-profiles.json");
+    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + well-known brand + /organization.json + /point-c.txt + /entity-profiles.json");
+    process.exit(1);
+  }
+  if (
+    !String(ai?.resources?.brandWellKnown || "").includes("/.well-known/brand.json") ||
+    !String(ai?.resources?.website || "").includes("#website") ||
+    !JSON.stringify(ai?.isRelatedTo || []).includes("#website")
+  ) {
+    console.error("❌ ai-shopping.json resources.brandWellKnown + resources.website + isRelatedTo #website required");
     process.exit(1);
   }
   if (!ard?.agentic?.resources?.pricesJson?.url?.includes("/prices.json") || !ard?.agentic?.resources?.agentsMd?.url?.includes("AGENTS.md")) {
@@ -696,9 +706,11 @@ if (fs.existsSync(outDir)) {
       !catDist.includes("/prices.json") ||
       !catDist.includes("/brand.json") ||
       !catDist.includes("/.well-known/brand.json") ||
+      !catDist.includes("/.well-known/entity.json") ||
       !catDist.includes("/entity.json") ||
       !catDist.includes("/point-c.txt") ||
-      !catDist.includes("/feeds/prices.rss")
+      !catDist.includes("/feeds/prices.rss") ||
+      !JSON.stringify(catalogLive.isRelatedTo || []).includes("#website")
     ) {
       console.error("❌ catalog.json Dataset.distribution must invent-join ai-shopping/prices/brand/entity/point-c/prices.rss");
       process.exit(1);
@@ -1080,6 +1092,13 @@ if (fs.existsSync(outDir)) {
   if (JSON.stringify(entity?.sameAs || []).includes("arleds.com")) {
     console.error("❌ entity.json sameAs must NOT include legacy arleds.com (until 301)");
     process.exit(1);
+  }
+  {
+    const entSame = JSON.stringify(entity?.sameAs || []);
+    if (!entSame.includes("/organization.json") || !entSame.includes("/.well-known/entity.json")) {
+      console.error("❌ entity.json sameAs must invent-join /organization.json + /.well-known/entity.json");
+      process.exit(1);
+    }
   }
   if (!ai?.agentGuidelines?.roleClarity?.legacyDomainNote?.includes("arleds.com")) {
     console.error("❌ ai-shopping agentGuidelines.roleClarity.legacyDomainNote required");
@@ -1629,10 +1648,11 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
+      !rssLive.includes("#website") ||
       !rssLive.includes("geo:next") ||
       !rssLive.includes('rel="related"')
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + geo:next");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + #website + geo:next");
       process.exit(1);
     }
   }
@@ -1819,17 +1839,23 @@ if (fs.existsSync(outDir)) {
       "/entity.json",
       "/brand.json",
       "/.well-known/brand.json",
+      "/.well-known/entity.json",
       "/organization.json",
       "/ai-shopping.json",
       "/prices.json",
       "/catalog.json",
       "/geo-baseline.json",
+      "/feeds/prices.rss",
       "/point-c.txt",
     ]) {
       if (!epDist.includes(needle)) {
         console.error(`❌ entity-profiles.json distribution invent must include ${needle}`);
         process.exit(1);
       }
+    }
+    if (!epBased.includes("/feeds/prices.rss")) {
+      console.error("❌ entity-profiles.json isBasedOn invent must include /feeds/prices.rss");
+      process.exit(1);
     }
     if (!profiles?.["@id"]?.includes("/entity-profiles.json")) {
       console.error("❌ entity-profiles.json @id required");
@@ -2229,6 +2255,7 @@ if (fs.existsSync(outDir)) {
     "brand_has_offer_catalog",
     "entity_profiles_url",
     "point_c_url",
+    "brand_well_known_url",
   ]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
@@ -2251,6 +2278,7 @@ if (fs.existsSync(outDir)) {
   const brandCatalogIdx = tsvCols.indexOf("brand_has_offer_catalog");
   const profilesUrlIdx = tsvCols.indexOf("entity_profiles_url");
   const pointCUrlIdx = tsvCols.indexOf("point_c_url");
+  const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
   for (const row of tsvRows) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
@@ -2287,6 +2315,10 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[pointCUrlIdx] !== "https://arledscreen.com/point-c.txt") {
       console.error(`❌ merchant TSV point_c_url must be /point-c.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[brandWkIdx] !== "https://arledscreen.com/.well-known/brand.json") {
+      console.error(`❌ merchant TSV brand_well_known_url must be /.well-known/brand.json for ${cells[idIdx]}`);
       process.exit(1);
     }
   }

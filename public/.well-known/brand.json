@@ -819,8 +819,16 @@
     "https://arledscreen.com/tr/nxtionstar/",
     "https://arledscreen.com/en/nxtionstar/",
     "https://arledscreen.com/.well-known/brand.json",
-    "https://arledscreen.com/brand.json"
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/#website"
   ],
+  "mainEntityOfPage": {
+    "@type": "WebSite",
+    "@id": "https://arledscreen.com/#website",
+    "url": "https://arledscreen.com",
+    "name": "ARLEDSCREEN"
+  },
   "distribution": [
     {
       "@type": "DataDownload",
@@ -864,6 +872,12 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/organization.json",
       "name": "ARLEDSCREEN Organization alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/entity.json",
+      "name": "Organization invent alias"
     },
     {
       "@type": "DataDownload",

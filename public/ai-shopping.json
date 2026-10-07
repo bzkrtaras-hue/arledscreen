@@ -41,12 +41,22 @@
     "@id": "https://arledscreen.com/#localbusiness"
   },
   "sameAs": [
-    "https://arledscreen.com/catalog.json"
+    "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/#website"
   ],
   "mainEntityOfPage": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+  "isRelatedTo": [
+    {
+      "@type": "WebSite",
+      "@id": "https://arledscreen.com/#website",
+      "url": "https://arledscreen.com",
+      "name": "ARLEDSCREEN"
+    }
+  ],
   "isBasedOn": [
     "https://arledscreen.com/entity.json",
     "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/.well-known/brand.json",
     "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/brand.json",
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
@@ -2884,9 +2894,11 @@
     "pointCEn": "https://arledscreen.com/point-c-en.txt",
     "pointCWellKnown": "https://arledscreen.com/.well-known/point-c.txt",
     "brand": "https://arledscreen.com/brand.json",
+    "brandWellKnown": "https://arledscreen.com/.well-known/brand.json",
     "brandHub": "https://arledscreen.com/tr/nxtionstar/",
     "brandHubEn": "https://arledscreen.com/en/nxtionstar/",
     "brandId": "https://arledscreen.com/#brand-nxtionstar",
+    "website": "https://arledscreen.com/#website",
     "geoBaseline": "https://arledscreen.com/geo-baseline.json",
     "llms": "https://arledscreen.com/llms.txt",
     "ard": "https://arledscreen.com/.well-known/ard.json",

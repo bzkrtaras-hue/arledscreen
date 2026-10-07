@@ -27,7 +27,8 @@
     "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/geo-baseline.json",
     "https://arledscreen.com/point-c.txt",
-    "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+    "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+    "https://arledscreen.com/feeds/prices.rss"
   ],
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-07",
@@ -143,6 +144,12 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/entity.json",
+      "name": "Organization invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/ai-shopping.json"
     },
     {
@@ -159,6 +166,12 @@
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/geo-baseline.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/rss+xml",
+      "contentUrl": "https://arledscreen.com/feeds/prices.rss",
+      "name": "ARLEDSCREEN panel price RSS"
     },
     {
       "@type": "DataDownload",

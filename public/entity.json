@@ -36,7 +36,9 @@
   "sameAs": [
     "https://www.instagram.com/arledscreen",
     "https://www.facebook.com/arledscreenn",
-    "https://www.linkedin.com/company/arleds"
+    "https://www.linkedin.com/company/arleds",
+    "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/.well-known/entity.json"
   ],
   "knowsAbout": [
     "LED ekran",

@@ -11,6 +11,7 @@
   },
   "isBasedOn": [
     "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/organization.json",
     "https://arledscreen.com/brand.json",
     "https://arledscreen.com/ai-shopping.json",
     "https://arledscreen.com/catalog.json",
@@ -263,9 +264,9 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "ba27347e6921561e73cbe2c1df5d7c01792f32b792c520a22049d88fbbc9a013",
-    "catalogSha256": "0d0e517d124a6d2b948673a1cf61f815f997906640ffcd41715f703fc5d266e7",
-    "merchantTsvSha256": "06c913206962fd5f3ae1f821d04ceffef2470ab26b7f7c57499b37c1f202168e",
+    "aiShoppingSha256": "b888c78631613f6e08f8257cec096d2f15c3b961a3f781435df10549b6620a33",
+    "catalogSha256": "35c1545b206e8f1678e3521c59c2abdb1a2022c13b8abd8e9f0cf115f88ec53d",
+    "merchantTsvSha256": "f0cc23ceb3d046c1b96aaf3c944ceac89cee5f7b2206af1c4fe236e8bbb28466",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
   "discovery": {

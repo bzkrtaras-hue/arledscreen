@@ -332,6 +332,8 @@ function buildCatalog() {
       `${SITE_URL}/prices.json`,
       `${SITE_URL}/brand.json`,
       `${SITE_URL}/.well-known/brand.json`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/#website`,
     ],
     // Schema.org DataDownload walk — parity with brand.json / ai-shopping (catalog-first agents).
     distribution: [
@@ -365,6 +367,12 @@ function buildCatalog() {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/entity.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/entity.json`,
+        name: "Organization invent alias",
       },
       {
         "@type": "DataDownload",
@@ -449,6 +457,12 @@ function buildCatalog() {
         "@id": `${SITE_URL}/entity-profiles.json`,
         url: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "ARLEDSCREEN",
       },
     ],
     mainEntity: {
@@ -647,11 +661,20 @@ function buildAiShopping() {
     // Dataset-root agents still join place without expanding hasPart Offers.
     availableAtOrFrom: localBusinessRef(),
     // Dataset ↔ Collection identity (catalog.json products; this file pricedPanels).
-    sameAs: [`${SITE_URL}/catalog.json`],
+    sameAs: [`${SITE_URL}/catalog.json`, `${SITE_URL}/#website`],
     mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
+    isRelatedTo: [
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "ARLEDSCREEN",
+      },
+    ],
     isBasedOn: [
       `${SITE_URL}/entity.json`,
       `${SITE_URL}/organization.json`,
+      `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/brand.json`,
       `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
@@ -969,9 +992,11 @@ function buildAiShopping() {
       pointCEn: `${SITE_URL}/point-c-en.txt`,
       pointCWellKnown: `${SITE_URL}/.well-known/point-c.txt`,
       brand: `${SITE_URL}/brand.json`,
+      brandWellKnown: `${SITE_URL}/.well-known/brand.json`,
       brandHub: `${SITE_URL}/tr/nxtionstar/`,
       brandHubEn: `${SITE_URL}/en/nxtionstar/`,
       brandId: `${SITE_URL}/#brand-nxtionstar`,
+      website: `${SITE_URL}/#website`,
       geoBaseline: `${SITE_URL}/geo-baseline.json`,
       llms: `${SITE_URL}/llms.txt`,
       ard: `${SITE_URL}/.well-known/ard.json`,
@@ -1095,6 +1120,7 @@ function buildMerchantTsv() {
     // Invent joins for TSV-only merchant / shopping agents (Point C + profiles).
     "entity_profiles_url",
     "point_c_url",
+    "brand_well_known_url",
   ];
   const lines = [header.join("\t")];
   for (const panel of PANEL_PRICES) {
@@ -1141,6 +1167,7 @@ function buildMerchantTsv() {
         "false",
         `${SITE_URL}/entity-profiles.json`,
         `${SITE_URL}/point-c.txt`,
+        `${SITE_URL}/.well-known/brand.json`,
       ].join("\t"),
     );
   }
@@ -1282,7 +1309,7 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/.well-known/merchant.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/entity.json" rel="related" type="application/ld+json"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next</description>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
     <docs>${SITE_URL}/ai.txt</docs>
@@ -1461,6 +1488,14 @@ function enrichEntityDocument(entity) {
   if (!hasQuoteOrderActions(entity.potentialAction)) {
     entity.potentialAction = quoteOrderActions();
   }
+  // Invent aliases on Organization sameAs (keep socials; never add arleds.com).
+  {
+    const same = Array.isArray(entity.sameAs) ? [...entity.sameAs] : [];
+    for (const u of [`${SITE_URL}/organization.json`, `${SITE_URL}/.well-known/entity.json`]) {
+      if (!same.includes(u)) same.push(u);
+    }
+    entity.sameAs = same.filter((u) => !String(u).includes("arleds.com") || String(u).includes("linkedin.com"));
+  }
   // WebSite #website — parity with HTML OrganizationJsonLd graph for entity-only agents.
   const mep = entity.mainEntityOfPage;
   if (
@@ -1627,6 +1662,12 @@ function enrichEntityProfiles(doc) {
       {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/entity.json`,
+        name: "Organization invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/ai-shopping.json`,
       },
       {
@@ -1646,6 +1687,12 @@ function enrichEntityProfiles(doc) {
       },
       {
         "@type": "DataDownload",
+        encodingFormat: "application/rss+xml",
+        contentUrl: `${SITE_URL}/feeds/prices.rss`,
+        name: "ARLEDSCREEN panel price RSS",
+      },
+      {
+        "@type": "DataDownload",
         encodingFormat: "text/plain",
         contentUrl: `${SITE_URL}/point-c.txt`,
         name: "ARLEDSCREEN Point C paste packs",
@@ -1662,6 +1709,13 @@ function enrichEntityProfiles(doc) {
         contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       },
     ];
+
+  // profiles isBasedOn also joins prices.rss for RSS-first agents.
+  {
+    const based = new Set(doc.isBasedOn || []);
+    based.add(`${SITE_URL}/feeds/prices.rss`);
+    doc.isBasedOn = [...based];
+  }
 
   doc.isRelatedTo = [
     {
@@ -1762,6 +1816,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
     // Reverse invent join: catalog/ai-shopping already → geo; geo must not be a dead-end Dataset.
     isBasedOn: [
       `${SITE_URL}/entity.json`,
+      `${SITE_URL}/organization.json`,
       `${SITE_URL}/brand.json`,
       `${SITE_URL}/ai-shopping.json`,
       `${SITE_URL}/catalog.json`,
@@ -2597,7 +2652,15 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
       `${SITE_URL}/en/nxtionstar/`,
       `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/brand.json`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/#website`,
     ],
+    mainEntityOfPage: {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "ARLEDSCREEN",
+    },
     distribution: [
       {
         "@type": "DataDownload",
@@ -2642,6 +2705,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/organization.json`,
         name: "ARLEDSCREEN Organization alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/entity.json`,
+        name: "Organization invent alias",
       },
       {
         "@type": "DataDownload",
@@ -2951,8 +3020,12 @@ Acknowledgments: https://arledscreen.com/brand.json
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
-    const shippingIncluded = cells[cells.length - 3]; // … tax_included, shipping_included, entity_profiles_url, point_c_url
-    const taxIncluded = cells[cells.length - 4];
+    // Trailing invent cols: … tax_included, shipping_included, entity_profiles_url, point_c_url, brand_well_known_url
+    const brandWk = cells[cells.length - 1];
+    const pointCUrl = cells[cells.length - 2];
+    const profilesUrl = cells[cells.length - 3];
+    const shippingIncluded = cells[cells.length - 4];
+    const taxIncluded = cells[cells.length - 5];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -2961,8 +3034,9 @@ Acknowledgments: https://arledscreen.com/brand.json
       !row.includes(`\t${SITE_URL}/#brand-nxtionstar\t`) ||
       taxIncluded !== "false" ||
       shippingIncluded !== "false" ||
-      !row.includes(`${SITE_URL}/entity-profiles.json`) ||
-      !row.includes(`${SITE_URL}/point-c.txt`) ||
+      profilesUrl !== `${SITE_URL}/entity-profiles.json` ||
+      pointCUrl !== `${SITE_URL}/point-c.txt` ||
+      brandWk !== `${SITE_URL}/.well-known/brand.json` ||
       /\ttrue(\t|$)/.test(row)
     ) {
       console.error(`postbuild-ai: merchant TSV mismatch or free-ship invent for ${panel.id}`);

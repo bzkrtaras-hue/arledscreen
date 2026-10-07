@@ -62,7 +62,9 @@
     "https://arledscreen.com/ai-shopping.json",
     "https://arledscreen.com/prices.json",
     "https://arledscreen.com/brand.json",
-    "https://arledscreen.com/.well-known/brand.json"
+    "https://arledscreen.com/.well-known/brand.json",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/#website"
   ],
   "distribution": [
     {
@@ -95,6 +97,12 @@
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/entity.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/entity.json",
+      "name": "Organization invent alias"
     },
     {
       "@type": "DataDownload",
@@ -181,6 +189,12 @@
       "@id": "https://arledscreen.com/entity-profiles.json",
       "url": "https://arledscreen.com/entity-profiles.json",
       "name": "ARLEDSCREEN Point C entity profiles"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arledscreen.com/#website",
+      "url": "https://arledscreen.com",
+      "name": "ARLEDSCREEN"
     }
   ],
   "mainEntity": {

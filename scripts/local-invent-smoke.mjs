@@ -247,14 +247,16 @@ else fail("ard.resources.pointC");
     head.includes("brand_url") &&
     head.includes("entity_profiles_url") &&
     head.includes("point_c_url") &&
+    head.includes("brand_well_known_url") &&
     tsv.includes(`${SITE}/#organization`) &&
     tsv.includes(`${SITE}/entity.json`) &&
     tsv.includes(`${SITE}/brand.json`) &&
     tsv.includes(`${SITE}/entity-profiles.json`) &&
-    tsv.includes(`${SITE}/point-c.txt`)
+    tsv.includes(`${SITE}/point-c.txt`) &&
+    tsv.includes(`${SITE}/.well-known/brand.json`)
   ) {
-    ok("merchant TSV brand_url + organization_id + entity_url + profiles/point-c");
-  } else fail("merchant TSV brand_url + organization_id + entity_url + profiles/point-c");
+    ok("merchant TSV brand_url + organization_id + entity_url + profiles/point-c + brand-wk");
+  } else fail("merchant TSV brand_url + organization_id + entity_url + profiles/point-c + brand-wk");
 }
 
 if (
