@@ -15,7 +15,8 @@
     "verify:arleds-301": "node scripts/verify-arleds-301.mjs",
     "tur1a:list": "node scripts/geo-blind-log.mjs --list",
     "tur1a:summary": "node scripts/geo-blind-log.mjs --summary",
-    "geo:status": "node scripts/geo-owner-status.mjs"
+    "geo:status": "node scripts/geo-owner-status.mjs",
+    "invent:smoke": "node scripts/live-invent-smoke.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

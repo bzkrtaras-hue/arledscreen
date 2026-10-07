@@ -84,23 +84,30 @@ line(
   `${tur1aHuman} human-platform / ${tur1aTotal} total rows · npm run tur1a:list · --dry-run`,
 );
 
-// Live invent smoke (non-blocking)
+// Live invent smoke (non-blocking summary; full: npm run invent:smoke)
 try {
-  const brand = await (await fetch(`${EXPECT_301.replace("/tr/", "")}/brand.json?v=${Date.now()}`, {
+  const origin = "https://arledscreen.com";
+  const brand = await (await fetch(`${origin}/brand.json?v=${Date.now()}`, {
+    headers: { "cache-control": "no-cache" },
+  })).json();
+  const ent = await (await fetch(`${origin}/entity.json?v=${Date.now()}`, {
     headers: { "cache-control": "no-cache" },
   })).json();
   const offerN = brand?.makesOffer?.offerCount;
   line(
     offerN === 12 ? "OK" : "OPEN",
     "Live brand.json AggregateOffer×12",
-    offerN === 12 ? "26.98–95.88 USD" : `offerCount=${offerN}`,
+    offerN === 12 ? `${brand.makesOffer.lowPrice}–${brand.makesOffer.highPrice} USD` : `offerCount=${offerN}`,
   );
+  const webOk = ent?.mainEntityOfPage?.["@id"] === `${origin}/#website`;
+  line(webOk ? "OK" : "OPEN", "Live entity WebSite #website", webOk ? "OrderAction TR/EN quote" : "missing");
 } catch (e) {
-  line("OPEN", "Live brand.json probe", String(e?.message || e));
+  line("OPEN", "Live invent probe", String(e?.message || e));
 }
 
 line("INFO", "PR merge", "PR #60 cursor/geo-prod-guard-5666 → main (owner)");
 line("INFO", "Target", "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores");
+line("INFO", "arleds DNS", "not on Cloudflare for this account — Hostinger redirect required");
 
-console.log("\nCommands: npm run point-c · npm run verify:arleds-301 · npm run tur1a:list · npm run geo:status");
+console.log("\nCommands: npm run point-c · npm run verify:arleds-301 · npm run tur1a:list · npm run invent:smoke · npm run geo:status");
 process.exit(0);

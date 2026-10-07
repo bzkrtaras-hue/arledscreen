@@ -244,11 +244,23 @@
         "format": "text/html",
         "description": "AI/GEO discovery page with entity cite + 12 panel Offers (EN twin at /en/yapay-zeka/)"
       },
+      "website": {
+        "type": "WebSite",
+        "@id": "https://arledscreen.com/#website",
+        "url": "https://arledscreen.com/entity.json",
+        "format": "application/ld+json",
+        "description": "WebSite #website on entity.json mainEntityOfPage: potentialAction OrderAction → /tr/quote/ · /en/quote/. HTML home WebSite graph shares the same @id.",
+        "potentialAction": [
+          "https://arledscreen.com/tr/quote/",
+          "https://arledscreen.com/en/quote/"
+        ],
+        "about": "https://arledscreen.com/#organization"
+      },
       "quoteForm": {
         "type": "Custom Quote Request",
         "url": "https://arledscreen.com/tr/quote/",
         "format": "text/html",
-        "description": "Entry point for quote-only product groups (transparent, flexible, rental, control); also emits 12 panel Offers"
+        "description": "Entry point for quote-only product groups (transparent, flexible, rental, control); also emits 12 panel Offers. Machine OrderAction also on entity.json WebSite #website and /brand.json potentialAction."
       },
       "calculator": {
         "type": "Interactive Tool",

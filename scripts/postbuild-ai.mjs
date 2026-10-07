@@ -312,7 +312,8 @@ function buildCatalog() {
       "@id": `${SITE_URL}/#brand-nxtionstar`,
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
-      makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+      // Band only here — full Offers×12 on /brand.json + entity; catalog items carry per-SKU Offers.
+      makesOffer: buildBrandAggregateOfferBand({ pricedPanels: PANEL_PRICES.map((p) => ({ price: p.usd, sku: p.id })) }),
       hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     },
     // Catalog-root agents (no Offer expand) still join Gaziosmanpaşa NAP.
@@ -538,7 +539,8 @@ function buildAiShopping() {
       "@id": brandId,
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
-      makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+      // AggregateOffer band (offerCount/low/high); full Offers×12 on /brand.json + entity + pricedPanels.
+      makesOffer: buildBrandAggregateOfferBand({ pricedPanels }),
       hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     },
     // Dataset-root agents still join place without expanding hasPart Offers.
@@ -917,15 +919,47 @@ function buildMerchantTsv() {
   return `${lines.join("\n")}\n`;
 }
 
+/** Price band helpers from pricedPanels (no invented SKUs). */
+function pricedPanelBand(ai) {
+  const panels = ai?.pricedPanels || [];
+  const nums = panels.map((p) => Number(p.price)).filter((n) => Number.isFinite(n));
+  return {
+    panels,
+    low: nums.length ? Math.min(...nums).toFixed(2) : "0",
+    high: nums.length ? Math.max(...nums).toFixed(2) : "0",
+    count: panels.length,
+  };
+}
+
+/**
+ * Lightweight AggregateOffer band for Dataset/Catalog Brand stubs.
+ * Full per-SKU Offers stay on entity.json / brand.json / pricedPanels — avoid triple bloat.
+ */
+function buildBrandAggregateOfferBand(ai) {
+  const { low, high, count } = pricedPanelBand(ai);
+  return {
+    "@type": "AggregateOffer",
+    "@id": `${SITE_URL}/#priced-panels-aggregate`,
+    priceCurrency: "USD",
+    lowPrice: low,
+    highPrice: high,
+    offerCount: count,
+    priceValidUntil: PRICE_VALID_UNTIL,
+    url: `${SITE_URL}/ai-shopping.json`,
+    availability: "https://schema.org/InStock",
+    description:
+      "Yayımlanmış 12 panel USD bandı; KDV/nakliye hariç; ücretsiz kargo yok. Per-SKU: ai-shopping.json pricedPanels · /brand.json · entity.json makesOffer.",
+    seller: { "@id": `${SITE_URL}/#organization` },
+    availableAtOrFrom: localBusinessRef(),
+  };
+}
+
 /**
  * Full AggregateOffer for Brand-only invent agents (/brand.json).
  * Mirrors entity.json Organization.makesOffer so fetching Brand alone still yields 12 USD Offers.
  */
 function buildBrandAggregateOffer(ai) {
-  const panels = ai.pricedPanels || [];
-  const nums = panels.map((p) => Number(p.price)).filter((n) => Number.isFinite(n));
-  const low = nums.length ? Math.min(...nums).toFixed(2) : "0";
-  const high = nums.length ? Math.max(...nums).toFixed(2) : "0";
+  const { panels, low, high } = pricedPanelBand(ai);
   return {
     "@type": "AggregateOffer",
     "@id": `${SITE_URL}/#priced-panels-aggregate`,
@@ -1557,13 +1591,17 @@ function main() {
 # linkedin.com/company/arleds is a social slug — NOT the website arleds.com.
 # Brand: NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED chip ≠ NEXTSTAR TV.
 # Brand graph: #brand-nxtionstar AggregateOffer×12 (#priced-panels-aggregate) + hasOfferCatalog → catalog.json.
-# Brand document: /brand.json embeds AggregateOffer×12; entity.json brand.makesOffer mirrors Org offers.
+# Brand document: /brand.json embeds AggregateOffer×12 + OrderAction; entity.json brand.makesOffer mirrors Org offers.
+# WebSite: entity.json mainEntityOfPage #website potentialAction OrderAction → /tr/quote/ · /en/quote/.
 # Single price source: ai-shopping.json pricedPanels (12 SKU USD). No free shipping.
 # Graph: entity.json makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku};
 # Offer.itemOffered → PDP #product; Offer triangle catalog ↔ ai-shopping ↔ PDP #offer.
 # Dataset hasPart stubs → Offer @id + itemOffered. Org hasOfferCatalog → catalog.json.
 # Place↔price: Offer/AggregateOffer availableAtOrFrom → #localbusiness; Org location → #localbusiness.
 # Hub/PDP WebPage.mainEntity → #service / #product.
+website: ${SITE_URL}/#website
+quote-tr: ${SITE_URL}/tr/quote/
+quote-en: ${SITE_URL}/en/quote/
 
 llms: ${SITE_URL}/llms.txt
 llms-full: ${SITE_URL}/llms-full.txt

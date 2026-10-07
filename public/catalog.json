@@ -28,7 +28,23 @@
     "name": "NXTIONSTAR",
     "url": "https://arledscreen.com/tr/nxtionstar/",
     "makesOffer": {
-      "@id": "https://arledscreen.com/#priced-panels-aggregate"
+      "@type": "AggregateOffer",
+      "@id": "https://arledscreen.com/#priced-panels-aggregate",
+      "priceCurrency": "USD",
+      "lowPrice": "26.98",
+      "highPrice": "95.88",
+      "offerCount": 12,
+      "priceValidUntil": "2026-12-31",
+      "url": "https://arledscreen.com/ai-shopping.json",
+      "availability": "https://schema.org/InStock",
+      "description": "Yayımlanmış 12 panel USD bandı; KDV/nakliye hariç; ücretsiz kargo yok. Per-SKU: ai-shopping.json pricedPanels · /brand.json · entity.json makesOffer.",
+      "seller": {
+        "@id": "https://arledscreen.com/#organization"
+      },
+      "availableAtOrFrom": {
+        "@type": "LocalBusiness",
+        "@id": "https://arledscreen.com/#localbusiness"
+      }
     },
     "hasOfferCatalog": {
       "@id": "https://arledscreen.com/catalog.json"

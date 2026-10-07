@@ -313,6 +313,18 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
+  {
+    const websiteRes = ard?.agentic?.resources?.website;
+    if (
+      websiteRes?.["@id"] !== "https://arledscreen.com/#website" ||
+      !Array.isArray(websiteRes?.potentialAction) ||
+      !websiteRes.potentialAction.some((u) => String(u).includes("/tr/quote")) ||
+      !websiteRes.potentialAction.some((u) => String(u).includes("/en/quote"))
+    ) {
+      console.error("❌ ard.json resources.website must be #website with OrderAction TR+EN quote URLs");
+      process.exit(1);
+    }
+  }
   if (
     ard?.agentic?.resources?.aiShopping?.shippingIncluded !== false ||
     ard?.agentic?.pricedProducts?.shippingIncluded !== false
@@ -514,9 +526,12 @@ if (fs.existsSync(outDir)) {
   }
   if (
     !String(catalogLive?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    catalogLive?.brand?.makesOffer?.["@type"] !== "AggregateOffer" ||
+    catalogLive?.brand?.makesOffer?.offerCount !== 12 ||
+    !catalogLive?.brand?.makesOffer?.lowPrice ||
     !String(catalogLive?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
   ) {
-    console.error("❌ catalog.json Brand must makesOffer + hasOfferCatalog");
+    console.error("❌ catalog.json Brand must AggregateOffer band (offerCount×12) + hasOfferCatalog");
     process.exit(1);
   }
   if (ai?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
@@ -525,9 +540,13 @@ if (fs.existsSync(outDir)) {
   }
   if (
     !String(ai?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    ai?.brand?.makesOffer?.["@type"] !== "AggregateOffer" ||
+    ai?.brand?.makesOffer?.offerCount !== 12 ||
+    !ai?.brand?.makesOffer?.lowPrice ||
+    !ai?.brand?.makesOffer?.highPrice ||
     !String(ai?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
   ) {
-    console.error("❌ ai-shopping.json Brand must makesOffer + hasOfferCatalog");
+    console.error("❌ ai-shopping.json Brand must AggregateOffer band (offerCount×12 + low/high) + hasOfferCatalog");
     process.exit(1);
   }
   const aiBasedOn = JSON.stringify(ai?.isBasedOn || []);
@@ -808,9 +827,12 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("#brand-nxtionstar") ||
     !aiTxtLive.includes("hasOfferCatalog → catalog.json") ||
     !aiTxtLive.includes("brand-json:") ||
-    !aiTxtLive.includes("/brand.json")
+    !aiTxtLive.includes("/brand.json") ||
+    !aiTxtLive.includes("#website") ||
+    !aiTxtLive.includes("quote-tr:") ||
+    !aiTxtLive.includes("/tr/quote/")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote");
     process.exit(1);
   }
   if (

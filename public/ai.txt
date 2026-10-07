@@ -3,13 +3,17 @@
 # linkedin.com/company/arleds is a social slug — NOT the website arleds.com.
 # Brand: NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED chip ≠ NEXTSTAR TV.
 # Brand graph: #brand-nxtionstar AggregateOffer×12 (#priced-panels-aggregate) + hasOfferCatalog → catalog.json.
-# Brand document: /brand.json embeds AggregateOffer×12; entity.json brand.makesOffer mirrors Org offers.
+# Brand document: /brand.json embeds AggregateOffer×12 + OrderAction; entity.json brand.makesOffer mirrors Org offers.
+# WebSite: entity.json mainEntityOfPage #website potentialAction OrderAction → /tr/quote/ · /en/quote/.
 # Single price source: ai-shopping.json pricedPanels (12 SKU USD). No free shipping.
 # Graph: entity.json makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku};
 # Offer.itemOffered → PDP #product; Offer triangle catalog ↔ ai-shopping ↔ PDP #offer.
 # Dataset hasPart stubs → Offer @id + itemOffered. Org hasOfferCatalog → catalog.json.
 # Place↔price: Offer/AggregateOffer availableAtOrFrom → #localbusiness; Org location → #localbusiness.
 # Hub/PDP WebPage.mainEntity → #service / #product.
+website: https://arledscreen.com/#website
+quote-tr: https://arledscreen.com/tr/quote/
+quote-en: https://arledscreen.com/en/quote/
 
 llms: https://arledscreen.com/llms.txt
 llms-full: https://arledscreen.com/llms-full.txt
