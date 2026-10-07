@@ -18,7 +18,11 @@ brand-en: https://arledscreen.com/en/nxtionstar/
 price-tr: https://arledscreen.com/tr/led-ekran-fiyatlari/
 price-en: https://arledscreen.com/en/led-ekran-fiyatlari/
 about: https://arledscreen.com/tr/about/
+about-en: https://arledscreen.com/en/about/
 founder: https://arledscreen.com/tr/about/aras-bozkurt/
 calculator: https://arledscreen.com/tr/hesaplayici/
+calculator-en: https://arledscreen.com/en/hesaplayici/
 quote: https://arledscreen.com/tr/quote/
+quote-en: https://arledscreen.com/en/quote/
 sss: https://arledscreen.com/tr/sss/
+sss-en: https://arledscreen.com/en/sss/
