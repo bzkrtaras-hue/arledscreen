@@ -34,7 +34,7 @@ import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n";
 import { whatsappHref } from "@/lib/whatsapp";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string; model: string }>;
@@ -207,12 +207,14 @@ export default async function ModelPage({ params }: PageProps) {
     image: absoluteUrl(m.image),
     description,
     url,
+    // Join PDP Product ↔ catalog.json#sku (ai-shopping hasPart uses this @id).
+    ...(price ? { sameAs: [`${SITE_URL}/catalog.json#${catalogSku}`] } : {}),
     additionalProperty: specRows
       .filter((r) => r.spec)
       .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
     ...(price
       ? {
-          offers: panelOffer(url, price.usd),
+          offers: panelOffer(url, price.usd, { sku: catalogSku }),
           // Product → Dataset membership + related price/entity feeds (no invent).
           isPartOf: PRICE_DATASETS[0],
           isRelatedTo: BRAND_SUBJECT_DATASETS,

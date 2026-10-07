@@ -202,9 +202,20 @@ export function panelShippingDetails() {
 }
 
 /** Honest Offer fields for GEO / Merchant: no free-shipping invent, return = quote contract. */
-export function panelOffer(url: string, usd: number) {
+export function panelOffer(url: string, usd: number, opts?: { sku?: string }) {
+  const sku = opts?.sku;
   return {
     "@type": "Offer" as const,
+    ...(sku
+      ? {
+          "@id": `${url}#offer`,
+          // Join catalog + ai-shopping Offer @ids (agents merging feeds).
+          sameAs: [
+            `${SITE_URL}/catalog.json#offer-${sku}`,
+            `${SITE_URL}/ai-shopping.json#offer-${sku}`,
+          ],
+        }
+      : {}),
     url,
     price: usd.toFixed(2),
     priceCurrency: "USD",

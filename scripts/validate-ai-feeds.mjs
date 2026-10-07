@@ -1524,6 +1524,38 @@ if (fs.existsSync(outDir)) {
   }
   console.log("✅ fine-pitch hub emits 3 GOB Product/Offer SKUs");
 
+  // PDP Product must sameAs catalog#sku; Offer sameAs catalog + ai-shopping offer @ids.
+  {
+    const pdpRel = "tr/products/gob-led-ekran/p1-25-gob/index.html";
+    const pdpHtml = fs.readFileSync(path.join(outDir, pdpRel), "utf8");
+    let pdpOk = false;
+    for (const m of pdpHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "Product") continue;
+        const sameAs = Array.isArray(d.sameAs) ? d.sameAs : [];
+        const offer = d.offers || {};
+        const offerSameAs = Array.isArray(offer.sameAs) ? offer.sameAs : [];
+        if (
+          sameAs.some((u) => String(u).includes("/catalog.json#p1-25-ic-gob")) &&
+          offerSameAs.some((u) => String(u).includes("/catalog.json#offer-p1-25-ic-gob")) &&
+          offerSameAs.some((u) => String(u).includes("/ai-shopping.json#offer-p1-25-ic-gob")) &&
+          String(offer["@id"] || "").endsWith("#offer")
+        ) {
+          pdpOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!pdpOk) {
+      console.error("❌ PDP Product/Offer must sameAs catalog + ai-shopping offer @ids (p1-25-gob)");
+      process.exit(1);
+    }
+    console.log("✅ PDP Product/Offer sameAs joins catalog + ai-shopping");
+  }
+
   // HTML Dataset on quote-only + priced hubs must hasPart 12 Product stubs (mpn=sku).
   for (const rel of [
     "tr/products/esnek-led-ekran/index.html",
