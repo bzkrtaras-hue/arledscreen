@@ -803,6 +803,10 @@ if (fs.existsSync(outDir)) {
     "en/ai.txt",
     "tr/entity-profiles.json",
     "en/entity-profiles.json",
+    "offer.json",
+    "cite.json",
+    "faq.json",
+    "faqs.json",
   ]) {
     const fp = path.join(outDir, rel);
     if (!fs.existsSync(fp)) {
@@ -859,6 +863,26 @@ if (fs.existsSync(outDir)) {
   }
   if (!headersLive.includes("/feeds/*.tsv")) {
     console.error("❌ out/_headers must scope TSV Content-Type to /feeds/*.tsv");
+    process.exit(1);
+  }
+  for (const rel of ["offer.json", "cite.json", "faq.json", "faqs.json"]) {
+    const blockRe = new RegExp(
+      `\\n/${rel.replace(".", "\\.")}\\n[\\s\\S]*?Content-Type: application/json; charset=utf-8`,
+    );
+    if (!blockRe.test(headersLive)) {
+      console.error(`❌ out/_headers must set application/json; charset=utf-8 for /${rel}`);
+      process.exit(1);
+    }
+  }
+  const canonEntityForSyn = fs.readFileSync(path.join(outDir, "entity.json"));
+  for (const rel of ["cite.json", "faq.json", "faqs.json"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonEntityForSyn)) {
+      console.error(`❌ out/${rel} must match entity.json`);
+      process.exit(1);
+    }
+  }
+  if (!fs.readFileSync(path.join(outDir, "offer.json")).equals(canonAiForExt)) {
+    console.error("❌ out/offer.json must match ai-shopping.json");
     process.exit(1);
   }
   if (!llmsLive.includes("mpn") || !llmsLive.includes("/panels.json") || !llmsLive.includes("/teklif/")) {
