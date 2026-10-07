@@ -91,6 +91,22 @@ if ((agents.itemListElement || []).length >= 14) ok(`agents.json ×${agents.item
 else fail("agents.json ≥14");
 
 try {
+  const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
+  const agentsMd = await getText("/AGENTS.md");
+  const llms = await getText("/llms.txt");
+  if (
+    blob.includes("/.well-known/modules.json") &&
+    blob.includes("/.well-known/pricing.json") &&
+    agentsMd.includes("/.well-known/modules.json") &&
+    llms.includes("/.well-known/sku.json")
+  ) {
+    ok("agents/AGENTS/llms invent well-known modules/sku/pricing");
+  } else fail("agents/AGENTS/llms invent well-known modules/sku/pricing");
+} catch (e) {
+  fail(`agents/AGENTS/llms invent ${e?.message || e}`);
+}
+
+try {
   const pc = await getText("/point-c.txt");
   if (pc.includes("GBP About") && pc.includes("34245") && pc.includes("Hostinger arleds.com")) {
     ok("point-c.txt paste packs + Hostinger 301");
