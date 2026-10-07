@@ -446,8 +446,22 @@ if (fs.existsSync(outDir)) {
     console.error("❌ catalog.json Collection availableAtOrFrom must be #localbusiness");
     process.exit(1);
   }
+  if (
+    !String(catalogLive?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    !String(catalogLive?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+  ) {
+    console.error("❌ catalog.json Brand must makesOffer + hasOfferCatalog");
+    process.exit(1);
+  }
   if (ai?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
     console.error("❌ ai-shopping.json Dataset availableAtOrFrom must be #localbusiness");
+    process.exit(1);
+  }
+  if (
+    !String(ai?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    !String(ai?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+  ) {
+    console.error("❌ ai-shopping.json Brand must makesOffer + hasOfferCatalog");
     process.exit(1);
   }
   const aiBasedOn = JSON.stringify(ai?.isBasedOn || []);
@@ -542,6 +556,15 @@ if (fs.existsSync(outDir)) {
   }
   if (!String(entity?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")) {
     console.error("❌ entity.json brand.hasOfferCatalog must join catalog.json");
+    process.exit(1);
+  }
+  if (
+    !Array.isArray(entity?.brand?.subjectOf) ||
+    entity.brand.subjectOf.length < 3 ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/ai-shopping.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/catalog.json")
+  ) {
+    console.error("❌ entity.json brand.subjectOf must include ai-shopping + catalog Datasets");
     process.exit(1);
   }
   if (
@@ -907,9 +930,11 @@ if (fs.existsSync(outDir)) {
       !agentsMd.includes("ai-shopping.json") ||
       !agentsMd.includes("makesOffer") ||
       !agentsMd.includes("itemOffered") ||
-      !agentsMd.includes("#localbusiness")
+      !agentsMd.includes("#localbusiness") ||
+      !agentsMd.includes("hasOfferCatalog") ||
+      !agentsMd.includes("#brand-nxtionstar")
     ) {
-      console.error("❌ out/AGENTS.md must cite ai-shopping.json + makesOffer + itemOffered + #localbusiness");
+      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog");
       process.exit(1);
     }
   }
@@ -1811,6 +1836,7 @@ if (fs.existsSync(outDir)) {
     "/en/bolgeler/istanbul/",
     "/en/about/aras-bozkurt/",
     "/en/contact/",
+    "/en/contact-us/",
     "/en/iletisim/",
     "/en/products/esnek-led-ekran/",
     "/en/products/ince-pitch-led-ekran/",
@@ -1990,6 +2016,9 @@ if (fs.existsSync(outDir)) {
     ["en/yapay-zeka/index.html", (mid) => mid.includes("/en/yapay-zeka/") && mid.endsWith("#service")],
     ["tr/sss/index.html", (mid) => mid.includes("/tr/sss/") && mid.endsWith("#faqpage")],
     ["en/sss/index.html", (mid) => mid.includes("/en/sss/") && mid.endsWith("#faqpage")],
+    ["tr/blog/index.html", (mid) => mid.includes("/tr/blog/") && mid.endsWith("#blog")],
+    ["tr/projelerimiz/index.html", (mid) => mid.includes("/tr/projelerimiz/") && mid.endsWith("#projects")],
+    ["tr/galeri/index.html", (mid) => mid.includes("/tr/galeri/") && mid.endsWith("#gallery")],
   ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     let pageOk = false;

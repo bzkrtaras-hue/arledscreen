@@ -125,6 +125,32 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           { name: en ? "Projects" : "Projeler", item: pageUrl },
         ]}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": `${pageUrl}#projects`,
+            url: pageUrl,
+            name: en ? "Completed projects" : "Tamamlanan projeler",
+            description: en
+              ? "ARLEDSCREEN LED projects: municipal, café, store, event and outdoor installs."
+              : "ARLEDSCREEN LED ekran projeleri: belediye, kafe, mağaza, etkinlik ve dış mekân kurulumları.",
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            about: { "@id": `${SITE_URL}/#organization` },
+            mainEntity: {
+              "@type": "ItemList",
+              numberOfItems: PROJECT_CASE_STUDIES.length,
+              itemListElement: PROJECT_CASE_STUDIES.map((c, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                url: absoluteUrl(`/tr/projelerimiz/${c.slug}/`),
+              })),
+            },
+          }),
+        }}
+      />
       <SpeakableJsonLd
         pageUrl={pageUrl}
         name={en ? "Completed projects" : "Tamamlanan projeler"}
@@ -134,6 +160,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
             : "ARLEDSCREEN LED ekran projeleri: belediye, kafe, mağaza, etkinlik ve dış mekân kurulumları."
         }
         cssSelectors={["#projeler-h1", "#projeler-lead"]}
+        mainEntity={{ "@id": `${pageUrl}#projects` }}
       />
       {faqs.length ? <FaqJsonLd faqs={faqs} /> : null}
       <script

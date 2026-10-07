@@ -301,6 +301,8 @@ function buildCatalog() {
       "@id": `${SITE_URL}/#brand-nxtionstar`,
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
+      makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+      hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     },
     // Catalog-root agents (no Offer expand) still join Gaziosmanpaşa NAP.
     availableAtOrFrom: localBusinessRef(),
@@ -519,6 +521,8 @@ function buildAiShopping() {
       "@id": brandId,
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
+      makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+      hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     },
     // Dataset-root agents still join place without expanding hasPart Offers.
     availableAtOrFrom: localBusinessRef(),

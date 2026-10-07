@@ -11,7 +11,7 @@ import { QuoteSplit } from "@/components/home/QuoteSplit";
 import { getFaqs } from "@/content/faqs";
 import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
 
 export const dynamicParams = false;
@@ -81,6 +81,23 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
           { name: en ? "Gallery" : "Galeri", item: pageUrl },
         ]}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": `${pageUrl}#gallery`,
+            url: pageUrl,
+            name: en ? "Gallery" : "Galeri",
+            description: en
+              ? "LED install gallery: indoor, outdoor, curved and cinema applications. Field photos by category."
+              : "İç mekân, dış mekân, kavisli ve sinema LED ekran uygulama galerisi. Kategorilere göre düzenlenmiş saha görselleri.",
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            about: { "@id": `${SITE_URL}/#organization` },
+          }),
+        }}
+      />
       <SpeakableJsonLd
         pageUrl={pageUrl}
         name={en ? "Gallery" : "Galeri"}
@@ -90,6 +107,7 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
             : "İç mekân, dış mekân, kavisli ve sinema LED ekran uygulama galerisi. Kategorilere göre düzenlenmiş saha görselleri."
         }
         cssSelectors={["#galeri-h1", "#galeri-lead"]}
+        mainEntity={{ "@id": `${pageUrl}#gallery` }}
       />
       {faqs.length ? <FaqJsonLd faqs={faqs} /> : null}
       <script

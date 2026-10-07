@@ -97,6 +97,7 @@ export default async function ProjectCasePage({
         name={c.h1}
         description={c.metaDescription}
         cssSelectors={["#case-h1", "#case-lead"]}
+        mainEntity={{ "@id": `${url}#case` }}
       />
       <script
         type="application/ld+json"

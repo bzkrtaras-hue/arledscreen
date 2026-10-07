@@ -76,6 +76,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         name={p.h1}
         description={p.description}
         cssSelectors={["#post-h1", "#post-lead"]}
+        mainEntity={{ "@id": `${url}#article` }}
       />
       <script
         type="application/ld+json"

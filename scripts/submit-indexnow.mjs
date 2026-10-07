@@ -223,6 +223,7 @@ const URLS = [
   `https://${HOST}/en/bolgeler/istanbul/`,
   `https://${HOST}/en/about/aras-bozkurt/`,
   `https://${HOST}/en/contact/`,
+  `https://${HOST}/en/contact-us/`,
   `https://${HOST}/en/iletisim/`,
   `https://${HOST}/en/rehber/ince-pitch-led-ekran/`,
   `https://${HOST}/en/rehber/gob-led-ekran/`,

@@ -108,6 +108,7 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
             : "ARLEDSCREEN blogu: tamamlanan LED ekran projeleri, kurulum süreçleri ve NXTIONSTAR uygulamaları."
         }
         cssSelectors={["#blog-h1", "#blog-lead"]}
+        mainEntity={{ "@id": `${pageUrl}#blog` }}
       />
       {faqs.length ? <FaqJsonLd faqs={faqs} /> : null}
       <script
