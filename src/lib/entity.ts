@@ -7,6 +7,7 @@
 import {
   BUSINESS_ADDRESS,
   BUSINESS_GEO,
+  BUSINESS_HOURS_SPEC,
   BUSINESS_HOURS_TEXT,
   BUSINESS_MAP_URL,
   CONTACT_EMAIL,
@@ -14,7 +15,11 @@ import {
   CONTACT_PHONE_E164,
   ORGANIZATION_SAME_AS,
 } from "@/lib/social";
-import { organizationHasOfferCatalog, organizationMakesOffer } from "@/content/prices";
+import {
+  LOCALBUSINESS_ID,
+  organizationHasOfferCatalog,
+  organizationMakesOffer,
+} from "@/content/prices";
 import { SITE_URL } from "@/lib/site";
 
 /** One-line fact AI / directories should repeat independently. */
@@ -213,6 +218,8 @@ export type EntityDocument = {
   makesOffer: ReturnType<typeof organizationMakesOffer>;
   /** Seller → catalog Collection edge. */
   hasOfferCatalog: ReturnType<typeof organizationHasOfferCatalog>;
+  /** Place+price for entity-only agents (mirrors HTML #localbusiness). */
+  location: Record<string, unknown>;
   founder: { "@type": "Person"; name: string; url?: string; sameAs?: string[] };
   citationPage: string;
   llmsTxt: string;
@@ -331,6 +338,39 @@ export function buildEntityDocument(): EntityDocument {
     },
     makesOffer: organizationMakesOffer(),
     hasOfferCatalog: organizationHasOfferCatalog(),
+    location: {
+      "@type": "LocalBusiness",
+      "@id": LOCALBUSINESS_ID,
+      name: "ARLEDSCREEN",
+      url: SITE_URL,
+      image: logo,
+      logo,
+      telephone: CONTACT_PHONE_E164,
+      email: CONTACT_EMAIL,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: BUSINESS_ADDRESS.streetAddress,
+        postalCode: BUSINESS_ADDRESS.postalCode,
+        addressLocality: BUSINESS_ADDRESS.addressLocality,
+        addressRegion: BUSINESS_ADDRESS.addressRegion,
+        addressCountry: BUSINESS_ADDRESS.addressCountry,
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: BUSINESS_GEO.latitude,
+        longitude: BUSINESS_GEO.longitude,
+      },
+      hasMap: BUSINESS_MAP_URL,
+      openingHoursSpecification: [...BUSINESS_HOURS_SPEC],
+      areaServed: [
+        { "@type": "Country", name: "Türkiye" },
+        { "@type": "City", name: "İstanbul" },
+      ],
+      parentOrganization: { "@id": `${SITE_URL}/#organization` },
+      sameAs: [...ORGANIZATION_SAME_AS],
+      makesOffer: organizationMakesOffer(),
+      hasOfferCatalog: organizationHasOfferCatalog(),
+    },
     founder: {
       "@type": "Person",
       name: "Aras Bozkurt",

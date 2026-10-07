@@ -106,4 +106,14 @@ jobs:
           sm="$(curl -fsSL -A 'Mozilla/5.0' https://arledscreen.com/sitemap.xml)"
           echo "$sm" | grep -q 'ai-shopping.json' || { echo "FAIL live sitemap missing ai-shopping.json" >&2; exit 1; }
           echo "$sm" | grep -q 'entity.json' || { echo "FAIL live sitemap missing entity.json" >&2; exit 1; }
-          echo "OK live GEO llms + sitemap"
+
+          # Live graph must include entity-first price authority (post–makesOffer ships).
+          ent="$(curl -fsSL -A 'Mozilla/5.0' https://arledscreen.com/entity.json)"
+          echo "$ent" | grep -q 'makesOffer' || { echo "FAIL live entity.json missing makesOffer" >&2; exit 1; }
+          echo "$ent" | grep -q '#priced-panels-aggregate' || { echo "FAIL live entity missing AggregateOffer @id" >&2; exit 1; }
+          echo "$ent" | grep -q '#localbusiness' || { echo "FAIL live entity missing #localbusiness location" >&2; exit 1; }
+          echo "OK live GEO llms + sitemap + entity price graph"
+
+      - name: IndexNow — ping GEO / invent surfaces after Production smoke
+        run: node scripts/submit-indexnow.mjs
+        continue-on-error: true

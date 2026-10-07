@@ -43,6 +43,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-25-ic-gob",
         "sku": "p1-25-ic-gob",
         "mpn": "p1-25-ic-gob",
+        "price": "95.88",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#offer"
@@ -52,6 +57,13 @@
           "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#product",
           "sku": "p1-25-ic-gob",
           "mpn": "p1-25-ic-gob"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -70,6 +82,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-53-ic-gob",
         "sku": "p1-53-ic-gob",
         "mpn": "p1-53-ic-gob",
+        "price": "62.08",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#offer"
@@ -79,6 +96,13 @@
           "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#product",
           "sku": "p1-53-ic-gob",
           "mpn": "p1-53-ic-gob"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -97,6 +121,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-86-ic-gob",
         "sku": "p1-86-ic-gob",
         "mpn": "p1-86-ic-gob",
+        "price": "49.08",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#offer"
@@ -106,6 +135,13 @@
           "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#product",
           "sku": "p1-86-ic-gob",
           "mpn": "p1-86-ic-gob"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -124,6 +160,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-ic",
         "sku": "p2-5-ic",
         "mpn": "p2-5-ic",
+        "price": "32.18",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-5-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#offer"
@@ -133,6 +174,13 @@
           "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#product",
           "sku": "p2-5-ic",
           "mpn": "p2-5-ic"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -151,6 +199,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-ic",
         "sku": "p3-07-ic",
         "mpn": "p3-07-ic",
+        "price": "30.88",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p3-07-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#offer"
@@ -160,6 +213,13 @@
           "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#product",
           "sku": "p3-07-ic",
           "mpn": "p3-07-ic"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -178,6 +238,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-ic",
         "sku": "p4-ic",
         "mpn": "p4-ic",
+        "price": "26.98",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#offer"
@@ -187,6 +252,13 @@
           "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#product",
           "sku": "p4-ic",
           "mpn": "p4-ic"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -205,6 +277,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-dis",
         "sku": "p2-5-dis",
         "mpn": "p2-5-dis",
+        "price": "63.70",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-5-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#offer"
@@ -214,6 +291,13 @@
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#product",
           "sku": "p2-5-dis",
           "mpn": "p2-5-dis"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -232,6 +316,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-9-dis",
         "sku": "p2-9-dis",
         "mpn": "p2-9-dis",
+        "price": "53.30",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-9-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#offer"
@@ -241,6 +330,13 @@
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#product",
           "sku": "p2-9-dis",
           "mpn": "p2-9-dis"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -259,6 +355,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-dis",
         "sku": "p3-07-dis",
         "mpn": "p3-07-dis",
+        "price": "44.20",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p3-07-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#offer"
@@ -268,6 +369,13 @@
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#product",
           "sku": "p3-07-dis",
           "mpn": "p3-07-dis"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -286,6 +394,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis",
         "sku": "p4-dis",
         "mpn": "p4-dis",
+        "price": "33.80",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#offer"
@@ -295,6 +408,13 @@
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#product",
           "sku": "p4-dis",
           "mpn": "p4-dis"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -313,6 +433,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis-front",
         "sku": "p4-dis-front",
         "mpn": "p4-dis-front",
+        "price": "36.40",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-dis-front",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#offer"
@@ -322,6 +447,13 @@
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#product",
           "sku": "p4-dis-front",
           "mpn": "p4-dis-front"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     },
@@ -340,6 +472,11 @@
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p5-dis",
         "sku": "p5-dis",
         "mpn": "p5-dis",
+        "price": "29.90",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p5-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#offer"
@@ -349,6 +486,13 @@
           "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#product",
           "sku": "p5-dis",
           "mpn": "p5-dis"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
         }
       }
     }
@@ -617,6 +761,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -740,6 +888,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -863,6 +1015,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -986,6 +1142,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -1109,6 +1269,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -1232,6 +1396,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -1355,6 +1523,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -1478,6 +1650,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -1601,6 +1777,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -1724,6 +1904,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -1847,6 +2031,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     },
@@ -1970,6 +2158,10 @@
         "seller": {
           "@type": "Organization",
           "@id": "https://arledscreen.com/#organization"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     }

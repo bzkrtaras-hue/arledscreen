@@ -17,6 +17,8 @@ const outDir = path.join(repoRoot, "out");
 
 const SITE_URL = "https://arledscreen.com";
 const PRICE_VALID_UNTIL = "2026-12-31";
+const LOCALBUSINESS_ID = `${SITE_URL}/#localbusiness`;
+const localBusinessRef = () => ({ "@type": "LocalBusiness", "@id": LOCALBUSINESS_ID });
 
 /** image paths match src/content/models.ts (priced SKUs only). */
 const PANEL_PRICES = [
@@ -276,6 +278,7 @@ function buildCatalog() {
           returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
         },
         seller: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+        availableAtOrFrom: localBusinessRef(),
       },
     };
   });
@@ -477,6 +480,7 @@ function buildAiShopping() {
           returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
         },
         seller: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+        availableAtOrFrom: localBusinessRef(),
       },
     };
   });
@@ -537,6 +541,12 @@ function buildAiShopping() {
         "@id": `${SITE_URL}/ai-shopping.json#offer-${p.sku}`,
         sku: p.sku,
         mpn: p.sku,
+        price: p.price,
+        priceCurrency: "USD",
+        priceValidUntil: PRICE_VALID_UNTIL,
+        availability: "https://schema.org/InStock",
+        description:
+          "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         // Full Offer triangle for Dataset-only agents (catalog ↔ ai-shopping ↔ PDP).
         sameAs: [`${SITE_URL}/catalog.json#offer-${p.sku}`, `${p.url}#offer`],
         itemOffered: {
@@ -545,6 +555,8 @@ function buildAiShopping() {
           sku: p.sku,
           mpn: p.sku,
         },
+        availableAtOrFrom: localBusinessRef(),
+        seller: { "@id": `${SITE_URL}/#organization` },
       },
     })),
     // Schema.org DataDownload graph — parity with HTML Dataset on product hubs / yapay-zeka.

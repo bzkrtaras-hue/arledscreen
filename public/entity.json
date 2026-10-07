@@ -179,6 +179,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -244,6 +248,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -309,6 +317,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -374,6 +386,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -439,6 +455,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -504,6 +524,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -569,6 +593,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -634,6 +662,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -699,6 +731,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -764,6 +800,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -829,6 +869,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       },
       {
@@ -894,6 +938,10 @@
           "@type": "MerchantReturnPolicy",
           "applicableCountry": "TR",
           "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "availableAtOrFrom": {
+          "@type": "LocalBusiness",
+          "@id": "https://arledscreen.com/#localbusiness"
         }
       }
     ]
@@ -907,6 +955,928 @@
     "sameAs": [
       "https://arledscreen.com/ai-shopping.json"
     ]
+  },
+  "location": {
+    "@type": "LocalBusiness",
+    "@id": "https://arledscreen.com/#localbusiness",
+    "name": "ARLEDSCREEN",
+    "url": "https://arledscreen.com",
+    "image": "https://arledscreen.com/brand/arledscreen-logo-header.png",
+    "logo": "https://arledscreen.com/brand/arledscreen-logo-header.png",
+    "telephone": "+905305078834",
+    "email": "arled@arledscreen.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Merkez Mah. Tuna Sok. No:15-17 Kat 1",
+      "postalCode": "34245",
+      "addressLocality": "Gaziosmanpaşa",
+      "addressRegion": "İstanbul",
+      "addressCountry": "TR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.0538876,
+      "longitude": 28.9121358
+    },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.0538876%2C28.9121358",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "15:00"
+      }
+    ],
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "Türkiye"
+      },
+      {
+        "@type": "City",
+        "name": "İstanbul"
+      }
+    ],
+    "parentOrganization": {
+      "@id": "https://arledscreen.com/#organization"
+    },
+    "sameAs": [
+      "https://www.instagram.com/arledscreen",
+      "https://www.facebook.com/arledscreenn",
+      "https://www.linkedin.com/company/arleds"
+    ],
+    "makesOffer": {
+      "@type": "AggregateOffer",
+      "@id": "https://arledscreen.com/#priced-panels-aggregate",
+      "priceCurrency": "USD",
+      "lowPrice": "26.98",
+      "highPrice": "95.88",
+      "offerCount": 12,
+      "priceValidUntil": "2026-12-31",
+      "url": "https://arledscreen.com/ai-shopping.json",
+      "availability": "https://schema.org/InStock",
+      "description": "Yayımlanmış 12 panel (modül) USD aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. Per-SKU Offer: ai-shopping.json / catalog.json / merchant TSV. Nihai fiyat yazılı teklifle kesinleşir.",
+      "seller": {
+        "@id": "https://arledscreen.com/#organization"
+      },
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "USD",
+        "valueAddedTaxIncluded": false
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-25-ic-gob",
+          "sku": "p1-25-ic-gob",
+          "mpn": "p1-25-ic-gob",
+          "price": "95.88",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob",
+            "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#product",
+            "sku": "p1-25-ic-gob",
+            "mpn": "p1-25-ic-gob"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "95.88",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-53-ic-gob",
+          "sku": "p1-53-ic-gob",
+          "mpn": "p1-53-ic-gob",
+          "price": "62.08",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob",
+            "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#product",
+            "sku": "p1-53-ic-gob",
+            "mpn": "p1-53-ic-gob"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "62.08",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-86-ic-gob",
+          "sku": "p1-86-ic-gob",
+          "mpn": "p1-86-ic-gob",
+          "price": "49.08",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob",
+            "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#product",
+            "sku": "p1-86-ic-gob",
+            "mpn": "p1-86-ic-gob"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "49.08",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-ic",
+          "sku": "p2-5-ic",
+          "mpn": "p2-5-ic",
+          "price": "32.18",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p2-5-ic",
+            "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#product",
+            "sku": "p2-5-ic",
+            "mpn": "p2-5-ic"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "32.18",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-ic",
+          "sku": "p3-07-ic",
+          "mpn": "p3-07-ic",
+          "price": "30.88",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p3-07-ic",
+            "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#product",
+            "sku": "p3-07-ic",
+            "mpn": "p3-07-ic"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "30.88",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-ic",
+          "sku": "p4-ic",
+          "mpn": "p4-ic",
+          "price": "26.98",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p4-ic",
+            "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#product",
+            "sku": "p4-ic",
+            "mpn": "p4-ic"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "26.98",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-dis",
+          "sku": "p2-5-dis",
+          "mpn": "p2-5-dis",
+          "price": "63.70",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p2-5-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#product",
+            "sku": "p2-5-dis",
+            "mpn": "p2-5-dis"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "63.70",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-9-dis",
+          "sku": "p2-9-dis",
+          "mpn": "p2-9-dis",
+          "price": "53.30",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p2-9-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#product",
+            "sku": "p2-9-dis",
+            "mpn": "p2-9-dis"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "53.30",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-dis",
+          "sku": "p3-07-dis",
+          "mpn": "p3-07-dis",
+          "price": "44.20",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p3-07-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#product",
+            "sku": "p3-07-dis",
+            "mpn": "p3-07-dis"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "44.20",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis",
+          "sku": "p4-dis",
+          "mpn": "p4-dis",
+          "price": "33.80",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p4-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#product",
+            "sku": "p4-dis",
+            "mpn": "p4-dis"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "33.80",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis-front",
+          "sku": "p4-dis-front",
+          "mpn": "p4-dis-front",
+          "price": "36.40",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p4-dis-front",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#product",
+            "sku": "p4-dis-front",
+            "mpn": "p4-dis-front"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "36.40",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://arledscreen.com/ai-shopping.json#offer-p5-dis",
+          "sku": "p5-dis",
+          "mpn": "p5-dis",
+          "price": "29.90",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2026-12-31",
+          "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+          "sameAs": [
+            "https://arledscreen.com/catalog.json#offer-p5-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#offer"
+          ],
+          "itemOffered": {
+            "@type": "Product",
+            "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#product",
+            "sku": "p5-dis",
+            "mpn": "p5-dis"
+          },
+          "seller": {
+            "@id": "https://arledscreen.com/#organization"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "29.90",
+            "priceCurrency": "USD",
+            "valueAddedTaxIncluded": false,
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 1,
+              "unitCode": "C62",
+              "unitText": "panel"
+            }
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "TR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 21,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 14,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "TR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "availableAtOrFrom": {
+            "@type": "LocalBusiness",
+            "@id": "https://arledscreen.com/#localbusiness"
+          }
+        }
+      ]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "@id": "https://arledscreen.com/catalog.json",
+      "name": "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
+      "url": "https://arledscreen.com/catalog.json",
+      "numberOfItems": 12,
+      "sameAs": [
+        "https://arledscreen.com/ai-shopping.json"
+      ]
+    }
   },
   "founder": {
     "@type": "Person",

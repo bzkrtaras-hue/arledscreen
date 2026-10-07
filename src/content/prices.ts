@@ -60,6 +60,14 @@ export const BRAND_SUBJECT_DATASETS = [...PRICE_DATASETS, GEO_BASELINE_DATASET];
 /** Stable Brand @id — Org/Product graphs + catalog Offers point here. */
 export const NXTIONSTAR_BRAND_ID = `${SITE_URL}/#brand-nxtionstar`;
 
+/** Stable LocalBusiness @id — Offers availableAtOrFrom + entity location. */
+export const LOCALBUSINESS_ID = `${SITE_URL}/#localbusiness`;
+
+/** Compact Place ref for Offer.availableAtOrFrom (Gaziosmanpaşa NAP). */
+export function localBusinessRef() {
+  return { "@type": "LocalBusiness" as const, "@id": LOCALBUSINESS_ID };
+}
+
 /** Full Brand node (use once in @graph); Product/Org may reference via `@id` only. */
 export function nxtionstarBrandNode() {
   return {
@@ -104,12 +112,18 @@ export function pricedPanelsHasPartStubs() {
       // Dataset→stub → catalog Collection identity (cheap join without expanding pricedPanels).
       sameAs: [`${SITE_URL}/catalog.json#${p.id}`],
       mainEntityOfPage: url,
-      // Product→Offer edge (full Offer triangle for Dataset-only agents).
+      // Product→Offer edge (full Offer triangle + USD for Dataset-only agents).
       offers: {
         "@type": "Offer" as const,
         "@id": `${SITE_URL}/ai-shopping.json#offer-${p.id}`,
         sku: p.id,
         mpn: p.id,
+        price: p.usd.toFixed(2),
+        priceCurrency: "USD",
+        priceValidUntil: PRICE_VALID_UNTIL,
+        availability: "https://schema.org/InStock" as const,
+        description:
+          "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`, `${url}#offer`],
         itemOffered: {
           "@type": "Product" as const,
@@ -117,6 +131,8 @@ export function pricedPanelsHasPartStubs() {
           sku: p.id,
           mpn: p.id,
         },
+        availableAtOrFrom: localBusinessRef(),
+        seller: { "@id": `${SITE_URL}/#organization` },
       },
     };
   });
@@ -273,6 +289,7 @@ export function panelOffer(
       returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
     },
     seller: { "@id": `${SITE_URL}/#organization` },
+    availableAtOrFrom: localBusinessRef(),
   };
 }
 
@@ -338,6 +355,7 @@ export function pricedPanelOfferStubs(panels: PanelPrice[] = PANEL_PRICES) {
         applicableCountry: "TR",
         returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
       },
+      availableAtOrFrom: localBusinessRef(),
     };
   });
 }
