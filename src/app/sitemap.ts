@@ -5,7 +5,7 @@ import { SEO_GUIDE_SLUGS } from "@/content/seo-guides";
 import { PRODUCT_GROUPS } from "@/content/categories";
 import { LED_MODELS, modelPath } from "@/content/models";
 import { SERVICE_REGIONS } from "@/content/service-regions";
-import { COMMERCIAL_EN_INTENT_SLUGS, COMMERCIAL_PAGES } from "@/content/commercial-pages";
+import { COMMERCIAL_EN_SLUGS, COMMERCIAL_PAGES } from "@/content/commercial-pages";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 
 export const dynamic = "force-static";
@@ -149,6 +149,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     });
   }
+  // EN services hub (AI agents invent /en/hizmetler/ from TR path shape).
+  entries.push({
+    url: absoluteUrl("/en/hizmetler/"),
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.85,
+  });
   // EN lean commercial guides (AI agents invent these TR rehber paths under /en/).
   for (const path of [
     "/rehber/piksel-araligi-secimi/",
@@ -181,8 +188,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly",
     priority: 0.95,
   });
-  // Remaining commercial intent hubs (sales/rental/install/…) — EN agents previously 404'd.
-  for (const slug of COMMERCIAL_EN_INTENT_SLUGS) {
+  // Remaining commercial EN hubs (intent + high-invent use/pitch) — agents previously 404'd.
+  for (const slug of COMMERCIAL_EN_SLUGS) {
     entries.push({
       url: absoluteUrl(`/en/${slug}/`),
       lastModified: now,

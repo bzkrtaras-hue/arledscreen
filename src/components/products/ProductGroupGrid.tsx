@@ -43,7 +43,7 @@ export function ProductGroupGrid({
     ...(showService
       ? [
           {
-            href: en ? "/en/led-ekran-montaj/" : "/tr/hizmetler/",
+            href: en ? "/en/hizmetler/" : "/tr/hizmetler/",
             name: en ? "Install and technical service" : "Montaj ve Teknik Servis",
             short: en
               ? "Survey, install, commissioning, maintenance and spare-part requests."

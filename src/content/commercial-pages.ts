@@ -824,6 +824,7 @@ export const COMMERCIAL_SLUGS = COMMERCIAL_PAGES.map((p) => p.slug);
 /**
  * Intent hubs with real EN copy (AI agents invent these TR path shapes under /en/).
  * `led-ekran` is served by the dedicated `[locale]/led-ekran/` route — not listed here.
+ * Offer JSON-LD (≥12 SKUs) stays on intent hubs only — not use/pitch.
  */
 export const COMMERCIAL_EN_INTENT_SLUGS = [
   "led-ekran-satisi",
@@ -833,10 +834,42 @@ export const COMMERCIAL_EN_INTENT_SLUGS = [
   "led-ekran-servis",
 ] as const;
 
-export type CommercialEnIntentSlug = (typeof COMMERCIAL_EN_INTENT_SLUGS)[number];
+/** High-invent use-case hubs AI agents request under /en/<tr-slug>/. */
+export const COMMERCIAL_EN_USE_SLUGS = [
+  "magaza-led-ekran",
+  "avm-led-ekran",
+  "cephe-led-ekran",
+  "billboard-led-ekran",
+  "otel-led-ekran",
+  "sahne-led-ekran",
+  "belediye-led-ekran",
+] as const;
 
-export function isCommercialEnIntentSlug(slug: string): slug is CommercialEnIntentSlug {
-  return (COMMERCIAL_EN_INTENT_SLUGS as readonly string[]).includes(slug);
+/** High-invent pitch hubs (P1.25 / P2.5 / P4) under /en/. */
+export const COMMERCIAL_EN_PITCH_SLUGS = [
+  "p1-25-led-ekran",
+  "p2-5-led-ekran",
+  "p4-led-ekran",
+] as const;
+
+export const COMMERCIAL_EN_SLUGS = [
+  ...COMMERCIAL_EN_INTENT_SLUGS,
+  ...COMMERCIAL_EN_USE_SLUGS,
+  ...COMMERCIAL_EN_PITCH_SLUGS,
+] as const;
+
+export type CommercialEnIntentSlug = (typeof COMMERCIAL_EN_INTENT_SLUGS)[number];
+export type CommercialEnUseSlug = (typeof COMMERCIAL_EN_USE_SLUGS)[number];
+export type CommercialEnPitchSlug = (typeof COMMERCIAL_EN_PITCH_SLUGS)[number];
+export type CommercialEnSlug = (typeof COMMERCIAL_EN_SLUGS)[number];
+
+export function isCommercialEnSlug(slug: string): slug is CommercialEnSlug {
+  return (COMMERCIAL_EN_SLUGS as readonly string[]).includes(slug);
+}
+
+/** Alias: any EN commercial slug (intent + use + pitch). */
+export function isCommercialEnIntentSlug(slug: string): slug is CommercialEnSlug {
+  return isCommercialEnSlug(slug);
 }
 
 export function getCommercialPage(slug: string): CommercialPage | undefined {
@@ -866,12 +899,343 @@ function enIntentLinks(except: string): CommercialLink[] {
     { href: "/en/led-ekran-kiralama/", label: "LED display rental" },
     { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
     { href: "/en/led-ekran-servis/", label: "LED display service" },
+    { href: "/en/hizmetler/", label: "Services" },
     { href: "/en/quote/", label: "Request a quote" },
     { href: "/en/hesaplayici/", label: "Price calculator" },
     { href: "/en/nxtionstar/", label: "NXTIONSTAR brand" },
     { href: "/en/sss/", label: "FAQ" },
   ];
   return all.filter((l) => !l.href.includes(`/${except}/`));
+}
+
+const EN_USE_LABELS: Record<CommercialEnUseSlug, string> = {
+  "magaza-led-ekran": "Store LED",
+  "avm-led-ekran": "Mall LED",
+  "cephe-led-ekran": "Façade LED",
+  "billboard-led-ekran": "Billboard LED",
+  "otel-led-ekran": "Hotel LED",
+  "sahne-led-ekran": "Stage LED",
+  "belediye-led-ekran": "Municipal LED",
+};
+
+const EN_PITCH_LABELS: Record<CommercialEnPitchSlug, string> = {
+  "p1-25-led-ekran": "P1.25 LED",
+  "p2-5-led-ekran": "P2.5 LED",
+  "p4-led-ekran": "P4 LED",
+};
+
+function enUseLinks(except?: string): CommercialLink[] {
+  return COMMERCIAL_EN_USE_SLUGS.filter((s) => s !== except).map((s) => ({
+    href: `/en/${s}/`,
+    label: EN_USE_LABELS[s],
+  }));
+}
+
+function enPitchLinks(except?: string): CommercialLink[] {
+  return COMMERCIAL_EN_PITCH_SLUGS.filter((s) => s !== except).map((s) => ({
+    href: `/en/${s}/`,
+    label: EN_PITCH_LABELS[s],
+  }));
+}
+
+function remapProductLinksToEn(links: CommercialLink[]): CommercialLink[] {
+  return links.map((l) => ({
+    ...l,
+    href: l.href.replace(/^\/tr\/products\//, "/en/products/"),
+  }));
+}
+
+type EnLeanOverlay = {
+  title: string;
+  description: string;
+  h1: string;
+  eyebrow: string;
+  lead: string;
+  intro: string[];
+  bullets: string[];
+  faqs: { question: string; answer: string }[];
+  imageAlts: string[];
+};
+
+const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
+  "magaza-led-ekran": {
+    title: "Store LED Display | Retail Walls | ARLEDSCREEN",
+    description:
+      "Store LED for windows, sales floors and brand walls. ARLEDSCREEN Istanbul — survey, pitch match and written quote.",
+    h1: "Store LED display",
+    eyebrow: "Use case · Retail",
+    lead: "LED walls for storefronts, sales floors and brand feature walls — pitch matched to shopper distance.",
+    intro: [
+      "Store LED depends on window distance and product lighting. Published indoor/GOB panel USD is in ai-shopping.json; final amount after survey.",
+      "Retail-adjacent published records (e.g. Merter / Osmanbey) inform planning — every store still needs its own survey.",
+      NAP_EN,
+    ],
+    bullets: ["Survey and measure", "Pitch for closest shopper", "Install + service"],
+    imageAlts: ["Indoor LED wall in a retail store", "Store LED display sample"],
+    faqs: [
+      {
+        question: "How much does a store LED cost?",
+        answer:
+          "No fixed m² price. Panel USD is published at /en/led-ekran-fiyatlari/; size, pitch and install set the written quote after survey. No free shipping.",
+      },
+    ],
+  },
+  "avm-led-ekran": {
+    title: "Mall / AVM LED Display | Atrium & Façade | ARLEDSCREEN",
+    description:
+      "Mall LED for atrium, corridor and façade. ARLEDSCREEN Istanbul — survey, structure plan and written quote.",
+    h1: "Mall (AVM) LED display",
+    eyebrow: "Use case · Mall",
+    lead: "Atrium, corridor and façade LED for shopping centres — indoor and outdoor pitches differ.",
+    intro: [
+      "Mall projects need wider viewing distances; indoor atrium and outdoor façade usually take different pitches.",
+      "Circulation and mounting height are measured on survey. Panel USD published; structure and install are quote lines.",
+      NAP_EN,
+    ],
+    bullets: ["Atrium vs façade pitch", "Height and load survey", "Install + calibration"],
+    imageAlts: ["Mall façade LED display", "Indoor mall wayfinding LED"],
+    faqs: [
+      {
+        question: "Indoor atrium or outdoor façade — same pitch?",
+        answer:
+          "Usually not. Closer atrium viewing wants finer pitch; façades often use coarser outdoor pitch. Confirm after survey via /en/quote/.",
+      },
+    ],
+  },
+  "cephe-led-ekran": {
+    title: "Façade LED Display | Outdoor Building Screens | ARLEDSCREEN",
+    description:
+      "Building façade and plaza outdoor LED. ARLEDSCREEN Istanbul — structure, wind load and municipal permits in the survey plan.",
+    h1: "Façade LED display",
+    eyebrow: "Use case · Façade",
+    lead: "Outdoor LED for building façades and plazas — structure and permits planned with the survey.",
+    intro: [
+      "Façade LED needs structure, wind load and local permit steps as part of the plan. Large outdoor published records (e.g. Manisa, Bursa) are scale examples — not templates.",
+      "Outdoor panel USD is in pricedPanels; structure/VAT/shipping are quote lines. No free shipping.",
+      NAP_EN,
+    ],
+    bullets: ["Outdoor structure survey", "Pitch for street distance", "Install + service"],
+    imageAlts: ["Building façade LED display", "Outdoor façade LED wall"],
+    faqs: [
+      {
+        question: "Do façade screens need permits?",
+        answer:
+          "Outdoor advertising/façade rules vary by municipality. We recommend checking the local authority before install; scope is written in the quote.",
+      },
+    ],
+  },
+  "billboard-led-ekran": {
+    title: "Billboard LED Display | Roadside Outdoor | ARLEDSCREEN",
+    description:
+      "Roadside and open-area billboard LED. ARLEDSCREEN Istanbul — P4–P5 band often reviewed; quote after survey.",
+    h1: "Billboard LED display",
+    eyebrow: "Use case · Billboard",
+    lead: "Outdoor billboard LED for roadside and open areas — coarser pitch for long viewing distance.",
+    intro: [
+      "Billboards often evaluate the P4–P5 outdoor band because viewers are farther away. Permits and structure clear on survey.",
+      "Published outdoor panel USD helps material planning; final project price is written after survey.",
+      NAP_EN,
+    ],
+    bullets: ["Long-distance pitch", "Structure + power survey", "Written outdoor quote"],
+    imageAlts: ["Billboard LED display", "Open-area outdoor LED screen"],
+    faqs: [
+      {
+        question: "Is billboard LED priced per m² online?",
+        answer:
+          "Panel USD is published; there is no fixed installed billboard m² rate. Use /en/led-ekran-fiyatlari/ then /en/quote/ after site details.",
+      },
+    ],
+  },
+  "otel-led-ekran": {
+    title: "Hotel LED Display | Lobby & Façade | ARLEDSCREEN",
+    description:
+      "Hotel lobby, ballroom and outdoor LED. ARLEDSCREEN Istanbul — published Alanya resort record as context; quote after survey.",
+    h1: "Hotel LED display",
+    eyebrow: "Use case · Hotel",
+    lead: "Lobby, ballroom and outdoor LED for hotels — fine pitch indoors; coarser outdoors.",
+    intro: [
+      "The published Alanya White City Resort Hotel record is a hotel-scale example. Lobby often wants fine pitch; outdoor areas coarser.",
+      "Indoor/GOB panel USD published; install and structure after survey. No free shipping.",
+      NAP_EN,
+    ],
+    bullets: ["Lobby vs outdoor pitch", "Survey before order", "Install + handover"],
+    imageAlts: ["Hotel LED display installation in Alanya", "Lobby / lounge LED display"],
+    faqs: [
+      {
+        question: "Can you reuse the Alanya hotel design elsewhere?",
+        answer:
+          "No — that record is a published case, not a copy-paste design. Every hotel needs its own measure and written quote.",
+      },
+    ],
+  },
+  "sahne-led-ekran": {
+    title: "Stage LED Display | Concert & Events | ARLEDSCREEN",
+    description:
+      "Stage LED for concerts, theatre and events. Rental or purchase — ARLEDSCREEN Istanbul quote by size and duration.",
+    h1: "Stage LED display",
+    eyebrow: "Use case · Stage",
+    lead: "Stage and event LED — purchase walls or rental cabinets with install/strike support.",
+    intro: [
+      "The published Kadıköy Matiz Sahne record is a stage/outdoor example. Short runs often favour rental cabinets.",
+      "Purchase panel USD is published; rental stays quote-only (do not invent rental USD from ai-shopping.json).",
+      NAP_EN,
+    ],
+    bullets: ["Rent or buy decision", "Size and days quote", "Install + strike plan"],
+    imageAlts: ["Stage rental LED cabinet", "Event stage / booth LED"],
+    faqs: [
+      {
+        question: "Is stage rental priced in ai-shopping.json?",
+        answer:
+          "No. pricedPanels is purchase panel USD only. Stage rental is quote-only after size, days and site. Compare purchase via /en/led-ekran-fiyatlari/.",
+      },
+    ],
+  },
+  "belediye-led-ekran": {
+    title: "Municipal LED Display | City & Plaza Screens | ARLEDSCREEN",
+    description:
+      "Municipal plaza, info and event LED. ARLEDSCREEN Istanbul — published Manisa / Beylikdüzü records as context; quote after survey.",
+    h1: "Municipal LED display",
+    eyebrow: "Use case · Municipal",
+    lead: "Plaza, information and event LED for municipalities — permits and structure planned on survey.",
+    intro: [
+      "Published Manisa Büyükşehir and Beylikdüzü municipal records are public-scale examples. Permit steps vary by location.",
+      "Outdoor panel USD published; structure, freight and VAT are quote lines. No free shipping.",
+      NAP_EN,
+    ],
+    bullets: ["Public-space survey", "Permit-aware planning", "Install + service"],
+    imageAlts: ["Municipal outdoor LED screen", "Municipal event LED display"],
+    faqs: [
+      {
+        question: "Do you open a page for every city?",
+        answer:
+          "No. City pages exist only where published project records exist — no 81-city doorway spam. Turkey-wide service is planned from Istanbul HQ.",
+      },
+    ],
+  },
+};
+
+const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
+  "p1-25-led-ekran": {
+    title: "P1.25 LED Display | Fine-Pitch GOB | ARLEDSCREEN",
+    description:
+      "P1.25 fine-pitch GOB LED for close viewing. Published panel USD in ai-shopping.json (e.g. 95.88 USD). ARLEDSCREEN — Istanbul.",
+    h1: "P1.25 LED display",
+    eyebrow: "Pixel pitch · Fine",
+    lead: "Very close viewing — fine-pitch GOB panels for control rooms, luxury retail and lobbies.",
+    intro: [
+      "P1.25 suits control rooms, luxury stores and close lobbies. See the GOB model page for the technical summary.",
+      "Example: P1.25 GOB 95.88 USD per panel (priceValidUntil 2026-12-31). Full list: /en/led-ekran-fiyatlari/. No free shipping.",
+      NAP_EN,
+    ],
+    bullets: ["Close-view fine pitch", "Published GOB panel USD", "Survey before final size"],
+    imageAlts: ["Fine-pitch LED panel", "Fine-pitch surface technologies"],
+    faqs: [
+      {
+        question: "What is the P1.25 GOB panel USD?",
+        answer:
+          "95.88 USD per panel in ai-shopping.json pricedPanels (excl. VAT/shipping; no free shipping). Human hub: /en/led-ekran-fiyatlari/.",
+      },
+    ],
+  },
+  "p2-5-led-ekran": {
+    title: "P2.5 LED Display | Indoor & Outdoor | ARLEDSCREEN",
+    description:
+      "P2.5 LED for indoor and outdoor mid-distance projects. Published panel USD in pricedPanels. ARLEDSCREEN — Istanbul.",
+    h1: "P2.5 LED display",
+    eyebrow: "Pixel pitch · Mid",
+    lead: "One of the most used pitch bands for indoor and outdoor mid-distance projects.",
+    intro: [
+      "P2.5 balances resolution for stores, cafés, near-stage and mid-distance outdoor use. It appears often in published project records.",
+      "Indoor and outdoor P2.5 panel USD is published; install and structure are quote lines.",
+      NAP_EN,
+    ],
+    bullets: ["Indoor and outdoor options", "Published panel USD", "Pitch vs viewing distance"],
+    imageAlts: ["P2.5 indoor LED", "P2.5 outdoor cabinet"],
+    faqs: [
+      {
+        question: "Is P2.5 right for a store?",
+        answer:
+          "If shoppers stand near ~2.5 m, start around P2.5. Closer critical viewers may need finer pitch. Confirm with photos via /en/quote/.",
+      },
+    ],
+  },
+  "p4-led-ekran": {
+    title: "P4 LED Display | Façade & Outdoor | ARLEDSCREEN",
+    description:
+      "P4 LED for façades and open areas. Published outdoor panel USD; large Manisa outdoor record as scale context. ARLEDSCREEN — Istanbul.",
+    h1: "P4 LED display",
+    eyebrow: "Pixel pitch · Outdoor",
+    lead: "A common band for façades and open areas — front-service variants available.",
+    intro: [
+      "P4 is used on large outdoor jobs such as the published Manisa Büyükşehir 1344×128 cm Ultra 2026 record — a scale example, not a template.",
+      "Indoor/outdoor/front-service model pages hold the technical summary. Panel USD published; structure after survey.",
+      NAP_EN,
+    ],
+    bullets: ["Façade-scale outdoor", "Front-service option", "Survey for structure"],
+    imageAlts: ["P4 façade LED", "P4 front-service module"],
+    faqs: [
+      {
+        question: "P4 or P5 for a façade?",
+        answer:
+          "Depends on closest viewer and content. Larger surfaces farther away may step to P5. Share site photos via /en/quote/ — do not invent an installed m² rate.",
+      },
+    ],
+  },
+};
+
+function buildEnUsePage(slug: CommercialEnUseSlug): CommercialPage {
+  const tr = getCommercialPage(slug)!;
+  const en = EN_USE_OVERLAY[slug];
+  return {
+    ...tr,
+    title: en.title,
+    description: en.description,
+    h1: en.h1,
+    eyebrow: en.eyebrow,
+    lead: en.lead,
+    intro: en.intro,
+    bullets: en.bullets,
+    images: tr.images.map((img, i) => ({
+      src: img.src,
+      alt: en.imageAlts[i] ?? img.alt,
+    })),
+    relatedProducts: remapProductLinksToEn(tr.relatedProducts),
+    relatedUses: enUseLinks(slug),
+    relatedCities: tr.relatedCities,
+    relatedIntents: enIntentLinks(""),
+    faqs: en.faqs,
+    primaryCta: { href: "/en/quote/", label: "Request a quote" },
+    secondaryCta: { href: "/en/hesaplayici/", label: "Price calculator" },
+  };
+}
+
+function buildEnPitchPage(slug: CommercialEnPitchSlug): CommercialPage {
+  const tr = getCommercialPage(slug)!;
+  const en = EN_PITCH_OVERLAY[slug];
+  return {
+    ...tr,
+    title: en.title,
+    description: en.description,
+    h1: en.h1,
+    eyebrow: en.eyebrow,
+    lead: en.lead,
+    intro: en.intro,
+    bullets: en.bullets,
+    images: tr.images.map((img, i) => ({
+      src: img.src,
+      alt: en.imageAlts[i] ?? img.alt,
+    })),
+    relatedProducts: [
+      ...remapProductLinksToEn(tr.relatedProducts),
+      ...enPitchLinks(slug),
+    ],
+    relatedUses: enUseLinks(),
+    relatedCities: tr.relatedCities,
+    relatedIntents: enIntentLinks(""),
+    faqs: en.faqs,
+    primaryCta: { href: "/en/quote/", label: "Request a quote" },
+    secondaryCta: { href: "/en/hesaplayici/", label: "Price calculator" },
+  };
 }
 
 /** EN copy for the primary intent hub `/en/led-ekran/`. */
@@ -1160,11 +1524,19 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
   },
 };
 
-/** EN commercial intent page (slug whitelist). */
+/** EN commercial page (intent + high-invent use/pitch whitelist). */
 export function getCommercialPageEn(slug: string): CommercialPage | undefined {
   if (slug === "led-ekran") return getLedEkranPageEn();
-  if (!isCommercialEnIntentSlug(slug)) return undefined;
-  return COMMERCIAL_EN_BY_SLUG[slug]();
+  if ((COMMERCIAL_EN_INTENT_SLUGS as readonly string[]).includes(slug)) {
+    return COMMERCIAL_EN_BY_SLUG[slug as CommercialEnIntentSlug]();
+  }
+  if ((COMMERCIAL_EN_USE_SLUGS as readonly string[]).includes(slug)) {
+    return buildEnUsePage(slug as CommercialEnUseSlug);
+  }
+  if ((COMMERCIAL_EN_PITCH_SLUGS as readonly string[]).includes(slug)) {
+    return buildEnPitchPage(slug as CommercialEnPitchSlug);
+  }
+  return undefined;
 }
 
 export function commercialPagesByCluster(cluster: CommercialCluster): CommercialPage[] {

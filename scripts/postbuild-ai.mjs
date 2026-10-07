@@ -811,6 +811,16 @@ rental-en: ${SITE_URL}/en/led-ekran-kiralama/
 install-en: ${SITE_URL}/en/led-ekran-montaj/
 manufacturer-en: ${SITE_URL}/en/led-ekran-ureticisi/
 service-en: ${SITE_URL}/en/led-ekran-servis/
+services-hub-en: ${SITE_URL}/en/hizmetler/
+use-store-en: ${SITE_URL}/en/magaza-led-ekran/
+use-facade-en: ${SITE_URL}/en/cephe-led-ekran/
+use-mall-en: ${SITE_URL}/en/avm-led-ekran/
+use-hotel-en: ${SITE_URL}/en/otel-led-ekran/
+use-stage-en: ${SITE_URL}/en/sahne-led-ekran/
+use-municipal-en: ${SITE_URL}/en/belediye-led-ekran/
+pitch-p125-en: ${SITE_URL}/en/p1-25-led-ekran/
+pitch-p25-en: ${SITE_URL}/en/p2-5-led-ekran/
+pitch-p4-en: ${SITE_URL}/en/p4-led-ekran/
 products-en: ${SITE_URL}/en/products/
 products-gob-en: ${SITE_URL}/en/products/gob-led-ekran/
 products-indoor-en: ${SITE_URL}/en/products/ic-mekan-led-ekran/

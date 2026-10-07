@@ -413,6 +413,32 @@ if (fs.existsSync(outDir)) {
     "en/led-ekran-kiralama/index.html",
     "en/led-ekran-servis/index.html",
   ];
+  // Use/pitch/services EN hubs must exist (no ≥12 Offer requirement — Dataset/FAQ only).
+  const enLeanHubs = [
+    "en/hizmetler/index.html",
+    "en/magaza-led-ekran/index.html",
+    "en/avm-led-ekran/index.html",
+    "en/cephe-led-ekran/index.html",
+    "en/billboard-led-ekran/index.html",
+    "en/otel-led-ekran/index.html",
+    "en/sahne-led-ekran/index.html",
+    "en/belediye-led-ekran/index.html",
+    "en/p1-25-led-ekran/index.html",
+    "en/p2-5-led-ekran/index.html",
+    "en/p4-led-ekran/index.html",
+  ];
+  for (const rel of enLeanHubs) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ EN lean hub missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    if (!html.includes("ARLEDSCREEN") || html.includes("This page could not be found")) {
+      console.error(`❌ ${rel} must be a real EN page (not 404)`);
+      process.exit(1);
+    }
+  }
   for (const rel of offerHubs) {
     const fp = path.join(outDir, rel);
     if (!fs.existsSync(fp)) {
@@ -488,6 +514,9 @@ if (fs.existsSync(outDir)) {
     "en/rehber/gob-vs-smd/index.html",
     "en/rehber/kiralik-mi-satin-alma/index.html",
     "en/rehber/led-tabela-mi-led-ekran-mi/index.html",
+    "en/hizmetler/index.html",
+    "en/magaza-led-ekran/index.html",
+    "en/p2-5-led-ekran/index.html",
     "tr/led-ekran-fiyatlari/index.html",
     "en/led-ekran-fiyatlari/index.html",
     "tr/nxtionstar/index.html",
@@ -534,6 +563,10 @@ if (fs.existsSync(outDir)) {
     "/en/led-ekran/",
     "/en/led-ekran-satisi/",
     "/en/led-ekran-kiralama/",
+    "/en/hizmetler/",
+    "/en/magaza-led-ekran/",
+    "/en/cephe-led-ekran/",
+    "/en/p2-5-led-ekran/",
     "/en/products/",
     "/en/products/gob-led-ekran/",
     "/en/products/ic-mekan-led-ekran/",

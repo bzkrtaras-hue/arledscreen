@@ -20,8 +20,9 @@ export function LocaleSelect({
   const dict = getDictionary(locale);
 
   // Turkish-only routes (generateStaticParams returns only { locale: "tr" }).
+  // Note: /hizmetler/, high-invent use (magaza/avm/cephe/billboard/otel/sahne/belediye)
+  // and pitch (p1-25/p2-5/p4) now have EN lean counterparts — omit them here.
   const TR_ONLY = [
-    /^\/tr\/hizmetler\//,
     /^\/tr\/bolgeler\//,
     /^\/tr\/projelerimiz\//,
     /^\/tr\/galeri\//,
@@ -30,10 +31,9 @@ export function LocaleSelect({
     /^\/tr\/about\/aras-bozkurt\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,
-    // Intent hubs (led-ekran*, fiyat) have EN counterparts — pitch/use commercial stay TR-only.
-    /^\/tr\/(p1-25|p1-86|p2-5|p2-9|p3-07|p4|p5)-led-ekran\//,
-    /^\/tr\/(magaza|avm|cephe|billboard|vitrin|otel|restoran|dugun-salonu|konferans-salonu|sahne|fuar|belediye|fabrika|spor-salonu|stadyum|totem)-led-ekran\//,
-    // Commercial rehber guides above now have EN lean landings; other rehber articles stay TR-only via fallback.
+    // Remaining pitch/use commercial hubs still TR-only (not in COMMERCIAL_EN_*).
+    /^\/tr\/(p1-86|p2-9|p3-07|p5)-led-ekran\//,
+    /^\/tr\/(vitrin|restoran|dugun-salonu|konferans-salonu|fuar|fabrika|spor-salonu|stadyum|totem)-led-ekran\//,
   ];
   const switchLocaleHref = (next: Locale) => {
     const p = pathname.endsWith("/") ? pathname : `${pathname}/`;

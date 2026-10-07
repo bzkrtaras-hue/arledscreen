@@ -5,7 +5,7 @@ import {
   COMMERCIAL_SLUGS,
   getCommercialPage,
   getCommercialPageEn,
-  isCommercialEnIntentSlug,
+  isCommercialEnSlug,
 } from "@/content/commercial-pages";
 import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n";
@@ -18,7 +18,7 @@ export function generateStaticParams() {
   for (const slug of COMMERCIAL_SLUGS) {
     if (slug === "led-ekran") continue;
     params.push({ locale: "tr", slug });
-    if (isCommercialEnIntentSlug(slug)) {
+    if (isCommercialEnSlug(slug)) {
       params.push({ locale: "en", slug });
     }
   }
@@ -36,7 +36,7 @@ export async function generateMetadata({
   const page =
     locale === "en" ? getCommercialPageEn(slug) : getCommercialPage(slug);
   if (!page) return {};
-  if (locale === "en" || isCommercialEnIntentSlug(slug)) {
+  if (locale === "en" || isCommercialEnSlug(slug)) {
     return buildPageMetadata({
       locale: locale as Locale,
       path: `/${page.slug}/`,
@@ -60,7 +60,7 @@ export default async function CommercialSlugPage({
   const { locale: raw, slug } = await params;
   if (raw !== "tr" && raw !== "en") notFound();
   const locale = raw as "tr" | "en";
-  if (locale === "en" && !isCommercialEnIntentSlug(slug)) notFound();
+  if (locale === "en" && !isCommercialEnSlug(slug)) notFound();
   const page =
     locale === "en" ? getCommercialPageEn(slug) : getCommercialPage(slug);
   if (!page) notFound();
