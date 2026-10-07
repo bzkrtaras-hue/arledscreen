@@ -127,6 +127,13 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/entity-profiles.json",
       "name": "ARLEDSCREEN Point C entity profiles"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/#website",
+      "encodingFormat": "text/html",
+      "contentUrl": "https://arledscreen.com",
+      "name": "ARLEDSCREEN WebSite"
     }
   ],
   "brand": {
@@ -268,7 +275,7 @@
   "fingerprints": {
     "aiShoppingSha256": "6697ef8a5eb71c52040163b7744050053d6c46712970e295329a550fe85ab48a",
     "catalogSha256": "a92062ca2c5fe45881e44f98eaaae0d73d9b7f29f656e8511b9a5c4456f9e112",
-    "merchantTsvSha256": "fa6fef4a1fd235e03859c669191e9bbae78338e08eae7d71f3f22de68dc19f04",
+    "merchantTsvSha256": "ffcc7cbfa3cbcac07432e13c9dea9aa6e1352fe83028b98535d9d1f5122df7e0",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
   "discovery": {

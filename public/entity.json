@@ -153,6 +153,12 @@
         "@id": "https://arledscreen.com/#website",
         "name": "ARLEDSCREEN",
         "url": "https://arledscreen.com"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://arledscreen.com/#website",
+        "name": "ARLEDSCREEN",
+        "url": "https://arledscreen.com"
       }
     ],
     "makesOffer": {
@@ -2153,6 +2159,12 @@
         "@id": "https://arledscreen.com/#website",
         "name": "ARLEDSCREEN",
         "url": "https://arledscreen.com"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://arledscreen.com/#website",
+        "name": "ARLEDSCREEN",
+        "url": "https://arledscreen.com"
       }
     ],
     "makesOffer": {
@@ -3164,6 +3176,12 @@
       "@id": "https://arledscreen.com/.well-known/brand.json",
       "name": "NXTIONSTAR Brand invent alias",
       "url": "https://arledscreen.com/.well-known/brand.json"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arledscreen.com/#website",
+      "name": "ARLEDSCREEN",
+      "url": "https://arledscreen.com"
     },
     {
       "@type": "WebSite",

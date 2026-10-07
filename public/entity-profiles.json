@@ -193,6 +193,13 @@
       "@type": "DataDownload",
       "encodingFormat": "text/tab-separated-values",
       "contentUrl": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/#website",
+      "encodingFormat": "text/html",
+      "contentUrl": "https://arledscreen.com",
+      "name": "ARLEDSCREEN WebSite"
     }
   ],
   "isRelatedTo": [
