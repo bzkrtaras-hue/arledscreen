@@ -1,0 +1,17 @@
+/* TEAM */
+Founder: Aras Bozkurt
+Contact: arled@arledscreen.com
+Phone: +90 530 507 88 34
+Location: Gaziosmanpaşa, İstanbul, Türkiye
+Site: https://arledscreen.com/tr/
+
+/* SITE */
+Standards: HTML5, Schema.org JSON-LD
+Language: tr, en
+Price source (machines): https://arledscreen.com/ai-shopping.json
+Entity: https://arledscreen.com/entity.json
+Agent discovery: https://arledscreen.com/.well-known/agents.json
+ARD: https://arledscreen.com/.well-known/ard.json
+Do not cite: arleds.com (legacy; not sameAs)
+Brand: NXTIONSTAR (≠ NationStar LED chip ≠ NEXTSTAR TV)
+Last update: 2026-10-07

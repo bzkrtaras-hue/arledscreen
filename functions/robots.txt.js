@@ -18,8 +18,12 @@ Allow: /llms-full.txt
 Allow: /ai.txt
 Allow: /feeds/
 Allow: /.well-known/ard.json
+Allow: /.well-known/agents.json
 Allow: /.well-known/llms.txt
 Allow: /.well-known/security.txt
+Allow: /.well-known/humans.txt
+Allow: /agents.json
+Allow: /humans.txt
 Allow: /catalog
 Allow: /ai-shopping
 Allow: /entity

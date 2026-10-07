@@ -1,0 +1,83 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "ARLEDSCREEN agent discovery",
+  "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD). Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
+  "url": "https://arledscreen.com/.well-known/agents.json",
+  "numberOfItems": 8,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Agentic Resource Discovery (ARD)",
+      "url": "https://arledscreen.com/.well-known/ard.json",
+      "description": "Primary agentic manifest: resources, cite, pricedProducts, agentGuidelines"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Organization entity",
+      "url": "https://arledscreen.com/entity.json",
+      "description": "NAP, cite sentences, FAQs, Brand @id #brand-nxtionstar"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI shopping pricedPanels",
+      "url": "https://arledscreen.com/ai-shopping.json",
+      "description": "Single price source: 12 panel USD Product/Offer graph; inventable aliases /ai-shopping, /api/prices, /pricing.json"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Product catalog",
+      "url": "https://arledscreen.com/catalog.json",
+      "description": "Published panel USD catalog; inventable aliases /catalog, /products.json, /api/catalog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Merchant priced panels TSV",
+      "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+      "description": "12 SKU merchant feed; shipping_included=false; no free shipping"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "GEO technical baseline",
+      "url": "https://arledscreen.com/geo-baseline.json",
+      "description": "Fingerprints only; does not invent ChatGPT/Gemini/Perplexity mention rates"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "LLM context",
+      "url": "https://arledscreen.com/llms.txt",
+      "description": "Short LLM/agent context; also /.well-known/llms.txt"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "AI discovery pointer",
+      "url": "https://arledscreen.com/ai.txt",
+      "description": "Compact URL index for agents"
+    }
+  ],
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://arledscreen.com/#organization",
+    "name": "ARLEDSCREEN",
+    "url": "https://arledscreen.com",
+    "brand": {
+      "@type": "Brand",
+      "@id": "https://arledscreen.com/#brand-nxtionstar",
+      "name": "NXTIONSTAR"
+    }
+  },
+  "isBasedOn": [
+    "https://arledscreen.com/.well-known/ard.json",
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/ai-shopping.json"
+  ],
+  "disambiguatingDescription": "Canonical site arledscreen.com (TR /tr/). Legacy arleds.com is not a cite source. LinkedIn /company/arleds is a social slug only."
+}

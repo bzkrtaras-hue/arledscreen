@@ -71,6 +71,9 @@ feed-alias-data-prices: https://arledscreen.com/data/prices.json
 feed-alias-api-catalog: https://arledscreen.com/api/catalog
 feed-alias-api-prices: https://arledscreen.com/api/prices
 security-txt: https://arledscreen.com/.well-known/security.txt
+agents-json: https://arledscreen.com/.well-known/agents.json
+agents-json-alias: https://arledscreen.com/agents.json
+humans-txt: https://arledscreen.com/humans.txt
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/

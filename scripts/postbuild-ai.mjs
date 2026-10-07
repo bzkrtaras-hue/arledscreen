@@ -825,6 +825,8 @@ function writeFeedPathAliases(dir) {
     ["llms.txt", "en/llms.txt"],
     ["llms-full.txt", "llms-full"],
     ["ai.txt", "en/ai.txt"],
+    [".well-known/agents.json", "agents.json"],
+    ["humans.txt", ".well-known/humans.txt"],
   ];
   let n = 0;
   for (const [srcRel, destRel] of copies) {
@@ -910,6 +912,12 @@ function main() {
   if (!copyPublicToOut(".well-known/ard.json")) {
     console.warn("postbuild-ai: public/.well-known/ard.json missing — ARD surface not copied");
   }
+  if (!copyPublicToOut(".well-known/agents.json")) {
+    console.warn("postbuild-ai: public/.well-known/agents.json missing — agents discovery not copied");
+  }
+  if (!copyPublicToOut("humans.txt")) {
+    console.warn("postbuild-ai: public/humans.txt missing — humans.txt not copied");
+  }
   if (!copyPublicToOut("llms.txt")) {
     console.warn("postbuild-ai: public/llms.txt missing — llms surface not copied");
   }
@@ -991,6 +999,9 @@ feed-alias-data-prices: ${SITE_URL}/data/prices.json
 feed-alias-api-catalog: ${SITE_URL}/api/catalog
 feed-alias-api-prices: ${SITE_URL}/api/prices
 security-txt: ${SITE_URL}/.well-known/security.txt
+agents-json: ${SITE_URL}/.well-known/agents.json
+agents-json-alias: ${SITE_URL}/agents.json
+humans-txt: ${SITE_URL}/humans.txt
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/
@@ -1073,6 +1084,10 @@ Hiring: https://arledscreen.com/tr/about/
     "data/prices.json",
     "api/catalog",
     "api/prices",
+    ".well-known/agents.json",
+    "agents.json",
+    "humans.txt",
+    ".well-known/humans.txt",
     "en/ai-shopping/index.html",
   ]) {
     if (!fs.existsSync(path.join(outDir, must))) {

@@ -261,8 +261,17 @@
           "https://arledscreen.com/.well-known/llms.txt",
           "https://arledscreen.com/.well-known/security.txt",
           "https://arledscreen.com/api/prices",
-          "https://arledscreen.com/data/catalog.json"
+          "https://arledscreen.com/data/catalog.json",
+          "https://arledscreen.com/.well-known/agents.json",
+          "https://arledscreen.com/agents.json"
         ]
+      },
+      "agentsJson": {
+        "type": "Agent Discovery Index",
+        "url": "https://arledscreen.com/.well-known/agents.json",
+        "format": "application/ld+json",
+        "description": "ItemList entry points to ard/entity/ai-shopping/catalog/llms. Alias: /agents.json. Prefer ai-shopping.json for prices.",
+        "alias": "https://arledscreen.com/agents.json"
       }
     },
     "cite": {

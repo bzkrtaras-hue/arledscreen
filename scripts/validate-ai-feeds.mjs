@@ -417,6 +417,29 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/llms.txt must cite inventable feed path aliases");
     process.exit(1);
   }
+  if (!llmsLive.includes("agents.json") || !llmsLive.includes("humans.txt")) {
+    console.error("❌ out/llms.txt must cite agents.json + humans.txt");
+    process.exit(1);
+  }
+  for (const rel of [".well-known/agents.json", "agents.json", "humans.txt", ".well-known/humans.txt"]) {
+    if (!fs.existsSync(path.join(outDir, rel))) {
+      console.error(`❌ Missing agent discovery surface in out/: ${rel}`);
+      process.exit(1);
+    }
+  }
+  const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 6) {
+    console.error("❌ agents.json must list ≥6 discovery items");
+    process.exit(1);
+  }
+  if (!String(agents.description || "").includes("ai-shopping.json")) {
+    console.error("❌ agents.json must point agents at ai-shopping.json price source");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, "agents.json")).equals(fs.readFileSync(path.join(outDir, ".well-known/agents.json")))) {
+    console.error("❌ /agents.json must match /.well-known/agents.json");
+    process.exit(1);
+  }
   // Byte-identical to canonical where applicable.
   const canonCatalog = fs.readFileSync(path.join(outDir, "catalog.json"));
   if (!fs.readFileSync(path.join(outDir, "catalog")).equals(canonCatalog)) {
