@@ -868,6 +868,12 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/point-c.txt",
       "name": "ARLEDSCREEN Point C paste packs"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity-profiles.json",
+      "name": "ARLEDSCREEN Point C entity profiles"
     }
   ],
   "subjectOf": [
@@ -922,6 +928,12 @@
       "url": "https://arledscreen.com/point-c.txt",
       "name": "ARLEDSCREEN Point C paste packs",
       "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/entity-profiles.json",
+      "url": "https://arledscreen.com/entity-profiles.json",
+      "name": "ARLEDSCREEN Point C entity profiles"
     }
   ]
 }

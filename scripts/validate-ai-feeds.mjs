@@ -1699,11 +1699,13 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("offer.json") ||
     !headersLive.includes("ai.txt") ||
     !headersLive.includes("brand.json") ||
+    !headersLive.includes("/.well-known/brand.json") ||
+    !headersLive.includes("/.well-known/entity.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt+prices.rss+merchant TSV+point-c");
+    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+well-known brand/entity+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt+prices.rss+merchant TSV+point-c");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -2123,6 +2125,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json subjectOf must include /brand.json Brand document (reverse invent)");
     process.exit(1);
   }
+  if (!subjectUrls.some((u) => u.includes("/entity-profiles.json"))) {
+    console.error("❌ entity.json subjectOf must include /entity-profiles.json (Point C reverse invent)");
+    process.exit(1);
+  }
   {
     const brandLive = JSON.parse(fs.readFileSync(path.join(outDir, "brand.json"), "utf8"));
     const brandSubject = JSON.stringify(brandLive.subjectOf || []);
@@ -2133,6 +2139,19 @@ if (fs.existsSync(outDir)) {
     }
     if (!brandSubject.includes("/entity.json") || !brandDist.includes("/entity.json")) {
       console.error("❌ brand.json subjectOf + distribution must reverse-join /entity.json");
+      process.exit(1);
+    }
+    if (!brandSubject.includes("/entity-profiles.json") || !brandDist.includes("/entity-profiles.json")) {
+      console.error("❌ brand.json subjectOf + distribution must reverse-join /entity-profiles.json");
+      process.exit(1);
+    }
+  }
+  {
+    const catalogLive = JSON.parse(fs.readFileSync(path.join(outDir, "catalog.json"), "utf8"));
+    const catDist = JSON.stringify(catalogLive.distribution || []);
+    const catRel = JSON.stringify(catalogLive.isRelatedTo || []);
+    if (!catDist.includes("/entity-profiles.json") || !catRel.includes("/entity-profiles.json")) {
+      console.error("❌ catalog.json distribution + isRelatedTo must reverse-join /entity-profiles.json");
       process.exit(1);
     }
   }

@@ -381,6 +381,12 @@ function buildCatalog() {
         contentUrl: `${SITE_URL}/point-c.txt`,
         name: "ARLEDSCREEN Point C paste packs",
       },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity-profiles.json`,
+        name: "ARLEDSCREEN Point C entity profiles",
+      },
     ],
     isRelatedTo: [
       {
@@ -426,6 +432,12 @@ function buildCatalog() {
         url: `${SITE_URL}/point-c.txt`,
         name: "ARLEDSCREEN Point C paste packs",
         encodingFormat: "text/plain",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/entity-profiles.json`,
+        url: `${SITE_URL}/entity-profiles.json`,
+        name: "ARLEDSCREEN Point C entity profiles",
       },
     ],
     mainEntity: {
@@ -1432,10 +1444,17 @@ function enrichEntityDocument(entity) {
     url: `${SITE_URL}/entity.json`,
     sameAs: [`${SITE_URL}/organization.json`],
   };
+  const entityProfilesEntry = {
+    "@type": "Dataset",
+    "@id": `${SITE_URL}/entity-profiles.json`,
+    name: "ARLEDSCREEN Point C entity profiles",
+    url: `${SITE_URL}/entity-profiles.json`,
+  };
   let subjectOf = Array.isArray(entity.subjectOf) ? [...entity.subjectOf] : [];
   subjectOf = ensureSubjectNeedle(subjectOf, "/point-c.txt", pointCEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/brand.json", brandDocEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/prices.json", pricesAliasEntry);
+  subjectOf = ensureSubjectNeedle(subjectOf, "/entity-profiles.json", entityProfilesEntry);
   entity.subjectOf = subjectOf;
   // Nested Brand / LocalBusiness subjectOf invent parity with top-level (agents that walk brand|location).
   if (entity.brand && typeof entity.brand === "object") {
@@ -1443,6 +1462,7 @@ function enrichEntityDocument(entity) {
     bs = ensureSubjectNeedle(bs, "/prices.json", pricesAliasEntry);
     bs = ensureSubjectNeedle(bs, "/point-c.txt", pointCEntry);
     bs = ensureSubjectNeedle(bs, "/entity.json", entityOrgEntry);
+    bs = ensureSubjectNeedle(bs, "/entity-profiles.json", entityProfilesEntry);
     entity.brand.subjectOf = bs;
   }
   if (entity.location && typeof entity.location === "object") {
@@ -1450,6 +1470,7 @@ function enrichEntityDocument(entity) {
     ls = ensureSubjectNeedle(ls, "/prices.json", pricesAliasEntry);
     ls = ensureSubjectNeedle(ls, "/point-c.txt", pointCEntry);
     ls = ensureSubjectNeedle(ls, "/brand.json", brandDocEntry);
+    ls = ensureSubjectNeedle(ls, "/entity-profiles.json", entityProfilesEntry);
     entity.location.subjectOf = ls;
   }
   return entity;
@@ -2475,6 +2496,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         contentUrl: `${SITE_URL}/point-c.txt`,
         name: "ARLEDSCREEN Point C paste packs",
       },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity-profiles.json`,
+        name: "ARLEDSCREEN Point C entity profiles",
+      },
     ],
     subjectOf: [
       {
@@ -2526,6 +2553,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         url: `${SITE_URL}/point-c.txt`,
         name: "ARLEDSCREEN Point C paste packs",
         encodingFormat: "text/plain",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/entity-profiles.json`,
+        url: `${SITE_URL}/entity-profiles.json`,
+        name: "ARLEDSCREEN Point C entity profiles",
       },
     ],
   };

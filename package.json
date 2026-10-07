@@ -14,6 +14,7 @@
     "point-c:en": "node scripts/print-point-c-packs.mjs --en",
     "point-c:next": "node scripts/print-point-c-packs.mjs --next",
     "point-c:ack": "node scripts/print-point-c-packs.mjs --ack",
+    "geo:ack": "node scripts/print-point-c-packs.mjs --ack",
     "point-c:hostinger-eml": "node scripts/print-point-c-packs.mjs --eml",
     "verify:arleds-301": "node scripts/verify-arleds-301.mjs",
     "tur1a:list": "node scripts/geo-blind-log.mjs --list",

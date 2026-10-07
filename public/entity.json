@@ -121,6 +121,12 @@
         "sameAs": [
           "https://arledscreen.com/organization.json"
         ]
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/entity-profiles.json",
+        "name": "ARLEDSCREEN Point C entity profiles",
+        "url": "https://arledscreen.com/entity-profiles.json"
       }
     ],
     "makesOffer": {
@@ -2082,6 +2088,12 @@
         "@id": "https://arledscreen.com/#brand-nxtionstar",
         "name": "NXTIONSTAR",
         "url": "https://arledscreen.com/brand.json"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/entity-profiles.json",
+        "name": "ARLEDSCREEN Point C entity profiles",
+        "url": "https://arledscreen.com/entity-profiles.json"
       }
     ],
     "makesOffer": {
@@ -3081,6 +3093,12 @@
       "@id": "https://arledscreen.com/#brand-nxtionstar",
       "name": "NXTIONSTAR",
       "url": "https://arledscreen.com/brand.json"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/entity-profiles.json",
+      "name": "ARLEDSCREEN Point C entity profiles",
+      "url": "https://arledscreen.com/entity-profiles.json"
     }
   ],
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",

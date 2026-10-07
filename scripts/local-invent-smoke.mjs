@@ -314,10 +314,11 @@ if (
 
 if (
   JSON.stringify(ent?.subjectOf || []).includes("/point-c.txt") &&
-  JSON.stringify(ent?.subjectOf || []).includes("/brand.json")
+  JSON.stringify(ent?.subjectOf || []).includes("/brand.json") &&
+  JSON.stringify(ent?.subjectOf || []).includes("/entity-profiles.json")
 ) {
-  ok("entity.subjectOf → point-c + brand.json");
-} else fail("entity.subjectOf → point-c + brand.json");
+  ok("entity.subjectOf → point-c + brand.json + entity-profiles");
+} else fail("entity.subjectOf → point-c + brand.json + entity-profiles");
 
 {
   const bs = JSON.stringify(ent?.brand?.subjectOf || []);
@@ -326,9 +327,11 @@ if (
     bs.includes("/prices.json") &&
     bs.includes("/point-c.txt") &&
     bs.includes("/entity.json") &&
+    bs.includes("/entity-profiles.json") &&
     ls.includes("/prices.json") &&
     ls.includes("/point-c.txt") &&
-    ls.includes("/brand.json")
+    ls.includes("/brand.json") &&
+    ls.includes("/entity-profiles.json")
   ) {
     ok("entity nested brand/location subjectOf invent parity");
   } else fail("entity nested brand/location subjectOf invent parity");
@@ -340,26 +343,29 @@ if (
   JSON.stringify(brand?.subjectOf || []).includes("/entity.json") &&
   JSON.stringify(brand?.distribution || []).includes("/entity.json") &&
   JSON.stringify(brand?.distribution || []).includes("/organization.json") &&
-  JSON.stringify(brand?.distribution || []).includes("/prices.json")
+  JSON.stringify(brand?.distribution || []).includes("/prices.json") &&
+  JSON.stringify(brand?.subjectOf || []).includes("/entity-profiles.json") &&
+  JSON.stringify(brand?.distribution || []).includes("/entity-profiles.json")
 ) {
-  ok("brand.subjectOf+distribution → point-c + entity/organization + prices");
-} else fail("brand.subjectOf+distribution → point-c + entity/organization + prices");
+  ok("brand.subjectOf+distribution → point-c + entity/organization + prices + profiles");
+} else fail("brand.subjectOf+distribution → point-c + entity/organization + prices + profiles");
 
 {
   const related = JSON.stringify(cat?.isRelatedTo || []);
   const dist = JSON.stringify(cat?.distribution || []);
-  if (related.includes("/entity.json") && related.includes("/brand.json")) {
-    ok("catalog isRelatedTo entity + brand");
-  } else fail("catalog isRelatedTo entity + brand");
+  if (related.includes("/entity.json") && related.includes("/brand.json") && related.includes("/entity-profiles.json")) {
+    ok("catalog isRelatedTo entity + brand + entity-profiles");
+  } else fail("catalog isRelatedTo entity + brand + entity-profiles");
   if (
     dist.includes("/ai-shopping.json") &&
     dist.includes("/prices.json") &&
     dist.includes("/brand.json") &&
     dist.includes("/entity.json") &&
-    dist.includes("/point-c.txt")
+    dist.includes("/point-c.txt") &&
+    dist.includes("/entity-profiles.json")
   ) {
-    ok("catalog distribution invent → ai-shopping/prices/brand/entity/point-c");
-  } else fail("catalog distribution invent → ai-shopping/prices/brand/entity/point-c");
+    ok("catalog distribution invent → ai-shopping/prices/brand/entity/point-c/profiles");
+  } else fail("catalog distribution invent → ai-shopping/prices/brand/entity/point-c/profiles");
 }
 
 {
