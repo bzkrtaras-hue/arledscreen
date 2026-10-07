@@ -395,6 +395,7 @@ if (fs.existsSync(outDir)) {
     "en/index.html",
     "tr/products/index.html",
     "tr/nxtionstar/index.html",
+    "en/nxtionstar/index.html",
     "tr/led-ekran/index.html",
     "tr/hesaplayici/index.html",
     "en/hesaplayici/index.html",
@@ -467,6 +468,7 @@ if (fs.existsSync(outDir)) {
     "tr/led-ekran/index.html",
     "tr/led-ekran-fiyatlari/index.html",
     "tr/nxtionstar/index.html",
+    "en/nxtionstar/index.html",
   ];
   for (const rel of faqArledsPages) {
     const fp = path.join(outDir, rel);
@@ -498,7 +500,14 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   const indexNowScript = fs.readFileSync(path.join(repoRoot, "scripts/submit-indexnow.mjs"), "utf8");
-  for (const must of ["/tr/about/", "/en/about/", "/tr/about/aras-bozkurt/", "/tr/sss/", "/ai.txt"]) {
+  for (const must of [
+    "/tr/about/",
+    "/en/about/",
+    "/tr/about/aras-bozkurt/",
+    "/tr/sss/",
+    "/ai.txt",
+    "/en/nxtionstar/",
+  ]) {
     if (!indexNowScript.includes(must)) {
       console.error(`❌ submit-indexnow.mjs must include ${must}`);
       process.exit(1);

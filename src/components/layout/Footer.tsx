@@ -51,6 +51,10 @@ export function Footer({ locale }: FooterProps) {
         { href: `/${locale}/about/`, label: dict.nav.about },
         { href: `/${locale}/hesaplayici/`, label: dict.nav.priceCalculator },
         { href: `/${locale}/quote/`, label: dict.nav.quote },
+        {
+          href: locale === "en" ? "/en/nxtionstar/" : "/tr/nxtionstar/",
+          label: "NXTIONSTAR",
+        },
       ];
 
   const columns = tr

@@ -27,7 +27,6 @@ export function LocaleSelect({
     /^\/tr\/galeri\//,
     /^\/tr\/products\/[^/]+\//,
     /^\/tr\/sss\//,
-    /^\/tr\/nxtionstar\//,
     /^\/tr\/about\/aras-bozkurt\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,

@@ -39,6 +39,7 @@ const URLS = [
   `https://${HOST}/tr/quote/`,
   `https://${HOST}/en/quote/`,
   `https://${HOST}/tr/nxtionstar/`,
+  `https://${HOST}/en/nxtionstar/`,
   `https://${HOST}/tr/sss/`,
   `https://${HOST}/tr/about/`,
   `https://${HOST}/en/about/`,

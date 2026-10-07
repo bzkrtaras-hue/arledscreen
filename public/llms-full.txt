@@ -193,6 +193,7 @@ NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktas�
 ## 8. Makinece işaretçiler (GEO)
 
 - Brand `@id`: https://arledscreen.com/#brand-nxtionstar
+- Brand pages: https://arledscreen.com/tr/nxtionstar/ · https://arledscreen.com/en/nxtionstar/ (NXTIONSTAR ≠ NationStar ≠ NEXTSTAR; not arleds.com)
 - entity.json / ai-shopping.json / catalog.json / feeds/merchant-priced-panels.tsv (`brand_id` sütunu = Brand `@id`)
 - geo-baseline.json: https://arledscreen.com/geo-baseline.json (12 SKU + fingerprints; AI anılma % uydurma yok; Point C / Tur1a sahip kapılı)
 - entity-profiles.json → packs (TR) + packsEn (EN cite-only for GBP/directories/LinkedIn)

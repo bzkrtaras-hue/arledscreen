@@ -135,7 +135,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projelerimiz/",
     "/galeri/",
     "/sss/",
-    "/nxtionstar/",
     "/about/aras-bozkurt/",
     "/rehber/piksel-araligi-secimi/",
     "/rehber/led-tabela-mi-led-ekran-mi/",
@@ -147,6 +146,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
+    });
+  }
+  // Brand hub: TR + EN (English AI agents previously hit /en/nxtionstar/ 404).
+  for (const locale of ["tr", "en"] as const) {
+    entries.push({
+      url: absoluteUrl(`/${locale}/nxtionstar/`),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
     });
   }
   // Blog kept as secondary trust content — not the commercial SEO cluster.
