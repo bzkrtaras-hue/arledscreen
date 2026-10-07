@@ -5,7 +5,7 @@ import { SEO_GUIDE_SLUGS } from "@/content/seo-guides";
 import { PRODUCT_GROUPS } from "@/content/categories";
 import { LED_MODELS, modelPath } from "@/content/models";
 import { SERVICE_REGIONS } from "@/content/service-regions";
-import { COMMERCIAL_PAGES } from "@/content/commercial-pages";
+import { COMMERCIAL_EN_INTENT_SLUGS, COMMERCIAL_PAGES } from "@/content/commercial-pages";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 
 export const dynamic = "force-static";
@@ -159,6 +159,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly",
     priority: 0.95,
   });
+  // Remaining commercial intent hubs (sales/rental/install/…) — EN agents previously 404'd.
+  for (const slug of COMMERCIAL_EN_INTENT_SLUGS) {
+    entries.push({
+      url: absoluteUrl(`/en/${slug}/`),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.93,
+    });
+  }
   // Blog kept as secondary trust content — not the commercial SEO cluster.
   entries.push({
     url: absoluteUrl("/tr/blog/"),

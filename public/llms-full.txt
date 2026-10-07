@@ -46,6 +46,7 @@ Karıştırılmaması gerekenler:
 - Fiyat kanonik: https://arledscreen.com/tr/led-ekran-fiyatlari/ · EN: https://arledscreen.com/en/led-ekran-fiyatlari/
 - Hesaplayıcı: https://fiyat.arledscreen.com/
 - Ticari hub: https://arledscreen.com/tr/led-ekran/ · EN: https://arledscreen.com/en/led-ekran/
+- EN intent siblings: /en/led-ekran-satisi/ · /en/led-ekran-ureticisi/ · /en/led-ekran-montaj/ · /en/led-ekran-kiralama/ · /en/led-ekran-servis/
 - Projeler / case study: https://arledscreen.com/tr/projelerimiz/
 
 ## 3. Ürün grupları

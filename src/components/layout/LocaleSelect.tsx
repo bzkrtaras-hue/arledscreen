@@ -29,8 +29,7 @@ export function LocaleSelect({
     /^\/tr\/about\/aras-bozkurt\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,
-    // led-ekran + led-ekran-fiyatlari have EN counterparts — keep other commercial hubs TR-only.
-    /^\/tr\/(led-ekran-satisi|led-ekran-ureticisi|led-ekran-montaj|led-ekran-kiralama|led-ekran-servis)\//,
+    // Intent hubs (led-ekran*, fiyat) have EN counterparts — pitch/use commercial stay TR-only.
     /^\/tr\/(p1-25|p1-86|p2-5|p2-9|p3-07|p4|p5)-led-ekran\//,
     /^\/tr\/(magaza|avm|cephe|billboard|vitrin|otel|restoran|dugun-salonu|konferans-salonu|sahne|fuar|belediye|fabrika|spor-salonu|stadyum|totem)-led-ekran\//,
     /^\/tr\/rehber\/(piksel-araligi-secimi|led-tabela-mi-led-ekran-mi|kiralik-mi-satin-alma|gob-vs-smd)\//,

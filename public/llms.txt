@@ -63,12 +63,12 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 ### Ticari intent sayfaları
 
 - [LED ekran](https://arledscreen.com/tr/led-ekran/) · [EN intent hub](https://arledscreen.com/en/led-ekran/)
-- [LED ekran satışı](https://arledscreen.com/tr/led-ekran-satisi/)
-- [LED ekran üreticisi](https://arledscreen.com/tr/led-ekran-ureticisi/)
-- [LED ekran montaj](https://arledscreen.com/tr/led-ekran-montaj/)
-- [LED ekran kiralama](https://arledscreen.com/tr/led-ekran-kiralama/)
+- [LED ekran satışı](https://arledscreen.com/tr/led-ekran-satisi/) · [EN sales](https://arledscreen.com/en/led-ekran-satisi/)
+- [LED ekran üreticisi](https://arledscreen.com/tr/led-ekran-ureticisi/) · [EN manufacturer](https://arledscreen.com/en/led-ekran-ureticisi/)
+- [LED ekran montaj](https://arledscreen.com/tr/led-ekran-montaj/) · [EN install](https://arledscreen.com/en/led-ekran-montaj/)
+- [LED ekran kiralama](https://arledscreen.com/tr/led-ekran-kiralama/) · [EN rental](https://arledscreen.com/en/led-ekran-kiralama/)
 - [LED ekran fiyatları 2026](https://arledscreen.com/tr/led-ekran-fiyatlari/) · [EN prices](https://arledscreen.com/en/led-ekran-fiyatlari/) — panel listesi + örnek m² hesapları
-- [LED ekran servis](https://arledscreen.com/tr/led-ekran-servis/)
+- [LED ekran servis](https://arledscreen.com/tr/led-ekran-servis/) · [EN service](https://arledscreen.com/en/led-ekran-servis/)
 - Pitch örnekleri: [P2.5](https://arledscreen.com/tr/p2-5-led-ekran/), [P4](https://arledscreen.com/tr/p4-led-ekran/), [P5](https://arledscreen.com/tr/p5-led-ekran/)
 - Kullanım örnekleri: [mağaza](https://arledscreen.com/tr/magaza-led-ekran/), [cephe](https://arledscreen.com/tr/cephe-led-ekran/), [otel](https://arledscreen.com/tr/otel-led-ekran/), [belediye](https://arledscreen.com/tr/belediye-led-ekran/)
 

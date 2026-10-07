@@ -4,17 +4,25 @@ import { CommercialLanding } from "@/components/commercial/CommercialLanding";
 import {
   COMMERCIAL_SLUGS,
   getCommercialPage,
+  getCommercialPageEn,
+  isCommercialEnIntentSlug,
 } from "@/content/commercial-pages";
-import { buildTrOnlyMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
   // led-ekran has a dedicated TR+EN route at [locale]/led-ekran/
-  return COMMERCIAL_SLUGS.filter((slug) => slug !== "led-ekran").map((slug) => ({
-    locale: "tr",
-    slug,
-  }));
+  const params: { locale: string; slug: string }[] = [];
+  for (const slug of COMMERCIAL_SLUGS) {
+    if (slug === "led-ekran") continue;
+    params.push({ locale: "tr", slug });
+    if (isCommercialEnIntentSlug(slug)) {
+      params.push({ locale: "en", slug });
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata({
@@ -22,10 +30,21 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { locale, slug } = await params;
-  if (locale !== "tr") return {};
-  const page = getCommercialPage(slug);
+  const { locale: raw, slug } = await params;
+  if (raw !== "tr" && raw !== "en") return {};
+  const locale = raw as "tr" | "en";
+  const page =
+    locale === "en" ? getCommercialPageEn(slug) : getCommercialPage(slug);
   if (!page) return {};
+  if (locale === "en" || isCommercialEnIntentSlug(slug)) {
+    return buildPageMetadata({
+      locale: locale as Locale,
+      path: `/${page.slug}/`,
+      title: page.title,
+      description: page.description,
+      hreflangLocales: ["tr", "en"],
+    });
+  }
   return buildTrOnlyMetadata({
     path: `/${page.slug}`,
     title: page.title,
@@ -38,9 +57,12 @@ export default async function CommercialSlugPage({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale, slug } = await params;
-  if (locale !== "tr") notFound();
-  const page = getCommercialPage(slug);
+  const { locale: raw, slug } = await params;
+  if (raw !== "tr" && raw !== "en") notFound();
+  const locale = raw as "tr" | "en";
+  if (locale === "en" && !isCommercialEnIntentSlug(slug)) notFound();
+  const page =
+    locale === "en" ? getCommercialPageEn(slug) : getCommercialPage(slug);
   if (!page) notFound();
-  return <CommercialLanding page={page} />;
+  return <CommercialLanding page={page} locale={locale} />;
 }

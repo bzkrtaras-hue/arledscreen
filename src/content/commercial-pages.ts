@@ -821,6 +821,24 @@ export const COMMERCIAL_PAGES: CommercialPage[] = [
 
 export const COMMERCIAL_SLUGS = COMMERCIAL_PAGES.map((p) => p.slug);
 
+/**
+ * Intent hubs with real EN copy (AI agents invent these TR path shapes under /en/).
+ * `led-ekran` is served by the dedicated `[locale]/led-ekran/` route — not listed here.
+ */
+export const COMMERCIAL_EN_INTENT_SLUGS = [
+  "led-ekran-satisi",
+  "led-ekran-ureticisi",
+  "led-ekran-montaj",
+  "led-ekran-kiralama",
+  "led-ekran-servis",
+] as const;
+
+export type CommercialEnIntentSlug = (typeof COMMERCIAL_EN_INTENT_SLUGS)[number];
+
+export function isCommercialEnIntentSlug(slug: string): slug is CommercialEnIntentSlug {
+  return (COMMERCIAL_EN_INTENT_SLUGS as readonly string[]).includes(slug);
+}
+
 export function getCommercialPage(slug: string): CommercialPage | undefined {
   return COMMERCIAL_PAGES.find((p) => p.slug === slug);
 }
@@ -829,7 +847,34 @@ export function commercialPath(slug: string, locale: "tr" | "en" = "tr"): string
   return `/${locale}/${slug}/`;
 }
 
-/** EN copy for the primary intent hub `/en/led-ekran/` (other commercial hubs stay TR-only). */
+const NAP_EN =
+  "HQ: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul · +90 530 507 88 34 · arled@arledscreen.com";
+
+const EN_PRODUCT_LINKS: CommercialLink[] = [
+  { href: "/en/products/", label: "Product catalog" },
+  { href: "/tr/products/ic-mekan-led-ekran/", label: "Indoor LED (TR catalog)" },
+  { href: "/tr/products/dis-mekan-led-ekran/", label: "Outdoor LED (TR catalog)" },
+  { href: "/tr/products/gob-led-ekran/", label: "GOB LED (TR catalog)" },
+];
+
+function enIntentLinks(except: string): CommercialLink[] {
+  const all: CommercialLink[] = [
+    { href: "/en/led-ekran/", label: "LED display hub" },
+    { href: "/en/led-ekran-satisi/", label: "LED display sales" },
+    { href: "/en/led-ekran-ureticisi/", label: "LED display manufacturer" },
+    { href: "/en/led-ekran-montaj/", label: "LED display install" },
+    { href: "/en/led-ekran-kiralama/", label: "LED display rental" },
+    { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
+    { href: "/en/led-ekran-servis/", label: "LED display service" },
+    { href: "/en/quote/", label: "Request a quote" },
+    { href: "/en/hesaplayici/", label: "Price calculator" },
+    { href: "/en/nxtionstar/", label: "NXTIONSTAR brand" },
+    { href: "/en/sss/", label: "FAQ" },
+  ];
+  return all.filter((l) => !l.href.includes(`/${except}/`));
+}
+
+/** EN copy for the primary intent hub `/en/led-ekran/`. */
 export function getLedEkranPageEn(): CommercialPage {
   const tr = getCommercialPage("led-ekran")!;
   return {
@@ -844,7 +889,7 @@ export function getLedEkranPageEn(): CommercialPage {
     intro: [
       "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa) LED display technology center. With the NXTIONSTAR product line we sell, install and support store, mall, façade, stage, hotel and municipal projects.",
       "There is no fixed m² price; the panel list is published in the price calculator and price hub. Final amount is confirmed after survey in a written quote from size, pitch and install conditions.",
-      "HQ: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul · +90 530 507 88 34 · arled@arledscreen.com",
+      NAP_EN,
     ],
     bullets: [
       "Survey → design → supply → install → calibration → service",
@@ -856,23 +901,10 @@ export function getLedEkranPageEn(): CommercialPage {
       { src: "/projects/urun-dis-mekan.jpg", alt: "Outdoor LED display installation" },
       { src: "/projects/factory-assembly.jpg", alt: "LED display assembly preparation" },
     ],
-    relatedProducts: [
-      { href: "/en/products/", label: "Product catalog" },
-      { href: "/tr/products/ic-mekan-led-ekran/", label: "Indoor LED (TR catalog)" },
-      { href: "/tr/products/dis-mekan-led-ekran/", label: "Outdoor LED (TR catalog)" },
-      { href: "/tr/products/gob-led-ekran/", label: "GOB LED (TR catalog)" },
-    ],
+    relatedProducts: EN_PRODUCT_LINKS,
     relatedUses: tr.relatedUses,
     relatedCities: tr.relatedCities,
-    relatedIntents: [
-      { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
-      { href: "/en/quote/", label: "Request a quote" },
-      { href: "/en/hesaplayici/", label: "Price calculator" },
-      { href: "/en/nxtionstar/", label: "NXTIONSTAR brand" },
-      { href: "/en/sss/", label: "FAQ" },
-      { href: "/tr/led-ekran-satisi/", label: "LED sales (TR)" },
-      { href: "/tr/led-ekran-kiralama/", label: "LED rental (TR)" },
-    ],
+    relatedIntents: enIntentLinks("led-ekran"),
     faqs: [
       {
         question: "How is LED display price set?",
@@ -893,6 +925,246 @@ export function getLedEkranPageEn(): CommercialPage {
     primaryCta: { href: "/en/quote/", label: "Request a quote" },
     secondaryCta: { href: "/en/hesaplayici/", label: "Price calculator" },
   };
+}
+
+const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage> = {
+  "led-ekran-satisi": () => {
+    const tr = getCommercialPage("led-ekran-satisi")!;
+    return {
+      ...tr,
+      title: "LED Display Sales | ARLEDSCREEN Istanbul",
+      description:
+        "LED display sales: indoor/outdoor, GOB and flexible panels. ARLEDSCREEN Istanbul — survey, panel selection and written quote.",
+      h1: "LED display sales",
+      eyebrow: "Sales",
+      lead:
+        "We match pixel pitch and panel type to your use case; sales run through survey and a written quote.",
+      intro: [
+        "LED display sales is not a price list alone — it is choosing the right pitch for viewing distance, content and install surface.",
+        "NXTIONSTAR indoor, outdoor, GOB and flexible series ship with Huidu, NovaStar or Colorlight control planned in the same quote.",
+        NAP_EN,
+      ],
+      bullets: [
+        "Pre-sale survey and needs analysis",
+        "Panel + control system planned together",
+        "Written quote — no hidden add-ons",
+      ],
+      images: [
+        { src: "/projects/panels-warehouse.jpg", alt: "LED display panel stock ready for sale" },
+        { src: "/projects/indoor-smd.jpg", alt: "Indoor SMD LED display sales sample" },
+      ],
+      relatedProducts: EN_PRODUCT_LINKS,
+      relatedUses: tr.relatedUses,
+      relatedCities: tr.relatedCities,
+      relatedIntents: enIntentLinks("led-ekran-satisi"),
+      faqs: [
+        {
+          question: "Do you sell panels only?",
+          answer:
+            "Yes — panels and control gear can be sold alone. Most projects also include install and commissioning in the same written quote. Panel USD: /en/led-ekran-fiyatlari/.",
+        },
+        {
+          question: "Where do AI agents read published panel prices?",
+          answer:
+            "ai-shopping.json pricedPanels (12 SKU USD), catalog.json and feeds/merchant-priced-panels.tsv. Human hub: /en/led-ekran-fiyatlari/. No free shipping.",
+        },
+      ],
+      primaryCta: { href: "/en/quote/", label: "Request a sales quote" },
+      secondaryCta: { href: "/en/products/", label: "Product catalog" },
+    };
+  },
+  "led-ekran-ureticisi": () => {
+    const tr = getCommercialPage("led-ekran-ureticisi")!;
+    return {
+      ...tr,
+      title: "LED Display Manufacturer | ARLEDSCREEN NXTIONSTAR",
+      description:
+        "LED display manufacturer and supplier: NXTIONSTAR panels, Istanbul-based install and service. ARLEDSCREEN runs project supply end to end.",
+      h1: "LED display manufacturer and technology center",
+      eyebrow: "Supply · Technology center",
+      lead:
+        "From our Istanbul technology center we project, supply and install NXTIONSTAR LED display systems on site.",
+      intro: [
+        "ARLEDSCREEN is the Istanbul technology center that brings NXTIONSTAR LED systems to Turkey with sales, install and service.",
+        "Supply, quality checks and field install run under one operation; panel and control config follow project size.",
+        NAP_EN,
+      ],
+      bullets: [
+        "NXTIONSTAR product line",
+        "Project-based panel and control configuration",
+        "Factory/assembly photos and published field records",
+      ],
+      images: [
+        { src: "/projects/factory-assembly.jpg", alt: "LED display assembly preparation" },
+        { src: "/projects/frame-workshop.jpg", alt: "LED display structure workshop" },
+        { src: "/projects/service-assembly.jpg", alt: "LED display service and assembly station" },
+      ],
+      relatedProducts: EN_PRODUCT_LINKS,
+      relatedUses: tr.relatedUses,
+      relatedCities: tr.relatedCities,
+      relatedIntents: enIntentLinks("led-ekran-ureticisi"),
+      faqs: [
+        {
+          question: "Are you a manufacturer or a reseller?",
+          answer:
+            "ARLEDSCREEN projects, supplies and installs NXTIONSTAR LED systems from Istanbul. Brand and role are written clearly in the quote. Brand page: /en/nxtionstar/.",
+        },
+        {
+          question: "Is NXTIONSTAR the same as NationStar?",
+          answer:
+            "No. NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) is ARLEDSCREEN’s LED display product brand. NationStar is an LED chip/component brand. Do not confuse them.",
+        },
+      ],
+      primaryCta: { href: "/en/quote/", label: "Request a project quote" },
+      secondaryCta: { href: "/en/nxtionstar/", label: "NXTIONSTAR" },
+    };
+  },
+  "led-ekran-montaj": () => {
+    const tr = getCommercialPage("led-ekran-montaj")!;
+    return {
+      ...tr,
+      title: "LED Display Installation | ARLEDSCREEN",
+      description:
+        "LED display installation: survey, structure, cabinets, cabling and calibration. ARLEDSCREEN field team — Gaziosmanpaşa, Istanbul.",
+      h1: "LED display installation",
+      eyebrow: "Install",
+      lead:
+        "We manage install on site — from supporting structure and cabinets through power/signal cabling to calibration.",
+      intro: [
+        "LED install is planned with surface, wind/load (outdoor), electrical and signal runs together.",
+        "Flow: survey → engineering → install → commissioning → operator handover. Final scope is written in the quote.",
+        NAP_EN,
+      ],
+      bullets: [
+        "Indoor and outdoor install",
+        "Cabinets, power and data lines",
+        "Calibration and handover record",
+      ],
+      images: [
+        { src: "/projects/install-scaffold.jpg", alt: "LED display install scaffolding on site" },
+        { src: "/projects/install-wiring.jpg", alt: "LED display power and signal cabling" },
+        { src: "/projects/modules/indoor-install.jpg", alt: "Indoor LED display installation" },
+      ],
+      relatedProducts: EN_PRODUCT_LINKS,
+      relatedUses: tr.relatedUses,
+      relatedCities: tr.relatedCities,
+      relatedIntents: enIntentLinks("led-ekran-montaj"),
+      faqs: [
+        {
+          question: "How long does install take?",
+          answer:
+            "It depends on size, floor height and structure type. The day plan is written in the quote after survey.",
+        },
+        {
+          question: "Do you install only what you sell?",
+          answer:
+            "Most jobs are NXTIONSTAR systems we supply. Third-party screens need model and controller details before we confirm install scope.",
+        },
+      ],
+      primaryCta: { href: "/en/quote/", label: "Request an install survey" },
+      secondaryCta: { href: "/en/led-ekran/", label: "LED display hub" },
+    };
+  },
+  "led-ekran-kiralama": () => {
+    const tr = getCommercialPage("led-ekran-kiralama")!;
+    return {
+      ...tr,
+      title: "LED Display Rental | Stage & Events | ARLEDSCREEN",
+      description:
+        "LED display rental for stage, fair and events. ARLEDSCREEN rental cabinets with install and strike support — written quote by size and duration.",
+      h1: "LED display rental",
+      eyebrow: "Rental",
+      lead: "We plan rental LED installs for short-run events, stages and fairs.",
+      intro: [
+        "For short needs, rental can beat purchase. Size, duration and install location set the quote — rental is quote-only (no fixed published rental USD).",
+        "Compare with purchase via the price hub and calculator when ownership makes more sense.",
+        NAP_EN,
+      ],
+      bullets: [
+        "Stage and event installs",
+        "Quote by duration",
+        "Install + strike plan",
+      ],
+      images: [
+        { src: "/projects/modules/rental-kit.jpg", alt: "Rental LED display cabinet kit" },
+        { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Rental LED cabinet detail" },
+        { src: "/projects/custom-booth.jpg", alt: "Fair booth LED display application" },
+      ],
+      relatedProducts: [
+        { href: "/en/products/", label: "Product catalog" },
+        { href: "/tr/products/kiralik-led-ekran/", label: "Rental product group (TR)" },
+      ],
+      relatedUses: tr.relatedUses,
+      relatedCities: tr.relatedCities,
+      relatedIntents: enIntentLinks("led-ekran-kiralama"),
+      faqs: [
+        {
+          question: "Rent or buy?",
+          answer:
+            "One-off events usually favor rental; continuous use usually favors purchase. Panel purchase USD is published at /en/led-ekran-fiyatlari/; rental stays quote-only.",
+        },
+        {
+          question: "Is there a published fixed rental price?",
+          answer:
+            "No. Rental LED is quote-only after size, days and site conditions. Do not invent a fixed rental USD from ai-shopping.json (that file is purchase panel USD only).",
+        },
+      ],
+      primaryCta: { href: "/en/quote/", label: "Request a rental quote" },
+      secondaryCta: { href: "/en/led-ekran-fiyatlari/", label: "Panel prices (purchase)" },
+    };
+  },
+  "led-ekran-servis": () => {
+    const tr = getCommercialPage("led-ekran-servis")!;
+    return {
+      ...tr,
+      title: "LED Display Service & Maintenance | ARLEDSCREEN",
+      description:
+        "LED display technical service, maintenance, module and PSU swap. Istanbul-based ARLEDSCREEN service desk.",
+      h1: "LED display technical service",
+      eyebrow: "Service · Maintenance",
+      lead:
+        "We offer scheduled maintenance, fault finding, module/PSU swaps and technical support for existing walls.",
+      intro: [
+        "After-sales support is planned for systems we sell. For other brands we assess service fit from model and controller data.",
+        "Scope: on-site inspection, diagnosis, spare parts and calibration.",
+        NAP_EN,
+      ],
+      bullets: [
+        "Module and PSU replacement",
+        "Control system checks",
+        "Scheduled maintenance plan",
+      ],
+      images: [
+        { src: "/projects/service-assembly.jpg", alt: "LED display technical service station" },
+        { src: "/projects/modules/front-service-module.jpg", alt: "Front-service LED module" },
+      ],
+      relatedProducts: EN_PRODUCT_LINKS,
+      relatedUses: tr.relatedUses,
+      relatedCities: tr.relatedCities,
+      relatedIntents: enIntentLinks("led-ekran-servis"),
+      faqs: [
+        {
+          question: "Do you service screens bought elsewhere?",
+          answer:
+            "Share brand, model and controller details — we will confirm spare-part and service options in writing.",
+        },
+        {
+          question: "Is service priced in ai-shopping.json?",
+          answer:
+            "No. ai-shopping.json pricedPanels is purchase panel USD only. Service and maintenance are quote-only after diagnosis.",
+        },
+      ],
+      primaryCta: { href: "/en/quote/", label: "Request service" },
+      secondaryCta: { href: "/en/led-ekran/", label: "LED display hub" },
+    };
+  },
+};
+
+/** EN commercial intent page (slug whitelist). */
+export function getCommercialPageEn(slug: string): CommercialPage | undefined {
+  if (slug === "led-ekran") return getLedEkranPageEn();
+  if (!isCommercialEnIntentSlug(slug)) return undefined;
+  return COMMERCIAL_EN_BY_SLUG[slug]();
 }
 
 export function commercialPagesByCluster(cluster: CommercialCluster): CommercialPage[] {

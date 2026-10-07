@@ -802,6 +802,11 @@ brand-tr: ${SITE_URL}/tr/nxtionstar/
 brand-en: ${SITE_URL}/en/nxtionstar/
 intent-tr: ${SITE_URL}/tr/led-ekran/
 intent-en: ${SITE_URL}/en/led-ekran/
+sales-en: ${SITE_URL}/en/led-ekran-satisi/
+rental-en: ${SITE_URL}/en/led-ekran-kiralama/
+install-en: ${SITE_URL}/en/led-ekran-montaj/
+manufacturer-en: ${SITE_URL}/en/led-ekran-ureticisi/
+service-en: ${SITE_URL}/en/led-ekran-servis/
 price-tr: ${SITE_URL}/tr/led-ekran-fiyatlari/
 price-en: ${SITE_URL}/en/led-ekran-fiyatlari/
 about: ${SITE_URL}/tr/about/

@@ -47,6 +47,8 @@ export function Footer({ locale }: FooterProps) {
       ]
     : [
         { href: "/en/led-ekran/", label: "LED display" },
+        { href: "/en/led-ekran-satisi/", label: "LED sales" },
+        { href: "/en/led-ekran-kiralama/", label: "LED rental" },
         { href: `/${locale}/products/`, label: dict.nav.products },
         { href: `/${locale}/rehber/`, label: "Guides" },
         { href: `/${locale}/about/`, label: dict.nav.about },

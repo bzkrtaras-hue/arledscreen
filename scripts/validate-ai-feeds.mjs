@@ -407,6 +407,11 @@ if (fs.existsSync(outDir)) {
     "en/led-ekran-fiyatlari/index.html",
     "tr/led-ekran/index.html",
     "en/led-ekran/index.html",
+    "en/led-ekran-satisi/index.html",
+    "en/led-ekran-ureticisi/index.html",
+    "en/led-ekran-montaj/index.html",
+    "en/led-ekran-kiralama/index.html",
+    "en/led-ekran-servis/index.html",
   ];
   for (const rel of offerHubs) {
     const fp = path.join(outDir, rel);
@@ -471,6 +476,11 @@ if (fs.existsSync(outDir)) {
     "en/yapay-zeka/index.html",
     "tr/led-ekran/index.html",
     "en/led-ekran/index.html",
+    "en/led-ekran-satisi/index.html",
+    "en/led-ekran-ureticisi/index.html",
+    "en/led-ekran-montaj/index.html",
+    "en/led-ekran-kiralama/index.html",
+    "en/led-ekran-servis/index.html",
     "tr/led-ekran-fiyatlari/index.html",
     "en/led-ekran-fiyatlari/index.html",
     "tr/nxtionstar/index.html",
@@ -515,6 +525,8 @@ if (fs.existsSync(outDir)) {
     "/en/nxtionstar/",
     "/en/led-ekran-fiyatlari/",
     "/en/led-ekran/",
+    "/en/led-ekran-satisi/",
+    "/en/led-ekran-kiralama/",
     "/en/sss/",
   ]) {
     if (!indexNowScript.includes(must)) {
