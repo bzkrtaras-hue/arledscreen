@@ -1,15 +1,17 @@
-import { notFound } from "next/navigation";
-import { ArticlePage, articleMetadata } from "@/components/article/ArticlePage";
+import {
+  CommercialGuidePage,
+  commercialGuideMetadata,
+  commercialGuideStaticParams,
+} from "../_commercial-guide";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return [{ locale: "tr" }];
+  return commercialGuideStaticParams("gob-vs-smd");
 }
-export function generateMetadata() {
-  return articleMetadata("gob-vs-smd");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return commercialGuideMetadata("gob-vs-smd", locale);
 }
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  if (locale !== "tr") notFound();
-  return <ArticlePage slug="gob-vs-smd" />;
+  return <CommercialGuidePage slug="gob-vs-smd" params={params} />;
 }

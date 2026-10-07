@@ -826,6 +826,10 @@ quote: ${SITE_URL}/tr/quote/
 quote-en: ${SITE_URL}/en/quote/
 sss: ${SITE_URL}/tr/sss/
 sss-en: ${SITE_URL}/en/sss/
+guide-pitch-en: ${SITE_URL}/en/rehber/piksel-araligi-secimi/
+guide-gob-en: ${SITE_URL}/en/rehber/gob-vs-smd/
+guide-rentbuy-en: ${SITE_URL}/en/rehber/kiralik-mi-satin-alma/
+guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
 `;
   writeText(publicDir, "ai.txt", aiTxt);
   writeText(outDir, "ai.txt", aiTxt);

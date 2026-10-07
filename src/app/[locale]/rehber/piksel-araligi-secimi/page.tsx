@@ -1,15 +1,17 @@
-import { notFound } from "next/navigation";
-import { ArticlePage, articleMetadata } from "@/components/article/ArticlePage";
+import {
+  CommercialGuidePage,
+  commercialGuideMetadata,
+  commercialGuideStaticParams,
+} from "../_commercial-guide";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return [{ locale: "tr" }];
+  return commercialGuideStaticParams("piksel-araligi-secimi");
 }
-export function generateMetadata() {
-  return articleMetadata("piksel-araligi-secimi");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return commercialGuideMetadata("piksel-araligi-secimi", locale);
 }
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  if (locale !== "tr") notFound();
-  return <ArticlePage slug="piksel-araligi-secimi" />;
+  return <CommercialGuidePage slug="piksel-araligi-secimi" params={params} />;
 }

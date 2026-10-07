@@ -165,3 +165,7 @@
 /led-ekran-servisi/ /tr/led-ekran-servis/ 301
 /tr/led-ekran-servisi /tr/led-ekran-servis/ 301
 /tr/led-ekran-servisi/ /tr/led-ekran-servis/ 301
+
+# Inventable EN rehber price path → EN price hub
+/en/rehber/led-ekran-fiyatlari /en/led-ekran-fiyatlari/ 301
+/en/rehber/led-ekran-fiyatlari/ /en/led-ekran-fiyatlari/ 301

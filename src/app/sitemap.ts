@@ -149,6 +149,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     });
   }
+  // EN lean commercial guides (AI agents invent these TR rehber paths under /en/).
+  for (const path of [
+    "/rehber/piksel-araligi-secimi/",
+    "/rehber/led-tabela-mi-led-ekran-mi/",
+    "/rehber/kiralik-mi-satin-alma/",
+    "/rehber/gob-vs-smd/",
+  ] as const) {
+    entries.push({
+      url: absoluteUrl(`/en${path}`),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    });
+  }
   // Brand + intent + price + FAQ hubs: TR + EN (EN agents previously hit 404 on these paths).
   // /tr/led-ekran/ is also emitted via COMMERCIAL_PAGES — skip duplicate TR entry here.
   for (const locale of ["tr", "en"] as const) {

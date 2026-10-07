@@ -484,6 +484,10 @@ if (fs.existsSync(outDir)) {
     "en/products/gob-led-ekran/index.html",
     "en/products/ic-mekan-led-ekran/index.html",
     "en/products/dis-mekan-led-ekran/index.html",
+    "en/rehber/piksel-araligi-secimi/index.html",
+    "en/rehber/gob-vs-smd/index.html",
+    "en/rehber/kiralik-mi-satin-alma/index.html",
+    "en/rehber/led-tabela-mi-led-ekran-mi/index.html",
     "tr/led-ekran-fiyatlari/index.html",
     "en/led-ekran-fiyatlari/index.html",
     "tr/nxtionstar/index.html",
@@ -533,6 +537,8 @@ if (fs.existsSync(outDir)) {
     "/en/products/",
     "/en/products/gob-led-ekran/",
     "/en/products/ic-mekan-led-ekran/",
+    "/en/rehber/piksel-araligi-secimi/",
+    "/en/rehber/gob-vs-smd/",
     "/en/sss/",
   ]) {
     if (!indexNowScript.includes(must)) {

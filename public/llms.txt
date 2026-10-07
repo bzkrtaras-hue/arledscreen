@@ -60,6 +60,10 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - [Hizmetler](https://arledscreen.com/tr/hizmetler/)
 - [Hizmet bölgesi (iller)](https://arledscreen.com/tr/bolgeler/): Kayıtlı proje illeri; merkez İstanbul Gaziosmanpaşa. Örnek: [İstanbul](https://arledscreen.com/tr/bolgeler/istanbul/), [Antalya](https://arledscreen.com/tr/bolgeler/antalya/), [Bursa](https://arledscreen.com/tr/bolgeler/bursa/), [İzmir](https://arledscreen.com/tr/bolgeler/izmir/), [Eskişehir](https://arledscreen.com/tr/bolgeler/eskisehir/). Kaydı olmayan il (ör. Ankara) için kapı sayfası yoktur — 81 il spam’i yok.
 
+### EN commercial guides (lean; TR articles remain canonical long-form)
+
+- [Pixel pitch](https://arledscreen.com/en/rehber/piksel-araligi-secimi/) · [GOB vs SMD](https://arledscreen.com/en/rehber/gob-vs-smd/) · [Rent vs buy](https://arledscreen.com/en/rehber/kiralik-mi-satin-alma/) · [Sign vs LED display](https://arledscreen.com/en/rehber/led-tabela-mi-led-ekran-mi/)
+
 ### Ticari intent sayfaları
 
 - [LED ekran](https://arledscreen.com/tr/led-ekran/) · [EN intent hub](https://arledscreen.com/en/led-ekran/)
