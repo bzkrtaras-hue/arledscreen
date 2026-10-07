@@ -5,6 +5,7 @@ import { OptImage } from "@/components/ui/opt-image";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import manifest from "@/content/image-manifest.json";
 import { BLOG_POSTS, blogImageUrl, blogPath, formatBlogDate, getBlogPost } from "@/content/blog";
+import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { whatsappHref } from "@/lib/whatsapp";
@@ -54,6 +55,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     author: { "@id": `${SITE_URL}/#organization` },
     isPartOf: { "@id": `${absoluteUrl("/tr/blog/")}#blog` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    isRelatedTo: PRICE_DATASETS,
     ...(video ? { video: videoObjectJsonLd(video, url, absoluteUrl, `${SITE_URL}/#organization`) } : {}),
   };
   const others = [...BLOG_POSTS].filter((x) => x.slug !== p.slug).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
@@ -68,6 +70,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
       <article className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <nav aria-label="Sayfa yolu" className="text-[13px] text-ink-muted">
@@ -119,6 +125,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             <p className="font-display text-lg font-bold text-ink">Benzer bir proje mi planlıyorsunuz?</p>
             <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
               Ölçü, konum ve kullanım amacını paylaşın; keşif sonrası malzeme listesiyle birlikte yazılı teklif hazırlayalım.
+            </p>
+            <p className="mt-2 text-xs leading-relaxed text-ink-muted">
+              Yayımlanmış panel USD:{" "}
+              <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                ai-shopping.json
+              </a>{" "}
+              pricedPanels,{" "}
+              <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                merchant TSV
+              </a>{" "}
+              (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#0F7A41] px-5 text-sm font-semibold text-white hover:bg-[#0B6435]">

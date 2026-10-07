@@ -8,6 +8,7 @@ import {
   getProjectCaseStudy,
   projectCasePath,
 } from "@/content/case-studies";
+import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -59,6 +60,7 @@ export default async function ProjectCasePage({
     about: "LED ekran kurulumu",
     provider: { "@id": `${SITE_URL}/#organization` },
     url,
+    isRelatedTo: PRICE_DATASETS,
     ...(c.images[0]
       ? { image: absoluteUrl(c.images[0].src.startsWith("/blog/") ? c.images[0].src.replace("/blog/", "/opt/blog/") : c.images[0].src) }
       : {}),
@@ -88,6 +90,10 @@ export default async function ProjectCasePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWork) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
 
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
@@ -101,6 +107,17 @@ export default async function ProjectCasePage({
             Bu sayfa ARLEDSCREEN referans listesindeki yayımlanmış alanlardan üretilir.
             Kontrol sistemi, garanti yılı, müşteri yorumu veya süre gibi sitede yazmayan
             bilgiler eklenmez.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
+            Panel USD listesi:{" "}
+            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+              ai-shopping.json
+            </a>{" "}
+            pricedPanels ·{" "}
+            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+              merchant TSV
+            </a>{" "}
+            (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link

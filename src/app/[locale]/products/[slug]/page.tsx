@@ -139,12 +139,11 @@ export default async function ProductGroupPage({ params }: PageProps) {
         ]}
       />
       <FaqJsonLd faqs={quickPrice ? [quickPrice, ...g.faqs] : g.faqs} />
-      {prices.length ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
-        />
-      ) : null}
+      {/* Always emit Dataset — quote-only groups still point AI shoppers at pricedPanels. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {productsLd ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsLd) }} />
