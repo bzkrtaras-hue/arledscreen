@@ -828,7 +828,21 @@
     "https://arledscreen.com/geo-baseline.json",
     "https://arledscreen.com/entity-profiles.json",
     "https://arledscreen.com/point-c.txt",
-    "https://arledscreen.com/#website"
+    "https://arledscreen.com/#website",
+    "https://arledscreen.com/.well-known/modules.json",
+    "https://arledscreen.com/.well-known/sku.json",
+    "https://arledscreen.com/.well-known/pricing.json",
+    "https://arledscreen.com/.well-known/panels.json",
+    "https://arledscreen.com/.well-known/mpn.json",
+    "https://arledscreen.com/.well-known/merchant.json",
+    "https://arledscreen.com/.well-known/prices.json",
+    "https://arledscreen.com/.well-known/price.json",
+    "https://arledscreen.com/.well-known/agents.json",
+    "https://arledscreen.com/.well-known/ard.json",
+    "https://arledscreen.com/ai.txt",
+    "https://arledscreen.com/llms.txt",
+    "https://arledscreen.com/humans.txt",
+    "https://arledscreen.com/AGENTS.md"
   ],
   "isBasedOn": [
     "https://arledscreen.com/ai-shopping.json",

@@ -338,6 +338,7 @@ function buildCatalog() {
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
+      ...inventAliasBasedOnUrls(),
     ],
     // Catalog-first agents: isBasedOn closes invent graph (parity with ai-shopping / geo / profiles).
     isBasedOn: [
@@ -683,7 +684,7 @@ function buildAiShopping() {
     },
     // Dataset-root agents still join place without expanding hasPart Offers.
     availableAtOrFrom: localBusinessRef(),
-    // Dataset ↔ Collection identity + invent graph closure (brand/geo/profiles/org).
+    // Dataset ↔ Collection identity + invent graph closure (brand/geo/profiles/org + inventAlias/discovery).
     sameAs: [
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/brand.json`,
@@ -695,6 +696,7 @@ function buildAiShopping() {
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/#website`,
       `${SITE_URL}/point-c.txt`,
+      ...inventAliasBasedOnUrls(),
     ],
     mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
     isRelatedTo: [
@@ -1761,6 +1763,7 @@ function enrichEntityDocument(entity) {
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
+      ...inventAliasBasedOnUrls(),
     ]) {
       if (!same.includes(u)) same.push(u);
     }
@@ -1900,6 +1903,8 @@ function enrichEntityDocument(entity) {
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/brand.json`,
       `${SITE_URL}/.well-known/brand.json`,
+      `${SITE_URL}/.well-known/entity.json`,
+      `${SITE_URL}/organization.json`,
       `${SITE_URL}/geo-baseline.json`,
       `${SITE_URL}/feeds/prices.rss`,
       `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
@@ -1932,6 +1937,18 @@ function enrichEntityDocument(entity) {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/brand.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/brand.json`,
+        name: "NXTIONSTAR Brand invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/entity.json`,
+        name: "Organization invent alias",
       },
       {
         "@type": "DataDownload",
@@ -1985,6 +2002,7 @@ function enrichEntityProfiles(doc) {
     `${SITE_URL}/ai-shopping.json`,
     `${SITE_URL}/catalog.json`,
     `${SITE_URL}/geo-baseline.json`,
+    `${SITE_URL}/entity-profiles.json`,
     `${SITE_URL}/point-c.txt`,
     `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
     `${SITE_URL}/#website`,
@@ -2199,6 +2217,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
     creator: { "@id": `${SITE_URL}/#organization` },
     // Reverse invent join: catalog/ai-shopping already → geo; geo must not be a dead-end Dataset.
     isBasedOn: [
+      `${SITE_URL}/geo-baseline.json`,
       `${SITE_URL}/entity.json`,
       `${SITE_URL}/organization.json`,
       `${SITE_URL}/.well-known/entity.json`,
@@ -2210,6 +2229,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       `${SITE_URL}/feeds/prices.rss`,
       `${SITE_URL}/AGENTS.md`,
       `${SITE_URL}/entity-profiles.json`,
+      `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
       ...inventAliasBasedOnUrls(),
     ],
@@ -3053,6 +3073,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
+      ...inventAliasBasedOnUrls(),
     ],
     // Brand-first agents: isBasedOn closes invent graph (parity with ai-shopping / geo / profiles).
     isBasedOn: [

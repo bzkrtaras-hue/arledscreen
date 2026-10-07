@@ -172,6 +172,17 @@ if (fs.existsSync(outDir)) {
       "/entity-profiles.json",
       "/point-c.txt",
       "#website",
+      "/.well-known/panels.json",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/agents.json",
+      "/.well-known/ard.json",
+      "/ai.txt",
+      "/llms.txt",
+      "/humans.txt",
+      "/AGENTS.md",
     ]) {
       if (!aiSame.includes(needle)) {
         console.error(`❌ ai-shopping.json Dataset sameAs must join ${needle}`);
@@ -573,6 +584,7 @@ if (fs.existsSync(outDir)) {
     const geoBased = JSON.stringify(baseline?.isBasedOn || []);
     const geoRelated = JSON.stringify(baseline?.isRelatedTo || []);
     for (const needle of [
+      "/geo-baseline.json",
       "/entity.json",
       "/organization.json",
       "/.well-known/entity.json",
@@ -583,6 +595,7 @@ if (fs.existsSync(outDir)) {
       "/feeds/merchant-priced-panels.tsv",
       "/feeds/prices.rss",
       "/entity-profiles.json",
+      "/point-c.txt",
       "#website",
       "/.well-known/modules.json",
       "/.well-known/sku.json",
@@ -1006,7 +1019,18 @@ if (fs.existsSync(outDir)) {
   }
   {
     const catSame = JSON.stringify(catalogLive?.sameAs || []);
-    for (const needle of ["/geo-baseline.json", "/entity-profiles.json", "/brand.json", "/point-c.txt"]) {
+    for (const needle of [
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/brand.json",
+      "/point-c.txt",
+      "/.well-known/panels.json",
+      "/.well-known/modules.json",
+      "/.well-known/agents.json",
+      "/ai.txt",
+      "/humans.txt",
+      "/AGENTS.md",
+    ]) {
       if (!catSame.includes(needle)) {
         console.error(`❌ catalog.json Collection sameAs must join ${needle}`);
         process.exit(1);
@@ -1323,6 +1347,14 @@ if (fs.existsSync(outDir)) {
       "/entity-profiles.json",
       "/point-c.txt",
       "#website",
+      "/.well-known/panels.json",
+      "/.well-known/modules.json",
+      "/.well-known/agents.json",
+      "/.well-known/ard.json",
+      "/ai.txt",
+      "/llms.txt",
+      "/humans.txt",
+      "/AGENTS.md",
     ]) {
       if (!entSame.includes(needle)) {
         console.error(`❌ entity.json sameAs must invent-join ${needle}`);
@@ -1344,6 +1376,8 @@ if (fs.existsSync(outDir)) {
       "/ai-shopping.json",
       "/catalog.json",
       "/brand.json",
+      "/.well-known/brand.json",
+      "/.well-known/entity.json",
       "/geo-baseline.json",
       "/point-c.txt",
       "/entity-profiles.json",
@@ -1366,6 +1400,8 @@ if (fs.existsSync(outDir)) {
       "/ai-shopping.json",
       "/catalog.json",
       "/brand.json",
+      "/.well-known/brand.json",
+      "/.well-known/entity.json",
       "/geo-baseline.json",
       "/point-c.txt",
       "/entity-profiles.json",
@@ -1967,9 +2003,13 @@ if (fs.existsSync(outDir)) {
       !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/brand.json") ||
       !JSON.stringify(brandLive.sameAs || []).includes("/ai-shopping.json") ||
       !JSON.stringify(brandLive.sameAs || []).includes("/geo-baseline.json") ||
-      !JSON.stringify(brandLive.sameAs || []).includes("/entity-profiles.json")
+      !JSON.stringify(brandLive.sameAs || []).includes("/entity-profiles.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/panels.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/agents.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/humans.txt") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/AGENTS.md")
     ) {
-      console.error("❌ out/brand.json distribution/sameAs must include ai-shopping + catalog + prices.rss + entity/organization + prices.json + well-known brand + geo/profiles");
+      console.error("❌ out/brand.json distribution/sameAs must include ai-shopping + catalog + prices.rss + entity/organization + prices.json + well-known brand + geo/profiles + inventAlias/discovery");
       process.exit(1);
     }
     if (
@@ -2212,6 +2252,7 @@ if (fs.existsSync(outDir)) {
       "/ai-shopping.json",
       "/catalog.json",
       "/geo-baseline.json",
+      "/entity-profiles.json",
       "/point-c.txt",
       "#website",
       "/.well-known/modules.json",

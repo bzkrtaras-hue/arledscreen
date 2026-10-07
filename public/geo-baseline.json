@@ -10,6 +10,7 @@
     "@id": "https://arledscreen.com/#organization"
   },
   "isBasedOn": [
+    "https://arledscreen.com/geo-baseline.json",
     "https://arledscreen.com/entity.json",
     "https://arledscreen.com/organization.json",
     "https://arledscreen.com/.well-known/entity.json",
@@ -21,6 +22,7 @@
     "https://arledscreen.com/feeds/prices.rss",
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/#website",
     "https://arledscreen.com/.well-known/modules.json",
     "https://arledscreen.com/.well-known/sku.json",
@@ -372,8 +374,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "60e4db11820a291a54dfc018ea17e4cf249d255bd9272e53574866c6fb4b7880",
-    "catalogSha256": "23ff12e807568d79951e0f91639f70841b2617ed68489c1f289b90a55a86192d",
+    "aiShoppingSha256": "cf0cfbe59f7a6a0e1542fcdc0ee843589ec84d3453f36dbc96f7e796dbb9264c",
+    "catalogSha256": "c828723561caa25e13788b087975cd75d5a8239db63409d36fbf115beef0359a",
     "merchantTsvSha256": "b141537bef1ee59f74ad00139481c306e775d31b6682539382e3771d1863706f",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },

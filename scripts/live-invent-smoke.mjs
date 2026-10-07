@@ -405,21 +405,33 @@ if (
     aiSame.includes("/brand.json") &&
     aiSame.includes("/geo-baseline.json") &&
     aiSame.includes("/entity-profiles.json") &&
+    aiSame.includes("/.well-known/panels.json") &&
+    aiSame.includes("/.well-known/agents.json") &&
+    aiSame.includes("/humans.txt") &&
+    aiSame.includes("/AGENTS.md") &&
     brandSame.includes("/ai-shopping.json") &&
     brandSame.includes("/geo-baseline.json") &&
     brandSame.includes("/entity-profiles.json") &&
+    brandSame.includes("/.well-known/modules.json") &&
+    brandSame.includes("/.well-known/ard.json") &&
+    brandSame.includes("/ai.txt") &&
     catSame.includes("/geo-baseline.json") &&
     catSame.includes("/entity-profiles.json") &&
+    catSame.includes("/.well-known/sku.json") &&
+    catSame.includes("/llms.txt") &&
     entSame.includes("/ai-shopping.json") &&
     entSame.includes("/catalog.json") &&
     entSame.includes("/brand.json") &&
     entSame.includes("/geo-baseline.json") &&
     entSame.includes("/entity-profiles.json") &&
     entSame.includes("/point-c.txt") &&
-    entSame.includes("#website")
+    entSame.includes("#website") &&
+    entSame.includes("/.well-known/mpn.json") &&
+    entSame.includes("/.well-known/merchant.json") &&
+    entSame.includes("/humans.txt")
   ) {
-    ok("sameAs invent closure ai/brand/catalog/entity → brand/geo/profiles");
-  } else fail("sameAs invent closure ai/brand/catalog/entity → brand/geo/profiles");
+    ok("sameAs invent closure ai/brand/catalog/entity → inventAlias + discovery");
+  } else fail("sameAs invent closure ai/brand/catalog/entity → inventAlias + discovery");
 }
 
 {

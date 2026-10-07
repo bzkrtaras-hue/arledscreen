@@ -46,7 +46,8 @@
     "https://arledscreen.com/ai.txt",
     "https://arledscreen.com/llms.txt",
     "https://arledscreen.com/humans.txt",
-    "https://arledscreen.com/AGENTS.md"
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/entity-profiles.json"
   ],
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-07",
