@@ -118,7 +118,7 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
   lines.push("Verify: https://arledscreen.com/entity.json");
   lines.push("Web must be arledscreen.com (not arleds.com). Postcode 34245.");
   lines.push("Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt");
-  lines.push("Sequential: npm run point-c:next · after paste: npm run point-c:ack");
+  lines.push("Single next: npm run geo:next · Sequential: npm run point-c:next · after paste: npm run point-c:ack");
   lines.push("");
 
   const checklist = profiles.ownerP0Checklist || [];

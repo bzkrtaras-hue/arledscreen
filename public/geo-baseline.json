@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/geo-baseline.json",
   "name": "ARLEDSCREEN GEO / AI-alışveriş technical baseline",
-  "description": "Machine-readable snapshot of pricedPanels, Brand @id, and discovery surfaces for before/after measurement. Does not invent ChatGPT/Gemini/Perplexity mention rates. Point C and Tur1a remain owner-gated.",
+  "description": "Machine-readable snapshot of pricedPanels, Brand @id, and discovery surfaces for before/after measurement. Does not invent ChatGPT/Gemini/Perplexity mention rates. Point C and Tur1a remain owner-gated. Schema.org distribution walks invent aliases (parity with catalog/ai-shopping).",
   "url": "https://arledscreen.com/geo-baseline.json",
   "dateModified": "2026-10-07",
   "creator": {
@@ -39,6 +39,74 @@
       "name": "ARLEDSCREEN agents discovery"
     }
   ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/ai-shopping.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/prices.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/prices.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/brand.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/brand.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/entity.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/organization.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/catalog.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/tab-separated-values",
+      "contentUrl": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/rss+xml",
+      "contentUrl": "https://arledscreen.com/feeds/prices.rss"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/markdown",
+      "contentUrl": "https://arledscreen.com/AGENTS.md"
+    }
+  ],
   "brand": {
     "@type": "Brand",
     "@id": "https://arledscreen.com/#brand-nxtionstar",
@@ -59,11 +127,12 @@
     "brandId": "https://arledscreen.com/#brand-nxtionstar",
     "speakableCoverageNote": "TR/EN HTML content pages emit SpeakableSpecification where applicable (measured separately in agent artifacts).",
     "ownerGated": [
-      "Point C third-party cites — paste https://arledscreen.com/point-c.txt (npm run point-c)",
+      "Single next clipboard — npm run geo:next (Point C → arleds 301 → Tur1a → merge)",
+      "Point C third-party cites — paste https://arledscreen.com/point-c.txt (npm run point-c · point-c:next · point-c:ack)",
       "Tur1a blind — npm run tur1a:next then npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… (no invented %)",
       "GSC access",
       "PR #60 merge",
-      "arleds.com → arledscreen.com/tr/ 301 — Hostinger clipboard in point-c.txt · npm run verify:arleds-301"
+      "arleds.com → arledscreen.com/tr/ 301 — Hostinger clipboard in point-c.txt · Gmail draft Send · npm run verify:arleds-301"
     ],
     "noSpamDoorways": true,
     "provinceLandingPolicy": "Only provinces with published project records; no 81-il programatic doorways",

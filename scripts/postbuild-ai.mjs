@@ -1481,7 +1481,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
     "@id": `${SITE_URL}/geo-baseline.json`,
     name: "ARLEDSCREEN GEO / AI-alışveriş technical baseline",
     description:
-      "Machine-readable snapshot of pricedPanels, Brand @id, and discovery surfaces for before/after measurement. Does not invent ChatGPT/Gemini/Perplexity mention rates. Point C and Tur1a remain owner-gated.",
+      "Machine-readable snapshot of pricedPanels, Brand @id, and discovery surfaces for before/after measurement. Does not invent ChatGPT/Gemini/Perplexity mention rates. Point C and Tur1a remain owner-gated. Schema.org distribution walks invent aliases (parity with catalog/ai-shopping).",
     url: `${SITE_URL}/geo-baseline.json`,
     dateModified: today,
     creator: { "@id": `${SITE_URL}/#organization` },
@@ -1516,6 +1516,75 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         name: "ARLEDSCREEN agents discovery",
       },
     ],
+    // Schema.org DataDownload walk — geo-first agents must reach price/entity/Point C (not discovery-only).
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/prices.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/prices.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/brand.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/brand.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/entity.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/organization.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/catalog.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/tab-separated-values",
+        contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/rss+xml",
+        contentUrl: `${SITE_URL}/feeds/prices.rss`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE_URL}/point-c.txt`,
+        name: "ARLEDSCREEN Point C paste packs",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/markdown",
+        contentUrl: `${SITE_URL}/AGENTS.md`,
+      },
+    ],
     brand: {
       "@type": "Brand",
       "@id": `${SITE_URL}/#brand-nxtionstar`,
@@ -1533,11 +1602,12 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       speakableCoverageNote:
         "TR/EN HTML content pages emit SpeakableSpecification where applicable (measured separately in agent artifacts).",
       ownerGated: [
-        "Point C third-party cites — paste https://arledscreen.com/point-c.txt (npm run point-c)",
+        "Single next clipboard — npm run geo:next (Point C → arleds 301 → Tur1a → merge)",
+        "Point C third-party cites — paste https://arledscreen.com/point-c.txt (npm run point-c · point-c:next · point-c:ack)",
         "Tur1a blind — npm run tur1a:next then npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… (no invented %)",
         "GSC access",
         "PR #60 merge",
-        "arleds.com → arledscreen.com/tr/ 301 — Hostinger clipboard in point-c.txt · npm run verify:arleds-301",
+        "arleds.com → arledscreen.com/tr/ 301 — Hostinger clipboard in point-c.txt · Gmail draft Send · npm run verify:arleds-301",
       ],
       noSpamDoorways: true,
       provinceLandingPolicy: "Only provinces with published project records; no 81-il programatic doorways",

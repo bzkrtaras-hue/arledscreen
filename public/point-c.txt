@@ -4,7 +4,7 @@ Rules: paste once; cite + NAP only; no catalog.json / quote-only jargon in publi
 Verify: https://arledscreen.com/entity.json
 Web must be arledscreen.com (not arleds.com). Postcode 34245.
 Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt
-Sequential: npm run point-c:next · after paste: npm run point-c:ack
+Single next: npm run geo:next · Sequential: npm run point-c:next · after paste: npm run point-c:ack
 
 --- Owner P0 checklist ---
 - P0 status: npm run geo:status · paste from https://arledscreen.com/point-c.txt (or npm run point-c) → NAP/directoryLong → GBP → IG name+bio → FB → LinkedIn → Bing/Apple (paste once; 34245; rating yok)

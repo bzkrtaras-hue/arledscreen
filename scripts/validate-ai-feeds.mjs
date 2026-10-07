@@ -527,6 +527,31 @@ if (fs.existsSync(outDir)) {
         process.exit(1);
       }
     }
+    const geoDist = JSON.stringify(baseline?.distribution || []);
+    for (const needle of [
+      "/ai-shopping.json",
+      "/prices.json",
+      "/.well-known/prices.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/entity.json",
+      "/.well-known/entity.json",
+      "/organization.json",
+      "/catalog.json",
+      "/feeds/merchant-priced-panels.tsv",
+      "/feeds/prices.rss",
+      "/point-c.txt",
+      "/AGENTS.md",
+    ]) {
+      if (!geoDist.includes(needle)) {
+        console.error(`❌ geo-baseline.json distribution invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    if (!JSON.stringify(baseline?.baseline?.ownerGated || []).includes("geo:next")) {
+      console.error("❌ geo-baseline.json baseline.ownerGated must cite npm run geo:next");
+      process.exit(1);
+    }
   }
   if (
     !String(baseline?.baseline?.priceGraph?.entityMakesOffer || "").includes("#priced-panels-aggregate") ||

@@ -332,6 +332,21 @@ try {
   ) {
     ok("geo-baseline isBasedOn entity/brand/ai/catalog/AGENTS + isRelatedTo point-c");
   } else fail("geo-baseline isBasedOn entity/brand/ai/catalog/AGENTS + isRelatedTo point-c");
+  const dist = JSON.stringify(geo?.distribution || []);
+  if (
+    dist.includes("/ai-shopping.json") &&
+    dist.includes("/prices.json") &&
+    dist.includes("/.well-known/prices.json") &&
+    dist.includes("/brand.json") &&
+    dist.includes("/.well-known/brand.json") &&
+    dist.includes("/entity.json") &&
+    dist.includes("/.well-known/entity.json") &&
+    dist.includes("/catalog.json") &&
+    dist.includes("/point-c.txt") &&
+    dist.includes("AGENTS.md")
+  ) {
+    ok("geo-baseline distribution invent → ai-shopping/prices/brand/entity/point-c");
+  } else fail("geo-baseline distribution invent → ai-shopping/prices/brand/entity/point-c");
   if (
     String(disc.modulesWellKnown || "").includes("/.well-known/modules.json") &&
     String(disc.skuWellKnown || "").includes("/.well-known/sku.json") &&

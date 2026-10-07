@@ -50,6 +50,9 @@ jobs:
           npm run point-c | grep -q "mailto:support@hostinger.com"
           npm run point-c:next | grep -q "Point C next paste"
           npm run point-c:next | grep -q "directoryLong"
+          npm run geo:next | grep -q "GEO next"
+          npm run geo:next | grep -q "Point C"
+          npm run geo:next | grep -q "directoryLong"
           npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
           test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt

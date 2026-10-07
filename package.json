@@ -25,6 +25,7 @@
     "tur1a:next": "node scripts/tur1a-matrix.mjs --next",
     "tur1a:log": "node scripts/tur1a-matrix.mjs --log",
     "geo:status": "node scripts/geo-owner-status.mjs",
+    "geo:next": "node scripts/geo-next.mjs",
     "invent:smoke": "node scripts/live-invent-smoke.mjs",
     "invent:smoke:local": "node scripts/local-invent-smoke.mjs"
   },
