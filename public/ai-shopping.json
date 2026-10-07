@@ -18,6 +18,7 @@
     "https://arledscreen.com/entity.json",
     "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+    "https://arledscreen.com/geo-baseline.json",
     "https://arledscreen.com/.well-known/ard.json"
   ],
   "dateModified": "2026-10-07",
