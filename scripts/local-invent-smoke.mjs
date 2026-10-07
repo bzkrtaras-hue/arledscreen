@@ -110,10 +110,11 @@ if (
   rss.includes("/entity-profiles.json") &&
   rss.includes("/.well-known/brand.json") &&
   rss.includes("/.well-known/entity.json") &&
-  rss.includes("geo:next")
+  rss.includes("geo:next") &&
+  rss.includes("geo:ack")
 ) {
-  ok("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known");
-} else fail("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known");
+  ok("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known + geo:ack");
+} else fail("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known + geo:ack");
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
@@ -187,11 +188,14 @@ if (
     dist.includes("/catalog.json") &&
     dist.includes("/point-c.txt") &&
     JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") &&
+    JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack") &&
+    String(profiles?.canonicalUrls?.website || "").includes("#website") &&
+    String(profiles?.description || "").includes("geo:ack") &&
     String(profiles?.mainEntityOfPage?.["@id"] || "").includes("#website") &&
     JSON.stringify(profiles?.isRelatedTo || []).includes("#website")
   ) {
-    ok("entity-profiles invent distribution + isBasedOn + geo:next + #website");
-  } else fail("entity-profiles invent distribution + isBasedOn + geo:next + #website");
+    ok("entity-profiles invent distribution + isBasedOn + geo:next/ack + #website");
+  } else fail("entity-profiles invent distribution + isBasedOn + geo:next/ack + #website");
 }
 
 const pointCEn = readText("point-c-en.txt");
@@ -347,16 +351,18 @@ if (
     bs.includes("/entity-profiles.json") &&
     bs.includes("/.well-known/brand.json") &&
     bs.includes("/geo-baseline.json") &&
+    bs.includes("#website") &&
     ls.includes("/prices.json") &&
     ls.includes("/point-c.txt") &&
     ls.includes("/brand.json") &&
     ls.includes("/.well-known/brand.json") &&
     ls.includes("/entity.json") &&
     ls.includes("/entity-profiles.json") &&
-    ls.includes("/geo-baseline.json")
+    ls.includes("/geo-baseline.json") &&
+    ls.includes("#website")
   ) {
-    ok("entity nested brand/location subjectOf invent parity + brand-wk/geo/org");
-  } else fail("entity nested brand/location subjectOf invent parity + brand-wk/geo/org");
+    ok("entity nested brand/location subjectOf invent parity + brand-wk/geo/org/#website");
+  } else fail("entity nested brand/location subjectOf invent parity + brand-wk/geo/org/#website");
 }
 
 if (
@@ -451,10 +457,11 @@ if (
     String(disc.pricingWellKnown || "").includes("/.well-known/pricing.json") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
+    String(disc.website || "").includes("#website") &&
     merchantPack.includes("/.well-known/modules.json")
   ) {
-    ok("geo discovery invent well-known modules/sku/pricing/brand/entity");
-  } else fail("geo discovery invent well-known modules/sku/pricing/brand/entity");
+    ok("geo discovery invent well-known modules/sku/pricing/brand/entity/#website");
+  } else fail("geo discovery invent well-known modules/sku/pricing/brand/entity/#website");
 }
 
 if (process.exitCode) {

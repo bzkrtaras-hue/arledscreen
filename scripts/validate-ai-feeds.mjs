@@ -627,11 +627,16 @@ if (fs.existsSync(outDir)) {
     "merchantWellKnown",
     "modulesJson",
     "skuJson",
+    "website",
   ]) {
     if (!String(baseline?.discovery?.[key] || "").includes("arledscreen.com")) {
       console.error(`❌ geo-baseline.json discovery.${key} required for invent/agent surfaces`);
       process.exit(1);
     }
+  }
+  if (!String(baseline?.discovery?.website || "").includes("#website")) {
+    console.error("❌ geo-baseline.json discovery.website must cite /#website");
+    process.exit(1);
   }
   if (!JSON.stringify(baseline?.isBasedOn || []).includes("AGENTS.md")) {
     console.error("❌ geo-baseline.json isBasedOn must cite AGENTS.md");
@@ -1069,9 +1074,10 @@ if (fs.existsSync(outDir)) {
     entity.location.subjectOf.length < 3 ||
     !JSON.stringify(entity.location.subjectOf).includes("/prices.json") ||
     !JSON.stringify(entity.location.subjectOf).includes("/point-c.txt") ||
-    !JSON.stringify(entity.location.subjectOf).includes("/brand.json")
+    !JSON.stringify(entity.location.subjectOf).includes("/brand.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("#website")
   ) {
-    console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog + subjectOf invent (prices/point-c/brand)");
+    console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog + subjectOf invent (prices/point-c/brand/#website)");
     process.exit(1);
   }
   if (
@@ -1671,9 +1677,10 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/.well-known/entity.json") ||
       !rssLive.includes("#website") ||
       !rssLive.includes("geo:next") ||
+      !rssLive.includes("geo:ack") ||
       !rssLive.includes('rel="related"')
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + #website + geo:next");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + #website + geo:next/ack");
       process.exit(1);
     }
   }
@@ -1901,8 +1908,19 @@ if (fs.existsSync(outDir)) {
       console.error("❌ entity-profiles.json must invent-join WebSite #website (mainEntityOfPage + about + isRelatedTo)");
       process.exit(1);
     }
-    if (!JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next")) {
-      console.error("❌ entity-profiles.json ownerP0Checklist must cite npm run geo:next");
+    if (
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack")
+    ) {
+      console.error("❌ entity-profiles.json ownerP0Checklist must cite npm run geo:next + geo:ack");
+      process.exit(1);
+    }
+    if (!String(profiles?.canonicalUrls?.website || "").includes("#website")) {
+      console.error("❌ entity-profiles.json canonicalUrls.website must cite /#website");
+      process.exit(1);
+    }
+    if (!String(profiles?.description || "").includes("geo:ack")) {
+      console.error("❌ entity-profiles.json description must cite geo:ack");
       process.exit(1);
     }
   }

@@ -1320,7 +1320,7 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/.well-known/merchant.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/entity.json" rel="related" type="application/ld+json"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next</description>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
     <docs>${SITE_URL}/ai.txt</docs>
@@ -1593,6 +1593,12 @@ function enrichEntityDocument(entity) {
     name: "ARLEDSCREEN GEO technical baseline",
     url: `${SITE_URL}/geo-baseline.json`,
   };
+  const websiteEntry = {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: "ARLEDSCREEN",
+    url: SITE_URL,
+  };
   let subjectOf = Array.isArray(entity.subjectOf) ? [...entity.subjectOf] : [];
   subjectOf = ensureSubjectNeedle(subjectOf, "/point-c.txt", pointCEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/brand.json", brandDocEntry);
@@ -1600,6 +1606,7 @@ function enrichEntityDocument(entity) {
   subjectOf = ensureSubjectNeedle(subjectOf, "/prices.json", pricesAliasEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/entity-profiles.json", entityProfilesEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/geo-baseline.json", geoBaselineEntry);
+  subjectOf = ensureSubjectNeedle(subjectOf, "#website", websiteEntry);
   entity.subjectOf = subjectOf;
   // Nested Brand / LocalBusiness subjectOf invent parity with top-level (agents that walk brand|location).
   if (entity.brand && typeof entity.brand === "object") {
@@ -1610,6 +1617,7 @@ function enrichEntityDocument(entity) {
     bs = ensureSubjectNeedle(bs, "/entity-profiles.json", entityProfilesEntry);
     bs = ensureSubjectNeedle(bs, "/.well-known/brand.json", brandWellKnownEntry);
     bs = ensureSubjectNeedle(bs, "/geo-baseline.json", geoBaselineEntry);
+    bs = ensureSubjectNeedle(bs, "#website", websiteEntry);
     entity.brand.subjectOf = bs;
   }
   if (entity.location && typeof entity.location === "object") {
@@ -1621,6 +1629,7 @@ function enrichEntityDocument(entity) {
     ls = ensureSubjectNeedle(ls, "/entity.json", entityOrgEntry);
     ls = ensureSubjectNeedle(ls, "/entity-profiles.json", entityProfilesEntry);
     ls = ensureSubjectNeedle(ls, "/geo-baseline.json", geoBaselineEntry);
+    ls = ensureSubjectNeedle(ls, "#website", websiteEntry);
     entity.location.subjectOf = ls;
   }
   return entity;
@@ -1777,7 +1786,7 @@ function enrichEntityProfiles(doc) {
   };
 
   const geoNextLead =
-    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok)";
+    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website";
   const checklist = Array.isArray(doc.ownerP0Checklist) ? [...doc.ownerP0Checklist] : [];
   const withoutOldLead = checklist.filter((row) => !String(row).includes("P0 status:") && !String(row).includes("P0 next:"));
   doc.ownerP0Checklist = [geoNextLead, ...withoutOldLead];
@@ -1791,10 +1800,19 @@ function enrichEntityProfiles(doc) {
     pointCTxt: `${SITE_URL}/point-c.txt`,
     pointCEnTxt: `${SITE_URL}/point-c-en.txt`,
     geoBaselineJson: `${SITE_URL}/geo-baseline.json`,
+    website: `${SITE_URL}/#website`,
   };
 
-  if (typeof doc.description === "string" && !doc.description.includes("geo:next")) {
-    doc.description = `${doc.description} Owner single clipboard: npm run geo:next.`;
+  if (typeof doc.description === "string") {
+    if (!doc.description.includes("geo:next")) {
+      doc.description = `${doc.description} Owner single clipboard: npm run geo:next.`;
+    }
+    if (!doc.description.includes("geo:ack")) {
+      doc.description = `${doc.description} After paste: npm run geo:ack.`;
+    }
+    if (!doc.description.includes("#website")) {
+      doc.description = `${doc.description} WebSite: ${SITE_URL}/#website.`;
+    }
   }
   return doc;
 }
@@ -2059,7 +2077,9 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       brandPage: `${SITE_URL}/tr/nxtionstar/`,
       brandPageEn: `${SITE_URL}/en/nxtionstar/`,
       homeSpeakableService: `${SITE_URL}/tr/#service`,
+      website: `${SITE_URL}/#website`,
       websiteQuoteAction: `${SITE_URL}/tr/quote/`,
+      websiteQuoteActionEn: `${SITE_URL}/en/quote/`,
       priceHub: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
       priceHubEn: `${SITE_URL}/en/led-ekran-fiyatlari/`,
       faqTr: `${SITE_URL}/tr/sss/`,
