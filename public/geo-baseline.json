@@ -266,9 +266,9 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "c99f41e1da5bf7bcdc2b2abb5ddbbe57dfa20a43790ffb5cb0062ab94968f0c0",
-    "catalogSha256": "05c1790b47698eef6e5b3b9c64c87891748e0e4b09572d8cd3aa7c2e4ea50a38",
-    "merchantTsvSha256": "8f4f76917d91d3b49e66d826953744edfd6e7227e4243fa1d7fef401cb422a82",
+    "aiShoppingSha256": "6697ef8a5eb71c52040163b7744050053d6c46712970e295329a550fe85ab48a",
+    "catalogSha256": "a92062ca2c5fe45881e44f98eaaae0d73d9b7f29f656e8511b9a5c4456f9e112",
+    "merchantTsvSha256": "fa6fef4a1fd235e03859c669191e9bbae78338e08eae7d71f3f22de68dc19f04",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
   "discovery": {
