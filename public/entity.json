@@ -94,7 +94,10 @@
         "url": "https://arledscreen.com/geo-baseline.json",
         "name": "ARLEDSCREEN GEO technical baseline"
       }
-    ]
+    ],
+    "makesOffer": {
+      "@id": "https://arledscreen.com/#priced-panels-aggregate"
+    }
   },
   "makesOffer": {
     "@type": "AggregateOffer",

@@ -122,6 +122,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
             : "Aras Bozkurt, İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN’in kurucusudur. LED ekran satış, montaj ve teknik servis projelerini yürütür."
         }
         cssSelectors={["#founder-h1", "#founder-lead"]}
+        mainEntity={{ "@id": `${url}#person` }}
       />
       <script
         type="application/ld+json"

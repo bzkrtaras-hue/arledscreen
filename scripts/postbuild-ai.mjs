@@ -938,6 +938,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         hasOfferCatalog: `${SITE_URL}/catalog.json`,
         offerAvailableAtOrFrom: LOCALBUSINESS_ID,
         organizationLocation: LOCALBUSINESS_ID,
+        serviceProvider: LOCALBUSINESS_ID,
       },
       legacyDomain: {
         host: "arleds.com",

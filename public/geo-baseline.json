@@ -38,7 +38,8 @@
       "datasetHasPartOffers": true,
       "hasOfferCatalog": "https://arledscreen.com/catalog.json",
       "offerAvailableAtOrFrom": "https://arledscreen.com/#localbusiness",
-      "organizationLocation": "https://arledscreen.com/#localbusiness"
+      "organizationLocation": "https://arledscreen.com/#localbusiness",
+      "serviceProvider": "https://arledscreen.com/#localbusiness"
     },
     "legacyDomain": {
       "host": "arleds.com",

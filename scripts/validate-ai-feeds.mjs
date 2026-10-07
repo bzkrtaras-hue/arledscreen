@@ -316,9 +316,10 @@ if (fs.existsSync(outDir)) {
     !baseline?.baseline?.priceGraph?.datasetHasPartOffers ||
     !String(baseline?.baseline?.priceGraph?.offerItemOffered || "").includes("#product") ||
     !String(baseline?.baseline?.priceGraph?.offerAvailableAtOrFrom || "").includes("#localbusiness") ||
-    !String(baseline?.baseline?.priceGraph?.organizationLocation || "").includes("#localbusiness")
+    !String(baseline?.baseline?.priceGraph?.organizationLocation || "").includes("#localbusiness") ||
+    !String(baseline?.baseline?.priceGraph?.serviceProvider || "").includes("#localbusiness")
   ) {
-    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + itemOffered + hasPart Offers + #localbusiness location");
+    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + itemOffered + hasPart Offers + #localbusiness location + serviceProvider");
     process.exit(1);
   }
   for (const key of ["pricesJson", "organization", "agentsJson", "agentsMd", "securityTxt", "humansTxt"]) {
@@ -522,6 +523,10 @@ if (fs.existsSync(outDir)) {
   }
   if (entity?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar") {
     console.error("❌ entity.json brand.@id must be #brand-nxtionstar");
+    process.exit(1);
+  }
+  if (!String(entity?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate")) {
+    console.error("❌ entity.json brand.makesOffer must join #priced-panels-aggregate");
     process.exit(1);
   }
   if (
@@ -918,9 +923,14 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("AGENTS.md") ||
     !headersLive.includes("panels.json") ||
     !headersLive.includes("mpn.json") ||
-    !headersLive.includes("entity-profiles.json")
+    !headersLive.includes("entity-profiles.json") ||
+    !headersLive.includes("catalog.json") ||
+    !headersLive.includes("geo-baseline.json") ||
+    !headersLive.includes("merchant.json") ||
+    !headersLive.includes("offer.json") ||
+    !headersLive.includes("ai.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+agents+panels/mpn/profiles");
+    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -1708,6 +1718,30 @@ if (fs.existsSync(outDir)) {
     console.error("❌ Organization/Brand JSON-LD on tr/ must disambiguate NationStar");
     process.exit(1);
   }
+  {
+    const nxHtml = fs.readFileSync(path.join(outDir, "tr/nxtionstar/index.html"), "utf8");
+    let brandOfferOk = false;
+    for (const m of nxHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "Brand") continue;
+          if (String(node?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate")) {
+            brandOfferOk = true;
+            break;
+          }
+        }
+        if (brandOfferOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!brandOfferOk) {
+      console.error("❌ tr/nxtionstar Brand JSON-LD must makesOffer → #priced-panels-aggregate");
+      process.exit(1);
+    }
+  }
   const indexNowScript = fs.readFileSync(path.join(repoRoot, "scripts/submit-indexnow.mjs"), "utf8");
   for (const must of [
     "/tr/about/",
@@ -1916,6 +1950,32 @@ if (fs.existsSync(outDir)) {
     }
     if (!hubPageOk) {
       console.error("❌ price hub WebPage.mainEntity must join #service");
+      process.exit(1);
+    }
+  }
+
+  // E-E-A-T + services Speakable forward-join primary entity.
+  for (const [rel, checkMid] of [
+    ["tr/about/index.html", (mid) => mid === "https://arledscreen.com/#organization"],
+    ["tr/about/aras-bozkurt/index.html", (mid) => mid.includes("/tr/about/aras-bozkurt/") && mid.endsWith("#person")],
+    ["tr/hizmetler/index.html", (mid) => mid.includes("/tr/hizmetler/") && mid.endsWith("#service")],
+  ]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    let pageOk = false;
+    for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "WebPage") continue;
+        if (checkMid(String(d.mainEntity?.["@id"] || ""))) {
+          pageOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!pageOk) {
+      console.error(`❌ ${rel} WebPage.mainEntity must join primary entity`);
       process.exit(1);
     }
   }

@@ -68,6 +68,7 @@ export default async function AboutPage({ params }: PageProps) {
             name={seo.h1 ?? about.title}
             description={seo.description}
             cssSelectors={["#about-h1", "#about-cite"]}
+            mainEntity={{ "@id": "https://arledscreen.com/#organization" }}
           />
           <script
             type="application/ld+json"

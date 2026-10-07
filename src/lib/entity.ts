@@ -214,7 +214,14 @@ export type EntityDocument = {
     areaServed: string;
     availableLanguage: string[];
   }>;
-  brand: { "@type": "Brand"; "@id": string; name: string; url: string; subjectOf?: unknown };
+  brand: {
+    "@type": "Brand";
+    "@id": string;
+    name: string;
+    url: string;
+    subjectOf?: unknown;
+    makesOffer?: { "@id": string };
+  };
   /** Published 12-panel USD AggregateOffer — schema.org join for entity-first agents. */
   makesOffer: ReturnType<typeof organizationMakesOffer>;
   /** Seller → catalog Collection edge. */
@@ -336,6 +343,7 @@ export function buildEntityDocument(): EntityDocument {
           name: "ARLEDSCREEN GEO technical baseline",
         },
       ],
+      makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
     },
     makesOffer: organizationMakesOffer(),
     hasOfferCatalog: organizationHasOfferCatalog(),

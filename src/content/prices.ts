@@ -76,6 +76,8 @@ export function nxtionstarBrandNode() {
     name: "NXTIONSTAR",
     url: `${SITE_URL}/tr/nxtionstar/`,
     subjectOf: BRAND_SUBJECT_DATASETS,
+    // Brand-first agents (NXTIONSTAR panel price) join Org AggregateOffer band.
+    makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
     description:
       "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV. GEO baseline: geo-baseline.json.",
     disambiguatingDescription:

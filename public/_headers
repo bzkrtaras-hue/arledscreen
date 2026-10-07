@@ -18,6 +18,11 @@
   Link: <https://arledscreen.com/.well-known/agents.json>; rel="alternate"; type="application/ld+json"; title="Agent Discovery Index"
   Link: <https://arledscreen.com/AGENTS.md>; rel="alternate"; type="text/markdown"; title="AGENTS.md"
   Link: <https://arledscreen.com/llms.txt>; rel="alternate"; type="text/plain"; title="LLM Context"
+  Link: <https://arledscreen.com/catalog.json>; rel="describedby"; type="application/ld+json"; title="Panel Catalog OfferCatalog"
+  Link: <https://arledscreen.com/geo-baseline.json>; rel="describedby"; type="application/ld+json"; title="GEO Technical Baseline"
+  Link: <https://arledscreen.com/merchant.json>; rel="alternate"; type="application/ld+json"; title="Merchant pricedPanels alias"
+  Link: <https://arledscreen.com/offer.json>; rel="alternate"; type="application/ld+json"; title="Offer pricedPanels alias"
+  Link: <https://arledscreen.com/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer"
 
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable

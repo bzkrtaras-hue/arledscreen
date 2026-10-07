@@ -202,6 +202,7 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
             : "LED ekran keşfi, montaj, devreye alma, bakım ve teknik servis. İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN."
         }
         cssSelectors={["#hizmet-h1", "#hizmet-lead"]}
+        mainEntity={{ "@id": `${pageUrl}#service` }}
       />
       <script
         type="application/ld+json"
