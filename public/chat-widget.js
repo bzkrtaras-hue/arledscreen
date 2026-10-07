@@ -162,7 +162,14 @@
     return n;
   }
   function avatarImg(size) {
-    var i = el("img", "", { src: AVATAR, alt: "", width: String(size), height: String(size), decoding: "async" });
+    // Bing Webmaster flags empty alt on 64×64 launcher / 72×72 loading avatars.
+    var i = el("img", "", {
+      src: AVATAR,
+      alt: T.name,
+      width: String(size),
+      height: String(size),
+      decoding: "async",
+    });
     return i;
   }
 
