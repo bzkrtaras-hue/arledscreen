@@ -119,8 +119,12 @@ if (
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
 
-if ((agents?.itemListElement || []).length >= 17) ok(`agents.json ×${agents.itemListElement.length}`);
-else fail("agents.json ≥17");
+if (
+  (agents?.itemListElement || []).length >= 18 &&
+  (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("#website"))
+) {
+  ok(`agents.json ×${agents.itemListElement.length} incl #website`);
+} else fail("agents.json ≥18 incl #website");
 
 {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
@@ -255,12 +259,18 @@ else fail("ard.resources.pointC");
     head.includes("entity_profiles_url") &&
     head.includes("point_c_url") &&
     head.includes("brand_well_known_url") &&
+    head.includes("ai_shopping_url") &&
+    head.includes("prices_json_url") &&
+    head.includes("catalog_url") &&
     head.includes("organization_url") &&
     head.includes("geo_baseline_url") &&
     head.includes("website_url") &&
     tsv.includes(`${SITE}/#organization`) &&
     tsv.includes(`${SITE}/entity.json`) &&
     tsv.includes(`${SITE}/brand.json`) &&
+    tsv.includes(`${SITE}/ai-shopping.json`) &&
+    tsv.includes(`${SITE}/prices.json`) &&
+    tsv.includes(`${SITE}/catalog.json`) &&
     tsv.includes(`${SITE}/entity-profiles.json`) &&
     tsv.includes(`${SITE}/point-c.txt`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
@@ -268,8 +278,8 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/geo-baseline.json`) &&
     tsv.includes(`${SITE}/#website`)
   ) {
-    ok("merchant TSV brand_url + org/entity/profiles/point-c/brand-wk/org/geo/website invent cols");
-  } else fail("merchant TSV brand_url + org/entity/profiles/point-c/brand-wk/org/geo/website invent cols");
+    ok("merchant TSV feed/org/entity/profiles/point-c/brand-wk/geo/website invent cols");
+  } else fail("merchant TSV feed/org/entity/profiles/point-c/brand-wk/geo/website invent cols");
 }
 
 if (
@@ -317,10 +327,11 @@ if (
     dist.includes("/.well-known/entity.json") &&
     dist.includes("/organization.json") &&
     dist.includes("/point-c.txt") &&
-    dist.includes("/entity-profiles.json")
+    dist.includes("/entity-profiles.json") &&
+    dist.includes("#website")
   ) {
-    ok("ai-shopping distribution → priceAliases + brand/entity wk/org/point-c/profiles reverse join");
-  } else fail("ai-shopping distribution → priceAliases + brand/entity wk/org/point-c/profiles reverse join");
+    ok("ai-shopping distribution → priceAliases + brand/entity wk/org/point-c/profiles/#website");
+  } else fail("ai-shopping distribution → priceAliases + brand/entity wk/org/point-c/profiles/#website");
 }
 
 {
@@ -378,10 +389,11 @@ if (
   JSON.stringify(brand?.distribution || []).includes("/organization.json") &&
   JSON.stringify(brand?.distribution || []).includes("/prices.json") &&
   JSON.stringify(brand?.subjectOf || []).includes("/entity-profiles.json") &&
-  JSON.stringify(brand?.distribution || []).includes("/entity-profiles.json")
+  JSON.stringify(brand?.distribution || []).includes("/entity-profiles.json") &&
+  JSON.stringify(brand?.distribution || []).includes("#website")
 ) {
-  ok("brand.subjectOf+distribution → point-c + entity/organization + prices + profiles");
-} else fail("brand.subjectOf+distribution → point-c + entity/organization + prices + profiles");
+  ok("brand.subjectOf+distribution → point-c + entity/organization + prices + profiles/#website");
+} else fail("brand.subjectOf+distribution → point-c + entity/organization + prices + profiles/#website");
 
 {
   const related = JSON.stringify(cat?.isRelatedTo || []);
@@ -395,10 +407,11 @@ if (
     dist.includes("/brand.json") &&
     dist.includes("/entity.json") &&
     dist.includes("/point-c.txt") &&
-    dist.includes("/entity-profiles.json")
+    dist.includes("/entity-profiles.json") &&
+    dist.includes("#website")
   ) {
-    ok("catalog distribution invent → ai-shopping/prices/brand/entity/point-c/profiles");
-  } else fail("catalog distribution invent → ai-shopping/prices/brand/entity/point-c/profiles");
+    ok("catalog distribution invent → ai-shopping/prices/brand/entity/point-c/profiles/#website");
+  } else fail("catalog distribution invent → ai-shopping/prices/brand/entity/point-c/profiles/#website");
 }
 
 {

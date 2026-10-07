@@ -181,7 +181,7 @@
         "type": "Agent Index",
         "url": "https://arledscreen.com/ai-shopping.json",
         "format": "application/ld+json",
-        "description": "Single-fetch Dataset: cite + pricedPanels (12 USD SKU, mpn=sku) + hasPart/isPartOf graph (hasPart Offer stubs: sameAs catalog+PDP #offer, itemOffered → PDP #product) + shoppingPolicy; invent aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /sku · /offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json · /api/mpn.json; no free shipping; no invented TL packs or GTINs",
+        "description": "Single-fetch Dataset: cite + pricedPanels (12 USD SKU, mpn=sku) + hasPart/isPartOf graph (hasPart Offer stubs: sameAs catalog+PDP #offer, itemOffered → PDP #product) + shoppingPolicy; invent aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /sku · /offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json · /api/mpn.json; no free shipping; no invented TL packs or GTINs. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt.",
         "pricedPanels": 12,
         "hasPart": 12,
         "priceValidUntil": "2026-12-31",

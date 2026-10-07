@@ -408,6 +408,7 @@ function buildCatalog() {
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      websiteDistributionEntry(),
     ],
     isRelatedTo: [
       {
@@ -886,6 +887,7 @@ function buildAiShopping() {
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      websiteDistributionEntry(),
     ],
     dateModified: new Date().toISOString().split("T")[0],
     inLanguage: ["tr", "en"],
@@ -1124,7 +1126,10 @@ function buildMerchantTsv() {
     "condition",
     "tax_included",
     "shipping_included",
-    // Invent joins for TSV-only merchant / shopping agents (Point C + profiles).
+    // Invent joins for TSV-only merchant / shopping agents (feeds + Point C + profiles).
+    "ai_shopping_url",
+    "prices_json_url",
+    "catalog_url",
     "entity_profiles_url",
     "point_c_url",
     "brand_well_known_url",
@@ -1175,6 +1180,9 @@ function buildMerchantTsv() {
         "new",
         "false",
         "false",
+        `${SITE_URL}/ai-shopping.json`,
+        `${SITE_URL}/prices.json`,
+        `${SITE_URL}/catalog.json`,
         `${SITE_URL}/entity-profiles.json`,
         `${SITE_URL}/point-c.txt`,
         `${SITE_URL}/.well-known/brand.json`,
@@ -1479,6 +1487,17 @@ function ensureSubjectNeedle(list, needle, entry) {
   const out = Array.isArray(list) ? [...list] : [];
   if (!out.some((s) => String(s?.url || s?.["@id"] || "").includes(needle))) out.push(entry);
   return out;
+}
+
+/** Schema.org distribution walk entry so Dataset/Brand agents reach WebSite #website. */
+function websiteDistributionEntry() {
+  return {
+    "@type": "DataDownload",
+    "@id": `${SITE_URL}/#website`,
+    encodingFormat: "text/html",
+    contentUrl: SITE_URL,
+    name: "ARLEDSCREEN WebSite",
+  };
 }
 
 /** Entity-first invent: Brand AggregateOffer×12 + Org/WebSite OrderAction (TR/EN). */
@@ -1826,6 +1845,20 @@ function enrichEntityProfiles(doc) {
     }
     if (!doc.description.includes("#website")) {
       doc.description = `${doc.description} WebSite: ${SITE_URL}/#website.`;
+    }
+  }
+
+  // Machine packs (not human GBP/IG bios) must invent-join WebSite #website.
+  doc.packs = doc.packs && typeof doc.packs === "object" ? { ...doc.packs } : doc.packs;
+  doc.packsEn = doc.packsEn && typeof doc.packsEn === "object" ? { ...doc.packsEn } : doc.packsEn;
+  for (const packs of [doc.packs, doc.packsEn]) {
+    if (!packs || typeof packs !== "object") continue;
+    for (const key of ["googleMerchantReadiness", "wikidataReadiness"]) {
+      const cur = String(packs[key] || "");
+      if (!cur) continue;
+      if (!cur.includes("#website")) {
+        packs[key] = `${cur.trim()}\nWebSite: ${SITE_URL}/#website`;
+      }
     }
   }
   return doc;
@@ -2787,6 +2820,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      websiteDistributionEntry(),
     ],
     subjectOf: [
       {
@@ -3102,15 +3136,18 @@ Acknowledgments: https://arledscreen.com/brand.json
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
-    // Trailing invent cols: … tax, shipping, profiles, point_c, brand_wk, org, geo_baseline, website_url
+    // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c, brand_wk, org, geo, website
     const websiteUrl = cells[cells.length - 1];
     const geoBaselineUrl = cells[cells.length - 2];
     const orgUrl = cells[cells.length - 3];
     const brandWk = cells[cells.length - 4];
     const pointCUrl = cells[cells.length - 5];
     const profilesUrl = cells[cells.length - 6];
-    const shippingIncluded = cells[cells.length - 7];
-    const taxIncluded = cells[cells.length - 8];
+    const catalogUrl = cells[cells.length - 7];
+    const pricesJsonUrl = cells[cells.length - 8];
+    const aiShoppingUrl = cells[cells.length - 9];
+    const shippingIncluded = cells[cells.length - 10];
+    const taxIncluded = cells[cells.length - 11];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3119,6 +3156,9 @@ Acknowledgments: https://arledscreen.com/brand.json
       !row.includes(`\t${SITE_URL}/#brand-nxtionstar\t`) ||
       taxIncluded !== "false" ||
       shippingIncluded !== "false" ||
+      aiShoppingUrl !== `${SITE_URL}/ai-shopping.json` ||
+      pricesJsonUrl !== `${SITE_URL}/prices.json` ||
+      catalogUrl !== `${SITE_URL}/catalog.json` ||
       profilesUrl !== `${SITE_URL}/entity-profiles.json` ||
       pointCUrl !== `${SITE_URL}/point-c.txt` ||
       brandWk !== `${SITE_URL}/.well-known/brand.json` ||

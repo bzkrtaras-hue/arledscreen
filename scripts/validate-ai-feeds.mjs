@@ -683,6 +683,17 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json description must cite geo:next/ack + #website owner invent");
     process.exit(1);
   }
+  if (!JSON.stringify(ai?.distribution || []).includes("#website")) {
+    console.error("❌ ai-shopping.json distribution must invent-join WebSite #website");
+    process.exit(1);
+  }
+  if (
+    !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("geo:ack") ||
+    !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("#website")
+  ) {
+    console.error("❌ ard.json resources.aiShopping description must cite geo:ack + #website");
+    process.exit(1);
+  }
   if (!ard?.agentic?.resources?.pricesJson?.url?.includes("/prices.json") || !ard?.agentic?.resources?.agentsMd?.url?.includes("AGENTS.md")) {
     console.error("❌ ard.json must expose resources.pricesJson + agentsMd");
     process.exit(1);
@@ -732,9 +743,10 @@ if (fs.existsSync(outDir)) {
       !catDist.includes("/entity.json") ||
       !catDist.includes("/point-c.txt") ||
       !catDist.includes("/feeds/prices.rss") ||
+      !catDist.includes("#website") ||
       !JSON.stringify(catalogLive.isRelatedTo || []).includes("#website")
     ) {
-      console.error("❌ catalog.json Dataset.distribution must invent-join ai-shopping/prices/brand/entity/point-c/prices.rss");
+      console.error("❌ catalog.json Dataset.distribution must invent-join ai-shopping/prices/brand/entity/point-c/prices.rss/#website");
       process.exit(1);
     }
   }
@@ -763,6 +775,10 @@ if (fs.existsSync(outDir)) {
     }
     if (!JSON.stringify(brandLive?.isRelatedTo || []).includes("#website")) {
       console.error("❌ brand.json isRelatedTo must cite WebSite #website");
+      process.exit(1);
+    }
+    if (!JSON.stringify(brandLive?.distribution || []).includes("#website")) {
+      console.error("❌ brand.json distribution must invent-join WebSite #website");
       process.exit(1);
     }
   }
@@ -1470,8 +1486,12 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agents.json description must cite geo:next/ack + #website");
     process.exit(1);
   }
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 17) {
-    console.error("❌ agents.json must list ≥17 discovery items (incl. brand/prices.rss/point-c/organization/prices/point-c-en)");
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 18) {
+    console.error("❌ agents.json must list ≥18 discovery items (incl. brand/prices.rss/point-c/organization/prices/point-c-en/#website)");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("#website"))) {
+    console.error("❌ agents.json must list WebSite #website");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("entity-profiles.json"))) {
@@ -1978,6 +1998,7 @@ if (fs.existsSync(outDir)) {
       "/.well-known/price.json",
       "/.well-known/pricing.json",
       "/.well-known/panels.json",
+      "#website",
     ]) {
       if (!merchantPack.includes(needle)) {
         console.error(`❌ entity-profiles googleMerchantReadiness must cite inventable ${needle}`);
@@ -2345,6 +2366,9 @@ if (fs.existsSync(outDir)) {
     "local_business_id",
     "brand_makes_offer_id",
     "brand_has_offer_catalog",
+    "ai_shopping_url",
+    "prices_json_url",
+    "catalog_url",
     "entity_profiles_url",
     "point_c_url",
     "brand_well_known_url",
@@ -2371,6 +2395,9 @@ if (fs.existsSync(outDir)) {
   const lbIdx = tsvCols.indexOf("local_business_id");
   const brandOfferIdx = tsvCols.indexOf("brand_makes_offer_id");
   const brandCatalogIdx = tsvCols.indexOf("brand_has_offer_catalog");
+  const aiShoppingUrlIdx = tsvCols.indexOf("ai_shopping_url");
+  const pricesJsonUrlIdx = tsvCols.indexOf("prices_json_url");
+  const catalogUrlIdx = tsvCols.indexOf("catalog_url");
   const profilesUrlIdx = tsvCols.indexOf("entity_profiles_url");
   const pointCUrlIdx = tsvCols.indexOf("point_c_url");
   const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
@@ -2405,6 +2432,18 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[brandCatalogIdx] !== "https://arledscreen.com/catalog.json") {
       console.error(`❌ merchant TSV brand_has_offer_catalog must be catalog.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[aiShoppingUrlIdx] !== "https://arledscreen.com/ai-shopping.json") {
+      console.error(`❌ merchant TSV ai_shopping_url must be /ai-shopping.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pricesJsonUrlIdx] !== "https://arledscreen.com/prices.json") {
+      console.error(`❌ merchant TSV prices_json_url must be /prices.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[catalogUrlIdx] !== "https://arledscreen.com/catalog.json") {
+      console.error(`❌ merchant TSV catalog_url must be /catalog.json for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[profilesUrlIdx] !== "https://arledscreen.com/entity-profiles.json") {
