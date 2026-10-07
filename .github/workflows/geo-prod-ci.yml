@@ -144,12 +144,14 @@ jobs:
           grep -q "/brand.json" out/entity.json
           npm run verify:arleds-301 >/tmp/arleds-verify.txt 2>&1 || true
           grep -q "Hostinger clipboard" /tmp/arleds-verify.txt
+          grep -q "DNS diagnosis" /tmp/arleds-verify.txt
+          grep -q "mode:" /tmp/arleds-verify.txt
           npm run geo:status >/tmp/geo-status.txt 2>&1 || true
           grep -q "GEO next:" /tmp/geo-status.txt
           grep -q "geo:next" /tmp/geo-status.txt
-          grep -q "Hostinger clipboard" /tmp/geo-status.txt
-          grep -q "mailto:support@hostinger.com" /tmp/geo-status.txt
-          grep -q "Gmail draft (Send)" /tmp/geo-status.txt
+          grep -Eq "Hostinger clipboard|DNSEnable|mode=" /tmp/geo-status.txt
+          grep -q "mailto:support@hostinger.com" /tmp/geo-status.txt || grep -q "verify:arleds-301" /tmp/geo-status.txt
+          grep -q "Gmail draft (Send)" /tmp/geo-status.txt || grep -q "Domain Redirect" /tmp/geo-status.txt
           grep -q "Point C paste progress" /tmp/geo-status.txt
           grep -q "Point C next paste" /tmp/geo-status.txt
           grep -q "Tur1a next:" /tmp/geo-status.txt

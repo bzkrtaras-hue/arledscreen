@@ -87,42 +87,55 @@ try {
 // arleds 301
 const probe = spawnSync(process.execPath, [path.join(repoRoot, "scripts/verify-arleds-301.mjs")], {
   encoding: "utf8",
-  timeout: 60000,
+  timeout: 90000,
 });
 const arledsOk = probe.status === 0;
+const verifyLog = `${probe.stdout || ""}\n${probe.stderr || ""}`;
+const dnsMode = (verifyLog.match(/^mode:\s+(\S+)/m) || [])[1] || "";
+const dnsNsLine = (verifyLog.match(/^arleds\.com NS:.*$/m) || [])[0] || "";
 line(
   arledsOk ? "OK" : "OPEN",
   "arleds.com → arledscreen.com/tr/ 301",
-  arledsOk ? "all probes OK" : `see docs/ops/arleds-301-hostinger.md · npm run verify:arleds-301`,
+  arledsOk
+    ? "all probes OK"
+    : `npm run verify:arleds-301${dnsMode ? ` · mode=${dnsMode}` : ""} · docs/ops/arleds-301-hostinger.md`,
 );
 if (!arledsOk) {
-  console.log("  Hostinger clipboard (permanent 301 entire domain):");
-  console.log("  hPanel → Domains → arleds.com → Redirects");
-  console.log("  http://arleds.com/ → https://arledscreen.com/tr/");
-  console.log("  http://www.arleds.com/ → https://arledscreen.com/tr/");
-  console.log("  https://arleds.com/ → https://arledscreen.com/tr/");
-  console.log("  https://www.arleds.com/ → https://arledscreen.com/tr/");
-  console.log("  Also: npm run geo:next · npm run point-c:next · https://arledscreen.com/point-c.txt");
-  try {
-    const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
-    if (GEO_FULL) {
-      console.log("  Hostinger support email (select-all):");
-      console.log("  ---");
-      for (const row of String(mod.buildHostingerEmailClipboard()).split("\n")) console.log(`  ${row}`);
-      console.log("  ---");
-    } else {
-      console.log("  Hostinger support email: npm run geo:next (or GEO_FULL=1 npm run geo:status)");
+  if (dnsNsLine) console.log(`  ${dnsNsLine}`);
+  if (dnsMode === "dnsenable_tls_dead" || dnsMode === "timeout_unknown_dns") {
+    console.log("  Provider: Isimtescil/DNSEnable (Hostinger hPanel will NOT apply).");
+    console.log("  Next: registrar Domain Redirect arleds.com+www → https://arledscreen.com/tr/ (301)");
+    console.log("  Or: move NS to Cloudflare → Bulk Redirect → https://arledscreen.com/tr/");
+    console.log("  Re-check: npm run verify:arleds-301");
+  } else {
+    console.log("  Hostinger clipboard (permanent 301 entire domain):");
+    console.log("  hPanel → Domains → arleds.com → Redirects");
+    console.log("  http://arleds.com/ → https://arledscreen.com/tr/");
+    console.log("  http://www.arleds.com/ → https://arledscreen.com/tr/");
+    console.log("  https://arleds.com/ → https://arledscreen.com/tr/");
+    console.log("  https://www.arleds.com/ → https://arledscreen.com/tr/");
+    try {
+      const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
+      if (GEO_FULL) {
+        console.log("  Hostinger support email (select-all):");
+        console.log("  ---");
+        for (const row of String(mod.buildHostingerEmailClipboard()).split("\n")) console.log(`  ${row}`);
+        console.log("  ---");
+      } else {
+        console.log("  Hostinger support email: npm run geo:next (or GEO_FULL=1 npm run geo:status)");
+      }
+      console.log("  Hostinger mailto:");
+      console.log(`  ${mod.buildHostingerMailto()}`);
+      console.log("  EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml");
+      if (mod.HOSTINGER_GMAIL_DRAFT_URL) {
+        console.log("  Gmail draft (Send):");
+        console.log(`  ${mod.HOSTINGER_GMAIL_DRAFT_URL}`);
+      }
+    } catch {
+      /* clipboard helper optional */
     }
-    console.log("  Hostinger mailto:");
-    console.log(`  ${mod.buildHostingerMailto()}`);
-    console.log("  EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml");
-    if (mod.HOSTINGER_GMAIL_DRAFT_URL) {
-      console.log("  Gmail draft (Send):");
-      console.log(`  ${mod.HOSTINGER_GMAIL_DRAFT_URL}`);
-    }
-  } catch {
-    /* clipboard helper optional */
   }
+  console.log("  Also: npm run geo:next · npm run point-c:next · https://arledscreen.com/point-c.txt");
 }
 
 // Tur1a observations (exclude code-harden platform noise for "human blind" count)
@@ -200,7 +213,15 @@ try {
 
 line("INFO", "PR merge", "PR #60 cursor/geo-prod-guard-5666 → main (owner)");
 line("INFO", "Target", "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores");
-line("INFO", "arleds DNS", "not on Cloudflare for this account — Hostinger redirect required");
+line(
+  "INFO",
+  "arleds DNS",
+  dnsMode
+    ? `live mode=${dnsMode} — follow provider-correct next (npm run verify:arleds-301)`
+    : arledsOk
+      ? "301 probes green"
+      : "run npm run verify:arleds-301 for live NS/provider diagnosis",
+);
 
 console.log("\nCommands: npm run geo:next · npm run geo:ack · npm run point-c:next · npm run point-c:ack · npm run point-c · npm run verify:arleds-301 · npm run tur1a:next · npm run tur1a:csv · npm run tur1a:log · npm run tur1a:matrix · npm run invent:smoke · npm run geo:status · npm run indexnow");
 process.exit(0);
