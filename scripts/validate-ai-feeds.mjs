@@ -172,7 +172,22 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources.priceAliases must include /prices.json");
     process.exit(1);
   }
-  for (const needle of ["/panels.json", "/mpn.json", "/merchant.json", "/panels", "/mpn", "/offer", "/api/panels.json"]) {
+  for (const needle of [
+    "/panels.json",
+    "/mpn.json",
+    "/merchant.json",
+    "/modules.json",
+    "/sku.json",
+    "/panels",
+    "/mpn",
+    "/offer",
+    "/api/panels.json",
+    "/.well-known/merchant.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+  ]) {
     if (!ai.resources.priceAliases.some((u) => String(u).includes(needle))) {
       console.error(`❌ ai-shopping.json resources.priceAliases must include ${needle}`);
       process.exit(1);
