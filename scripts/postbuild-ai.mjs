@@ -153,17 +153,31 @@ function panelLabel(panel) {
   return `${panel.pitch} ${useLabel}${extra ? ` (${extra})` : ""}`;
 }
 
+/** English SKU label for AI agents (same facts as panelLabel; no invented claims). */
+function panelLabelEn(panel) {
+  const useLabel = panel.use === "ic" ? "Indoor" : "Outdoor";
+  const extras = [];
+  if (panel.surface) extras.push(String(panel.surface).toUpperCase());
+  if (panel.frontService) extras.push("front service");
+  const extra = extras.join(", ");
+  return `${panel.pitch} ${useLabel}${extra ? ` (${extra})` : ""}`;
+}
+
 function buildCatalog() {
   const products = PANEL_PRICES.map((panel, index) => {
     const moduleSize = panel.moduleMm ?? "320 × 160 mm";
     const label = panelLabel(panel);
+    const labelEn = panelLabelEn(panel);
 
     return {
       "@type": "Product",
       "@id": `${SITE_URL}/catalog.json#${panel.id}`,
       position: index + 1,
       name: `NXTIONSTAR ${label} LED Modül (${moduleSize})`,
+      nameEn: `NXTIONSTAR ${labelEn} LED Module (${moduleSize})`,
+      alternateName: [`NXTIONSTAR ${labelEn} LED Module`],
       description: `${label} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.`,
+      descriptionEn: `${labelEn} LED display module. Price is per panel; VAT and freight excluded. No free shipping. Final price confirmed in the written quote.`,
       brand: {
         "@type": "Brand",
         "@id": `${SITE_URL}/#brand-nxtionstar`,
@@ -354,6 +368,7 @@ function buildAiShopping() {
   const brandId = `${SITE_URL}/#brand-nxtionstar`;
   const pricedPanels = PANEL_PRICES.map((panel) => {
     const label = panelLabel(panel);
+    const labelEn = panelLabelEn(panel);
     const price = panel.usd.toFixed(2);
     const shippingDetails = panelShippingDetails();
     // Flat price fields kept for simple consumers; nested Offer mirrors catalog/PDP graph.
@@ -362,6 +377,8 @@ function buildAiShopping() {
       "@id": `${panel.productUrl}#product`,
       sku: panel.id,
       name: `NXTIONSTAR ${label} LED Modül`,
+      nameEn: `NXTIONSTAR ${labelEn} LED Module`,
+      alternateName: [`NXTIONSTAR ${labelEn} LED Module`],
       // Keep string brand for simple consumers; brandId aligns with catalog Brand @id.
       brand: "NXTIONSTAR",
       brandId,
@@ -394,16 +411,19 @@ function buildAiShopping() {
   });
 
   // Mirror entity.json FAQs so agents that only fetch the shopping index still get
-  // price-source + canonical-domain (arleds.com) disambiguation Q&A.
+  // price-source + canonical-domain (arleds.com) disambiguation Q&A (TR + EN).
   let entityFaqs = [];
+  let entityFaqsEn = [];
   try {
     const entityPath = path.join(publicDir, "entity.json");
     if (fs.existsSync(entityPath)) {
       const entityDoc = JSON.parse(fs.readFileSync(entityPath, "utf8"));
       if (Array.isArray(entityDoc.faqs)) entityFaqs = entityDoc.faqs;
+      if (Array.isArray(entityDoc.faqsEn)) entityFaqsEn = entityDoc.faqsEn;
     }
   } catch {
     entityFaqs = [];
+    entityFaqsEn = [];
   }
 
   return {
@@ -412,7 +432,7 @@ function buildAiShopping() {
     "@id": `${SITE_URL}/ai-shopping.json`,
     name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
     description:
-      "Single-fetch entity cite + 12 priced panel USD + merchant TSV + quote-only groups. No invented TL packs / 81-province doorways / AggregateRating. No free shipping.",
+      "Single-fetch entity cite + 12 priced panel USD + merchant TSV + quote-only groups. TR faqs + EN faqsEn + pricedPanels.nameEn. No invented TL packs / 81-province doorways / AggregateRating. No free shipping.",
     url: `${SITE_URL}/ai-shopping.json`,
     creator: { "@id": `${SITE_URL}/#organization` },
     brand: {
@@ -432,6 +452,7 @@ function buildAiShopping() {
     inLanguage: ["tr", "en"],
     cite,
     faqs: entityFaqs,
+    faqsEn: entityFaqsEn,
     shoppingPolicy: {
       currency: "USD",
       priceUnit: "panel",
@@ -583,6 +604,7 @@ function buildMerchantTsv() {
   const header = [
     "id",
     "title",
+    "title_en",
     "brand",
     "brand_id",
     "pitch",
@@ -607,10 +629,12 @@ function buildMerchantTsv() {
   const lines = [header.join("\t")];
   for (const panel of PANEL_PRICES) {
     const label = panelLabel(panel);
+    const labelEn = panelLabelEn(panel);
     lines.push(
       [
         panel.id,
         `NXTIONSTAR ${label} LED Modül`,
+        `NXTIONSTAR ${labelEn} LED Module`,
         "NXTIONSTAR",
         brandId,
         panel.pitch,
@@ -853,6 +877,10 @@ invent-regions-en: ${SITE_URL}/en/regions/
 invent-services-en: ${SITE_URL}/en/services/
 invent-brand-en: ${SITE_URL}/en/brand/
 invent-teklif-en: ${SITE_URL}/en/teklif/
+invent-prices-en: ${SITE_URL}/en/prices/
+invent-pricing-en: ${SITE_URL}/en/pricing/
+invent-price-en: ${SITE_URL}/en/price/
+invent-cost-en: ${SITE_URL}/en/cost/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/
@@ -909,6 +937,19 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
   }
   if (!Array.isArray(ai.faqs) || !ai.faqs.some((f) => String(f?.question || "").includes("arleds.com"))) {
     console.error("postbuild-ai: ai-shopping.faqs must include arleds.com Q&A from entity.json");
+    process.exit(1);
+  }
+  if (
+    !Array.isArray(ai.faqsEn) ||
+    ai.faqsEn.length < 5 ||
+    !ai.faqsEn.some((f) => String(f?.question || "").includes("arleds.com")) ||
+    !ai.faqsEn.some((f) => String(f?.question || "").includes("NationStar"))
+  ) {
+    console.error("postbuild-ai: ai-shopping.faqsEn must mirror entity EN arleds.com + NationStar Q&A");
+    process.exit(1);
+  }
+  if (!ai.pricedPanels.every((p) => p.nameEn && String(p.nameEn).includes("LED Module"))) {
+    console.error("postbuild-ai: every pricedPanels entry needs nameEn (…LED Module)");
     process.exit(1);
   }
   if (!fs.existsSync(path.join(outDir, "ai.txt")) || !fs.readFileSync(path.join(outDir, "ai.txt"), "utf8").includes("arleds.com")) {

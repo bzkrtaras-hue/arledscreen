@@ -44,7 +44,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - [Hakkımızda](https://arledscreen.com/tr/about/)
 - [entity.json](https://arledscreen.com/entity.json) — makinece Organization + cite cümleleri + SSS
 - [ai.txt](https://arledscreen.com/ai.txt) — kısa ajan keşif işaretçisi (llms/entity/fiyat feed URL’leri; arleds.com uyarısı)
-- [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — 12 `pricedPanels` + cite + FAQs + alışveriş kuralları (`priceValidUntil` 2026-12-31); ücretsiz kargo yok
+- [ai-shopping.json](https://arledscreen.com/ai-shopping.json) — 12 `pricedPanels` (`name` TR + `nameEn` EN) + cite + `faqs`/`faqsEn` + alışveriş kuralları (`priceValidUntil` 2026-12-31); ücretsiz kargo yok
 - [catalog.json](https://arledscreen.com/catalog.json) — yayımlanmış panel USD
 - [merchant-priced-panels.tsv](https://arledscreen.com/feeds/merchant-priced-panels.tsv) — 12 SKU feed (`brand` / `brand_id`=`#brand-nxtionstar` / `title` / `image_link`; `shipping_included=false`)
 - [geo-baseline.json](https://arledscreen.com/geo-baseline.json) — teknik GEO baseline (12 SKU + Brand `@id` + feed parmak izleri; AI anılma oranı uydurulmaz; Point C / Tur1a sahip kapılı)
@@ -121,4 +121,4 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 ## Optional
 
 - [English](https://arledscreen.com/en/) · [EN calculator (12 panel USD)](https://arledscreen.com/en/hesaplayici/) · [EN quote](https://arledscreen.com/en/quote/) · [EN AI page](https://arledscreen.com/en/yapay-zeka/) · [EN projects](https://arledscreen.com/en/projelerimiz/) · [EN services](https://arledscreen.com/en/hizmetler/) · [EN regions](https://arledscreen.com/en/bolgeler/) · [EN gallery](https://arledscreen.com/en/galeri/) · [EN blog](https://arledscreen.com/en/blog/) · [EN privacy](https://arledscreen.com/en/gizlilik/) · [EN founder](https://arledscreen.com/en/about/aras-bozkurt/)
-- EN cite (entity.json): `citeOneLinerEn` / `citeShortEn` / `citeMediumEn` — also in [ai-shopping.json](https://arledscreen.com/ai-shopping.json) as `cite.en`
+- EN cite (entity.json): `citeOneLinerEn` / `citeShortEn` / `citeMediumEn` + `faqsEn` — also in [ai-shopping.json](https://arledscreen.com/ai-shopping.json) as `cite.en` + `faqsEn`; invent bridges `/en/prices|pricing|price|cost/` → `/en/led-ekran-fiyatlari/`

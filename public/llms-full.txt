@@ -1,7 +1,7 @@
 ## Alıntı (entity.json)
 
 - citeOneLiner: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
-- Panel USD: catalog.json / ai-shopping.json (`pricedPanels`; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) / feeds/merchant-priced-panels.tsv; ücretsiz kargo yok.
+- Panel USD: catalog.json / ai-shopping.json (`pricedPanels` + `nameEn` + `faqsEn`; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) / feeds/merchant-priced-panels.tsv (`title_en`); ücretsiz kargo yok.
 - Teknik GEO baseline: https://arledscreen.com/geo-baseline.json (parmak izleri; anılma % uydurma yok)
 - Brand JSON-LD `@id`: https://arledscreen.com/#brand-nxtionstar (subjectOf → pricedPanels / catalog / merchant TSV / geo-baseline)
 - Point C paste packs: [entity-profiles.json](https://arledscreen.com/entity-profiles.json) — `packs.*` (TR); `packsEn.*` (EN cite-only; no catalog jargon in public bios)

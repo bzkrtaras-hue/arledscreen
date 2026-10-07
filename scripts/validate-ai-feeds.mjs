@@ -161,6 +161,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ merchant TSV must include brand_id column");
     process.exit(1);
   }
+  if (!tsvHead.includes("title_en")) {
+    console.error("❌ merchant TSV must include title_en column for EN AI agents");
+    process.exit(1);
+  }
   if (!ai?.resources?.brandId?.includes("#brand-nxtionstar") || !ai?.resources?.brand?.includes("/nxtionstar/")) {
     console.error("❌ ai-shopping.json resources.brand + brandId required");
     process.exit(1);
@@ -326,6 +330,28 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json faqs must include NXTIONSTAR ≠ NationStar Q&A");
     process.exit(1);
   }
+  if (
+    !Array.isArray(entity.faqsEn) ||
+    entity.faqsEn.length < 5 ||
+    !entity.faqsEn.some((f) => String(f?.question || "").includes("arleds.com")) ||
+    !entity.faqsEn.some((f) => String(f?.question || "").includes("NationStar"))
+  ) {
+    console.error("❌ entity.json faqsEn must include EN arleds.com + NationStar Q&A");
+    process.exit(1);
+  }
+  if (
+    !Array.isArray(ai?.faqsEn) ||
+    ai.faqsEn.length < 5 ||
+    !ai.faqsEn.some((f) => String(f?.question || "").includes("arleds.com")) ||
+    !ai.faqsEn.some((f) => String(f?.question || "").includes("NationStar"))
+  ) {
+    console.error("❌ ai-shopping.json faqsEn must mirror entity EN arleds.com + NationStar Q&A");
+    process.exit(1);
+  }
+  if (!Array.isArray(ai?.pricedPanels) || !ai.pricedPanels.every((p) => p.nameEn && String(p.nameEn).includes("LED Module"))) {
+    console.error("❌ ai-shopping pricedPanels must include nameEn (…LED Module) for all 12 SKUs");
+    process.exit(1);
+  }
   const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
   if (
     !aiTxtLive.includes("/ai-shopping.json") ||
@@ -334,6 +360,15 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("NationStar")
   ) {
     console.error("❌ out/ai.txt must point to feeds and warn on arleds.com + NationStar");
+    process.exit(1);
+  }
+  if (
+    !aiTxtLive.includes("/en/prices/") ||
+    !aiTxtLive.includes("/en/pricing/") ||
+    !aiTxtLive.includes("/en/price/") ||
+    !aiTxtLive.includes("/en/cost/")
+  ) {
+    console.error("❌ out/ai.txt must list invent price EN bridges (prices/pricing/price/cost)");
     process.exit(1);
   }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
