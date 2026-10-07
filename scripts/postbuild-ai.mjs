@@ -553,7 +553,18 @@ function buildAiShopping() {
         quote: `${SITE_URL}/en/quote/`,
         calculator: `${SITE_URL}/en/hesaplayici/`,
         about: `${SITE_URL}/en/about/`,
+        founder: `${SITE_URL}/en/about/aras-bozkurt/`,
         yapayZeka: `${SITE_URL}/en/yapay-zeka/`,
+        intentHub: `${SITE_URL}/en/led-ekran/`,
+        priceHub: `${SITE_URL}/en/led-ekran-fiyatlari/`,
+        productsHub: `${SITE_URL}/en/products/`,
+        servicesHub: `${SITE_URL}/en/hizmetler/`,
+        regionsHub: `${SITE_URL}/en/bolgeler/`,
+        projectsHub: `${SITE_URL}/en/projelerimiz/`,
+        gallery: `${SITE_URL}/en/galeri/`,
+        faq: `${SITE_URL}/en/sss/`,
+        brand: `${SITE_URL}/en/nxtionstar/`,
+        blog: `${SITE_URL}/en/blog/`,
       },
     },
     priceValidUntil: PRICE_VALID_UNTIL,
@@ -722,6 +733,19 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       productsIndoorEn: `${SITE_URL}/en/products/ic-mekan-led-ekran/`,
       productsOutdoorEn: `${SITE_URL}/en/products/dis-mekan-led-ekran/`,
       yapayZeka: `${SITE_URL}/tr/yapay-zeka/`,
+      yapayZekaEn: `${SITE_URL}/en/yapay-zeka/`,
+      servicesHub: `${SITE_URL}/tr/hizmetler/`,
+      servicesHubEn: `${SITE_URL}/en/hizmetler/`,
+      regionsHub: `${SITE_URL}/tr/bolgeler/`,
+      regionsHubEn: `${SITE_URL}/en/bolgeler/`,
+      projectsHub: `${SITE_URL}/tr/projelerimiz/`,
+      projectsHubEn: `${SITE_URL}/en/projelerimiz/`,
+      gallery: `${SITE_URL}/tr/galeri/`,
+      galleryEn: `${SITE_URL}/en/galeri/`,
+      founder: `${SITE_URL}/tr/about/aras-bozkurt/`,
+      founderEn: `${SITE_URL}/en/about/aras-bozkurt/`,
+      blog: `${SITE_URL}/tr/blog/`,
+      blogEn: `${SITE_URL}/en/blog/`,
     },
   };
 }
@@ -815,6 +839,7 @@ services-hub-en: ${SITE_URL}/en/hizmetler/
 regions-hub-en: ${SITE_URL}/en/bolgeler/
 projects-hub-en: ${SITE_URL}/en/projelerimiz/
 gallery-en: ${SITE_URL}/en/galeri/
+blog-en: ${SITE_URL}/en/blog/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/

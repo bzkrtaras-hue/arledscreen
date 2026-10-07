@@ -29,7 +29,8 @@ export function LocaleSelect({
     // Product group landings now have EN counterparts; model pages stay TR-only.
     /^\/tr\/products\/[^/]+\/[^/]+\//,
     /^\/tr\/gizlilik\//,
-    /^\/tr\/blog\//,
+    // Blog index has EN; post bodies stay TR-only.
+    /^\/tr\/blog\/[^/]+\//,
   ];
   // From a TR province detail page, EN switch lands on the EN regions hub.
   const switchLocaleHref = (next: Locale) => {
@@ -40,6 +41,9 @@ export function LocaleSelect({
     }
     if (next !== "tr" && /^\/tr\/projelerimiz\/[^/]+\//.test(p)) {
       return `/${next}/projelerimiz/`;
+    }
+    if (next !== "tr" && /^\/tr\/blog\/[^/]+\//.test(p)) {
+      return `/${next}/blog/`;
     }
     if (next !== "tr" && TR_ONLY.some((re) => re.test(p))) {
       // Product pages fall back to the locale catalog, rehber articles to the guide index, others to home.

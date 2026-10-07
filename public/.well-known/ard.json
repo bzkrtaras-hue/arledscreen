@@ -169,6 +169,60 @@
         "url": "https://arledscreen.com/en/hesaplayici/",
         "format": "text/html",
         "description": "English calculator with the same 12 panel USD Product/Offer graph"
+      },
+      "enIntentHub": {
+        "type": "Commercial Intent Hub",
+        "url": "https://arledscreen.com/en/led-ekran/",
+        "format": "text/html",
+        "description": "English commercial intent hub with 12 panel Offers"
+      },
+      "enPriceHub": {
+        "type": "Price Landing Page",
+        "url": "https://arledscreen.com/en/led-ekran-fiyatlari/",
+        "format": "text/html",
+        "description": "English human-readable panel USD hub (same 12 SKUs as ai-shopping.json)"
+      },
+      "enProductsHub": {
+        "type": "Product Catalog Hub",
+        "url": "https://arledscreen.com/en/products/",
+        "format": "text/html",
+        "description": "English product-group hub; priced SKU PDPs remain under /tr/products/..."
+      },
+      "enServicesHub": {
+        "type": "Service Hub",
+        "url": "https://arledscreen.com/en/hizmetler/",
+        "format": "text/html",
+        "description": "English survey/install/service hub with HowTo + FAQ"
+      },
+      "enRegionsHub": {
+        "type": "Service Regions Hub",
+        "url": "https://arledscreen.com/en/bolgeler/",
+        "format": "text/html",
+        "description": "English regions hub; province detail pages stay TR; no 81-city spam"
+      },
+      "enProjectsHub": {
+        "type": "Projects Hub",
+        "url": "https://arledscreen.com/en/projelerimiz/",
+        "format": "text/html",
+        "description": "English projects/references hub; case-study detail pages stay TR"
+      },
+      "enGallery": {
+        "type": "Gallery",
+        "url": "https://arledscreen.com/en/galeri/",
+        "format": "text/html",
+        "description": "English install gallery by use-case category"
+      },
+      "enFounder": {
+        "type": "Person / E-E-A-T",
+        "url": "https://arledscreen.com/en/about/aras-bozkurt/",
+        "format": "text/html",
+        "description": "English founder page (Aras Bozkurt) with Person JSON-LD and arleds.com disambiguation"
+      },
+      "enBlog": {
+        "type": "Blog Index",
+        "url": "https://arledscreen.com/en/blog/",
+        "format": "text/html",
+        "description": "English blog index; post bodies remain Turkish (trust content, not commercial cluster)"
       }
     },
     "cite": {

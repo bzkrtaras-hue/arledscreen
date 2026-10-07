@@ -44,6 +44,7 @@ const URLS = [
   `https://${HOST}/en/bolgeler/`,
   `https://${HOST}/en/projelerimiz/`,
   `https://${HOST}/en/galeri/`,
+  `https://${HOST}/en/blog/`,
   `https://${HOST}/en/about/aras-bozkurt/`,
   `https://${HOST}/en/contact/`,
   `https://${HOST}/en/iletisim/`,

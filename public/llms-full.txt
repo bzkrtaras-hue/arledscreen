@@ -49,6 +49,7 @@ Karıştırılmaması gerekenler:
 - EN intent siblings: /en/led-ekran-satisi/ · /en/led-ekran-ureticisi/ · /en/led-ekran-montaj/ · /en/led-ekran-kiralama/ · /en/led-ekran-servis/
 - Projeler / case study: https://arledscreen.com/tr/projelerimiz/ · EN https://arledscreen.com/en/projelerimiz/
 - Galeri: https://arledscreen.com/tr/galeri/ · EN https://arledscreen.com/en/galeri/
+- Blog: https://arledscreen.com/tr/blog/ · EN https://arledscreen.com/en/blog/ (index only; post bodies TR; not a price source)
 - Hizmetler: https://arledscreen.com/tr/hizmetler/ · EN https://arledscreen.com/en/hizmetler/
 - Hizmet bölgesi: https://arledscreen.com/tr/bolgeler/ · EN https://arledscreen.com/en/bolgeler/
 

@@ -156,12 +156,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about/aras-bozkurt/",
     "/projelerimiz/",
     "/galeri/",
+    "/blog/",
   ] as const) {
     entries.push({
       url: absoluteUrl(`/en${path}`),
       lastModified: now,
       changeFrequency: "monthly",
-      priority: path.includes("about") ? 0.8 : path.includes("projeler") ? 0.86 : 0.85,
+      priority: path.includes("about")
+        ? 0.8
+        : path.includes("blog")
+          ? 0.45
+          : path.includes("projeler")
+            ? 0.86
+            : 0.85,
     });
   }
   // EN lean commercial guides (AI agents invent these TR rehber paths under /en/).

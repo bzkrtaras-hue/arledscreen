@@ -230,6 +230,57 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources.en.home + calculator required");
     process.exit(1);
   }
+  for (const key of [
+    "servicesHub",
+    "regionsHub",
+    "projectsHub",
+    "gallery",
+    "founder",
+    "blog",
+    "intentHub",
+    "priceHub",
+    "productsHub",
+    "faq",
+    "brand",
+  ]) {
+    const v = ai?.resources?.en?.[key];
+    if (!v || !String(v).includes(`/en/`)) {
+      console.error(`❌ ai-shopping.json resources.en.${key} must point at /en/ hub`);
+      process.exit(1);
+    }
+  }
+  for (const key of [
+    "servicesHubEn",
+    "regionsHubEn",
+    "projectsHubEn",
+    "galleryEn",
+    "founderEn",
+    "blogEn",
+    "yapayZekaEn",
+  ]) {
+    const v = baseline?.discovery?.[key];
+    if (!v || !String(v).includes("/en/")) {
+      console.error(`❌ geo-baseline.json discovery.${key} must point at EN hub`);
+      process.exit(1);
+    }
+  }
+  for (const key of [
+    "enServicesHub",
+    "enRegionsHub",
+    "enProjectsHub",
+    "enGallery",
+    "enFounder",
+    "enBlog",
+    "enIntentHub",
+    "enPriceHub",
+    "enProductsHub",
+  ]) {
+    const url = ard?.agentic?.resources?.[key]?.url;
+    if (!url || !String(url).includes("/en/")) {
+      console.error(`❌ ard.json agentic.resources.${key}.url must point at EN hub`);
+      process.exit(1);
+    }
+  }
   const entity = JSON.parse(fs.readFileSync(path.join(outDir, "entity.json"), "utf8"));
   if (!entity.merchantFeed?.includes("/feeds/merchant-priced-panels.tsv")) {
     console.error("❌ entity.json must expose merchantFeed TSV URL");
@@ -419,6 +470,7 @@ if (fs.existsSync(outDir)) {
     "en/bolgeler/index.html",
     "en/projelerimiz/index.html",
     "en/galeri/index.html",
+    "en/blog/index.html",
     "en/about/aras-bozkurt/index.html",
     "en/contact/index.html",
     "en/iletisim/index.html",
@@ -548,6 +600,7 @@ if (fs.existsSync(outDir)) {
     "en/bolgeler/index.html",
     "en/projelerimiz/index.html",
     "en/galeri/index.html",
+    "en/blog/index.html",
     "en/magaza-led-ekran/index.html",
     "en/p2-5-led-ekran/index.html",
     "tr/led-ekran-fiyatlari/index.html",
@@ -600,6 +653,7 @@ if (fs.existsSync(outDir)) {
     "/en/bolgeler/",
     "/en/projelerimiz/",
     "/en/galeri/",
+    "/en/blog/",
     "/en/about/aras-bozkurt/",
     "/en/contact/",
     "/en/iletisim/",
@@ -652,7 +706,14 @@ if (fs.existsSync(outDir)) {
   }
   
   const llmsBody = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
-  for (const must of ["/en/projelerimiz/", "/en/hizmetler/", "/en/bolgeler/", "/en/galeri/", "/en/about/aras-bozkurt/"]) {
+  for (const must of [
+    "/en/projelerimiz/",
+    "/en/hizmetler/",
+    "/en/bolgeler/",
+    "/en/galeri/",
+    "/en/blog/",
+    "/en/about/aras-bozkurt/",
+  ]) {
     if (!llmsBody.includes(must)) {
       console.error(`❌ llms.txt must cite EN hub ${must}`);
       process.exit(1);
