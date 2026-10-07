@@ -26,6 +26,7 @@ services-hub-en: https://arledscreen.com/en/hizmetler/
 regions-hub-en: https://arledscreen.com/en/bolgeler/
 projects-hub-en: https://arledscreen.com/en/projelerimiz/
 gallery-en: https://arledscreen.com/en/galeri/
+blog-en: https://arledscreen.com/en/blog/
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/

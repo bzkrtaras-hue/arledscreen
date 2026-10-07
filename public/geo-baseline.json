@@ -127,7 +127,7 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "b9e5a972ed3dfd3ba746d6b6a24ffeaa7dc761f480665e2d3a0394b021522125",
+    "aiShoppingSha256": "58b05d0a1399f8c8205aaa3984300a5bbeff2d5d3f1597871ceef9ce21ac4285",
     "catalogSha256": "c8ce608992fc5a6563f044a130e9418a322876ae3f39796e81e0527dfdf1afa6",
     "merchantTsvSha256": "308d08c6935a752088febf4761e41d01018c97bbf3097764c193df0ac63aa37a",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
@@ -156,6 +156,19 @@
     "productsGobEn": "https://arledscreen.com/en/products/gob-led-ekran/",
     "productsIndoorEn": "https://arledscreen.com/en/products/ic-mekan-led-ekran/",
     "productsOutdoorEn": "https://arledscreen.com/en/products/dis-mekan-led-ekran/",
-    "yapayZeka": "https://arledscreen.com/tr/yapay-zeka/"
+    "yapayZeka": "https://arledscreen.com/tr/yapay-zeka/",
+    "yapayZekaEn": "https://arledscreen.com/en/yapay-zeka/",
+    "servicesHub": "https://arledscreen.com/tr/hizmetler/",
+    "servicesHubEn": "https://arledscreen.com/en/hizmetler/",
+    "regionsHub": "https://arledscreen.com/tr/bolgeler/",
+    "regionsHubEn": "https://arledscreen.com/en/bolgeler/",
+    "projectsHub": "https://arledscreen.com/tr/projelerimiz/",
+    "projectsHubEn": "https://arledscreen.com/en/projelerimiz/",
+    "gallery": "https://arledscreen.com/tr/galeri/",
+    "galleryEn": "https://arledscreen.com/en/galeri/",
+    "founder": "https://arledscreen.com/tr/about/aras-bozkurt/",
+    "founderEn": "https://arledscreen.com/en/about/aras-bozkurt/",
+    "blog": "https://arledscreen.com/tr/blog/",
+    "blogEn": "https://arledscreen.com/en/blog/"
   }
 }

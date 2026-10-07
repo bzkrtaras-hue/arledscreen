@@ -1117,7 +1117,18 @@
       "quote": "https://arledscreen.com/en/quote/",
       "calculator": "https://arledscreen.com/en/hesaplayici/",
       "about": "https://arledscreen.com/en/about/",
-      "yapayZeka": "https://arledscreen.com/en/yapay-zeka/"
+      "founder": "https://arledscreen.com/en/about/aras-bozkurt/",
+      "yapayZeka": "https://arledscreen.com/en/yapay-zeka/",
+      "intentHub": "https://arledscreen.com/en/led-ekran/",
+      "priceHub": "https://arledscreen.com/en/led-ekran-fiyatlari/",
+      "productsHub": "https://arledscreen.com/en/products/",
+      "servicesHub": "https://arledscreen.com/en/hizmetler/",
+      "regionsHub": "https://arledscreen.com/en/bolgeler/",
+      "projectsHub": "https://arledscreen.com/en/projelerimiz/",
+      "gallery": "https://arledscreen.com/en/galeri/",
+      "faq": "https://arledscreen.com/en/sss/",
+      "brand": "https://arledscreen.com/en/nxtionstar/",
+      "blog": "https://arledscreen.com/en/blog/"
     }
   },
   "priceValidUntil": "2026-12-31"
