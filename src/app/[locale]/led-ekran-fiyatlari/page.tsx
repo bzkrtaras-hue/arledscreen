@@ -9,14 +9,16 @@ import {
   CALC_EXTRAS,
   PANEL_PRICES,
   PANELS_PER_M2,
+  PRICE_DATASETS,
   PRICE_NOTE,
+  PRICE_VALID_UNTIL,
   fmtUsd,
   panelLabel,
   panelProductsJsonLd,
 } from "@/content/prices";
 import { modelUrlForPrice } from "@/content/models";
 import { buildTrOnlyMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 export const dynamicParams = false;
 export function generateStaticParams() {

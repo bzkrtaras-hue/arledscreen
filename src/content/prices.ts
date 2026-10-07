@@ -18,7 +18,25 @@ export interface PanelPrice {
   groups: string[];
   /** Module size from the model datasheet when it is not the standard 320 × 160 mm. */
   moduleMm?: string;
+  /** Public image path (same asset as the product model page). */
+  image?: string;
 }
+
+/** Shared Dataset refs so HTML Product graphs point AI shoppers at published prices. */
+export const PRICE_DATASETS = [
+  {
+    "@type": "Dataset" as const,
+    "@id": `${SITE_URL}/ai-shopping.json`,
+    url: `${SITE_URL}/ai-shopping.json`,
+    name: "ARLEDSCREEN pricedPanels",
+  },
+  {
+    "@type": "Dataset" as const,
+    "@id": `${SITE_URL}/catalog.json`,
+    url: `${SITE_URL}/catalog.json`,
+    name: "ARLEDSCREEN panel catalog",
+  },
+];
 
 export const PANELS_PER_M2 = 1 / (0.32 * 0.16);
 export const CALC_EXTRAS = {
@@ -59,18 +77,18 @@ export function panelOffer(url: string, usd: number) {
 }
 
 export const PANEL_PRICES: PanelPrice[] = [
-  { id: "p1-25-ic-gob", pitch: "P1.25", pitchMm: 1.25, use: "ic", surface: "GOB", usd: 95.88, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
-  { id: "p1-53-ic-gob", pitch: "P1.53", pitchMm: 1.53, use: "ic", surface: "GOB", usd: 62.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
-  { id: "p1-86-ic-gob", pitch: "P1.86", pitchMm: 1.86, use: "ic", surface: "GOB", usd: 49.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"] },
-  { id: "p2-5-ic", pitch: "P2.5", pitchMm: 2.5, use: "ic", usd: 32.18, groups: ["ic-mekan-led-ekran"] },
-  { id: "p3-07-ic", pitch: "P3.07", pitchMm: 3.07, use: "ic", usd: 30.88, groups: ["ic-mekan-led-ekran"] },
-  { id: "p4-ic", pitch: "P4", pitchMm: 4, use: "ic", usd: 26.98, groups: ["ic-mekan-led-ekran"] },
-  { id: "p2-5-dis", pitch: "P2.5", pitchMm: 2.5, use: "dis", usd: 63.7, groups: ["dis-mekan-led-ekran"] },
-  { id: "p2-9-dis", pitch: "P2.9", pitchMm: 2.9, use: "dis", usd: 53.3, groups: ["dis-mekan-led-ekran"], moduleMm: "250 × 250 mm" },
-  { id: "p3-07-dis", pitch: "P3.07", pitchMm: 3.07, use: "dis", usd: 44.2, groups: ["dis-mekan-led-ekran"] },
-  { id: "p4-dis", pitch: "P4", pitchMm: 4, use: "dis", usd: 33.8, groups: ["dis-mekan-led-ekran"] },
-  { id: "p4-dis-front", pitch: "P4", pitchMm: 4, use: "dis", frontService: true, usd: 36.4, groups: ["dis-mekan-led-ekran"] },
-  { id: "p5-dis", pitch: "P5", pitchMm: 5, use: "dis", usd: 29.9, groups: ["dis-mekan-led-ekran"] },
+  { id: "p1-25-ic-gob", pitch: "P1.25", pitchMm: 1.25, use: "ic", surface: "GOB", usd: 95.88, groups: ["ic-mekan-led-ekran", "gob-led-ekran"], image: "/modules/nxtionstar-p1-25-ic-mekan-modul.webp" },
+  { id: "p1-53-ic-gob", pitch: "P1.53", pitchMm: 1.53, use: "ic", surface: "GOB", usd: 62.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"], image: "/modules/nxtionstar-p1-53-ic-mekan-modul.webp" },
+  { id: "p1-86-ic-gob", pitch: "P1.86", pitchMm: 1.86, use: "ic", surface: "GOB", usd: 49.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"], image: "/modules/nxtionstar-p1-86-ic-mekan-modul.webp" },
+  { id: "p2-5-ic", pitch: "P2.5", pitchMm: 2.5, use: "ic", usd: 32.18, groups: ["ic-mekan-led-ekran"], image: "/modules/nxtionstar-p2-5-ic-mekan-modul.webp" },
+  { id: "p3-07-ic", pitch: "P3.07", pitchMm: 3.07, use: "ic", usd: 30.88, groups: ["ic-mekan-led-ekran"], image: "/projects/modules/indoor-smd-surface.jpg" },
+  { id: "p4-ic", pitch: "P4", pitchMm: 4, use: "ic", usd: 26.98, groups: ["ic-mekan-led-ekran"], image: "/projects/modules/indoor-wall.jpg" },
+  { id: "p2-5-dis", pitch: "P2.5", pitchMm: 2.5, use: "dis", usd: 63.7, groups: ["dis-mekan-led-ekran"], image: "/modules/nxtionstar-p2-5-dis-mekan-modul.webp" },
+  { id: "p2-9-dis", pitch: "P2.9", pitchMm: 2.9, use: "dis", usd: 53.3, groups: ["dis-mekan-led-ekran"], moduleMm: "250 × 250 mm", image: "/modules/nxtionstar-p2-97-dis-mekan-modul.webp" },
+  { id: "p3-07-dis", pitch: "P3.07", pitchMm: 3.07, use: "dis", usd: 44.2, groups: ["dis-mekan-led-ekran"], image: "/modules/nxtionstar-p3-076-dis-mekan-modul.webp" },
+  { id: "p4-dis", pitch: "P4", pitchMm: 4, use: "dis", usd: 33.8, groups: ["dis-mekan-led-ekran"], image: "/modules/nxtionstar-p4-dis-mekan-modul.webp" },
+  { id: "p4-dis-front", pitch: "P4", pitchMm: 4, use: "dis", frontService: true, usd: 36.4, groups: ["dis-mekan-led-ekran"], image: "/projects/modules/front-service-module.jpg" },
+  { id: "p5-dis", pitch: "P5", pitchMm: 5, use: "dis", usd: 29.9, groups: ["dis-mekan-led-ekran"], image: "/modules/nxtionstar-p5-dis-mekan-modul.webp" },
 ];
 
 export const STANDARD_MODULE = "320 × 160 mm";
@@ -120,12 +138,14 @@ export function panelProductsJsonLd(
     category: "LED ekran modülü",
     description: `${panelLabel(p)} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.`,
     url: u,
+    ...(p.image ? { image: `${SITE_URL}${p.image}` } : {}),
     additionalProperty: [
       { "@type": "PropertyValue", name: "Piksel aralığı", value: p.pitchMm, unitText: "mm" },
       { "@type": "PropertyValue", name: "Modül ölçüsü", value: panelModule(p) },
       { "@type": "PropertyValue", name: "Kullanım", value: p.use === "ic" ? "İç mekân" : "Dış mekân" },
     ],
     offers: panelOffer(u, p.usd),
+    isRelatedTo: PRICE_DATASETS,
   };
   });
   const usd = panels.map((p) => p.usd);
@@ -139,6 +159,7 @@ export function panelProductsJsonLd(
       brand: { "@type": "Brand", name: "NXTIONSTAR" },
       areaServed: { "@type": "Country", name: "Türkiye" },
       url: pageUrl,
+      isRelatedTo: PRICE_DATASETS,
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "USD",

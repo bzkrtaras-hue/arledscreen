@@ -25,16 +25,28 @@ const AI_BOTS = [
   "meta-externalagent",
 ];
 
+const DISCOVERY_ALLOW = [
+  "/",
+  "/ai-shopping.json",
+  "/catalog.json",
+  "/entity.json",
+  "/entity-profiles.json",
+  "/llms.txt",
+  "/llms-full.txt",
+  "/feeds/",
+  "/.well-known/ard.json",
+] as const;
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        allow: [...DISCOVERY_ALLOW],
       },
       ...AI_BOTS.map((userAgent) => ({
         userAgent,
-        allow: "/" as const,
+        allow: [...DISCOVERY_ALLOW],
       })),
     ],
     // Bing Host directive prefers bare hostname (no scheme).

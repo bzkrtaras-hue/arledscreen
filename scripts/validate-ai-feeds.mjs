@@ -116,6 +116,16 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/ai-shopping.json must not carry blind-test payload");
     process.exit(1);
   }
+  const ard = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/ard.json"), "utf8"));
+  const ardMerchant = ard?.agentic?.resources?.merchantFeed;
+  if (!ardMerchant?.url?.includes("/feeds/merchant-priced-panels.tsv") || ardMerchant.freeShipping !== false) {
+    console.error("❌ ard.json must expose merchantFeed (TSV) with freeShipping:false");
+    process.exit(1);
+  }
+  if (!Array.isArray(ard?.robotsPolicy?.allow) || !ard.robotsPolicy.allow.includes("/feeds/merchant-priced-panels.tsv")) {
+    console.error("❌ ard.json robotsPolicy.allow must include merchant TSV path");
+    process.exit(1);
+  }
   const tsvPath = path.join(outDir, "feeds/merchant-priced-panels.tsv");
   if (!fs.existsSync(tsvPath)) {
     console.error("❌ Missing in out/: feeds/merchant-priced-panels.tsv");

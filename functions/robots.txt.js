@@ -5,9 +5,17 @@
  * Apex CDN: Cloudflare Page Rule cache_level=bypass for arledscreen.com/robots.txt
  * (id a34310c8cc7c12ba4d368b8c7f2cb1ed, 2026-10-06) — purge token yokken stale HIT’i kırar.
  */
-const BODY = `# ARLEDSCREEN AI/GEO crawl policy — Allow entity.json + catalog.json
+const BODY = `# ARLEDSCREEN AI/GEO crawl policy — Allow entity/catalog/ai-shopping/feeds
 User-Agent: *
 Allow: /
+Allow: /ai-shopping.json
+Allow: /catalog.json
+Allow: /entity.json
+Allow: /entity-profiles.json
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /feeds/
+Allow: /.well-known/ard.json
 
 User-Agent: bingbot
 Allow: /
@@ -88,7 +96,7 @@ User-Agent: CCBot
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-06h
+# cache-bust-geo60-2026-10-07a
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 
