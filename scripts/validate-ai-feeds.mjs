@@ -140,6 +140,14 @@ if (fs.existsSync(outDir)) {
     console.error("❌ every pricedPanels Product must isPartOf ai-shopping.json Dataset");
     process.exit(1);
   }
+  if (!Array.isArray(ai.sameAs) || !ai.sameAs.some((u) => String(u).includes("/catalog.json"))) {
+    console.error("❌ ai-shopping.json Dataset sameAs must join catalog.json");
+    process.exit(1);
+  }
+  if (!String(ai.mainEntityOfPage || "").includes("/led-ekran-fiyatlari/")) {
+    console.error("❌ ai-shopping.json Dataset mainEntityOfPage must be price hub");
+    process.exit(1);
+  }
   if (!ai.resources?.agents?.includes("/agents.json") || !ai.resources?.agentsMd?.includes("AGENTS.md")) {
     console.error("❌ ai-shopping.json resources must cite agents.json + AGENTS.md");
     process.exit(1);
@@ -326,10 +334,25 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ catalog Offer ${id} sameAs must join ai-shopping.json#offer-${sku}`);
       process.exit(1);
     }
+    if (!offerSameAs.some((u) => String(u) === `${productUrl}#offer`)) {
+      console.error(`❌ catalog Offer ${id} sameAs must join PDP #offer`);
+      process.exit(1);
+    }
     if (product?.offers?.sku !== sku || product?.offers?.mpn !== sku) {
       console.error(`❌ catalog Offer ${id} must set sku/mpn=${sku}`);
       process.exit(1);
     }
+  }
+  if (catalogLive?.["@id"] !== "https://arledscreen.com/catalog.json") {
+    console.error("❌ catalog.json Collection must @id catalog.json");
+    process.exit(1);
+  }
+  if (
+    !Array.isArray(catalogLive?.sameAs) ||
+    !catalogLive.sameAs.some((u) => String(u).includes("/ai-shopping.json"))
+  ) {
+    console.error("❌ catalog.json Collection sameAs must join ai-shopping.json");
+    process.exit(1);
   }
   const aiBasedOn = JSON.stringify(ai?.isBasedOn || []);
   if (!aiBasedOn.includes("/geo-baseline.json")) {
@@ -415,6 +438,17 @@ if (fs.existsSync(outDir)) {
   }
   if (entity?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar") {
     console.error("❌ entity.json brand.@id must be #brand-nxtionstar");
+    process.exit(1);
+  }
+  if (
+    entity?.makesOffer?.["@type"] !== "AggregateOffer" ||
+    entity?.makesOffer?.offerCount !== 12 ||
+    entity?.makesOffer?.priceCurrency !== "USD" ||
+    !String(entity?.makesOffer?.url || "").includes("/ai-shopping.json") ||
+    String(entity?.makesOffer?.lowPrice) !== "26.98" ||
+    String(entity?.makesOffer?.highPrice) !== "95.88"
+  ) {
+    console.error("❌ entity.json makesOffer must be AggregateOffer×12 USD 26.98–95.88 → ai-shopping");
     process.exit(1);
   }
   const disambig = String(entity?.disambiguatingDescription || "");
@@ -1017,7 +1051,18 @@ if (fs.existsSync(outDir)) {
   }
   const tsv = fs.readFileSync(tsvPath, "utf8");
   const tsvHeader = tsv.trim().split("\n")[0] || "";
-  for (const col of ["title", "brand", "image_link", "condition", "shipping_included", "mpn"]) {
+  for (const col of [
+    "title",
+    "brand",
+    "image_link",
+    "condition",
+    "shipping_included",
+    "mpn",
+    "product_ld_id",
+    "catalog_id",
+    "offer_id",
+    "catalog_offer_id",
+  ]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
       process.exit(1);
@@ -1089,6 +1134,10 @@ if (fs.existsSync(outDir)) {
     }
     if (!offerSameAs.some((u) => String(u).includes(`/catalog.json#offer-${panel.sku}`))) {
       console.error(`❌ pricedPanels ${panel.sku} Offer.sameAs must join catalog offer @id`);
+      process.exit(1);
+    }
+    if (!offerSameAs.some((u) => String(u) === `${panel.url}#offer`)) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.sameAs must join PDP #offer`);
       process.exit(1);
     }
     if (panel.mainEntityOfPage !== panel.url) {
@@ -1336,6 +1385,39 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ ${rel} sameAs must NOT include legacy arleds.com (until 301)`);
       process.exit(1);
     }
+  }
+  // Org JSON-LD on home must expose makesOffer AggregateOffer (entity-first price authority).
+  {
+    const homeHtml = fs.readFileSync(path.join(outDir, "tr/index.html"), "utf8");
+    let makesOfferOk = false;
+    for (const m of homeHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "Organization") continue;
+          const offer = node.makesOffer;
+          if (
+            offer?.["@type"] === "AggregateOffer" &&
+            offer.offerCount === 12 &&
+            String(offer.url || "").includes("/ai-shopping.json") &&
+            String(offer.lowPrice) === "26.98" &&
+            String(offer.highPrice) === "95.88"
+          ) {
+            makesOfferOk = true;
+            break;
+          }
+        }
+        if (makesOfferOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!makesOfferOk) {
+      console.error("❌ tr/index.html Organization must makesOffer AggregateOffer×12 → ai-shopping");
+      process.exit(1);
+    }
+    console.log("✅ Organization makesOffer AggregateOffer on home + entity.json");
   }
   for (const rel of [
     "tr/about/index.html",

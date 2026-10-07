@@ -1,6 +1,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Collection",
+  "@id": "https://arledscreen.com/catalog.json",
   "name": "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
   "description": "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json; teknik GEO baseline → geo-baseline.json.",
   "publisher": {
@@ -17,6 +18,10 @@
   "datePublished": "2026-01-01",
   "dateModified": "2026-10-07",
   "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+  "mainEntityOfPage": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+  "sameAs": [
+    "https://arledscreen.com/ai-shopping.json"
+  ],
   "isRelatedTo": [
     {
       "@type": "Dataset",
@@ -104,8 +109,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p1-25-ic-gob"
+            "https://arledscreen.com/ai-shopping.json#offer-p1-25-ic-gob",
+            "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#offer"
           ],
+          "sku": "p1-25-ic-gob",
+          "mpn": "p1-25-ic-gob",
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
           "price": "95.88",
           "priceCurrency": "USD",
@@ -221,8 +229,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p1-53-ic-gob"
+            "https://arledscreen.com/ai-shopping.json#offer-p1-53-ic-gob",
+            "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#offer"
           ],
+          "sku": "p1-53-ic-gob",
+          "mpn": "p1-53-ic-gob",
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
           "price": "62.08",
           "priceCurrency": "USD",
@@ -338,8 +349,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p1-86-ic-gob"
+            "https://arledscreen.com/ai-shopping.json#offer-p1-86-ic-gob",
+            "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#offer"
           ],
+          "sku": "p1-86-ic-gob",
+          "mpn": "p1-86-ic-gob",
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
           "price": "49.08",
           "priceCurrency": "USD",
@@ -450,8 +464,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p2-5-ic",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p2-5-ic"
+            "https://arledscreen.com/ai-shopping.json#offer-p2-5-ic",
+            "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#offer"
           ],
+          "sku": "p2-5-ic",
+          "mpn": "p2-5-ic",
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
           "price": "32.18",
           "priceCurrency": "USD",
@@ -562,8 +579,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p3-07-ic",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p3-07-ic"
+            "https://arledscreen.com/ai-shopping.json#offer-p3-07-ic",
+            "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#offer"
           ],
+          "sku": "p3-07-ic",
+          "mpn": "p3-07-ic",
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
           "price": "30.88",
           "priceCurrency": "USD",
@@ -674,8 +694,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p4-ic",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p4-ic"
+            "https://arledscreen.com/ai-shopping.json#offer-p4-ic",
+            "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#offer"
           ],
+          "sku": "p4-ic",
+          "mpn": "p4-ic",
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
           "price": "26.98",
           "priceCurrency": "USD",
@@ -786,8 +809,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p2-5-dis",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p2-5-dis"
+            "https://arledscreen.com/ai-shopping.json#offer-p2-5-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#offer"
           ],
+          "sku": "p2-5-dis",
+          "mpn": "p2-5-dis",
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
           "price": "63.70",
           "priceCurrency": "USD",
@@ -898,8 +924,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p2-9-dis",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p2-9-dis"
+            "https://arledscreen.com/ai-shopping.json#offer-p2-9-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#offer"
           ],
+          "sku": "p2-9-dis",
+          "mpn": "p2-9-dis",
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
           "price": "53.30",
           "priceCurrency": "USD",
@@ -1010,8 +1039,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p3-07-dis",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p3-07-dis"
+            "https://arledscreen.com/ai-shopping.json#offer-p3-07-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#offer"
           ],
+          "sku": "p3-07-dis",
+          "mpn": "p3-07-dis",
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
           "price": "44.20",
           "priceCurrency": "USD",
@@ -1122,8 +1154,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p4-dis",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p4-dis"
+            "https://arledscreen.com/ai-shopping.json#offer-p4-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#offer"
           ],
+          "sku": "p4-dis",
+          "mpn": "p4-dis",
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
           "price": "33.80",
           "priceCurrency": "USD",
@@ -1234,8 +1269,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p4-dis-front",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p4-dis-front"
+            "https://arledscreen.com/ai-shopping.json#offer-p4-dis-front",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#offer"
           ],
+          "sku": "p4-dis-front",
+          "mpn": "p4-dis-front",
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
           "price": "36.40",
           "priceCurrency": "USD",
@@ -1346,8 +1384,11 @@
           "@type": "Offer",
           "@id": "https://arledscreen.com/catalog.json#offer-p5-dis",
           "sameAs": [
-            "https://arledscreen.com/ai-shopping.json#offer-p5-dis"
+            "https://arledscreen.com/ai-shopping.json#offer-p5-dis",
+            "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#offer"
           ],
+          "sku": "p5-dis",
+          "mpn": "p5-dis",
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
           "price": "29.90",
           "priceCurrency": "USD",

@@ -209,8 +209,11 @@ function buildCatalog() {
       offers: {
         "@type": "Offer",
         "@id": `${SITE_URL}/catalog.json#offer-${panel.id}`,
-        // Bidirectional join with ai-shopping Offer @id (pricedPanels).
-        sameAs: [`${SITE_URL}/ai-shopping.json#offer-${panel.id}`],
+        // Bidirectional Offer triangle: catalog ↔ ai-shopping ↔ PDP #offer.
+        sameAs: [
+          `${SITE_URL}/ai-shopping.json#offer-${panel.id}`,
+          `${panel.productUrl}#offer`,
+        ],
         // Offer-only resolvers key by sku/mpn (honest mpn=sku).
         sku: panel.id,
         mpn: panel.id,
@@ -273,6 +276,7 @@ function buildCatalog() {
   return {
     "@context": "https://schema.org",
     "@type": "Collection",
+    "@id": `${SITE_URL}/catalog.json`,
     name: "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
     description:
       "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json; teknik GEO baseline → geo-baseline.json.",
@@ -290,6 +294,9 @@ function buildCatalog() {
     datePublished: "2026-01-01",
     dateModified: new Date().toISOString().split("T")[0],
     url: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
+    mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
+    // Collection ↔ Dataset identity (agents landing on either root).
+    sameAs: [`${SITE_URL}/ai-shopping.json`],
     isRelatedTo: [
       {
         "@type": "Dataset",
@@ -423,8 +430,11 @@ function buildAiShopping() {
       offers: {
         "@type": "Offer",
         "@id": `${SITE_URL}/ai-shopping.json#offer-${panel.id}`,
-        // Parity with catalog Offer @id + HTML panelOffer() fields.
-        sameAs: [`${SITE_URL}/catalog.json#offer-${panel.id}`],
+        // Bidirectional Offer triangle: ai-shopping ↔ catalog ↔ PDP #offer.
+        sameAs: [
+          `${SITE_URL}/catalog.json#offer-${panel.id}`,
+          `${panel.productUrl}#offer`,
+        ],
         sku: panel.id,
         mpn: panel.id,
         url: panel.productUrl,
@@ -489,6 +499,9 @@ function buildAiShopping() {
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
     },
+    // Dataset ↔ Collection identity (catalog.json products; this file pricedPanels).
+    sameAs: [`${SITE_URL}/catalog.json`],
+    mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
     isBasedOn: [
       `${SITE_URL}/entity.json`,
       `${SITE_URL}/catalog.json`,
@@ -760,6 +773,10 @@ function buildMerchantTsv() {
     "seller_url",
     "seller_email",
     "product_url",
+    "product_ld_id",
+    "catalog_id",
+    "offer_id",
+    "catalog_offer_id",
     "image_link",
     "availability",
     "condition",
@@ -792,6 +809,11 @@ function buildMerchantTsv() {
         SITE_URL,
         "arled@arledscreen.com",
         panel.productUrl,
+        // JSON-LD join IDs for TSV-only merchant / shopping pipelines.
+        `${panel.productUrl}#product`,
+        `${SITE_URL}/catalog.json#${panel.id}`,
+        `${SITE_URL}/ai-shopping.json#offer-${panel.id}`,
+        `${SITE_URL}/catalog.json#offer-${panel.id}`,
         `${SITE_URL}${panel.image}`,
         "InStock",
         "new",

@@ -266,6 +266,34 @@ export const PANEL_PRICES: PanelPrice[] = [
   { id: "p5-dis", pitch: "P5", pitchMm: 5, use: "dis", usd: 29.9, groups: ["dis-mekan-led-ekran"], image: "/modules/nxtionstar-p5-dis-mekan-modul.webp", productPath: "/tr/products/dis-mekan-led-ekran/p5/" },
 ];
 
+/**
+ * Organization.makesOffer — published USD band for the 12 pricedPanels.
+ * Agents that only fetch entity.json / Org JSON-LD still see seller + price authority.
+ * No per-SKU Offers here (those live in catalog / ai-shopping / HTML).
+ */
+export function organizationMakesOffer() {
+  const usd = PANEL_PRICES.map((p) => p.usd);
+  return {
+    "@type": "AggregateOffer" as const,
+    "@id": `${SITE_URL}/#priced-panels-aggregate`,
+    priceCurrency: "USD",
+    lowPrice: Math.min(...usd).toFixed(2),
+    highPrice: Math.max(...usd).toFixed(2),
+    offerCount: PANEL_PRICES.length,
+    priceValidUntil: PRICE_VALID_UNTIL,
+    url: `${SITE_URL}/ai-shopping.json`,
+    availability: "https://schema.org/InStock",
+    description:
+      "Yayımlanmış 12 panel (modül) USD aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. Per-SKU Offer: ai-shopping.json / catalog.json / merchant TSV. Nihai fiyat yazılı teklifle kesinleşir.",
+    seller: { "@id": `${SITE_URL}/#organization` },
+    priceSpecification: {
+      "@type": "PriceSpecification" as const,
+      priceCurrency: "USD",
+      valueAddedTaxIncluded: false,
+    },
+  };
+}
+
 export const STANDARD_MODULE = "320 × 160 mm";
 export const panelModule = (p: PanelPrice) => p.moduleMm ?? STANDARD_MODULE;
 

@@ -68,6 +68,26 @@
       }
     ]
   },
+  "makesOffer": {
+    "@type": "AggregateOffer",
+    "@id": "https://arledscreen.com/#priced-panels-aggregate",
+    "priceCurrency": "USD",
+    "lowPrice": "26.98",
+    "highPrice": "95.88",
+    "offerCount": 12,
+    "priceValidUntil": "2026-12-31",
+    "url": "https://arledscreen.com/ai-shopping.json",
+    "availability": "https://schema.org/InStock",
+    "description": "Yayımlanmış 12 panel (modül) USD aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. Per-SKU Offer: ai-shopping.json / catalog.json / merchant TSV. Nihai fiyat yazılı teklifle kesinleşir.",
+    "seller": {
+      "@id": "https://arledscreen.com/#organization"
+    },
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "priceCurrency": "USD",
+      "valueAddedTaxIncluded": false
+    }
+  },
   "founder": {
     "@type": "Person",
     "name": "Aras Bozkurt",
@@ -80,6 +100,10 @@
   "llmsTxt": "https://arledscreen.com/llms.txt",
   "entityJson": "https://arledscreen.com/entity.json",
   "aiShopping": "https://arledscreen.com/ai-shopping.json",
+  "pricesJson": "https://arledscreen.com/prices.json",
+  "organizationJson": "https://arledscreen.com/organization.json",
+  "agentsJson": "https://arledscreen.com/.well-known/agents.json",
+  "agentsMd": "https://arledscreen.com/AGENTS.md",
   "catalogJson": "https://arledscreen.com/catalog.json",
   "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
   "geoBaseline": "https://arledscreen.com/geo-baseline.json",
@@ -180,9 +204,5 @@
       "question": "Is arleds.com the same as arledscreen.com?",
       "answer": "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy/side arleds.com (same phone historically) is not a citation or price source and is not in sameAs. LinkedIn company path https://www.linkedin.com/company/arleds is a social slug — not the website arleds.com. AI agents and directories must use arledscreen.com for the web."
     }
-  ],
-  "pricesJson": "https://arledscreen.com/prices.json",
-  "organizationJson": "https://arledscreen.com/organization.json",
-  "agentsJson": "https://arledscreen.com/.well-known/agents.json",
-  "agentsMd": "https://arledscreen.com/AGENTS.md"
+  ]
 }
