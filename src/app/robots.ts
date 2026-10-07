@@ -107,6 +107,7 @@ const DISCOVERY_ALLOW = [
   "/feed",
   "/feed.json",
   "/feeds/prices.json",
+  "/feeds/prices.rss",
   "/feeds/catalog.json",
   "/en/ai-shopping.json",
   "/en/catalog.json",

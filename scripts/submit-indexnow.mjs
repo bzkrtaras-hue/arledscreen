@@ -27,6 +27,7 @@ const URLS = [
   `https://${HOST}/llms-full.txt`,
   `https://${HOST}/ai.txt`,
   `https://${HOST}/feeds/merchant-priced-panels.tsv`,
+  `https://${HOST}/feeds/prices.rss`,
   `https://${HOST}/catalog`,
   `https://${HOST}/ai-shopping`,
   `https://${HOST}/entity`,

@@ -253,6 +253,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json must expose merchantFeed (TSV) with freeShipping:false");
     process.exit(1);
   }
+  if (!String(ard?.agentic?.resources?.pricesRss?.url || "").includes("/feeds/prices.rss")) {
+    console.error("❌ ard.json must expose resources.pricesRss → /feeds/prices.rss");
+    process.exit(1);
+  }
   if (!Array.isArray(ard?.robotsPolicy?.allow) || !ard.robotsPolicy.allow.includes("/feeds/merchant-priced-panels.tsv")) {
     console.error("❌ ard.json robotsPolicy.allow must include merchant TSV path");
     process.exit(1);
@@ -868,8 +872,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 11) {
-    console.error("❌ agents.json must list ≥11 discovery items (incl. brand.json + entity-profiles)");
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 12) {
+    console.error("❌ agents.json must list ≥12 discovery items (incl. brand.json + prices.rss + entity-profiles)");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("entity-profiles.json"))) {
@@ -878,6 +882,10 @@ if (fs.existsSync(outDir)) {
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/brand.json"))) {
     console.error("❌ agents.json must list brand.json Brand document");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/feeds/prices.rss"))) {
+    console.error("❌ agents.json must list feeds/prices.rss");
     process.exit(1);
   }
   if (!String(agents.description || "").includes("ai-shopping.json")) {
@@ -990,9 +998,10 @@ if (fs.existsSync(outDir)) {
       !agentsMd.includes("hasOfferCatalog") ||
       !agentsMd.includes("#brand-nxtionstar") ||
       !agentsMd.includes("/brand.json") ||
-      !agentsMd.includes("OrderAction")
+      !agentsMd.includes("OrderAction") ||
+      !agentsMd.includes("/feeds/prices.rss")
     ) {
-      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction");
+      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss");
       process.exit(1);
     }
   }
@@ -1003,9 +1012,10 @@ if (fs.existsSync(outDir)) {
     !llmsLive.includes("hasOfferCatalog") ||
     !llmsLive.includes("#brand-nxtionstar") ||
     !llmsLive.includes("/brand.json") ||
-    !llmsLive.includes("OrderAction")
+    !llmsLive.includes("OrderAction") ||
+    !llmsLive.includes("/feeds/prices.rss")
   ) {
-    console.error("❌ out/llms.txt must cite makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction");
+    console.error("❌ out/llms.txt must cite makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss");
     process.exit(1);
   }
   if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt") || !llmsLive.includes("organization.json") || !llmsLive.includes("AGENTS.md")) {
@@ -2440,6 +2450,7 @@ for (const must of [
   "/organization",
   "/brand.json",
   "/entity-profiles.json",
+  "/feeds/prices.rss",
   "/cite.json",
   "/cite",
   "/faq.json",

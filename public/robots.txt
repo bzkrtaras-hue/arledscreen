@@ -79,6 +79,7 @@ Allow: /faqs.json
 Allow: /faqs
 Allow: /feed.json
 Allow: /feeds/prices.json
+Allow: /feeds/prices.rss
 Allow: /feeds/catalog.json
 Allow: /en/ai-shopping.json
 Allow: /en/catalog.json

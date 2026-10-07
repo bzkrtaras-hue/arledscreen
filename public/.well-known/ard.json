@@ -106,7 +106,8 @@
           "https://arledscreen.com/ai-shopping.json",
           "https://arledscreen.com/catalog.json",
           "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
-          "https://arledscreen.com/geo-baseline.json"
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/feeds/prices.rss"
         ],
         "brandHub": "https://arledscreen.com/tr/nxtionstar/",
         "brandHubEn": "https://arledscreen.com/en/nxtionstar/",
@@ -463,6 +464,15 @@
         "format": "application/ld+json",
         "description": "Brand-shaped NXTIONSTAR document: makesOffer → #priced-panels-aggregate; hasOfferCatalog → catalog.json. HTML hubs: /tr/nxtionstar/ · /en/nxtionstar/. Alias: /.well-known/brand.json",
         "@id": "https://arledscreen.com/#brand-nxtionstar"
+      },
+      "pricesRss": {
+        "type": "Price Updates RSS",
+        "url": "https://arledscreen.com/feeds/prices.rss",
+        "format": "application/rss+xml",
+        "description": "RSS channel of 12 priced panel USD SKUs. Canonical price graph remains ai-shopping.json pricedPanels; this feed is for change discovery / shopping agents that prefer RSS.",
+        "pricedPanels": 12,
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "brandId": "https://arledscreen.com/#brand-nxtionstar"
       }
     },
     "cite": {
@@ -531,6 +541,7 @@
       "/llms-full.txt",
       "/ai.txt",
       "/feeds/merchant-priced-panels.tsv",
+      "/feeds/prices.rss",
       "/.well-known/ard.json",
       "/prices.json",
       "/panels.json",

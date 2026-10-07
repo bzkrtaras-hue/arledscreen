@@ -4,7 +4,7 @@
   "name": "ARLEDSCREEN agent discovery",
   "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD); inventable aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /merchant · /sku · /api/prices · /api/panels.json · /api/mpn.json · /.well-known/prices.json · /offers.json · /api/v1/prices (/modules.json yes; /modules is image assets). Entity aliases /organization.json · /.well-known/entity.json · /api/entity.json. Point C packs: /entity-profiles.json. Also see /AGENTS.md. Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
   "url": "https://arledscreen.com/.well-known/agents.json",
-  "numberOfItems": 11,
+  "numberOfItems": 12,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -51,34 +51,41 @@
     {
       "@type": "ListItem",
       "position": 7,
+      "name": "Panel price updates RSS",
+      "url": "https://arledscreen.com/feeds/prices.rss",
+      "description": "12 SKU panel USD RSS; canonical pricedPanels remain ai-shopping.json / catalog.json / merchant TSV"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
       "name": "GEO technical baseline",
       "url": "https://arledscreen.com/geo-baseline.json",
       "description": "Fingerprints only; does not invent ChatGPT/Gemini/Perplexity mention rates"
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 9,
       "name": "LLM context",
       "url": "https://arledscreen.com/llms.txt",
       "description": "Short LLM/agent context; also /.well-known/llms.txt · /tr/llms.txt · /en/llms.txt"
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 10,
       "name": "AI discovery pointer",
       "url": "https://arledscreen.com/ai.txt",
       "description": "Compact URL index for agents; also /tr/ai.txt · /en/ai.txt"
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 11,
       "name": "AGENTS.md",
       "url": "https://arledscreen.com/AGENTS.md",
       "description": "Short markdown agent discovery; points to ai-shopping.json + entity.json"
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 12,
       "name": "Entity profile paste packs (Point C)",
       "url": "https://arledscreen.com/entity-profiles.json",
       "description": "Owner Point C packs (GBP/IG/FB/LinkedIn) + merchant readiness; inventable /tr/entity-profiles.json · /en/entity-profiles.json"
