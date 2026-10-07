@@ -392,8 +392,7 @@ if (fs.existsSync(outDir)) {
     "en/entity.json",
     "pricing.json",
     "products.json",
-    "catalog/index.html",
-    "ai-shopping/index.html",
+    "en/ai-shopping/index.html",
   ]) {
     const fp = path.join(outDir, rel);
     if (!fs.existsSync(fp)) {
