@@ -804,6 +804,8 @@ function writeJson(dir, name, value) {
 /** Merchant TSV from the same PANEL_PRICES as ai-shopping (shipping_included always false). */
 function buildMerchantTsv() {
   const brandId = `${SITE_URL}/#brand-nxtionstar`;
+  const brandMakesOfferId = `${SITE_URL}/#priced-panels-aggregate`;
+  const brandHasOfferCatalog = `${SITE_URL}/catalog.json`;
   const header = [
     "id",
     "mpn",
@@ -811,6 +813,8 @@ function buildMerchantTsv() {
     "title_en",
     "brand",
     "brand_id",
+    "brand_makes_offer_id",
+    "brand_has_offer_catalog",
     "pitch",
     "pitch_mm",
     "use",
@@ -848,6 +852,8 @@ function buildMerchantTsv() {
         `NXTIONSTAR ${labelEn} LED Module`,
         "NXTIONSTAR",
         brandId,
+        brandMakesOfferId,
+        brandHasOfferCatalog,
         panel.pitch,
         String(panel.pitchMm),
         panel.use,

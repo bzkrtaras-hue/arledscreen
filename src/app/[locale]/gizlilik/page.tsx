@@ -88,6 +88,7 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
           { name: en ? "Privacy" : "Gizlilik", item: pageUrl },
         ]}
       />
+      <FaqJsonLd faqs={faqs} pageUrl={pageUrl} />
       <SpeakableJsonLd
         pageUrl={pageUrl}
         name={en ? "Privacy notice" : "Gizlilik ve KVKK bilgilendirmesi"}
@@ -97,8 +98,8 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
             : "ARLEDSCREEN teklif ve iletişim verilerinin işlenmesi. Kanonik site arledscreen.com."
         }
         cssSelectors={["#gizlilik-h1", "#gizlilik-lead"]}
+        mainEntity={{ "@id": `${pageUrl}#faqpage` }}
       />
-      <FaqJsonLd faqs={faqs} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

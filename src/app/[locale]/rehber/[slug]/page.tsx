@@ -73,13 +73,14 @@ export default async function SeoGuidePage({ params }: PageProps) {
           },
         ]}
       />
-      <FaqJsonLd faqs={guide.faqs} />
+      <FaqJsonLd faqs={guide.faqs} pageUrl={pageUrl} />
       {(locale === "tr" || locale === "en") ? (
         <SpeakableJsonLd
           pageUrl={pageUrl}
           name={guide.h1}
           description={guide.description}
           cssSelectors={["#guide-h1", "#guide-lead"]}
+          mainEntity={{ "@id": `${pageUrl}#article` }}
         />
       ) : null}
 

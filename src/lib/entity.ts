@@ -211,9 +211,11 @@ export type EntityDocument = {
     contactType: string;
     email: string;
     telephone: string;
-    areaServed: string;
+    url?: string;
+    areaServed: Array<{ "@type": string; name: string }> | string;
     availableLanguage: string[];
   }>;
+  areaServed?: Array<{ "@type": string; name: string }>;
   brand: {
     "@type": "Brand";
     "@id": string;
@@ -309,9 +311,17 @@ export function buildEntityDocument(): EntityDocument {
         contactType: "sales",
         email: CONTACT_EMAIL,
         telephone: CONTACT_PHONE_E164,
-        areaServed: "TR",
+        url: `${SITE_URL}/tr/quote/`,
+        areaServed: [
+          { "@type": "Country", name: "Türkiye" },
+          { "@type": "City", name: "İstanbul" },
+        ],
         availableLanguage: ["Turkish", "English"],
       },
+    ],
+    areaServed: [
+      { "@type": "Country", name: "Türkiye" },
+      { "@type": "City", name: "İstanbul" },
     ],
     brand: {
       "@type": "Brand",

@@ -44,12 +44,13 @@ export function CommercialGuideEnLanding({ guide }: { guide: CommercialGuideEn }
           { name: guide.h1, item: url },
         ]}
       />
-      <FaqJsonLd faqs={faqs} />
+      <FaqJsonLd faqs={faqs} pageUrl={url} />
       <SpeakableJsonLd
         pageUrl={url}
         name={guide.h1}
         description={guide.description}
         cssSelectors={["#article-h1", "#article-lead"]}
+        mainEntity={{ "@id": `${url}#article` }}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script

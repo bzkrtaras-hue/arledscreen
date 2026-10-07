@@ -90,6 +90,7 @@ export default async function HomePage({ params }: PageProps) {
               name={seo.h1 ?? "ARLEDSCREEN"}
               description={seo.description}
               cssSelectors={["#home-h1", "#home-lead"]}
+              mainEntity={{ "@id": `${absoluteUrl("/en/")}#service` }}
             />
             <script
               type="application/ld+json"
@@ -167,6 +168,7 @@ export default async function HomePage({ params }: PageProps) {
         name={seo.h1 ?? "ARLEDSCREEN LED Ekran"}
         description={seo.description}
         cssSelectors={["#home-h1", "#home-lead"]}
+        mainEntity={{ "@id": `${absoluteUrl("/tr/")}#service` }}
       />
       <script
         type="application/ld+json"

@@ -46,12 +46,13 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
           { name: a.h1, item: url },
         ]}
       />
-      {a.faqs.length ? <FaqJsonLd faqs={a.faqs} /> : null}
+      {a.faqs.length ? <FaqJsonLd faqs={a.faqs} pageUrl={url} /> : null}
       <SpeakableJsonLd
         pageUrl={url}
         name={a.h1}
         description={a.description}
         cssSelectors={["#article-h1", "#article-lead"]}
+        mainEntity={{ "@id": `${url}#article` }}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script

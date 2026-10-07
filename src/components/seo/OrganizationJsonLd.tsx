@@ -44,6 +44,33 @@ export function OrganizationJsonLd() {
         alternateName: "ARLED SCREEN",
         inLanguage: ["tr-TR", "en-US"],
         publisher: { "@id": `${SITE_URL}/#organization` },
+        about: { "@id": `${SITE_URL}/#organization` },
+        potentialAction: [
+          {
+            "@type": "OrderAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: absoluteUrl("/tr/quote/"),
+              actionPlatform: [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform",
+              ],
+            },
+            name: "Teklif iste",
+          },
+          {
+            "@type": "OrderAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: absoluteUrl("/en/quote/"),
+              actionPlatform: [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform",
+              ],
+            },
+            name: "Request a quote",
+          },
+        ],
       },
       nxtionstarBrandNode(),
       {
@@ -92,9 +119,17 @@ export function OrganizationJsonLd() {
             contactType: "sales",
             email: CONTACT_EMAIL,
             telephone: CONTACT_PHONE_E164,
-            areaServed: "TR",
+            url: absoluteUrl("/tr/quote/"),
+            areaServed: [
+              { "@type": "Country", name: "Türkiye" },
+              { "@type": "City", name: "İstanbul" },
+            ],
             availableLanguage: ["Turkish", "English"],
           },
+        ],
+        areaServed: [
+          { "@type": "Country", name: "Türkiye" },
+          { "@type": "City", name: "İstanbul" },
         ],
       },
       {

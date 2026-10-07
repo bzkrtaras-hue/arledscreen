@@ -218,7 +218,16 @@ if (fs.existsSync(outDir)) {
   const ardMerchant = ard?.agentic?.resources?.merchantFeed;
   {
     const cols = Array.isArray(ardMerchant?.columns) ? ardMerchant.columns : [];
-    for (const need of ["product_ld_id", "catalog_id", "offer_id", "catalog_offer_id", "mpn", "local_business_id"]) {
+    for (const need of [
+      "product_ld_id",
+      "catalog_id",
+      "offer_id",
+      "catalog_offer_id",
+      "mpn",
+      "local_business_id",
+      "brand_makes_offer_id",
+      "brand_has_offer_catalog",
+    ]) {
       if (!cols.includes(need)) {
         console.error(`❌ ard.json merchantFeed.columns must include ${need}`);
         process.exit(1);
@@ -226,6 +235,13 @@ if (fs.existsSync(outDir)) {
     }
     if (ardMerchant?.localBusinessId !== "https://arledscreen.com/#localbusiness") {
       console.error("❌ ard.json merchantFeed.localBusinessId must be #localbusiness");
+      process.exit(1);
+    }
+    if (
+      !String(ardMerchant?.brandMakesOfferId || "").includes("#priced-panels-aggregate") ||
+      !String(ardMerchant?.brandHasOfferCatalog || "").includes("/catalog.json")
+    ) {
+      console.error("❌ ard.json merchantFeed must cite brandMakesOfferId + brandHasOfferCatalog");
       process.exit(1);
     }
   }
@@ -293,6 +309,10 @@ if (fs.existsSync(outDir)) {
   const tsvHead = fs.readFileSync(path.join(outDir, "feeds/merchant-priced-panels.tsv"), "utf8").split("\n")[0];
   if (!tsvHead.includes("brand_id")) {
     console.error("❌ merchant TSV must include brand_id column");
+    process.exit(1);
+  }
+  if (!tsvHead.includes("brand_makes_offer_id") || !tsvHead.includes("brand_has_offer_catalog")) {
+    console.error("❌ merchant TSV must include brand_makes_offer_id + brand_has_offer_catalog");
     process.exit(1);
   }
   if (!tsvHead.includes("title_en")) {
@@ -1299,6 +1319,8 @@ if (fs.existsSync(outDir)) {
     "offer_id",
     "catalog_offer_id",
     "local_business_id",
+    "brand_makes_offer_id",
+    "brand_has_offer_catalog",
   ]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
@@ -1314,6 +1336,8 @@ if (fs.existsSync(outDir)) {
   const mpnIdx = tsvCols.indexOf("mpn");
   const idIdx = tsvCols.indexOf("id");
   const lbIdx = tsvCols.indexOf("local_business_id");
+  const brandOfferIdx = tsvCols.indexOf("brand_makes_offer_id");
+  const brandCatalogIdx = tsvCols.indexOf("brand_has_offer_catalog");
   for (const row of tsvRows) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
@@ -1322,6 +1346,14 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[lbIdx] !== "https://arledscreen.com/#localbusiness") {
       console.error(`❌ merchant TSV local_business_id must be #localbusiness for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[brandOfferIdx] !== "https://arledscreen.com/#priced-panels-aggregate") {
+      console.error(`❌ merchant TSV brand_makes_offer_id must be #priced-panels-aggregate for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[brandCatalogIdx] !== "https://arledscreen.com/catalog.json") {
+      console.error(`❌ merchant TSV brand_has_offer_catalog must be catalog.json for ${cells[idIdx]}`);
       process.exit(1);
     }
   }
@@ -1704,6 +1736,35 @@ if (fs.existsSync(outDir)) {
       console.error("❌ tr/index.html LocalBusiness must makesOffer×12 + hasOfferCatalog");
       process.exit(1);
     }
+    let websiteOk = false;
+    for (const m of homeHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "WebSite") continue;
+          const actions = Array.isArray(node.potentialAction) ? node.potentialAction : [];
+          const urls = actions
+            .map((a) => String(a?.target?.urlTemplate || ""))
+            .join(" ");
+          if (
+            node?.about?.["@id"] === "https://arledscreen.com/#organization" &&
+            urls.includes("/tr/quote/") &&
+            urls.includes("/en/quote/")
+          ) {
+            websiteOk = true;
+            break;
+          }
+        }
+        if (websiteOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!websiteOk) {
+      console.error("❌ tr/index.html WebSite must about #organization + potentialAction quote TR/EN");
+      process.exit(1);
+    }
     console.log("✅ Organization + LocalBusiness makesOffer stubs + hasOfferCatalog on home + entity.json");
   }
   for (const rel of [
@@ -2047,6 +2108,10 @@ if (fs.existsSync(outDir)) {
     ["tr/bolgeler/index.html", (mid) => mid.includes("/tr/bolgeler/") && mid.endsWith("#service")],
     ["tr/nxtionstar/index.html", (mid) => mid === "https://arledscreen.com/#brand-nxtionstar"],
     ["en/nxtionstar/index.html", (mid) => mid === "https://arledscreen.com/#brand-nxtionstar"],
+    ["tr/index.html", (mid) => mid.includes("/tr/") && mid.endsWith("#service")],
+    ["en/index.html", (mid) => mid.includes("/en/") && mid.endsWith("#service")],
+    ["tr/gizlilik/index.html", (mid) => mid.includes("/tr/gizlilik/") && mid.endsWith("#faqpage")],
+    ["en/gizlilik/index.html", (mid) => mid.includes("/en/gizlilik/") && mid.endsWith("#faqpage")],
   ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     let pageOk = false;
