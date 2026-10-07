@@ -715,6 +715,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       homeTr: `${SITE_URL}/tr/`,
       homeEn: `${SITE_URL}/en/`,
       productsHub: `${SITE_URL}/tr/products/`,
+      productsHubEn: `${SITE_URL}/en/products/`,
       intentHub: `${SITE_URL}/tr/led-ekran/`,
       intentHubEn: `${SITE_URL}/en/led-ekran/`,
       productsGobEn: `${SITE_URL}/en/products/gob-led-ekran/`,
@@ -810,6 +811,7 @@ rental-en: ${SITE_URL}/en/led-ekran-kiralama/
 install-en: ${SITE_URL}/en/led-ekran-montaj/
 manufacturer-en: ${SITE_URL}/en/led-ekran-ureticisi/
 service-en: ${SITE_URL}/en/led-ekran-servis/
+products-en: ${SITE_URL}/en/products/
 products-gob-en: ${SITE_URL}/en/products/gob-led-ekran/
 products-indoor-en: ${SITE_URL}/en/products/ic-mekan-led-ekran/
 products-outdoor-en: ${SITE_URL}/en/products/dis-mekan-led-ekran/

@@ -39,6 +39,7 @@ const EN_CORE: {
 }[] = [
   { path: "/", priority: 0.9, changeFrequency: "daily" },
   { path: "/yapay-zeka/", priority: 0.85, changeFrequency: "weekly" },
+  { path: "/products/", priority: 0.88, changeFrequency: "weekly" },
   { path: "/rehber/", priority: 0.75, changeFrequency: "weekly" },
   { path: "/about/", priority: 0.6, changeFrequency: "monthly" },
   { path: "/hesaplayici/", priority: 0.65, changeFrequency: "weekly" },

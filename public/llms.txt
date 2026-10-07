@@ -74,7 +74,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 
 ### Ürünler (kanonik lineup — tek liste)
 
-- [Tüm ürün grupları](https://arledscreen.com/tr/products/)
+- [Tüm ürün grupları](https://arledscreen.com/tr/products/) · [EN products hub](https://arledscreen.com/en/products/)
 - [Dış mekân](https://arledscreen.com/tr/products/dis-mekan-led-ekran/) · [EN outdoor](https://arledscreen.com/en/products/dis-mekan-led-ekran/): P2.5, P2.9, P3.07, P4, P4 önden servis, P5, P8 — panel bandı 29,90 – 63,70 USD (P2.5–P5 özet; P8 model sayfasında)
 - [İç mekân](https://arledscreen.com/tr/products/ic-mekan-led-ekran/) · [EN indoor](https://arledscreen.com/en/products/ic-mekan-led-ekran/): P1.25, P2.5, P3.07, P4 — panel 26,98 – 95,88 USD
 - [GOB](https://arledscreen.com/tr/products/gob-led-ekran/) · [EN GOB](https://arledscreen.com/en/products/gob-led-ekran/): P1.25, P1.53, P1.86 — panel 49,08 – 95,88 USD

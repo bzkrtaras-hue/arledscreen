@@ -138,9 +138,9 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "Work with ARLEDSCREEN for fine-pitch LED, outdoor displays and totem projects backed by an engineering desk. NXTIONSTAR appears as the product sub-brand.",
     },
     products: {
-      title: "LED Display Products | Fine-Pitch, Outdoor & Totem | ARLEDSCREEN",
+      title: "LED Display Products | GOB, Indoor, Outdoor | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN LED modules (NXTIONSTAR): fine-pitch GOB, indoor, outdoor and flexible series — pitch and use case for every model.",
+        "NXTIONSTAR LED groups: GOB, indoor, outdoor, flexible. Published 12 panel USD in ai-shopping.json. Quote-only: transparent, rental, control.",
       keywords: [
         "LED display products",
         "fine pitch LED",
@@ -149,9 +149,9 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "digital totem",
         "ARLEDSCREEN catalog",
       ],
-      h1: "LED product series",
+      h1: "LED display product groups",
       intro:
-        "From fine-pitch GOB to outdoor façade and flexible modules — pick the NXTIONSTAR module that matches your venue.",
+        "Browse EN group pages for indoor, outdoor and GOB — or cite ai-shopping.json pricedPanels for the 12 published panel USD. Transparent, flexible, poster, rental and controllers are quote-only.",
     },
     about: {
       title: "About ARLEDSCREEN | LED Engineering Partner",
