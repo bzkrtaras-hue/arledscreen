@@ -123,7 +123,9 @@ export default async function ProductGroupPage({ params }: PageProps) {
             lowPrice: Math.min(...prices.map((x) => x.usd)).toFixed(2),
             highPrice: Math.max(...prices.map((x) => x.usd)).toFixed(2),
             offerCount: prices.length,
-            description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç.",
+            priceValidUntil: "2026-12-31",
+            description:
+              "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok; nakliye yazılı teklifle.",
             seller: { "@id": `${SITE_URL}/#organization` },
           },
         }

@@ -35,7 +35,7 @@ export function OrganizationJsonLd() {
         url: SITE_URL,
         name: "ARLEDSCREEN",
         alternateName: "ARLED SCREEN",
-        inLanguage: "tr-TR",
+        inLanguage: ["tr-TR", "en-US"],
         publisher: { "@id": `${SITE_URL}/#organization` },
       },
       {
@@ -81,7 +81,7 @@ export function OrganizationJsonLd() {
             email: CONTACT_EMAIL,
             telephone: CONTACT_PHONE_E164,
             areaServed: "TR",
-            availableLanguage: ["Turkish"],
+            availableLanguage: ["Turkish", "English"],
           },
         ],
       },

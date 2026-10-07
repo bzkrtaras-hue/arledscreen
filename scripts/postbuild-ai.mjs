@@ -197,6 +197,30 @@ function buildCatalog() {
         itemCondition: "https://schema.org/NewCondition",
         description:
           "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        // Honest shipping graph: no shippingRate.value=0 (would invent free freight).
+        // Aligns with merchant TSV shipping_included=false — rate only in written quote.
+        shippingDetails: {
+          "@type": "OfferShippingDetails",
+          shippingDestination: {
+            "@type": "DefinedRegion",
+            addressCountry: "TR",
+          },
+          deliveryTime: {
+            "@type": "ShippingDeliveryTime",
+            handlingTime: {
+              "@type": "QuantitativeValue",
+              minValue: 3,
+              maxValue: 21,
+              unitCode: "DAY",
+            },
+            transitTime: {
+              "@type": "QuantitativeValue",
+              minValue: 1,
+              maxValue: 14,
+              unitCode: "DAY",
+            },
+          },
+        },
         hasMerchantReturnPolicy: {
           "@type": "MerchantReturnPolicy",
           applicableCountry: "TR",

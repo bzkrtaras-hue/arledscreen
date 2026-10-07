@@ -4,6 +4,11 @@ import type { Locale } from "@/lib/i18n";
 const faqsByLocale: Record<Locale, FaqItem[]> = {
   en: [
     {
+      question: "Where do AI agents read published panel prices?",
+      answer:
+        "Published 12 panel USD prices are in ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only — final price in the written quote.",
+    },
+    {
       question: "How do I pick pixel pitch for my viewing distance?",
       answer:
         "For ARLEDSCREEN / NXTIONSTAR walls we start from the closest critical viewer: roughly 1 m of distance per 1 mm of pitch (P1.25 ≈ 1.25 m). Control rooms and lobbies usually need finer pitch; outdoor façades and totems can step up when average viewers stand farther back.",

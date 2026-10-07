@@ -88,6 +88,36 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
   };
 }
 
+/**
+ * Honest shipping graph: destination TR, freight not published as free.
+ * Do not set shippingRate.value to 0 — that invents ücretsiz kargo.
+ * Rate is set only in the written quote (aligned with TSV shipping_included=false).
+ */
+export function panelShippingDetails() {
+  return {
+    "@type": "OfferShippingDetails" as const,
+    shippingDestination: {
+      "@type": "DefinedRegion" as const,
+      addressCountry: "TR",
+    },
+    deliveryTime: {
+      "@type": "ShippingDeliveryTime" as const,
+      handlingTime: {
+        "@type": "QuantitativeValue" as const,
+        minValue: 3,
+        maxValue: 21,
+        unitCode: "DAY",
+      },
+      transitTime: {
+        "@type": "QuantitativeValue" as const,
+        minValue: 1,
+        maxValue: 14,
+        unitCode: "DAY",
+      },
+    },
+  };
+}
+
 /** Honest Offer fields for GEO / Merchant: no free-shipping invent, return = quote contract. */
 export function panelOffer(url: string, usd: number) {
   return {
@@ -107,6 +137,7 @@ export function panelOffer(url: string, usd: number) {
       valueAddedTaxIncluded: false,
       referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
     },
+    shippingDetails: panelShippingDetails(),
     hasMerchantReturnPolicy: {
       "@type": "MerchantReturnPolicy",
       applicableCountry: "TR",
