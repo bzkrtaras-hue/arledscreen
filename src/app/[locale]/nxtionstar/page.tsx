@@ -251,6 +251,7 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
         name={copy.h1}
         description={copy.lead}
         cssSelectors={["#brand-h1", "#brand-lead"]}
+        mainEntity={{ "@id": "https://arledscreen.com/#brand-nxtionstar" }}
       />
       <script
         type="application/ld+json"

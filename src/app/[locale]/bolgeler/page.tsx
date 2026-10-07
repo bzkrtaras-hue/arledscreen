@@ -13,7 +13,12 @@ import {
   serviceRegionsHubSummary,
 } from "@/content/service-regions";
 import { getFaqs } from "@/content/faqs";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
+import {
+  BRAND_SUBJECT_DATASETS,
+  localBusinessRef,
+  nxtionstarBrandRef,
+  pricedPanelsDatasetJsonLd,
+} from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
@@ -115,6 +120,28 @@ export default async function BolgelerHubPage({
         ]}
       />
       <FaqJsonLd faqs={faqs} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": `${pageUrl}#service`,
+            name: en
+              ? "Turkey-wide LED display survey, install and technical service"
+              : "Türkiye geneli LED ekran keşif, montaj ve teknik servis",
+            serviceType: en ? "LED display systems" : "LED ekran sistemleri",
+            description: en
+              ? "ARLEDSCREEN LED survey, install and service regions. HQ Gaziosmanpaşa, Istanbul; published provinces only — no 81-city doorways."
+              : "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis. İstanbul Gaziosmanpaşa merkez; yalnızca kayıtlı iller — 81-il doorway yok.",
+            brand: nxtionstarBrandRef(),
+            provider: localBusinessRef(),
+            areaServed: { "@type": "Country", name: en ? "Turkey" : "Türkiye" },
+            url: pageUrl,
+            isRelatedTo: BRAND_SUBJECT_DATASETS,
+          }),
+        }}
+      />
       <SpeakableJsonLd
         pageUrl={pageUrl}
         name={
@@ -128,6 +155,7 @@ export default async function BolgelerHubPage({
             : "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; kayıtlı iller ve proje örnekleri."
         }
         cssSelectors={["#bolge-h1", "#bolge-lead"]}
+        mainEntity={{ "@id": `${pageUrl}#service` }}
       />
       <script
         type="application/ld+json"

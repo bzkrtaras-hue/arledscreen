@@ -85,6 +85,7 @@ export default async function ProductsPage({ params }: PageProps) {
             name={seo.h1 ?? pageCopy.title}
             description={seo.intro ?? pageCopy.description}
             cssSelectors={["#products-h1", "#products-lead"]}
+            mainEntity={{ "@id": `${absoluteUrl(`/${locale}/products/`)}#service` }}
           />
           <script
             type="application/ld+json"

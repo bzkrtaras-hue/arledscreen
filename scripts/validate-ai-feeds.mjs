@@ -938,8 +938,14 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
-  if (!llmsLive.includes("makesOffer") || !llmsLive.includes("itemOffered") || !llmsLive.includes("#localbusiness")) {
-    console.error("❌ out/llms.txt must cite entity makesOffer + Offer itemOffered + #localbusiness");
+  if (
+    !llmsLive.includes("makesOffer") ||
+    !llmsLive.includes("itemOffered") ||
+    !llmsLive.includes("#localbusiness") ||
+    !llmsLive.includes("hasOfferCatalog") ||
+    !llmsLive.includes("#brand-nxtionstar")
+  ) {
+    console.error("❌ out/llms.txt must cite makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog");
     process.exit(1);
   }
   if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt") || !llmsLive.includes("organization.json") || !llmsLive.includes("AGENTS.md")) {
@@ -2019,6 +2025,11 @@ if (fs.existsSync(outDir)) {
     ["tr/blog/index.html", (mid) => mid.includes("/tr/blog/") && mid.endsWith("#blog")],
     ["tr/projelerimiz/index.html", (mid) => mid.includes("/tr/projelerimiz/") && mid.endsWith("#projects")],
     ["tr/galeri/index.html", (mid) => mid.includes("/tr/galeri/") && mid.endsWith("#gallery")],
+    ["tr/products/index.html", (mid) => mid.includes("/tr/products/") && mid.endsWith("#service")],
+    ["en/products/index.html", (mid) => mid.includes("/en/products/") && mid.endsWith("#service")],
+    ["tr/bolgeler/index.html", (mid) => mid.includes("/tr/bolgeler/") && mid.endsWith("#service")],
+    ["tr/nxtionstar/index.html", (mid) => mid === "https://arledscreen.com/#brand-nxtionstar"],
+    ["en/nxtionstar/index.html", (mid) => mid === "https://arledscreen.com/#brand-nxtionstar"],
   ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     let pageOk = false;

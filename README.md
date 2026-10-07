@@ -78,7 +78,6 @@ nxtionstar-platform/
       quote/
         QuoteWizard.tsx
       seo/
-        ProductJsonLd.tsx
         OrganizationJsonLd.tsx
         BreadcrumbJsonLd.tsx
         FaqJsonLd.tsx
