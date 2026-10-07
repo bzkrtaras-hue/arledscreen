@@ -104,6 +104,12 @@
         "format": "text/plain",
         "description": "Extended AI guide with deeper context and edge cases"
       },
+      "aiTxt": {
+        "type": "AI Discovery Pointer",
+        "url": "https://arledscreen.com/ai.txt",
+        "format": "text/plain",
+        "description": "Short agent probe file: canonical site, arleds.com warning, links to llms/entity/ai-shopping/catalog/merchant/geo-baseline/ard"
+      },
       "priceHub": {
         "type": "Price Landing Page",
         "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
@@ -229,6 +235,7 @@
       "/entity-profiles.json",
       "/llms.txt",
       "/llms-full.txt",
+      "/ai.txt",
       "/feeds/merchant-priced-panels.tsv",
       "/.well-known/ard.json"
     ],

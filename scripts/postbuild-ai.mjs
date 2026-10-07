@@ -682,9 +682,11 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       legacyDomain: {
         host: "arleds.com",
         status: "owner-gated-301",
-        note: "Same phone historically; TLS broken/timeout observed; not sameAs; not a price/entity citation source. Prefer arledscreen.com.",
+        note: "Same phone historically; TLS broken/timeout observed; not sameAs; not a price/entity citation source. Prefer arledscreen.com. Web SERP 2026-10-07: non-brand queries still surface arleds.com ahead of arledscreen.com (Point C + 301 required).",
         measuredAt: today,
+        serpRisk: "high",
       },
+      aiTxt: `${SITE_URL}/ai.txt`,
     },
     pricedPanels: priced,
     fingerprints: {
@@ -701,6 +703,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       ard: `${SITE_URL}/.well-known/ard.json`,
       merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       llms: `${SITE_URL}/llms.txt`,
+      aiTxt: `${SITE_URL}/ai.txt`,
       brandPage: `${SITE_URL}/tr/nxtionstar/`,
       priceHub: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
       homeTr: `${SITE_URL}/tr/`,

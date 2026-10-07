@@ -56,6 +56,8 @@ Karıştırma yasağı: Almanya ARLED Solutions GmbH / ARLED Cinema · Next&Next
 ## 0b) Domain birleştirme (kritik entity notu)
 
 Aynı telefon (+90 530 507 88 34) ile görünen eski/yan site **arleds.com** hâlâ indekste rakip/kafa karışıklığı yaratabilir.
+
+**Ölçüm 2026-10-07 (web SERP, skor uydurma yok):** “ARLEDSCREEN Gaziosmanpaşa” ve “arleds.com OR arledscreen.com LED” sorgularında `arleds.com` sonuçlarda görünür; markasız/yerel sorgularda `arledscreen.com` üst sırada değil. `site:arledscreen.com` ile kanonik site indeksleniyor. Point C + 301 olmadan AI atıf düşük kalır — bu kod hatası değildir.
 Önceki karar: TLS/redirect yoksa `sameAs`’a eklenmez.
 
 - [ ] `https://arleds.com` → `https://arledscreen.com/tr/` **301** (tüm sayfalar)

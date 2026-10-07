@@ -293,8 +293,16 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json resources.geoBaseline required");
     process.exit(1);
   }
+  if (!ard?.agentic?.resources?.aiTxt?.url?.includes("/ai.txt")) {
+    console.error("❌ ard.json resources.aiTxt required");
+    process.exit(1);
+  }
   if (!Array.isArray(ard?.robotsPolicy?.allow) || !ard.robotsPolicy.allow.includes("/geo-baseline.json")) {
     console.error("❌ ard.json robotsPolicy.allow must include /geo-baseline.json");
+    process.exit(1);
+  }
+  if (!ard.robotsPolicy.allow.includes("/ai.txt")) {
+    console.error("❌ ard.json robotsPolicy.allow must include /ai.txt");
     process.exit(1);
   }
   const subjectUrls = (entity.subjectOf || []).map((s) => s.url || "");
