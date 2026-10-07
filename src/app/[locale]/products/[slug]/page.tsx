@@ -8,6 +8,7 @@ import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
 import {
   CALC_EXTRAS,
   PRICE_DATASETS,
+  PRICE_VALID_UNTIL,
   fmtM2,
   fmtUsd,
   panelProductsJsonLd,
@@ -123,7 +124,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
             lowPrice: Math.min(...prices.map((x) => x.usd)).toFixed(2),
             highPrice: Math.max(...prices.map((x) => x.usd)).toFixed(2),
             offerCount: prices.length,
-            priceValidUntil: "2026-12-31",
+            priceValidUntil: PRICE_VALID_UNTIL,
             description:
               "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok; nakliye yazılı teklifle.",
             seller: { "@id": `${SITE_URL}/#organization` },
