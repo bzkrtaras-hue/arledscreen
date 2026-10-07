@@ -122,11 +122,17 @@ if (
   rss.includes("/entity-profiles.json") &&
   rss.includes("/.well-known/brand.json") &&
   rss.includes("/.well-known/entity.json") &&
+  rss.includes("/.well-known/agents.json") &&
+  rss.includes("/.well-known/ard.json") &&
+  rss.includes("/ai.txt") &&
+  rss.includes("/llms.txt") &&
+  rss.includes("/humans.txt") &&
+  rss.includes("/AGENTS.md") &&
   rss.includes("geo:next") &&
   rss.includes("geo:ack")
 ) {
-  ok("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known + geo:ack");
-} else fail("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known + geo:ack");
+  ok("prices.rss atom:link + invent aliases + discovery agents/ard/ai/llms/humans/AGENTS");
+} else fail("prices.rss atom:link + invent aliases + discovery agents/ard/ai/llms/humans/AGENTS");
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
@@ -160,6 +166,10 @@ if (
     agentsBased.includes("/.well-known/panels.json") &&
     agentsBased.includes("/.well-known/mpn.json") &&
     agentsBased.includes("/.well-known/merchant.json") &&
+    agentsBased.includes("/ai.txt") &&
+    agentsBased.includes("/llms.txt") &&
+    agentsBased.includes("/humans.txt") &&
+    agentsBased.includes("/AGENTS.md") &&
     agentsBased.includes("#website") &&
     agentsDist.includes("/ai-shopping.json") &&
     agentsDist.includes("/entity-profiles.json") &&
@@ -168,10 +178,15 @@ if (
     agentsDist.includes("/.well-known/panels.json") &&
     agentsDist.includes("/.well-known/mpn.json") &&
     agentsDist.includes("/.well-known/merchant.json") &&
+    agentsDist.includes("/.well-known/ard.json") &&
+    agentsDist.includes("/ai.txt") &&
+    agentsDist.includes("/llms.txt") &&
+    agentsDist.includes("/humans.txt") &&
+    agentsDist.includes("/AGENTS.md") &&
     agentsMd.includes("geo:next")
   ) {
-    ok("agents distribution + isBasedOn inventAlias panels/mpn/merchant + AGENTS geo:next");
-  } else fail("agents distribution + isBasedOn inventAlias panels/mpn/merchant + AGENTS geo:next");
+    ok("agents distribution + isBasedOn inventAlias + discovery ai/llms/humans/AGENTS");
+  } else fail("agents distribution + isBasedOn inventAlias + discovery ai/llms/humans/AGENTS");
   const llmsFull = readText("llms-full.txt");
   if (
     llms.includes("geo:next") &&
@@ -198,7 +213,11 @@ if (
   pointC.includes("/.well-known/mpn.json") &&
   pointC.includes("/.well-known/merchant.json") &&
   pointC.includes("/.well-known/agents.json") &&
-  pointC.includes("/.well-known/ard.json")
+  pointC.includes("/.well-known/ard.json") &&
+  pointC.includes("/ai.txt") &&
+  pointC.includes("/llms.txt") &&
+  pointC.includes("/humans.txt") &&
+  pointC.includes("/AGENTS.md")
 ) {
   ok("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
 } else fail("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
@@ -320,6 +339,8 @@ else fail("ard.resources.pointC");
     head.includes("ard_url") &&
     head.includes("ai_txt_url") &&
     head.includes("llms_url") &&
+    head.includes("humans_url") &&
+    head.includes("agents_md_url") &&
     tsv.includes(`${SITE}/#organization`) &&
     tsv.includes(`${SITE}/entity.json`) &&
     tsv.includes(`${SITE}/brand.json`) &&
@@ -341,6 +362,8 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/.well-known/ard.json`) &&
     tsv.includes(`${SITE}/ai.txt`) &&
     tsv.includes(`${SITE}/llms.txt`) &&
+    tsv.includes(`${SITE}/humans.txt`) &&
+    tsv.includes(`${SITE}/AGENTS.md`) &&
     tsv.includes(`${SITE}/feeds/prices.rss`) &&
     tsv.includes(`${SITE}/offer.json`) &&
     tsv.includes(`${SITE}/organization.json`) &&
@@ -431,10 +454,12 @@ if (
     dist.includes("/.well-known/agents.json") &&
     dist.includes("/.well-known/ard.json") &&
     dist.includes("/ai.txt") &&
-    dist.includes("/llms.txt")
+    dist.includes("/llms.txt") &&
+    dist.includes("/humans.txt") &&
+    dist.includes("/AGENTS.md")
   ) {
-    ok("ai-shopping distribution → inventAlias + discovery agents/ard/ai.txt/llms");
-  } else fail("ai-shopping distribution → inventAlias + discovery agents/ard/ai.txt/llms");
+    ok("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/humans/AGENTS");
+  } else fail("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/humans/AGENTS");
 }
 
 {
@@ -636,10 +661,12 @@ if (
     headers.includes("/.well-known/price.json") &&
     headers.includes("/.well-known/ard.json") &&
     headers.includes("/.well-known/agents.json") &&
+    headers.includes("/humans.txt") &&
+    headers.includes("/AGENTS.md") &&
     headers.includes("#website")
   ) {
-    ok("_headers Link inventAlias + discovery agents/ard");
-  } else fail("_headers Link inventAlias + discovery agents/ard");
+    ok("_headers Link inventAlias + discovery agents/ard/humans/AGENTS");
+  } else fail("_headers Link inventAlias + discovery agents/ard/humans/AGENTS");
 }
 
 if (process.exitCode) {

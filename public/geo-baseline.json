@@ -33,7 +33,9 @@
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
-    "https://arledscreen.com/llms.txt"
+    "https://arledscreen.com/llms.txt",
+    "https://arledscreen.com/humans.txt",
+    "https://arledscreen.com/AGENTS.md"
   ],
   "isRelatedTo": [
     {
@@ -215,6 +217,18 @@
     },
     {
       "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/humans.txt",
+      "name": "humans.txt discovery"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/markdown",
+      "contentUrl": "https://arledscreen.com/AGENTS.md",
+      "name": "AGENTS.md"
+    },
+    {
+      "@type": "DataDownload",
       "@id": "https://arledscreen.com/#website",
       "encodingFormat": "text/html",
       "contentUrl": "https://arledscreen.com",
@@ -358,9 +372,9 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "0e9204367d4dbb39e49504e35b8a87334b5c46f4cc2a2a73672922aad519c269",
-    "catalogSha256": "f047a280b9e652d24fe4c5aa740a4204577201e338a6bf1707bebff28f0d035e",
-    "merchantTsvSha256": "5887ff4e629c135b5a91cf01fc1f85f723767dd391f4508c46215cb67dfd5ca7",
+    "aiShoppingSha256": "60e4db11820a291a54dfc018ea17e4cf249d255bd9272e53574866c6fb4b7880",
+    "catalogSha256": "23ff12e807568d79951e0f91639f70841b2617ed68489c1f289b90a55a86192d",
+    "merchantTsvSha256": "b141537bef1ee59f74ad00139481c306e775d31b6682539382e3771d1863706f",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
   "discovery": {

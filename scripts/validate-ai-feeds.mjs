@@ -213,8 +213,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
-  if (!Array.isArray(ai.distribution) || ai.distribution.length < 31) {
-    console.error("❌ ai-shopping.json Dataset.distribution must list ≥31 DataDownload encodings (invent aliases + discovery agents/ard/ai.txt/llms + brand/entity + point-c/profiles)");
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 33) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥33 DataDownload encodings (invent aliases + discovery agents/ard/ai.txt/llms/humans/AGENTS.md + brand/entity + point-c/profiles)");
     process.exit(1);
   }
   for (const needle of [
@@ -239,6 +239,8 @@ if (fs.existsSync(outDir)) {
     "/.well-known/ard.json",
     "/ai.txt",
     "/llms.txt",
+    "/humans.txt",
+    "/AGENTS.md",
     "/offer.json",
     "/catalog.json",
     "/feeds/merchant-priced-panels.tsv",
@@ -631,6 +633,8 @@ if (fs.existsSync(outDir)) {
       "/.well-known/ard.json",
       "/ai.txt",
       "/llms.txt",
+      "/humans.txt",
+      "/AGENTS.md",
     ]) {
       if (!geoDist.includes(needle)) {
         console.error(`❌ geo-baseline.json distribution invent must include ${needle}`);
@@ -1680,6 +1684,10 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("/.well-known/merchant.json") ||
       !pointC.includes("/.well-known/agents.json") ||
       !pointC.includes("/.well-known/ard.json") ||
+      !pointC.includes("/ai.txt") ||
+      !pointC.includes("/llms.txt") ||
+      !pointC.includes("/humans.txt") ||
+      !pointC.includes("/AGENTS.md") ||
       !pointC.includes("ai-shopping.json pricedPanels") ||
       !pointC.includes("/entity-profiles.json") ||
       !pointC.includes("#website") ||
@@ -1778,6 +1786,10 @@ if (fs.existsSync(outDir)) {
       "/.well-known/merchant.json",
       "/.well-known/prices.json",
       "/.well-known/price.json",
+      "/ai.txt",
+      "/llms.txt",
+      "/humans.txt",
+      "/AGENTS.md",
       "#website",
     ]) {
       if (!agentsBased.includes(needle)) {
@@ -1802,6 +1814,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/merchant.json",
       "/.well-known/prices.json",
       "/.well-known/price.json",
+      "/.well-known/ard.json",
+      "/ai.txt",
+      "/llms.txt",
+      "/humans.txt",
+      "/AGENTS.md",
       "#website",
     ]) {
       if (!agentsDist.includes(needle)) {
@@ -2097,13 +2114,14 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/prices.json") ||
     !headersLive.includes("/.well-known/price.json") ||
     !headersLive.includes("/.well-known/ard.json") ||
+    !headersLive.includes("humans.txt") ||
     !headersLive.includes("#website") ||
     !headersLive.includes("/.well-known/entity.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard + point-c");
+    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans + point-c");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -2672,6 +2690,8 @@ if (fs.existsSync(outDir)) {
     "ard_url",
     "ai_txt_url",
     "llms_url",
+    "humans_url",
+    "agents_md_url",
   ]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
@@ -2715,6 +2735,8 @@ if (fs.existsSync(outDir)) {
   const ardUrlIdx = tsvCols.indexOf("ard_url");
   const aiTxtUrlIdx = tsvCols.indexOf("ai_txt_url");
   const llmsUrlIdx = tsvCols.indexOf("llms_url");
+  const humansUrlIdx = tsvCols.indexOf("humans_url");
+  const agentsMdUrlIdx = tsvCols.indexOf("agents_md_url");
   for (const row of tsvRows) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
@@ -2835,6 +2857,14 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[llmsUrlIdx] !== "https://arledscreen.com/llms.txt") {
       console.error(`❌ merchant TSV llms_url must be /llms.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[humansUrlIdx] !== "https://arledscreen.com/humans.txt") {
+      console.error(`❌ merchant TSV humans_url must be /humans.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[agentsMdUrlIdx] !== "https://arledscreen.com/AGENTS.md") {
+      console.error(`❌ merchant TSV agents_md_url must be /AGENTS.md for ${cells[idIdx]}`);
       process.exit(1);
     }
   }

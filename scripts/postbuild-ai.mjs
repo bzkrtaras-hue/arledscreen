@@ -1176,11 +1176,13 @@ function buildMerchantTsv() {
     "organization_url",
     "geo_baseline_url",
     "website_url",
-    // Discovery invent for TSV-only agents (agents/ARD/ai.txt/llms).
+    // Discovery invent for TSV-only agents (agents/ARD/ai.txt/llms/humans/AGENTS.md).
     "agents_url",
     "ard_url",
     "ai_txt_url",
     "llms_url",
+    "humans_url",
+    "agents_md_url",
   ];
   const lines = [header.join("\t")];
   for (const panel of PANEL_PRICES) {
@@ -1248,6 +1250,8 @@ function buildMerchantTsv() {
         `${SITE_URL}/.well-known/ard.json`,
         `${SITE_URL}/ai.txt`,
         `${SITE_URL}/llms.txt`,
+        `${SITE_URL}/humans.txt`,
+        `${SITE_URL}/AGENTS.md`,
       ].join("\t"),
     );
   }
@@ -1389,7 +1393,13 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/.well-known/merchant.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/entity.json" rel="related" type="application/ld+json"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
+    <atom:link href="${SITE_URL}/.well-known/agents.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/ard.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/ai.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/llms.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/humans.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/AGENTS.md" rel="related" type="text/markdown"/>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /humans.txt · /AGENTS.md. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
     <docs>${SITE_URL}/ai.txt</docs>
@@ -1636,7 +1646,7 @@ function inventAliasDistributionEntries() {
   ];
 }
 
-/** Agent discovery surfaces (ai.txt / llms / agents / ARD) for distribution walks. */
+/** Agent discovery surfaces (ai.txt / llms / agents / ARD / humans / AGENTS.md) for distribution walks. */
 function discoveryDistributionEntries() {
   return [
     {
@@ -1663,6 +1673,18 @@ function discoveryDistributionEntries() {
       contentUrl: `${SITE_URL}/llms.txt`,
       name: "LLM Context",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/humans.txt`,
+      name: "humans.txt discovery",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/markdown",
+      contentUrl: `${SITE_URL}/AGENTS.md`,
+      name: "AGENTS.md",
+    },
   ];
 }
 
@@ -1686,6 +1708,8 @@ function discoveryBasedOnUrls() {
     `${SITE_URL}/.well-known/ard.json`,
     `${SITE_URL}/ai.txt`,
     `${SITE_URL}/llms.txt`,
+    `${SITE_URL}/humans.txt`,
+    `${SITE_URL}/AGENTS.md`,
   ];
 }
 
@@ -3443,32 +3467,34 @@ Acknowledgments: https://arledscreen.com/brand.json
     // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
     // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, mpn_wk,
     // merchant_wk, prices_wk, entity_wk, prices_rss, org, geo, website,
-    // agents, ard, ai_txt, llms
-    const llmsUrl = cells[cells.length - 1];
-    const aiTxtUrl = cells[cells.length - 2];
-    const ardUrl = cells[cells.length - 3];
-    const agentsUrl = cells[cells.length - 4];
-    const websiteUrl = cells[cells.length - 5];
-    const geoBaselineUrl = cells[cells.length - 6];
-    const orgUrl = cells[cells.length - 7];
-    const pricesRssUrl = cells[cells.length - 8];
-    const entityWk = cells[cells.length - 9];
-    const pricesWk = cells[cells.length - 10];
-    const merchantWk = cells[cells.length - 11];
-    const mpnWk = cells[cells.length - 12];
-    const panelsWk = cells[cells.length - 13];
-    const pricingWk = cells[cells.length - 14];
-    const offerJsonUrl = cells[cells.length - 15];
-    const skuWk = cells[cells.length - 16];
-    const modulesWk = cells[cells.length - 17];
-    const brandWk = cells[cells.length - 18];
-    const pointCUrl = cells[cells.length - 19];
-    const profilesUrl = cells[cells.length - 20];
-    const catalogUrl = cells[cells.length - 21];
-    const pricesJsonUrl = cells[cells.length - 22];
-    const aiShoppingUrl = cells[cells.length - 23];
-    const shippingIncluded = cells[cells.length - 24];
-    const taxIncluded = cells[cells.length - 25];
+    // agents, ard, ai_txt, llms, humans, agents_md
+    const agentsMdUrl = cells[cells.length - 1];
+    const humansUrl = cells[cells.length - 2];
+    const llmsUrl = cells[cells.length - 3];
+    const aiTxtUrl = cells[cells.length - 4];
+    const ardUrl = cells[cells.length - 5];
+    const agentsUrl = cells[cells.length - 6];
+    const websiteUrl = cells[cells.length - 7];
+    const geoBaselineUrl = cells[cells.length - 8];
+    const orgUrl = cells[cells.length - 9];
+    const pricesRssUrl = cells[cells.length - 10];
+    const entityWk = cells[cells.length - 11];
+    const pricesWk = cells[cells.length - 12];
+    const merchantWk = cells[cells.length - 13];
+    const mpnWk = cells[cells.length - 14];
+    const panelsWk = cells[cells.length - 15];
+    const pricingWk = cells[cells.length - 16];
+    const offerJsonUrl = cells[cells.length - 17];
+    const skuWk = cells[cells.length - 18];
+    const modulesWk = cells[cells.length - 19];
+    const brandWk = cells[cells.length - 20];
+    const pointCUrl = cells[cells.length - 21];
+    const profilesUrl = cells[cells.length - 22];
+    const catalogUrl = cells[cells.length - 23];
+    const pricesJsonUrl = cells[cells.length - 24];
+    const aiShoppingUrl = cells[cells.length - 25];
+    const shippingIncluded = cells[cells.length - 26];
+    const taxIncluded = cells[cells.length - 27];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3500,6 +3526,8 @@ Acknowledgments: https://arledscreen.com/brand.json
       ardUrl !== `${SITE_URL}/.well-known/ard.json` ||
       aiTxtUrl !== `${SITE_URL}/ai.txt` ||
       llmsUrl !== `${SITE_URL}/llms.txt` ||
+      humansUrl !== `${SITE_URL}/humans.txt` ||
+      agentsMdUrl !== `${SITE_URL}/AGENTS.md` ||
       /\ttrue(\t|$)/.test(row)
     ) {
       console.error(`postbuild-ai: merchant TSV mismatch or free-ship invent for ${panel.id}`);

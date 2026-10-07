@@ -3392,7 +3392,9 @@
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
-    "https://arledscreen.com/llms.txt"
+    "https://arledscreen.com/llms.txt",
+    "https://arledscreen.com/humans.txt",
+    "https://arledscreen.com/AGENTS.md"
   ],
   "distribution": [
     {
@@ -3505,6 +3507,18 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/llms.txt",
       "name": "LLM Context"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/humans.txt",
+      "name": "humans.txt discovery"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/markdown",
+      "contentUrl": "https://arledscreen.com/AGENTS.md",
+      "name": "AGENTS.md"
     }
   ]
 }
