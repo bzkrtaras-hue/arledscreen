@@ -302,7 +302,20 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json robotsPolicy.allow must include merchant TSV path");
     process.exit(1);
   }
-  for (const must of ["/cite.json", "/faq.json", "/prices.json", "/panels.json", "/organization.json", "/AGENTS.md"]) {
+  for (const must of [
+    "/cite.json",
+    "/faq.json",
+    "/prices.json",
+    "/panels.json",
+    "/organization.json",
+    "/AGENTS.md",
+    "/modules.json",
+    "/sku.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+  ]) {
     if (!ard.robotsPolicy.allow.includes(must)) {
       console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
       process.exit(1);
@@ -1531,6 +1544,10 @@ if (fs.existsSync(outDir)) {
     !trExamples.some((u) => String(u).includes("/panels.json")) ||
     !trExamples.some((u) => String(u).includes("/merchant.json")) ||
     !trExamples.some((u) => String(u).includes("/.well-known/mpn.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/modules.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/sku.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/price.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/pricing.json")) ||
     !trExamples.some((u) => String(u).includes("/api/panels.json")) ||
     !trExamples.some((u) => String(u).includes("/tr/llms.txt"))
   ) {

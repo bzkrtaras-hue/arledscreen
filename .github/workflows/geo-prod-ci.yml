@@ -79,4 +79,6 @@ jobs:
           grep -q '"isBasedOn"' out/geo-baseline.json
           grep -q "/entity.json" out/geo-baseline.json
           grep -q "/point-c.txt" out/geo-baseline.json
+          grep -q "/.well-known/modules.json" out/.well-known/ard.json
+          grep -q "/.well-known/pricing.json" out/.well-known/ard.json
           echo "OK owner tooling"
