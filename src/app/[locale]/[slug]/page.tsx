@@ -13,6 +13,11 @@ import {
   getEnInventBridge,
   isEnInventBridgeSlug,
 } from "@/content/en-invent-bridges";
+import {
+  TR_INVENT_BRIDGE_SLUGS,
+  getTrInventBridge,
+  isTrInventBridgeSlug,
+} from "@/content/tr-invent-bridges";
 import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n";
 
@@ -31,6 +36,10 @@ export function generateStaticParams() {
   // Inventable EN synonym bridges (calculator → hesaplayici, faq → sss, …).
   for (const slug of EN_INVENT_BRIDGE_SLUGS) {
     params.push({ locale: "en", slug });
+  }
+  // Inventable TR quote synonyms (teklif → quote; CF 404.html beats _redirects).
+  for (const slug of TR_INVENT_BRIDGE_SLUGS) {
+    params.push({ locale: "tr", slug });
   }
   return params;
 }
@@ -51,6 +60,22 @@ export async function generateMetadata({
       ...buildPageMetadata({
         locale: "en" as Locale,
         path: bridge.target.replace(/^\/en/, "") || "/",
+        title: bridge.title,
+        description: bridge.description,
+        hreflangLocales: [],
+      }),
+      robots: { index: false, follow: true },
+      alternates: { canonical: bridge.target },
+    };
+  }
+
+  if (locale === "tr" && isTrInventBridgeSlug(slug)) {
+    const bridge = getTrInventBridge(slug);
+    if (!bridge) return {};
+    return {
+      ...buildPageMetadata({
+        locale: "tr" as Locale,
+        path: bridge.target.replace(/^\/tr/, "") || "/",
         title: bridge.title,
         description: bridge.description,
         hreflangLocales: [],
@@ -101,6 +126,19 @@ export default async function CommercialSlugPage({
             ? "Project commercial terms are confirmed in written quotes."
             : undefined
         }
+      />
+    );
+  }
+
+  if (locale === "tr" && isTrInventBridgeSlug(slug)) {
+    const bridge = getTrInventBridge(slug);
+    if (!bridge) notFound();
+    return (
+      <InventBridge
+        h1={bridge.h1}
+        target={bridge.target}
+        cta={bridge.cta}
+        note="Yayımlanmış 12 panel USD: /prices.json · /ai-shopping.json. Nihai tutar yazılı teklifle."
       />
     );
   }

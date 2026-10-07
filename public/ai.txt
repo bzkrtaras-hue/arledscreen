@@ -37,6 +37,11 @@ invent-regions-en: https://arledscreen.com/en/regions/
 invent-services-en: https://arledscreen.com/en/services/
 invent-brand-en: https://arledscreen.com/en/brand/
 invent-teklif-en: https://arledscreen.com/en/teklif/
+invent-teklif-tr: https://arledscreen.com/tr/teklif/
+invent-teklif-al-tr: https://arledscreen.com/tr/teklif-al/
+invent-teklif-iste-tr: https://arledscreen.com/tr/teklif-iste/
+invent-fiyat-teklifi-tr: https://arledscreen.com/tr/fiyat-teklifi/
+invent-request-quote-tr: https://arledscreen.com/tr/request-quote/
 invent-prices-en: https://arledscreen.com/en/prices/
 invent-pricing-en: https://arledscreen.com/en/pricing/
 invent-price-en: https://arledscreen.com/en/price/

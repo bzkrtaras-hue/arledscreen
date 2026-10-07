@@ -797,6 +797,10 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       faqEn: `${SITE_URL}/en/sss/`,
       homeTr: `${SITE_URL}/tr/`,
       homeEn: `${SITE_URL}/en/`,
+      quoteTr: `${SITE_URL}/tr/quote/`,
+      inventTeklifTr: `${SITE_URL}/tr/teklif/`,
+      inventTeklifAlTr: `${SITE_URL}/tr/teklif-al/`,
+      inventFiyatTeklifiTr: `${SITE_URL}/tr/fiyat-teklifi/`,
       productsHub: `${SITE_URL}/tr/products/`,
       productsHubEn: `${SITE_URL}/en/products/`,
       intentHub: `${SITE_URL}/tr/led-ekran/`,
@@ -1048,6 +1052,11 @@ invent-regions-en: ${SITE_URL}/en/regions/
 invent-services-en: ${SITE_URL}/en/services/
 invent-brand-en: ${SITE_URL}/en/brand/
 invent-teklif-en: ${SITE_URL}/en/teklif/
+invent-teklif-tr: ${SITE_URL}/tr/teklif/
+invent-teklif-al-tr: ${SITE_URL}/tr/teklif-al/
+invent-teklif-iste-tr: ${SITE_URL}/tr/teklif-iste/
+invent-fiyat-teklifi-tr: ${SITE_URL}/tr/fiyat-teklifi/
+invent-request-quote-tr: ${SITE_URL}/tr/request-quote/
 invent-prices-en: ${SITE_URL}/en/prices/
 invent-pricing-en: ${SITE_URL}/en/pricing/
 invent-price-en: ${SITE_URL}/en/price/

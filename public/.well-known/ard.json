@@ -308,6 +308,19 @@
           "https://arledscreen.com/security.txt"
         ]
       },
+      "trInventBridges": {
+        "type": "Inventable Path Bridges",
+        "format": "text/html",
+        "description": "Noindex TR quote synonym bridges (CF 404.html beats _redirects). Canonical hub: /tr/quote/. Lean list — no 81-il doorways.",
+        "canonical": "https://arledscreen.com/tr/quote/",
+        "examples": [
+          "https://arledscreen.com/tr/teklif/",
+          "https://arledscreen.com/tr/teklif-al/",
+          "https://arledscreen.com/tr/teklif-iste/",
+          "https://arledscreen.com/tr/fiyat-teklifi/",
+          "https://arledscreen.com/tr/request-quote/"
+        ]
+      },
       "agentsJson": {
         "type": "Agent Discovery Index",
         "url": "https://arledscreen.com/.well-known/agents.json",

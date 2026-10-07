@@ -426,7 +426,10 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("/en/products/gob/") ||
     !aiTxtLive.includes("feed-alias-catalog:") ||
     !aiTxtLive.includes("/en/ai-shopping.json") ||
-    !aiTxtLive.includes("/.well-known/llms.txt")
+    !aiTxtLive.includes("/.well-known/llms.txt") ||
+    !aiTxtLive.includes("invent-teklif-tr:") ||
+    !aiTxtLive.includes("/tr/teklif/") ||
+    !aiTxtLive.includes("/tr/fiyat-teklifi/")
   ) {
     console.error("❌ out/ai.txt must list invent bridges + feed path aliases");
     process.exit(1);
@@ -675,6 +678,30 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json enInventBridges.examples must include catalog/shop + feed aliases");
     process.exit(1);
   }
+  const trInvent = ard?.agentic?.resources?.trInventBridges;
+  const trExamples = trInvent?.examples;
+  if (
+    !trInvent?.canonical?.includes("/tr/quote/") ||
+    !Array.isArray(trExamples) ||
+    !trExamples.some((u) => String(u).includes("/tr/teklif/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/teklif-al/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/fiyat-teklifi/"))
+  ) {
+    console.error("❌ ard.json trInventBridges must list lean TR quote invents → /tr/quote/");
+    process.exit(1);
+  }
+  for (const rel of ["tr/teklif/index.html", "tr/teklif-al/index.html", "tr/fiyat-teklifi/index.html"]) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ TR quote invent bridge missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    if (!/noindex/i.test(html) || !/Canonical hub/i.test(html) || !/\/tr\/quote\//.test(html)) {
+      console.error(`❌ TR quote invent bridge must be noindex InventBridge → /tr/quote/: ${rel}`);
+      process.exit(1);
+    }
+  }
   if (!ard?.agentic?.resources?.aiTxt?.url?.includes("/ai.txt")) {
     console.error("❌ ard.json resources.aiTxt required");
     process.exit(1);
@@ -855,6 +882,11 @@ if (fs.existsSync(outDir)) {
     "en/services/index.html",
     "en/brand/index.html",
     "en/teklif/index.html",
+    "tr/teklif/index.html",
+    "tr/teklif-al/index.html",
+    "tr/teklif-iste/index.html",
+    "tr/fiyat-teklifi/index.html",
+    "tr/request-quote/index.html",
     "en/urunler/index.html",
     "en/catalog/index.html",
     "en/shop/index.html",
@@ -1066,6 +1098,10 @@ if (fs.existsSync(outDir)) {
     "/en/services/",
     "/en/brand/",
     "/en/teklif/",
+    "/tr/teklif/",
+    "/tr/teklif-al/",
+    "/tr/fiyat-teklifi/",
+    "/tr/quote/",
     "/en/bolgeler/istanbul/",
     "/en/about/aras-bozkurt/",
     "/en/contact/",

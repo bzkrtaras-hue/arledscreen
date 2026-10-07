@@ -7,8 +7,9 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 - Canonical: https://arledscreen.com/ai-shopping.json (`pricedPanels`, 12 SKU USD)
 - Inventable aliases (byte-identical): `/prices.json` · `/price.json` · `/pricing.json` · `/api/prices` · `/.well-known/prices.json` · `/.well-known/ai-shopping.json`
 - Catalog: https://arledscreen.com/catalog.json
-- Merchant TSV: https://arledscreen.com/feeds/merchant-priced-panels.tsv
+- Merchant TSV: https://arledscreen.com/feeds/merchant-priced-panels.tsv (`mpn` = `id`/`sku`; no invented GTIN)
 - VAT and freight excluded; no free shipping. Quote-only for transparent / flexible / poster / rental / control cards.
+- Human quote form: https://arledscreen.com/tr/quote/ — inventable TR bridges: `/tr/teklif/` · `/tr/teklif-al/` · `/tr/fiyat-teklifi/` (noindex → quote)
 
 ## Entity / brand
 
