@@ -1,7 +1,7 @@
 User-Agent: *
 Allow: /
 
-# AI discovery endpoints — high priority crawl
+# AI discovery endpoints — high priority crawl (keep in sync with functions/robots.txt.js)
 Allow: /entity.json
 Allow: /catalog.json
 Allow: /ai-shopping.json
@@ -9,12 +9,28 @@ Allow: /geo-baseline.json
 Allow: /.well-known/ard.json
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /ai.txt
 Allow: /feeds/
+Allow: /prices.json
+Allow: /panels.json
+Allow: /mpn.json
+Allow: /merchant.json
+Allow: /organization.json
+Allow: /cite.json
+Allow: /faq.json
+Allow: /faqs.json
+Allow: /feed.json
+Allow: /offer.json
+Allow: /AGENTS.md
+Allow: /api/panels.json
+Allow: /api/merchant.json
+Allow: /api/prices.json
+Allow: /api/entity.json
+Allow: /api/ai-shopping.json
 
-# Deny crawl of private/temp paths (do not Disallow *.json — AI feeds must stay crawlable)
+# Deny crawl of private/temp paths (do NOT Disallow /api/ — invent price aliases live under /api/*.json)
 Disallow: /admin/
 Disallow: /_next/
-Disallow: /api/
 Disallow: /private/
 
 # Sitemap

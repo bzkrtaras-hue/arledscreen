@@ -77,9 +77,13 @@ Allow: /feed
 Allow: /organization
 Allow: /company
 Allow: /nap
+Allow: /cite.json
 Allow: /cite
+Allow: /faq.json
 Allow: /faq
+Allow: /faqs.json
 Allow: /faqs
+Allow: /feed.json
 Allow: /feeds/prices.json
 Allow: /feeds/catalog.json
 Allow: /en/ai-shopping.json

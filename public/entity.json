@@ -98,6 +98,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#offer"
@@ -122,6 +124,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -134,6 +163,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#offer"
@@ -158,6 +189,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -170,6 +228,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#offer"
@@ -194,6 +254,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -206,6 +293,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-5-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#offer"
@@ -230,6 +319,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -242,6 +358,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p3-07-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#offer"
@@ -266,6 +384,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -278,6 +423,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#offer"
@@ -302,6 +449,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -314,6 +488,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-5-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#offer"
@@ -338,6 +514,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -350,6 +553,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-9-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#offer"
@@ -374,6 +579,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -386,6 +618,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p3-07-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#offer"
@@ -410,6 +644,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -422,6 +683,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#offer"
@@ -446,6 +709,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -458,6 +748,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-dis-front",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#offer"
@@ -482,6 +774,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       },
       {
@@ -494,6 +813,8 @@
         "priceValidUntil": "2026-12-31",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
         "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p5-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#offer"
@@ -518,6 +839,33 @@
             "unitCode": "C62",
             "unitText": "panel"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         }
       }
     ]

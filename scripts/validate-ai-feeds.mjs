@@ -224,6 +224,12 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json robotsPolicy.allow must include merchant TSV path");
     process.exit(1);
   }
+  for (const must of ["/cite.json", "/faq.json", "/prices.json", "/panels.json", "/organization.json", "/AGENTS.md"]) {
+    if (!ard.robotsPolicy.allow.includes(must)) {
+      console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
+      process.exit(1);
+    }
+  }
   if (!ard?.agentic?.cite?.en?.oneLiner) {
     console.error("❌ ard.json agentic.cite.en.oneLiner required for EN AI agents");
     process.exit(1);
@@ -486,10 +492,14 @@ if (fs.existsSync(outDir)) {
         String(o["@id"] || "").includes(`/ai-shopping.json#offer-${o.sku}`) &&
         String(o?.itemOffered?.["@id"] || "").endsWith("#product") &&
         o?.seller?.["@id"] === "https://arledscreen.com/#organization" &&
-        o?.priceSpecification?.valueAddedTaxIncluded === false,
+        o?.priceSpecification?.valueAddedTaxIncluded === false &&
+        String(o?.description || "").includes("Ücretsiz kargo yok") &&
+        o?.shippingDetails?.["@type"] === "OfferShippingDetails" &&
+        o?.hasMerchantReturnPolicy?.returnPolicyCategory ===
+          "https://schema.org/MerchantReturnNotPermitted",
     )
   ) {
-    console.error("❌ entity.json makesOffer.offers must be 12 stubs with itemOffered+seller+VAT=false");
+    console.error("❌ entity.json makesOffer.offers must deny free shipping + return policy + itemOffered");
     process.exit(1);
   }
   if (
@@ -1788,7 +1798,15 @@ if (fs.existsSync(outDir)) {
             String(agg["@id"] || "").includes("#priced-panels-aggregate") &&
             String(agg.url || "").includes("/ai-shopping.json") &&
             aggSame.some((u) => String(u).includes("#priced-panels-aggregate")) &&
-            agg.priceSpecification?.valueAddedTaxIncluded === false
+            agg.priceSpecification?.valueAddedTaxIncluded === false &&
+            Array.isArray(agg.offers) &&
+            agg.offers.length >= 1 &&
+            agg.offers.every(
+              (o) =>
+                o?.["@type"] === "Offer" &&
+                String(o["@id"] || "").includes("/ai-shopping.json#offer-") &&
+                String(o?.description || "").includes("Ücretsiz kargo yok"),
+            )
           ) {
             serviceOk = true;
             break;
@@ -1892,7 +1910,11 @@ for (const must of [
   "/offer",
   "/offer.json",
   "/organization",
+  "/cite.json",
   "/cite",
+  "/faq.json",
+  "/faqs.json",
+  "/feed.json",
   "/tr/llms.txt",
   "/tr/ai.txt",
   "/tr/entity-profiles.json",

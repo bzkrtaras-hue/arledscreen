@@ -14,6 +14,7 @@ import {
   fmtUsd,
   nxtionstarBrandRef,
   panelProductsJsonLd,
+  pricedPanelOfferStubs,
   pricedPanelsDatasetJsonLd,
   pricesForGroup,
   type PanelPrice,
@@ -217,6 +218,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
               priceCurrency: "USD",
               valueAddedTaxIncluded: false,
             },
+            offers: pricedPanelOfferStubs(prices),
           },
         }
       : {}),

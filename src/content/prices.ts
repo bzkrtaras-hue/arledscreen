@@ -282,9 +282,12 @@ export const PANEL_PRICES: PanelPrice[] = [
   { id: "p5-dis", pitch: "P5", pitchMm: 5, use: "dis", usd: 29.9, groups: ["dis-mekan-led-ekran"], image: "/modules/nxtionstar-p5-dis-mekan-modul.webp", productPath: "/tr/products/dis-mekan-led-ekran/p5/" },
 ];
 
-/** Compact per-SKU Offer stubs for entity-first agents (join → ai-shopping Offer @id). */
-export function pricedPanelOfferStubs() {
-  return PANEL_PRICES.map((p) => {
+/**
+ * Compact per-SKU Offer stubs for entity-first / hub-first agents
+ * (join → ai-shopping Offer @id). Honesty fields match full Offers.
+ */
+export function pricedPanelOfferStubs(panels: PanelPrice[] = PANEL_PRICES) {
+  return panels.map((p) => {
     const url = `${SITE_URL}${p.productPath ?? "/tr/products/"}`;
     const price = p.usd.toFixed(2);
     return {
@@ -297,6 +300,9 @@ export function pricedPanelOfferStubs() {
       priceValidUntil: PRICE_VALID_UNTIL,
       url,
       availability: "https://schema.org/InStock" as const,
+      itemCondition: "https://schema.org/NewCondition" as const,
+      description:
+        "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
       sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`, `${url}#offer`],
       itemOffered: {
         "@type": "Product" as const,
@@ -316,6 +322,12 @@ export function pricedPanelOfferStubs() {
           unitCode: "C62",
           unitText: "panel",
         },
+      },
+      shippingDetails: panelShippingDetails(),
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy" as const,
+        applicableCountry: "TR",
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
       },
     };
   });
@@ -465,6 +477,8 @@ export function panelProductsJsonLd(
           priceCurrency: "USD",
           valueAddedTaxIncluded: false,
         },
+        // Hub-first agents: band → per-SKU Offer @ids (scoped to panels on this page).
+        offers: pricedPanelOfferStubs(panels),
       },
     });
   }
