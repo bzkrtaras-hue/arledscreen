@@ -13,6 +13,7 @@ import { CompletedProjectsGallery } from "@/components/projects/CompletedProject
 import { ProjectVideos } from "@/components/projects/ProjectVideos";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { PROJECT_VIDEOS, videoObjectJsonLd } from "@/content/videos";
@@ -49,6 +50,12 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/projelerimiz/"))),
+        }}
       />
       {/* Compact page intro — keep field videos above the fold */}
       <section className="relative isolate overflow-hidden bg-navy">

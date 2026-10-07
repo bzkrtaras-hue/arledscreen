@@ -14,7 +14,15 @@ import {
   type LedModel,
   type ModelKind,
 } from "@/content/models";
-import { CALC_EXTRAS, fmtUsd, panelM2, panelModule, panelOffer } from "@/content/prices";
+import {
+  CALC_EXTRAS,
+  PRICE_DATASETS,
+  fmtUsd,
+  panelM2,
+  panelModule,
+  panelOffer,
+  pricedPanelsDatasetJsonLd,
+} from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import { buildTrOnlyMetadata } from "@/lib/seo";
@@ -140,22 +148,11 @@ export default async function ModelPage({ params }: PageProps) {
       ? {
           offers: panelOffer(url, price.usd),
           // Point AI shoppers from the PDP to the published price Datasets (no invent).
-          isRelatedTo: [
-            {
-              "@type": "Dataset",
-              "@id": "https://arledscreen.com/ai-shopping.json",
-              url: "https://arledscreen.com/ai-shopping.json",
-              name: "ARLEDSCREEN pricedPanels",
-            },
-            {
-              "@type": "Dataset",
-              "@id": "https://arledscreen.com/catalog.json",
-              url: "https://arledscreen.com/catalog.json",
-              name: "ARLEDSCREEN panel catalog",
-            },
-          ],
+          isRelatedTo: PRICE_DATASETS,
         }
-      : {}),
+      : {
+          isRelatedTo: PRICE_DATASETS,
+        }),
   };
 
   return (
@@ -169,6 +166,10 @@ export default async function ModelPage({ params }: PageProps) {
         ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
 
       <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -219,9 +220,13 @@ export default async function ModelPage({ params }: PageProps) {
                     <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
                       ai-shopping.json
                     </a>{" "}
-                    <code className="text-[11px]">pricedPanels</code> ve{" "}
+                    <code className="text-[11px]">pricedPanels</code>,{" "}
                     <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
                       catalog.json
+                    </a>
+                    ,{" "}
+                    <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                      merchant TSV
                     </a>
                     .
                   </p>
@@ -232,7 +237,15 @@ export default async function ModelPage({ params }: PageProps) {
                   <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
                     ai-shopping.json
                   </a>{" "}
-                  <code className="text-[11px]">pricedPanels</code>. Ücretsiz kargo yok.
+                  <code className="text-[11px]">pricedPanels</code>,{" "}
+                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                    catalog.json
+                  </a>
+                  ,{" "}
+                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                    merchant TSV
+                  </a>
+                  . Ücretsiz kargo yok.
                 </p>
               )}
 

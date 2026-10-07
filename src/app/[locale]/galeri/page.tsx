@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -30,6 +31,12 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Galeri", item: absoluteUrl("/tr/galeri/") },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/galeri/"))),
+        }}
       />
 
       <section className="bg-white pt-8 pb-2 sm:pt-10 md:pt-12">

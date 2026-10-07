@@ -10,6 +10,7 @@ import {
   serviceRegionPath,
   serviceRegionsHubSummary,
 } from "@/content/service-regions";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -61,6 +62,12 @@ export default async function BolgelerHubPage({
         ]}
       />
       <FaqJsonLd faqs={FAQS} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/bolgeler/"))),
+        }}
+      />
 
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
@@ -88,7 +95,15 @@ export default async function BolgelerHubPage({
             <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
               fiyatlar
             </Link>{" "}
-            ve ürün gruplarına bakın.
+            ve ürün gruplarına bakın. Yayımlanmış panel USD:{" "}
+            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+              ai-shopping.json
+            </a>
+            ,{" "}
+            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+              merchant TSV
+            </a>{" "}
+            (12 SKU; ör. P1.25 GOB 95.88 USD).
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link

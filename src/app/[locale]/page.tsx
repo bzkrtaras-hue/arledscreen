@@ -9,7 +9,9 @@ import { Hero } from "@/components/hero/Hero";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { getFaqs } from "@/content/faqs";
 import { getSeo } from "@/content/seo";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
 import { CompletedProjectsGallery } from "@/components/projects/CompletedProjectsGallery";
 import { ReferencesGrid } from "@/components/projects/ReferencesGrid";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
@@ -117,6 +119,12 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <FaqJsonLd faqs={faqs} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/"))),
+        }}
+      />
 
       {/* 1. Full-bleed video hero under liquid-glass chrome → 2. gateway tiles → 3. values */}
       <div className="-mt-[6.75rem] md:-mt-[7.5rem]">

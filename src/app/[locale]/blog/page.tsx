@@ -4,6 +4,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { OptImage } from "@/components/ui/opt-image";
 import { BLOG_POSTS, blogPath, formatBlogDate } from "@/content/blog";
 import { ARTICLE_LINKS } from "@/content/article-links";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
@@ -43,6 +44,12 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
         ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/blog/"))),
+        }}
+      />
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Sayfa yolu" className="text-[13px] text-ink-muted">
