@@ -97,10 +97,11 @@ if (
   rss.includes("/brand.json") &&
   rss.includes("/catalog.json") &&
   rss.includes("/geo-baseline.json") &&
-  rss.includes("/point-c.txt")
+  rss.includes("/point-c.txt") &&
+  rss.includes("/.well-known/modules.json")
 ) {
-  ok("prices.rss atom:link self + related entity/brand/catalog/geo/point-c");
-} else fail("prices.rss atom:link self + related entity/brand/catalog/geo/point-c");
+  ok("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c");
+} else fail("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c");
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
