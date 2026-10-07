@@ -437,7 +437,13 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("invent-faq-tr:") ||
     !aiTxtLive.includes("feed-alias-panels-json:") ||
     !aiTxtLive.includes("feed-alias-merchant-json:") ||
-    !aiTxtLive.includes("feed-alias-mpn-json:")
+    !aiTxtLive.includes("feed-alias-mpn-json:") ||
+    !aiTxtLive.includes("invent-root-teklif:") ||
+    !aiTxtLive.includes("invent-root-fiyat:") ||
+    !aiTxtLive.includes("invent-modules-tr:") ||
+    !aiTxtLive.includes("invent-magaza-en:") ||
+    !aiTxtLive.includes("feed-alias-well-known-mpn:") ||
+    !aiTxtLive.includes("feed-alias-api-panels:")
   ) {
     console.error("❌ out/ai.txt must list invent bridges + feed path aliases");
     process.exit(1);
@@ -707,8 +713,12 @@ if (fs.existsSync(outDir)) {
     !trExamples.some((u) => String(u).includes("/tr/catalog/")) ||
     !trExamples.some((u) => String(u).includes("/tr/calculator/")) ||
     !trExamples.some((u) => String(u).includes("/tr/faq/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/modules/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/gob/")) ||
+    !trExamples.some((u) => String(u) === "https://arledscreen.com/teklif/" || String(u).endsWith("/teklif/")) ||
     !trExamples.some((u) => String(u).includes("/panels.json")) ||
-    !trExamples.some((u) => String(u).includes("/merchant.json"))
+    !trExamples.some((u) => String(u).includes("/merchant.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/mpn.json"))
   ) {
     console.error("❌ ard.json trInventBridges must list TR quote/price/catalog invents + shopping feed aliases");
     process.exit(1);
@@ -721,25 +731,57 @@ if (fs.existsSync(outDir)) {
     ["tr/calculator/index.html", "/tr/hesaplayici/"],
     ["tr/faq/index.html", "/tr/sss/"],
     ["tr/brand/index.html", "/tr/nxtionstar/"],
+    ["tr/modules/index.html", "/tr/products/"],
+    ["tr/gob/index.html", "/tr/products/gob-led-ekran/"],
+    ["tr/indoor-led/index.html", "/tr/products/ic-mekan-led-ekran/"],
+    ["en/magaza/index.html", "/en/products/"],
+    ["teklif/index.html", "/tr/quote/"],
+    ["quote/index.html", "/tr/quote/"],
+    ["fiyat/index.html", "/tr/led-ekran-fiyatlari/"],
+    ["katalog/index.html", "/tr/products/"],
+    ["contact/index.html", "/tr/quote/"],
+    ["nxtionstar/index.html", "/tr/nxtionstar/"],
+    ["galeri/index.html", "/tr/galeri/"],
   ];
   for (const [rel, target] of trBridgeChecks) {
     const fp = path.join(outDir, rel);
     if (!fs.existsSync(fp)) {
-      console.error(`❌ TR invent bridge missing in out/: ${rel}`);
+      console.error(`❌ invent bridge missing in out/: ${rel}`);
       process.exit(1);
     }
     const html = fs.readFileSync(fp, "utf8");
     if (!/noindex/i.test(html) || !/Canonical hub/i.test(html) || !html.includes(target)) {
-      console.error(`❌ TR invent bridge must be noindex InventBridge → ${target}: ${rel}`);
+      console.error(`❌ invent bridge must be noindex → ${target}: ${rel}`);
       process.exit(1);
     }
   }
-  for (const rel of ["panels.json", "modules.json", "sku.json", "mpn.json", "merchant.json", ".well-known/merchant.json", "feeds/prices.json", "feeds/catalog.json"]) {
+  for (const rel of [
+    "panels.json",
+    "modules.json",
+    "sku.json",
+    "mpn.json",
+    "merchant.json",
+    ".well-known/merchant.json",
+    ".well-known/mpn.json",
+    ".well-known/sku.json",
+    ".well-known/modules.json",
+    "api/panels",
+    "api/merchant",
+    "api/mpn",
+    "v1/panels",
+    "v1/merchant",
+    "feeds/prices.json",
+    "feeds/catalog.json",
+  ]) {
     const fp = path.join(outDir, rel);
     if (!fs.existsSync(fp)) {
       console.error(`❌ shopping feed invent alias missing in out/: ${rel}`);
       process.exit(1);
     }
+  }
+  if (!llmsLive.includes("mpn") || !llmsLive.includes("/panels.json") || !llmsLive.includes("/teklif/")) {
+    console.error("❌ out/llms.txt must cite mpn + panels.json + root /teklif/ invent");
+    process.exit(1);
   }
   if (!ard?.agentic?.resources?.aiTxt?.url?.includes("/ai.txt")) {
     console.error("❌ ard.json resources.aiTxt required");

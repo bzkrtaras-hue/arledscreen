@@ -205,6 +205,55 @@ export const TR_INVENT_BRIDGES: TrInventBridge[] = [
     description: "Kanonik TR marka sayfası /tr/nxtionstar/. Inventable köprü: /tr/brand/.",
     cta: "Marka sayfasını aç",
   },
+  // EN product-vocab mirrors under /tr/ (EN already has modules/gob/indoor-led/…)
+  {
+    slug: "modules",
+    target: "/tr/products/",
+    title: "LED Modüller | ARLEDSCREEN",
+    h1: "LED modüller",
+    description: "Kanonik TR ürün hub /tr/products/. Inventable köprü: /tr/modules/.",
+    cta: "Ürünleri aç",
+  },
+  {
+    slug: "indoor-led",
+    target: "/tr/products/ic-mekan-led-ekran/",
+    title: "İç Mekân LED | ARLEDSCREEN",
+    h1: "İç mekân LED",
+    description: "Kanonik TR iç mekân grubu /tr/products/ic-mekan-led-ekran/. Inventable köprü: /tr/indoor-led/.",
+    cta: "İç mekân ürünlerini aç",
+  },
+  {
+    slug: "outdoor-led",
+    target: "/tr/products/dis-mekan-led-ekran/",
+    title: "Dış Mekân LED | ARLEDSCREEN",
+    h1: "Dış mekân LED",
+    description: "Kanonik TR dış mekân grubu /tr/products/dis-mekan-led-ekran/. Inventable köprü: /tr/outdoor-led/.",
+    cta: "Dış mekân ürünlerini aç",
+  },
+  {
+    slug: "gob",
+    target: "/tr/products/gob-led-ekran/",
+    title: "GOB LED | ARLEDSCREEN",
+    h1: "GOB LED",
+    description: "Kanonik TR GOB grubu /tr/products/gob-led-ekran/. Inventable köprü: /tr/gob/.",
+    cta: "GOB ürünlerini aç",
+  },
+  {
+    slug: "fine-pitch",
+    target: "/tr/products/ince-pitch-led-ekran/",
+    title: "İnce Pitch LED | ARLEDSCREEN",
+    h1: "İnce pitch LED",
+    description: "Kanonik TR ince pitch grubu /tr/products/ince-pitch-led-ekran/. Inventable köprü: /tr/fine-pitch/.",
+    cta: "İnce pitch ürünlerini aç",
+  },
+  {
+    slug: "price-list",
+    target: "/tr/led-ekran-fiyatlari/",
+    title: "Fiyat Listesi | ARLEDSCREEN",
+    h1: "Fiyat listesi",
+    description: "Kanonik TR fiyat hub /tr/led-ekran-fiyatlari/. Inventable köprü: /tr/price-list/.",
+    cta: "Fiyat listesini aç",
+  },
 ];
 
 export const TR_INVENT_BRIDGE_SLUGS = TR_INVENT_BRIDGES.map((b) => b.slug);

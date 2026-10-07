@@ -892,12 +892,20 @@ function writeFeedPathAliases(dir) {
     ["ai-shopping.json", "mpn.json"],
     ["ai-shopping.json", "merchant.json"],
     ["ai-shopping.json", "feeds/prices.json"],
+    ["ai-shopping.json", "api/merchant"],
+    ["ai-shopping.json", "api/panels"],
+    ["ai-shopping.json", "api/mpn"],
+    ["ai-shopping.json", "v1/panels"],
+    ["ai-shopping.json", "v1/merchant"],
     ["ai-shopping.json", ".well-known/ai-shopping.json"],
     ["ai-shopping.json", ".well-known/prices.json"],
     ["ai-shopping.json", ".well-known/price.json"],
     ["ai-shopping.json", ".well-known/pricing.json"],
     ["ai-shopping.json", ".well-known/merchant.json"],
     ["ai-shopping.json", ".well-known/panels.json"],
+    ["ai-shopping.json", ".well-known/modules.json"],
+    ["ai-shopping.json", ".well-known/sku.json"],
+    ["ai-shopping.json", ".well-known/mpn.json"],
     ["catalog.json", "feeds/catalog.json"],
     ["entity.json", "entity"],
     ["entity.json", "en/entity.json"],
@@ -943,16 +951,25 @@ function writeFeedPathAliases(dir) {
   // files (cannot mkdir catalog/ when file "catalog" exists). Skip /en/catalog/
   // (Next invent bridge → products hub).
   const slashBridges = [
-    ["en/ai-shopping/", "/ai-shopping.json", "AI shopping pricedPanels feed"],
-    ["en/entity/", "/entity.json", "Organization entity feed"],
-    ["en/geo-baseline/", "/geo-baseline.json", "GEO technical baseline"],
+    ["en/ai-shopping/", "/ai-shopping.json", "AI shopping pricedPanels feed", "en"],
+    ["en/entity/", "/entity.json", "Organization entity feed", "en"],
+    ["en/geo-baseline/", "/geo-baseline.json", "GEO technical baseline", "en"],
     // Root inventables (no extensionless file collision — keep prices.json as file).
-    ["pricing/", "/pricing.json", "Published panel USD prices"],
-    ["prices/", "/prices.json", "Published panel USD prices"],
-    ["price/", "/price.json", "Published panel USD prices"],
+    ["pricing/", "/pricing.json", "Published panel USD prices", "en"],
+    ["prices/", "/prices.json", "Published panel USD prices", "en"],
+    ["price/", "/price.json", "Published panel USD prices", "en"],
+    // Root locale-less HTML invents — CF 404.html beats _redirects for missing paths.
+    ["teklif/", "/tr/quote/", "LED ekran teklif", "tr"],
+    ["quote/", "/tr/quote/", "LED display quote", "en"],
+    ["fiyat/", "/tr/led-ekran-fiyatlari/", "LED ekran fiyatları", "tr"],
+    ["katalog/", "/tr/products/", "LED ürün kataloğu", "tr"],
+    ["contact/", "/tr/quote/", "Contact / quote", "en"],
+    ["nxtionstar/", "/tr/nxtionstar/", "NXTIONSTAR", "tr"],
+    ["galeri/", "/tr/galeri/", "Galeri", "tr"],
   ];
-  for (const [dirRel, target, h1] of slashBridges) {
-    const html = `<!DOCTYPE html><html lang="en"><head>
+  for (const [dirRel, target, h1, lang] of slashBridges) {
+    const cta = target.endsWith(".json") ? "Open feed" : "Open hub";
+    const html = `<!DOCTYPE html><html lang="${lang}"><head>
 <meta charset="utf-8"/>
 <meta name="robots" content="noindex, follow"/>
 <link rel="canonical" href="${SITE_URL}${target}"/>
@@ -962,7 +979,7 @@ function writeFeedPathAliases(dir) {
 <main>
 <h1>${h1}</h1>
 <p>Canonical hub: <a href="${target}">${target}</a>. Site: arledscreen.com (not arleds.com).</p>
-<p><a href="${target}">Open feed</a></p>
+<p><a href="${target}">${cta}</a></p>
 </main>
 </body></html>
 `;
@@ -1100,8 +1117,26 @@ feed-alias-sku-json: ${SITE_URL}/sku.json
 feed-alias-mpn-json: ${SITE_URL}/mpn.json
 feed-alias-merchant-json: ${SITE_URL}/merchant.json
 feed-alias-well-known-merchant: ${SITE_URL}/.well-known/merchant.json
+feed-alias-well-known-mpn: ${SITE_URL}/.well-known/mpn.json
+feed-alias-api-panels: ${SITE_URL}/api/panels
+feed-alias-api-merchant: ${SITE_URL}/api/merchant
+feed-alias-api-mpn: ${SITE_URL}/api/mpn
 feed-alias-feeds-prices: ${SITE_URL}/feeds/prices.json
 feed-alias-feeds-catalog: ${SITE_URL}/feeds/catalog.json
+invent-root-teklif: ${SITE_URL}/teklif/
+invent-root-quote: ${SITE_URL}/quote/
+invent-root-fiyat: ${SITE_URL}/fiyat/
+invent-root-katalog: ${SITE_URL}/katalog/
+invent-root-contact: ${SITE_URL}/contact/
+invent-root-nxtionstar: ${SITE_URL}/nxtionstar/
+invent-root-galeri: ${SITE_URL}/galeri/
+invent-modules-tr: ${SITE_URL}/tr/modules/
+invent-gob-tr: ${SITE_URL}/tr/gob/
+invent-indoor-led-tr: ${SITE_URL}/tr/indoor-led/
+invent-outdoor-led-tr: ${SITE_URL}/tr/outdoor-led/
+invent-fine-pitch-tr: ${SITE_URL}/tr/fine-pitch/
+invent-price-list-tr: ${SITE_URL}/tr/price-list/
+invent-magaza-en: ${SITE_URL}/en/magaza/
 invent-prices-en: ${SITE_URL}/en/prices/
 invent-pricing-en: ${SITE_URL}/en/pricing/
 invent-price-en: ${SITE_URL}/en/price/
