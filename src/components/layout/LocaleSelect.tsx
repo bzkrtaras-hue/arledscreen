@@ -20,8 +20,7 @@ export function LocaleSelect({
   const dict = getDictionary(locale);
 
   // Turkish-only routes (generateStaticParams returns only { locale: "tr" }).
-  // Note: /hizmetler/, high-invent use (magaza/avm/cephe/billboard/otel/sahne/belediye)
-  // and pitch (p1-25/p2-5/p4) now have EN lean counterparts — omit them here.
+  // Full commercial use/pitch/totem + /hizmetler/ now have EN lean counterparts.
   const TR_ONLY = [
     /^\/tr\/bolgeler\//,
     /^\/tr\/projelerimiz\//,
@@ -31,9 +30,6 @@ export function LocaleSelect({
     /^\/tr\/about\/aras-bozkurt\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,
-    // Remaining pitch/use commercial hubs still TR-only (not in COMMERCIAL_EN_*).
-    /^\/tr\/(p1-86|p2-9|p3-07|p5)-led-ekran\//,
-    /^\/tr\/(vitrin|restoran|dugun-salonu|konferans-salonu|fuar|fabrika|spor-salonu|stadyum|totem)-led-ekran\//,
   ];
   const switchLocaleHref = (next: Locale) => {
     const p = pathname.endsWith("/") ? pathname : `${pathname}/`;
