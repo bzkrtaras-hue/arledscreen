@@ -108,6 +108,20 @@ else fail("ai.txt WebSite + quote");
 if ((agents?.itemListElement || []).length >= 14) ok(`agents.json ×${agents.itemListElement.length}`);
 else fail("agents.json ≥14");
 
+{
+  const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
+  const agentsMd = readText("AGENTS.md");
+  const llms = readText("llms.txt");
+  if (
+    blob.includes("/.well-known/modules.json") &&
+    blob.includes("/.well-known/pricing.json") &&
+    agentsMd.includes("/.well-known/modules.json") &&
+    llms.includes("/.well-known/sku.json")
+  ) {
+    ok("agents/AGENTS/llms invent well-known modules/sku/pricing");
+  } else fail("agents/AGENTS/llms invent well-known modules/sku/pricing");
+}
+
 const pointC = readText("point-c.txt");
 if (pointC.includes("GBP About") && pointC.includes("34245") && pointC.includes("Hostinger arleds.com")) {
   ok("point-c.txt paste packs + Hostinger 301");

@@ -81,4 +81,7 @@ jobs:
           grep -q "/point-c.txt" out/geo-baseline.json
           grep -q "/.well-known/modules.json" out/.well-known/ard.json
           grep -q "/.well-known/pricing.json" out/.well-known/ard.json
+          grep -q "/.well-known/modules.json" out/AGENTS.md
+          grep -q "/.well-known/modules.json" out/.well-known/agents.json
+          grep -q "/.well-known/sku.json" out/llms.txt
           echo "OK owner tooling"

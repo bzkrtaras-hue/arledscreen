@@ -1180,6 +1180,22 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agents.json must point agents at ai-shopping.json price source");
     process.exit(1);
   }
+  {
+    const agentsBlob = `${agents.description || ""}${JSON.stringify(agents.itemListElement || [])}`;
+    for (const needle of [
+      "/.well-known/panels.json",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/price.json",
+      "/.well-known/pricing.json",
+      "/.well-known/merchant.json",
+    ]) {
+      if (!agentsBlob.includes(needle)) {
+        console.error(`❌ agents.json invent aliases must cite ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
   if (
     agents?.provider?.location?.["@id"] !== "https://arledscreen.com/#localbusiness" ||
     !String(agents?.provider?.makesOffer || "").includes("#priced-panels-aggregate") ||
@@ -1331,9 +1347,12 @@ if (fs.existsSync(outDir)) {
       !agentsMd.includes("/brand.json") ||
       !agentsMd.includes("OrderAction") ||
       !agentsMd.includes("/feeds/prices.rss") ||
-      !agentsMd.includes("/point-c.txt")
+      !agentsMd.includes("/point-c.txt") ||
+      !agentsMd.includes("/.well-known/modules.json") ||
+      !agentsMd.includes("/.well-known/sku.json") ||
+      !agentsMd.includes("/.well-known/pricing.json")
     ) {
-      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss + point-c.txt");
+      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss + point-c.txt + well-known invent aliases");
       process.exit(1);
     }
   }
@@ -1353,6 +1372,18 @@ if (fs.existsSync(outDir)) {
   if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt") || !llmsLive.includes("organization.json") || !llmsLive.includes("AGENTS.md")) {
     console.error("❌ out/llms.txt must cite /prices.json + /.well-known/ai.txt + organization.json + AGENTS.md");
     process.exit(1);
+  }
+  for (const needle of [
+    "/.well-known/panels.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+  ]) {
+    if (!llmsLive.includes(needle)) {
+      console.error(`❌ out/llms.txt invent aliases must cite ${needle}`);
+      process.exit(1);
+    }
   }
   const headersLive = fs.readFileSync(path.join(outDir, "_headers"), "utf8");
   const headerRuleCount = (headersLive.match(/^\/[^\s]/gm) || []).length;
