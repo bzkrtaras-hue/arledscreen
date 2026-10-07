@@ -68,6 +68,8 @@ export function nxtionstarBrandNode() {
     subjectOf: BRAND_SUBJECT_DATASETS,
     description:
       "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV. GEO baseline: geo-baseline.json.",
+    disambiguatingDescription:
+      "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
   };
 }
 

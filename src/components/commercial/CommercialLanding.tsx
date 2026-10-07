@@ -24,7 +24,7 @@ import {
   CONTACT_PHONE_HREF,
   CONTACT_EMAIL,
 } from "@/lib/social";
-import { ENTITY_FAQ_CANONICAL_DOMAIN } from "@/lib/entity";
+import { ENTITY_FAQ_BRAND_DISAMBIG, ENTITY_FAQ_CANONICAL_DOMAIN } from "@/lib/entity";
 
 const CLUSTER_LABEL: Record<CommercialPage["cluster"], string> = {
   intent: "Ticari",
@@ -63,9 +63,16 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
   const url = absoluteUrl(commercialPath(page.slug));
   // Intent hubs (satış/montaj/kiralama…) get the 12-SKU Offer graph; pitch/use pages keep Dataset cites only.
   const showPanelOffers = page.cluster === "intent";
-  const faqs = page.faqs.some((f) => f.question.includes("arleds.com"))
-    ? page.faqs
-    : [...page.faqs, ENTITY_FAQ_CANONICAL_DOMAIN];
+  const faqs = (() => {
+    const next = [...page.faqs];
+    if (!next.some((f) => f.question.includes("NationStar"))) {
+      next.push(ENTITY_FAQ_BRAND_DISAMBIG);
+    }
+    if (!next.some((f) => f.question.includes("arleds.com"))) {
+      next.push(ENTITY_FAQ_CANONICAL_DOMAIN);
+    }
+    return next;
+  })();
   const serviceLd = {
     "@context": "https://schema.org",
     "@type": "Service",

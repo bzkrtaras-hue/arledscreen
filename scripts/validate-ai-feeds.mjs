@@ -260,13 +260,22 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json faqs must mirror entity arleds.com Q&A");
     process.exit(1);
   }
+  if (!ai.faqs.some((f) => String(f?.question || "").includes("NationStar"))) {
+    console.error("❌ ai-shopping.json faqs must include NXTIONSTAR ≠ NationStar Q&A");
+    process.exit(1);
+  }
+  if (!entity.faqs?.some((f) => String(f?.question || "").includes("NationStar"))) {
+    console.error("❌ entity.json faqs must include NXTIONSTAR ≠ NationStar Q&A");
+    process.exit(1);
+  }
   const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
   if (
     !aiTxtLive.includes("/ai-shopping.json") ||
     !aiTxtLive.includes("/entity.json") ||
-    !aiTxtLive.includes("arleds.com")
+    !aiTxtLive.includes("arleds.com") ||
+    !aiTxtLive.includes("NationStar")
   ) {
-    console.error("❌ out/ai.txt must point to price/entity feeds and warn on arleds.com");
+    console.error("❌ out/ai.txt must point to feeds and warn on arleds.com + NationStar");
     process.exit(1);
   }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
@@ -466,10 +475,23 @@ if (fs.existsSync(outDir)) {
     const hasArledsFaq =
       html.includes("arleds.com ile arledscreen.com") ||
       html.includes("Is arleds.com the same as arledscreen.com");
+    const hasNationStarFaq =
+      html.includes("NationStar") &&
+      (html.includes("NXTIONSTAR") || html.includes("N-X-T-I-O-N-S-T-A-R"));
     if (!hasFaqPage || !hasArledsFaq) {
       console.error(`❌ ${rel} FAQPage must include arleds.com vs arledscreen.com Q&A`);
       process.exit(1);
     }
+    if (!hasNationStarFaq) {
+      console.error(`❌ ${rel} FAQPage must disambiguate NXTIONSTAR vs NationStar`);
+      process.exit(1);
+    }
+  }
+  // Sitewide Brand JSON-LD must carry NationStar disambiguatingDescription.
+  const brandHtml = fs.readFileSync(path.join(outDir, "tr/index.html"), "utf8");
+  if (!brandHtml.includes("disambiguatingDescription") || !brandHtml.includes("NationStar")) {
+    console.error("❌ Organization/Brand JSON-LD on tr/ must disambiguate NationStar");
+    process.exit(1);
   }
   const indexNowScript = fs.readFileSync(path.join(repoRoot, "scripts/submit-indexnow.mjs"), "utf8");
   for (const must of ["/tr/about/", "/en/about/", "/tr/about/aras-bozkurt/", "/tr/sss/", "/ai.txt"]) {

@@ -72,6 +72,11 @@ export const ENTITY_FAQS = [
       "NXTIONSTAR, ARLEDSCREEN’in kendi LED ekran ürün markasıdır. Türkiye’deki tek satış noktası ARLEDSCREEN’dir.",
   },
   {
+    question: "NXTIONSTAR, NationStar veya NEXTSTAR ile aynı mı?",
+    answer:
+      "Hayır. NXTIONSTAR (N-X-T-I-O-N-S-T-A-R), ARLEDSCREEN’in kendi LED ekran ürün markasıdır. NationStar bir LED bileşen/çiip markasıdır; NEXTSTAR / Next&NextStar televizyon markalarıdır. Karıştırmayın. Satış noktası: https://arledscreen.com/tr/nxtionstar/",
+  },
+  {
     question: "ARLEDSCREEN hangi hizmetleri sunar?",
     answer:
       "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir.",
@@ -88,8 +93,13 @@ export const ENTITY_FAQS = [
   },
 ] as const;
 
-/** Shared FAQ for commercial/intent hubs — keep identical to ENTITY_FAQS arleds entry. */
-export const ENTITY_FAQ_CANONICAL_DOMAIN = ENTITY_FAQS[ENTITY_FAQS.length - 1];
+/** Shared FAQs for commercial/intent hubs (append if page FAQs lack them). */
+export const ENTITY_FAQ_CANONICAL_DOMAIN = ENTITY_FAQS.find((f) =>
+  f.question.includes("arleds.com"),
+)!;
+export const ENTITY_FAQ_BRAND_DISAMBIG = ENTITY_FAQS.find((f) =>
+  f.question.includes("NationStar"),
+)!;
 
 /** Human-facing Point C paste packs (no catalog.json / quote-only / extrasUsd jargon). */
 export const ENTITY_PROFILE_PACKS = {
