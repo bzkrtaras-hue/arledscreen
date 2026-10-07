@@ -111,6 +111,19 @@ try {
   ) {
     ok("agents/AGENTS/llms invent well-known modules/sku/pricing");
   } else fail("agents/AGENTS/llms invent well-known modules/sku/pricing");
+  const agentsBased = JSON.stringify(agents?.isBasedOn || []);
+  const agentsDist = JSON.stringify(agents?.distribution || []);
+  if (
+    agentsBased.includes("/geo-baseline.json") &&
+    agentsBased.includes("/point-c.txt") &&
+    agentsBased.includes("/entity-profiles.json") &&
+    agentsDist.includes("/ai-shopping.json") &&
+    agentsDist.includes("/entity-profiles.json") &&
+    agentsDist.includes("/point-c.txt") &&
+    agentsMd.includes("geo:next")
+  ) {
+    ok("agents distribution + isBasedOn invent + AGENTS geo:next");
+  } else fail("agents distribution + isBasedOn invent + AGENTS geo:next");
 } catch (e) {
   fail(`agents/AGENTS/llms invent ${e?.message || e}`);
 }
@@ -125,12 +138,35 @@ try {
     pc.includes("mailto:support@hostinger.com") &&
     pc.includes("Gmail draft (Send)") &&
     pc.includes("point-c:next") &&
+    pc.includes("geo:next") &&
     pc.includes("/.well-known/modules.json")
   ) {
     ok("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
   } else fail("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
 } catch (e) {
   fail(`point-c.txt ${e?.message || e}`);
+}
+
+try {
+  const profiles = await getJson("/entity-profiles.json");
+  const based = JSON.stringify(profiles?.isBasedOn || []);
+  const dist = JSON.stringify(profiles?.distribution || []);
+  if (
+    profiles?.["@id"]?.includes("/entity-profiles.json") &&
+    based.includes("/entity.json") &&
+    based.includes("/brand.json") &&
+    based.includes("/ai-shopping.json") &&
+    based.includes("/geo-baseline.json") &&
+    based.includes("/point-c.txt") &&
+    dist.includes("/prices.json") &&
+    dist.includes("/catalog.json") &&
+    dist.includes("/point-c.txt") &&
+    JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next")
+  ) {
+    ok("entity-profiles invent distribution + isBasedOn + geo:next");
+  } else fail("entity-profiles invent distribution + isBasedOn + geo:next");
+} catch (e) {
+  fail(`entity-profiles invent ${e?.message || e}`);
 }
 
 try {

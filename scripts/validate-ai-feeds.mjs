@@ -1259,9 +1259,20 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/point-c.txt") ||
       !humansLive.includes("/.well-known/modules.json") ||
       !humansLive.includes("/.well-known/sku.json") ||
-      !humansLive.includes("/.well-known/pricing.json")
+      !humansLive.includes("/.well-known/pricing.json") ||
+      !humansLive.includes("geo:next")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c.txt + well-known invent aliases");
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c.txt + well-known invent aliases + geo:next");
+      process.exit(1);
+    }
+    const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
+    if (!agentsMdLive.includes("geo:next")) {
+      console.error("❌ out/AGENTS.md must cite npm run geo:next owner clipboard");
+      process.exit(1);
+    }
+    const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
+    if (!aiTxtLive.includes("geo:next")) {
+      console.error("❌ out/ai.txt must cite npm run geo:next owner clipboard");
       process.exit(1);
     }
   }
@@ -1277,6 +1288,7 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("mailto:support@hostinger.com") ||
       !pointC.includes("Gmail draft (Send)") ||
       !pointC.includes("point-c:next") ||
+      !pointC.includes("geo:next") ||
       !pointC.includes("verify:arleds-301") ||
       !pointC.includes("tur1a:log") ||
       !pointC.includes("/.well-known/modules.json") ||
@@ -1288,10 +1300,11 @@ if (fs.existsSync(outDir)) {
       !pointCEn.includes("mailto:support@hostinger.com") ||
       !pointCEn.includes("Gmail draft (Send)") ||
       !pointCEn.includes("point-c:next") ||
+      !pointCEn.includes("geo:next") ||
       !pointCEn.includes("tur1a:log") ||
       !pointCEn.includes("/.well-known/modules.json")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto/Gmail draft + point-c:next + tur1a:log + invent aliases");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto/Gmail draft + point-c:next + geo:next + tur1a:log + invent aliases");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
@@ -1341,6 +1354,37 @@ if (fs.existsSync(outDir)) {
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("point-c-en.txt"))) {
     console.error("❌ agents.json must list point-c-en.txt");
     process.exit(1);
+  }
+  {
+    const agentsBased = JSON.stringify(agents?.isBasedOn || []);
+    const agentsDist = JSON.stringify(agents?.distribution || []);
+    for (const needle of [
+      "/geo-baseline.json",
+      "/point-c.txt",
+      "/catalog.json",
+      "/prices.json",
+      "/entity-profiles.json",
+    ]) {
+      if (!agentsBased.includes(needle)) {
+        console.error(`❌ agents.json isBasedOn invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of [
+      "/ai-shopping.json",
+      "/prices.json",
+      "/brand.json",
+      "/entity.json",
+      "/catalog.json",
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/point-c.txt",
+    ]) {
+      if (!agentsDist.includes(needle)) {
+        console.error(`❌ agents.json distribution invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
   }
   {
     const brandItem = agents.itemListElement.find((it) => String(it?.url || "").includes("/brand.json"));
@@ -1676,6 +1720,39 @@ if (fs.existsSync(outDir)) {
   if (!String(profiles?.canonicalUrls?.pricesRss || "").includes("/feeds/prices.rss")) {
     console.error("❌ entity-profiles.json canonicalUrls.pricesRss required");
     process.exit(1);
+  }
+  if (
+    !String(profiles?.canonicalUrls?.brandJson || "").includes("/brand.json") ||
+    !String(profiles?.canonicalUrls?.pricesJson || "").includes("/prices.json") ||
+    !String(profiles?.canonicalUrls?.brandWellKnown || "").includes("/.well-known/brand.json") ||
+    !String(profiles?.canonicalUrls?.entityWellKnown || "").includes("/.well-known/entity.json")
+  ) {
+    console.error("❌ entity-profiles.json canonicalUrls must cite brand/prices + well-known brand/entity");
+    process.exit(1);
+  }
+  {
+    const epBased = JSON.stringify(profiles?.isBasedOn || []);
+    const epDist = JSON.stringify(profiles?.distribution || []);
+    for (const needle of ["/entity.json", "/brand.json", "/ai-shopping.json", "/catalog.json", "/geo-baseline.json", "/point-c.txt"]) {
+      if (!epBased.includes(needle)) {
+        console.error(`❌ entity-profiles.json isBasedOn invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of ["/entity.json", "/brand.json", "/ai-shopping.json", "/prices.json", "/catalog.json", "/geo-baseline.json", "/point-c.txt"]) {
+      if (!epDist.includes(needle)) {
+        console.error(`❌ entity-profiles.json distribution invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    if (!profiles?.["@id"]?.includes("/entity-profiles.json")) {
+      console.error("❌ entity-profiles.json @id required");
+      process.exit(1);
+    }
+    if (!JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next")) {
+      console.error("❌ entity-profiles.json ownerP0Checklist must cite npm run geo:next");
+      process.exit(1);
+    }
   }
   if (!String(profiles?.packs?.googleMerchantReadiness || "").includes("/feeds/prices.rss")) {
     console.error("❌ entity-profiles packs.googleMerchantReadiness must cite prices.rss");

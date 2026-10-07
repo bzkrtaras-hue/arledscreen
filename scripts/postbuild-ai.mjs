@@ -1452,6 +1452,127 @@ function enrichEntityDocument(entity) {
   return entity;
 }
 
+/**
+ * Point C Dataset invent closure — entity-profiles must not be a dead-end for agents
+ * that land on packs before price/entity graphs.
+ */
+function enrichEntityProfiles(doc) {
+  const today = new Date().toISOString().split("T")[0];
+  doc["@id"] = `${SITE_URL}/entity-profiles.json`;
+  doc.dateModified = today;
+
+  const based = new Set();
+  const existing = doc.isBasedOn;
+  if (Array.isArray(existing)) for (const u of existing) based.add(u);
+  else if (typeof existing === "string" && existing) based.add(existing);
+  for (const u of [
+    `${SITE_URL}/entity.json`,
+    `${SITE_URL}/brand.json`,
+    `${SITE_URL}/ai-shopping.json`,
+    `${SITE_URL}/catalog.json`,
+    `${SITE_URL}/geo-baseline.json`,
+    `${SITE_URL}/point-c.txt`,
+    `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+  ]) {
+    based.add(u);
+  }
+  doc.isBasedOn = [...based];
+
+  doc.distribution = [
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/entity.json`,
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/brand.json`,
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/ai-shopping.json`,
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/prices.json`,
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/catalog.json`,
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/geo-baseline.json`,
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/point-c.txt`,
+      name: "ARLEDSCREEN Point C paste packs",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/point-c-en.txt`,
+      name: "ARLEDSCREEN Point C paste packs (EN)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/tab-separated-values",
+      contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+    },
+  ];
+
+  doc.isRelatedTo = [
+    {
+      "@type": "DataDownload",
+      "@id": `${SITE_URL}/point-c.txt`,
+      url: `${SITE_URL}/point-c.txt`,
+      name: "ARLEDSCREEN Point C paste packs",
+      encodingFormat: "text/plain",
+    },
+    {
+      "@type": "Brand",
+      "@id": `${SITE_URL}/#brand-nxtionstar`,
+      url: `${SITE_URL}/brand.json`,
+      name: "NXTIONSTAR",
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/geo-baseline.json`,
+      url: `${SITE_URL}/geo-baseline.json`,
+      name: "ARLEDSCREEN GEO technical baseline",
+    },
+  ];
+
+  const geoNextLead =
+    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok)";
+  const checklist = Array.isArray(doc.ownerP0Checklist) ? [...doc.ownerP0Checklist] : [];
+  const withoutOldLead = checklist.filter((row) => !String(row).includes("P0 status:") && !String(row).includes("P0 next:"));
+  doc.ownerP0Checklist = [geoNextLead, ...withoutOldLead];
+
+  doc.canonicalUrls = {
+    ...(doc.canonicalUrls || {}),
+    brandJson: `${SITE_URL}/brand.json`,
+    pricesJson: `${SITE_URL}/prices.json`,
+    brandWellKnown: `${SITE_URL}/.well-known/brand.json`,
+    entityWellKnown: `${SITE_URL}/.well-known/entity.json`,
+    pointCTxt: `${SITE_URL}/point-c.txt`,
+    pointCEnTxt: `${SITE_URL}/point-c-en.txt`,
+    geoBaselineJson: `${SITE_URL}/geo-baseline.json`,
+  };
+
+  if (typeof doc.description === "string" && !doc.description.includes("geo:next")) {
+    doc.description = `${doc.description} Owner single clipboard: npm run geo:next.`;
+  }
+  return doc;
+}
+
 function writeText(dir, relPath, text) {
   const dest = path.join(dir, relPath);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -1994,7 +2115,10 @@ function main() {
     console.warn("postbuild-ai: public/entity-profiles.json missing — Point C surface not copied");
   } else {
     try {
-      const profilesDoc = JSON.parse(fs.readFileSync(path.join(publicDir, "entity-profiles.json"), "utf8"));
+      const profilesRaw = JSON.parse(fs.readFileSync(path.join(publicDir, "entity-profiles.json"), "utf8"));
+      const profilesDoc = enrichEntityProfiles(profilesRaw);
+      writeJson(publicDir, "entity-profiles.json", profilesDoc);
+      writeJson(outDir, "entity-profiles.json", profilesDoc);
       const pointCTr = buildPointCPackText(profilesDoc, { en: false });
       const pointCEn = buildPointCPackText(profilesDoc, { en: true });
       writeText(publicDir, "point-c.txt", pointCTr);
@@ -2004,7 +2128,7 @@ function main() {
       writeText(publicDir, ".well-known/point-c.txt", pointCTr);
       writeText(outDir, ".well-known/point-c.txt", pointCTr);
     } catch (e) {
-      console.error(`postbuild-ai: point-c.txt emit failed: ${e?.message || e}`);
+      console.error(`postbuild-ai: entity-profiles enrich / point-c.txt emit failed: ${e?.message || e}`);
       process.exit(1);
     }
   }
@@ -2052,6 +2176,7 @@ prices-rss: ${SITE_URL}/feeds/prices.rss
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
+owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · ${SITE_URL}/point-c.txt
 brand-json: ${SITE_URL}/brand.json
 brand-json-well-known: ${SITE_URL}/.well-known/brand.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/

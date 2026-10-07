@@ -7,7 +7,7 @@ Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.
 Single next: npm run geo:next · Sequential: npm run point-c:next · after paste: npm run point-c:ack
 
 --- Owner P0 checklist ---
-- P0 status: npm run geo:status · paste from https://arledscreen.com/point-c.txt (or npm run point-c) → NAP/directoryLong → GBP → IG name+bio → FB → LinkedIn → Bing/Apple (paste once; 34245; rating yok)
+- P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok)
 - GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok)
 - Instagram Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)
 - Facebook About = packs.facebookAbout · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)

@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "ARLEDSCREEN entity profile paste packs (Point C)",
-  "description": "Third-party profile paste packs for humans (GBP/IG/FB/LinkedIn) + machine Merchant notes. Owner-operated Point C. Human packs = cite facts only — no catalog.json / quote-only / extrasUsd jargon in public bios. Prices for AI: ai-shopping.json. GEO baseline: geo-baseline.json. Do not invent ratings.",
+  "description": "Third-party profile paste packs for humans (GBP/IG/FB/LinkedIn) + machine Merchant notes. Owner-operated Point C. Human packs = cite facts only — no catalog.json / quote-only / extrasUsd jargon in public bios. Prices for AI: ai-shopping.json. GEO baseline: geo-baseline.json. Do not invent ratings. Owner single clipboard: npm run geo:next.",
   "url": "https://arledscreen.com/entity-profiles.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -20,7 +20,15 @@
     }
   },
   "brandId": "https://arledscreen.com/#brand-nxtionstar",
-  "isBasedOn": "https://arledscreen.com/entity.json",
+  "isBasedOn": [
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/geo-baseline.json",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+  ],
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-07",
   "packs": {
@@ -58,7 +66,7 @@
     ]
   },
   "ownerP0Checklist": [
-    "P0 status: npm run geo:status · paste from https://arledscreen.com/point-c.txt (or npm run point-c) → NAP/directoryLong → GBP → IG name+bio → FB → LinkedIn → Bing/Apple (paste once; 34245; rating yok)",
+    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok)",
     "GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok)",
     "Instagram Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)",
     "Facebook About = packs.facebookAbout · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)",
@@ -88,7 +96,11 @@
     "enHome": "https://arledscreen.com/en/",
     "pricesRss": "https://arledscreen.com/feeds/prices.rss",
     "pointCTxt": "https://arledscreen.com/point-c.txt",
-    "pointCEnTxt": "https://arledscreen.com/point-c-en.txt"
+    "pointCEnTxt": "https://arledscreen.com/point-c-en.txt",
+    "brandJson": "https://arledscreen.com/brand.json",
+    "pricesJson": "https://arledscreen.com/prices.json",
+    "brandWellKnown": "https://arledscreen.com/.well-known/brand.json",
+    "entityWellKnown": "https://arledscreen.com/.well-known/entity.json"
   },
   "packsEn": {
     "gbpDescription": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.",
@@ -103,5 +115,76 @@
     "bingPlaces": "ARLEDSCREEN\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / Istanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/en/\n\nShort: ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.\nCategory: LED display / Digital signage.",
     "yandexBusiness": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.\n\nAddress: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul\nPhone: +90 530 507 88 34\nWeb: https://arledscreen.com/en/",
     "googleMerchantReadiness": "Google Merchant Center — 12 priced panel SKUs only.\nFeed: https://arledscreen.com/feeds/merchant-priced-panels.tsv\nRSS: https://arledscreen.com/feeds/prices.rss (change discovery; canonical pricedPanels remain ai-shopping.json)\nCatalog: https://arledscreen.com/catalog.json\nAI index: https://arledscreen.com/ai-shopping.json\nEntity: https://arledscreen.com/entity.json\nBrand: https://arledscreen.com/brand.json (AggregateOffer×12)\nGEO baseline: https://arledscreen.com/geo-baseline.json\nRules: no free shipping invent; quote-only groups excluded; MerchantReturnNotPermitted; no fake ratings.\nDo NOT paste this block into GBP/IG/FB public bios."
-  }
+  },
+  "@id": "https://arledscreen.com/entity-profiles.json",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/brand.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/ai-shopping.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/prices.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/catalog.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-baseline.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c-en.txt",
+      "name": "ARLEDSCREEN Point C paste packs (EN)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/tab-separated-values",
+      "contentUrl": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+    }
+  ],
+  "isRelatedTo": [
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/point-c.txt",
+      "url": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://arledscreen.com/#brand-nxtionstar",
+      "url": "https://arledscreen.com/brand.json",
+      "name": "NXTIONSTAR"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/geo-baseline.json",
+      "url": "https://arledscreen.com/geo-baseline.json",
+      "name": "ARLEDSCREEN GEO technical baseline"
+    }
+  ]
 }

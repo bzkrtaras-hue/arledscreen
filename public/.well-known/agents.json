@@ -60,7 +60,7 @@
       "position": 8,
       "name": "GEO technical baseline",
       "url": "https://arledscreen.com/geo-baseline.json",
-      "description": "Fingerprints only; does not invent ChatGPT/Gemini/Perplexity mention rates"
+      "description": "Fingerprints only; does not invent ChatGPT/Gemini/Perplexity mention rates; Schema.org distribution → ai-shopping/prices/brand/entity/catalog/point-c/AGENTS.md; owner clipboard npm run geo:next"
     },
     {
       "@type": "ListItem",
@@ -88,7 +88,7 @@
       "position": 12,
       "name": "Entity profile paste packs (Point C)",
       "url": "https://arledscreen.com/entity-profiles.json",
-      "description": "Owner Point C packs (GBP/IG/FB/LinkedIn) + merchant readiness; inventable /tr/entity-profiles.json · /en/entity-profiles.json; npm run point-c"
+      "description": "Owner Point C packs (GBP/IG/FB/LinkedIn) + merchant readiness; Dataset distribution → entity/brand/ai-shopping/catalog/geo/point-c; inventable /tr/entity-profiles.json · /en/entity-profiles.json; npm run geo:next · point-c"
     },
     {
       "@type": "ListItem",
@@ -151,7 +151,55 @@
     "https://arledscreen.com/entity.json",
     "https://arledscreen.com/ai-shopping.json",
     "https://arledscreen.com/brand.json",
-    "https://arledscreen.com/feeds/prices.rss"
+    "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/geo-baseline.json",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/prices.json",
+    "https://arledscreen.com/feeds/prices.rss",
+    "https://arledscreen.com/entity-profiles.json"
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/ai-shopping.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/prices.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/brand.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/catalog.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-baseline.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity-profiles.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs"
+    }
   ],
   "disambiguatingDescription": "Canonical site arledscreen.com (TR /tr/). Legacy arleds.com is not a cite source. LinkedIn /company/arleds is a social slug only."
 }
