@@ -567,6 +567,13 @@ function buildAiShopping() {
           mpn: p.sku,
           brand: { "@type": "Brand", "@id": `${SITE_URL}/#brand-nxtionstar`, name: "NXTIONSTAR" },
         },
+        // Stub Offers must carry shippingDetails (parity with pricedPanels/catalog/entity).
+        shippingDetails: p.shippingDetails || panelShippingDetails(),
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          applicableCountry: "TR",
+          returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+        },
         availableAtOrFrom: localBusinessRef(),
         seller: { "@id": `${SITE_URL}/#organization` },
       },
@@ -886,6 +893,47 @@ function buildMerchantTsv() {
   return `${lines.join("\n")}\n`;
 }
 
+/** RSS 2.0 price-update feed — agents / price monitors that prefer feed readers over JSON-LD. */
+function buildPricesRss(ai) {
+  const today = new Date().toISOString().split("T")[0];
+  const items = (ai.pricedPanels || [])
+    .map((p) => {
+      const title = `${p.nameEn || p.name} — ${p.price} ${p.priceCurrency || "USD"}`;
+      const desc = `Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil ${p.priceValidUntil || PRICE_VALID_UNTIL}. Canonical Offer: ${SITE_URL}/ai-shopping.json#offer-${p.sku}`;
+      return `    <item>
+      <title>${escapeXml(title)}</title>
+      <link>${escapeXml(p.url)}</link>
+      <guid isPermaLink="false">${escapeXml(`${SITE_URL}/ai-shopping.json#offer-${p.sku}`)}</guid>
+      <pubDate>${escapeXml(today)}T00:00:00Z</pubDate>
+      <description>${escapeXml(desc)}</description>
+      <category>pricedPanels</category>
+    </item>`;
+    })
+    .join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>ARLEDSCREEN NXTIONSTAR panel USD price updates</title>
+    <link>${SITE_URL}/ai-shopping.json</link>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: ${SITE_URL}/brand.json</description>
+    <language>tr</language>
+    <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
+    <docs>${SITE_URL}/ai.txt</docs>
+${items}
+  </channel>
+</rss>
+`;
+}
+
+function escapeXml(s) {
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 function writeText(dir, relPath, text) {
   const dest = path.join(dir, relPath);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -1003,6 +1051,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       humansTxt: `${SITE_URL}/humans.txt`,
       securityTxt: `${SITE_URL}/.well-known/security.txt`,
       merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      pricesRss: `${SITE_URL}/feeds/prices.rss`,
       llms: `${SITE_URL}/llms.txt`,
       aiTxt: `${SITE_URL}/ai.txt`,
       brandPage: `${SITE_URL}/tr/nxtionstar/`,
@@ -1283,6 +1332,7 @@ function main() {
   const catalog = buildCatalog();
   const ai = buildAiShopping();
   const merchantTsv = buildMerchantTsv();
+  const pricesRss = buildPricesRss(ai);
   const geoBaseline = buildGeoBaseline(ai, catalog, merchantTsv);
 
   for (const dir of [publicDir, outDir]) {
@@ -1290,6 +1340,7 @@ function main() {
     writeJson(dir, "ai-shopping.json", ai);
     writeJson(dir, "geo-baseline.json", geoBaseline);
     writeText(dir, "feeds/merchant-priced-panels.tsv", merchantTsv);
+    writeText(dir, "feeds/prices.rss", pricesRss);
   }
 
   // Entity + Point C paste packs must survive CF deploy (live surface, not agent runbooks).
@@ -1334,6 +1385,7 @@ entity: ${SITE_URL}/entity.json
 ai-shopping: ${SITE_URL}/ai-shopping.json
 catalog: ${SITE_URL}/catalog.json
 merchant-tsv: ${SITE_URL}/feeds/merchant-priced-panels.tsv
+prices-rss: ${SITE_URL}/feeds/prices.rss
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
@@ -1598,6 +1650,8 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
   fs.mkdirSync(path.join(publicDir, ".well-known"), { recursive: true });
   fs.writeFileSync(path.join(publicDir, ".well-known", "brand.json"), JSON.stringify(brandDoc, null, 2) + "\n");
   // security.txt — trust / contact for agents & researchers (RFC 9116).
+  // Brand pointer (comment + Acknowledgments) so invent agents joining NAP/trust
+  // surfaces still discover Brand-shaped /brand.json (makesOffer + hasOfferCatalog).
   const securityTxt = `Contact: mailto:arled@arledscreen.com
 Contact: https://arledscreen.com/tr/quote/
 Preferred-Languages: tr, en
@@ -1605,6 +1659,8 @@ Canonical: https://arledscreen.com/.well-known/security.txt
 Expires: 2027-10-07T00:00:00.000Z
 Policy: https://arledscreen.com/tr/gizlilik/
 Hiring: https://arledscreen.com/tr/about/
+Acknowledgments: https://arledscreen.com/brand.json
+# Brand: https://arledscreen.com/brand.json (#brand-nxtionstar makesOffer → #priced-panels-aggregate)
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);
@@ -1769,6 +1825,17 @@ Hiring: https://arledscreen.com/tr/about/
   }
   if (!ai.hasPart.every((p) => p?.sku && p.mpn === p.sku)) {
     console.error("postbuild-ai: Dataset hasPart stubs must set mpn=sku");
+    process.exit(1);
+  }
+  if (
+    !ai.hasPart.every(
+      (p) =>
+        p?.offers?.shippingDetails?.["@type"] === "OfferShippingDetails" &&
+        p?.offers?.hasMerchantReturnPolicy?.returnPolicyCategory ===
+          "https://schema.org/MerchantReturnNotPermitted",
+    )
+  ) {
+    console.error("postbuild-ai: Dataset hasPart Offer stubs must carry shippingDetails + return policy");
     process.exit(1);
   }
   for (const panel of PANEL_PRICES) {

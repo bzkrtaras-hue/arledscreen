@@ -5,3 +5,5 @@ Canonical: https://arledscreen.com/.well-known/security.txt
 Expires: 2027-10-07T00:00:00.000Z
 Policy: https://arledscreen.com/tr/gizlilik/
 Hiring: https://arledscreen.com/tr/about/
+Acknowledgments: https://arledscreen.com/brand.json
+# Brand: https://arledscreen.com/brand.json (#brand-nxtionstar makesOffer → #priced-panels-aggregate)

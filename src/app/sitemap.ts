@@ -272,6 +272,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/humans.txt",
     "/security.txt",
     "/feeds/merchant-priced-panels.tsv",
+    "/feeds/prices.rss",
     "/catalog",
     "/ai-shopping",
     "/entity",

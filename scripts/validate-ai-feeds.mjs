@@ -23,6 +23,7 @@ const REQUIRED_FILES = [
   "llms-full.txt",
   "ai.txt",
   "feeds/merchant-priced-panels.tsv",
+  "feeds/prices.rss",
   "robots.txt",
   "_headers",
 ];
@@ -142,10 +143,13 @@ if (fs.existsSync(outDir)) {
         String(p?.offers?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
         String(p?.offers?.price || "") === String(p?.price || ai.pricedPanels.find((x) => x.sku === p.sku)?.price) &&
         String(p?.offers?.description || "").includes("Ücretsiz kargo yok") &&
+        p?.offers?.shippingDetails?.["@type"] === "OfferShippingDetails" &&
+        p?.offers?.hasMerchantReturnPolicy?.returnPolicyCategory ===
+          "https://schema.org/MerchantReturnNotPermitted" &&
         p?.offers?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
     )
   ) {
-    console.error("❌ out/ai-shopping.json hasPart Offer stubs must include Brand + USD + availableAtOrFrom #localbusiness");
+    console.error("❌ out/ai-shopping.json hasPart Offer stubs must include Brand + shippingDetails + USD + availableAtOrFrom #localbusiness");
     process.exit(1);
   }
   if (!ai.pricedPanels.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
@@ -358,7 +362,7 @@ if (fs.existsSync(outDir)) {
     console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + Brand offer/catalog + #localbusiness location + serviceProvider");
     process.exit(1);
   }
-  for (const key of ["pricesJson", "organization", "agentsJson", "agentsMd", "securityTxt", "humansTxt"]) {
+  for (const key of ["pricesJson", "organization", "agentsJson", "agentsMd", "securityTxt", "humansTxt", "pricesRss"]) {
     if (!String(baseline?.discovery?.[key] || "").includes("arledscreen.com")) {
       console.error(`❌ geo-baseline.json discovery.${key} required for invent/agent surfaces`);
       process.exit(1);
@@ -840,8 +844,12 @@ if (fs.existsSync(outDir)) {
     }
   }
   const securityLive = fs.readFileSync(path.join(outDir, ".well-known/security.txt"), "utf8");
-  if (!securityLive.includes("arled@arledscreen.com") || !securityLive.includes("Expires:")) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires");
+  if (
+    !securityLive.includes("arled@arledscreen.com") ||
+    !securityLive.includes("Expires:") ||
+    !securityLive.includes("/brand.json")
+  ) {
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand /brand.json pointer");
     process.exit(1);
   }
   const llmsLive = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
@@ -1030,9 +1038,10 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("merchant.json") ||
     !headersLive.includes("offer.json") ||
     !headersLive.includes("ai.txt") ||
-    !headersLive.includes("brand.json")
+    !headersLive.includes("brand.json") ||
+    !headersLive.includes("prices.rss")
   ) {
-    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt");
+    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt+prices.rss");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -1045,10 +1054,12 @@ if (fs.existsSync(outDir)) {
     for (const needle of [
       'href="https://arledscreen.com/ai-shopping.json"',
       'href="https://arledscreen.com/entity.json"',
+      'href="https://arledscreen.com/brand.json"',
       'href="https://arledscreen.com/prices.json"',
       'href="https://arledscreen.com/organization.json"',
       'href="https://arledscreen.com/.well-known/agents.json"',
       'href="https://arledscreen.com/AGENTS.md"',
+      'href="https://arledscreen.com/feeds/prices.rss"',
       'rel="describedby"',
     ]) {
       if (!html.includes(needle)) {

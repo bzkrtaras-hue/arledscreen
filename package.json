@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "postbuild": "node scripts/postbuild-lang.mjs && node scripts/postbuild-ai.mjs && node scripts/validate-ai-feeds.mjs",
+    "deploy:pages": "node scripts/pages-deploy-resilient.mjs out",
     "indexnow": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {

@@ -78,6 +78,33 @@
             "name": "NXTIONSTAR"
           }
         },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
           "@id": "https://arledscreen.com/#localbusiness"
@@ -126,6 +153,33 @@
             "@id": "https://arledscreen.com/#brand-nxtionstar",
             "name": "NXTIONSTAR"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -176,6 +230,33 @@
             "name": "NXTIONSTAR"
           }
         },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
           "@id": "https://arledscreen.com/#localbusiness"
@@ -224,6 +305,33 @@
             "@id": "https://arledscreen.com/#brand-nxtionstar",
             "name": "NXTIONSTAR"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -274,6 +382,33 @@
             "name": "NXTIONSTAR"
           }
         },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
           "@id": "https://arledscreen.com/#localbusiness"
@@ -322,6 +457,33 @@
             "@id": "https://arledscreen.com/#brand-nxtionstar",
             "name": "NXTIONSTAR"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -372,6 +534,33 @@
             "name": "NXTIONSTAR"
           }
         },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
           "@id": "https://arledscreen.com/#localbusiness"
@@ -420,6 +609,33 @@
             "@id": "https://arledscreen.com/#brand-nxtionstar",
             "name": "NXTIONSTAR"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -470,6 +686,33 @@
             "name": "NXTIONSTAR"
           }
         },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
           "@id": "https://arledscreen.com/#localbusiness"
@@ -518,6 +761,33 @@
             "@id": "https://arledscreen.com/#brand-nxtionstar",
             "name": "NXTIONSTAR"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
@@ -568,6 +838,33 @@
             "name": "NXTIONSTAR"
           }
         },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",
           "@id": "https://arledscreen.com/#localbusiness"
@@ -616,6 +913,33 @@
             "@id": "https://arledscreen.com/#brand-nxtionstar",
             "name": "NXTIONSTAR"
           }
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
         },
         "availableAtOrFrom": {
           "@type": "LocalBusiness",

@@ -145,7 +145,7 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "f8f97205aaf635b452aa8086b0c90dda372462d9513af1e28a2ab71c4efd7c9c",
+    "aiShoppingSha256": "abff5453d775ba4734c1be85731b87a09f4da83017be3129a68e89bbdb20cb9b",
     "catalogSha256": "5605668ee6229b450f9fde3255a8a75edabeb77a034daa9049503b9a371a4af1",
     "merchantTsvSha256": "bad2d21fdc09350e0cabb7d3b96b0ec29406e23e79dd1030f5951639bf4cf47b",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
@@ -181,6 +181,7 @@
     "humansTxt": "https://arledscreen.com/humans.txt",
     "securityTxt": "https://arledscreen.com/.well-known/security.txt",
     "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+    "pricesRss": "https://arledscreen.com/feeds/prices.rss",
     "llms": "https://arledscreen.com/llms.txt",
     "aiTxt": "https://arledscreen.com/ai.txt",
     "brandPage": "https://arledscreen.com/tr/nxtionstar/",

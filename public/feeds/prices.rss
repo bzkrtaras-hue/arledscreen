@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>ARLEDSCREEN NXTIONSTAR panel USD price updates</title>
+    <link>https://arledscreen.com/ai-shopping.json</link>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: https://arledscreen.com/brand.json</description>
+    <language>tr</language>
+    <lastBuildDate>2026-10-07T00:00:00Z</lastBuildDate>
+    <docs>https://arledscreen.com/ai.txt</docs>
+    <item>
+      <title>NXTIONSTAR P1.25 Indoor (GOB) LED Module — 95.88 USD</title>
+      <link>https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p1-25-ic-gob</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p1-25-ic-gob</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P1.53 Indoor (GOB) LED Module — 62.08 USD</title>
+      <link>https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p1-53-ic-gob</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p1-53-ic-gob</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P1.86 Indoor (GOB) LED Module — 49.08 USD</title>
+      <link>https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p1-86-ic-gob</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p1-86-ic-gob</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P2.5 Indoor LED Module — 32.18 USD</title>
+      <link>https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p2-5-ic</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p2-5-ic</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P3.07 Indoor LED Module — 30.88 USD</title>
+      <link>https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p3-07-ic</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p3-07-ic</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P4 Indoor LED Module — 26.98 USD</title>
+      <link>https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p4-ic</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p4-ic</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P2.5 Outdoor LED Module — 63.70 USD</title>
+      <link>https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p2-5-dis</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p2-5-dis</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P2.9 Outdoor LED Module — 53.30 USD</title>
+      <link>https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p2-9-dis</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p2-9-dis</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P3.07 Outdoor LED Module — 44.20 USD</title>
+      <link>https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p3-07-dis</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p3-07-dis</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P4 Outdoor LED Module — 33.80 USD</title>
+      <link>https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p4-dis</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p4-dis</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P4 Outdoor (front service) LED Module — 36.40 USD</title>
+      <link>https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p4-dis-front</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p4-dis-front</description>
+      <category>pricedPanels</category>
+    </item>
+    <item>
+      <title>NXTIONSTAR P5 Outdoor LED Module — 29.90 USD</title>
+      <link>https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/</link>
+      <guid isPermaLink="false">https://arledscreen.com/ai-shopping.json#offer-p5-dis</guid>
+      <pubDate>2026-10-07T00:00:00Z</pubDate>
+      <description>Panel (module) USD; VAT and freight excluded; no free shipping. priceValidUntil 2026-12-31. Canonical Offer: https://arledscreen.com/ai-shopping.json#offer-p5-dis</description>
+      <category>pricedPanels</category>
+    </item>
+  </channel>
+</rss>

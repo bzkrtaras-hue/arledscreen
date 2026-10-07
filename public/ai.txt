@@ -16,6 +16,7 @@ entity: https://arledscreen.com/entity.json
 ai-shopping: https://arledscreen.com/ai-shopping.json
 catalog: https://arledscreen.com/catalog.json
 merchant-tsv: https://arledscreen.com/feeds/merchant-priced-panels.tsv
+prices-rss: https://arledscreen.com/feeds/prices.rss
 geo-baseline: https://arledscreen.com/geo-baseline.json
 ard: https://arledscreen.com/.well-known/ard.json
 entity-profiles: https://arledscreen.com/entity-profiles.json
