@@ -6,8 +6,9 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 
 - Canonical: https://arledscreen.com/ai-shopping.json (`pricedPanels`, 12 SKU USD)
 - Inventable aliases (byte-identical): `/prices.json` · `/price.json` · `/pricing.json` · `/panels.json` · `/modules.json` · `/sku.json` · `/mpn.json` · `/merchant.json` · `/offer.json` · `/offers.json` · `/panels` · `/sku` · `/mpn` · `/merchant` · `/offer` · `/offers` · `/api/prices` · `/api/panels.json` · `/api/mpn.json` · `/api/merchant.json` · `/api/ai-shopping.json` · `/.well-known/prices.json` · `/.well-known/ai-shopping.json` · `/.well-known/merchant.json` · `/feeds/prices.json` (note: `/modules` is an image asset directory — use `/modules.json`)
-- Catalog: https://arledscreen.com/catalog.json (also `/catalog` · `/products` · `/product.json` · `/feeds/catalog.json`)
-- Merchant TSV: https://arledscreen.com/feeds/merchant-priced-panels.tsv (`mpn` = `id`/`sku`; no invented GTIN)
+- Catalog: https://arledscreen.com/catalog.json (`@type` Collection+OfferCatalog; also `/catalog` · `/products` · `/product.json` · `/feeds/catalog.json`)
+- Merchant TSV: https://arledscreen.com/feeds/merchant-priced-panels.tsv (`mpn` = `id`/`sku`; join columns `product_ld_id` · `catalog_id` · `offer_id` · `catalog_offer_id`; no invented GTIN)
+- Graph: Offer triangle catalog ↔ ai-shopping ↔ PDP `#offer`; every Offer `itemOffered` → PDP `#product`; Dataset `hasPart` stubs → Offer `@id`
 - VAT and freight excluded; no free shipping. Quote-only for transparent / flexible / poster / rental / control cards.
 - Human hubs (TR): quote `/tr/quote/` · prices `/tr/led-ekran-fiyatlari/` · products `/tr/products/` — inventable noindex bridges e.g. `/tr/teklif/` · `/tr/fiyat/` · `/tr/prices/` · `/tr/catalog/` · `/tr/calculator/` · `/tr/faq/` · `/tr/brand/`
 
@@ -15,6 +16,7 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 
 - Organization: https://arledscreen.com/entity.json
 - Inventable aliases: `/organization.json` · `/organization` · `/company.json` · `/cite.json` · `/cite` · `/nap.json` · `/.well-known/entity.json`
+- Entity price path: `makesOffer` AggregateOffer `#priced-panels-aggregate` + `offers`×12 → `ai-shopping.json#offer-{sku}` (each with `itemOffered` → PDP `#product`); `hasOfferCatalog` → `catalog.json`
 - Brand: **NXTIONSTAR** (`@id` `https://arledscreen.com/#brand-nxtionstar`) — ≠ NationStar LED chip ≠ NEXTSTAR TV
 - NAP: Gaziosmanpaşa, İstanbul · `arled@arledscreen.com` · +90 530 507 88 34
 

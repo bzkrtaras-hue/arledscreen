@@ -217,6 +217,13 @@ function buildCatalog() {
         // Offer-only resolvers key by sku/mpn (honest mpn=sku).
         sku: panel.id,
         mpn: panel.id,
+        // Offer → Product join (PDP #product = ai-shopping hasPart @id).
+        itemOffered: {
+          "@type": "Product",
+          "@id": `${panel.productUrl}#product`,
+          sku: panel.id,
+          mpn: panel.id,
+        },
         // Per-SKU Offer URL = PDP (same as product.url / merchant TSV / ai-shopping).
         // Collection.url stays the price hub; do not point every Offer at the hub.
         url: panel.productUrl,
@@ -437,6 +444,12 @@ function buildAiShopping() {
         ],
         sku: panel.id,
         mpn: panel.id,
+        itemOffered: {
+          "@type": "Product",
+          "@id": `${panel.productUrl}#product`,
+          sku: panel.id,
+          mpn: panel.id,
+        },
         url: panel.productUrl,
         price,
         priceCurrency: "USD",
@@ -519,6 +532,10 @@ function buildAiShopping() {
       mpn: p.sku, // honest mpn=sku; stub keeps Dataset→Product join cheap for agents
       sameAs: [`${SITE_URL}/catalog.json#${p.sku}`],
       mainEntityOfPage: p.url,
+      offers: {
+        "@id": `${SITE_URL}/ai-shopping.json#offer-${p.sku}`,
+        sameAs: [`${SITE_URL}/catalog.json#offer-${p.sku}`],
+      },
     })),
     // Schema.org DataDownload graph — parity with HTML Dataset on product hubs / yapay-zeka.
     // Agents that only fetch ai-shopping.json still see invent aliases as downloadable encodings.

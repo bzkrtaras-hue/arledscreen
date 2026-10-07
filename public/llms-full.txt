@@ -200,12 +200,13 @@ NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktas�
 
 - Brand `@id`: https://arledscreen.com/#brand-nxtionstar
 - Brand pages: https://arledscreen.com/tr/nxtionstar/ · https://arledscreen.com/en/nxtionstar/ (NXTIONSTAR ≠ NationStar ≠ NEXTSTAR; not arleds.com)
-- entity.json / ai-shopping.json / catalog.json / feeds/merchant-priced-panels.tsv (`brand_id` sütunu = Brand `@id`)
+- entity.json (`makesOffer` AggregateOffer + `offers`×12 → `ai-shopping.json#offer-{sku}` + `itemOffered` → PDP `#product`; `hasOfferCatalog` → catalog.json) / ai-shopping.json / catalog.json (Collection+OfferCatalog) / feeds/merchant-priced-panels.tsv (`brand_id` = Brand `@id`; join IDs `product_ld_id`/`catalog_id`/`offer_id`/`catalog_offer_id`)
+- Graph: Offer triangle catalog ↔ ai-shopping ↔ PDP `#offer`; Offer `itemOffered` → Product; Dataset `hasPart` → Offer `@id`
 - geo-baseline.json: https://arledscreen.com/geo-baseline.json (12 SKU + fingerprints; AI anılma % uydurma yok; Point C / Tur1a sahip kapılı)
 - entity-profiles.json → packs (TR) + packsEn (EN cite-only for GBP/directories/LinkedIn)
-- ard.json: https://arledscreen.com/.well-known/ard.json (`resources.brand` + `geoBaseline` + `entityProfiles.packsEn`)
+- ard.json: https://arledscreen.com/.well-known/ard.json (`resources.brand` + `geoBaseline` + `entityProfiles.packsEn` + merchantFeed join columns)
 - agents.json: https://arledscreen.com/.well-known/agents.json (ItemList index → feeds; alias /agents.json)
-- AGENTS.md: https://arledscreen.com/AGENTS.md (short agent markdown pointer; prices → ai-shopping.json)
+- AGENTS.md: https://arledscreen.com/AGENTS.md (short agent markdown pointer; prices → ai-shopping.json; entity `makesOffer` → SKU Offers)
 - HTML link rel=alternate|describedby + HTTP Link header on all pages → ai-shopping.json · entity.json · prices.json · organization.json · agents.json · AGENTS.md
 - humans.txt: https://arledscreen.com/humans.txt (team/contact pointer; not a price source)
 - security.txt: https://arledscreen.com/.well-known/security.txt (RFC 9116; not a price source; alias /security.txt)

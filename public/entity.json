@@ -101,7 +101,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#product",
+          "sku": "p1-25-ic-gob",
+          "mpn": "p1-25-ic-gob"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "95.88",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -116,7 +137,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#product",
+          "sku": "p1-53-ic-gob",
+          "mpn": "p1-53-ic-gob"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "62.08",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -131,7 +173,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob",
           "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#product",
+          "sku": "p1-86-ic-gob",
+          "mpn": "p1-86-ic-gob"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "49.08",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -146,7 +209,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-5-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#product",
+          "sku": "p2-5-ic",
+          "mpn": "p2-5-ic"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "32.18",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -161,7 +245,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p3-07-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#product",
+          "sku": "p3-07-ic",
+          "mpn": "p3-07-ic"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "30.88",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -176,7 +281,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-ic",
           "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#product",
+          "sku": "p4-ic",
+          "mpn": "p4-ic"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "26.98",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -191,7 +317,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-5-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#product",
+          "sku": "p2-5-dis",
+          "mpn": "p2-5-dis"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "63.70",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -206,7 +353,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p2-9-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#product",
+          "sku": "p2-9-dis",
+          "mpn": "p2-9-dis"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "53.30",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -221,7 +389,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p3-07-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#product",
+          "sku": "p3-07-dis",
+          "mpn": "p3-07-dis"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "44.20",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -236,7 +425,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#product",
+          "sku": "p4-dis",
+          "mpn": "p4-dis"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "33.80",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -251,7 +461,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p4-dis-front",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#product",
+          "sku": "p4-dis-front",
+          "mpn": "p4-dis-front"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "36.40",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       },
       {
         "@type": "Offer",
@@ -266,7 +497,28 @@
         "sameAs": [
           "https://arledscreen.com/catalog.json#offer-p5-dis",
           "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#offer"
-        ]
+        ],
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#product",
+          "sku": "p5-dis",
+          "mpn": "p5-dis"
+        },
+        "seller": {
+          "@id": "https://arledscreen.com/#organization"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "29.90",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        }
       }
     ]
   },

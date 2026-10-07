@@ -104,6 +104,11 @@ export function pricedPanelsHasPartStubs() {
       // Dataset→stub → catalog Collection identity (cheap join without expanding pricedPanels).
       sameAs: [`${SITE_URL}/catalog.json#${p.id}`],
       mainEntityOfPage: url,
+      // Product→Offer edge without expanding full pricedPanels.
+      offers: {
+        "@id": `${SITE_URL}/ai-shopping.json#offer-${p.id}`,
+        sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`],
+      },
     };
   });
 }
@@ -207,9 +212,14 @@ export function panelShippingDetails() {
 }
 
 /** Honest Offer fields for GEO / Merchant: no free-shipping invent, return = quote contract. */
-export function panelOffer(url: string, usd: number, opts?: { sku?: string; offerId?: string }) {
+export function panelOffer(
+  url: string,
+  usd: number,
+  opts?: { sku?: string; offerId?: string; productId?: string },
+) {
   const sku = opts?.sku;
   const offerId = opts?.offerId ?? (sku ? `${url}#offer` : undefined);
+  const productId = opts?.productId ?? (sku ? `${url}#product` : undefined);
   return {
     "@type": "Offer" as const,
     ...(offerId
@@ -228,6 +238,10 @@ export function panelOffer(url: string, usd: number, opts?: { sku?: string; offe
       : {}),
     // Offer-only resolvers (shopping/Merchant merges) key price rows by sku/mpn.
     ...(sku ? { sku, mpn: sku } : {}),
+    // Offer → Product join (schema.org shopping merges).
+    ...(productId && sku
+      ? { itemOffered: { "@type": "Product" as const, "@id": productId, sku, mpn: sku } }
+      : {}),
     url,
     price: usd.toFixed(2),
     priceCurrency: "USD",
@@ -272,17 +286,37 @@ export const PANEL_PRICES: PanelPrice[] = [
 export function pricedPanelOfferStubs() {
   return PANEL_PRICES.map((p) => {
     const url = `${SITE_URL}${p.productPath ?? "/tr/products/"}`;
+    const price = p.usd.toFixed(2);
     return {
       "@type": "Offer" as const,
       "@id": `${SITE_URL}/ai-shopping.json#offer-${p.id}`,
       sku: p.id,
       mpn: p.id,
-      price: p.usd.toFixed(2),
+      price,
       priceCurrency: "USD",
       priceValidUntil: PRICE_VALID_UNTIL,
       url,
       availability: "https://schema.org/InStock" as const,
       sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`, `${url}#offer`],
+      itemOffered: {
+        "@type": "Product" as const,
+        "@id": `${url}#product`,
+        sku: p.id,
+        mpn: p.id,
+      },
+      seller: { "@id": `${SITE_URL}/#organization` },
+      priceSpecification: {
+        "@type": "UnitPriceSpecification" as const,
+        price,
+        priceCurrency: "USD",
+        valueAddedTaxIncluded: false,
+        referenceQuantity: {
+          "@type": "QuantitativeValue" as const,
+          value: 1,
+          unitCode: "C62",
+          unitText: "panel",
+        },
+      },
     };
   });
 }
@@ -392,7 +426,9 @@ export function panelProductsJsonLd(
     // sku → Offer @id + sameAs catalog/ai-shopping offer @ids (unique when hub has no PDP url).
     offers: panelOffer(u, p.usd, {
       sku: p.id,
-      ...(hasPdp ? {} : { offerId: `${pageUrl}#offer-${p.id}` }),
+      ...(hasPdp
+        ? {}
+        : { offerId: `${pageUrl}#offer-${p.id}`, productId: `${pageUrl}#${p.id}` }),
     }),
     isPartOf: PRICE_DATASETS[0],
     isRelatedTo: BRAND_SUBJECT_DATASETS,

@@ -37,7 +37,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p1-25-ic-gob"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-25-ic-gob",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -48,7 +54,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p1-53-ic-gob"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-53-ic-gob",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -59,7 +71,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p1-86-ic-gob"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-86-ic-gob",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -70,7 +88,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p2-5-ic"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-ic",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p2-5-ic"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -81,7 +105,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p3-07-ic"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-ic",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p3-07-ic"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -92,7 +122,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p4-ic"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-ic",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p4-ic"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -103,7 +139,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p2-5-dis"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p2-5-dis"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -114,7 +156,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p2-9-dis"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-9-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p2-9-dis"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -125,7 +173,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p3-07-dis"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p3-07-dis"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -136,7 +190,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p4-dis"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p4-dis"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -147,7 +207,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p4-dis-front"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis-front",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p4-dis-front"
+        ]
+      }
     },
     {
       "@type": "Product",
@@ -158,7 +224,13 @@
       "sameAs": [
         "https://arledscreen.com/catalog.json#p5-dis"
       ],
-      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/"
+      "mainEntityOfPage": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
+      "offers": {
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p5-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p5-dis"
+        ]
+      }
     }
   ],
   "distribution": [
@@ -370,6 +442,12 @@
         ],
         "sku": "p1-25-ic-gob",
         "mpn": "p1-25-ic-gob",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#product",
+          "sku": "p1-25-ic-gob",
+          "mpn": "p1-25-ic-gob"
+        },
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
         "price": "95.88",
         "priceCurrency": "USD",
@@ -487,6 +565,12 @@
         ],
         "sku": "p1-53-ic-gob",
         "mpn": "p1-53-ic-gob",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#product",
+          "sku": "p1-53-ic-gob",
+          "mpn": "p1-53-ic-gob"
+        },
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
         "price": "62.08",
         "priceCurrency": "USD",
@@ -604,6 +688,12 @@
         ],
         "sku": "p1-86-ic-gob",
         "mpn": "p1-86-ic-gob",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#product",
+          "sku": "p1-86-ic-gob",
+          "mpn": "p1-86-ic-gob"
+        },
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
         "price": "49.08",
         "priceCurrency": "USD",
@@ -721,6 +811,12 @@
         ],
         "sku": "p2-5-ic",
         "mpn": "p2-5-ic",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#product",
+          "sku": "p2-5-ic",
+          "mpn": "p2-5-ic"
+        },
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
         "price": "32.18",
         "priceCurrency": "USD",
@@ -838,6 +934,12 @@
         ],
         "sku": "p3-07-ic",
         "mpn": "p3-07-ic",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#product",
+          "sku": "p3-07-ic",
+          "mpn": "p3-07-ic"
+        },
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
         "price": "30.88",
         "priceCurrency": "USD",
@@ -955,6 +1057,12 @@
         ],
         "sku": "p4-ic",
         "mpn": "p4-ic",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#product",
+          "sku": "p4-ic",
+          "mpn": "p4-ic"
+        },
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
         "price": "26.98",
         "priceCurrency": "USD",
@@ -1072,6 +1180,12 @@
         ],
         "sku": "p2-5-dis",
         "mpn": "p2-5-dis",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#product",
+          "sku": "p2-5-dis",
+          "mpn": "p2-5-dis"
+        },
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
         "price": "63.70",
         "priceCurrency": "USD",
@@ -1189,6 +1303,12 @@
         ],
         "sku": "p2-9-dis",
         "mpn": "p2-9-dis",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#product",
+          "sku": "p2-9-dis",
+          "mpn": "p2-9-dis"
+        },
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
         "price": "53.30",
         "priceCurrency": "USD",
@@ -1306,6 +1426,12 @@
         ],
         "sku": "p3-07-dis",
         "mpn": "p3-07-dis",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#product",
+          "sku": "p3-07-dis",
+          "mpn": "p3-07-dis"
+        },
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
         "price": "44.20",
         "priceCurrency": "USD",
@@ -1423,6 +1549,12 @@
         ],
         "sku": "p4-dis",
         "mpn": "p4-dis",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#product",
+          "sku": "p4-dis",
+          "mpn": "p4-dis"
+        },
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
         "price": "33.80",
         "priceCurrency": "USD",
@@ -1540,6 +1672,12 @@
         ],
         "sku": "p4-dis-front",
         "mpn": "p4-dis-front",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#product",
+          "sku": "p4-dis-front",
+          "mpn": "p4-dis-front"
+        },
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
         "price": "36.40",
         "priceCurrency": "USD",
@@ -1657,6 +1795,12 @@
         ],
         "sku": "p5-dis",
         "mpn": "p5-dis",
+        "itemOffered": {
+          "@type": "Product",
+          "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#product",
+          "sku": "p5-dis",
+          "mpn": "p5-dis"
+        },
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
         "price": "29.90",
         "priceCurrency": "USD",

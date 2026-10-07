@@ -132,10 +132,11 @@ if (fs.existsSync(outDir)) {
       (p) =>
         Array.isArray(p?.sameAs) &&
         p.sameAs.some((u) => String(u).includes(`/catalog.json#${p.sku}`)) &&
-        p.mainEntityOfPage === p.url,
+        p.mainEntityOfPage === p.url &&
+        String(p?.offers?.["@id"] || "").includes(`/ai-shopping.json#offer-${p.sku}`),
     )
   ) {
-    console.error("❌ out/ai-shopping.json hasPart stubs must sameAs catalog#sku + mainEntityOfPage=url");
+    console.error("❌ out/ai-shopping.json hasPart stubs must sameAs catalog + Offer @id + mainEntityOfPage");
     process.exit(1);
   }
   if (!ai.pricedPanels.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
@@ -206,6 +207,15 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   const ardMerchant = ard?.agentic?.resources?.merchantFeed;
+  {
+    const cols = Array.isArray(ardMerchant?.columns) ? ardMerchant.columns : [];
+    for (const need of ["product_ld_id", "catalog_id", "offer_id", "catalog_offer_id", "mpn"]) {
+      if (!cols.includes(need)) {
+        console.error(`❌ ard.json merchantFeed.columns must include ${need}`);
+        process.exit(1);
+      }
+    }
+  }
   if (!ardMerchant?.url?.includes("/feeds/merchant-priced-panels.tsv") || ardMerchant.freeShipping !== false) {
     console.error("❌ ard.json must expose merchantFeed (TSV) with freeShipping:false");
     process.exit(1);
@@ -344,6 +354,10 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ catalog Offer ${id} must set sku/mpn=${sku}`);
       process.exit(1);
     }
+    if (product?.offers?.itemOffered?.["@id"] !== `${productUrl}#product`) {
+      console.error(`❌ catalog Offer ${id} itemOffered must join PDP #product`);
+      process.exit(1);
+    }
   }
   if (catalogLive?.["@id"] !== "https://arledscreen.com/catalog.json") {
     console.error("❌ catalog.json Collection must @id catalog.json");
@@ -469,10 +483,13 @@ if (fs.existsSync(outDir)) {
         o?.["@type"] === "Offer" &&
         o?.sku &&
         o.mpn === o.sku &&
-        String(o["@id"] || "").includes(`/ai-shopping.json#offer-${o.sku}`),
+        String(o["@id"] || "").includes(`/ai-shopping.json#offer-${o.sku}`) &&
+        String(o?.itemOffered?.["@id"] || "").endsWith("#product") &&
+        o?.seller?.["@id"] === "https://arledscreen.com/#organization" &&
+        o?.priceSpecification?.valueAddedTaxIncluded === false,
     )
   ) {
-    console.error("❌ entity.json makesOffer.offers must be 12 Offer stubs → ai-shopping#offer-{sku}");
+    console.error("❌ entity.json makesOffer.offers must be 12 stubs with itemOffered+seller+VAT=false");
     process.exit(1);
   }
   if (
@@ -762,8 +779,15 @@ if (fs.existsSync(outDir)) {
     console.error("❌ /security.txt must match /.well-known/security.txt");
     process.exit(1);
   }
-  if (!fs.existsSync(path.join(outDir, "AGENTS.md")) || !fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8").includes("ai-shopping.json")) {
-    console.error("❌ out/AGENTS.md must cite ai-shopping.json");
+  {
+    const agentsMd = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
+    if (!agentsMd.includes("ai-shopping.json") || !agentsMd.includes("makesOffer") || !agentsMd.includes("itemOffered")) {
+      console.error("❌ out/AGENTS.md must cite ai-shopping.json + makesOffer + itemOffered");
+      process.exit(1);
+    }
+  }
+  if (!llmsLive.includes("makesOffer") || !llmsLive.includes("itemOffered")) {
+    console.error("❌ out/llms.txt must cite entity makesOffer + Offer itemOffered graph");
     process.exit(1);
   }
   if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt") || !llmsLive.includes("organization.json") || !llmsLive.includes("AGENTS.md")) {
@@ -1178,6 +1202,10 @@ if (fs.existsSync(outDir)) {
     }
     if (panel.offers?.sku !== panel.sku || panel.offers?.mpn !== panel.sku) {
       console.error(`❌ pricedPanels ${panel.sku} Offer must set sku/mpn`);
+      process.exit(1);
+    }
+    if (panel.offers?.itemOffered?.["@id"] !== `${panel.url}#product`) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.itemOffered must join PDP #product`);
       process.exit(1);
     }
     if (panel.offers?.seller?.["@id"] !== "https://arledscreen.com/#organization") {
@@ -1684,7 +1712,9 @@ if (fs.existsSync(outDir)) {
           String(offer["@id"] || "").endsWith("#offer") &&
           offer.sku === "p1-25-ic-gob" &&
           offer.mpn === "p1-25-ic-gob" &&
-          String(d.mainEntityOfPage || "").includes("/p1-25-gob/")
+          String(d.mainEntityOfPage || "").includes("/p1-25-gob/") &&
+          String(offer.itemOffered?.["@id"] || "").includes("/p1-25-gob/") &&
+          String(offer.itemOffered?.["@id"] || "").endsWith("#product")
         ) {
           pdpOk = true;
           break;
@@ -1799,7 +1829,8 @@ if (fs.existsSync(outDir)) {
                 String(p["@id"] || "").includes("#product") &&
                 Array.isArray(p.sameAs) &&
                 p.sameAs.some((u) => String(u).includes(`/catalog.json#${p.sku}`)) &&
-                p.mainEntityOfPage === p.url,
+                p.mainEntityOfPage === p.url &&
+                String(p?.offers?.["@id"] || "").includes(`/ai-shopping.json#offer-${p.sku}`),
             )
           ) {
             const dist = JSON.stringify(d.distribution || []);
