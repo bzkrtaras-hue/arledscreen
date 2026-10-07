@@ -56,8 +56,10 @@ function validateAIFeeds() {
     if (fs.existsSync(filePath)) {
       try {
         const content = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-        if (content["@type"] !== type) {
-          warnings.push(`⚠️ ${file}: Expected @type=${type}, got ${content["@type"]}`);
+        const got = content["@type"];
+        const ok = Array.isArray(got) ? got.includes(type) : got === type;
+        if (!ok) {
+          warnings.push(`⚠️ ${file}: Expected @type=${type}, got ${JSON.stringify(got)}`);
         }
       } catch (e) {
         errors.push(`❌ ${file}: Invalid JSON - ${e.message}`);
@@ -347,6 +349,14 @@ if (fs.existsSync(outDir)) {
     console.error("❌ catalog.json Collection must @id catalog.json");
     process.exit(1);
   }
+  {
+    const ct = catalogLive?.["@type"];
+    const types = Array.isArray(ct) ? ct : [ct];
+    if (!types.includes("Collection") || !types.includes("OfferCatalog")) {
+      console.error("❌ catalog.json @type must include Collection + OfferCatalog");
+      process.exit(1);
+    }
+  }
   if (
     !Array.isArray(catalogLive?.sameAs) ||
     !catalogLive.sameAs.some((u) => String(u).includes("/ai-shopping.json"))
@@ -449,6 +459,28 @@ if (fs.existsSync(outDir)) {
     String(entity?.makesOffer?.highPrice) !== "95.88"
   ) {
     console.error("❌ entity.json makesOffer must be AggregateOffer×12 USD 26.98–95.88 → ai-shopping");
+    process.exit(1);
+  }
+  if (
+    !Array.isArray(entity?.makesOffer?.offers) ||
+    entity.makesOffer.offers.length !== 12 ||
+    !entity.makesOffer.offers.every(
+      (o) =>
+        o?.["@type"] === "Offer" &&
+        o?.sku &&
+        o.mpn === o.sku &&
+        String(o["@id"] || "").includes(`/ai-shopping.json#offer-${o.sku}`),
+    )
+  ) {
+    console.error("❌ entity.json makesOffer.offers must be 12 Offer stubs → ai-shopping#offer-{sku}");
+    process.exit(1);
+  }
+  if (
+    entity?.hasOfferCatalog?.["@type"] !== "OfferCatalog" ||
+    !String(entity?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json") ||
+    entity?.hasOfferCatalog?.numberOfItems !== 12
+  ) {
+    console.error("❌ entity.json hasOfferCatalog must be OfferCatalog → catalog.json ×12");
     process.exit(1);
   }
   const disambig = String(entity?.disambiguatingDescription || "");
@@ -1402,7 +1434,11 @@ if (fs.existsSync(outDir)) {
             offer.offerCount === 12 &&
             String(offer.url || "").includes("/ai-shopping.json") &&
             String(offer.lowPrice) === "26.98" &&
-            String(offer.highPrice) === "95.88"
+            String(offer.highPrice) === "95.88" &&
+            Array.isArray(offer.offers) &&
+            offer.offers.length === 12 &&
+            node?.hasOfferCatalog?.["@type"] === "OfferCatalog" &&
+            String(node.hasOfferCatalog["@id"] || "").includes("/catalog.json")
           ) {
             makesOfferOk = true;
             break;
@@ -1414,10 +1450,10 @@ if (fs.existsSync(outDir)) {
       }
     }
     if (!makesOfferOk) {
-      console.error("❌ tr/index.html Organization must makesOffer AggregateOffer×12 → ai-shopping");
+      console.error("❌ tr/index.html Organization must makesOffer×12 stubs + hasOfferCatalog");
       process.exit(1);
     }
-    console.log("✅ Organization makesOffer AggregateOffer on home + entity.json");
+    console.log("✅ Organization makesOffer stubs + hasOfferCatalog on home + entity.json");
   }
   for (const rel of [
     "tr/about/index.html",
@@ -1706,8 +1742,39 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ ${rel} Product ${sku} must sameAs catalog + Offer sku + mainEntityOfPage`);
       process.exit(1);
     }
+    // Service AggregateOffer on hubs must join Org #priced-panels-aggregate.
+    let serviceOk = false;
+    const hubHtml = fs.readFileSync(path.join(outDir, rel), "utf8");
+    for (const m of hubHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "Service") continue;
+          const agg = node.offers || {};
+          const aggSame = Array.isArray(agg.sameAs) ? agg.sameAs : [];
+          if (
+            agg?.["@type"] === "AggregateOffer" &&
+            String(agg["@id"] || "").includes("#priced-panels-aggregate") &&
+            String(agg.url || "").includes("/ai-shopping.json") &&
+            aggSame.some((u) => String(u).includes("#priced-panels-aggregate")) &&
+            agg.priceSpecification?.valueAddedTaxIncluded === false
+          ) {
+            serviceOk = true;
+            break;
+          }
+        }
+        if (serviceOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!serviceOk) {
+      console.error(`❌ ${rel} Service AggregateOffer must join #priced-panels-aggregate + ai-shopping`);
+      process.exit(1);
+    }
   }
-  console.log("✅ AggregateOffer hubs (TR+EN group/price/calculator/quote) Product/Offer joins");
+  console.log("✅ AggregateOffer hubs (TR+EN) Product/Offer + Service→Org joins");
 
   // HTML Dataset on quote-only + priced hubs must hasPart 12 Product stubs (mpn=sku).
   for (const rel of [
@@ -1720,8 +1787,11 @@ if (fs.existsSync(outDir)) {
     for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
       try {
         const d = JSON.parse(m[1]);
-        if (d?.["@type"] === "Dataset" && Array.isArray(d.hasPart) && d.hasPart.length === 12) {
+          if (d?.["@type"] === "Dataset" && Array.isArray(d.hasPart) && d.hasPart.length === 12) {
+          const dsSameAs = Array.isArray(d.sameAs) ? d.sameAs : [];
           if (
+            dsSameAs.some((u) => String(u).includes("/ai-shopping.json")) &&
+            dsSameAs.some((u) => String(u).includes("/catalog.json")) &&
             d.hasPart.every(
               (p) =>
                 p?.sku &&

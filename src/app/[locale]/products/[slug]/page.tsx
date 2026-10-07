@@ -201,18 +201,27 @@ export default async function ProductGroupPage({ params }: PageProps) {
       ? {
           offers: {
             "@type": "AggregateOffer",
+            "@id": `${url}#priced-panels-aggregate`,
             priceCurrency: "USD",
             lowPrice: Math.min(...prices.map((x) => x.usd)).toFixed(2),
             highPrice: Math.max(...prices.map((x) => x.usd)).toFixed(2),
             offerCount: prices.length,
             priceValidUntil: PRICE_VALID_UNTIL,
+            url: `${SITE_URL}/ai-shopping.json`,
+            sameAs: [`${SITE_URL}/#priced-panels-aggregate`],
             description:
               "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok; nakliye yazılı teklifle.",
             seller: { "@id": `${SITE_URL}/#organization` },
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              priceCurrency: "USD",
+              valueAddedTaxIncluded: false,
+            },
           },
         }
       : {}),
   };
+  // Products only — Service AggregateOffer lives in serviceLd (avoid duplicate Service).
   const productsLd = prices.length ? panelProductsJsonLd(prices, url, undefined, modelUrlForPrice(absoluteUrl)) : null;
 
   return (

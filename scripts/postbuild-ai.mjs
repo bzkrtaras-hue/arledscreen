@@ -275,7 +275,7 @@ function buildCatalog() {
 
   return {
     "@context": "https://schema.org",
-    "@type": "Collection",
+    "@type": ["Collection", "OfferCatalog"],
     "@id": `${SITE_URL}/catalog.json`,
     name: "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
     description:

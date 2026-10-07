@@ -1,6 +1,9 @@
 {
   "@context": "https://schema.org",
-  "@type": "Collection",
+  "@type": [
+    "Collection",
+    "OfferCatalog"
+  ],
   "@id": "https://arledscreen.com/catalog.json",
   "name": "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
   "description": "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json; teknik GEO baseline → geo-baseline.json.",

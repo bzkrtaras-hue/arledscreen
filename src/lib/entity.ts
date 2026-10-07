@@ -14,7 +14,7 @@ import {
   CONTACT_PHONE_E164,
   ORGANIZATION_SAME_AS,
 } from "@/lib/social";
-import { organizationMakesOffer } from "@/content/prices";
+import { organizationHasOfferCatalog, organizationMakesOffer } from "@/content/prices";
 import { SITE_URL } from "@/lib/site";
 
 /** One-line fact AI / directories should repeat independently. */
@@ -200,6 +200,8 @@ export type EntityDocument = {
   brand: { "@type": "Brand"; "@id": string; name: string; url: string; subjectOf?: unknown };
   /** Published 12-panel USD AggregateOffer — schema.org join for entity-first agents. */
   makesOffer: ReturnType<typeof organizationMakesOffer>;
+  /** Seller → catalog Collection edge. */
+  hasOfferCatalog: ReturnType<typeof organizationHasOfferCatalog>;
   founder: { "@type": "Person"; name: string; url?: string; sameAs?: string[] };
   citationPage: string;
   llmsTxt: string;
@@ -291,6 +293,7 @@ export function buildEntityDocument(): EntityDocument {
       ],
     },
     makesOffer: organizationMakesOffer(),
+    hasOfferCatalog: organizationHasOfferCatalog(),
     founder: {
       "@type": "Person",
       name: "Aras Bozkurt",

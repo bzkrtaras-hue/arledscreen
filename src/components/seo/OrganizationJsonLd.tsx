@@ -3,6 +3,7 @@ import {
   NXTIONSTAR_BRAND_ID,
   BRAND_SUBJECT_DATASETS,
   nxtionstarBrandNode,
+  organizationHasOfferCatalog,
   organizationMakesOffer,
 } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -61,6 +62,7 @@ export function OrganizationJsonLd() {
         brand: { "@id": NXTIONSTAR_BRAND_ID },
         subjectOf: BRAND_SUBJECT_DATASETS,
         makesOffer: organizationMakesOffer(),
+        hasOfferCatalog: organizationHasOfferCatalog(),
         founder: {
           "@type": "Person",
           name: "Aras Bozkurt",

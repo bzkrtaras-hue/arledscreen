@@ -119,6 +119,8 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
       "Yayımlanmış 12 panel USD (pricedPanels). KDV/nakliye hariç; ücretsiz kargo yok. Makine kaynak: ai-shopping.json + catalog.json + merchant TSV. Ölçüm snapshot: geo-baseline.json. Dataset hasPart → 12 Product @id (mpn=sku); Product isPartOf → ai-shopping.json.",
     url: pageUrl,
     creator: { "@id": `${SITE_URL}/#organization` },
+    // Join page Dataset orphan @id → canonical machine price roots.
+    sameAs: [`${SITE_URL}/ai-shopping.json`, `${SITE_URL}/catalog.json`],
     isBasedOn: [...PRICE_DATASETS.map((d) => d.url), GEO_BASELINE_DATASET.url],
     /** Mirror ai-shopping.json Dataset→Product join on every HTML hub (incl. quote-only groups). */
     hasPart: pricedPanelsHasPartStubs(),
@@ -266,10 +268,28 @@ export const PANEL_PRICES: PanelPrice[] = [
   { id: "p5-dis", pitch: "P5", pitchMm: 5, use: "dis", usd: 29.9, groups: ["dis-mekan-led-ekran"], image: "/modules/nxtionstar-p5-dis-mekan-modul.webp", productPath: "/tr/products/dis-mekan-led-ekran/p5/" },
 ];
 
+/** Compact per-SKU Offer stubs for entity-first agents (join → ai-shopping Offer @id). */
+export function pricedPanelOfferStubs() {
+  return PANEL_PRICES.map((p) => {
+    const url = `${SITE_URL}${p.productPath ?? "/tr/products/"}`;
+    return {
+      "@type": "Offer" as const,
+      "@id": `${SITE_URL}/ai-shopping.json#offer-${p.id}`,
+      sku: p.id,
+      mpn: p.id,
+      price: p.usd.toFixed(2),
+      priceCurrency: "USD",
+      priceValidUntil: PRICE_VALID_UNTIL,
+      url,
+      availability: "https://schema.org/InStock" as const,
+      sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`, `${url}#offer`],
+    };
+  });
+}
+
 /**
- * Organization.makesOffer — published USD band for the 12 pricedPanels.
- * Agents that only fetch entity.json / Org JSON-LD still see seller + price authority.
- * No per-SKU Offers here (those live in catalog / ai-shopping / HTML).
+ * Organization.makesOffer — published USD band + per-SKU Offer stubs.
+ * Agents that only fetch entity.json / Org JSON-LD still reach Offer @ids.
  */
 export function organizationMakesOffer() {
   const usd = PANEL_PRICES.map((p) => p.usd);
@@ -291,6 +311,20 @@ export function organizationMakesOffer() {
       priceCurrency: "USD",
       valueAddedTaxIncluded: false,
     },
+    // Entity → per-SKU Offer @ids (full graphs live in catalog / ai-shopping / HTML).
+    offers: pricedPanelOfferStubs(),
+  };
+}
+
+/** Organization.hasOfferCatalog — seller → catalog Collection edge. */
+export function organizationHasOfferCatalog() {
+  return {
+    "@type": "OfferCatalog" as const,
+    "@id": `${SITE_URL}/catalog.json`,
+    name: "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
+    url: `${SITE_URL}/catalog.json`,
+    numberOfItems: PANEL_PRICES.length,
+    sameAs: [`${SITE_URL}/ai-shopping.json`],
   };
 }
 
@@ -378,14 +412,23 @@ export function panelProductsJsonLd(
       isRelatedTo: BRAND_SUBJECT_DATASETS,
       offers: {
         "@type": "AggregateOffer",
+        "@id": `${pageUrl}#priced-panels-aggregate`,
         priceCurrency: "USD",
         lowPrice: Math.min(...usd).toFixed(2),
         highPrice: Math.max(...usd).toFixed(2),
         offerCount: panels.length,
         priceValidUntil: PRICE_VALID_UNTIL,
+        url: `${SITE_URL}/ai-shopping.json`,
+        // Join hub band → Organization AggregateOffer (entity-first agents).
+        sameAs: [`${SITE_URL}/#priced-panels-aggregate`],
         description:
           "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. İade: yazılı teklif/sözleşme (MerchantReturnNotPermitted).",
         seller: org,
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "USD",
+          valueAddedTaxIncluded: false,
+        },
       },
     });
   }
