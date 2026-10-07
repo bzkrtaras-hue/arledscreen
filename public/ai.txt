@@ -25,7 +25,10 @@ service-en: https://arledscreen.com/en/led-ekran-servis/
 services-hub-en: https://arledscreen.com/en/hizmetler/
 regions-hub-en: https://arledscreen.com/en/bolgeler/
 projects-hub-en: https://arledscreen.com/en/projelerimiz/
+gallery-en: https://arledscreen.com/en/galeri/
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
+contact-bridge-en: https://arledscreen.com/en/contact/
+iletisim-bridge-en: https://arledscreen.com/en/iletisim/
 guide-bridge-finepitch-en: https://arledscreen.com/en/rehber/ince-pitch-led-ekran/
 guide-bridge-gob-en: https://arledscreen.com/en/rehber/gob-led-ekran/
 use-store-en: https://arledscreen.com/en/magaza-led-ekran/

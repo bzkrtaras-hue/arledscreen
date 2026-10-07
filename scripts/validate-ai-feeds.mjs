@@ -650,6 +650,15 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity-profiles directoryLong (TR+EN) must warn LinkedIn /company/arleds ≠ web arleds.com");
     process.exit(1);
   }
+  
+  const llmsBody = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
+  for (const must of ["/en/projelerimiz/", "/en/hizmetler/", "/en/bolgeler/", "/en/galeri/", "/en/about/aras-bozkurt/"]) {
+    if (!llmsBody.includes(must)) {
+      console.error(`❌ llms.txt must cite EN hub ${must}`);
+      process.exit(1);
+    }
+  }
+
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms, ai.txt); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
   console.log(`✅ HTML/schema arleds.com disambiguation: ${orgSchemaPages.length} pages + about/founder body`);
