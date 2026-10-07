@@ -94,6 +94,7 @@ function contentType(fp) {
     ".md": "text/markdown; charset=utf-8",
     ".xml": "application/xml",
     ".tsv": "text/tab-separated-values",
+    ".rss": "application/rss+xml",
     ".css": "text/css",
     ".js": "application/javascript",
     ".svg": "image/svg+xml",
@@ -116,26 +117,28 @@ function walk(dir, acc = []) {
   return acc;
 }
 
-async function uploadMissingOneByOne() {
-  // blake3-wasm is pulled by wrangler; resolve from npx cache or local node_modules.
-  let blake3;
+function resolveBlake3() {
+  // Prefer local / wrangler-bundled blake3-wasm. Never walk all of ~/.npm/_npx (too slow).
+  const requireLocal = createRequire(import.meta.url);
   try {
-    const require = createRequire(import.meta.url);
-    blake3 = require("blake3-wasm");
+    return requireLocal("blake3-wasm");
   } catch {
-    const npxRoot = path.join(
-      process.env.HOME || "/home/ubuntu",
-      ".npm/_npx",
-    );
-    const candidates = fs.existsSync(npxRoot)
-      ? walk(npxRoot).filter((p) => p.endsWith(`${path.sep}blake3-wasm${path.sep}index.js`) || p.endsWith(`${path.sep}blake3-wasm${path.sep}dist${path.sep}index.js`))
-      : [];
-    // Prefer package root require via nearest wrangler install
-    const wranglerCli = walk(npxRoot).find((p) => p.endsWith(`${path.sep}wrangler${path.sep}wrangler-dist${path.sep}cli.js`));
-    if (!wranglerCli) throw new Error("blake3-wasm not found — run npx wrangler@4 once first");
-    const require = createRequire(wranglerCli);
-    blake3 = require("blake3-wasm");
+    /* fall through */
   }
+  const npxRoot = path.join(process.env.HOME || "/home/ubuntu", ".npm/_npx");
+  if (!fs.existsSync(npxRoot)) throw new Error("blake3-wasm not found — run npx wrangler@4 once first");
+  for (const ent of fs.readdirSync(npxRoot, { withFileTypes: true })) {
+    if (!ent.isDirectory()) continue;
+    const pkg = path.join(npxRoot, ent.name, "node_modules", "blake3-wasm", "package.json");
+    if (!fs.existsSync(pkg)) continue;
+    const require = createRequire(pkg);
+    return require("blake3-wasm");
+  }
+  throw new Error("blake3-wasm not found — run npx wrangler@4 once first");
+}
+
+async function uploadMissingOneByOne() {
+  const blake3 = resolveBlake3();
 
   function hashFile(filepath) {
     const contents = fs.readFileSync(filepath);
