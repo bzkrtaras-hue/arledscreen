@@ -5,7 +5,15 @@ import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
-import { nxtionstarBrandNode, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
+import { modelUrlForPrice } from "@/content/models";
+import {
+  PANEL_PRICES,
+  nxtionstarBrandNode,
+  panelProductsJsonLd,
+  pricedPanelsDatasetJsonLd,
+} from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BUSINESS_NAP_LINE, CONTACT_EMAIL } from "@/lib/social";
@@ -79,6 +87,19 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            panelProductsJsonLd(
+              PANEL_PRICES,
+              url,
+              "NXTIONSTAR LED ekran modülü satışı, keşif ve montaj",
+              modelUrlForPrice(absoluteUrl),
+            ),
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(brandLd) }}
       />
       <section className="bg-white py-10 md:py-14">
@@ -91,25 +112,15 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
             <strong>Kısa cevap:</strong> NXTIONSTAR, ARLEDSCREEN&apos;in kendi markasıdır; Türkiye&apos;deki tek satış noktası ARLEDSCREEN&apos;dir.
             Ürünlerin satışı, keşfi, montajı ve teknik servisi İstanbul Gaziosmanpaşa&apos;daki merkezimizden yürütülür.
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-            Panel USD listesi:{" "}
-            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-              ai-shopping.json
-            </a>{" "}
-            <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD),{" "}
-            <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-              catalog.json
-            </a>
-            ,{" "}
-            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-              merchant TSV
-            </a>{" "}
-            ve{" "}
-            <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-              geo-baseline.json
-            </a>
-            . KDV/nakliye hariç; ücretsiz kargo yok.
-          </p>
+          <AiPriceSourceNote lead="Panel USD:" className="mt-3 text-sm leading-relaxed text-ink-muted" />
+
+          <div id="panel-fiyatlari" className="mt-10 scroll-mt-28">
+            <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">2026 NXTIONSTAR panel fiyatları</h2>
+            <p className="mb-4 mt-2 text-sm leading-relaxed text-ink-muted">
+              Markanın yayımlanmış 12 panel USD listesi. Kanonik SKU sayfaları ürün PDP&apos;lerindedir; nihai tutar yazılı teklifle kesinleşir.
+            </p>
+            <PanelPriceTable panels={PANEL_PRICES} caption="NXTIONSTAR panel fiyatları (USD, panel başına)" />
+          </div>
 
           <h2 className="mt-10 font-display text-xl font-bold text-ink sm:text-2xl">Sitede yer alan NXTIONSTAR modelleri</h2>
           <div className="mt-4 overflow-x-auto rounded-2xl border border-border">

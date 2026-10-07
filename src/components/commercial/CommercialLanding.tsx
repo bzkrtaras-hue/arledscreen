@@ -7,7 +7,15 @@ import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import type { CommercialPage } from "@/content/commercial-pages";
 import { commercialPath } from "@/content/commercial-pages";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
-import { BRAND_SUBJECT_DATASETS, nxtionstarBrandRef, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
+import { modelUrlForPrice } from "@/content/models";
+import {
+  BRAND_SUBJECT_DATASETS,
+  PANEL_PRICES,
+  nxtionstarBrandRef,
+  panelProductsJsonLd,
+  pricedPanelsDatasetJsonLd,
+} from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
@@ -52,6 +60,8 @@ function LinkCloud({
 
 export function CommercialLanding({ page }: { page: CommercialPage }) {
   const url = absoluteUrl(commercialPath(page.slug));
+  // Intent hubs (satış/montaj/kiralama…) get the 12-SKU Offer graph; pitch/use pages keep Dataset cites only.
+  const showPanelOffers = page.cluster === "intent";
   const serviceLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -89,6 +99,21 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
+      {showPanelOffers ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              panelProductsJsonLd(
+                PANEL_PRICES,
+                url,
+                "LED ekran modülü satışı, keşif ve montaj",
+                modelUrlForPrice(absoluteUrl),
+              ),
+            ),
+          }}
+        />
+      ) : null}
 
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
