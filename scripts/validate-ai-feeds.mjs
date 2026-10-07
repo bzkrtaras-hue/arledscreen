@@ -270,4 +270,15 @@ if (fs.existsSync(outDir)) {
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms); product paths exist");
 }
 
+// Live robots.txt is served by Pages Function — keep Allow list in sync.
+const robotsFn = path.join(repoRoot, "functions", "robots.txt.js");
+if (fs.existsSync(robotsFn)) {
+  const body = fs.readFileSync(robotsFn, "utf8");
+  if (!body.includes("/geo-baseline.json")) {
+    console.error("❌ functions/robots.txt.js must Allow /geo-baseline.json");
+    process.exit(1);
+  }
+  console.log("✅ functions/robots.txt.js allows /geo-baseline.json");
+}
+
 validateAIFeeds();

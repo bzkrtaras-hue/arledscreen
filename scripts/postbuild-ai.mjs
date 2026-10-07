@@ -660,6 +660,9 @@ function main() {
   if (!copyPublicToOut("entity-profiles.json")) {
     console.warn("postbuild-ai: public/entity-profiles.json missing — Point C surface not copied");
   }
+  if (!copyPublicToOut(".well-known/ard.json")) {
+    console.warn("postbuild-ai: public/.well-known/ard.json missing — ARD surface not copied");
+  }
   if (!copyPublicToOut("llms.txt")) {
     console.warn("postbuild-ai: public/llms.txt missing — llms surface not copied");
   }
