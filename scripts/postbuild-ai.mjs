@@ -693,6 +693,7 @@ function buildAiShopping() {
       `${SITE_URL}/AGENTS.md`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/entity-profiles.json`,
+      `${SITE_URL}/#website`,
     ],
     hasPart: pricedPanels.map((p) => ({
       "@type": "Product",
@@ -1136,6 +1137,10 @@ function buildMerchantTsv() {
     "modules_well_known_url",
     "sku_well_known_url",
     "offer_json_url",
+    "pricing_well_known_url",
+    "panels_well_known_url",
+    "entity_well_known_url",
+    "prices_rss_url",
     "organization_url",
     "geo_baseline_url",
     "website_url",
@@ -1192,6 +1197,10 @@ function buildMerchantTsv() {
         `${SITE_URL}/.well-known/modules.json`,
         `${SITE_URL}/.well-known/sku.json`,
         `${SITE_URL}/offer.json`,
+        `${SITE_URL}/.well-known/pricing.json`,
+        `${SITE_URL}/.well-known/panels.json`,
+        `${SITE_URL}/.well-known/entity.json`,
+        `${SITE_URL}/feeds/prices.rss`,
         `${SITE_URL}/organization.json`,
         `${SITE_URL}/geo-baseline.json`,
         `${SITE_URL}/#website`,
@@ -1491,7 +1500,29 @@ function hasQuoteOrderActions(actions) {
 
 function ensureSubjectNeedle(list, needle, entry) {
   const out = Array.isArray(list) ? [...list] : [];
-  if (!out.some((s) => String(s?.url || s?.["@id"] || "").includes(needle))) out.push(entry);
+  // Prefer @id + url + contentUrl (url alone can be apex host without #website fragment).
+  if (
+    !out.some((s) => {
+      const blob = `${s?.["@id"] || ""} ${s?.url || ""} ${s?.contentUrl || ""}`;
+      return blob.includes(needle);
+    })
+  ) {
+    out.push(entry);
+  }
+  return out;
+}
+
+/** Collapse duplicate subjectOf rows that share the same @id (postbuild re-runs). */
+function dedupeSubjectOfById(list) {
+  if (!Array.isArray(list)) return list;
+  const seen = new Set();
+  const out = [];
+  for (const s of list) {
+    const id = String(s?.["@id"] || s?.url || "");
+    if (id && seen.has(id)) continue;
+    if (id) seen.add(id);
+    out.push(s);
+  }
   return out;
 }
 
@@ -1646,7 +1677,7 @@ function enrichEntityDocument(entity) {
   subjectOf = ensureSubjectNeedle(subjectOf, "/entity-profiles.json", entityProfilesEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/geo-baseline.json", geoBaselineEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "#website", websiteEntry);
-  entity.subjectOf = subjectOf;
+  entity.subjectOf = dedupeSubjectOfById(subjectOf);
   // Nested Brand / LocalBusiness subjectOf invent parity with top-level (agents that walk brand|location).
   if (entity.brand && typeof entity.brand === "object") {
     let bs = Array.isArray(entity.brand.subjectOf) ? [...entity.brand.subjectOf] : [];
@@ -1657,7 +1688,7 @@ function enrichEntityDocument(entity) {
     bs = ensureSubjectNeedle(bs, "/.well-known/brand.json", brandWellKnownEntry);
     bs = ensureSubjectNeedle(bs, "/geo-baseline.json", geoBaselineEntry);
     bs = ensureSubjectNeedle(bs, "#website", websiteEntry);
-    entity.brand.subjectOf = bs;
+    entity.brand.subjectOf = dedupeSubjectOfById(bs);
   }
   if (entity.location && typeof entity.location === "object") {
     let ls = Array.isArray(entity.location.subjectOf) ? [...entity.location.subjectOf] : [];
@@ -1669,7 +1700,7 @@ function enrichEntityDocument(entity) {
     ls = ensureSubjectNeedle(ls, "/entity-profiles.json", entityProfilesEntry);
     ls = ensureSubjectNeedle(ls, "/geo-baseline.json", geoBaselineEntry);
     ls = ensureSubjectNeedle(ls, "#website", websiteEntry);
-    entity.location.subjectOf = ls;
+    entity.location.subjectOf = dedupeSubjectOfById(ls);
   }
   return entity;
 }
@@ -1698,6 +1729,7 @@ function enrichEntityProfiles(doc) {
     `${SITE_URL}/geo-baseline.json`,
     `${SITE_URL}/point-c.txt`,
     `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+    `${SITE_URL}/#website`,
   ]) {
     based.add(u);
   }
@@ -1917,6 +1949,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       `${SITE_URL}/feeds/prices.rss`,
       `${SITE_URL}/AGENTS.md`,
       `${SITE_URL}/entity-profiles.json`,
+      `${SITE_URL}/#website`,
     ],
     isRelatedTo: [
       {
@@ -3145,21 +3178,26 @@ Acknowledgments: https://arledscreen.com/brand.json
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
     // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
-    // brand_wk, modules_wk, sku_wk, offer_json, org, geo, website
+    // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, entity_wk,
+    // prices_rss, org, geo, website
     const websiteUrl = cells[cells.length - 1];
     const geoBaselineUrl = cells[cells.length - 2];
     const orgUrl = cells[cells.length - 3];
-    const offerJsonUrl = cells[cells.length - 4];
-    const skuWk = cells[cells.length - 5];
-    const modulesWk = cells[cells.length - 6];
-    const brandWk = cells[cells.length - 7];
-    const pointCUrl = cells[cells.length - 8];
-    const profilesUrl = cells[cells.length - 9];
-    const catalogUrl = cells[cells.length - 10];
-    const pricesJsonUrl = cells[cells.length - 11];
-    const aiShoppingUrl = cells[cells.length - 12];
-    const shippingIncluded = cells[cells.length - 13];
-    const taxIncluded = cells[cells.length - 14];
+    const pricesRssUrl = cells[cells.length - 4];
+    const entityWk = cells[cells.length - 5];
+    const panelsWk = cells[cells.length - 6];
+    const pricingWk = cells[cells.length - 7];
+    const offerJsonUrl = cells[cells.length - 8];
+    const skuWk = cells[cells.length - 9];
+    const modulesWk = cells[cells.length - 10];
+    const brandWk = cells[cells.length - 11];
+    const pointCUrl = cells[cells.length - 12];
+    const profilesUrl = cells[cells.length - 13];
+    const catalogUrl = cells[cells.length - 14];
+    const pricesJsonUrl = cells[cells.length - 15];
+    const aiShoppingUrl = cells[cells.length - 16];
+    const shippingIncluded = cells[cells.length - 17];
+    const taxIncluded = cells[cells.length - 18];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3177,6 +3215,10 @@ Acknowledgments: https://arledscreen.com/brand.json
       modulesWk !== `${SITE_URL}/.well-known/modules.json` ||
       skuWk !== `${SITE_URL}/.well-known/sku.json` ||
       offerJsonUrl !== `${SITE_URL}/offer.json` ||
+      pricingWk !== `${SITE_URL}/.well-known/pricing.json` ||
+      panelsWk !== `${SITE_URL}/.well-known/panels.json` ||
+      entityWk !== `${SITE_URL}/.well-known/entity.json` ||
+      pricesRssUrl !== `${SITE_URL}/feeds/prices.rss` ||
       orgUrl !== `${SITE_URL}/organization.json` ||
       geoBaselineUrl !== `${SITE_URL}/geo-baseline.json` ||
       websiteUrl !== `${SITE_URL}/#website` ||

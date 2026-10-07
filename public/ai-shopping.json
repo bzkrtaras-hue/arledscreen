@@ -68,7 +68,8 @@
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/point-c.txt",
-    "https://arledscreen.com/entity-profiles.json"
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/#website"
   ],
   "hasPart": [
     {

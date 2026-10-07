@@ -20,7 +20,8 @@
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "https://arledscreen.com/feeds/prices.rss",
     "https://arledscreen.com/AGENTS.md",
-    "https://arledscreen.com/entity-profiles.json"
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/#website"
   ],
   "isRelatedTo": [
     {
@@ -273,9 +274,9 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "6697ef8a5eb71c52040163b7744050053d6c46712970e295329a550fe85ab48a",
+    "aiShoppingSha256": "0c112d5a4c60e1d6343b14c10632ff2a781e62bc06c4ccb6926a3aac5f7ad21c",
     "catalogSha256": "a92062ca2c5fe45881e44f98eaaae0d73d9b7f29f656e8511b9a5c4456f9e112",
-    "merchantTsvSha256": "ffcc7cbfa3cbcac07432e13c9dea9aa6e1352fe83028b98535d9d1f5122df7e0",
+    "merchantTsvSha256": "0ec316e707d8fd5442315c5f4eef8f96387060ba031d15d2d250cee9b4a60e9c",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
   "discovery": {

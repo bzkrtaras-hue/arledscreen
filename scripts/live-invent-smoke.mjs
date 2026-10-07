@@ -174,6 +174,7 @@ try {
     based.includes("/ai-shopping.json") &&
     based.includes("/geo-baseline.json") &&
     based.includes("/point-c.txt") &&
+    based.includes("#website") &&
     dist.includes("/prices.json") &&
     dist.includes("/catalog.json") &&
     dist.includes("/point-c.txt") &&
@@ -204,8 +205,17 @@ try {
   fail(`point-c-en.txt ${e?.message || e}`);
 }
 
-if (ard?.agentic?.resources?.website?.["@id"] === `${SITE}/#website`) ok("ard.resources.website");
-else fail("ard.resources.website");
+{
+  const websiteRes = ard?.agentic?.resources?.website || {};
+  if (
+    websiteRes?.["@id"] === `${SITE}/#website` &&
+    String(websiteRes?.description || "").includes("geo:ack") &&
+    String(websiteRes?.ownerNext || "").includes("geo:ack") &&
+    String(ard?.agentic?.resources?.merchantFeed?.websiteUrl || "").includes("#website")
+  ) {
+    ok("ard.resources.website geo:ack + merchantFeed.websiteUrl");
+  } else fail("ard.resources.website geo:ack + merchantFeed.websiteUrl");
+}
 
 if (String(ard?.agentic?.resources?.pointC?.url || "").includes("/point-c.txt")) ok("ard.resources.pointC");
 else fail("ard.resources.pointC");
@@ -255,6 +265,10 @@ try {
     head.includes("modules_well_known_url") &&
     head.includes("sku_well_known_url") &&
     head.includes("offer_json_url") &&
+    head.includes("pricing_well_known_url") &&
+    head.includes("panels_well_known_url") &&
+    head.includes("entity_well_known_url") &&
+    head.includes("prices_rss_url") &&
     head.includes("ai_shopping_url") &&
     head.includes("prices_json_url") &&
     head.includes("catalog_url") &&
@@ -272,13 +286,17 @@ try {
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
     tsv.includes(`${SITE}/.well-known/modules.json`) &&
     tsv.includes(`${SITE}/.well-known/sku.json`) &&
+    tsv.includes(`${SITE}/.well-known/pricing.json`) &&
+    tsv.includes(`${SITE}/.well-known/panels.json`) &&
+    tsv.includes(`${SITE}/.well-known/entity.json`) &&
+    tsv.includes(`${SITE}/feeds/prices.rss`) &&
     tsv.includes(`${SITE}/offer.json`) &&
     tsv.includes(`${SITE}/organization.json`) &&
     tsv.includes(`${SITE}/geo-baseline.json`) &&
     tsv.includes(`${SITE}/#website`)
   ) {
-    ok("merchant TSV feed/wk/org/entity/profiles/point-c/geo/website invent cols");
-  } else fail("merchant TSV feed/wk/org/entity/profiles/point-c/geo/website invent cols");
+    ok("merchant TSV feed/wk/rss/org/entity/profiles/point-c/geo/website invent cols");
+  } else fail("merchant TSV feed/wk/rss/org/entity/profiles/point-c/geo/website invent cols");
 } catch (e) {
   fail(`merchant TSV ${e?.message || e}`);
 }
@@ -302,10 +320,11 @@ if (
   JSON.stringify(ai.isBasedOn || []).includes("/feeds/prices.rss") &&
   JSON.stringify(ai.isBasedOn || []).includes("/brand.json") &&
   JSON.stringify(ai.isBasedOn || []).includes("/point-c.txt") &&
-  JSON.stringify(ai.isBasedOn || []).includes("/entity-profiles.json")
+  JSON.stringify(ai.isBasedOn || []).includes("/entity-profiles.json") &&
+  JSON.stringify(ai.isBasedOn || []).includes("#website")
 ) {
-  ok("ai-shopping isBasedOn prices.rss + brand + point-c + entity-profiles");
-} else fail("ai-shopping isBasedOn prices.rss + brand + point-c + entity-profiles");
+  ok("ai-shopping isBasedOn prices.rss + brand + point-c + entity-profiles + #website");
+} else fail("ai-shopping isBasedOn prices.rss + brand + point-c + entity-profiles + #website");
 
 {
   const dist = JSON.stringify(ai.distribution || []);
@@ -363,6 +382,8 @@ if (
 {
   const bs = JSON.stringify(ent?.brand?.subjectOf || []);
   const ls = JSON.stringify(ent?.location?.subjectOf || []);
+  const websiteIdHits = (list) =>
+    (Array.isArray(list) ? list : []).filter((s) => String(s?.["@id"] || "").includes("#website")).length;
   if (
     bs.includes("/prices.json") &&
     bs.includes("/point-c.txt") &&
@@ -371,6 +392,9 @@ if (
     bs.includes("/.well-known/brand.json") &&
     bs.includes("/geo-baseline.json") &&
     bs.includes("#website") &&
+    websiteIdHits(ent?.subjectOf) === 1 &&
+    websiteIdHits(ent?.brand?.subjectOf) === 1 &&
+    websiteIdHits(ent?.location?.subjectOf) === 1 &&
     ls.includes("/prices.json") &&
     ls.includes("/point-c.txt") &&
     ls.includes("/brand.json") &&
@@ -380,8 +404,8 @@ if (
     ls.includes("/geo-baseline.json") &&
     ls.includes("#website")
   ) {
-    ok("entity nested brand/location subjectOf invent parity + brand-wk/geo/org/#website");
-  } else fail("entity nested brand/location subjectOf invent parity + brand-wk/geo/org/#website");
+    ok("entity nested brand/location subjectOf invent parity + brand-wk/geo/org/#website×1");
+  } else fail("entity nested brand/location subjectOf invent parity + brand-wk/geo/org/#website×1");
 }
 
 if (
@@ -451,11 +475,12 @@ try {
     based.includes("/feeds/prices.rss") &&
     based.includes("AGENTS.md") &&
     based.includes("/entity-profiles.json") &&
+    based.includes("#website") &&
     related.includes("/point-c.txt") &&
     related.includes("/entity-profiles.json")
   ) {
-    ok("geo-baseline isBasedOn entity/brand/ai/catalog/AGENTS/profiles + isRelatedTo point-c/profiles");
-  } else fail("geo-baseline isBasedOn entity/brand/ai/catalog/AGENTS/profiles + isRelatedTo point-c/profiles");
+    ok("geo-baseline isBasedOn entity/brand/ai/catalog/AGENTS/profiles/#website + isRelatedTo point-c/profiles");
+  } else fail("geo-baseline isBasedOn entity/brand/ai/catalog/AGENTS/profiles/#website + isRelatedTo point-c/profiles");
   const dist = JSON.stringify(geo?.distribution || []);
   if (
     dist.includes("/ai-shopping.json") &&

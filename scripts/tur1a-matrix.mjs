@@ -157,6 +157,7 @@ function printNext(filled) {
   );
   console.log("- Brand AggregateOffer×12: https://arledscreen.com/brand.json (alias /.well-known/brand.json)");
   console.log("- prices.rss = change discovery only (not canonical price graph)");
+  console.log("- Owner clipboard (repo): npm run geo:next · after paste: npm run geo:ack · point-c.txt");
   console.log("\n### After observing, one-shot log:");
   console.log(
     `npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json --notes="..."`,

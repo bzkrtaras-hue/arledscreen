@@ -418,9 +418,15 @@ if (fs.existsSync(outDir)) {
       websiteRes?.["@id"] !== "https://arledscreen.com/#website" ||
       !Array.isArray(websiteRes?.potentialAction) ||
       !websiteRes.potentialAction.some((u) => String(u).includes("/tr/quote")) ||
-      !websiteRes.potentialAction.some((u) => String(u).includes("/en/quote"))
+      !websiteRes.potentialAction.some((u) => String(u).includes("/en/quote")) ||
+      !String(websiteRes?.description || "").includes("geo:ack") ||
+      !String(websiteRes?.ownerNext || "").includes("geo:ack")
     ) {
-      console.error("❌ ard.json resources.website must be #website with OrderAction TR+EN quote URLs");
+      console.error("❌ ard.json resources.website must be #website with OrderAction TR+EN quote URLs + geo:ack");
+      process.exit(1);
+    }
+    if (!String(ard?.agentic?.resources?.merchantFeed?.websiteUrl || "").includes("#website")) {
+      console.error("❌ ard.json resources.merchantFeed.websiteUrl must cite /#website");
       process.exit(1);
     }
   }
@@ -552,6 +558,7 @@ if (fs.existsSync(outDir)) {
       "/feeds/merchant-priced-panels.tsv",
       "/feeds/prices.rss",
       "/entity-profiles.json",
+      "#website",
     ]) {
       if (!geoBased.includes(needle)) {
         console.error(`❌ geo-baseline.json isBasedOn must include ${needle}`);
@@ -663,9 +670,10 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/organization.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/entity.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/entity-profiles.json")
+    !JSON.stringify(ai?.isBasedOn || []).includes("/entity-profiles.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("#website")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + well-known brand/entity + /organization.json + /point-c.txt + /entity-profiles.json");
+    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + well-known brand/entity + /organization.json + /point-c.txt + /entity-profiles.json + #website");
     process.exit(1);
   }
   if (
@@ -1123,6 +1131,18 @@ if (fs.existsSync(outDir)) {
   ) {
     console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog + subjectOf invent (prices/point-c/brand/#website)");
     process.exit(1);
+  }
+  {
+    const websiteIdHits = (list) =>
+      (Array.isArray(list) ? list : []).filter((s) => String(s?.["@id"] || "").includes("#website")).length;
+    if (
+      websiteIdHits(entity?.subjectOf) !== 1 ||
+      websiteIdHits(entity?.brand?.subjectOf) !== 1 ||
+      websiteIdHits(entity?.location?.subjectOf) !== 1
+    ) {
+      console.error("❌ entity.json subjectOf/brand/location must each cite WebSite #website exactly once (no postbuild dupes)");
+      process.exit(1);
+    }
   }
   if (
     entity?.hasOfferCatalog?.["@type"] !== "OfferCatalog" ||
@@ -1833,13 +1853,16 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("ai.txt") ||
     !headersLive.includes("brand.json") ||
     !headersLive.includes("/.well-known/brand.json") ||
+    !headersLive.includes("/.well-known/modules.json") ||
+    !headersLive.includes("/.well-known/sku.json") ||
+    !headersLive.includes("/.well-known/pricing.json") ||
     !headersLive.includes("#website") ||
     !headersLive.includes("/.well-known/entity.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+well-known brand/entity+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt+prices.rss+merchant TSV+point-c");
+    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+well-known brand/entity/modules/sku/pricing+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt+prices.rss+merchant TSV+point-c");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -1931,6 +1954,7 @@ if (fs.existsSync(outDir)) {
       "/catalog.json",
       "/geo-baseline.json",
       "/point-c.txt",
+      "#website",
     ]) {
       if (!epBased.includes(needle)) {
         console.error(`❌ entity-profiles.json isBasedOn invent must include ${needle}`);
@@ -2377,6 +2401,10 @@ if (fs.existsSync(outDir)) {
     "modules_well_known_url",
     "sku_well_known_url",
     "offer_json_url",
+    "pricing_well_known_url",
+    "panels_well_known_url",
+    "entity_well_known_url",
+    "prices_rss_url",
     "organization_url",
     "geo_baseline_url",
     "website_url",
@@ -2409,6 +2437,10 @@ if (fs.existsSync(outDir)) {
   const modulesWkIdx = tsvCols.indexOf("modules_well_known_url");
   const skuWkIdx = tsvCols.indexOf("sku_well_known_url");
   const offerJsonUrlIdx = tsvCols.indexOf("offer_json_url");
+  const pricingWkIdx = tsvCols.indexOf("pricing_well_known_url");
+  const panelsWkIdx = tsvCols.indexOf("panels_well_known_url");
+  const entityWkIdx = tsvCols.indexOf("entity_well_known_url");
+  const pricesRssUrlIdx = tsvCols.indexOf("prices_rss_url");
   const orgUrlIdx = tsvCols.indexOf("organization_url");
   const geoBaselineUrlIdx = tsvCols.indexOf("geo_baseline_url");
   const websiteUrlIdx = tsvCols.indexOf("website_url");
@@ -2476,6 +2508,22 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[offerJsonUrlIdx] !== "https://arledscreen.com/offer.json") {
       console.error(`❌ merchant TSV offer_json_url must be /offer.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pricingWkIdx] !== "https://arledscreen.com/.well-known/pricing.json") {
+      console.error(`❌ merchant TSV pricing_well_known_url must be /.well-known/pricing.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[panelsWkIdx] !== "https://arledscreen.com/.well-known/panels.json") {
+      console.error(`❌ merchant TSV panels_well_known_url must be /.well-known/panels.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[entityWkIdx] !== "https://arledscreen.com/.well-known/entity.json") {
+      console.error(`❌ merchant TSV entity_well_known_url must be /.well-known/entity.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pricesRssUrlIdx] !== "https://arledscreen.com/feeds/prices.rss") {
+      console.error(`❌ merchant TSV prices_rss_url must be /feeds/prices.rss for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[orgUrlIdx] !== "https://arledscreen.com/organization.json") {
