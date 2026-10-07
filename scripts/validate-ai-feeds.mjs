@@ -122,6 +122,13 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   const tsv = fs.readFileSync(tsvPath, "utf8");
+  const tsvHeader = tsv.trim().split("\n")[0] || "";
+  for (const col of ["title", "brand", "image_link", "condition", "shipping_included"]) {
+    if (!tsvHeader.split("\t").includes(col)) {
+      console.error(`❌ merchant TSV missing column: ${col}`);
+      process.exit(1);
+    }
+  }
   const tsvRows = tsv.trim().split("\n").slice(1);
   if (tsvRows.length !== 12) {
     console.error(`❌ merchant TSV must have 12 data rows, got ${tsvRows.length}`);
@@ -130,6 +137,10 @@ if (fs.existsSync(outDir)) {
   for (const panel of ai.pricedPanels) {
     if (!tsv.includes(panel.url)) {
       console.error(`❌ merchant TSV missing ai-shopping URL for ${panel.sku}: ${panel.url}`);
+      process.exit(1);
+    }
+    if (!panel.image || !panel.brand || !tsv.includes(panel.image)) {
+      console.error(`❌ pricedPanels/TSV image+brand required for ${panel.sku}`);
       process.exit(1);
     }
   }

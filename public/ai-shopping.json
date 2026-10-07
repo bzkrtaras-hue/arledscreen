@@ -13,7 +13,7 @@
     "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/.well-known/ard.json"
   ],
-  "dateModified": "2026-10-06",
+  "dateModified": "2026-10-07",
   "inLanguage": "tr",
   "cite": {
     "oneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
@@ -43,108 +43,132 @@
     {
       "sku": "p1-25-ic-gob",
       "name": "NXTIONSTAR P1.25 İç mekân (GOB) LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "95.88",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/modules/nxtionstar-p1-25-ic-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
     },
     {
       "sku": "p1-53-ic-gob",
       "name": "NXTIONSTAR P1.53 İç mekân (GOB) LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "62.08",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/modules/nxtionstar-p1-53-ic-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
     },
     {
       "sku": "p1-86-ic-gob",
       "name": "NXTIONSTAR P1.86 İç mekân (GOB) LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "49.08",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/modules/nxtionstar-p1-86-ic-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
     },
     {
       "sku": "p2-5-ic",
       "name": "NXTIONSTAR P2.5 İç mekân LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "32.18",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/modules/nxtionstar-p2-5-ic-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
     },
     {
       "sku": "p3-07-ic",
       "name": "NXTIONSTAR P3.07 İç mekân LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "30.88",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/projects/modules/indoor-smd-surface.jpg",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
     },
     {
       "sku": "p4-ic",
       "name": "NXTIONSTAR P4 İç mekân LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "26.98",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/projects/modules/indoor-wall.jpg",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
       "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
     },
     {
       "sku": "p2-5-dis",
       "name": "NXTIONSTAR P2.5 Dış mekân LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "63.70",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/modules/nxtionstar-p2-5-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
     },
     {
       "sku": "p2-9-dis",
       "name": "NXTIONSTAR P2.9 Dış mekân LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "53.30",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/modules/nxtionstar-p2-97-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
     },
     {
       "sku": "p3-07-dis",
       "name": "NXTIONSTAR P3.07 Dış mekân LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "44.20",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/modules/nxtionstar-p3-076-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
     },
     {
       "sku": "p4-dis",
       "name": "NXTIONSTAR P4 Dış mekân LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "33.80",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/modules/nxtionstar-p4-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
     },
     {
       "sku": "p4-dis-front",
       "name": "NXTIONSTAR P4 Dış mekân (önden servis) LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "36.40",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/projects/modules/front-service-module.jpg",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
     },
     {
       "sku": "p5-dis",
       "name": "NXTIONSTAR P5 Dış mekân LED Modül",
+      "brand": "NXTIONSTAR",
       "price": "29.90",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
+      "image": "https://arledscreen.com/modules/nxtionstar-p5-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
       "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
     }
