@@ -12,6 +12,16 @@
     "@id": "https://arledscreen.com/#organization",
     "name": "ARLEDSCREEN"
   },
+  "seller": {
+    "@type": "Organization",
+    "@id": "https://arledscreen.com/#organization",
+    "name": "ARLEDSCREEN"
+  },
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://arledscreen.com/#organization",
+    "name": "ARLEDSCREEN"
+  },
   "brand": {
     "@type": "Brand",
     "@id": "https://arledscreen.com/#brand-nxtionstar",

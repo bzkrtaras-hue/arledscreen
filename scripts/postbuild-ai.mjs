@@ -296,6 +296,17 @@ function buildCatalog() {
       "@id": `${SITE_URL}/#organization`,
       name: "ARLEDSCREEN",
     },
+    // Catalog-only agents still join seller Org without expanding Offers.
+    seller: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "ARLEDSCREEN",
+    },
+    provider: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "ARLEDSCREEN",
+    },
     brand: {
       "@type": "Brand",
       "@id": `${SITE_URL}/#brand-nxtionstar`,
@@ -1011,6 +1022,61 @@ function escapeXml(s) {
     .replace(/'/g, "&apos;");
 }
 
+/** Entity-first invent: Brand.makesOffer full AggregateOffer×12 + Org OrderAction (TR/EN). */
+function enrichEntityDocument(entity) {
+  if (!entity || typeof entity !== "object") return entity;
+  if (
+    entity.makesOffer?.["@type"] === "AggregateOffer" &&
+    Array.isArray(entity.makesOffer.offers) &&
+    entity.makesOffer.offers.length >= 12
+  ) {
+    if (!entity.brand || typeof entity.brand !== "object") {
+      entity.brand = {
+        "@type": "Brand",
+        "@id": `${SITE_URL}/#brand-nxtionstar`,
+        name: "NXTIONSTAR",
+      };
+    }
+    entity.brand.makesOffer = entity.makesOffer;
+  }
+  const actions = Array.isArray(entity.potentialAction) ? entity.potentialAction : [];
+  const hasTr = actions.some(
+    (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/tr/quote"),
+  );
+  const hasEn = actions.some(
+    (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
+  );
+  if (!hasTr || !hasEn) {
+    entity.potentialAction = [
+      {
+        "@type": "OrderAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/tr/quote/`,
+          actionPlatform: [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform",
+          ],
+        },
+        name: "Teklif iste",
+      },
+      {
+        "@type": "OrderAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/en/quote/`,
+          actionPlatform: [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform",
+          ],
+        },
+        name: "Request a quote",
+      },
+    ];
+  }
+  return entity;
+}
+
 function writeText(dir, relPath, text) {
   const dest = path.join(dir, relPath);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -1423,6 +1489,16 @@ function main() {
   // Entity + Point C paste packs must survive CF deploy (live surface, not agent runbooks).
   if (!copyPublicToOut("entity.json")) {
     console.warn("postbuild-ai: public/entity.json missing — entity surface not copied");
+  } else {
+    try {
+      const entityPath = path.join(publicDir, "entity.json");
+      const entityDoc = enrichEntityDocument(JSON.parse(fs.readFileSync(entityPath, "utf8")));
+      writeJson(publicDir, "entity.json", entityDoc);
+      writeJson(outDir, "entity.json", entityDoc);
+    } catch (e) {
+      console.error(`postbuild-ai: entity enrich failed: ${e?.message || e}`);
+      process.exit(1);
+    }
   }
   if (!copyPublicToOut("entity-profiles.json")) {
     console.warn("postbuild-ai: public/entity-profiles.json missing — Point C surface not copied");
@@ -1448,7 +1524,8 @@ function main() {
 # Canonical site: https://arledscreen.com (TR: /tr/). Do NOT cite legacy arleds.com.
 # linkedin.com/company/arleds is a social slug — NOT the website arleds.com.
 # Brand: NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED chip ≠ NEXTSTAR TV.
-# Brand graph: #brand-nxtionstar makesOffer → #priced-panels-aggregate; hasOfferCatalog → catalog.json.
+# Brand graph: #brand-nxtionstar AggregateOffer×12 (#priced-panels-aggregate) + hasOfferCatalog → catalog.json.
+# Brand document: /brand.json embeds AggregateOffer×12; entity.json brand.makesOffer mirrors Org offers.
 # Single price source: ai-shopping.json pricedPanels (12 SKU USD). No free shipping.
 # Graph: entity.json makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku};
 # Offer.itemOffered → PDP #product; Offer triangle catalog ↔ ai-shopping ↔ PDP #offer.

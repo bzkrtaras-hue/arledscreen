@@ -295,10 +295,23 @@ if (fs.existsSync(outDir)) {
   if (
     !String(ardBrand?.makesOffer || "").includes("#priced-panels-aggregate") ||
     !String(ardBrand?.hasOfferCatalog || "").includes("/catalog.json") ||
-    !String(ardBrand?.url || "").includes("/brand.json")
+    !String(ardBrand?.url || "").includes("/brand.json") ||
+    ardBrand?.offerCount !== 12 ||
+    !String(ardBrand?.description || "").includes("AggregateOffer")
   ) {
-    console.error("❌ ard.json resources.brand must cite makesOffer + hasOfferCatalog + url /brand.json");
+    console.error("❌ ard.json resources.brand must cite AggregateOffer×12 + hasOfferCatalog + url /brand.json");
     process.exit(1);
+  }
+  {
+    const brandJsonRes = ard?.agentic?.resources?.brandJson;
+    if (
+      !String(brandJsonRes?.url || "").includes("/brand.json") ||
+      brandJsonRes?.offerCount !== 12 ||
+      !String(brandJsonRes?.description || "").includes("AggregateOffer")
+    ) {
+      console.error("❌ ard.json resources.brandJson must describe AggregateOffer×12 Brand document");
+      process.exit(1);
+    }
   }
   if (
     ard?.agentic?.resources?.aiShopping?.shippingIncluded !== false ||
@@ -487,6 +500,14 @@ if (fs.existsSync(outDir)) {
     console.error("❌ catalog.json Collection sameAs must join ai-shopping.json");
     process.exit(1);
   }
+  if (
+    catalogLive?.seller?.["@id"] !== "https://arledscreen.com/#organization" ||
+    catalogLive?.provider?.["@id"] !== "https://arledscreen.com/#organization" ||
+    catalogLive?.publisher?.["@id"] !== "https://arledscreen.com/#organization"
+  ) {
+    console.error("❌ catalog.json must seller + provider + publisher → #organization");
+    process.exit(1);
+  }
   if (catalogLive?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
     console.error("❌ catalog.json Collection availableAtOrFrom must be #localbusiness");
     process.exit(1);
@@ -599,9 +620,28 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json brand.@id must be #brand-nxtionstar");
     process.exit(1);
   }
-  if (!String(entity?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate")) {
-    console.error("❌ entity.json brand.makesOffer must join #priced-panels-aggregate");
+  if (
+    !String(entity?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    entity?.brand?.makesOffer?.["@type"] !== "AggregateOffer" ||
+    entity?.brand?.makesOffer?.offerCount !== 12 ||
+    !Array.isArray(entity?.brand?.makesOffer?.offers) ||
+    entity.brand.makesOffer.offers.length !== 12
+  ) {
+    console.error("❌ entity.json brand.makesOffer must be AggregateOffer×12 (#priced-panels-aggregate)");
     process.exit(1);
+  }
+  {
+    const actions = Array.isArray(entity?.potentialAction) ? entity.potentialAction : [];
+    const hasTr = actions.some(
+      (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/tr/quote"),
+    );
+    const hasEn = actions.some(
+      (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
+    );
+    if (!hasTr || !hasEn) {
+      console.error("❌ entity.json potentialAction must include OrderAction TR+EN /quote/");
+      process.exit(1);
+    }
   }
   if (!String(entity?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")) {
     console.error("❌ entity.json brand.hasOfferCatalog must join catalog.json");
@@ -881,6 +921,19 @@ if (fs.existsSync(outDir)) {
   if (!llmsLive.includes("agents.json") || !llmsLive.includes("humans.txt")) {
     console.error("❌ out/llms.txt must cite agents.json + humans.txt");
     process.exit(1);
+  }
+  {
+    const humansLive = fs.readFileSync(path.join(outDir, "humans.txt"), "utf8");
+    if (
+      !humansLive.includes("/feeds/prices.rss") ||
+      !humansLive.includes("/brand.json") ||
+      !humansLive.includes("/ai-shopping.json") ||
+      !humansLive.includes("/catalog.json") ||
+      !humansLive.includes("/geo-baseline.json")
+    ) {
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline");
+      process.exit(1);
+    }
   }
   for (const rel of [".well-known/agents.json", "agents.json", "humans.txt", ".well-known/humans.txt"]) {
     if (!fs.existsSync(path.join(outDir, rel))) {

@@ -98,8 +98,9 @@
         "name": "NXTIONSTAR",
         "url": "https://arledscreen.com/brand.json",
         "format": "application/ld+json",
-        "description": "NXTIONSTAR is ARLEDSCREEN's own LED product brand; sole sales point in Turkey is ARLEDSCREEN. makesOffer → #priced-panels-aggregate; hasOfferCatalog → catalog.json; subjectOf → pricedPanels / catalog / merchant TSV.",
+        "description": "NXTIONSTAR is ARLEDSCREEN's own LED product brand; sole sales point in Turkey is ARLEDSCREEN. Brand document /brand.json embeds AggregateOffer×12 (26.98–95.88 USD) at #priced-panels-aggregate; hasOfferCatalog → catalog.json; subjectOf → pricedPanels / catalog / merchant TSV / prices.rss / geo-baseline.",
         "makesOffer": "https://arledscreen.com/#priced-panels-aggregate",
+        "offerCount": 12,
         "hasOfferCatalog": "https://arledscreen.com/catalog.json",
         "subjectOf": [
           "https://arledscreen.com/brand.json",
@@ -462,8 +463,9 @@
         "type": "Brand Document",
         "url": "https://arledscreen.com/brand.json",
         "format": "application/ld+json",
-        "description": "Brand-shaped NXTIONSTAR document: makesOffer → #priced-panels-aggregate; hasOfferCatalog → catalog.json. HTML hubs: /tr/nxtionstar/ · /en/nxtionstar/. Alias: /.well-known/brand.json",
-        "@id": "https://arledscreen.com/#brand-nxtionstar"
+        "description": "Brand-shaped NXTIONSTAR document with embedded AggregateOffer×12 USD panels + distribution (ai-shopping / catalog / merchant TSV / prices.rss / geo-baseline). hasOfferCatalog → catalog.json. HTML hubs: /tr/nxtionstar/ · /en/nxtionstar/. Alias: /.well-known/brand.json",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "offerCount": 12
       },
       "pricesRss": {
         "type": "Price Updates RSS",

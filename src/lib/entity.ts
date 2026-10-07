@@ -223,7 +223,8 @@ export type EntityDocument = {
     name: string;
     url: string;
     subjectOf?: unknown;
-    makesOffer?: { "@id": string };
+    /** Full AggregateOffer×12 — Brand-path agents must not need a second fetch. */
+    makesOffer?: ReturnType<typeof organizationMakesOffer> | { "@id": string };
     hasOfferCatalog?: { "@id": string };
   };
   /** Published 12-panel USD AggregateOffer — schema.org join for entity-first agents. */
@@ -232,6 +233,8 @@ export type EntityDocument = {
   hasOfferCatalog: ReturnType<typeof organizationHasOfferCatalog>;
   /** Place+price for entity-only agents (mirrors HTML #localbusiness). */
   location: Record<string, unknown>;
+  /** Quote OrderAction (TR+EN) — parity with WebSite potentialAction on HTML. */
+  potentialAction?: Array<Record<string, unknown>>;
   founder: { "@type": "Person"; name: string; url?: string; sameAs?: string[] };
   citationPage: string;
   llmsTxt: string;
@@ -332,11 +335,37 @@ export function buildEntityDocument(): EntityDocument {
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
       subjectOf: BRAND_SUBJECT_DATASETS,
-      makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+      makesOffer: organizationMakesOffer(),
       hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     },
     makesOffer: organizationMakesOffer(),
     hasOfferCatalog: organizationHasOfferCatalog(),
+    potentialAction: [
+      {
+        "@type": "OrderAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/tr/quote/`,
+          actionPlatform: [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform",
+          ],
+        },
+        name: "Teklif iste",
+      },
+      {
+        "@type": "OrderAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/en/quote/`,
+          actionPlatform: [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform",
+          ],
+        },
+        name: "Request a quote",
+      },
+    ],
     location: {
       "@type": "LocalBusiness",
       "@id": LOCALBUSINESS_ID,
