@@ -332,6 +332,7 @@ else fail("ard.resources.pointC");
     head.includes("mpn_well_known_url") &&
     head.includes("merchant_well_known_url") &&
     head.includes("prices_well_known_url") &&
+    head.includes("price_well_known_url") &&
     head.includes("entity_well_known_url") &&
     head.includes("prices_rss_url") &&
     head.includes("ai_shopping_url") &&
@@ -363,6 +364,7 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/.well-known/mpn.json`) &&
     tsv.includes(`${SITE}/.well-known/merchant.json`) &&
     tsv.includes(`${SITE}/.well-known/prices.json`) &&
+    tsv.includes(`${SITE}/.well-known/price.json`) &&
     tsv.includes(`${SITE}/.well-known/entity.json`) &&
     tsv.includes(`${SITE}/.well-known/agents.json`) &&
     tsv.includes(`${SITE}/.well-known/ard.json`) &&

@@ -1174,6 +1174,7 @@ function buildMerchantTsv() {
     "mpn_well_known_url",
     "merchant_well_known_url",
     "prices_well_known_url",
+    "price_well_known_url",
     "entity_well_known_url",
     "prices_rss_url",
     "organization_url",
@@ -1245,6 +1246,7 @@ function buildMerchantTsv() {
         `${SITE_URL}/.well-known/mpn.json`,
         `${SITE_URL}/.well-known/merchant.json`,
         `${SITE_URL}/.well-known/prices.json`,
+        `${SITE_URL}/.well-known/price.json`,
         `${SITE_URL}/.well-known/entity.json`,
         `${SITE_URL}/feeds/prices.rss`,
         `${SITE_URL}/organization.json`,
@@ -3499,7 +3501,7 @@ Acknowledgments: https://arledscreen.com/brand.json
     const cells = row ? row.split("\t") : [];
     // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
     // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, mpn_wk,
-    // merchant_wk, prices_wk, entity_wk, prices_rss, org, geo, website,
+    // merchant_wk, prices_wk, price_wk, entity_wk, prices_rss, org, geo, website,
     // agents, ard, ai_txt, llms, humans, agents_md, security_txt
     const securityTxtUrl = cells[cells.length - 1];
     const agentsMdUrl = cells[cells.length - 2];
@@ -3513,22 +3515,23 @@ Acknowledgments: https://arledscreen.com/brand.json
     const orgUrl = cells[cells.length - 10];
     const pricesRssUrl = cells[cells.length - 11];
     const entityWk = cells[cells.length - 12];
-    const pricesWk = cells[cells.length - 13];
-    const merchantWk = cells[cells.length - 14];
-    const mpnWk = cells[cells.length - 15];
-    const panelsWk = cells[cells.length - 16];
-    const pricingWk = cells[cells.length - 17];
-    const offerJsonUrl = cells[cells.length - 18];
-    const skuWk = cells[cells.length - 19];
-    const modulesWk = cells[cells.length - 20];
-    const brandWk = cells[cells.length - 21];
-    const pointCUrl = cells[cells.length - 22];
-    const profilesUrl = cells[cells.length - 23];
-    const catalogUrl = cells[cells.length - 24];
-    const pricesJsonUrl = cells[cells.length - 25];
-    const aiShoppingUrl = cells[cells.length - 26];
-    const shippingIncluded = cells[cells.length - 27];
-    const taxIncluded = cells[cells.length - 28];
+    const priceWk = cells[cells.length - 13];
+    const pricesWk = cells[cells.length - 14];
+    const merchantWk = cells[cells.length - 15];
+    const mpnWk = cells[cells.length - 16];
+    const panelsWk = cells[cells.length - 17];
+    const pricingWk = cells[cells.length - 18];
+    const offerJsonUrl = cells[cells.length - 19];
+    const skuWk = cells[cells.length - 20];
+    const modulesWk = cells[cells.length - 21];
+    const brandWk = cells[cells.length - 22];
+    const pointCUrl = cells[cells.length - 23];
+    const profilesUrl = cells[cells.length - 24];
+    const catalogUrl = cells[cells.length - 25];
+    const pricesJsonUrl = cells[cells.length - 26];
+    const aiShoppingUrl = cells[cells.length - 27];
+    const shippingIncluded = cells[cells.length - 28];
+    const taxIncluded = cells[cells.length - 29];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3551,6 +3554,7 @@ Acknowledgments: https://arledscreen.com/brand.json
       mpnWk !== `${SITE_URL}/.well-known/mpn.json` ||
       merchantWk !== `${SITE_URL}/.well-known/merchant.json` ||
       pricesWk !== `${SITE_URL}/.well-known/prices.json` ||
+      priceWk !== `${SITE_URL}/.well-known/price.json` ||
       entityWk !== `${SITE_URL}/.well-known/entity.json` ||
       pricesRssUrl !== `${SITE_URL}/feeds/prices.rss` ||
       orgUrl !== `${SITE_URL}/organization.json` ||

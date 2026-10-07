@@ -2213,6 +2213,17 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/AGENTS.md"',
       'href="https://arledscreen.com/humans.txt"',
       'href="https://arledscreen.com/.well-known/security.txt"',
+      'href="https://arledscreen.com/merchant.json"',
+      'href="https://arledscreen.com/offer.json"',
+      'href="https://arledscreen.com/.well-known/modules.json"',
+      'href="https://arledscreen.com/.well-known/sku.json"',
+      'href="https://arledscreen.com/.well-known/pricing.json"',
+      'href="https://arledscreen.com/.well-known/panels.json"',
+      'href="https://arledscreen.com/.well-known/mpn.json"',
+      'href="https://arledscreen.com/.well-known/merchant.json"',
+      'href="https://arledscreen.com/.well-known/prices.json"',
+      'href="https://arledscreen.com/.well-known/price.json"',
+      'href="https://arledscreen.com/#website"',
       'href="https://arledscreen.com/feeds/prices.rss"',
       'rel="describedby"',
     ]) {
@@ -2752,6 +2763,7 @@ if (fs.existsSync(outDir)) {
     "mpn_well_known_url",
     "merchant_well_known_url",
     "prices_well_known_url",
+    "price_well_known_url",
     "entity_well_known_url",
     "prices_rss_url",
     "organization_url",
@@ -2798,6 +2810,7 @@ if (fs.existsSync(outDir)) {
   const mpnWkIdx = tsvCols.indexOf("mpn_well_known_url");
   const merchantWkIdx = tsvCols.indexOf("merchant_well_known_url");
   const pricesWkIdx = tsvCols.indexOf("prices_well_known_url");
+  const priceWkIdx = tsvCols.indexOf("price_well_known_url");
   const entityWkIdx = tsvCols.indexOf("entity_well_known_url");
   const pricesRssUrlIdx = tsvCols.indexOf("prices_rss_url");
   const orgUrlIdx = tsvCols.indexOf("organization_url");
@@ -2894,6 +2907,10 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[pricesWkIdx] !== "https://arledscreen.com/.well-known/prices.json") {
       console.error(`❌ merchant TSV prices_well_known_url must be /.well-known/prices.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[priceWkIdx] !== "https://arledscreen.com/.well-known/price.json") {
+      console.error(`❌ merchant TSV price_well_known_url must be /.well-known/price.json for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[entityWkIdx] !== "https://arledscreen.com/.well-known/entity.json") {

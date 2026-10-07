@@ -13,6 +13,16 @@ const AGENTS_JSON_URL = `${SITE_URL}/.well-known/agents.json`;
 const PRICES_JSON_URL = `${SITE_URL}/prices.json`;
 const PANELS_JSON_URL = `${SITE_URL}/panels.json`;
 const MPN_JSON_URL = `${SITE_URL}/mpn.json`;
+const MERCHANT_JSON_URL = `${SITE_URL}/merchant.json`;
+const OFFER_JSON_URL = `${SITE_URL}/offer.json`;
+const MODULES_WELLKNOWN_URL = `${SITE_URL}/.well-known/modules.json`;
+const SKU_WELLKNOWN_URL = `${SITE_URL}/.well-known/sku.json`;
+const PRICING_WELLKNOWN_URL = `${SITE_URL}/.well-known/pricing.json`;
+const PANELS_WELLKNOWN_URL = `${SITE_URL}/.well-known/panels.json`;
+const MPN_WELLKNOWN_URL = `${SITE_URL}/.well-known/mpn.json`;
+const MERCHANT_WELLKNOWN_URL = `${SITE_URL}/.well-known/merchant.json`;
+const PRICES_WELLKNOWN_URL = `${SITE_URL}/.well-known/prices.json`;
+const PRICE_WELLKNOWN_URL = `${SITE_URL}/.well-known/price.json`;
 const ENTITY_PROFILES_URL = `${SITE_URL}/entity-profiles.json`;
 const ORGANIZATION_JSON_URL = `${SITE_URL}/organization.json`;
 const BRAND_WELLKNOWN_URL = `${SITE_URL}/.well-known/brand.json`;
@@ -24,6 +34,21 @@ const AI_TXT_URL = `${SITE_URL}/ai.txt`;
 const AGENTS_MD_URL = `${SITE_URL}/AGENTS.md`;
 const HUMANS_TXT_URL = `${SITE_URL}/humans.txt`;
 const SECURITY_TXT_URL = `${SITE_URL}/.well-known/security.txt`;
+const WEBSITE_URL = `${SITE_URL}/#website`;
+
+/** Invent-alias pricedPanels surfaces (parity with public/_headers Link invent set). */
+const inventAliasLdJson = [
+  { url: MERCHANT_JSON_URL, title: "Merchant pricedPanels alias" },
+  { url: OFFER_JSON_URL, title: "Offer pricedPanels alias" },
+  { url: MODULES_WELLKNOWN_URL, title: "Modules pricedPanels invent alias" },
+  { url: SKU_WELLKNOWN_URL, title: "SKU pricedPanels invent alias" },
+  { url: PRICING_WELLKNOWN_URL, title: "Pricing pricedPanels invent alias" },
+  { url: PANELS_WELLKNOWN_URL, title: "Panels pricedPanels invent alias" },
+  { url: MPN_WELLKNOWN_URL, title: "MPN pricedPanels invent alias" },
+  { url: MERCHANT_WELLKNOWN_URL, title: "Merchant pricedPanels invent alias" },
+  { url: PRICES_WELLKNOWN_URL, title: "Prices pricedPanels invent alias" },
+  { url: PRICE_WELLKNOWN_URL, title: "Price pricedPanels invent alias" },
+] as const;
 
 export const aiDiscoveryMetadata: Metadata = {
   alternates: {
@@ -38,6 +63,7 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: PRICES_JSON_URL, title: "Panel Prices (alias)" },
         { url: PANELS_JSON_URL, title: "Panels pricedPanels (alias)" },
         { url: MPN_JSON_URL, title: "MPN pricedPanels (alias)" },
+        ...inventAliasLdJson,
         { url: ORGANIZATION_JSON_URL, title: "Organization (alias)" },
         { url: ENTITY_PROFILES_URL, title: "Point C entity profiles" },
         { url: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
@@ -71,6 +97,12 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "application/ld+json", href: PRICES_JSON_URL, title: "Panel Prices (alias)" },
   { rel: "alternate", type: "application/ld+json", href: PANELS_JSON_URL, title: "Panels pricedPanels (alias)" },
   { rel: "alternate", type: "application/ld+json", href: MPN_JSON_URL, title: "MPN pricedPanels (alias)" },
+  ...inventAliasLdJson.map((e) => ({
+    rel: "alternate" as const,
+    type: "application/ld+json" as const,
+    href: e.url,
+    title: e.title,
+  })),
   { rel: "alternate", type: "application/ld+json", href: ORGANIZATION_JSON_URL, title: "Organization (alias)" },
   { rel: "alternate", type: "application/ld+json", href: ENTITY_PROFILES_URL, title: "Point C entity profiles" },
   { rel: "alternate", type: "application/ld+json", href: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
@@ -94,4 +126,5 @@ export const aiDiscoveryLinks = [
   { rel: "describedby", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping pricedPanels" },
   { rel: "describedby", type: "application/ld+json", href: ENTITY_JSON_URL, title: "Organization Entity" },
   { rel: "describedby", type: "application/ld+json", href: BRAND_JSON_URL, title: "NXTIONSTAR Brand" },
+  { rel: "canonical", href: WEBSITE_URL, title: "ARLEDSCREEN WebSite #website" },
 ];
