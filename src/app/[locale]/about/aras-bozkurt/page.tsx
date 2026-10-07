@@ -41,6 +41,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
     worksFor: { "@id": `${SITE_URL}/#organization` },
     sameAs: ["https://www.linkedin.com/in/bozkurtaras"],
     description: ENTITY_CITE_MEDIUM,
+    subjectOf: PRICE_DATASETS,
   };
 
   return (
@@ -56,6 +57,10 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
 
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
@@ -68,6 +73,17 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             ARLEDSCREEN kurucusu. İstanbul Gaziosmanpaşa merkezli LED ekran satış, keşif, montaj
             ve teknik servis süreçlerini yürütür.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
+            Yayımlanmış panel USD:{" "}
+            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+              ai-shopping.json
+            </a>{" "}
+            pricedPanels ·{" "}
+            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+              merchant TSV
+            </a>{" "}
+            (12 SKU; ör. P1.25 GOB 95.88 USD).
           </p>
         </div>
       </section>
