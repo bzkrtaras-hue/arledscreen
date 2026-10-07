@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CommercialLanding } from "@/components/commercial/CommercialLanding";
+import { InventBridge } from "@/components/seo/InventBridge";
 import {
   COMMERCIAL_SLUGS,
   getCommercialPage,
   getCommercialPageEn,
   isCommercialEnSlug,
 } from "@/content/commercial-pages";
+import {
+  EN_INVENT_BRIDGE_SLUGS,
+  getEnInventBridge,
+  isEnInventBridgeSlug,
+} from "@/content/en-invent-bridges";
 import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n";
 
@@ -22,6 +28,10 @@ export function generateStaticParams() {
       params.push({ locale: "en", slug });
     }
   }
+  // Inventable EN synonym bridges (calculator → hesaplayici, faq → sss, …).
+  for (const slug of EN_INVENT_BRIDGE_SLUGS) {
+    params.push({ locale: "en", slug });
+  }
   return params;
 }
 
@@ -33,6 +43,23 @@ export async function generateMetadata({
   const { locale: raw, slug } = await params;
   if (raw !== "tr" && raw !== "en") return {};
   const locale = raw as "tr" | "en";
+
+  if (locale === "en" && isEnInventBridgeSlug(slug)) {
+    const bridge = getEnInventBridge(slug);
+    if (!bridge) return {};
+    return {
+      ...buildPageMetadata({
+        locale: "en" as Locale,
+        path: bridge.target.replace(/^\/en/, "") || "/",
+        title: bridge.title,
+        description: bridge.description,
+        hreflangLocales: [],
+      }),
+      robots: { index: false, follow: true },
+      alternates: { canonical: bridge.target },
+    };
+  }
+
   const page =
     locale === "en" ? getCommercialPageEn(slug) : getCommercialPage(slug);
   if (!page) return {};
@@ -60,6 +87,24 @@ export default async function CommercialSlugPage({
   const { locale: raw, slug } = await params;
   if (raw !== "tr" && raw !== "en") notFound();
   const locale = raw as "tr" | "en";
+
+  if (locale === "en" && isEnInventBridgeSlug(slug)) {
+    const bridge = getEnInventBridge(slug);
+    if (!bridge) notFound();
+    return (
+      <InventBridge
+        h1={bridge.h1}
+        target={bridge.target}
+        cta={bridge.cta}
+        note={
+          bridge.slug === "terms" || bridge.slug === "sartlar"
+            ? "Project commercial terms are confirmed in written quotes."
+            : undefined
+        }
+      />
+    );
+  }
+
   if (locale === "en" && !isCommercialEnSlug(slug)) notFound();
   const page =
     locale === "en" ? getCommercialPageEn(slug) : getCommercialPage(slug);

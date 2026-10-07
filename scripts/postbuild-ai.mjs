@@ -845,6 +845,14 @@ gallery-en: ${SITE_URL}/en/galeri/
 blog-en: ${SITE_URL}/en/blog/
 privacy-tr: ${SITE_URL}/tr/gizlilik/
 privacy-en: ${SITE_URL}/en/gizlilik/
+invent-calculator-en: ${SITE_URL}/en/calculator/
+invent-faq-en: ${SITE_URL}/en/faq/
+invent-gallery-en: ${SITE_URL}/en/gallery/
+invent-projects-en: ${SITE_URL}/en/projects/
+invent-regions-en: ${SITE_URL}/en/regions/
+invent-services-en: ${SITE_URL}/en/services/
+invent-brand-en: ${SITE_URL}/en/brand/
+invent-teklif-en: ${SITE_URL}/en/teklif/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/

@@ -360,6 +360,11 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json resources.geoBaseline required");
     process.exit(1);
   }
+  const inventExamples = ard?.agentic?.resources?.enInventBridges?.examples;
+  if (!Array.isArray(inventExamples) || !inventExamples.some((u) => String(u).includes("/en/calculator/"))) {
+    console.error("❌ ard.json enInventBridges.examples must include /en/calculator/");
+    process.exit(1);
+  }
   if (!ard?.agentic?.resources?.aiTxt?.url?.includes("/ai.txt")) {
     console.error("❌ ard.json resources.aiTxt required");
     process.exit(1);
@@ -477,6 +482,17 @@ if (fs.existsSync(outDir)) {
     "tr/gizlilik/index.html",
     "en/gizlilik/index.html",
     "en/privacy/index.html",
+    "en/calculator/index.html",
+    "en/faq/index.html",
+    "en/gallery/index.html",
+    "en/projects/index.html",
+    "en/regions/index.html",
+    "en/services/index.html",
+    "en/brand/index.html",
+    "en/teklif/index.html",
+    "en/urunler/index.html",
+    "en/kvkk/index.html",
+    "en/bolgeler/istanbul/index.html",
     "en/about/aras-bozkurt/index.html",
     "en/contact/index.html",
     "en/iletisim/index.html",
@@ -665,6 +681,15 @@ if (fs.existsSync(outDir)) {
     "/tr/gizlilik/",
     "/en/gizlilik/",
     "/en/privacy/",
+    "/en/calculator/",
+    "/en/faq/",
+    "/en/gallery/",
+    "/en/projects/",
+    "/en/regions/",
+    "/en/services/",
+    "/en/brand/",
+    "/en/teklif/",
+    "/en/bolgeler/istanbul/",
     "/en/about/aras-bozkurt/",
     "/en/contact/",
     "/en/iletisim/",
@@ -727,6 +752,8 @@ if (fs.existsSync(outDir)) {
     "/en/blog/",
     "/en/gizlilik/",
     "/en/about/aras-bozkurt/",
+    "/en/calculator/",
+    "/en/faq/",
   ]) {
     if (!llmsBody.includes(must)) {
       console.error(`❌ llms.txt must cite EN hub ${must}`);

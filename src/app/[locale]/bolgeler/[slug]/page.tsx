@@ -6,6 +6,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { InventBridge } from "@/components/seo/InventBridge";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { productGroupPath, getProductGroup } from "@/content/categories";
 import {
@@ -14,7 +15,8 @@ import {
   serviceRegionPath,
 } from "@/content/service-regions";
 import { nxtionstarBrandRef, pricedPanelsDatasetJsonLd } from "@/content/prices";
-import { buildTrOnlyMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
@@ -25,7 +27,11 @@ import {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SERVICE_REGIONS.map((r) => ({ locale: "tr", slug: r.slug }));
+  // TR province detail pages + EN invent bridges → /en/bolgeler/ hub (no 81-city spam).
+  return SERVICE_REGIONS.flatMap((r) => [
+    { locale: "tr", slug: r.slug },
+    { locale: "en", slug: r.slug },
+  ]);
 }
 
 export async function generateMetadata({
@@ -34,9 +40,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  if (locale !== "tr") return {};
   const region = getServiceRegion(slug);
   if (!region) return {};
+  if (locale === "en") {
+    return {
+      ...buildPageMetadata({
+        locale: "en" as Locale,
+        path: "/bolgeler/",
+        title: `${region.name} LED Display | ARLEDSCREEN Regions`,
+        description: `EN province detail pages stay on the regions hub. Bridge from inventable /en/bolgeler/${region.slug}/.`,
+        hreflangLocales: [],
+      }),
+      robots: { index: false, follow: true },
+      alternates: { canonical: "/en/bolgeler/" },
+    };
+  }
+  if (locale !== "tr") return {};
   return buildTrOnlyMetadata({
     path: `/bolgeler/${region.slug}`,
     title: region.title,
@@ -50,9 +69,19 @@ export default async function ServiceRegionPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  if (locale !== "tr") notFound();
   const region = getServiceRegion(slug);
   if (!region) notFound();
+  if (locale === "en") {
+    return (
+      <InventBridge
+        h1={`${region.name} LED display`}
+        target="/en/bolgeler/"
+        cta="Open EN regions hub"
+        note="Province detail pages remain Turkish; this path is an inventable EN bridge."
+      />
+    );
+  }
+  if (locale !== "tr") notFound();
 
   const disMekan = getProductGroup("dis-mekan-led-ekran");
 
