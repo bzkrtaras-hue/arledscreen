@@ -19,6 +19,8 @@ const outDir = path.join(repoRoot, "out");
 const SITE_URL = "https://arledscreen.com";
 const PRICE_VALID_UNTIL = "2026-12-31";
 const LOCALBUSINESS_ID = `${SITE_URL}/#localbusiness`;
+const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+const ENTITY_URL = `${SITE_URL}/entity.json`;
 const localBusinessRef = () => ({ "@type": "LocalBusiness", "@id": LOCALBUSINESS_ID });
 
 /** image paths match src/content/models.ts (priced SKUs only). */
@@ -882,6 +884,8 @@ function buildMerchantTsv() {
     "seller",
     "seller_url",
     "seller_email",
+    "organization_id",
+    "entity_url",
     "local_business_id",
     "product_url",
     "product_ld_id",
@@ -921,6 +925,9 @@ function buildMerchantTsv() {
         "ARLEDSCREEN",
         SITE_URL,
         "arled@arledscreen.com",
+        // Org/entity invent join — parity with JSON-LD Offer.seller → #organization.
+        ORGANIZATION_ID,
+        ENTITY_URL,
         LOCALBUSINESS_ID,
         panel.productUrl,
         // JSON-LD join IDs for TSV-only merchant / shopping pipelines.
@@ -1830,6 +1837,9 @@ humans-txt: ${SITE_URL}/humans.txt
 point-c: ${SITE_URL}/point-c.txt
 point-c-en: ${SITE_URL}/point-c-en.txt
 point-c-well-known: ${SITE_URL}/.well-known/point-c.txt
+owner-tur1a-next: npm run tur1a:next
+owner-tur1a-log: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…
+owner-arleds-301: npm run verify:arleds-301
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/

@@ -59,4 +59,7 @@ jobs:
           grep -q "/point-c.txt" out/entity.json
           grep -q "/point-c.txt" out/brand.json
           grep -q "/point-c.txt" out/AGENTS.md
+          head -1 out/feeds/merchant-priced-panels.tsv | grep -q organization_id
+          head -1 out/feeds/merchant-priced-panels.tsv | grep -q entity_url
+          grep -q "owner-tur1a-log:" out/ai.txt
           echo "OK owner tooling"

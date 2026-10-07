@@ -121,6 +121,19 @@ else fail("ard.resources.website");
 if (String(ard?.agentic?.resources?.pointC?.url || "").includes("/point-c.txt")) ok("ard.resources.pointC");
 else fail("ard.resources.pointC");
 
+{
+  const tsv = readText("feeds/merchant-priced-panels.tsv");
+  const head = tsv.split("\n")[0] || "";
+  if (
+    head.includes("organization_id") &&
+    head.includes("entity_url") &&
+    tsv.includes(`${SITE}/#organization`) &&
+    tsv.includes(`${SITE}/entity.json`)
+  ) {
+    ok("merchant TSV organization_id + entity_url");
+  } else fail("merchant TSV organization_id + entity_url");
+}
+
 if (
   JSON.stringify(cat.isRelatedTo || []).includes("/feeds/prices.rss") &&
   JSON.stringify(cat.isRelatedTo || []).includes("/brand.json") &&

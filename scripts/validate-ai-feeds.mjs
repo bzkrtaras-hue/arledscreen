@@ -239,6 +239,8 @@ if (fs.existsSync(outDir)) {
       "offer_id",
       "catalog_offer_id",
       "mpn",
+      "organization_id",
+      "entity_url",
       "local_business_id",
       "brand_makes_offer_id",
       "brand_has_offer_catalog",
@@ -250,6 +252,14 @@ if (fs.existsSync(outDir)) {
     }
     if (ardMerchant?.localBusinessId !== "https://arledscreen.com/#localbusiness") {
       console.error("❌ ard.json merchantFeed.localBusinessId must be #localbusiness");
+      process.exit(1);
+    }
+    if (ardMerchant?.organizationId !== "https://arledscreen.com/#organization") {
+      console.error("❌ ard.json merchantFeed.organizationId must be #organization");
+      process.exit(1);
+    }
+    if (!String(ardMerchant?.entityUrl || "").includes("/entity.json")) {
+      console.error("❌ ard.json merchantFeed.entityUrl must cite /entity.json");
       process.exit(1);
     }
     if (
@@ -886,9 +896,12 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("/brand.json") ||
     !aiTxtLive.includes("#website") ||
     !aiTxtLive.includes("quote-tr:") ||
-    !aiTxtLive.includes("/tr/quote/")
+    !aiTxtLive.includes("/tr/quote/") ||
+    !aiTxtLive.includes("owner-tur1a-log:") ||
+    !aiTxtLive.includes("owner-arleds-301:") ||
+    !aiTxtLive.includes("point-c:")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds");
     process.exit(1);
   }
   if (
@@ -1702,6 +1715,8 @@ if (fs.existsSync(outDir)) {
     "catalog_id",
     "offer_id",
     "catalog_offer_id",
+    "organization_id",
+    "entity_url",
     "local_business_id",
     "brand_makes_offer_id",
     "brand_has_offer_catalog",
@@ -1719,6 +1734,8 @@ if (fs.existsSync(outDir)) {
   const tsvCols = tsvHeader.split("\t");
   const mpnIdx = tsvCols.indexOf("mpn");
   const idIdx = tsvCols.indexOf("id");
+  const orgIdx = tsvCols.indexOf("organization_id");
+  const entityIdx = tsvCols.indexOf("entity_url");
   const lbIdx = tsvCols.indexOf("local_business_id");
   const brandOfferIdx = tsvCols.indexOf("brand_makes_offer_id");
   const brandCatalogIdx = tsvCols.indexOf("brand_has_offer_catalog");
@@ -1726,6 +1743,14 @@ if (fs.existsSync(outDir)) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
       console.error(`❌ merchant TSV mpn must equal id (sku) for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[orgIdx] !== "https://arledscreen.com/#organization") {
+      console.error(`❌ merchant TSV organization_id must be #organization for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[entityIdx] !== "https://arledscreen.com/entity.json") {
+      console.error(`❌ merchant TSV entity_url must be /entity.json for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[lbIdx] !== "https://arledscreen.com/#localbusiness") {
