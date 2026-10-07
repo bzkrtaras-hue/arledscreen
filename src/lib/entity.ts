@@ -197,6 +197,17 @@ export type EntityDocument = {
   hasMap: string;
   openingHours: string[];
   sameAs: string[];
+  logo: string;
+  image: string;
+  knowsAbout: string[];
+  contactPoint: Array<{
+    "@type": "ContactPoint";
+    contactType: string;
+    email: string;
+    telephone: string;
+    areaServed: string;
+    availableLanguage: string[];
+  }>;
   brand: { "@type": "Brand"; "@id": string; name: string; url: string; subjectOf?: unknown };
   /** Published 12-panel USD AggregateOffer — schema.org join for entity-first agents. */
   makesOffer: ReturnType<typeof organizationMakesOffer>;
@@ -233,6 +244,7 @@ export type EntityDocument = {
 };
 
 export function buildEntityDocument(): EntityDocument {
+  const logo = `${SITE_URL}/brand/arledscreen-logo-header.png`;
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -240,6 +252,8 @@ export function buildEntityDocument(): EntityDocument {
     name: "ARLEDSCREEN",
     alternateName: ["ARLED SCREEN", "AR-LED", "AR-LED Ekran Teknoloji Merkezi"],
     url: SITE_URL,
+    logo,
+    image: logo,
     description: ENTITY_CITE_MEDIUM,
     disambiguatingDescription: ENTITY_DISAMBIGUATING_DESCRIPTION,
     email: CONTACT_EMAIL,
@@ -260,6 +274,29 @@ export function buildEntityDocument(): EntityDocument {
     hasMap: BUSINESS_MAP_URL,
     openingHours: [...BUSINESS_HOURS_TEXT],
     sameAs: [...ORGANIZATION_SAME_AS],
+    knowsAbout: [
+      "LED ekran",
+      "dijital ekran",
+      "tam renkli LED ekran",
+      "İç mekân LED ekran",
+      "Dış mekân LED ekran",
+      "GOB LED ekran",
+      "Esnek LED ekran",
+      "Kiralık LED ekran",
+      "LED ekran montajı",
+      "LED ekran teknik servisi",
+      "LED ekran fiyatları",
+    ],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: CONTACT_EMAIL,
+        telephone: CONTACT_PHONE_E164,
+        areaServed: "TR",
+        availableLanguage: ["Turkish", "English"],
+      },
+    ],
     brand: {
       "@type": "Brand",
       "@id": `${SITE_URL}/#brand-nxtionstar`,

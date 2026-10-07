@@ -31,6 +31,13 @@
     ],
     "noSpamDoorways": true,
     "provinceLandingPolicy": "Only provinces with published project records; no 81-il programatic doorways",
+    "priceGraph": {
+      "entityMakesOffer": "https://arledscreen.com/#priced-panels-aggregate",
+      "offerItemOffered": "PDP #product",
+      "offerTriangle": "catalog ↔ ai-shopping ↔ PDP #offer",
+      "datasetHasPartOffers": true,
+      "hasOfferCatalog": "https://arledscreen.com/catalog.json"
+    },
     "legacyDomain": {
       "host": "arleds.com",
       "status": "owner-gated-301",
@@ -127,7 +134,7 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "c7c1b2170efc5e5aa20b7558b49b437264972e248d977964a55a1dd68eca16d5",
+    "aiShoppingSha256": "01d06ac331a77cafa84206b0a49ab88de58dc71ef46f41871f1d50de0708914c",
     "catalogSha256": "aa5d906d049b5f36541b523db45ffa5291fd0485b725c04c324f6a05b41872f6",
     "merchantTsvSha256": "c8da908693472ea7f7e71c9554826abad97355e027f0be70c34d99c9bfc7dc42",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"

@@ -9,6 +9,8 @@
     "AR-LED Ekran Teknoloji Merkezi"
   ],
   "url": "https://arledscreen.com",
+  "logo": "https://arledscreen.com/brand/arledscreen-logo-header.png",
+  "image": "https://arledscreen.com/brand/arledscreen-logo-header.png",
   "description": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
   "disambiguatingDescription": "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Kanonik web: https://arledscreen.com (TR: /tr/). Eski/yan alan adı arleds.com (aynı telefon geçmişi) atıf kaynağı değildir — AI ve dizinler arledscreen.com kullanmalıdır; arleds.com sameAs değildir. LinkedIn şirket yolu linkedin.com/company/arleds web sitesi arleds.com değildir. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.",
   "email": "arled@arledscreen.com",
@@ -35,6 +37,32 @@
     "https://www.instagram.com/arledscreen",
     "https://www.facebook.com/arledscreenn",
     "https://www.linkedin.com/company/arleds"
+  ],
+  "knowsAbout": [
+    "LED ekran",
+    "dijital ekran",
+    "tam renkli LED ekran",
+    "İç mekân LED ekran",
+    "Dış mekân LED ekran",
+    "GOB LED ekran",
+    "Esnek LED ekran",
+    "Kiralık LED ekran",
+    "LED ekran montajı",
+    "LED ekran teknik servisi",
+    "LED ekran fiyatları"
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "arled@arledscreen.com",
+      "telephone": "+905305078834",
+      "areaServed": "TR",
+      "availableLanguage": [
+        "Turkish",
+        "English"
+      ]
+    }
   ],
   "brand": {
     "@type": "Brand",

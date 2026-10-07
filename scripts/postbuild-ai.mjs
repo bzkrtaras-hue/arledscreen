@@ -533,8 +533,18 @@ function buildAiShopping() {
       sameAs: [`${SITE_URL}/catalog.json#${p.sku}`],
       mainEntityOfPage: p.url,
       offers: {
+        "@type": "Offer",
         "@id": `${SITE_URL}/ai-shopping.json#offer-${p.sku}`,
-        sameAs: [`${SITE_URL}/catalog.json#offer-${p.sku}`],
+        sku: p.sku,
+        mpn: p.sku,
+        // Full Offer triangle for Dataset-only agents (catalog ↔ ai-shopping ↔ PDP).
+        sameAs: [`${SITE_URL}/catalog.json#offer-${p.sku}`, `${p.url}#offer`],
+        itemOffered: {
+          "@type": "Product",
+          "@id": `${p.url}#product`,
+          sku: p.sku,
+          mpn: p.sku,
+        },
       },
     })),
     // Schema.org DataDownload graph — parity with HTML Dataset on product hubs / yapay-zeka.
@@ -898,6 +908,13 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       ],
       noSpamDoorways: true,
       provinceLandingPolicy: "Only provinces with published project records; no 81-il programatic doorways",
+      priceGraph: {
+        entityMakesOffer: `${SITE_URL}/#priced-panels-aggregate`,
+        offerItemOffered: "PDP #product",
+        offerTriangle: "catalog ↔ ai-shopping ↔ PDP #offer",
+        datasetHasPartOffers: true,
+        hasOfferCatalog: `${SITE_URL}/catalog.json`,
+      },
       legacyDomain: {
         host: "arleds.com",
         status: "owner-gated-301",
@@ -1260,6 +1277,9 @@ function main() {
 # linkedin.com/company/arleds is a social slug — NOT the website arleds.com.
 # Brand: NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED chip ≠ NEXTSTAR TV.
 # Single price source: ai-shopping.json pricedPanels (12 SKU USD). No free shipping.
+# Graph: entity.json makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku};
+# Offer.itemOffered → PDP #product; Offer triangle catalog ↔ ai-shopping ↔ PDP #offer.
+# Dataset hasPart stubs → Offer @id + itemOffered. hasOfferCatalog → catalog.json.
 
 llms: ${SITE_URL}/llms.txt
 llms-full: ${SITE_URL}/llms-full.txt

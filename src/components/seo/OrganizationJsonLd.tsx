@@ -114,6 +114,9 @@ export function OrganizationJsonLd() {
         ],
         parentOrganization: { "@id": `${SITE_URL}/#organization` },
         sameAs: [...ORGANIZATION_SAME_AS],
+        // Local+shopping agents often key LocalBusiness — mirror Org price authority.
+        makesOffer: organizationMakesOffer(),
+        hasOfferCatalog: organizationHasOfferCatalog(),
       },
     ],
   };

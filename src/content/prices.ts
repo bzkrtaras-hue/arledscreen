@@ -104,10 +104,19 @@ export function pricedPanelsHasPartStubs() {
       // Dataset→stub → catalog Collection identity (cheap join without expanding pricedPanels).
       sameAs: [`${SITE_URL}/catalog.json#${p.id}`],
       mainEntityOfPage: url,
-      // Product→Offer edge without expanding full pricedPanels.
+      // Product→Offer edge (full Offer triangle for Dataset-only agents).
       offers: {
+        "@type": "Offer" as const,
         "@id": `${SITE_URL}/ai-shopping.json#offer-${p.id}`,
-        sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`],
+        sku: p.id,
+        mpn: p.id,
+        sameAs: [`${SITE_URL}/catalog.json#offer-${p.id}`, `${url}#offer`],
+        itemOffered: {
+          "@type": "Product" as const,
+          "@id": `${url}#product`,
+          sku: p.id,
+          mpn: p.id,
+        },
       },
     };
   });

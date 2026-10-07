@@ -3,6 +3,9 @@
 # linkedin.com/company/arleds is a social slug — NOT the website arleds.com.
 # Brand: NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED chip ≠ NEXTSTAR TV.
 # Single price source: ai-shopping.json pricedPanels (12 SKU USD). No free shipping.
+# Graph: entity.json makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku};
+# Offer.itemOffered → PDP #product; Offer triangle catalog ↔ ai-shopping ↔ PDP #offer.
+# Dataset hasPart stubs → Offer @id + itemOffered. hasOfferCatalog → catalog.json.
 
 llms: https://arledscreen.com/llms.txt
 llms-full: https://arledscreen.com/llms-full.txt

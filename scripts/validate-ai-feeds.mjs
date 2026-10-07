@@ -133,10 +133,14 @@ if (fs.existsSync(outDir)) {
         Array.isArray(p?.sameAs) &&
         p.sameAs.some((u) => String(u).includes(`/catalog.json#${p.sku}`)) &&
         p.mainEntityOfPage === p.url &&
-        String(p?.offers?.["@id"] || "").includes(`/ai-shopping.json#offer-${p.sku}`),
+        String(p?.offers?.["@id"] || "").includes(`/ai-shopping.json#offer-${p.sku}`) &&
+        Array.isArray(p?.offers?.sameAs) &&
+        p.offers.sameAs.some((u) => String(u).includes(`/catalog.json#offer-${p.sku}`)) &&
+        p.offers.sameAs.some((u) => String(u) === `${p.url}#offer`) &&
+        p?.offers?.itemOffered?.["@id"] === `${p.url}#product`,
     )
   ) {
-    console.error("❌ out/ai-shopping.json hasPart stubs must sameAs catalog + Offer @id + mainEntityOfPage");
+    console.error("❌ out/ai-shopping.json hasPart Offer stubs must complete Offer triangle + itemOffered");
     process.exit(1);
   }
   if (!ai.pricedPanels.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
@@ -255,6 +259,14 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json entityProfiles.packsEn pointer required for Point C EN packs");
     process.exit(1);
   }
+  if (!String(ard?.agentic?.resources?.entity?.makesOffer || "").includes("#priced-panels-aggregate")) {
+    console.error("❌ ard.json resources.entity must cite makesOffer #priced-panels-aggregate");
+    process.exit(1);
+  }
+  if (!String(ard?.agentic?.resources?.aiShopping?.description || "").includes("itemOffered")) {
+    console.error("❌ ard.json resources.aiShopping description must cite itemOffered");
+    process.exit(1);
+  }
   const tsvHead = fs.readFileSync(path.join(outDir, "feeds/merchant-priced-panels.tsv"), "utf8").split("\n")[0];
   if (!tsvHead.includes("brand_id")) {
     console.error("❌ merchant TSV must include brand_id column");
@@ -281,6 +293,14 @@ if (fs.existsSync(outDir)) {
     !baseline?.brand?.["@id"]?.includes("#brand-nxtionstar")
   ) {
     console.error("❌ geo-baseline.json must snapshot 12 SKUs + Brand @id + fingerprints (no free shipping)");
+    process.exit(1);
+  }
+  if (
+    !String(baseline?.baseline?.priceGraph?.entityMakesOffer || "").includes("#priced-panels-aggregate") ||
+    !baseline?.baseline?.priceGraph?.datasetHasPartOffers ||
+    !String(baseline?.baseline?.priceGraph?.offerItemOffered || "").includes("#product")
+  ) {
+    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + itemOffered + hasPart Offers");
     process.exit(1);
   }
   for (const key of ["pricesJson", "organization", "agentsJson", "agentsMd", "securityTxt", "humansTxt"]) {
@@ -471,6 +491,16 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   if (
+    !String(entity?.logo || "").includes("/brand/") ||
+    !Array.isArray(entity?.knowsAbout) ||
+    entity.knowsAbout.length < 5 ||
+    !Array.isArray(entity?.contactPoint) ||
+    entity.contactPoint[0]?.contactType !== "sales"
+  ) {
+    console.error("❌ entity.json must expose logo + knowsAbout + contactPoint (Org HTML parity)");
+    process.exit(1);
+  }
+  if (
     entity?.makesOffer?.["@type"] !== "AggregateOffer" ||
     entity?.makesOffer?.offerCount !== 12 ||
     entity?.makesOffer?.priceCurrency !== "USD" ||
@@ -570,9 +600,11 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("/ai-shopping.json") ||
     !aiTxtLive.includes("/entity.json") ||
     !aiTxtLive.includes("arleds.com") ||
-    !aiTxtLive.includes("NationStar")
+    !aiTxtLive.includes("NationStar") ||
+    !aiTxtLive.includes("makesOffer") ||
+    !aiTxtLive.includes("itemOffered")
   ) {
-    console.error("❌ out/ai.txt must point to feeds and warn on arleds.com + NationStar");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered");
     process.exit(1);
   }
   if (
@@ -1491,7 +1523,33 @@ if (fs.existsSync(outDir)) {
       console.error("❌ tr/index.html Organization must makesOffer×12 stubs + hasOfferCatalog");
       process.exit(1);
     }
-    console.log("✅ Organization makesOffer stubs + hasOfferCatalog on home + entity.json");
+    let localOk = false;
+    for (const m of homeHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "LocalBusiness") continue;
+          if (
+            node?.makesOffer?.["@type"] === "AggregateOffer" &&
+            Array.isArray(node.makesOffer.offers) &&
+            node.makesOffer.offers.length === 12 &&
+            node?.hasOfferCatalog?.["@type"] === "OfferCatalog"
+          ) {
+            localOk = true;
+            break;
+          }
+        }
+        if (localOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!localOk) {
+      console.error("❌ tr/index.html LocalBusiness must makesOffer×12 + hasOfferCatalog");
+      process.exit(1);
+    }
+    console.log("✅ Organization + LocalBusiness makesOffer stubs + hasOfferCatalog on home + entity.json");
   }
   for (const rel of [
     "tr/about/index.html",
@@ -1848,7 +1906,10 @@ if (fs.existsSync(outDir)) {
                 Array.isArray(p.sameAs) &&
                 p.sameAs.some((u) => String(u).includes(`/catalog.json#${p.sku}`)) &&
                 p.mainEntityOfPage === p.url &&
-                String(p?.offers?.["@id"] || "").includes(`/ai-shopping.json#offer-${p.sku}`),
+                String(p?.offers?.["@id"] || "").includes(`/ai-shopping.json#offer-${p.sku}`) &&
+                Array.isArray(p?.offers?.sameAs) &&
+                p.offers.sameAs.some((u) => String(u).includes("#offer")) &&
+                String(p?.offers?.itemOffered?.["@id"] || "").endsWith("#product"),
             )
           ) {
             const dist = JSON.stringify(d.distribution || []);
