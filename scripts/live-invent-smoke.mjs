@@ -207,6 +207,9 @@ try {
   const geo = await getJson("/geo-baseline.json");
   const based = JSON.stringify(geo?.isBasedOn || []);
   const related = JSON.stringify(geo?.isRelatedTo || []);
+  const disc = geo?.discovery || {};
+  const profiles = await getJson("/entity-profiles.json");
+  const merchantPack = String(profiles?.packs?.googleMerchantReadiness || "");
   if (
     based.includes("/entity.json") &&
     based.includes("/brand.json") &&
@@ -217,6 +220,14 @@ try {
   ) {
     ok("geo-baseline isBasedOn entity/brand/ai/catalog + isRelatedTo point-c");
   } else fail("geo-baseline isBasedOn entity/brand/ai/catalog + isRelatedTo point-c");
+  if (
+    String(disc.modulesWellKnown || "").includes("/.well-known/modules.json") &&
+    String(disc.skuWellKnown || "").includes("/.well-known/sku.json") &&
+    String(disc.pricingWellKnown || "").includes("/.well-known/pricing.json") &&
+    merchantPack.includes("/.well-known/modules.json")
+  ) {
+    ok("geo discovery + entity-profiles invent well-known modules/sku/pricing");
+  } else fail("geo discovery + entity-profiles invent well-known modules/sku/pricing");
 } catch (e) {
   fail(`geo-baseline reverse join ${e?.message || e}`);
 }

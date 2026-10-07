@@ -518,6 +518,16 @@ if (fs.existsSync(outDir)) {
     "pointCEnTxt",
     "pointCWellKnown",
     "brandJson",
+    "pricesWellKnown",
+    "priceWellKnown",
+    "pricingWellKnown",
+    "panelsWellKnown",
+    "modulesWellKnown",
+    "skuWellKnown",
+    "mpnWellKnown",
+    "merchantWellKnown",
+    "modulesJson",
+    "skuJson",
   ]) {
     if (!String(baseline?.discovery?.[key] || "").includes("arledscreen.com")) {
       console.error(`❌ geo-baseline.json discovery.${key} required for invent/agent surfaces`);
@@ -1507,6 +1517,21 @@ if (fs.existsSync(outDir)) {
   if (!String(profiles?.packs?.googleMerchantReadiness || "").includes("/feeds/prices.rss")) {
     console.error("❌ entity-profiles packs.googleMerchantReadiness must cite prices.rss");
     process.exit(1);
+  }
+  {
+    const merchantPack = String(profiles?.packs?.googleMerchantReadiness || "");
+    for (const needle of [
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/price.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+    ]) {
+      if (!merchantPack.includes(needle)) {
+        console.error(`❌ entity-profiles googleMerchantReadiness must cite inventable ${needle}`);
+        process.exit(1);
+      }
+    }
   }
   // Point C human packs: NAP must match site social.ts; no merchant jargon / wrong postcode.
   {

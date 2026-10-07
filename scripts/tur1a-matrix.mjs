@@ -127,6 +127,9 @@ function printNext(filled) {
   console.log("\n### Expected (do not invent if absent)");
   console.log("- Canonical site: https://arledscreen.com/tr/ (not arleds.com)");
   console.log("- Price source: https://arledscreen.com/ai-shopping.json pricedPanels");
+  console.log(
+    "- Inventable aliases (identical): /.well-known/modules.json · /.well-known/sku.json · /.well-known/price.json · /.well-known/pricing.json · /prices.json",
+  );
   console.log("- Brand AggregateOffer×12: https://arledscreen.com/brand.json");
   console.log("- prices.rss = change discovery only (not canonical price graph)");
   console.log("\n### After observing, one-shot log:");
