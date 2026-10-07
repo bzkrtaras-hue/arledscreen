@@ -96,6 +96,13 @@
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
+/.well-known/ai.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
 # Inventable feed path aliases (extensionless + locale-prefixed + synonym filenames).
 # Canonical remains *.json / llms.txt; aliases are byte-identical copies from postbuild.
 /catalog
@@ -134,6 +141,20 @@
   Cross-Origin-Resource-Policy: cross-origin
 
 /pricing.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/prices.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/price.json
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
   Content-Type: application/json; charset=utf-8
@@ -238,6 +259,20 @@
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
+/en/prices.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/price.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
 /en/products.json
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
@@ -295,6 +330,20 @@
   Cross-Origin-Resource-Policy: cross-origin
 
 /agents.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/agent.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/agent.json
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
   Content-Type: application/json; charset=utf-8

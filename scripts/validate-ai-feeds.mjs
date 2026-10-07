@@ -398,6 +398,16 @@ if (fs.existsSync(outDir)) {
     "data/prices.json",
     "api/catalog",
     "api/prices",
+    "prices.json",
+    "price.json",
+    "en/prices.json",
+    "en/price.json",
+    ".well-known/ai.txt",
+    "agent.json",
+    ".well-known/agent.json",
+    "pricing/index.html",
+    "prices/index.html",
+    "price/index.html",
     ".well-known/security.txt",
     "en/ai-shopping/index.html",
   ]) {
@@ -440,14 +450,33 @@ if (fs.existsSync(outDir)) {
     console.error("❌ /agents.json must match /.well-known/agents.json");
     process.exit(1);
   }
+  if (!fs.readFileSync(path.join(outDir, "agent.json")).equals(fs.readFileSync(path.join(outDir, ".well-known/agents.json")))) {
+    console.error("❌ /agent.json must match /.well-known/agents.json");
+    process.exit(1);
+  }
   // Byte-identical to canonical where applicable.
   const canonCatalog = fs.readFileSync(path.join(outDir, "catalog.json"));
   if (!fs.readFileSync(path.join(outDir, "catalog")).equals(canonCatalog)) {
     console.error("❌ out/catalog must match catalog.json");
     process.exit(1);
   }
-  if (!fs.readFileSync(path.join(outDir, "en/ai-shopping.json")).equals(fs.readFileSync(path.join(outDir, "ai-shopping.json")))) {
+  const canonAi = fs.readFileSync(path.join(outDir, "ai-shopping.json"));
+  if (!fs.readFileSync(path.join(outDir, "en/ai-shopping.json")).equals(canonAi)) {
     console.error("❌ out/en/ai-shopping.json must match ai-shopping.json");
+    process.exit(1);
+  }
+  for (const rel of ["prices.json", "price.json", "pricing.json", "en/prices.json", "en/price.json"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAi)) {
+      console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
+  }
+  if (!fs.readFileSync(path.join(outDir, ".well-known/ai.txt")).equals(fs.readFileSync(path.join(outDir, "ai.txt")))) {
+    console.error("❌ /.well-known/ai.txt must match /ai.txt");
+    process.exit(1);
+  }
+  if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt")) {
+    console.error("❌ out/llms.txt must cite /prices.json + /.well-known/ai.txt");
     process.exit(1);
   }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));

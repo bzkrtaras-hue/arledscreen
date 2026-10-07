@@ -804,11 +804,17 @@ function writeFeedPathAliases(dir) {
     ["catalog.json", "api/products"],
     ["ai-shopping.json", "ai-shopping"],
     ["ai-shopping.json", "pricing.json"],
+    ["ai-shopping.json", "prices.json"],
+    ["ai-shopping.json", "price.json"],
     ["ai-shopping.json", "feed.json"],
     ["ai-shopping.json", "en/ai-shopping.json"],
     ["ai-shopping.json", "tr/ai-shopping.json"],
     ["ai-shopping.json", "en/pricing.json"],
     ["ai-shopping.json", "tr/pricing.json"],
+    ["ai-shopping.json", "en/prices.json"],
+    ["ai-shopping.json", "tr/prices.json"],
+    ["ai-shopping.json", "en/price.json"],
+    ["ai-shopping.json", "tr/price.json"],
     ["ai-shopping.json", "en/feed.json"],
     ["ai-shopping.json", "tr/feed.json"],
     ["ai-shopping.json", "data/prices.json"],
@@ -825,7 +831,10 @@ function writeFeedPathAliases(dir) {
     ["llms.txt", "en/llms.txt"],
     ["llms-full.txt", "llms-full"],
     ["ai.txt", "en/ai.txt"],
+    ["ai.txt", ".well-known/ai.txt"],
     [".well-known/agents.json", "agents.json"],
+    [".well-known/agents.json", "agent.json"],
+    [".well-known/agents.json", ".well-known/agent.json"],
     ["humans.txt", ".well-known/humans.txt"],
   ];
   let n = 0;
@@ -844,6 +853,10 @@ function writeFeedPathAliases(dir) {
     ["en/ai-shopping/", "/ai-shopping.json", "AI shopping pricedPanels feed"],
     ["en/entity/", "/entity.json", "Organization entity feed"],
     ["en/geo-baseline/", "/geo-baseline.json", "GEO technical baseline"],
+    // Root inventables (no extensionless file collision — keep prices.json as file).
+    ["pricing/", "/pricing.json", "Published panel USD prices"],
+    ["prices/", "/prices.json", "Published panel USD prices"],
+    ["price/", "/price.json", "Published panel USD prices"],
   ];
   for (const [dirRel, target, h1] of slashBridges) {
     const html = `<!DOCTYPE html><html lang="en"><head>
@@ -991,16 +1004,22 @@ feed-alias-well-known-llms: ${SITE_URL}/.well-known/llms.txt
 feed-alias-en-ai-shopping-json: ${SITE_URL}/en/ai-shopping.json
 feed-alias-en-catalog-json: ${SITE_URL}/en/catalog.json
 feed-alias-pricing-json: ${SITE_URL}/pricing.json
+feed-alias-prices-json: ${SITE_URL}/prices.json
+feed-alias-price-json: ${SITE_URL}/price.json
 feed-alias-products-json: ${SITE_URL}/products.json
 feed-alias-en-pricing-json: ${SITE_URL}/en/pricing.json
+feed-alias-en-prices-json: ${SITE_URL}/en/prices.json
+feed-alias-en-price-json: ${SITE_URL}/en/price.json
 feed-alias-en-products-json: ${SITE_URL}/en/products.json
 feed-alias-data-catalog: ${SITE_URL}/data/catalog.json
 feed-alias-data-prices: ${SITE_URL}/data/prices.json
 feed-alias-api-catalog: ${SITE_URL}/api/catalog
 feed-alias-api-prices: ${SITE_URL}/api/prices
+feed-alias-well-known-ai: ${SITE_URL}/.well-known/ai.txt
 security-txt: ${SITE_URL}/.well-known/security.txt
 agents-json: ${SITE_URL}/.well-known/agents.json
 agents-json-alias: ${SITE_URL}/agents.json
+agent-json-alias: ${SITE_URL}/agent.json
 humans-txt: ${SITE_URL}/humans.txt
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
@@ -1077,8 +1096,12 @@ Hiring: https://arledscreen.com/tr/about/
     "en/ai-shopping.json",
     "en/catalog.json",
     "en/pricing.json",
+    "en/prices.json",
+    "en/price.json",
     "en/products.json",
     "pricing.json",
+    "prices.json",
+    "price.json",
     "products.json",
     "data/catalog.json",
     "data/prices.json",
@@ -1086,9 +1109,15 @@ Hiring: https://arledscreen.com/tr/about/
     "api/prices",
     ".well-known/agents.json",
     "agents.json",
+    "agent.json",
+    ".well-known/agent.json",
+    ".well-known/ai.txt",
     "humans.txt",
     ".well-known/humans.txt",
     "en/ai-shopping/index.html",
+    "pricing/index.html",
+    "prices/index.html",
+    "price/index.html",
   ]) {
     if (!fs.existsSync(path.join(outDir, must))) {
       console.error(`postbuild-ai: missing feed alias in out/: ${must}`);

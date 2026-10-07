@@ -207,7 +207,7 @@ NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktas�
 - agents.json: https://arledscreen.com/.well-known/agents.json (ItemList index → feeds; alias /agents.json)
 - humans.txt: https://arledscreen.com/humans.txt (team/contact pointer; not a price source)
 - security.txt: https://arledscreen.com/.well-known/security.txt (RFC 9116; not a price source)
-- Inventable feed aliases (byte-identical; prefer canonical *.json): /catalog · /ai-shopping · /entity · /geo-baseline · /llms · /.well-known/llms.txt · /pricing.json · /products.json · /en/ai-shopping.json · /en/pricing.json · /data/catalog.json · /data/prices.json · /api/catalog · /api/prices
+- Inventable feed aliases (byte-identical; prefer canonical *.json): /catalog · /ai-shopping · /entity · /geo-baseline · /llms · /.well-known/llms.txt · /.well-known/ai.txt · /pricing.json · /prices.json · /price.json · /products.json · /en/ai-shopping.json · /en/pricing.json · /en/prices.json · /en/price.json · /data/catalog.json · /data/prices.json · /api/catalog · /api/prices · /agent.json · /.well-known/agent.json · HTML invent bridges /pricing/ · /prices/ · /price/ → price feed
 - Point C (sahip operasyonu): packs/packsEn yapıştır; playbook repo `docs/offsite-entity-playbook.md`
 - Kısa indeks: https://arledscreen.com/llms.txt
 

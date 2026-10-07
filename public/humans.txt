@@ -9,9 +9,12 @@ Site: https://arledscreen.com/tr/
 Standards: HTML5, Schema.org JSON-LD
 Language: tr, en
 Price source (machines): https://arledscreen.com/ai-shopping.json
+Price aliases: /prices.json · /price.json · /pricing.json · /api/prices
 Entity: https://arledscreen.com/entity.json
 Agent discovery: https://arledscreen.com/.well-known/agents.json
+Agent aliases: /agents.json · /agent.json
 ARD: https://arledscreen.com/.well-known/ard.json
+AI pointer: https://arledscreen.com/.well-known/ai.txt
 Do not cite: arleds.com (legacy; not sameAs)
 Brand: NXTIONSTAR (≠ NationStar LED chip ≠ NEXTSTAR TV)
 Last update: 2026-10-07
