@@ -892,8 +892,8 @@ function writeFeedPathAliases(dir) {
     ["ai-shopping.json", "mpn.json"],
     ["ai-shopping.json", "merchant.json"],
     // Extensionless root (same pattern as /catalog · /ai-shopping · /entity).
+    // Skip "modules" — out/modules/ is the product image asset directory.
     ["ai-shopping.json", "panels"],
-    ["ai-shopping.json", "modules"],
     ["ai-shopping.json", "sku"],
     ["ai-shopping.json", "mpn"],
     ["ai-shopping.json", "merchant"],
@@ -965,6 +965,11 @@ function writeFeedPathAliases(dir) {
     const src = path.join(dir, srcRel);
     if (!fs.existsSync(src)) continue;
     const dest = path.join(dir, destRel);
+    // Never clobber asset/HTML directories (e.g. out/modules/ image pack).
+    if (fs.existsSync(dest) && fs.statSync(dest).isDirectory()) {
+      console.warn(`postbuild-ai: skip feed alias ${destRel} — destination is a directory`);
+      continue;
+    }
     fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.copyFileSync(src, dest);
     n += 1;
@@ -1150,12 +1155,12 @@ feed-alias-api-ai-shopping-json: ${SITE_URL}/api/ai-shopping.json
 feed-alias-api-prices-json: ${SITE_URL}/api/prices.json
 feed-alias-api-entity-json: ${SITE_URL}/api/entity.json
 feed-alias-panels: ${SITE_URL}/panels
-feed-alias-modules: ${SITE_URL}/modules
 feed-alias-sku: ${SITE_URL}/sku
 feed-alias-mpn: ${SITE_URL}/mpn
 feed-alias-merchant: ${SITE_URL}/merchant
 feed-alias-products: ${SITE_URL}/products
 feed-alias-product-json: ${SITE_URL}/product.json
+# note: /modules is an image asset directory — use /modules.json only
 feed-alias-v1-mpn: ${SITE_URL}/v1/mpn
 feed-alias-v1-sku: ${SITE_URL}/v1/sku
 feed-alias-feeds-prices: ${SITE_URL}/feeds/prices.json

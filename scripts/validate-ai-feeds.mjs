@@ -779,7 +779,6 @@ if (fs.existsSync(outDir)) {
     "api/prices.json",
     "api/entity.json",
     "panels",
-    "modules",
     "sku",
     "mpn",
     "merchant",
@@ -818,6 +817,31 @@ if (fs.existsSync(outDir)) {
   }
   if (!headersLive.includes("/api/panels") || !headersLive.includes("/tr/llms.txt")) {
     console.error("❌ out/_headers must set Content-Type for /api/panels + /tr/llms.txt");
+    process.exit(1);
+  }
+  if (!headersLive.includes("/api/panels.json") || !headersLive.includes("\n/panels\n")) {
+    console.error("❌ out/_headers must set Content-Type for /api/panels.json + extensionless /panels");
+    process.exit(1);
+  }
+  const canonAiForExt = fs.readFileSync(path.join(outDir, "ai-shopping.json"));
+  for (const rel of ["panels", "mpn", "merchant", "sku", "api/panels.json", "api/mpn.json"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
+      console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
+  }
+  // out/modules/ is the image asset directory — must remain a directory.
+  if (!fs.existsSync(path.join(outDir, "modules")) || !fs.statSync(path.join(outDir, "modules")).isDirectory()) {
+    console.error("❌ out/modules must remain the image asset directory (use /modules.json for feed)");
+    process.exit(1);
+  }
+  const canonCat = fs.readFileSync(path.join(outDir, "catalog.json"));
+  if (!fs.readFileSync(path.join(outDir, "product.json")).equals(canonCat)) {
+    console.error("❌ out/product.json must match catalog.json");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, "products")).equals(canonCat)) {
+    console.error("❌ out/products must match catalog.json");
     process.exit(1);
   }
   if (!headersLive.includes("/feeds/prices.json") || !headersLive.includes("/feeds/catalog.json")) {

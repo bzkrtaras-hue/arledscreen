@@ -56,7 +56,6 @@ Allow: /sku.json
 Allow: /mpn.json
 Allow: /merchant.json
 Allow: /panels
-Allow: /modules
 Allow: /sku
 Allow: /mpn
 Allow: /merchant

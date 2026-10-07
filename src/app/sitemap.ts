@@ -330,7 +330,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/mpn",
     "/merchant",
     "/sku",
-    "/modules",
     "/products",
     "/product.json",
   ]) {

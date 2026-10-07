@@ -112,7 +112,6 @@ const DISCOVERY_ALLOW = [
   "/data/catalog.json",
   "/data/prices.json",
   "/panels",
-  "/modules",
   "/sku",
   "/mpn",
   "/merchant",

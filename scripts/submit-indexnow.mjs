@@ -155,7 +155,6 @@ const URLS = [
   `https://${HOST}/api/prices.json`,
   `https://${HOST}/api/entity.json`,
   `https://${HOST}/panels`,
-  `https://${HOST}/modules`,
   `https://${HOST}/sku`,
   `https://${HOST}/mpn`,
   `https://${HOST}/merchant`,
