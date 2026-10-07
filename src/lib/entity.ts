@@ -134,6 +134,7 @@ export type EntityDocument = {
   aiShopping: string;
   catalogJson: string;
   merchantFeed: string;
+  geoBaseline: string;
   subjectOf: Array<{
     "@type": "Dataset";
     "@id": string;
@@ -202,6 +203,12 @@ export function buildEntityDocument(): EntityDocument {
           url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
           name: "ARLEDSCREEN merchant priced panels TSV",
         },
+        {
+          "@type": "Dataset",
+          "@id": `${SITE_URL}/geo-baseline.json`,
+          url: `${SITE_URL}/geo-baseline.json`,
+          name: "ARLEDSCREEN GEO technical baseline",
+        },
       ],
     },
     founder: {
@@ -216,6 +223,7 @@ export function buildEntityDocument(): EntityDocument {
     aiShopping: `${SITE_URL}/ai-shopping.json`,
     catalogJson: `${SITE_URL}/catalog.json`,
     merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+    geoBaseline: `${SITE_URL}/geo-baseline.json`,
     subjectOf: [
       {
         "@type": "Dataset",
@@ -234,6 +242,12 @@ export function buildEntityDocument(): EntityDocument {
         "@id": `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
         name: "ARLEDSCREEN merchant priced panels TSV",
         url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/geo-baseline.json`,
+        name: "ARLEDSCREEN GEO technical baseline",
+        url: `${SITE_URL}/geo-baseline.json`,
       },
     ],
     citeOneLiner: ENTITY_CITE_ONE_LINER,

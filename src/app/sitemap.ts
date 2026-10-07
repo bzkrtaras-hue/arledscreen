@@ -177,6 +177,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const path of [
     "/ai-shopping.json",
     "/catalog.json",
+    "/geo-baseline.json",
     "/entity.json",
     "/entity-profiles.json",
     "/llms.txt",

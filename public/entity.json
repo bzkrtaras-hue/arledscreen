@@ -59,6 +59,12 @@
         "@id": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
         "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
         "name": "ARLEDSCREEN merchant priced panels TSV"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/geo-baseline.json",
+        "url": "https://arledscreen.com/geo-baseline.json",
+        "name": "ARLEDSCREEN GEO technical baseline"
       }
     ]
   },
@@ -76,6 +82,7 @@
   "aiShopping": "https://arledscreen.com/ai-shopping.json",
   "catalogJson": "https://arledscreen.com/catalog.json",
   "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+  "geoBaseline": "https://arledscreen.com/geo-baseline.json",
   "subjectOf": [
     {
       "@type": "Dataset",
@@ -94,6 +101,12 @@
       "@id": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
       "name": "ARLEDSCREEN merchant priced panels TSV",
       "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/geo-baseline.json",
+      "name": "ARLEDSCREEN GEO technical baseline",
+      "url": "https://arledscreen.com/geo-baseline.json"
     }
   ],
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",

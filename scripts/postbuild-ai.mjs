@@ -5,6 +5,7 @@
  * No blind-test prompt lists, no agent-runbooks — production facts only.
  */
 
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -452,6 +453,7 @@ function buildAiShopping() {
       entityProfiles: `${SITE_URL}/entity-profiles.json`,
       brand: `${SITE_URL}/tr/nxtionstar/`,
       brandId: `${SITE_URL}/#brand-nxtionstar`,
+      geoBaseline: `${SITE_URL}/geo-baseline.json`,
       llms: `${SITE_URL}/llms.txt`,
       ard: `${SITE_URL}/.well-known/ard.json`,
       merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
@@ -542,6 +544,72 @@ function writeText(dir, relPath, text) {
   fs.writeFileSync(dest, text);
 }
 
+function sha256(text) {
+  return crypto.createHash("sha256").update(text).digest("hex");
+}
+
+/**
+ * Technical GEO baseline for day-30 comparison.
+ * Facts + fingerprints only — no invented AI-visibility percentages.
+ */
+function buildGeoBaseline(ai, catalog, merchantTsv) {
+  const today = new Date().toISOString().split("T")[0];
+  const priced = ai.pricedPanels.map((p) => ({
+    sku: p.sku,
+    price: p.price,
+    brandId: p.brandId,
+    shippingIncluded: p.shippingIncluded,
+    url: p.url,
+  }));
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "@id": `${SITE_URL}/geo-baseline.json`,
+    name: "ARLEDSCREEN GEO / AI-alışveriş technical baseline",
+    description:
+      "Machine-readable snapshot of pricedPanels, Brand @id, and discovery surfaces for before/after measurement. Does not invent ChatGPT/Gemini/Perplexity mention rates. Point C and Tur1a remain owner-gated.",
+    url: `${SITE_URL}/geo-baseline.json`,
+    dateModified: today,
+    creator: { "@id": `${SITE_URL}/#organization` },
+    brand: {
+      "@type": "Brand",
+      "@id": `${SITE_URL}/#brand-nxtionstar`,
+      name: "NXTIONSTAR",
+    },
+    baseline: {
+      goalTargetDate: "2026-11-04",
+      pricedSkuCount: priced.length,
+      priceValidUntil: PRICE_VALID_UNTIL,
+      freeShipping: false,
+      shippingIncluded: false,
+      brandId: `${SITE_URL}/#brand-nxtionstar`,
+      speakableCoverageNote:
+        "TR/EN HTML content pages emit SpeakableSpecification where applicable (measured separately in agent artifacts).",
+      ownerGated: ["Point C third-party cites", "Tur1a blind scores", "GSC access", "PR #60 merge"],
+      noSpamDoorways: true,
+      provinceLandingPolicy: "Only provinces with published project records; no 81-il programatic doorways",
+    },
+    pricedPanels: priced,
+    fingerprints: {
+      aiShoppingSha256: sha256(JSON.stringify(ai)),
+      catalogSha256: sha256(JSON.stringify(catalog)),
+      merchantTsvSha256: sha256(merchantTsv),
+      citeOneLinerSha256: sha256(ai.cite?.oneLiner || ""),
+    },
+    discovery: {
+      aiShopping: `${SITE_URL}/ai-shopping.json`,
+      catalog: `${SITE_URL}/catalog.json`,
+      entity: `${SITE_URL}/entity.json`,
+      entityProfiles: `${SITE_URL}/entity-profiles.json`,
+      ard: `${SITE_URL}/.well-known/ard.json`,
+      merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      llms: `${SITE_URL}/llms.txt`,
+      brandPage: `${SITE_URL}/tr/nxtionstar/`,
+      priceHub: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
+    },
+  };
+}
+
 function copyPublicToOut(relPath) {
   const src = path.join(publicDir, relPath);
   const dest = path.join(outDir, relPath);
@@ -576,10 +644,12 @@ function main() {
   const catalog = buildCatalog();
   const ai = buildAiShopping();
   const merchantTsv = buildMerchantTsv();
+  const geoBaseline = buildGeoBaseline(ai, catalog, merchantTsv);
 
   for (const dir of [publicDir, outDir]) {
     writeJson(dir, "catalog.json", catalog);
     writeJson(dir, "ai-shopping.json", ai);
+    writeJson(dir, "geo-baseline.json", geoBaseline);
     writeText(dir, "feeds/merchant-priced-panels.tsv", merchantTsv);
   }
 
@@ -618,6 +688,15 @@ function main() {
   }
   if (!merchantTsv.startsWith("id\ttitle\tbrand\tbrand_id\t")) {
     console.error("postbuild-ai: merchant TSV must include brand_id column after brand");
+    process.exit(1);
+  }
+  if (
+    !geoBaseline?.baseline?.pricedSkuCount ||
+    geoBaseline.baseline.pricedSkuCount !== 12 ||
+    !geoBaseline.fingerprints?.aiShoppingSha256 ||
+    geoBaseline.baseline.freeShipping !== false
+  ) {
+    console.error("postbuild-ai: geo-baseline.json invalid");
     process.exit(1);
   }
   if (ai.shoppingPolicy?.freeShipping !== false || ai.shoppingPolicy?.shippingIncluded !== false) {
@@ -668,7 +747,7 @@ function main() {
   }
 
   console.log(
-    `Generated ${PANEL_PRICES.length} pricedPanels + merchant TSV in public/ + out/ (catalog, ai-shopping, feeds); entity-profiles → out/`,
+    `Generated ${PANEL_PRICES.length} pricedPanels + merchant TSV + geo-baseline in public/ + out/ (catalog, ai-shopping, feeds); entity-profiles → out/`,
   );
 }
 

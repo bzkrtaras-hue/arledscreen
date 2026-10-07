@@ -15,6 +15,7 @@ const publicDir = path.join(repoRoot, "public");
 const REQUIRED_FILES = [
   "catalog.json",
   "ai-shopping.json",
+  "geo-baseline.json",
   "entity.json",
   "entity-profiles.json",
   ".well-known/ard.json",
@@ -84,6 +85,7 @@ function validateAIFeeds() {
   console.log("\n📍 Feed URLs:");
   console.log("   - https://arledscreen.com/catalog.json");
   console.log("   - https://arledscreen.com/ai-shopping.json");
+  console.log("   - https://arledscreen.com/geo-baseline.json");
   console.log("   - https://arledscreen.com/entity.json");
   console.log("   - https://arledscreen.com/.well-known/ard.json");
   console.log("   - https://arledscreen.com/llms.txt");
@@ -97,6 +99,7 @@ if (fs.existsSync(outDir)) {
   for (const file of [
     "catalog.json",
     "ai-shopping.json",
+    "geo-baseline.json",
     "entity.json",
     "entity-profiles.json",
     "llms.txt",
@@ -160,6 +163,21 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources.brand + brandId required");
     process.exit(1);
   }
+  const baseline = JSON.parse(fs.readFileSync(path.join(outDir, "geo-baseline.json"), "utf8"));
+  if (
+    baseline?.["@type"] !== "Dataset" ||
+    baseline?.baseline?.pricedSkuCount !== 12 ||
+    !baseline?.fingerprints?.merchantTsvSha256 ||
+    baseline?.baseline?.freeShipping !== false ||
+    !baseline?.brand?.["@id"]?.includes("#brand-nxtionstar")
+  ) {
+    console.error("❌ geo-baseline.json must snapshot 12 SKUs + Brand @id + fingerprints (no free shipping)");
+    process.exit(1);
+  }
+  if (!ai?.resources?.geoBaseline?.includes("/geo-baseline.json")) {
+    console.error("❌ ai-shopping.json resources.geoBaseline required");
+    process.exit(1);
+  }
   if (!ai?.resources?.en?.home || !ai.resources.en.calculator) {
     console.error("❌ ai-shopping.json resources.en.home + calculator required");
     process.exit(1);
@@ -174,8 +192,27 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
-  if (!profiles?.packsEn?.gbpDescription) {
-    console.error("❌ entity-profiles.json packsEn.gbpDescription required");
+  if (
+    !profiles?.packsEn?.gbpDescription ||
+    !profiles?.packsEn?.facebookAbout ||
+    !profiles?.packsEn?.appleBusinessConnect ||
+    !profiles?.packsEn?.youtubeAbout ||
+    !profiles?.packsEn?.yandexBusiness ||
+    !profiles?.packsEn?.instagramName
+  ) {
+    console.error("❌ entity-profiles.json packsEn must cover GBP/FB/Apple/YouTube/Yandex/IG name (cite-only)");
+    process.exit(1);
+  }
+  if (!profiles?.canonicalUrls?.geoBaselineJson?.includes("/geo-baseline.json")) {
+    console.error("❌ entity-profiles.json canonicalUrls.geoBaselineJson required");
+    process.exit(1);
+  }
+  if (!ard?.agentic?.resources?.geoBaseline?.url?.includes("/geo-baseline.json")) {
+    console.error("❌ ard.json resources.geoBaseline required");
+    process.exit(1);
+  }
+  if (!Array.isArray(ard?.robotsPolicy?.allow) || !ard.robotsPolicy.allow.includes("/geo-baseline.json")) {
+    console.error("❌ ard.json robotsPolicy.allow must include /geo-baseline.json");
     process.exit(1);
   }
   const subjectUrls = (entity.subjectOf || []).map((s) => s.url || "");

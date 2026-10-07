@@ -30,6 +30,7 @@ const DISCOVERY_ALLOW = [
   "/",
   "/ai-shopping.json",
   "/catalog.json",
+  "/geo-baseline.json",
   "/entity.json",
   "/entity-profiles.json",
   "/llms.txt",

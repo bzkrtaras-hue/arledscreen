@@ -28,8 +28,19 @@
         "subjectOf": [
           "https://arledscreen.com/ai-shopping.json",
           "https://arledscreen.com/catalog.json",
-          "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+          "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+          "https://arledscreen.com/geo-baseline.json"
         ]
+      },
+      "geoBaseline": {
+        "type": "GEO Technical Baseline",
+        "url": "https://arledscreen.com/geo-baseline.json",
+        "format": "application/ld+json",
+        "description": "Machine-readable snapshot of pricedPanels, Brand @id, and discovery fingerprints for before/after measurement. Does not invent AI mention rates. Point C and Tur1a remain owner-gated.",
+        "pricedPanels": 12,
+        "freeShipping": false,
+        "brandId": "https://arledscreen.com/#brand-nxtionstar",
+        "goalTargetDate": "2026-11-04"
       },
       "catalog": {
         "type": "Product Catalog",
@@ -189,6 +200,7 @@
     "allow": [
       "/catalog.json",
       "/ai-shopping.json",
+      "/geo-baseline.json",
       "/entity.json",
       "/entity-profiles.json",
       "/llms.txt",

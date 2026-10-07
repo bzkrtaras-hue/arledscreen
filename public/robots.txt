@@ -5,6 +5,7 @@ Allow: /
 Allow: /entity.json
 Allow: /catalog.json
 Allow: /ai-shopping.json
+Allow: /geo-baseline.json
 Allow: /.well-known/ard.json
 Allow: /llms.txt
 Allow: /llms-full.txt
