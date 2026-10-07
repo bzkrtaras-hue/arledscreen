@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "ARLEDSCREEN entity profile paste packs (Point C)",
-  "description": "Third-party profile paste packs for humans (GBP/IG/FB/LinkedIn) + machine Merchant notes. Owner-operated Point C. Human packs = cite facts only — no catalog.json / quote-only / extrasUsd jargon in public bios. Prices for AI: ai-shopping.json. GEO baseline: geo-baseline.json. Do not invent ratings. Owner single clipboard: npm run geo:next.",
+  "description": "Third-party profile paste packs for humans (GBP/IG/FB/LinkedIn) + machine Merchant notes. Owner-operated Point C. Human packs = cite facts only — no catalog.json / quote-only / extrasUsd jargon in public bios. Prices for AI: ai-shopping.json. GEO baseline: geo-baseline.json. Do not invent ratings. Owner single clipboard: npm run geo:next. After paste: npm run geo:ack. WebSite: https://arledscreen.com/#website.",
   "url": "https://arledscreen.com/entity-profiles.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -70,7 +70,7 @@
     ]
   },
   "ownerP0Checklist": [
-    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok)",
+    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website",
     "GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok)",
     "Instagram Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)",
     "Facebook About = packs.facebookAbout · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)",
@@ -104,7 +104,8 @@
     "brandJson": "https://arledscreen.com/brand.json",
     "pricesJson": "https://arledscreen.com/prices.json",
     "brandWellKnown": "https://arledscreen.com/.well-known/brand.json",
-    "entityWellKnown": "https://arledscreen.com/.well-known/entity.json"
+    "entityWellKnown": "https://arledscreen.com/.well-known/entity.json",
+    "website": "https://arledscreen.com/#website"
   },
   "packsEn": {
     "gbpDescription": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.",
