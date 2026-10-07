@@ -1,0 +1,49 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Brand",
+  "@id": "https://arledscreen.com/#brand-nxtionstar",
+  "name": "NXTIONSTAR",
+  "url": "https://arledscreen.com/tr/nxtionstar/",
+  "alternateName": [
+    "NXTION STAR",
+    "NXTIONSTAR LED"
+  ],
+  "description": "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV.",
+  "disambiguatingDescription": "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
+  "makesOffer": {
+    "@id": "https://arledscreen.com/#priced-panels-aggregate"
+  },
+  "hasOfferCatalog": {
+    "@id": "https://arledscreen.com/catalog.json"
+  },
+  "manufacturer": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "seller": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "sameAs": [
+    "https://arledscreen.com/tr/nxtionstar/",
+    "https://arledscreen.com/en/nxtionstar/"
+  ],
+  "subjectOf": [
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/ai-shopping.json",
+      "url": "https://arledscreen.com/ai-shopping.json",
+      "name": "ARLEDSCREEN pricedPanels"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/catalog.json",
+      "url": "https://arledscreen.com/catalog.json",
+      "name": "ARLEDSCREEN NXTIONSTAR catalog"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+      "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+      "name": "ARLEDSCREEN merchant TSV"
+    }
+  ]
+}

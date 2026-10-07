@@ -993,6 +993,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       catalog: `${SITE_URL}/catalog.json`,
       entity: `${SITE_URL}/entity.json`,
       organization: `${SITE_URL}/organization.json`,
+      brandJson: `${SITE_URL}/brand.json`,
       entityProfiles: `${SITE_URL}/entity-profiles.json`,
       ard: `${SITE_URL}/.well-known/ard.json`,
       agentsJson: `${SITE_URL}/.well-known/agents.json`,
@@ -1004,6 +1005,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       aiTxt: `${SITE_URL}/ai.txt`,
       brandPage: `${SITE_URL}/tr/nxtionstar/`,
       brandPageEn: `${SITE_URL}/en/nxtionstar/`,
+      homeSpeakableService: `${SITE_URL}/tr/#service`,
+      websiteQuoteAction: `${SITE_URL}/tr/quote/`,
       priceHub: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
       priceHubEn: `${SITE_URL}/en/led-ekran-fiyatlari/`,
       faqTr: `${SITE_URL}/tr/sss/`,
@@ -1163,7 +1166,7 @@ function writeFeedPathAliases(dir) {
     ["entity.json", "about.json"],
     ["entity.json", "nap.json"],
     ["entity.json", "nap"],
-    ["entity.json", "brand.json"],
+    // brand.json written separately as Brand-shaped document (not Org alias).
     ["entity.json", "cite.json"],
     ["entity.json", "cite"],
     ["entity.json", "faq.json"],
@@ -1544,6 +1547,46 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     console.error(`postbuild-ai: expected ≥20 feed path aliases, got ${aliasCount}`);
     process.exit(1);
   }
+  // Brand-first invent: /brand.json is Brand (not Org alias of entity.json).
+  const brandDoc = {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "@id": `${SITE_URL}/#brand-nxtionstar`,
+    name: "NXTIONSTAR",
+    url: `${SITE_URL}/tr/nxtionstar/`,
+    alternateName: ["NXTION STAR", "NXTIONSTAR LED"],
+    description:
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV.",
+    disambiguatingDescription:
+      "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
+    makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+    hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
+    manufacturer: { "@id": `${SITE_URL}/#organization` },
+    seller: { "@id": `${SITE_URL}/#organization` },
+    sameAs: [`${SITE_URL}/tr/nxtionstar/`, `${SITE_URL}/en/nxtionstar/`],
+    subjectOf: [
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/ai-shopping.json`,
+        url: `${SITE_URL}/ai-shopping.json`,
+        name: "ARLEDSCREEN pricedPanels",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/catalog.json`,
+        url: `${SITE_URL}/catalog.json`,
+        name: "ARLEDSCREEN NXTIONSTAR catalog",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+        url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+        name: "ARLEDSCREEN merchant TSV",
+      },
+    ],
+  };
+  writeJson(publicDir, "brand.json", brandDoc);
+  writeJson(outDir, "brand.json", brandDoc);
   // security.txt — trust / contact for agents & researchers (RFC 9116).
   const securityTxt = `Contact: mailto:arled@arledscreen.com
 Contact: https://arledscreen.com/tr/quote/

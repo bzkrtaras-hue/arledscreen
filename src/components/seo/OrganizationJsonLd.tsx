@@ -113,6 +113,7 @@ export function OrganizationJsonLd() {
           "LED ekran teknik servisi",
           "LED ekran fiyatları",
         ],
+        knowsLanguage: ["tr-TR", "en-US"],
         contactPoint: [
           {
             "@type": "ContactPoint",

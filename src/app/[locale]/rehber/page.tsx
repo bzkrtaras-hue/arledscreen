@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { getSeoGuideHub, listSeoGuides } from "@/content/seo-guides";
 
@@ -48,6 +48,28 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
   const guides = listSeoGuides(locale);
   const dict = getDictionary(locale);
   const hubUrl = absoluteUrl(`/${locale}/rehber/`);
+  const rehberLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${hubUrl}#rehber`,
+    name: hub.h1,
+    description: hub.description,
+    url: hubUrl,
+    inLanguage: locale === "tr" ? "tr-TR" : "en-US",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: guides.length,
+      itemListElement: guides.map((g, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: g.cardLabel,
+        url: absoluteUrl(`/${locale}/rehber/${g.slug}/`),
+      })),
+    },
+  };
 
   return (
     <>
@@ -60,12 +82,17 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           },
         ]}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(rehberLd) }}
+      />
       {(locale === "tr" || locale === "en") ? (
         <SpeakableJsonLd
           pageUrl={hubUrl}
           name={hub.h1}
           description={hub.description}
           cssSelectors={["#rehber-h1", "#rehber-lead"]}
+          mainEntity={{ "@id": `${hubUrl}#rehber` }}
         />
       ) : null}
       <script

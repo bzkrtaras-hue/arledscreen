@@ -929,12 +929,23 @@ if (fs.existsSync(outDir)) {
     "company.json",
     "about.json",
     "nap.json",
-    "brand.json",
     "api/entity",
     ".well-known/entity.json",
   ]) {
     if (!fs.readFileSync(path.join(outDir, rel)).equals(canonEntity)) {
       console.error(`❌ out/${rel} must match entity.json`);
+      process.exit(1);
+    }
+  }
+  {
+    const brandLive = JSON.parse(fs.readFileSync(path.join(outDir, "brand.json"), "utf8"));
+    if (
+      brandLive?.["@type"] !== "Brand" ||
+      brandLive?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar" ||
+      !String(brandLive?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+      !String(brandLive?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+    ) {
+      console.error("❌ out/brand.json must be Brand #brand-nxtionstar with makesOffer + hasOfferCatalog");
       process.exit(1);
     }
   }
@@ -954,9 +965,11 @@ if (fs.existsSync(outDir)) {
       !agentsMd.includes("itemOffered") ||
       !agentsMd.includes("#localbusiness") ||
       !agentsMd.includes("hasOfferCatalog") ||
-      !agentsMd.includes("#brand-nxtionstar")
+      !agentsMd.includes("#brand-nxtionstar") ||
+      !agentsMd.includes("/brand.json") ||
+      !agentsMd.includes("OrderAction")
     ) {
-      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog");
+      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction");
       process.exit(1);
     }
   }
@@ -965,9 +978,11 @@ if (fs.existsSync(outDir)) {
     !llmsLive.includes("itemOffered") ||
     !llmsLive.includes("#localbusiness") ||
     !llmsLive.includes("hasOfferCatalog") ||
-    !llmsLive.includes("#brand-nxtionstar")
+    !llmsLive.includes("#brand-nxtionstar") ||
+    !llmsLive.includes("/brand.json") ||
+    !llmsLive.includes("OrderAction")
   ) {
-    console.error("❌ out/llms.txt must cite makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog");
+    console.error("❌ out/llms.txt must cite makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction");
     process.exit(1);
   }
   if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt") || !llmsLive.includes("organization.json") || !llmsLive.includes("AGENTS.md")) {
@@ -1060,6 +1075,13 @@ if (fs.existsSync(outDir)) {
   if (!profiles?.canonicalUrls?.geoBaselineJson?.includes("/geo-baseline.json")) {
     console.error("❌ entity-profiles.json canonicalUrls.geoBaselineJson required");
     process.exit(1);
+  }
+  {
+    const baselineLive = JSON.parse(fs.readFileSync(path.join(outDir, "geo-baseline.json"), "utf8"));
+    if (!String(baselineLive?.discovery?.brandJson || "").includes("/brand.json")) {
+      console.error("❌ geo-baseline.json discovery.brandJson must cite /brand.json");
+      process.exit(1);
+    }
   }
   if (!ard?.agentic?.resources?.geoBaseline?.url?.includes("/geo-baseline.json")) {
     console.error("❌ ard.json resources.geoBaseline required");
@@ -2112,6 +2134,8 @@ if (fs.existsSync(outDir)) {
     ["en/index.html", (mid) => mid.includes("/en/") && mid.endsWith("#service")],
     ["tr/gizlilik/index.html", (mid) => mid.includes("/tr/gizlilik/") && mid.endsWith("#faqpage")],
     ["en/gizlilik/index.html", (mid) => mid.includes("/en/gizlilik/") && mid.endsWith("#faqpage")],
+    ["tr/rehber/index.html", (mid) => mid.includes("/tr/rehber/") && mid.endsWith("#rehber")],
+    ["en/rehber/index.html", (mid) => mid.includes("/en/rehber/") && mid.endsWith("#rehber")],
   ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     let pageOk = false;
@@ -2360,6 +2384,8 @@ for (const must of [
   "/offer",
   "/offer.json",
   "/organization",
+  "/brand.json",
+  "/entity-profiles.json",
   "/cite.json",
   "/cite",
   "/faq.json",

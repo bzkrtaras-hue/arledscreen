@@ -206,6 +206,7 @@ export type EntityDocument = {
   logo: string;
   image: string;
   knowsAbout: string[];
+  knowsLanguage?: string[];
   contactPoint: Array<{
     "@type": "ContactPoint";
     contactType: string;
@@ -305,6 +306,7 @@ export function buildEntityDocument(): EntityDocument {
       "LED ekran teknik servisi",
       "LED ekran fiyatları",
     ],
+    knowsLanguage: ["tr-TR", "en-US"],
     contactPoint: [
       {
         "@type": "ContactPoint",

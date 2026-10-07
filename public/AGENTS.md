@@ -17,7 +17,8 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 - Organization: https://arledscreen.com/entity.json
 - Inventable aliases: `/organization.json` · `/organization` · `/company.json` · `/cite.json` · `/cite` · `/nap.json` · `/.well-known/entity.json`
 - Entity price path: `makesOffer` AggregateOffer `#priced-panels-aggregate` + `offers`×12 → `ai-shopping.json#offer-{sku}` (each with `itemOffered` → PDP `#product`); `hasOfferCatalog` → `catalog.json`; `location` → `#localbusiness`
-- Brand: **NXTIONSTAR** (`@id` `https://arledscreen.com/#brand-nxtionstar`) — `makesOffer` → `#priced-panels-aggregate`; `hasOfferCatalog` → `catalog.json`; ≠ NationStar LED chip ≠ NEXTSTAR TV
+- Brand document: https://arledscreen.com/brand.json (`@type` Brand `#brand-nxtionstar` — `makesOffer` → `#priced-panels-aggregate`; `hasOfferCatalog` → `catalog.json`; ≠ NationStar LED chip ≠ NEXTSTAR TV)
+- WebSite JSON-LD: `about` → `#organization`; `potentialAction` OrderAction → `/tr/quote/` · `/en/quote/`; home Speakable `mainEntity` → `/tr/#service` · `/en/#service`
 - NAP: Gaziosmanpaşa, İstanbul · `arled@arledscreen.com` · +90 530 507 88 34
 
 ## More discovery
