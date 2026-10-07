@@ -16,6 +16,7 @@ import {
   ORGANIZATION_SAME_AS,
 } from "@/lib/social";
 import {
+  BRAND_SUBJECT_DATASETS,
   LOCALBUSINESS_ID,
   organizationHasOfferCatalog,
   organizationMakesOffer,
@@ -369,6 +370,7 @@ export function buildEntityDocument(): EntityDocument {
       parentOrganization: { "@id": `${SITE_URL}/#organization` },
       sameAs: [...ORGANIZATION_SAME_AS],
       brand: { "@id": `${SITE_URL}/#brand-nxtionstar` },
+      subjectOf: BRAND_SUBJECT_DATASETS,
       makesOffer: organizationMakesOffer(),
       hasOfferCatalog: organizationHasOfferCatalog(),
     },

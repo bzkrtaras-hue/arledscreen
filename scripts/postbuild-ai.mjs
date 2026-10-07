@@ -931,6 +931,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         datasetHasPartOffers: true,
         hasOfferCatalog: `${SITE_URL}/catalog.json`,
         offerAvailableAtOrFrom: LOCALBUSINESS_ID,
+        organizationLocation: LOCALBUSINESS_ID,
       },
       legacyDomain: {
         host: "arleds.com",
@@ -1297,6 +1298,8 @@ function main() {
 # Graph: entity.json makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku};
 # Offer.itemOffered → PDP #product; Offer triangle catalog ↔ ai-shopping ↔ PDP #offer.
 # Dataset hasPart stubs → Offer @id + itemOffered. hasOfferCatalog → catalog.json.
+# Place↔price: Offer/AggregateOffer availableAtOrFrom → #localbusiness; Org location → #localbusiness.
+# Hub/PDP WebPage.mainEntity → #service / #product.
 
 llms: ${SITE_URL}/llms.txt
 llms-full: ${SITE_URL}/llms-full.txt

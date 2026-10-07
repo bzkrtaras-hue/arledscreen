@@ -12,6 +12,7 @@ import {
   PRICE_VALID_UNTIL,
   fmtM2,
   fmtUsd,
+  localBusinessRef,
   nxtionstarBrandRef,
   panelProductsJsonLd,
   pricedPanelOfferStubs,
@@ -213,6 +214,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
             description:
               "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok; nakliye yazılı teklifle.",
             seller: { "@id": `${SITE_URL}/#organization` },
+            availableAtOrFrom: localBusinessRef(),
             priceSpecification: {
               "@type": "PriceSpecification",
               priceCurrency: "USD",
@@ -241,6 +243,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
         name={g.h1}
         description={g.description}
         cssSelectors={["#pg-h1", "#pg-lead"]}
+        {...(prices.length ? { mainEntity: { "@id": `${url}#service` } } : {})}
       />
       {/* Always emit Dataset — quote-only groups still point AI shoppers at pricedPanels. */}
       <script

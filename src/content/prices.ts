@@ -503,6 +503,7 @@ export function panelProductsJsonLd(
         description:
           "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok. İade: yazılı teklif/sözleşme (MerchantReturnNotPermitted).",
         seller: org,
+        availableAtOrFrom: localBusinessRef(),
         priceSpecification: {
           "@type": "PriceSpecification",
           priceCurrency: "USD",

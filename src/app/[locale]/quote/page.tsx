@@ -72,6 +72,7 @@ export default async function QuotePage({ params }: PageProps) {
             name={seo.h1 ?? dict.page.quote.title}
             description={seo.description}
             cssSelectors={["#quote-h1", "#quote-lead"]}
+            mainEntity={{ "@id": `${quoteUrl}#service` }}
           />
           <script
             type="application/ld+json"

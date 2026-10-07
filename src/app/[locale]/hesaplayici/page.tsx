@@ -61,6 +61,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
           name={seo.h1 ?? dict.page.hesaplayici.title}
           description={seo.description}
           cssSelectors={["#hesap-h1", "#hesap-lead"]}
+          mainEntity={{ "@id": `${pageUrl}#service` }}
         />
       )}
       {howToTr ? (

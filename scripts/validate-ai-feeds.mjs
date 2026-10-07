@@ -308,9 +308,10 @@ if (fs.existsSync(outDir)) {
     !String(baseline?.baseline?.priceGraph?.entityMakesOffer || "").includes("#priced-panels-aggregate") ||
     !baseline?.baseline?.priceGraph?.datasetHasPartOffers ||
     !String(baseline?.baseline?.priceGraph?.offerItemOffered || "").includes("#product") ||
-    !String(baseline?.baseline?.priceGraph?.offerAvailableAtOrFrom || "").includes("#localbusiness")
+    !String(baseline?.baseline?.priceGraph?.offerAvailableAtOrFrom || "").includes("#localbusiness") ||
+    !String(baseline?.baseline?.priceGraph?.organizationLocation || "").includes("#localbusiness")
   ) {
-    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + itemOffered + hasPart Offers + #localbusiness");
+    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + itemOffered + hasPart Offers + #localbusiness location");
     process.exit(1);
   }
   for (const key of ["pricesJson", "organization", "agentsJson", "agentsMd", "securityTxt", "humansTxt"]) {
@@ -552,9 +553,11 @@ if (fs.existsSync(outDir)) {
     entity?.location?.["@type"] !== "LocalBusiness" ||
     entity?.location?.["@id"] !== "https://arledscreen.com/#localbusiness" ||
     entity?.location?.makesOffer?.offerCount !== 12 ||
-    entity?.location?.hasOfferCatalog?.["@type"] !== "OfferCatalog"
+    entity?.location?.hasOfferCatalog?.["@type"] !== "OfferCatalog" ||
+    !Array.isArray(entity?.location?.subjectOf) ||
+    entity.location.subjectOf.length < 3
   ) {
-    console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog");
+    console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog + subjectOf");
     process.exit(1);
   }
   if (
@@ -627,9 +630,10 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("arleds.com") ||
     !aiTxtLive.includes("NationStar") ||
     !aiTxtLive.includes("makesOffer") ||
-    !aiTxtLive.includes("itemOffered")
+    !aiTxtLive.includes("itemOffered") ||
+    !aiTxtLive.includes("#localbusiness")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness");
     process.exit(1);
   }
   if (
@@ -848,13 +852,18 @@ if (fs.existsSync(outDir)) {
   }
   {
     const agentsMd = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
-    if (!agentsMd.includes("ai-shopping.json") || !agentsMd.includes("makesOffer") || !agentsMd.includes("itemOffered")) {
-      console.error("❌ out/AGENTS.md must cite ai-shopping.json + makesOffer + itemOffered");
+    if (
+      !agentsMd.includes("ai-shopping.json") ||
+      !agentsMd.includes("makesOffer") ||
+      !agentsMd.includes("itemOffered") ||
+      !agentsMd.includes("#localbusiness")
+    ) {
+      console.error("❌ out/AGENTS.md must cite ai-shopping.json + makesOffer + itemOffered + #localbusiness");
       process.exit(1);
     }
   }
-  if (!llmsLive.includes("makesOffer") || !llmsLive.includes("itemOffered")) {
-    console.error("❌ out/llms.txt must cite entity makesOffer + Offer itemOffered graph");
+  if (!llmsLive.includes("makesOffer") || !llmsLive.includes("itemOffered") || !llmsLive.includes("#localbusiness")) {
+    console.error("❌ out/llms.txt must cite entity makesOffer + Offer itemOffered + #localbusiness");
     process.exit(1);
   }
   if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt") || !llmsLive.includes("organization.json") || !llmsLive.includes("AGENTS.md")) {
@@ -1857,6 +1866,32 @@ if (fs.existsSync(outDir)) {
     console.log("✅ PDP Product/Offer sameAs joins catalog + ai-shopping; WebPage→Product");
   }
 
+  // Price hub Speakable WebPage must forward-join Service AggregateOffer.
+  {
+    const hubRel = "tr/led-ekran-fiyatlari/index.html";
+    const hubHtml = fs.readFileSync(path.join(outDir, hubRel), "utf8");
+    let hubPageOk = false;
+    for (const m of hubHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "WebPage") continue;
+        if (
+          String(d.mainEntity?.["@id"] || "").includes("/led-ekran-fiyatlari/") &&
+          String(d.mainEntity?.["@id"] || "").endsWith("#service")
+        ) {
+          hubPageOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!hubPageOk) {
+      console.error("❌ price hub WebPage.mainEntity must join #service");
+      process.exit(1);
+    }
+  }
+
   // AggregateOffer hubs (group + price + calculator; TR + EN) must sameAs catalog + ai-shopping Offers.
   for (const [rel, sku] of [
     ["tr/products/ince-pitch-led-ekran/index.html", "p1-25-ic-gob"],
@@ -1916,6 +1951,7 @@ if (fs.existsSync(outDir)) {
             String(agg.url || "").includes("/ai-shopping.json") &&
             aggSame.some((u) => String(u).includes("#priced-panels-aggregate")) &&
             agg.priceSpecification?.valueAddedTaxIncluded === false &&
+            agg?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness" &&
             Array.isArray(agg.offers) &&
             agg.offers.length >= 1 &&
             agg.offers.every(

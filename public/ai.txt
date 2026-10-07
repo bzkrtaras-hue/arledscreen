@@ -6,6 +6,8 @@
 # Graph: entity.json makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku};
 # Offer.itemOffered → PDP #product; Offer triangle catalog ↔ ai-shopping ↔ PDP #offer.
 # Dataset hasPart stubs → Offer @id + itemOffered. hasOfferCatalog → catalog.json.
+# Place↔price: Offer/AggregateOffer availableAtOrFrom → #localbusiness; Org location → #localbusiness.
+# Hub/PDP WebPage.mainEntity → #service / #product.
 
 llms: https://arledscreen.com/llms.txt
 llms-full: https://arledscreen.com/llms-full.txt

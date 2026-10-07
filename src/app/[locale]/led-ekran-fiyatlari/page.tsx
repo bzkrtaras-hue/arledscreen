@@ -316,6 +316,7 @@ export default async function LedEkranFiyatlariPage({
         name={copy.speakableName}
         description={copy.speakableDesc}
         cssSelectors={["#fiyat-h1", "#fiyat-lead", "#ai-price-source"]}
+        mainEntity={{ "@id": `${url}#service` }}
       />
       <script
         type="application/ld+json"

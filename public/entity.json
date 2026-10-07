@@ -1024,6 +1024,32 @@
     "brand": {
       "@id": "https://arledscreen.com/#brand-nxtionstar"
     },
+    "subjectOf": [
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/ai-shopping.json",
+        "url": "https://arledscreen.com/ai-shopping.json",
+        "name": "ARLEDSCREEN pricedPanels"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/catalog.json",
+        "url": "https://arledscreen.com/catalog.json",
+        "name": "ARLEDSCREEN panel catalog"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+        "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+        "name": "ARLEDSCREEN merchant priced panels TSV"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/geo-baseline.json",
+        "url": "https://arledscreen.com/geo-baseline.json",
+        "name": "ARLEDSCREEN GEO technical baseline"
+      }
+    ],
     "makesOffer": {
       "@type": "AggregateOffer",
       "@id": "https://arledscreen.com/#priced-panels-aggregate",
