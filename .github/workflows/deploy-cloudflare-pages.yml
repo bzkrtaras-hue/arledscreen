@@ -72,12 +72,24 @@ jobs:
           done
           echo "OK GEO pre-deploy guard"
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: "4a0f179229f3c6a21d076df944b850e8"
-          command: pages deploy out --project-name=arledscreen --branch=main --commit-dirty=true
+      - name: Deploy to Cloudflare Pages (retry upload 500s)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: "4a0f179229f3c6a21d076df944b850e8"
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            echo "Deploy attempt ${attempt}/5"
+            if npx wrangler@4 pages deploy out --project-name=arledscreen --branch=main --commit-dirty=true; then
+              echo "OK Cloudflare Pages deploy"
+              exit 0
+            fi
+            if [ "$attempt" -lt 5 ]; then
+              sleep $((attempt * 20))
+            fi
+          done
+          echo "FAIL Cloudflare Pages deploy after 5 attempts" >&2
+          exit 1
 
       - name: Smoke — apex redirect + AI artefacts + GEO llms/sitemap
         run: |

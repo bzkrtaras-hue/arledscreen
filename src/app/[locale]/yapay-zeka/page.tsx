@@ -244,6 +244,7 @@ export default async function YapayZekaPage({ params }: PageProps) {
             name={seo.h1 ?? c.navLabel}
             description={seo.description}
             cssSelectors={["#yz-h1", "#yz-intro", "#yz-price-title", "#yz-price-body"]}
+            mainEntity={{ "@id": `${absoluteUrl(`/${locale}/yapay-zeka/`)}#service` }}
           />
           <script
             type="application/ld+json"

@@ -221,6 +221,7 @@ export type EntityDocument = {
     url: string;
     subjectOf?: unknown;
     makesOffer?: { "@id": string };
+    hasOfferCatalog?: { "@id": string };
   };
   /** Published 12-panel USD AggregateOffer — schema.org join for entity-first agents. */
   makesOffer: ReturnType<typeof organizationMakesOffer>;
@@ -344,6 +345,7 @@ export function buildEntityDocument(): EntityDocument {
         },
       ],
       makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+      hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     },
     makesOffer: organizationMakesOffer(),
     hasOfferCatalog: organizationHasOfferCatalog(),

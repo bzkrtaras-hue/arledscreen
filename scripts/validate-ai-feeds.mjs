@@ -258,6 +258,13 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   if (
+    !String(ardBrand?.makesOffer || "").includes("#priced-panels-aggregate") ||
+    !String(ardBrand?.hasOfferCatalog || "").includes("/catalog.json")
+  ) {
+    console.error("❌ ard.json resources.brand must cite makesOffer + hasOfferCatalog");
+    process.exit(1);
+  }
+  if (
     ard?.agentic?.resources?.aiShopping?.shippingIncluded !== false ||
     ard?.agentic?.pricedProducts?.shippingIncluded !== false
   ) {
@@ -527,6 +534,10 @@ if (fs.existsSync(outDir)) {
   }
   if (!String(entity?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate")) {
     console.error("❌ entity.json brand.makesOffer must join #priced-panels-aggregate");
+    process.exit(1);
+  }
+  if (!String(entity?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")) {
+    console.error("❌ entity.json brand.hasOfferCatalog must join catalog.json");
     process.exit(1);
   }
   if (
@@ -1328,6 +1339,10 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ pricedPanels ${panel.sku} Offer.itemOffered must join PDP #product`);
       process.exit(1);
     }
+    if (!String(panel.offers?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar")) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.itemOffered.brand must be #brand-nxtionstar`);
+      process.exit(1);
+    }
     if (panel.offers?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
       console.error(`❌ pricedPanels ${panel.sku} Offer.availableAtOrFrom must be #localbusiness`);
       process.exit(1);
@@ -1727,7 +1742,10 @@ if (fs.existsSync(outDir)) {
         const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
         for (const node of nodes) {
           if (node?.["@type"] !== "Brand") continue;
-          if (String(node?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate")) {
+          if (
+            String(node?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") &&
+            String(node?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+          ) {
             brandOfferOk = true;
             break;
           }
@@ -1738,7 +1756,7 @@ if (fs.existsSync(outDir)) {
       }
     }
     if (!brandOfferOk) {
-      console.error("❌ tr/nxtionstar Brand JSON-LD must makesOffer → #priced-panels-aggregate");
+      console.error("❌ tr/nxtionstar Brand JSON-LD must makesOffer → #priced-panels-aggregate + hasOfferCatalog → catalog.json");
       process.exit(1);
     }
   }
@@ -1957,8 +1975,12 @@ if (fs.existsSync(outDir)) {
   // E-E-A-T + services Speakable forward-join primary entity.
   for (const [rel, checkMid] of [
     ["tr/about/index.html", (mid) => mid === "https://arledscreen.com/#organization"],
+    ["en/about/index.html", (mid) => mid === "https://arledscreen.com/#organization"],
     ["tr/about/aras-bozkurt/index.html", (mid) => mid.includes("/tr/about/aras-bozkurt/") && mid.endsWith("#person")],
+    ["en/about/aras-bozkurt/index.html", (mid) => mid.includes("/en/about/aras-bozkurt/") && mid.endsWith("#person")],
     ["tr/hizmetler/index.html", (mid) => mid.includes("/tr/hizmetler/") && mid.endsWith("#service")],
+    ["tr/yapay-zeka/index.html", (mid) => mid.includes("/tr/yapay-zeka/") && mid.endsWith("#service")],
+    ["en/yapay-zeka/index.html", (mid) => mid.includes("/en/yapay-zeka/") && mid.endsWith("#service")],
   ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     let pageOk = false;

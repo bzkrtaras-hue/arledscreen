@@ -95,7 +95,9 @@
         "name": "NXTIONSTAR",
         "url": "https://arledscreen.com/tr/nxtionstar/",
         "format": "application/ld+json",
-        "description": "NXTIONSTAR is ARLEDSCREEN's own LED product brand; sole sales point in Turkey is ARLEDSCREEN. subjectOf → pricedPanels / catalog / merchant TSV.",
+        "description": "NXTIONSTAR is ARLEDSCREEN's own LED product brand; sole sales point in Turkey is ARLEDSCREEN. makesOffer → #priced-panels-aggregate; hasOfferCatalog → catalog.json; subjectOf → pricedPanels / catalog / merchant TSV.",
+        "makesOffer": "https://arledscreen.com/#priced-panels-aggregate",
+        "hasOfferCatalog": "https://arledscreen.com/catalog.json",
         "subjectOf": [
           "https://arledscreen.com/ai-shopping.json",
           "https://arledscreen.com/catalog.json",

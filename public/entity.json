@@ -97,6 +97,9 @@
     ],
     "makesOffer": {
       "@id": "https://arledscreen.com/#priced-panels-aggregate"
+    },
+    "hasOfferCatalog": {
+      "@id": "https://arledscreen.com/catalog.json"
     }
   },
   "makesOffer": {
