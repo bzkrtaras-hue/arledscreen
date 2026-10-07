@@ -842,7 +842,8 @@
     "https://arledscreen.com/ai.txt",
     "https://arledscreen.com/llms.txt",
     "https://arledscreen.com/humans.txt",
-    "https://arledscreen.com/AGENTS.md"
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/.well-known/security.txt"
   ],
   "isBasedOn": [
     "https://arledscreen.com/ai-shopping.json",
@@ -871,7 +872,8 @@
     "https://arledscreen.com/ai.txt",
     "https://arledscreen.com/llms.txt",
     "https://arledscreen.com/humans.txt",
-    "https://arledscreen.com/AGENTS.md"
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/.well-known/security.txt"
   ],
   "mainEntityOfPage": {
     "@type": "WebSite",
@@ -1030,6 +1032,12 @@
       "encodingFormat": "text/markdown",
       "contentUrl": "https://arledscreen.com/AGENTS.md",
       "name": "AGENTS.md"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/security.txt",
+      "name": "security.txt (RFC 9116)"
     },
     {
       "@type": "DataDownload",

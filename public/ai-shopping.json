@@ -64,7 +64,8 @@
     "https://arledscreen.com/ai.txt",
     "https://arledscreen.com/llms.txt",
     "https://arledscreen.com/humans.txt",
-    "https://arledscreen.com/AGENTS.md"
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/.well-known/security.txt"
   ],
   "mainEntityOfPage": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
   "isRelatedTo": [
@@ -104,7 +105,8 @@
     "https://arledscreen.com/ai.txt",
     "https://arledscreen.com/llms.txt",
     "https://arledscreen.com/humans.txt",
-    "https://arledscreen.com/AGENTS.md"
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/.well-known/security.txt"
   ],
   "hasPart": [
     {
@@ -1205,6 +1207,12 @@
       "encodingFormat": "text/markdown",
       "contentUrl": "https://arledscreen.com/AGENTS.md",
       "name": "AGENTS.md"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/security.txt",
+      "name": "security.txt (RFC 9116)"
     },
     {
       "@type": "DataDownload",
@@ -2986,6 +2994,7 @@
     "agents": "https://arledscreen.com/.well-known/agents.json",
     "agentsMd": "https://arledscreen.com/AGENTS.md",
     "humansTxt": "https://arledscreen.com/humans.txt",
+    "securityTxt": "https://arledscreen.com/.well-known/security.txt",
     "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "pricesRss": "https://arledscreen.com/feeds/prices.rss",
     "priceAliases": [

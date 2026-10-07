@@ -4,7 +4,7 @@
   "name": "ARLEDSCREEN agent discovery",
   "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD); inventable aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /sku · /api/prices · /api/panels.json · /api/mpn.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /offers.json · /api/v1/prices (/modules.json yes; /modules is image assets). Entity aliases /organization.json · /.well-known/entity.json · /api/entity.json. Brand /brand.json embeds AggregateOffer×12 + OrderAction. WebSite: /#website. Point C packs: /entity-profiles.json. Also see /AGENTS.md. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt. Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
   "url": "https://arledscreen.com/.well-known/agents.json",
-  "numberOfItems": 18,
+  "numberOfItems": 19,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -131,6 +131,13 @@
       "name": "WebSite OrderAction",
       "url": "https://arledscreen.com/#website",
       "description": "entity.json mainEntityOfPage WebSite #website; OrderAction → /tr/quote/ · /en/quote/; about → #organization; owner npm run geo:next · geo:ack"
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "name": "security.txt",
+      "url": "https://arledscreen.com/.well-known/security.txt",
+      "description": "RFC 9116 trust/contact; cites Brand/Entity/WebSite#website/Price/Point C + invent aliases; alias /security.txt (not a price source)"
     }
   ],
   "provider": {
@@ -176,7 +183,8 @@
     "https://arledscreen.com/ai.txt",
     "https://arledscreen.com/llms.txt",
     "https://arledscreen.com/humans.txt",
-    "https://arledscreen.com/AGENTS.md"
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/.well-known/security.txt"
   ],
   "distribution": [
     {
@@ -297,6 +305,12 @@
       "encodingFormat": "text/markdown",
       "contentUrl": "https://arledscreen.com/AGENTS.md",
       "name": "AGENTS.md"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/security.txt",
+      "name": "security.txt (RFC 9116)"
     },
     {
       "@type": "DataDownload",

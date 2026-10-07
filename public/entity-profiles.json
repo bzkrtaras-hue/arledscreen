@@ -47,7 +47,8 @@
     "https://arledscreen.com/llms.txt",
     "https://arledscreen.com/humans.txt",
     "https://arledscreen.com/AGENTS.md",
-    "https://arledscreen.com/entity-profiles.json"
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/.well-known/security.txt"
   ],
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-07",
@@ -293,6 +294,12 @@
       "encodingFormat": "text/markdown",
       "contentUrl": "https://arledscreen.com/AGENTS.md",
       "name": "AGENTS.md"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/security.txt",
+      "name": "security.txt (RFC 9116)"
     },
     {
       "@type": "DataDownload",

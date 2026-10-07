@@ -198,6 +198,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources must cite agents.json + AGENTS.md");
     process.exit(1);
   }
+  if (!String(ai.resources?.securityTxt || "").includes("/.well-known/security.txt")) {
+    console.error("❌ ai-shopping.json resources must cite /.well-known/security.txt");
+    process.exit(1);
+  }
   if (!Array.isArray(ai.resources?.priceAliases) || !ai.resources.priceAliases.some((u) => String(u).includes("/prices.json"))) {
     console.error("❌ ai-shopping.json resources.priceAliases must include /prices.json");
     process.exit(1);
@@ -493,11 +497,17 @@ if (fs.existsSync(outDir)) {
       console.error("❌ ard.json must expose resources.humansTxt");
       process.exit(1);
     }
+    if (!String(ard?.agentic?.resources?.securityTxt?.url || "").includes("/.well-known/security.txt")) {
+      console.error("❌ ard.json must expose resources.securityTxt");
+      process.exit(1);
+    }
     for (const must of [
       "/point-c.txt",
       "/point-c-en.txt",
       "/.well-known/point-c.txt",
       "/humans.txt",
+      "/.well-known/security.txt",
+      "/security.txt",
       "/brand.json",
       "/.well-known/brand.json",
       "/.well-known/entity.json",
@@ -1623,9 +1633,13 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/.well-known/mpn.json") ||
     !securityLive.includes("/.well-known/merchant.json") ||
     !securityLive.includes("/.well-known/prices.json") ||
-    !securityLive.includes("/.well-known/price.json")
+    !securityLive.includes("/.well-known/price.json") ||
+    !securityLive.includes("/.well-known/agents.json") ||
+    !securityLive.includes("/.well-known/ard.json") ||
+    !securityLive.includes("/humans.txt") ||
+    !securityLive.includes("/AGENTS.md")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C + invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + geo:next/ack");
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C + invent aliases + discovery agents/ard/humans/AGENTS + geo:next/ack");
     process.exit(1);
   }
   {
@@ -1724,6 +1738,7 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("/llms.txt") ||
       !pointC.includes("/humans.txt") ||
       !pointC.includes("/AGENTS.md") ||
+      !pointC.includes("/.well-known/security.txt") ||
       !pointC.includes("ai-shopping.json pricedPanels") ||
       !pointC.includes("/entity-profiles.json") ||
       !pointC.includes("#website") ||
@@ -1765,8 +1780,12 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agents.json description must cite geo:next/ack + #website");
     process.exit(1);
   }
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 18) {
-    console.error("❌ agents.json must list ≥18 discovery items (incl. brand/prices.rss/point-c/organization/prices/point-c-en/#website)");
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 19) {
+    console.error("❌ agents.json must list ≥19 discovery items (incl. brand/prices.rss/point-c/organization/prices/point-c-en/#website/security.txt)");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/.well-known/security.txt"))) {
+    console.error("❌ agents.json must list /.well-known/security.txt");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("#website"))) {
@@ -1826,6 +1845,7 @@ if (fs.existsSync(outDir)) {
       "/llms.txt",
       "/humans.txt",
       "/AGENTS.md",
+      "/.well-known/security.txt",
       "#website",
     ]) {
       if (!agentsBased.includes(needle)) {
@@ -1855,6 +1875,7 @@ if (fs.existsSync(outDir)) {
       "/llms.txt",
       "/humans.txt",
       "/AGENTS.md",
+      "/.well-known/security.txt",
       "#website",
     ]) {
       if (!agentsDist.includes(needle)) {
@@ -2007,7 +2028,8 @@ if (fs.existsSync(outDir)) {
       !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/panels.json") ||
       !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/agents.json") ||
       !JSON.stringify(brandLive.sameAs || []).includes("/humans.txt") ||
-      !JSON.stringify(brandLive.sameAs || []).includes("/AGENTS.md")
+      !JSON.stringify(brandLive.sameAs || []).includes("/AGENTS.md") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/security.txt")
     ) {
       console.error("❌ out/brand.json distribution/sameAs must include ai-shopping + catalog + prices.rss + entity/organization + prices.json + well-known brand + geo/profiles + inventAlias/discovery");
       process.exit(1);
@@ -2050,12 +2072,13 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
+      !rssLive.includes("/.well-known/security.txt") ||
       !rssLive.includes("#website") ||
       !rssLive.includes("geo:next") ||
       !rssLive.includes("geo:ack") ||
       !rssLive.includes('rel="related"')
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + #website + geo:next/ack");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + security + #website + geo:next/ack");
       process.exit(1);
     }
   }
@@ -2155,13 +2178,14 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/price.json") ||
     !headersLive.includes("/.well-known/ard.json") ||
     !headersLive.includes("humans.txt") ||
+    !headersLive.includes("/.well-known/security.txt") ||
     !headersLive.includes("#website") ||
     !headersLive.includes("/.well-known/entity.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans + point-c");
+    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security + point-c");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -2733,6 +2757,7 @@ if (fs.existsSync(outDir)) {
     "llms_url",
     "humans_url",
     "agents_md_url",
+    "security_txt_url",
   ]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
@@ -2778,6 +2803,7 @@ if (fs.existsSync(outDir)) {
   const llmsUrlIdx = tsvCols.indexOf("llms_url");
   const humansUrlIdx = tsvCols.indexOf("humans_url");
   const agentsMdUrlIdx = tsvCols.indexOf("agents_md_url");
+  const securityTxtUrlIdx = tsvCols.indexOf("security_txt_url");
   for (const row of tsvRows) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
@@ -2906,6 +2932,10 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[agentsMdUrlIdx] !== "https://arledscreen.com/AGENTS.md") {
       console.error(`❌ merchant TSV agents_md_url must be /AGENTS.md for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[securityTxtUrlIdx] !== "https://arledscreen.com/.well-known/security.txt") {
+      console.error(`❌ merchant TSV security_txt_url must be /.well-known/security.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
   }

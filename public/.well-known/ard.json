@@ -306,6 +306,13 @@
         "description": "Human contact / team pointer (not a price source). Alias /.well-known/humans.txt. Cites ai-shopping + brand + point-c.",
         "wellKnown": "https://arledscreen.com/.well-known/humans.txt"
       },
+      "securityTxt": {
+        "type": "Security Contact (RFC 9116)",
+        "url": "https://arledscreen.com/.well-known/security.txt",
+        "format": "text/plain",
+        "description": "Trust/contact invent surface (not a price source). Alias /security.txt. Cites Brand/Entity/WebSite#website/Price/Point C + invent aliases + geo:next/ack.",
+        "alias": "https://arledscreen.com/security.txt"
+      },
       "llmsText": {
         "type": "Text Summary",
         "url": "https://arledscreen.com/llms.txt",
@@ -704,6 +711,8 @@
       "/.well-known/brand.json",
       "/.well-known/entity.json",
       "/.well-known/humans.txt",
+      "/.well-known/security.txt",
+      "/security.txt",
       "/api/panels.json",
       "/api/merchant.json",
       "/v1/panels",

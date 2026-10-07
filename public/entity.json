@@ -61,7 +61,8 @@
     "https://arledscreen.com/ai.txt",
     "https://arledscreen.com/llms.txt",
     "https://arledscreen.com/humans.txt",
-    "https://arledscreen.com/AGENTS.md"
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/.well-known/security.txt"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3410,7 +3411,8 @@
     "https://arledscreen.com/humans.txt",
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/.well-known/entity.json",
-    "https://arledscreen.com/organization.json"
+    "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/.well-known/security.txt"
   ],
   "distribution": [
     {
@@ -3547,6 +3549,12 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/entity.json",
       "name": "Organization invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/security.txt",
+      "name": "security.txt (RFC 9116)"
     }
   ]
 }
