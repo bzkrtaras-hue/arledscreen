@@ -24,7 +24,8 @@ export function LocaleSelect({
   // Province detail pages (/bolgeler/<slug>/) stay TR-only.
   const TR_ONLY = [
     /^\/tr\/bolgeler\/[^/]+\//,
-    /^\/tr\/projelerimiz\//,
+    // Projects hub has EN; case-study detail pages stay TR-only.
+    /^\/tr\/projelerimiz\/[^/]+\//,
     /^\/tr\/galeri\//,
     // Product group landings now have EN counterparts; model pages stay TR-only.
     /^\/tr\/products\/[^/]+\/[^/]+\//,
@@ -37,6 +38,9 @@ export function LocaleSelect({
     // Province detail pages stay TR-only — EN switch lands on the regions hub.
     if (next !== "tr" && /^\/tr\/bolgeler\/[^/]+\//.test(p)) {
       return `/${next}/bolgeler/`;
+    }
+    if (next !== "tr" && /^\/tr\/projelerimiz\/[^/]+\//.test(p)) {
+      return `/${next}/projelerimiz/`;
     }
     if (next !== "tr" && TR_ONLY.some((re) => re.test(p))) {
       // Product pages fall back to the locale catalog, rehber articles to the guide index, others to home.

@@ -813,7 +813,10 @@ manufacturer-en: ${SITE_URL}/en/led-ekran-ureticisi/
 service-en: ${SITE_URL}/en/led-ekran-servis/
 services-hub-en: ${SITE_URL}/en/hizmetler/
 regions-hub-en: ${SITE_URL}/en/bolgeler/
+projects-hub-en: ${SITE_URL}/en/projelerimiz/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
+guide-bridge-finepitch-en: ${SITE_URL}/en/rehber/ince-pitch-led-ekran/
+guide-bridge-gob-en: ${SITE_URL}/en/rehber/gob-led-ekran/
 use-store-en: ${SITE_URL}/en/magaza-led-ekran/
 use-facade-en: ${SITE_URL}/en/cephe-led-ekran/
 use-mall-en: ${SITE_URL}/en/avm-led-ekran/
