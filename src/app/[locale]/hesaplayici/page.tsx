@@ -191,8 +191,11 @@ export default async function HesaplayiciPage({ params }: PageProps) {
               lead="Source:"
             />
             <p className="mb-4 max-w-3xl text-sm leading-relaxed text-ink-muted">
-              Amounts are approximate; the final price is set in the written quote after survey. Product pages stay
-              on the Turkish catalog URLs (canonical price PDPs).
+              Amounts are approximate; the final price is set in the written quote after survey. See the{" "}
+              <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                LED display prices hub
+              </Link>{" "}
+              for worked m² examples. Product PDPs stay on Turkish catalog URLs.
             </p>
             <PanelPriceTable
               panels={PANEL_PRICES}

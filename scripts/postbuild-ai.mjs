@@ -709,6 +709,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       brandPage: `${SITE_URL}/tr/nxtionstar/`,
       brandPageEn: `${SITE_URL}/en/nxtionstar/`,
       priceHub: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
+      priceHubEn: `${SITE_URL}/en/led-ekran-fiyatlari/`,
       homeTr: `${SITE_URL}/tr/`,
       homeEn: `${SITE_URL}/en/`,
       productsHub: `${SITE_URL}/tr/products/`,
@@ -796,6 +797,8 @@ ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/
 brand-en: ${SITE_URL}/en/nxtionstar/
+price-tr: ${SITE_URL}/tr/led-ekran-fiyatlari/
+price-en: ${SITE_URL}/en/led-ekran-fiyatlari/
 about: ${SITE_URL}/tr/about/
 founder: ${SITE_URL}/tr/about/aras-bozkurt/
 calculator: ${SITE_URL}/tr/hesaplayici/

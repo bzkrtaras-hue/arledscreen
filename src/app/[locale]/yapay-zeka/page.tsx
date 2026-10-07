@@ -169,6 +169,7 @@ const content: Record<
       { href: "https://arledscreen.com/feeds/merchant-priced-panels.tsv", label: "merchant TSV" },
       { href: "https://arledscreen.com/entity.json", label: "entity.json" },
       { href: "https://arledscreen.com/entity-profiles.json", label: "entity-profiles.json (Point C)" },
+      { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
       { href: "/en/hesaplayici/", label: "Price calculator" },
     ],
     ctaTitle: "Size your AI-compatible LED project",

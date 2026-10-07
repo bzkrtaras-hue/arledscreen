@@ -115,12 +115,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: page.cluster === "intent" ? 0.95 : page.cluster === "use" ? 0.88 : 0.86,
     });
   }
-  entries.push({
-    url: absoluteUrl("/tr/led-ekran-fiyatlari/"),
-    lastModified: now,
-    changeFrequency: "weekly",
-    priority: 0.96,
-  });
   for (const c of PROJECT_CASE_STUDIES) {
     entries.push({
       url: absoluteUrl(`/tr/projelerimiz/${c.slug}/`),
@@ -148,14 +142,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     });
   }
-  // Brand hub: TR + EN (English AI agents previously hit /en/nxtionstar/ 404).
+  // Brand + price hubs: TR + EN (EN agents previously hit 404 on these paths).
   for (const locale of ["tr", "en"] as const) {
-    entries.push({
-      url: absoluteUrl(`/${locale}/nxtionstar/`),
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    });
+    for (const path of ["/nxtionstar/", "/led-ekran-fiyatlari/"] as const) {
+      entries.push({
+        url: absoluteUrl(`/${locale}${path}`),
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: path.includes("fiyat") ? 0.92 : 0.9,
+      });
+    }
   }
   // Blog kept as secondary trust content — not the commercial SEO cluster.
   entries.push({
