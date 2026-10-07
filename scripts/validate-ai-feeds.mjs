@@ -117,6 +117,26 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/ai-shopping.json pricedPanels must be length 12");
     process.exit(1);
   }
+  if (!Array.isArray(ai.hasPart) || ai.hasPart.length !== 12) {
+    console.error("❌ out/ai-shopping.json Dataset must hasPart 12 Products");
+    process.exit(1);
+  }
+  if (!ai.pricedPanels.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
+    console.error("❌ every pricedPanels Product must isPartOf ai-shopping.json Dataset");
+    process.exit(1);
+  }
+  if (!ai.resources?.agents?.includes("/agents.json") || !ai.resources?.agentsMd?.includes("AGENTS.md")) {
+    console.error("❌ ai-shopping.json resources must cite agents.json + AGENTS.md");
+    process.exit(1);
+  }
+  if (!Array.isArray(ai.resources?.priceAliases) || !ai.resources.priceAliases.some((u) => String(u).includes("/prices.json"))) {
+    console.error("❌ ai-shopping.json resources.priceAliases must include /prices.json");
+    process.exit(1);
+  }
+  if (!String(ai.agentGuidelines?.en?.priceSource || "").includes("/prices.json")) {
+    console.error("❌ agentGuidelines.en.priceSource must cite inventable /prices.json");
+    process.exit(1);
+  }
   if (/blindTestPrompts|kör test/i.test(JSON.stringify(ai))) {
     console.error("❌ out/ai-shopping.json must not carry blind-test payload");
     process.exit(1);

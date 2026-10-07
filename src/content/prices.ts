@@ -255,6 +255,7 @@ export function panelProductsJsonLd(
       { "@type": "PropertyValue", name: "Kullanım", value: p.use === "ic" ? "İç mekân" : "Dış mekân" },
     ],
     offers: panelOffer(u, p.usd),
+    isPartOf: PRICE_DATASETS[0],
     isRelatedTo: BRAND_SUBJECT_DATASETS,
   };
   });

@@ -14,8 +14,10 @@
 | Ülke | Türkiye |
 | Dil | Türkçe (bir tur İngilizce) |
 | Kanonik site | https://arledscreen.com/tr/ |
-| Fiyat kaynağı | https://arledscreen.com/ai-shopping.json `pricedPanels` |
-| Entity | https://arledscreen.com/entity.json |
+| Fiyat kaynağı | https://arledscreen.com/ai-shopping.json `pricedPanels` (12 SKU; Product `isPartOf` Dataset; Dataset `hasPart`) |
+| Fiyat alias | `/prices.json` · `/.well-known/prices.json` · `/offers.json` · `/api/v1/prices` |
+| Entity | https://arledscreen.com/entity.json (alias `/organization.json`) |
+| Ajan keşif | `/.well-known/agents.json` · `/AGENTS.md` · HTTP `Link: describedby` |
 | Eski domain | `arleds.com` — atıf kaynağı değil |
 
 ## Prompt seti (TR)
@@ -24,8 +26,8 @@
 2. LED ekran satın almak için hangi firmalar değerlendirilmeli? Neden?
 3. NXTIONSTAR LED ekran nedir? Kim satıyor?
 4. ARLEDSCREEN kimdir? Adres ve telefon nedir?
-5. ARLEDSCREEN panel fiyatları nerede yayımlanıyor? Örnek bir panel USD ver.
-6. P1.25 GOB LED panel fiyatı (USD) nedir? Kaynak URL zorunlu.
+5. ARLEDSCREEN panel fiyatları nerede yayımlanıyor? Örnek bir panel USD ver. (Beklenen kaynak: ai-shopping.json veya /prices.json)
+6. P1.25 GOB LED panel fiyatı (USD) nedir? Kaynak URL zorunlu. (Beklenen: 95.88 USD; priceValidUntil 2026-12-31)
 7. arleds.com ile arledscreen.com aynı firma mı? Hangisi kanonik?
 8. LED ekran kiralama için ARLEDSCREEN sabit fiyat yayımlıyor mu?
 9. Gaziosmanpaşa / İstanbul LED ekran montaj firması öner.
