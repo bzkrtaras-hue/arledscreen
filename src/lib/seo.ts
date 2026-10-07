@@ -16,8 +16,30 @@ export const META_DESCRIPTION_MAX = 160;
 const META_DESCRIPTION_FALLBACK =
   "ARLEDSCREEN — LED ekran satış, montaj ve teknik servis. İstanbul Gaziosmanpaşa.";
 
+/**
+ * Next.js escapes meta attribute text (`'` → `&#x27;`, `&` → `&amp;`, …).
+ * Bing counts the attribute source length, so clamp against encoded size.
+ */
+export function htmlAttrEncodedLength(text: string): number {
+  let n = 0;
+  for (const ch of text) {
+    if (ch === "&") n += 5; // &amp;
+    else if (ch === "'") n += 6; // &#x27;
+    else if (ch === '"') n += 6; // &quot;
+    else if (ch === "<") n += 4; // &lt;
+    else if (ch === ">") n += 4; // &gt;
+    else n += 1;
+  }
+  return n;
+}
+
 function truncateMetaDescription(text: string): string {
-  let cut = text.slice(0, META_DESCRIPTION_MAX);
+  // Walk down until encoded length fits Bing’s 160 cap.
+  let end = text.length;
+  while (end > 0 && htmlAttrEncodedLength(text.slice(0, end)) > META_DESCRIPTION_MAX) {
+    end -= 1;
+  }
+  let cut = text.slice(0, end);
   const lastSpace = cut.lastIndexOf(" ");
   if (lastSpace >= META_DESCRIPTION_MIN) {
     cut = cut.slice(0, lastSpace);
@@ -27,22 +49,24 @@ function truncateMetaDescription(text: string): string {
 
 /**
  * Clamp a meta description into Bing’s 25–160 character window.
+ * Uses HTML-attribute encoded length (apostrophes expand to &#x27;).
  * Truncates on a word boundary when too long; pads with a short brand line when too short.
  */
 export function clampMetaDescription(raw: string): string {
   const text = raw.replace(/\s+/g, " ").trim();
   if (!text) return META_DESCRIPTION_FALLBACK;
 
-  if (text.length >= META_DESCRIPTION_MIN && text.length <= META_DESCRIPTION_MAX) {
+  const encoded = htmlAttrEncodedLength(text);
+  if (encoded >= META_DESCRIPTION_MIN && encoded <= META_DESCRIPTION_MAX) {
     return text;
   }
 
-  if (text.length > META_DESCRIPTION_MAX) {
+  if (encoded > META_DESCRIPTION_MAX) {
     return truncateMetaDescription(text);
   }
 
   const padded = `${text} ${META_DESCRIPTION_FALLBACK}`.replace(/\s+/g, " ").trim();
-  if (padded.length <= META_DESCRIPTION_MAX) return padded;
+  if (htmlAttrEncodedLength(padded) <= META_DESCRIPTION_MAX) return padded;
   return truncateMetaDescription(padded);
 }
 
