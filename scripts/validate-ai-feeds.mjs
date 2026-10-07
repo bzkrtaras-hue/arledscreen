@@ -938,6 +938,11 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("invent-modules-tr:") ||
     !aiTxtLive.includes("invent-magaza-en:") ||
     !aiTxtLive.includes("feed-alias-well-known-mpn:") ||
+    !aiTxtLive.includes("feed-alias-well-known-panels:") ||
+    !aiTxtLive.includes("feed-alias-well-known-modules:") ||
+    !aiTxtLive.includes("feed-alias-well-known-sku:") ||
+    !aiTxtLive.includes("feed-alias-well-known-price:") ||
+    !aiTxtLive.includes("feed-alias-well-known-pricing:") ||
     !aiTxtLive.includes("feed-alias-api-panels:")
   ) {
     console.error("❌ out/ai.txt must list invent bridges + feed path aliases");
@@ -2363,6 +2368,15 @@ if (fs.existsSync(outDir)) {
     "/point-c.txt",
     "/point-c-en.txt",
     "/.well-known/point-c.txt",
+    "/.well-known/panels.json",
+    "/.well-known/mpn.json",
+    "/.well-known/merchant.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+    "/modules.json",
+    "/sku.json",
   ]) {
     if (!indexNowScript.includes(must)) {
       console.error(`❌ submit-indexnow.mjs must include ${must}`);

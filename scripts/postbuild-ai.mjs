@@ -1733,6 +1733,11 @@ feed-alias-mpn-json: ${SITE_URL}/mpn.json
 feed-alias-merchant-json: ${SITE_URL}/merchant.json
 feed-alias-well-known-merchant: ${SITE_URL}/.well-known/merchant.json
 feed-alias-well-known-mpn: ${SITE_URL}/.well-known/mpn.json
+feed-alias-well-known-panels: ${SITE_URL}/.well-known/panels.json
+feed-alias-well-known-modules: ${SITE_URL}/.well-known/modules.json
+feed-alias-well-known-sku: ${SITE_URL}/.well-known/sku.json
+feed-alias-well-known-price: ${SITE_URL}/.well-known/price.json
+feed-alias-well-known-pricing: ${SITE_URL}/.well-known/pricing.json
 feed-alias-api-panels: ${SITE_URL}/api/panels
 feed-alias-api-merchant: ${SITE_URL}/api/merchant
 feed-alias-api-mpn: ${SITE_URL}/api/mpn

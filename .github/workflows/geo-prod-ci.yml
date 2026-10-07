@@ -68,4 +68,9 @@ jobs:
           grep -q "/geo-baseline.json" out/feeds/prices.rss
           grep -q "/point-c.txt" out/feeds/prices.rss
           grep -q "owner-tur1a-log:" out/ai.txt
+          grep -q "feed-alias-well-known-modules:" out/ai.txt
+          grep -q "/.well-known/modules.json" scripts/submit-indexnow.mjs
+          grep -q "/.well-known/sku.json" scripts/submit-indexnow.mjs
+          grep -q "/.well-known/price.json" scripts/submit-indexnow.mjs
+          grep -q "/.well-known/pricing.json" scripts/submit-indexnow.mjs
           echo "OK owner tooling"

@@ -81,6 +81,11 @@ feed-alias-mpn-json: https://arledscreen.com/mpn.json
 feed-alias-merchant-json: https://arledscreen.com/merchant.json
 feed-alias-well-known-merchant: https://arledscreen.com/.well-known/merchant.json
 feed-alias-well-known-mpn: https://arledscreen.com/.well-known/mpn.json
+feed-alias-well-known-panels: https://arledscreen.com/.well-known/panels.json
+feed-alias-well-known-modules: https://arledscreen.com/.well-known/modules.json
+feed-alias-well-known-sku: https://arledscreen.com/.well-known/sku.json
+feed-alias-well-known-price: https://arledscreen.com/.well-known/price.json
+feed-alias-well-known-pricing: https://arledscreen.com/.well-known/pricing.json
 feed-alias-api-panels: https://arledscreen.com/api/panels
 feed-alias-api-merchant: https://arledscreen.com/api/merchant
 feed-alias-api-mpn: https://arledscreen.com/api/mpn
