@@ -591,7 +591,7 @@
         "type": "Agent Discovery Index",
         "url": "https://arledscreen.com/.well-known/agents.json",
         "format": "application/ld+json",
-        "description": "ItemList (18) entry points to ard/entity/brand/ai-shopping/catalog/llms/entity-profiles/point-c/organization/prices/#website. Aliases: /agents.json · /agent.json · /.well-known/agent.json · AGENTS.md. Prefer ai-shopping.json (aliases /prices.json · /panels.json · /mpn.json · /modules.json · /sku.json · /api/panels.json · /.well-known/prices.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/price.json · /.well-known/pricing.json · /offers.json · /api/v1/prices) for prices. Entity aliases: /organization.json · /.well-known/entity.json · /api/entity.json. WebSite: /#website.",
+        "description": "ItemList (19) entry points to ard/entity/brand/ai-shopping/catalog/llms/entity-profiles/point-c/organization/prices/#website/security.txt. Aliases: /agents.json · /agent.json · /.well-known/agent.json · AGENTS.md. Prefer ai-shopping.json (aliases /prices.json · /panels.json · /mpn.json · /modules.json · /sku.json · /api/panels.json · /.well-known/prices.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/price.json · /.well-known/pricing.json · /offers.json · /api/v1/prices) for prices. Entity aliases: /organization.json · /.well-known/entity.json · /api/entity.json. WebSite: /#website. Trust: /.well-known/security.txt.",
         "alias": "https://arledscreen.com/agents.json"
       },
       "brandJson": {
