@@ -18,6 +18,19 @@ Allow: /llms-full.txt
 Allow: /ai.txt
 Allow: /feeds/
 Allow: /.well-known/ard.json
+Allow: /.well-known/llms.txt
+Allow: /catalog
+Allow: /ai-shopping
+Allow: /entity
+Allow: /geo-baseline
+Allow: /llms
+Allow: /pricing.json
+Allow: /products.json
+Allow: /en/ai-shopping.json
+Allow: /en/catalog.json
+Allow: /en/entity.json
+Allow: /en/geo-baseline.json
+Allow: /en/llms.txt
 
 User-Agent: bingbot
 Allow: /

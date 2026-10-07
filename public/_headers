@@ -96,6 +96,141 @@
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
+# Inventable feed path aliases (extensionless + locale-prefixed + synonym filenames).
+# Canonical remains *.json / llms.txt; aliases are byte-identical copies from postbuild.
+/catalog
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/ai-shopping
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/entity
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/geo-baseline
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/products.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/pricing.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/feed.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/catalog.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/ai-shopping.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/entity.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/geo-baseline.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/tr/catalog.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/tr/ai-shopping.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/tr/entity.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/llms
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/llms-full
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/llms.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/llms.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/ai.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
 /feeds/*
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *

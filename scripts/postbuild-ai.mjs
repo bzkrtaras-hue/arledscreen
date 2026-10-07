@@ -786,6 +786,79 @@ function copyPublicToOut(relPath) {
   return true;
 }
 
+/**
+ * Inventable feed path aliases — agents often drop .json/.txt or locale-prefix feeds.
+ * CF 404.html beats _redirects, so these must be real files under out/ (deploy root).
+ * Canonical URLs stay *.json / llms.txt; aliases are byte-identical copies.
+ */
+function writeFeedPathAliases(dir) {
+  const copies = [
+    ["catalog.json", "catalog"],
+    ["catalog.json", "products.json"],
+    ["catalog.json", "en/catalog.json"],
+    ["catalog.json", "tr/catalog.json"],
+    ["ai-shopping.json", "ai-shopping"],
+    ["ai-shopping.json", "pricing.json"],
+    ["ai-shopping.json", "feed.json"],
+    ["ai-shopping.json", "en/ai-shopping.json"],
+    ["ai-shopping.json", "tr/ai-shopping.json"],
+    ["entity.json", "entity"],
+    ["entity.json", "en/entity.json"],
+    ["entity.json", "tr/entity.json"],
+    ["geo-baseline.json", "geo-baseline"],
+    ["geo-baseline.json", "en/geo-baseline.json"],
+    ["geo-baseline.json", "tr/geo-baseline.json"],
+    ["entity-profiles.json", "en/entity-profiles.json"],
+    ["llms.txt", "llms"],
+    ["llms.txt", ".well-known/llms.txt"],
+    ["llms.txt", "en/llms.txt"],
+    ["llms-full.txt", "llms-full"],
+    ["ai.txt", "en/ai.txt"],
+  ];
+  let n = 0;
+  for (const [srcRel, destRel] of copies) {
+    const src = path.join(dir, srcRel);
+    if (!fs.existsSync(src)) continue;
+    const dest = path.join(dir, destRel);
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.copyFileSync(src, dest);
+    n += 1;
+  }
+  // Trailing-slash HTML bridges for extensionless directories (dir/index.html).
+  // Do NOT overwrite /en/catalog/ — that Next invent bridge points at products hub.
+  const slashBridges = [
+    ["catalog/", "/catalog.json", "Product catalog feed"],
+    ["ai-shopping/", "/ai-shopping.json", "AI shopping pricedPanels feed"],
+    ["entity/", "/entity.json", "Organization entity feed"],
+    ["geo-baseline/", "/geo-baseline.json", "GEO technical baseline"],
+    ["llms/", "/llms.txt", "LLM context (short)"],
+    ["en/ai-shopping/", "/ai-shopping.json", "AI shopping pricedPanels feed"],
+    ["en/entity/", "/entity.json", "Organization entity feed"],
+    ["en/geo-baseline/", "/geo-baseline.json", "GEO technical baseline"],
+  ];
+  for (const [dirRel, target, h1] of slashBridges) {
+    const html = `<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="robots" content="noindex, follow"/>
+<link rel="canonical" href="${SITE_URL}${target}"/>
+<meta http-equiv="refresh" content="0;url=${target}"/>
+<title>${h1} | ARLEDSCREEN</title>
+</head><body>
+<main>
+<h1>${h1}</h1>
+<p>Canonical hub: <a href="${target}">${target}</a>. Site: arledscreen.com (not arleds.com).</p>
+<p><a href="${target}">Open feed</a></p>
+</main>
+</body></html>
+`;
+    const dest = path.join(dir, dirRel, "index.html");
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.writeFileSync(dest, html);
+    n += 1;
+  }
+  return n;
+}
+
 function validate() {
   const errors = [];
   for (const item of PANEL_PRICES) {
@@ -894,6 +967,16 @@ invent-price-list-en: ${SITE_URL}/en/price-list/
 invent-products-gob-en: ${SITE_URL}/en/products/gob/
 invent-products-indoor-en: ${SITE_URL}/en/products/indoor/
 invent-products-outdoor-en: ${SITE_URL}/en/products/outdoor/
+feed-alias-catalog: ${SITE_URL}/catalog
+feed-alias-ai-shopping: ${SITE_URL}/ai-shopping
+feed-alias-entity: ${SITE_URL}/entity
+feed-alias-geo-baseline: ${SITE_URL}/geo-baseline
+feed-alias-llms: ${SITE_URL}/llms
+feed-alias-well-known-llms: ${SITE_URL}/.well-known/llms.txt
+feed-alias-en-ai-shopping-json: ${SITE_URL}/en/ai-shopping.json
+feed-alias-en-catalog-json: ${SITE_URL}/en/catalog.json
+feed-alias-pricing-json: ${SITE_URL}/pricing.json
+feed-alias-products-json: ${SITE_URL}/products.json
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/
@@ -939,6 +1022,32 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
 `;
   writeText(publicDir, "ai.txt", aiTxt);
   writeText(outDir, "ai.txt", aiTxt);
+
+  // After canonical feeds + ai.txt exist in out/, emit inventable path aliases.
+  const aliasCount = writeFeedPathAliases(outDir);
+  if (aliasCount < 20) {
+    console.error(`postbuild-ai: expected ≥20 feed path aliases, got ${aliasCount}`);
+    process.exit(1);
+  }
+  for (const must of [
+    "catalog",
+    "ai-shopping",
+    "entity",
+    "geo-baseline",
+    "llms",
+    ".well-known/llms.txt",
+    "en/ai-shopping.json",
+    "en/catalog.json",
+    "pricing.json",
+    "products.json",
+    "catalog/index.html",
+    "ai-shopping/index.html",
+  ]) {
+    if (!fs.existsSync(path.join(outDir, must))) {
+      console.error(`postbuild-ai: missing feed alias in out/: ${must}`);
+      process.exit(1);
+    }
+  }
 
   if (!ai.pricedPanels || ai.pricedPanels.length !== 12) {
     console.error("postbuild-ai: pricedPanels must be 12");
@@ -1041,7 +1150,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
   }
 
   console.log(
-    `Generated ${PANEL_PRICES.length} pricedPanels + merchant TSV + geo-baseline in public/ + out/ (catalog, ai-shopping, feeds); entity-profiles → out/`,
+    `Generated ${PANEL_PRICES.length} pricedPanels + merchant TSV + geo-baseline in public/ + out/ (catalog, ai-shopping, feeds); entity-profiles → out/; feed aliases ×${aliasCount}`,
   );
 }
 

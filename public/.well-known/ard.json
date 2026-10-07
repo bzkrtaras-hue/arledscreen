@@ -254,7 +254,11 @@
           "https://arledscreen.com/en/catalog/",
           "https://arledscreen.com/en/shop/",
           "https://arledscreen.com/en/request-quote/",
-          "https://arledscreen.com/en/products/gob/"
+          "https://arledscreen.com/en/products/gob/",
+          "https://arledscreen.com/catalog",
+          "https://arledscreen.com/ai-shopping",
+          "https://arledscreen.com/en/ai-shopping.json",
+          "https://arledscreen.com/.well-known/llms.txt"
         ]
       }
     },

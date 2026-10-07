@@ -38,6 +38,19 @@ const DISCOVERY_ALLOW = [
   "/ai.txt",
   "/feeds/",
   "/.well-known/ard.json",
+  "/.well-known/llms.txt",
+  "/catalog",
+  "/ai-shopping",
+  "/entity",
+  "/geo-baseline",
+  "/llms",
+  "/pricing.json",
+  "/products.json",
+  "/en/ai-shopping.json",
+  "/en/catalog.json",
+  "/en/entity.json",
+  "/en/geo-baseline.json",
+  "/en/llms.txt",
 ] as const;
 
 export default function robots(): MetadataRoute.Robots {

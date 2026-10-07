@@ -371,9 +371,44 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("/en/catalog/") ||
     !aiTxtLive.includes("/en/shop/") ||
     !aiTxtLive.includes("/en/request-quote/") ||
-    !aiTxtLive.includes("/en/products/gob/")
+    !aiTxtLive.includes("/en/products/gob/") ||
+    !aiTxtLive.includes("feed-alias-catalog:") ||
+    !aiTxtLive.includes("/en/ai-shopping.json") ||
+    !aiTxtLive.includes("/.well-known/llms.txt")
   ) {
-    console.error("❌ out/ai.txt must list invent price/SKU/catalog/shop/quote/products-gob bridges");
+    console.error("❌ out/ai.txt must list invent bridges + feed path aliases");
+    process.exit(1);
+  }
+  // Inventable feed path aliases (extensionless / locale-prefixed) must exist in out/.
+  for (const rel of [
+    "catalog",
+    "ai-shopping",
+    "entity",
+    "geo-baseline",
+    "llms",
+    ".well-known/llms.txt",
+    "en/ai-shopping.json",
+    "en/catalog.json",
+    "en/entity.json",
+    "pricing.json",
+    "products.json",
+    "catalog/index.html",
+    "ai-shopping/index.html",
+  ]) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ Missing feed path alias in out/: ${rel}`);
+      process.exit(1);
+    }
+  }
+  // Byte-identical to canonical where applicable.
+  const canonCatalog = fs.readFileSync(path.join(outDir, "catalog.json"));
+  if (!fs.readFileSync(path.join(outDir, "catalog")).equals(canonCatalog)) {
+    console.error("❌ out/catalog must match catalog.json");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, "en/ai-shopping.json")).equals(fs.readFileSync(path.join(outDir, "ai-shopping.json")))) {
+    console.error("❌ out/en/ai-shopping.json must match ai-shopping.json");
     process.exit(1);
   }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
@@ -413,9 +448,13 @@ if (fs.existsSync(outDir)) {
     !inventExamples.some((u) => String(u).includes("/en/catalog/")) ||
     !inventExamples.some((u) => String(u).includes("/en/shop/")) ||
     !inventExamples.some((u) => String(u).includes("/en/request-quote/")) ||
-    !inventExamples.some((u) => String(u).includes("/en/products/gob/"))
+    !inventExamples.some((u) => String(u).includes("/en/products/gob/")) ||
+    !inventExamples.some((u) => /\/catalog\/?$/.test(String(u).replace(/["']/g, ""))) ||
+    !inventExamples.some((u) => String(u).includes("/ai-shopping") && !String(u).includes(".json")) ||
+    !inventExamples.some((u) => String(u).includes("/en/ai-shopping.json")) ||
+    !inventExamples.some((u) => String(u).includes("/.well-known/llms.txt"))
   ) {
-    console.error("❌ ard.json enInventBridges.examples must include catalog/shop/request-quote/products-gob");
+    console.error("❌ ard.json enInventBridges.examples must include catalog/shop + feed aliases");
     process.exit(1);
   }
   if (!ard?.agentic?.resources?.aiTxt?.url?.includes("/ai.txt")) {
