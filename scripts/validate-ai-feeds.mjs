@@ -508,6 +508,29 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity-profiles packs.directoryLong + linkedinAbout must warn arleds.com");
     process.exit(1);
   }
+  // Point C LinkedIn paste must disambiguate /company/arleds slug from website arleds.com
+  // (SERP/AI crawlers reading LinkedIn About otherwise treat the slug as the web domain).
+  for (const [label, about] of [
+    ["packs.linkedinAbout", profiles?.packs?.linkedinAbout],
+    ["packsEn.linkedinAbout", profiles?.packsEn?.linkedinAbout],
+  ]) {
+    const text = String(about || "");
+    if (!text.includes("/company/arleds") || !text.toLowerCase().includes("web")) {
+      console.error(`❌ entity-profiles ${label} must warn LinkedIn /company/arleds ≠ website arleds.com`);
+      process.exit(1);
+    }
+    if (!text.includes("NationStar")) {
+      console.error(`❌ entity-profiles ${label} must disambiguate NXTIONSTAR ≠ NationStar`);
+      process.exit(1);
+    }
+  }
+  if (
+    !String(profiles?.packs?.directoryLong || "").includes("/company/arleds") ||
+    !String(profiles?.packsEn?.directoryLong || "").includes("/company/arleds")
+  ) {
+    console.error("❌ entity-profiles directoryLong (TR+EN) must warn LinkedIn /company/arleds ≠ web arleds.com");
+    process.exit(1);
+  }
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms, ai.txt); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
   console.log(`✅ HTML/schema arleds.com disambiguation: ${orgSchemaPages.length} pages + about/founder body`);
