@@ -337,10 +337,10 @@ export const EN_INVENT_BRIDGES: EnInventBridge[] = [
   },
   {
     slug: "contact-us",
-    target: "/en/contact/",
+    target: "/en/quote/",
     title: "Contact Us | ARLEDSCREEN",
     h1: "Contact us",
-    description: "EN contact bridge is /en/contact/ → quote hub. Bridge from inventable /en/contact-us/.",
+    description: "Inventable /en/contact-us/ → /en/quote/ (skip intermediate /en/contact/ hop).",
     cta: "Open contact",
   },
   {

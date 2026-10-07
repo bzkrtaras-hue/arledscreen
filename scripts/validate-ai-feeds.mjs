@@ -324,9 +324,13 @@ if (fs.existsSync(outDir)) {
     !String(baseline?.baseline?.priceGraph?.offerItemOffered || "").includes("#product") ||
     !String(baseline?.baseline?.priceGraph?.offerAvailableAtOrFrom || "").includes("#localbusiness") ||
     !String(baseline?.baseline?.priceGraph?.organizationLocation || "").includes("#localbusiness") ||
-    !String(baseline?.baseline?.priceGraph?.serviceProvider || "").includes("#localbusiness")
+    !String(baseline?.baseline?.priceGraph?.serviceProvider || "").includes("#localbusiness") ||
+    !String(baseline?.baseline?.priceGraph?.brandMakesOffer || "").includes("#priced-panels-aggregate") ||
+    !String(baseline?.baseline?.priceGraph?.brandHasOfferCatalog || "").includes("/catalog.json") ||
+    !String(baseline?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    !String(baseline?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
   ) {
-    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + itemOffered + hasPart Offers + #localbusiness location + serviceProvider");
+    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + Brand offer/catalog + #localbusiness location + serviceProvider");
     process.exit(1);
   }
   for (const key of ["pricesJson", "organization", "agentsJson", "agentsMd", "securityTxt", "humansTxt"]) {
@@ -818,9 +822,12 @@ if (fs.existsSync(outDir)) {
   }
   if (
     agents?.provider?.location?.["@id"] !== "https://arledscreen.com/#localbusiness" ||
-    !String(agents?.provider?.makesOffer || "").includes("#priced-panels-aggregate")
+    !String(agents?.provider?.makesOffer || "").includes("#priced-panels-aggregate") ||
+    !String(agents?.provider?.hasOfferCatalog || "").includes("/catalog.json") ||
+    !String(agents?.provider?.brand?.makesOffer || "").includes("#priced-panels-aggregate") ||
+    !String(agents?.provider?.brand?.hasOfferCatalog || "").includes("/catalog.json")
   ) {
-    console.error("❌ agents.json provider must location #localbusiness + makesOffer AggregateOffer");
+    console.error("❌ agents.json provider must location #localbusiness + makesOffer/hasOfferCatalog + Brand offer/catalog");
     process.exit(1);
   }
   if (!fs.readFileSync(path.join(outDir, "agents.json")).equals(fs.readFileSync(path.join(outDir, ".well-known/agents.json")))) {
@@ -1981,6 +1988,8 @@ if (fs.existsSync(outDir)) {
     ["tr/hizmetler/index.html", (mid) => mid.includes("/tr/hizmetler/") && mid.endsWith("#service")],
     ["tr/yapay-zeka/index.html", (mid) => mid.includes("/tr/yapay-zeka/") && mid.endsWith("#service")],
     ["en/yapay-zeka/index.html", (mid) => mid.includes("/en/yapay-zeka/") && mid.endsWith("#service")],
+    ["tr/sss/index.html", (mid) => mid.includes("/tr/sss/") && mid.endsWith("#faqpage")],
+    ["en/sss/index.html", (mid) => mid.includes("/en/sss/") && mid.endsWith("#faqpage")],
   ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     let pageOk = false;

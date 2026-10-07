@@ -126,12 +126,13 @@ export default async function SssPage({ params }: { params: Promise<{ locale: st
           { name: copy.h1, item: url },
         ]}
       />
-      <FaqJsonLd faqs={faqs} />
+      <FaqJsonLd faqs={faqs} pageUrl={url} />
       <SpeakableJsonLd
         pageUrl={url}
         name={copy.h1}
         description={copy.speakableDesc}
         cssSelectors={["#sss-h1", "#sss-lead"]}
+        mainEntity={{ "@id": `${url}#faqpage` }}
       />
       <script
         type="application/ld+json"

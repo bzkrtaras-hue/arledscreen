@@ -12,7 +12,13 @@
   "brand": {
     "@type": "Brand",
     "@id": "https://arledscreen.com/#brand-nxtionstar",
-    "name": "NXTIONSTAR"
+    "name": "NXTIONSTAR",
+    "makesOffer": {
+      "@id": "https://arledscreen.com/#priced-panels-aggregate"
+    },
+    "hasOfferCatalog": {
+      "@id": "https://arledscreen.com/catalog.json"
+    }
   },
   "baseline": {
     "goalTargetDate": "2026-11-04",
@@ -33,6 +39,8 @@
     "provinceLandingPolicy": "Only provinces with published project records; no 81-il programatic doorways",
     "priceGraph": {
       "entityMakesOffer": "https://arledscreen.com/#priced-panels-aggregate",
+      "brandMakesOffer": "https://arledscreen.com/#priced-panels-aggregate",
+      "brandHasOfferCatalog": "https://arledscreen.com/catalog.json",
       "offerItemOffered": "PDP #product",
       "offerTriangle": "catalog ↔ ai-shopping ↔ PDP #offer",
       "datasetHasPartOffers": true,

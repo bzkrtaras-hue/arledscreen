@@ -85,13 +85,16 @@
     "brand": {
       "@type": "Brand",
       "@id": "https://arledscreen.com/#brand-nxtionstar",
-      "name": "NXTIONSTAR"
+      "name": "NXTIONSTAR",
+      "makesOffer": "https://arledscreen.com/#priced-panels-aggregate",
+      "hasOfferCatalog": "https://arledscreen.com/catalog.json"
     },
     "location": {
       "@type": "LocalBusiness",
       "@id": "https://arledscreen.com/#localbusiness"
     },
-    "makesOffer": "https://arledscreen.com/#priced-panels-aggregate"
+    "makesOffer": "https://arledscreen.com/#priced-panels-aggregate",
+    "hasOfferCatalog": "https://arledscreen.com/catalog.json"
   },
   "isBasedOn": [
     "https://arledscreen.com/.well-known/ard.json",

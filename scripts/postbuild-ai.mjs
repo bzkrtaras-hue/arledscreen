@@ -911,6 +911,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       "@type": "Brand",
       "@id": `${SITE_URL}/#brand-nxtionstar`,
       name: "NXTIONSTAR",
+      makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+      hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     },
     baseline: {
       goalTargetDate: "2026-11-04",
@@ -932,6 +934,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       provinceLandingPolicy: "Only provinces with published project records; no 81-il programatic doorways",
       priceGraph: {
         entityMakesOffer: `${SITE_URL}/#priced-panels-aggregate`,
+        brandMakesOffer: `${SITE_URL}/#priced-panels-aggregate`,
+        brandHasOfferCatalog: `${SITE_URL}/catalog.json`,
         offerItemOffered: "PDP #product",
         offerTriangle: "catalog ↔ ai-shopping ↔ PDP #offer",
         datasetHasPartOffers: true,
