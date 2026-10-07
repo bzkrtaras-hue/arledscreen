@@ -29,6 +29,14 @@ gallery-en: https://arledscreen.com/en/galeri/
 blog-en: https://arledscreen.com/en/blog/
 privacy-tr: https://arledscreen.com/tr/gizlilik/
 privacy-en: https://arledscreen.com/en/gizlilik/
+invent-calculator-en: https://arledscreen.com/en/calculator/
+invent-faq-en: https://arledscreen.com/en/faq/
+invent-gallery-en: https://arledscreen.com/en/gallery/
+invent-projects-en: https://arledscreen.com/en/projects/
+invent-regions-en: https://arledscreen.com/en/regions/
+invent-services-en: https://arledscreen.com/en/services/
+invent-brand-en: https://arledscreen.com/en/brand/
+invent-teklif-en: https://arledscreen.com/en/teklif/
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/
