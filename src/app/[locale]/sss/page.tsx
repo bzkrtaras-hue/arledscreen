@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import faqs from "@/content/sss.json";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -31,6 +32,12 @@ export default async function SssPage({ params }: { params: Promise<{ locale: st
         ]}
       />
       <FaqJsonLd faqs={faqs} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/sss/"))),
+        }}
+      />
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">SSS</p>

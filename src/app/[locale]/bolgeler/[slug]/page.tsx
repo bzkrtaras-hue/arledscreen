@@ -11,6 +11,7 @@ import {
   getServiceRegion,
   serviceRegionPath,
 } from "@/content/service-regions";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -61,7 +62,7 @@ export default async function ServiceRegionPage({
     {
       question: `${region.name} LED ekran fiyatı ne kadar?`,
       answer:
-        "Sabit m² fiyatı yoktur. Panel USD listesi fiyat hesaplayıcıda yayımlanır; nihai tutar ölçü, piksel aralığı, iç/dış mekân ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+        "Sabit m² fiyatı yoktur. Yayımlanmış 12 panel USD: ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv (ör. P1.25 GOB 95.88 USD). Nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir; ücretsiz kargo yok.",
     },
     {
       question: "Keşif için ne paylaşmalıyım?",
@@ -95,6 +96,12 @@ export default async function ServiceRegionPage({
         ]}
       />
       <FaqJsonLd faqs={faqs} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(serviceRegionPath(region.slug)))),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
@@ -227,8 +234,15 @@ export default async function ServiceRegionPage({
           <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
             ai-shopping.json
           </a>{" "}
-          <code className="text-xs">pricedPanels</code> (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31).
-          KDV/nakliye hariç; ücretsiz kargo yok. Entity:{" "}
+          <code className="text-xs">pricedPanels</code>,{" "}
+          <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+            catalog.json
+          </a>
+          ,{" "}
+          <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+            merchant TSV
+          </a>{" "}
+          (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok. Entity:{" "}
           <a href="https://arledscreen.com/entity.json" className="font-semibold text-cyan hover:underline">
             entity.json
           </a>

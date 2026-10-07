@@ -5,7 +5,15 @@ import { ArrowRight, BookOpen, Calculator, CalendarDays, Check, ChevronRight, Fi
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
-import { CALC_EXTRAS, fmtM2, fmtUsd, panelProductsJsonLd, pricesForGroup, type PanelPrice } from "@/content/prices";
+import {
+  CALC_EXTRAS,
+  fmtM2,
+  fmtUsd,
+  panelProductsJsonLd,
+  pricedPanelsDatasetJsonLd,
+  pricesForGroup,
+  type PanelPrice,
+} from "@/content/prices";
 import { modelPath, modelsForGroup, modelUrlForPrice, SPEC_LABELS, type SpecKey } from "@/content/models";
 import { OptImage } from "@/components/ui/opt-image";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -53,7 +61,7 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
     question: `${name} fiyatı ne kadar?`,
     answer:
       `2026 fiyat listemizde NXTIONSTAR ${name} panelleri, panel başına ${fmtUsd(lo.usd)} USD (${priceLabel(lo)}) ile ${fmtUsd(hi.usd)} USD (${priceLabel(hi)}) arasındadır; KDV ve nakliye hariçtir; ücretsiz kargo yoktur. ` +
-      `Makinece kaynak: ai-shopping.json pricedPanels ve catalog.json. ` +
+      `Makinece kaynak: ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv. ` +
       (lo.moduleMm || hi.moduleMm
         ? ""
         : `1 m² yaklaşık 19,53 panel ettiği için yalnızca modül bedeli m² başına yaklaşık ${fmtM2(lo.usd)} – ${fmtM2(hi.usd)} USD olur. `) +
@@ -131,6 +139,12 @@ export default async function ProductGroupPage({ params }: PageProps) {
         ]}
       />
       <FaqJsonLd faqs={quickPrice ? [quickPrice, ...g.faqs] : g.faqs} />
+      {prices.length ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+        />
+      ) : null}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {productsLd ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsLd) }} />
@@ -382,9 +396,13 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
                   ai-shopping.json
                 </a>{" "}
-                <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) ve{" "}
+                <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31),{" "}
                 <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
                   catalog.json
+                </a>{" "}
+                ve{" "}
+                <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                  merchant TSV
                 </a>
                 . KDV/nakliye hariç; ücretsiz kargo yok.
               </p>

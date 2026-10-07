@@ -1,4 +1,5 @@
 import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
+import { PRICE_DATASETS } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS,
@@ -53,20 +54,7 @@ export function OrganizationJsonLd() {
         address,
         sameAs: [...ORGANIZATION_SAME_AS],
         brand: { "@type": "Brand", name: "NXTIONSTAR", url: absoluteUrl("/tr/nxtionstar/") },
-        subjectOf: [
-          {
-            "@type": "Dataset",
-            "@id": `${SITE_URL}/ai-shopping.json`,
-            name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
-            url: `${SITE_URL}/ai-shopping.json`,
-          },
-          {
-            "@type": "Dataset",
-            "@id": `${SITE_URL}/catalog.json`,
-            name: "ARLEDSCREEN priced panel catalog",
-            url: `${SITE_URL}/catalog.json`,
-          },
-        ],
+        subjectOf: PRICE_DATASETS,
         founder: {
           "@type": "Person",
           name: "Aras Bozkurt",

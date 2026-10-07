@@ -36,6 +36,12 @@ export const PRICE_DATASETS = [
     url: `${SITE_URL}/catalog.json`,
     name: "ARLEDSCREEN panel catalog",
   },
+  {
+    "@type": "Dataset" as const,
+    "@id": `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+    url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+    name: "ARLEDSCREEN merchant priced panels TSV",
+  },
 ];
 
 export const PANELS_PER_M2 = 1 / (0.32 * 0.16);
