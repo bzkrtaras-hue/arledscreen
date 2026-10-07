@@ -300,6 +300,21 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ catalog Offer.url must not point at price hub: ${id}`);
       process.exit(1);
     }
+    const sku = product?.sku;
+    const sameAs = Array.isArray(product?.sameAs) ? product.sameAs : [];
+    const offerSameAs = Array.isArray(product?.offers?.sameAs) ? product.offers.sameAs : [];
+    if (!sku || !sameAs.some((u) => String(u) === `${productUrl}#product`)) {
+      console.error(`❌ catalog Product ${id} sameAs must join PDP #product`);
+      process.exit(1);
+    }
+    if (product?.mainEntityOfPage !== productUrl) {
+      console.error(`❌ catalog Product ${id} mainEntityOfPage must be PDP url`);
+      process.exit(1);
+    }
+    if (!offerSameAs.some((u) => String(u).includes(`/ai-shopping.json#offer-${sku}`))) {
+      console.error(`❌ catalog Offer ${id} sameAs must join ai-shopping.json#offer-${sku}`);
+      process.exit(1);
+    }
   }
   const aiBasedOn = JSON.stringify(ai?.isBasedOn || []);
   if (!aiBasedOn.includes("/geo-baseline.json")) {

@@ -207,7 +207,7 @@ User-Agent: cohere-ai
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-07o-offer-brand-parity
+# cache-bust-geo60-2026-10-07p-catalog-pdp-sameas
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 

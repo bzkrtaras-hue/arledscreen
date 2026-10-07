@@ -189,6 +189,9 @@ function buildCatalog() {
       category: "LED ekran paneli",
       image: `${SITE_URL}${panel.image}`,
       url: panel.productUrl,
+      // Join catalog Product @id ↔ PDP Product @id (ai-shopping hasPart / HTML).
+      sameAs: [`${panel.productUrl}#product`],
+      mainEntityOfPage: panel.productUrl,
       // Align with ai-shopping pricedPanels: Product membership in the price Dataset.
       isPartOf: {
         "@type": "Dataset",
@@ -206,6 +209,8 @@ function buildCatalog() {
       offers: {
         "@type": "Offer",
         "@id": `${SITE_URL}/catalog.json#offer-${panel.id}`,
+        // Bidirectional join with ai-shopping Offer @id (pricedPanels).
+        sameAs: [`${SITE_URL}/ai-shopping.json#offer-${panel.id}`],
         // Per-SKU Offer URL = PDP (same as product.url / merchant TSV / ai-shopping).
         // Collection.url stays the price hub; do not point every Offer at the hub.
         url: panel.productUrl,
