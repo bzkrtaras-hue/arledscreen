@@ -580,6 +580,7 @@ if (fs.existsSync(outDir)) {
       "/point-c.txt",
       "/entity-profiles.json",
       "/AGENTS.md",
+      "#website",
     ]) {
       if (!geoDist.includes(needle)) {
         console.error(`❌ geo-baseline.json distribution invent must include ${needle}`);
@@ -1948,6 +1949,7 @@ if (fs.existsSync(outDir)) {
       "/geo-baseline.json",
       "/feeds/prices.rss",
       "/point-c.txt",
+      "#website",
     ]) {
       if (!epDist.includes(needle)) {
         console.error(`❌ entity-profiles.json distribution invent must include ${needle}`);
@@ -2372,6 +2374,9 @@ if (fs.existsSync(outDir)) {
     "entity_profiles_url",
     "point_c_url",
     "brand_well_known_url",
+    "modules_well_known_url",
+    "sku_well_known_url",
+    "offer_json_url",
     "organization_url",
     "geo_baseline_url",
     "website_url",
@@ -2401,6 +2406,9 @@ if (fs.existsSync(outDir)) {
   const profilesUrlIdx = tsvCols.indexOf("entity_profiles_url");
   const pointCUrlIdx = tsvCols.indexOf("point_c_url");
   const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
+  const modulesWkIdx = tsvCols.indexOf("modules_well_known_url");
+  const skuWkIdx = tsvCols.indexOf("sku_well_known_url");
+  const offerJsonUrlIdx = tsvCols.indexOf("offer_json_url");
   const orgUrlIdx = tsvCols.indexOf("organization_url");
   const geoBaselineUrlIdx = tsvCols.indexOf("geo_baseline_url");
   const websiteUrlIdx = tsvCols.indexOf("website_url");
@@ -2456,6 +2464,18 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[brandWkIdx] !== "https://arledscreen.com/.well-known/brand.json") {
       console.error(`❌ merchant TSV brand_well_known_url must be /.well-known/brand.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[modulesWkIdx] !== "https://arledscreen.com/.well-known/modules.json") {
+      console.error(`❌ merchant TSV modules_well_known_url must be /.well-known/modules.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[skuWkIdx] !== "https://arledscreen.com/.well-known/sku.json") {
+      console.error(`❌ merchant TSV sku_well_known_url must be /.well-known/sku.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[offerJsonUrlIdx] !== "https://arledscreen.com/offer.json") {
+      console.error(`❌ merchant TSV offer_json_url must be /offer.json for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[orgUrlIdx] !== "https://arledscreen.com/organization.json") {

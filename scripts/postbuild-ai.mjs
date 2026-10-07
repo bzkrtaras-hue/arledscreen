@@ -1133,6 +1133,9 @@ function buildMerchantTsv() {
     "entity_profiles_url",
     "point_c_url",
     "brand_well_known_url",
+    "modules_well_known_url",
+    "sku_well_known_url",
+    "offer_json_url",
     "organization_url",
     "geo_baseline_url",
     "website_url",
@@ -1186,6 +1189,9 @@ function buildMerchantTsv() {
         `${SITE_URL}/entity-profiles.json`,
         `${SITE_URL}/point-c.txt`,
         `${SITE_URL}/.well-known/brand.json`,
+        `${SITE_URL}/.well-known/modules.json`,
+        `${SITE_URL}/.well-known/sku.json`,
+        `${SITE_URL}/offer.json`,
         `${SITE_URL}/organization.json`,
         `${SITE_URL}/geo-baseline.json`,
         `${SITE_URL}/#website`,
@@ -1769,6 +1775,7 @@ function enrichEntityProfiles(doc) {
         encodingFormat: "text/tab-separated-values",
         contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       },
+      websiteDistributionEntry(),
     ];
 
   // profiles isBasedOn also joins prices.rss for RSS-first agents.
@@ -2018,6 +2025,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      websiteDistributionEntry(),
     ],
     brand: {
       "@type": "Brand",
@@ -3136,18 +3144,22 @@ Acknowledgments: https://arledscreen.com/brand.json
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
-    // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c, brand_wk, org, geo, website
+    // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
+    // brand_wk, modules_wk, sku_wk, offer_json, org, geo, website
     const websiteUrl = cells[cells.length - 1];
     const geoBaselineUrl = cells[cells.length - 2];
     const orgUrl = cells[cells.length - 3];
-    const brandWk = cells[cells.length - 4];
-    const pointCUrl = cells[cells.length - 5];
-    const profilesUrl = cells[cells.length - 6];
-    const catalogUrl = cells[cells.length - 7];
-    const pricesJsonUrl = cells[cells.length - 8];
-    const aiShoppingUrl = cells[cells.length - 9];
-    const shippingIncluded = cells[cells.length - 10];
-    const taxIncluded = cells[cells.length - 11];
+    const offerJsonUrl = cells[cells.length - 4];
+    const skuWk = cells[cells.length - 5];
+    const modulesWk = cells[cells.length - 6];
+    const brandWk = cells[cells.length - 7];
+    const pointCUrl = cells[cells.length - 8];
+    const profilesUrl = cells[cells.length - 9];
+    const catalogUrl = cells[cells.length - 10];
+    const pricesJsonUrl = cells[cells.length - 11];
+    const aiShoppingUrl = cells[cells.length - 12];
+    const shippingIncluded = cells[cells.length - 13];
+    const taxIncluded = cells[cells.length - 14];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3162,6 +3174,9 @@ Acknowledgments: https://arledscreen.com/brand.json
       profilesUrl !== `${SITE_URL}/entity-profiles.json` ||
       pointCUrl !== `${SITE_URL}/point-c.txt` ||
       brandWk !== `${SITE_URL}/.well-known/brand.json` ||
+      modulesWk !== `${SITE_URL}/.well-known/modules.json` ||
+      skuWk !== `${SITE_URL}/.well-known/sku.json` ||
+      offerJsonUrl !== `${SITE_URL}/offer.json` ||
       orgUrl !== `${SITE_URL}/organization.json` ||
       geoBaselineUrl !== `${SITE_URL}/geo-baseline.json` ||
       websiteUrl !== `${SITE_URL}/#website` ||

@@ -191,6 +191,7 @@ if (
     dist.includes("/prices.json") &&
     dist.includes("/catalog.json") &&
     dist.includes("/point-c.txt") &&
+    dist.includes("#website") &&
     JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") &&
     JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack") &&
     String(profiles?.canonicalUrls?.website || "").includes("#website") &&
@@ -259,6 +260,9 @@ else fail("ard.resources.pointC");
     head.includes("entity_profiles_url") &&
     head.includes("point_c_url") &&
     head.includes("brand_well_known_url") &&
+    head.includes("modules_well_known_url") &&
+    head.includes("sku_well_known_url") &&
+    head.includes("offer_json_url") &&
     head.includes("ai_shopping_url") &&
     head.includes("prices_json_url") &&
     head.includes("catalog_url") &&
@@ -274,12 +278,15 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/entity-profiles.json`) &&
     tsv.includes(`${SITE}/point-c.txt`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
+    tsv.includes(`${SITE}/.well-known/modules.json`) &&
+    tsv.includes(`${SITE}/.well-known/sku.json`) &&
+    tsv.includes(`${SITE}/offer.json`) &&
     tsv.includes(`${SITE}/organization.json`) &&
     tsv.includes(`${SITE}/geo-baseline.json`) &&
     tsv.includes(`${SITE}/#website`)
   ) {
-    ok("merchant TSV feed/org/entity/profiles/point-c/brand-wk/geo/website invent cols");
-  } else fail("merchant TSV feed/org/entity/profiles/point-c/brand-wk/geo/website invent cols");
+    ok("merchant TSV feed/wk/org/entity/profiles/point-c/geo/website invent cols");
+  } else fail("merchant TSV feed/wk/org/entity/profiles/point-c/geo/website invent cols");
 }
 
 if (
@@ -465,10 +472,11 @@ if (
     dist.includes("/catalog.json") &&
     dist.includes("/point-c.txt") &&
     dist.includes("AGENTS.md") &&
-    dist.includes("/entity-profiles.json")
+    dist.includes("/entity-profiles.json") &&
+    dist.includes("#website")
   ) {
-    ok("geo-baseline distribution invent → ai-shopping/prices/brand/entity/point-c/profiles");
-  } else fail("geo-baseline distribution invent → ai-shopping/prices/brand/entity/point-c/profiles");
+    ok("geo-baseline distribution invent → ai-shopping/prices/brand/entity/point-c/profiles/#website");
+  } else fail("geo-baseline distribution invent → ai-shopping/prices/brand/entity/point-c/profiles/#website");
   if (
     String(disc.modulesWellKnown || "").includes("/.well-known/modules.json") &&
     String(disc.skuWellKnown || "").includes("/.well-known/sku.json") &&

@@ -163,7 +163,8 @@
     "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/prices.json",
     "https://arledscreen.com/feeds/prices.rss",
-    "https://arledscreen.com/entity-profiles.json"
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/#website"
   ],
   "distribution": [
     {
