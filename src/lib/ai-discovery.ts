@@ -9,6 +9,9 @@ const MERCHANT_TSV_URL = `${SITE_URL}/feeds/merchant-priced-panels.tsv`;
 const ARD_URL = `${SITE_URL}/.well-known/ard.json`;
 const AGENTS_JSON_URL = `${SITE_URL}/.well-known/agents.json`;
 const PRICES_JSON_URL = `${SITE_URL}/prices.json`;
+const PANELS_JSON_URL = `${SITE_URL}/panels.json`;
+const MPN_JSON_URL = `${SITE_URL}/mpn.json`;
+const ENTITY_PROFILES_URL = `${SITE_URL}/entity-profiles.json`;
 const ORGANIZATION_JSON_URL = `${SITE_URL}/organization.json`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
@@ -24,7 +27,10 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: CATALOG_JSON_URL, title: "Product Catalog" },
         { url: AI_SHOPPING_URL, title: "AI Shopping Index" },
         { url: PRICES_JSON_URL, title: "Panel Prices (alias)" },
+        { url: PANELS_JSON_URL, title: "Panels pricedPanels (alias)" },
+        { url: MPN_JSON_URL, title: "MPN pricedPanels (alias)" },
         { url: ORGANIZATION_JSON_URL, title: "Organization (alias)" },
+        { url: ENTITY_PROFILES_URL, title: "Point C entity profiles" },
         { url: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
         { url: ARD_URL, title: "Agentic Resource Discovery" },
         { url: AGENTS_JSON_URL, title: "Agent Discovery Index" },
@@ -48,7 +54,10 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "application/ld+json", href: CATALOG_JSON_URL, title: "Product Catalog" },
   { rel: "alternate", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping Index" },
   { rel: "alternate", type: "application/ld+json", href: PRICES_JSON_URL, title: "Panel Prices (alias)" },
+  { rel: "alternate", type: "application/ld+json", href: PANELS_JSON_URL, title: "Panels pricedPanels (alias)" },
+  { rel: "alternate", type: "application/ld+json", href: MPN_JSON_URL, title: "MPN pricedPanels (alias)" },
   { rel: "alternate", type: "application/ld+json", href: ORGANIZATION_JSON_URL, title: "Organization (alias)" },
+  { rel: "alternate", type: "application/ld+json", href: ENTITY_PROFILES_URL, title: "Point C entity profiles" },
   { rel: "alternate", type: "application/ld+json", href: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
   { rel: "alternate", type: "application/ld+json", href: ARD_URL, title: "Agentic Resource Discovery" },
   { rel: "alternate", type: "application/ld+json", href: AGENTS_JSON_URL, title: "Agent Discovery Index" },

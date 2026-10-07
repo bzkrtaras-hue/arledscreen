@@ -1383,6 +1383,43 @@ if (fs.existsSync(outDir)) {
   }
   console.log("✅ fine-pitch hub emits 3 GOB Product/Offer SKUs");
 
+  // HTML Dataset on quote-only + priced hubs must hasPart 12 Product stubs (mpn=sku).
+  for (const rel of [
+    "tr/products/esnek-led-ekran/index.html",
+    "tr/products/ince-pitch-led-ekran/index.html",
+    "tr/yapay-zeka/index.html",
+  ]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    let found = false;
+    for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] === "Dataset" && Array.isArray(d.hasPart) && d.hasPart.length === 12) {
+          if (d.hasPart.every((p) => p?.sku && p.mpn === p.sku && String(p["@id"] || "").includes("#product"))) {
+            found = true;
+            break;
+          }
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!found) {
+      console.error(`❌ ${rel} Dataset must hasPart 12 Products (mpn=sku, @id …#product)`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ HTML Dataset hasPart×12 on quote-only + fine-pitch + yapay-zeka");
+
+  const homeHtml = fs.readFileSync(path.join(outDir, "tr/index.html"), "utf8");
+  for (const needle of ["panels.json", "mpn.json", "entity-profiles.json"]) {
+    if (!homeHtml.includes(needle)) {
+      console.error(`❌ tr/index.html must <link> alternate ${needle}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ HTML discovery links include panels/mpn/entity-profiles");
+
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms, ai.txt); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
   console.log(`✅ HTML/schema arleds.com disambiguation: ${orgSchemaPages.length} pages + about/founder body`);
