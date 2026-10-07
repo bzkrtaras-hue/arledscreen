@@ -3034,6 +3034,12 @@
       "name": "ARLEDSCREEN Point C paste packs",
       "url": "https://arledscreen.com/point-c.txt",
       "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://arledscreen.com/#brand-nxtionstar",
+      "name": "NXTIONSTAR",
+      "url": "https://arledscreen.com/brand.json"
     }
   ],
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",

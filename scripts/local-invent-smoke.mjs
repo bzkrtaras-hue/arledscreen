@@ -98,7 +98,9 @@ if (
   rss.includes("/catalog.json") &&
   rss.includes("/geo-baseline.json") &&
   rss.includes("/point-c.txt") &&
-  rss.includes("/.well-known/modules.json")
+  rss.includes("/.well-known/modules.json") &&
+  rss.includes("/.well-known/sku.json") &&
+  rss.includes('href="https://arledscreen.com/.well-known/modules.json"')
 ) {
   ok("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c");
 } else fail("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c");
