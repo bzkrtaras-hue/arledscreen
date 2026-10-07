@@ -535,8 +535,12 @@ if (fs.existsSync(outDir)) {
     }
   }
   const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 6) {
-    console.error("❌ agents.json must list ≥6 discovery items");
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 10) {
+    console.error("❌ agents.json must list ≥10 discovery items (incl. entity-profiles)");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("entity-profiles.json"))) {
+    console.error("❌ agents.json must list entity-profiles.json Point C packs");
     process.exit(1);
   }
   if (!String(agents.description || "").includes("ai-shopping.json")) {
@@ -768,8 +772,23 @@ if (fs.existsSync(outDir)) {
     "api/panels",
     "api/merchant",
     "api/mpn",
+    "api/panels.json",
+    "api/merchant.json",
+    "api/mpn.json",
+    "api/ai-shopping.json",
+    "api/prices.json",
+    "api/entity.json",
+    "panels",
+    "modules",
+    "sku",
+    "mpn",
+    "merchant",
+    "products",
+    "product.json",
     "v1/panels",
     "v1/merchant",
+    "v1/mpn",
+    "v1/sku",
     "feeds/prices.json",
     "feeds/catalog.json",
     "tr/llms.txt",
@@ -1340,7 +1359,13 @@ for (const must of [
   "/.well-known/mpn.json",
   "/api/panels",
   "/api/merchant",
+  "/api/panels.json",
   "/v1/merchant",
+  "/v1/mpn",
+  "/panels",
+  "/mpn",
+  "/merchant",
+  "/product.json",
   "/tr/llms.txt",
   "/tr/ai.txt",
   "/tr/entity-profiles.json",

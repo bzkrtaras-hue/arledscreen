@@ -2,9 +2,9 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "ARLEDSCREEN agent discovery",
-  "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD); inventable aliases /prices.json · /price.json · /pricing.json · /api/prices · /.well-known/prices.json · /offers.json · /api/v1/prices. Entity aliases /organization.json · /.well-known/entity.json. Also see /AGENTS.md. Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
+  "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD); inventable aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /merchant · /sku · /modules · /api/prices · /api/panels.json · /api/mpn.json · /.well-known/prices.json · /offers.json · /api/v1/prices. Entity aliases /organization.json · /.well-known/entity.json · /api/entity.json. Point C packs: /entity-profiles.json. Also see /AGENTS.md. Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
   "url": "https://arledscreen.com/.well-known/agents.json",
-  "numberOfItems": 9,
+  "numberOfItems": 10,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -25,21 +25,21 @@
       "position": 3,
       "name": "AI shopping pricedPanels",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Single price source: 12 panel USD Product/Offer graph; inventable aliases /ai-shopping, /api/prices, /pricing.json, /prices.json, /price.json, /en/prices.json"
+      "description": "Single price source: 12 panel USD Product/Offer graph; inventable aliases /ai-shopping · /api/prices · /api/panels.json · /pricing.json · /prices.json · /panels · /mpn · /merchant · /en/prices.json"
     },
     {
       "@type": "ListItem",
       "position": 4,
       "name": "Product catalog",
       "url": "https://arledscreen.com/catalog.json",
-      "description": "Published panel USD catalog; inventable aliases /catalog, /products.json, /api/catalog"
+      "description": "Published panel USD catalog; inventable aliases /catalog · /products · /products.json · /product.json · /api/catalog"
     },
     {
       "@type": "ListItem",
       "position": 5,
       "name": "Merchant priced panels TSV",
       "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
-      "description": "12 SKU merchant feed; mpn=id/sku (no invented GTIN); shipping_included=false; no free shipping. JSON invent aliases for same pricedPanels: /merchant.json · /panels.json · /mpn.json · /sku.json"
+      "description": "12 SKU merchant feed; mpn=id/sku (no invented GTIN); shipping_included=false; no free shipping. JSON invent aliases for same pricedPanels: /merchant.json · /panels.json · /mpn.json · /sku.json · /merchant · /panels · /mpn · /sku"
     },
     {
       "@type": "ListItem",
@@ -53,14 +53,14 @@
       "position": 7,
       "name": "LLM context",
       "url": "https://arledscreen.com/llms.txt",
-      "description": "Short LLM/agent context; also /.well-known/llms.txt"
+      "description": "Short LLM/agent context; also /.well-known/llms.txt · /tr/llms.txt · /en/llms.txt"
     },
     {
       "@type": "ListItem",
       "position": 8,
       "name": "AI discovery pointer",
       "url": "https://arledscreen.com/ai.txt",
-      "description": "Compact URL index for agents"
+      "description": "Compact URL index for agents; also /tr/ai.txt · /en/ai.txt"
     },
     {
       "@type": "ListItem",
@@ -68,6 +68,13 @@
       "name": "AGENTS.md",
       "url": "https://arledscreen.com/AGENTS.md",
       "description": "Short markdown agent discovery; points to ai-shopping.json + entity.json"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "Entity profile paste packs (Point C)",
+      "url": "https://arledscreen.com/entity-profiles.json",
+      "description": "Owner Point C packs (GBP/IG/FB/LinkedIn) + merchant readiness; inventable /tr/entity-profiles.json · /en/entity-profiles.json"
     }
   ],
   "provider": {

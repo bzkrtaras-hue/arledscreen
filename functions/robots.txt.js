@@ -55,7 +55,14 @@ Allow: /modules.json
 Allow: /sku.json
 Allow: /mpn.json
 Allow: /merchant.json
+Allow: /panels
+Allow: /modules
+Allow: /sku
+Allow: /mpn
+Allow: /merchant
 Allow: /products.json
+Allow: /products
+Allow: /product.json
 Allow: /organization.json
 Allow: /company.json
 Allow: /about.json
@@ -87,15 +94,23 @@ Allow: /api/catalog
 Allow: /api/catalog.json
 Allow: /api/products
 Allow: /api/prices
+Allow: /api/prices.json
 Allow: /api/panels
+Allow: /api/panels.json
 Allow: /api/merchant
+Allow: /api/merchant.json
 Allow: /api/mpn
+Allow: /api/mpn.json
 Allow: /api/entity
+Allow: /api/entity.json
 Allow: /api/ai-shopping
+Allow: /api/ai-shopping.json
 Allow: /api/v1/prices
 Allow: /v1/prices
 Allow: /v1/panels
 Allow: /v1/merchant
+Allow: /v1/mpn
+Allow: /v1/sku
 
 User-Agent: bingbot
 Allow: /
@@ -182,7 +197,7 @@ User-Agent: cohere-ai
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-07f-feeds-json-ct
+# cache-bust-geo60-2026-10-07g-extless-api-json
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 

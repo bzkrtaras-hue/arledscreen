@@ -891,12 +891,29 @@ function writeFeedPathAliases(dir) {
     ["ai-shopping.json", "sku.json"],
     ["ai-shopping.json", "mpn.json"],
     ["ai-shopping.json", "merchant.json"],
+    // Extensionless root (same pattern as /catalog · /ai-shopping · /entity).
+    ["ai-shopping.json", "panels"],
+    ["ai-shopping.json", "modules"],
+    ["ai-shopping.json", "sku"],
+    ["ai-shopping.json", "mpn"],
+    ["ai-shopping.json", "merchant"],
     ["ai-shopping.json", "feeds/prices.json"],
     ["ai-shopping.json", "api/merchant"],
     ["ai-shopping.json", "api/panels"],
     ["ai-shopping.json", "api/mpn"],
+    // Agents often append .json to /api/* paths (api/catalog.json already exists).
+    ["ai-shopping.json", "api/panels.json"],
+    ["ai-shopping.json", "api/mpn.json"],
+    ["ai-shopping.json", "api/merchant.json"],
+    ["ai-shopping.json", "api/ai-shopping.json"],
+    ["ai-shopping.json", "api/prices.json"],
+    ["entity.json", "api/entity.json"],
+    ["catalog.json", "product.json"],
+    ["catalog.json", "products"],
     ["ai-shopping.json", "v1/panels"],
     ["ai-shopping.json", "v1/merchant"],
+    ["ai-shopping.json", "v1/mpn"],
+    ["ai-shopping.json", "v1/sku"],
     ["ai-shopping.json", ".well-known/ai-shopping.json"],
     ["ai-shopping.json", ".well-known/prices.json"],
     ["ai-shopping.json", ".well-known/price.json"],
@@ -1126,6 +1143,21 @@ feed-alias-well-known-mpn: ${SITE_URL}/.well-known/mpn.json
 feed-alias-api-panels: ${SITE_URL}/api/panels
 feed-alias-api-merchant: ${SITE_URL}/api/merchant
 feed-alias-api-mpn: ${SITE_URL}/api/mpn
+feed-alias-api-panels-json: ${SITE_URL}/api/panels.json
+feed-alias-api-merchant-json: ${SITE_URL}/api/merchant.json
+feed-alias-api-mpn-json: ${SITE_URL}/api/mpn.json
+feed-alias-api-ai-shopping-json: ${SITE_URL}/api/ai-shopping.json
+feed-alias-api-prices-json: ${SITE_URL}/api/prices.json
+feed-alias-api-entity-json: ${SITE_URL}/api/entity.json
+feed-alias-panels: ${SITE_URL}/panels
+feed-alias-modules: ${SITE_URL}/modules
+feed-alias-sku: ${SITE_URL}/sku
+feed-alias-mpn: ${SITE_URL}/mpn
+feed-alias-merchant: ${SITE_URL}/merchant
+feed-alias-products: ${SITE_URL}/products
+feed-alias-product-json: ${SITE_URL}/product.json
+feed-alias-v1-mpn: ${SITE_URL}/v1/mpn
+feed-alias-v1-sku: ${SITE_URL}/v1/sku
 feed-alias-feeds-prices: ${SITE_URL}/feeds/prices.json
 feed-alias-feeds-catalog: ${SITE_URL}/feeds/catalog.json
 invent-root-teklif: ${SITE_URL}/teklif/
