@@ -25,12 +25,12 @@ export function HowToJsonLd({
     "@type": "HowTo",
     name,
     description,
+    // Process + price HowTo → Gaziosmanpaşa NAP (same place Offers availableAtOrFrom).
+    provider: localBusinessRef(),
     ...(citePriceDatasets
       ? {
           isBasedOn: BRAND_SUBJECT_DATASETS,
           citation: BRAND_SUBJECT_DATASETS.map((d) => d.url),
-          // Price HowTo → Gaziosmanpaşa NAP (same place Offers availableAtOrFrom).
-          provider: localBusinessRef(),
         }
       : {}),
     step: steps.map((step, index) => ({

@@ -728,7 +728,9 @@ function buildAiShopping() {
       entity: `${SITE_URL}/entity.json`,
       organization: `${SITE_URL}/organization.json`,
       entityProfiles: `${SITE_URL}/entity-profiles.json`,
-      brand: `${SITE_URL}/tr/nxtionstar/`,
+      brand: `${SITE_URL}/brand.json`,
+      brandHub: `${SITE_URL}/tr/nxtionstar/`,
+      brandHubEn: `${SITE_URL}/en/nxtionstar/`,
       brandId: `${SITE_URL}/#brand-nxtionstar`,
       geoBaseline: `${SITE_URL}/geo-baseline.json`,
       llms: `${SITE_URL}/llms.txt`,
@@ -1335,6 +1337,8 @@ merchant-tsv: ${SITE_URL}/feeds/merchant-priced-panels.tsv
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
+brand-json: ${SITE_URL}/brand.json
+brand-json-well-known: ${SITE_URL}/.well-known/brand.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/
 brand-en: ${SITE_URL}/en/nxtionstar/
 intent-tr: ${SITE_URL}/tr/led-ekran/
@@ -1587,6 +1591,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
   };
   writeJson(publicDir, "brand.json", brandDoc);
   writeJson(outDir, "brand.json", brandDoc);
+  // Well-known invent alias (parity with entity/catalog/prices).
+  const wellKnownBrand = path.join(outDir, ".well-known", "brand.json");
+  fs.mkdirSync(path.dirname(wellKnownBrand), { recursive: true });
+  fs.writeFileSync(wellKnownBrand, JSON.stringify(brandDoc, null, 2) + "\n");
+  fs.mkdirSync(path.join(publicDir, ".well-known"), { recursive: true });
+  fs.writeFileSync(path.join(publicDir, ".well-known", "brand.json"), JSON.stringify(brandDoc, null, 2) + "\n");
   // security.txt — trust / contact for agents & researchers (RFC 9116).
   const securityTxt = `Contact: mailto:arled@arledscreen.com
 Contact: https://arledscreen.com/tr/quote/
@@ -1653,6 +1663,7 @@ Hiring: https://arledscreen.com/tr/about/
     "about.json",
     "nap.json",
     "brand.json",
+    ".well-known/brand.json",
     "offers.json",
     "offer.json",
     "offer",
@@ -1723,10 +1734,11 @@ Hiring: https://arledscreen.com/tr/about/
     process.exit(1);
   }
   if (
-    !ai.resources?.brand?.includes("/tr/nxtionstar/") ||
+    !ai.resources?.brand?.includes("/brand.json") ||
+    !ai.resources?.brandHub?.includes("/tr/nxtionstar/") ||
     !ai.resources?.brandId?.includes("#brand-nxtionstar")
   ) {
-    console.error("postbuild-ai: ai-shopping resources.brand + brandId required");
+    console.error("postbuild-ai: ai-shopping resources.brand (/brand.json) + brandHub + brandId required");
     process.exit(1);
   }
   if (!merchantTsv.startsWith("id\tmpn\ttitle\ttitle_en\tbrand\tbrand_id\t")) {

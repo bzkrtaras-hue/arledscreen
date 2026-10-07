@@ -275,9 +275,10 @@ if (fs.existsSync(outDir)) {
   }
   if (
     !String(ardBrand?.makesOffer || "").includes("#priced-panels-aggregate") ||
-    !String(ardBrand?.hasOfferCatalog || "").includes("/catalog.json")
+    !String(ardBrand?.hasOfferCatalog || "").includes("/catalog.json") ||
+    !String(ardBrand?.url || "").includes("/brand.json")
   ) {
-    console.error("❌ ard.json resources.brand must cite makesOffer + hasOfferCatalog");
+    console.error("❌ ard.json resources.brand must cite makesOffer + hasOfferCatalog + url /brand.json");
     process.exit(1);
   }
   if (
@@ -323,8 +324,12 @@ if (fs.existsSync(outDir)) {
     console.error("❌ merchant TSV must include mpn column (honest MPN=sku; no invented GTIN)");
     process.exit(1);
   }
-  if (!ai?.resources?.brandId?.includes("#brand-nxtionstar") || !ai?.resources?.brand?.includes("/nxtionstar/")) {
-    console.error("❌ ai-shopping.json resources.brand + brandId required");
+  if (
+    !ai?.resources?.brandId?.includes("#brand-nxtionstar") ||
+    !String(ai?.resources?.brand || "").includes("/brand.json") ||
+    !String(ai?.resources?.brandHub || "").includes("/tr/nxtionstar/")
+  ) {
+    console.error("❌ ai-shopping.json resources.brand (/brand.json) + brandHub + brandId required");
     process.exit(1);
   }
   const baseline = JSON.parse(fs.readFileSync(path.join(outDir, "geo-baseline.json"), "utf8"));
@@ -717,9 +722,11 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("itemOffered") ||
     !aiTxtLive.includes("#localbusiness") ||
     !aiTxtLive.includes("#brand-nxtionstar") ||
-    !aiTxtLive.includes("hasOfferCatalog → catalog.json")
+    !aiTxtLive.includes("hasOfferCatalog → catalog.json") ||
+    !aiTxtLive.includes("brand-json:") ||
+    !aiTxtLive.includes("/brand.json")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json");
     process.exit(1);
   }
   if (
@@ -853,12 +860,16 @@ if (fs.existsSync(outDir)) {
     }
   }
   const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 10) {
-    console.error("❌ agents.json must list ≥10 discovery items (incl. entity-profiles)");
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 11) {
+    console.error("❌ agents.json must list ≥11 discovery items (incl. brand.json + entity-profiles)");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("entity-profiles.json"))) {
     console.error("❌ agents.json must list entity-profiles.json Point C packs");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/brand.json"))) {
+    console.error("❌ agents.json must list brand.json Brand document");
     process.exit(1);
   }
   if (!String(agents.description || "").includes("ai-shopping.json")) {
@@ -948,6 +959,10 @@ if (fs.existsSync(outDir)) {
       console.error("❌ out/brand.json must be Brand #brand-nxtionstar with makesOffer + hasOfferCatalog");
       process.exit(1);
     }
+    if (!fs.readFileSync(path.join(outDir, ".well-known/brand.json")).equals(fs.readFileSync(path.join(outDir, "brand.json")))) {
+      console.error("❌ out/.well-known/brand.json must match brand.json");
+      process.exit(1);
+    }
   }
   if (!fs.readFileSync(path.join(outDir, ".well-known/ai.txt")).equals(fs.readFileSync(path.join(outDir, "ai.txt")))) {
     console.error("❌ /.well-known/ai.txt must match /ai.txt");
@@ -1014,9 +1029,10 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("geo-baseline.json") ||
     !headersLive.includes("merchant.json") ||
     !headersLive.includes("offer.json") ||
-    !headersLive.includes("ai.txt")
+    !headersLive.includes("ai.txt") ||
+    !headersLive.includes("brand.json")
   ) {
-    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt");
+    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -2082,6 +2098,15 @@ if (fs.existsSync(outDir)) {
       console.error("❌ PDP WebPage.mainEntity must join #product");
       process.exit(1);
     }
+    if (
+      !pdpHtml.includes('product:price:amount') ||
+      !pdpHtml.includes('product:price:currency') ||
+      !pdpHtml.includes("content=\"USD\"") ||
+      !pdpHtml.includes("product:brand")
+    ) {
+      console.error("❌ priced PDP must emit Open Graph product:price:* + product:brand meta");
+      process.exit(1);
+    }
     console.log("✅ PDP Product/Offer sameAs joins catalog + ai-shopping; WebPage→Product");
   }
 
@@ -2200,6 +2225,24 @@ if (fs.existsSync(outDir)) {
     }
     if (!howOk) {
       console.error("❌ hesaplayici HowTo.provider must be #localbusiness");
+      process.exit(1);
+    }
+    const hizmetHtml = fs.readFileSync(path.join(outDir, "tr/hizmetler/index.html"), "utf8");
+    let hizmetHowOk = false;
+    for (const m of hizmetHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "HowTo") continue;
+        if (d?.provider?.["@id"] === "https://arledscreen.com/#localbusiness") {
+          hizmetHowOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!hizmetHowOk) {
+      console.error("❌ hizmetler HowTo.provider must be #localbusiness");
       process.exit(1);
     }
   }

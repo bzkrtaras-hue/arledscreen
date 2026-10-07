@@ -76,6 +76,7 @@ const URLS = [
   `https://${HOST}/about.json`,
   `https://${HOST}/nap.json`,
   `https://${HOST}/brand.json`,
+  `https://${HOST}/.well-known/brand.json`,
   `https://${HOST}/offer.json`,
   `https://${HOST}/offers.json`,
   `https://${HOST}/offer`,

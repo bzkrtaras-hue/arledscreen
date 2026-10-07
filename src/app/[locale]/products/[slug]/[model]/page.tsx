@@ -150,6 +150,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: modelPath(m).replace(/^\/tr/, ""),
     title: `${m.name.replace(/ LED Modül$/, " LED Ekran Modülü")} – Teknik Özellikler${price ? " ve Fiyat" : ""} | ARLEDSCREEN`,
     description: `${m.name}: ${pitch} piksel aralığı${m.specs.moduleSize ? `, ${m.specs.moduleSize.value} modül` : ""}${m.specs.matrix ? `, ${m.specs.matrix.value}` : ""}. Teknik özellikler${price ? `, panel fiyatı (${fmtUsd(price.usd)} USD)` : ""}, kullanım alanları ve teklif.`,
+    ...(price
+      ? {
+          productMeta: {
+            amountUsd: price.usd,
+            sku: price.id,
+            brand: "NXTIONSTAR",
+            availability: "in stock",
+          },
+        }
+      : {}),
   });
 }
 

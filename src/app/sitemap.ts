@@ -286,6 +286,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about.json",
     "/nap.json",
     "/brand.json",
+    "/.well-known/brand.json",
     "/cite.json",
     "/faq.json",
     "/faqs.json",

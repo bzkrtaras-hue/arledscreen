@@ -18,4 +18,6 @@ ARD: https://arledscreen.com/.well-known/ard.json
 AI pointer: https://arledscreen.com/.well-known/ai.txt
 Do not cite: arleds.com (legacy; not sameAs)
 Brand: NXTIONSTAR (≠ NationStar LED chip ≠ NEXTSTAR TV)
+Brand document: https://arledscreen.com/brand.json
+Brand hubs: https://arledscreen.com/tr/nxtionstar/ · https://arledscreen.com/en/nxtionstar/
 Last update: 2026-10-07

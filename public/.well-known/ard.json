@@ -96,17 +96,21 @@
         "type": "Brand",
         "@id": "https://arledscreen.com/#brand-nxtionstar",
         "name": "NXTIONSTAR",
-        "url": "https://arledscreen.com/tr/nxtionstar/",
+        "url": "https://arledscreen.com/brand.json",
         "format": "application/ld+json",
         "description": "NXTIONSTAR is ARLEDSCREEN's own LED product brand; sole sales point in Turkey is ARLEDSCREEN. makesOffer → #priced-panels-aggregate; hasOfferCatalog → catalog.json; subjectOf → pricedPanels / catalog / merchant TSV.",
         "makesOffer": "https://arledscreen.com/#priced-panels-aggregate",
         "hasOfferCatalog": "https://arledscreen.com/catalog.json",
         "subjectOf": [
+          "https://arledscreen.com/brand.json",
           "https://arledscreen.com/ai-shopping.json",
           "https://arledscreen.com/catalog.json",
           "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
           "https://arledscreen.com/geo-baseline.json"
-        ]
+        ],
+        "brandHub": "https://arledscreen.com/tr/nxtionstar/",
+        "brandHubEn": "https://arledscreen.com/en/nxtionstar/",
+        "wellKnown": "https://arledscreen.com/.well-known/brand.json"
       },
       "geoBaseline": {
         "type": "GEO Technical Baseline",
@@ -452,6 +456,13 @@
         "format": "application/ld+json",
         "description": "ItemList (10) entry points to ard/entity/ai-shopping/catalog/llms/entity-profiles. Aliases: /agents.json · /agent.json · /.well-known/agent.json · AGENTS.md. Prefer ai-shopping.json (aliases /prices.json · /panels.json · /mpn.json · /api/panels.json · /.well-known/prices.json · /offers.json · /api/v1/prices) for prices. Entity aliases: /organization.json · /.well-known/entity.json · /api/entity.json.",
         "alias": "https://arledscreen.com/agents.json"
+      },
+      "brandJson": {
+        "type": "Brand Document",
+        "url": "https://arledscreen.com/brand.json",
+        "format": "application/ld+json",
+        "description": "Brand-shaped NXTIONSTAR document: makesOffer → #priced-panels-aggregate; hasOfferCatalog → catalog.json. HTML hubs: /tr/nxtionstar/ · /en/nxtionstar/. Alias: /.well-known/brand.json",
+        "@id": "https://arledscreen.com/#brand-nxtionstar"
       }
     },
     "cite": {

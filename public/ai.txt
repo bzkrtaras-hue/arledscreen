@@ -19,6 +19,8 @@ merchant-tsv: https://arledscreen.com/feeds/merchant-priced-panels.tsv
 geo-baseline: https://arledscreen.com/geo-baseline.json
 ard: https://arledscreen.com/.well-known/ard.json
 entity-profiles: https://arledscreen.com/entity-profiles.json
+brand-json: https://arledscreen.com/brand.json
+brand-json-well-known: https://arledscreen.com/.well-known/brand.json
 brand-tr: https://arledscreen.com/tr/nxtionstar/
 brand-en: https://arledscreen.com/en/nxtionstar/
 intent-tr: https://arledscreen.com/tr/led-ekran/
