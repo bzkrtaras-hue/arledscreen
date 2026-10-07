@@ -83,7 +83,7 @@ export default async function HomePage({ params }: PageProps) {
         {locale === "en" ? (
           <SpeakableJsonLd
             pageUrl={absoluteUrl("/en/")}
-            name={seo.h1 ?? dict.brand.name}
+            name={seo.h1 ?? "ARLEDSCREEN"}
             description={seo.description}
             cssSelectors={["#home-h1", "#home-lead"]}
           />
