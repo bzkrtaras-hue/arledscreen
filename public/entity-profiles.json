@@ -58,7 +58,7 @@
     ]
   },
   "ownerP0Checklist": [
-    "P0 status: npm run geo:status · then paste order npm run point-c → NAP/directoryLong → GBP → IG name+bio → FB → LinkedIn → Bing/Apple (paste once; 34245; rating yok)",
+    "P0 status: npm run geo:status · paste from https://arledscreen.com/point-c.txt (or npm run point-c) → NAP/directoryLong → GBP → IG name+bio → FB → LinkedIn → Bing/Apple (paste once; 34245; rating yok)",
     "GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok)",
     "Instagram Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)",
     "Facebook About = packs.facebookAbout · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)",
@@ -86,7 +86,9 @@
     "sssEn": "https://arledscreen.com/en/sss/",
     "playbook": "docs/offsite-entity-playbook.md (repo)",
     "enHome": "https://arledscreen.com/en/",
-    "pricesRss": "https://arledscreen.com/feeds/prices.rss"
+    "pricesRss": "https://arledscreen.com/feeds/prices.rss",
+    "pointCTxt": "https://arledscreen.com/point-c.txt",
+    "pointCEnTxt": "https://arledscreen.com/point-c-en.txt"
   },
   "packsEn": {
     "gbpDescription": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.",
@@ -99,6 +101,7 @@
     "youtubeAbout": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nSite: https://arledscreen.com/en/\nTel: +90 530 507 88 34",
     "appleBusinessConnect": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / Istanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/en/",
     "bingPlaces": "ARLEDSCREEN\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / Istanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/en/\n\nShort: ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.\nCategory: LED display / Digital signage.",
-    "yandexBusiness": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.\n\nAddress: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul\nPhone: +90 530 507 88 34\nWeb: https://arledscreen.com/en/"
+    "yandexBusiness": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.\n\nAddress: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul\nPhone: +90 530 507 88 34\nWeb: https://arledscreen.com/en/",
+    "googleMerchantReadiness": "Google Merchant Center — 12 priced panel SKUs only.\nFeed: https://arledscreen.com/feeds/merchant-priced-panels.tsv\nRSS: https://arledscreen.com/feeds/prices.rss (change discovery; canonical pricedPanels remain ai-shopping.json)\nCatalog: https://arledscreen.com/catalog.json\nAI index: https://arledscreen.com/ai-shopping.json\nEntity: https://arledscreen.com/entity.json\nBrand: https://arledscreen.com/brand.json (AggregateOffer×12)\nGEO baseline: https://arledscreen.com/geo-baseline.json\nRules: no free shipping invent; quote-only groups excluded; MerchantReturnNotPermitted; no fake ratings.\nDo NOT paste this block into GBP/IG/FB public bios."
   }
 }

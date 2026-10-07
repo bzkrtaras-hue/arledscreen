@@ -187,6 +187,9 @@ agents-json-alias: https://arledscreen.com/agents.json
 agent-json-alias: https://arledscreen.com/agent.json
 agents-md: https://arledscreen.com/AGENTS.md
 humans-txt: https://arledscreen.com/humans.txt
+point-c: https://arledscreen.com/point-c.txt
+point-c-en: https://arledscreen.com/point-c-en.txt
+point-c-well-known: https://arledscreen.com/.well-known/point-c.txt
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/

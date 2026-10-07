@@ -24,4 +24,5 @@ Do not cite: arleds.com (legacy; not sameAs)
 Brand: NXTIONSTAR (≠ NationStar LED chip ≠ NEXTSTAR TV)
 Brand document: https://arledscreen.com/brand.json (AggregateOffer×12)
 Brand hubs: https://arledscreen.com/tr/nxtionstar/ · https://arledscreen.com/en/nxtionstar/
+Point C paste (owner): https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt
 Last update: 2026-10-07

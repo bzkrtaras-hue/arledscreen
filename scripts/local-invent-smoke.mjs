@@ -96,8 +96,16 @@ else fail("prices.rss atom:link self");
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
 
-if ((agents?.itemListElement || []).length >= 13) ok(`agents.json ×${agents.itemListElement.length}`);
-else fail("agents.json ≥13");
+if ((agents?.itemListElement || []).length >= 14) ok(`agents.json ×${agents.itemListElement.length}`);
+else fail("agents.json ≥14");
+
+const pointC = readText("point-c.txt");
+if (pointC.includes("GBP About") && pointC.includes("34245")) ok("point-c.txt paste packs");
+else fail("point-c.txt paste packs");
+
+const pointCEn = readText("point-c-en.txt");
+if (pointCEn.includes("EN GBP About") && pointCEn.includes("arledscreen.com/en/")) ok("point-c-en.txt paste packs");
+else fail("point-c-en.txt paste packs");
 
 if (ard?.agentic?.resources?.website?.["@id"] === `${SITE}/#website`) ok("ard.resources.website");
 else fail("ard.resources.website");

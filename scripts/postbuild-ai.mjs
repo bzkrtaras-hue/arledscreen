@@ -9,6 +9,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildPointCPackText } from "./print-point-c-packs.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -1568,6 +1569,21 @@ function main() {
   }
   if (!copyPublicToOut("entity-profiles.json")) {
     console.warn("postbuild-ai: public/entity-profiles.json missing — Point C surface not copied");
+  } else {
+    try {
+      const profilesDoc = JSON.parse(fs.readFileSync(path.join(publicDir, "entity-profiles.json"), "utf8"));
+      const pointCTr = buildPointCPackText(profilesDoc, { en: false });
+      const pointCEn = buildPointCPackText(profilesDoc, { en: true });
+      writeText(publicDir, "point-c.txt", pointCTr);
+      writeText(outDir, "point-c.txt", pointCTr);
+      writeText(publicDir, "point-c-en.txt", pointCEn);
+      writeText(outDir, "point-c-en.txt", pointCEn);
+      writeText(publicDir, ".well-known/point-c.txt", pointCTr);
+      writeText(outDir, ".well-known/point-c.txt", pointCTr);
+    } catch (e) {
+      console.error(`postbuild-ai: point-c.txt emit failed: ${e?.message || e}`);
+      process.exit(1);
+    }
   }
   if (!copyPublicToOut(".well-known/ard.json")) {
     console.warn("postbuild-ai: public/.well-known/ard.json missing — ARD surface not copied");
@@ -1775,6 +1791,9 @@ agents-json-alias: ${SITE_URL}/agents.json
 agent-json-alias: ${SITE_URL}/agent.json
 agents-md: ${SITE_URL}/AGENTS.md
 humans-txt: ${SITE_URL}/humans.txt
+point-c: ${SITE_URL}/point-c.txt
+point-c-en: ${SITE_URL}/point-c-en.txt
+point-c-well-known: ${SITE_URL}/.well-known/point-c.txt
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/

@@ -1,0 +1,90 @@
+=== ARLEDSCREEN Point C paste packs ===
+Locale: EN (packsEn)
+Rules: paste once; cite + NAP only; no catalog.json / quote-only jargon in public bios.
+Verify: https://arledscreen.com/entity.json
+Web must be arledscreen.com (not arleds.com). Postcode 34245.
+Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt
+
+--- Owner P0 checklist ---
+- P0 status: npm run geo:status · paste from https://arledscreen.com/point-c.txt (or npm run point-c) → NAP/directoryLong → GBP → IG name+bio → FB → LinkedIn → Bing/Apple (paste once; 34245; rating yok)
+- GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok)
+- Instagram Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)
+- Facebook About = packs.facebookAbout · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)
+- Bing Places / Apple = packs.bingPlaces / packs.appleBusinessConnect
+- P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — npm run verify:arleds-301; docs/ops/arleds-301-hostinger.md
+- Merchant jargon yalnızca packs.googleMerchantReadiness — kamu biyografisine koyma
+- Tur 1a / kör test: npm run tur1a:print → ChatGPT/Gemini/Perplexity · geo-blind-log · docs/geo/observation.schema.json — skor uydurma yok
+- PR #60 main merge (GEO kalıcılık)
+- EN profiles (if used): npm run point-c:en — packsEn.* cite-only + LinkedIn slug note
+
+### EN NAP / directoryLong (directoryLong)
+ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.
+
+Address: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul
+Phone: +90 530 507 88 34
+Email: arled@arledscreen.com
+Web: https://arledscreen.com/en/
+Note: Legacy/side arleds.com is not a citation source — use arledscreen.com only. LinkedIn /company/arleds is a social slug, not website arleds.com. NXTIONSTAR ≠ NationStar LED components ≠ NEXTSTAR TV.
+
+### EN GBP About (gbpDescription)
+ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.
+
+### EN Instagram Name (instagramName)
+ARLEDSCREEN
+
+### EN Instagram Bio (instagramBio)
+Istanbul LED · NXTIONSTAR
+Sales · install · service
+arledscreen.com/en/
++90 530 507 88 34
+
+### EN Facebook About (facebookAbout)
+ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.
+
+### EN LinkedIn About (linkedinAbout)
+ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.
+
+Web: https://arledscreen.com/en/ (not arleds.com)
+Note: LinkedIn company path /company/arleds is a social slug only — not the website arleds.com.
+NXTIONSTAR ≠ NationStar (LED component) ≠ NEXTSTAR (TV).
+Phone: +90 530 507 88 34
+Verify: https://arledscreen.com/entity.json
+
+### EN Bing Places (bingPlaces)
+ARLEDSCREEN
+Merkez Mah. Tuna Sok. No:15-17 Kat 1
+34245 Gaziosmanpaşa / Istanbul
++90 530 507 88 34
+arled@arledscreen.com
+https://arledscreen.com/en/
+
+Short: ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.
+Category: LED display / Digital signage.
+
+### EN Apple Business Connect (appleBusinessConnect)
+ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.
+
+Merkez Mah. Tuna Sok. No:15-17 Kat 1
+34245 Gaziosmanpaşa / Istanbul
++90 530 507 88 34
+arled@arledscreen.com
+https://arledscreen.com/en/
+
+### EN YouTube About (youtubeAbout)
+ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.
+
+Site: https://arledscreen.com/en/
+Tel: +90 530 507 88 34
+
+### EN Yandex Business (yandexBusiness)
+ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.
+
+Address: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul
+Phone: +90 530 507 88 34
+Web: https://arledscreen.com/en/
+
+--- Machine-only (do NOT paste into GBP/IG/FB bios) ---
+Merchant readiness: packsEn.googleMerchantReadiness (or packs.googleMerchantReadiness)
+prices.rss: https://arledscreen.com/feeds/prices.rss
+Playbook: docs/offsite-entity-playbook.md
+

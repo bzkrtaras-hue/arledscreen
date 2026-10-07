@@ -970,9 +970,28 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/brand.json") ||
       !humansLive.includes("/ai-shopping.json") ||
       !humansLive.includes("/catalog.json") ||
-      !humansLive.includes("/geo-baseline.json")
+      !humansLive.includes("/geo-baseline.json") ||
+      !humansLive.includes("/point-c.txt")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline");
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c.txt");
+      process.exit(1);
+    }
+  }
+  {
+    const pointC = fs.readFileSync(path.join(outDir, "point-c.txt"), "utf8");
+    const pointCEn = fs.readFileSync(path.join(outDir, "point-c-en.txt"), "utf8");
+    if (
+      !pointC.includes("GBP About") ||
+      !pointC.includes("34245") ||
+      !pointC.includes("arledscreen.com/tr/") ||
+      !pointCEn.includes("EN GBP About") ||
+      !pointCEn.includes("arledscreen.com/en/")
+    ) {
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP paste packs");
+      process.exit(1);
+    }
+    if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
+      console.error("❌ out/.well-known/point-c.txt must match point-c.txt");
       process.exit(1);
     }
   }
@@ -983,8 +1002,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 13) {
-    console.error("❌ agents.json must list ≥13 discovery items (incl. brand.json + prices.rss + entity-profiles + humans.txt)");
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 14) {
+    console.error("❌ agents.json must list ≥14 discovery items (incl. brand.json + prices.rss + entity-profiles + humans.txt + point-c.txt)");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("entity-profiles.json"))) {
@@ -1001,6 +1020,10 @@ if (fs.existsSync(outDir)) {
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("humans.txt"))) {
     console.error("❌ agents.json must list humans.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("point-c.txt"))) {
+    console.error("❌ agents.json must list point-c.txt");
     process.exit(1);
   }
   {
@@ -2675,6 +2698,9 @@ for (const must of [
   "/tr/llms.txt",
   "/tr/ai.txt",
   "/tr/entity-profiles.json",
+  "/point-c.txt",
+  "/point-c-en.txt",
+  "/.well-known/point-c.txt",
 ]) {
   if (!robotsFnBody.includes(must)) {
     console.error(`❌ functions/robots.txt.js must Allow ${must}`);

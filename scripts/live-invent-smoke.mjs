@@ -78,8 +78,16 @@ else fail("prices.rss atom:link self");
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
 
-if ((agents.itemListElement || []).length >= 13) ok(`agents.json ×${agents.itemListElement.length}`);
-else fail("agents.json ≥13");
+if ((agents.itemListElement || []).length >= 14) ok(`agents.json ×${agents.itemListElement.length}`);
+else fail("agents.json ≥14");
+
+try {
+  const pc = await getText("/point-c.txt");
+  if (pc.includes("GBP About") && pc.includes("34245")) ok("point-c.txt paste packs");
+  else fail("point-c.txt paste packs");
+} catch (e) {
+  fail(`point-c.txt ${e?.message || e}`);
+}
 
 if (ard?.agentic?.resources?.website?.["@id"] === `${SITE}/#website`) ok("ard.resources.website");
 else fail("ard.resources.website");

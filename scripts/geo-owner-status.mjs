@@ -37,7 +37,9 @@ try {
   line(
     packsOk ? "OK" : "OPEN",
     "Point C packs present",
-    packsOk ? "npm run point-c → paste GBP/IG/FB/LinkedIn (once; 34245)" : `missing ${missing.join(", ")}`,
+    packsOk
+      ? "https://arledscreen.com/point-c.txt · npm run point-c → paste GBP/IG/FB/LinkedIn (once; 34245)"
+      : `missing ${missing.join(", ")}`,
   );
   const checklist = profiles.ownerP0Checklist || [];
   if (checklist[0]) line("INFO", "P0 next", checklist[0].slice(0, 120));
