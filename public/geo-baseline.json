@@ -34,9 +34,11 @@
     "legacyDomain": {
       "host": "arleds.com",
       "status": "owner-gated-301",
-      "note": "Same phone historically; TLS broken/timeout observed; not sameAs; not a price/entity citation source. Prefer arledscreen.com.",
-      "measuredAt": "2026-10-07"
-    }
+      "note": "Same phone historically; TLS broken/timeout observed; not sameAs; not a price/entity citation source. Prefer arledscreen.com. Web SERP 2026-10-07: non-brand queries still surface arleds.com ahead of arledscreen.com (Point C + 301 required).",
+      "measuredAt": "2026-10-07",
+      "serpRisk": "high"
+    },
+    "aiTxt": "https://arledscreen.com/ai.txt"
   },
   "pricedPanels": [
     {
@@ -138,6 +140,7 @@
     "ard": "https://arledscreen.com/.well-known/ard.json",
     "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "llms": "https://arledscreen.com/llms.txt",
+    "aiTxt": "https://arledscreen.com/ai.txt",
     "brandPage": "https://arledscreen.com/tr/nxtionstar/",
     "priceHub": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
     "homeTr": "https://arledscreen.com/tr/",
