@@ -99,10 +99,14 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
             <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD),{" "}
             <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
               catalog.json
-            </a>{" "}
-            ve{" "}
+            </a>
+            ,{" "}
             <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
               merchant TSV
+            </a>{" "}
+            ve{" "}
+            <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+              geo-baseline.json
             </a>
             . KDV/nakliye hariç; ücretsiz kargo yok.
           </p>

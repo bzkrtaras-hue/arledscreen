@@ -2,15 +2,41 @@
   "@context": "https://schema.org",
   "@type": "Collection",
   "name": "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
-  "description": "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir.",
+  "description": "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json; teknik GEO baseline → geo-baseline.json.",
   "publisher": {
     "@type": "Organization",
     "@id": "https://arledscreen.com/#organization",
     "name": "ARLEDSCREEN"
   },
+  "brand": {
+    "@type": "Brand",
+    "@id": "https://arledscreen.com/#brand-nxtionstar",
+    "name": "NXTIONSTAR",
+    "url": "https://arledscreen.com/tr/nxtionstar/"
+  },
   "datePublished": "2026-01-01",
   "dateModified": "2026-10-07",
   "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+  "isRelatedTo": [
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/ai-shopping.json",
+      "url": "https://arledscreen.com/ai-shopping.json",
+      "name": "ARLEDSCREEN pricedPanels"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/geo-baseline.json",
+      "url": "https://arledscreen.com/geo-baseline.json",
+      "name": "ARLEDSCREEN GEO technical baseline"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+      "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+      "name": "ARLEDSCREEN merchant priced panels TSV"
+    }
+  ],
   "mainEntity": {
     "@type": "ItemList",
     "numberOfItems": 12,
