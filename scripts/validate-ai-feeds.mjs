@@ -178,6 +178,13 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources.geoBaseline required");
     process.exit(1);
   }
+  if (
+    !ai?.agentGuidelines?.priceSource?.includes("/geo-baseline.json") ||
+    !ai?.agentGuidelines?.en?.priceSource?.includes("/geo-baseline.json")
+  ) {
+    console.error("❌ ai-shopping.json agentGuidelines.priceSource (TR+EN) must cite geo-baseline.json");
+    process.exit(1);
+  }
   const catalogLive = JSON.parse(fs.readFileSync(path.join(outDir, "catalog.json"), "utf8"));
   const catalogRelated = JSON.stringify(catalogLive.isRelatedTo || []);
   if (

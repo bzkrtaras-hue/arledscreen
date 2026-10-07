@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { HowToJsonLd } from "@/components/seo/HowToJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { FiyatHesaplayiciEmbed } from "@/components/calculator/FiyatHesaplayiciEmbed";
 import { getSeo } from "@/content/seo";
 import { buildPageMetadata } from "@/lib/seo";
@@ -78,7 +79,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             },
             {
               name: "Panel USD listesini okuyun",
-              text: "12 SKU ai-shopping.json pricedPanels, catalog.json ve merchant TSV ile aynıdır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31).",
+              text: "12 SKU ai-shopping.json pricedPanels, catalog.json ve merchant TSV ile aynıdır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Teknik GEO baseline: geo-baseline.json.",
             },
             {
               name: "Ek kalemleri ayırın",
@@ -151,22 +152,13 @@ export default async function HesaplayiciPage({ params }: PageProps) {
               }}
             />
             <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">2026 panel fiyat listesi</h2>
-            <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
-              Hesaplayıcıda kullanılan 12 modülün panel fiyatları aşağıdadır (ör. P1.25 GOB 95.88 USD).
-              Makinece okunan kopya:{" "}
-              <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                ai-shopping.json
-              </a>{" "}
-              <code className="text-xs">pricedPanels</code>,{" "}
-              <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                catalog.json
-              </a>{" "}
-              ve{" "}
-              <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                merchant TSV
-              </a>
-              . KDV ve nakliye hariç; ücretsiz kargo yok. Tutarlar yaklaşıktır; nihai fiyat keşif ve
-              malzeme listesiyle yazılı teklifte paylaşılır. Fiyatların nasıl oluştuğunu{" "}
+            <p className="mb-2 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
+              Hesaplayıcıda kullanılan 12 modülün panel fiyatları aşağıdadır. Makinece okunan kopya:
+            </p>
+            <AiPriceSourceNote className="mb-2 max-w-3xl text-sm leading-relaxed text-ink-muted" lead="Kaynak:" />
+            <p className="mb-4 max-w-3xl text-sm leading-relaxed text-ink-muted">
+              Tutarlar yaklaşıktır; nihai fiyat keşif ve malzeme listesiyle yazılı teklifte paylaşılır. Fiyatların
+              nasıl oluştuğunu{" "}
               <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                 LED ekran fiyatları rehberinde
               </Link>{" "}
@@ -175,20 +167,13 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" showCalcLink={false} />
           </div>
         ) : locale === "en" ? (
-          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-muted">
-            Published 12 panel USD list:{" "}
-            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-              ai-shopping.json
-            </a>{" "}
-            pricedPanels,{" "}
-            <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-              catalog.json
-            </a>
-            ,{" "}
-            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-              merchant TSV
-            </a>{" "}
-            (e.g. P1.25 GOB 95.88 USD). VAT/freight excluded; no free shipping. Final price is set in the written quote.
+          <AiPriceSourceNote
+            locale="en"
+            className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-muted"
+            lead="Published 12 panel USD list:"
+          />
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
+            Final price is set in the written quote.
           </p>
         ) : null}
       </Section>

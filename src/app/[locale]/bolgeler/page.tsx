@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import {
   SERVICE_REGIONS,
@@ -102,16 +103,9 @@ export default async function BolgelerHubPage({
             <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
               fiyatlar
             </Link>{" "}
-            ve ürün gruplarına bakın. Yayımlanmış panel USD:{" "}
-            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-              ai-shopping.json
-            </a>
-            ,{" "}
-            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-              merchant TSV
-            </a>{" "}
-            (12 SKU; ör. P1.25 GOB 95.88 USD).
+            ve ürün gruplarına bakın.
           </p>
+          <AiPriceSourceNote className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted" />
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/tr/quote/"

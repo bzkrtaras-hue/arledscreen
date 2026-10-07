@@ -3,6 +3,7 @@ import Link from "next/link";
 import { OptImage } from "@/components/ui/opt-image";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
@@ -125,16 +126,9 @@ export default async function ProductsPage({ params }: PageProps) {
                   {seo.h1 ?? pageCopy.title}
                 </h1>
                 <p id="products-lead" className="mt-4 max-w-xl text-pretty text-base leading-[1.75] text-ink-soft">{seo.intro ?? pageCopy.description}</p>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
-                  Panel list fiyatı:{" "}
-                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                    ai-shopping.json
-                  </a>{" "}
-                  <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD) ve{" "}
-                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                    catalog.json
-                  </a>
-                  . KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only.
+                <AiPriceSourceNote lead="Panel list fiyatı:" />
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-muted">
+                  Şeffaf/esnek/poster/kiralık/kontrol quote-only.
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link href="/tr/quote/" className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan px-6 text-white hover:bg-cyan-600">

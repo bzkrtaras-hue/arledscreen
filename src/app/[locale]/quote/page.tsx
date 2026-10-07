@@ -15,6 +15,7 @@ import {
 } from "@/lib/social";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
@@ -175,21 +176,7 @@ export default async function QuotePage({ params }: PageProps) {
                     <Calculator className="h-4 w-4" aria-hidden />
                     Fiyat hesaplayıcıyı açın
                   </Link>
-                  <p className="mt-3 text-xs leading-relaxed text-ink-muted">
-                    Yayımlanmış 12 panel USD:{" "}
-                    <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                      ai-shopping.json
-                    </a>{" "}
-                    <code className="text-[10px]">pricedPanels</code>,{" "}
-                    <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                      catalog.json
-                    </a>
-                    ,{" "}
-                    <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                      merchant TSV
-                    </a>{" "}
-                    (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
-                  </p>
+                  <AiPriceSourceNote className="mt-3 text-xs leading-relaxed text-ink-muted" />
                 </div>
               </aside>
               <div className="min-w-0">
@@ -235,17 +222,10 @@ export default async function QuotePage({ params }: PageProps) {
               Please share dimensions, indoor/outdoor use, location and timeline. ARLEDSCREEN · Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa, Istanbul, Turkey · Mon–Fri 09:00–18:00, Sat 10:00–15:00.
             </p>
             {locale === "en" ? (
-              <p className="text-xs leading-relaxed text-ink-muted sm:col-span-3">
-                Published panel USD:{" "}
-                <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                  ai-shopping.json
-                </a>{" "}
-                pricedPanels ·{" "}
-                <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                  merchant TSV
-                </a>{" "}
-                (12 SKUs; e.g. P1.25 GOB 95.88 USD). VAT/freight excluded; no free shipping.
-              </p>
+              <AiPriceSourceNote
+                locale="en"
+                className="text-xs leading-relaxed text-ink-muted sm:col-span-3"
+              />
             ) : null}
           </div>
         )}

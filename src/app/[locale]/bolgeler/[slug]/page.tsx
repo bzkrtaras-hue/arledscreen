@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { productGroupPath, getProductGroup } from "@/content/categories";
 import {
@@ -63,7 +64,7 @@ export default async function ServiceRegionPage({
     {
       question: `${region.name} LED ekran fiyatı ne kadar?`,
       answer:
-        "Sabit m² fiyatı yoktur. Yayımlanmış 12 panel USD: ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv (ör. P1.25 GOB 95.88 USD). Nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir; ücretsiz kargo yok.",
+        "Sabit m² fiyatı yoktur. Yayımlanmış 12 panel USD: ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv (ör. P1.25 GOB 95.88 USD). Teknik GEO baseline: geo-baseline.json. Nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir; ücretsiz kargo yok.",
     },
     {
       question: "Keşif için ne paylaşmalıyım?",
@@ -238,20 +239,9 @@ export default async function ServiceRegionPage({
             </Link>
           </li>
         </ul>
-        <p className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-muted">
-          Yayımlanmış 12 panel USD:{" "}
-          <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-            ai-shopping.json
-          </a>{" "}
-          <code className="text-xs">pricedPanels</code>,{" "}
-          <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-            catalog.json
-          </a>
-          ,{" "}
-          <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-            merchant TSV
-          </a>{" "}
-          (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok. Entity:{" "}
+        <AiPriceSourceNote className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-muted" />
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
+          Entity:{" "}
           <a href="https://arledscreen.com/entity.json" className="font-semibold text-cyan hover:underline">
             entity.json
           </a>

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { OptImage } from "@/components/ui/opt-image";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import {
   PROJECT_CASE_STUDIES,
   getProjectCaseStudy,
@@ -115,17 +116,7 @@ export default async function ProjectCasePage({
             Kontrol sistemi, garanti yılı, müşteri yorumu veya süre gibi sitede yazmayan
             bilgiler eklenmez.
           </p>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            Panel USD listesi:{" "}
-            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-              ai-shopping.json
-            </a>{" "}
-            pricedPanels ·{" "}
-            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-              merchant TSV
-            </a>{" "}
-            (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
-          </p>
+          <AiPriceSourceNote lead="Panel USD listesi:" className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted" />
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/tr/quote/"

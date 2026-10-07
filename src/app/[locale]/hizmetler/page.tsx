@@ -8,6 +8,7 @@ import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { HowToJsonLd } from "@/components/seo/HowToJsonLd";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { WhatsAppProjectPicker } from "@/components/home/WhatsAppProjectPicker";
@@ -122,20 +123,8 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
               </Link>{" "}
               sayfasına bakın.
             </p>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
-              Yayımlanmış panel USD:{" "}
-              <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                ai-shopping.json
-              </a>{" "}
-              <code className="text-xs">pricedPanels</code>,{" "}
-              <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                catalog.json
-              </a>
-              ,{" "}
-              <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                merchant TSV
-              </a>{" "}
-              (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.{" "}
+            <AiPriceSourceNote />
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-muted">
               <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
                 Hesaplayıcı
               </Link>
