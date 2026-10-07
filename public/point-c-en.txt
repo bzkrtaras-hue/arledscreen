@@ -4,6 +4,7 @@ Rules: paste once; cite + NAP only; no catalog.json / quote-only jargon in publi
 Verify: https://arledscreen.com/entity.json
 Web must be arledscreen.com (not arleds.com). Postcode 34245.
 Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt
+Sequential: npm run point-c:next · after paste: npm run point-c:ack
 
 --- Owner P0 checklist ---
 - P0 status: npm run geo:status · paste from https://arledscreen.com/point-c.txt (or npm run point-c) → NAP/directoryLong → GBP → IG name+bio → FB → LinkedIn → Bing/Apple (paste once; 34245; rating yok)
@@ -92,6 +93,25 @@ https://arleds.com/ → https://arledscreen.com/tr/
 https://www.arleds.com/ → https://arledscreen.com/tr/
 Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md
 Do NOT add arleds.com to sameAs until 301 is live.
+
+--- Hostinger support email (select-all) ---
+Subject: Permanent 301 redirect arleds.com → https://arledscreen.com/tr/
+
+Hello Hostinger Support,
+
+Please set a permanent (301) redirect for the entire domain arleds.com
+(including www and both http/https) to:
+
+https://arledscreen.com/tr/
+
+Required mappings:
+http://arleds.com/ → https://arledscreen.com/tr/
+http://www.arleds.com/ → https://arledscreen.com/tr/
+https://arleds.com/ → https://arledscreen.com/tr/
+https://www.arleds.com/ → https://arledscreen.com/tr/
+
+Domain: arleds.com (Hostinger DNS; not on Cloudflare for this account).
+Thank you.
 
 --- Machine-only (do NOT paste into GBP/IG/FB bios) ---
 Merchant readiness: packsEn.googleMerchantReadiness (or packs.googleMerchantReadiness)

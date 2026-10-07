@@ -44,13 +44,17 @@ try {
   );
   const checklist = profiles.ownerP0Checklist || [];
   if (checklist[0]) line("INFO", "P0 next", checklist[0].slice(0, 120));
-  // First human paste: NAP / directoryLong (cite-only; no invent scores).
-  if (packsOk && packs.directoryLong) {
-    console.log("  Point C next paste — directoryLong (select-all):");
-    console.log("  ---");
-    for (const row of String(packs.directoryLong).split("\n")) console.log(`  ${row}`);
-    console.log("  ---");
-    console.log("  Then: npm run point-c -- --pack=gbpDescription · full: npm run point-c");
+  // Sequential paste clipboard (point-c:next) — cite-only; no invent scores.
+  if (packsOk) {
+    const next = spawnSync(process.execPath, [path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "--next"], {
+      encoding: "utf8",
+      timeout: 15000,
+    });
+    const out = String(next.stdout || "").trim();
+    if (out) {
+      console.log("  Point C next paste:");
+      for (const row of out.split("\n")) console.log(`  ${row}`);
+    }
   }
 } catch (e) {
   line("OPEN", "Point C packs", String(e?.message || e));
@@ -74,7 +78,16 @@ if (!arledsOk) {
   console.log("  http://www.arleds.com/ → https://arledscreen.com/tr/");
   console.log("  https://arleds.com/ → https://arledscreen.com/tr/");
   console.log("  https://www.arleds.com/ → https://arledscreen.com/tr/");
-  console.log("  Also: npm run point-c · https://arledscreen.com/point-c.txt");
+  console.log("  Also: npm run point-c:next · https://arledscreen.com/point-c.txt");
+  try {
+    const { buildHostingerEmailClipboard } = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
+    console.log("  Hostinger support email (select-all):");
+    console.log("  ---");
+    for (const row of String(buildHostingerEmailClipboard()).split("\n")) console.log(`  ${row}`);
+    console.log("  ---");
+  } catch {
+    /* clipboard helper optional */
+  }
 }
 
 // Tur1a observations (exclude code-harden platform noise for "human blind" count)
@@ -150,5 +163,5 @@ line("INFO", "PR merge", "PR #60 cursor/geo-prod-guard-5666 → main (owner)");
 line("INFO", "Target", "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores");
 line("INFO", "arleds DNS", "not on Cloudflare for this account — Hostinger redirect required");
 
-console.log("\nCommands: npm run point-c · npm run verify:arleds-301 · npm run tur1a:next · npm run tur1a:log · npm run tur1a:matrix · npm run invent:smoke · npm run geo:status");
+console.log("\nCommands: npm run point-c:next · npm run point-c:ack · npm run point-c · npm run verify:arleds-301 · npm run tur1a:next · npm run tur1a:log · npm run tur1a:matrix · npm run invent:smoke · npm run geo:status");
 process.exit(0);

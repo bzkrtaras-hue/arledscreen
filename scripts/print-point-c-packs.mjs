@@ -5,7 +5,11 @@
  *
  * Usage:
  *   npm run point-c
+ *   npm run point-c:next
+ *   npm run point-c:ack
  *   node scripts/print-point-c-packs.mjs [--en] [--pack=gbpDescription]
+ *   node scripts/print-point-c-packs.mjs --next [--en]
+ *   node scripts/print-point-c-packs.mjs --ack [--en] [--pack=directoryLong]
  *
  * Also imported by postbuild-ai.mjs to emit public/point-c.txt (+ point-c-en.txt).
  */
@@ -16,6 +20,10 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 const profilesPath = path.join(repoRoot, "public/entity-profiles.json");
+const progressPath = path.join(repoRoot, "docs/geo/observations/point-c-progress.json");
+
+/** Synthetic step after NAP packs — Hostinger support email clipboard. */
+export const HOSTINGER_STEP = "hostinger301";
 
 export const TR_ORDER = [
   ["NAP / directoryLong", "directoryLong"],
@@ -43,6 +51,28 @@ export const EN_ORDER = [
   ["EN Yandex Business", "yandexBusiness"],
 ];
 
+export function buildHostingerEmailClipboard() {
+  const lines = [];
+  lines.push("Subject: Permanent 301 redirect arleds.com → https://arledscreen.com/tr/");
+  lines.push("");
+  lines.push("Hello Hostinger Support,");
+  lines.push("");
+  lines.push("Please set a permanent (301) redirect for the entire domain arleds.com");
+  lines.push("(including www and both http/https) to:");
+  lines.push("");
+  lines.push("https://arledscreen.com/tr/");
+  lines.push("");
+  lines.push("Required mappings:");
+  lines.push("http://arleds.com/ → https://arledscreen.com/tr/");
+  lines.push("http://www.arleds.com/ → https://arledscreen.com/tr/");
+  lines.push("https://arleds.com/ → https://arledscreen.com/tr/");
+  lines.push("https://www.arleds.com/ → https://arledscreen.com/tr/");
+  lines.push("");
+  lines.push("Domain: arleds.com (Hostinger DNS; not on Cloudflare for this account).");
+  lines.push("Thank you.");
+  return lines.join("\n");
+}
+
 /** Build plain-text Point C paste document (no markdown fences — easy select-all). */
 export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
   const packs = en ? profiles.packsEn || {} : profiles.packs || {};
@@ -54,6 +84,7 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
   lines.push("Verify: https://arledscreen.com/entity.json");
   lines.push("Web must be arledscreen.com (not arleds.com). Postcode 34245.");
   lines.push("Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt");
+  lines.push("Sequential: npm run point-c:next · after paste: npm run point-c:ack");
   lines.push("");
 
   const checklist = profiles.ownerP0Checklist || [];
@@ -82,6 +113,9 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     lines.push("Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md");
     lines.push("Do NOT add arleds.com to sameAs until 301 is live.");
     lines.push("");
+    lines.push("--- Hostinger support email (select-all) ---");
+    lines.push(buildHostingerEmailClipboard());
+    lines.push("");
     lines.push("--- Machine-only (do NOT paste into GBP/IG/FB bios) ---");
     if (en) {
       lines.push("Merchant readiness: packsEn.googleMerchantReadiness (or packs.googleMerchantReadiness)");
@@ -97,6 +131,87 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     lines.push("");
   }
   return `${lines.join("\n")}\n`;
+}
+
+function readProgress() {
+  if (!fs.existsSync(progressPath)) return { acked: [], updatedAt: null };
+  try {
+    const raw = JSON.parse(fs.readFileSync(progressPath, "utf8"));
+    return { acked: Array.isArray(raw.acked) ? raw.acked.map(String) : [], updatedAt: raw.updatedAt || null };
+  } catch {
+    return { acked: [], updatedAt: null };
+  }
+}
+
+function writeProgress(acked) {
+  fs.mkdirSync(path.dirname(progressPath), { recursive: true });
+  const doc = { acked: [...new Set(acked)], updatedAt: new Date().toISOString() };
+  fs.writeFileSync(progressPath, `${JSON.stringify(doc, null, 2)}\n`);
+  return doc;
+}
+
+function sequenceKeys(en) {
+  const order = en ? EN_ORDER : TR_ORDER;
+  return [...order.map(([, k]) => k), HOSTINGER_STEP];
+}
+
+function nextStep(profiles, { en = false } = {}) {
+  const packs = en ? profiles.packsEn || {} : profiles.packs || {};
+  const { acked } = readProgress();
+  const ackedSet = new Set(acked);
+  for (const key of sequenceKeys(en)) {
+    if (ackedSet.has(key)) continue;
+    if (key === HOSTINGER_STEP) {
+      return { key: HOSTINGER_STEP, label: "Hostinger 301 support email", text: buildHostingerEmailClipboard(), done: acked.length, total: sequenceKeys(en).length };
+    }
+    const label = (en ? EN_ORDER : TR_ORDER).find(([, k]) => k === key)?.[0] || key;
+    const text = packs[key];
+    if (text == null || text === "") continue;
+    return { key, label, text: String(text), done: acked.length, total: sequenceKeys(en).length };
+  }
+  return null;
+}
+
+function printNext(profiles, { en = false } = {}) {
+  const step = nextStep(profiles, { en });
+  if (!step) {
+    console.log("=== ARLEDSCREEN Point C next ===");
+    console.log("All sequential pastes acked (packs + Hostinger email).");
+    console.log("Verify: npm run verify:arleds-301 · npm run geo:status");
+    console.log("Reset progress: delete docs/geo/observations/point-c-progress.json");
+    return;
+  }
+  console.log("=== ARLEDSCREEN Point C next paste ===");
+  console.log(`Step: ${step.key} · ${step.label}`);
+  console.log(`Progress: ${step.done}/${step.total} acked → paste this block`);
+  console.log("Locale:", en ? "EN" : "TR");
+  console.log("");
+  console.log("### Paste (select-all)");
+  console.log("---");
+  console.log(step.text);
+  console.log("---");
+  console.log("");
+  console.log(`After paste: npm run point-c:ack -- --pack=${step.key}`);
+  console.log("Or: npm run point-c:ack");
+  console.log("Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt");
+}
+
+function ackStep(profiles, { en = false, pack = "" } = {}) {
+  const step = nextStep(profiles, { en });
+  const key = pack || step?.key;
+  if (!key) {
+    console.log("Nothing to ack — sequence complete.");
+    return;
+  }
+  if (pack && step && pack !== step.key) {
+    console.warn(`Warning: --pack=${pack} but next open step is ${step.key}; recording ${pack} anyway.`);
+  }
+  const { acked } = readProgress();
+  if (!acked.includes(key)) acked.push(key);
+  writeProgress(acked);
+  console.log(`Acked: ${key}`);
+  console.log("Next:");
+  printNext(profiles, { en });
 }
 
 function argFlag(name) {
@@ -117,5 +232,11 @@ if (isMain) {
   const profiles = JSON.parse(fs.readFileSync(profilesPath, "utf8"));
   const useEn = argFlag("en");
   const only = argValue("pack");
-  process.stdout.write(buildPointCPackText(profiles, { en: useEn, only }));
+  if (argFlag("next")) {
+    printNext(profiles, { en: useEn });
+  } else if (argFlag("ack")) {
+    ackStep(profiles, { en: useEn, pack: only });
+  } else {
+    process.stdout.write(buildPointCPackText(profiles, { en: useEn, only }));
+  }
 }

@@ -121,10 +121,12 @@ try {
     pc.includes("GBP About") &&
     pc.includes("34245") &&
     pc.includes("Hostinger arleds.com") &&
+    pc.includes("Hostinger support email") &&
+    pc.includes("point-c:next") &&
     pc.includes("/.well-known/modules.json")
   ) {
-    ok("point-c.txt paste packs + Hostinger 301 + invent aliases");
-  } else fail("point-c.txt paste packs + Hostinger 301 + invent aliases");
+    ok("point-c.txt paste packs + Hostinger 301/email + invent aliases");
+  } else fail("point-c.txt paste packs + Hostinger 301/email + invent aliases");
 } catch (e) {
   fail(`point-c.txt ${e?.message || e}`);
 }
@@ -220,10 +222,13 @@ if (
     dist.includes("/.well-known/modules.json") &&
     dist.includes("/.well-known/sku.json") &&
     dist.includes("/.well-known/price.json") &&
-    dist.includes("/.well-known/pricing.json")
+    dist.includes("/.well-known/pricing.json") &&
+    dist.includes("/brand.json") &&
+    dist.includes("/entity.json") &&
+    dist.includes("/point-c.txt")
   ) {
-    ok("ai-shopping distribution → priceAliases invent parity");
-  } else fail("ai-shopping distribution → priceAliases invent parity");
+    ok("ai-shopping distribution → priceAliases + brand/entity/point-c reverse join");
+  } else fail("ai-shopping distribution → priceAliases + brand/entity/point-c reverse join");
 }
 
 try {

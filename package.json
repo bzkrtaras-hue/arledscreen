@@ -12,6 +12,8 @@
     "indexnow": "node scripts/submit-indexnow.mjs",
     "point-c": "node scripts/print-point-c-packs.mjs",
     "point-c:en": "node scripts/print-point-c-packs.mjs --en",
+    "point-c:next": "node scripts/print-point-c-packs.mjs --next",
+    "point-c:ack": "node scripts/print-point-c-packs.mjs --ack",
     "verify:arleds-301": "node scripts/verify-arleds-301.mjs",
     "tur1a:list": "node scripts/geo-blind-log.mjs --list",
     "tur1a:summary": "node scripts/geo-blind-log.mjs --summary",

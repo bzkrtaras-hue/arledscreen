@@ -216,6 +216,21 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/geo-baseline.json`,
       },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/brand.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE_URL}/point-c.txt`,
+      },
     ],
     temporalCoverage: `2026-01-01/${PRICE_VALID_UNTIL}`,
     variableMeasured: "USD per LED module panel",

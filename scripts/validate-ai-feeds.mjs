@@ -194,8 +194,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
-  if (!Array.isArray(ai.distribution) || ai.distribution.length < 20) {
-    console.error("❌ ai-shopping.json Dataset.distribution must list ≥20 DataDownload encodings (HTML hub + invent aliases)");
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 23) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥23 DataDownload encodings (invent aliases + brand/entity/point-c)");
     process.exit(1);
   }
   for (const needle of [
@@ -221,6 +221,9 @@ if (fs.existsSync(outDir)) {
     "/feeds/merchant-priced-panels.tsv",
     "/feeds/prices.rss",
     "/geo-baseline.json",
+    "/brand.json",
+    "/entity.json",
+    "/point-c.txt",
   ]) {
     if (!distUrls.some((u) => u.includes(needle))) {
       console.error(`❌ ai-shopping.json distribution must include DataDownload ${needle}`);
@@ -1206,6 +1209,8 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("34245") ||
       !pointC.includes("arledscreen.com/tr/") ||
       !pointC.includes("Hostinger arleds.com") ||
+      !pointC.includes("Hostinger support email") ||
+      !pointC.includes("point-c:next") ||
       !pointC.includes("verify:arleds-301") ||
       !pointC.includes("tur1a:log") ||
       !pointC.includes("/.well-known/modules.json") ||
@@ -1213,10 +1218,12 @@ if (fs.existsSync(outDir)) {
       !pointCEn.includes("EN GBP About") ||
       !pointCEn.includes("arledscreen.com/en/") ||
       !pointCEn.includes("Hostinger arleds.com") ||
+      !pointCEn.includes("Hostinger support email") ||
+      !pointCEn.includes("point-c:next") ||
       !pointCEn.includes("tur1a:log") ||
       !pointCEn.includes("/.well-known/modules.json")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301 + tur1a:log + invent aliases");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email + point-c:next + tur1a:log + invent aliases");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
@@ -1508,9 +1515,11 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("offer.json") ||
     !headersLive.includes("ai.txt") ||
     !headersLive.includes("brand.json") ||
-    !headersLive.includes("prices.rss")
+    !headersLive.includes("prices.rss") ||
+    !headersLive.includes("merchant-priced-panels.tsv") ||
+    !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt+prices.rss");
+    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+brand+agents+panels/mpn/profiles+catalog/geo/merchant/offer/ai.txt+prices.rss+merchant TSV+point-c");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -2971,8 +2980,15 @@ if (fs.existsSync(outDir)) {
             )
           ) {
             const dist = JSON.stringify(d.distribution || []);
-            if (!dist.includes("/merchant.json") || !dist.includes("/offer.json") || !dist.includes("/panels.json")) {
-              console.error(`❌ ${rel} Dataset.distribution must include panels/merchant/offer DataDownloads`);
+            if (
+              !dist.includes("/merchant.json") ||
+              !dist.includes("/offer.json") ||
+              !dist.includes("/panels.json") ||
+              !dist.includes("/brand.json") ||
+              !dist.includes("/entity.json") ||
+              !dist.includes("/point-c.txt")
+            ) {
+              console.error(`❌ ${rel} Dataset.distribution must include panels/merchant/offer + brand/entity/point-c DataDownloads`);
               process.exit(1);
             }
             found = true;

@@ -136,10 +136,12 @@ if (
   pointC.includes("GBP About") &&
   pointC.includes("34245") &&
   pointC.includes("Hostinger arleds.com") &&
+  pointC.includes("Hostinger support email") &&
+  pointC.includes("point-c:next") &&
   pointC.includes("/.well-known/modules.json")
 ) {
-  ok("point-c.txt paste packs + Hostinger 301 + invent aliases");
-} else fail("point-c.txt paste packs + Hostinger 301 + invent aliases");
+  ok("point-c.txt paste packs + Hostinger 301/email + invent aliases");
+} else fail("point-c.txt paste packs + Hostinger 301/email + invent aliases");
 
 const pointCEn = readText("point-c-en.txt");
 if (
@@ -226,10 +228,13 @@ if (
     dist.includes("/.well-known/modules.json") &&
     dist.includes("/.well-known/sku.json") &&
     dist.includes("/.well-known/price.json") &&
-    dist.includes("/.well-known/pricing.json")
+    dist.includes("/.well-known/pricing.json") &&
+    dist.includes("/brand.json") &&
+    dist.includes("/entity.json") &&
+    dist.includes("/point-c.txt")
   ) {
-    ok("ai-shopping distribution → priceAliases invent parity");
-  } else fail("ai-shopping distribution → priceAliases invent parity");
+    ok("ai-shopping distribution → priceAliases + brand/entity/point-c reverse join");
+  } else fail("ai-shopping distribution → priceAliases + brand/entity/point-c reverse join");
 }
 
 {

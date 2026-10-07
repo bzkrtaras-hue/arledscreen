@@ -25,6 +25,8 @@
   Link: <https://arledscreen.com/offer.json>; rel="alternate"; type="application/ld+json"; title="Offer pricedPanels alias"
   Link: <https://arledscreen.com/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer"
   Link: <https://arledscreen.com/feeds/prices.rss>; rel="alternate"; type="application/rss+xml"; title="Panel Price Updates RSS"
+  Link: <https://arledscreen.com/feeds/merchant-priced-panels.tsv>; rel="alternate"; type="text/tab-separated-values"; title="Merchant pricedPanels TSV"
+  Link: <https://arledscreen.com/point-c.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs"
 
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable

@@ -20,6 +20,30 @@ Also cover bare paths if Hostinger allows “redirect entire domain”.
 3. Ensure SSL on `arleds.com` either terminates and redirects, or use Hostinger “force HTTPS” then 301.
 4. If the domain only has A record and no hosting: park with redirect, or point DNS to Cloudflare and use Bulk Redirects.
 
+### Support email (select-all)
+
+```
+Subject: Permanent 301 redirect arleds.com → https://arledscreen.com/tr/
+
+Hello Hostinger Support,
+
+Please set a permanent (301) redirect for the entire domain arleds.com
+(including www and both http/https) to:
+
+https://arledscreen.com/tr/
+
+Required mappings:
+http://arleds.com/ → https://arledscreen.com/tr/
+http://www.arleds.com/ → https://arledscreen.com/tr/
+https://arleds.com/ → https://arledscreen.com/tr/
+https://www.arleds.com/ → https://arledscreen.com/tr/
+
+Domain: arleds.com (Hostinger DNS; not on Cloudflare for this account).
+Thank you.
+```
+
+Also: `npm run point-c:next` (Hostinger step) · `npm run geo:status`
+
 ## Cloudflare (if DNS on CF)
 
 1. DNS: orange-cloud A/AAAA (or CNAME) for `arleds.com` / `www`.

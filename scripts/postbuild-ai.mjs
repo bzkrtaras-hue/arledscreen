@@ -730,6 +730,22 @@ function buildAiShopping() {
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/geo-baseline.json`,
       },
+      // Reverse invent joins: Dataset-only agents land on brand/entity/Point C (not just price aliases).
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/brand.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE_URL}/point-c.txt`,
+      },
     ],
     dateModified: new Date().toISOString().split("T")[0],
     inLanguage: ["tr", "en"],
