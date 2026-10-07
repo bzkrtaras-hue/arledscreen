@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
 import { buildTrOnlyMetadata } from "@/lib/seo";
@@ -57,6 +58,12 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
       />
+      <SpeakableJsonLd
+        pageUrl={url}
+        name="Aras Bozkurt | ARLEDSCREEN Kurucusu"
+        description="Aras Bozkurt, İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN’in kurucusudur. LED ekran satış, montaj ve teknik servis projelerini yürütür."
+        cssSelectors={["#founder-h1", "#founder-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
@@ -67,10 +74,10 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">
             Kurucu · E-E-A-T
           </p>
-          <h1 className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.6rem)] font-extrabold tracking-[-0.03em] text-ink">
+          <h1 id="founder-h1" className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.6rem)] font-extrabold tracking-[-0.03em] text-ink">
             Aras Bozkurt
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
+          <p id="founder-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             ARLEDSCREEN kurucusu. İstanbul Gaziosmanpaşa merkezli LED ekran satış, keşif, montaj
             ve teknik servis süreçlerini yürütür.
           </p>

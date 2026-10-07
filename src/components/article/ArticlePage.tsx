@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getArticle, ARTICLE_SLUGS } from "@/lib/markdown";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -45,6 +46,12 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
         ]}
       />
       {a.faqs.length ? <FaqJsonLd faqs={a.faqs} /> : null}
+      <SpeakableJsonLd
+        pageUrl={url}
+        name={a.h1}
+        description={a.description}
+        cssSelectors={["#article-h1", "#article-lead"]}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <script
         type="application/ld+json"
@@ -56,7 +63,8 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
             <Link href="/tr/" className="hover:text-cyan">Ana Sayfa</Link> /{" "}
             <Link href="/tr/rehber/" className="hover:text-cyan">Rehber</Link>
           </nav>
-          <h1 className="mt-3 text-balance font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">{a.h1}</h1>
+          <h1 id="article-h1" className="mt-3 text-balance font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">{a.h1}</h1>
+          <p id="article-lead" className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{a.description}</p>
           <p className="mt-2 text-[13px] text-ink-muted">
             Son güncelleme: <time dateTime={a.lastReviewed}>{new Date(a.lastReviewed).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}</time> · ARLEDSCREEN
           </p>

@@ -1,3 +1,4 @@
+import { nxtionstarBrandRef } from "@/content/prices";
 import { SERVICE_REGIONS } from "@/content/service-regions";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
@@ -11,7 +12,7 @@ export function ServiceJsonLd({ locale = "tr" }: { locale?: string }) {
     serviceType: "LED ekran sistemleri",
     description:
       "İç ve dış mekân LED ekran seçimi, keşif, montaj, devreye alma ve teknik servis. NXTIONSTAR ürünleri.",
-    brand: { "@type": "Brand", name: "NXTIONSTAR" },
+    brand: nxtionstarBrandRef(),
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: [
       { "@type": "Country", name: "Türkiye" },

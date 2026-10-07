@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import {
   SERVICE_REGIONS,
@@ -62,6 +63,12 @@ export default async function BolgelerHubPage({
         ]}
       />
       <FaqJsonLd faqs={FAQS} />
+      <SpeakableJsonLd
+        pageUrl={absoluteUrl("/tr/bolgeler/")}
+        name="Türkiye geneli LED ekran keşif, montaj ve teknik servis"
+        description="ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; kayıtlı iller ve proje örnekleri."
+        cssSelectors={["#bolge-h1", "#bolge-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -74,10 +81,10 @@ export default async function BolgelerHubPage({
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">
             Hizmet bölgesi
           </p>
-          <h1 className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
+          <h1 id="bolge-h1" className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
             Türkiye geneli LED ekran keşif, montaj ve teknik servis
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
+          <p id="bolge-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             Hizmetimiz Türkiye geneli; tamamlanan iş listemiz kayıtlı illerde yer alır.
             Aşağıdaki {summary.provinceCount} il
             {summary.countries.length ? ` (ayrıca ${summary.countries.join(", ")})` : ""}, Tem

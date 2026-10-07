@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import faqs from "@/content/sss.json";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -32,6 +33,12 @@ export default async function SssPage({ params }: { params: Promise<{ locale: st
         ]}
       />
       <FaqJsonLd faqs={faqs} />
+      <SpeakableJsonLd
+        pageUrl={absoluteUrl("/tr/sss/")}
+        name="LED Ekran Hakkında Sık Sorulan Sorular"
+        description="LED ekran fiyatı, piksel aralığı, montaj ve servis hakkında sık sorulan sorular."
+        cssSelectors={["#sss-h1", "#sss-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -41,10 +48,10 @@ export default async function SssPage({ params }: { params: Promise<{ locale: st
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">SSS</p>
-          <h1 className="mt-2 font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">
+          <h1 id="sss-h1" className="mt-2 font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">
             LED Ekran Hakkında Sık Sorulan Sorular
           </h1>
-          <p className="mt-3 leading-relaxed text-ink-soft">
+          <p id="sss-lead" className="mt-3 leading-relaxed text-ink-soft">
             Fiyat, piksel aralığı, montaj ve servis konusunda en çok sorulan soruları kısa cevaplarla topladık. Projenize özel bilgi için{" "}
             <Link href="/tr/quote/" className="font-semibold text-cyan hover:underline">teklif formunu</Link> kullanabilir veya{" "}
             <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">fiyat hesaplayıcıya</Link> göz atabilirsiniz.

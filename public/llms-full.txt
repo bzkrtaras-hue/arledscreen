@@ -2,10 +2,12 @@
 
 - citeOneLiner: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
 - Panel USD: catalog.json / ai-shopping.json (`pricedPanels`; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) / feeds/merchant-priced-panels.tsv; ücretsiz kargo yok.
+- Brand JSON-LD `@id`: https://arledscreen.com/#brand-nxtionstar (subjectOf → pricedPanels / catalog / merchant TSV)
+- Point C paste packs: [entity-profiles.json](https://arledscreen.com/entity-profiles.json) — `packs.*` (TR); `packsEn.*` (EN cite-only; no catalog jargon in public bios)
 
 # ARLEDSCREEN — NXTIONSTAR LED ekranlar (tam metin)
 
-> Bu dosya, yapay zekâ asistanları ve arama motorları için ARLEDSCREEN hakkındaki doğrulanabilir bilgileri tek yerde toplar. Kaynak: https://arledscreen.com ve https://fiyat.arledscreen.com (fiyat hesaplayıcı). Son güncelleme: 2026-10-05.
+> Bu dosya, yapay zekâ asistanları ve arama motorları için ARLEDSCREEN hakkındaki doğrulanabilir bilgileri tek yerde toplar. Kaynak: https://arledscreen.com ve https://fiyat.arledscreen.com (fiyat hesaplayıcı). Son güncelleme: 2026-10-07.
 
 ## 1. Firma kimliği
 
@@ -184,7 +186,15 @@ Dış mekân reklam ve cephe ekranlarında ilgili belediyenin izin ve ruhsat ko�
 **NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?**
 NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. İletişim: +90 530 507 88 34, arled@arledscreen.com.
 
-## 8. İletişim
+## 8. Makinece işaretçiler (GEO)
+
+- Brand `@id`: https://arledscreen.com/#brand-nxtionstar
+- entity.json / ai-shopping.json / catalog.json / feeds/merchant-priced-panels.tsv
+- entity-profiles.json → packs (TR) + packsEn (EN cite-only for GBP/directories/LinkedIn)
+- ard.json: https://arledscreen.com/.well-known/ard.json
+- Kısa indeks: https://arledscreen.com/llms.txt
+
+## 9. İletişim
 
 ARLEDSCREEN — Merkez Mahallesi, Tuna Sokak No:15-17, Kat 1, 34245 Gaziosmanpaşa / İstanbul
 Telefon / WhatsApp: +90 530 507 88 34 · E-posta: arled@arledscreen.com · Teklif: https://arledscreen.com/tr/quote/

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { OptImage } from "@/components/ui/opt-image";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
@@ -74,12 +75,20 @@ export default async function ProductsPage({ params }: PageProps) {
         ]}
       />
       {(locale === "tr" || locale === "en") ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/products/`))),
-          }}
-        />
+        <>
+          <SpeakableJsonLd
+            pageUrl={absoluteUrl(`/${locale}/products/`)}
+            name={seo.h1 ?? pageCopy.title}
+            description={seo.intro ?? pageCopy.description}
+            cssSelectors={["#products-h1", "#products-lead"]}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/products/`))),
+            }}
+          />
+        </>
       ) : null}
       <ItemListJsonLd
         name={seo.h1 ?? pageCopy.title}
@@ -112,10 +121,10 @@ export default async function ProductsPage({ params }: PageProps) {
               </div>
               <div className="min-w-0">
                 <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-cyan">{pageCopy.eyebrow}</p>
-                <h1 className="text-balance font-display text-[clamp(1.9rem,1.4rem+2vw,2.9rem)] font-extrabold leading-tight tracking-[-0.03em] text-ink">
+                <h1 id="products-h1" className="text-balance font-display text-[clamp(1.9rem,1.4rem+2vw,2.9rem)] font-extrabold leading-tight tracking-[-0.03em] text-ink">
                   {seo.h1 ?? pageCopy.title}
                 </h1>
-                <p className="mt-4 max-w-xl text-pretty text-base leading-[1.75] text-ink-soft">{seo.intro ?? pageCopy.description}</p>
+                <p id="products-lead" className="mt-4 max-w-xl text-pretty text-base leading-[1.75] text-ink-soft">{seo.intro ?? pageCopy.description}</p>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-muted">
                   Panel list fiyatı:{" "}
                   <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
@@ -233,6 +242,8 @@ export default async function ProductsPage({ params }: PageProps) {
       ) : (
       <Section
         titleAs="h1"
+        titleId="products-h1"
+        descriptionId="products-lead"
         eyebrow={pageCopy.eyebrow}
         title={seo.h1 ?? pageCopy.title}
         description={seo.intro ?? pageCopy.description}
