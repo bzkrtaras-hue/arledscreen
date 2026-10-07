@@ -26,6 +26,10 @@ const PRICES_WELLKNOWN_URL = `${SITE_URL}/.well-known/prices.json`;
 const PRICE_WELLKNOWN_URL = `${SITE_URL}/.well-known/price.json`;
 const OFFER_WELLKNOWN_URL = `${SITE_URL}/.well-known/offer.json`;
 const OFFERS_WELLKNOWN_URL = `${SITE_URL}/.well-known/offers.json`;
+const DATASET_JSON_URL = `${SITE_URL}/dataset.json`;
+const FEED_JSON_URL = `${SITE_URL}/feed.json`;
+const DATASET_WELLKNOWN_URL = `${SITE_URL}/.well-known/dataset.json`;
+const FEED_WELLKNOWN_URL = `${SITE_URL}/.well-known/feed.json`;
 const ENTITY_PROFILES_URL = `${SITE_URL}/entity-profiles.json`;
 const ORGANIZATION_JSON_URL = `${SITE_URL}/organization.json`;
 const BRAND_WELLKNOWN_URL = `${SITE_URL}/.well-known/brand.json`;
@@ -54,6 +58,10 @@ const inventAliasLdJson = [
   { url: PRICE_WELLKNOWN_URL, title: "Price pricedPanels invent alias" },
   { url: OFFER_WELLKNOWN_URL, title: "Offer well-known pricedPanels invent alias" },
   { url: OFFERS_WELLKNOWN_URL, title: "Offers well-known pricedPanels invent alias" },
+  { url: DATASET_JSON_URL, title: "Dataset pricedPanels invent alias" },
+  { url: FEED_JSON_URL, title: "Feed pricedPanels invent alias" },
+  { url: DATASET_WELLKNOWN_URL, title: "Dataset well-known pricedPanels invent alias" },
+  { url: FEED_WELLKNOWN_URL, title: "Feed well-known pricedPanels invent alias" },
 ] as const;
 
 export const aiDiscoveryMetadata: Metadata = {

@@ -67,7 +67,11 @@
     "https://arledscreen.com/offer.json",
     "https://arledscreen.com/offers.json",
     "https://arledscreen.com/.well-known/offer.json",
-    "https://arledscreen.com/.well-known/offers.json"
+    "https://arledscreen.com/.well-known/offers.json",
+    "https://arledscreen.com/dataset.json",
+    "https://arledscreen.com/feed.json",
+    "https://arledscreen.com/.well-known/dataset.json",
+    "https://arledscreen.com/.well-known/feed.json"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3422,7 +3426,11 @@
     "https://arledscreen.com/offer.json",
     "https://arledscreen.com/offers.json",
     "https://arledscreen.com/.well-known/offer.json",
-    "https://arledscreen.com/.well-known/offers.json"
+    "https://arledscreen.com/.well-known/offers.json",
+    "https://arledscreen.com/dataset.json",
+    "https://arledscreen.com/feed.json",
+    "https://arledscreen.com/.well-known/dataset.json",
+    "https://arledscreen.com/.well-known/feed.json"
   ],
   "distribution": [
     {
@@ -3595,6 +3603,30 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/offers.json",
       "name": "Offers well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/dataset.json",
+      "name": "Dataset pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feed.json",
+      "name": "Feed pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/dataset.json",
+      "name": "Dataset well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/feed.json",
+      "name": "Feed well-known pricedPanels invent alias"
     }
   ]
 }

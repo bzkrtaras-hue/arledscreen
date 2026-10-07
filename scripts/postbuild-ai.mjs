@@ -879,6 +879,30 @@ function buildAiShopping() {
       {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/dataset.json`,
+        name: "Dataset pricedPanels invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/feed.json`,
+        name: "Feed pricedPanels invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/dataset.json`,
+        name: "Dataset well-known pricedPanels invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/feed.json`,
+        name: "Feed well-known pricedPanels invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/catalog.json`,
       },
       {
@@ -1080,6 +1104,8 @@ function buildAiShopping() {
         `${SITE_URL}/offers.json`,
         `${SITE_URL}/offer`,
         `${SITE_URL}/offers`,
+        `${SITE_URL}/dataset.json`,
+        `${SITE_URL}/feed.json`,
         `${SITE_URL}/dataset`,
         `${SITE_URL}/feed`,
         `${SITE_URL}/.well-known/prices.json`,
@@ -1092,6 +1118,8 @@ function buildAiShopping() {
         `${SITE_URL}/.well-known/pricing.json`,
         `${SITE_URL}/.well-known/offer.json`,
         `${SITE_URL}/.well-known/offers.json`,
+        `${SITE_URL}/.well-known/dataset.json`,
+        `${SITE_URL}/.well-known/feed.json`,
         `${SITE_URL}/.well-known/ai-shopping.json`,
         `${SITE_URL}/modules.json`,
         `${SITE_URL}/sku.json`,
@@ -1424,6 +1452,10 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/offers.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/offer.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/offers.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/dataset.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/feed.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/dataset.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/feed.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/agents.json" rel="related" type="application/ld+json"/>
@@ -1434,7 +1466,7 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/humans.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/AGENTS.md" rel="related" type="text/markdown"/>
     <atom:link href="${SITE_URL}/.well-known/security.txt" rel="related" type="text/plain"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /offer.json · /offers.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /offer.json · /offers.json · /dataset.json · /feed.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
     <docs>${SITE_URL}/ai.txt</docs>
@@ -1701,6 +1733,30 @@ function inventAliasDistributionEntries() {
       contentUrl: `${SITE_URL}/.well-known/offers.json`,
       name: "Offers well-known pricedPanels invent alias",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/dataset.json`,
+      name: "Dataset pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/feed.json`,
+      name: "Feed pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/dataset.json`,
+      name: "Dataset well-known pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/feed.json`,
+      name: "Feed well-known pricedPanels invent alias",
+    },
     ...discoveryDistributionEntries(),
   ];
 }
@@ -1773,6 +1829,10 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/offers.json`,
     `${SITE_URL}/.well-known/offer.json`,
     `${SITE_URL}/.well-known/offers.json`,
+    `${SITE_URL}/dataset.json`,
+    `${SITE_URL}/feed.json`,
+    `${SITE_URL}/.well-known/dataset.json`,
+    `${SITE_URL}/.well-known/feed.json`,
     ...discoveryBasedOnUrls(),
   ];
 }
@@ -2489,6 +2549,10 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       offerJson: `${SITE_URL}/offer.json`,
       offerWellKnown: `${SITE_URL}/.well-known/offer.json`,
       offersWellKnown: `${SITE_URL}/.well-known/offers.json`,
+      datasetJson: `${SITE_URL}/dataset.json`,
+      feedJson: `${SITE_URL}/feed.json`,
+      datasetWellKnown: `${SITE_URL}/.well-known/dataset.json`,
+      feedWellKnown: `${SITE_URL}/.well-known/feed.json`,
       offer: `${SITE_URL}/offer`,
       offers: `${SITE_URL}/offers`,
       dataset: `${SITE_URL}/dataset`,
@@ -2678,6 +2742,8 @@ function writeFeedPathAliases(dir) {
     ["ai-shopping.json", ".well-known/mpn.json"],
     ["ai-shopping.json", ".well-known/offer.json"],
     ["ai-shopping.json", ".well-known/offers.json"],
+    ["ai-shopping.json", ".well-known/dataset.json"],
+    ["ai-shopping.json", ".well-known/feed.json"],
     ["catalog.json", "feeds/catalog.json"],
     ["entity.json", "entity"],
     ["entity.json", "en/entity.json"],
@@ -3044,6 +3110,10 @@ feed-alias-offers-json: ${SITE_URL}/offers.json
 feed-alias-offer-json: ${SITE_URL}/offer.json
 feed-alias-well-known-offer: ${SITE_URL}/.well-known/offer.json
 feed-alias-well-known-offers: ${SITE_URL}/.well-known/offers.json
+feed-alias-dataset-json: ${SITE_URL}/dataset.json
+feed-alias-feed-json: ${SITE_URL}/feed.json
+feed-alias-well-known-dataset: ${SITE_URL}/.well-known/dataset.json
+feed-alias-well-known-feed: ${SITE_URL}/.well-known/feed.json
 feed-alias-offer: ${SITE_URL}/offer
 feed-alias-offers: ${SITE_URL}/offers
 feed-alias-dataset: ${SITE_URL}/dataset
@@ -3355,7 +3425,7 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Entity: https://arledscreen.com/entity.json (alias /organization.json · /cite · /.well-known/entity.json)
 # WebSite: https://arledscreen.com/#website (entity.json mainEntityOfPage OrderAction → /tr/quote/ · /en/quote/)
 # Price: https://arledscreen.com/ai-shopping.json pricedPanels (aliases /prices.json · /.well-known/prices.json)
-# Invent aliases: /.well-known/modules.json · /.well-known/sku.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/offer.json · /.well-known/offers.json · /offer.json · /offers.json
+# Invent aliases: /.well-known/modules.json · /.well-known/sku.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /offer.json · /offers.json · /dataset.json · /feed.json
 # Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json
 # Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json
 # Discovery: https://arledscreen.com/.well-known/agents.json · https://arledscreen.com/.well-known/ard.json · https://arledscreen.com/humans.txt · https://arledscreen.com/AGENTS.md
@@ -3420,6 +3490,8 @@ Acknowledgments: https://arledscreen.com/brand.json
     ".well-known/merchant.json",
     ".well-known/offer.json",
     ".well-known/offers.json",
+    ".well-known/dataset.json",
+    ".well-known/feed.json",
     ".well-known/entity.json",
     ".well-known/catalog.json",
     ".well-known/llms-full.txt",
@@ -3434,6 +3506,7 @@ Acknowledgments: https://arledscreen.com/brand.json
     "offer",
     "offers",
     "dataset.json",
+    "feed.json",
     "dataset",
     "feed",
     "organization",

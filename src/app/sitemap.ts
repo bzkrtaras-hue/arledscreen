@@ -271,6 +271,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/.well-known/sku.json",
     "/.well-known/offer.json",
     "/.well-known/offers.json",
+    "/.well-known/dataset.json",
+    "/.well-known/feed.json",
     "/.well-known/entity.json",
     "/.well-known/catalog.json",
     "/.well-known/security.txt",

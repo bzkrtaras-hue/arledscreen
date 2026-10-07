@@ -62,6 +62,8 @@ const DISCOVERY_ALLOW = [
   "/.well-known/mpn.json",
   "/.well-known/offer.json",
   "/.well-known/offers.json",
+  "/.well-known/dataset.json",
+  "/.well-known/feed.json",
   "/.well-known/entity.json",
   "/.well-known/brand.json",
   "/.well-known/catalog.json",

@@ -761,9 +761,13 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/offer.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/offers.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/offer.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/offers.json")
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/offers.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/dataset.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/feed.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/dataset.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/feed.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price/offer + #website");
+    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price/offer/dataset/feed + #website");
     process.exit(1);
   }
   if (
@@ -2105,6 +2109,10 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('href="https://arledscreen.com/offers.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/offer.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/offers.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/dataset.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/feed.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/dataset.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/feed.json"') ||
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
@@ -2216,6 +2224,10 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/price.json") ||
     !headersLive.includes("/.well-known/offer.json") ||
     !headersLive.includes("/.well-known/offers.json") ||
+    !headersLive.includes("/dataset.json") ||
+    !headersLive.includes("/feed.json") ||
+    !headersLive.includes("/.well-known/dataset.json") ||
+    !headersLive.includes("/.well-known/feed.json") ||
     !headersLive.includes("/.well-known/ard.json") ||
     !headersLive.includes("humans.txt") ||
     !headersLive.includes("/.well-known/security.txt") ||
@@ -2263,6 +2275,10 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/.well-known/price.json"',
       'href="https://arledscreen.com/.well-known/offer.json"',
       'href="https://arledscreen.com/.well-known/offers.json"',
+      'href="https://arledscreen.com/dataset.json"',
+      'href="https://arledscreen.com/feed.json"',
+      'href="https://arledscreen.com/.well-known/dataset.json"',
+      'href="https://arledscreen.com/.well-known/feed.json"',
       'href="https://arledscreen.com/#website"',
       'href="https://arledscreen.com/feeds/prices.rss"',
       'rel="describedby"',
@@ -2678,7 +2694,7 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/offer.json must match ai-shopping.json");
     process.exit(1);
   }
-  for (const rel of [".well-known/offer.json", ".well-known/offers.json", "offers.json"]) {
+  for (const rel of [".well-known/offer.json", ".well-known/offers.json", "offers.json", "dataset.json", "feed.json", ".well-known/dataset.json", ".well-known/feed.json"]) {
     if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
       console.error(`❌ out/${rel} must match ai-shopping.json`);
       process.exit(1);
@@ -3607,6 +3623,8 @@ if (fs.existsSync(outDir)) {
     "/.well-known/pricing.json",
     "/.well-known/offer.json",
     "/.well-known/offers.json",
+    "/.well-known/dataset.json",
+    "/.well-known/feed.json",
     "/modules.json",
     "/sku.json",
     "/tr/ai-shopping.json",
