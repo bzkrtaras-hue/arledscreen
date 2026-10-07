@@ -402,6 +402,10 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ catalog Offer ${id} itemOffered must join PDP #product`);
       process.exit(1);
     }
+    if (!String(product?.offers?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar")) {
+      console.error(`❌ catalog Offer ${id} itemOffered.brand must be #brand-nxtionstar`);
+      process.exit(1);
+    }
     if (product?.offers?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
       console.error(`❌ catalog Offer ${id} availableAtOrFrom must be #localbusiness`);
       process.exit(1);
@@ -552,6 +556,7 @@ if (fs.existsSync(outDir)) {
         o.mpn === o.sku &&
         String(o["@id"] || "").includes(`/ai-shopping.json#offer-${o.sku}`) &&
         String(o?.itemOffered?.["@id"] || "").endsWith("#product") &&
+        String(o?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
         o?.seller?.["@id"] === "https://arledscreen.com/#organization" &&
         o?.priceSpecification?.valueAddedTaxIncluded === false &&
         String(o?.description || "").includes("Ücretsiz kargo yok") &&
@@ -561,7 +566,7 @@ if (fs.existsSync(outDir)) {
         o?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
     )
   ) {
-    console.error("❌ entity.json makesOffer.offers must deny free shipping + return policy + itemOffered + localbusiness");
+    console.error("❌ entity.json makesOffer.offers must deny free shipping + return policy + itemOffered Brand + localbusiness");
     process.exit(1);
   }
   if (
@@ -1920,6 +1925,7 @@ if (fs.existsSync(outDir)) {
     ["en/products/gob-led-ekran/index.html", "/en/products/gob-led-ekran/"],
     ["tr/led-ekran/index.html", "/tr/led-ekran/"],
     ["en/led-ekran/index.html", "/en/led-ekran/"],
+    ["tr/bolgeler/istanbul/index.html", "/tr/bolgeler/istanbul/"],
   ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     let pageOk = false;
@@ -2021,13 +2027,15 @@ if (fs.existsSync(outDir)) {
             aggSame.some((u) => String(u).includes("#priced-panels-aggregate")) &&
             agg.priceSpecification?.valueAddedTaxIncluded === false &&
             agg?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness" &&
+            node?.provider?.["@id"] === "https://arledscreen.com/#localbusiness" &&
             Array.isArray(agg.offers) &&
             agg.offers.length >= 1 &&
             agg.offers.every(
               (o) =>
                 o?.["@type"] === "Offer" &&
                 String(o["@id"] || "").includes("/ai-shopping.json#offer-") &&
-                String(o?.description || "").includes("Ücretsiz kargo yok"),
+                String(o?.description || "").includes("Ücretsiz kargo yok") &&
+                String(o?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar"),
             )
           ) {
             serviceOk = true;

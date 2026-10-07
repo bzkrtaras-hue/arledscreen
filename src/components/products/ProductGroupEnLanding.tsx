@@ -12,8 +12,11 @@ import { getFaqs } from "@/content/faqs";
 import { modelUrlForPrice } from "@/content/models";
 import {
   BRAND_SUBJECT_DATASETS,
+  PRICE_VALID_UNTIL,
+  localBusinessRef,
   nxtionstarBrandRef,
   panelProductsJsonLd,
+  pricedPanelOfferStubs,
   pricedPanelsDatasetJsonLd,
   pricesForGroup,
 } from "@/content/prices";
@@ -45,17 +48,44 @@ export function ProductGroupEnLanding({
     description: en.description,
     url,
     image: absoluteUrl(group.image),
-    provider: { "@id": `${SITE_URL}/#organization` },
+    provider: localBusinessRef(),
     brand:
       (group.brandName ?? "NXTIONSTAR") === "NXTIONSTAR"
         ? nxtionstarBrandRef()
         : { "@type": "Brand", name: group.brandName },
     areaServed: { "@type": "Country", name: "Turkey" },
     isRelatedTo: BRAND_SUBJECT_DATASETS,
+    // AggregateOffer lives here — avoid second #service from panelProductsJsonLd.
+    ...(prices.length
+      ? {
+          offers: {
+            "@type": "AggregateOffer",
+            "@id": `${url}#priced-panels-aggregate`,
+            priceCurrency: "USD",
+            lowPrice: Math.min(...prices.map((x) => x.usd)).toFixed(2),
+            highPrice: Math.max(...prices.map((x) => x.usd)).toFixed(2),
+            offerCount: prices.length,
+            priceValidUntil: PRICE_VALID_UNTIL,
+            url: `${SITE_URL}/ai-shopping.json`,
+            sameAs: [`${SITE_URL}/#priced-panels-aggregate`],
+            description:
+              "Per-panel USD price band; excl. VAT/shipping. No free shipping; freight in written quote.",
+            seller: { "@id": `${SITE_URL}/#organization` },
+            availableAtOrFrom: localBusinessRef(),
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              priceCurrency: "USD",
+              valueAddedTaxIncluded: false,
+            },
+            offers: pricedPanelOfferStubs(prices),
+          },
+        }
+      : {}),
   };
+  // Products only — Service AggregateOffer lives in serviceLd (TR group parity).
   const productsLd =
     prices.length > 0
-      ? panelProductsJsonLd(prices, url, `${en.name} module sales`, modelUrlForPrice(absoluteUrl))
+      ? panelProductsJsonLd(prices, url, undefined, modelUrlForPrice(absoluteUrl))
       : null;
 
   return (

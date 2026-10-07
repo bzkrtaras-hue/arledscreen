@@ -125,7 +125,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#product",
             "sku": "p1-25-ic-gob",
-            "mpn": "p1-25-ic-gob"
+            "mpn": "p1-25-ic-gob",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
           "price": "95.88",
@@ -255,7 +260,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#product",
             "sku": "p1-53-ic-gob",
-            "mpn": "p1-53-ic-gob"
+            "mpn": "p1-53-ic-gob",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
           "price": "62.08",
@@ -385,7 +395,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#product",
             "sku": "p1-86-ic-gob",
-            "mpn": "p1-86-ic-gob"
+            "mpn": "p1-86-ic-gob",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
           "price": "49.08",
@@ -510,7 +525,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#product",
             "sku": "p2-5-ic",
-            "mpn": "p2-5-ic"
+            "mpn": "p2-5-ic",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
           "price": "32.18",
@@ -635,7 +655,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#product",
             "sku": "p3-07-ic",
-            "mpn": "p3-07-ic"
+            "mpn": "p3-07-ic",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
           "price": "30.88",
@@ -760,7 +785,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#product",
             "sku": "p4-ic",
-            "mpn": "p4-ic"
+            "mpn": "p4-ic",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
           "price": "26.98",
@@ -885,7 +915,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#product",
             "sku": "p2-5-dis",
-            "mpn": "p2-5-dis"
+            "mpn": "p2-5-dis",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
           "price": "63.70",
@@ -1010,7 +1045,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#product",
             "sku": "p2-9-dis",
-            "mpn": "p2-9-dis"
+            "mpn": "p2-9-dis",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
           "price": "53.30",
@@ -1135,7 +1175,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#product",
             "sku": "p3-07-dis",
-            "mpn": "p3-07-dis"
+            "mpn": "p3-07-dis",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
           "price": "44.20",
@@ -1260,7 +1305,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#product",
             "sku": "p4-dis",
-            "mpn": "p4-dis"
+            "mpn": "p4-dis",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
           "price": "33.80",
@@ -1385,7 +1435,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#product",
             "sku": "p4-dis-front",
-            "mpn": "p4-dis-front"
+            "mpn": "p4-dis-front",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
           "price": "36.40",
@@ -1510,7 +1565,12 @@
             "@type": "Product",
             "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#product",
             "sku": "p5-dis",
-            "mpn": "p5-dis"
+            "mpn": "p5-dis",
+            "brand": {
+              "@type": "Brand",
+              "@id": "https://arledscreen.com/#brand-nxtionstar",
+              "name": "NXTIONSTAR"
+            }
           },
           "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
           "price": "29.90",

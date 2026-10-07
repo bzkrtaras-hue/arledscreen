@@ -225,6 +225,7 @@ function buildCatalog() {
           "@id": `${panel.productUrl}#product`,
           sku: panel.id,
           mpn: panel.id,
+          brand: { "@type": "Brand", "@id": `${SITE_URL}/#brand-nxtionstar`, name: "NXTIONSTAR" },
         },
         // Per-SKU Offer URL = PDP (same as product.url / merchant TSV / ai-shopping).
         // Collection.url stays the price hub; do not point every Offer at the hub.
@@ -454,6 +455,7 @@ function buildAiShopping() {
           "@id": `${panel.productUrl}#product`,
           sku: panel.id,
           mpn: panel.id,
+          brand: { "@type": "Brand", "@id": `${SITE_URL}/#brand-nxtionstar`, name: "NXTIONSTAR" },
         },
         url: panel.productUrl,
         price,

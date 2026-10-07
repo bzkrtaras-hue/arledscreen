@@ -267,7 +267,15 @@ export function panelOffer(
     ...(sku ? { sku, mpn: sku } : {}),
     // Offer → Product join (schema.org shopping merges).
     ...(productId && sku
-      ? { itemOffered: { "@type": "Product" as const, "@id": productId, sku, mpn: sku } }
+      ? {
+          itemOffered: {
+            "@type": "Product" as const,
+            "@id": productId,
+            sku,
+            mpn: sku,
+            brand: nxtionstarBrandRef(),
+          },
+        }
       : {}),
     url,
     price: usd.toFixed(2),
@@ -337,6 +345,7 @@ export function pricedPanelOfferStubs(panels: PanelPrice[] = PANEL_PRICES) {
         "@id": `${url}#product`,
         sku: p.id,
         mpn: p.id,
+        brand: nxtionstarBrandRef(),
       },
       seller: { "@id": `${SITE_URL}/#organization` },
       priceSpecification: {
@@ -485,7 +494,8 @@ export function panelProductsJsonLd(
       "@type": "Service",
       "@id": `${pageUrl}#service`,
       name: serviceName,
-      provider: org,
+      // Local-intent agents key Service.provider as Place (Org remains seller/brand).
+      provider: localBusinessRef(),
       brand: nxtionstarBrandRef(),
       areaServed: { "@type": "Country", name: "Türkiye" },
       url: pageUrl,

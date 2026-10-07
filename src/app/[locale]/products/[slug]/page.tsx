@@ -192,7 +192,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
     description: g.description,
     url,
     image: absoluteUrl(g.image),
-    provider: { "@id": `${SITE_URL}/#organization` },
+    provider: localBusinessRef(),
     brand:
       (g.brandName ?? "NXTIONSTAR") === "NXTIONSTAR"
         ? nxtionstarBrandRef()

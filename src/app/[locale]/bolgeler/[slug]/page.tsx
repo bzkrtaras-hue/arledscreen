@@ -14,10 +14,15 @@ import {
   getServiceRegion,
   serviceRegionPath,
 } from "@/content/service-regions";
-import { nxtionstarBrandRef, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import {
+  BRAND_SUBJECT_DATASETS,
+  localBusinessRef,
+  nxtionstarBrandRef,
+  pricedPanelsDatasetJsonLd,
+} from "@/content/prices";
 import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
   CONTACT_PHONE_DISPLAY,
@@ -103,7 +108,7 @@ export default async function ServiceRegionPage({
   ];
 
   const regionUrl = absoluteUrl(serviceRegionPath(region.slug));
-  const localBusiness = {
+  const regionServiceLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${regionUrl}#service`,
@@ -111,12 +116,14 @@ export default async function ServiceRegionPage({
     serviceType: "LED ekran sistemleri",
     description: region.description,
     brand: nxtionstarBrandRef(),
-    provider: { "@id": `${SITE_URL}/#organization` },
+    provider: localBusinessRef(),
     areaServed: {
       "@type": "AdministrativeArea",
       name: region.name,
     },
     url: regionUrl,
+    // Published price Datasets only — no province doorway invent.
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
   };
 
   return (
@@ -134,6 +141,7 @@ export default async function ServiceRegionPage({
         name={region.h1}
         description={region.description}
         cssSelectors={["#region-h1", "#region-lead"]}
+        mainEntity={{ "@id": `${regionUrl}#service` }}
       />
       <script
         type="application/ld+json"
@@ -143,7 +151,7 @@ export default async function ServiceRegionPage({
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(regionServiceLd) }}
       />
 
       <section className="border-b border-border bg-surface/60">

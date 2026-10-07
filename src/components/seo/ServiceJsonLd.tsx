@@ -1,6 +1,6 @@
-import { nxtionstarBrandRef } from "@/content/prices";
+import { localBusinessRef, nxtionstarBrandRef } from "@/content/prices";
 import { SERVICE_REGIONS } from "@/content/service-regions";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 
 /** Single Service entity for the verified offering (sales, installation, service). */
 export function ServiceJsonLd({ locale = "tr" }: { locale?: string }) {
@@ -17,7 +17,7 @@ export function ServiceJsonLd({ locale = "tr" }: { locale?: string }) {
       ? "Indoor and outdoor LED selection, survey, install, commissioning and technical service. NXTIONSTAR products."
       : "İç ve dış mekân LED ekran seçimi, keşif, montaj, devreye alma ve teknik servis. NXTIONSTAR ürünleri.",
     brand: nxtionstarBrandRef(),
-    provider: { "@id": `${SITE_URL}/#organization` },
+    provider: localBusinessRef(),
     areaServed: [
       { "@type": "Country", name: en ? "Turkey" : "Türkiye" },
       ...SERVICE_REGIONS.map((r) => ({

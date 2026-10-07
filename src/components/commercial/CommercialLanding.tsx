@@ -12,8 +12,11 @@ import { modelUrlForPrice } from "@/content/models";
 import {
   BRAND_SUBJECT_DATASETS,
   PANEL_PRICES,
+  PRICE_VALID_UNTIL,
+  localBusinessRef,
   nxtionstarBrandRef,
   panelProductsJsonLd,
+  pricedPanelOfferStubs,
   pricedPanelsDatasetJsonLd,
 } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -93,11 +96,38 @@ export function CommercialLanding({
     "@id": `${url}#service`,
     name: page.h1,
     description: page.description,
-    provider: { "@id": `${SITE_URL}/#organization` },
+    provider: localBusinessRef(),
     brand: nxtionstarBrandRef(),
     areaServed: { "@type": "Country", name: tr ? "Türkiye" : "Turkey" },
     url,
     isRelatedTo: BRAND_SUBJECT_DATASETS,
+    // Intent hubs: AggregateOffer on page Service (avoid dual #service with panelProductsJsonLd).
+    ...(showPanelOffers
+      ? {
+          offers: {
+            "@type": "AggregateOffer",
+            "@id": `${url}#priced-panels-aggregate`,
+            priceCurrency: "USD",
+            lowPrice: Math.min(...PANEL_PRICES.map((x) => x.usd)).toFixed(2),
+            highPrice: Math.max(...PANEL_PRICES.map((x) => x.usd)).toFixed(2),
+            offerCount: PANEL_PRICES.length,
+            priceValidUntil: PRICE_VALID_UNTIL,
+            url: `${SITE_URL}/ai-shopping.json`,
+            sameAs: [`${SITE_URL}/#priced-panels-aggregate`],
+            description: tr
+              ? "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok; nakliye yazılı teklifle."
+              : "Per-panel USD price band; excl. VAT/shipping. No free shipping; freight in written quote.",
+            seller: { "@id": `${SITE_URL}/#organization` },
+            availableAtOrFrom: localBusinessRef(),
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              priceCurrency: "USD",
+              valueAddedTaxIncluded: false,
+            },
+            offers: pricedPanelOfferStubs(PANEL_PRICES),
+          },
+        }
+      : {}),
   };
 
   return (
@@ -140,12 +170,8 @@ export function CommercialLanding({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(
-              panelProductsJsonLd(
-                PANEL_PRICES,
-                url,
-                tr ? "LED ekran modülü satışı, keşif ve montaj" : "LED display module sales, survey and installation",
-                modelUrlForPrice(absoluteUrl),
-              ),
+              // Products only — Service AggregateOffer lives in serviceLd.
+              panelProductsJsonLd(PANEL_PRICES, url, undefined, modelUrlForPrice(absoluteUrl)),
             ),
           }}
         />
