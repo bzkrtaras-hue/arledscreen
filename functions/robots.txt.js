@@ -33,6 +33,7 @@ Allow: /.well-known/modules.json
 Allow: /.well-known/sku.json
 Allow: /.well-known/mpn.json
 Allow: /.well-known/entity.json
+Allow: /.well-known/brand.json
 Allow: /.well-known/catalog.json
 Allow: /.well-known/security.txt
 Allow: /.well-known/security

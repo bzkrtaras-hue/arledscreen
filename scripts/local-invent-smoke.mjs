@@ -146,6 +146,15 @@ else fail("agents.json ≥17");
   ) {
     ok("agents distribution + isBasedOn invent + AGENTS geo:next");
   } else fail("agents distribution + isBasedOn invent + AGENTS geo:next");
+  const llmsFull = readText("llms-full.txt");
+  if (
+    llms.includes("geo:next") &&
+    llms.includes("/.well-known/brand.json") &&
+    llmsFull.includes("geo:next") &&
+    llmsFull.includes("/.well-known/brand.json")
+  ) {
+    ok("llms + llms-full geo:next + well-known/brand");
+  } else fail("llms + llms-full geo:next + well-known/brand");
 }
 
 const pointC = readText("point-c.txt");

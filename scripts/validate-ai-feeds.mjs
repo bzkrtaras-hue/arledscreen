@@ -1267,6 +1267,11 @@ if (fs.existsSync(outDir)) {
       console.error("❌ out/llms.txt must cite geo:next + /.well-known/brand.json");
       process.exit(1);
     }
+    const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
+    if (!llmsFullLive.includes("geo:next") || !llmsFullLive.includes("/.well-known/brand.json")) {
+      console.error("❌ out/llms-full.txt must cite geo:next + /.well-known/brand.json");
+      process.exit(1);
+    }
   }
   const llmsLive = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
   if (!llmsLive.includes("Inventable feed path aliases") || !llmsLive.includes("/api/prices")) {
@@ -3279,6 +3284,7 @@ for (const must of [
   "/offer.json",
   "/organization",
   "/brand.json",
+  "/.well-known/brand.json",
   "/entity-profiles.json",
   "/feeds/prices.rss",
   "/cite.json",
@@ -3300,6 +3306,16 @@ for (const must of [
   if (!robotsTsBody.includes(must)) {
     console.error(`❌ src/app/robots.ts must Allow ${must}`);
     process.exit(1);
+  }
+}
+{
+  const robotsOut = path.join(outDir, "robots.txt");
+  if (fs.existsSync(robotsOut)) {
+    const robotsOutBody = fs.readFileSync(robotsOut, "utf8");
+    if (!robotsOutBody.includes("/.well-known/brand.json")) {
+      console.error("❌ out/robots.txt must Allow /.well-known/brand.json");
+      process.exit(1);
+    }
   }
 }
 if (!robotsFnBody.includes("Google-CloudVertexBot") || !robotsTsBody.includes("Google-CloudVertexBot")) {

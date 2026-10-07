@@ -2,6 +2,7 @@
 /**
  * Owner-gate status for GEO / AI-alışveriş (Point C · arleds 301 · Tur1a · PR merge).
  * Reports only — does not invent mention rates. Exit 0 always (status tool).
+ * Default: short next-action one-liners. Full paste dumps: GEO_FULL=1 / TUR1A_FULL=1.
  *
  * Usage: npm run geo:status
  */
@@ -17,6 +18,7 @@ const logPath = path.join(repoRoot, "docs/geo/observations/blind-log.jsonl");
 const pointCProgressPath = path.join(repoRoot, "docs/geo/observations/point-c-progress.json");
 /** Packs in TR_ORDER + hostinger301 step (see print-point-c-packs.mjs). */
 const POINT_C_STEPS = 11;
+const GEO_FULL = process.env.GEO_FULL === "1";
 
 function line(status, label, detail = "") {
   const mark = status === "OK" ? "OK  " : status === "OPEN" ? "OPEN" : "INFO";
@@ -25,7 +27,8 @@ function line(status, label, detail = "") {
 
 console.log("=== ARLEDSCREEN GEO owner-gate status ===");
 console.log(`Time: ${new Date().toISOString()}`);
-console.log("CODE invent is live on arledscreen.com; gates below are owner-gated.\n");
+console.log("CODE invent is live on arledscreen.com; gates below are owner-gated.");
+console.log("GEO next: npm run geo:next  (Point C → arleds 301 → Tur1a → merge)\n");
 
 // Point C packs
 let packsOk = false;
@@ -56,11 +59,11 @@ try {
   line(
     pasteDone ? "OK" : "OPEN",
     "Point C paste progress",
-    `${ackedN}/${POINT_C_STEPS} acked · npm run point-c:next · point-c:ack`,
+    `${ackedN}/${POINT_C_STEPS} acked · npm run geo:next · point-c:next · point-c:ack`,
   );
   const checklist = profiles.ownerP0Checklist || [];
   if (checklist[0]) line("INFO", "P0 next", checklist[0].slice(0, 120));
-  // Sequential paste clipboard (point-c:next) — cite-only; no invent scores.
+  // Sequential paste clipboard — short by default; full dump GEO_FULL=1.
   if (packsOk && !pasteDone) {
     const next = spawnSync(process.execPath, [path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "--next"], {
       encoding: "utf8",
@@ -68,8 +71,13 @@ try {
     });
     const out = String(next.stdout || "").trim();
     if (out) {
+      const stepLine = out.split("\n").find((r) => r.startsWith("Step:"));
       console.log("  Point C next paste:");
-      for (const row of out.split("\n")) console.log(`  ${row}`);
+      if (GEO_FULL) {
+        for (const row of out.split("\n")) console.log(`  ${row}`);
+      } else {
+        console.log(`  ${stepLine || "see npm run geo:next"} · npm run geo:next (full dump: GEO_FULL=1 npm run geo:status)`);
+      }
     }
   }
 } catch (e) {
@@ -94,13 +102,17 @@ if (!arledsOk) {
   console.log("  http://www.arleds.com/ → https://arledscreen.com/tr/");
   console.log("  https://arleds.com/ → https://arledscreen.com/tr/");
   console.log("  https://www.arleds.com/ → https://arledscreen.com/tr/");
-  console.log("  Also: npm run point-c:next · https://arledscreen.com/point-c.txt");
+  console.log("  Also: npm run geo:next · npm run point-c:next · https://arledscreen.com/point-c.txt");
   try {
     const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
-    console.log("  Hostinger support email (select-all):");
-    console.log("  ---");
-    for (const row of String(mod.buildHostingerEmailClipboard()).split("\n")) console.log(`  ${row}`);
-    console.log("  ---");
+    if (GEO_FULL) {
+      console.log("  Hostinger support email (select-all):");
+      console.log("  ---");
+      for (const row of String(mod.buildHostingerEmailClipboard()).split("\n")) console.log(`  ${row}`);
+      console.log("  ---");
+    } else {
+      console.log("  Hostinger support email: npm run geo:next (or GEO_FULL=1 npm run geo:status)");
+    }
     console.log("  Hostinger mailto:");
     console.log(`  ${mod.buildHostingerMailto()}`);
     console.log("  EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml");

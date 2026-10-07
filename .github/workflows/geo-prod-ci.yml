@@ -128,6 +128,8 @@ jobs:
           npm run verify:arleds-301 >/tmp/arleds-verify.txt 2>&1 || true
           grep -q "Hostinger clipboard" /tmp/arleds-verify.txt
           npm run geo:status >/tmp/geo-status.txt 2>&1 || true
+          grep -q "GEO next:" /tmp/geo-status.txt
+          grep -q "geo:next" /tmp/geo-status.txt
           grep -q "Hostinger clipboard" /tmp/geo-status.txt
           grep -q "mailto:support@hostinger.com" /tmp/geo-status.txt
           grep -q "Gmail draft (Send)" /tmp/geo-status.txt

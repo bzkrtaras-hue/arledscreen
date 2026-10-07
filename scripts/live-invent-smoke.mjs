@@ -128,6 +128,13 @@ try {
   ) {
     ok("agents distribution + isBasedOn invent + AGENTS geo:next");
   } else fail("agents distribution + isBasedOn invent + AGENTS geo:next");
+  if (llms.includes("geo:next") && llms.includes("/.well-known/brand.json")) {
+    ok("llms.txt geo:next + well-known/brand");
+  } else fail("llms.txt geo:next + well-known/brand");
+  const llmsFull = await getText("/llms-full.txt");
+  if (llmsFull.includes("geo:next") && llmsFull.includes("/.well-known/brand.json")) {
+    ok("llms-full.txt geo:next + well-known/brand");
+  } else fail("llms-full.txt geo:next + well-known/brand");
 } catch (e) {
   fail(`agents/AGENTS/llms invent ${e?.message || e}`);
 }
