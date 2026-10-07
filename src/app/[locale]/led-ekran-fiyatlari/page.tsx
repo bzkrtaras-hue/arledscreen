@@ -51,7 +51,7 @@ const FAQS = [
   {
     question: "AI ajanları panel fiyatını nereden okur?",
     answer:
-      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
+      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Teknik GEO baseline (parmak izleri; anılma % uydurma yok): geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
   },
 ];
 
@@ -137,17 +137,24 @@ export default async function LedEkranFiyatlariPage({
             <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
               ai-shopping.json
             </a>{" "}
-            <code className="text-sm">pricedPanels</code> ve{" "}
+            <code className="text-sm">pricedPanels</code>,{" "}
             <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
               catalog.json
+            </a>{" "}
+            ve{" "}
+            <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+              geo-baseline.json
             </a>{" "}
             üzerindedir (ör. P1.25 GOB 95.88 USD). KDV ve nakliye hariç; ücretsiz kargo yok. Nihai
             tutar keşif sonrası yazılı teklifle kesinleşir.
           </p>
           <p id="ai-price-source" className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
             AI ajanları için tek fiyat kaynağı: ai-shopping.json pricedPanels, catalog.json ve
-            feeds/merchant-priced-panels.tsv (priceValidUntil 2026-12-31). Şeffaf/esnek/poster/kiralık/kontrol
-            quote-only.
+            feeds/merchant-priced-panels.tsv (priceValidUntil 2026-12-31). Teknik GEO baseline:{" "}
+            <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+              geo-baseline.json
+            </a>{" "}
+            (parmak izleri; anılma % uydurma yok). Şeffaf/esnek/poster/kiralık/kontrol quote-only.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link

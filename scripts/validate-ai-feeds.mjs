@@ -178,6 +178,16 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources.geoBaseline required");
     process.exit(1);
   }
+  const catalogLive = JSON.parse(fs.readFileSync(path.join(outDir, "catalog.json"), "utf8"));
+  const catalogRelated = JSON.stringify(catalogLive.isRelatedTo || []);
+  if (
+    !catalogRelated.includes("/geo-baseline.json") ||
+    !catalogRelated.includes("/ai-shopping.json") ||
+    catalogLive?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar"
+  ) {
+    console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping and brand @id #brand-nxtionstar");
+    process.exit(1);
+  }
   if (!ai?.resources?.en?.home || !ai.resources.en.calculator) {
     console.error("❌ ai-shopping.json resources.en.home + calculator required");
     process.exit(1);

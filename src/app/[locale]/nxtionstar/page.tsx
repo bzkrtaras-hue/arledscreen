@@ -37,7 +37,7 @@ const FAQS = [
   {
     question: "NXTIONSTAR panel fiyatları nerede?",
     answer:
-      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Quote-only gruplar yazılı teklifle.",
+      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Teknik GEO baseline: geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Quote-only gruplar yazılı teklifle.",
   },
   {
     question: "NXTIONSTAR, NEXTSTAR veya NationStar ile aynı marka mı?",
