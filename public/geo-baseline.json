@@ -26,10 +26,17 @@
       "Point C third-party cites",
       "Tur1a blind scores",
       "GSC access",
-      "PR #60 merge"
+      "PR #60 merge",
+      "arleds.com → arledscreen.com/tr/ 301 (legacy domain split)"
     ],
     "noSpamDoorways": true,
-    "provinceLandingPolicy": "Only provinces with published project records; no 81-il programatic doorways"
+    "provinceLandingPolicy": "Only provinces with published project records; no 81-il programatic doorways",
+    "legacyDomain": {
+      "host": "arleds.com",
+      "status": "owner-gated-301",
+      "note": "Same phone historically; TLS broken/timeout observed; not sameAs; not a price/entity citation source. Prefer arledscreen.com.",
+      "measuredAt": "2026-10-07"
+    }
   },
   "pricedPanels": [
     {
@@ -118,7 +125,7 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "fa70b308a1ee6464200c1391822fb12043b8cbc597e724f3673db869a5dc87e0",
+    "aiShoppingSha256": "3f8c20b7c0841cab1669e03308c0fa115fd94b6467c890fe1cd887011246cfed",
     "catalogSha256": "c8ce608992fc5a6563f044a130e9418a322876ae3f39796e81e0527dfdf1afa6",
     "merchantTsvSha256": "308d08c6935a752088febf4761e41d01018c97bbf3097764c193df0ac63aa37a",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
