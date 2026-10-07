@@ -434,8 +434,12 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
     const html = fs.readFileSync(fp, "utf8");
-    if (!html.includes("ARLEDSCREEN") || html.includes("This page could not be found")) {
-      console.error(`❌ ${rel} must be a real EN page (not 404)`);
+    // Next RSC payloads can contain the literal "This page could not be found" even on
+    // real pages — trust <title> (404 pages title as "404: This page could not be found.").
+    const titleMatch = html.match(/<title[^>]*>([^<]*)<\/title>/i);
+    const title = titleMatch ? titleMatch[1] : "";
+    if (!html.includes("ARLEDSCREEN") || /^404\b/i.test(title) || /could not be found/i.test(title)) {
+      console.error(`❌ ${rel} must be a real EN page (not 404); title=${title.slice(0, 80)}`);
       process.exit(1);
     }
   }

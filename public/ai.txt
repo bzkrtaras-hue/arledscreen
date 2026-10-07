@@ -22,6 +22,16 @@ rental-en: https://arledscreen.com/en/led-ekran-kiralama/
 install-en: https://arledscreen.com/en/led-ekran-montaj/
 manufacturer-en: https://arledscreen.com/en/led-ekran-ureticisi/
 service-en: https://arledscreen.com/en/led-ekran-servis/
+services-hub-en: https://arledscreen.com/en/hizmetler/
+use-store-en: https://arledscreen.com/en/magaza-led-ekran/
+use-facade-en: https://arledscreen.com/en/cephe-led-ekran/
+use-mall-en: https://arledscreen.com/en/avm-led-ekran/
+use-hotel-en: https://arledscreen.com/en/otel-led-ekran/
+use-stage-en: https://arledscreen.com/en/sahne-led-ekran/
+use-municipal-en: https://arledscreen.com/en/belediye-led-ekran/
+pitch-p125-en: https://arledscreen.com/en/p1-25-led-ekran/
+pitch-p25-en: https://arledscreen.com/en/p2-5-led-ekran/
+pitch-p4-en: https://arledscreen.com/en/p4-led-ekran/
 products-en: https://arledscreen.com/en/products/
 products-gob-en: https://arledscreen.com/en/products/gob-led-ekran/
 products-indoor-en: https://arledscreen.com/en/products/ic-mekan-led-ekran/
