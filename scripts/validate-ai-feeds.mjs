@@ -297,6 +297,25 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ pricedPanels/TSV image+brand required for ${panel.sku}`);
       process.exit(1);
     }
+    if (panel["@type"] !== "Product" || panel.offers?.["@type"] !== "Offer") {
+      console.error(`❌ pricedPanels ${panel.sku} must be Product with nested Offer`);
+      process.exit(1);
+    }
+    if (panel.offers?.url !== panel.url || panel.offers?.price !== panel.price) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.url/price must match flat Product fields`);
+      process.exit(1);
+    }
+    if (panel.offers?.seller?.["@id"] !== "https://arledscreen.com/#organization") {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.seller must be #organization`);
+      process.exit(1);
+    }
+    if (
+      panel.offers?.hasMerchantReturnPolicy?.returnPolicyCategory !==
+      "https://schema.org/MerchantReturnNotPermitted"
+    ) {
+      console.error(`❌ pricedPanels ${panel.sku} must declare MerchantReturnNotPermitted`);
+      process.exit(1);
+    }
   }
   if (tsv.includes("/ic-mekan-led-ekran/p1-25/") || tsv.includes("/p4-front/")) {
     console.error("❌ merchant TSV has stale broken product_url paths");

@@ -354,20 +354,42 @@ function buildAiShopping() {
   const brandId = `${SITE_URL}/#brand-nxtionstar`;
   const pricedPanels = PANEL_PRICES.map((panel) => {
     const label = panelLabel(panel);
+    const price = panel.usd.toFixed(2);
+    const shippingDetails = panelShippingDetails();
+    // Flat price fields kept for simple consumers; nested Offer mirrors catalog/PDP graph.
     return {
+      "@type": "Product",
+      "@id": `${panel.productUrl}#product`,
       sku: panel.id,
       name: `NXTIONSTAR ${label} LED Modül`,
       // Keep string brand for simple consumers; brandId aligns with catalog Brand @id.
       brand: "NXTIONSTAR",
       brandId,
-      price: panel.usd.toFixed(2),
+      price,
       priceCurrency: "USD",
       priceValidUntil: PRICE_VALID_UNTIL,
       shippingIncluded: false,
-      shippingDetails: panelShippingDetails(),
+      shippingDetails,
       image: `${SITE_URL}${panel.image}`,
       url: panel.productUrl,
       groupUrl: panel.groupUrl,
+      offers: {
+        "@type": "Offer",
+        "@id": `${SITE_URL}/ai-shopping.json#offer-${panel.id}`,
+        url: panel.productUrl,
+        price,
+        priceCurrency: "USD",
+        priceValidUntil: PRICE_VALID_UNTIL,
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+        shippingDetails,
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          applicableCountry: "TR",
+          returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+        },
+        seller: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+      },
     };
   });
 

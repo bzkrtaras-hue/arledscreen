@@ -167,16 +167,39 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" showCalcLink={false} />
           </div>
         ) : locale === "en" ? (
-          <>
+          <div id="panel-prices" className="mt-10 scroll-mt-28">
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(
+                  panelProductsJsonLd(
+                    PANEL_PRICES,
+                    absoluteUrl("/en/hesaplayici/"),
+                    "LED display module sales, survey and installation",
+                    modelUrlForPrice(absoluteUrl),
+                  ),
+                ),
+              }}
+            />
+            <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">2026 panel price list</h2>
+            <p className="mb-2 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
+              The 12 modules used by this calculator. Machine-readable copy:
+            </p>
             <AiPriceSourceNote
               locale="en"
-              className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-muted"
-              lead="Published 12 panel USD list:"
+              className="mb-2 max-w-3xl text-sm leading-relaxed text-ink-muted"
+              lead="Source:"
             />
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
-              Final price is set in the written quote.
+            <p className="mb-4 max-w-3xl text-sm leading-relaxed text-ink-muted">
+              Amounts are approximate; the final price is set in the written quote after survey. Product pages stay
+              on the Turkish catalog URLs (canonical price PDPs).
             </p>
-          </>
+            <PanelPriceTable
+              panels={PANEL_PRICES}
+              caption="Panel prices (USD, per panel)"
+              showCalcLink={false}
+            />
+          </div>
         ) : null}
       </Section>
     </>
