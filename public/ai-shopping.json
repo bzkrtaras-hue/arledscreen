@@ -59,6 +59,8 @@
   },
   "pricedPanels": [
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#product",
       "sku": "p1-25-ic-gob",
       "name": "NXTIONSTAR P1.25 İç mekân (GOB) LED Modül",
       "brand": "NXTIONSTAR",
@@ -91,9 +93,52 @@
       },
       "image": "https://arledscreen.com/modules/nxtionstar-p1-25-ic-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
-      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-25-ic-gob",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
+        "price": "95.88",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#product",
       "sku": "p1-53-ic-gob",
       "name": "NXTIONSTAR P1.53 İç mekân (GOB) LED Modül",
       "brand": "NXTIONSTAR",
@@ -126,9 +171,52 @@
       },
       "image": "https://arledscreen.com/modules/nxtionstar-p1-53-ic-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
-      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-53-ic-gob",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
+        "price": "62.08",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#product",
       "sku": "p1-86-ic-gob",
       "name": "NXTIONSTAR P1.86 İç mekân (GOB) LED Modül",
       "brand": "NXTIONSTAR",
@@ -161,9 +249,52 @@
       },
       "image": "https://arledscreen.com/modules/nxtionstar-p1-86-ic-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
-      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-86-ic-gob",
+        "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
+        "price": "49.08",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#product",
       "sku": "p2-5-ic",
       "name": "NXTIONSTAR P2.5 İç mekân LED Modül",
       "brand": "NXTIONSTAR",
@@ -196,9 +327,52 @@
       },
       "image": "https://arledscreen.com/modules/nxtionstar-p2-5-ic-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
-      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-ic",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
+        "price": "32.18",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#product",
       "sku": "p3-07-ic",
       "name": "NXTIONSTAR P3.07 İç mekân LED Modül",
       "brand": "NXTIONSTAR",
@@ -231,9 +405,52 @@
       },
       "image": "https://arledscreen.com/projects/modules/indoor-smd-surface.jpg",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
-      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-ic",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
+        "price": "30.88",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#product",
       "sku": "p4-ic",
       "name": "NXTIONSTAR P4 İç mekân LED Modül",
       "brand": "NXTIONSTAR",
@@ -266,9 +483,52 @@
       },
       "image": "https://arledscreen.com/projects/modules/indoor-wall.jpg",
       "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
-      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-ic",
+        "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
+        "price": "26.98",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#product",
       "sku": "p2-5-dis",
       "name": "NXTIONSTAR P2.5 Dış mekân LED Modül",
       "brand": "NXTIONSTAR",
@@ -301,9 +561,52 @@
       },
       "image": "https://arledscreen.com/modules/nxtionstar-p2-5-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
-      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-dis",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
+        "price": "63.70",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#product",
       "sku": "p2-9-dis",
       "name": "NXTIONSTAR P2.9 Dış mekân LED Modül",
       "brand": "NXTIONSTAR",
@@ -336,9 +639,52 @@
       },
       "image": "https://arledscreen.com/modules/nxtionstar-p2-97-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
-      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-9-dis",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
+        "price": "53.30",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#product",
       "sku": "p3-07-dis",
       "name": "NXTIONSTAR P3.07 Dış mekân LED Modül",
       "brand": "NXTIONSTAR",
@@ -371,9 +717,52 @@
       },
       "image": "https://arledscreen.com/modules/nxtionstar-p3-076-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
-      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-dis",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
+        "price": "44.20",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#product",
       "sku": "p4-dis",
       "name": "NXTIONSTAR P4 Dış mekân LED Modül",
       "brand": "NXTIONSTAR",
@@ -406,9 +795,52 @@
       },
       "image": "https://arledscreen.com/modules/nxtionstar-p4-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
-      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
+        "price": "33.80",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#product",
       "sku": "p4-dis-front",
       "name": "NXTIONSTAR P4 Dış mekân (önden servis) LED Modül",
       "brand": "NXTIONSTAR",
@@ -441,9 +873,52 @@
       },
       "image": "https://arledscreen.com/projects/modules/front-service-module.jpg",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
-      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis-front",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
+        "price": "36.40",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     },
     {
+      "@type": "Product",
+      "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#product",
       "sku": "p5-dis",
       "name": "NXTIONSTAR P5 Dış mekân LED Modül",
       "brand": "NXTIONSTAR",
@@ -476,7 +951,48 @@
       },
       "image": "https://arledscreen.com/modules/nxtionstar-p5-dis-mekan-modul.webp",
       "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
-      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/"
+      "groupUrl": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/",
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://arledscreen.com/ai-shopping.json#offer-p5-dis",
+        "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
+        "price": "29.90",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "TR"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 21,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "TR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "seller": {
+          "@type": "Organization",
+          "@id": "https://arledscreen.com/#organization"
+        }
+      }
     }
   ],
   "pricedProducts": {
