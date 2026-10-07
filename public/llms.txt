@@ -108,3 +108,4 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 ## Optional
 
 - [English](https://arledscreen.com/en/)
+- EN cite (entity.json): `citeOneLinerEn` / `citeShortEn` / `citeMediumEn` — also in [ai-shopping.json](https://arledscreen.com/ai-shopping.json) as `cite.en`

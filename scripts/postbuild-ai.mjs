@@ -194,6 +194,14 @@ function buildCatalog() {
         },
         priceValidUntil: PRICE_VALID_UNTIL,
         availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+        description:
+          "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          applicableCountry: "TR",
+          returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+        },
         seller: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
       },
     };
@@ -230,6 +238,14 @@ function loadEntityCite() {
       "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
     medium:
       "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
+    en: {
+      oneLiner:
+        "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.",
+      short:
+        "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.",
+      medium:
+        "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service.",
+    },
   };
   if (!fs.existsSync(entityPath)) return fallback;
   try {
@@ -238,6 +254,11 @@ function loadEntityCite() {
       oneLiner: e.citeOneLiner || fallback.oneLiner,
       short: e.citeShort || fallback.short,
       medium: e.citeMedium || fallback.medium,
+      en: {
+        oneLiner: e.citeOneLinerEn || fallback.en.oneLiner,
+        short: e.citeShortEn || fallback.en.short,
+        medium: e.citeMediumEn || fallback.en.medium,
+      },
     };
   } catch {
     return fallback;

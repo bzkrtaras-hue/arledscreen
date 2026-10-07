@@ -28,9 +28,17 @@ export const ENTITY_CITE_SHORT =
 export const ENTITY_CITE_MEDIUM =
   "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.";
 
+/** English one-liner (international AI / directories — do not invent extra claims). */
+export const ENTITY_CITE_ONE_LINER_EN =
+  "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.";
+
 /** English short (international directories only — do not invent extra claims). */
 export const ENTITY_CITE_SHORT_EN =
   "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.";
+
+/** English medium cite for AI shopping agents / About fields. */
+export const ENTITY_CITE_MEDIUM_EN =
+  "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service.";
 
 export const ENTITY_DISAMBIGUATION = [
   "ARLEDSCREEN (İstanbul) ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
@@ -135,7 +143,9 @@ export type EntityDocument = {
   citeOneLiner: string;
   citeShort: string;
   citeMedium: string;
+  citeOneLinerEn: string;
   citeShortEn: string;
+  citeMediumEn: string;
   faqs: ReadonlyArray<{ question: string; answer: string }>;
 };
 
@@ -208,7 +218,9 @@ export function buildEntityDocument(): EntityDocument {
     citeOneLiner: ENTITY_CITE_ONE_LINER,
     citeShort: ENTITY_CITE_SHORT,
     citeMedium: ENTITY_CITE_MEDIUM,
+    citeOneLinerEn: ENTITY_CITE_ONE_LINER_EN,
     citeShortEn: ENTITY_CITE_SHORT_EN,
+    citeMediumEn: ENTITY_CITE_MEDIUM_EN,
     faqs: [...ENTITY_FAQS],
   };
 }
