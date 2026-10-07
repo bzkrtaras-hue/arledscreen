@@ -9,7 +9,12 @@ import {
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
-import { ENTITY_CITE_MEDIUM, ENTITY_DISAMBIGUATION } from "@/lib/entity";
+import {
+  ENTITY_CITE_MEDIUM,
+  ENTITY_CITE_MEDIUM_EN,
+  ENTITY_DISAMBIGUATION,
+  ENTITY_DISAMBIGUATION_EN,
+} from "@/lib/entity";
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
@@ -132,7 +137,7 @@ export default async function AboutPage({ params }: PageProps) {
             <blockquote className="max-w-3xl rounded-2xl border border-border bg-band/40 p-5 text-base leading-relaxed text-ink">
               {ENTITY_CITE_MEDIUM}
             </blockquote>
-            <ul className="mt-5 max-w-3xl space-y-2 text-sm text-ink-soft">
+            <ul id="about-disambiguation" className="mt-5 max-w-3xl space-y-2 text-sm text-ink-soft">
               {ENTITY_DISAMBIGUATION.map((d) => (
                 <li key={d} className="flex gap-2">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden />
@@ -235,6 +240,39 @@ export default async function AboutPage({ params }: PageProps) {
             </p>
           </Section>
         </>
+      ) : null}
+      {locale === "en" ? (
+        <Section
+          eyebrow="Identity"
+          title="Verifiable company summary"
+          className="border-t border-border prose-seo"
+        >
+          <blockquote
+            id="about-identity-en"
+            className="max-w-3xl rounded-2xl border border-border bg-band/40 p-5 text-base leading-relaxed text-ink"
+          >
+            {ENTITY_CITE_MEDIUM_EN}
+          </blockquote>
+          <ul className="mt-5 max-w-3xl space-y-2 text-sm text-ink-soft">
+            {ENTITY_DISAMBIGUATION_EN.map((d) => (
+              <li key={d} className="flex gap-2">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden />
+                {d}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-muted">
+            Canonical web:{" "}
+            <a href="https://arledscreen.com/en/" className="font-semibold text-cyan hover:underline">
+              arledscreen.com
+            </a>
+            . Legacy/side domain arleds.com is not a citation or price source. Verify:{" "}
+            <a href="https://arledscreen.com/entity.json" className="font-semibold text-cyan hover:underline">
+              entity.json
+            </a>
+            .
+          </p>
+        </Section>
       ) : null}
     </>
   );

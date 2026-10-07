@@ -385,8 +385,45 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json resources.homeTr + productsHub required");
     process.exit(1);
   }
+  // Sitewide Organization JSON-LD + scraped about/founder HTML must warn on legacy arleds.com.
+  const orgSchemaPages = [
+    "tr/index.html",
+    "en/index.html",
+    "tr/about/index.html",
+    "en/about/index.html",
+    "tr/about/aras-bozkurt/index.html",
+  ];
+  for (const rel of orgSchemaPages) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ Organization schema page missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    if (!html.includes("disambiguatingDescription") || !html.includes("arleds.com")) {
+      console.error(`❌ ${rel} Organization JSON-LD must include disambiguatingDescription with arleds.com`);
+      process.exit(1);
+    }
+    if (/"sameAs"\s*:\s*\[[^\]]*arleds\.com/i.test(html)) {
+      console.error(`❌ ${rel} sameAs must NOT include legacy arleds.com (until 301)`);
+      process.exit(1);
+    }
+  }
+  for (const rel of ["tr/about/index.html", "en/about/index.html", "tr/about/aras-bozkurt/index.html"]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    // Visible body copy (not only feeds) must reject legacy domain for scrapers.
+    if (!html.includes("arleds.com") || !html.includes("arledscreen.com")) {
+      console.error(`❌ ${rel} visible HTML must disambiguate arleds.com vs arledscreen.com`);
+      process.exit(1);
+    }
+  }
+  if (!entity.faqs?.some((f) => String(f?.question || "").includes("arleds.com"))) {
+    console.error("❌ entity.json faqs must include arleds.com vs arledscreen.com Q&A");
+    process.exit(1);
+  }
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
+  console.log(`✅ HTML/schema arleds.com disambiguation: ${orgSchemaPages.length} pages + about/founder body`);
 }
 
 // Live robots.txt is served by Pages Function — keep Allow list in sync.

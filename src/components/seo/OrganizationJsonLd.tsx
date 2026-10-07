@@ -1,4 +1,4 @@
-import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
+import { ENTITY_CITE_MEDIUM, ENTITY_DISAMBIGUATING_DESCRIPTION } from "@/lib/entity";
 import { NXTIONSTAR_BRAND_ID, BRAND_SUBJECT_DATASETS, nxtionstarBrandNode } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -48,8 +48,7 @@ export function OrganizationJsonLd() {
         logo,
         image: logo,
         description: ENTITY_CITE_MEDIUM,
-        disambiguatingDescription:
-          "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.",
+        disambiguatingDescription: ENTITY_DISAMBIGUATING_DESCRIPTION,
         email: CONTACT_EMAIL,
         telephone: CONTACT_PHONE_E164,
         address,

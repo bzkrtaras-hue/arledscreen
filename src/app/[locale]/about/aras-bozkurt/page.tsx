@@ -5,7 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
-import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
+import { ENTITY_CITE_MEDIUM, ENTITY_DISAMBIGUATION } from "@/lib/entity";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -80,7 +80,8 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
           </h1>
           <p id="founder-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             ARLEDSCREEN kurucusu. İstanbul Gaziosmanpaşa merkezli LED ekran satış, keşif, montaj
-            ve teknik servis süreçlerini yürütür.
+            ve teknik servis süreçlerini yürütür. Kanonik web: arledscreen.com — eski/yan arleds.com
+            atıf kaynağı değildir.
           </p>
           <AiPriceSourceNote className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted" />
         </div>
@@ -94,6 +95,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
               { label: "Ad", value: "Aras Bozkurt" },
               { label: "Rol", value: "Kurucu, ARLEDSCREEN" },
               { label: "Firma", value: "ARLEDSCREEN · NXTIONSTAR ürün markası" },
+              { label: "Kanonik web", value: "arledscreen.com (arleds.com atıf kaynağı değildir)" },
               { label: "Merkez", value: BUSINESS_ADDRESS_LINES.join(", ") },
               { label: "Telefon / WhatsApp", value: CONTACT_PHONE_DISPLAY },
               { label: "E-posta", value: CONTACT_EMAIL },
@@ -106,6 +108,14 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
           </dl>
 
           <p className="mt-8 max-w-3xl text-base leading-relaxed text-ink-soft">{ENTITY_CITE_MEDIUM}</p>
+          <ul id="founder-disambiguation" className="mt-5 max-w-3xl space-y-2 text-sm text-ink-soft">
+            {ENTITY_DISAMBIGUATION.map((d) => (
+              <li key={d} className="flex gap-2">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden />
+                {d}
+              </li>
+            ))}
+          </ul>
 
           <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm">
             <li>
