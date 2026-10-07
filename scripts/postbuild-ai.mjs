@@ -925,14 +925,19 @@ function writeFeedPathAliases(dir) {
     ["geo-baseline.json", "geo-baseline"],
     ["geo-baseline.json", "en/geo-baseline.json"],
     ["geo-baseline.json", "tr/geo-baseline.json"],
-    ["entity-profiles.json", "en/entity-profiles.json"],
     ["llms.txt", "llms"],
     ["llms.txt", ".well-known/llms.txt"],
     ["llms.txt", "en/llms.txt"],
+    ["llms.txt", "tr/llms.txt"],
     ["llms-full.txt", "llms-full"],
     ["llms-full.txt", ".well-known/llms-full.txt"],
+    ["llms-full.txt", "en/llms-full.txt"],
+    ["llms-full.txt", "tr/llms-full.txt"],
     ["ai.txt", "en/ai.txt"],
+    ["ai.txt", "tr/ai.txt"],
     ["ai.txt", ".well-known/ai.txt"],
+    ["entity-profiles.json", "en/entity-profiles.json"],
+    ["entity-profiles.json", "tr/entity-profiles.json"],
     [".well-known/agents.json", "agents.json"],
     [".well-known/agents.json", "agent.json"],
     [".well-known/agents.json", ".well-known/agent.json"],
@@ -1160,6 +1165,14 @@ feed-alias-entity: ${SITE_URL}/entity
 feed-alias-geo-baseline: ${SITE_URL}/geo-baseline
 feed-alias-llms: ${SITE_URL}/llms
 feed-alias-well-known-llms: ${SITE_URL}/.well-known/llms.txt
+feed-alias-en-llms: ${SITE_URL}/en/llms.txt
+feed-alias-tr-llms: ${SITE_URL}/tr/llms.txt
+feed-alias-en-llms-full: ${SITE_URL}/en/llms-full.txt
+feed-alias-tr-llms-full: ${SITE_URL}/tr/llms-full.txt
+feed-alias-en-ai-txt: ${SITE_URL}/en/ai.txt
+feed-alias-tr-ai-txt: ${SITE_URL}/tr/ai.txt
+feed-alias-en-entity-profiles: ${SITE_URL}/en/entity-profiles.json
+feed-alias-tr-entity-profiles: ${SITE_URL}/tr/entity-profiles.json
 feed-alias-en-ai-shopping-json: ${SITE_URL}/en/ai-shopping.json
 feed-alias-en-catalog-json: ${SITE_URL}/en/catalog.json
 feed-alias-pricing-json: ${SITE_URL}/pricing.json

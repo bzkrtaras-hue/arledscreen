@@ -74,6 +74,13 @@ Allow: /en/prices.json
 Allow: /en/price.json
 Allow: /en/products.json
 Allow: /en/llms.txt
+Allow: /tr/llms.txt
+Allow: /en/llms-full.txt
+Allow: /tr/llms-full.txt
+Allow: /en/ai.txt
+Allow: /tr/ai.txt
+Allow: /en/entity-profiles.json
+Allow: /tr/entity-profiles.json
 Allow: /data/catalog.json
 Allow: /data/prices.json
 Allow: /api/catalog
@@ -175,7 +182,7 @@ User-Agent: cohere-ai
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-07d-panels-mpn-merchant
+# cache-bust-geo60-2026-10-07e-tr-llms-json-ct
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 

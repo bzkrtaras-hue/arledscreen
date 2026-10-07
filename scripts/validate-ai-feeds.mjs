@@ -772,6 +772,14 @@ if (fs.existsSync(outDir)) {
     "v1/merchant",
     "feeds/prices.json",
     "feeds/catalog.json",
+    "tr/llms.txt",
+    "en/llms.txt",
+    "tr/llms-full.txt",
+    "en/llms-full.txt",
+    "tr/ai.txt",
+    "en/ai.txt",
+    "tr/entity-profiles.json",
+    "en/entity-profiles.json",
   ]) {
     const fp = path.join(outDir, rel);
     if (!fs.existsSync(fp)) {
@@ -779,8 +787,30 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
+  const canonLlms = fs.readFileSync(path.join(outDir, "llms.txt"));
+  if (!fs.readFileSync(path.join(outDir, "tr/llms.txt")).equals(canonLlms)) {
+    console.error("❌ out/tr/llms.txt must match llms.txt");
+    process.exit(1);
+  }
+  const canonProfiles = fs.readFileSync(path.join(outDir, "entity-profiles.json"));
+  if (!fs.readFileSync(path.join(outDir, "tr/entity-profiles.json")).equals(canonProfiles)) {
+    console.error("❌ out/tr/entity-profiles.json must match entity-profiles.json");
+    process.exit(1);
+  }
+  if (!headersLive.includes("/api/panels") || !headersLive.includes("/tr/llms.txt")) {
+    console.error("❌ out/_headers must set Content-Type for /api/panels + /tr/llms.txt");
+    process.exit(1);
+  }
+  if (!headersLive.includes("/feeds/prices.json") || !headersLive.includes("/feeds/catalog.json")) {
+    console.error("❌ out/_headers must override /feeds/*.json to application/json");
+    process.exit(1);
+  }
   if (!llmsLive.includes("mpn") || !llmsLive.includes("/panels.json") || !llmsLive.includes("/teklif/")) {
     console.error("❌ out/llms.txt must cite mpn + panels.json + root /teklif/ invent");
+    process.exit(1);
+  }
+  if (!llmsLive.includes("/tr/llms.txt") || !llmsLive.includes("/tr/ai.txt")) {
+    console.error("❌ out/llms.txt must cite TR llms/ai discovery mirrors");
     process.exit(1);
   }
   if (!ard?.agentic?.resources?.aiTxt?.url?.includes("/ai.txt")) {
@@ -1303,6 +1333,9 @@ for (const must of [
   "/api/panels",
   "/api/merchant",
   "/v1/merchant",
+  "/tr/llms.txt",
+  "/tr/ai.txt",
+  "/tr/entity-profiles.json",
 ]) {
   if (!robotsFnBody.includes(must)) {
     console.error(`❌ functions/robots.txt.js must Allow ${must}`);
@@ -1317,6 +1350,6 @@ if (!robotsFnBody.includes("Google-CloudVertexBot") || !robotsTsBody.includes("G
   console.error("❌ robots must list Google-CloudVertexBot for Gemini/Vertex crawl");
   process.exit(1);
 }
-console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt + panels/mpn/merchant invent aliases");
+console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt + TR llms + panels/mpn/merchant invent aliases");
 
 validateAIFeeds();

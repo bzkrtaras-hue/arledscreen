@@ -237,6 +237,111 @@
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
+/api/panels
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/api/mpn
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/api/merchant
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/v1/panels
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/v1/merchant
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/panels.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/modules.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/sku.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/mpn.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/merchant.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/panels.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/modules.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/sku.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/mpn.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/merchant.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
 /api/catalog.json
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
@@ -407,10 +512,52 @@
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
+/tr/llms.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/llms-full.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/tr/llms-full.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
 /en/ai.txt
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
   Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/tr/ai.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/entity-profiles.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/tr/entity-profiles.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
@@ -530,6 +677,21 @@
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
   Content-Type: text/tab-separated-values; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+# JSON invent aliases under /feeds/ (must override /feeds/* TSV default).
+/feeds/prices.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/feeds/catalog.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
