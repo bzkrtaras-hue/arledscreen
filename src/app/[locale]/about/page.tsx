@@ -19,6 +19,7 @@ import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -100,6 +101,9 @@ export default async function AboutPage({ params }: PageProps) {
             <p className="text-sm leading-relaxed text-ink-soft sm:text-base">
               {about.body}
             </p>
+            {locale !== "tr" ? (
+              <AiPriceSourceNote locale={locale === "en" ? "en" : "tr"} className="mt-3 text-sm leading-relaxed text-ink-muted" />
+            ) : null}
             <div className="grid grid-cols-3 gap-3 pt-2">
               {about.stats.map((stat) => (
                 <div

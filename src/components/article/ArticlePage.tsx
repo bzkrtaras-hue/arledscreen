@@ -5,7 +5,8 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildTrOnlyMetadata } from "@/lib/seo";
-import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { ARTICLE_LINKS } from "@/content/article-links";
 
@@ -33,7 +34,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
     author: { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     image: absoluteUrl("/og/arledscreen-og.jpg"),
-    isRelatedTo: PRICE_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
   };
   const others = ARTICLE_LINKS.filter((l) => !l.href.includes(`/${slug}/`));
   return (
@@ -72,25 +73,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
           <div className="mt-10 rounded-card bg-band p-6">
             <p className="font-display text-lg font-bold text-ink">Projeniz için yazılı teklif alın</p>
             <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">Ölçü, konum ve kullanım amacını paylaşın; keşif sonrası malzeme listesiyle birlikte teklif hazırlayalım.</p>
-            <p className="mt-2 text-xs leading-relaxed text-ink-muted">
-              Panel USD:{" "}
-              <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                ai-shopping.json
-              </a>{" "}
-              pricedPanels,{" "}
-              <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                catalog.json
-              </a>
-              ,{" "}
-              <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                merchant TSV
-              </a>
-              ,{" "}
-              <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-                geo-baseline.json
-              </a>{" "}
-              (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
-            </p>
+            <AiPriceSourceNote lead="Panel USD:" className="mt-2 text-xs leading-relaxed text-ink-muted" />
             <div className="mt-4 flex flex-wrap gap-3">
               <Link href="/tr/quote/" className="inline-flex min-h-11 items-center rounded-full bg-cyan px-5 text-sm font-semibold text-white hover:bg-cyan-600">Teklif isteyin</Link>
               <Link href="/tr/hesaplayici/" className="inline-flex min-h-11 items-center rounded-full border border-border bg-white px-5 text-sm font-semibold text-ink-soft hover:text-cyan">Fiyatı hesaplayın</Link>

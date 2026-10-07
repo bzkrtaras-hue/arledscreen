@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
 import { pricedPanelsDatasetJsonLd } from "@/content/prices";
@@ -58,6 +59,7 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
             Kullanım alanına göre gruplanmış LED ekran uygulamaları. Öne çıkan görselleri gezin;
             altta kategori başlıklarından ilgili bölüme geçin.
           </p>
+          <AiPriceSourceNote className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted" />
         </div>
       </section>
 

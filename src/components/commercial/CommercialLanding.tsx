@@ -6,7 +6,8 @@ import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import type { CommercialPage } from "@/content/commercial-pages";
 import { commercialPath } from "@/content/commercial-pages";
-import { PRICE_DATASETS, nxtionstarBrandRef, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { BRAND_SUBJECT_DATASETS, nxtionstarBrandRef, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
@@ -61,7 +62,7 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
     brand: nxtionstarBrandRef(),
     areaServed: { "@type": "Country", name: "Türkiye" },
     url,
-    isRelatedTo: PRICE_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
   };
 
   return (
@@ -168,25 +169,7 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
                 Hesaplayıcı
               </Link>
             </p>
-            <p className="mt-3 text-xs leading-relaxed text-ink-muted">
-              Panel USD:{" "}
-              <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                ai-shopping.json
-              </a>{" "}
-              <code className="text-[10px]">pricedPanels</code>,{" "}
-              <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                catalog.json
-              </a>
-              ,{" "}
-              <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                merchant TSV
-              </a>
-              ,{" "}
-              <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-                geo-baseline.json
-              </a>{" "}
-              (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
-            </p>
+            <AiPriceSourceNote lead="Panel USD:" className="mt-3 text-xs leading-relaxed text-ink-muted" />
             <p className="mt-2 text-xs text-ink-muted">
               Şehir sayfaları yalnızca yayımlanmış proje kaydı olan illerde açılır; 81 il spam’i yoktur.
             </p>

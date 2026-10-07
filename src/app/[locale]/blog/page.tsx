@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { OptImage } from "@/components/ui/opt-image";
 import { BLOG_POSTS, blogPath, formatBlogDate } from "@/content/blog";
 import { ARTICLE_LINKS } from "@/content/article-links";
@@ -69,6 +70,7 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
           <p id="blog-lead" className="mt-3 max-w-3xl leading-relaxed text-ink-soft">
             Tamamladığımız LED ekran projelerinden kareler, kurulum süreçleri ve NXTIONSTAR ekranlarla ilgili güncel paylaşımlarımız.
           </p>
+          <AiPriceSourceNote className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-muted" />
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((p, i) => (
               <li key={p.slug}>

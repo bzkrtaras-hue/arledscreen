@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
-import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
@@ -42,7 +43,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
     worksFor: { "@id": `${SITE_URL}/#organization` },
     sameAs: ["https://www.linkedin.com/in/bozkurtaras"],
     description: ENTITY_CITE_MEDIUM,
-    subjectOf: PRICE_DATASETS,
+    subjectOf: BRAND_SUBJECT_DATASETS,
   };
 
   return (
@@ -81,17 +82,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
             ARLEDSCREEN kurucusu. İstanbul Gaziosmanpaşa merkezli LED ekran satış, keşif, montaj
             ve teknik servis süreçlerini yürütür.
           </p>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            Yayımlanmış panel USD:{" "}
-            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-              ai-shopping.json
-            </a>{" "}
-            pricedPanels ·{" "}
-            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-              merchant TSV
-            </a>{" "}
-            (12 SKU; ör. P1.25 GOB 95.88 USD).
-          </p>
+          <AiPriceSourceNote className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted" />
         </div>
       </section>
 

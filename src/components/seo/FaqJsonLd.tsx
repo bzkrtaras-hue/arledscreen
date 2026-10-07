@@ -1,5 +1,5 @@
 import type { FaqItem } from "@/lib/schemas/cms";
-import { PRICE_DATASETS } from "@/content/prices";
+import { BRAND_SUBJECT_DATASETS } from "@/content/prices";
 
 interface FaqJsonLdProps {
   faqs: FaqItem[];
@@ -9,8 +9,8 @@ export function FaqJsonLd({ faqs }: FaqJsonLdProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    isBasedOn: PRICE_DATASETS,
-    citation: PRICE_DATASETS.map((d) => d.url),
+    isBasedOn: BRAND_SUBJECT_DATASETS,
+    citation: BRAND_SUBJECT_DATASETS.map((d) => d.url),
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,

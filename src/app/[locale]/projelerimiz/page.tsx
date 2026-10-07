@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { ClipboardList, Hammer, Wrench } from "lucide-react";
 import { FeaturedReferences } from "@/components/home/FeaturedReferences";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
@@ -86,6 +87,9 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
             Belediye, mağaza, kafe, otel ve dış mekân kurulumları. Ölçü, piksel aralığı ve konum
             proje kaydındaki gibidir.
           </p>
+          <div className="mx-auto mt-3 max-w-2xl text-left [&_a]:text-[#9CC0F5] [&_p]:text-white/75">
+            <AiPriceSourceNote className="text-sm leading-relaxed" />
+          </div>
         </div>
       </section>
 

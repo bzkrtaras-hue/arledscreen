@@ -1,4 +1,4 @@
-import { PRICE_DATASETS } from "@/content/prices";
+import { BRAND_SUBJECT_DATASETS } from "@/content/prices";
 import { SITE_URL } from "@/lib/site";
 
 interface SpeakableJsonLdProps {
@@ -28,7 +28,7 @@ export function SpeakableJsonLd({
     description,
     isPartOf: { "@id": `${SITE_URL}/#website` },
     about: { "@id": `${SITE_URL}/#organization` },
-    isBasedOn: PRICE_DATASETS,
+    isBasedOn: BRAND_SUBJECT_DATASETS,
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: cssSelectors,

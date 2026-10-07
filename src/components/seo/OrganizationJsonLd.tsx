@@ -1,5 +1,5 @@
 import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
-import { NXTIONSTAR_BRAND_ID, PRICE_DATASETS, nxtionstarBrandNode } from "@/content/prices";
+import { NXTIONSTAR_BRAND_ID, BRAND_SUBJECT_DATASETS, nxtionstarBrandNode } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS,
@@ -55,7 +55,7 @@ export function OrganizationJsonLd() {
         address,
         sameAs: [...ORGANIZATION_SAME_AS],
         brand: { "@id": NXTIONSTAR_BRAND_ID },
-        subjectOf: PRICE_DATASETS,
+        subjectOf: BRAND_SUBJECT_DATASETS,
         founder: {
           "@type": "Person",
           name: "Aras Bozkurt",
