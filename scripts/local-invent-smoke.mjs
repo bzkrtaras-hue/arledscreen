@@ -123,13 +123,23 @@ else fail("agents.json ≥14");
 }
 
 const pointC = readText("point-c.txt");
-if (pointC.includes("GBP About") && pointC.includes("34245") && pointC.includes("Hostinger arleds.com")) {
-  ok("point-c.txt paste packs + Hostinger 301");
-} else fail("point-c.txt paste packs + Hostinger 301");
+if (
+  pointC.includes("GBP About") &&
+  pointC.includes("34245") &&
+  pointC.includes("Hostinger arleds.com") &&
+  pointC.includes("/.well-known/modules.json")
+) {
+  ok("point-c.txt paste packs + Hostinger 301 + invent aliases");
+} else fail("point-c.txt paste packs + Hostinger 301 + invent aliases");
 
 const pointCEn = readText("point-c-en.txt");
-if (pointCEn.includes("EN GBP About") && pointCEn.includes("arledscreen.com/en/")) ok("point-c-en.txt paste packs");
-else fail("point-c-en.txt paste packs");
+if (
+  pointCEn.includes("EN GBP About") &&
+  pointCEn.includes("arledscreen.com/en/") &&
+  pointCEn.includes("/.well-known/modules.json")
+) {
+  ok("point-c-en.txt paste packs + invent aliases");
+} else fail("point-c-en.txt paste packs + invent aliases");
 
 if (ard?.agentic?.resources?.website?.["@id"] === `${SITE}/#website`) ok("ard.resources.website");
 else fail("ard.resources.website");

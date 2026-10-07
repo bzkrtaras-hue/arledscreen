@@ -581,6 +581,21 @@ if (fs.existsSync(outDir)) {
     console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping + prices.rss + brand.json + point-c.txt and brand @id #brand-nxtionstar");
     process.exit(1);
   }
+  {
+    const catalogDesc = String(catalogLive?.description || "");
+    const brandLive = JSON.parse(fs.readFileSync(path.join(outDir, "brand.json"), "utf8"));
+    const brandDesc = String(brandLive?.description || "");
+    for (const needle of ["/.well-known/modules.json", "/.well-known/sku.json", "/.well-known/pricing.json"]) {
+      if (!catalogDesc.includes(needle)) {
+        console.error(`❌ catalog.json description must cite inventable ${needle}`);
+        process.exit(1);
+      }
+      if (!brandDesc.includes(needle)) {
+        console.error(`❌ brand.json description must cite inventable ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
   // Product↔Offer identity: each catalog Offer.url must equal its Product.url (PDP),
   // not the price-hub Collection.url — keeps catalog aligned with ai-shopping + merchant TSV.
   const catalogItems = catalogLive?.mainEntity?.itemListElement || [];
@@ -1159,12 +1174,15 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("Hostinger arleds.com") ||
       !pointC.includes("verify:arleds-301") ||
       !pointC.includes("tur1a:log") ||
+      !pointC.includes("/.well-known/modules.json") ||
+      !pointC.includes("ai-shopping.json pricedPanels") ||
       !pointCEn.includes("EN GBP About") ||
       !pointCEn.includes("arledscreen.com/en/") ||
       !pointCEn.includes("Hostinger arleds.com") ||
-      !pointCEn.includes("tur1a:log")
+      !pointCEn.includes("tur1a:log") ||
+      !pointCEn.includes("/.well-known/modules.json")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301 + tur1a:log");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301 + tur1a:log + invent aliases");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {

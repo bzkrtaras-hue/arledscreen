@@ -88,6 +88,10 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     } else {
       lines.push("Merchant readiness: packs.googleMerchantReadiness");
     }
+    lines.push("Price source: https://arledscreen.com/ai-shopping.json pricedPanels");
+    lines.push(
+      "Inventable aliases: /.well-known/modules.json · /.well-known/sku.json · /.well-known/price.json · /.well-known/pricing.json · /prices.json",
+    );
     lines.push(`prices.rss: ${profiles?.canonicalUrls?.pricesRss || "https://arledscreen.com/feeds/prices.rss"}`);
     lines.push("Playbook: docs/offsite-entity-playbook.md");
     lines.push("");
