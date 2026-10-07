@@ -50,6 +50,12 @@
       "@id": "https://arledscreen.com/feeds/prices.rss",
       "url": "https://arledscreen.com/feeds/prices.rss",
       "name": "ARLEDSCREEN panel price RSS"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/geo-baseline.json",
+      "url": "https://arledscreen.com/geo-baseline.json",
+      "name": "ARLEDSCREEN GEO technical baseline"
     }
   ]
 }

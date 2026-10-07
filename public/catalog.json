@@ -53,6 +53,12 @@
       "@id": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
       "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
       "name": "ARLEDSCREEN merchant priced panels TSV"
+    },
+    {
+      "@type": "DataFeed",
+      "@id": "https://arledscreen.com/feeds/prices.rss",
+      "url": "https://arledscreen.com/feeds/prices.rss",
+      "name": "ARLEDSCREEN panel price RSS"
     }
   ],
   "mainEntity": {
