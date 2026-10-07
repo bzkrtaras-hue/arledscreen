@@ -68,6 +68,21 @@
     "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/#website"
   ],
+  "isBasedOn": [
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/prices.json",
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/.well-known/brand.json",
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/.well-known/entity.json",
+    "https://arledscreen.com/geo-baseline.json",
+    "https://arledscreen.com/feeds/prices.rss",
+    "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/#website"
+  ],
   "distribution": [
     {
       "@type": "DataDownload",

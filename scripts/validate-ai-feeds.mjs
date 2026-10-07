@@ -790,6 +790,38 @@ if (fs.existsSync(outDir)) {
       console.error("❌ brand.json distribution must invent-join WebSite #website");
       process.exit(1);
     }
+    {
+      const brandBased = JSON.stringify(brandLive?.isBasedOn || []);
+      for (const needle of [
+        "/ai-shopping.json",
+        "/catalog.json",
+        "/geo-baseline.json",
+        "/point-c.txt",
+        "/entity-profiles.json",
+        "/feeds/prices.rss",
+        "#website",
+      ]) {
+        if (!brandBased.includes(needle)) {
+          console.error(`❌ brand.json isBasedOn must include ${needle}`);
+          process.exit(1);
+        }
+      }
+      const catBased = JSON.stringify(catalogLive?.isBasedOn || []);
+      for (const needle of [
+        "/ai-shopping.json",
+        "/brand.json",
+        "/geo-baseline.json",
+        "/point-c.txt",
+        "/entity-profiles.json",
+        "/feeds/prices.rss",
+        "#website",
+      ]) {
+        if (!catBased.includes(needle)) {
+          console.error(`❌ catalog.json isBasedOn must include ${needle}`);
+          process.exit(1);
+        }
+      }
+    }
   }
   // Product↔Offer identity: each catalog Offer.url must equal its Product.url (PDP),
   // not the price-hub Collection.url — keeps catalog aligned with ai-shopping + merchant TSV.
@@ -1374,9 +1406,12 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/entity-profiles.json") ||
     !securityLive.includes("#website") ||
     !securityLive.includes("geo:next") ||
-    !securityLive.includes("geo:ack")
+    !securityLive.includes("geo:ack") ||
+    !securityLive.includes("/.well-known/modules.json") ||
+    !securityLive.includes("/.well-known/sku.json") ||
+    !securityLive.includes("/.well-known/pricing.json")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C/entity-profiles/geo:next/ack invent pointers");
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C/entity-profiles/geo:next/ack + modules/sku/pricing invent pointers");
     process.exit(1);
   }
   {
@@ -1556,6 +1591,10 @@ if (fs.existsSync(outDir)) {
       "/catalog.json",
       "/prices.json",
       "/entity-profiles.json",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "#website",
     ]) {
       if (!agentsBased.includes(needle)) {
         console.error(`❌ agents.json isBasedOn invent must include ${needle}`);
@@ -1571,6 +1610,10 @@ if (fs.existsSync(outDir)) {
       "/geo-baseline.json",
       "/entity-profiles.json",
       "/point-c.txt",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "#website",
     ]) {
       if (!agentsDist.includes(needle)) {
         console.error(`❌ agents.json distribution invent must include ${needle}`);

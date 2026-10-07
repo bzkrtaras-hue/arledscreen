@@ -164,7 +164,10 @@
     "https://arledscreen.com/prices.json",
     "https://arledscreen.com/feeds/prices.rss",
     "https://arledscreen.com/entity-profiles.json",
-    "https://arledscreen.com/#website"
+    "https://arledscreen.com/#website",
+    "https://arledscreen.com/.well-known/modules.json",
+    "https://arledscreen.com/.well-known/sku.json",
+    "https://arledscreen.com/.well-known/pricing.json"
   ],
   "distribution": [
     {
@@ -207,6 +210,24 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/point-c.txt",
       "name": "ARLEDSCREEN Point C paste packs"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/modules.json",
+      "name": "Modules pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/sku.json",
+      "name": "SKU pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/pricing.json",
+      "name": "Pricing pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
