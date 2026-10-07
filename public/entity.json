@@ -54,6 +54,7 @@
   "entityJson": "https://arledscreen.com/entity.json",
   "aiShopping": "https://arledscreen.com/ai-shopping.json",
   "catalogJson": "https://arledscreen.com/catalog.json",
+  "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
   "subjectOf": [
     {
       "@type": "Dataset",
@@ -66,6 +67,12 @@
       "@id": "https://arledscreen.com/catalog.json",
       "name": "ARLEDSCREEN priced panel catalog",
       "url": "https://arledscreen.com/catalog.json"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+      "name": "ARLEDSCREEN merchant priced panels TSV",
+      "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
     }
   ],
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
@@ -91,7 +98,7 @@
     },
     {
       "question": "AI ajanları panel fiyatını nereden okur?",
-      "answer": "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle."
+      "answer": "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle."
     }
   ]
 }

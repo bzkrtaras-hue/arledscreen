@@ -5,7 +5,7 @@
   },
   {
     "question": "AI ajanları ARLEDSCREEN panel fiyatını nereden okur?",
-    "answer": "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle. Entity cite: entity.json."
+    "answer": "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle. Entity cite: entity.json."
   },
   {
     "question": "P2.5 iç mekân LED ekranın panel fiyatı nedir?",

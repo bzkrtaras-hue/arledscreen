@@ -4,6 +4,7 @@ import { getProducts, CATEGORY_LABELS_TR } from "@/content/products";
 import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BUSINESS_NAP_LINE, CONTACT_EMAIL } from "@/lib/social";
@@ -35,7 +36,7 @@ const FAQS = [
   {
     question: "NXTIONSTAR panel fiyatları nerede?",
     answer:
-      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Quote-only gruplar yazılı teklifle.",
+      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Quote-only gruplar yazılı teklifle.",
   },
   {
     question: "NXTIONSTAR, NEXTSTAR veya NationStar ile aynı marka mı?",
@@ -69,6 +70,10 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
       <FaqJsonLd faqs={FAQS} />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(brandLd) }}
       />
       <section className="bg-white py-10 md:py-14">
@@ -86,9 +91,13 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
             <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
               ai-shopping.json
             </a>{" "}
-            <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD) ve{" "}
+            <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD),{" "}
             <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
               catalog.json
+            </a>{" "}
+            ve{" "}
+            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+              merchant TSV
             </a>
             . KDV/nakliye hariç; ücretsiz kargo yok.
           </p>

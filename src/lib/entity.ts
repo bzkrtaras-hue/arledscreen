@@ -60,7 +60,7 @@ export const ENTITY_FAQS = [
   {
     question: "AI ajanları panel fiyatını nereden okur?",
     answer:
-      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels ve catalog.json üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
+      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
   },
 ] as const;
 
@@ -125,6 +125,7 @@ export type EntityDocument = {
   entityJson: string;
   aiShopping: string;
   catalogJson: string;
+  merchantFeed: string;
   subjectOf: Array<{
     "@type": "Dataset";
     "@id": string;
@@ -183,6 +184,7 @@ export function buildEntityDocument(): EntityDocument {
     entityJson: `${SITE_URL}/entity.json`,
     aiShopping: `${SITE_URL}/ai-shopping.json`,
     catalogJson: `${SITE_URL}/catalog.json`,
+    merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
     subjectOf: [
       {
         "@type": "Dataset",
@@ -195,6 +197,12 @@ export function buildEntityDocument(): EntityDocument {
         "@id": `${SITE_URL}/catalog.json`,
         name: "ARLEDSCREEN priced panel catalog",
         url: `${SITE_URL}/catalog.json`,
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+        name: "ARLEDSCREEN merchant priced panels TSV",
+        url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       },
     ],
     citeOneLiner: ENTITY_CITE_ONE_LINER,

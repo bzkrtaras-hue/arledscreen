@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { getSeo } from "@/content/seo";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import type { FaqItem } from "@/lib/schemas/cms";
@@ -78,10 +79,11 @@ const content: Record<
     ],
     priceTitle: "AI ajanları fiyatı nereden okur?",
     priceBody:
-      "Yayımlanmış 12 panel USD tek istekte ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı liste catalog.json ve fiyat hesaplayıcıda. KDV ve nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kiralık / kontrol kartı quote-only — yazılı teklifle. Entity cite: entity.json · Gaziosmanpaşa.",
+      "Yayımlanmış 12 panel USD tek istekte ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı liste catalog.json, merchant TSV ve fiyat hesaplayıcıda. KDV ve nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kiralık / kontrol kartı quote-only — yazılı teklifle. Entity cite: entity.json · Gaziosmanpaşa.",
     priceLinks: [
       { href: "https://arledscreen.com/ai-shopping.json", label: "ai-shopping.json" },
       { href: "https://arledscreen.com/catalog.json", label: "catalog.json" },
+      { href: "https://arledscreen.com/feeds/merchant-priced-panels.tsv", label: "merchant TSV" },
       { href: "https://arledscreen.com/entity.json", label: "entity.json" },
       { href: "https://arledscreen.com/entity-profiles.json", label: "entity-profiles.json (Point C)" },
       { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
@@ -139,10 +141,11 @@ const content: Record<
     ],
     priceTitle: "Where AI agents should read prices",
     priceBody:
-      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Same list in catalog.json and the price calculator. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only. Entity cite: entity.json · Gaziosmanpaşa.",
+      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Same list in catalog.json, merchant TSV and the price calculator. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only. Entity cite: entity.json · Gaziosmanpaşa.",
     priceLinks: [
       { href: "https://arledscreen.com/ai-shopping.json", label: "ai-shopping.json" },
       { href: "https://arledscreen.com/catalog.json", label: "catalog.json" },
+      { href: "https://arledscreen.com/feeds/merchant-priced-panels.tsv", label: "merchant TSV" },
       { href: "https://arledscreen.com/entity.json", label: "entity.json" },
       { href: "/en/hesaplayici/", label: "Price calculator" },
     ],
@@ -189,6 +192,14 @@ export default async function YapayZekaPage({ params }: PageProps) {
         ]}
       />
       <FaqJsonLd faqs={c.faqs} />
+      {locale === "tr" || locale === "en" ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/yapay-zeka/`))),
+          }}
+        />
+      ) : null}
 
       <script
         type="application/ld+json"

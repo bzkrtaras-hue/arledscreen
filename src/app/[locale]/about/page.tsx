@@ -14,6 +14,7 @@ import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { getSeo } from "@/content/seo";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -53,6 +54,14 @@ export default async function AboutPage({ params }: PageProps) {
           { name: dict.nav.about, item: absoluteUrl(`/${locale}/about`) },
         ]}
       />
+      {locale === "tr" ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/about/"))),
+          }}
+        />
+      ) : null}
       <Section
         titleAs="h1"
         eyebrow={about.eyebrow}
@@ -164,8 +173,15 @@ export default async function AboutPage({ params }: PageProps) {
               <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
                 ai-shopping.json
               </a>{" "}
-              <code className="text-xs">pricedPanels</code> (ör. P1.25 GOB 95.88 USD). KDV/nakliye
-              hariç; ücretsiz kargo yok. Cite kaynağı: entity.json.
+              <code className="text-xs">pricedPanels</code>,{" "}
+              <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                catalog.json
+              </a>
+              ,{" "}
+              <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                merchant TSV
+              </a>{" "}
+              (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok. Cite: entity.json.
             </p>
           </Section>
           <Section eyebrow="Neden ARLEDSCREEN?" title="Doğrulanabilir bilgiler" className="bg-surface/60 prose-seo">

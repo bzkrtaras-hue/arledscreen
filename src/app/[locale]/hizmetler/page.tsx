@@ -11,6 +11,7 @@ import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { WhatsAppProjectPicker } from "@/components/home/WhatsAppProjectPicker";
 import { OptImage } from "@/components/ui/opt-image";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -93,6 +94,12 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
         ]}
       />
       <FaqJsonLd faqs={FAQS} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/hizmetler/"))),
+        }}
+      />
 
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-2 lg:items-center lg:px-8">
@@ -113,8 +120,15 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
               <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
                 ai-shopping.json
               </a>{" "}
-              <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz
-              kargo yok.{" "}
+              <code className="text-xs">pricedPanels</code>,{" "}
+              <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                catalog.json
+              </a>
+              ,{" "}
+              <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                merchant TSV
+              </a>{" "}
+              (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.{" "}
               <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">
                 Hesaplayıcı
               </Link>

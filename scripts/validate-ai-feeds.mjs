@@ -126,6 +126,16 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json robotsPolicy.allow must include merchant TSV path");
     process.exit(1);
   }
+  const entity = JSON.parse(fs.readFileSync(path.join(outDir, "entity.json"), "utf8"));
+  if (!entity.merchantFeed?.includes("/feeds/merchant-priced-panels.tsv")) {
+    console.error("❌ entity.json must expose merchantFeed TSV URL");
+    process.exit(1);
+  }
+  const subjectUrls = (entity.subjectOf || []).map((s) => s.url || "");
+  if (!subjectUrls.some((u) => u.includes("/feeds/merchant-priced-panels.tsv"))) {
+    console.error("❌ entity.json subjectOf must include merchant TSV Dataset");
+    process.exit(1);
+  }
   const tsvPath = path.join(outDir, "feeds/merchant-priced-panels.tsv");
   if (!fs.existsSync(tsvPath)) {
     console.error("❌ Missing in out/: feeds/merchant-priced-panels.tsv");
