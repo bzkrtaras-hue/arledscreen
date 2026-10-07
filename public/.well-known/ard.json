@@ -42,6 +42,40 @@
         "description": "Byte-identical inventable alias of ai-shopping.json pricedPanels (12 SKU USD)",
         "canonical": "https://arledscreen.com/ai-shopping.json"
       },
+      "panelsJson": {
+        "type": "Price feed alias",
+        "url": "https://arledscreen.com/panels.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (panels synonym; also /panels extensionless)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "extensionless": "https://arledscreen.com/panels"
+      },
+      "mpnJson": {
+        "type": "Price feed alias",
+        "url": "https://arledscreen.com/mpn.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (mpn=sku; also /mpn extensionless)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "extensionless": "https://arledscreen.com/mpn",
+        "mpnEqualsSku": true
+      },
+      "merchantJson": {
+        "type": "Price feed alias",
+        "url": "https://arledscreen.com/merchant.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (merchant synonym; also /merchant extensionless)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "extensionless": "https://arledscreen.com/merchant"
+      },
+      "offerJson": {
+        "type": "Price feed alias",
+        "url": "https://arledscreen.com/offer.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (offer/offers synonyms)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "extensionless": "https://arledscreen.com/offer",
+        "also": ["https://arledscreen.com/offers.json", "https://arledscreen.com/offers"]
+      },
       "brand": {
         "type": "Brand",
         "@id": "https://arledscreen.com/#brand-nxtionstar",

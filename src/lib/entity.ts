@@ -86,7 +86,7 @@ export const ENTITY_FAQS = [
   {
     question: "AI ajanları panel fiyatını nereden okur?",
     answer:
-      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı içerik inventable alias’larda: /prices.json · /.well-known/prices.json · /offers.json · /api/v1/prices. Ayrıca catalog.json ve feeds/merchant-priced-panels.tsv. Ajan keşif: /.well-known/agents.json · /AGENTS.md. Entity alias: /organization.json. Teknik GEO baseline (parmak izleri; anılma % uydurma yok): geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
+      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı içerik inventable alias’larda: /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /.well-known/prices.json · /api/v1/prices · /api/panels.json. Ayrıca catalog.json ve feeds/merchant-priced-panels.tsv. Ajan keşif: /.well-known/agents.json · /AGENTS.md. Entity alias: /organization.json · /cite. Teknik GEO baseline (parmak izleri; anılma % uydurma yok): geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
   },
   {
     question: "arleds.com ile arledscreen.com aynı mı?",
@@ -124,7 +124,7 @@ export const ENTITY_FAQS_EN = [
   {
     question: "Where do AI agents read published panel prices?",
     answer:
-      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Inventable aliases (identical): /prices.json · /.well-known/prices.json · /offers.json · /api/v1/prices. Also catalog.json and feeds/merchant-priced-panels.tsv. Agent discovery: /.well-known/agents.json · /AGENTS.md. Entity alias: /organization.json. Technical GEO baseline (fingerprints; no invented mention rates): geo-baseline.json. Human EN hub: https://arledscreen.com/en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only — final price in the written quote.",
+      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Inventable aliases (identical): /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /.well-known/prices.json · /api/v1/prices · /api/panels.json. Also catalog.json and feeds/merchant-priced-panels.tsv. Agent discovery: /.well-known/agents.json · /AGENTS.md. Entity aliases: /organization.json · /cite. Technical GEO baseline (fingerprints; no invented mention rates): geo-baseline.json. Human EN hub: https://arledscreen.com/en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only — final price in the written quote.",
   },
   {
     question: "Is arleds.com the same as arledscreen.com?",

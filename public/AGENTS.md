@@ -14,7 +14,7 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 ## Entity / brand
 
 - Organization: https://arledscreen.com/entity.json
-- Inventable aliases: `/organization.json` · `/company.json` · `/about.json` · `/nap.json` · `/.well-known/entity.json`
+- Inventable aliases: `/organization.json` · `/organization` · `/company.json` · `/cite.json` · `/cite` · `/nap.json` · `/.well-known/entity.json`
 - Brand: **NXTIONSTAR** (`@id` `https://arledscreen.com/#brand-nxtionstar`) — ≠ NationStar LED chip ≠ NEXTSTAR TV
 - NAP: Gaziosmanpaşa, İstanbul · `arled@arledscreen.com` · +90 530 507 88 34
 

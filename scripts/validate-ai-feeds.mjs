@@ -137,8 +137,22 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources.priceAliases must include /prices.json");
     process.exit(1);
   }
+  for (const needle of ["/panels.json", "/mpn.json", "/merchant.json", "/panels", "/mpn", "/offer", "/api/panels.json"]) {
+    if (!ai.resources.priceAliases.some((u) => String(u).includes(needle))) {
+      console.error(`❌ ai-shopping.json resources.priceAliases must include ${needle}`);
+      process.exit(1);
+    }
+  }
   if (!String(ai.agentGuidelines?.en?.priceSource || "").includes("/prices.json")) {
     console.error("❌ agentGuidelines.en.priceSource must cite inventable /prices.json");
+    process.exit(1);
+  }
+  if (
+    !String(ai.agentGuidelines?.en?.priceSource || "").includes("/panels.json") ||
+    !String(ai.agentGuidelines?.en?.priceSource || "").includes("/mpn.json") ||
+    !String(ai.agentGuidelines?.priceSource || "").includes("/panels.json")
+  ) {
+    console.error("❌ agentGuidelines priceSource (TR+EN) must cite /panels.json + /mpn.json");
     process.exit(1);
   }
   if (/blindTestPrompts|kör test/i.test(JSON.stringify(ai))) {
@@ -146,6 +160,15 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   const ard = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/ard.json"), "utf8"));
+  if (
+    !ard?.agentic?.resources?.panelsJson?.url?.includes("/panels.json") ||
+    !ard?.agentic?.resources?.mpnJson?.url?.includes("/mpn.json") ||
+    !ard?.agentic?.resources?.merchantJson?.url?.includes("/merchant.json") ||
+    !ard?.agentic?.resources?.offerJson?.url?.includes("/offer.json")
+  ) {
+    console.error("❌ ard.json must expose resources.panelsJson + mpnJson + merchantJson + offerJson");
+    process.exit(1);
+  }
   const ardMerchant = ard?.agentic?.resources?.merchantFeed;
   if (!ardMerchant?.url?.includes("/feeds/merchant-priced-panels.tsv") || ardMerchant.freeShipping !== false) {
     console.error("❌ ard.json must expose merchantFeed (TSV) with freeShipping:false");

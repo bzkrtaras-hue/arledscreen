@@ -88,7 +88,7 @@ const content: Record<
     ],
     priceTitle: "AI ajanları fiyatı nereden okur?",
     priceBody:
-      "Yayımlanmış 12 panel USD tek istekte ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı liste catalog.json, merchant TSV ve fiyat hesaplayıcıda. Inventable alias’lar (aynı içerik): /prices.json · /.well-known/prices.json · /offers.json · /api/v1/prices. Entity: /organization.json · /.well-known/entity.json. Ajan keşif: /.well-known/agents.json · /AGENTS.md · ard.json. Teknik GEO baseline (parmak izleri + 12 SKU snapshot, anılma % uydurma yok): geo-baseline.json. KDV ve nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kiralık / kontrol kartı quote-only — yazılı teklifle. Entity cite: entity.json · Gaziosmanpaşa.",
+      "Yayımlanmış 12 panel USD tek istekte ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı liste catalog.json, merchant TSV ve fiyat hesaplayıcıda. Inventable alias’lar (aynı içerik): /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /.well-known/prices.json · /api/v1/prices · /api/panels.json. Entity: /organization.json · /cite · /.well-known/entity.json. Ajan keşif: /.well-known/agents.json · /AGENTS.md · ard.json. Teknik GEO baseline (parmak izleri + 12 SKU snapshot, anılma % uydurma yok): geo-baseline.json. KDV ve nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kiralık / kontrol kartı quote-only — yazılı teklifle. Entity cite: entity.json · Gaziosmanpaşa.",
     priceLinks: [
       { href: "https://arledscreen.com/ai-shopping.json", label: "ai-shopping.json" },
       { href: "https://arledscreen.com/prices.json", label: "/prices.json (alias)" },
@@ -167,7 +167,7 @@ const content: Record<
     ],
     priceTitle: "Where AI agents should read prices",
     priceBody:
-      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Same list in catalog.json, merchant TSV and the price calculator. Inventable aliases (identical bytes): /prices.json · /.well-known/prices.json · /offers.json · /api/v1/prices. Entity: /organization.json · /.well-known/entity.json. Agent discovery: /.well-known/agents.json · /AGENTS.md · ard.json. Technical GEO baseline (fingerprints + 12-SKU snapshot; no invented mention rates): geo-baseline.json. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only. Entity cite: entity.json · Gaziosmanpaşa.",
+      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Same list in catalog.json, merchant TSV and the price calculator. Inventable aliases (identical bytes): /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /.well-known/prices.json · /api/v1/prices · /api/panels.json. Entity: /organization.json · /cite · /.well-known/entity.json. Agent discovery: /.well-known/agents.json · /AGENTS.md · ard.json. Technical GEO baseline (fingerprints + 12-SKU snapshot; no invented mention rates): geo-baseline.json. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only. Entity cite: entity.json · Gaziosmanpaşa.",
     priceLinks: [
       { href: "https://arledscreen.com/ai-shopping.json", label: "ai-shopping.json" },
       { href: "https://arledscreen.com/prices.json", label: "/prices.json (alias)" },
