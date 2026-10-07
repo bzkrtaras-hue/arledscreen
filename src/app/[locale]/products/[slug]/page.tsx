@@ -7,6 +7,7 @@ import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
 import {
   CALC_EXTRAS,
+  PRICE_DATASETS,
   fmtM2,
   fmtUsd,
   panelProductsJsonLd,
@@ -113,6 +114,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
     provider: { "@id": `${SITE_URL}/#organization` },
     brand: { "@type": "Brand", name: g.brandName ?? "NXTIONSTAR" },
     areaServed: { "@type": "Country", name: "Türkiye" },
+    isRelatedTo: PRICE_DATASETS,
     ...(prices.length
       ? {
           offers: {
@@ -358,6 +360,21 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 </h2>
                 <p className="mt-3 max-w-xl text-base leading-relaxed text-ink-soft">
                   {g.name} fiyatı ölçü, form, süre ve kurulum koşullarına göre hazırlanır. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz.
+                </p>
+                <p className="mt-2 max-w-xl text-xs leading-relaxed text-ink-muted">
+                  Bu grup quote-only. Yayımlanmış 12 panel USD:{" "}
+                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                    ai-shopping.json
+                  </a>{" "}
+                  pricedPanels,{" "}
+                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                    catalog.json
+                  </a>
+                  ,{" "}
+                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                    merchant TSV
+                  </a>{" "}
+                  (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
