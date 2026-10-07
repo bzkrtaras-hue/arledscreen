@@ -108,7 +108,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             },
             {
               name: "Read the published panel USD list",
-              text: "The same 12 SKUs are in ai-shopping.json pricedPanels, catalog.json and merchant TSV (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31).",
+              text: "The same 12 SKUs are in ai-shopping.json pricedPanels, catalog.json and merchant TSV (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Technical GEO baseline: geo-baseline.json.",
             },
             {
               name: "Separate extras",
@@ -167,14 +167,16 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" showCalcLink={false} />
           </div>
         ) : locale === "en" ? (
-          <AiPriceSourceNote
-            locale="en"
-            className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-muted"
-            lead="Published 12 panel USD list:"
-          />
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
-            Final price is set in the written quote.
-          </p>
+          <>
+            <AiPriceSourceNote
+              locale="en"
+              className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-muted"
+              lead="Published 12 panel USD list:"
+            />
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
+              Final price is set in the written quote.
+            </p>
+          </>
         ) : null}
       </Section>
     </>
