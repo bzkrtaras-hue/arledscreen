@@ -12,6 +12,7 @@ import { getProducts } from "@/content/products";
 import { getSeo } from "@/content/seo";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PRODUCT_GROUPS, groupsByFamily, productGroupPath } from "@/content/categories";
@@ -72,6 +73,14 @@ export default async function ProductsPage({ params }: PageProps) {
           },
         ]}
       />
+      {locale === "tr" ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/products/"))),
+          }}
+        />
+      ) : null}
       <ItemListJsonLd
         name={seo.h1 ?? pageCopy.title}
         description={seo.intro ?? pageCopy.description}

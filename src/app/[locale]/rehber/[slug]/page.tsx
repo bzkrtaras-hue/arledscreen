@@ -9,6 +9,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
+import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import {
   SEO_GUIDE_SLUGS,
   getSeoGuide,
@@ -54,6 +55,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
   const guide = getSeoGuide(locale, slug as SeoGuideSlug);
   const hub = getSeoGuideHub(locale);
   const dict = getDictionary(locale);
+  const pageUrl = absoluteUrl(`/${locale}/rehber/${guide.slug}/`);
 
   return (
     <>
@@ -66,7 +68,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
           },
           {
             name: guide.cardLabel,
-            item: absoluteUrl(`/${locale}/rehber/${guide.slug}`),
+            item: pageUrl,
           },
         ]}
       />
@@ -97,11 +99,16 @@ export default async function SeoGuidePage({ params }: PageProps) {
                 url: absoluteUrl("/brand/arledscreen-logo-header.png"),
               },
             },
-            mainEntityOfPage: absoluteUrl(
-              `/${locale}/rehber/${guide.slug}/`,
-            ),
+            mainEntityOfPage: pageUrl,
             keywords: guide.keywords.join(", "),
+            isRelatedTo: PRICE_DATASETS,
           }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
         }}
       />
 
@@ -174,6 +181,41 @@ export default async function SeoGuidePage({ params }: PageProps) {
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-ink-soft">
               {guide.cta.body}
+            </p>
+            <p className="mt-3 max-w-2xl text-xs leading-relaxed text-ink-muted">
+              {locale === "tr" ? (
+                <>
+                  Yayımlanmış panel USD:{" "}
+                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                    ai-shopping.json
+                  </a>{" "}
+                  pricedPanels,{" "}
+                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                    catalog.json
+                  </a>
+                  ,{" "}
+                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                    merchant TSV
+                  </a>{" "}
+                  (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
+                </>
+              ) : (
+                <>
+                  Published panel USD:{" "}
+                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                    ai-shopping.json
+                  </a>{" "}
+                  pricedPanels,{" "}
+                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                    catalog.json
+                  </a>
+                  ,{" "}
+                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                    merchant TSV
+                  </a>{" "}
+                  (12 SKUs; e.g. P1.25 GOB 95.88 USD). VAT/freight excluded; no free shipping.
+                </>
+              )}
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Button asChild>

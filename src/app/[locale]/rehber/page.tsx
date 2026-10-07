@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { getSeoGuideHub, listSeoGuides } from "@/content/seo-guides";
 
 interface PageProps {
@@ -45,6 +46,7 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
   const hub = getSeoGuideHub(locale);
   const guides = listSeoGuides(locale);
   const dict = getDictionary(locale);
+  const hubUrl = absoluteUrl(`/${locale}/rehber/`);
 
   return (
     <>
@@ -53,9 +55,15 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           { name: dict.nav.home, item: absoluteUrl(`/${locale}`) },
           {
             name: hub.eyebrow,
-            item: absoluteUrl(`/${locale}/rehber`),
+            item: hubUrl,
           },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(hubUrl)),
+        }}
       />
 
       <Section

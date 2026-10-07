@@ -5,6 +5,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import type { CommercialPage } from "@/content/commercial-pages";
 import { commercialPath } from "@/content/commercial-pages";
+import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
@@ -58,6 +59,7 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: { "@type": "Country", name: "Türkiye" },
     url,
+    isRelatedTo: PRICE_DATASETS,
   };
 
   return (
@@ -73,6 +75,10 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
 
       <section className="border-b border-border bg-surface/60">
@@ -154,8 +160,15 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
               <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
                 ai-shopping.json
               </a>{" "}
-              <code className="text-[10px]">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye
-              hariç; ücretsiz kargo yok.
+              <code className="text-[10px]">pricedPanels</code>,{" "}
+              <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                catalog.json
+              </a>
+              ,{" "}
+              <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                merchant TSV
+              </a>{" "}
+              (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
             </p>
             <p className="mt-2 text-xs text-ink-muted">
               Şehir sayfaları yalnızca yayımlanmış proje kaydı olan illerde açılır; 81 il spam’i yoktur.
