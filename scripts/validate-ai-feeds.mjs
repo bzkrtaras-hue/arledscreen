@@ -470,13 +470,16 @@ if (fs.existsSync(outDir)) {
     const pcRes = ard?.agentic?.resources?.pointC;
     if (
       !String(epRes?.ownerNext || "").includes("geo:next") ||
+      !String(epRes?.ownerNext || "").includes("geo:ack") ||
       !JSON.stringify(epRes?.distribution || []).includes("/ai-shopping.json") ||
       !JSON.stringify(epRes?.distribution || []).includes("/point-c.txt") ||
       !String(geoRes?.ownerNext || "").includes("geo:next") ||
+      !String(geoRes?.ownerNext || "").includes("geo:ack") ||
       !JSON.stringify(geoRes?.distribution || []).includes("/brand.json") ||
-      !String(pcRes?.ownerNext || "").includes("geo:next")
+      !String(pcRes?.ownerNext || "").includes("geo:next") ||
+      !String(pcRes?.ownerNext || "").includes("geo:ack")
     ) {
-      console.error("❌ ard.json entityProfiles/geoBaseline/pointC must cite geo:next + invent distribution");
+      console.error("❌ ard.json entityProfiles/geoBaseline/pointC must cite geo:next/ack + invent distribution");
       process.exit(1);
     }
     if (!JSON.stringify(ardBrand?.subjectOf || []).includes("/point-c.txt")) {
@@ -583,8 +586,11 @@ if (fs.existsSync(outDir)) {
         process.exit(1);
       }
     }
-    if (!JSON.stringify(baseline?.baseline?.ownerGated || []).includes("geo:next")) {
-      console.error("❌ geo-baseline.json baseline.ownerGated must cite npm run geo:next");
+    if (
+      !JSON.stringify(baseline?.baseline?.ownerGated || []).includes("geo:next") ||
+      !JSON.stringify(baseline?.baseline?.ownerGated || []).includes("geo:ack")
+    ) {
+      console.error("❌ geo-baseline.json baseline.ownerGated must cite npm run geo:next + geo:ack");
       process.exit(1);
     }
   }
@@ -669,6 +675,14 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources.brandWellKnown + resources.website + isRelatedTo #website required");
     process.exit(1);
   }
+  if (
+    !String(ai?.description || "").includes("geo:next") ||
+    !String(ai?.description || "").includes("geo:ack") ||
+    !String(ai?.description || "").includes("#website")
+  ) {
+    console.error("❌ ai-shopping.json description must cite geo:next/ack + #website owner invent");
+    process.exit(1);
+  }
   if (!ard?.agentic?.resources?.pricesJson?.url?.includes("/prices.json") || !ard?.agentic?.resources?.agentsMd?.url?.includes("AGENTS.md")) {
     console.error("❌ ard.json must expose resources.pricesJson + agentsMd");
     process.exit(1);
@@ -737,6 +751,19 @@ if (fs.existsSync(outDir)) {
         console.error(`❌ brand.json description must cite inventable ${needle}`);
         process.exit(1);
       }
+    }
+    for (const [label, desc] of [
+      ["catalog.json", catalogDesc],
+      ["brand.json", brandDesc],
+    ]) {
+      if (!desc.includes("geo:next") || !desc.includes("geo:ack") || !desc.includes("#website")) {
+        console.error(`❌ ${label} description must cite geo:next/ack + #website`);
+        process.exit(1);
+      }
+    }
+    if (!JSON.stringify(brandLive?.isRelatedTo || []).includes("#website")) {
+      console.error("❌ brand.json isRelatedTo must cite WebSite #website");
+      process.exit(1);
     }
   }
   // Product↔Offer identity: each catalog Offer.url must equal its Product.url (PDP),
@@ -1109,6 +1136,13 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
+  {
+    const entDesc = String(entity?.description || "");
+    if (!entDesc.includes("geo:next") || !entDesc.includes("geo:ack") || !entDesc.includes("#website")) {
+      console.error("❌ entity.json description must cite geo:next/ack + #website (organization alias parity)");
+      process.exit(1);
+    }
+  }
   if (!ai?.agentGuidelines?.roleClarity?.legacyDomainNote?.includes("arleds.com")) {
     console.error("❌ ai-shopping agentGuidelines.roleClarity.legacyDomainNote required");
     process.exit(1);
@@ -1428,6 +1462,14 @@ if (fs.existsSync(outDir)) {
     }
   }
   const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
+  if (
+    !String(agents?.description || "").includes("geo:next") ||
+    !String(agents?.description || "").includes("geo:ack") ||
+    !String(agents?.description || "").includes("#website")
+  ) {
+    console.error("❌ agents.json description must cite geo:next/ack + #website");
+    process.exit(1);
+  }
   if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 17) {
     console.error("❌ agents.json must list ≥17 discovery items (incl. brand/prices.rss/point-c/organization/prices/point-c-en)");
     process.exit(1);
@@ -2307,6 +2349,7 @@ if (fs.existsSync(outDir)) {
     "point_c_url",
     "brand_well_known_url",
     "organization_url",
+    "geo_baseline_url",
     "website_url",
   ]) {
     if (!tsvHeader.split("\t").includes(col)) {
@@ -2332,6 +2375,7 @@ if (fs.existsSync(outDir)) {
   const pointCUrlIdx = tsvCols.indexOf("point_c_url");
   const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
   const orgUrlIdx = tsvCols.indexOf("organization_url");
+  const geoBaselineUrlIdx = tsvCols.indexOf("geo_baseline_url");
   const websiteUrlIdx = tsvCols.indexOf("website_url");
   for (const row of tsvRows) {
     const cells = row.split("\t");
@@ -2377,6 +2421,10 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[orgUrlIdx] !== "https://arledscreen.com/organization.json") {
       console.error(`❌ merchant TSV organization_url must be /organization.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[geoBaselineUrlIdx] !== "https://arledscreen.com/geo-baseline.json") {
+      console.error(`❌ merchant TSV geo_baseline_url must be /geo-baseline.json for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[websiteUrlIdx] !== "https://arledscreen.com/#website") {

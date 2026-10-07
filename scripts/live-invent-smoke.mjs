@@ -225,13 +225,16 @@ else fail("ard.resources.pointC");
     allow.includes("/.well-known/entity.json") &&
     allow.includes("/.well-known/brand.json") &&
     String(res.entityProfiles?.ownerNext || "").includes("geo:next") &&
+    String(res.entityProfiles?.ownerNext || "").includes("geo:ack") &&
     JSON.stringify(res.entityProfiles?.distribution || []).includes("/ai-shopping.json") &&
     String(res.geoBaseline?.ownerNext || "").includes("geo:next") &&
+    String(res.geoBaseline?.ownerNext || "").includes("geo:ack") &&
     String(res.pointC?.ownerNext || "").includes("geo:next") &&
+    String(res.pointC?.ownerNext || "").includes("geo:ack") &&
     JSON.stringify(res.brand?.subjectOf || []).includes("/point-c.txt")
   ) {
-    ok("ard invent entity/brand allow + geo:next distribution");
-  } else fail("ard invent entity/brand allow + geo:next distribution");
+    ok("ard invent entity/brand allow + geo:next/ack distribution");
+  } else fail("ard invent entity/brand allow + geo:next/ack distribution");
 }
 
 try {
@@ -245,6 +248,7 @@ try {
     head.includes("point_c_url") &&
     head.includes("brand_well_known_url") &&
     head.includes("organization_url") &&
+    head.includes("geo_baseline_url") &&
     head.includes("website_url") &&
     tsv.includes(`${SITE}/#organization`) &&
     tsv.includes(`${SITE}/entity.json`) &&
@@ -253,10 +257,11 @@ try {
     tsv.includes(`${SITE}/point-c.txt`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
     tsv.includes(`${SITE}/organization.json`) &&
+    tsv.includes(`${SITE}/geo-baseline.json`) &&
     tsv.includes(`${SITE}/#website`)
   ) {
-    ok("merchant TSV brand_url + org/entity/profiles/point-c/brand-wk/org/website invent cols");
-  } else fail("merchant TSV brand_url + org/entity/profiles/point-c/brand-wk/org/website invent cols");
+    ok("merchant TSV brand_url + org/entity/profiles/point-c/brand-wk/org/geo/website invent cols");
+  } else fail("merchant TSV brand_url + org/entity/profiles/point-c/brand-wk/org/geo/website invent cols");
 } catch (e) {
   fail(`merchant TSV ${e?.message || e}`);
 }

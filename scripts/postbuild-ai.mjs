@@ -294,7 +294,7 @@ function buildCatalog() {
     "@id": `${SITE_URL}/catalog.json`,
     name: "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
     description:
-      "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json); teknik GEO baseline → geo-baseline.json.",
+      "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json); teknik GEO baseline → geo-baseline.json. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt.",
     publisher: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
@@ -648,7 +648,7 @@ function buildAiShopping() {
     "@id": datasetId,
     name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
     description:
-      "Single-fetch entity cite + 12 priced panel USD + merchant TSV + quote-only groups. TR faqs + EN faqsEn + pricedPanels.nameEn. Each Product isPartOf this Dataset; Dataset hasPart lists those Products. Inventable aliases: /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json. No invented TL packs / 81-province doorways / AggregateRating. No free shipping.",
+      "Single-fetch entity cite + 12 priced panel USD + merchant TSV + quote-only groups. TR faqs + EN faqsEn + pricedPanels.nameEn. Each Product isPartOf this Dataset; Dataset hasPart lists those Products. Inventable aliases: /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json. No invented TL packs / 81-province doorways / AggregateRating. No free shipping. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · after paste: npm run geo:ack · https://arledscreen.com/point-c.txt.",
     url: datasetId,
     creator: { "@id": `${SITE_URL}/#organization` },
     brand: {
@@ -1129,6 +1129,7 @@ function buildMerchantTsv() {
     "point_c_url",
     "brand_well_known_url",
     "organization_url",
+    "geo_baseline_url",
     "website_url",
   ];
   const lines = [header.join("\t")];
@@ -1178,6 +1179,7 @@ function buildMerchantTsv() {
         `${SITE_URL}/point-c.txt`,
         `${SITE_URL}/.well-known/brand.json`,
         `${SITE_URL}/organization.json`,
+        `${SITE_URL}/geo-baseline.json`,
         `${SITE_URL}/#website`,
       ].join("\t"),
     );
@@ -1482,6 +1484,18 @@ function ensureSubjectNeedle(list, needle, entry) {
 /** Entity-first invent: Brand AggregateOffer×12 + Org/WebSite OrderAction (TR/EN). */
 function enrichEntityDocument(entity) {
   if (!entity || typeof entity !== "object") return entity;
+  // Owner-friction invent on Organization alias surfaces (entity.json ↔ organization.json).
+  if (typeof entity.description === "string") {
+    if (!entity.description.includes("geo:next")) {
+      entity.description = `${entity.description} Owner: npm run geo:next.`;
+    }
+    if (!entity.description.includes("geo:ack")) {
+      entity.description = `${entity.description} After paste: npm run geo:ack.`;
+    }
+    if (!entity.description.includes("#website")) {
+      entity.description = `${entity.description} WebSite: ${SITE_URL}/#website.`;
+    }
+  }
   if (
     entity.makesOffer?.["@type"] === "AggregateOffer" &&
     Array.isArray(entity.makesOffer.offers) &&
@@ -1989,8 +2003,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       speakableCoverageNote:
         "TR/EN HTML content pages emit SpeakableSpecification where applicable (measured separately in agent artifacts).",
       ownerGated: [
-        "Single next clipboard — npm run geo:next (Point C → arleds 301 → Tur1a → merge)",
-        "Point C third-party cites — paste https://arledscreen.com/point-c.txt (npm run point-c · point-c:next · point-c:ack)",
+        "Single next clipboard — npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack",
+        "Point C third-party cites — paste https://arledscreen.com/point-c.txt (npm run point-c · point-c:next · point-c:ack · geo:ack)",
         "Tur1a blind — npm run tur1a:next then npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… (no invented %)",
         "GSC access",
         "PR #60 merge",
@@ -2680,7 +2694,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     url: `${SITE_URL}/tr/nxtionstar/`,
     alternateName: ["NXTION STAR", "NXTIONSTAR LED"],
     description:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json).",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json). WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt.",
     disambiguatingDescription:
       "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
     makesOffer: buildBrandAggregateOffer(ai),
@@ -2836,6 +2850,21 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
         name: "ARLEDSCREEN",
+      },
+    ],
+    isRelatedTo: [
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "ARLEDSCREEN",
+      },
+      {
+        "@type": "DataDownload",
+        "@id": `${SITE_URL}/point-c.txt`,
+        url: `${SITE_URL}/point-c.txt`,
+        name: "ARLEDSCREEN Point C paste packs",
+        encodingFormat: "text/plain",
       },
     ],
   };
@@ -3073,14 +3102,15 @@ Acknowledgments: https://arledscreen.com/brand.json
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
-    // Trailing invent cols: … tax, shipping, profiles, point_c, brand_wk, organization_url, website_url
+    // Trailing invent cols: … tax, shipping, profiles, point_c, brand_wk, org, geo_baseline, website_url
     const websiteUrl = cells[cells.length - 1];
-    const orgUrl = cells[cells.length - 2];
-    const brandWk = cells[cells.length - 3];
-    const pointCUrl = cells[cells.length - 4];
-    const profilesUrl = cells[cells.length - 5];
-    const shippingIncluded = cells[cells.length - 6];
-    const taxIncluded = cells[cells.length - 7];
+    const geoBaselineUrl = cells[cells.length - 2];
+    const orgUrl = cells[cells.length - 3];
+    const brandWk = cells[cells.length - 4];
+    const pointCUrl = cells[cells.length - 5];
+    const profilesUrl = cells[cells.length - 6];
+    const shippingIncluded = cells[cells.length - 7];
+    const taxIncluded = cells[cells.length - 8];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3093,6 +3123,7 @@ Acknowledgments: https://arledscreen.com/brand.json
       pointCUrl !== `${SITE_URL}/point-c.txt` ||
       brandWk !== `${SITE_URL}/.well-known/brand.json` ||
       orgUrl !== `${SITE_URL}/organization.json` ||
+      geoBaselineUrl !== `${SITE_URL}/geo-baseline.json` ||
       websiteUrl !== `${SITE_URL}/#website` ||
       /\ttrue(\t|$)/.test(row)
     ) {
