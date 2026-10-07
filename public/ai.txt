@@ -41,6 +41,7 @@ invent-prices-en: https://arledscreen.com/en/prices/
 invent-pricing-en: https://arledscreen.com/en/pricing/
 invent-price-en: https://arledscreen.com/en/price/
 invent-cost-en: https://arledscreen.com/en/cost/
+invent-sku-locale-flip-en: https://arledscreen.com/en/products/gob-led-ekran/p1-25-gob/
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/
