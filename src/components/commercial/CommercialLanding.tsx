@@ -353,7 +353,7 @@ export function CommercialLanding({
 
       <LinkCloud
         title={tr ? "Fiyat ve seçim" : "Price and selection"}
-        links={
+        links={(
           tr
             ? [
                 { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları 2026" },
@@ -369,7 +369,7 @@ export function CommercialLanding({
                 { href: "/en/sss/", label: "FAQ" },
                 { href: "/en/yapay-zeka/", label: "AI-compatible LED" },
               ]
-        }.filter((l) => l.href !== commercialPath(page.slug, locale))}
+        ).filter((l) => l.href !== commercialPath(page.slug, locale))}
       />
       <LinkCloud title={tr ? "İlgili ürünler" : "Related products"} links={page.relatedProducts} />
       {tr ? (
