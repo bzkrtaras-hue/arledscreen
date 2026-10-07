@@ -3121,5 +3121,48 @@
       },
       "name": "Request a quote"
     }
-  ]
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebSite",
+    "@id": "https://arledscreen.com/#website",
+    "url": "https://arledscreen.com",
+    "name": "ARLEDSCREEN",
+    "alternateName": "ARLED SCREEN",
+    "inLanguage": [
+      "tr-TR",
+      "en-US"
+    ],
+    "publisher": {
+      "@id": "https://arledscreen.com/#organization"
+    },
+    "about": {
+      "@id": "https://arledscreen.com/#organization"
+    },
+    "potentialAction": [
+      {
+        "@type": "OrderAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://arledscreen.com/tr/quote/",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "name": "Teklif iste"
+      },
+      {
+        "@type": "OrderAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://arledscreen.com/en/quote/",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "name": "Request a quote"
+      }
+    ]
+  }
 }

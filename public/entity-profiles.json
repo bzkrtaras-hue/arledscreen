@@ -58,7 +58,7 @@
     ]
   },
   "ownerP0Checklist": [
-    "P0 paste order: npm run point-c → NAP/directoryLong → GBP → IG name+bio → FB → LinkedIn → Bing/Apple (paste once; 34245; rating yok)",
+    "P0 status: npm run geo:status · then paste order npm run point-c → NAP/directoryLong → GBP → IG name+bio → FB → LinkedIn → Bing/Apple (paste once; 34245; rating yok)",
     "GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok)",
     "Instagram Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)",
     "Facebook About = packs.facebookAbout · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)",

@@ -1022,7 +1022,60 @@ function escapeXml(s) {
     .replace(/'/g, "&apos;");
 }
 
-/** Entity-first invent: Brand.makesOffer full AggregateOffer×12 + Org OrderAction (TR/EN). */
+/** Shared TR/EN quote OrderAction — entity Org, WebSite, and /brand.json. */
+function quoteOrderActions() {
+  const platforms = [
+    "http://schema.org/DesktopWebPlatform",
+    "http://schema.org/MobileWebPlatform",
+  ];
+  return [
+    {
+      "@type": "OrderAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/tr/quote/`,
+        actionPlatform: platforms,
+      },
+      name: "Teklif iste",
+    },
+    {
+      "@type": "OrderAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/en/quote/`,
+        actionPlatform: platforms,
+      },
+      name: "Request a quote",
+    },
+  ];
+}
+
+function websiteNode() {
+  return {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: "ARLEDSCREEN",
+    alternateName: "ARLED SCREEN",
+    inLanguage: ["tr-TR", "en-US"],
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    about: { "@id": `${SITE_URL}/#organization` },
+    potentialAction: quoteOrderActions(),
+  };
+}
+
+function hasQuoteOrderActions(actions) {
+  const list = Array.isArray(actions) ? actions : [];
+  const hasTr = list.some(
+    (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/tr/quote"),
+  );
+  const hasEn = list.some(
+    (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
+  );
+  return hasTr && hasEn;
+}
+
+/** Entity-first invent: Brand AggregateOffer×12 + Org/WebSite OrderAction (TR/EN). */
 function enrichEntityDocument(entity) {
   if (!entity || typeof entity !== "object") return entity;
   if (
@@ -1039,40 +1092,19 @@ function enrichEntityDocument(entity) {
     }
     entity.brand.makesOffer = entity.makesOffer;
   }
-  const actions = Array.isArray(entity.potentialAction) ? entity.potentialAction : [];
-  const hasTr = actions.some(
-    (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/tr/quote"),
-  );
-  const hasEn = actions.some(
-    (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
-  );
-  if (!hasTr || !hasEn) {
-    entity.potentialAction = [
-      {
-        "@type": "OrderAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${SITE_URL}/tr/quote/`,
-          actionPlatform: [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform",
-          ],
-        },
-        name: "Teklif iste",
-      },
-      {
-        "@type": "OrderAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${SITE_URL}/en/quote/`,
-          actionPlatform: [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform",
-          ],
-        },
-        name: "Request a quote",
-      },
-    ];
+  if (!hasQuoteOrderActions(entity.potentialAction)) {
+    entity.potentialAction = quoteOrderActions();
+  }
+  // WebSite #website — parity with HTML OrganizationJsonLd graph for entity-only agents.
+  const mep = entity.mainEntityOfPage;
+  if (
+    !mep ||
+    typeof mep !== "object" ||
+    mep["@id"] !== `${SITE_URL}/#website` ||
+    mep["@type"] !== "WebSite" ||
+    !hasQuoteOrderActions(mep.potentialAction)
+  ) {
+    entity.mainEntityOfPage = websiteNode();
   }
   return entity;
 }
@@ -1774,6 +1806,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     manufacturer: { "@id": `${SITE_URL}/#organization` },
     seller: { "@id": `${SITE_URL}/#organization` },
+    potentialAction: quoteOrderActions(),
     sameAs: [`${SITE_URL}/tr/nxtionstar/`, `${SITE_URL}/en/nxtionstar/`],
     distribution: [
       {

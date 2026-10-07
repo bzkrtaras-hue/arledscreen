@@ -643,6 +643,25 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
+  {
+    const site = entity?.mainEntityOfPage;
+    const siteActions = Array.isArray(site?.potentialAction) ? site.potentialAction : [];
+    const hasTr = siteActions.some(
+      (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/tr/quote"),
+    );
+    const hasEn = siteActions.some(
+      (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
+    );
+    if (
+      site?.["@type"] !== "WebSite" ||
+      site?.["@id"] !== "https://arledscreen.com/#website" ||
+      !hasTr ||
+      !hasEn
+    ) {
+      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN");
+      process.exit(1);
+    }
+  }
   if (!String(entity?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")) {
     console.error("❌ entity.json brand.hasOfferCatalog must join catalog.json");
     process.exit(1);
@@ -942,8 +961,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 12) {
-    console.error("❌ agents.json must list ≥12 discovery items (incl. brand.json + prices.rss + entity-profiles)");
+  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 13) {
+    console.error("❌ agents.json must list ≥13 discovery items (incl. brand.json + prices.rss + entity-profiles + humans.txt)");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("entity-profiles.json"))) {
@@ -957,6 +976,17 @@ if (fs.existsSync(outDir)) {
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/feeds/prices.rss"))) {
     console.error("❌ agents.json must list feeds/prices.rss");
     process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("humans.txt"))) {
+    console.error("❌ agents.json must list humans.txt");
+    process.exit(1);
+  }
+  {
+    const brandItem = agents.itemListElement.find((it) => String(it?.url || "").includes("/brand.json"));
+    if (!String(brandItem?.description || "").includes("AggregateOffer")) {
+      console.error("❌ agents.json brand.json item must describe AggregateOffer×12");
+      process.exit(1);
+    }
   }
   if (!String(agents.description || "").includes("ai-shopping.json")) {
     console.error("❌ agents.json must point agents at ai-shopping.json price source");
@@ -1048,6 +1078,19 @@ if (fs.existsSync(outDir)) {
     ) {
       console.error("❌ out/brand.json must be Brand #brand-nxtionstar with AggregateOffer×12 + hasOfferCatalog");
       process.exit(1);
+    }
+    {
+      const brandActions = Array.isArray(brandLive.potentialAction) ? brandLive.potentialAction : [];
+      const hasTr = brandActions.some(
+        (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/tr/quote"),
+      );
+      const hasEn = brandActions.some(
+        (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
+      );
+      if (!hasTr || !hasEn) {
+        console.error("❌ out/brand.json potentialAction must include OrderAction TR+EN /quote/");
+        process.exit(1);
+      }
     }
     const brandDist = JSON.stringify(brandLive.distribution || []);
     if (

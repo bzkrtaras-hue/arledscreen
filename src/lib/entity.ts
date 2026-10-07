@@ -235,6 +235,8 @@ export type EntityDocument = {
   location: Record<string, unknown>;
   /** Quote OrderAction (TR+EN) — parity with WebSite potentialAction on HTML. */
   potentialAction?: Array<Record<string, unknown>>;
+  /** WebSite #website with OrderAction — entity-only agents without HTML @graph. */
+  mainEntityOfPage?: Record<string, unknown>;
   founder: { "@type": "Person"; name: string; url?: string; sameAs?: string[] };
   citationPage: string;
   llmsTxt: string;
@@ -366,6 +368,42 @@ export function buildEntityDocument(): EntityDocument {
         name: "Request a quote",
       },
     ],
+    mainEntityOfPage: {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "ARLEDSCREEN",
+      alternateName: "ARLED SCREEN",
+      inLanguage: ["tr-TR", "en-US"],
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      about: { "@id": `${SITE_URL}/#organization` },
+      potentialAction: [
+        {
+          "@type": "OrderAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${SITE_URL}/tr/quote/`,
+            actionPlatform: [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform",
+            ],
+          },
+          name: "Teklif iste",
+        },
+        {
+          "@type": "OrderAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${SITE_URL}/en/quote/`,
+            actionPlatform: [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform",
+            ],
+          },
+          name: "Request a quote",
+        },
+      ],
+    },
     location: {
       "@type": "LocalBusiness",
       "@id": LOCALBUSINESS_ID,
