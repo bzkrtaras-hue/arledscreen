@@ -118,7 +118,7 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "b4eaf2b1a338de50d6d62a74f677fa23744f3d2fece54d985ad0fb31397a4205",
+    "aiShoppingSha256": "fa70b308a1ee6464200c1391822fb12043b8cbc597e724f3673db869a5dc87e0",
     "catalogSha256": "c8ce608992fc5a6563f044a130e9418a322876ae3f39796e81e0527dfdf1afa6",
     "merchantTsvSha256": "308d08c6935a752088febf4761e41d01018c97bbf3097764c193df0ac63aa37a",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
@@ -132,6 +132,11 @@
     "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "llms": "https://arledscreen.com/llms.txt",
     "brandPage": "https://arledscreen.com/tr/nxtionstar/",
-    "priceHub": "https://arledscreen.com/tr/led-ekran-fiyatlari/"
+    "priceHub": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+    "homeTr": "https://arledscreen.com/tr/",
+    "homeEn": "https://arledscreen.com/en/",
+    "productsHub": "https://arledscreen.com/tr/products/",
+    "intentHub": "https://arledscreen.com/tr/led-ekran/",
+    "yapayZeka": "https://arledscreen.com/tr/yapay-zeka/"
   }
 }

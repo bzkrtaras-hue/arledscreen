@@ -1060,6 +1060,10 @@
     "ard": "https://arledscreen.com/.well-known/ard.json",
     "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "priceHub": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+    "home": "https://arledscreen.com/tr/",
+    "productsHub": "https://arledscreen.com/tr/products/",
+    "intentHub": "https://arledscreen.com/tr/led-ekran/",
+    "yapayZeka": "https://arledscreen.com/tr/yapay-zeka/",
     "quote": "https://arledscreen.com/tr/quote/",
     "calculator": "https://arledscreen.com/tr/hesaplayici/",
     "en": {
