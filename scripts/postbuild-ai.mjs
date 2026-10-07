@@ -410,6 +410,14 @@ function buildAiShopping() {
       priceHub: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
       quote: `${SITE_URL}/tr/quote/`,
       calculator: `${SITE_URL}/tr/hesaplayici/`,
+      // EN hubs exist; priced PDP URLs stay /tr/… (no invented /en/product paths).
+      en: {
+        home: `${SITE_URL}/en/`,
+        quote: `${SITE_URL}/en/quote/`,
+        calculator: `${SITE_URL}/en/hesaplayici/`,
+        about: `${SITE_URL}/en/about/`,
+        yapayZeka: `${SITE_URL}/en/yapay-zeka/`,
+      },
     },
     priceValidUntil: PRICE_VALID_UNTIL,
   };

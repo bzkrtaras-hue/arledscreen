@@ -126,6 +126,14 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json robotsPolicy.allow must include merchant TSV path");
     process.exit(1);
   }
+  if (!ard?.agentic?.cite?.en?.oneLiner) {
+    console.error("❌ ard.json agentic.cite.en.oneLiner required for EN AI agents");
+    process.exit(1);
+  }
+  if (!ai?.resources?.en?.home || !ai.resources.en.calculator) {
+    console.error("❌ ai-shopping.json resources.en.home + calculator required");
+    process.exit(1);
+  }
   const entity = JSON.parse(fs.readFileSync(path.join(outDir, "entity.json"), "utf8"));
   if (!entity.merchantFeed?.includes("/feeds/merchant-priced-panels.tsv")) {
     console.error("❌ entity.json must expose merchantFeed TSV URL");

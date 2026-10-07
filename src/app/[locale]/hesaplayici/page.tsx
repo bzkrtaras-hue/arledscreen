@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { HowToJsonLd } from "@/components/seo/HowToJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { FiyatHesaplayiciEmbed } from "@/components/calculator/FiyatHesaplayiciEmbed";
 import { getSeo } from "@/content/seo";
 import { buildPageMetadata } from "@/lib/seo";
@@ -37,6 +39,9 @@ export default async function HesaplayiciPage({ params }: PageProps) {
   const locale = raw as Locale;
   const dict = getDictionary(locale);
   const seo = getSeo(locale, "hesaplayici");
+  const pageUrl = absoluteUrl(`/${locale}/hesaplayici/`);
+  const howToTr = locale === "tr";
+  const howToEn = locale === "en";
 
   return (
     <>
@@ -49,18 +54,89 @@ export default async function HesaplayiciPage({ params }: PageProps) {
           },
         ]}
       />
+      {(howToTr || howToEn) && (
+        <SpeakableJsonLd
+          pageUrl={pageUrl}
+          name={seo.h1 ?? dict.page.hesaplayici.title}
+          description={seo.description}
+          cssSelectors={["#hesap-h1", "#hesap-lead"]}
+        />
+      )}
+      {howToTr ? (
+        <HowToJsonLd
+          citePriceDatasets
+          name="LED ekran yaklaşık fiyatı nasıl hesaplanır?"
+          description="ARLEDSCREEN yayımlanmış 12 panel USD listesi ve hesaplayıcı ile yaklaşık maliyet; KDV/nakliye hariç, ücretsiz kargo yok; nihai tutar yazılı teklifle."
+          steps={[
+            {
+              name: "İç veya dış mekân ve piksel aralığı",
+              text: "İzleme mesafesine göre iç/dış mekân ve P değeri seçin (ör. yakın izleme P1.25–P1.86 GOB; cephe için daha büyük P).",
+            },
+            {
+              name: "Ölçüyü girin",
+              text: "Ekran genişlik × yükseklik (m) bilgisiyle m² ve yaklaşık panel adedini hesaplayıcıda görün.",
+            },
+            {
+              name: "Panel USD listesini okuyun",
+              text: "12 SKU ai-shopping.json pricedPanels, catalog.json ve merchant TSV ile aynıdır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31).",
+            },
+            {
+              name: "Ek kalemleri ayırın",
+              text: "İşçilik, kontrol kartı, sürücü/yazılım, konstrüksiyon, nakliye ve KDV panel fiyatına dahil değildir; ücretsiz kargo yoktur.",
+            },
+            {
+              name: "Yazılı teklif isteyin",
+              text: "Keşif sonrası malzeme listesi ve nihai tutar yalnızca yazılı teklifte kesinleşir. Şeffaf/esnek/poster/kiralık/kontrol quote-only gruplardır.",
+            },
+          ]}
+        />
+      ) : null}
+      {howToEn ? (
+        <HowToJsonLd
+          citePriceDatasets
+          name="How to estimate an LED wall price with ARLEDSCREEN"
+          description="Use the published 12 panel USD list and calculator for planning totals. VAT and freight excluded; no free shipping; final price only in the written quote."
+          steps={[
+            {
+              name: "Pick indoor/outdoor and pitch",
+              text: "Choose use case and pixel pitch from viewing distance (e.g. fine pitch GOB for close viewing; larger pitch for façades).",
+            },
+            {
+              name: "Enter dimensions",
+              text: "Enter width × height (m) in the calculator to see approximate area and module count.",
+            },
+            {
+              name: "Read the published panel USD list",
+              text: "The same 12 SKUs are in ai-shopping.json pricedPanels, catalog.json and merchant TSV (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31).",
+            },
+            {
+              name: "Separate extras",
+              text: "Labor, control card, driver/software, structure, freight and VAT are not in the panel price; there is no free shipping.",
+            },
+            {
+              name: "Request a written quote",
+              text: "After survey, the bill of materials and final total are confirmed only in writing. Transparent / flexible / poster / rental / control cards are quote-only.",
+            },
+          ]}
+        />
+      ) : null}
       {/* H1 kept in the DOM for SEO/screen readers but visually hidden; the calculator starts directly under the site header. */}
-      <h1 className="sr-only">{seo.h1 ?? dict.page.hesaplayici.title}</h1>
+      <h1 id="hesap-h1" className="sr-only">
+        {seo.h1 ?? dict.page.hesaplayici.title}
+      </h1>
       <FiyatHesaplayiciEmbed title={seo.h1 ?? dict.page.hesaplayici.title} />
       <Section className="prose-seo">
-        <p className="max-w-3xl text-pretty text-base leading-[1.65] text-ink-soft sm:text-[1.0625rem]">
+        <p
+          id="hesap-lead"
+          className="max-w-3xl text-pretty text-base leading-[1.65] text-ink-soft sm:text-[1.0625rem]"
+        >
           {seo.intro ?? dict.page.hesaplayici.description}
         </p>
         {(locale === "tr" || locale === "en") ? (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/hesaplayici/`))),
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
             }}
           />
         ) : null}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
 import {
@@ -97,6 +98,12 @@ export default async function LedEkranFiyatlariPage({
         ]}
       />
       <FaqJsonLd faqs={FAQS} />
+      <SpeakableJsonLd
+        pageUrl={url}
+        name="LED ekran fiyatları 2026 | ARLEDSCREEN"
+        description="Yayımlanmış 12 panel USD listesi, m² örnek hesaplar; KDV/nakliye hariç, ücretsiz kargo yok."
+        cssSelectors={["#fiyat-h1", "#fiyat-lead", "#ai-price-source"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
@@ -118,10 +125,13 @@ export default async function LedEkranFiyatlariPage({
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">Fiyatlandırma · 2026</p>
-          <h1 className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
+          <h1
+            id="fiyat-h1"
+            className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink"
+          >
             LED ekran fiyatları
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
+          <p id="fiyat-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             Amacımız “ucuz rakam” kopyalamak değil; panel listesini yayımlayıp m² örnekleriyle
             şeffaf hesap göstermek. 12 panel USD aynı zamanda{" "}
             <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
@@ -133,6 +143,11 @@ export default async function LedEkranFiyatlariPage({
             </a>{" "}
             üzerindedir (ör. P1.25 GOB 95.88 USD). KDV ve nakliye hariç; ücretsiz kargo yok. Nihai
             tutar keşif sonrası yazılı teklifle kesinleşir.
+          </p>
+          <p id="ai-price-source" className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
+            AI ajanları için tek fiyat kaynağı: ai-shopping.json pricedPanels, catalog.json ve
+            feeds/merchant-priced-panels.tsv (priceValidUntil 2026-12-31). Şeffaf/esnek/poster/kiralık/kontrol
+            quote-only.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link

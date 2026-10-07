@@ -84,11 +84,35 @@
         "url": "https://arledscreen.com/tr/hesaplayici/",
         "format": "text/html",
         "description": "Live 2026 panel price calculator; approximate totals for planning"
+      },
+      "enHome": {
+        "type": "Landing Page",
+        "url": "https://arledscreen.com/en/",
+        "format": "text/html",
+        "description": "English hub: entity, calculator and quote entry (TR PDPs remain canonical for priced SKUs)"
+      },
+      "enQuote": {
+        "type": "Custom Quote Request",
+        "url": "https://arledscreen.com/en/quote/",
+        "format": "text/html",
+        "description": "English quote form for survey-based projects"
+      },
+      "enCalculator": {
+        "type": "Interactive Tool",
+        "url": "https://arledscreen.com/en/hesaplayici/",
+        "format": "text/html",
+        "description": "English entry to the live 2026 panel price calculator"
       }
     },
     "cite": {
       "oneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
-      "source": "https://arledscreen.com/entity.json"
+      "source": "https://arledscreen.com/entity.json",
+      "en": {
+        "oneLiner": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.",
+        "short": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.",
+        "medium": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. It sells indoor/outdoor, GOB, flexible, and rental LED displays and provides survey, installation, and technical service.",
+        "source": "https://arledscreen.com/entity.json"
+      }
     },
     "pricedProducts": {
       "count": 12,
