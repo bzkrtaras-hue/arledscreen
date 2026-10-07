@@ -632,9 +632,12 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("ai-shopping.json") ||
     !headersLive.includes("entity.json") ||
     !headersLive.includes("agents.json") ||
-    !headersLive.includes("AGENTS.md")
+    !headersLive.includes("AGENTS.md") ||
+    !headersLive.includes("panels.json") ||
+    !headersLive.includes("mpn.json") ||
+    !headersLive.includes("entity-profiles.json")
   ) {
-    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+agents");
+    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+agents+panels/mpn/profiles");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
@@ -722,7 +725,9 @@ if (fs.existsSync(outDir)) {
     !trExamples.some((u) => String(u) === "https://arledscreen.com/teklif/" || String(u).endsWith("/teklif/")) ||
     !trExamples.some((u) => String(u).includes("/panels.json")) ||
     !trExamples.some((u) => String(u).includes("/merchant.json")) ||
-    !trExamples.some((u) => String(u).includes("/.well-known/mpn.json"))
+    !trExamples.some((u) => String(u).includes("/.well-known/mpn.json")) ||
+    !trExamples.some((u) => String(u).includes("/api/panels.json")) ||
+    !trExamples.some((u) => String(u).includes("/tr/llms.txt"))
   ) {
     console.error("❌ ard.json trInventBridges must list TR quote/price/catalog invents + shopping feed aliases");
     process.exit(1);
@@ -1362,6 +1367,21 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
+
+  // Fine-pitch hub must surface the 3 published GOB Offers (alsoIn + price groups).
+  const finePitchHtml = path.join(outDir, "tr/products/ince-pitch-led-ekran/index.html");
+  if (!fs.existsSync(finePitchHtml)) {
+    console.error("❌ missing out/tr/products/ince-pitch-led-ekran/index.html");
+    process.exit(1);
+  }
+  const finePitchBody = fs.readFileSync(finePitchHtml, "utf8");
+  for (const sku of ["p1-25-ic-gob", "p1-53-ic-gob", "p1-86-ic-gob"]) {
+    if (!finePitchBody.includes(`"sku":"${sku}"`) && !finePitchBody.includes(`"sku": "${sku}"`)) {
+      console.error(`❌ fine-pitch hub must emit Product sku ${sku} (GOB alsoIn + price groups)`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ fine-pitch hub emits 3 GOB Product/Offer SKUs");
 
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms, ai.txt); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);

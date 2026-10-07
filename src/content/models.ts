@@ -95,7 +95,7 @@ export const LED_MODELS: LedModel[] = [
   {
     slug: "p1-25-gob",
     group: "gob-led-ekran",
-    alsoIn: ["ic-mekan-led-ekran"],
+    alsoIn: ["ic-mekan-led-ekran", "ince-pitch-led-ekran"],
     chip: "P1.25 GOB",
     name: "NXTIONSTAR P1.25 GOB İç Mekân LED Modül",
     kind: "gob",
@@ -117,7 +117,7 @@ export const LED_MODELS: LedModel[] = [
   {
     slug: "p1-53-gob",
     group: "gob-led-ekran",
-    alsoIn: ["ic-mekan-led-ekran"],
+    alsoIn: ["ic-mekan-led-ekran", "ince-pitch-led-ekran"],
     chip: "P1.53 GOB",
     name: "NXTIONSTAR P1.53 GOB İç Mekân LED Modül",
     kind: "gob",
@@ -138,7 +138,7 @@ export const LED_MODELS: LedModel[] = [
   {
     slug: "p1-86-gob",
     group: "gob-led-ekran",
-    alsoIn: ["ic-mekan-led-ekran"],
+    alsoIn: ["ic-mekan-led-ekran", "ince-pitch-led-ekran"],
     chip: "P1.86 GOB",
     name: "NXTIONSTAR P1.86 GOB İç Mekân LED Modül",
     kind: "gob",

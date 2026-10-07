@@ -196,7 +196,7 @@ User-Agent: cohere-ai
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-07g-extless-api-json
+# cache-bust-geo60-2026-10-07h-finepitch-offers
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 

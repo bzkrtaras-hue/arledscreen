@@ -187,9 +187,9 @@ export function panelOffer(url: string, usd: number) {
 }
 
 export const PANEL_PRICES: PanelPrice[] = [
-  { id: "p1-25-ic-gob", pitch: "P1.25", pitchMm: 1.25, use: "ic", surface: "GOB", usd: 95.88, groups: ["ic-mekan-led-ekran", "gob-led-ekran"], image: "/modules/nxtionstar-p1-25-ic-mekan-modul.webp" },
-  { id: "p1-53-ic-gob", pitch: "P1.53", pitchMm: 1.53, use: "ic", surface: "GOB", usd: 62.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"], image: "/modules/nxtionstar-p1-53-ic-mekan-modul.webp" },
-  { id: "p1-86-ic-gob", pitch: "P1.86", pitchMm: 1.86, use: "ic", surface: "GOB", usd: 49.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran"], image: "/modules/nxtionstar-p1-86-ic-mekan-modul.webp" },
+  { id: "p1-25-ic-gob", pitch: "P1.25", pitchMm: 1.25, use: "ic", surface: "GOB", usd: 95.88, groups: ["ic-mekan-led-ekran", "gob-led-ekran", "ince-pitch-led-ekran"], image: "/modules/nxtionstar-p1-25-ic-mekan-modul.webp" },
+  { id: "p1-53-ic-gob", pitch: "P1.53", pitchMm: 1.53, use: "ic", surface: "GOB", usd: 62.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran", "ince-pitch-led-ekran"], image: "/modules/nxtionstar-p1-53-ic-mekan-modul.webp" },
+  { id: "p1-86-ic-gob", pitch: "P1.86", pitchMm: 1.86, use: "ic", surface: "GOB", usd: 49.08, groups: ["ic-mekan-led-ekran", "gob-led-ekran", "ince-pitch-led-ekran"], image: "/modules/nxtionstar-p1-86-ic-mekan-modul.webp" },
   { id: "p2-5-ic", pitch: "P2.5", pitchMm: 2.5, use: "ic", usd: 32.18, groups: ["ic-mekan-led-ekran"], image: "/modules/nxtionstar-p2-5-ic-mekan-modul.webp" },
   { id: "p3-07-ic", pitch: "P3.07", pitchMm: 3.07, use: "ic", usd: 30.88, groups: ["ic-mekan-led-ekran"], image: "/projects/modules/indoor-smd-surface.jpg" },
   { id: "p4-ic", pitch: "P4", pitchMm: 4, use: "ic", usd: 26.98, groups: ["ic-mekan-led-ekran"], image: "/projects/modules/indoor-wall.jpg" },
