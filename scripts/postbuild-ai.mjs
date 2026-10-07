@@ -17,6 +17,7 @@ const outDir = path.join(repoRoot, "out");
 const SITE_URL = "https://arledscreen.com";
 const PRICE_VALID_UNTIL = "2026-12-31";
 
+/** image paths match src/content/models.ts (priced SKUs only). */
 const PANEL_PRICES = [
   {
     id: "p1-25-ic-gob",
@@ -25,6 +26,7 @@ const PANEL_PRICES = [
     use: "ic",
     surface: "GOB",
     usd: 95.88,
+    image: "/modules/nxtionstar-p1-25-ic-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/gob-led-ekran/p1-25-gob/`,
     groupUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/`,
   },
@@ -35,6 +37,7 @@ const PANEL_PRICES = [
     use: "ic",
     surface: "GOB",
     usd: 62.08,
+    image: "/modules/nxtionstar-p1-53-ic-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/gob-led-ekran/p1-53-gob/`,
     groupUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/`,
   },
@@ -45,6 +48,7 @@ const PANEL_PRICES = [
     use: "ic",
     surface: "GOB",
     usd: 49.08,
+    image: "/modules/nxtionstar-p1-86-ic-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/gob-led-ekran/p1-86-gob/`,
     groupUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/`,
   },
@@ -54,6 +58,7 @@ const PANEL_PRICES = [
     pitchMm: 2.5,
     use: "ic",
     usd: 32.18,
+    image: "/modules/nxtionstar-p2-5-ic-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/p2-5/`,
     groupUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/`,
   },
@@ -63,6 +68,7 @@ const PANEL_PRICES = [
     pitchMm: 3.07,
     use: "ic",
     usd: 30.88,
+    image: "/projects/modules/indoor-smd-surface.jpg",
     productUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/p3-07/`,
     groupUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/`,
   },
@@ -72,6 +78,7 @@ const PANEL_PRICES = [
     pitchMm: 4,
     use: "ic",
     usd: 26.98,
+    image: "/projects/modules/indoor-wall.jpg",
     productUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/p4/`,
     groupUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/`,
   },
@@ -81,6 +88,7 @@ const PANEL_PRICES = [
     pitchMm: 2.5,
     use: "dis",
     usd: 63.7,
+    image: "/modules/nxtionstar-p2-5-dis-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/p2-5/`,
     groupUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/`,
   },
@@ -91,6 +99,7 @@ const PANEL_PRICES = [
     use: "dis",
     usd: 53.3,
     moduleMm: "250 × 250 mm",
+    image: "/modules/nxtionstar-p2-97-dis-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/p2-9/`,
     groupUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/`,
   },
@@ -100,6 +109,7 @@ const PANEL_PRICES = [
     pitchMm: 3.07,
     use: "dis",
     usd: 44.2,
+    image: "/modules/nxtionstar-p3-076-dis-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/p3-07/`,
     groupUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/`,
   },
@@ -109,6 +119,7 @@ const PANEL_PRICES = [
     pitchMm: 4,
     use: "dis",
     usd: 33.8,
+    image: "/modules/nxtionstar-p4-dis-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/p4/`,
     groupUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/`,
   },
@@ -119,6 +130,7 @@ const PANEL_PRICES = [
     use: "dis",
     frontService: true,
     usd: 36.4,
+    image: "/projects/modules/front-service-module.jpg",
     productUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/p4-on-servis/`,
     groupUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/`,
   },
@@ -128,6 +140,7 @@ const PANEL_PRICES = [
     pitchMm: 5,
     use: "dis",
     usd: 29.9,
+    image: "/modules/nxtionstar-p5-dis-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/p5/`,
     groupUrl: `${SITE_URL}/tr/products/dis-mekan-led-ekran/`,
   },
@@ -152,6 +165,7 @@ function buildCatalog() {
       description: `${label} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Ücretsiz kargo yok. Nihai fiyat yazılı teklifle kesinleşir.`,
       brand: { "@type": "Brand", name: "NXTIONSTAR" },
       category: "LED ekran paneli",
+      image: `${SITE_URL}${panel.image}`,
       url: panel.productUrl,
       additionalProperty: [
         { "@type": "PropertyValue", name: "pitch", value: panel.pitch },
@@ -237,9 +251,11 @@ function buildAiShopping() {
     return {
       sku: panel.id,
       name: `NXTIONSTAR ${label} LED Modül`,
+      brand: "NXTIONSTAR",
       price: panel.usd.toFixed(2),
       priceCurrency: "USD",
       priceValidUntil: PRICE_VALID_UNTIL,
+      image: `${SITE_URL}${panel.image}`,
       url: panel.productUrl,
       groupUrl: panel.groupUrl,
     };
@@ -336,6 +352,8 @@ function writeJson(dir, name, value) {
 function buildMerchantTsv() {
   const header = [
     "id",
+    "title",
+    "brand",
     "pitch",
     "pitch_mm",
     "use",
@@ -349,15 +367,20 @@ function buildMerchantTsv() {
     "seller_url",
     "seller_email",
     "product_url",
+    "image_link",
     "availability",
+    "condition",
     "tax_included",
     "shipping_included",
   ];
   const lines = [header.join("\t")];
   for (const panel of PANEL_PRICES) {
+    const label = panelLabel(panel);
     lines.push(
       [
         panel.id,
+        `NXTIONSTAR ${label} LED Modül`,
+        "NXTIONSTAR",
         panel.pitch,
         String(panel.pitchMm),
         panel.use,
@@ -371,7 +394,9 @@ function buildMerchantTsv() {
         SITE_URL,
         "arled@arledscreen.com",
         panel.productUrl,
+        `${SITE_URL}${panel.image}`,
         "InStock",
+        "new",
         "false",
         "false",
       ].join("\t"),
@@ -464,8 +489,20 @@ function main() {
       process.exit(1);
     }
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
-    if (!row || !row.includes(panel.productUrl) || row.includes("\ttrue")) {
+    const imageUrl = `${SITE_URL}${panel.image}`;
+    if (
+      !row ||
+      !row.includes(panel.productUrl) ||
+      !row.includes(imageUrl) ||
+      !row.includes("\tNXTIONSTAR\t") ||
+      !row.endsWith("\tfalse") ||
+      /\ttrue(\t|$)/.test(row)
+    ) {
       console.error(`postbuild-ai: merchant TSV mismatch or free-ship invent for ${panel.id}`);
+      process.exit(1);
+    }
+    if (!panel.image || !ai.pricedPanels.find((p) => p.sku === panel.id)?.image) {
+      console.error(`postbuild-ai: pricedPanels image missing for ${panel.id}`);
       process.exit(1);
     }
   }

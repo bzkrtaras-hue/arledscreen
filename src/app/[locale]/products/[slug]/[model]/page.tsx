@@ -136,7 +136,26 @@ export default async function ModelPage({ params }: PageProps) {
     additionalProperty: specRows
       .filter((r) => r.spec)
       .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
-    ...(price ? { offers: panelOffer(url, price.usd) } : {}),
+    ...(price
+      ? {
+          offers: panelOffer(url, price.usd),
+          // Point AI shoppers from the PDP to the published price Datasets (no invent).
+          isRelatedTo: [
+            {
+              "@type": "Dataset",
+              "@id": "https://arledscreen.com/ai-shopping.json",
+              url: "https://arledscreen.com/ai-shopping.json",
+              name: "ARLEDSCREEN pricedPanels",
+            },
+            {
+              "@type": "Dataset",
+              "@id": "https://arledscreen.com/catalog.json",
+              url: "https://arledscreen.com/catalog.json",
+              name: "ARLEDSCREEN panel catalog",
+            },
+          ],
+        }
+      : {}),
   };
 
   return (
