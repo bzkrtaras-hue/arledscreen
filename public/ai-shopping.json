@@ -263,7 +263,12 @@
       "alternateName": [
         "NXTIONSTAR P1.25 Indoor (GOB) LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -271,6 +276,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p1-25-ic-gob"
+      ],
       "price": "95.88",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -303,12 +311,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-25-ic-gob",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p1-25-ic-gob"
+        ],
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
         "price": "95.88",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "95.88",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -352,7 +376,12 @@
       "alternateName": [
         "NXTIONSTAR P1.53 Indoor (GOB) LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -360,6 +389,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p1-53-ic-gob"
+      ],
       "price": "62.08",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -392,12 +424,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-53-ic-gob",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p1-53-ic-gob"
+        ],
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
         "price": "62.08",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "62.08",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -441,7 +489,12 @@
       "alternateName": [
         "NXTIONSTAR P1.86 Indoor (GOB) LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -449,6 +502,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p1-86-ic-gob"
+      ],
       "price": "49.08",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -481,12 +537,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p1-86-ic-gob",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p1-86-ic-gob"
+        ],
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
         "price": "49.08",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "49.08",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -530,7 +602,12 @@
       "alternateName": [
         "NXTIONSTAR P2.5 Indoor LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -538,6 +615,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p2-5-ic"
+      ],
       "price": "32.18",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -570,12 +650,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-ic",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p2-5-ic"
+        ],
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
         "price": "32.18",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "32.18",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -619,7 +715,12 @@
       "alternateName": [
         "NXTIONSTAR P3.07 Indoor LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -627,6 +728,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p3-07-ic"
+      ],
       "price": "30.88",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -659,12 +763,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-ic",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p3-07-ic"
+        ],
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
         "price": "30.88",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "30.88",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -708,7 +828,12 @@
       "alternateName": [
         "NXTIONSTAR P4 Indoor LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -716,6 +841,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p4-ic"
+      ],
       "price": "26.98",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -748,12 +876,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-ic",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p4-ic"
+        ],
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
         "price": "26.98",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "26.98",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -797,7 +941,12 @@
       "alternateName": [
         "NXTIONSTAR P2.5 Outdoor LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -805,6 +954,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p2-5-dis"
+      ],
       "price": "63.70",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -837,12 +989,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-5-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p2-5-dis"
+        ],
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
         "price": "63.70",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "63.70",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -886,7 +1054,12 @@
       "alternateName": [
         "NXTIONSTAR P2.9 Outdoor LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -894,6 +1067,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p2-9-dis"
+      ],
       "price": "53.30",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -926,12 +1102,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p2-9-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p2-9-dis"
+        ],
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
         "price": "53.30",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "53.30",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -975,7 +1167,12 @@
       "alternateName": [
         "NXTIONSTAR P3.07 Outdoor LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -983,6 +1180,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p3-07-dis"
+      ],
       "price": "44.20",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -1015,12 +1215,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p3-07-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p3-07-dis"
+        ],
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
         "price": "44.20",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "44.20",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -1064,7 +1280,12 @@
       "alternateName": [
         "NXTIONSTAR P4 Outdoor LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -1072,6 +1293,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p4-dis"
+      ],
       "price": "33.80",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -1104,12 +1328,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p4-dis"
+        ],
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
         "price": "33.80",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "33.80",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -1153,7 +1393,12 @@
       "alternateName": [
         "NXTIONSTAR P4 Outdoor (front service) LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -1161,6 +1406,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p4-dis-front"
+      ],
       "price": "36.40",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -1193,12 +1441,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p4-dis-front",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p4-dis-front"
+        ],
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
         "price": "36.40",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "36.40",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {
@@ -1242,7 +1506,12 @@
       "alternateName": [
         "NXTIONSTAR P5 Outdoor LED Module"
       ],
-      "brand": "NXTIONSTAR",
+      "brand": {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/tr/nxtionstar/"
+      },
       "brandId": "https://arledscreen.com/#brand-nxtionstar",
       "isPartOf": {
         "@type": "Dataset",
@@ -1250,6 +1519,9 @@
         "url": "https://arledscreen.com/ai-shopping.json",
         "name": "ARLEDSCREEN pricedPanels"
       },
+      "sameAs": [
+        "https://arledscreen.com/catalog.json#p5-dis"
+      ],
       "price": "29.90",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
@@ -1282,12 +1554,28 @@
       "offers": {
         "@type": "Offer",
         "@id": "https://arledscreen.com/ai-shopping.json#offer-p5-dis",
+        "sameAs": [
+          "https://arledscreen.com/catalog.json#offer-p5-dis"
+        ],
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
         "price": "29.90",
         "priceCurrency": "USD",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
+        "description": "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "29.90",
+          "priceCurrency": "USD",
+          "valueAddedTaxIncluded": false,
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": 1,
+            "unitCode": "C62",
+            "unitText": "panel"
+          }
+        },
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingDestination": {

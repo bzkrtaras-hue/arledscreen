@@ -1013,8 +1013,18 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ merchant TSV missing ai-shopping URL for ${panel.sku}: ${panel.url}`);
       process.exit(1);
     }
-    if (!panel.image || !panel.brand || !tsv.includes(panel.image)) {
+    const brandName =
+      typeof panel.brand === "string" ? panel.brand : panel.brand?.name;
+    if (!panel.image || !brandName || !tsv.includes(panel.image)) {
       console.error(`❌ pricedPanels/TSV image+brand required for ${panel.sku}`);
+      process.exit(1);
+    }
+    if (
+      panel.brand?.["@type"] !== "Brand" ||
+      panel.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar" ||
+      panel.brandId !== "https://arledscreen.com/#brand-nxtionstar"
+    ) {
+      console.error(`❌ pricedPanels ${panel.sku} Brand @id + brandId must be #brand-nxtionstar (catalog parity)`);
       process.exit(1);
     }
     if (panel.mpn !== panel.sku) {
@@ -1027,6 +1037,28 @@ if (fs.existsSync(outDir)) {
     }
     if (panel.offers?.url !== panel.url || panel.offers?.price !== panel.price) {
       console.error(`❌ pricedPanels ${panel.sku} Offer.url/price must match flat Product fields`);
+      process.exit(1);
+    }
+    if (
+      panel.offers?.priceSpecification?.["@type"] !== "UnitPriceSpecification" ||
+      panel.offers?.priceSpecification?.valueAddedTaxIncluded !== false ||
+      String(panel.offers?.priceSpecification?.price) !== String(panel.price)
+    ) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.priceSpecification must match catalog (VAT excluded)`);
+      process.exit(1);
+    }
+    if (!String(panel.offers?.description || "").includes("Ücretsiz kargo yok")) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.description must deny free shipping (HTML panelOffer parity)`);
+      process.exit(1);
+    }
+    const productSameAs = Array.isArray(panel.sameAs) ? panel.sameAs : [];
+    const offerSameAs = Array.isArray(panel.offers?.sameAs) ? panel.offers.sameAs : [];
+    if (!productSameAs.some((u) => String(u).includes(`/catalog.json#${panel.sku}`))) {
+      console.error(`❌ pricedPanels ${panel.sku} sameAs must join catalog.json#${panel.sku}`);
+      process.exit(1);
+    }
+    if (!offerSameAs.some((u) => String(u).includes(`/catalog.json#offer-${panel.sku}`))) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.sameAs must join catalog offer @id`);
       process.exit(1);
     }
     if (panel.offers?.seller?.["@id"] !== "https://arledscreen.com/#organization") {
@@ -1546,6 +1578,10 @@ for (const must of [
   "/mpn",
   "/merchant",
   "/product.json",
+  "/offer",
+  "/offer.json",
+  "/organization",
+  "/cite",
   "/tr/llms.txt",
   "/tr/ai.txt",
   "/tr/entity-profiles.json",

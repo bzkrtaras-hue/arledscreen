@@ -390,11 +390,18 @@ function buildAiShopping() {
       name: `NXTIONSTAR ${label} LED Modül`,
       nameEn: `NXTIONSTAR ${labelEn} LED Module`,
       alternateName: [`NXTIONSTAR ${labelEn} LED Module`],
-      // Keep string brand for simple consumers; brandId aligns with catalog Brand @id.
-      brand: "NXTIONSTAR",
+      // Schema.org Brand @id matches catalog/PDP; brandId kept for simple string consumers.
+      brand: {
+        "@type": "Brand",
+        "@id": brandId,
+        name: "NXTIONSTAR",
+        url: `${SITE_URL}/tr/nxtionstar/`,
+      },
       brandId,
       // Membership in the pricedPanels Dataset — agents following Product → Dataset land here.
       isPartOf: { "@type": "Dataset", "@id": datasetId, url: datasetId, name: "ARLEDSCREEN pricedPanels" },
+      // Join catalog Product @id (catalog.json#sku) ↔ PDP Product @id (…/#product).
+      sameAs: [`${SITE_URL}/catalog.json#${panel.id}`],
       price,
       priceCurrency: "USD",
       priceValidUntil: PRICE_VALID_UNTIL,
@@ -406,12 +413,28 @@ function buildAiShopping() {
       offers: {
         "@type": "Offer",
         "@id": `${SITE_URL}/ai-shopping.json#offer-${panel.id}`,
+        // Parity with catalog Offer @id + HTML panelOffer() fields.
+        sameAs: [`${SITE_URL}/catalog.json#offer-${panel.id}`],
         url: panel.productUrl,
         price,
         priceCurrency: "USD",
         priceValidUntil: PRICE_VALID_UNTIL,
         availability: "https://schema.org/InStock",
         itemCondition: "https://schema.org/NewCondition",
+        description:
+          "Panel (modül) başına USD; KDV ve nakliye hariç. Ücretsiz kargo yok. İade koşulları yazılı teklif ve sözleşmede (MerchantReturnNotPermitted).",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price,
+          priceCurrency: "USD",
+          valueAddedTaxIncluded: false,
+          referenceQuantity: {
+            "@type": "QuantitativeValue",
+            value: 1,
+            unitCode: "C62",
+            unitText: "panel",
+          },
+        },
         shippingDetails,
         hasMerchantReturnPolicy: {
           "@type": "MerchantReturnPolicy",
