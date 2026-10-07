@@ -1,9 +1,9 @@
 === ARLEDSCREEN Point C paste packs ===
 Locale: EN (packsEn)
 Rules: paste once; cite + NAP only; no catalog.json / quote-only jargon in public bios.
-Verify: https://arledscreen.com/entity.json
+Verify: https://arledscreen.com/entity.json · https://arledscreen.com/entity-profiles.json
 Web must be arledscreen.com (not arleds.com). Postcode 34245.
-Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt
+Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt · https://arledscreen.com/entity-profiles.json
 Single next: npm run geo:next · Sequential: npm run point-c:next · after paste: npm run point-c:ack
 
 --- Owner P0 checklist ---

@@ -61,7 +61,8 @@
   "sameAs": [
     "https://arledscreen.com/ai-shopping.json",
     "https://arledscreen.com/prices.json",
-    "https://arledscreen.com/brand.json"
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/.well-known/brand.json"
   ],
   "distribution": [
     {
@@ -83,6 +84,12 @@
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/brand.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/brand.json",
+      "name": "NXTIONSTAR Brand invent alias"
     },
     {
       "@type": "DataDownload",

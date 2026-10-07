@@ -7,6 +7,7 @@
     <atom:link href="https://arledscreen.com/ai-shopping.json" rel="alternate" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/entity.json" rel="related" type="application/ld+json"/>
+    <atom:link href="https://arledscreen.com/organization.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/catalog.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/geo-baseline.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/entity-profiles.json" rel="related" type="application/ld+json"/>

@@ -237,12 +237,16 @@ try {
     head.includes("organization_id") &&
     head.includes("entity_url") &&
     head.includes("brand_url") &&
+    head.includes("entity_profiles_url") &&
+    head.includes("point_c_url") &&
     tsv.includes(`${SITE}/#organization`) &&
     tsv.includes(`${SITE}/entity.json`) &&
-    tsv.includes(`${SITE}/brand.json`)
+    tsv.includes(`${SITE}/brand.json`) &&
+    tsv.includes(`${SITE}/entity-profiles.json`) &&
+    tsv.includes(`${SITE}/point-c.txt`)
   ) {
-    ok("merchant TSV brand_url + organization_id + entity_url");
-  } else fail("merchant TSV brand_url + organization_id + entity_url");
+    ok("merchant TSV brand_url + organization_id + entity_url + profiles/point-c");
+  } else fail("merchant TSV brand_url + organization_id + entity_url + profiles/point-c");
 } catch (e) {
   fail(`merchant TSV ${e?.message || e}`);
 }
@@ -383,10 +387,11 @@ if (
     blob.includes("/entity-profiles.json") &&
     blob.includes("/geo-baseline.json") &&
     blob.includes("/.well-known/brand.json") &&
-    blob.includes("/organization.json")
+    blob.includes("/organization.json") &&
+    JSON.stringify(site.sameAs || []).includes("/point-c.txt")
   ) {
-    ok("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org");
-  } else fail("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org");
+    ok("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org/point-c");
+  } else fail("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org/point-c");
 }
 
 try {

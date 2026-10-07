@@ -46,6 +46,7 @@
   "mainEntityOfPage": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
   "isBasedOn": [
     "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/organization.json",
     "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/brand.json",
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",

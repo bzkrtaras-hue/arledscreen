@@ -817,7 +817,9 @@
   ],
   "sameAs": [
     "https://arledscreen.com/tr/nxtionstar/",
-    "https://arledscreen.com/en/nxtionstar/"
+    "https://arledscreen.com/en/nxtionstar/",
+    "https://arledscreen.com/.well-known/brand.json",
+    "https://arledscreen.com/brand.json"
   ],
   "distribution": [
     {
@@ -862,6 +864,12 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/organization.json",
       "name": "ARLEDSCREEN Organization alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/brand.json",
+      "name": "NXTIONSTAR Brand invent alias"
     },
     {
       "@type": "DataDownload",

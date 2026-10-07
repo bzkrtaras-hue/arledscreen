@@ -3252,7 +3252,8 @@
       "https://arledscreen.com/.well-known/entity.json",
       "https://arledscreen.com/organization.json",
       "https://arledscreen.com/geo-baseline.json",
-      "https://arledscreen.com/entity-profiles.json"
+      "https://arledscreen.com/entity-profiles.json",
+      "https://arledscreen.com/point-c.txt"
     ],
     "subjectOf": [
       {

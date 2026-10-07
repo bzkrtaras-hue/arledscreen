@@ -552,7 +552,7 @@ if (fs.existsSync(outDir)) {
         process.exit(1);
       }
     }
-    for (const needle of ["/point-c.txt", "/.well-known/ard.json", "/.well-known/agents.json", "/entity-profiles.json"]) {
+    for (const needle of ["/point-c.txt", "/.well-known/ard.json", "/.well-known/agents.json", "/entity-profiles.json", "#website"]) {
       if (!geoRelated.includes(needle)) {
         console.error(`❌ geo-baseline.json isRelatedTo must include ${needle}`);
         process.exit(1);
@@ -644,10 +644,11 @@ if (fs.existsSync(outDir)) {
   }
   if (
     !JSON.stringify(ai?.isBasedOn || []).includes("/brand.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/organization.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/entity-profiles.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + /point-c.txt + /entity-profiles.json");
+    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + /organization.json + /point-c.txt + /entity-profiles.json");
     process.exit(1);
   }
   if (!ard?.agentic?.resources?.pricesJson?.url?.includes("/prices.json") || !ard?.agentic?.resources?.agentsMd?.url?.includes("AGENTS.md")) {
@@ -694,6 +695,7 @@ if (fs.existsSync(outDir)) {
       !catDist.includes("/ai-shopping.json") ||
       !catDist.includes("/prices.json") ||
       !catDist.includes("/brand.json") ||
+      !catDist.includes("/.well-known/brand.json") ||
       !catDist.includes("/entity.json") ||
       !catDist.includes("/point-c.txt") ||
       !catDist.includes("/feeds/prices.rss")
@@ -974,9 +976,10 @@ if (fs.existsSync(outDir)) {
       !siteBlob.includes("/entity-profiles.json") ||
       !siteBlob.includes("/geo-baseline.json") ||
       !siteBlob.includes("/.well-known/brand.json") ||
-      !siteBlob.includes("/organization.json")
+      !siteBlob.includes("/organization.json") ||
+      !siteBlob.includes("/point-c.txt")
     ) {
-      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs (profiles/geo/brand-wk/org)");
+      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs (profiles/geo/brand-wk/org/point-c)");
       process.exit(1);
     }
   }
@@ -1351,6 +1354,7 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("tur1a:log") ||
       !pointC.includes("/.well-known/modules.json") ||
       !pointC.includes("ai-shopping.json pricedPanels") ||
+      !pointC.includes("/entity-profiles.json") ||
       !pointCEn.includes("EN GBP About") ||
       !pointCEn.includes("arledscreen.com/en/") ||
       !pointCEn.includes("Hostinger arleds.com") ||
@@ -1360,9 +1364,10 @@ if (fs.existsSync(outDir)) {
       !pointCEn.includes("point-c:next") ||
       !pointCEn.includes("geo:next") ||
       !pointCEn.includes("tur1a:log") ||
-      !pointCEn.includes("/.well-known/modules.json")
+      !pointCEn.includes("/.well-known/modules.json") ||
+      !pointCEn.includes("/entity-profiles.json")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto/Gmail draft + point-c:next + geo:next + tur1a:log + invent aliases");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto/Gmail draft + point-c:next + geo:next + tur1a:log + invent aliases + entity-profiles");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
@@ -1579,9 +1584,11 @@ if (fs.existsSync(outDir)) {
       !brandDist.includes("/catalog.json") ||
       !brandDist.includes("/entity.json") ||
       !brandDist.includes("/organization.json") ||
-      !brandDist.includes("/prices.json")
+      !brandDist.includes("/prices.json") ||
+      !brandDist.includes("/.well-known/brand.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/brand.json")
     ) {
-      console.error("❌ out/brand.json distribution must include ai-shopping + catalog + prices.rss + entity/organization + prices.json");
+      console.error("❌ out/brand.json distribution/sameAs must include ai-shopping + catalog + prices.rss + entity/organization + prices.json + well-known brand");
       process.exit(1);
     }
     if (
@@ -1606,6 +1613,7 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/ai-shopping.json") ||
       !rssLive.includes("/brand.json") ||
       !rssLive.includes("/entity.json") ||
+      !rssLive.includes("/organization.json") ||
       !rssLive.includes("/catalog.json") ||
       !rssLive.includes("/geo-baseline.json") ||
       !rssLive.includes("/point-c.txt") ||
@@ -1807,7 +1815,17 @@ if (fs.existsSync(outDir)) {
         process.exit(1);
       }
     }
-    for (const needle of ["/entity.json", "/brand.json", "/ai-shopping.json", "/prices.json", "/catalog.json", "/geo-baseline.json", "/point-c.txt"]) {
+    for (const needle of [
+      "/entity.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/organization.json",
+      "/ai-shopping.json",
+      "/prices.json",
+      "/catalog.json",
+      "/geo-baseline.json",
+      "/point-c.txt",
+    ]) {
       if (!epDist.includes(needle)) {
         console.error(`❌ entity-profiles.json distribution invent must include ${needle}`);
         process.exit(1);
@@ -2209,6 +2227,8 @@ if (fs.existsSync(outDir)) {
     "local_business_id",
     "brand_makes_offer_id",
     "brand_has_offer_catalog",
+    "entity_profiles_url",
+    "point_c_url",
   ]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
@@ -2229,6 +2249,8 @@ if (fs.existsSync(outDir)) {
   const lbIdx = tsvCols.indexOf("local_business_id");
   const brandOfferIdx = tsvCols.indexOf("brand_makes_offer_id");
   const brandCatalogIdx = tsvCols.indexOf("brand_has_offer_catalog");
+  const profilesUrlIdx = tsvCols.indexOf("entity_profiles_url");
+  const pointCUrlIdx = tsvCols.indexOf("point_c_url");
   for (const row of tsvRows) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
@@ -2257,6 +2279,14 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[brandCatalogIdx] !== "https://arledscreen.com/catalog.json") {
       console.error(`❌ merchant TSV brand_has_offer_catalog must be catalog.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[profilesUrlIdx] !== "https://arledscreen.com/entity-profiles.json") {
+      console.error(`❌ merchant TSV entity_profiles_url must be /entity-profiles.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCUrlIdx] !== "https://arledscreen.com/point-c.txt") {
+      console.error(`❌ merchant TSV point_c_url must be /point-c.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
   }

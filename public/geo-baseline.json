@@ -44,6 +44,12 @@
       "@id": "https://arledscreen.com/entity-profiles.json",
       "url": "https://arledscreen.com/entity-profiles.json",
       "name": "ARLEDSCREEN Point C entity profiles"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arledscreen.com/#website",
+      "url": "https://arledscreen.com",
+      "name": "ARLEDSCREEN"
     }
   ],
   "distribution": [
@@ -257,9 +263,9 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "589d9c2febbd4d750e1d656d9272299e02c766f8186a492d0ad62418679d18da",
-    "catalogSha256": "579d7a983af4902a5a7e083d271e4371133b75b46b6d8dc026ee582b86e0123a",
-    "merchantTsvSha256": "3ade2a70a8a094eb854ef476b81b22291f0088dc8509e4ceb4ae6713d30d8328",
+    "aiShoppingSha256": "ba27347e6921561e73cbe2c1df5d7c01792f32b792c520a22049d88fbbc9a013",
+    "catalogSha256": "0d0e517d124a6d2b948673a1cf61f815f997906640ffcd41715f703fc5d266e7",
+    "merchantTsvSha256": "06c913206962fd5f3ae1f821d04ceffef2470ab26b7f7c57499b37c1f202168e",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
   "discovery": {

@@ -327,7 +327,12 @@ function buildCatalog() {
     url: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
     mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
     // Collection ↔ Dataset identity (agents landing on either root).
-    sameAs: [`${SITE_URL}/ai-shopping.json`, `${SITE_URL}/prices.json`, `${SITE_URL}/brand.json`],
+    sameAs: [
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/prices.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/.well-known/brand.json`,
+    ],
     // Schema.org DataDownload walk — parity with brand.json / ai-shopping (catalog-first agents).
     distribution: [
       {
@@ -349,6 +354,12 @@ function buildCatalog() {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/brand.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/brand.json`,
+        name: "NXTIONSTAR Brand invent alias",
       },
       {
         "@type": "DataDownload",
@@ -640,6 +651,7 @@ function buildAiShopping() {
     mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
     isBasedOn: [
       `${SITE_URL}/entity.json`,
+      `${SITE_URL}/organization.json`,
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/brand.json`,
       `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
@@ -1080,6 +1092,9 @@ function buildMerchantTsv() {
     "condition",
     "tax_included",
     "shipping_included",
+    // Invent joins for TSV-only merchant / shopping agents (Point C + profiles).
+    "entity_profiles_url",
+    "point_c_url",
   ];
   const lines = [header.join("\t")];
   for (const panel of PANEL_PRICES) {
@@ -1124,6 +1139,8 @@ function buildMerchantTsv() {
         "new",
         "false",
         "false",
+        `${SITE_URL}/entity-profiles.json`,
+        `${SITE_URL}/point-c.txt`,
       ].join("\t"),
     );
   }
@@ -1249,6 +1266,7 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/ai-shopping.json" rel="alternate" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/entity.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/organization.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/catalog.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/geo-baseline.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/entity-profiles.json" rel="related" type="application/ld+json"/>
@@ -1399,6 +1417,7 @@ function websiteNode() {
       `${SITE_URL}/organization.json`,
       `${SITE_URL}/geo-baseline.json`,
       `${SITE_URL}/entity-profiles.json`,
+      `${SITE_URL}/point-c.txt`,
     ],
     subjectOf: websiteInventSubjectOf(),
     potentialAction: quoteOrderActions(),
@@ -1468,6 +1487,7 @@ function enrichEntityDocument(entity) {
       `${SITE_URL}/organization.json`,
       `${SITE_URL}/geo-baseline.json`,
       `${SITE_URL}/entity-profiles.json`,
+      `${SITE_URL}/point-c.txt`,
     ]) {
       if (!same.includes(u)) same.push(u);
     }
@@ -1587,49 +1607,61 @@ function enrichEntityProfiles(doc) {
       encodingFormat: "application/ld+json",
       contentUrl: `${SITE_URL}/entity.json`,
     },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/brand.json`,
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/ai-shopping.json`,
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/prices.json`,
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/catalog.json`,
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/geo-baseline.json`,
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "text/plain",
-      contentUrl: `${SITE_URL}/point-c.txt`,
-      name: "ARLEDSCREEN Point C paste packs",
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "text/plain",
-      contentUrl: `${SITE_URL}/point-c-en.txt`,
-      name: "ARLEDSCREEN Point C paste packs (EN)",
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "text/tab-separated-values",
-      contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
-    },
-  ];
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/brand.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/brand.json`,
+        name: "NXTIONSTAR Brand invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/organization.json`,
+        name: "Organization (alias)",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/prices.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/catalog.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/geo-baseline.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE_URL}/point-c.txt`,
+        name: "ARLEDSCREEN Point C paste packs",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE_URL}/point-c-en.txt`,
+        name: "ARLEDSCREEN Point C paste packs (EN)",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/tab-separated-values",
+        contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+    ];
 
   doc.isRelatedTo = [
     {
@@ -1763,6 +1795,12 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         "@id": `${SITE_URL}/entity-profiles.json`,
         url: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "ARLEDSCREEN",
       },
     ],
     // Schema.org DataDownload walk — geo-first agents must reach price/entity/Point C (not discovery-only).
@@ -2554,7 +2592,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     manufacturer: { "@id": `${SITE_URL}/#organization` },
     seller: { "@id": `${SITE_URL}/#organization` },
     potentialAction: quoteOrderActions(),
-    sameAs: [`${SITE_URL}/tr/nxtionstar/`, `${SITE_URL}/en/nxtionstar/`],
+    sameAs: [
+      `${SITE_URL}/tr/nxtionstar/`,
+      `${SITE_URL}/en/nxtionstar/`,
+      `${SITE_URL}/.well-known/brand.json`,
+      `${SITE_URL}/brand.json`,
+    ],
     distribution: [
       {
         "@type": "DataDownload",
@@ -2599,6 +2642,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/organization.json`,
         name: "ARLEDSCREEN Organization alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/brand.json`,
+        name: "NXTIONSTAR Brand invent alias",
       },
       {
         "@type": "DataDownload",
@@ -2901,13 +2950,19 @@ Acknowledgments: https://arledscreen.com/brand.json
     }
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
     const imageUrl = `${SITE_URL}${panel.image}`;
+    const cells = row ? row.split("\t") : [];
+    const shippingIncluded = cells[cells.length - 3]; // … tax_included, shipping_included, entity_profiles_url, point_c_url
+    const taxIncluded = cells[cells.length - 4];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
       !row.includes(imageUrl) ||
       !row.includes("\tNXTIONSTAR\t") ||
       !row.includes(`\t${SITE_URL}/#brand-nxtionstar\t`) ||
-      !row.endsWith("\tfalse") ||
+      taxIncluded !== "false" ||
+      shippingIncluded !== "false" ||
+      !row.includes(`${SITE_URL}/entity-profiles.json`) ||
+      !row.includes(`${SITE_URL}/point-c.txt`) ||
       /\ttrue(\t|$)/.test(row)
     ) {
       console.error(`postbuild-ai: merchant TSV mismatch or free-ship invent for ${panel.id}`);
