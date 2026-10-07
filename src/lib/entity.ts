@@ -252,10 +252,11 @@ export type EntityDocument = {
   pricesRss: string;
   geoBaseline: string;
   subjectOf: Array<{
-    "@type": "Dataset" | "DataFeed";
+    "@type": "Dataset" | "DataFeed" | "DataDownload";
     "@id": string;
     name: string;
     url: string;
+    encodingFormat?: string;
   }>;
   citeOneLiner: string;
   citeShort: string;
@@ -493,6 +494,13 @@ export function buildEntityDocument(): EntityDocument {
         "@id": `${SITE_URL}/geo-baseline.json`,
         name: "ARLEDSCREEN GEO technical baseline",
         url: `${SITE_URL}/geo-baseline.json`,
+      },
+      {
+        "@type": "DataDownload",
+        "@id": `${SITE_URL}/point-c.txt`,
+        name: "ARLEDSCREEN Point C paste packs",
+        url: `${SITE_URL}/point-c.txt`,
+        encodingFormat: "text/plain",
       },
     ],
     citeOneLiner: ENTITY_CITE_ONE_LINER,

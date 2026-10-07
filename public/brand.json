@@ -844,6 +844,12 @@
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/geo-baseline.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs"
     }
   ],
   "subjectOf": [
@@ -876,6 +882,13 @@
       "@id": "https://arledscreen.com/geo-baseline.json",
       "url": "https://arledscreen.com/geo-baseline.json",
       "name": "ARLEDSCREEN GEO technical baseline"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/point-c.txt",
+      "url": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs",
+      "encodingFormat": "text/plain"
     }
   ]
 }

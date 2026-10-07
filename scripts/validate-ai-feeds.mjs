@@ -1242,9 +1242,10 @@ if (fs.existsSync(outDir)) {
       !agentsMd.includes("#brand-nxtionstar") ||
       !agentsMd.includes("/brand.json") ||
       !agentsMd.includes("OrderAction") ||
-      !agentsMd.includes("/feeds/prices.rss")
+      !agentsMd.includes("/feeds/prices.rss") ||
+      !agentsMd.includes("/point-c.txt")
     ) {
-      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss");
+      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss + point-c.txt");
       process.exit(1);
     }
   }
@@ -1653,6 +1654,19 @@ if (fs.existsSync(outDir)) {
   if (!subjectUrls.some((u) => u.includes("/feeds/prices.rss"))) {
     console.error("❌ entity.json subjectOf must include prices.rss DataFeed");
     process.exit(1);
+  }
+  if (!subjectUrls.some((u) => u.includes("/point-c.txt"))) {
+    console.error("❌ entity.json subjectOf must include /point-c.txt DataDownload (reverse invent)");
+    process.exit(1);
+  }
+  {
+    const brandLive = JSON.parse(fs.readFileSync(path.join(outDir, "brand.json"), "utf8"));
+    const brandSubject = JSON.stringify(brandLive.subjectOf || []);
+    const brandDist = JSON.stringify(brandLive.distribution || []);
+    if (!brandSubject.includes("/point-c.txt") || !brandDist.includes("/point-c.txt")) {
+      console.error("❌ brand.json subjectOf + distribution must cite /point-c.txt");
+      process.exit(1);
+    }
   }
   if (!String(entity?.pricesRss || "").includes("/feeds/prices.rss")) {
     console.error("❌ entity.json pricesRss must cite /feeds/prices.rss");

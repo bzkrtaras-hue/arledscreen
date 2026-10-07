@@ -3027,6 +3027,13 @@
       "@id": "https://arledscreen.com/geo-baseline.json",
       "name": "ARLEDSCREEN GEO technical baseline",
       "url": "https://arledscreen.com/geo-baseline.json"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs",
+      "url": "https://arledscreen.com/point-c.txt",
+      "encodingFormat": "text/plain"
     }
   ],
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",

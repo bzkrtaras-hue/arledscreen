@@ -1160,6 +1160,18 @@ function enrichEntityDocument(entity) {
   ) {
     entity.mainEntityOfPage = websiteNode();
   }
+  // Org → Point C reverse invent (not Brand.subjectOf / BRAND_SUBJECT_DATASETS — keep PDP graphs clean).
+  const pointCEntry = {
+    "@type": "DataDownload",
+    "@id": `${SITE_URL}/point-c.txt`,
+    name: "ARLEDSCREEN Point C paste packs",
+    url: `${SITE_URL}/point-c.txt`,
+    encodingFormat: "text/plain",
+  };
+  const subjectOf = Array.isArray(entity.subjectOf) ? entity.subjectOf : [];
+  if (!subjectOf.some((s) => String(s?.url || s?.["@id"] || "").includes("/point-c.txt"))) {
+    entity.subjectOf = [...subjectOf, pointCEntry];
+  }
   return entity;
 }
 
@@ -1913,6 +1925,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/geo-baseline.json`,
       },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE_URL}/point-c.txt`,
+        name: "ARLEDSCREEN Point C paste packs",
+      },
     ],
     subjectOf: [
       {
@@ -1944,6 +1962,13 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         "@id": `${SITE_URL}/geo-baseline.json`,
         url: `${SITE_URL}/geo-baseline.json`,
         name: "ARLEDSCREEN GEO technical baseline",
+      },
+      {
+        "@type": "DataDownload",
+        "@id": `${SITE_URL}/point-c.txt`,
+        url: `${SITE_URL}/point-c.txt`,
+        name: "ARLEDSCREEN Point C paste packs",
+        encodingFormat: "text/plain",
       },
     ],
   };

@@ -51,5 +51,9 @@ jobs:
           npm run tur1a:list | grep -q "en-1"
           npm run tur1a:matrix | grep -q "0/48"
           npm run tur1a:next | grep -q "promptId=1"
-          npm run tur1a:next | grep -q -- "--platform=chatgpt"
+          npm run tur1a:next | grep -q "tur1a:log"
+          npm run tur1a:log -- --dry-run --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping | grep -q "promptId"
+          grep -q "/point-c.txt" out/entity.json
+          grep -q "/point-c.txt" out/brand.json
+          grep -q "/point-c.txt" out/AGENTS.md
           echo "OK owner tooling"

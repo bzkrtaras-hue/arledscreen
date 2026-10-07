@@ -31,5 +31,5 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 - Humans: https://arledscreen.com/humans.txt
 - Security: https://arledscreen.com/.well-known/security.txt
 - GEO baseline (fingerprints only; no invented mention rates): https://arledscreen.com/geo-baseline.json
-- Point C packs (owner paste): https://arledscreen.com/entity-profiles.json (`/tr/entity-profiles.json` · `/en/entity-profiles.json`)
+- Point C paste (owner): https://arledscreen.com/point-c.txt · EN https://arledscreen.com/point-c-en.txt · alias `/.well-known/point-c.txt` (source: https://arledscreen.com/entity-profiles.json · `/tr/entity-profiles.json` · `/en/entity-profiles.json`)
 - Human EN price hub: https://arledscreen.com/en/led-ekran-fiyatlari/

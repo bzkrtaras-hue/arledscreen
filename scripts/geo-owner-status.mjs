@@ -93,7 +93,7 @@ if (fs.existsSync(logPath)) {
 line(
   tur1aHuman > 0 ? "OK" : "OPEN",
   "Tur1a blind observations",
-  `${tur1aHuman} human-platform rows · ${tur1aCells}/${MATRIX_CELLS} TR cells · npm run tur1a:next · tur1a:matrix · tur1a:print`,
+  `${tur1aHuman} human-platform rows · ${tur1aCells}/${MATRIX_CELLS} TR cells · npm run tur1a:next · tur1a:log · tur1a:matrix`,
 );
 
 // Live invent smoke (non-blocking summary; full: npm run invent:smoke)

@@ -104,13 +104,31 @@ else fail("ard.resources.website");
 if (String(ard?.agentic?.resources?.pointC?.url || "").includes("/point-c.txt")) ok("ard.resources.pointC");
 else fail("ard.resources.pointC");
 
-if (JSON.stringify(cat.isRelatedTo || []).includes("/feeds/prices.rss") && JSON.stringify(cat.isRelatedTo || []).includes("/brand.json")) {
-  ok("catalog isRelatedTo prices.rss + brand");
-} else fail("catalog isRelatedTo prices.rss + brand");
+if (
+  JSON.stringify(cat.isRelatedTo || []).includes("/feeds/prices.rss") &&
+  JSON.stringify(cat.isRelatedTo || []).includes("/brand.json") &&
+  JSON.stringify(cat.isRelatedTo || []).includes("/point-c.txt")
+) {
+  ok("catalog isRelatedTo prices.rss + brand + point-c");
+} else fail("catalog isRelatedTo prices.rss + brand + point-c");
 
-if (JSON.stringify(ai.isBasedOn || []).includes("/feeds/prices.rss") && JSON.stringify(ai.isBasedOn || []).includes("/brand.json")) {
-  ok("ai-shopping isBasedOn prices.rss + brand");
-} else fail("ai-shopping isBasedOn prices.rss + brand");
+if (
+  JSON.stringify(ai.isBasedOn || []).includes("/feeds/prices.rss") &&
+  JSON.stringify(ai.isBasedOn || []).includes("/brand.json") &&
+  JSON.stringify(ai.isBasedOn || []).includes("/point-c.txt")
+) {
+  ok("ai-shopping isBasedOn prices.rss + brand + point-c");
+} else fail("ai-shopping isBasedOn prices.rss + brand + point-c");
+
+if (JSON.stringify(ent.subjectOf || []).includes("/point-c.txt")) ok("entity.subjectOf → point-c");
+else fail("entity.subjectOf → point-c");
+
+if (
+  JSON.stringify(brand.subjectOf || []).includes("/point-c.txt") &&
+  JSON.stringify(brand.distribution || []).includes("/point-c.txt")
+) {
+  ok("brand.subjectOf+distribution → point-c");
+} else fail("brand.subjectOf+distribution → point-c");
 
 if (process.exitCode) {
   console.error("\nlive-invent-smoke: FAILED");

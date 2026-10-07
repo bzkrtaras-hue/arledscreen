@@ -130,6 +130,16 @@ if (
   ok("ai-shopping isBasedOn prices.rss + brand + point-c");
 } else fail("ai-shopping isBasedOn prices.rss + brand + point-c");
 
+if (JSON.stringify(ent?.subjectOf || []).includes("/point-c.txt")) ok("entity.subjectOf → point-c");
+else fail("entity.subjectOf → point-c");
+
+if (
+  JSON.stringify(brand?.subjectOf || []).includes("/point-c.txt") &&
+  JSON.stringify(brand?.distribution || []).includes("/point-c.txt")
+) {
+  ok("brand.subjectOf+distribution → point-c");
+} else fail("brand.subjectOf+distribution → point-c");
+
 if (process.exitCode) {
   console.error("\nlocal-invent-smoke: FAILED");
   process.exit(1);

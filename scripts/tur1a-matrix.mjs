@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 /**
- * Tur1a coverage matrix + next empty cell for owner blind runs.
- * Does not invent scores. Fills nothing automatically.
+ * Tur1a coverage matrix + next empty cell + one-shot log for owner blind runs.
+ * Does not invent scores. --log writes only when observation flags are provided.
  *
  * Usage:
  *   npm run tur1a:matrix
  *   npm run tur1a:next
- *   node scripts/tur1a-matrix.mjs --en          # include EN prompts in matrix
+ *   npm run tur1a:log -- --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping
+ *   node scripts/tur1a-matrix.mjs --en
  *   node scripts/tur1a-matrix.mjs --next --en
+ *   node scripts/tur1a-matrix.mjs --log --dry-run --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping
  */
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -17,13 +20,21 @@ import { TR, EN, HUMAN_PLATFORMS } from "./print-tur1a-prompts.mjs";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 const logPath = path.join(repoRoot, "docs/geo/observations/blind-log.jsonl");
+const logger = path.join(repoRoot, "scripts/geo-blind-log.mjs");
 
 const wantNext = process.argv.includes("--next");
+const wantLog = process.argv.includes("--log");
 const includeEn = process.argv.includes("--en");
+const dryRun = process.argv.includes("--dry-run");
 
 const prompts = includeEn ? [...TR, ...EN] : [...TR];
 const promptIds = prompts.map(([id]) => id);
 const totalCells = promptIds.length * HUMAN_PLATFORMS.length;
+
+function arg(name, fallback = "") {
+  const hit = process.argv.find((a) => a.startsWith(`--${name}=`));
+  return hit ? hit.slice(name.length + 3) : fallback;
+}
 
 function loadHumanRows() {
   if (!fs.existsSync(logPath)) return [];
@@ -63,6 +74,17 @@ function promptText(id) {
   return hit ? hit[1] : "";
 }
 
+function findNext(filled) {
+  for (const id of promptIds) {
+    for (const platform of HUMAN_PLATFORMS) {
+      if (!filled.has(cellKey(platform, id))) {
+        return { platform, promptId: id };
+      }
+    }
+  }
+  return null;
+}
+
 function printMatrix(filled) {
   const filledN = filled.size;
   console.log("=== ARLEDSCREEN Tur1a coverage matrix ===");
@@ -79,20 +101,13 @@ function printMatrix(filled) {
     console.log([id, ...cells].join("\t"));
   }
   console.log("\nNext empty: npm run tur1a:next");
-  console.log("Log row: npm run tur1a:list · geo-blind-log.mjs");
+  console.log(
+    "One-shot log: npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|…",
+  );
 }
 
 function printNext(filled) {
-  let next = null;
-  outer: for (const id of promptIds) {
-    for (const platform of HUMAN_PLATFORMS) {
-      if (!filled.has(cellKey(platform, id))) {
-        next = { platform, promptId: id };
-        break outer;
-      }
-    }
-  }
-
+  const next = findNext(filled);
   console.log("=== ARLEDSCREEN Tur1a next empty cell ===");
   if (!next) {
     console.log(`All ${totalCells} human cells filled (TR${includeEn ? "+EN" : ""}).`);
@@ -114,21 +129,72 @@ function printNext(filled) {
   console.log("- Price source: https://arledscreen.com/ai-shopping.json pricedPanels");
   console.log("- Brand AggregateOffer×12: https://arledscreen.com/brand.json");
   console.log("- prices.rss = change discovery only (not canonical price graph)");
-  console.log("\n### After observing, fill placeholders and run:");
+  console.log("\n### After observing, one-shot log:");
   console.log(
-    `node scripts/geo-blind-log.mjs --platform=${next.platform} --promptId=${next.promptId} --locale=${locale} --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json --notes="..."`,
+    `npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json --notes="..."`,
   );
-  console.log("\nDry-run first:");
+  console.log("\nDry-run:");
   console.log(
-    `node scripts/geo-blind-log.mjs --dry-run --platform=${next.platform} --promptId=${next.promptId} --locale=${locale} --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping`,
+    `npm run tur1a:log -- --dry-run --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping`,
   );
   console.log("\nThen: npm run tur1a:matrix · npm run geo:status");
+}
+
+function runLog(filled) {
+  const next = findNext(filled);
+  console.log("=== ARLEDSCREEN Tur1a one-shot log ===");
+  if (!next) {
+    console.log(`All ${totalCells} human cells filled — nothing to log.`);
+    process.exit(0);
+  }
+  const mentioned = arg("mentioned");
+  const brandCorrect = arg("brandCorrect");
+  const priceSourceCited = arg("priceSourceCited");
+  if (!mentioned || !brandCorrect || !priceSourceCited) {
+    console.error("Required with --log: --mentioned=… --brandCorrect=… --priceSourceCited=…");
+    console.error(
+      "Example: npm run tur1a:log -- --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping",
+    );
+    console.error("Do not invent scores — only log what you observed.");
+    process.exit(1);
+  }
+  const locale = arg("locale", String(next.promptId).startsWith("en-") ? "en" : "tr-TR");
+  const sources = arg("sources", "https://arledscreen.com/ai-shopping.json");
+  const notes = arg("notes", "");
+  const competitors = arg("competitors", "");
+  const wrongClaims = arg("wrongClaims", "");
+
+  console.log(`Cell: platform=${next.platform} · promptId=${next.promptId} · locale=${locale}`);
+  console.log(`Prompt: ${promptText(next.promptId)}`);
+  console.log(dryRun ? "Mode: dry-run (not written)" : "Mode: append blind-log.jsonl");
+
+  const args = [
+    logger,
+    `--platform=${next.platform}`,
+    `--promptId=${next.promptId}`,
+    `--locale=${locale}`,
+    `--mentioned=${mentioned}`,
+    `--brandCorrect=${brandCorrect}`,
+    `--priceSourceCited=${priceSourceCited}`,
+    `--sources=${sources}`,
+  ];
+  if (notes) args.push(`--notes=${notes}`);
+  if (competitors) args.push(`--competitors=${competitors}`);
+  if (wrongClaims) args.push(`--wrongClaims=${wrongClaims}`);
+  if (dryRun) args.push("--dry-run");
+
+  const r = spawnSync(process.execPath, args, { encoding: "utf8", cwd: repoRoot });
+  if (r.stdout) process.stdout.write(r.stdout);
+  if (r.stderr) process.stderr.write(r.stderr);
+  if (r.status !== 0) process.exit(r.status || 1);
+  console.log("\nThen: npm run tur1a:matrix · npm run tur1a:next · npm run geo:status");
 }
 
 const rows = loadHumanRows();
 const filled = filledSet(rows);
 
-if (wantNext) printNext(filled);
+if (wantLog) runLog(filled);
+else if (wantNext) printNext(filled);
 else printMatrix(filled);
 
 process.exit(0);
