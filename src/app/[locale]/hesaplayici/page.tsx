@@ -56,14 +56,16 @@ export default async function HesaplayiciPage({ params }: PageProps) {
         <p className="max-w-3xl text-pretty text-base leading-[1.65] text-ink-soft sm:text-[1.0625rem]">
           {seo.intro ?? dict.page.hesaplayici.description}
         </p>
+        {(locale === "tr" || locale === "en") ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/hesaplayici/`))),
+            }}
+          />
+        ) : null}
         {locale === "tr" ? (
           <div id="panel-fiyatlari" className="mt-10 scroll-mt-28">
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/hesaplayici/"))),
-              }}
-            />
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
@@ -96,6 +98,22 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             </p>
             <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" showCalcLink={false} />
           </div>
+        ) : locale === "en" ? (
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-muted">
+            Published 12 panel USD list:{" "}
+            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+              ai-shopping.json
+            </a>{" "}
+            pricedPanels,{" "}
+            <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+              catalog.json
+            </a>
+            ,{" "}
+            <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+              merchant TSV
+            </a>{" "}
+            (e.g. P1.25 GOB 95.88 USD). VAT/freight excluded; no free shipping. Final price is set in the written quote.
+          </p>
         ) : null}
       </Section>
     </>

@@ -54,11 +54,11 @@ export default async function AboutPage({ params }: PageProps) {
           { name: dict.nav.about, item: absoluteUrl(`/${locale}/about`) },
         ]}
       />
-      {locale === "tr" ? (
+      {(locale === "tr" || locale === "en") ? (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/about/"))),
+            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/about/`))),
           }}
         />
       ) : null}

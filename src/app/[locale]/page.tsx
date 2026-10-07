@@ -69,6 +69,14 @@ export default async function HomePage({ params }: PageProps) {
     return (
       <>
         <FaqJsonLd faqs={faqs} />
+        {(locale === "en" || locale === "ar" || locale === "ru") ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/`))),
+            }}
+          />
+        ) : null}
         <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
           <Hero locale={locale} />
         </div>

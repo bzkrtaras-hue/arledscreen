@@ -56,14 +56,16 @@ export default async function QuotePage({ params }: PageProps) {
           { name: dict.nav.quote, item: absoluteUrl(`/${locale}/quote`) },
         ]}
       />
+      {(locale === "tr" || locale === "en") ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/quote/`))),
+          }}
+        />
+      ) : null}
       {locale === "tr" ? (
         <>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/quote/"))),
-            }}
-          />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -214,6 +216,19 @@ export default async function QuotePage({ params }: PageProps) {
             <p className="text-sm text-ink-muted sm:col-span-3">
               Please share dimensions, indoor/outdoor use, location and timeline. ARLEDSCREEN · Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa, Istanbul, Turkey · Mon–Fri 09:00–18:00, Sat 10:00–15:00.
             </p>
+            {locale === "en" ? (
+              <p className="text-xs leading-relaxed text-ink-muted sm:col-span-3">
+                Published panel USD:{" "}
+                <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                  ai-shopping.json
+                </a>{" "}
+                pricedPanels ·{" "}
+                <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                  merchant TSV
+                </a>{" "}
+                (12 SKUs; e.g. P1.25 GOB 95.88 USD). VAT/freight excluded; no free shipping.
+              </p>
+            ) : null}
           </div>
         )}
       </Section>

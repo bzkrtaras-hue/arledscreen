@@ -73,11 +73,11 @@ export default async function ProductsPage({ params }: PageProps) {
           },
         ]}
       />
-      {locale === "tr" ? (
+      {(locale === "tr" || locale === "en") ? (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/products/"))),
+            __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/products/`))),
           }}
         />
       ) : null}
