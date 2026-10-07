@@ -198,6 +198,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/#product",
       "sku": "p1-25-ic-gob",
+      "mpn": "p1-25-ic-gob",
       "name": "NXTIONSTAR P1.25 İç mekân (GOB) LED Modül",
       "nameEn": "NXTIONSTAR P1.25 Indoor (GOB) LED Module",
       "alternateName": [
@@ -286,6 +287,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/#product",
       "sku": "p1-53-ic-gob",
+      "mpn": "p1-53-ic-gob",
       "name": "NXTIONSTAR P1.53 İç mekân (GOB) LED Modül",
       "nameEn": "NXTIONSTAR P1.53 Indoor (GOB) LED Module",
       "alternateName": [
@@ -374,6 +376,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/#product",
       "sku": "p1-86-ic-gob",
+      "mpn": "p1-86-ic-gob",
       "name": "NXTIONSTAR P1.86 İç mekân (GOB) LED Modül",
       "nameEn": "NXTIONSTAR P1.86 Indoor (GOB) LED Module",
       "alternateName": [
@@ -462,6 +465,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/#product",
       "sku": "p2-5-ic",
+      "mpn": "p2-5-ic",
       "name": "NXTIONSTAR P2.5 İç mekân LED Modül",
       "nameEn": "NXTIONSTAR P2.5 Indoor LED Module",
       "alternateName": [
@@ -550,6 +554,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/#product",
       "sku": "p3-07-ic",
+      "mpn": "p3-07-ic",
       "name": "NXTIONSTAR P3.07 İç mekân LED Modül",
       "nameEn": "NXTIONSTAR P3.07 Indoor LED Module",
       "alternateName": [
@@ -638,6 +643,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/#product",
       "sku": "p4-ic",
+      "mpn": "p4-ic",
       "name": "NXTIONSTAR P4 İç mekân LED Modül",
       "nameEn": "NXTIONSTAR P4 Indoor LED Module",
       "alternateName": [
@@ -726,6 +732,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/#product",
       "sku": "p2-5-dis",
+      "mpn": "p2-5-dis",
       "name": "NXTIONSTAR P2.5 Dış mekân LED Modül",
       "nameEn": "NXTIONSTAR P2.5 Outdoor LED Module",
       "alternateName": [
@@ -814,6 +821,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/#product",
       "sku": "p2-9-dis",
+      "mpn": "p2-9-dis",
       "name": "NXTIONSTAR P2.9 Dış mekân LED Modül",
       "nameEn": "NXTIONSTAR P2.9 Outdoor LED Module",
       "alternateName": [
@@ -902,6 +910,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/#product",
       "sku": "p3-07-dis",
+      "mpn": "p3-07-dis",
       "name": "NXTIONSTAR P3.07 Dış mekân LED Modül",
       "nameEn": "NXTIONSTAR P3.07 Outdoor LED Module",
       "alternateName": [
@@ -990,6 +999,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/#product",
       "sku": "p4-dis",
+      "mpn": "p4-dis",
       "name": "NXTIONSTAR P4 Dış mekân LED Modül",
       "nameEn": "NXTIONSTAR P4 Outdoor LED Module",
       "alternateName": [
@@ -1078,6 +1088,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/#product",
       "sku": "p4-dis-front",
+      "mpn": "p4-dis-front",
       "name": "NXTIONSTAR P4 Dış mekân (önden servis) LED Modül",
       "nameEn": "NXTIONSTAR P4 Outdoor (front service) LED Module",
       "alternateName": [
@@ -1166,6 +1177,7 @@
       "@type": "Product",
       "@id": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/#product",
       "sku": "p5-dis",
+      "mpn": "p5-dis",
       "name": "NXTIONSTAR P5 Dış mekân LED Modül",
       "nameEn": "NXTIONSTAR P5 Outdoor LED Module",
       "alternateName": [
