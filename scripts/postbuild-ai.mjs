@@ -333,6 +333,7 @@ function buildCatalog() {
       `${SITE_URL}/brand.json`,
       `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/organization.json`,
+      `${SITE_URL}/.well-known/entity.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
     ],
@@ -662,7 +663,11 @@ function buildAiShopping() {
     // Dataset-root agents still join place without expanding hasPart Offers.
     availableAtOrFrom: localBusinessRef(),
     // Dataset ↔ Collection identity (catalog.json products; this file pricedPanels).
-    sameAs: [`${SITE_URL}/catalog.json`, `${SITE_URL}/#website`],
+    sameAs: [
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/#website`,
+      `${SITE_URL}/point-c.txt`,
+    ],
     mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
     isRelatedTo: [
       {
@@ -1123,6 +1128,7 @@ function buildMerchantTsv() {
     "entity_profiles_url",
     "point_c_url",
     "brand_well_known_url",
+    "organization_url",
   ];
   const lines = [header.join("\t")];
   for (const panel of PANEL_PRICES) {
@@ -1170,6 +1176,7 @@ function buildMerchantTsv() {
         `${SITE_URL}/entity-profiles.json`,
         `${SITE_URL}/point-c.txt`,
         `${SITE_URL}/.well-known/brand.json`,
+        `${SITE_URL}/organization.json`,
       ].join("\t"),
     );
   }
@@ -1599,6 +1606,8 @@ function enrichEntityDocument(entity) {
     bs = ensureSubjectNeedle(bs, "/point-c.txt", pointCEntry);
     bs = ensureSubjectNeedle(bs, "/entity.json", entityOrgEntry);
     bs = ensureSubjectNeedle(bs, "/entity-profiles.json", entityProfilesEntry);
+    bs = ensureSubjectNeedle(bs, "/.well-known/brand.json", brandWellKnownEntry);
+    bs = ensureSubjectNeedle(bs, "/geo-baseline.json", geoBaselineEntry);
     entity.brand.subjectOf = bs;
   }
   if (entity.location && typeof entity.location === "object") {
@@ -1627,6 +1636,8 @@ function enrichEntityProfiles(doc) {
   else if (typeof existing === "string" && existing) based.add(existing);
   for (const u of [
     `${SITE_URL}/entity.json`,
+    `${SITE_URL}/organization.json`,
+    `${SITE_URL}/.well-known/entity.json`,
     `${SITE_URL}/brand.json`,
     `${SITE_URL}/.well-known/brand.json`,
     `${SITE_URL}/ai-shopping.json`,
@@ -2656,6 +2667,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
       `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/brand.json`,
       `${SITE_URL}/organization.json`,
+      `${SITE_URL}/.well-known/entity.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
     ],
@@ -3028,12 +3040,13 @@ Acknowledgments: https://arledscreen.com/brand.json
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
-    // Trailing invent cols: … tax_included, shipping_included, entity_profiles_url, point_c_url, brand_well_known_url
-    const brandWk = cells[cells.length - 1];
-    const pointCUrl = cells[cells.length - 2];
-    const profilesUrl = cells[cells.length - 3];
-    const shippingIncluded = cells[cells.length - 4];
-    const taxIncluded = cells[cells.length - 5];
+    // Trailing invent cols: … tax, shipping, entity_profiles_url, point_c_url, brand_well_known_url, organization_url
+    const orgUrl = cells[cells.length - 1];
+    const brandWk = cells[cells.length - 2];
+    const pointCUrl = cells[cells.length - 3];
+    const profilesUrl = cells[cells.length - 4];
+    const shippingIncluded = cells[cells.length - 5];
+    const taxIncluded = cells[cells.length - 6];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3045,6 +3058,7 @@ Acknowledgments: https://arledscreen.com/brand.json
       profilesUrl !== `${SITE_URL}/entity-profiles.json` ||
       pointCUrl !== `${SITE_URL}/point-c.txt` ||
       brandWk !== `${SITE_URL}/.well-known/brand.json` ||
+      orgUrl !== `${SITE_URL}/organization.json` ||
       /\ttrue(\t|$)/.test(row)
     ) {
       console.error(`postbuild-ai: merchant TSV mismatch or free-ship invent for ${panel.id}`);

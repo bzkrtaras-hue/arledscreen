@@ -1377,6 +1377,8 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("/.well-known/modules.json") ||
       !pointC.includes("ai-shopping.json pricedPanels") ||
       !pointC.includes("/entity-profiles.json") ||
+      !pointC.includes("#website") ||
+      !pointC.includes("geo:ack") ||
       !pointCEn.includes("EN GBP About") ||
       !pointCEn.includes("arledscreen.com/en/") ||
       !pointCEn.includes("Hostinger arleds.com") ||
@@ -1387,9 +1389,11 @@ if (fs.existsSync(outDir)) {
       !pointCEn.includes("geo:next") ||
       !pointCEn.includes("tur1a:log") ||
       !pointCEn.includes("/.well-known/modules.json") ||
-      !pointCEn.includes("/entity-profiles.json")
+      !pointCEn.includes("/entity-profiles.json") ||
+      !pointCEn.includes("#website") ||
+      !pointCEn.includes("geo:ack")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto/Gmail draft + point-c:next + geo:next + tur1a:log + invent aliases + entity-profiles");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto/Gmail draft + point-c:next + geo:next/ack + tur1a:log + invent aliases + entity-profiles + #website");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
@@ -1835,6 +1839,8 @@ if (fs.existsSync(outDir)) {
     const epDist = JSON.stringify(profiles?.distribution || []);
     for (const needle of [
       "/entity.json",
+      "/organization.json",
+      "/.well-known/entity.json",
       "/brand.json",
       "/.well-known/brand.json",
       "/ai-shopping.json",
@@ -2268,6 +2274,7 @@ if (fs.existsSync(outDir)) {
     "entity_profiles_url",
     "point_c_url",
     "brand_well_known_url",
+    "organization_url",
   ]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
@@ -2291,6 +2298,7 @@ if (fs.existsSync(outDir)) {
   const profilesUrlIdx = tsvCols.indexOf("entity_profiles_url");
   const pointCUrlIdx = tsvCols.indexOf("point_c_url");
   const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
+  const orgUrlIdx = tsvCols.indexOf("organization_url");
   for (const row of tsvRows) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
@@ -2331,6 +2339,10 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[brandWkIdx] !== "https://arledscreen.com/.well-known/brand.json") {
       console.error(`❌ merchant TSV brand_well_known_url must be /.well-known/brand.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[orgUrlIdx] !== "https://arledscreen.com/organization.json") {
+      console.error(`❌ merchant TSV organization_url must be /organization.json for ${cells[idIdx]}`);
       process.exit(1);
     }
   }

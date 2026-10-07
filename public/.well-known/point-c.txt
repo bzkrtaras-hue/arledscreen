@@ -1,10 +1,10 @@
 === ARLEDSCREEN Point C paste packs ===
 Locale: TR (packs)
 Rules: paste once; cite + NAP only; no catalog.json / quote-only jargon in public bios.
-Verify: https://arledscreen.com/entity.json · https://arledscreen.com/entity-profiles.json
+Verify: https://arledscreen.com/entity.json · https://arledscreen.com/entity-profiles.json · https://arledscreen.com/#website
 Web must be arledscreen.com (not arleds.com). Postcode 34245.
-Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt · https://arledscreen.com/entity-profiles.json
-Single next: npm run geo:next · Sequential: npm run point-c:next · after paste: npm run point-c:ack
+Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt · https://arledscreen.com/entity-profiles.json · https://arledscreen.com/#website
+Single next: npm run geo:next · Sequential: npm run point-c:next · after paste: npm run geo:ack (or point-c:ack)
 
 --- Owner P0 checklist ---
 - P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok)

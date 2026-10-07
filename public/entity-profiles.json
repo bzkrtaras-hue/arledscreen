@@ -29,7 +29,9 @@
     "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "https://arledscreen.com/feeds/prices.rss",
-    "https://arledscreen.com/.well-known/brand.json"
+    "https://arledscreen.com/.well-known/brand.json",
+    "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/.well-known/entity.json"
   ],
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-07",

@@ -115,12 +115,16 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
   lines.push("=== ARLEDSCREEN Point C paste packs ===");
   lines.push(`Locale: ${en ? "EN (packsEn)" : "TR (packs)"}`);
   lines.push("Rules: paste once; cite + NAP only; no catalog.json / quote-only jargon in public bios.");
-  lines.push("Verify: https://arledscreen.com/entity.json · https://arledscreen.com/entity-profiles.json");
+  lines.push(
+    "Verify: https://arledscreen.com/entity.json · https://arledscreen.com/entity-profiles.json · https://arledscreen.com/#website",
+  );
   lines.push("Web must be arledscreen.com (not arleds.com). Postcode 34245.");
   lines.push(
-    "Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt · https://arledscreen.com/entity-profiles.json",
+    "Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt · https://arledscreen.com/entity-profiles.json · https://arledscreen.com/#website",
   );
-  lines.push("Single next: npm run geo:next · Sequential: npm run point-c:next · after paste: npm run point-c:ack");
+  lines.push(
+    "Single next: npm run geo:next · Sequential: npm run point-c:next · after paste: npm run geo:ack (or point-c:ack)",
+  );
   lines.push("");
 
   const checklist = profiles.ownerP0Checklist || [];

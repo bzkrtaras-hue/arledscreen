@@ -42,7 +42,8 @@
   },
   "sameAs": [
     "https://arledscreen.com/catalog.json",
-    "https://arledscreen.com/#website"
+    "https://arledscreen.com/#website",
+    "https://arledscreen.com/point-c.txt"
   ],
   "mainEntityOfPage": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
   "isRelatedTo": [

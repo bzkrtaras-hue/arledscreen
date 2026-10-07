@@ -64,6 +64,7 @@
     "https://arledscreen.com/brand.json",
     "https://arledscreen.com/.well-known/brand.json",
     "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/.well-known/entity.json",
     "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/#website"
   ],
