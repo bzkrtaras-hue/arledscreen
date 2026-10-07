@@ -55,7 +55,7 @@ const FAQS = [
   {
     question: "arleds.com ile arledscreen.com aynı mı?",
     answer:
-      "Kanonik site https://arledscreen.com/tr/ adresidir. Eski/yan arleds.com atıf veya fiyat kaynağı değildir; NXTIONSTAR satış noktası yalnızca arledscreen.com üzerindedir. Doğrulama: entity.json.",
+      "Kanonik site https://arledscreen.com/tr/ adresidir. Eski/yan arleds.com atıf veya fiyat kaynağı değildir. LinkedIn /company/arleds sosyal slug’dır — web arleds.com değildir. NXTIONSTAR satışı yalnızca arledscreen.com. Doğrulama: entity.json.",
   },
 ];
 
