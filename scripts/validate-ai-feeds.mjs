@@ -194,18 +194,24 @@ if (fs.existsSync(outDir)) {
     }
   }
   const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
-  if (!Array.isArray(ai.distribution) || ai.distribution.length < 13) {
-    console.error("❌ ai-shopping.json Dataset.distribution must list ≥13 DataDownload encodings (HTML hub + invent aliases)");
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 20) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥20 DataDownload encodings (HTML hub + invent aliases)");
     process.exit(1);
   }
   for (const needle of [
     "/ai-shopping.json",
     "/prices.json",
+    "/price.json",
+    "/pricing.json",
     "/panels.json",
     "/mpn.json",
     "/merchant.json",
     "/modules.json",
     "/sku.json",
+    "/.well-known/prices.json",
+    "/.well-known/panels.json",
+    "/.well-known/mpn.json",
+    "/.well-known/merchant.json",
     "/.well-known/modules.json",
     "/.well-known/sku.json",
     "/.well-known/price.json",
@@ -1402,11 +1408,16 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/catalog.json") ||
       !rssLive.includes("/geo-baseline.json") ||
       !rssLive.includes("/point-c.txt") ||
-      !rssLive.includes("/.well-known/modules.json") ||
-      !rssLive.includes("/.well-known/sku.json") ||
-      !rssLive.includes("/.well-known/pricing.json") ||
-      !rssLive.includes('rel="related"') ||
-      !rssLive.includes('href="https://arledscreen.com/.well-known/modules.json"')
+      !rssLive.includes('href="https://arledscreen.com/prices.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/prices.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/price.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/pricing.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/panels.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/modules.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/sku.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/mpn.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/merchant.json"') ||
+      !rssLive.includes('rel="related"')
     ) {
       console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c + well-known invent");
       process.exit(1);

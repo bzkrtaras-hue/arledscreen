@@ -98,12 +98,18 @@ if (
   rss.includes("/catalog.json") &&
   rss.includes("/geo-baseline.json") &&
   rss.includes("/point-c.txt") &&
-  rss.includes("/.well-known/modules.json") &&
-  rss.includes("/.well-known/sku.json") &&
-  rss.includes('href="https://arledscreen.com/.well-known/modules.json"')
+  rss.includes('href="https://arledscreen.com/prices.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/prices.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/price.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/pricing.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/panels.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/modules.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/sku.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/mpn.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/merchant.json"')
 ) {
-  ok("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c");
-} else fail("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c");
+  ok("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known");
+} else fail("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known");
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
@@ -209,15 +215,21 @@ if (
 {
   const dist = JSON.stringify(ai.distribution || []);
   if (
+    dist.includes("/price.json") &&
+    dist.includes("/pricing.json") &&
     dist.includes("/modules.json") &&
     dist.includes("/sku.json") &&
+    dist.includes("/.well-known/prices.json") &&
+    dist.includes("/.well-known/panels.json") &&
+    dist.includes("/.well-known/mpn.json") &&
+    dist.includes("/.well-known/merchant.json") &&
     dist.includes("/.well-known/modules.json") &&
     dist.includes("/.well-known/sku.json") &&
     dist.includes("/.well-known/price.json") &&
     dist.includes("/.well-known/pricing.json")
   ) {
-    ok("ai-shopping distribution → modules/sku + well-known price aliases");
-  } else fail("ai-shopping distribution → modules/sku + well-known price aliases");
+    ok("ai-shopping distribution → priceAliases invent parity");
+  } else fail("ai-shopping distribution → priceAliases invent parity");
 }
 
 {
