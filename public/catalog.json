@@ -61,6 +61,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p1-25-ic-mekan-modul.webp",
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -163,6 +169,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p1-53-ic-mekan-modul.webp",
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -265,6 +277,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p1-86-ic-mekan-modul.webp",
         "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -367,6 +385,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p2-5-ic-mekan-modul.webp",
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -464,6 +488,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/projects/modules/indoor-smd-surface.jpg",
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -561,6 +591,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/projects/modules/indoor-wall.jpg",
         "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -658,6 +694,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p2-5-dis-mekan-modul.webp",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -755,6 +797,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p2-97-dis-mekan-modul.webp",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -852,6 +900,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p3-076-dis-mekan-modul.webp",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -949,6 +1003,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p4-dis-mekan-modul.webp",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -1046,6 +1106,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/projects/modules/front-service-module.jpg",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
@@ -1143,6 +1209,12 @@
         "category": "LED ekran paneli",
         "image": "https://arledscreen.com/modules/nxtionstar-p5-dis-mekan-modul.webp",
         "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/",
+        "isPartOf": {
+          "@type": "Dataset",
+          "@id": "https://arledscreen.com/ai-shopping.json",
+          "url": "https://arledscreen.com/ai-shopping.json",
+          "name": "ARLEDSCREEN pricedPanels"
+        },
         "additionalProperty": [
           {
             "@type": "PropertyValue",
