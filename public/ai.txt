@@ -173,6 +173,8 @@ feed-alias-well-known-entity: https://arledscreen.com/.well-known/entity.json
 feed-alias-organization-json: https://arledscreen.com/organization.json
 feed-alias-offers-json: https://arledscreen.com/offers.json
 feed-alias-offer-json: https://arledscreen.com/offer.json
+feed-alias-well-known-offer: https://arledscreen.com/.well-known/offer.json
+feed-alias-well-known-offers: https://arledscreen.com/.well-known/offers.json
 feed-alias-offer: https://arledscreen.com/offer
 feed-alias-offers: https://arledscreen.com/offers
 feed-alias-dataset: https://arledscreen.com/dataset

@@ -757,9 +757,13 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/mpn.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/merchant.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/prices.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/price.json")
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/price.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/offer.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/offers.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/offer.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/offers.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + #website");
+    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price/offer + #website");
     process.exit(1);
   }
   if (
@@ -2097,6 +2101,10 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('href="https://arledscreen.com/.well-known/sku.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/mpn.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/merchant.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/offer.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/offers.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/offer.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/offers.json"') ||
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
@@ -2194,6 +2202,7 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("geo-baseline.json") ||
     !headersLive.includes("merchant.json") ||
     !headersLive.includes("offer.json") ||
+    !headersLive.includes("offers.json") ||
     !headersLive.includes("ai.txt") ||
     !headersLive.includes("brand.json") ||
     !headersLive.includes("/.well-known/brand.json") ||
@@ -2205,6 +2214,8 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/merchant.json") ||
     !headersLive.includes("/.well-known/prices.json") ||
     !headersLive.includes("/.well-known/price.json") ||
+    !headersLive.includes("/.well-known/offer.json") ||
+    !headersLive.includes("/.well-known/offers.json") ||
     !headersLive.includes("/.well-known/ard.json") ||
     !headersLive.includes("humans.txt") ||
     !headersLive.includes("/.well-known/security.txt") ||
@@ -2241,6 +2252,7 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/.well-known/security.txt"',
       'href="https://arledscreen.com/merchant.json"',
       'href="https://arledscreen.com/offer.json"',
+      'href="https://arledscreen.com/offers.json"',
       'href="https://arledscreen.com/.well-known/modules.json"',
       'href="https://arledscreen.com/.well-known/sku.json"',
       'href="https://arledscreen.com/.well-known/pricing.json"',
@@ -2249,6 +2261,8 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/.well-known/merchant.json"',
       'href="https://arledscreen.com/.well-known/prices.json"',
       'href="https://arledscreen.com/.well-known/price.json"',
+      'href="https://arledscreen.com/.well-known/offer.json"',
+      'href="https://arledscreen.com/.well-known/offers.json"',
       'href="https://arledscreen.com/#website"',
       'href="https://arledscreen.com/feeds/prices.rss"',
       'rel="describedby"',
@@ -2663,6 +2677,12 @@ if (fs.existsSync(outDir)) {
   if (!fs.readFileSync(path.join(outDir, "offer.json")).equals(canonAiForExt)) {
     console.error("❌ out/offer.json must match ai-shopping.json");
     process.exit(1);
+  }
+  for (const rel of [".well-known/offer.json", ".well-known/offers.json", "offers.json"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
+      console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
   }
   for (const rel of ["offer", "offers", "dataset", "feed"]) {
     if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
@@ -3585,6 +3605,8 @@ if (fs.existsSync(outDir)) {
     "/.well-known/sku.json",
     "/.well-known/price.json",
     "/.well-known/pricing.json",
+    "/.well-known/offer.json",
+    "/.well-known/offers.json",
     "/modules.json",
     "/sku.json",
     "/tr/ai-shopping.json",

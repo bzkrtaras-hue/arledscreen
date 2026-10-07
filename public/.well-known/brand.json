@@ -837,6 +837,10 @@
     "https://arledscreen.com/.well-known/merchant.json",
     "https://arledscreen.com/.well-known/prices.json",
     "https://arledscreen.com/.well-known/price.json",
+    "https://arledscreen.com/offer.json",
+    "https://arledscreen.com/offers.json",
+    "https://arledscreen.com/.well-known/offer.json",
+    "https://arledscreen.com/.well-known/offers.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
@@ -868,6 +872,10 @@
     "https://arledscreen.com/.well-known/merchant.json",
     "https://arledscreen.com/.well-known/prices.json",
     "https://arledscreen.com/.well-known/price.json",
+    "https://arledscreen.com/offer.json",
+    "https://arledscreen.com/offers.json",
+    "https://arledscreen.com/.well-known/offer.json",
+    "https://arledscreen.com/.well-known/offers.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
@@ -998,6 +1006,30 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/price.json",
       "name": "Price pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offer.json",
+      "name": "Offer pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offers.json",
+      "name": "Offers pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/offer.json",
+      "name": "Offer well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/offers.json",
+      "name": "Offers well-known pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",

@@ -15,6 +15,7 @@ const PANELS_JSON_URL = `${SITE_URL}/panels.json`;
 const MPN_JSON_URL = `${SITE_URL}/mpn.json`;
 const MERCHANT_JSON_URL = `${SITE_URL}/merchant.json`;
 const OFFER_JSON_URL = `${SITE_URL}/offer.json`;
+const OFFERS_JSON_URL = `${SITE_URL}/offers.json`;
 const MODULES_WELLKNOWN_URL = `${SITE_URL}/.well-known/modules.json`;
 const SKU_WELLKNOWN_URL = `${SITE_URL}/.well-known/sku.json`;
 const PRICING_WELLKNOWN_URL = `${SITE_URL}/.well-known/pricing.json`;
@@ -23,6 +24,8 @@ const MPN_WELLKNOWN_URL = `${SITE_URL}/.well-known/mpn.json`;
 const MERCHANT_WELLKNOWN_URL = `${SITE_URL}/.well-known/merchant.json`;
 const PRICES_WELLKNOWN_URL = `${SITE_URL}/.well-known/prices.json`;
 const PRICE_WELLKNOWN_URL = `${SITE_URL}/.well-known/price.json`;
+const OFFER_WELLKNOWN_URL = `${SITE_URL}/.well-known/offer.json`;
+const OFFERS_WELLKNOWN_URL = `${SITE_URL}/.well-known/offers.json`;
 const ENTITY_PROFILES_URL = `${SITE_URL}/entity-profiles.json`;
 const ORGANIZATION_JSON_URL = `${SITE_URL}/organization.json`;
 const BRAND_WELLKNOWN_URL = `${SITE_URL}/.well-known/brand.json`;
@@ -40,6 +43,7 @@ const WEBSITE_URL = `${SITE_URL}/#website`;
 const inventAliasLdJson = [
   { url: MERCHANT_JSON_URL, title: "Merchant pricedPanels alias" },
   { url: OFFER_JSON_URL, title: "Offer pricedPanels alias" },
+  { url: OFFERS_JSON_URL, title: "Offers pricedPanels alias" },
   { url: MODULES_WELLKNOWN_URL, title: "Modules pricedPanels invent alias" },
   { url: SKU_WELLKNOWN_URL, title: "SKU pricedPanels invent alias" },
   { url: PRICING_WELLKNOWN_URL, title: "Pricing pricedPanels invent alias" },
@@ -48,6 +52,8 @@ const inventAliasLdJson = [
   { url: MERCHANT_WELLKNOWN_URL, title: "Merchant pricedPanels invent alias" },
   { url: PRICES_WELLKNOWN_URL, title: "Prices pricedPanels invent alias" },
   { url: PRICE_WELLKNOWN_URL, title: "Price pricedPanels invent alias" },
+  { url: OFFER_WELLKNOWN_URL, title: "Offer well-known pricedPanels invent alias" },
+  { url: OFFERS_WELLKNOWN_URL, title: "Offers well-known pricedPanels invent alias" },
 ] as const;
 
 export const aiDiscoveryMetadata: Metadata = {

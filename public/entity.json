@@ -63,7 +63,11 @@
     "https://arledscreen.com/humans.txt",
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/.well-known/security.txt",
-    "https://arledscreen.com/llms-full.txt"
+    "https://arledscreen.com/llms-full.txt",
+    "https://arledscreen.com/offer.json",
+    "https://arledscreen.com/offers.json",
+    "https://arledscreen.com/.well-known/offer.json",
+    "https://arledscreen.com/.well-known/offers.json"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3414,7 +3418,11 @@
     "https://arledscreen.com/.well-known/entity.json",
     "https://arledscreen.com/organization.json",
     "https://arledscreen.com/.well-known/security.txt",
-    "https://arledscreen.com/llms-full.txt"
+    "https://arledscreen.com/llms-full.txt",
+    "https://arledscreen.com/offer.json",
+    "https://arledscreen.com/offers.json",
+    "https://arledscreen.com/.well-known/offer.json",
+    "https://arledscreen.com/.well-known/offers.json"
   ],
   "distribution": [
     {
@@ -3563,6 +3571,30 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/llms-full.txt",
       "name": "LLM Context (Full)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offer.json",
+      "name": "Offer pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offers.json",
+      "name": "Offers pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/offer.json",
+      "name": "Offer well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/offers.json",
+      "name": "Offers well-known pricedPanels invent alias"
     }
   ]
 }

@@ -86,10 +86,14 @@ jobs:
           grep -q "/.well-known/sku.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/price.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/pricing.json" scripts/submit-indexnow.mjs
+          grep -q "/.well-known/offer.json" scripts/submit-indexnow.mjs
+          grep -q "/.well-known/offers.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/modules.json" out/ai-shopping.json
           grep -q "/.well-known/sku.json" out/ai-shopping.json
           grep -q "/.well-known/pricing.json" out/ai-shopping.json
-          node -e 'const a=require("./out/ai-shopping.json"); const u=(a.distribution||[]).map(d=>d.contentUrl||"").join("\n"); const need=["/price.json","/pricing.json","/modules.json","/sku.json","/.well-known/prices.json","/.well-known/panels.json","/.well-known/mpn.json","/.well-known/merchant.json","/.well-known/price.json","/.well-known/pricing.json","/brand.json","/entity.json","/point-c.txt"]; if(a.distribution.length<23||need.some(n=>!u.includes(n))) process.exit(1)'
+          grep -q "/.well-known/offer.json" out/ai-shopping.json
+          grep -q "/offers.json" out/ai-shopping.json
+          node -e 'const a=require("./out/ai-shopping.json"); const u=(a.distribution||[]).map(d=>d.contentUrl||"").join("\n"); const need=["/price.json","/pricing.json","/modules.json","/sku.json","/.well-known/prices.json","/.well-known/panels.json","/.well-known/mpn.json","/.well-known/merchant.json","/.well-known/price.json","/.well-known/pricing.json","/offer.json","/offers.json","/.well-known/offer.json","/.well-known/offers.json","/brand.json","/entity.json","/point-c.txt"]; if(a.distribution.length<27||need.some(n=>!u.includes(n))) process.exit(1)'
           grep -q '"isBasedOn"' out/geo-baseline.json
           grep -q "/entity.json" out/geo-baseline.json
           grep -q "/point-c.txt" out/geo-baseline.json
@@ -140,6 +144,8 @@ jobs:
           grep -q 'href="https://arledscreen.com/.well-known/panels.json"' out/feeds/prices.rss
           grep -q 'href="https://arledscreen.com/.well-known/mpn.json"' out/feeds/prices.rss
           grep -q 'href="https://arledscreen.com/.well-known/merchant.json"' out/feeds/prices.rss
+          grep -q 'href="https://arledscreen.com/offer.json"' out/feeds/prices.rss
+          grep -q 'href="https://arledscreen.com/.well-known/offer.json"' out/feeds/prices.rss
           grep -q 'href="https://arledscreen.com/prices.json"' out/feeds/prices.rss
           grep -q "/brand.json" out/entity.json
           npm run verify:arleds-301 >/tmp/arleds-verify.txt 2>&1 || true

@@ -117,6 +117,8 @@ const URLS = [
   `https://${HOST}/.well-known/sku.json`,
   `https://${HOST}/.well-known/price.json`,
   `https://${HOST}/.well-known/pricing.json`,
+  `https://${HOST}/.well-known/offer.json`,
+  `https://${HOST}/.well-known/offers.json`,
   `https://${HOST}/api/entity`,
   `https://${HOST}/api/ai-shopping`,
   `https://${HOST}/api/panels.json`,

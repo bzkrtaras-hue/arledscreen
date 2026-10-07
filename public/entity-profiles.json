@@ -49,7 +49,11 @@
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/entity-profiles.json",
     "https://arledscreen.com/.well-known/security.txt",
-    "https://arledscreen.com/llms-full.txt"
+    "https://arledscreen.com/llms-full.txt",
+    "https://arledscreen.com/offer.json",
+    "https://arledscreen.com/offers.json",
+    "https://arledscreen.com/.well-known/offer.json",
+    "https://arledscreen.com/.well-known/offers.json"
   ],
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-07",
@@ -259,6 +263,30 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/price.json",
       "name": "Price pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offer.json",
+      "name": "Offer pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offers.json",
+      "name": "Offers pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/offer.json",
+      "name": "Offer well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/offers.json",
+      "name": "Offers well-known pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",

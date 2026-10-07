@@ -119,6 +119,10 @@ if (
   rss.includes('href="https://arledscreen.com/.well-known/sku.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/mpn.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/merchant.json"') &&
+  rss.includes('href="https://arledscreen.com/offer.json"') &&
+  rss.includes('href="https://arledscreen.com/offers.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/offer.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/offers.json"') &&
   rss.includes("/entity-profiles.json") &&
   rss.includes("/.well-known/brand.json") &&
   rss.includes("/.well-known/entity.json") &&
@@ -440,12 +444,16 @@ if (
     brandSame.includes("/geo-baseline.json") &&
     brandSame.includes("/entity-profiles.json") &&
     brandSame.includes("/.well-known/modules.json") &&
+    brandSame.includes("/offer.json") &&
+    brandSame.includes("/.well-known/offer.json") &&
     brandSame.includes("/.well-known/ard.json") &&
     brandSame.includes("/ai.txt") &&
     brandSame.includes("/.well-known/security.txt") &&
     catSame.includes("/geo-baseline.json") &&
     catSame.includes("/entity-profiles.json") &&
     catSame.includes("/.well-known/sku.json") &&
+    catSame.includes("/offers.json") &&
+    catSame.includes("/.well-known/offers.json") &&
     catSame.includes("/llms.txt") &&
     catSame.includes("/.well-known/security.txt") &&
     entSame.includes("/ai-shopping.json") &&
@@ -457,6 +465,8 @@ if (
     entSame.includes("#website") &&
     entSame.includes("/.well-known/mpn.json") &&
     entSame.includes("/.well-known/merchant.json") &&
+    entSame.includes("/offer.json") &&
+    entSame.includes("/.well-known/offer.json") &&
     entSame.includes("/humans.txt") &&
     entSame.includes("/.well-known/security.txt")
   ) {
@@ -479,6 +489,10 @@ if (
     dist.includes("/.well-known/sku.json") &&
     dist.includes("/.well-known/price.json") &&
     dist.includes("/.well-known/pricing.json") &&
+    dist.includes("/offer.json") &&
+    dist.includes("/offers.json") &&
+    dist.includes("/.well-known/offer.json") &&
+    dist.includes("/.well-known/offers.json") &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -572,13 +586,17 @@ if (
   JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/modules.json") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/panels.json") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/mpn.json") &&
+  JSON.stringify(brand?.isBasedOn || []).includes("/offer.json") &&
+  JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/offer.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/modules.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/panels.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/mpn.json") &&
-  JSON.stringify(brand?.distribution || []).includes("/.well-known/merchant.json")
+  JSON.stringify(brand?.distribution || []).includes("/.well-known/merchant.json") &&
+  JSON.stringify(brand?.distribution || []).includes("/offer.json") &&
+  JSON.stringify(brand?.distribution || []).includes("/.well-known/offer.json")
 ) {
-  ok("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant + #website");
-} else fail("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant + #website");
+  ok("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant/offer + #website");
+} else fail("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant/offer + #website");
 
 {
   const related = JSON.stringify(cat?.isRelatedTo || []);
@@ -604,13 +622,17 @@ if (
     based.includes("/.well-known/modules.json") &&
     based.includes("/.well-known/panels.json") &&
     based.includes("/.well-known/mpn.json") &&
+    based.includes("/offer.json") &&
+    based.includes("/.well-known/offer.json") &&
     dist.includes("/.well-known/modules.json") &&
     dist.includes("/.well-known/panels.json") &&
     dist.includes("/.well-known/mpn.json") &&
-    dist.includes("/.well-known/merchant.json")
+    dist.includes("/.well-known/merchant.json") &&
+    dist.includes("/offers.json") &&
+    dist.includes("/.well-known/offers.json")
   ) {
-    ok("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant + #website");
-  } else fail("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant + #website");
+    ok("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer + #website");
+  } else fail("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer + #website");
 }
 
 {
@@ -678,13 +700,16 @@ if (
     String(disc.modulesWellKnown || "").includes("/.well-known/modules.json") &&
     String(disc.skuWellKnown || "").includes("/.well-known/sku.json") &&
     String(disc.pricingWellKnown || "").includes("/.well-known/pricing.json") &&
+    String(disc.offerJson || "").includes("/offer.json") &&
+    String(disc.offerWellKnown || "").includes("/.well-known/offer.json") &&
+    String(disc.offersWellKnown || "").includes("/.well-known/offers.json") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
     merchantPack.includes("/.well-known/modules.json")
   ) {
-    ok("geo discovery invent well-known modules/sku/pricing/brand/entity/#website");
-  } else fail("geo discovery invent well-known modules/sku/pricing/brand/entity/#website");
+    ok("geo discovery invent well-known modules/sku/pricing/offer/brand/entity/#website");
+  } else fail("geo discovery invent well-known modules/sku/pricing/offer/brand/entity/#website");
 }
 
 {
@@ -698,6 +723,10 @@ if (
     headers.includes("/.well-known/merchant.json") &&
     headers.includes("/.well-known/prices.json") &&
     headers.includes("/.well-known/price.json") &&
+    headers.includes("/offer.json") &&
+    headers.includes("/offers.json") &&
+    headers.includes("/.well-known/offer.json") &&
+    headers.includes("/.well-known/offers.json") &&
     headers.includes("/.well-known/ard.json") &&
     headers.includes("/.well-known/agents.json") &&
     headers.includes("/humans.txt") &&
