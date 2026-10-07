@@ -568,7 +568,7 @@ function buildAiShopping() {
       yapayZeka: `${SITE_URL}/tr/yapay-zeka/`,
       quote: `${SITE_URL}/tr/quote/`,
       calculator: `${SITE_URL}/tr/hesaplayici/`,
-      // EN hubs exist; priced PDP URLs stay /tr/… (no invented /en/product paths).
+      // EN hubs exist; priced PDP URLs stay /tr/…; /en/products/<group>/<model>/ are noindex locale-flip bridges.
       en: {
         home: `${SITE_URL}/en/`,
         quote: `${SITE_URL}/en/quote/`,
@@ -881,6 +881,7 @@ invent-prices-en: ${SITE_URL}/en/prices/
 invent-pricing-en: ${SITE_URL}/en/pricing/
 invent-price-en: ${SITE_URL}/en/price/
 invent-cost-en: ${SITE_URL}/en/cost/
+invent-sku-locale-flip-en: ${SITE_URL}/en/products/gob-led-ekran/p1-25-gob/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/

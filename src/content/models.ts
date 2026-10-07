@@ -606,6 +606,11 @@ export const LED_MODELS: LedModel[] = [
 ];
 
 export const modelPath = (m: Pick<LedModel, "group" | "slug">) => `/tr/products/${m.group}/${m.slug}/`;
+/** Inventable EN locale-flip of Offer/product URLs (noindex bridge → EN group hub). */
+export const enModelBridgePath = (m: Pick<LedModel, "group" | "slug">) =>
+  `/en/products/${m.group}/${m.slug}/`;
+export const enModelBridgeTarget = (m: Pick<LedModel, "group">) => `/en/products/${m.group}/`;
+export const pricedLedModels = () => LED_MODELS.filter((m) => Boolean(m.priceId));
 export const modelsForGroup = (group: string) =>
   LED_MODELS.filter((m) => m.group === group || m.alsoIn?.includes(group));
 export const getModel = (group: string, slug: string) => LED_MODELS.find((m) => m.group === group && m.slug === slug);

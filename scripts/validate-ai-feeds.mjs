@@ -366,9 +366,10 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("/en/prices/") ||
     !aiTxtLive.includes("/en/pricing/") ||
     !aiTxtLive.includes("/en/price/") ||
-    !aiTxtLive.includes("/en/cost/")
+    !aiTxtLive.includes("/en/cost/") ||
+    !aiTxtLive.includes("/en/products/gob-led-ekran/p1-25-gob/")
   ) {
-    console.error("❌ out/ai.txt must list invent price EN bridges (prices/pricing/price/cost)");
+    console.error("❌ out/ai.txt must list invent price EN bridges + SKU locale-flip example");
     process.exit(1);
   }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
@@ -398,6 +399,10 @@ if (fs.existsSync(outDir)) {
   const inventExamples = ard?.agentic?.resources?.enInventBridges?.examples;
   if (!Array.isArray(inventExamples) || !inventExamples.some((u) => String(u).includes("/en/calculator/"))) {
     console.error("❌ ard.json enInventBridges.examples must include /en/calculator/");
+    process.exit(1);
+  }
+  if (!inventExamples.some((u) => String(u).includes("/en/products/gob-led-ekran/p1-25-gob/"))) {
+    console.error("❌ ard.json enInventBridges.examples must include SKU locale-flip /en/products/.../p1-25-gob/");
     process.exit(1);
   }
   if (!ard?.agentic?.resources?.aiTxt?.url?.includes("/ai.txt")) {
@@ -480,6 +485,20 @@ if (fs.existsSync(outDir)) {
     const fp = path.join(outDir, rel);
     if (!fs.existsSync(fp)) {
       console.error(`❌ pricedPanels URL missing in out/: ${panel.sku} → ${rel}`);
+      process.exit(1);
+    }
+    // EN locale-flip of Offer URLs must be real HTML bridges (CF 404.html beats _redirects).
+    const enPath = u.pathname.replace(/^\/tr\//, "/en/");
+    let enRel = enPath.replace(/^\//, "");
+    if (enRel.endsWith("/")) enRel += "index.html";
+    const enFp = path.join(outDir, enRel);
+    if (!fs.existsSync(enFp)) {
+      console.error(`❌ pricedPanels EN locale-flip bridge missing in out/: ${panel.sku} → ${enRel}`);
+      process.exit(1);
+    }
+    const enHtml = fs.readFileSync(enFp, "utf8");
+    if (!/noindex/i.test(enHtml) || !/Canonical hub/i.test(enHtml)) {
+      console.error(`❌ pricedPanels EN bridge must be noindex InventBridge: ${panel.sku} → ${enRel}`);
       process.exit(1);
     }
   }

@@ -7,6 +7,7 @@ import {
   LED_MODELS,
   SPEC_LABELS,
   SPEC_ORDER,
+  enModelBridgeTarget,
   getModel,
   modelPath,
   modelPrice,
@@ -23,11 +24,14 @@ import {
   panelModule,
   panelOffer,
   pricedPanelsDatasetJsonLd,
+  type PanelPrice,
 } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { InventBridge } from "@/components/seo/InventBridge";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
-import { buildTrOnlyMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n";
 import { whatsappHref } from "@/lib/whatsapp";
 import { absoluteUrl } from "@/lib/site";
 
@@ -37,7 +41,22 @@ interface PageProps {
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return LED_MODELS.map((m) => ({ locale: "tr", slug: m.group, model: m.slug }));
+  // TR PDPs for all models + EN noindex locale-flip bridges for the 12 pricedPanels Offers.
+  return LED_MODELS.flatMap((m) => {
+    const params = [{ locale: "tr", slug: m.group, model: m.slug }];
+    if (m.priceId) params.push({ locale: "en", slug: m.group, model: m.slug });
+    return params;
+  });
+}
+
+/** English invent-bridge label aligned with pricedPanels.nameEn (facts only). */
+function enBridgeH1(price: PanelPrice): string {
+  const useLabel = price.use === "ic" ? "Indoor" : "Outdoor";
+  const extras: string[] = [];
+  if (price.surface) extras.push(String(price.surface).toUpperCase());
+  if (price.frontService) extras.push("front service");
+  const extra = extras.length ? ` (${extras.join(", ")})` : "";
+  return `NXTIONSTAR ${price.pitch} ${useLabel}${extra} LED Module`;
 }
 
 const KIND_LABEL: Record<ModelKind, string> = {
@@ -93,10 +112,30 @@ function describe(m: LedModel): string {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug, model } = await params;
+  const { locale, slug, model } = await params;
   const m = getModel(slug, model);
   if (!m) return {};
   const price = modelPrice(m);
+
+  // EN locale-flip of Offer URLs → noindex bridge to EN group hub (CF 404.html beats _redirects).
+  if (locale === "en") {
+    if (!price) return {};
+    const target = enModelBridgeTarget(m);
+    const h1 = enBridgeH1(price);
+    return {
+      ...buildPageMetadata({
+        locale: "en" as Locale,
+        path: target.replace(/^\/en/, "") || "/",
+        title: `${h1} | ARLEDSCREEN`,
+        description: `EN SKU PDPs stay on Turkish paths. Bridge from inventable /en/products/${m.group}/${m.slug}/ to ${target}.`,
+        hreflangLocales: [],
+      }),
+      robots: { index: false, follow: true },
+      alternates: { canonical: target },
+    };
+  }
+
+  if (locale !== "tr") return {};
   const pitch = m.specs.pitch?.value ?? m.chip;
   if (m.kind === "kontrol") {
     const load = m.specs.loadCapacity?.value;
@@ -115,10 +154,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ModelPage({ params }: PageProps) {
   const { locale, slug, model } = await params;
-  if (locale !== "tr") notFound();
   const m = getModel(slug, model);
   const g = getProductGroup(slug);
   if (!m || !g) notFound();
+
+  if (locale === "en") {
+    const price = modelPrice(m);
+    if (!price) notFound();
+    const target = enModelBridgeTarget(m);
+    return (
+      <InventBridge
+        h1={enBridgeH1(price)}
+        target={target}
+        cta="Open EN product group"
+        note="Priced SKU PDPs remain on Turkish paths (/tr/products/.../); this path is an inventable EN locale-flip bridge."
+      />
+    );
+  }
+
+  if (locale !== "tr") notFound();
 
   const url = absoluteUrl(modelPath(m));
   const price = modelPrice(m);
