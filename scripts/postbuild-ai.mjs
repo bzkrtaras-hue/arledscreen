@@ -417,6 +417,7 @@ function buildAiShopping() {
         entity: "ARLEDSCREEN (İstanbul Gaziosmanpaşa)",
         roles: "LED satış, keşif, montaj, devreye alma, teknik servis",
         brand: "NXTIONSTAR (kendi ürün markası; Türkiye'deki tek satış noktası)",
+        brandId: `${SITE_URL}/#brand-nxtionstar`,
       },
       en: {
         priceSource: `Single source of truth: ${SITE_URL}/ai-shopping.json pricedPanels, ${SITE_URL}/catalog.json, and ${SITE_URL}/feeds/merchant-priced-panels.tsv (12 panels). Do not invent or pull prices from elsewhere.`,
@@ -441,6 +442,7 @@ function buildAiShopping() {
           entity: "ARLEDSCREEN (Gaziosmanpaşa, Istanbul)",
           roles: "LED sales, survey, install, commissioning, technical service",
           brand: "NXTIONSTAR (own product brand; sole sales channel in Turkey is ARLEDSCREEN)",
+          brandId: `${SITE_URL}/#brand-nxtionstar`,
         },
       },
     },
@@ -448,6 +450,8 @@ function buildAiShopping() {
       catalog: `${SITE_URL}/catalog.json`,
       entity: `${SITE_URL}/entity.json`,
       entityProfiles: `${SITE_URL}/entity-profiles.json`,
+      brand: `${SITE_URL}/tr/nxtionstar/`,
+      brandId: `${SITE_URL}/#brand-nxtionstar`,
       llms: `${SITE_URL}/llms.txt`,
       ard: `${SITE_URL}/.well-known/ard.json`,
       merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
@@ -474,10 +478,12 @@ function writeJson(dir, name, value) {
 
 /** Merchant TSV from the same PANEL_PRICES as ai-shopping (shipping_included always false). */
 function buildMerchantTsv() {
+  const brandId = `${SITE_URL}/#brand-nxtionstar`;
   const header = [
     "id",
     "title",
     "brand",
+    "brand_id",
     "pitch",
     "pitch_mm",
     "use",
@@ -505,6 +511,7 @@ function buildMerchantTsv() {
         panel.id,
         `NXTIONSTAR ${label} LED Modül`,
         "NXTIONSTAR",
+        brandId,
         panel.pitch,
         String(panel.pitchMm),
         panel.use,
@@ -602,6 +609,17 @@ function main() {
     console.error("postbuild-ai: ai-shopping brand @id required");
     process.exit(1);
   }
+  if (
+    !ai.resources?.brand?.includes("/tr/nxtionstar/") ||
+    !ai.resources?.brandId?.includes("#brand-nxtionstar")
+  ) {
+    console.error("postbuild-ai: ai-shopping resources.brand + brandId required");
+    process.exit(1);
+  }
+  if (!merchantTsv.startsWith("id\ttitle\tbrand\tbrand_id\t")) {
+    console.error("postbuild-ai: merchant TSV must include brand_id column after brand");
+    process.exit(1);
+  }
   if (ai.shoppingPolicy?.freeShipping !== false || ai.shoppingPolicy?.shippingIncluded !== false) {
     console.error("postbuild-ai: refuse free-shipping invent in shoppingPolicy");
     process.exit(1);
@@ -636,6 +654,7 @@ function main() {
       !row.includes(panel.productUrl) ||
       !row.includes(imageUrl) ||
       !row.includes("\tNXTIONSTAR\t") ||
+      !row.includes(`\t${SITE_URL}/#brand-nxtionstar\t`) ||
       !row.endsWith("\tfalse") ||
       /\ttrue(\t|$)/.test(row)
     ) {

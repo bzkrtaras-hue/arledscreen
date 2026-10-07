@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { OptImage } from "@/components/ui/opt-image";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import manifest from "@/content/image-manifest.json";
@@ -70,6 +71,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <SpeakableJsonLd
+        pageUrl={url}
+        name={p.h1}
+        description={p.description}
+        cssSelectors={["#post-h1", "#post-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
@@ -83,7 +90,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-cyan">
             {p.category} · <time dateTime={p.date}>{formatBlogDate(p.date)}</time>
           </p>
-          <h1 className="mt-2 text-balance font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">{p.h1}</h1>
+          <h1 id="post-h1" className="mt-2 text-balance font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">{p.h1}</h1>
+          <p id="post-lead" className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{p.description}</p>
           <figure className="mt-6 overflow-hidden rounded-2xl border border-border bg-band">
             <OptImage src={p.hero.src} alt={p.hero.alt} priority sizes="(min-width:768px) 768px, 100vw" className="h-auto w-full" />
           </figure>

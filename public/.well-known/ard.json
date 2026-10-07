@@ -64,17 +64,21 @@
         "type": "Merchant Product Feed",
         "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
         "format": "text/tab-separated-values",
-        "description": "12 priced panel SKUs: id, title, brand, image_link, price_usd; shipping_included=false; quote-only groups excluded",
+        "description": "12 priced panel SKUs: id, title, brand, brand_id (#brand-nxtionstar), image_link, price_usd; shipping_included=false; quote-only groups excluded",
         "pricedPanels": 12,
         "priceValidUntil": "2026-12-31",
         "freeShipping": false,
-        "brandId": "https://arledscreen.com/#brand-nxtionstar"
+        "brandId": "https://arledscreen.com/#brand-nxtionstar",
+        "columns": ["id", "title", "brand", "brand_id", "price_usd", "product_url", "image_link", "shipping_included"]
       },
       "entityProfiles": {
         "type": "Profile Paste Packs",
         "url": "https://arledscreen.com/entity-profiles.json",
         "format": "application/ld+json",
-        "description": "Third-party profile text packs (Point C) aligned with entity.json cite"
+        "description": "Third-party profile text packs (Point C) aligned with entity.json cite. Use packs.* (TR) and packsEn.* (EN cite-only; no catalog jargon in public bios).",
+        "packs": "TR paste packs",
+        "packsEn": "EN cite-only paste packs (GBP/directories/LinkedIn)",
+        "brandId": "https://arledscreen.com/#brand-nxtionstar"
       },
       "llmsText": {
         "type": "Text Summary",
