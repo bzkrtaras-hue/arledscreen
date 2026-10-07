@@ -223,6 +223,18 @@
         "url": "https://arledscreen.com/en/blog/",
         "format": "text/html",
         "description": "English blog index; post bodies remain Turkish (trust content, not commercial cluster)"
+      },
+      "privacyTr": {
+        "type": "Privacy / KVKK",
+        "url": "https://arledscreen.com/tr/gizlilik/",
+        "format": "text/html",
+        "description": "Turkish privacy notice (form data handling; not a price source)"
+      },
+      "privacyEn": {
+        "type": "Privacy / KVKK",
+        "url": "https://arledscreen.com/en/gizlilik/",
+        "format": "text/html",
+        "description": "English privacy notice; inventable /en/privacy/ bridges here"
       }
     },
     "cite": {

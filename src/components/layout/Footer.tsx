@@ -44,6 +44,8 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/quote/", label: "Teklif iste" },
         { href: "/tr/sss/", label: "SSS" },
         { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
+        { href: "/tr/blog/", label: "Blog" },
+        { href: "/tr/gizlilik/", label: "Gizlilik" },
       ]
     : [
         { href: "/en/led-ekran/", label: "LED display" },
@@ -73,6 +75,8 @@ export function Footer({ locale }: FooterProps) {
           href: locale === "en" ? "/en/nxtionstar/" : "/tr/nxtionstar/",
           label: "NXTIONSTAR",
         },
+        { href: "/en/blog/", label: "Blog" },
+        { href: "/en/gizlilik/", label: "Privacy" },
       ];
 
   const columns = tr
@@ -239,7 +243,13 @@ export function Footer({ locale }: FooterProps) {
       </div>
       <div className="border-t border-white/10 px-4 py-6 text-center text-xs text-white/55">
         <p>
-          © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}
+          © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}{" "}
+          <Link
+            href={tr ? "/tr/gizlilik/" : "/en/gizlilik/"}
+            className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
+          >
+            {tr ? "Gizlilik" : "Privacy"}
+          </Link>
         </p>
       </div>
     </footer>

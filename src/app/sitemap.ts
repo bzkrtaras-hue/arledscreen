@@ -157,6 +157,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projelerimiz/",
     "/galeri/",
     "/blog/",
+    "/gizlilik/",
   ] as const) {
     entries.push({
       url: absoluteUrl(`/en${path}`),
@@ -164,13 +165,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: path.includes("about")
         ? 0.8
-        : path.includes("blog")
-          ? 0.45
+        : path.includes("blog") || path.includes("gizlilik")
+          ? 0.4
           : path.includes("projeler")
             ? 0.86
             : 0.85,
     });
   }
+  // TR privacy (EN twin emitted above with /gizlilik/).
+  entries.push({
+    url: absoluteUrl("/tr/gizlilik/"),
+    lastModified: now,
+    changeFrequency: "yearly",
+    priority: 0.35,
+  });
   // EN lean commercial guides (AI agents invent these TR rehber paths under /en/).
   for (const path of [
     "/rehber/piksel-araligi-secimi/",

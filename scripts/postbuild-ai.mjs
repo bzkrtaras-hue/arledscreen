@@ -565,6 +565,7 @@ function buildAiShopping() {
         faq: `${SITE_URL}/en/sss/`,
         brand: `${SITE_URL}/en/nxtionstar/`,
         blog: `${SITE_URL}/en/blog/`,
+        privacy: `${SITE_URL}/en/gizlilik/`,
       },
     },
     priceValidUntil: PRICE_VALID_UNTIL,
@@ -746,6 +747,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       founderEn: `${SITE_URL}/en/about/aras-bozkurt/`,
       blog: `${SITE_URL}/tr/blog/`,
       blogEn: `${SITE_URL}/en/blog/`,
+      privacy: `${SITE_URL}/tr/gizlilik/`,
+      privacyEn: `${SITE_URL}/en/gizlilik/`,
     },
   };
 }
@@ -840,6 +843,8 @@ regions-hub-en: ${SITE_URL}/en/bolgeler/
 projects-hub-en: ${SITE_URL}/en/projelerimiz/
 gallery-en: ${SITE_URL}/en/galeri/
 blog-en: ${SITE_URL}/en/blog/
+privacy-tr: ${SITE_URL}/tr/gizlilik/
+privacy-en: ${SITE_URL}/en/gizlilik/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/

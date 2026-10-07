@@ -28,9 +28,9 @@ export function LocaleSelect({
     /^\/tr\/projelerimiz\/[^/]+\//,
     // Product group landings now have EN counterparts; model pages stay TR-only.
     /^\/tr\/products\/[^/]+\/[^/]+\//,
-    /^\/tr\/gizlilik\//,
     // Blog index has EN; post bodies stay TR-only.
     /^\/tr\/blog\/[^/]+\//,
+    // /gizlilik/ is dual-locale; /privacy/ bridges to it.
   ];
   // From a TR province detail page, EN switch lands on the EN regions hub.
   const switchLocaleHref = (next: Locale) => {
