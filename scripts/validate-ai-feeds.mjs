@@ -1288,19 +1288,35 @@ if (fs.existsSync(outDir)) {
   console.log(`✅ FAQPage arleds Q&A: ${faqArledsPages.length} pages + IndexNow about/founder/sss/ai.txt`);
 }
 
-// Live robots.txt is served by Pages Function — keep Allow list in sync.
+// Live robots.txt is served by Pages Function — keep Allow list in sync with robots.ts.
 const robotsFn = path.join(repoRoot, "functions", "robots.txt.js");
-if (fs.existsSync(robotsFn)) {
-  const body = fs.readFileSync(robotsFn, "utf8");
-  if (!body.includes("/geo-baseline.json")) {
-    console.error("❌ functions/robots.txt.js must Allow /geo-baseline.json");
+const robotsSrc = path.join(repoRoot, "src", "app", "robots.ts");
+const robotsFnBody = fs.existsSync(robotsFn) ? fs.readFileSync(robotsFn, "utf8") : "";
+const robotsTsBody = fs.existsSync(robotsSrc) ? fs.readFileSync(robotsSrc, "utf8") : "";
+for (const must of [
+  "/geo-baseline.json",
+  "/ai.txt",
+  "/panels.json",
+  "/mpn.json",
+  "/merchant.json",
+  "/.well-known/mpn.json",
+  "/api/panels",
+  "/api/merchant",
+  "/v1/merchant",
+]) {
+  if (!robotsFnBody.includes(must)) {
+    console.error(`❌ functions/robots.txt.js must Allow ${must}`);
     process.exit(1);
   }
-  if (!body.includes("/ai.txt")) {
-    console.error("❌ functions/robots.txt.js must Allow /ai.txt");
+  if (!robotsTsBody.includes(must)) {
+    console.error(`❌ src/app/robots.ts must Allow ${must}`);
     process.exit(1);
   }
-  console.log("✅ functions/robots.txt.js allows /geo-baseline.json + /ai.txt");
 }
+if (!robotsFnBody.includes("Google-CloudVertexBot") || !robotsTsBody.includes("Google-CloudVertexBot")) {
+  console.error("❌ robots must list Google-CloudVertexBot for Gemini/Vertex crawl");
+  process.exit(1);
+}
+console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt + panels/mpn/merchant invent aliases");
 
 validateAIFeeds();

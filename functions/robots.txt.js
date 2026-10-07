@@ -27,6 +27,11 @@ Allow: /.well-known/ai-shopping.json
 Allow: /.well-known/prices.json
 Allow: /.well-known/price.json
 Allow: /.well-known/pricing.json
+Allow: /.well-known/merchant.json
+Allow: /.well-known/panels.json
+Allow: /.well-known/modules.json
+Allow: /.well-known/sku.json
+Allow: /.well-known/mpn.json
 Allow: /.well-known/entity.json
 Allow: /.well-known/catalog.json
 Allow: /.well-known/security.txt
@@ -45,6 +50,11 @@ Allow: /llms
 Allow: /pricing.json
 Allow: /prices.json
 Allow: /price.json
+Allow: /panels.json
+Allow: /modules.json
+Allow: /sku.json
+Allow: /mpn.json
+Allow: /merchant.json
 Allow: /products.json
 Allow: /organization.json
 Allow: /company.json
@@ -53,6 +63,8 @@ Allow: /nap.json
 Allow: /brand.json
 Allow: /offers.json
 Allow: /dataset.json
+Allow: /feeds/prices.json
+Allow: /feeds/catalog.json
 Allow: /en/ai-shopping.json
 Allow: /en/catalog.json
 Allow: /en/entity.json
@@ -68,10 +80,15 @@ Allow: /api/catalog
 Allow: /api/catalog.json
 Allow: /api/products
 Allow: /api/prices
+Allow: /api/panels
+Allow: /api/merchant
+Allow: /api/mpn
 Allow: /api/entity
 Allow: /api/ai-shopping
 Allow: /api/v1/prices
 Allow: /v1/prices
+Allow: /v1/panels
+Allow: /v1/merchant
 
 User-Agent: bingbot
 Allow: /
@@ -83,6 +100,9 @@ User-Agent: Googlebot
 Allow: /
 
 User-Agent: GoogleOther
+Allow: /
+
+User-Agent: Google-CloudVertexBot
 Allow: /
 
 User-Agent: OAI-SearchBot
@@ -155,7 +175,7 @@ User-Agent: cohere-ai
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-07c-geo-baseline
+# cache-bust-geo60-2026-10-07d-panels-mpn-merchant
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 
