@@ -143,6 +143,16 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
       {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/merchant.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/offer.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/catalog.json`,
       },
       {

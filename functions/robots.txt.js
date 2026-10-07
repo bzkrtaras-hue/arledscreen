@@ -207,7 +207,7 @@ User-Agent: cohere-ai
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-07m-pricealiases-panels-mpn
+# cache-bust-geo60-2026-10-07n-dataset-distribution
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 

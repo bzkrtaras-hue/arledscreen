@@ -143,6 +143,21 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
+  const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 7) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥7 DataDownload encodings (HTML hub parity)");
+    process.exit(1);
+  }
+  for (const needle of ["/ai-shopping.json", "/prices.json", "/panels.json", "/mpn.json", "/merchant.json", "/offer.json", "/catalog.json", "/feeds/merchant-priced-panels.tsv", "/geo-baseline.json"]) {
+    if (!distUrls.some((u) => u.includes(needle))) {
+      console.error(`❌ ai-shopping.json distribution must include DataDownload ${needle}`);
+      process.exit(1);
+    }
+  }
+  if (!ai.distribution.every((d) => d?.["@type"] === "DataDownload" && d?.encodingFormat && d?.contentUrl)) {
+    console.error("❌ ai-shopping.json distribution entries must be DataDownload with encodingFormat + contentUrl");
+    process.exit(1);
+  }
   if (!String(ai.agentGuidelines?.en?.priceSource || "").includes("/prices.json")) {
     console.error("❌ agentGuidelines.en.priceSource must cite inventable /prices.json");
     process.exit(1);

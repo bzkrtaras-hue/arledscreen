@@ -470,6 +470,55 @@ function buildAiShopping() {
       sku: p.sku,
       mpn: p.sku, // honest mpn=sku; stub keeps Dataset→Product join cheap for agents
     })),
+    // Schema.org DataDownload graph — parity with HTML Dataset on product hubs / yapay-zeka.
+    // Agents that only fetch ai-shopping.json still see invent aliases as downloadable encodings.
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/prices.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/panels.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/mpn.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/merchant.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/offer.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/catalog.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/tab-separated-values",
+        contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/geo-baseline.json`,
+      },
+    ],
     dateModified: new Date().toISOString().split("T")[0],
     inLanguage: ["tr", "en"],
     cite,
