@@ -128,7 +128,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/bolgeler/",
     "/projelerimiz/",
     "/galeri/",
-    "/sss/",
     "/about/aras-bozkurt/",
     "/rehber/piksel-araligi-secimi/",
     "/rehber/led-tabela-mi-led-ekran-mi/",
@@ -142,14 +141,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     });
   }
-  // Brand + price hubs: TR + EN (EN agents previously hit 404 on these paths).
+  // Brand + price + FAQ hubs: TR + EN (EN agents previously hit 404 on these paths).
   for (const locale of ["tr", "en"] as const) {
-    for (const path of ["/nxtionstar/", "/led-ekran-fiyatlari/"] as const) {
+    for (const path of ["/nxtionstar/", "/led-ekran-fiyatlari/", "/sss/"] as const) {
       entries.push({
         url: absoluteUrl(`/${locale}${path}`),
         lastModified: now,
         changeFrequency: "weekly",
-        priority: path.includes("fiyat") ? 0.92 : 0.9,
+        priority: path.includes("fiyat") ? 0.92 : path.includes("sss") ? 0.88 : 0.9,
       });
     }
   }

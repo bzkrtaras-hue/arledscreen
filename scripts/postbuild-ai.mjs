@@ -710,6 +710,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       brandPageEn: `${SITE_URL}/en/nxtionstar/`,
       priceHub: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
       priceHubEn: `${SITE_URL}/en/led-ekran-fiyatlari/`,
+      faqTr: `${SITE_URL}/tr/sss/`,
+      faqEn: `${SITE_URL}/en/sss/`,
       homeTr: `${SITE_URL}/tr/`,
       homeEn: `${SITE_URL}/en/`,
       productsHub: `${SITE_URL}/tr/products/`,
@@ -800,10 +802,14 @@ brand-en: ${SITE_URL}/en/nxtionstar/
 price-tr: ${SITE_URL}/tr/led-ekran-fiyatlari/
 price-en: ${SITE_URL}/en/led-ekran-fiyatlari/
 about: ${SITE_URL}/tr/about/
+about-en: ${SITE_URL}/en/about/
 founder: ${SITE_URL}/tr/about/aras-bozkurt/
 calculator: ${SITE_URL}/tr/hesaplayici/
+calculator-en: ${SITE_URL}/en/hesaplayici/
 quote: ${SITE_URL}/tr/quote/
+quote-en: ${SITE_URL}/en/quote/
 sss: ${SITE_URL}/tr/sss/
+sss-en: ${SITE_URL}/en/sss/
 `;
   writeText(publicDir, "ai.txt", aiTxt);
   writeText(outDir, "ai.txt", aiTxt);

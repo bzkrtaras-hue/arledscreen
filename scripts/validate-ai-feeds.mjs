@@ -462,6 +462,7 @@ if (fs.existsSync(outDir)) {
   // FAQPage surfaces agents scrape for entity Q&A (SSS + home TR/EN + AI hub + commercial hubs).
   const faqArledsPages = [
     "tr/sss/index.html",
+    "en/sss/index.html",
     "tr/index.html",
     "en/index.html",
     "tr/yapay-zeka/index.html",
@@ -510,6 +511,7 @@ if (fs.existsSync(outDir)) {
     "/ai.txt",
     "/en/nxtionstar/",
     "/en/led-ekran-fiyatlari/",
+    "/en/sss/",
   ]) {
     if (!indexNowScript.includes(must)) {
       console.error(`❌ submit-indexnow.mjs must include ${must}`);

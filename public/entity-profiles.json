@@ -75,6 +75,8 @@
     "nxtionstarEn": "https://arledscreen.com/en/nxtionstar/",
     "fiyat": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
     "fiyatEn": "https://arledscreen.com/en/led-ekran-fiyatlari/",
+    "sss": "https://arledscreen.com/tr/sss/",
+    "sssEn": "https://arledscreen.com/en/sss/",
     "playbook": "docs/offsite-entity-playbook.md (repo)",
     "enHome": "https://arledscreen.com/en/"
   },

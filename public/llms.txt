@@ -53,9 +53,9 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - Brand JSON-LD `@id`: `https://arledscreen.com/#brand-nxtionstar` (subjectOf → pricedPanels / catalog / merchant TSV; also in [ard.json](https://arledscreen.com/.well-known/ard.json) `agentic.resources.brand`)
 - Point C (sahip): üçüncü taraf yapıştırma metinleri `entity-profiles.json` → `packs` / `packsEn`; operasyon notları repo `docs/offsite-entity-playbook.md`
 - [NXTIONSTAR](https://arledscreen.com/tr/nxtionstar/) · [EN brand](https://arledscreen.com/en/nxtionstar/) (NXTIONSTAR ≠ NationStar ≠ NEXTSTAR; not arleds.com)
-- [SSS](https://arledscreen.com/tr/sss/)
-- [Teklif](https://arledscreen.com/tr/quote/)
-- [Fiyat hesaplayıcı](https://arledscreen.com/tr/hesaplayici/)
+- [SSS](https://arledscreen.com/tr/sss/) · [EN FAQ](https://arledscreen.com/en/sss/)
+- [Teklif](https://arledscreen.com/tr/quote/) · [EN quote](https://arledscreen.com/en/quote/)
+- [Fiyat hesaplayıcı](https://arledscreen.com/tr/hesaplayici/) · [EN calculator](https://arledscreen.com/en/hesaplayici/)
 - [Projeler](https://arledscreen.com/tr/projelerimiz/): Tem 2025 – Tem 2026 arası 45 proje kaydı; yayımlanmış kayıtlar için ayrı case study sayfaları
 - [Hizmetler](https://arledscreen.com/tr/hizmetler/)
 - [Hizmet bölgesi (iller)](https://arledscreen.com/tr/bolgeler/): Kayıtlı proje illeri; merkez İstanbul Gaziosmanpaşa. Örnek: [İstanbul](https://arledscreen.com/tr/bolgeler/istanbul/), [Antalya](https://arledscreen.com/tr/bolgeler/antalya/), [Bursa](https://arledscreen.com/tr/bolgeler/bursa/), [İzmir](https://arledscreen.com/tr/bolgeler/izmir/), [Eskişehir](https://arledscreen.com/tr/bolgeler/eskisehir/). Kaydı olmayan il (ör. Ankara) için kapı sayfası yoktur — 81 il spam’i yok.

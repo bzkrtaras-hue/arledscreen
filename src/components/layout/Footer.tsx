@@ -56,6 +56,10 @@ export function Footer({ locale }: FooterProps) {
         },
         { href: `/${locale}/quote/`, label: dict.nav.quote },
         {
+          href: locale === "en" ? "/en/sss/" : "/tr/sss/",
+          label: "FAQ",
+        },
+        {
           href: locale === "en" ? "/en/nxtionstar/" : "/tr/nxtionstar/",
           label: "NXTIONSTAR",
         },

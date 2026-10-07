@@ -26,7 +26,6 @@ export function LocaleSelect({
     /^\/tr\/projelerimiz\//,
     /^\/tr\/galeri\//,
     /^\/tr\/products\/[^/]+\//,
-    /^\/tr\/sss\//,
     /^\/tr\/about\/aras-bozkurt\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,
