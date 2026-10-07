@@ -110,11 +110,35 @@
         "format": "text/html",
         "description": "Human-readable 2026 panel price table and examples"
       },
+      "homeTr": {
+        "type": "Landing Page",
+        "url": "https://arledscreen.com/tr/",
+        "format": "text/html",
+        "description": "Turkish home: entity + 12 panel Product/Offer JSON-LD and crawlable USD table (canonical SKU PDPs under /tr/products/...)"
+      },
+      "productsHub": {
+        "type": "Product Catalog Hub",
+        "url": "https://arledscreen.com/tr/products/",
+        "format": "text/html",
+        "description": "TR product hub with 12 panel Product/Offer graph and price table"
+      },
+      "intentHub": {
+        "type": "Commercial Intent Hub",
+        "url": "https://arledscreen.com/tr/led-ekran/",
+        "format": "text/html",
+        "description": "Primary commercial intent landing with 12 panel Offers (pitch/use pages stay Dataset-only)"
+      },
+      "yapayZeka": {
+        "type": "AI Discovery Page",
+        "url": "https://arledscreen.com/tr/yapay-zeka/",
+        "format": "text/html",
+        "description": "AI/GEO discovery page with entity cite + 12 panel Offers (EN twin at /en/yapay-zeka/)"
+      },
       "quoteForm": {
         "type": "Custom Quote Request",
         "url": "https://arledscreen.com/tr/quote/",
         "format": "text/html",
-        "description": "Entry point for quote-only product groups (transparent, flexible, rental, control)"
+        "description": "Entry point for quote-only product groups (transparent, flexible, rental, control); also emits 12 panel Offers"
       },
       "calculator": {
         "type": "Interactive Tool",
@@ -126,19 +150,19 @@
         "type": "Landing Page",
         "url": "https://arledscreen.com/en/",
         "format": "text/html",
-        "description": "English hub: entity, calculator and quote entry (TR PDPs remain canonical for priced SKUs)"
+        "description": "English hub: entity + 12 panel Offers, calculator and quote (TR PDPs remain canonical for priced SKUs)"
       },
       "enQuote": {
         "type": "Custom Quote Request",
         "url": "https://arledscreen.com/en/quote/",
         "format": "text/html",
-        "description": "English quote form for survey-based projects"
+        "description": "English quote form for survey-based projects; 12 panel Product/Offer JSON-LD"
       },
       "enCalculator": {
         "type": "Interactive Tool",
         "url": "https://arledscreen.com/en/hesaplayici/",
         "format": "text/html",
-        "description": "English entry to the live 2026 panel price calculator"
+        "description": "English calculator with the same 12 panel USD Product/Offer graph"
       }
     },
     "cite": {

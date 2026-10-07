@@ -336,7 +336,40 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
+  // HTML Offer regression guard — key agent entry points must emit ≥12 Offers.
+  const offerHubs = [
+    "tr/index.html",
+    "en/index.html",
+    "tr/products/index.html",
+    "tr/nxtionstar/index.html",
+    "tr/led-ekran/index.html",
+    "tr/hesaplayici/index.html",
+    "en/hesaplayici/index.html",
+    "tr/quote/index.html",
+    "en/quote/index.html",
+    "tr/yapay-zeka/index.html",
+    "en/yapay-zeka/index.html",
+    "tr/led-ekran-fiyatlari/index.html",
+  ];
+  for (const rel of offerHubs) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ Offer hub missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    const offers = (html.match(/"@type"\s*:\s*"Offer"/g) || []).length;
+    if (offers < 12) {
+      console.error(`❌ ${rel} must embed ≥12 Offer JSON-LD nodes (got ${offers})`);
+      process.exit(1);
+    }
+  }
+  if (!ard?.agentic?.resources?.homeTr?.url?.includes("/tr/") || !ard?.agentic?.resources?.productsHub?.url?.includes("/tr/products/")) {
+    console.error("❌ ard.json resources.homeTr + productsHub required");
+    process.exit(1);
+  }
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms); product paths exist");
+  console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
 }
 
 // Live robots.txt is served by Pages Function — keep Allow list in sync.

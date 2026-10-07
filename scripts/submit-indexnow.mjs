@@ -25,6 +25,8 @@ const URLS = [
   `https://${HOST}/llms.txt`,
   `https://${HOST}/llms-full.txt`,
   `https://${HOST}/feeds/merchant-priced-panels.tsv`,
+  `https://${HOST}/tr/`,
+  `https://${HOST}/en/`,
   `https://${HOST}/tr/yapay-zeka/`,
   `https://${HOST}/en/yapay-zeka/`,
   `https://${HOST}/tr/led-ekran-fiyatlari/`,

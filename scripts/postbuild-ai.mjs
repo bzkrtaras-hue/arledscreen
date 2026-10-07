@@ -509,6 +509,10 @@ function buildAiShopping() {
       ard: `${SITE_URL}/.well-known/ard.json`,
       merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       priceHub: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
+      home: `${SITE_URL}/tr/`,
+      productsHub: `${SITE_URL}/tr/products/`,
+      intentHub: `${SITE_URL}/tr/led-ekran/`,
+      yapayZeka: `${SITE_URL}/tr/yapay-zeka/`,
       quote: `${SITE_URL}/tr/quote/`,
       calculator: `${SITE_URL}/tr/hesaplayici/`,
       // EN hubs exist; priced PDP URLs stay /tr/… (no invented /en/product paths).
@@ -657,6 +661,11 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       llms: `${SITE_URL}/llms.txt`,
       brandPage: `${SITE_URL}/tr/nxtionstar/`,
       priceHub: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
+      homeTr: `${SITE_URL}/tr/`,
+      homeEn: `${SITE_URL}/en/`,
+      productsHub: `${SITE_URL}/tr/products/`,
+      intentHub: `${SITE_URL}/tr/led-ekran/`,
+      yapayZeka: `${SITE_URL}/tr/yapay-zeka/`,
     },
   };
 }
