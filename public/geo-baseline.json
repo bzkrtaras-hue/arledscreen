@@ -1,0 +1,137 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://arledscreen.com/geo-baseline.json",
+  "name": "ARLEDSCREEN GEO / AI-alışveriş technical baseline",
+  "description": "Machine-readable snapshot of pricedPanels, Brand @id, and discovery surfaces for before/after measurement. Does not invent ChatGPT/Gemini/Perplexity mention rates. Point C and Tur1a remain owner-gated.",
+  "url": "https://arledscreen.com/geo-baseline.json",
+  "dateModified": "2026-10-07",
+  "creator": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "brand": {
+    "@type": "Brand",
+    "@id": "https://arledscreen.com/#brand-nxtionstar",
+    "name": "NXTIONSTAR"
+  },
+  "baseline": {
+    "goalTargetDate": "2026-11-04",
+    "pricedSkuCount": 12,
+    "priceValidUntil": "2026-12-31",
+    "freeShipping": false,
+    "shippingIncluded": false,
+    "brandId": "https://arledscreen.com/#brand-nxtionstar",
+    "speakableCoverageNote": "TR/EN HTML content pages emit SpeakableSpecification where applicable (measured separately in agent artifacts).",
+    "ownerGated": [
+      "Point C third-party cites",
+      "Tur1a blind scores",
+      "GSC access",
+      "PR #60 merge"
+    ],
+    "noSpamDoorways": true,
+    "provinceLandingPolicy": "Only provinces with published project records; no 81-il programatic doorways"
+  },
+  "pricedPanels": [
+    {
+      "sku": "p1-25-ic-gob",
+      "price": "95.88",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-25-gob/"
+    },
+    {
+      "sku": "p1-53-ic-gob",
+      "price": "62.08",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-53-gob/"
+    },
+    {
+      "sku": "p1-86-ic-gob",
+      "price": "49.08",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/gob-led-ekran/p1-86-gob/"
+    },
+    {
+      "sku": "p2-5-ic",
+      "price": "32.18",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p2-5/"
+    },
+    {
+      "sku": "p3-07-ic",
+      "price": "30.88",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p3-07/"
+    },
+    {
+      "sku": "p4-ic",
+      "price": "26.98",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/ic-mekan-led-ekran/p4/"
+    },
+    {
+      "sku": "p2-5-dis",
+      "price": "63.70",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-5/"
+    },
+    {
+      "sku": "p2-9-dis",
+      "price": "53.30",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p2-9/"
+    },
+    {
+      "sku": "p3-07-dis",
+      "price": "44.20",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p3-07/"
+    },
+    {
+      "sku": "p4-dis",
+      "price": "33.80",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4/"
+    },
+    {
+      "sku": "p4-dis-front",
+      "price": "36.40",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p4-on-servis/"
+    },
+    {
+      "sku": "p5-dis",
+      "price": "29.90",
+      "brandId": "https://arledscreen.com/#brand-nxtionstar",
+      "shippingIncluded": false,
+      "url": "https://arledscreen.com/tr/products/dis-mekan-led-ekran/p5/"
+    }
+  ],
+  "fingerprints": {
+    "aiShoppingSha256": "e0d9e2049cbc8d960c92a9c134fc41d65c36a99a28ea2ee8676c1dd25bb77a27",
+    "catalogSha256": "996346a3d0f6ebe48a90935f97fcef77954002a7f0511851c9b4b4869d66685f",
+    "merchantTsvSha256": "308d08c6935a752088febf4761e41d01018c97bbf3097764c193df0ac63aa37a",
+    "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
+  },
+  "discovery": {
+    "aiShopping": "https://arledscreen.com/ai-shopping.json",
+    "catalog": "https://arledscreen.com/catalog.json",
+    "entity": "https://arledscreen.com/entity.json",
+    "entityProfiles": "https://arledscreen.com/entity-profiles.json",
+    "ard": "https://arledscreen.com/.well-known/ard.json",
+    "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+    "llms": "https://arledscreen.com/llms.txt",
+    "brandPage": "https://arledscreen.com/tr/nxtionstar/",
+    "priceHub": "https://arledscreen.com/tr/led-ekran-fiyatlari/"
+  }
+}

@@ -538,6 +538,7 @@
     "entityProfiles": "https://arledscreen.com/entity-profiles.json",
     "brand": "https://arledscreen.com/tr/nxtionstar/",
     "brandId": "https://arledscreen.com/#brand-nxtionstar",
+    "geoBaseline": "https://arledscreen.com/geo-baseline.json",
     "llms": "https://arledscreen.com/llms.txt",
     "ard": "https://arledscreen.com/.well-known/ard.json",
     "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
