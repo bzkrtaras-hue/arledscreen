@@ -26,8 +26,15 @@ const URLS = [
   `https://${HOST}/llms-full.txt`,
   `https://${HOST}/feeds/merchant-priced-panels.tsv`,
   `https://${HOST}/tr/yapay-zeka/`,
+  `https://${HOST}/en/yapay-zeka/`,
   `https://${HOST}/tr/led-ekran-fiyatlari/`,
+  `https://${HOST}/tr/hesaplayici/`,
+  `https://${HOST}/en/hesaplayici/`,
+  `https://${HOST}/tr/quote/`,
+  `https://${HOST}/en/quote/`,
+  `https://${HOST}/tr/nxtionstar/`,
   `https://${HOST}/tr/sss/`,
+  `https://${HOST}/tr/products/gob-led-ekran/p1-25-gob/`,
   `https://${HOST}/sitemap.xml`,
 ];
 

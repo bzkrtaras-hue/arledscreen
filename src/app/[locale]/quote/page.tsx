@@ -20,7 +20,13 @@ import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { getSeo } from "@/content/seo";
-import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { modelUrlForPrice } from "@/content/models";
+import {
+  BRAND_SUBJECT_DATASETS,
+  PANEL_PRICES,
+  panelProductsJsonLd,
+  pricedPanelsDatasetJsonLd,
+} from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
@@ -71,6 +77,21 @@ export default async function QuotePage({ params }: PageProps) {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(pricedPanelsDatasetJsonLd(quoteUrl)),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(
+                panelProductsJsonLd(
+                  PANEL_PRICES,
+                  quoteUrl,
+                  locale === "tr"
+                    ? "LED ekran modülü satışı, keşif ve montaj"
+                    : "LED display module sales, survey and installation",
+                  modelUrlForPrice(absoluteUrl),
+                ),
+              ),
             }}
           />
         </>
@@ -195,6 +216,26 @@ export default async function QuotePage({ params }: PageProps) {
           </section>
         </>
       ) : (
+      <>
+      {locale === "en" ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ContactPage",
+              "@id": `${absoluteUrl("/en/quote/")}#contact`,
+              name: "LED display quote | ARLEDSCREEN",
+              url: absoluteUrl("/en/quote/"),
+              isPartOf: { "@id": `${SITE_URL}/#website` },
+              about: { "@id": `${SITE_URL}/#organization` },
+              isRelatedTo: BRAND_SUBJECT_DATASETS,
+              description:
+                "Written quote by size and use case. Published 12 panel USD: ai-shopping.json pricedPanels / catalog.json; no free shipping.",
+            }),
+          }}
+        />
+      ) : null}
       <Section
         titleAs="h1"
         titleId="quote-h1"
@@ -230,6 +271,7 @@ export default async function QuotePage({ params }: PageProps) {
           </div>
         )}
       </Section>
+      </>
       )}
     </>
   );

@@ -24,7 +24,8 @@
 - E-posta: arled@arledscreen.com
 - Web sitesi: https://arledscreen.com
 - Makinece entity (NAP / cite): https://arledscreen.com/entity.json
-- Fiyat hesaplayıcı: https://fiyat.arledscreen.com/ (sitede: https://arledscreen.com/tr/hesaplayici/)
+- Fiyat hesaplayıcı: https://fiyat.arledscreen.com/ (sitede: https://arledscreen.com/tr/hesaplayici/ · EN: https://arledscreen.com/en/hesaplayici/ — same 12 panel USD Product/Offer graph; canonical SKU PDPs stay `/tr/products/...`)
+- Teklif: https://arledscreen.com/tr/quote/ · EN: https://arledscreen.com/en/quote/ (12 panel Product/Offer JSON-LD + price-source feeds)
 - Instagram: https://www.instagram.com/arledscreen/
 - Facebook: https://www.facebook.com/arledscreenn
 - LinkedIn: https://www.linkedin.com/company/arleds
