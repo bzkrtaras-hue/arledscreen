@@ -9,16 +9,15 @@ import {
   CALC_EXTRAS,
   PANEL_PRICES,
   PANELS_PER_M2,
-  PRICE_DATASETS,
   PRICE_NOTE,
-  PRICE_VALID_UNTIL,
   fmtUsd,
   panelLabel,
   panelProductsJsonLd,
+  pricedPanelsDatasetJsonLd,
 } from "@/content/prices";
 import { modelUrlForPrice } from "@/content/models";
 import { buildTrOnlyMetadata } from "@/lib/seo";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -100,38 +99,7 @@ export default async function LedEkranFiyatlariPage({
       <FaqJsonLd faqs={FAQS} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Dataset",
-            "@id": `${url}#priced-panels`,
-            name: "ARLEDSCREEN 2026 LED panel USD listesi",
-            description:
-              "Yayımlanmış 12 panel USD (pricedPanels). KDV/nakliye hariç; ücretsiz kargo yok. Makine kaynak: ai-shopping.json + catalog.json + merchant TSV.",
-            url,
-            creator: { "@id": `${SITE_URL}/#organization` },
-            isBasedOn: PRICE_DATASETS.map((d) => d.url),
-            distribution: [
-              {
-                "@type": "DataDownload",
-                encodingFormat: "application/ld+json",
-                contentUrl: `${SITE_URL}/ai-shopping.json`,
-              },
-              {
-                "@type": "DataDownload",
-                encodingFormat: "application/ld+json",
-                contentUrl: `${SITE_URL}/catalog.json`,
-              },
-              {
-                "@type": "DataDownload",
-                encodingFormat: "text/tab-separated-values",
-                contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
-              },
-            ],
-            temporalCoverage: `2026-01-01/${PRICE_VALID_UNTIL}`,
-            variableMeasured: "USD per LED module panel",
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
       <script
         type="application/ld+json"

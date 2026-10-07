@@ -10,7 +10,7 @@ import { absoluteUrl } from "@/lib/site";
 import Link from "next/link";
 import { modelUrlForPrice } from "@/content/models";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
-import { PANEL_PRICES, panelProductsJsonLd } from "@/content/prices";
+import { PANEL_PRICES, panelProductsJsonLd, pricedPanelsDatasetJsonLd } from "@/content/prices";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -61,6 +61,12 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
+                __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/hesaplayici/"))),
+              }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
                 __html: JSON.stringify(
                   panelProductsJsonLd(PANEL_PRICES, absoluteUrl("/tr/hesaplayici/"), "LED ekran modülü satışı, keşif ve montaj", modelUrlForPrice(absoluteUrl)),
                 ),
@@ -73,9 +79,13 @@ export default async function HesaplayiciPage({ params }: PageProps) {
               <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
                 ai-shopping.json
               </a>{" "}
-              <code className="text-xs">pricedPanels</code> ve{" "}
+              <code className="text-xs">pricedPanels</code>,{" "}
               <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
                 catalog.json
+              </a>{" "}
+              ve{" "}
+              <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                merchant TSV
               </a>
               . KDV ve nakliye hariç; ücretsiz kargo yok. Tutarlar yaklaşıktır; nihai fiyat keşif ve
               malzeme listesiyle yazılı teklifte paylaşılır. Fiyatların nasıl oluştuğunu{" "}

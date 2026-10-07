@@ -48,6 +48,40 @@ export const CALC_EXTRAS = {
 /** Published list validity — keep in sync with ai-shopping.json / catalog.json. */
 export const PRICE_VALID_UNTIL = "2026-12-31";
 
+/** HTML Dataset pointing AI shoppers at published price files (no invent). */
+export function pricedPanelsDatasetJsonLd(pageUrl: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "@id": `${pageUrl}#priced-panels`,
+    name: "ARLEDSCREEN 2026 LED panel USD listesi",
+    description:
+      "Yayımlanmış 12 panel USD (pricedPanels). KDV/nakliye hariç; ücretsiz kargo yok. Makine kaynak: ai-shopping.json + catalog.json + merchant TSV.",
+    url: pageUrl,
+    creator: { "@id": `${SITE_URL}/#organization` },
+    isBasedOn: PRICE_DATASETS.map((d) => d.url),
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/catalog.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/tab-separated-values",
+        contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+    ],
+    temporalCoverage: `2026-01-01/${PRICE_VALID_UNTIL}`,
+    variableMeasured: "USD per LED module panel",
+  };
+}
+
 /** Honest Offer fields for GEO / Merchant: no free-shipping invent, return = quote contract. */
 export function panelOffer(url: string, usd: number) {
   return {

@@ -18,8 +18,9 @@ import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { getSeo } from "@/content/seo";
+import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -57,6 +58,29 @@ export default async function QuotePage({ params }: PageProps) {
       />
       {locale === "tr" ? (
         <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/quote/"))),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ContactPage",
+                "@id": `${absoluteUrl("/tr/quote/")}#contact`,
+                name: "LED ekran teklifi | ARLEDSCREEN",
+                url: absoluteUrl("/tr/quote/"),
+                isPartOf: { "@id": `${SITE_URL}/#website` },
+                about: { "@id": `${SITE_URL}/#organization` },
+                isRelatedTo: PRICE_DATASETS,
+                description:
+                  "Ölçü ve kullanım amacına göre yazılı teklif. Yayımlanmış 12 panel USD: ai-shopping.json pricedPanels / catalog.json; ücretsiz kargo yok.",
+              }),
+            }}
+          />
           {/* Rounded photo banner with centred H1 */}
           <section className="bg-white px-0 pt-0 md:px-6 md:pt-6 lg:px-8">
             <div className="relative isolate mx-auto max-w-7xl overflow-hidden bg-navy md:rounded-[2rem]">
@@ -138,7 +162,15 @@ export default async function QuotePage({ params }: PageProps) {
                     <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
                       ai-shopping.json
                     </a>{" "}
-                    <code className="text-[10px]">pricedPanels</code> (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
+                    <code className="text-[10px]">pricedPanels</code>,{" "}
+                    <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                      catalog.json
+                    </a>
+                    ,{" "}
+                    <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                      merchant TSV
+                    </a>{" "}
+                    (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
                   </p>
                 </div>
               </aside>
