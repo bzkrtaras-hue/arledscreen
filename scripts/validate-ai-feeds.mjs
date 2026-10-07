@@ -440,6 +440,29 @@ if (fs.existsSync(outDir)) {
     console.error("❌ geo-baseline.json must snapshot 12 SKUs + Brand @id + fingerprints (no free shipping)");
     process.exit(1);
   }
+  {
+    const geoBased = JSON.stringify(baseline?.isBasedOn || []);
+    const geoRelated = JSON.stringify(baseline?.isRelatedTo || []);
+    for (const needle of [
+      "/entity.json",
+      "/brand.json",
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/feeds/merchant-priced-panels.tsv",
+      "/feeds/prices.rss",
+    ]) {
+      if (!geoBased.includes(needle)) {
+        console.error(`❌ geo-baseline.json isBasedOn must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of ["/point-c.txt", "/.well-known/ard.json", "/.well-known/agents.json"]) {
+      if (!geoRelated.includes(needle)) {
+        console.error(`❌ geo-baseline.json isRelatedTo must include ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
   if (
     !String(baseline?.baseline?.priceGraph?.entityMakesOffer || "").includes("#priced-panels-aggregate") ||
     !baseline?.baseline?.priceGraph?.datasetHasPartOffers ||

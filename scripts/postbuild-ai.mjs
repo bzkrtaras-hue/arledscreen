@@ -1229,6 +1229,36 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
     url: `${SITE_URL}/geo-baseline.json`,
     dateModified: today,
     creator: { "@id": `${SITE_URL}/#organization` },
+    // Reverse invent join: catalog/ai-shopping already → geo; geo must not be a dead-end Dataset.
+    isBasedOn: [
+      `${SITE_URL}/entity.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      `${SITE_URL}/feeds/prices.rss`,
+    ],
+    isRelatedTo: [
+      {
+        "@type": "DataDownload",
+        "@id": `${SITE_URL}/point-c.txt`,
+        url: `${SITE_URL}/point-c.txt`,
+        name: "ARLEDSCREEN Point C paste packs",
+        encodingFormat: "text/plain",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/.well-known/ard.json`,
+        url: `${SITE_URL}/.well-known/ard.json`,
+        name: "ARLEDSCREEN ARD",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/.well-known/agents.json`,
+        url: `${SITE_URL}/.well-known/agents.json`,
+        name: "ARLEDSCREEN agents discovery",
+      },
+    ],
     brand: {
       "@type": "Brand",
       "@id": `${SITE_URL}/#brand-nxtionstar`,
