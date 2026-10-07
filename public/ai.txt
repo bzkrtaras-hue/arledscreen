@@ -15,6 +15,8 @@ ard: https://arledscreen.com/.well-known/ard.json
 entity-profiles: https://arledscreen.com/entity-profiles.json
 brand-tr: https://arledscreen.com/tr/nxtionstar/
 brand-en: https://arledscreen.com/en/nxtionstar/
+price-tr: https://arledscreen.com/tr/led-ekran-fiyatlari/
+price-en: https://arledscreen.com/en/led-ekran-fiyatlari/
 about: https://arledscreen.com/tr/about/
 founder: https://arledscreen.com/tr/about/aras-bozkurt/
 calculator: https://arledscreen.com/tr/hesaplayici/
