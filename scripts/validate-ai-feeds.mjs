@@ -130,6 +130,23 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ard.json agentic.cite.en.oneLiner required for EN AI agents");
     process.exit(1);
   }
+  const ardBrand = ard?.agentic?.resources?.brand;
+  if (
+    ardBrand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar" ||
+    ardBrand?.name !== "NXTIONSTAR" ||
+    ard?.agentic?.resources?.aiShopping?.brandId !== "https://arledscreen.com/#brand-nxtionstar" ||
+    ard?.agentic?.pricedProducts?.brandId !== "https://arledscreen.com/#brand-nxtionstar"
+  ) {
+    console.error("❌ ard.json must expose Brand @id #brand-nxtionstar on resources.brand + aiShopping + pricedProducts");
+    process.exit(1);
+  }
+  if (
+    ard?.agentic?.resources?.aiShopping?.shippingIncluded !== false ||
+    ard?.agentic?.pricedProducts?.shippingIncluded !== false
+  ) {
+    console.error("❌ ard.json must set shippingIncluded:false (no free-shipping invent)");
+    process.exit(1);
+  }
   if (!ai?.resources?.en?.home || !ai.resources.en.calculator) {
     console.error("❌ ai-shopping.json resources.en.home + calculator required");
     process.exit(1);

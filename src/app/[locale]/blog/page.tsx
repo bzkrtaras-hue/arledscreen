@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { OptImage } from "@/components/ui/opt-image";
 import { BLOG_POSTS, blogPath, formatBlogDate } from "@/content/blog";
 import { ARTICLE_LINKS } from "@/content/article-links";
@@ -44,6 +45,12 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
         ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }} />
+      <SpeakableJsonLd
+        pageUrl={absoluteUrl("/tr/blog/")}
+        name="LED Ekran Projeleri, Kurulumlar ve Duyurular"
+        description="ARLEDSCREEN blogu: tamamlanan LED ekran projeleri, kurulum süreçleri ve NXTIONSTAR uygulamaları."
+        cssSelectors={["#blog-h1", "#blog-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -56,10 +63,10 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
             <Link href="/tr/" className="inline-flex min-h-11 items-center hover:text-cyan">Ana Sayfa</Link> / <span className="text-ink-soft">Blog</span>
           </nav>
           <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-cyan">Blog</p>
-          <h1 className="mt-2 font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">
+          <h1 id="blog-h1" className="mt-2 font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">
             LED Ekran Projeleri, Kurulumlar ve Duyurular
           </h1>
-          <p className="mt-3 max-w-3xl leading-relaxed text-ink-soft">
+          <p id="blog-lead" className="mt-3 max-w-3xl leading-relaxed text-ink-soft">
             Tamamladığımız LED ekran projelerinden kareler, kurulum süreçleri ve NXTIONSTAR ekranlarla ilgili güncel paylaşımlarımız.
           </p>
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

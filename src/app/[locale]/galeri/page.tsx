@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
 import { pricedPanelsDatasetJsonLd } from "@/content/prices";
@@ -32,6 +33,12 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
           { name: "Galeri", item: absoluteUrl("/tr/galeri/") },
         ]}
       />
+      <SpeakableJsonLd
+        pageUrl={absoluteUrl("/tr/galeri/")}
+        name="Galeri"
+        description="İç mekân, dış mekân, kavisli ve sinema LED ekran uygulama galerisi. Kategorilere göre düzenlenmiş saha görselleri."
+        cssSelectors={["#galeri-h1", "#galeri-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -44,10 +51,10 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan">
             Uygulama görselleri
           </p>
-          <h1 className="mt-2 font-display text-[clamp(1.85rem,1.4rem+1.8vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
+          <h1 id="galeri-h1" className="mt-2 font-display text-[clamp(1.85rem,1.4rem+1.8vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
             Galeri
           </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted sm:text-[15px]">
+          <p id="galeri-lead" className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted sm:text-[15px]">
             Kullanım alanına göre gruplanmış LED ekran uygulamaları. Öne çıkan görselleri gezin;
             altta kategori başlıklarından ilgili bölüme geçin.
           </p>
