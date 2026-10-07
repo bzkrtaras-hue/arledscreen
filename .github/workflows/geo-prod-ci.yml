@@ -93,4 +93,9 @@ jobs:
           grep -q "/.well-known/modules.json" out/catalog.json
           grep -q "/.well-known/modules.json" out/brand.json
           grep -q "/.well-known/modules.json" out/point-c.txt
+          grep -q '"modulesJson"' out/.well-known/ard.json
+          grep -q '"skuJson"' out/.well-known/ard.json
+          grep -q "/.well-known/modules.json" out/feeds/prices.rss
+          npm run verify:arleds-301 >/tmp/arleds-verify.txt 2>&1 || true
+          grep -q "Hostinger clipboard" /tmp/arleds-verify.txt
           echo "OK owner tooling"

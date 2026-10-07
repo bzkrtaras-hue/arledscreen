@@ -64,6 +64,13 @@ if (fail) {
   console.error(
     `\n${fail}/${results.length} probes failed. Owner: set Hostinger/CF redirect arleds.com → ${EXPECT} (see docs/ops/arleds-301-hostinger.md).`,
   );
+  console.error("\n--- Hostinger clipboard (permanent 301 entire domain) ---");
+  console.error("hPanel → Domains → arleds.com → Redirects");
+  console.error("http://arleds.com/ → https://arledscreen.com/tr/");
+  console.error("http://www.arleds.com/ → https://arledscreen.com/tr/");
+  console.error("https://arleds.com/ → https://arledscreen.com/tr/");
+  console.error("https://www.arleds.com/ → https://arledscreen.com/tr/");
+  console.error("Also: npm run point-c · https://arledscreen.com/point-c.txt");
   process.exit(1);
 }
 console.log(`\nOK all ${results.length} probes redirect to ${EXPECT}`);

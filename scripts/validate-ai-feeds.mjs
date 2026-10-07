@@ -255,9 +255,31 @@ if (fs.existsSync(outDir)) {
     !ard?.agentic?.resources?.panelsJson?.url?.includes("/panels.json") ||
     !ard?.agentic?.resources?.mpnJson?.url?.includes("/mpn.json") ||
     !ard?.agentic?.resources?.merchantJson?.url?.includes("/merchant.json") ||
-    !ard?.agentic?.resources?.offerJson?.url?.includes("/offer.json")
+    !ard?.agentic?.resources?.offerJson?.url?.includes("/offer.json") ||
+    !ard?.agentic?.resources?.modulesJson?.url?.includes("/modules.json") ||
+    !ard?.agentic?.resources?.skuJson?.url?.includes("/sku.json") ||
+    !ard?.agentic?.resources?.priceJson?.url?.includes("/price.json") ||
+    !ard?.agentic?.resources?.pricingJson?.url?.includes("/pricing.json")
   ) {
-    console.error("❌ ard.json must expose resources.panelsJson + mpnJson + merchantJson + offerJson");
+    console.error("❌ ard.json must expose resources.panelsJson + mpnJson + merchantJson + offerJson + modulesJson + skuJson + priceJson + pricingJson");
+    process.exit(1);
+  }
+  for (const [key, needle] of [
+    ["modulesJson", "/.well-known/modules.json"],
+    ["skuJson", "/.well-known/sku.json"],
+    ["priceJson", "/.well-known/price.json"],
+    ["pricingJson", "/.well-known/pricing.json"],
+  ]) {
+    if (!String(ard?.agentic?.resources?.[key]?.wellKnown || "").includes(needle)) {
+      console.error(`❌ ard.json resources.${key}.wellKnown must cite ${needle}`);
+      process.exit(1);
+    }
+  }
+  if (
+    !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("/.well-known/modules.json") ||
+    !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("/.well-known/pricing.json")
+  ) {
+    console.error("❌ ard.json resources.aiShopping description must cite well-known invent aliases");
     process.exit(1);
   }
   const ardMerchant = ard?.agentic?.resources?.merchantFeed;
@@ -1373,9 +1395,11 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/entity.json") ||
       !rssLive.includes("/catalog.json") ||
       !rssLive.includes("/geo-baseline.json") ||
-      !rssLive.includes("/point-c.txt")
+      !rssLive.includes("/point-c.txt") ||
+      !rssLive.includes("/.well-known/modules.json") ||
+      !rssLive.includes("/.well-known/pricing.json")
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo-baseline/point-c");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo-baseline/point-c + invent aliases");
       process.exit(1);
     }
   }

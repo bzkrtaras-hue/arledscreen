@@ -92,6 +92,39 @@
           "https://arledscreen.com/offers"
         ]
       },
+      "modulesJson": {
+        "type": "Price feed alias",
+        "url": "https://arledscreen.com/modules.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (modules synonym; /modules is image assets — use /modules.json)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "wellKnown": "https://arledscreen.com/.well-known/modules.json"
+      },
+      "skuJson": {
+        "type": "Price feed alias",
+        "url": "https://arledscreen.com/sku.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (sku synonym; also /sku extensionless)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "extensionless": "https://arledscreen.com/sku",
+        "wellKnown": "https://arledscreen.com/.well-known/sku.json"
+      },
+      "priceJson": {
+        "type": "Price feed alias",
+        "url": "https://arledscreen.com/price.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (price synonym)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "wellKnown": "https://arledscreen.com/.well-known/price.json"
+      },
+      "pricingJson": {
+        "type": "Price feed alias",
+        "url": "https://arledscreen.com/pricing.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (pricing synonym)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "wellKnown": "https://arledscreen.com/.well-known/pricing.json"
+      },
       "brand": {
         "type": "Brand",
         "@id": "https://arledscreen.com/#brand-nxtionstar",
@@ -136,7 +169,7 @@
         "type": "Agent Index",
         "url": "https://arledscreen.com/ai-shopping.json",
         "format": "application/ld+json",
-        "description": "Single-fetch Dataset: cite + pricedPanels (12 USD SKU, mpn=sku) + hasPart/isPartOf graph (hasPart Offer stubs: sameAs catalog+PDP #offer, itemOffered → PDP #product) + shoppingPolicy; invent aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /merchant · /sku · /offers.json · /api/v1/prices · /api/panels.json · /api/mpn.json; no free shipping; no invented TL packs or GTINs",
+        "description": "Single-fetch Dataset: cite + pricedPanels (12 USD SKU, mpn=sku) + hasPart/isPartOf graph (hasPart Offer stubs: sameAs catalog+PDP #offer, itemOffered → PDP #product) + shoppingPolicy; invent aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /sku · /offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json · /api/mpn.json; no free shipping; no invented TL packs or GTINs",
         "pricedPanels": 12,
         "hasPart": 12,
         "priceValidUntil": "2026-12-31",

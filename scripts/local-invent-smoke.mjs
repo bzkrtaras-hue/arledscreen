@@ -150,15 +150,19 @@ else fail("ard.resources.pointC");
 {
   const allow = ard?.robotsPolicy?.allow || [];
   const trEx = JSON.stringify(ard?.agentic?.resources?.trInventBridges?.examples || []);
+  const res = ard?.agentic?.resources || {};
   if (
     allow.includes("/.well-known/modules.json") &&
     allow.includes("/.well-known/sku.json") &&
     allow.includes("/.well-known/pricing.json") &&
     trEx.includes("/.well-known/modules.json") &&
-    trEx.includes("/.well-known/pricing.json")
+    trEx.includes("/.well-known/pricing.json") &&
+    String(res.modulesJson?.wellKnown || "").includes("/.well-known/modules.json") &&
+    String(res.skuJson?.wellKnown || "").includes("/.well-known/sku.json") &&
+    String(res.aiShopping?.description || "").includes("/.well-known/modules.json")
   ) {
-    ok("ard invent allow + trInvent well-known modules/sku/pricing");
-  } else fail("ard invent allow + trInvent well-known modules/sku/pricing");
+    ok("ard invent allow + resources modules/sku + aiShopping invent");
+  } else fail("ard invent allow + resources modules/sku + aiShopping invent");
 }
 
 {
