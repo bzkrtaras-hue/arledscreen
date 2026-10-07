@@ -238,6 +238,7 @@ const PAGE: Record<
       "Shipping and VAT",
     ],
     related: [
+      { href: "/en/led-ekran/", label: "LED display hub" },
       { href: "/en/products/", label: "Product catalog" },
       { href: "/en/nxtionstar/", label: "NXTIONSTAR brand" },
       { href: "/en/hesaplayici/", label: "Price calculator" },
@@ -247,6 +248,7 @@ const PAGE: Record<
     faqH2: "FAQ",
     navHome: "Home",
     homeHref: "/en/",
+    navLed: { name: "LED display", href: "/en/led-ekran/" },
     speakableName: "LED display prices 2026 | ARLEDSCREEN",
     speakableDesc:
       "Published 12-panel USD list and worked m² examples; excl. VAT/shipping; no free shipping.",

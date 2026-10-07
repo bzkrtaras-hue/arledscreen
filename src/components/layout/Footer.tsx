@@ -46,6 +46,7 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
       ]
     : [
+        { href: "/en/led-ekran/", label: "LED display" },
         { href: `/${locale}/products/`, label: dict.nav.products },
         { href: `/${locale}/rehber/`, label: "Guides" },
         { href: `/${locale}/about/`, label: dict.nav.about },

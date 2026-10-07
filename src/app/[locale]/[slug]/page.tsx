@@ -10,7 +10,11 @@ import { buildTrOnlyMetadata } from "@/lib/seo";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return COMMERCIAL_SLUGS.map((slug) => ({ locale: "tr", slug }));
+  // led-ekran has a dedicated TR+EN route at [locale]/led-ekran/
+  return COMMERCIAL_SLUGS.filter((slug) => slug !== "led-ekran").map((slug) => ({
+    locale: "tr",
+    slug,
+  }));
 }
 
 export async function generateMetadata({

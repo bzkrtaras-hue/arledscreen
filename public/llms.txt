@@ -62,7 +62,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 
 ### Ticari intent sayfaları
 
-- [LED ekran](https://arledscreen.com/tr/led-ekran/)
+- [LED ekran](https://arledscreen.com/tr/led-ekran/) · [EN intent hub](https://arledscreen.com/en/led-ekran/)
 - [LED ekran satışı](https://arledscreen.com/tr/led-ekran-satisi/)
 - [LED ekran üreticisi](https://arledscreen.com/tr/led-ekran-ureticisi/)
 - [LED ekran montaj](https://arledscreen.com/tr/led-ekran-montaj/)

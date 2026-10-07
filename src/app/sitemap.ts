@@ -141,7 +141,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     });
   }
-  // Brand + price + FAQ hubs: TR + EN (EN agents previously hit 404 on these paths).
+  // Brand + intent + price + FAQ hubs: TR + EN (EN agents previously hit 404 on these paths).
+  // /tr/led-ekran/ is also emitted via COMMERCIAL_PAGES — skip duplicate TR entry here.
   for (const locale of ["tr", "en"] as const) {
     for (const path of ["/nxtionstar/", "/led-ekran-fiyatlari/", "/sss/"] as const) {
       entries.push({
@@ -152,6 +153,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
   }
+  entries.push({
+    url: absoluteUrl("/en/led-ekran/"),
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.95,
+  });
   // Blog kept as secondary trust content — not the commercial SEO cluster.
   entries.push({
     url: absoluteUrl("/tr/blog/"),

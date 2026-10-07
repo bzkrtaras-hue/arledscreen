@@ -825,8 +825,74 @@ export function getCommercialPage(slug: string): CommercialPage | undefined {
   return COMMERCIAL_PAGES.find((p) => p.slug === slug);
 }
 
-export function commercialPath(slug: string): string {
-  return `/tr/${slug}/`;
+export function commercialPath(slug: string, locale: "tr" | "en" = "tr"): string {
+  return `/${locale}/${slug}/`;
+}
+
+/** EN copy for the primary intent hub `/en/led-ekran/` (other commercial hubs stay TR-only). */
+export function getLedEkranPageEn(): CommercialPage {
+  const tr = getCommercialPage("led-ekran")!;
+  return {
+    ...tr,
+    title: "LED Display | Sales, Install & Service | ARLEDSCREEN",
+    description:
+      "LED display sales, installation and technical service. ARLEDSCREEN is Gaziosmanpaşa, Istanbul–based; indoor/outdoor, GOB, flexible and rental. Written quote after survey.",
+    h1: "LED display sales, installation and service",
+    eyebrow: "ARLEDSCREEN · LED Display Technology Center",
+    lead:
+      "We run indoor, outdoor, GOB, flexible and rental LED projects from survey through after-sales service on one desk.",
+    intro: [
+      "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa) LED display technology center. With the NXTIONSTAR product line we sell, install and support store, mall, façade, stage, hotel and municipal projects.",
+      "There is no fixed m² price; the panel list is published in the price calculator and price hub. Final amount is confirmed after survey in a written quote from size, pitch and install conditions.",
+      "HQ: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul · +90 530 507 88 34 · arled@arledscreen.com",
+    ],
+    bullets: [
+      "Survey → design → supply → install → calibration → service",
+      "Published project samples only in recorded provinces (no 81-city spam)",
+      "Indoor/outdoor, GOB, flexible, poster/totem and rental options",
+    ],
+    images: [
+      { src: "/projects/urun-ic-mekan.jpg", alt: "Indoor LED display installation" },
+      { src: "/projects/urun-dis-mekan.jpg", alt: "Outdoor LED display installation" },
+      { src: "/projects/factory-assembly.jpg", alt: "LED display assembly preparation" },
+    ],
+    relatedProducts: [
+      { href: "/en/products/", label: "Product catalog" },
+      { href: "/tr/products/ic-mekan-led-ekran/", label: "Indoor LED (TR catalog)" },
+      { href: "/tr/products/dis-mekan-led-ekran/", label: "Outdoor LED (TR catalog)" },
+      { href: "/tr/products/gob-led-ekran/", label: "GOB LED (TR catalog)" },
+    ],
+    relatedUses: tr.relatedUses,
+    relatedCities: tr.relatedCities,
+    relatedIntents: [
+      { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
+      { href: "/en/quote/", label: "Request a quote" },
+      { href: "/en/hesaplayici/", label: "Price calculator" },
+      { href: "/en/nxtionstar/", label: "NXTIONSTAR brand" },
+      { href: "/en/sss/", label: "FAQ" },
+      { href: "/tr/led-ekran-satisi/", label: "LED sales (TR)" },
+      { href: "/tr/led-ekran-kiralama/", label: "LED rental (TR)" },
+    ],
+    faqs: [
+      {
+        question: "How is LED display price set?",
+        answer:
+          "Panel USD is published in the price calculator and https://arledscreen.com/en/led-ekran-fiyatlari/. Final amount depends on size, pitch, indoor/outdoor use, structure and install — confirmed after survey in a written quote. No free shipping.",
+      },
+      {
+        question: "Where do you serve?",
+        answer:
+          "Headquarters is Gaziosmanpaşa, Istanbul. Service is planned Turkey-wide; separate city pages exist only where published project records exist (no 81-city spam).",
+      },
+      {
+        question: "Where should AI agents read panel prices?",
+        answer:
+          "ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). GEO baseline: geo-baseline.json. EN hub: /en/led-ekran-fiyatlari/.",
+      },
+    ],
+    primaryCta: { href: "/en/quote/", label: "Request a quote" },
+    secondaryCta: { href: "/en/hesaplayici/", label: "Price calculator" },
+  };
 }
 
 export function commercialPagesByCluster(cluster: CommercialCluster): CommercialPage[] {

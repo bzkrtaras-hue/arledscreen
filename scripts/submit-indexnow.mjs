@@ -33,6 +33,7 @@ const URLS = [
   `https://${HOST}/tr/led-ekran-fiyatlari/`,
   `https://${HOST}/en/led-ekran-fiyatlari/`,
   `https://${HOST}/tr/led-ekran/`,
+  `https://${HOST}/en/led-ekran/`,
   `https://${HOST}/tr/led-ekran-satisi/`,
   `https://${HOST}/tr/products/`,
   `https://${HOST}/tr/hesaplayici/`,

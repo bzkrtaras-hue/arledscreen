@@ -97,6 +97,7 @@ const PAGE: Record<
     calcLabel: "price calculator",
     relatedLabel: "Related:",
     related: [
+      { href: "/en/led-ekran/", label: "LED display hub" },
       { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
       { href: "/en/nxtionstar/", label: "NXTIONSTAR brand" },
       { href: "/en/yapay-zeka/", label: "AI-compatible LED" },
