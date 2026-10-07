@@ -173,6 +173,8 @@ function buildCatalog() {
       "@type": "Product",
       "@id": `${SITE_URL}/catalog.json#${panel.id}`,
       position: index + 1,
+      sku: panel.id,
+      mpn: panel.id,
       name: `NXTIONSTAR ${label} LED Modül (${moduleSize})`,
       nameEn: `NXTIONSTAR ${labelEn} LED Module (${moduleSize})`,
       alternateName: [`NXTIONSTAR ${labelEn} LED Module`],
@@ -384,6 +386,7 @@ function buildAiShopping() {
       "@type": "Product",
       "@id": `${panel.productUrl}#product`,
       sku: panel.id,
+      mpn: panel.id,
       name: `NXTIONSTAR ${label} LED Modül`,
       nameEn: `NXTIONSTAR ${labelEn} LED Module`,
       alternateName: [`NXTIONSTAR ${labelEn} LED Module`],
@@ -629,6 +632,7 @@ function buildMerchantTsv() {
   const brandId = `${SITE_URL}/#brand-nxtionstar`;
   const header = [
     "id",
+    "mpn",
     "title",
     "title_en",
     "brand",
@@ -658,6 +662,8 @@ function buildMerchantTsv() {
     const labelEn = panelLabelEn(panel);
     lines.push(
       [
+        panel.id,
+        // Honest MPN = internal SKU (no invented GTIN/barcode).
         panel.id,
         `NXTIONSTAR ${label} LED Modül`,
         `NXTIONSTAR ${labelEn} LED Module`,
@@ -761,10 +767,19 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
     },
     discovery: {
       aiShopping: `${SITE_URL}/ai-shopping.json`,
+      pricesJson: `${SITE_URL}/prices.json`,
+      pricesWellKnown: `${SITE_URL}/.well-known/prices.json`,
+      offersJson: `${SITE_URL}/offers.json`,
+      apiV1Prices: `${SITE_URL}/api/v1/prices`,
       catalog: `${SITE_URL}/catalog.json`,
       entity: `${SITE_URL}/entity.json`,
+      organization: `${SITE_URL}/organization.json`,
       entityProfiles: `${SITE_URL}/entity-profiles.json`,
       ard: `${SITE_URL}/.well-known/ard.json`,
+      agentsJson: `${SITE_URL}/.well-known/agents.json`,
+      agentsMd: `${SITE_URL}/AGENTS.md`,
+      humansTxt: `${SITE_URL}/humans.txt`,
+      securityTxt: `${SITE_URL}/.well-known/security.txt`,
       merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       llms: `${SITE_URL}/llms.txt`,
       aiTxt: `${SITE_URL}/ai.txt`,
@@ -1260,8 +1275,8 @@ Hiring: https://arledscreen.com/tr/about/
     console.error("postbuild-ai: ai-shopping resources.brand + brandId required");
     process.exit(1);
   }
-  if (!merchantTsv.startsWith("id\ttitle\ttitle_en\tbrand\tbrand_id\t")) {
-    console.error("postbuild-ai: merchant TSV must include title_en + brand_id columns after title/brand");
+  if (!merchantTsv.startsWith("id\tmpn\ttitle\ttitle_en\tbrand\tbrand_id\t")) {
+    console.error("postbuild-ai: merchant TSV must start with id/mpn/title/title_en/brand/brand_id");
     process.exit(1);
   }
   if (

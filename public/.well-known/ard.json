@@ -15,8 +15,32 @@
         "type": "Organization",
         "url": "https://arledscreen.com/entity.json",
         "format": "application/ld+json",
-        "description": "Canonical organization metadata: NAP, cite, FAQs, contact",
-        "brandId": "https://arledscreen.com/#brand-nxtionstar"
+        "description": "Canonical organization metadata: NAP, cite, FAQs, contact. Exposes pricesJson · organizationJson · agentsJson · agentsMd. Aliases: /organization.json · /.well-known/entity.json.",
+        "brandId": "https://arledscreen.com/#brand-nxtionstar",
+        "alias": "https://arledscreen.com/organization.json",
+        "pricesJson": "https://arledscreen.com/prices.json",
+        "agentsJson": "https://arledscreen.com/.well-known/agents.json",
+        "agentsMd": "https://arledscreen.com/AGENTS.md"
+      },
+      "organization": {
+        "type": "Organization alias",
+        "url": "https://arledscreen.com/organization.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of entity.json",
+        "canonical": "https://arledscreen.com/entity.json"
+      },
+      "agentsMd": {
+        "type": "Agent Markdown Pointer",
+        "url": "https://arledscreen.com/AGENTS.md",
+        "format": "text/markdown",
+        "description": "Short markdown discovery: price source ai-shopping.json + entity.json; not a second price list"
+      },
+      "pricesJson": {
+        "type": "Price feed alias",
+        "url": "https://arledscreen.com/prices.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json pricedPanels (12 SKU USD)",
+        "canonical": "https://arledscreen.com/ai-shopping.json"
       },
       "brand": {
         "type": "Brand",
@@ -54,8 +78,9 @@
         "type": "Agent Index",
         "url": "https://arledscreen.com/ai-shopping.json",
         "format": "application/ld+json",
-        "description": "Single-fetch Dataset: cite + pricedPanels (12 USD SKU) + shoppingPolicy; no free shipping; no invented TL packs",
+        "description": "Single-fetch Dataset: cite + pricedPanels (12 USD SKU, mpn=sku) + hasPart/isPartOf graph + shoppingPolicy; invent aliases /prices.json · /offers.json · /api/v1/prices; no free shipping; no invented TL packs or GTINs",
         "pricedPanels": 12,
+        "hasPart": 12,
         "priceValidUntil": "2026-12-31",
         "brandId": "https://arledscreen.com/#brand-nxtionstar",
         "freeShipping": false,
@@ -75,8 +100,9 @@
         "type": "Merchant Product Feed",
         "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
         "format": "text/tab-separated-values",
-        "description": "12 priced panel SKUs: id, title, brand, brand_id (#brand-nxtionstar), image_link, price_usd; shipping_included=false; quote-only groups excluded",
+        "description": "12 priced panel SKUs: id, mpn(=id), title, brand, brand_id (#brand-nxtionstar), image_link, price_usd; shipping_included=false; no invented GTIN; quote-only groups excluded",
         "pricedPanels": 12,
+        "mpnEqualsSku": true,
         "priceValidUntil": "2026-12-31",
         "freeShipping": false,
         "brandId": "https://arledscreen.com/#brand-nxtionstar",

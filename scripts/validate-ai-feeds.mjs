@@ -185,6 +185,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ merchant TSV must include title_en column for EN AI agents");
     process.exit(1);
   }
+  if (!tsvHead.split("\t").includes("mpn")) {
+    console.error("❌ merchant TSV must include mpn column (honest MPN=sku; no invented GTIN)");
+    process.exit(1);
+  }
   if (!ai?.resources?.brandId?.includes("#brand-nxtionstar") || !ai?.resources?.brand?.includes("/nxtionstar/")) {
     console.error("❌ ai-shopping.json resources.brand + brandId required");
     process.exit(1);
@@ -198,6 +202,16 @@ if (fs.existsSync(outDir)) {
     !baseline?.brand?.["@id"]?.includes("#brand-nxtionstar")
   ) {
     console.error("❌ geo-baseline.json must snapshot 12 SKUs + Brand @id + fingerprints (no free shipping)");
+    process.exit(1);
+  }
+  for (const key of ["pricesJson", "organization", "agentsJson", "agentsMd", "securityTxt", "humansTxt"]) {
+    if (!String(baseline?.discovery?.[key] || "").includes("arledscreen.com")) {
+      console.error(`❌ geo-baseline.json discovery.${key} required for invent/agent surfaces`);
+      process.exit(1);
+    }
+  }
+  if (!ard?.agentic?.resources?.pricesJson?.url?.includes("/prices.json") || !ard?.agentic?.resources?.agentsMd?.url?.includes("AGENTS.md")) {
+    console.error("❌ ard.json must expose resources.pricesJson + agentsMd");
     process.exit(1);
   }
   if (!ai?.resources?.geoBaseline?.includes("/geo-baseline.json")) {
@@ -681,7 +695,7 @@ if (fs.existsSync(outDir)) {
   }
   const tsv = fs.readFileSync(tsvPath, "utf8");
   const tsvHeader = tsv.trim().split("\n")[0] || "";
-  for (const col of ["title", "brand", "image_link", "condition", "shipping_included"]) {
+  for (const col of ["title", "brand", "image_link", "condition", "shipping_included", "mpn"]) {
     if (!tsvHeader.split("\t").includes(col)) {
       console.error(`❌ merchant TSV missing column: ${col}`);
       process.exit(1);
@@ -692,6 +706,16 @@ if (fs.existsSync(outDir)) {
     console.error(`❌ merchant TSV must have 12 data rows, got ${tsvRows.length}`);
     process.exit(1);
   }
+  const tsvCols = tsvHeader.split("\t");
+  const mpnIdx = tsvCols.indexOf("mpn");
+  const idIdx = tsvCols.indexOf("id");
+  for (const row of tsvRows) {
+    const cells = row.split("\t");
+    if (cells[mpnIdx] !== cells[idIdx]) {
+      console.error(`❌ merchant TSV mpn must equal id (sku) for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+  }
   for (const panel of ai.pricedPanels) {
     if (!tsv.includes(panel.url)) {
       console.error(`❌ merchant TSV missing ai-shopping URL for ${panel.sku}: ${panel.url}`);
@@ -699,6 +723,10 @@ if (fs.existsSync(outDir)) {
     }
     if (!panel.image || !panel.brand || !tsv.includes(panel.image)) {
       console.error(`❌ pricedPanels/TSV image+brand required for ${panel.sku}`);
+      process.exit(1);
+    }
+    if (panel.mpn !== panel.sku) {
+      console.error(`❌ pricedPanels ${panel.sku} mpn must equal sku (no invented GTIN)`);
       process.exit(1);
     }
     if (panel["@type"] !== "Product" || panel.offers?.["@type"] !== "Offer") {
