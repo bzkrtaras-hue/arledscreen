@@ -60,8 +60,12 @@ line(
 );
 
 // Tur1a observations (exclude code-harden platform noise for "human blind" count)
+const HUMAN_PLATFORMS = ["chatgpt", "gemini", "perplexity", "google_aio"];
+const TR_PROMPT_IDS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+const MATRIX_CELLS = TR_PROMPT_IDS.length * HUMAN_PLATFORMS.length; // 48
 let tur1aHuman = 0;
 let tur1aTotal = 0;
+let tur1aCells = 0;
 if (fs.existsSync(logPath)) {
   const rows = fs
     .readFileSync(logPath, "utf8")
@@ -76,14 +80,20 @@ if (fs.existsSync(logPath)) {
     })
     .filter(Boolean);
   tur1aTotal = rows.length;
-  tur1aHuman = rows.filter((r) =>
-    ["chatgpt", "gemini", "perplexity", "google_aio"].includes(String(r.platform || "")),
-  ).length;
+  const human = rows.filter((r) => HUMAN_PLATFORMS.includes(String(r.platform || "")));
+  tur1aHuman = human.length;
+  const cells = new Set();
+  for (const r of human) {
+    const pid = String(r.promptId || "");
+    const plat = String(r.platform || "");
+    if (TR_PROMPT_IDS.includes(pid)) cells.add(`${plat}|${pid}`);
+  }
+  tur1aCells = cells.size;
 }
 line(
   tur1aHuman > 0 ? "OK" : "OPEN",
   "Tur1a blind observations",
-  `${tur1aHuman} human-platform / ${tur1aTotal} total rows · npm run tur1a:print · tur1a:list · --dry-run`,
+  `${tur1aHuman} human-platform rows · ${tur1aCells}/${MATRIX_CELLS} TR cells · npm run tur1a:next · tur1a:matrix · tur1a:print`,
 );
 
 // Live invent smoke (non-blocking summary; full: npm run invent:smoke)
@@ -111,5 +121,5 @@ line("INFO", "PR merge", "PR #60 cursor/geo-prod-guard-5666 → main (owner)");
 line("INFO", "Target", "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores");
 line("INFO", "arleds DNS", "not on Cloudflare for this account — Hostinger redirect required");
 
-console.log("\nCommands: npm run point-c · npm run verify:arleds-301 · npm run tur1a:list · npm run invent:smoke · npm run geo:status");
+console.log("\nCommands: npm run point-c · npm run verify:arleds-301 · npm run tur1a:next · npm run tur1a:matrix · npm run invent:smoke · npm run geo:status");
 process.exit(0);

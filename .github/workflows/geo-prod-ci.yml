@@ -46,4 +46,7 @@ jobs:
           test -f out/point-c-en.txt && grep -q "EN GBP About" out/point-c-en.txt
           npm run tur1a:print | grep -q "promptId=5"
           npm run tur1a:list | grep -q "en-1"
+          npm run tur1a:matrix | grep -q "0/48"
+          npm run tur1a:next | grep -q "promptId=1"
+          npm run tur1a:next | grep -q -- "--platform=chatgpt"
           echo "OK owner tooling"

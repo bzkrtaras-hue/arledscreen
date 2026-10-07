@@ -963,6 +963,14 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/llms.txt must cite agents.json + humans.txt");
     process.exit(1);
   }
+  if (
+    !llmsLive.includes("/point-c.txt") ||
+    !llmsLive.includes("/point-c-en.txt") ||
+    !llmsLive.includes("/.well-known/point-c.txt")
+  ) {
+    console.error("❌ out/llms.txt must cite point-c.txt + point-c-en.txt + /.well-known/point-c.txt");
+    process.exit(1);
+  }
   {
     const humansLive = fs.readFileSync(path.join(outDir, "humans.txt"), "utf8");
     if (
@@ -2236,6 +2244,9 @@ if (fs.existsSync(outDir)) {
     "/en/rehber/piksel-araligi-secimi/",
     "/en/rehber/gob-vs-smd/",
     "/en/sss/",
+    "/point-c.txt",
+    "/point-c-en.txt",
+    "/.well-known/point-c.txt",
   ]) {
     if (!indexNowScript.includes(must)) {
       console.error(`❌ submit-indexnow.mjs must include ${must}`);
