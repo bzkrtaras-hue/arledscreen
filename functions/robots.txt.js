@@ -67,8 +67,19 @@ Allow: /company.json
 Allow: /about.json
 Allow: /nap.json
 Allow: /brand.json
+Allow: /offer.json
 Allow: /offers.json
+Allow: /offer
+Allow: /offers
 Allow: /dataset.json
+Allow: /dataset
+Allow: /feed
+Allow: /organization
+Allow: /company
+Allow: /nap
+Allow: /cite
+Allow: /faq
+Allow: /faqs
 Allow: /feeds/prices.json
 Allow: /feeds/catalog.json
 Allow: /en/ai-shopping.json
@@ -196,7 +207,7 @@ User-Agent: cohere-ai
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-07k-headers-wildcard
+# cache-bust-geo60-2026-10-07l-extensionless-synonyms
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 

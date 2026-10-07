@@ -777,9 +777,19 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       pricesWellKnown: `${SITE_URL}/.well-known/prices.json`,
       offersJson: `${SITE_URL}/offers.json`,
       offerJson: `${SITE_URL}/offer.json`,
+      offer: `${SITE_URL}/offer`,
+      offers: `${SITE_URL}/offers`,
+      dataset: `${SITE_URL}/dataset`,
+      feed: `${SITE_URL}/feed`,
       citeJson: `${SITE_URL}/cite.json`,
       faqJson: `${SITE_URL}/faq.json`,
       faqsJson: `${SITE_URL}/faqs.json`,
+      organizationExtless: `${SITE_URL}/organization`,
+      companyExtless: `${SITE_URL}/company`,
+      napExtless: `${SITE_URL}/nap`,
+      citeExtless: `${SITE_URL}/cite`,
+      faqExtless: `${SITE_URL}/faq`,
+      faqsExtless: `${SITE_URL}/faqs`,
       apiV1Prices: `${SITE_URL}/api/v1/prices`,
       catalog: `${SITE_URL}/catalog.json`,
       entity: `${SITE_URL}/entity.json`,
@@ -900,7 +910,11 @@ function writeFeedPathAliases(dir) {
     ["ai-shopping.json", "v1/prices"],
     ["ai-shopping.json", "offers.json"],
     ["ai-shopping.json", "offer.json"],
+    ["ai-shopping.json", "offer"],
+    ["ai-shopping.json", "offers"],
     ["ai-shopping.json", "dataset.json"],
+    ["ai-shopping.json", "dataset"],
+    ["ai-shopping.json", "feed"],
     // Shopping invent aliases agents often guess (byte-identical → pricedPanels).
     ["ai-shopping.json", "panels.json"],
     ["ai-shopping.json", "modules.json"],
@@ -944,13 +958,19 @@ function writeFeedPathAliases(dir) {
     ["entity.json", "en/entity.json"],
     ["entity.json", "tr/entity.json"],
     ["entity.json", "organization.json"],
+    ["entity.json", "organization"],
     ["entity.json", "company.json"],
+    ["entity.json", "company"],
     ["entity.json", "about.json"],
     ["entity.json", "nap.json"],
+    ["entity.json", "nap"],
     ["entity.json", "brand.json"],
     ["entity.json", "cite.json"],
+    ["entity.json", "cite"],
     ["entity.json", "faq.json"],
+    ["entity.json", "faq"],
     ["entity.json", "faqs.json"],
+    ["entity.json", "faqs"],
     ["entity.json", "api/entity"],
     ["entity.json", ".well-known/entity.json"],
     ["catalog.json", ".well-known/catalog.json"],
@@ -1246,6 +1266,17 @@ feed-alias-well-known-prices: ${SITE_URL}/.well-known/prices.json
 feed-alias-well-known-entity: ${SITE_URL}/.well-known/entity.json
 feed-alias-organization-json: ${SITE_URL}/organization.json
 feed-alias-offers-json: ${SITE_URL}/offers.json
+feed-alias-offer-json: ${SITE_URL}/offer.json
+feed-alias-offer: ${SITE_URL}/offer
+feed-alias-offers: ${SITE_URL}/offers
+feed-alias-dataset: ${SITE_URL}/dataset
+feed-alias-feed: ${SITE_URL}/feed
+feed-alias-organization: ${SITE_URL}/organization
+feed-alias-company: ${SITE_URL}/company
+feed-alias-nap: ${SITE_URL}/nap
+feed-alias-cite: ${SITE_URL}/cite
+feed-alias-faq: ${SITE_URL}/faq
+feed-alias-faqs: ${SITE_URL}/faqs
 feed-alias-api-entity: ${SITE_URL}/api/entity
 feed-alias-api-ai-shopping: ${SITE_URL}/api/ai-shopping
 feed-alias-api-v1-prices: ${SITE_URL}/api/v1/prices
@@ -1375,7 +1406,21 @@ Hiring: https://arledscreen.com/tr/about/
     "nap.json",
     "brand.json",
     "offers.json",
+    "offer.json",
+    "offer",
+    "offers",
     "dataset.json",
+    "dataset",
+    "feed",
+    "organization",
+    "company",
+    "nap",
+    "cite",
+    "faq",
+    "faqs",
+    "cite.json",
+    "faq.json",
+    "faqs.json",
     "api/entity",
     "api/ai-shopping",
     "api/v1/prices",

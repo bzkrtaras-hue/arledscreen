@@ -454,6 +454,16 @@ if (fs.existsSync(outDir)) {
     "ai-shopping",
     "entity",
     "geo-baseline",
+    "offer",
+    "offers",
+    "dataset",
+    "feed",
+    "organization",
+    "company",
+    "nap",
+    "cite",
+    "faq",
+    "faqs",
     "llms",
     ".well-known/llms.txt",
     "en/ai-shopping.json",
@@ -889,6 +899,22 @@ if (fs.existsSync(outDir)) {
   }
   if (!fs.readFileSync(path.join(outDir, "offer.json")).equals(canonAiForExt)) {
     console.error("❌ out/offer.json must match ai-shopping.json");
+    process.exit(1);
+  }
+  for (const rel of ["offer", "offers", "dataset", "feed"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
+      console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
+  }
+  for (const rel of ["organization", "company", "nap", "cite", "faq", "faqs"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonEntityForSyn)) {
+      console.error(`❌ out/${rel} must match entity.json`);
+      process.exit(1);
+    }
+  }
+  if (!headersLive.includes("\n/offer\n") || !headersLive.includes("\n/organization\n")) {
+    console.error("❌ out/_headers must set Content-Type for extensionless /offer + /organization");
     process.exit(1);
   }
   if (!llmsLive.includes("mpn") || !llmsLive.includes("/panels.json") || !llmsLive.includes("/teklif/")) {
