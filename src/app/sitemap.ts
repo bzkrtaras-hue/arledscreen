@@ -149,13 +149,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     });
   }
-  // EN services hub (AI agents invent /en/hizmetler/ from TR path shape).
-  entries.push({
-    url: absoluteUrl("/en/hizmetler/"),
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.85,
-  });
+  // EN hubs AI agents invent from TR path shapes (services / regions / founder).
+  for (const path of ["/hizmetler/", "/bolgeler/", "/about/aras-bozkurt/"] as const) {
+    entries.push({
+      url: absoluteUrl(`/en${path}`),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: path.includes("about") ? 0.8 : 0.85,
+    });
+  }
   // EN lean commercial guides (AI agents invent these TR rehber paths under /en/).
   for (const path of [
     "/rehber/piksel-araligi-secimi/",

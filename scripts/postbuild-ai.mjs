@@ -812,6 +812,8 @@ install-en: ${SITE_URL}/en/led-ekran-montaj/
 manufacturer-en: ${SITE_URL}/en/led-ekran-ureticisi/
 service-en: ${SITE_URL}/en/led-ekran-servis/
 services-hub-en: ${SITE_URL}/en/hizmetler/
+regions-hub-en: ${SITE_URL}/en/bolgeler/
+founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 use-store-en: ${SITE_URL}/en/magaza-led-ekran/
 use-facade-en: ${SITE_URL}/en/cephe-led-ekran/
 use-mall-en: ${SITE_URL}/en/avm-led-ekran/

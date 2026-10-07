@@ -416,6 +416,8 @@ if (fs.existsSync(outDir)) {
   // Use/pitch/services EN hubs must exist (no ≥12 Offer requirement — Dataset/FAQ only).
   const enLeanHubs = [
     "en/hizmetler/index.html",
+    "en/bolgeler/index.html",
+    "en/about/aras-bozkurt/index.html",
     "en/magaza-led-ekran/index.html",
     "en/avm-led-ekran/index.html",
     "en/cephe-led-ekran/index.html",
@@ -497,7 +499,12 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
-  for (const rel of ["tr/about/index.html", "en/about/index.html", "tr/about/aras-bozkurt/index.html"]) {
+  for (const rel of [
+    "tr/about/index.html",
+    "en/about/index.html",
+    "tr/about/aras-bozkurt/index.html",
+    "en/about/aras-bozkurt/index.html",
+  ]) {
     const html = fs.readFileSync(path.join(outDir, rel), "utf8");
     // Visible body copy (not only feeds) must reject legacy domain for scrapers.
     if (!html.includes("arleds.com") || !html.includes("arledscreen.com")) {
@@ -532,6 +539,7 @@ if (fs.existsSync(outDir)) {
     "en/rehber/kiralik-mi-satin-alma/index.html",
     "en/rehber/led-tabela-mi-led-ekran-mi/index.html",
     "en/hizmetler/index.html",
+    "en/bolgeler/index.html",
     "en/magaza-led-ekran/index.html",
     "en/p2-5-led-ekran/index.html",
     "tr/led-ekran-fiyatlari/index.html",
@@ -581,6 +589,8 @@ if (fs.existsSync(outDir)) {
     "/en/led-ekran-satisi/",
     "/en/led-ekran-kiralama/",
     "/en/hizmetler/",
+    "/en/bolgeler/",
+    "/en/about/aras-bozkurt/",
     "/en/magaza-led-ekran/",
     "/en/cephe-led-ekran/",
     "/en/vitrin-led-ekran/",

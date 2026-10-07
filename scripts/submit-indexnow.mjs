@@ -41,6 +41,8 @@ const URLS = [
   `https://${HOST}/en/led-ekran-kiralama/`,
   `https://${HOST}/en/led-ekran-servis/`,
   `https://${HOST}/en/hizmetler/`,
+  `https://${HOST}/en/bolgeler/`,
+  `https://${HOST}/en/about/aras-bozkurt/`,
   `https://${HOST}/en/magaza-led-ekran/`,
   `https://${HOST}/en/cephe-led-ekran/`,
   `https://${HOST}/en/avm-led-ekran/`,

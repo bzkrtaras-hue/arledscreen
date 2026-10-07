@@ -20,19 +20,24 @@ export function LocaleSelect({
   const dict = getDictionary(locale);
 
   // Turkish-only routes (generateStaticParams returns only { locale: "tr" }).
-  // Full commercial use/pitch/totem + /hizmetler/ now have EN lean counterparts.
+  // /bolgeler/ hub + /about/aras-bozkurt/ now have EN lean counterparts.
+  // Province detail pages (/bolgeler/<slug>/) stay TR-only.
   const TR_ONLY = [
-    /^\/tr\/bolgeler\//,
+    /^\/tr\/bolgeler\/[^/]+\//,
     /^\/tr\/projelerimiz\//,
     /^\/tr\/galeri\//,
     // Product group landings now have EN counterparts; model pages stay TR-only.
     /^\/tr\/products\/[^/]+\/[^/]+\//,
-    /^\/tr\/about\/aras-bozkurt\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,
   ];
+  // From a TR province detail page, EN switch lands on the EN regions hub.
   const switchLocaleHref = (next: Locale) => {
     const p = pathname.endsWith("/") ? pathname : `${pathname}/`;
+    // Province detail pages stay TR-only — EN switch lands on the regions hub.
+    if (next !== "tr" && /^\/tr\/bolgeler\/[^/]+\//.test(p)) {
+      return `/${next}/bolgeler/`;
+    }
     if (next !== "tr" && TR_ONLY.some((re) => re.test(p))) {
       // Product pages fall back to the locale catalog, rehber articles to the guide index, others to home.
       if (/^\/tr\/products\/[^/]+\/[^/]+\//.test(p)) return `/${next}/products/`;

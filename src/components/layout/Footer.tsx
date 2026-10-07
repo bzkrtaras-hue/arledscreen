@@ -50,6 +50,8 @@ export function Footer({ locale }: FooterProps) {
         { href: "/en/led-ekran-satisi/", label: "LED sales" },
         { href: "/en/led-ekran-kiralama/", label: "LED rental" },
         { href: "/en/hizmetler/", label: "Services" },
+        { href: "/en/bolgeler/", label: "Service regions" },
+        { href: "/en/about/aras-bozkurt/", label: "Founder" },
         { href: "/en/magaza-led-ekran/", label: "Store LED" },
         { href: "/en/products/gob-led-ekran/", label: "GOB LED" },
         { href: `/${locale}/products/`, label: dict.nav.products },
