@@ -2,6 +2,24 @@
 
 Legacy / side domain `arleds.com` must **not** remain a citation source. Until it 301s to the canonical TR hub, SERP and AI agents may prefer the wrong host.
 
+## Live DNS first (do not open the wrong panel)
+
+```bash
+npm run verify:arleds-301
+# or: npm run geo:status   → look for mode=…
+```
+
+`verify:arleds-301` resolves live NS/A and prints `mode:`. Follow that mode — Hostinger hPanel only helps when NS is actually Hostinger.
+
+| mode | Meaning | Owner next |
+|---|---|---|
+| `dnsenable_tls_dead` | NS = `*.dnsenable.com` (Isimtescil); TLS/HTTP dead | Registrar **Domain Redirect** (below) or move NS to Cloudflare |
+| `hostinger_*` / `http_200_no_redirect` | NS Hostinger-ish | hPanel Redirects (below) |
+| `cloudflare_*` / `wrong_location` | NS Cloudflare-ish | CF Bulk Redirect |
+| `nxdomain` | No A / NXDOMAIN | Restore NS at registrar first |
+
+Observed live (re-check with verify): apex + www on `eu/tr/us.dnsenable.com`, A `194.5.236.174`, probes timeout — **mode=`dnsenable_tls_dead`**. Hostinger hPanel will **not** apply until NS moves.
+
 ## Target
 
 | From | To |
@@ -11,16 +29,29 @@ Legacy / side domain `arleds.com` must **not** remain a citation source. Until i
 | `https://arleds.com/` | `https://arledscreen.com/tr/` |
 | `https://www.arleds.com/` | `https://arledscreen.com/tr/` |
 
-Also cover bare paths if Hostinger allows “redirect entire domain”.
+## Option A — Isimtescil / DNSEnable (current live NS)
 
-## Hostinger (typical)
+1. Log into the **registrar** panel that holds `arleds.com` (Isimtescil / DNSEnable — not Hostinger).
+2. Domain → **Domain Redirect** (or URL Redirect / Forwarding).
+3. Permanent **301**: `arleds.com` + `www.arleds.com` → `https://arledscreen.com/tr/`.
+4. Re-check: `npm run verify:arleds-301` (exit 0).
+
+## Option B — Cloudflare (align with arledscreen.com)
+
+1. Add `arleds.com` to the same Cloudflare account as `arledscreen.com`.
+2. At registrar, set NS to Cloudflare nameservers.
+3. Rules → Bulk Redirects (or Redirect Rules):  
+   `arleds.com/*` and `www.arleds.com/*` → `https://arledscreen.com/tr/` · **301**.
+4. Re-check: `npm run verify:arleds-301`.
+
+## Hostinger (only if NS is Hostinger)
 
 1. hPanel → Domains → `arleds.com` → Redirects (or DNS Zone).
 2. Add permanent **301** redirect of the whole domain to `https://arledscreen.com/tr/`.
 3. Ensure SSL on `arleds.com` either terminates and redirects, or use Hostinger “force HTTPS” then 301.
 4. If the domain only has A record and no hosting: park with redirect, or point DNS to Cloudflare and use Bulk Redirects.
 
-### Support email (select-all)
+### Support email (select-all) — Hostinger NS only
 
 ```
 Subject: Permanent 301 redirect arleds.com → https://arledscreen.com/tr/
@@ -38,18 +69,11 @@ http://www.arleds.com/ → https://arledscreen.com/tr/
 https://arleds.com/ → https://arledscreen.com/tr/
 https://www.arleds.com/ → https://arledscreen.com/tr/
 
-Domain: arleds.com (Hostinger DNS; not on Cloudflare for this account).
+Domain: arleds.com (only if Hostinger DNS; skip if NS is dnsenable.com).
 Thank you.
 ```
 
-Also: `npm run point-c:next` (Hostinger step) · `npm run geo:status` · `npm run point-c:hostinger-eml` (writes `docs/ops/arleds-301-hostinger.eml`) · mailto in `point-c.txt`
-
-## Cloudflare (if DNS on CF)
-
-1. DNS: orange-cloud A/AAAA (or CNAME) for `arleds.com` / `www`.
-2. Rules → Bulk Redirects (or Single Redirect):  
-   `arleds.com/*` and `www.arleds.com/*` → `https://arledscreen.com/tr/` (preserve path optional; prefer hub `/tr/` for GEO).
-3. Status: **301**.
+Also: `npm run point-c:next` (Hostinger step) · `npm run geo:status` · `npm run point-c:hostinger-eml` (writes `docs/ops/arleds-301-hostinger.eml`) · mailto in `point-c.txt` — use only when verify mode is Hostinger.
 
 ## Verify
 
