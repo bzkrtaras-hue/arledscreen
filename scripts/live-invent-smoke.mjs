@@ -88,7 +88,11 @@ if (
   rss.includes('href="https://arledscreen.com/.well-known/modules.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/sku.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/mpn.json"') &&
-  rss.includes('href="https://arledscreen.com/.well-known/merchant.json"')
+  rss.includes('href="https://arledscreen.com/.well-known/merchant.json"') &&
+  rss.includes("/entity-profiles.json") &&
+  rss.includes("/.well-known/brand.json") &&
+  rss.includes("/.well-known/entity.json") &&
+  rss.includes("geo:next")
 ) {
   ok("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known");
 } else fail("prices.rss atom:link + invent aliases entity/brand/catalog/geo/point-c + well-known");
@@ -204,6 +208,17 @@ else fail("ard.resources.pointC");
   ) {
     ok("ard invent allow + resources modules/sku + aiShopping invent");
   } else fail("ard invent allow + resources modules/sku + aiShopping invent");
+  if (
+    allow.includes("/.well-known/entity.json") &&
+    allow.includes("/.well-known/brand.json") &&
+    String(res.entityProfiles?.ownerNext || "").includes("geo:next") &&
+    JSON.stringify(res.entityProfiles?.distribution || []).includes("/ai-shopping.json") &&
+    String(res.geoBaseline?.ownerNext || "").includes("geo:next") &&
+    String(res.pointC?.ownerNext || "").includes("geo:next") &&
+    JSON.stringify(res.brand?.subjectOf || []).includes("/point-c.txt")
+  ) {
+    ok("ard invent entity/brand allow + geo:next distribution");
+  } else fail("ard invent entity/brand allow + geo:next distribution");
 }
 
 try {

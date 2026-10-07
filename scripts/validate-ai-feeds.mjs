@@ -447,11 +447,37 @@ if (fs.existsSync(outDir)) {
       console.error("❌ ard.json must expose resources.humansTxt");
       process.exit(1);
     }
-    for (const must of ["/point-c.txt", "/point-c-en.txt", "/.well-known/point-c.txt", "/humans.txt", "/brand.json"]) {
+    for (const must of [
+      "/point-c.txt",
+      "/point-c-en.txt",
+      "/.well-known/point-c.txt",
+      "/humans.txt",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/.well-known/entity.json",
+    ]) {
       if (!ard.robotsPolicy.allow.includes(must)) {
         console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
         process.exit(1);
       }
+    }
+    const epRes = ard?.agentic?.resources?.entityProfiles;
+    const geoRes = ard?.agentic?.resources?.geoBaseline;
+    const pcRes = ard?.agentic?.resources?.pointC;
+    if (
+      !String(epRes?.ownerNext || "").includes("geo:next") ||
+      !JSON.stringify(epRes?.distribution || []).includes("/ai-shopping.json") ||
+      !JSON.stringify(epRes?.distribution || []).includes("/point-c.txt") ||
+      !String(geoRes?.ownerNext || "").includes("geo:next") ||
+      !JSON.stringify(geoRes?.distribution || []).includes("/brand.json") ||
+      !String(pcRes?.ownerNext || "").includes("geo:next")
+    ) {
+      console.error("❌ ard.json entityProfiles/geoBaseline/pointC must cite geo:next + invent distribution");
+      process.exit(1);
+    }
+    if (!JSON.stringify(ardBrand?.subjectOf || []).includes("/point-c.txt")) {
+      console.error("❌ ard.json resources.brand.subjectOf must include point-c.txt");
+      process.exit(1);
     }
   }
   if (!String(ard?.agentic?.resources?.entity?.makesOffer || "").includes("#priced-panels-aggregate")) {
@@ -1223,13 +1249,24 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("arled@arledscreen.com") ||
     !securityLive.includes("Expires:") ||
     !securityLive.includes("/brand.json") ||
+    !securityLive.includes("/.well-known/brand.json") ||
     !securityLive.includes("/entity.json") ||
+    !securityLive.includes("/.well-known/entity.json") ||
     !securityLive.includes("/ai-shopping.json") ||
     !securityLive.includes("/prices.json") ||
-    !securityLive.includes("/point-c.txt")
+    !securityLive.includes("/point-c.txt") ||
+    !securityLive.includes("/entity-profiles.json") ||
+    !securityLive.includes("geo:next")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/Price/Point C invent pointers");
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/Price/Point C/entity-profiles/geo:next invent pointers");
     process.exit(1);
+  }
+  {
+    const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
+    if (!llmsGeo.includes("geo:next") || !llmsGeo.includes("/.well-known/brand.json")) {
+      console.error("❌ out/llms.txt must cite geo:next + /.well-known/brand.json");
+      process.exit(1);
+    }
   }
   const llmsLive = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
   if (!llmsLive.includes("Inventable feed path aliases") || !llmsLive.includes("/api/prices")) {
@@ -1260,9 +1297,11 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/.well-known/modules.json") ||
       !humansLive.includes("/.well-known/sku.json") ||
       !humansLive.includes("/.well-known/pricing.json") ||
-      !humansLive.includes("geo:next")
+      !humansLive.includes("geo:next") ||
+      !humansLive.includes("/entity-profiles.json") ||
+      !humansLive.includes("/.well-known/brand.json")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c.txt + well-known invent aliases + geo:next");
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + geo:next");
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
@@ -1560,9 +1599,13 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('href="https://arledscreen.com/.well-known/sku.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/mpn.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/merchant.json"') ||
+      !rssLive.includes("/entity-profiles.json") ||
+      !rssLive.includes("/.well-known/brand.json") ||
+      !rssLive.includes("/.well-known/entity.json") ||
+      !rssLive.includes("geo:next") ||
       !rssLive.includes('rel="related"')
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c + well-known invent");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + geo:next");
       process.exit(1);
     }
   }

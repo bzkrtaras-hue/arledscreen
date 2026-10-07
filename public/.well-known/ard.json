@@ -141,7 +141,9 @@
           "https://arledscreen.com/catalog.json",
           "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
           "https://arledscreen.com/geo-baseline.json",
-          "https://arledscreen.com/feeds/prices.rss"
+          "https://arledscreen.com/feeds/prices.rss",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/entity-profiles.json"
         ],
         "brandHub": "https://arledscreen.com/tr/nxtionstar/",
         "brandHubEn": "https://arledscreen.com/en/nxtionstar/",
@@ -151,11 +153,21 @@
         "type": "GEO Technical Baseline",
         "url": "https://arledscreen.com/geo-baseline.json",
         "format": "application/ld+json",
-        "description": "Machine-readable snapshot of pricedPanels, Brand @id, and discovery fingerprints for before/after measurement. Does not invent AI mention rates. Point C and Tur1a remain owner-gated.",
+        "description": "Machine-readable snapshot of pricedPanels, Brand @id, and discovery fingerprints for before/after measurement. Schema.org distribution → ai-shopping/prices/brand/entity/catalog/point-c/AGENTS.md. Does not invent AI mention rates. Owner clipboard: npm run geo:next (Point C → arleds 301 → Tur1a → merge).",
         "pricedPanels": 12,
         "freeShipping": false,
         "brandId": "https://arledscreen.com/#brand-nxtionstar",
-        "goalTargetDate": "2026-11-04"
+        "goalTargetDate": "2026-11-04",
+        "ownerNext": "npm run geo:next",
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/prices.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/AGENTS.md"
+        ]
       },
       "catalog": {
         "type": "Product Catalog",
@@ -229,22 +241,35 @@
         "type": "Profile Paste Packs",
         "url": "https://arledscreen.com/entity-profiles.json",
         "format": "application/ld+json",
-        "description": "Third-party profile text packs (Point C) aligned with entity.json cite. Use packs.* (TR) and packsEn.* (EN cite-only; no catalog jargon in public bios). Live paste: /point-c.txt · /point-c-en.txt · /.well-known/point-c.txt",
+        "description": "Third-party profile text packs (Point C) aligned with entity.json cite. Dataset invent: isBasedOn + distribution → entity/brand/ai-shopping/catalog/geo/point-c. Use packs.* (TR) and packsEn.* (EN cite-only; no catalog jargon in public bios). Live paste: /point-c.txt · /point-c-en.txt · /.well-known/point-c.txt. Owner single clipboard: npm run geo:next.",
         "packs": "TR paste packs",
         "packsEn": "EN cite-only paste packs (GBP/directories/LinkedIn)",
         "brandId": "https://arledscreen.com/#brand-nxtionstar",
         "pointCTxt": "https://arledscreen.com/point-c.txt",
         "pointCEnTxt": "https://arledscreen.com/point-c-en.txt",
+        "ownerNext": "npm run geo:next",
+        "distribution": [
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/prices.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/point-c-en.txt",
+          "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+        ],
         "ownerPlaybook": "docs/offsite-entity-playbook.md (repo; not a public URL — owner/PR ops for Google Business, directories, LinkedIn, Bing Places)"
       },
       "pointC": {
         "type": "Owner Point C Paste Packs",
         "url": "https://arledscreen.com/point-c.txt",
         "format": "text/plain",
-        "description": "Copy-ready GBP/IG/FB/LinkedIn NAP paste packs (TR) + Hostinger arleds.com 301 clipboard. Source: entity-profiles.json packs.*; alias /.well-known/point-c.txt; EN twin /point-c-en.txt. Owner-gated — do not invent third-party cites.",
+        "description": "Copy-ready GBP/IG/FB/LinkedIn NAP paste packs (TR) + Hostinger arleds.com 301 clipboard. Source: entity-profiles.json packs.*; alias /.well-known/point-c.txt; EN twin /point-c-en.txt. Owner-gated — do not invent third-party cites. Single next: npm run geo:next · sequential: npm run point-c:next · ack: npm run point-c:ack.",
         "wellKnown": "https://arledscreen.com/.well-known/point-c.txt",
         "en": "https://arledscreen.com/point-c-en.txt",
-        "source": "https://arledscreen.com/entity-profiles.json"
+        "source": "https://arledscreen.com/entity-profiles.json",
+        "ownerNext": "npm run geo:next"
       },
       "pointCEn": {
         "type": "Owner Point C Paste Packs (EN)",
@@ -656,6 +681,7 @@
       "/price.json",
       "/pricing.json",
       "/.well-known/brand.json",
+      "/.well-known/entity.json",
       "/.well-known/humans.txt",
       "/api/panels.json",
       "/api/merchant.json",

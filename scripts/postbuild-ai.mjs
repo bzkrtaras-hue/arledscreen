@@ -1214,6 +1214,7 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/catalog.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/geo-baseline.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/entity-profiles.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/point-c.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/prices.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/prices.json" rel="related" type="application/ld+json"/>
@@ -1224,7 +1225,9 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/.well-known/sku.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/mpn.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/merchant.json" rel="related" type="application/ld+json"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt</description>
+    <atom:link href="${SITE_URL}/.well-known/brand.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/entity.json" rel="related" type="application/ld+json"/>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
     <docs>${SITE_URL}/ai.txt</docs>
@@ -2546,9 +2549,12 @@ Policy: https://arledscreen.com/tr/gizlilik/
 Hiring: https://arledscreen.com/tr/about/
 Acknowledgments: https://arledscreen.com/brand.json
 # Brand: https://arledscreen.com/brand.json (#brand-nxtionstar AggregateOffer×12 + hasOfferCatalog → catalog.json)
-# Entity: https://arledscreen.com/entity.json (alias /organization.json · /cite)
+# Brand alias: https://arledscreen.com/.well-known/brand.json
+# Entity: https://arledscreen.com/entity.json (alias /organization.json · /cite · /.well-known/entity.json)
 # Price: https://arledscreen.com/ai-shopping.json pricedPanels (aliases /prices.json · /.well-known/prices.json)
-# Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json · Point C: https://arledscreen.com/point-c.txt
+# Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json
+# Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json
+# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge)
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);
