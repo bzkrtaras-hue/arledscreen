@@ -15,6 +15,9 @@ const PANELS_JSON_URL = `${SITE_URL}/panels.json`;
 const MPN_JSON_URL = `${SITE_URL}/mpn.json`;
 const ENTITY_PROFILES_URL = `${SITE_URL}/entity-profiles.json`;
 const ORGANIZATION_JSON_URL = `${SITE_URL}/organization.json`;
+const BRAND_WELLKNOWN_URL = `${SITE_URL}/.well-known/brand.json`;
+const ENTITY_WELLKNOWN_URL = `${SITE_URL}/.well-known/entity.json`;
+const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
 const AI_TXT_URL = `${SITE_URL}/ai.txt`;
@@ -27,6 +30,8 @@ export const aiDiscoveryMetadata: Metadata = {
       "application/ld+json": [
         { url: ENTITY_JSON_URL, title: "Organization Entity" },
         { url: BRAND_JSON_URL, title: "NXTIONSTAR Brand" },
+        { url: BRAND_WELLKNOWN_URL, title: "NXTIONSTAR Brand invent alias" },
+        { url: ENTITY_WELLKNOWN_URL, title: "Organization invent alias" },
         { url: CATALOG_JSON_URL, title: "Product Catalog" },
         { url: AI_SHOPPING_URL, title: "AI Shopping Index" },
         { url: PRICES_JSON_URL, title: "Panel Prices (alias)" },
@@ -47,6 +52,7 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: LLMS_FULL_URL, title: "LLM Context (Full)" },
         { url: AI_TXT_URL, title: "AI Discovery Pointer" },
         { url: HUMANS_TXT_URL, title: "Humans.txt" },
+        { url: POINT_C_TXT_URL, title: "Point C paste packs" },
       ],
       "text/markdown": [{ url: AGENTS_MD_URL, title: "AGENTS.md" }],
     },
@@ -56,6 +62,8 @@ export const aiDiscoveryMetadata: Metadata = {
 export const aiDiscoveryLinks = [
   { rel: "alternate", type: "application/ld+json", href: ENTITY_JSON_URL, title: "Organization Entity" },
   { rel: "alternate", type: "application/ld+json", href: BRAND_JSON_URL, title: "NXTIONSTAR Brand" },
+  { rel: "alternate", type: "application/ld+json", href: BRAND_WELLKNOWN_URL, title: "NXTIONSTAR Brand invent alias" },
+  { rel: "alternate", type: "application/ld+json", href: ENTITY_WELLKNOWN_URL, title: "Organization invent alias" },
   { rel: "alternate", type: "application/ld+json", href: CATALOG_JSON_URL, title: "Product Catalog" },
   { rel: "alternate", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping Index" },
   { rel: "alternate", type: "application/ld+json", href: PRICES_JSON_URL, title: "Panel Prices (alias)" },
@@ -77,6 +85,7 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "text/plain", href: LLMS_FULL_URL, title: "LLM Context (Full)" },
   { rel: "alternate", type: "text/plain", href: AI_TXT_URL, title: "AI Discovery Pointer" },
   { rel: "alternate", type: "text/plain", href: HUMANS_TXT_URL, title: "Humans.txt" },
+  { rel: "alternate", type: "text/plain", href: POINT_C_TXT_URL, title: "Point C paste packs" },
   { rel: "alternate", type: "text/markdown", href: AGENTS_MD_URL, title: "AGENTS.md" },
   // RFC 8288: machine agents that follow Link / describedby land on price + entity + brand.
   { rel: "describedby", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping pricedPanels" },

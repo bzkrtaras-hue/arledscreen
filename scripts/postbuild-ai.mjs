@@ -649,6 +649,7 @@ function buildAiShopping() {
       `${SITE_URL}/.well-known/agents.json`,
       `${SITE_URL}/AGENTS.md`,
       `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/entity-profiles.json`,
     ],
     hasPart: pricedPanels.map((p) => ({
       "@type": "Product",
@@ -818,6 +819,12 @@ function buildAiShopping() {
         "@type": "DataDownload",
         encodingFormat: "text/plain",
         contentUrl: `${SITE_URL}/point-c.txt`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity-profiles.json`,
+        name: "ARLEDSCREEN Point C entity profiles",
       },
     ],
     dateModified: new Date().toISOString().split("T")[0],
@@ -1319,6 +1326,12 @@ function websiteInventSubjectOf() {
       name: "ARLEDSCREEN Point C paste packs",
       encodingFormat: "text/plain",
     },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/entity-profiles.json`,
+      url: `${SITE_URL}/entity-profiles.json`,
+      name: "ARLEDSCREEN Point C entity profiles",
+    },
   ];
 }
 
@@ -1639,6 +1652,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       `${SITE_URL}/feeds/prices.rss`,
       `${SITE_URL}/AGENTS.md`,
+      `${SITE_URL}/entity-profiles.json`,
     ],
     isRelatedTo: [
       {
@@ -1659,6 +1673,12 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         "@id": `${SITE_URL}/.well-known/agents.json`,
         url: `${SITE_URL}/.well-known/agents.json`,
         name: "ARLEDSCREEN agents discovery",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/entity-profiles.json`,
+        url: `${SITE_URL}/entity-profiles.json`,
+        name: "ARLEDSCREEN Point C entity profiles",
       },
     ],
     // Schema.org DataDownload walk — geo-first agents must reach price/entity/Point C (not discovery-only).
@@ -1728,6 +1748,12 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         "@type": "DataDownload",
         encodingFormat: "text/markdown",
         contentUrl: `${SITE_URL}/AGENTS.md`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity-profiles.json`,
+        name: "ARLEDSCREEN Point C entity profiles",
       },
     ],
     brand: {

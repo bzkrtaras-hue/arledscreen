@@ -54,7 +54,8 @@
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/AGENTS.md",
-    "https://arledscreen.com/point-c.txt"
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/entity-profiles.json"
   ],
   "hasPart": [
     {
@@ -1095,6 +1096,12 @@
       "@type": "DataDownload",
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/point-c.txt"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity-profiles.json",
+      "name": "ARLEDSCREEN Point C entity profiles"
     }
   ],
   "dateModified": "2026-10-07",

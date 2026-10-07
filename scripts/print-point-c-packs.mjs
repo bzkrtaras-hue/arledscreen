@@ -279,6 +279,17 @@ function argValue(name) {
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 
 if (isMain) {
+  if (argFlag("help") || process.argv.includes("-h")) {
+    console.log(`Usage:
+  npm run point-c
+  npm run point-c:next
+  npm run point-c:ack [-- --pack=directoryLong]
+  npm run geo:ack          (alias of point-c:ack)
+  npm run point-c:hostinger-eml
+  npm run geo:next         (priority owner clipboard)
+Does not invent citations. --help never acks progress.`);
+    process.exit(0);
+  }
   if (!fs.existsSync(profilesPath)) {
     console.error("Missing public/entity-profiles.json");
     process.exit(1);
@@ -291,6 +302,18 @@ if (isMain) {
   } else if (argFlag("next")) {
     printNext(profiles, { en: useEn });
   } else if (argFlag("ack")) {
+    // Refuse accidental ack when extra unknown flags present (e.g. --help already handled).
+    const unknown = process.argv.slice(2).filter(
+      (a) =>
+        a.startsWith("-") &&
+        !["--ack", "--en", "--next", "--eml", "--hostinger-eml", "--help", "-h"].includes(a) &&
+        !a.startsWith("--pack="),
+    );
+    if (unknown.length) {
+      console.error(`Refusing ack with unknown flags: ${unknown.join(" ")}`);
+      console.error("Use: npm run point-c:ack   or   npm run point-c:ack -- --pack=directoryLong");
+      process.exit(1);
+    }
     ackStep(profiles, { en: useEn, pack: only });
   } else {
     process.stdout.write(buildPointCPackText(profiles, { en: useEn, only }));

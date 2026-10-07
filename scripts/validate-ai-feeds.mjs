@@ -194,8 +194,8 @@ if (fs.existsSync(outDir)) {
     }
   }
   const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
-  if (!Array.isArray(ai.distribution) || ai.distribution.length < 23) {
-    console.error("❌ ai-shopping.json Dataset.distribution must list ≥23 DataDownload encodings (invent aliases + brand/entity/point-c)");
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 24) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥24 DataDownload encodings (invent aliases + brand/entity/point-c/profiles)");
     process.exit(1);
   }
   for (const needle of [
@@ -224,6 +224,7 @@ if (fs.existsSync(outDir)) {
     "/brand.json",
     "/entity.json",
     "/point-c.txt",
+    "/entity-profiles.json",
   ]) {
     if (!distUrls.some((u) => u.includes(needle))) {
       console.error(`❌ ai-shopping.json distribution must include DataDownload ${needle}`);
@@ -541,13 +542,14 @@ if (fs.existsSync(outDir)) {
       "/catalog.json",
       "/feeds/merchant-priced-panels.tsv",
       "/feeds/prices.rss",
+      "/entity-profiles.json",
     ]) {
       if (!geoBased.includes(needle)) {
         console.error(`❌ geo-baseline.json isBasedOn must include ${needle}`);
         process.exit(1);
       }
     }
-    for (const needle of ["/point-c.txt", "/.well-known/ard.json", "/.well-known/agents.json"]) {
+    for (const needle of ["/point-c.txt", "/.well-known/ard.json", "/.well-known/agents.json", "/entity-profiles.json"]) {
       if (!geoRelated.includes(needle)) {
         console.error(`❌ geo-baseline.json isRelatedTo must include ${needle}`);
         process.exit(1);
@@ -567,6 +569,7 @@ if (fs.existsSync(outDir)) {
       "/feeds/merchant-priced-panels.tsv",
       "/feeds/prices.rss",
       "/point-c.txt",
+      "/entity-profiles.json",
       "/AGENTS.md",
     ]) {
       if (!geoDist.includes(needle)) {
@@ -636,8 +639,12 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources.pointC + pointCEn + pointCWellKnown required");
     process.exit(1);
   }
-  if (!JSON.stringify(ai?.isBasedOn || []).includes("/brand.json") || !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt")) {
-    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + /point-c.txt");
+  if (
+    !JSON.stringify(ai?.isBasedOn || []).includes("/brand.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/entity-profiles.json")
+  ) {
+    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + /point-c.txt + /entity-profiles.json");
     process.exit(1);
   }
   if (!ard?.agentic?.resources?.pricesJson?.url?.includes("/prices.json") || !ard?.agentic?.resources?.agentsMd?.url?.includes("AGENTS.md")) {
@@ -960,9 +967,10 @@ if (fs.existsSync(outDir)) {
       !siteBlob.includes("/prices.json") ||
       !siteBlob.includes("/catalog.json") ||
       !siteBlob.includes("/brand.json") ||
-      !siteBlob.includes("/point-c.txt")
+      !siteBlob.includes("/point-c.txt") ||
+      !siteBlob.includes("/entity-profiles.json")
     ) {
-      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs");
+      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs + entity-profiles");
       process.exit(1);
     }
   }
@@ -1719,8 +1727,12 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/ai-shopping.json"',
       'href="https://arledscreen.com/entity.json"',
       'href="https://arledscreen.com/brand.json"',
+      'href="https://arledscreen.com/.well-known/brand.json"',
+      'href="https://arledscreen.com/.well-known/entity.json"',
       'href="https://arledscreen.com/prices.json"',
       'href="https://arledscreen.com/organization.json"',
+      'href="https://arledscreen.com/entity-profiles.json"',
+      'href="https://arledscreen.com/point-c.txt"',
       'href="https://arledscreen.com/.well-known/agents.json"',
       'href="https://arledscreen.com/AGENTS.md"',
       'href="https://arledscreen.com/feeds/prices.rss"',
