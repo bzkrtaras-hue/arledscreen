@@ -352,6 +352,7 @@ function buildCatalog() {
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/#website`,
+      ...inventAliasBasedOnUrls(),
     ],
     // Schema.org DataDownload walk — parity with brand.json / ai-shopping (catalog-first agents).
     distribution: [
@@ -424,6 +425,7 @@ function buildCatalog() {
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      ...inventAliasDistributionEntries(),
       websiteDistributionEntry(),
     ],
     isRelatedTo: [
@@ -710,6 +712,7 @@ function buildAiShopping() {
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/#website`,
+      ...inventAliasBasedOnUrls(),
     ],
     hasPart: pricedPanels.map((p) => ({
       "@type": "Product",
@@ -1553,6 +1556,38 @@ function websiteDistributionEntry() {
   };
 }
 
+/** Well-known pricedPanels invent aliases (modules/sku/pricing) for distribution walks. */
+function inventAliasDistributionEntries() {
+  return [
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/modules.json`,
+      name: "Modules pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/sku.json`,
+      name: "SKU pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/pricing.json`,
+      name: "Pricing pricedPanels invent alias",
+    },
+  ];
+}
+
+function inventAliasBasedOnUrls() {
+  return [
+    `${SITE_URL}/.well-known/modules.json`,
+    `${SITE_URL}/.well-known/sku.json`,
+    `${SITE_URL}/.well-known/pricing.json`,
+  ];
+}
+
 /** Entity-first invent: Brand AggregateOffer×12 + Org/WebSite OrderAction (TR/EN). */
 function enrichEntityDocument(entity) {
   if (!entity || typeof entity !== "object") return entity;
@@ -1718,6 +1753,75 @@ function enrichEntityDocument(entity) {
     ls = ensureSubjectNeedle(ls, "#website", websiteEntry);
     entity.location.subjectOf = dedupeSubjectOfById(ls);
   }
+  // Org-first agents (entity.json / organization.json): isBasedOn + distribution invent closure.
+  {
+    const based = new Set(Array.isArray(entity.isBasedOn) ? entity.isBasedOn : []);
+    for (const u of [
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/prices.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/.well-known/brand.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/feeds/prices.rss`,
+      `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/entity-profiles.json`,
+      `${SITE_URL}/#website`,
+      ...inventAliasBasedOnUrls(),
+    ]) {
+      based.add(u);
+    }
+    entity.isBasedOn = [...based];
+  }
+  {
+    const distUrls = new Set(
+      (Array.isArray(entity.distribution) ? entity.distribution : []).map((d) => String(d?.contentUrl || d?.["@id"] || "")),
+    );
+    const dist = Array.isArray(entity.distribution) ? [...entity.distribution] : [];
+    for (const entry of [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/catalog.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/brand.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/geo-baseline.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE_URL}/point-c.txt`,
+        name: "ARLEDSCREEN Point C paste packs",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity-profiles.json`,
+        name: "ARLEDSCREEN Point C entity profiles",
+      },
+      ...inventAliasDistributionEntries(),
+      websiteDistributionEntry(),
+    ]) {
+      const key = String(entry.contentUrl || entry["@id"] || "");
+      if (key && distUrls.has(key)) continue;
+      if (key) distUrls.add(key);
+      dist.push(entry);
+    }
+    entity.distribution = dist;
+  }
   return entity;
 }
 
@@ -1746,6 +1850,7 @@ function enrichEntityProfiles(doc) {
     `${SITE_URL}/point-c.txt`,
     `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
     `${SITE_URL}/#website`,
+    ...inventAliasBasedOnUrls(),
   ]) {
     based.add(u);
   }
@@ -1823,6 +1928,7 @@ function enrichEntityProfiles(doc) {
         encodingFormat: "text/tab-separated-values",
         contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       },
+      ...inventAliasDistributionEntries(),
       websiteDistributionEntry(),
     ];
 
@@ -1830,6 +1936,7 @@ function enrichEntityProfiles(doc) {
   {
     const based = new Set(doc.isBasedOn || []);
     based.add(`${SITE_URL}/feeds/prices.rss`);
+    for (const u of inventAliasBasedOnUrls()) based.add(u);
     doc.isBasedOn = [...based];
   }
 
@@ -1966,6 +2073,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       `${SITE_URL}/AGENTS.md`,
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/#website`,
+      ...inventAliasBasedOnUrls(),
     ],
     isRelatedTo: [
       {
@@ -2074,6 +2182,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      ...inventAliasDistributionEntries(),
       websiteDistributionEntry(),
     ],
     brand: {
@@ -2816,6 +2925,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/#website`,
+      ...inventAliasBasedOnUrls(),
     ],
     mainEntityOfPage: {
       "@type": "WebSite",
@@ -2892,6 +3002,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      ...inventAliasDistributionEntries(),
       websiteDistributionEntry(),
     ],
     subjectOf: [

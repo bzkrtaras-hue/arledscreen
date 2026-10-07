@@ -559,6 +559,9 @@ if (fs.existsSync(outDir)) {
       "/feeds/prices.rss",
       "/entity-profiles.json",
       "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
     ]) {
       if (!geoBased.includes(needle)) {
         console.error(`❌ geo-baseline.json isBasedOn must include ${needle}`);
@@ -588,6 +591,9 @@ if (fs.existsSync(outDir)) {
       "/entity-profiles.json",
       "/AGENTS.md",
       "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
     ]) {
       if (!geoDist.includes(needle)) {
         console.error(`❌ geo-baseline.json distribution invent must include ${needle}`);
@@ -671,9 +677,12 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/entity.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/entity-profiles.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("#website")
+    !JSON.stringify(ai?.isBasedOn || []).includes("#website") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/modules.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/sku.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/pricing.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + well-known brand/entity + /organization.json + /point-c.txt + /entity-profiles.json + #website");
+    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + well-known brand/entity + /organization.json + /point-c.txt + /entity-profiles.json + #website + modules/sku/pricing");
     process.exit(1);
   }
   if (
@@ -792,6 +801,7 @@ if (fs.existsSync(outDir)) {
     }
     {
       const brandBased = JSON.stringify(brandLive?.isBasedOn || []);
+      const brandDist = JSON.stringify(brandLive?.distribution || []);
       for (const needle of [
         "/ai-shopping.json",
         "/catalog.json",
@@ -800,13 +810,23 @@ if (fs.existsSync(outDir)) {
         "/entity-profiles.json",
         "/feeds/prices.rss",
         "#website",
+        "/.well-known/modules.json",
+        "/.well-known/sku.json",
+        "/.well-known/pricing.json",
       ]) {
         if (!brandBased.includes(needle)) {
           console.error(`❌ brand.json isBasedOn must include ${needle}`);
           process.exit(1);
         }
       }
+      for (const needle of ["/.well-known/modules.json", "/.well-known/sku.json", "/.well-known/pricing.json"]) {
+        if (!brandDist.includes(needle)) {
+          console.error(`❌ brand.json distribution must invent-join ${needle}`);
+          process.exit(1);
+        }
+      }
       const catBased = JSON.stringify(catalogLive?.isBasedOn || []);
+      const catDistLive = JSON.stringify(catalogLive?.distribution || []);
       for (const needle of [
         "/ai-shopping.json",
         "/brand.json",
@@ -815,9 +835,18 @@ if (fs.existsSync(outDir)) {
         "/entity-profiles.json",
         "/feeds/prices.rss",
         "#website",
+        "/.well-known/modules.json",
+        "/.well-known/sku.json",
+        "/.well-known/pricing.json",
       ]) {
         if (!catBased.includes(needle)) {
           console.error(`❌ catalog.json isBasedOn must include ${needle}`);
+          process.exit(1);
+        }
+      }
+      for (const needle of ["/.well-known/modules.json", "/.well-known/sku.json", "/.well-known/pricing.json"]) {
+        if (!catDistLive.includes(needle)) {
+          console.error(`❌ catalog.json distribution must invent-join ${needle}`);
           process.exit(1);
         }
       }
@@ -1210,6 +1239,44 @@ if (fs.existsSync(outDir)) {
     if (!entDesc.includes("geo:next") || !entDesc.includes("geo:ack") || !entDesc.includes("#website")) {
       console.error("❌ entity.json description must cite geo:next/ack + #website (organization alias parity)");
       process.exit(1);
+    }
+  }
+  {
+    const entBased = JSON.stringify(entity?.isBasedOn || []);
+    const entDist = JSON.stringify(entity?.distribution || []);
+    for (const needle of [
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/brand.json",
+      "/geo-baseline.json",
+      "/point-c.txt",
+      "/entity-profiles.json",
+      "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+    ]) {
+      if (!entBased.includes(needle)) {
+        console.error(`❌ entity.json isBasedOn must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of [
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/brand.json",
+      "/geo-baseline.json",
+      "/point-c.txt",
+      "/entity-profiles.json",
+      "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+    ]) {
+      if (!entDist.includes(needle)) {
+        console.error(`❌ entity.json distribution must invent-join ${needle}`);
+        process.exit(1);
+      }
     }
   }
   if (!ai?.agentGuidelines?.roleClarity?.legacyDomainNote?.includes("arleds.com")) {
@@ -1998,6 +2065,9 @@ if (fs.existsSync(outDir)) {
       "/geo-baseline.json",
       "/point-c.txt",
       "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
     ]) {
       if (!epBased.includes(needle)) {
         console.error(`❌ entity-profiles.json isBasedOn invent must include ${needle}`);
@@ -2017,6 +2087,9 @@ if (fs.existsSync(outDir)) {
       "/feeds/prices.rss",
       "/point-c.txt",
       "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
     ]) {
       if (!epDist.includes(needle)) {
         console.error(`❌ entity-profiles.json distribution invent must include ${needle}`);
