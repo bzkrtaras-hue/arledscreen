@@ -2844,4 +2844,34 @@ if (!robotsFnBody.includes("Google-CloudVertexBot") || !robotsTsBody.includes("G
 }
 console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt + TR llms + panels/mpn/merchant invent aliases");
 
+{
+  const sitemapPath = path.join(outDir, "sitemap.xml");
+  if (!fs.existsSync(sitemapPath)) {
+    console.error("❌ Missing in out/: sitemap.xml");
+    process.exit(1);
+  }
+  const sitemapLive = fs.readFileSync(sitemapPath, "utf8");
+  for (const needle of [
+    "/.well-known/panels.json",
+    "/.well-known/mpn.json",
+    "/.well-known/merchant.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+    "/modules.json",
+    "/sku.json",
+    "/panels.json",
+    "/point-c.txt",
+    "/brand.json",
+    "/feeds/prices.rss",
+  ]) {
+    if (!sitemapLive.includes(needle)) {
+      console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ sitemap.xml lists well-known panels/mpn/merchant invent aliases");
+}
+
 validateAIFeeds();

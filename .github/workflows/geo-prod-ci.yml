@@ -32,8 +32,11 @@ jobs:
             echo "ai-shopping must not carry blind-test payload" >&2
             exit 1
           fi
-          for needle in ai-shopping.json entity.json llms.txt catalog.json brand.json prices.rss; do
+          for needle in ai-shopping.json entity.json llms.txt catalog.json brand.json prices.rss point-c.txt; do
             grep -q "$needle" out/sitemap.xml || { echo "sitemap missing $needle" >&2; exit 1; }
+          done
+          for needle in /.well-known/panels.json /.well-known/mpn.json /.well-known/merchant.json /modules.json /sku.json; do
+            grep -q "$needle" out/sitemap.xml || { echo "sitemap missing invent alias $needle" >&2; exit 1; }
           done
           echo "OK GEO out/ artefacts"
       - name: Local invent smoke
