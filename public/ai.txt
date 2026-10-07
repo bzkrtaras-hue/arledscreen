@@ -24,7 +24,10 @@ manufacturer-en: https://arledscreen.com/en/led-ekran-ureticisi/
 service-en: https://arledscreen.com/en/led-ekran-servis/
 services-hub-en: https://arledscreen.com/en/hizmetler/
 regions-hub-en: https://arledscreen.com/en/bolgeler/
+projects-hub-en: https://arledscreen.com/en/projelerimiz/
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
+guide-bridge-finepitch-en: https://arledscreen.com/en/rehber/ince-pitch-led-ekran/
+guide-bridge-gob-en: https://arledscreen.com/en/rehber/gob-led-ekran/
 use-store-en: https://arledscreen.com/en/magaza-led-ekran/
 use-facade-en: https://arledscreen.com/en/cephe-led-ekran/
 use-mall-en: https://arledscreen.com/en/avm-led-ekran/
