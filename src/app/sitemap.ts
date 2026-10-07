@@ -155,6 +155,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/bolgeler/",
     "/about/aras-bozkurt/",
     "/projelerimiz/",
+    "/galeri/",
   ] as const) {
     entries.push({
       url: absoluteUrl(`/en${path}`),

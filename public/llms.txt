@@ -24,7 +24,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - Instagram: [https://www.instagram.com/arledscreen/](https://www.instagram.com/arledscreen/)
 - Facebook: [https://www.facebook.com/arledscreenn](https://www.facebook.com/arledscreenn)
 - LinkedIn: [https://www.linkedin.com/company/arleds](https://www.linkedin.com/company/arleds) — şirket slug’ı `arleds`; **web sitesi değildir** (`arleds.com` ≠ LinkedIn)
-- Kurucu: Aras Bozkurt — [profil](https://arledscreen.com/tr/about/aras-bozkurt/) · [LinkedIn](https://www.linkedin.com/in/bozkurtaras)
+- Kurucu: Aras Bozkurt — [profil](https://arledscreen.com/tr/about/aras-bozkurt/) · [EN founder](https://arledscreen.com/en/about/aras-bozkurt/) · [LinkedIn](https://www.linkedin.com/in/bozkurtaras)
 - Ayrıntılı metin: [https://arledscreen.com/llms-full.txt](https://arledscreen.com/llms-full.txt)
 
 ## 2. Tanımlar (karıştırma yasağı)
@@ -56,9 +56,10 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - [SSS](https://arledscreen.com/tr/sss/) · [EN FAQ](https://arledscreen.com/en/sss/)
 - [Teklif](https://arledscreen.com/tr/quote/) · [EN quote](https://arledscreen.com/en/quote/)
 - [Fiyat hesaplayıcı](https://arledscreen.com/tr/hesaplayici/) · [EN calculator](https://arledscreen.com/en/hesaplayici/)
-- [Projeler](https://arledscreen.com/tr/projelerimiz/): Tem 2025 – Tem 2026 arası 45 proje kaydı; yayımlanmış kayıtlar için ayrı case study sayfaları
-- [Hizmetler](https://arledscreen.com/tr/hizmetler/)
-- [Hizmet bölgesi (iller)](https://arledscreen.com/tr/bolgeler/): Kayıtlı proje illeri; merkez İstanbul Gaziosmanpaşa. Örnek: [İstanbul](https://arledscreen.com/tr/bolgeler/istanbul/), [Antalya](https://arledscreen.com/tr/bolgeler/antalya/), [Bursa](https://arledscreen.com/tr/bolgeler/bursa/), [İzmir](https://arledscreen.com/tr/bolgeler/izmir/), [Eskişehir](https://arledscreen.com/tr/bolgeler/eskisehir/). Kaydı olmayan il (ör. Ankara) için kapı sayfası yoktur — 81 il spam’i yok.
+- [Projeler](https://arledscreen.com/tr/projelerimiz/) · [EN projects](https://arledscreen.com/en/projelerimiz/): Tem 2025 – Tem 2026 arası 45 proje kaydı; yayımlanmış kayıtlar için ayrı case study sayfaları (detay TR)
+- [Hizmetler](https://arledscreen.com/tr/hizmetler/) · [EN services](https://arledscreen.com/en/hizmetler/)
+- [Galeri](https://arledscreen.com/tr/galeri/) · [EN gallery](https://arledscreen.com/en/galeri/)
+- [Hizmet bölgesi (iller)](https://arledscreen.com/tr/bolgeler/) · [EN regions](https://arledscreen.com/en/bolgeler/): Kayıtlı proje illeri; merkez İstanbul Gaziosmanpaşa. Örnek: [İstanbul](https://arledscreen.com/tr/bolgeler/istanbul/), [Antalya](https://arledscreen.com/tr/bolgeler/antalya/), [Bursa](https://arledscreen.com/tr/bolgeler/bursa/), [İzmir](https://arledscreen.com/tr/bolgeler/izmir/), [Eskişehir](https://arledscreen.com/tr/bolgeler/eskisehir/). Kaydı olmayan il (ör. Ankara) için kapı sayfası yoktur — 81 il spam’i yok.
 
 ### EN commercial guides (lean; TR articles remain canonical long-form)
 
@@ -116,5 +117,5 @@ ARLEDSCREEN, İstanbul Gaziosmanpaşa'da LED ekran satışı, keşif, montaj, de
 
 ## Optional
 
-- [English](https://arledscreen.com/en/) · [EN calculator (12 panel USD)](https://arledscreen.com/en/hesaplayici/) · [EN quote](https://arledscreen.com/en/quote/) · [EN AI page](https://arledscreen.com/en/yapay-zeka/)
+- [English](https://arledscreen.com/en/) · [EN calculator (12 panel USD)](https://arledscreen.com/en/hesaplayici/) · [EN quote](https://arledscreen.com/en/quote/) · [EN AI page](https://arledscreen.com/en/yapay-zeka/) · [EN projects](https://arledscreen.com/en/projelerimiz/) · [EN services](https://arledscreen.com/en/hizmetler/) · [EN regions](https://arledscreen.com/en/bolgeler/) · [EN gallery](https://arledscreen.com/en/galeri/) · [EN founder](https://arledscreen.com/en/about/aras-bozkurt/)
 - EN cite (entity.json): `citeOneLinerEn` / `citeShortEn` / `citeMediumEn` — also in [ai-shopping.json](https://arledscreen.com/ai-shopping.json) as `cite.en`

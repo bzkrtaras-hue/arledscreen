@@ -52,6 +52,7 @@ export function Footer({ locale }: FooterProps) {
         { href: "/en/hizmetler/", label: "Services" },
         { href: "/en/bolgeler/", label: "Service regions" },
         { href: "/en/projelerimiz/", label: "Projects" },
+        { href: "/en/galeri/", label: "Gallery" },
         { href: "/en/about/aras-bozkurt/", label: "Founder" },
         { href: "/en/magaza-led-ekran/", label: "Store LED" },
         { href: "/en/products/gob-led-ekran/", label: "GOB LED" },

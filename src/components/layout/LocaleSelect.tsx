@@ -26,7 +26,6 @@ export function LocaleSelect({
     /^\/tr\/bolgeler\/[^/]+\//,
     // Projects hub has EN; case-study detail pages stay TR-only.
     /^\/tr\/projelerimiz\/[^/]+\//,
-    /^\/tr\/galeri\//,
     // Product group landings now have EN counterparts; model pages stay TR-only.
     /^\/tr\/products\/[^/]+\/[^/]+\//,
     /^\/tr\/gizlilik\//,
