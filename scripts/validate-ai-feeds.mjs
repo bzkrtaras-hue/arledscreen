@@ -237,6 +237,23 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json brand.@id must be #brand-nxtionstar");
     process.exit(1);
   }
+  const disambig = String(entity?.disambiguatingDescription || "");
+  if (!disambig.includes("arleds.com") || !disambig.includes("arledscreen.com")) {
+    console.error("❌ entity.json disambiguatingDescription must warn arleds.com vs arledscreen.com");
+    process.exit(1);
+  }
+  if (JSON.stringify(entity?.sameAs || []).includes("arleds.com")) {
+    console.error("❌ entity.json sameAs must NOT include legacy arleds.com (until 301)");
+    process.exit(1);
+  }
+  if (!ai?.agentGuidelines?.roleClarity?.legacyDomainNote?.includes("arleds.com")) {
+    console.error("❌ ai-shopping agentGuidelines.roleClarity.legacyDomainNote required");
+    process.exit(1);
+  }
+  if (!ai?.agentGuidelines?.en?.roleClarity?.legacyDomainNote?.includes("arleds.com")) {
+    console.error("❌ ai-shopping agentGuidelines.en.roleClarity.legacyDomainNote required");
+    process.exit(1);
+  }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
   if (
     !profiles?.packsEn?.gbpDescription ||
