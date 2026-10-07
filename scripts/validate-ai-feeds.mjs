@@ -695,9 +695,11 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("NationStar") ||
     !aiTxtLive.includes("makesOffer") ||
     !aiTxtLive.includes("itemOffered") ||
-    !aiTxtLive.includes("#localbusiness")
+    !aiTxtLive.includes("#localbusiness") ||
+    !aiTxtLive.includes("#brand-nxtionstar") ||
+    !aiTxtLive.includes("hasOfferCatalog → catalog.json")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog");
     process.exit(1);
   }
   if (
@@ -1018,6 +1020,21 @@ if (fs.existsSync(outDir)) {
   }
   if (profiles?.brandId !== "https://arledscreen.com/#brand-nxtionstar") {
     console.error("❌ entity-profiles.json brandId must be #brand-nxtionstar");
+    process.exit(1);
+  }
+  if (
+    profiles?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar" ||
+    !String(profiles?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    !String(profiles?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+  ) {
+    console.error("❌ entity-profiles.json brand must makesOffer → #priced-panels-aggregate + hasOfferCatalog → catalog.json");
+    process.exit(1);
+  }
+  if (
+    !String(profiles?.packs?.googleMerchantReadiness || "").includes("makesOffer → #priced-panels-aggregate") ||
+    !String(profiles?.packs?.googleMerchantReadiness || "").includes("hasOfferCatalog → catalog.json")
+  ) {
+    console.error("❌ entity-profiles packs.googleMerchantReadiness must cite Brand makesOffer + hasOfferCatalog");
     process.exit(1);
   }
   if (!profiles?.canonicalUrls?.geoBaselineJson?.includes("/geo-baseline.json")) {

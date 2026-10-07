@@ -80,7 +80,8 @@ jobs:
           set -euo pipefail
           for attempt in 1 2 3 4 5; do
             echo "Deploy attempt ${attempt}/5"
-            if npx wrangler@4 pages deploy out --project-name=arledscreen --branch=main --commit-dirty=true; then
+            # --skip-caching: force full hash upload (avoids differential cache 5xx during CF outages)
+            if npx wrangler@4 pages deploy out --project-name=arledscreen --branch=main --commit-dirty=true --skip-caching; then
               echo "OK Cloudflare Pages deploy"
               exit 0
             fi
