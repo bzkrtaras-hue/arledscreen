@@ -627,6 +627,17 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   const headersLive = fs.readFileSync(path.join(outDir, "_headers"), "utf8");
+  const headerRuleCount = (headersLive.match(/^\/[^\s]/gm) || []).length;
+  if (headerRuleCount > 100) {
+    console.error(`❌ out/_headers has ${headerRuleCount} rules (Cloudflare Pages max 100) — consolidate with wildcards`);
+    process.exit(1);
+  }
+  for (const pattern of ["/:file.json", "/.well-known/:file.json", "/api/*", "/data/*", "/en/:file.json", "/tr/:file.json"]) {
+    if (!headersLive.includes(pattern)) {
+      console.error(`❌ out/_headers must include wildcard rule ${pattern} (Pages 100-rule cap)`);
+      process.exit(1);
+    }
+  }
   if (
     !headersLive.includes('rel="describedby"') ||
     !headersLive.includes("ai-shopping.json") ||
@@ -824,12 +835,12 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/tr/entity-profiles.json must match entity-profiles.json");
     process.exit(1);
   }
-  if (!headersLive.includes("/api/panels") || !headersLive.includes("/tr/llms.txt")) {
-    console.error("❌ out/_headers must set Content-Type for /api/panels + /tr/llms.txt");
+  if (!headersLive.includes("/api/*") || !headersLive.includes("/tr/:file.txt")) {
+    console.error("❌ out/_headers must set Content-Type for /api/* + /tr/:file.txt wildcards");
     process.exit(1);
   }
-  if (!headersLive.includes("/api/panels.json") || !headersLive.includes("\n/panels\n")) {
-    console.error("❌ out/_headers must set Content-Type for /api/panels.json + extensionless /panels");
+  if (!headersLive.includes("\n/panels\n")) {
+    console.error("❌ out/_headers must set Content-Type for extensionless /panels");
     process.exit(1);
   }
   const canonAiForExt = fs.readFileSync(path.join(outDir, "ai-shopping.json"));
@@ -865,14 +876,9 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/_headers must scope TSV Content-Type to /feeds/*.tsv");
     process.exit(1);
   }
-  for (const rel of ["offer.json", "cite.json", "faq.json", "faqs.json"]) {
-    const blockRe = new RegExp(
-      `\\n/${rel.replace(".", "\\.")}\\n[\\s\\S]*?Content-Type: application/json; charset=utf-8`,
-    );
-    if (!blockRe.test(headersLive)) {
-      console.error(`❌ out/_headers must set application/json; charset=utf-8 for /${rel}`);
-      process.exit(1);
-    }
+  if (!/\/:file\.json\n[\s\S]*?Content-Type: application\/json; charset=utf-8/.test(headersLive)) {
+    console.error("❌ out/_headers /:file.json wildcard must set application/json; charset=utf-8 (covers offer/cite/faq aliases)");
+    process.exit(1);
   }
   const canonEntityForSyn = fs.readFileSync(path.join(outDir, "entity.json"));
   for (const rel of ["cite.json", "faq.json", "faqs.json"]) {
