@@ -626,6 +626,22 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   {
+    const catDist = JSON.stringify(catalogLive.distribution || []);
+    if (
+      !Array.isArray(catalogLive.distribution) ||
+      catalogLive.distribution.length < 8 ||
+      !catDist.includes("/ai-shopping.json") ||
+      !catDist.includes("/prices.json") ||
+      !catDist.includes("/brand.json") ||
+      !catDist.includes("/entity.json") ||
+      !catDist.includes("/point-c.txt") ||
+      !catDist.includes("/feeds/prices.rss")
+    ) {
+      console.error("❌ catalog.json Dataset.distribution must invent-join ai-shopping/prices/brand/entity/point-c/prices.rss");
+      process.exit(1);
+    }
+  }
+  {
     const catalogDesc = String(catalogLive?.description || "");
     const brandLive = JSON.parse(fs.readFileSync(path.join(outDir, "brand.json"), "utf8"));
     const brandDesc = String(brandLive?.description || "");
@@ -883,13 +899,19 @@ if (fs.existsSync(outDir)) {
     const hasEn = siteActions.some(
       (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
     );
+    const siteBlob = JSON.stringify(site?.subjectOf || []) + JSON.stringify(site?.sameAs || []);
     if (
       site?.["@type"] !== "WebSite" ||
       site?.["@id"] !== "https://arledscreen.com/#website" ||
       !hasTr ||
-      !hasEn
+      !hasEn ||
+      !siteBlob.includes("/ai-shopping.json") ||
+      !siteBlob.includes("/prices.json") ||
+      !siteBlob.includes("/catalog.json") ||
+      !siteBlob.includes("/brand.json") ||
+      !siteBlob.includes("/point-c.txt")
     ) {
-      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN");
+      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs");
       process.exit(1);
     }
   }

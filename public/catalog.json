@@ -59,7 +59,62 @@
   "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
   "mainEntityOfPage": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
   "sameAs": [
-    "https://arledscreen.com/ai-shopping.json"
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/prices.json",
+    "https://arledscreen.com/brand.json"
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/ai-shopping.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/prices.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/prices.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/brand.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/organization.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-baseline.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/tab-separated-values",
+      "contentUrl": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/rss+xml",
+      "contentUrl": "https://arledscreen.com/feeds/prices.rss"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs"
+    }
   ],
   "isRelatedTo": [
     {

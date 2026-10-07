@@ -285,9 +285,33 @@ if (
 
 {
   const related = JSON.stringify(cat?.isRelatedTo || []);
+  const dist = JSON.stringify(cat?.distribution || []);
   if (related.includes("/entity.json") && related.includes("/brand.json")) {
     ok("catalog isRelatedTo entity + brand");
   } else fail("catalog isRelatedTo entity + brand");
+  if (
+    dist.includes("/ai-shopping.json") &&
+    dist.includes("/prices.json") &&
+    dist.includes("/brand.json") &&
+    dist.includes("/entity.json") &&
+    dist.includes("/point-c.txt")
+  ) {
+    ok("catalog distribution invent → ai-shopping/prices/brand/entity/point-c");
+  } else fail("catalog distribution invent → ai-shopping/prices/brand/entity/point-c");
+}
+
+{
+  const site = ent?.mainEntityOfPage || {};
+  const blob = JSON.stringify(site.subjectOf || []) + JSON.stringify(site.sameAs || []);
+  if (
+    site?.["@id"]?.includes("#website") &&
+    blob.includes("/ai-shopping.json") &&
+    blob.includes("/prices.json") &&
+    blob.includes("/brand.json") &&
+    blob.includes("/point-c.txt")
+  ) {
+    ok("entity WebSite invent subjectOf/sameAs");
+  } else fail("entity WebSite invent subjectOf/sameAs");
 }
 
 try {

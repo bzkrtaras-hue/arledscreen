@@ -3217,6 +3217,46 @@
         },
         "name": "Request a quote"
       }
+    ],
+    "sameAs": [
+      "https://arledscreen.com/ai-shopping.json",
+      "https://arledscreen.com/prices.json",
+      "https://arledscreen.com/catalog.json",
+      "https://arledscreen.com/brand.json",
+      "https://arledscreen.com/entity.json"
+    ],
+    "subjectOf": [
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/ai-shopping.json",
+        "url": "https://arledscreen.com/ai-shopping.json",
+        "name": "ARLEDSCREEN pricedPanels"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/prices.json",
+        "url": "https://arledscreen.com/prices.json",
+        "name": "ARLEDSCREEN pricedPanels (prices.json alias)"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/catalog.json",
+        "url": "https://arledscreen.com/catalog.json",
+        "name": "ARLEDSCREEN NXTIONSTAR catalog"
+      },
+      {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "url": "https://arledscreen.com/brand.json",
+        "name": "NXTIONSTAR"
+      },
+      {
+        "@type": "DataDownload",
+        "@id": "https://arledscreen.com/point-c.txt",
+        "url": "https://arledscreen.com/point-c.txt",
+        "name": "ARLEDSCREEN Point C paste packs",
+        "encodingFormat": "text/plain"
+      }
     ]
   }
 }

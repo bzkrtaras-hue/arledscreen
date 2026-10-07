@@ -130,5 +130,6 @@ jobs:
           grep -q "Gmail draft (Send)" /tmp/geo-status.txt
           grep -q "Point C paste progress" /tmp/geo-status.txt
           grep -q "Point C next paste" /tmp/geo-status.txt
-          grep -q "Tur1a next clipboard" /tmp/geo-status.txt
+          grep -q "Tur1a next:" /tmp/geo-status.txt
+          grep -q "tur1a:csv" /tmp/geo-status.txt
           echo "OK owner tooling"

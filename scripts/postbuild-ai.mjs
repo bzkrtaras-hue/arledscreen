@@ -327,7 +327,61 @@ function buildCatalog() {
     url: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
     mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
     // Collection ↔ Dataset identity (agents landing on either root).
-    sameAs: [`${SITE_URL}/ai-shopping.json`],
+    sameAs: [`${SITE_URL}/ai-shopping.json`, `${SITE_URL}/prices.json`, `${SITE_URL}/brand.json`],
+    // Schema.org DataDownload walk — parity with brand.json / ai-shopping (catalog-first agents).
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/prices.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/prices.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/brand.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/entity.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/organization.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/geo-baseline.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/tab-separated-values",
+        contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/rss+xml",
+        contentUrl: `${SITE_URL}/feeds/prices.rss`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE_URL}/point-c.txt`,
+        name: "ARLEDSCREEN Point C paste packs",
+      },
+    ],
     isRelatedTo: [
       {
         "@type": "Dataset",
@@ -1217,6 +1271,42 @@ function quoteOrderActions() {
   ];
 }
 
+function websiteInventSubjectOf() {
+  return [
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/ai-shopping.json`,
+      url: `${SITE_URL}/ai-shopping.json`,
+      name: "ARLEDSCREEN pricedPanels",
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/prices.json`,
+      url: `${SITE_URL}/prices.json`,
+      name: "ARLEDSCREEN pricedPanels (prices.json alias)",
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/catalog.json`,
+      url: `${SITE_URL}/catalog.json`,
+      name: "ARLEDSCREEN NXTIONSTAR catalog",
+    },
+    {
+      "@type": "Brand",
+      "@id": `${SITE_URL}/#brand-nxtionstar`,
+      url: `${SITE_URL}/brand.json`,
+      name: "NXTIONSTAR",
+    },
+    {
+      "@type": "DataDownload",
+      "@id": `${SITE_URL}/point-c.txt`,
+      url: `${SITE_URL}/point-c.txt`,
+      name: "ARLEDSCREEN Point C paste packs",
+      encodingFormat: "text/plain",
+    },
+  ];
+}
+
 function websiteNode() {
   return {
     "@type": "WebSite",
@@ -1227,6 +1317,15 @@ function websiteNode() {
     inLanguage: ["tr-TR", "en-US"],
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@id": `${SITE_URL}/#organization` },
+    // Invent join: WebSite-only agents still reach pricedPanels + brand + Point C.
+    sameAs: [
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/prices.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/entity.json`,
+    ],
+    subjectOf: websiteInventSubjectOf(),
     potentialAction: quoteOrderActions(),
   };
 }
@@ -1278,6 +1377,30 @@ function enrichEntityDocument(entity) {
     !hasQuoteOrderActions(mep.potentialAction)
   ) {
     entity.mainEntityOfPage = websiteNode();
+  } else {
+    // Enrich existing WebSite with invent joins (do not drop OrderAction).
+    const site = { ...mep };
+    if (!hasQuoteOrderActions(site.potentialAction)) site.potentialAction = quoteOrderActions();
+    const same = Array.isArray(site.sameAs) ? [...site.sameAs] : [];
+    for (const u of [
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/prices.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/entity.json`,
+    ]) {
+      if (!same.includes(u)) same.push(u);
+    }
+    site.sameAs = same;
+    let ss = Array.isArray(site.subjectOf) ? [...site.subjectOf] : [];
+    for (const entry of websiteInventSubjectOf()) {
+      const needle = String(entry.url || "");
+      if (!ss.some((s) => String(s?.url || s?.["@id"] || "").includes(needle.replace(SITE_URL, "")) || String(s?.url || "") === needle)) {
+        ss.push(entry);
+      }
+    }
+    site.subjectOf = ss;
+    entity.mainEntityOfPage = site;
   }
   // Org → Point C + Brand document reverse invent (keep PDP graphs clean).
   const pointCEntry = {
