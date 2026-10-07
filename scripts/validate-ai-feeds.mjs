@@ -121,6 +121,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/ai-shopping.json Dataset must hasPart 12 Products");
     process.exit(1);
   }
+  if (!ai.hasPart.every((p) => p?.sku && p.mpn === p.sku)) {
+    console.error("❌ out/ai-shopping.json Dataset hasPart stubs must set mpn=sku");
+    process.exit(1);
+  }
   if (!ai.pricedPanels.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
     console.error("❌ every pricedPanels Product must isPartOf ai-shopping.json Dataset");
     process.exit(1);
@@ -765,6 +769,33 @@ if (fs.existsSync(outDir)) {
     const fp = path.join(outDir, rel);
     if (!fs.existsSync(fp)) {
       console.error(`❌ pricedPanels URL missing in out/: ${panel.sku} → ${rel}`);
+      process.exit(1);
+    }
+    // TR PDP Product JSON-LD must use catalog sku/mpn (= panel id), not invent GTIN.
+    const trHtml = fs.readFileSync(fp, "utf8");
+    const ldBlocks = [...trHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+    let pdpOk = false;
+    for (const raw of ldBlocks) {
+      let doc;
+      try {
+        doc = JSON.parse(raw);
+      } catch {
+        continue;
+      }
+      const nodes = Array.isArray(doc) ? doc : doc?.["@graph"] ? doc["@graph"] : [doc];
+      for (const node of nodes) {
+        const t = node?.["@type"];
+        const isProduct = t === "Product" || (Array.isArray(t) && t.includes("Product"));
+        if (!isProduct) continue;
+        if (node.sku === panel.sku && node.mpn === panel.sku) {
+          pdpOk = true;
+          break;
+        }
+      }
+      if (pdpOk) break;
+    }
+    if (!pdpOk) {
+      console.error(`❌ TR PDP Product JSON-LD must set sku=mpn=${panel.sku}: ${rel}`);
       process.exit(1);
     }
     // EN locale-flip of Offer URLs must be real HTML bridges (CF 404.html beats _redirects).

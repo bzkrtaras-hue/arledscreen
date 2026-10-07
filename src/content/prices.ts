@@ -244,6 +244,9 @@ export function panelProductsJsonLd(
     "@type": "Product",
     "@id": urlFor?.(p) ? `${u}#product` : `${pageUrl}#${p.id}`,
     name: `${panelLabel(p)} LED ekran modülü (${panelModule(p)})`,
+    // Align with catalog / ai-shopping / merchant TSV: honest mpn=sku (= panel id).
+    sku: p.id,
+    mpn: p.id,
     brand: nxtionstarBrandRef(),
     category: "LED ekran modülü",
     description: `${panelLabel(p)} LED ekran modülü. Fiyat panel başınadır; KDV ve nakliye hariçtir. Nihai fiyat yazılı teklifle kesinleşir.`,

@@ -463,7 +463,13 @@ function buildAiShopping() {
       `${SITE_URL}/.well-known/agents.json`,
       `${SITE_URL}/AGENTS.md`,
     ],
-    hasPart: pricedPanels.map((p) => ({ "@type": "Product", "@id": p["@id"], url: p.url, sku: p.sku })),
+    hasPart: pricedPanels.map((p) => ({
+      "@type": "Product",
+      "@id": p["@id"],
+      url: p.url,
+      sku: p.sku,
+      mpn: p.sku, // honest mpn=sku; stub keeps Dataset→Product join cheap for agents
+    })),
     dateModified: new Date().toISOString().split("T")[0],
     inLanguage: ["tr", "en"],
     cite,
@@ -1299,6 +1305,10 @@ Hiring: https://arledscreen.com/tr/about/
   }
   if (!Array.isArray(ai.hasPart) || ai.hasPart.length !== 12) {
     console.error("postbuild-ai: Dataset hasPart must list 12 Products");
+    process.exit(1);
+  }
+  if (!ai.hasPart.every((p) => p?.sku && p.mpn === p.sku)) {
+    console.error("postbuild-ai: Dataset hasPart stubs must set mpn=sku");
     process.exit(1);
   }
   for (const panel of PANEL_PRICES) {

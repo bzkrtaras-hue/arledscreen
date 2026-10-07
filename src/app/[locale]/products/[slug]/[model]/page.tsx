@@ -183,6 +183,10 @@ export default async function ModelPage({ params }: PageProps) {
   const specRows = SPEC_ORDER.filter((key) => m.specs[key]).map((key) => ({ key, label: SPEC_LABELS[key], spec: m.specs[key] }));
 
   const brandName = m.brandName ?? g.brandName ?? "NXTIONSTAR";
+  // Display-style code kept as alternateName; canonical sku/mpn = priced panel id
+  // (same as catalog / ai-shopping / merchant TSV). Honest mpn=sku; no GTIN invent.
+  const displaySku = `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`;
+  const catalogSku = price?.id ?? m.priceId ?? displaySku;
   // GSC Merchant listings require offers.price (or priceSpecification.price).
   // Quote-only models (P8, esnek, kontrol) have no published USD — omit Offer
   // entirely. An Offer without price marks the item invalid in Search Console.
@@ -191,7 +195,9 @@ export default async function ModelPage({ params }: PageProps) {
     "@type": "Product",
     "@id": `${url}#product`,
     name: m.name,
-    sku: `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`,
+    sku: catalogSku,
+    mpn: catalogSku,
+    ...(catalogSku !== displaySku ? { alternateName: [displaySku, m.chip].filter(Boolean) } : {}),
     brand:
       brandName === "NXTIONSTAR"
         ? nxtionstarBrandRef()
