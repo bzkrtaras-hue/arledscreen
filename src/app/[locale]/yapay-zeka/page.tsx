@@ -9,7 +9,15 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { getSeo } from "@/content/seo";
-import { NXTIONSTAR_BRAND_ID, BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
+import { modelUrlForPrice } from "@/content/models";
+import {
+  NXTIONSTAR_BRAND_ID,
+  BRAND_SUBJECT_DATASETS,
+  PANEL_PRICES,
+  panelProductsJsonLd,
+  pricedPanelsDatasetJsonLd,
+} from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import type { FaqItem } from "@/lib/schemas/cms";
@@ -210,6 +218,21 @@ export default async function YapayZekaPage({ params }: PageProps) {
               __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/yapay-zeka/`))),
             }}
           />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(
+                panelProductsJsonLd(
+                  PANEL_PRICES,
+                  absoluteUrl(`/${locale}/yapay-zeka/`),
+                  locale === "tr"
+                    ? "LED ekran modülü satışı, keşif ve montaj"
+                    : "LED display module sales, survey and installation",
+                  modelUrlForPrice(absoluteUrl),
+                ),
+              ),
+            }}
+          />
         </>
       ) : null}
 
@@ -287,6 +310,19 @@ export default async function YapayZekaPage({ params }: PageProps) {
               ))}
             </ul>
           </GlassPanel>
+
+          {(locale === "tr" || locale === "en") ? (
+            <div id="panel-prices" className="max-w-3xl">
+              <PanelPriceTable
+                panels={PANEL_PRICES}
+                caption={
+                  locale === "tr"
+                    ? "Panel fiyatları (USD, panel başına)"
+                    : "Panel prices (USD, per panel)"
+                }
+              />
+            </div>
+          ) : null}
 
           {locale === "tr" ? (
             <GlassPanel className="max-w-3xl p-6">

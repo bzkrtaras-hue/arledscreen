@@ -14,7 +14,9 @@ import { getProducts } from "@/content/products";
 import { getSeo } from "@/content/seo";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
+import { modelUrlForPrice } from "@/content/models";
+import { PANEL_PRICES, panelProductsJsonLd, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { PRODUCT_GROUPS, groupsByFamily, productGroupPath } from "@/content/categories";
@@ -141,6 +143,29 @@ export default async function ProductsPage({ params }: PageProps) {
                   </Link>
                 </div>
               </div>
+            </div>
+          </section>
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(
+                panelProductsJsonLd(
+                  PANEL_PRICES,
+                  absoluteUrl("/tr/products/"),
+                  "LED ekran modülü satışı, keşif ve montaj",
+                  modelUrlForPrice(absoluteUrl),
+                ),
+              ),
+            }}
+          />
+          <section id="panel-fiyatlari" className="bg-white pb-14 md:pb-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <h2 className="font-display text-xl font-bold text-ink md:text-2xl">2026 panel fiyat listesi</h2>
+              <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
+                Ürün hub&apos;ındaki yayımlanmış 12 NXTIONSTAR panel USD. Kanonik SKU sayfaları model PDP&apos;lerindedir.
+              </p>
+              <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" />
             </div>
           </section>
 
