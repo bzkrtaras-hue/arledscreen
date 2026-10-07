@@ -647,10 +647,11 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/brand.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/brand.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/organization.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/entity.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/entity-profiles.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + well-known brand + /organization.json + /point-c.txt + /entity-profiles.json");
+    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + well-known brand/entity + /organization.json + /point-c.txt + /entity-profiles.json");
     process.exit(1);
   }
   if (
@@ -1292,20 +1293,21 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/prices.json") ||
     !securityLive.includes("/point-c.txt") ||
     !securityLive.includes("/entity-profiles.json") ||
+    !securityLive.includes("#website") ||
     !securityLive.includes("geo:next")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/Price/Point C/entity-profiles/geo:next invent pointers");
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C/entity-profiles/geo:next invent pointers");
     process.exit(1);
   }
   {
     const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
-    if (!llmsGeo.includes("geo:next") || !llmsGeo.includes("/.well-known/brand.json")) {
-      console.error("❌ out/llms.txt must cite geo:next + /.well-known/brand.json");
+    if (!llmsGeo.includes("geo:next") || !llmsGeo.includes("/.well-known/brand.json") || !llmsGeo.includes("#website")) {
+      console.error("❌ out/llms.txt must cite geo:next + /.well-known/brand.json + #website");
       process.exit(1);
     }
     const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
-    if (!llmsFullLive.includes("geo:next") || !llmsFullLive.includes("/.well-known/brand.json")) {
-      console.error("❌ out/llms-full.txt must cite geo:next + /.well-known/brand.json");
+    if (!llmsFullLive.includes("geo:next") || !llmsFullLive.includes("/.well-known/brand.json") || !llmsFullLive.includes("#website")) {
+      console.error("❌ out/llms-full.txt must cite geo:next + /.well-known/brand.json + #website");
       process.exit(1);
     }
   }
@@ -1340,14 +1342,15 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/.well-known/pricing.json") ||
       !humansLive.includes("geo:next") ||
       !humansLive.includes("/entity-profiles.json") ||
-      !humansLive.includes("/.well-known/brand.json")
+      !humansLive.includes("/.well-known/brand.json") ||
+      !humansLive.includes("#website")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + geo:next");
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next");
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
-    if (!agentsMdLive.includes("geo:next")) {
-      console.error("❌ out/AGENTS.md must cite npm run geo:next owner clipboard");
+    if (!agentsMdLive.includes("geo:next") || !agentsMdLive.includes("#website")) {
+      console.error("❌ out/AGENTS.md must cite npm run geo:next owner clipboard + WebSite #website");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -1742,6 +1745,7 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("ai.txt") ||
     !headersLive.includes("brand.json") ||
     !headersLive.includes("/.well-known/brand.json") ||
+    !headersLive.includes("#website") ||
     !headersLive.includes("/.well-known/entity.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
@@ -1829,7 +1833,15 @@ if (fs.existsSync(outDir)) {
   {
     const epBased = JSON.stringify(profiles?.isBasedOn || []);
     const epDist = JSON.stringify(profiles?.distribution || []);
-    for (const needle of ["/entity.json", "/brand.json", "/ai-shopping.json", "/catalog.json", "/geo-baseline.json", "/point-c.txt"]) {
+    for (const needle of [
+      "/entity.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/geo-baseline.json",
+      "/point-c.txt",
+    ]) {
       if (!epBased.includes(needle)) {
         console.error(`❌ entity-profiles.json isBasedOn invent must include ${needle}`);
         process.exit(1);

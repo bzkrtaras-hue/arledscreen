@@ -16,6 +16,7 @@ Price RSS: https://arledscreen.com/feeds/prices.rss
 GEO baseline: https://arledscreen.com/geo-baseline.json
 Entity: https://arledscreen.com/entity.json
 Entity aliases: /organization.json · /company.json · /nap.json · /.well-known/entity.json
+WebSite: https://arledscreen.com/#website (entity.json mainEntityOfPage OrderAction → /tr/quote/ · /en/quote/)
 Agent discovery: https://arledscreen.com/.well-known/agents.json
 Agent aliases: /agents.json · /agent.json · /AGENTS.md
 ARD: https://arledscreen.com/.well-known/ard.json

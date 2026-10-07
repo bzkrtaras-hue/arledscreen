@@ -10,6 +10,7 @@
   # RFC 8288 discovery for AI shopping / GEO agents (price + entity + agent index).
   Link: <https://arledscreen.com/ai-shopping.json>; rel="describedby"; type="application/ld+json"; title="AI Shopping pricedPanels"
   Link: <https://arledscreen.com/entity.json>; rel="describedby"; type="application/ld+json"; title="Organization Entity"
+  Link: <https://arledscreen.com/#website>; rel="canonical"; title="ARLEDSCREEN WebSite #website"
   Link: <https://arledscreen.com/brand.json>; rel="describedby"; type="application/ld+json"; title="NXTIONSTAR Brand"
   Link: <https://arledscreen.com/.well-known/brand.json>; rel="alternate"; type="application/ld+json"; title="NXTIONSTAR Brand invent alias"
   Link: <https://arledscreen.com/.well-known/entity.json>; rel="alternate"; type="application/ld+json"; title="Organization invent alias"

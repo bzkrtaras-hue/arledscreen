@@ -332,6 +332,7 @@ function buildCatalog() {
       `${SITE_URL}/prices.json`,
       `${SITE_URL}/brand.json`,
       `${SITE_URL}/.well-known/brand.json`,
+      `${SITE_URL}/organization.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
     ],
@@ -674,6 +675,7 @@ function buildAiShopping() {
     isBasedOn: [
       `${SITE_URL}/entity.json`,
       `${SITE_URL}/organization.json`,
+      `${SITE_URL}/.well-known/entity.json`,
       `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/brand.json`,
@@ -1626,6 +1628,7 @@ function enrichEntityProfiles(doc) {
   for (const u of [
     `${SITE_URL}/entity.json`,
     `${SITE_URL}/brand.json`,
+    `${SITE_URL}/.well-known/brand.json`,
     `${SITE_URL}/ai-shopping.json`,
     `${SITE_URL}/catalog.json`,
     `${SITE_URL}/geo-baseline.json`,
@@ -2652,6 +2655,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
       `${SITE_URL}/en/nxtionstar/`,
       `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/brand.json`,
+      `${SITE_URL}/organization.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
     ],
@@ -2812,6 +2816,7 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Brand: https://arledscreen.com/brand.json (#brand-nxtionstar AggregateOffer×12 + hasOfferCatalog → catalog.json)
 # Brand alias: https://arledscreen.com/.well-known/brand.json
 # Entity: https://arledscreen.com/entity.json (alias /organization.json · /cite · /.well-known/entity.json)
+# WebSite: https://arledscreen.com/#website (entity.json mainEntityOfPage OrderAction → /tr/quote/ · /en/quote/)
 # Price: https://arledscreen.com/ai-shopping.json pricedPanels (aliases /prices.json · /.well-known/prices.json)
 # Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json
 # Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json
@@ -2833,6 +2838,9 @@ Acknowledgments: https://arledscreen.com/brand.json
   }
   if (!copyPublicToOut("AGENTS.md")) {
     console.warn("postbuild-ai: public/AGENTS.md missing — agent markdown pointer not copied");
+  }
+  if (!copyPublicToOut("_headers")) {
+    console.warn("postbuild-ai: public/_headers missing — Link invent headers not copied");
   }
 
   for (const must of [

@@ -56,7 +56,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - [AGENTS.md](https://arledscreen.com/AGENTS.md) — kısa ajan markdown keşif işaretçisi (fiyat = ai-shopping.json; entity `makesOffer` → SKU Offers)
 - HTML `<link rel="alternate|describedby">` + HTTP `Link` header: her sayfada `ai-shopping.json` · `entity.json` · `prices.json` · `organization.json` · `agents.json` · `AGENTS.md`
 - Brand document: [brand.json](https://arledscreen.com/brand.json) (`@type` Brand `#brand-nxtionstar`; `makesOffer` → `#priced-panels-aggregate`; `hasOfferCatalog` → `catalog.json`; invent alias [/.well-known/brand.json](https://arledscreen.com/.well-known/brand.json)) — not an Org alias of entity.json
-- WebSite: `about` → `#organization`; `potentialAction` OrderAction → `/tr/quote/` · `/en/quote/`; home Speakable `mainEntity` → `/tr/#service` · `/en/#service`
+- WebSite: [entity.json](https://arledscreen.com/entity.json) `mainEntityOfPage` [`#website`](https://arledscreen.com/#website) OrderAction → `/tr/quote/` · `/en/quote/`; `about` → `#organization`; home Speakable `mainEntity` → `/tr/#service` · `/en/#service`
 - Graph: `pricedPanels` Product → `isPartOf` Dataset; Dataset `hasPart` → Product `@id` + Offer `@id`; Offer `itemOffered` → PDP `#product`; Offer triangle catalog ↔ ai-shopping ↔ PDP `#offer`; Org `makesOffer.offers`×12 → same Offer `@id`s; Offer/AggregateOffer `availableAtOrFrom` → `#localbusiness`; hub/PDP `WebPage.mainEntity` → `#service` / `#product`
 - [humans.txt](https://arledscreen.com/humans.txt) — insan iletişim / ekip işaretçisi (fiyat kaynağı değildir)
 - [security.txt](https://arledscreen.com/.well-known/security.txt) — güvenlik iletişim (RFC 9116; fiyat kaynağı değildir)
