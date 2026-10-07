@@ -10,7 +10,7 @@ import {
   getProjectCaseStudy,
   projectCasePath,
 } from "@/content/case-studies";
-import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -62,7 +62,7 @@ export default async function ProjectCasePage({
     about: "LED ekran kurulumu",
     provider: { "@id": `${SITE_URL}/#organization` },
     url,
-    isRelatedTo: PRICE_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
     ...(c.images[0]
       ? { image: absoluteUrl(c.images[0].src.startsWith("/blog/") ? c.images[0].src.replace("/blog/", "/opt/blog/") : c.images[0].src) }
       : {}),

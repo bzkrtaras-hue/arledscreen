@@ -8,7 +8,7 @@ import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
 import {
   CALC_EXTRAS,
-  PRICE_DATASETS,
+  BRAND_SUBJECT_DATASETS,
   PRICE_VALID_UNTIL,
   fmtM2,
   fmtUsd,
@@ -120,7 +120,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
         ? nxtionstarBrandRef()
         : { "@type": "Brand", name: g.brandName },
     areaServed: { "@type": "Country", name: "Türkiye" },
-    isRelatedTo: PRICE_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
     ...(prices.length
       ? {
           offers: {

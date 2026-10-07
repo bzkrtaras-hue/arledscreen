@@ -68,7 +68,8 @@ export default async function SssPage({ params }: { params: Promise<{ locale: st
               </details>
             ))}
           </div>
-          <p className="mt-8 text-sm text-ink-muted">
+          <AiPriceSourceNote className="mt-8 text-sm leading-relaxed text-ink-muted" />
+          <p className="mt-4 text-sm text-ink-muted">
             İlgili rehberler:{" "}
             <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">LED ekran fiyatları</Link>,{" "}
             <Link href="/tr/rehber/piksel-araligi-secimi/" className="font-semibold text-cyan hover:underline">piksel aralığı seçimi</Link>,{" "}

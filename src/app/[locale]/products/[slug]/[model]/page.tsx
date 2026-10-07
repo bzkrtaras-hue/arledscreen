@@ -16,7 +16,7 @@ import {
 } from "@/content/models";
 import {
   CALC_EXTRAS,
-  PRICE_DATASETS,
+  BRAND_SUBJECT_DATASETS,
   fmtUsd,
   nxtionstarBrandRef,
   panelM2,
@@ -153,10 +153,10 @@ export default async function ModelPage({ params }: PageProps) {
       ? {
           offers: panelOffer(url, price.usd),
           // Point AI shoppers from the PDP to the published price Datasets (no invent).
-          isRelatedTo: PRICE_DATASETS,
+          isRelatedTo: BRAND_SUBJECT_DATASETS,
         }
       : {
-          isRelatedTo: PRICE_DATASETS,
+          isRelatedTo: BRAND_SUBJECT_DATASETS,
         }),
   };
 

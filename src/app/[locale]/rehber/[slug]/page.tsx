@@ -10,7 +10,7 @@ import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
-import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import {
   SEO_GUIDE_SLUGS,
   getSeoGuide,
@@ -104,7 +104,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
             publisher: { "@id": `${SITE_URL}/#organization` },
             mainEntityOfPage: pageUrl,
             keywords: guide.keywords.join(", "),
-            isRelatedTo: PRICE_DATASETS,
+            isRelatedTo: BRAND_SUBJECT_DATASETS,
           }),
         }}
       />

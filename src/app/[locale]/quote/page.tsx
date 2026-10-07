@@ -20,7 +20,7 @@ import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { getSeo } from "@/content/seo";
-import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
@@ -88,7 +88,7 @@ export default async function QuotePage({ params }: PageProps) {
                 url: absoluteUrl("/tr/quote/"),
                 isPartOf: { "@id": `${SITE_URL}/#website` },
                 about: { "@id": `${SITE_URL}/#organization` },
-                isRelatedTo: PRICE_DATASETS,
+                isRelatedTo: BRAND_SUBJECT_DATASETS,
                 description:
                   "Ölçü ve kullanım amacına göre yazılı teklif. Yayımlanmış 12 panel USD: ai-shopping.json pricedPanels / catalog.json; ücretsiz kargo yok.",
               }),

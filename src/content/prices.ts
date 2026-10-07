@@ -253,7 +253,7 @@ export function panelProductsJsonLd(
       { "@type": "PropertyValue", name: "Kullanım", value: p.use === "ic" ? "İç mekân" : "Dış mekân" },
     ],
     offers: panelOffer(u, p.usd),
-    isRelatedTo: PRICE_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
   };
   });
   const usd = panels.map((p) => p.usd);
@@ -267,7 +267,7 @@ export function panelProductsJsonLd(
       brand: nxtionstarBrandRef(),
       areaServed: { "@type": "Country", name: "Türkiye" },
       url: pageUrl,
-      isRelatedTo: PRICE_DATASETS,
+      isRelatedTo: BRAND_SUBJECT_DATASETS,
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "USD",

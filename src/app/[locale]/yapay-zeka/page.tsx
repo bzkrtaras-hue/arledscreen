@@ -9,7 +9,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { getSeo } from "@/content/seo";
-import { NXTIONSTAR_BRAND_ID, PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { NXTIONSTAR_BRAND_ID, BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import type { FaqItem } from "@/lib/schemas/cms";
@@ -231,9 +231,9 @@ export default async function YapayZekaPage({ params }: PageProps) {
               "yapay zeka uyumlu LED ekran",
               "AI media server LED",
             ],
-            isRelatedTo: PRICE_DATASETS,
-            citation: PRICE_DATASETS.map((d) => d.url),
-            isBasedOn: PRICE_DATASETS,
+            isRelatedTo: BRAND_SUBJECT_DATASETS,
+            citation: BRAND_SUBJECT_DATASETS.map((d) => d.url),
+            isBasedOn: BRAND_SUBJECT_DATASETS,
           }),
         }}
       />
