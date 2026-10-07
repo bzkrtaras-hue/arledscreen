@@ -1677,7 +1677,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Where do AI agents read published panel prices?",
           answer:
-            "ai-shopping.json pricedPanels (12 SKU USD), catalog.json and feeds/merchant-priced-panels.tsv. Human hub: /en/led-ekran-fiyatlari/. No free shipping.",
+            "ai-shopping.json pricedPanels (12 SKU USD); aliases /prices.json · /.well-known/prices.json · /api/v1/prices. Also catalog.json and merchant TSV. Discovery: /.well-known/agents.json · /AGENTS.md. Human hub: /en/led-ekran-fiyatlari/. No free shipping.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request a sales quote" },

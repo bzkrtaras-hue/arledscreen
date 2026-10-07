@@ -313,6 +313,20 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json must expose merchantFeed TSV URL");
     process.exit(1);
   }
+  if (
+    !String(entity.pricesJson || "").includes("/prices.json") ||
+    !String(entity.organizationJson || "").includes("/organization.json") ||
+    !String(entity.agentsJson || "").includes("/agents.json") ||
+    !String(entity.agentsMd || "").includes("AGENTS.md")
+  ) {
+    console.error("❌ entity.json must expose pricesJson + organizationJson + agentsJson + agentsMd");
+    process.exit(1);
+  }
+  const entityFaqBlob = JSON.stringify(entity.faqs || []) + JSON.stringify(entity.faqsEn || []);
+  if (!entityFaqBlob.includes("/prices.json") || !entityFaqBlob.includes("AGENTS.md")) {
+    console.error("❌ entity.json FAQs must cite inventable /prices.json + AGENTS.md");
+    process.exit(1);
+  }
   if (entity?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar") {
     console.error("❌ entity.json brand.@id must be #brand-nxtionstar");
     process.exit(1);
@@ -497,6 +511,16 @@ if (fs.existsSync(outDir)) {
   const canonCatalog = fs.readFileSync(path.join(outDir, "catalog.json"));
   if (!fs.readFileSync(path.join(outDir, "catalog")).equals(canonCatalog)) {
     console.error("❌ out/catalog must match catalog.json");
+    process.exit(1);
+  }
+  const catalogDoc = JSON.parse(canonCatalog.toString("utf8"));
+  const catalogProducts = catalogDoc?.mainEntity?.itemListElement;
+  if (!Array.isArray(catalogProducts) || catalogProducts.length !== 12) {
+    console.error("❌ catalog.json mainEntity must list 12 Products");
+    process.exit(1);
+  }
+  if (!catalogProducts.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
+    console.error("❌ every catalog Product must isPartOf ai-shopping.json Dataset");
     process.exit(1);
   }
   const canonAi = fs.readFileSync(path.join(outDir, "ai-shopping.json"));

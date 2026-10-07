@@ -187,6 +187,13 @@ function buildCatalog() {
       category: "LED ekran paneli",
       image: `${SITE_URL}${panel.image}`,
       url: panel.productUrl,
+      // Align with ai-shopping pricedPanels: Product membership in the price Dataset.
+      isPartOf: {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/ai-shopping.json`,
+        url: `${SITE_URL}/ai-shopping.json`,
+        name: "ARLEDSCREEN pricedPanels",
+      },
       additionalProperty: [
         { "@type": "PropertyValue", name: "pitch", value: panel.pitch },
         { "@type": "PropertyValue", name: "pitch_mm", value: String(panel.pitchMm) },

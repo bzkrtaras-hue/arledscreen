@@ -86,7 +86,7 @@ export const ENTITY_FAQS = [
   {
     question: "AI ajanları panel fiyatını nereden okur?",
     answer:
-      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Teknik GEO baseline (parmak izleri; anılma % uydurma yok): geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
+      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı içerik inventable alias’larda: /prices.json · /.well-known/prices.json · /offers.json · /api/v1/prices. Ayrıca catalog.json ve feeds/merchant-priced-panels.tsv. Ajan keşif: /.well-known/agents.json · /AGENTS.md. Entity alias: /organization.json. Teknik GEO baseline (parmak izleri; anılma % uydurma yok): geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
   },
   {
     question: "arleds.com ile arledscreen.com aynı mı?",
@@ -124,7 +124,7 @@ export const ENTITY_FAQS_EN = [
   {
     question: "Where do AI agents read published panel prices?",
     answer:
-      "Published 12 panel USD prices are in ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Technical GEO baseline (fingerprints; no invented mention rates): geo-baseline.json. Human-readable EN hub: https://arledscreen.com/en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only — final price in the written quote.",
+      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Inventable aliases (identical): /prices.json · /.well-known/prices.json · /offers.json · /api/v1/prices. Also catalog.json and feeds/merchant-priced-panels.tsv. Agent discovery: /.well-known/agents.json · /AGENTS.md. Entity alias: /organization.json. Technical GEO baseline (fingerprints; no invented mention rates): geo-baseline.json. Human EN hub: https://arledscreen.com/en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only — final price in the written quote.",
   },
   {
     question: "Is arleds.com the same as arledscreen.com?",
@@ -202,6 +202,11 @@ export type EntityDocument = {
   llmsTxt: string;
   entityJson: string;
   aiShopping: string;
+  /** Inventable byte-identical aliases of ai-shopping.json. */
+  pricesJson: string;
+  organizationJson: string;
+  agentsJson: string;
+  agentsMd: string;
   catalogJson: string;
   merchantFeed: string;
   geoBaseline: string;
@@ -292,6 +297,10 @@ export function buildEntityDocument(): EntityDocument {
     llmsTxt: `${SITE_URL}/llms.txt`,
     entityJson: `${SITE_URL}/entity.json`,
     aiShopping: `${SITE_URL}/ai-shopping.json`,
+    pricesJson: `${SITE_URL}/prices.json`,
+    organizationJson: `${SITE_URL}/organization.json`,
+    agentsJson: `${SITE_URL}/.well-known/agents.json`,
+    agentsMd: `${SITE_URL}/AGENTS.md`,
     catalogJson: `${SITE_URL}/catalog.json`,
     merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
     geoBaseline: `${SITE_URL}/geo-baseline.json`,
@@ -301,6 +310,12 @@ export function buildEntityDocument(): EntityDocument {
         "@id": `${SITE_URL}/ai-shopping.json`,
         name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
         url: `${SITE_URL}/ai-shopping.json`,
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/prices.json`,
+        name: "ARLEDSCREEN pricedPanels (prices.json alias)",
+        url: `${SITE_URL}/prices.json`,
       },
       {
         "@type": "Dataset",
