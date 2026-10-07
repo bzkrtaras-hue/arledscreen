@@ -802,7 +802,15 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   if (!headersLive.includes("/feeds/prices.json") || !headersLive.includes("/feeds/catalog.json")) {
-    console.error("❌ out/_headers must override /feeds/*.json to application/json");
+    console.error("❌ out/_headers must set application/json for /feeds/*.json invent aliases");
+    process.exit(1);
+  }
+  if (headersLive.includes("/feeds/*\n") || /\/feeds\/\*\s*\n/.test(headersLive)) {
+    console.error("❌ out/_headers must not blanket /feeds/* as TSV (use /feeds/*.tsv)");
+    process.exit(1);
+  }
+  if (!headersLive.includes("/feeds/*.tsv")) {
+    console.error("❌ out/_headers must scope TSV Content-Type to /feeds/*.tsv");
     process.exit(1);
   }
   if (!llmsLive.includes("mpn") || !llmsLive.includes("/panels.json") || !llmsLive.includes("/teklif/")) {

@@ -182,7 +182,7 @@ User-Agent: cohere-ai
 Allow: /
 
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-07e-tr-llms-json-ct
+# cache-bust-geo60-2026-10-07f-feeds-json-ct
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 

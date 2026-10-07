@@ -673,17 +673,18 @@
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
-/feeds/*
+# TSV only — do not blanket /feeds/* (JSON invent aliases must stay application/json).
+/feeds/*.tsv
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
   Content-Type: text/tab-separated-values; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
-# JSON invent aliases under /feeds/ (must override /feeds/* TSV default).
 /feeds/prices.json
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
+  ! Content-Type
   Content-Type: application/json; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
@@ -691,6 +692,7 @@
 /feeds/catalog.json
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
+  ! Content-Type
   Content-Type: application/json; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
