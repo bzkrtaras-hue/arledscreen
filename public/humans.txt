@@ -9,7 +9,7 @@ Site: https://arledscreen.com/tr/
 Standards: HTML5, Schema.org JSON-LD
 Language: tr, en
 Price source (machines): https://arledscreen.com/ai-shopping.json
-Price aliases: /prices.json · /price.json · /pricing.json · /api/prices · /.well-known/prices.json · /offers.json
+Price aliases: /prices.json · /price.json · /pricing.json · /panels.json · /modules.json · /sku.json · /api/prices · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /offers.json
 Catalog: https://arledscreen.com/catalog.json
 Merchant TSV: https://arledscreen.com/feeds/merchant-priced-panels.tsv
 Price RSS: https://arledscreen.com/feeds/prices.rss

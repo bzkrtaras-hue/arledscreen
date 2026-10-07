@@ -231,6 +231,21 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agentGuidelines priceSource (TR+EN) must cite /panels.json + /mpn.json");
     process.exit(1);
   }
+  for (const needle of [
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+  ]) {
+    if (
+      !String(ai.agentGuidelines?.priceSource || "").includes(needle) ||
+      !String(ai.agentGuidelines?.en?.priceSource || "").includes(needle) ||
+      !String(ai.description || "").includes(needle)
+    ) {
+      console.error(`❌ ai-shopping description + agentGuidelines priceSource (TR+EN) must cite ${needle}`);
+      process.exit(1);
+    }
+  }
   if (/blindTestPrompts|kör test/i.test(JSON.stringify(ai))) {
     console.error("❌ out/ai-shopping.json must not carry blind-test payload");
     process.exit(1);
@@ -757,6 +772,12 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json FAQs must cite inventable /prices.json + AGENTS.md");
     process.exit(1);
   }
+  for (const needle of ["/.well-known/modules.json", "/.well-known/sku.json", "/.well-known/pricing.json"]) {
+    if (!entityFaqBlob.includes(needle)) {
+      console.error(`❌ entity.json FAQs must cite inventable ${needle}`);
+      process.exit(1);
+    }
+  }
   if (entity?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar") {
     console.error("❌ entity.json brand.@id must be #brand-nxtionstar");
     process.exit(1);
@@ -1109,9 +1130,12 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/ai-shopping.json") ||
       !humansLive.includes("/catalog.json") ||
       !humansLive.includes("/geo-baseline.json") ||
-      !humansLive.includes("/point-c.txt")
+      !humansLive.includes("/point-c.txt") ||
+      !humansLive.includes("/.well-known/modules.json") ||
+      !humansLive.includes("/.well-known/sku.json") ||
+      !humansLive.includes("/.well-known/pricing.json")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c.txt");
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c.txt + well-known invent aliases");
       process.exit(1);
     }
   }

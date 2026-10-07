@@ -176,6 +176,23 @@ if (
   ok("ai-shopping isBasedOn prices.rss + brand + point-c");
 } else fail("ai-shopping isBasedOn prices.rss + brand + point-c");
 
+try {
+  const g = ai.agentGuidelines || {};
+  const humans = await getText("/humans.txt");
+  const faq = JSON.stringify(ent?.faqs || []) + JSON.stringify(ent?.faqsEn || []);
+  if (
+    String(g.priceSource || "").includes("/.well-known/modules.json") &&
+    String(g.en?.priceSource || "").includes("/.well-known/sku.json") &&
+    String(ai.description || "").includes("/.well-known/pricing.json") &&
+    humans.includes("/.well-known/modules.json") &&
+    faq.includes("/.well-known/modules.json")
+  ) {
+    ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing");
+  } else fail("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing");
+} catch (e) {
+  fail(`ai-shopping/humans/entity FAQ invent ${e?.message || e}`);
+}
+
 if (JSON.stringify(ent.subjectOf || []).includes("/point-c.txt")) ok("entity.subjectOf → point-c");
 else fail("entity.subjectOf → point-c");
 
