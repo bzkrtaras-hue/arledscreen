@@ -7,8 +7,9 @@ import { GlassPanel } from "@/components/ui/glass-panel";
 import { Button } from "@/components/ui/button";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { PRICE_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import {
   SEO_GUIDE_SLUGS,
@@ -73,6 +74,14 @@ export default async function SeoGuidePage({ params }: PageProps) {
         ]}
       />
       <FaqJsonLd faqs={guide.faqs} />
+      {(locale === "tr" || locale === "en") ? (
+        <SpeakableJsonLd
+          pageUrl={pageUrl}
+          name={guide.h1}
+          description={guide.description}
+          cssSelectors={["#guide-h1", "#guide-lead"]}
+        />
+      ) : null}
 
       <script
         type="application/ld+json"
@@ -80,6 +89,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "TechArticle",
+            "@id": `${pageUrl}#article`,
             headline: guide.h1,
             description: guide.description,
             inLanguage:
@@ -90,15 +100,8 @@ export default async function SeoGuidePage({ params }: PageProps) {
                   : locale === "ru"
                     ? "ru"
                     : "en-US",
-            author: { "@type": "Organization", name: "ARLEDSCREEN" },
-            publisher: {
-              "@type": "Organization",
-              name: "ARLEDSCREEN",
-              logo: {
-                "@type": "ImageObject",
-                url: absoluteUrl("/brand/arledscreen-logo-header.png"),
-              },
-            },
+            author: { "@id": `${SITE_URL}/#organization` },
+            publisher: { "@id": `${SITE_URL}/#organization` },
             mainEntityOfPage: pageUrl,
             keywords: guide.keywords.join(", "),
             isRelatedTo: PRICE_DATASETS,
@@ -114,6 +117,8 @@ export default async function SeoGuidePage({ params }: PageProps) {
 
       <Section
         titleAs="h1"
+        titleId="guide-h1"
+        descriptionId="guide-lead"
         eyebrow={hub.eyebrow}
         title={guide.h1}
         description={guide.intro}

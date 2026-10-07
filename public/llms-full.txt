@@ -189,9 +189,10 @@ NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktas�
 ## 8. Makinece işaretçiler (GEO)
 
 - Brand `@id`: https://arledscreen.com/#brand-nxtionstar
-- entity.json / ai-shopping.json / catalog.json / feeds/merchant-priced-panels.tsv
+- entity.json / ai-shopping.json / catalog.json / feeds/merchant-priced-panels.tsv (`brand_id` sütunu = Brand `@id`)
 - entity-profiles.json → packs (TR) + packsEn (EN cite-only for GBP/directories/LinkedIn)
-- ard.json: https://arledscreen.com/.well-known/ard.json
+- ard.json: https://arledscreen.com/.well-known/ard.json (`resources.brand` + `entityProfiles.packsEn`)
+- Point C (sahip operasyonu): packs/packsEn yapıştır; playbook repo `docs/offsite-entity-playbook.md`
 - Kısa indeks: https://arledscreen.com/llms.txt
 
 ## 9. İletişim

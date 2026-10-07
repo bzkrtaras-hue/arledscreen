@@ -78,7 +78,8 @@
         "description": "Third-party profile text packs (Point C) aligned with entity.json cite. Use packs.* (TR) and packsEn.* (EN cite-only; no catalog jargon in public bios).",
         "packs": "TR paste packs",
         "packsEn": "EN cite-only paste packs (GBP/directories/LinkedIn)",
-        "brandId": "https://arledscreen.com/#brand-nxtionstar"
+        "brandId": "https://arledscreen.com/#brand-nxtionstar",
+        "ownerPlaybook": "docs/offsite-entity-playbook.md (repo; not a public URL — owner/PR ops for Google Business, directories, LinkedIn, Bing Places)"
       },
       "llmsText": {
         "type": "Text Summary",
