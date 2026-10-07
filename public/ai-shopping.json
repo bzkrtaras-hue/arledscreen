@@ -72,7 +72,12 @@
     "https://arledscreen.com/#website",
     "https://arledscreen.com/.well-known/modules.json",
     "https://arledscreen.com/.well-known/sku.json",
-    "https://arledscreen.com/.well-known/pricing.json"
+    "https://arledscreen.com/.well-known/pricing.json",
+    "https://arledscreen.com/.well-known/panels.json",
+    "https://arledscreen.com/.well-known/mpn.json",
+    "https://arledscreen.com/.well-known/merchant.json",
+    "https://arledscreen.com/.well-known/prices.json",
+    "https://arledscreen.com/.well-known/price.json"
   ],
   "hasPart": [
     {

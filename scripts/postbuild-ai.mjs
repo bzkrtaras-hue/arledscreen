@@ -1158,6 +1158,9 @@ function buildMerchantTsv() {
     "offer_json_url",
     "pricing_well_known_url",
     "panels_well_known_url",
+    "mpn_well_known_url",
+    "merchant_well_known_url",
+    "prices_well_known_url",
     "entity_well_known_url",
     "prices_rss_url",
     "organization_url",
@@ -1218,6 +1221,9 @@ function buildMerchantTsv() {
         `${SITE_URL}/offer.json`,
         `${SITE_URL}/.well-known/pricing.json`,
         `${SITE_URL}/.well-known/panels.json`,
+        `${SITE_URL}/.well-known/mpn.json`,
+        `${SITE_URL}/.well-known/merchant.json`,
+        `${SITE_URL}/.well-known/prices.json`,
         `${SITE_URL}/.well-known/entity.json`,
         `${SITE_URL}/feeds/prices.rss`,
         `${SITE_URL}/organization.json`,
@@ -1556,7 +1562,7 @@ function websiteDistributionEntry() {
   };
 }
 
-/** Well-known pricedPanels invent aliases (modules/sku/pricing) for distribution walks. */
+/** Well-known pricedPanels invent aliases for distribution walks (parity with ai-shopping). */
 function inventAliasDistributionEntries() {
   return [
     {
@@ -1577,6 +1583,36 @@ function inventAliasDistributionEntries() {
       contentUrl: `${SITE_URL}/.well-known/pricing.json`,
       name: "Pricing pricedPanels invent alias",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/panels.json`,
+      name: "Panels pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/mpn.json`,
+      name: "MPN pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/merchant.json`,
+      name: "Merchant pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/prices.json`,
+      name: "Prices pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/price.json`,
+      name: "Price pricedPanels invent alias",
+    },
   ];
 }
 
@@ -1585,6 +1621,11 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/.well-known/modules.json`,
     `${SITE_URL}/.well-known/sku.json`,
     `${SITE_URL}/.well-known/pricing.json`,
+    `${SITE_URL}/.well-known/panels.json`,
+    `${SITE_URL}/.well-known/mpn.json`,
+    `${SITE_URL}/.well-known/merchant.json`,
+    `${SITE_URL}/.well-known/prices.json`,
+    `${SITE_URL}/.well-known/price.json`,
   ];
 }
 
@@ -3109,7 +3150,7 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Entity: https://arledscreen.com/entity.json (alias /organization.json · /cite · /.well-known/entity.json)
 # WebSite: https://arledscreen.com/#website (entity.json mainEntityOfPage OrderAction → /tr/quote/ · /en/quote/)
 # Price: https://arledscreen.com/ai-shopping.json pricedPanels (aliases /prices.json · /.well-known/prices.json)
-# Invent aliases: /.well-known/modules.json · /.well-known/sku.json · /.well-known/pricing.json · /.well-known/panels.json
+# Invent aliases: /.well-known/modules.json · /.well-known/sku.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/prices.json · /.well-known/price.json
 # Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json
 # Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json
 # Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack
@@ -3321,26 +3362,29 @@ Acknowledgments: https://arledscreen.com/brand.json
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
     // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
-    // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, entity_wk,
-    // prices_rss, org, geo, website
+    // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, mpn_wk,
+    // merchant_wk, prices_wk, entity_wk, prices_rss, org, geo, website
     const websiteUrl = cells[cells.length - 1];
     const geoBaselineUrl = cells[cells.length - 2];
     const orgUrl = cells[cells.length - 3];
     const pricesRssUrl = cells[cells.length - 4];
     const entityWk = cells[cells.length - 5];
-    const panelsWk = cells[cells.length - 6];
-    const pricingWk = cells[cells.length - 7];
-    const offerJsonUrl = cells[cells.length - 8];
-    const skuWk = cells[cells.length - 9];
-    const modulesWk = cells[cells.length - 10];
-    const brandWk = cells[cells.length - 11];
-    const pointCUrl = cells[cells.length - 12];
-    const profilesUrl = cells[cells.length - 13];
-    const catalogUrl = cells[cells.length - 14];
-    const pricesJsonUrl = cells[cells.length - 15];
-    const aiShoppingUrl = cells[cells.length - 16];
-    const shippingIncluded = cells[cells.length - 17];
-    const taxIncluded = cells[cells.length - 18];
+    const pricesWk = cells[cells.length - 6];
+    const merchantWk = cells[cells.length - 7];
+    const mpnWk = cells[cells.length - 8];
+    const panelsWk = cells[cells.length - 9];
+    const pricingWk = cells[cells.length - 10];
+    const offerJsonUrl = cells[cells.length - 11];
+    const skuWk = cells[cells.length - 12];
+    const modulesWk = cells[cells.length - 13];
+    const brandWk = cells[cells.length - 14];
+    const pointCUrl = cells[cells.length - 15];
+    const profilesUrl = cells[cells.length - 16];
+    const catalogUrl = cells[cells.length - 17];
+    const pricesJsonUrl = cells[cells.length - 18];
+    const aiShoppingUrl = cells[cells.length - 19];
+    const shippingIncluded = cells[cells.length - 20];
+    const taxIncluded = cells[cells.length - 21];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -3360,6 +3404,9 @@ Acknowledgments: https://arledscreen.com/brand.json
       offerJsonUrl !== `${SITE_URL}/offer.json` ||
       pricingWk !== `${SITE_URL}/.well-known/pricing.json` ||
       panelsWk !== `${SITE_URL}/.well-known/panels.json` ||
+      mpnWk !== `${SITE_URL}/.well-known/mpn.json` ||
+      merchantWk !== `${SITE_URL}/.well-known/merchant.json` ||
+      pricesWk !== `${SITE_URL}/.well-known/prices.json` ||
       entityWk !== `${SITE_URL}/.well-known/entity.json` ||
       pricesRssUrl !== `${SITE_URL}/feeds/prices.rss` ||
       orgUrl !== `${SITE_URL}/organization.json` ||

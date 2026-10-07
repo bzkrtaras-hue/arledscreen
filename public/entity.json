@@ -3374,7 +3374,12 @@
     "https://arledscreen.com/#website",
     "https://arledscreen.com/.well-known/modules.json",
     "https://arledscreen.com/.well-known/sku.json",
-    "https://arledscreen.com/.well-known/pricing.json"
+    "https://arledscreen.com/.well-known/pricing.json",
+    "https://arledscreen.com/.well-known/panels.json",
+    "https://arledscreen.com/.well-known/mpn.json",
+    "https://arledscreen.com/.well-known/merchant.json",
+    "https://arledscreen.com/.well-known/prices.json",
+    "https://arledscreen.com/.well-known/price.json"
   ],
   "distribution": [
     {
@@ -3433,6 +3438,36 @@
       "encodingFormat": "text/html",
       "contentUrl": "https://arledscreen.com",
       "name": "ARLEDSCREEN WebSite"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/panels.json",
+      "name": "Panels pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/mpn.json",
+      "name": "MPN pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/merchant.json",
+      "name": "Merchant pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/prices.json",
+      "name": "Prices pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/price.json",
+      "name": "Price pricedPanels invent alias"
     }
   ]
 }

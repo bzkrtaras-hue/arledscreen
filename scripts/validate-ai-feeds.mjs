@@ -562,6 +562,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/modules.json",
       "/.well-known/sku.json",
       "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
     ]) {
       if (!geoBased.includes(needle)) {
         console.error(`❌ geo-baseline.json isBasedOn must include ${needle}`);
@@ -594,6 +599,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/modules.json",
       "/.well-known/sku.json",
       "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
     ]) {
       if (!geoDist.includes(needle)) {
         console.error(`❌ geo-baseline.json distribution invent must include ${needle}`);
@@ -680,9 +690,14 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("#website") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/modules.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/sku.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/pricing.json")
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/pricing.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/panels.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/mpn.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/merchant.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/prices.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/price.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite /brand.json + well-known brand/entity + /organization.json + /point-c.txt + /entity-profiles.json + #website + modules/sku/pricing");
+    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + #website");
     process.exit(1);
   }
   if (
@@ -813,13 +828,27 @@ if (fs.existsSync(outDir)) {
         "/.well-known/modules.json",
         "/.well-known/sku.json",
         "/.well-known/pricing.json",
+        "/.well-known/panels.json",
+        "/.well-known/mpn.json",
+        "/.well-known/merchant.json",
+        "/.well-known/prices.json",
+        "/.well-known/price.json",
       ]) {
         if (!brandBased.includes(needle)) {
           console.error(`❌ brand.json isBasedOn must include ${needle}`);
           process.exit(1);
         }
       }
-      for (const needle of ["/.well-known/modules.json", "/.well-known/sku.json", "/.well-known/pricing.json"]) {
+      for (const needle of [
+        "/.well-known/modules.json",
+        "/.well-known/sku.json",
+        "/.well-known/pricing.json",
+        "/.well-known/panels.json",
+        "/.well-known/mpn.json",
+        "/.well-known/merchant.json",
+        "/.well-known/prices.json",
+        "/.well-known/price.json",
+      ]) {
         if (!brandDist.includes(needle)) {
           console.error(`❌ brand.json distribution must invent-join ${needle}`);
           process.exit(1);
@@ -838,13 +867,27 @@ if (fs.existsSync(outDir)) {
         "/.well-known/modules.json",
         "/.well-known/sku.json",
         "/.well-known/pricing.json",
+        "/.well-known/panels.json",
+        "/.well-known/mpn.json",
+        "/.well-known/merchant.json",
+        "/.well-known/prices.json",
+        "/.well-known/price.json",
       ]) {
         if (!catBased.includes(needle)) {
           console.error(`❌ catalog.json isBasedOn must include ${needle}`);
           process.exit(1);
         }
       }
-      for (const needle of ["/.well-known/modules.json", "/.well-known/sku.json", "/.well-known/pricing.json"]) {
+      for (const needle of [
+        "/.well-known/modules.json",
+        "/.well-known/sku.json",
+        "/.well-known/pricing.json",
+        "/.well-known/panels.json",
+        "/.well-known/mpn.json",
+        "/.well-known/merchant.json",
+        "/.well-known/prices.json",
+        "/.well-known/price.json",
+      ]) {
         if (!catDistLive.includes(needle)) {
           console.error(`❌ catalog.json distribution must invent-join ${needle}`);
           process.exit(1);
@@ -1255,6 +1298,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/modules.json",
       "/.well-known/sku.json",
       "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
     ]) {
       if (!entBased.includes(needle)) {
         console.error(`❌ entity.json isBasedOn must include ${needle}`);
@@ -1272,6 +1320,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/modules.json",
       "/.well-known/sku.json",
       "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
     ]) {
       if (!entDist.includes(needle)) {
         console.error(`❌ entity.json distribution must invent-join ${needle}`);
@@ -1476,9 +1529,14 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("geo:ack") ||
     !securityLive.includes("/.well-known/modules.json") ||
     !securityLive.includes("/.well-known/sku.json") ||
-    !securityLive.includes("/.well-known/pricing.json")
+    !securityLive.includes("/.well-known/pricing.json") ||
+    !securityLive.includes("/.well-known/panels.json") ||
+    !securityLive.includes("/.well-known/mpn.json") ||
+    !securityLive.includes("/.well-known/merchant.json") ||
+    !securityLive.includes("/.well-known/prices.json") ||
+    !securityLive.includes("/.well-known/price.json")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C/entity-profiles/geo:next/ack + modules/sku/pricing invent pointers");
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C + invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + geo:next/ack");
     process.exit(1);
   }
   {
@@ -1661,6 +1719,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/modules.json",
       "/.well-known/sku.json",
       "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
       "#website",
     ]) {
       if (!agentsBased.includes(needle)) {
@@ -1680,6 +1743,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/modules.json",
       "/.well-known/sku.json",
       "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
       "#website",
     ]) {
       if (!agentsDist.includes(needle)) {
@@ -2068,6 +2136,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/modules.json",
       "/.well-known/sku.json",
       "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
     ]) {
       if (!epBased.includes(needle)) {
         console.error(`❌ entity-profiles.json isBasedOn invent must include ${needle}`);
@@ -2090,6 +2163,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/modules.json",
       "/.well-known/sku.json",
       "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
     ]) {
       if (!epDist.includes(needle)) {
         console.error(`❌ entity-profiles.json distribution invent must include ${needle}`);
@@ -2519,6 +2597,9 @@ if (fs.existsSync(outDir)) {
     "offer_json_url",
     "pricing_well_known_url",
     "panels_well_known_url",
+    "mpn_well_known_url",
+    "merchant_well_known_url",
+    "prices_well_known_url",
     "entity_well_known_url",
     "prices_rss_url",
     "organization_url",
@@ -2555,6 +2636,9 @@ if (fs.existsSync(outDir)) {
   const offerJsonUrlIdx = tsvCols.indexOf("offer_json_url");
   const pricingWkIdx = tsvCols.indexOf("pricing_well_known_url");
   const panelsWkIdx = tsvCols.indexOf("panels_well_known_url");
+  const mpnWkIdx = tsvCols.indexOf("mpn_well_known_url");
+  const merchantWkIdx = tsvCols.indexOf("merchant_well_known_url");
+  const pricesWkIdx = tsvCols.indexOf("prices_well_known_url");
   const entityWkIdx = tsvCols.indexOf("entity_well_known_url");
   const pricesRssUrlIdx = tsvCols.indexOf("prices_rss_url");
   const orgUrlIdx = tsvCols.indexOf("organization_url");
@@ -2632,6 +2716,18 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[panelsWkIdx] !== "https://arledscreen.com/.well-known/panels.json") {
       console.error(`❌ merchant TSV panels_well_known_url must be /.well-known/panels.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[mpnWkIdx] !== "https://arledscreen.com/.well-known/mpn.json") {
+      console.error(`❌ merchant TSV mpn_well_known_url must be /.well-known/mpn.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[merchantWkIdx] !== "https://arledscreen.com/.well-known/merchant.json") {
+      console.error(`❌ merchant TSV merchant_well_known_url must be /.well-known/merchant.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pricesWkIdx] !== "https://arledscreen.com/.well-known/prices.json") {
+      console.error(`❌ merchant TSV prices_well_known_url must be /.well-known/prices.json for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[entityWkIdx] !== "https://arledscreen.com/.well-known/entity.json") {

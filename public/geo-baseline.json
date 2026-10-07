@@ -24,7 +24,12 @@
     "https://arledscreen.com/#website",
     "https://arledscreen.com/.well-known/modules.json",
     "https://arledscreen.com/.well-known/sku.json",
-    "https://arledscreen.com/.well-known/pricing.json"
+    "https://arledscreen.com/.well-known/pricing.json",
+    "https://arledscreen.com/.well-known/panels.json",
+    "https://arledscreen.com/.well-known/mpn.json",
+    "https://arledscreen.com/.well-known/merchant.json",
+    "https://arledscreen.com/.well-known/prices.json",
+    "https://arledscreen.com/.well-known/price.json"
   ],
   "isRelatedTo": [
     {
@@ -149,6 +154,36 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/pricing.json",
       "name": "Pricing pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/panels.json",
+      "name": "Panels pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/mpn.json",
+      "name": "MPN pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/merchant.json",
+      "name": "Merchant pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/prices.json",
+      "name": "Prices pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/price.json",
+      "name": "Price pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
@@ -295,9 +330,9 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "fd1cacbcb84f88de96246e95131615a7b9f4baa68a2795b9bcca510f8e581384",
-    "catalogSha256": "4485c07952ea1561edb3496472e0bda9b57f467288ee8373cf7c530a4e91f31a",
-    "merchantTsvSha256": "0ec316e707d8fd5442315c5f4eef8f96387060ba031d15d2d250cee9b4a60e9c",
+    "aiShoppingSha256": "62d4444ee4100cabdb26f6c5e0863f52e2f8fdec56d3dc0bf44670498b2b3101",
+    "catalogSha256": "5f70a1e2579884b493d47279ea293a178971f1e872c3a4cdbefbd5ebece699ca",
+    "merchantTsvSha256": "1e6948c28c412f6babb071e17dca6142a72b8634b28cf21d424542c9e88256c6",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
   "discovery": {

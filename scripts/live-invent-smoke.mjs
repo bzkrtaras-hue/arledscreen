@@ -139,19 +139,21 @@ try {
     agentsBased.includes("/point-c.txt") &&
     agentsBased.includes("/entity-profiles.json") &&
     agentsBased.includes("/.well-known/modules.json") &&
-    agentsBased.includes("/.well-known/sku.json") &&
-    agentsBased.includes("/.well-known/pricing.json") &&
+    agentsBased.includes("/.well-known/panels.json") &&
+    agentsBased.includes("/.well-known/mpn.json") &&
+    agentsBased.includes("/.well-known/merchant.json") &&
     agentsBased.includes("#website") &&
     agentsDist.includes("/ai-shopping.json") &&
     agentsDist.includes("/entity-profiles.json") &&
     agentsDist.includes("/point-c.txt") &&
     agentsDist.includes("/.well-known/modules.json") &&
-    agentsDist.includes("/.well-known/sku.json") &&
-    agentsDist.includes("/.well-known/pricing.json") &&
+    agentsDist.includes("/.well-known/panels.json") &&
+    agentsDist.includes("/.well-known/mpn.json") &&
+    agentsDist.includes("/.well-known/merchant.json") &&
     agentsMd.includes("geo:next")
   ) {
-    ok("agents distribution + isBasedOn invent modules/sku/pricing + AGENTS geo:next");
-  } else fail("agents distribution + isBasedOn invent modules/sku/pricing + AGENTS geo:next");
+    ok("agents distribution + isBasedOn inventAlias panels/mpn/merchant + AGENTS geo:next");
+  } else fail("agents distribution + isBasedOn inventAlias panels/mpn/merchant + AGENTS geo:next");
   if (llms.includes("geo:next") && llms.includes("/.well-known/brand.json")) {
     ok("llms.txt geo:next + well-known/brand");
   } else fail("llms.txt geo:next + well-known/brand");
@@ -290,6 +292,9 @@ try {
     head.includes("offer_json_url") &&
     head.includes("pricing_well_known_url") &&
     head.includes("panels_well_known_url") &&
+    head.includes("mpn_well_known_url") &&
+    head.includes("merchant_well_known_url") &&
+    head.includes("prices_well_known_url") &&
     head.includes("entity_well_known_url") &&
     head.includes("prices_rss_url") &&
     head.includes("ai_shopping_url") &&
@@ -311,6 +316,9 @@ try {
     tsv.includes(`${SITE}/.well-known/sku.json`) &&
     tsv.includes(`${SITE}/.well-known/pricing.json`) &&
     tsv.includes(`${SITE}/.well-known/panels.json`) &&
+    tsv.includes(`${SITE}/.well-known/mpn.json`) &&
+    tsv.includes(`${SITE}/.well-known/merchant.json`) &&
+    tsv.includes(`${SITE}/.well-known/prices.json`) &&
     tsv.includes(`${SITE}/.well-known/entity.json`) &&
     tsv.includes(`${SITE}/feeds/prices.rss`) &&
     tsv.includes(`${SITE}/offer.json`) &&
@@ -451,12 +459,15 @@ if (
   JSON.stringify(brand.isBasedOn || []).includes("/entity-profiles.json") &&
   JSON.stringify(brand.isBasedOn || []).includes("#website") &&
   JSON.stringify(brand.isBasedOn || []).includes("/.well-known/modules.json") &&
+  JSON.stringify(brand.isBasedOn || []).includes("/.well-known/panels.json") &&
+  JSON.stringify(brand.isBasedOn || []).includes("/.well-known/mpn.json") &&
   JSON.stringify(brand.distribution || []).includes("/.well-known/modules.json") &&
-  JSON.stringify(brand.distribution || []).includes("/.well-known/sku.json") &&
-  JSON.stringify(brand.distribution || []).includes("/.well-known/pricing.json")
+  JSON.stringify(brand.distribution || []).includes("/.well-known/panels.json") &&
+  JSON.stringify(brand.distribution || []).includes("/.well-known/mpn.json") &&
+  JSON.stringify(brand.distribution || []).includes("/.well-known/merchant.json")
 ) {
-  ok("brand.subjectOf+distribution+isBasedOn → invent modules/sku/pricing + #website");
-} else fail("brand.subjectOf+distribution+isBasedOn → invent modules/sku/pricing + #website");
+  ok("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant + #website");
+} else fail("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant + #website");
 
 {
   const related = JSON.stringify(cat?.isRelatedTo || []);
@@ -480,12 +491,15 @@ if (
     based.includes("/entity-profiles.json") &&
     based.includes("#website") &&
     based.includes("/.well-known/modules.json") &&
+    based.includes("/.well-known/panels.json") &&
+    based.includes("/.well-known/mpn.json") &&
     dist.includes("/.well-known/modules.json") &&
-    dist.includes("/.well-known/sku.json") &&
-    dist.includes("/.well-known/pricing.json")
+    dist.includes("/.well-known/panels.json") &&
+    dist.includes("/.well-known/mpn.json") &&
+    dist.includes("/.well-known/merchant.json")
   ) {
-    ok("catalog distribution+isBasedOn invent → modules/sku/pricing + #website");
-  } else fail("catalog distribution+isBasedOn invent → modules/sku/pricing + #website");
+    ok("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant + #website");
+  } else fail("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant + #website");
 }
 
 {
