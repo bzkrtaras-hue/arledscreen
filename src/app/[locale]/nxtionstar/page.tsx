@@ -4,6 +4,7 @@ import { getProducts, CATEGORY_LABELS_TR } from "@/content/products";
 import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { nxtionstarBrandNode, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -66,6 +67,12 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
         ]}
       />
       <FaqJsonLd faqs={FAQS} />
+      <SpeakableJsonLd
+        pageUrl={url}
+        name="NXTIONSTAR: ARLEDSCREEN'in LED Ekran Markası"
+        description="NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN. İstanbul Gaziosmanpaşa."
+        cssSelectors={["#brand-h1", "#brand-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
@@ -77,10 +84,10 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">Marka</p>
-          <h1 className="mt-2 font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">
+          <h1 id="brand-h1" className="mt-2 font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">
             NXTIONSTAR: ARLEDSCREEN&apos;in LED Ekran Markası
           </h1>
-          <p className="mt-4 text-[15.5px] leading-[1.75] text-ink-soft">
+          <p id="brand-lead" className="mt-4 text-[15.5px] leading-[1.75] text-ink-soft">
             <strong>Kısa cevap:</strong> NXTIONSTAR, ARLEDSCREEN&apos;in kendi markasıdır; Türkiye&apos;deki tek satış noktası ARLEDSCREEN&apos;dir.
             Ürünlerin satışı, keşfi, montajı ve teknik servisi İstanbul Gaziosmanpaşa&apos;daki merkezimizden yürütülür.
           </p>

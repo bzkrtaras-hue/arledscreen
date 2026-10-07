@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { ClipboardList, Hammer, Wrench } from "lucide-react";
 import { FeaturedReferences } from "@/components/home/FeaturedReferences";
 import { QuoteSplit } from "@/components/home/QuoteSplit";
@@ -51,6 +52,12 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           { name: "Projeler", item: absoluteUrl("/tr/projelerimiz/") },
         ]}
       />
+      <SpeakableJsonLd
+        pageUrl={absoluteUrl("/tr/projelerimiz/")}
+        name="Tamamlanan projeler"
+        description="ARLEDSCREEN LED ekran projeleri: belediye, kafe, mağaza, etkinlik ve dış mekân kurulumları."
+        cssSelectors={["#projeler-h1", "#projeler-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -72,10 +79,10 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9CC0F5]">
             Projeler ve referanslar
           </p>
-          <h1 className="mt-1.5 text-balance font-display text-[clamp(1.35rem,1.1rem+1.2vw,1.85rem)] font-extrabold tracking-[-0.03em] text-white">
+          <h1 id="projeler-h1" className="mt-1.5 text-balance font-display text-[clamp(1.35rem,1.1rem+1.2vw,1.85rem)] font-extrabold tracking-[-0.03em] text-white">
             Tamamlanan projeler
           </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-white/85 sm:mt-3.5 sm:text-[0.95rem]">
+          <p id="projeler-lead" className="mx-auto mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-white/85 sm:mt-3.5 sm:text-[0.95rem]">
             Belediye, mağaza, kafe, otel ve dış mekân kurulumları. Ölçü, piksel aralığı ve konum
             proje kaydındaki gibidir.
           </p>

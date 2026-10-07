@@ -7,6 +7,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { HowToJsonLd } from "@/components/seo/HowToJsonLd";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { WhatsAppProjectPicker } from "@/components/home/WhatsAppProjectPicker";
@@ -94,6 +95,12 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
         ]}
       />
       <FaqJsonLd faqs={FAQS} />
+      <SpeakableJsonLd
+        pageUrl={absoluteUrl("/tr/hizmetler/")}
+        name="LED ekran montaj ve teknik servis hizmetleri"
+        description="LED ekran keşfi, montaj, devreye alma, bakım ve teknik servis. İstanbul Gaziosmanpaşa merkezli ARLEDSCREEN."
+        cssSelectors={["#hizmet-h1", "#hizmet-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -105,10 +112,10 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-2 lg:items-center lg:px-8">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">Hizmetler</p>
-            <h1 className="mt-3 text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
+            <h1 id="hizmet-h1" className="mt-3 text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
               LED ekran montaj ve teknik servis hizmetleri
             </h1>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-soft">
+            <p id="hizmet-lead" className="mt-4 max-w-xl text-base leading-relaxed text-ink-soft">
               Keşiften devreye almaya ve kurulum sonrası servise kadar LED ekran projenizin tüm adımlarını planlıyoruz. Merkezimiz İstanbul Gaziosmanpaşa&apos;dadır; Türkiye genelinde proje yürütüyoruz. Kayıtlı iller için{" "}
               <Link href="/tr/bolgeler/" className="font-semibold text-cyan hover:underline">
                 hizmet bölgesi

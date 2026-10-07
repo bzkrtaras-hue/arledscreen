@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { productGroupPath, getProductGroup } from "@/content/categories";
 import {
@@ -11,7 +12,7 @@ import {
   getServiceRegion,
   serviceRegionPath,
 } from "@/content/service-regions";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { nxtionstarBrandRef, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -71,19 +72,21 @@ export default async function ServiceRegionPage({
     },
   ];
 
+  const regionUrl = absoluteUrl(serviceRegionPath(region.slug));
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${absoluteUrl(serviceRegionPath(region.slug))}#service`,
+    "@id": `${regionUrl}#service`,
     name: `${region.name} LED ekran satışı, montajı ve teknik servis`,
     serviceType: "LED ekran sistemleri",
     description: region.description,
+    brand: nxtionstarBrandRef(),
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: {
       "@type": "AdministrativeArea",
       name: region.name,
     },
-    url: absoluteUrl(serviceRegionPath(region.slug)),
+    url: regionUrl,
   };
 
   return (
@@ -92,14 +95,20 @@ export default async function ServiceRegionPage({
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Hizmet bölgesi", item: absoluteUrl("/tr/bolgeler/") },
-          { name: region.name, item: absoluteUrl(serviceRegionPath(region.slug)) },
+          { name: region.name, item: regionUrl },
         ]}
       />
       <FaqJsonLd faqs={faqs} />
+      <SpeakableJsonLd
+        pageUrl={regionUrl}
+        name={region.h1}
+        description={region.description}
+        cssSelectors={["#region-h1", "#region-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(serviceRegionPath(region.slug)))),
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(regionUrl)),
         }}
       />
       <script
@@ -113,10 +122,10 @@ export default async function ServiceRegionPage({
             {region.name}
             {region.isHq ? " · Merkez" : ""}
           </p>
-          <h1 className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
+          <h1 id="region-h1" className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
             {region.h1}
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">{region.intro}</p>
+          <p id="region-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">{region.intro}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/tr/quote/"

@@ -6,6 +6,7 @@ import { Section } from "@/components/ui/section";
 import { GlassPanel } from "@/components/ui/glass-panel";
 import { Button } from "@/components/ui/button";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { pricedPanelsDatasetJsonLd } from "@/content/prices";
@@ -59,6 +60,14 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           },
         ]}
       />
+      {(locale === "tr" || locale === "en") ? (
+        <SpeakableJsonLd
+          pageUrl={hubUrl}
+          name={hub.h1}
+          description={hub.description}
+          cssSelectors={["#rehber-h1", "#rehber-lead"]}
+        />
+      ) : null}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -68,6 +77,8 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
 
       <Section
         titleAs="h1"
+        titleId="rehber-h1"
+        descriptionId="rehber-lead"
         eyebrow={hub.eyebrow}
         title={hub.h1}
         description={hub.intro}
