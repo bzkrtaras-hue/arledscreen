@@ -95,10 +95,12 @@ if (
   rss.includes("xmlns:atom") &&
   rss.includes("/entity.json") &&
   rss.includes("/brand.json") &&
-  rss.includes("/catalog.json")
+  rss.includes("/catalog.json") &&
+  rss.includes("/geo-baseline.json") &&
+  rss.includes("/point-c.txt")
 ) {
-  ok("prices.rss atom:link self + related entity/brand/catalog");
-} else fail("prices.rss atom:link self + related entity/brand/catalog");
+  ok("prices.rss atom:link self + related entity/brand/catalog/geo/point-c");
+} else fail("prices.rss atom:link self + related entity/brand/catalog/geo/point-c");
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
@@ -127,11 +129,13 @@ else fail("ard.resources.pointC");
   if (
     head.includes("organization_id") &&
     head.includes("entity_url") &&
+    head.includes("brand_url") &&
     tsv.includes(`${SITE}/#organization`) &&
-    tsv.includes(`${SITE}/entity.json`)
+    tsv.includes(`${SITE}/entity.json`) &&
+    tsv.includes(`${SITE}/brand.json`)
   ) {
-    ok("merchant TSV organization_id + entity_url");
-  } else fail("merchant TSV organization_id + entity_url");
+    ok("merchant TSV brand_url + organization_id + entity_url");
+  } else fail("merchant TSV brand_url + organization_id + entity_url");
 }
 
 if (

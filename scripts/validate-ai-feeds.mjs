@@ -239,6 +239,7 @@ if (fs.existsSync(outDir)) {
       "offer_id",
       "catalog_offer_id",
       "mpn",
+      "brand_url",
       "organization_id",
       "entity_url",
       "local_business_id",
@@ -260,6 +261,10 @@ if (fs.existsSync(outDir)) {
     }
     if (!String(ardMerchant?.entityUrl || "").includes("/entity.json")) {
       console.error("❌ ard.json merchantFeed.entityUrl must cite /entity.json");
+      process.exit(1);
+    }
+    if (!String(ardMerchant?.brandUrl || "").includes("/brand.json")) {
+      console.error("❌ ard.json merchantFeed.brandUrl must cite /brand.json");
       process.exit(1);
     }
     if (
@@ -1242,9 +1247,11 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/ai-shopping.json") ||
       !rssLive.includes("/brand.json") ||
       !rssLive.includes("/entity.json") ||
-      !rssLive.includes("/catalog.json")
+      !rssLive.includes("/catalog.json") ||
+      !rssLive.includes("/geo-baseline.json") ||
+      !rssLive.includes("/point-c.txt")
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo-baseline/point-c");
       process.exit(1);
     }
   }
@@ -1715,6 +1722,7 @@ if (fs.existsSync(outDir)) {
     "catalog_id",
     "offer_id",
     "catalog_offer_id",
+    "brand_url",
     "organization_id",
     "entity_url",
     "local_business_id",
@@ -1734,6 +1742,7 @@ if (fs.existsSync(outDir)) {
   const tsvCols = tsvHeader.split("\t");
   const mpnIdx = tsvCols.indexOf("mpn");
   const idIdx = tsvCols.indexOf("id");
+  const brandUrlIdx = tsvCols.indexOf("brand_url");
   const orgIdx = tsvCols.indexOf("organization_id");
   const entityIdx = tsvCols.indexOf("entity_url");
   const lbIdx = tsvCols.indexOf("local_business_id");
@@ -1743,6 +1752,10 @@ if (fs.existsSync(outDir)) {
     const cells = row.split("\t");
     if (cells[mpnIdx] !== cells[idIdx]) {
       console.error(`❌ merchant TSV mpn must equal id (sku) for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[brandUrlIdx] !== "https://arledscreen.com/brand.json") {
+      console.error(`❌ merchant TSV brand_url must be /brand.json for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[orgIdx] !== "https://arledscreen.com/#organization") {

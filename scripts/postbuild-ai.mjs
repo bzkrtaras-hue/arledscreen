@@ -21,6 +21,7 @@ const PRICE_VALID_UNTIL = "2026-12-31";
 const LOCALBUSINESS_ID = `${SITE_URL}/#localbusiness`;
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const ENTITY_URL = `${SITE_URL}/entity.json`;
+const BRAND_URL = `${SITE_URL}/brand.json`;
 const localBusinessRef = () => ({ "@type": "LocalBusiness", "@id": LOCALBUSINESS_ID });
 
 /** image paths match src/content/models.ts (priced SKUs only). */
@@ -870,6 +871,7 @@ function buildMerchantTsv() {
     "title_en",
     "brand",
     "brand_id",
+    "brand_url",
     "brand_makes_offer_id",
     "brand_has_offer_catalog",
     "pitch",
@@ -911,6 +913,7 @@ function buildMerchantTsv() {
         `NXTIONSTAR ${labelEn} LED Module`,
         "NXTIONSTAR",
         brandId,
+        BRAND_URL,
         brandMakesOfferId,
         brandHasOfferCatalog,
         panel.pitch,
@@ -1066,7 +1069,9 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/catalog.json" rel="related" type="application/ld+json"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json</description>
+    <atom:link href="${SITE_URL}/geo-baseline.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/point-c.txt" rel="related" type="text/plain"/>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
     <docs>${SITE_URL}/ai.txt</docs>

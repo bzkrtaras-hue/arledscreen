@@ -121,5 +121,5 @@ line("INFO", "PR merge", "PR #60 cursor/geo-prod-guard-5666 → main (owner)");
 line("INFO", "Target", "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores");
 line("INFO", "arleds DNS", "not on Cloudflare for this account — Hostinger redirect required");
 
-console.log("\nCommands: npm run point-c · npm run verify:arleds-301 · npm run tur1a:next · npm run tur1a:matrix · npm run invent:smoke · npm run geo:status");
+console.log("\nCommands: npm run point-c · npm run verify:arleds-301 · npm run tur1a:next · npm run tur1a:log · npm run tur1a:matrix · npm run invent:smoke · npm run geo:status");
 process.exit(0);

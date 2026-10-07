@@ -8,7 +8,9 @@
     <atom:link href="https://arledscreen.com/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/catalog.json" rel="related" type="application/ld+json"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: https://arledscreen.com/brand.json · Entity: https://arledscreen.com/entity.json</description>
+    <atom:link href="https://arledscreen.com/geo-baseline.json" rel="related" type="application/ld+json"/>
+    <atom:link href="https://arledscreen.com/point-c.txt" rel="related" type="text/plain"/>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: https://arledscreen.com/brand.json · Entity: https://arledscreen.com/entity.json · GEO: https://arledscreen.com/geo-baseline.json · Point C: https://arledscreen.com/point-c.txt</description>
     <language>tr</language>
     <lastBuildDate>2026-10-07T00:00:00Z</lastBuildDate>
     <docs>https://arledscreen.com/ai.txt</docs>
