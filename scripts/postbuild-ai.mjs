@@ -623,6 +623,11 @@ function buildAiShopping() {
       },
       {
         "@type": "DataDownload",
+        encodingFormat: "application/rss+xml",
+        contentUrl: `${SITE_URL}/feeds/prices.rss`,
+      },
+      {
+        "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/geo-baseline.json`,
       },

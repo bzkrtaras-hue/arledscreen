@@ -44,6 +44,12 @@ export const PRICE_DATASETS = [
     url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
     name: "ARLEDSCREEN merchant priced panels TSV",
   },
+  {
+    "@type": "DataFeed" as const,
+    "@id": `${SITE_URL}/feeds/prices.rss`,
+    url: `${SITE_URL}/feeds/prices.rss`,
+    name: "ARLEDSCREEN panel price RSS",
+  },
 ];
 
 /** Technical GEO baseline (fingerprints + 12 SKU snapshot). Not a second price list. */
@@ -80,7 +86,7 @@ export function nxtionstarBrandNode() {
     makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
     hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     description:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV. GEO baseline: geo-baseline.json.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss. GEO baseline: geo-baseline.json.",
     disambiguatingDescription:
       "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
   };
@@ -199,6 +205,11 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
         "@type": "DataDownload",
         encodingFormat: "text/tab-separated-values",
         contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/rss+xml",
+        contentUrl: `${SITE_URL}/feeds/prices.rss`,
       },
       {
         "@type": "DataDownload",

@@ -244,9 +244,10 @@ export type EntityDocument = {
   agentsMd: string;
   catalogJson: string;
   merchantFeed: string;
+  pricesRss: string;
   geoBaseline: string;
   subjectOf: Array<{
-    "@type": "Dataset";
+    "@type": "Dataset" | "DataFeed";
     "@id": string;
     name: string;
     url: string;
@@ -330,32 +331,7 @@ export function buildEntityDocument(): EntityDocument {
       "@id": `${SITE_URL}/#brand-nxtionstar`,
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
-      subjectOf: [
-        {
-          "@type": "Dataset",
-          "@id": `${SITE_URL}/ai-shopping.json`,
-          url: `${SITE_URL}/ai-shopping.json`,
-          name: "ARLEDSCREEN pricedPanels",
-        },
-        {
-          "@type": "Dataset",
-          "@id": `${SITE_URL}/catalog.json`,
-          url: `${SITE_URL}/catalog.json`,
-          name: "ARLEDSCREEN panel catalog",
-        },
-        {
-          "@type": "Dataset",
-          "@id": `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
-          url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
-          name: "ARLEDSCREEN merchant priced panels TSV",
-        },
-        {
-          "@type": "Dataset",
-          "@id": `${SITE_URL}/geo-baseline.json`,
-          url: `${SITE_URL}/geo-baseline.json`,
-          name: "ARLEDSCREEN GEO technical baseline",
-        },
-      ],
+      subjectOf: BRAND_SUBJECT_DATASETS,
       makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
       hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     },
@@ -412,6 +388,7 @@ export function buildEntityDocument(): EntityDocument {
     agentsMd: `${SITE_URL}/AGENTS.md`,
     catalogJson: `${SITE_URL}/catalog.json`,
     merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+    pricesRss: `${SITE_URL}/feeds/prices.rss`,
     geoBaseline: `${SITE_URL}/geo-baseline.json`,
     subjectOf: [
       {
@@ -437,6 +414,12 @@ export function buildEntityDocument(): EntityDocument {
         "@id": `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
         name: "ARLEDSCREEN merchant priced panels TSV",
         url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      },
+      {
+        "@type": "DataFeed",
+        "@id": `${SITE_URL}/feeds/prices.rss`,
+        name: "ARLEDSCREEN panel price RSS",
+        url: `${SITE_URL}/feeds/prices.rss`,
       },
       {
         "@type": "Dataset",

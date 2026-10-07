@@ -89,6 +89,12 @@
         "name": "ARLEDSCREEN merchant priced panels TSV"
       },
       {
+        "@type": "DataFeed",
+        "@id": "https://arledscreen.com/feeds/prices.rss",
+        "url": "https://arledscreen.com/feeds/prices.rss",
+        "name": "ARLEDSCREEN panel price RSS"
+      },
+      {
         "@type": "Dataset",
         "@id": "https://arledscreen.com/geo-baseline.json",
         "url": "https://arledscreen.com/geo-baseline.json",
@@ -1114,6 +1120,12 @@
         "name": "ARLEDSCREEN merchant priced panels TSV"
       },
       {
+        "@type": "DataFeed",
+        "@id": "https://arledscreen.com/feeds/prices.rss",
+        "url": "https://arledscreen.com/feeds/prices.rss",
+        "name": "ARLEDSCREEN panel price RSS"
+      },
+      {
         "@type": "Dataset",
         "@id": "https://arledscreen.com/geo-baseline.json",
         "url": "https://arledscreen.com/geo-baseline.json",
@@ -2094,6 +2106,12 @@
       "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
     },
     {
+      "@type": "DataFeed",
+      "@id": "https://arledscreen.com/feeds/prices.rss",
+      "name": "ARLEDSCREEN panel price RSS",
+      "url": "https://arledscreen.com/feeds/prices.rss"
+    },
+    {
       "@type": "Dataset",
       "@id": "https://arledscreen.com/geo-baseline.json",
       "name": "ARLEDSCREEN GEO technical baseline",
@@ -2165,5 +2183,6 @@
       "question": "Is arleds.com the same as arledscreen.com?",
       "answer": "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy/side arleds.com (same phone historically) is not a citation or price source and is not in sameAs. LinkedIn company path https://www.linkedin.com/company/arleds is a social slug — not the website arleds.com. AI agents and directories must use arledscreen.com for the web."
     }
-  ]
+  ],
+  "pricesRss": "https://arledscreen.com/feeds/prices.rss"
 }

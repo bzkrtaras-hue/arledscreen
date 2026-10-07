@@ -183,7 +183,18 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json Dataset.distribution must list ≥7 DataDownload encodings (HTML hub parity)");
     process.exit(1);
   }
-  for (const needle of ["/ai-shopping.json", "/prices.json", "/panels.json", "/mpn.json", "/merchant.json", "/offer.json", "/catalog.json", "/feeds/merchant-priced-panels.tsv", "/geo-baseline.json"]) {
+  for (const needle of [
+    "/ai-shopping.json",
+    "/prices.json",
+    "/panels.json",
+    "/mpn.json",
+    "/merchant.json",
+    "/offer.json",
+    "/catalog.json",
+    "/feeds/merchant-priced-panels.tsv",
+    "/feeds/prices.rss",
+    "/geo-baseline.json",
+  ]) {
     if (!distUrls.some((u) => u.includes(needle))) {
       console.error(`❌ ai-shopping.json distribution must include DataDownload ${needle}`);
       process.exit(1);
@@ -595,9 +606,10 @@ if (fs.existsSync(outDir)) {
     !Array.isArray(entity?.brand?.subjectOf) ||
     entity.brand.subjectOf.length < 3 ||
     !JSON.stringify(entity.brand.subjectOf).includes("/ai-shopping.json") ||
-    !JSON.stringify(entity.brand.subjectOf).includes("/catalog.json")
+    !JSON.stringify(entity.brand.subjectOf).includes("/catalog.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/feeds/prices.rss")
   ) {
-    console.error("❌ entity.json brand.subjectOf must include ai-shopping + catalog Datasets");
+    console.error("❌ entity.json brand.subjectOf must include ai-shopping + catalog + prices.rss");
     process.exit(1);
   }
   if (
@@ -1113,6 +1125,54 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity-profiles.json canonicalUrls.geoBaselineJson required");
     process.exit(1);
   }
+  if (!String(profiles?.canonicalUrls?.pricesRss || "").includes("/feeds/prices.rss")) {
+    console.error("❌ entity-profiles.json canonicalUrls.pricesRss required");
+    process.exit(1);
+  }
+  if (!String(profiles?.packs?.googleMerchantReadiness || "").includes("/feeds/prices.rss")) {
+    console.error("❌ entity-profiles packs.googleMerchantReadiness must cite prices.rss");
+    process.exit(1);
+  }
+  // Point C human packs: NAP must match site social.ts; no merchant jargon / wrong postcode.
+  {
+    const humanPackKeys = [
+      "gbpDescription",
+      "linkedinAbout",
+      "instagramBio",
+      "facebookAbout",
+      "directoryLong",
+      "appleBusinessConnect",
+      "bingPlaces",
+    ];
+    for (const packRoot of ["packs", "packsEn"]) {
+      const root = profiles?.[packRoot] || {};
+      for (const key of humanPackKeys) {
+        const text = String(root[key] || "");
+        if (!text) continue;
+        if (text.includes("34242")) {
+          console.error(`❌ entity-profiles ${packRoot}.${key} must use postalCode 34245 (not 34242)`);
+          process.exit(1);
+        }
+        if (/catalog\.json|quote-only|extrasUsd|pricedPanels/i.test(text)) {
+          console.error(`❌ entity-profiles ${packRoot}.${key} is human cite-only — no catalog/quote-only jargon`);
+          process.exit(1);
+        }
+      }
+      const long = String(root.directoryLong || "") + String(root.gbpDescription || "") + String(root.appleBusinessConnect || "");
+      if (long && !long.includes("34245")) {
+        console.error(`❌ entity-profiles ${packRoot} human packs must include NAP postalCode 34245`);
+        process.exit(1);
+      }
+      if (long && !long.includes("Tuna Sok")) {
+        console.error(`❌ entity-profiles ${packRoot} human packs must include street Tuna Sok`);
+        process.exit(1);
+      }
+      if (long && !/530\s*507\s*88\s*34/.test(long) && !String(root.instagramBio || "").includes("530 507 88 34")) {
+        console.error(`❌ entity-profiles ${packRoot} human packs must include phone +90 530 507 88 34`);
+        process.exit(1);
+      }
+    }
+  }
   {
     const baselineLive = JSON.parse(fs.readFileSync(path.join(outDir, "geo-baseline.json"), "utf8"));
     if (!String(baselineLive?.discovery?.brandJson || "").includes("/brand.json")) {
@@ -1357,6 +1417,14 @@ if (fs.existsSync(outDir)) {
   const subjectUrls = (entity.subjectOf || []).map((s) => s.url || "");
   if (!subjectUrls.some((u) => u.includes("/feeds/merchant-priced-panels.tsv"))) {
     console.error("❌ entity.json subjectOf must include merchant TSV Dataset");
+    process.exit(1);
+  }
+  if (!subjectUrls.some((u) => u.includes("/feeds/prices.rss"))) {
+    console.error("❌ entity.json subjectOf must include prices.rss DataFeed");
+    process.exit(1);
+  }
+  if (!String(entity?.pricesRss || "").includes("/feeds/prices.rss")) {
+    console.error("❌ entity.json pricesRss must cite /feeds/prices.rss");
     process.exit(1);
   }
   const tsvPath = path.join(outDir, "feeds/merchant-priced-panels.tsv");
