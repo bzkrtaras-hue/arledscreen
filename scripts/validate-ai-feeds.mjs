@@ -160,6 +160,25 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json Dataset sameAs must join catalog.json");
     process.exit(1);
   }
+  {
+    const aiSame = JSON.stringify(ai.sameAs || []);
+    for (const needle of [
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/organization.json",
+      "/entity.json",
+      "/.well-known/entity.json",
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/point-c.txt",
+      "#website",
+    ]) {
+      if (!aiSame.includes(needle)) {
+        console.error(`❌ ai-shopping.json Dataset sameAs must join ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
   if (!String(ai.mainEntityOfPage || "").includes("/led-ekran-fiyatlari/")) {
     console.error("❌ ai-shopping.json Dataset mainEntityOfPage must be price hub");
     process.exit(1);
@@ -973,6 +992,15 @@ if (fs.existsSync(outDir)) {
     console.error("❌ catalog.json Collection sameAs must join ai-shopping.json");
     process.exit(1);
   }
+  {
+    const catSame = JSON.stringify(catalogLive?.sameAs || []);
+    for (const needle of ["/geo-baseline.json", "/entity-profiles.json", "/brand.json", "/point-c.txt"]) {
+      if (!catSame.includes(needle)) {
+        console.error(`❌ catalog.json Collection sameAs must join ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
   if (
     catalogLive?.seller?.["@id"] !== "https://arledscreen.com/#organization" ||
     catalogLive?.provider?.["@id"] !== "https://arledscreen.com/#organization" ||
@@ -1272,9 +1300,22 @@ if (fs.existsSync(outDir)) {
   }
   {
     const entSame = JSON.stringify(entity?.sameAs || []);
-    if (!entSame.includes("/organization.json") || !entSame.includes("/.well-known/entity.json")) {
-      console.error("❌ entity.json sameAs must invent-join /organization.json + /.well-known/entity.json");
-      process.exit(1);
+    for (const needle of [
+      "/organization.json",
+      "/.well-known/entity.json",
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/point-c.txt",
+      "#website",
+    ]) {
+      if (!entSame.includes(needle)) {
+        console.error(`❌ entity.json sameAs must invent-join ${needle}`);
+        process.exit(1);
+      }
     }
   }
   {
@@ -1626,6 +1667,9 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("verify:arleds-301") ||
       !pointC.includes("tur1a:log") ||
       !pointC.includes("/.well-known/modules.json") ||
+      !pointC.includes("/.well-known/panels.json") ||
+      !pointC.includes("/.well-known/mpn.json") ||
+      !pointC.includes("/.well-known/merchant.json") ||
       !pointC.includes("ai-shopping.json pricedPanels") ||
       !pointC.includes("/entity-profiles.json") ||
       !pointC.includes("#website") ||
@@ -1893,9 +1937,12 @@ if (fs.existsSync(outDir)) {
       !brandDist.includes("/organization.json") ||
       !brandDist.includes("/prices.json") ||
       !brandDist.includes("/.well-known/brand.json") ||
-      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/brand.json")
+      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/brand.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/ai-shopping.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/geo-baseline.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/entity-profiles.json")
     ) {
-      console.error("❌ out/brand.json distribution/sameAs must include ai-shopping + catalog + prices.rss + entity/organization + prices.json + well-known brand");
+      console.error("❌ out/brand.json distribution/sameAs must include ai-shopping + catalog + prices.rss + entity/organization + prices.json + well-known brand + geo/profiles");
       process.exit(1);
     }
     if (

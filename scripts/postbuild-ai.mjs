@@ -334,6 +334,8 @@ function buildCatalog() {
       `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/organization.json`,
       `${SITE_URL}/.well-known/entity.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
     ],
@@ -681,9 +683,16 @@ function buildAiShopping() {
     },
     // Dataset-root agents still join place without expanding hasPart Offers.
     availableAtOrFrom: localBusinessRef(),
-    // Dataset ↔ Collection identity (catalog.json products; this file pricedPanels).
+    // Dataset ↔ Collection identity + invent graph closure (brand/geo/profiles/org).
     sameAs: [
       `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/.well-known/brand.json`,
+      `${SITE_URL}/organization.json`,
+      `${SITE_URL}/entity.json`,
+      `${SITE_URL}/.well-known/entity.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/#website`,
       `${SITE_URL}/point-c.txt`,
     ],
@@ -1662,9 +1671,22 @@ function enrichEntityDocument(entity) {
     entity.potentialAction = quoteOrderActions();
   }
   // Invent aliases on Organization sameAs (keep socials; never add arleds.com).
+  // Close invent graph: price Dataset + catalog + brand + geo + profiles + Point C + WebSite.
   {
     const same = Array.isArray(entity.sameAs) ? [...entity.sameAs] : [];
-    for (const u of [`${SITE_URL}/organization.json`, `${SITE_URL}/.well-known/entity.json`]) {
+    for (const u of [
+      `${SITE_URL}/organization.json`,
+      `${SITE_URL}/.well-known/entity.json`,
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/prices.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/.well-known/brand.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/entity-profiles.json`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/#website`,
+    ]) {
       if (!same.includes(u)) same.push(u);
     }
     entity.sameAs = same.filter((u) => !String(u).includes("arleds.com") || String(u).includes("linkedin.com"));
@@ -2947,8 +2969,13 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
       `${SITE_URL}/en/nxtionstar/`,
       `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/brand.json`,
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/prices.json`,
+      `${SITE_URL}/catalog.json`,
       `${SITE_URL}/organization.json`,
       `${SITE_URL}/.well-known/entity.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
     ],

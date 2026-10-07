@@ -42,6 +42,13 @@
   },
   "sameAs": [
     "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/.well-known/brand.json",
+    "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/.well-known/entity.json",
+    "https://arledscreen.com/geo-baseline.json",
+    "https://arledscreen.com/entity-profiles.json",
     "https://arledscreen.com/#website",
     "https://arledscreen.com/point-c.txt"
   ],

@@ -820,8 +820,13 @@
     "https://arledscreen.com/en/nxtionstar/",
     "https://arledscreen.com/.well-known/brand.json",
     "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/prices.json",
+    "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/organization.json",
     "https://arledscreen.com/.well-known/entity.json",
+    "https://arledscreen.com/geo-baseline.json",
+    "https://arledscreen.com/entity-profiles.json",
     "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/#website"
   ],

@@ -176,7 +176,10 @@ try {
     pc.includes("Gmail draft (Send)") &&
     pc.includes("point-c:next") &&
     pc.includes("geo:next") &&
-    pc.includes("/.well-known/modules.json")
+    pc.includes("/.well-known/modules.json") &&
+    pc.includes("/.well-known/panels.json") &&
+    pc.includes("/.well-known/mpn.json") &&
+    pc.includes("/.well-known/merchant.json")
   ) {
     ok("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
   } else fail("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
@@ -359,6 +362,32 @@ if (
 ) {
   ok("ai-shopping isBasedOn invent modules/sku/pricing + #website");
 } else fail("ai-shopping isBasedOn invent modules/sku/pricing + #website");
+
+{
+  const aiSame = JSON.stringify(ai.sameAs || []);
+  const brandSame = JSON.stringify(brand.sameAs || []);
+  const catSame = JSON.stringify(cat.sameAs || []);
+  const entSame = JSON.stringify(ent.sameAs || []);
+  if (
+    aiSame.includes("/brand.json") &&
+    aiSame.includes("/geo-baseline.json") &&
+    aiSame.includes("/entity-profiles.json") &&
+    brandSame.includes("/ai-shopping.json") &&
+    brandSame.includes("/geo-baseline.json") &&
+    brandSame.includes("/entity-profiles.json") &&
+    catSame.includes("/geo-baseline.json") &&
+    catSame.includes("/entity-profiles.json") &&
+    entSame.includes("/ai-shopping.json") &&
+    entSame.includes("/catalog.json") &&
+    entSame.includes("/brand.json") &&
+    entSame.includes("/geo-baseline.json") &&
+    entSame.includes("/entity-profiles.json") &&
+    entSame.includes("/point-c.txt") &&
+    entSame.includes("#website")
+  ) {
+    ok("sameAs invent closure ai/brand/catalog/entity → brand/geo/profiles");
+  } else fail("sameAs invent closure ai/brand/catalog/entity → brand/geo/profiles");
+}
 
 {
   const dist = JSON.stringify(ai.distribution || []);
