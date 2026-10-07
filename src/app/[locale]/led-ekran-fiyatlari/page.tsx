@@ -101,6 +101,41 @@ export default async function LedEkranFiyatlariPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            "@id": `${url}#priced-panels`,
+            name: "ARLEDSCREEN 2026 LED panel USD listesi",
+            description:
+              "Yayımlanmış 12 panel USD (pricedPanels). KDV/nakliye hariç; ücretsiz kargo yok. Makine kaynak: ai-shopping.json + catalog.json + merchant TSV.",
+            url,
+            creator: { "@id": `${SITE_URL}/#organization` },
+            isBasedOn: PRICE_DATASETS.map((d) => d.url),
+            distribution: [
+              {
+                "@type": "DataDownload",
+                encodingFormat: "application/ld+json",
+                contentUrl: `${SITE_URL}/ai-shopping.json`,
+              },
+              {
+                "@type": "DataDownload",
+                encodingFormat: "application/ld+json",
+                contentUrl: `${SITE_URL}/catalog.json`,
+              },
+              {
+                "@type": "DataDownload",
+                encodingFormat: "text/tab-separated-values",
+                contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+              },
+            ],
+            temporalCoverage: `2026-01-01/${PRICE_VALID_UNTIL}`,
+            variableMeasured: "USD per LED module panel",
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             panelProductsJsonLd(
               PANEL_PRICES,
