@@ -403,9 +403,10 @@ if (fs.existsSync(outDir)) {
   if (
     !catalogRelated.includes("/geo-baseline.json") ||
     !catalogRelated.includes("/ai-shopping.json") ||
+    !catalogRelated.includes("/feeds/prices.rss") ||
     catalogLive?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar"
   ) {
-    console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping and brand @id #brand-nxtionstar");
+    console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping + prices.rss and brand @id #brand-nxtionstar");
     process.exit(1);
   }
   // Product↔Offer identity: each catalog Offer.url must equal its Product.url (PDP),

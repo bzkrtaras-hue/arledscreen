@@ -331,6 +331,12 @@ function buildCatalog() {
         url: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
         name: "ARLEDSCREEN merchant priced panels TSV",
       },
+      {
+        "@type": "DataFeed",
+        "@id": `${SITE_URL}/feeds/prices.rss`,
+        url: `${SITE_URL}/feeds/prices.rss`,
+        name: "ARLEDSCREEN panel price RSS",
+      },
     ],
     mainEntity: {
       "@type": "ItemList",
@@ -1650,6 +1656,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         "@id": `${SITE_URL}/feeds/prices.rss`,
         url: `${SITE_URL}/feeds/prices.rss`,
         name: "ARLEDSCREEN panel price RSS",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/geo-baseline.json`,
+        url: `${SITE_URL}/geo-baseline.json`,
+        name: "ARLEDSCREEN GEO technical baseline",
       },
     ],
   };

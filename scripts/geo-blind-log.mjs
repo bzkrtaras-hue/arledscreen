@@ -7,6 +7,8 @@
  * Usage:
  *   node scripts/geo-blind-log.mjs --list
  *   node scripts/geo-blind-log.mjs --summary
+ *   node scripts/geo-blind-log.mjs --dry-run --platform=chatgpt --promptId=5 --mentioned=yes \
+ *     --brandCorrect=yes --priceSourceCited=ai-shopping
  *   node scripts/geo-blind-log.mjs --platform=chatgpt --promptId=5 --mentioned=yes \
  *     --brandCorrect=yes --priceSourceCited=ai-shopping \
  *     --sources=https://arledscreen.com/ai-shopping.json \
@@ -124,6 +126,8 @@ if (hasFlag("summary")) {
   process.exit(0);
 }
 
+const dryRun = hasFlag("dry-run");
+
 const row = {
   date: arg("date", new Date().toISOString()),
   platform: arg("platform"),
@@ -170,6 +174,12 @@ if (row.priceSourceCited && !PRICE_SOURCES.has(row.priceSourceCited)) {
     `Invalid --priceSourceCited=${row.priceSourceCited}. Allowed: ${[...PRICE_SOURCES].join(", ")}`,
   );
   process.exit(1);
+}
+
+if (dryRun) {
+  console.log("DRY-RUN (not written). Schema: docs/geo/observation.schema.json");
+  console.log(JSON.stringify(row, null, 2));
+  process.exit(0);
 }
 
 fs.mkdirSync(outDir, { recursive: true });

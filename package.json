@@ -9,7 +9,12 @@
     "lint": "eslint .",
     "postbuild": "node scripts/postbuild-lang.mjs && node scripts/postbuild-ai.mjs && node scripts/validate-ai-feeds.mjs",
     "deploy:pages": "node scripts/pages-deploy-resilient.mjs out",
-    "indexnow": "node scripts/submit-indexnow.mjs"
+    "indexnow": "node scripts/submit-indexnow.mjs",
+    "point-c": "node scripts/print-point-c-packs.mjs",
+    "point-c:en": "node scripts/print-point-c-packs.mjs --en",
+    "verify:arleds-301": "node scripts/verify-arleds-301.mjs",
+    "tur1a:list": "node scripts/geo-blind-log.mjs --list",
+    "tur1a:summary": "node scripts/geo-blind-log.mjs --summary"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
