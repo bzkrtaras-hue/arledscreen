@@ -1057,7 +1057,9 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/feeds/prices.rss" rel="self" type="application/rss+xml"/>
     <atom:link href="${SITE_URL}/ai-shopping.json" rel="alternate" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/brand.json" rel="related" type="application/ld+json"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: ${SITE_URL}/brand.json</description>
+    <atom:link href="${SITE_URL}/entity.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/catalog.json" rel="related" type="application/ld+json"/>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
     <docs>${SITE_URL}/ai.txt</docs>
@@ -1225,11 +1227,11 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       speakableCoverageNote:
         "TR/EN HTML content pages emit SpeakableSpecification where applicable (measured separately in agent artifacts).",
       ownerGated: [
-        "Point C third-party cites",
-        "Tur1a blind scores",
+        "Point C third-party cites — paste https://arledscreen.com/point-c.txt (npm run point-c)",
+        "Tur1a blind — npm run tur1a:next then npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… (no invented %)",
         "GSC access",
         "PR #60 merge",
-        "arleds.com → arledscreen.com/tr/ 301 (legacy domain split)",
+        "arleds.com → arledscreen.com/tr/ 301 — Hostinger clipboard in point-c.txt · npm run verify:arleds-301",
       ],
       noSpamDoorways: true,
       provinceLandingPolicy: "Only provinces with published project records; no 81-il programatic doorways",

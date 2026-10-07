@@ -463,6 +463,13 @@ if (fs.existsSync(outDir)) {
     console.error("❌ ai-shopping.json resources.geoBaseline required");
     process.exit(1);
   }
+  {
+    const gated = JSON.stringify(baseline?.baseline?.ownerGated || []);
+    if (!gated.includes("tur1a:log") || !gated.includes("point-c.txt") || !gated.includes("verify:arleds-301")) {
+      console.error("❌ geo-baseline.baseline.ownerGated must cite tur1a:log + point-c.txt + verify:arleds-301");
+      process.exit(1);
+    }
+  }
   if (
     !ai?.agentGuidelines?.priceSource?.includes("/geo-baseline.json") ||
     !ai?.agentGuidelines?.en?.priceSource?.includes("/geo-baseline.json")
@@ -1043,11 +1050,13 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("arledscreen.com/tr/") ||
       !pointC.includes("Hostinger arleds.com") ||
       !pointC.includes("verify:arleds-301") ||
+      !pointC.includes("tur1a:log") ||
       !pointCEn.includes("EN GBP About") ||
       !pointCEn.includes("arledscreen.com/en/") ||
-      !pointCEn.includes("Hostinger arleds.com")
+      !pointCEn.includes("Hostinger arleds.com") ||
+      !pointCEn.includes("tur1a:log")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP paste packs + Hostinger 301 clipboard");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301 + tur1a:log");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
@@ -1217,9 +1226,12 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('xmlns:atom="http://www.w3.org/2005/Atom"') ||
       !rssLive.includes('rel="self"') ||
       !rssLive.includes("/feeds/prices.rss") ||
-      !rssLive.includes("/ai-shopping.json")
+      !rssLive.includes("/ai-shopping.json") ||
+      !rssLive.includes("/brand.json") ||
+      !rssLive.includes("/entity.json") ||
+      !rssLive.includes("/catalog.json")
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link rel=self + alternate to ai-shopping.json");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog");
       process.exit(1);
     }
   }

@@ -45,8 +45,11 @@ jobs:
           npm run point-c | grep -q "Hostinger arleds.com"
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
           test -f out/point-c.txt && grep -q "Hostinger arleds.com" out/point-c.txt
+          test -f out/point-c.txt && grep -q "tur1a:log" out/point-c.txt
           test -f out/point-c-en.txt && grep -q "EN GBP About" out/point-c-en.txt
           test -f out/.well-known/ard.json && grep -q '"pointC"' out/.well-known/ard.json
+          grep -q 'rel="related"' out/feeds/prices.rss
+          grep -q "/entity.json" out/feeds/prices.rss
           npm run tur1a:print | grep -q "promptId=5"
           npm run tur1a:list | grep -q "en-1"
           npm run tur1a:matrix | grep -q "0/48"

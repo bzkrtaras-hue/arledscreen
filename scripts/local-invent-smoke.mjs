@@ -90,8 +90,15 @@ if (cat?.brand?.makesOffer?.offerCount === 12 && cat.seller?.["@id"]?.includes("
 if (JSON.stringify(cat.isRelatedTo || []).includes("/feeds/prices.rss")) ok("catalog isRelatedTo prices.rss");
 else fail("catalog isRelatedTo prices.rss");
 
-if (rss.includes('rel="self"') && rss.includes("xmlns:atom")) ok("prices.rss atom:link self");
-else fail("prices.rss atom:link self");
+if (
+  rss.includes('rel="self"') &&
+  rss.includes("xmlns:atom") &&
+  rss.includes("/entity.json") &&
+  rss.includes("/brand.json") &&
+  rss.includes("/catalog.json")
+) {
+  ok("prices.rss atom:link self + related entity/brand/catalog");
+} else fail("prices.rss atom:link self + related entity/brand/catalog");
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
