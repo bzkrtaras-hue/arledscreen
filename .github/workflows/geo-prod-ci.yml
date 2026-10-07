@@ -90,4 +90,7 @@ jobs:
           grep -q "modulesWellKnown" out/geo-baseline.json
           grep -q "/.well-known/modules.json" out/entity-profiles.json
           npm run tur1a:next | grep -q "/.well-known/modules.json"
+          grep -q "/.well-known/modules.json" out/catalog.json
+          grep -q "/.well-known/modules.json" out/brand.json
+          grep -q "/.well-known/modules.json" out/point-c.txt
           echo "OK owner tooling"

@@ -108,17 +108,27 @@ try {
 
 try {
   const pc = await getText("/point-c.txt");
-  if (pc.includes("GBP About") && pc.includes("34245") && pc.includes("Hostinger arleds.com")) {
-    ok("point-c.txt paste packs + Hostinger 301");
-  } else fail("point-c.txt paste packs + Hostinger 301");
+  if (
+    pc.includes("GBP About") &&
+    pc.includes("34245") &&
+    pc.includes("Hostinger arleds.com") &&
+    pc.includes("/.well-known/modules.json")
+  ) {
+    ok("point-c.txt paste packs + Hostinger 301 + invent aliases");
+  } else fail("point-c.txt paste packs + Hostinger 301 + invent aliases");
 } catch (e) {
   fail(`point-c.txt ${e?.message || e}`);
 }
 
 try {
   const pcEn = await getText("/point-c-en.txt");
-  if (pcEn.includes("EN GBP About") && pcEn.includes("arledscreen.com/en/")) ok("point-c-en.txt paste packs");
-  else fail("point-c-en.txt paste packs");
+  if (
+    pcEn.includes("EN GBP About") &&
+    pcEn.includes("arledscreen.com/en/") &&
+    pcEn.includes("/.well-known/modules.json")
+  ) {
+    ok("point-c-en.txt paste packs + invent aliases");
+  } else fail("point-c-en.txt paste packs + invent aliases");
 } catch (e) {
   fail(`point-c-en.txt ${e?.message || e}`);
 }
@@ -167,6 +177,13 @@ if (
 ) {
   ok("catalog isRelatedTo prices.rss + brand + point-c");
 } else fail("catalog isRelatedTo prices.rss + brand + point-c");
+
+if (
+  String(cat?.description || "").includes("/.well-known/modules.json") &&
+  String(brand?.description || "").includes("/.well-known/sku.json")
+) {
+  ok("catalog/brand description invent well-known modules/sku");
+} else fail("catalog/brand description invent well-known modules/sku");
 
 if (
   JSON.stringify(ai.isBasedOn || []).includes("/feeds/prices.rss") &&
