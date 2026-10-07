@@ -19,6 +19,7 @@ const AI_BOTS = [
   "Perplexity-User",
   "Bytespider",
   "CCBot",
+  "cohere-ai",
   "Applebot",
   "Applebot-Extended",
   "FacebookBot",

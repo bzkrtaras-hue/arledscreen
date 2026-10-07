@@ -25,6 +25,7 @@ import {
   pricedPanelsDatasetJsonLd,
 } from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { whatsappHref } from "@/lib/whatsapp";
@@ -170,6 +171,12 @@ export default async function ModelPage({ params }: PageProps) {
         ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
+      <SpeakableJsonLd
+        pageUrl={url}
+        name={m.name}
+        description={description}
+        cssSelectors={["#model-h1", "#model-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
@@ -202,8 +209,8 @@ export default async function ModelPage({ params }: PageProps) {
 
             <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">NXTIONSTAR · {g.name}</p>
-              <h1 className="mt-2 text-balance font-display text-[clamp(1.6rem,1.1rem+2vw,2.5rem)] font-bold leading-tight text-ink">{m.name}</h1>
-              <p className="mt-4 text-[15.5px] leading-[1.75] text-ink-soft">{description}</p>
+              <h1 id="model-h1" className="mt-2 text-balance font-display text-[clamp(1.6rem,1.1rem+2vw,2.5rem)] font-bold leading-tight text-ink">{m.name}</h1>
+              <p id="model-lead" className="mt-4 text-[15.5px] leading-[1.75] text-ink-soft">{description}</p>
 
               {price ? (
                 <div className="mt-5 rounded-2xl border border-border bg-band/60 p-4">

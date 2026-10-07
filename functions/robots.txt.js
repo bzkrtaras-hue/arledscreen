@@ -95,8 +95,11 @@ Allow: /
 User-Agent: CCBot
 Allow: /
 
+User-Agent: cohere-ai
+Allow: /
+
 Host: arledscreen.com
-# cache-bust-geo60-2026-10-07a
+# cache-bust-geo60-2026-10-07b
 Sitemap: https://arledscreen.com/sitemap.xml
 `;
 

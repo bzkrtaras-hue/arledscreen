@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { Hero } from "@/components/hero/Hero";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { getFaqs } from "@/content/faqs";
 import { getSeo } from "@/content/seo";
 import { pricedPanelsDatasetJsonLd } from "@/content/prices";
@@ -65,6 +66,8 @@ export default async function HomePage({ params }: PageProps) {
       <Script src="/chat-widget.js" strategy="lazyOnload" data-locale={locale} />
     ) : null;
 
+  const seo = getSeo(locale, "home");
+
   if (!tr) {
     return (
       <>
@@ -75,6 +78,14 @@ export default async function HomePage({ params }: PageProps) {
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/`))),
             }}
+          />
+        ) : null}
+        {locale === "en" ? (
+          <SpeakableJsonLd
+            pageUrl={absoluteUrl("/en/")}
+            name={seo.h1 ?? dict.brand.name}
+            description={seo.description}
+            cssSelectors={["#home-h1", "#home-lead"]}
           />
         ) : null}
         <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
@@ -127,6 +138,12 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <FaqJsonLd faqs={faqs} />
+      <SpeakableJsonLd
+        pageUrl={absoluteUrl("/tr/")}
+        name={seo.h1 ?? "ARLEDSCREEN LED Ekran"}
+        description={seo.description}
+        cssSelectors={["#home-h1", "#home-lead"]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

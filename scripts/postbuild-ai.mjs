@@ -294,17 +294,48 @@ function loadEntityCite() {
   }
 }
 
+/** Honest shipping graph shared with catalog Offers (no free-shipping invent). */
+function panelShippingDetails() {
+  return {
+    "@type": "OfferShippingDetails",
+    shippingDestination: {
+      "@type": "DefinedRegion",
+      addressCountry: "TR",
+    },
+    deliveryTime: {
+      "@type": "ShippingDeliveryTime",
+      handlingTime: {
+        "@type": "QuantitativeValue",
+        minValue: 3,
+        maxValue: 21,
+        unitCode: "DAY",
+      },
+      transitTime: {
+        "@type": "QuantitativeValue",
+        minValue: 1,
+        maxValue: 14,
+        unitCode: "DAY",
+      },
+    },
+  };
+}
+
 function buildAiShopping() {
   const cite = loadEntityCite();
+  const brandId = `${SITE_URL}/#brand-nxtionstar`;
   const pricedPanels = PANEL_PRICES.map((panel) => {
     const label = panelLabel(panel);
     return {
       sku: panel.id,
       name: `NXTIONSTAR ${label} LED Modül`,
+      // Keep string brand for simple consumers; brandId aligns with catalog Brand @id.
       brand: "NXTIONSTAR",
+      brandId,
       price: panel.usd.toFixed(2),
       priceCurrency: "USD",
       priceValidUntil: PRICE_VALID_UNTIL,
+      shippingIncluded: false,
+      shippingDetails: panelShippingDetails(),
       image: `${SITE_URL}${panel.image}`,
       url: panel.productUrl,
       groupUrl: panel.groupUrl,
@@ -320,6 +351,12 @@ function buildAiShopping() {
       "Single-fetch entity cite + 12 priced panel USD + merchant TSV + quote-only groups. No invented TL packs / 81-province doorways / AggregateRating. No free shipping.",
     url: `${SITE_URL}/ai-shopping.json`,
     creator: { "@id": `${SITE_URL}/#organization` },
+    brand: {
+      "@type": "Brand",
+      "@id": brandId,
+      name: "NXTIONSTAR",
+      url: `${SITE_URL}/tr/nxtionstar/`,
+    },
     isBasedOn: [
       `${SITE_URL}/entity.json`,
       `${SITE_URL}/catalog.json`,
@@ -336,7 +373,9 @@ function buildAiShopping() {
       priceValidUntil: PRICE_VALID_UNTIL,
       standardModule: "320 × 160 mm",
       freeShipping: false,
+      shippingIncluded: false,
       vatIncluded: false,
+      brandId,
       quoteOnly: [
         "seffaf-led-ekran",
         "transparan-led-ekran",
@@ -559,12 +598,29 @@ function main() {
     console.error("postbuild-ai: cite.oneLiner required");
     process.exit(1);
   }
+  if (!ai.brand?.["@id"]?.includes("#brand-nxtionstar")) {
+    console.error("postbuild-ai: ai-shopping brand @id required");
+    process.exit(1);
+  }
+  if (ai.shoppingPolicy?.freeShipping !== false || ai.shoppingPolicy?.shippingIncluded !== false) {
+    console.error("postbuild-ai: refuse free-shipping invent in shoppingPolicy");
+    process.exit(1);
+  }
   const dumped = JSON.stringify(ai);
   if (/blindTestPrompts|kör test/i.test(dumped)) {
     console.error("postbuild-ai: refuse blind-test payload in ai-shopping.json");
     process.exit(1);
   }
   for (const panel of PANEL_PRICES) {
+    const priced = ai.pricedPanels.find((p) => p.sku === panel.id);
+    if (
+      !priced?.brandId?.includes("#brand-nxtionstar") ||
+      priced.shippingIncluded !== false ||
+      priced.shippingDetails?.["@type"] !== "OfferShippingDetails"
+    ) {
+      console.error(`postbuild-ai: pricedPanels brandId/shipping missing for ${panel.id}`);
+      process.exit(1);
+    }
     if (panel.surface === "GOB" && !panel.productUrl.includes("/gob-led-ekran/")) {
       console.error(`postbuild-ai: GOB panel ${panel.id} must use gob-led-ekran productUrl`);
       process.exit(1);
