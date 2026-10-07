@@ -61,25 +61,7 @@ export default function RootLayout({
             title={link.title}
           />
         ))}
-        {/* Structured data: Organization + canonical */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "@id": `${SITE_URL}/#organization`,
-              name: "ARLEDSCREEN",
-              url: SITE_URL,
-              logo: `${SITE_URL}/apple-touch-icon.png`,
-              sameAs: [
-                "https://www.instagram.com/arledscreen",
-                "https://www.facebook.com/arledscreenn",
-                "https://www.linkedin.com/company/arleds",
-              ],
-            }),
-          }}
-        />
+        {/* Organization / LocalBusiness / WebSite JSON-LD: OrganizationJsonLd in [locale]/layout */}
       </head>
       <body className="min-h-screen bg-bg font-sans antialiased">
         {children}
