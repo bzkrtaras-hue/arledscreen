@@ -202,6 +202,19 @@ export function CommercialLanding({ page }: { page: CommercialPage }) {
         </div>
       </section>
 
+      {showPanelOffers ? (
+        <section id="panel-fiyatlari" className="border-t border-border bg-white py-12 md:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="font-display text-xl font-bold text-ink md:text-2xl">2026 panel fiyat listesi</h2>
+            <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
+              Yayımlanmış 12 NXTIONSTAR panel USD. Quote-only gruplar (şeffaf, esnek, poster, kiralık, kontrol) için sabit
+              fiyat yazılmaz — yazılı teklif.
+            </p>
+            <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" />
+          </div>
+        </section>
+      ) : null}
+
       {page.images.length ? (
         <section className="border-t border-border bg-white py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
