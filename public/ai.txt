@@ -13,6 +13,8 @@ merchant-tsv: https://arledscreen.com/feeds/merchant-priced-panels.tsv
 geo-baseline: https://arledscreen.com/geo-baseline.json
 ard: https://arledscreen.com/.well-known/ard.json
 entity-profiles: https://arledscreen.com/entity-profiles.json
+brand-tr: https://arledscreen.com/tr/nxtionstar/
+brand-en: https://arledscreen.com/en/nxtionstar/
 about: https://arledscreen.com/tr/about/
 founder: https://arledscreen.com/tr/about/aras-bozkurt/
 calculator: https://arledscreen.com/tr/hesaplayici/
