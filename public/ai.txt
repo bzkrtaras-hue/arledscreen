@@ -17,6 +17,11 @@ brand-tr: https://arledscreen.com/tr/nxtionstar/
 brand-en: https://arledscreen.com/en/nxtionstar/
 intent-tr: https://arledscreen.com/tr/led-ekran/
 intent-en: https://arledscreen.com/en/led-ekran/
+sales-en: https://arledscreen.com/en/led-ekran-satisi/
+rental-en: https://arledscreen.com/en/led-ekran-kiralama/
+install-en: https://arledscreen.com/en/led-ekran-montaj/
+manufacturer-en: https://arledscreen.com/en/led-ekran-ureticisi/
+service-en: https://arledscreen.com/en/led-ekran-servis/
 price-tr: https://arledscreen.com/tr/led-ekran-fiyatlari/
 price-en: https://arledscreen.com/en/led-ekran-fiyatlari/
 about: https://arledscreen.com/tr/about/
