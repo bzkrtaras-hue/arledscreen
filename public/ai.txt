@@ -23,6 +23,8 @@ install-en: https://arledscreen.com/en/led-ekran-montaj/
 manufacturer-en: https://arledscreen.com/en/led-ekran-ureticisi/
 service-en: https://arledscreen.com/en/led-ekran-servis/
 services-hub-en: https://arledscreen.com/en/hizmetler/
+regions-hub-en: https://arledscreen.com/en/bolgeler/
+founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 use-store-en: https://arledscreen.com/en/magaza-led-ekran/
 use-facade-en: https://arledscreen.com/en/cephe-led-ekran/
 use-mall-en: https://arledscreen.com/en/avm-led-ekran/
