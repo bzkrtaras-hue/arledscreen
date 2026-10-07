@@ -534,6 +534,39 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/llms.txt must cite /prices.json + /.well-known/ai.txt + organization.json + AGENTS.md");
     process.exit(1);
   }
+  const headersLive = fs.readFileSync(path.join(outDir, "_headers"), "utf8");
+  if (
+    !headersLive.includes('rel="describedby"') ||
+    !headersLive.includes("ai-shopping.json") ||
+    !headersLive.includes("entity.json") ||
+    !headersLive.includes("agents.json") ||
+    !headersLive.includes("AGENTS.md")
+  ) {
+    console.error("❌ out/_headers must advertise Link describedby/alternate for price+entity+agents");
+    process.exit(1);
+  }
+  for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
+    const htmlPath = path.join(outDir, htmlRel);
+    if (!fs.existsSync(htmlPath)) {
+      console.error(`❌ Missing HTML for discovery cite check: ${htmlRel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(htmlPath, "utf8");
+    for (const needle of [
+      'href="https://arledscreen.com/ai-shopping.json"',
+      'href="https://arledscreen.com/entity.json"',
+      'href="https://arledscreen.com/prices.json"',
+      'href="https://arledscreen.com/organization.json"',
+      'href="https://arledscreen.com/.well-known/agents.json"',
+      'href="https://arledscreen.com/AGENTS.md"',
+      'rel="describedby"',
+    ]) {
+      if (!html.includes(needle)) {
+        console.error(`❌ ${htmlRel} must include discovery link: ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
   const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
   if (
     !profiles?.packsEn?.gbpDescription ||

@@ -7,6 +7,14 @@
   Cross-Origin-Opener-Policy: same-origin-allow-popups
   Cross-Origin-Resource-Policy: same-site
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' mailto: https://wa.me https://api.whatsapp.com https://*.mailerlite.com; img-src 'self' https: data:; script-src 'self' https://*.mailerlite.com https://*.mlcdn.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.mailerlite.com
+  # RFC 8288 discovery for AI shopping / GEO agents (price + entity + agent index).
+  Link: <https://arledscreen.com/ai-shopping.json>; rel="describedby"; type="application/ld+json"; title="AI Shopping pricedPanels"
+  Link: <https://arledscreen.com/entity.json>; rel="describedby"; type="application/ld+json"; title="Organization Entity"
+  Link: <https://arledscreen.com/prices.json>; rel="alternate"; type="application/ld+json"; title="Panel Prices alias"
+  Link: <https://arledscreen.com/organization.json>; rel="alternate"; type="application/ld+json"; title="Organization alias"
+  Link: <https://arledscreen.com/.well-known/agents.json>; rel="alternate"; type="application/ld+json"; title="Agent Discovery Index"
+  Link: <https://arledscreen.com/AGENTS.md>; rel="alternate"; type="text/markdown"; title="AGENTS.md"
+  Link: <https://arledscreen.com/llms.txt>; rel="alternate"; type="text/plain"; title="LLM Context"
 
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
