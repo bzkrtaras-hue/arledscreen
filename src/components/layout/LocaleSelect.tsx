@@ -25,7 +25,8 @@ export function LocaleSelect({
     /^\/tr\/bolgeler\//,
     /^\/tr\/projelerimiz\//,
     /^\/tr\/galeri\//,
-    /^\/tr\/products\/[^/]+\//,
+    // Product group landings now have EN counterparts; model pages stay TR-only.
+    /^\/tr\/products\/[^/]+\/[^/]+\//,
     /^\/tr\/about\/aras-bozkurt\//,
     /^\/tr\/gizlilik\//,
     /^\/tr\/blog\//,
@@ -38,7 +39,7 @@ export function LocaleSelect({
     const p = pathname.endsWith("/") ? pathname : `${pathname}/`;
     if (next !== "tr" && TR_ONLY.some((re) => re.test(p))) {
       // Product pages fall back to the locale catalog, rehber articles to the guide index, others to home.
-      if (/^\/tr\/products\//.test(p)) return `/${next}/products/`;
+      if (/^\/tr\/products\/[^/]+\/[^/]+\//.test(p)) return `/${next}/products/`;
       if (/^\/tr\/rehber\//.test(p)) return `/${next}/rehber/`;
       return `/${next}/`;
     }

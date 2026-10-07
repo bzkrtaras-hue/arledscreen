@@ -717,6 +717,9 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       productsHub: `${SITE_URL}/tr/products/`,
       intentHub: `${SITE_URL}/tr/led-ekran/`,
       intentHubEn: `${SITE_URL}/en/led-ekran/`,
+      productsGobEn: `${SITE_URL}/en/products/gob-led-ekran/`,
+      productsIndoorEn: `${SITE_URL}/en/products/ic-mekan-led-ekran/`,
+      productsOutdoorEn: `${SITE_URL}/en/products/dis-mekan-led-ekran/`,
       yapayZeka: `${SITE_URL}/tr/yapay-zeka/`,
     },
   };
@@ -807,6 +810,9 @@ rental-en: ${SITE_URL}/en/led-ekran-kiralama/
 install-en: ${SITE_URL}/en/led-ekran-montaj/
 manufacturer-en: ${SITE_URL}/en/led-ekran-ureticisi/
 service-en: ${SITE_URL}/en/led-ekran-servis/
+products-gob-en: ${SITE_URL}/en/products/gob-led-ekran/
+products-indoor-en: ${SITE_URL}/en/products/ic-mekan-led-ekran/
+products-outdoor-en: ${SITE_URL}/en/products/dis-mekan-led-ekran/
 price-tr: ${SITE_URL}/tr/led-ekran-fiyatlari/
 price-en: ${SITE_URL}/en/led-ekran-fiyatlari/
 about: ${SITE_URL}/tr/about/

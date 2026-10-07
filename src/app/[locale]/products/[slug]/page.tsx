@@ -32,15 +32,25 @@ import {
   productGroupPath,
   relatedReferences,
 } from "@/content/categories";
+import { getProductGroupEn, PRODUCT_GROUP_EN_SLUGS } from "@/content/product-groups-en";
+import { ProductGroupEnLanding } from "@/components/products/ProductGroupEnLanding";
 import { displayCompany } from "@/content/trust";
-import { buildTrOnlyMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { whatsappHref } from "@/lib/whatsapp";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return PRODUCT_GROUPS.map((g) => ({ locale: "tr", slug: g.slug }));
+  const params: { locale: string; slug: string }[] = [];
+  for (const g of PRODUCT_GROUPS) {
+    params.push({ locale: "tr", slug: g.slug });
+    if (PRODUCT_GROUP_EN_SLUGS.includes(g.slug)) {
+      params.push({ locale: "en", slug: g.slug });
+    }
+  }
+  return params;
 }
 
 interface PageProps {
@@ -48,9 +58,29 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale: raw, slug } = await params;
   const g = getProductGroup(slug);
   if (!g) return {};
+  if (raw === "en") {
+    const en = getProductGroupEn(slug);
+    if (!en) return {};
+    return buildPageMetadata({
+      locale: "en" as Locale,
+      path: `/products/${g.slug}/`,
+      title: en.title,
+      description: en.description,
+      hreflangLocales: ["tr", "en"],
+    });
+  }
+  if (raw === "tr" && PRODUCT_GROUP_EN_SLUGS.includes(slug)) {
+    return buildPageMetadata({
+      locale: "tr" as Locale,
+      path: `/products/${g.slug}/`,
+      title: g.title,
+      description: g.description,
+      hreflangLocales: ["tr", "en"],
+    });
+  }
   return buildTrOnlyMetadata({ path: `/products/${g.slug}`, title: g.title, description: g.description });
 }
 
@@ -75,9 +105,14 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
 
 export default async function ProductGroupPage({ params }: PageProps) {
   const { locale, slug } = await params;
-  if (locale !== "tr") notFound();
+  if (locale !== "tr" && locale !== "en") notFound();
   const g = getProductGroup(slug);
   if (!g) notFound();
+  if (locale === "en") {
+    const en = getProductGroupEn(slug);
+    if (!en) notFound();
+    return <ProductGroupEnLanding group={g} en={en} />;
+  }
 
   const url = absoluteUrl(productGroupPath(g));
   const refs = relatedReferences(g, 4);

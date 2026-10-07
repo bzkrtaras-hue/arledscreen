@@ -749,7 +749,10 @@ export function getProductGroup(slug: string): ProductGroup | undefined {
   return PRODUCT_GROUPS.find((g) => g.slug === slug);
 }
 
-export const productGroupPath = (g: Pick<ProductGroup, "slug">) => `/tr/products/${g.slug}/`;
+export const productGroupPath = (
+  g: Pick<ProductGroup, "slug">,
+  locale: "tr" | "en" = "tr",
+) => `/${locale}/products/${g.slug}/`;
 
 export function relatedReferences(g: ProductGroup, limit = 4): Reference[] {
   if (!g.refFilter) return [];

@@ -481,6 +481,9 @@ if (fs.existsSync(outDir)) {
     "en/led-ekran-montaj/index.html",
     "en/led-ekran-kiralama/index.html",
     "en/led-ekran-servis/index.html",
+    "en/products/gob-led-ekran/index.html",
+    "en/products/ic-mekan-led-ekran/index.html",
+    "en/products/dis-mekan-led-ekran/index.html",
     "tr/led-ekran-fiyatlari/index.html",
     "en/led-ekran-fiyatlari/index.html",
     "tr/nxtionstar/index.html",
@@ -527,6 +530,8 @@ if (fs.existsSync(outDir)) {
     "/en/led-ekran/",
     "/en/led-ekran-satisi/",
     "/en/led-ekran-kiralama/",
+    "/en/products/gob-led-ekran/",
+    "/en/products/ic-mekan-led-ekran/",
     "/en/sss/",
   ]) {
     if (!indexNowScript.includes(must)) {

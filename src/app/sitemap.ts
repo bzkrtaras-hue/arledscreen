@@ -98,6 +98,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.85,
     });
+    // EN lean landings for AI inventable /en/products/<slug>/ paths (models stay TR-only).
+    entries.push({
+      url: absoluteUrl(`/en/products/${g.slug}/`),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.82,
+    });
   }
   for (const m of LED_MODELS) {
     entries.push({
