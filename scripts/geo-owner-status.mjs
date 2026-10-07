@@ -14,8 +14,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 const profilesPath = path.join(repoRoot, "public/entity-profiles.json");
 const logPath = path.join(repoRoot, "docs/geo/observations/blind-log.jsonl");
-
-const EXPECT_301 = "https://arledscreen.com/tr/";
+const pointCProgressPath = path.join(repoRoot, "docs/geo/observations/point-c-progress.json");
+/** Packs in TR_ORDER + hostinger301 step (see print-point-c-packs.mjs). */
+const POINT_C_STEPS = 11;
 
 function line(status, label, detail = "") {
   const mark = status === "OK" ? "OK  " : status === "OPEN" ? "OPEN" : "INFO";
@@ -42,10 +43,25 @@ try {
       ? "https://arledscreen.com/point-c.txt · paste GBP/IG/FB/LinkedIn + Hostinger 301 clipboard (once; 34245)"
       : `missing ${missing.join(", ")}`,
   );
+  let ackedN = 0;
+  try {
+    if (fs.existsSync(pointCProgressPath)) {
+      const prog = JSON.parse(fs.readFileSync(pointCProgressPath, "utf8"));
+      ackedN = Array.isArray(prog.acked) ? prog.acked.length : 0;
+    }
+  } catch {
+    ackedN = 0;
+  }
+  const pasteDone = ackedN >= POINT_C_STEPS;
+  line(
+    pasteDone ? "OK" : "OPEN",
+    "Point C paste progress",
+    `${ackedN}/${POINT_C_STEPS} acked · npm run point-c:next · point-c:ack`,
+  );
   const checklist = profiles.ownerP0Checklist || [];
   if (checklist[0]) line("INFO", "P0 next", checklist[0].slice(0, 120));
   // Sequential paste clipboard (point-c:next) — cite-only; no invent scores.
-  if (packsOk) {
+  if (packsOk && !pasteDone) {
     const next = spawnSync(process.execPath, [path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "--next"], {
       encoding: "utf8",
       timeout: 15000,
@@ -88,6 +104,10 @@ if (!arledsOk) {
     console.log("  Hostinger mailto:");
     console.log(`  ${mod.buildHostingerMailto()}`);
     console.log("  EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml");
+    if (mod.HOSTINGER_GMAIL_DRAFT_URL) {
+      console.log("  Gmail draft (Send):");
+      console.log(`  ${mod.HOSTINGER_GMAIL_DRAFT_URL}`);
+    }
   } catch {
     /* clipboard helper optional */
   }

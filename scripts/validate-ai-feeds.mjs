@@ -555,6 +555,8 @@ if (fs.existsSync(outDir)) {
     "pointCEnTxt",
     "pointCWellKnown",
     "brandJson",
+    "brandWellKnown",
+    "entityWellKnown",
     "pricesWellKnown",
     "priceWellKnown",
     "pricingWellKnown",
@@ -570,6 +572,10 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ geo-baseline.json discovery.${key} required for invent/agent surfaces`);
       process.exit(1);
     }
+  }
+  if (!JSON.stringify(baseline?.isBasedOn || []).includes("AGENTS.md")) {
+    console.error("❌ geo-baseline.json isBasedOn must cite AGENTS.md");
+    process.exit(1);
   }
   if (
     !String(ai?.resources?.pointC || "").includes("/point-c.txt") ||
@@ -896,9 +902,12 @@ if (fs.existsSync(outDir)) {
     entity.brand.subjectOf.length < 3 ||
     !JSON.stringify(entity.brand.subjectOf).includes("/ai-shopping.json") ||
     !JSON.stringify(entity.brand.subjectOf).includes("/catalog.json") ||
-    !JSON.stringify(entity.brand.subjectOf).includes("/feeds/prices.rss")
+    !JSON.stringify(entity.brand.subjectOf).includes("/feeds/prices.rss") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/prices.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/point-c.txt") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/entity.json")
   ) {
-    console.error("❌ entity.json brand.subjectOf must include ai-shopping + catalog + prices.rss");
+    console.error("❌ entity.json brand.subjectOf must include ai-shopping + catalog + prices.rss + prices.json + point-c + entity");
     process.exit(1);
   }
   if (
@@ -952,9 +961,12 @@ if (fs.existsSync(outDir)) {
     entity?.location?.makesOffer?.offerCount !== 12 ||
     entity?.location?.hasOfferCatalog?.["@type"] !== "OfferCatalog" ||
     !Array.isArray(entity?.location?.subjectOf) ||
-    entity.location.subjectOf.length < 3
+    entity.location.subjectOf.length < 3 ||
+    !JSON.stringify(entity.location.subjectOf).includes("/prices.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/point-c.txt") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/brand.json")
   ) {
-    console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog + subjectOf");
+    console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog + subjectOf invent (prices/point-c/brand)");
     process.exit(1);
   }
   if (
@@ -1216,6 +1228,7 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("Hostinger arleds.com") ||
       !pointC.includes("Hostinger support email") ||
       !pointC.includes("mailto:support@hostinger.com") ||
+      !pointC.includes("Gmail draft (Send)") ||
       !pointC.includes("point-c:next") ||
       !pointC.includes("verify:arleds-301") ||
       !pointC.includes("tur1a:log") ||
@@ -1226,11 +1239,12 @@ if (fs.existsSync(outDir)) {
       !pointCEn.includes("Hostinger arleds.com") ||
       !pointCEn.includes("Hostinger support email") ||
       !pointCEn.includes("mailto:support@hostinger.com") ||
+      !pointCEn.includes("Gmail draft (Send)") ||
       !pointCEn.includes("point-c:next") ||
       !pointCEn.includes("tur1a:log") ||
       !pointCEn.includes("/.well-known/modules.json")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto + point-c:next + tur1a:log + invent aliases");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto/Gmail draft + point-c:next + tur1a:log + invent aliases");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
@@ -1415,13 +1429,18 @@ if (fs.existsSync(outDir)) {
       !brandDist.includes("/ai-shopping.json") ||
       !brandDist.includes("/catalog.json") ||
       !brandDist.includes("/entity.json") ||
-      !brandDist.includes("/organization.json")
+      !brandDist.includes("/organization.json") ||
+      !brandDist.includes("/prices.json")
     ) {
-      console.error("❌ out/brand.json distribution must include ai-shopping + catalog + prices.rss + entity/organization");
+      console.error("❌ out/brand.json distribution must include ai-shopping + catalog + prices.rss + entity/organization + prices.json");
       process.exit(1);
     }
-    if (!brandSubject.includes("/entity.json") || !brandSubject.includes("#organization")) {
-      console.error("❌ out/brand.json subjectOf must reverse-join Organization entity.json");
+    if (
+      !brandSubject.includes("/entity.json") ||
+      !brandSubject.includes("#organization") ||
+      !brandSubject.includes("/prices.json")
+    ) {
+      console.error("❌ out/brand.json subjectOf must reverse-join Organization entity.json + prices.json");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/brand.json")).equals(fs.readFileSync(path.join(outDir, "brand.json")))) {

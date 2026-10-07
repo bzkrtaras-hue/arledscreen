@@ -1242,6 +1242,12 @@ function hasQuoteOrderActions(actions) {
   return hasTr && hasEn;
 }
 
+function ensureSubjectNeedle(list, needle, entry) {
+  const out = Array.isArray(list) ? [...list] : [];
+  if (!out.some((s) => String(s?.url || s?.["@id"] || "").includes(needle))) out.push(entry);
+  return out;
+}
+
 /** Entity-first invent: Brand AggregateOffer×12 + Org/WebSite OrderAction (TR/EN). */
 function enrichEntityDocument(entity) {
   if (!entity || typeof entity !== "object") return entity;
@@ -1287,14 +1293,39 @@ function enrichEntityDocument(entity) {
     name: "NXTIONSTAR",
     url: `${SITE_URL}/brand.json`,
   };
+  const pricesAliasEntry = {
+    "@type": "Dataset",
+    "@id": `${SITE_URL}/prices.json`,
+    name: "ARLEDSCREEN pricedPanels (prices.json alias)",
+    url: `${SITE_URL}/prices.json`,
+  };
+  const entityOrgEntry = {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "ARLEDSCREEN",
+    url: `${SITE_URL}/entity.json`,
+    sameAs: [`${SITE_URL}/organization.json`],
+  };
   let subjectOf = Array.isArray(entity.subjectOf) ? [...entity.subjectOf] : [];
-  if (!subjectOf.some((s) => String(s?.url || s?.["@id"] || "").includes("/point-c.txt"))) {
-    subjectOf = [...subjectOf, pointCEntry];
-  }
-  if (!subjectOf.some((s) => String(s?.url || "").includes("/brand.json"))) {
-    subjectOf = [...subjectOf, brandDocEntry];
-  }
+  subjectOf = ensureSubjectNeedle(subjectOf, "/point-c.txt", pointCEntry);
+  subjectOf = ensureSubjectNeedle(subjectOf, "/brand.json", brandDocEntry);
+  subjectOf = ensureSubjectNeedle(subjectOf, "/prices.json", pricesAliasEntry);
   entity.subjectOf = subjectOf;
+  // Nested Brand / LocalBusiness subjectOf invent parity with top-level (agents that walk brand|location).
+  if (entity.brand && typeof entity.brand === "object") {
+    let bs = Array.isArray(entity.brand.subjectOf) ? [...entity.brand.subjectOf] : [];
+    bs = ensureSubjectNeedle(bs, "/prices.json", pricesAliasEntry);
+    bs = ensureSubjectNeedle(bs, "/point-c.txt", pointCEntry);
+    bs = ensureSubjectNeedle(bs, "/entity.json", entityOrgEntry);
+    entity.brand.subjectOf = bs;
+  }
+  if (entity.location && typeof entity.location === "object") {
+    let ls = Array.isArray(entity.location.subjectOf) ? [...entity.location.subjectOf] : [];
+    ls = ensureSubjectNeedle(ls, "/prices.json", pricesAliasEntry);
+    ls = ensureSubjectNeedle(ls, "/point-c.txt", pointCEntry);
+    ls = ensureSubjectNeedle(ls, "/brand.json", brandDocEntry);
+    entity.location.subjectOf = ls;
+  }
   return entity;
 }
 
@@ -1339,6 +1370,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       `${SITE_URL}/catalog.json`,
       `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       `${SITE_URL}/feeds/prices.rss`,
+      `${SITE_URL}/AGENTS.md`,
     ],
     isRelatedTo: [
       {
@@ -1447,6 +1479,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       entity: `${SITE_URL}/entity.json`,
       organization: `${SITE_URL}/organization.json`,
       brandJson: `${SITE_URL}/brand.json`,
+      brandWellKnown: `${SITE_URL}/.well-known/brand.json`,
+      entityWellKnown: `${SITE_URL}/.well-known/entity.json`,
       entityProfiles: `${SITE_URL}/entity-profiles.json`,
       pointCTxt: `${SITE_URL}/point-c.txt`,
       pointCEnTxt: `${SITE_URL}/point-c-en.txt`,
@@ -2095,6 +2129,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/geo-baseline.json`,
       },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/prices.json`,
+        name: "ARLEDSCREEN pricedPanels invent alias",
+      },
       // Reverse invent: Brand-only agents must reach Organization entity (+ alias).
       {
         "@type": "DataDownload",
@@ -2145,6 +2185,12 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         "@id": `${SITE_URL}/geo-baseline.json`,
         url: `${SITE_URL}/geo-baseline.json`,
         name: "ARLEDSCREEN GEO technical baseline",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/prices.json`,
+        url: `${SITE_URL}/prices.json`,
+        name: "ARLEDSCREEN pricedPanels (prices.json alias)",
       },
       {
         "@type": "Organization",

@@ -138,11 +138,12 @@ if (
   pointC.includes("Hostinger arleds.com") &&
   pointC.includes("Hostinger support email") &&
   pointC.includes("mailto:support@hostinger.com") &&
+  pointC.includes("Gmail draft (Send)") &&
   pointC.includes("point-c:next") &&
   pointC.includes("/.well-known/modules.json")
 ) {
-  ok("point-c.txt paste packs + Hostinger 301/email/mailto + invent aliases");
-} else fail("point-c.txt paste packs + Hostinger 301/email/mailto + invent aliases");
+  ok("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
+} else fail("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
 
 const pointCEn = readText("point-c-en.txt");
 if (
@@ -260,15 +261,31 @@ if (
   ok("entity.subjectOf → point-c + brand.json");
 } else fail("entity.subjectOf → point-c + brand.json");
 
+{
+  const bs = JSON.stringify(ent?.brand?.subjectOf || []);
+  const ls = JSON.stringify(ent?.location?.subjectOf || []);
+  if (
+    bs.includes("/prices.json") &&
+    bs.includes("/point-c.txt") &&
+    bs.includes("/entity.json") &&
+    ls.includes("/prices.json") &&
+    ls.includes("/point-c.txt") &&
+    ls.includes("/brand.json")
+  ) {
+    ok("entity nested brand/location subjectOf invent parity");
+  } else fail("entity nested brand/location subjectOf invent parity");
+}
+
 if (
   JSON.stringify(brand?.subjectOf || []).includes("/point-c.txt") &&
   JSON.stringify(brand?.distribution || []).includes("/point-c.txt") &&
   JSON.stringify(brand?.subjectOf || []).includes("/entity.json") &&
   JSON.stringify(brand?.distribution || []).includes("/entity.json") &&
-  JSON.stringify(brand?.distribution || []).includes("/organization.json")
+  JSON.stringify(brand?.distribution || []).includes("/organization.json") &&
+  JSON.stringify(brand?.distribution || []).includes("/prices.json")
 ) {
-  ok("brand.subjectOf+distribution → point-c + entity/organization");
-} else fail("brand.subjectOf+distribution → point-c + entity/organization");
+  ok("brand.subjectOf+distribution → point-c + entity/organization + prices");
+} else fail("brand.subjectOf+distribution → point-c + entity/organization + prices");
 
 {
   const related = JSON.stringify(cat?.isRelatedTo || []);
@@ -290,18 +307,21 @@ if (
     based.includes("/ai-shopping.json") &&
     based.includes("/catalog.json") &&
     based.includes("/feeds/prices.rss") &&
+    based.includes("AGENTS.md") &&
     related.includes("/point-c.txt")
   ) {
-    ok("geo-baseline isBasedOn entity/brand/ai/catalog + isRelatedTo point-c");
-  } else fail("geo-baseline isBasedOn entity/brand/ai/catalog + isRelatedTo point-c");
+    ok("geo-baseline isBasedOn entity/brand/ai/catalog/AGENTS + isRelatedTo point-c");
+  } else fail("geo-baseline isBasedOn entity/brand/ai/catalog/AGENTS + isRelatedTo point-c");
   if (
     String(disc.modulesWellKnown || "").includes("/.well-known/modules.json") &&
     String(disc.skuWellKnown || "").includes("/.well-known/sku.json") &&
     String(disc.pricingWellKnown || "").includes("/.well-known/pricing.json") &&
+    String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
+    String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     merchantPack.includes("/.well-known/modules.json")
   ) {
-    ok("geo discovery + entity-profiles invent well-known modules/sku/pricing");
-  } else fail("geo discovery + entity-profiles invent well-known modules/sku/pricing");
+    ok("geo discovery invent well-known modules/sku/pricing/brand/entity");
+  } else fail("geo discovery invent well-known modules/sku/pricing/brand/entity");
 }
 
 if (process.exitCode) {

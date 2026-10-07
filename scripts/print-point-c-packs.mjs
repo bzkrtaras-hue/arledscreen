@@ -53,6 +53,10 @@ export const EN_ORDER = [
 
 export const HOSTINGER_SUPPORT_TO = "support@hostinger.com";
 
+/** Live Gmail draft for Hostinger 301 (owner must Send). Refresh if draft is recreated. */
+export const HOSTINGER_GMAIL_DRAFT_URL =
+  "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878419649952913826%2Bmsg-a:r-5878982215178809685";
+
 export function buildHostingerEmailParts() {
   const subject = "Permanent 301 redirect arleds.com → https://arledscreen.com/tr/";
   const body = [
@@ -149,6 +153,7 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     lines.push("--- Hostinger mailto (click / open in mail client) ---");
     lines.push(buildHostingerMailto());
     lines.push("EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml");
+    lines.push(`Gmail draft (Send): ${HOSTINGER_GMAIL_DRAFT_URL}`);
     lines.push("");
     lines.push("--- Machine-only (do NOT paste into GBP/IG/FB bios) ---");
     if (en) {

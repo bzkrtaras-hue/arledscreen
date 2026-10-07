@@ -116,6 +116,7 @@ Thank you.
 --- Hostinger mailto (click / open in mail client) ---
 mailto:support@hostinger.com?subject=Permanent%20301%20redirect%20arleds.com%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F&body=Hello%20Hostinger%20Support%2C%0A%0APlease%20set%20a%20permanent%20(301)%20redirect%20for%20the%20entire%20domain%20arleds.com%0A(including%20www%20and%20both%20http%2Fhttps)%20to%3A%0A%0Ahttps%3A%2F%2Farledscreen.com%2Ftr%2F%0A%0ARequired%20mappings%3A%0Ahttp%3A%2F%2Farleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttp%3A%2F%2Fwww.arleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttps%3A%2F%2Farleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttps%3A%2F%2Fwww.arleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0A%0ADomain%3A%20arleds.com%20(Hostinger%20DNS%3B%20not%20on%20Cloudflare%20for%20this%20account).%0AThank%20you.
 EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml
+Gmail draft (Send): https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878419649952913826%2Bmsg-a:r-5878982215178809685
 
 --- Machine-only (do NOT paste into GBP/IG/FB bios) ---
 Merchant readiness: packsEn.googleMerchantReadiness (or packs.googleMerchantReadiness)

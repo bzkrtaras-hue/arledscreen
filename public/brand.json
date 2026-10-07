@@ -848,6 +848,12 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/prices.json",
+      "name": "ARLEDSCREEN pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/entity.json",
       "name": "ARLEDSCREEN Organization entity"
     },
@@ -894,6 +900,12 @@
       "@id": "https://arledscreen.com/geo-baseline.json",
       "url": "https://arledscreen.com/geo-baseline.json",
       "name": "ARLEDSCREEN GEO technical baseline"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/prices.json",
+      "url": "https://arledscreen.com/prices.json",
+      "name": "ARLEDSCREEN pricedPanels (prices.json alias)"
     },
     {
       "@type": "Organization",

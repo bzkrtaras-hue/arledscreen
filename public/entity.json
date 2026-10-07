@@ -99,6 +99,28 @@
         "@id": "https://arledscreen.com/geo-baseline.json",
         "url": "https://arledscreen.com/geo-baseline.json",
         "name": "ARLEDSCREEN GEO technical baseline"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/prices.json",
+        "name": "ARLEDSCREEN pricedPanels (prices.json alias)",
+        "url": "https://arledscreen.com/prices.json"
+      },
+      {
+        "@type": "DataDownload",
+        "@id": "https://arledscreen.com/point-c.txt",
+        "name": "ARLEDSCREEN Point C paste packs",
+        "url": "https://arledscreen.com/point-c.txt",
+        "encodingFormat": "text/plain"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://arledscreen.com/#organization",
+        "name": "ARLEDSCREEN",
+        "url": "https://arledscreen.com/entity.json",
+        "sameAs": [
+          "https://arledscreen.com/organization.json"
+        ]
       }
     ],
     "makesOffer": {
@@ -2041,6 +2063,25 @@
         "@id": "https://arledscreen.com/geo-baseline.json",
         "url": "https://arledscreen.com/geo-baseline.json",
         "name": "ARLEDSCREEN GEO technical baseline"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/prices.json",
+        "name": "ARLEDSCREEN pricedPanels (prices.json alias)",
+        "url": "https://arledscreen.com/prices.json"
+      },
+      {
+        "@type": "DataDownload",
+        "@id": "https://arledscreen.com/point-c.txt",
+        "name": "ARLEDSCREEN Point C paste packs",
+        "url": "https://arledscreen.com/point-c.txt",
+        "encodingFormat": "text/plain"
+      },
+      {
+        "@type": "Brand",
+        "@id": "https://arledscreen.com/#brand-nxtionstar",
+        "name": "NXTIONSTAR",
+        "url": "https://arledscreen.com/brand.json"
       }
     ],
     "makesOffer": {

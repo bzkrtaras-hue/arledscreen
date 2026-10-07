@@ -15,7 +15,8 @@
     "https://arledscreen.com/ai-shopping.json",
     "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
-    "https://arledscreen.com/feeds/prices.rss"
+    "https://arledscreen.com/feeds/prices.rss",
+    "https://arledscreen.com/AGENTS.md"
   ],
   "isRelatedTo": [
     {
@@ -212,6 +213,8 @@
     "entity": "https://arledscreen.com/entity.json",
     "organization": "https://arledscreen.com/organization.json",
     "brandJson": "https://arledscreen.com/brand.json",
+    "brandWellKnown": "https://arledscreen.com/.well-known/brand.json",
+    "entityWellKnown": "https://arledscreen.com/.well-known/entity.json",
     "entityProfiles": "https://arledscreen.com/entity-profiles.json",
     "pointCTxt": "https://arledscreen.com/point-c.txt",
     "pointCEnTxt": "https://arledscreen.com/point-c-en.txt",

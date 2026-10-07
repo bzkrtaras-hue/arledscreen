@@ -60,8 +60,36 @@ export const GEO_BASELINE_DATASET = {
   name: "ARLEDSCREEN GEO technical baseline",
 };
 
-/** Brand subjectOf = price sources + geo baseline. */
-export const BRAND_SUBJECT_DATASETS = [...PRICE_DATASETS, GEO_BASELINE_DATASET];
+/** Nested Brand / LocalBusiness subjectOf = price sources + invent aliases + Point C. */
+export const BRAND_SUBJECT_DATASETS = [
+  ...PRICE_DATASETS,
+  GEO_BASELINE_DATASET,
+  {
+    "@type": "Dataset" as const,
+    "@id": `${SITE_URL}/prices.json`,
+    url: `${SITE_URL}/prices.json`,
+    name: "ARLEDSCREEN pricedPanels (prices.json alias)",
+  },
+  {
+    "@type": "DataDownload" as const,
+    "@id": `${SITE_URL}/point-c.txt`,
+    url: `${SITE_URL}/point-c.txt`,
+    name: "ARLEDSCREEN Point C paste packs",
+    encodingFormat: "text/plain",
+  },
+  {
+    "@type": "Brand" as const,
+    "@id": `${SITE_URL}/#brand-nxtionstar`,
+    url: `${SITE_URL}/brand.json`,
+    name: "NXTIONSTAR",
+  },
+  {
+    "@type": "Organization" as const,
+    "@id": `${SITE_URL}/#organization`,
+    url: `${SITE_URL}/entity.json`,
+    name: "ARLEDSCREEN",
+  },
+];
 
 /** Stable Brand @id — Org/Product graphs + catalog Offers point here. */
 export const NXTIONSTAR_BRAND_ID = `${SITE_URL}/#brand-nxtionstar`;
