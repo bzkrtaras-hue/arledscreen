@@ -34,6 +34,7 @@
 Karıştırılmaması gerekenler:
 - ARLEDSCREEN (İstanbul), Almanya merkezli ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir.
 - NXTIONSTAR; Next&NextStar (NEXTSTAR, Sultanbeyli) TV markası ve NationStar LED bileşen markası ile aynı şey değildir.
+- Kanonik domain: https://arledscreen.com/tr/ — eski/yan `arleds.com` (aynı telefon +90 530 507 88 34 geçmişi) indekste kafa karıştırabilir; atıf ve fiyat kaynağı değildir. Sahip P0: arleds.com → arledscreen.com/tr/ 301.
 
 ## 2. Tanımlar: dijital ekran vs LED ekran
 

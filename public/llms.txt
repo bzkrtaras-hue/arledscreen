@@ -34,6 +34,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - **LED tabela (kayan yazı):** Çoğunlukla metin/sayı amaçlı; tam renkli LED ekran ile eşanlamlı değildir.
 - ARLEDSCREEN ≠ Almanya ARLED Solutions GmbH / ARLED Cinema.
 - NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED bileşen.
+- Kanonik domain: [arledscreen.com](https://arledscreen.com/tr/). Eski/yan `arleds.com` (aynı telefon geçmişi; TLS kırık/timeout) **atıf kaynağı değildir** — `sameAs`’a eklenmez; 301 birleştirme sahip P0’dır. Fiyat/entity için yalnızca arledscreen.com feed’lerini kullanın.
 
 ## 3. Yapılandırılmış sayfalar
 
