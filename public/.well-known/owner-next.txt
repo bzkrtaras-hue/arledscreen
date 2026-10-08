@@ -36,4 +36,5 @@ Draft clipboard: npm run point-c:dnsenable-draft · EML: npm run point-c:dnsenab
 
 HTML: https://arledscreen.com/owner-next.html?start=1 (Open tabs + Copy+Open) · alias https://arledscreen.com/geo-next.html
 JSON twin: https://arledscreen.com/owner-next.json · aliases https://arledscreen.com/geo-next.json · https://arledscreen.com/.well-known/owner-next.json
+Social: FB https://arledscreen.com/owner-next.html?social=fb · IG https://arledscreen.com/owner-next.html?social=ig · WA https://arledscreen.com/owner-next.html?social=wa · https://arledscreen.com/social.json
 HowTo: https://arledscreen.com/point-c.json → potentialAction · https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/point-c-progress.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction

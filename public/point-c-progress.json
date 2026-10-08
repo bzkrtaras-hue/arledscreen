@@ -69,9 +69,9 @@
       "packKey": "instagramBio",
       "label": "Instagram Bio",
       "status": "open",
-      "where": "Instagram @arledscreen → https://www.instagram.com/arledscreen → Edit profile → Bio",
+      "where": "Instagram @arledscreen → https://www.instagram.com/arledscreen → Edit profile → Bio · owner: https://arledscreen.com/owner-next.html?social=ig",
       "open": "https://www.instagram.com/arledscreen/",
-      "html": "https://arledscreen.com/owner-next.html?pack=instagramBio",
+      "html": "https://arledscreen.com/owner-next.html?social=ig",
       "ackCommand": "npm run point-c:ack -- --pack=instagramBio",
       "openAlt": "https://www.instagram.com/accounts/edit/",
       "openAlts": [
@@ -82,9 +82,9 @@
       "packKey": "facebookAbout",
       "label": "Facebook About",
       "status": "open",
-      "where": "Facebook @arledscreenn → https://www.facebook.com/arledscreenn → About / Page info",
+      "where": "Facebook @arledscreenn → https://www.facebook.com/arledscreenn → About / Page info · owner: https://arledscreen.com/owner-next.html?social=fb",
       "open": "https://www.facebook.com/arledscreenn",
-      "html": "https://arledscreen.com/owner-next.html?pack=facebookAbout",
+      "html": "https://arledscreen.com/owner-next.html?social=fb",
       "ackCommand": "npm run point-c:ack -- --pack=facebookAbout",
       "openAlt": "https://business.facebook.com/",
       "openAlts": [
