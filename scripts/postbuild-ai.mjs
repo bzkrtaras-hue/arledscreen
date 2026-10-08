@@ -767,186 +767,13 @@ function buildAiShopping() {
     })),
     // Schema.org DataDownload graph — parity with HTML Dataset on product hubs / yapay-zeka.
     // Agents that only fetch ai-shopping.json still see invent aliases as downloadable encodings.
+    // Core reverse joins stay explicit; inventAliasDistributionEntries() owns pricedPanels +
+    // extensionless (/brand·/modules) + entityAlias + discovery walks (no drift vs catalog/brand).
     distribution: [
       {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/ai-shopping.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/prices.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/panels.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/mpn.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/merchant.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/modules.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/sku.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/price.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/pricing.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/prices.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/panels.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/mpn.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/merchant.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/modules.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/sku.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/price.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/pricing.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/offer.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/offers.json`,
-        name: "Offers pricedPanels invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/offer.json`,
-        name: "Offer well-known pricedPanels invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/offers.json`,
-        name: "Offers well-known pricedPanels invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/dataset.json`,
-        name: "Dataset pricedPanels invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/feed.json`,
-        name: "Feed pricedPanels invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/dataset.json`,
-        name: "Dataset well-known pricedPanels invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/feed.json`,
-        name: "Feed well-known pricedPanels invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/products.json`,
-        name: "Products catalog invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/product.json`,
-        name: "Product catalog invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/products.json`,
-        name: "Products well-known catalog invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/product.json`,
-        name: "Product well-known catalog invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/catalog.json`,
-        name: "Catalog well-known invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/geo-baseline.json`,
-        name: "GEO baseline well-known invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/entity-profiles.json`,
-        name: "Point C entity-profiles well-known invent alias",
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/ld+json",
-        contentUrl: `${SITE_URL}/.well-known/ai-shopping.json`,
-        name: "AI Shopping well-known invent alias",
       },
       {
         "@type": "DataDownload",
@@ -1008,7 +835,7 @@ function buildAiShopping() {
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
-      ...discoveryDistributionEntries(),
+      ...inventAliasDistributionEntries(),
       websiteDistributionEntry(),
     ],
     dateModified: new Date().toISOString().split("T")[0],
@@ -1922,6 +1749,49 @@ function inventAliasDistributionEntries() {
       contentUrl: `${SITE_URL}/.well-known/ai-shopping.json`,
       name: "AI Shopping well-known invent alias",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/offer`,
+      name: "Offer extensionless invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/panels`,
+      name: "Panels extensionless invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/modules`,
+      name: "Modules extensionless invent alias (_redirects→modules.json)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/brand`,
+      name: "Brand extensionless invent alias (_redirects→brand.json)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/organization`,
+      name: "Organization extensionless invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/entity`,
+      name: "Entity extensionless invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/catalog`,
+      name: "Catalog extensionless invent alias",
+    },
+    ...entityAliasDistributionEntries(),
     ...discoveryDistributionEntries(),
   ];
 }
@@ -2062,6 +1932,27 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/.well-known/geo-baseline.json`,
     `${SITE_URL}/.well-known/entity-profiles.json`,
     `${SITE_URL}/.well-known/ai-shopping.json`,
+    // Extensionless invent aliases (200 JSON feeds; /brand+/modules via _redirects rewrite).
+    `${SITE_URL}/offer`,
+    `${SITE_URL}/offers`,
+    `${SITE_URL}/dataset`,
+    `${SITE_URL}/feed`,
+    `${SITE_URL}/panels`,
+    `${SITE_URL}/mpn`,
+    `${SITE_URL}/merchant`,
+    `${SITE_URL}/sku`,
+    `${SITE_URL}/modules`,
+    `${SITE_URL}/brand`,
+    `${SITE_URL}/organization`,
+    `${SITE_URL}/company`,
+    `${SITE_URL}/nap`,
+    `${SITE_URL}/cite`,
+    `${SITE_URL}/faq`,
+    `${SITE_URL}/faqs`,
+    `${SITE_URL}/entity`,
+    `${SITE_URL}/catalog`,
+    `${SITE_URL}/geo-baseline`,
+    ...entityAliasBasedOnUrls(),
     ...discoveryBasedOnUrls(),
   ];
 }
@@ -2923,6 +2814,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       llmsWellKnown: `${SITE_URL}/.well-known/llms.txt`,
       llmsFullWellKnown: `${SITE_URL}/.well-known/llms-full.txt`,
       humansWellKnown: `${SITE_URL}/.well-known/humans.txt`,
+      brandExtless: `${SITE_URL}/brand`,
+      modulesExtless: `${SITE_URL}/modules`,
       offer: `${SITE_URL}/offer`,
       offers: `${SITE_URL}/offers`,
       dataset: `${SITE_URL}/dataset`,
@@ -3080,7 +2973,7 @@ function writeFeedPathAliases(dir) {
     ["ai-shopping.json", "mpn.json"],
     ["ai-shopping.json", "merchant.json"],
     // Extensionless root (same pattern as /catalog · /ai-shopping · /entity).
-    // Skip "modules" — out/modules/ is the product image asset directory.
+    // Skip extensionless "modules"/"brand" file copies — asset dirs; served via _redirects 200.
     ["ai-shopping.json", "panels"],
     ["ai-shopping.json", "sku"],
     ["ai-shopping.json", "mpn"],

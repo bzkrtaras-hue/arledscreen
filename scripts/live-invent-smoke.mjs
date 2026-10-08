@@ -20,6 +20,21 @@ async function getText(path) {
   return r.text();
 }
 
+async function getStatus(path) {
+  const r = await fetch(`${SITE}${path}${bust()}`, {
+    method: "GET",
+    headers: { "cache-control": "no-cache" },
+    redirect: "manual",
+  });
+  // Drain body so sockets can close cleanly on large assets.
+  try {
+    await r.arrayBuffer();
+  } catch {
+    /* ignore */
+  }
+  return r.status;
+}
+
 function fail(msg) {
   console.error(`FAIL ${msg}`);
   process.exitCode = 1;
@@ -456,6 +471,9 @@ if (
     aiSame.includes("/prices.json") &&
     aiSame.includes("/.well-known/llms.txt") &&
     aiSame.includes("/agents.json") &&
+    aiSame.includes("/brand") &&
+    aiSame.includes("/modules") &&
+    aiSame.includes("/.well-known/organization.json") &&
     brandSame.includes("/ai-shopping.json") &&
     brandSame.includes("/geo-baseline.json") &&
     brandSame.includes("/entity-profiles.json") &&
@@ -555,6 +573,10 @@ if (
     dist.includes("/.well-known/llms.txt") &&
     dist.includes("/agents.json") &&
     dist.includes("/.well-known/point-c.txt") &&
+    dist.includes("/brand") &&
+    dist.includes("/modules") &&
+    dist.includes("/.well-known/organization.json") &&
+    dist.includes("/cite.json") &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -812,6 +834,8 @@ try {
     String(disc.llmsWellKnown || "").includes("/.well-known/llms.txt") &&
     String(disc.agentsJsonRoot || "").includes("/agents.json") &&
     String(disc.pointCWellKnown || "").includes("/.well-known/point-c.txt") &&
+    String(disc.brandExtless || "").includes("/brand") &&
+    String(disc.modulesExtless || "").includes("/modules") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
@@ -855,6 +879,8 @@ try {
     link.includes("/.well-known/llms.txt") &&
     link.includes("/agents.json") &&
     link.includes("/.well-known/point-c.txt") &&
+    link.includes("/brand") &&
+    link.includes("/modules") &&
     link.includes("/.well-known/ard.json") &&
     link.includes("/.well-known/agents.json") &&
     link.includes("/humans.txt") &&
@@ -867,6 +893,22 @@ try {
   } else fail("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS");
 } catch (e) {
   fail(`live Link invent ${e?.message || e}`);
+}
+
+try {
+  const brandCode = await getStatus("/brand");
+  const modulesCode = await getStatus("/modules");
+  const brandAsset = await getStatus("/brand/nxtionstar-logo.png");
+  const modulesAsset = await getStatus("/modules/nxtionstar-p1-25-ic-mekan-modul.webp");
+  if (brandCode === 200 && modulesCode === 200 && brandAsset === 200 && modulesAsset === 200) {
+    ok("live /brand+/modules invent rewrite 200 + assets intact");
+  } else {
+    fail(
+      `live /brand+/modules invent rewrite 200 + assets intact (brand=${brandCode} modules=${modulesCode} brandAsset=${brandAsset} modulesAsset=${modulesAsset})`,
+    );
+  }
+} catch (e) {
+  fail(`live /brand+/modules invent rewrite ${e?.message || e}`);
 }
 
 if (process.exitCode) {

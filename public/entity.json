@@ -107,7 +107,26 @@
     "https://arledscreen.com/.well-known/llms-full.txt",
     "https://arledscreen.com/.well-known/humans.txt",
     "https://arledscreen.com/point-c-en.txt",
-    "https://arledscreen.com/.well-known/point-c.txt"
+    "https://arledscreen.com/.well-known/point-c.txt",
+    "https://arledscreen.com/offer",
+    "https://arledscreen.com/offers",
+    "https://arledscreen.com/dataset",
+    "https://arledscreen.com/feed",
+    "https://arledscreen.com/panels",
+    "https://arledscreen.com/mpn",
+    "https://arledscreen.com/merchant",
+    "https://arledscreen.com/sku",
+    "https://arledscreen.com/modules",
+    "https://arledscreen.com/brand",
+    "https://arledscreen.com/organization",
+    "https://arledscreen.com/company",
+    "https://arledscreen.com/nap",
+    "https://arledscreen.com/cite",
+    "https://arledscreen.com/faq",
+    "https://arledscreen.com/faqs",
+    "https://arledscreen.com/entity",
+    "https://arledscreen.com/catalog",
+    "https://arledscreen.com/geo-baseline"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3502,7 +3521,26 @@
     "https://arledscreen.com/.well-known/llms-full.txt",
     "https://arledscreen.com/.well-known/humans.txt",
     "https://arledscreen.com/point-c-en.txt",
-    "https://arledscreen.com/.well-known/point-c.txt"
+    "https://arledscreen.com/.well-known/point-c.txt",
+    "https://arledscreen.com/offer",
+    "https://arledscreen.com/offers",
+    "https://arledscreen.com/dataset",
+    "https://arledscreen.com/feed",
+    "https://arledscreen.com/panels",
+    "https://arledscreen.com/mpn",
+    "https://arledscreen.com/merchant",
+    "https://arledscreen.com/sku",
+    "https://arledscreen.com/modules",
+    "https://arledscreen.com/brand",
+    "https://arledscreen.com/organization",
+    "https://arledscreen.com/company",
+    "https://arledscreen.com/nap",
+    "https://arledscreen.com/cite",
+    "https://arledscreen.com/faq",
+    "https://arledscreen.com/faqs",
+    "https://arledscreen.com/entity",
+    "https://arledscreen.com/catalog",
+    "https://arledscreen.com/geo-baseline"
   ],
   "distribution": [
     {
@@ -3921,6 +3959,48 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/.well-known/point-c.txt",
       "name": "Point C paste packs (well-known invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offer",
+      "name": "Offer extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/panels",
+      "name": "Panels extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/modules",
+      "name": "Modules extensionless invent alias (_redirects→modules.json)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/brand",
+      "name": "Brand extensionless invent alias (_redirects→brand.json)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/organization",
+      "name": "Organization extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity",
+      "name": "Entity extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/catalog",
+      "name": "Catalog extensionless invent alias"
     }
   ]
 }

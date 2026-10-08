@@ -83,6 +83,38 @@
     "https://arledscreen.com/.well-known/geo-baseline.json",
     "https://arledscreen.com/.well-known/entity-profiles.json",
     "https://arledscreen.com/.well-known/ai-shopping.json",
+    "https://arledscreen.com/offer",
+    "https://arledscreen.com/offers",
+    "https://arledscreen.com/dataset",
+    "https://arledscreen.com/feed",
+    "https://arledscreen.com/panels",
+    "https://arledscreen.com/mpn",
+    "https://arledscreen.com/merchant",
+    "https://arledscreen.com/sku",
+    "https://arledscreen.com/modules",
+    "https://arledscreen.com/brand",
+    "https://arledscreen.com/organization",
+    "https://arledscreen.com/company",
+    "https://arledscreen.com/nap",
+    "https://arledscreen.com/cite",
+    "https://arledscreen.com/faq",
+    "https://arledscreen.com/faqs",
+    "https://arledscreen.com/entity",
+    "https://arledscreen.com/catalog",
+    "https://arledscreen.com/geo-baseline",
+    "https://arledscreen.com/cite.json",
+    "https://arledscreen.com/faq.json",
+    "https://arledscreen.com/faqs.json",
+    "https://arledscreen.com/company.json",
+    "https://arledscreen.com/nap.json",
+    "https://arledscreen.com/about.json",
+    "https://arledscreen.com/.well-known/cite.json",
+    "https://arledscreen.com/.well-known/faq.json",
+    "https://arledscreen.com/.well-known/faqs.json",
+    "https://arledscreen.com/.well-known/organization.json",
+    "https://arledscreen.com/.well-known/company.json",
+    "https://arledscreen.com/.well-known/nap.json",
+    "https://arledscreen.com/.well-known/about.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/agents.json",
     "https://arledscreen.com/.well-known/agent.json",
@@ -157,6 +189,38 @@
     "https://arledscreen.com/.well-known/geo-baseline.json",
     "https://arledscreen.com/.well-known/entity-profiles.json",
     "https://arledscreen.com/.well-known/ai-shopping.json",
+    "https://arledscreen.com/offer",
+    "https://arledscreen.com/offers",
+    "https://arledscreen.com/dataset",
+    "https://arledscreen.com/feed",
+    "https://arledscreen.com/panels",
+    "https://arledscreen.com/mpn",
+    "https://arledscreen.com/merchant",
+    "https://arledscreen.com/sku",
+    "https://arledscreen.com/modules",
+    "https://arledscreen.com/brand",
+    "https://arledscreen.com/organization",
+    "https://arledscreen.com/company",
+    "https://arledscreen.com/nap",
+    "https://arledscreen.com/cite",
+    "https://arledscreen.com/faq",
+    "https://arledscreen.com/faqs",
+    "https://arledscreen.com/entity",
+    "https://arledscreen.com/catalog",
+    "https://arledscreen.com/geo-baseline",
+    "https://arledscreen.com/cite.json",
+    "https://arledscreen.com/faq.json",
+    "https://arledscreen.com/faqs.json",
+    "https://arledscreen.com/company.json",
+    "https://arledscreen.com/nap.json",
+    "https://arledscreen.com/about.json",
+    "https://arledscreen.com/.well-known/cite.json",
+    "https://arledscreen.com/.well-known/faq.json",
+    "https://arledscreen.com/.well-known/faqs.json",
+    "https://arledscreen.com/.well-known/organization.json",
+    "https://arledscreen.com/.well-known/company.json",
+    "https://arledscreen.com/.well-known/nap.json",
+    "https://arledscreen.com/.well-known/about.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/agents.json",
     "https://arledscreen.com/.well-known/agent.json",
@@ -1097,87 +1161,163 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/prices.json"
+      "contentUrl": "https://arledscreen.com/catalog.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/tab-separated-values",
+      "contentUrl": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/rss+xml",
+      "contentUrl": "https://arledscreen.com/feeds/prices.rss"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/panels.json"
+      "contentUrl": "https://arledscreen.com/geo-baseline.json"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/mpn.json"
+      "contentUrl": "https://arledscreen.com/brand.json"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/merchant.json"
+      "contentUrl": "https://arledscreen.com/.well-known/brand.json",
+      "name": "NXTIONSTAR Brand invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/modules.json"
+      "contentUrl": "https://arledscreen.com/entity.json"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/sku.json"
+      "contentUrl": "https://arledscreen.com/.well-known/entity.json",
+      "name": "Organization invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/price.json"
+      "contentUrl": "https://arledscreen.com/organization.json",
+      "name": "Organization (alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c.txt"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/pricing.json"
+      "contentUrl": "https://arledscreen.com/entity-profiles.json",
+      "name": "ARLEDSCREEN Point C entity profiles"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/prices.json"
+      "contentUrl": "https://arledscreen.com/modules.json",
+      "name": "Modules pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/panels.json"
+      "contentUrl": "https://arledscreen.com/sku.json",
+      "name": "SKU pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/mpn.json"
+      "contentUrl": "https://arledscreen.com/pricing.json",
+      "name": "Pricing pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/merchant.json"
+      "contentUrl": "https://arledscreen.com/panels.json",
+      "name": "Panels pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/modules.json"
+      "contentUrl": "https://arledscreen.com/mpn.json",
+      "name": "MPN pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/sku.json"
+      "contentUrl": "https://arledscreen.com/merchant.json",
+      "name": "Merchant pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/price.json"
+      "contentUrl": "https://arledscreen.com/prices.json",
+      "name": "Prices pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/pricing.json"
+      "contentUrl": "https://arledscreen.com/price.json",
+      "name": "Price pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/offer.json"
+      "contentUrl": "https://arledscreen.com/.well-known/modules.json",
+      "name": "Modules well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/sku.json",
+      "name": "SKU well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/pricing.json",
+      "name": "Pricing well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/panels.json",
+      "name": "Panels well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/mpn.json",
+      "name": "MPN well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/merchant.json",
+      "name": "Merchant well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/prices.json",
+      "name": "Prices well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/price.json",
+      "name": "Price well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offer.json",
+      "name": "Offer pricedPanels invent alias"
     },
     {
       "@type": "DataDownload",
@@ -1272,61 +1412,122 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/catalog.json"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "text/tab-separated-values",
-      "contentUrl": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/rss+xml",
-      "contentUrl": "https://arledscreen.com/feeds/prices.rss"
+      "contentUrl": "https://arledscreen.com/offer",
+      "name": "Offer extensionless invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/geo-baseline.json"
+      "contentUrl": "https://arledscreen.com/panels",
+      "name": "Panels extensionless invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/brand.json"
+      "contentUrl": "https://arledscreen.com/modules",
+      "name": "Modules extensionless invent alias (_redirects→modules.json)"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/brand.json",
-      "name": "NXTIONSTAR Brand invent alias"
+      "contentUrl": "https://arledscreen.com/brand",
+      "name": "Brand extensionless invent alias (_redirects→brand.json)"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/entity.json"
+      "contentUrl": "https://arledscreen.com/organization",
+      "name": "Organization extensionless invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/entity.json",
-      "name": "Organization invent alias"
+      "contentUrl": "https://arledscreen.com/entity",
+      "name": "Entity extensionless invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/organization.json",
-      "name": "Organization (alias)"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/point-c.txt"
+      "contentUrl": "https://arledscreen.com/catalog",
+      "name": "Catalog extensionless invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/entity-profiles.json",
-      "name": "ARLEDSCREEN Point C entity profiles"
+      "contentUrl": "https://arledscreen.com/cite.json",
+      "name": "Organization cite invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faq.json",
+      "name": "Organization FAQ invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faqs.json",
+      "name": "Organization FAQs invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/company.json",
+      "name": "Organization company invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/nap.json",
+      "name": "Organization NAP invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/about.json",
+      "name": "Organization about invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/cite.json",
+      "name": "Organization cite well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/faq.json",
+      "name": "Organization FAQ well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/faqs.json",
+      "name": "Organization FAQs well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/organization.json",
+      "name": "Organization well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/company.json",
+      "name": "Organization company well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/nap.json",
+      "name": "Organization NAP well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/about.json",
+      "name": "Organization about well-known invent alias"
     },
     {
       "@type": "DataDownload",

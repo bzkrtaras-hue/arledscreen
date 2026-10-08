@@ -462,6 +462,9 @@ if (
     aiSame.includes("/prices.json") &&
     aiSame.includes("/.well-known/llms.txt") &&
     aiSame.includes("/agents.json") &&
+    aiSame.includes("/brand") &&
+    aiSame.includes("/modules") &&
+    aiSame.includes("/.well-known/organization.json") &&
     brandSame.includes("/ai-shopping.json") &&
     brandSame.includes("/geo-baseline.json") &&
     brandSame.includes("/entity-profiles.json") &&
@@ -561,6 +564,10 @@ if (
     dist.includes("/.well-known/llms.txt") &&
     dist.includes("/agents.json") &&
     dist.includes("/.well-known/point-c.txt") &&
+    dist.includes("/brand") &&
+    dist.includes("/modules") &&
+    dist.includes("/.well-known/organization.json") &&
+    dist.includes("/cite.json") &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -816,6 +823,8 @@ if (
     String(disc.llmsWellKnown || "").includes("/.well-known/llms.txt") &&
     String(disc.agentsJsonRoot || "").includes("/agents.json") &&
     String(disc.pointCWellKnown || "").includes("/.well-known/point-c.txt") &&
+    String(disc.brandExtless || "").includes("/brand") &&
+    String(disc.modulesExtless || "").includes("/modules") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
@@ -856,6 +865,8 @@ if (
     headers.includes("/.well-known/llms.txt") &&
     headers.includes("/agents.json") &&
     headers.includes("/.well-known/point-c.txt") &&
+    headers.includes("/brand") &&
+    headers.includes("/modules") &&
     headers.includes("/.well-known/ard.json") &&
     headers.includes("/.well-known/agents.json") &&
     headers.includes("/humans.txt") &&
@@ -866,6 +877,13 @@ if (
   ) {
     ok("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS");
   } else fail("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS");
+}
+
+{
+  const redirects = readText("_redirects");
+  if (redirects.includes("/brand /brand.json 200") && redirects.includes("/modules /modules.json 200")) {
+    ok("_redirects invent /brand+/modules → *.json");
+  } else fail("_redirects invent /brand+/modules → *.json");
 }
 
 if (process.exitCode) {

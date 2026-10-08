@@ -778,9 +778,13 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/panels.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/llms.txt") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/agents.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/point-c.txt")
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/point-c.txt") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/brand") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/modules") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/organization.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/cite.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases root pricedPanels + discovery well-known + #website");
+    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases root pricedPanels + discovery + entity + extless brand/modules + #website");
     process.exit(1);
   }
   if (
@@ -2280,11 +2284,22 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/agent.json") ||
     !headersLive.includes("/point-c-en.txt") ||
     !headersLive.includes("/.well-known/point-c.txt") ||
+    !headersLive.includes("https://arledscreen.com/brand>") ||
+    !headersLive.includes("https://arledscreen.com/modules>") ||
+    !headersLive.includes("\n/brand\n") ||
+    !headersLive.includes("\n/modules\n") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
     console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security/llms-full + point-c");
+    process.exit(1);
+  }
+  const redirectsLive = fs.existsSync(path.join(outDir, "_redirects"))
+    ? fs.readFileSync(path.join(outDir, "_redirects"), "utf8")
+    : "";
+  if (!redirectsLive.includes("/brand /brand.json 200") || !redirectsLive.includes("/modules /modules.json 200")) {
+    console.error("❌ out/_redirects must rewrite /brand + /modules → *.json (asset-dir invent aliases)");
     process.exit(1);
   }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {

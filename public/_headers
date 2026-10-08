@@ -65,6 +65,8 @@
   Link: <https://arledscreen.com/.well-known/geo-baseline.json>; rel="alternate"; type="application/ld+json"; title="GEO baseline well-known invent alias"
   Link: <https://arledscreen.com/.well-known/entity-profiles.json>; rel="alternate"; type="application/ld+json"; title="Point C entity-profiles well-known invent alias"
   Link: <https://arledscreen.com/.well-known/ai-shopping.json>; rel="alternate"; type="application/ld+json"; title="AI Shopping well-known invent alias"
+  Link: <https://arledscreen.com/brand>; rel="alternate"; type="application/ld+json"; title="Brand extensionless invent alias"
+  Link: <https://arledscreen.com/modules>; rel="alternate"; type="application/ld+json"; title="Modules extensionless invent alias"
   Link: <https://arledscreen.com/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer"
   Link: <https://arledscreen.com/.well-known/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer (well-known invent alias)"
   Link: <https://arledscreen.com/feeds/prices.rss>; rel="alternate"; type="application/rss+xml"; title="Panel Price Updates RSS"
@@ -147,7 +149,8 @@
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 
-# Extensionless JSON invent aliases (agents omit .json). Skip /modules — image asset dir.
+# Extensionless JSON invent aliases (agents omit .json).
+# /brand + /modules are asset dirs — served via _redirects 200 rewrites to *.json.
 /panels
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
@@ -170,6 +173,20 @@
   Cross-Origin-Resource-Policy: cross-origin
 
 /merchant
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/brand
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/modules
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
   Content-Type: application/json; charset=utf-8

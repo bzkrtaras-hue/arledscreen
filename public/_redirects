@@ -169,3 +169,9 @@
 # Inventable EN rehber price path → EN price hub
 /en/rehber/led-ekran-fiyatlari /en/led-ekran-fiyatlari/ 301
 /en/rehber/led-ekran-fiyatlari/ /en/led-ekran-fiyatlari/ 301
+
+# Inventable exact-path rewrites — out/brand/ and out/modules/ are asset
+# directories, so extensionless files cannot be written there. Serve JSON feeds
+# at the bare path without clobbering /brand/* or /modules/* assets.
+/brand /brand.json 200
+/modules /modules.json 200

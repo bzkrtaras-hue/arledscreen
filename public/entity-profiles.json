@@ -81,7 +81,39 @@
     "https://arledscreen.com/.well-known/llms-full.txt",
     "https://arledscreen.com/.well-known/humans.txt",
     "https://arledscreen.com/point-c-en.txt",
-    "https://arledscreen.com/.well-known/point-c.txt"
+    "https://arledscreen.com/.well-known/point-c.txt",
+    "https://arledscreen.com/offer",
+    "https://arledscreen.com/offers",
+    "https://arledscreen.com/dataset",
+    "https://arledscreen.com/feed",
+    "https://arledscreen.com/panels",
+    "https://arledscreen.com/mpn",
+    "https://arledscreen.com/merchant",
+    "https://arledscreen.com/sku",
+    "https://arledscreen.com/modules",
+    "https://arledscreen.com/brand",
+    "https://arledscreen.com/organization",
+    "https://arledscreen.com/company",
+    "https://arledscreen.com/nap",
+    "https://arledscreen.com/cite",
+    "https://arledscreen.com/faq",
+    "https://arledscreen.com/faqs",
+    "https://arledscreen.com/entity",
+    "https://arledscreen.com/catalog",
+    "https://arledscreen.com/geo-baseline",
+    "https://arledscreen.com/cite.json",
+    "https://arledscreen.com/faq.json",
+    "https://arledscreen.com/faqs.json",
+    "https://arledscreen.com/company.json",
+    "https://arledscreen.com/nap.json",
+    "https://arledscreen.com/about.json",
+    "https://arledscreen.com/.well-known/cite.json",
+    "https://arledscreen.com/.well-known/faq.json",
+    "https://arledscreen.com/.well-known/faqs.json",
+    "https://arledscreen.com/.well-known/organization.json",
+    "https://arledscreen.com/.well-known/company.json",
+    "https://arledscreen.com/.well-known/nap.json",
+    "https://arledscreen.com/.well-known/about.json"
   ],
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-08",
@@ -435,6 +467,126 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/ai-shopping.json",
       "name": "AI Shopping well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offer",
+      "name": "Offer extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/panels",
+      "name": "Panels extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/modules",
+      "name": "Modules extensionless invent alias (_redirects→modules.json)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/brand",
+      "name": "Brand extensionless invent alias (_redirects→brand.json)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/organization",
+      "name": "Organization extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity",
+      "name": "Entity extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/catalog",
+      "name": "Catalog extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/cite.json",
+      "name": "Organization cite invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faq.json",
+      "name": "Organization FAQ invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faqs.json",
+      "name": "Organization FAQs invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/company.json",
+      "name": "Organization company invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/nap.json",
+      "name": "Organization NAP invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/about.json",
+      "name": "Organization about invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/cite.json",
+      "name": "Organization cite well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/faq.json",
+      "name": "Organization FAQ well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/faqs.json",
+      "name": "Organization FAQs well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/organization.json",
+      "name": "Organization well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/company.json",
+      "name": "Organization company well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/nap.json",
+      "name": "Organization NAP well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/about.json",
+      "name": "Organization about well-known invent alias"
     },
     {
       "@type": "DataDownload",

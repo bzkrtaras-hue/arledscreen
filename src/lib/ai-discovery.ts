@@ -49,6 +49,8 @@ const ABOUT_WELLKNOWN_URL = `${SITE_URL}/.well-known/about.json`;
 const GEO_BASELINE_WELLKNOWN_URL = `${SITE_URL}/.well-known/geo-baseline.json`;
 const ENTITY_PROFILES_WELLKNOWN_URL = `${SITE_URL}/.well-known/entity-profiles.json`;
 const AI_SHOPPING_WELLKNOWN_URL = `${SITE_URL}/.well-known/ai-shopping.json`;
+const BRAND_EXTLESS_URL = `${SITE_URL}/brand`;
+const MODULES_EXTLESS_URL = `${SITE_URL}/modules`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const POINT_C_EN_TXT_URL = `${SITE_URL}/point-c-en.txt`;
 const POINT_C_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.txt`;
@@ -93,6 +95,8 @@ const inventAliasLdJson = [
   { url: GEO_BASELINE_WELLKNOWN_URL, title: "GEO baseline well-known invent alias" },
   { url: ENTITY_PROFILES_WELLKNOWN_URL, title: "Point C entity-profiles well-known invent alias" },
   { url: AI_SHOPPING_WELLKNOWN_URL, title: "AI Shopping well-known invent alias" },
+  { url: BRAND_EXTLESS_URL, title: "Brand extensionless invent alias" },
+  { url: MODULES_EXTLESS_URL, title: "Modules extensionless invent alias" },
 ] as const;
 
 export const aiDiscoveryMetadata: Metadata = {
