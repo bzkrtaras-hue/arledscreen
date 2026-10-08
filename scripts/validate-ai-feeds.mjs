@@ -1742,13 +1742,19 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("owner-arleds-open:") ||
     !aiTxtLive.includes("owner-gbp-open:") ||
     !aiTxtLive.includes("owner-chatgpt-open:") ||
+    !aiTxtLive.includes("owner-bingplaces-open:") ||
+    !aiTxtLive.includes("owner-apple-open:") ||
+    !aiTxtLive.includes("point-c-en-well-known:") ||
     !aiTxtLive.includes("https://www.isimtescil.net/") ||
     !aiTxtLive.includes("https://business.google.com/") ||
     !aiTxtLive.includes("https://chatgpt.com/") ||
+    !aiTxtLive.includes("https://www.bingplaces.com/") ||
+    !aiTxtLive.includes("https://businessconnect.apple.com/") ||
+    !aiTxtLive.includes("/.well-known/point-c-en.txt") ||
     !aiTxtLive.includes("point-c:csv") ||
     !aiTxtLive.includes("point-c:")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds/GBP/chatgpt Open/csv");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds/GBP/chatgpt/Bing/Apple Open/csv + point-c-en well-known");
     process.exit(1);
   }
   const geoNextSrc = fs.readFileSync(path.join(repoRoot, "scripts/geo-next.mjs"), "utf8");
@@ -2629,6 +2635,7 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/agent.json") ||
     !headersLive.includes("/point-c-en.txt") ||
     !headersLive.includes("/.well-known/point-c.txt") ||
+    !headersLive.includes("/.well-known/point-c-en.txt") ||
     !headersLive.includes("https://arledscreen.com/brand>") ||
     !headersLive.includes("https://arledscreen.com/modules>") ||
     !headersLive.includes("\n/brand\n") ||
@@ -2637,7 +2644,7 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security/llms-full + point-c");
+    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security/llms-full + point-c (+ EN well-known)");
     process.exit(1);
   }
   const redirectsLive = fs.existsSync(path.join(outDir, "_redirects"))
@@ -2690,6 +2697,7 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/.well-known/agent.json"',
       'href="https://arledscreen.com/point-c-en.txt"',
       'href="https://arledscreen.com/.well-known/point-c.txt"',
+      'href="https://arledscreen.com/.well-known/point-c-en.txt"',
       'href="https://arledscreen.com/prices.json"',
       'href="https://arledscreen.com/organization.json"',
       'href="https://arledscreen.com/entity-profiles.json"',

@@ -1120,10 +1120,11 @@ try {
     link.includes("/.well-known/security.txt") &&
     link.includes("/llms-full.txt") &&
     link.includes("/AGENTS.md") &&
+    link.includes("/.well-known/point-c-en.txt") &&
     link.includes("#website")
   ) {
-    ok("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS");
-  } else fail("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS");
+    ok("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c-en-wk");
+  } else fail("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c-en-wk");
 } catch (e) {
   fail(`live Link invent ${e?.message || e}`);
 }

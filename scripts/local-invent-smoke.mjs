@@ -339,10 +339,12 @@ const pointCEn = readText("point-c-en.txt");
 if (
   pointCEn.includes("EN GBP About") &&
   pointCEn.includes("arledscreen.com/en/") &&
-  pointCEn.includes("/.well-known/modules.json")
+  pointCEn.includes("/.well-known/modules.json") &&
+  fs.existsSync(path.join(outDir, ".well-known/point-c-en.txt")) &&
+  String(ard?.agentic?.resources?.pointCEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")
 ) {
-  ok("point-c-en.txt paste packs + invent aliases");
-} else fail("point-c-en.txt paste packs + invent aliases");
+  ok("point-c-en.txt paste packs + invent aliases + well-known");
+} else fail("point-c-en.txt paste packs + invent aliases + well-known");
 
 {
   const websiteRes = ard?.agentic?.resources?.website || {};
@@ -1101,10 +1103,11 @@ if (
     headers.includes("/.well-known/security.txt") &&
     headers.includes("/llms-full.txt") &&
     headers.includes("/AGENTS.md") &&
+    headers.includes("/.well-known/point-c-en.txt") &&
     headers.includes("#website")
   ) {
-    ok("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS");
-  } else fail("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS");
+    ok("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c-en-wk");
+  } else fail("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c-en-wk");
 }
 
 {

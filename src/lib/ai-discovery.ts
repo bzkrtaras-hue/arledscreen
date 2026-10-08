@@ -88,6 +88,7 @@ const TR_ENTITY_JSON_URL = `${SITE_URL}/tr/entity.json`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const POINT_C_EN_TXT_URL = `${SITE_URL}/point-c-en.txt`;
 const POINT_C_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.txt`;
+const POINT_C_EN_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c-en.txt`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_WELLKNOWN_URL = `${SITE_URL}/.well-known/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
@@ -231,6 +232,7 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: POINT_C_TXT_URL, title: "Point C paste packs" },
         { url: POINT_C_EN_TXT_URL, title: "Point C paste packs (EN)" },
         { url: POINT_C_WELLKNOWN_URL, title: "Point C paste packs (well-known invent alias)" },
+        { url: POINT_C_EN_WELLKNOWN_URL, title: "Point C paste packs EN (well-known invent alias)" },
       ],
       "text/markdown": [{ url: AGENTS_MD_URL, title: "AGENTS.md" }],
     },
@@ -292,6 +294,7 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "text/plain", href: POINT_C_TXT_URL, title: "Point C paste packs" },
   { rel: "alternate", type: "text/plain", href: POINT_C_EN_TXT_URL, title: "Point C paste packs (EN)" },
   { rel: "alternate", type: "text/plain", href: POINT_C_WELLKNOWN_URL, title: "Point C paste packs (well-known invent alias)" },
+  { rel: "alternate", type: "text/plain", href: POINT_C_EN_WELLKNOWN_URL, title: "Point C paste packs EN (well-known invent alias)" },
   { rel: "alternate", type: "text/markdown", href: AGENTS_MD_URL, title: "AGENTS.md" },
   // RFC 8288: machine agents that follow Link / describedby land on price + entity + brand.
   { rel: "describedby", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping pricedPanels" },

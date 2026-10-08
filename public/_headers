@@ -115,6 +115,7 @@
   Link: <https://arledscreen.com/point-c.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs"
   Link: <https://arledscreen.com/point-c-en.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs (EN)"
   Link: <https://arledscreen.com/.well-known/point-c.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs (well-known invent alias)"
+  Link: <https://arledscreen.com/.well-known/point-c-en.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs EN (well-known invent alias)"
 
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable

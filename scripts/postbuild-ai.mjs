@@ -3829,6 +3829,7 @@ humans-txt: ${SITE_URL}/humans.txt
 point-c: ${SITE_URL}/point-c.txt
 point-c-en: ${SITE_URL}/point-c-en.txt
 point-c-well-known: ${SITE_URL}/.well-known/point-c.txt
+point-c-en-well-known: ${SITE_URL}/.well-known/point-c-en.txt
 owner-tur1a-next: npm run tur1a:next
 owner-tur1a-csv: npm run tur1a:csv
 owner-tur1a-log: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…
@@ -3838,6 +3839,8 @@ owner-arleds-301: npm run verify:arleds-301
 owner-arleds-open: https://www.isimtescil.net/
 owner-gbp-open: https://business.google.com/
 owner-chatgpt-open: https://chatgpt.com/
+owner-bingplaces-open: https://www.bingplaces.com/
+owner-apple-open: https://businessconnect.apple.com/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/
