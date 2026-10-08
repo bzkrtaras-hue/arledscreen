@@ -4983,6 +4983,11 @@ if (fs.existsSync(outDir)) {
     "owner-next.html?pack=directoryLong",
     "owner-next.html?pack=tur1a",
     "owner-next.html?pack=hostinger301",
+    "owner-next.html?start=1",
+    "geo-next.html?start=1",
+    "/social.json",
+    "/contact.json",
+    "/.well-known/social.json",
   ]) {
     if (!indexNowScript.includes(must)) {
       console.error(`❌ submit-indexnow.mjs must include ${must}`);
