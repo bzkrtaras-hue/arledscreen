@@ -28,7 +28,7 @@ Or: npm run point-c:ack
 CSV: npm run point-c:csv · Live CSV: https://arledscreen.com/feeds/point-c.csv · JSON: https://arledscreen.com/point-c.json · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt
 Deep: https://arledscreen.com/owner-next.html?pack=directoryLong&copy=1
 After: https://arledscreen.com/owner-next.html?pack=directoryLong&n=1
-Keys: C=Copy+Open remaining · D=Copy pack link · A=Copy After link · Y=Open After · P=Copy+Open After · Y/P advance locally · M=WA paste · E=Mail paste (Deep+After) · n=1|after=1=After paste advance · F/I/W=social · https://arledscreen.com/owner-next.html?start=1
+Keys: C=Copy+Open remaining · D=Copy pack link · A=Copy After link · Y=Open After · P=Copy+Open After · Y/P advance + Copy+Open next · M=WA paste · E=Mail paste (Deep+After) · n=1|after=1=After paste advance · F/I/W=social · https://arledscreen.com/owner-next.html?start=1
 Pack HTML: https://arledscreen.com/owner-next.html?pack=directoryLong&copy=1
 
 === Queued after Point C (arleds.com 301) — prep Open tabs ===

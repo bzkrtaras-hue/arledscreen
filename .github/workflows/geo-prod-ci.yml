@@ -71,7 +71,7 @@ jobs:
           grep -q "A=Copy After link" /tmp/geo-next.txt
           grep -q "Y=Open After" /tmp/geo-next.txt
           grep -q "P=Copy+Open After" /tmp/geo-next.txt
-          grep -q "Y/P advance locally" /tmp/geo-next.txt
+          grep -q "Y/P advance + Copy+Open next" /tmp/geo-next.txt
           npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
           test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
@@ -212,7 +212,7 @@ jobs:
           grep -q 'Copy After link' out/AGENTS.md
           grep -q 'Open After' out/AGENTS.md
           grep -q 'Copy+Open After' out/AGENTS.md
-          grep -q 'Y/P advance locally' out/AGENTS.md
+          grep -q 'Y/P advance + Copy+Open next' out/AGENTS.md
           grep -q 'next.htmlAfter' out/AGENTS.md
           grep -q 'WA paste' out/AGENTS.md
           grep -q 'Mail paste' out/AGENTS.md
@@ -245,12 +245,13 @@ jobs:
           grep -q 'pack-row-after' out/owner-next.html
           grep -q 'bindRowCopy' out/owner-next.html
           grep -q 'Click = copy Deep' out/owner-next.html
-          grep -q 'after paste: A · Y/P advance locally · sticky After' out/owner-next.html
+          grep -q 'after paste: A · Y/P advance + Copy+Open next · sticky After' out/owner-next.html
           grep -q 'Copy+Open After' out/owner-next.html
           grep -q 'copy-open-after' out/owner-next.html
           grep -q 'copyOpenPackAfterLink' out/owner-next.html
           grep -q 'advanceAfterPasteLocal' out/owner-next.html
-          grep -q 'Y/P advance locally' out/owner-next.html
+          grep -q 'copyOpenNext' out/owner-next.html
+          grep -q 'Y/P advance + Copy+Open next' out/owner-next.html
           grep -q 'e.key === "p"' out/owner-next.html
           grep -q 'After: ${after}' out/owner-next.html
           grep -q 'Deep + After' out/AGENTS.md
@@ -435,7 +436,7 @@ jobs:
           grep -q "A=Copy After link" /tmp/geo-status.txt
           grep -q "Y=Open After" /tmp/geo-status.txt
           grep -q "P=Copy+Open After" /tmp/geo-status.txt
-          grep -q "Y/P advance locally" /tmp/geo-status.txt
+          grep -q "Y/P advance + Copy+Open next" /tmp/geo-status.txt
           grep -q "M=WA paste" /tmp/geo-status.txt
           grep -q "E=Mail paste" /tmp/geo-status.txt
           grep -q "After ?n=1" /tmp/geo-status.txt

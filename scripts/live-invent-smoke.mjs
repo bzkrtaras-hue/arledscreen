@@ -257,7 +257,7 @@ else fail("ai.txt WebSite + quote");
     agentsMd.includes("Copy After link") &&
     agentsMd.includes("Open After") &&
     agentsMd.includes("Copy+Open After") &&
-    agentsMd.includes("Y/P advance locally") &&
+    agentsMd.includes("Y/P advance + Copy+Open next") &&
     agentsMd.includes("next.htmlAfter") &&
     agentsMd.includes("after=1") &&
     agentsMd.includes("Copy+Open ack After hint")
@@ -617,7 +617,9 @@ try {
     ownerNextHtml.includes("copy-open-after") &&
     ownerNextHtml.includes("Copy+Open After") &&
     ownerNextHtml.includes("advanceAfterPasteLocal") &&
-    ownerNextHtml.includes("Y/P advance locally") &&
+    ownerNextHtml.includes("copyOpenNext") &&
+    ownerNextHtml.includes("Y/P advance + Copy+Open next") &&
+    ownerNextHtml.includes("Copy+Open next") &&
     ownerNextHtml.includes('e.key === "a"') &&
     ownerNextHtml.includes('e.key === "y"') &&
     ownerNextHtml.includes('e.key === "p"') &&
@@ -648,7 +650,7 @@ try {
     ownerNextHtml.includes("pack-row-after") &&
     ownerNextHtml.includes("bindRowCopy") &&
     ownerNextHtml.includes("Click = copy Deep") &&
-    ownerNextHtml.includes("after paste: A · Y/P advance locally · sticky After") &&
+    ownerNextHtml.includes("after paste: A · Y/P advance + Copy+Open next · sticky After") &&
     ownerNextHtml.includes("pack-deep-after") &&
     ownerNextHtml.includes("n=1") &&
     ownerNextHtml.includes("`After: ${packAfterLinkUrl") &&

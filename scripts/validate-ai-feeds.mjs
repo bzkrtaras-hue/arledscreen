@@ -2387,12 +2387,12 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("Copy After link") ||
       !agentsMdLive.includes("Open After") ||
       !agentsMdLive.includes("Copy+Open After") ||
-      !agentsMdLive.includes("Y/P advance locally") ||
+      !agentsMdLive.includes("Y/P advance + Copy+Open next") ||
       !agentsMdLive.includes("next.htmlAfter") ||
       !agentsMdLive.includes("after=1") ||
       !agentsMdLive.includes("Copy+Open ack After hint")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + Open After + Copy+Open After + Y/P advance locally + next.htmlAfter + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + Open After + Copy+Open After + Y/P advance + Copy+Open next + next.htmlAfter + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2699,7 +2699,8 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-after") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy+Open After") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("advanceAfterPasteLocal") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Y/P advance locally") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copyOpenNext") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Y/P advance + Copy+Open next") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "a"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "y"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "p"') ||
@@ -2730,7 +2731,7 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-row-after") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("bindRowCopy") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Click = copy Deep") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("after paste: A · Y/P advance locally · sticky After") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("after paste: A · Y/P advance + Copy+Open next · sticky After") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-deep-after") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("n=1") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("`After: ${packAfterLinkUrl") ||
