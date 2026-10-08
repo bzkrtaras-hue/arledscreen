@@ -572,6 +572,8 @@ try {
     ownerNextHtml.includes("Mailto DNSEnable") &&
     ownerNextHtml.includes("social-handles") &&
     ownerNextHtml.includes("copySocialHandles") &&
+    ownerNextHtml.includes("jumpToSocialPack") &&
+    ownerNextHtml.includes('data-pack="facebookAbout"') &&
     ownerNextHtml.includes("@arledscreenn") &&
     ownerNextHtml.includes("/social.json") &&
     Array.isArray(ownerNextJson?.gates?.tur1a?.cells) &&

@@ -2594,6 +2594,9 @@ if (fs.existsSync(outDir)) {
       !String(progress?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
       !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html?start=1")) ||
       !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("?pack=")) ||
+      String(progress?.socialHandles?.facebook || "") !== "arledscreenn" ||
+      String(progress?.socialHandles?.instagram || "") !== "arledscreen" ||
+      String(progress?.socialHandles?.whatsapp || "") !== "arledscreen" ||
       !Array.isArray(geoStatus?.gates?.pointC?.packs) ||
       geoStatus.gates.pointC.packs.length < 11 ||
       !String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
@@ -2652,11 +2655,14 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("social-handles") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copySocialHandles") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("jumpToSocialPack") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('data-pack="facebookAbout"') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('data-pack="instagramBio"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("@arledscreenn") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/social.json") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log+next/open-remaining/copy-remaining/copy-open-remaining/undo/start=1/dblclick/mailto/social-handles required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log+next/open-remaining/copy-remaining/copy-open-remaining/undo/start=1/dblclick/mailto/social-handles/jumpToSocialPack required");
       process.exit(1);
     }
     {
