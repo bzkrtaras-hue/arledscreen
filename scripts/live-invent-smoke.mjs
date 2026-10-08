@@ -667,10 +667,20 @@ else fail("ard.resources.pointC");
     JSON.stringify(res.brand?.distribution || []).includes("/geo-status.json") &&
     JSON.stringify(res.brand?.distribution || []).includes("/geo-next.txt") &&
     JSON.stringify(res.brand?.distribution || []).includes("/tur1a.json") &&
-    JSON.stringify(res.brand?.distribution || []).includes("/point-c-progress.json")
+    JSON.stringify(res.brand?.distribution || []).includes("/point-c-progress.json") &&
+    ["/geoBaseline", "entityProfiles", "pointC", "pointCJson", "aiShopping", "entity"].every((key) => {
+      const blob = JSON.stringify(res[key]?.subjectOf || []) + JSON.stringify(res[key]?.distribution || []);
+      return (
+        blob.includes("/point-c.json") &&
+        blob.includes("/geo-status.json") &&
+        blob.includes("/geo-next.txt") &&
+        blob.includes("/tur1a.json") &&
+        blob.includes("/point-c-progress.json")
+      );
+    })
   ) {
-    ok("ard invent entity/brand allow + geo:next/ack + brand owner-gate HowTo");
-  } else fail("ard invent entity/brand allow + geo:next/ack + brand owner-gate HowTo");
+    ok("ard invent entity/brand/geo/profiles/pointC/aiShopping owner-gate HowTo");
+  } else fail("ard invent entity/brand/geo/profiles/pointC/aiShopping owner-gate HowTo");
 }
 
 try {

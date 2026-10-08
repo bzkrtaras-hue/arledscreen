@@ -727,6 +727,21 @@ if (fs.existsSync(outDir)) {
           process.exit(1);
         }
       }
+      for (const key of ["geoBaseline", "entityProfiles", "pointC", "pointCJson", "aiShopping", "entity"]) {
+        const node = ard?.agentic?.resources?.[key];
+        const sub = JSON.stringify(node?.subjectOf || []);
+        const dist = JSON.stringify(node?.distribution || []);
+        for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+          if (!sub.includes(needle)) {
+            console.error(`❌ ard.json resources.${key}.subjectOf must join owner-gate HowTo ${needle}`);
+            process.exit(1);
+          }
+          if (!dist.includes(needle)) {
+            console.error(`❌ ard.json resources.${key}.distribution must join owner-gate HowTo ${needle}`);
+            process.exit(1);
+          }
+        }
+      }
     }
   }
   if (!String(ard?.agentic?.resources?.entity?.makesOffer || "").includes("#priced-panels-aggregate")) {

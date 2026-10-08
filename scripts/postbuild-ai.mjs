@@ -3626,7 +3626,22 @@ function copyPublicToOut(relPath) {
   return true;
 }
 
-/** ARD resources.brand invent — subjectOf/distribution → owner-gate HowTo (URL-string parity with geoBaseline/entityProfiles). */
+/** Merge URL-string invent lists onto an ARD resource node (subjectOf / distribution). */
+function mergeArdUrlInvent(node, { subjectExtra = [], distExtra = [] } = {}) {
+  if (!node || typeof node !== "object") return node;
+  const subject = new Set(Array.isArray(node.subjectOf) ? node.subjectOf.map(String) : []);
+  for (const u of subjectExtra) subject.add(u);
+  if (subject.size) node.subjectOf = [...subject];
+  const dist = new Set(Array.isArray(node.distribution) ? node.distribution.map(String) : []);
+  for (const u of distExtra) dist.add(u);
+  if (dist.size) node.distribution = [...dist];
+  if (typeof node.description === "string" && !node.description.includes("potentialAction")) {
+    node.description = `${node.description} Owner-gate HowTo: ${SITE_URL}/point-c.json → next + potentialAction · ${SITE_URL}/geo-status.json · ${SITE_URL}/geo-next.txt · ${SITE_URL}/tur1a.json · ${SITE_URL}/point-c-progress.json.`;
+  }
+  return node;
+}
+
+/** ARD invent — brand + geoBaseline + entityProfiles + pointC + aiShopping + entity → owner-gate HowTo. */
 function enrichArdOwnerGateInvent() {
   const ardPath = path.join(publicDir, ".well-known", "ard.json");
   if (!fs.existsSync(ardPath)) return;
@@ -3637,47 +3652,106 @@ function enrichArdOwnerGateInvent() {
     console.warn("postbuild-ai: ard.json parse failed — skip owner-gate invent enrich");
     return;
   }
-  const brand = ard?.agentic?.resources?.brand;
-  if (!brand || typeof brand !== "object") return;
-
-  const subject = new Set(Array.isArray(brand.subjectOf) ? brand.subjectOf.map(String) : []);
-  for (const u of [
-    `${SITE_URL}/brand.json`,
-    `${SITE_URL}/ai-shopping.json`,
-    `${SITE_URL}/catalog.json`,
-    `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
-    `${SITE_URL}/geo-baseline.json`,
-    `${SITE_URL}/feeds/prices.rss`,
-    `${SITE_URL}/point-c.txt`,
-    `${SITE_URL}/entity-profiles.json`,
-    ...ownerGateSameAsUrls(),
-  ]) {
-    subject.add(u);
-  }
-  brand.subjectOf = [...subject];
-
-  const dist = new Set(Array.isArray(brand.distribution) ? brand.distribution.map(String) : []);
-  for (const u of [
-    `${SITE_URL}/brand.json`,
-    `${SITE_URL}/.well-known/brand.json`,
+  const res = ard?.agentic?.resources;
+  if (!res || typeof res !== "object") return;
+  const gates = ownerGateSameAsUrls();
+  const coreDist = [
     `${SITE_URL}/ai-shopping.json`,
     `${SITE_URL}/catalog.json`,
     `${SITE_URL}/entity.json`,
+    `${SITE_URL}/brand.json`,
     `${SITE_URL}/geo-baseline.json`,
     `${SITE_URL}/entity-profiles.json`,
     `${SITE_URL}/point-c.txt`,
     `${SITE_URL}/#website`,
-    ...ownerGateSameAsUrls(),
-  ]) {
-    dist.add(u);
-  }
-  brand.distribution = [...dist];
+    ...gates,
+  ];
 
-  if (typeof brand.description === "string" && !brand.description.includes("potentialAction")) {
-    brand.description = `${brand.description} Owner-gate HowTo: ${SITE_URL}/point-c.json → next + potentialAction · ${SITE_URL}/geo-status.json · ${SITE_URL}/geo-next.txt · ${SITE_URL}/tur1a.json · ${SITE_URL}/point-c-progress.json.`;
+  res.brand = mergeArdUrlInvent(res.brand, {
+    subjectExtra: [
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/feeds/prices.rss`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/entity-profiles.json`,
+      ...gates,
+    ],
+    distExtra: [
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/.well-known/brand.json`,
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/entity.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/entity-profiles.json`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/#website`,
+      ...gates,
+    ],
+  });
+
+  res.geoBaseline = mergeArdUrlInvent(res.geoBaseline, {
+    subjectExtra: gates,
+    distExtra: [
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/prices.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/entity.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/AGENTS.md`,
+      `${SITE_URL}/#website`,
+      ...gates,
+    ],
+  });
+
+  res.entityProfiles = mergeArdUrlInvent(res.entityProfiles, {
+    subjectExtra: gates,
+    distExtra: [
+      `${SITE_URL}/entity.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/prices.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/point-c-en.txt`,
+      `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+      `${SITE_URL}/#website`,
+      ...gates,
+    ],
+  });
+
+  for (const key of ["pointC", "pointCJson"]) {
+    res[key] = mergeArdUrlInvent(res[key], {
+      subjectExtra: [`${SITE_URL}/point-c.txt`, `${SITE_URL}/entity-profiles.json`, ...gates],
+      distExtra: [
+        `${SITE_URL}/point-c.txt`,
+        `${SITE_URL}/point-c.json`,
+        `${SITE_URL}/entity-profiles.json`,
+        `${SITE_URL}/geo-status.json`,
+        `${SITE_URL}/geo-next.txt`,
+        `${SITE_URL}/tur1a.json`,
+        `${SITE_URL}/point-c-progress.json`,
+        `${SITE_URL}/#website`,
+      ],
+    });
   }
 
-  ard.agentic.resources.brand = brand;
+  res.aiShopping = mergeArdUrlInvent(res.aiShopping, {
+    subjectExtra: gates,
+    distExtra: coreDist,
+  });
+
+  res.entity = mergeArdUrlInvent(res.entity, {
+    subjectExtra: gates,
+    distExtra: coreDist,
+  });
+
+  ard.agentic.resources = res;
   const body = JSON.stringify(ard, null, 2) + "\n";
   fs.writeFileSync(ardPath, body);
   const outArd = path.join(outDir, ".well-known", "ard.json");
