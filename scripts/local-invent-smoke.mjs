@@ -337,7 +337,16 @@ else fail("ard.resources.pointC");
     String(res.skuJson?.wellKnown || "").includes("/.well-known/sku.json") &&
     String(res.aiShopping?.description || "").includes("/.well-known/modules.json") &&
     String(res.apiV1Prices?.url || "").includes("/api/v1/prices") &&
-    String(res.dataPrices?.url || "").includes("/data/prices.json")
+    String(res.dataPrices?.url || "").includes("/data/prices.json") &&
+    String(res.apiCatalog?.url || "").includes("/api/catalog.json") &&
+    Array.isArray(res.localeInvent?.pricedPanels) &&
+    JSON.stringify(res.localeInvent?.pricedPanels || []).includes("/en/pricing.json") &&
+    JSON.stringify(res.localeInvent?.discovery || []).includes("/agent.json") &&
+    allow.includes("/en/pricing.json") &&
+    allow.includes("/en/entity.json") &&
+    allow.includes("/api/products") &&
+    allow.includes("/.well-known/ai-shopping.json") &&
+    allow.includes("/organization")
   ) {
     ok("ard invent allow + resources modules/sku + agents/security + aiShopping invent");
   } else fail("ard invent allow + resources modules/sku + agents/security + aiShopping invent");
@@ -604,11 +613,20 @@ if (
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/catalog`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/mpn`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/entity`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/catalog.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/products`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/v1/prices`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/data/prices.json`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/feeds/prices.json`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/en/prices.json`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/tr/prices.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/en/pricing.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/tr/catalog.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/en/entity.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/tr/entity.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/agent.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/en/llms.txt`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/tr/llms.txt`) &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -885,6 +903,14 @@ if (
     String(disc.feedsPricesJson || "").includes("/feeds/prices.json") &&
     String(disc.enPricesJson || "").includes("/en/prices.json") &&
     String(disc.trPricesJson || "").includes("/tr/prices.json") &&
+    String(disc.enPricingJson || "").includes("/en/pricing.json") &&
+    String(disc.enEntityJson || "").includes("/en/entity.json") &&
+    String(disc.trEntityJson || "").includes("/tr/entity.json") &&
+    String(disc.apiCatalogJson || "").includes("/api/catalog.json") &&
+    String(disc.apiProducts || "").includes("/api/products") &&
+    String(disc.agentJsonRoot || "").includes("/agent.json") &&
+    String(disc.enLlms || "").includes("/en/llms.txt") &&
+    String(disc.trLlms || "").includes("/tr/llms.txt") &&
     String(disc.securityTxtRoot || "").includes("/security.txt") &&
     String(disc.securityExtless || "").includes("/.well-known/security") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
@@ -949,6 +975,13 @@ if (
     headers.includes("https://arledscreen.com/feeds/prices.json>") &&
     headers.includes("https://arledscreen.com/en/prices.json>") &&
     headers.includes("https://arledscreen.com/tr/prices.json>") &&
+    headers.includes("https://arledscreen.com/api/catalog.json>") &&
+    headers.includes("https://arledscreen.com/api/products>") &&
+    headers.includes("https://arledscreen.com/en/pricing.json>") &&
+    headers.includes("https://arledscreen.com/en/entity.json>") &&
+    headers.includes("https://arledscreen.com/agent.json>") &&
+    headers.includes("https://arledscreen.com/en/llms.txt>") &&
+    headers.includes("https://arledscreen.com/tr/llms.txt>") &&
     headers.includes("https://arledscreen.com/security.txt>") &&
     headers.includes("https://arledscreen.com/.well-known/security>") &&
     headers.includes("https://arledscreen.com/llms>") &&

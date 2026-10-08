@@ -148,7 +148,32 @@
     "https://arledscreen.com/api/entity",
     "https://arledscreen.com/api/entity.json",
     "https://arledscreen.com/security.txt",
-    "https://arledscreen.com/.well-known/security"
+    "https://arledscreen.com/.well-known/security",
+    "https://arledscreen.com/api/catalog.json",
+    "https://arledscreen.com/api/products",
+    "https://arledscreen.com/en/pricing.json",
+    "https://arledscreen.com/tr/pricing.json",
+    "https://arledscreen.com/en/price.json",
+    "https://arledscreen.com/tr/price.json",
+    "https://arledscreen.com/en/feed.json",
+    "https://arledscreen.com/tr/feed.json",
+    "https://arledscreen.com/en/catalog.json",
+    "https://arledscreen.com/tr/catalog.json",
+    "https://arledscreen.com/en/products.json",
+    "https://arledscreen.com/tr/products.json",
+    "https://arledscreen.com/en/entity.json",
+    "https://arledscreen.com/tr/entity.json",
+    "https://arledscreen.com/en/geo-baseline.json",
+    "https://arledscreen.com/tr/geo-baseline.json",
+    "https://arledscreen.com/en/entity-profiles.json",
+    "https://arledscreen.com/tr/entity-profiles.json",
+    "https://arledscreen.com/agent.json",
+    "https://arledscreen.com/en/llms.txt",
+    "https://arledscreen.com/tr/llms.txt",
+    "https://arledscreen.com/en/llms-full.txt",
+    "https://arledscreen.com/tr/llms-full.txt",
+    "https://arledscreen.com/en/ai.txt",
+    "https://arledscreen.com/tr/ai.txt"
   ],
   "license": "https://arledscreen.com/tr/about/",
   "dateModified": "2026-10-08",
@@ -704,6 +729,18 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/catalog.json",
+      "name": "API catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/products",
+      "name": "API products invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/api/ai-shopping",
       "name": "API ai-shopping invent alias"
     },
@@ -790,6 +827,66 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/tr/ai-shopping.json",
       "name": "TR ai-shopping.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/pricing.json",
+      "name": "EN pricing.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/pricing.json",
+      "name": "TR pricing.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/price.json",
+      "name": "EN price.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/price.json",
+      "name": "TR price.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/feed.json",
+      "name": "EN feed.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/feed.json",
+      "name": "TR feed.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/catalog.json",
+      "name": "EN catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/catalog.json",
+      "name": "TR catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/products.json",
+      "name": "EN products.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/products.json",
+      "name": "TR products.json invent alias"
     },
     {
       "@type": "DataDownload",
@@ -884,6 +981,42 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/entity.json",
+      "name": "EN entity.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/entity.json",
+      "name": "TR entity.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/geo-baseline.json",
+      "name": "EN geo-baseline.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/geo-baseline.json",
+      "name": "TR geo-baseline.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/entity-profiles.json",
+      "name": "EN entity-profiles.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/entity-profiles.json",
+      "name": "TR entity-profiles.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/agents.json",
       "name": "Agent Discovery Index"
     },
@@ -892,6 +1025,12 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/agents.json",
       "name": "Agent Discovery Index (root invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/agent.json",
+      "name": "Agent Discovery Index (agent.json invent alias)"
     },
     {
       "@type": "DataDownload",
@@ -952,6 +1091,42 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/.well-known/llms-full.txt",
       "name": "LLM Context Full (well-known invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/en/llms.txt",
+      "name": "LLM Context EN invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/tr/llms.txt",
+      "name": "LLM Context TR invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/en/llms-full.txt",
+      "name": "LLM Context Full EN invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/tr/llms-full.txt",
+      "name": "LLM Context Full TR invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/en/ai.txt",
+      "name": "AI Discovery Pointer EN invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/tr/ai.txt",
+      "name": "AI Discovery Pointer TR invent alias"
     },
     {
       "@type": "DataDownload",

@@ -74,11 +74,17 @@ const API_PANELS_JSON_URL = `${SITE_URL}/api/panels.json`;
 const API_MERCHANT_JSON_URL = `${SITE_URL}/api/merchant.json`;
 const API_MPN_URL = `${SITE_URL}/api/mpn`;
 const API_ENTITY_URL = `${SITE_URL}/api/entity`;
+const API_CATALOG_JSON_URL = `${SITE_URL}/api/catalog.json`;
+const API_PRODUCTS_URL = `${SITE_URL}/api/products`;
 const V1_PRICES_URL = `${SITE_URL}/v1/prices`;
 const DATA_PRICES_JSON_URL = `${SITE_URL}/data/prices.json`;
 const FEEDS_PRICES_JSON_URL = `${SITE_URL}/feeds/prices.json`;
 const EN_PRICES_JSON_URL = `${SITE_URL}/en/prices.json`;
 const TR_PRICES_JSON_URL = `${SITE_URL}/tr/prices.json`;
+const EN_PRICING_JSON_URL = `${SITE_URL}/en/pricing.json`;
+const TR_CATALOG_JSON_URL = `${SITE_URL}/tr/catalog.json`;
+const EN_ENTITY_JSON_URL = `${SITE_URL}/en/entity.json`;
+const TR_ENTITY_JSON_URL = `${SITE_URL}/tr/entity.json`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const POINT_C_EN_TXT_URL = `${SITE_URL}/point-c-en.txt`;
 const POINT_C_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.txt`;
@@ -86,10 +92,15 @@ const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_WELLKNOWN_URL = `${SITE_URL}/.well-known/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
 const LLMS_FULL_WELLKNOWN_URL = `${SITE_URL}/.well-known/llms-full.txt`;
+const EN_LLMS_URL = `${SITE_URL}/en/llms.txt`;
+const TR_LLMS_URL = `${SITE_URL}/tr/llms.txt`;
+const EN_AI_TXT_URL = `${SITE_URL}/en/ai.txt`;
+const TR_AI_TXT_URL = `${SITE_URL}/tr/ai.txt`;
 const AI_TXT_URL = `${SITE_URL}/ai.txt`;
 const AI_TXT_WELLKNOWN_URL = `${SITE_URL}/.well-known/ai.txt`;
 const AGENTS_MD_URL = `${SITE_URL}/AGENTS.md`;
 const AGENTS_JSON_ROOT_URL = `${SITE_URL}/agents.json`;
+const AGENT_JSON_ROOT_URL = `${SITE_URL}/agent.json`;
 const AGENT_WELLKNOWN_URL = `${SITE_URL}/.well-known/agent.json`;
 const HUMANS_TXT_URL = `${SITE_URL}/humans.txt`;
 const HUMANS_WELLKNOWN_URL = `${SITE_URL}/.well-known/humans.txt`;
@@ -148,16 +159,27 @@ const inventAliasLdJson = [
   { url: API_MERCHANT_JSON_URL, title: "API merchant.json invent alias" },
   { url: API_MPN_URL, title: "API mpn invent alias" },
   { url: API_ENTITY_URL, title: "API entity invent alias" },
+  { url: API_CATALOG_JSON_URL, title: "API catalog.json invent alias" },
+  { url: API_PRODUCTS_URL, title: "API products invent alias" },
   { url: V1_PRICES_URL, title: "v1 prices invent alias" },
   { url: DATA_PRICES_JSON_URL, title: "data/prices.json invent alias" },
   { url: FEEDS_PRICES_JSON_URL, title: "feeds/prices.json invent alias" },
   { url: EN_PRICES_JSON_URL, title: "EN prices.json invent alias" },
   { url: TR_PRICES_JSON_URL, title: "TR prices.json invent alias" },
+  { url: EN_PRICING_JSON_URL, title: "EN pricing.json invent alias" },
+  { url: TR_CATALOG_JSON_URL, title: "TR catalog.json invent alias" },
+  { url: EN_ENTITY_JSON_URL, title: "EN entity.json invent alias" },
+  { url: TR_ENTITY_JSON_URL, title: "TR entity.json invent alias" },
+  { url: AGENT_JSON_ROOT_URL, title: "Agent Discovery Index (agent.json invent alias)" },
 ] as const;
 
 const inventAliasTextPlain = [
   { url: SECURITY_TXT_ROOT_URL, title: "security.txt root invent alias" },
   { url: SECURITY_EXTLESS_URL, title: "security.txt extensionless well-known invent alias" },
+  { url: EN_LLMS_URL, title: "LLM Context EN invent alias" },
+  { url: TR_LLMS_URL, title: "LLM Context TR invent alias" },
+  { url: EN_AI_TXT_URL, title: "AI Discovery Pointer EN invent alias" },
+  { url: TR_AI_TXT_URL, title: "AI Discovery Pointer TR invent alias" },
   { url: LLMS_EXTLESS_URL, title: "LLM Context extensionless invent alias" },
   { url: LLMS_FULL_EXTLESS_URL, title: "LLM Context Full extensionless invent alias" },
 ] as const;

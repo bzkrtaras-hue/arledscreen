@@ -424,11 +424,29 @@ if (fs.existsSync(outDir)) {
     "/en/prices.json",
     "/tr/prices.json",
     "/.well-known/security",
+    "/api/catalog.json",
+    "/api/products",
+    "/en/pricing.json",
+    "/en/entity.json",
+    "/tr/entity.json",
+    "/en/llms.txt",
+    "/tr/llms.txt",
+    "/.well-known/ai-shopping.json",
+    "/organization",
   ]) {
     if (!ard.robotsPolicy.allow.includes(must)) {
       console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
       process.exit(1);
     }
+  }
+  if (
+    !String(ard?.agentic?.resources?.apiCatalog?.url || "").includes("/api/catalog.json") ||
+    !Array.isArray(ard?.agentic?.resources?.localeInvent?.pricedPanels) ||
+    !JSON.stringify(ard.agentic.resources.localeInvent.pricedPanels).includes("/en/pricing.json") ||
+    !JSON.stringify(ard.agentic.resources.localeInvent.discovery || []).includes("/agent.json")
+  ) {
+    console.error("❌ ard.json must expose resources.apiCatalog + localeInvent pricedPanels/discovery");
+    process.exit(1);
   }
   if (!ard?.agentic?.cite?.en?.oneLiner) {
     console.error("❌ ard.json agentic.cite.en.oneLiner required for EN AI agents");
