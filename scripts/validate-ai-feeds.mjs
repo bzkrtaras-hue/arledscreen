@@ -566,9 +566,11 @@ if (fs.existsSync(outDir)) {
       !websiteRes.potentialAction.some((u) => String(u).includes("/tr/quote")) ||
       !websiteRes.potentialAction.some((u) => String(u).includes("/en/quote")) ||
       !String(websiteRes?.description || "").includes("geo:ack") ||
-      !String(websiteRes?.ownerNext || "").includes("geo:ack")
+      !String(websiteRes?.ownerNext || "").includes("geo:ack") ||
+      !String(websiteRes?.ownerNext || "").includes("point-c:csv") ||
+      !String(websiteRes?.ownerNext || "").includes("https://www.isimtescil.net/")
     ) {
-      console.error("❌ ard.json resources.website must be #website with OrderAction TR+EN quote URLs + geo:ack");
+      console.error("❌ ard.json resources.website must be #website with OrderAction TR+EN quote URLs + geo:ack + point-c:csv Open");
       process.exit(1);
     }
     if (!String(ard?.agentic?.resources?.merchantFeed?.websiteUrl || "").includes("#website")) {
@@ -633,15 +635,25 @@ if (fs.existsSync(outDir)) {
     if (
       !String(epRes?.ownerNext || "").includes("geo:next") ||
       !String(epRes?.ownerNext || "").includes("geo:ack") ||
+      !String(epRes?.ownerNext || "").includes("point-c:csv") ||
+      !String(epRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
+      !String(epRes?.ownerNext || "").includes("https://business.google.com/") ||
+      !String(epRes?.ownerNext || "").includes("https://chatgpt.com/") ||
       !JSON.stringify(epRes?.distribution || []).includes("/ai-shopping.json") ||
       !JSON.stringify(epRes?.distribution || []).includes("/point-c.txt") ||
       !String(geoRes?.ownerNext || "").includes("geo:next") ||
       !String(geoRes?.ownerNext || "").includes("geo:ack") ||
+      !String(geoRes?.ownerNext || "").includes("point-c:csv") ||
+      !String(geoRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
       !JSON.stringify(geoRes?.distribution || []).includes("/brand.json") ||
       !String(pcRes?.ownerNext || "").includes("geo:next") ||
-      !String(pcRes?.ownerNext || "").includes("geo:ack")
+      !String(pcRes?.ownerNext || "").includes("geo:ack") ||
+      !String(pcRes?.ownerNext || "").includes("point-c:csv") ||
+      !String(pcRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
+      !String(pcRes?.ownerNext || "").includes("https://business.google.com/") ||
+      !String(pcRes?.ownerNext || "").includes("https://chatgpt.com/")
     ) {
-      console.error("❌ ard.json entityProfiles/geoBaseline/pointC must cite geo:next/ack + invent distribution");
+      console.error("❌ ard.json entityProfiles/geoBaseline/pointC must cite geo:next/ack + point-c:csv + Open tabs (isimtescil/GBP/chatgpt) + invent distribution");
       process.exit(1);
     }
     if (!JSON.stringify(ardBrand?.subjectOf || []).includes("/point-c.txt")) {
@@ -2070,9 +2082,17 @@ if (fs.existsSync(outDir)) {
   if (
     !String(agents?.description || "").includes("geo:next") ||
     !String(agents?.description || "").includes("geo:ack") ||
-    !String(agents?.description || "").includes("#website")
+    !String(agents?.description || "").includes("#website") ||
+    !String(agents?.description || "").includes("point-c:csv") ||
+    !String(agents?.description || "").includes("https://www.isimtescil.net/") ||
+    !String(agents?.description || "").includes("https://business.google.com/") ||
+    !String(agents?.description || "").includes("https://chatgpt.com/") ||
+    !String(agents?.ownerNext || "").includes("point-c:csv") ||
+    !String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") ||
+    !String(agents?.ownerNext || "").includes("https://business.google.com/") ||
+    !String(agents?.ownerNext || "").includes("https://chatgpt.com/")
   ) {
-    console.error("❌ agents.json description must cite geo:next/ack + #website");
+    console.error("❌ agents.json description/ownerNext must cite geo:next/ack + #website + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
     process.exit(1);
   }
   if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 20) {

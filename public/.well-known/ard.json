@@ -153,12 +153,12 @@
         "type": "GEO Technical Baseline",
         "url": "https://arledscreen.com/geo-baseline.json",
         "format": "application/ld+json",
-        "description": "Machine-readable snapshot of pricedPanels, Brand @id, and discovery fingerprints for before/after measurement. Schema.org distribution → ai-shopping/prices/brand/entity/catalog/point-c/AGENTS.md. Does not invent AI mention rates. Owner clipboard: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack. WebSite: https://arledscreen.com/#website.",
+        "description": "Machine-readable snapshot of pricedPanels, Brand @id, and discovery fingerprints for before/after measurement. Schema.org distribution → ai-shopping/prices/brand/entity/catalog/point-c/AGENTS.md. Does not invent AI mention rates. Owner clipboard: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/. WebSite: https://arledscreen.com/#website.",
         "pricedPanels": 12,
         "freeShipping": false,
         "brandId": "https://arledscreen.com/#brand-nxtionstar",
         "goalTargetDate": "2026-11-04",
-        "ownerNext": "npm run geo:next · after paste: npm run geo:ack",
+        "ownerNext": "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
         "distribution": [
           "https://arledscreen.com/ai-shopping.json",
           "https://arledscreen.com/prices.json",
@@ -181,7 +181,7 @@
         "type": "Agent Index",
         "url": "https://arledscreen.com/ai-shopping.json",
         "format": "application/ld+json",
-        "description": "Single-fetch Dataset: cite + pricedPanels (12 USD SKU, mpn=sku) + hasPart/isPartOf graph (hasPart Offer stubs: sameAs catalog+PDP #offer, itemOffered → PDP #product) + shoppingPolicy; invent aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /sku · /offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json · /api/mpn.json; no free shipping; no invented TL packs or GTINs. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt.",
+        "description": "Single-fetch Dataset: cite + pricedPanels (12 USD SKU, mpn=sku) + hasPart/isPartOf graph (hasPart Offer stubs: sameAs catalog+PDP #offer, itemOffered → PDP #product) + shoppingPolicy; invent aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /sku · /offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json · /api/mpn.json; no free shipping; no invented TL packs or GTINs. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · point-c.txt · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/.",
         "pricedPanels": 12,
         "hasPart": 12,
         "priceValidUntil": "2026-12-31",
@@ -261,13 +261,13 @@
         "type": "Profile Paste Packs",
         "url": "https://arledscreen.com/entity-profiles.json",
         "format": "application/ld+json",
-        "description": "Third-party profile text packs (Point C) aligned with entity.json cite. Dataset invent: isBasedOn + distribution → entity/brand/ai-shopping/catalog/geo/point-c. Use packs.* (TR) and packsEn.* (EN cite-only; no catalog jargon in public bios). Live paste: /point-c.txt · /point-c-en.txt · /.well-known/point-c.txt. Owner single clipboard: npm run geo:next · after paste: npm run geo:ack. WebSite: https://arledscreen.com/#website.",
+        "description": "Third-party profile text packs (Point C) aligned with entity.json cite. Dataset invent: isBasedOn + distribution → entity/brand/ai-shopping/catalog/geo/point-c. Use packs.* (TR) and packsEn.* (EN cite-only; no catalog jargon in public bios). Live paste: /point-c.txt · /point-c-en.txt · /.well-known/point-c.txt. Owner single clipboard: npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/. WebSite: https://arledscreen.com/#website.",
         "packs": "TR paste packs",
         "packsEn": "EN cite-only paste packs (GBP/directories/LinkedIn)",
         "brandId": "https://arledscreen.com/#brand-nxtionstar",
         "pointCTxt": "https://arledscreen.com/point-c.txt",
         "pointCEnTxt": "https://arledscreen.com/point-c-en.txt",
-        "ownerNext": "npm run geo:next · after paste: npm run geo:ack",
+        "ownerNext": "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
         "distribution": [
           "https://arledscreen.com/entity.json",
           "https://arledscreen.com/brand.json",
@@ -285,11 +285,11 @@
         "type": "Owner Point C Paste Packs",
         "url": "https://arledscreen.com/point-c.txt",
         "format": "text/plain",
-        "description": "Copy-ready GBP/IG/FB/LinkedIn NAP paste packs (TR) + Hostinger arleds.com 301 clipboard. Source: entity-profiles.json packs.*; alias /.well-known/point-c.txt; EN twin /point-c-en.txt. Owner-gated — do not invent third-party cites. Single next: npm run geo:next · sequential: npm run point-c:next · ack: npm run point-c:ack · geo:ack. WebSite: https://arledscreen.com/#website.",
+        "description": "Copy-ready GBP/IG/FB/LinkedIn NAP paste packs (TR) + Hostinger arleds.com 301 clipboard. Source: entity-profiles.json packs.*; alias /.well-known/point-c.txt; EN twin /point-c-en.txt. Owner-gated — do not invent third-party cites. Single next: npm run geo:next · spreadsheet: npm run point-c:csv · sequential: npm run point-c:next · ack: npm run point-c:ack · geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/. WebSite: https://arledscreen.com/#website.",
         "wellKnown": "https://arledscreen.com/.well-known/point-c.txt",
         "en": "https://arledscreen.com/point-c-en.txt",
         "source": "https://arledscreen.com/entity-profiles.json",
-        "ownerNext": "npm run geo:next · after paste: npm run geo:ack"
+        "ownerNext": "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
       },
       "pointCEn": {
         "type": "Owner Point C Paste Packs (EN)",
@@ -366,13 +366,13 @@
         "@id": "https://arledscreen.com/#website",
         "url": "https://arledscreen.com/entity.json",
         "format": "application/ld+json",
-        "description": "WebSite #website on entity.json mainEntityOfPage: potentialAction OrderAction → /tr/quote/ · /en/quote/. HTML home WebSite graph shares the same @id. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt.",
+        "description": "WebSite #website on entity.json mainEntityOfPage: potentialAction OrderAction → /tr/quote/ · /en/quote/. HTML home WebSite graph shares the same @id. Owner: npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · point-c.txt · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/.",
         "potentialAction": [
           "https://arledscreen.com/tr/quote/",
           "https://arledscreen.com/en/quote/"
         ],
         "about": "https://arledscreen.com/#organization",
-        "ownerNext": "npm run geo:next · after paste: npm run geo:ack"
+        "ownerNext": "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
       },
       "quoteForm": {
         "type": "Custom Quote Request",

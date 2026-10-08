@@ -162,10 +162,14 @@ if (
   (agents?.itemListElement || []).length >= 20 &&
   (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("#website")) &&
   (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/.well-known/security.txt")) &&
-  (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/llms-full.txt"))
+  (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/llms-full.txt")) &&
+  String(agents?.description || "").includes("point-c:csv") &&
+  String(agents?.ownerNext || "").includes("point-c:csv") &&
+  String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") &&
+  String(agents?.ownerNext || "").includes("https://chatgpt.com/")
 ) {
-  ok(`agents.json ×${agents.itemListElement.length} incl #website + security + llms-full`);
-} else fail("agents.json ≥20 incl #website + security + llms-full");
+  ok(`agents.json ×${agents.itemListElement.length} incl #website + security + llms-full + point-c:csv Open`);
+} else fail("agents.json ≥20 incl #website + security + llms-full + point-c:csv Open");
 
 {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
@@ -417,15 +421,22 @@ else fail("ard.resources.pointC");
     allow.includes("/.well-known/brand.json") &&
     String(res.entityProfiles?.ownerNext || "").includes("geo:next") &&
     String(res.entityProfiles?.ownerNext || "").includes("geo:ack") &&
+    String(res.entityProfiles?.ownerNext || "").includes("point-c:csv") &&
+    String(res.entityProfiles?.ownerNext || "").includes("https://www.isimtescil.net/") &&
+    String(res.entityProfiles?.ownerNext || "").includes("https://business.google.com/") &&
+    String(res.entityProfiles?.ownerNext || "").includes("https://chatgpt.com/") &&
     JSON.stringify(res.entityProfiles?.distribution || []).includes("/ai-shopping.json") &&
     String(res.geoBaseline?.ownerNext || "").includes("geo:next") &&
     String(res.geoBaseline?.ownerNext || "").includes("geo:ack") &&
+    String(res.geoBaseline?.ownerNext || "").includes("point-c:csv") &&
     String(res.pointC?.ownerNext || "").includes("geo:next") &&
     String(res.pointC?.ownerNext || "").includes("geo:ack") &&
+    String(res.pointC?.ownerNext || "").includes("point-c:csv") &&
+    String(res.pointC?.ownerNext || "").includes("https://chatgpt.com/") &&
     JSON.stringify(res.brand?.subjectOf || []).includes("/point-c.txt")
   ) {
-    ok("ard invent entity/brand allow + geo:next/ack distribution");
-  } else fail("ard invent entity/brand allow + geo:next/ack distribution");
+    ok("ard invent entity/brand allow + geo:next/ack + point-c:csv Open tabs");
+  } else fail("ard invent entity/brand allow + geo:next/ack + point-c:csv Open tabs");
 }
 
 {
