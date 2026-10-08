@@ -131,7 +131,7 @@
         "name": "NXTIONSTAR",
         "url": "https://arledscreen.com/brand.json",
         "format": "application/ld+json",
-        "description": "NXTIONSTAR is ARLEDSCREEN's own LED product brand; sole sales point in Turkey is ARLEDSCREEN. Brand document /brand.json embeds AggregateOffer×12 (26.98–95.88 USD) at #priced-panels-aggregate; hasOfferCatalog → catalog.json; subjectOf → pricedPanels / catalog / merchant TSV / prices.rss / geo-baseline.",
+        "description": "NXTIONSTAR is ARLEDSCREEN's own LED product brand; sole sales point in Turkey is ARLEDSCREEN. Brand document /brand.json embeds AggregateOffer×12 (26.98–95.88 USD) at #priced-panels-aggregate; hasOfferCatalog → catalog.json; subjectOf → pricedPanels / catalog / merchant TSV / prices.rss / geo-baseline. Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "makesOffer": "https://arledscreen.com/#priced-panels-aggregate",
         "offerCount": 12,
         "hasOfferCatalog": "https://arledscreen.com/catalog.json",
@@ -143,11 +143,32 @@
           "https://arledscreen.com/geo-baseline.json",
           "https://arledscreen.com/feeds/prices.rss",
           "https://arledscreen.com/point-c.txt",
-          "https://arledscreen.com/entity-profiles.json"
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ],
         "brandHub": "https://arledscreen.com/tr/nxtionstar/",
         "brandHubEn": "https://arledscreen.com/en/nxtionstar/",
-        "wellKnown": "https://arledscreen.com/.well-known/brand.json"
+        "wellKnown": "https://arledscreen.com/.well-known/brand.json",
+        "distribution": [
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/.well-known/brand.json",
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "geoBaseline": {
         "type": "GEO Technical Baseline",
@@ -769,7 +790,9 @@
         "format": "application/ld+json",
         "description": "Byte-identical inventable alias of entity.json under /api/entity(+.json)",
         "canonical": "https://arledscreen.com/entity.json",
-        "also": ["https://arledscreen.com/api/entity.json"]
+        "also": [
+          "https://arledscreen.com/api/entity.json"
+        ]
       },
       "apiCatalog": {
         "type": "Catalog invent alias",
