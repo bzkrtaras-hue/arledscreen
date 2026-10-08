@@ -25,6 +25,14 @@ const repoRoot = path.resolve(__dirname, "..");
 const logPath = path.join(repoRoot, "docs/geo/observations/blind-log.jsonl");
 const logger = path.join(repoRoot, "scripts/geo-blind-log.mjs");
 
+// CI pipes `npm run tur1a:next | grep -q …` — tolerate early reader exit.
+process.stdout.on("error", (err) => {
+  if (err?.code === "EPIPE") process.exit(0);
+});
+process.stderr.on("error", (err) => {
+  if (err?.code === "EPIPE") process.exit(0);
+});
+
 const wantNext = process.argv.includes("--next");
 const wantLog = process.argv.includes("--log");
 const wantCsv = process.argv.includes("--csv");

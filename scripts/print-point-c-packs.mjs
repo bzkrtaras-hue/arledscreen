@@ -24,6 +24,14 @@ const repoRoot = path.resolve(__dirname, "..");
 const profilesPath = path.join(repoRoot, "public/entity-profiles.json");
 const progressPath = path.join(repoRoot, "docs/geo/observations/point-c-progress.json");
 
+// CI pipes `npm run point-c:next | grep -q …` — tolerate early reader exit.
+process.stdout.on("error", (err) => {
+  if (err?.code === "EPIPE") process.exit(0);
+});
+process.stderr.on("error", (err) => {
+  if (err?.code === "EPIPE") process.exit(0);
+});
+
 /**
  * Synthetic step after NAP packs — arleds.com 301 clipboard.
  * Key kept as hostinger301 for progress ack compatibility; text is dual-path

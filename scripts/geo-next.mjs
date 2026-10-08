@@ -16,6 +16,15 @@ const repoRoot = path.resolve(__dirname, "..");
 const progressPath = path.join(repoRoot, "docs/geo/observations/point-c-progress.json");
 const POINT_C_STEPS = 11;
 
+// CI pipes `npm run geo:next | grep -q …` — when grep exits early, further writes
+// must not crash the process (pipefail would fail the Owner tooling smoke step).
+process.stdout.on("error", (err) => {
+  if (err?.code === "EPIPE") process.exit(0);
+});
+process.stderr.on("error", (err) => {
+  if (err?.code === "EPIPE") process.exit(0);
+});
+
 const HOWTO_FOOTER = `HowTo: https://arledscreen.com/point-c.json → potentialAction · https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/point-c-progress.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction`;
 
 function runNode(scriptRel, args = []) {
@@ -66,8 +75,14 @@ if (acked < POINT_C_STEPS) {
     );
     const nextRow = mod.buildPointCNext(profiles, { en: false });
     if (typeof mod.ownerNextStartUrl === "function") htmlDeep = mod.ownerNextStartUrl();
-    else if (nextRow?.html) htmlDeep = nextRow.html;
-    else if (nextRow?.packKey && mod.ownerNextHtmlUrl) htmlDeep = mod.ownerNextHtmlUrl(nextRow.packKey);
+    const packHtml =
+      nextRow?.html ||
+      (nextRow?.packKey && typeof mod.ownerNextHtmlUrl === "function"
+        ? mod.ownerNextHtmlUrl(nextRow.packKey)
+        : "");
+    if (packHtml) {
+      console.log(`Pack HTML: ${packHtml}`);
+    }
     console.log("");
     console.log("=== Queued after Point C (arleds.com 301) — prep Open tabs ===");
     if (mod.DNSENABLE_PANEL_URL) console.log(`Open: ${mod.DNSENABLE_PANEL_URL}`);
