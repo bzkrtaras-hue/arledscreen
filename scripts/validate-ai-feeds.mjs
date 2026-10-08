@@ -5853,7 +5853,7 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     "/modules.json",
     "/sku.json",
     "/panels.json",
-    "/point-c.txt",
+    // Melis: owner-friction (point-c / owner-next / geo-next / tur1a / geo-status) stay out of sitemap.
     "/brand.json",
     "/feeds/prices.rss",
     "/api/catalog.json",
@@ -5925,6 +5925,23 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
   ]) {
     if (!sitemapLive.includes(`<loc>https://arledscreen.com${needle}</loc>`)) {
       console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);
+      process.exit(1);
+    }
+  }
+  for (const banned of [
+    "/point-c.txt",
+    "/point-c.json",
+    "/owner-next.html",
+    "/owner-next.json",
+    "/geo-next.html",
+    "/geo-next.txt",
+    "/geo-status.json",
+    "/tur1a.json",
+    "/owner-p0.json",
+    "/point-c-progress.json",
+  ]) {
+    if (sitemapLive.includes(`<loc>https://arledscreen.com${banned}</loc>`)) {
+      console.error(`❌ out/sitemap.xml must not list owner-friction ${banned} (Melis)`);
       process.exit(1);
     }
   }
