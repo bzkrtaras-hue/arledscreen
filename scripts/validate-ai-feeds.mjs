@@ -2008,6 +2008,11 @@ if (fs.existsSync(outDir)) {
     "https://www.bingplaces.com/",
     "https://arledscreen.com/geo-next.txt",
     "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/geo-status.json",
+    "https://arledscreen.com/tur1a.json",
+    "https://arledscreen.com/point-c-progress.json",
+    "owner-next.txt",
+    "potentialAction",
     "directoryLong",
     "Open:",
     "point-c.txt",
@@ -2017,7 +2022,7 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
-  console.log("✅ offsite-entity-playbook.md wires live geo-next/point-c.json next + Bing/Apple Open tabs");
+  console.log("✅ offsite-entity-playbook.md wires live geo-next/point-c/geo-status/tur1a HowTo + Bing/Apple Open tabs");
   {
     const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
     if (

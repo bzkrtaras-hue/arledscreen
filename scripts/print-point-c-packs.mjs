@@ -66,7 +66,7 @@ export const HOSTINGER_GMAIL_DRAFT_URL =
 
 /** Live Gmail draft for Isimtescil/DNSEnable 301 (owner must Send). Refresh if draft is recreated. */
 export const DNSENABLE_GMAIL_DRAFT_URL =
-  "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878454181087052625%2Bmsg-a:r-3112734221607885814";
+  "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878468370606062050%2Bmsg-a:r-3112734221607885814";
 
 /** Where to paste each Point C pack (owner friction — pack text is already ready). */
 export const POINT_C_PASTE_WHERE = {
@@ -137,23 +137,24 @@ export function buildDnsEnableRedirectClipboard() {
 }
 
 export function buildDnsEnableEmailParts() {
-  const subject = "Kalıcı 301 yönlendirme arleds.com → https://arledscreen.com/tr/";
+  // Host-style mappings (no https://) so Gmail link-wrappers do not mangle the Send body.
+  const subject = "Kalıcı 301 yönlendirme arleds.com → arledscreen.com/tr/";
   const body = [
     "Merhaba İsimtescil Destek,",
     "",
-    "arleds.com alan adımız için kalıcı (301) Domain Redirect / URL yönlendirme talebi:",
+    "arleds.com alan adımız için kalıcı (301) Domain Redirect / URL yönlendirme talebi.",
     "",
-    "Hedef: https://arledscreen.com/tr/",
+    "Hedef (kalıcı 301): arledscreen.com/tr/  (scheme: https)",
     "",
-    "Lütfen şu eşlemeleri uygulayın (http + https, apex + www):",
-    "http://arleds.com/ → https://arledscreen.com/tr/",
-    "http://www.arleds.com/ → https://arledscreen.com/tr/",
-    "https://arleds.com/ → https://arledscreen.com/tr/",
-    "https://www.arleds.com/ → https://arledscreen.com/tr/",
+    "Lütfen şu eşlemeleri uygulayın — http ve https, apex ve www için aynı hedef:",
+    "  arleds.com/          →  arledscreen.com/tr/",
+    "  www.arleds.com/      →  arledscreen.com/tr/",
     "",
     "DNS: eu/tr/us.dnsenable.com (canlı NS). Hostinger hPanel bu domain için geçerli değil.",
     "Telefon: +90 850 200 0 444 · Domain: arleds.com",
+    "İletişim: arled@arledscreen.com",
     "Teşekkürler.",
+    "Aras Bozkurt / ARLEDSCREEN",
   ].join("\n");
   return { to: DNSENABLE_SUPPORT_TO, subject, body };
 }

@@ -12,19 +12,22 @@ Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu NAP tutarlıl
 | Makinece entity (NAP + cite) | https://arledscreen.com/entity.json |
 | Kısa AI özeti | https://arledscreen.com/llms.txt |
 | Point C paste (canlı) | https://arledscreen.com/point-c.txt |
-| Point C machine next (directoryLong) | https://arledscreen.com/point-c.json → `next` |
-| GEO next clipboard (canlı) | https://arledscreen.com/geo-next.txt |
-| GEO owner-gate status | https://arledscreen.com/geo-status.json → `gates.pointC.next` |
+| Point C machine next (directoryLong) | https://arledscreen.com/point-c.json → `next` + `potentialAction` (HowTo) |
+| GEO next clipboard (canlı) | https://arledscreen.com/geo-next.txt · alias `/owner-next.txt` |
+| GEO owner-gate status | https://arledscreen.com/geo-status.json → `priorityGate` + `potentialAction` (HowTo) |
+| Point C paste progress | https://arledscreen.com/point-c-progress.json |
 | Point C spreadsheet | https://arledscreen.com/feeds/point-c.csv |
+| Tur1a blind (machine) | https://arledscreen.com/tur1a.json → `next` + `potentialAction` (HowTo) · CSV `/feeds/tur1a.csv` |
 | Hakkımızda | https://arledscreen.com/tr/about/ |
 
 ### Owner clipboard (live — tek sıra; repo opsiyonel)
 
-Kod tarafı canlı; sahip kapıları sırayla. Repo CLI şart değil — canlı URL’ler yeterli:
+Kod tarafı canlı; sahip kapıları sırayla. Repo CLI şart değil — canlı URL’ler yeterli.
+Invent agents: follow `potentialAction` HowTo on `/geo-status.json` (priority-aware) or pack JSON.
 
 1. Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/
-2. Paste from https://arledscreen.com/point-c.json → `next.text` (or https://arledscreen.com/geo-next.txt select-all)
-3. After paste: `npm run point-c:ack -- --pack=directoryLong` (or `npm run geo:ack`)
+2. Paste from https://arledscreen.com/point-c.json → `next.text` (or https://arledscreen.com/geo-next.txt / `/owner-next.txt` select-all · or HowTo step 2)
+3. After paste: `npm run point-c:ack -- --pack=directoryLong` (or `npm run geo:ack` · HowTo step 3)
 
 ```bash
 npm run geo:next          # Point C → arleds 301 → Tur1a → merge (tek clipboard; live twin /geo-next.txt)
@@ -32,15 +35,15 @@ npm run point-c:csv       # 0/11 pack spreadsheet (Where/Open/OpenAlt/ack); live
 npm run point-c:ack       # after each paste
 npm run verify:arleds-301 # prints Where:/Open:/OpenAlt: for registrar panel
 npm run tur1a:next        # next blind cell + Open: platform tab
-npm run tur1a:csv         # 0/48 matrix with open column
-npm run geo:status        # gate dashboard; live /geo-status.json
+npm run tur1a:csv         # 0/48 matrix with open column; live /feeds/tur1a.csv
+npm run geo:status        # gate dashboard; live /geo-status.json → potentialAction
 ```
 
 | Gate | Open tab |
 |---|---|
-| Point C next pack (`directoryLong`) | https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · paste: `/point-c.json` → `next` |
-| arleds.com 301 (live NS DNSEnable) | https://www.isimtescil.net/ · OpenAlt: Gmail draft (`geo:status`) |
-| Tur1a ChatGPT cell | https://chatgpt.com/ |
+| Point C next pack (`directoryLong`) | https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · paste: `/point-c.json` → `next` · HowTo `/geo-status.json` → `potentialAction` |
+| arleds.com 301 (live NS DNSEnable) | https://www.isimtescil.net/ · OpenAlt: Gmail draft Send (`geo-status.gates.arleds301.openAlt`) |
+| Tur1a ChatGPT cell | https://chatgpt.com/ · machine: `/tur1a.json` → `next` + HowTo |
 | Docs | `docs/ops/arleds-301-hostinger.md` |
 
 Do **not** invent ChatGPT/Gemini mention % — only log what you observe (`tur1a:log`).
@@ -97,13 +100,15 @@ Live mode (re-check): `npm run verify:arleds-301` → often `mode=dnsenable_tls_
 ```
 Where: Isimtescil/DNSEnable → Domain Redirect (permanent 301)
 Open: https://www.isimtescil.net/
-OpenAlt: Gmail draft Send (npm run geo:status / point-c.txt)
+OpenAlt: Gmail draft Send (https://arledscreen.com/geo-status.json → gates.arleds301.openAlt)
+HowTo: when priorityGate=arleds301 → /geo-status.json potentialAction
 ```
 
 - [ ] `https://arleds.com` → `https://arledscreen.com/tr/` **301** (tüm sayfalar)
 - [ ] www/http varyantları da apex’e
 - [ ] GSC’de eski domain property varsa adres değişikliği / sitemap temizliği
 - [ ] Bio/GBP/web alanında yalnızca `arledscreen.com`
+- [ ] Gmail draft Send → destek@isimtescil.net (clean Domain Redirect body; draft already prepared)
 - [ ] Re-check exit 0: `npm run verify:arleds-301`
 
 Bu yapılmadan “ARLEDSCREEN kimdir?” cevabı iki domain arasında bölünür. Playbook ops: `docs/ops/arleds-301-hostinger.md`.
