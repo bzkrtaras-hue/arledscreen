@@ -271,6 +271,11 @@ if (fs.existsSync(outDir)) {
     "/.well-known/entity.json",
     "/organization.json",
     "/point-c.txt",
+    "/point-c.json",
+    "/geo-status.json",
+    "/geo-next.txt",
+    "/tur1a.json",
+    "/point-c-progress.json",
     "/entity-profiles.json",
   ]) {
     if (!distUrls.some((u) => u.includes(needle))) {
@@ -803,6 +808,11 @@ if (fs.existsSync(outDir)) {
       "/feeds/merchant-priced-panels.tsv",
       "/feeds/prices.rss",
       "/point-c.txt",
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
       "/entity-profiles.json",
       "/AGENTS.md",
       "#website",
@@ -1093,11 +1103,16 @@ if (fs.existsSync(outDir)) {
       !catDist.includes("/.well-known/entity.json") ||
       !catDist.includes("/entity.json") ||
       !catDist.includes("/point-c.txt") ||
+      !catDist.includes("/point-c.json") ||
+      !catDist.includes("/geo-status.json") ||
+      !catDist.includes("/geo-next.txt") ||
+      !catDist.includes("/tur1a.json") ||
+      !catDist.includes("/point-c-progress.json") ||
       !catDist.includes("/feeds/prices.rss") ||
       !catDist.includes("#website") ||
       !JSON.stringify(catalogLive.isRelatedTo || []).includes("#website")
     ) {
-      console.error("❌ catalog.json Dataset.distribution must invent-join ai-shopping/prices/brand/entity/point-c/prices.rss/#website");
+      console.error("❌ catalog.json Dataset.distribution must invent-join ai-shopping/prices/brand/entity/point-c/owner-gate HowTo/prices.rss/#website");
       process.exit(1);
     }
   }
@@ -1218,6 +1233,11 @@ if (fs.existsSync(outDir)) {
         "/.well-known/merchant.json",
         "/.well-known/prices.json",
         "/.well-known/price.json",
+        "/point-c.json",
+        "/geo-status.json",
+        "/geo-next.txt",
+        "/tur1a.json",
+        "/point-c-progress.json",
       ]) {
         if (!catDistLive.includes(needle)) {
           console.error(`❌ catalog.json distribution must invent-join ${needle}`);

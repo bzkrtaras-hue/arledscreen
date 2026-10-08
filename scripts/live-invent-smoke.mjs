@@ -945,6 +945,11 @@ if (
     dist.includes("/.well-known/entity.json") &&
     dist.includes("/organization.json") &&
     dist.includes("/point-c.txt") &&
+    dist.includes("/point-c.json") &&
+    dist.includes("/geo-status.json") &&
+    dist.includes("/geo-next.txt") &&
+    dist.includes("/tur1a.json") &&
+    dist.includes("/point-c-progress.json") &&
     dist.includes("/entity-profiles.json") &&
     dist.includes("#website") &&
     dist.includes("/.well-known/agents.json") &&
@@ -956,10 +961,15 @@ if (
     dist.includes("/AGENTS.md") &&
     dist.includes("/.well-known/security.txt") &&
     dist.includes("/security.txt") &&
-    dist.includes("/.well-known/security")
+    dist.includes("/.well-known/security") &&
+    dist.includes("/point-c.json") &&
+    dist.includes("/geo-status.json") &&
+    dist.includes("/geo-next.txt") &&
+    dist.includes("/tur1a.json") &&
+    dist.includes("/point-c-progress.json")
   ) {
-    ok("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
-  } else fail("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
+    ok("ai-shopping distribution → inventAlias + discovery + owner-gate HowTo");
+  } else fail("ai-shopping distribution → inventAlias + discovery + owner-gate HowTo");
 }
 
 try {
@@ -1152,8 +1162,8 @@ if (
     dist.includes("/.well-known/entity-profiles.json") &&
     dist.includes("/.well-known/ai-shopping.json")
   ) {
-    ok("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed/products/geo/ai-shopping-wk + #website");
-  } else fail("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed/products/geo/ai-shopping-wk + #website");
+    ok("catalog distribution+isBasedOn invent → inventAlias + owner-gate HowTo + #website");
+  } else fail("catalog distribution+isBasedOn invent → inventAlias + owner-gate HowTo + #website");
 }
 
 {
@@ -1215,6 +1225,11 @@ try {
     dist.includes("/.well-known/entity.json") &&
     dist.includes("/catalog.json") &&
     dist.includes("/point-c.txt") &&
+    dist.includes("/point-c.json") &&
+    dist.includes("/geo-status.json") &&
+    dist.includes("/geo-next.txt") &&
+    dist.includes("/tur1a.json") &&
+    dist.includes("/point-c-progress.json") &&
     dist.includes("AGENTS.md") &&
     dist.includes("/entity-profiles.json") &&
     dist.includes("#website") &&
@@ -1222,8 +1237,8 @@ try {
     dist.includes("/.well-known/sku.json") &&
     dist.includes("/.well-known/pricing.json")
   ) {
-    ok("geo-baseline distribution invent → modules/sku/pricing + #website");
-  } else fail("geo-baseline distribution invent → modules/sku/pricing + #website");
+    ok("geo-baseline distribution invent → modules/sku/pricing + owner-gate HowTo + #website");
+  } else fail("geo-baseline distribution invent → modules/sku/pricing + owner-gate HowTo + #website");
   if (
     String(disc.modulesWellKnown || "").includes("/.well-known/modules.json") &&
     String(disc.skuWellKnown || "").includes("/.well-known/sku.json") &&
