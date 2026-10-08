@@ -10,6 +10,7 @@ Locale: TR
 Where: Directories / Bing Places / Apple Business Connect → About / description
 Open: https://www.bingplaces.com/
 OpenAlt: https://businessconnect.apple.com/
+OpenAlt2: https://business.google.com/
 
 ### Paste (select-all)
 ---

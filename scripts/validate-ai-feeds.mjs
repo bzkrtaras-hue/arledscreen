@@ -5486,9 +5486,37 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
       process.exit(1);
     }
   }
-  if (!pointCPacks.includes("Open:") || !pointCPacks.includes("OpenAlt:") || !pointCPacks.includes("POINT_C_PASTE_WHERE")) {
-    console.error("❌ scripts/print-point-c-packs.mjs must print Where:/Open:/OpenAlt: via POINT_C_OPEN_URLS");
+  if (
+    !pointCPacks.includes("Open:") ||
+    !pointCPacks.includes("OpenAlt:") ||
+    !pointCPacks.includes("POINT_C_PASTE_WHERE") ||
+    !pointCPacks.includes("pointCOpenAltUrls") ||
+    !pointCPacks.includes("gbpDescription:") ||
+    !pointCPacks.includes("instagramName:") ||
+    !pointCPacks.includes("facebookAbout:") ||
+    !pointCPacks.includes("linkedinAbout:") ||
+    !pointCPacks.includes("youtubeAbout:") ||
+    !pointCPacks.includes("yandexBusiness:") ||
+    !pointCPacks.includes("dash.cloudflare.com")
+  ) {
+    console.error("❌ scripts/print-point-c-packs.mjs must print Where:/Open:/OpenAlt(s) for every Point C pack + Cloudflare alt");
     process.exit(1);
+  }
+  // Every POINT_C_OPEN_URLS pack must have at least one OpenAlt.
+  {
+    const openBlock = pointCPacks.match(/export const POINT_C_OPEN_URLS = \{([\s\S]*?)\n\};/)?.[1] || "";
+    const altBlock = pointCPacks.match(/export const POINT_C_OPEN_ALTS = \{([\s\S]*?)\n\};/)?.[1] || "";
+    const openKeys = [...openBlock.matchAll(/^\s*([a-zA-Z_][a-zA-Z0-9_]*|[A-Z_][A-Z0-9_]*)\s*:/gm)].map((m) => m[1]);
+    const altKeys = [...altBlock.matchAll(/^\s*([a-zA-Z_][a-zA-Z0-9_]*|[A-Z_][A-Z0-9_]*)\s*:/gm)].map((m) => m[1]);
+    // HOSTINGER_STEP uses computed key — count named packs only.
+    const namedOpen = openKeys.filter((k) => k !== "HOSTINGER_STEP" && !k.includes("HOSTINGER"));
+    for (const k of namedOpen) {
+      if (!altKeys.includes(k) && !altBlock.includes(`[HOSTINGER_STEP]`) && k === "hostinger301") continue;
+      if (!altKeys.includes(k)) {
+        console.error(`❌ POINT_C_OPEN_ALTS must cover pack ${k}`);
+        process.exit(1);
+      }
+    }
   }
   const pkgJson = JSON.parse(fs.readFileSync(path.join(repoRoot, "package.json"), "utf8"));
   if (pkgJson?.scripts?.["point-c:csv"] !== "node scripts/print-point-c-packs.mjs --csv") {
@@ -5503,12 +5531,17 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     (!pointCLive.includes("Open: https://business.google.com/") ||
       !pointCLive.includes("Where:") ||
       !pointCLive.includes("OpenAlt: https://businessconnect.apple.com/") ||
+      !pointCLive.includes("OpenAlt2: https://business.google.com/") ||
+      !pointCLive.includes("OpenAlt: https://www.google.com/business/") ||
+      !pointCLive.includes("OpenAlt: https://business.facebook.com/") ||
+      !pointCLive.includes("OpenAlt: https://www.linkedin.com/company/arleds/admin/") ||
+      !pointCLive.includes("OpenAlt2: https://dash.cloudflare.com/") ||
       !pointCLive.includes("Open: https://www.isimtescil.net/"))
   ) {
-    console.error("❌ out/point-c.txt must include Where:/Open:/OpenAlt: (Apple alt + DNSEnable panel)");
+    console.error("❌ out/point-c.txt must include Where:/Open:/OpenAlt(s) for directoryLong/GBP/FB/LI + DNSEnable/Cloudflare");
     process.exit(1);
   }
-  console.log("✅ point-c:next Open:/OpenAlt: + point-c:csv (GBP/IG/FB/LI/Bing/Apple/YT/Yandex + DNSEnable panel)");
+  console.log("✅ point-c:next Open:/OpenAlt(s) + point-c:csv (GBP/IG/FB/LI/Bing/Apple/YT/Yandex + DNSEnable/Cloudflare)");
 }
 
 {

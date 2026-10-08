@@ -242,9 +242,11 @@ export function buildGeoStatusDoc() {
           position: 1,
           name: "Open destination",
           url: pointCNext.open,
-          text: pointCNext.openAlt
-            ? `Open: ${pointCNext.open} · OpenAlt: ${pointCNext.openAlt}`
-            : `Open: ${pointCNext.open}`,
+          text: Array.isArray(pointCNext.openAlts) && pointCNext.openAlts.length
+            ? `Open: ${pointCNext.open} · ${pointCNext.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")}`
+            : pointCNext.openAlt
+              ? `Open: ${pointCNext.open} · OpenAlt: ${pointCNext.openAlt}`
+              : `Open: ${pointCNext.open}`,
         },
         {
           "@type": "HowToStep",
@@ -429,9 +431,11 @@ export function buildPointCProgressDoc() {
           position: 1,
           name: "Open destination",
           url: next.open,
-          text: next.openAlt
-            ? `Open: ${next.open} · OpenAlt: ${next.openAlt}`
-            : `Open: ${next.open}`,
+          text: Array.isArray(next.openAlts) && next.openAlts.length
+            ? `Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")}`
+            : next.openAlt
+              ? `Open: ${next.open} · OpenAlt: ${next.openAlt}`
+              : `Open: ${next.open}`,
         },
         {
           "@type": "HowToStep",

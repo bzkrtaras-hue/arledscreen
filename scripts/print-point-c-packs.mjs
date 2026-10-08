@@ -108,19 +108,42 @@ export const POINT_C_OPEN_URLS = {
 
 /**
  * Secondary open tabs when Where: names more than one destination
- * (e.g. directoryLong Bing+Apple; arleds 301 panel + Gmail draft).
+ * (string or string[] — printed as OpenAlt / OpenAlt2…).
  */
 export const POINT_C_OPEN_ALTS = {
-  directoryLong: "https://businessconnect.apple.com/",
-  [HOSTINGER_STEP]: DNSENABLE_GMAIL_DRAFT_URL,
+  directoryLong: [
+    "https://businessconnect.apple.com/",
+    "https://business.google.com/",
+  ],
+  gbpDescription: "https://www.google.com/business/",
+  instagramName: "https://www.instagram.com/accounts/edit/",
+  instagramBio: "https://www.instagram.com/accounts/edit/",
+  facebookAbout: "https://business.facebook.com/",
+  linkedinAbout: "https://www.linkedin.com/company/arleds/admin/",
+  bingPlaces: "https://businessconnect.apple.com/",
+  appleBusinessConnect: "https://www.bingplaces.com/",
+  youtubeAbout: "https://www.youtube.com/account",
+  yandexBusiness: "https://yandex.com/maps/",
+  // Gmail draft Send + Cloudflare Bulk Redirect (Option B).
+  [HOSTINGER_STEP]: [DNSENABLE_GMAIL_DRAFT_URL, "https://dash.cloudflare.com/"],
 };
 
 export function pointCOpenUrl(packKey) {
   return POINT_C_OPEN_URLS[packKey] || "";
 }
 
+/** First OpenAlt URL (compat for CSV / geo-status openAlt fields). */
 export function pointCOpenAltUrl(packKey) {
-  return POINT_C_OPEN_ALTS[packKey] || "";
+  const alts = pointCOpenAltUrls(packKey);
+  return alts[0] || "";
+}
+
+/** All OpenAlt URLs for a pack (empty array if none). */
+export function pointCOpenAltUrls(packKey) {
+  const raw = POINT_C_OPEN_ALTS[packKey];
+  if (!raw) return [];
+  if (Array.isArray(raw)) return raw.map(String).filter(Boolean);
+  return [String(raw)].filter(Boolean);
 }
 
 /** Live DNSEnable / Isimtescil Domain Redirect clipboard (primary when NS is dnsenable.com). */
@@ -302,10 +325,11 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     lines.push(`### ${label} (${key})`);
     const where = POINT_C_PASTE_WHERE[key];
     const open = pointCOpenUrl(key);
-    const openAlt = pointCOpenAltUrl(key);
     if (where) lines.push(`Where: ${where}`);
     if (open) lines.push(`Open: ${open}`);
-    if (openAlt) lines.push(`OpenAlt: ${openAlt}`);
+    pointCOpenAltUrls(key).forEach((url, i) => {
+      lines.push(i === 0 ? `OpenAlt: ${url}` : `OpenAlt${i + 1}: ${url}`);
+    });
     lines.push(text == null || text === "" ? "(missing)" : String(text));
     lines.push("");
   }
@@ -314,7 +338,9 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     lines.push("--- DNSEnable / Isimtescil arleds.com → arledscreen.com/tr/ 301 (primary — live NS) ---");
     lines.push(`Where: ${POINT_C_PASTE_WHERE[HOSTINGER_STEP]}`);
     lines.push(`Open: ${pointCOpenUrl(HOSTINGER_STEP)}`);
-    lines.push(`OpenAlt: ${pointCOpenAltUrl(HOSTINGER_STEP)}`);
+    pointCOpenAltUrls(HOSTINGER_STEP).forEach((url, i) => {
+      lines.push(i === 0 ? `OpenAlt: ${url}` : `OpenAlt${i + 1}: ${url}`);
+    });
     for (const row of buildDnsEnableRedirectClipboard().split("\n")) lines.push(row);
     lines.push("");
     lines.push("--- DNSEnable support email (select-all) ---");
@@ -415,7 +441,7 @@ export function buildPointCNext(profiles, { en = false } = {}) {
   if (!step) return null;
   const where = POINT_C_PASTE_WHERE[step.key] || "";
   const open = pointCOpenUrl(step.key);
-  const openAlt = pointCOpenAltUrl(step.key);
+  const openAlts = pointCOpenAltUrls(step.key);
   const row = {
     packKey: step.key,
     label: step.label,
@@ -425,7 +451,8 @@ export function buildPointCNext(profiles, { en = false } = {}) {
     ackCommand: `npm run point-c:ack -- --pack=${step.key}`,
     progress: { acked: step.done, total: step.total },
   };
-  if (openAlt) row.openAlt = openAlt;
+  if (openAlts[0]) row.openAlt = openAlts[0];
+  if (openAlts.length) row.openAlts = openAlts;
   return row;
 }
 
@@ -447,7 +474,7 @@ export function buildPointCCsv(profiles, { en = false } = {}) {
     const status = ackedSet.has(key) ? "acked" : "open";
     const where = POINT_C_PASTE_WHERE[key] || "";
     const open = pointCOpenUrl(key);
-    const openAlt = pointCOpenAltUrl(key);
+    const openAlt = pointCOpenAltUrls(key).join(" | ");
     const ackCmd = status === "acked" ? "" : `npm run point-c:ack -- --pack=${key}`;
     // Ensure pack exists (skip empty non-step keys).
     if (key !== HOSTINGER_STEP && (packs[key] == null || packs[key] === "")) continue;
@@ -474,6 +501,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
   const items = [];
   for (const [label, key] of order) {
     if (packs[key] == null || packs[key] === "") continue;
+    const alts = pointCOpenAltUrls(key);
     const row = {
       packKey: key,
       label,
@@ -483,12 +511,13 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       text: String(packs[key]),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
-    const alt = pointCOpenAltUrl(key);
-    if (alt) row.openAlt = alt;
+    if (alts[0]) row.openAlt = alts[0];
+    if (alts.length) row.openAlts = alts;
     items.push(row);
   }
   {
     const key = HOSTINGER_STEP;
+    const alts = pointCOpenAltUrls(key);
     const row = {
       packKey: key,
       label: "arleds.com 301 (DNSEnable Domain Redirect)",
@@ -498,8 +527,8 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       text: buildArleds301DualPathClipboard(),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
-    const alt = pointCOpenAltUrl(key);
-    if (alt) row.openAlt = alt;
+    if (alts[0]) row.openAlt = alts[0];
+    if (alts.length) row.openAlts = alts;
     items.push(row);
   }
   const jsonUrl = en ? `${SITE}/point-c-en.json` : `${SITE}/point-c.json`;
@@ -595,9 +624,11 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
           position: 1,
           name: "Open destination",
           url: next.open,
-          text: next.openAlt
-            ? `Open: ${next.open} · OpenAlt: ${next.openAlt}`
-            : `Open: ${next.open}`,
+          text: Array.isArray(next.openAlts) && next.openAlts.length
+            ? `Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")}`
+            : next.openAlt
+              ? `Open: ${next.open} · OpenAlt: ${next.openAlt}`
+              : `Open: ${next.open}`,
         },
         {
           "@type": "HowToStep",
@@ -647,10 +678,11 @@ function printNext(profiles, { en = false } = {}) {
   console.log("Locale:", en ? "EN" : "TR");
   const where = POINT_C_PASTE_WHERE[step.key];
   const open = pointCOpenUrl(step.key);
-  const openAlt = pointCOpenAltUrl(step.key);
   if (where) console.log(`Where: ${where}`);
   if (open) console.log(`Open: ${open}`);
-  if (openAlt) console.log(`OpenAlt: ${openAlt}`);
+  pointCOpenAltUrls(step.key).forEach((url, i) => {
+    console.log(i === 0 ? `OpenAlt: ${url}` : `OpenAlt${i + 1}: ${url}`);
+  });
   console.log("");
   console.log("### Paste (select-all)");
   console.log("---");

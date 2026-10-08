@@ -5,7 +5,7 @@
   "name": "ARLEDSCREEN GEO owner-gate status",
   "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
   "url": "https://arledscreen.com/geo-status.json",
-  "dateModified": "2026-10-08T11:15:14.946Z",
+  "dateModified": "2026-10-08T11:22:14.089Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
@@ -81,7 +81,11 @@
           "acked": 0,
           "total": 11
         },
-        "openAlt": "https://businessconnect.apple.com/"
+        "openAlt": "https://businessconnect.apple.com/",
+        "openAlts": [
+          "https://businessconnect.apple.com/",
+          "https://business.google.com/"
+        ]
       },
       "urls": {
         "txt": "https://arledscreen.com/point-c.txt",
@@ -137,7 +141,7 @@
         "position": 1,
         "name": "Open destination",
         "url": "https://www.bingplaces.com/",
-        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/"
+        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/"
       },
       {
         "@type": "HowToStep",

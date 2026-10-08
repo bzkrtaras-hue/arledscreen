@@ -22,7 +22,11 @@
       "acked": 0,
       "total": 11
     },
-    "openAlt": "https://businessconnect.apple.com/"
+    "openAlt": "https://businessconnect.apple.com/",
+    "openAlts": [
+      "https://businessconnect.apple.com/",
+      "https://business.google.com/"
+    ]
   },
   "sameAs": [
     "https://arledscreen.com/point-c.json",
@@ -81,7 +85,7 @@
         "position": 1,
         "name": "Open destination",
         "url": "https://www.bingplaces.com/",
-        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/"
+        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/"
       },
       {
         "@type": "HowToStep",
