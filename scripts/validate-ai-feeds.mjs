@@ -4544,6 +4544,37 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     process.exit(1);
   }
   console.log("✅ tur1a:next platform open URLs (chatgpt/gemini/perplexity/google_aio)");
+
+  const pointCPacks = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
+  for (const must of [
+    "POINT_C_OPEN_URLS",
+    "pointCOpenUrl",
+    "https://business.google.com/",
+    "https://www.bingplaces.com/",
+    "https://businessconnect.apple.com/",
+    "https://studio.youtube.com/",
+    "https://business.yandex.com/",
+    "https://www.instagram.com/arledscreen/",
+    "https://www.facebook.com/arledscreenn",
+    "https://www.linkedin.com/company/arleds/",
+  ]) {
+    if (!pointCPacks.includes(must)) {
+      console.error(`❌ scripts/print-point-c-packs.mjs must define Point C open URL ${must}`);
+      process.exit(1);
+    }
+  }
+  if (!pointCPacks.includes("Open:") || !pointCPacks.includes("POINT_C_PASTE_WHERE")) {
+    console.error("❌ scripts/print-point-c-packs.mjs must print Where:/Open: via POINT_C_OPEN_URLS");
+    process.exit(1);
+  }
+  const pointCLive = fs.existsSync(path.join(outDir, "point-c.txt"))
+    ? fs.readFileSync(path.join(outDir, "point-c.txt"), "utf8")
+    : "";
+  if (pointCLive && (!pointCLive.includes("Open: https://business.google.com/") || !pointCLive.includes("Where:"))) {
+    console.error("❌ out/point-c.txt must include Where:/Open: paste destinations per pack");
+    process.exit(1);
+  }
+  console.log("✅ point-c:next Open: URLs (GBP/IG/FB/LinkedIn/Bing/Apple/YouTube/Yandex + DNSEnable draft)");
 }
 
 {

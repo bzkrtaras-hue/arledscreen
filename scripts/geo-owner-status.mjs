@@ -72,11 +72,15 @@ try {
     const out = String(next.stdout || "").trim();
     if (out) {
       const stepLine = out.split("\n").find((r) => r.startsWith("Step:"));
+      const whereLine = out.split("\n").find((r) => r.startsWith("Where:"));
+      const openLine = out.split("\n").find((r) => r.startsWith("Open:"));
       console.log("  Point C next paste:");
       if (GEO_FULL) {
         for (const row of out.split("\n")) console.log(`  ${row}`);
       } else {
         console.log(`  ${stepLine || "see npm run geo:next"} · npm run geo:next (full dump: GEO_FULL=1 npm run geo:status)`);
+        if (whereLine) console.log(`  ${whereLine}`);
+        if (openLine) console.log(`  ${openLine}`);
       }
     }
   }

@@ -78,10 +78,33 @@ export const POINT_C_PASTE_WHERE = {
   linkedinAbout: "https://www.linkedin.com/company/arleds → About",
   bingPlaces: "Bing Places for Business → Business description",
   appleBusinessConnect: "Apple Business Connect → Location → Description",
-  youtubeAbout: "YouTube channel → Customize → Basic info / Description",
+  youtubeAbout: "YouTube Studio → Customize channel → Basic info / Description",
   yandexBusiness: "Yandex Business → Organization → Description",
   [HOSTINGER_STEP]: "Isimtescil/DNSEnable Domain Redirect first (live NS) · Hostinger only if verify mode=hostinger_*",
 };
+
+/**
+ * Owner open URLs for point-c:next / geo:next — remove “which tab?” friction.
+ * One primary destination per pack (no invented citations).
+ */
+export const POINT_C_OPEN_URLS = {
+  directoryLong: "https://www.bingplaces.com/",
+  gbpDescription: "https://business.google.com/",
+  instagramName: "https://www.instagram.com/arledscreen/",
+  instagramBio: "https://www.instagram.com/arledscreen/",
+  facebookAbout: "https://www.facebook.com/arledscreenn",
+  linkedinAbout: "https://www.linkedin.com/company/arleds/",
+  bingPlaces: "https://www.bingplaces.com/",
+  appleBusinessConnect: "https://businessconnect.apple.com/",
+  youtubeAbout: "https://studio.youtube.com/",
+  yandexBusiness: "https://business.yandex.com/",
+  // Primary live path = DNSEnable Gmail draft (Send); Hostinger draft is secondary in clipboard.
+  [HOSTINGER_STEP]: DNSENABLE_GMAIL_DRAFT_URL,
+};
+
+export function pointCOpenUrl(packKey) {
+  return POINT_C_OPEN_URLS[packKey] || "";
+}
 
 /** Live DNSEnable / Isimtescil Domain Redirect clipboard (primary when NS is dnsenable.com). */
 export function buildDnsEnableRedirectClipboard() {
@@ -257,6 +280,10 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     if (only && key !== only) continue;
     const text = packs[key];
     lines.push(`### ${label} (${key})`);
+    const where = POINT_C_PASTE_WHERE[key];
+    const open = pointCOpenUrl(key);
+    if (where) lines.push(`Where: ${where}`);
+    if (open) lines.push(`Open: ${open}`);
     lines.push(text == null || text === "" ? "(missing)" : String(text));
     lines.push("");
   }
@@ -368,7 +395,9 @@ function printNext(profiles, { en = false } = {}) {
   console.log(`Progress: ${step.done}/${step.total} acked → paste this block`);
   console.log("Locale:", en ? "EN" : "TR");
   const where = POINT_C_PASTE_WHERE[step.key];
+  const open = pointCOpenUrl(step.key);
   if (where) console.log(`Where: ${where}`);
+  if (open) console.log(`Open: ${open}`);
   console.log("");
   console.log("### Paste (select-all)");
   console.log("---");
