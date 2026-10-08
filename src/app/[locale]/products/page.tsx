@@ -203,7 +203,7 @@ export default async function ProductsPage({ params }: PageProps) {
                       LED ekran fiyatları
                     </Link>
                     {" · "}
-                    <Link href="/fiyat-listesi" className="font-semibold text-cyan hover:underline">
+                    <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                       fiyat listesi
                     </Link>
                     . Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir.

@@ -148,7 +148,7 @@ export const ENTITY_FAQ_BRAND_DISAMBIG = ENTITY_FAQS.find((f) =>
   f.question.includes("NationStar"),
 )!;
 
-/** Human-facing Point C paste packs (no catalog.json / quote-only / extrasUsd jargon). */
+/** Human-facing profile paste packs (no catalog.json / quote-only / extrasUsd jargon). */
 export const ENTITY_PROFILE_PACKS = {
   gbpDescription: ENTITY_CITE_MEDIUM,
   linkedinAbout: `${ENTITY_CITE_MEDIUM}
@@ -509,13 +509,6 @@ export function buildEntityDocument(): EntityDocument {
         "@id": `${SITE_URL}/geo-baseline.json`,
         name: "ARLEDSCREEN GEO technical baseline",
         url: `${SITE_URL}/geo-baseline.json`,
-      },
-      {
-        "@type": "DataDownload",
-        "@id": `${SITE_URL}/point-c.txt`,
-        name: "ARLEDSCREEN Point C paste packs",
-        url: `${SITE_URL}/point-c.txt`,
-        encodingFormat: "text/plain",
       },
     ],
     citeOneLiner: ENTITY_CITE_ONE_LINER,

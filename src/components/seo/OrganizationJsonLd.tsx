@@ -81,6 +81,7 @@ export function OrganizationJsonLd() {
         url: SITE_URL,
         logo,
         image: logo,
+        slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
         description: ENTITY_CITE_MEDIUM,
         disambiguatingDescription: ENTITY_DISAMBIGUATING_DESCRIPTION,
         email: CONTACT_EMAIL,

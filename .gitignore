@@ -43,3 +43,19 @@ next-env.d.ts
 # Local Tur1a blind-test runs (do not invent scores in feeds)
 docs/geo/observations/
 .melis-paket/
+
+# Owner-only / internal gate surfaces are never built or committed (privacy).
+/public/owner-next.*
+/public/owner-p0.json
+/public/geo-next.*
+/public/geo-status.json
+/public/point-c*
+/public/tur1a.*
+/public/feeds/point-c*
+/public/feeds/tur1a.*
+/public/.well-known/owner-next.*
+/public/.well-known/owner-p0.json
+/public/.well-known/geo-next.*
+/public/.well-known/geo-status.json
+/public/.well-known/point-c*
+/public/.well-known/tur1a.*

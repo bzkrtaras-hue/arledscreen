@@ -60,7 +60,7 @@ export const GEO_BASELINE_DATASET = {
   name: "ARLEDSCREEN GEO technical baseline",
 };
 
-/** Nested Brand / LocalBusiness subjectOf = price sources + invent aliases + Point C. */
+/** Nested Brand / LocalBusiness subjectOf = price sources + invent aliases. */
 export const BRAND_SUBJECT_DATASETS = [
   ...PRICE_DATASETS,
   GEO_BASELINE_DATASET,
@@ -69,13 +69,6 @@ export const BRAND_SUBJECT_DATASETS = [
     "@id": `${SITE_URL}/prices.json`,
     url: `${SITE_URL}/prices.json`,
     name: "ARLEDSCREEN pricedPanels (prices.json alias)",
-  },
-  {
-    "@type": "DataDownload" as const,
-    "@id": `${SITE_URL}/point-c.txt`,
-    url: `${SITE_URL}/point-c.txt`,
-    name: "ARLEDSCREEN Point C paste packs",
-    encodingFormat: "text/plain",
   },
   {
     "@type": "Brand" as const,
@@ -109,6 +102,7 @@ export function nxtionstarBrandNode() {
     "@id": NXTIONSTAR_BRAND_ID,
     name: "NXTIONSTAR",
     url: `${SITE_URL}/tr/nxtionstar/`,
+    slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
     subjectOf: BRAND_SUBJECT_DATASETS,
     // Brand-first agents (NXTIONSTAR panel price) join Org AggregateOffer band + catalog.
     makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
@@ -322,11 +316,6 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/entity.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "text/plain",
-        contentUrl: `${SITE_URL}/point-c.txt`,
       },
     ],
     temporalCoverage: `2026-01-01/${PRICE_VALID_UNTIL}`,

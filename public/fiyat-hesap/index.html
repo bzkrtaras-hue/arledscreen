@@ -1886,9 +1886,14 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
   /* ---- Melis: kısa, kaynaklı yanıtlar. En çok iki kısa cümle, ardından tek soru ya da çipler.
      Yalnızca sayfada yazan bilgiler; olmayan bilgi için WhatsApp. mem, fiyat ve öneri mantığı değişmez. ---- */
   const TEAM_PHONE = "+90 530 507 88 34";
+  const TEAM_EMAIL = "arled@arledscreen.com";
+  
   const TEAM_CHIP = { label: L("WhatsApp'tan ekibe bağlan", "Contact our team on WhatsApp"), action: "team" };
   const WA_OFFER_CHIP = { label: L("WhatsApp'tan teklif iste", "Request quote on WhatsApp"), action: "wa" };
-  const WHO_REPLY = L("Ben Melis; isterseniz ekibimize WhatsApp'tan da ulaşabilirsiniz: ", "I'm Melis; you can also reach our team on WhatsApp: ") + TEAM_PHONE + ".";
+  const WHO_REPLY = L(
+    "Ben Melis, ARLEDSCREEN'den. Ekibimize WhatsApp'tan yazabilirsiniz: ",
+    "I'm Melis, from ARLEDSCREEN. You can write our team on WhatsApp: "
+  ) + TEAM_PHONE + L(". E-posta: ", ". Email: ") + TEAM_EMAIL + ".";
   let pendingNote = "";
   let ctxPlace = "";   /* müşterinin kendi sözü: "kafe vitrini", "otel lobisi", "bina cephesi", "düğün" */
   function capFirst(w) { return w ? w.charAt(0).toLocaleUpperCase("tr-TR") + w.slice(1) : w; }
@@ -1948,7 +1953,8 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     ["panel", /(^| )(panel|modul|birim) ?(fiyat|basi|ucret)/],
     ["breakdown", /(^| )(dahil|neler var|dokum|kalem|iscilik|kontrol kart|surucu|yazilim)/],
     ["price", /(^| )(fiyat|ne kadar|kac para|ucret|tutar|maliyet)/],
-    ["contact", /(^| )(iletisim|telefon|numara|whatsapp|ulas|arayabilir|yetkili|biriyle|ekibiniz|ekiple)/],
+    ["callback", /(^| )(randevu|beni ara|sizi aray|arayacak|arayacag|arama saati|ne zaman ara)/],
+    ["contact", /(^| )(iletisim|telefon|numara|whatsapp|ulas|arayabilir|yetkili|biriyle|ekibiniz|ekiple|e-posta|eposta|mail)/],
     ["brand", /(^| )(nxtionstar|nationstar|marka)/],
     ["models", /(^| )(hangi model|modeller|modelleriniz|urunler|urunleriniz|cesit|secenekler)/],
     ["pitch", /(^| )(piksel|pitch|p degeri|p ne demek)/],
@@ -1978,8 +1984,15 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
       case "price":
         if (q) return { text: addr(lastOffer.name + " için tahmini fiyat " + money(q.totalCost) + ".") + " KDV ve nakliye hariç.", wa: false };
         if (lastOffer && !lastOffer.price) return { text: "Bu ürünün liste fiyatı yok. Tutar keşiften sonra netleşir.", wa: true };
-        return { text: "Fiyat ürüne ve ölçüye göre değişir.", wa: false };
-      case "contact": return { text: "Ekibimize WhatsApp'tan ya da telefonla ulaşabilirsiniz: " + TEAM_PHONE + ".", wa: true };
+        return { text: L("Ölçüyü yazın, tahmini tutarı burada hesaplayıp söyleyeyim.", "Tell me the size and I'll calculate the estimate here."), wa: false };
+      case "callback": return { text: L(
+        "Arama saati veremem. Ekibimize WhatsApp'tan yazarsanız size dönüş yapılır: " + TEAM_PHONE + ". E-posta: " + TEAM_EMAIL + ".",
+        "I can't book a call. Write to our team on WhatsApp and they'll get back to you: " + TEAM_PHONE + ". Email: " + TEAM_EMAIL + "."
+      ), wa: true };
+      case "contact": return { text: L(
+        "WhatsApp: " + TEAM_PHONE + ". E-posta: " + TEAM_EMAIL + ". Arama randevusu buradan verilmez.",
+        "WhatsApp: " + TEAM_PHONE + ". Email: " + TEAM_EMAIL + ". I can't book a call from here."
+      ), wa: true };
       case "brand": return { text: "Modüllerimiz NXTIONSTAR markalı. NXTIONSTAR, ARLEDSCREEN'in kendi markası.", wa: false };
       case "models": {
         try { return { text: "İç mekân: " + shortNames(indoorModules) + ". Dış mekân: " + shortNames(outdoorModules) + ".", wa: false }; }
@@ -1991,7 +2004,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     }
     return null;
   }
-  const NOTE_TOPICS = ["kdv", "nakliye", "binding", "kesif", "garanti", "taksit", "montaj", "teslimat", "indirim", "contact", "brand", "pitch"];
+  const NOTE_TOPICS = ["kdv", "nakliye", "binding", "kesif", "garanti", "taksit", "montaj", "teslimat", "indirim", "callback", "contact", "brand", "pitch"];
   /* true: yanıt burada verildi (öneri/fiyat akışı çalışmaz). false: normal akış (gerekirse sonuna kısa not eklenir). */
   function smallTalk(text) {
     pendingNote = "";

@@ -259,7 +259,7 @@ const en: Dictionary = {
     quote: "Request Quote",
   },
   brand: {
-    slogan: "NXTIONSTAR — ARLEDSCREEN's own LED display brand.",
+    slogan: "NXTIONSTAR — the global standard in visual power.",
   },
   hero: {
     badge: "NXTIONSTAR — our own LED brand · Istanbul / Gaziosmanpaşa",
@@ -561,7 +561,7 @@ const tr: Dictionary = {
     quote: "Teklif al",
   },
   brand: {
-    slogan: "NXTIONSTAR — ARLEDSCREEN'in kendi LED ekran markası",
+    slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
   },
   hero: {
     badge: "NXTIONSTAR · ARLEDSCREEN’in kendi markası",
@@ -864,7 +864,7 @@ const ar: Dictionary = {
     quote: "طلب عرض سعر",
   },
   brand: {
-    slogan: "NXTIONSTAR — العلامة التجارية الخاصة بـ ARLEDSCREEN لشاشات LED.",
+    slogan: "NXTIONSTAR — المعيار العالمي للقوة البصرية.",
   },
   sections: {
     ...en.sections,
@@ -951,7 +951,7 @@ const ru: Dictionary = {
     quote: "Запросить КП",
   },
   brand: {
-    slogan: "NXTIONSTAR — собственный LED-бренд ARLEDSCREEN.",
+    slogan: "NXTIONSTAR — мировой стандарт визуальной силы.",
   },
   sections: {
     ...en.sections,

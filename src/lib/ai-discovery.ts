@@ -85,20 +85,6 @@ const EN_PRICING_JSON_URL = `${SITE_URL}/en/pricing.json`;
 const TR_CATALOG_JSON_URL = `${SITE_URL}/tr/catalog.json`;
 const EN_ENTITY_JSON_URL = `${SITE_URL}/en/entity.json`;
 const TR_ENTITY_JSON_URL = `${SITE_URL}/tr/entity.json`;
-const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
-const POINT_C_EN_TXT_URL = `${SITE_URL}/point-c-en.txt`;
-const POINT_C_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.txt`;
-const POINT_C_EN_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c-en.txt`;
-const POINT_C_JSON_URL = `${SITE_URL}/point-c.json`;
-const POINT_C_EN_JSON_URL = `${SITE_URL}/point-c-en.json`;
-const POINT_C_JSON_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.json`;
-const POINT_C_CSV_URL = `${SITE_URL}/feeds/point-c.csv`;
-const GEO_STATUS_JSON_URL = `${SITE_URL}/geo-status.json`;
-const GEO_NEXT_TXT_URL = `${SITE_URL}/geo-next.txt`;
-const OWNER_NEXT_TXT_URL = `${SITE_URL}/owner-next.txt`;
-const TUR1A_JSON_URL = `${SITE_URL}/tur1a.json`;
-const TUR1A_CSV_URL = `${SITE_URL}/feeds/tur1a.csv`;
-const POINT_C_PROGRESS_JSON_URL = `${SITE_URL}/point-c-progress.json`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_WELLKNOWN_URL = `${SITE_URL}/.well-known/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
@@ -145,7 +131,7 @@ const inventAliasLdJson = [
   { url: PRODUCT_WELLKNOWN_URL, title: "Product well-known catalog invent alias" },
   { url: CATALOG_WELLKNOWN_URL, title: "Catalog well-known invent alias" },
   { url: GEO_BASELINE_WELLKNOWN_URL, title: "GEO baseline well-known invent alias" },
-  { url: ENTITY_PROFILES_WELLKNOWN_URL, title: "Point C entity-profiles well-known invent alias" },
+  { url: ENTITY_PROFILES_WELLKNOWN_URL, title: "Entity profiles well-known invent alias" },
   { url: AI_SHOPPING_WELLKNOWN_URL, title: "AI Shopping well-known invent alias" },
   { url: BRAND_EXTLESS_URL, title: "Brand extensionless invent alias" },
   { url: MODULES_EXTLESS_URL, title: "Modules extensionless invent alias" },
@@ -164,7 +150,7 @@ const inventAliasLdJson = [
   { url: FAQ_EXTLESS_URL, title: "FAQ extensionless invent alias" },
   { url: FAQS_EXTLESS_URL, title: "FAQs extensionless invent alias" },
   { url: AI_SHOPPING_EXTLESS_URL, title: "AI Shopping extensionless invent alias" },
-  { url: ENTITY_PROFILES_EXTLESS_URL, title: "Point C entity-profiles extensionless invent alias" },
+  { url: ENTITY_PROFILES_EXTLESS_URL, title: "Entity profiles extensionless invent alias" },
   { url: API_V1_PRICES_URL, title: "API v1 prices invent alias" },
   { url: API_PANELS_JSON_URL, title: "API panels.json invent alias" },
   { url: API_MERCHANT_JSON_URL, title: "API merchant.json invent alias" },
@@ -217,16 +203,12 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: MPN_JSON_URL, title: "MPN pricedPanels (alias)" },
         ...inventAliasLdJson,
         { url: ORGANIZATION_JSON_URL, title: "Organization (alias)" },
-        { url: ENTITY_PROFILES_URL, title: "Point C entity profiles" },
+        { url: ENTITY_PROFILES_URL, title: "Entity profiles" },
         { url: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
         { url: ARD_URL, title: "Agentic Resource Discovery" },
         { url: AGENTS_JSON_URL, title: "Agent Discovery Index" },
         { url: AGENTS_JSON_ROOT_URL, title: "Agent Discovery Index (root invent alias)" },
         { url: AGENT_WELLKNOWN_URL, title: "Agent Discovery Index (agent invent alias)" },
-        { url: POINT_C_JSON_URL, title: "Point C paste packs JSON (potentialAction HowTo)" },
-        { url: GEO_STATUS_JSON_URL, title: "GEO owner-gate status (potentialAction HowTo)" },
-        { url: TUR1A_JSON_URL, title: "Tur1a blind coverage (potentialAction HowTo)" },
-        { url: POINT_C_PROGRESS_JSON_URL, title: "Point C paste progress (potentialAction HowTo)" },
       ],
       "application/rss+xml": [{ url: PRICES_RSS_URL, title: "Panel Price Updates RSS" }],
       "text/tab-separated-values": [
@@ -243,16 +225,6 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: HUMANS_TXT_URL, title: "Humans.txt" },
         { url: HUMANS_WELLKNOWN_URL, title: "humans.txt well-known invent alias" },
         { url: SECURITY_TXT_URL, title: "security.txt (RFC 9116)" },
-        { url: POINT_C_TXT_URL, title: "Point C paste packs" },
-        { url: POINT_C_EN_TXT_URL, title: "Point C paste packs (EN)" },
-        { url: POINT_C_WELLKNOWN_URL, title: "Point C paste packs (well-known invent alias)" },
-        { url: POINT_C_EN_WELLKNOWN_URL, title: "Point C paste packs EN (well-known invent alias)" },
-        { url: GEO_NEXT_TXT_URL, title: "GEO next clipboard (directoryLong Bing/Apple)" },
-        { url: OWNER_NEXT_TXT_URL, title: "GEO next clipboard invent alias (owner-next)" },
-      ],
-      "text/csv": [
-        { url: POINT_C_CSV_URL, title: "Point C spreadsheet CSV" },
-        { url: TUR1A_CSV_URL, title: "Tur1a blind coverage CSV" },
       ],
       "text/markdown": [{ url: AGENTS_MD_URL, title: "AGENTS.md" }],
     },
@@ -283,7 +255,7 @@ export const aiDiscoveryLinks = [
     title: e.title,
   })),
   { rel: "alternate", type: "application/ld+json", href: ORGANIZATION_JSON_URL, title: "Organization (alias)" },
-  { rel: "alternate", type: "application/ld+json", href: ENTITY_PROFILES_URL, title: "Point C entity profiles" },
+  { rel: "alternate", type: "application/ld+json", href: ENTITY_PROFILES_URL, title: "Entity profiles" },
   { rel: "alternate", type: "application/ld+json", href: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
   { rel: "alternate", type: "application/ld+json", href: ARD_URL, title: "Agentic Resource Discovery" },
   { rel: "alternate", type: "application/ld+json", href: AGENTS_JSON_URL, title: "Agent Discovery Index" },
@@ -311,70 +283,6 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "text/plain", href: HUMANS_TXT_URL, title: "Humans.txt" },
   { rel: "alternate", type: "text/plain", href: HUMANS_WELLKNOWN_URL, title: "humans.txt well-known invent alias" },
   { rel: "alternate", type: "text/plain", href: SECURITY_TXT_URL, title: "security.txt (RFC 9116)" },
-  { rel: "alternate", type: "text/plain", href: POINT_C_TXT_URL, title: "Point C paste packs" },
-  { rel: "alternate", type: "text/plain", href: POINT_C_EN_TXT_URL, title: "Point C paste packs (EN)" },
-  { rel: "alternate", type: "text/plain", href: POINT_C_WELLKNOWN_URL, title: "Point C paste packs (well-known invent alias)" },
-  { rel: "alternate", type: "text/plain", href: POINT_C_EN_WELLKNOWN_URL, title: "Point C paste packs EN (well-known invent alias)" },
-  {
-    rel: "alternate",
-    type: "application/ld+json",
-    href: POINT_C_JSON_URL,
-    title: "Point C paste packs JSON (potentialAction HowTo)",
-  },
-  {
-    rel: "alternate",
-    type: "application/ld+json",
-    href: POINT_C_EN_JSON_URL,
-    title: "Point C paste packs JSON (EN)",
-  },
-  {
-    rel: "alternate",
-    type: "application/ld+json",
-    href: POINT_C_JSON_WELLKNOWN_URL,
-    title: "Point C JSON well-known invent alias",
-  },
-  {
-    rel: "alternate",
-    type: "text/csv",
-    href: POINT_C_CSV_URL,
-    title: "Point C spreadsheet CSV",
-  },
-  {
-    rel: "alternate",
-    type: "application/ld+json",
-    href: GEO_STATUS_JSON_URL,
-    title: "GEO owner-gate status (potentialAction HowTo)",
-  },
-  {
-    rel: "alternate",
-    type: "text/plain",
-    href: GEO_NEXT_TXT_URL,
-    title: "GEO next clipboard (HowTo footer)",
-  },
-  {
-    rel: "alternate",
-    type: "application/ld+json",
-    href: TUR1A_JSON_URL,
-    title: "Tur1a blind coverage (potentialAction HowTo)",
-  },
-  {
-    rel: "alternate",
-    type: "text/plain",
-    href: OWNER_NEXT_TXT_URL,
-    title: "GEO next clipboard invent alias (owner-next)",
-  },
-  {
-    rel: "alternate",
-    type: "text/csv",
-    href: TUR1A_CSV_URL,
-    title: "Tur1a blind coverage CSV",
-  },
-  {
-    rel: "alternate",
-    type: "application/ld+json",
-    href: POINT_C_PROGRESS_JSON_URL,
-    title: "Point C paste progress (potentialAction HowTo)",
-  },
   { rel: "alternate", type: "text/markdown", href: AGENTS_MD_URL, title: "AGENTS.md" },
   // RFC 8288: machine agents that follow Link / describedby land on price + entity + brand.
   { rel: "describedby", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping pricedPanels" },

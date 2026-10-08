@@ -6,7 +6,7 @@
   ],
   "@id": "https://arledscreen.com/catalog.json",
   "name": "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
-  "description": "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json); teknik GEO baseline → geo-baseline.json. WebSite: https://arledscreen.com/#website. Owner: live: https://arledscreen.com/owner-next.html?start=1 · https://arledscreen.com/owner-next.html · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · point-c.txt.",
+  "description": "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json); teknik GEO baseline → geo-baseline.json. WebSite: https://arledscreen.com/#website.",
   "publisher": {
     "@type": "Organization",
     "@id": "https://arledscreen.com/#organization",
@@ -67,7 +67,6 @@
     "https://arledscreen.com/.well-known/entity.json",
     "https://arledscreen.com/geo-baseline.json",
     "https://arledscreen.com/entity-profiles.json",
-    "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/#website",
     "https://arledscreen.com/modules.json",
     "https://arledscreen.com/sku.json",
@@ -105,26 +104,6 @@
     "https://arledscreen.com/.well-known/geo-baseline.json",
     "https://arledscreen.com/.well-known/entity-profiles.json",
     "https://arledscreen.com/.well-known/ai-shopping.json",
-    "https://arledscreen.com/point-c.json",
-    "https://arledscreen.com/point-c-en.json",
-    "https://arledscreen.com/.well-known/point-c.json",
-    "https://arledscreen.com/.well-known/point-c-en.json",
-    "https://arledscreen.com/feeds/point-c.csv",
-    "https://arledscreen.com/feeds/point-c-en.csv",
-    "https://arledscreen.com/point-c.csv",
-    "https://arledscreen.com/point-c-en.csv",
-    "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/.well-known/geo-status.json",
-    "https://arledscreen.com/owner-p0.json",
-    "https://arledscreen.com/geo-next.txt",
-    "https://arledscreen.com/.well-known/geo-next.txt",
-    "https://arledscreen.com/owner-next.txt",
-    "https://arledscreen.com/tur1a.json",
-    "https://arledscreen.com/.well-known/tur1a.json",
-    "https://arledscreen.com/feeds/tur1a.csv",
-    "https://arledscreen.com/tur1a.csv",
-    "https://arledscreen.com/point-c-progress.json",
-    "https://arledscreen.com/.well-known/point-c-progress.json",
     "https://arledscreen.com/.well-known/AGENTS.md",
     "https://arledscreen.com/offer",
     "https://arledscreen.com/offers",
@@ -231,43 +210,9 @@
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/.well-known/security.txt",
     "https://arledscreen.com/security.txt",
-    "https://arledscreen.com/.well-known/security",
-    "https://arledscreen.com/point-c-en.txt",
-    "https://arledscreen.com/.well-known/point-c.txt"
+    "https://arledscreen.com/.well-known/security"
   ],
-  "subjectOf": [
-    {
-      "@type": "Dataset",
-      "@id": "https://arledscreen.com/point-c.json",
-      "url": "https://arledscreen.com/point-c.json",
-      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
-    },
-    {
-      "@type": "Dataset",
-      "@id": "https://arledscreen.com/geo-status.json",
-      "url": "https://arledscreen.com/geo-status.json",
-      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
-    },
-    {
-      "@type": "DataDownload",
-      "@id": "https://arledscreen.com/geo-next.txt",
-      "url": "https://arledscreen.com/geo-next.txt",
-      "name": "ARLEDSCREEN GEO priority clipboard",
-      "encodingFormat": "text/plain"
-    },
-    {
-      "@type": "Dataset",
-      "@id": "https://arledscreen.com/tur1a.json",
-      "url": "https://arledscreen.com/tur1a.json",
-      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
-    },
-    {
-      "@type": "Dataset",
-      "@id": "https://arledscreen.com/point-c-progress.json",
-      "url": "https://arledscreen.com/point-c-progress.json",
-      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
-    }
-  ],
+  "subjectOf": [],
   "isBasedOn": [
     "https://arledscreen.com/ai-shopping.json",
     "https://arledscreen.com/prices.json",
@@ -279,7 +224,6 @@
     "https://arledscreen.com/geo-baseline.json",
     "https://arledscreen.com/feeds/prices.rss",
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
-    "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/entity-profiles.json",
     "https://arledscreen.com/#website",
     "https://arledscreen.com/modules.json",
@@ -318,26 +262,6 @@
     "https://arledscreen.com/.well-known/geo-baseline.json",
     "https://arledscreen.com/.well-known/entity-profiles.json",
     "https://arledscreen.com/.well-known/ai-shopping.json",
-    "https://arledscreen.com/point-c.json",
-    "https://arledscreen.com/point-c-en.json",
-    "https://arledscreen.com/.well-known/point-c.json",
-    "https://arledscreen.com/.well-known/point-c-en.json",
-    "https://arledscreen.com/feeds/point-c.csv",
-    "https://arledscreen.com/feeds/point-c-en.csv",
-    "https://arledscreen.com/point-c.csv",
-    "https://arledscreen.com/point-c-en.csv",
-    "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/.well-known/geo-status.json",
-    "https://arledscreen.com/owner-p0.json",
-    "https://arledscreen.com/geo-next.txt",
-    "https://arledscreen.com/.well-known/geo-next.txt",
-    "https://arledscreen.com/owner-next.txt",
-    "https://arledscreen.com/tur1a.json",
-    "https://arledscreen.com/.well-known/tur1a.json",
-    "https://arledscreen.com/feeds/tur1a.csv",
-    "https://arledscreen.com/tur1a.csv",
-    "https://arledscreen.com/point-c-progress.json",
-    "https://arledscreen.com/.well-known/point-c-progress.json",
     "https://arledscreen.com/.well-known/AGENTS.md",
     "https://arledscreen.com/offer",
     "https://arledscreen.com/offers",
@@ -444,9 +368,7 @@
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/.well-known/security.txt",
     "https://arledscreen.com/security.txt",
-    "https://arledscreen.com/.well-known/security",
-    "https://arledscreen.com/point-c-en.txt",
-    "https://arledscreen.com/.well-known/point-c.txt"
+    "https://arledscreen.com/.well-known/security"
   ],
   "distribution": [
     {
@@ -508,45 +430,8 @@
     },
     {
       "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/point-c.txt",
-      "name": "ARLEDSCREEN Point C paste packs"
-    },
-    {
-      "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/entity-profiles.json",
-      "name": "ARLEDSCREEN Point C entity profiles"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/point-c.json",
-      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/geo-status.json",
-      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/geo-next.txt",
-      "name": "ARLEDSCREEN GEO priority clipboard"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/tur1a.json",
-      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/point-c-progress.json",
-      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
+      "contentUrl": "https://arledscreen.com/entity-profiles.json"
     },
     {
       "@type": "DataDownload",
@@ -749,8 +634,7 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/entity-profiles.json",
-      "name": "Point C entity-profiles well-known invent alias"
+      "contentUrl": "https://arledscreen.com/.well-known/entity-profiles.json"
     },
     {
       "@type": "DataDownload",
@@ -893,8 +777,7 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/entity-profiles",
-      "name": "Point C entity-profiles extensionless invent alias"
+      "contentUrl": "https://arledscreen.com/entity-profiles"
     },
     {
       "@type": "DataDownload",
@@ -1396,18 +1279,6 @@
     },
     {
       "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/point-c-en.txt",
-      "name": "Point C paste packs (EN)"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/.well-known/point-c.txt",
-      "name": "Point C paste packs (well-known invent alias)"
-    },
-    {
-      "@type": "DataDownload",
       "@id": "https://arledscreen.com/#website",
       "encodingFormat": "text/html",
       "contentUrl": "https://arledscreen.com",
@@ -1455,17 +1326,9 @@
       ]
     },
     {
-      "@type": "DataDownload",
-      "@id": "https://arledscreen.com/point-c.txt",
-      "url": "https://arledscreen.com/point-c.txt",
-      "name": "ARLEDSCREEN Point C paste packs",
-      "encodingFormat": "text/plain"
-    },
-    {
       "@type": "Dataset",
       "@id": "https://arledscreen.com/entity-profiles.json",
-      "url": "https://arledscreen.com/entity-profiles.json",
-      "name": "ARLEDSCREEN Point C entity profiles"
+      "url": "https://arledscreen.com/entity-profiles.json"
     },
     {
       "@type": "WebSite",
