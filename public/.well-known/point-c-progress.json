@@ -178,6 +178,7 @@
     "where": "Directories / Bing Places / Apple Business Connect → About / description",
     "open": "https://www.bingplaces.com/",
     "html": "https://arledscreen.com/owner-next.html?pack=directoryLong&copy=1",
+    "htmlAfter": "https://arledscreen.com/owner-next.html?pack=directoryLong&n=1",
     "text": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nE-posta: arled@arledscreen.com\nWeb: https://arledscreen.com/tr/\nNot: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com kullanın. LinkedIn /company/arleds sosyal slug’dır, web arleds.com değildir. NXTIONSTAR ≠ NationStar LED bileşen ≠ NEXTSTAR TV.",
     "ackCommand": "npm run point-c:ack -- --pack=directoryLong",
     "progress": {

@@ -5,7 +5,7 @@
   "name": "ARLEDSCREEN GEO owner-gate status",
   "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json · deep /owner-next.html?social=fb|ig|wa). Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
   "url": "https://arledscreen.com/geo-status.json",
-  "dateModified": "2026-10-08T21:37:56.061Z",
+  "dateModified": "2026-10-08T21:49:31.520Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
@@ -258,6 +258,7 @@
         "where": "Directories / Bing Places / Apple Business Connect → About / description",
         "open": "https://www.bingplaces.com/",
         "html": "https://arledscreen.com/owner-next.html?pack=directoryLong&copy=1",
+        "htmlAfter": "https://arledscreen.com/owner-next.html?pack=directoryLong&n=1",
         "text": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nE-posta: arled@arledscreen.com\nWeb: https://arledscreen.com/tr/\nNot: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com kullanın. LinkedIn /company/arleds sosyal slug’dır, web arleds.com değildir. NXTIONSTAR ≠ NationStar LED bileşen ≠ NEXTSTAR TV.",
         "ackCommand": "npm run point-c:ack -- --pack=directoryLong",
         "progress": {
