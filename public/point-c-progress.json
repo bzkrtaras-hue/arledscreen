@@ -3,11 +3,21 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/point-c-progress.json",
   "name": "ARLEDSCREEN Point C paste progress",
-  "description": "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. Browser session start: https://arledscreen.com/owner-next.html?start=1 · Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
+  "description": "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json). Source for geo:next / point-c:ack. Browser session start: https://arledscreen.com/owner-next.html?start=1 · Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
   "url": "https://arledscreen.com/point-c-progress.json",
   "dateModified": "2026-10-07T20:09:43.307Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
+  },
+  "socialHandles": {
+    "facebook": "arledscreenn",
+    "instagram": "arledscreen",
+    "whatsapp": "arledscreen",
+    "facebookUrl": "https://www.facebook.com/arledscreenn",
+    "instagramUrl": "https://www.instagram.com/arledscreen",
+    "whatsappUrl": "https://wa.me/905305078834",
+    "socialJson": "https://arledscreen.com/social.json",
+    "line": "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json"
   },
   "acked": [],
   "total": 11,
@@ -184,6 +194,7 @@
     "https://arledscreen.com/owner-next.txt",
     "https://arledscreen.com/owner-next.html?start=1",
     "https://arledscreen.com/owner-next.html",
+    "https://arledscreen.com/social.json",
     "https://arledscreen.com/.well-known/point-c-progress.json",
     "https://arledscreen.com/tur1a.json",
     "https://arledscreen.com/point-c-progress.json"
@@ -217,6 +228,12 @@
       "encodingFormat": "text/html",
       "contentUrl": "https://arledscreen.com/owner-next.html",
       "name": "Owner next HTML Open/paste"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/social.json",
+      "name": "Owner-confirmed social handles"
     },
     {
       "@type": "DataDownload",
