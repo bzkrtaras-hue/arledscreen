@@ -605,6 +605,11 @@ try {
     ownerNextHtml.includes("wa-paste-share") &&
     ownerNextHtml.includes("WA paste") &&
     ownerNextHtml.includes('e.key === "m"') &&
+    ownerNextHtml.includes("mailtoPasteShareUrl") &&
+    ownerNextHtml.includes("doMailPasteShare") &&
+    ownerNextHtml.includes("mail-paste-share") &&
+    ownerNextHtml.includes("Mail paste") &&
+    ownerNextHtml.includes('e.key === "e"') &&
     ownerNextHtml.includes("packDeepLinkUrl(key)") &&
     ownerNextHtml.includes("Deep/WA paste") &&
     ownerNextHtml.includes("Open×") &&

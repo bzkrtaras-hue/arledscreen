@@ -629,6 +629,11 @@ else fail("ard.resources.pointC");
     html.includes("wa-paste-share") &&
     html.includes("WA paste") &&
     html.includes('e.key === "m"') &&
+    html.includes("mailtoPasteShareUrl") &&
+    html.includes("doMailPasteShare") &&
+    html.includes("mail-paste-share") &&
+    html.includes("Mail paste") &&
+    html.includes('e.key === "e"') &&
     html.includes("packDeepLinkUrl(key)") &&
     html.includes("Deep/WA paste") &&
     html.includes("Open×") &&

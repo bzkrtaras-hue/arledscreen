@@ -2688,6 +2688,11 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("wa-paste-share") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("WA paste") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "m"') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("mailtoPasteShareUrl") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doMailPasteShare") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("mail-paste-share") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mail paste") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "e"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packDeepLinkUrl(key)") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Deep/WA paste") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open×") ||

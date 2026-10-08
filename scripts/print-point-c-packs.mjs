@@ -859,6 +859,11 @@ function printNext(profiles, { en = false } = {}) {
   console.log(
     "CSV: npm run point-c:csv · Live CSV: https://arledscreen.com/feeds/point-c.csv · JSON: https://arledscreen.com/point-c.json · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt",
   );
+  const deep = ownerNextPackHtmlUrl(step.key);
+  console.log(`Deep: ${deep}`);
+  console.log(
+    "Keys: C=Copy+Open remaining · D=Copy pack link · M=WA paste · E=Mail paste · F/I/W=social · https://arledscreen.com/owner-next.html?start=1",
+  );
 }
 
 function writeHostingerEml() {

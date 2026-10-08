@@ -64,6 +64,8 @@ jobs:
           grep -q "social=fb" /tmp/geo-next.txt
           grep -q "social=ig" /tmp/geo-next.txt
           grep -q "social=fb&copy=1" /tmp/geo-next.txt
+          grep -q "^Deep:" /tmp/geo-next.txt
+          grep -q "E=Mail paste" /tmp/geo-next.txt
           npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
           test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
@@ -256,7 +258,16 @@ jobs:
           grep -q 'WA paste' out/owner-next.html
           grep -q 'e.key === "m"' out/owner-next.html
           grep -q 'WA paste' docs/offsite-entity-playbook.md
+          grep -q 'Mail paste' docs/offsite-entity-playbook.md
+          grep -q 'mailtoPasteShareUrl' out/owner-next.html
+          grep -q 'doMailPasteShare' out/owner-next.html
+          grep -q 'mail-paste-share' out/owner-next.html
+          grep -q 'Mail paste' out/owner-next.html
+          grep -q 'e.key === "e"' out/owner-next.html
           grep -q 'Open×' out/owner-next.html
+          grep -q '^Deep:' /tmp/geo-next.txt
+          grep -q 'E=Mail paste' /tmp/geo-next.txt
+          grep -q 'M=WA paste' /tmp/geo-next.txt
           grep -q 'activeOpens' out/owner-next.html
           grep -q 'socialFocus' out/owner-next.html
           grep -q 'social=fb&copy=1' /tmp/geo-next.txt || grep -q 'social=fb&amp;copy=1' /tmp/geo-next.txt
@@ -362,4 +373,5 @@ jobs:
           grep -q "@arledscreenn" /tmp/geo-status.txt
           grep -q "D=Copy pack link" /tmp/geo-status.txt
           grep -q "M=WA paste" /tmp/geo-status.txt
+          grep -q "E=Mail paste" /tmp/geo-status.txt
           echo "OK owner tooling"
