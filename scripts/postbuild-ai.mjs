@@ -2987,6 +2987,7 @@ function enrichEntityProfiles(doc) {
         encodingFormat: "text/tab-separated-values",
         contentUrl: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       },
+      ...ownerGateDistributionEntries(),
       ...inventAliasDistributionEntries(),
       websiteDistributionEntry(),
     ];

@@ -324,6 +324,11 @@ if (
     dist.includes("/prices.json") &&
     dist.includes("/catalog.json") &&
     dist.includes("/point-c.txt") &&
+    dist.includes("/point-c.json") &&
+    dist.includes("/geo-status.json") &&
+    dist.includes("/geo-next.txt") &&
+    dist.includes("/tur1a.json") &&
+    dist.includes("/point-c-progress.json") &&
     dist.includes("#website") &&
     dist.includes("/.well-known/modules.json") &&
     dist.includes("/.well-known/sku.json") &&
@@ -341,8 +346,8 @@ if (
     String(profiles?.mainEntityOfPage?.["@id"] || "").includes("#website") &&
     JSON.stringify(profiles?.isRelatedTo || []).includes("#website")
   ) {
-    ok("entity-profiles invent distribution + isBasedOn modules/sku/pricing + #website");
-  } else fail("entity-profiles invent distribution + isBasedOn modules/sku/pricing + #website");
+    ok("entity-profiles invent distribution + isBasedOn + owner-gate HowTo + #website");
+  } else fail("entity-profiles invent distribution + isBasedOn + owner-gate HowTo + #website");
 }
 
 const pointCEn = readText("point-c-en.txt");
