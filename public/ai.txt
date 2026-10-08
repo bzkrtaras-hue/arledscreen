@@ -25,7 +25,7 @@ prices-rss: https://arledscreen.com/feeds/prices.rss
 geo-baseline: https://arledscreen.com/geo-baseline.json
 ard: https://arledscreen.com/.well-known/ard.json
 entity-profiles: https://arledscreen.com/entity-profiles.json
-owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · https://arledscreen.com/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
+owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · live: https://arledscreen.com/geo-next.txt · status: https://arledscreen.com/geo-status.json · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · https://arledscreen.com/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 brand-json: https://arledscreen.com/brand.json
 brand-json-well-known: https://arledscreen.com/.well-known/brand.json
 brand-tr: https://arledscreen.com/tr/nxtionstar/
@@ -244,6 +244,19 @@ point-c-csv: https://arledscreen.com/feeds/point-c.csv
 point-c-en-csv: https://arledscreen.com/feeds/point-c-en.csv
 point-c-csv-root: https://arledscreen.com/point-c.csv
 point-c-en-csv-root: https://arledscreen.com/point-c-en.csv
+geo-status: https://arledscreen.com/geo-status.json
+geo-status-well-known: https://arledscreen.com/.well-known/geo-status.json
+owner-p0: https://arledscreen.com/owner-p0.json
+geo-next: https://arledscreen.com/geo-next.txt
+geo-next-well-known: https://arledscreen.com/.well-known/geo-next.txt
+owner-next-txt: https://arledscreen.com/owner-next.txt
+tur1a-json: https://arledscreen.com/tur1a.json
+tur1a-json-well-known: https://arledscreen.com/.well-known/tur1a.json
+tur1a-csv: https://arledscreen.com/feeds/tur1a.csv
+tur1a-csv-root: https://arledscreen.com/tur1a.csv
+point-c-progress: https://arledscreen.com/point-c-progress.json
+point-c-progress-well-known: https://arledscreen.com/.well-known/point-c-progress.json
+agents-md-well-known: https://arledscreen.com/.well-known/AGENTS.md
 owner-tur1a-next: npm run tur1a:next
 owner-tur1a-csv: npm run tur1a:csv
 owner-tur1a-log: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…

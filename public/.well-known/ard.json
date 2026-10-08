@@ -330,6 +330,47 @@
         "txt": "https://arledscreen.com/point-c.txt",
         "source": "https://arledscreen.com/entity-profiles.json"
       },
+      "geoStatus": {
+        "type": "GEO owner-gate status",
+        "url": "https://arledscreen.com/geo-status.json",
+        "format": "application/ld+json",
+        "description": "Machine Point C / arleds 301 / Tur1a / PR merge gate status. Does not invent mention rates. Clipboard twin /geo-next.txt. Alias /.well-known/geo-status.json · /owner-p0.json.",
+        "wellKnown": "https://arledscreen.com/.well-known/geo-status.json",
+        "ownerP0": "https://arledscreen.com/owner-p0.json",
+        "geoNext": "https://arledscreen.com/geo-next.txt"
+      },
+      "geoNext": {
+        "type": "GEO next clipboard",
+        "url": "https://arledscreen.com/geo-next.txt",
+        "format": "text/plain",
+        "description": "Live npm run geo:next clipboard (Point C → arleds 301 → Tur1a → merge). Alias /owner-next.txt · /.well-known/geo-next.txt.",
+        "wellKnown": "https://arledscreen.com/.well-known/geo-next.txt",
+        "ownerNext": "https://arledscreen.com/owner-next.txt",
+        "status": "https://arledscreen.com/geo-status.json"
+      },
+      "tur1a": {
+        "type": "Tur1a blind coverage",
+        "url": "https://arledscreen.com/tur1a.json",
+        "format": "application/ld+json",
+        "description": "Human Tur1a matrix cells + next empty (ChatGPT/Gemini/Perplexity/Google AI). Does not invent scores. CSV /feeds/tur1a.csv. Alias /.well-known/tur1a.json.",
+        "wellKnown": "https://arledscreen.com/.well-known/tur1a.json",
+        "csv": "https://arledscreen.com/feeds/tur1a.csv",
+        "csvRoot": "https://arledscreen.com/tur1a.csv"
+      },
+      "pointCProgress": {
+        "type": "Point C paste progress",
+        "url": "https://arledscreen.com/point-c-progress.json",
+        "format": "application/ld+json",
+        "description": "Acked Point C pack keys. Alias /.well-known/point-c-progress.json.",
+        "wellKnown": "https://arledscreen.com/.well-known/point-c-progress.json"
+      },
+      "agentsMdWellKnown": {
+        "type": "AGENTS.md well-known invent alias",
+        "url": "https://arledscreen.com/.well-known/AGENTS.md",
+        "format": "text/markdown",
+        "description": "Well-known invent alias of /AGENTS.md",
+        "canonical": "https://arledscreen.com/AGENTS.md"
+      },
       "humansTxt": {
         "type": "Humans Contact Pointer",
         "url": "https://arledscreen.com/humans.txt",
@@ -1028,6 +1069,21 @@
       "/feeds/point-c-en.csv",
       "/point-c.csv",
       "/point-c-en.csv",
+      "/geo-status.json",
+      "/.well-known/geo-status.json",
+      "/owner-p0.json",
+      "/.well-known/owner-p0.json",
+      "/geo-next.txt",
+      "/.well-known/geo-next.txt",
+      "/owner-next.txt",
+      "/.well-known/owner-next.txt",
+      "/tur1a.json",
+      "/.well-known/tur1a.json",
+      "/feeds/tur1a.csv",
+      "/tur1a.csv",
+      "/point-c-progress.json",
+      "/.well-known/point-c-progress.json",
+      "/.well-known/AGENTS.md",
       "/feeds/merchant-priced-panels.tsv",
       "/feeds/prices.rss",
       "/.well-known/ard.json",

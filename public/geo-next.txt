@@ -1,0 +1,27 @@
+=== ARLEDSCREEN GEO next (Point C paste) ===
+Priority gate: Point C · 0/11 acked
+After paste: npm run point-c:ack
+CSV: npm run point-c:csv · Playbook: docs/offsite-entity-playbook.md
+
+=== ARLEDSCREEN Point C next paste ===
+Step: directoryLong · NAP / directoryLong
+Progress: 0/11 acked → paste this block
+Locale: TR
+Where: Directories / Bing Places / Apple Business Connect → About / description
+Open: https://www.bingplaces.com/
+OpenAlt: https://businessconnect.apple.com/
+
+### Paste (select-all)
+---
+ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
+
+Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul
+Telefon: +90 530 507 88 34
+E-posta: arled@arledscreen.com
+Web: https://arledscreen.com/tr/
+Not: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com kullanın. LinkedIn /company/arleds sosyal slug’dır, web arleds.com değildir. NXTIONSTAR ≠ NationStar LED bileşen ≠ NEXTSTAR TV.
+---
+
+After paste: npm run point-c:ack -- --pack=directoryLong
+Or: npm run point-c:ack
+CSV: npm run point-c:csv · Live CSV: https://arledscreen.com/feeds/point-c.csv · JSON: https://arledscreen.com/point-c.json · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt

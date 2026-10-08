@@ -380,6 +380,29 @@ try {
   fail(`point-c.json/csv ${e?.message || e}`);
 }
 
+try {
+  const geoStatus = await getJson("/geo-status.json");
+  const geoNext = await getText("/geo-next.txt");
+  const tur1a = await getJson("/tur1a.json");
+  const tur1aCsv = await getText("/feeds/tur1a.csv");
+  if (
+    String(geoStatus?.priorityGate || "") &&
+    geoStatus?.gates?.pointC &&
+    geoStatus?.gates?.tur1a &&
+    geoNext.includes("GEO next") &&
+    geoNext.includes("Open:") &&
+    Array.isArray(tur1a?.cells) &&
+    tur1a.cells.length >= 48 &&
+    tur1aCsv.includes("chatgpt") &&
+    String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
+    String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
+  ) {
+    ok("geo-status/geo-next/tur1a invent + ARD");
+  } else fail("geo-status/geo-next/tur1a invent + ARD");
+} catch (e) {
+  fail(`geo-status/tur1a ${e?.message || e}`);
+}
+
 {
   const websiteRes = ard?.agentic?.resources?.website || {};
   if (
@@ -516,6 +539,10 @@ try {
     head.includes("point_c_en_json_url") &&
     head.includes("point_c_en_json_well_known_url") &&
     head.includes("point_c_csv_url") &&
+    head.includes("geo_status_url") &&
+    head.includes("geo_next_url") &&
+    head.includes("tur1a_json_url") &&
+    head.includes("tur1a_csv_url") &&
     head.includes("brand_well_known_url") &&
     head.includes("modules_well_known_url") &&
     head.includes("sku_well_known_url") &&
@@ -558,6 +585,10 @@ try {
     tsv.includes(`${SITE}/point-c-en.json`) &&
     tsv.includes(`${SITE}/.well-known/point-c-en.json`) &&
     tsv.includes(`${SITE}/feeds/point-c.csv`) &&
+    tsv.includes(`${SITE}/geo-status.json`) &&
+    tsv.includes(`${SITE}/geo-next.txt`) &&
+    tsv.includes(`${SITE}/tur1a.json`) &&
+    tsv.includes(`${SITE}/feeds/tur1a.csv`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
     tsv.includes(`${SITE}/.well-known/modules.json`) &&
     tsv.includes(`${SITE}/.well-known/sku.json`) &&
@@ -1163,10 +1194,14 @@ try {
     link.includes("/.well-known/point-c-en.txt") &&
     link.includes("/point-c.json") &&
     link.includes("/feeds/point-c.csv") &&
+    link.includes("/geo-status.json") &&
+    link.includes("/geo-next.txt") &&
+    link.includes("/tur1a.json") &&
+    link.includes("/feeds/tur1a.csv") &&
     link.includes("#website")
   ) {
-    ok("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c json/csv");
-  } else fail("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c json/csv");
+    ok("live Link inventAlias + discovery + point-c/geo-status/tur1a");
+  } else fail("live Link inventAlias + discovery + point-c/geo-status/tur1a");
 } catch (e) {
   fail(`live Link invent ${e?.message || e}`);
 }

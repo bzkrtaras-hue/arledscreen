@@ -1,0 +1,96 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://arledscreen.com/geo-status.json",
+  "name": "ARLEDSCREEN GEO owner-gate status",
+  "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Clipboard: /geo-next.txt · Point C: /point-c.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
+  "url": "https://arledscreen.com/geo-status.json",
+  "dateModified": "2026-10-08T06:38:26.382Z",
+  "creator": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "isBasedOn": [
+    "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/tur1a.json",
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/#website"
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-status.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/geo-status.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/geo-next.txt"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/owner-next.txt"
+    }
+  ],
+  "priorityGate": "pointC",
+  "gates": {
+    "pointC": {
+      "status": "OPEN",
+      "acked": 0,
+      "total": 11,
+      "ackedKeys": [],
+      "updatedAt": "2026-10-07T20:09:43.307Z",
+      "next": {
+        "packKey": "directoryLong",
+        "where": "Directories / Bing Places / Apple Business Connect → About / description",
+        "open": "https://www.bingplaces.com/",
+        "openAlt": "https://businessconnect.apple.com/"
+      },
+      "urls": {
+        "txt": "https://arledscreen.com/point-c.txt",
+        "json": "https://arledscreen.com/point-c.json",
+        "csv": "https://arledscreen.com/feeds/point-c.csv"
+      },
+      "afterPaste": "npm run point-c:ack"
+    },
+    "arleds301": {
+      "status": "OPEN",
+      "mode": "dnsenable_tls_dead",
+      "target": "https://arledscreen.com/tr/",
+      "open": "https://www.isimtescil.net/",
+      "verify": "npm run verify:arleds-301",
+      "docs": "docs/ops/arleds-301-hostinger.md"
+    },
+    "tur1a": {
+      "status": "OPEN",
+      "filled": 0,
+      "total": 48,
+      "next": {
+        "platform": "chatgpt",
+        "promptId": "1",
+        "open": "https://chatgpt.com/",
+        "prompt": "Türkiye’de LED ekran firmaları hangileri? Kısa liste ve kaynak URL."
+      },
+      "urls": {
+        "json": "https://arledscreen.com/tur1a.json",
+        "csv": "https://arledscreen.com/feeds/tur1a.csv"
+      },
+      "afterObserve": "npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…"
+    },
+    "prMerge": {
+      "status": "OPEN",
+      "pr": 60,
+      "branch": "cursor/geo-prod-guard-5666",
+      "base": "main"
+    }
+  },
+  "ownerNext": "npm run geo:next · live: https://arledscreen.com/geo-next.txt · status: https://arledscreen.com/geo-status.json · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+  "target": "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores"
+}

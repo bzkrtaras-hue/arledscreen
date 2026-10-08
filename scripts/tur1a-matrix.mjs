@@ -109,25 +109,126 @@ function printMatrix(filled) {
   );
 }
 
+const SITE = "https://arledscreen.com";
+
 /** Spreadsheet-ready empty-cell dump (owner tracking). Does not invent scores. */
-function printCsv(filled) {
+export function buildTur1aCsv(filledOverride = null, { en = false } = {}) {
+  const usePrompts = en ? [...TR, ...EN] : [...TR];
+  const ids = usePrompts.map(([id]) => id);
+  const total = ids.length * HUMAN_PLATFORMS.length;
+  const set = new Set();
+  if (filledOverride instanceof Set) {
+    for (const k of filledOverride) set.add(k);
+  } else {
+    for (const r of loadHumanRows()) {
+      const pid = String(r.promptId || "");
+      const plat = String(r.platform || "");
+      if (ids.includes(pid) && HUMAN_PLATFORMS.includes(plat)) set.add(cellKey(plat, pid));
+    }
+  }
+  const textOf = (id) => {
+    const hit = usePrompts.find(([pid]) => pid === id);
+    return hit ? hit[1] : "";
+  };
   const esc = (s) => `"${String(s).replace(/"/g, '""')}"`;
-  console.log("platform,promptId,locale,status,open,prompt,logCommand");
-  for (const id of promptIds) {
+  const lines = ["platform,promptId,locale,status,open,prompt,logCommand"];
+  for (const id of ids) {
     for (const platform of HUMAN_PLATFORMS) {
-      const filledCell = filled.has(cellKey(platform, id));
+      const filledCell = set.has(cellKey(platform, id));
       const locale = String(id).startsWith("en-") ? "en" : "tr-TR";
       const status = filledCell ? "filled" : "empty";
       const open = platformOpenUrl(platform);
       const logCmd = filledCell
         ? ""
         : `npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json`;
-      console.log(
-        [platform, id, locale, status, esc(open), esc(promptText(id)), esc(logCmd)].join(","),
+      lines.push(
+        [platform, id, locale, status, esc(open), esc(textOf(id)), esc(logCmd)].join(","),
       );
     }
   }
-  console.error(`# coverage ${filled.size}/${totalCells} — do not invent mention % · Open: PLATFORM_OPEN_URLS`);
+  return { csv: `${lines.join("\n")}\n`, filled: set.size, total };
+}
+
+/** Machine Tur1a coverage + next empty cell (no invented scores). */
+export function buildTur1aJsonDoc({ en = false } = {}) {
+  const usePrompts = en ? [...TR, ...EN] : [...TR];
+  const ids = usePrompts.map(([id]) => id);
+  const total = ids.length * HUMAN_PLATFORMS.length;
+  const filledLocal = new Set();
+  for (const r of loadHumanRows()) {
+    const pid = String(r.promptId || "");
+    const plat = String(r.platform || "");
+    if (ids.includes(pid) && HUMAN_PLATFORMS.includes(plat)) filledLocal.add(cellKey(plat, pid));
+  }
+  let next = null;
+  for (const id of ids) {
+    for (const platform of HUMAN_PLATFORMS) {
+      if (!filledLocal.has(cellKey(platform, id))) {
+        next = {
+          platform,
+          promptId: id,
+          locale: String(id).startsWith("en-") ? "en" : "tr-TR",
+          open: platformOpenUrl(platform),
+          prompt: usePrompts.find(([pid]) => pid === id)?.[1] || "",
+        };
+        break;
+      }
+    }
+    if (next) break;
+  }
+  const cells = [];
+  for (const id of ids) {
+    for (const platform of HUMAN_PLATFORMS) {
+      cells.push({
+        platform,
+        promptId: id,
+        locale: String(id).startsWith("en-") ? "en" : "tr-TR",
+        status: filledLocal.has(cellKey(platform, id)) ? "filled" : "empty",
+        open: platformOpenUrl(platform),
+      });
+    }
+  }
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "@id": `${SITE}/tur1a.json`,
+    name: "ARLEDSCREEN Tur1a blind coverage",
+    description:
+      "Human blind Tur1a matrix (ChatGPT/Gemini/Perplexity/Google AI). Does not invent mention rates. Owner: npm run tur1a:next · tur1a:log · tur1a:csv · geo:next. CSV: /feeds/tur1a.csv.",
+    url: `${SITE}/tur1a.json`,
+    creator: { "@id": `${SITE}/#organization` },
+    isBasedOn: [
+      `${SITE}/ai-shopping.json`,
+      `${SITE}/entity.json`,
+      `${SITE}/brand.json`,
+      `${SITE}/#website`,
+      `${SITE}/geo-status.json`,
+      `${SITE}/geo-next.txt`,
+    ],
+    distribution: [
+      { "@type": "DataDownload", encodingFormat: "application/ld+json", contentUrl: `${SITE}/tur1a.json` },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/.well-known/tur1a.json`,
+      },
+      { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${SITE}/feeds/tur1a.csv` },
+      { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${SITE}/tur1a.csv` },
+    ],
+    coverage: { filled: filledLocal.size, total, locale: en ? "tr+en" : "tr" },
+    next,
+    cells,
+    ownerNext:
+      "npm run tur1a:next · tur1a:csv · after observe: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… · Open: https://chatgpt.com/",
+  };
+}
+
+function printCsv(filled) {
+  const { csv } = buildTur1aCsv(filled, { en: includeEn });
+  process.stdout.write(csv);
+  console.error(
+    `# coverage ${filled.size}/${totalCells} — do not invent mention % · Open: PLATFORM_OPEN_URLS · live: ${SITE}/feeds/tur1a.csv`,
+  );
 }
 
 function printNext(filled) {
@@ -235,12 +336,16 @@ function runLog(filled) {
   console.log("\nThen: npm run tur1a:matrix · npm run tur1a:next · npm run geo:status");
 }
 
-const rows = loadHumanRows();
-const filled = filledSet(rows);
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 
-if (wantLog) runLog(filled);
-else if (wantNext) printNext(filled);
-else if (wantCsv) printCsv(filled);
-else printMatrix(filled);
+if (isMain) {
+  const rows = loadHumanRows();
+  const filled = filledSet(rows);
 
-process.exit(0);
+  if (wantLog) runLog(filled);
+  else if (wantNext) printNext(filled);
+  else if (wantCsv) printCsv(filled);
+  else printMatrix(filled);
+
+  process.exit(0);
+}

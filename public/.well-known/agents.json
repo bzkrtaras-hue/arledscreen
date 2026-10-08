@@ -160,6 +160,27 @@
       "name": "Point C spreadsheet CSV",
       "url": "https://arledscreen.com/feeds/point-c.csv",
       "description": "Spreadsheet twin of Point C packs (same as npm run point-c:csv); root invent alias /point-c.csv; EN /feeds/point-c-en.csv"
+    },
+    {
+      "@type": "ListItem",
+      "position": 23,
+      "name": "GEO owner-gate status",
+      "url": "https://arledscreen.com/geo-status.json",
+      "description": "Point C / arleds 301 / Tur1a / PR merge gate status; clipboard /geo-next.txt; alias /owner-p0.json"
+    },
+    {
+      "@type": "ListItem",
+      "position": 24,
+      "name": "GEO next clipboard",
+      "url": "https://arledscreen.com/geo-next.txt",
+      "description": "Live npm run geo:next paste clipboard; alias /owner-next.txt"
+    },
+    {
+      "@type": "ListItem",
+      "position": 25,
+      "name": "Tur1a blind coverage",
+      "url": "https://arledscreen.com/tur1a.json",
+      "description": "Human Tur1a matrix + next empty cell; CSV /feeds/tur1a.csv; does not invent scores"
     }
   ],
   "provider": {

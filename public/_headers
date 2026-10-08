@@ -124,6 +124,13 @@
   Link: <https://arledscreen.com/feeds/point-c-en.csv>; rel="alternate"; type="text/csv"; title="Point C spreadsheet CSV (EN)"
   Link: <https://arledscreen.com/point-c.csv>; rel="alternate"; type="text/csv"; title="Point C CSV root invent alias"
   Link: <https://arledscreen.com/point-c-en.csv>; rel="alternate"; type="text/csv"; title="Point C EN CSV root invent alias"
+  Link: <https://arledscreen.com/geo-status.json>; rel="alternate"; type="application/ld+json"; title="GEO owner-gate status"
+  Link: <https://arledscreen.com/.well-known/geo-status.json>; rel="alternate"; type="application/ld+json"; title="GEO owner-gate status well-known"
+  Link: <https://arledscreen.com/geo-next.txt>; rel="alternate"; type="text/plain"; title="GEO next clipboard"
+  Link: <https://arledscreen.com/owner-next.txt>; rel="alternate"; type="text/plain"; title="Owner next clipboard invent alias"
+  Link: <https://arledscreen.com/tur1a.json>; rel="alternate"; type="application/ld+json"; title="Tur1a blind coverage"
+  Link: <https://arledscreen.com/feeds/tur1a.csv>; rel="alternate"; type="text/csv"; title="Tur1a spreadsheet CSV"
+  Link: <https://arledscreen.com/.well-known/AGENTS.md>; rel="alternate"; type="text/markdown"; title="AGENTS.md well-known invent alias"
 
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable

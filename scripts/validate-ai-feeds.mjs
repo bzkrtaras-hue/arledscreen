@@ -622,6 +622,13 @@ if (fs.existsSync(outDir)) {
       "/feeds/point-c-en.csv",
       "/point-c.csv",
       "/point-c-en.csv",
+      "/geo-status.json",
+      "/.well-known/geo-status.json",
+      "/geo-next.txt",
+      "/owner-next.txt",
+      "/tur1a.json",
+      "/feeds/tur1a.csv",
+      "/.well-known/AGENTS.md",
       "/humans.txt",
       "/.well-known/security.txt",
       "/security.txt",
@@ -637,6 +644,14 @@ if (fs.existsSync(outDir)) {
         console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
         process.exit(1);
       }
+    }
+    if (
+      !String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") ||
+      !String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") ||
+      !String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
+    ) {
+      console.error("❌ ard.json must expose resources.geoStatus + geoNext + tur1a");
+      process.exit(1);
     }
     if (!String(pcEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")) {
       console.error("❌ ard.json resources.pointCEn.wellKnown must cite /.well-known/point-c-en.txt");
@@ -1769,8 +1784,16 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("point-c-en-well-known:") ||
     !aiTxtLive.includes("point-c-json:") ||
     !aiTxtLive.includes("point-c-csv:") ||
+    !aiTxtLive.includes("geo-status:") ||
+    !aiTxtLive.includes("geo-next:") ||
+    !aiTxtLive.includes("tur1a-json:") ||
+    !aiTxtLive.includes("tur1a-csv:") ||
     !aiTxtLive.includes("/point-c.json") ||
     !aiTxtLive.includes("/feeds/point-c.csv") ||
+    !aiTxtLive.includes("/geo-status.json") ||
+    !aiTxtLive.includes("/geo-next.txt") ||
+    !aiTxtLive.includes("/tur1a.json") ||
+    !aiTxtLive.includes("/feeds/tur1a.csv") ||
     !aiTxtLive.includes("https://www.isimtescil.net/") ||
     !aiTxtLive.includes("https://business.google.com/") ||
     !aiTxtLive.includes("https://chatgpt.com/") ||
@@ -2207,6 +2230,46 @@ if (fs.existsSync(outDir)) {
       console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + Open URLs; well-known/root twins must match");
       process.exit(1);
     }
+    for (const rel of [
+      "geo-status.json",
+      ".well-known/geo-status.json",
+      "owner-p0.json",
+      "geo-next.txt",
+      ".well-known/geo-next.txt",
+      "owner-next.txt",
+      "tur1a.json",
+      ".well-known/tur1a.json",
+      "feeds/tur1a.csv",
+      "tur1a.csv",
+      "point-c-progress.json",
+      ".well-known/point-c-progress.json",
+      ".well-known/AGENTS.md",
+    ]) {
+      if (!fs.existsSync(path.join(outDir, rel))) {
+        console.error(`❌ Missing owner-gate invent surface in out/: ${rel}`);
+        process.exit(1);
+      }
+    }
+    const geoStatus = JSON.parse(fs.readFileSync(path.join(outDir, "geo-status.json"), "utf8"));
+    const geoNext = fs.readFileSync(path.join(outDir, "geo-next.txt"), "utf8");
+    const tur1a = JSON.parse(fs.readFileSync(path.join(outDir, "tur1a.json"), "utf8"));
+    const tur1aCsv = fs.readFileSync(path.join(outDir, "feeds/tur1a.csv"), "utf8");
+    if (
+      !String(geoStatus?.priorityGate || "") ||
+      !geoStatus?.gates?.pointC ||
+      !geoStatus?.gates?.arleds301 ||
+      !geoStatus?.gates?.tur1a ||
+      !geoNext.includes("GEO next") ||
+      !geoNext.includes("Open:") ||
+      !Array.isArray(tur1a?.cells) ||
+      tur1a.cells.length < 48 ||
+      !tur1aCsv.includes("platform,promptId") ||
+      !tur1aCsv.includes("chatgpt") ||
+      fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
+    ) {
+      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates (no invented scores)");
+      process.exit(1);
+    }
   }
   for (const rel of [".well-known/agents.json", "agents.json", "humans.txt", ".well-known/humans.txt"]) {
     if (!fs.existsSync(path.join(outDir, rel))) {
@@ -2285,6 +2348,18 @@ if (fs.existsSync(outDir)) {
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/feeds/point-c.csv"))) {
     console.error("❌ agents.json must list feeds/point-c.csv");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/geo-status.json"))) {
+    console.error("❌ agents.json must list geo-status.json");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/geo-next.txt"))) {
+    console.error("❌ agents.json must list geo-next.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/tur1a.json"))) {
+    console.error("❌ agents.json must list tur1a.json");
     process.exit(1);
   }
   {
@@ -2712,6 +2787,10 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/point-c-en.json") ||
     !headersLive.includes("/.well-known/point-c.json") ||
     !headersLive.includes("/feeds/point-c.csv") ||
+    !headersLive.includes("/geo-status.json") ||
+    !headersLive.includes("/geo-next.txt") ||
+    !headersLive.includes("/tur1a.json") ||
+    !headersLive.includes("/feeds/tur1a.csv") ||
     !headersLive.includes("https://arledscreen.com/brand>") ||
     !headersLive.includes("https://arledscreen.com/modules>") ||
     !headersLive.includes("\n/brand\n") ||
@@ -3387,6 +3466,10 @@ if (fs.existsSync(outDir)) {
     "point_c_en_json_url",
     "point_c_en_json_well_known_url",
     "point_c_csv_url",
+    "geo_status_url",
+    "geo_next_url",
+    "tur1a_json_url",
+    "tur1a_csv_url",
     "brand_well_known_url",
     "modules_well_known_url",
     "sku_well_known_url",
@@ -3443,6 +3526,10 @@ if (fs.existsSync(outDir)) {
   const pointCEnJsonUrlIdx = tsvCols.indexOf("point_c_en_json_url");
   const pointCEnJsonWkIdx = tsvCols.indexOf("point_c_en_json_well_known_url");
   const pointCCsvUrlIdx = tsvCols.indexOf("point_c_csv_url");
+  const geoStatusUrlIdx = tsvCols.indexOf("geo_status_url");
+  const geoNextUrlIdx = tsvCols.indexOf("geo_next_url");
+  const tur1aJsonUrlIdx = tsvCols.indexOf("tur1a_json_url");
+  const tur1aCsvUrlIdx = tsvCols.indexOf("tur1a_csv_url");
   const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
   const modulesWkIdx = tsvCols.indexOf("modules_well_known_url");
   const skuWkIdx = tsvCols.indexOf("sku_well_known_url");
@@ -3546,6 +3633,22 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[pointCCsvUrlIdx] !== "https://arledscreen.com/feeds/point-c.csv") {
       console.error(`❌ merchant TSV point_c_csv_url must be /feeds/point-c.csv for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[geoStatusUrlIdx] !== "https://arledscreen.com/geo-status.json") {
+      console.error(`❌ merchant TSV geo_status_url must be /geo-status.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[geoNextUrlIdx] !== "https://arledscreen.com/geo-next.txt") {
+      console.error(`❌ merchant TSV geo_next_url must be /geo-next.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[tur1aJsonUrlIdx] !== "https://arledscreen.com/tur1a.json") {
+      console.error(`❌ merchant TSV tur1a_json_url must be /tur1a.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[tur1aCsvUrlIdx] !== "https://arledscreen.com/feeds/tur1a.csv") {
+      console.error(`❌ merchant TSV tur1a_csv_url must be /feeds/tur1a.csv for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[brandWkIdx] !== "https://arledscreen.com/.well-known/brand.json") {
@@ -4234,6 +4337,12 @@ if (fs.existsSync(outDir)) {
     "/feeds/point-c-en.csv",
     "/point-c.csv",
     "/point-c-en.csv",
+    "/geo-status.json",
+    "/geo-next.txt",
+    "/owner-next.txt",
+    "/tur1a.json",
+    "/feeds/tur1a.csv",
+    "/.well-known/AGENTS.md",
     "/.well-known/panels.json",
     "/.well-known/mpn.json",
     "/.well-known/merchant.json",
@@ -4767,6 +4876,12 @@ for (const must of [
   "/feeds/point-c-en.csv",
   "/point-c.csv",
   "/point-c-en.csv",
+  "/geo-status.json",
+  "/geo-next.txt",
+  "/owner-next.txt",
+  "/tur1a.json",
+  "/feeds/tur1a.csv",
+  "/.well-known/AGENTS.md",
   "/brand",
   "/modules",
   "/product",
@@ -4839,8 +4954,11 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     console.error("❌ scripts/tur1a-matrix.mjs must print Where:/Open: via platformOpenUrl");
     process.exit(1);
   }
-  if (!tur1aMatrix.includes('console.log("platform,promptId,locale,status,open,prompt,logCommand")')) {
-    console.error("❌ scripts/tur1a-matrix.mjs tur1a:csv must include open column");
+  if (
+    !tur1aMatrix.includes("platform,promptId,locale,status,open,prompt,logCommand") ||
+    !tur1aMatrix.includes("buildTur1aCsv")
+  ) {
+    console.error("❌ scripts/tur1a-matrix.mjs tur1a:csv must include open column + buildTur1aCsv export");
     process.exit(1);
   }
   if (!tur1aMatrix.includes("runLog") || !tur1aMatrix.includes("Open:")) {

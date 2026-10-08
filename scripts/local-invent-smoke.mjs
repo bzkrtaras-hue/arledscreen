@@ -369,6 +369,30 @@ if (
 }
 
 {
+  const geoStatus = readJson("geo-status.json");
+  const geoNext = readText("geo-next.txt");
+  const tur1a = readJson("tur1a.json");
+  const tur1aCsv = readText("feeds/tur1a.csv");
+  if (
+    String(geoStatus?.priorityGate || "") &&
+    geoStatus?.gates?.pointC &&
+    geoStatus?.gates?.tur1a &&
+    geoNext.includes("GEO next") &&
+    geoNext.includes("Open:") &&
+    Array.isArray(tur1a?.cells) &&
+    tur1a.cells.length >= 48 &&
+    tur1aCsv.includes("chatgpt") &&
+    fs.existsSync(path.join(outDir, ".well-known/AGENTS.md")) &&
+    String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
+    String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") &&
+    String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
+  ) {
+    ok("geo-status/geo-next/tur1a invent + ARD + AGENTS.md well-known");
+  } else fail("geo-status/geo-next/tur1a invent + ARD + AGENTS.md well-known");
+}
+
+
+{
   const websiteRes = ard?.agentic?.resources?.website || {};
   if (
     websiteRes?.["@id"] === `${SITE}/#website` &&
@@ -504,6 +528,10 @@ else fail("ard.resources.pointC");
     head.includes("point_c_en_json_url") &&
     head.includes("point_c_en_json_well_known_url") &&
     head.includes("point_c_csv_url") &&
+    head.includes("geo_status_url") &&
+    head.includes("geo_next_url") &&
+    head.includes("tur1a_json_url") &&
+    head.includes("tur1a_csv_url") &&
     head.includes("brand_well_known_url") &&
     head.includes("modules_well_known_url") &&
     head.includes("sku_well_known_url") &&
@@ -546,6 +574,10 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/point-c-en.json`) &&
     tsv.includes(`${SITE}/.well-known/point-c-en.json`) &&
     tsv.includes(`${SITE}/feeds/point-c.csv`) &&
+    tsv.includes(`${SITE}/geo-status.json`) &&
+    tsv.includes(`${SITE}/geo-next.txt`) &&
+    tsv.includes(`${SITE}/tur1a.json`) &&
+    tsv.includes(`${SITE}/feeds/tur1a.csv`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
     tsv.includes(`${SITE}/.well-known/modules.json`) &&
     tsv.includes(`${SITE}/.well-known/sku.json`) &&
@@ -1144,10 +1176,14 @@ if (
     headers.includes("/.well-known/point-c-en.txt") &&
     headers.includes("/point-c.json") &&
     headers.includes("/feeds/point-c.csv") &&
+    headers.includes("/geo-status.json") &&
+    headers.includes("/geo-next.txt") &&
+    headers.includes("/tur1a.json") &&
+    headers.includes("/feeds/tur1a.csv") &&
     headers.includes("#website")
   ) {
-    ok("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c json/csv");
-  } else fail("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c json/csv");
+    ok("_headers Link inventAlias + discovery + point-c/geo-status/tur1a");
+  } else fail("_headers Link inventAlias + discovery + point-c/geo-status/tur1a");
 }
 
 {

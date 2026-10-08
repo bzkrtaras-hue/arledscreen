@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://arledscreen.com/point-c-progress.json",
+  "name": "ARLEDSCREEN Point C paste progress",
+  "description": "Acked Point C pack keys (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack.",
+  "url": "https://arledscreen.com/point-c-progress.json",
+  "dateModified": "2026-10-07T20:09:43.307Z",
+  "creator": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "acked": [],
+  "total": 11,
+  "next": {
+    "packKey": "directoryLong",
+    "where": "Directories / Bing Places / Apple Business Connect → About / description",
+    "open": "https://www.bingplaces.com/",
+    "openAlt": "https://businessconnect.apple.com/"
+  },
+  "sameAs": [
+    "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/geo-status.json",
+    "https://arledscreen.com/geo-next.txt"
+  ]
+}

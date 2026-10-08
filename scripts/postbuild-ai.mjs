@@ -10,10 +10,16 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  buildGeoNextText,
+  buildGeoStatusDoc,
+  buildPointCProgressDoc,
+} from "./build-owner-gate-invent.mjs";
+import {
   buildPointCCsv,
   buildPointCJsonDoc,
   buildPointCPackText,
 } from "./print-point-c-packs.mjs";
+import { buildTur1aCsv, buildTur1aJsonDoc } from "./tur1a-matrix.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -1134,6 +1140,10 @@ function buildMerchantTsv() {
     "point_c_en_json_url",
     "point_c_en_json_well_known_url",
     "point_c_csv_url",
+    "geo_status_url",
+    "geo_next_url",
+    "tur1a_json_url",
+    "tur1a_csv_url",
     "brand_well_known_url",
     "modules_well_known_url",
     "sku_well_known_url",
@@ -1215,6 +1225,10 @@ function buildMerchantTsv() {
         `${SITE_URL}/point-c-en.json`,
         `${SITE_URL}/.well-known/point-c-en.json`,
         `${SITE_URL}/feeds/point-c.csv`,
+        `${SITE_URL}/geo-status.json`,
+        `${SITE_URL}/geo-next.txt`,
+        `${SITE_URL}/tur1a.json`,
+        `${SITE_URL}/feeds/tur1a.csv`,
         `${SITE_URL}/.well-known/brand.json`,
         `${SITE_URL}/.well-known/modules.json`,
         `${SITE_URL}/.well-known/sku.json`,
@@ -2214,6 +2228,19 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/feeds/point-c-en.csv`,
     `${SITE_URL}/point-c.csv`,
     `${SITE_URL}/point-c-en.csv`,
+    `${SITE_URL}/geo-status.json`,
+    `${SITE_URL}/.well-known/geo-status.json`,
+    `${SITE_URL}/owner-p0.json`,
+    `${SITE_URL}/geo-next.txt`,
+    `${SITE_URL}/.well-known/geo-next.txt`,
+    `${SITE_URL}/owner-next.txt`,
+    `${SITE_URL}/tur1a.json`,
+    `${SITE_URL}/.well-known/tur1a.json`,
+    `${SITE_URL}/feeds/tur1a.csv`,
+    `${SITE_URL}/tur1a.csv`,
+    `${SITE_URL}/point-c-progress.json`,
+    `${SITE_URL}/.well-known/point-c-progress.json`,
+    `${SITE_URL}/.well-known/AGENTS.md`,
     // Extensionless invent aliases (200 JSON feeds; /brand+/modules via Pages Functions).
     // Skip /prices · /pricing · /price · /about — HTML invent bridges or locale redirects.
     `${SITE_URL}/offer`,
@@ -3488,6 +3515,7 @@ function writeFeedPathAliases(dir) {
     [".well-known/agents.json", "agent.json"],
     [".well-known/agents.json", ".well-known/agent.json"],
     ["humans.txt", ".well-known/humans.txt"],
+    ["AGENTS.md", ".well-known/AGENTS.md"],
   ];
   let n = 0;
   for (const [srcRel, destRel] of copies) {
@@ -3640,6 +3668,51 @@ function main() {
       process.exit(1);
     }
   }
+  // Owner-gate invent: geo-status / geo-next / tur1a / point-c-progress (cite-only).
+  try {
+    const geoStatus = buildGeoStatusDoc();
+    writeJson(publicDir, "geo-status.json", geoStatus);
+    writeJson(outDir, "geo-status.json", geoStatus);
+    writeJson(publicDir, ".well-known/geo-status.json", geoStatus);
+    writeJson(outDir, ".well-known/geo-status.json", geoStatus);
+    writeJson(publicDir, "owner-p0.json", geoStatus);
+    writeJson(outDir, "owner-p0.json", geoStatus);
+    writeJson(publicDir, ".well-known/owner-p0.json", geoStatus);
+    writeJson(outDir, ".well-known/owner-p0.json", geoStatus);
+    const geoNext = buildGeoNextText();
+    writeText(publicDir, "geo-next.txt", geoNext);
+    writeText(outDir, "geo-next.txt", geoNext);
+    writeText(publicDir, ".well-known/geo-next.txt", geoNext);
+    writeText(outDir, ".well-known/geo-next.txt", geoNext);
+    writeText(publicDir, "owner-next.txt", geoNext);
+    writeText(outDir, "owner-next.txt", geoNext);
+    writeText(publicDir, ".well-known/owner-next.txt", geoNext);
+    writeText(outDir, ".well-known/owner-next.txt", geoNext);
+    const tur1aJson = buildTur1aJsonDoc({ en: false });
+    writeJson(publicDir, "tur1a.json", tur1aJson);
+    writeJson(outDir, "tur1a.json", tur1aJson);
+    writeJson(publicDir, ".well-known/tur1a.json", tur1aJson);
+    writeJson(outDir, ".well-known/tur1a.json", tur1aJson);
+    const { csv: tur1aCsv } = buildTur1aCsv(null, { en: false });
+    writeText(publicDir, "feeds/tur1a.csv", tur1aCsv);
+    writeText(outDir, "feeds/tur1a.csv", tur1aCsv);
+    writeText(publicDir, "tur1a.csv", tur1aCsv);
+    writeText(outDir, "tur1a.csv", tur1aCsv);
+    const progressDoc = buildPointCProgressDoc();
+    writeJson(publicDir, "point-c-progress.json", progressDoc);
+    writeJson(outDir, "point-c-progress.json", progressDoc);
+    writeJson(publicDir, ".well-known/point-c-progress.json", progressDoc);
+    writeJson(outDir, ".well-known/point-c-progress.json", progressDoc);
+    const agentsMdPath = path.join(publicDir, "AGENTS.md");
+    if (fs.existsSync(agentsMdPath)) {
+      const agentsMd = fs.readFileSync(agentsMdPath, "utf8");
+      writeText(publicDir, ".well-known/AGENTS.md", agentsMd);
+      writeText(outDir, ".well-known/AGENTS.md", agentsMd);
+    }
+  } catch (e) {
+    console.error(`postbuild-ai: owner-gate invent emit failed: ${e?.message || e}`);
+    process.exit(1);
+  }
   if (!copyPublicToOut(".well-known/ard.json")) {
     console.warn("postbuild-ai: public/.well-known/ard.json missing — ARD surface not copied");
   }
@@ -3684,7 +3757,7 @@ prices-rss: ${SITE_URL}/feeds/prices.rss
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
-owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
+owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · live: ${SITE_URL}/geo-next.txt · status: ${SITE_URL}/geo-status.json · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 brand-json: ${SITE_URL}/brand.json
 brand-json-well-known: ${SITE_URL}/.well-known/brand.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/
@@ -3903,6 +3976,19 @@ point-c-csv: ${SITE_URL}/feeds/point-c.csv
 point-c-en-csv: ${SITE_URL}/feeds/point-c-en.csv
 point-c-csv-root: ${SITE_URL}/point-c.csv
 point-c-en-csv-root: ${SITE_URL}/point-c-en.csv
+geo-status: ${SITE_URL}/geo-status.json
+geo-status-well-known: ${SITE_URL}/.well-known/geo-status.json
+owner-p0: ${SITE_URL}/owner-p0.json
+geo-next: ${SITE_URL}/geo-next.txt
+geo-next-well-known: ${SITE_URL}/.well-known/geo-next.txt
+owner-next-txt: ${SITE_URL}/owner-next.txt
+tur1a-json: ${SITE_URL}/tur1a.json
+tur1a-json-well-known: ${SITE_URL}/.well-known/tur1a.json
+tur1a-csv: ${SITE_URL}/feeds/tur1a.csv
+tur1a-csv-root: ${SITE_URL}/tur1a.csv
+point-c-progress: ${SITE_URL}/point-c-progress.json
+point-c-progress-well-known: ${SITE_URL}/.well-known/point-c-progress.json
+agents-md-well-known: ${SITE_URL}/.well-known/AGENTS.md
 owner-tur1a-next: npm run tur1a:next
 owner-tur1a-csv: npm run tur1a:csv
 owner-tur1a-log: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…
@@ -4432,11 +4518,8 @@ Acknowledgments: https://arledscreen.com/brand.json
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
-    // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
-    // point_c_wk, point_c_en, point_c_en_wk, point_c_json(+wk/en), point_c_csv,
-    // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, mpn_wk,
-    // merchant_wk, prices_wk, price_wk, entity_wk, prices_rss, org, geo, website,
-    // agents, ard, ai_txt, llms, llms_full, humans, agents_md, security_txt
+    // Trailing invent cols: … point_c(+en/json/csv), geo_status, geo_next, tur1a_json,
+    // tur1a_csv, brand_wk … security_txt
     const securityTxtUrl = cells[cells.length - 1];
     const agentsMdUrl = cells[cells.length - 2];
     const humansUrl = cells[cells.length - 3];
@@ -4460,21 +4543,25 @@ Acknowledgments: https://arledscreen.com/brand.json
     const skuWk = cells[cells.length - 21];
     const modulesWk = cells[cells.length - 22];
     const brandWk = cells[cells.length - 23];
-    const pointCCsvUrl = cells[cells.length - 24];
-    const pointCEnJsonWk = cells[cells.length - 25];
-    const pointCEnJsonUrl = cells[cells.length - 26];
-    const pointCJsonWk = cells[cells.length - 27];
-    const pointCJsonUrl = cells[cells.length - 28];
-    const pointCEnWk = cells[cells.length - 29];
-    const pointCEnUrl = cells[cells.length - 30];
-    const pointCWk = cells[cells.length - 31];
-    const pointCUrl = cells[cells.length - 32];
-    const profilesUrl = cells[cells.length - 33];
-    const catalogUrl = cells[cells.length - 34];
-    const pricesJsonUrl = cells[cells.length - 35];
-    const aiShoppingUrl = cells[cells.length - 36];
-    const shippingIncluded = cells[cells.length - 37];
-    const taxIncluded = cells[cells.length - 38];
+    const tur1aCsvUrl = cells[cells.length - 24];
+    const tur1aJsonUrl = cells[cells.length - 25];
+    const geoNextUrl = cells[cells.length - 26];
+    const geoStatusUrl = cells[cells.length - 27];
+    const pointCCsvUrl = cells[cells.length - 28];
+    const pointCEnJsonWk = cells[cells.length - 29];
+    const pointCEnJsonUrl = cells[cells.length - 30];
+    const pointCJsonWk = cells[cells.length - 31];
+    const pointCJsonUrl = cells[cells.length - 32];
+    const pointCEnWk = cells[cells.length - 33];
+    const pointCEnUrl = cells[cells.length - 34];
+    const pointCWk = cells[cells.length - 35];
+    const pointCUrl = cells[cells.length - 36];
+    const profilesUrl = cells[cells.length - 37];
+    const catalogUrl = cells[cells.length - 38];
+    const pricesJsonUrl = cells[cells.length - 39];
+    const aiShoppingUrl = cells[cells.length - 40];
+    const shippingIncluded = cells[cells.length - 41];
+    const taxIncluded = cells[cells.length - 42];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -4496,6 +4583,10 @@ Acknowledgments: https://arledscreen.com/brand.json
       pointCEnJsonUrl !== `${SITE_URL}/point-c-en.json` ||
       pointCEnJsonWk !== `${SITE_URL}/.well-known/point-c-en.json` ||
       pointCCsvUrl !== `${SITE_URL}/feeds/point-c.csv` ||
+      geoStatusUrl !== `${SITE_URL}/geo-status.json` ||
+      geoNextUrl !== `${SITE_URL}/geo-next.txt` ||
+      tur1aJsonUrl !== `${SITE_URL}/tur1a.json` ||
+      tur1aCsvUrl !== `${SITE_URL}/feeds/tur1a.csv` ||
       brandWk !== `${SITE_URL}/.well-known/brand.json` ||
       modulesWk !== `${SITE_URL}/.well-known/modules.json` ||
       skuWk !== `${SITE_URL}/.well-known/sku.json` ||

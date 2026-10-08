@@ -1,0 +1,392 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://arledscreen.com/tur1a.json",
+  "name": "ARLEDSCREEN Tur1a blind coverage",
+  "description": "Human blind Tur1a matrix (ChatGPT/Gemini/Perplexity/Google AI). Does not invent mention rates. Owner: npm run tur1a:next · tur1a:log · tur1a:csv · geo:next. CSV: /feeds/tur1a.csv.",
+  "url": "https://arledscreen.com/tur1a.json",
+  "creator": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "isBasedOn": [
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/#website",
+    "https://arledscreen.com/geo-status.json",
+    "https://arledscreen.com/geo-next.txt"
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tur1a.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/tur1a.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://arledscreen.com/feeds/tur1a.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://arledscreen.com/tur1a.csv"
+    }
+  ],
+  "coverage": {
+    "filled": 0,
+    "total": 48,
+    "locale": "tr"
+  },
+  "next": {
+    "platform": "chatgpt",
+    "promptId": "1",
+    "locale": "tr-TR",
+    "open": "https://chatgpt.com/",
+    "prompt": "Türkiye’de LED ekran firmaları hangileri? Kısa liste ve kaynak URL."
+  },
+  "cells": [
+    {
+      "platform": "chatgpt",
+      "promptId": "1",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "1",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "1",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "1",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "2",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "2",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "2",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "2",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "3",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "3",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "3",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "3",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "4",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "4",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "4",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "4",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "5",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "5",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "5",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "5",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "6",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "6",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "6",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "6",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "7",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "7",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "7",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "7",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "8",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "8",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "8",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "8",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "9",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "9",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "9",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "9",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "10",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "10",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "10",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "10",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "11",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "11",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "11",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "11",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    },
+    {
+      "platform": "chatgpt",
+      "promptId": "12",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://chatgpt.com/"
+    },
+    {
+      "platform": "gemini",
+      "promptId": "12",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://gemini.google.com/app"
+    },
+    {
+      "platform": "perplexity",
+      "promptId": "12",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.perplexity.ai/"
+    },
+    {
+      "platform": "google_aio",
+      "promptId": "12",
+      "locale": "tr-TR",
+      "status": "empty",
+      "open": "https://www.google.com/"
+    }
+  ],
+  "ownerNext": "npm run tur1a:next · tur1a:csv · after observe: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… · Open: https://chatgpt.com/"
+}
