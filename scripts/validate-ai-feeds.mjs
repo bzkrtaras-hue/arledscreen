@@ -2214,6 +2214,7 @@ if (fs.existsSync(outDir)) {
     }
     const pcJson = JSON.parse(fs.readFileSync(path.join(outDir, "point-c.json"), "utf8"));
     const pcCsv = fs.readFileSync(path.join(outDir, "feeds/point-c.csv"), "utf8");
+    const pcNext = pcJson?.next || {};
     if (
       !Array.isArray(pcJson?.packs) ||
       pcJson.packs.length < 11 ||
@@ -2222,12 +2223,16 @@ if (fs.existsSync(outDir)) {
       !pcCsv.includes("packKey,label,status,where,open") ||
       !pcCsv.includes("directoryLong") ||
       !pcCsv.includes("bingplaces.com") ||
+      !String(pcNext.packKey || "") ||
+      !String(pcNext.text || "") ||
+      !String(pcNext.open || "") ||
+      !String(pcNext.ackCommand || "").includes("point-c:ack") ||
       !fs.readFileSync(path.join(outDir, ".well-known/point-c.json")).equals(
         fs.readFileSync(path.join(outDir, "point-c.json")),
       ) ||
       fs.readFileSync(path.join(outDir, "point-c.csv"), "utf8") !== pcCsv
     ) {
-      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + Open URLs; well-known/root twins must match");
+      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs; well-known/root twins must match");
       process.exit(1);
     }
     for (const rel of [
@@ -2254,6 +2259,7 @@ if (fs.existsSync(outDir)) {
     const geoNext = fs.readFileSync(path.join(outDir, "geo-next.txt"), "utf8");
     const tur1a = JSON.parse(fs.readFileSync(path.join(outDir, "tur1a.json"), "utf8"));
     const tur1aCsv = fs.readFileSync(path.join(outDir, "feeds/tur1a.csv"), "utf8");
+    const pointCNext = geoStatus?.gates?.pointC?.next || {};
     if (
       !String(geoStatus?.priorityGate || "") ||
       !geoStatus?.gates?.pointC ||
@@ -2261,13 +2267,16 @@ if (fs.existsSync(outDir)) {
       !geoStatus?.gates?.tur1a ||
       !geoNext.includes("GEO next") ||
       !geoNext.includes("Open:") ||
+      !String(pointCNext.packKey || "") ||
+      !String(pointCNext.text || "") ||
+      !String(pointCNext.open || "") ||
       !Array.isArray(tur1a?.cells) ||
       tur1a.cells.length < 48 ||
       !tur1aCsv.includes("platform,promptId") ||
       !tur1aCsv.includes("chatgpt") ||
       fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
     ) {
-      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates (no invented scores)");
+      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + pointC.next.paste (no invented scores)");
       process.exit(1);
     }
   }
