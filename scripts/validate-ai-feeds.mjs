@@ -444,10 +444,55 @@ if (fs.existsSync(outDir)) {
     "/.well-known/ai.txt",
     "/.well-known/llms.txt",
     "/.well-known/llms-full.txt",
+    "/tr/calculator/",
+    "/en/calculator/",
+    "/tr/teklif/",
+    "/tr/teklif-al/",
+    "/tr/fiyat-teklifi/",
+    "/tr/contact/",
+    "/tr/fiyat/",
+    "/tr/fiyatlar/",
+    "/tr/prices/",
+    "/tr/pricing/",
+    "/tr/katalog/",
+    "/tr/catalog/",
+    "/tr/shop/",
+    "/tr/magaza/",
+    "/tr/faq/",
+    "/tr/gallery/",
+    "/tr/projects/",
+    "/tr/regions/",
+    "/tr/services/",
+    "/tr/brand/",
+    "/tr/modules/",
+    "/tr/gob/",
+    "/tr/indoor-led/",
+    "/tr/outdoor-led/",
+    "/tr/fine-pitch/",
+    "/tr/price-list/",
+    "/en/magaza/",
+    "/teklif/",
+    "/quote/",
+    "/fiyat/",
+    "/katalog/",
+    "/contact/",
+    "/nxtionstar/",
+    "/galeri/",
   ]) {
     if (!ard.robotsPolicy.allow.includes(must)) {
       console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
       process.exit(1);
+    }
+  }
+  // Every ARD trInventBridges.examples path must be in robotsPolicy.allow.
+  {
+    const examples = ard?.agentic?.resources?.trInventBridges?.examples || [];
+    for (const full of examples) {
+      const p = String(full).replace("https://arledscreen.com", "");
+      if (!ard.robotsPolicy.allow.includes(p)) {
+        console.error(`❌ ard.json robotsPolicy.allow must include trInventBridges ${p}`);
+        process.exit(1);
+      }
     }
   }
   if (

@@ -379,7 +379,17 @@ else fail("ard.resources.pointC");
     allow.includes("/modules") &&
     allow.includes("/product") &&
     allow.includes("/offer") &&
-    allow.includes("/.well-known/llms-full.txt")
+    allow.includes("/.well-known/llms-full.txt") &&
+    allow.includes("/tr/calculator/") &&
+    allow.includes("/en/calculator/") &&
+    allow.includes("/tr/teklif/") &&
+    allow.includes("/tr/catalog/") &&
+    allow.includes("/tr/gob/") &&
+    allow.includes("/katalog/") &&
+    allow.includes("/contact/") &&
+    (ard?.agentic?.resources?.trInventBridges?.examples || []).every((u) =>
+      allow.includes(String(u).replace("https://arledscreen.com", ""))
+    )
   ) {
     ok("ard invent allow + resources modules/sku + agents/security + aiShopping invent");
   } else fail("ard invent allow + resources modules/sku + agents/security + aiShopping invent");
