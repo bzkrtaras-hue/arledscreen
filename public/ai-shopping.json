@@ -4085,6 +4085,8 @@
     "pointCEnCsv": "https://arledscreen.com/feeds/point-c-en.csv",
     "pointCCsvRoot": "https://arledscreen.com/point-c.csv",
     "pointCEnCsvRoot": "https://arledscreen.com/point-c-en.csv",
+    "socialJson": "https://arledscreen.com/social.json",
+    "socialJsonWellKnown": "https://arledscreen.com/.well-known/social.json",
     "brand": "https://arledscreen.com/brand.json",
     "brandWellKnown": "https://arledscreen.com/.well-known/brand.json",
     "brandHub": "https://arledscreen.com/tr/nxtionstar/",

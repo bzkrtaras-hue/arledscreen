@@ -577,6 +577,9 @@ try {
     ownerNextHtml.includes('data-pack="instagramBio"') &&
     ownerNextHtml.includes('e.key === "f"') &&
     ownerNextHtml.includes('e.key === "i"') &&
+    ownerNextHtml.includes("maybeSocialJump") &&
+    ownerNextHtml.includes("socialQuery") &&
+    ownerNextHtml.includes("?social=fb|ig|wa") &&
     ownerNextHtml.includes("@arledscreenn") &&
     ownerNextHtml.includes("/social.json") &&
     Array.isArray(ownerNextJson?.gates?.tur1a?.cells) &&
@@ -634,7 +637,9 @@ try {
     String(ard?.agentic?.resources?.socialJson?.url || "").includes("/social.json") &&
     String(ard?.agentic?.resources?.socialJson?.handles?.facebook || "") === "arledscreenn" &&
     String(ard?.agentic?.resources?.socialJson?.handles?.instagram || "") === "arledscreen" &&
-    String(ard?.agentic?.resources?.socialJson?.handles?.whatsapp || "") === "arledscreen"
+    String(ard?.agentic?.resources?.socialJson?.handles?.whatsapp || "") === "arledscreen" &&
+    String(ard?.agentic?.resources?.socialJson?.deepLinks?.facebook || "").includes("social=fb") &&
+    String(ard?.agentic?.resources?.socialJson?.deepLinks?.instagram || "").includes("social=ig")
   ) {
     const progress = await getJson("/point-c-progress.json");
     const pcJsonCross = await getJson("/point-c.json");
@@ -816,8 +821,8 @@ else fail("ard.resources.pointC");
       );
     })
   ) {
-    ok(`ard invent all resources×${Object.keys(res).length} → owner-gate HowTo`);
-  } else fail("ard invent all resources → owner-gate HowTo");
+    ok(`ard invent all resources×${Object.keys(res).length} → owner-gate HowTo + socialJson`);
+  } else fail("ard invent all resources → owner-gate HowTo + socialJson");
 }
 
 try {

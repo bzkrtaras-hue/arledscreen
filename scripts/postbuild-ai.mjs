@@ -3818,12 +3818,17 @@ function enrichArdOwnerGateInvent() {
       url: `${SITE_URL}/social.json`,
       format: "application/ld+json",
       description:
-        "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen. Click-to-chat https://wa.me/905305078834. Aliases /contact.json · /.well-known/social.json. Cite with Point C IG/FB packs — do not invent handles.",
+        "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen. Click-to-chat https://wa.me/905305078834. Aliases /contact.json · /.well-known/social.json. Owner deep-links: /owner-next.html?social=fb|ig|wa (F/I keys). Cite with Point C IG/FB packs — do not invent handles.",
       wellKnown: `${SITE_URL}/.well-known/social.json`,
       handles: {
         facebook: "arledscreenn",
         instagram: "arledscreen",
         whatsapp: "arledscreen",
+      },
+      deepLinks: {
+        facebook: `${SITE_URL}/owner-next.html?social=fb`,
+        instagram: `${SITE_URL}/owner-next.html?social=ig`,
+        whatsapp: `${SITE_URL}/owner-next.html?social=wa`,
       },
       ownerNext: OWNER_FRICTION,
     },

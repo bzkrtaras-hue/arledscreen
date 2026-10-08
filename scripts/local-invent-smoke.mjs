@@ -584,6 +584,9 @@ else fail("ard.resources.pointC");
     html.includes('data-pack="instagramBio"') &&
     html.includes('e.key === "f"') &&
     html.includes('e.key === "i"') &&
+    html.includes("maybeSocialJump") &&
+    html.includes("socialQuery") &&
+    html.includes("?social=fb|ig|wa") &&
     html.includes("@arledscreenn") &&
     html.includes("@arledscreen") &&
     html.includes("/social.json") &&
@@ -739,7 +742,9 @@ else fail("ard.resources.pointC");
     String(res?.socialJson?.url || "").includes("/social.json") &&
     String(res?.socialJson?.handles?.facebook || "") === "arledscreenn" &&
     String(res?.socialJson?.handles?.instagram || "") === "arledscreen" &&
-    String(res?.socialJson?.handles?.whatsapp || "") === "arledscreen"
+    String(res?.socialJson?.handles?.whatsapp || "") === "arledscreen" &&
+    String(res?.socialJson?.deepLinks?.facebook || "").includes("social=fb") &&
+    String(res?.socialJson?.deepLinks?.instagram || "").includes("social=ig")
   ) {
     ok(`ard invent all resources×${Object.keys(res).length} → owner-gate HowTo + socialJson`);
   } else fail("ard invent all resources → owner-gate HowTo + socialJson");

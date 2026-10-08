@@ -528,7 +528,10 @@ export const OWNER_SOCIAL_HANDLES = {
   instagramUrl: "https://www.instagram.com/arledscreen",
   whatsappUrl: "https://wa.me/905305078834",
   socialJson: `${SITE}/social.json`,
-  line: "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json",
+  facebookDeep: `${SITE}/owner-next.html?social=fb`,
+  instagramDeep: `${SITE}/owner-next.html?social=ig`,
+  whatsappDeep: `${SITE}/owner-next.html?social=wa`,
+  line: "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json · deep: /owner-next.html?social=fb|ig|wa",
 };
 
 /** Browser deep-link for a Point C pack on the owner Open/paste surface. */
@@ -540,6 +543,14 @@ export function ownerNextHtmlUrl(packKey = "") {
 /** Session-start deep-link: auto Copy + Open remaining (C) on /owner-next.html. */
 export function ownerNextStartUrl() {
   return `${SITE}/owner-next.html?start=1`;
+}
+
+/** Social pack deep-link: jumpToSocialPack + profile tab (mirrors F/I keys; wa → wa.me). */
+export function ownerNextSocialUrl(network = "fb") {
+  const n = String(network || "fb").trim().toLowerCase();
+  const key =
+    n === "ig" || n === "instagram" ? "ig" : n === "wa" || n === "whatsapp" ? "wa" : "fb";
+  return `${SITE}/owner-next.html?social=${key}`;
 }
 
 /** Spreadsheet-ready Point C sequence (owner tracking). Does not invent citations. */
