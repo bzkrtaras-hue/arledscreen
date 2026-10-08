@@ -641,11 +641,13 @@ else fail("ard.resources.pointC");
     html.includes("withNextParam") &&
     html.includes("pack-deep-after") &&
     html.includes("n=1") &&
+    html.includes("`After: ${withNextParam") &&
     html.includes("packDeepLinkUrl(key)") &&
     html.includes("Deep/WA paste") &&
     html.includes("Open×") &&
     readText("AGENTS.md").includes("WA paste") &&
     readText("AGENTS.md").includes("Mail paste") &&
+    readText("AGENTS.md").includes("?n=1") &&
     readText("llms.txt").includes("WA paste") &&
     readText("llms.txt").includes("Mail paste") &&
     readText("humans.txt").includes("Mail paste") &&

@@ -178,6 +178,16 @@ function withOwnerCopy(href) {
   return u.includes("?") ? `${u}&copy=1` : `${u}?copy=1`;
 }
 
+/** After-paste deep-link: mark pasted + advance (N) via ?n=1 (no copy=1). */
+function withOwnerNext(href) {
+  const u = String(href || "")
+    .replace(/[?&]copy=1\b/g, "")
+    .replace(/\?&/, "?")
+    .replace(/\?$/, "");
+  if (!u || u.includes("start=1") || /[?&]n=/.test(u)) return u;
+  return u.includes("?") ? `${u}&n=1` : `${u}?n=1`;
+}
+
 /** Owner HTML for a pack — IG/FB prefer ?social= deep-links (jump + profile) + &copy=1. */
 function packOwnerHtml(key) {
   const k = String(key || "");
@@ -860,9 +870,11 @@ function printNext(profiles, { en = false } = {}) {
     "CSV: npm run point-c:csv · Live CSV: https://arledscreen.com/feeds/point-c.csv · JSON: https://arledscreen.com/point-c.json · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt",
   );
   const deep = ownerNextPackHtmlUrl(step.key);
+  const after = withOwnerNext(deep);
   console.log(`Deep: ${deep}`);
+  console.log(`After: ${after}`);
   console.log(
-    "Keys: C=Copy+Open remaining · D=Copy pack link · M=WA paste · E=Mail paste · F/I/W=social · https://arledscreen.com/owner-next.html?start=1",
+    "Keys: C=Copy+Open remaining · D=Copy pack link · M=WA paste · E=Mail paste · n=1=After paste advance · F/I/W=social · https://arledscreen.com/owner-next.html?start=1",
   );
 }
 

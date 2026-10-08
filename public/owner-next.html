@@ -963,6 +963,7 @@
           `=== ${key} (${i + 1}/${open.length}) ===`,
           handleLine,
           `Deep: ${packDeepLinkUrl(key)}`,
+          `After: ${withNextParam(packDeepLinkUrl(key).replace(/[?&]copy=1\b/g, "").replace(/\?&/, "?").replace(/\?$/, ""))}`,
           full.where ? `Where: ${full.where}` : "",
           full.open ? `Open: ${full.open}` : "",
           ...alts.map((href, j) => `OpenAlt${j === 0 ? "" : j + 1}: ${href}`),

@@ -617,6 +617,7 @@ try {
     ownerNextHtml.includes("withNextParam") &&
     ownerNextHtml.includes("pack-deep-after") &&
     ownerNextHtml.includes("n=1") &&
+    ownerNextHtml.includes("`After: ${withNextParam") &&
     ownerNextHtml.includes("packDeepLinkUrl(key)") &&
     ownerNextHtml.includes("Deep/WA paste") &&
     ownerNextHtml.includes("Open×") &&

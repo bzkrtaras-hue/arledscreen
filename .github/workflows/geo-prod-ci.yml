@@ -65,6 +65,8 @@ jobs:
           grep -q "social=ig" /tmp/geo-next.txt
           grep -q "social=fb&copy=1" /tmp/geo-next.txt
           grep -q "^Deep:" /tmp/geo-next.txt
+          grep -q "^After:" /tmp/geo-next.txt
+          grep -q "n=1=After paste advance" /tmp/geo-next.txt
           grep -q "E=Mail paste" /tmp/geo-next.txt
           npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
           test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
@@ -205,6 +207,7 @@ jobs:
           grep -q 'Copy pack link' out/AGENTS.md
           grep -q 'WA paste' out/AGENTS.md
           grep -q 'Mail paste' out/AGENTS.md
+          grep -q '?n=1' out/AGENTS.md
           grep -q 'WA paste' out/llms.txt
           grep -q 'Mail paste' out/llms.txt
           grep -q 'WA paste' out/humans.txt
@@ -386,4 +389,5 @@ jobs:
           grep -q "D=Copy pack link" /tmp/geo-status.txt
           grep -q "M=WA paste" /tmp/geo-status.txt
           grep -q "E=Mail paste" /tmp/geo-status.txt
+          grep -q "After ?n=1" /tmp/geo-status.txt
           echo "OK owner tooling"
