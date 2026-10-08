@@ -2405,8 +2405,16 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agents.json description/ownerNext must cite potentialAction HowTo + geo:next/ack + #website + point-c:csv Open tabs + gate invent joins");
     process.exit(1);
   }
-  if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 20) {
-    console.error("❌ agents.json must list ≥20 discovery items (incl. brand/prices.rss/point-c/organization/prices/point-c-en/#website/security/llms-full)");
+  if (
+    !Array.isArray(agents.itemListElement) ||
+    agents.itemListElement.length < 26 ||
+    Number(agents.numberOfItems) !== 26
+  ) {
+    console.error("❌ agents.json must list 26 discovery items (numberOfItems=26; incl. brand/prices.rss/point-c/geo-status/tur1a/progress/#website/security/llms-full)");
+    process.exit(1);
+  }
+  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (26)")) {
+    console.error("❌ ard.json agentsJson description must cite ItemList (26)");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/.well-known/security.txt"))) {

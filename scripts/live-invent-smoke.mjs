@@ -241,7 +241,9 @@ if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSi
 else fail("ai.txt WebSite + quote");
 
 if (
-  (agents.itemListElement || []).length >= 20 &&
+  (agents.itemListElement || []).length >= 26 &&
+  Number(agents.numberOfItems) === 26 &&
+  String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (26)") &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("#website")) &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/.well-known/security.txt")) &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/llms-full.txt")) &&
@@ -256,7 +258,7 @@ if (
   String(agents?.ownerNext || "").includes("https://chatgpt.com/")
 ) {
   ok(`agents.json ×${agents.itemListElement.length} incl #website + security + potentialAction HowTo invent`);
-} else fail("agents.json ≥20 incl #website + security + potentialAction HowTo invent");
+} else fail("agents.json ×26 incl #website + security + potentialAction HowTo invent");
 
 try {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
