@@ -96,6 +96,9 @@ if (acked < POINT_C_STEPS) {
       console.log(`OpenAlt2 (Gmail draft Send): ${mod.DNSENABLE_GMAIL_DRAFT_URL}`);
     }
     console.log("Draft clipboard: npm run point-c:dnsenable-draft · EML: npm run point-c:dnsenable-eml");
+    console.log(
+      "HTML: https://arledscreen.com/owner-next.html?dnsenable=1 (G / Copy+Open DNSEnable) · alias ?pack=hostinger301&copy=1",
+    );
   } catch {
     /* ignore prep block failures */
   }
@@ -131,7 +134,10 @@ if (probe.status !== 0) {
     console.log("");
   }
   console.log("Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md");
-  finish(0, "https://arledscreen.com/owner-next.html?pack=hostinger301");
+  console.log(
+    "HTML: https://arledscreen.com/owner-next.html?dnsenable=1 · alias https://arledscreen.com/owner-next.html?pack=hostinger301&copy=1",
+  );
+  finish(0, "https://arledscreen.com/owner-next.html?dnsenable=1");
 }
 
 const tur1a = runNode("scripts/tur1a-matrix.mjs", ["--next"]);

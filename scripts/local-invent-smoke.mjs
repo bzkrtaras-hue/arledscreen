@@ -640,6 +640,9 @@ else fail("ard.resources.pointC");
     html.includes("copy-open-dnsenable") &&
     html.includes("Copy+Open DNSEnable") &&
     html.includes('e.key === "g"') &&
+    html.includes("maybeDnsenableSession") &&
+    html.includes("dnsenableQuery") &&
+    html.includes("dnsenable=1") &&
     html.includes('e.key === "a"') &&
     html.includes('e.key === "y"') &&
     html.includes('e.key === "p"') &&
@@ -691,6 +694,7 @@ else fail("ard.resources.pointC");
     readText("AGENTS.md").includes("Copy+Open After") &&
     readText("AGENTS.md").includes("Y/P advance + Copy+Open next") &&
     readText("AGENTS.md").includes("Copy+Open DNSEnable") &&
+    readText("AGENTS.md").includes("dnsenable=1") &&
     readText("AGENTS.md").includes("next.htmlAfter") &&
     readText("AGENTS.md").includes("?n=1") &&
     readText("AGENTS.md").includes("after=1") &&

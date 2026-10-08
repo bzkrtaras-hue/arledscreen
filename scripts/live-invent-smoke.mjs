@@ -259,6 +259,7 @@ else fail("ai.txt WebSite + quote");
     agentsMd.includes("Copy+Open After") &&
     agentsMd.includes("Y/P advance + Copy+Open next") &&
     agentsMd.includes("Copy+Open DNSEnable") &&
+    agentsMd.includes("dnsenable=1") &&
     agentsMd.includes("next.htmlAfter") &&
     agentsMd.includes("after=1") &&
     agentsMd.includes("Copy+Open ack After hint")
@@ -625,6 +626,9 @@ try {
     ownerNextHtml.includes("copy-open-dnsenable") &&
     ownerNextHtml.includes("Copy+Open DNSEnable") &&
     ownerNextHtml.includes('e.key === "g"') &&
+    ownerNextHtml.includes("maybeDnsenableSession") &&
+    ownerNextHtml.includes("dnsenableQuery") &&
+    ownerNextHtml.includes("dnsenable=1") &&
     ownerNextHtml.includes('e.key === "a"') &&
     ownerNextHtml.includes('e.key === "y"') &&
     ownerNextHtml.includes('e.key === "p"') &&
