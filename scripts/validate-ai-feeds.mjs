@@ -4489,17 +4489,52 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     "/tr/teklif/",
     "/tr/teklif-al/",
     "/tr/fiyat-teklifi/",
+    "/tr/contact/",
     "/tr/fiyat/",
+    "/tr/fiyatlar/",
     "/tr/prices/",
+    "/tr/pricing/",
+    "/tr/katalog/",
     "/tr/catalog/",
+    "/tr/shop/",
+    "/tr/magaza/",
     "/tr/calculator/",
     "/en/calculator/",
     "/tr/faq/",
+    "/tr/gallery/",
+    "/tr/projects/",
+    "/tr/regions/",
+    "/tr/services/",
     "/tr/brand/",
+    "/tr/modules/",
+    "/tr/gob/",
+    "/tr/indoor-led/",
+    "/tr/outdoor-led/",
+    "/tr/fine-pitch/",
+    "/tr/price-list/",
+    "/en/magaza/",
+    "/katalog/",
+    "/contact/",
   ]) {
     if (!sitemapLive.includes(needle)) {
       console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);
       process.exit(1);
+    }
+  }
+  // ARD trInventBridges.examples with live HTML must all appear in sitemap.
+  {
+    const ardLive = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/ard.json"), "utf8"));
+    const examples = ardLive?.agentic?.resources?.trInventBridges?.examples || [];
+    for (const full of examples) {
+      const p = String(full).replace("https://arledscreen.com", "");
+      const rel = p.replace(/^\//, "").replace(/\/$/, "");
+      const htmlPath = path.join(outDir, rel, "index.html");
+      const filePath = path.join(outDir, rel.replace(/\/$/, ""));
+      const hasHtml = fs.existsSync(htmlPath) || (fs.existsSync(filePath) && fs.statSync(filePath).isFile());
+      if (hasHtml && !sitemapLive.includes(p)) {
+        console.error(`❌ out/sitemap.xml must list ARD trInventBridges HTML invent ${p}`);
+        process.exit(1);
+      }
     }
   }
   console.log("✅ sitemap.xml lists well-known panels/mpn/merchant invent aliases");
