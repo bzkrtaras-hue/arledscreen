@@ -679,36 +679,8 @@ else fail("ard.resources.pointC");
     JSON.stringify(res.brand?.distribution || []).includes("/geo-next.txt") &&
     JSON.stringify(res.brand?.distribution || []).includes("/tur1a.json") &&
     JSON.stringify(res.brand?.distribution || []).includes("/point-c-progress.json") &&
-    [
-      "geoBaseline",
-      "entityProfiles",
-      "pointC",
-      "pointCJson",
-      "aiShopping",
-      "entity",
-      "agentsJson",
-      "agentsJsonRoot",
-      "agentsMd",
-      "localBusiness",
-      "organization",
-      "catalog",
-      "website",
-      "pricesJson",
-      "merchantFeed",
-      "pricesRss",
-      "brandJson",
-      "humansTxt",
-      "securityTxt",
-      "llmsText",
-      "llmsFullText",
-      "aiTxt",
-      "pointCEn",
-      "pointCCsv",
-      "geoStatus",
-      "geoNext",
-      "tur1a",
-      "pointCProgress",
-    ].every((key) => {
+    Object.keys(res).every((key) => {
+      if (!res[key] || typeof res[key] !== "object") return true;
       const blob = JSON.stringify(res[key]?.subjectOf || []) + JSON.stringify(res[key]?.distribution || []);
       return (
         blob.includes("/point-c.json") &&
@@ -719,8 +691,8 @@ else fail("ard.resources.pointC");
       );
     })
   ) {
-    ok("ard invent high-traffic + core/agents* → owner-gate HowTo");
-  } else fail("ard invent high-traffic + core/agents* → owner-gate HowTo");
+    ok(`ard invent all resources×${Object.keys(res).length} → owner-gate HowTo`);
+  } else fail("ard invent all resources → owner-gate HowTo");
 }
 
 try {

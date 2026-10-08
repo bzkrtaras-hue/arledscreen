@@ -727,37 +727,9 @@ if (fs.existsSync(outDir)) {
           process.exit(1);
         }
       }
-      for (const key of [
-        "geoBaseline",
-        "entityProfiles",
-        "pointC",
-        "pointCJson",
-        "aiShopping",
-        "entity",
-        "agentsJson",
-        "agentsJsonRoot",
-        "agentsMd",
-        "localBusiness",
-        "organization",
-        "catalog",
-        "website",
-        "pricesJson",
-        "merchantFeed",
-        "pricesRss",
-        "brandJson",
-        "humansTxt",
-        "securityTxt",
-        "llmsText",
-        "llmsFullText",
-        "aiTxt",
-        "pointCEn",
-        "pointCCsv",
-        "geoStatus",
-        "geoNext",
-        "tur1a",
-        "pointCProgress",
-      ]) {
+      for (const key of Object.keys(ard?.agentic?.resources || {})) {
         const node = ard?.agentic?.resources?.[key];
+        if (!node || typeof node !== "object") continue;
         const sub = JSON.stringify(node?.subjectOf || []);
         const dist = JSON.stringify(node?.distribution || []);
         for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {

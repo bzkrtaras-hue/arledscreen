@@ -3685,7 +3685,7 @@ function enrichAgentsOwnerGateInvent() {
   fs.writeFileSync(outAgents, body);
 }
 
-/** ARD invent — core + agents* + high-traffic entity/price/discovery/gate → owner-gate HowTo. */
+/** ARD invent — all agentic.resources → owner-gate HowTo (core extras + full sweep). */
 function enrichArdOwnerGateInvent() {
   const ardPath = path.join(publicDir, ".well-known", "ard.json");
   if (!fs.existsSync(ardPath)) return;
@@ -3853,6 +3853,16 @@ function enrichArdOwnerGateInvent() {
     "pointCProgress",
   ];
   for (const key of highTrafficGateKeys) {
+    res[key] = mergeArdUrlInvent(res[key], {
+      subjectExtra: gates,
+      distExtra: coreDist,
+    });
+  }
+
+  // Sweep invent aliases + HTML hubs + any remaining resources → owner-gate HowTo.
+  // Idempotent: already-enriched nodes keep richer subject/dist extras above.
+  for (const key of Object.keys(res)) {
+    if (!res[key] || typeof res[key] !== "object") continue;
     res[key] = mergeArdUrlInvent(res[key], {
       subjectExtra: gates,
       distExtra: coreDist,

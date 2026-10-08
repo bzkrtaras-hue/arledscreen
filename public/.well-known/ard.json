@@ -182,71 +182,247 @@
         "type": "Price feed alias",
         "url": "https://arledscreen.com/panels.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (panels synonym; also /panels extensionless)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (panels synonym; also /panels extensionless) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "extensionless": "https://arledscreen.com/panels"
+        "extensionless": "https://arledscreen.com/panels",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "mpnJson": {
         "type": "Price feed alias",
         "url": "https://arledscreen.com/mpn.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (mpn=sku; also /mpn extensionless)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (mpn=sku; also /mpn extensionless) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "extensionless": "https://arledscreen.com/mpn",
-        "mpnEqualsSku": true
+        "mpnEqualsSku": true,
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "merchantJson": {
         "type": "Price feed alias",
         "url": "https://arledscreen.com/merchant.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (merchant synonym; also /merchant extensionless)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (merchant synonym; also /merchant extensionless) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "extensionless": "https://arledscreen.com/merchant"
+        "extensionless": "https://arledscreen.com/merchant",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "offerJson": {
         "type": "Price feed alias",
         "url": "https://arledscreen.com/offer.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (offer/offers synonyms)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (offer/offers synonyms) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "extensionless": "https://arledscreen.com/offer",
         "also": [
           "https://arledscreen.com/offers.json",
           "https://arledscreen.com/offers"
+        ],
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ]
       },
       "modulesJson": {
         "type": "Price feed alias",
         "url": "https://arledscreen.com/modules.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (modules synonym; /modules is image assets — use /modules.json)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (modules synonym; /modules is image assets — use /modules.json) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "wellKnown": "https://arledscreen.com/.well-known/modules.json"
+        "wellKnown": "https://arledscreen.com/.well-known/modules.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "skuJson": {
         "type": "Price feed alias",
         "url": "https://arledscreen.com/sku.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (sku synonym; also /sku extensionless)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (sku synonym; also /sku extensionless) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "extensionless": "https://arledscreen.com/sku",
-        "wellKnown": "https://arledscreen.com/.well-known/sku.json"
+        "wellKnown": "https://arledscreen.com/.well-known/sku.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "priceJson": {
         "type": "Price feed alias",
         "url": "https://arledscreen.com/price.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (price synonym)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (price synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "wellKnown": "https://arledscreen.com/.well-known/price.json"
+        "wellKnown": "https://arledscreen.com/.well-known/price.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "pricingJson": {
         "type": "Price feed alias",
         "url": "https://arledscreen.com/pricing.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (pricing synonym)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (pricing synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "wellKnown": "https://arledscreen.com/.well-known/pricing.json"
+        "wellKnown": "https://arledscreen.com/.well-known/pricing.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "brand": {
         "type": "Brand",
@@ -316,7 +492,9 @@
           "https://arledscreen.com/geo-status.json",
           "https://arledscreen.com/geo-next.txt",
           "https://arledscreen.com/tur1a.json",
-          "https://arledscreen.com/point-c-progress.json"
+          "https://arledscreen.com/point-c-progress.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json"
         ],
         "subjectOf": [
           "https://arledscreen.com/point-c.json",
@@ -506,7 +684,8 @@
           "https://arledscreen.com/geo-status.json",
           "https://arledscreen.com/geo-next.txt",
           "https://arledscreen.com/tur1a.json",
-          "https://arledscreen.com/point-c-progress.json"
+          "https://arledscreen.com/point-c-progress.json",
+          "https://arledscreen.com/entity-profiles.json"
         ],
         "ownerPlaybook": "docs/offsite-entity-playbook.md (repo; not a public URL — owner/PR ops for Google Business, directories, LinkedIn, Bing Places)",
         "subjectOf": [
@@ -549,7 +728,12 @@
           "https://arledscreen.com/geo-next.txt",
           "https://arledscreen.com/tur1a.json",
           "https://arledscreen.com/point-c-progress.json",
-          "https://arledscreen.com/#website"
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json"
         ]
       },
       "pointCEn": {
@@ -619,7 +803,12 @@
           "https://arledscreen.com/geo-next.txt",
           "https://arledscreen.com/tur1a.json",
           "https://arledscreen.com/point-c-progress.json",
-          "https://arledscreen.com/#website"
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json"
         ]
       },
       "pointCCsv": {
@@ -791,8 +980,30 @@
         "type": "AGENTS.md well-known invent alias",
         "url": "https://arledscreen.com/.well-known/AGENTS.md",
         "format": "text/markdown",
-        "description": "Well-known invent alias of /AGENTS.md",
-        "canonical": "https://arledscreen.com/AGENTS.md"
+        "description": "Well-known invent alias of /AGENTS.md Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "canonical": "https://arledscreen.com/AGENTS.md",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "humansTxt": {
         "type": "Humans Contact Pointer",
@@ -940,31 +1151,141 @@
         "type": "Price Landing Page",
         "url": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
         "format": "text/html",
-        "description": "Human-readable 2026 panel price table and examples"
+        "description": "Human-readable 2026 panel price table and examples Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "homeTr": {
         "type": "Landing Page",
         "url": "https://arledscreen.com/tr/",
         "format": "text/html",
-        "description": "Turkish home: entity + 12 panel Product/Offer JSON-LD and crawlable USD table (canonical SKU PDPs under /tr/products/...)"
+        "description": "Turkish home: entity + 12 panel Product/Offer JSON-LD and crawlable USD table (canonical SKU PDPs under /tr/products/...) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "productsHub": {
         "type": "Product Catalog Hub",
         "url": "https://arledscreen.com/tr/products/",
         "format": "text/html",
-        "description": "TR product hub with 12 panel Product/Offer graph and price table"
+        "description": "TR product hub with 12 panel Product/Offer graph and price table Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "intentHub": {
         "type": "Commercial Intent Hub",
         "url": "https://arledscreen.com/tr/led-ekran/",
         "format": "text/html",
-        "description": "Primary commercial intent landing with 12 panel Offers (pitch/use pages stay Dataset-only)"
+        "description": "Primary commercial intent landing with 12 panel Offers (pitch/use pages stay Dataset-only) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "yapayZeka": {
         "type": "AI Discovery Page",
         "url": "https://arledscreen.com/tr/yapay-zeka/",
         "format": "text/html",
-        "description": "AI/GEO discovery page with entity cite + 12 panel Offers (EN twin at /en/yapay-zeka/)"
+        "description": "AI/GEO discovery page with entity cite + 12 panel Offers (EN twin at /en/yapay-zeka/) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "website": {
         "type": "WebSite",
@@ -1005,102 +1326,454 @@
         "type": "Custom Quote Request",
         "url": "https://arledscreen.com/tr/quote/",
         "format": "text/html",
-        "description": "Entry point for quote-only product groups (transparent, flexible, rental, control); also emits 12 panel Offers. Machine OrderAction also on entity.json WebSite #website and /brand.json potentialAction."
+        "description": "Entry point for quote-only product groups (transparent, flexible, rental, control); also emits 12 panel Offers. Machine OrderAction also on entity.json WebSite #website and /brand.json potentialAction.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "calculator": {
         "type": "Interactive Tool",
         "url": "https://arledscreen.com/tr/hesaplayici/",
         "format": "text/html",
-        "description": "Live 2026 panel price calculator; approximate totals for planning"
+        "description": "Live 2026 panel price calculator; approximate totals for planning Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enHome": {
         "type": "Landing Page",
         "url": "https://arledscreen.com/en/",
         "format": "text/html",
-        "description": "English hub: entity + 12 panel Offers, calculator and quote (TR PDPs remain canonical for priced SKUs)"
+        "description": "English hub: entity + 12 panel Offers, calculator and quote (TR PDPs remain canonical for priced SKUs) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enQuote": {
         "type": "Custom Quote Request",
         "url": "https://arledscreen.com/en/quote/",
         "format": "text/html",
-        "description": "English quote form for survey-based projects; 12 panel Product/Offer JSON-LD"
+        "description": "English quote form for survey-based projects; 12 panel Product/Offer JSON-LD Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enCalculator": {
         "type": "Interactive Tool",
         "url": "https://arledscreen.com/en/hesaplayici/",
         "format": "text/html",
-        "description": "English calculator with the same 12 panel USD Product/Offer graph"
+        "description": "English calculator with the same 12 panel USD Product/Offer graph Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enIntentHub": {
         "type": "Commercial Intent Hub",
         "url": "https://arledscreen.com/en/led-ekran/",
         "format": "text/html",
-        "description": "English commercial intent hub with 12 panel Offers"
+        "description": "English commercial intent hub with 12 panel Offers Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enPriceHub": {
         "type": "Price Landing Page",
         "url": "https://arledscreen.com/en/led-ekran-fiyatlari/",
         "format": "text/html",
-        "description": "English human-readable panel USD hub (same 12 SKUs as ai-shopping.json)"
+        "description": "English human-readable panel USD hub (same 12 SKUs as ai-shopping.json) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enProductsHub": {
         "type": "Product Catalog Hub",
         "url": "https://arledscreen.com/en/products/",
         "format": "text/html",
-        "description": "English product-group hub; priced SKU PDPs remain under /tr/products/..."
+        "description": "English product-group hub; priced SKU PDPs remain under /tr/products/... Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enServicesHub": {
         "type": "Service Hub",
         "url": "https://arledscreen.com/en/hizmetler/",
         "format": "text/html",
-        "description": "English survey/install/service hub with HowTo + FAQ"
+        "description": "English survey/install/service hub with HowTo + FAQ Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enRegionsHub": {
         "type": "Service Regions Hub",
         "url": "https://arledscreen.com/en/bolgeler/",
         "format": "text/html",
-        "description": "English regions hub; province detail pages stay TR; no 81-city spam"
+        "description": "English regions hub; province detail pages stay TR; no 81-city spam Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enProjectsHub": {
         "type": "Projects Hub",
         "url": "https://arledscreen.com/en/projelerimiz/",
         "format": "text/html",
-        "description": "English projects/references hub; case-study detail pages stay TR"
+        "description": "English projects/references hub; case-study detail pages stay TR Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enGallery": {
         "type": "Gallery",
         "url": "https://arledscreen.com/en/galeri/",
         "format": "text/html",
-        "description": "English install gallery by use-case category"
+        "description": "English install gallery by use-case category Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enFounder": {
         "type": "Person / E-E-A-T",
         "url": "https://arledscreen.com/en/about/aras-bozkurt/",
         "format": "text/html",
-        "description": "English founder page (Aras Bozkurt) with Person JSON-LD and arleds.com disambiguation"
+        "description": "English founder page (Aras Bozkurt) with Person JSON-LD and arleds.com disambiguation Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enBlog": {
         "type": "Blog Index",
         "url": "https://arledscreen.com/en/blog/",
         "format": "text/html",
-        "description": "English blog index; post bodies remain Turkish (trust content, not commercial cluster)"
+        "description": "English blog index; post bodies remain Turkish (trust content, not commercial cluster) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "privacyTr": {
         "type": "Privacy / KVKK",
         "url": "https://arledscreen.com/tr/gizlilik/",
         "format": "text/html",
-        "description": "Turkish privacy notice (form data handling; not a price source)"
+        "description": "Turkish privacy notice (form data handling; not a price source) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "privacyEn": {
         "type": "Privacy / KVKK",
         "url": "https://arledscreen.com/en/gizlilik/",
         "format": "text/html",
-        "description": "English privacy notice; inventable /en/privacy/ bridges here"
+        "description": "English privacy notice; inventable /en/privacy/ bridges here Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "enInventBridges": {
         "type": "Inventable Path Bridges",
         "format": "text/html",
-        "description": "Noindex EN synonym bridges (CF 404.html beats _redirects). Canonical hubs keep TR path shapes under /en/.",
+        "description": "Noindex EN synonym bridges (CF 404.html beats _redirects). Canonical hubs keep TR path shapes under /en/. Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "examples": [
           "https://arledscreen.com/en/calculator/",
           "https://arledscreen.com/en/faq/",
@@ -1141,12 +1814,34 @@
           "https://arledscreen.com/api/v1/prices",
           "https://arledscreen.com/AGENTS.md",
           "https://arledscreen.com/security.txt"
+        ],
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ]
       },
       "trInventBridges": {
         "type": "Inventable Path Bridges",
         "format": "text/html",
-        "description": "Noindex TR synonym bridges (CF 404.html beats _redirects). Mirrors EN invent vocab under /tr/ plus TR quote/price/catalog invents. Lean — no 81-il doorways.",
+        "description": "Noindex TR synonym bridges (CF 404.html beats _redirects). Mirrors EN invent vocab under /tr/ plus TR quote/price/catalog invents. Lean — no 81-il doorways. Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "quoteCanonical": "https://arledscreen.com/tr/quote/",
         "priceCanonical": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
         "productsCanonical": "https://arledscreen.com/tr/products/",
@@ -1221,6 +1916,28 @@
           "https://arledscreen.com/api/mpn",
           "https://arledscreen.com/api/entity",
           "https://arledscreen.com/.well-known/security"
+        ],
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ]
       },
       "agentsJson": {
@@ -1330,81 +2047,235 @@
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/api/v1/prices",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json under /api/v1/prices",
+        "description": "Byte-identical inventable alias of ai-shopping.json under /api/v1/prices Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "also": [
           "https://arledscreen.com/api/prices",
           "https://arledscreen.com/api/mpn",
           "https://arledscreen.com/api/merchant",
           "https://arledscreen.com/api/panels.json"
+        ],
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ]
       },
       "v1Prices": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/v1/prices",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json under /v1/*",
+        "description": "Byte-identical inventable alias of ai-shopping.json under /v1/* Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "also": [
           "https://arledscreen.com/v1/panels",
           "https://arledscreen.com/v1/merchant",
           "https://arledscreen.com/v1/mpn",
           "https://arledscreen.com/v1/sku"
+        ],
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ]
       },
       "dataPrices": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/data/prices.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json under /data/prices.json",
+        "description": "Byte-identical inventable alias of ai-shopping.json under /data/prices.json Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "catalog": "https://arledscreen.com/data/catalog.json"
+        "catalog": "https://arledscreen.com/data/catalog.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "feedsPricesJson": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/feeds/prices.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json under /feeds/prices.json (JSON twin of prices.rss)",
+        "description": "Byte-identical inventable alias of ai-shopping.json under /feeds/prices.json (JSON twin of prices.rss) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "catalog": "https://arledscreen.com/feeds/catalog.json"
+        "catalog": "https://arledscreen.com/feeds/catalog.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "localePrices": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/en/prices.json",
         "format": "application/ld+json",
-        "description": "Locale-prefixed inventable aliases of ai-shopping.json (EN/TR)",
+        "description": "Locale-prefixed inventable aliases of ai-shopping.json (EN/TR) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "also": [
           "https://arledscreen.com/tr/prices.json",
           "https://arledscreen.com/en/ai-shopping.json",
           "https://arledscreen.com/tr/ai-shopping.json"
+        ],
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ]
       },
       "apiEntity": {
         "type": "Organization invent alias",
         "url": "https://arledscreen.com/api/entity",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of entity.json under /api/entity(+.json)",
+        "description": "Byte-identical inventable alias of entity.json under /api/entity(+.json) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/entity.json",
         "also": [
           "https://arledscreen.com/api/entity.json"
+        ],
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ]
       },
       "apiCatalog": {
         "type": "Catalog invent alias",
         "url": "https://arledscreen.com/api/catalog.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of catalog.json under /api/catalog(+.json) and /api/products",
+        "description": "Byte-identical inventable alias of catalog.json under /api/catalog(+.json) and /api/products Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/catalog.json",
         "also": [
           "https://arledscreen.com/api/catalog",
           "https://arledscreen.com/api/products"
+        ],
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ]
       },
       "localeInvent": {
         "type": "Locale invent aliases",
         "format": "application/ld+json",
-        "description": "EN/TR prefixed byte-identical inventable aliases for pricedPanels, catalog, entity, geo, profiles, and discovery text",
+        "description": "EN/TR prefixed byte-identical inventable aliases for pricedPanels, catalog, entity, geo, profiles, and discovery text Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "pricedPanels": [
           "https://arledscreen.com/en/prices.json",
           "https://arledscreen.com/tr/prices.json",
@@ -1439,176 +2310,660 @@
           "https://arledscreen.com/en/ai.txt",
           "https://arledscreen.com/tr/ai.txt",
           "https://arledscreen.com/agent.json"
+        ],
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
         ]
       },
       "datasetJson": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/dataset.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (dataset synonym)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (dataset synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "extensionless": "https://arledscreen.com/dataset",
-        "wellKnown": "https://arledscreen.com/.well-known/dataset.json"
+        "wellKnown": "https://arledscreen.com/.well-known/dataset.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "productsJson": {
         "type": "Catalog invent alias",
         "url": "https://arledscreen.com/products.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of catalog.json (products synonym)",
+        "description": "Byte-identical inventable alias of catalog.json (products synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/catalog.json",
         "extensionless": "https://arledscreen.com/products",
         "product": "https://arledscreen.com/product.json",
         "productExtless": "https://arledscreen.com/product",
-        "wellKnown": "https://arledscreen.com/.well-known/products.json"
+        "wellKnown": "https://arledscreen.com/.well-known/products.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "brandExtless": {
         "type": "Brand invent alias",
         "url": "https://arledscreen.com/brand",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of brand.json (Pages Function; /brand/* assets intact)",
+        "description": "Extensionless inventable alias of brand.json (Pages Function; /brand/* assets intact) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/brand.json",
-        "wellKnown": "https://arledscreen.com/.well-known/brand.json"
+        "wellKnown": "https://arledscreen.com/.well-known/brand.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "modulesExtless": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/modules",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of ai-shopping.json (Pages Function; /modules/* image assets intact)",
+        "description": "Extensionless inventable alias of ai-shopping.json (Pages Function; /modules/* image assets intact) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "modulesJson": "https://arledscreen.com/modules.json",
-        "wellKnown": "https://arledscreen.com/.well-known/modules.json"
+        "wellKnown": "https://arledscreen.com/.well-known/modules.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "feedJson": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/feed.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (feed synonym)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (feed synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "extensionless": "https://arledscreen.com/feed",
-        "wellKnown": "https://arledscreen.com/.well-known/feed.json"
+        "wellKnown": "https://arledscreen.com/.well-known/feed.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "productExtless": {
         "type": "Catalog invent alias",
         "url": "https://arledscreen.com/product",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of catalog.json (product synonym)",
+        "description": "Extensionless inventable alias of catalog.json (product synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/catalog.json",
-        "productJson": "https://arledscreen.com/product.json"
+        "productJson": "https://arledscreen.com/product.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "entityExtless": {
         "type": "Organization invent alias",
         "url": "https://arledscreen.com/entity",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of entity.json",
-        "canonical": "https://arledscreen.com/entity.json"
+        "description": "Extensionless inventable alias of entity.json Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "canonical": "https://arledscreen.com/entity.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "catalogExtless": {
         "type": "Catalog invent alias",
         "url": "https://arledscreen.com/catalog",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of catalog.json",
-        "canonical": "https://arledscreen.com/catalog.json"
+        "description": "Extensionless inventable alias of catalog.json Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "canonical": "https://arledscreen.com/catalog.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "geoBaselineExtless": {
         "type": "GEO invent alias",
         "url": "https://arledscreen.com/geo-baseline",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of geo-baseline.json",
-        "canonical": "https://arledscreen.com/geo-baseline.json"
+        "description": "Extensionless inventable alias of geo-baseline.json Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "canonical": "https://arledscreen.com/geo-baseline.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "aiShoppingExtless": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/ai-shopping",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of ai-shopping.json",
-        "canonical": "https://arledscreen.com/ai-shopping.json"
+        "description": "Extensionless inventable alias of ai-shopping.json Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "entityProfilesExtless": {
         "type": "Point C invent alias",
         "url": "https://arledscreen.com/entity-profiles",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of entity-profiles.json",
-        "canonical": "https://arledscreen.com/entity-profiles.json"
+        "description": "Extensionless inventable alias of entity-profiles.json Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "canonical": "https://arledscreen.com/entity-profiles.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "llmsExtless": {
         "type": "LLM Context invent alias",
         "url": "https://arledscreen.com/llms",
         "format": "text/plain",
-        "description": "Extensionless inventable alias of llms.txt",
+        "description": "Extensionless inventable alias of llms.txt Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/llms.txt",
-        "llmsFull": "https://arledscreen.com/llms-full"
+        "llmsFull": "https://arledscreen.com/llms-full",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "securityRoot": {
         "type": "security.txt invent alias",
         "url": "https://arledscreen.com/security.txt",
         "format": "text/plain",
-        "description": "Root + extensionless inventable aliases of RFC 9116 security.txt",
+        "description": "Root + extensionless inventable aliases of RFC 9116 security.txt Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/.well-known/security.txt",
-        "extensionless": "https://arledscreen.com/.well-known/security"
+        "extensionless": "https://arledscreen.com/.well-known/security",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "offersJson": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/offers.json",
         "format": "application/ld+json",
-        "description": "Byte-identical inventable alias of ai-shopping.json (offers synonym)",
+        "description": "Byte-identical inventable alias of ai-shopping.json (offers synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "extensionless": "https://arledscreen.com/offers",
-        "wellKnown": "https://arledscreen.com/.well-known/offers.json"
+        "wellKnown": "https://arledscreen.com/.well-known/offers.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "panelsExtless": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/panels",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of ai-shopping.json (panels synonym)",
+        "description": "Extensionless inventable alias of ai-shopping.json (panels synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "panelsJson": "https://arledscreen.com/panels.json"
+        "panelsJson": "https://arledscreen.com/panels.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "mpnExtless": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/mpn",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of ai-shopping.json (mpn=sku)",
+        "description": "Extensionless inventable alias of ai-shopping.json (mpn=sku) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "mpnJson": "https://arledscreen.com/mpn.json"
+        "mpnJson": "https://arledscreen.com/mpn.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "merchantExtless": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/merchant",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of ai-shopping.json (merchant synonym)",
+        "description": "Extensionless inventable alias of ai-shopping.json (merchant synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "merchantJson": "https://arledscreen.com/merchant.json"
+        "merchantJson": "https://arledscreen.com/merchant.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "skuExtless": {
         "type": "Price feed invent alias",
         "url": "https://arledscreen.com/sku",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of ai-shopping.json (sku synonym)",
+        "description": "Extensionless inventable alias of ai-shopping.json (sku synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/ai-shopping.json",
-        "skuJson": "https://arledscreen.com/sku.json"
+        "skuJson": "https://arledscreen.com/sku.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "organizationExtless": {
         "type": "Organization invent alias",
         "url": "https://arledscreen.com/organization",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of entity.json",
-        "canonical": "https://arledscreen.com/entity.json"
+        "description": "Extensionless inventable alias of entity.json Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "canonical": "https://arledscreen.com/entity.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "citeExtless": {
         "type": "Organization invent alias",
         "url": "https://arledscreen.com/cite",
         "format": "application/ld+json",
-        "description": "Extensionless inventable alias of entity.json (cite synonym)",
+        "description": "Extensionless inventable alias of entity.json (cite synonym) Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/entity.json",
-        "citeJson": "https://arledscreen.com/cite.json"
+        "citeJson": "https://arledscreen.com/cite.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "pointCWellKnown": {
         "type": "Point C invent alias",
         "url": "https://arledscreen.com/.well-known/point-c.txt",
         "format": "text/plain",
-        "description": "Well-known inventable alias of point-c.txt paste packs",
+        "description": "Well-known inventable alias of point-c.txt paste packs Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/point-c.txt",
-        "en": "https://arledscreen.com/point-c-en.txt"
+        "en": "https://arledscreen.com/point-c-en.txt",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       },
       "agentsJsonRoot": {
         "type": "Agent Discovery Index invent alias",
@@ -1656,9 +3011,31 @@
         "type": "Agent Discovery Index invent alias",
         "url": "https://arledscreen.com/agent.json",
         "format": "application/ld+json",
-        "description": "Root agent.json inventable alias of /.well-known/agents.json",
+        "description": "Root agent.json inventable alias of /.well-known/agents.json Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "canonical": "https://arledscreen.com/.well-known/agents.json",
-        "wellKnown": "https://arledscreen.com/.well-known/agent.json"
+        "wellKnown": "https://arledscreen.com/.well-known/agent.json",
+        "subjectOf": [
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ],
+        "distribution": [
+          "https://arledscreen.com/ai-shopping.json",
+          "https://arledscreen.com/catalog.json",
+          "https://arledscreen.com/entity.json",
+          "https://arledscreen.com/brand.json",
+          "https://arledscreen.com/geo-baseline.json",
+          "https://arledscreen.com/entity-profiles.json",
+          "https://arledscreen.com/point-c.txt",
+          "https://arledscreen.com/#website",
+          "https://arledscreen.com/point-c.json",
+          "https://arledscreen.com/geo-status.json",
+          "https://arledscreen.com/geo-next.txt",
+          "https://arledscreen.com/tur1a.json",
+          "https://arledscreen.com/point-c-progress.json"
+        ]
       }
     },
     "cite": {
