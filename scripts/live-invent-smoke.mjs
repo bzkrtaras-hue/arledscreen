@@ -525,14 +525,18 @@ try {
     ownerNextHtml.includes("/geo-status.json") &&
     ownerNextHtml.includes("pack-list") &&
     ownerNextHtml.includes("howto-ld") &&
+    ownerNextHtml.includes("Copy Open URL") &&
+    ownerNextHtml.includes("copy-ack") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&
     String(pointCNext.packKey || "") === "directoryLong" &&
     String(pointCNext.text || "").includes("34245") &&
     String(pointCNext.open || "").includes("bingplaces.com") &&
+    String(pointCNext.html || "").includes("?pack=directoryLong") &&
     Array.isArray(geoStatus?.gates?.pointC?.packs) &&
     geoStatus.gates.pointC.packs.length >= 11 &&
-    String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html") &&
+    String(geoStatus?.potentialAction?.url || "").includes("?pack=") &&
+    String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") &&
     String(geoStatus?.priorityGate || "") === "pointC" &&
     geoStatus?.potentialAction?.["@type"] === "HowTo" &&
     String(geoStatus?.potentialAction?.name || "").includes("directoryLong") &&
@@ -582,7 +586,9 @@ try {
       String(progress?.potentialAction?.name || "").includes("directoryLong") &&
       Array.isArray(progress?.packs) &&
       progress.packs.length >= 11 &&
-      String(progress?.potentialAction?.url || "").includes("/owner-next.html") &&
+      progress.packs.some((p) => String(p?.html || "").includes("?pack=directoryLong")) &&
+      String(progress?.next?.html || "").includes("?pack=") &&
+      String(progress?.potentialAction?.url || "").includes("?pack=") &&
       (progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html")) &&
       crossOk
     ) {

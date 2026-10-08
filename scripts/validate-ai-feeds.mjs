@@ -1934,9 +1934,10 @@ if (fs.existsSync(outDir)) {
     !geoNextSrc.includes("point-c:dnsenable-draft") ||
     !geoNextSrc.includes("Queued after Point C") ||
     !geoNextSrc.includes("Open:") ||
-    !geoNextSrc.includes("owner-next.html")
+    !geoNextSrc.includes("owner-next.html") ||
+    !geoNextSrc.includes("?pack=")
   ) {
-    console.error("❌ scripts/geo-next.mjs must surface point-c:csv + playbook + DNSEnable Open/OpenAlt prep + dnsenable-draft + owner-next.html");
+    console.error("❌ scripts/geo-next.mjs must surface point-c:csv + playbook + DNSEnable Open/OpenAlt prep + dnsenable-draft + owner-next.html?pack=");
     process.exit(1);
   }
   const pointCPacksSrc = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
@@ -2495,15 +2496,22 @@ if (fs.existsSync(outDir)) {
       !Array.isArray(progress?.packs) ||
       progress.packs.length < 11 ||
       !progress.packs.some((p) => String(p?.packKey || "") === "directoryLong") ||
+      !progress.packs.some((p) => String(p?.html || "").includes("?pack=directoryLong")) ||
+      !String(progressNext.html || "").includes("?pack=") ||
       !String(progress?.potentialAction?.url || "").includes("/owner-next.html") ||
+      !String(progress?.potentialAction?.url || "").includes("?pack=") ||
       !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html")) ||
       !Array.isArray(geoStatus?.gates?.pointC?.packs) ||
       geoStatus.gates.pointC.packs.length < 11 ||
       !String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html") ||
+      !String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") ||
+      !String(geoStatus?.gates?.arleds301?.html || "").includes("hostinger301") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-list") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("howto-ld")
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("howto-ld") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy Open URL") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-ack")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs checklist + owner-next.html HowTo/pack-list required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next Copy Open/ack required");
       process.exit(1);
     }
     {

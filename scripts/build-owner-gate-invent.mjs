@@ -8,10 +8,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  buildArleds301DualPathClipboard,
   buildPointCNext,
   buildPointCPackChecklist,
   DNSENABLE_GMAIL_DRAFT_URL,
   DNSENABLE_PANEL_URL,
+  ownerNextHtmlUrl,
 } from "./print-point-c-packs.mjs";
 import { HUMAN_PLATFORMS, TR, platformOpenUrl } from "./print-tur1a-prompts.mjs";
 import { applyOwnerGateCrossJoin } from "./owner-gate-cross-join.mjs";
@@ -201,7 +203,7 @@ export function buildGeoStatusDoc() {
           txt: `${SITE}/point-c.txt`,
           json: `${SITE}/point-c.json`,
           csv: `${SITE}/feeds/point-c.csv`,
-          html: `${SITE}/owner-next.html`,
+          html: pointCNext?.html || ownerNextHtmlUrl(pointCNext?.packKey || ""),
         },
         afterPaste: "npm run point-c:ack",
       },
@@ -211,8 +213,13 @@ export function buildGeoStatusDoc() {
         target: `${SITE}/tr/`,
         open: arleds.open,
         openAlt: arleds.openAlt || "",
+        openAlts: [arleds.openAlt || "", "https://dash.cloudflare.com/"].filter(Boolean),
+        html: ownerNextHtmlUrl("hostinger301"),
+        text: buildArleds301DualPathClipboard(),
+        where: "Isimtescil/DNSEnable Domain Redirect first (live NS) · Cloudflare Bulk Redirect Option B",
         verify: "npm run verify:arleds-301",
         docs: "docs/ops/arleds-301-hostinger.md",
+        ackCommand: "npm run verify:arleds-301",
       },
       tur1a: {
         status: tur1aDone ? "OK" : "OPEN",
@@ -245,7 +252,7 @@ export function buildGeoStatusDoc() {
       name: `Point C next paste: ${pointCNext.packKey}`,
       description:
         "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
-      url: `${SITE}/owner-next.html`,
+      url: pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey),
       step: [
         {
           "@type": "HowToStep",
@@ -253,10 +260,10 @@ export function buildGeoStatusDoc() {
           name: "Open destination",
           url: pointCNext.open,
           text: Array.isArray(pointCNext.openAlts) && pointCNext.openAlts.length
-            ? `Open: ${pointCNext.open} · ${pointCNext.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")}`
+            ? `Open: ${pointCNext.open} · ${pointCNext.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · HTML: ${pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey)}`
             : pointCNext.openAlt
-              ? `Open: ${pointCNext.open} · OpenAlt: ${pointCNext.openAlt}`
-              : `Open: ${pointCNext.open}`,
+              ? `Open: ${pointCNext.open} · OpenAlt: ${pointCNext.openAlt} · HTML: ${pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey)}`
+              : `Open: ${pointCNext.open} · HTML: ${pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey)}`,
         },
         {
           "@type": "HowToStep",
@@ -272,7 +279,11 @@ export function buildGeoStatusDoc() {
         },
       ],
       tool: [
-        { "@type": "HowToTool", name: "owner-next.html", url: `${SITE}/owner-next.html` },
+        {
+          "@type": "HowToTool",
+          name: "owner-next.html",
+          url: pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey),
+        },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
@@ -284,8 +295,8 @@ export function buildGeoStatusDoc() {
       "@type": "HowTo",
       name: "arleds.com 301 Domain Redirect (DNSEnable)",
       description:
-        "Owner-gated legacy domain redirect. Configure permanent 301 to /tr/ — do not invent DNS or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
-      url: `${SITE}/owner-next.html`,
+        "Owner-gated legacy domain redirect. Configure permanent 301 to /tr/ — do not invent DNS or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html?pack=hostinger301",
+      url: ownerNextHtmlUrl("hostinger301"),
       step: [
         {
           "@type": "HowToStep",
@@ -293,14 +304,14 @@ export function buildGeoStatusDoc() {
           name: "Open DNSEnable / Isimtescil",
           url: arleds.open,
           text: arleds.openAlt
-            ? `Open: ${arleds.open} · OpenAlt: ${arleds.openAlt}`
-            : `Open: ${arleds.open}`,
+            ? `Open: ${arleds.open} · OpenAlt: ${arleds.openAlt} · HTML: ${ownerNextHtmlUrl("hostinger301")}`
+            : `Open: ${arleds.open} · HTML: ${ownerNextHtmlUrl("hostinger301")}`,
         },
         {
           "@type": "HowToStep",
           position: 2,
           name: "Set permanent Domain Redirect",
-          text: `Permanent 301 → ${SITE}/tr/ (mode was ${arleds.mode || "unknown"})`,
+          text: buildArleds301DualPathClipboard(),
         },
         {
           "@type": "HowToStep",
@@ -310,7 +321,11 @@ export function buildGeoStatusDoc() {
         },
       ],
       tool: [
-        { "@type": "HowToTool", name: "owner-next.html", url: `${SITE}/owner-next.html` },
+        {
+          "@type": "HowToTool",
+          name: "owner-next.html",
+          url: ownerNextHtmlUrl("hostinger301"),
+        },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
         {
@@ -445,7 +460,7 @@ export function buildPointCProgressDoc() {
       name: `Point C next paste: ${next.packKey}`,
       description:
         "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
-      url: `${SITE}/owner-next.html`,
+      url: next.html || ownerNextHtmlUrl(next.packKey),
       step: [
         {
           "@type": "HowToStep",
@@ -453,10 +468,10 @@ export function buildPointCProgressDoc() {
           name: "Open destination",
           url: next.open,
           text: Array.isArray(next.openAlts) && next.openAlts.length
-            ? `Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")}`
+            ? `Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`
             : next.openAlt
-              ? `Open: ${next.open} · OpenAlt: ${next.openAlt}`
-              : `Open: ${next.open}`,
+              ? `Open: ${next.open} · OpenAlt: ${next.openAlt} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`
+              : `Open: ${next.open} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`,
         },
         {
           "@type": "HowToStep",
@@ -472,7 +487,11 @@ export function buildPointCProgressDoc() {
         },
       ],
       tool: [
-        { "@type": "HowToTool", name: "owner-next.html", url: `${SITE}/owner-next.html` },
+        {
+          "@type": "HowToTool",
+          name: "owner-next.html",
+          url: next.html || ownerNextHtmlUrl(next.packKey),
+        },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },

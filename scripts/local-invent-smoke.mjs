@@ -473,10 +473,13 @@ if (
         String(progress?.potentialAction?.name || "").includes("directoryLong") &&
         Array.isArray(progress?.packs) &&
         progress.packs.length >= 11 &&
-        String(progress?.potentialAction?.url || "").includes("/owner-next.html") &&
+        progress.packs.some((p) => String(p?.html || "").includes("?pack=directoryLong")) &&
+        String(progress?.next?.html || "").includes("?pack=") &&
+        String(progress?.potentialAction?.url || "").includes("?pack=") &&
         Array.isArray(geoStatus?.gates?.pointC?.packs) &&
         geoStatus.gates.pointC.packs.length >= 11 &&
         String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html") &&
+        String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") &&
         crossOk
       );
     })() &&
@@ -515,6 +518,9 @@ else fail("ard.resources.pointC");
     html.includes("/geo-status.json") &&
     html.includes("pack-list") &&
     html.includes("howto-ld") &&
+    html.includes("Copy Open URL") &&
+    html.includes("copy-ack") &&
+    html.includes("packQuery") &&
     alias === html &&
     Number(agents?.numberOfItems) === 27 &&
     (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.html")) &&

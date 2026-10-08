@@ -237,6 +237,8 @@
       <textarea id="paste" readonly spellcheck="false"></textarea>
       <div class="row">
         <button type="button" class="btn primary" id="copy">Copy paste</button>
+        <button type="button" class="btn" id="copy-open">Copy Open URL</button>
+        <button type="button" class="btn" id="copy-ack">Copy ack</button>
         <button type="button" class="btn" id="select">Select all</button>
       </div>
       <p class="ack" id="ack"></p>
@@ -260,6 +262,35 @@
     const $ = (id) => document.getElementById(id);
     let pointCPacks = [];
     let activeKey = "";
+    let activeOpen = "";
+    let activeAck = "";
+
+    function packQuery() {
+      try {
+        return new URLSearchParams(location.search).get("pack") || "";
+      } catch {
+        return "";
+      }
+    }
+
+    function setPackQuery(key) {
+      if (!key || !history.replaceState) return;
+      const u = new URL(location.href);
+      u.searchParams.set("pack", key);
+      history.replaceState(null, "", u.pathname + u.search + u.hash);
+    }
+
+    async function copyText(text, btn, label) {
+      const prev = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text || "");
+        btn.textContent = "Copied";
+        setTimeout(() => { btn.textContent = label || prev; }, 1200);
+      } catch {
+        btn.textContent = "Select + copy";
+        setTimeout(() => { btn.textContent = label || prev; }, 1200);
+      }
+    }
 
     function openButtons(urls) {
       const box = $("opens");
@@ -291,6 +322,8 @@
     function showPack(pack) {
       if (!pack) return;
       activeKey = pack.packKey || "";
+      activeOpen = pack.open || "";
+      activeAck = pack.ackCommand || (pack.status === "acked" ? "" : "npm run geo:ack");
       const alts = Array.isArray(pack.openAlts) ? pack.openAlts : pack.openAlt ? [pack.openAlt] : [];
       $("where").textContent = pack.where || "";
       openButtons([
@@ -298,9 +331,10 @@
         ...alts.map((href, i) => ({ label: i === 0 ? "OpenAlt" : "OpenAlt" + (i + 1), href })),
       ]);
       $("paste").value = pack.text || "";
-      $("ack").textContent = pack.ackCommand || (pack.status === "acked" ? "(acked)" : "npm run geo:ack");
+      $("ack").textContent = activeAck || (pack.status === "acked" ? "(acked)" : "npm run geo:ack");
       $("progress").textContent =
         `Point C pack · ${pack.packKey || ""} · ${pack.status || "open"}`;
+      setPackQuery(activeKey);
       document.querySelectorAll("#pack-list button.pack").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.key === activeKey);
       });
@@ -334,7 +368,12 @@
         li.appendChild(btn);
         list.appendChild(li);
       });
-      const focus = packs.find((p) => p.packKey === nextKey) || packs.find((p) => p.status !== "acked") || packs[0];
+      const q = packQuery();
+      const focus =
+        (q && packs.find((p) => p.packKey === q)) ||
+        packs.find((p) => p.packKey === nextKey) ||
+        packs.find((p) => p.status !== "acked") ||
+        packs[0];
       if (focus) {
         const full = pointCPacks.find((x) => x.packKey === focus.packKey) || focus;
         showPack(full);
@@ -376,20 +415,25 @@
             $("paste").value = next.text || "";
             $("ack").textContent = next.ackCommand || "npm run geo:ack";
           }
-        } else if (priority === "arleds301") {
+        } else if (priority === "arleds301" || packQuery() === "hostinger301") {
           $("pack-list").classList.add("hidden");
           $("pack-heading").classList.add("hidden");
           const g = status.gates?.arleds301 || {};
+          const alts = Array.isArray(g.openAlts) ? g.openAlts : g.openAlt ? [g.openAlt, "https://dash.cloudflare.com/"] : ["https://dash.cloudflare.com/"];
+          activeOpen = g.open || "https://www.isimtescil.net/";
+          activeAck = g.ackCommand || "npm run verify:arleds-301";
           $("progress").textContent = "arleds.com → arledscreen.com/tr/ 301 · " + (g.mode || "open");
-          $("where").textContent = "Isimtescil/DNSEnable Domain Redirect (or Cloudflare Option B)";
+          $("where").textContent = g.where || "Isimtescil/DNSEnable Domain Redirect (or Cloudflare Option B)";
           openButtons([
-            { label: "Open panel", href: g.open || "https://www.isimtescil.net/", primary: true },
-            { label: "OpenAlt Gmail Send", href: g.openAlt || "" },
-            { label: "OpenAlt2 Cloudflare", href: "https://dash.cloudflare.com/" },
+            { label: "Open panel", href: activeOpen, primary: true },
+            ...alts.filter(Boolean).map((href, i) => ({
+              label: i === 0 ? "OpenAlt Gmail Send" : "OpenAlt" + (i + 1) + (String(href).includes("cloudflare") ? " Cloudflare" : ""),
+              href,
+            })),
           ]);
-          $("paste").value =
-            "Use npm run point-c:dnsenable-draft for full email + Domain Redirect clipboard.\nVerify: npm run verify:arleds-301";
-          $("ack").textContent = "npm run verify:arleds-301 · npm run geo:status";
+          $("paste").value = g.text || "Use npm run point-c:dnsenable-draft · Verify: npm run verify:arleds-301";
+          $("ack").textContent = activeAck + " · npm run geo:status";
+          setPackQuery("hostinger301");
         } else if (priority === "tur1a") {
           $("pack-list").classList.add("hidden");
           $("pack-heading").classList.add("hidden");
@@ -428,14 +472,10 @@
       const t = $("paste");
       t.focus();
       t.select();
-      try {
-        await navigator.clipboard.writeText(t.value);
-        $("copy").textContent = "Copied";
-        setTimeout(() => { $("copy").textContent = "Copy paste"; }, 1200);
-      } catch {
-        document.execCommand("copy");
-      }
+      await copyText(t.value, $("copy"), "Copy paste");
     });
+    $("copy-open").addEventListener("click", () => copyText(activeOpen, $("copy-open"), "Copy Open URL"));
+    $("copy-ack").addEventListener("click", () => copyText(activeAck || $("ack").textContent, $("copy-ack"), "Copy ack"));
     $("select").addEventListener("click", () => {
       $("paste").focus();
       $("paste").select();

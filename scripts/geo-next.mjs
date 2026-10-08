@@ -36,9 +36,9 @@ function ackedCount() {
   }
 }
 
-function finish(code = 0) {
+function finish(code = 0, htmlUrl = "https://arledscreen.com/owner-next.html") {
   console.log("");
-  console.log("HTML: https://arledscreen.com/owner-next.html (Open tabs + Copy paste) · alias https://arledscreen.com/geo-next.html");
+  console.log(`HTML: ${htmlUrl} (Open tabs + Copy paste) · alias https://arledscreen.com/geo-next.html`);
   console.log(HOWTO_FOOTER);
   process.exit(code);
 }
@@ -54,9 +54,16 @@ if (acked < POINT_C_STEPS) {
   const next = runNode("scripts/print-point-c-packs.mjs", ["--next"]);
   process.stdout.write(String(next.stdout || ""));
   if (next.status !== 0) process.stderr.write(String(next.stderr || ""));
+  let htmlDeep = "https://arledscreen.com/owner-next.html";
   // Prep friction: arleds 301 is the next gate after Point C — surface Open/OpenAlt now.
   try {
     const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
+    const profiles = JSON.parse(
+      fs.readFileSync(path.join(repoRoot, "public/entity-profiles.json"), "utf8"),
+    );
+    const nextRow = mod.buildPointCNext(profiles, { en: false });
+    if (nextRow?.html) htmlDeep = nextRow.html;
+    else if (nextRow?.packKey && mod.ownerNextHtmlUrl) htmlDeep = mod.ownerNextHtmlUrl(nextRow.packKey);
     console.log("");
     console.log("=== Queued after Point C (arleds.com 301) — prep Open tabs ===");
     if (mod.DNSENABLE_PANEL_URL) console.log(`Open: ${mod.DNSENABLE_PANEL_URL}`);
@@ -67,7 +74,7 @@ if (acked < POINT_C_STEPS) {
   } catch {
     /* ignore prep block failures */
   }
-  finish(next.status === 0 ? 0 : next.status || 1);
+  finish(next.status === 0 ? 0 : next.status || 1, htmlDeep);
 }
 
 const probe = runNode("scripts/verify-arleds-301.mjs");
@@ -96,7 +103,7 @@ if (probe.status !== 0) {
     console.log("");
   }
   console.log("Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md");
-  finish(0);
+  finish(0, "https://arledscreen.com/owner-next.html?pack=hostinger301");
 }
 
 const tur1a = runNode("scripts/tur1a-matrix.mjs", ["--next"]);

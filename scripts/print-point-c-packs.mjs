@@ -148,7 +148,7 @@ export function pointCOpenAltUrls(packKey) {
 
 /**
  * Slim Point C pack checklist for invent + owner-next.html (no paste bodies).
- * Cite-only status/open — does not invent citations.
+ * Cite-only status/open — does not invent citations. `html` filled after SITE is set.
  */
 export function buildPointCPackChecklist(acked = []) {
   const ackedSet = new Set((acked || []).map(String));
@@ -161,6 +161,7 @@ export function buildPointCPackChecklist(acked = []) {
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
+      html: `https://arledscreen.com/owner-next.html?pack=${encodeURIComponent(key)}`,
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
     if (alts[0]) row.openAlt = alts[0];
@@ -176,6 +177,7 @@ export function buildPointCPackChecklist(acked = []) {
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
+      html: `https://arledscreen.com/owner-next.html?pack=${encodeURIComponent(key)}`,
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
     if (alts[0]) row.openAlt = alts[0];
@@ -486,6 +488,7 @@ export function buildPointCNext(profiles, { en = false } = {}) {
     label: step.label,
     where,
     open: open || "",
+    html: `https://arledscreen.com/owner-next.html?pack=${encodeURIComponent(step.key)}`,
     text: step.text,
     ackCommand: `npm run point-c:ack -- --pack=${step.key}`,
     progress: { acked: step.done, total: step.total },
@@ -496,6 +499,12 @@ export function buildPointCNext(profiles, { en = false } = {}) {
 }
 
 const SITE = "https://arledscreen.com";
+
+/** Browser deep-link for a Point C pack on the owner Open/paste surface. */
+export function ownerNextHtmlUrl(packKey = "") {
+  const key = String(packKey || "").trim();
+  return key ? `${SITE}/owner-next.html?pack=${encodeURIComponent(key)}` : `${SITE}/owner-next.html`;
+}
 
 /** Spreadsheet-ready Point C sequence (owner tracking). Does not invent citations. */
 export function buildPointCCsv(profiles, { en = false } = {}) {
@@ -547,6 +556,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
+      html: ownerNextHtmlUrl(key),
       text: String(packs[key]),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
@@ -563,6 +573,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
+      html: ownerNextHtmlUrl(key),
       text: buildArleds301DualPathClipboard(),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
@@ -655,8 +666,8 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         ? `Point C next paste: ${next.packKey}`
         : `Point C sonraki yapıştırma: ${next.packKey}`,
       description:
-        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
-      url: `${SITE}/owner-next.html`,
+        `Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: ${next.html || ownerNextHtmlUrl(next.packKey)}`,
+      url: next.html || ownerNextHtmlUrl(next.packKey),
       step: [
         {
           "@type": "HowToStep",
@@ -664,10 +675,10 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
           name: "Open destination",
           url: next.open,
           text: Array.isArray(next.openAlts) && next.openAlts.length
-            ? `Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")}`
+            ? `Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`
             : next.openAlt
-              ? `Open: ${next.open} · OpenAlt: ${next.openAlt}`
-              : `Open: ${next.open}`,
+              ? `Open: ${next.open} · OpenAlt: ${next.openAlt} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`
+              : `Open: ${next.open} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`,
         },
         {
           "@type": "HowToStep",
@@ -683,7 +694,11 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         },
       ],
       tool: [
-        { "@type": "HowToTool", name: "owner-next.html", url: `${SITE}/owner-next.html` },
+        {
+          "@type": "HowToTool",
+          name: "owner-next.html",
+          url: next.html || ownerNextHtmlUrl(next.packKey),
+        },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: jsonUrl },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
