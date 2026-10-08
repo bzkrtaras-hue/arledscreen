@@ -542,6 +542,9 @@ try {
     ownerNextHtml.includes("Copy + Open all") &&
     ownerNextHtml.includes("actions-sticky") &&
     ownerNextHtml.includes("doCopyOpenAll") &&
+    ownerNextHtml.includes("pasted-next") &&
+    ownerNextHtml.includes("doPastedNext") &&
+    ownerNextHtml.includes("Pasted → next") &&
     ownerNextHtml.includes("Mailto DNSEnable") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&

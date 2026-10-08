@@ -2540,10 +2540,13 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open all") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("actions-sticky") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyOpenAll") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pasted-next") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doPastedNext") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Pasted → next") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open all/mailto required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/mailto required");
       process.exit(1);
     }
     {
