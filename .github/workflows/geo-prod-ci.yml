@@ -55,6 +55,7 @@ jobs:
           npm run geo:next | grep -q "GEO next"
           npm run geo:next | grep -q "Point C"
           npm run geo:next | grep -q "directoryLong"
+          npm run geo:next | grep -q "owner-next.html"
           npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
           test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
@@ -166,14 +167,21 @@ jobs:
           grep -q "/.well-known/pricing.json" out/.well-known/ard.json
           grep -q "/.well-known/modules.json" out/AGENTS.md
           grep -q "/.well-known/modules.json" out/.well-known/agents.json
-          grep -q '"numberOfItems": 26' out/.well-known/agents.json
+          grep -q '"numberOfItems": 27' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/#website' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/organization.json' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/prices.json' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/point-c-en.txt' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/.well-known/security.txt' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/llms-full.txt' out/.well-known/agents.json
-          grep -q 'ItemList (26)' out/.well-known/ard.json
+          grep -q 'https://arledscreen.com/owner-next.html' out/.well-known/agents.json
+          grep -q 'owner-next.html' out/.well-known/agents.json
+          grep -q 'ItemList (27)' out/.well-known/ard.json
+          grep -q 'ownerNextHtml' out/.well-known/ard.json
+          test -f out/owner-next.html && test -f out/geo-next.html
+          cmp -s out/owner-next.html out/geo-next.html
+          grep -q 'Copy paste' out/owner-next.html
+          grep -q '/owner-next.html' out/ai.txt
           grep -q '/.well-known/security.txt' out/ai-shopping.json
           grep -q '/llms-full.txt' out/ai-shopping.json
           grep -q 'security_txt_url' out/feeds/merchant-priced-panels.tsv
