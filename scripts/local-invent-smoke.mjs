@@ -889,20 +889,32 @@ if (
 
 if (
   JSON.stringify(ent?.subjectOf || []).includes("/point-c.txt") &&
+  JSON.stringify(ent?.subjectOf || []).includes("/point-c.json") &&
+  JSON.stringify(ent?.subjectOf || []).includes("/geo-status.json") &&
+  JSON.stringify(ent?.subjectOf || []).includes("/geo-next.txt") &&
+  JSON.stringify(ent?.subjectOf || []).includes("/tur1a.json") &&
+  JSON.stringify(ent?.subjectOf || []).includes("/point-c-progress.json") &&
   JSON.stringify(ent?.subjectOf || []).includes("/brand.json") &&
   JSON.stringify(ent?.subjectOf || []).includes("/entity-profiles.json")
 ) {
-  ok("entity.subjectOf → point-c + brand.json + entity-profiles");
-} else fail("entity.subjectOf → point-c + brand.json + entity-profiles");
+  ok("entity.subjectOf → point-c + owner-gate HowTo + brand.json + entity-profiles");
+} else fail("entity.subjectOf → point-c + owner-gate HowTo + brand.json + entity-profiles");
 
 {
   const bs = JSON.stringify(ent?.brand?.subjectOf || []);
   const ls = JSON.stringify(ent?.location?.subjectOf || []);
   const websiteIdHits = (list) =>
     (Array.isArray(list) ? list : []).filter((s) => String(s?.["@id"] || "").includes("#website")).length;
+  const gateOk = (blob) =>
+    blob.includes("/point-c.json") &&
+    blob.includes("/geo-status.json") &&
+    blob.includes("/geo-next.txt") &&
+    blob.includes("/tur1a.json") &&
+    blob.includes("/point-c-progress.json");
   if (
     bs.includes("/prices.json") &&
     bs.includes("/point-c.txt") &&
+    gateOk(bs) &&
     bs.includes("/entity.json") &&
     bs.includes("/entity-profiles.json") &&
     bs.includes("/.well-known/brand.json") &&
@@ -913,6 +925,7 @@ if (
     websiteIdHits(ent?.location?.subjectOf) === 1 &&
     ls.includes("/prices.json") &&
     ls.includes("/point-c.txt") &&
+    gateOk(ls) &&
     ls.includes("/brand.json") &&
     ls.includes("/.well-known/brand.json") &&
     ls.includes("/entity.json") &&
@@ -920,12 +933,17 @@ if (
     ls.includes("/geo-baseline.json") &&
     ls.includes("#website")
   ) {
-    ok("entity nested brand/location subjectOf invent parity + brand-wk/geo/org/#website×1");
-  } else fail("entity nested brand/location subjectOf invent parity + brand-wk/geo/org/#website×1");
+    ok("entity nested brand/location subjectOf invent parity + owner-gate HowTo + brand-wk/geo/org/#website×1");
+  } else fail("entity nested brand/location subjectOf invent parity + owner-gate HowTo + brand-wk/geo/org/#website×1");
 }
 
 if (
   JSON.stringify(brand?.subjectOf || []).includes("/point-c.txt") &&
+  JSON.stringify(brand?.subjectOf || []).includes("/point-c.json") &&
+  JSON.stringify(brand?.subjectOf || []).includes("/geo-status.json") &&
+  JSON.stringify(brand?.subjectOf || []).includes("/geo-next.txt") &&
+  JSON.stringify(brand?.subjectOf || []).includes("/tur1a.json") &&
+  JSON.stringify(brand?.subjectOf || []).includes("/point-c-progress.json") &&
   JSON.stringify(brand?.distribution || []).includes("/point-c.txt") &&
   JSON.stringify(brand?.subjectOf || []).includes("/entity.json") &&
   JSON.stringify(brand?.distribution || []).includes("/entity.json") &&
@@ -964,8 +982,8 @@ if (
   JSON.stringify(brand?.distribution || []).includes("/.well-known/products.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/catalog.json")
 ) {
-  ok("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant/offer/dataset/products + #website");
-} else fail("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant/offer/dataset/products + #website");
+  ok("brand.subjectOf+distribution+isBasedOn → inventAlias + owner-gate HowTo + #website");
+} else fail("brand.subjectOf+distribution+isBasedOn → inventAlias + owner-gate HowTo + #website");
 
 {
   const related = JSON.stringify(cat?.isRelatedTo || []);
@@ -1031,14 +1049,21 @@ if (
     blob.includes("/prices.json") &&
     blob.includes("/brand.json") &&
     blob.includes("/point-c.txt") &&
+    blob.includes("/point-c.json") &&
+    blob.includes("/geo-status.json") &&
+    blob.includes("/geo-next.txt") &&
+    blob.includes("/tur1a.json") &&
+    blob.includes("/point-c-progress.json") &&
     blob.includes("/entity-profiles.json") &&
     blob.includes("/geo-baseline.json") &&
     blob.includes("/.well-known/brand.json") &&
     blob.includes("/organization.json") &&
-    JSON.stringify(site.sameAs || []).includes("/point-c.txt")
+    JSON.stringify(site.sameAs || []).includes("/point-c.txt") &&
+    JSON.stringify(site.sameAs || []).includes("/point-c.json") &&
+    JSON.stringify(site.sameAs || []).includes("/geo-status.json")
   ) {
-    ok("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org/point-c");
-  } else fail("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org/point-c");
+    ok("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org/point-c + owner-gate HowTo");
+  } else fail("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org/point-c + owner-gate HowTo");
 }
 
 {

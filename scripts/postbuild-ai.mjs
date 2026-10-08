@@ -1550,6 +1550,37 @@ function websiteInventSubjectOf() {
     },
     {
       "@type": "Dataset",
+      "@id": `${SITE_URL}/point-c.json`,
+      url: `${SITE_URL}/point-c.json`,
+      name: "ARLEDSCREEN Point C paste packs (HowTo potentialAction)",
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/geo-status.json`,
+      url: `${SITE_URL}/geo-status.json`,
+      name: "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)",
+    },
+    {
+      "@type": "DataDownload",
+      "@id": `${SITE_URL}/geo-next.txt`,
+      url: `${SITE_URL}/geo-next.txt`,
+      name: "ARLEDSCREEN GEO priority clipboard",
+      encodingFormat: "text/plain",
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/tur1a.json`,
+      url: `${SITE_URL}/tur1a.json`,
+      name: "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)",
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/point-c-progress.json`,
+      url: `${SITE_URL}/point-c-progress.json`,
+      name: "ARLEDSCREEN Point C paste progress (HowTo potentialAction)",
+    },
+    {
+      "@type": "Dataset",
       "@id": `${SITE_URL}/entity-profiles.json`,
       url: `${SITE_URL}/entity-profiles.json`,
       name: "ARLEDSCREEN Point C entity profiles",
@@ -1591,7 +1622,7 @@ function websiteNode() {
     inLanguage: ["tr-TR", "en-US"],
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@id": `${SITE_URL}/#organization` },
-    // Invent join: WebSite-only agents still reach pricedPanels + brand + GEO + Point C.
+    // Invent join: WebSite-only agents still reach pricedPanels + brand + GEO + Point C + owner-gate HowTo.
     sameAs: [
       `${SITE_URL}/ai-shopping.json`,
       `${SITE_URL}/prices.json`,
@@ -1604,6 +1635,11 @@ function websiteNode() {
       `${SITE_URL}/geo-baseline.json`,
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/point-c.json`,
+      `${SITE_URL}/geo-status.json`,
+      `${SITE_URL}/geo-next.txt`,
+      `${SITE_URL}/tur1a.json`,
+      `${SITE_URL}/point-c-progress.json`,
     ],
     subjectOf: websiteInventSubjectOf(),
     potentialAction: quoteOrderActions(),
@@ -2570,6 +2606,11 @@ function enrichEntityDocument(entity) {
       `${SITE_URL}/geo-baseline.json`,
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/point-c.json`,
+      `${SITE_URL}/geo-status.json`,
+      `${SITE_URL}/geo-next.txt`,
+      `${SITE_URL}/tur1a.json`,
+      `${SITE_URL}/point-c-progress.json`,
     ]) {
       if (!same.includes(u)) same.push(u);
     }
@@ -2591,6 +2632,37 @@ function enrichEntityDocument(entity) {
     name: "ARLEDSCREEN Point C paste packs",
     url: `${SITE_URL}/point-c.txt`,
     encodingFormat: "text/plain",
+  };
+  const pointCJsonEntry = {
+    "@type": "Dataset",
+    "@id": `${SITE_URL}/point-c.json`,
+    name: "ARLEDSCREEN Point C paste packs (HowTo potentialAction)",
+    url: `${SITE_URL}/point-c.json`,
+  };
+  const geoStatusEntry = {
+    "@type": "Dataset",
+    "@id": `${SITE_URL}/geo-status.json`,
+    name: "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)",
+    url: `${SITE_URL}/geo-status.json`,
+  };
+  const geoNextEntry = {
+    "@type": "DataDownload",
+    "@id": `${SITE_URL}/geo-next.txt`,
+    name: "ARLEDSCREEN GEO priority clipboard",
+    url: `${SITE_URL}/geo-next.txt`,
+    encodingFormat: "text/plain",
+  };
+  const tur1aEntry = {
+    "@type": "Dataset",
+    "@id": `${SITE_URL}/tur1a.json`,
+    name: "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)",
+    url: `${SITE_URL}/tur1a.json`,
+  };
+  const pointCProgressEntry = {
+    "@type": "Dataset",
+    "@id": `${SITE_URL}/point-c-progress.json`,
+    name: "ARLEDSCREEN Point C paste progress (HowTo potentialAction)",
+    url: `${SITE_URL}/point-c-progress.json`,
   };
   const brandDocEntry = {
     "@type": "Brand",
@@ -2635,6 +2707,13 @@ function enrichEntityDocument(entity) {
     name: "ARLEDSCREEN",
     url: SITE_URL,
   };
+  const ownerGateSubjectNeedles = [
+    ["/point-c.json", pointCJsonEntry],
+    ["/geo-status.json", geoStatusEntry],
+    ["/geo-next.txt", geoNextEntry],
+    ["/tur1a.json", tur1aEntry],
+    ["/point-c-progress.json", pointCProgressEntry],
+  ];
   let subjectOf = Array.isArray(entity.subjectOf) ? [...entity.subjectOf] : [];
   subjectOf = ensureSubjectNeedle(subjectOf, "/point-c.txt", pointCEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/brand.json", brandDocEntry);
@@ -2643,6 +2722,9 @@ function enrichEntityDocument(entity) {
   subjectOf = ensureSubjectNeedle(subjectOf, "/entity-profiles.json", entityProfilesEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "/geo-baseline.json", geoBaselineEntry);
   subjectOf = ensureSubjectNeedle(subjectOf, "#website", websiteEntry);
+  for (const [needle, entry] of ownerGateSubjectNeedles) {
+    subjectOf = ensureSubjectNeedle(subjectOf, needle, entry);
+  }
   entity.subjectOf = dedupeSubjectOfById(subjectOf);
   // Nested Brand / LocalBusiness subjectOf invent parity with top-level (agents that walk brand|location).
   if (entity.brand && typeof entity.brand === "object") {
@@ -2654,6 +2736,9 @@ function enrichEntityDocument(entity) {
     bs = ensureSubjectNeedle(bs, "/.well-known/brand.json", brandWellKnownEntry);
     bs = ensureSubjectNeedle(bs, "/geo-baseline.json", geoBaselineEntry);
     bs = ensureSubjectNeedle(bs, "#website", websiteEntry);
+    for (const [needle, entry] of ownerGateSubjectNeedles) {
+      bs = ensureSubjectNeedle(bs, needle, entry);
+    }
     entity.brand.subjectOf = dedupeSubjectOfById(bs);
   }
   if (entity.location && typeof entity.location === "object") {
@@ -2666,6 +2751,9 @@ function enrichEntityDocument(entity) {
     ls = ensureSubjectNeedle(ls, "/entity-profiles.json", entityProfilesEntry);
     ls = ensureSubjectNeedle(ls, "/geo-baseline.json", geoBaselineEntry);
     ls = ensureSubjectNeedle(ls, "#website", websiteEntry);
+    for (const [needle, entry] of ownerGateSubjectNeedles) {
+      ls = ensureSubjectNeedle(ls, needle, entry);
+    }
     entity.location.subjectOf = dedupeSubjectOfById(ls);
   }
   // Org-first agents (entity.json / organization.json): isBasedOn + distribution invent closure.
@@ -4270,6 +4358,37 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         url: `${SITE_URL}/point-c.txt`,
         name: "ARLEDSCREEN Point C paste packs",
         encodingFormat: "text/plain",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/point-c.json`,
+        url: `${SITE_URL}/point-c.json`,
+        name: "ARLEDSCREEN Point C paste packs (HowTo potentialAction)",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/geo-status.json`,
+        url: `${SITE_URL}/geo-status.json`,
+        name: "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)",
+      },
+      {
+        "@type": "DataDownload",
+        "@id": `${SITE_URL}/geo-next.txt`,
+        url: `${SITE_URL}/geo-next.txt`,
+        name: "ARLEDSCREEN GEO priority clipboard",
+        encodingFormat: "text/plain",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/tur1a.json`,
+        url: `${SITE_URL}/tur1a.json`,
+        name: "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)",
+      },
+      {
+        "@type": "Dataset",
+        "@id": `${SITE_URL}/point-c-progress.json`,
+        url: `${SITE_URL}/point-c-progress.json`,
+        name: "ARLEDSCREEN Point C paste progress (HowTo potentialAction)",
       },
       {
         "@type": "Dataset",

@@ -1495,13 +1495,17 @@ if (fs.existsSync(outDir)) {
       !siteBlob.includes("/catalog.json") ||
       !siteBlob.includes("/brand.json") ||
       !siteBlob.includes("/point-c.txt") ||
+      !siteBlob.includes("/point-c.json") ||
+      !siteBlob.includes("/geo-status.json") ||
+      !siteBlob.includes("/geo-next.txt") ||
+      !siteBlob.includes("/tur1a.json") ||
+      !siteBlob.includes("/point-c-progress.json") ||
       !siteBlob.includes("/entity-profiles.json") ||
       !siteBlob.includes("/geo-baseline.json") ||
       !siteBlob.includes("/.well-known/brand.json") ||
-      !siteBlob.includes("/organization.json") ||
-      !siteBlob.includes("/point-c.txt")
+      !siteBlob.includes("/organization.json")
     ) {
-      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs (profiles/geo/brand-wk/org/point-c)");
+      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs (profiles/geo/brand-wk/org/point-c + owner-gate HowTo)");
       process.exit(1);
     }
   }
@@ -1517,9 +1521,14 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(entity.brand.subjectOf).includes("/feeds/prices.rss") ||
     !JSON.stringify(entity.brand.subjectOf).includes("/prices.json") ||
     !JSON.stringify(entity.brand.subjectOf).includes("/point-c.txt") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/point-c.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/geo-status.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/geo-next.txt") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/tur1a.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/point-c-progress.json") ||
     !JSON.stringify(entity.brand.subjectOf).includes("/entity.json")
   ) {
-    console.error("❌ entity.json brand.subjectOf must include ai-shopping + catalog + prices.rss + prices.json + point-c + entity");
+    console.error("❌ entity.json brand.subjectOf must include ai-shopping + catalog + prices.rss + prices.json + point-c + owner-gate HowTo + entity");
     process.exit(1);
   }
   if (
@@ -1576,10 +1585,15 @@ if (fs.existsSync(outDir)) {
     entity.location.subjectOf.length < 3 ||
     !JSON.stringify(entity.location.subjectOf).includes("/prices.json") ||
     !JSON.stringify(entity.location.subjectOf).includes("/point-c.txt") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/point-c.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/geo-status.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/geo-next.txt") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/tur1a.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/point-c-progress.json") ||
     !JSON.stringify(entity.location.subjectOf).includes("/brand.json") ||
     !JSON.stringify(entity.location.subjectOf).includes("#website")
   ) {
-    console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog + subjectOf invent (prices/point-c/brand/#website)");
+    console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog + subjectOf invent (prices/point-c/owner-gate HowTo/brand/#website)");
     process.exit(1);
   }
   {
@@ -2707,9 +2721,14 @@ if (fs.existsSync(outDir)) {
     if (
       !brandSubject.includes("/entity.json") ||
       !brandSubject.includes("#organization") ||
-      !brandSubject.includes("/prices.json")
+      !brandSubject.includes("/prices.json") ||
+      !brandSubject.includes("/point-c.json") ||
+      !brandSubject.includes("/geo-status.json") ||
+      !brandSubject.includes("/geo-next.txt") ||
+      !brandSubject.includes("/tur1a.json") ||
+      !brandSubject.includes("/point-c-progress.json")
     ) {
-      console.error("❌ out/brand.json subjectOf must reverse-join Organization entity.json + prices.json");
+      console.error("❌ out/brand.json subjectOf must reverse-join Organization entity.json + prices.json + owner-gate HowTo");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/brand.json")).equals(fs.readFileSync(path.join(outDir, "brand.json")))) {
@@ -3538,6 +3557,12 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json subjectOf must include /point-c.txt DataDownload (reverse invent)");
     process.exit(1);
   }
+  for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+    if (!subjectUrls.some((u) => u.includes(needle))) {
+      console.error(`❌ entity.json subjectOf must include owner-gate HowTo ${needle}`);
+      process.exit(1);
+    }
+  }
   if (!subjectUrls.some((u) => u.includes("/brand.json"))) {
     console.error("❌ entity.json subjectOf must include /brand.json Brand document (reverse invent)");
     process.exit(1);
@@ -3553,6 +3578,12 @@ if (fs.existsSync(outDir)) {
     if (!brandSubject.includes("/point-c.txt") || !brandDist.includes("/point-c.txt")) {
       console.error("❌ brand.json subjectOf + distribution must cite /point-c.txt");
       process.exit(1);
+    }
+    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      if (!brandSubject.includes(needle)) {
+        console.error(`❌ brand.json subjectOf must cite owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
     }
     if (!brandSubject.includes("/entity.json") || !brandDist.includes("/entity.json")) {
       console.error("❌ brand.json subjectOf + distribution must reverse-join /entity.json");
@@ -5096,6 +5127,41 @@ for (const must of [
     if (!robotsOutBody.includes("/.well-known/brand.json")) {
       console.error("❌ out/robots.txt must Allow /.well-known/brand.json");
       process.exit(1);
+    }
+    for (const must of [
+      "/point-c.json",
+      "/.well-known/point-c.json",
+      "/geo-status.json",
+      "/.well-known/geo-status.json",
+      "/geo-next.txt",
+      "/.well-known/geo-next.txt",
+      "/tur1a.json",
+      "/.well-known/tur1a.json",
+      "/feeds/tur1a.csv",
+      "/point-c-progress.json",
+      "/.well-known/point-c-progress.json",
+      "/.well-known/AGENTS.md",
+    ]) {
+      if (!robotsOutBody.includes(must)) {
+        console.error(`❌ out/robots.txt must Allow gate invent ${must}`);
+        process.exit(1);
+      }
+    }
+  }
+  const robotsPublic = path.join(repoRoot, "public", "robots.txt");
+  if (fs.existsSync(robotsPublic)) {
+    const robotsPublicBody = fs.readFileSync(robotsPublic, "utf8");
+    for (const must of [
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
+    ]) {
+      if (!robotsPublicBody.includes(must)) {
+        console.error(`❌ public/robots.txt must Allow gate invent ${must} (parity with functions/robots.txt.js)`);
+        process.exit(1);
+      }
     }
   }
 }
