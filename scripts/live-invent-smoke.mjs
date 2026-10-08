@@ -541,16 +541,36 @@ try {
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
     const progress = await getJson("/point-c-progress.json");
+    const pcJsonCross = await getJson("/point-c.json");
+    const gateNeedles = [
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
+    ];
+    const crossOk = [
+      ["point-c", pcJsonCross],
+      ["geo-status", geoStatus],
+      ["tur1a", tur1a],
+      ["point-c-progress", progress],
+    ].every(([, doc]) =>
+      ["sameAs", "isBasedOn", "subjectOf", "distribution"].every((field) => {
+        const blob = JSON.stringify(doc?.[field] || []);
+        return gateNeedles.every((n) => blob.includes(n));
+      }),
+    );
     if (
       progress?.potentialAction?.["@type"] === "HowTo" &&
       Array.isArray(progress?.potentialAction?.step) &&
       progress.potentialAction.step.length >= 3 &&
       String(progress?.next?.packKey || "") === "directoryLong" &&
-      String(progress?.potentialAction?.name || "").includes("directoryLong")
+      String(progress?.potentialAction?.name || "").includes("directoryLong") &&
+      crossOk
     ) {
-      ok("geo-status priority HowTo + tur1a HowTo/potentialAction invent + point-c-progress HowTo + ARD");
-    } else fail("geo-status priority HowTo + tur1a HowTo/potentialAction invent + point-c-progress HowTo + ARD");
-  } else fail("geo-status priority HowTo + tur1a HowTo/potentialAction invent + point-c-progress HowTo + ARD");
+      ok("owner-gate docs cross-join sameAs/subjectOf/isBasedOn/distribution + HowTo");
+    } else fail("owner-gate docs cross-join sameAs/subjectOf/isBasedOn/distribution + HowTo");
+  } else fail("owner-gate docs cross-join sameAs/subjectOf/isBasedOn/distribution + HowTo");
 } catch (e) {
   fail(`geo-status/tur1a ${e?.message || e}`);
 }

@@ -13,6 +13,7 @@ import {
   DNSENABLE_PANEL_URL,
 } from "./print-point-c-packs.mjs";
 import { HUMAN_PLATFORMS, TR, platformOpenUrl } from "./print-tur1a-prompts.mjs";
+import { applyOwnerGateCrossJoin } from "./owner-gate-cross-join.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -375,7 +376,7 @@ export function buildGeoStatusDoc() {
       ],
     };
   }
-  return doc;
+  return applyOwnerGateCrossJoin(doc);
 }
 
 export function buildPointCProgressDoc() {
@@ -450,8 +451,9 @@ export function buildPointCProgressDoc() {
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+        { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
       ],
     };
   }
-  return doc;
+  return applyOwnerGateCrossJoin(doc);
 }

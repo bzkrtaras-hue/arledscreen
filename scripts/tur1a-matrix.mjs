@@ -18,6 +18,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { TR, EN, HUMAN_PLATFORMS, platformOpenUrl } from "./print-tur1a-prompts.mjs";
+import { applyOwnerGateCrossJoin } from "./owner-gate-cross-join.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -273,10 +274,12 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
         { "@type": "HowToTool", name: "feeds/tur1a.csv", url: `${SITE}/feeds/tur1a.csv` },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+        { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
+        { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
       ],
     };
   }
-  return doc;
+  return applyOwnerGateCrossJoin(doc);
 }
 
 function printCsv(filled) {

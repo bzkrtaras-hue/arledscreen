@@ -2478,6 +2478,32 @@ if (fs.existsSync(outDir)) {
       console.error("❌ out/point-c-progress.json must expose next.paste + HowTo potentialAction");
       process.exit(1);
     }
+    {
+      const gateNeedles = [
+        "/point-c.json",
+        "/geo-status.json",
+        "/geo-next.txt",
+        "/tur1a.json",
+        "/point-c-progress.json",
+      ];
+      const pointCJson = JSON.parse(fs.readFileSync(path.join(outDir, "point-c.json"), "utf8"));
+      for (const [label, doc] of [
+        ["point-c.json", pointCJson],
+        ["geo-status.json", geoStatus],
+        ["tur1a.json", tur1a],
+        ["point-c-progress.json", progress],
+      ]) {
+        for (const field of ["sameAs", "isBasedOn", "subjectOf", "distribution"]) {
+          const blob = JSON.stringify(doc?.[field] || []);
+          for (const needle of gateNeedles) {
+            if (!blob.includes(needle)) {
+              console.error(`❌ ${label} ${field} must cross-join owner-gate HowTo ${needle}`);
+              process.exit(1);
+            }
+          }
+        }
+      }
+    }
   }
   for (const rel of [".well-known/agents.json", "agents.json", "humans.txt", ".well-known/humans.txt"]) {
     if (!fs.existsSync(path.join(outDir, rel))) {

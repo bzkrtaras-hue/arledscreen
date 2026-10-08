@@ -17,13 +17,16 @@
     "https://arledscreen.com/owner-next.txt",
     "https://arledscreen.com/point-c-progress.json",
     "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/#website"
+    "https://arledscreen.com/#website",
+    "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/tur1a.json"
   ],
   "distribution": [
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/point-c.json"
+      "contentUrl": "https://arledscreen.com/point-c.json",
+      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
     },
     {
       "@type": "DataDownload",
@@ -43,17 +46,26 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/geo-next.txt"
+      "contentUrl": "https://arledscreen.com/geo-next.txt",
+      "name": "ARLEDSCREEN GEO priority clipboard"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/point-c-progress.json"
+      "contentUrl": "https://arledscreen.com/point-c-progress.json",
+      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/geo-status.json"
+      "contentUrl": "https://arledscreen.com/geo-status.json",
+      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tur1a.json",
+      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
     }
   ],
   "sameAs": [
@@ -64,7 +76,9 @@
     "https://arledscreen.com/geo-next.txt",
     "https://arledscreen.com/owner-next.txt",
     "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/point-c-progress.json"
+    "https://arledscreen.com/point-c-progress.json",
+    "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/tur1a.json"
   ],
   "packs": [
     {
@@ -233,7 +247,45 @@
         "@type": "HowToTool",
         "name": "geo-status.json",
         "url": "https://arledscreen.com/geo-status.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "tur1a.json",
+        "url": "https://arledscreen.com/tur1a.json"
       }
     ]
-  }
+  },
+  "subjectOf": [
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/point-c.json",
+      "url": "https://arledscreen.com/point-c.json",
+      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/geo-status.json",
+      "url": "https://arledscreen.com/geo-status.json",
+      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/geo-next.txt",
+      "url": "https://arledscreen.com/geo-next.txt",
+      "name": "ARLEDSCREEN GEO priority clipboard",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/tur1a.json",
+      "url": "https://arledscreen.com/tur1a.json",
+      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/point-c-progress.json",
+      "url": "https://arledscreen.com/point-c-progress.json",
+      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
+    }
+  ]
 }

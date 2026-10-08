@@ -16,6 +16,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { applyOwnerGateCrossJoin } from "./owner-gate-cross-join.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -616,10 +617,11 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         { "@type": "HowToTool", name: "point-c.json", url: jsonUrl },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+        { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
       ],
     };
   }
-  return doc;
+  return applyOwnerGateCrossJoin(doc);
 }
 
 function printCsv(profiles, { en = false } = {}) {

@@ -446,20 +446,40 @@ if (
     fs.existsSync(path.join(outDir, "point-c-progress.json")) &&
     (() => {
       const progress = readJson("point-c-progress.json");
+      const pcJson = readJson("point-c.json");
+      const gateNeedles = [
+        "/point-c.json",
+        "/geo-status.json",
+        "/geo-next.txt",
+        "/tur1a.json",
+        "/point-c-progress.json",
+      ];
+      const crossOk = [
+        pcJson,
+        geoStatus,
+        tur1a,
+        progress,
+      ].every((doc) =>
+        ["sameAs", "isBasedOn", "subjectOf", "distribution"].every((field) => {
+          const blob = JSON.stringify(doc?.[field] || []);
+          return gateNeedles.every((n) => blob.includes(n));
+        }),
+      );
       return (
         progress?.potentialAction?.["@type"] === "HowTo" &&
         Array.isArray(progress?.potentialAction?.step) &&
         progress.potentialAction.step.length >= 3 &&
         String(progress?.next?.packKey || "") === "directoryLong" &&
-        String(progress?.potentialAction?.name || "").includes("directoryLong")
+        String(progress?.potentialAction?.name || "").includes("directoryLong") &&
+        crossOk
       );
     })() &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
-    ok("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD + AGENTS.md well-known");
-  } else fail("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD + AGENTS.md well-known");
+    ok("owner-gate docs cross-join sameAs/subjectOf/isBasedOn/distribution + HowTo");
+  } else fail("owner-gate docs cross-join sameAs/subjectOf/isBasedOn/distribution + HowTo");
 }
 
 
