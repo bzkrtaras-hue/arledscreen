@@ -3,9 +3,9 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/owner-next.json",
   "name": "ARLEDSCREEN Owner next (Open/paste machine twin)",
-  "description": "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Browser session start: /owner-next.html?start=1 · Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
+  "description": "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (see socialHandles + /social.json). Browser session start: /owner-next.html?start=1 · Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
   "url": "https://arledscreen.com/owner-next.json",
-  "dateModified": "2026-10-08T15:35:45.179Z",
+  "dateModified": "2026-10-08T15:40:45.458Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
@@ -15,6 +15,16 @@
   "htmlDeep": "https://arledscreen.com/owner-next.html?pack=directoryLong",
   "htmlAlias": "https://arledscreen.com/geo-next.html",
   "clipboard": "https://arledscreen.com/geo-next.txt",
+  "socialHandles": {
+    "facebook": "arledscreenn",
+    "instagram": "arledscreen",
+    "whatsapp": "arledscreen",
+    "facebookUrl": "https://www.facebook.com/arledscreenn",
+    "instagramUrl": "https://www.instagram.com/arledscreen",
+    "whatsappUrl": "https://wa.me/905305078834",
+    "socialJson": "https://arledscreen.com/social.json",
+    "line": "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json"
+  },
   "next": {
     "packKey": "directoryLong",
     "label": "NAP / directoryLong",
@@ -1236,6 +1246,8 @@
     "https://arledscreen.com/geo-next.txt",
     "https://arledscreen.com/owner-next.txt",
     "https://arledscreen.com/.well-known/owner-next.json",
+    "https://arledscreen.com/social.json",
+    "https://arledscreen.com/.well-known/social.json",
     "https://arledscreen.com/point-c.json",
     "https://arledscreen.com/geo-status.json",
     "https://arledscreen.com/tur1a.json",
@@ -1269,6 +1281,12 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/geo-next.txt",
       "name": "ARLEDSCREEN GEO priority clipboard"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/social.json",
+      "name": "Owner-confirmed social handles"
     },
     {
       "@type": "DataDownload",

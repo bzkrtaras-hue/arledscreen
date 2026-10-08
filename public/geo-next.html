@@ -629,8 +629,15 @@
           : full.openAlt
             ? [full.openAlt]
             : [];
+        const handleLine =
+          String(key).startsWith("instagram")
+            ? `Handle: Instagram @${socialHandles.instagram}`
+            : String(key).startsWith("facebook")
+              ? `Handle: Facebook @${socialHandles.facebook}`
+              : "";
         const lines = [
           `=== ${key} (${i + 1}/${open.length}) ===`,
+          handleLine,
           full.where ? `Where: ${full.where}` : "",
           full.open ? `Open: ${full.open}` : "",
           ...alts.map((href, j) => `OpenAlt${j === 0 ? "" : j + 1}: ${href}`),
@@ -644,7 +651,8 @@
       if (!parts.length) return "";
       return (
         `ARLEDSCREEN Point C — ${parts.length} open pack(s) · cite-only · no invented scores\n` +
-        `Source: https://arledscreen.com/owner-next.html · https://arledscreen.com/point-c.json\n\n` +
+        `Handles: ${socialHandlesLine()}\n` +
+        `Source: https://arledscreen.com/owner-next.html · https://arledscreen.com/point-c.json · https://arledscreen.com/social.json\n\n` +
         parts.join("\n")
       );
     }
@@ -1380,6 +1388,14 @@
         gateCache = { twin, status, tur1a: tur1aDoc };
         viewingArleds = false;
         viewingTur1a = false;
+        if (twin?.socialHandles?.facebook) {
+          socialHandles = {
+            facebook: String(twin.socialHandles.facebook || socialHandles.facebook),
+            instagram: String(twin.socialHandles.instagram || socialHandles.instagram),
+            whatsapp: String(twin.socialHandles.whatsapp || socialHandles.whatsapp),
+            waMe: String(twin.socialHandles.whatsappUrl || socialHandles.waMe),
+          };
+        }
         try {
           const social = await fetch("/social.json" + bust()).then((r) => (r.ok ? r.json() : null));
           if (social?.handles) {
@@ -1395,7 +1411,7 @@
             };
           }
         } catch {
-          /* keep baked-in handles */
+          /* keep twin / baked-in handles */
         }
         renderSocialHandles("");
         const priority = String((twin && twin.priorityGate) || status.priorityGate || "pointC");
