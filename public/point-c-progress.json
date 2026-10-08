@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/point-c-progress.json",
   "name": "ARLEDSCREEN Point C paste progress",
-  "description": "Acked Point C pack keys (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack.",
+  "description": "Acked Point C pack keys (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. HowTo: potentialAction when next paste remains.",
   "url": "https://arledscreen.com/point-c-progress.json",
   "dateModified": "2026-10-07T20:09:43.307Z",
   "creator": {
@@ -27,6 +27,74 @@
   "sameAs": [
     "https://arledscreen.com/point-c.json",
     "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/geo-next.txt"
-  ]
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/owner-next.txt",
+    "https://arledscreen.com/.well-known/point-c-progress.json"
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/point-c-progress.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/point-c-progress.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/geo-next.txt"
+    }
+  ],
+  "potentialAction": {
+    "@type": "HowTo",
+    "name": "Point C next paste: directoryLong",
+    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
+    "url": "https://arledscreen.com/geo-next.txt",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Open destination",
+        "url": "https://www.bingplaces.com/",
+        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Paste NAP / About block",
+        "text": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nE-posta: arled@arledscreen.com\nWeb: https://arledscreen.com/tr/\nNot: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com kullanın. LinkedIn /company/arleds sosyal slug’dır, web arleds.com değildir. NXTIONSTAR ≠ NationStar LED bileşen ≠ NEXTSTAR TV."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Ack progress",
+        "text": "npm run point-c:ack -- --pack=directoryLong"
+      }
+    ],
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "geo-next.txt",
+        "url": "https://arledscreen.com/geo-next.txt"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "point-c.json",
+        "url": "https://arledscreen.com/point-c.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "point-c-progress.json",
+        "url": "https://arledscreen.com/point-c-progress.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "geo-status.json",
+        "url": "https://arledscreen.com/geo-status.json"
+      }
+    ]
+  }
 }

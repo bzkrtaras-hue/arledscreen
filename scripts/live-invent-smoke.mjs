@@ -692,6 +692,8 @@ try {
     tsv.includes(`${SITE}/feeds/point-c.csv`) &&
     tsv.includes(`${SITE}/geo-status.json`) &&
     tsv.includes(`${SITE}/geo-next.txt`) &&
+    tsv.includes(`${SITE}/owner-next.txt`) &&
+    tsv.includes(`${SITE}/point-c-progress.json`) &&
     tsv.includes(`${SITE}/tur1a.json`) &&
     tsv.includes(`${SITE}/feeds/tur1a.csv`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
