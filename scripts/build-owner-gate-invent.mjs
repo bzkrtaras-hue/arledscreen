@@ -9,6 +9,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   buildPointCNext,
+  buildPointCPackChecklist,
   DNSENABLE_GMAIL_DRAFT_URL,
   DNSENABLE_PANEL_URL,
 } from "./print-point-c-packs.mjs";
@@ -150,7 +151,7 @@ export function buildGeoStatusDoc() {
     "@id": `${SITE}/geo-status.json`,
     name: "ARLEDSCREEN GEO owner-gate status",
     description:
-      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
+      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Browser Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
     url: `${SITE}/geo-status.json`,
     dateModified: new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
@@ -162,6 +163,7 @@ export function buildGeoStatusDoc() {
       `${SITE}/tur1a.json`,
       `${SITE}/geo-next.txt`,
       `${SITE}/owner-next.txt`,
+      `${SITE}/owner-next.html`,
       `${SITE}/#website`,
     ],
     distribution: [
@@ -178,6 +180,12 @@ export function buildGeoStatusDoc() {
       },
       { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/geo-next.txt` },
       { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/owner-next.txt` },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/html",
+        contentUrl: `${SITE}/owner-next.html`,
+        name: "Owner next HTML Open/paste",
+      },
     ],
     priorityGate: priority,
     gates: {
@@ -186,12 +194,14 @@ export function buildGeoStatusDoc() {
         acked: acked.length,
         total: POINT_C_STEPS,
         ackedKeys: acked,
+        packs: buildPointCPackChecklist(acked),
         updatedAt,
         next: pointCNext,
         urls: {
           txt: `${SITE}/point-c.txt`,
           json: `${SITE}/point-c.json`,
           csv: `${SITE}/feeds/point-c.csv`,
+          html: `${SITE}/owner-next.html`,
         },
         afterPaste: "npm run point-c:ack",
       },
@@ -225,7 +235,7 @@ export function buildGeoStatusDoc() {
       },
     },
     ownerNext:
-      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate) · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate) · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
     target: "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores",
   };
   // Priority-aware HowTo: invent agents follow potentialAction for the active gate only.
@@ -234,8 +244,8 @@ export function buildGeoStatusDoc() {
       "@type": "HowTo",
       name: `Point C next paste: ${pointCNext.packKey}`,
       description:
-        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
-      url: `${SITE}/geo-next.txt`,
+        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
+      url: `${SITE}/owner-next.html`,
       step: [
         {
           "@type": "HowToStep",
@@ -262,6 +272,7 @@ export function buildGeoStatusDoc() {
         },
       ],
       tool: [
+        { "@type": "HowToTool", name: "owner-next.html", url: `${SITE}/owner-next.html` },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
@@ -273,8 +284,8 @@ export function buildGeoStatusDoc() {
       "@type": "HowTo",
       name: "arleds.com 301 Domain Redirect (DNSEnable)",
       description:
-        "Owner-gated legacy domain redirect. Configure permanent 301 to /tr/ — do not invent DNS or mention rates.",
-      url: `${SITE}/geo-next.txt`,
+        "Owner-gated legacy domain redirect. Configure permanent 301 to /tr/ — do not invent DNS or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
+      url: `${SITE}/owner-next.html`,
       step: [
         {
           "@type": "HowToStep",
@@ -299,6 +310,7 @@ export function buildGeoStatusDoc() {
         },
       ],
       tool: [
+        { "@type": "HowToTool", name: "owner-next.html", url: `${SITE}/owner-next.html` },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
         {
@@ -384,24 +396,27 @@ export function buildGeoStatusDoc() {
 export function buildPointCProgressDoc() {
   const { acked, updatedAt } = readPointCProgress();
   const next = nextPointCPack(acked);
+  const packs = buildPointCPackChecklist(acked);
   const doc = {
     "@context": "https://schema.org",
     "@type": "Dataset",
     "@id": `${SITE}/point-c-progress.json`,
     name: "ARLEDSCREEN Point C paste progress",
     description:
-      "Acked Point C pack keys (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. HowTo: potentialAction when next paste remains.",
+      "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. Browser Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
     url: `${SITE}/point-c-progress.json`,
     dateModified: updatedAt || new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
     acked,
     total: POINT_C_STEPS,
+    packs,
     next,
     sameAs: [
       `${SITE}/point-c.json`,
       `${SITE}/geo-status.json`,
       `${SITE}/geo-next.txt`,
       `${SITE}/owner-next.txt`,
+      `${SITE}/owner-next.html`,
       `${SITE}/.well-known/point-c-progress.json`,
     ],
     distribution: [
@@ -416,6 +431,12 @@ export function buildPointCProgressDoc() {
         contentUrl: `${SITE}/.well-known/point-c-progress.json`,
       },
       { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/geo-next.txt` },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/html",
+        contentUrl: `${SITE}/owner-next.html`,
+        name: "Owner next HTML Open/paste",
+      },
     ],
   };
   if (next?.text && next?.open) {
@@ -423,8 +444,8 @@ export function buildPointCProgressDoc() {
       "@type": "HowTo",
       name: `Point C next paste: ${next.packKey}`,
       description:
-        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
-      url: `${SITE}/geo-next.txt`,
+        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
+      url: `${SITE}/owner-next.html`,
       step: [
         {
           "@type": "HowToStep",
@@ -451,6 +472,7 @@ export function buildPointCProgressDoc() {
         },
       ],
       tool: [
+        { "@type": "HowToTool", name: "owner-next.html", url: `${SITE}/owner-next.html` },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },

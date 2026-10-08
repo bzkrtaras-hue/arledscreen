@@ -523,11 +523,16 @@ try {
     geoNext.includes("/geo-status.json") &&
     ownerNextHtml.includes("Copy paste") &&
     ownerNextHtml.includes("/geo-status.json") &&
+    ownerNextHtml.includes("pack-list") &&
+    ownerNextHtml.includes("howto-ld") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&
     String(pointCNext.packKey || "") === "directoryLong" &&
     String(pointCNext.text || "").includes("34245") &&
     String(pointCNext.open || "").includes("bingplaces.com") &&
+    Array.isArray(geoStatus?.gates?.pointC?.packs) &&
+    geoStatus.gates.pointC.packs.length >= 11 &&
+    String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html") &&
     String(geoStatus?.priorityGate || "") === "pointC" &&
     geoStatus?.potentialAction?.["@type"] === "HowTo" &&
     String(geoStatus?.potentialAction?.name || "").includes("directoryLong") &&
@@ -575,6 +580,10 @@ try {
       progress.potentialAction.step.length >= 3 &&
       String(progress?.next?.packKey || "") === "directoryLong" &&
       String(progress?.potentialAction?.name || "").includes("directoryLong") &&
+      Array.isArray(progress?.packs) &&
+      progress.packs.length >= 11 &&
+      String(progress?.potentialAction?.url || "").includes("/owner-next.html") &&
+      (progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html")) &&
       crossOk
     ) {
       ok("owner-gate docs cross-join sameAs/subjectOf/isBasedOn/distribution + HowTo");

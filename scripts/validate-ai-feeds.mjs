@@ -2491,9 +2491,19 @@ if (fs.existsSync(outDir)) {
       !String(progressNext.packKey || "") ||
       !String(progressNext.text || "") ||
       !String(progressNext.open || "").includes("http") ||
-      !String(progress?.potentialAction?.name || "").includes(String(progressNext.packKey || ""))
+      !String(progress?.potentialAction?.name || "").includes(String(progressNext.packKey || "")) ||
+      !Array.isArray(progress?.packs) ||
+      progress.packs.length < 11 ||
+      !progress.packs.some((p) => String(p?.packKey || "") === "directoryLong") ||
+      !String(progress?.potentialAction?.url || "").includes("/owner-next.html") ||
+      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html")) ||
+      !Array.isArray(geoStatus?.gates?.pointC?.packs) ||
+      geoStatus.gates.pointC.packs.length < 11 ||
+      !String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-list") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("howto-ld")
     ) {
-      console.error("❌ out/point-c-progress.json must expose next.paste + HowTo potentialAction");
+      console.error("❌ out/point-c-progress.json + geo-status packs checklist + owner-next.html HowTo/pack-list required");
       process.exit(1);
     }
     {

@@ -146,6 +146,45 @@ export function pointCOpenAltUrls(packKey) {
   return [String(raw)].filter(Boolean);
 }
 
+/**
+ * Slim Point C pack checklist for invent + owner-next.html (no paste bodies).
+ * Cite-only status/open — does not invent citations.
+ */
+export function buildPointCPackChecklist(acked = []) {
+  const ackedSet = new Set((acked || []).map(String));
+  const rows = [];
+  for (const [label, key] of TR_ORDER) {
+    const alts = pointCOpenAltUrls(key);
+    const row = {
+      packKey: key,
+      label,
+      status: ackedSet.has(key) ? "acked" : "open",
+      where: POINT_C_PASTE_WHERE[key] || "",
+      open: pointCOpenUrl(key),
+      ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
+    };
+    if (alts[0]) row.openAlt = alts[0];
+    if (alts.length) row.openAlts = alts;
+    rows.push(row);
+  }
+  {
+    const key = HOSTINGER_STEP;
+    const alts = pointCOpenAltUrls(key);
+    const row = {
+      packKey: key,
+      label: "arleds.com 301 (DNSEnable Domain Redirect)",
+      status: ackedSet.has(key) ? "acked" : "open",
+      where: POINT_C_PASTE_WHERE[key] || "",
+      open: pointCOpenUrl(key),
+      ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
+    };
+    if (alts[0]) row.openAlt = alts[0];
+    if (alts.length) row.openAlts = alts;
+    rows.push(row);
+  }
+  return rows;
+}
+
 /** Live DNSEnable / Isimtescil Domain Redirect clipboard (primary when NS is dnsenable.com). */
 export function buildDnsEnableRedirectClipboard() {
   return [
@@ -606,7 +645,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
     progress: { acked: acked.length, total: sequenceKeys(en).length },
     next: buildPointCNext(profiles, { en }),
     ownerNext:
-      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
   };
   const next = doc.next;
   if (next?.text && next?.open) {
@@ -616,8 +655,8 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         ? `Point C next paste: ${next.packKey}`
         : `Point C sonraki yapıştırma: ${next.packKey}`,
       description:
-        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
-      url: `${SITE}/geo-next.txt`,
+        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
+      url: `${SITE}/owner-next.html`,
       step: [
         {
           "@type": "HowToStep",
@@ -644,6 +683,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         },
       ],
       tool: [
+        { "@type": "HowToTool", name: "owner-next.html", url: `${SITE}/owner-next.html` },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: jsonUrl },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },

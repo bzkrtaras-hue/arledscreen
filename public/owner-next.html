@@ -5,11 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ARLEDSCREEN · Owner next (GEO)</title>
   <meta name="robots" content="noindex,follow" />
-  <meta name="description" content="Owner friction: Open tabs + select-all paste for the current GEO gate (Point C → arleds 301 → Tur1a). Cite-only; no invented scores." />
+  <meta name="description" content="Owner friction: Open tabs + select-all paste for the current GEO gate (Point C → arleds 301 → Tur1a). Cite-only; no invented scores. Pack checklist from point-c.json / point-c-progress.json." />
   <link rel="canonical" href="https://arledscreen.com/owner-next.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" id="howto-ld">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://arledscreen.com/owner-next.html",
+    "name": "ARLEDSCREEN Owner next (GEO Open/paste)",
+    "url": "https://arledscreen.com/owner-next.html",
+    "isPartOf": { "@id": "https://arledscreen.com/#website" },
+    "about": { "@id": "https://arledscreen.com/#organization" },
+    "description": "Browser owner friction for Point C paste → arleds 301 → Tur1a. Cite pack text only — do not invent ChatGPT/Gemini scores.",
+    "potentialAction": {
+      "@type": "HowTo",
+      "name": "GEO owner next paste",
+      "url": "https://arledscreen.com/owner-next.html",
+      "description": "Open destination → paste NAP/About → ack. Live next from /geo-status.json · /point-c.json · /point-c-progress.json.",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Open destination", "text": "Use Open / OpenAlt buttons from the live priorityGate." },
+        { "@type": "HowToStep", "position": 2, "name": "Paste block", "text": "Copy paste textarea (select-all)." },
+        { "@type": "HowToStep", "position": 3, "name": "Ack progress", "text": "npm run geo:ack / point-c:ack / tur1a:log as shown." }
+      ],
+      "tool": [
+        { "@type": "HowToTool", "name": "geo-status.json", "url": "https://arledscreen.com/geo-status.json" },
+        { "@type": "HowToTool", "name": "point-c.json", "url": "https://arledscreen.com/point-c.json" },
+        { "@type": "HowToTool", "name": "point-c-progress.json", "url": "https://arledscreen.com/point-c-progress.json" },
+        { "@type": "HowToTool", "name": "tur1a.json", "url": "https://arledscreen.com/tur1a.json" },
+        { "@type": "HowToTool", "name": "geo-next.txt", "url": "https://arledscreen.com/geo-next.txt" }
+      ]
+    }
+  }
+  </script>
   <style>
     :root {
       --bg0: #0f1419;
@@ -139,6 +169,39 @@
       margin: 0.75rem 0 0;
       overflow-x: auto;
     }
+    #pack-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.35rem;
+    }
+    #pack-list button.pack {
+      width: 100%;
+      text-align: left;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      align-items: baseline;
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.18);
+      color: var(--ink);
+      font: inherit;
+      padding: 0.5rem 0.7rem;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    #pack-list button.pack:hover { border-color: var(--accent); }
+    #pack-list button.pack.active {
+      border-color: var(--accent);
+      background: rgba(196, 163, 90, 0.12);
+    }
+    #pack-list button.pack.acked { opacity: 0.72; }
+    #pack-list .pk { color: var(--accent); font-weight: 500; min-width: 9rem; }
+    #pack-list .st { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    #pack-list .st.acked { color: var(--ok); }
+    #pack-list .st.open { color: var(--warn); }
+    #pack-list .lb { color: var(--muted); font-size: 0.9rem; }
     .links {
       margin-top: 2rem;
       padding-top: 1rem;
@@ -167,6 +230,9 @@
       <p class="where" id="where"></p>
       <div class="opens" id="opens"></div>
 
+      <h2 id="pack-heading" class="hidden">Point C packs</h2>
+      <ul id="pack-list" class="hidden" aria-label="Point C pack checklist"></ul>
+
       <h2>Paste (select-all)</h2>
       <textarea id="paste" readonly spellcheck="false"></textarea>
       <div class="row">
@@ -192,6 +258,8 @@
   <script>
     const bust = () => `?v=${Date.now()}`;
     const $ = (id) => document.getElementById(id);
+    let pointCPacks = [];
+    let activeKey = "";
 
     function openButtons(urls) {
       const box = $("opens");
@@ -220,31 +288,97 @@
       }
     }
 
+    function showPack(pack) {
+      if (!pack) return;
+      activeKey = pack.packKey || "";
+      const alts = Array.isArray(pack.openAlts) ? pack.openAlts : pack.openAlt ? [pack.openAlt] : [];
+      $("where").textContent = pack.where || "";
+      openButtons([
+        { label: "Open", href: pack.open, primary: true },
+        ...alts.map((href, i) => ({ label: i === 0 ? "OpenAlt" : "OpenAlt" + (i + 1), href })),
+      ]);
+      $("paste").value = pack.text || "";
+      $("ack").textContent = pack.ackCommand || (pack.status === "acked" ? "(acked)" : "npm run geo:ack");
+      $("progress").textContent =
+        `Point C pack · ${pack.packKey || ""} · ${pack.status || "open"}`;
+      document.querySelectorAll("#pack-list button.pack").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.key === activeKey);
+      });
+    }
+
+    function renderPackList(packs, nextKey) {
+      const list = $("pack-list");
+      const heading = $("pack-heading");
+      if (!Array.isArray(packs) || !packs.length) {
+        list.classList.add("hidden");
+        heading.classList.add("hidden");
+        return;
+      }
+      list.classList.remove("hidden");
+      heading.classList.remove("hidden");
+      list.innerHTML = "";
+      packs.forEach((p) => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "pack" + (p.status === "acked" ? " acked" : "");
+        btn.dataset.key = p.packKey;
+        btn.innerHTML =
+          `<span class="pk">${p.packKey}</span>` +
+          `<span class="st ${p.status === "acked" ? "acked" : "open"}">${p.status || "open"}</span>` +
+          `<span class="lb">${p.label || ""}</span>`;
+        btn.addEventListener("click", () => {
+          const full = pointCPacks.find((x) => x.packKey === p.packKey) || p;
+          showPack(full);
+        });
+        li.appendChild(btn);
+        list.appendChild(li);
+      });
+      const focus = packs.find((p) => p.packKey === nextKey) || packs.find((p) => p.status !== "acked") || packs[0];
+      if (focus) {
+        const full = pointCPacks.find((x) => x.packKey === focus.packKey) || focus;
+        showPack(full);
+      }
+    }
+
     async function load() {
       try {
-        const [status, pointC, tur1a] = await Promise.all([
+        const [status, pointC, tur1a, progress] = await Promise.all([
           fetch("/geo-status.json" + bust()).then((r) => r.json()),
           fetch("/point-c.json" + bust()).then((r) => r.json()),
           fetch("/tur1a.json" + bust()).then((r) => r.json()),
+          fetch("/point-c-progress.json" + bust()).then((r) => r.json()),
         ]);
         const priority = String(status.priorityGate || "pointC");
         $("priority").textContent = "priority: " + priority;
         $("load").classList.add("hidden");
         $("panel").classList.remove("hidden");
+        pointCPacks = Array.isArray(pointC.packs) ? pointC.packs : [];
 
         if (priority === "pointC") {
-          const next = status.gates?.pointC?.next || pointC.next || {};
-          const alts = Array.isArray(next.openAlts) ? next.openAlts : next.openAlt ? [next.openAlt] : [];
+          const next = status.gates?.pointC?.next || pointC.next || progress.next || {};
+          const checklist =
+            status.gates?.pointC?.packs ||
+            progress.packs ||
+            pointCPacks.map(({ packKey, label, status: st, where, open, openAlt, openAlts, ackCommand }) => ({
+              packKey, label, status: st, where, open, openAlt, openAlts, ackCommand,
+            }));
           $("progress").textContent =
-            `Point C ${status.gates?.pointC?.acked ?? "?"}/${status.gates?.pointC?.total ?? "?"} · ${next.packKey || ""}`;
-          $("where").textContent = next.where || "";
-          openButtons([
-            { label: "Open", href: next.open, primary: true },
-            ...alts.map((href, i) => ({ label: i === 0 ? "OpenAlt" : "OpenAlt" + (i + 1), href })),
-          ]);
-          $("paste").value = next.text || "";
-          $("ack").textContent = next.ackCommand || "npm run geo:ack";
+            `Point C ${status.gates?.pointC?.acked ?? progress.acked?.length ?? "?"}/${status.gates?.pointC?.total ?? progress.total ?? "?"} · ${next.packKey || ""}`;
+          renderPackList(checklist, next.packKey);
+          if (!checklist.length) {
+            const alts = Array.isArray(next.openAlts) ? next.openAlts : next.openAlt ? [next.openAlt] : [];
+            $("where").textContent = next.where || "";
+            openButtons([
+              { label: "Open", href: next.open, primary: true },
+              ...alts.map((href, i) => ({ label: i === 0 ? "OpenAlt" : "OpenAlt" + (i + 1), href })),
+            ]);
+            $("paste").value = next.text || "";
+            $("ack").textContent = next.ackCommand || "npm run geo:ack";
+          }
         } else if (priority === "arleds301") {
+          $("pack-list").classList.add("hidden");
+          $("pack-heading").classList.add("hidden");
           const g = status.gates?.arleds301 || {};
           $("progress").textContent = "arleds.com → arledscreen.com/tr/ 301 · " + (g.mode || "open");
           $("where").textContent = "Isimtescil/DNSEnable Domain Redirect (or Cloudflare Option B)";
@@ -257,6 +391,8 @@
             "Use npm run point-c:dnsenable-draft for full email + Domain Redirect clipboard.\nVerify: npm run verify:arleds-301";
           $("ack").textContent = "npm run verify:arleds-301 · npm run geo:status";
         } else if (priority === "tur1a") {
+          $("pack-list").classList.add("hidden");
+          $("pack-heading").classList.add("hidden");
           const next = tur1a.next || status.gates?.tur1a?.next || {};
           $("progress").textContent =
             `Tur1a ${status.gates?.tur1a?.filled ?? "?"}/${status.gates?.tur1a?.total ?? "?"} · ${next.platform || ""} · ${next.promptId || ""}`;
@@ -267,6 +403,8 @@
             next.logCommand ||
             "npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…";
         } else {
+          $("pack-list").classList.add("hidden");
+          $("pack-heading").classList.add("hidden");
           $("progress").textContent = "PR #60 merge → main";
           $("where").textContent = "Merge cursor/geo-prod-guard-5666 when Point C + 301 + Tur1a are done";
           openButtons([
