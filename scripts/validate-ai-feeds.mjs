@@ -2486,10 +2486,15 @@ if (fs.existsSync(outDir)) {
         !String(geoStatus?.potentialAction?.name || "").includes(String(pointCNext.packKey || ""))) ||
       !Array.isArray(tur1a?.cells) ||
       tur1a.cells.length < 48 ||
+      !String(tur1a.cells[0]?.prompt || "") ||
+      !String(tur1a.cells[0]?.cellKey || "").includes("|") ||
+      !String(tur1a.cells[0]?.logCommand || "").includes("tur1a:log") ||
+      !Array.isArray(tur1a.cells[0]?.openAlts) ||
       !tur1aCsv.includes("platform,promptId") ||
       !tur1aCsv.includes("chatgpt") ||
       !String(tur1a?.next?.logCommand || "").includes("tur1a:log") ||
       !String(tur1a?.next?.open || "").includes("http") ||
+      !String(tur1a?.next?.cellKey || "").includes("|") ||
       tur1a?.potentialAction?.["@type"] !== "HowTo" ||
       !Array.isArray(tur1a?.potentialAction?.step) ||
       tur1a.potentialAction.step.length < 3 ||
@@ -2550,10 +2555,13 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("next-arleds") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("showArleds301") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Next: arleds 301") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("next-tur1a") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("showTur1aGate") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Next: Tur1a") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/mailto required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a/mailto required");
       process.exit(1);
     }
     {

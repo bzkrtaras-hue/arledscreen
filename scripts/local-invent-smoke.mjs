@@ -543,6 +543,9 @@ else fail("ard.resources.pointC");
     html.includes("next-arleds") &&
     html.includes("showArleds301") &&
     html.includes("Next: arleds 301") &&
+    html.includes("next-tur1a") &&
+    html.includes("showTur1aGate") &&
+    html.includes("Next: Tur1a") &&
     html.includes("Mailto DNSEnable") &&
     html.includes("packQuery") &&
     alias === html &&

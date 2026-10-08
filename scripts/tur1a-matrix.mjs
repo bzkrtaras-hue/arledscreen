@@ -186,14 +186,26 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
   const cells = [];
   for (const id of ids) {
     for (const platform of HUMAN_PLATFORMS) {
+      const key = cellKey(platform, id);
       cells.push({
+        cellKey: key,
         platform,
         promptId: id,
         locale: String(id).startsWith("en-") ? "en" : "tr-TR",
-        status: filledLocal.has(cellKey(platform, id)) ? "filled" : "empty",
+        status: filledLocal.has(key) ? "filled" : "empty",
         open: platformOpenUrl(platform),
+        openAlts: HUMAN_PLATFORMS.filter((p) => p !== platform)
+          .map((p) => platformOpenUrl(p))
+          .filter(Boolean),
+        prompt: usePrompts.find(([pid]) => pid === id)?.[1] || "",
+        logCommand,
+        where: `${platform} · promptId=${id} · paste blind prompt (no invented scores)`,
       });
     }
+  }
+  if (next) {
+    next.cellKey = cellKey(next.platform, next.promptId);
+    next.where = `${next.platform} · promptId=${next.promptId} · paste blind prompt (no invented scores)`;
   }
   const doc = {
     "@context": "https://schema.org",

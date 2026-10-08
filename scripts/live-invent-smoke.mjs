@@ -552,6 +552,9 @@ try {
     ownerNextHtml.includes("next-arleds") &&
     ownerNextHtml.includes("showArleds301") &&
     ownerNextHtml.includes("Next: arleds 301") &&
+    ownerNextHtml.includes("next-tur1a") &&
+    ownerNextHtml.includes("showTur1aGate") &&
+    ownerNextHtml.includes("Next: Tur1a") &&
     ownerNextHtml.includes("Mailto DNSEnable") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&
