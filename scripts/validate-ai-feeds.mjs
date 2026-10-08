@@ -2489,6 +2489,8 @@ if (fs.existsSync(outDir)) {
       !String(tur1a.cells[0]?.prompt || "") ||
       !String(tur1a.cells[0]?.cellKey || "").includes("|") ||
       !String(tur1a.cells[0]?.logCommand || "").includes("tur1a:log") ||
+      !String(tur1a.cells[0]?.logCommand || "").includes("--platform=") ||
+      !String(tur1a.cells[0]?.logCommand || "").includes("--promptId=") ||
       !Array.isArray(tur1a.cells[0]?.openAlts) ||
       !tur1aCsv.includes("platform,promptId") ||
       !tur1aCsv.includes("chatgpt") ||
