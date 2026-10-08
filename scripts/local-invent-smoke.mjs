@@ -174,11 +174,21 @@ if (
   if (
     blob.includes("/.well-known/modules.json") &&
     blob.includes("/.well-known/pricing.json") &&
+    blob.includes("/api/catalog.json") &&
+    blob.includes("/api/v1/prices") &&
+    blob.includes("/.well-known/security") &&
     agentsMd.includes("/.well-known/modules.json") &&
+    agentsMd.includes("/api/v1/prices") &&
+    agentsMd.includes("/api/catalog.json") &&
+    agentsMd.includes("/api/products") &&
+    agentsMd.includes("/tr/prices.json") &&
+    agentsMd.includes("/data/prices.json") &&
+    agentsMd.includes("/llms-full") &&
+    agentsMd.includes("/.well-known/security") &&
     llms.includes("/.well-known/sku.json")
   ) {
-    ok("agents/AGENTS/llms invent well-known modules/sku/pricing");
-  } else fail("agents/AGENTS/llms invent well-known modules/sku/pricing");
+    ok("agents/AGENTS/llms invent well-known modules/sku/pricing + api/locale");
+  } else fail("agents/AGENTS/llms invent well-known modules/sku/pricing + api/locale");
   const agentsBased = JSON.stringify(agents?.isBasedOn || []);
   const agentsDist = JSON.stringify(agents?.distribution || []);
   if (
@@ -350,6 +360,16 @@ else fail("ard.resources.pointC");
     String(res.productExtless?.url || "").includes("/product") &&
     String(res.entityExtless?.url || "").includes("/entity") &&
     String(res.securityRoot?.url || "").includes("/security.txt") &&
+    String(res.offersJson?.url || "").includes("/offers.json") &&
+    String(res.panelsExtless?.url || "").includes("/panels") &&
+    String(res.mpnExtless?.url || "").includes("/mpn") &&
+    String(res.merchantExtless?.url || "").includes("/merchant") &&
+    String(res.skuExtless?.url || "").includes("/sku") &&
+    String(res.organizationExtless?.url || "").includes("/organization") &&
+    String(res.citeExtless?.url || "").includes("/cite") &&
+    String(res.pointCWellKnown?.url || "").includes("/.well-known/point-c.txt") &&
+    String(res.agentsJsonRoot?.url || "").includes("/agents.json") &&
+    String(res.agentJsonRoot?.url || "").includes("/agent.json") &&
     allow.includes("/en/pricing.json") &&
     allow.includes("/en/entity.json") &&
     allow.includes("/api/products") &&

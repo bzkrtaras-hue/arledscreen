@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "ARLEDSCREEN agent discovery",
-  "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD); inventable aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /sku · /api/prices · /api/panels.json · /api/mpn.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /offers.json · /api/v1/prices (/modules.json yes; /modules is image assets). Entity aliases /organization.json · /.well-known/entity.json · /api/entity.json. Brand /brand.json embeds AggregateOffer×12 + OrderAction. WebSite: /#website. Point C packs: /entity-profiles.json. Also see /AGENTS.md. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt. Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
+  "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD); inventable aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /sku · /modules · /brand · /api/prices · /api/panels.json · /api/mpn · /api/mpn.json · /api/catalog.json · /api/products · /api/v1/prices · /v1/prices · /data/prices.json · /en/prices.json · /tr/prices.json · /feeds/prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /offers.json (/modules+/brand via Pages Functions; /modules/*+/brand/* assets intact). Entity aliases /organization.json · /.well-known/entity.json · /api/entity.json · /en/entity.json · /tr/entity.json. Brand /brand.json embeds AggregateOffer×12 + OrderAction. WebSite: /#website. Point C packs: /entity-profiles.json · /entity-profiles. Also see /AGENTS.md. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt. Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
   "url": "https://arledscreen.com/.well-known/agents.json",
   "numberOfItems": 20,
   "itemListElement": [
@@ -32,14 +32,14 @@
       "position": 4,
       "name": "AI shopping pricedPanels",
       "url": "https://arledscreen.com/ai-shopping.json",
-      "description": "Single price source: 12 panel USD Product/Offer graph; inventable aliases /ai-shopping · /api/prices · /api/panels.json · /pricing.json · /prices.json · /panels · /mpn · /merchant · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/price.json · /.well-known/pricing.json · /en/prices.json"
+      "description": "Single price source: 12 panel USD Product/Offer graph; inventable aliases /ai-shopping · /api/prices · /api/panels.json · /api/mpn · /api/v1/prices · /v1/prices · /data/prices.json · /pricing.json · /prices.json · /panels · /mpn · /merchant · /modules · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/price.json · /.well-known/pricing.json · /en/prices.json · /tr/prices.json · /feeds/prices.json"
     },
     {
       "@type": "ListItem",
       "position": 5,
       "name": "Product catalog",
       "url": "https://arledscreen.com/catalog.json",
-      "description": "Published panel USD catalog; seller/provider → #organization; inventable aliases /catalog · /products · /products.json · /product.json · /api/catalog"
+      "description": "Published panel USD catalog; seller/provider → #organization; inventable aliases /catalog · /products · /product · /products.json · /product.json · /api/catalog · /api/catalog.json · /api/products · /en/catalog.json · /tr/catalog.json · /feeds/catalog.json"
     },
     {
       "@type": "ListItem",
@@ -137,14 +137,14 @@
       "position": 19,
       "name": "security.txt",
       "url": "https://arledscreen.com/.well-known/security.txt",
-      "description": "RFC 9116 trust/contact; cites Brand/Entity/WebSite#website/Price/Point C + invent aliases; alias /security.txt (not a price source)"
+      "description": "RFC 9116 trust/contact; cites Brand/Entity/WebSite#website/Price/Point C + invent aliases; aliases /security.txt · /.well-known/security (not a price source)"
     },
     {
       "@type": "ListItem",
       "position": 20,
       "name": "llms-full.txt",
       "url": "https://arledscreen.com/llms-full.txt",
-      "description": "Extended LLM/agent context (full); also /.well-known/llms-full.txt · /tr/llms-full.txt · /en/llms-full.txt; short twin /llms.txt"
+      "description": "Extended LLM/agent context (full); also /llms-full · /.well-known/llms-full.txt · /tr/llms-full.txt · /en/llms-full.txt; short twin /llms.txt · /llms"
     }
   ],
   "provider": {

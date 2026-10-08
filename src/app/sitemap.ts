@@ -287,6 +287,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/.well-known/about.json",
     "/.well-known/catalog.json",
     "/.well-known/security.txt",
+    "/.well-known/security",
     "/.well-known/humans.txt",
     "/agents.json",
     "/agent.json",

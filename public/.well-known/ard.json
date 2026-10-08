@@ -836,6 +836,85 @@
         "description": "Root + extensionless inventable aliases of RFC 9116 security.txt",
         "canonical": "https://arledscreen.com/.well-known/security.txt",
         "extensionless": "https://arledscreen.com/.well-known/security"
+      },
+      "offersJson": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/offers.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (offers synonym)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "extensionless": "https://arledscreen.com/offers",
+        "wellKnown": "https://arledscreen.com/.well-known/offers.json"
+      },
+      "panelsExtless": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/panels",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of ai-shopping.json (panels synonym)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "panelsJson": "https://arledscreen.com/panels.json"
+      },
+      "mpnExtless": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/mpn",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of ai-shopping.json (mpn=sku)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "mpnJson": "https://arledscreen.com/mpn.json"
+      },
+      "merchantExtless": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/merchant",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of ai-shopping.json (merchant synonym)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "merchantJson": "https://arledscreen.com/merchant.json"
+      },
+      "skuExtless": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/sku",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of ai-shopping.json (sku synonym)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "skuJson": "https://arledscreen.com/sku.json"
+      },
+      "organizationExtless": {
+        "type": "Organization invent alias",
+        "url": "https://arledscreen.com/organization",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of entity.json",
+        "canonical": "https://arledscreen.com/entity.json"
+      },
+      "citeExtless": {
+        "type": "Organization invent alias",
+        "url": "https://arledscreen.com/cite",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of entity.json (cite synonym)",
+        "canonical": "https://arledscreen.com/entity.json",
+        "citeJson": "https://arledscreen.com/cite.json"
+      },
+      "pointCWellKnown": {
+        "type": "Point C invent alias",
+        "url": "https://arledscreen.com/.well-known/point-c.txt",
+        "format": "text/plain",
+        "description": "Well-known inventable alias of point-c.txt paste packs",
+        "canonical": "https://arledscreen.com/point-c.txt",
+        "en": "https://arledscreen.com/point-c-en.txt"
+      },
+      "agentsJsonRoot": {
+        "type": "Agent Discovery Index invent alias",
+        "url": "https://arledscreen.com/agents.json",
+        "format": "application/ld+json",
+        "description": "Root inventable alias of /.well-known/agents.json",
+        "canonical": "https://arledscreen.com/.well-known/agents.json"
+      },
+      "agentJsonRoot": {
+        "type": "Agent Discovery Index invent alias",
+        "url": "https://arledscreen.com/agent.json",
+        "format": "application/ld+json",
+        "description": "Root agent.json inventable alias of /.well-known/agents.json",
+        "canonical": "https://arledscreen.com/.well-known/agents.json",
+        "wellKnown": "https://arledscreen.com/.well-known/agent.json"
       }
     },
     "cite": {

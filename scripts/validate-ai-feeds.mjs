@@ -462,9 +462,19 @@ if (fs.existsSync(outDir)) {
     !String(ard?.agentic?.resources?.feedJson?.url || "").includes("/feed.json") ||
     !String(ard?.agentic?.resources?.productExtless?.url || "").includes("/product") ||
     !String(ard?.agentic?.resources?.entityExtless?.url || "").includes("/entity") ||
-    !String(ard?.agentic?.resources?.securityRoot?.url || "").includes("/security.txt")
+    !String(ard?.agentic?.resources?.securityRoot?.url || "").includes("/security.txt") ||
+    !String(ard?.agentic?.resources?.offersJson?.url || "").includes("/offers.json") ||
+    !String(ard?.agentic?.resources?.panelsExtless?.url || "").includes("/panels") ||
+    !String(ard?.agentic?.resources?.mpnExtless?.url || "").includes("/mpn") ||
+    !String(ard?.agentic?.resources?.merchantExtless?.url || "").includes("/merchant") ||
+    !String(ard?.agentic?.resources?.skuExtless?.url || "").includes("/sku") ||
+    !String(ard?.agentic?.resources?.organizationExtless?.url || "").includes("/organization") ||
+    !String(ard?.agentic?.resources?.citeExtless?.url || "").includes("/cite") ||
+    !String(ard?.agentic?.resources?.pointCWellKnown?.url || "").includes("/.well-known/point-c.txt") ||
+    !String(ard?.agentic?.resources?.agentsJsonRoot?.url || "").includes("/agents.json") ||
+    !String(ard?.agentic?.resources?.agentJsonRoot?.url || "").includes("/agent.json")
   ) {
-    console.error("❌ ard.json must expose resources.apiCatalog + localeInvent + dataset/products/brand/modules/feed/product/entity/security invent");
+    console.error("❌ ard.json must expose resources.apiCatalog + localeInvent + dataset/products/brand/modules/feed/product/entity/security + offers/extless/pointC/agents invent");
     process.exit(1);
   }
   if (!ard?.agentic?.cite?.en?.oneLiner) {
@@ -2286,9 +2296,16 @@ if (fs.existsSync(outDir)) {
       !agentsMd.includes("/point-c.txt") ||
       !agentsMd.includes("/.well-known/modules.json") ||
       !agentsMd.includes("/.well-known/sku.json") ||
-      !agentsMd.includes("/.well-known/pricing.json")
+      !agentsMd.includes("/.well-known/pricing.json") ||
+      !agentsMd.includes("/api/v1/prices") ||
+      !agentsMd.includes("/api/catalog.json") ||
+      !agentsMd.includes("/api/products") ||
+      !agentsMd.includes("/tr/prices.json") ||
+      !agentsMd.includes("/data/prices.json") ||
+      !agentsMd.includes("/llms-full") ||
+      !agentsMd.includes("/.well-known/security")
     ) {
-      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss + point-c.txt + well-known invent aliases");
+      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss + point-c.txt + well-known + api/locale invent aliases");
       process.exit(1);
     }
   }
@@ -4448,6 +4465,7 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     "/product",
     "/entity-profiles",
     "/llms-full",
+    "/.well-known/security",
   ]) {
     if (!sitemapLive.includes(needle)) {
       console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);
