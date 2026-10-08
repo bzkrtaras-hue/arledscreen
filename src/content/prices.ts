@@ -114,9 +114,17 @@ export function nxtionstarBrandNode() {
     makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
     hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     description:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss. GEO baseline: geo-baseline.json.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
     disambiguatingDescription:
-      "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
+      "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
+    sameAs: [
+      `${SITE_URL}/`,
+      `${SITE_URL}/tr/`,
+      `${SITE_URL}/tr/nxtionstar/`,
+      `${SITE_URL}/brand.json`,
+      "https://www.instagram.com/arledscreen/",
+      "https://www.facebook.com/arledscreenn",
+    ],
   };
 }
 
@@ -541,7 +549,7 @@ const moduleExceptions = PANEL_PRICES.filter((p) => p.moduleMm)
   .join(", ");
 
 export const PRICE_NOTE =
-  `Fiyatlar USD, panel (modül) başınadır; modül ölçüsü ${STANDARD_MODULE}${moduleExceptions ? ` (${moduleExceptions})` : ""}. KDV ve nakliye hariçtir. Tutarlar yaklaşıktır; nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`;
+  `Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir.${moduleExceptions ? ` Standart modül ${STANDARD_MODULE}; özel ölçüler: ${moduleExceptions}.` : ` Modül ölçüsü ${STANDARD_MODULE}.`} Tutarlar yaklaşıktır; nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`;
 
 export const pricesForGroup = (slug: string) => PANEL_PRICES.filter((p) => p.groups.includes(slug));
 

@@ -380,5 +380,6 @@ export const aiDiscoveryLinks = [
   { rel: "describedby", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping pricedPanels" },
   { rel: "describedby", type: "application/ld+json", href: ENTITY_JSON_URL, title: "Organization Entity" },
   { rel: "describedby", type: "application/ld+json", href: BRAND_JSON_URL, title: "NXTIONSTAR Brand" },
-  { rel: "canonical", href: WEBSITE_URL, title: "ARLEDSCREEN WebSite #website" },
+  // Discovery only — not rel=canonical (page HTML already has one page-URL canonical; Melis SEO).
+  { rel: "describedby", href: WEBSITE_URL, title: "ARLEDSCREEN WebSite #website" },
 ];

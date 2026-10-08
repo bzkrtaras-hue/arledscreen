@@ -42,22 +42,22 @@
 
   var T = {
     tr: {
-      name: "Canlı Destek", online: "Çevrim içi",
-      teaser: "Merhaba! Size uygun LED ekranı ve tahmini fiyatı birlikte bulalım mı?",
-      teaserShort: "Merhaba! Uygun LED ekranı ve fiyatı birlikte bulalım mı?",
+      name: "Melis", online: "Canlı Destek • Çevrim içi",
+      teaser: "Merhaba, ben Melis. Size uygun LED ekranı ve fiyatı birlikte bulalım mı?",
+      teaserShort: "Merhaba, ben Melis. Uygun ekranı birlikte bulalım mı?",
       note: "",
-      open: "Canlı Destek sohbetini aç", close: "Sohbeti kapat", closeTeaser: "Mesajı kapat",
-      dialog: "Canlı Destek", frame: "Canlı Destek: LED ekran önerisi ve tahmini fiyat", loading: "Bağlanıyor…",
-      typing: "Canlı Destek yazıyor", minimize: "Sohbeti küçült"
+      open: "Melis ile sohbeti aç", close: "Sohbeti kapat", closeTeaser: "Mesajı kapat",
+      dialog: "Melis • Canlı Destek", frame: "Melis: LED ekran önerisi ve tahmini fiyat", loading: "Bağlanıyor…",
+      typing: "Melis yazıyor", minimize: "Sohbeti küçült"
     },
     en: {
-      name: "Live Support", online: "Online",
-      teaser: "Hello! Shall we find the right LED screen and an estimated price together?",
-      teaserShort: "Hi! Shall we find the right LED screen and price together?",
+      name: "Melis", online: "Live Support • Online",
+      teaser: "Hi, I'm Melis. Shall we find the right LED screen and an estimated price together?",
+      teaserShort: "Hi, I'm Melis. Shall we find the right screen together?",
       note: "Chat is in Turkish.",
-      open: "Open live support chat", close: "Close chat", closeTeaser: "Dismiss message",
-      dialog: "Live Support", frame: "Live Support: LED screen recommendation and estimated price", loading: "Connecting…",
-      typing: "Live Support is typing", minimize: "Minimise chat"
+      open: "Open chat with Melis", close: "Close chat", closeTeaser: "Dismiss message",
+      dialog: "Melis • Live Support", frame: "Melis: LED screen recommendation and estimated price", loading: "Connecting…",
+      typing: "Melis is typing", minimize: "Minimise chat"
     }
   }[LANG];
 
@@ -498,8 +498,14 @@
     closeBtn.focus({ preventScroll: true });
   }
 
+  /* Pencere kapanınca sohbetteki sesli dinleme/konuşma da durur (aynı köken iframe). */
+  function notifyFrameClosed() {
+    try { if (frame && frame.contentWindow) frame.contentWindow.dispatchEvent(new Event("arled-chat-close")); } catch (e) { /* yok say */ }
+  }
+
   function close() {
     if (!isOpen) return;
+    notifyFrameClosed();
     isOpen = false;
     dismiss();
     panel.hidden = true;
@@ -519,6 +525,7 @@
     if (ok === !root.hidden) return;
     if (!ok) {
       if (isOpen) {
+        notifyFrameClosed();
         isOpen = false;
         panel.hidden = true;
         root.classList.remove("acd-open");
