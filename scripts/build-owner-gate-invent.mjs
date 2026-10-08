@@ -149,16 +149,18 @@ export function buildGeoStatusDoc() {
     "@id": `${SITE}/geo-status.json`,
     name: "ARLEDSCREEN GEO owner-gate status",
     description:
-      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Clipboard: /geo-next.txt · Point C: /point-c.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
+      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
     url: `${SITE}/geo-status.json`,
     dateModified: new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
     isBasedOn: [
       `${SITE}/point-c.json`,
       `${SITE}/point-c.txt`,
+      `${SITE}/point-c-progress.json`,
       `${SITE}/entity-profiles.json`,
       `${SITE}/tur1a.json`,
       `${SITE}/geo-next.txt`,
+      `${SITE}/owner-next.txt`,
       `${SITE}/#website`,
     ],
     distribution: [
@@ -167,6 +169,11 @@ export function buildGeoStatusDoc() {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE}/.well-known/geo-status.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/point-c-progress.json`,
       },
       { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/geo-next.txt` },
       { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/owner-next.txt` },
@@ -217,7 +224,7 @@ export function buildGeoStatusDoc() {
       },
     },
     ownerNext:
-      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate) · https://arledscreen.com/tur1a.json → next · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate) · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
     target: "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores",
   };
   // Priority-aware HowTo: invent agents follow potentialAction for the active gate only.
@@ -254,6 +261,7 @@ export function buildGeoStatusDoc() {
       tool: [
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
+        { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
       ],
     };

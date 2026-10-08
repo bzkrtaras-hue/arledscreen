@@ -1971,13 +1971,15 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("point-c:csv") ||
     !securityLive.includes("/geo-next.txt") ||
     !securityLive.includes("/point-c.json") ||
+    !securityLive.includes("/point-c-progress.json") ||
+    !securityLive.includes("potentialAction") ||
     !securityLive.includes("directoryLong") ||
     !securityLive.includes("https://www.bingplaces.com/") ||
     !securityLive.includes("https://www.isimtescil.net/") ||
     !securityLive.includes("https://business.google.com/") ||
     !securityLive.includes("https://chatgpt.com/")
   ) {
-    console.error("❌ out/.well-known/security.txt must include live geo-next/point-c.json next (directoryLong Bing) + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301");
+    console.error("❌ out/.well-known/security.txt must include live geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301");
     process.exit(1);
   }
   const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
@@ -2136,6 +2138,8 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("point-c:csv") ||
       !agentsMdLive.includes("/geo-next.txt") ||
       !agentsMdLive.includes("/point-c.json") ||
+      !agentsMdLive.includes("/point-c-progress.json") ||
+      !agentsMdLive.includes("potentialAction") ||
       !agentsMdLive.includes("directoryLong") ||
       !agentsMdLive.includes("https://www.bingplaces.com/") ||
       !agentsMdLive.includes("https://businessconnect.apple.com/") ||
@@ -2147,7 +2151,7 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("/en/shop/") ||
       !agentsMdLive.includes("/en/request-quote/")
     ) {
-      console.error("❌ out/AGENTS.md must cite live geo-next/point-c.json next (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges");
+      console.error("❌ out/AGENTS.md must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2156,6 +2160,8 @@ if (fs.existsSync(outDir)) {
       !aiTxtLive.includes("geo:ack") ||
       !aiTxtLive.includes("/geo-next.txt") ||
       !aiTxtLive.includes("/point-c.json") ||
+      !aiTxtLive.includes("/point-c-progress.json") ||
+      !aiTxtLive.includes("potentialAction") ||
       !aiTxtLive.includes("directoryLong") ||
       !aiTxtLive.includes("https://www.bingplaces.com/") ||
       !aiTxtLive.includes("/api/catalog.json") ||
@@ -2163,7 +2169,7 @@ if (fs.existsSync(outDir)) {
       !aiTxtLive.includes("/tr/prices.json") ||
       !aiTxtLive.includes("/en/feed.json")
     ) {
-      console.error("❌ out/ai.txt must cite live geo-next/point-c.json next (directoryLong Bing) + geo:next/ack + api/catalog + api/products + tr/prices + en/feed invent");
+      console.error("❌ out/ai.txt must cite live geo-next/point-c/progress potentialAction HowTo + geo:next/ack + api/catalog + api/products + tr/prices + en/feed invent");
       process.exit(1);
     }
   }

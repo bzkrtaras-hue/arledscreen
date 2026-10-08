@@ -166,14 +166,14 @@
       "position": 23,
       "name": "GEO owner-gate status",
       "url": "https://arledscreen.com/geo-status.json",
-      "description": "Point C / arleds 301 / Tur1a / PR merge; gates.pointC.next paste-ready; clipboard /geo-next.txt; alias /owner-p0.json"
+      "description": "Point C / arleds 301 / Tur1a / PR merge; potentialAction HowTo (priorityGate); also gates.pointC.next; clipboard /geo-next.txt; alias /owner-p0.json"
     },
     {
       "@type": "ListItem",
       "position": 24,
       "name": "GEO next clipboard",
       "url": "https://arledscreen.com/geo-next.txt",
-      "description": "Live select-all clipboard (directoryLong Bing/Apple); machine twin /point-c.json → next; alias /owner-next.txt"
+      "description": "Live select-all clipboard (directoryLong Bing/Apple); machine twins /point-c.json → next+potentialAction · /geo-status.json → potentialAction; alias /owner-next.txt"
     },
     {
       "@type": "ListItem",
@@ -187,7 +187,7 @@
       "position": 26,
       "name": "Point C paste progress",
       "url": "https://arledscreen.com/point-c-progress.json",
-      "description": "Acked Point C pack keys (owner paste progress); alias /.well-known/point-c-progress.json; source for geo:next / point-c:ack"
+      "description": "Acked Point C pack keys + next + potentialAction HowTo (Open → paste → ack); alias /.well-known/point-c-progress.json; source for geo:next / point-c:ack"
     }
   ],
   "provider": {

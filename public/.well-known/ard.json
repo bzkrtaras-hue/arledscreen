@@ -337,21 +337,24 @@
         "type": "GEO owner-gate status",
         "url": "https://arledscreen.com/geo-status.json",
         "format": "application/ld+json",
-        "description": "Machine Point C / arleds 301 / Tur1a / PR merge gate status. gates.pointC.next carries paste-ready directoryLong (text + Bing/Apple Open). Does not invent mention rates. Clipboard twin /geo-next.txt. Alias /.well-known/geo-status.json · /owner-p0.json.",
+        "description": "Machine Point C / arleds 301 / Tur1a / PR merge gate status. Follow potentialAction HowTo (priorityGate). Also gates.pointC.next paste-ready directoryLong (text + Bing/Apple Open). Does not invent mention rates. Clipboard twin /geo-next.txt. Alias /.well-known/geo-status.json · /owner-p0.json.",
         "wellKnown": "https://arledscreen.com/.well-known/geo-status.json",
         "ownerP0": "https://arledscreen.com/owner-p0.json",
         "geoNext": "https://arledscreen.com/geo-next.txt",
-        "pointCNextPath": "gates.pointC.next"
+        "pointCProgress": "https://arledscreen.com/point-c-progress.json",
+        "pointCNextPath": "potentialAction",
+        "legacyNextPath": "gates.pointC.next"
       },
       "geoNext": {
         "type": "GEO next clipboard",
         "url": "https://arledscreen.com/geo-next.txt",
         "format": "text/plain",
-        "description": "Live geo:next select-all clipboard (Point C directoryLong Bing/Apple → arleds 301 → Tur1a → merge). Machine twin: /point-c.json → next. Alias /owner-next.txt · /.well-known/geo-next.txt.",
+        "description": "Live geo:next select-all clipboard (Point C directoryLong Bing/Apple → arleds 301 → Tur1a → merge). Machine twins: /point-c.json → next + potentialAction · /geo-status.json → potentialAction · /point-c-progress.json → potentialAction. Alias /owner-next.txt · /.well-known/geo-next.txt.",
         "wellKnown": "https://arledscreen.com/.well-known/geo-next.txt",
         "ownerNext": "https://arledscreen.com/owner-next.txt",
         "status": "https://arledscreen.com/geo-status.json",
         "pointCJson": "https://arledscreen.com/point-c.json",
+        "pointCProgress": "https://arledscreen.com/point-c-progress.json",
         "open": "https://www.bingplaces.com/",
         "openAlt": "https://businessconnect.apple.com/"
       },
@@ -359,18 +362,20 @@
         "type": "Tur1a blind coverage",
         "url": "https://arledscreen.com/tur1a.json",
         "format": "application/ld+json",
-        "description": "Human Tur1a matrix cells + next empty (ChatGPT/Gemini/Perplexity/Google AI). Does not invent scores. CSV /feeds/tur1a.csv. Alias /.well-known/tur1a.json.",
+        "description": "Human Tur1a matrix cells + next empty + potentialAction HowTo (ChatGPT/Gemini/Perplexity/Google AI). Does not invent scores. CSV /feeds/tur1a.csv. Alias /.well-known/tur1a.json.",
         "wellKnown": "https://arledscreen.com/.well-known/tur1a.json",
         "csv": "https://arledscreen.com/feeds/tur1a.csv",
-        "csvRoot": "https://arledscreen.com/tur1a.csv"
+        "csvRoot": "https://arledscreen.com/tur1a.csv",
+        "howToPath": "potentialAction"
       },
       "pointCProgress": {
         "type": "Point C paste progress",
         "url": "https://arledscreen.com/point-c-progress.json",
         "format": "application/ld+json",
-        "description": "Acked Point C pack keys + next paste-ready gate (packKey/text/open). Alias /.well-known/point-c-progress.json.",
+        "description": "Acked Point C pack keys + next paste-ready gate + potentialAction HowTo (Open → paste → ack). Alias /.well-known/point-c-progress.json.",
         "wellKnown": "https://arledscreen.com/.well-known/point-c-progress.json",
-        "nextField": "next"
+        "nextField": "next",
+        "howToPath": "potentialAction"
       },
       "agentsMdWellKnown": {
         "type": "AGENTS.md well-known invent alias",
