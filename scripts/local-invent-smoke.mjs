@@ -567,6 +567,11 @@ else fail("ard.resources.pointC");
     html.includes("doOpenRemaining") &&
     html.includes("Open remaining") &&
     html.includes("Mailto DNSEnable") &&
+    html.includes("social-handles") &&
+    html.includes("copySocialHandles") &&
+    html.includes("@arledscreenn") &&
+    html.includes("@arledscreen") &&
+    html.includes("/social.json") &&
     html.includes("packQuery") &&
     alias === html &&
     twin?.["@type"] === "Dataset" &&

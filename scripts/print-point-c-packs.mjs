@@ -82,9 +82,9 @@ export const DNSENABLE_GMAIL_DRAFT_URL =
 export const POINT_C_PASTE_WHERE = {
   directoryLong: "Directories / Bing Places / Apple Business Connect → About / description",
   gbpDescription: "Google Business Profile → Edit profile → About",
-  instagramName: "https://www.instagram.com/arledscreen → Edit profile → Name",
-  instagramBio: "https://www.instagram.com/arledscreen → Edit profile → Bio",
-  facebookAbout: "https://www.facebook.com/arledscreenn → About / Page info",
+  instagramName: "Instagram @arledscreen → https://www.instagram.com/arledscreen → Edit profile → Name",
+  instagramBio: "Instagram @arledscreen → https://www.instagram.com/arledscreen → Edit profile → Bio",
+  facebookAbout: "Facebook @arledscreenn → https://www.facebook.com/arledscreenn → About / Page info",
   linkedinAbout: "https://www.linkedin.com/company/arleds → About",
   bingPlaces: "Bing Places for Business → Business description",
   appleBusinessConnect: "Apple Business Connect → Location → Description",

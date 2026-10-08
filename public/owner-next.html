@@ -37,6 +37,7 @@
         { "@type": "HowToTool", "name": "point-c.json", "url": "https://arledscreen.com/point-c.json" },
         { "@type": "HowToTool", "name": "point-c-progress.json", "url": "https://arledscreen.com/point-c-progress.json" },
         { "@type": "HowToTool", "name": "tur1a.json", "url": "https://arledscreen.com/tur1a.json" },
+        { "@type": "HowToTool", "name": "social.json", "url": "https://arledscreen.com/social.json" },
         { "@type": "HowToTool", "name": "geo-next.txt", "url": "https://arledscreen.com/geo-next.txt" }
       ]
     }
@@ -81,10 +82,24 @@
     }
     .lede {
       color: var(--muted);
-      margin: 0 0 1.5rem;
+      margin: 0 0 0.75rem;
       max-width: 40rem;
       line-height: 1.45;
     }
+    .social-handles {
+      margin: 0 0 1.25rem;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      background: rgba(196, 163, 90, 0.08);
+      color: var(--ink);
+      font-size: 0.92rem;
+      line-height: 1.45;
+      max-width: 40rem;
+    }
+    .social-handles a { color: var(--accent); }
+    .social-handles .sh-focus { color: var(--accent); font-weight: 600; }
+    .social-handles .sh-muted { color: var(--muted); }
     .status {
       display: flex;
       flex-wrap: wrap;
@@ -286,6 +301,12 @@
   <main>
     <p class="brand">ARLEDSCREEN</p>
     <p class="lede">Owner next — Open the destination tab, paste the block, then ack. Cite-only; no invented ChatGPT/Gemini scores.</p>
+    <p class="social-handles" id="social-handles" title="Owner-confirmed handles · press S to copy">
+      Handles: FB <a href="https://www.facebook.com/arledscreenn" target="_blank" rel="noopener">@arledscreenn</a>
+      · IG <a href="https://www.instagram.com/arledscreen" target="_blank" rel="noopener">@arledscreen</a>
+      · WA <a href="https://wa.me/905305078834" target="_blank" rel="noopener">@arledscreen</a>
+      <span class="sh-muted"> · <kbd>S</kbd> copy · <a href="/social.json">social.json</a></span>
+    </p>
 
     <div id="load" class="status"><span class="pill">loading…</span></div>
     <div id="panel" class="hidden">
@@ -310,7 +331,7 @@
           <button type="button" class="btn hidden" id="next-arleds" title="Advance to arleds.com 301 DNSEnable clipboard">Next: arleds 301</button>
           <button type="button" class="btn hidden" id="next-tur1a" title="Open Tur1a blind checklist">Next: Tur1a</button>
         </div>
-        <p class="actions-hint"><kbd>C</kbd> = Copy + Open remaining · <kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next · <kbd>U</kbd> = Undo pasted · <kbd>O</kbd> = Open remaining · <kbd>R</kbd> = Copy remaining · <kbd>B</kbd> = ack batch · <kbd>G</kbd> = arleds 301 · <kbd>T</kbd> = Tur1a · <kbd>L</kbd> = Log + next · dbl-click pack = Copy + Open</p>
+        <p class="actions-hint"><kbd>C</kbd> = Copy + Open remaining · <kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next · <kbd>U</kbd> = Undo pasted · <kbd>O</kbd> = Open remaining · <kbd>R</kbd> = Copy remaining · <kbd>S</kbd> = copy social handles · <kbd>B</kbd> = ack batch · <kbd>G</kbd> = arleds 301 · <kbd>T</kbd> = Tur1a · <kbd>L</kbd> = Log + next · dbl-click pack = Copy + Open</p>
         <div id="tur1a-log-chips" class="hidden" aria-label="Tur1a observation log chips">
           <div class="chip-row" data-field="mentioned">
             <span class="chip-label">mentioned</span>
@@ -360,7 +381,8 @@
       <a href="/point-c.json">point-c.json</a> ·
       <a href="/geo-status.json">geo-status.json</a> ·
       <a href="/point-c-progress.json">point-c-progress.json</a> ·
-      <a href="/tur1a.json">tur1a.json</a><br />
+      <a href="/tur1a.json">tur1a.json</a> ·
+      <a href="/social.json">social.json</a><br />
       Machine twin: <a href="/owner-next.json">owner-next.json</a> ·
       <a href="/geo-next.json">geo-next.json</a> ·
       Clipboard: <a href="/geo-next.txt">geo-next.txt</a> ·
@@ -388,6 +410,57 @@
     const tur1aLogPick = { mentioned: "", brandCorrect: "", priceSourceCited: "" };
     const PASTED_KEY = "arledscreen.ownerNext.pastedPacks";
     const TUR1A_DONE_KEY = "arledscreen.ownerNext.tur1aDone";
+    let socialHandles = {
+      facebook: "arledscreenn",
+      instagram: "arledscreen",
+      whatsapp: "arledscreen",
+      waMe: "https://wa.me/905305078834",
+    };
+
+    function socialHandlesLine() {
+      return (
+        `Facebook @${socialHandles.facebook} · Instagram @${socialHandles.instagram} · WhatsApp @${socialHandles.whatsapp}` +
+        ` · ${socialHandles.waMe} · https://arledscreen.com/social.json`
+      );
+    }
+
+    function renderSocialHandles(focus) {
+      const el = $("social-handles");
+      if (!el) return;
+      const fb = socialHandles.facebook;
+      const ig = socialHandles.instagram;
+      const wa = socialHandles.whatsapp;
+      const fbCls = focus === "facebook" ? ' class="sh-focus"' : "";
+      const igCls = focus === "instagram" ? ' class="sh-focus"' : "";
+      const waCls = focus === "whatsapp" ? ' class="sh-focus"' : "";
+      el.innerHTML =
+        `Handles: FB <a${fbCls} href="https://www.facebook.com/${fb}" target="_blank" rel="noopener">@${fb}</a>` +
+        ` · IG <a${igCls} href="https://www.instagram.com/${ig}" target="_blank" rel="noopener">@${ig}</a>` +
+        ` · WA <a${waCls} href="${socialHandles.waMe}" target="_blank" rel="noopener">@${wa}</a>` +
+        ` <span class="sh-muted"> · <kbd>S</kbd> copy · <a href="/social.json">social.json</a></span>`;
+    }
+
+    function focusSocialForPack(packKey) {
+      const k = String(packKey || "");
+      if (k.startsWith("instagram")) renderSocialHandles("instagram");
+      else if (k.startsWith("facebook")) renderSocialHandles("facebook");
+      else renderSocialHandles("");
+    }
+
+    async function copySocialHandles() {
+      const line = socialHandlesLine();
+      try {
+        await navigator.clipboard.writeText(line);
+        const prog = $("progress");
+        if (prog) prog.textContent = formatLocalProgress("social handles copied (S)");
+      } catch {
+        const err = $("error");
+        if (err) {
+          err.textContent = "clipboard blocked — copy handles from the strip above";
+          err.classList.remove("hidden");
+        }
+      }
+    }
 
     function packQuery() {
       try {
@@ -1131,6 +1204,7 @@
       const alts = Array.isArray(pack.openAlts) ? pack.openAlts : pack.openAlt ? [pack.openAlt] : [];
       const ui = packUiStatus(pack);
       $("priority").textContent = "priority: pointC";
+      focusSocialForPack(activeKey);
       $("where").textContent = pack.where || "";
       openButtons([
         { label: "Open", href: pack.open, primary: true },
@@ -1306,6 +1380,24 @@
         gateCache = { twin, status, tur1a: tur1aDoc };
         viewingArleds = false;
         viewingTur1a = false;
+        try {
+          const social = await fetch("/social.json" + bust()).then((r) => (r.ok ? r.json() : null));
+          if (social?.handles) {
+            socialHandles = {
+              facebook: String(social.handles.facebook || socialHandles.facebook),
+              instagram: String(social.handles.instagram || socialHandles.instagram),
+              whatsapp: String(social.handles.whatsapp || socialHandles.whatsapp),
+              waMe:
+                String(
+                  (social.contactPoint || []).find((c) => String(c?.url || "").includes("wa.me"))?.url ||
+                    socialHandles.waMe,
+                ) || socialHandles.waMe,
+            };
+          }
+        } catch {
+          /* keep baked-in handles */
+        }
+        renderSocialHandles("");
         const priority = String((twin && twin.priorityGate) || status.priorityGate || "pointC");
         $("priority").textContent = "priority: " + priority;
         $("load").classList.add("hidden");
@@ -1497,6 +1589,11 @@
           e.preventDefault();
           doCopyRemaining(rem);
         }
+        return;
+      }
+      if (e.key === "s" || e.key === "S") {
+        e.preventDefault();
+        copySocialHandles();
         return;
       }
       if (e.key === "b" || e.key === "B") {
