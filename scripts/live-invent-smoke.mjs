@@ -1304,6 +1304,8 @@ try {
     link.includes("/point-c-progress.json") &&
     link.includes("/tur1a.json") &&
     link.includes("/feeds/tur1a.csv") &&
+    link.includes("potentialAction HowTo") &&
+    link.includes("HowTo footer") &&
     link.includes("#website") &&
     !link.includes("/api/v1/prices") &&
     !link.includes("/en/prices.json")

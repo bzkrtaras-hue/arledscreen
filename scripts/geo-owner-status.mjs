@@ -84,6 +84,9 @@ try {
         if (openLine) console.log(`  ${openLine}`);
         if (openAltLine) console.log(`  ${openAltLine}`);
       }
+      console.log(
+        "  HowTo: https://arledscreen.com/point-c.json → potentialAction · https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/point-c-progress.json → potentialAction",
+      );
     }
   }
 } catch (e) {

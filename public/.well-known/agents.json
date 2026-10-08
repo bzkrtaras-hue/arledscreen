@@ -103,7 +103,7 @@
       "position": 14,
       "name": "Point C paste packs (plain text)",
       "url": "https://arledscreen.com/point-c.txt",
-      "description": "Owner copy-ready GBP/IG/FB/LinkedIn paste packs (TR); machine next /point-c.json → next (directoryLong Bing/Apple); live /geo-next.txt; EN twin /point-c-en.txt; alias /.well-known/point-c.txt; source entity-profiles.json; npm run geo:next · spreadsheet: npm run point-c:csv · point-c:next · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
+      "description": "Owner copy-ready GBP/IG/FB/LinkedIn paste packs (TR); machine next /point-c.json → next + potentialAction HowTo (directoryLong Bing/Apple); progress /point-c-progress.json → potentialAction; live /geo-next.txt; EN twin /point-c-en.txt; alias /.well-known/point-c.txt; source entity-profiles.json; npm run geo:next · spreadsheet: npm run point-c:csv · point-c:next · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
     },
     {
       "@type": "ListItem",

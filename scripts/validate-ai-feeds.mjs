@@ -2441,6 +2441,13 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agents.json must list point-c.txt");
     process.exit(1);
   }
+  {
+    const pcTxtItem = agents.itemListElement.find((it) => String(it?.url || "").endsWith("/point-c.txt"));
+    if (!String(pcTxtItem?.description || "").includes("potentialAction")) {
+      console.error("❌ agents.json point-c.txt ListItem must cite potentialAction HowTo");
+      process.exit(1);
+    }
+  }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/organization.json"))) {
     console.error("❌ agents.json must list organization.json invent alias");
     process.exit(1);
@@ -2918,6 +2925,11 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/point-c-progress.json") ||
     !headersLive.includes("/tur1a.json") ||
     !headersLive.includes("/feeds/tur1a.csv") ||
+    !headersLive.includes('title="Point C paste packs JSON (potentialAction HowTo)"') ||
+    !headersLive.includes('title="GEO owner-gate status (potentialAction HowTo)"') ||
+    !headersLive.includes('title="Point C paste progress (potentialAction HowTo)"') ||
+    !headersLive.includes('title="Tur1a blind coverage (potentialAction HowTo)"') ||
+    !headersLive.includes('title="GEO next clipboard (HowTo footer)"') ||
     !headersLive.includes("https://arledscreen.com/brand>") ||
     !headersLive.includes("https://arledscreen.com/modules>") ||
     !headersLive.includes("\n/brand\n") ||
@@ -2926,7 +2938,7 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security/llms-full + point-c (+ EN/JSON/CSV) + geo-status/geo-next/owner-next/progress/tur1a");
+    console.error("❌ out/_headers must advertise Link invent aliases + potentialAction HowTo titles for point-c/geo-status/progress/tur1a/geo-next");
     process.exit(1);
   }
   const redirectsLive = fs.existsSync(path.join(outDir, "_redirects"))

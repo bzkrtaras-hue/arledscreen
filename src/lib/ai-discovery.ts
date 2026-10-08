@@ -223,10 +223,10 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: AGENTS_JSON_URL, title: "Agent Discovery Index" },
         { url: AGENTS_JSON_ROOT_URL, title: "Agent Discovery Index (root invent alias)" },
         { url: AGENT_WELLKNOWN_URL, title: "Agent Discovery Index (agent invent alias)" },
-        { url: POINT_C_JSON_URL, title: "Point C paste packs JSON (next.directoryLong)" },
-        { url: GEO_STATUS_JSON_URL, title: "GEO owner-gate status (priorityGate HowTo)" },
-        { url: TUR1A_JSON_URL, title: "Tur1a blind coverage" },
-        { url: POINT_C_PROGRESS_JSON_URL, title: "Point C paste progress" },
+        { url: POINT_C_JSON_URL, title: "Point C paste packs JSON (potentialAction HowTo)" },
+        { url: GEO_STATUS_JSON_URL, title: "GEO owner-gate status (potentialAction HowTo)" },
+        { url: TUR1A_JSON_URL, title: "Tur1a blind coverage (potentialAction HowTo)" },
+        { url: POINT_C_PROGRESS_JSON_URL, title: "Point C paste progress (potentialAction HowTo)" },
       ],
       "application/rss+xml": [{ url: PRICES_RSS_URL, title: "Panel Price Updates RSS" }],
       "text/tab-separated-values": [
@@ -319,7 +319,7 @@ export const aiDiscoveryLinks = [
     rel: "alternate",
     type: "application/ld+json",
     href: POINT_C_JSON_URL,
-    title: "Point C paste packs JSON (next.directoryLong)",
+    title: "Point C paste packs JSON (potentialAction HowTo)",
   },
   {
     rel: "alternate",
@@ -349,7 +349,7 @@ export const aiDiscoveryLinks = [
     rel: "alternate",
     type: "text/plain",
     href: GEO_NEXT_TXT_URL,
-    title: "GEO next clipboard (directoryLong Bing/Apple)",
+    title: "GEO next clipboard (HowTo footer)",
   },
   {
     rel: "alternate",
