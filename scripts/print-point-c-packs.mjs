@@ -404,14 +404,16 @@ function nextStep(profiles, { en = false } = {}) {
   return null;
 }
 
+const SITE = "https://arledscreen.com";
+
 /** Spreadsheet-ready Point C sequence (owner tracking). Does not invent citations. */
-function printCsv(profiles, { en = false } = {}) {
+export function buildPointCCsv(profiles, { en = false } = {}) {
   const packs = en ? profiles.packsEn || {} : profiles.packs || {};
   const { acked } = readProgress();
   const ackedSet = new Set(acked);
   const keys = sequenceKeys(en);
   const esc = (s) => `"${String(s).replace(/"/g, '""')}"`;
-  console.log("packKey,label,status,where,open,openAlt,ackCommand");
+  const lines = ["packKey,label,status,where,open,openAlt,ackCommand,pasteText"];
   for (const key of keys) {
     const label =
       key === HOSTINGER_STEP
@@ -424,11 +426,113 @@ function printCsv(profiles, { en = false } = {}) {
     const ackCmd = status === "acked" ? "" : `npm run point-c:ack -- --pack=${key}`;
     // Ensure pack exists (skip empty non-step keys).
     if (key !== HOSTINGER_STEP && (packs[key] == null || packs[key] === "")) continue;
-    console.log(
-      [key, esc(label), status, esc(where), esc(open), esc(openAlt), esc(ackCmd)].join(","),
+    const pasteText =
+      key === HOSTINGER_STEP ? buildArleds301DualPathClipboard() : String(packs[key] ?? "");
+    lines.push(
+      [key, esc(label), status, esc(where), esc(open), esc(openAlt), esc(ackCmd), esc(pasteText)].join(
+        ",",
+      ),
     );
   }
+  return `${lines.join("\n")}\n`;
+}
+
+/**
+ * Machine-readable Point C packs (+ Open tabs) for invent agents.
+ * Same cite facts as point-c.txt / entity-profiles — does not invent citations.
+ */
+export function buildPointCJsonDoc(profiles, { en = false } = {}) {
+  const packs = en ? profiles.packsEn || {} : profiles.packs || {};
+  const order = en ? EN_ORDER : TR_ORDER;
+  const { acked } = readProgress();
+  const ackedSet = new Set(acked);
+  const items = [];
+  for (const [label, key] of order) {
+    if (packs[key] == null || packs[key] === "") continue;
+    const row = {
+      packKey: key,
+      label,
+      status: ackedSet.has(key) ? "acked" : "open",
+      where: POINT_C_PASTE_WHERE[key] || "",
+      open: pointCOpenUrl(key),
+      text: String(packs[key]),
+      ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
+    };
+    const alt = pointCOpenAltUrl(key);
+    if (alt) row.openAlt = alt;
+    items.push(row);
+  }
+  {
+    const key = HOSTINGER_STEP;
+    const row = {
+      packKey: key,
+      label: "arleds.com 301 (DNSEnable Domain Redirect)",
+      status: ackedSet.has(key) ? "acked" : "open",
+      where: POINT_C_PASTE_WHERE[key] || "",
+      open: pointCOpenUrl(key),
+      text: buildArleds301DualPathClipboard(),
+      ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
+    };
+    const alt = pointCOpenAltUrl(key);
+    if (alt) row.openAlt = alt;
+    items.push(row);
+  }
+  const jsonUrl = en ? `${SITE}/point-c-en.json` : `${SITE}/point-c.json`;
+  const txtUrl = en ? `${SITE}/point-c-en.txt` : `${SITE}/point-c.txt`;
+  const csvUrl = en ? `${SITE}/feeds/point-c-en.csv` : `${SITE}/feeds/point-c.csv`;
+  const wkJson = en ? `${SITE}/.well-known/point-c-en.json` : `${SITE}/.well-known/point-c.json`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "@id": jsonUrl,
+    name: en ? "ARLEDSCREEN Point C paste packs (EN)" : "ARLEDSCREEN Point C paste packs",
+    description:
+      "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack.",
+    url: jsonUrl,
+    inLanguage: en ? "en" : "tr",
+    creator: { "@id": `${SITE}/#organization` },
+    isBasedOn: [
+      `${SITE}/entity-profiles.json`,
+      txtUrl,
+      `${SITE}/entity.json`,
+      `${SITE}/#website`,
+    ],
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: jsonUrl,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: wkJson,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/csv",
+        contentUrl: csvUrl,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: txtUrl,
+      },
+    ],
+    sameAs: [txtUrl, csvUrl, wkJson, `${SITE}/entity-profiles.json`],
+    packs: items,
+    progress: { acked: acked.length, total: sequenceKeys(en).length },
+    ownerNext:
+      "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+  };
+}
+
+function printCsv(profiles, { en = false } = {}) {
+  process.stdout.write(buildPointCCsv(profiles, { en }));
+  const keys = sequenceKeys(en);
+  const { acked } = readProgress();
   console.error(`# progress ${acked.length}/${keys.length} acked — do not invent citations`);
+  console.error(`# live CSV: ${en ? `${SITE}/feeds/point-c-en.csv` : `${SITE}/feeds/point-c.csv`}`);
 }
 
 function printNext(profiles, { en = false } = {}) {
@@ -472,7 +576,9 @@ function printNext(profiles, { en = false } = {}) {
   }
   console.log(`After paste: npm run point-c:ack -- --pack=${step.key}`);
   console.log("Or: npm run point-c:ack");
-  console.log("CSV: npm run point-c:csv · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt");
+  console.log(
+    "CSV: npm run point-c:csv · Live CSV: https://arledscreen.com/feeds/point-c.csv · JSON: https://arledscreen.com/point-c.json · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt",
+  );
 }
 
 function writeHostingerEml() {

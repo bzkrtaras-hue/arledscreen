@@ -359,6 +359,27 @@ try {
   fail(`point-c-en.txt ${e?.message || e}`);
 }
 
+try {
+  const pcJson = await getJson("/point-c.json");
+  const pcCsv = await getText("/feeds/point-c.csv");
+  const pcJsonWk = await getJson("/.well-known/point-c.json");
+  if (
+    Array.isArray(pcJson?.packs) &&
+    pcJson.packs.length >= 11 &&
+    String(pcJson?.url || "").includes("/point-c.json") &&
+    JSON.stringify(pcJson.distribution || []).includes("/feeds/point-c.csv") &&
+    pcCsv.includes("directoryLong") &&
+    pcCsv.includes("bingplaces.com") &&
+    Array.isArray(pcJsonWk?.packs) &&
+    String(ard?.agentic?.resources?.pointC?.json || "").includes("/point-c.json") &&
+    String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
+  ) {
+    ok("point-c.json + feeds/point-c.csv invent + ARD resources");
+  } else fail("point-c.json + feeds/point-c.csv invent + ARD resources");
+} catch (e) {
+  fail(`point-c.json/csv ${e?.message || e}`);
+}
+
 {
   const websiteRes = ard?.agentic?.resources?.website || {};
   if (
@@ -490,6 +511,11 @@ try {
     head.includes("point_c_well_known_url") &&
     head.includes("point_c_en_url") &&
     head.includes("point_c_en_well_known_url") &&
+    head.includes("point_c_json_url") &&
+    head.includes("point_c_json_well_known_url") &&
+    head.includes("point_c_en_json_url") &&
+    head.includes("point_c_en_json_well_known_url") &&
+    head.includes("point_c_csv_url") &&
     head.includes("brand_well_known_url") &&
     head.includes("modules_well_known_url") &&
     head.includes("sku_well_known_url") &&
@@ -527,6 +553,11 @@ try {
     tsv.includes(`${SITE}/.well-known/point-c.txt`) &&
     tsv.includes(`${SITE}/point-c-en.txt`) &&
     tsv.includes(`${SITE}/.well-known/point-c-en.txt`) &&
+    tsv.includes(`${SITE}/point-c.json`) &&
+    tsv.includes(`${SITE}/.well-known/point-c.json`) &&
+    tsv.includes(`${SITE}/point-c-en.json`) &&
+    tsv.includes(`${SITE}/.well-known/point-c-en.json`) &&
+    tsv.includes(`${SITE}/feeds/point-c.csv`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
     tsv.includes(`${SITE}/.well-known/modules.json`) &&
     tsv.includes(`${SITE}/.well-known/sku.json`) &&
@@ -1130,10 +1161,12 @@ try {
     link.includes("/llms-full.txt") &&
     link.includes("/AGENTS.md") &&
     link.includes("/.well-known/point-c-en.txt") &&
+    link.includes("/point-c.json") &&
+    link.includes("/feeds/point-c.csv") &&
     link.includes("#website")
   ) {
-    ok("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c-en-wk");
-  } else fail("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c-en-wk");
+    ok("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c json/csv");
+  } else fail("live Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c json/csv");
 } catch (e) {
   fail(`live Link invent ${e?.message || e}`);
 }

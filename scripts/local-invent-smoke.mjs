@@ -347,6 +347,28 @@ if (
 } else fail("point-c-en.txt paste packs + invent aliases + well-known");
 
 {
+  const pcJson = readJson("point-c.json");
+  const pcCsv = readText("feeds/point-c.csv");
+  if (
+    Array.isArray(pcJson?.packs) &&
+    pcJson.packs.length >= 11 &&
+    String(pcJson?.url || "").includes("/point-c.json") &&
+    JSON.stringify(pcJson.distribution || []).includes("/feeds/point-c.csv") &&
+    pcCsv.includes("directoryLong") &&
+    pcCsv.includes("bingplaces.com") &&
+    fs.existsSync(path.join(outDir, ".well-known/point-c.json")) &&
+    fs.existsSync(path.join(outDir, "point-c-en.json")) &&
+    fs.existsSync(path.join(outDir, "feeds/point-c-en.csv")) &&
+    String(ard?.agentic?.resources?.pointC?.json || "").includes("/point-c.json") &&
+    String(ard?.agentic?.resources?.pointC?.csv || "").includes("/feeds/point-c.csv") &&
+    String(ard?.agentic?.resources?.pointCJson?.url || "").includes("/point-c.json") &&
+    String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
+  ) {
+    ok("point-c.json + feeds/point-c.csv invent + ARD resources");
+  } else fail("point-c.json + feeds/point-c.csv invent + ARD resources");
+}
+
+{
   const websiteRes = ard?.agentic?.resources?.website || {};
   if (
     websiteRes?.["@id"] === `${SITE}/#website` &&
@@ -477,6 +499,11 @@ else fail("ard.resources.pointC");
     head.includes("point_c_well_known_url") &&
     head.includes("point_c_en_url") &&
     head.includes("point_c_en_well_known_url") &&
+    head.includes("point_c_json_url") &&
+    head.includes("point_c_json_well_known_url") &&
+    head.includes("point_c_en_json_url") &&
+    head.includes("point_c_en_json_well_known_url") &&
+    head.includes("point_c_csv_url") &&
     head.includes("brand_well_known_url") &&
     head.includes("modules_well_known_url") &&
     head.includes("sku_well_known_url") &&
@@ -514,6 +541,11 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/.well-known/point-c.txt`) &&
     tsv.includes(`${SITE}/point-c-en.txt`) &&
     tsv.includes(`${SITE}/.well-known/point-c-en.txt`) &&
+    tsv.includes(`${SITE}/point-c.json`) &&
+    tsv.includes(`${SITE}/.well-known/point-c.json`) &&
+    tsv.includes(`${SITE}/point-c-en.json`) &&
+    tsv.includes(`${SITE}/.well-known/point-c-en.json`) &&
+    tsv.includes(`${SITE}/feeds/point-c.csv`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
     tsv.includes(`${SITE}/.well-known/modules.json`) &&
     tsv.includes(`${SITE}/.well-known/sku.json`) &&
@@ -1110,10 +1142,12 @@ if (
     headers.includes("/llms-full.txt") &&
     headers.includes("/AGENTS.md") &&
     headers.includes("/.well-known/point-c-en.txt") &&
+    headers.includes("/point-c.json") &&
+    headers.includes("/feeds/point-c.csv") &&
     headers.includes("#website")
   ) {
-    ok("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c-en-wk");
-  } else fail("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c-en-wk");
+    ok("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c json/csv");
+  } else fail("_headers Link inventAlias + discovery agents/ard/humans/security/llms-full/AGENTS + point-c json/csv");
 }
 
 {

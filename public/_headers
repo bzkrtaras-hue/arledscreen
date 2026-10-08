@@ -116,6 +116,14 @@
   Link: <https://arledscreen.com/point-c-en.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs (EN)"
   Link: <https://arledscreen.com/.well-known/point-c.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs (well-known invent alias)"
   Link: <https://arledscreen.com/.well-known/point-c-en.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs EN (well-known invent alias)"
+  Link: <https://arledscreen.com/point-c.json>; rel="alternate"; type="application/ld+json"; title="Point C paste packs JSON"
+  Link: <https://arledscreen.com/point-c-en.json>; rel="alternate"; type="application/ld+json"; title="Point C paste packs JSON (EN)"
+  Link: <https://arledscreen.com/.well-known/point-c.json>; rel="alternate"; type="application/ld+json"; title="Point C JSON well-known invent alias"
+  Link: <https://arledscreen.com/.well-known/point-c-en.json>; rel="alternate"; type="application/ld+json"; title="Point C EN JSON well-known invent alias"
+  Link: <https://arledscreen.com/feeds/point-c.csv>; rel="alternate"; type="text/csv"; title="Point C spreadsheet CSV"
+  Link: <https://arledscreen.com/feeds/point-c-en.csv>; rel="alternate"; type="text/csv"; title="Point C spreadsheet CSV (EN)"
+  Link: <https://arledscreen.com/point-c.csv>; rel="alternate"; type="text/csv"; title="Point C CSV root invent alias"
+  Link: <https://arledscreen.com/point-c-en.csv>; rel="alternate"; type="text/csv"; title="Point C EN CSV root invent alias"
 
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
@@ -471,6 +479,27 @@
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
   Content-Type: text/tab-separated-values; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/feeds/*.csv
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/csv; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/point-c.csv
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/csv; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/point-c-en.csv
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/csv; charset=utf-8
   ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
 

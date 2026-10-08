@@ -1,0 +1,154 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://arledscreen.com/point-c-en.json",
+  "name": "ARLEDSCREEN Point C paste packs (EN)",
+  "description": "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack.",
+  "url": "https://arledscreen.com/point-c-en.json",
+  "inLanguage": "en",
+  "creator": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "isBasedOn": [
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/point-c-en.txt",
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/#website"
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/point-c-en.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/point-c-en.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://arledscreen.com/feeds/point-c-en.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c-en.txt"
+    }
+  ],
+  "sameAs": [
+    "https://arledscreen.com/point-c-en.txt",
+    "https://arledscreen.com/feeds/point-c-en.csv",
+    "https://arledscreen.com/.well-known/point-c-en.json",
+    "https://arledscreen.com/entity-profiles.json"
+  ],
+  "packs": [
+    {
+      "packKey": "directoryLong",
+      "label": "EN NAP / directoryLong",
+      "status": "open",
+      "where": "Directories / Bing Places / Apple Business Connect → About / description",
+      "open": "https://www.bingplaces.com/",
+      "text": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nAddress: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul\nPhone: +90 530 507 88 34\nEmail: arled@arledscreen.com\nWeb: https://arledscreen.com/en/\nNote: Legacy/side arleds.com is not a citation source — use arledscreen.com only. LinkedIn /company/arleds is a social slug, not website arleds.com. NXTIONSTAR ≠ NationStar LED components ≠ NEXTSTAR TV.",
+      "ackCommand": "npm run point-c:ack -- --pack=directoryLong",
+      "openAlt": "https://businessconnect.apple.com/"
+    },
+    {
+      "packKey": "gbpDescription",
+      "label": "EN GBP About",
+      "status": "open",
+      "where": "Google Business Profile → Edit profile → About",
+      "open": "https://business.google.com/",
+      "text": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.",
+      "ackCommand": "npm run point-c:ack -- --pack=gbpDescription"
+    },
+    {
+      "packKey": "instagramName",
+      "label": "EN Instagram Name",
+      "status": "open",
+      "where": "https://www.instagram.com/arledscreen → Edit profile → Name",
+      "open": "https://www.instagram.com/arledscreen/",
+      "text": "ARLEDSCREEN",
+      "ackCommand": "npm run point-c:ack -- --pack=instagramName"
+    },
+    {
+      "packKey": "instagramBio",
+      "label": "EN Instagram Bio",
+      "status": "open",
+      "where": "https://www.instagram.com/arledscreen → Edit profile → Bio",
+      "open": "https://www.instagram.com/arledscreen/",
+      "text": "Istanbul LED · NXTIONSTAR\nSales · install · service\narledscreen.com/en/\n+90 530 507 88 34",
+      "ackCommand": "npm run point-c:ack -- --pack=instagramBio"
+    },
+    {
+      "packKey": "facebookAbout",
+      "label": "EN Facebook About",
+      "status": "open",
+      "where": "https://www.facebook.com/arledscreenn → About / Page info",
+      "open": "https://www.facebook.com/arledscreenn",
+      "text": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.",
+      "ackCommand": "npm run point-c:ack -- --pack=facebookAbout"
+    },
+    {
+      "packKey": "linkedinAbout",
+      "label": "EN LinkedIn About",
+      "status": "open",
+      "where": "https://www.linkedin.com/company/arleds → About",
+      "open": "https://www.linkedin.com/company/arleds/",
+      "text": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.\n\nWeb: https://arledscreen.com/en/ (not arleds.com)\nNote: LinkedIn company path /company/arleds is a social slug only — not the website arleds.com.\nNXTIONSTAR ≠ NationStar (LED component) ≠ NEXTSTAR (TV).\nPhone: +90 530 507 88 34\nVerify: https://arledscreen.com/entity.json",
+      "ackCommand": "npm run point-c:ack -- --pack=linkedinAbout"
+    },
+    {
+      "packKey": "bingPlaces",
+      "label": "EN Bing Places",
+      "status": "open",
+      "where": "Bing Places for Business → Business description",
+      "open": "https://www.bingplaces.com/",
+      "text": "ARLEDSCREEN\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / Istanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/en/\n\nShort: ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.\nCategory: LED display / Digital signage.",
+      "ackCommand": "npm run point-c:ack -- --pack=bingPlaces"
+    },
+    {
+      "packKey": "appleBusinessConnect",
+      "label": "EN Apple Business Connect",
+      "status": "open",
+      "where": "Apple Business Connect → Location → Description",
+      "open": "https://businessconnect.apple.com/",
+      "text": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / Istanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/en/",
+      "ackCommand": "npm run point-c:ack -- --pack=appleBusinessConnect"
+    },
+    {
+      "packKey": "youtubeAbout",
+      "label": "EN YouTube About",
+      "status": "open",
+      "where": "YouTube Studio → Customize channel → Basic info / Description",
+      "open": "https://studio.youtube.com/",
+      "text": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nSite: https://arledscreen.com/en/\nTel: +90 530 507 88 34",
+      "ackCommand": "npm run point-c:ack -- --pack=youtubeAbout"
+    },
+    {
+      "packKey": "yandexBusiness",
+      "label": "EN Yandex Business",
+      "status": "open",
+      "where": "Yandex Business → Organization → Description",
+      "open": "https://business.yandex.com/",
+      "text": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.\n\nAddress: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul\nPhone: +90 530 507 88 34\nWeb: https://arledscreen.com/en/",
+      "ackCommand": "npm run point-c:ack -- --pack=yandexBusiness"
+    },
+    {
+      "packKey": "hostinger301",
+      "label": "arleds.com 301 (DNSEnable Domain Redirect)",
+      "status": "open",
+      "where": "Isimtescil/DNSEnable Domain Redirect first (live NS) · Hostinger only if verify mode=hostinger_*",
+      "open": "https://www.isimtescil.net/",
+      "text": "=== arleds.com → arledscreen.com/tr/ 301 (provider-correct) ===\n\n--- A) DNSEnable / Isimtescil (current live NS — do this first) ---\nIsimtescil / DNSEnable → Domain Redirect (permanent 301)\nOpen: https://www.isimtescil.net/\nOpenAlt (Gmail draft Send): https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878454181087052625%2Bmsg-a:r-3112734221607885814\narleds.com + www.arleds.com → https://arledscreen.com/tr/\nLive NS often eu/tr/us.dnsenable.com — Hostinger hPanel will NOT apply until NS moves.\nOption B: move NS to Cloudflare → Bulk Redirect → https://arledscreen.com/tr/ (301)\nVerify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md\nDo NOT add arleds.com to sameAs until 301 is live.\n\n--- DNSEnable support email (select-all) ---\nSubject: Kalıcı 301 yönlendirme arleds.com → https://arledscreen.com/tr/\n\nMerhaba İsimtescil Destek,\n\narleds.com alan adımız için kalıcı (301) Domain Redirect / URL yönlendirme talebi:\n\nHedef: https://arledscreen.com/tr/\n\nLütfen şu eşlemeleri uygulayın (http + https, apex + www):\nhttp://arleds.com/ → https://arledscreen.com/tr/\nhttp://www.arleds.com/ → https://arledscreen.com/tr/\nhttps://arleds.com/ → https://arledscreen.com/tr/\nhttps://www.arleds.com/ → https://arledscreen.com/tr/\n\nDNS: eu/tr/us.dnsenable.com (canlı NS). Hostinger hPanel bu domain için geçerli değil.\nTelefon: +90 850 200 0 444 · Domain: arleds.com\nTeşekkürler.\n\nmailto: mailto:destek@isimtescil.net?subject=Kal%C4%B1c%C4%B1%20301%20y%C3%B6nlendirme%20arleds.com%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F&body=Merhaba%20%C4%B0simtescil%20Destek%2C%0A%0Aarleds.com%20alan%20ad%C4%B1m%C4%B1z%20i%C3%A7in%20kal%C4%B1c%C4%B1%20(301)%20Domain%20Redirect%20%2F%20URL%20y%C3%B6nlendirme%20talebi%3A%0A%0AHedef%3A%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0A%0AL%C3%BCtfen%20%C5%9Fu%20e%C5%9Flemeleri%20uygulay%C4%B1n%20(http%20%2B%20https%2C%20apex%20%2B%20www)%3A%0Ahttp%3A%2F%2Farleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttp%3A%2F%2Fwww.arleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttps%3A%2F%2Farleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttps%3A%2F%2Fwww.arleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0A%0ADNS%3A%20eu%2Ftr%2Fus.dnsenable.com%20(canl%C4%B1%20NS).%20Hostinger%20hPanel%20bu%20domain%20i%C3%A7in%20ge%C3%A7erli%20de%C4%9Fil.%0ATelefon%3A%20%2B90%20850%20200%200%20444%20%C2%B7%20Domain%3A%20arleds.com%0ATe%C5%9Fekk%C3%BCrler.\nGmail draft (Send): https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878454181087052625%2Bmsg-a:r-3112734221607885814\nEML: npm run point-c:dnsenable-eml → docs/ops/arleds-301-dnsenable.eml\n\n--- B) Hostinger (ONLY if verify mode is hostinger_* / NS is Hostinger) ---\nhPanel → Domains → arleds.com → Redirects → permanent 301 entire domain.\nFrom → To (all four):\nhttp://arleds.com/ → https://arledscreen.com/tr/\nhttp://www.arleds.com/ → https://arledscreen.com/tr/\nhttps://arleds.com/ → https://arledscreen.com/tr/\nhttps://www.arleds.com/ → https://arledscreen.com/tr/\n\nSubject: Permanent 301 redirect arleds.com → https://arledscreen.com/tr/\n\nHello Hostinger Support,\n\nPlease set a permanent (301) redirect for the entire domain arleds.com\n(including www and both http/https) to:\n\nhttps://arledscreen.com/tr/\n\nRequired mappings:\nhttp://arleds.com/ → https://arledscreen.com/tr/\nhttp://www.arleds.com/ → https://arledscreen.com/tr/\nhttps://arleds.com/ → https://arledscreen.com/tr/\nhttps://www.arleds.com/ → https://arledscreen.com/tr/\n\nDomain: arleds.com — use this email ONLY if NS is Hostinger.\nIf NS is dnsenable.com (Isimtescil), use registrar Domain Redirect instead.\nThank you.\n\nmailto: mailto:support@hostinger.com?subject=Permanent%20301%20redirect%20arleds.com%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F&body=Hello%20Hostinger%20Support%2C%0A%0APlease%20set%20a%20permanent%20(301)%20redirect%20for%20the%20entire%20domain%20arleds.com%0A(including%20www%20and%20both%20http%2Fhttps)%20to%3A%0A%0Ahttps%3A%2F%2Farledscreen.com%2Ftr%2F%0A%0ARequired%20mappings%3A%0Ahttp%3A%2F%2Farleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttp%3A%2F%2Fwww.arleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttps%3A%2F%2Farleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttps%3A%2F%2Fwww.arleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0A%0ADomain%3A%20arleds.com%20%E2%80%94%20use%20this%20email%20ONLY%20if%20NS%20is%20Hostinger.%0AIf%20NS%20is%20dnsenable.com%20(Isimtescil)%2C%20use%20registrar%20Domain%20Redirect%20instead.%0AThank%20you.\nGmail draft (Send): https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878419649952913826%2Bmsg-a:r-5878982215178809685\nEML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml\nRe-check: npm run verify:arleds-301 · npm run geo:status",
+      "ackCommand": "npm run point-c:ack -- --pack=hostinger301",
+      "openAlt": "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878454181087052625%2Bmsg-a:r-3112734221607885814"
+    }
+  ],
+  "progress": {
+    "acked": 0,
+    "total": 11
+  },
+  "ownerNext": "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
+}

@@ -9,7 +9,11 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildPointCPackText } from "./print-point-c-packs.mjs";
+import {
+  buildPointCCsv,
+  buildPointCJsonDoc,
+  buildPointCPackText,
+} from "./print-point-c-packs.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -969,6 +973,15 @@ function buildAiShopping() {
       pointC: `${SITE_URL}/point-c.txt`,
       pointCEn: `${SITE_URL}/point-c-en.txt`,
       pointCWellKnown: `${SITE_URL}/.well-known/point-c.txt`,
+      pointCEnWellKnown: `${SITE_URL}/.well-known/point-c-en.txt`,
+      pointCJson: `${SITE_URL}/point-c.json`,
+      pointCEnJson: `${SITE_URL}/point-c-en.json`,
+      pointCJsonWellKnown: `${SITE_URL}/.well-known/point-c.json`,
+      pointCEnJsonWellKnown: `${SITE_URL}/.well-known/point-c-en.json`,
+      pointCCsv: `${SITE_URL}/feeds/point-c.csv`,
+      pointCEnCsv: `${SITE_URL}/feeds/point-c-en.csv`,
+      pointCCsvRoot: `${SITE_URL}/point-c.csv`,
+      pointCEnCsvRoot: `${SITE_URL}/point-c-en.csv`,
       brand: `${SITE_URL}/brand.json`,
       brandWellKnown: `${SITE_URL}/.well-known/brand.json`,
       brandHub: `${SITE_URL}/tr/nxtionstar/`,
@@ -1116,6 +1129,11 @@ function buildMerchantTsv() {
     "point_c_well_known_url",
     "point_c_en_url",
     "point_c_en_well_known_url",
+    "point_c_json_url",
+    "point_c_json_well_known_url",
+    "point_c_en_json_url",
+    "point_c_en_json_well_known_url",
+    "point_c_csv_url",
     "brand_well_known_url",
     "modules_well_known_url",
     "sku_well_known_url",
@@ -1192,6 +1210,11 @@ function buildMerchantTsv() {
         `${SITE_URL}/.well-known/point-c.txt`,
         `${SITE_URL}/point-c-en.txt`,
         `${SITE_URL}/.well-known/point-c-en.txt`,
+        `${SITE_URL}/point-c.json`,
+        `${SITE_URL}/.well-known/point-c.json`,
+        `${SITE_URL}/point-c-en.json`,
+        `${SITE_URL}/.well-known/point-c-en.json`,
+        `${SITE_URL}/feeds/point-c.csv`,
         `${SITE_URL}/.well-known/brand.json`,
         `${SITE_URL}/.well-known/modules.json`,
         `${SITE_URL}/.well-known/sku.json`,
@@ -1389,6 +1412,14 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/point-c-en.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/.well-known/point-c.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/.well-known/point-c-en.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/point-c.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/point-c-en.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/point-c.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/point-c-en.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/feeds/point-c.csv" rel="related" type="text/csv"/>
+    <atom:link href="${SITE_URL}/feeds/point-c-en.csv" rel="related" type="text/csv"/>
+    <atom:link href="${SITE_URL}/point-c.csv" rel="related" type="text/csv"/>
+    <atom:link href="${SITE_URL}/point-c-en.csv" rel="related" type="text/csv"/>
     <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /offer.json · /offers.json · /dataset.json · /feed.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: ${OWNER_FRICTION}</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
@@ -2175,6 +2206,14 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/.well-known/geo-baseline.json`,
     `${SITE_URL}/.well-known/entity-profiles.json`,
     `${SITE_URL}/.well-known/ai-shopping.json`,
+    `${SITE_URL}/point-c.json`,
+    `${SITE_URL}/point-c-en.json`,
+    `${SITE_URL}/.well-known/point-c.json`,
+    `${SITE_URL}/.well-known/point-c-en.json`,
+    `${SITE_URL}/feeds/point-c.csv`,
+    `${SITE_URL}/feeds/point-c-en.csv`,
+    `${SITE_URL}/point-c.csv`,
+    `${SITE_URL}/point-c-en.csv`,
     // Extensionless invent aliases (200 JSON feeds; /brand+/modules via Pages Functions).
     // Skip /prices · /pricing · /price · /about — HTML invent bridges or locale redirects.
     `${SITE_URL}/offer`,
@@ -3576,6 +3615,26 @@ function main() {
       writeText(outDir, ".well-known/point-c.txt", pointCTr);
       writeText(publicDir, ".well-known/point-c-en.txt", pointCEn);
       writeText(outDir, ".well-known/point-c-en.txt", pointCEn);
+      const pointCJsonTr = buildPointCJsonDoc(profilesDoc, { en: false });
+      const pointCJsonEn = buildPointCJsonDoc(profilesDoc, { en: true });
+      writeJson(publicDir, "point-c.json", pointCJsonTr);
+      writeJson(outDir, "point-c.json", pointCJsonTr);
+      writeJson(publicDir, "point-c-en.json", pointCJsonEn);
+      writeJson(outDir, "point-c-en.json", pointCJsonEn);
+      writeJson(publicDir, ".well-known/point-c.json", pointCJsonTr);
+      writeJson(outDir, ".well-known/point-c.json", pointCJsonTr);
+      writeJson(publicDir, ".well-known/point-c-en.json", pointCJsonEn);
+      writeJson(outDir, ".well-known/point-c-en.json", pointCJsonEn);
+      const pointCCsvTr = buildPointCCsv(profilesDoc, { en: false });
+      const pointCCsvEn = buildPointCCsv(profilesDoc, { en: true });
+      writeText(publicDir, "feeds/point-c.csv", pointCCsvTr);
+      writeText(outDir, "feeds/point-c.csv", pointCCsvTr);
+      writeText(publicDir, "feeds/point-c-en.csv", pointCCsvEn);
+      writeText(outDir, "feeds/point-c-en.csv", pointCCsvEn);
+      writeText(publicDir, "point-c.csv", pointCCsvTr);
+      writeText(outDir, "point-c.csv", pointCCsvTr);
+      writeText(publicDir, "point-c-en.csv", pointCCsvEn);
+      writeText(outDir, "point-c-en.csv", pointCCsvEn);
     } catch (e) {
       console.error(`postbuild-ai: entity-profiles enrich / point-c.txt emit failed: ${e?.message || e}`);
       process.exit(1);
@@ -3836,6 +3895,14 @@ point-c: ${SITE_URL}/point-c.txt
 point-c-en: ${SITE_URL}/point-c-en.txt
 point-c-well-known: ${SITE_URL}/.well-known/point-c.txt
 point-c-en-well-known: ${SITE_URL}/.well-known/point-c-en.txt
+point-c-json: ${SITE_URL}/point-c.json
+point-c-en-json: ${SITE_URL}/point-c-en.json
+point-c-json-well-known: ${SITE_URL}/.well-known/point-c.json
+point-c-en-json-well-known: ${SITE_URL}/.well-known/point-c-en.json
+point-c-csv: ${SITE_URL}/feeds/point-c.csv
+point-c-en-csv: ${SITE_URL}/feeds/point-c-en.csv
+point-c-csv-root: ${SITE_URL}/point-c.csv
+point-c-en-csv-root: ${SITE_URL}/point-c-en.csv
 owner-tur1a-next: npm run tur1a:next
 owner-tur1a-csv: npm run tur1a:csv
 owner-tur1a-log: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…
@@ -4366,10 +4433,10 @@ Acknowledgments: https://arledscreen.com/brand.json
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
     // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
-    // point_c_wk, point_c_en, point_c_en_wk, brand_wk, modules_wk, sku_wk, offer_json,
-    // pricing_wk, panels_wk, mpn_wk, merchant_wk, prices_wk, price_wk, entity_wk,
-    // prices_rss, org, geo, website, agents, ard, ai_txt, llms, llms_full, humans,
-    // agents_md, security_txt
+    // point_c_wk, point_c_en, point_c_en_wk, point_c_json(+wk/en), point_c_csv,
+    // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, mpn_wk,
+    // merchant_wk, prices_wk, price_wk, entity_wk, prices_rss, org, geo, website,
+    // agents, ard, ai_txt, llms, llms_full, humans, agents_md, security_txt
     const securityTxtUrl = cells[cells.length - 1];
     const agentsMdUrl = cells[cells.length - 2];
     const humansUrl = cells[cells.length - 3];
@@ -4393,16 +4460,21 @@ Acknowledgments: https://arledscreen.com/brand.json
     const skuWk = cells[cells.length - 21];
     const modulesWk = cells[cells.length - 22];
     const brandWk = cells[cells.length - 23];
-    const pointCEnWk = cells[cells.length - 24];
-    const pointCEnUrl = cells[cells.length - 25];
-    const pointCWk = cells[cells.length - 26];
-    const pointCUrl = cells[cells.length - 27];
-    const profilesUrl = cells[cells.length - 28];
-    const catalogUrl = cells[cells.length - 29];
-    const pricesJsonUrl = cells[cells.length - 30];
-    const aiShoppingUrl = cells[cells.length - 31];
-    const shippingIncluded = cells[cells.length - 32];
-    const taxIncluded = cells[cells.length - 33];
+    const pointCCsvUrl = cells[cells.length - 24];
+    const pointCEnJsonWk = cells[cells.length - 25];
+    const pointCEnJsonUrl = cells[cells.length - 26];
+    const pointCJsonWk = cells[cells.length - 27];
+    const pointCJsonUrl = cells[cells.length - 28];
+    const pointCEnWk = cells[cells.length - 29];
+    const pointCEnUrl = cells[cells.length - 30];
+    const pointCWk = cells[cells.length - 31];
+    const pointCUrl = cells[cells.length - 32];
+    const profilesUrl = cells[cells.length - 33];
+    const catalogUrl = cells[cells.length - 34];
+    const pricesJsonUrl = cells[cells.length - 35];
+    const aiShoppingUrl = cells[cells.length - 36];
+    const shippingIncluded = cells[cells.length - 37];
+    const taxIncluded = cells[cells.length - 38];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -4419,6 +4491,11 @@ Acknowledgments: https://arledscreen.com/brand.json
       pointCWk !== `${SITE_URL}/.well-known/point-c.txt` ||
       pointCEnUrl !== `${SITE_URL}/point-c-en.txt` ||
       pointCEnWk !== `${SITE_URL}/.well-known/point-c-en.txt` ||
+      pointCJsonUrl !== `${SITE_URL}/point-c.json` ||
+      pointCJsonWk !== `${SITE_URL}/.well-known/point-c.json` ||
+      pointCEnJsonUrl !== `${SITE_URL}/point-c-en.json` ||
+      pointCEnJsonWk !== `${SITE_URL}/.well-known/point-c-en.json` ||
+      pointCCsvUrl !== `${SITE_URL}/feeds/point-c.csv` ||
       brandWk !== `${SITE_URL}/.well-known/brand.json` ||
       modulesWk !== `${SITE_URL}/.well-known/modules.json` ||
       skuWk !== `${SITE_URL}/.well-known/sku.json` ||

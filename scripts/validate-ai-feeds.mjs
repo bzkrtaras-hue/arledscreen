@@ -614,6 +614,14 @@ if (fs.existsSync(outDir)) {
       "/point-c-en.txt",
       "/.well-known/point-c.txt",
       "/.well-known/point-c-en.txt",
+      "/point-c.json",
+      "/point-c-en.json",
+      "/.well-known/point-c.json",
+      "/.well-known/point-c-en.json",
+      "/feeds/point-c.csv",
+      "/feeds/point-c-en.csv",
+      "/point-c.csv",
+      "/point-c-en.csv",
       "/humans.txt",
       "/.well-known/security.txt",
       "/security.txt",
@@ -632,6 +640,15 @@ if (fs.existsSync(outDir)) {
     }
     if (!String(pcEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")) {
       console.error("❌ ard.json resources.pointCEn.wellKnown must cite /.well-known/point-c-en.txt");
+      process.exit(1);
+    }
+    if (
+      !String(pc?.json || "").includes("/point-c.json") ||
+      !String(pc?.csv || "").includes("/feeds/point-c.csv") ||
+      !String(ard?.agentic?.resources?.pointCJson?.url || "").includes("/point-c.json") ||
+      !String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
+    ) {
+      console.error("❌ ard.json must expose pointC.json/csv + resources.pointCJson + pointCCsv");
       process.exit(1);
     }
     const epRes = ard?.agentic?.resources?.entityProfiles;
@@ -1750,6 +1767,10 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("owner-youtube-open:") ||
     !aiTxtLive.includes("owner-yandex-open:") ||
     !aiTxtLive.includes("point-c-en-well-known:") ||
+    !aiTxtLive.includes("point-c-json:") ||
+    !aiTxtLive.includes("point-c-csv:") ||
+    !aiTxtLive.includes("/point-c.json") ||
+    !aiTxtLive.includes("/feeds/point-c.csv") ||
     !aiTxtLive.includes("https://www.isimtescil.net/") ||
     !aiTxtLive.includes("https://business.google.com/") ||
     !aiTxtLive.includes("https://chatgpt.com/") ||
@@ -2153,6 +2174,39 @@ if (fs.existsSync(outDir)) {
       console.error("❌ out/.well-known/point-c-en.txt must exist and match point-c-en.txt");
       process.exit(1);
     }
+    for (const rel of [
+      "point-c.json",
+      "point-c-en.json",
+      ".well-known/point-c.json",
+      ".well-known/point-c-en.json",
+      "feeds/point-c.csv",
+      "feeds/point-c-en.csv",
+      "point-c.csv",
+      "point-c-en.csv",
+    ]) {
+      if (!fs.existsSync(path.join(outDir, rel))) {
+        console.error(`❌ Missing Point C invent surface in out/: ${rel}`);
+        process.exit(1);
+      }
+    }
+    const pcJson = JSON.parse(fs.readFileSync(path.join(outDir, "point-c.json"), "utf8"));
+    const pcCsv = fs.readFileSync(path.join(outDir, "feeds/point-c.csv"), "utf8");
+    if (
+      !Array.isArray(pcJson?.packs) ||
+      pcJson.packs.length < 11 ||
+      !String(pcJson?.url || "").includes("/point-c.json") ||
+      !JSON.stringify(pcJson.distribution || []).includes("/feeds/point-c.csv") ||
+      !pcCsv.includes("packKey,label,status,where,open") ||
+      !pcCsv.includes("directoryLong") ||
+      !pcCsv.includes("bingplaces.com") ||
+      !fs.readFileSync(path.join(outDir, ".well-known/point-c.json")).equals(
+        fs.readFileSync(path.join(outDir, "point-c.json")),
+      ) ||
+      fs.readFileSync(path.join(outDir, "point-c.csv"), "utf8") !== pcCsv
+    ) {
+      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + Open URLs; well-known/root twins must match");
+      process.exit(1);
+    }
   }
   for (const rel of [".well-known/agents.json", "agents.json", "humans.txt", ".well-known/humans.txt"]) {
     if (!fs.existsSync(path.join(outDir, rel))) {
@@ -2223,6 +2277,14 @@ if (fs.existsSync(outDir)) {
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("point-c-en.txt"))) {
     console.error("❌ agents.json must list point-c-en.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/point-c.json"))) {
+    console.error("❌ agents.json must list point-c.json");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/feeds/point-c.csv"))) {
+    console.error("❌ agents.json must list feeds/point-c.csv");
     process.exit(1);
   }
   {
@@ -2646,6 +2708,10 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/point-c-en.txt") ||
     !headersLive.includes("/.well-known/point-c.txt") ||
     !headersLive.includes("/.well-known/point-c-en.txt") ||
+    !headersLive.includes("/point-c.json") ||
+    !headersLive.includes("/point-c-en.json") ||
+    !headersLive.includes("/.well-known/point-c.json") ||
+    !headersLive.includes("/feeds/point-c.csv") ||
     !headersLive.includes("https://arledscreen.com/brand>") ||
     !headersLive.includes("https://arledscreen.com/modules>") ||
     !headersLive.includes("\n/brand\n") ||
@@ -2654,7 +2720,7 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security/llms-full + point-c (+ EN well-known)");
+    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security/llms-full + point-c (+ EN/JSON/CSV)");
     process.exit(1);
   }
   const redirectsLive = fs.existsSync(path.join(outDir, "_redirects"))
@@ -3316,6 +3382,11 @@ if (fs.existsSync(outDir)) {
     "point_c_well_known_url",
     "point_c_en_url",
     "point_c_en_well_known_url",
+    "point_c_json_url",
+    "point_c_json_well_known_url",
+    "point_c_en_json_url",
+    "point_c_en_json_well_known_url",
+    "point_c_csv_url",
     "brand_well_known_url",
     "modules_well_known_url",
     "sku_well_known_url",
@@ -3367,6 +3438,11 @@ if (fs.existsSync(outDir)) {
   const pointCWkIdx = tsvCols.indexOf("point_c_well_known_url");
   const pointCEnUrlIdx = tsvCols.indexOf("point_c_en_url");
   const pointCEnWkIdx = tsvCols.indexOf("point_c_en_well_known_url");
+  const pointCJsonUrlIdx = tsvCols.indexOf("point_c_json_url");
+  const pointCJsonWkIdx = tsvCols.indexOf("point_c_json_well_known_url");
+  const pointCEnJsonUrlIdx = tsvCols.indexOf("point_c_en_json_url");
+  const pointCEnJsonWkIdx = tsvCols.indexOf("point_c_en_json_well_known_url");
+  const pointCCsvUrlIdx = tsvCols.indexOf("point_c_csv_url");
   const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
   const modulesWkIdx = tsvCols.indexOf("modules_well_known_url");
   const skuWkIdx = tsvCols.indexOf("sku_well_known_url");
@@ -3450,6 +3526,26 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[pointCEnWkIdx] !== "https://arledscreen.com/.well-known/point-c-en.txt") {
       console.error(`❌ merchant TSV point_c_en_well_known_url must be /.well-known/point-c-en.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCJsonUrlIdx] !== "https://arledscreen.com/point-c.json") {
+      console.error(`❌ merchant TSV point_c_json_url must be /point-c.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCJsonWkIdx] !== "https://arledscreen.com/.well-known/point-c.json") {
+      console.error(`❌ merchant TSV point_c_json_well_known_url must be /.well-known/point-c.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCEnJsonUrlIdx] !== "https://arledscreen.com/point-c-en.json") {
+      console.error(`❌ merchant TSV point_c_en_json_url must be /point-c-en.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCEnJsonWkIdx] !== "https://arledscreen.com/.well-known/point-c-en.json") {
+      console.error(`❌ merchant TSV point_c_en_json_well_known_url must be /.well-known/point-c-en.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCCsvUrlIdx] !== "https://arledscreen.com/feeds/point-c.csv") {
+      console.error(`❌ merchant TSV point_c_csv_url must be /feeds/point-c.csv for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[brandWkIdx] !== "https://arledscreen.com/.well-known/brand.json") {
@@ -4130,6 +4226,14 @@ if (fs.existsSync(outDir)) {
     "/point-c-en.txt",
     "/.well-known/point-c.txt",
     "/.well-known/point-c-en.txt",
+    "/point-c.json",
+    "/point-c-en.json",
+    "/.well-known/point-c.json",
+    "/.well-known/point-c-en.json",
+    "/feeds/point-c.csv",
+    "/feeds/point-c-en.csv",
+    "/point-c.csv",
+    "/point-c-en.csv",
     "/.well-known/panels.json",
     "/.well-known/mpn.json",
     "/.well-known/merchant.json",
@@ -4655,6 +4759,14 @@ for (const must of [
   "/point-c-en.txt",
   "/.well-known/point-c.txt",
   "/.well-known/point-c-en.txt",
+  "/point-c.json",
+  "/point-c-en.json",
+  "/.well-known/point-c.json",
+  "/.well-known/point-c-en.json",
+  "/feeds/point-c.csv",
+  "/feeds/point-c-en.csv",
+  "/point-c.csv",
+  "/point-c-en.csv",
   "/brand",
   "/modules",
   "/product",

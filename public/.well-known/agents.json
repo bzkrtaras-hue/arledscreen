@@ -146,6 +146,20 @@
       "name": "llms-full.txt",
       "url": "https://arledscreen.com/llms-full.txt",
       "description": "Extended LLM/agent context (full); also /llms-full · /.well-known/llms-full.txt · /tr/llms-full.txt · /en/llms-full.txt; short twin /llms.txt · /llms"
+    },
+    {
+      "@type": "ListItem",
+      "position": 21,
+      "name": "Point C paste packs (JSON)",
+      "url": "https://arledscreen.com/point-c.json",
+      "description": "Machine Point C packs + Open tabs; alias /.well-known/point-c.json; EN /point-c-en.json; CSV /feeds/point-c.csv"
+    },
+    {
+      "@type": "ListItem",
+      "position": 22,
+      "name": "Point C spreadsheet CSV",
+      "url": "https://arledscreen.com/feeds/point-c.csv",
+      "description": "Spreadsheet twin of Point C packs (same as npm run point-c:csv); root invent alias /point-c.csv; EN /feeds/point-c-en.csv"
     }
   ],
   "provider": {

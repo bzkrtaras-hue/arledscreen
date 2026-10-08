@@ -61,6 +61,14 @@ Allow: /point-c.txt
 Allow: /point-c-en.txt
 Allow: /.well-known/point-c.txt
 Allow: /.well-known/point-c-en.txt
+Allow: /point-c.json
+Allow: /point-c-en.json
+Allow: /.well-known/point-c.json
+Allow: /.well-known/point-c-en.json
+Allow: /feeds/point-c.csv
+Allow: /feeds/point-c-en.csv
+Allow: /point-c.csv
+Allow: /point-c-en.csv
 Allow: /security.txt
 Allow: /catalog
 Allow: /ai-shopping
