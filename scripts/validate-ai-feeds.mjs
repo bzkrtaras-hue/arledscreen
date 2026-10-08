@@ -2567,9 +2567,13 @@ if (fs.existsSync(outDir)) {
       !JSON.stringify(tur1a.isBasedOn || []).includes("/geo-status.json") ||
       !JSON.stringify(tur1a.sameAs || []).includes("/point-c-progress.json") ||
       !(tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/geo-next.txt")) ||
+      String(geoStatus?.socialHandles?.facebook || "") !== "arledscreenn" ||
+      String(geoStatus?.socialHandles?.instagram || "") !== "arledscreen" ||
+      String(geoStatus?.socialHandles?.whatsapp || "") !== "arledscreen" ||
+      !String(geoStatus?.description || "").includes("@arledscreenn") ||
       fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
     ) {
-      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + tur1a HowTo/potentialAction invent joins (no invented scores)");
+      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + socialHandles + tur1a HowTo/potentialAction invent joins (no invented scores)");
       process.exit(1);
     }
     const progress = JSON.parse(fs.readFileSync(path.join(outDir, "point-c-progress.json"), "utf8"));
