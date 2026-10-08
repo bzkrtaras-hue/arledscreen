@@ -2416,6 +2416,10 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agents.json must list tur1a.json");
     process.exit(1);
   }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/point-c-progress.json"))) {
+    console.error("❌ agents.json must list point-c-progress.json");
+    process.exit(1);
+  }
   {
     const agentsBased = JSON.stringify(agents?.isBasedOn || []);
     const agentsDist = JSON.stringify(agents?.distribution || []);
