@@ -2016,13 +2016,17 @@ if (fs.existsSync(outDir)) {
       !llmsGeo.includes("geo:next") ||
       !llmsGeo.includes("geo:ack") ||
       !llmsGeo.includes("point-c:csv") ||
+      !llmsGeo.includes("/geo-next.txt") ||
+      !llmsGeo.includes("/point-c.json") ||
+      !llmsGeo.includes("directoryLong") ||
+      !llmsGeo.includes("https://www.bingplaces.com/") ||
       !llmsGeo.includes("https://www.isimtescil.net/") ||
       !llmsGeo.includes("https://business.google.com/") ||
       !llmsGeo.includes("https://chatgpt.com/") ||
       !llmsGeo.includes("/.well-known/brand.json") ||
       !llmsGeo.includes("#website")
     ) {
-      console.error("❌ out/llms.txt must cite geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
+      console.error("❌ out/llms.txt must cite live geo-next/point-c.json next (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
       process.exit(1);
     }
     const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
@@ -2030,12 +2034,16 @@ if (fs.existsSync(outDir)) {
       !llmsFullLive.includes("geo:next") ||
       !llmsFullLive.includes("geo:ack") ||
       !llmsFullLive.includes("point-c:csv") ||
+      !llmsFullLive.includes("/geo-next.txt") ||
+      !llmsFullLive.includes("/point-c.json") ||
+      !llmsFullLive.includes("directoryLong") ||
+      !llmsFullLive.includes("https://www.bingplaces.com/") ||
       !llmsFullLive.includes("https://www.isimtescil.net/") ||
       !llmsFullLive.includes("https://chatgpt.com/") ||
       !llmsFullLive.includes("/.well-known/brand.json") ||
       !llmsFullLive.includes("#website")
     ) {
-      console.error("❌ out/llms-full.txt must cite geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
+      console.error("❌ out/llms-full.txt must cite live geo-next/point-c.json next (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
       process.exit(1);
     }
   }
@@ -2089,6 +2097,10 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("#website") ||
       !humansLive.includes("geo:ack") ||
       !humansLive.includes("point-c:csv") ||
+      !humansLive.includes("/geo-next.txt") ||
+      !humansLive.includes("/point-c.json") ||
+      !humansLive.includes("directoryLong") ||
+      !humansLive.includes("https://www.bingplaces.com/") ||
       !humansLive.includes("https://www.isimtescil.net/") ||
       !humansLive.includes("https://business.google.com/") ||
       !humansLive.includes("https://chatgpt.com/") ||
@@ -2100,7 +2112,7 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/tr/prices.json") ||
       !humansLive.includes("/llms-full")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next/ack + point-c:csv Open tabs + security.txt + api/locale invent");
+      console.error("❌ out/humans.txt must cite live geo-next/point-c.json next (directoryLong Bing) + ai-shopping + catalog + point-c + geo:next/ack + Open tabs + security + api/locale invent");
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
@@ -2109,6 +2121,11 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("geo:ack") ||
       !agentsMdLive.includes("#website") ||
       !agentsMdLive.includes("point-c:csv") ||
+      !agentsMdLive.includes("/geo-next.txt") ||
+      !agentsMdLive.includes("/point-c.json") ||
+      !agentsMdLive.includes("directoryLong") ||
+      !agentsMdLive.includes("https://www.bingplaces.com/") ||
+      !agentsMdLive.includes("https://businessconnect.apple.com/") ||
       !agentsMdLive.includes("https://www.isimtescil.net/") ||
       !agentsMdLive.includes("https://business.google.com/") ||
       !agentsMdLive.includes("https://chatgpt.com/") ||
@@ -2117,7 +2134,7 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("/en/shop/") ||
       !agentsMdLive.includes("/en/request-quote/")
     ) {
-      console.error("❌ out/AGENTS.md must cite npm run geo:next/ack + point-c:csv Open tabs + WebSite #website + EN invent bridges");
+      console.error("❌ out/AGENTS.md must cite live geo-next/point-c.json next (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");

@@ -35,7 +35,7 @@ const BRAND_URL = `${SITE_URL}/brand.json`;
 const localBusinessRef = () => ({ "@type": "LocalBusiness", "@id": LOCALBUSINESS_ID });
 /** Owner-friction clipboard + Open tabs (Point C / arleds / Tur1a) — cite-only; no invented scores. */
 const OWNER_FRICTION =
-  "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
+  "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
 
 /** Ensure description cites geo:next/ack + point-c:csv + Open tabs + #website. */
 function ensureOwnerFrictionDescription(desc) {
@@ -44,11 +44,17 @@ function ensureOwnerFrictionDescription(desc) {
   if (!out.includes("geo:next")) out = `${out} Owner: npm run geo:next.`;
   if (!out.includes("geo:ack")) out = `${out} After paste: npm run geo:ack.`;
   if (!out.includes("point-c:csv")) out = `${out} Spreadsheet: npm run point-c:csv.`;
+  if (!out.includes("/geo-next.txt")) out = `${out} Live clipboard: ${SITE_URL}/geo-next.txt.`;
+  if (!out.includes("/point-c.json")) out = `${out} Machine next: ${SITE_URL}/point-c.json → next.`;
   if (!out.includes("isimtescil.net")) {
     out = `${out} Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/.`;
   } else {
     if (!out.includes("business.google.com")) out = `${out} Open: https://business.google.com/.`;
     if (!out.includes("chatgpt.com")) out = `${out} Open: https://chatgpt.com/.`;
+  }
+  if (!out.includes("bingplaces.com")) out = `${out} Open: https://www.bingplaces.com/.`;
+  if (!out.includes("businessconnect.apple.com")) {
+    out = `${out} OpenAlt: https://businessconnect.apple.com/.`;
   }
   if (!out.includes("#website")) out = `${out} WebSite: ${SITE_URL}/#website.`;
   return out;
@@ -2879,7 +2885,7 @@ function enrichEntityProfiles(doc) {
   };
 
   const geoNextLead =
-    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok; Open:/OpenAlt: per pack) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md";
+    "P0 next: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (packKey=directoryLong; text; Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/) · status https://arledscreen.com/geo-status.json → gates.pointC.next · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md";
   const domainLead =
     "P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: Open: https://www.isimtescil.net/ · OpenAlt: Gmail draft (geo:status) · registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md";
   const checklist = Array.isArray(doc.ownerP0Checklist) ? [...doc.ownerP0Checklist] : [];
