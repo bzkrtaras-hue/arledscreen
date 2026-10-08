@@ -33,6 +33,6 @@ OpenAlt (mailto DNSEnable): mailto:destek@isimtescil.net?subject=Kal%C4%B1c%C4%B
 OpenAlt2 (Gmail draft Send): https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229
 Draft clipboard: npm run point-c:dnsenable-draft · EML: npm run point-c:dnsenable-eml
 
-HTML: https://arledscreen.com/owner-next.html?pack=directoryLong (Open tabs + Copy+Open) · alias https://arledscreen.com/geo-next.html
+HTML: https://arledscreen.com/owner-next.html?start=1 (Open tabs + Copy+Open) · alias https://arledscreen.com/geo-next.html
 JSON twin: https://arledscreen.com/owner-next.json · aliases https://arledscreen.com/geo-next.json · https://arledscreen.com/.well-known/owner-next.json
 HowTo: https://arledscreen.com/point-c.json → potentialAction · https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/point-c-progress.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction

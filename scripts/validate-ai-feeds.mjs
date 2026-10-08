@@ -2583,12 +2583,13 @@ if (fs.existsSync(outDir)) {
       !progress.packs.some((p) => String(p?.packKey || "") === "directoryLong") ||
       !progress.packs.some((p) => String(p?.html || "").includes("?pack=directoryLong")) ||
       !String(progressNext.html || "").includes("?pack=") ||
-      !String(progress?.potentialAction?.url || "").includes("/owner-next.html") ||
-      !String(progress?.potentialAction?.url || "").includes("?pack=") ||
-      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html")) ||
+      !String(progress?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
+      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html?start=1")) ||
+      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("?pack=")) ||
       !Array.isArray(geoStatus?.gates?.pointC?.packs) ||
       geoStatus.gates.pointC.packs.length < 11 ||
-      !String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html") ||
+      !String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
+      !(geoStatus?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html?start=1")) ||
       !String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") ||
       !String(geoStatus?.gates?.arleds301?.html || "").includes("hostinger301") ||
       !(geoStatus?.gates?.arleds301?.openAlts || []).some(
@@ -2664,19 +2665,21 @@ if (fs.existsSync(outDir)) {
         twin?.["@type"] !== "Dataset" ||
         !String(twin?.url || "").includes("/owner-next.json") ||
         !String(twin?.html || "").includes("/owner-next.html") ||
+        !String(twin?.htmlStart || "").includes("start=1") ||
         !String(twin?.priorityGate || "") ||
         !twin?.next ||
         !Array.isArray(twin?.packs) ||
         twin.packs.length < 11 ||
         !String(twin?.ownerNext || "").includes("/owner-next.json") ||
-        !String(twin?.potentialAction?.url || "").includes("/owner-next.html") ||
+        !String(twin?.ownerNext || "").includes("start=1") ||
+        !String(twin?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
         !Array.isArray(twin?.gates?.tur1a?.cells) ||
         twin.gates.tur1a.cells.length < 48 ||
         !String(twin.gates.tur1a.cells[0]?.prompt || "") ||
         !String(twin.gates.tur1a.cells[0]?.logCommand || "").includes("--platform=") ||
         !String(twin.gates.tur1a.html || "").includes("pack=tur1a")
       ) {
-        console.error("❌ owner-next.json invent twin must be Dataset with next/packs/potentialAction + gates.tur1a.cells×48 + geo-next alias byte-match");
+        console.error("❌ owner-next.json invent twin must be Dataset with next/packs/potentialAction start=1 + htmlStart + gates.tur1a.cells×48 + geo-next alias byte-match");
         process.exit(1);
       }
     }

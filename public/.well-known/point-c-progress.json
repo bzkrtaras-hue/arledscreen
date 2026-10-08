@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/point-c-progress.json",
   "name": "ARLEDSCREEN Point C paste progress",
-  "description": "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. Browser Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
+  "description": "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. Browser session start: https://arledscreen.com/owner-next.html?start=1 · Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
   "url": "https://arledscreen.com/point-c-progress.json",
   "dateModified": "2026-10-07T20:09:43.307Z",
   "creator": {
@@ -182,6 +182,7 @@
     "https://arledscreen.com/geo-status.json",
     "https://arledscreen.com/geo-next.txt",
     "https://arledscreen.com/owner-next.txt",
+    "https://arledscreen.com/owner-next.html?start=1",
     "https://arledscreen.com/owner-next.html",
     "https://arledscreen.com/.well-known/point-c-progress.json",
     "https://arledscreen.com/tur1a.json",
@@ -204,6 +205,12 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/geo-next.txt",
       "name": "ARLEDSCREEN GEO priority clipboard"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/html",
+      "contentUrl": "https://arledscreen.com/owner-next.html?start=1",
+      "name": "Owner next session start (auto C)"
     },
     {
       "@type": "DataDownload",
@@ -233,15 +240,15 @@
   "potentialAction": {
     "@type": "HowTo",
     "name": "Point C next paste: directoryLong",
-    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
-    "url": "https://arledscreen.com/owner-next.html?pack=directoryLong",
+    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser session start: https://arledscreen.com/owner-next.html?start=1 (auto Copy + Open remaining) · pack: https://arledscreen.com/owner-next.html?pack=directoryLong",
+    "url": "https://arledscreen.com/owner-next.html?start=1",
     "step": [
       {
         "@type": "HowToStep",
         "position": 1,
-        "name": "Open destination",
-        "url": "https://www.bingplaces.com/",
-        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/ · HTML: https://arledscreen.com/owner-next.html?pack=directoryLong"
+        "name": "Open owner-next session",
+        "url": "https://arledscreen.com/owner-next.html?start=1",
+        "text": "Session: https://arledscreen.com/owner-next.html?start=1 · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/ · Pack: https://arledscreen.com/owner-next.html?pack=directoryLong"
       },
       {
         "@type": "HowToStep",
@@ -257,6 +264,11 @@
       }
     ],
     "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?start=1",
+        "url": "https://arledscreen.com/owner-next.html?start=1"
+      },
       {
         "@type": "HowToTool",
         "name": "owner-next.html",

@@ -3,14 +3,15 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/owner-next.json",
   "name": "ARLEDSCREEN Owner next (Open/paste machine twin)",
-  "description": "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
+  "description": "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Browser session start: /owner-next.html?start=1 · Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
   "url": "https://arledscreen.com/owner-next.json",
-  "dateModified": "2026-10-08T14:26:06.214Z",
+  "dateModified": "2026-10-08T14:59:36.712Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
   "priorityGate": "pointC",
-  "html": "https://arledscreen.com/owner-next.html",
+  "html": "https://arledscreen.com/owner-next.html?start=1",
+  "htmlStart": "https://arledscreen.com/owner-next.html?start=1",
   "htmlDeep": "https://arledscreen.com/owner-next.html?pack=directoryLong",
   "htmlAlias": "https://arledscreen.com/geo-next.html",
   "clipboard": "https://arledscreen.com/geo-next.txt",
@@ -1170,15 +1171,15 @@
   "potentialAction": {
     "@type": "HowTo",
     "name": "Point C next paste: directoryLong",
-    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
-    "url": "https://arledscreen.com/owner-next.html?pack=directoryLong",
+    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser session start: https://arledscreen.com/owner-next.html?start=1 (auto Copy + Open remaining) · pack: https://arledscreen.com/owner-next.html?pack=directoryLong",
+    "url": "https://arledscreen.com/owner-next.html?start=1",
     "step": [
       {
         "@type": "HowToStep",
         "position": 1,
-        "name": "Open destination",
-        "url": "https://www.bingplaces.com/",
-        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/ · HTML: https://arledscreen.com/owner-next.html?pack=directoryLong"
+        "name": "Open owner-next session",
+        "url": "https://arledscreen.com/owner-next.html?start=1",
+        "text": "Session: https://arledscreen.com/owner-next.html?start=1 · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/ · Pack: https://arledscreen.com/owner-next.html?pack=directoryLong"
       },
       {
         "@type": "HowToStep",
@@ -1194,6 +1195,11 @@
       }
     ],
     "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?start=1",
+        "url": "https://arledscreen.com/owner-next.html?start=1"
+      },
       {
         "@type": "HowToTool",
         "name": "owner-next.html",
@@ -1221,9 +1227,11 @@
       }
     ]
   },
-  "ownerNext": "live: https://arledscreen.com/owner-next.html?pack=directoryLong · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+  "ownerNext": "live: https://arledscreen.com/owner-next.html?start=1 · https://arledscreen.com/owner-next.html?pack=directoryLong · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
   "sameAs": [
+    "https://arledscreen.com/owner-next.html?start=1",
     "https://arledscreen.com/owner-next.html",
+    "https://arledscreen.com/geo-next.html?start=1",
     "https://arledscreen.com/geo-next.html",
     "https://arledscreen.com/geo-next.txt",
     "https://arledscreen.com/owner-next.txt",
@@ -1243,6 +1251,12 @@
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/owner-next.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/html",
+      "contentUrl": "https://arledscreen.com/owner-next.html?start=1",
+      "name": "Owner next session start (auto C)"
     },
     {
       "@type": "DataDownload",

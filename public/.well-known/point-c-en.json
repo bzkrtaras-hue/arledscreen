@@ -266,19 +266,19 @@
       "https://business.google.com/"
     ]
   },
-  "ownerNext": "live: https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+  "ownerNext": "live: https://arledscreen.com/owner-next.html?start=1 · https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
   "potentialAction": {
     "@type": "HowTo",
     "name": "Point C next paste: directoryLong",
-    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html?pack=directoryLong",
-    "url": "https://arledscreen.com/owner-next.html?pack=directoryLong",
+    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser session start: https://arledscreen.com/owner-next.html?start=1 (auto Copy + Open remaining) · pack: https://arledscreen.com/owner-next.html?pack=directoryLong",
+    "url": "https://arledscreen.com/owner-next.html?start=1",
     "step": [
       {
         "@type": "HowToStep",
         "position": 1,
-        "name": "Open destination",
-        "url": "https://www.bingplaces.com/",
-        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/ · HTML: https://arledscreen.com/owner-next.html?pack=directoryLong"
+        "name": "Open owner-next session",
+        "url": "https://arledscreen.com/owner-next.html?start=1",
+        "text": "Session: https://arledscreen.com/owner-next.html?start=1 · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/ · Pack: https://arledscreen.com/owner-next.html?pack=directoryLong"
       },
       {
         "@type": "HowToStep",
@@ -294,6 +294,11 @@
       }
     ],
     "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?start=1",
+        "url": "https://arledscreen.com/owner-next.html?start=1"
+      },
       {
         "@type": "HowToTool",
         "name": "owner-next.html",
