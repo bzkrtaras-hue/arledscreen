@@ -288,8 +288,8 @@ export function buildGeoStatusDoc() {
         {
           "@type": "HowToStep",
           position: 1,
-          name: "Open owner-next session",
-          url: startHtml,
+          name: "Open destination",
+          url: pointCNext.open,
           text: Array.isArray(pointCNext.openAlts) && pointCNext.openAlts.length
             ? `Session: ${startHtml} · Open: ${pointCNext.open} · ${pointCNext.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · Pack: ${packHtml}`
             : pointCNext.openAlt
@@ -510,8 +510,8 @@ export function buildPointCProgressDoc() {
         {
           "@type": "HowToStep",
           position: 1,
-          name: "Open owner-next session",
-          url: startHtml,
+          name: "Open destination",
+          url: next.open,
           text: Array.isArray(next.openAlts) && next.openAlts.length
             ? `Session: ${startHtml} · Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · Pack: ${packHtml}`
             : next.openAlt

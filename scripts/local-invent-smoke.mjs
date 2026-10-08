@@ -400,7 +400,11 @@ if (
     String(pcJson?.potentialAction?.name || "").includes("directoryLong") &&
     Array.isArray(pcJson?.potentialAction?.step) &&
     pcJson.potentialAction.step.length >= 3 &&
+    String(pcJson?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
     String(pcJson.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("/owner-next.html?start=1"),
+    ) &&
     fs.existsSync(path.join(outDir, ".well-known/point-c.json")) &&
     fs.existsSync(path.join(outDir, "point-c-en.json")) &&
     fs.existsSync(path.join(outDir, "feeds/point-c-en.csv")) &&
@@ -475,10 +479,18 @@ if (
         progress.packs.length >= 11 &&
         progress.packs.some((p) => String(p?.html || "").includes("?pack=directoryLong")) &&
         String(progress?.next?.html || "").includes("?pack=") &&
-        String(progress?.potentialAction?.url || "").includes("?pack=") &&
+        String(progress?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
+        String(progress.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
+        (progress?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("/owner-next.html?start=1"),
+        ) &&
         Array.isArray(geoStatus?.gates?.pointC?.packs) &&
         geoStatus.gates.pointC.packs.length >= 11 &&
-        String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html") &&
+        String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
+        String(geoStatus.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
+        (geoStatus?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("/owner-next.html?start=1"),
+        ) &&
         String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") &&
         crossOk
       );

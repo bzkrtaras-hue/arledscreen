@@ -690,8 +690,8 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         {
           "@type": "HowToStep",
           position: 1,
-          name: "Open owner-next session",
-          url: startHtml,
+          name: "Open destination",
+          url: next.open,
           text: Array.isArray(next.openAlts) && next.openAlts.length
             ? `Session: ${startHtml} · Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · Pack: ${packHtml}`
             : next.openAlt
