@@ -41,6 +41,9 @@ Allow: /.well-known/cite.json
 Allow: /.well-known/faq.json
 Allow: /.well-known/faqs.json
 Allow: /.well-known/organization.json
+Allow: /.well-known/company.json
+Allow: /.well-known/nap.json
+Allow: /.well-known/about.json
 Allow: /.well-known/brand.json
 Allow: /.well-known/catalog.json
 Allow: /.well-known/security.txt

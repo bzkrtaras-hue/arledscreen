@@ -485,6 +485,12 @@ if (
     entSame.includes("/.well-known/cite.json") &&
     entSame.includes("/.well-known/faq.json") &&
     entSame.includes("/.well-known/organization.json") &&
+    entSame.includes("/company.json") &&
+    entSame.includes("/nap.json") &&
+    entSame.includes("/about.json") &&
+    entSame.includes("/.well-known/company.json") &&
+    entSame.includes("/.well-known/nap.json") &&
+    entSame.includes("/.well-known/about.json") &&
     entSame.includes("/humans.txt") &&
     entSame.includes("/.well-known/security.txt")
   ) {

@@ -2237,6 +2237,9 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/cite.json") ||
     !headersLive.includes("/.well-known/faq.json") ||
     !headersLive.includes("/.well-known/organization.json") ||
+    !headersLive.includes("/.well-known/company.json") ||
+    !headersLive.includes("/.well-known/nap.json") ||
+    !headersLive.includes("/.well-known/about.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
@@ -2260,6 +2263,9 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/.well-known/cite.json"',
       'href="https://arledscreen.com/.well-known/faq.json"',
       'href="https://arledscreen.com/.well-known/organization.json"',
+      'href="https://arledscreen.com/.well-known/company.json"',
+      'href="https://arledscreen.com/.well-known/nap.json"',
+      'href="https://arledscreen.com/.well-known/about.json"',
       'href="https://arledscreen.com/prices.json"',
       'href="https://arledscreen.com/organization.json"',
       'href="https://arledscreen.com/entity-profiles.json"',
@@ -2700,6 +2706,9 @@ if (fs.existsSync(outDir)) {
     ".well-known/faq.json",
     ".well-known/faqs.json",
     ".well-known/organization.json",
+    ".well-known/company.json",
+    ".well-known/nap.json",
+    ".well-known/about.json",
   ]) {
     if (!fs.readFileSync(path.join(outDir, rel)).equals(canonEntityForSyn)) {
       console.error(`❌ out/${rel} must match entity.json`);
@@ -3644,6 +3653,9 @@ if (fs.existsSync(outDir)) {
     "/.well-known/cite.json",
     "/.well-known/faq.json",
     "/.well-known/organization.json",
+    "/.well-known/company.json",
+    "/.well-known/nap.json",
+    "/.well-known/about.json",
     "/modules.json",
     "/sku.json",
     "/tr/ai-shopping.json",

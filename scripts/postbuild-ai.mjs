@@ -1837,16 +1837,22 @@ function inventAliasBasedOnUrls() {
   ];
 }
 
-/** Entity/Organization invent aliases (cite/faq/org well-known) — not pricedPanels. */
+/** Entity/Organization invent aliases (cite/faq/org/company/nap/about) — not pricedPanels. */
 function entityAliasBasedOnUrls() {
   return [
     `${SITE_URL}/cite.json`,
     `${SITE_URL}/faq.json`,
     `${SITE_URL}/faqs.json`,
+    `${SITE_URL}/company.json`,
+    `${SITE_URL}/nap.json`,
+    `${SITE_URL}/about.json`,
     `${SITE_URL}/.well-known/cite.json`,
     `${SITE_URL}/.well-known/faq.json`,
     `${SITE_URL}/.well-known/faqs.json`,
     `${SITE_URL}/.well-known/organization.json`,
+    `${SITE_URL}/.well-known/company.json`,
+    `${SITE_URL}/.well-known/nap.json`,
+    `${SITE_URL}/.well-known/about.json`,
   ];
 }
 
@@ -1863,6 +1869,24 @@ function entityAliasDistributionEntries() {
       encodingFormat: "application/ld+json",
       contentUrl: `${SITE_URL}/faq.json`,
       name: "Organization FAQ invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/company.json`,
+      name: "Organization company invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/nap.json`,
+      name: "Organization NAP invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/about.json`,
+      name: "Organization about invent alias",
     },
     {
       "@type": "DataDownload",
@@ -1887,6 +1911,24 @@ function entityAliasDistributionEntries() {
       encodingFormat: "application/ld+json",
       contentUrl: `${SITE_URL}/.well-known/organization.json`,
       name: "Organization well-known invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/company.json`,
+      name: "Organization company well-known invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/nap.json`,
+      name: "Organization NAP well-known invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/about.json`,
+      name: "Organization about well-known invent alias",
     },
   ];
 }
@@ -2839,6 +2881,9 @@ function writeFeedPathAliases(dir) {
     ["entity.json", ".well-known/faq.json"],
     ["entity.json", ".well-known/faqs.json"],
     ["entity.json", ".well-known/organization.json"],
+    ["entity.json", ".well-known/company.json"],
+    ["entity.json", ".well-known/nap.json"],
+    ["entity.json", ".well-known/about.json"],
     ["catalog.json", ".well-known/catalog.json"],
     ["catalog.json", "api/catalog.json"],
     ["geo-baseline.json", "geo-baseline"],
@@ -3184,6 +3229,9 @@ feed-alias-well-known-cite: ${SITE_URL}/.well-known/cite.json
 feed-alias-well-known-faq: ${SITE_URL}/.well-known/faq.json
 feed-alias-well-known-faqs: ${SITE_URL}/.well-known/faqs.json
 feed-alias-well-known-organization: ${SITE_URL}/.well-known/organization.json
+feed-alias-well-known-company: ${SITE_URL}/.well-known/company.json
+feed-alias-well-known-nap: ${SITE_URL}/.well-known/nap.json
+feed-alias-well-known-about: ${SITE_URL}/.well-known/about.json
 feed-alias-organization-json: ${SITE_URL}/organization.json
 feed-alias-offers-json: ${SITE_URL}/offers.json
 feed-alias-offer-json: ${SITE_URL}/offer.json
@@ -3576,6 +3624,9 @@ Acknowledgments: https://arledscreen.com/brand.json
     ".well-known/faq.json",
     ".well-known/faqs.json",
     ".well-known/organization.json",
+    ".well-known/company.json",
+    ".well-known/nap.json",
+    ".well-known/about.json",
     ".well-known/catalog.json",
     ".well-known/llms-full.txt",
     "organization.json",
