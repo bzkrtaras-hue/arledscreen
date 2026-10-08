@@ -171,13 +171,20 @@ export function pointCOpenAltUrls(packKey) {
  * Slim Point C pack checklist for invent + owner-next.html (no paste bodies).
  * Cite-only status/open — does not invent citations. `html` filled after SITE is set.
  */
-/** Owner HTML for a pack — IG/FB prefer ?social= deep-links (jump + profile). */
+/** Append &copy=1 so owner HTML deep-links auto-copy paste on load. */
+function withOwnerCopy(href) {
+  const u = String(href || "");
+  if (!u || u.includes("start=1") || /[?&]copy=/.test(u)) return u;
+  return u.includes("?") ? `${u}&copy=1` : `${u}?copy=1`;
+}
+
+/** Owner HTML for a pack — IG/FB prefer ?social= deep-links (jump + profile) + &copy=1. */
 function packOwnerHtml(key) {
   const k = String(key || "");
-  if (k === "facebookAbout") return "https://arledscreen.com/owner-next.html?social=fb";
-  if (k === "instagramBio") return "https://arledscreen.com/owner-next.html?social=ig";
+  if (k === "facebookAbout") return withOwnerCopy("https://arledscreen.com/owner-next.html?social=fb");
+  if (k === "instagramBio") return withOwnerCopy("https://arledscreen.com/owner-next.html?social=ig");
   return k
-    ? `https://arledscreen.com/owner-next.html?pack=${encodeURIComponent(k)}`
+    ? withOwnerCopy(`https://arledscreen.com/owner-next.html?pack=${encodeURIComponent(k)}`)
     : "https://arledscreen.com/owner-next.html";
 }
 
@@ -546,10 +553,12 @@ export const OWNER_SOCIAL_HANDLES = {
   line: "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json · deep: /owner-next.html?social=fb|ig|wa",
 };
 
-/** Browser deep-link for a Point C pack on the owner Open/paste surface. */
+/** Browser deep-link for a Point C pack on the owner Open/paste surface (+ &copy=1). */
 export function ownerNextHtmlUrl(packKey = "") {
   const key = String(packKey || "").trim();
-  return key ? `${SITE}/owner-next.html?pack=${encodeURIComponent(key)}` : `${SITE}/owner-next.html`;
+  return key
+    ? withOwnerCopy(`${SITE}/owner-next.html?pack=${encodeURIComponent(key)}`)
+    : `${SITE}/owner-next.html`;
 }
 
 /** Session-start deep-link: auto Copy + Open remaining (C) on /owner-next.html. */
@@ -557,12 +566,12 @@ export function ownerNextStartUrl() {
   return `${SITE}/owner-next.html?start=1`;
 }
 
-/** Social pack deep-link: jumpToSocialPack + profile tab (mirrors F/I keys; wa → wa.me). */
+/** Social pack deep-link: jumpToSocialPack + profile tab (mirrors F/I; wa → wa.me) + &copy=1. */
 export function ownerNextSocialUrl(network = "fb") {
   const n = String(network || "fb").trim().toLowerCase();
   const key =
     n === "ig" || n === "instagram" ? "ig" : n === "wa" || n === "whatsapp" ? "wa" : "fb";
-  return `${SITE}/owner-next.html?social=${key}`;
+  return withOwnerCopy(`${SITE}/owner-next.html?social=${key}`);
 }
 
 /** Pack HTML preferring ?social= for IG/FB (export twin of packOwnerHtml). */

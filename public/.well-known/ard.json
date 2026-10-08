@@ -3146,9 +3146,9 @@
           "https://arledscreen.com/point-c.txt"
         ],
         "deepLinks": {
-          "facebook": "https://arledscreen.com/owner-next.html?social=fb",
-          "instagram": "https://arledscreen.com/owner-next.html?social=ig",
-          "whatsapp": "https://arledscreen.com/owner-next.html?social=wa"
+          "facebook": "https://arledscreen.com/owner-next.html?social=fb&copy=1",
+          "instagram": "https://arledscreen.com/owner-next.html?social=ig&copy=1",
+          "whatsapp": "https://arledscreen.com/owner-next.html?social=wa&copy=1"
         }
       }
     },

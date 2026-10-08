@@ -26,7 +26,7 @@ Not: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com
 After paste: npm run point-c:ack -- --pack=directoryLong
 Or: npm run point-c:ack
 CSV: npm run point-c:csv · Live CSV: https://arledscreen.com/feeds/point-c.csv · JSON: https://arledscreen.com/point-c.json · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt
-Pack HTML: https://arledscreen.com/owner-next.html?pack=directoryLong
+Pack HTML: https://arledscreen.com/owner-next.html?pack=directoryLong&copy=1
 
 === Queued after Point C (arleds.com 301) — prep Open tabs ===
 Open: https://www.isimtescil.net/

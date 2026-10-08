@@ -3842,9 +3842,9 @@ function enrichArdOwnerGateInvent() {
         whatsapp: "arledscreen",
       },
       deepLinks: {
-        facebook: `${SITE_URL}/owner-next.html?social=fb`,
-        instagram: `${SITE_URL}/owner-next.html?social=ig`,
-        whatsapp: `${SITE_URL}/owner-next.html?social=wa`,
+        facebook: `${SITE_URL}/owner-next.html?social=fb&copy=1`,
+        instagram: `${SITE_URL}/owner-next.html?social=ig&copy=1`,
+        whatsapp: `${SITE_URL}/owner-next.html?social=wa&copy=1`,
       },
       ownerNext: OWNER_FRICTION,
     },

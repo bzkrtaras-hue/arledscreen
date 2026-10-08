@@ -593,9 +593,13 @@ try {
     ownerNextHtml.includes("jumpToSocialPack") &&
     ownerNextHtml.includes("copyPackDeepLink") &&
     ownerNextHtml.includes("packDeepLinkUrl") &&
+    ownerNextHtml.includes("withCopyParam") &&
+    ownerNextHtml.includes("maybeCopyPaste") &&
+    ownerNextHtml.includes("copyQuery") &&
     ownerNextHtml.includes("socialFocus") &&
     ownerNextHtml.includes("setSocialFocus") &&
     ownerNextHtml.includes("social=wa") &&
+    ownerNextHtml.includes("copy=1") &&
     ownerNextHtml.includes("copy-pack-link") &&
     ownerNextHtml.includes("Copy pack link") &&
     ownerNextHtml.includes('data-pack="facebookAbout"') &&
