@@ -345,13 +345,16 @@ try {
 
 try {
   const pcEn = await getText("/point-c-en.txt");
+  const pcEnWk = await getText("/.well-known/point-c-en.txt");
   if (
     pcEn.includes("EN GBP About") &&
     pcEn.includes("arledscreen.com/en/") &&
-    pcEn.includes("/.well-known/modules.json")
+    pcEn.includes("/.well-known/modules.json") &&
+    pcEnWk.includes("EN GBP About") &&
+    String(ard?.agentic?.resources?.pointCEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")
   ) {
-    ok("point-c-en.txt paste packs + invent aliases");
-  } else fail("point-c-en.txt paste packs + invent aliases");
+    ok("point-c-en.txt paste packs + invent aliases + well-known");
+  } else fail("point-c-en.txt paste packs + invent aliases + well-known");
 } catch (e) {
   fail(`point-c-en.txt ${e?.message || e}`);
 }
