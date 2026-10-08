@@ -1837,12 +1837,27 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/.well-known/price.json") ||
     !securityLive.includes("/.well-known/agents.json") ||
     !securityLive.includes("/.well-known/ard.json") ||
+    !securityLive.includes("/.well-known/organization.json") ||
+    !securityLive.includes("/.well-known/geo-baseline.json") ||
+    !securityLive.includes("/.well-known/offer.json") ||
+    !securityLive.includes("verify:arleds-301") ||
     !securityLive.includes("/humans.txt") ||
     !securityLive.includes("/AGENTS.md")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C + invent aliases + discovery agents/ard/humans/AGENTS + geo:next/ack");
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C + invent aliases + discovery agents/ard/humans/AGENTS + geo:next/ack + organization/geo-baseline + verify:arleds-301");
     process.exit(1);
   }
+  const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
+  if (
+    !arledsOps.includes("https://www.isimtescil.net/") ||
+    !arledsOps.includes("https://hpanel.hostinger.com/") ||
+    !arledsOps.includes("https://dash.cloudflare.com/") ||
+    !arledsOps.includes("Open:")
+  ) {
+    console.error("❌ docs/ops/arleds-301-hostinger.md must list Open: tabs (isimtescil/hPanel/Cloudflare)");
+    process.exit(1);
+  }
+  console.log("✅ security.txt + arleds ops doc cite organization/geo-baseline invent + Open tabs");
   {
     const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
     if (

@@ -4093,14 +4093,14 @@ Hiring: https://arledscreen.com/tr/about/
 Acknowledgments: https://arledscreen.com/brand.json
 # Brand: https://arledscreen.com/brand.json (#brand-nxtionstar AggregateOffer×12 + hasOfferCatalog → catalog.json)
 # Brand alias: https://arledscreen.com/.well-known/brand.json
-# Entity: https://arledscreen.com/entity.json (alias /organization.json · /cite · /.well-known/entity.json)
+# Entity: https://arledscreen.com/entity.json (alias /organization.json · /cite · /.well-known/entity.json · /.well-known/organization.json)
 # WebSite: https://arledscreen.com/#website (entity.json mainEntityOfPage OrderAction → /tr/quote/ · /en/quote/)
 # Price: https://arledscreen.com/ai-shopping.json pricedPanels (aliases /prices.json · /.well-known/prices.json)
-# Invent aliases: /.well-known/modules.json · /.well-known/sku.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /offer.json · /offers.json · /dataset.json · /feed.json
-# Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json
+# Invent aliases: /.well-known/modules.json · /.well-known/sku.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/organization.json · /.well-known/geo-baseline.json · /offer.json · /offers.json · /dataset.json · /feed.json
+# Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json · /.well-known/geo-baseline.json
 # Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json
 # Discovery: https://arledscreen.com/.well-known/agents.json · https://arledscreen.com/.well-known/ard.json · https://arledscreen.com/humans.txt · https://arledscreen.com/AGENTS.md
-# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack
+# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · arleds: npm run verify:arleds-301 (Open tabs)
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);

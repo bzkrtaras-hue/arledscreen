@@ -9,16 +9,22 @@ npm run verify:arleds-301
 # or: npm run geo:status   → look for mode=…
 ```
 
-`verify:arleds-301` resolves live NS/A and prints `mode:`. Follow that mode — Hostinger hPanel only helps when NS is actually Hostinger.
+`verify:arleds-301` resolves live NS/A and prints `mode:` plus **Where:/Open:/OpenAlt:** provider tabs. Follow that mode — Hostinger hPanel only helps when NS is actually Hostinger.
 
-| mode | Meaning | Owner next |
-|---|---|---|
-| `dnsenable_tls_dead` | NS = `*.dnsenable.com` (Isimtescil); TLS/HTTP dead | Registrar **Domain Redirect** (below) or move NS to Cloudflare |
-| `hostinger_*` / `http_200_no_redirect` | NS Hostinger-ish | hPanel Redirects (below) |
-| `cloudflare_*` / `wrong_location` | NS Cloudflare-ish | CF Bulk Redirect |
-| `nxdomain` | No A / NXDOMAIN | Restore NS at registrar first |
+| mode | Meaning | Owner next | Open |
+|---|---|---|---|
+| `dnsenable_tls_dead` | NS = `*.dnsenable.com` (Isimtescil); TLS/HTTP dead | Registrar **Domain Redirect** (below) or move NS to Cloudflare | [isimtescil.net](https://www.isimtescil.net/) · OpenAlt: Gmail draft via `npm run geo:status` |
+| `hostinger_*` / `http_200_no_redirect` | NS Hostinger-ish | hPanel Redirects (below) | [hpanel.hostinger.com](https://hpanel.hostinger.com/) |
+| `cloudflare_*` / `wrong_location` | NS Cloudflare-ish | CF Bulk Redirect | [dash.cloudflare.com](https://dash.cloudflare.com/) |
+| `nxdomain` | No A / NXDOMAIN | Restore NS at registrar first | [isimtescil.net](https://www.isimtescil.net/) |
 
 Observed live (re-check with verify): apex + www on `eu/tr/us.dnsenable.com`, A `194.5.236.174`, probes timeout — **mode=`dnsenable_tls_dead`**. Hostinger hPanel will **not** apply until NS moves.
+
+```
+Where: Isimtescil/DNSEnable → Domain Redirect (permanent 301)
+Open: https://www.isimtescil.net/
+OpenAlt: (Gmail draft Send — see npm run geo:status / point-c.txt)
+```
 
 ## Target
 
@@ -30,6 +36,9 @@ Observed live (re-check with verify): apex + www on `eu/tr/us.dnsenable.com`, A 
 | `https://www.arleds.com/` | `https://arledscreen.com/tr/` |
 
 ## Option A — Isimtescil / DNSEnable (current live NS)
+
+**Open:** https://www.isimtescil.net/  
+**OpenAlt (support email Send):** Gmail draft from `npm run geo:status` / `point-c.txt` · EML `npm run point-c:dnsenable-eml`
 
 1. Log into the **registrar** panel that holds `arleds.com` (Isimtescil / DNSEnable — not Hostinger).
 2. Domain → **Domain Redirect** (or URL Redirect / Forwarding).
@@ -58,9 +67,11 @@ Telefon: +90 850 200 0 444 · Domain: arleds.com
 Teşekkürler.
 ```
 
-Also: `npm run point-c:dnsenable-eml` → `docs/ops/arleds-301-dnsenable.eml` · mailto `destek@isimtescil.net` in `point-c.txt` · Gmail draft in `npm run geo:status` / `point-c.txt` · `npm run verify:arleds-301`.
+Also: `npm run point-c:dnsenable-eml` → `docs/ops/arleds-301-dnsenable.eml` · mailto `destek@isimtescil.net` in `point-c.txt` · Gmail draft in `npm run geo:status` / `point-c.txt` · `npm run verify:arleds-301` (prints Open:/OpenAlt:).
 
 ## Option B — Cloudflare (align with arledscreen.com)
+
+**Open:** https://dash.cloudflare.com/
 
 1. Add `arleds.com` to the same Cloudflare account as `arledscreen.com`.
 2. At registrar, set NS to Cloudflare nameservers.
@@ -69,6 +80,9 @@ Also: `npm run point-c:dnsenable-eml` → `docs/ops/arleds-301-dnsenable.eml` ·
 4. Re-check: `npm run verify:arleds-301`.
 
 ## Hostinger (only if NS is Hostinger)
+
+**Open:** https://hpanel.hostinger.com/  
+**OpenAlt:** Hostinger Gmail draft via `npm run geo:status` (only when mode=`hostinger_*`)
 
 1. hPanel → Domains → `arleds.com` → Redirects (or DNS Zone).
 2. Add permanent **301** redirect of the whole domain to `https://arledscreen.com/tr/`.
