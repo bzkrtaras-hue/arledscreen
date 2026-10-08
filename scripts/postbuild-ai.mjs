@@ -1793,6 +1793,24 @@ function inventAliasDistributionEntries() {
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/social.json`,
+      name: "ARLEDSCREEN social handles invent",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/contact.json`,
+      name: "ARLEDSCREEN contact invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/social.json`,
+      name: "Social well-known invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
       contentUrl: `${SITE_URL}/modules.json`,
       name: "Modules pricedPanels invent alias",
     },
