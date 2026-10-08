@@ -237,6 +237,7 @@
       <textarea id="paste" readonly spellcheck="false"></textarea>
       <div class="row">
         <button type="button" class="btn primary" id="copy-open-tab">Copy + Open</button>
+        <button type="button" class="btn" id="copy-open-all">Copy + Open all</button>
         <button type="button" class="btn" id="copy">Copy paste</button>
         <button type="button" class="btn" id="copy-open">Copy Open URL</button>
         <button type="button" class="btn" id="copy-ack">Copy ack</button>
@@ -266,6 +267,7 @@
     let pointCPacks = [];
     let activeKey = "";
     let activeOpen = "";
+    let activeOpens = [];
     let activeAck = "";
 
     function packQuery() {
@@ -295,9 +297,22 @@
       }
     }
 
+    function openLabel(href, fallback) {
+      const h = String(href || "");
+      if (h.startsWith("mailto:")) {
+        if (h.includes("destek@isimtescil") || h.includes("isimtescil")) return "Mailto DNSEnable";
+        if (h.includes("support@hostinger") || h.includes("hostinger")) return "Mailto Hostinger";
+        return "Mailto";
+      }
+      if (h.includes("mail.google.com")) return "OpenAlt Gmail Send";
+      if (h.includes("cloudflare.com")) return "OpenAlt Cloudflare";
+      return fallback || "OpenAlt";
+    }
+
     function openButtons(urls) {
       const box = $("opens");
       box.innerHTML = "";
+      const list = [];
       urls.forEach(({ label, href, primary }, i) => {
         if (!href) return;
         const a = document.createElement("a");
@@ -305,17 +320,23 @@
         a.href = href;
         a.target = "_blank";
         a.rel = "noopener noreferrer";
-        a.textContent = label;
+        a.textContent = label || openLabel(href, i === 0 ? "Open" : "OpenAlt" + (i > 1 ? i : ""));
         box.appendChild(a);
+        list.push(href);
       });
-      if (urls.filter((u) => u.href).length > 1) {
+      activeOpens = list;
+      if (list.length > 1) {
         const all = document.createElement("button");
         all.type = "button";
         all.className = "btn";
         all.textContent = "Open all tabs";
         all.addEventListener("click", () => {
-          urls.forEach(({ href }) => {
-            if (href) window.open(href, "_blank", "noopener,noreferrer");
+          list.forEach((href) => {
+            try {
+              window.open(href, "_blank", "noopener,noreferrer");
+            } catch {
+              /* popup blocked */
+            }
           });
         });
         box.appendChild(all);
@@ -331,7 +352,10 @@
       $("where").textContent = pack.where || "";
       openButtons([
         { label: "Open", href: pack.open, primary: true },
-        ...alts.map((href, i) => ({ label: i === 0 ? "OpenAlt" : "OpenAlt" + (i + 1), href })),
+        ...alts.map((href, i) => ({
+          label: openLabel(href, i === 0 ? "OpenAlt" : "OpenAlt" + (i + 1)),
+          href,
+        })),
       ]);
       $("paste").value = pack.text || "";
       $("ack").textContent = activeAck || (pack.status === "acked" ? "(acked)" : "npm run geo:ack");
@@ -434,7 +458,11 @@
           $("pack-list").classList.add("hidden");
           $("pack-heading").classList.add("hidden");
           const g = twin?.gates?.arleds301 || status.gates?.arleds301 || twin?.next || {};
-          const alts = Array.isArray(g.openAlts) ? g.openAlts : g.openAlt ? [g.openAlt, "https://dash.cloudflare.com/"] : ["https://dash.cloudflare.com/"];
+          const alts = Array.isArray(g.openAlts)
+            ? g.openAlts
+            : g.openAlt
+              ? [g.openAlt, "https://dash.cloudflare.com/"]
+              : ["https://dash.cloudflare.com/"];
           activeOpen = g.open || "https://www.isimtescil.net/";
           activeAck = g.ackCommand || "npm run verify:arleds-301";
           $("progress").textContent = "arleds.com → arledscreen.com/tr/ 301 · " + (g.mode || "open");
@@ -442,7 +470,7 @@
           openButtons([
             { label: "Open panel", href: activeOpen, primary: true },
             ...alts.filter(Boolean).map((href, i) => ({
-              label: i === 0 ? "OpenAlt Gmail Send" : "OpenAlt" + (i + 1) + (String(href).includes("cloudflare") ? " Cloudflare" : ""),
+              label: openLabel(href, "OpenAlt" + (i === 0 ? "" : i + 1)),
               href,
             })),
           ]);
@@ -456,7 +484,14 @@
           $("progress").textContent =
             `Tur1a ${status.gates?.tur1a?.filled ?? twin?.gates?.tur1a?.filled ?? "?"}/${status.gates?.tur1a?.total ?? twin?.gates?.tur1a?.total ?? "?"} · ${next.platform || ""} · ${next.promptId || ""}`;
           $("where").textContent = next.where || (next.platform ? `${next.platform} blind prompt` : "Tur1a blind");
-          openButtons([{ label: "Open platform", href: next.open, primary: true }]);
+          const turAlts = Array.isArray(next.openAlts) ? next.openAlts : [];
+          openButtons([
+            { label: "Open platform", href: next.open, primary: true },
+            ...turAlts.filter(Boolean).map((href, i) => ({
+              label: "OpenAlt" + (i === 0 ? "" : i + 1),
+              href,
+            })),
+          ]);
           $("paste").value = next.text || next.prompt || "";
           activeOpen = next.open || "";
           activeAck = next.ackCommand || next.logCommand || "";
@@ -505,6 +540,21 @@
           /* popup blocked — paste already copied */
         }
       }
+    });
+    $("copy-open-all").addEventListener("click", async () => {
+      const btn = $("copy-open-all");
+      const t = $("paste");
+      t.focus();
+      t.select();
+      await copyText(t.value, btn, "Copy + Open all");
+      const urls = activeOpens.length ? activeOpens : activeOpen ? [activeOpen] : [];
+      urls.forEach((href) => {
+        try {
+          window.open(href, "_blank", "noopener,noreferrer");
+        } catch {
+          /* popup blocked */
+        }
+      });
     });
     $("copy-open").addEventListener("click", () => copyText(activeOpen, $("copy-open"), "Copy Open URL"));
     $("copy-ack").addEventListener("click", () => copyText(activeAck || $("ack").textContent, $("copy-ack"), "Copy ack"));

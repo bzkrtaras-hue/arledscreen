@@ -141,9 +141,19 @@ export function pointCOpenAltUrl(packKey) {
 /** All OpenAlt URLs for a pack (empty array if none). */
 export function pointCOpenAltUrls(packKey) {
   const raw = POINT_C_OPEN_ALTS[packKey];
-  if (!raw) return [];
-  if (Array.isArray(raw)) return raw.map(String).filter(Boolean);
-  return [String(raw)].filter(Boolean);
+  let alts = [];
+  if (Array.isArray(raw)) alts = raw.map(String).filter(Boolean);
+  else if (raw) alts = [String(raw)].filter(Boolean);
+  // DNSEnable mailto first — one-click mail client with Domain Redirect body (not buried in paste).
+  if (packKey === HOSTINGER_STEP) {
+    try {
+      const mailto = buildDnsEnableMailto();
+      if (mailto && !alts.includes(mailto)) alts = [mailto, ...alts];
+    } catch {
+      /* ignore */
+    }
+  }
+  return alts;
 }
 
 /**

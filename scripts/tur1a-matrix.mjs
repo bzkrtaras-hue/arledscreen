@@ -172,6 +172,9 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
           promptId: id,
           locale: String(id).startsWith("en-") ? "en" : "tr-TR",
           open: platformOpenUrl(platform),
+          openAlts: HUMAN_PLATFORMS.filter((p) => p !== platform)
+            .map((p) => platformOpenUrl(p))
+            .filter(Boolean),
           prompt: usePrompts.find(([pid]) => pid === id)?.[1] || "",
           logCommand,
         };

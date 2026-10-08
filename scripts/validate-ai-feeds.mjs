@@ -1943,6 +1943,7 @@ if (fs.existsSync(outDir)) {
     !geoNextSrc.includes("offsite-entity-playbook.md") ||
     !geoNextSrc.includes("DNSENABLE_PANEL_URL") ||
     !geoNextSrc.includes("DNSENABLE_GMAIL_DRAFT_URL") ||
+    !geoNextSrc.includes("buildDnsEnableMailto") ||
     !geoNextSrc.includes("point-c:dnsenable-draft") ||
     !geoNextSrc.includes("Queued after Point C") ||
     !geoNextSrc.includes("Open:") ||
@@ -2526,15 +2527,21 @@ if (fs.existsSync(outDir)) {
       !String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html") ||
       !String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") ||
       !String(geoStatus?.gates?.arleds301?.html || "").includes("hostinger301") ||
+      !(geoStatus?.gates?.arleds301?.openAlts || []).some(
+        (u) => String(u).startsWith("mailto:") && String(u).includes("destek@isimtescil"),
+      ) ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-list") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("howto-ld") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy Open URL") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-ack") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-tab") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-all") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open all") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next Copy+Open/ack required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next Copy+Open all/mailto required");
       process.exit(1);
     }
     {
@@ -5633,10 +5640,11 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
       !pointCLive.includes("OpenAlt: https://www.google.com/business/") ||
       !pointCLive.includes("OpenAlt: https://business.facebook.com/") ||
       !pointCLive.includes("OpenAlt: https://www.linkedin.com/company/arleds/admin/") ||
-      !pointCLive.includes("OpenAlt2: https://dash.cloudflare.com/") ||
+      !pointCLive.includes("OpenAlt: mailto:destek@isimtescil.net") ||
+      !pointCLive.includes("https://dash.cloudflare.com/") ||
       !pointCLive.includes("Open: https://www.isimtescil.net/"))
   ) {
-    console.error("❌ out/point-c.txt must include Where:/Open:/OpenAlt(s) for directoryLong/GBP/FB/LI + DNSEnable/Cloudflare");
+    console.error("❌ out/point-c.txt must include Where:/Open:/OpenAlt(s) for directoryLong/GBP/FB/LI + DNSEnable mailto/Cloudflare");
     process.exit(1);
   }
   console.log("✅ point-c:next Open:/OpenAlt(s) + point-c:csv (GBP/IG/FB/LI/Bing/Apple/YT/Yandex + DNSEnable/Cloudflare)");

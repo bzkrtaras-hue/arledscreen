@@ -529,6 +529,9 @@ else fail("ard.resources.pointC");
     html.includes("copy-ack") &&
     html.includes("copy-open-tab") &&
     html.includes("Copy + Open") &&
+    html.includes("copy-open-all") &&
+    html.includes("Copy + Open all") &&
+    html.includes("Mailto DNSEnable") &&
     html.includes("packQuery") &&
     alias === html &&
     twin?.["@type"] === "Dataset" &&

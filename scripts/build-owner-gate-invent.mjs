@@ -9,11 +9,13 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   buildArleds301DualPathClipboard,
+  buildDnsEnableMailto,
   buildPointCNext,
   buildPointCPackChecklist,
   DNSENABLE_GMAIL_DRAFT_URL,
   DNSENABLE_PANEL_URL,
   ownerNextHtmlUrl,
+  pointCOpenAltUrls,
 } from "./print-point-c-packs.mjs";
 import { HUMAN_PLATFORMS, TR, platformOpenUrl } from "./print-tur1a-prompts.mjs";
 import { applyOwnerGateCrossJoin } from "./owner-gate-cross-join.mjs";
@@ -100,6 +102,9 @@ function nextTur1aCell() {
           platform,
           promptId: id,
           open: platformOpenUrl(platform),
+          openAlts: HUMAN_PLATFORMS.filter((p) => p !== platform)
+            .map((p) => platformOpenUrl(p))
+            .filter(Boolean),
           prompt: TR.find(([pid]) => pid === id)?.[1] || "",
           logCommand:
             "npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json",
@@ -213,7 +218,23 @@ export function buildGeoStatusDoc() {
         target: `${SITE}/tr/`,
         open: arleds.open,
         openAlt: arleds.openAlt || "",
-        openAlts: [arleds.openAlt || "", "https://dash.cloudflare.com/"].filter(Boolean),
+        openAlts: (() => {
+          const mailto = (() => {
+            try {
+              return buildDnsEnableMailto();
+            } catch {
+              return "";
+            }
+          })();
+          const fromPack = pointCOpenAltUrls("hostinger301");
+          const base = [
+            mailto,
+            arleds.openAlt || DNSENABLE_GMAIL_DRAFT_URL || "",
+            "https://dash.cloudflare.com/",
+            ...fromPack,
+          ].filter(Boolean);
+          return [...new Set(base)];
+        })(),
         html: ownerNextHtmlUrl("hostinger301"),
         text: buildArleds301DualPathClipboard(),
         where: "Isimtescil/DNSEnable Domain Redirect first (live NS) · Cloudflare Bulk Redirect Option B",

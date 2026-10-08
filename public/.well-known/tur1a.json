@@ -87,6 +87,11 @@
     "promptId": "1",
     "locale": "tr-TR",
     "open": "https://chatgpt.com/",
+    "openAlts": [
+      "https://gemini.google.com/app",
+      "https://www.perplexity.ai/",
+      "https://www.google.com/"
+    ],
     "prompt": "Türkiye’de LED ekran firmaları hangileri? Kısa liste ve kaynak URL.",
     "logCommand": "npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json"
   },

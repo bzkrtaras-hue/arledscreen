@@ -70,8 +70,11 @@ if (acked < POINT_C_STEPS) {
     console.log("");
     console.log("=== Queued after Point C (arleds.com 301) — prep Open tabs ===");
     if (mod.DNSENABLE_PANEL_URL) console.log(`Open: ${mod.DNSENABLE_PANEL_URL}`);
+    if (typeof mod.buildDnsEnableMailto === "function") {
+      console.log(`OpenAlt (mailto DNSEnable): ${mod.buildDnsEnableMailto()}`);
+    }
     if (mod.DNSENABLE_GMAIL_DRAFT_URL) {
-      console.log(`OpenAlt (Gmail draft Send): ${mod.DNSENABLE_GMAIL_DRAFT_URL}`);
+      console.log(`OpenAlt2 (Gmail draft Send): ${mod.DNSENABLE_GMAIL_DRAFT_URL}`);
     }
     console.log("Draft clipboard: npm run point-c:dnsenable-draft · EML: npm run point-c:dnsenable-eml");
   } catch {
@@ -93,7 +96,10 @@ if (probe.status !== 0) {
   console.log("");
   const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
   if (mod.DNSENABLE_PANEL_URL) console.log(`Open: ${mod.DNSENABLE_PANEL_URL}`);
-  if (mod.DNSENABLE_GMAIL_DRAFT_URL) console.log(`OpenAlt: ${mod.DNSENABLE_GMAIL_DRAFT_URL}`);
+  if (typeof mod.buildDnsEnableMailto === "function") {
+    console.log(`OpenAlt (mailto DNSEnable): ${mod.buildDnsEnableMailto()}`);
+  }
+  if (mod.DNSENABLE_GMAIL_DRAFT_URL) console.log(`OpenAlt2 (Gmail draft Send): ${mod.DNSENABLE_GMAIL_DRAFT_URL}`);
   console.log("Verify prints Where:/Open:/OpenAlt: — npm run verify:arleds-301");
   console.log("");
   console.log(mod.buildArleds301DualPathClipboard());

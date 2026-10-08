@@ -118,8 +118,9 @@ Web: https://arledscreen.com/en/
 --- DNSEnable / Isimtescil arleds.com → arledscreen.com/tr/ 301 (primary — live NS) ---
 Where: Isimtescil/DNSEnable Domain Redirect first (live NS) · Hostinger only if verify mode=hostinger_*
 Open: https://www.isimtescil.net/
-OpenAlt: https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229
-OpenAlt2: https://dash.cloudflare.com/
+OpenAlt: mailto:destek@isimtescil.net?subject=Kal%C4%B1c%C4%B1%20301%20y%C3%B6nlendirme%20arleds.com%20%E2%86%92%20arledscreen.com%2Ftr%2F&body=Merhaba%20%C4%B0simtescil%20Destek%2C%0A%0Aarleds.com%20alan%20ad%C4%B1m%C4%B1z%20i%C3%A7in%20kal%C4%B1c%C4%B1%20(301)%20Domain%20Redirect%20%2F%20URL%20y%C3%B6nlendirme%20talebi.%0A%0AHedef%20(kal%C4%B1c%C4%B1%20301)%3A%20arledscreen.com%2Ftr%2F%20%20(scheme%3A%20https)%0A%0AL%C3%BCtfen%20%C5%9Fu%20e%C5%9Flemeleri%20uygulay%C4%B1n%20%E2%80%94%20http%20ve%20https%2C%20apex%20ve%20www%20i%C3%A7in%20ayn%C4%B1%20hedef%3A%0A%20%20arleds.com%2F%20%20%20%20%20%20%20%20%20%20%E2%86%92%20%20arledscreen.com%2Ftr%2F%0A%20%20www.arleds.com%2F%20%20%20%20%20%20%E2%86%92%20%20arledscreen.com%2Ftr%2F%0A%0ADNS%3A%20eu%2Ftr%2Fus.dnsenable.com%20(canl%C4%B1%20NS).%20Hostinger%20hPanel%20bu%20domain%20i%C3%A7in%20ge%C3%A7erli%20de%C4%9Fil.%0ATelefon%3A%20%2B90%20850%20200%200%20444%20%C2%B7%20Domain%3A%20arleds.com%0A%C4%B0leti%C5%9Fim%3A%20arled%40arledscreen.com%0ATe%C5%9Fekk%C3%BCrler.%0AAras%20Bozkurt%20%2F%20ARLEDSCREEN
+OpenAlt2: https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229
+OpenAlt3: https://dash.cloudflare.com/
 Isimtescil / DNSEnable → Domain Redirect (permanent 301)
 Open: https://www.isimtescil.net/
 OpenAlt (Gmail draft Send): https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229
