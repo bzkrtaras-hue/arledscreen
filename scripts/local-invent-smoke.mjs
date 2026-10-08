@@ -548,6 +548,8 @@ else fail("ard.resources.pointC");
     html.includes("Next: Tur1a") &&
     html.includes("tur1a-log-chips") &&
     html.includes("copy-tur1a-log") &&
+    html.includes("log-tur1a-next") &&
+    html.includes("doLogTur1aNext") &&
     html.includes("buildTur1aLogCommand") &&
     html.includes("Mailto DNSEnable") &&
     html.includes("packQuery") &&
@@ -557,6 +559,10 @@ else fail("ard.resources.pointC");
     Array.isArray(twin?.packs) &&
     twin.packs.length >= 11 &&
     twin?.next &&
+    Array.isArray(twin?.gates?.tur1a?.cells) &&
+    twin.gates.tur1a.cells.length >= 48 &&
+    String(twin.gates.tur1a.cells[0]?.prompt || "") &&
+    String(twin.gates.tur1a.html || "").includes("pack=tur1a") &&
     JSON.stringify(twin) === JSON.stringify(twinAlias) &&
     JSON.stringify(twin) === JSON.stringify(twinWk) &&
     JSON.stringify(twin) === JSON.stringify(readJson(".well-known/geo-next.json")) &&

@@ -557,8 +557,14 @@ try {
     ownerNextHtml.includes("Next: Tur1a") &&
     ownerNextHtml.includes("tur1a-log-chips") &&
     ownerNextHtml.includes("copy-tur1a-log") &&
+    ownerNextHtml.includes("log-tur1a-next") &&
+    ownerNextHtml.includes("doLogTur1aNext") &&
     ownerNextHtml.includes("buildTur1aLogCommand") &&
     ownerNextHtml.includes("Mailto DNSEnable") &&
+    Array.isArray(ownerNextJson?.gates?.tur1a?.cells) &&
+    ownerNextJson.gates.tur1a.cells.length >= 48 &&
+    String(ownerNextJson.gates.tur1a.cells[0]?.prompt || "") &&
+    String(ownerNextJson.gates.tur1a.html || "").includes("pack=tur1a") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&
     ownerNextJson?.["@type"] === "Dataset" &&

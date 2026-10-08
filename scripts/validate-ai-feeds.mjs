@@ -2562,11 +2562,13 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Next: Tur1a") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("tur1a-log-chips") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-tur1a-log") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("log-tur1a-next") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doLogTur1aNext") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildTur1aLogCommand") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log-chips/mailto required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log+next/mailto required");
       process.exit(1);
     }
     {
@@ -2592,9 +2594,14 @@ if (fs.existsSync(outDir)) {
         !Array.isArray(twin?.packs) ||
         twin.packs.length < 11 ||
         !String(twin?.ownerNext || "").includes("/owner-next.json") ||
-        !String(twin?.potentialAction?.url || "").includes("/owner-next.html")
+        !String(twin?.potentialAction?.url || "").includes("/owner-next.html") ||
+        !Array.isArray(twin?.gates?.tur1a?.cells) ||
+        twin.gates.tur1a.cells.length < 48 ||
+        !String(twin.gates.tur1a.cells[0]?.prompt || "") ||
+        !String(twin.gates.tur1a.cells[0]?.logCommand || "").includes("--platform=") ||
+        !String(twin.gates.tur1a.html || "").includes("pack=tur1a")
       ) {
-        console.error("❌ owner-next.json invent twin must be Dataset with next/packs/potentialAction + geo-next alias byte-match");
+        console.error("❌ owner-next.json invent twin must be Dataset with next/packs/potentialAction + gates.tur1a.cells×48 + geo-next alias byte-match");
         process.exit(1);
       }
     }

@@ -603,10 +603,14 @@ export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {
       },
       arleds301: geoStatus?.gates?.arleds301 || null,
       tur1a: {
-        filled: geoStatus?.gates?.tur1a?.filled ?? 0,
-        total: geoStatus?.gates?.tur1a?.total ?? 48,
+        filled: geoStatus?.gates?.tur1a?.filled ?? tur1a?.coverage?.filled ?? 0,
+        total: geoStatus?.gates?.tur1a?.total ?? tur1a?.coverage?.total ?? 48,
         status: geoStatus?.gates?.tur1a?.status,
         next: tur1a?.next || geoStatus?.gates?.tur1a?.next || null,
+        coverage: tur1a?.coverage || null,
+        /** Full checklist for /owner-next.html sticky Tur1a (prompt + logCommand per cell). */
+        cells: Array.isArray(tur1a?.cells) ? tur1a.cells : [],
+        html: `${SITE}/owner-next.html?pack=tur1a`,
       },
       prMerge: geoStatus?.gates?.prMerge || null,
     },
