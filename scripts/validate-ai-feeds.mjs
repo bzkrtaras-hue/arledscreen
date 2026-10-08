@@ -4617,7 +4617,6 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     }
   }
   console.log("✅ verify:arleds-301 prints Where:/Open:/OpenAlt: provider tabs");
-}
 
   const pointCPacks = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
   for (const must of [
