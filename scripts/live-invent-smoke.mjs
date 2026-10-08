@@ -601,6 +601,9 @@ try {
     geoNext.includes("potentialAction") &&
     geoNext.includes("/point-c.json") &&
     geoNext.includes("/geo-status.json") &&
+    geoNext.includes("gate HowTo tools") &&
+    geoNext.includes("dnsenable=1") &&
+    geoNext.includes("tur1a=1") &&
     ownerNextHtml.includes("Copy paste") &&
     ownerNextHtml.includes("/geo-status.json") &&
     ownerNextHtml.includes("/owner-next.json") &&

@@ -475,6 +475,9 @@ if (
     geoStatus?.gates?.tur1a &&
     geoNext.includes("GEO next") &&
     geoNext.includes("Open:") &&
+    geoNext.includes("gate HowTo tools") &&
+    geoNext.includes("dnsenable=1") &&
+    geoNext.includes("tur1a=1") &&
     String(pointCNext.packKey || "") === "directoryLong" &&
     String(pointCNext.text || "").includes("34245") &&
     String(pointCNext.open || "").includes("bingplaces.com") &&

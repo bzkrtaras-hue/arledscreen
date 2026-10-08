@@ -76,6 +76,7 @@ jobs:
           grep -q "dnsenable=1" /tmp/geo-next.txt
           grep -q "T=Copy+Open Tur1a" /tmp/geo-next.txt
           grep -q "tur1a=1" /tmp/geo-next.txt
+          grep -q "gate HowTo tools" /tmp/geo-next.txt
           npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
           test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
@@ -112,7 +113,16 @@ jobs:
           grep -q 'owner-next.html?social=fb' scripts/submit-indexnow.mjs
           grep -q 'owner-next.html?social=ig' scripts/submit-indexnow.mjs
           grep -q 'owner-next.html?social=wa' scripts/submit-indexnow.mjs
+          grep -q 'owner-next.html?dnsenable=1' scripts/submit-indexnow.mjs
+          grep -q 'owner-next.html?tur1a=1' scripts/submit-indexnow.mjs
+          grep -q 'geo-next.html?dnsenable=1' scripts/submit-indexnow.mjs
+          grep -q 'geo-next.html?tur1a=1' scripts/submit-indexnow.mjs
           grep -q 'geo-next.html?social=fb' scripts/submit-indexnow.mjs
+          grep -q 'gate HowTo tools' docs/offsite-entity-playbook.md
+          grep -q 'dnsenable=1' docs/offsite-entity-playbook.md
+          grep -q 'tur1a=1' docs/offsite-entity-playbook.md
+          grep -q 'Copy+Open DNSEnable' docs/offsite-entity-playbook.md
+          grep -q 'Copy+Open Tur1a' docs/offsite-entity-playbook.md
           grep -q "/.well-known/modules.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/sku.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/price.json" scripts/submit-indexnow.mjs
@@ -479,6 +489,7 @@ jobs:
           grep -q "dnsenable=1" /tmp/geo-status.txt
           grep -q "T=Copy+Open Tur1a" /tmp/geo-status.txt
           grep -q "tur1a=1" /tmp/geo-status.txt
+          grep -q "gate HowTo tools" /tmp/geo-status.txt
           grep -q "M=WA paste" /tmp/geo-status.txt
           grep -q "E=Mail paste" /tmp/geo-status.txt
           grep -q "After ?n=1" /tmp/geo-status.txt

@@ -17,7 +17,8 @@ Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu NAP tutarlıl
 | GEO owner-gate status | https://arledscreen.com/geo-status.json → `priorityGate` + `potentialAction` (HowTo → `/owner-next.html?start=1`) |
 | Point C paste progress | https://arledscreen.com/point-c-progress.json → `next` + `potentialAction` (HowTo) |
 | Point C spreadsheet | https://arledscreen.com/feeds/point-c.csv |
-| Tur1a blind (machine) | https://arledscreen.com/tur1a.json → `next` + `potentialAction` (HowTo) · CSV `/feeds/tur1a.csv` |
+| Tur1a blind (machine) | https://arledscreen.com/tur1a.json → `next` + `potentialAction` (HowTo → `/owner-next.html?tur1a=1`) · CSV `/feeds/tur1a.csv` |
+| Gate HowTo tools | `potentialAction.tool`: [`start=1`](https://arledscreen.com/owner-next.html?start=1) · [`dnsenable=1`](https://arledscreen.com/owner-next.html?dnsenable=1) · [`tur1a=1`](https://arledscreen.com/owner-next.html?tur1a=1) |
 | Hakkımızda | https://arledscreen.com/tr/about/ |
 
 ### Owner clipboard (live — tek sıra; repo opsiyonel)
@@ -25,7 +26,7 @@ Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu NAP tutarlıl
 Kod tarafı canlı; sahip kapıları sırayla. Repo CLI şart değil — canlı URL’ler yeterli.
 Invent agents: follow `potentialAction` HowTo on `/geo-status.json` (priority-aware) or pack JSON.
 
-1. Open live friction: https://arledscreen.com/owner-next.html?start=1 (auto **C**) — or https://arledscreen.com/owner-next.html then **C** = Copy + Open remaining (paste bundle + all Open tabs; textarea restores first open pack) · **O** / **R** · **U** = Undo pasted · **F**/**I**/**W** or `?social=fb|ig|wa` = social pack + profile · **D** = Copy pack link (FB/IG/WA → `?social=` + `&copy=1`, else `?pack=` + `&copy=1`) · **A** = Copy After link (`?n=1`/`after=1`) · **M** / **WA paste** · **E** / **Mail paste** = send paste + Deep + After URLs for phone/email handoff · sticky + pack-list **Deep** / **After** click-to-copy (`&n=1`/`after=1` marks pasted + advances) · Copy+Open ack reminds After path · `&copy=1` auto-copies paste + opens Open/OpenAlt · dbl-click pack = Copy + Open · Enter = Copy + Open all
+1. Open live friction: https://arledscreen.com/owner-next.html?start=1 (auto **C**) — or https://arledscreen.com/owner-next.html then **C** = Copy + Open remaining (paste bundle + all Open tabs; textarea restores first open pack) · **O** / **R** · **U** = Undo pasted · **F**/**I**/**W** or `?social=fb|ig|wa` = social pack + profile · **D** = Copy pack link (FB/IG/WA → `?social=` + `&copy=1`, else `?pack=` + `&copy=1`) · **A** = Copy After link (`?n=1`/`after=1`) · **Y** = Open After · **P** = Copy+Open After (Y/P advance + Copy+Open next) · **G** / `?dnsenable=1` = Copy+Open DNSEnable · **T** / `?tur1a=1` = Copy+Open Tur1a (observe/log only) · gate HowTo tools on `/point-c.json` · `/geo-status.json` · `/point-c-progress.json` · `/tur1a.json` → `potentialAction.tool` · **M** / **WA paste** · **E** / **Mail paste** = send paste + Deep + After URLs for phone/email handoff · sticky + pack-list **Deep** / **After** click-to-copy (`&n=1`/`after=1` marks pasted + advances) · Copy+Open ack reminds After path · `&copy=1` auto-copies paste + opens Open/OpenAlt · dbl-click pack = Copy + Open · Enter = Copy + Open all
 2. Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ (or use **C** / **O** on `/owner-next`)
 3. Paste from the **C**/**R** bundle (or https://arledscreen.com/point-c.json → `next.text` · https://arledscreen.com/geo-next.txt / `/owner-next.txt` · HowTo step 2)
 4. After paste: **N** = Pasted → next · then `npm run point-c:ack -- --pack=directoryLong` (or **B** ack batch · `npm run geo:ack` · HowTo step 3)
@@ -42,9 +43,9 @@ npm run geo:status        # gate dashboard; live /geo-status.json → potentialA
 
 | Gate | Open tab |
 |---|---|
-| Point C next pack (`directoryLong`) | https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · paste: `/point-c.json` → `next` · HowTo `/geo-status.json` → `potentialAction` |
-| arleds.com 301 (live NS DNSEnable) | https://www.isimtescil.net/ · OpenAlt: Gmail draft Send (`geo-status.gates.arleds301.openAlt`) |
-| Tur1a ChatGPT cell | https://chatgpt.com/ · machine: `/tur1a.json` → `next` + HowTo |
+| Point C next pack (`directoryLong`) | https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · paste: `/point-c.json` → `next` · HowTo `/geo-status.json` → `potentialAction` · HTML https://arledscreen.com/owner-next.html?start=1 |
+| arleds.com 301 (live NS DNSEnable) | https://www.isimtescil.net/ · OpenAlt: Gmail draft Send (`geo-status.gates.arleds301.openAlt`) · HTML https://arledscreen.com/owner-next.html?dnsenable=1 (**G**) |
+| Tur1a ChatGPT cell | https://chatgpt.com/ · machine: `/tur1a.json` → `next` + HowTo · HTML https://arledscreen.com/owner-next.html?tur1a=1 (**T**, observe/log only) |
 | Docs | `docs/ops/arleds-301-hostinger.md` |
 
 Do **not** invent ChatGPT/Gemini mention % — only log what you observe (`tur1a:log`).

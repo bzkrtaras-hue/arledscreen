@@ -910,7 +910,7 @@ function printNext(profiles, { en = false } = {}) {
   console.log(`Deep: ${deep}`);
   console.log(`After: ${after}`);
   console.log(
-    "Keys: C=Copy+Open remaining · D=Copy pack link · A=Copy After link · Y=Open After · P=Copy+Open After · Y/P advance + Copy+Open next · G=Copy+Open DNSEnable · dnsenable=1|g=1 · T=Copy+Open Tur1a · tur1a=1 · M=WA paste · E=Mail paste (Deep+After) · n=1|after=1=After paste advance · F/I/W=social · https://arledscreen.com/owner-next.html?start=1",
+    "Keys: C=Copy+Open remaining · D=Copy pack link · A=Copy After link · Y=Open After · P=Copy+Open After · Y/P advance + Copy+Open next · G=Copy+Open DNSEnable · dnsenable=1|g=1 · T=Copy+Open Tur1a · tur1a=1 · gate HowTo tools (potentialAction.tool start=1 · dnsenable=1 · tur1a=1) · M=WA paste · E=Mail paste (Deep+After) · n=1|after=1=After paste advance · F/I/W=social · https://arledscreen.com/owner-next.html?start=1",
   );
 }
 

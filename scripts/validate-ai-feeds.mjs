@@ -2241,13 +2241,18 @@ if (fs.existsSync(outDir)) {
     "directoryLong",
     "Open:",
     "point-c.txt",
+    "gate HowTo tools",
+    "dnsenable=1",
+    "tur1a=1",
+    "Copy+Open DNSEnable",
+    "Copy+Open Tur1a",
   ]) {
     if (!playbook.includes(must)) {
       console.error(`❌ docs/offsite-entity-playbook.md must wire owner clipboard ${must}`);
       process.exit(1);
     }
   }
-  console.log("✅ offsite-entity-playbook.md wires live geo-next/point-c/geo-status/tur1a HowTo + Bing/Apple Open tabs");
+  console.log("✅ offsite-entity-playbook.md wires live geo-next/point-c/geo-status/tur1a HowTo + Bing/Apple Open tabs + gate HowTo tools");
   {
     const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
     if (
@@ -2595,6 +2600,9 @@ if (fs.existsSync(outDir)) {
       !geoNext.includes("potentialAction") ||
       !geoNext.includes("/point-c.json") ||
       !geoNext.includes("/geo-status.json") ||
+      !geoNext.includes("gate HowTo tools") ||
+      !geoNext.includes("dnsenable=1") ||
+      !geoNext.includes("tur1a=1") ||
       !String(pointCNext.packKey || "") ||
       !String(pointCNext.text || "") ||
       !String(pointCNext.open || "") ||
@@ -5192,10 +5200,16 @@ if (fs.existsSync(outDir)) {
     "owner-next.html?pack=tur1a",
     "owner-next.html?pack=hostinger301",
     "owner-next.html?start=1",
+    "owner-next.html?dnsenable=1",
+    "owner-next.html?g=1",
+    "owner-next.html?tur1a=1",
+    "owner-next.html?t=1",
     "owner-next.html?social=fb",
     "owner-next.html?social=ig",
     "owner-next.html?social=wa",
     "geo-next.html?start=1",
+    "geo-next.html?dnsenable=1",
+    "geo-next.html?tur1a=1",
     "geo-next.html?social=fb",
     "geo-next.html?social=ig",
     "geo-next.html?social=wa",
