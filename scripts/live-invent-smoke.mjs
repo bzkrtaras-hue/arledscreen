@@ -5,28 +5,85 @@
  *
  * Usage: npm run invent:smoke
  */
+import https from "node:https";
+import { URL } from "node:url";
+
 const SITE = "https://arledscreen.com";
 const bust = () => `?v=${Date.now()}`;
+/** undici default maxHeaderSize is 16KiB; CF Link invent can approach that — use https with 64KiB. */
+const MAX_HEADER_SIZE = 65536;
+
+function request(url, { method = "GET", headers = {}, redirect = "follow" } = {}) {
+  return new Promise((resolve, reject) => {
+    const u = new URL(url);
+    const req = https.request(
+      {
+        protocol: u.protocol,
+        hostname: u.hostname,
+        port: u.port || 443,
+        path: `${u.pathname}${u.search}`,
+        method,
+        headers: { "cache-control": "no-cache", ...headers },
+        maxHeaderSize: MAX_HEADER_SIZE,
+      },
+      (res) => {
+        const chunks = [];
+        res.on("data", (c) => chunks.push(c));
+        res.on("end", () => {
+          const body = Buffer.concat(chunks);
+          const status = res.statusCode || 0;
+          if (redirect === "follow" && status >= 300 && status < 400 && res.headers.location) {
+            const next = new URL(res.headers.location, url).href;
+            resolve(request(next, { method: "GET", headers, redirect }));
+            return;
+          }
+          const headerBag = new Map();
+          for (const [k, v] of Object.entries(res.headers)) {
+            headerBag.set(String(k).toLowerCase(), Array.isArray(v) ? v.join(", ") : String(v ?? ""));
+          }
+          resolve({
+            ok: status >= 200 && status < 300,
+            status,
+            headers: {
+              get(name) {
+                return headerBag.get(String(name).toLowerCase()) || null;
+              },
+            },
+            async json() {
+              return JSON.parse(body.toString("utf8"));
+            },
+            async text() {
+              return body.toString("utf8");
+            },
+            async arrayBuffer() {
+              return body.buffer.slice(body.byteOffset, body.byteOffset + body.byteLength);
+            },
+          });
+        });
+      },
+    );
+    req.on("error", reject);
+    req.end();
+  });
+}
 
 async function getJson(path) {
-  const r = await fetch(`${SITE}${path}${bust()}`, { headers: { "cache-control": "no-cache" } });
+  const r = await request(`${SITE}${path}${bust()}`);
   if (!r.ok) throw new Error(`${path} HTTP ${r.status}`);
   return r.json();
 }
 
 async function getText(path) {
-  const r = await fetch(`${SITE}${path}${bust()}`, { headers: { "cache-control": "no-cache" } });
+  const r = await request(`${SITE}${path}${bust()}`);
   if (!r.ok) throw new Error(`${path} HTTP ${r.status}`);
   return r.text();
 }
 
 async function getStatus(path) {
-  const r = await fetch(`${SITE}${path}${bust()}`, {
+  const r = await request(`${SITE}${path}${bust()}`, {
     method: "GET",
-    headers: { "cache-control": "no-cache" },
     redirect: "manual",
   });
-  // Drain body so sockets can close cleanly on large assets.
   try {
     await r.arrayBuffer();
   } catch {
@@ -1122,7 +1179,7 @@ try {
 }
 
 try {
-  const r = await fetch(`${SITE}/tr/${bust()}`, { method: "HEAD", headers: { "cache-control": "no-cache" } });
+  const r = await request(`${SITE}/tr/${bust()}`, { method: "HEAD" });
   const link = r.headers.get("link") || "";
   if (
     link.includes("/.well-known/modules.json") &&
@@ -1153,38 +1210,12 @@ try {
     link.includes("/.well-known/llms.txt") &&
     link.includes("/agents.json") &&
     link.includes("/.well-known/point-c.txt") &&
-    link.includes("/brand") &&
-    link.includes("/modules") &&
-    link.includes("/sku") &&
-    link.includes("/mpn") &&
-    link.includes("/merchant") &&
-    link.includes("/offers") &&
-    link.includes("/dataset") &&
-    link.includes("/feed") &&
-    link.includes("/products") &&
-    link.includes("/product") &&
-    link.includes("/geo-baseline") &&
-    link.includes("/company") &&
-    link.includes("/ai-shopping") &&
-    link.includes("/entity-profiles") &&
-    link.includes("/api/v1/prices") &&
-    link.includes("/api/mpn") &&
-    link.includes("/api/entity") &&
-    link.includes("/v1/prices") &&
-    link.includes("/data/prices.json") &&
+    link.includes("https://arledscreen.com/brand>") &&
+    link.includes("https://arledscreen.com/modules>") &&
     link.includes("/feeds/prices.json") &&
-    link.includes("/en/prices.json") &&
-    link.includes("/tr/prices.json") &&
-    link.includes("/api/catalog.json") &&
-    link.includes("/api/products") &&
-    link.includes("/en/pricing.json") &&
-    link.includes("/en/entity.json") &&
     link.includes("/agent.json") &&
-    link.includes("/en/llms.txt") &&
-    link.includes("/tr/llms.txt") &&
     link.includes("/security.txt") &&
     link.includes("/.well-known/security") &&
-    link.includes("/llms") &&
     link.includes("/.well-known/ard.json") &&
     link.includes("/.well-known/agents.json") &&
     link.includes("/humans.txt") &&
@@ -1198,10 +1229,12 @@ try {
     link.includes("/geo-next.txt") &&
     link.includes("/tur1a.json") &&
     link.includes("/feeds/tur1a.csv") &&
-    link.includes("#website")
+    link.includes("#website") &&
+    !link.includes("/api/v1/prices") &&
+    !link.includes("/en/prices.json")
   ) {
-    ok("live Link inventAlias + discovery + point-c/geo-status/tur1a");
-  } else fail("live Link inventAlias + discovery + point-c/geo-status/tur1a");
+    ok("live Link inventAlias + discovery + point-c/geo-status/tur1a (trimmed)");
+  } else fail("live Link inventAlias + discovery + point-c/geo-status/tur1a (trimmed)");
 } catch (e) {
   fail(`live Link invent ${e?.message || e}`);
 }

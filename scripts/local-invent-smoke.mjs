@@ -1106,7 +1106,9 @@ if (
 
 {
   const headers = readText("_headers");
+  const linkCount = (headers.match(/^\s*Link:/gm) || []).length;
   if (
+    linkCount <= 90 &&
     headers.includes("/.well-known/modules.json") &&
     headers.includes("/.well-known/sku.json") &&
     headers.includes("/.well-known/pricing.json") &&
@@ -1135,38 +1137,15 @@ if (
     headers.includes("/.well-known/llms.txt") &&
     headers.includes("/agents.json") &&
     headers.includes("/.well-known/point-c.txt") &&
-    headers.includes("/brand") &&
-    headers.includes("/modules") &&
-    headers.includes("https://arledscreen.com/sku>") &&
-    headers.includes("https://arledscreen.com/mpn>") &&
-    headers.includes("https://arledscreen.com/merchant>") &&
-    headers.includes("https://arledscreen.com/offers>") &&
-    headers.includes("https://arledscreen.com/dataset>") &&
-    headers.includes("https://arledscreen.com/feed>") &&
-    headers.includes("https://arledscreen.com/products>") &&
-    headers.includes("https://arledscreen.com/product>") &&
-    headers.includes("https://arledscreen.com/geo-baseline>") &&
-    headers.includes("https://arledscreen.com/company>") &&
-    headers.includes("https://arledscreen.com/ai-shopping>") &&
-    headers.includes("https://arledscreen.com/entity-profiles>") &&
-    headers.includes("https://arledscreen.com/api/v1/prices>") &&
-    headers.includes("https://arledscreen.com/api/mpn>") &&
-    headers.includes("https://arledscreen.com/api/entity>") &&
-    headers.includes("https://arledscreen.com/v1/prices>") &&
-    headers.includes("https://arledscreen.com/data/prices.json>") &&
+    headers.includes("https://arledscreen.com/brand>") &&
+    headers.includes("https://arledscreen.com/modules>") &&
     headers.includes("https://arledscreen.com/feeds/prices.json>") &&
-    headers.includes("https://arledscreen.com/en/prices.json>") &&
-    headers.includes("https://arledscreen.com/tr/prices.json>") &&
-    headers.includes("https://arledscreen.com/api/catalog.json>") &&
-    headers.includes("https://arledscreen.com/api/products>") &&
-    headers.includes("https://arledscreen.com/en/pricing.json>") &&
-    headers.includes("https://arledscreen.com/en/entity.json>") &&
     headers.includes("https://arledscreen.com/agent.json>") &&
-    headers.includes("https://arledscreen.com/en/llms.txt>") &&
-    headers.includes("https://arledscreen.com/tr/llms.txt>") &&
     headers.includes("https://arledscreen.com/security.txt>") &&
     headers.includes("https://arledscreen.com/.well-known/security>") &&
-    headers.includes("https://arledscreen.com/llms>") &&
+    !headers.includes("https://arledscreen.com/sku>") &&
+    !headers.includes("https://arledscreen.com/api/v1/prices>") &&
+    !headers.includes("https://arledscreen.com/en/prices.json>") &&
     headers.includes("/.well-known/ard.json") &&
     headers.includes("/.well-known/agents.json") &&
     headers.includes("/humans.txt") &&
@@ -1182,8 +1161,8 @@ if (
     headers.includes("/feeds/tur1a.csv") &&
     headers.includes("#website")
   ) {
-    ok("_headers Link inventAlias + discovery + point-c/geo-status/tur1a");
-  } else fail("_headers Link inventAlias + discovery + point-c/geo-status/tur1a");
+    ok(`_headers Link inventAlias trimmed×${linkCount} + discovery + point-c/geo-status/tur1a`);
+  } else fail("_headers Link inventAlias trimmed + discovery + point-c/geo-status/tur1a");
 }
 
 {
