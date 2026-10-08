@@ -51,6 +51,20 @@ const ENTITY_PROFILES_WELLKNOWN_URL = `${SITE_URL}/.well-known/entity-profiles.j
 const AI_SHOPPING_WELLKNOWN_URL = `${SITE_URL}/.well-known/ai-shopping.json`;
 const BRAND_EXTLESS_URL = `${SITE_URL}/brand`;
 const MODULES_EXTLESS_URL = `${SITE_URL}/modules`;
+const SKU_EXTLESS_URL = `${SITE_URL}/sku`;
+const MPN_EXTLESS_URL = `${SITE_URL}/mpn`;
+const MERCHANT_EXTLESS_URL = `${SITE_URL}/merchant`;
+const OFFERS_EXTLESS_URL = `${SITE_URL}/offers`;
+const DATASET_EXTLESS_URL = `${SITE_URL}/dataset`;
+const FEED_EXTLESS_URL = `${SITE_URL}/feed`;
+const PRODUCTS_EXTLESS_URL = `${SITE_URL}/products`;
+const PRODUCT_EXTLESS_URL = `${SITE_URL}/product`;
+const GEO_BASELINE_EXTLESS_URL = `${SITE_URL}/geo-baseline`;
+const COMPANY_EXTLESS_URL = `${SITE_URL}/company`;
+const NAP_EXTLESS_URL = `${SITE_URL}/nap`;
+const CITE_EXTLESS_URL = `${SITE_URL}/cite`;
+const FAQ_EXTLESS_URL = `${SITE_URL}/faq`;
+const FAQS_EXTLESS_URL = `${SITE_URL}/faqs`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const POINT_C_EN_TXT_URL = `${SITE_URL}/point-c-en.txt`;
 const POINT_C_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.txt`;
@@ -97,6 +111,20 @@ const inventAliasLdJson = [
   { url: AI_SHOPPING_WELLKNOWN_URL, title: "AI Shopping well-known invent alias" },
   { url: BRAND_EXTLESS_URL, title: "Brand extensionless invent alias" },
   { url: MODULES_EXTLESS_URL, title: "Modules extensionless invent alias" },
+  { url: SKU_EXTLESS_URL, title: "SKU extensionless invent alias" },
+  { url: MPN_EXTLESS_URL, title: "MPN extensionless invent alias" },
+  { url: MERCHANT_EXTLESS_URL, title: "Merchant extensionless invent alias" },
+  { url: OFFERS_EXTLESS_URL, title: "Offers extensionless invent alias" },
+  { url: DATASET_EXTLESS_URL, title: "Dataset extensionless invent alias" },
+  { url: FEED_EXTLESS_URL, title: "Feed extensionless invent alias" },
+  { url: PRODUCTS_EXTLESS_URL, title: "Products extensionless invent alias" },
+  { url: PRODUCT_EXTLESS_URL, title: "Product extensionless invent alias" },
+  { url: GEO_BASELINE_EXTLESS_URL, title: "GEO baseline extensionless invent alias" },
+  { url: COMPANY_EXTLESS_URL, title: "Company extensionless invent alias" },
+  { url: NAP_EXTLESS_URL, title: "NAP extensionless invent alias" },
+  { url: CITE_EXTLESS_URL, title: "Cite extensionless invent alias" },
+  { url: FAQ_EXTLESS_URL, title: "FAQ extensionless invent alias" },
+  { url: FAQS_EXTLESS_URL, title: "FAQs extensionless invent alias" },
 ] as const;
 
 export const aiDiscoveryMetadata: Metadata = {

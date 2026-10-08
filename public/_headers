@@ -67,6 +67,20 @@
   Link: <https://arledscreen.com/.well-known/ai-shopping.json>; rel="alternate"; type="application/ld+json"; title="AI Shopping well-known invent alias"
   Link: <https://arledscreen.com/brand>; rel="alternate"; type="application/ld+json"; title="Brand extensionless invent alias"
   Link: <https://arledscreen.com/modules>; rel="alternate"; type="application/ld+json"; title="Modules extensionless invent alias"
+  Link: <https://arledscreen.com/sku>; rel="alternate"; type="application/ld+json"; title="SKU extensionless invent alias"
+  Link: <https://arledscreen.com/mpn>; rel="alternate"; type="application/ld+json"; title="MPN extensionless invent alias"
+  Link: <https://arledscreen.com/merchant>; rel="alternate"; type="application/ld+json"; title="Merchant extensionless invent alias"
+  Link: <https://arledscreen.com/offers>; rel="alternate"; type="application/ld+json"; title="Offers extensionless invent alias"
+  Link: <https://arledscreen.com/dataset>; rel="alternate"; type="application/ld+json"; title="Dataset extensionless invent alias"
+  Link: <https://arledscreen.com/feed>; rel="alternate"; type="application/ld+json"; title="Feed extensionless invent alias"
+  Link: <https://arledscreen.com/products>; rel="alternate"; type="application/ld+json"; title="Products extensionless invent alias"
+  Link: <https://arledscreen.com/product>; rel="alternate"; type="application/ld+json"; title="Product extensionless invent alias"
+  Link: <https://arledscreen.com/geo-baseline>; rel="alternate"; type="application/ld+json"; title="GEO baseline extensionless invent alias"
+  Link: <https://arledscreen.com/company>; rel="alternate"; type="application/ld+json"; title="Company extensionless invent alias"
+  Link: <https://arledscreen.com/nap>; rel="alternate"; type="application/ld+json"; title="NAP extensionless invent alias"
+  Link: <https://arledscreen.com/cite>; rel="alternate"; type="application/ld+json"; title="Cite extensionless invent alias"
+  Link: <https://arledscreen.com/faq>; rel="alternate"; type="application/ld+json"; title="FAQ extensionless invent alias"
+  Link: <https://arledscreen.com/faqs>; rel="alternate"; type="application/ld+json"; title="FAQs extensionless invent alias"
   Link: <https://arledscreen.com/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer"
   Link: <https://arledscreen.com/.well-known/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer (well-known invent alias)"
   Link: <https://arledscreen.com/feeds/prices.rss>; rel="alternate"; type="application/rss+xml"; title="Panel Price Updates RSS"
@@ -194,6 +208,13 @@
   Cross-Origin-Resource-Policy: cross-origin
 
 /products
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/product
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
   Content-Type: application/json; charset=utf-8

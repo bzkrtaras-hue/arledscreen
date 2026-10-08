@@ -568,6 +568,20 @@ if (
     dist.includes("/modules") &&
     dist.includes("/.well-known/organization.json") &&
     dist.includes("/cite.json") &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/sku`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/mpn`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/merchant`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/offers`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/dataset`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/feed`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/products`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/product`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/geo-baseline`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/company`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/nap`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/cite`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/faq`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/faqs`) &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -825,6 +839,12 @@ if (
     String(disc.pointCWellKnown || "").includes("/.well-known/point-c.txt") &&
     String(disc.brandExtless || "").includes("/brand") &&
     String(disc.modulesExtless || "").includes("/modules") &&
+    String(disc.skuExtless || "").includes("/sku") &&
+    String(disc.mpnExtless || "").includes("/mpn") &&
+    String(disc.merchantExtless || "").includes("/merchant") &&
+    String(disc.productsExtless || "").includes("/products") &&
+    String(disc.productExtless || "").includes("/product") &&
+    String(disc.geoBaselineExtless || "").includes("/geo-baseline") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
@@ -867,6 +887,16 @@ if (
     headers.includes("/.well-known/point-c.txt") &&
     headers.includes("/brand") &&
     headers.includes("/modules") &&
+    headers.includes("https://arledscreen.com/sku>") &&
+    headers.includes("https://arledscreen.com/mpn>") &&
+    headers.includes("https://arledscreen.com/merchant>") &&
+    headers.includes("https://arledscreen.com/offers>") &&
+    headers.includes("https://arledscreen.com/dataset>") &&
+    headers.includes("https://arledscreen.com/feed>") &&
+    headers.includes("https://arledscreen.com/products>") &&
+    headers.includes("https://arledscreen.com/product>") &&
+    headers.includes("https://arledscreen.com/geo-baseline>") &&
+    headers.includes("https://arledscreen.com/company>") &&
     headers.includes("/.well-known/ard.json") &&
     headers.includes("/.well-known/agents.json") &&
     headers.includes("/humans.txt") &&
@@ -895,6 +925,9 @@ if (
   ) {
     ok("_routes.json + functions invent /brand+/modules (asset-dir bypass)");
   } else fail("_routes.json + functions invent /brand+/modules (asset-dir bypass)");
+  if (fs.existsSync(path.join(outDir, "product")) && fs.existsSync(path.join(outDir, "products"))) {
+    ok("extensionless /product+/products invent files present");
+  } else fail("extensionless /product+/products invent files present");
 }
 
 if (process.exitCode) {

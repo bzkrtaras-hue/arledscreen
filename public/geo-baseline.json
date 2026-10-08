@@ -66,6 +66,8 @@
     "https://arledscreen.com/sku",
     "https://arledscreen.com/modules",
     "https://arledscreen.com/brand",
+    "https://arledscreen.com/products",
+    "https://arledscreen.com/product",
     "https://arledscreen.com/organization",
     "https://arledscreen.com/company",
     "https://arledscreen.com/nap",
@@ -412,26 +414,104 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offers",
+      "name": "Offers extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/dataset",
+      "name": "Dataset extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feed",
+      "name": "Feed extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/panels",
       "name": "Panels extensionless invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/sku",
+      "name": "SKU extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/mpn",
+      "name": "MPN extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/merchant",
+      "name": "Merchant extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/modules",
-      "name": "Modules extensionless invent alias (_redirects→modules.json)"
+      "name": "Modules extensionless invent alias (Pages Function→modules.json)"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/brand",
-      "name": "Brand extensionless invent alias (_redirects→brand.json)"
+      "name": "Brand extensionless invent alias (Pages Function→brand.json)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/products",
+      "name": "Products extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/product",
+      "name": "Product extensionless invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/organization",
       "name": "Organization extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/company",
+      "name": "Organization company extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/nap",
+      "name": "Organization NAP extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/cite",
+      "name": "Organization cite extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faq",
+      "name": "Organization FAQ extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faqs",
+      "name": "Organization FAQs extensionless invent alias"
     },
     {
       "@type": "DataDownload",
@@ -444,6 +524,12 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/catalog",
       "name": "Catalog extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-baseline",
+      "name": "GEO baseline extensionless invent alias"
     },
     {
       "@type": "DataDownload",
@@ -764,8 +850,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "468c68b12475e8485fdaafb955156c4317067b0382e8fb111ccf16c69d315f33",
-    "catalogSha256": "921be3ef34595c74bba9f2c77896fddf88e1e0c5cfa738c453b05ec966e84904",
+    "aiShoppingSha256": "fa238b3f8e2fac0a2d345be6f2dc6b7f8c3a9d3e54040758a40ae550f728dd95",
+    "catalogSha256": "1721f930e918b70d85a93fb4afe8c7df146275397ab1e80f2a4eb5d28b07b515",
     "merchantTsvSha256": "725b3f10641e7e6ec45cee7144426471c82c9d14eddde5efabc80cc24858a9a4",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
@@ -806,6 +892,20 @@
     "humansWellKnown": "https://arledscreen.com/.well-known/humans.txt",
     "brandExtless": "https://arledscreen.com/brand",
     "modulesExtless": "https://arledscreen.com/modules",
+    "skuExtless": "https://arledscreen.com/sku",
+    "mpnExtless": "https://arledscreen.com/mpn",
+    "merchantExtless": "https://arledscreen.com/merchant",
+    "offersExtless": "https://arledscreen.com/offers",
+    "datasetExtless": "https://arledscreen.com/dataset",
+    "feedExtless": "https://arledscreen.com/feed",
+    "productsExtless": "https://arledscreen.com/products",
+    "productExtless": "https://arledscreen.com/product",
+    "geoBaselineExtless": "https://arledscreen.com/geo-baseline",
+    "companyExtless": "https://arledscreen.com/company",
+    "napExtless": "https://arledscreen.com/nap",
+    "citeExtless": "https://arledscreen.com/cite",
+    "faqExtless": "https://arledscreen.com/faq",
+    "faqsExtless": "https://arledscreen.com/faqs",
     "offer": "https://arledscreen.com/offer",
     "offers": "https://arledscreen.com/offers",
     "dataset": "https://arledscreen.com/dataset",
@@ -814,11 +914,6 @@
     "faqJson": "https://arledscreen.com/faq.json",
     "faqsJson": "https://arledscreen.com/faqs.json",
     "organizationExtless": "https://arledscreen.com/organization",
-    "companyExtless": "https://arledscreen.com/company",
-    "napExtless": "https://arledscreen.com/nap",
-    "citeExtless": "https://arledscreen.com/cite",
-    "faqExtless": "https://arledscreen.com/faq",
-    "faqsExtless": "https://arledscreen.com/faqs",
     "apiV1Prices": "https://arledscreen.com/api/v1/prices",
     "catalog": "https://arledscreen.com/catalog.json",
     "entity": "https://arledscreen.com/entity.json",

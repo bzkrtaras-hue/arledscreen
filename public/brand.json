@@ -871,6 +871,8 @@
     "https://arledscreen.com/sku",
     "https://arledscreen.com/modules",
     "https://arledscreen.com/brand",
+    "https://arledscreen.com/products",
+    "https://arledscreen.com/product",
     "https://arledscreen.com/organization",
     "https://arledscreen.com/company",
     "https://arledscreen.com/nap",
@@ -966,6 +968,8 @@
     "https://arledscreen.com/sku",
     "https://arledscreen.com/modules",
     "https://arledscreen.com/brand",
+    "https://arledscreen.com/products",
+    "https://arledscreen.com/product",
     "https://arledscreen.com/organization",
     "https://arledscreen.com/company",
     "https://arledscreen.com/nap",
@@ -1280,26 +1284,104 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offers",
+      "name": "Offers extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/dataset",
+      "name": "Dataset extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feed",
+      "name": "Feed extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/panels",
       "name": "Panels extensionless invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/sku",
+      "name": "SKU extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/mpn",
+      "name": "MPN extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/merchant",
+      "name": "Merchant extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/modules",
-      "name": "Modules extensionless invent alias (_redirects→modules.json)"
+      "name": "Modules extensionless invent alias (Pages Function→modules.json)"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/brand",
-      "name": "Brand extensionless invent alias (_redirects→brand.json)"
+      "name": "Brand extensionless invent alias (Pages Function→brand.json)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/products",
+      "name": "Products extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/product",
+      "name": "Product extensionless invent alias"
     },
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/organization",
       "name": "Organization extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/company",
+      "name": "Organization company extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/nap",
+      "name": "Organization NAP extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/cite",
+      "name": "Organization cite extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faq",
+      "name": "Organization FAQ extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faqs",
+      "name": "Organization FAQs extensionless invent alias"
     },
     {
       "@type": "DataDownload",
@@ -1312,6 +1394,12 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/catalog",
       "name": "Catalog extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-baseline",
+      "name": "GEO baseline extensionless invent alias"
     },
     {
       "@type": "DataDownload",

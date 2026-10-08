@@ -781,10 +781,44 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/point-c.txt") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/brand") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/modules") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/sku") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/mpn") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/merchant") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/products") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/product") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/geo-baseline") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/organization.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/cite.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases root pricedPanels + discovery + entity + extless brand/modules + #website");
+    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases root pricedPanels + discovery + entity + extless sku/mpn/merchant/products/product/geo-baseline/brand/modules + #website");
+    process.exit(1);
+  }
+  {
+    const distUrls = (ai?.distribution || []).map((d) => d.contentUrl || "");
+    for (const u of [
+      "https://arledscreen.com/sku",
+      "https://arledscreen.com/mpn",
+      "https://arledscreen.com/merchant",
+      "https://arledscreen.com/offers",
+      "https://arledscreen.com/dataset",
+      "https://arledscreen.com/feed",
+      "https://arledscreen.com/products",
+      "https://arledscreen.com/product",
+      "https://arledscreen.com/geo-baseline",
+      "https://arledscreen.com/company",
+      "https://arledscreen.com/nap",
+      "https://arledscreen.com/cite",
+      "https://arledscreen.com/faq",
+      "https://arledscreen.com/faqs",
+    ]) {
+      if (!distUrls.includes(u)) {
+        console.error(`❌ ai-shopping.json distribution must include extensionless invent ${u}`);
+        process.exit(1);
+      }
+    }
+  }
+  if (!fs.existsSync(path.join(outDir, "product"))) {
+    console.error("❌ out/product extensionless invent alias missing");
     process.exit(1);
   }
   if (
