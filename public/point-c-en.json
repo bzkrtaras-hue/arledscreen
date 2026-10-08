@@ -150,5 +150,18 @@
     "acked": 0,
     "total": 11
   },
-  "ownerNext": "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
+  "next": {
+    "packKey": "directoryLong",
+    "label": "EN NAP / directoryLong",
+    "where": "Directories / Bing Places / Apple Business Connect → About / description",
+    "open": "https://www.bingplaces.com/",
+    "text": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nAddress: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul\nPhone: +90 530 507 88 34\nEmail: arled@arledscreen.com\nWeb: https://arledscreen.com/en/\nNote: Legacy/side arleds.com is not a citation source — use arledscreen.com only. LinkedIn /company/arleds is a social slug, not website arleds.com. NXTIONSTAR ≠ NationStar LED components ≠ NEXTSTAR TV.",
+    "ackCommand": "npm run point-c:ack -- --pack=directoryLong",
+    "progress": {
+      "acked": 0,
+      "total": 11
+    },
+    "openAlt": "https://businessconnect.apple.com/"
+  },
+  "ownerNext": "npm run geo:next · live: https://arledscreen.com/geo-next.txt · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
 }
