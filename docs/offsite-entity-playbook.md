@@ -14,7 +14,7 @@ Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu NAP tutarlıl
 | Point C paste (canlı) | https://arledscreen.com/point-c.txt |
 | Point C machine next (directoryLong) | https://arledscreen.com/point-c.json → `next` + `potentialAction` (HowTo) |
 | GEO next clipboard (canlı) | https://arledscreen.com/geo-next.txt · alias `/owner-next.txt` |
-| GEO owner-gate status | https://arledscreen.com/geo-status.json → `priorityGate` + `potentialAction` (HowTo) |
+| GEO owner-gate status | https://arledscreen.com/geo-status.json → `priorityGate` + `potentialAction` (HowTo → `/owner-next.html?start=1`) |
 | Point C paste progress | https://arledscreen.com/point-c-progress.json → `next` + `potentialAction` (HowTo) |
 | Point C spreadsheet | https://arledscreen.com/feeds/point-c.csv |
 | Tur1a blind (machine) | https://arledscreen.com/tur1a.json → `next` + `potentialAction` (HowTo) · CSV `/feeds/tur1a.csv` |

@@ -57,7 +57,7 @@ if (acked < POINT_C_STEPS) {
   const next = runNode("scripts/print-point-c-packs.mjs", ["--next"]);
   process.stdout.write(String(next.stdout || ""));
   if (next.status !== 0) process.stderr.write(String(next.stderr || ""));
-  let htmlDeep = "https://arledscreen.com/owner-next.html";
+  let htmlDeep = "https://arledscreen.com/owner-next.html?start=1";
   // Prep friction: arleds 301 is the next gate after Point C — surface Open/OpenAlt now.
   try {
     const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
@@ -65,7 +65,8 @@ if (acked < POINT_C_STEPS) {
       fs.readFileSync(path.join(repoRoot, "public/entity-profiles.json"), "utf8"),
     );
     const nextRow = mod.buildPointCNext(profiles, { en: false });
-    if (nextRow?.html) htmlDeep = nextRow.html;
+    if (typeof mod.ownerNextStartUrl === "function") htmlDeep = mod.ownerNextStartUrl();
+    else if (nextRow?.html) htmlDeep = nextRow.html;
     else if (nextRow?.packKey && mod.ownerNextHtmlUrl) htmlDeep = mod.ownerNextHtmlUrl(nextRow.packKey);
     console.log("");
     console.log("=== Queued after Point C (arleds.com 301) — prep Open tabs ===");

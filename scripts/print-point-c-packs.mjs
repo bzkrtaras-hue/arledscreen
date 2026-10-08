@@ -517,6 +517,11 @@ export function ownerNextHtmlUrl(packKey = "") {
   return key ? `${SITE}/owner-next.html?pack=${encodeURIComponent(key)}` : `${SITE}/owner-next.html`;
 }
 
+/** Session-start deep-link: auto Copy + Open remaining (C) on /owner-next.html. */
+export function ownerNextStartUrl() {
+  return `${SITE}/owner-next.html?start=1`;
+}
+
 /** Spreadsheet-ready Point C sequence (owner tracking). Does not invent citations. */
 export function buildPointCCsv(profiles, { en = false } = {}) {
   const packs = en ? profiles.packsEn || {} : profiles.packs || {};
@@ -667,29 +672,31 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
     progress: { acked: acked.length, total: sequenceKeys(en).length },
     next: buildPointCNext(profiles, { en }),
     ownerNext:
-      "live: https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/owner-next.html?start=1 · https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
   };
   const next = doc.next;
   if (next?.text && next?.open) {
+    const packHtml = next.html || ownerNextHtmlUrl(next.packKey);
+    const startHtml = ownerNextStartUrl();
     doc.potentialAction = {
       "@type": "HowTo",
       name: en
         ? `Point C next paste: ${next.packKey}`
         : `Point C sonraki yapıştırma: ${next.packKey}`,
       description:
-        `Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: ${next.html || ownerNextHtmlUrl(next.packKey)}`,
-      url: next.html || ownerNextHtmlUrl(next.packKey),
+        `Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser session start: ${startHtml} (auto Copy + Open remaining) · pack: ${packHtml}`,
+      url: startHtml,
       step: [
         {
           "@type": "HowToStep",
           position: 1,
-          name: "Open destination",
-          url: next.open,
+          name: "Open owner-next session",
+          url: startHtml,
           text: Array.isArray(next.openAlts) && next.openAlts.length
-            ? `Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`
+            ? `Session: ${startHtml} · Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · Pack: ${packHtml}`
             : next.openAlt
-              ? `Open: ${next.open} · OpenAlt: ${next.openAlt} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`
-              : `Open: ${next.open} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`,
+              ? `Session: ${startHtml} · Open: ${next.open} · OpenAlt: ${next.openAlt} · Pack: ${packHtml}`
+              : `Session: ${startHtml} · Open: ${next.open} · Pack: ${packHtml}`,
         },
         {
           "@type": "HowToStep",
@@ -707,8 +714,13 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       tool: [
         {
           "@type": "HowToTool",
+          name: "owner-next.html?start=1",
+          url: startHtml,
+        },
+        {
+          "@type": "HowToTool",
           name: "owner-next.html",
-          url: next.html || ownerNextHtmlUrl(next.packKey),
+          url: packHtml,
         },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: jsonUrl },

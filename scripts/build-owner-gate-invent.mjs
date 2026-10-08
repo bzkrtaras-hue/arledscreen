@@ -15,6 +15,7 @@ import {
   DNSENABLE_GMAIL_DRAFT_URL,
   DNSENABLE_PANEL_URL,
   ownerNextHtmlUrl,
+  ownerNextStartUrl,
   pointCOpenAltUrls,
 } from "./print-point-c-packs.mjs";
 import { HUMAN_PLATFORMS, TR, platformOpenUrl } from "./print-tur1a-prompts.mjs";
@@ -158,7 +159,7 @@ export function buildGeoStatusDoc() {
     "@id": `${SITE}/geo-status.json`,
     name: "ARLEDSCREEN GEO owner-gate status",
     description:
-      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Browser Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
+      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
     url: `${SITE}/geo-status.json`,
     dateModified: new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
@@ -170,6 +171,7 @@ export function buildGeoStatusDoc() {
       `${SITE}/tur1a.json`,
       `${SITE}/geo-next.txt`,
       `${SITE}/owner-next.txt`,
+      `${SITE}/owner-next.html?start=1`,
       `${SITE}/owner-next.html`,
       `${SITE}/#website`,
     ],
@@ -187,6 +189,12 @@ export function buildGeoStatusDoc() {
       },
       { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/geo-next.txt` },
       { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/owner-next.txt` },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/html",
+        contentUrl: `${SITE}/owner-next.html?start=1`,
+        name: "Owner next session start (auto C)",
+      },
       {
         "@type": "DataDownload",
         encodingFormat: "text/html",
@@ -263,28 +271,30 @@ export function buildGeoStatusDoc() {
       },
     },
     ownerNext:
-      "live: https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate) · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/owner-next.html?start=1 · https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate) · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
     target: "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores",
   };
   // Priority-aware HowTo: invent agents follow potentialAction for the active gate only.
   if (priority === "pointC" && pointCNext?.text && pointCNext?.open) {
+    const packHtml = pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey);
+    const startHtml = ownerNextStartUrl();
     doc.potentialAction = {
       "@type": "HowTo",
       name: `Point C next paste: ${pointCNext.packKey}`,
       description:
-        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
-      url: pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey),
+        `Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser session start: ${startHtml} (auto Copy + Open remaining) · pack: ${packHtml}`,
+      url: startHtml,
       step: [
         {
           "@type": "HowToStep",
           position: 1,
-          name: "Open destination",
-          url: pointCNext.open,
+          name: "Open owner-next session",
+          url: startHtml,
           text: Array.isArray(pointCNext.openAlts) && pointCNext.openAlts.length
-            ? `Open: ${pointCNext.open} · ${pointCNext.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · HTML: ${pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey)}`
+            ? `Session: ${startHtml} · Open: ${pointCNext.open} · ${pointCNext.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · Pack: ${packHtml}`
             : pointCNext.openAlt
-              ? `Open: ${pointCNext.open} · OpenAlt: ${pointCNext.openAlt} · HTML: ${pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey)}`
-              : `Open: ${pointCNext.open} · HTML: ${pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey)}`,
+              ? `Session: ${startHtml} · Open: ${pointCNext.open} · OpenAlt: ${pointCNext.openAlt} · Pack: ${packHtml}`
+              : `Session: ${startHtml} · Open: ${pointCNext.open} · Pack: ${packHtml}`,
         },
         {
           "@type": "HowToStep",
@@ -302,8 +312,13 @@ export function buildGeoStatusDoc() {
       tool: [
         {
           "@type": "HowToTool",
+          name: "owner-next.html?start=1",
+          url: startHtml,
+        },
+        {
+          "@type": "HowToTool",
           name: "owner-next.html",
-          url: pointCNext.html || ownerNextHtmlUrl(pointCNext.packKey),
+          url: packHtml,
         },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
@@ -439,7 +454,7 @@ export function buildPointCProgressDoc() {
     "@id": `${SITE}/point-c-progress.json`,
     name: "ARLEDSCREEN Point C paste progress",
     description:
-      "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. Browser Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
+      "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. Browser session start: https://arledscreen.com/owner-next.html?start=1 · Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
     url: `${SITE}/point-c-progress.json`,
     dateModified: updatedAt || new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
@@ -452,6 +467,7 @@ export function buildPointCProgressDoc() {
       `${SITE}/geo-status.json`,
       `${SITE}/geo-next.txt`,
       `${SITE}/owner-next.txt`,
+      `${SITE}/owner-next.html?start=1`,
       `${SITE}/owner-next.html`,
       `${SITE}/.well-known/point-c-progress.json`,
     ],
@@ -470,29 +486,37 @@ export function buildPointCProgressDoc() {
       {
         "@type": "DataDownload",
         encodingFormat: "text/html",
+        contentUrl: `${SITE}/owner-next.html?start=1`,
+        name: "Owner next session start (auto C)",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/html",
         contentUrl: `${SITE}/owner-next.html`,
         name: "Owner next HTML Open/paste",
       },
     ],
   };
   if (next?.text && next?.open) {
+    const packHtml = next.html || ownerNextHtmlUrl(next.packKey);
+    const startHtml = ownerNextStartUrl();
     doc.potentialAction = {
       "@type": "HowTo",
       name: `Point C next paste: ${next.packKey}`,
       description:
-        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
-      url: next.html || ownerNextHtmlUrl(next.packKey),
+        `Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser session start: ${startHtml} (auto Copy + Open remaining) · pack: ${packHtml}`,
+      url: startHtml,
       step: [
         {
           "@type": "HowToStep",
           position: 1,
-          name: "Open destination",
-          url: next.open,
+          name: "Open owner-next session",
+          url: startHtml,
           text: Array.isArray(next.openAlts) && next.openAlts.length
-            ? `Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`
+            ? `Session: ${startHtml} · Open: ${next.open} · ${next.openAlts.map((u, i) => (i === 0 ? `OpenAlt: ${u}` : `OpenAlt${i + 1}: ${u}`)).join(" · ")} · Pack: ${packHtml}`
             : next.openAlt
-              ? `Open: ${next.open} · OpenAlt: ${next.openAlt} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`
-              : `Open: ${next.open} · HTML: ${next.html || ownerNextHtmlUrl(next.packKey)}`,
+              ? `Session: ${startHtml} · Open: ${next.open} · OpenAlt: ${next.openAlt} · Pack: ${packHtml}`
+              : `Session: ${startHtml} · Open: ${next.open} · Pack: ${packHtml}`,
         },
         {
           "@type": "HowToStep",
@@ -510,8 +534,13 @@ export function buildPointCProgressDoc() {
       tool: [
         {
           "@type": "HowToTool",
+          name: "owner-next.html?start=1",
+          url: startHtml,
+        },
+        {
+          "@type": "HowToTool",
           name: "owner-next.html",
-          url: next.html || ownerNextHtmlUrl(next.packKey),
+          url: packHtml,
         },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
@@ -583,12 +612,13 @@ export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {
     "@id": `${SITE}/owner-next.json`,
     name: "ARLEDSCREEN Owner next (Open/paste machine twin)",
     description:
-      "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
+      "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Browser session start: /owner-next.html?start=1 · Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
     url: `${SITE}/owner-next.json`,
     dateModified: geoStatus?.dateModified || new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
     priorityGate: priority,
-    html: `${SITE}/owner-next.html`,
+    html: priority === "pointC" ? ownerNextStartUrl() : `${SITE}/owner-next.html`,
+    htmlStart: ownerNextStartUrl(),
     htmlDeep,
     htmlAlias: `${SITE}/geo-next.html`,
     clipboard: `${SITE}/geo-next.txt`,
@@ -615,9 +645,11 @@ export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {
       prMerge: geoStatus?.gates?.prMerge || null,
     },
     potentialAction: geoStatus?.potentialAction || progress?.potentialAction || null,
-    ownerNext: `live: ${htmlDeep} · ${SITE}/owner-next.json · ${SITE}/geo-next.txt · ${SITE}/point-c.json → next + potentialAction · progress: ${SITE}/point-c-progress.json → potentialAction · status: ${SITE}/geo-status.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/`,
+    ownerNext: `live: ${ownerNextStartUrl()} · ${htmlDeep} · ${SITE}/owner-next.json · ${SITE}/geo-next.txt · ${SITE}/point-c.json → next + potentialAction · progress: ${SITE}/point-c-progress.json → potentialAction · status: ${SITE}/geo-status.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/`,
     sameAs: [
+      `${SITE}/owner-next.html?start=1`,
       `${SITE}/owner-next.html`,
+      `${SITE}/geo-next.html?start=1`,
       `${SITE}/geo-next.html`,
       `${SITE}/geo-next.txt`,
       `${SITE}/owner-next.txt`,
@@ -633,6 +665,12 @@ export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE}/.well-known/owner-next.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/html",
+        contentUrl: `${SITE}/owner-next.html?start=1`,
+        name: "Owner next session start (auto C)",
       },
       {
         "@type": "DataDownload",
