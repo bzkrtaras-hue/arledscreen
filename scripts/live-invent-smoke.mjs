@@ -241,16 +241,19 @@ if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSi
 else fail("ai.txt WebSite + quote");
 
 if (
-  (agents.itemListElement || []).length >= 26 &&
-  Number(agents.numberOfItems) === 26 &&
-  String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (26)") &&
+  (agents.itemListElement || []).length >= 27 &&
+  Number(agents.numberOfItems) === 27 &&
+  String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (27)") &&
+  String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("#website")) &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/.well-known/security.txt")) &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/llms-full.txt")) &&
+  (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.html")) &&
   String(agents?.description || "").includes("point-c:csv") &&
   String(agents?.description || "").includes("potentialAction") &&
   String(agents?.ownerNext || "").includes("point-c:csv") &&
   String(agents?.ownerNext || "").includes("potentialAction") &&
+  String(agents?.ownerNext || "").includes("/owner-next.html") &&
   String(agents?.ownerNext || "").includes("/point-c-progress.json") &&
   JSON.stringify(agents.isBasedOn || []).includes("/point-c-progress.json") &&
   JSON.stringify(agents.distribution || []).includes("/geo-status.json") &&
@@ -269,7 +272,7 @@ if (
   String(agents?.ownerNext || "").includes("https://chatgpt.com/")
 ) {
   ok(`agents.json ×${agents.itemListElement.length} sameAs+subjectOf→owner-gate HowTo + security`);
-} else fail("agents.json ×26 sameAs+subjectOf→owner-gate HowTo + security");
+} else fail("agents.json ×27 sameAs+subjectOf→owner-gate HowTo + security");
 
 try {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
@@ -504,6 +507,8 @@ try {
 try {
   const geoStatus = await getJson("/geo-status.json");
   const geoNext = await getText("/geo-next.txt");
+  const ownerNextHtml = await getText("/owner-next.html");
+  const geoNextHtml = await getText("/geo-next.html");
   const tur1a = await getJson("/tur1a.json");
   const tur1aCsv = await getText("/feeds/tur1a.csv");
   const pointCNext = geoStatus?.gates?.pointC?.next || {};
@@ -516,6 +521,10 @@ try {
     geoNext.includes("potentialAction") &&
     geoNext.includes("/point-c.json") &&
     geoNext.includes("/geo-status.json") &&
+    ownerNextHtml.includes("Copy paste") &&
+    ownerNextHtml.includes("/geo-status.json") &&
+    geoNextHtml.includes("Copy paste") &&
+    geoNextHtml === ownerNextHtml &&
     String(pointCNext.packKey || "") === "directoryLong" &&
     String(pointCNext.text || "").includes("34245") &&
     String(pointCNext.open || "").includes("bingplaces.com") &&

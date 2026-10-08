@@ -640,6 +640,8 @@ if (fs.existsSync(outDir)) {
       "/.well-known/geo-status.json",
       "/geo-next.txt",
       "/owner-next.txt",
+      "/owner-next.html",
+      "/geo-next.html",
       "/tur1a.json",
       "/feeds/tur1a.csv",
       "/.well-known/AGENTS.md",
@@ -662,9 +664,11 @@ if (fs.existsSync(outDir)) {
     if (
       !String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") ||
       !String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") ||
+      !String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") ||
+      !String(ard?.agentic?.resources?.ownerNextHtml?.alias || "").includes("/geo-next.html") ||
       !String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
     ) {
-      console.error("❌ ard.json must expose resources.geoStatus + geoNext + tur1a");
+      console.error("❌ ard.json must expose resources.geoStatus + geoNext + ownerNextHtml + tur1a");
       process.exit(1);
     }
     if (!String(pcEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")) {
@@ -1901,6 +1905,7 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("/feeds/point-c.csv") ||
     !aiTxtLive.includes("/geo-status.json") ||
     !aiTxtLive.includes("/geo-next.txt") ||
+    !aiTxtLive.includes("/owner-next.html") ||
     !aiTxtLive.includes("/tur1a.json") ||
     !aiTxtLive.includes("/feeds/tur1a.csv") ||
     !aiTxtLive.includes("https://www.isimtescil.net/") ||
@@ -1928,9 +1933,10 @@ if (fs.existsSync(outDir)) {
     !geoNextSrc.includes("DNSENABLE_GMAIL_DRAFT_URL") ||
     !geoNextSrc.includes("point-c:dnsenable-draft") ||
     !geoNextSrc.includes("Queued after Point C") ||
-    !geoNextSrc.includes("Open:")
+    !geoNextSrc.includes("Open:") ||
+    !geoNextSrc.includes("owner-next.html")
   ) {
-    console.error("❌ scripts/geo-next.mjs must surface point-c:csv + playbook + DNSEnable Open/OpenAlt prep + dnsenable-draft");
+    console.error("❌ scripts/geo-next.mjs must surface point-c:csv + playbook + DNSEnable Open/OpenAlt prep + dnsenable-draft + owner-next.html");
     process.exit(1);
   }
   const pointCPacksSrc = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
@@ -2535,6 +2541,7 @@ if (fs.existsSync(outDir)) {
     !String(agents?.description || "").includes("https://chatgpt.com/") ||
     !String(agents?.ownerNext || "").includes("point-c:csv") ||
     !String(agents?.ownerNext || "").includes("potentialAction") ||
+    !String(agents?.ownerNext || "").includes("/owner-next.html") ||
     !String(agents?.ownerNext || "").includes("/point-c-progress.json") ||
     !String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") ||
     !String(agents?.ownerNext || "").includes("https://business.google.com/") ||
@@ -2587,14 +2594,25 @@ if (fs.existsSync(outDir)) {
   }
   if (
     !Array.isArray(agents.itemListElement) ||
-    agents.itemListElement.length < 26 ||
-    Number(agents.numberOfItems) !== 26
+    agents.itemListElement.length < 27 ||
+    Number(agents.numberOfItems) !== 27
   ) {
-    console.error("❌ agents.json must list 26 discovery items (numberOfItems=26; incl. brand/prices.rss/point-c/geo-status/tur1a/progress/#website/security/llms-full)");
+    console.error("❌ agents.json must list 27 discovery items (numberOfItems=27; incl. brand/prices.rss/point-c/geo-status/tur1a/progress/owner-next.html/#website/security/llms-full)");
     process.exit(1);
   }
-  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (26)")) {
-    console.error("❌ ard.json agentsJson description must cite ItemList (26)");
+  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (27)")) {
+    console.error("❌ ard.json agentsJson description must cite ItemList (27)");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/owner-next.html"))) {
+    console.error("❌ agents.json must list owner-next.html");
+    process.exit(1);
+  }
+  if (
+    !fs.existsSync(path.join(outDir, "owner-next.html")) ||
+    !fs.existsSync(path.join(outDir, "geo-next.html"))
+  ) {
+    console.error("❌ out/ must include owner-next.html + geo-next.html invent alias");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/.well-known/security.txt"))) {

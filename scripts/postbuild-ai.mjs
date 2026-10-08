@@ -35,7 +35,7 @@ const BRAND_URL = `${SITE_URL}/brand.json`;
 const localBusinessRef = () => ({ "@type": "LocalBusiness", "@id": LOCALBUSINESS_ID });
 /** Owner-friction clipboard + Open tabs (Point C / arleds / Tur1a) — cite-only; no invented scores. */
 const OWNER_FRICTION =
-  "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
+  "live: https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
 
 /** Ensure description cites geo:next/ack + point-c:csv + Open tabs + #website. */
 function ensureOwnerFrictionDescription(desc) {
@@ -3849,6 +3849,7 @@ function enrichArdOwnerGateInvent() {
     "pointCCsv",
     "geoStatus",
     "geoNext",
+    "ownerNextHtml",
     "tur1a",
     "pointCProgress",
   ];
@@ -4190,6 +4191,14 @@ function main() {
     writeText(outDir, "owner-next.txt", geoNext);
     writeText(publicDir, ".well-known/owner-next.txt", geoNext);
     writeText(outDir, ".well-known/owner-next.txt", geoNext);
+    // Owner HTML Open/paste surface (static); invent alias /geo-next.html
+    if (!copyPublicToOut("owner-next.html")) {
+      console.warn("postbuild-ai: public/owner-next.html missing — owner HTML friction surface not copied");
+    } else {
+      const html = fs.readFileSync(path.join(publicDir, "owner-next.html"), "utf8");
+      writeText(publicDir, "geo-next.html", html);
+      writeText(outDir, "geo-next.html", html);
+    }
     const tur1aJson = buildTur1aJsonDoc({ en: false });
     writeJson(publicDir, "tur1a.json", tur1aJson);
     writeJson(outDir, "tur1a.json", tur1aJson);

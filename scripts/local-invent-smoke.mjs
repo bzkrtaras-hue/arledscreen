@@ -499,6 +499,24 @@ if (String(ard?.agentic?.resources?.pointC?.url || "").includes("/point-c.txt"))
 else fail("ard.resources.pointC");
 
 {
+  const html = readText("owner-next.html");
+  const alias = readText("geo-next.html");
+  if (
+    String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") &&
+    String(ard?.agentic?.resources?.ownerNextHtml?.alias || "").includes("/geo-next.html") &&
+    String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (27)") &&
+    html.includes("Copy paste") &&
+    html.includes("/geo-status.json") &&
+    alias === html &&
+    Number(agents?.numberOfItems) === 27 &&
+    (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.html")) &&
+    String(agents?.ownerNext || "").includes("/owner-next.html")
+  ) {
+    ok("owner-next.html + geo-next.html alias + agents×27 + ARD ownerNextHtml");
+  } else fail("owner-next.html + geo-next.html alias + agents×27 + ARD ownerNextHtml");
+}
+
+{
   const allow = ard?.robotsPolicy?.allow || [];
   const trEx = JSON.stringify(ard?.agentic?.resources?.trInventBridges?.examples || []);
   const res = ard?.agentic?.resources || {};

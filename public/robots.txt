@@ -71,6 +71,8 @@ Allow: /geo-next.txt
 Allow: /.well-known/geo-next.txt
 Allow: /owner-next.txt
 Allow: /.well-known/owner-next.txt
+Allow: /owner-next.html
+Allow: /geo-next.html
 Allow: /tur1a.json
 Allow: /.well-known/tur1a.json
 Allow: /feeds/tur1a.csv

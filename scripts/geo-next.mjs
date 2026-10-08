@@ -38,6 +38,7 @@ function ackedCount() {
 
 function finish(code = 0) {
   console.log("");
+  console.log("HTML: https://arledscreen.com/owner-next.html (Open tabs + Copy paste) · alias https://arledscreen.com/geo-next.html");
   console.log(HOWTO_FOOTER);
   process.exit(code);
 }

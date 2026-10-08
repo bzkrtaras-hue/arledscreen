@@ -3,9 +3,9 @@
   "@type": "ItemList",
   "name": "ARLEDSCREEN agent discovery",
   "description": "Machine-readable entry points for AI shopping / GEO agents. Canonical price source is ai-shopping.json pricedPanels (12 SKU USD); inventable aliases /prices.json · /panels.json · /mpn.json · /merchant.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /sku · /modules · /brand · /api/prices · /api/panels.json · /api/mpn · /api/mpn.json · /api/catalog.json · /api/products · /api/v1/prices · /v1/prices · /data/prices.json · /en/prices.json · /tr/prices.json · /feeds/prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /offers.json (/modules+/brand via Pages Functions; /modules/*+/brand/* assets intact). Entity aliases /organization.json · /.well-known/entity.json · /api/entity.json · /en/entity.json · /tr/entity.json. Brand /brand.json embeds AggregateOffer×12 + OrderAction. WebSite: /#website. Point C packs: /entity-profiles.json · /entity-profiles. Follow potentialAction HowTo on /point-c.json · /geo-status.json · /point-c-progress.json · /tur1a.json. Also see /AGENTS.md. Owner: npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · point-c.txt · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/. Do not cite legacy arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.",
-  "ownerNext": "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · tur1a: https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+  "ownerNext": "live: https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · tur1a: https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
   "url": "https://arledscreen.com/.well-known/agents.json",
-  "numberOfItems": 26,
+  "numberOfItems": 27,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -188,6 +188,13 @@
       "name": "Point C paste progress",
       "url": "https://arledscreen.com/point-c-progress.json",
       "description": "Acked Point C pack keys + next + potentialAction HowTo (Open → paste → ack); alias /.well-known/point-c-progress.json; source for geo:next / point-c:ack"
+    },
+    {
+      "@type": "ListItem",
+      "position": 27,
+      "name": "Owner next HTML (Open + paste)",
+      "url": "https://arledscreen.com/owner-next.html",
+      "description": "Browser owner friction: Open/OpenAlt tabs + select-all paste for priorityGate (Point C → arleds 301 → Tur1a); loads /geo-status.json · /point-c.json · /tur1a.json; alias /geo-next.html; twin clipboard /geo-next.txt"
     }
   ],
   "provider": {
