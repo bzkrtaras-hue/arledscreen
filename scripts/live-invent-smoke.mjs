@@ -239,6 +239,21 @@ if (
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
+{
+  const agentsMd = await getText("/AGENTS.md");
+  if (
+    aiTxt.includes("owner-social-fb:") &&
+    aiTxt.includes("owner-social-ig:") &&
+    aiTxt.includes("owner-social-wa:") &&
+    aiTxt.includes("social=fb") &&
+    agentsMd.includes("social=fb") &&
+    agentsMd.includes("social=ig") &&
+    agentsMd.includes("social=wa") &&
+    agentsMd.includes("/social.json")
+  ) {
+    ok("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");
+  } else fail("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");
+}
 
 if (
   (agents.itemListElement || []).length >= 29 &&

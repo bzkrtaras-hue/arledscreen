@@ -279,6 +279,9 @@ owner-whatsapp-open: https://wa.me/905305078834
 owner-whatsapp-handle: @arledscreen
 owner-instagram-handle: @arledscreen
 owner-facebook-handle: @arledscreenn
+owner-social-fb: https://arledscreen.com/owner-next.html?social=fb
+owner-social-ig: https://arledscreen.com/owner-next.html?social=ig
+owner-social-wa: https://arledscreen.com/owner-next.html?social=wa
 social-json: https://arledscreen.com/social.json
 social-json-well-known: https://arledscreen.com/.well-known/social.json
 contact-json: https://arledscreen.com/contact.json
