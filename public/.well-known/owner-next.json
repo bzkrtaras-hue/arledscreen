@@ -5,7 +5,7 @@
   "name": "ARLEDSCREEN Owner next (Open/paste machine twin)",
   "description": "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (see socialHandles + /social.json). Browser session start: /owner-next.html?start=1 · Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
   "url": "https://arledscreen.com/owner-next.json",
-  "dateModified": "2026-10-08T21:20:31.728Z",
+  "dateModified": "2026-10-08T21:29:31.728Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
