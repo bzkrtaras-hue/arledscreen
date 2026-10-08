@@ -985,9 +985,13 @@ if (fs.existsSync(outDir)) {
   if (
     !String(ai?.description || "").includes("geo:next") ||
     !String(ai?.description || "").includes("geo:ack") ||
-    !String(ai?.description || "").includes("#website")
+    !String(ai?.description || "").includes("#website") ||
+    !String(ai?.description || "").includes("point-c:csv") ||
+    !String(ai?.description || "").includes("https://www.isimtescil.net/") ||
+    !String(ai?.description || "").includes("https://business.google.com/") ||
+    !String(ai?.description || "").includes("https://chatgpt.com/")
   ) {
-    console.error("❌ ai-shopping.json description must cite geo:next/ack + #website owner invent");
+    console.error("❌ ai-shopping.json description must cite geo:next/ack + #website + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
     process.exit(1);
   }
   if (!JSON.stringify(ai?.distribution || []).includes("#website")) {
@@ -1075,8 +1079,16 @@ if (fs.existsSync(outDir)) {
       ["catalog.json", catalogDesc],
       ["brand.json", brandDesc],
     ]) {
-      if (!desc.includes("geo:next") || !desc.includes("geo:ack") || !desc.includes("#website")) {
-        console.error(`❌ ${label} description must cite geo:next/ack + #website`);
+      if (
+        !desc.includes("geo:next") ||
+        !desc.includes("geo:ack") ||
+        !desc.includes("#website") ||
+        !desc.includes("point-c:csv") ||
+        !desc.includes("https://www.isimtescil.net/") ||
+        !desc.includes("https://business.google.com/") ||
+        !desc.includes("https://chatgpt.com/")
+      ) {
+        console.error(`❌ ${label} description must cite geo:next/ack + #website + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)`);
         process.exit(1);
       }
     }
@@ -1594,8 +1606,16 @@ if (fs.existsSync(outDir)) {
   }
   {
     const entDesc = String(entity?.description || "");
-    if (!entDesc.includes("geo:next") || !entDesc.includes("geo:ack") || !entDesc.includes("#website")) {
-      console.error("❌ entity.json description must cite geo:next/ack + #website (organization alias parity)");
+    if (
+      !entDesc.includes("geo:next") ||
+      !entDesc.includes("geo:ack") ||
+      !entDesc.includes("#website") ||
+      !entDesc.includes("point-c:csv") ||
+      !entDesc.includes("https://www.isimtescil.net/") ||
+      !entDesc.includes("https://business.google.com/") ||
+      !entDesc.includes("https://chatgpt.com/")
+    ) {
+      console.error("❌ entity.json description must cite geo:next/ack + #website + point-c:csv + Open tabs (organization alias parity)");
       process.exit(1);
     }
   }
@@ -1715,11 +1735,15 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("owner-point-c-csv:") ||
     !aiTxtLive.includes("owner-arleds-301:") ||
     !aiTxtLive.includes("owner-arleds-open:") ||
+    !aiTxtLive.includes("owner-gbp-open:") ||
+    !aiTxtLive.includes("owner-chatgpt-open:") ||
     !aiTxtLive.includes("https://www.isimtescil.net/") ||
+    !aiTxtLive.includes("https://business.google.com/") ||
+    !aiTxtLive.includes("https://chatgpt.com/") ||
     !aiTxtLive.includes("point-c:csv") ||
     !aiTxtLive.includes("point-c:")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds Open/csv");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds/GBP/chatgpt Open/csv");
     process.exit(1);
   }
   const geoNextSrc = fs.readFileSync(path.join(repoRoot, "scripts/geo-next.mjs"), "utf8");

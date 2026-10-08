@@ -99,6 +99,21 @@ if (cat?.brand?.makesOffer?.offerCount === 12 && cat.seller?.["@id"]?.includes("
   ok("catalog.brand band + seller Org");
 } else fail("catalog.brand band + seller Org");
 
+{
+  const blobs = [ent?.description, brand?.description, ai?.description, cat?.description].map((s) => String(s || ""));
+  if (
+    blobs.every(
+      (d) =>
+        d.includes("point-c:csv") &&
+        d.includes("https://www.isimtescil.net/") &&
+        d.includes("https://business.google.com/") &&
+        d.includes("https://chatgpt.com/"),
+    )
+  ) {
+    ok("entity/brand/ai-shopping/catalog description owner point-c:csv Open tabs");
+  } else fail("entity/brand/ai-shopping/catalog description owner point-c:csv Open tabs");
+}
+
 if (JSON.stringify(cat.isRelatedTo || []).includes("/feeds/prices.rss")) ok("catalog isRelatedTo prices.rss");
 else fail("catalog isRelatedTo prices.rss");
 

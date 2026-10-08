@@ -23,6 +23,26 @@ const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const ENTITY_URL = `${SITE_URL}/entity.json`;
 const BRAND_URL = `${SITE_URL}/brand.json`;
 const localBusinessRef = () => ({ "@type": "LocalBusiness", "@id": LOCALBUSINESS_ID });
+/** Owner-friction clipboard + Open tabs (Point C / arleds / Tur1a) — cite-only; no invented scores. */
+const OWNER_FRICTION =
+  "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
+
+/** Ensure description cites geo:next/ack + point-c:csv + Open tabs + #website. */
+function ensureOwnerFrictionDescription(desc) {
+  if (typeof desc !== "string") return desc;
+  let out = desc;
+  if (!out.includes("geo:next")) out = `${out} Owner: npm run geo:next.`;
+  if (!out.includes("geo:ack")) out = `${out} After paste: npm run geo:ack.`;
+  if (!out.includes("point-c:csv")) out = `${out} Spreadsheet: npm run point-c:csv.`;
+  if (!out.includes("isimtescil.net")) {
+    out = `${out} Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/.`;
+  } else {
+    if (!out.includes("business.google.com")) out = `${out} Open: https://business.google.com/.`;
+    if (!out.includes("chatgpt.com")) out = `${out} Open: https://chatgpt.com/.`;
+  }
+  if (!out.includes("#website")) out = `${out} WebSite: ${SITE_URL}/#website.`;
+  return out;
+}
 
 /** image paths match src/content/models.ts (priced SKUs only). */
 const PANEL_PRICES = [
@@ -294,7 +314,7 @@ function buildCatalog() {
     "@id": `${SITE_URL}/catalog.json`,
     name: "ARLEDSCREEN NXTIONSTAR 2026 LED Panel Kataloğu",
     description:
-      "Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json); teknik GEO baseline → geo-baseline.json. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt.",
+      `Yayımlanmış 2026 panel (modül) USD fiyatları. Fiyat panel başınadır; KDV ve nakliye hariç. Ücretsiz kargo yok. Nihai tutar yazılı teklif ve sözleşmeyle kesinleşir. AI ajanları: pricedPanels → ai-shopping.json (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json); teknik GEO baseline → geo-baseline.json. WebSite: https://arledscreen.com/#website. Owner: ${OWNER_FRICTION} · point-c.txt.`,
     publisher: {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
@@ -670,7 +690,7 @@ function buildAiShopping() {
     "@id": datasetId,
     name: "ARLEDSCREEN AI alışveriş / GEO discovery index",
     description:
-      "Single-fetch entity cite + 12 priced panel USD + merchant TSV + quote-only groups. TR faqs + EN faqsEn + pricedPanels.nameEn. Each Product isPartOf this Dataset; Dataset hasPart lists those Products. Inventable aliases: /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /offer.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json. No invented TL packs / 81-province doorways / AggregateRating. No free shipping. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · after paste: npm run geo:ack · https://arledscreen.com/point-c.txt.",
+      `Single-fetch entity cite + 12 priced panel USD + merchant TSV + quote-only groups. TR faqs + EN faqsEn + pricedPanels.nameEn. Each Product isPartOf this Dataset; Dataset hasPart lists those Products. Inventable aliases: /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /offer.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json. No invented TL packs / 81-province doorways / AggregateRating. No free shipping. WebSite: https://arledscreen.com/#website. Owner: ${OWNER_FRICTION} · https://arledscreen.com/point-c.txt.`,
     url: datasetId,
     creator: { "@id": `${SITE_URL}/#organization` },
     brand: {
@@ -2374,15 +2394,7 @@ function enrichEntityDocument(entity) {
   if (!entity || typeof entity !== "object") return entity;
   // Owner-friction invent on Organization alias surfaces (entity.json ↔ organization.json).
   if (typeof entity.description === "string") {
-    if (!entity.description.includes("geo:next")) {
-      entity.description = `${entity.description} Owner: npm run geo:next.`;
-    }
-    if (!entity.description.includes("geo:ack")) {
-      entity.description = `${entity.description} After paste: npm run geo:ack.`;
-    }
-    if (!entity.description.includes("#website")) {
-      entity.description = `${entity.description} WebSite: ${SITE_URL}/#website.`;
-    }
+    entity.description = ensureOwnerFrictionDescription(entity.description);
   }
   if (
     entity.makesOffer?.["@type"] === "AggregateOffer" &&
@@ -2840,15 +2852,7 @@ function enrichEntityProfiles(doc) {
   };
 
   if (typeof doc.description === "string") {
-    if (!doc.description.includes("geo:next")) {
-      doc.description = `${doc.description} Owner single clipboard: npm run geo:next.`;
-    }
-    if (!doc.description.includes("geo:ack")) {
-      doc.description = `${doc.description} After paste: npm run geo:ack.`;
-    }
-    if (!doc.description.includes("#website")) {
-      doc.description = `${doc.description} WebSite: ${SITE_URL}/#website.`;
-    }
+    doc.description = ensureOwnerFrictionDescription(doc.description);
   }
 
   // Machine packs (not human GBP/IG bios) must invent-join WebSite #website.
@@ -3612,7 +3616,7 @@ prices-rss: ${SITE_URL}/feeds/prices.rss
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
-owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md
+owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 brand-json: ${SITE_URL}/brand.json
 brand-json-well-known: ${SITE_URL}/.well-known/brand.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/
@@ -3829,6 +3833,8 @@ owner-tur1a-open: https://chatgpt.com/ · https://gemini.google.com/app · https
 owner-point-c-csv: npm run point-c:csv
 owner-arleds-301: npm run verify:arleds-301
 owner-arleds-open: https://www.isimtescil.net/
+owner-gbp-open: https://business.google.com/
+owner-chatgpt-open: https://chatgpt.com/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/
@@ -3891,7 +3897,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     url: `${SITE_URL}/tr/nxtionstar/`,
     alternateName: ["NXTION STAR", "NXTIONSTAR LED"],
     description:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json). WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · after paste: npm run geo:ack · point-c.txt.",
+      `NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json). WebSite: https://arledscreen.com/#website. Owner: ${OWNER_FRICTION} · point-c.txt.`,
     disambiguatingDescription:
       "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
     makesOffer: buildBrandAggregateOffer(ai),
