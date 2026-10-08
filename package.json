@@ -13,6 +13,7 @@
     "point-c": "node scripts/print-point-c-packs.mjs",
     "point-c:en": "node scripts/print-point-c-packs.mjs --en",
     "point-c:next": "node scripts/print-point-c-packs.mjs --next",
+    "point-c:csv": "node scripts/print-point-c-packs.mjs --csv",
     "point-c:ack": "node scripts/print-point-c-packs.mjs --ack",
     "geo:ack": "node scripts/print-point-c-packs.mjs --ack",
     "point-c:hostinger-eml": "node scripts/print-point-c-packs.mjs --eml",

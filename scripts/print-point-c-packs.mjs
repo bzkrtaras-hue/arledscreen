@@ -83,6 +83,9 @@ export const POINT_C_PASTE_WHERE = {
   [HOSTINGER_STEP]: "Isimtescil/DNSEnable Domain Redirect first (live NS) · Hostinger only if verify mode=hostinger_*",
 };
 
+/** Isimtescil / DNSEnable customer panel (Domain Redirect when NS is dnsenable.com). */
+export const DNSENABLE_PANEL_URL = "https://www.isimtescil.net/";
+
 /**
  * Owner open URLs for point-c:next / geo:next — remove “which tab?” friction.
  * One primary destination per pack (no invented citations).
@@ -98,7 +101,16 @@ export const POINT_C_OPEN_URLS = {
   appleBusinessConnect: "https://businessconnect.apple.com/",
   youtubeAbout: "https://studio.youtube.com/",
   yandexBusiness: "https://business.yandex.com/",
-  // Primary live path = DNSEnable Gmail draft (Send); Hostinger draft is secondary in clipboard.
+  // Primary = registrar panel (Domain Redirect); Gmail draft is OpenAlt.
+  [HOSTINGER_STEP]: DNSENABLE_PANEL_URL,
+};
+
+/**
+ * Secondary open tabs when Where: names more than one destination
+ * (e.g. directoryLong Bing+Apple; arleds 301 panel + Gmail draft).
+ */
+export const POINT_C_OPEN_ALTS = {
+  directoryLong: "https://businessconnect.apple.com/",
   [HOSTINGER_STEP]: DNSENABLE_GMAIL_DRAFT_URL,
 };
 
@@ -106,10 +118,16 @@ export function pointCOpenUrl(packKey) {
   return POINT_C_OPEN_URLS[packKey] || "";
 }
 
+export function pointCOpenAltUrl(packKey) {
+  return POINT_C_OPEN_ALTS[packKey] || "";
+}
+
 /** Live DNSEnable / Isimtescil Domain Redirect clipboard (primary when NS is dnsenable.com). */
 export function buildDnsEnableRedirectClipboard() {
   return [
     "Isimtescil / DNSEnable → Domain Redirect (permanent 301)",
+    `Open: ${DNSENABLE_PANEL_URL}`,
+    `OpenAlt (Gmail draft Send): ${DNSENABLE_GMAIL_DRAFT_URL}`,
     `arleds.com + www.arleds.com → ${ARLEDS_TARGET}`,
     "Live NS often eu/tr/us.dnsenable.com — Hostinger hPanel will NOT apply until NS moves.",
     "Option B: move NS to Cloudflare → Bulk Redirect → https://arledscreen.com/tr/ (301)",
@@ -282,14 +300,19 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     lines.push(`### ${label} (${key})`);
     const where = POINT_C_PASTE_WHERE[key];
     const open = pointCOpenUrl(key);
+    const openAlt = pointCOpenAltUrl(key);
     if (where) lines.push(`Where: ${where}`);
     if (open) lines.push(`Open: ${open}`);
+    if (openAlt) lines.push(`OpenAlt: ${openAlt}`);
     lines.push(text == null || text === "" ? "(missing)" : String(text));
     lines.push("");
   }
 
   if (!only) {
     lines.push("--- DNSEnable / Isimtescil arleds.com → arledscreen.com/tr/ 301 (primary — live NS) ---");
+    lines.push(`Where: ${POINT_C_PASTE_WHERE[HOSTINGER_STEP]}`);
+    lines.push(`Open: ${pointCOpenUrl(HOSTINGER_STEP)}`);
+    lines.push(`OpenAlt: ${pointCOpenAltUrl(HOSTINGER_STEP)}`);
     for (const row of buildDnsEnableRedirectClipboard().split("\n")) lines.push(row);
     lines.push("");
     lines.push("--- DNSEnable support email (select-all) ---");
@@ -381,6 +404,33 @@ function nextStep(profiles, { en = false } = {}) {
   return null;
 }
 
+/** Spreadsheet-ready Point C sequence (owner tracking). Does not invent citations. */
+function printCsv(profiles, { en = false } = {}) {
+  const packs = en ? profiles.packsEn || {} : profiles.packs || {};
+  const { acked } = readProgress();
+  const ackedSet = new Set(acked);
+  const keys = sequenceKeys(en);
+  const esc = (s) => `"${String(s).replace(/"/g, '""')}"`;
+  console.log("packKey,label,status,where,open,openAlt,ackCommand");
+  for (const key of keys) {
+    const label =
+      key === HOSTINGER_STEP
+        ? "arleds.com 301 (DNSEnable Domain Redirect)"
+        : (en ? EN_ORDER : TR_ORDER).find(([, k]) => k === key)?.[0] || key;
+    const status = ackedSet.has(key) ? "acked" : "open";
+    const where = POINT_C_PASTE_WHERE[key] || "";
+    const open = pointCOpenUrl(key);
+    const openAlt = pointCOpenAltUrl(key);
+    const ackCmd = status === "acked" ? "" : `npm run point-c:ack -- --pack=${key}`;
+    // Ensure pack exists (skip empty non-step keys).
+    if (key !== HOSTINGER_STEP && (packs[key] == null || packs[key] === "")) continue;
+    console.log(
+      [key, esc(label), status, esc(where), esc(open), esc(openAlt), esc(ackCmd)].join(","),
+    );
+  }
+  console.error(`# progress ${acked.length}/${keys.length} acked — do not invent citations`);
+}
+
 function printNext(profiles, { en = false } = {}) {
   const step = nextStep(profiles, { en });
   if (!step) {
@@ -396,8 +446,10 @@ function printNext(profiles, { en = false } = {}) {
   console.log("Locale:", en ? "EN" : "TR");
   const where = POINT_C_PASTE_WHERE[step.key];
   const open = pointCOpenUrl(step.key);
+  const openAlt = pointCOpenAltUrl(step.key);
   if (where) console.log(`Where: ${where}`);
   if (open) console.log(`Open: ${open}`);
+  if (openAlt) console.log(`OpenAlt: ${openAlt}`);
   console.log("");
   console.log("### Paste (select-all)");
   console.log("---");
@@ -420,7 +472,7 @@ function printNext(profiles, { en = false } = {}) {
   }
   console.log(`After paste: npm run point-c:ack -- --pack=${step.key}`);
   console.log("Or: npm run point-c:ack");
-  console.log("Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt");
+  console.log("CSV: npm run point-c:csv · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt");
 }
 
 function writeHostingerEml() {
@@ -474,6 +526,7 @@ if (isMain) {
     console.log(`Usage:
   npm run point-c
   npm run point-c:next
+  npm run point-c:csv
   npm run point-c:ack [-- --pack=directoryLong]
   npm run geo:ack          (alias of point-c:ack)
   npm run point-c:hostinger-eml
@@ -493,6 +546,8 @@ Does not invent citations. --help never acks progress.`);
     writeDnsEnableEml();
   } else if (argFlag("eml") || argFlag("hostinger-eml")) {
     writeHostingerEml();
+  } else if (argFlag("csv")) {
+    printCsv(profiles, { en: useEn });
   } else if (argFlag("next")) {
     printNext(profiles, { en: useEn });
   } else if (argFlag("ack")) {

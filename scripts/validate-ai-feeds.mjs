@@ -4548,7 +4548,10 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
   const pointCPacks = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
   for (const must of [
     "POINT_C_OPEN_URLS",
+    "POINT_C_OPEN_ALTS",
     "pointCOpenUrl",
+    "pointCOpenAltUrl",
+    "DNSENABLE_PANEL_URL",
     "https://business.google.com/",
     "https://www.bingplaces.com/",
     "https://businessconnect.apple.com/",
@@ -4557,24 +4560,37 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     "https://www.instagram.com/arledscreen/",
     "https://www.facebook.com/arledscreenn",
     "https://www.linkedin.com/company/arleds/",
+    "https://www.isimtescil.net/",
+    "printCsv",
   ]) {
     if (!pointCPacks.includes(must)) {
       console.error(`❌ scripts/print-point-c-packs.mjs must define Point C open URL ${must}`);
       process.exit(1);
     }
   }
-  if (!pointCPacks.includes("Open:") || !pointCPacks.includes("POINT_C_PASTE_WHERE")) {
-    console.error("❌ scripts/print-point-c-packs.mjs must print Where:/Open: via POINT_C_OPEN_URLS");
+  if (!pointCPacks.includes("Open:") || !pointCPacks.includes("OpenAlt:") || !pointCPacks.includes("POINT_C_PASTE_WHERE")) {
+    console.error("❌ scripts/print-point-c-packs.mjs must print Where:/Open:/OpenAlt: via POINT_C_OPEN_URLS");
+    process.exit(1);
+  }
+  const pkgJson = JSON.parse(fs.readFileSync(path.join(repoRoot, "package.json"), "utf8"));
+  if (pkgJson?.scripts?.["point-c:csv"] !== "node scripts/print-point-c-packs.mjs --csv") {
+    console.error("❌ package.json must define point-c:csv → print-point-c-packs.mjs --csv");
     process.exit(1);
   }
   const pointCLive = fs.existsSync(path.join(outDir, "point-c.txt"))
     ? fs.readFileSync(path.join(outDir, "point-c.txt"), "utf8")
     : "";
-  if (pointCLive && (!pointCLive.includes("Open: https://business.google.com/") || !pointCLive.includes("Where:"))) {
-    console.error("❌ out/point-c.txt must include Where:/Open: paste destinations per pack");
+  if (
+    pointCLive &&
+    (!pointCLive.includes("Open: https://business.google.com/") ||
+      !pointCLive.includes("Where:") ||
+      !pointCLive.includes("OpenAlt: https://businessconnect.apple.com/") ||
+      !pointCLive.includes("Open: https://www.isimtescil.net/"))
+  ) {
+    console.error("❌ out/point-c.txt must include Where:/Open:/OpenAlt: (Apple alt + DNSEnable panel)");
     process.exit(1);
   }
-  console.log("✅ point-c:next Open: URLs (GBP/IG/FB/LinkedIn/Bing/Apple/YouTube/Yandex + DNSEnable draft)");
+  console.log("✅ point-c:next Open:/OpenAlt: + point-c:csv (GBP/IG/FB/LI/Bing/Apple/YT/Yandex + DNSEnable panel)");
 }
 
 {

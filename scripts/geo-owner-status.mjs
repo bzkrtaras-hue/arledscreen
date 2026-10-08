@@ -74,13 +74,15 @@ try {
       const stepLine = out.split("\n").find((r) => r.startsWith("Step:"));
       const whereLine = out.split("\n").find((r) => r.startsWith("Where:"));
       const openLine = out.split("\n").find((r) => r.startsWith("Open:"));
+      const openAltLine = out.split("\n").find((r) => r.startsWith("OpenAlt:"));
       console.log("  Point C next paste:");
       if (GEO_FULL) {
         for (const row of out.split("\n")) console.log(`  ${row}`);
       } else {
-        console.log(`  ${stepLine || "see npm run geo:next"} · npm run geo:next (full dump: GEO_FULL=1 npm run geo:status)`);
+        console.log(`  ${stepLine || "see npm run geo:next"} · npm run geo:next · point-c:csv (full dump: GEO_FULL=1 npm run geo:status)`);
         if (whereLine) console.log(`  ${whereLine}`);
         if (openLine) console.log(`  ${openLine}`);
+        if (openAltLine) console.log(`  ${openAltLine}`);
       }
     }
   }
@@ -113,6 +115,8 @@ if (!arledsOk) {
     console.log("  Re-check: npm run verify:arleds-301");
     try {
       const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
+      if (mod.DNSENABLE_PANEL_URL) console.log(`  Open: ${mod.DNSENABLE_PANEL_URL}`);
+      if (mod.DNSENABLE_GMAIL_DRAFT_URL) console.log(`  OpenAlt: ${mod.DNSENABLE_GMAIL_DRAFT_URL}`);
       if (GEO_FULL) {
         console.log("  DNSEnable Domain Redirect clipboard:");
         console.log("  ---");
@@ -255,5 +259,5 @@ line(
       : "run npm run verify:arleds-301 for live NS/provider diagnosis",
 );
 
-console.log("\nCommands: npm run geo:next · npm run geo:ack · npm run point-c:next · npm run point-c:ack · npm run point-c · npm run verify:arleds-301 · npm run tur1a:next · npm run tur1a:csv · npm run tur1a:log · npm run tur1a:matrix · npm run invent:smoke · npm run geo:status · npm run indexnow");
+console.log("\nCommands: npm run geo:next · npm run geo:ack · npm run point-c:next · npm run point-c:csv · npm run point-c:ack · npm run point-c · npm run verify:arleds-301 · npm run tur1a:next · npm run tur1a:csv · npm run tur1a:log · npm run tur1a:matrix · npm run invent:smoke · npm run geo:status · npm run indexnow");
 process.exit(0);
