@@ -458,9 +458,13 @@ if (fs.existsSync(outDir)) {
     !String(ard?.agentic?.resources?.datasetJson?.url || "").includes("/dataset.json") ||
     !String(ard?.agentic?.resources?.productsJson?.url || "").includes("/products.json") ||
     !String(ard?.agentic?.resources?.brandExtless?.url || "").includes("/brand") ||
-    !String(ard?.agentic?.resources?.modulesExtless?.url || "").includes("/modules")
+    !String(ard?.agentic?.resources?.modulesExtless?.url || "").includes("/modules") ||
+    !String(ard?.agentic?.resources?.feedJson?.url || "").includes("/feed.json") ||
+    !String(ard?.agentic?.resources?.productExtless?.url || "").includes("/product") ||
+    !String(ard?.agentic?.resources?.entityExtless?.url || "").includes("/entity") ||
+    !String(ard?.agentic?.resources?.securityRoot?.url || "").includes("/security.txt")
   ) {
-    console.error("❌ ard.json must expose resources.apiCatalog + localeInvent + datasetJson/productsJson/brandExtless/modulesExtless");
+    console.error("❌ ard.json must expose resources.apiCatalog + localeInvent + dataset/products/brand/modules/feed/product/entity/security invent");
     process.exit(1);
   }
   if (!ard?.agentic?.cite?.en?.oneLiner) {
@@ -1800,9 +1804,13 @@ if (fs.existsSync(outDir)) {
     !llmsLive.includes("/.well-known/ard.json") ||
     !llmsLive.includes("/.well-known/security.txt") ||
     !llmsLive.includes("/AGENTS.md") ||
-    !llmsLive.includes("/humans.txt")
+    !llmsLive.includes("/humans.txt") ||
+    !llmsLive.includes("/api/catalog.json") ||
+    !llmsLive.includes("/api/products") ||
+    !llmsLive.includes("/tr/prices.json") ||
+    !llmsLive.includes("/en/feed.json")
   ) {
-    console.error("❌ out/llms.txt inventable aliases must cite agents/ard/security/humans/AGENTS.md");
+    console.error("❌ out/llms.txt inventable aliases must cite agents/ard/security/humans/AGENTS.md + api/locale invent");
     process.exit(1);
   }
   if (
@@ -1831,9 +1839,14 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("#website") ||
       !humansLive.includes("geo:ack") ||
       !humansLive.includes("/.well-known/security.txt") ||
-      !humansLive.includes("/security.txt")
+      !humansLive.includes("/security.txt") ||
+      !humansLive.includes("/api/v1/prices") ||
+      !humansLive.includes("/api/catalog.json") ||
+      !humansLive.includes("/api/products") ||
+      !humansLive.includes("/tr/prices.json") ||
+      !humansLive.includes("/llms-full")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next/ack + security.txt");
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next/ack + security.txt + api/locale invent");
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
@@ -1842,8 +1855,15 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
-    if (!aiTxtLive.includes("geo:next") || !aiTxtLive.includes("geo:ack")) {
-      console.error("❌ out/ai.txt must cite npm run geo:next + geo:ack owner clipboard");
+    if (
+      !aiTxtLive.includes("geo:next") ||
+      !aiTxtLive.includes("geo:ack") ||
+      !aiTxtLive.includes("/api/catalog.json") ||
+      !aiTxtLive.includes("/api/products") ||
+      !aiTxtLive.includes("/tr/prices.json") ||
+      !aiTxtLive.includes("/en/feed.json")
+    ) {
+      console.error("❌ out/ai.txt must cite npm run geo:next + geo:ack + api/catalog.json + api/products + tr/prices.json + en/feed.json invent");
       process.exit(1);
     }
   }
@@ -4412,6 +4432,22 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     "/point-c.txt",
     "/brand.json",
     "/feeds/prices.rss",
+    "/api/catalog.json",
+    "/api/products",
+    "/feeds/prices.json",
+    "/feeds/catalog.json",
+    "/tr/prices.json",
+    "/tr/ai-shopping.json",
+    "/tr/catalog.json",
+    "/tr/entity.json",
+    "/en/entity.json",
+    "/en/feed.json",
+    "/tr/feed.json",
+    "/brand",
+    "/modules",
+    "/product",
+    "/entity-profiles",
+    "/llms-full",
   ]) {
     if (!sitemapLive.includes(needle)) {
       console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);

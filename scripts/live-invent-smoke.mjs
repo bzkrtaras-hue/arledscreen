@@ -353,6 +353,10 @@ else fail("ard.resources.pointC");
     String(res.productsJson?.url || "").includes("/products.json") &&
     String(res.brandExtless?.url || "").includes("/brand") &&
     String(res.modulesExtless?.url || "").includes("/modules") &&
+    String(res.feedJson?.url || "").includes("/feed.json") &&
+    String(res.productExtless?.url || "").includes("/product") &&
+    String(res.entityExtless?.url || "").includes("/entity") &&
+    String(res.securityRoot?.url || "").includes("/security.txt") &&
     allow.includes("/en/pricing.json") &&
     allow.includes("/en/entity.json") &&
     allow.includes("/api/products") &&

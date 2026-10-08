@@ -768,6 +768,74 @@
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "modulesJson": "https://arledscreen.com/modules.json",
         "wellKnown": "https://arledscreen.com/.well-known/modules.json"
+      },
+      "feedJson": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/feed.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (feed synonym)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "extensionless": "https://arledscreen.com/feed",
+        "wellKnown": "https://arledscreen.com/.well-known/feed.json"
+      },
+      "productExtless": {
+        "type": "Catalog invent alias",
+        "url": "https://arledscreen.com/product",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of catalog.json (product synonym)",
+        "canonical": "https://arledscreen.com/catalog.json",
+        "productJson": "https://arledscreen.com/product.json"
+      },
+      "entityExtless": {
+        "type": "Organization invent alias",
+        "url": "https://arledscreen.com/entity",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of entity.json",
+        "canonical": "https://arledscreen.com/entity.json"
+      },
+      "catalogExtless": {
+        "type": "Catalog invent alias",
+        "url": "https://arledscreen.com/catalog",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of catalog.json",
+        "canonical": "https://arledscreen.com/catalog.json"
+      },
+      "geoBaselineExtless": {
+        "type": "GEO invent alias",
+        "url": "https://arledscreen.com/geo-baseline",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of geo-baseline.json",
+        "canonical": "https://arledscreen.com/geo-baseline.json"
+      },
+      "aiShoppingExtless": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/ai-shopping",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of ai-shopping.json",
+        "canonical": "https://arledscreen.com/ai-shopping.json"
+      },
+      "entityProfilesExtless": {
+        "type": "Point C invent alias",
+        "url": "https://arledscreen.com/entity-profiles",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of entity-profiles.json",
+        "canonical": "https://arledscreen.com/entity-profiles.json"
+      },
+      "llmsExtless": {
+        "type": "LLM Context invent alias",
+        "url": "https://arledscreen.com/llms",
+        "format": "text/plain",
+        "description": "Extensionless inventable alias of llms.txt",
+        "canonical": "https://arledscreen.com/llms.txt",
+        "llmsFull": "https://arledscreen.com/llms-full"
+      },
+      "securityRoot": {
+        "type": "security.txt invent alias",
+        "url": "https://arledscreen.com/security.txt",
+        "format": "text/plain",
+        "description": "Root + extensionless inventable aliases of RFC 9116 security.txt",
+        "canonical": "https://arledscreen.com/.well-known/security.txt",
+        "extensionless": "https://arledscreen.com/.well-known/security"
       }
     },
     "cite": {
