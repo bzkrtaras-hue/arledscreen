@@ -488,6 +488,9 @@ if (
         (progress?.potentialAction?.tool || []).some((t) =>
           String(t?.url || "").includes("/owner-next.html?start=1"),
         ) &&
+        String(progress?.socialHandles?.facebook || "") === "arledscreenn" &&
+        String(progress?.socialHandles?.instagram || "") === "arledscreen" &&
+        String(progress?.socialHandles?.whatsapp || "") === "arledscreen" &&
         Array.isArray(geoStatus?.gates?.pointC?.packs) &&
         geoStatus.gates.pointC.packs.length >= 11 &&
         String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
@@ -576,6 +579,9 @@ else fail("ard.resources.pointC");
     html.includes("Mailto DNSEnable") &&
     html.includes("social-handles") &&
     html.includes("copySocialHandles") &&
+    html.includes("jumpToSocialPack") &&
+    html.includes('data-pack="facebookAbout"') &&
+    html.includes('data-pack="instagramBio"') &&
     html.includes("@arledscreenn") &&
     html.includes("@arledscreen") &&
     html.includes("/social.json") &&

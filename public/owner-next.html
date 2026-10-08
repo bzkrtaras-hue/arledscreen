@@ -424,6 +424,21 @@
       );
     }
 
+    function jumpToSocialPack(packKey, profileHref) {
+      const full =
+        pointCPacks.find((x) => x.packKey === packKey) ||
+        checklistPacks.find((p) => p.packKey === packKey);
+      if (full && typeof showPack === "function") showPack(full);
+      else if (packKey) setPackQuery(packKey);
+      if (profileHref) {
+        try {
+          window.open(profileHref, "_blank", "noopener,noreferrer");
+        } catch {
+          /* popup blocked */
+        }
+      }
+    }
+
     function renderSocialHandles(focus) {
       const el = $("social-handles");
       if (!el) return;
@@ -434,10 +449,16 @@
       const igCls = focus === "instagram" ? ' class="sh-focus"' : "";
       const waCls = focus === "whatsapp" ? ' class="sh-focus"' : "";
       el.innerHTML =
-        `Handles: FB <a${fbCls} href="https://www.facebook.com/${fb}" target="_blank" rel="noopener">@${fb}</a>` +
-        ` · IG <a${igCls} href="https://www.instagram.com/${ig}" target="_blank" rel="noopener">@${ig}</a>` +
+        `Handles: FB <a${fbCls} href="https://www.facebook.com/${fb}" data-pack="facebookAbout" title="Open FB + load facebookAbout pack">@${fb}</a>` +
+        ` · IG <a${igCls} href="https://www.instagram.com/${ig}" data-pack="instagramBio" title="Open IG + load instagramBio pack">@${ig}</a>` +
         ` · WA <a${waCls} href="${socialHandles.waMe}" target="_blank" rel="noopener">@${wa}</a>` +
         ` <span class="sh-muted"> · <kbd>S</kbd> copy · <a href="/social.json">social.json</a></span>`;
+      el.querySelectorAll("a[data-pack]").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          jumpToSocialPack(a.getAttribute("data-pack") || "", a.getAttribute("href") || "");
+        });
+      });
     }
 
     function focusSocialForPack(packKey) {

@@ -210,8 +210,12 @@ jobs:
           grep -q 'Mailto DNSEnable' out/owner-next.html
           grep -q 'social-handles' out/owner-next.html
           grep -q 'copySocialHandles' out/owner-next.html
+          grep -q 'jumpToSocialPack' out/owner-next.html
+          grep -q 'data-pack="facebookAbout"' out/owner-next.html
+          grep -q 'data-pack="instagramBio"' out/owner-next.html
           grep -q '@arledscreenn' out/owner-next.html
           grep -q '/social.json' out/owner-next.html
+          node -e 'const p=require("./out/point-c-progress.json"); if(String(p.socialHandles?.facebook||"")!=="arledscreenn"||String(p.socialHandles?.instagram||"")!=="arledscreen") process.exit(1)'
           grep -q '/owner-next.json' out/_headers
           awk 'BEGIN{p=0} /^\/owner-next\.json$/{p=1;next} p&&/^[^ ]/{exit} p&&/no-store/{found=1} END{exit found?0:1}' out/_headers
           awk 'BEGIN{p=0} /^\/social\.json$/{p=1;next} p&&/^[^ ]/{exit} p&&/no-store/{found=1} END{exit found?0:1}' out/_headers

@@ -463,10 +463,11 @@ export function buildPointCProgressDoc() {
     "@id": `${SITE}/point-c-progress.json`,
     name: "ARLEDSCREEN Point C paste progress",
     description:
-      "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. Browser session start: https://arledscreen.com/owner-next.html?start=1 · Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
+      "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json). Source for geo:next / point-c:ack. Browser session start: https://arledscreen.com/owner-next.html?start=1 · Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
     url: `${SITE}/point-c-progress.json`,
     dateModified: updatedAt || new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
+    socialHandles: OWNER_SOCIAL_HANDLES,
     acked,
     total: POINT_C_STEPS,
     packs,
@@ -478,6 +479,7 @@ export function buildPointCProgressDoc() {
       `${SITE}/owner-next.txt`,
       `${SITE}/owner-next.html?start=1`,
       `${SITE}/owner-next.html`,
+      `${SITE}/social.json`,
       `${SITE}/.well-known/point-c-progress.json`,
     ],
     distribution: [
@@ -503,6 +505,12 @@ export function buildPointCProgressDoc() {
         encodingFormat: "text/html",
         contentUrl: `${SITE}/owner-next.html`,
         name: "Owner next HTML Open/paste",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/social.json`,
+        name: "Owner-confirmed social handles",
       },
     ],
   };
