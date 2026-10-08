@@ -1174,6 +1174,11 @@ if (fs.existsSync(outDir)) {
         "/.well-known/merchant.json",
         "/.well-known/prices.json",
         "/.well-known/price.json",
+        "/point-c.json",
+        "/geo-status.json",
+        "/geo-next.txt",
+        "/tur1a.json",
+        "/point-c-progress.json",
       ]) {
         if (!brandDist.includes(needle)) {
           console.error(`❌ brand.json distribution must invent-join ${needle}`);
@@ -1708,6 +1713,11 @@ if (fs.existsSync(outDir)) {
       "/.well-known/entity.json",
       "/geo-baseline.json",
       "/point-c.txt",
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
       "/entity-profiles.json",
       "#website",
       "/.well-known/modules.json",
@@ -3582,6 +3592,10 @@ if (fs.existsSync(outDir)) {
     for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
       if (!brandSubject.includes(needle)) {
         console.error(`❌ brand.json subjectOf must cite owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+      if (!brandDist.includes(needle)) {
+        console.error(`❌ brand.json distribution must cite owner-gate HowTo ${needle}`);
         process.exit(1);
       }
     }

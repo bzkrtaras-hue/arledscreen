@@ -984,6 +984,20 @@ try {
   fail(`ai-shopping/humans/entity FAQ invent ${e?.message || e}`);
 }
 
+
+{
+  const ed = JSON.stringify(ent?.distribution || []);
+  if (
+    ed.includes("/point-c.json") &&
+    ed.includes("/geo-status.json") &&
+    ed.includes("/geo-next.txt") &&
+    ed.includes("/tur1a.json") &&
+    ed.includes("/point-c-progress.json")
+  ) {
+    ok("entity.distribution → owner-gate HowTo");
+  } else fail("entity.distribution → owner-gate HowTo");
+}
+
 if (
   JSON.stringify(ent.subjectOf || []).includes("/point-c.txt") &&
   JSON.stringify(ent.subjectOf || []).includes("/point-c.json") &&
@@ -1042,6 +1056,11 @@ if (
   JSON.stringify(brand.subjectOf || []).includes("/tur1a.json") &&
   JSON.stringify(brand.subjectOf || []).includes("/point-c-progress.json") &&
   JSON.stringify(brand.distribution || []).includes("/point-c.txt") &&
+  JSON.stringify(brand.distribution || []).includes("/point-c.json") &&
+  JSON.stringify(brand.distribution || []).includes("/geo-status.json") &&
+  JSON.stringify(brand.distribution || []).includes("/geo-next.txt") &&
+  JSON.stringify(brand.distribution || []).includes("/tur1a.json") &&
+  JSON.stringify(brand.distribution || []).includes("/point-c-progress.json") &&
   JSON.stringify(brand.subjectOf || []).includes("/entity.json") &&
   JSON.stringify(brand.distribution || []).includes("/entity.json") &&
   JSON.stringify(brand.distribution || []).includes("/organization.json") &&

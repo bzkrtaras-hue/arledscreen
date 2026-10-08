@@ -1696,6 +1696,42 @@ function websiteDistributionEntry() {
   };
 }
 
+/** Owner-gate HowTo invent surfaces for distribution walks (parity with subjectOf / isBasedOn). */
+function ownerGateDistributionEntries() {
+  return [
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/point-c.json`,
+      name: "ARLEDSCREEN Point C paste packs (HowTo potentialAction)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/geo-status.json`,
+      name: "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/geo-next.txt`,
+      name: "ARLEDSCREEN GEO priority clipboard",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/tur1a.json`,
+      name: "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/point-c-progress.json`,
+      name: "ARLEDSCREEN Point C paste progress (HowTo potentialAction)",
+    },
+  ];
+}
+
 /** Well-known pricedPanels invent aliases for distribution walks (parity with ai-shopping). */
 function inventAliasDistributionEntries() {
   return [
@@ -2830,6 +2866,7 @@ function enrichEntityDocument(entity) {
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      ...ownerGateDistributionEntries(),
       ...entityAliasDistributionEntries(),
       ...inventAliasDistributionEntries(),
       websiteDistributionEntry(),
@@ -4305,6 +4342,7 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      ...ownerGateDistributionEntries(),
       ...inventAliasDistributionEntries(),
       websiteDistributionEntry(),
     ],
