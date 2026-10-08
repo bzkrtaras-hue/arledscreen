@@ -629,8 +629,12 @@ else fail("ard.resources.pointC");
     html.includes("openPackAfterLink") &&
     html.includes("open-after-link") &&
     html.includes("Open After") &&
+    html.includes("copyOpenPackAfterLink") &&
+    html.includes("copy-open-after") &&
+    html.includes("Copy+Open After") &&
     html.includes('e.key === "a"') &&
     html.includes('e.key === "y"') &&
+    html.includes('e.key === "p"') &&
     html.includes("packDeepLinkUrl") &&
     html.includes("withCopyParam") &&
     html.includes("maybeCopyPaste") &&
@@ -658,7 +662,7 @@ else fail("ard.resources.pointC");
     html.includes("pack-row-after") &&
     html.includes("bindRowCopy") &&
     html.includes("Click = copy Deep") &&
-    html.includes("after paste: A / sticky After") &&
+    html.includes("after paste: A · Y / Open After · P Copy+Open After · sticky After") &&
     html.includes("pack-deep-after") &&
     html.includes("n=1") &&
     html.includes("`After: ${packAfterLinkUrl") &&
@@ -676,6 +680,7 @@ else fail("ard.resources.pointC");
     readText("AGENTS.md").includes("Copy+Open ack After hint") &&
     readText("AGENTS.md").includes("Copy After link") &&
     readText("AGENTS.md").includes("Open After") &&
+    readText("AGENTS.md").includes("Copy+Open After") &&
     readText("AGENTS.md").includes("next.htmlAfter") &&
     readText("AGENTS.md").includes("?n=1") &&
     readText("AGENTS.md").includes("after=1") &&

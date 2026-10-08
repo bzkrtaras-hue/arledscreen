@@ -893,7 +893,7 @@ function printNext(profiles, { en = false } = {}) {
   console.log(`Deep: ${deep}`);
   console.log(`After: ${after}`);
   console.log(
-    "Keys: C=Copy+Open remaining · D=Copy pack link · A=Copy After link · Y=Open After · M=WA paste · E=Mail paste (Deep+After) · n=1|after=1=After paste advance · F/I/W=social · https://arledscreen.com/owner-next.html?start=1",
+    "Keys: C=Copy+Open remaining · D=Copy pack link · A=Copy After link · Y=Open After · P=Copy+Open After · M=WA paste · E=Mail paste (Deep+After) · n=1|after=1=After paste advance · F/I/W=social · https://arledscreen.com/owner-next.html?start=1",
   );
 }
 

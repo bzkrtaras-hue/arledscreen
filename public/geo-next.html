@@ -26,7 +26,7 @@
       "url": "https://arledscreen.com/owner-next.html",
       "description": "Open destination → paste NAP/About → ack. Live next from /geo-status.json · /point-c.json · /point-c-progress.json.",
       "step": [
-        { "@type": "HowToStep", "position": 1, "name": "Copy + Open remaining", "text": "Session start: open /owner-next.html?start=1 (or press C) to copy one delimited paste bundle for every locally open Point C pack and open every primary Open tab; textarea then restores the first open pack for N. Social packs: ?social=fb|ig|wa (or F/I/W keys) load facebookAbout/instagramBio + open profile (WA → wa.me). Pack/social deep-links append &copy=1 to auto-copy paste (or handles for WA) and open primary + OpenAlt tabs on load. Sticky + pack-list Deep/After: click to copy URLs (mod+click opens); After ?n=1|after=1 marks pasted + advances. Copy+Open ack reminds After path. D = Copy pack link · A = Copy After link · Y = Open After. M / WA paste · E / Mail paste hand off paste + Deep + After URLs. N = Pasted → next also selects the next paste (selectPasteForNext). Also: O / R / Enter / dbl-click pack · S = copy handles. Machine: point-c.json next.htmlAfter + potentialAction After step/tool." },
+        { "@type": "HowToStep", "position": 1, "name": "Copy + Open remaining", "text": "Session start: open /owner-next.html?start=1 (or press C) to copy one delimited paste bundle for every locally open Point C pack and open every primary Open tab; textarea then restores the first open pack for N. Social packs: ?social=fb|ig|wa (or F/I/W keys) load facebookAbout/instagramBio + open profile (WA → wa.me). Pack/social deep-links append &copy=1 to auto-copy paste (or handles for WA) and open primary + OpenAlt tabs on load. Sticky + pack-list Deep/After: click to copy URLs (mod+click opens); After ?n=1|after=1 marks pasted + advances. Copy+Open ack reminds After path. D = Copy pack link · A = Copy After link · Y = Open After · P = Copy+Open After. M / WA paste · E / Mail paste hand off paste + Deep + After URLs. N = Pasted → next also selects the next paste (selectPasteForNext). Also: O / R / Enter / dbl-click pack · S = copy handles. Machine: point-c.json next.htmlAfter + potentialAction After step/tool." },
         { "@type": "HowToStep", "position": 2, "name": "Paste block", "text": "Paste the copied block into each opened destination (or walk the Copy remaining bundle section by section)." },
         { "@type": "HowToStep", "position": 3, "name": "Pasted → next", "text": "Pasted → next (N) copies ack, marks pack pasted locally, advances ?pack= to next open pack. Undo mark: U. When ≥2 packs are pasted locally, Copy ack batch (B) copies npm run geo:ack -- --packs=… for one terminal paste." },
         { "@type": "HowToStep", "position": 4, "name": "Next: arleds 301", "text": "When every Point C pack is pasted locally, Next: arleds 301 (or G) loads the DNSEnable/Isimtescil 301 clipboard with Copy + Open all — even before terminal geo:ack updates priorityGate." },
@@ -370,6 +370,7 @@
           <button type="button" class="btn" id="copy-pack-link" title="Copy shareable deep-link for the active pack (?social= for FB/IG/WA, else ?pack=) with &copy=1 auto-copy">Copy pack link</button>
           <button type="button" class="btn" id="copy-after-link" title="Copy After deep-link (?n=1 marks pasted + advances) for the active pack">Copy After link</button>
           <button type="button" class="btn" id="open-after-link" title="Open After deep-link in a new tab (?n=1 marks pasted + advances)">Open After</button>
+          <button type="button" class="btn" id="copy-open-after" title="Copy After deep-link + open it (?n=1 marks pasted + advances)">Copy+Open After</button>
           <button type="button" class="btn" id="wa-paste-share" title="Open WhatsApp with current paste + Deep + After URLs (phone/desktop handoff)">WA paste</button>
           <button type="button" class="btn" id="mail-paste-share" title="Open mailto with current paste + Deep + After URLs (email handoff)">Mail paste</button>
           <button type="button" class="btn hidden" id="copy-open-remaining" title="Copy paste bundle for all open Point C packs + open their primary tabs">Copy + Open remaining</button>
@@ -380,7 +381,7 @@
           <button type="button" class="btn hidden" id="next-arleds" title="Advance to arleds.com 301 DNSEnable clipboard">Next: arleds 301</button>
           <button type="button" class="btn hidden" id="next-tur1a" title="Open Tur1a blind checklist">Next: Tur1a</button>
         </div>
-        <p class="actions-hint"><kbd>C</kbd> = Copy + Open remaining · <kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next · <kbd>U</kbd> = Undo pasted · <kbd>O</kbd> = Open remaining · <kbd>R</kbd> = Copy remaining · <kbd>S</kbd> = copy social handles · <kbd>D</kbd> = Copy pack link (&amp;copy=1) · <kbd>A</kbd> = Copy After link (&amp;n=1) · <kbd>Y</kbd> = Open After · <kbd>M</kbd> = WA paste · <kbd>E</kbd> = Mail paste · <kbd>F</kbd> = Facebook pack · <kbd>I</kbd> = Instagram pack · <kbd>W</kbd> = WhatsApp · <code>?social=fb|ig|wa</code> · <code>&amp;copy=1</code> auto-copy · <code>&amp;n=1</code>/<code>after=1</code> after-paste advance · <kbd>B</kbd> = ack batch · <kbd>G</kbd> = arleds 301 · <kbd>T</kbd> = Tur1a · <kbd>L</kbd> = Log + next · dbl-click pack = Copy + Open</p>
+        <p class="actions-hint"><kbd>C</kbd> = Copy + Open remaining · <kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next · <kbd>U</kbd> = Undo pasted · <kbd>O</kbd> = Open remaining · <kbd>R</kbd> = Copy remaining · <kbd>S</kbd> = copy social handles · <kbd>D</kbd> = Copy pack link (&amp;copy=1) · <kbd>A</kbd> = Copy After link (&amp;n=1) · <kbd>Y</kbd> = Open After · <kbd>P</kbd> = Copy+Open After · <kbd>M</kbd> = WA paste · <kbd>E</kbd> = Mail paste · <kbd>F</kbd> = Facebook pack · <kbd>I</kbd> = Instagram pack · <kbd>W</kbd> = WhatsApp · <code>?social=fb|ig|wa</code> · <code>&amp;copy=1</code> auto-copy · <code>&amp;n=1</code>/<code>after=1</code> after-paste advance · <kbd>B</kbd> = ack batch · <kbd>G</kbd> = arleds 301 · <kbd>T</kbd> = Tur1a · <kbd>L</kbd> = Log + next · dbl-click pack = Copy + Open</p>
         <p class="pack-deep" id="pack-deep" aria-label="Shareable pack deep-link with copy=1">
           <span class="pack-deep-label">Deep</span>
           <a id="pack-deep-a" href="https://arledscreen.com/owner-next.html?start=1" target="_blank" rel="noopener noreferrer">/owner-next.html?start=1</a>
@@ -606,6 +607,24 @@
       const ackEl = $("ack");
       if (ackEl) {
         ackEl.textContent = `After opened · ${href}`;
+        ackEl.classList.add("ok");
+        setTimeout(() => ackEl.classList.remove("ok"), 1600);
+      }
+    }
+
+    /** Copy After URL + open it (phone handoff clipboard + mark-pasted advance tab). */
+    async function copyOpenPackAfterLink(btn) {
+      const href = packAfterLinkUrl(activeKey);
+      renderPackDeepLink();
+      await copyText(href, btn || $("copy-open-after"), "Copy+Open After");
+      try {
+        window.open(href, "_blank", "noopener,noreferrer");
+      } catch {
+        /* popup blocked */
+      }
+      const ackEl = $("ack");
+      if (ackEl) {
+        ackEl.textContent = `Copy+Open After · ${href}`;
         ackEl.classList.add("ok");
         setTimeout(() => ackEl.classList.remove("ok"), 1600);
       }
@@ -1272,7 +1291,6 @@
           turBtn.classList.remove("primary");
         }
       }
-      const primaryOpen = $("copy-open-all");
       if (primaryOpen && (openLeft || viewingArleds || viewingTur1a)) primaryOpen.classList.add("primary");
       if (primaryOpen && allPasted && !viewingArleds && !viewingTur1a) primaryOpen.classList.remove("primary");
       return cmd;
@@ -2011,7 +2029,7 @@
       if (ackEl) {
         const afterPath =
           packAfterLinkUrl(activeKey).replace(/^https:\/\/arledscreen\.com/, "") || "?n=1";
-        ackEl.textContent = `Paste copied + Open×${urls.length || 0} · after paste: A / sticky After ${afterPath}`;
+        ackEl.textContent = `Paste copied + Open×${urls.length || 0} · after paste: A · Y / Open After · P Copy+Open After · sticky After ${afterPath}`;
         ackEl.classList.add("ok");
         setTimeout(() => ackEl.classList.remove("ok"), 2200);
       }
@@ -2034,7 +2052,7 @@
       if (ackEl) {
         const afterPath =
           packAfterLinkUrl(activeKey).replace(/^https:\/\/arledscreen\.com/, "") || "?n=1";
-        ackEl.textContent = `Paste copied + Open · after paste: A / sticky After ${afterPath}`;
+        ackEl.textContent = `Paste copied + Open · after paste: A · Y / Open After · P Copy+Open After · sticky After ${afterPath}`;
         ackEl.classList.add("ok");
         setTimeout(() => ackEl.classList.remove("ok"), 2200);
       }
@@ -2046,6 +2064,7 @@
     $("copy-pack-link").addEventListener("click", () => copyPackDeepLink($("copy-pack-link")));
     $("copy-after-link").addEventListener("click", () => copyPackAfterLink($("copy-after-link")));
     $("open-after-link").addEventListener("click", () => openPackAfterLink($("open-after-link")));
+    $("copy-open-after").addEventListener("click", () => copyOpenPackAfterLink($("copy-open-after")));
     /** Sticky Deep/After: plain click copies URL; mod/middle-click keeps native open. */
     const packDeepA = $("pack-deep-a");
     if (packDeepA) {
@@ -2155,6 +2174,11 @@
       if (e.key === "y" || e.key === "Y") {
         e.preventDefault();
         openPackAfterLink($("open-after-link"));
+        return;
+      }
+      if (e.key === "p" || e.key === "P") {
+        e.preventDefault();
+        copyOpenPackAfterLink($("copy-open-after"));
         return;
       }
       if (e.key === "m" || e.key === "M") {
