@@ -405,6 +405,10 @@ if (
     (pcJson?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("/owner-next.html?start=1"),
     ) &&
+    String(pcJson?.socialHandles?.facebook || "") === "arledscreenn" &&
+    String(pcJson?.socialHandles?.instagram || "") === "arledscreen" &&
+    String(pcJson?.socialHandles?.whatsapp || "") === "arledscreen" &&
+    JSON.stringify(pcJson?.sameAs || []).includes("/social.json") &&
     fs.existsSync(path.join(outDir, ".well-known/point-c.json")) &&
     fs.existsSync(path.join(outDir, "point-c-en.json")) &&
     fs.existsSync(path.join(outDir, "feeds/point-c-en.csv")) &&
@@ -491,6 +495,9 @@ if (
         (geoStatus?.potentialAction?.tool || []).some((t) =>
           String(t?.url || "").includes("/owner-next.html?start=1"),
         ) &&
+        String(geoStatus?.socialHandles?.facebook || "") === "arledscreenn" &&
+        String(geoStatus?.socialHandles?.instagram || "") === "arledscreen" &&
+        String(geoStatus?.socialHandles?.whatsapp || "") === "arledscreen" &&
         String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") &&
         crossOk
       );

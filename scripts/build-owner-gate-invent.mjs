@@ -14,6 +14,7 @@ import {
   buildPointCPackChecklist,
   DNSENABLE_GMAIL_DRAFT_URL,
   DNSENABLE_PANEL_URL,
+  OWNER_SOCIAL_HANDLES,
   ownerNextHtmlUrl,
   ownerNextStartUrl,
   pointCOpenAltUrls,
@@ -159,10 +160,11 @@ export function buildGeoStatusDoc() {
     "@id": `${SITE}/geo-status.json`,
     name: "ARLEDSCREEN GEO owner-gate status",
     description:
-      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
+      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json). Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
     url: `${SITE}/geo-status.json`,
     dateModified: new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
+    socialHandles: OWNER_SOCIAL_HANDLES,
     isBasedOn: [
       `${SITE}/point-c.json`,
       `${SITE}/point-c.txt`,
@@ -173,6 +175,7 @@ export function buildGeoStatusDoc() {
       `${SITE}/owner-next.txt`,
       `${SITE}/owner-next.html?start=1`,
       `${SITE}/owner-next.html`,
+      `${SITE}/social.json`,
       `${SITE}/#website`,
     ],
     distribution: [
@@ -200,6 +203,12 @@ export function buildGeoStatusDoc() {
         encodingFormat: "text/html",
         contentUrl: `${SITE}/owner-next.html`,
         name: "Owner next HTML Open/paste",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/social.json`,
+        name: "Owner-confirmed social handles",
       },
     ],
     priorityGate: priority,
@@ -606,16 +615,7 @@ export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {
   }
 
   const htmlDeep = next?.html || ownerNextHtmlUrl(next?.packKey || "");
-  const socialHandles = {
-    facebook: "arledscreenn",
-    instagram: "arledscreen",
-    whatsapp: "arledscreen",
-    facebookUrl: "https://www.facebook.com/arledscreenn",
-    instagramUrl: "https://www.instagram.com/arledscreen",
-    whatsappUrl: "https://wa.me/905305078834",
-    socialJson: `${SITE}/social.json`,
-    line: "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json",
-  };
+  const socialHandles = OWNER_SOCIAL_HANDLES;
   const doc = {
     "@context": "https://schema.org",
     "@type": "Dataset",

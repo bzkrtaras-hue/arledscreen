@@ -2490,12 +2490,16 @@ if (fs.existsSync(outDir)) {
       !JSON.stringify(pcJson.isBasedOn || []).includes("/point-c-progress.json") ||
       !JSON.stringify(pcJson.distribution || []).includes("/point-c-progress.json") ||
       !(pcJson?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/point-c-progress.json")) ||
+      String(pcJson?.socialHandles?.facebook || "") !== "arledscreenn" ||
+      String(pcJson?.socialHandles?.instagram || "") !== "arledscreen" ||
+      String(pcJson?.socialHandles?.whatsapp || "") !== "arledscreen" ||
+      !JSON.stringify(pcJson?.sameAs || []).includes("/social.json") ||
       !fs.readFileSync(path.join(outDir, ".well-known/point-c.json")).equals(
         fs.readFileSync(path.join(outDir, "point-c.json")),
       ) ||
       fs.readFileSync(path.join(outDir, "point-c.csv"), "utf8") !== pcCsv
     ) {
-      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + HowTo potentialAction + progress invent joins; well-known/root twins must match");
+      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + HowTo potentialAction + socialHandles + progress invent joins; well-known/root twins must match");
       process.exit(1);
     }
     for (const rel of [
@@ -3288,8 +3292,12 @@ if (fs.existsSync(outDir)) {
         process.exit(1);
       }
       const block = headersLive.slice(idx, idx + 280);
-      if (!block.includes("no-store") || !block.includes("CDN-Cache-Control: no-store")) {
-        console.error(`❌ out/_headers ${pathRule} must set Cache-Control/CDN no-store for owner-gate freshness`);
+      if (
+        !block.includes("! Cache-Control") ||
+        !block.includes("no-store") ||
+        !block.includes("CDN-Cache-Control: no-store")
+      ) {
+        console.error(`❌ out/_headers ${pathRule} must unset then set Cache-Control/CDN no-store for owner-gate freshness`);
         process.exit(1);
       }
     }

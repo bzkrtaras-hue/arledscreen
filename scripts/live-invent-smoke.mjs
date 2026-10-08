@@ -496,6 +496,8 @@ try {
     (pcJson?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("/owner-next.html?start=1"),
     ) &&
+    String(pcJson?.socialHandles?.facebook || "") === "arledscreenn" &&
+    String(pcJson?.socialHandles?.instagram || "") === "arledscreen" &&
     String(pcJson?.description || "").includes("potentialAction") &&
     String(pcJson?.ownerNext || "").includes("potentialAction") &&
     String(pcJson?.ownerNext || "").includes("/point-c-progress.json") &&
@@ -601,6 +603,8 @@ try {
     (geoStatus?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("/owner-next.html?start=1"),
     ) &&
+    String(geoStatus?.socialHandles?.facebook || "") === "arledscreenn" &&
+    String(geoStatus?.socialHandles?.instagram || "") === "arledscreen" &&
     String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") &&
     String(geoStatus?.priorityGate || "") === "pointC" &&
     geoStatus?.potentialAction?.["@type"] === "HowTo" &&

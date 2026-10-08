@@ -519,6 +519,18 @@ export function buildPointCNext(profiles, { en = false } = {}) {
 
 const SITE = "https://arledscreen.com";
 
+/** Owner-confirmed social handles (2026-10-08) — invent twin field for Point C / owner-next. */
+export const OWNER_SOCIAL_HANDLES = {
+  facebook: "arledscreenn",
+  instagram: "arledscreen",
+  whatsapp: "arledscreen",
+  facebookUrl: "https://www.facebook.com/arledscreenn",
+  instagramUrl: "https://www.instagram.com/arledscreen",
+  whatsappUrl: "https://wa.me/905305078834",
+  socialJson: `${SITE}/social.json`,
+  line: "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json",
+};
+
 /** Browser deep-link for a Point C pack on the owner Open/paste surface. */
 export function ownerNextHtmlUrl(packKey = "") {
   const key = String(packKey || "").trim();
@@ -615,10 +627,11 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
     "@id": jsonUrl,
     name: en ? "ARLEDSCREEN Point C paste packs (EN)" : "ARLEDSCREEN Point C paste packs",
     description:
-      "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. Follow potentialAction HowTo when next is set. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/.",
+      "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json). Follow potentialAction HowTo when next is set. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/.",
     url: jsonUrl,
     inLanguage: en ? "en" : "tr",
     creator: { "@id": `${SITE}/#organization` },
+    socialHandles: OWNER_SOCIAL_HANDLES,
     isBasedOn: [
       `${SITE}/entity-profiles.json`,
       txtUrl,
@@ -627,6 +640,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       `${SITE}/owner-next.txt`,
       `${SITE}/point-c-progress.json`,
       `${SITE}/geo-status.json`,
+      `${SITE}/social.json`,
       `${SITE}/#website`,
     ],
     distribution: [
@@ -665,6 +679,12 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE}/geo-status.json`,
       },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/social.json`,
+        name: "Owner-confirmed social handles",
+      },
     ],
     sameAs: [
       txtUrl,
@@ -675,6 +695,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       `${SITE}/owner-next.txt`,
       `${SITE}/geo-status.json`,
       `${SITE}/point-c-progress.json`,
+      `${SITE}/social.json`,
     ],
     packs: items,
     progress: { acked: acked.length, total: sequenceKeys(en).length },

@@ -139,6 +139,7 @@
 # Owner-gate invent surfaces — no-store so Point C / socialHandles / HowTo updates are not stale for 1h.
 # Last matching rule wins over /:file.json and /.well-known/:file.json wildcards above.
 /owner-next.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -146,6 +147,7 @@
   Content-Type: application/json; charset=utf-8
 
 /geo-next.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -153,6 +155,7 @@
   Content-Type: application/json; charset=utf-8
 
 /geo-status.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -160,6 +163,7 @@
   Content-Type: application/json; charset=utf-8
 
 /point-c.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -167,6 +171,7 @@
   Content-Type: application/json; charset=utf-8
 
 /point-c-progress.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -174,6 +179,7 @@
   Content-Type: application/json; charset=utf-8
 
 /tur1a.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -181,6 +187,7 @@
   Content-Type: application/json; charset=utf-8
 
 /social.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -188,16 +195,19 @@
   Content-Type: application/json; charset=utf-8
 
 /owner-next.html
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
 
 /geo-next.html
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
 
 /.well-known/owner-next.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -205,6 +215,7 @@
   Content-Type: application/json; charset=utf-8
 
 /.well-known/geo-next.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -212,6 +223,7 @@
   Content-Type: application/json; charset=utf-8
 
 /.well-known/geo-status.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -219,6 +231,7 @@
   Content-Type: application/json; charset=utf-8
 
 /.well-known/point-c.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -226,6 +239,7 @@
   Content-Type: application/json; charset=utf-8
 
 /.well-known/point-c-progress.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
@@ -233,6 +247,7 @@
   Content-Type: application/json; charset=utf-8
 
 /.well-known/social.json
+  ! Cache-Control
   Cache-Control: no-store, must-revalidate
   CDN-Cache-Control: no-store
   Cloudflare-CDN-Cache-Control: no-store
