@@ -426,6 +426,12 @@ if (
       String(t?.url || "").includes("/owner-next.html?start=1"),
     ) &&
     (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("dnsenable=1"),
+    ) &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("tur1a=1"),
+    ) &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
       String(t?.name || "").includes("After ?n=1"),
     ) &&
     (pcJson?.potentialAction?.tool || []).some((t) =>
@@ -525,6 +531,12 @@ if (
           String(t?.url || "").includes("/owner-next.html?start=1"),
         ) &&
         (progress?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("dnsenable=1"),
+        ) &&
+        (progress?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("tur1a=1"),
+        ) &&
+        (progress?.potentialAction?.tool || []).some((t) =>
           String(t?.url || "").includes("social=fb"),
         ) &&
         String(progress?.socialHandles?.facebook || "") === "arledscreenn" &&
@@ -538,12 +550,25 @@ if (
           String(t?.url || "").includes("/owner-next.html?start=1"),
         ) &&
         (geoStatus?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("dnsenable=1"),
+        ) &&
+        (geoStatus?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("tur1a=1"),
+        ) &&
+        (geoStatus?.potentialAction?.tool || []).some((t) =>
           String(t?.url || "").includes("social=fb"),
         ) &&
         String(geoStatus?.socialHandles?.facebook || "") === "arledscreenn" &&
         String(geoStatus?.socialHandles?.instagram || "") === "arledscreen" &&
         String(geoStatus?.socialHandles?.whatsapp || "") === "arledscreen" &&
         String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") &&
+        String(tur1a?.potentialAction?.url || "").includes("tur1a=1") &&
+        (tur1a?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("dnsenable=1"),
+        ) &&
+        (tur1a?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("tur1a=1"),
+        ) &&
         crossOk
       );
     })() &&
@@ -706,6 +731,7 @@ else fail("ard.resources.pointC");
     readText("AGENTS.md").includes("Copy+Open Tur1a") &&
     readText("AGENTS.md").includes("tur1a=1") &&
     readText("AGENTS.md").includes("owner-friction") &&
+    readText("AGENTS.md").includes("gate HowTo tools") &&
     readText("AGENTS.md").includes("next.htmlAfter") &&
     readText("AGENTS.md").includes("?n=1") &&
     readText("AGENTS.md").includes("after=1") &&

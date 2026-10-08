@@ -2393,11 +2393,12 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("Copy+Open Tur1a") ||
       !agentsMdLive.includes("tur1a=1") ||
       !agentsMdLive.includes("owner-friction") ||
+      !agentsMdLive.includes("gate HowTo tools") ||
       !agentsMdLive.includes("next.htmlAfter") ||
       !agentsMdLive.includes("after=1") ||
       !agentsMdLive.includes("Copy+Open ack After hint")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + Open After + Copy+Open After + Y/P advance + Copy+Open next + Copy+Open DNSEnable + dnsenable=1 + Copy+Open Tur1a + tur1a=1 + owner-friction + next.htmlAfter + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + Open After + Copy+Open After + Y/P advance + Copy+Open next + Copy+Open DNSEnable + dnsenable=1 + Copy+Open Tur1a + tur1a=1 + owner-friction + gate HowTo tools + next.htmlAfter + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2521,6 +2522,8 @@ if (fs.existsSync(outDir)) {
       !String(pcJson.potentialAction.step[0]?.url || "").includes("http") ||
       !String(pcJson.potentialAction.step[2]?.url || "").includes("n=1") ||
       !(pcJson?.potentialAction?.tool || []).some((t) => String(t?.name || "").includes("After ?n=1")) ||
+      !(pcJson?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("dnsenable=1")) ||
+      !(pcJson?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("tur1a=1")) ||
       !String(pcJson?.description || "").includes("potentialAction") ||
       !String(pcJson?.ownerNext || "").includes("potentialAction") ||
       !String(pcJson?.ownerNext || "").includes("/point-c-progress.json") ||
@@ -2536,7 +2539,7 @@ if (fs.existsSync(outDir)) {
       ) ||
       fs.readFileSync(path.join(outDir, "point-c.csv"), "utf8") !== pcCsv
     ) {
-      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + htmlAfter + HowTo After step/tool + socialHandles + progress invent joins; well-known/root twins must match");
+      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + htmlAfter + HowTo After step/tool + gate HowTo tools (dnsenable=1 · tur1a=1) + socialHandles + progress invent joins; well-known/root twins must match");
       process.exit(1);
     }
     for (const rel of [
@@ -2604,13 +2607,16 @@ if (fs.existsSync(outDir)) {
       !JSON.stringify(tur1a.isBasedOn || []).includes("/geo-status.json") ||
       !JSON.stringify(tur1a.sameAs || []).includes("/point-c-progress.json") ||
       !(tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/geo-next.txt")) ||
+      !(tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("dnsenable=1")) ||
+      !(tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("tur1a=1")) ||
+      !String(tur1a?.potentialAction?.url || "").includes("tur1a=1") ||
       String(geoStatus?.socialHandles?.facebook || "") !== "arledscreenn" ||
       String(geoStatus?.socialHandles?.instagram || "") !== "arledscreen" ||
       String(geoStatus?.socialHandles?.whatsapp || "") !== "arledscreen" ||
       !String(geoStatus?.description || "").includes("@arledscreenn") ||
       fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
     ) {
-      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + socialHandles + tur1a HowTo/potentialAction invent joins (no invented scores)");
+      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + socialHandles + tur1a HowTo/potentialAction invent joins + gate HowTo tools (no invented scores)");
       process.exit(1);
     }
     const progress = JSON.parse(fs.readFileSync(path.join(outDir, "point-c-progress.json"), "utf8"));
@@ -2630,6 +2636,8 @@ if (fs.existsSync(outDir)) {
       !String(progressNext.html || "").includes("?pack=") ||
       !String(progress?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
       !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html?start=1")) ||
+      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("dnsenable=1")) ||
+      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("tur1a=1")) ||
       !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("?pack=")) ||
       String(progress?.socialHandles?.facebook || "") !== "arledscreenn" ||
       String(progress?.socialHandles?.instagram || "") !== "arledscreen" ||
@@ -2638,8 +2646,13 @@ if (fs.existsSync(outDir)) {
       geoStatus.gates.pointC.packs.length < 11 ||
       !String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
       !(geoStatus?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html?start=1")) ||
+      !(geoStatus?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("dnsenable=1")) ||
+      !(geoStatus?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("tur1a=1")) ||
       !String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") ||
-      !String(geoStatus?.gates?.arleds301?.html || "").includes("hostinger301") ||
+      !(
+        String(geoStatus?.gates?.arleds301?.html || "").includes("dnsenable=1") ||
+        String(geoStatus?.gates?.arleds301?.html || "").includes("hostinger301")
+      ) ||
       !(geoStatus?.gates?.arleds301?.openAlts || []).some(
         (u) => String(u).startsWith("mailto:") && String(u).includes("destek@isimtescil"),
       ) ||

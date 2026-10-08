@@ -15,9 +15,12 @@ import {
   DNSENABLE_GMAIL_DRAFT_URL,
   DNSENABLE_PANEL_URL,
   OWNER_SOCIAL_HANDLES,
+  gateHowToTools,
+  ownerNextDnsenableUrl,
   ownerNextHtmlUrl,
   ownerNextSocialUrl,
   ownerNextStartUrl,
+  ownerNextTur1aUrl,
   pointCOpenAltUrls,
 } from "./print-point-c-packs.mjs";
 import { HUMAN_PLATFORMS, TR, platformOpenUrl } from "./print-tur1a-prompts.mjs";
@@ -40,6 +43,11 @@ function socialHowToTools() {
     { "@type": "HowToTool", name: "owner-next.html?social=ig", url: ownerNextSocialUrl("ig") },
     { "@type": "HowToTool", name: "owner-next.html?social=wa", url: ownerNextSocialUrl("wa") },
   ];
+}
+
+/** Gate deep-links + social tools for invent HowTo surfaces. */
+function ownerFrictionHowToTools() {
+  return [...gateHowToTools(), ...socialHowToTools()];
 }
 
 function loadEntityProfiles() {
@@ -330,11 +338,7 @@ export function buildGeoStatusDoc() {
         },
       ],
       tool: [
-        {
-          "@type": "HowToTool",
-          name: "owner-next.html?start=1",
-          url: startHtml,
-        },
+        ...ownerFrictionHowToTools(),
         {
           "@type": "HowToTool",
           name: "owner-next.html",
@@ -344,16 +348,16 @@ export function buildGeoStatusDoc() {
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
-        ...socialHowToTools(),
       ],
     };
   } else if (priority === "arleds301" && arleds.open) {
+    const dnsHtml = ownerNextDnsenableUrl();
     doc.potentialAction = {
       "@type": "HowTo",
       name: "arleds.com 301 Domain Redirect (DNSEnable)",
       description:
-        "Owner-gated legacy domain redirect. Configure permanent 301 to /tr/ — do not invent DNS or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html?pack=hostinger301",
-      url: ownerNextHtmlUrl("hostinger301"),
+        `Owner-gated legacy domain redirect. Configure permanent 301 to /tr/ — do not invent DNS or mention rates. Browser: ${dnsHtml} (G / Copy+Open DNSEnable) · alias ?pack=hostinger301&copy=1`,
+      url: dnsHtml,
       step: [
         {
           "@type": "HowToStep",
@@ -361,8 +365,8 @@ export function buildGeoStatusDoc() {
           name: "Open DNSEnable / Isimtescil",
           url: arleds.open,
           text: arleds.openAlt
-            ? `Open: ${arleds.open} · OpenAlt: ${arleds.openAlt} · HTML: ${ownerNextHtmlUrl("hostinger301")}`
-            : `Open: ${arleds.open} · HTML: ${ownerNextHtmlUrl("hostinger301")}`,
+            ? `Open: ${arleds.open} · OpenAlt: ${arleds.openAlt} · HTML: ${dnsHtml}`
+            : `Open: ${arleds.open} · HTML: ${dnsHtml}`,
         },
         {
           "@type": "HowToStep",
@@ -378,11 +382,7 @@ export function buildGeoStatusDoc() {
         },
       ],
       tool: [
-        {
-          "@type": "HowToTool",
-          name: "owner-next.html",
-          url: ownerNextHtmlUrl("hostinger301"),
-        },
+        ...gateHowToTools(),
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
         {
@@ -393,19 +393,20 @@ export function buildGeoStatusDoc() {
       ],
     };
   } else if (priority === "tur1a" && tur1aNext?.prompt && tur1aNext?.open) {
+    const turHtml = ownerNextTur1aUrl();
     doc.potentialAction = {
       "@type": "HowTo",
       name: `Tur1a next blind: ${tur1aNext.platform} · ${tur1aNext.promptId}`,
       description:
-        "Owner-gated human blind observation. Log only observed flags — do not invent mention rates or scores.",
-      url: `${SITE}/tur1a.json`,
+        `Owner-gated human blind observation. Log only observed flags — do not invent mention rates or scores. Browser: ${turHtml} (T / Copy+Open Tur1a)`,
+      url: turHtml,
       step: [
         {
           "@type": "HowToStep",
           position: 1,
           name: "Open platform",
           url: tur1aNext.open,
-          text: `Open: ${tur1aNext.open}`,
+          text: `Open: ${tur1aNext.open} · HTML: ${turHtml}`,
         },
         {
           "@type": "HowToStep",
@@ -423,6 +424,7 @@ export function buildGeoStatusDoc() {
         },
       ],
       tool: [
+        ...gateHowToTools(),
         { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
         { "@type": "HowToTool", name: "feeds/tur1a.csv", url: `${SITE}/feeds/tur1a.csv` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
@@ -561,11 +563,7 @@ export function buildPointCProgressDoc() {
         },
       ],
       tool: [
-        {
-          "@type": "HowToTool",
-          name: "owner-next.html?start=1",
-          url: startHtml,
-        },
+        ...ownerFrictionHowToTools(),
         {
           "@type": "HowToTool",
           name: "owner-next.html",
@@ -576,7 +574,6 @@ export function buildPointCProgressDoc() {
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
         { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
-        ...socialHowToTools(),
       ],
     };
   }

@@ -565,9 +565,30 @@ export const OWNER_SOCIAL_HANDLES = {
   line: "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json · deep: /owner-next.html?social=fb|ig|wa",
 };
 
+/** arleds 301 prep deep-link (G / Copy+Open DNSEnable). */
+export function ownerNextDnsenableUrl() {
+  return `${SITE}/owner-next.html?dnsenable=1`;
+}
+
+/** Tur1a observe/log deep-link (T / Copy+Open Tur1a). */
+export function ownerNextTur1aUrl() {
+  return `${SITE}/owner-next.html?tur1a=1`;
+}
+
+/** HowToTool rows for the three owner-friction gate deep-links. */
+export function gateHowToTools() {
+  return [
+    { "@type": "HowToTool", name: "owner-next.html?start=1", url: ownerNextStartUrl() },
+    { "@type": "HowToTool", name: "owner-next.html?dnsenable=1", url: ownerNextDnsenableUrl() },
+    { "@type": "HowToTool", name: "owner-next.html?tur1a=1", url: ownerNextTur1aUrl() },
+  ];
+}
+
 /** Browser deep-link for a Point C pack on the owner Open/paste surface (+ &copy=1). */
 export function ownerNextHtmlUrl(packKey = "") {
   const key = String(packKey || "").trim();
+  if (key === "hostinger301") return ownerNextDnsenableUrl();
+  if (key === "tur1a") return ownerNextTur1aUrl();
   return key
     ? withOwnerCopy(`${SITE}/owner-next.html?pack=${encodeURIComponent(key)}`)
     : `${SITE}/owner-next.html`;
@@ -805,11 +826,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         },
       ],
       tool: [
-        {
-          "@type": "HowToTool",
-          name: "owner-next.html?start=1",
-          url: startHtml,
-        },
+        ...gateHowToTools(),
         {
           "@type": "HowToTool",
           name: "owner-next.html",

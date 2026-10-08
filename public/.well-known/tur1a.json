@@ -871,15 +871,15 @@
   "potentialAction": {
     "@type": "HowTo",
     "name": "Tur1a next blind: chatgpt · 1",
-    "description": "Owner-gated human blind observation. Log only observed flags — do not invent mention rates or scores.",
-    "url": "https://arledscreen.com/tur1a.json",
+    "description": "Owner-gated human blind observation. Log only observed flags — do not invent mention rates or scores. Browser: https://arledscreen.com/owner-next.html?tur1a=1 (T / Copy+Open Tur1a)",
+    "url": "https://arledscreen.com/owner-next.html?tur1a=1",
     "step": [
       {
         "@type": "HowToStep",
         "position": 1,
         "name": "Open platform",
         "url": "https://chatgpt.com/",
-        "text": "Open: https://chatgpt.com/"
+        "text": "Open: https://chatgpt.com/ · HTML: https://arledscreen.com/owner-next.html?tur1a=1"
       },
       {
         "@type": "HowToStep",
@@ -895,6 +895,21 @@
       }
     ],
     "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?start=1",
+        "url": "https://arledscreen.com/owner-next.html?start=1"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?dnsenable=1",
+        "url": "https://arledscreen.com/owner-next.html?dnsenable=1"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?tur1a=1",
+        "url": "https://arledscreen.com/owner-next.html?tur1a=1"
+      },
       {
         "@type": "HowToTool",
         "name": "tur1a.json",

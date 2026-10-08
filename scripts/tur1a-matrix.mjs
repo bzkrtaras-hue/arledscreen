@@ -19,6 +19,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { TR, EN, HUMAN_PLATFORMS, platformOpenUrl } from "./print-tur1a-prompts.mjs";
 import { applyOwnerGateCrossJoin } from "./owner-gate-cross-join.mjs";
+import { gateHowToTools, ownerNextTur1aUrl } from "./print-point-c-packs.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -283,19 +284,20 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
       "live: https://arledscreen.com/tur1a.json → next + potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run tur1a:next · tur1a:csv · after observe: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… · Open: https://chatgpt.com/ · https://gemini.google.com/app · https://www.perplexity.ai/ · https://www.google.com/",
   };
   if (next?.prompt && next?.open) {
+    const turHtml = ownerNextTur1aUrl();
     doc.potentialAction = {
       "@type": "HowTo",
       name: `Tur1a next blind: ${next.platform} · ${next.promptId}`,
       description:
-        "Owner-gated human blind observation. Log only observed flags — do not invent mention rates or scores.",
-      url: `${SITE}/tur1a.json`,
+        `Owner-gated human blind observation. Log only observed flags — do not invent mention rates or scores. Browser: ${turHtml} (T / Copy+Open Tur1a)`,
+      url: turHtml,
       step: [
         {
           "@type": "HowToStep",
           position: 1,
           name: "Open platform",
           url: next.open,
-          text: `Open: ${next.open}`,
+          text: `Open: ${next.open} · HTML: ${turHtml}`,
         },
         {
           "@type": "HowToStep",
@@ -311,6 +313,7 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
         },
       ],
       tool: [
+        ...gateHowToTools(),
         { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
         { "@type": "HowToTool", name: "feeds/tur1a.csv", url: `${SITE}/feeds/tur1a.csv` },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },

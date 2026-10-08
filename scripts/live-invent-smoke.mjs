@@ -263,6 +263,7 @@ else fail("ai.txt WebSite + quote");
     agentsMd.includes("Copy+Open Tur1a") &&
     agentsMd.includes("tur1a=1") &&
     agentsMd.includes("owner-friction") &&
+    agentsMd.includes("gate HowTo tools") &&
     agentsMd.includes("next.htmlAfter") &&
     agentsMd.includes("after=1") &&
     agentsMd.includes("Copy+Open ack After hint")
@@ -532,6 +533,12 @@ try {
       String(t?.url || "").includes("/owner-next.html?start=1"),
     ) &&
     (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("dnsenable=1"),
+    ) &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("tur1a=1"),
+    ) &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
       String(t?.name || "").includes("After ?n=1"),
     ) &&
     String(pcJson?.socialHandles?.facebook || "") === "arledscreenn" &&
@@ -729,6 +736,12 @@ try {
       String(t?.url || "").includes("/owner-next.html?start=1"),
     ) &&
     (geoStatus?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("dnsenable=1"),
+    ) &&
+    (geoStatus?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("tur1a=1"),
+    ) &&
+    (geoStatus?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("social=fb"),
     ) &&
     String(geoStatus?.socialHandles?.facebook || "") === "arledscreenn" &&
@@ -748,10 +761,13 @@ try {
     Array.isArray(tur1a?.potentialAction?.step) &&
     tur1a.potentialAction.step.length >= 3 &&
     String(tur1a.potentialAction.step[0]?.url || "").includes("http") &&
+    String(tur1a?.potentialAction?.url || "").includes("tur1a=1") &&
     String(tur1a?.description || "").includes("potentialAction") &&
     String(tur1a?.ownerNext || "").includes("potentialAction") &&
     JSON.stringify(tur1a.sameAs || []).includes("/point-c-progress.json") &&
     (tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/geo-next.txt")) &&
+    (tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("dnsenable=1")) &&
+    (tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("tur1a=1")) &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json") &&
     String(ard?.agentic?.resources?.socialJson?.url || "").includes("/social.json") &&
@@ -795,6 +811,12 @@ try {
       String(progress.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
       (progress?.potentialAction?.tool || []).some((t) =>
         String(t?.url || "").includes("/owner-next.html?start=1"),
+      ) &&
+      (progress?.potentialAction?.tool || []).some((t) =>
+        String(t?.url || "").includes("dnsenable=1"),
+      ) &&
+      (progress?.potentialAction?.tool || []).some((t) =>
+        String(t?.url || "").includes("tur1a=1"),
       ) &&
       crossOk
     ) {
