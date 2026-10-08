@@ -90,6 +90,7 @@ const URLS = [
   `https://${HOST}/point-c.txt`,
   `https://${HOST}/point-c-en.txt`,
   `https://${HOST}/.well-known/point-c.txt`,
+  `https://${HOST}/.well-known/point-c-en.txt`,
   `https://${HOST}/security.txt`,
   `https://${HOST}/organization.json`,
   `https://${HOST}/company.json`,

@@ -296,6 +296,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/point-c.txt",
     "/point-c-en.txt",
     "/.well-known/point-c.txt",
+    "/.well-known/point-c-en.txt",
     "/security.txt",
     "/feeds/merchant-priced-panels.tsv",
     "/feeds/prices.rss",

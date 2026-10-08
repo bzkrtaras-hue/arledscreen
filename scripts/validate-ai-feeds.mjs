@@ -613,6 +613,7 @@ if (fs.existsSync(outDir)) {
       "/point-c.txt",
       "/point-c-en.txt",
       "/.well-known/point-c.txt",
+      "/.well-known/point-c-en.txt",
       "/humans.txt",
       "/.well-known/security.txt",
       "/security.txt",
@@ -628,6 +629,10 @@ if (fs.existsSync(outDir)) {
         console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
         process.exit(1);
       }
+    }
+    if (!String(pcEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")) {
+      console.error("❌ ard.json resources.pointCEn.wellKnown must cite /.well-known/point-c-en.txt");
+      process.exit(1);
     }
     const epRes = ard?.agentic?.resources?.entityProfiles;
     const geoRes = ard?.agentic?.resources?.geoBaseline;
@@ -1916,9 +1921,13 @@ if (fs.existsSync(outDir)) {
     !arledsOps.includes("https://www.isimtescil.net/") ||
     !arledsOps.includes("https://hpanel.hostinger.com/") ||
     !arledsOps.includes("https://dash.cloudflare.com/") ||
-    !arledsOps.includes("Open:")
+    !arledsOps.includes("Open:") ||
+    !arledsOps.includes("geo:next") ||
+    !arledsOps.includes("point-c:csv") ||
+    !arledsOps.includes("https://business.google.com/") ||
+    !arledsOps.includes("https://chatgpt.com/")
   ) {
-    console.error("❌ docs/ops/arleds-301-hostinger.md must list Open: tabs (isimtescil/hPanel/Cloudflare)");
+    console.error("❌ docs/ops/arleds-301-hostinger.md must list Open: tabs (isimtescil/hPanel/Cloudflare) + geo:next/point-c:csv + GBP/chatgpt Open");
     process.exit(1);
   }
   console.log("✅ security.txt + arleds ops doc cite organization/geo-baseline invent + Open tabs");
@@ -2119,6 +2128,13 @@ if (fs.existsSync(outDir)) {
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
       console.error("❌ out/.well-known/point-c.txt must match point-c.txt");
+      process.exit(1);
+    }
+    if (
+      !fs.existsSync(path.join(outDir, ".well-known/point-c-en.txt")) ||
+      !fs.readFileSync(path.join(outDir, ".well-known/point-c-en.txt")).equals(fs.readFileSync(path.join(outDir, "point-c-en.txt")))
+    ) {
+      console.error("❌ out/.well-known/point-c-en.txt must exist and match point-c-en.txt");
       process.exit(1);
     }
   }
@@ -2467,9 +2483,13 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("#website") ||
       !rssLive.includes("geo:next") ||
       !rssLive.includes("geo:ack") ||
+      !rssLive.includes("point-c:csv") ||
+      !rssLive.includes("https://www.isimtescil.net/") ||
+      !rssLive.includes("https://business.google.com/") ||
+      !rssLive.includes("https://chatgpt.com/") ||
       !rssLive.includes('rel="related"')
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + security/llms-full + #website + geo:next/ack");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + security/llms-full + #website + geo:next/ack + point-c:csv Open tabs");
       process.exit(1);
     }
   }
@@ -4073,6 +4093,7 @@ if (fs.existsSync(outDir)) {
     "/point-c.txt",
     "/point-c-en.txt",
     "/.well-known/point-c.txt",
+    "/.well-known/point-c-en.txt",
     "/.well-known/panels.json",
     "/.well-known/mpn.json",
     "/.well-known/merchant.json",
@@ -4597,6 +4618,7 @@ for (const must of [
   "/point-c.txt",
   "/point-c-en.txt",
   "/.well-known/point-c.txt",
+  "/.well-known/point-c-en.txt",
   "/brand",
   "/modules",
   "/product",

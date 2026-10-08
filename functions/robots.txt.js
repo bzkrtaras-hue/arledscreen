@@ -60,6 +60,7 @@ Allow: /humans.txt
 Allow: /point-c.txt
 Allow: /point-c-en.txt
 Allow: /.well-known/point-c.txt
+Allow: /.well-known/point-c-en.txt
 Allow: /security.txt
 Allow: /catalog
 Allow: /ai-shopping

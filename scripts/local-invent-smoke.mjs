@@ -165,10 +165,13 @@ if (
   rss.includes("/AGENTS.md") &&
   rss.includes("/.well-known/security.txt") &&
   rss.includes("geo:next") &&
-  rss.includes("geo:ack")
+  rss.includes("geo:ack") &&
+  rss.includes("point-c:csv") &&
+  rss.includes("https://www.isimtescil.net/") &&
+  rss.includes("https://chatgpt.com/")
 ) {
-  ok("prices.rss atom:link + invent aliases + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
-} else fail("prices.rss atom:link + invent aliases + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
+  ok("prices.rss atom:link + invent aliases + discovery + point-c:csv Open");
+} else fail("prices.rss atom:link + invent aliases + discovery + point-c:csv Open");
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");

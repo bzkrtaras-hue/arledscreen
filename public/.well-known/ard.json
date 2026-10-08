@@ -295,7 +295,8 @@
         "type": "Owner Point C Paste Packs (EN)",
         "url": "https://arledscreen.com/point-c-en.txt",
         "format": "text/plain",
-        "description": "EN cite-only Point C paste packs (packsEn.*). Prefer /point-c.txt for TR NAP. Owner-gated.",
+        "description": "EN cite-only Point C paste packs (packsEn.*). Prefer /point-c.txt for TR NAP. Owner-gated. Alias /.well-known/point-c-en.txt.",
+        "wellKnown": "https://arledscreen.com/.well-known/point-c-en.txt",
         "tr": "https://arledscreen.com/point-c.txt",
         "source": "https://arledscreen.com/entity-profiles.json"
       },
@@ -988,6 +989,7 @@
       "/point-c.txt",
       "/point-c-en.txt",
       "/.well-known/point-c.txt",
+      "/.well-known/point-c-en.txt",
       "/feeds/merchant-priced-panels.tsv",
       "/feeds/prices.rss",
       "/.well-known/ard.json",

@@ -1382,7 +1382,8 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/.well-known/security.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/point-c-en.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/.well-known/point-c.txt" rel="related" type="text/plain"/>
-    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /offer.json · /offers.json · /dataset.json · /feed.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
+    <atom:link href="${SITE_URL}/.well-known/point-c-en.txt" rel="related" type="text/plain"/>
+    <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /offer.json · /offers.json · /dataset.json · /feed.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: ${OWNER_FRICTION}</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
     <docs>${SITE_URL}/ai.txt</docs>
@@ -3567,6 +3568,8 @@ function main() {
       writeText(outDir, "point-c-en.txt", pointCEn);
       writeText(publicDir, ".well-known/point-c.txt", pointCTr);
       writeText(outDir, ".well-known/point-c.txt", pointCTr);
+      writeText(publicDir, ".well-known/point-c-en.txt", pointCEn);
+      writeText(outDir, ".well-known/point-c-en.txt", pointCEn);
     } catch (e) {
       console.error(`postbuild-ai: entity-profiles enrich / point-c.txt emit failed: ${e?.message || e}`);
       process.exit(1);

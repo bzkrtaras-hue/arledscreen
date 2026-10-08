@@ -2,11 +2,13 @@
 
 Legacy / side domain `arleds.com` must **not** remain a citation source. Until it 301s to the canonical TR hub, SERP and AI agents may prefer the wrong host.
 
+Owner single clipboard: `npm run geo:next` (Point C → arleds 301 → Tur1a → merge) · spreadsheet: `npm run point-c:csv` · after paste: `npm run geo:ack` · status: `npm run geo:status` · playbook: `docs/offsite-entity-playbook.md`.
+
 ## Live DNS first (do not open the wrong panel)
 
 ```bash
 npm run verify:arleds-301
-# or: npm run geo:status   → look for mode=…
+# or: npm run geo:next / npm run geo:status   → look for mode=…
 ```
 
 `verify:arleds-301` resolves live NS/A and prints `mode:` plus **Where:/Open:/OpenAlt:** provider tabs. Follow that mode — Hostinger hPanel only helps when NS is actually Hostinger.
@@ -125,5 +127,6 @@ Exit 0 only when all four probes return 301/308 with Location under `https://arl
 ## Notes
 
 - Do **not** add `arleds.com` to Organization `sameAs` until the 301 is live.
-- GBP / LinkedIn / IG web fields must already be `arledscreen.com` only (`npm run point-c`).
+- GBP / LinkedIn / IG web fields must already be `arledscreen.com` only (`npm run geo:next` · `point-c:csv` · Open: https://business.google.com/).
+- After Domain Redirect: `npm run verify:arleds-301` (exit 0) then continue Tur1a via `npm run tur1a:next` · Open: https://chatgpt.com/.
 - This repo’s `_redirects` / apex Function only cover **arledscreen.com** `/` → `/tr/`, not the legacy domain.

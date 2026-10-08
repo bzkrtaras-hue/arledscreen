@@ -82,6 +82,7 @@ const DISCOVERY_ALLOW = [
   "/.well-known/security",
   "/.well-known/humans.txt",
   "/.well-known/point-c.txt",
+  "/.well-known/point-c-en.txt",
   "/agents.json",
   "/agent.json",
   "/AGENTS.md",
