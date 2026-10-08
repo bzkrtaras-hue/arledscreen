@@ -2681,9 +2681,15 @@ if (fs.existsSync(outDir)) {
         twin.gates.tur1a.cells.length < 48 ||
         !String(twin.gates.tur1a.cells[0]?.prompt || "") ||
         !String(twin.gates.tur1a.cells[0]?.logCommand || "").includes("--platform=") ||
-        !String(twin.gates.tur1a.html || "").includes("pack=tur1a")
+        !String(twin.gates.tur1a.html || "").includes("pack=tur1a") ||
+        String(twin?.socialHandles?.facebook || "") !== "arledscreenn" ||
+        String(twin?.socialHandles?.instagram || "") !== "arledscreen" ||
+        String(twin?.socialHandles?.whatsapp || "") !== "arledscreen" ||
+        !String(twin?.socialHandles?.socialJson || "").includes("/social.json") ||
+        !String(twin?.description || "").includes("@arledscreenn") ||
+        !JSON.stringify(twin?.sameAs || []).includes("/social.json")
       ) {
-        console.error("❌ owner-next.json invent twin must be Dataset with next/packs/potentialAction start=1 + htmlStart + gates.tur1a.cells×48 + geo-next alias byte-match");
+        console.error("❌ owner-next.json invent twin must be Dataset with next/packs/potentialAction start=1 + htmlStart + gates.tur1a.cells×48 + socialHandles + geo-next alias byte-match");
         process.exit(1);
       }
     }

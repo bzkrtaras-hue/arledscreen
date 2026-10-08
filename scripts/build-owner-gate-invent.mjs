@@ -606,13 +606,23 @@ export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {
   }
 
   const htmlDeep = next?.html || ownerNextHtmlUrl(next?.packKey || "");
+  const socialHandles = {
+    facebook: "arledscreenn",
+    instagram: "arledscreen",
+    whatsapp: "arledscreen",
+    facebookUrl: "https://www.facebook.com/arledscreenn",
+    instagramUrl: "https://www.instagram.com/arledscreen",
+    whatsappUrl: "https://wa.me/905305078834",
+    socialJson: `${SITE}/social.json`,
+    line: "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json",
+  };
   const doc = {
     "@context": "https://schema.org",
     "@type": "Dataset",
     "@id": `${SITE}/owner-next.json`,
     name: "ARLEDSCREEN Owner next (Open/paste machine twin)",
     description:
-      "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Browser session start: /owner-next.html?start=1 · Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
+      "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (see socialHandles + /social.json). Browser session start: /owner-next.html?start=1 · Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
     url: `${SITE}/owner-next.json`,
     dateModified: geoStatus?.dateModified || new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
@@ -622,6 +632,7 @@ export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {
     htmlDeep,
     htmlAlias: `${SITE}/geo-next.html`,
     clipboard: `${SITE}/geo-next.txt`,
+    socialHandles,
     next,
     packs,
     gates: {
@@ -654,6 +665,8 @@ export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {
       `${SITE}/geo-next.txt`,
       `${SITE}/owner-next.txt`,
       `${SITE}/.well-known/owner-next.json`,
+      `${SITE}/social.json`,
+      `${SITE}/.well-known/social.json`,
     ],
     distribution: [
       {
@@ -682,6 +695,12 @@ export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {
         "@type": "DataDownload",
         encodingFormat: "text/plain",
         contentUrl: `${SITE}/geo-next.txt`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/social.json`,
+        name: "Owner-confirmed social handles",
       },
     ],
   };

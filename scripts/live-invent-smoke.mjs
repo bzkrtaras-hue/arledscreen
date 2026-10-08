@@ -583,6 +583,9 @@ try {
     Array.isArray(ownerNextJson?.packs) &&
     ownerNextJson.packs.length >= 11 &&
     ownerNextJson?.next &&
+    String(ownerNextJson?.socialHandles?.facebook || "") === "arledscreenn" &&
+    String(ownerNextJson?.socialHandles?.instagram || "") === "arledscreen" &&
+    String(ownerNextJson?.socialHandles?.whatsapp || "") === "arledscreen" &&
     String(ownerNextJson?.priorityGate || "") === "pointC" &&
     JSON.stringify(ownerNextJson) === JSON.stringify(geoNextJson) &&
     JSON.stringify(ownerNextJson) === JSON.stringify(ownerNextJsonWk) &&

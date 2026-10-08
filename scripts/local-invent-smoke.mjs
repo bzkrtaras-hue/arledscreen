@@ -579,6 +579,11 @@ else fail("ard.resources.pointC");
     Array.isArray(twin?.packs) &&
     twin.packs.length >= 11 &&
     twin?.next &&
+    String(twin?.socialHandles?.facebook || "") === "arledscreenn" &&
+    String(twin?.socialHandles?.instagram || "") === "arledscreen" &&
+    String(twin?.socialHandles?.whatsapp || "") === "arledscreen" &&
+    String(twin?.socialHandles?.socialJson || "").includes("/social.json") &&
+    JSON.stringify(twin?.sameAs || []).includes("/social.json") &&
     Array.isArray(twin?.gates?.tur1a?.cells) &&
     twin.gates.tur1a.cells.length >= 48 &&
     String(twin.gates.tur1a.cells[0]?.prompt || "") &&
