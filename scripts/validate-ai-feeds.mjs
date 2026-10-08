@@ -192,6 +192,15 @@ if (fs.existsSync(outDir)) {
       }
     }
   }
+  {
+    const aiSubject = JSON.stringify(ai.subjectOf || []);
+    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      if (!aiSubject.includes(needle)) {
+        console.error(`❌ ai-shopping.json Dataset subjectOf must join owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
   if (!String(ai.mainEntityOfPage || "").includes("/led-ekran-fiyatlari/")) {
     console.error("❌ ai-shopping.json Dataset mainEntityOfPage must be price hub");
     process.exit(1);
@@ -794,6 +803,20 @@ if (fs.existsSync(outDir)) {
         process.exit(1);
       }
     }
+    {
+      const geoSame = JSON.stringify(baseline?.sameAs || []);
+      const geoSubject = JSON.stringify(baseline?.subjectOf || []);
+      for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+        if (!geoSame.includes(needle)) {
+          console.error(`❌ geo-baseline.json sameAs must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+        if (!geoSubject.includes(needle)) {
+          console.error(`❌ geo-baseline.json subjectOf must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+      }
+    }
     const geoDist = JSON.stringify(baseline?.distribution || []);
     for (const needle of [
       "/ai-shopping.json",
@@ -1340,6 +1363,15 @@ if (fs.existsSync(outDir)) {
     ]) {
       if (!catSame.includes(needle)) {
         console.error(`❌ catalog.json Collection sameAs must join ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  {
+    const catSubject = JSON.stringify(catalogLive?.subjectOf || []);
+    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      if (!catSubject.includes(needle)) {
+        console.error(`❌ catalog.json Collection subjectOf must join owner-gate HowTo ${needle}`);
         process.exit(1);
       }
     }
@@ -3235,6 +3267,20 @@ if (fs.existsSync(outDir)) {
     if (!String(profiles?.description || "").includes("geo:ack")) {
       console.error("❌ entity-profiles.json description must cite geo:ack");
       process.exit(1);
+    }
+    {
+      const epSame = JSON.stringify(profiles?.sameAs || []);
+      const epSubject = JSON.stringify(profiles?.subjectOf || []);
+      for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+        if (!epSame.includes(needle)) {
+          console.error(`❌ entity-profiles.json sameAs must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+        if (!epSubject.includes(needle)) {
+          console.error(`❌ entity-profiles.json subjectOf must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+      }
     }
   }
   if (!String(profiles?.packs?.googleMerchantReadiness || "").includes("/feeds/prices.rss")) {

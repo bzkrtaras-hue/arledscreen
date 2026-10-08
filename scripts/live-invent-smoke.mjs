@@ -418,10 +418,20 @@ try {
     String(profiles?.canonicalUrls?.website || "").includes("#website") &&
     String(profiles?.description || "").includes("geo:ack") &&
     String(profiles?.mainEntityOfPage?.["@id"] || "").includes("#website") &&
-    JSON.stringify(profiles?.isRelatedTo || []).includes("#website")
+    JSON.stringify(profiles?.isRelatedTo || []).includes("#website") &&
+    JSON.stringify(profiles?.sameAs || []).includes("/point-c.json") &&
+    JSON.stringify(profiles?.sameAs || []).includes("/geo-status.json") &&
+    JSON.stringify(profiles?.sameAs || []).includes("/geo-next.txt") &&
+    JSON.stringify(profiles?.sameAs || []).includes("/tur1a.json") &&
+    JSON.stringify(profiles?.sameAs || []).includes("/point-c-progress.json") &&
+    JSON.stringify(profiles?.subjectOf || []).includes("/point-c.json") &&
+    JSON.stringify(profiles?.subjectOf || []).includes("/geo-status.json") &&
+    JSON.stringify(profiles?.subjectOf || []).includes("/geo-next.txt") &&
+    JSON.stringify(profiles?.subjectOf || []).includes("/tur1a.json") &&
+    JSON.stringify(profiles?.subjectOf || []).includes("/point-c-progress.json")
   ) {
-    ok("entity-profiles invent distribution + isBasedOn + owner-gate HowTo + #website");
-  } else fail("entity-profiles invent distribution + isBasedOn + owner-gate HowTo + #website");
+    ok("entity-profiles invent distribution + sameAs/subjectOf owner-gate HowTo + #website");
+  } else fail("entity-profiles invent distribution + sameAs/subjectOf owner-gate HowTo + #website");
 } catch (e) {
   fail(`entity-profiles invent ${e?.message || e}`);
 }
@@ -1172,6 +1182,19 @@ if (
 }
 
 {
+  const needles = ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"];
+  const gateOk = (blob) => needles.every((n) => blob.includes(n));
+  if (
+    gateOk(JSON.stringify(cat?.subjectOf || [])) &&
+    gateOk(JSON.stringify(ai?.subjectOf || []))
+  ) {
+    ok("catalog/ai-shopping subjectOf → owner-gate HowTo");
+  } else fail("catalog/ai-shopping subjectOf → owner-gate HowTo");
+}
+
+
+
+{
   const site = ent?.mainEntityOfPage || {};
   const blob = JSON.stringify(site.subjectOf || []) + JSON.stringify(site.sameAs || []);
   if (
@@ -1244,6 +1267,16 @@ try {
   ) {
     ok("geo-baseline distribution invent → modules/sku/pricing + owner-gate HowTo + #website");
   } else fail("geo-baseline distribution invent → modules/sku/pricing + owner-gate HowTo + #website");
+
+  {
+    const same = JSON.stringify(geo?.sameAs || []);
+    const sub = JSON.stringify(geo?.subjectOf || []);
+    const needles = ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"];
+    if (needles.every((n) => same.includes(n) && sub.includes(n))) {
+      ok("geo-baseline sameAs+subjectOf → owner-gate HowTo");
+    } else fail("geo-baseline sameAs+subjectOf → owner-gate HowTo");
+  }
+
   if (
     String(disc.modulesWellKnown || "").includes("/.well-known/modules.json") &&
     String(disc.skuWellKnown || "").includes("/.well-known/sku.json") &&

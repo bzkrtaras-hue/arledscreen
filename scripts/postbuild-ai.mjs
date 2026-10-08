@@ -390,6 +390,8 @@ function buildCatalog() {
       `${SITE_URL}/#website`,
       ...inventAliasBasedOnUrls(),
     ],
+    // Catalog-first agents: subjectOf → owner-gate HowTo (parity with entity/brand).
+    subjectOf: ownerGateSubjectOfEntries(),
     // Catalog-first agents: isBasedOn closes invent graph (parity with ai-shopping / geo / profiles).
     isBasedOn: [
       `${SITE_URL}/ai-shopping.json`,
@@ -749,6 +751,8 @@ function buildAiShopping() {
       `${SITE_URL}/point-c.txt`,
       ...inventAliasBasedOnUrls(),
     ],
+    // Dataset-first agents: subjectOf → owner-gate HowTo (parity with entity/brand/catalog).
+    subjectOf: ownerGateSubjectOfEntries(),
     mainEntityOfPage: `${SITE_URL}/tr/led-ekran-fiyatlari/`,
     isRelatedTo: [
       {
@@ -1696,6 +1700,54 @@ function websiteDistributionEntry() {
     contentUrl: SITE_URL,
     name: "ARLEDSCREEN WebSite",
   };
+}
+
+/** Owner-gate HowTo invent URLs for sameAs / isBasedOn walks. */
+function ownerGateSameAsUrls() {
+  return [
+    `${SITE_URL}/point-c.json`,
+    `${SITE_URL}/geo-status.json`,
+    `${SITE_URL}/geo-next.txt`,
+    `${SITE_URL}/tur1a.json`,
+    `${SITE_URL}/point-c-progress.json`,
+  ];
+}
+
+/** Owner-gate HowTo invent surfaces for subjectOf walks (parity with distribution / isBasedOn). */
+function ownerGateSubjectOfEntries() {
+  return [
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/point-c.json`,
+      url: `${SITE_URL}/point-c.json`,
+      name: "ARLEDSCREEN Point C paste packs (HowTo potentialAction)",
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/geo-status.json`,
+      url: `${SITE_URL}/geo-status.json`,
+      name: "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)",
+    },
+    {
+      "@type": "DataDownload",
+      "@id": `${SITE_URL}/geo-next.txt`,
+      url: `${SITE_URL}/geo-next.txt`,
+      name: "ARLEDSCREEN GEO priority clipboard",
+      encodingFormat: "text/plain",
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/tur1a.json`,
+      url: `${SITE_URL}/tur1a.json`,
+      name: "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)",
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE_URL}/point-c-progress.json`,
+      url: `${SITE_URL}/point-c-progress.json`,
+      name: "ARLEDSCREEN Point C paste progress (HowTo potentialAction)",
+    },
+  ];
 }
 
 /** Owner-gate HowTo invent surfaces for distribution walks (parity with subjectOf / isBasedOn). */
@@ -2915,6 +2967,31 @@ function enrichEntityProfiles(doc) {
   }
   doc.isBasedOn = [...based];
 
+  {
+    const same = new Set(Array.isArray(doc.sameAs) ? doc.sameAs : []);
+    for (const u of [
+      `${SITE_URL}/entity.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/geo-baseline.json`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/#website`,
+      ...ownerGateSameAsUrls(),
+    ]) {
+      same.add(u);
+    }
+    doc.sameAs = [...same];
+  }
+  {
+    let ss = Array.isArray(doc.subjectOf) ? [...doc.subjectOf] : [];
+    for (const entry of ownerGateSubjectOfEntries()) {
+      const needle = String(entry.url || entry["@id"] || "").replace(SITE_URL, "");
+      ss = ensureSubjectNeedle(ss, needle, entry);
+    }
+    doc.subjectOf = dedupeSubjectOfById(ss);
+  }
+
   doc.distribution = [
     {
       "@type": "DataDownload",
@@ -3157,6 +3234,17 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       `${SITE_URL}/#website`,
       ...inventAliasBasedOnUrls(),
     ],
+    sameAs: [
+      `${SITE_URL}/ai-shopping.json`,
+      `${SITE_URL}/catalog.json`,
+      `${SITE_URL}/entity.json`,
+      `${SITE_URL}/brand.json`,
+      `${SITE_URL}/entity-profiles.json`,
+      `${SITE_URL}/point-c.txt`,
+      `${SITE_URL}/#website`,
+      ...ownerGateSameAsUrls(),
+    ],
+    subjectOf: ownerGateSubjectOfEntries(),
     isRelatedTo: [
       {
         "@type": "DataDownload",
