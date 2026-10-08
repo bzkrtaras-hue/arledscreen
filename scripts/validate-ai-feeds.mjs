@@ -2256,12 +2256,17 @@ if (fs.existsSync(outDir)) {
       !String(pcNext.text || "") ||
       !String(pcNext.open || "") ||
       !String(pcNext.ackCommand || "").includes("point-c:ack") ||
+      pcJson?.potentialAction?.["@type"] !== "HowTo" ||
+      !String(pcJson?.potentialAction?.name || "").includes(String(pcNext.packKey || "")) ||
+      !Array.isArray(pcJson?.potentialAction?.step) ||
+      pcJson.potentialAction.step.length < 3 ||
+      !String(pcJson.potentialAction.step[0]?.url || "").includes("http") ||
       !fs.readFileSync(path.join(outDir, ".well-known/point-c.json")).equals(
         fs.readFileSync(path.join(outDir, "point-c.json")),
       ) ||
       fs.readFileSync(path.join(outDir, "point-c.csv"), "utf8") !== pcCsv
     ) {
-      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs; well-known/root twins must match");
+      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + HowTo potentialAction; well-known/root twins must match");
       process.exit(1);
     }
     for (const rel of [
@@ -2299,13 +2304,17 @@ if (fs.existsSync(outDir)) {
       !String(pointCNext.packKey || "") ||
       !String(pointCNext.text || "") ||
       !String(pointCNext.open || "") ||
+      geoStatus?.potentialAction?.["@type"] !== "HowTo" ||
+      !String(geoStatus?.potentialAction?.name || "").includes(String(pointCNext.packKey || "")) ||
+      !Array.isArray(geoStatus?.potentialAction?.step) ||
+      geoStatus.potentialAction.step.length < 3 ||
       !Array.isArray(tur1a?.cells) ||
       tur1a.cells.length < 48 ||
       !tur1aCsv.includes("platform,promptId") ||
       !tur1aCsv.includes("chatgpt") ||
       fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
     ) {
-      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + pointC.next.paste (no invented scores)");
+      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + pointC.next.paste + HowTo potentialAction (no invented scores)");
       process.exit(1);
     }
   }
@@ -2666,6 +2675,14 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('href="https://arledscreen.com/.well-known/llms.txt"') ||
       !rssLive.includes('href="https://arledscreen.com/agents.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/point-c.txt"') ||
+      !rssLive.includes('href="https://arledscreen.com/geo-status.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/geo-status.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/geo-next.txt"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/geo-next.txt"') ||
+      !rssLive.includes('href="https://arledscreen.com/owner-next.txt"') ||
+      !rssLive.includes('href="https://arledscreen.com/tur1a.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/tur1a.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/feeds/tur1a.csv"') ||
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
@@ -2680,7 +2697,7 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("https://chatgpt.com/") ||
       !rssLive.includes('rel="related"')
     ) {
-      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/entity-profiles + well-known invent + security/llms-full + #website + geo:next/ack + point-c:csv Open tabs");
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/geo-status/geo-next/tur1a/entity-profiles + well-known invent + security/llms-full + #website + geo:next/ack + point-c:csv Open tabs");
       process.exit(1);
     }
   }

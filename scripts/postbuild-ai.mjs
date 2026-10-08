@@ -1440,6 +1440,14 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/feeds/point-c-en.csv" rel="related" type="text/csv"/>
     <atom:link href="${SITE_URL}/point-c.csv" rel="related" type="text/csv"/>
     <atom:link href="${SITE_URL}/point-c-en.csv" rel="related" type="text/csv"/>
+    <atom:link href="${SITE_URL}/geo-status.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/geo-status.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/geo-next.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/.well-known/geo-next.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/owner-next.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/tur1a.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/tur1a.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/feeds/tur1a.csv" rel="related" type="text/csv"/>
     <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /offer.json · /offers.json · /dataset.json · /feed.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: ${OWNER_FRICTION}</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>

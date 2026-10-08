@@ -207,6 +207,14 @@ if (
   rss.includes('href="https://arledscreen.com/.well-known/llms.txt"') &&
   rss.includes('href="https://arledscreen.com/agents.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/point-c.txt"') &&
+  rss.includes('href="https://arledscreen.com/geo-status.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/geo-status.json"') &&
+  rss.includes('href="https://arledscreen.com/geo-next.txt"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/geo-next.txt"') &&
+  rss.includes('href="https://arledscreen.com/owner-next.txt"') &&
+  rss.includes('href="https://arledscreen.com/tur1a.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/tur1a.json"') &&
+  rss.includes('href="https://arledscreen.com/feeds/tur1a.csv"') &&
   rss.includes("/entity-profiles.json") &&
   rss.includes("/.well-known/brand.json") &&
   rss.includes("/.well-known/entity.json") &&
@@ -224,8 +232,8 @@ if (
   rss.includes("https://www.isimtescil.net/") &&
   rss.includes("https://chatgpt.com/")
 ) {
-  ok("prices.rss atom:link + invent aliases + discovery + point-c:csv Open");
-} else fail("prices.rss atom:link + invent aliases + discovery + point-c:csv Open");
+  ok("prices.rss atom:link + invent aliases + discovery + geo-status/geo-next/tur1a + point-c:csv Open");
+} else fail("prices.rss atom:link + invent aliases + discovery + geo-status/geo-next/tur1a + point-c:csv Open");
 
 if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSite + quote");
 else fail("ai.txt WebSite + quote");
@@ -432,13 +440,19 @@ try {
     String(pcNext.text || "").includes("34245") &&
     String(pcNext.open || "").includes("bingplaces.com") &&
     String(pcNext.ackCommand || "").includes("directoryLong") &&
+    pcJson?.potentialAction?.["@type"] === "HowTo" &&
+    String(pcJson?.potentialAction?.name || "").includes("directoryLong") &&
+    Array.isArray(pcJson?.potentialAction?.step) &&
+    pcJson.potentialAction.step.length >= 3 &&
+    String(pcJson.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
     Array.isArray(pcJsonWk?.packs) &&
     String(pcJsonWk?.next?.packKey || "") === "directoryLong" &&
+    pcJsonWk?.potentialAction?.["@type"] === "HowTo" &&
     String(ard?.agentic?.resources?.pointC?.json || "").includes("/point-c.json") &&
     String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
   ) {
-    ok("point-c.json next.paste + feeds/point-c.csv invent + ARD resources");
-  } else fail("point-c.json next.paste + feeds/point-c.csv invent + ARD resources");
+    ok("point-c.json next.paste + HowTo potentialAction + feeds/point-c.csv invent + ARD resources");
+  } else fail("point-c.json next.paste + HowTo potentialAction + feeds/point-c.csv invent + ARD resources");
 } catch (e) {
   fail(`point-c.json/csv ${e?.message || e}`);
 }
@@ -458,14 +472,18 @@ try {
     String(pointCNext.packKey || "") === "directoryLong" &&
     String(pointCNext.text || "").includes("34245") &&
     String(pointCNext.open || "").includes("bingplaces.com") &&
+    geoStatus?.potentialAction?.["@type"] === "HowTo" &&
+    String(geoStatus?.potentialAction?.name || "").includes("directoryLong") &&
+    Array.isArray(geoStatus?.potentialAction?.step) &&
+    geoStatus.potentialAction.step.length >= 3 &&
     Array.isArray(tur1a?.cells) &&
     tur1a.cells.length >= 48 &&
     tur1aCsv.includes("chatgpt") &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
-    ok("geo-status pointC.next.paste + geo-next/tur1a invent + ARD");
-  } else fail("geo-status pointC.next.paste + geo-next/tur1a invent + ARD");
+    ok("geo-status HowTo + pointC.next.paste + geo-next/tur1a invent + ARD");
+  } else fail("geo-status HowTo + pointC.next.paste + geo-next/tur1a invent + ARD");
 } catch (e) {
   fail(`geo-status/tur1a ${e?.message || e}`);
 }

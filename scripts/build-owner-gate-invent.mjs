@@ -136,7 +136,7 @@ export function buildGeoStatusDoc() {
   else if (pointCDone && arleds.ok && !tur1aDone) priority = "tur1a";
   else if (pointCDone && arleds.ok && tur1aDone) priority = "prMerge";
 
-  return {
+  const doc = {
     "@context": "https://schema.org",
     "@type": "Dataset",
     "@id": `${SITE}/geo-status.json`,
@@ -208,9 +208,47 @@ export function buildGeoStatusDoc() {
       },
     },
     ownerNext:
-      "npm run geo:next · live: https://arledscreen.com/geo-next.txt · status: https://arledscreen.com/geo-status.json · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · status: https://arledscreen.com/geo-status.json · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
     target: "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores",
   };
+  if (pointCNext?.text && pointCNext?.open) {
+    doc.potentialAction = {
+      "@type": "HowTo",
+      name: `Point C next paste: ${pointCNext.packKey}`,
+      description:
+        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
+      url: `${SITE}/geo-next.txt`,
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Open destination",
+          url: pointCNext.open,
+          text: pointCNext.openAlt
+            ? `Open: ${pointCNext.open} · OpenAlt: ${pointCNext.openAlt}`
+            : `Open: ${pointCNext.open}`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Paste NAP / About block",
+          text: pointCNext.text,
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Ack progress",
+          text: pointCNext.ackCommand || "npm run geo:ack",
+        },
+      ],
+      tool: [
+        { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
+        { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
+        { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+      ],
+    };
+  }
+  return doc;
 }
 
 export function buildPointCProgressDoc() {

@@ -504,13 +504,13 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
   const txtUrl = en ? `${SITE}/point-c-en.txt` : `${SITE}/point-c.txt`;
   const csvUrl = en ? `${SITE}/feeds/point-c-en.csv` : `${SITE}/feeds/point-c.csv`;
   const wkJson = en ? `${SITE}/.well-known/point-c-en.json` : `${SITE}/.well-known/point-c.json`;
-  return {
+  const doc = {
     "@context": "https://schema.org",
     "@type": "Dataset",
     "@id": jsonUrl,
     name: en ? "ARLEDSCREEN Point C paste packs (EN)" : "ARLEDSCREEN Point C paste packs",
     description:
-      "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack.",
+      "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/.",
     url: jsonUrl,
     inLanguage: en ? "en" : "tr",
     creator: { "@id": `${SITE}/#organization` },
@@ -518,6 +518,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       `${SITE}/entity-profiles.json`,
       txtUrl,
       `${SITE}/entity.json`,
+      `${SITE}/geo-next.txt`,
       `${SITE}/#website`,
     ],
     distribution: [
@@ -541,14 +542,60 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         encodingFormat: "text/plain",
         contentUrl: txtUrl,
       },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE}/geo-next.txt`,
+      },
     ],
-    sameAs: [txtUrl, csvUrl, wkJson, `${SITE}/entity-profiles.json`],
+    sameAs: [txtUrl, csvUrl, wkJson, `${SITE}/entity-profiles.json`, `${SITE}/geo-next.txt`, `${SITE}/geo-status.json`],
     packs: items,
     progress: { acked: acked.length, total: sequenceKeys(en).length },
     next: buildPointCNext(profiles, { en }),
     ownerNext:
-      "npm run geo:next · live: https://arledscreen.com/geo-next.txt · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
   };
+  const next = doc.next;
+  if (next?.text && next?.open) {
+    doc.potentialAction = {
+      "@type": "HowTo",
+      name: en
+        ? `Point C next paste: ${next.packKey}`
+        : `Point C sonraki yapıştırma: ${next.packKey}`,
+      description:
+        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
+      url: `${SITE}/geo-next.txt`,
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Open destination",
+          url: next.open,
+          text: next.openAlt
+            ? `Open: ${next.open} · OpenAlt: ${next.openAlt}`
+            : `Open: ${next.open}`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Paste NAP / About block",
+          text: next.text,
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Ack progress",
+          text: next.ackCommand || "npm run geo:ack",
+        },
+      ],
+      tool: [
+        { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
+        { "@type": "HowToTool", name: "point-c.json", url: jsonUrl },
+        { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+      ],
+    };
+  }
+  return doc;
 }
 
 function printCsv(profiles, { en = false } = {}) {
