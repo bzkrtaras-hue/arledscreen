@@ -918,7 +918,7 @@
         "type": "Owner next HTML (Open + paste)",
         "url": "https://arledscreen.com/owner-next.html",
         "format": "text/html",
-        "description": "Browser owner friction surface: Open/OpenAlt tabs + select-all paste for priorityGate (Point C → arleds 301 → Tur1a). Loads /geo-status.json · /point-c.json · /tur1a.json. Alias /geo-next.html. Twin clipboard /geo-next.txt · /owner-next.txt.",
+        "description": "Browser owner friction surface: Open/OpenAlt tabs + select-all paste for priorityGate (Point C → arleds 301 → Tur1a). Loads /geo-status.json · /point-c.json · /tur1a.json. Alias /geo-next.html. Twin clipboard /geo-next.txt · /owner-next.txt. Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "alias": "https://arledscreen.com/geo-next.html",
         "clipboard": "https://arledscreen.com/geo-next.txt",
         "status": "https://arledscreen.com/geo-status.json",

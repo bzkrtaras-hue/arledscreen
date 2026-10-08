@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARLEDSCREEN · Owner next (GEO)</title>
+  <meta name="robots" content="noindex,follow" />
+  <meta name="description" content="Owner friction: Open tabs + select-all paste for the current GEO gate (Point C → arleds 301 → Tur1a). Cite-only; no invented scores." />
+  <link rel="canonical" href="https://arledscreen.com/owner-next.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg0: #0f1419;
+      --bg1: #1a2330;
+      --ink: #e8eef5;
+      --muted: #9aabbd;
+      --accent: #c4a35a;
+      --accent-ink: #1a1408;
+      --line: rgba(232, 238, 245, 0.14);
+      --ok: #6fbf8a;
+      --warn: #e0a35a;
+      --pad: clamp(1rem, 3vw, 2rem);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(196, 163, 90, 0.18), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(80, 120, 160, 0.2), transparent 50%),
+        linear-gradient(165deg, var(--bg0), var(--bg1) 55%, #121820);
+    }
+    main {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: var(--pad);
+      padding-bottom: 4rem;
+    }
+    .brand {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.35rem;
+    }
+    .lede {
+      color: var(--muted);
+      margin: 0 0 1.5rem;
+      max-width: 40rem;
+      line-height: 1.45;
+    }
+    .status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      align-items: baseline;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    h2 {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin: 1.75rem 0 0.65rem;
+    }
+    .opens {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    a.btn, button.btn {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(232, 238, 245, 0.06);
+      color: var(--ink);
+      font: inherit;
+      font-weight: 500;
+      padding: 0.55rem 0.9rem;
+      border-radius: 2px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    a.btn.primary, button.btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-ink);
+    }
+    a.btn:hover, button.btn:hover {
+      border-color: var(--accent);
+      background: rgba(196, 163, 90, 0.16);
+    }
+    a.btn.primary:hover, button.btn.primary:hover {
+      filter: brightness(1.05);
+      background: var(--accent);
+    }
+    .where {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 0.35rem 0 0.85rem;
+    }
+    textarea {
+      width: 100%;
+      min-height: 14rem;
+      resize: vertical;
+      font: inherit;
+      line-height: 1.45;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: rgba(0, 0, 0, 0.28);
+      color: var(--ink);
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.65rem;
+    }
+    .ack {
+      font-family: ui-monospace, "IBM Plex Mono", monospace;
+      font-size: 0.88rem;
+      padding: 0.75rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: rgba(0, 0, 0, 0.22);
+      margin: 0.75rem 0 0;
+      overflow-x: auto;
+    }
+    .links {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .links a { color: var(--accent); }
+    .err { color: var(--warn); }
+    .ok { color: var(--ok); }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="brand">ARLEDSCREEN</p>
+    <p class="lede">Owner next — Open the destination tab, paste the block, then ack. Cite-only; no invented ChatGPT/Gemini scores.</p>
+
+    <div id="load" class="status"><span class="pill">loading…</span></div>
+    <div id="panel" class="hidden">
+      <div class="status">
+        <span class="pill" id="priority"></span>
+        <span id="progress"></span>
+      </div>
+      <p class="where" id="where"></p>
+      <div class="opens" id="opens"></div>
+
+      <h2>Paste (select-all)</h2>
+      <textarea id="paste" readonly spellcheck="false"></textarea>
+      <div class="row">
+        <button type="button" class="btn primary" id="copy">Copy paste</button>
+        <button type="button" class="btn" id="select">Select all</button>
+      </div>
+      <p class="ack" id="ack"></p>
+    </div>
+    <p id="error" class="err hidden"></p>
+
+    <div class="links">
+      HowTo:
+      <a href="/point-c.json">point-c.json</a> ·
+      <a href="/geo-status.json">geo-status.json</a> ·
+      <a href="/point-c-progress.json">point-c-progress.json</a> ·
+      <a href="/tur1a.json">tur1a.json</a><br />
+      Clipboard twin: <a href="/geo-next.txt">geo-next.txt</a> ·
+      CSV: <a href="/feeds/point-c.csv">point-c.csv</a> ·
+      <a href="/feeds/tur1a.csv">tur1a.csv</a><br />
+      Repo: <code>npm run geo:next</code> · <code>npm run geo:ack</code> · <code>npm run point-c:dnsenable-draft</code>
+    </div>
+  </main>
+  <script>
+    const bust = () => `?v=${Date.now()}`;
+    const $ = (id) => document.getElementById(id);
+
+    function openButtons(urls) {
+      const box = $("opens");
+      box.innerHTML = "";
+      urls.forEach(({ label, href, primary }, i) => {
+        if (!href) return;
+        const a = document.createElement("a");
+        a.className = "btn" + (primary || i === 0 ? " primary" : "");
+        a.href = href;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = label;
+        box.appendChild(a);
+      });
+      if (urls.filter((u) => u.href).length > 1) {
+        const all = document.createElement("button");
+        all.type = "button";
+        all.className = "btn";
+        all.textContent = "Open all tabs";
+        all.addEventListener("click", () => {
+          urls.forEach(({ href }) => {
+            if (href) window.open(href, "_blank", "noopener,noreferrer");
+          });
+        });
+        box.appendChild(all);
+      }
+    }
+
+    async function load() {
+      try {
+        const [status, pointC, tur1a] = await Promise.all([
+          fetch("/geo-status.json" + bust()).then((r) => r.json()),
+          fetch("/point-c.json" + bust()).then((r) => r.json()),
+          fetch("/tur1a.json" + bust()).then((r) => r.json()),
+        ]);
+        const priority = String(status.priorityGate || "pointC");
+        $("priority").textContent = "priority: " + priority;
+        $("load").classList.add("hidden");
+        $("panel").classList.remove("hidden");
+
+        if (priority === "pointC") {
+          const next = status.gates?.pointC?.next || pointC.next || {};
+          const alts = Array.isArray(next.openAlts) ? next.openAlts : next.openAlt ? [next.openAlt] : [];
+          $("progress").textContent =
+            `Point C ${status.gates?.pointC?.acked ?? "?"}/${status.gates?.pointC?.total ?? "?"} · ${next.packKey || ""}`;
+          $("where").textContent = next.where || "";
+          openButtons([
+            { label: "Open", href: next.open, primary: true },
+            ...alts.map((href, i) => ({ label: i === 0 ? "OpenAlt" : "OpenAlt" + (i + 1), href })),
+          ]);
+          $("paste").value = next.text || "";
+          $("ack").textContent = next.ackCommand || "npm run geo:ack";
+        } else if (priority === "arleds301") {
+          const g = status.gates?.arleds301 || {};
+          $("progress").textContent = "arleds.com → arledscreen.com/tr/ 301 · " + (g.mode || "open");
+          $("where").textContent = "Isimtescil/DNSEnable Domain Redirect (or Cloudflare Option B)";
+          openButtons([
+            { label: "Open panel", href: g.open || "https://www.isimtescil.net/", primary: true },
+            { label: "OpenAlt Gmail Send", href: g.openAlt || "" },
+            { label: "OpenAlt2 Cloudflare", href: "https://dash.cloudflare.com/" },
+          ]);
+          $("paste").value =
+            "Use npm run point-c:dnsenable-draft for full email + Domain Redirect clipboard.\nVerify: npm run verify:arleds-301";
+          $("ack").textContent = "npm run verify:arleds-301 · npm run geo:status";
+        } else if (priority === "tur1a") {
+          const next = tur1a.next || status.gates?.tur1a?.next || {};
+          $("progress").textContent =
+            `Tur1a ${status.gates?.tur1a?.filled ?? "?"}/${status.gates?.tur1a?.total ?? "?"} · ${next.platform || ""} · ${next.promptId || ""}`;
+          $("where").textContent = next.platform ? `${next.platform} blind prompt` : "Tur1a blind";
+          openButtons([{ label: "Open platform", href: next.open, primary: true }]);
+          $("paste").value = next.prompt || "";
+          $("ack").textContent =
+            next.logCommand ||
+            "npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…";
+        } else {
+          $("progress").textContent = "PR #60 merge → main";
+          $("where").textContent = "Merge cursor/geo-prod-guard-5666 when Point C + 301 + Tur1a are done";
+          openButtons([
+            {
+              label: "Open PR #60",
+              href: "https://github.com/bzkrtaras-hue/arledscreen/pull/60",
+              primary: true,
+            },
+          ]);
+          $("paste").value = "All owner gates cleared in geo-status — merge PR #60.";
+          $("ack").textContent = "npm run invent:smoke · npm run geo:status";
+        }
+      } catch (e) {
+        $("load").classList.add("hidden");
+        $("error").classList.remove("hidden");
+        $("error").textContent = "Failed to load gate JSON: " + (e && e.message ? e.message : e);
+      }
+    }
+
+    $("copy").addEventListener("click", async () => {
+      const t = $("paste");
+      t.focus();
+      t.select();
+      try {
+        await navigator.clipboard.writeText(t.value);
+        $("copy").textContent = "Copied";
+        setTimeout(() => { $("copy").textContent = "Copy paste"; }, 1200);
+      } catch {
+        document.execCommand("copy");
+      }
+    });
+    $("select").addEventListener("click", () => {
+      $("paste").focus();
+      $("paste").select();
+    });
+    load();
+  </script>
+</body>
+</html>
