@@ -8,7 +8,11 @@
  */
 import dns from "node:dns/promises";
 import {
+  buildDnsEnableEmailClipboard,
+  buildDnsEnableMailto,
   buildHostingerMailto,
+  DNSENABLE_GMAIL_DRAFT_URL,
+  DNSENABLE_SUPPORT_TO,
   HOSTINGER_GMAIL_DRAFT_URL,
   HOSTINGER_SUPPORT_TO,
 } from "./print-point-c-packs.mjs";
@@ -117,6 +121,12 @@ function printNextSteps(mode) {
     console.error(`  arleds.com + www → ${EXPECT} (301/permanent)`);
     console.error("Option B (align with arledscreen.com): move NS to Cloudflare, then Bulk Redirect");
     console.error(`  arleds.com/* → ${EXPECT} (301)`);
+    console.error(`Isimtescil support: ${DNSENABLE_SUPPORT_TO}`);
+    console.error("--- DNSEnable support email (select-all) ---");
+    console.error(buildDnsEnableEmailClipboard());
+    console.error(buildDnsEnableMailto());
+    console.error(`Gmail draft (Send): ${DNSENABLE_GMAIL_DRAFT_URL}`);
+    console.error("EML: npm run point-c:dnsenable-eml → docs/ops/arleds-301-dnsenable.eml");
     console.error("Re-check: npm run verify:arleds-301");
   } else if (mode === "hostinger_unreachable" || mode === "hostinger_partial" || mode === "http_200_no_redirect") {
     console.error("\n--- Hostinger clipboard (permanent 301 entire domain) ---");

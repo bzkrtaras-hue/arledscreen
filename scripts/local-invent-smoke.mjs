@@ -243,6 +243,9 @@ if (
   pointC.includes("Hostinger support email") &&
   pointC.includes("DNSEnable") &&
   pointC.includes("Domain Redirect") &&
+  pointC.includes("DNSEnable support email") &&
+  pointC.includes("mailto:destek@isimtescil.net") &&
+  pointC.includes("point-c:dnsenable-eml") &&
   pointC.includes("mailto:support@hostinger.com") &&
   pointC.includes("Gmail draft (Send)") &&
   pointC.includes("point-c:next") &&

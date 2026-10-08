@@ -1,0 +1,22 @@
+To: destek@isimtescil.net
+Subject: Kalıcı 301 yönlendirme arleds.com → https://arledscreen.com/tr/
+Date: Thu, 08 Oct 2026 04:24:39 GMT
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Merhaba İsimtescil Destek,
+
+arleds.com alan adımız için kalıcı (301) Domain Redirect / URL yönlendirme talebi:
+
+Hedef: https://arledscreen.com/tr/
+
+Lütfen şu eşlemeleri uygulayın (http + https, apex + www):
+http://arleds.com/ → https://arledscreen.com/tr/
+http://www.arleds.com/ → https://arledscreen.com/tr/
+https://arleds.com/ → https://arledscreen.com/tr/
+https://www.arleds.com/ → https://arledscreen.com/tr/
+
+DNS: eu/tr/us.dnsenable.com (canlı NS). Hostinger hPanel bu domain için geçerli değil.
+Telefon: +90 850 200 0 444 · Domain: arleds.com
+Teşekkürler.

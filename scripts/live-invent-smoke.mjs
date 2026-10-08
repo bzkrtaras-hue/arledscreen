@@ -241,6 +241,9 @@ try {
     pc.includes("Hostinger support email") &&
     pc.includes("DNSEnable") &&
     pc.includes("Domain Redirect") &&
+    pc.includes("DNSEnable support email") &&
+    pc.includes("mailto:destek@isimtescil.net") &&
+    pc.includes("point-c:dnsenable-eml") &&
     pc.includes("mailto:support@hostinger.com") &&
     pc.includes("Gmail draft (Send)") &&
     pc.includes("point-c:next") &&

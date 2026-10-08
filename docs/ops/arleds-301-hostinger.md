@@ -36,6 +36,30 @@ Observed live (re-check with verify): apex + www on `eu/tr/us.dnsenable.com`, A 
 3. Permanent **301**: `arleds.com` + `www.arleds.com` → `https://arledscreen.com/tr/`.
 4. Re-check: `npm run verify:arleds-301` (exit 0).
 
+### Support email (select-all) — DNSEnable / live NS
+
+```
+Subject: Kalıcı 301 yönlendirme arleds.com → https://arledscreen.com/tr/
+
+Merhaba İsimtescil Destek,
+
+arleds.com alan adımız için kalıcı (301) Domain Redirect / URL yönlendirme talebi:
+
+Hedef: https://arledscreen.com/tr/
+
+Lütfen şu eşlemeleri uygulayın (http + https, apex + www):
+http://arleds.com/ → https://arledscreen.com/tr/
+http://www.arleds.com/ → https://arledscreen.com/tr/
+https://arleds.com/ → https://arledscreen.com/tr/
+https://www.arleds.com/ → https://arledscreen.com/tr/
+
+DNS: eu/tr/us.dnsenable.com (canlı NS). Hostinger hPanel bu domain için geçerli değil.
+Telefon: +90 850 200 0 444 · Domain: arleds.com
+Teşekkürler.
+```
+
+Also: `npm run point-c:dnsenable-eml` → `docs/ops/arleds-301-dnsenable.eml` · mailto `destek@isimtescil.net` in `point-c.txt` · Gmail draft in `npm run geo:status` / `point-c.txt` · `npm run verify:arleds-301`.
+
 ## Option B — Cloudflare (align with arledscreen.com)
 
 1. Add `arleds.com` to the same Cloudflare account as `arledscreen.com`.

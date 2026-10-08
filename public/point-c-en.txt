@@ -92,6 +92,30 @@ Option B: move NS to Cloudflare → Bulk Redirect → https://arledscreen.com/tr
 Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md
 Do NOT add arleds.com to sameAs until 301 is live.
 
+--- DNSEnable support email (select-all) ---
+Subject: Kalıcı 301 yönlendirme arleds.com → https://arledscreen.com/tr/
+
+Merhaba İsimtescil Destek,
+
+arleds.com alan adımız için kalıcı (301) Domain Redirect / URL yönlendirme talebi:
+
+Hedef: https://arledscreen.com/tr/
+
+Lütfen şu eşlemeleri uygulayın (http + https, apex + www):
+http://arleds.com/ → https://arledscreen.com/tr/
+http://www.arleds.com/ → https://arledscreen.com/tr/
+https://arleds.com/ → https://arledscreen.com/tr/
+https://www.arleds.com/ → https://arledscreen.com/tr/
+
+DNS: eu/tr/us.dnsenable.com (canlı NS). Hostinger hPanel bu domain için geçerli değil.
+Telefon: +90 850 200 0 444 · Domain: arleds.com
+Teşekkürler.
+
+--- DNSEnable mailto (click / open in mail client) ---
+mailto:destek@isimtescil.net?subject=Kal%C4%B1c%C4%B1%20301%20y%C3%B6nlendirme%20arleds.com%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F&body=Merhaba%20%C4%B0simtescil%20Destek%2C%0A%0Aarleds.com%20alan%20ad%C4%B1m%C4%B1z%20i%C3%A7in%20kal%C4%B1c%C4%B1%20(301)%20Domain%20Redirect%20%2F%20URL%20y%C3%B6nlendirme%20talebi%3A%0A%0AHedef%3A%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0A%0AL%C3%BCtfen%20%C5%9Fu%20e%C5%9Flemeleri%20uygulay%C4%B1n%20(http%20%2B%20https%2C%20apex%20%2B%20www)%3A%0Ahttp%3A%2F%2Farleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttp%3A%2F%2Fwww.arleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttps%3A%2F%2Farleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0Ahttps%3A%2F%2Fwww.arleds.com%2F%20%E2%86%92%20https%3A%2F%2Farledscreen.com%2Ftr%2F%0A%0ADNS%3A%20eu%2Ftr%2Fus.dnsenable.com%20(canl%C4%B1%20NS).%20Hostinger%20hPanel%20bu%20domain%20i%C3%A7in%20ge%C3%A7erli%20de%C4%9Fil.%0ATelefon%3A%20%2B90%20850%20200%200%20444%20%C2%B7%20Domain%3A%20arleds.com%0ATe%C5%9Fekk%C3%BCrler.
+EML: npm run point-c:dnsenable-eml → docs/ops/arleds-301-dnsenable.eml
+Gmail draft (Send): https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878454181087052625%2Bmsg-a:r-3112734221607885814
+
 --- Hostinger arleds.com → arledscreen.com/tr/ 301 (owner clipboard) ---
 ONLY if npm run verify:arleds-301 mode=hostinger_* (NS Hostinger). Otherwise ignore.
 hPanel → Domains → arleds.com → Redirects → permanent 301 entire domain.

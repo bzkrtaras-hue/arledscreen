@@ -107,6 +107,30 @@ if (!arledsOk) {
     console.log("  Next: registrar Domain Redirect arleds.com+www → https://arledscreen.com/tr/ (301)");
     console.log("  Or: move NS to Cloudflare → Bulk Redirect → https://arledscreen.com/tr/");
     console.log("  Re-check: npm run verify:arleds-301");
+    try {
+      const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
+      if (GEO_FULL) {
+        console.log("  DNSEnable Domain Redirect clipboard:");
+        console.log("  ---");
+        for (const row of String(mod.buildDnsEnableRedirectClipboard()).split("\n")) console.log(`  ${row}`);
+        console.log("  ---");
+        console.log("  DNSEnable support email (select-all):");
+        console.log("  ---");
+        for (const row of String(mod.buildDnsEnableEmailClipboard()).split("\n")) console.log(`  ${row}`);
+        console.log("  ---");
+      } else {
+        console.log("  DNSEnable support email: npm run geo:next (or GEO_FULL=1 npm run geo:status)");
+      }
+      console.log("  DNSEnable mailto:");
+      console.log(`  ${mod.buildDnsEnableMailto()}`);
+      console.log("  EML: npm run point-c:dnsenable-eml → docs/ops/arleds-301-dnsenable.eml");
+      if (mod.DNSENABLE_GMAIL_DRAFT_URL) {
+        console.log("  Gmail draft (Send):");
+        console.log(`  ${mod.DNSENABLE_GMAIL_DRAFT_URL}`);
+      }
+    } catch {
+      /* clipboard helper optional */
+    }
   } else {
     console.log("  Hostinger clipboard (permanent 301 entire domain):");
     console.log("  hPanel → Domains → arleds.com → Redirects");

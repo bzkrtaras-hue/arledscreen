@@ -58,10 +58,30 @@ export const EN_ORDER = [
 ];
 
 export const HOSTINGER_SUPPORT_TO = "support@hostinger.com";
+export const DNSENABLE_SUPPORT_TO = "destek@isimtescil.net";
 
 /** Live Gmail draft for Hostinger 301 (owner must Send). Refresh if draft is recreated. */
 export const HOSTINGER_GMAIL_DRAFT_URL =
   "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878419649952913826%2Bmsg-a:r-5878982215178809685";
+
+/** Live Gmail draft for Isimtescil/DNSEnable 301 (owner must Send). Refresh if draft is recreated. */
+export const DNSENABLE_GMAIL_DRAFT_URL =
+  "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878454181087052625%2Bmsg-a:r-3112734221607885814";
+
+/** Where to paste each Point C pack (owner friction — pack text is already ready). */
+export const POINT_C_PASTE_WHERE = {
+  directoryLong: "Directories / Bing Places / Apple Business Connect → About / description",
+  gbpDescription: "Google Business Profile → Edit profile → About",
+  instagramName: "https://www.instagram.com/arledscreen → Edit profile → Name",
+  instagramBio: "https://www.instagram.com/arledscreen → Edit profile → Bio",
+  facebookAbout: "https://www.facebook.com/arledscreenn → About / Page info",
+  linkedinAbout: "https://www.linkedin.com/company/arleds → About",
+  bingPlaces: "Bing Places for Business → Business description",
+  appleBusinessConnect: "Apple Business Connect → Location → Description",
+  youtubeAbout: "YouTube channel → Customize → Basic info / Description",
+  yandexBusiness: "Yandex Business → Organization → Description",
+  [HOSTINGER_STEP]: "Isimtescil/DNSEnable Domain Redirect first (live NS) · Hostinger only if verify mode=hostinger_*",
+};
 
 /** Live DNSEnable / Isimtescil Domain Redirect clipboard (primary when NS is dnsenable.com). */
 export function buildDnsEnableRedirectClipboard() {
@@ -75,6 +95,54 @@ export function buildDnsEnableRedirectClipboard() {
   ].join("\n");
 }
 
+export function buildDnsEnableEmailParts() {
+  const subject = "Kalıcı 301 yönlendirme arleds.com → https://arledscreen.com/tr/";
+  const body = [
+    "Merhaba İsimtescil Destek,",
+    "",
+    "arleds.com alan adımız için kalıcı (301) Domain Redirect / URL yönlendirme talebi:",
+    "",
+    "Hedef: https://arledscreen.com/tr/",
+    "",
+    "Lütfen şu eşlemeleri uygulayın (http + https, apex + www):",
+    "http://arleds.com/ → https://arledscreen.com/tr/",
+    "http://www.arleds.com/ → https://arledscreen.com/tr/",
+    "https://arleds.com/ → https://arledscreen.com/tr/",
+    "https://www.arleds.com/ → https://arledscreen.com/tr/",
+    "",
+    "DNS: eu/tr/us.dnsenable.com (canlı NS). Hostinger hPanel bu domain için geçerli değil.",
+    "Telefon: +90 850 200 0 444 · Domain: arleds.com",
+    "Teşekkürler.",
+  ].join("\n");
+  return { to: DNSENABLE_SUPPORT_TO, subject, body };
+}
+
+export function buildDnsEnableEmailClipboard() {
+  const { subject, body } = buildDnsEnableEmailParts();
+  return `Subject: ${subject}\n\n${body}`;
+}
+
+export function buildDnsEnableMailto() {
+  const { to, subject, body } = buildDnsEnableEmailParts();
+  return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+export function buildDnsEnableEml() {
+  const { to, subject, body } = buildDnsEnableEmailParts();
+  const date = new Date().toUTCString();
+  return [
+    `To: ${to}`,
+    `Subject: ${subject}`,
+    `Date: ${date}`,
+    "MIME-Version: 1.0",
+    "Content-Type: text/plain; charset=UTF-8",
+    "Content-Transfer-Encoding: 8bit",
+    "",
+    body,
+    "",
+  ].join("\r\n");
+}
+
 /** Dual-path arleds 301 paste for geo:next / hostinger301 step. */
 export function buildArleds301DualPathClipboard() {
   return [
@@ -82,6 +150,13 @@ export function buildArleds301DualPathClipboard() {
     "",
     "--- A) DNSEnable / Isimtescil (current live NS — do this first) ---",
     buildDnsEnableRedirectClipboard(),
+    "",
+    "--- DNSEnable support email (select-all) ---",
+    buildDnsEnableEmailClipboard(),
+    "",
+    `mailto: ${buildDnsEnableMailto()}`,
+    `Gmail draft (Send): ${DNSENABLE_GMAIL_DRAFT_URL}`,
+    "EML: npm run point-c:dnsenable-eml → docs/ops/arleds-301-dnsenable.eml",
     "",
     "--- B) Hostinger (ONLY if verify mode is hostinger_* / NS is Hostinger) ---",
     "hPanel → Domains → arleds.com → Redirects → permanent 301 entire domain.",
@@ -190,6 +265,14 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     lines.push("--- DNSEnable / Isimtescil arleds.com → arledscreen.com/tr/ 301 (primary — live NS) ---");
     for (const row of buildDnsEnableRedirectClipboard().split("\n")) lines.push(row);
     lines.push("");
+    lines.push("--- DNSEnable support email (select-all) ---");
+    lines.push(buildDnsEnableEmailClipboard());
+    lines.push("");
+    lines.push("--- DNSEnable mailto (click / open in mail client) ---");
+    lines.push(buildDnsEnableMailto());
+    lines.push("EML: npm run point-c:dnsenable-eml → docs/ops/arleds-301-dnsenable.eml");
+    lines.push(`Gmail draft (Send): ${DNSENABLE_GMAIL_DRAFT_URL}`);
+    lines.push("");
     lines.push("--- Hostinger arleds.com → arledscreen.com/tr/ 301 (owner clipboard) ---");
     lines.push("ONLY if npm run verify:arleds-301 mode=hostinger_* (NS Hostinger). Otherwise ignore.");
     lines.push("hPanel → Domains → arleds.com → Redirects → permanent 301 entire domain.");
@@ -284,6 +367,8 @@ function printNext(profiles, { en = false } = {}) {
   console.log(`Step: ${step.key} · ${step.label}`);
   console.log(`Progress: ${step.done}/${step.total} acked → paste this block`);
   console.log("Locale:", en ? "EN" : "TR");
+  const where = POINT_C_PASTE_WHERE[step.key];
+  if (where) console.log(`Where: ${where}`);
   console.log("");
   console.log("### Paste (select-all)");
   console.log("---");
@@ -293,6 +378,11 @@ function printNext(profiles, { en = false } = {}) {
   if (step.key === HOSTINGER_STEP) {
     console.log("### Primary: DNSEnable Domain Redirect (live NS)");
     console.log(buildDnsEnableRedirectClipboard());
+    console.log("");
+    console.log("### DNSEnable mailto (primary — live NS)");
+    console.log(buildDnsEnableMailto());
+    console.log(`Gmail draft (Send): ${DNSENABLE_GMAIL_DRAFT_URL}`);
+    console.log("EML file: npm run point-c:dnsenable-eml");
     console.log("");
     console.log("### Hostinger mailto (ONLY if NS is Hostinger)");
     console.log(buildHostingerMailto());
@@ -310,6 +400,15 @@ function writeHostingerEml() {
   fs.writeFileSync(dest, buildHostingerEml());
   console.log(`Wrote ${dest}`);
   console.log(`mailto: ${buildHostingerMailto()}`);
+  console.log("Open the .eml in Gmail/Outlook, or click the mailto URI.");
+}
+
+function writeDnsEnableEml() {
+  const dest = path.join(repoRoot, "docs/ops/arleds-301-dnsenable.eml");
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.writeFileSync(dest, buildDnsEnableEml());
+  console.log(`Wrote ${dest}`);
+  console.log(`mailto: ${buildDnsEnableMailto()}`);
   console.log("Open the .eml in Gmail/Outlook, or click the mailto URI.");
 }
 
@@ -349,6 +448,7 @@ if (isMain) {
   npm run point-c:ack [-- --pack=directoryLong]
   npm run geo:ack          (alias of point-c:ack)
   npm run point-c:hostinger-eml
+  npm run point-c:dnsenable-eml
   npm run geo:next         (priority owner clipboard)
 Does not invent citations. --help never acks progress.`);
     process.exit(0);
@@ -360,7 +460,9 @@ Does not invent citations. --help never acks progress.`);
   const profiles = JSON.parse(fs.readFileSync(profilesPath, "utf8"));
   const useEn = argFlag("en");
   const only = argValue("pack");
-  if (argFlag("eml") || argFlag("hostinger-eml")) {
+  if (argFlag("dnsenable-eml")) {
+    writeDnsEnableEml();
+  } else if (argFlag("eml") || argFlag("hostinger-eml")) {
     writeHostingerEml();
   } else if (argFlag("next")) {
     printNext(profiles, { en: useEn });
@@ -369,7 +471,7 @@ Does not invent citations. --help never acks progress.`);
     const unknown = process.argv.slice(2).filter(
       (a) =>
         a.startsWith("-") &&
-        !["--ack", "--en", "--next", "--eml", "--hostinger-eml", "--help", "-h"].includes(a) &&
+        !["--ack", "--en", "--next", "--eml", "--hostinger-eml", "--dnsenable-eml", "--help", "-h"].includes(a) &&
         !a.startsWith("--pack="),
     );
     if (unknown.length) {

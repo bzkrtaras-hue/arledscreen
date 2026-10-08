@@ -1953,6 +1953,9 @@ if (fs.existsSync(outDir)) {
       !pointC.includes("Hostinger arleds.com") ||
       !pointC.includes("Hostinger support email") ||
       !pointC.includes("mailto:support@hostinger.com") ||
+      !pointC.includes("DNSEnable support email") ||
+      !pointC.includes("mailto:destek@isimtescil.net") ||
+      !pointC.includes("point-c:dnsenable-eml") ||
       !pointC.includes("Gmail draft (Send)") ||
       !pointC.includes("point-c:next") ||
       !pointC.includes("geo:next") ||
@@ -1979,6 +1982,8 @@ if (fs.existsSync(outDir)) {
       !pointCEn.includes("Hostinger arleds.com") ||
       !pointCEn.includes("Hostinger support email") ||
       !pointCEn.includes("mailto:support@hostinger.com") ||
+      !pointCEn.includes("DNSEnable support email") ||
+      !pointCEn.includes("mailto:destek@isimtescil.net") ||
       !pointCEn.includes("Gmail draft (Send)") ||
       !pointCEn.includes("point-c:next") ||
       !pointCEn.includes("geo:next") ||
@@ -1988,7 +1993,7 @@ if (fs.existsSync(outDir)) {
       !pointCEn.includes("#website") ||
       !pointCEn.includes("geo:ack")
     ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + Hostinger 301/email/mailto/Gmail draft + point-c:next + geo:next/ack + tur1a:log + invent aliases + entity-profiles + #website");
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + DNSEnable/Hostinger 301/email/mailto + point-c:next + geo:next/ack + tur1a:log + invent aliases + entity-profiles + #website");
       process.exit(1);
     }
     if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
