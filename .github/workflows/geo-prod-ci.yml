@@ -199,10 +199,16 @@ jobs:
           grep -q 'owner-social-ig:' out/ai.txt
           grep -q 'social=fb' out/AGENTS.md
           grep -q 'social=wa' out/AGENTS.md
+          grep -q 'Copy pack link' out/AGENTS.md
           grep -q 'social=fb' out/.well-known/security.txt
           grep -q 'social=ig' out/.well-known/security.txt
+          grep -q 'D=Copy pack link' out/.well-known/security.txt
           grep -q '?social=fb' docs/offsite-entity-playbook.md
           grep -q '?social=ig' docs/offsite-entity-playbook.md
+          grep -q 'Copy pack link' docs/offsite-entity-playbook.md
+          grep -q 'Copy pack link' out/llms.txt
+          grep -q 'Copy pack link' out/humans.txt
+          grep -q 'Copy pack link' out/llms-full.txt
           grep -q 'ownerNextHtml' out/.well-known/ard.json
           grep -q 'ownerNextJson' out/.well-known/ard.json
           test -f out/owner-next.html && test -f out/geo-next.html
@@ -325,4 +331,5 @@ jobs:
           grep -q "social=fb" /tmp/geo-status.txt
           grep -q "social=ig" /tmp/geo-status.txt
           grep -q "@arledscreenn" /tmp/geo-status.txt
+          grep -q "D=Copy pack link" /tmp/geo-status.txt
           echo "OK owner tooling"

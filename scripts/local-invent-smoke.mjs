@@ -195,7 +195,8 @@ else fail("ai.txt WebSite + quote");
     agentsMd.includes("social=fb") &&
     agentsMd.includes("social=ig") &&
     agentsMd.includes("social=wa") &&
-    agentsMd.includes("/social.json")
+    agentsMd.includes("/social.json") &&
+    agentsMd.includes("Copy pack link")
   ) {
     ok("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");
   } else fail("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");

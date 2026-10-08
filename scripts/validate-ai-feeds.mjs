@@ -2378,9 +2378,10 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("social=fb") ||
       !agentsMdLive.includes("social=ig") ||
       !agentsMdLive.includes("social=wa") ||
-      !agentsMdLive.includes("/social.json")
+      !agentsMdLive.includes("/social.json") ||
+      !agentsMdLive.includes("Copy pack link")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
