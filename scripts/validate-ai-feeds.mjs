@@ -1925,9 +1925,21 @@ if (fs.existsSync(outDir)) {
     !geoNextSrc.includes("point-c:csv") ||
     !geoNextSrc.includes("offsite-entity-playbook.md") ||
     !geoNextSrc.includes("DNSENABLE_PANEL_URL") ||
+    !geoNextSrc.includes("DNSENABLE_GMAIL_DRAFT_URL") ||
+    !geoNextSrc.includes("point-c:dnsenable-draft") ||
+    !geoNextSrc.includes("Queued after Point C") ||
     !geoNextSrc.includes("Open:")
   ) {
-    console.error("❌ scripts/geo-next.mjs must surface point-c:csv + playbook + DNSEnable Open tabs");
+    console.error("❌ scripts/geo-next.mjs must surface point-c:csv + playbook + DNSEnable Open/OpenAlt prep + dnsenable-draft");
+    process.exit(1);
+  }
+  const pointCPacksSrc = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
+  if (
+    !pointCPacksSrc.includes("dnsenable-draft") ||
+    !pointCPacksSrc.includes("printDnsEnableDraft") ||
+    !pointCPacksSrc.includes("1878479803134731083")
+  ) {
+    console.error("❌ scripts/print-point-c-packs.mjs must expose --dnsenable-draft + refreshed DNSEnable Gmail draft URL");
     process.exit(1);
   }
   console.log("✅ ai.txt + geo:next owner Open/csv friction pointers");
@@ -5363,8 +5375,14 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
       process.exit(1);
     }
   }
-  if (!tur1aMatrix.includes("platformOpenUrl") || !tur1aMatrix.includes("Where:")) {
-    console.error("❌ scripts/tur1a-matrix.mjs must print Where:/Open: via platformOpenUrl");
+  if (
+    !tur1aMatrix.includes("platformOpenUrl") ||
+    !tur1aMatrix.includes("Where:") ||
+    !tur1aMatrix.includes("OpenAlt:") ||
+    !tur1aMatrix.includes("tur1a.json → potentialAction") ||
+    !tur1aMatrix.includes("feeds/tur1a.csv")
+  ) {
+    console.error("❌ scripts/tur1a-matrix.mjs must print Where:/Open:/OpenAlt: + HowTo potentialAction + tur1a.csv");
     process.exit(1);
   }
   if (

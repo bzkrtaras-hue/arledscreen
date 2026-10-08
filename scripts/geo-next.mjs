@@ -53,6 +53,19 @@ if (acked < POINT_C_STEPS) {
   const next = runNode("scripts/print-point-c-packs.mjs", ["--next"]);
   process.stdout.write(String(next.stdout || ""));
   if (next.status !== 0) process.stderr.write(String(next.stderr || ""));
+  // Prep friction: arleds 301 is the next gate after Point C — surface Open/OpenAlt now.
+  try {
+    const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
+    console.log("");
+    console.log("=== Queued after Point C (arleds.com 301) — prep Open tabs ===");
+    if (mod.DNSENABLE_PANEL_URL) console.log(`Open: ${mod.DNSENABLE_PANEL_URL}`);
+    if (mod.DNSENABLE_GMAIL_DRAFT_URL) {
+      console.log(`OpenAlt (Gmail draft Send): ${mod.DNSENABLE_GMAIL_DRAFT_URL}`);
+    }
+    console.log("Draft clipboard: npm run point-c:dnsenable-draft · EML: npm run point-c:dnsenable-eml");
+  } catch {
+    /* ignore prep block failures */
+  }
   finish(next.status === 0 ? 0 : next.status || 1);
 }
 

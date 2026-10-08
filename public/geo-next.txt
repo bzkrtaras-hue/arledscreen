@@ -26,4 +26,9 @@ After paste: npm run point-c:ack -- --pack=directoryLong
 Or: npm run point-c:ack
 CSV: npm run point-c:csv · Live CSV: https://arledscreen.com/feeds/point-c.csv · JSON: https://arledscreen.com/point-c.json · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt
 
+=== Queued after Point C (arleds.com 301) — prep Open tabs ===
+Open: https://www.isimtescil.net/
+OpenAlt (Gmail draft Send): https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229
+Draft clipboard: npm run point-c:dnsenable-draft · EML: npm run point-c:dnsenable-eml
+
 HowTo: https://arledscreen.com/point-c.json → potentialAction · https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/point-c-progress.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction

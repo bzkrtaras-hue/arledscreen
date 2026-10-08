@@ -67,7 +67,7 @@ export const HOSTINGER_GMAIL_DRAFT_URL =
 
 /** Live Gmail draft for Isimtescil/DNSEnable 301 (owner must Send). Refresh if draft is recreated. */
 export const DNSENABLE_GMAIL_DRAFT_URL =
-  "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878468370606062050%2Bmsg-a:r-3112734221607885814";
+  "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229";
 
 /** Where to paste each Point C pack (owner friction — pack text is already ready). */
 export const POINT_C_PASTE_WHERE = {
@@ -696,6 +696,28 @@ function writeDnsEnableEml() {
   console.log("Open the .eml in Gmail/Outlook, or click the mailto URI.");
 }
 
+/** Owner friction: one clipboard for DNSEnable Domain Redirect + Gmail draft Send. */
+function printDnsEnableDraft() {
+  console.log("=== ARLEDSCREEN arleds.com 301 — DNSEnable draft ===");
+  console.log(`Where: Isimtescil / DNSEnable → Domain Redirect (permanent 301)`);
+  console.log(`Open: ${DNSENABLE_PANEL_URL}`);
+  console.log(`OpenAlt (Gmail draft Send): ${DNSENABLE_GMAIL_DRAFT_URL}`);
+  console.log("");
+  console.log("### Panel steps");
+  console.log(buildDnsEnableRedirectClipboard());
+  console.log("");
+  console.log("### Support email (select-all)");
+  console.log(buildDnsEnableEmailClipboard());
+  console.log("");
+  console.log(`mailto: ${buildDnsEnableMailto()}`);
+  console.log(`Gmail draft (Send): ${DNSENABLE_GMAIL_DRAFT_URL}`);
+  console.log("EML: npm run point-c:dnsenable-eml");
+  console.log("Verify: npm run verify:arleds-301 · npm run geo:status · npm run geo:next");
+  console.log(
+    "HowTo: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/point-c.json → potentialAction",
+  );
+}
+
 function ackStep(profiles, { en = false, pack = "" } = {}) {
   const step = nextStep(profiles, { en });
   const key = pack || step?.key;
@@ -734,8 +756,13 @@ if (isMain) {
   npm run geo:ack          (alias of point-c:ack)
   npm run point-c:hostinger-eml
   npm run point-c:dnsenable-eml
+  npm run point-c:dnsenable-draft
   npm run geo:next         (priority owner clipboard)
 Does not invent citations. --help never acks progress.`);
+    process.exit(0);
+  }
+  if (argFlag("dnsenable-draft")) {
+    printDnsEnableDraft();
     process.exit(0);
   }
   if (!fs.existsSync(profilesPath)) {
@@ -758,7 +785,17 @@ Does not invent citations. --help never acks progress.`);
     const unknown = process.argv.slice(2).filter(
       (a) =>
         a.startsWith("-") &&
-        !["--ack", "--en", "--next", "--eml", "--hostinger-eml", "--dnsenable-eml", "--help", "-h"].includes(a) &&
+        ![
+          "--ack",
+          "--en",
+          "--next",
+          "--eml",
+          "--hostinger-eml",
+          "--dnsenable-eml",
+          "--dnsenable-draft",
+          "--help",
+          "-h",
+        ].includes(a) &&
         !a.startsWith("--pack="),
     );
     if (unknown.length) {

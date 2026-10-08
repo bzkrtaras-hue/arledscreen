@@ -18,6 +18,7 @@
     "geo:ack": "node scripts/print-point-c-packs.mjs --ack",
     "point-c:hostinger-eml": "node scripts/print-point-c-packs.mjs --eml",
     "point-c:dnsenable-eml": "node scripts/print-point-c-packs.mjs --dnsenable-eml",
+    "point-c:dnsenable-draft": "node scripts/print-point-c-packs.mjs --dnsenable-draft",
     "verify:arleds-301": "node scripts/verify-arleds-301.mjs",
     "tur1a:list": "node scripts/geo-blind-log.mjs --list",
     "tur1a:summary": "node scripts/geo-blind-log.mjs --summary",

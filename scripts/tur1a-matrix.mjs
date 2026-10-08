@@ -303,12 +303,22 @@ function printNext(filled) {
   const locale = String(next.promptId).startsWith("en-") ? "en" : "tr-TR";
   const text = promptText(next.promptId);
   const openUrl = platformOpenUrl(next.platform);
+  const altPlatforms = HUMAN_PLATFORMS.filter((p) => p !== next.platform);
   console.log(`Cell: platform=${next.platform} · promptId=${next.promptId} · locale=${locale}`);
   console.log(`Progress: ${filled.size}/${totalCells} filled → this is the next empty`);
   if (openUrl) {
     console.log(`Where: ${next.platform} → ${openUrl}`);
     console.log(`Open: ${openUrl}`);
   }
+  if (altPlatforms.length) {
+    console.log(
+      `OpenAlt: ${altPlatforms.map((p) => `${p}=${platformOpenUrl(p)}`).join(" · ")}`,
+    );
+  }
+  console.log(
+    "HowTo: https://arledscreen.com/tur1a.json → potentialAction · https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/point-c.json → potentialAction · https://arledscreen.com/point-c-progress.json → potentialAction",
+  );
+  console.log("CSV: npm run tur1a:csv · Live: https://arledscreen.com/feeds/tur1a.csv · JSON: https://arledscreen.com/tur1a.json");
   console.log("\n### Paste into the AI platform");
   console.log("```");
   console.log(text);
@@ -333,7 +343,7 @@ function printNext(filled) {
   console.log(
     `npm run tur1a:log -- --dry-run --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping`,
   );
-  console.log("\nThen: npm run tur1a:matrix · npm run tur1a:csv · npm run tur1a:next · npm run geo:status");
+  console.log("\nThen: npm run tur1a:matrix · npm run tur1a:csv · npm run tur1a:next · npm run geo:status · npm run geo:next");
 }
 
 function runLog(filled) {

@@ -5,7 +5,7 @@
   "name": "ARLEDSCREEN GEO owner-gate status",
   "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
   "url": "https://arledscreen.com/geo-status.json",
-  "dateModified": "2026-10-08T11:09:20.437Z",
+  "dateModified": "2026-10-08T11:15:14.946Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
@@ -95,7 +95,7 @@
       "mode": "dnsenable_tls_dead",
       "target": "https://arledscreen.com/tr/",
       "open": "https://www.isimtescil.net/",
-      "openAlt": "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878468370606062050%2Bmsg-a:r-3112734221607885814",
+      "openAlt": "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229",
       "verify": "npm run verify:arleds-301",
       "docs": "docs/ops/arleds-301-hostinger.md"
     },
