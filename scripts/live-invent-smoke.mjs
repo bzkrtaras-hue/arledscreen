@@ -328,11 +328,23 @@ else fail("ard.resources.pointC");
     allow.includes("/.well-known/agents.json") &&
     allow.includes("/agents.json") &&
     allow.includes("/.well-known/security.txt") &&
+    allow.includes("/api/v1/prices") &&
+    allow.includes("/v1/prices") &&
+    allow.includes("/data/prices.json") &&
+    allow.includes("/feeds/prices.json") &&
+    allow.includes("/api/mpn") &&
+    allow.includes("/api/entity") &&
+    allow.includes("/en/prices.json") &&
+    allow.includes("/tr/prices.json") &&
+    allow.includes("/.well-known/security") &&
     trEx.includes("/.well-known/modules.json") &&
     trEx.includes("/.well-known/pricing.json") &&
+    trEx.includes("/data/prices.json") &&
     String(res.modulesJson?.wellKnown || "").includes("/.well-known/modules.json") &&
     String(res.skuJson?.wellKnown || "").includes("/.well-known/sku.json") &&
-    String(res.aiShopping?.description || "").includes("/.well-known/modules.json")
+    String(res.aiShopping?.description || "").includes("/.well-known/modules.json") &&
+    String(res.apiV1Prices?.url || "").includes("/api/v1/prices") &&
+    String(res.dataPrices?.url || "").includes("/data/prices.json")
   ) {
     ok("ard invent allow + resources modules/sku + agents/security + aiShopping invent");
   } else fail("ard invent allow + resources modules/sku + agents/security + aiShopping invent");
@@ -599,6 +611,13 @@ if (
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/panels.json`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/merchant.json`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/catalog`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/mpn`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/entity`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/v1/prices`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/data/prices.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/feeds/prices.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/en/prices.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/tr/prices.json`) &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -614,7 +633,9 @@ if (
     dist.includes("/llms-full.txt") &&
     dist.includes("/humans.txt") &&
     dist.includes("/AGENTS.md") &&
-    dist.includes("/.well-known/security.txt")
+    dist.includes("/.well-known/security.txt") &&
+    dist.includes("/security.txt") &&
+    dist.includes("/.well-known/security")
   ) {
     ok("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
   } else fail("ai-shopping distribution → inventAlias + discovery agents/ard/ai/llms/llms-full/humans/AGENTS/security");
@@ -868,6 +889,15 @@ try {
     String(disc.entityProfilesExtless || "").includes("/entity-profiles") &&
     String(disc.llmsExtless || "").includes("/llms") &&
     String(disc.apiV1Prices || "").includes("/api/v1/prices") &&
+    String(disc.apiMpn || "").includes("/api/mpn") &&
+    String(disc.apiEntity || "").includes("/api/entity") &&
+    String(disc.v1Prices || "").includes("/v1/prices") &&
+    String(disc.dataPricesJson || "").includes("/data/prices.json") &&
+    String(disc.feedsPricesJson || "").includes("/feeds/prices.json") &&
+    String(disc.enPricesJson || "").includes("/en/prices.json") &&
+    String(disc.trPricesJson || "").includes("/tr/prices.json") &&
+    String(disc.securityTxtRoot || "").includes("/security.txt") &&
+    String(disc.securityExtless || "").includes("/.well-known/security") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
@@ -926,6 +956,15 @@ try {
     link.includes("/ai-shopping") &&
     link.includes("/entity-profiles") &&
     link.includes("/api/v1/prices") &&
+    link.includes("/api/mpn") &&
+    link.includes("/api/entity") &&
+    link.includes("/v1/prices") &&
+    link.includes("/data/prices.json") &&
+    link.includes("/feeds/prices.json") &&
+    link.includes("/en/prices.json") &&
+    link.includes("/tr/prices.json") &&
+    link.includes("/security.txt") &&
+    link.includes("/.well-known/security") &&
     link.includes("/llms") &&
     link.includes("/.well-known/ard.json") &&
     link.includes("/.well-known/agents.json") &&

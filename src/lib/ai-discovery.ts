@@ -72,6 +72,13 @@ const LLMS_FULL_EXTLESS_URL = `${SITE_URL}/llms-full`;
 const API_V1_PRICES_URL = `${SITE_URL}/api/v1/prices`;
 const API_PANELS_JSON_URL = `${SITE_URL}/api/panels.json`;
 const API_MERCHANT_JSON_URL = `${SITE_URL}/api/merchant.json`;
+const API_MPN_URL = `${SITE_URL}/api/mpn`;
+const API_ENTITY_URL = `${SITE_URL}/api/entity`;
+const V1_PRICES_URL = `${SITE_URL}/v1/prices`;
+const DATA_PRICES_JSON_URL = `${SITE_URL}/data/prices.json`;
+const FEEDS_PRICES_JSON_URL = `${SITE_URL}/feeds/prices.json`;
+const EN_PRICES_JSON_URL = `${SITE_URL}/en/prices.json`;
+const TR_PRICES_JSON_URL = `${SITE_URL}/tr/prices.json`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const POINT_C_EN_TXT_URL = `${SITE_URL}/point-c-en.txt`;
 const POINT_C_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.txt`;
@@ -87,6 +94,8 @@ const AGENT_WELLKNOWN_URL = `${SITE_URL}/.well-known/agent.json`;
 const HUMANS_TXT_URL = `${SITE_URL}/humans.txt`;
 const HUMANS_WELLKNOWN_URL = `${SITE_URL}/.well-known/humans.txt`;
 const SECURITY_TXT_URL = `${SITE_URL}/.well-known/security.txt`;
+const SECURITY_TXT_ROOT_URL = `${SITE_URL}/security.txt`;
+const SECURITY_EXTLESS_URL = `${SITE_URL}/.well-known/security`;
 const WEBSITE_URL = `${SITE_URL}/#website`;
 
 /** Invent-alias pricedPanels surfaces (parity with public/_headers Link invent set). */
@@ -137,9 +146,18 @@ const inventAliasLdJson = [
   { url: API_V1_PRICES_URL, title: "API v1 prices invent alias" },
   { url: API_PANELS_JSON_URL, title: "API panels.json invent alias" },
   { url: API_MERCHANT_JSON_URL, title: "API merchant.json invent alias" },
+  { url: API_MPN_URL, title: "API mpn invent alias" },
+  { url: API_ENTITY_URL, title: "API entity invent alias" },
+  { url: V1_PRICES_URL, title: "v1 prices invent alias" },
+  { url: DATA_PRICES_JSON_URL, title: "data/prices.json invent alias" },
+  { url: FEEDS_PRICES_JSON_URL, title: "feeds/prices.json invent alias" },
+  { url: EN_PRICES_JSON_URL, title: "EN prices.json invent alias" },
+  { url: TR_PRICES_JSON_URL, title: "TR prices.json invent alias" },
 ] as const;
 
 const inventAliasTextPlain = [
+  { url: SECURITY_TXT_ROOT_URL, title: "security.txt root invent alias" },
+  { url: SECURITY_EXTLESS_URL, title: "security.txt extensionless well-known invent alias" },
   { url: LLMS_EXTLESS_URL, title: "LLM Context extensionless invent alias" },
   { url: LLMS_FULL_EXTLESS_URL, title: "LLM Context Full extensionless invent alias" },
 ] as const;

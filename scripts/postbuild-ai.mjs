@@ -1893,57 +1893,40 @@ function inventAliasDistributionEntries() {
   ];
 }
 
-/** Machine-guessable /api/* pricedPanels + catalog invent aliases (byte-identical feeds). */
+/** Machine-guessable /api/* /v1/* /data/* /feeds/* + locale pricedPanels invent aliases. */
 function apiInventDistributionEntries() {
+  const priced = (path, name) => ({
+    "@type": "DataDownload",
+    encodingFormat: "application/ld+json",
+    contentUrl: `${SITE_URL}${path}`,
+    name,
+  });
   return [
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/api/v1/prices`,
-      name: "API v1 prices invent alias",
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/api/prices`,
-      name: "API prices invent alias",
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/api/panels.json`,
-      name: "API panels.json invent alias",
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/api/panels`,
-      name: "API panels invent alias",
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/api/merchant.json`,
-      name: "API merchant.json invent alias",
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/api/mpn.json`,
-      name: "API mpn.json invent alias",
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/api/catalog`,
-      name: "API catalog invent alias",
-    },
-    {
-      "@type": "DataDownload",
-      encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/api/ai-shopping`,
-      name: "API ai-shopping invent alias",
-    },
+    priced("/api/v1/prices", "API v1 prices invent alias"),
+    priced("/api/prices", "API prices invent alias"),
+    priced("/api/prices.json", "API prices.json invent alias"),
+    priced("/api/panels.json", "API panels.json invent alias"),
+    priced("/api/panels", "API panels invent alias"),
+    priced("/api/merchant.json", "API merchant.json invent alias"),
+    priced("/api/merchant", "API merchant invent alias"),
+    priced("/api/mpn.json", "API mpn.json invent alias"),
+    priced("/api/mpn", "API mpn invent alias"),
+    priced("/api/catalog", "API catalog invent alias"),
+    priced("/api/ai-shopping", "API ai-shopping invent alias"),
+    priced("/api/ai-shopping.json", "API ai-shopping.json invent alias"),
+    priced("/v1/prices", "v1 prices invent alias"),
+    priced("/v1/panels", "v1 panels invent alias"),
+    priced("/v1/merchant", "v1 merchant invent alias"),
+    priced("/v1/mpn", "v1 mpn invent alias"),
+    priced("/v1/sku", "v1 sku invent alias"),
+    priced("/data/prices.json", "data/prices.json invent alias"),
+    priced("/data/catalog.json", "data/catalog.json invent alias"),
+    priced("/feeds/prices.json", "feeds/prices.json invent alias"),
+    priced("/feeds/catalog.json", "feeds/catalog.json invent alias"),
+    priced("/en/prices.json", "EN prices.json invent alias"),
+    priced("/tr/prices.json", "TR prices.json invent alias"),
+    priced("/en/ai-shopping.json", "EN ai-shopping.json invent alias"),
+    priced("/tr/ai-shopping.json", "TR ai-shopping.json invent alias"),
   ];
 }
 
@@ -2053,6 +2036,18 @@ function discoveryDistributionEntries() {
     {
       "@type": "DataDownload",
       encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/security.txt`,
+      name: "security.txt root invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/.well-known/security`,
+      name: "security.txt extensionless well-known invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
       contentUrl: `${SITE_URL}/point-c-en.txt`,
       name: "Point C paste packs (EN)",
     },
@@ -2146,6 +2141,8 @@ function entityAliasBasedOnUrls() {
     `${SITE_URL}/.well-known/company.json`,
     `${SITE_URL}/.well-known/nap.json`,
     `${SITE_URL}/.well-known/about.json`,
+    `${SITE_URL}/api/entity`,
+    `${SITE_URL}/api/entity.json`,
   ];
 }
 
@@ -2229,6 +2226,18 @@ function entityAliasDistributionEntries() {
       contentUrl: `${SITE_URL}/.well-known/about.json`,
       name: "Organization about well-known invent alias",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/entity`,
+      name: "API entity invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/entity.json`,
+      name: "API entity.json invent alias",
+    },
   ];
 }
 
@@ -2250,6 +2259,8 @@ function discoveryBasedOnUrls() {
     `${SITE_URL}/.well-known/humans.txt`,
     `${SITE_URL}/AGENTS.md`,
     `${SITE_URL}/.well-known/security.txt`,
+    `${SITE_URL}/security.txt`,
+    `${SITE_URL}/.well-known/security`,
     `${SITE_URL}/point-c-en.txt`,
     `${SITE_URL}/.well-known/point-c.txt`,
   ];
@@ -3005,9 +3016,32 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       llmsExtless: `${SITE_URL}/llms`,
       llmsFullExtless: `${SITE_URL}/llms-full`,
       apiV1Prices: `${SITE_URL}/api/v1/prices`,
+      apiPrices: `${SITE_URL}/api/prices`,
+      apiPricesJson: `${SITE_URL}/api/prices.json`,
       apiPanelsJson: `${SITE_URL}/api/panels.json`,
+      apiPanels: `${SITE_URL}/api/panels`,
       apiMerchantJson: `${SITE_URL}/api/merchant.json`,
+      apiMerchant: `${SITE_URL}/api/merchant`,
+      apiMpnJson: `${SITE_URL}/api/mpn.json`,
+      apiMpn: `${SITE_URL}/api/mpn`,
       apiCatalog: `${SITE_URL}/api/catalog`,
+      apiAiShopping: `${SITE_URL}/api/ai-shopping`,
+      apiAiShoppingJson: `${SITE_URL}/api/ai-shopping.json`,
+      apiEntity: `${SITE_URL}/api/entity`,
+      apiEntityJson: `${SITE_URL}/api/entity.json`,
+      v1Prices: `${SITE_URL}/v1/prices`,
+      v1Panels: `${SITE_URL}/v1/panels`,
+      v1Merchant: `${SITE_URL}/v1/merchant`,
+      v1Mpn: `${SITE_URL}/v1/mpn`,
+      v1Sku: `${SITE_URL}/v1/sku`,
+      dataPricesJson: `${SITE_URL}/data/prices.json`,
+      dataCatalogJson: `${SITE_URL}/data/catalog.json`,
+      feedsPricesJson: `${SITE_URL}/feeds/prices.json`,
+      feedsCatalogJson: `${SITE_URL}/feeds/catalog.json`,
+      enPricesJson: `${SITE_URL}/en/prices.json`,
+      trPricesJson: `${SITE_URL}/tr/prices.json`,
+      enAiShoppingJson: `${SITE_URL}/en/ai-shopping.json`,
+      trAiShoppingJson: `${SITE_URL}/tr/ai-shopping.json`,
       companyExtless: `${SITE_URL}/company`,
       napExtless: `${SITE_URL}/nap`,
       citeExtless: `${SITE_URL}/cite`,
@@ -3037,6 +3071,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       agentsMd: `${SITE_URL}/AGENTS.md`,
       humansTxt: `${SITE_URL}/humans.txt`,
       securityTxt: `${SITE_URL}/.well-known/security.txt`,
+      securityTxtRoot: `${SITE_URL}/security.txt`,
+      securityExtless: `${SITE_URL}/.well-known/security`,
       merchantFeed: `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
       pricesRss: `${SITE_URL}/feeds/prices.rss`,
       llms: `${SITE_URL}/llms.txt`,
@@ -3070,9 +3106,6 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       mpn: `${SITE_URL}/mpn`,
       merchant: `${SITE_URL}/merchant`,
       sku: `${SITE_URL}/sku`,
-      apiPanelsJson: `${SITE_URL}/api/panels.json`,
-      apiMpnJson: `${SITE_URL}/api/mpn.json`,
-      apiMerchantJson: `${SITE_URL}/api/merchant.json`,
       trLlms: `${SITE_URL}/tr/llms.txt`,
       trAiTxt: `${SITE_URL}/tr/ai.txt`,
       trEntityProfiles: `${SITE_URL}/tr/entity-profiles.json`,

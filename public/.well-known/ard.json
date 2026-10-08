@@ -7,7 +7,7 @@
   "agentic": {
     "discovery": {
       "version": "1.0",
-      "lastUpdated": "2026-10-07",
+      "lastUpdated": "2026-10-08",
       "scope": "AI shopping agents, LLM assistants, and semantic search engines"
     },
     "resources": {
@@ -584,7 +584,15 @@
           "https://arledscreen.com/tr/ai.txt",
           "https://arledscreen.com/tr/entity-profiles.json",
           "https://arledscreen.com/feeds/prices.json",
-          "https://arledscreen.com/feeds/catalog.json"
+          "https://arledscreen.com/feeds/catalog.json",
+          "https://arledscreen.com/tr/prices.json",
+          "https://arledscreen.com/tr/ai-shopping.json",
+          "https://arledscreen.com/data/prices.json",
+          "https://arledscreen.com/v1/prices",
+          "https://arledscreen.com/api/v1/prices",
+          "https://arledscreen.com/api/mpn",
+          "https://arledscreen.com/api/entity",
+          "https://arledscreen.com/.well-known/security"
         ]
       },
       "agentsJson": {
@@ -610,6 +618,68 @@
         "pricedPanels": 12,
         "canonical": "https://arledscreen.com/ai-shopping.json",
         "brandId": "https://arledscreen.com/#brand-nxtionstar"
+      },
+      "apiV1Prices": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/api/v1/prices",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json under /api/v1/prices",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "also": [
+          "https://arledscreen.com/api/prices",
+          "https://arledscreen.com/api/mpn",
+          "https://arledscreen.com/api/merchant",
+          "https://arledscreen.com/api/panels.json"
+        ]
+      },
+      "v1Prices": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/v1/prices",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json under /v1/*",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "also": [
+          "https://arledscreen.com/v1/panels",
+          "https://arledscreen.com/v1/merchant",
+          "https://arledscreen.com/v1/mpn",
+          "https://arledscreen.com/v1/sku"
+        ]
+      },
+      "dataPrices": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/data/prices.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json under /data/prices.json",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "catalog": "https://arledscreen.com/data/catalog.json"
+      },
+      "feedsPricesJson": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/feeds/prices.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json under /feeds/prices.json (JSON twin of prices.rss)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "catalog": "https://arledscreen.com/feeds/catalog.json"
+      },
+      "localePrices": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/en/prices.json",
+        "format": "application/ld+json",
+        "description": "Locale-prefixed inventable aliases of ai-shopping.json (EN/TR)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "also": [
+          "https://arledscreen.com/tr/prices.json",
+          "https://arledscreen.com/en/ai-shopping.json",
+          "https://arledscreen.com/tr/ai-shopping.json"
+        ]
+      },
+      "apiEntity": {
+        "type": "Organization invent alias",
+        "url": "https://arledscreen.com/api/entity",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of entity.json under /api/entity(+.json)",
+        "canonical": "https://arledscreen.com/entity.json",
+        "also": ["https://arledscreen.com/api/entity.json"]
       }
     },
     "cite": {
@@ -717,10 +787,38 @@
       "/.well-known/humans.txt",
       "/.well-known/security.txt",
       "/security.txt",
+      "/.well-known/security",
       "/api/panels.json",
+      "/api/panels",
       "/api/merchant.json",
+      "/api/merchant",
+      "/api/mpn.json",
+      "/api/mpn",
+      "/api/prices",
+      "/api/prices.json",
+      "/api/catalog",
+      "/api/ai-shopping",
+      "/api/ai-shopping.json",
+      "/api/v1/prices",
+      "/api/entity",
+      "/api/entity.json",
+      "/v1/prices",
       "/v1/panels",
-      "/v1/merchant"
+      "/v1/merchant",
+      "/v1/mpn",
+      "/v1/sku",
+      "/data/prices.json",
+      "/data/catalog.json",
+      "/feeds/prices.json",
+      "/feeds/catalog.json",
+      "/en/prices.json",
+      "/tr/prices.json",
+      "/en/ai-shopping.json",
+      "/tr/ai-shopping.json",
+      "/ai-shopping",
+      "/entity-profiles",
+      "/llms",
+      "/llms-full"
     ],
     "disallow": []
   },

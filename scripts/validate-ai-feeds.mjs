@@ -415,6 +415,15 @@ if (fs.existsSync(outDir)) {
     "/.well-known/sku.json",
     "/.well-known/price.json",
     "/.well-known/pricing.json",
+    "/api/v1/prices",
+    "/v1/prices",
+    "/data/prices.json",
+    "/feeds/prices.json",
+    "/api/mpn",
+    "/api/entity",
+    "/en/prices.json",
+    "/tr/prices.json",
+    "/.well-known/security",
   ]) {
     if (!ard.robotsPolicy.allow.includes(must)) {
       console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);

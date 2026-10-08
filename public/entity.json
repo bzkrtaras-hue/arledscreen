@@ -140,7 +140,28 @@
     "https://arledscreen.com/api/catalog",
     "https://arledscreen.com/api/ai-shopping",
     "https://arledscreen.com/llms",
-    "https://arledscreen.com/llms-full"
+    "https://arledscreen.com/llms-full",
+    "https://arledscreen.com/api/entity",
+    "https://arledscreen.com/api/entity.json",
+    "https://arledscreen.com/api/prices.json",
+    "https://arledscreen.com/api/merchant",
+    "https://arledscreen.com/api/mpn",
+    "https://arledscreen.com/api/ai-shopping.json",
+    "https://arledscreen.com/v1/prices",
+    "https://arledscreen.com/v1/panels",
+    "https://arledscreen.com/v1/merchant",
+    "https://arledscreen.com/v1/mpn",
+    "https://arledscreen.com/v1/sku",
+    "https://arledscreen.com/data/prices.json",
+    "https://arledscreen.com/data/catalog.json",
+    "https://arledscreen.com/feeds/prices.json",
+    "https://arledscreen.com/feeds/catalog.json",
+    "https://arledscreen.com/en/prices.json",
+    "https://arledscreen.com/tr/prices.json",
+    "https://arledscreen.com/en/ai-shopping.json",
+    "https://arledscreen.com/tr/ai-shopping.json",
+    "https://arledscreen.com/security.txt",
+    "https://arledscreen.com/.well-known/security"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3568,7 +3589,28 @@
     "https://arledscreen.com/api/catalog",
     "https://arledscreen.com/api/ai-shopping",
     "https://arledscreen.com/llms",
-    "https://arledscreen.com/llms-full"
+    "https://arledscreen.com/llms-full",
+    "https://arledscreen.com/api/entity",
+    "https://arledscreen.com/api/entity.json",
+    "https://arledscreen.com/api/prices.json",
+    "https://arledscreen.com/api/merchant",
+    "https://arledscreen.com/api/mpn",
+    "https://arledscreen.com/api/ai-shopping.json",
+    "https://arledscreen.com/v1/prices",
+    "https://arledscreen.com/v1/panels",
+    "https://arledscreen.com/v1/merchant",
+    "https://arledscreen.com/v1/mpn",
+    "https://arledscreen.com/v1/sku",
+    "https://arledscreen.com/data/prices.json",
+    "https://arledscreen.com/data/catalog.json",
+    "https://arledscreen.com/feeds/prices.json",
+    "https://arledscreen.com/feeds/catalog.json",
+    "https://arledscreen.com/en/prices.json",
+    "https://arledscreen.com/tr/prices.json",
+    "https://arledscreen.com/en/ai-shopping.json",
+    "https://arledscreen.com/tr/ai-shopping.json",
+    "https://arledscreen.com/security.txt",
+    "https://arledscreen.com/.well-known/security"
   ],
   "distribution": [
     {
@@ -4185,6 +4227,132 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/llms-full",
       "name": "LLM Context Full extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/entity",
+      "name": "API entity invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/entity.json",
+      "name": "API entity.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/prices.json",
+      "name": "API prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/merchant",
+      "name": "API merchant invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/mpn",
+      "name": "API mpn invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/ai-shopping.json",
+      "name": "API ai-shopping.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/prices",
+      "name": "v1 prices invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/panels",
+      "name": "v1 panels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/merchant",
+      "name": "v1 merchant invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/mpn",
+      "name": "v1 mpn invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/sku",
+      "name": "v1 sku invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/data/prices.json",
+      "name": "data/prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/data/catalog.json",
+      "name": "data/catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feeds/prices.json",
+      "name": "feeds/prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feeds/catalog.json",
+      "name": "feeds/catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/prices.json",
+      "name": "EN prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/prices.json",
+      "name": "TR prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/ai-shopping.json",
+      "name": "EN ai-shopping.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/ai-shopping.json",
+      "name": "TR ai-shopping.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/security.txt",
+      "name": "security.txt root invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/security",
+      "name": "security.txt extensionless well-known invent alias"
     }
   ]
 }

@@ -81,12 +81,29 @@
     "https://arledscreen.com/entity-profiles",
     "https://arledscreen.com/api/v1/prices",
     "https://arledscreen.com/api/prices",
+    "https://arledscreen.com/api/prices.json",
     "https://arledscreen.com/api/panels.json",
     "https://arledscreen.com/api/panels",
     "https://arledscreen.com/api/merchant.json",
+    "https://arledscreen.com/api/merchant",
     "https://arledscreen.com/api/mpn.json",
+    "https://arledscreen.com/api/mpn",
     "https://arledscreen.com/api/catalog",
     "https://arledscreen.com/api/ai-shopping",
+    "https://arledscreen.com/api/ai-shopping.json",
+    "https://arledscreen.com/v1/prices",
+    "https://arledscreen.com/v1/panels",
+    "https://arledscreen.com/v1/merchant",
+    "https://arledscreen.com/v1/mpn",
+    "https://arledscreen.com/v1/sku",
+    "https://arledscreen.com/data/prices.json",
+    "https://arledscreen.com/data/catalog.json",
+    "https://arledscreen.com/feeds/prices.json",
+    "https://arledscreen.com/feeds/catalog.json",
+    "https://arledscreen.com/en/prices.json",
+    "https://arledscreen.com/tr/prices.json",
+    "https://arledscreen.com/en/ai-shopping.json",
+    "https://arledscreen.com/tr/ai-shopping.json",
     "https://arledscreen.com/cite.json",
     "https://arledscreen.com/faq.json",
     "https://arledscreen.com/faqs.json",
@@ -100,6 +117,8 @@
     "https://arledscreen.com/.well-known/company.json",
     "https://arledscreen.com/.well-known/nap.json",
     "https://arledscreen.com/.well-known/about.json",
+    "https://arledscreen.com/api/entity",
+    "https://arledscreen.com/api/entity.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/agents.json",
     "https://arledscreen.com/.well-known/agent.json",
@@ -116,6 +135,8 @@
     "https://arledscreen.com/.well-known/humans.txt",
     "https://arledscreen.com/AGENTS.md",
     "https://arledscreen.com/.well-known/security.txt",
+    "https://arledscreen.com/security.txt",
+    "https://arledscreen.com/.well-known/security",
     "https://arledscreen.com/point-c-en.txt",
     "https://arledscreen.com/.well-known/point-c.txt"
   ],
@@ -570,6 +591,12 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/prices.json",
+      "name": "API prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/api/panels.json",
       "name": "API panels.json invent alias"
     },
@@ -588,8 +615,20 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/merchant",
+      "name": "API merchant invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/api/mpn.json",
       "name": "API mpn.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/mpn",
+      "name": "API mpn invent alias"
     },
     {
       "@type": "DataDownload",
@@ -602,6 +641,90 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/api/ai-shopping",
       "name": "API ai-shopping invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/ai-shopping.json",
+      "name": "API ai-shopping.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/prices",
+      "name": "v1 prices invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/panels",
+      "name": "v1 panels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/merchant",
+      "name": "v1 merchant invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/mpn",
+      "name": "v1 mpn invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/sku",
+      "name": "v1 sku invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/data/prices.json",
+      "name": "data/prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/data/catalog.json",
+      "name": "data/catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feeds/prices.json",
+      "name": "feeds/prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feeds/catalog.json",
+      "name": "feeds/catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/prices.json",
+      "name": "EN prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/prices.json",
+      "name": "TR prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/ai-shopping.json",
+      "name": "EN ai-shopping.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/ai-shopping.json",
+      "name": "TR ai-shopping.json invent alias"
     },
     {
       "@type": "DataDownload",
@@ -680,6 +803,18 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/about.json",
       "name": "Organization about well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/entity",
+      "name": "API entity invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/entity.json",
+      "name": "API entity.json invent alias"
     },
     {
       "@type": "DataDownload",
@@ -776,6 +911,18 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/.well-known/security.txt",
       "name": "security.txt (RFC 9116)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/security.txt",
+      "name": "security.txt root invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/security",
+      "name": "security.txt extensionless well-known invent alias"
     },
     {
       "@type": "DataDownload",
@@ -934,8 +1081,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "76c496e7e8ef7f62c80411e1555f9ecc4644b1c4a0423ffe99964eb323bf0ec9",
-    "catalogSha256": "d2a8f064e405670101adfa399ae629a00c7c5d0a33f225cc5eda9d4be22ccde9",
+    "aiShoppingSha256": "1a3ddad93ed9b95dee1e1b8b6f878c979b8bd12ebff7f198c125ac389e86db6a",
+    "catalogSha256": "1f122a325b6cb8a39ddef4ff70d81422e6b8868bc16f380f2b743b205e54f66d",
     "merchantTsvSha256": "725b3f10641e7e6ec45cee7144426471c82c9d14eddde5efabc80cc24858a9a4",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
@@ -990,9 +1137,32 @@
     "llmsExtless": "https://arledscreen.com/llms",
     "llmsFullExtless": "https://arledscreen.com/llms-full",
     "apiV1Prices": "https://arledscreen.com/api/v1/prices",
+    "apiPrices": "https://arledscreen.com/api/prices",
+    "apiPricesJson": "https://arledscreen.com/api/prices.json",
     "apiPanelsJson": "https://arledscreen.com/api/panels.json",
+    "apiPanels": "https://arledscreen.com/api/panels",
     "apiMerchantJson": "https://arledscreen.com/api/merchant.json",
+    "apiMerchant": "https://arledscreen.com/api/merchant",
+    "apiMpnJson": "https://arledscreen.com/api/mpn.json",
+    "apiMpn": "https://arledscreen.com/api/mpn",
     "apiCatalog": "https://arledscreen.com/api/catalog",
+    "apiAiShopping": "https://arledscreen.com/api/ai-shopping",
+    "apiAiShoppingJson": "https://arledscreen.com/api/ai-shopping.json",
+    "apiEntity": "https://arledscreen.com/api/entity",
+    "apiEntityJson": "https://arledscreen.com/api/entity.json",
+    "v1Prices": "https://arledscreen.com/v1/prices",
+    "v1Panels": "https://arledscreen.com/v1/panels",
+    "v1Merchant": "https://arledscreen.com/v1/merchant",
+    "v1Mpn": "https://arledscreen.com/v1/mpn",
+    "v1Sku": "https://arledscreen.com/v1/sku",
+    "dataPricesJson": "https://arledscreen.com/data/prices.json",
+    "dataCatalogJson": "https://arledscreen.com/data/catalog.json",
+    "feedsPricesJson": "https://arledscreen.com/feeds/prices.json",
+    "feedsCatalogJson": "https://arledscreen.com/feeds/catalog.json",
+    "enPricesJson": "https://arledscreen.com/en/prices.json",
+    "trPricesJson": "https://arledscreen.com/tr/prices.json",
+    "enAiShoppingJson": "https://arledscreen.com/en/ai-shopping.json",
+    "trAiShoppingJson": "https://arledscreen.com/tr/ai-shopping.json",
     "companyExtless": "https://arledscreen.com/company",
     "napExtless": "https://arledscreen.com/nap",
     "citeExtless": "https://arledscreen.com/cite",
@@ -1022,6 +1192,8 @@
     "agentsMd": "https://arledscreen.com/AGENTS.md",
     "humansTxt": "https://arledscreen.com/humans.txt",
     "securityTxt": "https://arledscreen.com/.well-known/security.txt",
+    "securityTxtRoot": "https://arledscreen.com/security.txt",
+    "securityExtless": "https://arledscreen.com/.well-known/security",
     "merchantFeed": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "pricesRss": "https://arledscreen.com/feeds/prices.rss",
     "llms": "https://arledscreen.com/llms.txt",
@@ -1055,7 +1227,6 @@
     "mpn": "https://arledscreen.com/mpn",
     "merchant": "https://arledscreen.com/merchant",
     "sku": "https://arledscreen.com/sku",
-    "apiMpnJson": "https://arledscreen.com/api/mpn.json",
     "trLlms": "https://arledscreen.com/tr/llms.txt",
     "trAiTxt": "https://arledscreen.com/tr/ai.txt",
     "trEntityProfiles": "https://arledscreen.com/tr/entity-profiles.json",
