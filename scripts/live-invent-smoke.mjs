@@ -626,6 +626,9 @@ try {
     ownerNextHtml.includes("pack-row-links") &&
     ownerNextHtml.includes("pack-row-deep") &&
     ownerNextHtml.includes("pack-row-after") &&
+    ownerNextHtml.includes("bindRowCopy") &&
+    ownerNextHtml.includes("Click = copy Deep") &&
+    ownerNextHtml.includes("after paste: A / sticky After") &&
     ownerNextHtml.includes("pack-deep-after") &&
     ownerNextHtml.includes("n=1") &&
     ownerNextHtml.includes("`After: ${packAfterLinkUrl") &&
