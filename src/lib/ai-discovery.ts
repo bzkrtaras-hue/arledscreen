@@ -89,6 +89,13 @@ const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const POINT_C_EN_TXT_URL = `${SITE_URL}/point-c-en.txt`;
 const POINT_C_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.txt`;
 const POINT_C_EN_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c-en.txt`;
+const POINT_C_JSON_URL = `${SITE_URL}/point-c.json`;
+const POINT_C_EN_JSON_URL = `${SITE_URL}/point-c-en.json`;
+const POINT_C_JSON_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.json`;
+const POINT_C_CSV_URL = `${SITE_URL}/feeds/point-c.csv`;
+const GEO_STATUS_JSON_URL = `${SITE_URL}/geo-status.json`;
+const GEO_NEXT_TXT_URL = `${SITE_URL}/geo-next.txt`;
+const TUR1A_JSON_URL = `${SITE_URL}/tur1a.json`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_WELLKNOWN_URL = `${SITE_URL}/.well-known/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
@@ -295,6 +302,48 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "text/plain", href: POINT_C_EN_TXT_URL, title: "Point C paste packs (EN)" },
   { rel: "alternate", type: "text/plain", href: POINT_C_WELLKNOWN_URL, title: "Point C paste packs (well-known invent alias)" },
   { rel: "alternate", type: "text/plain", href: POINT_C_EN_WELLKNOWN_URL, title: "Point C paste packs EN (well-known invent alias)" },
+  {
+    rel: "alternate",
+    type: "application/ld+json",
+    href: POINT_C_JSON_URL,
+    title: "Point C paste packs JSON (next.directoryLong)",
+  },
+  {
+    rel: "alternate",
+    type: "application/ld+json",
+    href: POINT_C_EN_JSON_URL,
+    title: "Point C paste packs JSON (EN)",
+  },
+  {
+    rel: "alternate",
+    type: "application/ld+json",
+    href: POINT_C_JSON_WELLKNOWN_URL,
+    title: "Point C JSON well-known invent alias",
+  },
+  {
+    rel: "alternate",
+    type: "text/csv",
+    href: POINT_C_CSV_URL,
+    title: "Point C spreadsheet CSV",
+  },
+  {
+    rel: "alternate",
+    type: "application/ld+json",
+    href: GEO_STATUS_JSON_URL,
+    title: "GEO owner-gate status (gates.pointC.next)",
+  },
+  {
+    rel: "alternate",
+    type: "text/plain",
+    href: GEO_NEXT_TXT_URL,
+    title: "GEO next clipboard (directoryLong Bing/Apple)",
+  },
+  {
+    rel: "alternate",
+    type: "application/ld+json",
+    href: TUR1A_JSON_URL,
+    title: "Tur1a blind coverage",
+  },
   { rel: "alternate", type: "text/markdown", href: AGENTS_MD_URL, title: "AGENTS.md" },
   // RFC 8288: machine agents that follow Link / describedby land on price + entity + brand.
   { rel: "describedby", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping pricedPanels" },

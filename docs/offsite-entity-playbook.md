@@ -4,33 +4,41 @@ Amaç: Google / Maps / ChatGPT / Gemini / Perplexity / Copilot’un ARLEDSCREEN�
 **İstanbul merkezli, doğrulanabilir bir Türk LED ekran firması** olarak ilişkilendirmesi.
 
 Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu NAP tutarlılığı,
-`entity.json`, bu playbook ve case study URL’leri sağlar. Yapıştırma metinleri **sitede
-yayımlanmaz** — yalnızca burada.
+`entity.json`, bu playbook ve case study URL’leri sağlar. Point C paste packs ve
+`next` kapısı **canlı sitede** de yayımlanır (aşağıdaki tablolar).
 
 | Kaynak | URL |
 |---|---|
 | Makinece entity (NAP + cite) | https://arledscreen.com/entity.json |
 | Kısa AI özeti | https://arledscreen.com/llms.txt |
 | Point C paste (canlı) | https://arledscreen.com/point-c.txt |
+| Point C machine next (directoryLong) | https://arledscreen.com/point-c.json → `next` |
+| GEO next clipboard (canlı) | https://arledscreen.com/geo-next.txt |
+| GEO owner-gate status | https://arledscreen.com/geo-status.json → `gates.pointC.next` |
+| Point C spreadsheet | https://arledscreen.com/feeds/point-c.csv |
 | Hakkımızda | https://arledscreen.com/tr/about/ |
 
-### Owner clipboard (repo — tek sıra)
+### Owner clipboard (live — tek sıra; repo opsiyonel)
 
-Kod tarafı canlı; sahip kapıları sırayla:
+Kod tarafı canlı; sahip kapıları sırayla. Repo CLI şart değil — canlı URL’ler yeterli:
+
+1. Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/
+2. Paste from https://arledscreen.com/point-c.json → `next.text` (or https://arledscreen.com/geo-next.txt select-all)
+3. After paste: `npm run point-c:ack -- --pack=directoryLong` (or `npm run geo:ack`)
 
 ```bash
-npm run geo:next          # Point C → arleds 301 → Tur1a → merge (tek clipboard)
-npm run point-c:csv       # 0/11 pack spreadsheet (Where/Open/OpenAlt/ack)
+npm run geo:next          # Point C → arleds 301 → Tur1a → merge (tek clipboard; live twin /geo-next.txt)
+npm run point-c:csv       # 0/11 pack spreadsheet (Where/Open/OpenAlt/ack); live /feeds/point-c.csv
 npm run point-c:ack       # after each paste
 npm run verify:arleds-301 # prints Where:/Open:/OpenAlt: for registrar panel
 npm run tur1a:next        # next blind cell + Open: platform tab
 npm run tur1a:csv         # 0/48 matrix with open column
-npm run geo:status        # gate dashboard
+npm run geo:status        # gate dashboard; live /geo-status.json
 ```
 
 | Gate | Open tab |
 |---|---|
-| Point C next pack | `npm run geo:next` → Open:/OpenAlt: (e.g. Bing Places + Apple) |
+| Point C next pack (`directoryLong`) | https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · paste: `/point-c.json` → `next` |
 | arleds.com 301 (live NS DNSEnable) | https://www.isimtescil.net/ · OpenAlt: Gmail draft (`geo:status`) |
 | Tur1a ChatGPT cell | https://chatgpt.com/ |
 | Docs | `docs/ops/arleds-301-hostinger.md` |
