@@ -150,6 +150,8 @@ jobs:
           grep -q 'https://arledscreen.com/feeds/prices.json>' out/_headers
           grep -q 'https://arledscreen.com/geo-status.json>' out/_headers
           grep -q 'https://arledscreen.com/geo-next.txt>' out/_headers
+          grep -q 'https://arledscreen.com/owner-next.txt>' out/_headers
+          grep -q 'https://arledscreen.com/point-c-progress.json>' out/_headers
           grep -q 'https://arledscreen.com/tur1a.json>' out/_headers
           ! grep -q 'https://arledscreen.com/sku>' out/_headers
           ! grep -q 'https://arledscreen.com/api/v1/prices>' out/_headers

@@ -2876,6 +2876,8 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/feeds/point-c.csv") ||
     !headersLive.includes("/geo-status.json") ||
     !headersLive.includes("/geo-next.txt") ||
+    !headersLive.includes("/owner-next.txt") ||
+    !headersLive.includes("/point-c-progress.json") ||
     !headersLive.includes("/tur1a.json") ||
     !headersLive.includes("/feeds/tur1a.csv") ||
     !headersLive.includes("https://arledscreen.com/brand>") ||
@@ -2886,7 +2888,7 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
   ) {
-    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security/llms-full + point-c (+ EN/JSON/CSV)");
+    console.error("❌ out/_headers must advertise Link invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price + brand/entity + agents/ard/humans/security/llms-full + point-c (+ EN/JSON/CSV) + geo-status/geo-next/owner-next/progress/tur1a");
     process.exit(1);
   }
   const redirectsLive = fs.existsSync(path.join(outDir, "_redirects"))

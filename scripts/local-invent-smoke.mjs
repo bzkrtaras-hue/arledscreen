@@ -1207,12 +1207,14 @@ if (
     headers.includes("/feeds/point-c.csv") &&
     headers.includes("/geo-status.json") &&
     headers.includes("/geo-next.txt") &&
+    headers.includes("/owner-next.txt") &&
+    headers.includes("/point-c-progress.json") &&
     headers.includes("/tur1a.json") &&
     headers.includes("/feeds/tur1a.csv") &&
     headers.includes("#website")
   ) {
-    ok(`_headers Link inventAlias trimmed×${linkCount} + discovery + point-c/geo-status/tur1a`);
-  } else fail("_headers Link inventAlias trimmed + discovery + point-c/geo-status/tur1a");
+    ok(`_headers Link inventAlias trimmed×${linkCount} + discovery + point-c/geo-status/progress/tur1a`);
+  } else fail("_headers Link inventAlias trimmed + discovery + point-c/geo-status/progress/tur1a");
 }
 
 {

@@ -1277,14 +1277,16 @@ try {
     link.includes("/feeds/point-c.csv") &&
     link.includes("/geo-status.json") &&
     link.includes("/geo-next.txt") &&
+    link.includes("/owner-next.txt") &&
+    link.includes("/point-c-progress.json") &&
     link.includes("/tur1a.json") &&
     link.includes("/feeds/tur1a.csv") &&
     link.includes("#website") &&
     !link.includes("/api/v1/prices") &&
     !link.includes("/en/prices.json")
   ) {
-    ok("live Link inventAlias + discovery + point-c/geo-status/tur1a (trimmed)");
-  } else fail("live Link inventAlias + discovery + point-c/geo-status/tur1a (trimmed)");
+    ok("live Link inventAlias + discovery + point-c/geo-status/progress/tur1a (trimmed)");
+  } else fail("live Link inventAlias + discovery + point-c/geo-status/progress/tur1a (trimmed)");
 } catch (e) {
   fail(`live Link invent ${e?.message || e}`);
 }
