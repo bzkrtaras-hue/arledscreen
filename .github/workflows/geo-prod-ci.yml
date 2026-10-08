@@ -222,7 +222,11 @@ jobs:
           grep -q 'pack=directoryLong&n=1' scripts/submit-indexnow.mjs
           grep -q 'After' docs/offsite-entity-playbook.md
           grep -q 'packDeepLinkUrl(key)' out/owner-next.html
-          grep -q 'Deep/WA paste' out/owner-next.html
+          grep -q 'Deep/WA/Mail paste' out/owner-next.html
+          grep -q 'packAfterLinkUrl' out/owner-next.html
+          grep -q 'After: ${after}' out/owner-next.html
+          grep -q 'Deep + After' out/AGENTS.md
+          grep -q 'Deep+After' out/.well-known/security.txt
           grep -q 'social=fb' out/.well-known/security.txt
           grep -q 'social=ig' out/.well-known/security.txt
           grep -q 'D=Copy pack link' out/.well-known/security.txt
