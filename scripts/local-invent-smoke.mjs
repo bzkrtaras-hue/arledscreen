@@ -194,10 +194,15 @@ if (
   String(agents?.description || "").includes("point-c:csv") &&
   String(agents?.ownerNext || "").includes("point-c:csv") &&
   String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") &&
-  String(agents?.ownerNext || "").includes("https://chatgpt.com/")
+  String(agents?.ownerNext || "").includes("https://chatgpt.com/") &&
+  JSON.stringify(agents?.sameAs || []).includes("/point-c.json") &&
+  JSON.stringify(agents?.sameAs || []).includes("/geo-status.json") &&
+  JSON.stringify(agents?.sameAs || []).includes("/geo-next.txt") &&
+  JSON.stringify(agents?.sameAs || []).includes("/tur1a.json") &&
+  JSON.stringify(agents?.sameAs || []).includes("/point-c-progress.json")
 ) {
-  ok(`agents.json ×${agents.itemListElement.length} incl #website + security + llms-full + point-c:csv Open`);
-} else fail("agents.json ≥20 incl #website + security + llms-full + point-c:csv Open");
+  ok(`agents.json ×${agents.itemListElement.length} sameAs→owner-gate HowTo + security + point-c:csv Open`);
+} else fail("agents.json ≥20 sameAs→owner-gate HowTo + security + point-c:csv Open");
 
 {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
@@ -577,7 +582,17 @@ else fail("ard.resources.pointC");
     JSON.stringify(res.brand?.distribution || []).includes("/geo-next.txt") &&
     JSON.stringify(res.brand?.distribution || []).includes("/tur1a.json") &&
     JSON.stringify(res.brand?.distribution || []).includes("/point-c-progress.json") &&
-    ["geoBaseline", "entityProfiles", "pointC", "pointCJson", "aiShopping", "entity"].every((key) => {
+    [
+      "geoBaseline",
+      "entityProfiles",
+      "pointC",
+      "pointCJson",
+      "aiShopping",
+      "entity",
+      "agentsJson",
+      "agentsJsonRoot",
+      "agentsMd",
+    ].every((key) => {
       const blob = JSON.stringify(res[key]?.subjectOf || []) + JSON.stringify(res[key]?.distribution || []);
       return (
         blob.includes("/point-c.json") &&
@@ -588,8 +603,8 @@ else fail("ard.resources.pointC");
       );
     })
   ) {
-    ok("ard invent entity/brand/geo/profiles/pointC/aiShopping owner-gate HowTo");
-  } else fail("ard invent entity/brand/geo/profiles/pointC/aiShopping owner-gate HowTo");
+    ok("ard invent entity/brand/geo/profiles/pointC/aiShopping/agents* owner-gate HowTo");
+  } else fail("ard invent entity/brand/geo/profiles/pointC/aiShopping/agents* owner-gate HowTo");
 }
 
 {

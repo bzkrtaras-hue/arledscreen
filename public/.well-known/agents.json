@@ -210,6 +210,22 @@
     "makesOffer": "https://arledscreen.com/#priced-panels-aggregate",
     "hasOfferCatalog": "https://arledscreen.com/catalog.json"
   },
+  "sameAs": [
+    "https://arledscreen.com/.well-known/ard.json",
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/geo-baseline.json",
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/#website",
+    "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/geo-status.json",
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/tur1a.json",
+    "https://arledscreen.com/point-c-progress.json"
+  ],
   "isBasedOn": [
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/entity.json",

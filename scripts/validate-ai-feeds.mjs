@@ -727,7 +727,17 @@ if (fs.existsSync(outDir)) {
           process.exit(1);
         }
       }
-      for (const key of ["geoBaseline", "entityProfiles", "pointC", "pointCJson", "aiShopping", "entity"]) {
+      for (const key of [
+        "geoBaseline",
+        "entityProfiles",
+        "pointC",
+        "pointCJson",
+        "aiShopping",
+        "entity",
+        "agentsJson",
+        "agentsJsonRoot",
+        "agentsMd",
+      ]) {
         const node = ard?.agentic?.resources?.[key];
         const sub = JSON.stringify(node?.subjectOf || []);
         const dist = JSON.stringify(node?.distribution || []);
@@ -2505,10 +2515,39 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(agents.isBasedOn || []).includes("/geo-status.json") ||
     !JSON.stringify(agents.isBasedOn || []).includes("/tur1a.json") ||
     !JSON.stringify(agents.distribution || []).includes("/point-c-progress.json") ||
-    !JSON.stringify(agents.distribution || []).includes("/geo-status.json")
+    !JSON.stringify(agents.distribution || []).includes("/geo-status.json") ||
+    !JSON.stringify(agents.sameAs || []).includes("/point-c.json") ||
+    !JSON.stringify(agents.sameAs || []).includes("/geo-status.json") ||
+    !JSON.stringify(agents.sameAs || []).includes("/geo-next.txt") ||
+    !JSON.stringify(agents.sameAs || []).includes("/tur1a.json") ||
+    !JSON.stringify(agents.sameAs || []).includes("/point-c-progress.json")
   ) {
     console.error("❌ agents.json description/ownerNext must cite potentialAction HowTo + geo:next/ack + #website + point-c:csv Open tabs + gate invent joins");
     process.exit(1);
+  }
+  {
+    const agentsSame = JSON.stringify(agents.sameAs || []);
+    for (const needle of [
+      "/.well-known/ard.json",
+      "/entity.json",
+      "/brand.json",
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/point-c.txt",
+      "#website",
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
+    ]) {
+      if (!agentsSame.includes(needle)) {
+        console.error(`❌ agents.json sameAs must join invent/owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+    }
   }
   if (
     !Array.isArray(agents.itemListElement) ||

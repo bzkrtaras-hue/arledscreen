@@ -3641,7 +3641,7 @@ function mergeArdUrlInvent(node, { subjectExtra = [], distExtra = [] } = {}) {
   return node;
 }
 
-/** ARD invent — brand + geoBaseline + entityProfiles + pointC + aiShopping + entity → owner-gate HowTo. */
+/** ARD invent — brand/geo/profiles/pointC/aiShopping/entity/agents* → owner-gate HowTo. */
 function enrichArdOwnerGateInvent() {
   const ardPath = path.join(publicDir, ".well-known", "ard.json");
   if (!fs.existsSync(ardPath)) return;
@@ -3750,6 +3750,41 @@ function enrichArdOwnerGateInvent() {
     subjectExtra: gates,
     distExtra: coreDist,
   });
+
+  // Agents discovery index → owner-gate HowTo (parity with agents.json sameAs / isBasedOn).
+  const agentsGateSubject = [
+    `${SITE_URL}/.well-known/agents.json`,
+    `${SITE_URL}/agents.json`,
+    `${SITE_URL}/AGENTS.md`,
+    `${SITE_URL}/ai-shopping.json`,
+    `${SITE_URL}/entity.json`,
+    `${SITE_URL}/brand.json`,
+    `${SITE_URL}/catalog.json`,
+    `${SITE_URL}/geo-baseline.json`,
+    `${SITE_URL}/entity-profiles.json`,
+    `${SITE_URL}/point-c.txt`,
+    `${SITE_URL}/#website`,
+    ...gates,
+  ];
+  const agentsGateDist = [
+    `${SITE_URL}/.well-known/agents.json`,
+    `${SITE_URL}/agents.json`,
+    `${SITE_URL}/ai-shopping.json`,
+    `${SITE_URL}/catalog.json`,
+    `${SITE_URL}/entity.json`,
+    `${SITE_URL}/brand.json`,
+    `${SITE_URL}/geo-baseline.json`,
+    `${SITE_URL}/entity-profiles.json`,
+    `${SITE_URL}/point-c.txt`,
+    `${SITE_URL}/#website`,
+    ...gates,
+  ];
+  for (const key of ["agentsJson", "agentsJsonRoot", "agentsMd"]) {
+    res[key] = mergeArdUrlInvent(res[key], {
+      subjectExtra: agentsGateSubject,
+      distExtra: agentsGateDist,
+    });
+  }
 
   ard.agentic.resources = res;
   const body = JSON.stringify(ard, null, 2) + "\n";
