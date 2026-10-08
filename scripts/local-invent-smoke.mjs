@@ -566,10 +566,20 @@ else fail("ard.resources.pointC");
     String(res.pointC?.ownerNext || "").includes("geo:ack") &&
     String(res.pointC?.ownerNext || "").includes("point-c:csv") &&
     String(res.pointC?.ownerNext || "").includes("https://chatgpt.com/") &&
-    JSON.stringify(res.brand?.subjectOf || []).includes("/point-c.txt")
+    JSON.stringify(res.brand?.subjectOf || []).includes("/point-c.txt") &&
+    JSON.stringify(res.brand?.subjectOf || []).includes("/point-c.json") &&
+    JSON.stringify(res.brand?.subjectOf || []).includes("/geo-status.json") &&
+    JSON.stringify(res.brand?.subjectOf || []).includes("/geo-next.txt") &&
+    JSON.stringify(res.brand?.subjectOf || []).includes("/tur1a.json") &&
+    JSON.stringify(res.brand?.subjectOf || []).includes("/point-c-progress.json") &&
+    JSON.stringify(res.brand?.distribution || []).includes("/point-c.json") &&
+    JSON.stringify(res.brand?.distribution || []).includes("/geo-status.json") &&
+    JSON.stringify(res.brand?.distribution || []).includes("/geo-next.txt") &&
+    JSON.stringify(res.brand?.distribution || []).includes("/tur1a.json") &&
+    JSON.stringify(res.brand?.distribution || []).includes("/point-c-progress.json")
   ) {
-    ok("ard invent entity/brand allow + geo:next/ack + point-c:csv Open tabs");
-  } else fail("ard invent entity/brand allow + geo:next/ack + point-c:csv Open tabs");
+    ok("ard invent entity/brand allow + geo:next/ack + brand owner-gate HowTo");
+  } else fail("ard invent entity/brand allow + geo:next/ack + brand owner-gate HowTo");
 }
 
 {
