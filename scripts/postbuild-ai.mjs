@@ -3763,7 +3763,7 @@ prices-rss: ${SITE_URL}/feeds/prices.rss
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
-owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · live: ${SITE_URL}/geo-next.txt · status: ${SITE_URL}/geo-status.json · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
+owner-next: live: ${SITE_URL}/geo-next.txt · ${SITE_URL}/point-c.json → next (packKey=directoryLong; text; Open Bing/Apple) · status: ${SITE_URL}/geo-status.json → gates.pointC.next · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 brand-json: ${SITE_URL}/brand.json
 brand-json-well-known: ${SITE_URL}/.well-known/brand.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/
@@ -4298,9 +4298,9 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Price: https://arledscreen.com/ai-shopping.json pricedPanels (aliases /prices.json · /.well-known/prices.json)
 # Invent aliases: /.well-known/modules.json · /.well-known/sku.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/organization.json · /.well-known/geo-baseline.json · /offer.json · /offers.json · /dataset.json · /feed.json
 # Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json · /.well-known/geo-baseline.json
-# Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json
+# Point C: https://arledscreen.com/point-c.txt · machine next: https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · entity-profiles: https://arledscreen.com/entity-profiles.json
 # Discovery: https://arledscreen.com/.well-known/agents.json · https://arledscreen.com/.well-known/ard.json · https://arledscreen.com/humans.txt · https://arledscreen.com/AGENTS.md
-# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · arleds: npm run verify:arleds-301
+# Owner next (live): https://arledscreen.com/geo-next.txt · status: https://arledscreen.com/geo-status.json → gates.pointC.next · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · arleds: npm run verify:arleds-301
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);

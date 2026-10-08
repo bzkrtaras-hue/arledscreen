@@ -1969,11 +1969,15 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/humans.txt") ||
     !securityLive.includes("/AGENTS.md") ||
     !securityLive.includes("point-c:csv") ||
+    !securityLive.includes("/geo-next.txt") ||
+    !securityLive.includes("/point-c.json") ||
+    !securityLive.includes("directoryLong") ||
+    !securityLive.includes("https://www.bingplaces.com/") ||
     !securityLive.includes("https://www.isimtescil.net/") ||
     !securityLive.includes("https://business.google.com/") ||
     !securityLive.includes("https://chatgpt.com/")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C + invent aliases + discovery agents/ard/humans/AGENTS + geo:next/ack + point-c:csv Open tabs + organization/geo-baseline + verify:arleds-301");
+    console.error("❌ out/.well-known/security.txt must include live geo-next/point-c.json next (directoryLong Bing) + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301");
     process.exit(1);
   }
   const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
@@ -2141,12 +2145,16 @@ if (fs.existsSync(outDir)) {
     if (
       !aiTxtLive.includes("geo:next") ||
       !aiTxtLive.includes("geo:ack") ||
+      !aiTxtLive.includes("/geo-next.txt") ||
+      !aiTxtLive.includes("/point-c.json") ||
+      !aiTxtLive.includes("directoryLong") ||
+      !aiTxtLive.includes("https://www.bingplaces.com/") ||
       !aiTxtLive.includes("/api/catalog.json") ||
       !aiTxtLive.includes("/api/products") ||
       !aiTxtLive.includes("/tr/prices.json") ||
       !aiTxtLive.includes("/en/feed.json")
     ) {
-      console.error("❌ out/ai.txt must cite npm run geo:next + geo:ack + api/catalog.json + api/products + tr/prices.json + en/feed.json invent");
+      console.error("❌ out/ai.txt must cite live geo-next/point-c.json next (directoryLong Bing) + geo:next/ack + api/catalog + api/products + tr/prices + en/feed invent");
       process.exit(1);
     }
   }

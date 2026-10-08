@@ -285,7 +285,7 @@
         "type": "Owner Point C Paste Packs",
         "url": "https://arledscreen.com/point-c.txt",
         "format": "text/plain",
-        "description": "Copy-ready GBP/IG/FB/LinkedIn NAP paste packs (TR) + Hostinger arleds.com 301 clipboard. Source: entity-profiles.json packs.*; alias /.well-known/point-c.txt; EN twin /point-c-en.txt; machine JSON /point-c.json; spreadsheet /feeds/point-c.csv. Owner-gated — do not invent third-party cites. Single next: npm run geo:next · spreadsheet: npm run point-c:csv · sequential: npm run point-c:next · ack: npm run point-c:ack · geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/. WebSite: https://arledscreen.com/#website.",
+        "description": "Copy-ready GBP/IG/FB/LinkedIn NAP paste packs (TR) + Hostinger arleds.com 301 clipboard. Source: entity-profiles.json packs.*; alias /.well-known/point-c.txt; EN twin /point-c-en.txt; machine JSON /point-c.json → next (packKey=directoryLong; text; Open Bing Places / Apple); spreadsheet /feeds/point-c.csv; live clipboard /geo-next.txt. Owner-gated — do not invent third-party cites. Single next: https://arledscreen.com/point-c.json → next · https://arledscreen.com/geo-next.txt · npm run geo:next · spreadsheet: npm run point-c:csv · sequential: npm run point-c:next · ack: npm run point-c:ack -- --pack=directoryLong · geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/. WebSite: https://arledscreen.com/#website.",
         "wellKnown": "https://arledscreen.com/.well-known/point-c.txt",
         "en": "https://arledscreen.com/point-c-en.txt",
         "json": "https://arledscreen.com/point-c.json",
@@ -293,7 +293,7 @@
         "csv": "https://arledscreen.com/feeds/point-c.csv",
         "csvRoot": "https://arledscreen.com/point-c.csv",
         "source": "https://arledscreen.com/entity-profiles.json",
-        "ownerNext": "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
+        "ownerNext": "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong) · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
       },
       "pointCEn": {
         "type": "Owner Point C Paste Packs (EN)",
@@ -312,12 +312,15 @@
         "type": "Owner Point C Paste Packs (JSON)",
         "url": "https://arledscreen.com/point-c.json",
         "format": "application/ld+json",
-        "description": "Machine-readable Point C packs with Where/Open/OpenAlt + paste text. Twin of point-c.txt. Alias /.well-known/point-c.json. CSV: /feeds/point-c.csv.",
+        "description": "Machine-readable Point C packs with Where/Open/OpenAlt + paste text. Top-level next = paste-ready gate (packKey/text/open/ackCommand; currently directoryLong → Bing Places / Apple). Twin of point-c.txt. Alias /.well-known/point-c.json. CSV: /feeds/point-c.csv. Live clipboard: /geo-next.txt.",
         "wellKnown": "https://arledscreen.com/.well-known/point-c.json",
         "en": "https://arledscreen.com/point-c-en.json",
         "csv": "https://arledscreen.com/feeds/point-c.csv",
         "txt": "https://arledscreen.com/point-c.txt",
-        "source": "https://arledscreen.com/entity-profiles.json"
+        "source": "https://arledscreen.com/entity-profiles.json",
+        "nextField": "next",
+        "open": "https://www.bingplaces.com/",
+        "openAlt": "https://businessconnect.apple.com/"
       },
       "pointCCsv": {
         "type": "Owner Point C Spreadsheet CSV",
@@ -334,19 +337,23 @@
         "type": "GEO owner-gate status",
         "url": "https://arledscreen.com/geo-status.json",
         "format": "application/ld+json",
-        "description": "Machine Point C / arleds 301 / Tur1a / PR merge gate status. Does not invent mention rates. Clipboard twin /geo-next.txt. Alias /.well-known/geo-status.json · /owner-p0.json.",
+        "description": "Machine Point C / arleds 301 / Tur1a / PR merge gate status. gates.pointC.next carries paste-ready directoryLong (text + Bing/Apple Open). Does not invent mention rates. Clipboard twin /geo-next.txt. Alias /.well-known/geo-status.json · /owner-p0.json.",
         "wellKnown": "https://arledscreen.com/.well-known/geo-status.json",
         "ownerP0": "https://arledscreen.com/owner-p0.json",
-        "geoNext": "https://arledscreen.com/geo-next.txt"
+        "geoNext": "https://arledscreen.com/geo-next.txt",
+        "pointCNextPath": "gates.pointC.next"
       },
       "geoNext": {
         "type": "GEO next clipboard",
         "url": "https://arledscreen.com/geo-next.txt",
         "format": "text/plain",
-        "description": "Live npm run geo:next clipboard (Point C → arleds 301 → Tur1a → merge). Alias /owner-next.txt · /.well-known/geo-next.txt.",
+        "description": "Live geo:next select-all clipboard (Point C directoryLong Bing/Apple → arleds 301 → Tur1a → merge). Machine twin: /point-c.json → next. Alias /owner-next.txt · /.well-known/geo-next.txt.",
         "wellKnown": "https://arledscreen.com/.well-known/geo-next.txt",
         "ownerNext": "https://arledscreen.com/owner-next.txt",
-        "status": "https://arledscreen.com/geo-status.json"
+        "status": "https://arledscreen.com/geo-status.json",
+        "pointCJson": "https://arledscreen.com/point-c.json",
+        "open": "https://www.bingplaces.com/",
+        "openAlt": "https://businessconnect.apple.com/"
       },
       "tur1a": {
         "type": "Tur1a blind coverage",
@@ -361,8 +368,9 @@
         "type": "Point C paste progress",
         "url": "https://arledscreen.com/point-c-progress.json",
         "format": "application/ld+json",
-        "description": "Acked Point C pack keys. Alias /.well-known/point-c-progress.json.",
-        "wellKnown": "https://arledscreen.com/.well-known/point-c-progress.json"
+        "description": "Acked Point C pack keys + next paste-ready gate (packKey/text/open). Alias /.well-known/point-c-progress.json.",
+        "wellKnown": "https://arledscreen.com/.well-known/point-c-progress.json",
+        "nextField": "next"
       },
       "agentsMdWellKnown": {
         "type": "AGENTS.md well-known invent alias",
