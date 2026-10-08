@@ -26,7 +26,7 @@
       "url": "https://arledscreen.com/owner-next.html",
       "description": "Open destination → paste NAP/About → ack. Live next from /geo-status.json · /point-c.json · /point-c-progress.json.",
       "step": [
-        { "@type": "HowToStep", "position": 1, "name": "Copy + Open remaining", "text": "Session start: open /owner-next.html?start=1 (or press C) to copy one delimited paste bundle for every locally open Point C pack and open every primary Open tab; textarea then restores the first open pack for N. Social packs: ?social=fb|ig|wa (or F/I/W keys) load facebookAbout/instagramBio + open profile (WA → wa.me). Pack/social deep-links append &copy=1 to auto-copy paste (or handles for WA) and open primary + OpenAlt tabs on load. Sticky Deep strip shows Deep (&copy=1) + After (?n=1 marks pasted + advances). Pack-list rows include per-pack Deep + After links (pack-row-deep / pack-row-after). D = Copy pack link · A = Copy After link (?n=1). M / WA paste · E / Mail paste hand off paste + Deep + After URLs. N = Pasted → next also selects the next paste (selectPasteForNext). Also: O / R / Enter / dbl-click pack · S = copy handles." },
+        { "@type": "HowToStep", "position": 1, "name": "Copy + Open remaining", "text": "Session start: open /owner-next.html?start=1 (or press C) to copy one delimited paste bundle for every locally open Point C pack and open every primary Open tab; textarea then restores the first open pack for N. Social packs: ?social=fb|ig|wa (or F/I/W keys) load facebookAbout/instagramBio + open profile (WA → wa.me). Pack/social deep-links append &copy=1 to auto-copy paste (or handles for WA) and open primary + OpenAlt tabs on load. Sticky Deep strip: click Deep/After to copy URLs (mod+click opens); After ?n=1|after=1 marks pasted + advances. Pack-list rows include per-pack Deep + After links (pack-row-deep / pack-row-after). D = Copy pack link · A = Copy After link. M / WA paste · E / Mail paste hand off paste + Deep + After URLs. N = Pasted → next also selects the next paste (selectPasteForNext). Also: O / R / Enter / dbl-click pack · S = copy handles." },
         { "@type": "HowToStep", "position": 2, "name": "Paste block", "text": "Paste the copied block into each opened destination (or walk the Copy remaining bundle section by section)." },
         { "@type": "HowToStep", "position": 3, "name": "Pasted → next", "text": "Pasted → next (N) copies ack, marks pack pasted locally, advances ?pack= to next open pack. Undo mark: U. When ≥2 packs are pasted locally, Copy ack batch (B) copies npm run geo:ack -- --packs=… for one terminal paste." },
         { "@type": "HowToStep", "position": 4, "name": "Next: arleds 301", "text": "When every Point C pack is pasted locally, Next: arleds 301 (or G) loads the DNSEnable/Isimtescil 301 clipboard with Copy + Open all — even before terminal geo:ack updates priorityGate." },
@@ -384,7 +384,7 @@
           <span class="pack-deep-label">Deep</span>
           <a id="pack-deep-a" href="https://arledscreen.com/owner-next.html?start=1" target="_blank" rel="noopener noreferrer">/owner-next.html?start=1</a>
           <span class="pack-deep-label pack-deep-after-label">After</span>
-          <a id="pack-deep-after" href="https://arledscreen.com/owner-next.html?start=1" title="After paste: mark pasted + advance (N) via ?n=1">?n=1</a>
+          <a id="pack-deep-after" href="https://arledscreen.com/owner-next.html?start=1" title="Click = copy After URL · open (mod+click) marks pasted + advances via ?n=1|after=1">?n=1</a>
         </p>
         <div id="tur1a-log-chips" class="hidden" aria-label="Tur1a observation log chips">
           <div class="chip-row" data-field="mentioned">
@@ -765,14 +765,14 @@
       }
     }
 
-    /** ?n=1|true|next → mark active pack pasted + advance (same as N), after paste handoff. */
+    /** ?n=1|true|next|after=1 → mark active pack pasted + advance (same as N), after paste handoff. */
     function nextQuery() {
       try {
         const sp = new URLSearchParams(location.search);
-        const v = String(sp.get("n") || sp.get("next") || "")
+        const v = String(sp.get("n") || sp.get("next") || sp.get("after") || "")
           .trim()
           .toLowerCase();
-        return v === "1" || v === "true" || v === "yes" || v === "n";
+        return v === "1" || v === "true" || v === "yes" || v === "n" || v === "after";
       } catch {
         return false;
       }
@@ -783,13 +783,11 @@
       try {
         const u = new URL(location.href);
         let changed = false;
-        if (u.searchParams.has("n")) {
-          u.searchParams.delete("n");
-          changed = true;
-        }
-        if (u.searchParams.has("next")) {
-          u.searchParams.delete("next");
-          changed = true;
+        for (const key of ["n", "next", "after"]) {
+          if (u.searchParams.has(key)) {
+            u.searchParams.delete(key);
+            changed = true;
+          }
         }
         if (!changed) return;
         history.replaceState(null, "", u.pathname + u.search + u.hash);
@@ -1018,7 +1016,7 @@
       return (
         `ARLEDSCREEN Point C — ${parts.length} open pack(s) · cite-only · no invented scores\n` +
         `Handles: ${socialHandlesLine()}\n` +
-        `Source: https://arledscreen.com/owner-next.html?start=1 · Deep/WA/Mail paste (D/M/E · After ?n=1) · https://arledscreen.com/point-c.json · https://arledscreen.com/social.json\n\n` +
+        `Source: https://arledscreen.com/owner-next.html?start=1 · Deep/After/WA/Mail (D/A/M/E · After ?n=1|after=1) · https://arledscreen.com/point-c.json · https://arledscreen.com/social.json\n\n` +
         parts.join("\n")
       );
     }
@@ -1997,6 +1995,24 @@
     $("copy-ack").addEventListener("click", () => copyText(activeAck || $("ack").textContent, $("copy-ack"), "Copy ack"));
     $("copy-pack-link").addEventListener("click", () => copyPackDeepLink($("copy-pack-link")));
     $("copy-after-link").addEventListener("click", () => copyPackAfterLink($("copy-after-link")));
+    /** Sticky Deep/After: plain click copies URL; mod/middle-click keeps native open. */
+    const packDeepA = $("pack-deep-a");
+    if (packDeepA) {
+      packDeepA.title = "Click = copy Deep URL · mod+click opens (&copy=1)";
+      packDeepA.addEventListener("click", (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button === 1) return;
+        e.preventDefault();
+        copyPackDeepLink($("copy-pack-link"));
+      });
+    }
+    const packDeepAfter = $("pack-deep-after");
+    if (packDeepAfter) {
+      packDeepAfter.addEventListener("click", (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button === 1) return;
+        e.preventDefault();
+        copyPackAfterLink($("copy-after-link"));
+      });
+    }
     $("wa-paste-share").addEventListener("click", () => doWaPasteShare($("wa-paste-share")));
     $("mail-paste-share").addEventListener("click", () => doMailPasteShare($("mail-paste-share")));
     $("open-remaining").addEventListener("click", () => doOpenRemaining($("open-remaining")));

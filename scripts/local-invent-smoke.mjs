@@ -652,7 +652,10 @@ else fail("ard.resources.pointC");
     html.includes("`After: ${packAfterLinkUrl") &&
     html.includes("After: ${after}") &&
     html.includes("packDeepLinkUrl(key)") &&
-    html.includes("Deep/WA/Mail paste") &&
+    html.includes("Deep/After/WA/Mail") &&
+    html.includes('sp.get("after")') &&
+    html.includes("Click = copy After") &&
+    html.includes("packDeepAfter.addEventListener") &&
     html.includes("Open×") &&
     readText("AGENTS.md").includes("WA paste") &&
     readText("AGENTS.md").includes("Mail paste") &&
@@ -660,6 +663,7 @@ else fail("ard.resources.pointC");
     readText("AGENTS.md").includes("pack-list per-row Deep/After") &&
     readText("AGENTS.md").includes("Copy After link") &&
     readText("AGENTS.md").includes("?n=1") &&
+    readText("AGENTS.md").includes("after=1") &&
     readText("llms.txt").includes("WA paste") &&
     readText("llms.txt").includes("Mail paste") &&
     readText("llms.txt").includes("Copy After link") &&

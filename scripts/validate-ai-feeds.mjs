@@ -2384,9 +2384,10 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("WA paste") ||
       !agentsMdLive.includes("Mail paste") ||
       !agentsMdLive.includes("Deep + After") ||
-      !agentsMdLive.includes("Copy After link")
+      !agentsMdLive.includes("Copy After link") ||
+      !agentsMdLive.includes("after=1")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + WA paste + Mail paste + Deep + After");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + after=1 + WA paste + Mail paste + Deep + After");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2714,7 +2715,10 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("`After: ${packAfterLinkUrl") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("After: ${after}") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packDeepLinkUrl(key)") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Deep/WA/Mail paste") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Deep/After/WA/Mail") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('sp.get("after")') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Click = copy After") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packDeepAfter.addEventListener") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open×") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("activeOpens") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("socialFocus") ||
