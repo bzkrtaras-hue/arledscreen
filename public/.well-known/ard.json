@@ -952,7 +952,7 @@
         "type": "Owner next JSON (machine twin)",
         "url": "https://arledscreen.com/owner-next.json",
         "format": "application/ld+json",
-        "description": "Single-fetch invent twin of /owner-next.html: priorityGate + next (text/open/htmlDeep) + packs×11 paste bodies + arleds301 clipboard + tur1a next + potentialAction HowTo. Aliases /geo-next.json · /.well-known/owner-next.json. Browser: /owner-next.html.",
+        "description": "Single-fetch invent twin of /owner-next.html: priorityGate + next (text/open/htmlDeep) + packs×11 paste bodies + arleds301 clipboard + tur1a next + potentialAction HowTo. Aliases /geo-next.json · /.well-known/owner-next.json · /.well-known/geo-next.json. Browser: /owner-next.html.",
         "alias": "https://arledscreen.com/geo-next.json",
         "wellKnown": "https://arledscreen.com/.well-known/owner-next.json",
         "html": "https://arledscreen.com/owner-next.html",
@@ -979,7 +979,8 @@
           "https://arledscreen.com/geo-next.txt",
           "https://arledscreen.com/tur1a.json",
           "https://arledscreen.com/point-c-progress.json"
-        ]
+        ],
+        "wellKnownGeo": "https://arledscreen.com/.well-known/geo-next.json"
       },
       "tur1a": {
         "type": "Tur1a blind coverage",
@@ -3392,7 +3393,8 @@
       "/en/request-quote/",
       "/en/products/gob/",
       "/pricing/",
-      "/prices/"
+      "/prices/",
+      "/.well-known/geo-next.json"
     ],
     "disallow": []
   },

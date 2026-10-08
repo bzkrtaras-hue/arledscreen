@@ -645,6 +645,7 @@ if (fs.existsSync(outDir)) {
       "/owner-next.json",
       "/.well-known/owner-next.json",
       "/geo-next.json",
+      "/.well-known/geo-next.json",
       "/tur1a.json",
       "/feeds/tur1a.csv",
       "/.well-known/AGENTS.md",
@@ -2109,6 +2110,8 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/AGENTS.md") ||
     !securityLive.includes("point-c:csv") ||
     !securityLive.includes("/geo-next.txt") ||
+    !securityLive.includes("/owner-next.html") ||
+    !securityLive.includes("/owner-next.json") ||
     !securityLive.includes("/point-c.json") ||
     !securityLive.includes("/point-c-progress.json") ||
     !securityLive.includes("potentialAction") ||
@@ -2118,7 +2121,7 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("https://business.google.com/") ||
     !securityLive.includes("https://chatgpt.com/")
   ) {
-    console.error("❌ out/.well-known/security.txt must include live geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301");
+    console.error("❌ out/.well-known/security.txt must include live owner-next.html/json + geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301");
     process.exit(1);
   }
   const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
@@ -2171,6 +2174,8 @@ if (fs.existsSync(outDir)) {
       !llmsGeo.includes("geo:ack") ||
       !llmsGeo.includes("point-c:csv") ||
       !llmsGeo.includes("/geo-next.txt") ||
+      !llmsGeo.includes("/owner-next.html") ||
+      !llmsGeo.includes("/owner-next.json") ||
       !llmsGeo.includes("/point-c.json") ||
       !llmsGeo.includes("/point-c-progress.json") ||
       !llmsGeo.includes("potentialAction") ||
@@ -2182,7 +2187,7 @@ if (fs.existsSync(outDir)) {
       !llmsGeo.includes("/.well-known/brand.json") ||
       !llmsGeo.includes("#website")
     ) {
-      console.error("❌ out/llms.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
+      console.error("❌ out/llms.txt must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
       process.exit(1);
     }
     const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
@@ -2191,6 +2196,8 @@ if (fs.existsSync(outDir)) {
       !llmsFullLive.includes("geo:ack") ||
       !llmsFullLive.includes("point-c:csv") ||
       !llmsFullLive.includes("/geo-next.txt") ||
+      !llmsFullLive.includes("/owner-next.html") ||
+      !llmsFullLive.includes("/owner-next.json") ||
       !llmsFullLive.includes("/point-c.json") ||
       !llmsFullLive.includes("/point-c-progress.json") ||
       !llmsFullLive.includes("potentialAction") ||
@@ -2282,6 +2289,8 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("#website") ||
       !agentsMdLive.includes("point-c:csv") ||
       !agentsMdLive.includes("/geo-next.txt") ||
+      !agentsMdLive.includes("/owner-next.html") ||
+      !agentsMdLive.includes("/owner-next.json") ||
       !agentsMdLive.includes("/point-c.json") ||
       !agentsMdLive.includes("/point-c-progress.json") ||
       !agentsMdLive.includes("potentialAction") ||
@@ -2296,7 +2305,7 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("/en/shop/") ||
       !agentsMdLive.includes("/en/request-quote/")
     ) {
-      console.error("❌ out/AGENTS.md must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2521,17 +2530,20 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("howto-ld") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy Open URL") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-ack") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-tab") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next Copy Open/ack required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next Copy+Open/ack required");
       process.exit(1);
     }
     {
       const twinPath = path.join(outDir, "owner-next.json");
       const twinAlias = path.join(outDir, "geo-next.json");
       const twinWk = path.join(outDir, ".well-known/owner-next.json");
-      if (!fs.existsSync(twinPath) || !fs.existsSync(twinAlias) || !fs.existsSync(twinWk)) {
-        console.error("❌ out/ must include owner-next.json + geo-next.json + .well-known/owner-next.json");
+      const twinWkGeo = path.join(outDir, ".well-known/geo-next.json");
+      if (!fs.existsSync(twinPath) || !fs.existsSync(twinAlias) || !fs.existsSync(twinWk) || !fs.existsSync(twinWkGeo)) {
+        console.error("❌ out/ must include owner-next.json + geo-next.json + .well-known/{owner,geo}-next.json");
         process.exit(1);
       }
       const twin = JSON.parse(fs.readFileSync(twinPath, "utf8"));
@@ -2539,6 +2551,7 @@ if (fs.existsSync(outDir)) {
       if (
         !fs.readFileSync(twinAlias).equals(twinBody) ||
         !fs.readFileSync(twinWk).equals(twinBody) ||
+        !fs.readFileSync(twinWkGeo).equals(twinBody) ||
         twin?.["@type"] !== "Dataset" ||
         !String(twin?.url || "").includes("/owner-next.json") ||
         !String(twin?.html || "").includes("/owner-next.html") ||
@@ -3195,6 +3208,10 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/geo-status.json") ||
     !headersLive.includes("/geo-next.txt") ||
     !headersLive.includes("/owner-next.txt") ||
+    !headersLive.includes("/owner-next.json") ||
+    !headersLive.includes("/.well-known/owner-next.json") ||
+    !headersLive.includes("/geo-next.json") ||
+    !headersLive.includes("/owner-next.html") ||
     !headersLive.includes("/point-c-progress.json") ||
     !headersLive.includes("/tur1a.json") ||
     !headersLive.includes("/feeds/tur1a.csv") ||
@@ -3203,6 +3220,7 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes('title="Point C paste progress (potentialAction HowTo)"') ||
     !headersLive.includes('title="Tur1a blind coverage (potentialAction HowTo)"') ||
     !headersLive.includes('title="GEO next clipboard (HowTo footer)"') ||
+    !headersLive.includes('title="Owner next JSON machine twin (Open/paste)"') ||
     !headersLive.includes("https://arledscreen.com/brand>") ||
     !headersLive.includes("https://arledscreen.com/modules>") ||
     !headersLive.includes("\n/brand\n") ||

@@ -3119,7 +3119,7 @@ function enrichEntityProfiles(doc) {
   };
 
   const geoNextLead =
-    "P0 next: live https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction (packKey=directoryLong; text; Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/) · progress https://arledscreen.com/point-c-progress.json → potentialAction · status https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md";
+    "P0 next: live https://arledscreen.com/owner-next.html · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction (packKey=directoryLong; text; Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/) · progress https://arledscreen.com/point-c-progress.json → potentialAction · status https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md";
   const domainLead =
     "P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: Open: https://www.isimtescil.net/ · OpenAlt: Gmail draft (geo:status) · registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md";
   const checklist = Array.isArray(doc.ownerP0Checklist) ? [...doc.ownerP0Checklist] : [];
@@ -4239,6 +4239,8 @@ function main() {
     writeJson(outDir, ".well-known/owner-next.json", ownerNextJson);
     writeJson(publicDir, "geo-next.json", ownerNextJson);
     writeJson(outDir, "geo-next.json", ownerNextJson);
+    writeJson(publicDir, ".well-known/geo-next.json", ownerNextJson);
+    writeJson(outDir, ".well-known/geo-next.json", ownerNextJson);
     const agentsMdPath = path.join(publicDir, "AGENTS.md");
     if (fs.existsSync(agentsMdPath)) {
       const agentsMd = fs.readFileSync(agentsMdPath, "utf8");
@@ -4868,7 +4870,7 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json · /.well-known/geo-baseline.json
 # Point C: https://arledscreen.com/point-c.txt · machine next: https://arledscreen.com/point-c.json → next + potentialAction (directoryLong Bing/Apple) · progress: https://arledscreen.com/point-c-progress.json → potentialAction · entity-profiles: https://arledscreen.com/entity-profiles.json
 # Discovery: https://arledscreen.com/.well-known/agents.json · https://arledscreen.com/.well-known/ard.json · https://arledscreen.com/humans.txt · https://arledscreen.com/AGENTS.md
-# Owner next (live): https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo) · tur1a: https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · arleds: npm run verify:arleds-301
+# Owner next (live): https://arledscreen.com/owner-next.html · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo) · tur1a: https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · arleds: npm run verify:arleds-301
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);

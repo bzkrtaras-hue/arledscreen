@@ -182,17 +182,26 @@ jobs:
           grep -q 'ownerNextJson' out/.well-known/ard.json
           test -f out/owner-next.html && test -f out/geo-next.html
           cmp -s out/owner-next.html out/geo-next.html
-          test -f out/owner-next.json && test -f out/geo-next.json && test -f out/.well-known/owner-next.json
+          test -f out/owner-next.json && test -f out/geo-next.json && test -f out/.well-known/owner-next.json && test -f out/.well-known/geo-next.json
           cmp -s out/owner-next.json out/geo-next.json
           cmp -s out/owner-next.json out/.well-known/owner-next.json
+          cmp -s out/owner-next.json out/.well-known/geo-next.json
           grep -q 'Copy paste' out/owner-next.html
           grep -q '/owner-next.json' out/owner-next.html
           grep -q 'pack-list' out/owner-next.html
           grep -q 'howto-ld' out/owner-next.html
           grep -q 'Copy Open URL' out/owner-next.html
           grep -q 'copy-ack' out/owner-next.html
+          grep -q 'copy-open-tab' out/owner-next.html
+          grep -q 'Copy + Open' out/owner-next.html
           grep -q '/owner-next.html' out/ai.txt
           grep -q '/owner-next.json' out/ai.txt
+          grep -q '/owner-next.json' out/_headers
+          grep -q '/owner-next.html' out/_headers
+          grep -q '/owner-next.json' out/AGENTS.md
+          grep -q '/owner-next.json' out/llms.txt
+          grep -q '/owner-next.json' out/.well-known/security.txt
+          npm run geo:next | grep -q 'owner-next.json'
           npm run geo:next | grep -q '?pack='
           node -e 'const p=require("./out/point-c-progress.json"); const g=require("./out/geo-status.json"); const t=require("./out/owner-next.json"); if(!Array.isArray(p.packs)||p.packs.length<11||!p.packs.some(x=>String(x.html||"").includes("?pack=directoryLong"))||!String(p.next?.html||"").includes("?pack=")||!Array.isArray(g.gates?.pointC?.packs)||g.gates.pointC.packs.length<11||!String(p.potentialAction?.url||"").includes("?pack=")||!String(g.potentialAction?.url||"").includes("?pack=")||!String(g.gates?.arleds301?.text||"").includes("Domain Redirect")||t["@type"]!=="Dataset"||!Array.isArray(t.packs)||t.packs.length<11||!t.next||!String(t.url||"").includes("/owner-next.json")) process.exit(1)'
           grep -q '/.well-known/security.txt' out/ai-shopping.json

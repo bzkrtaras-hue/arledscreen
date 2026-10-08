@@ -236,7 +236,8 @@
       <h2>Paste (select-all)</h2>
       <textarea id="paste" readonly spellcheck="false"></textarea>
       <div class="row">
-        <button type="button" class="btn primary" id="copy">Copy paste</button>
+        <button type="button" class="btn primary" id="copy-open-tab">Copy + Open</button>
+        <button type="button" class="btn" id="copy">Copy paste</button>
         <button type="button" class="btn" id="copy-open">Copy Open URL</button>
         <button type="button" class="btn" id="copy-ack">Copy ack</button>
         <button type="button" class="btn" id="select">Select all</button>
@@ -251,7 +252,9 @@
       <a href="/geo-status.json">geo-status.json</a> ·
       <a href="/point-c-progress.json">point-c-progress.json</a> ·
       <a href="/tur1a.json">tur1a.json</a><br />
-      Clipboard twin: <a href="/geo-next.txt">geo-next.txt</a> ·
+      Machine twin: <a href="/owner-next.json">owner-next.json</a> ·
+      <a href="/geo-next.json">geo-next.json</a> ·
+      Clipboard: <a href="/geo-next.txt">geo-next.txt</a> ·
       CSV: <a href="/feeds/point-c.csv">point-c.csv</a> ·
       <a href="/feeds/tur1a.csv">tur1a.csv</a><br />
       Repo: <code>npm run geo:next</code> · <code>npm run geo:ack</code> · <code>npm run point-c:dnsenable-draft</code>
@@ -488,6 +491,20 @@
       t.focus();
       t.select();
       await copyText(t.value, $("copy"), "Copy paste");
+    });
+    $("copy-open-tab").addEventListener("click", async () => {
+      const btn = $("copy-open-tab");
+      const t = $("paste");
+      t.focus();
+      t.select();
+      await copyText(t.value, btn, "Copy + Open");
+      if (activeOpen) {
+        try {
+          window.open(activeOpen, "_blank", "noopener,noreferrer");
+        } catch {
+          /* popup blocked — paste already copied */
+        }
+      }
     });
     $("copy-open").addEventListener("click", () => copyText(activeOpen, $("copy-open"), "Copy Open URL"));
     $("copy-ack").addEventListener("click", () => copyText(activeAck || $("ack").textContent, $("copy-ack"), "Copy ack"));

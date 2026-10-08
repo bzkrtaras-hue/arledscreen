@@ -527,6 +527,8 @@ else fail("ard.resources.pointC");
     html.includes("howto-ld") &&
     html.includes("Copy Open URL") &&
     html.includes("copy-ack") &&
+    html.includes("copy-open-tab") &&
+    html.includes("Copy + Open") &&
     html.includes("packQuery") &&
     alias === html &&
     twin?.["@type"] === "Dataset" &&
@@ -536,6 +538,7 @@ else fail("ard.resources.pointC");
     twin?.next &&
     JSON.stringify(twin) === JSON.stringify(twinAlias) &&
     JSON.stringify(twin) === JSON.stringify(twinWk) &&
+    JSON.stringify(twin) === JSON.stringify(readJson(".well-known/geo-next.json")) &&
     Number(agents?.numberOfItems) === 28 &&
     (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.html")) &&
     (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.json")) &&
@@ -1404,13 +1407,18 @@ if (
     headers.includes("/geo-status.json") &&
     headers.includes("/geo-next.txt") &&
     headers.includes("/owner-next.txt") &&
+    headers.includes("/owner-next.json") &&
+    headers.includes("/.well-known/owner-next.json") &&
+    headers.includes("/geo-next.json") &&
+    headers.includes("/owner-next.html") &&
     headers.includes("/point-c-progress.json") &&
     headers.includes("/tur1a.json") &&
     headers.includes("/feeds/tur1a.csv") &&
-    headers.includes("#website")
+    headers.includes("#website") &&
+    linkCount <= 90
   ) {
-    ok(`_headers Link inventAlias trimmed×${linkCount} + discovery + point-c/geo-status/progress/tur1a`);
-  } else fail("_headers Link inventAlias trimmed + discovery + point-c/geo-status/progress/tur1a");
+    ok(`_headers Link inventAlias trimmed×${linkCount} + discovery + point-c/geo-status/progress/tur1a + owner-next.json`);
+  } else fail("_headers Link inventAlias trimmed + discovery + point-c/geo-status/progress/tur1a + owner-next.json");
 }
 
 {

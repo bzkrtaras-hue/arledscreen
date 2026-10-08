@@ -536,6 +536,8 @@ try {
     ownerNextHtml.includes("howto-ld") &&
     ownerNextHtml.includes("Copy Open URL") &&
     ownerNextHtml.includes("copy-ack") &&
+    ownerNextHtml.includes("copy-open-tab") &&
+    ownerNextHtml.includes("Copy + Open") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&
     ownerNextJson?.["@type"] === "Dataset" &&

@@ -38,7 +38,10 @@ function ackedCount() {
 
 function finish(code = 0, htmlUrl = "https://arledscreen.com/owner-next.html") {
   console.log("");
-  console.log(`HTML: ${htmlUrl} (Open tabs + Copy paste) · alias https://arledscreen.com/geo-next.html`);
+  console.log(`HTML: ${htmlUrl} (Open tabs + Copy+Open) · alias https://arledscreen.com/geo-next.html`);
+  console.log(
+    "JSON twin: https://arledscreen.com/owner-next.json · aliases https://arledscreen.com/geo-next.json · https://arledscreen.com/.well-known/owner-next.json",
+  );
   console.log(HOWTO_FOOTER);
   process.exit(code);
 }
