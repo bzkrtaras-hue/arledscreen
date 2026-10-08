@@ -69,6 +69,7 @@ jobs:
           grep -q "n=1|after=1=After paste advance" /tmp/geo-next.txt
           grep -q "E=Mail paste" /tmp/geo-next.txt
           grep -q "A=Copy After link" /tmp/geo-next.txt
+          grep -q "Y=Open After" /tmp/geo-next.txt
           npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
           test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
@@ -207,6 +208,8 @@ jobs:
           grep -q 'social=wa' out/AGENTS.md
           grep -q 'Copy pack link' out/AGENTS.md
           grep -q 'Copy After link' out/AGENTS.md
+          grep -q 'Open After' out/AGENTS.md
+          grep -q 'next.htmlAfter' out/AGENTS.md
           grep -q 'WA paste' out/AGENTS.md
           grep -q 'Mail paste' out/AGENTS.md
           grep -q '?n=1' out/AGENTS.md
@@ -218,6 +221,7 @@ jobs:
           grep -q 'Copy After link' out/humans.txt
           grep -q 'E=Mail paste' out/.well-known/security.txt
           grep -q 'A=Copy After link' out/.well-known/security.txt
+          node -e 'const p=require("./out/point-c.json"); if(!String(p.next?.htmlAfter||"").includes("n=1")||!(p.potentialAction?.tool||[]).some(t=>String(t.name||"").includes("After ?n=1"))||!(p.potentialAction?.step||[])[2]||!String(p.potentialAction.step[2].url||"").includes("n=1")) process.exit(1)'
           grep -q 'selectPasteForNext' out/owner-next.html
           grep -q 'maybeNextSession' out/owner-next.html
           grep -q 'nextQuery' out/owner-next.html
@@ -315,6 +319,9 @@ jobs:
           grep -q 'copy-after-link' out/owner-next.html
           grep -q 'Copy After link' out/owner-next.html
           grep -q 'copyPackAfterLink' out/owner-next.html
+          grep -q 'open-after-link' out/owner-next.html
+          grep -q 'Open After' out/owner-next.html
+          grep -q 'openPackAfterLink' out/owner-next.html
           node -e 'const p=require("./out/point-c.json"); if(!String(p.next?.html||"").includes("copy=1")||!String(p.packs.find(x=>x.packKey==="facebookAbout")?.html||"").includes("copy=1")) process.exit(1)'
           grep -q 'copy=1' scripts/submit-indexnow.mjs
           grep -q 'social=fb&n=1' scripts/submit-indexnow.mjs
@@ -325,6 +332,7 @@ jobs:
           grep -q 'e.key === "w"' out/owner-next.html
           grep -q 'e.key === "d"' out/owner-next.html
           grep -q 'e.key === "a"' out/owner-next.html
+          grep -q 'e.key === "y"' out/owner-next.html
           grep -q 'maybeSocialJump' out/owner-next.html
           grep -q '?social=fb|ig|wa' out/owner-next.html
           grep -q 'Social: FB' /tmp/geo-next.txt
@@ -414,8 +422,10 @@ jobs:
           grep -q "@arledscreenn" /tmp/geo-status.txt
           grep -q "D=Copy pack link" /tmp/geo-status.txt
           grep -q "A=Copy After link" /tmp/geo-status.txt
+          grep -q "Y=Open After" /tmp/geo-status.txt
           grep -q "M=WA paste" /tmp/geo-status.txt
           grep -q "E=Mail paste" /tmp/geo-status.txt
           grep -q "After ?n=1" /tmp/geo-status.txt
+          grep -q "htmlAfter" /tmp/geo-status.txt
           grep -q "A=Copy After link" /tmp/geo-next.txt
           echo "OK owner tooling"

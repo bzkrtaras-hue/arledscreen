@@ -531,12 +531,14 @@ export function buildPointCNext(profiles, { en = false } = {}) {
   const where = POINT_C_PASTE_WHERE[step.key] || "";
   const open = pointCOpenUrl(step.key);
   const openAlts = pointCOpenAltUrls(step.key);
+  const html = packOwnerHtml(step.key);
   const row = {
     packKey: step.key,
     label: step.label,
     where,
     open: open || "",
-    html: packOwnerHtml(step.key),
+    html,
+    htmlAfter: withOwnerNext(html),
     text: step.text,
     ackCommand: `npm run point-c:ack -- --pack=${step.key}`,
     progress: { acked: step.done, total: step.total },
@@ -636,13 +638,15 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
   for (const [label, key] of order) {
     if (packs[key] == null || packs[key] === "") continue;
     const alts = pointCOpenAltUrls(key);
+    const html = ownerNextPackHtmlUrl(key);
     const row = {
       packKey: key,
       label,
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
-      html: ownerNextPackHtmlUrl(key),
+      html,
+      htmlAfter: withOwnerNext(html),
       text: String(packs[key]),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
@@ -653,13 +657,15 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
   {
     const key = HOSTINGER_STEP;
     const alts = pointCOpenAltUrls(key);
+    const html = ownerNextPackHtmlUrl(key);
     const row = {
       packKey: key,
       label: "arleds.com 301 (DNSEnable Domain Redirect)",
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
-      html: ownerNextPackHtmlUrl(key),
+      html,
+      htmlAfter: withOwnerNext(html),
       text: buildArleds301DualPathClipboard(),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
@@ -756,6 +762,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
   const next = doc.next;
   if (next?.text && next?.open) {
     const packHtml = next.html || ownerNextPackHtmlUrl(next.packKey);
+    const packAfter = next.htmlAfter || withOwnerNext(packHtml);
     const startHtml = ownerNextStartUrl();
     doc.potentialAction = {
       "@type": "HowTo",
@@ -763,7 +770,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         ? `Point C next paste: ${next.packKey}`
         : `Point C sonraki yapıştırma: ${next.packKey}`,
       description:
-        `Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser session start: ${startHtml} (auto Copy + Open remaining) · pack: ${packHtml}`,
+        `Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser session start: ${startHtml} (auto Copy + Open remaining) · pack: ${packHtml} · after paste: ${packAfter}`,
       url: startHtml,
       step: [
         {
@@ -786,6 +793,13 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         {
           "@type": "HowToStep",
           position: 3,
+          name: "After paste → next",
+          url: packAfter,
+          text: `Open After deep-link (marks pasted + advances): ${packAfter} · or press N / A=Copy After on /owner-next.html`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 4,
           name: "Ack progress",
           text: next.ackCommand || "npm run geo:ack",
         },
@@ -800,6 +814,11 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
           "@type": "HowToTool",
           name: "owner-next.html",
           url: packHtml,
+        },
+        {
+          "@type": "HowToTool",
+          name: "owner-next.html After ?n=1",
+          url: packAfter,
         },
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: jsonUrl },
@@ -874,7 +893,7 @@ function printNext(profiles, { en = false } = {}) {
   console.log(`Deep: ${deep}`);
   console.log(`After: ${after}`);
   console.log(
-    "Keys: C=Copy+Open remaining · D=Copy pack link · A=Copy After link · M=WA paste · E=Mail paste (Deep+After) · n=1|after=1=After paste advance · F/I/W=social · https://arledscreen.com/owner-next.html?start=1",
+    "Keys: C=Copy+Open remaining · D=Copy pack link · A=Copy After link · Y=Open After · M=WA paste · E=Mail paste (Deep+After) · n=1|after=1=After paste advance · F/I/W=social · https://arledscreen.com/owner-next.html?start=1",
   );
 }
 

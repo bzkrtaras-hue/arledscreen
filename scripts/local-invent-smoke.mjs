@@ -413,15 +413,20 @@ if (
     String(pcNext.packKey || "") === "directoryLong" &&
     String(pcNext.text || "").includes("34245") &&
     String(pcNext.open || "").includes("bingplaces.com") &&
+    String(pcNext.htmlAfter || "").includes("n=1") &&
     String(pcNext.ackCommand || "").includes("directoryLong") &&
     pcJson?.potentialAction?.["@type"] === "HowTo" &&
     String(pcJson?.potentialAction?.name || "").includes("directoryLong") &&
     Array.isArray(pcJson?.potentialAction?.step) &&
-    pcJson.potentialAction.step.length >= 3 &&
+    pcJson.potentialAction.step.length >= 4 &&
     String(pcJson?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
     String(pcJson.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
+    String(pcJson.potentialAction.step[2]?.url || "").includes("n=1") &&
     (pcJson?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("/owner-next.html?start=1"),
+    ) &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.name || "").includes("After ?n=1"),
     ) &&
     (pcJson?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("social=fb"),
@@ -621,7 +626,11 @@ else fail("ard.resources.pointC");
     html.includes("copyPackAfterLink") &&
     html.includes("copy-after-link") &&
     html.includes("Copy After link") &&
+    html.includes("openPackAfterLink") &&
+    html.includes("open-after-link") &&
+    html.includes("Open After") &&
     html.includes('e.key === "a"') &&
+    html.includes('e.key === "y"') &&
     html.includes("packDeepLinkUrl") &&
     html.includes("withCopyParam") &&
     html.includes("maybeCopyPaste") &&
@@ -666,6 +675,8 @@ else fail("ard.resources.pointC");
     readText("AGENTS.md").includes("pack-list Deep/After click-to-copy") &&
     readText("AGENTS.md").includes("Copy+Open ack After hint") &&
     readText("AGENTS.md").includes("Copy After link") &&
+    readText("AGENTS.md").includes("Open After") &&
+    readText("AGENTS.md").includes("next.htmlAfter") &&
     readText("AGENTS.md").includes("?n=1") &&
     readText("AGENTS.md").includes("after=1") &&
     readText("llms.txt").includes("WA paste") &&

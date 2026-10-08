@@ -267,7 +267,7 @@ console.log(
   "Social: FB https://arledscreen.com/owner-next.html?social=fb&copy=1 · IG https://arledscreen.com/owner-next.html?social=ig&copy=1 · WA https://arledscreen.com/owner-next.html?social=wa&copy=1 · https://arledscreen.com/social.json",
 );
 console.log(
-  "Handles: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · keys F/I/W · D=Copy pack link · A=Copy After link · M=WA paste · E=Mail paste (Deep+After ?n=1|after=1) · sticky click-to-copy on /owner-next.html",
+  "Handles: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · keys F/I/W · D=Copy pack link · A=Copy After link · Y=Open After · M=WA paste · E=Mail paste (Deep+After ?n=1|after=1) · next.htmlAfter on /point-c.json",
 );
 console.log("\nCommands: npm run geo:next · npm run geo:ack · npm run point-c:next · npm run point-c:csv · npm run point-c:ack · npm run point-c · npm run verify:arleds-301 · npm run tur1a:next · npm run tur1a:csv · npm run tur1a:log · npm run tur1a:matrix · npm run invent:smoke · npm run geo:status · npm run indexnow");
 process.exit(0);

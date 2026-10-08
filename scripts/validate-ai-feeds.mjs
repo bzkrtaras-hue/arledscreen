@@ -2385,10 +2385,12 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("Mail paste") ||
       !agentsMdLive.includes("Deep + After") ||
       !agentsMdLive.includes("Copy After link") ||
+      !agentsMdLive.includes("Open After") ||
+      !agentsMdLive.includes("next.htmlAfter") ||
       !agentsMdLive.includes("after=1") ||
       !agentsMdLive.includes("Copy+Open ack After hint")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + Open After + next.htmlAfter + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2503,12 +2505,15 @@ if (fs.existsSync(outDir)) {
       !String(pcNext.packKey || "") ||
       !String(pcNext.text || "") ||
       !String(pcNext.open || "") ||
+      !String(pcNext.htmlAfter || "").includes("n=1") ||
       !String(pcNext.ackCommand || "").includes("point-c:ack") ||
       pcJson?.potentialAction?.["@type"] !== "HowTo" ||
       !String(pcJson?.potentialAction?.name || "").includes(String(pcNext.packKey || "")) ||
       !Array.isArray(pcJson?.potentialAction?.step) ||
-      pcJson.potentialAction.step.length < 3 ||
+      pcJson.potentialAction.step.length < 4 ||
       !String(pcJson.potentialAction.step[0]?.url || "").includes("http") ||
+      !String(pcJson.potentialAction.step[2]?.url || "").includes("n=1") ||
+      !(pcJson?.potentialAction?.tool || []).some((t) => String(t?.name || "").includes("After ?n=1")) ||
       !String(pcJson?.description || "").includes("potentialAction") ||
       !String(pcJson?.ownerNext || "").includes("potentialAction") ||
       !String(pcJson?.ownerNext || "").includes("/point-c-progress.json") ||
@@ -2524,7 +2529,7 @@ if (fs.existsSync(outDir)) {
       ) ||
       fs.readFileSync(path.join(outDir, "point-c.csv"), "utf8") !== pcCsv
     ) {
-      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + HowTo potentialAction + socialHandles + progress invent joins; well-known/root twins must match");
+      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + htmlAfter + HowTo After step/tool + socialHandles + progress invent joins; well-known/root twins must match");
       process.exit(1);
     }
     for (const rel of [
@@ -2685,7 +2690,11 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copyPackAfterLink") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-after-link") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy After link") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("openPackAfterLink") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("open-after-link") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open After") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "a"') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "y"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packDeepLinkUrl") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("withCopyParam") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("maybeCopyPaste") ||

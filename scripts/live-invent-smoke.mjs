@@ -255,6 +255,8 @@ else fail("ai.txt WebSite + quote");
     agentsMd.includes("Mail paste") &&
     agentsMd.includes("Deep + After") &&
     agentsMd.includes("Copy After link") &&
+    agentsMd.includes("Open After") &&
+    agentsMd.includes("next.htmlAfter") &&
     agentsMd.includes("after=1") &&
     agentsMd.includes("Copy+Open ack After hint")
   ) {
@@ -510,15 +512,20 @@ try {
     String(pcNext.packKey || "") === "directoryLong" &&
     String(pcNext.text || "").includes("34245") &&
     String(pcNext.open || "").includes("bingplaces.com") &&
+    String(pcNext.htmlAfter || "").includes("n=1") &&
     String(pcNext.ackCommand || "").includes("directoryLong") &&
     pcJson?.potentialAction?.["@type"] === "HowTo" &&
     String(pcJson?.potentialAction?.name || "").includes("directoryLong") &&
     Array.isArray(pcJson?.potentialAction?.step) &&
-    pcJson.potentialAction.step.length >= 3 &&
+    pcJson.potentialAction.step.length >= 4 &&
     String(pcJson?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
     String(pcJson.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
+    String(pcJson.potentialAction.step[2]?.url || "").includes("n=1") &&
     (pcJson?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("/owner-next.html?start=1"),
+    ) &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.name || "").includes("After ?n=1"),
     ) &&
     String(pcJson?.socialHandles?.facebook || "") === "arledscreenn" &&
     String(pcJson?.socialHandles?.instagram || "") === "arledscreen" &&
@@ -601,7 +608,11 @@ try {
     ownerNextHtml.includes("copyPackAfterLink") &&
     ownerNextHtml.includes("copy-after-link") &&
     ownerNextHtml.includes("Copy After link") &&
+    ownerNextHtml.includes("openPackAfterLink") &&
+    ownerNextHtml.includes("open-after-link") &&
+    ownerNextHtml.includes("Open After") &&
     ownerNextHtml.includes('e.key === "a"') &&
+    ownerNextHtml.includes('e.key === "y"') &&
     ownerNextHtml.includes("packDeepLinkUrl") &&
     ownerNextHtml.includes("withCopyParam") &&
     ownerNextHtml.includes("maybeCopyPaste") &&
