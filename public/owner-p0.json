@@ -5,7 +5,7 @@
   "name": "ARLEDSCREEN GEO owner-gate status",
   "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
   "url": "https://arledscreen.com/geo-status.json",
-  "dateModified": "2026-10-08T14:59:36.712Z",
+  "dateModified": "2026-10-08T15:18:12.590Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
@@ -317,8 +317,8 @@
       {
         "@type": "HowToStep",
         "position": 1,
-        "name": "Open owner-next session",
-        "url": "https://arledscreen.com/owner-next.html?start=1",
+        "name": "Open destination",
+        "url": "https://www.bingplaces.com/",
         "text": "Session: https://arledscreen.com/owner-next.html?start=1 · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/ · Pack: https://arledscreen.com/owner-next.html?pack=directoryLong"
       },
       {
