@@ -2794,16 +2794,30 @@ function enrichEntityProfiles(doc) {
   };
 
   const geoNextLead =
-    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website";
+    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok; Open:/OpenAlt: per pack) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md";
   const domainLead =
-    "P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md";
+    "P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: Open: https://www.isimtescil.net/ · OpenAlt: Gmail draft (geo:status) · registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md";
   const checklist = Array.isArray(doc.ownerP0Checklist) ? [...doc.ownerP0Checklist] : [];
-  const withoutOldLead = checklist.filter(
-    (row) =>
-      !String(row).includes("P0 status:") &&
-      !String(row).includes("P0 next:") &&
-      !String(row).includes("P0 domain:"),
-  );
+  const withoutOldLead = checklist
+    .filter(
+      (row) =>
+        !String(row).includes("P0 status:") &&
+        !String(row).includes("P0 next:") &&
+        !String(row).includes("P0 domain:"),
+    )
+    .map((row) => {
+      const s = String(row);
+      if (s.includes("GBP /") && !s.includes("business.google.com")) {
+        return `${s} · Open: https://business.google.com/`;
+      }
+      if (s.includes("Tur 1a") && !s.includes("chatgpt.com")) {
+        return `${s} · Open: https://chatgpt.com/ · tur1a:csv`;
+      }
+      if (s.includes("Bing Places") && !s.includes("bingplaces.com")) {
+        return `${s} · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/`;
+      }
+      return s;
+    });
   // Keep domain after NAP/social rows if present; else append before merchant/Tur1a.
   const socialIdx = withoutOldLead.findIndex((row) => String(row).includes("Bing Places"));
   if (socialIdx >= 0) {

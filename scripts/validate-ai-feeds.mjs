@@ -2747,9 +2747,14 @@ if (fs.existsSync(outDir)) {
       !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") ||
       !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack") ||
       !JSON.stringify(profiles?.ownerP0Checklist || []).includes("DNSEnable") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("Domain Redirect")
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("Domain Redirect") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("point-c:csv") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://www.isimtescil.net/") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://business.google.com/") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://chatgpt.com/") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("Open:")
     ) {
-      console.error("❌ entity-profiles.json ownerP0Checklist must cite npm run geo:next + geo:ack + DNSEnable Domain Redirect");
+      console.error("❌ entity-profiles.json ownerP0Checklist must cite geo:next/ack + DNSEnable Domain Redirect + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
       process.exit(1);
     }
     if (!String(profiles?.canonicalUrls?.website || "").includes("#website")) {
