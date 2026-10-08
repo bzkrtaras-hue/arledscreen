@@ -919,11 +919,18 @@ if (
     String(disc.pointCWellKnown || "").includes("/.well-known/point-c.txt") &&
     String(disc.brandExtless || "").includes("/brand") &&
     String(disc.modulesExtless || "").includes("/modules") &&
+    String(disc.panelsExtless || "").includes("/panels") &&
     String(disc.skuExtless || "").includes("/sku") &&
     String(disc.mpnExtless || "").includes("/mpn") &&
     String(disc.merchantExtless || "").includes("/merchant") &&
     String(disc.productsExtless || "").includes("/products") &&
     String(disc.productExtless || "").includes("/product") &&
+    String(disc.entityExtless || "").includes("/entity") &&
+    String(disc.catalogExtless || "").includes("/catalog") &&
+    String(disc.priceJson || "").includes("/price.json") &&
+    String(disc.pricingJson || "").includes("/pricing.json") &&
+    String(disc.securityRoot || "").includes("/security.txt") &&
+    String(disc.llmsFullText || "").includes("/llms-full.txt") &&
     String(disc.geoBaselineExtless || "").includes("/geo-baseline") &&
     String(disc.aiShoppingExtless || "").includes("/ai-shopping") &&
     String(disc.entityProfilesExtless || "").includes("/entity-profiles") &&

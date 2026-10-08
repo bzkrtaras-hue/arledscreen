@@ -775,6 +775,13 @@ if (fs.existsSync(outDir)) {
     "merchantWellKnown",
     "modulesJson",
     "skuJson",
+    "panelsExtless",
+    "entityExtless",
+    "catalogExtless",
+    "priceJson",
+    "pricingJson",
+    "securityRoot",
+    "llmsFullText",
     "website",
   ]) {
     if (!String(baseline?.discovery?.[key] || "").includes("arledscreen.com")) {
