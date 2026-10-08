@@ -25,9 +25,10 @@ Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu NAP tutarlıl
 Kod tarafı canlı; sahip kapıları sırayla. Repo CLI şart değil — canlı URL’ler yeterli.
 Invent agents: follow `potentialAction` HowTo on `/geo-status.json` (priority-aware) or pack JSON.
 
-1. Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/
-2. Paste from https://arledscreen.com/point-c.json → `next.text` (or https://arledscreen.com/geo-next.txt / `/owner-next.txt` select-all · or HowTo step 2)
-3. After paste: `npm run point-c:ack -- --pack=directoryLong` (or `npm run geo:ack` · HowTo step 3)
+1. Open live friction: https://arledscreen.com/owner-next.html — **O** = Open remaining tabs · **R** = Copy remaining (one paste bundle for every open Point C pack) · dbl-click pack = Copy + Open · Enter = Copy + Open all
+2. Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ (or use **O** on `/owner-next`)
+3. Paste from https://arledscreen.com/point-c.json → `next.text` (or **R** remaining bundle · or https://arledscreen.com/geo-next.txt / `/owner-next.txt` select-all · or HowTo step 2)
+4. After paste: **N** = Pasted → next · then `npm run point-c:ack -- --pack=directoryLong` (or **B** ack batch · `npm run geo:ack` · HowTo step 3)
 
 ```bash
 npm run geo:next          # Point C → arleds 301 → Tur1a → merge (tek clipboard; live twin /geo-next.txt)
