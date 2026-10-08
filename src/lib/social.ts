@@ -6,6 +6,12 @@ export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
 export const CONTACT_PHONE_DISPLAY = "+90 530 507 88 34";
 export const CONTACT_PHONE_HREF = "tel:+905305078834";
 
+/** Owner-confirmed handles (2026-10-08). WhatsApp @username has no public wa.me deep-link yet — click-to-chat stays phone. */
+export const WHATSAPP_USERNAME = "arledscreen";
+export const INSTAGRAM_HANDLE = "arledscreen";
+export const FACEBOOK_HANDLE = "arledscreenn";
+export const WHATSAPP_HREF = "https://wa.me/905305078834";
+
 export const SOCIAL_LINKS = {
   phone: {
     id: "phone",
@@ -21,19 +27,19 @@ export const SOCIAL_LINKS = {
   },
   whatsapp: {
     id: "whatsapp",
-    label: "WhatsApp: +90 530 507 88 34",
-    href: "https://wa.me/905305078834",
+    label: `WhatsApp: @${WHATSAPP_USERNAME} · ${CONTACT_PHONE_DISPLAY}`,
+    href: WHATSAPP_HREF,
     external: true,
   },
   instagram: {
     id: "instagram",
-    label: "Instagram: @arledscreen",
+    label: `Instagram: @${INSTAGRAM_HANDLE}`,
     href: "https://www.instagram.com/arledscreen",
     external: true,
   },
   facebook: {
     id: "facebook",
-    label: "Facebook: arledscreenn",
+    label: `Facebook: @${FACEBOOK_HANDLE}`,
     href: "https://www.facebook.com/arledscreenn",
     external: true,
   },
@@ -63,6 +69,7 @@ export const MOBILE_SOCIAL_IDS: SocialLinkId[] = [
 export const ORGANIZATION_SAME_AS = [
   SOCIAL_LINKS.instagram.href,
   SOCIAL_LINKS.facebook.href,
+  WHATSAPP_HREF,
   "https://www.linkedin.com/company/arleds",
   // "https://arleds.com" removed 2026-10-04: no valid TLS certificate since 2024-09 and no
   // working redirect. Re-add only once it 301-redirects to https://arledscreen.com/.

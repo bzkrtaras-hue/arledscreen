@@ -210,9 +210,11 @@ export type EntityDocument = {
   contactPoint: Array<{
     "@type": "ContactPoint";
     contactType: string;
-    email: string;
+    email?: string;
     telephone: string;
     url?: string;
+    name?: string;
+    identifier?: string;
     areaServed: Array<{ "@type": string; name: string }> | string;
     availableLanguage: string[];
   }>;
@@ -321,6 +323,19 @@ export function buildEntityDocument(): EntityDocument {
         email: CONTACT_EMAIL,
         telephone: CONTACT_PHONE_E164,
         url: `${SITE_URL}/tr/quote/`,
+        areaServed: [
+          { "@type": "Country", name: "Türkiye" },
+          { "@type": "City", name: "İstanbul" },
+        ],
+        availableLanguage: ["Turkish", "English"],
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        name: "WhatsApp @arledscreen",
+        telephone: CONTACT_PHONE_E164,
+        url: "https://wa.me/905305078834",
+        identifier: "@arledscreen",
         areaServed: [
           { "@type": "Country", name: "Türkiye" },
           { "@type": "City", name: "İstanbul" },

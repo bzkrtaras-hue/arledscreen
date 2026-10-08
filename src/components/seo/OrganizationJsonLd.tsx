@@ -127,6 +127,19 @@ export function OrganizationJsonLd() {
             ],
             availableLanguage: ["Turkish", "English"],
           },
+          {
+            "@type": "ContactPoint",
+            contactType: "customer support",
+            name: "WhatsApp @arledscreen",
+            telephone: CONTACT_PHONE_E164,
+            url: "https://wa.me/905305078834",
+            identifier: "@arledscreen",
+            areaServed: [
+              { "@type": "Country", name: "Türkiye" },
+              { "@type": "City", name: "İstanbul" },
+            ],
+            availableLanguage: ["Turkish", "English"],
+          },
         ],
         areaServed: [
           { "@type": "Country", name: "Türkiye" },

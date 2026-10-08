@@ -36,6 +36,7 @@
   "sameAs": [
     "https://www.instagram.com/arledscreen",
     "https://www.facebook.com/arledscreenn",
+    "https://wa.me/905305078834",
     "https://www.linkedin.com/company/arleds",
     "https://arledscreen.com/organization.json",
     "https://arledscreen.com/.well-known/entity.json",
@@ -228,6 +229,19 @@
       "contactType": "sales",
       "email": "arled@arledscreen.com",
       "telephone": "+905305078834",
+      "areaServed": "TR",
+      "availableLanguage": [
+        "Turkish",
+        "English"
+      ]
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "name": "WhatsApp @arledscreen",
+      "telephone": "+905305078834",
+      "url": "https://wa.me/905305078834",
+      "identifier": "@arledscreen",
       "areaServed": "TR",
       "availableLanguage": [
         "Turkish",
@@ -2248,6 +2262,7 @@
     "sameAs": [
       "https://www.instagram.com/arledscreen",
       "https://www.facebook.com/arledscreenn",
+      "https://wa.me/905305078834",
       "https://www.linkedin.com/company/arleds"
     ],
     "brand": {

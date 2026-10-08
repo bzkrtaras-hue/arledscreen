@@ -72,7 +72,7 @@ Hedef: aynı abartısız olgunun **10–20 farklı güvenilir domain**’de doğ
 ARLEDSCREEN
 Merkez Mah. Tuna Sok. No:15-17 Kat 1
 34245 Gaziosmanpaşa / İstanbul
-Telefon / WhatsApp: +90 530 507 88 34
+Telefon / WhatsApp: +90 530 507 88 34 · WhatsApp kullanıcı adı @arledscreen (tıkla: https://wa.me/905305078834)
 E-posta: arled@arledscreen.com
 Web: https://arledscreen.com
 TR: https://arledscreen.com/tr/
@@ -140,7 +140,8 @@ Birinci taraf (zaten var — tek başına yetmez): site, entity.json, llms.txt.
 | 3 | LinkedIn şirket | company/arleds — About = linkedinAbout pack | [ ] | https://www.linkedin.com/company/arleds |
 | 4 | LinkedIn kurucu | bozkurtaras — şirket linki + proje postları | [ ] | https://www.linkedin.com/in/bozkurtaras |
 | 5 | Instagram | @arledscreen bio pack | [ ] | https://www.instagram.com/arledscreen |
-| 6 | Facebook | arledscreenn About = orta cite + NAP | [ ] | https://www.facebook.com/arledscreenn |
+| 6 | Facebook | @arledscreenn About = orta cite + NAP | [ ] | https://www.facebook.com/arledscreenn |
+| 6b | WhatsApp | @arledscreen · click-to-chat phone | [ ] | https://wa.me/905305078834 |
 | 7 | YouTube kanalı | About + banner; sonra schema `sameAs` | [ ] | |
 | 8 | TR işletme / sektör dizini #1 | Kısa + uzun dizin pack + entity.json | [ ] | |
 | 9 | TR işletme / sektör dizini #2 | Farklı domain | [ ] | |
@@ -189,7 +190,7 @@ Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** k
 - [ ] Adres / telefon / web / saatler = yukarıdaki NAP
 - [ ] Web: `https://arledscreen.com/tr/` (arleds.com değil)
 - [ ] Açıklama: playbook §1 GBP pack (birebir)
-- [ ] WhatsApp iş bağlantısı
+- [ ] WhatsApp iş bağlantısı (@arledscreen · https://wa.me/905305078834)
 - [ ] Hizmetler: LED ekran satışı, montaj, kiralama, teknik servis, keşif
 - [ ] Ürünler: iç/dış, GOB, esnek, kiralık (site URL’leriyle)
 - [ ] 50+ gerçek foto: fabrika/atölye, montaj, proje, ekip, araç (stok yok)
