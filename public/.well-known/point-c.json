@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/point-c.json",
   "name": "ARLEDSCREEN Point C paste packs",
-  "description": "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack.",
+  "description": "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/.",
   "url": "https://arledscreen.com/point-c.json",
   "inLanguage": "tr",
   "creator": {
@@ -13,6 +13,7 @@
     "https://arledscreen.com/entity-profiles.json",
     "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/geo-next.txt",
     "https://arledscreen.com/#website"
   ],
   "distribution": [
@@ -35,13 +36,20 @@
       "@type": "DataDownload",
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/point-c.txt"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/geo-next.txt"
     }
   ],
   "sameAs": [
     "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/feeds/point-c.csv",
     "https://arledscreen.com/.well-known/point-c.json",
-    "https://arledscreen.com/entity-profiles.json"
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/geo-status.json"
   ],
   "packs": [
     {
@@ -163,5 +171,49 @@
     },
     "openAlt": "https://businessconnect.apple.com/"
   },
-  "ownerNext": "npm run geo:next · live: https://arledscreen.com/geo-next.txt · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/"
+  "ownerNext": "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+  "potentialAction": {
+    "@type": "HowTo",
+    "name": "Point C sonraki yapıştırma: directoryLong",
+    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
+    "url": "https://arledscreen.com/geo-next.txt",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Open destination",
+        "url": "https://www.bingplaces.com/",
+        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Paste NAP / About block",
+        "text": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nE-posta: arled@arledscreen.com\nWeb: https://arledscreen.com/tr/\nNot: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com kullanın. LinkedIn /company/arleds sosyal slug’dır, web arleds.com değildir. NXTIONSTAR ≠ NationStar LED bileşen ≠ NEXTSTAR TV."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Ack progress",
+        "text": "npm run point-c:ack -- --pack=directoryLong"
+      }
+    ],
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "geo-next.txt",
+        "url": "https://arledscreen.com/geo-next.txt"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "point-c.json",
+        "url": "https://arledscreen.com/point-c.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "geo-status.json",
+        "url": "https://arledscreen.com/geo-status.json"
+      }
+    ]
+  }
 }

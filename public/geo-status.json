@@ -5,7 +5,7 @@
   "name": "ARLEDSCREEN GEO owner-gate status",
   "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Clipboard: /geo-next.txt · Point C: /point-c.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
   "url": "https://arledscreen.com/geo-status.json",
-  "dateModified": "2026-10-08T07:30:31.437Z",
+  "dateModified": "2026-10-08T07:43:56.314Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
@@ -98,6 +98,50 @@
       "base": "main"
     }
   },
-  "ownerNext": "npm run geo:next · live: https://arledscreen.com/geo-next.txt · status: https://arledscreen.com/geo-status.json · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
-  "target": "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores"
+  "ownerNext": "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · status: https://arledscreen.com/geo-status.json · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+  "target": "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores",
+  "potentialAction": {
+    "@type": "HowTo",
+    "name": "Point C next paste: directoryLong",
+    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
+    "url": "https://arledscreen.com/geo-next.txt",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Open destination",
+        "url": "https://www.bingplaces.com/",
+        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Paste NAP / About block",
+        "text": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nE-posta: arled@arledscreen.com\nWeb: https://arledscreen.com/tr/\nNot: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com kullanın. LinkedIn /company/arleds sosyal slug’dır, web arleds.com değildir. NXTIONSTAR ≠ NationStar LED bileşen ≠ NEXTSTAR TV."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Ack progress",
+        "text": "npm run point-c:ack -- --pack=directoryLong"
+      }
+    ],
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "geo-next.txt",
+        "url": "https://arledscreen.com/geo-next.txt"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "point-c.json",
+        "url": "https://arledscreen.com/point-c.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "geo-status.json",
+        "url": "https://arledscreen.com/geo-status.json"
+      }
+    ]
+  }
 }
