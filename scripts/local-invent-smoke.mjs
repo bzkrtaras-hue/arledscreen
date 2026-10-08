@@ -639,18 +639,23 @@ else fail("ard.resources.pointC");
     html.includes("maybeNextSession") &&
     html.includes("nextQuery") &&
     html.includes("withNextParam") &&
+    html.includes("packAfterLinkUrl") &&
     html.includes("pack-deep-after") &&
     html.includes("n=1") &&
-    html.includes("`After: ${withNextParam") &&
+    html.includes("`After: ${packAfterLinkUrl") &&
+    html.includes("`After: ${after}") &&
     html.includes("packDeepLinkUrl(key)") &&
-    html.includes("Deep/WA paste") &&
+    html.includes("Deep/WA/Mail paste") &&
     html.includes("Open×") &&
     readText("AGENTS.md").includes("WA paste") &&
     readText("AGENTS.md").includes("Mail paste") &&
+    readText("AGENTS.md").includes("Deep + After") &&
     readText("AGENTS.md").includes("?n=1") &&
     readText("llms.txt").includes("WA paste") &&
     readText("llms.txt").includes("Mail paste") &&
+    readText("llms.txt").includes("Deep + After") &&
     readText("humans.txt").includes("Mail paste") &&
+    readText("humans.txt").includes("Deep + After") &&
     html.includes("activeOpens") &&
     html.includes("socialFocus") &&
     html.includes("setSocialFocus") &&

@@ -2187,12 +2187,13 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("social=fb") ||
     !securityLive.includes("social=ig") ||
     !securityLive.includes("social=wa") ||
+    !securityLive.includes("Deep+After") ||
     !securityLive.includes("https://www.bingplaces.com/") ||
     !securityLive.includes("https://www.isimtescil.net/") ||
     !securityLive.includes("https://business.google.com/") ||
     !securityLive.includes("https://chatgpt.com/")
   ) {
-    console.error("❌ out/.well-known/security.txt must include live owner-next.html/json + geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301 + social deep-links");
+    console.error("❌ out/.well-known/security.txt must include live owner-next.html/json + geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301 + social deep-links + Deep+After");
     process.exit(1);
   }
   const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
@@ -2381,9 +2382,10 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("/social.json") ||
       !agentsMdLive.includes("Copy pack link") ||
       !agentsMdLive.includes("WA paste") ||
-      !agentsMdLive.includes("Mail paste")
+      !agentsMdLive.includes("Mail paste") ||
+      !agentsMdLive.includes("Deep + After")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + WA paste + Mail paste");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + WA paste + Mail paste + Deep + After");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2698,11 +2700,13 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("maybeNextSession") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("nextQuery") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("withNextParam") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packAfterLinkUrl") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-deep-after") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("n=1") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("`After: ${withNextParam") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("`After: ${packAfterLinkUrl") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("`After: ${after}") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packDeepLinkUrl(key)") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Deep/WA paste") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Deep/WA/Mail paste") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open×") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("activeOpens") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("socialFocus") ||
