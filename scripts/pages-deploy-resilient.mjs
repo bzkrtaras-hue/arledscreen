@@ -236,10 +236,29 @@ async function uploadMissingOneByOne() {
   console.log(`Manual upload complete (${uploaded} files). Re-run wrangler for Functions + deployment.`);
 }
 
+function softIndexNow() {
+  // Soft: never fail deploy on IndexNow. Helps Bing/participating engines re-crawl invent surfaces.
+  if (process.env.SKIP_INDEXNOW === "1" || process.argv.includes("--skip-indexnow")) {
+    console.log("IndexNow skipped (SKIP_INDEXNOW / --skip-indexnow)");
+    return;
+  }
+  console.log("\n→ soft IndexNow (npm run indexnow)\n");
+  const r = spawnSync("node", [path.join(ROOT, "scripts/submit-indexnow.mjs")], {
+    cwd: ROOT,
+    encoding: "utf8",
+    env: process.env,
+  });
+  if (r.stdout) process.stdout.write(r.stdout);
+  if (r.stderr) process.stderr.write(r.stderr);
+  if (r.status === 0) console.log("OK soft IndexNow after deploy");
+  else console.warn(`IndexNow soft-fail (exit ${r.status}) — deploy still OK`);
+}
+
 async function main() {
   // 1) Prefer differential wrangler (Functions included). Never start with --skip-caching.
   if (wranglerDeploy({ skipCaching: false })) {
     console.log("OK differential wrangler deploy");
+    softIndexNow();
     return;
   }
 
@@ -249,6 +268,7 @@ async function main() {
   // 2) Assets now cached → wrangler should upload 0 files and attach Functions.
   if (wranglerDeploy({ skipCaching: false })) {
     console.log("OK wrangler after batch=1 asset prewarm");
+    softIndexNow();
     return;
   }
 

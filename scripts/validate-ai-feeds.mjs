@@ -2565,10 +2565,13 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("log-tur1a-next") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doLogTur1aNext") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildTur1aLogCommand") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("open-remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doOpenRemaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open remaining") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log+next/mailto required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log+next/open-remaining/mailto required");
       process.exit(1);
     }
     {
@@ -4905,9 +4908,23 @@ if (fs.existsSync(outDir)) {
     "`https://${HOST}/en/feed.json`",
     "`https://${HOST}/tr/feed.json`",
     "`https://${HOST}/.well-known/security`",
+    "owner-next.html?pack=directoryLong",
+    "owner-next.html?pack=tur1a",
+    "owner-next.html?pack=hostinger301",
   ]) {
     if (!indexNowScript.includes(must)) {
       console.error(`❌ submit-indexnow.mjs must include ${must}`);
+      process.exit(1);
+    }
+  }
+  {
+    const deployScript = fs.readFileSync(path.join(repoRoot, "scripts/pages-deploy-resilient.mjs"), "utf8");
+    if (
+      !deployScript.includes("softIndexNow") ||
+      !deployScript.includes("submit-indexnow.mjs") ||
+      !deployScript.includes("SKIP_INDEXNOW")
+    ) {
+      console.error("❌ pages-deploy-resilient.mjs must soft-run IndexNow after successful deploy");
       process.exit(1);
     }
   }

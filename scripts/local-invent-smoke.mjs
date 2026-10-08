@@ -551,6 +551,9 @@ else fail("ard.resources.pointC");
     html.includes("log-tur1a-next") &&
     html.includes("doLogTur1aNext") &&
     html.includes("buildTur1aLogCommand") &&
+    html.includes("open-remaining") &&
+    html.includes("doOpenRemaining") &&
+    html.includes("Open remaining") &&
     html.includes("Mailto DNSEnable") &&
     html.includes("packQuery") &&
     alias === html &&

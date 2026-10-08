@@ -560,6 +560,9 @@ try {
     ownerNextHtml.includes("log-tur1a-next") &&
     ownerNextHtml.includes("doLogTur1aNext") &&
     ownerNextHtml.includes("buildTur1aLogCommand") &&
+    ownerNextHtml.includes("open-remaining") &&
+    ownerNextHtml.includes("doOpenRemaining") &&
+    ownerNextHtml.includes("Open remaining") &&
     ownerNextHtml.includes("Mailto DNSEnable") &&
     Array.isArray(ownerNextJson?.gates?.tur1a?.cells) &&
     ownerNextJson.gates.tur1a.cells.length >= 48 &&
