@@ -31,7 +31,7 @@ Brand document: https://arledscreen.com/brand.json (AggregateOffer×12)
 Brand alias: https://arledscreen.com/.well-known/brand.json · /brand
 Modules invent: /modules · /modules.json
 Point C paste (owner): https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt
-Point C machine next: https://arledscreen.com/point-c.json → next (directoryLong; Bing Places / Apple Business Connect)
+Point C machine next: https://arledscreen.com/point-c.json → next + potentialAction (HowTo; directoryLong; Bing Places / Apple Business Connect)
 Entity profiles (Point C source): https://arledscreen.com/entity-profiles.json · /entity-profiles
 Owner next (live): https://arledscreen.com/geo-next.txt · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · tur1a: https://arledscreen.com/tur1a.json → potentialAction · repo: npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 Last update: 2026-10-08
