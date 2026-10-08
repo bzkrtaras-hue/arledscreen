@@ -186,6 +186,53 @@
     "https://arledscreen.com/point-c-en.txt",
     "https://arledscreen.com/.well-known/point-c.txt"
   ],
+  "sameAs": [
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/#website",
+    "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/geo-status.json",
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/tur1a.json",
+    "https://arledscreen.com/point-c-progress.json"
+  ],
+  "subjectOf": [
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/point-c.json",
+      "url": "https://arledscreen.com/point-c.json",
+      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/geo-status.json",
+      "url": "https://arledscreen.com/geo-status.json",
+      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/geo-next.txt",
+      "url": "https://arledscreen.com/geo-next.txt",
+      "name": "ARLEDSCREEN GEO priority clipboard",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/tur1a.json",
+      "url": "https://arledscreen.com/tur1a.json",
+      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/point-c-progress.json",
+      "url": "https://arledscreen.com/point-c-progress.json",
+      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
+    }
+  ],
   "isRelatedTo": [
     {
       "@type": "DataDownload",
@@ -1307,8 +1354,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "071e735b845c50f38d8387899fb283b8bf62c8681121ee5393d363ce3066d21b",
-    "catalogSha256": "a1ce93485d05d160bd4249535a3419759472c743789dcfdbf6ffd6f8ef4a28d6",
+    "aiShoppingSha256": "25395dab92793b8b7b32fd21325c471893bdd4babacbb2b9cc8f25e4f9d4a76b",
+    "catalogSha256": "bf181e96780d0905d9f0c7ad35a6de11143dcb776d4e2f50a1332f115d58de96",
     "merchantTsvSha256": "5c6b433e739a0460b09a6b823d409b81e0318a2f511b854cff7c9c2c90af7611",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
