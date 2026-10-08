@@ -405,6 +405,12 @@ if (
     (pcJson?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("/owner-next.html?start=1"),
     ) &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("social=fb"),
+    ) &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("/social.json"),
+    ) &&
     String(pcJson?.socialHandles?.facebook || "") === "arledscreenn" &&
     String(pcJson?.socialHandles?.instagram || "") === "arledscreen" &&
     String(pcJson?.socialHandles?.whatsapp || "") === "arledscreen" &&
@@ -495,6 +501,9 @@ if (
         (progress?.potentialAction?.tool || []).some((t) =>
           String(t?.url || "").includes("/owner-next.html?start=1"),
         ) &&
+        (progress?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("social=fb"),
+        ) &&
         String(progress?.socialHandles?.facebook || "") === "arledscreenn" &&
         String(progress?.socialHandles?.instagram || "") === "arledscreen" &&
         String(progress?.socialHandles?.whatsapp || "") === "arledscreen" &&
@@ -504,6 +513,9 @@ if (
         String(geoStatus.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
         (geoStatus?.potentialAction?.tool || []).some((t) =>
           String(t?.url || "").includes("/owner-next.html?start=1"),
+        ) &&
+        (geoStatus?.potentialAction?.tool || []).some((t) =>
+          String(t?.url || "").includes("social=fb"),
         ) &&
         String(geoStatus?.socialHandles?.facebook || "") === "arledscreenn" &&
         String(geoStatus?.socialHandles?.instagram || "") === "arledscreen" &&

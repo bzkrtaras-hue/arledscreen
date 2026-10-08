@@ -188,6 +188,9 @@ jobs:
           grep -q 'owner-next.html' out/.well-known/agents.json
           grep -q 'ItemList (29)' out/.well-known/ard.json
           node -e 'const a=require("./out/.well-known/agents.json"); if(Number(a.numberOfItems)!==29||!(a.itemListElement||[]).some(it=>String(it.url||"").includes("/social.json"))) process.exit(1)'
+          node -e 'const g=require("./out/geo-status.json"); if(!(g.potentialAction?.tool||[]).some(t=>String(t.url||"").includes("social=fb"))) process.exit(1)'
+          grep -q 'social=fb' out/llms.txt
+          grep -q 'social=ig' out/humans.txt
           grep -q 'ownerNextHtml' out/.well-known/ard.json
           grep -q 'ownerNextJson' out/.well-known/ard.json
           test -f out/owner-next.html && test -f out/geo-next.html

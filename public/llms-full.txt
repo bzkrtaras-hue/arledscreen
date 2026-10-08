@@ -24,12 +24,13 @@
 - E-posta: arled@arledscreen.com
 - Web sitesi: https://arledscreen.com
 - Makinece entity (NAP / cite): https://arledscreen.com/entity.json
-- Sosyal handle makinesi: https://arledscreen.com/social.json (alias `/contact.json` · `/.well-known/social.json`)
+- Sosyal handle makinesi: https://arledscreen.com/social.json (alias `/contact.json` · `/.well-known/social.json`) · deep https://arledscreen.com/owner-next.html?social=fb|ig|wa
 - AI discovery pointer: https://arledscreen.com/ai.txt (kısa feed listesi; arleds.com atıf kaynağı değildir)
 - Fiyat hesaplayıcı: https://fiyat.arledscreen.com/ (sitede: https://arledscreen.com/tr/hesaplayici/ · EN: https://arledscreen.com/en/hesaplayici/ — same 12 panel USD Product/Offer graph; canonical SKU PDPs stay `/tr/products/...`)
 - Teklif: https://arledscreen.com/tr/quote/ · EN: https://arledscreen.com/en/quote/ (12 panel Product/Offer JSON-LD + price-source feeds)
-- Instagram: `@arledscreen` — https://www.instagram.com/arledscreen/
-- Facebook: `@arledscreenn` — https://www.facebook.com/arledscreenn
+- Instagram: `@arledscreen` — https://www.instagram.com/arledscreen/ · owner https://arledscreen.com/owner-next.html?social=ig
+- Facebook: `@arledscreenn` — https://www.facebook.com/arledscreenn · owner https://arledscreen.com/owner-next.html?social=fb
+- WhatsApp: `@arledscreen` — https://wa.me/905305078834 · owner https://arledscreen.com/owner-next.html?social=wa
 - LinkedIn: https://www.linkedin.com/company/arleds (şirket slug; web arleds.com değildir)
 - Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde. Tem 2025 – Tem 2026 arasında 45 proje kaydı; 13 il ile Almanya ve Azerbaycan. Kaydı olmayan il için kapı sayfası yok. Garanti yılı / genel iade politikası sitede sabit yayımlanmaz; teklifte yazılır.
 

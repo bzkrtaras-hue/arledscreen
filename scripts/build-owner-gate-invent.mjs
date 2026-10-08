@@ -16,6 +16,7 @@ import {
   DNSENABLE_PANEL_URL,
   OWNER_SOCIAL_HANDLES,
   ownerNextHtmlUrl,
+  ownerNextSocialUrl,
   ownerNextStartUrl,
   pointCOpenAltUrls,
 } from "./print-point-c-packs.mjs";
@@ -30,6 +31,16 @@ const logPath = path.join(repoRoot, "docs/geo/observations/blind-log.jsonl");
 const profilesPath = path.join(repoRoot, "public/entity-profiles.json");
 const POINT_C_STEPS = 11;
 const TUR1A_TOTAL = TR.length * HUMAN_PLATFORMS.length;
+
+/** HowToTool rows for owner-confirmed social deep-links (Point C IG/FB paste). */
+function socialHowToTools() {
+  return [
+    { "@type": "HowToTool", name: "social.json", url: `${SITE}/social.json` },
+    { "@type": "HowToTool", name: "owner-next.html?social=fb", url: ownerNextSocialUrl("fb") },
+    { "@type": "HowToTool", name: "owner-next.html?social=ig", url: ownerNextSocialUrl("ig") },
+    { "@type": "HowToTool", name: "owner-next.html?social=wa", url: ownerNextSocialUrl("wa") },
+  ];
+}
 
 function loadEntityProfiles() {
   try {
@@ -160,7 +171,7 @@ export function buildGeoStatusDoc() {
     "@id": `${SITE}/geo-status.json`,
     name: "ARLEDSCREEN GEO owner-gate status",
     description:
-      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json). Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
+      "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json · deep /owner-next.html?social=fb|ig|wa). Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
     url: `${SITE}/geo-status.json`,
     dateModified: new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
@@ -333,6 +344,7 @@ export function buildGeoStatusDoc() {
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+        ...socialHowToTools(),
       ],
     };
   } else if (priority === "arleds301" && arleds.open) {
@@ -564,6 +576,7 @@ export function buildPointCProgressDoc() {
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
         { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
+        ...socialHowToTools(),
       ],
     };
   }

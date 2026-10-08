@@ -1985,11 +1985,16 @@ if (fs.existsSync(outDir)) {
       !llmsLive.includes("WhatsApp") ||
       !llmsLive.includes("@arledscreen") ||
       !llmsLive.includes("/social.json") ||
+      !llmsLive.includes("social=fb") ||
+      !llmsLive.includes("social=ig") ||
       !humansLive.includes("WhatsApp: @arledscreen") ||
       !humansLive.includes("Facebook: @arledscreenn") ||
-      !humansLive.includes("Instagram: @arledscreen")
+      !humansLive.includes("Instagram: @arledscreen") ||
+      !humansLive.includes("social=fb") ||
+      !humansLive.includes("social=ig") ||
+      !humansLive.includes("social=wa")
     ) {
-      console.error("❌ llms.txt + humans.txt must cite owner-confirmed social handles + social.json");
+      console.error("❌ llms.txt + humans.txt must cite owner-confirmed social handles + social.json + ?social= deep-links");
       process.exit(1);
     }
     console.log("✅ social.json + contact aliases + llms/humans handle cite (FB @arledscreenn · IG/WA @arledscreen)");

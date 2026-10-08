@@ -3,9 +3,10 @@ Founder: Aras Bozkurt
 Contact: arled@arledscreen.com
 Phone: +90 530 507 88 34
 WhatsApp: @arledscreen · https://wa.me/905305078834
-Instagram: @arledscreen · https://www.instagram.com/arledscreen/
-Facebook: @arledscreenn · https://www.facebook.com/arledscreenn
-Social JSON: https://arledscreen.com/social.json (alias /contact.json · /.well-known/social.json)
+Instagram: @arledscreen · https://www.instagram.com/arledscreen/ · owner https://arledscreen.com/owner-next.html?social=ig
+Facebook: @arledscreenn · https://www.facebook.com/arledscreenn · owner https://arledscreen.com/owner-next.html?social=fb
+WhatsApp: @arledscreen · https://wa.me/905305078834 · owner https://arledscreen.com/owner-next.html?social=wa
+Social JSON: https://arledscreen.com/social.json (alias /contact.json · /.well-known/social.json) · deep ?social=fb|ig|wa
 Location: Gaziosmanpaşa, İstanbul, Türkiye
 Site: https://arledscreen.com/tr/
 
