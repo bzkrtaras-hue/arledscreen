@@ -25,3 +25,5 @@ Not: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com
 After paste: npm run point-c:ack -- --pack=directoryLong
 Or: npm run point-c:ack
 CSV: npm run point-c:csv · Live CSV: https://arledscreen.com/feeds/point-c.csv · JSON: https://arledscreen.com/point-c.json · Full packs: npm run point-c · Live: https://arledscreen.com/point-c.txt
+
+HowTo: https://arledscreen.com/point-c.json → potentialAction · https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/point-c-progress.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction
