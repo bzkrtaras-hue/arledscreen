@@ -382,7 +382,10 @@ try {
     llms.includes("https://www.isimtescil.net/") &&
     llms.includes("/.well-known/brand.json") &&
     llms.includes("/point-c-progress.json") &&
-    llms.includes("potentialAction")
+    llms.includes("potentialAction") &&
+    llms.includes("gate HowTo tools") &&
+    llms.includes("dnsenable=1") &&
+    llms.includes("tur1a=1")
   ) {
     ok("llms.txt geo:next + potentialAction HowTo + point-c:csv Open + well-known/brand");
   } else fail("llms.txt geo:next + potentialAction HowTo + point-c:csv Open + well-known/brand");
@@ -393,10 +396,28 @@ try {
     llmsFull.includes("https://chatgpt.com/") &&
     llmsFull.includes("/.well-known/brand.json") &&
     llmsFull.includes("/point-c-progress.json") &&
-    llmsFull.includes("potentialAction")
+    llmsFull.includes("potentialAction") &&
+    llmsFull.includes("gate HowTo tools") &&
+    llmsFull.includes("dnsenable=1") &&
+    llmsFull.includes("tur1a=1")
   ) {
     ok("llms-full.txt geo:next + potentialAction HowTo + point-c:csv Open + well-known/brand");
   } else fail("llms-full.txt geo:next + potentialAction HowTo + point-c:csv Open + well-known/brand");
+  const humans = await getText("/humans.txt");
+  const security = await getText("/.well-known/security.txt");
+  const aiTxt = await getText("/ai.txt");
+  if (
+    humans.includes("gate HowTo tools") &&
+    humans.includes("dnsenable=1") &&
+    security.includes("gate HowTo tools") &&
+    security.includes("dnsenable=1") &&
+    security.includes("tur1a=1") &&
+    aiTxt.includes("owner-gate-dnsenable:") &&
+    aiTxt.includes("owner-gate-tur1a:") &&
+    aiTxt.includes("owner-gate-howto-tools:")
+  ) {
+    ok("humans/security/ai.txt gate HowTo tools cites");
+  } else fail("humans/security/ai.txt gate HowTo tools cites");
 } catch (e) {
   fail(`agents/AGENTS/llms invent ${e?.message || e}`);
 }

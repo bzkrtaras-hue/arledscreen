@@ -231,11 +231,23 @@ jobs:
           grep -q 'WA paste' out/llms.txt
           grep -q 'Mail paste' out/llms.txt
           grep -q 'Copy After link' out/llms.txt
+          grep -q 'gate HowTo tools' out/llms.txt
+          grep -q 'dnsenable=1' out/llms.txt
+          grep -q 'tur1a=1' out/llms.txt
+          grep -q 'gate HowTo tools' out/llms-full.txt
           grep -q 'WA paste' out/humans.txt
           grep -q 'Mail paste' out/humans.txt
           grep -q 'Copy After link' out/humans.txt
+          grep -q 'gate HowTo tools' out/humans.txt
+          grep -q 'dnsenable=1' out/humans.txt
           grep -q 'E=Mail paste' out/.well-known/security.txt
           grep -q 'A=Copy After link' out/.well-known/security.txt
+          grep -q 'gate HowTo tools' out/.well-known/security.txt
+          grep -q 'dnsenable=1' out/.well-known/security.txt
+          grep -q 'tur1a=1' out/.well-known/security.txt
+          grep -q 'owner-gate-dnsenable:' out/ai.txt
+          grep -q 'owner-gate-tur1a:' out/ai.txt
+          grep -q 'owner-gate-howto-tools:' out/ai.txt
           node -e 'const p=require("./out/point-c.json"); if(!String(p.next?.htmlAfter||"").includes("n=1")||!(p.potentialAction?.tool||[]).some(t=>String(t.name||"").includes("After ?n=1"))||!(p.potentialAction?.step||[])[2]||!String(p.potentialAction.step[2].url||"").includes("n=1")) process.exit(1)'
           grep -q 'selectPasteForNext' out/owner-next.html
           grep -q 'maybeNextSession' out/owner-next.html

@@ -1907,6 +1907,12 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("owner-social-fb:") ||
     !aiTxtLive.includes("owner-social-ig:") ||
     !aiTxtLive.includes("owner-social-wa:") ||
+    !aiTxtLive.includes("owner-gate-start:") ||
+    !aiTxtLive.includes("owner-gate-dnsenable:") ||
+    !aiTxtLive.includes("owner-gate-tur1a:") ||
+    !aiTxtLive.includes("owner-gate-howto-tools:") ||
+    !aiTxtLive.includes("dnsenable=1") ||
+    !aiTxtLive.includes("tur1a=1") ||
     !aiTxtLive.includes("social=fb") ||
     !aiTxtLive.includes("social-json:") ||
     !aiTxtLive.includes("contact-json:") ||
@@ -2188,12 +2194,15 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("social=ig") ||
     !securityLive.includes("social=wa") ||
     !securityLive.includes("Deep+After") ||
+    !securityLive.includes("dnsenable=1") ||
+    !securityLive.includes("tur1a=1") ||
+    !securityLive.includes("gate HowTo tools") ||
     !securityLive.includes("https://www.bingplaces.com/") ||
     !securityLive.includes("https://www.isimtescil.net/") ||
     !securityLive.includes("https://business.google.com/") ||
     !securityLive.includes("https://chatgpt.com/")
   ) {
-    console.error("❌ out/.well-known/security.txt must include live owner-next.html/json + geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301 + social deep-links + Deep+After");
+    console.error("❌ out/.well-known/security.txt must include live owner-next.html/json + geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301 + social deep-links + Deep+After + gate HowTo tools (dnsenable=1 · tur1a=1)");
     process.exit(1);
   }
   const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
@@ -2257,9 +2266,12 @@ if (fs.existsSync(outDir)) {
       !llmsGeo.includes("https://business.google.com/") ||
       !llmsGeo.includes("https://chatgpt.com/") ||
       !llmsGeo.includes("/.well-known/brand.json") ||
-      !llmsGeo.includes("#website")
+      !llmsGeo.includes("#website") ||
+      !llmsGeo.includes("gate HowTo tools") ||
+      !llmsGeo.includes("dnsenable=1") ||
+      !llmsGeo.includes("tur1a=1")
     ) {
-      console.error("❌ out/llms.txt must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
+      console.error("❌ out/llms.txt must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website + gate HowTo tools");
       process.exit(1);
     }
     const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
@@ -2278,9 +2290,12 @@ if (fs.existsSync(outDir)) {
       !llmsFullLive.includes("https://www.isimtescil.net/") ||
       !llmsFullLive.includes("https://chatgpt.com/") ||
       !llmsFullLive.includes("/.well-known/brand.json") ||
-      !llmsFullLive.includes("#website")
+      !llmsFullLive.includes("#website") ||
+      !llmsFullLive.includes("gate HowTo tools") ||
+      !llmsFullLive.includes("dnsenable=1") ||
+      !llmsFullLive.includes("tur1a=1")
     ) {
-      console.error("❌ out/llms-full.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
+      console.error("❌ out/llms-full.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website + gate HowTo tools");
       process.exit(1);
     }
   }
@@ -2349,9 +2364,12 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/api/catalog.json") ||
       !humansLive.includes("/api/products") ||
       !humansLive.includes("/tr/prices.json") ||
-      !humansLive.includes("/llms-full")
+      !humansLive.includes("/llms-full") ||
+      !humansLive.includes("gate HowTo tools") ||
+      !humansLive.includes("dnsenable=1") ||
+      !humansLive.includes("tur1a=1")
     ) {
-      console.error("❌ out/humans.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + ai-shopping + catalog + point-c + geo:next/ack + Open tabs + security + api/locale invent");
+      console.error("❌ out/humans.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + ai-shopping + catalog + point-c + geo:next/ack + Open tabs + security + api/locale invent + gate HowTo tools");
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");

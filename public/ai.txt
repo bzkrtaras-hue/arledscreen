@@ -282,6 +282,10 @@ owner-facebook-handle: @arledscreenn
 owner-social-fb: https://arledscreen.com/owner-next.html?social=fb
 owner-social-ig: https://arledscreen.com/owner-next.html?social=ig
 owner-social-wa: https://arledscreen.com/owner-next.html?social=wa
+owner-gate-start: https://arledscreen.com/owner-next.html?start=1
+owner-gate-dnsenable: https://arledscreen.com/owner-next.html?dnsenable=1
+owner-gate-tur1a: https://arledscreen.com/owner-next.html?tur1a=1
+owner-gate-howto-tools: potentialAction.tool start=1 · dnsenable=1 · tur1a=1
 social-json: https://arledscreen.com/social.json
 social-json-well-known: https://arledscreen.com/.well-known/social.json
 contact-json: https://arledscreen.com/contact.json

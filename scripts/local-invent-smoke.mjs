@@ -739,9 +739,19 @@ else fail("ard.resources.pointC");
     readText("llms.txt").includes("Mail paste") &&
     readText("llms.txt").includes("Copy After link") &&
     readText("llms.txt").includes("Deep + After") &&
+    readText("llms.txt").includes("gate HowTo tools") &&
+    readText("llms.txt").includes("dnsenable=1") &&
+    readText("llms.txt").includes("tur1a=1") &&
     readText("humans.txt").includes("Mail paste") &&
     readText("humans.txt").includes("Copy After link") &&
     readText("humans.txt").includes("Deep + After") &&
+    readText("humans.txt").includes("gate HowTo tools") &&
+    readText("humans.txt").includes("dnsenable=1") &&
+    readText(".well-known/security.txt").includes("gate HowTo tools") &&
+    readText(".well-known/security.txt").includes("dnsenable=1") &&
+    readText("ai.txt").includes("owner-gate-dnsenable:") &&
+    readText("ai.txt").includes("owner-gate-tur1a:") &&
+    readText("ai.txt").includes("owner-gate-howto-tools:") &&
     html.includes("activeOpens") &&
     html.includes("socialFocus") &&
     html.includes("setSocialFocus") &&

@@ -3706,7 +3706,7 @@ function enrichAgentsOwnerGateInvent() {
     if (socialItem && typeof socialItem === "object") {
       socialItem.name = socialItem.name || "Owner-confirmed social handles";
       socialItem.description =
-        "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · wa.me/905305078834. Aliases /contact.json · /.well-known/social.json. Owner deep-links: /owner-next.html?social=fb|ig|wa (F/I/W · D=Copy pack link · A=Copy After link · M=WA paste · E=Mail paste — Deep + After ?n=1). Point C IG/FB packs use these handles — do not invent.";
+        "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · wa.me/905305078834. Aliases /contact.json · /.well-known/social.json. Owner deep-links: /owner-next.html?social=fb|ig|wa (F/I/W · D=Copy pack link · A=Copy After link · M=WA paste · E=Mail paste — Deep + After ?n=1) · gate HowTo tools (potentialAction.tool: start=1 · dnsenable=1 · tur1a=1). Point C IG/FB packs use these handles — do not invent.";
     }
   }
 
@@ -4634,6 +4634,10 @@ owner-facebook-handle: @arledscreenn
 owner-social-fb: ${SITE_URL}/owner-next.html?social=fb
 owner-social-ig: ${SITE_URL}/owner-next.html?social=ig
 owner-social-wa: ${SITE_URL}/owner-next.html?social=wa
+owner-gate-start: ${SITE_URL}/owner-next.html?start=1
+owner-gate-dnsenable: ${SITE_URL}/owner-next.html?dnsenable=1
+owner-gate-tur1a: ${SITE_URL}/owner-next.html?tur1a=1
+owner-gate-howto-tools: potentialAction.tool start=1 · dnsenable=1 · tur1a=1
 social-json: ${SITE_URL}/social.json
 social-json-well-known: ${SITE_URL}/.well-known/social.json
 contact-json: ${SITE_URL}/contact.json
@@ -5083,7 +5087,7 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json · /.well-known/geo-baseline.json
 # Point C: https://arledscreen.com/point-c.txt · machine next: https://arledscreen.com/point-c.json → next + potentialAction (directoryLong Bing/Apple) · progress: https://arledscreen.com/point-c-progress.json → potentialAction · entity-profiles: https://arledscreen.com/entity-profiles.json
 # Discovery: https://arledscreen.com/.well-known/agents.json · https://arledscreen.com/.well-known/ard.json · https://arledscreen.com/humans.txt · https://arledscreen.com/AGENTS.md
-# Owner next (live): https://arledscreen.com/owner-next.html?start=1 · https://arledscreen.com/owner-next.html?social=fb · https://arledscreen.com/owner-next.html?social=ig · https://arledscreen.com/owner-next.html?social=wa · D=Copy pack link · A=Copy After link · M=WA paste · E=Mail paste (Deep+After ?n=1) · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo) · tur1a: https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · arleds: npm run verify:arleds-301
+# Owner next (live): https://arledscreen.com/owner-next.html?start=1 · https://arledscreen.com/owner-next.html?dnsenable=1 · https://arledscreen.com/owner-next.html?tur1a=1 · gate HowTo tools (potentialAction.tool) · https://arledscreen.com/owner-next.html?social=fb · https://arledscreen.com/owner-next.html?social=ig · https://arledscreen.com/owner-next.html?social=wa · D=Copy pack link · A=Copy After link · M=WA paste · E=Mail paste (Deep+After ?n=1) · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo) · tur1a: https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · arleds: npm run verify:arleds-301
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);
