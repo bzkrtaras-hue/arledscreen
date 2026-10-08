@@ -548,7 +548,7 @@ else fail("ard.resources.pointC");
     String(ard?.agentic?.resources?.ownerNextHtml?.json || "").includes("/owner-next.json") &&
     String(ard?.agentic?.resources?.ownerNextJson?.url || "").includes("/owner-next.json") &&
     String(ard?.agentic?.resources?.ownerNextJson?.alias || "").includes("/geo-next.json") &&
-    String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (28)") &&
+    String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (29)") &&
     html.includes("Copy paste") &&
     html.includes("/geo-status.json") &&
     html.includes("/owner-next.json") &&
@@ -617,14 +617,16 @@ else fail("ard.resources.pointC");
     JSON.stringify(twin) === JSON.stringify(twinAlias) &&
     JSON.stringify(twin) === JSON.stringify(twinWk) &&
     JSON.stringify(twin) === JSON.stringify(readJson(".well-known/geo-next.json")) &&
-    Number(agents?.numberOfItems) === 28 &&
+    Number(agents?.numberOfItems) === 29 &&
+    (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/social.json")) &&
+    JSON.stringify(agents?.sameAs || []).includes("/social.json") &&
     (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.html")) &&
     (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.json")) &&
     String(agents?.ownerNext || "").includes("/owner-next.html") &&
     String(agents?.ownerNext || "").includes("/owner-next.json")
   ) {
-    ok("owner-next.html + owner-next.json twin + geo-next aliases + agents×28 + ARD");
-  } else fail("owner-next.html + owner-next.json twin + geo-next aliases + agents×28 + ARD");
+    ok("owner-next.html + owner-next.json twin + geo-next aliases + agents×29 + ARD");
+  } else fail("owner-next.html + owner-next.json twin + geo-next aliases + agents×29 + ARD");
 }
 
 {

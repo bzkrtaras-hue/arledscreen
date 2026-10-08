@@ -241,9 +241,11 @@ if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSi
 else fail("ai.txt WebSite + quote");
 
 if (
-  (agents.itemListElement || []).length >= 28 &&
-  Number(agents.numberOfItems) === 28 &&
-  String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (28)") &&
+  (agents.itemListElement || []).length >= 29 &&
+  Number(agents.numberOfItems) === 29 &&
+  String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (29)") &&
+  (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/social.json")) &&
+  JSON.stringify(agents.sameAs || []).includes("/social.json") &&
   String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") &&
   String(ard?.agentic?.resources?.ownerNextHtml?.json || "").includes("/owner-next.json") &&
   String(ard?.agentic?.resources?.ownerNextJson?.url || "").includes("/owner-next.json") &&
@@ -277,7 +279,7 @@ if (
   String(agents?.ownerNext || "").includes("https://chatgpt.com/")
 ) {
   ok(`agents.json ×${agents.itemListElement.length} sameAs+subjectOf→owner-gate HowTo + security`);
-} else fail("agents.json ×28 sameAs+subjectOf→owner-gate HowTo + security");
+} else fail("agents.json ×29 sameAs+subjectOf→owner-gate HowTo + security");
 
 try {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;

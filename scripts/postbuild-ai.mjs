@@ -3688,11 +3688,27 @@ function enrichAgentsOwnerGateInvent() {
     `${SITE_URL}/entity-profiles.json`,
     `${SITE_URL}/point-c.txt`,
     `${SITE_URL}/#website`,
+    `${SITE_URL}/social.json`,
+    `${SITE_URL}/owner-next.html?social=fb`,
+    `${SITE_URL}/owner-next.html?social=ig`,
+    `${SITE_URL}/owner-next.html?social=wa`,
     ...ownerGateSameAsUrls(),
   ]) {
     same.add(u);
   }
   agents.sameAs = [...same];
+  // Keep ItemList count + social ListItem description invent-fresh after edits.
+  if (Array.isArray(agents.itemListElement)) {
+    agents.numberOfItems = agents.itemListElement.length;
+    const socialItem = agents.itemListElement.find(
+      (it) => String(it?.url || "").includes("/social.json"),
+    );
+    if (socialItem && typeof socialItem === "object") {
+      socialItem.name = socialItem.name || "Owner-confirmed social handles";
+      socialItem.description =
+        "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · wa.me/905305078834. Aliases /contact.json · /.well-known/social.json. Owner deep-links: /owner-next.html?social=fb|ig|wa (F/I/W). Point C IG/FB packs use these handles — do not invent.";
+    }
+  }
 
   const byId = new Map();
   for (const entry of Array.isArray(agents.subjectOf) ? agents.subjectOf : []) {

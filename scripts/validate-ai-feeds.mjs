@@ -2812,13 +2812,14 @@ if (fs.existsSync(outDir)) {
   if (
     !Array.isArray(agents.itemListElement) ||
     agents.itemListElement.length < 28 ||
-    Number(agents.numberOfItems) !== 28
+    Number(agents.numberOfItems) !== 29 ||
+    !(agents.itemListElement || []).some((it) => String(it?.url || "").includes("/social.json"))
   ) {
-    console.error("❌ agents.json must list 28 discovery items (numberOfItems=28; incl. brand/prices.rss/point-c/geo-status/tur1a/progress/owner-next.html/owner-next.json/#website/security/llms-full)");
+    console.error("❌ agents.json must list 29 discovery items (numberOfItems=29; incl. social.json + brand/prices.rss/point-c/geo-status/tur1a/progress/owner-next.html/owner-next.json/#website/security/llms-full)");
     process.exit(1);
   }
-  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (28)")) {
-    console.error("❌ ard.json agentsJson description must cite ItemList (28)");
+  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (29)")) {
+    console.error("❌ ard.json agentsJson description must cite ItemList (29)");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/owner-next.html"))) {
