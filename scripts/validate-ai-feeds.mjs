@@ -2183,12 +2183,16 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/point-c-progress.json") ||
     !securityLive.includes("potentialAction") ||
     !securityLive.includes("directoryLong") ||
+    !securityLive.includes("/social.json") ||
+    !securityLive.includes("social=fb") ||
+    !securityLive.includes("social=ig") ||
+    !securityLive.includes("social=wa") ||
     !securityLive.includes("https://www.bingplaces.com/") ||
     !securityLive.includes("https://www.isimtescil.net/") ||
     !securityLive.includes("https://business.google.com/") ||
     !securityLive.includes("https://chatgpt.com/")
   ) {
-    console.error("❌ out/.well-known/security.txt must include live owner-next.html/json + geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301");
+    console.error("❌ out/.well-known/security.txt must include live owner-next.html/json + geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301 + social deep-links");
     process.exit(1);
   }
   const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
