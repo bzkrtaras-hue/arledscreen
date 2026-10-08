@@ -230,11 +230,16 @@ jobs:
           grep -q 'social-handles' out/owner-next.html
           grep -q 'copySocialHandles' out/owner-next.html
           grep -q 'jumpToSocialPack' out/owner-next.html
+          grep -q 'copyPackDeepLink' out/owner-next.html
+          grep -q 'packDeepLinkUrl' out/owner-next.html
+          grep -q 'copy-pack-link' out/owner-next.html
+          grep -q 'Copy pack link' out/owner-next.html
           grep -q 'data-pack="facebookAbout"' out/owner-next.html
           grep -q 'data-pack="instagramBio"' out/owner-next.html
           grep -q 'e.key === "f"' out/owner-next.html
           grep -q 'e.key === "i"' out/owner-next.html
           grep -q 'e.key === "w"' out/owner-next.html
+          grep -q 'e.key === "d"' out/owner-next.html
           grep -q 'maybeSocialJump' out/owner-next.html
           grep -q '?social=fb|ig|wa' out/owner-next.html
           grep -q 'Social: FB' /tmp/geo-next.txt

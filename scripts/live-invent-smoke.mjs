@@ -590,11 +590,16 @@ try {
     ownerNextHtml.includes("social-handles") &&
     ownerNextHtml.includes("copySocialHandles") &&
     ownerNextHtml.includes("jumpToSocialPack") &&
+    ownerNextHtml.includes("copyPackDeepLink") &&
+    ownerNextHtml.includes("packDeepLinkUrl") &&
+    ownerNextHtml.includes("copy-pack-link") &&
+    ownerNextHtml.includes("Copy pack link") &&
     ownerNextHtml.includes('data-pack="facebookAbout"') &&
     ownerNextHtml.includes('data-pack="instagramBio"') &&
     ownerNextHtml.includes('e.key === "f"') &&
     ownerNextHtml.includes('e.key === "i"') &&
     ownerNextHtml.includes('e.key === "w"') &&
+    ownerNextHtml.includes('e.key === "d"') &&
     ownerNextHtml.includes("maybeSocialJump") &&
     ownerNextHtml.includes("socialQuery") &&
     ownerNextHtml.includes("?social=fb|ig|wa") &&

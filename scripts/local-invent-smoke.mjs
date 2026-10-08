@@ -614,11 +614,16 @@ else fail("ard.resources.pointC");
     html.includes("social-handles") &&
     html.includes("copySocialHandles") &&
     html.includes("jumpToSocialPack") &&
+    html.includes("copyPackDeepLink") &&
+    html.includes("packDeepLinkUrl") &&
+    html.includes("copy-pack-link") &&
+    html.includes("Copy pack link") &&
     html.includes('data-pack="facebookAbout"') &&
     html.includes('data-pack="instagramBio"') &&
     html.includes('e.key === "f"') &&
     html.includes('e.key === "i"') &&
     html.includes('e.key === "w"') &&
+    html.includes('e.key === "d"') &&
     html.includes("maybeSocialJump") &&
     html.includes("socialQuery") &&
     html.includes("?social=fb|ig|wa") &&
