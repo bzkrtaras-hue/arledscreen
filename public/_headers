@@ -7,6 +7,95 @@
   Cross-Origin-Opener-Policy: same-origin-allow-popups
   Cross-Origin-Resource-Policy: same-site
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' mailto: https://wa.me https://api.whatsapp.com https://*.mailerlite.com; img-src 'self' https: data:; script-src 'self' https://*.mailerlite.com https://*.mlcdn.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.mailerlite.com
+  # RFC 8288 discovery — trimmed Link set (≤~80) so response headers stay under undici/CF limits.
+  # Extensionless /api /locale invent URLs remain in sitemap + agents/AGENTS/llms; not re-listed here.
+  Link: <https://arledscreen.com/ai-shopping.json>; rel="describedby"; type="application/ld+json"; title="AI Shopping pricedPanels"
+  Link: <https://arledscreen.com/entity.json>; rel="describedby"; type="application/ld+json"; title="Organization Entity"
+  Link: <https://arledscreen.com/#website>; rel="canonical"; title="ARLEDSCREEN WebSite #website"
+  Link: <https://arledscreen.com/brand.json>; rel="describedby"; type="application/ld+json"; title="NXTIONSTAR Brand"
+  Link: <https://arledscreen.com/.well-known/brand.json>; rel="alternate"; type="application/ld+json"; title="NXTIONSTAR Brand invent alias"
+  Link: <https://arledscreen.com/.well-known/entity.json>; rel="alternate"; type="application/ld+json"; title="Organization invent alias"
+  Link: <https://arledscreen.com/.well-known/cite.json>; rel="alternate"; type="application/ld+json"; title="Organization cite invent alias"
+  Link: <https://arledscreen.com/.well-known/faq.json>; rel="alternate"; type="application/ld+json"; title="Organization FAQ invent alias"
+  Link: <https://arledscreen.com/.well-known/faqs.json>; rel="alternate"; type="application/ld+json"; title="Organization FAQs invent alias"
+  Link: <https://arledscreen.com/.well-known/organization.json>; rel="alternate"; type="application/ld+json"; title="Organization well-known invent alias"
+  Link: <https://arledscreen.com/.well-known/company.json>; rel="alternate"; type="application/ld+json"; title="Organization company invent alias"
+  Link: <https://arledscreen.com/.well-known/nap.json>; rel="alternate"; type="application/ld+json"; title="Organization NAP invent alias"
+  Link: <https://arledscreen.com/.well-known/about.json>; rel="alternate"; type="application/ld+json"; title="Organization about invent alias"
+  Link: <https://arledscreen.com/prices.json>; rel="alternate"; type="application/ld+json"; title="Panel Prices alias"
+  Link: <https://arledscreen.com/panels.json>; rel="alternate"; type="application/ld+json"; title="Panels pricedPanels alias"
+  Link: <https://arledscreen.com/mpn.json>; rel="alternate"; type="application/ld+json"; title="MPN pricedPanels alias"
+  Link: <https://arledscreen.com/organization.json>; rel="alternate"; type="application/ld+json"; title="Organization alias"
+  Link: <https://arledscreen.com/entity-profiles.json>; rel="alternate"; type="application/ld+json"; title="Point C entity profiles"
+  Link: <https://arledscreen.com/.well-known/agents.json>; rel="alternate"; type="application/ld+json"; title="Agent Discovery Index"
+  Link: <https://arledscreen.com/agents.json>; rel="alternate"; type="application/ld+json"; title="Agent Discovery Index (root invent alias)"
+  Link: <https://arledscreen.com/.well-known/agent.json>; rel="alternate"; type="application/ld+json"; title="Agent Discovery Index (agent invent alias)"
+  Link: <https://arledscreen.com/.well-known/ard.json>; rel="alternate"; type="application/ld+json"; title="ARLEDSCREEN ARD"
+  Link: <https://arledscreen.com/AGENTS.md>; rel="alternate"; type="text/markdown"; title="AGENTS.md"
+  Link: <https://arledscreen.com/humans.txt>; rel="alternate"; type="text/plain"; title="humans.txt discovery"
+  Link: <https://arledscreen.com/.well-known/humans.txt>; rel="alternate"; type="text/plain"; title="humans.txt well-known invent alias"
+  Link: <https://arledscreen.com/.well-known/security.txt>; rel="alternate"; type="text/plain"; title="security.txt (RFC 9116)"
+  Link: <https://arledscreen.com/llms.txt>; rel="alternate"; type="text/plain"; title="LLM Context"
+  Link: <https://arledscreen.com/.well-known/llms.txt>; rel="alternate"; type="text/plain"; title="LLM Context (well-known invent alias)"
+  Link: <https://arledscreen.com/llms-full.txt>; rel="alternate"; type="text/plain"; title="LLM Context (Full)"
+  Link: <https://arledscreen.com/.well-known/llms-full.txt>; rel="alternate"; type="text/plain"; title="LLM Context Full (well-known invent alias)"
+  Link: <https://arledscreen.com/catalog.json>; rel="describedby"; type="application/ld+json"; title="Panel Catalog OfferCatalog"
+  Link: <https://arledscreen.com/geo-baseline.json>; rel="describedby"; type="application/ld+json"; title="GEO Technical Baseline"
+  Link: <https://arledscreen.com/merchant.json>; rel="alternate"; type="application/ld+json"; title="Merchant pricedPanels alias"
+  Link: <https://arledscreen.com/offer.json>; rel="alternate"; type="application/ld+json"; title="Offer pricedPanels alias"
+  Link: <https://arledscreen.com/offers.json>; rel="alternate"; type="application/ld+json"; title="Offers pricedPanels alias"
+  Link: <https://arledscreen.com/.well-known/modules.json>; rel="alternate"; type="application/ld+json"; title="Modules pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/sku.json>; rel="alternate"; type="application/ld+json"; title="SKU pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/pricing.json>; rel="alternate"; type="application/ld+json"; title="Pricing pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/panels.json>; rel="alternate"; type="application/ld+json"; title="Panels pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/mpn.json>; rel="alternate"; type="application/ld+json"; title="MPN pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/merchant.json>; rel="alternate"; type="application/ld+json"; title="Merchant pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/prices.json>; rel="alternate"; type="application/ld+json"; title="Prices pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/price.json>; rel="alternate"; type="application/ld+json"; title="Price pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/offer.json>; rel="alternate"; type="application/ld+json"; title="Offer well-known pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/offers.json>; rel="alternate"; type="application/ld+json"; title="Offers well-known pricedPanels invent alias"
+  Link: <https://arledscreen.com/dataset.json>; rel="alternate"; type="application/ld+json"; title="Dataset pricedPanels invent alias"
+  Link: <https://arledscreen.com/feed.json>; rel="alternate"; type="application/ld+json"; title="Feed pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/dataset.json>; rel="alternate"; type="application/ld+json"; title="Dataset well-known pricedPanels invent alias"
+  Link: <https://arledscreen.com/.well-known/feed.json>; rel="alternate"; type="application/ld+json"; title="Feed well-known pricedPanels invent alias"
+  Link: <https://arledscreen.com/products.json>; rel="alternate"; type="application/ld+json"; title="Products catalog invent alias"
+  Link: <https://arledscreen.com/product.json>; rel="alternate"; type="application/ld+json"; title="Product catalog invent alias"
+  Link: <https://arledscreen.com/.well-known/products.json>; rel="alternate"; type="application/ld+json"; title="Products well-known catalog invent alias"
+  Link: <https://arledscreen.com/.well-known/product.json>; rel="alternate"; type="application/ld+json"; title="Product well-known catalog invent alias"
+  Link: <https://arledscreen.com/.well-known/catalog.json>; rel="alternate"; type="application/ld+json"; title="Catalog well-known invent alias"
+  Link: <https://arledscreen.com/.well-known/geo-baseline.json>; rel="alternate"; type="application/ld+json"; title="GEO baseline well-known invent alias"
+  Link: <https://arledscreen.com/.well-known/entity-profiles.json>; rel="alternate"; type="application/ld+json"; title="Point C entity-profiles well-known invent alias"
+  Link: <https://arledscreen.com/.well-known/ai-shopping.json>; rel="alternate"; type="application/ld+json"; title="AI Shopping well-known invent alias"
+  Link: <https://arledscreen.com/brand>; rel="alternate"; type="application/ld+json"; title="Brand extensionless invent alias"
+  Link: <https://arledscreen.com/modules>; rel="alternate"; type="application/ld+json"; title="Modules extensionless invent alias"
+  Link: <https://arledscreen.com/feeds/prices.json>; rel="alternate"; type="application/ld+json"; title="feeds/prices.json invent alias"
+  Link: <https://arledscreen.com/agent.json>; rel="alternate"; type="application/ld+json"; title="Agent Discovery Index (agent.json invent alias)"
+  Link: <https://arledscreen.com/security.txt>; rel="alternate"; type="text/plain"; title="security.txt root invent alias"
+  Link: <https://arledscreen.com/.well-known/security>; rel="alternate"; type="text/plain"; title="security.txt extensionless well-known invent alias"
+  Link: <https://arledscreen.com/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer"
+  Link: <https://arledscreen.com/.well-known/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer (well-known invent alias)"
+  Link: <https://arledscreen.com/feeds/prices.rss>; rel="alternate"; type="application/rss+xml"; title="Panel Price Updates RSS"
+  Link: <https://arledscreen.com/feeds/merchant-priced-panels.tsv>; rel="alternate"; type="text/tab-separated-values"; title="Merchant pricedPanels TSV"
+  Link: <https://arledscreen.com/point-c.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs"
+  Link: <https://arledscreen.com/point-c-en.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs (EN)"
+  Link: <https://arledscreen.com/.well-known/point-c.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs (well-known invent alias)"
+  Link: <https://arledscreen.com/.well-known/point-c-en.txt>; rel="alternate"; type="text/plain"; title="Point C paste packs EN (well-known invent alias)"
+  Link: <https://arledscreen.com/point-c.json>; rel="alternate"; type="application/ld+json"; title="Point C paste packs JSON (potentialAction HowTo)"
+  Link: <https://arledscreen.com/point-c-en.json>; rel="alternate"; type="application/ld+json"; title="Point C paste packs JSON (EN)"
+  Link: <https://arledscreen.com/.well-known/point-c.json>; rel="alternate"; type="application/ld+json"; title="Point C JSON well-known invent alias"
+  Link: <https://arledscreen.com/.well-known/point-c-en.json>; rel="alternate"; type="application/ld+json"; title="Point C EN JSON well-known invent alias"
+  Link: <https://arledscreen.com/feeds/point-c.csv>; rel="alternate"; type="text/csv"; title="Point C spreadsheet CSV"
+  Link: <https://arledscreen.com/feeds/point-c-en.csv>; rel="alternate"; type="text/csv"; title="Point C spreadsheet CSV (EN)"
+  Link: <https://arledscreen.com/geo-status.json>; rel="alternate"; type="application/ld+json"; title="GEO owner-gate status (potentialAction HowTo)"
+  Link: <https://arledscreen.com/geo-next.txt>; rel="alternate"; type="text/plain"; title="GEO next clipboard (HowTo footer)"
+  Link: <https://arledscreen.com/owner-next.txt>; rel="alternate"; type="text/plain"; title="GEO next clipboard invent alias"
+  Link: <https://arledscreen.com/owner-next.json>; rel="alternate"; type="application/ld+json"; title="Owner next JSON machine twin (Open/paste)"
+  Link: <https://arledscreen.com/.well-known/owner-next.json>; rel="alternate"; type="application/ld+json"; title="Owner next JSON well-known invent alias"
+  Link: <https://arledscreen.com/geo-next.json>; rel="alternate"; type="application/ld+json"; title="GEO next JSON invent alias (owner-next twin)"
+  Link: <https://arledscreen.com/owner-next.html>; rel="alternate"; type="text/html"; title="Owner next HTML Open/paste"
+  Link: <https://arledscreen.com/point-c-progress.json>; rel="alternate"; type="application/ld+json"; title="Point C paste progress (potentialAction HowTo)"
+  Link: <https://arledscreen.com/tur1a.json>; rel="alternate"; type="application/ld+json"; title="Tur1a blind coverage (potentialAction HowTo)"
+  Link: <https://arledscreen.com/feeds/tur1a.csv>; rel="alternate"; type="text/csv"; title="Tur1a spreadsheet CSV"
 
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
@@ -27,32 +116,506 @@
   Cache-Control: public, max-age=3600
 
 /robots.txt
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Content-Type: text/plain; charset=utf-8
+
+# Cloudflare Pages caps _headers at 100 rules — use placeholders/wildcards for GEO JSON feeds.
+/:file.json
   Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/:file.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+# Owner-gate invent surfaces — no-store so Point C / socialHandles / HowTo updates are not stale for 1h.
+# Last matching rule wins over /:file.json and /.well-known/:file.json wildcards above.
+/owner-next.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/geo-next.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/geo-status.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/point-c.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/point-c-progress.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/tur1a.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/social.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/owner-next.html
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+
+/geo-next.html
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+
+/.well-known/owner-next.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/.well-known/geo-next.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/.well-known/geo-status.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/.well-known/point-c.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/.well-known/point-c-progress.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/.well-known/social.json
+  ! Cache-Control
+  Cache-Control: no-store, must-revalidate
+  CDN-Cache-Control: no-store
+  Cloudflare-CDN-Cache-Control: no-store
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+
+/api/*
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/v1/*
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/data/*
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/:file.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/tr/:file.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+# Extensionless JSON invent aliases (agents omit .json).
+# /brand + /modules are asset dirs — served via _redirects 200 rewrites to *.json.
+/panels
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/sku
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/mpn
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/merchant
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/brand
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/modules
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/products
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/product
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/catalog
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/ai-shopping
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/entity
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/geo-baseline
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/entity-profiles
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/offer
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/offers
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/dataset
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/feed
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/organization
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/company
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/nap
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/cite
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/faq
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/faqs
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
 /llms.txt
   Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
 /llms-full.txt
   Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
-/entity.json
+/ai.txt
   Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
-/catalog.json
-  Content-Type: application/ld+json
+/llms
   Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
-/ai-shopping.json
-  Content-Type: application/ld+json
+/llms-full
   Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
-/.well-known/ard.json
-  Content-Type: application/ld+json
+/.well-known/ai.txt
   Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
-/feeds/*
-  Content-Type: text/tab-separated-values
+/.well-known/llms.txt
   Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/llms-full.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/en/:file.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/tr/:file.txt
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/security.txt
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/security.txt
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/security
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/humans.txt
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/.well-known/humans.txt
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  Content-Type: text/plain; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/AGENTS.md
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/markdown; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+# TSV only — do not blanket /feeds/* (JSON invent aliases must stay application/json).
+/feeds/*.tsv
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/tab-separated-values; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/feeds/*.csv
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/csv; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/point-c.csv
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/csv; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/point-c-en.csv
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: text/csv; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/feeds/prices.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  ! Content-Type
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/feeds/catalog.json
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  ! Content-Type
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/feeds/prices.rss
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  ! Content-Type
+  Content-Type: application/rss+xml; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
 
 # Self-hosted price calculator (embedded same-origin on /<locale>/hesaplayici/).
 # Voice input (Web Speech API) needs the microphone: allowed for this origin only,

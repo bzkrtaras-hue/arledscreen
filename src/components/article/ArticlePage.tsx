@@ -3,7 +3,10 @@ import Link from "next/link";
 import { getArticle, ARTICLE_SLUGS } from "@/lib/markdown";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildTrOnlyMetadata } from "@/lib/seo";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { ARTICLE_LINKS } from "@/content/article-links";
 
@@ -31,6 +34,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
     author: { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     image: absoluteUrl("/og/arledscreen-og.jpg"),
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
   };
   const others = ARTICLE_LINKS.filter((l) => !l.href.includes(`/${slug}/`));
   return (
@@ -42,15 +46,27 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
           { name: a.h1, item: url },
         ]}
       />
-      {a.faqs.length ? <FaqJsonLd faqs={a.faqs} /> : null}
+      {a.faqs.length ? <FaqJsonLd faqs={a.faqs} pageUrl={url} /> : null}
+      <SpeakableJsonLd
+        pageUrl={url}
+        name={a.h1}
+        description={a.description}
+        cssSelectors={["#article-h1", "#article-lead"]}
+        mainEntity={{ "@id": `${url}#article` }}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
       <article className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <nav aria-label="Sayfa yolu" className="text-[13px] text-ink-muted">
             <Link href="/tr/" className="hover:text-cyan">Ana Sayfa</Link> /{" "}
             <Link href="/tr/rehber/" className="hover:text-cyan">Rehber</Link>
           </nav>
-          <h1 className="mt-3 text-balance font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">{a.h1}</h1>
+          <h1 id="article-h1" className="mt-3 text-balance font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">{a.h1}</h1>
+          <p id="article-lead" className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{a.description}</p>
           <p className="mt-2 text-[13px] text-ink-muted">
             Son güncelleme: <time dateTime={a.lastReviewed}>{new Date(a.lastReviewed).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}</time> · ARLEDSCREEN
           </p>
@@ -58,6 +74,7 @@ export function ArticlePage({ slug }: { slug: (typeof ARTICLE_SLUGS)[number] }) 
           <div className="mt-10 rounded-card bg-band p-6">
             <p className="font-display text-lg font-bold text-ink">Projeniz için yazılı teklif alın</p>
             <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">Ölçü, konum ve kullanım amacını paylaşın; keşif sonrası malzeme listesiyle birlikte teklif hazırlayalım.</p>
+            <AiPriceSourceNote lead="Panel USD:" className="mt-2 text-xs leading-relaxed text-ink-muted" />
             <div className="mt-4 flex flex-wrap gap-3">
               <Link href="/tr/quote/" className="inline-flex min-h-11 items-center rounded-full bg-cyan px-5 text-sm font-semibold text-white hover:bg-cyan-600">Teklif isteyin</Link>
               <Link href="/tr/hesaplayici/" className="inline-flex min-h-11 items-center rounded-full border border-border bg-white px-5 text-sm font-semibold text-ink-soft hover:text-cyan">Fiyatı hesaplayın</Link>

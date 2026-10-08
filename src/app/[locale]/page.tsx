@@ -7,9 +7,15 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { Hero } from "@/components/hero/Hero";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { getFaqs } from "@/content/faqs";
 import { getSeo } from "@/content/seo";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
+import { modelUrlForPrice } from "@/content/models";
+import { PANEL_PRICES, panelProductsJsonLd, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
 import { CompletedProjectsGallery } from "@/components/projects/CompletedProjectsGallery";
 import { ReferencesGrid } from "@/components/projects/ReferencesGrid";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
@@ -63,10 +69,44 @@ export default async function HomePage({ params }: PageProps) {
       <Script src="/chat-widget.js" strategy="lazyOnload" data-locale={locale} />
     ) : null;
 
+  const seo = getSeo(locale, "home");
+
   if (!tr) {
     return (
       <>
         <FaqJsonLd faqs={faqs} />
+        {(locale === "en" || locale === "ar" || locale === "ru") ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/`))),
+            }}
+          />
+        ) : null}
+        {locale === "en" ? (
+          <>
+            <SpeakableJsonLd
+              pageUrl={absoluteUrl("/en/")}
+              name={seo.h1 ?? "ARLEDSCREEN"}
+              description={seo.description}
+              cssSelectors={["#home-h1", "#home-lead"]}
+              mainEntity={{ "@id": `${absoluteUrl("/en/")}#service` }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(
+                  panelProductsJsonLd(
+                    PANEL_PRICES,
+                    absoluteUrl("/en/"),
+                    "LED display module sales, survey and installation",
+                    modelUrlForPrice(absoluteUrl),
+                  ),
+                ),
+              }}
+            />
+          </>
+        ) : null}
         <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
           <Hero locale={locale} />
         </div>
@@ -78,6 +118,12 @@ export default async function HomePage({ params }: PageProps) {
           className="min-w-0 bg-surface/30 prose-seo"
         >
           <FeaturedProducts locale={locale} />
+          {locale === "en" ? (
+            <div id="panel-prices" className="mt-10">
+              <AiPriceSourceNote locale="en" lead="Published panel USD:" className="mb-3 text-sm leading-relaxed text-ink-muted" />
+              <PanelPriceTable panels={PANEL_PRICES} caption="Panel prices (USD, per panel)" />
+            </div>
+          ) : null}
         </Section>
         <Section
           id="projeler"
@@ -117,6 +163,32 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <>
       <FaqJsonLd faqs={faqs} />
+      <SpeakableJsonLd
+        pageUrl={absoluteUrl("/tr/")}
+        name={seo.h1 ?? "ARLEDSCREEN LED Ekran"}
+        description={seo.description}
+        cssSelectors={["#home-h1", "#home-lead"]}
+        mainEntity={{ "@id": `${absoluteUrl("/tr/")}#service` }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl("/tr/"))),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            panelProductsJsonLd(
+              PANEL_PRICES,
+              absoluteUrl("/tr/"),
+              "LED ekran modülü satışı, keşif ve montaj",
+              modelUrlForPrice(absoluteUrl),
+            ),
+          ),
+        }}
+      />
 
       {/* 1. Full-bleed video hero under liquid-glass chrome → 2. gateway tiles → 3. values */}
       <div className="-mt-[6.75rem] md:-mt-[7.5rem]">
@@ -149,6 +221,19 @@ export default async function HomePage({ params }: PageProps) {
             </Link>
             .
           </p>
+        </div>
+      </section>
+
+      {/* 4b. Published panel USD — below hero; agents + buyers share one source */}
+      <section id="panel-fiyatlari" className="border-t border-border bg-band/40 py-14 md:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Panel fiyatları"
+            title="2026 NXTIONSTAR panel USD listesi"
+            description="Yayımlanmış 12 panel. KDV/nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif ve yazılı teklifle kesinleşir."
+          />
+          <AiPriceSourceNote lead="Kaynak:" className="mb-4 max-w-3xl text-sm leading-relaxed text-ink-muted" />
+          <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" />
         </div>
       </section>
 

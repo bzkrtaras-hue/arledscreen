@@ -4,8 +4,22 @@ import { notFound } from "next/navigation";
 import { ArrowRight, BookOpen, Calculator, CalendarDays, Check, ChevronRight, FileText, MapPin } from "lucide-react";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
-import { CALC_EXTRAS, fmtM2, fmtUsd, panelProductsJsonLd, pricesForGroup, type PanelPrice } from "@/content/prices";
+import {
+  CALC_EXTRAS,
+  BRAND_SUBJECT_DATASETS,
+  PRICE_VALID_UNTIL,
+  fmtM2,
+  fmtUsd,
+  localBusinessRef,
+  nxtionstarBrandRef,
+  panelProductsJsonLd,
+  pricedPanelOfferStubs,
+  pricedPanelsDatasetJsonLd,
+  pricesForGroup,
+  type PanelPrice,
+} from "@/content/prices";
 import { modelPath, modelsForGroup, modelUrlForPrice, SPEC_LABELS, type SpecKey } from "@/content/models";
 import { OptImage } from "@/components/ui/opt-image";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -20,15 +34,35 @@ import {
   productGroupPath,
   relatedReferences,
 } from "@/content/categories";
+import { getProductGroupEn, PRODUCT_GROUP_EN_SLUGS } from "@/content/product-groups-en";
+import {
+  EN_PRODUCT_GROUP_BRIDGE_SLUGS,
+  getEnProductGroupBridge,
+  isEnProductGroupBridgeSlug,
+} from "@/content/en-product-group-bridges";
+import { ProductGroupEnLanding } from "@/components/products/ProductGroupEnLanding";
+import { InventBridge } from "@/components/seo/InventBridge";
 import { displayCompany } from "@/content/trust";
-import { buildTrOnlyMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { whatsappHref } from "@/lib/whatsapp";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return PRODUCT_GROUPS.map((g) => ({ locale: "tr", slug: g.slug }));
+  const params: { locale: string; slug: string }[] = [];
+  for (const g of PRODUCT_GROUPS) {
+    params.push({ locale: "tr", slug: g.slug });
+    if (PRODUCT_GROUP_EN_SLUGS.includes(g.slug)) {
+      params.push({ locale: "en", slug: g.slug });
+    }
+  }
+  // Inventable short EN group aliases (gob/indoor/outdoor/fine-pitch).
+  for (const slug of EN_PRODUCT_GROUP_BRIDGE_SLUGS) {
+    params.push({ locale: "en", slug });
+  }
+  return params;
 }
 
 interface PageProps {
@@ -36,9 +70,46 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale: raw, slug } = await params;
+
+  if (raw === "en" && isEnProductGroupBridgeSlug(slug)) {
+    const bridge = getEnProductGroupBridge(slug);
+    if (!bridge) return {};
+    return {
+      ...buildPageMetadata({
+        locale: "en" as Locale,
+        path: bridge.target.replace(/^\/en/, "") || "/",
+        title: bridge.title,
+        description: bridge.description,
+        hreflangLocales: [],
+      }),
+      robots: { index: false, follow: true },
+      alternates: { canonical: bridge.target },
+    };
+  }
+
   const g = getProductGroup(slug);
   if (!g) return {};
+  if (raw === "en") {
+    const en = getProductGroupEn(slug);
+    if (!en) return {};
+    return buildPageMetadata({
+      locale: "en" as Locale,
+      path: `/products/${g.slug}/`,
+      title: en.title,
+      description: en.description,
+      hreflangLocales: ["tr", "en"],
+    });
+  }
+  if (raw === "tr" && PRODUCT_GROUP_EN_SLUGS.includes(slug)) {
+    return buildPageMetadata({
+      locale: "tr" as Locale,
+      path: `/products/${g.slug}/`,
+      title: g.title,
+      description: g.description,
+      hreflangLocales: ["tr", "en"],
+    });
+  }
   return buildTrOnlyMetadata({ path: `/products/${g.slug}`, title: g.title, description: g.description });
 }
 
@@ -52,7 +123,8 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
   return {
     question: `${name} fiyatı ne kadar?`,
     answer:
-      `2026 fiyat listemizde NXTIONSTAR ${name} panelleri, panel başına ${fmtUsd(lo.usd)} USD (${priceLabel(lo)}) ile ${fmtUsd(hi.usd)} USD (${priceLabel(hi)}) arasındadır; KDV ve nakliye hariçtir. ` +
+      `2026 fiyat listemizde NXTIONSTAR ${name} panelleri, panel başına ${fmtUsd(lo.usd)} USD (${priceLabel(lo)}) ile ${fmtUsd(hi.usd)} USD (${priceLabel(hi)}) arasındadır; KDV ve nakliye hariçtir; ücretsiz kargo yoktur. ` +
+      `Makinece kaynak: ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv. ` +
       (lo.moduleMm || hi.moduleMm
         ? ""
         : `1 m² yaklaşık 19,53 panel ettiği için yalnızca modül bedeli m² başına yaklaşık ${fmtM2(lo.usd)} – ${fmtM2(hi.usd)} USD olur. `) +
@@ -62,9 +134,28 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
 
 export default async function ProductGroupPage({ params }: PageProps) {
   const { locale, slug } = await params;
-  if (locale !== "tr") notFound();
+  if (locale !== "tr" && locale !== "en") notFound();
+
+  if (locale === "en" && isEnProductGroupBridgeSlug(slug)) {
+    const bridge = getEnProductGroupBridge(slug);
+    if (!bridge) notFound();
+    return (
+      <InventBridge
+        h1={bridge.h1}
+        target={bridge.target}
+        cta={bridge.cta}
+        note="Short EN product-group aliases are inventable bridges; canonical hubs keep TR slug shapes under /en/products/."
+      />
+    );
+  }
+
   const g = getProductGroup(slug);
   if (!g) notFound();
+  if (locale === "en") {
+    const en = getProductGroupEn(slug);
+    if (!en) notFound();
+    return <ProductGroupEnLanding group={g} en={en} />;
+  }
 
   const url = absoluteUrl(productGroupPath(g));
   const refs = relatedReferences(g, 4);
@@ -101,23 +192,40 @@ export default async function ProductGroupPage({ params }: PageProps) {
     description: g.description,
     url,
     image: absoluteUrl(g.image),
-    provider: { "@id": `${SITE_URL}/#organization` },
-    brand: { "@type": "Brand", name: g.brandName ?? "NXTIONSTAR" },
+    provider: localBusinessRef(),
+    brand:
+      (g.brandName ?? "NXTIONSTAR") === "NXTIONSTAR"
+        ? nxtionstarBrandRef()
+        : { "@type": "Brand", name: g.brandName },
     areaServed: { "@type": "Country", name: "Türkiye" },
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
     ...(prices.length
       ? {
           offers: {
             "@type": "AggregateOffer",
+            "@id": `${url}#priced-panels-aggregate`,
             priceCurrency: "USD",
             lowPrice: Math.min(...prices.map((x) => x.usd)).toFixed(2),
             highPrice: Math.max(...prices.map((x) => x.usd)).toFixed(2),
             offerCount: prices.length,
-            description: "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç.",
+            priceValidUntil: PRICE_VALID_UNTIL,
+            url: `${SITE_URL}/ai-shopping.json`,
+            sameAs: [`${SITE_URL}/#priced-panels-aggregate`],
+            description:
+              "Panel (modül) başına USD fiyat aralığı; KDV ve nakliye hariç. Ücretsiz kargo yok; nakliye yazılı teklifle.",
             seller: { "@id": `${SITE_URL}/#organization` },
+            availableAtOrFrom: localBusinessRef(),
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              priceCurrency: "USD",
+              valueAddedTaxIncluded: false,
+            },
+            offers: pricedPanelOfferStubs(prices),
           },
         }
       : {}),
   };
+  // Products only — Service AggregateOffer lives in serviceLd (avoid duplicate Service).
   const productsLd = prices.length ? panelProductsJsonLd(prices, url, undefined, modelUrlForPrice(absoluteUrl)) : null;
 
   return (
@@ -130,6 +238,18 @@ export default async function ProductGroupPage({ params }: PageProps) {
         ]}
       />
       <FaqJsonLd faqs={quickPrice ? [quickPrice, ...g.faqs] : g.faqs} />
+      <SpeakableJsonLd
+        pageUrl={url}
+        name={g.h1}
+        description={g.description}
+        cssSelectors={["#pg-h1", "#pg-lead"]}
+        {...(prices.length ? { mainEntity: { "@id": `${url}#service` } } : {})}
+      />
+      {/* Always emit Dataset — quote-only groups still point AI shoppers at pricedPanels. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {productsLd ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsLd) }} />
@@ -167,10 +287,10 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 <li aria-current="page" className="font-semibold text-ink-soft">{g.name}</li>
               </ol>
             </nav>
-            <h1 className="mt-3 text-balance font-display text-[clamp(1.9rem,1.4rem+2vw,2.75rem)] font-extrabold leading-tight tracking-[-0.03em] text-ink">
+            <h1 id="pg-h1" className="mt-3 text-balance font-display text-[clamp(1.9rem,1.4rem+2vw,2.75rem)] font-extrabold leading-tight tracking-[-0.03em] text-ink">
               {g.h1}
               <span className="sr-only">: </span>
-              <span className="mt-2 block text-[clamp(1.05rem,0.95rem+0.5vw,1.35rem)] font-semibold leading-snug tracking-[-0.01em] text-cyan">
+              <span id="pg-lead" className="mt-2 block text-[clamp(1.05rem,0.95rem+0.5vw,1.35rem)] font-semibold leading-snug tracking-[-0.01em] text-cyan">
                 {g.lead}
               </span>
             </h1>
@@ -345,6 +465,25 @@ export default async function ProductGroupPage({ params }: PageProps) {
                 <p className="mt-3 max-w-xl text-base leading-relaxed text-ink-soft">
                   {g.name} fiyatı ölçü, form, süre ve kurulum koşullarına göre hazırlanır. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz.
                 </p>
+                <p className="mt-2 max-w-xl text-xs leading-relaxed text-ink-muted">
+                  Bu grup quote-only. Yayımlanmış 12 panel USD:{" "}
+                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                    ai-shopping.json
+                  </a>{" "}
+                  pricedPanels,{" "}
+                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                    catalog.json
+                  </a>
+                  ,{" "}
+                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                    merchant TSV
+                  </a>
+                  ,{" "}
+                  <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+                    geo-baseline.json
+                  </a>{" "}
+                  (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
+                </p>
               </div>
               <div className="flex flex-col gap-3">
                 <a
@@ -376,6 +515,25 @@ export default async function ProductGroupPage({ params }: PageProps) {
               ) : null}
               <h2 className="mb-4 font-display text-xl font-bold text-ink sm:text-2xl">Panel fiyatları (2026 listesi)</h2>
               <PanelPriceTable panels={prices} caption={`${g.name}: hesaplayıcıdaki panel fiyatları`} showUse={false} />
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-muted">
+                Makinece kaynak:{" "}
+                <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                  ai-shopping.json
+                </a>{" "}
+                <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31),{" "}
+                <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                  catalog.json
+                </a>
+                ,{" "}
+                <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                  merchant TSV
+                </a>{" "}
+                ve{" "}
+                <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+                  geo-baseline.json
+                </a>
+                . KDV/nakliye hariç; ücretsiz kargo yok.
+              </p>
             </div>
           ) : null}
 

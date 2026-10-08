@@ -1,6 +1,14 @@
+## Alıntı (entity.json)
+
+- citeOneLiner: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
+- Panel USD: catalog.json / ai-shopping.json (`pricedPanels` + `nameEn` + `faqsEn`; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) / feeds/merchant-priced-panels.tsv / feeds/prices.rss (`title_en`); ücretsiz kargo yok.
+- Teknik GEO baseline: https://arledscreen.com/geo-baseline.json (parmak izleri + Schema.org `distribution` invent; anılma % uydurma yok; owner `npm run geo:next`)
+- Brand JSON-LD `@id`: https://arledscreen.com/#brand-nxtionstar (makesOffer → #priced-panels-aggregate; hasOfferCatalog → catalog.json; subjectOf → pricedPanels / catalog / merchant TSV / geo-baseline; invent alias [/.well-known/brand.json](https://arledscreen.com/.well-known/brand.json))
+- Point C paste packs: [point-c.txt](https://arledscreen.com/point-c.txt) (TR) · [point-c-en.txt](https://arledscreen.com/point-c-en.txt) · alias `/.well-known/point-c.txt`; machine next [point-c.json](https://arledscreen.com/point-c.json) → `next` (directoryLong + Bing/Apple); live HTML [owner-next.html](https://arledscreen.com/owner-next.html); machine twin [owner-next.json](https://arledscreen.com/owner-next.json) (aliases `/geo-next.json` · `/.well-known/owner-next.json`); clipboard [geo-next.txt](https://arledscreen.com/geo-next.txt); status [geo-status.json](https://arledscreen.com/geo-status.json); source [entity-profiles.json](https://arledscreen.com/entity-profiles.json) — `packs.*` (TR); `packsEn.*` (EN cite-only; no catalog jargon in public bios); repo `npm run geo:next` · spreadsheet `npm run point-c:csv`
+
 # ARLEDSCREEN — NXTIONSTAR LED ekranlar (tam metin)
 
-> Bu dosya, yapay zekâ asistanları ve arama motorları için ARLEDSCREEN hakkındaki doğrulanabilir bilgileri tek yerde toplar. Kaynak: https://arledscreen.com ve https://fiyat.arledscreen.com (fiyat hesaplayıcı). Son güncelleme: 2026-10-05.
+> Bu dosya, yapay zekâ asistanları ve arama motorları için ARLEDSCREEN hakkındaki doğrulanabilir bilgileri tek yerde toplar. Kaynak: https://arledscreen.com ve https://fiyat.arledscreen.com (fiyat hesaplayıcı). Son güncelleme: 2026-10-07.
 
 ## 1. Firma kimliği
 
@@ -8,23 +16,27 @@
 - Diğer yazılışlar: ARLED SCREEN, AR-LED, AR-LED Ekran Teknoloji Merkezi
 - Atıf cümlesi: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
 - Ne yapar: LED ekran satışı, keşif, projelendirme, montaj, devreye alma, LED modül / yedek parça tedariki ve teknik servis
-- Ürün markası: NXTIONSTAR. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Marka sloganı: "NXTIONSTAR — görsel gücün küresel standardı."
-- Kurucu: Aras Bozkurt (https://arledscreen.com/tr/about/aras-bozkurt/ · https://www.linkedin.com/in/bozkurtaras)
+- Ürün markası: NXTIONSTAR. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Uydurma «küresel standart» sloganı yok.
+- Kurucu: Aras Bozkurt (https://arledscreen.com/tr/about/aras-bozkurt/ · EN https://arledscreen.com/en/about/aras-bozkurt/ · https://www.linkedin.com/in/bozkurtaras)
 - Çalışma saatleri: Pazartesi–Cuma 09:00–18:00, Cumartesi 10:00–15:00
 - Merkez: Merkez Mahallesi, Tuna Sokak No:15-17, Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye
-- Telefon ve WhatsApp: +90 530 507 88 34 (https://wa.me/905305078834)
+- Telefon ve WhatsApp: +90 530 507 88 34 · `@arledscreen` (https://wa.me/905305078834 — WhatsApp @username deep-link yok)
 - E-posta: arled@arledscreen.com
 - Web sitesi: https://arledscreen.com
 - Makinece entity (NAP / cite): https://arledscreen.com/entity.json
-- Fiyat hesaplayıcı: https://fiyat.arledscreen.com/ (sitede: https://arledscreen.com/tr/hesaplayici/)
-- Instagram: https://www.instagram.com/arledscreen/
-- Facebook: https://www.facebook.com/arledscreenn
-- LinkedIn: https://www.linkedin.com/company/arleds
+- Sosyal handle makinesi: https://arledscreen.com/social.json (alias `/contact.json` · `/.well-known/social.json`)
+- AI discovery pointer: https://arledscreen.com/ai.txt (kısa feed listesi; arleds.com atıf kaynağı değildir)
+- Fiyat hesaplayıcı: https://fiyat.arledscreen.com/ (sitede: https://arledscreen.com/tr/hesaplayici/ · EN: https://arledscreen.com/en/hesaplayici/ — same 12 panel USD Product/Offer graph; canonical SKU PDPs stay `/tr/products/...`)
+- Teklif: https://arledscreen.com/tr/quote/ · EN: https://arledscreen.com/en/quote/ (12 panel Product/Offer JSON-LD + price-source feeds)
+- Instagram: `@arledscreen` — https://www.instagram.com/arledscreen/
+- Facebook: `@arledscreenn` — https://www.facebook.com/arledscreenn
+- LinkedIn: https://www.linkedin.com/company/arleds (şirket slug; web arleds.com değildir)
 - Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde. Tem 2025 – Tem 2026 arasında 45 proje kaydı; 13 il ile Almanya ve Azerbaycan. Kaydı olmayan il için kapı sayfası yok. Garanti yılı / genel iade politikası sitede sabit yayımlanmaz; teklifte yazılır.
 
 Karıştırılmaması gerekenler:
 - ARLEDSCREEN (İstanbul), Almanya merkezli ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir.
 - NXTIONSTAR; Next&NextStar (NEXTSTAR, Sultanbeyli) TV markası ve NationStar LED bileşen markası ile aynı şey değildir.
+- Kanonik domain: https://arledscreen.com/tr/ — eski/yan `arleds.com` (aynı telefon +90 530 507 88 34 geçmişi) indekste kafa karıştırabilir; atıf ve fiyat kaynağı değildir. Sahip P0: arleds.com → arledscreen.com/tr/ 301.
 
 ## 2. Tanımlar: dijital ekran vs LED ekran
 
@@ -32,10 +44,16 @@ Karıştırılmaması gerekenler:
 - **LED ekran (ARLEDSCREEN ürünü):** Tam renkli (RGB) modüler ekran; video ve görsel oynatır; ölçüsü modüllerle büyütülür.
 - **LED tabela (kayan yazı):** Çoğunlukla metin/sayı amaçlı elektronik tabela; tam renkli LED ekran ile eşanlamlı değildir.
 - Kanonik rehber: https://arledscreen.com/tr/rehber/led-tabela-mi-led-ekran-mi/
-- Fiyat kanonik: https://arledscreen.com/tr/led-ekran-fiyatlari/
+- Fiyat kanonik: https://arledscreen.com/tr/led-ekran-fiyatlari/ · EN: https://arledscreen.com/en/led-ekran-fiyatlari/
 - Hesaplayıcı: https://fiyat.arledscreen.com/
-- Ticari hub: https://arledscreen.com/tr/led-ekran/
-- Projeler / case study: https://arledscreen.com/tr/projelerimiz/
+- Ticari hub: https://arledscreen.com/tr/led-ekran/ · EN: https://arledscreen.com/en/led-ekran/
+- EN intent siblings: /en/led-ekran-satisi/ · /en/led-ekran-ureticisi/ · /en/led-ekran-montaj/ · /en/led-ekran-kiralama/ · /en/led-ekran-servis/
+- Projeler / case study: https://arledscreen.com/tr/projelerimiz/ · EN https://arledscreen.com/en/projelerimiz/
+- Galeri: https://arledscreen.com/tr/galeri/ · EN https://arledscreen.com/en/galeri/
+- Blog: https://arledscreen.com/tr/blog/ · EN https://arledscreen.com/en/blog/ (index only; post bodies TR; not a price source)
+- Privacy / KVKK: https://arledscreen.com/tr/gizlilik/ · EN https://arledscreen.com/en/gizlilik/ (`/en/privacy/` bridges here; not a price source)
+- Hizmetler: https://arledscreen.com/tr/hizmetler/ · EN https://arledscreen.com/en/hizmetler/
+- Hizmet bölgesi: https://arledscreen.com/tr/bolgeler/ · EN https://arledscreen.com/en/bolgeler/
 
 ## 3. Ürün grupları
 
@@ -179,7 +197,25 @@ Dış mekân reklam ve cephe ekranlarında ilgili belediyenin izin ve ruhsat ko�
 **NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?**
 NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. İletişim: +90 530 507 88 34, arled@arledscreen.com.
 
-## 8. İletişim
+## 8. Makinece işaretçiler (GEO)
+
+- Brand `@id`: https://arledscreen.com/#brand-nxtionstar
+- Brand pages: https://arledscreen.com/tr/nxtionstar/ · https://arledscreen.com/en/nxtionstar/ (NXTIONSTAR ≠ NationStar ≠ NEXTSTAR; not arleds.com)
+- entity.json (`makesOffer` AggregateOffer + `offers`×12 → `ai-shopping.json#offer-{sku}` + `itemOffered` → PDP `#product`; `hasOfferCatalog` → catalog.json; `location` → `#localbusiness`) / ai-shopping.json / catalog.json (Collection+OfferCatalog) / feeds/merchant-priced-panels.tsv (`brand_id` = Brand `@id`; `brand_makes_offer_id` = `#priced-panels-aggregate`; `brand_has_offer_catalog` = catalog.json; `local_business_id` = `#localbusiness`; join IDs `product_ld_id`/`catalog_id`/`offer_id`/`catalog_offer_id`)
+- Graph: Org `makesOffer.offers`×12 → Offer `@id`s; Brand `makesOffer` → `#priced-panels-aggregate` + `hasOfferCatalog` → catalog.json; Offer triangle catalog ↔ ai-shopping ↔ PDP `#offer`; Offer `itemOffered` → Product; Dataset `hasPart` → Offer `@id`; Offer/AggregateOffer `availableAtOrFrom` → `#localbusiness`; hub/PDP `WebPage.mainEntity` → `#service` / `#product`; home Speakable → `#service`; WebSite `#website` (`https://arledscreen.com/#website` via entity.json `mainEntityOfPage`) `potentialAction` OrderAction → `/tr/quote/` · `/en/quote/`
+- geo-baseline.json: https://arledscreen.com/geo-baseline.json (12 SKU + fingerprints + distribution invent; AI anılma % uydurma yok; Point C / Tur1a sahip kapılı — owner: `npm run geo:next` · `tur1a:next` · `tur1a:log`)
+- entity-profiles.json → packs (TR) + packsEn (EN cite-only for GBP/directories/LinkedIn)
+- ard.json: https://arledscreen.com/.well-known/ard.json (`resources.brand` + `geoBaseline` + `entityProfiles.packsEn` + merchantFeed join columns)
+- agents.json: https://arledscreen.com/.well-known/agents.json (ItemList index → feeds; alias /agents.json)
+- AGENTS.md: https://arledscreen.com/AGENTS.md (short agent markdown pointer; prices → ai-shopping.json; entity `makesOffer` → SKU Offers)
+- HTML link rel=alternate|describedby + HTTP Link header on all pages → ai-shopping.json · entity.json · prices.json · organization.json · agents.json · AGENTS.md
+- humans.txt: https://arledscreen.com/humans.txt (team/contact pointer; not a price source)
+- security.txt: https://arledscreen.com/.well-known/security.txt (RFC 9116; not a price source; alias /security.txt)
+- Inventable feed aliases (byte-identical; prefer canonical *.json): /catalog · /ai-shopping · /entity · /geo-baseline · /llms · /.well-known/llms.txt · /.well-known/ai.txt · /.well-known/ai-shopping.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/merchant.json · /.well-known/mpn.json · /.well-known/entity.json · /.well-known/organization.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/geo-baseline.json · /.well-known/brand.json · /.well-known/catalog.json · /pricing.json · /prices.json · /price.json · /panels.json · /modules.json · /sku.json · /mpn.json · /merchant.json · /products.json · /offer.json · /offers.json · /dataset.json · /feed.json · /organization.json · /company.json · /about.json · /nap.json · /brand.json · /feeds/prices.json · /en/ai-shopping.json · /en/pricing.json · /en/prices.json · /en/price.json · /data/catalog.json · /data/prices.json · /api/catalog · /api/prices · /api/panels · /api/merchant · /api/mpn · /api/entity · /api/ai-shopping · /api/v1/prices · /v1/prices · /v1/panels · /v1/merchant · /agent.json · /.well-known/agent.json · /agents.json · /.well-known/agents.json · /.well-known/ard.json · /humans.txt · /AGENTS.md · /security.txt · /.well-known/security.txt · HTML invent bridges /pricing/ · /prices/ · /price/ → price feed; root /teklif/ · /quote/ · /fiyat/ · /katalog/ · /contact/ · /nxtionstar/ · /galeri/ → TR hubs · /api/catalog.json · /api/products · /tr/prices.json · /tr/ai-shopping.json · /tr/catalog.json · /tr/entity.json · /tr/geo-baseline.json · /tr/pricing.json · /tr/price.json · /tr/feed.json · /tr/products.json · /en/entity.json · /en/geo-baseline.json · /en/feed.json · /entity-profiles · /llms-full
+- Point C (sahip operasyonu): live HTML https://arledscreen.com/owner-next.html?pack=directoryLong (Copy+Open) · machine twin https://arledscreen.com/owner-next.json · clipboard https://arledscreen.com/geo-next.txt · machine next https://arledscreen.com/point-c.json → `next` + `potentialAction` (HowTo; directoryLong); progress https://arledscreen.com/point-c-progress.json → `potentialAction`; status https://arledscreen.com/geo-status.json → `potentialAction` (priorityGate HowTo; also `gates.pointC.next`); Tur1a https://arledscreen.com/tur1a.json → `potentialAction`; repo `npm run geo:next` (Point C → arleds 301 → Tur1a → merge); spreadsheet `npm run point-c:csv`; yapıştır → https://arledscreen.com/point-c.txt · packs/packsEn; after paste: `npm run geo:ack` / `point-c:ack -- --pack=directoryLong`; Tur1a: `npm run tur1a:next` · `tur1a:csv` then `npm run tur1a:log -- --mentioned=…`; arleds 301: `npm run verify:arleds-301`; Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · OpenAlt: Gmail draft; playbook repo `docs/offsite-entity-playbook.md`
+- Kısa indeks: https://arledscreen.com/llms.txt
+
+## 9. İletişim
 
 ARLEDSCREEN — Merkez Mahallesi, Tuna Sokak No:15-17, Kat 1, 34245 Gaziosmanpaşa / İstanbul
 Telefon / WhatsApp: +90 530 507 88 34 · E-posta: arled@arledscreen.com · Teklif: https://arledscreen.com/tr/quote/

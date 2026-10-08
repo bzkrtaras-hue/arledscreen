@@ -258,6 +258,7 @@ export function HeroVideo({
             <span className="sr-only">{brand}</span>
 
             <m.h1
+              id="home-h1"
               className="text-balance font-display text-[clamp(1.55rem,1.15rem+1.7vw,2.55rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-white"
               style={{ textShadow: "0 2px 24px rgba(11,27,51,0.7), 0 0 2px rgba(11,27,51,0.45)" }}
               initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -280,7 +281,10 @@ export function HeroVideo({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease, delay: 0.22 }}
             >
-              <p className="hero-copy-lead text-pretty text-[14px] font-semibold leading-[1.55] sm:text-[15.5px] sm:leading-[1.65]">
+              <p
+                id="home-lead"
+                className="hero-copy-lead text-pretty text-[14px] font-semibold leading-[1.55] sm:text-[15.5px] sm:leading-[1.65]"
+              >
                 {subcopy}
               </p>
 

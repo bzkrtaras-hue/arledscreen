@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Montserrat } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
 import { aiDiscoveryMetadata, aiDiscoveryLinks } from "@/lib/ai-discovery";
+import { clampMetaDescription } from "@/lib/seo";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -17,8 +18,9 @@ export const metadata: Metadata = {
     default: "LED Ekran Teknoloji Merkezi | ARLEDSCREEN",
     template: "%s",
   },
-  description:
-    "ARLEDSCREEN: iç ve dış mekân LED ekran seçimi, keşif, montaj ve teknik servis. İstanbul / Gaziosmanpaşa. NXTIONSTAR ürün sayfalarında alt marka olarak yer alır.",
+  description: clampMetaDescription(
+    "ARLEDSCREEN — İstanbul Gaziosmanpaşa LED ekran satış, keşif, montaj ve teknik servis. NXTIONSTAR kendi markamız.",
+  ),
   openGraph: {
     type: "website",
     siteName: "ARLEDSCREEN",
@@ -59,25 +61,7 @@ export default function RootLayout({
             title={link.title}
           />
         ))}
-        {/* Structured data: Organization + canonical */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "@id": `${SITE_URL}/#organization`,
-              name: "ARLEDSCREEN",
-              url: SITE_URL,
-              logo: `${SITE_URL}/apple-touch-icon.png`,
-              sameAs: [
-                "https://www.instagram.com/arledscreen",
-                "https://www.facebook.com/arledscreenn",
-                "https://www.linkedin.com/company/arleds",
-              ],
-            }),
-          }}
-        />
+        {/* Organization / LocalBusiness / WebSite JSON-LD: OrganizationJsonLd in [locale]/layout */}
       </head>
       <body className="min-h-screen bg-bg font-sans antialiased">
         {children}

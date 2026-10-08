@@ -6,8 +6,10 @@ import { Section } from "@/components/ui/section";
 import { GlassPanel } from "@/components/ui/glass-panel";
 import { Button } from "@/components/ui/button";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { getSeoGuideHub, listSeoGuides } from "@/content/seo-guides";
 
 interface PageProps {
@@ -45,6 +47,29 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
   const hub = getSeoGuideHub(locale);
   const guides = listSeoGuides(locale);
   const dict = getDictionary(locale);
+  const hubUrl = absoluteUrl(`/${locale}/rehber/`);
+  const rehberLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${hubUrl}#rehber`,
+    name: hub.h1,
+    description: hub.description,
+    url: hubUrl,
+    inLanguage: locale === "tr" ? "tr-TR" : "en-US",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: guides.length,
+      itemListElement: guides.map((g, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: g.cardLabel,
+        url: absoluteUrl(`/${locale}/rehber/${g.slug}/`),
+      })),
+    },
+  };
 
   return (
     <>
@@ -53,13 +78,34 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
           { name: dict.nav.home, item: absoluteUrl(`/${locale}`) },
           {
             name: hub.eyebrow,
-            item: absoluteUrl(`/${locale}/rehber`),
+            item: hubUrl,
           },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(rehberLd) }}
+      />
+      {(locale === "tr" || locale === "en") ? (
+        <SpeakableJsonLd
+          pageUrl={hubUrl}
+          name={hub.h1}
+          description={hub.description}
+          cssSelectors={["#rehber-h1", "#rehber-lead"]}
+          mainEntity={{ "@id": `${hubUrl}#rehber` }}
+        />
+      ) : null}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(hubUrl)),
+        }}
       />
 
       <Section
         titleAs="h1"
+        titleId="rehber-h1"
+        descriptionId="rehber-lead"
         eyebrow={hub.eyebrow}
         title={hub.h1}
         description={hub.intro}

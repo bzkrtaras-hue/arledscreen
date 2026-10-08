@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
+import { InventBridge } from "@/components/seo/InventBridge";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { productGroupPath, getProductGroup } from "@/content/categories";
 import {
@@ -11,8 +14,15 @@ import {
   getServiceRegion,
   serviceRegionPath,
 } from "@/content/service-regions";
-import { buildTrOnlyMetadata } from "@/lib/seo";
-import { absoluteUrl, SITE_URL } from "@/lib/site";
+import {
+  BRAND_SUBJECT_DATASETS,
+  localBusinessRef,
+  nxtionstarBrandRef,
+  pricedPanelsDatasetJsonLd,
+} from "@/content/prices";
+import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n";
+import { absoluteUrl } from "@/lib/site";
 import {
   BUSINESS_ADDRESS_LINES,
   CONTACT_PHONE_DISPLAY,
@@ -22,7 +32,11 @@ import {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SERVICE_REGIONS.map((r) => ({ locale: "tr", slug: r.slug }));
+  // TR province detail pages + EN invent bridges → /en/bolgeler/ hub (no 81-city spam).
+  return SERVICE_REGIONS.flatMap((r) => [
+    { locale: "tr", slug: r.slug },
+    { locale: "en", slug: r.slug },
+  ]);
 }
 
 export async function generateMetadata({
@@ -31,9 +45,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  if (locale !== "tr") return {};
   const region = getServiceRegion(slug);
   if (!region) return {};
+  if (locale === "en") {
+    return {
+      ...buildPageMetadata({
+        locale: "en" as Locale,
+        path: "/bolgeler/",
+        title: `${region.name} LED Display | ARLEDSCREEN Regions`,
+        description: `EN province detail pages stay on the regions hub. Bridge from inventable /en/bolgeler/${region.slug}/.`,
+        hreflangLocales: [],
+      }),
+      robots: { index: false, follow: true },
+      alternates: { canonical: "/en/bolgeler/" },
+    };
+  }
+  if (locale !== "tr") return {};
   return buildTrOnlyMetadata({
     path: `/bolgeler/${region.slug}`,
     title: region.title,
@@ -47,9 +74,19 @@ export default async function ServiceRegionPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  if (locale !== "tr") notFound();
   const region = getServiceRegion(slug);
   if (!region) notFound();
+  if (locale === "en") {
+    return (
+      <InventBridge
+        h1={`${region.name} LED display`}
+        target="/en/bolgeler/"
+        cta="Open EN regions hub"
+        note="Province detail pages remain Turkish; this path is an inventable EN bridge."
+      />
+    );
+  }
+  if (locale !== "tr") notFound();
 
   const disMekan = getProductGroup("dis-mekan-led-ekran");
 
@@ -61,7 +98,7 @@ export default async function ServiceRegionPage({
     {
       question: `${region.name} LED ekran fiyatı ne kadar?`,
       answer:
-        "Sabit m² fiyatı yoktur. Panel USD listesi fiyat hesaplayıcıda yayımlanır; nihai tutar ölçü, piksel aralığı, iç/dış mekân ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir.",
+        "Sabit m² fiyatı yoktur. Yayımlanmış 12 panel USD: ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv (ör. P1.25 GOB 95.88 USD). Teknik GEO baseline: geo-baseline.json. Nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir; ücretsiz kargo yok.",
     },
     {
       question: "Keşif için ne paylaşmalıyım?",
@@ -70,19 +107,23 @@ export default async function ServiceRegionPage({
     },
   ];
 
-  const localBusiness = {
+  const regionUrl = absoluteUrl(serviceRegionPath(region.slug));
+  const regionServiceLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${absoluteUrl(serviceRegionPath(region.slug))}#service`,
+    "@id": `${regionUrl}#service`,
     name: `${region.name} LED ekran satışı, montajı ve teknik servis`,
     serviceType: "LED ekran sistemleri",
     description: region.description,
-    provider: { "@id": `${SITE_URL}/#organization` },
+    brand: nxtionstarBrandRef(),
+    provider: localBusinessRef(),
     areaServed: {
       "@type": "AdministrativeArea",
       name: region.name,
     },
-    url: absoluteUrl(serviceRegionPath(region.slug)),
+    url: regionUrl,
+    // Published price Datasets only — no province doorway invent.
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
   };
 
   return (
@@ -91,13 +132,26 @@ export default async function ServiceRegionPage({
         items={[
           { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
           { name: "Hizmet bölgesi", item: absoluteUrl("/tr/bolgeler/") },
-          { name: region.name, item: absoluteUrl(serviceRegionPath(region.slug)) },
+          { name: region.name, item: regionUrl },
         ]}
       />
       <FaqJsonLd faqs={faqs} />
+      <SpeakableJsonLd
+        pageUrl={regionUrl}
+        name={region.h1}
+        description={region.description}
+        cssSelectors={["#region-h1", "#region-lead"]}
+        mainEntity={{ "@id": `${regionUrl}#service` }}
+      />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(regionUrl)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(regionServiceLd) }}
       />
 
       <section className="border-b border-border bg-surface/60">
@@ -106,10 +160,10 @@ export default async function ServiceRegionPage({
             {region.name}
             {region.isHq ? " · Merkez" : ""}
           </p>
-          <h1 className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
+          <h1 id="region-h1" className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.8rem,1.3rem+2vw,2.75rem)] font-extrabold tracking-[-0.03em] text-ink">
             {region.h1}
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">{region.intro}</p>
+          <p id="region-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">{region.intro}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/tr/quote/"
@@ -222,6 +276,14 @@ export default async function ServiceRegionPage({
             </Link>
           </li>
         </ul>
+        <AiPriceSourceNote className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-muted" />
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
+          Entity:{" "}
+          <a href="https://arledscreen.com/entity.json" className="font-semibold text-cyan hover:underline">
+            entity.json
+          </a>
+          .
+        </p>
       </Section>
 
       <Section eyebrow="SSS" title={`${region.name} LED ekran soruları`} className="border-t border-border prose-seo">

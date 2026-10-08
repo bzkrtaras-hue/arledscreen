@@ -7,6 +7,7 @@ import {
   LED_MODELS,
   SPEC_LABELS,
   SPEC_ORDER,
+  enModelBridgeTarget,
   getModel,
   modelPath,
   modelPrice,
@@ -14,10 +15,24 @@ import {
   type LedModel,
   type ModelKind,
 } from "@/content/models";
-import { CALC_EXTRAS, fmtUsd, panelM2, panelModule } from "@/content/prices";
+import {
+  CALC_EXTRAS,
+  BRAND_SUBJECT_DATASETS,
+  PRICE_DATASETS,
+  fmtUsd,
+  nxtionstarBrandRef,
+  panelM2,
+  panelModule,
+  panelOffer,
+  pricedPanelsDatasetJsonLd,
+  type PanelPrice,
+} from "@/content/prices";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { InventBridge } from "@/components/seo/InventBridge";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
-import { buildTrOnlyMetadata } from "@/lib/seo";
+import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n";
 import { whatsappHref } from "@/lib/whatsapp";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
@@ -27,7 +42,22 @@ interface PageProps {
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return LED_MODELS.map((m) => ({ locale: "tr", slug: m.group, model: m.slug }));
+  // TR PDPs for all models + EN noindex locale-flip bridges for the 12 pricedPanels Offers.
+  return LED_MODELS.flatMap((m) => {
+    const params = [{ locale: "tr", slug: m.group, model: m.slug }];
+    if (m.priceId) params.push({ locale: "en", slug: m.group, model: m.slug });
+    return params;
+  });
+}
+
+/** English invent-bridge label aligned with pricedPanels.nameEn (facts only). */
+function enBridgeH1(price: PanelPrice): string {
+  const useLabel = price.use === "ic" ? "Indoor" : "Outdoor";
+  const extras: string[] = [];
+  if (price.surface) extras.push(String(price.surface).toUpperCase());
+  if (price.frontService) extras.push("front service");
+  const extra = extras.length ? ` (${extras.join(", ")})` : "";
+  return `NXTIONSTAR ${price.pitch} ${useLabel}${extra} LED Module`;
 }
 
 const KIND_LABEL: Record<ModelKind, string> = {
@@ -83,10 +113,30 @@ function describe(m: LedModel): string {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug, model } = await params;
+  const { locale, slug, model } = await params;
   const m = getModel(slug, model);
   if (!m) return {};
   const price = modelPrice(m);
+
+  // EN locale-flip of Offer URLs → noindex bridge to EN group hub (CF 404.html beats _redirects).
+  if (locale === "en") {
+    if (!price) return {};
+    const target = enModelBridgeTarget(m);
+    const h1 = enBridgeH1(price);
+    return {
+      ...buildPageMetadata({
+        locale: "en" as Locale,
+        path: target.replace(/^\/en/, "") || "/",
+        title: `${h1} | ARLEDSCREEN`,
+        description: `EN SKU PDPs stay on Turkish paths. Bridge from inventable /en/products/${m.group}/${m.slug}/ to ${target}.`,
+        hreflangLocales: [],
+      }),
+      robots: { index: false, follow: true },
+      alternates: { canonical: target },
+    };
+  }
+
+  if (locale !== "tr") return {};
   const pitch = m.specs.pitch?.value ?? m.chip;
   if (m.kind === "kontrol") {
     const load = m.specs.loadCapacity?.value;
@@ -100,15 +150,40 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: modelPath(m).replace(/^\/tr/, ""),
     title: `${m.name.replace(/ LED Modül$/, " LED Ekran Modülü")} – Teknik Özellikler${price ? " ve Fiyat" : ""} | ARLEDSCREEN`,
     description: `${m.name}: ${pitch} piksel aralığı${m.specs.moduleSize ? `, ${m.specs.moduleSize.value} modül` : ""}${m.specs.matrix ? `, ${m.specs.matrix.value}` : ""}. Teknik özellikler${price ? `, panel fiyatı (${fmtUsd(price.usd)} USD)` : ""}, kullanım alanları ve teklif.`,
+    ...(price
+      ? {
+          productMeta: {
+            amountUsd: price.usd,
+            sku: price.id,
+            brand: "NXTIONSTAR",
+            availability: "in stock",
+          },
+        }
+      : {}),
   });
 }
 
 export default async function ModelPage({ params }: PageProps) {
   const { locale, slug, model } = await params;
-  if (locale !== "tr") notFound();
   const m = getModel(slug, model);
   const g = getProductGroup(slug);
   if (!m || !g) notFound();
+
+  if (locale === "en") {
+    const price = modelPrice(m);
+    if (!price) notFound();
+    const target = enModelBridgeTarget(m);
+    return (
+      <InventBridge
+        h1={enBridgeH1(price)}
+        target={target}
+        cta="Open EN product group"
+        note="Priced SKU PDPs remain on Turkish paths (/tr/products/.../); this path is an inventable EN locale-flip bridge."
+      />
+    );
+  }
+
+  if (locale !== "tr") notFound();
 
   const url = absoluteUrl(modelPath(m));
   const price = modelPrice(m);
@@ -118,6 +193,10 @@ export default async function ModelPage({ params }: PageProps) {
   const specRows = SPEC_ORDER.filter((key) => m.specs[key]).map((key) => ({ key, label: SPEC_LABELS[key], spec: m.specs[key] }));
 
   const brandName = m.brandName ?? g.brandName ?? "NXTIONSTAR";
+  // Display-style code kept as alternateName; canonical sku/mpn = priced panel id
+  // (same as catalog / ai-shopping / merchant TSV). Honest mpn=sku; no GTIN invent.
+  const displaySku = `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`;
+  const catalogSku = price?.id ?? m.priceId ?? displaySku;
   // GSC Merchant listings require offers.price (or priceSpecification.price).
   // Quote-only models (P8, esnek, kontrol) have no published USD — omit Offer
   // entirely. An Offer without price marks the item invalid in Search Console.
@@ -126,36 +205,35 @@ export default async function ModelPage({ params }: PageProps) {
     "@type": "Product",
     "@id": `${url}#product`,
     name: m.name,
-    sku: `${brandName.slice(0, 3).toUpperCase()}-${m.slug.toUpperCase()}`,
-    brand: { "@type": "Brand", name: brandName },
+    sku: catalogSku,
+    mpn: catalogSku,
+    ...(catalogSku !== displaySku ? { alternateName: [displaySku, m.chip].filter(Boolean) } : {}),
+    brand:
+      brandName === "NXTIONSTAR"
+        ? nxtionstarBrandRef()
+        : { "@type": "Brand", name: brandName },
     itemCondition: "https://schema.org/NewCondition",
     category: m.kind === "kontrol" ? `${g.name}` : `${g.name} modülü`,
     image: absoluteUrl(m.image),
     description,
     url,
+    // Human page join (catalog/ai-shopping mainEntityOfPage parity).
+    mainEntityOfPage: url,
+    // Join PDP Product ↔ catalog.json#sku (ai-shopping hasPart uses this @id).
+    ...(price ? { sameAs: [`${SITE_URL}/catalog.json#${catalogSku}`] } : {}),
     additionalProperty: specRows
       .filter((r) => r.spec)
       .map((r) => ({ "@type": "PropertyValue", name: r.label, value: r.spec!.value })),
     ...(price
       ? {
-          offers: {
-            "@type": "Offer",
-            url,
-            price: price.usd.toFixed(2),
-            priceCurrency: "USD",
-            availability: "https://schema.org/InStock",
-            itemCondition: "https://schema.org/NewCondition",
-            priceSpecification: {
-              "@type": "UnitPriceSpecification",
-              price: price.usd.toFixed(2),
-              priceCurrency: "USD",
-              valueAddedTaxIncluded: false,
-              referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "C62", unitText: "panel" },
-            },
-            seller: { "@id": `${SITE_URL}/#organization` },
-          },
+          offers: panelOffer(url, price.usd, { sku: catalogSku }),
+          // Product → Dataset membership + related price/entity feeds (no invent).
+          isPartOf: PRICE_DATASETS[0],
+          isRelatedTo: BRAND_SUBJECT_DATASETS,
         }
-      : {}),
+      : {
+          isRelatedTo: BRAND_SUBJECT_DATASETS,
+        }),
   };
 
   return (
@@ -169,6 +247,17 @@ export default async function ModelPage({ params }: PageProps) {
         ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
+      <SpeakableJsonLd
+        pageUrl={url}
+        name={m.name}
+        description={description}
+        cssSelectors={["#model-h1", "#model-lead"]}
+        {...(price ? { mainEntity: { "@id": `${url}#product` } } : {})}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
 
       <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -197,8 +286,8 @@ export default async function ModelPage({ params }: PageProps) {
 
             <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">NXTIONSTAR · {g.name}</p>
-              <h1 className="mt-2 text-balance font-display text-[clamp(1.6rem,1.1rem+2vw,2.5rem)] font-bold leading-tight text-ink">{m.name}</h1>
-              <p className="mt-4 text-[15.5px] leading-[1.75] text-ink-soft">{description}</p>
+              <h1 id="model-h1" className="mt-2 text-balance font-display text-[clamp(1.6rem,1.1rem+2vw,2.5rem)] font-bold leading-tight text-ink">{m.name}</h1>
+              <p id="model-lead" className="mt-4 text-[15.5px] leading-[1.75] text-ink-soft">{description}</p>
 
               {price ? (
                 <div className="mt-5 rounded-2xl border border-border bg-band/60 p-4">
@@ -212,12 +301,47 @@ export default async function ModelPage({ params }: PageProps) {
                     </span>
                   </p>
                   <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted">
-                    Hesaplayıcıdaki 2026 listesine göre yaklaşık fiyattır; KDV ve nakliye hariçtir. İşçilik ({CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı ve yazılım ayrıca eklenir. Nihai fiyat yazılı teklifle kesinleşir.
+                    Hesaplayıcıdaki 2026 listesine göre yaklaşık fiyattır; KDV ve nakliye hariçtir; ücretsiz kargo yoktur. İşçilik ({CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı ve yazılım ayrıca eklenir. Nihai fiyat yazılı teklifle kesinleşir.
+                  </p>
+                  <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted">
+                    Makinece kaynak:{" "}
+                    <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                      ai-shopping.json
+                    </a>{" "}
+                    <code className="text-[11px]">pricedPanels</code>,{" "}
+                    <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                      catalog.json
+                    </a>
+                    ,{" "}
+                    <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                      merchant TSV
+                    </a>
+                    ,{" "}
+                    <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+                      geo-baseline.json
+                    </a>
+                    .
                   </p>
                 </div>
               ) : (
                 <p className="mt-5 rounded-2xl border border-border bg-band/60 p-4 text-sm text-ink-soft">
-                  Bu model için fiyat; ölçü, adet ve kurulum koşullarına göre yazılı teklifle verilir.
+                  Bu model için fiyat; ölçü, adet ve kurulum koşullarına göre yazılı teklifle verilir (quote-only). Yayımlanmış 12 panel USD:{" "}
+                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
+                    ai-shopping.json
+                  </a>{" "}
+                  <code className="text-[11px]">pricedPanels</code>,{" "}
+                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
+                    catalog.json
+                  </a>
+                  ,{" "}
+                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
+                    merchant TSV
+                  </a>
+                  ,{" "}
+                  <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
+                    geo-baseline.json
+                  </a>
+                  . Ücretsiz kargo yok.
                 </p>
               )}
 

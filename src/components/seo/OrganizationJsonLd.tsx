@@ -1,4 +1,12 @@
-import { ENTITY_CITE_MEDIUM } from "@/lib/entity";
+import { ENTITY_CITE_MEDIUM, ENTITY_DISAMBIGUATING_DESCRIPTION } from "@/lib/entity";
+import {
+  LOCALBUSINESS_ID,
+  NXTIONSTAR_BRAND_ID,
+  BRAND_SUBJECT_DATASETS,
+  nxtionstarBrandNode,
+  organizationHasOfferCatalog,
+  organizationMakesOffer,
+} from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
   BUSINESS_ADDRESS,
@@ -34,9 +42,37 @@ export function OrganizationJsonLd() {
         url: SITE_URL,
         name: "ARLEDSCREEN",
         alternateName: "ARLED SCREEN",
-        inLanguage: "tr-TR",
+        inLanguage: ["tr-TR", "en-US"],
         publisher: { "@id": `${SITE_URL}/#organization` },
+        about: { "@id": `${SITE_URL}/#organization` },
+        potentialAction: [
+          {
+            "@type": "OrderAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: absoluteUrl("/tr/quote/"),
+              actionPlatform: [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform",
+              ],
+            },
+            name: "Teklif iste",
+          },
+          {
+            "@type": "OrderAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: absoluteUrl("/en/quote/"),
+              actionPlatform: [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform",
+              ],
+            },
+            name: "Request a quote",
+          },
+        ],
       },
+      nxtionstarBrandNode(),
       {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
@@ -45,15 +81,19 @@ export function OrganizationJsonLd() {
         url: SITE_URL,
         logo,
         image: logo,
-        slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
         description: ENTITY_CITE_MEDIUM,
-        disambiguatingDescription:
-          "İstanbul Gaziosmanpaşa merkezli Türk LED ekran firması. Almanya ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir. NXTIONSTAR, Next&NextStar (NEXTSTAR) TV veya NationStar LED bileşen ile karıştırılmamalıdır.",
+        disambiguatingDescription: ENTITY_DISAMBIGUATING_DESCRIPTION,
         email: CONTACT_EMAIL,
         telephone: CONTACT_PHONE_E164,
         address,
+        geo: { "@type": "GeoCoordinates", ...BUSINESS_GEO },
+        // Org scrapers that skip the LocalBusiness sibling still join place↔price.
+        location: { "@id": LOCALBUSINESS_ID },
         sameAs: [...ORGANIZATION_SAME_AS],
-        brand: { "@type": "Brand", name: "NXTIONSTAR", url: absoluteUrl("/tr/nxtionstar/") },
+        brand: { "@id": NXTIONSTAR_BRAND_ID },
+        subjectOf: BRAND_SUBJECT_DATASETS,
+        makesOffer: organizationMakesOffer(),
+        hasOfferCatalog: organizationHasOfferCatalog(),
         founder: {
           "@type": "Person",
           name: "Aras Bozkurt",
@@ -73,15 +113,37 @@ export function OrganizationJsonLd() {
           "LED ekran teknik servisi",
           "LED ekran fiyatları",
         ],
+        knowsLanguage: ["tr-TR", "en-US"],
         contactPoint: [
           {
             "@type": "ContactPoint",
             contactType: "sales",
             email: CONTACT_EMAIL,
             telephone: CONTACT_PHONE_E164,
-            areaServed: "TR",
-            availableLanguage: ["Turkish"],
+            url: absoluteUrl("/tr/quote/"),
+            areaServed: [
+              { "@type": "Country", name: "Türkiye" },
+              { "@type": "City", name: "İstanbul" },
+            ],
+            availableLanguage: ["Turkish", "English"],
           },
+          {
+            "@type": "ContactPoint",
+            contactType: "customer support",
+            name: "WhatsApp @arledscreen",
+            telephone: CONTACT_PHONE_E164,
+            url: "https://wa.me/905305078834",
+            identifier: "@arledscreen",
+            areaServed: [
+              { "@type": "Country", name: "Türkiye" },
+              { "@type": "City", name: "İstanbul" },
+            ],
+            availableLanguage: ["Turkish", "English"],
+          },
+        ],
+        areaServed: [
+          { "@type": "Country", name: "Türkiye" },
+          { "@type": "City", name: "İstanbul" },
         ],
       },
       {
@@ -105,6 +167,11 @@ export function OrganizationJsonLd() {
         ],
         parentOrganization: { "@id": `${SITE_URL}/#organization` },
         sameAs: [...ORGANIZATION_SAME_AS],
+        brand: { "@id": NXTIONSTAR_BRAND_ID },
+        subjectOf: BRAND_SUBJECT_DATASETS,
+        // Local+shopping agents often key LocalBusiness — mirror Org price authority.
+        makesOffer: organizationMakesOffer(),
+        hasOfferCatalog: organizationHasOfferCatalog(),
       },
     ],
   };

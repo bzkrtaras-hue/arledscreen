@@ -1,4 +1,4 @@
-const STEPS = [
+const STEPS_TR = [
   {
     title: "İhtiyaç ve ölçü",
     body: "Kullanım amacı, ortam (iç/dış), yaklaşık ölçü, konum ve zaman planını alıyoruz.",
@@ -21,10 +21,34 @@ const STEPS = [
   },
 ];
 
-export function ProcessSteps() {
+const STEPS_EN = [
+  {
+    title: "Need and size",
+    body: "We collect use case, indoor/outdoor, approx. size, location and timeline.",
+  },
+  {
+    title: "Survey and pre-design",
+    body: "We review viewing distance, mount surface, power and signal, then propose pitch.",
+  },
+  {
+    title: "Quote and tech sheet",
+    body: "Screen size, cabinet count, materials and work plan go into a written quote.",
+  },
+  {
+    title: "Install and commissioning",
+    body: "Structure, cabinets, cabling, calibration and content test.",
+  },
+  {
+    title: "Technical service",
+    body: "After handover we support maintenance, faults and spare parts.",
+  },
+];
+
+export function ProcessSteps({ locale = "tr" }: { locale?: "tr" | "en" }) {
+  const steps = locale === "en" ? STEPS_EN : STEPS_TR;
   return (
     <ol className="grid gap-4 md:grid-cols-5">
-      {STEPS.map((step, i) => (
+      {steps.map((step, i) => (
         <li key={step.title} className="relative rounded-2xl p-5 glass-card">
           <span className="font-display text-sm font-extrabold text-cyan" aria-hidden>
             {String(i + 1).padStart(2, "0")}

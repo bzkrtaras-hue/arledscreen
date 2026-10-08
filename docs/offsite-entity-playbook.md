@@ -4,14 +4,50 @@ Amaç: Google / Maps / ChatGPT / Gemini / Perplexity / Copilot’un ARLEDSCREEN�
 **İstanbul merkezli, doğrulanabilir bir Türk LED ekran firması** olarak ilişkilendirmesi.
 
 Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu NAP tutarlılığı,
-`entity.json`, bu playbook ve case study URL’leri sağlar. Yapıştırma metinleri **sitede
-yayımlanmaz** — yalnızca burada.
+`entity.json`, bu playbook ve case study URL’leri sağlar. Point C paste packs ve
+`next` kapısı **canlı sitede** de yayımlanır (aşağıdaki tablolar).
 
 | Kaynak | URL |
 |---|---|
 | Makinece entity (NAP + cite) | https://arledscreen.com/entity.json |
 | Kısa AI özeti | https://arledscreen.com/llms.txt |
+| Point C paste (canlı) | https://arledscreen.com/point-c.txt |
+| Point C machine next (directoryLong) | https://arledscreen.com/point-c.json → `next` + `potentialAction` (HowTo) |
+| GEO next clipboard (canlı) | https://arledscreen.com/geo-next.txt · alias `/owner-next.txt` |
+| GEO owner-gate status | https://arledscreen.com/geo-status.json → `priorityGate` + `potentialAction` (HowTo → `/owner-next.html?start=1`) |
+| Point C paste progress | https://arledscreen.com/point-c-progress.json → `next` + `potentialAction` (HowTo) |
+| Point C spreadsheet | https://arledscreen.com/feeds/point-c.csv |
+| Tur1a blind (machine) | https://arledscreen.com/tur1a.json → `next` + `potentialAction` (HowTo) · CSV `/feeds/tur1a.csv` |
 | Hakkımızda | https://arledscreen.com/tr/about/ |
+
+### Owner clipboard (live — tek sıra; repo opsiyonel)
+
+Kod tarafı canlı; sahip kapıları sırayla. Repo CLI şart değil — canlı URL’ler yeterli.
+Invent agents: follow `potentialAction` HowTo on `/geo-status.json` (priority-aware) or pack JSON.
+
+1. Open live friction: https://arledscreen.com/owner-next.html?start=1 (auto **C**) — or https://arledscreen.com/owner-next.html then **C** = Copy + Open remaining (paste bundle + all Open tabs; textarea restores first open pack) · **O** / **R** · **U** = Undo pasted · dbl-click pack = Copy + Open · Enter = Copy + Open all
+2. Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ (or use **C** / **O** on `/owner-next`)
+3. Paste from the **C**/**R** bundle (or https://arledscreen.com/point-c.json → `next.text` · https://arledscreen.com/geo-next.txt / `/owner-next.txt` · HowTo step 2)
+4. After paste: **N** = Pasted → next · then `npm run point-c:ack -- --pack=directoryLong` (or **B** ack batch · `npm run geo:ack` · HowTo step 3)
+
+```bash
+npm run geo:next          # Point C → arleds 301 → Tur1a → merge (tek clipboard; live twin /geo-next.txt)
+npm run point-c:csv       # 0/11 pack spreadsheet (Where/Open/OpenAlt/ack); live /feeds/point-c.csv
+npm run point-c:ack       # after each paste
+npm run verify:arleds-301 # prints Where:/Open:/OpenAlt: for registrar panel
+npm run tur1a:next        # next blind cell + Open: platform tab
+npm run tur1a:csv         # 0/48 matrix with open column; live /feeds/tur1a.csv
+npm run geo:status        # gate dashboard; live /geo-status.json → potentialAction
+```
+
+| Gate | Open tab |
+|---|---|
+| Point C next pack (`directoryLong`) | https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · paste: `/point-c.json` → `next` · HowTo `/geo-status.json` → `potentialAction` |
+| arleds.com 301 (live NS DNSEnable) | https://www.isimtescil.net/ · OpenAlt: Gmail draft Send (`geo-status.gates.arleds301.openAlt`) |
+| Tur1a ChatGPT cell | https://chatgpt.com/ · machine: `/tur1a.json` → `next` + HowTo |
+| Docs | `docs/ops/arleds-301-hostinger.md` |
+
+Do **not** invent ChatGPT/Gemini mention % — only log what you observe (`tur1a:log`).
 
 ---
 
@@ -37,7 +73,7 @@ Hedef: aynı abartısız olgunun **10–20 farklı güvenilir domain**’de doğ
 ARLEDSCREEN
 Merkez Mah. Tuna Sok. No:15-17 Kat 1
 34245 Gaziosmanpaşa / İstanbul
-Telefon / WhatsApp: +90 530 507 88 34
+Telefon / WhatsApp: +90 530 507 88 34 · WhatsApp kullanıcı adı @arledscreen (tıkla: https://wa.me/905305078834)
 E-posta: arled@arledscreen.com
 Web: https://arledscreen.com
 TR: https://arledscreen.com/tr/
@@ -56,14 +92,27 @@ Karıştırma yasağı: Almanya ARLED Solutions GmbH / ARLED Cinema · Next&Next
 ## 0b) Domain birleştirme (kritik entity notu)
 
 Aynı telefon (+90 530 507 88 34) ile görünen eski/yan site **arleds.com** hâlâ indekste rakip/kafa karışıklığı yaratabilir.
+
+**Ölçüm 2026-10-07 (web SERP, skor uydurma yok):** “ARLEDSCREEN Gaziosmanpaşa” ve “arleds.com OR arledscreen.com LED” sorgularında `arleds.com` sonuçlarda görünür; markasız/yerel sorgularda `arledscreen.com` üst sırada değil. `site:arledscreen.com` ile kanonik site indeksleniyor. Point C + 301 olmadan AI atıf düşük kalır — bu kod hatası değildir.
 Önceki karar: TLS/redirect yoksa `sameAs`’a eklenmez.
+
+Live mode (re-check): `npm run verify:arleds-301` → often `mode=dnsenable_tls_dead`.
+
+```
+Where: Isimtescil/DNSEnable → Domain Redirect (permanent 301)
+Open: https://www.isimtescil.net/
+OpenAlt: Gmail draft Send (https://arledscreen.com/geo-status.json → gates.arleds301.openAlt)
+HowTo: when priorityGate=arleds301 → /geo-status.json potentialAction
+```
 
 - [ ] `https://arleds.com` → `https://arledscreen.com/tr/` **301** (tüm sayfalar)
 - [ ] www/http varyantları da apex’e
 - [ ] GSC’de eski domain property varsa adres değişikliği / sitemap temizliği
 - [ ] Bio/GBP/web alanında yalnızca `arledscreen.com`
+- [ ] Gmail draft Send → destek@isimtescil.net (clean Domain Redirect body; draft already prepared)
+- [ ] Re-check exit 0: `npm run verify:arleds-301`
 
-Bu yapılmadan “ARLEDSCREEN kimdir?” cevabı iki domain arasında bölünür.
+Bu yapılmadan “ARLEDSCREEN kimdir?” cevabı iki domain arasında bölünür. Playbook ops: `docs/ops/arleds-301-hostinger.md`.
 
 ---
 
@@ -92,7 +141,8 @@ Birinci taraf (zaten var — tek başına yetmez): site, entity.json, llms.txt.
 | 3 | LinkedIn şirket | company/arleds — About = linkedinAbout pack | [ ] | https://www.linkedin.com/company/arleds |
 | 4 | LinkedIn kurucu | bozkurtaras — şirket linki + proje postları | [ ] | https://www.linkedin.com/in/bozkurtaras |
 | 5 | Instagram | @arledscreen bio pack | [ ] | https://www.instagram.com/arledscreen |
-| 6 | Facebook | arledscreenn About = orta cite + NAP | [ ] | https://www.facebook.com/arledscreenn |
+| 6 | Facebook | @arledscreenn About = orta cite + NAP | [ ] | https://www.facebook.com/arledscreenn |
+| 6b | WhatsApp | @arledscreen · click-to-chat phone | [ ] | https://wa.me/905305078834 |
 | 7 | YouTube kanalı | About + banner; sonra schema `sameAs` | [ ] | |
 | 8 | TR işletme / sektör dizini #1 | Kısa + uzun dizin pack + entity.json | [ ] | |
 | 9 | TR işletme / sektör dizini #2 | Farklı domain | [ ] | |
@@ -114,24 +164,26 @@ Birinci taraf (zaten var — tek başına yetmez): site, entity.json, llms.txt.
 
 ## 0e) İlk 14 gün — sahip aksiyon sırası (P0)
 
-Kod tarafı hazır (`entity.json`, playbook). Sıra operasyonda:
+Kod tarafı hazır (`entity.json`, `point-c.txt`, playbook). Sıra operasyonda — **tek clipboard:** `npm run geo:next` (sonra `point-c:ack`).
 
-| Gün | İş | Neden |
-|---|---|---|
-| 1 | `arleds.com` → `arledscreen.com/tr/` 301 | Entity bölünmesini kes |
-| 1–2 | GBP oluştur/doldur: kategori, NAP, saat, WhatsApp, web, orta cite | Maps + yerel AI |
-| 2 | LinkedIn şirket About + kurucu Featured’a entity.json | Sosyal entity |
-| 2 | Instagram bio + Facebook About aynı pack | Tutarlılık |
-| 3–5 | GBP’ye 20+ gerçek foto (fabrika/montaj/proje) | Güven sinyali |
-| 3–7 | 2 sektör/yerel dizin başvurusu (aşağıdaki e-posta) | İlk bağımsız domain’ler |
-| 7–14 | 1 müşteri sitesi mention + 1 yerel haber/fuar denemesi | Gerçek 3. taraf |
-| Sürekli | Teslim sonrası etik Google yorum daveti | Yorum = bağımsız kanıt |
+| Gün | İş | Open / komut | Neden |
+|---|---|---|---|
+| 1 | `arleds.com` → `arledscreen.com/tr/` 301 | Open: https://www.isimtescil.net/ · `verify:arleds-301` | Entity bölünmesini kes |
+| 1–2 | GBP + dizin NAP packs | Open: https://business.google.com/ · `geo:next` / `point-c:csv` | Maps + yerel AI |
+| 2 | LinkedIn / Instagram / Facebook | Open: company + IG/FB URLs from `geo:next` | Sosyal entity |
+| 3–5 | GBP’ye 20+ gerçek foto (fabrika/montaj/proje) | GBP panel | Güven sinyali |
+| 3–7 | 2 sektör/yerel dizin + Bing/Apple | OpenAlt: https://businessconnect.apple.com/ · Bing Places | İlk bağımsız domain’ler |
+| 7–14 | Tur1a kör test (ChatGPT→Gemini→Perplexity→AIO) | `tur1a:next` · Open: https://chatgpt.com/ · `tur1a:log` | AI atıf gözlemi (skor uydurma yok) |
+| 7–14 | 1 müşteri sitesi mention + 1 yerel haber/fuar | — | Gerçek 3. taraf |
+| Sürekli | Teslim sonrası etik Google yorum daveti | GBP | Yorum = bağımsız kanıt |
 
-Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** koyun.
+Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** koyun. Paste metinleri: https://arledscreen.com/point-c.txt (repo `npm run geo:next`).
 
 ---
 
 ## 1) Google Business Profile (P0)
+
+**Open:** https://business.google.com/ · paste pack: `npm run geo:next` (or `point-c:next` when gbpDescription is next)
 
 - [ ] İşletme adı: ARLEDSCREEN (GBP kurallarına uygun; keyword stuffing yok)
 - [ ] Birincil kategori: LED display / Digital signage’e en yakın TR kategori
@@ -139,7 +191,7 @@ Spam dizin satın almayın. Her kayda **aynı NAP + tek cümle + entity.json** k
 - [ ] Adres / telefon / web / saatler = yukarıdaki NAP
 - [ ] Web: `https://arledscreen.com/tr/` (arleds.com değil)
 - [ ] Açıklama: playbook §1 GBP pack (birebir)
-- [ ] WhatsApp iş bağlantısı
+- [ ] WhatsApp iş bağlantısı (@arledscreen · https://wa.me/905305078834)
 - [ ] Hizmetler: LED ekran satışı, montaj, kiralama, teknik servis, keşif
 - [ ] Ürünler: iç/dış, GOB, esnek, kiralık (site URL’leriyle)
 - [ ] 50+ gerçek foto: fabrika/atölye, montaj, proje, ekip, araç (stok yok)

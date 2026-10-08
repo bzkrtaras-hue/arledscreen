@@ -14,12 +14,21 @@ import {
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { Calculator, Clock, MapPin } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { getSeo } from "@/content/seo";
+import { modelUrlForPrice } from "@/content/models";
+import {
+  BRAND_SUBJECT_DATASETS,
+  PANEL_PRICES,
+  panelProductsJsonLd,
+  pricedPanelsDatasetJsonLd,
+} from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -46,6 +55,7 @@ export default async function QuotePage({ params }: PageProps) {
   const locale = raw as Locale;
   const dict = getDictionary(locale);
   const seo = getSeo(locale, "quote");
+  const quoteUrl = absoluteUrl(`/${locale}/quote/`);
 
   return (
     <>
@@ -55,8 +65,57 @@ export default async function QuotePage({ params }: PageProps) {
           { name: dict.nav.quote, item: absoluteUrl(`/${locale}/quote`) },
         ]}
       />
+      {(locale === "tr" || locale === "en") ? (
+        <>
+          <SpeakableJsonLd
+            pageUrl={quoteUrl}
+            name={seo.h1 ?? dict.page.quote.title}
+            description={seo.description}
+            cssSelectors={["#quote-h1", "#quote-lead"]}
+            mainEntity={{ "@id": `${quoteUrl}#service` }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pricedPanelsDatasetJsonLd(quoteUrl)),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(
+                panelProductsJsonLd(
+                  PANEL_PRICES,
+                  quoteUrl,
+                  locale === "tr"
+                    ? "LED ekran modülü satışı, keşif ve montaj"
+                    : "LED display module sales, survey and installation",
+                  modelUrlForPrice(absoluteUrl),
+                ),
+              ),
+            }}
+          />
+        </>
+      ) : null}
       {locale === "tr" ? (
         <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ContactPage",
+                "@id": `${absoluteUrl("/tr/quote/")}#contact`,
+                name: "LED ekran teklifi | ARLEDSCREEN",
+                url: absoluteUrl("/tr/quote/"),
+                isPartOf: { "@id": `${SITE_URL}/#website` },
+                about: { "@id": `${SITE_URL}/#organization` },
+                isRelatedTo: BRAND_SUBJECT_DATASETS,
+                description:
+                  "Ölçü ve kullanım amacına göre yazılı teklif. Yayımlanmış 12 panel USD: ai-shopping.json pricedPanels / catalog.json; ücretsiz kargo yok.",
+              }),
+            }}
+          />
           {/* Rounded photo banner with centred H1 */}
           <section className="bg-white px-0 pt-0 md:px-6 md:pt-6 lg:px-8">
             <div className="relative isolate mx-auto max-w-7xl overflow-hidden bg-navy md:rounded-[2rem]">
@@ -71,10 +130,16 @@ export default async function QuotePage({ params }: PageProps) {
               <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0B1B33]/90 to-[#0B1B33]/60" aria-hidden />
               <div className="mx-auto max-w-3xl px-5 py-12 text-center md:py-16">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#9CC0F5]">{dict.page.quote.eyebrow}</p>
-                <h1 className="mt-3 text-balance font-display text-[clamp(1.9rem,1.3rem+2.4vw,3rem)] font-extrabold tracking-[-0.03em] text-white">
+                <h1
+                  id="quote-h1"
+                  className="mt-3 text-balance font-display text-[clamp(1.9rem,1.3rem+2.4vw,3rem)] font-extrabold tracking-[-0.03em] text-white"
+                >
                   {seo.h1 ?? dict.page.quote.title}
                 </h1>
-                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/85">
+                <p
+                  id="quote-lead"
+                  className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/85"
+                >
                   {seo.intro ?? dict.page.quote.description}
                 </p>
               </div>
@@ -133,6 +198,7 @@ export default async function QuotePage({ params }: PageProps) {
                     <Calculator className="h-4 w-4" aria-hidden />
                     Fiyat hesaplayıcıyı açın
                   </Link>
+                  <AiPriceSourceNote className="mt-3 text-xs leading-relaxed text-ink-muted" />
                 </div>
               </aside>
               <div className="min-w-0">
@@ -151,8 +217,30 @@ export default async function QuotePage({ params }: PageProps) {
           </section>
         </>
       ) : (
+      <>
+      {locale === "en" ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ContactPage",
+              "@id": `${absoluteUrl("/en/quote/")}#contact`,
+              name: "LED display quote | ARLEDSCREEN",
+              url: absoluteUrl("/en/quote/"),
+              isPartOf: { "@id": `${SITE_URL}/#website` },
+              about: { "@id": `${SITE_URL}/#organization` },
+              isRelatedTo: BRAND_SUBJECT_DATASETS,
+              description:
+                "Written quote by size and use case. Published 12 panel USD: ai-shopping.json pricedPanels / catalog.json; no free shipping.",
+            }),
+          }}
+        />
+      ) : null}
       <Section
         titleAs="h1"
+        titleId="quote-h1"
+        descriptionId="quote-lead"
         eyebrow={dict.page.quote.eyebrow}
         title={seo.h1 ?? dict.page.quote.title}
         description={seo.intro ?? dict.page.quote.description}
@@ -175,9 +263,16 @@ export default async function QuotePage({ params }: PageProps) {
             <p className="text-sm text-ink-muted sm:col-span-3">
               Please share dimensions, indoor/outdoor use, location and timeline. ARLEDSCREEN · Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa, Istanbul, Turkey · Mon–Fri 09:00–18:00, Sat 10:00–15:00.
             </p>
+            {locale === "en" ? (
+              <AiPriceSourceNote
+                locale="en"
+                className="text-xs leading-relaxed text-ink-muted sm:col-span-3"
+              />
+            ) : null}
           </div>
         )}
       </Section>
+      </>
       )}
     </>
   );

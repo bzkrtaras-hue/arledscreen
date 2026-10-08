@@ -1,60 +1,164 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { OptImage } from "@/components/ui/opt-image";
 import { BLOG_POSTS, blogPath, formatBlogDate } from "@/content/blog";
-import { ARTICLE_LINKS } from "@/content/article-links";
-import { buildTrOnlyMetadata } from "@/lib/seo";
+import { getFaqs } from "@/content/faqs";
+import { pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
+import type { Locale } from "@/lib/i18n";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return [{ locale: "tr" }];
+  return [{ locale: "tr" }, { locale: "en" }];
 }
-export function generateMetadata() {
-  return buildTrOnlyMetadata({
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: raw } = await params;
+  if (raw === "en") {
+    return buildPageMetadata({
+      locale: "en" as Locale,
+      path: "/blog/",
+      title: "Blog: LED Display Projects & Notes | ARLEDSCREEN",
+      description:
+        "ARLEDSCREEN blog index: completed LED installs and NXTIONSTAR notes. Post bodies remain Turkish; commercial prices stay in ai-shopping.json.",
+      hreflangLocales: ["tr", "en"],
+    });
+  }
+  if (raw !== "tr") return {};
+  return buildPageMetadata({
+    locale: "tr" as Locale,
     path: "/blog/",
     title: "Blog: LED Ekran Projeleri ve Duyurular | ARLEDSCREEN",
     description:
       "ARLEDSCREEN blogu: tamamlanan LED ekran projeleri, kurulum süreçleri, NXTIONSTAR iç ve dış mekân ekran uygulamaları ve işletmeler için LED ekran önerileri.",
+    hreflangLocales: ["tr", "en"],
   });
 }
 
 export default async function BlogIndexPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  if (locale !== "tr") notFound();
+  const { locale: raw } = await params;
+  if (raw !== "tr" && raw !== "en") notFound();
+  const locale = raw as "tr" | "en";
+  const en = locale === "en";
+  const base = `/${locale}`;
+  const pageUrl = absoluteUrl(`${base}/blog/`);
   const posts = [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date));
+  const entityFaqs = en
+    ? getFaqs("en").filter(
+        (f) => f.question.includes("NationStar") || f.question.includes("arleds.com"),
+      )
+    : [];
+  const faqs = en
+    ? [
+        {
+          question: "Are blog posts the commercial price source?",
+          answer:
+            "No. Published panel USD is only in ai-shopping.json pricedPanels, catalog.json and /en/led-ekran-fiyatlari/. Blog posts are project notes.",
+        },
+        ...entityFaqs,
+      ]
+    : [];
+
   const blogLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "@id": `${absoluteUrl("/tr/blog/")}#blog`,
-    name: "ARLEDSCREEN Blog",
-    url: absoluteUrl("/tr/blog/"),
-    inLanguage: "tr-TR",
+    "@id": `${pageUrl}#blog`,
+    name: en ? "ARLEDSCREEN Blog" : "ARLEDSCREEN Blog",
+    url: pageUrl,
+    inLanguage: en ? "en-US" : "tr-TR",
     publisher: { "@id": `${SITE_URL}/#organization` },
-    blogPost: posts.map((p) => ({ "@type": "BlogPosting", headline: p.h1, url: absoluteUrl(blogPath(p.slug)), datePublished: p.date })),
+    blogPost: posts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.h1,
+      url: absoluteUrl(blogPath(p.slug)),
+      datePublished: p.date,
+      inLanguage: "tr-TR",
+    })),
   };
+
   return (
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: "Ana Sayfa", item: absoluteUrl("/tr/") },
-          { name: "Blog", item: absoluteUrl("/tr/blog/") },
+          { name: en ? "Home" : "Ana Sayfa", item: absoluteUrl(`${base}/`) },
+          { name: "Blog", item: pageUrl },
         ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }} />
+      <SpeakableJsonLd
+        pageUrl={pageUrl}
+        name={
+          en
+            ? "LED display projects, installs and notes"
+            : "LED Ekran Projeleri, Kurulumlar ve Duyurular"
+        }
+        description={
+          en
+            ? "ARLEDSCREEN blog index: completed LED projects and NXTIONSTAR notes. Post bodies remain Turkish."
+            : "ARLEDSCREEN blogu: tamamlanan LED ekran projeleri, kurulum süreçleri ve NXTIONSTAR uygulamaları."
+        }
+        cssSelectors={["#blog-h1", "#blog-lead"]}
+        mainEntity={{ "@id": `${pageUrl}#blog` }}
+      />
+      {faqs.length ? <FaqJsonLd faqs={faqs} /> : null}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
+        }}
+      />
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <nav aria-label="Sayfa yolu" className="text-[13px] text-ink-muted">
-            <Link href="/tr/" className="inline-flex min-h-11 items-center hover:text-cyan">Ana Sayfa</Link> / <span className="text-ink-soft">Blog</span>
+          <nav aria-label={en ? "Breadcrumb" : "Sayfa yolu"} className="text-[13px] text-ink-muted">
+            <Link href={`${base}/`} className="inline-flex min-h-11 items-center hover:text-cyan">
+              {en ? "Home" : "Ana Sayfa"}
+            </Link>{" "}
+            / <span className="text-ink-soft">Blog</span>
           </nav>
           <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-cyan">Blog</p>
-          <h1 className="mt-2 font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink">
-            LED Ekran Projeleri, Kurulumlar ve Duyurular
+          <h1
+            id="blog-h1"
+            className="mt-2 font-display text-[clamp(1.7rem,1.2rem+2vw,2.6rem)] font-bold leading-tight text-ink"
+          >
+            {en
+              ? "LED display projects, installs and notes"
+              : "LED Ekran Projeleri, Kurulumlar ve Duyurular"}
           </h1>
-          <p className="mt-3 max-w-3xl leading-relaxed text-ink-soft">
-            Tamamladığımız LED ekran projelerinden kareler, kurulum süreçleri ve NXTIONSTAR ekranlarla ilgili güncel paylaşımlarımız.
+          <p id="blog-lead" className="mt-3 max-w-3xl leading-relaxed text-ink-soft">
+            {en ? (
+              <>
+                Field notes from completed LED installs and NXTIONSTAR applications. Individual posts
+                remain in Turkish. For commercial prices use{" "}
+                <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                  /en/led-ekran-fiyatlari/
+                </Link>{" "}
+                and project records at{" "}
+                <Link href="/en/projelerimiz/" className="font-semibold text-cyan hover:underline">
+                  /en/projelerimiz/
+                </Link>
+                .
+              </>
+            ) : (
+              <>
+                Tamamladığımız LED ekran projelerinden kareler, kurulum süreçleri ve NXTIONSTAR ekranlarla
+                ilgili güncel paylaşımlarımız.
+              </>
+            )}
           </p>
+          <AiPriceSourceNote
+            locale={locale}
+            className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-muted"
+          />
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((p, i) => (
               <li key={p.slug}>
@@ -62,36 +166,30 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
                   href={blogPath(p.slug)}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl transition hover:-translate-y-0.5 hover:border-cyan/40 glass-card"
                 >
-                  <div className="relative aspect-[16/9] overflow-hidden bg-band">
-                    <OptImage src={p.hero.src} alt={p.hero.alt} fill priority={i < 2} sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition duration-300 group-hover:scale-[1.03]" />
+                  <div className="relative aspect-[16/10] overflow-hidden bg-surface">
+                    <OptImage
+                      src={p.hero.src}
+                      alt={p.hero.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                      priority={i < 3}
+                    />
                   </div>
-                  <div className="flex flex-1 flex-col p-5">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-cyan">
-                      {p.category} · <time dateTime={p.date}>{formatBlogDate(p.date)}</time>
+                  <div className="flex flex-1 flex-col p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">
+                      {formatBlogDate(p.date)}
+                      {en ? " · TR" : ""}
                     </p>
-                    <h2 className="mt-2 font-display text-lg font-bold leading-snug text-ink">{p.h1}</h2>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-muted">{p.excerpt}</p>
-                    <span className="mt-auto pt-4 text-sm font-semibold text-cyan">Devamını okuyun →</span>
+                    <h2 className="mt-2 font-display text-lg font-bold text-ink group-hover:text-cyan">
+                      {p.h1}
+                    </h2>
+                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-soft">{p.excerpt}</p>
                   </div>
                 </Link>
               </li>
             ))}
           </ul>
-
-          <div className="mt-12 rounded-card bg-band p-6">
-            <h2 className="font-display text-xl font-bold text-ink">Rehberler</h2>
-            <p className="mt-1.5 text-sm text-ink-soft">LED ekran seçerken işinize yarayacak ayrıntılı rehberlerimiz:</p>
-            <ul className="mt-3 grid gap-1 sm:grid-cols-2">
-              {ARTICLE_LINKS.map((a) => (
-                <li key={a.href}>
-                  <Link href={a.href} className="inline-flex min-h-11 items-center font-semibold text-cyan hover:underline">{a.label}</Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/tr/rehber/" className="inline-flex min-h-11 items-center font-semibold text-cyan hover:underline">Tüm rehberler</Link>
-              </li>
-            </ul>
-          </div>
         </div>
       </section>
     </>

@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local Tur1a blind-test runs (do not invent scores in feeds)
+docs/geo/observations/

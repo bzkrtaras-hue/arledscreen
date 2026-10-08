@@ -20,27 +20,34 @@ export function LocaleSelect({
   const dict = getDictionary(locale);
 
   // Turkish-only routes (generateStaticParams returns only { locale: "tr" }).
+  // /bolgeler/ hub + /about/aras-bozkurt/ now have EN lean counterparts.
+  // Province detail pages (/bolgeler/<slug>/) stay TR-only.
   const TR_ONLY = [
-    /^\/tr\/hizmetler\//,
-    /^\/tr\/bolgeler\//,
-    /^\/tr\/projelerimiz\//,
-    /^\/tr\/galeri\//,
-    /^\/tr\/products\/[^/]+\//,
-    /^\/tr\/sss\//,
-    /^\/tr\/nxtionstar\//,
-    /^\/tr\/about\/aras-bozkurt\//,
-    /^\/tr\/gizlilik\//,
-    /^\/tr\/blog\//,
-    /^\/tr\/(led-ekran|led-ekran-satisi|led-ekran-ureticisi|led-ekran-montaj|led-ekran-kiralama|led-ekran-fiyatlari|led-ekran-servis)\//,
-    /^\/tr\/(p1-25|p1-86|p2-5|p2-9|p3-07|p4|p5)-led-ekran\//,
-    /^\/tr\/(magaza|avm|cephe|billboard|vitrin|otel|restoran|dugun-salonu|konferans-salonu|sahne|fuar|belediye|fabrika|spor-salonu|stadyum|totem)-led-ekran\//,
-    /^\/tr\/rehber\/(piksel-araligi-secimi|led-tabela-mi-led-ekran-mi|kiralik-mi-satin-alma|gob-vs-smd)\//,
+    /^\/tr\/bolgeler\/[^/]+\//,
+    // Projects hub has EN; case-study detail pages stay TR-only.
+    /^\/tr\/projelerimiz\/[^/]+\//,
+    // Product group landings now have EN counterparts; model pages stay TR-only.
+    /^\/tr\/products\/[^/]+\/[^/]+\//,
+    // Blog index has EN; post bodies stay TR-only.
+    /^\/tr\/blog\/[^/]+\//,
+    // /gizlilik/ is dual-locale; /privacy/ bridges to it.
   ];
+  // From a TR province detail page, EN switch lands on the EN regions hub.
   const switchLocaleHref = (next: Locale) => {
     const p = pathname.endsWith("/") ? pathname : `${pathname}/`;
+    // Province detail pages stay TR-only — EN switch lands on the regions hub.
+    if (next !== "tr" && /^\/tr\/bolgeler\/[^/]+\//.test(p)) {
+      return `/${next}/bolgeler/`;
+    }
+    if (next !== "tr" && /^\/tr\/projelerimiz\/[^/]+\//.test(p)) {
+      return `/${next}/projelerimiz/`;
+    }
+    if (next !== "tr" && /^\/tr\/blog\/[^/]+\//.test(p)) {
+      return `/${next}/blog/`;
+    }
     if (next !== "tr" && TR_ONLY.some((re) => re.test(p))) {
       // Product pages fall back to the locale catalog, rehber articles to the guide index, others to home.
-      if (/^\/tr\/products\//.test(p)) return `/${next}/products/`;
+      if (/^\/tr\/products\/[^/]+\/[^/]+\//.test(p)) return `/${next}/products/`;
       if (/^\/tr\/rehber\//.test(p)) return `/${next}/rehber/`;
       return `/${next}/`;
     }

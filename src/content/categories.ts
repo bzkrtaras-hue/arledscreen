@@ -603,7 +603,12 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Hangi piksel aralığını seçmeliyim?",
         answer:
-          "İnce pitch grubunda yayımlanan aralıklar P0.9 ve P1.25'tir. Pratik kural: her 1 mm P ≈ 1 m minimum mesafe. Kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz; P0.9 için teknik föy talep üzerine paylaşılır.",
+          "Yayımlanan ince pitch / GOB panel USD: P1.25, P1.53 ve P1.86 (ai-shopping.json pricedPanels; mpn=sku). Pratik kural: her 1 mm P ≈ 1 m minimum mesafe. Daha ince (ör. P0.9) seçenekler teknik föy + yazılı teklifle; kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz.",
+      },
+      {
+        question: "İnce pitch sayfasında fiyat var mı?",
+        answer:
+          "Evet — GOB P1.25 / P1.53 / P1.86 panel (modül) USD fiyatları bu grupta da yayımlanır; kanonik model URL’leri /tr/products/gob-led-ekran/ altındadır. Makinece kaynak: https://arledscreen.com/ai-shopping.json",
       },
       {
         question: "SMD, COB ve GOB arasındaki fark nedir?",
@@ -749,7 +754,10 @@ export function getProductGroup(slug: string): ProductGroup | undefined {
   return PRODUCT_GROUPS.find((g) => g.slug === slug);
 }
 
-export const productGroupPath = (g: Pick<ProductGroup, "slug">) => `/tr/products/${g.slug}/`;
+export const productGroupPath = (
+  g: Pick<ProductGroup, "slug">,
+  locale: "tr" | "en" = "tr",
+) => `/${locale}/products/${g.slug}/`;
 
 export function relatedReferences(g: ProductGroup, limit = 4): Reference[] {
   if (!g.refFilter) return [];

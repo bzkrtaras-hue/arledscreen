@@ -1,0 +1,1354 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "ARLEDSCREEN entity profile paste packs (Point C)",
+  "description": "Third-party profile paste packs for humans (GBP/IG/FB/LinkedIn) + machine Merchant notes. Owner-operated Point C. Human packs = cite facts only — no catalog.json / quote-only / extrasUsd jargon in public bios. Prices for AI: ai-shopping.json. GEO baseline: geo-baseline.json. Do not invent ratings. Owner single clipboard: npm run geo:next. After paste: npm run geo:ack. WebSite: https://arledscreen.com/#website. Spreadsheet: npm run point-c:csv. Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/. Live clipboard: https://arledscreen.com/geo-next.txt. Machine next: https://arledscreen.com/point-c.json → next + potentialAction. Open: https://www.bingplaces.com/. OpenAlt: https://businessconnect.apple.com/. Status: https://arledscreen.com/geo-status.json → potentialAction. Tur1a: https://arledscreen.com/tur1a.json → potentialAction. Progress: https://arledscreen.com/point-c-progress.json → potentialAction.",
+  "url": "https://arledscreen.com/entity-profiles.json",
+  "creator": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "brand": {
+    "@type": "Brand",
+    "@id": "https://arledscreen.com/#brand-nxtionstar",
+    "name": "NXTIONSTAR",
+    "url": "https://arledscreen.com/tr/nxtionstar/",
+    "makesOffer": {
+      "@id": "https://arledscreen.com/#priced-panels-aggregate"
+    },
+    "hasOfferCatalog": {
+      "@id": "https://arledscreen.com/catalog.json"
+    }
+  },
+  "brandId": "https://arledscreen.com/#brand-nxtionstar",
+  "isBasedOn": [
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/geo-baseline.json",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
+    "https://arledscreen.com/feeds/prices.rss",
+    "https://arledscreen.com/.well-known/brand.json",
+    "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/.well-known/entity.json",
+    "https://arledscreen.com/#website",
+    "https://arledscreen.com/.well-known/modules.json",
+    "https://arledscreen.com/.well-known/sku.json",
+    "https://arledscreen.com/.well-known/pricing.json",
+    "https://arledscreen.com/.well-known/panels.json",
+    "https://arledscreen.com/.well-known/mpn.json",
+    "https://arledscreen.com/.well-known/merchant.json",
+    "https://arledscreen.com/.well-known/prices.json",
+    "https://arledscreen.com/.well-known/price.json",
+    "https://arledscreen.com/.well-known/agents.json",
+    "https://arledscreen.com/.well-known/ard.json",
+    "https://arledscreen.com/ai.txt",
+    "https://arledscreen.com/llms.txt",
+    "https://arledscreen.com/humans.txt",
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/entity-profiles.json",
+    "https://arledscreen.com/.well-known/security.txt",
+    "https://arledscreen.com/llms-full.txt",
+    "https://arledscreen.com/offer.json",
+    "https://arledscreen.com/offers.json",
+    "https://arledscreen.com/.well-known/offer.json",
+    "https://arledscreen.com/.well-known/offers.json",
+    "https://arledscreen.com/dataset.json",
+    "https://arledscreen.com/feed.json",
+    "https://arledscreen.com/.well-known/dataset.json",
+    "https://arledscreen.com/.well-known/feed.json",
+    "https://arledscreen.com/products.json",
+    "https://arledscreen.com/product.json",
+    "https://arledscreen.com/.well-known/products.json",
+    "https://arledscreen.com/.well-known/product.json",
+    "https://arledscreen.com/.well-known/catalog.json",
+    "https://arledscreen.com/.well-known/geo-baseline.json",
+    "https://arledscreen.com/.well-known/entity-profiles.json",
+    "https://arledscreen.com/.well-known/ai-shopping.json",
+    "https://arledscreen.com/modules.json",
+    "https://arledscreen.com/sku.json",
+    "https://arledscreen.com/pricing.json",
+    "https://arledscreen.com/panels.json",
+    "https://arledscreen.com/mpn.json",
+    "https://arledscreen.com/merchant.json",
+    "https://arledscreen.com/prices.json",
+    "https://arledscreen.com/price.json",
+    "https://arledscreen.com/agents.json",
+    "https://arledscreen.com/.well-known/agent.json",
+    "https://arledscreen.com/.well-known/ai.txt",
+    "https://arledscreen.com/.well-known/llms.txt",
+    "https://arledscreen.com/.well-known/llms-full.txt",
+    "https://arledscreen.com/.well-known/humans.txt",
+    "https://arledscreen.com/point-c-en.txt",
+    "https://arledscreen.com/.well-known/point-c.txt",
+    "https://arledscreen.com/offer",
+    "https://arledscreen.com/offers",
+    "https://arledscreen.com/dataset",
+    "https://arledscreen.com/feed",
+    "https://arledscreen.com/panels",
+    "https://arledscreen.com/mpn",
+    "https://arledscreen.com/merchant",
+    "https://arledscreen.com/sku",
+    "https://arledscreen.com/modules",
+    "https://arledscreen.com/brand",
+    "https://arledscreen.com/organization",
+    "https://arledscreen.com/company",
+    "https://arledscreen.com/nap",
+    "https://arledscreen.com/cite",
+    "https://arledscreen.com/faq",
+    "https://arledscreen.com/faqs",
+    "https://arledscreen.com/entity",
+    "https://arledscreen.com/catalog",
+    "https://arledscreen.com/geo-baseline",
+    "https://arledscreen.com/cite.json",
+    "https://arledscreen.com/faq.json",
+    "https://arledscreen.com/faqs.json",
+    "https://arledscreen.com/company.json",
+    "https://arledscreen.com/nap.json",
+    "https://arledscreen.com/about.json",
+    "https://arledscreen.com/.well-known/cite.json",
+    "https://arledscreen.com/.well-known/faq.json",
+    "https://arledscreen.com/.well-known/faqs.json",
+    "https://arledscreen.com/.well-known/organization.json",
+    "https://arledscreen.com/.well-known/company.json",
+    "https://arledscreen.com/.well-known/nap.json",
+    "https://arledscreen.com/.well-known/about.json",
+    "https://arledscreen.com/products",
+    "https://arledscreen.com/product",
+    "https://arledscreen.com/ai-shopping",
+    "https://arledscreen.com/entity-profiles",
+    "https://arledscreen.com/api/v1/prices",
+    "https://arledscreen.com/api/prices",
+    "https://arledscreen.com/api/panels.json",
+    "https://arledscreen.com/api/panels",
+    "https://arledscreen.com/api/merchant.json",
+    "https://arledscreen.com/api/mpn.json",
+    "https://arledscreen.com/api/catalog",
+    "https://arledscreen.com/api/ai-shopping",
+    "https://arledscreen.com/llms",
+    "https://arledscreen.com/llms-full",
+    "https://arledscreen.com/api/prices.json",
+    "https://arledscreen.com/api/merchant",
+    "https://arledscreen.com/api/mpn",
+    "https://arledscreen.com/api/ai-shopping.json",
+    "https://arledscreen.com/v1/prices",
+    "https://arledscreen.com/v1/panels",
+    "https://arledscreen.com/v1/merchant",
+    "https://arledscreen.com/v1/mpn",
+    "https://arledscreen.com/v1/sku",
+    "https://arledscreen.com/data/prices.json",
+    "https://arledscreen.com/data/catalog.json",
+    "https://arledscreen.com/feeds/prices.json",
+    "https://arledscreen.com/feeds/catalog.json",
+    "https://arledscreen.com/en/prices.json",
+    "https://arledscreen.com/tr/prices.json",
+    "https://arledscreen.com/en/ai-shopping.json",
+    "https://arledscreen.com/tr/ai-shopping.json",
+    "https://arledscreen.com/api/entity",
+    "https://arledscreen.com/api/entity.json",
+    "https://arledscreen.com/security.txt",
+    "https://arledscreen.com/.well-known/security",
+    "https://arledscreen.com/api/catalog.json",
+    "https://arledscreen.com/api/products",
+    "https://arledscreen.com/en/pricing.json",
+    "https://arledscreen.com/tr/pricing.json",
+    "https://arledscreen.com/en/price.json",
+    "https://arledscreen.com/tr/price.json",
+    "https://arledscreen.com/en/feed.json",
+    "https://arledscreen.com/tr/feed.json",
+    "https://arledscreen.com/en/catalog.json",
+    "https://arledscreen.com/tr/catalog.json",
+    "https://arledscreen.com/en/products.json",
+    "https://arledscreen.com/tr/products.json",
+    "https://arledscreen.com/en/entity.json",
+    "https://arledscreen.com/tr/entity.json",
+    "https://arledscreen.com/en/geo-baseline.json",
+    "https://arledscreen.com/tr/geo-baseline.json",
+    "https://arledscreen.com/en/entity-profiles.json",
+    "https://arledscreen.com/tr/entity-profiles.json",
+    "https://arledscreen.com/agent.json",
+    "https://arledscreen.com/en/llms.txt",
+    "https://arledscreen.com/tr/llms.txt",
+    "https://arledscreen.com/en/llms-full.txt",
+    "https://arledscreen.com/tr/llms-full.txt",
+    "https://arledscreen.com/en/ai.txt",
+    "https://arledscreen.com/tr/ai.txt",
+    "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/point-c-en.json",
+    "https://arledscreen.com/.well-known/point-c.json",
+    "https://arledscreen.com/.well-known/point-c-en.json",
+    "https://arledscreen.com/feeds/point-c.csv",
+    "https://arledscreen.com/feeds/point-c-en.csv",
+    "https://arledscreen.com/point-c.csv",
+    "https://arledscreen.com/point-c-en.csv",
+    "https://arledscreen.com/geo-status.json",
+    "https://arledscreen.com/.well-known/geo-status.json",
+    "https://arledscreen.com/owner-p0.json",
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/.well-known/geo-next.txt",
+    "https://arledscreen.com/owner-next.txt",
+    "https://arledscreen.com/tur1a.json",
+    "https://arledscreen.com/.well-known/tur1a.json",
+    "https://arledscreen.com/feeds/tur1a.csv",
+    "https://arledscreen.com/tur1a.csv",
+    "https://arledscreen.com/point-c-progress.json",
+    "https://arledscreen.com/.well-known/point-c-progress.json",
+    "https://arledscreen.com/.well-known/AGENTS.md",
+    "https://arledscreen.com/social.json",
+    "https://arledscreen.com/contact.json",
+    "https://arledscreen.com/.well-known/social.json",
+    "https://arledscreen.com/.well-known/contact.json"
+  ],
+  "license": "https://arledscreen.com/tr/about/",
+  "dateModified": "2026-10-08",
+  "packs": {
+    "gbpDescription": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
+    "linkedinAbout": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nWeb: https://arledscreen.com/tr/ (arleds.com değil)\nNot: Bu LinkedIn şirket yolu /company/arleds yalnızca sosyal slug’dır — web sitesi arleds.com değildir.\nNXTIONSTAR ≠ NationStar (LED bileşen) ≠ NEXTSTAR (TV).\nTelefon: +90 530 507 88 34\nDoğrulama: https://arledscreen.com/entity.json",
+    "instagramBio": "İstanbul LED · NXTIONSTAR\nSatış · montaj · teknik servis\narledscreen.com/tr/\n+90 530 507 88 34",
+    "instagramName": "ARLEDSCREEN",
+    "facebookAbout": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.",
+    "directoryShort": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
+    "directoryLong": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nE-posta: arled@arledscreen.com\nWeb: https://arledscreen.com/tr/\nNot: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com kullanın. LinkedIn /company/arleds sosyal slug’dır, web arleds.com değildir. NXTIONSTAR ≠ NationStar LED bileşen ≠ NEXTSTAR TV.",
+    "youtubeAbout": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.\n\nSite: https://arledscreen.com/tr/\nTel: +90 530 507 88 34",
+    "appleBusinessConnect": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.\n\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / İstanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/tr/",
+    "bingPlaces": "ARLEDSCREEN\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / İstanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/tr/\n\nKısa: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.\nKategori: LED display / Digital signage.",
+    "yandexBusiness": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nWeb: https://arledscreen.com/tr/",
+    "wikidataReadiness": "Wikidata yalnızca notability kanıtı varsa. Zorlamayın. Kanıt URL’leri: https://arledscreen.com/tr/about/ · https://arledscreen.com/entity.json · https://arledscreen.com/tr/projelerimiz/ · LinkedIn company. Alanlar (taslak): label=ARLEDSCREEN; description=İstanbul Gaziosmanpaşa LED ekran firması; country=Turkey; headquarters=Gaziosmanpaşa; official website=https://arledscreen.com/tr/; industry=LED display. Uydurma QID / rating yok.\nWebSite: https://arledscreen.com/#website",
+    "crunchbaseDraft": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir.\n\nOrganization name: ARLEDSCREEN\nHQ: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nPhone: +90 530 507 88 34\nEmail: arled@arledscreen.com\nWebsite: https://arledscreen.com/tr/\nCategories: LED display, Digital signage, B2B\nDo NOT invent funding, headcount, valuation, or ratings.",
+    "googleMerchantReadiness": "Google Merchant Center — yalnızca 12 priced panel SKU.\nFeed: https://arledscreen.com/feeds/merchant-priced-panels.tsv\nRSS: https://arledscreen.com/feeds/prices.rss (change discovery; canonical pricedPanels remain ai-shopping.json) (mpn=id/sku; local_business_id=#localbusiness; no invented GTIN)\nCatalog: https://arledscreen.com/catalog.json\nAI index: https://arledscreen.com/ai-shopping.json\nEntity: https://arledscreen.com/entity.json (makesOffer AggregateOffer + offers×12 → ai-shopping.json#offer-{sku}; itemOffered → PDP #product; hasOfferCatalog → catalog.json; location → #localbusiness; Offer availableAtOrFrom → #localbusiness)\nInventable price aliases (byte-identical): /prices.json · /panels.json · /mpn.json · /merchant.json · /offer.json · /offers.json · /modules.json · /sku.json · /panels · /mpn · /merchant · /offer · /offers · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/panels · /api/panels.json · /api/merchant · /api/merchant.json (/modules = image dir)\nGEO baseline: https://arledscreen.com/geo-baseline.json\nBrand @id: https://arledscreen.com/#brand-nxtionstar (makesOffer → #priced-panels-aggregate; hasOfferCatalog → catalog.json)\nProduct graph: Offer triangle catalog ↔ ai-shopping ↔ PDP #offer; Offer.itemOffered → PDP #product; Dataset hasPart → Offer @id; Offer/AggregateOffer availableAtOrFrom → #localbusiness\nRules: shipping column EMPTY (no free shipping invent); quote-only groups excluded; return = MerchantReturnNotPermitted; no fake ratings.\nOwner checklist: docs/merchant-priced-panels.md\nWebSite: https://arledscreen.com/#website"
+  },
+  "sameAsReadiness": {
+    "live": [
+      "https://www.instagram.com/arledscreen",
+      "https://www.facebook.com/arledscreenn",
+      "https://wa.me/905305078834",
+      "https://www.linkedin.com/company/arleds"
+    ],
+    "handles": {
+      "instagram": "@arledscreen",
+      "facebook": "@arledscreenn",
+      "whatsapp": "@arledscreen",
+      "whatsappClickToChat": "https://wa.me/905305078834"
+    },
+    "blockedUntil301": [],
+    "notes": [
+      "İnsan yüzeyleri (GBP/IG/FB/LinkedIn/dizin): packs.gbpDescription / instagramBio / facebookAbout — yalnızca cite + NAP. catalog.json, quote-only, extrasUsd YAPIŞTIRMAYIN.",
+      "Makine jargon yalnızca packs.googleMerchantReadiness ve ai-shopping.json içindir.",
+      "Yapıştırırken bir kez yapıştırın; metni iki kez tekrarlamayın.",
+      "Posta kodu 34245 (34242 değil). Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, Gaziosmanpaşa / İstanbul.",
+      "Instagram Adı: packs.instagramName = ARLEDSCREEN (emoji / ‘Led Ekran…’ uydurma ek yok). Handle: @arledscreen.",
+      "Facebook handle: @arledscreenn (çift n). WhatsApp kullanıcı adı: @arledscreen — tıklanabilir link wa.me/905305078834 (username deep-link yok).",
+      "Disambiguation: ARLEDSCREEN ≠ Almanya ARLED; NXTIONSTAR ≠ NEXTSTAR TV ≠ NationStar.",
+      "LinkedIn sameAs slug https://www.linkedin.com/company/arleds ≠ website arleds.com — packs.linkedinAbout ve packsEn.linkedinAbout bunu açık yazar.",
+      "EN human packs: packsEn.* (cite + NAP only; no catalog.json / quote-only jargon in public bios)."
+    ]
+  },
+  "ownerP0Checklist": [
+    "P0 next: live https://arledscreen.com/owner-next.html · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction (packKey=directoryLong; text; Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/) · progress https://arledscreen.com/point-c-progress.json → potentialAction · status https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md",
+    "GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok) · Open: https://business.google.com/",
+    "Instagram @arledscreen · Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)",
+    "Facebook @arledscreenn · About = packs.facebookAbout · WhatsApp @arledscreen (wa.me/905305078834) · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)",
+    "Bing Places / Apple = packs.bingPlaces / packs.appleBusinessConnect · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/",
+    "P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: Open: https://www.isimtescil.net/ · OpenAlt: Gmail draft (geo:status) · registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md",
+    "Merchant jargon yalnızca packs.googleMerchantReadiness — kamu biyografisine koyma",
+    "Tur 1a / kör test: npm run tur1a:next → paste → npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|… · tur1a:matrix (0/48) — skor uydurma yok · Open: https://chatgpt.com/ · tur1a:csv",
+    "PR #60 main merge (GEO kalıcılık)",
+    "EN profiles (if used): npm run point-c:en — packsEn.* cite-only + LinkedIn slug note"
+  ],
+  "canonicalUrls": {
+    "entityJson": "https://arledscreen.com/entity.json",
+    "catalogJson": "https://arledscreen.com/catalog.json",
+    "ardJson": "https://arledscreen.com/.well-known/ard.json",
+    "aiShoppingJson": "https://arledscreen.com/ai-shopping.json",
+    "geoBaselineJson": "https://arledscreen.com/geo-baseline.json",
+    "llmsTxt": "https://arledscreen.com/llms.txt",
+    "about": "https://arledscreen.com/tr/about/",
+    "founder": "https://arledscreen.com/tr/about/aras-bozkurt/",
+    "nxtionstar": "https://arledscreen.com/tr/nxtionstar/",
+    "nxtionstarEn": "https://arledscreen.com/en/nxtionstar/",
+    "fiyat": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
+    "fiyatEn": "https://arledscreen.com/en/led-ekran-fiyatlari/",
+    "sss": "https://arledscreen.com/tr/sss/",
+    "sssEn": "https://arledscreen.com/en/sss/",
+    "playbook": "docs/offsite-entity-playbook.md (repo)",
+    "enHome": "https://arledscreen.com/en/",
+    "pricesRss": "https://arledscreen.com/feeds/prices.rss",
+    "pointCTxt": "https://arledscreen.com/point-c.txt",
+    "pointCEnTxt": "https://arledscreen.com/point-c-en.txt",
+    "brandJson": "https://arledscreen.com/brand.json",
+    "pricesJson": "https://arledscreen.com/prices.json",
+    "brandWellKnown": "https://arledscreen.com/.well-known/brand.json",
+    "entityWellKnown": "https://arledscreen.com/.well-known/entity.json",
+    "website": "https://arledscreen.com/#website"
+  },
+  "packsEn": {
+    "gbpDescription": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.",
+    "linkedinAbout": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.\n\nWeb: https://arledscreen.com/en/ (not arleds.com)\nNote: LinkedIn company path /company/arleds is a social slug only — not the website arleds.com.\nNXTIONSTAR ≠ NationStar (LED component) ≠ NEXTSTAR (TV).\nPhone: +90 530 507 88 34\nVerify: https://arledscreen.com/entity.json",
+    "instagramBio": "Istanbul LED · NXTIONSTAR\nSales · install · service\narledscreen.com/en/\n+90 530 507 88 34",
+    "instagramName": "ARLEDSCREEN",
+    "facebookAbout": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.",
+    "directoryShort": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.",
+    "directoryLong": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nAddress: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul\nPhone: +90 530 507 88 34\nEmail: arled@arledscreen.com\nWeb: https://arledscreen.com/en/\nNote: Legacy/side arleds.com is not a citation source — use arledscreen.com only. LinkedIn /company/arleds is a social slug, not website arleds.com. NXTIONSTAR ≠ NationStar LED components ≠ NEXTSTAR TV.",
+    "youtubeAbout": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nSite: https://arledscreen.com/en/\nTel: +90 530 507 88 34",
+    "appleBusinessConnect": "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey.\n\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / Istanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/en/",
+    "bingPlaces": "ARLEDSCREEN\nMerkez Mah. Tuna Sok. No:15-17 Kat 1\n34245 Gaziosmanpaşa / Istanbul\n+90 530 507 88 34\narled@arledscreen.com\nhttps://arledscreen.com/en/\n\nShort: ARLEDSCREEN is an Istanbul (Gaziosmanpaşa)–based LED display sales, installation, and technical service company.\nCategory: LED display / Digital signage.",
+    "yandexBusiness": "ARLEDSCREEN (AR-LED Display Technology Center) is an Istanbul (Gaziosmanpaşa)–based LED display company. NXTIONSTAR is its own product brand; ARLEDSCREEN is the sole sales point in Turkey. Indoor/outdoor, GOB, flexible and rental LED sales plus survey, install and technical service.\n\nAddress: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / Istanbul\nPhone: +90 530 507 88 34\nWeb: https://arledscreen.com/en/",
+    "googleMerchantReadiness": "Google Merchant Center — 12 priced panel SKUs only.\nFeed: https://arledscreen.com/feeds/merchant-priced-panels.tsv\nRSS: https://arledscreen.com/feeds/prices.rss (change discovery; canonical pricedPanels remain ai-shopping.json)\nCatalog: https://arledscreen.com/catalog.json\nAI index: https://arledscreen.com/ai-shopping.json\nEntity: https://arledscreen.com/entity.json\nBrand: https://arledscreen.com/brand.json (AggregateOffer×12)\nGEO baseline: https://arledscreen.com/geo-baseline.json\nRules: no free shipping invent; quote-only groups excluded; MerchantReturnNotPermitted; no fake ratings.\nDo NOT paste this block into GBP/IG/FB public bios.\nWebSite: https://arledscreen.com/#website"
+  },
+  "@id": "https://arledscreen.com/entity-profiles.json",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/brand.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/brand.json",
+      "name": "NXTIONSTAR Brand invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/organization.json",
+      "name": "Organization (alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/entity.json",
+      "name": "Organization invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/ai-shopping.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/prices.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/catalog.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-baseline.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/rss+xml",
+      "contentUrl": "https://arledscreen.com/feeds/prices.rss",
+      "name": "ARLEDSCREEN panel price RSS"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c-en.txt",
+      "name": "ARLEDSCREEN Point C paste packs (EN)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/tab-separated-values",
+      "contentUrl": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/point-c.json",
+      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-status.json",
+      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/geo-next.txt",
+      "name": "ARLEDSCREEN GEO priority clipboard"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tur1a.json",
+      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/point-c-progress.json",
+      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/social.json",
+      "name": "ARLEDSCREEN social handles invent"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/contact.json",
+      "name": "ARLEDSCREEN contact invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/social.json",
+      "name": "Social well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/modules.json",
+      "name": "Modules pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/sku.json",
+      "name": "SKU pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/pricing.json",
+      "name": "Pricing pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/panels.json",
+      "name": "Panels pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/mpn.json",
+      "name": "MPN pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/merchant.json",
+      "name": "Merchant pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/prices.json",
+      "name": "Prices pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/price.json",
+      "name": "Price pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/modules.json",
+      "name": "Modules well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/sku.json",
+      "name": "SKU well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/pricing.json",
+      "name": "Pricing well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/panels.json",
+      "name": "Panels well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/mpn.json",
+      "name": "MPN well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/merchant.json",
+      "name": "Merchant well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/prices.json",
+      "name": "Prices well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/price.json",
+      "name": "Price well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offer.json",
+      "name": "Offer pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offers.json",
+      "name": "Offers pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/offer.json",
+      "name": "Offer well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/offers.json",
+      "name": "Offers well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/dataset.json",
+      "name": "Dataset pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feed.json",
+      "name": "Feed pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/dataset.json",
+      "name": "Dataset well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/feed.json",
+      "name": "Feed well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/products.json",
+      "name": "Products catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/product.json",
+      "name": "Product catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/products.json",
+      "name": "Products well-known catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/product.json",
+      "name": "Product well-known catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/catalog.json",
+      "name": "Catalog well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/geo-baseline.json",
+      "name": "GEO baseline well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/entity-profiles.json",
+      "name": "Point C entity-profiles well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/ai-shopping.json",
+      "name": "AI Shopping well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offer",
+      "name": "Offer extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/offers",
+      "name": "Offers extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/dataset",
+      "name": "Dataset extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feed",
+      "name": "Feed extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/panels",
+      "name": "Panels extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/sku",
+      "name": "SKU extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/mpn",
+      "name": "MPN extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/merchant",
+      "name": "Merchant extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/modules",
+      "name": "Modules extensionless invent alias (Pages Function→modules.json)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/brand",
+      "name": "Brand extensionless invent alias (Pages Function→brand.json)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/products",
+      "name": "Products extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/product",
+      "name": "Product extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/organization",
+      "name": "Organization extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/company",
+      "name": "Organization company extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/nap",
+      "name": "Organization NAP extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/cite",
+      "name": "Organization cite extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faq",
+      "name": "Organization FAQ extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faqs",
+      "name": "Organization FAQs extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity",
+      "name": "Entity extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/catalog",
+      "name": "Catalog extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-baseline",
+      "name": "GEO baseline extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/ai-shopping",
+      "name": "AI Shopping extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity-profiles",
+      "name": "Point C entity-profiles extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/v1/prices",
+      "name": "API v1 prices invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/prices",
+      "name": "API prices invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/prices.json",
+      "name": "API prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/panels.json",
+      "name": "API panels.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/panels",
+      "name": "API panels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/merchant.json",
+      "name": "API merchant.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/merchant",
+      "name": "API merchant invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/mpn.json",
+      "name": "API mpn.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/mpn",
+      "name": "API mpn invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/catalog",
+      "name": "API catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/catalog.json",
+      "name": "API catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/products",
+      "name": "API products invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/ai-shopping",
+      "name": "API ai-shopping invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/ai-shopping.json",
+      "name": "API ai-shopping.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/prices",
+      "name": "v1 prices invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/panels",
+      "name": "v1 panels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/merchant",
+      "name": "v1 merchant invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/mpn",
+      "name": "v1 mpn invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/v1/sku",
+      "name": "v1 sku invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/data/prices.json",
+      "name": "data/prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/data/catalog.json",
+      "name": "data/catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feeds/prices.json",
+      "name": "feeds/prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/feeds/catalog.json",
+      "name": "feeds/catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/prices.json",
+      "name": "EN prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/prices.json",
+      "name": "TR prices.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/ai-shopping.json",
+      "name": "EN ai-shopping.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/ai-shopping.json",
+      "name": "TR ai-shopping.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/pricing.json",
+      "name": "EN pricing.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/pricing.json",
+      "name": "TR pricing.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/price.json",
+      "name": "EN price.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/price.json",
+      "name": "TR price.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/feed.json",
+      "name": "EN feed.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/feed.json",
+      "name": "TR feed.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/catalog.json",
+      "name": "EN catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/catalog.json",
+      "name": "TR catalog.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/products.json",
+      "name": "EN products.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/products.json",
+      "name": "TR products.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/cite.json",
+      "name": "Organization cite invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faq.json",
+      "name": "Organization FAQ invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faqs.json",
+      "name": "Organization FAQs invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/company.json",
+      "name": "Organization company invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/nap.json",
+      "name": "Organization NAP invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/about.json",
+      "name": "Organization about invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/cite.json",
+      "name": "Organization cite well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/faq.json",
+      "name": "Organization FAQ well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/faqs.json",
+      "name": "Organization FAQs well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/organization.json",
+      "name": "Organization well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/company.json",
+      "name": "Organization company well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/nap.json",
+      "name": "Organization NAP well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/about.json",
+      "name": "Organization about well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/entity",
+      "name": "API entity invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/entity.json",
+      "name": "API entity.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/entity.json",
+      "name": "EN entity.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/entity.json",
+      "name": "TR entity.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/geo-baseline.json",
+      "name": "EN geo-baseline.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/geo-baseline.json",
+      "name": "TR geo-baseline.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/en/entity-profiles.json",
+      "name": "EN entity-profiles.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tr/entity-profiles.json",
+      "name": "TR entity-profiles.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/agents.json",
+      "name": "Agent Discovery Index"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/agents.json",
+      "name": "Agent Discovery Index (root invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/agent.json",
+      "name": "Agent Discovery Index (agent.json invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/agent.json",
+      "name": "Agent Discovery Index (agent invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/ard.json",
+      "name": "ARLEDSCREEN ARD"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/ai.txt",
+      "name": "AI Agent Discovery Pointer"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/ai.txt",
+      "name": "AI Agent Discovery Pointer (well-known invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/llms.txt",
+      "name": "LLM Context"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/llms",
+      "name": "LLM Context extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/llms.txt",
+      "name": "LLM Context (well-known invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/llms-full.txt",
+      "name": "LLM Context (Full)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/llms-full",
+      "name": "LLM Context Full extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/llms-full.txt",
+      "name": "LLM Context Full (well-known invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/en/llms.txt",
+      "name": "LLM Context EN invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/tr/llms.txt",
+      "name": "LLM Context TR invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/en/llms-full.txt",
+      "name": "LLM Context Full EN invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/tr/llms-full.txt",
+      "name": "LLM Context Full TR invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/en/ai.txt",
+      "name": "AI Discovery Pointer EN invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/tr/ai.txt",
+      "name": "AI Discovery Pointer TR invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/humans.txt",
+      "name": "humans.txt discovery"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/humans.txt",
+      "name": "humans.txt well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/markdown",
+      "contentUrl": "https://arledscreen.com/AGENTS.md",
+      "name": "AGENTS.md"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/security.txt",
+      "name": "security.txt (RFC 9116)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/security.txt",
+      "name": "security.txt root invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/security",
+      "name": "security.txt extensionless well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c-en.txt",
+      "name": "Point C paste packs (EN)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/point-c.txt",
+      "name": "Point C paste packs (well-known invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/#website",
+      "encodingFormat": "text/html",
+      "contentUrl": "https://arledscreen.com",
+      "name": "ARLEDSCREEN WebSite"
+    }
+  ],
+  "isRelatedTo": [
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/point-c.txt",
+      "url": "https://arledscreen.com/point-c.txt",
+      "name": "ARLEDSCREEN Point C paste packs",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://arledscreen.com/#brand-nxtionstar",
+      "url": "https://arledscreen.com/brand.json",
+      "name": "NXTIONSTAR"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/geo-baseline.json",
+      "url": "https://arledscreen.com/geo-baseline.json",
+      "name": "ARLEDSCREEN GEO technical baseline"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arledscreen.com/#website",
+      "url": "https://arledscreen.com",
+      "name": "ARLEDSCREEN"
+    }
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebSite",
+    "@id": "https://arledscreen.com/#website",
+    "url": "https://arledscreen.com",
+    "name": "ARLEDSCREEN"
+  },
+  "about": {
+    "@type": "WebSite",
+    "@id": "https://arledscreen.com/#website",
+    "url": "https://arledscreen.com",
+    "name": "ARLEDSCREEN"
+  },
+  "sameAs": [
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/brand.json",
+    "https://arledscreen.com/ai-shopping.json",
+    "https://arledscreen.com/catalog.json",
+    "https://arledscreen.com/geo-baseline.json",
+    "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/#website",
+    "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/geo-status.json",
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/tur1a.json",
+    "https://arledscreen.com/point-c-progress.json"
+  ],
+  "subjectOf": [
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/point-c.json",
+      "url": "https://arledscreen.com/point-c.json",
+      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/geo-status.json",
+      "url": "https://arledscreen.com/geo-status.json",
+      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/geo-next.txt",
+      "url": "https://arledscreen.com/geo-next.txt",
+      "name": "ARLEDSCREEN GEO priority clipboard",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/tur1a.json",
+      "url": "https://arledscreen.com/tur1a.json",
+      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/point-c-progress.json",
+      "url": "https://arledscreen.com/point-c-progress.json",
+      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
+    }
+  ]
+}

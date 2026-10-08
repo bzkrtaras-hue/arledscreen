@@ -95,7 +95,7 @@ export const LED_MODELS: LedModel[] = [
   {
     slug: "p1-25-gob",
     group: "gob-led-ekran",
-    alsoIn: ["ic-mekan-led-ekran"],
+    alsoIn: ["ic-mekan-led-ekran", "ince-pitch-led-ekran"],
     chip: "P1.25 GOB",
     name: "NXTIONSTAR P1.25 GOB İç Mekân LED Modül",
     kind: "gob",
@@ -117,7 +117,7 @@ export const LED_MODELS: LedModel[] = [
   {
     slug: "p1-53-gob",
     group: "gob-led-ekran",
-    alsoIn: ["ic-mekan-led-ekran"],
+    alsoIn: ["ic-mekan-led-ekran", "ince-pitch-led-ekran"],
     chip: "P1.53 GOB",
     name: "NXTIONSTAR P1.53 GOB İç Mekân LED Modül",
     kind: "gob",
@@ -138,7 +138,7 @@ export const LED_MODELS: LedModel[] = [
   {
     slug: "p1-86-gob",
     group: "gob-led-ekran",
-    alsoIn: ["ic-mekan-led-ekran"],
+    alsoIn: ["ic-mekan-led-ekran", "ince-pitch-led-ekran"],
     chip: "P1.86 GOB",
     name: "NXTIONSTAR P1.86 GOB İç Mekân LED Modül",
     kind: "gob",
@@ -606,6 +606,11 @@ export const LED_MODELS: LedModel[] = [
 ];
 
 export const modelPath = (m: Pick<LedModel, "group" | "slug">) => `/tr/products/${m.group}/${m.slug}/`;
+/** Inventable EN locale-flip of Offer/product URLs (noindex bridge → EN group hub). */
+export const enModelBridgePath = (m: Pick<LedModel, "group" | "slug">) =>
+  `/en/products/${m.group}/${m.slug}/`;
+export const enModelBridgeTarget = (m: Pick<LedModel, "group">) => `/en/products/${m.group}/`;
+export const pricedLedModels = () => LED_MODELS.filter((m) => Boolean(m.priceId));
 export const modelsForGroup = (group: string) =>
   LED_MODELS.filter((m) => m.group === group || m.alsoIn?.includes(group));
 export const getModel = (group: string, slug: string) => LED_MODELS.find((m) => m.group === group && m.slug === slug);

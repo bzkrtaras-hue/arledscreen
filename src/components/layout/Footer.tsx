@@ -44,13 +44,39 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/quote/", label: "Teklif iste" },
         { href: "/tr/sss/", label: "SSS" },
         { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
+        { href: "/tr/blog/", label: "Blog" },
+        { href: "/tr/gizlilik/", label: "Gizlilik" },
       ]
     : [
+        { href: "/en/led-ekran/", label: "LED display" },
+        { href: "/en/led-ekran-satisi/", label: "LED sales" },
+        { href: "/en/led-ekran-kiralama/", label: "LED rental" },
+        { href: "/en/hizmetler/", label: "Services" },
+        { href: "/en/bolgeler/", label: "Service regions" },
+        { href: "/en/projelerimiz/", label: "Projects" },
+        { href: "/en/galeri/", label: "Gallery" },
+        { href: "/en/about/aras-bozkurt/", label: "Founder" },
+        { href: "/en/magaza-led-ekran/", label: "Store LED" },
+        { href: "/en/products/gob-led-ekran/", label: "GOB LED" },
         { href: `/${locale}/products/`, label: dict.nav.products },
         { href: `/${locale}/rehber/`, label: "Guides" },
         { href: `/${locale}/about/`, label: dict.nav.about },
         { href: `/${locale}/hesaplayici/`, label: dict.nav.priceCalculator },
+        {
+          href: locale === "en" ? "/en/led-ekran-fiyatlari/" : "/tr/led-ekran-fiyatlari/",
+          label: "LED display prices",
+        },
         { href: `/${locale}/quote/`, label: dict.nav.quote },
+        {
+          href: locale === "en" ? "/en/sss/" : "/tr/sss/",
+          label: "FAQ",
+        },
+        {
+          href: locale === "en" ? "/en/nxtionstar/" : "/tr/nxtionstar/",
+          label: "NXTIONSTAR",
+        },
+        { href: "/en/blog/", label: "Blog" },
+        { href: "/en/gizlilik/", label: "Privacy" },
       ];
 
   const columns = tr
@@ -217,7 +243,13 @@ export function Footer({ locale }: FooterProps) {
       </div>
       <div className="border-t border-white/10 px-4 py-6 text-center text-xs text-white/55">
         <p>
-          © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}
+          © {year} ARLEDSCREEN · NXTIONSTAR. {dict.footer.rights}{" "}
+          <Link
+            href={tr ? "/tr/gizlilik/" : "/en/gizlilik/"}
+            className="text-white/70 underline-offset-2 hover:text-[#9CC0F5] hover:underline"
+          >
+            {tr ? "Gizlilik" : "Privacy"}
+          </Link>
         </p>
       </div>
     </footer>

@@ -3,11 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OptImage } from "@/components/ui/opt-image";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
+import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import {
   PROJECT_CASE_STUDIES,
   getProjectCaseStudy,
   projectCasePath,
 } from "@/content/case-studies";
+import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -59,6 +62,7 @@ export default async function ProjectCasePage({
     about: "LED ekran kurulumu",
     provider: { "@id": `${SITE_URL}/#organization` },
     url,
+    isRelatedTo: BRAND_SUBJECT_DATASETS,
     ...(c.images[0]
       ? { image: absoluteUrl(c.images[0].src.startsWith("/blog/") ? c.images[0].src.replace("/blog/", "/opt/blog/") : c.images[0].src) }
       : {}),
@@ -88,20 +92,32 @@ export default async function ProjectCasePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWork) }}
       />
+      <SpeakableJsonLd
+        pageUrl={url}
+        name={c.h1}
+        description={c.metaDescription}
+        cssSelectors={["#case-h1", "#case-lead"]}
+        mainEntity={{ "@id": `${url}#case` }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
+      />
 
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">
             Case study · Yayımlanmış kayıt
           </p>
-          <h1 className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.7rem,1.2rem+1.8vw,2.5rem)] font-extrabold tracking-[-0.03em] text-ink">
+          <h1 id="case-h1" className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.7rem,1.2rem+1.8vw,2.5rem)] font-extrabold tracking-[-0.03em] text-ink">
             {c.h1}
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
+          <p id="case-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
             Bu sayfa ARLEDSCREEN referans listesindeki yayımlanmış alanlardan üretilir.
             Kontrol sistemi, garanti yılı, müşteri yorumu veya süre gibi sitede yazmayan
             bilgiler eklenmez.
           </p>
+          <AiPriceSourceNote lead="Panel USD listesi:" className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted" />
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/tr/quote/"

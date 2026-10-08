@@ -1,0 +1,23 @@
+To: support@hostinger.com
+Subject: Permanent 301 redirect arleds.com → https://arledscreen.com/tr/
+Date: Thu, 08 Oct 2026 00:14:22 GMT
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hello Hostinger Support,
+
+Please set a permanent (301) redirect for the entire domain arleds.com
+(including www and both http/https) to:
+
+https://arledscreen.com/tr/
+
+Required mappings:
+http://arleds.com/ → https://arledscreen.com/tr/
+http://www.arleds.com/ → https://arledscreen.com/tr/
+https://arleds.com/ → https://arledscreen.com/tr/
+https://www.arleds.com/ → https://arledscreen.com/tr/
+
+Domain: arleds.com — use this email ONLY if NS is Hostinger.
+If NS is dnsenable.com (Isimtescil), use registrar Domain Redirect instead.
+Thank you.

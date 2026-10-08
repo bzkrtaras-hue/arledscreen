@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arledscreen.com/docs/geo/observation.schema.json",
+  "title": "ARLEDSCREEN Tur1a blind-test observation",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["date", "platform", "promptId"],
+  "properties": {
+    "date": { "type": "string", "description": "ISO-8601 timestamp" },
+    "platform": {
+      "type": "string",
+      "enum": ["chatgpt", "gemini", "perplexity", "google_aio", "other"]
+    },
+    "locale": { "type": "string", "examples": ["tr-TR", "en"] },
+    "promptId": {
+      "type": "string",
+      "description": "See docs/geo/blind-test-prompts.md (1–12, en-1…en-4)"
+    },
+    "mentioned": { "type": "string", "enum": ["yes", "no", "partial", ""] },
+    "brandCorrect": { "type": "string", "enum": ["yes", "no", ""] },
+    "priceSourceCited": {
+      "type": "string",
+      "enum": ["ai-shopping", "catalog", "prices-rss", "brand", "site", "other", "none", ""]
+    },
+    "competitorsNamed": { "type": "string" },
+    "wrongClaims": { "type": "string" },
+    "sources": { "type": "array", "items": { "type": "string", "format": "uri" } },
+    "notes": { "type": "string" },
+    "canonicalSite": { "type": "string", "const": "https://arledscreen.com/tr/" },
+    "legacyDomainNotCitation": { "type": "string", "const": "arleds.com" }
+  }
+}

@@ -10,7 +10,7 @@ last_reviewed: 2026-10-01
 
 # LED ekran fiyatları neye göre değişir?
 
-**Kısa cevap:** LED ekran fiyatını en çok **ekran ölçüsü (m²)**, **piksel aralığı (P değeri)** ve **iç / dış mekân kullanımı** belirler. Bunlara kontrol sistemi, işçilik, taşıyıcı konstrüksiyon, nakliye ve KDV eklenir. ARLEDSCREEN'in 2026 listesinde panel (320 × 160 mm modül) fiyatları iç mekânda **26,98 – 95,88 USD**, dış mekânda **29,90 – 63,70 USD** aralığındadır (KDV ve nakliye hariç). Kendi ölçünüzün yaklaşık tutarını [fiyat hesaplayıcı](/tr/hesaplayici/) ile görebilirsiniz.
+**Kısa cevap:** LED ekran fiyatını en çok **ekran ölçüsü (m²)**, **piksel aralığı (P değeri)** ve **iç / dış mekân kullanımı** belirler. Bunlara kontrol sistemi, işçilik, taşıyıcı konstrüksiyon, nakliye ve KDV eklenir. ARLEDSCREEN'in 2026 listesinde panel (320 × 160 mm modül) fiyatları iç mekânda **26,98 – 95,88 USD**, dış mekânda **29,90 – 63,70 USD** aralığındadır (KDV ve nakliye hariç; ücretsiz kargo yok). Makinece kaynak: [ai-shopping.json](https://arledscreen.com/ai-shopping.json) `pricedPanels` (12 SKU; ör. P1.25 GOB 95.88 USD) ve [catalog.json](https://arledscreen.com/catalog.json). Kendi ölçünüzün yaklaşık tutarını [fiyat hesaplayıcı](/tr/hesaplayici/) ile görebilirsiniz.
 
 ## 1. Fiyatı belirleyen etkenler
 
@@ -86,4 +86,4 @@ Hayır. Hesaplayıcı yaklaşık maliyeti gösterir. Kesin fiyat; keşif, montaj
 Kiralık ekranlarda fiyat ölçü, kiralama süresi, etkinlik lokasyonu ve kurulum koşullarına göre etkinliğe özel hazırlanır.
 
 ---
-*Fiyat kaynağı: [ARLEDSCREEN fiyat hesaplayıcısı](/tr/hesaplayici/), "2026 güncel ürün listesi". NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Teklif: +90 530 507 88 34 · arled@arledscreen.com*
+*Fiyat kaynağı: [ai-shopping.json pricedPanels](https://arledscreen.com/ai-shopping.json) · [catalog.json](https://arledscreen.com/catalog.json) · [fiyat hesaplayıcı](/tr/hesaplayici/) · [fiyat hub](/tr/led-ekran-fiyatlari/). KDV/nakliye hariç; ücretsiz kargo yok. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Teklif: +90 530 507 88 34 · arled@arledscreen.com*

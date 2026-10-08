@@ -15,11 +15,15 @@ const publicDir = path.join(repoRoot, "public");
 const REQUIRED_FILES = [
   "catalog.json",
   "ai-shopping.json",
+  "geo-baseline.json",
   "entity.json",
+  "entity-profiles.json",
   ".well-known/ard.json",
   "llms.txt",
   "llms-full.txt",
+  "ai.txt",
   "feeds/merchant-priced-panels.tsv",
+  "feeds/prices.rss",
   "robots.txt",
   "_headers",
 ];
@@ -43,7 +47,7 @@ function validateAIFeeds() {
   // Validate JSON structure
   const jsonFiles = [
     { path: "catalog.json", type: "Collection" },
-    { path: "ai-shopping.json", type: "Organization" },
+    { path: "ai-shopping.json", type: "Dataset" },
     { path: "entity.json", type: "Organization" },
     { path: ".well-known/ard.json", type: "WebSite" },
   ];
@@ -53,8 +57,10 @@ function validateAIFeeds() {
     if (fs.existsSync(filePath)) {
       try {
         const content = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-        if (content["@type"] !== type) {
-          warnings.push(`⚠️ ${file}: Expected @type=${type}, got ${content["@type"]}`);
+        const got = content["@type"];
+        const ok = Array.isArray(got) ? got.includes(type) : got === type;
+        if (!ok) {
+          warnings.push(`⚠️ ${file}: Expected @type=${type}, got ${JSON.stringify(got)}`);
         }
       } catch (e) {
         errors.push(`❌ ${file}: Invalid JSON - ${e.message}`);
@@ -83,10 +89,5870 @@ function validateAIFeeds() {
   console.log("\n📍 Feed URLs:");
   console.log("   - https://arledscreen.com/catalog.json");
   console.log("   - https://arledscreen.com/ai-shopping.json");
+  console.log("   - https://arledscreen.com/geo-baseline.json");
   console.log("   - https://arledscreen.com/entity.json");
   console.log("   - https://arledscreen.com/.well-known/ard.json");
   console.log("   - https://arledscreen.com/llms.txt");
   console.log("   - https://arledscreen.com/llms-full.txt");
+}
+
+
+// After next build + postbuild-ai, out/ must carry deployable AI feeds.
+const outDir = path.join(repoRoot, "out");
+if (fs.existsSync(outDir)) {
+  for (const file of [
+    "catalog.json",
+    "ai-shopping.json",
+    "geo-baseline.json",
+    "entity.json",
+    "entity-profiles.json",
+    "llms.txt",
+    "ai.txt",
+  ]) {
+    const fp = path.join(outDir, file);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ Missing in out/: ${file} (CF deploy would wipe GEO)`);
+      process.exit(1);
+    }
+  }
+  const ai = JSON.parse(fs.readFileSync(path.join(outDir, "ai-shopping.json"), "utf8"));
+  if (!Array.isArray(ai.pricedPanels) || ai.pricedPanels.length !== 12) {
+    console.error("❌ out/ai-shopping.json pricedPanels must be length 12");
+    process.exit(1);
+  }
+  if (!Array.isArray(ai.hasPart) || ai.hasPart.length !== 12) {
+    console.error("❌ out/ai-shopping.json Dataset must hasPart 12 Products");
+    process.exit(1);
+  }
+  if (!ai.hasPart.every((p) => p?.sku && p.mpn === p.sku)) {
+    console.error("❌ out/ai-shopping.json Dataset hasPart stubs must set mpn=sku");
+    process.exit(1);
+  }
+  if (
+    !ai.hasPart.every(
+      (p) =>
+        Array.isArray(p?.sameAs) &&
+        p.sameAs.some((u) => String(u).includes(`/catalog.json#${p.sku}`)) &&
+        p.mainEntityOfPage === p.url &&
+        String(p?.offers?.["@id"] || "").includes(`/ai-shopping.json#offer-${p.sku}`) &&
+        Array.isArray(p?.offers?.sameAs) &&
+        p.offers.sameAs.some((u) => String(u).includes(`/catalog.json#offer-${p.sku}`)) &&
+        p.offers.sameAs.some((u) => String(u) === `${p.url}#offer`) &&
+        p?.offers?.itemOffered?.["@id"] === `${p.url}#product` &&
+        String(p?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
+        String(p?.offers?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
+        String(p?.offers?.price || "") === String(p?.price || ai.pricedPanels.find((x) => x.sku === p.sku)?.price) &&
+        String(p?.offers?.description || "").includes("Ücretsiz kargo yok") &&
+        p?.offers?.shippingDetails?.["@type"] === "OfferShippingDetails" &&
+        p?.offers?.hasMerchantReturnPolicy?.returnPolicyCategory ===
+          "https://schema.org/MerchantReturnNotPermitted" &&
+        p?.offers?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
+    )
+  ) {
+    console.error("❌ out/ai-shopping.json hasPart Offer stubs must include Brand + shippingDetails + USD + availableAtOrFrom #localbusiness");
+    process.exit(1);
+  }
+  if (!ai.pricedPanels.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
+    console.error("❌ every pricedPanels Product must isPartOf ai-shopping.json Dataset");
+    process.exit(1);
+  }
+  if (!Array.isArray(ai.sameAs) || !ai.sameAs.some((u) => String(u).includes("/catalog.json"))) {
+    console.error("❌ ai-shopping.json Dataset sameAs must join catalog.json");
+    process.exit(1);
+  }
+  {
+    const aiSame = JSON.stringify(ai.sameAs || []);
+    for (const needle of [
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/organization.json",
+      "/entity.json",
+      "/.well-known/entity.json",
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/point-c.txt",
+      "#website",
+      "/.well-known/panels.json",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/agents.json",
+      "/.well-known/ard.json",
+      "/ai.txt",
+      "/llms.txt",
+      "/llms-full.txt",
+      "/humans.txt",
+      "/AGENTS.md",
+      "/.well-known/security.txt",
+    ]) {
+      if (!aiSame.includes(needle)) {
+        console.error(`❌ ai-shopping.json Dataset sameAs must join ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  {
+    const aiSubject = JSON.stringify(ai.subjectOf || []);
+    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      if (!aiSubject.includes(needle)) {
+        console.error(`❌ ai-shopping.json Dataset subjectOf must join owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  if (!String(ai.mainEntityOfPage || "").includes("/led-ekran-fiyatlari/")) {
+    console.error("❌ ai-shopping.json Dataset mainEntityOfPage must be price hub");
+    process.exit(1);
+  }
+  if (!ai.resources?.agents?.includes("/agents.json") || !ai.resources?.agentsMd?.includes("AGENTS.md")) {
+    console.error("❌ ai-shopping.json resources must cite agents.json + AGENTS.md");
+    process.exit(1);
+  }
+  if (!String(ai.resources?.securityTxt || "").includes("/.well-known/security.txt")) {
+    console.error("❌ ai-shopping.json resources must cite /.well-known/security.txt");
+    process.exit(1);
+  }
+  if (!Array.isArray(ai.resources?.priceAliases) || !ai.resources.priceAliases.some((u) => String(u).includes("/prices.json"))) {
+    console.error("❌ ai-shopping.json resources.priceAliases must include /prices.json");
+    process.exit(1);
+  }
+  for (const needle of [
+    "/panels.json",
+    "/mpn.json",
+    "/merchant.json",
+    "/modules.json",
+    "/sku.json",
+    "/panels",
+    "/mpn",
+    "/offer",
+    "/api/panels.json",
+    "/.well-known/merchant.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+  ]) {
+    if (!ai.resources.priceAliases.some((u) => String(u).includes(needle))) {
+      console.error(`❌ ai-shopping.json resources.priceAliases must include ${needle}`);
+      process.exit(1);
+    }
+  }
+  const distUrls = (ai.distribution || []).map((d) => String(d?.contentUrl || ""));
+  if (!Array.isArray(ai.distribution) || ai.distribution.length < 35) {
+    console.error("❌ ai-shopping.json Dataset.distribution must list ≥35 DataDownload encodings (invent aliases + discovery agents/ard/ai.txt/llms/llms-full/humans/AGENTS.md/security.txt + brand/entity + point-c/profiles)");
+    process.exit(1);
+  }
+  for (const needle of [
+    "/ai-shopping.json",
+    "/prices.json",
+    "/price.json",
+    "/pricing.json",
+    "/panels.json",
+    "/mpn.json",
+    "/merchant.json",
+    "/modules.json",
+    "/sku.json",
+    "/.well-known/prices.json",
+    "/.well-known/panels.json",
+    "/.well-known/mpn.json",
+    "/.well-known/merchant.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+    "/.well-known/agents.json",
+    "/.well-known/ard.json",
+    "/ai.txt",
+    "/llms.txt",
+    "/llms-full.txt",
+    "/humans.txt",
+    "/AGENTS.md",
+    "/.well-known/security.txt",
+    "/offer.json",
+    "/catalog.json",
+    "/feeds/merchant-priced-panels.tsv",
+    "/feeds/prices.rss",
+    "/geo-baseline.json",
+    "/brand.json",
+    "/.well-known/brand.json",
+    "/entity.json",
+    "/.well-known/entity.json",
+    "/organization.json",
+    "/point-c.txt",
+    "/point-c.json",
+    "/geo-status.json",
+    "/geo-next.txt",
+    "/tur1a.json",
+    "/point-c-progress.json",
+    "/entity-profiles.json",
+  ]) {
+    if (!distUrls.some((u) => u.includes(needle))) {
+      console.error(`❌ ai-shopping.json distribution must include DataDownload ${needle}`);
+      process.exit(1);
+    }
+  }
+  if (!ai.distribution.every((d) => d?.["@type"] === "DataDownload" && d?.encodingFormat && d?.contentUrl)) {
+    console.error("❌ ai-shopping.json distribution entries must be DataDownload with encodingFormat + contentUrl");
+    process.exit(1);
+  }
+  if (!String(ai.agentGuidelines?.en?.priceSource || "").includes("/prices.json")) {
+    console.error("❌ agentGuidelines.en.priceSource must cite inventable /prices.json");
+    process.exit(1);
+  }
+  if (
+    !String(ai.agentGuidelines?.en?.priceSource || "").includes("/panels.json") ||
+    !String(ai.agentGuidelines?.en?.priceSource || "").includes("/mpn.json") ||
+    !String(ai.agentGuidelines?.priceSource || "").includes("/panels.json")
+  ) {
+    console.error("❌ agentGuidelines priceSource (TR+EN) must cite /panels.json + /mpn.json");
+    process.exit(1);
+  }
+  for (const needle of [
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+  ]) {
+    if (
+      !String(ai.agentGuidelines?.priceSource || "").includes(needle) ||
+      !String(ai.agentGuidelines?.en?.priceSource || "").includes(needle) ||
+      !String(ai.description || "").includes(needle)
+    ) {
+      console.error(`❌ ai-shopping description + agentGuidelines priceSource (TR+EN) must cite ${needle}`);
+      process.exit(1);
+    }
+  }
+  if (/blindTestPrompts|kör test/i.test(JSON.stringify(ai))) {
+    console.error("❌ out/ai-shopping.json must not carry blind-test payload");
+    process.exit(1);
+  }
+  const ard = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/ard.json"), "utf8"));
+  if (
+    !ard?.agentic?.resources?.panelsJson?.url?.includes("/panels.json") ||
+    !ard?.agentic?.resources?.mpnJson?.url?.includes("/mpn.json") ||
+    !ard?.agentic?.resources?.merchantJson?.url?.includes("/merchant.json") ||
+    !ard?.agentic?.resources?.offerJson?.url?.includes("/offer.json") ||
+    !ard?.agentic?.resources?.modulesJson?.url?.includes("/modules.json") ||
+    !ard?.agentic?.resources?.skuJson?.url?.includes("/sku.json") ||
+    !ard?.agentic?.resources?.priceJson?.url?.includes("/price.json") ||
+    !ard?.agentic?.resources?.pricingJson?.url?.includes("/pricing.json")
+  ) {
+    console.error("❌ ard.json must expose resources.panelsJson + mpnJson + merchantJson + offerJson + modulesJson + skuJson + priceJson + pricingJson");
+    process.exit(1);
+  }
+  for (const [key, needle] of [
+    ["modulesJson", "/.well-known/modules.json"],
+    ["skuJson", "/.well-known/sku.json"],
+    ["priceJson", "/.well-known/price.json"],
+    ["pricingJson", "/.well-known/pricing.json"],
+  ]) {
+    if (!String(ard?.agentic?.resources?.[key]?.wellKnown || "").includes(needle)) {
+      console.error(`❌ ard.json resources.${key}.wellKnown must cite ${needle}`);
+      process.exit(1);
+    }
+  }
+  if (
+    !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("/.well-known/modules.json") ||
+    !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("/.well-known/pricing.json")
+  ) {
+    console.error("❌ ard.json resources.aiShopping description must cite well-known invent aliases");
+    process.exit(1);
+  }
+  const ardMerchant = ard?.agentic?.resources?.merchantFeed;
+  {
+    const cols = Array.isArray(ardMerchant?.columns) ? ardMerchant.columns : [];
+    for (const need of [
+      "product_ld_id",
+      "catalog_id",
+      "offer_id",
+      "catalog_offer_id",
+      "mpn",
+      "brand_url",
+      "organization_id",
+      "entity_url",
+      "local_business_id",
+      "brand_makes_offer_id",
+      "brand_has_offer_catalog",
+    ]) {
+      if (!cols.includes(need)) {
+        console.error(`❌ ard.json merchantFeed.columns must include ${need}`);
+        process.exit(1);
+      }
+    }
+    if (ardMerchant?.localBusinessId !== "https://arledscreen.com/#localbusiness") {
+      console.error("❌ ard.json merchantFeed.localBusinessId must be #localbusiness");
+      process.exit(1);
+    }
+    if (ardMerchant?.organizationId !== "https://arledscreen.com/#organization") {
+      console.error("❌ ard.json merchantFeed.organizationId must be #organization");
+      process.exit(1);
+    }
+    if (!String(ardMerchant?.entityUrl || "").includes("/entity.json")) {
+      console.error("❌ ard.json merchantFeed.entityUrl must cite /entity.json");
+      process.exit(1);
+    }
+    if (!String(ardMerchant?.brandUrl || "").includes("/brand.json")) {
+      console.error("❌ ard.json merchantFeed.brandUrl must cite /brand.json");
+      process.exit(1);
+    }
+    if (
+      !String(ardMerchant?.brandMakesOfferId || "").includes("#priced-panels-aggregate") ||
+      !String(ardMerchant?.brandHasOfferCatalog || "").includes("/catalog.json")
+    ) {
+      console.error("❌ ard.json merchantFeed must cite brandMakesOfferId + brandHasOfferCatalog");
+      process.exit(1);
+    }
+  }
+  if (!ardMerchant?.url?.includes("/feeds/merchant-priced-panels.tsv") || ardMerchant.freeShipping !== false) {
+    console.error("❌ ard.json must expose merchantFeed (TSV) with freeShipping:false");
+    process.exit(1);
+  }
+  if (!String(ard?.agentic?.resources?.pricesRss?.url || "").includes("/feeds/prices.rss")) {
+    console.error("❌ ard.json must expose resources.pricesRss → /feeds/prices.rss");
+    process.exit(1);
+  }
+  if (!Array.isArray(ard?.robotsPolicy?.allow) || !ard.robotsPolicy.allow.includes("/feeds/merchant-priced-panels.tsv")) {
+    console.error("❌ ard.json robotsPolicy.allow must include merchant TSV path");
+    process.exit(1);
+  }
+  for (const must of [
+    "/cite.json",
+    "/faq.json",
+    "/prices.json",
+    "/panels.json",
+    "/organization.json",
+    "/AGENTS.md",
+    "/modules.json",
+    "/sku.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+    "/api/v1/prices",
+    "/v1/prices",
+    "/data/prices.json",
+    "/feeds/prices.json",
+    "/api/mpn",
+    "/api/entity",
+    "/en/prices.json",
+    "/tr/prices.json",
+    "/.well-known/security",
+    "/api/catalog.json",
+    "/api/products",
+    "/en/pricing.json",
+    "/en/entity.json",
+    "/tr/entity.json",
+    "/en/llms.txt",
+    "/tr/llms.txt",
+    "/.well-known/ai-shopping.json",
+    "/organization",
+    "/brand",
+    "/modules",
+    "/product",
+    "/offer",
+    "/dataset",
+    "/panels",
+    "/.well-known/offer.json",
+    "/.well-known/dataset.json",
+    "/.well-known/ai.txt",
+    "/.well-known/llms.txt",
+    "/.well-known/llms-full.txt",
+    "/tr/calculator/",
+    "/en/calculator/",
+    "/tr/teklif/",
+    "/tr/teklif-al/",
+    "/tr/fiyat-teklifi/",
+    "/tr/contact/",
+    "/tr/fiyat/",
+    "/tr/fiyatlar/",
+    "/tr/prices/",
+    "/tr/pricing/",
+    "/tr/katalog/",
+    "/tr/catalog/",
+    "/tr/shop/",
+    "/tr/magaza/",
+    "/tr/faq/",
+    "/tr/gallery/",
+    "/tr/projects/",
+    "/tr/regions/",
+    "/tr/services/",
+    "/tr/brand/",
+    "/tr/modules/",
+    "/tr/gob/",
+    "/tr/indoor-led/",
+    "/tr/outdoor-led/",
+    "/tr/fine-pitch/",
+    "/tr/price-list/",
+    "/en/magaza/",
+    "/teklif/",
+    "/quote/",
+    "/fiyat/",
+    "/katalog/",
+    "/contact/",
+    "/nxtionstar/",
+    "/galeri/",
+  ]) {
+    if (!ard.robotsPolicy.allow.includes(must)) {
+      console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
+      process.exit(1);
+    }
+  }
+  // Every ARD invent-bridge HTML example path must be in robotsPolicy.allow.
+  for (const key of ["trInventBridges", "enInventBridges"]) {
+    const examples = ard?.agentic?.resources?.[key]?.examples || [];
+    for (const full of examples) {
+      const p = String(full).replace("https://arledscreen.com", "");
+      // Feed/JSON invents are already allow-listed; HTML invents must be too.
+      if (!ard.robotsPolicy.allow.includes(p)) {
+        console.error(`❌ ard.json robotsPolicy.allow must include ${key} ${p}`);
+        process.exit(1);
+      }
+    }
+  }
+  if (
+    !String(ard?.agentic?.resources?.apiCatalog?.url || "").includes("/api/catalog.json") ||
+    !Array.isArray(ard?.agentic?.resources?.localeInvent?.pricedPanels) ||
+    !JSON.stringify(ard.agentic.resources.localeInvent.pricedPanels).includes("/en/pricing.json") ||
+    !JSON.stringify(ard.agentic.resources.localeInvent.discovery || []).includes("/agent.json") ||
+    !String(ard?.agentic?.resources?.datasetJson?.url || "").includes("/dataset.json") ||
+    !String(ard?.agentic?.resources?.productsJson?.url || "").includes("/products.json") ||
+    !String(ard?.agentic?.resources?.brandExtless?.url || "").includes("/brand") ||
+    !String(ard?.agentic?.resources?.modulesExtless?.url || "").includes("/modules") ||
+    !String(ard?.agentic?.resources?.feedJson?.url || "").includes("/feed.json") ||
+    !String(ard?.agentic?.resources?.productExtless?.url || "").includes("/product") ||
+    !String(ard?.agentic?.resources?.entityExtless?.url || "").includes("/entity") ||
+    !String(ard?.agentic?.resources?.securityRoot?.url || "").includes("/security.txt") ||
+    !String(ard?.agentic?.resources?.offersJson?.url || "").includes("/offers.json") ||
+    !String(ard?.agentic?.resources?.panelsExtless?.url || "").includes("/panels") ||
+    !String(ard?.agentic?.resources?.mpnExtless?.url || "").includes("/mpn") ||
+    !String(ard?.agentic?.resources?.merchantExtless?.url || "").includes("/merchant") ||
+    !String(ard?.agentic?.resources?.skuExtless?.url || "").includes("/sku") ||
+    !String(ard?.agentic?.resources?.organizationExtless?.url || "").includes("/organization") ||
+    !String(ard?.agentic?.resources?.citeExtless?.url || "").includes("/cite") ||
+    !String(ard?.agentic?.resources?.pointCWellKnown?.url || "").includes("/.well-known/point-c.txt") ||
+    !String(ard?.agentic?.resources?.agentsJsonRoot?.url || "").includes("/agents.json") ||
+    !String(ard?.agentic?.resources?.agentJsonRoot?.url || "").includes("/agent.json")
+  ) {
+    console.error("❌ ard.json must expose resources.apiCatalog + localeInvent + dataset/products/brand/modules/feed/product/entity/security + offers/extless/pointC/agents invent");
+    process.exit(1);
+  }
+  if (!ard?.agentic?.cite?.en?.oneLiner) {
+    console.error("❌ ard.json agentic.cite.en.oneLiner required for EN AI agents");
+    process.exit(1);
+  }
+  const ardBrand = ard?.agentic?.resources?.brand;
+  if (
+    ardBrand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar" ||
+    ardBrand?.name !== "NXTIONSTAR" ||
+    ard?.agentic?.resources?.aiShopping?.brandId !== "https://arledscreen.com/#brand-nxtionstar" ||
+    ard?.agentic?.pricedProducts?.brandId !== "https://arledscreen.com/#brand-nxtionstar"
+  ) {
+    console.error("❌ ard.json must expose Brand @id #brand-nxtionstar on resources.brand + aiShopping + pricedProducts");
+    process.exit(1);
+  }
+  if (
+    !String(ardBrand?.makesOffer || "").includes("#priced-panels-aggregate") ||
+    !String(ardBrand?.hasOfferCatalog || "").includes("/catalog.json") ||
+    !String(ardBrand?.url || "").includes("/brand.json") ||
+    ardBrand?.offerCount !== 12 ||
+    !String(ardBrand?.description || "").includes("AggregateOffer")
+  ) {
+    console.error("❌ ard.json resources.brand must cite AggregateOffer×12 + hasOfferCatalog + url /brand.json");
+    process.exit(1);
+  }
+  {
+    const brandJsonRes = ard?.agentic?.resources?.brandJson;
+    if (
+      !String(brandJsonRes?.url || "").includes("/brand.json") ||
+      brandJsonRes?.offerCount !== 12 ||
+      !String(brandJsonRes?.description || "").includes("AggregateOffer")
+    ) {
+      console.error("❌ ard.json resources.brandJson must describe AggregateOffer×12 Brand document");
+      process.exit(1);
+    }
+  }
+  {
+    const websiteRes = ard?.agentic?.resources?.website;
+    if (
+      websiteRes?.["@id"] !== "https://arledscreen.com/#website" ||
+      !Array.isArray(websiteRes?.potentialAction) ||
+      !websiteRes.potentialAction.some((u) => String(u).includes("/tr/quote")) ||
+      !websiteRes.potentialAction.some((u) => String(u).includes("/en/quote")) ||
+      !String(websiteRes?.description || "").includes("geo:ack") ||
+      !String(websiteRes?.ownerNext || "").includes("geo:ack") ||
+      !String(websiteRes?.ownerNext || "").includes("point-c:csv") ||
+      !String(websiteRes?.ownerNext || "").includes("https://www.isimtescil.net/")
+    ) {
+      console.error("❌ ard.json resources.website must be #website with OrderAction TR+EN quote URLs + geo:ack + point-c:csv Open");
+      process.exit(1);
+    }
+    if (!String(ard?.agentic?.resources?.merchantFeed?.websiteUrl || "").includes("#website")) {
+      console.error("❌ ard.json resources.merchantFeed.websiteUrl must cite /#website");
+      process.exit(1);
+    }
+  }
+  if (
+    ard?.agentic?.resources?.aiShopping?.shippingIncluded !== false ||
+    ard?.agentic?.pricedProducts?.shippingIncluded !== false
+  ) {
+    console.error("❌ ard.json must set shippingIncluded:false (no free-shipping invent)");
+    process.exit(1);
+  }
+  if (!ard?.agentic?.resources?.entityProfiles?.packsEn) {
+    console.error("❌ ard.json entityProfiles.packsEn pointer required for Point C EN packs");
+    process.exit(1);
+  }
+  {
+    const pc = ard?.agentic?.resources?.pointC;
+    const pcEn = ard?.agentic?.resources?.pointCEn;
+    if (
+      !String(pc?.url || "").includes("/point-c.txt") ||
+      !String(pc?.wellKnown || "").includes("/.well-known/point-c.txt") ||
+      !String(pc?.en || "").includes("/point-c-en.txt") ||
+      !String(pcEn?.url || "").includes("/point-c-en.txt")
+    ) {
+      console.error("❌ ard.json must expose resources.pointC + pointCEn → /point-c.txt (+ EN + well-known)");
+      process.exit(1);
+    }
+    if (!String(ard?.agentic?.resources?.humansTxt?.url || "").includes("/humans.txt")) {
+      console.error("❌ ard.json must expose resources.humansTxt");
+      process.exit(1);
+    }
+    if (!String(ard?.agentic?.resources?.securityTxt?.url || "").includes("/.well-known/security.txt")) {
+      console.error("❌ ard.json must expose resources.securityTxt");
+      process.exit(1);
+    }
+    for (const must of [
+      "/point-c.txt",
+      "/point-c-en.txt",
+      "/.well-known/point-c.txt",
+      "/.well-known/point-c-en.txt",
+      "/point-c.json",
+      "/point-c-en.json",
+      "/.well-known/point-c.json",
+      "/.well-known/point-c-en.json",
+      "/feeds/point-c.csv",
+      "/feeds/point-c-en.csv",
+      "/point-c.csv",
+      "/point-c-en.csv",
+      "/geo-status.json",
+      "/.well-known/geo-status.json",
+      "/geo-next.txt",
+      "/owner-next.txt",
+      "/owner-next.html",
+      "/geo-next.html",
+      "/owner-next.json",
+      "/.well-known/owner-next.json",
+      "/geo-next.json",
+      "/.well-known/geo-next.json",
+      "/tur1a.json",
+      "/feeds/tur1a.csv",
+      "/.well-known/AGENTS.md",
+      "/humans.txt",
+      "/.well-known/security.txt",
+      "/security.txt",
+      "/.well-known/agents.json",
+      "/.well-known/agent.json",
+      "/agents.json",
+      "/agent.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/.well-known/entity.json",
+    ]) {
+      if (!ard.robotsPolicy.allow.includes(must)) {
+        console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
+        process.exit(1);
+      }
+    }
+    if (
+      !String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") ||
+      !String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") ||
+      !String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") ||
+      !String(ard?.agentic?.resources?.ownerNextHtml?.alias || "").includes("/geo-next.html") ||
+      !String(ard?.agentic?.resources?.ownerNextHtml?.json || "").includes("/owner-next.json") ||
+      !String(ard?.agentic?.resources?.ownerNextJson?.url || "").includes("/owner-next.json") ||
+      !String(ard?.agentic?.resources?.ownerNextJson?.alias || "").includes("/geo-next.json") ||
+      !String(ard?.agentic?.resources?.ownerNextJson?.wellKnown || "").includes("/.well-known/owner-next.json") ||
+      !String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
+    ) {
+      console.error("❌ ard.json must expose resources.geoStatus + geoNext + ownerNextHtml + ownerNextJson + tur1a");
+      process.exit(1);
+    }
+    if (!String(pcEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")) {
+      console.error("❌ ard.json resources.pointCEn.wellKnown must cite /.well-known/point-c-en.txt");
+      process.exit(1);
+    }
+    if (
+      !String(pc?.json || "").includes("/point-c.json") ||
+      !String(pc?.csv || "").includes("/feeds/point-c.csv") ||
+      !String(ard?.agentic?.resources?.pointCJson?.url || "").includes("/point-c.json") ||
+      !String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
+    ) {
+      console.error("❌ ard.json must expose pointC.json/csv + resources.pointCJson + pointCCsv");
+      process.exit(1);
+    }
+    const epRes = ard?.agentic?.resources?.entityProfiles;
+    const geoRes = ard?.agentic?.resources?.geoBaseline;
+    const pcRes = ard?.agentic?.resources?.pointC;
+    if (
+      !String(epRes?.ownerNext || "").includes("geo:next") ||
+      !String(epRes?.ownerNext || "").includes("geo:ack") ||
+      !String(epRes?.ownerNext || "").includes("point-c:csv") ||
+      !String(epRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
+      !String(epRes?.ownerNext || "").includes("https://business.google.com/") ||
+      !String(epRes?.ownerNext || "").includes("https://chatgpt.com/") ||
+      !JSON.stringify(epRes?.distribution || []).includes("/ai-shopping.json") ||
+      !JSON.stringify(epRes?.distribution || []).includes("/point-c.txt") ||
+      !String(geoRes?.ownerNext || "").includes("geo:next") ||
+      !String(geoRes?.ownerNext || "").includes("geo:ack") ||
+      !String(geoRes?.ownerNext || "").includes("point-c:csv") ||
+      !String(geoRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
+      !JSON.stringify(geoRes?.distribution || []).includes("/brand.json") ||
+      !String(pcRes?.ownerNext || "").includes("geo:next") ||
+      !String(pcRes?.ownerNext || "").includes("geo:ack") ||
+      !String(pcRes?.ownerNext || "").includes("point-c:csv") ||
+      !String(pcRes?.ownerNext || "").includes("potentialAction") ||
+      !String(pcRes?.ownerNext || "").includes("/point-c-progress.json") ||
+      !String(pcRes?.howToPath || "").includes("potentialAction") ||
+      !String(pcRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
+      !String(pcRes?.ownerNext || "").includes("https://business.google.com/") ||
+      !String(pcRes?.ownerNext || "").includes("https://chatgpt.com/")
+    ) {
+      console.error("❌ ard.json entityProfiles/geoBaseline/pointC must cite geo:next/ack + potentialAction HowTo + point-c:csv + Open tabs + invent distribution");
+      process.exit(1);
+    }
+    if (!JSON.stringify(ardBrand?.subjectOf || []).includes("/point-c.txt")) {
+      console.error("❌ ard.json resources.brand.subjectOf must include point-c.txt");
+      process.exit(1);
+    }
+    {
+      const brandSubject = JSON.stringify(ardBrand?.subjectOf || []);
+      const brandDist = JSON.stringify(ardBrand?.distribution || []);
+      for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+        if (!brandSubject.includes(needle)) {
+          console.error(`❌ ard.json resources.brand.subjectOf must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+        if (!brandDist.includes(needle)) {
+          console.error(`❌ ard.json resources.brand.distribution must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+      }
+      for (const key of Object.keys(ard?.agentic?.resources || {})) {
+        const node = ard?.agentic?.resources?.[key];
+        if (!node || typeof node !== "object") continue;
+        const sub = JSON.stringify(node?.subjectOf || []);
+        const dist = JSON.stringify(node?.distribution || []);
+        for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+          if (!sub.includes(needle)) {
+            console.error(`❌ ard.json resources.${key}.subjectOf must join owner-gate HowTo ${needle}`);
+            process.exit(1);
+          }
+          if (!dist.includes(needle)) {
+            console.error(`❌ ard.json resources.${key}.distribution must join owner-gate HowTo ${needle}`);
+            process.exit(1);
+          }
+        }
+      }
+    }
+  }
+  if (!String(ard?.agentic?.resources?.entity?.makesOffer || "").includes("#priced-panels-aggregate")) {
+    console.error("❌ ard.json resources.entity must cite makesOffer #priced-panels-aggregate");
+    process.exit(1);
+  }
+  if (
+    ard?.agentic?.resources?.entity?.location !== "https://arledscreen.com/#localbusiness" ||
+    ard?.agentic?.resources?.localBusiness?.["@id"] !== "https://arledscreen.com/#localbusiness"
+  ) {
+    console.error("❌ ard.json resources.entity.location + resources.localBusiness must be #localbusiness");
+    process.exit(1);
+  }
+  if (!String(ard?.agentic?.resources?.aiShopping?.description || "").includes("itemOffered")) {
+    console.error("❌ ard.json resources.aiShopping description must cite itemOffered");
+    process.exit(1);
+  }
+  const tsvHead = fs.readFileSync(path.join(outDir, "feeds/merchant-priced-panels.tsv"), "utf8").split("\n")[0];
+  if (!tsvHead.includes("brand_id")) {
+    console.error("❌ merchant TSV must include brand_id column");
+    process.exit(1);
+  }
+  if (!tsvHead.includes("brand_makes_offer_id") || !tsvHead.includes("brand_has_offer_catalog")) {
+    console.error("❌ merchant TSV must include brand_makes_offer_id + brand_has_offer_catalog");
+    process.exit(1);
+  }
+  if (!tsvHead.includes("title_en")) {
+    console.error("❌ merchant TSV must include title_en column for EN AI agents");
+    process.exit(1);
+  }
+  if (!tsvHead.split("\t").includes("mpn")) {
+    console.error("❌ merchant TSV must include mpn column (honest MPN=sku; no invented GTIN)");
+    process.exit(1);
+  }
+  if (
+    !ai?.resources?.brandId?.includes("#brand-nxtionstar") ||
+    !String(ai?.resources?.brand || "").includes("/brand.json") ||
+    !String(ai?.resources?.brandHub || "").includes("/tr/nxtionstar/")
+  ) {
+    console.error("❌ ai-shopping.json resources.brand (/brand.json) + brandHub + brandId required");
+    process.exit(1);
+  }
+  const baseline = JSON.parse(fs.readFileSync(path.join(outDir, "geo-baseline.json"), "utf8"));
+  if (
+    baseline?.["@type"] !== "Dataset" ||
+    baseline?.baseline?.pricedSkuCount !== 12 ||
+    !baseline?.fingerprints?.merchantTsvSha256 ||
+    baseline?.baseline?.freeShipping !== false ||
+    !baseline?.brand?.["@id"]?.includes("#brand-nxtionstar")
+  ) {
+    console.error("❌ geo-baseline.json must snapshot 12 SKUs + Brand @id + fingerprints (no free shipping)");
+    process.exit(1);
+  }
+  {
+    const geoBased = JSON.stringify(baseline?.isBasedOn || []);
+    const geoRelated = JSON.stringify(baseline?.isRelatedTo || []);
+    for (const needle of [
+      "/geo-baseline.json",
+      "/entity.json",
+      "/organization.json",
+      "/.well-known/entity.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/feeds/merchant-priced-panels.tsv",
+      "/feeds/prices.rss",
+      "/entity-profiles.json",
+      "/point-c.txt",
+      "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
+    ]) {
+      if (!geoBased.includes(needle)) {
+        console.error(`❌ geo-baseline.json isBasedOn must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of ["/point-c.txt", "/.well-known/ard.json", "/.well-known/agents.json", "/entity-profiles.json", "#website"]) {
+      if (!geoRelated.includes(needle)) {
+        console.error(`❌ geo-baseline.json isRelatedTo must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    {
+      const geoSame = JSON.stringify(baseline?.sameAs || []);
+      const geoSubject = JSON.stringify(baseline?.subjectOf || []);
+      for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+        if (!geoSame.includes(needle)) {
+          console.error(`❌ geo-baseline.json sameAs must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+        if (!geoSubject.includes(needle)) {
+          console.error(`❌ geo-baseline.json subjectOf must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+      }
+    }
+    const geoDist = JSON.stringify(baseline?.distribution || []);
+    for (const needle of [
+      "/ai-shopping.json",
+      "/prices.json",
+      "/.well-known/prices.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/entity.json",
+      "/.well-known/entity.json",
+      "/organization.json",
+      "/catalog.json",
+      "/feeds/merchant-priced-panels.tsv",
+      "/feeds/prices.rss",
+      "/point-c.txt",
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
+      "/entity-profiles.json",
+      "/AGENTS.md",
+      "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
+      "/.well-known/agents.json",
+      "/.well-known/ard.json",
+      "/ai.txt",
+      "/llms.txt",
+      "/humans.txt",
+      "/AGENTS.md",
+    ]) {
+      if (!geoDist.includes(needle)) {
+        console.error(`❌ geo-baseline.json distribution invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    {
+      const gated = JSON.stringify(baseline?.baseline?.ownerGated || []);
+      if (
+        !gated.includes("geo:next") ||
+        !gated.includes("geo:ack") ||
+        !gated.includes("point-c:csv") ||
+        !gated.includes("https://www.isimtescil.net/") ||
+        !gated.includes("https://business.google.com/") ||
+        !gated.includes("https://chatgpt.com/")
+      ) {
+        console.error("❌ geo-baseline.json baseline.ownerGated must cite geo:next/ack + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
+        process.exit(1);
+      }
+    }
+  }
+  if (
+    !String(baseline?.baseline?.priceGraph?.entityMakesOffer || "").includes("#priced-panels-aggregate") ||
+    !baseline?.baseline?.priceGraph?.datasetHasPartOffers ||
+    !String(baseline?.baseline?.priceGraph?.offerItemOffered || "").includes("#product") ||
+    !String(baseline?.baseline?.priceGraph?.offerAvailableAtOrFrom || "").includes("#localbusiness") ||
+    !String(baseline?.baseline?.priceGraph?.organizationLocation || "").includes("#localbusiness") ||
+    !String(baseline?.baseline?.priceGraph?.serviceProvider || "").includes("#localbusiness") ||
+    !String(baseline?.baseline?.priceGraph?.brandMakesOffer || "").includes("#priced-panels-aggregate") ||
+    !String(baseline?.baseline?.priceGraph?.brandHasOfferCatalog || "").includes("/catalog.json") ||
+    !String(baseline?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    !String(baseline?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+  ) {
+    console.error("❌ geo-baseline.json baseline.priceGraph must cite makesOffer + Brand offer/catalog + #localbusiness location + serviceProvider");
+    process.exit(1);
+  }
+  for (const key of [
+    "pricesJson",
+    "organization",
+    "agentsJson",
+    "agentsMd",
+    "securityTxt",
+    "humansTxt",
+    "pricesRss",
+    "pointCTxt",
+    "pointCEnTxt",
+    "pointCWellKnown",
+    "brandJson",
+    "brandWellKnown",
+    "entityWellKnown",
+    "pricesWellKnown",
+    "priceWellKnown",
+    "pricingWellKnown",
+    "panelsWellKnown",
+    "modulesWellKnown",
+    "skuWellKnown",
+    "mpnWellKnown",
+    "merchantWellKnown",
+    "modulesJson",
+    "skuJson",
+    "panelsExtless",
+    "entityExtless",
+    "catalogExtless",
+    "priceJson",
+    "pricingJson",
+    "securityRoot",
+    "llmsFullText",
+    "llmsText",
+    "calculator",
+    "enCalculator",
+    "inventCalculatorEn",
+    "website",
+  ]) {
+    if (!String(baseline?.discovery?.[key] || "").includes("arledscreen.com")) {
+      console.error(`❌ geo-baseline.json discovery.${key} required for invent/agent surfaces`);
+      process.exit(1);
+    }
+  }
+  if (
+    !String(baseline?.discovery?.llmsText || "").includes("/llms.txt") ||
+    !String(baseline?.discovery?.calculator || "").includes("/tr/hesaplayici/") ||
+    !String(baseline?.discovery?.enCalculator || "").includes("/en/hesaplayici/") ||
+    !String(baseline?.discovery?.inventCalculatorEn || "").includes("/en/calculator/")
+  ) {
+    console.error("❌ geo-baseline.json discovery.llmsText + calculator + enCalculator + inventCalculatorEn path parity required");
+    process.exit(1);
+  }
+  if (!String(baseline?.discovery?.website || "").includes("#website")) {
+    console.error("❌ geo-baseline.json discovery.website must cite /#website");
+    process.exit(1);
+  }
+  if (!JSON.stringify(baseline?.isBasedOn || []).includes("AGENTS.md")) {
+    console.error("❌ geo-baseline.json isBasedOn must cite AGENTS.md");
+    process.exit(1);
+  }
+  if (
+    !String(ai?.resources?.pointC || "").includes("/point-c.txt") ||
+    !String(ai?.resources?.pointCEn || "").includes("/point-c-en.txt") ||
+    !String(ai?.resources?.pointCWellKnown || "").includes("/.well-known/point-c.txt")
+  ) {
+    console.error("❌ ai-shopping.json resources.pointC + pointCEn + pointCWellKnown required");
+    process.exit(1);
+  }
+  if (
+    !JSON.stringify(ai?.isBasedOn || []).includes("/brand.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/brand.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/organization.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/entity.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/entity-profiles.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("#website") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/modules.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/sku.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/pricing.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/panels.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/mpn.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/merchant.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/prices.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/price.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/offer.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/offers.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/offer.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/offers.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/dataset.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/feed.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/dataset.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/feed.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/products.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/product.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/products.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/product.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/catalog.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/geo-baseline.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/entity-profiles.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/ai-shopping.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/prices.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/panels.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/llms.txt") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/agents.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/point-c.txt") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/brand") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/modules") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/sku") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/mpn") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/merchant") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/products") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/product") ||
+    !(ai?.isBasedOn || []).includes("https://arledscreen.com/geo-baseline") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/organization.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/cite.json")
+  ) {
+    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases root pricedPanels + discovery + entity + extless sku/mpn/merchant/products/product/geo-baseline/brand/modules + #website");
+    process.exit(1);
+  }
+  {
+    const distUrls = (ai?.distribution || []).map((d) => d.contentUrl || "");
+    for (const u of [
+      "https://arledscreen.com/sku",
+      "https://arledscreen.com/mpn",
+      "https://arledscreen.com/merchant",
+      "https://arledscreen.com/offers",
+      "https://arledscreen.com/dataset",
+      "https://arledscreen.com/feed",
+      "https://arledscreen.com/products",
+      "https://arledscreen.com/product",
+      "https://arledscreen.com/geo-baseline",
+      "https://arledscreen.com/company",
+      "https://arledscreen.com/nap",
+      "https://arledscreen.com/cite",
+      "https://arledscreen.com/faq",
+      "https://arledscreen.com/faqs",
+      "https://arledscreen.com/ai-shopping",
+      "https://arledscreen.com/entity-profiles",
+      "https://arledscreen.com/llms",
+      "https://arledscreen.com/llms-full",
+      "https://arledscreen.com/api/v1/prices",
+      "https://arledscreen.com/api/panels.json",
+      "https://arledscreen.com/api/merchant.json",
+      "https://arledscreen.com/api/catalog",
+    ]) {
+      if (!distUrls.includes(u)) {
+        console.error(`❌ ai-shopping.json distribution must include invent alias ${u}`);
+        process.exit(1);
+      }
+    }
+  }
+  if (!fs.existsSync(path.join(outDir, "product"))) {
+    console.error("❌ out/product extensionless invent alias missing");
+    process.exit(1);
+  }
+  if (!fs.existsSync(path.join(outDir, "entity-profiles"))) {
+    console.error("❌ out/entity-profiles extensionless invent alias missing");
+    process.exit(1);
+  }
+  if (
+    !String(ai?.resources?.brandWellKnown || "").includes("/.well-known/brand.json") ||
+    !String(ai?.resources?.website || "").includes("#website") ||
+    !JSON.stringify(ai?.isRelatedTo || []).includes("#website")
+  ) {
+    console.error("❌ ai-shopping.json resources.brandWellKnown + resources.website + isRelatedTo #website required");
+    process.exit(1);
+  }
+  if (
+    !String(ai?.description || "").includes("geo:next") ||
+    !String(ai?.description || "").includes("geo:ack") ||
+    !String(ai?.description || "").includes("#website") ||
+    !String(ai?.description || "").includes("point-c:csv") ||
+    !String(ai?.description || "").includes("https://www.isimtescil.net/") ||
+    !String(ai?.description || "").includes("https://business.google.com/") ||
+    !String(ai?.description || "").includes("https://chatgpt.com/")
+  ) {
+    console.error("❌ ai-shopping.json description must cite geo:next/ack + #website + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
+    process.exit(1);
+  }
+  if (!JSON.stringify(ai?.distribution || []).includes("#website")) {
+    console.error("❌ ai-shopping.json distribution must invent-join WebSite #website");
+    process.exit(1);
+  }
+  if (
+    !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("geo:ack") ||
+    !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("#website")
+  ) {
+    console.error("❌ ard.json resources.aiShopping description must cite geo:ack + #website");
+    process.exit(1);
+  }
+  if (!ard?.agentic?.resources?.pricesJson?.url?.includes("/prices.json") || !ard?.agentic?.resources?.agentsMd?.url?.includes("AGENTS.md")) {
+    console.error("❌ ard.json must expose resources.pricesJson + agentsMd");
+    process.exit(1);
+  }
+  if (!ai?.resources?.geoBaseline?.includes("/geo-baseline.json")) {
+    console.error("❌ ai-shopping.json resources.geoBaseline required");
+    process.exit(1);
+  }
+  {
+    const gated = JSON.stringify(baseline?.baseline?.ownerGated || []);
+    if (!gated.includes("tur1a:log") || !gated.includes("point-c.txt") || !gated.includes("verify:arleds-301")) {
+      console.error("❌ geo-baseline.baseline.ownerGated must cite tur1a:log + point-c.txt + verify:arleds-301");
+      process.exit(1);
+    }
+  }
+  if (
+    !ai?.agentGuidelines?.priceSource?.includes("/geo-baseline.json") ||
+    !ai?.agentGuidelines?.en?.priceSource?.includes("/geo-baseline.json")
+  ) {
+    console.error("❌ ai-shopping.json agentGuidelines.priceSource (TR+EN) must cite geo-baseline.json");
+    process.exit(1);
+  }
+  const catalogLive = JSON.parse(fs.readFileSync(path.join(outDir, "catalog.json"), "utf8"));
+  const catalogRelated = JSON.stringify(catalogLive.isRelatedTo || []);
+  if (
+    !catalogRelated.includes("/geo-baseline.json") ||
+    !catalogRelated.includes("/ai-shopping.json") ||
+    !catalogRelated.includes("/feeds/prices.rss") ||
+    !catalogRelated.includes("/brand.json") ||
+    !catalogRelated.includes("/entity.json") ||
+    !catalogRelated.includes("/point-c.txt") ||
+    catalogLive?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar"
+  ) {
+    console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping + prices.rss + brand.json + entity.json + point-c.txt and brand @id #brand-nxtionstar");
+    process.exit(1);
+  }
+  {
+    const catDist = JSON.stringify(catalogLive.distribution || []);
+    if (
+      !Array.isArray(catalogLive.distribution) ||
+      catalogLive.distribution.length < 8 ||
+      !catDist.includes("/ai-shopping.json") ||
+      !catDist.includes("/prices.json") ||
+      !catDist.includes("/brand.json") ||
+      !catDist.includes("/.well-known/brand.json") ||
+      !catDist.includes("/.well-known/entity.json") ||
+      !catDist.includes("/entity.json") ||
+      !catDist.includes("/point-c.txt") ||
+      !catDist.includes("/point-c.json") ||
+      !catDist.includes("/geo-status.json") ||
+      !catDist.includes("/geo-next.txt") ||
+      !catDist.includes("/tur1a.json") ||
+      !catDist.includes("/point-c-progress.json") ||
+      !catDist.includes("/feeds/prices.rss") ||
+      !catDist.includes("#website") ||
+      !JSON.stringify(catalogLive.isRelatedTo || []).includes("#website")
+    ) {
+      console.error("❌ catalog.json Dataset.distribution must invent-join ai-shopping/prices/brand/entity/point-c/owner-gate HowTo/prices.rss/#website");
+      process.exit(1);
+    }
+  }
+  {
+    const catalogDesc = String(catalogLive?.description || "");
+    const brandLive = JSON.parse(fs.readFileSync(path.join(outDir, "brand.json"), "utf8"));
+    const brandDesc = String(brandLive?.description || "");
+    for (const needle of ["/.well-known/modules.json", "/.well-known/sku.json", "/.well-known/pricing.json"]) {
+      if (!catalogDesc.includes(needle)) {
+        console.error(`❌ catalog.json description must cite inventable ${needle}`);
+        process.exit(1);
+      }
+      if (!brandDesc.includes(needle)) {
+        console.error(`❌ brand.json description must cite inventable ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const [label, desc] of [
+      ["catalog.json", catalogDesc],
+      ["brand.json", brandDesc],
+    ]) {
+      if (
+        !desc.includes("geo:next") ||
+        !desc.includes("geo:ack") ||
+        !desc.includes("#website") ||
+        !desc.includes("point-c:csv") ||
+        !desc.includes("https://www.isimtescil.net/") ||
+        !desc.includes("https://business.google.com/") ||
+        !desc.includes("https://chatgpt.com/")
+      ) {
+        console.error(`❌ ${label} description must cite geo:next/ack + #website + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)`);
+        process.exit(1);
+      }
+    }
+    if (!JSON.stringify(brandLive?.isRelatedTo || []).includes("#website")) {
+      console.error("❌ brand.json isRelatedTo must cite WebSite #website");
+      process.exit(1);
+    }
+    if (!JSON.stringify(brandLive?.distribution || []).includes("#website")) {
+      console.error("❌ brand.json distribution must invent-join WebSite #website");
+      process.exit(1);
+    }
+    {
+      const brandBased = JSON.stringify(brandLive?.isBasedOn || []);
+      const brandDist = JSON.stringify(brandLive?.distribution || []);
+      for (const needle of [
+        "/ai-shopping.json",
+        "/catalog.json",
+        "/geo-baseline.json",
+        "/point-c.txt",
+        "/entity-profiles.json",
+        "/feeds/prices.rss",
+        "#website",
+        "/.well-known/modules.json",
+        "/.well-known/sku.json",
+        "/.well-known/pricing.json",
+        "/.well-known/panels.json",
+        "/.well-known/mpn.json",
+        "/.well-known/merchant.json",
+        "/.well-known/prices.json",
+        "/.well-known/price.json",
+      ]) {
+        if (!brandBased.includes(needle)) {
+          console.error(`❌ brand.json isBasedOn must include ${needle}`);
+          process.exit(1);
+        }
+      }
+      for (const needle of [
+        "/.well-known/modules.json",
+        "/.well-known/sku.json",
+        "/.well-known/pricing.json",
+        "/.well-known/panels.json",
+        "/.well-known/mpn.json",
+        "/.well-known/merchant.json",
+        "/.well-known/prices.json",
+        "/.well-known/price.json",
+        "/point-c.json",
+        "/geo-status.json",
+        "/geo-next.txt",
+        "/tur1a.json",
+        "/point-c-progress.json",
+      ]) {
+        if (!brandDist.includes(needle)) {
+          console.error(`❌ brand.json distribution must invent-join ${needle}`);
+          process.exit(1);
+        }
+      }
+      const catBased = JSON.stringify(catalogLive?.isBasedOn || []);
+      const catDistLive = JSON.stringify(catalogLive?.distribution || []);
+      for (const needle of [
+        "/ai-shopping.json",
+        "/brand.json",
+        "/geo-baseline.json",
+        "/point-c.txt",
+        "/entity-profiles.json",
+        "/feeds/prices.rss",
+        "#website",
+        "/.well-known/modules.json",
+        "/.well-known/sku.json",
+        "/.well-known/pricing.json",
+        "/.well-known/panels.json",
+        "/.well-known/mpn.json",
+        "/.well-known/merchant.json",
+        "/.well-known/prices.json",
+        "/.well-known/price.json",
+      ]) {
+        if (!catBased.includes(needle)) {
+          console.error(`❌ catalog.json isBasedOn must include ${needle}`);
+          process.exit(1);
+        }
+      }
+      for (const needle of [
+        "/.well-known/modules.json",
+        "/.well-known/sku.json",
+        "/.well-known/pricing.json",
+        "/.well-known/panels.json",
+        "/.well-known/mpn.json",
+        "/.well-known/merchant.json",
+        "/.well-known/prices.json",
+        "/.well-known/price.json",
+        "/point-c.json",
+        "/geo-status.json",
+        "/geo-next.txt",
+        "/tur1a.json",
+        "/point-c-progress.json",
+      ]) {
+        if (!catDistLive.includes(needle)) {
+          console.error(`❌ catalog.json distribution must invent-join ${needle}`);
+          process.exit(1);
+        }
+      }
+    }
+  }
+  // Product↔Offer identity: each catalog Offer.url must equal its Product.url (PDP),
+  // not the price-hub Collection.url — keeps catalog aligned with ai-shopping + merchant TSV.
+  const catalogItems = catalogLive?.mainEntity?.itemListElement || [];
+  if (!Array.isArray(catalogItems) || catalogItems.length !== 12) {
+    console.error(
+      `❌ catalog.json mainEntity.itemListElement must list 12 products, got ${Array.isArray(catalogItems) ? catalogItems.length : typeof catalogItems}`,
+    );
+    process.exit(1);
+  }
+  for (const product of catalogItems) {
+    const productUrl = product?.url;
+    const offerUrl = product?.offers?.url;
+    const id = product?.["@id"] || productUrl || "?";
+    if (!productUrl || !offerUrl || productUrl !== offerUrl) {
+      console.error(
+        `❌ catalog Offer.url must equal Product.url (PDP): ${id} product=${productUrl} offer=${offerUrl}`,
+      );
+      process.exit(1);
+    }
+    if (offerUrl.includes("/led-ekran-fiyatlari/")) {
+      console.error(`❌ catalog Offer.url must not point at price hub: ${id}`);
+      process.exit(1);
+    }
+    const sku = product?.sku;
+    const sameAs = Array.isArray(product?.sameAs) ? product.sameAs : [];
+    const offerSameAs = Array.isArray(product?.offers?.sameAs) ? product.offers.sameAs : [];
+    if (!sku || !sameAs.some((u) => String(u) === `${productUrl}#product`)) {
+      console.error(`❌ catalog Product ${id} sameAs must join PDP #product`);
+      process.exit(1);
+    }
+    if (product?.mainEntityOfPage !== productUrl) {
+      console.error(`❌ catalog Product ${id} mainEntityOfPage must be PDP url`);
+      process.exit(1);
+    }
+    if (!offerSameAs.some((u) => String(u).includes(`/ai-shopping.json#offer-${sku}`))) {
+      console.error(`❌ catalog Offer ${id} sameAs must join ai-shopping.json#offer-${sku}`);
+      process.exit(1);
+    }
+    if (!offerSameAs.some((u) => String(u) === `${productUrl}#offer`)) {
+      console.error(`❌ catalog Offer ${id} sameAs must join PDP #offer`);
+      process.exit(1);
+    }
+    if (product?.offers?.sku !== sku || product?.offers?.mpn !== sku) {
+      console.error(`❌ catalog Offer ${id} must set sku/mpn=${sku}`);
+      process.exit(1);
+    }
+    if (product?.offers?.itemOffered?.["@id"] !== `${productUrl}#product`) {
+      console.error(`❌ catalog Offer ${id} itemOffered must join PDP #product`);
+      process.exit(1);
+    }
+    if (!String(product?.offers?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar")) {
+      console.error(`❌ catalog Offer ${id} itemOffered.brand must be #brand-nxtionstar`);
+      process.exit(1);
+    }
+    if (product?.offers?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
+      console.error(`❌ catalog Offer ${id} availableAtOrFrom must be #localbusiness`);
+      process.exit(1);
+    }
+  }
+  if (catalogLive?.["@id"] !== "https://arledscreen.com/catalog.json") {
+    console.error("❌ catalog.json Collection must @id catalog.json");
+    process.exit(1);
+  }
+  {
+    const ct = catalogLive?.["@type"];
+    const types = Array.isArray(ct) ? ct : [ct];
+    if (!types.includes("Collection") || !types.includes("OfferCatalog")) {
+      console.error("❌ catalog.json @type must include Collection + OfferCatalog");
+      process.exit(1);
+    }
+  }
+  if (
+    !Array.isArray(catalogLive?.sameAs) ||
+    !catalogLive.sameAs.some((u) => String(u).includes("/ai-shopping.json"))
+  ) {
+    console.error("❌ catalog.json Collection sameAs must join ai-shopping.json");
+    process.exit(1);
+  }
+  {
+    const catSame = JSON.stringify(catalogLive?.sameAs || []);
+    for (const needle of [
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/brand.json",
+      "/point-c.txt",
+      "/.well-known/panels.json",
+      "/.well-known/modules.json",
+      "/.well-known/agents.json",
+      "/ai.txt",
+      "/humans.txt",
+      "/AGENTS.md",
+    ]) {
+      if (!catSame.includes(needle)) {
+        console.error(`❌ catalog.json Collection sameAs must join ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  {
+    const catSubject = JSON.stringify(catalogLive?.subjectOf || []);
+    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      if (!catSubject.includes(needle)) {
+        console.error(`❌ catalog.json Collection subjectOf must join owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  if (
+    catalogLive?.seller?.["@id"] !== "https://arledscreen.com/#organization" ||
+    catalogLive?.provider?.["@id"] !== "https://arledscreen.com/#organization" ||
+    catalogLive?.publisher?.["@id"] !== "https://arledscreen.com/#organization"
+  ) {
+    console.error("❌ catalog.json must seller + provider + publisher → #organization");
+    process.exit(1);
+  }
+  if (catalogLive?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
+    console.error("❌ catalog.json Collection availableAtOrFrom must be #localbusiness");
+    process.exit(1);
+  }
+  if (
+    !String(catalogLive?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    catalogLive?.brand?.makesOffer?.["@type"] !== "AggregateOffer" ||
+    catalogLive?.brand?.makesOffer?.offerCount !== 12 ||
+    !catalogLive?.brand?.makesOffer?.lowPrice ||
+    !String(catalogLive?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+  ) {
+    console.error("❌ catalog.json Brand must AggregateOffer band (offerCount×12) + hasOfferCatalog");
+    process.exit(1);
+  }
+  if (ai?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
+    console.error("❌ ai-shopping.json Dataset availableAtOrFrom must be #localbusiness");
+    process.exit(1);
+  }
+  if (
+    !String(ai?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    ai?.brand?.makesOffer?.["@type"] !== "AggregateOffer" ||
+    ai?.brand?.makesOffer?.offerCount !== 12 ||
+    !ai?.brand?.makesOffer?.lowPrice ||
+    !ai?.brand?.makesOffer?.highPrice ||
+    !String(ai?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+  ) {
+    console.error("❌ ai-shopping.json Brand must AggregateOffer band (offerCount×12 + low/high) + hasOfferCatalog");
+    process.exit(1);
+  }
+  const aiBasedOn = JSON.stringify(ai?.isBasedOn || []);
+  if (!aiBasedOn.includes("/geo-baseline.json")) {
+    console.error("❌ ai-shopping.json isBasedOn must include geo-baseline.json");
+    process.exit(1);
+  }
+  if (!aiBasedOn.includes("/feeds/prices.rss")) {
+    console.error("❌ ai-shopping.json isBasedOn must include feeds/prices.rss");
+    process.exit(1);
+  }
+  if (!ai?.resources?.en?.home || !ai.resources.en.calculator) {
+    console.error("❌ ai-shopping.json resources.en.home + calculator required");
+    process.exit(1);
+  }
+  for (const key of [
+    "servicesHub",
+    "regionsHub",
+    "projectsHub",
+    "gallery",
+    "founder",
+    "blog",
+    "privacy",
+    "intentHub",
+    "priceHub",
+    "productsHub",
+    "faq",
+    "brand",
+  ]) {
+    const v = ai?.resources?.en?.[key];
+    if (!v || !String(v).includes(`/en/`)) {
+      console.error(`❌ ai-shopping.json resources.en.${key} must point at /en/ hub`);
+      process.exit(1);
+    }
+  }
+  for (const key of [
+    "servicesHubEn",
+    "regionsHubEn",
+    "projectsHubEn",
+    "galleryEn",
+    "founderEn",
+    "blogEn",
+    "privacyEn",
+    "yapayZekaEn",
+  ]) {
+    const v = baseline?.discovery?.[key];
+    if (!v || !String(v).includes("/en/")) {
+      console.error(`❌ geo-baseline.json discovery.${key} must point at EN hub`);
+      process.exit(1);
+    }
+  }
+  for (const key of [
+    "enServicesHub",
+    "enRegionsHub",
+    "enProjectsHub",
+    "enGallery",
+    "enFounder",
+    "enBlog",
+    "privacyEn",
+    "enIntentHub",
+    "enPriceHub",
+    "enProductsHub",
+  ]) {
+    const url = ard?.agentic?.resources?.[key]?.url;
+    if (!url || !String(url).includes("/en/")) {
+      console.error(`❌ ard.json agentic.resources.${key}.url must point at EN hub`);
+      process.exit(1);
+    }
+  }
+  const entity = JSON.parse(fs.readFileSync(path.join(outDir, "entity.json"), "utf8"));
+  if (!entity.merchantFeed?.includes("/feeds/merchant-priced-panels.tsv")) {
+    console.error("❌ entity.json must expose merchantFeed TSV URL");
+    process.exit(1);
+  }
+  if (
+    !String(entity.pricesJson || "").includes("/prices.json") ||
+    !String(entity.organizationJson || "").includes("/organization.json") ||
+    !String(entity.agentsJson || "").includes("/agents.json") ||
+    !String(entity.agentsMd || "").includes("AGENTS.md")
+  ) {
+    console.error("❌ entity.json must expose pricesJson + organizationJson + agentsJson + agentsMd");
+    process.exit(1);
+  }
+  const entityFaqBlob = JSON.stringify(entity.faqs || []) + JSON.stringify(entity.faqsEn || []);
+  if (!entityFaqBlob.includes("/prices.json") || !entityFaqBlob.includes("AGENTS.md")) {
+    console.error("❌ entity.json FAQs must cite inventable /prices.json + AGENTS.md");
+    process.exit(1);
+  }
+  for (const needle of ["/.well-known/modules.json", "/.well-known/sku.json", "/.well-known/pricing.json"]) {
+    if (!entityFaqBlob.includes(needle)) {
+      console.error(`❌ entity.json FAQs must cite inventable ${needle}`);
+      process.exit(1);
+    }
+  }
+  if (entity?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar") {
+    console.error("❌ entity.json brand.@id must be #brand-nxtionstar");
+    process.exit(1);
+  }
+  if (
+    !String(entity?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    entity?.brand?.makesOffer?.["@type"] !== "AggregateOffer" ||
+    entity?.brand?.makesOffer?.offerCount !== 12 ||
+    !Array.isArray(entity?.brand?.makesOffer?.offers) ||
+    entity.brand.makesOffer.offers.length !== 12
+  ) {
+    console.error("❌ entity.json brand.makesOffer must be AggregateOffer×12 (#priced-panels-aggregate)");
+    process.exit(1);
+  }
+  {
+    const actions = Array.isArray(entity?.potentialAction) ? entity.potentialAction : [];
+    const hasTr = actions.some(
+      (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/tr/quote"),
+    );
+    const hasEn = actions.some(
+      (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
+    );
+    if (!hasTr || !hasEn) {
+      console.error("❌ entity.json potentialAction must include OrderAction TR+EN /quote/");
+      process.exit(1);
+    }
+  }
+  {
+    const site = entity?.mainEntityOfPage;
+    const siteActions = Array.isArray(site?.potentialAction) ? site.potentialAction : [];
+    const hasTr = siteActions.some(
+      (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/tr/quote"),
+    );
+    const hasEn = siteActions.some(
+      (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
+    );
+    const siteBlob = JSON.stringify(site?.subjectOf || []) + JSON.stringify(site?.sameAs || []);
+    if (
+      site?.["@type"] !== "WebSite" ||
+      site?.["@id"] !== "https://arledscreen.com/#website" ||
+      !hasTr ||
+      !hasEn ||
+      !siteBlob.includes("/ai-shopping.json") ||
+      !siteBlob.includes("/prices.json") ||
+      !siteBlob.includes("/catalog.json") ||
+      !siteBlob.includes("/brand.json") ||
+      !siteBlob.includes("/point-c.txt") ||
+      !siteBlob.includes("/point-c.json") ||
+      !siteBlob.includes("/geo-status.json") ||
+      !siteBlob.includes("/geo-next.txt") ||
+      !siteBlob.includes("/tur1a.json") ||
+      !siteBlob.includes("/point-c-progress.json") ||
+      !siteBlob.includes("/entity-profiles.json") ||
+      !siteBlob.includes("/geo-baseline.json") ||
+      !siteBlob.includes("/.well-known/brand.json") ||
+      !siteBlob.includes("/organization.json")
+    ) {
+      console.error("❌ entity.json mainEntityOfPage must be WebSite #website with OrderAction TR+EN + invent subjectOf/sameAs (profiles/geo/brand-wk/org/point-c + owner-gate HowTo)");
+      process.exit(1);
+    }
+  }
+  if (!String(entity?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")) {
+    console.error("❌ entity.json brand.hasOfferCatalog must join catalog.json");
+    process.exit(1);
+  }
+  if (
+    !Array.isArray(entity?.brand?.subjectOf) ||
+    entity.brand.subjectOf.length < 3 ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/ai-shopping.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/catalog.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/feeds/prices.rss") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/prices.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/point-c.txt") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/point-c.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/geo-status.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/geo-next.txt") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/tur1a.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/point-c-progress.json") ||
+    !JSON.stringify(entity.brand.subjectOf).includes("/entity.json")
+  ) {
+    console.error("❌ entity.json brand.subjectOf must include ai-shopping + catalog + prices.rss + prices.json + point-c + owner-gate HowTo + entity");
+    process.exit(1);
+  }
+  if (
+    !String(entity?.logo || "").includes("/brand/") ||
+    !Array.isArray(entity?.knowsAbout) ||
+    entity.knowsAbout.length < 5 ||
+    !Array.isArray(entity?.contactPoint) ||
+    entity.contactPoint[0]?.contactType !== "sales"
+  ) {
+    console.error("❌ entity.json must expose logo + knowsAbout + contactPoint (Org HTML parity)");
+    process.exit(1);
+  }
+  if (
+    entity?.makesOffer?.["@type"] !== "AggregateOffer" ||
+    entity?.makesOffer?.offerCount !== 12 ||
+    entity?.makesOffer?.priceCurrency !== "USD" ||
+    !String(entity?.makesOffer?.url || "").includes("/ai-shopping.json") ||
+    String(entity?.makesOffer?.lowPrice) !== "26.98" ||
+    String(entity?.makesOffer?.highPrice) !== "95.88" ||
+    entity?.makesOffer?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness"
+  ) {
+    console.error("❌ entity.json makesOffer must be AggregateOffer×12 USD 26.98–95.88 → ai-shopping + #localbusiness");
+    process.exit(1);
+  }
+  if (
+    !Array.isArray(entity?.makesOffer?.offers) ||
+    entity.makesOffer.offers.length !== 12 ||
+    !entity.makesOffer.offers.every(
+      (o) =>
+        o?.["@type"] === "Offer" &&
+        o?.sku &&
+        o.mpn === o.sku &&
+        String(o["@id"] || "").includes(`/ai-shopping.json#offer-${o.sku}`) &&
+        String(o?.itemOffered?.["@id"] || "").endsWith("#product") &&
+        String(o?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
+        o?.seller?.["@id"] === "https://arledscreen.com/#organization" &&
+        o?.priceSpecification?.valueAddedTaxIncluded === false &&
+        String(o?.description || "").includes("Ücretsiz kargo yok") &&
+        o?.shippingDetails?.["@type"] === "OfferShippingDetails" &&
+        o?.hasMerchantReturnPolicy?.returnPolicyCategory ===
+          "https://schema.org/MerchantReturnNotPermitted" &&
+        o?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
+    )
+  ) {
+    console.error("❌ entity.json makesOffer.offers must deny free shipping + return policy + itemOffered Brand + localbusiness");
+    process.exit(1);
+  }
+  if (
+    entity?.location?.["@type"] !== "LocalBusiness" ||
+    entity?.location?.["@id"] !== "https://arledscreen.com/#localbusiness" ||
+    entity?.location?.makesOffer?.offerCount !== 12 ||
+    entity?.location?.hasOfferCatalog?.["@type"] !== "OfferCatalog" ||
+    !Array.isArray(entity?.location?.subjectOf) ||
+    entity.location.subjectOf.length < 3 ||
+    !JSON.stringify(entity.location.subjectOf).includes("/prices.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/point-c.txt") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/point-c.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/geo-status.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/geo-next.txt") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/tur1a.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/point-c-progress.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("/brand.json") ||
+    !JSON.stringify(entity.location.subjectOf).includes("#website")
+  ) {
+    console.error("❌ entity.json location must be LocalBusiness #localbusiness with makesOffer + hasOfferCatalog + subjectOf invent (prices/point-c/owner-gate HowTo/brand/#website)");
+    process.exit(1);
+  }
+  {
+    const websiteIdHits = (list) =>
+      (Array.isArray(list) ? list : []).filter((s) => String(s?.["@id"] || "").includes("#website")).length;
+    if (
+      websiteIdHits(entity?.subjectOf) !== 1 ||
+      websiteIdHits(entity?.brand?.subjectOf) !== 1 ||
+      websiteIdHits(entity?.location?.subjectOf) !== 1
+    ) {
+      console.error("❌ entity.json subjectOf/brand/location must each cite WebSite #website exactly once (no postbuild dupes)");
+      process.exit(1);
+    }
+  }
+  if (
+    entity?.hasOfferCatalog?.["@type"] !== "OfferCatalog" ||
+    !String(entity?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json") ||
+    entity?.hasOfferCatalog?.numberOfItems !== 12 ||
+    entity?.hasOfferCatalog?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness"
+  ) {
+    console.error("❌ entity.json hasOfferCatalog must be OfferCatalog → catalog.json ×12 + #localbusiness");
+    process.exit(1);
+  }
+  const disambig = String(entity?.disambiguatingDescription || "");
+  if (!disambig.includes("arleds.com") || !disambig.includes("arledscreen.com")) {
+    console.error("❌ entity.json disambiguatingDescription must warn arleds.com vs arledscreen.com");
+    process.exit(1);
+  }
+  if (!disambig.includes("linkedin.com/company/arleds") || !disambig.includes("web sitesi arleds.com değildir")) {
+    console.error("❌ entity.json disambiguatingDescription must warn LinkedIn /company/arleds ≠ web arleds.com");
+    process.exit(1);
+  }
+  if (JSON.stringify(entity?.sameAs || []).includes("arleds.com")) {
+    console.error("❌ entity.json sameAs must NOT include legacy arleds.com (until 301)");
+    process.exit(1);
+  }
+  {
+    const entSame = JSON.stringify(entity?.sameAs || []);
+    for (const needle of [
+      "/organization.json",
+      "/.well-known/entity.json",
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/point-c.txt",
+      "#website",
+      "/.well-known/panels.json",
+      "/.well-known/modules.json",
+      "/.well-known/agents.json",
+      "/.well-known/ard.json",
+      "/ai.txt",
+      "/llms.txt",
+      "/humans.txt",
+      "/AGENTS.md",
+    ]) {
+      if (!entSame.includes(needle)) {
+        console.error(`❌ entity.json sameAs must invent-join ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  {
+    const entDesc = String(entity?.description || "");
+    if (
+      !entDesc.includes("geo:next") ||
+      !entDesc.includes("geo:ack") ||
+      !entDesc.includes("#website") ||
+      !entDesc.includes("point-c:csv") ||
+      !entDesc.includes("https://www.isimtescil.net/") ||
+      !entDesc.includes("https://business.google.com/") ||
+      !entDesc.includes("https://chatgpt.com/")
+    ) {
+      console.error("❌ entity.json description must cite geo:next/ack + #website + point-c:csv + Open tabs (organization alias parity)");
+      process.exit(1);
+    }
+  }
+  {
+    const entBased = JSON.stringify(entity?.isBasedOn || []);
+    const entDist = JSON.stringify(entity?.distribution || []);
+    for (const needle of [
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/.well-known/entity.json",
+      "/geo-baseline.json",
+      "/point-c.txt",
+      "/entity-profiles.json",
+      "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
+    ]) {
+      if (!entBased.includes(needle)) {
+        console.error(`❌ entity.json isBasedOn must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of [
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/.well-known/entity.json",
+      "/geo-baseline.json",
+      "/point-c.txt",
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
+      "/entity-profiles.json",
+      "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
+    ]) {
+      if (!entDist.includes(needle)) {
+        console.error(`❌ entity.json distribution must invent-join ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  if (!ai?.agentGuidelines?.roleClarity?.legacyDomainNote?.includes("arleds.com")) {
+    console.error("❌ ai-shopping agentGuidelines.roleClarity.legacyDomainNote required");
+    process.exit(1);
+  }
+  if (!ai?.agentGuidelines?.en?.roleClarity?.legacyDomainNote?.includes("arleds.com")) {
+    console.error("❌ ai-shopping agentGuidelines.en.roleClarity.legacyDomainNote required");
+    process.exit(1);
+  }
+  if (!Array.isArray(ai?.faqs) || !ai.faqs.some((f) => String(f?.question || "").includes("arleds.com"))) {
+    console.error("❌ ai-shopping.json faqs must mirror entity arleds.com Q&A");
+    process.exit(1);
+  }
+  if (!ai.faqs.some((f) => String(f?.question || "").includes("NationStar"))) {
+    console.error("❌ ai-shopping.json faqs must include NXTIONSTAR ≠ NationStar Q&A");
+    process.exit(1);
+  }
+  if (!entity.faqs?.some((f) => String(f?.question || "").includes("NationStar"))) {
+    console.error("❌ entity.json faqs must include NXTIONSTAR ≠ NationStar Q&A");
+    process.exit(1);
+  }
+  if (
+    !Array.isArray(entity.faqsEn) ||
+    entity.faqsEn.length < 5 ||
+    !entity.faqsEn.some((f) => String(f?.question || "").includes("arleds.com")) ||
+    !entity.faqsEn.some((f) => String(f?.question || "").includes("NationStar"))
+  ) {
+    console.error("❌ entity.json faqsEn must include EN arleds.com + NationStar Q&A");
+    process.exit(1);
+  }
+  if (
+    !Array.isArray(ai?.faqsEn) ||
+    ai.faqsEn.length < 5 ||
+    !ai.faqsEn.some((f) => String(f?.question || "").includes("arleds.com")) ||
+    !ai.faqsEn.some((f) => String(f?.question || "").includes("NationStar"))
+  ) {
+    console.error("❌ ai-shopping.json faqsEn must mirror entity EN arleds.com + NationStar Q&A");
+    process.exit(1);
+  }
+  if (!Array.isArray(ai?.pricedPanels) || !ai.pricedPanels.every((p) => p.nameEn && String(p.nameEn).includes("LED Module"))) {
+    console.error("❌ ai-shopping pricedPanels must include nameEn (…LED Module) for all 12 SKUs");
+    process.exit(1);
+  }
+  const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
+  if (
+    !aiTxtLive.includes("/ai-shopping.json") ||
+    !aiTxtLive.includes("/entity.json") ||
+    !aiTxtLive.includes("arleds.com") ||
+    !aiTxtLive.includes("NationStar") ||
+    !aiTxtLive.includes("makesOffer") ||
+    !aiTxtLive.includes("itemOffered") ||
+    !aiTxtLive.includes("#localbusiness") ||
+    !aiTxtLive.includes("#brand-nxtionstar") ||
+    !aiTxtLive.includes("hasOfferCatalog → catalog.json") ||
+    !aiTxtLive.includes("brand-json:") ||
+    !aiTxtLive.includes("/brand.json") ||
+    !aiTxtLive.includes("#website") ||
+    !aiTxtLive.includes("quote-tr:") ||
+    !aiTxtLive.includes("/tr/quote/") ||
+    !aiTxtLive.includes("owner-tur1a-log:") ||
+    !aiTxtLive.includes("owner-tur1a-csv:") ||
+    !aiTxtLive.includes("owner-tur1a-open:") ||
+    !aiTxtLive.includes("owner-point-c-csv:") ||
+    !aiTxtLive.includes("owner-arleds-301:") ||
+    !aiTxtLive.includes("owner-arleds-open:") ||
+    !aiTxtLive.includes("owner-gbp-open:") ||
+    !aiTxtLive.includes("owner-chatgpt-open:") ||
+    !aiTxtLive.includes("owner-bingplaces-open:") ||
+    !aiTxtLive.includes("owner-apple-open:") ||
+    !aiTxtLive.includes("owner-linkedin-open:") ||
+    !aiTxtLive.includes("owner-instagram-open:") ||
+    !aiTxtLive.includes("owner-facebook-open:") ||
+    !aiTxtLive.includes("owner-whatsapp-open:") ||
+    !aiTxtLive.includes("owner-whatsapp-handle:") ||
+    !aiTxtLive.includes("owner-instagram-handle:") ||
+    !aiTxtLive.includes("owner-facebook-handle:") ||
+    !aiTxtLive.includes("social-json:") ||
+    !aiTxtLive.includes("contact-json:") ||
+    !aiTxtLive.includes("owner-youtube-open:") ||
+    !aiTxtLive.includes("owner-yandex-open:") ||
+    !aiTxtLive.includes("point-c-en-well-known:") ||
+    !aiTxtLive.includes("point-c-json:") ||
+    !aiTxtLive.includes("point-c-csv:") ||
+    !aiTxtLive.includes("geo-status:") ||
+    !aiTxtLive.includes("geo-next:") ||
+    !aiTxtLive.includes("owner-next-json:") ||
+    !aiTxtLive.includes("geo-next-json:") ||
+    !aiTxtLive.includes("tur1a-json:") ||
+    !aiTxtLive.includes("tur1a-csv:") ||
+    !aiTxtLive.includes("/point-c.json") ||
+    !aiTxtLive.includes("/feeds/point-c.csv") ||
+    !aiTxtLive.includes("/geo-status.json") ||
+    !aiTxtLive.includes("/geo-next.txt") ||
+    !aiTxtLive.includes("/owner-next.html") ||
+    !aiTxtLive.includes("/owner-next.json") ||
+    !aiTxtLive.includes("/geo-next.json") ||
+    !aiTxtLive.includes("/tur1a.json") ||
+    !aiTxtLive.includes("/feeds/tur1a.csv") ||
+    !aiTxtLive.includes("https://www.isimtescil.net/") ||
+    !aiTxtLive.includes("https://business.google.com/") ||
+    !aiTxtLive.includes("https://chatgpt.com/") ||
+    !aiTxtLive.includes("https://www.bingplaces.com/") ||
+    !aiTxtLive.includes("https://businessconnect.apple.com/") ||
+    !aiTxtLive.includes("https://www.linkedin.com/company/arleds/") ||
+    !aiTxtLive.includes("https://www.instagram.com/arledscreen/") ||
+    !aiTxtLive.includes("https://www.facebook.com/arledscreenn") ||
+    !aiTxtLive.includes("https://wa.me/905305078834") ||
+    !aiTxtLive.includes("@arledscreen") ||
+    !aiTxtLive.includes("@arledscreenn") ||
+    !aiTxtLive.includes("/social.json") ||
+    !aiTxtLive.includes("/contact.json") ||
+    !aiTxtLive.includes("https://studio.youtube.com/") ||
+    !aiTxtLive.includes("https://business.yandex.com/") ||
+    !aiTxtLive.includes("/.well-known/point-c-en.txt") ||
+    !aiTxtLive.includes("point-c:csv") ||
+    !aiTxtLive.includes("point-c:")
+  ) {
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds/GBP/chatgpt/Bing/Apple/LI/IG/FB/WA handles + social.json + YT/Yandex Open/csv + point-c-en well-known");
+    process.exit(1);
+  }
+  {
+    const socialLive = path.join(outDir, "social.json");
+    if (!fs.existsSync(socialLive)) {
+      console.error("❌ out/social.json missing (owner-confirmed social handles invent)");
+      process.exit(1);
+    }
+    const social = JSON.parse(fs.readFileSync(socialLive, "utf8"));
+    if (
+      social?.handles?.facebook !== "arledscreenn" ||
+      social?.handles?.instagram !== "arledscreen" ||
+      social?.handles?.whatsapp !== "arledscreen" ||
+      !JSON.stringify(social).includes("https://wa.me/905305078834") ||
+      !JSON.stringify(social).includes("https://www.facebook.com/arledscreenn") ||
+      !JSON.stringify(social).includes("https://www.instagram.com/arledscreen")
+    ) {
+      console.error("❌ out/social.json must cite FB @arledscreenn · IG @arledscreen · WA @arledscreen + wa.me");
+      process.exit(1);
+    }
+    const canonSocial = fs.readFileSync(socialLive);
+    for (const rel of ["contact.json", "social", ".well-known/social.json", ".well-known/contact.json"]) {
+      const fp = path.join(outDir, rel);
+      if (!fs.existsSync(fp) || fs.statSync(fp).isDirectory()) {
+        console.error(`❌ out/${rel} must be social.json invent alias file`);
+        process.exit(1);
+      }
+      if (!fs.readFileSync(fp).equals(canonSocial)) {
+        console.error(`❌ out/${rel} must match social.json`);
+        process.exit(1);
+      }
+    }
+    const llmsLive = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
+    const humansLive = fs.readFileSync(path.join(outDir, "humans.txt"), "utf8");
+    if (
+      !llmsLive.includes("@arledscreenn") ||
+      !llmsLive.includes("WhatsApp") ||
+      !llmsLive.includes("@arledscreen") ||
+      !llmsLive.includes("/social.json") ||
+      !humansLive.includes("WhatsApp: @arledscreen") ||
+      !humansLive.includes("Facebook: @arledscreenn") ||
+      !humansLive.includes("Instagram: @arledscreen")
+    ) {
+      console.error("❌ llms.txt + humans.txt must cite owner-confirmed social handles + social.json");
+      process.exit(1);
+    }
+    console.log("✅ social.json + contact aliases + llms/humans handle cite (FB @arledscreenn · IG/WA @arledscreen)");
+  }
+  const geoNextSrc = fs.readFileSync(path.join(repoRoot, "scripts/geo-next.mjs"), "utf8");
+  if (
+    !geoNextSrc.includes("point-c:csv") ||
+    !geoNextSrc.includes("offsite-entity-playbook.md") ||
+    !geoNextSrc.includes("DNSENABLE_PANEL_URL") ||
+    !geoNextSrc.includes("DNSENABLE_GMAIL_DRAFT_URL") ||
+    !geoNextSrc.includes("buildDnsEnableMailto") ||
+    !geoNextSrc.includes("point-c:dnsenable-draft") ||
+    !geoNextSrc.includes("Queued after Point C") ||
+    !geoNextSrc.includes("Open:") ||
+    !geoNextSrc.includes("owner-next.html") ||
+    !geoNextSrc.includes("?pack=")
+  ) {
+    console.error("❌ scripts/geo-next.mjs must surface point-c:csv + playbook + DNSEnable Open/OpenAlt prep + dnsenable-draft + owner-next.html?pack=");
+    process.exit(1);
+  }
+  const pointCPacksSrc = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
+  if (
+    !pointCPacksSrc.includes("dnsenable-draft") ||
+    !pointCPacksSrc.includes("printDnsEnableDraft") ||
+    !pointCPacksSrc.includes("1878479803134731083")
+  ) {
+    console.error("❌ scripts/print-point-c-packs.mjs must expose --dnsenable-draft + refreshed DNSEnable Gmail draft URL");
+    process.exit(1);
+  }
+  console.log("✅ ai.txt + geo:next owner Open/csv friction pointers");
+  if (
+    !aiTxtLive.includes("/en/prices/") ||
+    !aiTxtLive.includes("/en/pricing/") ||
+    !aiTxtLive.includes("/en/price/") ||
+    !aiTxtLive.includes("/en/cost/") ||
+    !aiTxtLive.includes("/en/products/gob-led-ekran/p1-25-gob/") ||
+    !aiTxtLive.includes("/en/catalog/") ||
+    !aiTxtLive.includes("/en/shop/") ||
+    !aiTxtLive.includes("/en/request-quote/") ||
+    !aiTxtLive.includes("/en/products/gob/") ||
+    !aiTxtLive.includes("feed-alias-catalog:") ||
+    !aiTxtLive.includes("/en/ai-shopping.json") ||
+    !aiTxtLive.includes("/.well-known/llms.txt") ||
+    !aiTxtLive.includes("invent-teklif-tr:") ||
+    !aiTxtLive.includes("/tr/teklif/") ||
+    !aiTxtLive.includes("/tr/fiyat-teklifi/") ||
+    !aiTxtLive.includes("invent-fiyat-tr:") ||
+    !aiTxtLive.includes("invent-prices-tr:") ||
+    !aiTxtLive.includes("invent-catalog-tr:") ||
+    !aiTxtLive.includes("invent-calculator-tr:") ||
+    !aiTxtLive.includes("invent-faq-tr:") ||
+    !aiTxtLive.includes("feed-alias-panels-json:") ||
+    !aiTxtLive.includes("feed-alias-merchant-json:") ||
+    !aiTxtLive.includes("feed-alias-mpn-json:") ||
+    !aiTxtLive.includes("invent-root-teklif:") ||
+    !aiTxtLive.includes("invent-root-fiyat:") ||
+    !aiTxtLive.includes("invent-modules-tr:") ||
+    !aiTxtLive.includes("invent-magaza-en:") ||
+    !aiTxtLive.includes("feed-alias-well-known-mpn:") ||
+    !aiTxtLive.includes("feed-alias-well-known-panels:") ||
+    !aiTxtLive.includes("feed-alias-well-known-modules:") ||
+    !aiTxtLive.includes("feed-alias-well-known-sku:") ||
+    !aiTxtLive.includes("feed-alias-well-known-price:") ||
+    !aiTxtLive.includes("feed-alias-well-known-pricing:") ||
+    !aiTxtLive.includes("feed-alias-api-panels:")
+  ) {
+    console.error("❌ out/ai.txt must list invent bridges + feed path aliases");
+    process.exit(1);
+  }
+  // Inventable feed path aliases (extensionless / locale-prefixed) must exist in out/.
+  for (const rel of [
+    "catalog",
+    "ai-shopping",
+    "entity",
+    "geo-baseline",
+    "offer",
+    "offers",
+    "dataset",
+    "feed",
+    "organization",
+    "company",
+    "nap",
+    "cite",
+    "faq",
+    "faqs",
+    "llms",
+    ".well-known/llms.txt",
+    "en/ai-shopping.json",
+    "en/catalog.json",
+    "en/entity.json",
+    "pricing.json",
+    "products.json",
+    "en/pricing.json",
+    "en/products.json",
+    "data/catalog.json",
+    "data/prices.json",
+    "api/catalog",
+    "api/prices",
+    "prices.json",
+    "price.json",
+    "panels.json",
+    "modules.json",
+    "sku.json",
+    "mpn.json",
+    "merchant.json",
+    "feeds/prices.json",
+    "feeds/catalog.json",
+    "en/prices.json",
+    "en/price.json",
+    ".well-known/ai.txt",
+    ".well-known/ai-shopping.json",
+    ".well-known/prices.json",
+    ".well-known/merchant.json",
+    ".well-known/panels.json",
+    ".well-known/entity.json",
+    ".well-known/catalog.json",
+    ".well-known/llms-full.txt",
+    "organization.json",
+    "company.json",
+    "about.json",
+    "nap.json",
+    "brand.json",
+    "offers.json",
+    "dataset.json",
+    "api/entity",
+    "api/ai-shopping",
+    "api/v1/prices",
+    "v1/prices",
+    "security.txt",
+    ".well-known/security",
+    "AGENTS.md",
+    "agent.json",
+    ".well-known/agent.json",
+    "pricing/index.html",
+    "prices/index.html",
+    "price/index.html",
+    ".well-known/security.txt",
+    "en/ai-shopping/index.html",
+  ]) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ Missing feed path alias in out/: ${rel}`);
+      process.exit(1);
+    }
+  }
+  const securityLive = fs.readFileSync(path.join(outDir, ".well-known/security.txt"), "utf8");
+  if (
+    !securityLive.includes("arled@arledscreen.com") ||
+    !securityLive.includes("Expires:") ||
+    !securityLive.includes("/brand.json") ||
+    !securityLive.includes("/.well-known/brand.json") ||
+    !securityLive.includes("/entity.json") ||
+    !securityLive.includes("/.well-known/entity.json") ||
+    !securityLive.includes("/ai-shopping.json") ||
+    !securityLive.includes("/prices.json") ||
+    !securityLive.includes("/point-c.txt") ||
+    !securityLive.includes("/entity-profiles.json") ||
+    !securityLive.includes("#website") ||
+    !securityLive.includes("geo:next") ||
+    !securityLive.includes("geo:ack") ||
+    !securityLive.includes("/.well-known/modules.json") ||
+    !securityLive.includes("/.well-known/sku.json") ||
+    !securityLive.includes("/.well-known/pricing.json") ||
+    !securityLive.includes("/.well-known/panels.json") ||
+    !securityLive.includes("/.well-known/mpn.json") ||
+    !securityLive.includes("/.well-known/merchant.json") ||
+    !securityLive.includes("/.well-known/prices.json") ||
+    !securityLive.includes("/.well-known/price.json") ||
+    !securityLive.includes("/.well-known/agents.json") ||
+    !securityLive.includes("/.well-known/ard.json") ||
+    !securityLive.includes("/.well-known/organization.json") ||
+    !securityLive.includes("/.well-known/geo-baseline.json") ||
+    !securityLive.includes("/.well-known/offer.json") ||
+    !securityLive.includes("verify:arleds-301") ||
+    !securityLive.includes("/humans.txt") ||
+    !securityLive.includes("/AGENTS.md") ||
+    !securityLive.includes("point-c:csv") ||
+    !securityLive.includes("/geo-next.txt") ||
+    !securityLive.includes("/owner-next.html") ||
+    !securityLive.includes("/owner-next.json") ||
+    !securityLive.includes("/point-c.json") ||
+    !securityLive.includes("/point-c-progress.json") ||
+    !securityLive.includes("potentialAction") ||
+    !securityLive.includes("directoryLong") ||
+    !securityLive.includes("https://www.bingplaces.com/") ||
+    !securityLive.includes("https://www.isimtescil.net/") ||
+    !securityLive.includes("https://business.google.com/") ||
+    !securityLive.includes("https://chatgpt.com/")
+  ) {
+    console.error("❌ out/.well-known/security.txt must include live owner-next.html/json + geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301");
+    process.exit(1);
+  }
+  const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
+  if (
+    !arledsOps.includes("https://www.isimtescil.net/") ||
+    !arledsOps.includes("https://hpanel.hostinger.com/") ||
+    !arledsOps.includes("https://dash.cloudflare.com/") ||
+    !arledsOps.includes("Open:") ||
+    !arledsOps.includes("geo:next") ||
+    !arledsOps.includes("point-c:csv") ||
+    !arledsOps.includes("https://business.google.com/") ||
+    !arledsOps.includes("https://chatgpt.com/")
+  ) {
+    console.error("❌ docs/ops/arleds-301-hostinger.md must list Open: tabs (isimtescil/hPanel/Cloudflare) + geo:next/point-c:csv + GBP/chatgpt Open");
+    process.exit(1);
+  }
+  console.log("✅ security.txt + arleds ops doc cite organization/geo-baseline invent + Open tabs");
+
+  const playbook = fs.readFileSync(path.join(repoRoot, "docs/offsite-entity-playbook.md"), "utf8");
+  for (const must of [
+    "npm run geo:next",
+    "npm run point-c:csv",
+    "npm run tur1a:next",
+    "npm run verify:arleds-301",
+    "https://www.isimtescil.net/",
+    "https://business.google.com/",
+    "https://chatgpt.com/",
+    "https://www.bingplaces.com/",
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/point-c.json",
+    "https://arledscreen.com/geo-status.json",
+    "https://arledscreen.com/tur1a.json",
+    "https://arledscreen.com/point-c-progress.json",
+    "owner-next.txt",
+    "potentialAction",
+    "directoryLong",
+    "Open:",
+    "point-c.txt",
+  ]) {
+    if (!playbook.includes(must)) {
+      console.error(`❌ docs/offsite-entity-playbook.md must wire owner clipboard ${must}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ offsite-entity-playbook.md wires live geo-next/point-c/geo-status/tur1a HowTo + Bing/Apple Open tabs");
+  {
+    const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
+    if (
+      !llmsGeo.includes("geo:next") ||
+      !llmsGeo.includes("geo:ack") ||
+      !llmsGeo.includes("point-c:csv") ||
+      !llmsGeo.includes("/geo-next.txt") ||
+      !llmsGeo.includes("/owner-next.html") ||
+      !llmsGeo.includes("/owner-next.json") ||
+      !llmsGeo.includes("/point-c.json") ||
+      !llmsGeo.includes("/point-c-progress.json") ||
+      !llmsGeo.includes("potentialAction") ||
+      !llmsGeo.includes("directoryLong") ||
+      !llmsGeo.includes("https://www.bingplaces.com/") ||
+      !llmsGeo.includes("https://www.isimtescil.net/") ||
+      !llmsGeo.includes("https://business.google.com/") ||
+      !llmsGeo.includes("https://chatgpt.com/") ||
+      !llmsGeo.includes("/.well-known/brand.json") ||
+      !llmsGeo.includes("#website")
+    ) {
+      console.error("❌ out/llms.txt must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
+      process.exit(1);
+    }
+    const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
+    if (
+      !llmsFullLive.includes("geo:next") ||
+      !llmsFullLive.includes("geo:ack") ||
+      !llmsFullLive.includes("point-c:csv") ||
+      !llmsFullLive.includes("/geo-next.txt") ||
+      !llmsFullLive.includes("/owner-next.html") ||
+      !llmsFullLive.includes("/owner-next.json") ||
+      !llmsFullLive.includes("/point-c.json") ||
+      !llmsFullLive.includes("/point-c-progress.json") ||
+      !llmsFullLive.includes("potentialAction") ||
+      !llmsFullLive.includes("directoryLong") ||
+      !llmsFullLive.includes("https://www.bingplaces.com/") ||
+      !llmsFullLive.includes("https://www.isimtescil.net/") ||
+      !llmsFullLive.includes("https://chatgpt.com/") ||
+      !llmsFullLive.includes("/.well-known/brand.json") ||
+      !llmsFullLive.includes("#website")
+    ) {
+      console.error("❌ out/llms-full.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
+      process.exit(1);
+    }
+  }
+  const llmsLive = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
+  if (!llmsLive.includes("Inventable feed path aliases") || !llmsLive.includes("/api/prices")) {
+    console.error("❌ out/llms.txt must cite inventable feed path aliases");
+    process.exit(1);
+  }
+  if (!llmsLive.includes("agents.json") || !llmsLive.includes("humans.txt")) {
+    console.error("❌ out/llms.txt must cite agents.json + humans.txt");
+    process.exit(1);
+  }
+  if (
+    !llmsLive.includes("Inventable feed path aliases") ||
+    !llmsLive.includes("/.well-known/agents.json") ||
+    !llmsLive.includes("/.well-known/ard.json") ||
+    !llmsLive.includes("/.well-known/security.txt") ||
+    !llmsLive.includes("/AGENTS.md") ||
+    !llmsLive.includes("/humans.txt") ||
+    !llmsLive.includes("/api/catalog.json") ||
+    !llmsLive.includes("/api/products") ||
+    !llmsLive.includes("/tr/prices.json") ||
+    !llmsLive.includes("/en/feed.json")
+  ) {
+    console.error("❌ out/llms.txt inventable aliases must cite agents/ard/security/humans/AGENTS.md + api/locale invent");
+    process.exit(1);
+  }
+  if (
+    !llmsLive.includes("/point-c.txt") ||
+    !llmsLive.includes("/point-c-en.txt") ||
+    !llmsLive.includes("/.well-known/point-c.txt")
+  ) {
+    console.error("❌ out/llms.txt must cite point-c.txt + point-c-en.txt + /.well-known/point-c.txt");
+    process.exit(1);
+  }
+  {
+    const humansLive = fs.readFileSync(path.join(outDir, "humans.txt"), "utf8");
+    if (
+      !humansLive.includes("/feeds/prices.rss") ||
+      !humansLive.includes("/brand.json") ||
+      !humansLive.includes("/ai-shopping.json") ||
+      !humansLive.includes("/catalog.json") ||
+      !humansLive.includes("/geo-baseline.json") ||
+      !humansLive.includes("/point-c.txt") ||
+      !humansLive.includes("/.well-known/modules.json") ||
+      !humansLive.includes("/.well-known/sku.json") ||
+      !humansLive.includes("/.well-known/pricing.json") ||
+      !humansLive.includes("geo:next") ||
+      !humansLive.includes("/entity-profiles.json") ||
+      !humansLive.includes("/.well-known/brand.json") ||
+      !humansLive.includes("#website") ||
+      !humansLive.includes("geo:ack") ||
+      !humansLive.includes("point-c:csv") ||
+      !humansLive.includes("/geo-next.txt") ||
+      !humansLive.includes("/point-c.json") ||
+      !humansLive.includes("/point-c-progress.json") ||
+      !humansLive.includes("potentialAction") ||
+      !humansLive.includes("directoryLong") ||
+      !humansLive.includes("https://www.bingplaces.com/") ||
+      !humansLive.includes("https://www.isimtescil.net/") ||
+      !humansLive.includes("https://business.google.com/") ||
+      !humansLive.includes("https://chatgpt.com/") ||
+      !humansLive.includes("/.well-known/security.txt") ||
+      !humansLive.includes("/security.txt") ||
+      !humansLive.includes("/api/v1/prices") ||
+      !humansLive.includes("/api/catalog.json") ||
+      !humansLive.includes("/api/products") ||
+      !humansLive.includes("/tr/prices.json") ||
+      !humansLive.includes("/llms-full")
+    ) {
+      console.error("❌ out/humans.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + ai-shopping + catalog + point-c + geo:next/ack + Open tabs + security + api/locale invent");
+      process.exit(1);
+    }
+    const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
+    if (
+      !agentsMdLive.includes("geo:next") ||
+      !agentsMdLive.includes("geo:ack") ||
+      !agentsMdLive.includes("#website") ||
+      !agentsMdLive.includes("point-c:csv") ||
+      !agentsMdLive.includes("/geo-next.txt") ||
+      !agentsMdLive.includes("/owner-next.html") ||
+      !agentsMdLive.includes("/owner-next.json") ||
+      !agentsMdLive.includes("/point-c.json") ||
+      !agentsMdLive.includes("/point-c-progress.json") ||
+      !agentsMdLive.includes("potentialAction") ||
+      !agentsMdLive.includes("directoryLong") ||
+      !agentsMdLive.includes("https://www.bingplaces.com/") ||
+      !agentsMdLive.includes("https://businessconnect.apple.com/") ||
+      !agentsMdLive.includes("https://www.isimtescil.net/") ||
+      !agentsMdLive.includes("https://business.google.com/") ||
+      !agentsMdLive.includes("https://chatgpt.com/") ||
+      !agentsMdLive.includes("/en/calculator/") ||
+      !agentsMdLive.includes("/en/catalog/") ||
+      !agentsMdLive.includes("/en/shop/") ||
+      !agentsMdLive.includes("/en/request-quote/")
+    ) {
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges");
+      process.exit(1);
+    }
+    const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
+    if (
+      !aiTxtLive.includes("geo:next") ||
+      !aiTxtLive.includes("geo:ack") ||
+      !aiTxtLive.includes("/geo-next.txt") ||
+      !aiTxtLive.includes("/point-c.json") ||
+      !aiTxtLive.includes("/point-c-progress.json") ||
+      !aiTxtLive.includes("potentialAction") ||
+      !aiTxtLive.includes("directoryLong") ||
+      !aiTxtLive.includes("https://www.bingplaces.com/") ||
+      !aiTxtLive.includes("/api/catalog.json") ||
+      !aiTxtLive.includes("/api/products") ||
+      !aiTxtLive.includes("/tr/prices.json") ||
+      !aiTxtLive.includes("/en/feed.json")
+    ) {
+      console.error("❌ out/ai.txt must cite live geo-next/point-c/progress potentialAction HowTo + geo:next/ack + api/catalog + api/products + tr/prices + en/feed invent");
+      process.exit(1);
+    }
+  }
+  {
+    const pointC = fs.readFileSync(path.join(outDir, "point-c.txt"), "utf8");
+    const pointCEn = fs.readFileSync(path.join(outDir, "point-c-en.txt"), "utf8");
+    if (
+      !pointC.includes("GBP About") ||
+      !pointC.includes("34245") ||
+      !pointC.includes("arledscreen.com/tr/") ||
+      !pointC.includes("Hostinger arleds.com") ||
+      !pointC.includes("Hostinger support email") ||
+      !pointC.includes("mailto:support@hostinger.com") ||
+      !pointC.includes("DNSEnable support email") ||
+      !pointC.includes("mailto:destek@isimtescil.net") ||
+      !pointC.includes("point-c:dnsenable-eml") ||
+      !pointC.includes("Gmail draft (Send)") ||
+      !pointC.includes("point-c:next") ||
+      !pointC.includes("geo:next") ||
+      !pointC.includes("verify:arleds-301") ||
+      !pointC.includes("tur1a:log") ||
+      !pointC.includes("/.well-known/modules.json") ||
+      !pointC.includes("/.well-known/panels.json") ||
+      !pointC.includes("/.well-known/mpn.json") ||
+      !pointC.includes("/.well-known/merchant.json") ||
+      !pointC.includes("/.well-known/agents.json") ||
+      !pointC.includes("/.well-known/ard.json") ||
+      !pointC.includes("/ai.txt") ||
+      !pointC.includes("/llms.txt") ||
+      !pointC.includes("/llms-full.txt") ||
+      !pointC.includes("/humans.txt") ||
+      !pointC.includes("/AGENTS.md") ||
+      !pointC.includes("/.well-known/security.txt") ||
+      !pointC.includes("ai-shopping.json pricedPanels") ||
+      !pointC.includes("/entity-profiles.json") ||
+      !pointC.includes("#website") ||
+      !pointC.includes("geo:ack") ||
+      !pointCEn.includes("EN GBP About") ||
+      !pointCEn.includes("arledscreen.com/en/") ||
+      !pointCEn.includes("Hostinger arleds.com") ||
+      !pointCEn.includes("Hostinger support email") ||
+      !pointCEn.includes("mailto:support@hostinger.com") ||
+      !pointCEn.includes("DNSEnable support email") ||
+      !pointCEn.includes("mailto:destek@isimtescil.net") ||
+      !pointCEn.includes("Gmail draft (Send)") ||
+      !pointCEn.includes("point-c:next") ||
+      !pointCEn.includes("geo:next") ||
+      !pointCEn.includes("tur1a:log") ||
+      !pointCEn.includes("/.well-known/modules.json") ||
+      !pointCEn.includes("/entity-profiles.json") ||
+      !pointCEn.includes("#website") ||
+      !pointCEn.includes("geo:ack")
+    ) {
+      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + DNSEnable/Hostinger 301/email/mailto + point-c:next + geo:next/ack + tur1a:log + invent aliases + entity-profiles + #website");
+      process.exit(1);
+    }
+    if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
+      console.error("❌ out/.well-known/point-c.txt must match point-c.txt");
+      process.exit(1);
+    }
+    if (
+      !fs.existsSync(path.join(outDir, ".well-known/point-c-en.txt")) ||
+      !fs.readFileSync(path.join(outDir, ".well-known/point-c-en.txt")).equals(fs.readFileSync(path.join(outDir, "point-c-en.txt")))
+    ) {
+      console.error("❌ out/.well-known/point-c-en.txt must exist and match point-c-en.txt");
+      process.exit(1);
+    }
+    for (const rel of [
+      "point-c.json",
+      "point-c-en.json",
+      ".well-known/point-c.json",
+      ".well-known/point-c-en.json",
+      "feeds/point-c.csv",
+      "feeds/point-c-en.csv",
+      "point-c.csv",
+      "point-c-en.csv",
+    ]) {
+      if (!fs.existsSync(path.join(outDir, rel))) {
+        console.error(`❌ Missing Point C invent surface in out/: ${rel}`);
+        process.exit(1);
+      }
+    }
+    const pcJson = JSON.parse(fs.readFileSync(path.join(outDir, "point-c.json"), "utf8"));
+    const pcCsv = fs.readFileSync(path.join(outDir, "feeds/point-c.csv"), "utf8");
+    const pcNext = pcJson?.next || {};
+    if (
+      !Array.isArray(pcJson?.packs) ||
+      pcJson.packs.length < 11 ||
+      !String(pcJson?.url || "").includes("/point-c.json") ||
+      !JSON.stringify(pcJson.distribution || []).includes("/feeds/point-c.csv") ||
+      !pcCsv.includes("packKey,label,status,where,open") ||
+      !pcCsv.includes("directoryLong") ||
+      !pcCsv.includes("bingplaces.com") ||
+      !String(pcNext.packKey || "") ||
+      !String(pcNext.text || "") ||
+      !String(pcNext.open || "") ||
+      !String(pcNext.ackCommand || "").includes("point-c:ack") ||
+      pcJson?.potentialAction?.["@type"] !== "HowTo" ||
+      !String(pcJson?.potentialAction?.name || "").includes(String(pcNext.packKey || "")) ||
+      !Array.isArray(pcJson?.potentialAction?.step) ||
+      pcJson.potentialAction.step.length < 3 ||
+      !String(pcJson.potentialAction.step[0]?.url || "").includes("http") ||
+      !String(pcJson?.description || "").includes("potentialAction") ||
+      !String(pcJson?.ownerNext || "").includes("potentialAction") ||
+      !String(pcJson?.ownerNext || "").includes("/point-c-progress.json") ||
+      !JSON.stringify(pcJson.isBasedOn || []).includes("/point-c-progress.json") ||
+      !JSON.stringify(pcJson.distribution || []).includes("/point-c-progress.json") ||
+      !(pcJson?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/point-c-progress.json")) ||
+      String(pcJson?.socialHandles?.facebook || "") !== "arledscreenn" ||
+      String(pcJson?.socialHandles?.instagram || "") !== "arledscreen" ||
+      String(pcJson?.socialHandles?.whatsapp || "") !== "arledscreen" ||
+      !JSON.stringify(pcJson?.sameAs || []).includes("/social.json") ||
+      !fs.readFileSync(path.join(outDir, ".well-known/point-c.json")).equals(
+        fs.readFileSync(path.join(outDir, "point-c.json")),
+      ) ||
+      fs.readFileSync(path.join(outDir, "point-c.csv"), "utf8") !== pcCsv
+    ) {
+      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + HowTo potentialAction + socialHandles + progress invent joins; well-known/root twins must match");
+      process.exit(1);
+    }
+    for (const rel of [
+      "geo-status.json",
+      ".well-known/geo-status.json",
+      "owner-p0.json",
+      "geo-next.txt",
+      ".well-known/geo-next.txt",
+      "owner-next.txt",
+      "tur1a.json",
+      ".well-known/tur1a.json",
+      "feeds/tur1a.csv",
+      "tur1a.csv",
+      "point-c-progress.json",
+      ".well-known/point-c-progress.json",
+      ".well-known/AGENTS.md",
+    ]) {
+      if (!fs.existsSync(path.join(outDir, rel))) {
+        console.error(`❌ Missing owner-gate invent surface in out/: ${rel}`);
+        process.exit(1);
+      }
+    }
+    const geoStatus = JSON.parse(fs.readFileSync(path.join(outDir, "geo-status.json"), "utf8"));
+    const geoNext = fs.readFileSync(path.join(outDir, "geo-next.txt"), "utf8");
+    const tur1a = JSON.parse(fs.readFileSync(path.join(outDir, "tur1a.json"), "utf8"));
+    const tur1aCsv = fs.readFileSync(path.join(outDir, "feeds/tur1a.csv"), "utf8");
+    const pointCNext = geoStatus?.gates?.pointC?.next || {};
+    if (
+      !String(geoStatus?.priorityGate || "") ||
+      !geoStatus?.gates?.pointC ||
+      !geoStatus?.gates?.arleds301 ||
+      !geoStatus?.gates?.tur1a ||
+      !geoNext.includes("GEO next") ||
+      !geoNext.includes("Open:") ||
+      !geoNext.includes("potentialAction") ||
+      !geoNext.includes("/point-c.json") ||
+      !geoNext.includes("/geo-status.json") ||
+      !String(pointCNext.packKey || "") ||
+      !String(pointCNext.text || "") ||
+      !String(pointCNext.open || "") ||
+      geoStatus?.potentialAction?.["@type"] !== "HowTo" ||
+      !Array.isArray(geoStatus?.potentialAction?.step) ||
+      geoStatus.potentialAction.step.length < 3 ||
+      (String(geoStatus.priorityGate) === "pointC" &&
+        !String(geoStatus?.potentialAction?.name || "").includes(String(pointCNext.packKey || ""))) ||
+      !Array.isArray(tur1a?.cells) ||
+      tur1a.cells.length < 48 ||
+      !String(tur1a.cells[0]?.prompt || "") ||
+      !String(tur1a.cells[0]?.cellKey || "").includes("|") ||
+      !String(tur1a.cells[0]?.logCommand || "").includes("tur1a:log") ||
+      !String(tur1a.cells[0]?.logCommand || "").includes("--platform=") ||
+      !String(tur1a.cells[0]?.logCommand || "").includes("--promptId=") ||
+      !Array.isArray(tur1a.cells[0]?.openAlts) ||
+      !tur1aCsv.includes("platform,promptId") ||
+      !tur1aCsv.includes("chatgpt") ||
+      !String(tur1a?.next?.logCommand || "").includes("tur1a:log") ||
+      !String(tur1a?.next?.open || "").includes("http") ||
+      !String(tur1a?.next?.cellKey || "").includes("|") ||
+      tur1a?.potentialAction?.["@type"] !== "HowTo" ||
+      !Array.isArray(tur1a?.potentialAction?.step) ||
+      tur1a.potentialAction.step.length < 3 ||
+      !String(tur1a.potentialAction.step[0]?.url || "").includes("http") ||
+      !String(tur1a?.description || "").includes("potentialAction") ||
+      !String(tur1a?.ownerNext || "").includes("potentialAction") ||
+      !JSON.stringify(tur1a.isBasedOn || []).includes("/geo-status.json") ||
+      !JSON.stringify(tur1a.sameAs || []).includes("/point-c-progress.json") ||
+      !(tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/geo-next.txt")) ||
+      String(geoStatus?.socialHandles?.facebook || "") !== "arledscreenn" ||
+      String(geoStatus?.socialHandles?.instagram || "") !== "arledscreen" ||
+      String(geoStatus?.socialHandles?.whatsapp || "") !== "arledscreen" ||
+      !String(geoStatus?.description || "").includes("@arledscreenn") ||
+      fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
+    ) {
+      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + socialHandles + tur1a HowTo/potentialAction invent joins (no invented scores)");
+      process.exit(1);
+    }
+    const progress = JSON.parse(fs.readFileSync(path.join(outDir, "point-c-progress.json"), "utf8"));
+    const progressNext = progress?.next || {};
+    if (
+      progress?.potentialAction?.["@type"] !== "HowTo" ||
+      !Array.isArray(progress?.potentialAction?.step) ||
+      progress.potentialAction.step.length < 3 ||
+      !String(progressNext.packKey || "") ||
+      !String(progressNext.text || "") ||
+      !String(progressNext.open || "").includes("http") ||
+      !String(progress?.potentialAction?.name || "").includes(String(progressNext.packKey || "")) ||
+      !Array.isArray(progress?.packs) ||
+      progress.packs.length < 11 ||
+      !progress.packs.some((p) => String(p?.packKey || "") === "directoryLong") ||
+      !progress.packs.some((p) => String(p?.html || "").includes("?pack=directoryLong")) ||
+      !String(progressNext.html || "").includes("?pack=") ||
+      !String(progress?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
+      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html?start=1")) ||
+      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("?pack=")) ||
+      String(progress?.socialHandles?.facebook || "") !== "arledscreenn" ||
+      String(progress?.socialHandles?.instagram || "") !== "arledscreen" ||
+      String(progress?.socialHandles?.whatsapp || "") !== "arledscreen" ||
+      !Array.isArray(geoStatus?.gates?.pointC?.packs) ||
+      geoStatus.gates.pointC.packs.length < 11 ||
+      !String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
+      !(geoStatus?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html?start=1")) ||
+      !String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") ||
+      !String(geoStatus?.gates?.arleds301?.html || "").includes("hostinger301") ||
+      !(geoStatus?.gates?.arleds301?.openAlts || []).some(
+        (u) => String(u).startsWith("mailto:") && String(u).includes("destek@isimtescil"),
+      ) ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-list") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("howto-ld") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy Open URL") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-ack") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-tab") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-all") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open all") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("actions-sticky") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyOpenAll") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pasted-next") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doPastedNext") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Pasted → next") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-ack-batch") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildAckBatchCommand") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("--packs=") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy ack batch") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("next-arleds") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("showArleds301") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Next: arleds 301") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("next-tur1a") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("showTur1aGate") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Next: Tur1a") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("tur1a-log-chips") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-tur1a-log") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("log-tur1a-next") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doLogTur1aNext") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildTur1aLogCommand") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("open-remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doOpenRemaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyRemaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildRemainingPasteBundle") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyOpenRemaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("undo-pasted") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doUndoPasted") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("unmarkPasted") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("maybeStartSession") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("startQuery") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("start=1") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("formatLocalProgress") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("dblclick") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("social-handles") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copySocialHandles") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("jumpToSocialPack") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('data-pack="facebookAbout"') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('data-pack="instagramBio"') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "f"') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "i"') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("@arledscreenn") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/social.json") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
+    ) {
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log+next/open-remaining/copy-remaining/copy-open-remaining/undo/start=1/dblclick/mailto/social-handles/jumpToSocialPack required");
+      process.exit(1);
+    }
+    {
+      const twinPath = path.join(outDir, "owner-next.json");
+      const twinAlias = path.join(outDir, "geo-next.json");
+      const twinWk = path.join(outDir, ".well-known/owner-next.json");
+      const twinWkGeo = path.join(outDir, ".well-known/geo-next.json");
+      if (!fs.existsSync(twinPath) || !fs.existsSync(twinAlias) || !fs.existsSync(twinWk) || !fs.existsSync(twinWkGeo)) {
+        console.error("❌ out/ must include owner-next.json + geo-next.json + .well-known/{owner,geo}-next.json");
+        process.exit(1);
+      }
+      const twin = JSON.parse(fs.readFileSync(twinPath, "utf8"));
+      const twinBody = fs.readFileSync(twinPath);
+      if (
+        !fs.readFileSync(twinAlias).equals(twinBody) ||
+        !fs.readFileSync(twinWk).equals(twinBody) ||
+        !fs.readFileSync(twinWkGeo).equals(twinBody) ||
+        twin?.["@type"] !== "Dataset" ||
+        !String(twin?.url || "").includes("/owner-next.json") ||
+        !String(twin?.html || "").includes("/owner-next.html") ||
+        !String(twin?.htmlStart || "").includes("start=1") ||
+        !String(twin?.priorityGate || "") ||
+        !twin?.next ||
+        !Array.isArray(twin?.packs) ||
+        twin.packs.length < 11 ||
+        !String(twin?.ownerNext || "").includes("/owner-next.json") ||
+        !String(twin?.ownerNext || "").includes("start=1") ||
+        !String(twin?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
+        !Array.isArray(twin?.gates?.tur1a?.cells) ||
+        twin.gates.tur1a.cells.length < 48 ||
+        !String(twin.gates.tur1a.cells[0]?.prompt || "") ||
+        !String(twin.gates.tur1a.cells[0]?.logCommand || "").includes("--platform=") ||
+        !String(twin.gates.tur1a.html || "").includes("pack=tur1a") ||
+        String(twin?.socialHandles?.facebook || "") !== "arledscreenn" ||
+        String(twin?.socialHandles?.instagram || "") !== "arledscreen" ||
+        String(twin?.socialHandles?.whatsapp || "") !== "arledscreen" ||
+        !String(twin?.socialHandles?.socialJson || "").includes("/social.json") ||
+        !String(twin?.description || "").includes("@arledscreenn") ||
+        !JSON.stringify(twin?.sameAs || []).includes("/social.json")
+      ) {
+        console.error("❌ owner-next.json invent twin must be Dataset with next/packs/potentialAction start=1 + htmlStart + gates.tur1a.cells×48 + socialHandles + geo-next alias byte-match");
+        process.exit(1);
+      }
+    }
+    {
+      const gateNeedles = [
+        "/point-c.json",
+        "/geo-status.json",
+        "/geo-next.txt",
+        "/tur1a.json",
+        "/point-c-progress.json",
+      ];
+      const pointCJson = JSON.parse(fs.readFileSync(path.join(outDir, "point-c.json"), "utf8"));
+      for (const [label, doc] of [
+        ["point-c.json", pointCJson],
+        ["geo-status.json", geoStatus],
+        ["tur1a.json", tur1a],
+        ["point-c-progress.json", progress],
+      ]) {
+        for (const field of ["sameAs", "isBasedOn", "subjectOf", "distribution"]) {
+          const blob = JSON.stringify(doc?.[field] || []);
+          for (const needle of gateNeedles) {
+            if (!blob.includes(needle)) {
+              console.error(`❌ ${label} ${field} must cross-join owner-gate HowTo ${needle}`);
+              process.exit(1);
+            }
+          }
+        }
+      }
+    }
+  }
+  for (const rel of [".well-known/agents.json", "agents.json", "humans.txt", ".well-known/humans.txt"]) {
+    if (!fs.existsSync(path.join(outDir, rel))) {
+      console.error(`❌ Missing agent discovery surface in out/: ${rel}`);
+      process.exit(1);
+    }
+  }
+  const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
+  if (
+    !String(agents?.description || "").includes("geo:next") ||
+    !String(agents?.description || "").includes("geo:ack") ||
+    !String(agents?.description || "").includes("#website") ||
+    !String(agents?.description || "").includes("point-c:csv") ||
+    !String(agents?.description || "").includes("potentialAction") ||
+    !String(agents?.description || "").includes("https://www.isimtescil.net/") ||
+    !String(agents?.description || "").includes("https://business.google.com/") ||
+    !String(agents?.description || "").includes("https://chatgpt.com/") ||
+    !String(agents?.ownerNext || "").includes("point-c:csv") ||
+    !String(agents?.ownerNext || "").includes("potentialAction") ||
+    !String(agents?.ownerNext || "").includes("/owner-next.html") ||
+    !String(agents?.ownerNext || "").includes("/owner-next.json") ||
+    !String(agents?.ownerNext || "").includes("/point-c-progress.json") ||
+    !String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") ||
+    !String(agents?.ownerNext || "").includes("https://business.google.com/") ||
+    !String(agents?.ownerNext || "").includes("https://chatgpt.com/") ||
+    !JSON.stringify(agents.isBasedOn || []).includes("/point-c.json") ||
+    !JSON.stringify(agents.isBasedOn || []).includes("/point-c-progress.json") ||
+    !JSON.stringify(agents.isBasedOn || []).includes("/geo-status.json") ||
+    !JSON.stringify(agents.isBasedOn || []).includes("/tur1a.json") ||
+    !JSON.stringify(agents.distribution || []).includes("/point-c-progress.json") ||
+    !JSON.stringify(agents.distribution || []).includes("/geo-status.json") ||
+    !JSON.stringify(agents.sameAs || []).includes("/point-c.json") ||
+    !JSON.stringify(agents.sameAs || []).includes("/geo-status.json") ||
+    !JSON.stringify(agents.sameAs || []).includes("/geo-next.txt") ||
+    !JSON.stringify(agents.sameAs || []).includes("/tur1a.json") ||
+    !JSON.stringify(agents.sameAs || []).includes("/point-c-progress.json")
+  ) {
+    console.error("❌ agents.json description/ownerNext must cite potentialAction HowTo + geo:next/ack + #website + point-c:csv Open tabs + gate invent joins");
+    process.exit(1);
+  }
+  {
+    const agentsSame = JSON.stringify(agents.sameAs || []);
+    const agentsSubject = JSON.stringify(agents.subjectOf || []);
+    for (const needle of [
+      "/.well-known/ard.json",
+      "/entity.json",
+      "/brand.json",
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/point-c.txt",
+      "#website",
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
+    ]) {
+      if (!agentsSame.includes(needle)) {
+        console.error(`❌ agents.json sameAs must join invent/owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      if (!agentsSubject.includes(needle)) {
+        console.error(`❌ agents.json subjectOf must join owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  if (
+    !Array.isArray(agents.itemListElement) ||
+    agents.itemListElement.length < 28 ||
+    Number(agents.numberOfItems) !== 28
+  ) {
+    console.error("❌ agents.json must list 28 discovery items (numberOfItems=28; incl. brand/prices.rss/point-c/geo-status/tur1a/progress/owner-next.html/owner-next.json/#website/security/llms-full)");
+    process.exit(1);
+  }
+  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (28)")) {
+    console.error("❌ ard.json agentsJson description must cite ItemList (28)");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/owner-next.html"))) {
+    console.error("❌ agents.json must list owner-next.html");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/owner-next.json"))) {
+    console.error("❌ agents.json must list owner-next.json machine twin");
+    process.exit(1);
+  }
+  if (
+    !fs.existsSync(path.join(outDir, "owner-next.html")) ||
+    !fs.existsSync(path.join(outDir, "geo-next.html"))
+  ) {
+    console.error("❌ out/ must include owner-next.html + geo-next.html invent alias");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/.well-known/security.txt"))) {
+    console.error("❌ agents.json must list /.well-known/security.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/llms-full.txt"))) {
+    console.error("❌ agents.json must list /llms-full.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("#website"))) {
+    console.error("❌ agents.json must list WebSite #website");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("entity-profiles.json"))) {
+    console.error("❌ agents.json must list entity-profiles.json Point C packs");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/brand.json"))) {
+    console.error("❌ agents.json must list brand.json Brand document");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/feeds/prices.rss"))) {
+    console.error("❌ agents.json must list feeds/prices.rss");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("humans.txt"))) {
+    console.error("❌ agents.json must list humans.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("point-c.txt"))) {
+    console.error("❌ agents.json must list point-c.txt");
+    process.exit(1);
+  }
+  {
+    const pcTxtItem = agents.itemListElement.find((it) => String(it?.url || "").endsWith("/point-c.txt"));
+    if (!String(pcTxtItem?.description || "").includes("potentialAction")) {
+      console.error("❌ agents.json point-c.txt ListItem must cite potentialAction HowTo");
+      process.exit(1);
+    }
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/organization.json"))) {
+    console.error("❌ agents.json must list organization.json invent alias");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "") === "https://arledscreen.com/prices.json")) {
+    console.error("❌ agents.json must list prices.json invent alias");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("point-c-en.txt"))) {
+    console.error("❌ agents.json must list point-c-en.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/point-c.json"))) {
+    console.error("❌ agents.json must list point-c.json");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/feeds/point-c.csv"))) {
+    console.error("❌ agents.json must list feeds/point-c.csv");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/geo-status.json"))) {
+    console.error("❌ agents.json must list geo-status.json");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/geo-next.txt"))) {
+    console.error("❌ agents.json must list geo-next.txt");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/tur1a.json"))) {
+    console.error("❌ agents.json must list tur1a.json");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/point-c-progress.json"))) {
+    console.error("❌ agents.json must list point-c-progress.json");
+    process.exit(1);
+  }
+  {
+    const agentsBased = JSON.stringify(agents?.isBasedOn || []);
+    const agentsDist = JSON.stringify(agents?.distribution || []);
+    for (const needle of [
+      "/geo-baseline.json",
+      "/point-c.txt",
+      "/catalog.json",
+      "/prices.json",
+      "/entity-profiles.json",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
+      "/ai.txt",
+      "/llms.txt",
+      "/llms-full.txt",
+      "/humans.txt",
+      "/AGENTS.md",
+      "/.well-known/security.txt",
+      "#website",
+    ]) {
+      if (!agentsBased.includes(needle)) {
+        console.error(`❌ agents.json isBasedOn invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of [
+      "/ai-shopping.json",
+      "/prices.json",
+      "/brand.json",
+      "/entity.json",
+      "/catalog.json",
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/point-c.txt",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
+      "/.well-known/ard.json",
+      "/ai.txt",
+      "/llms.txt",
+      "/llms-full.txt",
+      "/humans.txt",
+      "/AGENTS.md",
+      "/.well-known/security.txt",
+      "#website",
+    ]) {
+      if (!agentsDist.includes(needle)) {
+        console.error(`❌ agents.json distribution invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  {
+    const brandItem = agents.itemListElement.find((it) => String(it?.url || "").includes("/brand.json"));
+    if (!String(brandItem?.description || "").includes("AggregateOffer")) {
+      console.error("❌ agents.json brand.json item must describe AggregateOffer×12");
+      process.exit(1);
+    }
+  }
+  if (!String(agents.description || "").includes("ai-shopping.json")) {
+    console.error("❌ agents.json must point agents at ai-shopping.json price source");
+    process.exit(1);
+  }
+  {
+    const agentsBlob = `${agents.description || ""}${JSON.stringify(agents.itemListElement || [])}`;
+    for (const needle of [
+      "/.well-known/panels.json",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/price.json",
+      "/.well-known/pricing.json",
+      "/.well-known/merchant.json",
+    ]) {
+      if (!agentsBlob.includes(needle)) {
+        console.error(`❌ agents.json invent aliases must cite ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  if (
+    agents?.provider?.location?.["@id"] !== "https://arledscreen.com/#localbusiness" ||
+    !String(agents?.provider?.makesOffer || "").includes("#priced-panels-aggregate") ||
+    !String(agents?.provider?.hasOfferCatalog || "").includes("/catalog.json") ||
+    !String(agents?.provider?.brand?.makesOffer || "").includes("#priced-panels-aggregate") ||
+    !String(agents?.provider?.brand?.hasOfferCatalog || "").includes("/catalog.json")
+  ) {
+    console.error("❌ agents.json provider must location #localbusiness + makesOffer/hasOfferCatalog + Brand offer/catalog");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, "agents.json")).equals(fs.readFileSync(path.join(outDir, ".well-known/agents.json")))) {
+    console.error("❌ /agents.json must match /.well-known/agents.json");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, "agent.json")).equals(fs.readFileSync(path.join(outDir, ".well-known/agents.json")))) {
+    console.error("❌ /agent.json must match /.well-known/agents.json");
+    process.exit(1);
+  }
+  // Byte-identical to canonical where applicable.
+  const canonCatalog = fs.readFileSync(path.join(outDir, "catalog.json"));
+  if (!fs.readFileSync(path.join(outDir, "catalog")).equals(canonCatalog)) {
+    console.error("❌ out/catalog must match catalog.json");
+    process.exit(1);
+  }
+  const catalogDoc = JSON.parse(canonCatalog.toString("utf8"));
+  const catalogProducts = catalogDoc?.mainEntity?.itemListElement;
+  if (!Array.isArray(catalogProducts) || catalogProducts.length !== 12) {
+    console.error("❌ catalog.json mainEntity must list 12 Products");
+    process.exit(1);
+  }
+  if (!catalogProducts.every((p) => p?.isPartOf?.["@id"]?.includes("/ai-shopping.json"))) {
+    console.error("❌ every catalog Product must isPartOf ai-shopping.json Dataset");
+    process.exit(1);
+  }
+  const canonAi = fs.readFileSync(path.join(outDir, "ai-shopping.json"));
+  if (!fs.readFileSync(path.join(outDir, "en/ai-shopping.json")).equals(canonAi)) {
+    console.error("❌ out/en/ai-shopping.json must match ai-shopping.json");
+    process.exit(1);
+  }
+  for (const rel of [
+    "prices.json",
+    "price.json",
+    "pricing.json",
+    "en/prices.json",
+    "en/price.json",
+    "offers.json",
+    "dataset.json",
+    ".well-known/ai-shopping.json",
+    ".well-known/prices.json",
+    "api/ai-shopping",
+    "api/v1/prices",
+    "v1/prices",
+  ]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAi)) {
+      console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
+  }
+  const canonEntity = fs.readFileSync(path.join(outDir, "entity.json"));
+  for (const rel of [
+    "organization.json",
+    "company.json",
+    "about.json",
+    "nap.json",
+    "api/entity",
+    ".well-known/entity.json",
+  ]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonEntity)) {
+      console.error(`❌ out/${rel} must match entity.json`);
+      process.exit(1);
+    }
+  }
+  {
+    const brandLive = JSON.parse(fs.readFileSync(path.join(outDir, "brand.json"), "utf8"));
+    if (
+      brandLive?.["@type"] !== "Brand" ||
+      brandLive?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar" ||
+      !String(brandLive?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+      brandLive?.makesOffer?.["@type"] !== "AggregateOffer" ||
+      brandLive?.makesOffer?.offerCount !== 12 ||
+      !Array.isArray(brandLive?.makesOffer?.offers) ||
+      brandLive.makesOffer.offers.length !== 12 ||
+      !String(brandLive?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+    ) {
+      console.error("❌ out/brand.json must be Brand #brand-nxtionstar with AggregateOffer×12 + hasOfferCatalog");
+      process.exit(1);
+    }
+    {
+      const brandActions = Array.isArray(brandLive.potentialAction) ? brandLive.potentialAction : [];
+      const hasTr = brandActions.some(
+        (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/tr/quote"),
+      );
+      const hasEn = brandActions.some(
+        (a) => a?.["@type"] === "OrderAction" && String(a?.target?.urlTemplate || "").includes("/en/quote"),
+      );
+      if (!hasTr || !hasEn) {
+        console.error("❌ out/brand.json potentialAction must include OrderAction TR+EN /quote/");
+        process.exit(1);
+      }
+    }
+    const brandDist = JSON.stringify(brandLive.distribution || []);
+    const brandSubject = JSON.stringify(brandLive.subjectOf || []);
+    if (
+      !brandDist.includes("/feeds/prices.rss") ||
+      !brandDist.includes("/ai-shopping.json") ||
+      !brandDist.includes("/catalog.json") ||
+      !brandDist.includes("/entity.json") ||
+      !brandDist.includes("/organization.json") ||
+      !brandDist.includes("/prices.json") ||
+      !brandDist.includes("/.well-known/brand.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/brand.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/ai-shopping.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/geo-baseline.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/entity-profiles.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/panels.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/agents.json") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/humans.txt") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/AGENTS.md") ||
+      !JSON.stringify(brandLive.sameAs || []).includes("/.well-known/security.txt")
+    ) {
+      console.error("❌ out/brand.json distribution/sameAs must include ai-shopping + catalog + prices.rss + entity/organization + prices.json + well-known brand + geo/profiles + inventAlias/discovery");
+      process.exit(1);
+    }
+    if (
+      !brandSubject.includes("/entity.json") ||
+      !brandSubject.includes("#organization") ||
+      !brandSubject.includes("/prices.json") ||
+      !brandSubject.includes("/point-c.json") ||
+      !brandSubject.includes("/geo-status.json") ||
+      !brandSubject.includes("/geo-next.txt") ||
+      !brandSubject.includes("/tur1a.json") ||
+      !brandSubject.includes("/point-c-progress.json")
+    ) {
+      console.error("❌ out/brand.json subjectOf must reverse-join Organization entity.json + prices.json + owner-gate HowTo");
+      process.exit(1);
+    }
+    if (!fs.readFileSync(path.join(outDir, ".well-known/brand.json")).equals(fs.readFileSync(path.join(outDir, "brand.json")))) {
+      console.error("❌ out/.well-known/brand.json must match brand.json");
+      process.exit(1);
+    }
+  }
+  {
+    const rssLive = fs.readFileSync(path.join(outDir, "feeds/prices.rss"), "utf8");
+    if (
+      !rssLive.includes('xmlns:atom="http://www.w3.org/2005/Atom"') ||
+      !rssLive.includes('rel="self"') ||
+      !rssLive.includes("/feeds/prices.rss") ||
+      !rssLive.includes("/ai-shopping.json") ||
+      !rssLive.includes("/brand.json") ||
+      !rssLive.includes("/entity.json") ||
+      !rssLive.includes("/organization.json") ||
+      !rssLive.includes("/catalog.json") ||
+      !rssLive.includes("/geo-baseline.json") ||
+      !rssLive.includes("/point-c.txt") ||
+      !rssLive.includes('href="https://arledscreen.com/prices.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/prices.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/price.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/pricing.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/panels.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/modules.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/sku.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/mpn.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/merchant.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/offer.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/offers.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/offer.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/offers.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/dataset.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/feed.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/dataset.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/feed.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/products.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/product.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/products.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/product.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/catalog.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/geo-baseline.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/entity-profiles.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/ai-shopping.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/llms.txt"') ||
+      !rssLive.includes('href="https://arledscreen.com/agents.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/point-c.txt"') ||
+      !rssLive.includes('href="https://arledscreen.com/geo-status.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/geo-status.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/geo-next.txt"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/geo-next.txt"') ||
+      !rssLive.includes('href="https://arledscreen.com/owner-next.txt"') ||
+      !rssLive.includes('href="https://arledscreen.com/tur1a.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/tur1a.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/feeds/tur1a.csv"') ||
+      !rssLive.includes('href="https://arledscreen.com/point-c-progress.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/point-c-progress.json"') ||
+      !rssLive.includes("/entity-profiles.json") ||
+      !rssLive.includes("/.well-known/brand.json") ||
+      !rssLive.includes("/.well-known/entity.json") ||
+      !rssLive.includes("/.well-known/security.txt") ||
+      !rssLive.includes("/llms-full.txt") ||
+      !rssLive.includes("#website") ||
+      !rssLive.includes("geo:next") ||
+      !rssLive.includes("geo:ack") ||
+      !rssLive.includes("point-c:csv") ||
+      !rssLive.includes("https://www.isimtescil.net/") ||
+      !rssLive.includes("https://business.google.com/") ||
+      !rssLive.includes("https://chatgpt.com/") ||
+      !rssLive.includes('rel="related"')
+    ) {
+      console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/geo-status/geo-next/tur1a/entity-profiles + well-known invent + security/llms-full + #website + geo:next/ack + point-c:csv Open tabs");
+      process.exit(1);
+    }
+  }
+  if (!fs.readFileSync(path.join(outDir, ".well-known/ai.txt")).equals(fs.readFileSync(path.join(outDir, "ai.txt")))) {
+    console.error("❌ /.well-known/ai.txt must match /ai.txt");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, "security.txt")).equals(fs.readFileSync(path.join(outDir, ".well-known/security.txt")))) {
+    console.error("❌ /security.txt must match /.well-known/security.txt");
+    process.exit(1);
+  }
+  {
+    const agentsMd = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
+    if (
+      !agentsMd.includes("ai-shopping.json") ||
+      !agentsMd.includes("makesOffer") ||
+      !agentsMd.includes("itemOffered") ||
+      !agentsMd.includes("#localbusiness") ||
+      !agentsMd.includes("hasOfferCatalog") ||
+      !agentsMd.includes("#brand-nxtionstar") ||
+      !agentsMd.includes("/brand.json") ||
+      !agentsMd.includes("OrderAction") ||
+      !agentsMd.includes("/feeds/prices.rss") ||
+      !agentsMd.includes("/point-c.txt") ||
+      !agentsMd.includes("/.well-known/modules.json") ||
+      !agentsMd.includes("/.well-known/sku.json") ||
+      !agentsMd.includes("/.well-known/pricing.json") ||
+      !agentsMd.includes("/api/v1/prices") ||
+      !agentsMd.includes("/api/catalog.json") ||
+      !agentsMd.includes("/api/products") ||
+      !agentsMd.includes("/tr/prices.json") ||
+      !agentsMd.includes("/data/prices.json") ||
+      !agentsMd.includes("/llms-full") ||
+      !agentsMd.includes("/.well-known/security")
+    ) {
+      console.error("❌ out/AGENTS.md must cite ai-shopping + makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss + point-c.txt + well-known + api/locale invent aliases");
+      process.exit(1);
+    }
+  }
+  if (
+    !llmsLive.includes("makesOffer") ||
+    !llmsLive.includes("itemOffered") ||
+    !llmsLive.includes("#localbusiness") ||
+    !llmsLive.includes("hasOfferCatalog") ||
+    !llmsLive.includes("#brand-nxtionstar") ||
+    !llmsLive.includes("/brand.json") ||
+    !llmsLive.includes("OrderAction") ||
+    !llmsLive.includes("/feeds/prices.rss")
+  ) {
+    console.error("❌ out/llms.txt must cite makesOffer + itemOffered + #localbusiness + Brand hasOfferCatalog + /brand.json + OrderAction + prices.rss");
+    process.exit(1);
+  }
+  if (!llmsLive.includes("/prices.json") || !llmsLive.includes("/.well-known/ai.txt") || !llmsLive.includes("organization.json") || !llmsLive.includes("AGENTS.md")) {
+    console.error("❌ out/llms.txt must cite /prices.json + /.well-known/ai.txt + organization.json + AGENTS.md");
+    process.exit(1);
+  }
+  for (const needle of [
+    "/.well-known/panels.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+  ]) {
+    if (!llmsLive.includes(needle)) {
+      console.error(`❌ out/llms.txt invent aliases must cite ${needle}`);
+      process.exit(1);
+    }
+  }
+  const headersLive = fs.readFileSync(path.join(outDir, "_headers"), "utf8");
+  const headerRuleCount = (headersLive.match(/^\/[^\s]/gm) || []).length;
+  if (headerRuleCount > 100) {
+    console.error(`❌ out/_headers has ${headerRuleCount} rules (Cloudflare Pages max 100) — consolidate with wildcards`);
+    process.exit(1);
+  }
+  for (const pattern of ["/:file.json", "/.well-known/:file.json", "/api/*", "/data/*", "/en/:file.json", "/tr/:file.json"]) {
+    if (!headersLive.includes(pattern)) {
+      console.error(`❌ out/_headers must include wildcard rule ${pattern} (Pages 100-rule cap)`);
+      process.exit(1);
+    }
+  }
+  {
+    // Owner-gate surfaces must no-store (last-match overrides /:file.json max-age=3600).
+    const gateNoStore = [
+      "/owner-next.json",
+      "/geo-next.json",
+      "/geo-status.json",
+      "/point-c.json",
+      "/point-c-progress.json",
+      "/tur1a.json",
+      "/social.json",
+      "/owner-next.html",
+      "/geo-next.html",
+    ];
+    for (const pathRule of gateNoStore) {
+      const idx = headersLive.indexOf(`\n${pathRule}\n`);
+      if (idx < 0) {
+        console.error(`❌ out/_headers missing owner-gate no-store rule ${pathRule}`);
+        process.exit(1);
+      }
+      const block = headersLive.slice(idx, idx + 280);
+      if (
+        !block.includes("! Cache-Control") ||
+        !block.includes("no-store") ||
+        !block.includes("CDN-Cache-Control: no-store")
+      ) {
+        console.error(`❌ out/_headers ${pathRule} must unset then set Cache-Control/CDN no-store for owner-gate freshness`);
+        process.exit(1);
+      }
+    }
+  }
+  if (
+    !headersLive.includes('rel="describedby"') ||
+    !headersLive.includes("ai-shopping.json") ||
+    !headersLive.includes("entity.json") ||
+    !headersLive.includes("agents.json") ||
+    !headersLive.includes("AGENTS.md") ||
+    !headersLive.includes("panels.json") ||
+    !headersLive.includes("mpn.json") ||
+    !headersLive.includes("entity-profiles.json") ||
+    !headersLive.includes("catalog.json") ||
+    !headersLive.includes("geo-baseline.json") ||
+    !headersLive.includes("merchant.json") ||
+    !headersLive.includes("offer.json") ||
+    !headersLive.includes("offers.json") ||
+    !headersLive.includes("ai.txt") ||
+    !headersLive.includes("brand.json") ||
+    !headersLive.includes("/.well-known/brand.json") ||
+    !headersLive.includes("/.well-known/modules.json") ||
+    !headersLive.includes("/.well-known/sku.json") ||
+    !headersLive.includes("/.well-known/pricing.json") ||
+    !headersLive.includes("/.well-known/panels.json") ||
+    !headersLive.includes("/.well-known/mpn.json") ||
+    !headersLive.includes("/.well-known/merchant.json") ||
+    !headersLive.includes("/.well-known/prices.json") ||
+    !headersLive.includes("/.well-known/price.json") ||
+    !headersLive.includes("/.well-known/offer.json") ||
+    !headersLive.includes("/.well-known/offers.json") ||
+    !headersLive.includes("/dataset.json") ||
+    !headersLive.includes("/feed.json") ||
+    !headersLive.includes("/.well-known/dataset.json") ||
+    !headersLive.includes("/.well-known/feed.json") ||
+    !headersLive.includes("/products.json") ||
+    !headersLive.includes("/product.json") ||
+    !headersLive.includes("/.well-known/products.json") ||
+    !headersLive.includes("/.well-known/product.json") ||
+    !headersLive.includes("/.well-known/catalog.json") ||
+    !headersLive.includes("/.well-known/ard.json") ||
+    !headersLive.includes("humans.txt") ||
+    !headersLive.includes("/.well-known/security.txt") ||
+    !headersLive.includes("llms-full.txt") ||
+    !headersLive.includes("#website") ||
+    !headersLive.includes("/.well-known/entity.json") ||
+    !headersLive.includes("/.well-known/cite.json") ||
+    !headersLive.includes("/.well-known/faq.json") ||
+    !headersLive.includes("/.well-known/faqs.json") ||
+    !headersLive.includes("/.well-known/organization.json") ||
+    !headersLive.includes("/.well-known/company.json") ||
+    !headersLive.includes("/.well-known/nap.json") ||
+    !headersLive.includes("/.well-known/about.json") ||
+    !headersLive.includes("/.well-known/geo-baseline.json") ||
+    !headersLive.includes("/.well-known/entity-profiles.json") ||
+    !headersLive.includes("/.well-known/ai-shopping.json") ||
+    !headersLive.includes("/.well-known/llms.txt") ||
+    !headersLive.includes("/.well-known/ai.txt") ||
+    !headersLive.includes("/.well-known/humans.txt") ||
+    !headersLive.includes("/agents.json") ||
+    !headersLive.includes("/.well-known/agent.json") ||
+    !headersLive.includes("/point-c-en.txt") ||
+    !headersLive.includes("/.well-known/point-c.txt") ||
+    !headersLive.includes("/.well-known/point-c-en.txt") ||
+    !headersLive.includes("/point-c.json") ||
+    !headersLive.includes("/point-c-en.json") ||
+    !headersLive.includes("/.well-known/point-c.json") ||
+    !headersLive.includes("/feeds/point-c.csv") ||
+    !headersLive.includes("/geo-status.json") ||
+    !headersLive.includes("/geo-next.txt") ||
+    !headersLive.includes("/owner-next.txt") ||
+    !headersLive.includes("/owner-next.json") ||
+    !headersLive.includes("/.well-known/owner-next.json") ||
+    !headersLive.includes("/geo-next.json") ||
+    !headersLive.includes("/owner-next.html") ||
+    !headersLive.includes("/point-c-progress.json") ||
+    !headersLive.includes("/tur1a.json") ||
+    !headersLive.includes("/feeds/tur1a.csv") ||
+    !headersLive.includes('title="Point C paste packs JSON (potentialAction HowTo)"') ||
+    !headersLive.includes('title="GEO owner-gate status (potentialAction HowTo)"') ||
+    !headersLive.includes('title="Point C paste progress (potentialAction HowTo)"') ||
+    !headersLive.includes('title="Tur1a blind coverage (potentialAction HowTo)"') ||
+    !headersLive.includes('title="GEO next clipboard (HowTo footer)"') ||
+    !headersLive.includes('title="Owner next JSON machine twin (Open/paste)"') ||
+    !headersLive.includes("https://arledscreen.com/brand>") ||
+    !headersLive.includes("https://arledscreen.com/modules>") ||
+    !headersLive.includes("\n/brand\n") ||
+    !headersLive.includes("\n/modules\n") ||
+    !headersLive.includes("prices.rss") ||
+    !headersLive.includes("merchant-priced-panels.tsv") ||
+    !headersLive.includes("point-c.txt")
+  ) {
+    console.error("❌ out/_headers must advertise Link invent aliases + potentialAction HowTo titles for point-c/geo-status/progress/tur1a/geo-next");
+    process.exit(1);
+  }
+  const redirectsLive = fs.existsSync(path.join(outDir, "_redirects"))
+    ? fs.readFileSync(path.join(outDir, "_redirects"), "utf8")
+    : "";
+  if (!redirectsLive.includes("/brand /brand.json 200") || !redirectsLive.includes("/modules /modules.json 200")) {
+    console.error("❌ out/_redirects must rewrite /brand + /modules → *.json (asset-dir invent aliases)");
+    process.exit(1);
+  }
+  const routesLive = fs.existsSync(path.join(outDir, "_routes.json"))
+    ? fs.readFileSync(path.join(outDir, "_routes.json"), "utf8")
+    : "";
+  if (!routesLive.includes('"/brand"') || !routesLive.includes('"/modules"')) {
+    console.error("❌ out/_routes.json must include /brand + /modules (Pages Functions invent aliases)");
+    process.exit(1);
+  }
+  if (
+    !fs.existsSync(path.join(process.cwd(), "functions", "brand.js")) ||
+    !fs.existsSync(path.join(process.cwd(), "functions", "modules.js"))
+  ) {
+    console.error("❌ functions/brand.js + functions/modules.js required for asset-dir invent aliases");
+    process.exit(1);
+  }
+  for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
+    const htmlPath = path.join(outDir, htmlRel);
+    if (!fs.existsSync(htmlPath)) {
+      console.error(`❌ Missing HTML for discovery cite check: ${htmlRel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(htmlPath, "utf8");
+    for (const needle of [
+      'href="https://arledscreen.com/ai-shopping.json"',
+      'href="https://arledscreen.com/entity.json"',
+      'href="https://arledscreen.com/brand.json"',
+      'href="https://arledscreen.com/.well-known/brand.json"',
+      'href="https://arledscreen.com/.well-known/entity.json"',
+      'href="https://arledscreen.com/.well-known/cite.json"',
+      'href="https://arledscreen.com/.well-known/faq.json"',
+      'href="https://arledscreen.com/.well-known/faqs.json"',
+      'href="https://arledscreen.com/.well-known/organization.json"',
+      'href="https://arledscreen.com/.well-known/company.json"',
+      'href="https://arledscreen.com/.well-known/nap.json"',
+      'href="https://arledscreen.com/.well-known/about.json"',
+      'href="https://arledscreen.com/.well-known/geo-baseline.json"',
+      'href="https://arledscreen.com/.well-known/entity-profiles.json"',
+      'href="https://arledscreen.com/.well-known/ai-shopping.json"',
+      'href="https://arledscreen.com/.well-known/llms.txt"',
+      'href="https://arledscreen.com/.well-known/ai.txt"',
+      'href="https://arledscreen.com/agents.json"',
+      'href="https://arledscreen.com/.well-known/agent.json"',
+      'href="https://arledscreen.com/point-c-en.txt"',
+      'href="https://arledscreen.com/.well-known/point-c.txt"',
+      'href="https://arledscreen.com/.well-known/point-c-en.txt"',
+      'href="https://arledscreen.com/prices.json"',
+      'href="https://arledscreen.com/organization.json"',
+      'href="https://arledscreen.com/entity-profiles.json"',
+      'href="https://arledscreen.com/point-c.txt"',
+      'href="https://arledscreen.com/.well-known/agents.json"',
+      'href="https://arledscreen.com/AGENTS.md"',
+      'href="https://arledscreen.com/humans.txt"',
+      'href="https://arledscreen.com/.well-known/security.txt"',
+      'href="https://arledscreen.com/merchant.json"',
+      'href="https://arledscreen.com/offer.json"',
+      'href="https://arledscreen.com/offers.json"',
+      'href="https://arledscreen.com/.well-known/modules.json"',
+      'href="https://arledscreen.com/.well-known/sku.json"',
+      'href="https://arledscreen.com/.well-known/pricing.json"',
+      'href="https://arledscreen.com/.well-known/panels.json"',
+      'href="https://arledscreen.com/.well-known/mpn.json"',
+      'href="https://arledscreen.com/.well-known/merchant.json"',
+      'href="https://arledscreen.com/.well-known/prices.json"',
+      'href="https://arledscreen.com/.well-known/price.json"',
+      'href="https://arledscreen.com/.well-known/offer.json"',
+      'href="https://arledscreen.com/.well-known/offers.json"',
+      'href="https://arledscreen.com/dataset.json"',
+      'href="https://arledscreen.com/feed.json"',
+      'href="https://arledscreen.com/.well-known/dataset.json"',
+      'href="https://arledscreen.com/.well-known/feed.json"',
+      'href="https://arledscreen.com/products.json"',
+      'href="https://arledscreen.com/product.json"',
+      'href="https://arledscreen.com/.well-known/products.json"',
+      'href="https://arledscreen.com/.well-known/product.json"',
+      'href="https://arledscreen.com/.well-known/catalog.json"',
+      'href="https://arledscreen.com/#website"',
+      'href="https://arledscreen.com/feeds/prices.rss"',
+      'rel="describedby"',
+    ]) {
+      if (!html.includes(needle)) {
+        console.error(`❌ ${htmlRel} must include discovery link: ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  const profiles = JSON.parse(fs.readFileSync(path.join(outDir, "entity-profiles.json"), "utf8"));
+  if (
+    !profiles?.packsEn?.gbpDescription ||
+    !profiles?.packsEn?.facebookAbout ||
+    !profiles?.packsEn?.appleBusinessConnect ||
+    !profiles?.packsEn?.youtubeAbout ||
+    !profiles?.packsEn?.yandexBusiness ||
+    !profiles?.packsEn?.instagramName
+  ) {
+    console.error("❌ entity-profiles.json packsEn must cover GBP/FB/Apple/YouTube/Yandex/IG name (cite-only)");
+    process.exit(1);
+  }
+  if (profiles?.brandId !== "https://arledscreen.com/#brand-nxtionstar") {
+    console.error("❌ entity-profiles.json brandId must be #brand-nxtionstar");
+    process.exit(1);
+  }
+  if (
+    profiles?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar" ||
+    !String(profiles?.brand?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") ||
+    !String(profiles?.brand?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+  ) {
+    console.error("❌ entity-profiles.json brand must makesOffer → #priced-panels-aggregate + hasOfferCatalog → catalog.json");
+    process.exit(1);
+  }
+  if (
+    !String(profiles?.packs?.googleMerchantReadiness || "").includes("makesOffer → #priced-panels-aggregate") ||
+    !String(profiles?.packs?.googleMerchantReadiness || "").includes("hasOfferCatalog → catalog.json")
+  ) {
+    console.error("❌ entity-profiles packs.googleMerchantReadiness must cite Brand makesOffer + hasOfferCatalog");
+    process.exit(1);
+  }
+  if (!profiles?.canonicalUrls?.geoBaselineJson?.includes("/geo-baseline.json")) {
+    console.error("❌ entity-profiles.json canonicalUrls.geoBaselineJson required");
+    process.exit(1);
+  }
+  if (!String(profiles?.canonicalUrls?.pricesRss || "").includes("/feeds/prices.rss")) {
+    console.error("❌ entity-profiles.json canonicalUrls.pricesRss required");
+    process.exit(1);
+  }
+  if (
+    !String(profiles?.canonicalUrls?.brandJson || "").includes("/brand.json") ||
+    !String(profiles?.canonicalUrls?.pricesJson || "").includes("/prices.json") ||
+    !String(profiles?.canonicalUrls?.brandWellKnown || "").includes("/.well-known/brand.json") ||
+    !String(profiles?.canonicalUrls?.entityWellKnown || "").includes("/.well-known/entity.json")
+  ) {
+    console.error("❌ entity-profiles.json canonicalUrls must cite brand/prices + well-known brand/entity");
+    process.exit(1);
+  }
+  {
+    const epBased = JSON.stringify(profiles?.isBasedOn || []);
+    const epDist = JSON.stringify(profiles?.distribution || []);
+    for (const needle of [
+      "/entity.json",
+      "/organization.json",
+      "/.well-known/entity.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/ai-shopping.json",
+      "/catalog.json",
+      "/geo-baseline.json",
+      "/entity-profiles.json",
+      "/point-c.txt",
+      "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
+    ]) {
+      if (!epBased.includes(needle)) {
+        console.error(`❌ entity-profiles.json isBasedOn invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of [
+      "/entity.json",
+      "/brand.json",
+      "/.well-known/brand.json",
+      "/.well-known/entity.json",
+      "/organization.json",
+      "/ai-shopping.json",
+      "/prices.json",
+      "/catalog.json",
+      "/geo-baseline.json",
+      "/feeds/prices.rss",
+      "/point-c.txt",
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
+      "#website",
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "/.well-known/mpn.json",
+      "/.well-known/merchant.json",
+      "/.well-known/prices.json",
+      "/.well-known/price.json",
+    ]) {
+      if (!epDist.includes(needle)) {
+        console.error(`❌ entity-profiles.json distribution invent must include ${needle}`);
+        process.exit(1);
+      }
+    }
+    if (!epBased.includes("/feeds/prices.rss")) {
+      console.error("❌ entity-profiles.json isBasedOn invent must include /feeds/prices.rss");
+      process.exit(1);
+    }
+    if (!profiles?.["@id"]?.includes("/entity-profiles.json")) {
+      console.error("❌ entity-profiles.json @id required");
+      process.exit(1);
+    }
+    if (
+      !String(profiles?.mainEntityOfPage?.["@id"] || "").includes("#website") ||
+      !JSON.stringify(profiles?.isRelatedTo || []).includes("#website") ||
+      !JSON.stringify(profiles?.about || {}).includes("#website")
+    ) {
+      console.error("❌ entity-profiles.json must invent-join WebSite #website (mainEntityOfPage + about + isRelatedTo)");
+      process.exit(1);
+    }
+    if (
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("DNSEnable") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("Domain Redirect") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("point-c:csv") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://www.isimtescil.net/") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://business.google.com/") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://chatgpt.com/") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("Open:")
+    ) {
+      console.error("❌ entity-profiles.json ownerP0Checklist must cite geo:next/ack + DNSEnable Domain Redirect + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
+      process.exit(1);
+    }
+    if (!String(profiles?.canonicalUrls?.website || "").includes("#website")) {
+      console.error("❌ entity-profiles.json canonicalUrls.website must cite /#website");
+      process.exit(1);
+    }
+    if (!String(profiles?.description || "").includes("geo:ack")) {
+      console.error("❌ entity-profiles.json description must cite geo:ack");
+      process.exit(1);
+    }
+    {
+      const epSame = JSON.stringify(profiles?.sameAs || []);
+      const epSubject = JSON.stringify(profiles?.subjectOf || []);
+      for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+        if (!epSame.includes(needle)) {
+          console.error(`❌ entity-profiles.json sameAs must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+        if (!epSubject.includes(needle)) {
+          console.error(`❌ entity-profiles.json subjectOf must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+      }
+    }
+  }
+  if (!String(profiles?.packs?.googleMerchantReadiness || "").includes("/feeds/prices.rss")) {
+    console.error("❌ entity-profiles packs.googleMerchantReadiness must cite prices.rss");
+    process.exit(1);
+  }
+  {
+    const merchantPack = String(profiles?.packs?.googleMerchantReadiness || "");
+    for (const needle of [
+      "/.well-known/modules.json",
+      "/.well-known/sku.json",
+      "/.well-known/price.json",
+      "/.well-known/pricing.json",
+      "/.well-known/panels.json",
+      "#website",
+    ]) {
+      if (!merchantPack.includes(needle)) {
+        console.error(`❌ entity-profiles googleMerchantReadiness must cite inventable ${needle}`);
+        process.exit(1);
+      }
+    }
+  }
+  // Point C human packs: NAP must match site social.ts; no merchant jargon / wrong postcode.
+  {
+    const humanPackKeys = [
+      "gbpDescription",
+      "linkedinAbout",
+      "instagramBio",
+      "facebookAbout",
+      "directoryLong",
+      "appleBusinessConnect",
+      "bingPlaces",
+    ];
+    for (const packRoot of ["packs", "packsEn"]) {
+      const root = profiles?.[packRoot] || {};
+      for (const key of humanPackKeys) {
+        const text = String(root[key] || "");
+        if (!text) continue;
+        if (text.includes("34242")) {
+          console.error(`❌ entity-profiles ${packRoot}.${key} must use postalCode 34245 (not 34242)`);
+          process.exit(1);
+        }
+        if (/catalog\.json|quote-only|extrasUsd|pricedPanels/i.test(text)) {
+          console.error(`❌ entity-profiles ${packRoot}.${key} is human cite-only — no catalog/quote-only jargon`);
+          process.exit(1);
+        }
+      }
+      const long = String(root.directoryLong || "") + String(root.gbpDescription || "") + String(root.appleBusinessConnect || "");
+      if (long && !long.includes("34245")) {
+        console.error(`❌ entity-profiles ${packRoot} human packs must include NAP postalCode 34245`);
+        process.exit(1);
+      }
+      if (long && !long.includes("Tuna Sok")) {
+        console.error(`❌ entity-profiles ${packRoot} human packs must include street Tuna Sok`);
+        process.exit(1);
+      }
+      if (long && !/530\s*507\s*88\s*34/.test(long) && !String(root.instagramBio || "").includes("530 507 88 34")) {
+        console.error(`❌ entity-profiles ${packRoot} human packs must include phone +90 530 507 88 34`);
+        process.exit(1);
+      }
+    }
+  }
+  {
+    const baselineLive = JSON.parse(fs.readFileSync(path.join(outDir, "geo-baseline.json"), "utf8"));
+    if (!String(baselineLive?.discovery?.brandJson || "").includes("/brand.json")) {
+      console.error("❌ geo-baseline.json discovery.brandJson must cite /brand.json");
+      process.exit(1);
+    }
+  }
+  if (!ard?.agentic?.resources?.geoBaseline?.url?.includes("/geo-baseline.json")) {
+    console.error("❌ ard.json resources.geoBaseline required");
+    process.exit(1);
+  }
+  const inventExamples = ard?.agentic?.resources?.enInventBridges?.examples;
+  if (!Array.isArray(inventExamples) || !inventExamples.some((u) => String(u).includes("/en/calculator/"))) {
+    console.error("❌ ard.json enInventBridges.examples must include /en/calculator/");
+    process.exit(1);
+  }
+  if (!inventExamples.some((u) => String(u).includes("/en/products/gob-led-ekran/p1-25-gob/"))) {
+    console.error("❌ ard.json enInventBridges.examples must include SKU locale-flip /en/products/.../p1-25-gob/");
+    process.exit(1);
+  }
+  if (
+    !inventExamples.some((u) => String(u).includes("/en/catalog/")) ||
+    !inventExamples.some((u) => String(u).includes("/en/shop/")) ||
+    !inventExamples.some((u) => String(u).includes("/en/request-quote/")) ||
+    !inventExamples.some((u) => String(u).includes("/en/products/gob/")) ||
+    !inventExamples.some((u) => String(u) === "https://arledscreen.com/catalog" || String(u).endsWith("arledscreen.com/catalog")) ||
+    !inventExamples.some((u) => String(u).includes("arledscreen.com/ai-shopping") && !String(u).includes(".json")) ||
+    !inventExamples.some((u) => String(u).includes("/en/ai-shopping.json")) ||
+    !inventExamples.some((u) => String(u).includes("/.well-known/llms.txt"))
+  ) {
+    console.error("❌ ard.json enInventBridges.examples must include catalog/shop + feed aliases");
+    process.exit(1);
+  }
+  const trInvent = ard?.agentic?.resources?.trInventBridges;
+  const trExamples = trInvent?.examples;
+  if (
+    !trInvent?.quoteCanonical?.includes("/tr/quote/") ||
+    !trInvent?.priceCanonical?.includes("/tr/led-ekran-fiyatlari/") ||
+    !Array.isArray(trExamples) ||
+    !trExamples.some((u) => String(u).includes("/tr/teklif/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/fiyat/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/prices/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/catalog/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/calculator/")) ||
+    !trExamples.some((u) => String(u).includes("/en/calculator/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/faq/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/modules/")) ||
+    !trExamples.some((u) => String(u).includes("/tr/gob/")) ||
+    !trExamples.some((u) => String(u) === "https://arledscreen.com/teklif/" || String(u).endsWith("/teklif/")) ||
+    !trExamples.some((u) => String(u).includes("/panels.json")) ||
+    !trExamples.some((u) => String(u).includes("/merchant.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/mpn.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/modules.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/sku.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/price.json")) ||
+    !trExamples.some((u) => String(u).includes("/.well-known/pricing.json")) ||
+    !trExamples.some((u) => String(u).includes("/api/panels.json")) ||
+    !trExamples.some((u) => String(u).includes("/tr/llms.txt"))
+  ) {
+    console.error("❌ ard.json trInventBridges must list TR quote/price/catalog invents + shopping feed aliases");
+    process.exit(1);
+  }
+  const trBridgeChecks = [
+    ["tr/teklif/index.html", "/tr/quote/"],
+    ["tr/fiyat/index.html", "/tr/led-ekran-fiyatlari/"],
+    ["tr/prices/index.html", "/tr/led-ekran-fiyatlari/"],
+    ["tr/catalog/index.html", "/tr/products/"],
+    ["tr/calculator/index.html", "/tr/hesaplayici/"],
+    ["tr/faq/index.html", "/tr/sss/"],
+    ["tr/brand/index.html", "/tr/nxtionstar/"],
+    ["tr/modules/index.html", "/tr/products/"],
+    ["tr/gob/index.html", "/tr/products/gob-led-ekran/"],
+    ["tr/indoor-led/index.html", "/tr/products/ic-mekan-led-ekran/"],
+    ["en/magaza/index.html", "/en/products/"],
+    ["teklif/index.html", "/tr/quote/"],
+    ["quote/index.html", "/tr/quote/"],
+    ["fiyat/index.html", "/tr/led-ekran-fiyatlari/"],
+    ["katalog/index.html", "/tr/products/"],
+    ["contact/index.html", "/tr/quote/"],
+    ["nxtionstar/index.html", "/tr/nxtionstar/"],
+    ["galeri/index.html", "/tr/galeri/"],
+  ];
+  for (const [rel, target] of trBridgeChecks) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ invent bridge missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    if (!/noindex/i.test(html) || !/Canonical hub/i.test(html) || !html.includes(target)) {
+      console.error(`❌ invent bridge must be noindex → ${target}: ${rel}`);
+      process.exit(1);
+    }
+  }
+  for (const rel of [
+    "panels.json",
+    "modules.json",
+    "sku.json",
+    "mpn.json",
+    "merchant.json",
+    ".well-known/merchant.json",
+    ".well-known/mpn.json",
+    ".well-known/sku.json",
+    ".well-known/modules.json",
+    "api/panels",
+    "api/merchant",
+    "api/mpn",
+    "api/panels.json",
+    "api/merchant.json",
+    "api/mpn.json",
+    "api/ai-shopping.json",
+    "api/prices.json",
+    "api/entity.json",
+    "panels",
+    "sku",
+    "mpn",
+    "merchant",
+    "products",
+    "product.json",
+    "v1/panels",
+    "v1/merchant",
+    "v1/mpn",
+    "v1/sku",
+    "feeds/prices.json",
+    "feeds/catalog.json",
+    "tr/llms.txt",
+    "en/llms.txt",
+    "tr/llms-full.txt",
+    "en/llms-full.txt",
+    "tr/ai.txt",
+    "en/ai.txt",
+    "tr/entity-profiles.json",
+    "en/entity-profiles.json",
+    "offer.json",
+    "cite.json",
+    "faq.json",
+    "faqs.json",
+  ]) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ shopping feed invent alias missing in out/: ${rel}`);
+      process.exit(1);
+    }
+  }
+  const canonLlms = fs.readFileSync(path.join(outDir, "llms.txt"));
+  if (!fs.readFileSync(path.join(outDir, "tr/llms.txt")).equals(canonLlms)) {
+    console.error("❌ out/tr/llms.txt must match llms.txt");
+    process.exit(1);
+  }
+  const canonProfiles = fs.readFileSync(path.join(outDir, "entity-profiles.json"));
+  if (!fs.readFileSync(path.join(outDir, "tr/entity-profiles.json")).equals(canonProfiles)) {
+    console.error("❌ out/tr/entity-profiles.json must match entity-profiles.json");
+    process.exit(1);
+  }
+  if (!headersLive.includes("/api/*") || !headersLive.includes("/tr/:file.txt")) {
+    console.error("❌ out/_headers must set Content-Type for /api/* + /tr/:file.txt wildcards");
+    process.exit(1);
+  }
+  if (!headersLive.includes("\n/panels\n")) {
+    console.error("❌ out/_headers must set Content-Type for extensionless /panels");
+    process.exit(1);
+  }
+  const canonAiForExt = fs.readFileSync(path.join(outDir, "ai-shopping.json"));
+  for (const rel of ["panels", "mpn", "merchant", "sku", "api/panels.json", "api/mpn.json"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
+      console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
+  }
+  // out/modules/ is the image asset directory — must remain a directory.
+  if (!fs.existsSync(path.join(outDir, "modules")) || !fs.statSync(path.join(outDir, "modules")).isDirectory()) {
+    console.error("❌ out/modules must remain the image asset directory (use /modules.json for feed)");
+    process.exit(1);
+  }
+  const canonCat = fs.readFileSync(path.join(outDir, "catalog.json"));
+  if (!fs.readFileSync(path.join(outDir, "product.json")).equals(canonCat)) {
+    console.error("❌ out/product.json must match catalog.json");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, "products")).equals(canonCat)) {
+    console.error("❌ out/products must match catalog.json");
+    process.exit(1);
+  }
+  if (!headersLive.includes("/feeds/prices.json") || !headersLive.includes("/feeds/catalog.json")) {
+    console.error("❌ out/_headers must set application/json for /feeds/*.json invent aliases");
+    process.exit(1);
+  }
+  if (headersLive.includes("/feeds/*\n") || /\/feeds\/\*\s*\n/.test(headersLive)) {
+    console.error("❌ out/_headers must not blanket /feeds/* as TSV (use /feeds/*.tsv)");
+    process.exit(1);
+  }
+  if (!headersLive.includes("/feeds/*.tsv")) {
+    console.error("❌ out/_headers must scope TSV Content-Type to /feeds/*.tsv");
+    process.exit(1);
+  }
+  if (!/\/:file\.json\n[\s\S]*?Content-Type: application\/json; charset=utf-8/.test(headersLive)) {
+    console.error("❌ out/_headers /:file.json wildcard must set application/json; charset=utf-8 (covers offer/cite/faq aliases)");
+    process.exit(1);
+  }
+  const canonEntityForSyn = fs.readFileSync(path.join(outDir, "entity.json"));
+  for (const rel of [
+    "cite.json",
+    "faq.json",
+    "faqs.json",
+    ".well-known/cite.json",
+    ".well-known/faq.json",
+    ".well-known/faqs.json",
+    ".well-known/organization.json",
+    ".well-known/company.json",
+    ".well-known/nap.json",
+    ".well-known/about.json",
+  ]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonEntityForSyn)) {
+      console.error(`❌ out/${rel} must match entity.json`);
+      process.exit(1);
+    }
+  }
+  if (!fs.readFileSync(path.join(outDir, "offer.json")).equals(canonAiForExt)) {
+    console.error("❌ out/offer.json must match ai-shopping.json");
+    process.exit(1);
+  }
+  for (const rel of [".well-known/offer.json", ".well-known/offers.json", "offers.json", "dataset.json", "feed.json", ".well-known/dataset.json", ".well-known/feed.json"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
+      console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
+  }
+  const canonCatalogForSyn = fs.readFileSync(path.join(outDir, "catalog.json"));
+  for (const rel of [".well-known/products.json", ".well-known/product.json", ".well-known/catalog.json"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonCatalogForSyn)) {
+      console.error(`❌ out/${rel} must match catalog.json`);
+      process.exit(1);
+    }
+  }
+  if (!fs.readFileSync(path.join(outDir, ".well-known/geo-baseline.json")).equals(fs.readFileSync(path.join(outDir, "geo-baseline.json")))) {
+    console.error("❌ out/.well-known/geo-baseline.json must match geo-baseline.json");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, ".well-known/entity-profiles.json")).equals(fs.readFileSync(path.join(outDir, "entity-profiles.json")))) {
+    console.error("❌ out/.well-known/entity-profiles.json must match entity-profiles.json");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, ".well-known/ai-shopping.json")).equals(fs.readFileSync(path.join(outDir, "ai-shopping.json")))) {
+    console.error("❌ out/.well-known/ai-shopping.json must match ai-shopping.json");
+    process.exit(1);
+  }
+  for (const rel of ["offer", "offers", "dataset", "feed"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
+      console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
+  }
+  for (const rel of ["organization", "company", "nap", "cite", "faq", "faqs"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonEntityForSyn)) {
+      console.error(`❌ out/${rel} must match entity.json`);
+      process.exit(1);
+    }
+  }
+  if (!headersLive.includes("\n/offer\n") || !headersLive.includes("\n/organization\n")) {
+    console.error("❌ out/_headers must set Content-Type for extensionless /offer + /organization");
+    process.exit(1);
+  }
+  if (!llmsLive.includes("mpn") || !llmsLive.includes("/panels.json") || !llmsLive.includes("/teklif/")) {
+    console.error("❌ out/llms.txt must cite mpn + panels.json + root /teklif/ invent");
+    process.exit(1);
+  }
+  if (!llmsLive.includes("/tr/llms.txt") || !llmsLive.includes("/tr/ai.txt")) {
+    console.error("❌ out/llms.txt must cite TR llms/ai discovery mirrors");
+    process.exit(1);
+  }
+  if (!ard?.agentic?.resources?.aiTxt?.url?.includes("/ai.txt")) {
+    console.error("❌ ard.json resources.aiTxt required");
+    process.exit(1);
+  }
+  if (!Array.isArray(ard?.robotsPolicy?.allow) || !ard.robotsPolicy.allow.includes("/geo-baseline.json")) {
+    console.error("❌ ard.json robotsPolicy.allow must include /geo-baseline.json");
+    process.exit(1);
+  }
+  if (!ard.robotsPolicy.allow.includes("/ai.txt")) {
+    console.error("❌ ard.json robotsPolicy.allow must include /ai.txt");
+    process.exit(1);
+  }
+  const subjectUrls = (entity.subjectOf || []).map((s) => s.url || "");
+  if (!subjectUrls.some((u) => u.includes("/feeds/merchant-priced-panels.tsv"))) {
+    console.error("❌ entity.json subjectOf must include merchant TSV Dataset");
+    process.exit(1);
+  }
+  if (!subjectUrls.some((u) => u.includes("/feeds/prices.rss"))) {
+    console.error("❌ entity.json subjectOf must include prices.rss DataFeed");
+    process.exit(1);
+  }
+  if (!subjectUrls.some((u) => u.includes("/point-c.txt"))) {
+    console.error("❌ entity.json subjectOf must include /point-c.txt DataDownload (reverse invent)");
+    process.exit(1);
+  }
+  for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+    if (!subjectUrls.some((u) => u.includes(needle))) {
+      console.error(`❌ entity.json subjectOf must include owner-gate HowTo ${needle}`);
+      process.exit(1);
+    }
+  }
+  if (!subjectUrls.some((u) => u.includes("/brand.json"))) {
+    console.error("❌ entity.json subjectOf must include /brand.json Brand document (reverse invent)");
+    process.exit(1);
+  }
+  if (!subjectUrls.some((u) => u.includes("/entity-profiles.json"))) {
+    console.error("❌ entity.json subjectOf must include /entity-profiles.json (Point C reverse invent)");
+    process.exit(1);
+  }
+  {
+    const brandLive = JSON.parse(fs.readFileSync(path.join(outDir, "brand.json"), "utf8"));
+    const brandSubject = JSON.stringify(brandLive.subjectOf || []);
+    const brandDist = JSON.stringify(brandLive.distribution || []);
+    if (!brandSubject.includes("/point-c.txt") || !brandDist.includes("/point-c.txt")) {
+      console.error("❌ brand.json subjectOf + distribution must cite /point-c.txt");
+      process.exit(1);
+    }
+    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      if (!brandSubject.includes(needle)) {
+        console.error(`❌ brand.json subjectOf must cite owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+      if (!brandDist.includes(needle)) {
+        console.error(`❌ brand.json distribution must cite owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+    }
+    if (!brandSubject.includes("/entity.json") || !brandDist.includes("/entity.json")) {
+      console.error("❌ brand.json subjectOf + distribution must reverse-join /entity.json");
+      process.exit(1);
+    }
+    if (!brandSubject.includes("/entity-profiles.json") || !brandDist.includes("/entity-profiles.json")) {
+      console.error("❌ brand.json subjectOf + distribution must reverse-join /entity-profiles.json");
+      process.exit(1);
+    }
+  }
+  {
+    const catalogLive = JSON.parse(fs.readFileSync(path.join(outDir, "catalog.json"), "utf8"));
+    const catDist = JSON.stringify(catalogLive.distribution || []);
+    const catRel = JSON.stringify(catalogLive.isRelatedTo || []);
+    if (!catDist.includes("/entity-profiles.json") || !catRel.includes("/entity-profiles.json")) {
+      console.error("❌ catalog.json distribution + isRelatedTo must reverse-join /entity-profiles.json");
+      process.exit(1);
+    }
+  }
+  if (!String(entity?.pricesRss || "").includes("/feeds/prices.rss")) {
+    console.error("❌ entity.json pricesRss must cite /feeds/prices.rss");
+    process.exit(1);
+  }
+  const tsvPath = path.join(outDir, "feeds/merchant-priced-panels.tsv");
+  if (!fs.existsSync(tsvPath)) {
+    console.error("❌ Missing in out/: feeds/merchant-priced-panels.tsv");
+    process.exit(1);
+  }
+  const tsv = fs.readFileSync(tsvPath, "utf8");
+  const tsvHeader = tsv.trim().split("\n")[0] || "";
+  for (const col of [
+    "title",
+    "brand",
+    "image_link",
+    "condition",
+    "shipping_included",
+    "mpn",
+    "product_ld_id",
+    "catalog_id",
+    "offer_id",
+    "catalog_offer_id",
+    "brand_url",
+    "organization_id",
+    "entity_url",
+    "local_business_id",
+    "brand_makes_offer_id",
+    "brand_has_offer_catalog",
+    "ai_shopping_url",
+    "prices_json_url",
+    "catalog_url",
+    "entity_profiles_url",
+    "point_c_url",
+    "point_c_well_known_url",
+    "point_c_en_url",
+    "point_c_en_well_known_url",
+    "point_c_json_url",
+    "point_c_json_well_known_url",
+    "point_c_en_json_url",
+    "point_c_en_json_well_known_url",
+    "point_c_csv_url",
+    "geo_status_url",
+    "geo_next_url",
+    "owner_next_url",
+    "point_c_progress_url",
+    "tur1a_json_url",
+    "tur1a_csv_url",
+    "brand_well_known_url",
+    "modules_well_known_url",
+    "sku_well_known_url",
+    "offer_json_url",
+    "pricing_well_known_url",
+    "panels_well_known_url",
+    "mpn_well_known_url",
+    "merchant_well_known_url",
+    "prices_well_known_url",
+    "price_well_known_url",
+    "entity_well_known_url",
+    "prices_rss_url",
+    "organization_url",
+    "geo_baseline_url",
+    "website_url",
+    "agents_url",
+    "ard_url",
+    "ai_txt_url",
+    "llms_url",
+    "llms_full_url",
+    "humans_url",
+    "agents_md_url",
+    "security_txt_url",
+  ]) {
+    if (!tsvHeader.split("\t").includes(col)) {
+      console.error(`❌ merchant TSV missing column: ${col}`);
+      process.exit(1);
+    }
+  }
+  const tsvRows = tsv.trim().split("\n").slice(1);
+  if (tsvRows.length !== 12) {
+    console.error(`❌ merchant TSV must have 12 data rows, got ${tsvRows.length}`);
+    process.exit(1);
+  }
+  const tsvCols = tsvHeader.split("\t");
+  const mpnIdx = tsvCols.indexOf("mpn");
+  const idIdx = tsvCols.indexOf("id");
+  const brandUrlIdx = tsvCols.indexOf("brand_url");
+  const orgIdx = tsvCols.indexOf("organization_id");
+  const entityIdx = tsvCols.indexOf("entity_url");
+  const lbIdx = tsvCols.indexOf("local_business_id");
+  const brandOfferIdx = tsvCols.indexOf("brand_makes_offer_id");
+  const brandCatalogIdx = tsvCols.indexOf("brand_has_offer_catalog");
+  const aiShoppingUrlIdx = tsvCols.indexOf("ai_shopping_url");
+  const pricesJsonUrlIdx = tsvCols.indexOf("prices_json_url");
+  const catalogUrlIdx = tsvCols.indexOf("catalog_url");
+  const profilesUrlIdx = tsvCols.indexOf("entity_profiles_url");
+  const pointCUrlIdx = tsvCols.indexOf("point_c_url");
+  const pointCWkIdx = tsvCols.indexOf("point_c_well_known_url");
+  const pointCEnUrlIdx = tsvCols.indexOf("point_c_en_url");
+  const pointCEnWkIdx = tsvCols.indexOf("point_c_en_well_known_url");
+  const pointCJsonUrlIdx = tsvCols.indexOf("point_c_json_url");
+  const pointCJsonWkIdx = tsvCols.indexOf("point_c_json_well_known_url");
+  const pointCEnJsonUrlIdx = tsvCols.indexOf("point_c_en_json_url");
+  const pointCEnJsonWkIdx = tsvCols.indexOf("point_c_en_json_well_known_url");
+  const pointCCsvUrlIdx = tsvCols.indexOf("point_c_csv_url");
+  const geoStatusUrlIdx = tsvCols.indexOf("geo_status_url");
+  const geoNextUrlIdx = tsvCols.indexOf("geo_next_url");
+  const ownerNextUrlIdx = tsvCols.indexOf("owner_next_url");
+  const pointCProgressUrlIdx = tsvCols.indexOf("point_c_progress_url");
+  const tur1aJsonUrlIdx = tsvCols.indexOf("tur1a_json_url");
+  const tur1aCsvUrlIdx = tsvCols.indexOf("tur1a_csv_url");
+  const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
+  const modulesWkIdx = tsvCols.indexOf("modules_well_known_url");
+  const skuWkIdx = tsvCols.indexOf("sku_well_known_url");
+  const offerJsonUrlIdx = tsvCols.indexOf("offer_json_url");
+  const pricingWkIdx = tsvCols.indexOf("pricing_well_known_url");
+  const panelsWkIdx = tsvCols.indexOf("panels_well_known_url");
+  const mpnWkIdx = tsvCols.indexOf("mpn_well_known_url");
+  const merchantWkIdx = tsvCols.indexOf("merchant_well_known_url");
+  const pricesWkIdx = tsvCols.indexOf("prices_well_known_url");
+  const priceWkIdx = tsvCols.indexOf("price_well_known_url");
+  const entityWkIdx = tsvCols.indexOf("entity_well_known_url");
+  const pricesRssUrlIdx = tsvCols.indexOf("prices_rss_url");
+  const orgUrlIdx = tsvCols.indexOf("organization_url");
+  const geoBaselineUrlIdx = tsvCols.indexOf("geo_baseline_url");
+  const websiteUrlIdx = tsvCols.indexOf("website_url");
+  const agentsUrlIdx = tsvCols.indexOf("agents_url");
+  const ardUrlIdx = tsvCols.indexOf("ard_url");
+  const aiTxtUrlIdx = tsvCols.indexOf("ai_txt_url");
+  const llmsUrlIdx = tsvCols.indexOf("llms_url");
+  const llmsFullUrlIdx = tsvCols.indexOf("llms_full_url");
+  const humansUrlIdx = tsvCols.indexOf("humans_url");
+  const agentsMdUrlIdx = tsvCols.indexOf("agents_md_url");
+  const securityTxtUrlIdx = tsvCols.indexOf("security_txt_url");
+  for (const row of tsvRows) {
+    const cells = row.split("\t");
+    if (cells[mpnIdx] !== cells[idIdx]) {
+      console.error(`❌ merchant TSV mpn must equal id (sku) for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[brandUrlIdx] !== "https://arledscreen.com/brand.json") {
+      console.error(`❌ merchant TSV brand_url must be /brand.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[orgIdx] !== "https://arledscreen.com/#organization") {
+      console.error(`❌ merchant TSV organization_id must be #organization for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[entityIdx] !== "https://arledscreen.com/entity.json") {
+      console.error(`❌ merchant TSV entity_url must be /entity.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[lbIdx] !== "https://arledscreen.com/#localbusiness") {
+      console.error(`❌ merchant TSV local_business_id must be #localbusiness for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[brandOfferIdx] !== "https://arledscreen.com/#priced-panels-aggregate") {
+      console.error(`❌ merchant TSV brand_makes_offer_id must be #priced-panels-aggregate for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[brandCatalogIdx] !== "https://arledscreen.com/catalog.json") {
+      console.error(`❌ merchant TSV brand_has_offer_catalog must be catalog.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[aiShoppingUrlIdx] !== "https://arledscreen.com/ai-shopping.json") {
+      console.error(`❌ merchant TSV ai_shopping_url must be /ai-shopping.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pricesJsonUrlIdx] !== "https://arledscreen.com/prices.json") {
+      console.error(`❌ merchant TSV prices_json_url must be /prices.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[catalogUrlIdx] !== "https://arledscreen.com/catalog.json") {
+      console.error(`❌ merchant TSV catalog_url must be /catalog.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[profilesUrlIdx] !== "https://arledscreen.com/entity-profiles.json") {
+      console.error(`❌ merchant TSV entity_profiles_url must be /entity-profiles.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCUrlIdx] !== "https://arledscreen.com/point-c.txt") {
+      console.error(`❌ merchant TSV point_c_url must be /point-c.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCWkIdx] !== "https://arledscreen.com/.well-known/point-c.txt") {
+      console.error(`❌ merchant TSV point_c_well_known_url must be /.well-known/point-c.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCEnUrlIdx] !== "https://arledscreen.com/point-c-en.txt") {
+      console.error(`❌ merchant TSV point_c_en_url must be /point-c-en.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCEnWkIdx] !== "https://arledscreen.com/.well-known/point-c-en.txt") {
+      console.error(`❌ merchant TSV point_c_en_well_known_url must be /.well-known/point-c-en.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCJsonUrlIdx] !== "https://arledscreen.com/point-c.json") {
+      console.error(`❌ merchant TSV point_c_json_url must be /point-c.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCJsonWkIdx] !== "https://arledscreen.com/.well-known/point-c.json") {
+      console.error(`❌ merchant TSV point_c_json_well_known_url must be /.well-known/point-c.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCEnJsonUrlIdx] !== "https://arledscreen.com/point-c-en.json") {
+      console.error(`❌ merchant TSV point_c_en_json_url must be /point-c-en.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCEnJsonWkIdx] !== "https://arledscreen.com/.well-known/point-c-en.json") {
+      console.error(`❌ merchant TSV point_c_en_json_well_known_url must be /.well-known/point-c-en.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCCsvUrlIdx] !== "https://arledscreen.com/feeds/point-c.csv") {
+      console.error(`❌ merchant TSV point_c_csv_url must be /feeds/point-c.csv for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[geoStatusUrlIdx] !== "https://arledscreen.com/geo-status.json") {
+      console.error(`❌ merchant TSV geo_status_url must be /geo-status.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[geoNextUrlIdx] !== "https://arledscreen.com/geo-next.txt") {
+      console.error(`❌ merchant TSV geo_next_url must be /geo-next.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[ownerNextUrlIdx] !== "https://arledscreen.com/owner-next.txt") {
+      console.error(`❌ merchant TSV owner_next_url must be /owner-next.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCProgressUrlIdx] !== "https://arledscreen.com/point-c-progress.json") {
+      console.error(`❌ merchant TSV point_c_progress_url must be /point-c-progress.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[tur1aJsonUrlIdx] !== "https://arledscreen.com/tur1a.json") {
+      console.error(`❌ merchant TSV tur1a_json_url must be /tur1a.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[tur1aCsvUrlIdx] !== "https://arledscreen.com/feeds/tur1a.csv") {
+      console.error(`❌ merchant TSV tur1a_csv_url must be /feeds/tur1a.csv for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[brandWkIdx] !== "https://arledscreen.com/.well-known/brand.json") {
+      console.error(`❌ merchant TSV brand_well_known_url must be /.well-known/brand.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[modulesWkIdx] !== "https://arledscreen.com/.well-known/modules.json") {
+      console.error(`❌ merchant TSV modules_well_known_url must be /.well-known/modules.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[skuWkIdx] !== "https://arledscreen.com/.well-known/sku.json") {
+      console.error(`❌ merchant TSV sku_well_known_url must be /.well-known/sku.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[offerJsonUrlIdx] !== "https://arledscreen.com/offer.json") {
+      console.error(`❌ merchant TSV offer_json_url must be /offer.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pricingWkIdx] !== "https://arledscreen.com/.well-known/pricing.json") {
+      console.error(`❌ merchant TSV pricing_well_known_url must be /.well-known/pricing.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[panelsWkIdx] !== "https://arledscreen.com/.well-known/panels.json") {
+      console.error(`❌ merchant TSV panels_well_known_url must be /.well-known/panels.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[mpnWkIdx] !== "https://arledscreen.com/.well-known/mpn.json") {
+      console.error(`❌ merchant TSV mpn_well_known_url must be /.well-known/mpn.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[merchantWkIdx] !== "https://arledscreen.com/.well-known/merchant.json") {
+      console.error(`❌ merchant TSV merchant_well_known_url must be /.well-known/merchant.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pricesWkIdx] !== "https://arledscreen.com/.well-known/prices.json") {
+      console.error(`❌ merchant TSV prices_well_known_url must be /.well-known/prices.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[priceWkIdx] !== "https://arledscreen.com/.well-known/price.json") {
+      console.error(`❌ merchant TSV price_well_known_url must be /.well-known/price.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[entityWkIdx] !== "https://arledscreen.com/.well-known/entity.json") {
+      console.error(`❌ merchant TSV entity_well_known_url must be /.well-known/entity.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pricesRssUrlIdx] !== "https://arledscreen.com/feeds/prices.rss") {
+      console.error(`❌ merchant TSV prices_rss_url must be /feeds/prices.rss for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[orgUrlIdx] !== "https://arledscreen.com/organization.json") {
+      console.error(`❌ merchant TSV organization_url must be /organization.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[geoBaselineUrlIdx] !== "https://arledscreen.com/geo-baseline.json") {
+      console.error(`❌ merchant TSV geo_baseline_url must be /geo-baseline.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[websiteUrlIdx] !== "https://arledscreen.com/#website") {
+      console.error(`❌ merchant TSV website_url must be /#website for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[agentsUrlIdx] !== "https://arledscreen.com/.well-known/agents.json") {
+      console.error(`❌ merchant TSV agents_url must be /.well-known/agents.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[ardUrlIdx] !== "https://arledscreen.com/.well-known/ard.json") {
+      console.error(`❌ merchant TSV ard_url must be /.well-known/ard.json for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[aiTxtUrlIdx] !== "https://arledscreen.com/ai.txt") {
+      console.error(`❌ merchant TSV ai_txt_url must be /ai.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[llmsUrlIdx] !== "https://arledscreen.com/llms.txt") {
+      console.error(`❌ merchant TSV llms_url must be /llms.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[llmsFullUrlIdx] !== "https://arledscreen.com/llms-full.txt") {
+      console.error(`❌ merchant TSV llms_full_url must be /llms-full.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[humansUrlIdx] !== "https://arledscreen.com/humans.txt") {
+      console.error(`❌ merchant TSV humans_url must be /humans.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[agentsMdUrlIdx] !== "https://arledscreen.com/AGENTS.md") {
+      console.error(`❌ merchant TSV agents_md_url must be /AGENTS.md for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[securityTxtUrlIdx] !== "https://arledscreen.com/.well-known/security.txt") {
+      console.error(`❌ merchant TSV security_txt_url must be /.well-known/security.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+  }
+  for (const panel of ai.pricedPanels) {
+    if (!tsv.includes(panel.url)) {
+      console.error(`❌ merchant TSV missing ai-shopping URL for ${panel.sku}: ${panel.url}`);
+      process.exit(1);
+    }
+    const brandName =
+      typeof panel.brand === "string" ? panel.brand : panel.brand?.name;
+    if (!panel.image || !brandName || !tsv.includes(panel.image)) {
+      console.error(`❌ pricedPanels/TSV image+brand required for ${panel.sku}`);
+      process.exit(1);
+    }
+    if (
+      panel.brand?.["@type"] !== "Brand" ||
+      panel.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar" ||
+      panel.brandId !== "https://arledscreen.com/#brand-nxtionstar"
+    ) {
+      console.error(`❌ pricedPanels ${panel.sku} Brand @id + brandId must be #brand-nxtionstar (catalog parity)`);
+      process.exit(1);
+    }
+    if (panel.mpn !== panel.sku) {
+      console.error(`❌ pricedPanels ${panel.sku} mpn must equal sku (no invented GTIN)`);
+      process.exit(1);
+    }
+    if (panel["@type"] !== "Product" || panel.offers?.["@type"] !== "Offer") {
+      console.error(`❌ pricedPanels ${panel.sku} must be Product with nested Offer`);
+      process.exit(1);
+    }
+    if (panel.offers?.url !== panel.url || panel.offers?.price !== panel.price) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.url/price must match flat Product fields`);
+      process.exit(1);
+    }
+    if (
+      panel.offers?.priceSpecification?.["@type"] !== "UnitPriceSpecification" ||
+      panel.offers?.priceSpecification?.valueAddedTaxIncluded !== false ||
+      String(panel.offers?.priceSpecification?.price) !== String(panel.price)
+    ) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.priceSpecification must match catalog (VAT excluded)`);
+      process.exit(1);
+    }
+    if (!String(panel.offers?.description || "").includes("Ücretsiz kargo yok")) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.description must deny free shipping (HTML panelOffer parity)`);
+      process.exit(1);
+    }
+    const productSameAs = Array.isArray(panel.sameAs) ? panel.sameAs : [];
+    const offerSameAs = Array.isArray(panel.offers?.sameAs) ? panel.offers.sameAs : [];
+    if (!productSameAs.some((u) => String(u).includes(`/catalog.json#${panel.sku}`))) {
+      console.error(`❌ pricedPanels ${panel.sku} sameAs must join catalog.json#${panel.sku}`);
+      process.exit(1);
+    }
+    if (!offerSameAs.some((u) => String(u).includes(`/catalog.json#offer-${panel.sku}`))) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.sameAs must join catalog offer @id`);
+      process.exit(1);
+    }
+    if (!offerSameAs.some((u) => String(u) === `${panel.url}#offer`)) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.sameAs must join PDP #offer`);
+      process.exit(1);
+    }
+    if (panel.mainEntityOfPage !== panel.url) {
+      console.error(`❌ pricedPanels ${panel.sku} mainEntityOfPage must be PDP url`);
+      process.exit(1);
+    }
+    if (panel.offers?.sku !== panel.sku || panel.offers?.mpn !== panel.sku) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer must set sku/mpn`);
+      process.exit(1);
+    }
+    if (panel.offers?.itemOffered?.["@id"] !== `${panel.url}#product`) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.itemOffered must join PDP #product`);
+      process.exit(1);
+    }
+    if (!String(panel.offers?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar")) {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.itemOffered.brand must be #brand-nxtionstar`);
+      process.exit(1);
+    }
+    if (panel.offers?.availableAtOrFrom?.["@id"] !== "https://arledscreen.com/#localbusiness") {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.availableAtOrFrom must be #localbusiness`);
+      process.exit(1);
+    }
+    if (panel.offers?.seller?.["@id"] !== "https://arledscreen.com/#organization") {
+      console.error(`❌ pricedPanels ${panel.sku} Offer.seller must be #organization`);
+      process.exit(1);
+    }
+    if (
+      panel.offers?.hasMerchantReturnPolicy?.returnPolicyCategory !==
+      "https://schema.org/MerchantReturnNotPermitted"
+    ) {
+      console.error(`❌ pricedPanels ${panel.sku} must declare MerchantReturnNotPermitted`);
+      process.exit(1);
+    }
+  }
+  if (tsv.includes("/ic-mekan-led-ekran/p1-25/") || tsv.includes("/p4-front/")) {
+    console.error("❌ merchant TSV has stale broken product_url paths");
+    process.exit(1);
+  }
+  if (/\ttrue(\t|$)/m.test(tsv)) {
+    console.error("❌ merchant TSV must not invent tax/shipping true");
+    process.exit(1);
+  }
+  // Local path existence under out/ (no network) — catch 404 product_url drift.
+  for (const panel of ai.pricedPanels) {
+    const u = new URL(panel.url);
+    let rel = u.pathname.replace(/^\//, "");
+    if (rel.endsWith("/")) rel += "index.html";
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ pricedPanels URL missing in out/: ${panel.sku} → ${rel}`);
+      process.exit(1);
+    }
+    // TR PDP Product JSON-LD must use catalog sku/mpn (= panel id), not invent GTIN.
+    const trHtml = fs.readFileSync(fp, "utf8");
+    const ldBlocks = [...trHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+    let pdpOk = false;
+    for (const raw of ldBlocks) {
+      let doc;
+      try {
+        doc = JSON.parse(raw);
+      } catch {
+        continue;
+      }
+      const nodes = Array.isArray(doc) ? doc : doc?.["@graph"] ? doc["@graph"] : [doc];
+      for (const node of nodes) {
+        const t = node?.["@type"];
+        const isProduct = t === "Product" || (Array.isArray(t) && t.includes("Product"));
+        if (!isProduct) continue;
+        if (node.sku === panel.sku && node.mpn === panel.sku) {
+          pdpOk = true;
+          break;
+        }
+      }
+      if (pdpOk) break;
+    }
+    if (!pdpOk) {
+      console.error(`❌ TR PDP Product JSON-LD must set sku=mpn=${panel.sku}: ${rel}`);
+      process.exit(1);
+    }
+    // EN locale-flip of Offer URLs must be real HTML bridges (CF 404.html beats _redirects).
+    const enPath = u.pathname.replace(/^\/tr\//, "/en/");
+    let enRel = enPath.replace(/^\//, "");
+    if (enRel.endsWith("/")) enRel += "index.html";
+    const enFp = path.join(outDir, enRel);
+    if (!fs.existsSync(enFp)) {
+      console.error(`❌ pricedPanels EN locale-flip bridge missing in out/: ${panel.sku} → ${enRel}`);
+      process.exit(1);
+    }
+    const enHtml = fs.readFileSync(enFp, "utf8");
+    if (!/noindex/i.test(enHtml) || !/Canonical hub/i.test(enHtml)) {
+      console.error(`❌ pricedPanels EN bridge must be noindex InventBridge: ${panel.sku} → ${enRel}`);
+      process.exit(1);
+    }
+  }
+  // HTML Offer regression guard — key agent entry points must emit ≥12 Offers.
+  const offerHubs = [
+    "tr/index.html",
+    "en/index.html",
+    "tr/products/index.html",
+    "en/products/index.html",
+    "tr/nxtionstar/index.html",
+    "en/nxtionstar/index.html",
+    "tr/led-ekran/index.html",
+    "en/led-ekran/index.html",
+    "tr/hesaplayici/index.html",
+    "en/hesaplayici/index.html",
+    "tr/quote/index.html",
+    "en/quote/index.html",
+    "tr/yapay-zeka/index.html",
+    "en/yapay-zeka/index.html",
+    "tr/led-ekran-fiyatlari/index.html",
+    "en/led-ekran-fiyatlari/index.html",
+    "en/led-ekran-satisi/index.html",
+    "en/led-ekran-ureticisi/index.html",
+    "en/led-ekran-montaj/index.html",
+    "en/led-ekran-kiralama/index.html",
+    "en/led-ekran-servis/index.html",
+  ];
+  // Use/pitch/services EN hubs must exist (no ≥12 Offer requirement — Dataset/FAQ only).
+  const enLeanHubs = [
+    "en/hizmetler/index.html",
+    "en/bolgeler/index.html",
+    "en/projelerimiz/index.html",
+    "en/galeri/index.html",
+    "en/blog/index.html",
+    "tr/gizlilik/index.html",
+    "en/gizlilik/index.html",
+    "en/privacy/index.html",
+    "en/calculator/index.html",
+    "en/faq/index.html",
+    "en/gallery/index.html",
+    "en/projects/index.html",
+    "en/regions/index.html",
+    "en/services/index.html",
+    "en/brand/index.html",
+    "en/teklif/index.html",
+    "tr/teklif/index.html",
+    "tr/teklif-al/index.html",
+    "tr/teklif-iste/index.html",
+    "tr/fiyat-teklifi/index.html",
+    "tr/request-quote/index.html",
+    "tr/contact/index.html",
+    "tr/fiyat/index.html",
+    "tr/fiyatlar/index.html",
+    "tr/prices/index.html",
+    "tr/pricing/index.html",
+    "tr/price/index.html",
+    "tr/cost/index.html",
+    "tr/katalog/index.html",
+    "tr/catalog/index.html",
+    "tr/shop/index.html",
+    "tr/magaza/index.html",
+    "tr/calculator/index.html",
+    "tr/faq/index.html",
+    "tr/gallery/index.html",
+    "tr/projects/index.html",
+    "tr/regions/index.html",
+    "tr/services/index.html",
+    "tr/brand/index.html",
+    "en/urunler/index.html",
+    "en/catalog/index.html",
+    "en/shop/index.html",
+    "en/modules/index.html",
+    "en/indoor-led/index.html",
+    "en/outdoor-led/index.html",
+    "en/gob/index.html",
+    "en/fine-pitch/index.html",
+    "en/request-quote/index.html",
+    "en/price-list/index.html",
+    "en/products/gob/index.html",
+    "en/products/indoor/index.html",
+    "en/products/outdoor/index.html",
+    "en/kvkk/index.html",
+    "en/bolgeler/istanbul/index.html",
+    "en/about/aras-bozkurt/index.html",
+    "en/contact/index.html",
+    "en/iletisim/index.html",
+    "en/rehber/ince-pitch-led-ekran/index.html",
+    "en/rehber/gob-led-ekran/index.html",
+    "en/magaza-led-ekran/index.html",
+    "en/avm-led-ekran/index.html",
+    "en/cephe-led-ekran/index.html",
+    "en/billboard-led-ekran/index.html",
+    "en/vitrin-led-ekran/index.html",
+    "en/otel-led-ekran/index.html",
+    "en/restoran-led-ekran/index.html",
+    "en/dugun-salonu-led-ekran/index.html",
+    "en/konferans-salonu-led-ekran/index.html",
+    "en/sahne-led-ekran/index.html",
+    "en/fuar-led-ekran/index.html",
+    "en/belediye-led-ekran/index.html",
+    "en/fabrika-led-ekran/index.html",
+    "en/spor-salonu-led-ekran/index.html",
+    "en/stadyum-led-ekran/index.html",
+    "en/totem-led-ekran/index.html",
+    "en/p1-25-led-ekran/index.html",
+    "en/p1-86-led-ekran/index.html",
+    "en/p2-5-led-ekran/index.html",
+    "en/p2-9-led-ekran/index.html",
+    "en/p3-07-led-ekran/index.html",
+    "en/p4-led-ekran/index.html",
+    "en/p5-led-ekran/index.html",
+  ];
+  for (const rel of enLeanHubs) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ EN lean hub missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    // Next RSC payloads can contain the literal "This page could not be found" even on
+    // real pages — trust <title> (404 pages title as "404: This page could not be found.").
+    const titleMatch = html.match(/<title[^>]*>([^<]*)<\/title>/i);
+    const title = titleMatch ? titleMatch[1] : "";
+    if (!html.includes("ARLEDSCREEN") || /^404\b/i.test(title) || /could not be found/i.test(title)) {
+      console.error(`❌ ${rel} must be a real EN page (not 404); title=${title.slice(0, 80)}`);
+      process.exit(1);
+    }
+  }
+  for (const rel of offerHubs) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ Offer hub missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    const offers = (html.match(/"@type"\s*:\s*"Offer"/g) || []).length;
+    if (offers < 12) {
+      console.error(`❌ ${rel} must embed ≥12 Offer JSON-LD nodes (got ${offers})`);
+      process.exit(1);
+    }
+  }
+  if (!ard?.agentic?.resources?.homeTr?.url?.includes("/tr/") || !ard?.agentic?.resources?.productsHub?.url?.includes("/tr/products/")) {
+    console.error("❌ ard.json resources.homeTr + productsHub required");
+    process.exit(1);
+  }
+  // Sitewide Organization JSON-LD + scraped about/founder HTML must warn on legacy arleds.com.
+  const orgSchemaPages = [
+    "tr/index.html",
+    "en/index.html",
+    "tr/about/index.html",
+    "en/about/index.html",
+    "tr/about/aras-bozkurt/index.html",
+  ];
+  for (const rel of orgSchemaPages) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ Organization schema page missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    if (!html.includes("disambiguatingDescription") || !html.includes("arleds.com")) {
+      console.error(`❌ ${rel} Organization JSON-LD must include disambiguatingDescription with arleds.com`);
+      process.exit(1);
+    }
+    if (/"sameAs"\s*:\s*\[[^\]]*arleds\.com/i.test(html)) {
+      console.error(`❌ ${rel} sameAs must NOT include legacy arleds.com (until 301)`);
+      process.exit(1);
+    }
+  }
+  // Org JSON-LD on home must expose makesOffer AggregateOffer (entity-first price authority).
+  {
+    const homeHtml = fs.readFileSync(path.join(outDir, "tr/index.html"), "utf8");
+    let makesOfferOk = false;
+    for (const m of homeHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "Organization") continue;
+          const offer = node.makesOffer;
+          if (
+            offer?.["@type"] === "AggregateOffer" &&
+            offer.offerCount === 12 &&
+            String(offer.url || "").includes("/ai-shopping.json") &&
+            String(offer.lowPrice) === "26.98" &&
+            String(offer.highPrice) === "95.88" &&
+            Array.isArray(offer.offers) &&
+            offer.offers.length === 12 &&
+            offer?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness" &&
+            node?.location?.["@id"] === "https://arledscreen.com/#localbusiness" &&
+            node?.geo?.["@type"] === "GeoCoordinates" &&
+            node?.hasOfferCatalog?.["@type"] === "OfferCatalog" &&
+            String(node.hasOfferCatalog["@id"] || "").includes("/catalog.json")
+          ) {
+            makesOfferOk = true;
+            break;
+          }
+        }
+        if (makesOfferOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!makesOfferOk) {
+      console.error("❌ tr/index.html Organization must location #localbusiness + makesOffer×12 + hasOfferCatalog");
+      process.exit(1);
+    }
+    let localOk = false;
+    for (const m of homeHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "LocalBusiness") continue;
+          if (
+            node?.makesOffer?.["@type"] === "AggregateOffer" &&
+            Array.isArray(node.makesOffer.offers) &&
+            node.makesOffer.offers.length === 12 &&
+            node?.hasOfferCatalog?.["@type"] === "OfferCatalog"
+          ) {
+            localOk = true;
+            break;
+          }
+        }
+        if (localOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!localOk) {
+      console.error("❌ tr/index.html LocalBusiness must makesOffer×12 + hasOfferCatalog");
+      process.exit(1);
+    }
+    let websiteOk = false;
+    for (const m of homeHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "WebSite") continue;
+          const actions = Array.isArray(node.potentialAction) ? node.potentialAction : [];
+          const urls = actions
+            .map((a) => String(a?.target?.urlTemplate || ""))
+            .join(" ");
+          if (
+            node?.about?.["@id"] === "https://arledscreen.com/#organization" &&
+            urls.includes("/tr/quote/") &&
+            urls.includes("/en/quote/")
+          ) {
+            websiteOk = true;
+            break;
+          }
+        }
+        if (websiteOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!websiteOk) {
+      console.error("❌ tr/index.html WebSite must about #organization + potentialAction quote TR/EN");
+      process.exit(1);
+    }
+    console.log("✅ Organization + LocalBusiness makesOffer stubs + hasOfferCatalog on home + entity.json");
+  }
+  for (const rel of [
+    "tr/about/index.html",
+    "en/about/index.html",
+    "tr/about/aras-bozkurt/index.html",
+    "en/about/aras-bozkurt/index.html",
+  ]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    // Visible body copy (not only feeds) must reject legacy domain for scrapers.
+    if (!html.includes("arleds.com") || !html.includes("arledscreen.com")) {
+      console.error(`❌ ${rel} visible HTML must disambiguate arleds.com vs arledscreen.com`);
+      process.exit(1);
+    }
+  }
+  if (!entity.faqs?.some((f) => String(f?.question || "").includes("arleds.com"))) {
+    console.error("❌ entity.json faqs must include arleds.com vs arledscreen.com Q&A");
+    process.exit(1);
+  }
+  // FAQPage surfaces agents scrape for entity Q&A (SSS + home TR/EN + AI hub + commercial hubs).
+  const faqArledsPages = [
+    "tr/sss/index.html",
+    "en/sss/index.html",
+    "tr/index.html",
+    "en/index.html",
+    "tr/yapay-zeka/index.html",
+    "en/yapay-zeka/index.html",
+    "tr/led-ekran/index.html",
+    "en/led-ekran/index.html",
+    "en/led-ekran-satisi/index.html",
+    "en/led-ekran-ureticisi/index.html",
+    "en/led-ekran-montaj/index.html",
+    "en/led-ekran-kiralama/index.html",
+    "en/led-ekran-servis/index.html",
+    "en/products/gob-led-ekran/index.html",
+    "en/products/ic-mekan-led-ekran/index.html",
+    "en/products/dis-mekan-led-ekran/index.html",
+    "en/rehber/piksel-araligi-secimi/index.html",
+    "en/rehber/gob-vs-smd/index.html",
+    "en/rehber/kiralik-mi-satin-alma/index.html",
+    "en/rehber/led-tabela-mi-led-ekran-mi/index.html",
+    "en/hizmetler/index.html",
+    "en/bolgeler/index.html",
+    "en/projelerimiz/index.html",
+    "en/galeri/index.html",
+    "en/blog/index.html",
+    "tr/gizlilik/index.html",
+    "en/gizlilik/index.html",
+    "en/magaza-led-ekran/index.html",
+    "en/p2-5-led-ekran/index.html",
+    "tr/led-ekran-fiyatlari/index.html",
+    "en/led-ekran-fiyatlari/index.html",
+    "tr/nxtionstar/index.html",
+    "en/nxtionstar/index.html",
+  ];
+  for (const rel of faqArledsPages) {
+    const fp = path.join(outDir, rel);
+    if (!fs.existsSync(fp)) {
+      console.error(`❌ FAQ arleds page missing in out/: ${rel}`);
+      process.exit(1);
+    }
+    const html = fs.readFileSync(fp, "utf8");
+    const hasFaqPage = html.includes("FAQPage");
+    const hasArledsFaq =
+      html.includes("arleds.com ile arledscreen.com") ||
+      html.includes("Is arleds.com the same as arledscreen.com");
+    const hasNationStarFaq =
+      html.includes("NationStar") &&
+      (html.includes("NXTIONSTAR") || html.includes("N-X-T-I-O-N-S-T-A-R"));
+    if (!hasFaqPage || !hasArledsFaq) {
+      console.error(`❌ ${rel} FAQPage must include arleds.com vs arledscreen.com Q&A`);
+      process.exit(1);
+    }
+    if (!hasNationStarFaq) {
+      console.error(`❌ ${rel} FAQPage must disambiguate NXTIONSTAR vs NationStar`);
+      process.exit(1);
+    }
+  }
+  // Sitewide Brand JSON-LD must carry NationStar disambiguatingDescription.
+  const brandHtml = fs.readFileSync(path.join(outDir, "tr/index.html"), "utf8");
+  if (!brandHtml.includes("disambiguatingDescription") || !brandHtml.includes("NationStar")) {
+    console.error("❌ Organization/Brand JSON-LD on tr/ must disambiguate NationStar");
+    process.exit(1);
+  }
+  {
+    const nxHtml = fs.readFileSync(path.join(outDir, "tr/nxtionstar/index.html"), "utf8");
+    let brandOfferOk = false;
+    for (const m of nxHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "Brand") continue;
+          if (
+            String(node?.makesOffer?.["@id"] || "").includes("#priced-panels-aggregate") &&
+            String(node?.hasOfferCatalog?.["@id"] || "").includes("/catalog.json")
+          ) {
+            brandOfferOk = true;
+            break;
+          }
+        }
+        if (brandOfferOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!brandOfferOk) {
+      console.error("❌ tr/nxtionstar Brand JSON-LD must makesOffer → #priced-panels-aggregate + hasOfferCatalog → catalog.json");
+      process.exit(1);
+    }
+  }
+  const indexNowScript = fs.readFileSync(path.join(repoRoot, "scripts/submit-indexnow.mjs"), "utf8");
+  for (const must of [
+    "/tr/about/",
+    "/en/about/",
+    "/tr/about/aras-bozkurt/",
+    "/tr/sss/",
+    "/ai.txt",
+    "/en/nxtionstar/",
+    "/en/led-ekran-fiyatlari/",
+    "/en/led-ekran/",
+    "/en/led-ekran-satisi/",
+    "/en/led-ekran-kiralama/",
+    "/en/hizmetler/",
+    "/en/bolgeler/",
+    "/en/projelerimiz/",
+    "/en/galeri/",
+    "/en/blog/",
+    "/tr/gizlilik/",
+    "/en/gizlilik/",
+    "/en/privacy/",
+    "/en/calculator/",
+    "/en/faq/",
+    "/en/gallery/",
+    "/en/projects/",
+    "/en/regions/",
+    "/en/services/",
+    "/en/brand/",
+    "/en/teklif/",
+    "/tr/teklif/",
+    "/tr/teklif-al/",
+    "/tr/fiyat-teklifi/",
+    "/tr/quote/",
+    "/tr/fiyat/",
+    "/tr/prices/",
+    "/tr/catalog/",
+    "/tr/calculator/",
+    "/tr/faq/",
+    "/tr/brand/",
+    "/panels.json",
+    "/merchant.json",
+    "/mpn.json",
+    "/en/bolgeler/istanbul/",
+    "/en/about/aras-bozkurt/",
+    "/en/contact/",
+    "/en/contact-us/",
+    "/en/iletisim/",
+    "/en/products/esnek-led-ekran/",
+    "/en/products/ince-pitch-led-ekran/",
+    "/en/rehber/ince-pitch-led-ekran/",
+    "/en/rehber/gob-led-ekran/",
+    "/en/magaza-led-ekran/",
+    "/en/cephe-led-ekran/",
+    "/en/vitrin-led-ekran/",
+    "/en/totem-led-ekran/",
+    "/en/p2-5-led-ekran/",
+    "/en/p5-led-ekran/",
+    "/en/products/",
+    "/en/products/gob-led-ekran/",
+    "/en/products/ic-mekan-led-ekran/",
+    "/en/rehber/piksel-araligi-secimi/",
+    "/en/rehber/gob-vs-smd/",
+    "/en/sss/",
+    "/point-c.txt",
+    "/point-c-en.txt",
+    "/.well-known/point-c.txt",
+    "/.well-known/point-c-en.txt",
+    "/point-c.json",
+    "/point-c-en.json",
+    "/.well-known/point-c.json",
+    "/.well-known/point-c-en.json",
+    "/feeds/point-c.csv",
+    "/feeds/point-c-en.csv",
+    "/point-c.csv",
+    "/point-c-en.csv",
+    "/geo-status.json",
+    "/geo-next.txt",
+    "/owner-next.txt",
+    "/tur1a.json",
+    "/feeds/tur1a.csv",
+    "/.well-known/AGENTS.md",
+    "/.well-known/panels.json",
+    "/.well-known/mpn.json",
+    "/.well-known/merchant.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+    "/.well-known/offer.json",
+    "/.well-known/offers.json",
+    "/.well-known/dataset.json",
+    "/.well-known/feed.json",
+    "/.well-known/products.json",
+    "/.well-known/product.json",
+    "/.well-known/geo-baseline.json",
+    "/.well-known/entity-profiles.json",
+    "/.well-known/cite.json",
+    "/.well-known/faq.json",
+    "/.well-known/organization.json",
+    "/.well-known/company.json",
+    "/.well-known/nap.json",
+    "/.well-known/about.json",
+    "/modules.json",
+    "/sku.json",
+    "/tr/ai-shopping.json",
+    "/tr/entity.json",
+    "/tr/prices.json",
+    "/tr/catalog.json",
+    "/tr/geo-baseline.json",
+    "/tr/price.json",
+    "/tr/pricing.json",
+    "/tr/products.json",
+    "/en/prices/",
+    "/en/pricing/",
+    "/en/price/",
+    "/en/cost/",
+    "`https://${HOST}/brand`",
+    "`https://${HOST}/modules`",
+    "`https://${HOST}/product`",
+    "`https://${HOST}/entity-profiles`",
+    "`https://${HOST}/llms-full`",
+    "`https://${HOST}/api/mpn`",
+    "`https://${HOST}/api/catalog.json`",
+    "`https://${HOST}/api/products`",
+    "`https://${HOST}/en/feed.json`",
+    "`https://${HOST}/tr/feed.json`",
+    "`https://${HOST}/.well-known/security`",
+    "owner-next.html?pack=directoryLong",
+    "owner-next.html?pack=tur1a",
+    "owner-next.html?pack=hostinger301",
+    "owner-next.html?start=1",
+    "geo-next.html?start=1",
+    "/social.json",
+    "/contact.json",
+    "/.well-known/social.json",
+  ]) {
+    if (!indexNowScript.includes(must)) {
+      console.error(`❌ submit-indexnow.mjs must include ${must}`);
+      process.exit(1);
+    }
+  }
+  {
+    const deployScript = fs.readFileSync(path.join(repoRoot, "scripts/pages-deploy-resilient.mjs"), "utf8");
+    if (
+      !deployScript.includes("softIndexNow") ||
+      !deployScript.includes("submit-indexnow.mjs") ||
+      !deployScript.includes("SKIP_INDEXNOW")
+    ) {
+      console.error("❌ pages-deploy-resilient.mjs must soft-run IndexNow after successful deploy");
+      process.exit(1);
+    }
+  }
+  if (!profiles?.packs?.directoryLong?.includes("arleds.com") || !profiles?.packs?.linkedinAbout?.includes("arleds.com")) {
+    console.error("❌ entity-profiles packs.directoryLong + linkedinAbout must warn arleds.com");
+    process.exit(1);
+  }
+  // Point C LinkedIn paste must disambiguate /company/arleds slug from website arleds.com
+  // (SERP/AI crawlers reading LinkedIn About otherwise treat the slug as the web domain).
+  for (const [label, about] of [
+    ["packs.linkedinAbout", profiles?.packs?.linkedinAbout],
+    ["packsEn.linkedinAbout", profiles?.packsEn?.linkedinAbout],
+  ]) {
+    const text = String(about || "");
+    if (!text.includes("/company/arleds") || !text.toLowerCase().includes("web")) {
+      console.error(`❌ entity-profiles ${label} must warn LinkedIn /company/arleds ≠ website arleds.com`);
+      process.exit(1);
+    }
+    if (!text.includes("NationStar")) {
+      console.error(`❌ entity-profiles ${label} must disambiguate NXTIONSTAR ≠ NationStar`);
+      process.exit(1);
+    }
+  }
+  if (
+    !String(profiles?.packs?.directoryLong || "").includes("/company/arleds") ||
+    !String(profiles?.packsEn?.directoryLong || "").includes("/company/arleds")
+  ) {
+    console.error("❌ entity-profiles directoryLong (TR+EN) must warn LinkedIn /company/arleds ≠ web arleds.com");
+    process.exit(1);
+  }
+  
+  const llmsBody = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
+  for (const must of [
+    "/en/projelerimiz/",
+    "/en/hizmetler/",
+    "/en/bolgeler/",
+    "/en/galeri/",
+    "/en/blog/",
+    "/en/gizlilik/",
+    "/en/about/aras-bozkurt/",
+    "/en/calculator/",
+    "/en/faq/",
+  ]) {
+    if (!llmsBody.includes(must)) {
+      console.error(`❌ llms.txt must cite EN hub ${must}`);
+      process.exit(1);
+    }
+  }
+
+  // Fine-pitch hub must surface the 3 published GOB Offers (alsoIn + price groups).
+  const finePitchHtml = path.join(outDir, "tr/products/ince-pitch-led-ekran/index.html");
+  if (!fs.existsSync(finePitchHtml)) {
+    console.error("❌ missing out/tr/products/ince-pitch-led-ekran/index.html");
+    process.exit(1);
+  }
+  const finePitchBody = fs.readFileSync(finePitchHtml, "utf8");
+  for (const sku of ["p1-25-ic-gob", "p1-53-ic-gob", "p1-86-ic-gob"]) {
+    if (!finePitchBody.includes(`"sku":"${sku}"`) && !finePitchBody.includes(`"sku": "${sku}"`)) {
+      console.error(`❌ fine-pitch hub must emit Product sku ${sku} (GOB alsoIn + price groups)`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ fine-pitch hub emits 3 GOB Product/Offer SKUs");
+
+  // PDP Product must sameAs catalog#sku; Offer sameAs catalog + ai-shopping offer @ids.
+  {
+    const pdpRel = "tr/products/gob-led-ekran/p1-25-gob/index.html";
+    const pdpHtml = fs.readFileSync(path.join(outDir, pdpRel), "utf8");
+    let pdpOk = false;
+    for (const m of pdpHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "Product") continue;
+        const sameAs = Array.isArray(d.sameAs) ? d.sameAs : [];
+        const offer = d.offers || {};
+        const offerSameAs = Array.isArray(offer.sameAs) ? offer.sameAs : [];
+        if (
+          sameAs.some((u) => String(u).includes("/catalog.json#p1-25-ic-gob")) &&
+          offerSameAs.some((u) => String(u).includes("/catalog.json#offer-p1-25-ic-gob")) &&
+          offerSameAs.some((u) => String(u).includes("/ai-shopping.json#offer-p1-25-ic-gob")) &&
+          String(offer["@id"] || "").endsWith("#offer") &&
+          offer.sku === "p1-25-ic-gob" &&
+          offer.mpn === "p1-25-ic-gob" &&
+          String(d.mainEntityOfPage || "").includes("/p1-25-gob/") &&
+          String(offer.itemOffered?.["@id"] || "").includes("/p1-25-gob/") &&
+          String(offer.itemOffered?.["@id"] || "").endsWith("#product") &&
+          offer?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness"
+        ) {
+          pdpOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!pdpOk) {
+      console.error("❌ PDP Product/Offer must sameAs catalog + ai-shopping + Offer sku + mainEntityOfPage + #localbusiness");
+      process.exit(1);
+    }
+    let webpageOk = false;
+    for (const m of pdpHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "WebPage") continue;
+        if (
+          String(d.mainEntity?.["@id"] || "").includes("/p1-25-gob/") &&
+          String(d.mainEntity?.["@id"] || "").endsWith("#product")
+        ) {
+          webpageOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!webpageOk) {
+      console.error("❌ PDP WebPage.mainEntity must join #product");
+      process.exit(1);
+    }
+    if (
+      !pdpHtml.includes('product:price:amount') ||
+      !pdpHtml.includes('product:price:currency') ||
+      !pdpHtml.includes("content=\"USD\"") ||
+      !pdpHtml.includes("product:brand")
+    ) {
+      console.error("❌ priced PDP must emit Open Graph product:price:* + product:brand meta");
+      process.exit(1);
+    }
+    console.log("✅ PDP Product/Offer sameAs joins catalog + ai-shopping; WebPage→Product");
+  }
+
+  // Price hub Speakable WebPage must forward-join Service AggregateOffer.
+  {
+    const hubRel = "tr/led-ekran-fiyatlari/index.html";
+    const hubHtml = fs.readFileSync(path.join(outDir, hubRel), "utf8");
+    let hubPageOk = false;
+    for (const m of hubHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "WebPage") continue;
+        if (
+          String(d.mainEntity?.["@id"] || "").includes("/led-ekran-fiyatlari/") &&
+          String(d.mainEntity?.["@id"] || "").endsWith("#service")
+        ) {
+          hubPageOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!hubPageOk) {
+      console.error("❌ price hub WebPage.mainEntity must join #service");
+      process.exit(1);
+    }
+  }
+
+  // E-E-A-T + services Speakable forward-join primary entity.
+  for (const [rel, checkMid] of [
+    ["tr/about/index.html", (mid) => mid === "https://arledscreen.com/#organization"],
+    ["en/about/index.html", (mid) => mid === "https://arledscreen.com/#organization"],
+    ["tr/about/aras-bozkurt/index.html", (mid) => mid.includes("/tr/about/aras-bozkurt/") && mid.endsWith("#person")],
+    ["en/about/aras-bozkurt/index.html", (mid) => mid.includes("/en/about/aras-bozkurt/") && mid.endsWith("#person")],
+    ["tr/hizmetler/index.html", (mid) => mid.includes("/tr/hizmetler/") && mid.endsWith("#service")],
+    ["tr/yapay-zeka/index.html", (mid) => mid.includes("/tr/yapay-zeka/") && mid.endsWith("#service")],
+    ["en/yapay-zeka/index.html", (mid) => mid.includes("/en/yapay-zeka/") && mid.endsWith("#service")],
+    ["tr/sss/index.html", (mid) => mid.includes("/tr/sss/") && mid.endsWith("#faqpage")],
+    ["en/sss/index.html", (mid) => mid.includes("/en/sss/") && mid.endsWith("#faqpage")],
+    ["tr/blog/index.html", (mid) => mid.includes("/tr/blog/") && mid.endsWith("#blog")],
+    ["tr/projelerimiz/index.html", (mid) => mid.includes("/tr/projelerimiz/") && mid.endsWith("#projects")],
+    ["tr/galeri/index.html", (mid) => mid.includes("/tr/galeri/") && mid.endsWith("#gallery")],
+    ["tr/products/index.html", (mid) => mid.includes("/tr/products/") && mid.endsWith("#service")],
+    ["en/products/index.html", (mid) => mid.includes("/en/products/") && mid.endsWith("#service")],
+    ["tr/bolgeler/index.html", (mid) => mid.includes("/tr/bolgeler/") && mid.endsWith("#service")],
+    ["tr/nxtionstar/index.html", (mid) => mid === "https://arledscreen.com/#brand-nxtionstar"],
+    ["en/nxtionstar/index.html", (mid) => mid === "https://arledscreen.com/#brand-nxtionstar"],
+    ["tr/index.html", (mid) => mid.includes("/tr/") && mid.endsWith("#service")],
+    ["en/index.html", (mid) => mid.includes("/en/") && mid.endsWith("#service")],
+    ["tr/gizlilik/index.html", (mid) => mid.includes("/tr/gizlilik/") && mid.endsWith("#faqpage")],
+    ["en/gizlilik/index.html", (mid) => mid.includes("/en/gizlilik/") && mid.endsWith("#faqpage")],
+    ["tr/rehber/index.html", (mid) => mid.includes("/tr/rehber/") && mid.endsWith("#rehber")],
+    ["en/rehber/index.html", (mid) => mid.includes("/en/rehber/") && mid.endsWith("#rehber")],
+  ]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    let pageOk = false;
+    for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "WebPage") continue;
+        if (checkMid(String(d.mainEntity?.["@id"] || ""))) {
+          pageOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!pageOk) {
+      console.error(`❌ ${rel} WebPage.mainEntity must join primary entity`);
+      process.exit(1);
+    }
+  }
+
+  // EN product group + commercial intent Speakable → #service; calculator HowTo → #localbusiness.
+  for (const [rel, needle] of [
+    ["en/products/gob-led-ekran/index.html", "/en/products/gob-led-ekran/"],
+    ["tr/led-ekran/index.html", "/tr/led-ekran/"],
+    ["en/led-ekran/index.html", "/en/led-ekran/"],
+    ["tr/bolgeler/istanbul/index.html", "/tr/bolgeler/istanbul/"],
+  ]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    let pageOk = false;
+    for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "WebPage") continue;
+        if (String(d.mainEntity?.["@id"] || "").includes(needle) && String(d.mainEntity?.["@id"] || "").endsWith("#service")) {
+          pageOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!pageOk) {
+      console.error(`❌ ${rel} WebPage.mainEntity must join #service`);
+      process.exit(1);
+    }
+  }
+  {
+    const howHtml = fs.readFileSync(path.join(outDir, "tr/hesaplayici/index.html"), "utf8");
+    let howOk = false;
+    for (const m of howHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "HowTo") continue;
+        if (d?.provider?.["@id"] === "https://arledscreen.com/#localbusiness") {
+          howOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!howOk) {
+      console.error("❌ hesaplayici HowTo.provider must be #localbusiness");
+      process.exit(1);
+    }
+    const hizmetHtml = fs.readFileSync(path.join(outDir, "tr/hizmetler/index.html"), "utf8");
+    let hizmetHowOk = false;
+    for (const m of hizmetHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        if (d?.["@type"] !== "HowTo") continue;
+        if (d?.provider?.["@id"] === "https://arledscreen.com/#localbusiness") {
+          hizmetHowOk = true;
+          break;
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!hizmetHowOk) {
+      console.error("❌ hizmetler HowTo.provider must be #localbusiness");
+      process.exit(1);
+    }
+  }
+
+  // AggregateOffer hubs (group + price + calculator; TR + EN) must sameAs catalog + ai-shopping Offers.
+  for (const [rel, sku] of [
+    ["tr/products/ince-pitch-led-ekran/index.html", "p1-25-ic-gob"],
+    ["tr/led-ekran-fiyatlari/index.html", "p1-25-ic-gob"],
+    ["tr/hesaplayici/index.html", "p2-5-ic"],
+    ["en/led-ekran-fiyatlari/index.html", "p1-25-ic-gob"],
+    ["en/hesaplayici/index.html", "p2-5-ic"],
+    ["en/quote/index.html", "p1-25-ic-gob"],
+  ]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    let hubOk = false;
+    for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "Product" || node?.sku !== sku) continue;
+          const sameAs = Array.isArray(node.sameAs) ? node.sameAs : [];
+          const offer = node.offers || {};
+          const offerSameAs = Array.isArray(offer.sameAs) ? offer.sameAs : [];
+          if (
+            sameAs.some((u) => String(u).includes(`/catalog.json#${sku}`)) &&
+            offerSameAs.some((u) => String(u).includes(`/catalog.json#offer-${sku}`)) &&
+            offerSameAs.some((u) => String(u).includes(`/ai-shopping.json#offer-${sku}`)) &&
+            String(offer["@id"] || "").includes("#offer") &&
+            offer.sku === sku &&
+            offer.mpn === sku &&
+            Boolean(node.mainEntityOfPage)
+          ) {
+            hubOk = true;
+            break;
+          }
+        }
+        if (hubOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!hubOk) {
+      console.error(`❌ ${rel} Product ${sku} must sameAs catalog + Offer sku + mainEntityOfPage`);
+      process.exit(1);
+    }
+    // Service AggregateOffer on hubs must join Org #priced-panels-aggregate.
+    let serviceOk = false;
+    const hubHtml = fs.readFileSync(path.join(outDir, rel), "utf8");
+    for (const m of hubHtml.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+        const nodes = Array.isArray(d?.["@graph"]) ? d["@graph"] : [d];
+        for (const node of nodes) {
+          if (node?.["@type"] !== "Service") continue;
+          const agg = node.offers || {};
+          const aggSame = Array.isArray(agg.sameAs) ? agg.sameAs : [];
+          if (
+            agg?.["@type"] === "AggregateOffer" &&
+            String(agg["@id"] || "").includes("#priced-panels-aggregate") &&
+            String(agg.url || "").includes("/ai-shopping.json") &&
+            aggSame.some((u) => String(u).includes("#priced-panels-aggregate")) &&
+            agg.priceSpecification?.valueAddedTaxIncluded === false &&
+            agg?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness" &&
+            node?.provider?.["@id"] === "https://arledscreen.com/#localbusiness" &&
+            Array.isArray(agg.offers) &&
+            agg.offers.length >= 1 &&
+            agg.offers.every(
+              (o) =>
+                o?.["@type"] === "Offer" &&
+                String(o["@id"] || "").includes("/ai-shopping.json#offer-") &&
+                String(o?.description || "").includes("Ücretsiz kargo yok") &&
+                String(o?.itemOffered?.brand?.["@id"] || "").includes("#brand-nxtionstar"),
+            )
+          ) {
+            serviceOk = true;
+            break;
+          }
+        }
+        if (serviceOk) break;
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!serviceOk) {
+      console.error(`❌ ${rel} Service AggregateOffer must join #priced-panels-aggregate + ai-shopping`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ AggregateOffer hubs (TR+EN) Product/Offer + Service→Org joins");
+
+  // HTML Dataset on quote-only + priced hubs must hasPart 12 Product stubs (mpn=sku).
+  for (const rel of [
+    "tr/products/esnek-led-ekran/index.html",
+    "tr/products/ince-pitch-led-ekran/index.html",
+    "tr/yapay-zeka/index.html",
+  ]) {
+    const html = fs.readFileSync(path.join(outDir, rel), "utf8");
+    let found = false;
+    for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+      try {
+        const d = JSON.parse(m[1]);
+          if (d?.["@type"] === "Dataset" && Array.isArray(d.hasPart) && d.hasPart.length === 12) {
+          const dsSameAs = Array.isArray(d.sameAs) ? d.sameAs : [];
+          if (
+            dsSameAs.some((u) => String(u).includes("/ai-shopping.json")) &&
+            dsSameAs.some((u) => String(u).includes("/catalog.json")) &&
+            d.hasPart.every(
+              (p) =>
+                p?.sku &&
+                p.mpn === p.sku &&
+                String(p["@id"] || "").includes("#product") &&
+                Array.isArray(p.sameAs) &&
+                p.sameAs.some((u) => String(u).includes(`/catalog.json#${p.sku}`)) &&
+                p.mainEntityOfPage === p.url &&
+                String(p?.offers?.["@id"] || "").includes(`/ai-shopping.json#offer-${p.sku}`) &&
+                Array.isArray(p?.offers?.sameAs) &&
+                p.offers.sameAs.some((u) => String(u).includes("#offer")) &&
+                String(p?.offers?.itemOffered?.["@id"] || "").endsWith("#product") &&
+                String(p?.brand?.["@id"] || "").includes("#brand-nxtionstar") &&
+                Boolean(p?.offers?.price) &&
+                String(p?.offers?.description || "").includes("Ücretsiz kargo yok") &&
+                p?.offers?.availableAtOrFrom?.["@id"] === "https://arledscreen.com/#localbusiness",
+            )
+          ) {
+            const dist = JSON.stringify(d.distribution || []);
+            if (
+              !dist.includes("/merchant.json") ||
+              !dist.includes("/offer.json") ||
+              !dist.includes("/panels.json") ||
+              !dist.includes("/modules.json") ||
+              !dist.includes("/sku.json") ||
+              !dist.includes("/.well-known/modules.json") ||
+              !dist.includes("/.well-known/sku.json") ||
+              !dist.includes("/.well-known/prices.json") ||
+              !dist.includes("/brand.json") ||
+              !dist.includes("/entity.json") ||
+              !dist.includes("/point-c.txt")
+            ) {
+              console.error(`❌ ${rel} Dataset.distribution must include invent aliases (modules/sku/well-known) + brand/entity/point-c`);
+              process.exit(1);
+            }
+            found = true;
+            break;
+          }
+        }
+      } catch {
+        /* ignore */
+      }
+    }
+    if (!found) {
+      console.error(`❌ ${rel} Dataset must hasPart 12 Products (mpn=sku, @id …#product)`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ HTML Dataset hasPart×12 on quote-only + fine-pitch + yapay-zeka");
+
+  const homeHtml = fs.readFileSync(path.join(outDir, "tr/index.html"), "utf8");
+  for (const needle of [
+    "panels.json",
+    "mpn.json",
+    "entity-profiles.json",
+    "point-c.json",
+    "geo-status.json",
+    "geo-next.txt",
+    "owner-next.txt",
+    "tur1a.json",
+    "feeds/tur1a.csv",
+    "point-c-progress.json",
+  ]) {
+    if (!homeHtml.includes(needle)) {
+      console.error(`❌ tr/index.html must <link> alternate ${needle}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ HTML discovery links include panels/mpn/entity-profiles + point-c/geo-status/geo-next/owner-next/tur1a(+csv)/point-c-progress");
+
+  console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms, ai.txt); product paths exist");
+  console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
+  console.log(`✅ HTML/schema arleds.com disambiguation: ${orgSchemaPages.length} pages + about/founder body`);
+  console.log(`✅ FAQPage arleds Q&A: ${faqArledsPages.length} pages + IndexNow about/founder/sss/ai.txt`);
+}
+
+// Live robots.txt is served by Pages Function — keep Allow list in sync with robots.ts.
+const robotsFn = path.join(repoRoot, "functions", "robots.txt.js");
+const robotsSrc = path.join(repoRoot, "src", "app", "robots.ts");
+const robotsFnBody = fs.existsSync(robotsFn) ? fs.readFileSync(robotsFn, "utf8") : "";
+const robotsTsBody = fs.existsSync(robotsSrc) ? fs.readFileSync(robotsSrc, "utf8") : "";
+for (const must of [
+  "/geo-baseline.json",
+  "/ai.txt",
+  "/panels.json",
+  "/mpn.json",
+  "/merchant.json",
+  "/.well-known/mpn.json",
+  "/api/panels",
+  "/api/merchant",
+  "/api/panels.json",
+  "/v1/merchant",
+  "/v1/mpn",
+  "/panels",
+  "/mpn",
+  "/merchant",
+  "/product.json",
+  "/offer",
+  "/offer.json",
+  "/organization",
+  "/brand.json",
+  "/.well-known/brand.json",
+  "/entity-profiles.json",
+  "/feeds/prices.rss",
+  "/cite.json",
+  "/cite",
+  "/faq.json",
+  "/faqs.json",
+  "/feed.json",
+  "/tr/llms.txt",
+  "/tr/ai.txt",
+  "/tr/entity-profiles.json",
+  "/point-c.txt",
+  "/point-c-en.txt",
+  "/.well-known/point-c.txt",
+  "/.well-known/point-c-en.txt",
+  "/point-c.json",
+  "/point-c-en.json",
+  "/.well-known/point-c.json",
+  "/.well-known/point-c-en.json",
+  "/feeds/point-c.csv",
+  "/feeds/point-c-en.csv",
+  "/point-c.csv",
+  "/point-c-en.csv",
+  "/geo-status.json",
+  "/geo-next.txt",
+  "/owner-next.txt",
+  "/tur1a.json",
+  "/feeds/tur1a.csv",
+  "/.well-known/AGENTS.md",
+  "/brand",
+  "/modules",
+  "/product",
+  "/entity-profiles",
+  "/llms-full",
+  "/tr/prices.json",
+  "/tr/catalog.json",
+  "/tr/entity.json",
+  "/tr/ai-shopping.json",
+  "/en/feed.json",
+  "/tr/feed.json",
+  "/tr/calculator/",
+  "/en/calculator/",
+  "/tr/teklif/",
+  "/tr/catalog/",
+  "/tr/gob/",
+  "/katalog/",
+  "/contact/",
+  "/nxtionstar/",
+  "/galeri/",
+  "/en/faq/",
+  "/en/catalog/",
+  "/en/shop/",
+  "/en/request-quote/",
+  "/en/products/gob/",
+  "/pricing/",
+  "/prices/",
+]) {
+  if (!robotsFnBody.includes(must)) {
+    console.error(`❌ functions/robots.txt.js must Allow ${must}`);
+    process.exit(1);
+  }
+  if (!robotsTsBody.includes(must)) {
+    console.error(`❌ src/app/robots.ts must Allow ${must}`);
+    process.exit(1);
+  }
+}
+{
+  const robotsOut = path.join(outDir, "robots.txt");
+  if (fs.existsSync(robotsOut)) {
+    const robotsOutBody = fs.readFileSync(robotsOut, "utf8");
+    if (!robotsOutBody.includes("/.well-known/brand.json")) {
+      console.error("❌ out/robots.txt must Allow /.well-known/brand.json");
+      process.exit(1);
+    }
+    for (const must of [
+      "/point-c.json",
+      "/.well-known/point-c.json",
+      "/geo-status.json",
+      "/.well-known/geo-status.json",
+      "/geo-next.txt",
+      "/.well-known/geo-next.txt",
+      "/tur1a.json",
+      "/.well-known/tur1a.json",
+      "/feeds/tur1a.csv",
+      "/point-c-progress.json",
+      "/.well-known/point-c-progress.json",
+      "/.well-known/AGENTS.md",
+    ]) {
+      if (!robotsOutBody.includes(must)) {
+        console.error(`❌ out/robots.txt must Allow gate invent ${must}`);
+        process.exit(1);
+      }
+    }
+  }
+  const robotsPublic = path.join(repoRoot, "public", "robots.txt");
+  if (fs.existsSync(robotsPublic)) {
+    const robotsPublicBody = fs.readFileSync(robotsPublic, "utf8");
+    for (const must of [
+      "/point-c.json",
+      "/geo-status.json",
+      "/geo-next.txt",
+      "/tur1a.json",
+      "/point-c-progress.json",
+    ]) {
+      if (!robotsPublicBody.includes(must)) {
+        console.error(`❌ public/robots.txt must Allow gate invent ${must} (parity with functions/robots.txt.js)`);
+        process.exit(1);
+      }
+    }
+  }
+}
+if (!robotsFnBody.includes("Google-CloudVertexBot") || !robotsTsBody.includes("Google-CloudVertexBot")) {
+  console.error("❌ robots must list Google-CloudVertexBot for Gemini/Vertex crawl");
+  process.exit(1);
+}
+console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt + TR llms + panels/mpn/merchant invent aliases");
+
+{
+  const tur1aPrompts = fs.readFileSync(path.join(repoRoot, "scripts/print-tur1a-prompts.mjs"), "utf8");
+  const tur1aMatrix = fs.readFileSync(path.join(repoRoot, "scripts/tur1a-matrix.mjs"), "utf8");
+  for (const must of [
+    "PLATFORM_OPEN_URLS",
+    "https://chatgpt.com/",
+    "https://gemini.google.com/app",
+    "https://www.perplexity.ai/",
+    "https://www.google.com/",
+  ]) {
+    if (!tur1aPrompts.includes(must)) {
+      console.error(`❌ scripts/print-tur1a-prompts.mjs must define Tur1a open URL ${must}`);
+      process.exit(1);
+    }
+  }
+  if (
+    !tur1aMatrix.includes("platformOpenUrl") ||
+    !tur1aMatrix.includes("Where:") ||
+    !tur1aMatrix.includes("OpenAlt:") ||
+    !tur1aMatrix.includes("tur1a.json → potentialAction") ||
+    !tur1aMatrix.includes("feeds/tur1a.csv")
+  ) {
+    console.error("❌ scripts/tur1a-matrix.mjs must print Where:/Open:/OpenAlt: + HowTo potentialAction + tur1a.csv");
+    process.exit(1);
+  }
+  if (
+    !tur1aMatrix.includes("platform,promptId,locale,status,open,prompt,logCommand") ||
+    !tur1aMatrix.includes("buildTur1aCsv")
+  ) {
+    console.error("❌ scripts/tur1a-matrix.mjs tur1a:csv must include open column + buildTur1aCsv export");
+    process.exit(1);
+  }
+  if (!tur1aMatrix.includes("runLog") || !tur1aMatrix.includes("Open:")) {
+    console.error("❌ scripts/tur1a-matrix.mjs tur1a:log must surface Open: for next cell");
+    process.exit(1);
+  }
+  console.log("✅ tur1a:next/csv/log platform open URLs (chatgpt/gemini/perplexity/google_aio)");
+
+  const agentsMdLive = fs.existsSync(path.join(outDir, "AGENTS.md"))
+    ? fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8")
+    : "";
+  const humansLive = fs.existsSync(path.join(outDir, "humans.txt"))
+    ? fs.readFileSync(path.join(outDir, "humans.txt"), "utf8")
+    : "";
+  for (const needle of [
+    "/.well-known/offer.json",
+    "/.well-known/offers.json",
+    "/.well-known/dataset.json",
+    "/.well-known/feed.json",
+    "/.well-known/organization.json",
+    "/.well-known/geo-baseline.json",
+  ]) {
+    if (agentsMdLive && !agentsMdLive.includes(needle)) {
+      console.error(`❌ out/AGENTS.md must cite invent alias ${needle}`);
+      process.exit(1);
+    }
+    if (humansLive && !humansLive.includes(needle)) {
+      console.error(`❌ out/humans.txt must cite invent alias ${needle}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ AGENTS.md + humans.txt cite well-known offer/organization/geo-baseline invent");
+
+  const llmsLive = fs.existsSync(path.join(outDir, "llms.txt"))
+    ? fs.readFileSync(path.join(outDir, "llms.txt"), "utf8")
+    : "";
+  const llmsFullLive = fs.existsSync(path.join(outDir, "llms-full.txt"))
+    ? fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8")
+    : "";
+  for (const needle of [
+    "/.well-known/offer.json",
+    "/.well-known/offers.json",
+    "/.well-known/dataset.json",
+    "/.well-known/feed.json",
+    "/.well-known/organization.json",
+    "/.well-known/geo-baseline.json",
+  ]) {
+    if (llmsLive && !llmsLive.includes(needle)) {
+      console.error(`❌ out/llms.txt must cite invent alias ${needle}`);
+      process.exit(1);
+    }
+    if (llmsFullLive && !llmsFullLive.includes(needle)) {
+      console.error(`❌ out/llms-full.txt must cite invent alias ${needle}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ llms.txt + llms-full.txt cite well-known offer/organization/geo-baseline invent");
+
+  const verifyArleds = fs.readFileSync(path.join(repoRoot, "scripts/verify-arleds-301.mjs"), "utf8");
+  for (const must of [
+    "DNSENABLE_PANEL_URL",
+    "HOSTINGER_PANEL_URL",
+    "CLOUDFLARE_DASH_URL",
+    "Open:",
+    "OpenAlt:",
+  ]) {
+    if (!verifyArleds.includes(must)) {
+      console.error(`❌ scripts/verify-arleds-301.mjs must print provider Open tabs (${must})`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ verify:arleds-301 prints Where:/Open:/OpenAlt: provider tabs");
+
+  const pointCPacks = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
+  for (const must of [
+    "POINT_C_OPEN_URLS",
+    "POINT_C_OPEN_ALTS",
+    "pointCOpenUrl",
+    "pointCOpenAltUrl",
+    "DNSENABLE_PANEL_URL",
+    "https://business.google.com/",
+    "https://www.bingplaces.com/",
+    "https://businessconnect.apple.com/",
+    "https://studio.youtube.com/",
+    "https://business.yandex.com/",
+    "https://www.instagram.com/arledscreen/",
+    "https://www.facebook.com/arledscreenn",
+    "https://www.linkedin.com/company/arleds/",
+    "https://www.isimtescil.net/",
+    "printCsv",
+  ]) {
+    if (!pointCPacks.includes(must)) {
+      console.error(`❌ scripts/print-point-c-packs.mjs must define Point C open URL ${must}`);
+      process.exit(1);
+    }
+  }
+  if (
+    !pointCPacks.includes("Open:") ||
+    !pointCPacks.includes("OpenAlt:") ||
+    !pointCPacks.includes("POINT_C_PASTE_WHERE") ||
+    !pointCPacks.includes("pointCOpenAltUrls") ||
+    !pointCPacks.includes("gbpDescription:") ||
+    !pointCPacks.includes("instagramName:") ||
+    !pointCPacks.includes("facebookAbout:") ||
+    !pointCPacks.includes("linkedinAbout:") ||
+    !pointCPacks.includes("youtubeAbout:") ||
+    !pointCPacks.includes("yandexBusiness:") ||
+    !pointCPacks.includes("dash.cloudflare.com")
+  ) {
+    console.error("❌ scripts/print-point-c-packs.mjs must print Where:/Open:/OpenAlt(s) for every Point C pack + Cloudflare alt");
+    process.exit(1);
+  }
+  // Every POINT_C_OPEN_URLS pack must have at least one OpenAlt.
+  {
+    const openBlock = pointCPacks.match(/export const POINT_C_OPEN_URLS = \{([\s\S]*?)\n\};/)?.[1] || "";
+    const altBlock = pointCPacks.match(/export const POINT_C_OPEN_ALTS = \{([\s\S]*?)\n\};/)?.[1] || "";
+    const openKeys = [...openBlock.matchAll(/^\s*([a-zA-Z_][a-zA-Z0-9_]*|[A-Z_][A-Z0-9_]*)\s*:/gm)].map((m) => m[1]);
+    const altKeys = [...altBlock.matchAll(/^\s*([a-zA-Z_][a-zA-Z0-9_]*|[A-Z_][A-Z0-9_]*)\s*:/gm)].map((m) => m[1]);
+    // HOSTINGER_STEP uses computed key — count named packs only.
+    const namedOpen = openKeys.filter((k) => k !== "HOSTINGER_STEP" && !k.includes("HOSTINGER"));
+    for (const k of namedOpen) {
+      if (!altKeys.includes(k) && !altBlock.includes(`[HOSTINGER_STEP]`) && k === "hostinger301") continue;
+      if (!altKeys.includes(k)) {
+        console.error(`❌ POINT_C_OPEN_ALTS must cover pack ${k}`);
+        process.exit(1);
+      }
+    }
+  }
+  const pkgJson = JSON.parse(fs.readFileSync(path.join(repoRoot, "package.json"), "utf8"));
+  if (pkgJson?.scripts?.["point-c:csv"] !== "node scripts/print-point-c-packs.mjs --csv") {
+    console.error("❌ package.json must define point-c:csv → print-point-c-packs.mjs --csv");
+    process.exit(1);
+  }
+  const pointCLive = fs.existsSync(path.join(outDir, "point-c.txt"))
+    ? fs.readFileSync(path.join(outDir, "point-c.txt"), "utf8")
+    : "";
+  if (
+    pointCLive &&
+    (!pointCLive.includes("Open: https://business.google.com/") ||
+      !pointCLive.includes("Where:") ||
+      !pointCLive.includes("OpenAlt: https://businessconnect.apple.com/") ||
+      !pointCLive.includes("OpenAlt2: https://business.google.com/") ||
+      !pointCLive.includes("OpenAlt: https://www.google.com/business/") ||
+      !pointCLive.includes("OpenAlt: https://business.facebook.com/") ||
+      !pointCLive.includes("OpenAlt: https://www.linkedin.com/company/arleds/admin/") ||
+      !pointCLive.includes("OpenAlt: mailto:destek@isimtescil.net") ||
+      !pointCLive.includes("https://dash.cloudflare.com/") ||
+      !pointCLive.includes("Open: https://www.isimtescil.net/"))
+  ) {
+    console.error("❌ out/point-c.txt must include Where:/Open:/OpenAlt(s) for directoryLong/GBP/FB/LI + DNSEnable mailto/Cloudflare");
+    process.exit(1);
+  }
+  console.log("✅ point-c:next Open:/OpenAlt(s) + point-c:csv (GBP/IG/FB/LI/Bing/Apple/YT/Yandex + DNSEnable/Cloudflare)");
+}
+
+{
+  const sitemapPath = path.join(outDir, "sitemap.xml");
+  if (!fs.existsSync(sitemapPath)) {
+    console.error("❌ Missing in out/: sitemap.xml");
+    process.exit(1);
+  }
+  const sitemapLive = fs.readFileSync(sitemapPath, "utf8");
+  for (const needle of [
+    "/.well-known/panels.json",
+    "/.well-known/mpn.json",
+    "/.well-known/merchant.json",
+    "/.well-known/modules.json",
+    "/.well-known/sku.json",
+    "/.well-known/price.json",
+    "/.well-known/pricing.json",
+    "/modules.json",
+    "/sku.json",
+    "/panels.json",
+    "/point-c.txt",
+    "/brand.json",
+    "/feeds/prices.rss",
+    "/api/catalog.json",
+    "/api/products",
+    "/feeds/prices.json",
+    "/feeds/catalog.json",
+    "/tr/prices.json",
+    "/tr/ai-shopping.json",
+    "/tr/catalog.json",
+    "/tr/entity.json",
+    "/en/entity.json",
+    "/en/feed.json",
+    "/tr/feed.json",
+    "/brand",
+    "/modules",
+    "/product",
+    "/entity-profiles",
+    "/llms-full",
+    "/.well-known/security",
+    "/tr/teklif/",
+    "/tr/teklif-al/",
+    "/tr/fiyat-teklifi/",
+    "/tr/contact/",
+    "/tr/fiyat/",
+    "/tr/fiyatlar/",
+    "/tr/prices/",
+    "/tr/pricing/",
+    "/tr/katalog/",
+    "/tr/catalog/",
+    "/tr/shop/",
+    "/tr/magaza/",
+    "/tr/calculator/",
+    "/en/calculator/",
+    "/tr/faq/",
+    "/tr/gallery/",
+    "/tr/projects/",
+    "/tr/regions/",
+    "/tr/services/",
+    "/tr/brand/",
+    "/tr/modules/",
+    "/tr/gob/",
+    "/tr/indoor-led/",
+    "/tr/outdoor-led/",
+    "/tr/fine-pitch/",
+    "/tr/price-list/",
+    "/en/magaza/",
+    "/katalog/",
+    "/contact/",
+    "/teklif/",
+    "/quote/",
+    "/fiyat/",
+    "/nxtionstar/",
+    "/galeri/",
+    "/en/faq/",
+    "/en/gallery/",
+    "/en/projects/",
+    "/en/regions/",
+    "/en/services/",
+    "/en/brand/",
+    "/en/teklif/",
+    "/en/bolgeler/istanbul/",
+    "/en/products/gob-led-ekran/p1-25-gob/",
+    "/en/catalog/",
+    "/en/shop/",
+    "/en/request-quote/",
+    "/en/products/gob/",
+    "/pricing/",
+    "/prices/",
+  ]) {
+    if (!sitemapLive.includes(`<loc>https://arledscreen.com${needle}</loc>`)) {
+      console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);
+      process.exit(1);
+    }
+  }
+  // ARD invent bridge examples with live HTML must all appear in sitemap + robotsPolicy.allow.
+  {
+    const ardLive = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/ard.json"), "utf8"));
+    const allowLive = ardLive?.robotsPolicy?.allow || [];
+    for (const key of ["trInventBridges", "enInventBridges"]) {
+      const examples = ardLive?.agentic?.resources?.[key]?.examples || [];
+      for (const full of examples) {
+        const p = String(full).replace("https://arledscreen.com", "");
+        const rel = p.replace(/^\//, "").replace(/\/$/, "");
+        const htmlPath = path.join(outDir, rel, "index.html");
+        const filePath = path.join(outDir, rel.replace(/\/$/, ""));
+        const hasHtml = fs.existsSync(htmlPath) || (fs.existsSync(filePath) && fs.statSync(filePath).isFile());
+        if (!hasHtml) continue;
+        if (!sitemapLive.includes(`<loc>https://arledscreen.com${p}</loc>`)) {
+          console.error(`❌ out/sitemap.xml must list ARD ${key} HTML invent ${p}`);
+          process.exit(1);
+        }
+        if (!allowLive.includes(p)) {
+          console.error(`❌ ard.json robotsPolicy.allow must include ${key} ${p}`);
+          process.exit(1);
+        }
+      }
+    }
+  }
+  console.log("✅ sitemap.xml lists well-known panels/mpn/merchant invent aliases");
 }
 
 validateAIFeeds();
