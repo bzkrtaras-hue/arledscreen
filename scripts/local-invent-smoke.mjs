@@ -1467,10 +1467,21 @@ if (
     headers.includes("/tur1a.json") &&
     headers.includes("/feeds/tur1a.csv") &&
     headers.includes("#website") &&
-    linkCount <= 90
+    linkCount <= 90 &&
+    (() => {
+      const idx = headers.indexOf("\n/owner-next.json\n");
+      if (idx < 0) return false;
+      const block = headers.slice(idx, idx + 280);
+      return block.includes("no-store") && block.includes("CDN-Cache-Control: no-store");
+    })() &&
+    (() => {
+      const idx = headers.indexOf("\n/social.json\n");
+      if (idx < 0) return false;
+      return headers.slice(idx, idx + 280).includes("no-store");
+    })()
   ) {
-    ok(`_headers Link inventAlias trimmed×${linkCount} + discovery + point-c/geo-status/progress/tur1a + owner-next.json`);
-  } else fail("_headers Link inventAlias trimmed + discovery + point-c/geo-status/progress/tur1a + owner-next.json");
+    ok(`_headers Link inventAlias trimmed×${linkCount} + discovery + point-c/geo-status/progress/tur1a + owner-next.json no-store`);
+  } else fail("_headers Link inventAlias trimmed + discovery + point-c/geo-status/progress/tur1a + owner-next.json no-store");
 }
 
 {

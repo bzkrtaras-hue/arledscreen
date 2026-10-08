@@ -3268,6 +3268,32 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
+  {
+    // Owner-gate surfaces must no-store (last-match overrides /:file.json max-age=3600).
+    const gateNoStore = [
+      "/owner-next.json",
+      "/geo-next.json",
+      "/geo-status.json",
+      "/point-c.json",
+      "/point-c-progress.json",
+      "/tur1a.json",
+      "/social.json",
+      "/owner-next.html",
+      "/geo-next.html",
+    ];
+    for (const pathRule of gateNoStore) {
+      const idx = headersLive.indexOf(`\n${pathRule}\n`);
+      if (idx < 0) {
+        console.error(`❌ out/_headers missing owner-gate no-store rule ${pathRule}`);
+        process.exit(1);
+      }
+      const block = headersLive.slice(idx, idx + 280);
+      if (!block.includes("no-store") || !block.includes("CDN-Cache-Control: no-store")) {
+        console.error(`❌ out/_headers ${pathRule} must set Cache-Control/CDN no-store for owner-gate freshness`);
+        process.exit(1);
+      }
+    }
+  }
   if (
     !headersLive.includes('rel="describedby"') ||
     !headersLive.includes("ai-shopping.json") ||
