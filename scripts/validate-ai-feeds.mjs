@@ -2388,11 +2388,12 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("Open After") ||
       !agentsMdLive.includes("Copy+Open After") ||
       !agentsMdLive.includes("Y/P advance + Copy+Open next") ||
+      !agentsMdLive.includes("Copy+Open DNSEnable") ||
       !agentsMdLive.includes("next.htmlAfter") ||
       !agentsMdLive.includes("after=1") ||
       !agentsMdLive.includes("Copy+Open ack After hint")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + Open After + Copy+Open After + Y/P advance + Copy+Open next + next.htmlAfter + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + Open After + Copy+Open After + Y/P advance + Copy+Open next + Copy+Open DNSEnable + next.htmlAfter + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2701,6 +2702,10 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("advanceAfterPasteLocal") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copyOpenNext") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Y/P advance + Copy+Open next") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyOpenDnsenable") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-dnsenable") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy+Open DNSEnable") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "g"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "a"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "y"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "p"') ||
