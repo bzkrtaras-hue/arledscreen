@@ -16,13 +16,14 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 
 - Web: [https://arledscreen.com](https://arledscreen.com)
 - TR ana: [https://arledscreen.com/tr/](https://arledscreen.com/tr/)
-- Telefon / WhatsApp: +90 530 507 88 34 ([https://wa.me/905305078834](https://wa.me/905305078834))
+- Telefon / WhatsApp: +90 530 507 88 34 · `@arledscreen` ([https://wa.me/905305078834](https://wa.me/905305078834) — WhatsApp @username deep-link yok; tıkla-sohbet telefon)
 - E-posta: arled@arledscreen.com
 - Adres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye
 - Fiyat hesaplayıcı: [https://fiyat.arledscreen.com/](https://fiyat.arledscreen.com/) (sitede: [https://arledscreen.com/tr/hesaplayici/](https://arledscreen.com/tr/hesaplayici/))
 - Çalışma saatleri: Pazartesi–Cuma 09:00–18:00, Cumartesi 10:00–15:00
-- Instagram: [https://www.instagram.com/arledscreen/](https://www.instagram.com/arledscreen/)
-- Facebook: [https://www.facebook.com/arledscreenn](https://www.facebook.com/arledscreenn)
+- Instagram: `@arledscreen` — [https://www.instagram.com/arledscreen/](https://www.instagram.com/arledscreen/)
+- Facebook: `@arledscreenn` — [https://www.facebook.com/arledscreenn](https://www.facebook.com/arledscreenn)
+- Sosyal makine: [social.json](https://arledscreen.com/social.json) (alias `/contact.json` · `/.well-known/social.json`)
 - LinkedIn: [https://www.linkedin.com/company/arleds](https://www.linkedin.com/company/arleds) — şirket slug’ı `arleds`; **web sitesi değildir** (`arleds.com` ≠ LinkedIn)
 - Kurucu: Aras Bozkurt — [profil](https://arledscreen.com/tr/about/aras-bozkurt/) · [EN founder](https://arledscreen.com/en/about/aras-bozkurt/) · [LinkedIn](https://www.linkedin.com/in/bozkurtaras)
 - Ayrıntılı metin: [https://arledscreen.com/llms-full.txt](https://arledscreen.com/llms-full.txt)

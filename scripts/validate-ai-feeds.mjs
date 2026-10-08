@@ -1900,6 +1900,12 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("owner-linkedin-open:") ||
     !aiTxtLive.includes("owner-instagram-open:") ||
     !aiTxtLive.includes("owner-facebook-open:") ||
+    !aiTxtLive.includes("owner-whatsapp-open:") ||
+    !aiTxtLive.includes("owner-whatsapp-handle:") ||
+    !aiTxtLive.includes("owner-instagram-handle:") ||
+    !aiTxtLive.includes("owner-facebook-handle:") ||
+    !aiTxtLive.includes("social-json:") ||
+    !aiTxtLive.includes("contact-json:") ||
     !aiTxtLive.includes("owner-youtube-open:") ||
     !aiTxtLive.includes("owner-yandex-open:") ||
     !aiTxtLive.includes("point-c-en-well-known:") ||
@@ -1928,14 +1934,65 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("https://www.linkedin.com/company/arleds/") ||
     !aiTxtLive.includes("https://www.instagram.com/arledscreen/") ||
     !aiTxtLive.includes("https://www.facebook.com/arledscreenn") ||
+    !aiTxtLive.includes("https://wa.me/905305078834") ||
+    !aiTxtLive.includes("@arledscreen") ||
+    !aiTxtLive.includes("@arledscreenn") ||
+    !aiTxtLive.includes("/social.json") ||
+    !aiTxtLive.includes("/contact.json") ||
     !aiTxtLive.includes("https://studio.youtube.com/") ||
     !aiTxtLive.includes("https://business.yandex.com/") ||
     !aiTxtLive.includes("/.well-known/point-c-en.txt") ||
     !aiTxtLive.includes("point-c:csv") ||
     !aiTxtLive.includes("point-c:")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds/GBP/chatgpt/Bing/Apple/LI/IG/FB/YT/Yandex Open/csv + point-c-en well-known");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds/GBP/chatgpt/Bing/Apple/LI/IG/FB/WA handles + social.json + YT/Yandex Open/csv + point-c-en well-known");
     process.exit(1);
+  }
+  {
+    const socialLive = path.join(outDir, "social.json");
+    if (!fs.existsSync(socialLive)) {
+      console.error("❌ out/social.json missing (owner-confirmed social handles invent)");
+      process.exit(1);
+    }
+    const social = JSON.parse(fs.readFileSync(socialLive, "utf8"));
+    if (
+      social?.handles?.facebook !== "arledscreenn" ||
+      social?.handles?.instagram !== "arledscreen" ||
+      social?.handles?.whatsapp !== "arledscreen" ||
+      !JSON.stringify(social).includes("https://wa.me/905305078834") ||
+      !JSON.stringify(social).includes("https://www.facebook.com/arledscreenn") ||
+      !JSON.stringify(social).includes("https://www.instagram.com/arledscreen")
+    ) {
+      console.error("❌ out/social.json must cite FB @arledscreenn · IG @arledscreen · WA @arledscreen + wa.me");
+      process.exit(1);
+    }
+    const canonSocial = fs.readFileSync(socialLive);
+    for (const rel of ["contact.json", "social", ".well-known/social.json", ".well-known/contact.json"]) {
+      const fp = path.join(outDir, rel);
+      if (!fs.existsSync(fp) || fs.statSync(fp).isDirectory()) {
+        console.error(`❌ out/${rel} must be social.json invent alias file`);
+        process.exit(1);
+      }
+      if (!fs.readFileSync(fp).equals(canonSocial)) {
+        console.error(`❌ out/${rel} must match social.json`);
+        process.exit(1);
+      }
+    }
+    const llmsLive = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
+    const humansLive = fs.readFileSync(path.join(outDir, "humans.txt"), "utf8");
+    if (
+      !llmsLive.includes("@arledscreenn") ||
+      !llmsLive.includes("WhatsApp") ||
+      !llmsLive.includes("@arledscreen") ||
+      !llmsLive.includes("/social.json") ||
+      !humansLive.includes("WhatsApp: @arledscreen") ||
+      !humansLive.includes("Facebook: @arledscreenn") ||
+      !humansLive.includes("Instagram: @arledscreen")
+    ) {
+      console.error("❌ llms.txt + humans.txt must cite owner-confirmed social handles + social.json");
+      process.exit(1);
+    }
+    console.log("✅ social.json + contact aliases + llms/humans handle cite (FB @arledscreenn · IG/WA @arledscreen)");
   }
   const geoNextSrc = fs.readFileSync(path.join(repoRoot, "scripts/geo-next.mjs"), "utf8");
   if (
