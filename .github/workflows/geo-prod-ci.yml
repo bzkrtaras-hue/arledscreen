@@ -47,6 +47,8 @@ jobs:
           npm run point-c | grep -q "GBP About"
           npm run point-c | grep -q "Hostinger arleds.com"
           npm run point-c | grep -q "Hostinger support email"
+          npm run point-c | grep -q "DNSEnable"
+          npm run point-c | grep -q "Domain Redirect"
           npm run point-c | grep -q "mailto:support@hostinger.com"
           npm run point-c:next | grep -q "Point C next paste"
           npm run point-c:next | grep -q "directoryLong"
@@ -58,6 +60,8 @@ jobs:
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
           test -f out/point-c.txt && grep -q "Hostinger arleds.com" out/point-c.txt
           test -f out/point-c.txt && grep -q "Hostinger support email" out/point-c.txt
+          test -f out/point-c.txt && grep -q "DNSEnable" out/point-c.txt
+          test -f out/point-c.txt && grep -q "Domain Redirect" out/point-c.txt
           test -f out/point-c.txt && grep -q "point-c:next" out/point-c.txt
           test -f out/point-c.txt && grep -q "tur1a:log" out/point-c.txt
           test -f out/point-c-en.txt && grep -q "EN GBP About" out/point-c-en.txt

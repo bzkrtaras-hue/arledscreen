@@ -43,7 +43,7 @@ try {
     packsOk ? "OK" : "OPEN",
     "Point C packs present",
     packsOk
-      ? "https://arledscreen.com/point-c.txt · paste GBP/IG/FB/LinkedIn + Hostinger 301 clipboard (once; 34245)"
+      ? "https://arledscreen.com/point-c.txt · paste GBP/IG/FB/LinkedIn + arleds 301 (DNSEnable Domain Redirect first; 34245)"
       : `missing ${missing.join(", ")}`,
   );
   let ackedN = 0;

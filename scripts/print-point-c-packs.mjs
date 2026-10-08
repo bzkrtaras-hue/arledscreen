@@ -22,8 +22,14 @@ const repoRoot = path.resolve(__dirname, "..");
 const profilesPath = path.join(repoRoot, "public/entity-profiles.json");
 const progressPath = path.join(repoRoot, "docs/geo/observations/point-c-progress.json");
 
-/** Synthetic step after NAP packs — Hostinger support email clipboard. */
+/**
+ * Synthetic step after NAP packs — arleds.com 301 clipboard.
+ * Key kept as hostinger301 for progress ack compatibility; text is dual-path
+ * (DNSEnable Domain Redirect first; Hostinger only if NS is Hostinger).
+ */
 export const HOSTINGER_STEP = "hostinger301";
+
+const ARLEDS_TARGET = "https://arledscreen.com/tr/";
 
 export const TR_ORDER = [
   ["NAP / directoryLong", "directoryLong"],
@@ -57,6 +63,43 @@ export const HOSTINGER_SUPPORT_TO = "support@hostinger.com";
 export const HOSTINGER_GMAIL_DRAFT_URL =
   "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878419649952913826%2Bmsg-a:r-5878982215178809685";
 
+/** Live DNSEnable / Isimtescil Domain Redirect clipboard (primary when NS is dnsenable.com). */
+export function buildDnsEnableRedirectClipboard() {
+  return [
+    "Isimtescil / DNSEnable → Domain Redirect (permanent 301)",
+    `arleds.com + www.arleds.com → ${ARLEDS_TARGET}`,
+    "Live NS often eu/tr/us.dnsenable.com — Hostinger hPanel will NOT apply until NS moves.",
+    "Option B: move NS to Cloudflare → Bulk Redirect → https://arledscreen.com/tr/ (301)",
+    "Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md",
+    "Do NOT add arleds.com to sameAs until 301 is live.",
+  ].join("\n");
+}
+
+/** Dual-path arleds 301 paste for geo:next / hostinger301 step. */
+export function buildArleds301DualPathClipboard() {
+  return [
+    "=== arleds.com → arledscreen.com/tr/ 301 (provider-correct) ===",
+    "",
+    "--- A) DNSEnable / Isimtescil (current live NS — do this first) ---",
+    buildDnsEnableRedirectClipboard(),
+    "",
+    "--- B) Hostinger (ONLY if verify mode is hostinger_* / NS is Hostinger) ---",
+    "hPanel → Domains → arleds.com → Redirects → permanent 301 entire domain.",
+    "From → To (all four):",
+    `http://arleds.com/ → ${ARLEDS_TARGET}`,
+    `http://www.arleds.com/ → ${ARLEDS_TARGET}`,
+    `https://arleds.com/ → ${ARLEDS_TARGET}`,
+    `https://www.arleds.com/ → ${ARLEDS_TARGET}`,
+    "",
+    buildHostingerEmailClipboard(),
+    "",
+    `mailto: ${buildHostingerMailto()}`,
+    `Gmail draft (Send): ${HOSTINGER_GMAIL_DRAFT_URL}`,
+    "EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml",
+    "Re-check: npm run verify:arleds-301 · npm run geo:status",
+  ].join("\n");
+}
+
 export function buildHostingerEmailParts() {
   const subject = "Permanent 301 redirect arleds.com → https://arledscreen.com/tr/";
   const body = [
@@ -73,7 +116,8 @@ export function buildHostingerEmailParts() {
     "https://arleds.com/ → https://arledscreen.com/tr/",
     "https://www.arleds.com/ → https://arledscreen.com/tr/",
     "",
-    "Domain: arleds.com (Hostinger DNS; not on Cloudflare for this account).",
+    "Domain: arleds.com — use this email ONLY if NS is Hostinger.",
+    "If NS is dnsenable.com (Isimtescil), use registrar Domain Redirect instead.",
     "Thank you.",
   ].join("\n");
   return { to: HOSTINGER_SUPPORT_TO, subject, body };
@@ -143,7 +187,11 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
   }
 
   if (!only) {
+    lines.push("--- DNSEnable / Isimtescil arleds.com → arledscreen.com/tr/ 301 (primary — live NS) ---");
+    for (const row of buildDnsEnableRedirectClipboard().split("\n")) lines.push(row);
+    lines.push("");
     lines.push("--- Hostinger arleds.com → arledscreen.com/tr/ 301 (owner clipboard) ---");
+    lines.push("ONLY if npm run verify:arleds-301 mode=hostinger_* (NS Hostinger). Otherwise ignore.");
     lines.push("hPanel → Domains → arleds.com → Redirects → permanent 301 entire domain.");
     lines.push("From → To (all four):");
     lines.push("http://arleds.com/ → https://arledscreen.com/tr/");
@@ -169,7 +217,7 @@ export function buildPointCPackText(profiles, { en = false, only = "" } = {}) {
     }
     lines.push("Price source: https://arledscreen.com/ai-shopping.json pricedPanels");
     lines.push(
-      "Inventable aliases: /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/prices.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt · /prices.json",
+      "Inventable aliases: /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/prices.json · /.well-known/offer.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt · /prices.json · /offer.json · /dataset.json · /feed.json",
     );
     lines.push(`prices.rss: ${profiles?.canonicalUrls?.pricesRss || "https://arledscreen.com/feeds/prices.rss"}`);
     lines.push("Playbook: docs/offsite-entity-playbook.md");
@@ -207,7 +255,13 @@ function nextStep(profiles, { en = false } = {}) {
   for (const key of sequenceKeys(en)) {
     if (ackedSet.has(key)) continue;
     if (key === HOSTINGER_STEP) {
-      return { key: HOSTINGER_STEP, label: "Hostinger 301 support email", text: buildHostingerEmailClipboard(), done: acked.length, total: sequenceKeys(en).length };
+      return {
+        key: HOSTINGER_STEP,
+        label: "arleds.com 301 (DNSEnable Domain Redirect · Hostinger only if NS Hostinger)",
+        text: buildArleds301DualPathClipboard(),
+        done: acked.length,
+        total: sequenceKeys(en).length,
+      };
     }
     const label = (en ? EN_ORDER : TR_ORDER).find(([, k]) => k === key)?.[0] || key;
     const text = packs[key];
@@ -221,7 +275,7 @@ function printNext(profiles, { en = false } = {}) {
   const step = nextStep(profiles, { en });
   if (!step) {
     console.log("=== ARLEDSCREEN Point C next ===");
-    console.log("All sequential pastes acked (packs + Hostinger email).");
+    console.log("All sequential pastes acked (packs + arleds 301 dual-path).");
     console.log("Verify: npm run verify:arleds-301 · npm run geo:status");
     console.log("Reset progress: delete docs/geo/observations/point-c-progress.json");
     return;
@@ -237,7 +291,10 @@ function printNext(profiles, { en = false } = {}) {
   console.log("---");
   console.log("");
   if (step.key === HOSTINGER_STEP) {
-    console.log("### mailto (open in mail client)");
+    console.log("### Primary: DNSEnable Domain Redirect (live NS)");
+    console.log(buildDnsEnableRedirectClipboard());
+    console.log("");
+    console.log("### Hostinger mailto (ONLY if NS is Hostinger)");
     console.log(buildHostingerMailto());
     console.log("EML file: npm run point-c:hostinger-eml");
     console.log("");

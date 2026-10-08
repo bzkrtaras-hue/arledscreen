@@ -49,32 +49,26 @@ if (acked < POINT_C_STEPS) {
 
 const probe = runNode("scripts/verify-arleds-301.mjs");
 if (probe.status !== 0) {
+  const verifyLog = `${probe.stdout || ""}\n${probe.stderr || ""}`;
+  const mode = (verifyLog.match(/^mode:\s+(\S+)/m) || [])[1] || "";
   console.log("=== ARLEDSCREEN GEO next (arleds.com 301) ===");
-  console.log("Priority gate: Hostinger permanent 301 → https://arledscreen.com/tr/");
+  console.log(
+    mode
+      ? `Priority gate: arleds.com 301 · mode=${mode} → https://arledscreen.com/tr/`
+      : "Priority gate: arleds.com 301 → https://arledscreen.com/tr/",
+  );
   console.log("");
   const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
-  console.log("hPanel clipboard:");
-  console.log("hPanel → Domains → arleds.com → Redirects");
-  console.log("http://arleds.com/ → https://arledscreen.com/tr/");
-  console.log("http://www.arleds.com/ → https://arledscreen.com/tr/");
-  console.log("https://arleds.com/ → https://arledscreen.com/tr/");
-  console.log("https://www.arleds.com/ → https://arledscreen.com/tr/");
+  console.log(mod.buildArleds301DualPathClipboard());
   console.log("");
-  console.log("Hostinger support email (select-all):");
-  console.log("---");
-  console.log(mod.buildHostingerEmailClipboard());
-  console.log("---");
-  console.log("");
-  console.log("mailto:");
-  console.log(mod.buildHostingerMailto());
-  console.log("");
-  console.log("EML: npm run point-c:hostinger-eml → docs/ops/arleds-301-hostinger.eml");
-  if (mod.HOSTINGER_GMAIL_DRAFT_URL) {
-    console.log("Gmail draft (Send):");
-    console.log(mod.HOSTINGER_GMAIL_DRAFT_URL);
+  if (verifyLog.includes("DNS diagnosis")) {
+    console.log("--- verify:arleds-301 (live) ---");
+    for (const row of verifyLog.split("\n").filter((l) => /^(mode:|arleds\.com NS:|NS looks|Option )/i.test(l))) {
+      console.log(row);
+    }
+    console.log("");
   }
-  console.log("");
-  console.log("Verify: npm run verify:arleds-301");
+  console.log("Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md");
   process.exit(0);
 }
 

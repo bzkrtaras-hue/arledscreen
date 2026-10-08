@@ -203,6 +203,8 @@ try {
     pc.includes("34245") &&
     pc.includes("Hostinger arleds.com") &&
     pc.includes("Hostinger support email") &&
+    pc.includes("DNSEnable") &&
+    pc.includes("Domain Redirect") &&
     pc.includes("mailto:support@hostinger.com") &&
     pc.includes("Gmail draft (Send)") &&
     pc.includes("point-c:next") &&
@@ -220,8 +222,8 @@ try {
     pc.includes("/AGENTS.md") &&
     pc.includes("/.well-known/security.txt")
   ) {
-    ok("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
-  } else fail("point-c.txt paste packs + Hostinger 301/email/mailto/draft + invent aliases");
+    ok("point-c.txt paste packs + DNSEnable/Hostinger 301 dual-path + invent aliases");
+  } else fail("point-c.txt paste packs + DNSEnable/Hostinger 301 dual-path + invent aliases");
 } catch (e) {
   fail(`point-c.txt ${e?.message || e}`);
 }
