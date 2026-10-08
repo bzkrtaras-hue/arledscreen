@@ -22,6 +22,7 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 - Brand document: https://arledscreen.com/brand.json (`@type` Brand `#brand-nxtionstar` — `makesOffer` → `#priced-panels-aggregate`; `hasOfferCatalog` → `catalog.json`; ≠ NationStar LED chip ≠ NEXTSTAR TV; invent aliases `/brand` · `/.well-known/brand.json`)
 - WebSite JSON-LD: `entity.json` `mainEntityOfPage` `#website` (`https://arledscreen.com/#website`) OrderAction → `/tr/quote/` · `/en/quote/`; `about` → `#organization`; home Speakable `mainEntity` → `/tr/#service` · `/en/#service`
 - NAP: Gaziosmanpaşa, İstanbul · `arled@arledscreen.com` · +90 530 507 88 34
+- Social (owner-confirmed): WhatsApp `@arledscreen` · Instagram `@arledscreen` · Facebook `@arledscreenn` — machine: https://arledscreen.com/social.json (`/contact.json` · `/social` · `/.well-known/social.json` · `/.well-known/contact.json`; note `/contact` is HTML invent bridge); click-to-chat `https://wa.me/905305078834` (WhatsApp @username has no public wa.me deep-link)
 
 ## More discovery
 

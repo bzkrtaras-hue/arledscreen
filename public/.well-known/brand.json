@@ -837,6 +837,10 @@
     "https://arledscreen.com/merchant.json",
     "https://arledscreen.com/prices.json",
     "https://arledscreen.com/price.json",
+    "https://arledscreen.com/social.json",
+    "https://arledscreen.com/contact.json",
+    "https://arledscreen.com/.well-known/social.json",
+    "https://arledscreen.com/.well-known/contact.json",
     "https://arledscreen.com/.well-known/modules.json",
     "https://arledscreen.com/.well-known/sku.json",
     "https://arledscreen.com/.well-known/pricing.json",
@@ -1013,6 +1017,10 @@
     "https://arledscreen.com/merchant.json",
     "https://arledscreen.com/prices.json",
     "https://arledscreen.com/price.json",
+    "https://arledscreen.com/social.json",
+    "https://arledscreen.com/contact.json",
+    "https://arledscreen.com/.well-known/social.json",
+    "https://arledscreen.com/.well-known/contact.json",
     "https://arledscreen.com/.well-known/modules.json",
     "https://arledscreen.com/.well-known/sku.json",
     "https://arledscreen.com/.well-known/pricing.json",
@@ -1270,6 +1278,24 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/point-c-progress.json",
       "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/social.json",
+      "name": "ARLEDSCREEN social handles invent"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/contact.json",
+      "name": "ARLEDSCREEN contact invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/social.json",
+      "name": "Social well-known invent alias"
     },
     {
       "@type": "DataDownload",

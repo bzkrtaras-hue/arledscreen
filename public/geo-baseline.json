@@ -32,6 +32,10 @@
     "https://arledscreen.com/merchant.json",
     "https://arledscreen.com/prices.json",
     "https://arledscreen.com/price.json",
+    "https://arledscreen.com/social.json",
+    "https://arledscreen.com/contact.json",
+    "https://arledscreen.com/.well-known/social.json",
+    "https://arledscreen.com/.well-known/contact.json",
     "https://arledscreen.com/.well-known/modules.json",
     "https://arledscreen.com/.well-known/sku.json",
     "https://arledscreen.com/.well-known/pricing.json",
@@ -368,6 +372,24 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/point-c-progress.json",
       "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/social.json",
+      "name": "ARLEDSCREEN social handles invent"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/contact.json",
+      "name": "ARLEDSCREEN contact invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/social.json",
+      "name": "Social well-known invent alias"
     },
     {
       "@type": "DataDownload",
@@ -1354,8 +1376,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "ef11c4f631f5ef6f9aa662ed066cec05e552478b2ad294fc77978db995cc9092",
-    "catalogSha256": "681d16241955b444712a465f8d8342d3028d383b10acb0525de96bc728886991",
+    "aiShoppingSha256": "ebd460f0c944d3a92b354c671c51100042bf2429612bc084710c4ea7a05c2446",
+    "catalogSha256": "60e7a850a3aff8790aa5f1b134e710d6d298e0917f8dec22a54640e44b3f3516",
     "merchantTsvSha256": "5c6b433e739a0460b09a6b823d409b81e0318a2f511b854cff7c9c2c90af7611",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },

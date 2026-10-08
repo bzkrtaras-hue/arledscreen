@@ -1,0 +1,103 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "https://arledscreen.com/social.json",
+  "name": "ARLEDSCREEN official social handles",
+  "description": "Owner-confirmed ARLEDSCREEN social handles (2026-10-08). Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen. Click-to-chat: https://wa.me/905305078834 (WhatsApp @username has no public wa.me deep-link). sameAs mirrors Organization. Invent aliases: /contact.json · /social · /contact · /.well-known/social.json · /.well-known/contact.json. Do not cite arleds.com. Owner: live: https://arledscreen.com/owner-next.html · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+  "url": "https://arledscreen.com/social.json",
+  "dateModified": "2026-10-08",
+  "creator": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "publisher": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "about": {
+    "@id": "https://arledscreen.com/#organization"
+  },
+  "handles": {
+    "facebook": "arledscreenn",
+    "instagram": "arledscreen",
+    "whatsapp": "arledscreen"
+  },
+  "sameAs": [
+    "https://www.instagram.com/arledscreen",
+    "https://www.facebook.com/arledscreenn",
+    "https://wa.me/905305078834",
+    "https://www.linkedin.com/company/arleds",
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/contact.json",
+    "https://arledscreen.com/.well-known/social.json",
+    "https://arledscreen.com/.well-known/contact.json",
+    "https://arledscreen.com/#website"
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "name": "WhatsApp @arledscreen",
+      "identifier": "@arledscreen",
+      "telephone": "+905305078834",
+      "url": "https://wa.me/905305078834",
+      "availableLanguage": [
+        "Turkish",
+        "English"
+      ]
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "social",
+      "name": "Instagram @arledscreen",
+      "identifier": "@arledscreen",
+      "url": "https://www.instagram.com/arledscreen"
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "social",
+      "name": "Facebook @arledscreenn",
+      "identifier": "@arledscreenn",
+      "url": "https://www.facebook.com/arledscreenn"
+    }
+  ],
+  "isBasedOn": [
+    "https://arledscreen.com/entity.json",
+    "https://arledscreen.com/organization.json",
+    "https://arledscreen.com/llms.txt",
+    "https://arledscreen.com/humans.txt",
+    "https://arledscreen.com/AGENTS.md",
+    "https://arledscreen.com/#website"
+  ],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/social.json",
+      "name": "ARLEDSCREEN social handles"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/contact.json",
+      "name": "ARLEDSCREEN contact invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/social.json",
+      "name": "Social well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity.json",
+      "name": "ARLEDSCREEN Organization entity"
+    }
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebSite",
+    "@id": "https://arledscreen.com/#website",
+    "url": "https://arledscreen.com",
+    "name": "ARLEDSCREEN"
+  }
+}
