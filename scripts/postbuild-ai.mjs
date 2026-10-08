@@ -3827,7 +3827,6 @@ owner-tur1a-csv: npm run tur1a:csv
 owner-tur1a-log: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…
 owner-tur1a-open: https://chatgpt.com/ · https://gemini.google.com/app · https://www.perplexity.ai/ · https://www.google.com/
 owner-point-c-csv: npm run point-c:csv
-owner-arleds-open: https://www.isimtescil.net/
 owner-arleds-301: npm run verify:arleds-301
 owner-arleds-open: https://www.isimtescil.net/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
