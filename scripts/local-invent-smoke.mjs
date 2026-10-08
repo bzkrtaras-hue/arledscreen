@@ -196,7 +196,8 @@ else fail("ai.txt WebSite + quote");
     agentsMd.includes("social=ig") &&
     agentsMd.includes("social=wa") &&
     agentsMd.includes("/social.json") &&
-    agentsMd.includes("Copy pack link")
+    agentsMd.includes("Copy pack link") &&
+    agentsMd.includes("WA paste")
   ) {
     ok("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");
   } else fail("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");
@@ -628,7 +629,11 @@ else fail("ard.resources.pointC");
     html.includes("wa-paste-share") &&
     html.includes("WA paste") &&
     html.includes('e.key === "m"') &&
+    html.includes("packDeepLinkUrl(key)") &&
+    html.includes("Deep/WA paste") &&
     html.includes("Open×") &&
+    readText("AGENTS.md").includes("WA paste") &&
+    readText("llms.txt").includes("WA paste") &&
     html.includes("activeOpens") &&
     html.includes("socialFocus") &&
     html.includes("setSocialFocus") &&

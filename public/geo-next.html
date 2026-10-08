@@ -871,6 +871,7 @@
         const lines = [
           `=== ${key} (${i + 1}/${open.length}) ===`,
           handleLine,
+          `Deep: ${packDeepLinkUrl(key)}`,
           full.where ? `Where: ${full.where}` : "",
           full.open ? `Open: ${full.open}` : "",
           ...alts.map((href, j) => `OpenAlt${j === 0 ? "" : j + 1}: ${href}`),
@@ -885,7 +886,7 @@
       return (
         `ARLEDSCREEN Point C — ${parts.length} open pack(s) · cite-only · no invented scores\n` +
         `Handles: ${socialHandlesLine()}\n` +
-        `Source: https://arledscreen.com/owner-next.html · https://arledscreen.com/point-c.json · https://arledscreen.com/social.json\n\n` +
+        `Source: https://arledscreen.com/owner-next.html?start=1 · Deep/WA paste (D/M) · https://arledscreen.com/point-c.json · https://arledscreen.com/social.json\n\n` +
         parts.join("\n")
       );
     }

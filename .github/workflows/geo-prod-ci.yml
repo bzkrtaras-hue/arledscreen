@@ -201,6 +201,11 @@ jobs:
           grep -q 'social=fb' out/AGENTS.md
           grep -q 'social=wa' out/AGENTS.md
           grep -q 'Copy pack link' out/AGENTS.md
+          grep -q 'WA paste' out/AGENTS.md
+          grep -q 'WA paste' out/llms.txt
+          grep -q 'WA paste' out/humans.txt
+          grep -q 'packDeepLinkUrl(key)' out/owner-next.html
+          grep -q 'Deep/WA paste' out/owner-next.html
           grep -q 'social=fb' out/.well-known/security.txt
           grep -q 'social=ig' out/.well-known/security.txt
           grep -q 'D=Copy pack link' out/.well-known/security.txt
