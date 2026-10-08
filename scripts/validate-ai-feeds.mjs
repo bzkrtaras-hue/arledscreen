@@ -2701,6 +2701,9 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("nextQuery") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("withNextParam") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packAfterLinkUrl") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-row-links") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-row-deep") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-row-after") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-deep-after") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("n=1") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("`After: ${packAfterLinkUrl") ||

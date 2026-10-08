@@ -640,6 +640,9 @@ else fail("ard.resources.pointC");
     html.includes("nextQuery") &&
     html.includes("withNextParam") &&
     html.includes("packAfterLinkUrl") &&
+    html.includes("pack-row-links") &&
+    html.includes("pack-row-deep") &&
+    html.includes("pack-row-after") &&
     html.includes("pack-deep-after") &&
     html.includes("n=1") &&
     html.includes("`After: ${packAfterLinkUrl") &&
@@ -650,6 +653,7 @@ else fail("ard.resources.pointC");
     readText("AGENTS.md").includes("WA paste") &&
     readText("AGENTS.md").includes("Mail paste") &&
     readText("AGENTS.md").includes("Deep + After") &&
+    readText("AGENTS.md").includes("pack-list per-row Deep/After") &&
     readText("AGENTS.md").includes("?n=1") &&
     readText("llms.txt").includes("WA paste") &&
     readText("llms.txt").includes("Mail paste") &&

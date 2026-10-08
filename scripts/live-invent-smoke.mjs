@@ -617,6 +617,9 @@ try {
     ownerNextHtml.includes("nextQuery") &&
     ownerNextHtml.includes("withNextParam") &&
     ownerNextHtml.includes("packAfterLinkUrl") &&
+    ownerNextHtml.includes("pack-row-links") &&
+    ownerNextHtml.includes("pack-row-deep") &&
+    ownerNextHtml.includes("pack-row-after") &&
     ownerNextHtml.includes("pack-deep-after") &&
     ownerNextHtml.includes("n=1") &&
     ownerNextHtml.includes("`After: ${packAfterLinkUrl") &&
