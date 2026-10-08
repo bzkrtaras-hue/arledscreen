@@ -643,6 +643,14 @@ else fail("ard.resources.pointC");
     html.includes("maybeDnsenableSession") &&
     html.includes("dnsenableQuery") &&
     html.includes("dnsenable=1") &&
+    html.includes("owner-friction") &&
+    html.includes("Copy+Open Tur1a") &&
+    html.includes("copy-open-tur1a") &&
+    html.includes("doCopyOpenTur1a") &&
+    html.includes("maybeTur1aSession") &&
+    html.includes("tur1aQuery") &&
+    html.includes("tur1a=1") &&
+    html.includes('e.key === "t"') &&
     html.includes('e.key === "a"') &&
     html.includes('e.key === "y"') &&
     html.includes('e.key === "p"') &&
@@ -695,6 +703,9 @@ else fail("ard.resources.pointC");
     readText("AGENTS.md").includes("Y/P advance + Copy+Open next") &&
     readText("AGENTS.md").includes("Copy+Open DNSEnable") &&
     readText("AGENTS.md").includes("dnsenable=1") &&
+    readText("AGENTS.md").includes("Copy+Open Tur1a") &&
+    readText("AGENTS.md").includes("tur1a=1") &&
+    readText("AGENTS.md").includes("owner-friction") &&
     readText("AGENTS.md").includes("next.htmlAfter") &&
     readText("AGENTS.md").includes("?n=1") &&
     readText("AGENTS.md").includes("after=1") &&

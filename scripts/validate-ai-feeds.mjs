@@ -2390,11 +2390,14 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("Y/P advance + Copy+Open next") ||
       !agentsMdLive.includes("Copy+Open DNSEnable") ||
       !agentsMdLive.includes("dnsenable=1") ||
+      !agentsMdLive.includes("Copy+Open Tur1a") ||
+      !agentsMdLive.includes("tur1a=1") ||
+      !agentsMdLive.includes("owner-friction") ||
       !agentsMdLive.includes("next.htmlAfter") ||
       !agentsMdLive.includes("after=1") ||
       !agentsMdLive.includes("Copy+Open ack After hint")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + Open After + Copy+Open After + Y/P advance + Copy+Open next + Copy+Open DNSEnable + dnsenable=1 + next.htmlAfter + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + Open After + Copy+Open After + Y/P advance + Copy+Open next + Copy+Open DNSEnable + dnsenable=1 + Copy+Open Tur1a + tur1a=1 + owner-friction + next.htmlAfter + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2710,6 +2713,14 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("maybeDnsenableSession") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("dnsenableQuery") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("dnsenable=1") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("owner-friction") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy+Open Tur1a") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-tur1a") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyOpenTur1a") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("maybeTur1aSession") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("tur1aQuery") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("tur1a=1") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "t"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "a"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "y"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "p"') ||

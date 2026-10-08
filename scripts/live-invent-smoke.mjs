@@ -260,6 +260,9 @@ else fail("ai.txt WebSite + quote");
     agentsMd.includes("Y/P advance + Copy+Open next") &&
     agentsMd.includes("Copy+Open DNSEnable") &&
     agentsMd.includes("dnsenable=1") &&
+    agentsMd.includes("Copy+Open Tur1a") &&
+    agentsMd.includes("tur1a=1") &&
+    agentsMd.includes("owner-friction") &&
     agentsMd.includes("next.htmlAfter") &&
     agentsMd.includes("after=1") &&
     agentsMd.includes("Copy+Open ack After hint")
@@ -629,6 +632,14 @@ try {
     ownerNextHtml.includes("maybeDnsenableSession") &&
     ownerNextHtml.includes("dnsenableQuery") &&
     ownerNextHtml.includes("dnsenable=1") &&
+    ownerNextHtml.includes("owner-friction") &&
+    ownerNextHtml.includes("Copy+Open Tur1a") &&
+    ownerNextHtml.includes("copy-open-tur1a") &&
+    ownerNextHtml.includes("doCopyOpenTur1a") &&
+    ownerNextHtml.includes("maybeTur1aSession") &&
+    ownerNextHtml.includes("tur1aQuery") &&
+    ownerNextHtml.includes("tur1a=1") &&
+    ownerNextHtml.includes('e.key === "t"') &&
     ownerNextHtml.includes('e.key === "a"') &&
     ownerNextHtml.includes('e.key === "y"') &&
     ownerNextHtml.includes('e.key === "p"') &&
