@@ -787,6 +787,10 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
         { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
+        { "@type": "HowToTool", name: "social.json", url: `${SITE}/social.json` },
+        { "@type": "HowToTool", name: "owner-next.html?social=fb", url: ownerNextSocialUrl("fb") },
+        { "@type": "HowToTool", name: "owner-next.html?social=ig", url: ownerNextSocialUrl("ig") },
+        { "@type": "HowToTool", name: "owner-next.html?social=wa", url: ownerNextSocialUrl("wa") },
       ],
     };
   }

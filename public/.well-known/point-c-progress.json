@@ -318,6 +318,26 @@
         "@type": "HowToTool",
         "name": "tur1a.json",
         "url": "https://arledscreen.com/tur1a.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "social.json",
+        "url": "https://arledscreen.com/social.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?social=fb",
+        "url": "https://arledscreen.com/owner-next.html?social=fb"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?social=ig",
+        "url": "https://arledscreen.com/owner-next.html?social=ig"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?social=wa",
+        "url": "https://arledscreen.com/owner-next.html?social=wa"
       }
     ]
   },

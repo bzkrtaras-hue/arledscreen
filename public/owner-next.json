@@ -5,7 +5,7 @@
   "name": "ARLEDSCREEN Owner next (Open/paste machine twin)",
   "description": "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (see socialHandles + /social.json). Browser session start: /owner-next.html?start=1 · Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
   "url": "https://arledscreen.com/owner-next.json",
-  "dateModified": "2026-10-08T16:38:27.773Z",
+  "dateModified": "2026-10-08T16:46:59.465Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
@@ -1237,6 +1237,26 @@
         "@type": "HowToTool",
         "name": "geo-status.json",
         "url": "https://arledscreen.com/geo-status.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "social.json",
+        "url": "https://arledscreen.com/social.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?social=fb",
+        "url": "https://arledscreen.com/owner-next.html?social=fb"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?social=ig",
+        "url": "https://arledscreen.com/owner-next.html?social=ig"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?social=wa",
+        "url": "https://arledscreen.com/owner-next.html?social=wa"
       }
     ]
   },

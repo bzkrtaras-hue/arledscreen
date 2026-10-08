@@ -3,9 +3,9 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/geo-status.json",
   "name": "ARLEDSCREEN GEO owner-gate status",
-  "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json). Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
+  "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json · deep /owner-next.html?social=fb|ig|wa). Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
   "url": "https://arledscreen.com/geo-status.json",
-  "dateModified": "2026-10-08T16:38:27.773Z",
+  "dateModified": "2026-10-08T16:46:59.465Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
   },
@@ -384,6 +384,26 @@
         "@type": "HowToTool",
         "name": "geo-status.json",
         "url": "https://arledscreen.com/geo-status.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "social.json",
+        "url": "https://arledscreen.com/social.json"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?social=fb",
+        "url": "https://arledscreen.com/owner-next.html?social=fb"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?social=ig",
+        "url": "https://arledscreen.com/owner-next.html?social=ig"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html?social=wa",
+        "url": "https://arledscreen.com/owner-next.html?social=wa"
       }
     ]
   },

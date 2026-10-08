@@ -614,6 +614,9 @@ try {
     (geoStatus?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("/owner-next.html?start=1"),
     ) &&
+    (geoStatus?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("social=fb"),
+    ) &&
     String(geoStatus?.socialHandles?.facebook || "") === "arledscreenn" &&
     String(geoStatus?.socialHandles?.instagram || "") === "arledscreen" &&
     String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") &&
