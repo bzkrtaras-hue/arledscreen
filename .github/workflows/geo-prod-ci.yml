@@ -316,4 +316,8 @@ jobs:
           grep -q "Point C next paste" /tmp/geo-status.txt
           grep -q "Tur1a next:" /tmp/geo-status.txt
           grep -q "tur1a:csv" /tmp/geo-status.txt
+          grep -q "Social: FB" /tmp/geo-status.txt
+          grep -q "social=fb" /tmp/geo-status.txt
+          grep -q "social=ig" /tmp/geo-status.txt
+          grep -q "@arledscreenn" /tmp/geo-status.txt
           echo "OK owner tooling"
