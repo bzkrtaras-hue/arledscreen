@@ -24,7 +24,7 @@ Kaynak: [entity.json](https://arledscreen.com/entity.json)
 - Instagram: `@arledscreen` — [https://www.instagram.com/arledscreen/](https://www.instagram.com/arledscreen/) · owner [owner-next.html?social=ig](https://arledscreen.com/owner-next.html?social=ig)
 - Facebook: `@arledscreenn` — [https://www.facebook.com/arledscreenn](https://www.facebook.com/arledscreenn) · owner [owner-next.html?social=fb](https://arledscreen.com/owner-next.html?social=fb)
 - WhatsApp: `@arledscreen` — [wa.me/905305078834](https://wa.me/905305078834) · owner [owner-next.html?social=wa](https://arledscreen.com/owner-next.html?social=wa)
-- Sosyal makine: [social.json](https://arledscreen.com/social.json) (alias `/contact.json` · `/.well-known/social.json`) · deep `?social=fb|ig|wa&copy=1` · owner **D** = Copy pack link · **M** = WA paste
+- Sosyal makine: [social.json](https://arledscreen.com/social.json) (alias `/contact.json` · `/.well-known/social.json`) · deep `?social=fb|ig|wa&copy=1` · owner **D** = Copy pack link · **M** = WA paste · **E** = Mail paste
 - LinkedIn: [https://www.linkedin.com/company/arleds](https://www.linkedin.com/company/arleds) — şirket slug’ı `arleds`; **web sitesi değildir** (`arleds.com` ≠ LinkedIn)
 - Kurucu: Aras Bozkurt — [profil](https://arledscreen.com/tr/about/aras-bozkurt/) · [EN founder](https://arledscreen.com/en/about/aras-bozkurt/) · [LinkedIn](https://www.linkedin.com/in/bozkurtaras)
 - Ayrıntılı metin: [https://arledscreen.com/llms-full.txt](https://arledscreen.com/llms-full.txt)

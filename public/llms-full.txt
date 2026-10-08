@@ -24,7 +24,7 @@
 - E-posta: arled@arledscreen.com
 - Web sitesi: https://arledscreen.com
 - Makinece entity (NAP / cite): https://arledscreen.com/entity.json
-- Sosyal handle makinesi: https://arledscreen.com/social.json (alias `/contact.json` · `/.well-known/social.json`) · deep https://arledscreen.com/owner-next.html?social=fb|ig|wa&copy=1 · owner **D** = Copy pack link · **M** = WA paste
+- Sosyal handle makinesi: https://arledscreen.com/social.json (alias `/contact.json` · `/.well-known/social.json`) · deep https://arledscreen.com/owner-next.html?social=fb|ig|wa&copy=1 · owner **D** = Copy pack link · **M** = WA paste · **E** = Mail paste
 - AI discovery pointer: https://arledscreen.com/ai.txt (kısa feed listesi; arleds.com atıf kaynağı değildir)
 - Fiyat hesaplayıcı: https://fiyat.arledscreen.com/ (sitede: https://arledscreen.com/tr/hesaplayici/ · EN: https://arledscreen.com/en/hesaplayici/ — same 12 panel USD Product/Offer graph; canonical SKU PDPs stay `/tr/products/...`)
 - Teklif: https://arledscreen.com/tr/quote/ · EN: https://arledscreen.com/en/quote/ (12 panel Product/Offer JSON-LD + price-source feeds)

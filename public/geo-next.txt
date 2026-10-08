@@ -1,7 +1,3 @@
-
-> nxtionstar-platform@0.1.0 geo:next
-> node scripts/geo-next.mjs
-
 === ARLEDSCREEN GEO next (Point C paste) ===
 Priority gate: Point C · 0/11 acked
 After paste: npm run point-c:ack

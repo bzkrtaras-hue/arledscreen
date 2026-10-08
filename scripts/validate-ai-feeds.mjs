@@ -2380,9 +2380,10 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("social=wa") ||
       !agentsMdLive.includes("/social.json") ||
       !agentsMdLive.includes("Copy pack link") ||
-      !agentsMdLive.includes("WA paste")
+      !agentsMdLive.includes("WA paste") ||
+      !agentsMdLive.includes("Mail paste")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + WA paste");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + WA paste + Mail paste");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2693,6 +2694,7 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("mail-paste-share") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mail paste") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "e"') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("selectPasteForNext") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packDeepLinkUrl(key)") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Deep/WA paste") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open×") ||
