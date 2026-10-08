@@ -433,6 +433,17 @@ if (fs.existsSync(outDir)) {
     "/tr/llms.txt",
     "/.well-known/ai-shopping.json",
     "/organization",
+    "/brand",
+    "/modules",
+    "/product",
+    "/offer",
+    "/dataset",
+    "/panels",
+    "/.well-known/offer.json",
+    "/.well-known/dataset.json",
+    "/.well-known/ai.txt",
+    "/.well-known/llms.txt",
+    "/.well-known/llms-full.txt",
   ]) {
     if (!ard.robotsPolicy.allow.includes(must)) {
       console.error(`❌ ard.json robotsPolicy.allow must include ${must}`);
@@ -443,9 +454,13 @@ if (fs.existsSync(outDir)) {
     !String(ard?.agentic?.resources?.apiCatalog?.url || "").includes("/api/catalog.json") ||
     !Array.isArray(ard?.agentic?.resources?.localeInvent?.pricedPanels) ||
     !JSON.stringify(ard.agentic.resources.localeInvent.pricedPanels).includes("/en/pricing.json") ||
-    !JSON.stringify(ard.agentic.resources.localeInvent.discovery || []).includes("/agent.json")
+    !JSON.stringify(ard.agentic.resources.localeInvent.discovery || []).includes("/agent.json") ||
+    !String(ard?.agentic?.resources?.datasetJson?.url || "").includes("/dataset.json") ||
+    !String(ard?.agentic?.resources?.productsJson?.url || "").includes("/products.json") ||
+    !String(ard?.agentic?.resources?.brandExtless?.url || "").includes("/brand") ||
+    !String(ard?.agentic?.resources?.modulesExtless?.url || "").includes("/modules")
   ) {
-    console.error("❌ ard.json must expose resources.apiCatalog + localeInvent pricedPanels/discovery");
+    console.error("❌ ard.json must expose resources.apiCatalog + localeInvent + datasetJson/productsJson/brandExtless/modulesExtless");
     process.exit(1);
   }
   if (!ard?.agentic?.cite?.en?.oneLiner) {
@@ -3850,6 +3865,17 @@ if (fs.existsSync(outDir)) {
     "/en/pricing/",
     "/en/price/",
     "/en/cost/",
+    "`https://${HOST}/brand`",
+    "`https://${HOST}/modules`",
+    "`https://${HOST}/product`",
+    "`https://${HOST}/entity-profiles`",
+    "`https://${HOST}/llms-full`",
+    "`https://${HOST}/api/mpn`",
+    "`https://${HOST}/api/catalog.json`",
+    "`https://${HOST}/api/products`",
+    "`https://${HOST}/en/feed.json`",
+    "`https://${HOST}/tr/feed.json`",
+    "`https://${HOST}/.well-known/security`",
   ]) {
     if (!indexNowScript.includes(must)) {
       console.error(`❌ submit-indexnow.mjs must include ${must}`);
@@ -4328,6 +4354,17 @@ for (const must of [
   "/point-c.txt",
   "/point-c-en.txt",
   "/.well-known/point-c.txt",
+  "/brand",
+  "/modules",
+  "/product",
+  "/entity-profiles",
+  "/llms-full",
+  "/tr/prices.json",
+  "/tr/catalog.json",
+  "/tr/entity.json",
+  "/tr/ai-shopping.json",
+  "/en/feed.json",
+  "/tr/feed.json",
 ]) {
   if (!robotsFnBody.includes(must)) {
     console.error(`❌ functions/robots.txt.js must Allow ${must}`);

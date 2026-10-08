@@ -349,11 +349,20 @@ else fail("ard.resources.pointC");
     Array.isArray(res.localeInvent?.pricedPanels) &&
     JSON.stringify(res.localeInvent?.pricedPanels || []).includes("/en/pricing.json") &&
     JSON.stringify(res.localeInvent?.discovery || []).includes("/agent.json") &&
+    String(res.datasetJson?.url || "").includes("/dataset.json") &&
+    String(res.productsJson?.url || "").includes("/products.json") &&
+    String(res.brandExtless?.url || "").includes("/brand") &&
+    String(res.modulesExtless?.url || "").includes("/modules") &&
     allow.includes("/en/pricing.json") &&
     allow.includes("/en/entity.json") &&
     allow.includes("/api/products") &&
     allow.includes("/.well-known/ai-shopping.json") &&
-    allow.includes("/organization")
+    allow.includes("/organization") &&
+    allow.includes("/brand") &&
+    allow.includes("/modules") &&
+    allow.includes("/product") &&
+    allow.includes("/offer") &&
+    allow.includes("/.well-known/llms-full.txt")
   ) {
     ok("ard invent allow + resources modules/sku + agents/security + aiShopping invent");
   } else fail("ard invent allow + resources modules/sku + agents/security + aiShopping invent");

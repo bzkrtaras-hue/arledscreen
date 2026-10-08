@@ -731,6 +731,43 @@
           "https://arledscreen.com/tr/ai.txt",
           "https://arledscreen.com/agent.json"
         ]
+      },
+      "datasetJson": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/dataset.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of ai-shopping.json (dataset synonym)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "extensionless": "https://arledscreen.com/dataset",
+        "wellKnown": "https://arledscreen.com/.well-known/dataset.json"
+      },
+      "productsJson": {
+        "type": "Catalog invent alias",
+        "url": "https://arledscreen.com/products.json",
+        "format": "application/ld+json",
+        "description": "Byte-identical inventable alias of catalog.json (products synonym)",
+        "canonical": "https://arledscreen.com/catalog.json",
+        "extensionless": "https://arledscreen.com/products",
+        "product": "https://arledscreen.com/product.json",
+        "productExtless": "https://arledscreen.com/product",
+        "wellKnown": "https://arledscreen.com/.well-known/products.json"
+      },
+      "brandExtless": {
+        "type": "Brand invent alias",
+        "url": "https://arledscreen.com/brand",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of brand.json (Pages Function; /brand/* assets intact)",
+        "canonical": "https://arledscreen.com/brand.json",
+        "wellKnown": "https://arledscreen.com/.well-known/brand.json"
+      },
+      "modulesExtless": {
+        "type": "Price feed invent alias",
+        "url": "https://arledscreen.com/modules",
+        "format": "application/ld+json",
+        "description": "Extensionless inventable alias of ai-shopping.json (Pages Function; /modules/* image assets intact)",
+        "canonical": "https://arledscreen.com/ai-shopping.json",
+        "modulesJson": "https://arledscreen.com/modules.json",
+        "wellKnown": "https://arledscreen.com/.well-known/modules.json"
       }
     },
     "cite": {
@@ -911,7 +948,37 @@
       "/ai-shopping",
       "/entity-profiles",
       "/llms",
-      "/llms-full"
+      "/llms-full",
+      "/offer",
+      "/offers",
+      "/dataset",
+      "/feed",
+      "/panels",
+      "/mpn",
+      "/merchant",
+      "/sku",
+      "/catalog",
+      "/entity",
+      "/brand",
+      "/modules",
+      "/products",
+      "/product",
+      "/geo-baseline",
+      "/offers.json",
+      "/company.json",
+      "/nap.json",
+      "/.well-known/offer.json",
+      "/.well-known/offers.json",
+      "/.well-known/dataset.json",
+      "/.well-known/feed.json",
+      "/.well-known/product.json",
+      "/.well-known/company.json",
+      "/.well-known/nap.json",
+      "/.well-known/about.json",
+      "/.well-known/faqs.json",
+      "/.well-known/ai.txt",
+      "/.well-known/llms.txt",
+      "/.well-known/llms-full.txt"
     ],
     "disallow": []
   },
