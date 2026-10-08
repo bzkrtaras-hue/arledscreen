@@ -16,6 +16,8 @@ const repoRoot = path.resolve(__dirname, "..");
 const progressPath = path.join(repoRoot, "docs/geo/observations/point-c-progress.json");
 const POINT_C_STEPS = 11;
 
+const HOWTO_FOOTER = `HowTo: https://arledscreen.com/point-c.json → potentialAction · https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/point-c-progress.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction`;
+
 function runNode(scriptRel, args = []) {
   return spawnSync(process.execPath, [path.join(repoRoot, scriptRel), ...args], {
     encoding: "utf8",
@@ -34,6 +36,12 @@ function ackedCount() {
   }
 }
 
+function finish(code = 0) {
+  console.log("");
+  console.log(HOWTO_FOOTER);
+  process.exit(code);
+}
+
 const acked = ackedCount();
 
 if (acked < POINT_C_STEPS) {
@@ -45,7 +53,7 @@ if (acked < POINT_C_STEPS) {
   const next = runNode("scripts/print-point-c-packs.mjs", ["--next"]);
   process.stdout.write(String(next.stdout || ""));
   if (next.status !== 0) process.stderr.write(String(next.stderr || ""));
-  process.exit(next.status === 0 ? 0 : next.status || 1);
+  finish(next.status === 0 ? 0 : next.status || 1);
 }
 
 const probe = runNode("scripts/verify-arleds-301.mjs");
@@ -74,7 +82,7 @@ if (probe.status !== 0) {
     console.log("");
   }
   console.log("Verify: npm run verify:arleds-301 · docs/ops/arleds-301-hostinger.md");
-  process.exit(0);
+  finish(0);
 }
 
 const tur1a = runNode("scripts/tur1a-matrix.mjs", ["--next"]);
@@ -91,11 +99,11 @@ if (tur1a.status === 0 && turOut && !done) {
   console.log("CSV: npm run tur1a:csv");
   console.log("");
   console.log(turOut);
-  process.exit(0);
+  finish(0);
 }
 
 console.log("=== ARLEDSCREEN GEO next (PR merge) ===");
 console.log("Priority gate: merge PR #60 cursor/geo-prod-guard-5666 → main");
 console.log("Status: npm run geo:status · invent: npm run invent:smoke");
 console.log("Target: day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores");
-process.exit(0);
+finish(0);

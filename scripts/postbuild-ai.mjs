@@ -48,6 +48,7 @@ function ensureOwnerFrictionDescription(desc) {
   if (!out.includes("/point-c.json")) out = `${out} Machine next: ${SITE_URL}/point-c.json → next + potentialAction.`;
   out = out.replaceAll(`${SITE_URL}/point-c.json → next.`, `${SITE_URL}/point-c.json → next + potentialAction.`);
   out = out.replaceAll(`${SITE_URL}/point-c.json → next ·`, `${SITE_URL}/point-c.json → next + potentialAction ·`);
+  out = out.replaceAll(`${SITE_URL}/point-c.json → next (`, `${SITE_URL}/point-c.json → next + potentialAction (`);
   if (!out.includes("/point-c-progress.json")) {
     out = `${out} Progress: ${SITE_URL}/point-c-progress.json → potentialAction.`;
   }
@@ -55,6 +56,7 @@ function ensureOwnerFrictionDescription(desc) {
   if (!out.includes("/tur1a.json")) out = `${out} Tur1a: ${SITE_URL}/tur1a.json → potentialAction.`;
   out = out.replaceAll(`${SITE_URL}/tur1a.json → next.`, `${SITE_URL}/tur1a.json → potentialAction.`);
   out = out.replaceAll(`${SITE_URL}/tur1a.json → next ·`, `${SITE_URL}/tur1a.json → potentialAction ·`);
+  out = out.replaceAll(`${SITE_URL}/tur1a.json → next (`, `${SITE_URL}/tur1a.json → potentialAction (`);
   if (!out.includes("potentialAction")) {
     out = `${out} Follow potentialAction HowTo on geo-status / point-c-progress / tur1a.`;
   }
@@ -2911,7 +2913,7 @@ function enrichEntityProfiles(doc) {
   };
 
   const geoNextLead =
-    "P0 next: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (packKey=directoryLong; text; Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/) · progress https://arledscreen.com/point-c-progress.json → potentialAction · status https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md";
+    "P0 next: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction (packKey=directoryLong; text; Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/) · progress https://arledscreen.com/point-c-progress.json → potentialAction · status https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md";
   const domainLead =
     "P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: Open: https://www.isimtescil.net/ · OpenAlt: Gmail draft (geo:status) · registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md";
   const checklist = Array.isArray(doc.ownerP0Checklist) ? [...doc.ownerP0Checklist] : [];
@@ -3789,7 +3791,7 @@ prices-rss: ${SITE_URL}/feeds/prices.rss
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
-owner-next: live: ${SITE_URL}/geo-next.txt · ${SITE_URL}/point-c.json → next (packKey=directoryLong; text; Open Bing/Apple) · progress: ${SITE_URL}/point-c-progress.json → potentialAction · status: ${SITE_URL}/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · tur1a: ${SITE_URL}/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
+owner-next: live: ${SITE_URL}/geo-next.txt · ${SITE_URL}/point-c.json → next + potentialAction (packKey=directoryLong; text; Open Bing/Apple) · progress: ${SITE_URL}/point-c-progress.json → potentialAction · status: ${SITE_URL}/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · tur1a: ${SITE_URL}/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 brand-json: ${SITE_URL}/brand.json
 brand-json-well-known: ${SITE_URL}/.well-known/brand.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/

@@ -246,12 +246,17 @@ if (
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/.well-known/security.txt")) &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/llms-full.txt")) &&
   String(agents?.description || "").includes("point-c:csv") &&
+  String(agents?.description || "").includes("potentialAction") &&
   String(agents?.ownerNext || "").includes("point-c:csv") &&
+  String(agents?.ownerNext || "").includes("potentialAction") &&
+  String(agents?.ownerNext || "").includes("/point-c-progress.json") &&
+  JSON.stringify(agents.isBasedOn || []).includes("/point-c-progress.json") &&
+  JSON.stringify(agents.distribution || []).includes("/geo-status.json") &&
   String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") &&
   String(agents?.ownerNext || "").includes("https://chatgpt.com/")
 ) {
-  ok(`agents.json ×${agents.itemListElement.length} incl #website + security + llms-full + point-c:csv Open`);
-} else fail("agents.json ≥20 incl #website + security + llms-full + point-c:csv Open");
+  ok(`agents.json ×${agents.itemListElement.length} incl #website + security + potentialAction HowTo invent`);
+} else fail("agents.json ≥20 incl #website + security + potentialAction HowTo invent");
 
 try {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
@@ -480,6 +485,9 @@ try {
     geoStatus?.gates?.tur1a &&
     geoNext.includes("GEO next") &&
     geoNext.includes("Open:") &&
+    geoNext.includes("potentialAction") &&
+    geoNext.includes("/point-c.json") &&
+    geoNext.includes("/geo-status.json") &&
     String(pointCNext.packKey || "") === "directoryLong" &&
     String(pointCNext.text || "").includes("34245") &&
     String(pointCNext.open || "").includes("bingplaces.com") &&

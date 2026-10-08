@@ -686,11 +686,14 @@ if (fs.existsSync(outDir)) {
       !String(pcRes?.ownerNext || "").includes("geo:next") ||
       !String(pcRes?.ownerNext || "").includes("geo:ack") ||
       !String(pcRes?.ownerNext || "").includes("point-c:csv") ||
+      !String(pcRes?.ownerNext || "").includes("potentialAction") ||
+      !String(pcRes?.ownerNext || "").includes("/point-c-progress.json") ||
+      !String(pcRes?.howToPath || "").includes("potentialAction") ||
       !String(pcRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
       !String(pcRes?.ownerNext || "").includes("https://business.google.com/") ||
       !String(pcRes?.ownerNext || "").includes("https://chatgpt.com/")
     ) {
-      console.error("❌ ard.json entityProfiles/geoBaseline/pointC must cite geo:next/ack + point-c:csv + Open tabs (isimtescil/GBP/chatgpt) + invent distribution");
+      console.error("❌ ard.json entityProfiles/geoBaseline/pointC must cite geo:next/ack + potentialAction HowTo + point-c:csv + Open tabs + invent distribution");
       process.exit(1);
     }
     if (!JSON.stringify(ardBrand?.subjectOf || []).includes("/point-c.txt")) {
@@ -2324,6 +2327,9 @@ if (fs.existsSync(outDir)) {
       !geoStatus?.gates?.tur1a ||
       !geoNext.includes("GEO next") ||
       !geoNext.includes("Open:") ||
+      !geoNext.includes("potentialAction") ||
+      !geoNext.includes("/point-c.json") ||
+      !geoNext.includes("/geo-status.json") ||
       !String(pointCNext.packKey || "") ||
       !String(pointCNext.text || "") ||
       !String(pointCNext.open || "") ||
@@ -2379,15 +2385,24 @@ if (fs.existsSync(outDir)) {
     !String(agents?.description || "").includes("geo:ack") ||
     !String(agents?.description || "").includes("#website") ||
     !String(agents?.description || "").includes("point-c:csv") ||
+    !String(agents?.description || "").includes("potentialAction") ||
     !String(agents?.description || "").includes("https://www.isimtescil.net/") ||
     !String(agents?.description || "").includes("https://business.google.com/") ||
     !String(agents?.description || "").includes("https://chatgpt.com/") ||
     !String(agents?.ownerNext || "").includes("point-c:csv") ||
+    !String(agents?.ownerNext || "").includes("potentialAction") ||
+    !String(agents?.ownerNext || "").includes("/point-c-progress.json") ||
     !String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") ||
     !String(agents?.ownerNext || "").includes("https://business.google.com/") ||
-    !String(agents?.ownerNext || "").includes("https://chatgpt.com/")
+    !String(agents?.ownerNext || "").includes("https://chatgpt.com/") ||
+    !JSON.stringify(agents.isBasedOn || []).includes("/point-c.json") ||
+    !JSON.stringify(agents.isBasedOn || []).includes("/point-c-progress.json") ||
+    !JSON.stringify(agents.isBasedOn || []).includes("/geo-status.json") ||
+    !JSON.stringify(agents.isBasedOn || []).includes("/tur1a.json") ||
+    !JSON.stringify(agents.distribution || []).includes("/point-c-progress.json") ||
+    !JSON.stringify(agents.distribution || []).includes("/geo-status.json")
   ) {
-    console.error("❌ agents.json description/ownerNext must cite geo:next/ack + #website + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
+    console.error("❌ agents.json description/ownerNext must cite potentialAction HowTo + geo:next/ack + #website + point-c:csv Open tabs + gate invent joins");
     process.exit(1);
   }
   if (!Array.isArray(agents.itemListElement) || agents.itemListElement.length < 20) {
