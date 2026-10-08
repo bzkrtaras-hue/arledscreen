@@ -2629,11 +2629,17 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyRemaining") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildRemainingPasteBundle") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyOpenRemaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open remaining") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("undo-pasted") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doUndoPasted") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("unmarkPasted") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("dblclick") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log+next/open-remaining/copy-remaining/dblclick/mailto required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log+next/open-remaining/copy-remaining/copy-open-remaining/undo/dblclick/mailto required");
       process.exit(1);
     }
     {
