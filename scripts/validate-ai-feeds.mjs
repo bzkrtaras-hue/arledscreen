@@ -765,9 +765,14 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/dataset.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/feed.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/dataset.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/feed.json")
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/feed.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/products.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/product.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/products.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/product.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/catalog.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price/offer/dataset/feed + #website");
+    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price/offer/dataset/feed/products + #website");
     process.exit(1);
   }
   if (
@@ -2113,6 +2118,11 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('href="https://arledscreen.com/feed.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/dataset.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/feed.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/products.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/product.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/products.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/product.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/catalog.json"') ||
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
@@ -2228,6 +2238,11 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/feed.json") ||
     !headersLive.includes("/.well-known/dataset.json") ||
     !headersLive.includes("/.well-known/feed.json") ||
+    !headersLive.includes("/products.json") ||
+    !headersLive.includes("/product.json") ||
+    !headersLive.includes("/.well-known/products.json") ||
+    !headersLive.includes("/.well-known/product.json") ||
+    !headersLive.includes("/.well-known/catalog.json") ||
     !headersLive.includes("/.well-known/ard.json") ||
     !headersLive.includes("humans.txt") ||
     !headersLive.includes("/.well-known/security.txt") ||
@@ -2291,6 +2306,11 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/feed.json"',
       'href="https://arledscreen.com/.well-known/dataset.json"',
       'href="https://arledscreen.com/.well-known/feed.json"',
+      'href="https://arledscreen.com/products.json"',
+      'href="https://arledscreen.com/product.json"',
+      'href="https://arledscreen.com/.well-known/products.json"',
+      'href="https://arledscreen.com/.well-known/product.json"',
+      'href="https://arledscreen.com/.well-known/catalog.json"',
       'href="https://arledscreen.com/#website"',
       'href="https://arledscreen.com/feeds/prices.rss"',
       'rel="describedby"',
@@ -2722,6 +2742,13 @@ if (fs.existsSync(outDir)) {
   for (const rel of [".well-known/offer.json", ".well-known/offers.json", "offers.json", "dataset.json", "feed.json", ".well-known/dataset.json", ".well-known/feed.json"]) {
     if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
       console.error(`❌ out/${rel} must match ai-shopping.json`);
+      process.exit(1);
+    }
+  }
+  const canonCatalogForSyn = fs.readFileSync(path.join(outDir, "catalog.json"));
+  for (const rel of [".well-known/products.json", ".well-known/product.json", ".well-known/catalog.json"]) {
+    if (!fs.readFileSync(path.join(outDir, rel)).equals(canonCatalogForSyn)) {
+      console.error(`❌ out/${rel} must match catalog.json`);
       process.exit(1);
     }
   }
@@ -3650,6 +3677,8 @@ if (fs.existsSync(outDir)) {
     "/.well-known/offers.json",
     "/.well-known/dataset.json",
     "/.well-known/feed.json",
+    "/.well-known/products.json",
+    "/.well-known/product.json",
     "/.well-known/cite.json",
     "/.well-known/faq.json",
     "/.well-known/organization.json",

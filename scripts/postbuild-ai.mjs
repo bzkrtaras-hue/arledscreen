@@ -903,6 +903,36 @@ function buildAiShopping() {
       {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/products.json`,
+        name: "Products catalog invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/product.json`,
+        name: "Product catalog invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/products.json`,
+        name: "Products well-known catalog invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/product.json`,
+        name: "Product well-known catalog invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/catalog.json`,
+        name: "Catalog well-known invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/catalog.json`,
       },
       {
@@ -1120,6 +1150,11 @@ function buildAiShopping() {
         `${SITE_URL}/.well-known/offers.json`,
         `${SITE_URL}/.well-known/dataset.json`,
         `${SITE_URL}/.well-known/feed.json`,
+        `${SITE_URL}/products.json`,
+        `${SITE_URL}/product.json`,
+        `${SITE_URL}/.well-known/products.json`,
+        `${SITE_URL}/.well-known/product.json`,
+        `${SITE_URL}/.well-known/catalog.json`,
         `${SITE_URL}/.well-known/ai-shopping.json`,
         `${SITE_URL}/modules.json`,
         `${SITE_URL}/sku.json`,
@@ -1456,6 +1491,11 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/feed.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/dataset.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/feed.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/products.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/product.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/products.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/product.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/catalog.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/agents.json" rel="related" type="application/ld+json"/>
@@ -1757,6 +1797,36 @@ function inventAliasDistributionEntries() {
       contentUrl: `${SITE_URL}/.well-known/feed.json`,
       name: "Feed well-known pricedPanels invent alias",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/products.json`,
+      name: "Products catalog invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/product.json`,
+      name: "Product catalog invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/products.json`,
+      name: "Products well-known catalog invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/product.json`,
+      name: "Product well-known catalog invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/catalog.json`,
+      name: "Catalog well-known invent alias",
+    },
     ...discoveryDistributionEntries(),
   ];
 }
@@ -1833,6 +1903,11 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/feed.json`,
     `${SITE_URL}/.well-known/dataset.json`,
     `${SITE_URL}/.well-known/feed.json`,
+    `${SITE_URL}/products.json`,
+    `${SITE_URL}/product.json`,
+    `${SITE_URL}/.well-known/products.json`,
+    `${SITE_URL}/.well-known/product.json`,
+    `${SITE_URL}/.well-known/catalog.json`,
     ...discoveryBasedOnUrls(),
   ];
 }
@@ -2666,6 +2741,11 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       feedJson: `${SITE_URL}/feed.json`,
       datasetWellKnown: `${SITE_URL}/.well-known/dataset.json`,
       feedWellKnown: `${SITE_URL}/.well-known/feed.json`,
+      productsJson: `${SITE_URL}/products.json`,
+      productJson: `${SITE_URL}/product.json`,
+      productsWellKnown: `${SITE_URL}/.well-known/products.json`,
+      productWellKnown: `${SITE_URL}/.well-known/product.json`,
+      catalogWellKnown: `${SITE_URL}/.well-known/catalog.json`,
       offer: `${SITE_URL}/offer`,
       offers: `${SITE_URL}/offers`,
       dataset: `${SITE_URL}/dataset`,
@@ -2885,6 +2965,8 @@ function writeFeedPathAliases(dir) {
     ["entity.json", ".well-known/nap.json"],
     ["entity.json", ".well-known/about.json"],
     ["catalog.json", ".well-known/catalog.json"],
+    ["catalog.json", ".well-known/products.json"],
+    ["catalog.json", ".well-known/product.json"],
     ["catalog.json", "api/catalog.json"],
     ["geo-baseline.json", "geo-baseline"],
     ["geo-baseline.json", "en/geo-baseline.json"],
@@ -3241,6 +3323,9 @@ feed-alias-dataset-json: ${SITE_URL}/dataset.json
 feed-alias-feed-json: ${SITE_URL}/feed.json
 feed-alias-well-known-dataset: ${SITE_URL}/.well-known/dataset.json
 feed-alias-well-known-feed: ${SITE_URL}/.well-known/feed.json
+feed-alias-well-known-products: ${SITE_URL}/.well-known/products.json
+feed-alias-well-known-product: ${SITE_URL}/.well-known/product.json
+feed-alias-well-known-catalog: ${SITE_URL}/.well-known/catalog.json
 feed-alias-offer: ${SITE_URL}/offer
 feed-alias-offers: ${SITE_URL}/offers
 feed-alias-dataset: ${SITE_URL}/dataset
@@ -3619,6 +3704,9 @@ Acknowledgments: https://arledscreen.com/brand.json
     ".well-known/offers.json",
     ".well-known/dataset.json",
     ".well-known/feed.json",
+    ".well-known/products.json",
+    ".well-known/product.json",
+    ".well-known/catalog.json",
     ".well-known/entity.json",
     ".well-known/cite.json",
     ".well-known/faq.json",
@@ -3627,7 +3715,6 @@ Acknowledgments: https://arledscreen.com/brand.json
     ".well-known/company.json",
     ".well-known/nap.json",
     ".well-known/about.json",
-    ".well-known/catalog.json",
     ".well-known/llms-full.txt",
     "organization.json",
     "company.json",

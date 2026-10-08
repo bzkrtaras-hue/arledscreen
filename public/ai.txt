@@ -186,6 +186,9 @@ feed-alias-dataset-json: https://arledscreen.com/dataset.json
 feed-alias-feed-json: https://arledscreen.com/feed.json
 feed-alias-well-known-dataset: https://arledscreen.com/.well-known/dataset.json
 feed-alias-well-known-feed: https://arledscreen.com/.well-known/feed.json
+feed-alias-well-known-products: https://arledscreen.com/.well-known/products.json
+feed-alias-well-known-product: https://arledscreen.com/.well-known/product.json
+feed-alias-well-known-catalog: https://arledscreen.com/.well-known/catalog.json
 feed-alias-offer: https://arledscreen.com/offer
 feed-alias-offers: https://arledscreen.com/offers
 feed-alias-dataset: https://arledscreen.com/dataset

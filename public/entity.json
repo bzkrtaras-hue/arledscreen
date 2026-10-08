@@ -84,7 +84,12 @@
     "https://arledscreen.com/about.json",
     "https://arledscreen.com/.well-known/company.json",
     "https://arledscreen.com/.well-known/nap.json",
-    "https://arledscreen.com/.well-known/about.json"
+    "https://arledscreen.com/.well-known/about.json",
+    "https://arledscreen.com/products.json",
+    "https://arledscreen.com/product.json",
+    "https://arledscreen.com/.well-known/products.json",
+    "https://arledscreen.com/.well-known/product.json",
+    "https://arledscreen.com/.well-known/catalog.json"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3456,7 +3461,12 @@
     "https://arledscreen.com/about.json",
     "https://arledscreen.com/.well-known/company.json",
     "https://arledscreen.com/.well-known/nap.json",
-    "https://arledscreen.com/.well-known/about.json"
+    "https://arledscreen.com/.well-known/about.json",
+    "https://arledscreen.com/products.json",
+    "https://arledscreen.com/product.json",
+    "https://arledscreen.com/.well-known/products.json",
+    "https://arledscreen.com/.well-known/product.json",
+    "https://arledscreen.com/.well-known/catalog.json"
   ],
   "distribution": [
     {
@@ -3725,6 +3735,36 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/about.json",
       "name": "Organization about well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/products.json",
+      "name": "Products catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/product.json",
+      "name": "Product catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/products.json",
+      "name": "Products well-known catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/product.json",
+      "name": "Product well-known catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/catalog.json",
+      "name": "Catalog well-known invent alias"
     }
   ]
 }

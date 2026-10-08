@@ -127,6 +127,11 @@ if (
   rss.includes('href="https://arledscreen.com/feed.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/dataset.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/feed.json"') &&
+  rss.includes('href="https://arledscreen.com/products.json"') &&
+  rss.includes('href="https://arledscreen.com/product.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/products.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/product.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/catalog.json"') &&
   rss.includes("/entity-profiles.json") &&
   rss.includes("/.well-known/brand.json") &&
   rss.includes("/.well-known/entity.json") &&
@@ -456,6 +461,9 @@ if (
     brandSame.includes("/.well-known/offer.json") &&
     brandSame.includes("/dataset.json") &&
     brandSame.includes("/.well-known/dataset.json") &&
+    brandSame.includes("/products.json") &&
+    brandSame.includes("/.well-known/products.json") &&
+    brandSame.includes("/.well-known/catalog.json") &&
     brandSame.includes("/.well-known/ard.json") &&
     brandSame.includes("/ai.txt") &&
     brandSame.includes("/.well-known/security.txt") &&
@@ -466,6 +474,9 @@ if (
     catSame.includes("/.well-known/offers.json") &&
     catSame.includes("/feed.json") &&
     catSame.includes("/.well-known/feed.json") &&
+    catSame.includes("/products.json") &&
+    catSame.includes("/.well-known/products.json") &&
+    catSame.includes("/.well-known/catalog.json") &&
     catSame.includes("/llms.txt") &&
     catSame.includes("/.well-known/security.txt") &&
     entSame.includes("/ai-shopping.json") &&
@@ -481,6 +492,9 @@ if (
     entSame.includes("/.well-known/offer.json") &&
     entSame.includes("/dataset.json") &&
     entSame.includes("/.well-known/dataset.json") &&
+    entSame.includes("/products.json") &&
+    entSame.includes("/.well-known/products.json") &&
+    entSame.includes("/.well-known/catalog.json") &&
     entSame.includes("/cite.json") &&
     entSame.includes("/.well-known/cite.json") &&
     entSame.includes("/.well-known/faq.json") &&
@@ -521,6 +535,11 @@ if (
     dist.includes("/feed.json") &&
     dist.includes("/.well-known/dataset.json") &&
     dist.includes("/.well-known/feed.json") &&
+    dist.includes("/products.json") &&
+    dist.includes("/product.json") &&
+    dist.includes("/.well-known/products.json") &&
+    dist.includes("/.well-known/product.json") &&
+    dist.includes("/.well-known/catalog.json") &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -618,6 +637,9 @@ if (
   JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/offer.json") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/dataset.json") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/dataset.json") &&
+  JSON.stringify(brand?.isBasedOn || []).includes("/products.json") &&
+  JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/products.json") &&
+  JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/catalog.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/modules.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/panels.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/mpn.json") &&
@@ -625,10 +647,13 @@ if (
   JSON.stringify(brand?.distribution || []).includes("/offer.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/offer.json") &&
   JSON.stringify(brand?.distribution || []).includes("/dataset.json") &&
-  JSON.stringify(brand?.distribution || []).includes("/.well-known/dataset.json")
+  JSON.stringify(brand?.distribution || []).includes("/.well-known/dataset.json") &&
+  JSON.stringify(brand?.distribution || []).includes("/products.json") &&
+  JSON.stringify(brand?.distribution || []).includes("/.well-known/products.json") &&
+  JSON.stringify(brand?.distribution || []).includes("/.well-known/catalog.json")
 ) {
-  ok("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant/offer/dataset + #website");
-} else fail("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant/offer/dataset + #website");
+  ok("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant/offer/dataset/products + #website");
+} else fail("brand.subjectOf+distribution+isBasedOn → inventAlias panels/mpn/merchant/offer/dataset/products + #website");
 
 {
   const related = JSON.stringify(cat?.isRelatedTo || []);
@@ -667,10 +692,16 @@ if (
     dist.includes("/dataset.json") &&
     dist.includes("/feed.json") &&
     dist.includes("/.well-known/dataset.json") &&
-    dist.includes("/.well-known/feed.json")
+    dist.includes("/.well-known/feed.json") &&
+    dist.includes("/products.json") &&
+    dist.includes("/.well-known/products.json") &&
+    dist.includes("/.well-known/catalog.json") &&
+    based.includes("/products.json") &&
+    based.includes("/.well-known/products.json") &&
+    based.includes("/.well-known/catalog.json")
   ) {
-    ok("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed + #website");
-  } else fail("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed + #website");
+    ok("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed/products + #website");
+  } else fail("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed/products + #website");
 }
 
 {
@@ -745,13 +776,18 @@ if (
     String(disc.feedJson || "").includes("/feed.json") &&
     String(disc.datasetWellKnown || "").includes("/.well-known/dataset.json") &&
     String(disc.feedWellKnown || "").includes("/.well-known/feed.json") &&
+    String(disc.productsJson || "").includes("/products.json") &&
+    String(disc.productJson || "").includes("/product.json") &&
+    String(disc.productsWellKnown || "").includes("/.well-known/products.json") &&
+    String(disc.productWellKnown || "").includes("/.well-known/product.json") &&
+    String(disc.catalogWellKnown || "").includes("/.well-known/catalog.json") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
     merchantPack.includes("/.well-known/modules.json")
   ) {
-    ok("geo discovery invent well-known modules/sku/pricing/offer/brand/entity/#website");
-  } else fail("geo discovery invent well-known modules/sku/pricing/offer/brand/entity/#website");
+    ok("geo discovery invent well-known modules/sku/pricing/offer/products/brand/entity/#website");
+  } else fail("geo discovery invent well-known modules/sku/pricing/offer/products/brand/entity/#website");
 }
 
 {
@@ -773,6 +809,11 @@ if (
     headers.includes("/feed.json") &&
     headers.includes("/.well-known/dataset.json") &&
     headers.includes("/.well-known/feed.json") &&
+    headers.includes("/products.json") &&
+    headers.includes("/product.json") &&
+    headers.includes("/.well-known/products.json") &&
+    headers.includes("/.well-known/product.json") &&
+    headers.includes("/.well-known/catalog.json") &&
     headers.includes("/.well-known/ard.json") &&
     headers.includes("/.well-known/agents.json") &&
     headers.includes("/humans.txt") &&

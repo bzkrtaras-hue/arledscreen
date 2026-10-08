@@ -40,6 +40,11 @@
     "https://arledscreen.com/feed.json",
     "https://arledscreen.com/.well-known/dataset.json",
     "https://arledscreen.com/.well-known/feed.json",
+    "https://arledscreen.com/products.json",
+    "https://arledscreen.com/product.json",
+    "https://arledscreen.com/.well-known/products.json",
+    "https://arledscreen.com/.well-known/product.json",
+    "https://arledscreen.com/.well-known/catalog.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
@@ -254,6 +259,36 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/products.json",
+      "name": "Products catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/product.json",
+      "name": "Product catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/products.json",
+      "name": "Products well-known catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/product.json",
+      "name": "Product well-known catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/catalog.json",
+      "name": "Catalog well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/agents.json",
       "name": "Agent Discovery Index"
     },
@@ -444,8 +479,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "a95660cd2c5844d98f36c0ac112af7298b0ba10b54aedd97574abf0023787fd1",
-    "catalogSha256": "f6a767d820169dad31450207deb490b2313f65c6a05c29ebbcd34f92a0614a65",
+    "aiShoppingSha256": "698d78b8d27e7d0135d6f32bb0dbd0f0fa051c5e2865f0e41fa9d65990f8d921",
+    "catalogSha256": "55903d13954bb9b2bb8fc736ccddc534c73c50d686ced9d5d328a2e7997484a5",
     "merchantTsvSha256": "725b3f10641e7e6ec45cee7144426471c82c9d14eddde5efabc80cc24858a9a4",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
@@ -470,6 +505,11 @@
     "feedJson": "https://arledscreen.com/feed.json",
     "datasetWellKnown": "https://arledscreen.com/.well-known/dataset.json",
     "feedWellKnown": "https://arledscreen.com/.well-known/feed.json",
+    "productsJson": "https://arledscreen.com/products.json",
+    "productJson": "https://arledscreen.com/product.json",
+    "productsWellKnown": "https://arledscreen.com/.well-known/products.json",
+    "productWellKnown": "https://arledscreen.com/.well-known/product.json",
+    "catalogWellKnown": "https://arledscreen.com/.well-known/catalog.json",
     "offer": "https://arledscreen.com/offer",
     "offers": "https://arledscreen.com/offers",
     "dataset": "https://arledscreen.com/dataset",

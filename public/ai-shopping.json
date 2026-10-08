@@ -67,6 +67,11 @@
     "https://arledscreen.com/feed.json",
     "https://arledscreen.com/.well-known/dataset.json",
     "https://arledscreen.com/.well-known/feed.json",
+    "https://arledscreen.com/products.json",
+    "https://arledscreen.com/product.json",
+    "https://arledscreen.com/.well-known/products.json",
+    "https://arledscreen.com/.well-known/product.json",
+    "https://arledscreen.com/.well-known/catalog.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
@@ -117,6 +122,11 @@
     "https://arledscreen.com/feed.json",
     "https://arledscreen.com/.well-known/dataset.json",
     "https://arledscreen.com/.well-known/feed.json",
+    "https://arledscreen.com/products.json",
+    "https://arledscreen.com/product.json",
+    "https://arledscreen.com/.well-known/products.json",
+    "https://arledscreen.com/.well-known/product.json",
+    "https://arledscreen.com/.well-known/catalog.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
@@ -1172,6 +1182,36 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/feed.json",
       "name": "Feed well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/products.json",
+      "name": "Products catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/product.json",
+      "name": "Product catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/products.json",
+      "name": "Products well-known catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/product.json",
+      "name": "Product well-known catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/catalog.json",
+      "name": "Catalog well-known invent alias"
     },
     {
       "@type": "DataDownload",
@@ -3094,6 +3134,11 @@
       "https://arledscreen.com/.well-known/offers.json",
       "https://arledscreen.com/.well-known/dataset.json",
       "https://arledscreen.com/.well-known/feed.json",
+      "https://arledscreen.com/products.json",
+      "https://arledscreen.com/product.json",
+      "https://arledscreen.com/.well-known/products.json",
+      "https://arledscreen.com/.well-known/product.json",
+      "https://arledscreen.com/.well-known/catalog.json",
       "https://arledscreen.com/.well-known/ai-shopping.json",
       "https://arledscreen.com/modules.json",
       "https://arledscreen.com/sku.json",

@@ -30,6 +30,11 @@ const DATASET_JSON_URL = `${SITE_URL}/dataset.json`;
 const FEED_JSON_URL = `${SITE_URL}/feed.json`;
 const DATASET_WELLKNOWN_URL = `${SITE_URL}/.well-known/dataset.json`;
 const FEED_WELLKNOWN_URL = `${SITE_URL}/.well-known/feed.json`;
+const PRODUCTS_JSON_URL = `${SITE_URL}/products.json`;
+const PRODUCT_JSON_URL = `${SITE_URL}/product.json`;
+const PRODUCTS_WELLKNOWN_URL = `${SITE_URL}/.well-known/products.json`;
+const PRODUCT_WELLKNOWN_URL = `${SITE_URL}/.well-known/product.json`;
+const CATALOG_WELLKNOWN_URL = `${SITE_URL}/.well-known/catalog.json`;
 const ENTITY_PROFILES_URL = `${SITE_URL}/entity-profiles.json`;
 const ORGANIZATION_JSON_URL = `${SITE_URL}/organization.json`;
 const BRAND_WELLKNOWN_URL = `${SITE_URL}/.well-known/brand.json`;
@@ -68,6 +73,11 @@ const inventAliasLdJson = [
   { url: FEED_JSON_URL, title: "Feed pricedPanels invent alias" },
   { url: DATASET_WELLKNOWN_URL, title: "Dataset well-known pricedPanels invent alias" },
   { url: FEED_WELLKNOWN_URL, title: "Feed well-known pricedPanels invent alias" },
+  { url: PRODUCTS_JSON_URL, title: "Products catalog invent alias" },
+  { url: PRODUCT_JSON_URL, title: "Product catalog invent alias" },
+  { url: PRODUCTS_WELLKNOWN_URL, title: "Products well-known catalog invent alias" },
+  { url: PRODUCT_WELLKNOWN_URL, title: "Product well-known catalog invent alias" },
+  { url: CATALOG_WELLKNOWN_URL, title: "Catalog well-known invent alias" },
 ] as const;
 
 export const aiDiscoveryMetadata: Metadata = {
