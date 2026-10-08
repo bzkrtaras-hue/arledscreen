@@ -3685,7 +3685,7 @@ function enrichAgentsOwnerGateInvent() {
   fs.writeFileSync(outAgents, body);
 }
 
-/** ARD invent — brand/geo/profiles/pointC/aiShopping/entity/agents* → owner-gate HowTo. */
+/** ARD invent — core + agents* + high-traffic entity/price/discovery/gate → owner-gate HowTo. */
 function enrichArdOwnerGateInvent() {
   const ardPath = path.join(publicDir, ".well-known", "ard.json");
   if (!fs.existsSync(ardPath)) return;
@@ -3827,6 +3827,35 @@ function enrichArdOwnerGateInvent() {
     res[key] = mergeArdUrlInvent(res[key], {
       subjectExtra: agentsGateSubject,
       distExtra: agentsGateDist,
+    });
+  }
+
+  // High-traffic ARD resources → owner-gate HowTo (entity/price/discovery/gate surfaces).
+  const highTrafficGateKeys = [
+    "localBusiness",
+    "organization",
+    "catalog",
+    "website",
+    "pricesJson",
+    "merchantFeed",
+    "pricesRss",
+    "brandJson",
+    "humansTxt",
+    "securityTxt",
+    "llmsText",
+    "llmsFullText",
+    "aiTxt",
+    "pointCEn",
+    "pointCCsv",
+    "geoStatus",
+    "geoNext",
+    "tur1a",
+    "pointCProgress",
+  ];
+  for (const key of highTrafficGateKeys) {
+    res[key] = mergeArdUrlInvent(res[key], {
+      subjectExtra: gates,
+      distExtra: coreDist,
     });
   }
 

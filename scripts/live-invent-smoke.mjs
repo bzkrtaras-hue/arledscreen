@@ -689,6 +689,25 @@ else fail("ard.resources.pointC");
       "agentsJson",
       "agentsJsonRoot",
       "agentsMd",
+      "localBusiness",
+      "organization",
+      "catalog",
+      "website",
+      "pricesJson",
+      "merchantFeed",
+      "pricesRss",
+      "brandJson",
+      "humansTxt",
+      "securityTxt",
+      "llmsText",
+      "llmsFullText",
+      "aiTxt",
+      "pointCEn",
+      "pointCCsv",
+      "geoStatus",
+      "geoNext",
+      "tur1a",
+      "pointCProgress",
     ].every((key) => {
       const blob = JSON.stringify(res[key]?.subjectOf || []) + JSON.stringify(res[key]?.distribution || []);
       return (
@@ -700,8 +719,8 @@ else fail("ard.resources.pointC");
       );
     })
   ) {
-    ok("ard invent entity/brand/geo/profiles/pointC/aiShopping/agents* owner-gate HowTo");
-  } else fail("ard invent entity/brand/geo/profiles/pointC/aiShopping/agents* owner-gate HowTo");
+    ok("ard invent high-traffic + core/agents* → owner-gate HowTo");
+  } else fail("ard invent high-traffic + core/agents* → owner-gate HowTo");
 }
 
 try {
