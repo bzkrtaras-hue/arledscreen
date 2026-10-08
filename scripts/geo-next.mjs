@@ -52,7 +52,7 @@ function finish(code = 0, htmlUrl = "https://arledscreen.com/owner-next.html") {
     "JSON twin: https://arledscreen.com/owner-next.json · aliases https://arledscreen.com/geo-next.json · https://arledscreen.com/.well-known/owner-next.json",
   );
   console.log(
-    "Social: FB https://arledscreen.com/owner-next.html?social=fb · IG https://arledscreen.com/owner-next.html?social=ig · WA https://arledscreen.com/owner-next.html?social=wa · https://arledscreen.com/social.json",
+    "Social: FB https://arledscreen.com/owner-next.html?social=fb&copy=1 · IG https://arledscreen.com/owner-next.html?social=ig&copy=1 · WA https://arledscreen.com/owner-next.html?social=wa&copy=1 · https://arledscreen.com/social.json",
   );
   console.log(HOWTO_FOOTER);
   process.exit(code);

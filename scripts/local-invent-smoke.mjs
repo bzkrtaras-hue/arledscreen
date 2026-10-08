@@ -620,6 +620,8 @@ else fail("ard.resources.pointC");
     html.includes("withCopyParam") &&
     html.includes("maybeCopyPaste") &&
     html.includes("copyQuery") &&
+    html.includes("Open×") &&
+    html.includes("activeOpens") &&
     html.includes("socialFocus") &&
     html.includes("setSocialFocus") &&
     html.includes("social=wa") &&

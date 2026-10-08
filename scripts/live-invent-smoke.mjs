@@ -596,6 +596,8 @@ try {
     ownerNextHtml.includes("withCopyParam") &&
     ownerNextHtml.includes("maybeCopyPaste") &&
     ownerNextHtml.includes("copyQuery") &&
+    ownerNextHtml.includes("Open×") &&
+    ownerNextHtml.includes("activeOpens") &&
     ownerNextHtml.includes("socialFocus") &&
     ownerNextHtml.includes("setSocialFocus") &&
     ownerNextHtml.includes("social=wa") &&
