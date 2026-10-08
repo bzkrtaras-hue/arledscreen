@@ -549,6 +549,9 @@ try {
     ownerNextHtml.includes("buildAckBatchCommand") &&
     ownerNextHtml.includes("--packs=") &&
     ownerNextHtml.includes("Copy ack batch") &&
+    ownerNextHtml.includes("next-arleds") &&
+    ownerNextHtml.includes("showArleds301") &&
+    ownerNextHtml.includes("Next: arleds 301") &&
     ownerNextHtml.includes("Mailto DNSEnable") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&

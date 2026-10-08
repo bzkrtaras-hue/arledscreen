@@ -2547,10 +2547,13 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildAckBatchCommand") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("--packs=") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy ack batch") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("next-arleds") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("showArleds301") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Next: arleds 301") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/mailto required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/mailto required");
       process.exit(1);
     }
     {

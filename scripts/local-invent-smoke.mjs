@@ -540,6 +540,9 @@ else fail("ard.resources.pointC");
     html.includes("buildAckBatchCommand") &&
     html.includes("--packs=") &&
     html.includes("Copy ack batch") &&
+    html.includes("next-arleds") &&
+    html.includes("showArleds301") &&
+    html.includes("Next: arleds 301") &&
     html.includes("Mailto DNSEnable") &&
     html.includes("packQuery") &&
     alias === html &&
