@@ -253,7 +253,8 @@ else fail("ai.txt WebSite + quote");
     agentsMd.includes("Copy pack link") &&
     agentsMd.includes("WA paste") &&
     agentsMd.includes("Mail paste") &&
-    agentsMd.includes("Deep + After")
+    agentsMd.includes("Deep + After") &&
+    agentsMd.includes("Copy After link")
   ) {
     ok("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");
   } else fail("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");
@@ -595,6 +596,10 @@ try {
     ownerNextHtml.includes("copySocialHandles") &&
     ownerNextHtml.includes("jumpToSocialPack") &&
     ownerNextHtml.includes("copyPackDeepLink") &&
+    ownerNextHtml.includes("copyPackAfterLink") &&
+    ownerNextHtml.includes("copy-after-link") &&
+    ownerNextHtml.includes("Copy After link") &&
+    ownerNextHtml.includes('e.key === "a"') &&
     ownerNextHtml.includes("packDeepLinkUrl") &&
     ownerNextHtml.includes("withCopyParam") &&
     ownerNextHtml.includes("maybeCopyPaste") &&

@@ -618,6 +618,10 @@ else fail("ard.resources.pointC");
     html.includes("copySocialHandles") &&
     html.includes("jumpToSocialPack") &&
     html.includes("copyPackDeepLink") &&
+    html.includes("copyPackAfterLink") &&
+    html.includes("copy-after-link") &&
+    html.includes("Copy After link") &&
+    html.includes('e.key === "a"') &&
     html.includes("packDeepLinkUrl") &&
     html.includes("withCopyParam") &&
     html.includes("maybeCopyPaste") &&
@@ -654,11 +658,14 @@ else fail("ard.resources.pointC");
     readText("AGENTS.md").includes("Mail paste") &&
     readText("AGENTS.md").includes("Deep + After") &&
     readText("AGENTS.md").includes("pack-list per-row Deep/After") &&
+    readText("AGENTS.md").includes("Copy After link") &&
     readText("AGENTS.md").includes("?n=1") &&
     readText("llms.txt").includes("WA paste") &&
     readText("llms.txt").includes("Mail paste") &&
+    readText("llms.txt").includes("Copy After link") &&
     readText("llms.txt").includes("Deep + After") &&
     readText("humans.txt").includes("Mail paste") &&
+    readText("humans.txt").includes("Copy After link") &&
     readText("humans.txt").includes("Deep + After") &&
     html.includes("activeOpens") &&
     html.includes("socialFocus") &&

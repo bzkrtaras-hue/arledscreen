@@ -2383,9 +2383,10 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("Copy pack link") ||
       !agentsMdLive.includes("WA paste") ||
       !agentsMdLive.includes("Mail paste") ||
-      !agentsMdLive.includes("Deep + After")
+      !agentsMdLive.includes("Deep + After") ||
+      !agentsMdLive.includes("Copy After link")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + WA paste + Mail paste + Deep + After");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + WA paste + Mail paste + Deep + After");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2679,6 +2680,10 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copySocialHandles") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("jumpToSocialPack") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copyPackDeepLink") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copyPackAfterLink") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-after-link") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy After link") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "a"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packDeepLinkUrl") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("withCopyParam") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("maybeCopyPaste") ||
