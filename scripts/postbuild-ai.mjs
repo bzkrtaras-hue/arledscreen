@@ -1015,6 +1015,8 @@ function buildAiShopping() {
       pointCEnCsv: `${SITE_URL}/feeds/point-c-en.csv`,
       pointCCsvRoot: `${SITE_URL}/point-c.csv`,
       pointCEnCsvRoot: `${SITE_URL}/point-c-en.csv`,
+      socialJson: `${SITE_URL}/social.json`,
+      socialJsonWellKnown: `${SITE_URL}/.well-known/social.json`,
       brand: `${SITE_URL}/brand.json`,
       brandWellKnown: `${SITE_URL}/.well-known/brand.json`,
       brandHub: `${SITE_URL}/tr/nxtionstar/`,
@@ -3807,6 +3809,41 @@ function enrichArdOwnerGateInvent() {
       ],
     });
   }
+
+  // Owner-confirmed social handles invent (Point C IG/FB paste targets).
+  res.socialJson = mergeArdUrlInvent(
+    {
+      ...(typeof res.socialJson === "object" && res.socialJson ? res.socialJson : null),
+      type: "Owner-confirmed social handles",
+      url: `${SITE_URL}/social.json`,
+      format: "application/ld+json",
+      description:
+        "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen. Click-to-chat https://wa.me/905305078834. Aliases /contact.json · /.well-known/social.json. Cite with Point C IG/FB packs — do not invent handles.",
+      wellKnown: `${SITE_URL}/.well-known/social.json`,
+      handles: {
+        facebook: "arledscreenn",
+        instagram: "arledscreen",
+        whatsapp: "arledscreen",
+      },
+      ownerNext: OWNER_FRICTION,
+    },
+    {
+      subjectExtra: [
+        `${SITE_URL}/social.json`,
+        `${SITE_URL}/owner-next.html?start=1`,
+        `${SITE_URL}/point-c.json`,
+        ...gates,
+      ],
+      distExtra: [
+        `${SITE_URL}/social.json`,
+        `${SITE_URL}/.well-known/social.json`,
+        `${SITE_URL}/point-c.json`,
+        `${SITE_URL}/owner-next.json`,
+        `${SITE_URL}/#website`,
+        ...gates,
+      ],
+    },
+  );
 
   res.aiShopping = mergeArdUrlInvent(res.aiShopping, {
     subjectExtra: gates,

@@ -331,7 +331,7 @@
           <button type="button" class="btn hidden" id="next-arleds" title="Advance to arleds.com 301 DNSEnable clipboard">Next: arleds 301</button>
           <button type="button" class="btn hidden" id="next-tur1a" title="Open Tur1a blind checklist">Next: Tur1a</button>
         </div>
-        <p class="actions-hint"><kbd>C</kbd> = Copy + Open remaining · <kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next · <kbd>U</kbd> = Undo pasted · <kbd>O</kbd> = Open remaining · <kbd>R</kbd> = Copy remaining · <kbd>S</kbd> = copy social handles · <kbd>B</kbd> = ack batch · <kbd>G</kbd> = arleds 301 · <kbd>T</kbd> = Tur1a · <kbd>L</kbd> = Log + next · dbl-click pack = Copy + Open</p>
+        <p class="actions-hint"><kbd>C</kbd> = Copy + Open remaining · <kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next · <kbd>U</kbd> = Undo pasted · <kbd>O</kbd> = Open remaining · <kbd>R</kbd> = Copy remaining · <kbd>S</kbd> = copy social handles · <kbd>F</kbd> = Facebook pack · <kbd>I</kbd> = Instagram pack · <kbd>B</kbd> = ack batch · <kbd>G</kbd> = arleds 301 · <kbd>T</kbd> = Tur1a · <kbd>L</kbd> = Log + next · dbl-click pack = Copy + Open</p>
         <div id="tur1a-log-chips" class="hidden" aria-label="Tur1a observation log chips">
           <div class="chip-row" data-field="mentioned">
             <span class="chip-label">mentioned</span>
@@ -1631,6 +1631,22 @@
       if (e.key === "s" || e.key === "S") {
         e.preventDefault();
         copySocialHandles();
+        return;
+      }
+      if (e.key === "f" || e.key === "F") {
+        e.preventDefault();
+        jumpToSocialPack(
+          "facebookAbout",
+          `https://www.facebook.com/${socialHandles.facebook}`,
+        );
+        return;
+      }
+      if (e.key === "i" || e.key === "I") {
+        e.preventDefault();
+        jumpToSocialPack(
+          "instagramBio",
+          `https://www.instagram.com/${socialHandles.instagram}`,
+        );
         return;
       }
       if (e.key === "b" || e.key === "B") {

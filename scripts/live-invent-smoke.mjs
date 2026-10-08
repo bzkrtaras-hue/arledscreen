@@ -574,6 +574,9 @@ try {
     ownerNextHtml.includes("copySocialHandles") &&
     ownerNextHtml.includes("jumpToSocialPack") &&
     ownerNextHtml.includes('data-pack="facebookAbout"') &&
+    ownerNextHtml.includes('data-pack="instagramBio"') &&
+    ownerNextHtml.includes('e.key === "f"') &&
+    ownerNextHtml.includes('e.key === "i"') &&
     ownerNextHtml.includes("@arledscreenn") &&
     ownerNextHtml.includes("/social.json") &&
     Array.isArray(ownerNextJson?.gates?.tur1a?.cells) &&
@@ -627,7 +630,11 @@ try {
     JSON.stringify(tur1a.sameAs || []).includes("/point-c-progress.json") &&
     (tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/geo-next.txt")) &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
-    String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
+    String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json") &&
+    String(ard?.agentic?.resources?.socialJson?.url || "").includes("/social.json") &&
+    String(ard?.agentic?.resources?.socialJson?.handles?.facebook || "") === "arledscreenn" &&
+    String(ard?.agentic?.resources?.socialJson?.handles?.instagram || "") === "arledscreen" &&
+    String(ard?.agentic?.resources?.socialJson?.handles?.whatsapp || "") === "arledscreen"
   ) {
     const progress = await getJson("/point-c-progress.json");
     const pcJsonCross = await getJson("/point-c.json");
