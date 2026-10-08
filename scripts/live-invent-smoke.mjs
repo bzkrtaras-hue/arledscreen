@@ -568,6 +568,10 @@ try {
     ownerNextHtml.includes("doOpenRemaining") &&
     ownerNextHtml.includes("Open remaining") &&
     ownerNextHtml.includes("Mailto DNSEnable") &&
+    ownerNextHtml.includes("social-handles") &&
+    ownerNextHtml.includes("copySocialHandles") &&
+    ownerNextHtml.includes("@arledscreenn") &&
+    ownerNextHtml.includes("/social.json") &&
     Array.isArray(ownerNextJson?.gates?.tur1a?.cells) &&
     ownerNextJson.gates.tur1a.cells.length >= 48 &&
     String(ownerNextJson.gates.tur1a.cells[0]?.prompt || "") &&

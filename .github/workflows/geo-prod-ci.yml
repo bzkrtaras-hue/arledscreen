@@ -208,6 +208,10 @@ jobs:
           grep -q 'doPastedNext' out/owner-next.html
           grep -q 'Pasted → next' out/owner-next.html
           grep -q 'Mailto DNSEnable' out/owner-next.html
+          grep -q 'social-handles' out/owner-next.html
+          grep -q 'copySocialHandles' out/owner-next.html
+          grep -q '@arledscreenn' out/owner-next.html
+          grep -q '/social.json' out/owner-next.html
           node -e 'const g=require("./out/geo-status.json"); const a=g.gates?.arleds301?.openAlts||[]; if(!a.some(u=>String(u).startsWith("mailto:")&&String(u).includes("destek@isimtescil"))) process.exit(1)'
           node -e 'const t=require("./out/tur1a.json"); if(!Array.isArray(t.next?.openAlts)||t.next.openAlts.length<1) process.exit(1)'
           grep -q '/owner-next.html' out/ai.txt
