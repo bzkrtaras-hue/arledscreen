@@ -617,6 +617,9 @@ else fail("ard.resources.pointC");
     html.includes("jumpToSocialPack") &&
     html.includes("copyPackDeepLink") &&
     html.includes("packDeepLinkUrl") &&
+    html.includes("socialFocus") &&
+    html.includes("setSocialFocus") &&
+    html.includes("social=wa") &&
     html.includes("copy-pack-link") &&
     html.includes("Copy pack link") &&
     html.includes('data-pack="facebookAbout"') &&

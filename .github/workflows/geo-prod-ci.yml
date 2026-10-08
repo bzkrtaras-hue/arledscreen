@@ -238,6 +238,9 @@ jobs:
           grep -q 'jumpToSocialPack' out/owner-next.html
           grep -q 'copyPackDeepLink' out/owner-next.html
           grep -q 'packDeepLinkUrl' out/owner-next.html
+          grep -q 'socialFocus' out/owner-next.html
+          grep -q 'setSocialFocus' out/owner-next.html
+          grep -q 'social=wa' out/owner-next.html
           grep -q 'copy-pack-link' out/owner-next.html
           grep -q 'Copy pack link' out/owner-next.html
           grep -q 'data-pack="facebookAbout"' out/owner-next.html

@@ -2676,6 +2676,9 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("jumpToSocialPack") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copyPackDeepLink") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packDeepLinkUrl") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("socialFocus") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("setSocialFocus") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("social=wa") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-pack-link") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy pack link") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('data-pack="facebookAbout"') ||
