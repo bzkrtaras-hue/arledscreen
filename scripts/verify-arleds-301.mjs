@@ -12,12 +12,16 @@ import {
   buildDnsEnableMailto,
   buildHostingerMailto,
   DNSENABLE_GMAIL_DRAFT_URL,
+  DNSENABLE_PANEL_URL,
   DNSENABLE_SUPPORT_TO,
   HOSTINGER_GMAIL_DRAFT_URL,
   HOSTINGER_SUPPORT_TO,
 } from "./print-point-c-packs.mjs";
 
 const EXPECT = "https://arledscreen.com/tr/";
+/** Owner open tabs for provider-correct next (friction; no invented DNS). */
+const HOSTINGER_PANEL_URL = "https://hpanel.hostinger.com/";
+const CLOUDFLARE_DASH_URL = "https://dash.cloudflare.com/";
 const PROBES = [
   "http://arleds.com/",
   "http://www.arleds.com/",
@@ -117,10 +121,14 @@ function printNextSteps(mode) {
 
   if (mode === "dnsenable_tls_dead" || mode === "timeout_unknown_dns") {
     console.error("NS looks like Isimtescil/DNSEnable (or unknown) — Hostinger hPanel will NOT apply.");
+    console.error(`Where: Isimtescil/DNSEnable → Domain Redirect (permanent 301)`);
+    console.error(`Open: ${DNSENABLE_PANEL_URL}`);
+    console.error(`OpenAlt: ${DNSENABLE_GMAIL_DRAFT_URL}`);
     console.error("Option A (fastest at registrar): Isimtescil/DNSEnable domain → Domain Redirect");
     console.error(`  arleds.com + www → ${EXPECT} (301/permanent)`);
     console.error("Option B (align with arledscreen.com): move NS to Cloudflare, then Bulk Redirect");
     console.error(`  arleds.com/* → ${EXPECT} (301)`);
+    console.error(`Open (Cloudflare option B): ${CLOUDFLARE_DASH_URL}`);
     console.error(`Isimtescil support: ${DNSENABLE_SUPPORT_TO}`);
     console.error("--- DNSEnable support email (select-all) ---");
     console.error(buildDnsEnableEmailClipboard());
@@ -130,6 +138,9 @@ function printNextSteps(mode) {
     console.error("Re-check: npm run verify:arleds-301");
   } else if (mode === "hostinger_unreachable" || mode === "hostinger_partial" || mode === "http_200_no_redirect") {
     console.error("\n--- Hostinger clipboard (permanent 301 entire domain) ---");
+    console.error(`Where: Hostinger hPanel → Domains → arleds.com → Redirects`);
+    console.error(`Open: ${HOSTINGER_PANEL_URL}`);
+    console.error(`OpenAlt: ${HOSTINGER_GMAIL_DRAFT_URL}`);
     console.error("hPanel → Domains → arleds.com → Redirects");
     console.error("http://arleds.com/ → https://arledscreen.com/tr/");
     console.error("http://www.arleds.com/ → https://arledscreen.com/tr/");
@@ -141,19 +152,23 @@ function printNextSteps(mode) {
     console.error("Also: npm run point-c:hostinger-eml · docs/ops/arleds-301-hostinger.md");
   } else if (mode === "cloudflare_unreachable" || mode === "cloudflare_partial" || mode === "wrong_location") {
     console.error("Cloudflare-ish NS detected (or redirect Location wrong).");
-    console.error("Cloudflare Dashboard → Rules → Redirect Rules / Bulk Redirects");
+    console.error(`Where: Cloudflare Dashboard → Rules → Redirect Rules / Bulk Redirects`);
+    console.error(`Open: ${CLOUDFLARE_DASH_URL}`);
     console.error(`  arleds.com/* and www.arleds.com/* → ${EXPECT} (301 Permanent)`);
     console.error("Re-check: npm run verify:arleds-301");
   } else if (mode === "nxdomain") {
     console.error("DNS NXDOMAIN / no A records — restore NS at registrar or attach domain to hosting first.");
+    console.error(`Open: ${DNSENABLE_PANEL_URL}`);
   } else {
     console.error("\n--- Hostinger clipboard (fallback if domain is on Hostinger) ---");
+    console.error(`Open: ${HOSTINGER_PANEL_URL}`);
+    console.error(`OpenAlt: ${HOSTINGER_GMAIL_DRAFT_URL}`);
     console.error("hPanel → Domains → arleds.com → Redirects → 301 to https://arledscreen.com/tr/");
     console.error(buildHostingerMailto());
     console.error(`Gmail draft (Send): ${HOSTINGER_GMAIL_DRAFT_URL}`);
   }
 
-  console.error("npm run point-c:next · npm run geo:status · docs/ops/arleds-301-hostinger.md");
+  console.error("npm run point-c:next · npm run point-c:csv · npm run geo:status · docs/ops/arleds-301-hostinger.md");
 }
 
 let failCount = 0;

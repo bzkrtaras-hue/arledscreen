@@ -4578,6 +4578,47 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
   }
   console.log("✅ AGENTS.md + humans.txt cite well-known offer/organization/geo-baseline invent");
 
+  const llmsLive = fs.existsSync(path.join(outDir, "llms.txt"))
+    ? fs.readFileSync(path.join(outDir, "llms.txt"), "utf8")
+    : "";
+  const llmsFullLive = fs.existsSync(path.join(outDir, "llms-full.txt"))
+    ? fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8")
+    : "";
+  for (const needle of [
+    "/.well-known/offer.json",
+    "/.well-known/offers.json",
+    "/.well-known/dataset.json",
+    "/.well-known/feed.json",
+    "/.well-known/organization.json",
+    "/.well-known/geo-baseline.json",
+  ]) {
+    if (llmsLive && !llmsLive.includes(needle)) {
+      console.error(`❌ out/llms.txt must cite invent alias ${needle}`);
+      process.exit(1);
+    }
+    if (llmsFullLive && !llmsFullLive.includes(needle)) {
+      console.error(`❌ out/llms-full.txt must cite invent alias ${needle}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ llms.txt + llms-full.txt cite well-known offer/organization/geo-baseline invent");
+
+  const verifyArleds = fs.readFileSync(path.join(repoRoot, "scripts/verify-arleds-301.mjs"), "utf8");
+  for (const must of [
+    "DNSENABLE_PANEL_URL",
+    "HOSTINGER_PANEL_URL",
+    "CLOUDFLARE_DASH_URL",
+    "Open:",
+    "OpenAlt:",
+  ]) {
+    if (!verifyArleds.includes(must)) {
+      console.error(`❌ scripts/verify-arleds-301.mjs must print provider Open tabs (${must})`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ verify:arleds-301 prints Where:/Open:/OpenAlt: provider tabs");
+}
+
   const pointCPacks = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
   for (const must of [
     "POINT_C_OPEN_URLS",
