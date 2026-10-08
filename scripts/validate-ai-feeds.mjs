@@ -1858,6 +1858,25 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   console.log("✅ security.txt + arleds ops doc cite organization/geo-baseline invent + Open tabs");
+
+  const playbook = fs.readFileSync(path.join(repoRoot, "docs/offsite-entity-playbook.md"), "utf8");
+  for (const must of [
+    "npm run geo:next",
+    "npm run point-c:csv",
+    "npm run tur1a:next",
+    "npm run verify:arleds-301",
+    "https://www.isimtescil.net/",
+    "https://business.google.com/",
+    "https://chatgpt.com/",
+    "Open:",
+    "point-c.txt",
+  ]) {
+    if (!playbook.includes(must)) {
+      console.error(`❌ docs/offsite-entity-playbook.md must wire owner clipboard ${must}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ offsite-entity-playbook.md wires geo:next / point-c:csv / tur1a Open tabs");
   {
     const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
     if (
