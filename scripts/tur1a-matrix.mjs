@@ -17,7 +17,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { TR, EN, HUMAN_PLATFORMS } from "./print-tur1a-prompts.mjs";
+import { TR, EN, HUMAN_PLATFORMS, platformOpenUrl } from "./print-tur1a-prompts.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -141,8 +141,13 @@ function printNext(filled) {
 
   const locale = String(next.promptId).startsWith("en-") ? "en" : "tr-TR";
   const text = promptText(next.promptId);
+  const openUrl = platformOpenUrl(next.platform);
   console.log(`Cell: platform=${next.platform} · promptId=${next.promptId} · locale=${locale}`);
   console.log(`Progress: ${filled.size}/${totalCells} filled → this is the next empty`);
+  if (openUrl) {
+    console.log(`Where: ${next.platform} → ${openUrl}`);
+    console.log(`Open: ${openUrl}`);
+  }
   console.log("\n### Paste into the AI platform");
   console.log("```");
   console.log(text);

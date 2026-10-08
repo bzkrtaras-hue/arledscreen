@@ -206,8 +206,12 @@ if (tur1aHuman === 0 || tur1aCells < MATRIX_CELLS) {
   const out = String(next.stdout || "").trim();
   // One-liner first (avoid dumping full paste unless TUR1A_FULL=1).
   const cellLine = out.split("\n").find((r) => r.startsWith("Cell:"));
+  const whereLine = out.split("\n").find((r) => r.startsWith("Where:"));
+  const openLine = out.split("\n").find((r) => r.startsWith("Open:"));
   if (cellLine) console.log(`  Tur1a next: ${cellLine.replace(/^Cell:\s*/, "")} · npm run tur1a:next · tur1a:csv`);
   else console.log("  Tur1a next: npm run tur1a:next · tur1a:csv · tur1a:log");
+  if (whereLine) console.log(`  ${whereLine}`);
+  if (openLine) console.log(`  ${openLine}`);
   if (process.env.TUR1A_FULL === "1" && out) {
     console.log("  Tur1a next clipboard:");
     for (const row of out.split("\n")) console.log(`  ${row}`);

@@ -1926,8 +1926,16 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
-    if (!agentsMdLive.includes("geo:next") || !agentsMdLive.includes("geo:ack") || !agentsMdLive.includes("#website")) {
-      console.error("❌ out/AGENTS.md must cite npm run geo:next/ack owner clipboard + WebSite #website");
+    if (
+      !agentsMdLive.includes("geo:next") ||
+      !agentsMdLive.includes("geo:ack") ||
+      !agentsMdLive.includes("#website") ||
+      !agentsMdLive.includes("/en/calculator/") ||
+      !agentsMdLive.includes("/en/catalog/") ||
+      !agentsMdLive.includes("/en/shop/") ||
+      !agentsMdLive.includes("/en/request-quote/")
+    ) {
+      console.error("❌ out/AGENTS.md must cite npm run geo:next/ack + WebSite #website + EN invent bridges");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -4515,6 +4523,28 @@ if (!robotsFnBody.includes("Google-CloudVertexBot") || !robotsTsBody.includes("G
   process.exit(1);
 }
 console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt + TR llms + panels/mpn/merchant invent aliases");
+
+{
+  const tur1aPrompts = fs.readFileSync(path.join(repoRoot, "scripts/print-tur1a-prompts.mjs"), "utf8");
+  const tur1aMatrix = fs.readFileSync(path.join(repoRoot, "scripts/tur1a-matrix.mjs"), "utf8");
+  for (const must of [
+    "PLATFORM_OPEN_URLS",
+    "https://chatgpt.com/",
+    "https://gemini.google.com/app",
+    "https://www.perplexity.ai/",
+    "https://www.google.com/",
+  ]) {
+    if (!tur1aPrompts.includes(must)) {
+      console.error(`❌ scripts/print-tur1a-prompts.mjs must define Tur1a open URL ${must}`);
+      process.exit(1);
+    }
+  }
+  if (!tur1aMatrix.includes("platformOpenUrl") || !tur1aMatrix.includes("Where:")) {
+    console.error("❌ scripts/tur1a-matrix.mjs must print Where:/Open: via platformOpenUrl");
+    process.exit(1);
+  }
+  console.log("✅ tur1a:next platform open URLs (chatgpt/gemini/perplexity/google_aio)");
+}
 
 {
   const sitemapPath = path.join(outDir, "sitemap.xml");

@@ -12,6 +12,7 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 - Graph: Offer triangle catalog ↔ ai-shopping ↔ PDP `#offer`; every Offer `itemOffered` → PDP `#product`; Dataset `hasPart` stubs → Offer `@id`; Offer/AggregateOffer `availableAtOrFrom` → `#localbusiness`
 - VAT and freight excluded; no free shipping. Quote-only for transparent / flexible / poster / rental / control cards.
 - Human hubs (TR): quote `/tr/quote/` · prices `/tr/led-ekran-fiyatlari/` · products `/tr/products/` — inventable noindex bridges e.g. `/tr/teklif/` · `/tr/fiyat/` · `/tr/prices/` · `/tr/catalog/` · `/tr/calculator/` · `/tr/faq/` · `/tr/brand/`
+- Human hubs (EN): quote `/en/quote/` · prices `/en/led-ekran-fiyatlari/` · products `/en/products/` — inventable noindex bridges e.g. `/en/calculator/` · `/en/catalog/` · `/en/shop/` · `/en/request-quote/` · `/en/faq/` · `/en/brand/` · `/en/teklif/` · `/en/products/gob/`
 
 ## Entity / brand
 

@@ -182,6 +182,10 @@ try {
     agentsMd.includes("/data/prices.json") &&
     agentsMd.includes("/llms-full") &&
     agentsMd.includes("/.well-known/security") &&
+    agentsMd.includes("/en/calculator/") &&
+    agentsMd.includes("/en/catalog/") &&
+    agentsMd.includes("/en/shop/") &&
+    agentsMd.includes("/en/request-quote/") &&
     llms.includes("/.well-known/sku.json")
   ) {
     ok("agents/AGENTS/llms invent well-known modules/sku/pricing + api/locale");

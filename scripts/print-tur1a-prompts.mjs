@@ -39,6 +39,18 @@ export const EN = [
 /** Human blind platforms counted by geo:status / tur1a:matrix (excludes code-harden noise). */
 export const HUMAN_PLATFORMS = ["chatgpt", "gemini", "perplexity", "google_aio"];
 
+/** Owner open URLs for tur1a:next — remove “which tab?” friction (no invented scores). */
+export const PLATFORM_OPEN_URLS = {
+  chatgpt: "https://chatgpt.com/",
+  gemini: "https://gemini.google.com/app",
+  perplexity: "https://www.perplexity.ai/",
+  google_aio: "https://www.google.com/",
+};
+
+export function platformOpenUrl(platform) {
+  return PLATFORM_OPEN_URLS[platform] || "";
+}
+
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 
 if (isMain) {
@@ -54,7 +66,10 @@ if (isMain) {
   console.log("Expected price source: https://arledscreen.com/ai-shopping.json pricedPanels");
   console.log("Brand: https://arledscreen.com/brand.json (AggregateOffer×12)");
   console.log("RSS (discovery only): https://arledscreen.com/feeds/prices.rss");
-  console.log("Canonical site: https://arledscreen.com/tr/ (not arleds.com)\n");
+  console.log("Canonical site: https://arledscreen.com/tr/ (not arleds.com)");
+  console.log("Open tabs:");
+  for (const p of HUMAN_PLATFORMS) console.log(`  ${p}: ${PLATFORM_OPEN_URLS[p]}`);
+  console.log("");
 
   for (const [id, text] of list) {
     if (only && only !== id) continue;
