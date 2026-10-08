@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/tur1a.json",
   "name": "ARLEDSCREEN Tur1a blind coverage",
-  "description": "Human blind Tur1a matrix (ChatGPT/Gemini/Perplexity/Google AI). Does not invent mention rates. Owner: live https://arledscreen.com/tur1a.json → next · npm run tur1a:next · tur1a:log · tur1a:csv · geo:next. CSV: /feeds/tur1a.csv.",
+  "description": "Human blind Tur1a matrix (ChatGPT/Gemini/Perplexity/Google AI). Does not invent mention rates. Follow potentialAction HowTo when next is set. Owner: live https://arledscreen.com/tur1a.json → next + potentialAction · npm run tur1a:next · tur1a:log · tur1a:csv · geo:next. CSV: /feeds/tur1a.csv · status: /geo-status.json → potentialAction.",
   "url": "https://arledscreen.com/tur1a.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -14,7 +14,9 @@
     "https://arledscreen.com/brand.json",
     "https://arledscreen.com/#website",
     "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/geo-next.txt"
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/owner-next.txt",
+    "https://arledscreen.com/point-c-progress.json"
   ],
   "distribution": [
     {
@@ -36,13 +38,25 @@
       "@type": "DataDownload",
       "encodingFormat": "text/csv",
       "contentUrl": "https://arledscreen.com/tur1a.csv"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-status.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/geo-next.txt"
     }
   ],
   "sameAs": [
     "https://arledscreen.com/.well-known/tur1a.json",
     "https://arledscreen.com/feeds/tur1a.csv",
     "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/geo-next.txt"
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/owner-next.txt",
+    "https://arledscreen.com/point-c-progress.json"
   ],
   "coverage": {
     "filled": 0,
@@ -395,7 +409,7 @@
       "open": "https://www.google.com/"
     }
   ],
-  "ownerNext": "live: https://arledscreen.com/tur1a.json → next · npm run tur1a:next · tur1a:csv · after observe: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… · Open: https://chatgpt.com/ · https://gemini.google.com/app · https://www.perplexity.ai/ · https://www.google.com/",
+  "ownerNext": "live: https://arledscreen.com/tur1a.json → next + potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run tur1a:next · tur1a:csv · after observe: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… · Open: https://chatgpt.com/ · https://gemini.google.com/app · https://www.perplexity.ai/ · https://www.google.com/",
   "potentialAction": {
     "@type": "HowTo",
     "name": "Tur1a next blind: chatgpt · 1",
@@ -432,6 +446,11 @@
         "@type": "HowToTool",
         "name": "feeds/tur1a.csv",
         "url": "https://arledscreen.com/feeds/tur1a.csv"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "geo-next.txt",
+        "url": "https://arledscreen.com/geo-next.txt"
       },
       {
         "@type": "HowToTool",
