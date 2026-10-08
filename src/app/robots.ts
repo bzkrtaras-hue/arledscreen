@@ -223,6 +223,21 @@ const DISCOVERY_ALLOW = [
   "/contact/",
   "/nxtionstar/",
   "/galeri/",
+  "/en/faq/",
+  "/en/gallery/",
+  "/en/projects/",
+  "/en/regions/",
+  "/en/services/",
+  "/en/brand/",
+  "/en/teklif/",
+  "/en/bolgeler/istanbul/",
+  "/en/products/gob-led-ekran/p1-25-gob/",
+  "/en/catalog/",
+  "/en/shop/",
+  "/en/request-quote/",
+  "/en/products/gob/",
+  "/pricing/",
+  "/prices/",
 ] as const;
 
 export default function robots(): MetadataRoute.Robots {

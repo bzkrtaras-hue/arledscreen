@@ -395,8 +395,15 @@ else fail("ard.resources.pointC");
     allow.includes("/katalog/") &&
     allow.includes("/contact/") &&
     JSON.stringify(ard?.agentic?.resources?.trInventBridges?.examples || []).includes("/en/calculator/") &&
-    (ard?.agentic?.resources?.trInventBridges?.examples || []).every((u) =>
-      allow.includes(String(u).replace("https://arledscreen.com", ""))
+    allow.includes("/en/faq/") &&
+    allow.includes("/en/catalog/") &&
+    allow.includes("/en/shop/") &&
+    allow.includes("/pricing/") &&
+    allow.includes("/prices/") &&
+    ["trInventBridges", "enInventBridges"].every((key) =>
+      (ard?.agentic?.resources?.[key]?.examples || []).every((u) =>
+        allow.includes(String(u).replace("https://arledscreen.com", ""))
+      )
     )
   ) {
     ok("ard invent allow + resources modules/sku + agents/security + aiShopping invent");

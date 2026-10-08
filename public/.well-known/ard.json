@@ -1160,7 +1160,22 @@
       "/katalog/",
       "/contact/",
       "/nxtionstar/",
-      "/galeri/"
+      "/galeri/",
+      "/en/faq/",
+      "/en/gallery/",
+      "/en/projects/",
+      "/en/regions/",
+      "/en/services/",
+      "/en/brand/",
+      "/en/teklif/",
+      "/en/bolgeler/istanbul/",
+      "/en/products/gob-led-ekran/p1-25-gob/",
+      "/en/catalog/",
+      "/en/shop/",
+      "/en/request-quote/",
+      "/en/products/gob/",
+      "/pricing/",
+      "/prices/"
     ],
     "disallow": []
   },

@@ -194,6 +194,21 @@ Allow: /katalog/
 Allow: /contact/
 Allow: /nxtionstar/
 Allow: /galeri/
+Allow: /en/faq/
+Allow: /en/gallery/
+Allow: /en/projects/
+Allow: /en/regions/
+Allow: /en/services/
+Allow: /en/brand/
+Allow: /en/teklif/
+Allow: /en/bolgeler/istanbul/
+Allow: /en/products/gob-led-ekran/p1-25-gob/
+Allow: /en/catalog/
+Allow: /en/shop/
+Allow: /en/request-quote/
+Allow: /en/products/gob/
+Allow: /pricing/
+Allow: /prices/
 
 User-Agent: bingbot
 Allow: /

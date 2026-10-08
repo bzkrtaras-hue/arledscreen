@@ -484,13 +484,14 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
-  // Every ARD trInventBridges.examples path must be in robotsPolicy.allow.
-  {
-    const examples = ard?.agentic?.resources?.trInventBridges?.examples || [];
+  // Every ARD invent-bridge HTML example path must be in robotsPolicy.allow.
+  for (const key of ["trInventBridges", "enInventBridges"]) {
+    const examples = ard?.agentic?.resources?.[key]?.examples || [];
     for (const full of examples) {
       const p = String(full).replace("https://arledscreen.com", "");
+      // Feed/JSON invents are already allow-listed; HTML invents must be too.
       if (!ard.robotsPolicy.allow.includes(p)) {
-        console.error(`❌ ard.json robotsPolicy.allow must include trInventBridges ${p}`);
+        console.error(`❌ ard.json robotsPolicy.allow must include ${key} ${p}`);
         process.exit(1);
       }
     }
@@ -4477,6 +4478,13 @@ for (const must of [
   "/contact/",
   "/nxtionstar/",
   "/galeri/",
+  "/en/faq/",
+  "/en/catalog/",
+  "/en/shop/",
+  "/en/request-quote/",
+  "/en/products/gob/",
+  "/pricing/",
+  "/prices/",
 ]) {
   if (!robotsFnBody.includes(must)) {
     console.error(`❌ functions/robots.txt.js must Allow ${must}`);
@@ -4570,25 +4578,53 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     "/en/magaza/",
     "/katalog/",
     "/contact/",
+    "/teklif/",
+    "/quote/",
+    "/fiyat/",
+    "/nxtionstar/",
+    "/galeri/",
+    "/en/faq/",
+    "/en/gallery/",
+    "/en/projects/",
+    "/en/regions/",
+    "/en/services/",
+    "/en/brand/",
+    "/en/teklif/",
+    "/en/bolgeler/istanbul/",
+    "/en/products/gob-led-ekran/p1-25-gob/",
+    "/en/catalog/",
+    "/en/shop/",
+    "/en/request-quote/",
+    "/en/products/gob/",
+    "/pricing/",
+    "/prices/",
   ]) {
-    if (!sitemapLive.includes(needle)) {
+    if (!sitemapLive.includes(`<loc>https://arledscreen.com${needle}</loc>`)) {
       console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);
       process.exit(1);
     }
   }
-  // ARD trInventBridges.examples with live HTML must all appear in sitemap.
+  // ARD invent bridge examples with live HTML must all appear in sitemap + robotsPolicy.allow.
   {
     const ardLive = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/ard.json"), "utf8"));
-    const examples = ardLive?.agentic?.resources?.trInventBridges?.examples || [];
-    for (const full of examples) {
-      const p = String(full).replace("https://arledscreen.com", "");
-      const rel = p.replace(/^\//, "").replace(/\/$/, "");
-      const htmlPath = path.join(outDir, rel, "index.html");
-      const filePath = path.join(outDir, rel.replace(/\/$/, ""));
-      const hasHtml = fs.existsSync(htmlPath) || (fs.existsSync(filePath) && fs.statSync(filePath).isFile());
-      if (hasHtml && !sitemapLive.includes(p)) {
-        console.error(`❌ out/sitemap.xml must list ARD trInventBridges HTML invent ${p}`);
-        process.exit(1);
+    const allowLive = ardLive?.robotsPolicy?.allow || [];
+    for (const key of ["trInventBridges", "enInventBridges"]) {
+      const examples = ardLive?.agentic?.resources?.[key]?.examples || [];
+      for (const full of examples) {
+        const p = String(full).replace("https://arledscreen.com", "");
+        const rel = p.replace(/^\//, "").replace(/\/$/, "");
+        const htmlPath = path.join(outDir, rel, "index.html");
+        const filePath = path.join(outDir, rel.replace(/\/$/, ""));
+        const hasHtml = fs.existsSync(htmlPath) || (fs.existsSync(filePath) && fs.statSync(filePath).isFile());
+        if (!hasHtml) continue;
+        if (!sitemapLive.includes(`<loc>https://arledscreen.com${p}</loc>`)) {
+          console.error(`❌ out/sitemap.xml must list ARD ${key} HTML invent ${p}`);
+          process.exit(1);
+        }
+        if (!allowLive.includes(p)) {
+          console.error(`❌ ard.json robotsPolicy.allow must include ${key} ${p}`);
+          process.exit(1);
+        }
       }
     }
   }
