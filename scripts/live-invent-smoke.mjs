@@ -117,6 +117,9 @@ if (
   rss.includes('href="https://arledscreen.com/.well-known/geo-baseline.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/entity-profiles.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/ai-shopping.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/llms.txt"') &&
+  rss.includes('href="https://arledscreen.com/agents.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/point-c.txt"') &&
   rss.includes("/entity-profiles.json") &&
   rss.includes("/.well-known/brand.json") &&
   rss.includes("/.well-known/entity.json") &&
@@ -450,6 +453,9 @@ if (
     aiSame.includes("/humans.txt") &&
     aiSame.includes("/AGENTS.md") &&
     aiSame.includes("/.well-known/security.txt") &&
+    aiSame.includes("/prices.json") &&
+    aiSame.includes("/.well-known/llms.txt") &&
+    aiSame.includes("/agents.json") &&
     brandSame.includes("/ai-shopping.json") &&
     brandSame.includes("/geo-baseline.json") &&
     brandSame.includes("/entity-profiles.json") &&
@@ -544,6 +550,11 @@ if (
     dist.includes("/.well-known/geo-baseline.json") &&
     dist.includes("/.well-known/entity-profiles.json") &&
     dist.includes("/.well-known/ai-shopping.json") &&
+    dist.includes("/prices.json") &&
+    dist.includes("/panels.json") &&
+    dist.includes("/.well-known/llms.txt") &&
+    dist.includes("/agents.json") &&
+    dist.includes("/.well-known/point-c.txt") &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -798,6 +809,9 @@ try {
     String(disc.geoBaselineWellKnown || "").includes("/.well-known/geo-baseline.json") &&
     String(disc.entityProfilesWellKnown || "").includes("/.well-known/entity-profiles.json") &&
     String(disc.aiShoppingWellKnown || "").includes("/.well-known/ai-shopping.json") &&
+    String(disc.llmsWellKnown || "").includes("/.well-known/llms.txt") &&
+    String(disc.agentsJsonRoot || "").includes("/agents.json") &&
+    String(disc.pointCWellKnown || "").includes("/.well-known/point-c.txt") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
@@ -838,6 +852,9 @@ try {
     link.includes("/.well-known/entity-profiles.json") &&
     link.includes("/.well-known/faqs.json") &&
     link.includes("/.well-known/ai-shopping.json") &&
+    link.includes("/.well-known/llms.txt") &&
+    link.includes("/agents.json") &&
+    link.includes("/.well-known/point-c.txt") &&
     link.includes("/.well-known/ard.json") &&
     link.includes("/.well-known/agents.json") &&
     link.includes("/humans.txt") &&

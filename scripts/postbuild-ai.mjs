@@ -1520,13 +1520,21 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/agents.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/agents.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/agent.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/ard.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/ai.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/.well-known/ai.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/llms.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/.well-known/llms.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/llms-full.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/.well-known/llms-full.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/humans.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/.well-known/humans.txt" rel="related" type="text/plain"/>
     <atom:link href="${SITE_URL}/AGENTS.md" rel="related" type="text/markdown"/>
     <atom:link href="${SITE_URL}/.well-known/security.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/point-c-en.txt" rel="related" type="text/plain"/>
+    <atom:link href="${SITE_URL}/.well-known/point-c.txt" rel="related" type="text/plain"/>
     <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /offer.json · /offers.json · /dataset.json · /feed.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>
@@ -1725,50 +1733,98 @@ function inventAliasDistributionEntries() {
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/.well-known/modules.json`,
+      contentUrl: `${SITE_URL}/modules.json`,
       name: "Modules pricedPanels invent alias",
     },
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/.well-known/sku.json`,
+      contentUrl: `${SITE_URL}/sku.json`,
       name: "SKU pricedPanels invent alias",
     },
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/.well-known/pricing.json`,
+      contentUrl: `${SITE_URL}/pricing.json`,
       name: "Pricing pricedPanels invent alias",
     },
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/.well-known/panels.json`,
+      contentUrl: `${SITE_URL}/panels.json`,
       name: "Panels pricedPanels invent alias",
     },
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/.well-known/mpn.json`,
+      contentUrl: `${SITE_URL}/mpn.json`,
       name: "MPN pricedPanels invent alias",
     },
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/.well-known/merchant.json`,
+      contentUrl: `${SITE_URL}/merchant.json`,
       name: "Merchant pricedPanels invent alias",
     },
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/.well-known/prices.json`,
+      contentUrl: `${SITE_URL}/prices.json`,
       name: "Prices pricedPanels invent alias",
     },
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
-      contentUrl: `${SITE_URL}/.well-known/price.json`,
+      contentUrl: `${SITE_URL}/price.json`,
       name: "Price pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/modules.json`,
+      name: "Modules well-known pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/sku.json`,
+      name: "SKU well-known pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/pricing.json`,
+      name: "Pricing well-known pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/panels.json`,
+      name: "Panels well-known pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/mpn.json`,
+      name: "MPN well-known pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/merchant.json`,
+      name: "Merchant well-known pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/prices.json`,
+      name: "Prices well-known pricedPanels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/price.json`,
+      name: "Price well-known pricedPanels invent alias",
     },
     {
       "@type": "DataDownload",
@@ -1882,6 +1938,18 @@ function discoveryDistributionEntries() {
     {
       "@type": "DataDownload",
       encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/agents.json`,
+      name: "Agent Discovery Index (root invent alias)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/agent.json`,
+      name: "Agent Discovery Index (agent invent alias)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
       contentUrl: `${SITE_URL}/.well-known/ard.json`,
       name: "ARLEDSCREEN ARD",
     },
@@ -1894,8 +1962,20 @@ function discoveryDistributionEntries() {
     {
       "@type": "DataDownload",
       encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/.well-known/ai.txt`,
+      name: "AI Agent Discovery Pointer (well-known invent alias)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
       contentUrl: `${SITE_URL}/llms.txt`,
       name: "LLM Context",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/.well-known/llms.txt`,
+      name: "LLM Context (well-known invent alias)",
     },
     {
       "@type": "DataDownload",
@@ -1906,8 +1986,20 @@ function discoveryDistributionEntries() {
     {
       "@type": "DataDownload",
       encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/.well-known/llms-full.txt`,
+      name: "LLM Context Full (well-known invent alias)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
       contentUrl: `${SITE_URL}/humans.txt`,
       name: "humans.txt discovery",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/.well-known/humans.txt`,
+      name: "humans.txt well-known invent alias",
     },
     {
       "@type": "DataDownload",
@@ -1921,11 +2013,31 @@ function discoveryDistributionEntries() {
       contentUrl: `${SITE_URL}/.well-known/security.txt`,
       name: "security.txt (RFC 9116)",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/point-c-en.txt`,
+      name: "Point C paste packs (EN)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/.well-known/point-c.txt`,
+      name: "Point C paste packs (well-known invent alias)",
+    },
   ];
 }
 
 function inventAliasBasedOnUrls() {
   return [
+    `${SITE_URL}/modules.json`,
+    `${SITE_URL}/sku.json`,
+    `${SITE_URL}/pricing.json`,
+    `${SITE_URL}/panels.json`,
+    `${SITE_URL}/mpn.json`,
+    `${SITE_URL}/merchant.json`,
+    `${SITE_URL}/prices.json`,
+    `${SITE_URL}/price.json`,
     `${SITE_URL}/.well-known/modules.json`,
     `${SITE_URL}/.well-known/sku.json`,
     `${SITE_URL}/.well-known/pricing.json`,
@@ -2059,13 +2171,21 @@ function entityAliasDistributionEntries() {
 function discoveryBasedOnUrls() {
   return [
     `${SITE_URL}/.well-known/agents.json`,
+    `${SITE_URL}/agents.json`,
+    `${SITE_URL}/.well-known/agent.json`,
     `${SITE_URL}/.well-known/ard.json`,
     `${SITE_URL}/ai.txt`,
+    `${SITE_URL}/.well-known/ai.txt`,
     `${SITE_URL}/llms.txt`,
+    `${SITE_URL}/.well-known/llms.txt`,
     `${SITE_URL}/llms-full.txt`,
+    `${SITE_URL}/.well-known/llms-full.txt`,
     `${SITE_URL}/humans.txt`,
+    `${SITE_URL}/.well-known/humans.txt`,
     `${SITE_URL}/AGENTS.md`,
     `${SITE_URL}/.well-known/security.txt`,
+    `${SITE_URL}/point-c-en.txt`,
+    `${SITE_URL}/.well-known/point-c.txt`,
   ];
 }
 
@@ -2797,6 +2917,12 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       geoBaselineWellKnown: `${SITE_URL}/.well-known/geo-baseline.json`,
       entityProfilesWellKnown: `${SITE_URL}/.well-known/entity-profiles.json`,
       aiShoppingWellKnown: `${SITE_URL}/.well-known/ai-shopping.json`,
+      agentsJsonRoot: `${SITE_URL}/agents.json`,
+      agentWellKnown: `${SITE_URL}/.well-known/agent.json`,
+      aiTxtWellKnown: `${SITE_URL}/.well-known/ai.txt`,
+      llmsWellKnown: `${SITE_URL}/.well-known/llms.txt`,
+      llmsFullWellKnown: `${SITE_URL}/.well-known/llms-full.txt`,
+      humansWellKnown: `${SITE_URL}/.well-known/humans.txt`,
       offer: `${SITE_URL}/offer`,
       offers: `${SITE_URL}/offers`,
       dataset: `${SITE_URL}/dataset`,

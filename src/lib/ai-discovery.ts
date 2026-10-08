@@ -50,11 +50,19 @@ const GEO_BASELINE_WELLKNOWN_URL = `${SITE_URL}/.well-known/geo-baseline.json`;
 const ENTITY_PROFILES_WELLKNOWN_URL = `${SITE_URL}/.well-known/entity-profiles.json`;
 const AI_SHOPPING_WELLKNOWN_URL = `${SITE_URL}/.well-known/ai-shopping.json`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
+const POINT_C_EN_TXT_URL = `${SITE_URL}/point-c-en.txt`;
+const POINT_C_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.txt`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
+const LLMS_WELLKNOWN_URL = `${SITE_URL}/.well-known/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
+const LLMS_FULL_WELLKNOWN_URL = `${SITE_URL}/.well-known/llms-full.txt`;
 const AI_TXT_URL = `${SITE_URL}/ai.txt`;
+const AI_TXT_WELLKNOWN_URL = `${SITE_URL}/.well-known/ai.txt`;
 const AGENTS_MD_URL = `${SITE_URL}/AGENTS.md`;
+const AGENTS_JSON_ROOT_URL = `${SITE_URL}/agents.json`;
+const AGENT_WELLKNOWN_URL = `${SITE_URL}/.well-known/agent.json`;
 const HUMANS_TXT_URL = `${SITE_URL}/humans.txt`;
+const HUMANS_WELLKNOWN_URL = `${SITE_URL}/.well-known/humans.txt`;
 const SECURITY_TXT_URL = `${SITE_URL}/.well-known/security.txt`;
 const WEBSITE_URL = `${SITE_URL}/#website`;
 
@@ -113,6 +121,8 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
         { url: ARD_URL, title: "Agentic Resource Discovery" },
         { url: AGENTS_JSON_URL, title: "Agent Discovery Index" },
+        { url: AGENTS_JSON_ROOT_URL, title: "Agent Discovery Index (root invent alias)" },
+        { url: AGENT_WELLKNOWN_URL, title: "Agent Discovery Index (agent invent alias)" },
       ],
       "application/rss+xml": [{ url: PRICES_RSS_URL, title: "Panel Price Updates RSS" }],
       "text/tab-separated-values": [
@@ -120,11 +130,17 @@ export const aiDiscoveryMetadata: Metadata = {
       ],
       "text/plain": [
         { url: LLMS_URL, title: "LLM Context (Short)" },
+        { url: LLMS_WELLKNOWN_URL, title: "LLM Context (well-known invent alias)" },
         { url: LLMS_FULL_URL, title: "LLM Context (Full)" },
+        { url: LLMS_FULL_WELLKNOWN_URL, title: "LLM Context Full (well-known invent alias)" },
         { url: AI_TXT_URL, title: "AI Discovery Pointer" },
+        { url: AI_TXT_WELLKNOWN_URL, title: "AI Discovery Pointer (well-known invent alias)" },
         { url: HUMANS_TXT_URL, title: "Humans.txt" },
+        { url: HUMANS_WELLKNOWN_URL, title: "humans.txt well-known invent alias" },
         { url: SECURITY_TXT_URL, title: "security.txt (RFC 9116)" },
         { url: POINT_C_TXT_URL, title: "Point C paste packs" },
+        { url: POINT_C_EN_TXT_URL, title: "Point C paste packs (EN)" },
+        { url: POINT_C_WELLKNOWN_URL, title: "Point C paste packs (well-known invent alias)" },
       ],
       "text/markdown": [{ url: AGENTS_MD_URL, title: "AGENTS.md" }],
     },
@@ -159,6 +175,8 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "application/ld+json", href: GEO_BASELINE_URL, title: "GEO Technical Baseline" },
   { rel: "alternate", type: "application/ld+json", href: ARD_URL, title: "Agentic Resource Discovery" },
   { rel: "alternate", type: "application/ld+json", href: AGENTS_JSON_URL, title: "Agent Discovery Index" },
+  { rel: "alternate", type: "application/ld+json", href: AGENTS_JSON_ROOT_URL, title: "Agent Discovery Index (root invent alias)" },
+  { rel: "alternate", type: "application/ld+json", href: AGENT_WELLKNOWN_URL, title: "Agent Discovery Index (agent invent alias)" },
   {
     rel: "alternate",
     type: "text/tab-separated-values",
@@ -167,11 +185,17 @@ export const aiDiscoveryLinks = [
   },
   { rel: "alternate", type: "application/rss+xml", href: PRICES_RSS_URL, title: "Panel Price Updates RSS" },
   { rel: "alternate", type: "text/plain", href: LLMS_URL, title: "LLM Context (Short)" },
+  { rel: "alternate", type: "text/plain", href: LLMS_WELLKNOWN_URL, title: "LLM Context (well-known invent alias)" },
   { rel: "alternate", type: "text/plain", href: LLMS_FULL_URL, title: "LLM Context (Full)" },
+  { rel: "alternate", type: "text/plain", href: LLMS_FULL_WELLKNOWN_URL, title: "LLM Context Full (well-known invent alias)" },
   { rel: "alternate", type: "text/plain", href: AI_TXT_URL, title: "AI Discovery Pointer" },
+  { rel: "alternate", type: "text/plain", href: AI_TXT_WELLKNOWN_URL, title: "AI Discovery Pointer (well-known invent alias)" },
   { rel: "alternate", type: "text/plain", href: HUMANS_TXT_URL, title: "Humans.txt" },
+  { rel: "alternate", type: "text/plain", href: HUMANS_WELLKNOWN_URL, title: "humans.txt well-known invent alias" },
   { rel: "alternate", type: "text/plain", href: SECURITY_TXT_URL, title: "security.txt (RFC 9116)" },
   { rel: "alternate", type: "text/plain", href: POINT_C_TXT_URL, title: "Point C paste packs" },
+  { rel: "alternate", type: "text/plain", href: POINT_C_EN_TXT_URL, title: "Point C paste packs (EN)" },
+  { rel: "alternate", type: "text/plain", href: POINT_C_WELLKNOWN_URL, title: "Point C paste packs (well-known invent alias)" },
   { rel: "alternate", type: "text/markdown", href: AGENTS_MD_URL, title: "AGENTS.md" },
   // RFC 8288: machine agents that follow Link / describedby land on price + entity + brand.
   { rel: "describedby", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping pricedPanels" },

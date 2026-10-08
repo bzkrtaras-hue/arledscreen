@@ -40,13 +40,21 @@
     <atom:link href="https://arledscreen.com/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/.well-known/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/.well-known/agents.json" rel="related" type="application/ld+json"/>
+    <atom:link href="https://arledscreen.com/agents.json" rel="related" type="application/ld+json"/>
+    <atom:link href="https://arledscreen.com/.well-known/agent.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/.well-known/ard.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/ai.txt" rel="related" type="text/plain"/>
+    <atom:link href="https://arledscreen.com/.well-known/ai.txt" rel="related" type="text/plain"/>
     <atom:link href="https://arledscreen.com/llms.txt" rel="related" type="text/plain"/>
+    <atom:link href="https://arledscreen.com/.well-known/llms.txt" rel="related" type="text/plain"/>
     <atom:link href="https://arledscreen.com/llms-full.txt" rel="related" type="text/plain"/>
+    <atom:link href="https://arledscreen.com/.well-known/llms-full.txt" rel="related" type="text/plain"/>
     <atom:link href="https://arledscreen.com/humans.txt" rel="related" type="text/plain"/>
+    <atom:link href="https://arledscreen.com/.well-known/humans.txt" rel="related" type="text/plain"/>
     <atom:link href="https://arledscreen.com/AGENTS.md" rel="related" type="text/markdown"/>
     <atom:link href="https://arledscreen.com/.well-known/security.txt" rel="related" type="text/plain"/>
+    <atom:link href="https://arledscreen.com/point-c-en.txt" rel="related" type="text/plain"/>
+    <atom:link href="https://arledscreen.com/.well-known/point-c.txt" rel="related" type="text/plain"/>
     <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /offer.json · /offers.json · /dataset.json · /feed.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: https://arledscreen.com/brand.json · Entity: https://arledscreen.com/entity.json · WebSite: https://arledscreen.com/#website · Organization alias: https://arledscreen.com/organization.json · GEO: https://arledscreen.com/geo-baseline.json · Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json · Owner next: npm run geo:next · after paste: npm run geo:ack</description>
     <language>tr</language>
     <lastBuildDate>2026-10-08T00:00:00Z</lastBuildDate>

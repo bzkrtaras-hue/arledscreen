@@ -51,6 +51,14 @@
     "https://arledscreen.com/entity-profiles.json",
     "https://arledscreen.com/#website",
     "https://arledscreen.com/point-c.txt",
+    "https://arledscreen.com/modules.json",
+    "https://arledscreen.com/sku.json",
+    "https://arledscreen.com/pricing.json",
+    "https://arledscreen.com/panels.json",
+    "https://arledscreen.com/mpn.json",
+    "https://arledscreen.com/merchant.json",
+    "https://arledscreen.com/prices.json",
+    "https://arledscreen.com/price.json",
     "https://arledscreen.com/.well-known/modules.json",
     "https://arledscreen.com/.well-known/sku.json",
     "https://arledscreen.com/.well-known/pricing.json",
@@ -76,13 +84,21 @@
     "https://arledscreen.com/.well-known/entity-profiles.json",
     "https://arledscreen.com/.well-known/ai-shopping.json",
     "https://arledscreen.com/.well-known/agents.json",
+    "https://arledscreen.com/agents.json",
+    "https://arledscreen.com/.well-known/agent.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
+    "https://arledscreen.com/.well-known/ai.txt",
     "https://arledscreen.com/llms.txt",
+    "https://arledscreen.com/.well-known/llms.txt",
     "https://arledscreen.com/llms-full.txt",
+    "https://arledscreen.com/.well-known/llms-full.txt",
     "https://arledscreen.com/humans.txt",
+    "https://arledscreen.com/.well-known/humans.txt",
     "https://arledscreen.com/AGENTS.md",
-    "https://arledscreen.com/.well-known/security.txt"
+    "https://arledscreen.com/.well-known/security.txt",
+    "https://arledscreen.com/point-c-en.txt",
+    "https://arledscreen.com/.well-known/point-c.txt"
   ],
   "mainEntityOfPage": "https://arledscreen.com/tr/led-ekran-fiyatlari/",
   "isRelatedTo": [
@@ -109,6 +125,14 @@
     "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/entity-profiles.json",
     "https://arledscreen.com/#website",
+    "https://arledscreen.com/modules.json",
+    "https://arledscreen.com/sku.json",
+    "https://arledscreen.com/pricing.json",
+    "https://arledscreen.com/panels.json",
+    "https://arledscreen.com/mpn.json",
+    "https://arledscreen.com/merchant.json",
+    "https://arledscreen.com/prices.json",
+    "https://arledscreen.com/price.json",
     "https://arledscreen.com/.well-known/modules.json",
     "https://arledscreen.com/.well-known/sku.json",
     "https://arledscreen.com/.well-known/pricing.json",
@@ -134,13 +158,21 @@
     "https://arledscreen.com/.well-known/entity-profiles.json",
     "https://arledscreen.com/.well-known/ai-shopping.json",
     "https://arledscreen.com/.well-known/agents.json",
+    "https://arledscreen.com/agents.json",
+    "https://arledscreen.com/.well-known/agent.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
+    "https://arledscreen.com/.well-known/ai.txt",
     "https://arledscreen.com/llms.txt",
+    "https://arledscreen.com/.well-known/llms.txt",
     "https://arledscreen.com/llms-full.txt",
+    "https://arledscreen.com/.well-known/llms-full.txt",
     "https://arledscreen.com/humans.txt",
+    "https://arledscreen.com/.well-known/humans.txt",
     "https://arledscreen.com/AGENTS.md",
-    "https://arledscreen.com/.well-known/security.txt"
+    "https://arledscreen.com/.well-known/security.txt",
+    "https://arledscreen.com/point-c-en.txt",
+    "https://arledscreen.com/.well-known/point-c.txt"
   ],
   "hasPart": [
     {
@@ -1305,6 +1337,18 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/agents.json",
+      "name": "Agent Discovery Index (root invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/agent.json",
+      "name": "Agent Discovery Index (agent invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/ard.json",
       "name": "ARLEDSCREEN ARD"
     },
@@ -1317,8 +1361,20 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/ai.txt",
+      "name": "AI Agent Discovery Pointer (well-known invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/llms.txt",
       "name": "LLM Context"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/llms.txt",
+      "name": "LLM Context (well-known invent alias)"
     },
     {
       "@type": "DataDownload",
@@ -1329,8 +1385,20 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/llms-full.txt",
+      "name": "LLM Context Full (well-known invent alias)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/humans.txt",
       "name": "humans.txt discovery"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/humans.txt",
+      "name": "humans.txt well-known invent alias"
     },
     {
       "@type": "DataDownload",
@@ -1343,6 +1411,18 @@
       "encodingFormat": "text/plain",
       "contentUrl": "https://arledscreen.com/.well-known/security.txt",
       "name": "security.txt (RFC 9116)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/point-c-en.txt",
+      "name": "Point C paste packs (EN)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/.well-known/point-c.txt",
+      "name": "Point C paste packs (well-known invent alias)"
     },
     {
       "@type": "DataDownload",
