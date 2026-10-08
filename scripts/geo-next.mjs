@@ -40,6 +40,7 @@ if (acked < POINT_C_STEPS) {
   console.log("=== ARLEDSCREEN GEO next (Point C paste) ===");
   console.log(`Priority gate: Point C · ${acked}/${POINT_C_STEPS} acked`);
   console.log("After paste: npm run point-c:ack");
+  console.log("CSV: npm run point-c:csv · Playbook: docs/offsite-entity-playbook.md");
   console.log("");
   const next = runNode("scripts/print-point-c-packs.mjs", ["--next"]);
   process.stdout.write(String(next.stdout || ""));
@@ -59,11 +60,15 @@ if (probe.status !== 0) {
   );
   console.log("");
   const mod = await import(path.join(repoRoot, "scripts/print-point-c-packs.mjs"));
+  if (mod.DNSENABLE_PANEL_URL) console.log(`Open: ${mod.DNSENABLE_PANEL_URL}`);
+  if (mod.DNSENABLE_GMAIL_DRAFT_URL) console.log(`OpenAlt: ${mod.DNSENABLE_GMAIL_DRAFT_URL}`);
+  console.log("Verify prints Where:/Open:/OpenAlt: — npm run verify:arleds-301");
+  console.log("");
   console.log(mod.buildArleds301DualPathClipboard());
   console.log("");
   if (verifyLog.includes("DNS diagnosis")) {
     console.log("--- verify:arleds-301 (live) ---");
-    for (const row of verifyLog.split("\n").filter((l) => /^(mode:|arleds\.com NS:|NS looks|Option )/i.test(l))) {
+    for (const row of verifyLog.split("\n").filter((l) => /^(mode:|arleds\.com NS:|NS looks|Option |Where:|Open:)/i.test(l))) {
       console.log(row);
     }
     console.log("");

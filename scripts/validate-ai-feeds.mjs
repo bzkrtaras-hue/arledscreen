@@ -1691,12 +1691,29 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("quote-tr:") ||
     !aiTxtLive.includes("/tr/quote/") ||
     !aiTxtLive.includes("owner-tur1a-log:") ||
+    !aiTxtLive.includes("owner-tur1a-csv:") ||
+    !aiTxtLive.includes("owner-tur1a-open:") ||
+    !aiTxtLive.includes("owner-point-c-csv:") ||
     !aiTxtLive.includes("owner-arleds-301:") ||
+    !aiTxtLive.includes("owner-arleds-open:") ||
+    !aiTxtLive.includes("https://www.isimtescil.net/") ||
+    !aiTxtLive.includes("point-c:csv") ||
     !aiTxtLive.includes("point-c:")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds Open/csv");
     process.exit(1);
   }
+  const geoNextSrc = fs.readFileSync(path.join(repoRoot, "scripts/geo-next.mjs"), "utf8");
+  if (
+    !geoNextSrc.includes("point-c:csv") ||
+    !geoNextSrc.includes("offsite-entity-playbook.md") ||
+    !geoNextSrc.includes("DNSENABLE_PANEL_URL") ||
+    !geoNextSrc.includes("Open:")
+  ) {
+    console.error("❌ scripts/geo-next.mjs must surface point-c:csv + playbook + DNSEnable Open tabs");
+    process.exit(1);
+  }
+  console.log("✅ ai.txt + geo:next owner Open/csv friction pointers");
   if (
     !aiTxtLive.includes("/en/prices/") ||
     !aiTxtLive.includes("/en/pricing/") ||

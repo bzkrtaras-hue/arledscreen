@@ -3612,7 +3612,7 @@ prices-rss: ${SITE_URL}/feeds/prices.rss
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
-owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · ${SITE_URL}/point-c.txt
+owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md
 brand-json: ${SITE_URL}/brand.json
 brand-json-well-known: ${SITE_URL}/.well-known/brand.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/
@@ -3823,8 +3823,13 @@ point-c: ${SITE_URL}/point-c.txt
 point-c-en: ${SITE_URL}/point-c-en.txt
 point-c-well-known: ${SITE_URL}/.well-known/point-c.txt
 owner-tur1a-next: npm run tur1a:next
+owner-tur1a-csv: npm run tur1a:csv
 owner-tur1a-log: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…
+owner-tur1a-open: https://chatgpt.com/ · https://gemini.google.com/app · https://www.perplexity.ai/ · https://www.google.com/
+owner-point-c-csv: npm run point-c:csv
+owner-arleds-open: https://www.isimtescil.net/
 owner-arleds-301: npm run verify:arleds-301
+owner-arleds-open: https://www.isimtescil.net/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/
