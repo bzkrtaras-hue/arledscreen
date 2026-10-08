@@ -25,7 +25,7 @@ Bu işlerin çoğu **sahip / PR / saha** operasyonudur. Kod deposu NAP tutarlıl
 Kod tarafı canlı; sahip kapıları sırayla. Repo CLI şart değil — canlı URL’ler yeterli.
 Invent agents: follow `potentialAction` HowTo on `/geo-status.json` (priority-aware) or pack JSON.
 
-1. Open live friction: https://arledscreen.com/owner-next.html?start=1 (auto **C**) — or https://arledscreen.com/owner-next.html then **C** = Copy + Open remaining (paste bundle + all Open tabs; textarea restores first open pack) · **O** / **R** · **U** = Undo pasted · dbl-click pack = Copy + Open · Enter = Copy + Open all
+1. Open live friction: https://arledscreen.com/owner-next.html?start=1 (auto **C**) — or https://arledscreen.com/owner-next.html then **C** = Copy + Open remaining (paste bundle + all Open tabs; textarea restores first open pack) · **O** / **R** · **U** = Undo pasted · **F**/**I**/**W** or `?social=fb|ig|wa` = social pack + profile · dbl-click pack = Copy + Open · Enter = Copy + Open all
 2. Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ (or use **C** / **O** on `/owner-next`)
 3. Paste from the **C**/**R** bundle (or https://arledscreen.com/point-c.json → `next.text` · https://arledscreen.com/geo-next.txt / `/owner-next.txt` · HowTo step 2)
 4. After paste: **N** = Pasted → next · then `npm run point-c:ack -- --pack=directoryLong` (or **B** ack batch · `npm run geo:ack` · HowTo step 3)
@@ -140,9 +140,9 @@ Birinci taraf (zaten var — tek başına yetmez): site, entity.json, llms.txt.
 | 2 | Bing Places / Microsoft | Aynı NAP | [ ] | |
 | 3 | LinkedIn şirket | company/arleds — About = linkedinAbout pack | [ ] | https://www.linkedin.com/company/arleds |
 | 4 | LinkedIn kurucu | bozkurtaras — şirket linki + proje postları | [ ] | https://www.linkedin.com/in/bozkurtaras |
-| 5 | Instagram | @arledscreen bio pack | [ ] | https://www.instagram.com/arledscreen |
-| 6 | Facebook | @arledscreenn About = orta cite + NAP | [ ] | https://www.facebook.com/arledscreenn |
-| 6b | WhatsApp | @arledscreen · click-to-chat phone | [ ] | https://wa.me/905305078834 |
+| 5 | Instagram | @arledscreen bio pack | [ ] | https://www.instagram.com/arledscreen · owner https://arledscreen.com/owner-next.html?social=ig |
+| 6 | Facebook | @arledscreenn About = orta cite + NAP | [ ] | https://www.facebook.com/arledscreenn · owner https://arledscreen.com/owner-next.html?social=fb |
+| 6b | WhatsApp | @arledscreen · click-to-chat phone | [ ] | https://wa.me/905305078834 · owner https://arledscreen.com/owner-next.html?social=wa |
 | 7 | YouTube kanalı | About + banner; sonra schema `sameAs` | [ ] | |
 | 8 | TR işletme / sektör dizini #1 | Kısa + uzun dizin pack + entity.json | [ ] | |
 | 9 | TR işletme / sektör dizini #2 | Farklı domain | [ ] | |

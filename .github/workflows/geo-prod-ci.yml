@@ -195,6 +195,10 @@ jobs:
           grep -q 'owner-social-ig:' out/ai.txt
           grep -q 'social=fb' out/AGENTS.md
           grep -q 'social=wa' out/AGENTS.md
+          grep -q 'social=fb' out/.well-known/security.txt
+          grep -q 'social=ig' out/.well-known/security.txt
+          grep -q '?social=fb' docs/offsite-entity-playbook.md
+          grep -q '?social=ig' docs/offsite-entity-playbook.md
           grep -q 'ownerNextHtml' out/.well-known/ard.json
           grep -q 'ownerNextJson' out/.well-known/ard.json
           test -f out/owner-next.html && test -f out/geo-next.html
