@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "include": ["/", "/robots.txt"],
+  "include": ["/", "/robots.txt", "/brand", "/modules"],
   "exclude": [
     "/entity.json",
     "/entity-profiles.json",

@@ -170,8 +170,9 @@
 /en/rehber/led-ekran-fiyatlari /en/led-ekran-fiyatlari/ 301
 /en/rehber/led-ekran-fiyatlari/ /en/led-ekran-fiyatlari/ 301
 
-# Inventable exact-path rewrites — out/brand/ and out/modules/ are asset
-# directories, so extensionless files cannot be written there. Serve JSON feeds
-# at the bare path without clobbering /brand/* or /modules/* assets.
+# Inventable exact-path aliases for /brand + /modules.
+# Primary: Pages Functions (functions/brand.js · functions/modules.js) via
+# _routes.json include — asset dirs make _redirects 200 rewrites unreliable.
+# Keep these 200 rewrites as a secondary static fallback.
 /brand /brand.json 200
 /modules /modules.json 200

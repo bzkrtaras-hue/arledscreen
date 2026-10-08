@@ -881,9 +881,20 @@ if (
 
 {
   const redirects = readText("_redirects");
+  const routes = readText("_routes.json");
+  const brandFn = fs.existsSync(path.join(__dirname, "..", "functions", "brand.js"));
+  const modulesFn = fs.existsSync(path.join(__dirname, "..", "functions", "modules.js"));
   if (redirects.includes("/brand /brand.json 200") && redirects.includes("/modules /modules.json 200")) {
     ok("_redirects invent /brand+/modules → *.json");
   } else fail("_redirects invent /brand+/modules → *.json");
+  if (
+    routes.includes('"/brand"') &&
+    routes.includes('"/modules"') &&
+    brandFn &&
+    modulesFn
+  ) {
+    ok("_routes.json + functions invent /brand+/modules (asset-dir bypass)");
+  } else fail("_routes.json + functions invent /brand+/modules (asset-dir bypass)");
 }
 
 if (process.exitCode) {

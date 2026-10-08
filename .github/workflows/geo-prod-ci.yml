@@ -133,6 +133,9 @@ jobs:
           grep -qE '"contentUrl": "https://arledscreen.com/modules"' out/ai-shopping.json
           grep -q "/brand /brand.json 200" out/_redirects
           grep -q "/modules /modules.json 200" out/_redirects
+          grep -q '"/brand"' out/_routes.json
+          grep -q '"/modules"' out/_routes.json
+          test -f functions/brand.js && test -f functions/modules.js
           grep -q 'https://arledscreen.com/brand>' out/_headers
           grep -q 'https://arledscreen.com/modules>' out/_headers
           test -f out/.well-known/ai-shopping.json && cmp -s out/ai-shopping.json out/.well-known/ai-shopping.json

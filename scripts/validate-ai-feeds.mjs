@@ -2302,6 +2302,20 @@ if (fs.existsSync(outDir)) {
     console.error("❌ out/_redirects must rewrite /brand + /modules → *.json (asset-dir invent aliases)");
     process.exit(1);
   }
+  const routesLive = fs.existsSync(path.join(outDir, "_routes.json"))
+    ? fs.readFileSync(path.join(outDir, "_routes.json"), "utf8")
+    : "";
+  if (!routesLive.includes('"/brand"') || !routesLive.includes('"/modules"')) {
+    console.error("❌ out/_routes.json must include /brand + /modules (Pages Functions invent aliases)");
+    process.exit(1);
+  }
+  if (
+    !fs.existsSync(path.join(process.cwd(), "functions", "brand.js")) ||
+    !fs.existsSync(path.join(process.cwd(), "functions", "modules.js"))
+  ) {
+    console.error("❌ functions/brand.js + functions/modules.js required for asset-dir invent aliases");
+    process.exit(1);
+  }
   for (const htmlRel of ["en/index.html", "tr/index.html", "en/yapay-zeka/index.html"]) {
     const htmlPath = path.join(outDir, htmlRel);
     if (!fs.existsSync(htmlPath)) {
