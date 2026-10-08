@@ -3641,6 +3641,50 @@ function mergeArdUrlInvent(node, { subjectExtra = [], distExtra = [] } = {}) {
   return node;
 }
 
+/** agents.json ItemList — sameAs + subjectOf → owner-gate HowTo (parity with geo/profiles). */
+function enrichAgentsOwnerGateInvent() {
+  const agentsPath = path.join(publicDir, ".well-known", "agents.json");
+  if (!fs.existsSync(agentsPath)) return;
+  let agents;
+  try {
+    agents = JSON.parse(fs.readFileSync(agentsPath, "utf8"));
+  } catch {
+    console.warn("postbuild-ai: agents.json parse failed — skip owner-gate invent enrich");
+    return;
+  }
+  const same = new Set(Array.isArray(agents.sameAs) ? agents.sameAs.map(String) : []);
+  for (const u of [
+    `${SITE_URL}/.well-known/ard.json`,
+    `${SITE_URL}/entity.json`,
+    `${SITE_URL}/brand.json`,
+    `${SITE_URL}/ai-shopping.json`,
+    `${SITE_URL}/catalog.json`,
+    `${SITE_URL}/geo-baseline.json`,
+    `${SITE_URL}/entity-profiles.json`,
+    `${SITE_URL}/point-c.txt`,
+    `${SITE_URL}/#website`,
+    ...ownerGateSameAsUrls(),
+  ]) {
+    same.add(u);
+  }
+  agents.sameAs = [...same];
+
+  const byId = new Map();
+  for (const entry of Array.isArray(agents.subjectOf) ? agents.subjectOf : []) {
+    if (entry && typeof entry === "object" && entry["@id"]) byId.set(String(entry["@id"]), entry);
+  }
+  for (const entry of ownerGateSubjectOfEntries()) {
+    byId.set(String(entry["@id"]), entry);
+  }
+  agents.subjectOf = [...byId.values()];
+
+  const body = JSON.stringify(agents, null, 2) + "\n";
+  fs.writeFileSync(agentsPath, body);
+  const outAgents = path.join(outDir, ".well-known", "agents.json");
+  fs.mkdirSync(path.dirname(outAgents), { recursive: true });
+  fs.writeFileSync(outAgents, body);
+}
+
 /** ARD invent — brand/geo/profiles/pointC/aiShopping/entity/agents* → owner-gate HowTo. */
 function enrichArdOwnerGateInvent() {
   const ardPath = path.join(publicDir, ".well-known", "ard.json");
@@ -4133,6 +4177,7 @@ function main() {
     process.exit(1);
   }
   enrichArdOwnerGateInvent();
+  enrichAgentsOwnerGateInvent();
   if (!copyPublicToOut(".well-known/ard.json")) {
     console.warn("postbuild-ai: public/.well-known/ard.json missing — ARD surface not copied");
   }

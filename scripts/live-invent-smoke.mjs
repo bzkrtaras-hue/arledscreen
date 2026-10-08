@@ -260,11 +260,16 @@ if (
   JSON.stringify(agents.sameAs || []).includes("/tur1a.json") &&
   JSON.stringify(agents.sameAs || []).includes("/point-c-progress.json") &&
   JSON.stringify(agents.sameAs || []).includes("/geo-baseline.json") &&
+  JSON.stringify(agents.subjectOf || []).includes("/point-c.json") &&
+  JSON.stringify(agents.subjectOf || []).includes("/geo-status.json") &&
+  JSON.stringify(agents.subjectOf || []).includes("/geo-next.txt") &&
+  JSON.stringify(agents.subjectOf || []).includes("/tur1a.json") &&
+  JSON.stringify(agents.subjectOf || []).includes("/point-c-progress.json") &&
   String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") &&
   String(agents?.ownerNext || "").includes("https://chatgpt.com/")
 ) {
-  ok(`agents.json ×${agents.itemListElement.length} sameAs→owner-gate HowTo + security + potentialAction`);
-} else fail("agents.json ×26 sameAs→owner-gate HowTo + security + potentialAction");
+  ok(`agents.json ×${agents.itemListElement.length} sameAs+subjectOf→owner-gate HowTo + security`);
+} else fail("agents.json ×26 sameAs+subjectOf→owner-gate HowTo + security");
 
 try {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;

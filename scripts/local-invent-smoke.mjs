@@ -199,10 +199,15 @@ if (
   JSON.stringify(agents?.sameAs || []).includes("/geo-status.json") &&
   JSON.stringify(agents?.sameAs || []).includes("/geo-next.txt") &&
   JSON.stringify(agents?.sameAs || []).includes("/tur1a.json") &&
-  JSON.stringify(agents?.sameAs || []).includes("/point-c-progress.json")
+  JSON.stringify(agents?.sameAs || []).includes("/point-c-progress.json") &&
+  JSON.stringify(agents?.subjectOf || []).includes("/point-c.json") &&
+  JSON.stringify(agents?.subjectOf || []).includes("/geo-status.json") &&
+  JSON.stringify(agents?.subjectOf || []).includes("/geo-next.txt") &&
+  JSON.stringify(agents?.subjectOf || []).includes("/tur1a.json") &&
+  JSON.stringify(agents?.subjectOf || []).includes("/point-c-progress.json")
 ) {
-  ok(`agents.json ×${agents.itemListElement.length} sameAs→owner-gate HowTo + security + point-c:csv Open`);
-} else fail("agents.json ≥20 sameAs→owner-gate HowTo + security + point-c:csv Open");
+  ok(`agents.json ×${agents.itemListElement.length} sameAs+subjectOf→owner-gate HowTo + security`);
+} else fail("agents.json ≥20 sameAs+subjectOf→owner-gate HowTo + security");
 
 {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;

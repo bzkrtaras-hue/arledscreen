@@ -2527,6 +2527,7 @@ if (fs.existsSync(outDir)) {
   }
   {
     const agentsSame = JSON.stringify(agents.sameAs || []);
+    const agentsSubject = JSON.stringify(agents.subjectOf || []);
     for (const needle of [
       "/.well-known/ard.json",
       "/entity.json",
@@ -2545,6 +2546,12 @@ if (fs.existsSync(outDir)) {
     ]) {
       if (!agentsSame.includes(needle)) {
         console.error(`❌ agents.json sameAs must join invent/owner-gate HowTo ${needle}`);
+        process.exit(1);
+      }
+    }
+    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      if (!agentsSubject.includes(needle)) {
+        console.error(`❌ agents.json subjectOf must join owner-gate HowTo ${needle}`);
         process.exit(1);
       }
     }
