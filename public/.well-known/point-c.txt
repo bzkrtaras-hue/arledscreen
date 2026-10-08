@@ -38,13 +38,13 @@ OpenAlt: https://www.google.com/business/
 ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
 
 ### Instagram Adı (instagramName)
-Where: https://www.instagram.com/arledscreen → Edit profile → Name
+Where: Instagram @arledscreen → https://www.instagram.com/arledscreen → Edit profile → Name
 Open: https://www.instagram.com/arledscreen/
 OpenAlt: https://www.instagram.com/accounts/edit/
 ARLEDSCREEN
 
 ### Instagram Bio (instagramBio)
-Where: https://www.instagram.com/arledscreen → Edit profile → Bio
+Where: Instagram @arledscreen → https://www.instagram.com/arledscreen → Edit profile → Bio
 Open: https://www.instagram.com/arledscreen/
 OpenAlt: https://www.instagram.com/accounts/edit/
 İstanbul LED · NXTIONSTAR
@@ -53,7 +53,7 @@ arledscreen.com/tr/
 +90 530 507 88 34
 
 ### Facebook About (facebookAbout)
-Where: https://www.facebook.com/arledscreenn → About / Page info
+Where: Facebook @arledscreenn → https://www.facebook.com/arledscreenn → About / Page info
 Open: https://www.facebook.com/arledscreenn
 OpenAlt: https://business.facebook.com/
 ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.
