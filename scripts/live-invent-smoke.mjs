@@ -491,7 +491,11 @@ try {
     String(pcJson?.potentialAction?.name || "").includes("directoryLong") &&
     Array.isArray(pcJson?.potentialAction?.step) &&
     pcJson.potentialAction.step.length >= 3 &&
+    String(pcJson?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
     String(pcJson.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
+    (pcJson?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("/owner-next.html?start=1"),
+    ) &&
     String(pcJson?.description || "").includes("potentialAction") &&
     String(pcJson?.ownerNext || "").includes("potentialAction") &&
     String(pcJson?.ownerNext || "").includes("/point-c-progress.json") &&
@@ -585,7 +589,11 @@ try {
     String(pointCNext.html || "").includes("?pack=directoryLong") &&
     Array.isArray(geoStatus?.gates?.pointC?.packs) &&
     geoStatus.gates.pointC.packs.length >= 11 &&
-    String(geoStatus?.potentialAction?.url || "").includes("?pack=") &&
+    String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
+    String(geoStatus.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
+    (geoStatus?.potentialAction?.tool || []).some((t) =>
+      String(t?.url || "").includes("/owner-next.html?start=1"),
+    ) &&
     String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") &&
     String(geoStatus?.priorityGate || "") === "pointC" &&
     geoStatus?.potentialAction?.["@type"] === "HowTo" &&
@@ -638,8 +646,11 @@ try {
       progress.packs.length >= 11 &&
       progress.packs.some((p) => String(p?.html || "").includes("?pack=directoryLong")) &&
       String(progress?.next?.html || "").includes("?pack=") &&
-      String(progress?.potentialAction?.url || "").includes("?pack=") &&
-      (progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html")) &&
+      String(progress?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
+      String(progress.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
+      (progress?.potentialAction?.tool || []).some((t) =>
+        String(t?.url || "").includes("/owner-next.html?start=1"),
+      ) &&
       crossOk
     ) {
       ok("owner-gate docs cross-join sameAs/subjectOf/isBasedOn/distribution + HowTo");
