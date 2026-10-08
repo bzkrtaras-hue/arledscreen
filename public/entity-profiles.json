@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "ARLEDSCREEN entity profile paste packs (Point C)",
-  "description": "Third-party profile paste packs for humans (GBP/IG/FB/LinkedIn) + machine Merchant notes. Owner-operated Point C. Human packs = cite facts only — no catalog.json / quote-only / extrasUsd jargon in public bios. Prices for AI: ai-shopping.json. GEO baseline: geo-baseline.json. Do not invent ratings. Owner single clipboard: npm run geo:next. After paste: npm run geo:ack. WebSite: https://arledscreen.com/#website. Spreadsheet: npm run point-c:csv. Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/.",
+  "description": "Third-party profile paste packs for humans (GBP/IG/FB/LinkedIn) + machine Merchant notes. Owner-operated Point C. Human packs = cite facts only — no catalog.json / quote-only / extrasUsd jargon in public bios. Prices for AI: ai-shopping.json. GEO baseline: geo-baseline.json. Do not invent ratings. Owner single clipboard: npm run geo:next. After paste: npm run geo:ack. WebSite: https://arledscreen.com/#website. Spreadsheet: npm run point-c:csv. Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/. Live clipboard: https://arledscreen.com/geo-next.txt. Machine next: https://arledscreen.com/point-c.json → next. Open: https://www.bingplaces.com/. OpenAlt: https://businessconnect.apple.com/.",
   "url": "https://arledscreen.com/entity-profiles.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -233,7 +233,7 @@
     ]
   },
   "ownerP0Checklist": [
-    "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok; Open:/OpenAlt: per pack) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md",
+    "P0 next: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (packKey=directoryLong; text; Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/) · status https://arledscreen.com/geo-status.json → gates.pointC.next · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md",
     "GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok) · Open: https://business.google.com/",
     "Instagram Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)",
     "Facebook About = packs.facebookAbout · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)",
