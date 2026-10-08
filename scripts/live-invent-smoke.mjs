@@ -599,6 +599,11 @@ try {
     ownerNextHtml.includes("renderPackDeepLink") &&
     ownerNextHtml.includes("pack-deep") &&
     ownerNextHtml.includes("pack-deep-a") &&
+    ownerNextHtml.includes("waPasteShareUrl") &&
+    ownerNextHtml.includes("doWaPasteShare") &&
+    ownerNextHtml.includes("wa-paste-share") &&
+    ownerNextHtml.includes("WA paste") &&
+    ownerNextHtml.includes('e.key === "m"') &&
     ownerNextHtml.includes("Open×") &&
     ownerNextHtml.includes("activeOpens") &&
     ownerNextHtml.includes("socialFocus") &&

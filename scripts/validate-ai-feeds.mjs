@@ -2682,6 +2682,11 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("renderPackDeepLink") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-deep") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-deep-a") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("waPasteShareUrl") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doWaPasteShare") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("wa-paste-share") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("WA paste") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "m"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open×") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("activeOpens") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("socialFocus") ||

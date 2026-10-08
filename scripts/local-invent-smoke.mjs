@@ -623,6 +623,11 @@ else fail("ard.resources.pointC");
     html.includes("renderPackDeepLink") &&
     html.includes("pack-deep") &&
     html.includes("pack-deep-a") &&
+    html.includes("waPasteShareUrl") &&
+    html.includes("doWaPasteShare") &&
+    html.includes("wa-paste-share") &&
+    html.includes("WA paste") &&
+    html.includes('e.key === "m"') &&
     html.includes("Open×") &&
     html.includes("activeOpens") &&
     html.includes("socialFocus") &&

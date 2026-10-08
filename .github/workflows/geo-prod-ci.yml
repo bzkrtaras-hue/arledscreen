@@ -245,6 +245,12 @@ jobs:
           grep -q 'renderPackDeepLink' out/owner-next.html
           grep -q 'pack-deep' out/owner-next.html
           grep -q 'pack-deep-a' out/owner-next.html
+          grep -q 'waPasteShareUrl' out/owner-next.html
+          grep -q 'doWaPasteShare' out/owner-next.html
+          grep -q 'wa-paste-share' out/owner-next.html
+          grep -q 'WA paste' out/owner-next.html
+          grep -q 'e.key === "m"' out/owner-next.html
+          grep -q 'WA paste' docs/offsite-entity-playbook.md
           grep -q 'Open×' out/owner-next.html
           grep -q 'activeOpens' out/owner-next.html
           grep -q 'socialFocus' out/owner-next.html
@@ -350,4 +356,5 @@ jobs:
           grep -q "copy=1" /tmp/geo-status.txt
           grep -q "@arledscreenn" /tmp/geo-status.txt
           grep -q "D=Copy pack link" /tmp/geo-status.txt
+          grep -q "M=WA paste" /tmp/geo-status.txt
           echo "OK owner tooling"
