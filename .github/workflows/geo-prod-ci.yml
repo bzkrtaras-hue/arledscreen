@@ -96,6 +96,10 @@ jobs:
           grep -q "/point-c.txt" out/feeds/prices.rss
           grep -q "owner-tur1a-log:" out/ai.txt
           grep -q "feed-alias-well-known-modules:" out/ai.txt
+          grep -q 'owner-next.html?social=fb' scripts/submit-indexnow.mjs
+          grep -q 'owner-next.html?social=ig' scripts/submit-indexnow.mjs
+          grep -q 'owner-next.html?social=wa' scripts/submit-indexnow.mjs
+          grep -q 'geo-next.html?social=fb' scripts/submit-indexnow.mjs
           grep -q "/.well-known/modules.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/sku.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/price.json" scripts/submit-indexnow.mjs
