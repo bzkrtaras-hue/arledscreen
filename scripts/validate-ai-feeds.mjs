@@ -2033,6 +2033,8 @@ if (fs.existsSync(outDir)) {
       !llmsGeo.includes("point-c:csv") ||
       !llmsGeo.includes("/geo-next.txt") ||
       !llmsGeo.includes("/point-c.json") ||
+      !llmsGeo.includes("/point-c-progress.json") ||
+      !llmsGeo.includes("potentialAction") ||
       !llmsGeo.includes("directoryLong") ||
       !llmsGeo.includes("https://www.bingplaces.com/") ||
       !llmsGeo.includes("https://www.isimtescil.net/") ||
@@ -2041,7 +2043,7 @@ if (fs.existsSync(outDir)) {
       !llmsGeo.includes("/.well-known/brand.json") ||
       !llmsGeo.includes("#website")
     ) {
-      console.error("❌ out/llms.txt must cite live geo-next/point-c.json next (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
+      console.error("❌ out/llms.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
       process.exit(1);
     }
     const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
@@ -2051,6 +2053,8 @@ if (fs.existsSync(outDir)) {
       !llmsFullLive.includes("point-c:csv") ||
       !llmsFullLive.includes("/geo-next.txt") ||
       !llmsFullLive.includes("/point-c.json") ||
+      !llmsFullLive.includes("/point-c-progress.json") ||
+      !llmsFullLive.includes("potentialAction") ||
       !llmsFullLive.includes("directoryLong") ||
       !llmsFullLive.includes("https://www.bingplaces.com/") ||
       !llmsFullLive.includes("https://www.isimtescil.net/") ||
@@ -2058,7 +2062,7 @@ if (fs.existsSync(outDir)) {
       !llmsFullLive.includes("/.well-known/brand.json") ||
       !llmsFullLive.includes("#website")
     ) {
-      console.error("❌ out/llms-full.txt must cite live geo-next/point-c.json next (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
+      console.error("❌ out/llms-full.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
       process.exit(1);
     }
   }
@@ -2114,6 +2118,8 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("point-c:csv") ||
       !humansLive.includes("/geo-next.txt") ||
       !humansLive.includes("/point-c.json") ||
+      !humansLive.includes("/point-c-progress.json") ||
+      !humansLive.includes("potentialAction") ||
       !humansLive.includes("directoryLong") ||
       !humansLive.includes("https://www.bingplaces.com/") ||
       !humansLive.includes("https://www.isimtescil.net/") ||
@@ -2127,7 +2133,7 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/tr/prices.json") ||
       !humansLive.includes("/llms-full")
     ) {
-      console.error("❌ out/humans.txt must cite live geo-next/point-c.json next (directoryLong Bing) + ai-shopping + catalog + point-c + geo:next/ack + Open tabs + security + api/locale invent");
+      console.error("❌ out/humans.txt must cite live geo-next/point-c/progress potentialAction HowTo (directoryLong Bing) + ai-shopping + catalog + point-c + geo:next/ack + Open tabs + security + api/locale invent");
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");

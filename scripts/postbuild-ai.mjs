@@ -35,7 +35,7 @@ const BRAND_URL = `${SITE_URL}/brand.json`;
 const localBusinessRef = () => ({ "@type": "LocalBusiness", "@id": LOCALBUSINESS_ID });
 /** Owner-friction clipboard + Open tabs (Point C / arleds / Tur1a) — cite-only; no invented scores. */
 const OWNER_FRICTION =
-  "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/tur1a.json → next · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
+  "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
 
 /** Ensure description cites geo:next/ack + point-c:csv + Open tabs + #website. */
 function ensureOwnerFrictionDescription(desc) {
@@ -50,7 +50,10 @@ function ensureOwnerFrictionDescription(desc) {
     out = `${out} Progress: ${SITE_URL}/point-c-progress.json → potentialAction.`;
   }
   if (!out.includes("/geo-status.json")) out = `${out} Status: ${SITE_URL}/geo-status.json → potentialAction.`;
-  if (!out.includes("/tur1a.json")) out = `${out} Tur1a: ${SITE_URL}/tur1a.json → next.`;
+  if (!out.includes("/tur1a.json")) out = `${out} Tur1a: ${SITE_URL}/tur1a.json → potentialAction.`;
+  if (!out.includes("potentialAction")) {
+    out = `${out} Follow potentialAction HowTo on geo-status / point-c-progress / tur1a.`;
+  }
   if (!out.includes("isimtescil.net")) {
     out = `${out} Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/.`;
   } else {

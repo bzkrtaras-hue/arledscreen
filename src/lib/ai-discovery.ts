@@ -343,7 +343,7 @@ export const aiDiscoveryLinks = [
     rel: "alternate",
     type: "application/ld+json",
     href: GEO_STATUS_JSON_URL,
-    title: "GEO owner-gate status (gates.pointC.next)",
+    title: "GEO owner-gate status (potentialAction HowTo)",
   },
   {
     rel: "alternate",
@@ -355,7 +355,7 @@ export const aiDiscoveryLinks = [
     rel: "alternate",
     type: "application/ld+json",
     href: TUR1A_JSON_URL,
-    title: "Tur1a blind coverage",
+    title: "Tur1a blind coverage (potentialAction HowTo)",
   },
   {
     rel: "alternate",
@@ -373,7 +373,7 @@ export const aiDiscoveryLinks = [
     rel: "alternate",
     type: "application/ld+json",
     href: POINT_C_PROGRESS_JSON_URL,
-    title: "Point C paste progress",
+    title: "Point C paste progress (potentialAction HowTo)",
   },
   { rel: "alternate", type: "text/markdown", href: AGENTS_MD_URL, title: "AGENTS.md" },
   // RFC 8288: machine agents that follow Link / describedby land on price + entity + brand.
