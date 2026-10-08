@@ -4543,7 +4543,40 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     console.error("❌ scripts/tur1a-matrix.mjs must print Where:/Open: via platformOpenUrl");
     process.exit(1);
   }
-  console.log("✅ tur1a:next platform open URLs (chatgpt/gemini/perplexity/google_aio)");
+  if (!tur1aMatrix.includes('console.log("platform,promptId,locale,status,open,prompt,logCommand")')) {
+    console.error("❌ scripts/tur1a-matrix.mjs tur1a:csv must include open column");
+    process.exit(1);
+  }
+  if (!tur1aMatrix.includes("runLog") || !tur1aMatrix.includes("Open:")) {
+    console.error("❌ scripts/tur1a-matrix.mjs tur1a:log must surface Open: for next cell");
+    process.exit(1);
+  }
+  console.log("✅ tur1a:next/csv/log platform open URLs (chatgpt/gemini/perplexity/google_aio)");
+
+  const agentsMdLive = fs.existsSync(path.join(outDir, "AGENTS.md"))
+    ? fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8")
+    : "";
+  const humansLive = fs.existsSync(path.join(outDir, "humans.txt"))
+    ? fs.readFileSync(path.join(outDir, "humans.txt"), "utf8")
+    : "";
+  for (const needle of [
+    "/.well-known/offer.json",
+    "/.well-known/offers.json",
+    "/.well-known/dataset.json",
+    "/.well-known/feed.json",
+    "/.well-known/organization.json",
+    "/.well-known/geo-baseline.json",
+  ]) {
+    if (agentsMdLive && !agentsMdLive.includes(needle)) {
+      console.error(`❌ out/AGENTS.md must cite invent alias ${needle}`);
+      process.exit(1);
+    }
+    if (humansLive && !humansLive.includes(needle)) {
+      console.error(`❌ out/humans.txt must cite invent alias ${needle}`);
+      process.exit(1);
+    }
+  }
+  console.log("✅ AGENTS.md + humans.txt cite well-known offer/organization/geo-baseline invent");
 
   const pointCPacks = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
   for (const must of [

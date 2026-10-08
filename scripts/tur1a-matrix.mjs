@@ -112,21 +112,22 @@ function printMatrix(filled) {
 /** Spreadsheet-ready empty-cell dump (owner tracking). Does not invent scores. */
 function printCsv(filled) {
   const esc = (s) => `"${String(s).replace(/"/g, '""')}"`;
-  console.log("platform,promptId,locale,status,prompt,logCommand");
+  console.log("platform,promptId,locale,status,open,prompt,logCommand");
   for (const id of promptIds) {
     for (const platform of HUMAN_PLATFORMS) {
       const filledCell = filled.has(cellKey(platform, id));
       const locale = String(id).startsWith("en-") ? "en" : "tr-TR";
       const status = filledCell ? "filled" : "empty";
+      const open = platformOpenUrl(platform);
       const logCmd = filledCell
         ? ""
         : `npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json`;
       console.log(
-        [platform, id, locale, status, esc(promptText(id)), esc(logCmd)].join(","),
+        [platform, id, locale, status, esc(open), esc(promptText(id)), esc(logCmd)].join(","),
       );
     }
   }
-  console.error(`# coverage ${filled.size}/${totalCells} — do not invent mention %`);
+  console.error(`# coverage ${filled.size}/${totalCells} — do not invent mention % · Open: PLATFORM_OPEN_URLS`);
 }
 
 function printNext(filled) {
@@ -167,11 +168,12 @@ function printNext(filled) {
   console.log(
     `npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json --notes="..."`,
   );
+  console.log("(tur1a:log auto-targets this next empty cell; Open tab above before pasting.)");
   console.log("\nDry-run:");
   console.log(
     `npm run tur1a:log -- --dry-run --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping`,
   );
-  console.log("\nThen: npm run tur1a:matrix · npm run tur1a:next · npm run geo:status");
+  console.log("\nThen: npm run tur1a:matrix · npm run tur1a:csv · npm run tur1a:next · npm run geo:status");
 }
 
 function runLog(filled) {
@@ -181,6 +183,7 @@ function runLog(filled) {
     console.log(`All ${totalCells} human cells filled — nothing to log.`);
     process.exit(0);
   }
+  const openUrl = platformOpenUrl(next.platform);
   const mentioned = arg("mentioned");
   const brandCorrect = arg("brandCorrect");
   const priceSourceCited = arg("priceSourceCited");
@@ -190,6 +193,10 @@ function runLog(filled) {
       "Example: npm run tur1a:log -- --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping",
     );
     console.error("Do not invent scores — only log what you observed.");
+    if (openUrl) {
+      console.error(`Where: ${next.platform} → ${openUrl}`);
+      console.error(`Open: ${openUrl}`);
+    }
     process.exit(1);
   }
   const locale = arg("locale", String(next.promptId).startsWith("en-") ? "en" : "tr-TR");
@@ -199,6 +206,10 @@ function runLog(filled) {
   const wrongClaims = arg("wrongClaims", "");
 
   console.log(`Cell: platform=${next.platform} · promptId=${next.promptId} · locale=${locale}`);
+  if (openUrl) {
+    console.log(`Where: ${next.platform} → ${openUrl}`);
+    console.log(`Open: ${openUrl}`);
+  }
   console.log(`Prompt: ${promptText(next.promptId)}`);
   console.log(dryRun ? "Mode: dry-run (not written)" : "Mode: append blind-log.jsonl");
 

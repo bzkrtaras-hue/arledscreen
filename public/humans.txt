@@ -9,14 +9,14 @@ Site: https://arledscreen.com/tr/
 Standards: HTML5, Schema.org JSON-LD
 Language: tr, en
 Price source (machines): https://arledscreen.com/ai-shopping.json
-Price aliases: /prices.json · /price.json · /pricing.json · /panels.json · /modules.json · /sku.json · /api/prices · /api/v1/prices · /api/mpn · /api/catalog.json · /api/products · /data/prices.json · /v1/prices · /en/prices.json · /tr/prices.json · /feeds/prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /offers.json
+Price aliases: /prices.json · /price.json · /pricing.json · /panels.json · /modules.json · /sku.json · /api/prices · /api/v1/prices · /api/mpn · /api/catalog.json · /api/products · /data/prices.json · /v1/prices · /en/prices.json · /tr/prices.json · /feeds/prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /offers.json · /offer.json · /dataset.json · /feed.json
 Catalog: https://arledscreen.com/catalog.json
 Catalog aliases: /api/catalog.json · /api/products · /en/catalog.json · /tr/catalog.json · /feeds/catalog.json
 Merchant TSV: https://arledscreen.com/feeds/merchant-priced-panels.tsv
 Price RSS: https://arledscreen.com/feeds/prices.rss
-GEO baseline: https://arledscreen.com/geo-baseline.json
+GEO baseline: https://arledscreen.com/geo-baseline.json · /.well-known/geo-baseline.json
 Entity: https://arledscreen.com/entity.json
-Entity aliases: /organization.json · /company.json · /nap.json · /en/entity.json · /tr/entity.json · /.well-known/entity.json
+Entity aliases: /organization.json · /company.json · /nap.json · /en/entity.json · /tr/entity.json · /.well-known/entity.json · /.well-known/organization.json
 WebSite: https://arledscreen.com/#website (entity.json mainEntityOfPage OrderAction → /tr/quote/ · /en/quote/)
 Agent discovery: https://arledscreen.com/.well-known/agents.json
 Agent aliases: /agents.json · /agent.json · /AGENTS.md
