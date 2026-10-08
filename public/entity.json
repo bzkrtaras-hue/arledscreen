@@ -310,6 +310,37 @@
         "@id": "https://arledscreen.com/#website",
         "name": "ARLEDSCREEN",
         "url": "https://arledscreen.com"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/point-c.json",
+        "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)",
+        "url": "https://arledscreen.com/point-c.json"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/geo-status.json",
+        "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)",
+        "url": "https://arledscreen.com/geo-status.json"
+      },
+      {
+        "@type": "DataDownload",
+        "@id": "https://arledscreen.com/geo-next.txt",
+        "name": "ARLEDSCREEN GEO priority clipboard",
+        "url": "https://arledscreen.com/geo-next.txt",
+        "encodingFormat": "text/plain"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/tur1a.json",
+        "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)",
+        "url": "https://arledscreen.com/tur1a.json"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/point-c-progress.json",
+        "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)",
+        "url": "https://arledscreen.com/point-c-progress.json"
       }
     ],
     "makesOffer": {
@@ -2298,6 +2329,37 @@
         "@id": "https://arledscreen.com/#website",
         "name": "ARLEDSCREEN",
         "url": "https://arledscreen.com"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/point-c.json",
+        "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)",
+        "url": "https://arledscreen.com/point-c.json"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/geo-status.json",
+        "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)",
+        "url": "https://arledscreen.com/geo-status.json"
+      },
+      {
+        "@type": "DataDownload",
+        "@id": "https://arledscreen.com/geo-next.txt",
+        "name": "ARLEDSCREEN GEO priority clipboard",
+        "url": "https://arledscreen.com/geo-next.txt",
+        "encodingFormat": "text/plain"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/tur1a.json",
+        "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)",
+        "url": "https://arledscreen.com/tur1a.json"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/point-c-progress.json",
+        "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)",
+        "url": "https://arledscreen.com/point-c-progress.json"
       }
     ],
     "makesOffer": {
@@ -3315,6 +3377,37 @@
       "@id": "https://arledscreen.com/#website",
       "name": "ARLEDSCREEN",
       "url": "https://arledscreen.com"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/point-c.json",
+      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)",
+      "url": "https://arledscreen.com/point-c.json"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/geo-status.json",
+      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)",
+      "url": "https://arledscreen.com/geo-status.json"
+    },
+    {
+      "@type": "DataDownload",
+      "@id": "https://arledscreen.com/geo-next.txt",
+      "name": "ARLEDSCREEN GEO priority clipboard",
+      "url": "https://arledscreen.com/geo-next.txt",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/tur1a.json",
+      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)",
+      "url": "https://arledscreen.com/tur1a.json"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://arledscreen.com/point-c-progress.json",
+      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)",
+      "url": "https://arledscreen.com/point-c-progress.json"
     }
   ],
   "citeOneLiner": "ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.",
@@ -3463,7 +3556,12 @@
       "https://arledscreen.com/organization.json",
       "https://arledscreen.com/geo-baseline.json",
       "https://arledscreen.com/entity-profiles.json",
-      "https://arledscreen.com/point-c.txt"
+      "https://arledscreen.com/point-c.txt",
+      "https://arledscreen.com/point-c.json",
+      "https://arledscreen.com/geo-status.json",
+      "https://arledscreen.com/geo-next.txt",
+      "https://arledscreen.com/tur1a.json",
+      "https://arledscreen.com/point-c-progress.json"
     ],
     "subjectOf": [
       {
@@ -3526,6 +3624,37 @@
         "@id": "https://arledscreen.com/organization.json",
         "url": "https://arledscreen.com/organization.json",
         "name": "Organization (alias)"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/point-c.json",
+        "url": "https://arledscreen.com/point-c.json",
+        "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/geo-status.json",
+        "url": "https://arledscreen.com/geo-status.json",
+        "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
+      },
+      {
+        "@type": "DataDownload",
+        "@id": "https://arledscreen.com/geo-next.txt",
+        "url": "https://arledscreen.com/geo-next.txt",
+        "name": "ARLEDSCREEN GEO priority clipboard",
+        "encodingFormat": "text/plain"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/tur1a.json",
+        "url": "https://arledscreen.com/tur1a.json",
+        "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://arledscreen.com/point-c-progress.json",
+        "url": "https://arledscreen.com/point-c-progress.json",
+        "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
       }
     ]
   },
