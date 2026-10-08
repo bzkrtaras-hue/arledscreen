@@ -1875,9 +1875,80 @@ function inventAliasDistributionEntries() {
       contentUrl: `${SITE_URL}/geo-baseline`,
       name: "GEO baseline extensionless invent alias",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/ai-shopping`,
+      name: "AI Shopping extensionless invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/entity-profiles`,
+      name: "Point C entity-profiles extensionless invent alias",
+    },
+    ...apiInventDistributionEntries(),
     ...entityAliasDistributionEntries(),
     ...discoveryDistributionEntries(),
   ];
+}
+
+/** Machine-guessable /api/* pricedPanels + catalog invent aliases (byte-identical feeds). */
+function apiInventDistributionEntries() {
+  return [
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/v1/prices`,
+      name: "API v1 prices invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/prices`,
+      name: "API prices invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/panels.json`,
+      name: "API panels.json invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/panels`,
+      name: "API panels invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/merchant.json`,
+      name: "API merchant.json invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/mpn.json`,
+      name: "API mpn.json invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/catalog`,
+      name: "API catalog invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/api/ai-shopping`,
+      name: "API ai-shopping invent alias",
+    },
+  ];
+}
+
+function apiInventBasedOnUrls() {
+  return apiInventDistributionEntries().map((e) => e.contentUrl);
 }
 
 /** Agent discovery surfaces (ai.txt / llms / llms-full / agents / ARD / humans / AGENTS.md / security.txt) for distribution walks. */
@@ -1928,6 +1999,12 @@ function discoveryDistributionEntries() {
     {
       "@type": "DataDownload",
       encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/llms`,
+      name: "LLM Context extensionless invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
       contentUrl: `${SITE_URL}/.well-known/llms.txt`,
       name: "LLM Context (well-known invent alias)",
     },
@@ -1936,6 +2013,12 @@ function discoveryDistributionEntries() {
       encodingFormat: "text/plain",
       contentUrl: `${SITE_URL}/llms-full.txt`,
       name: "LLM Context (Full)",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "text/plain",
+      contentUrl: `${SITE_URL}/llms-full`,
+      name: "LLM Context Full extensionless invent alias",
     },
     {
       "@type": "DataDownload",
@@ -2039,6 +2122,9 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/entity`,
     `${SITE_URL}/catalog`,
     `${SITE_URL}/geo-baseline`,
+    `${SITE_URL}/ai-shopping`,
+    `${SITE_URL}/entity-profiles`,
+    ...apiInventBasedOnUrls(),
     ...entityAliasBasedOnUrls(),
     ...discoveryBasedOnUrls(),
   ];
@@ -2155,8 +2241,10 @@ function discoveryBasedOnUrls() {
     `${SITE_URL}/ai.txt`,
     `${SITE_URL}/.well-known/ai.txt`,
     `${SITE_URL}/llms.txt`,
+    `${SITE_URL}/llms`,
     `${SITE_URL}/.well-known/llms.txt`,
     `${SITE_URL}/llms-full.txt`,
+    `${SITE_URL}/llms-full`,
     `${SITE_URL}/.well-known/llms-full.txt`,
     `${SITE_URL}/humans.txt`,
     `${SITE_URL}/.well-known/humans.txt`,
@@ -2912,6 +3000,14 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       productsExtless: `${SITE_URL}/products`,
       productExtless: `${SITE_URL}/product`,
       geoBaselineExtless: `${SITE_URL}/geo-baseline`,
+      aiShoppingExtless: `${SITE_URL}/ai-shopping`,
+      entityProfilesExtless: `${SITE_URL}/entity-profiles`,
+      llmsExtless: `${SITE_URL}/llms`,
+      llmsFullExtless: `${SITE_URL}/llms-full`,
+      apiV1Prices: `${SITE_URL}/api/v1/prices`,
+      apiPanelsJson: `${SITE_URL}/api/panels.json`,
+      apiMerchantJson: `${SITE_URL}/api/merchant.json`,
+      apiCatalog: `${SITE_URL}/api/catalog`,
       companyExtless: `${SITE_URL}/company`,
       napExtless: `${SITE_URL}/nap`,
       citeExtless: `${SITE_URL}/cite`,
@@ -2925,12 +3021,6 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       faqJson: `${SITE_URL}/faq.json`,
       faqsJson: `${SITE_URL}/faqs.json`,
       organizationExtless: `${SITE_URL}/organization`,
-      companyExtless: `${SITE_URL}/company`,
-      napExtless: `${SITE_URL}/nap`,
-      citeExtless: `${SITE_URL}/cite`,
-      faqExtless: `${SITE_URL}/faq`,
-      faqsExtless: `${SITE_URL}/faqs`,
-      apiV1Prices: `${SITE_URL}/api/v1/prices`,
       catalog: `${SITE_URL}/catalog.json`,
       entity: `${SITE_URL}/entity.json`,
       organization: `${SITE_URL}/organization.json`,
@@ -3146,6 +3236,7 @@ function writeFeedPathAliases(dir) {
     ["geo-baseline.json", "en/geo-baseline.json"],
     ["geo-baseline.json", "tr/geo-baseline.json"],
     ["entity-profiles.json", ".well-known/entity-profiles.json"],
+    ["entity-profiles.json", "entity-profiles"],
     ["llms.txt", "llms"],
     ["llms.txt", ".well-known/llms.txt"],
     ["llms.txt", "en/llms.txt"],

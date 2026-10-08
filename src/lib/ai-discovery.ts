@@ -65,6 +65,13 @@ const NAP_EXTLESS_URL = `${SITE_URL}/nap`;
 const CITE_EXTLESS_URL = `${SITE_URL}/cite`;
 const FAQ_EXTLESS_URL = `${SITE_URL}/faq`;
 const FAQS_EXTLESS_URL = `${SITE_URL}/faqs`;
+const AI_SHOPPING_EXTLESS_URL = `${SITE_URL}/ai-shopping`;
+const ENTITY_PROFILES_EXTLESS_URL = `${SITE_URL}/entity-profiles`;
+const LLMS_EXTLESS_URL = `${SITE_URL}/llms`;
+const LLMS_FULL_EXTLESS_URL = `${SITE_URL}/llms-full`;
+const API_V1_PRICES_URL = `${SITE_URL}/api/v1/prices`;
+const API_PANELS_JSON_URL = `${SITE_URL}/api/panels.json`;
+const API_MERCHANT_JSON_URL = `${SITE_URL}/api/merchant.json`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const POINT_C_EN_TXT_URL = `${SITE_URL}/point-c-en.txt`;
 const POINT_C_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.txt`;
@@ -125,6 +132,16 @@ const inventAliasLdJson = [
   { url: CITE_EXTLESS_URL, title: "Cite extensionless invent alias" },
   { url: FAQ_EXTLESS_URL, title: "FAQ extensionless invent alias" },
   { url: FAQS_EXTLESS_URL, title: "FAQs extensionless invent alias" },
+  { url: AI_SHOPPING_EXTLESS_URL, title: "AI Shopping extensionless invent alias" },
+  { url: ENTITY_PROFILES_EXTLESS_URL, title: "Point C entity-profiles extensionless invent alias" },
+  { url: API_V1_PRICES_URL, title: "API v1 prices invent alias" },
+  { url: API_PANELS_JSON_URL, title: "API panels.json invent alias" },
+  { url: API_MERCHANT_JSON_URL, title: "API merchant.json invent alias" },
+] as const;
+
+const inventAliasTextPlain = [
+  { url: LLMS_EXTLESS_URL, title: "LLM Context extensionless invent alias" },
+  { url: LLMS_FULL_EXTLESS_URL, title: "LLM Context Full extensionless invent alias" },
 ] as const;
 
 export const aiDiscoveryMetadata: Metadata = {
@@ -165,6 +182,7 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: LLMS_WELLKNOWN_URL, title: "LLM Context (well-known invent alias)" },
         { url: LLMS_FULL_URL, title: "LLM Context (Full)" },
         { url: LLMS_FULL_WELLKNOWN_URL, title: "LLM Context Full (well-known invent alias)" },
+        ...inventAliasTextPlain,
         { url: AI_TXT_URL, title: "AI Discovery Pointer" },
         { url: AI_TXT_WELLKNOWN_URL, title: "AI Discovery Pointer (well-known invent alias)" },
         { url: HUMANS_TXT_URL, title: "Humans.txt" },
@@ -220,6 +238,12 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "text/plain", href: LLMS_WELLKNOWN_URL, title: "LLM Context (well-known invent alias)" },
   { rel: "alternate", type: "text/plain", href: LLMS_FULL_URL, title: "LLM Context (Full)" },
   { rel: "alternate", type: "text/plain", href: LLMS_FULL_WELLKNOWN_URL, title: "LLM Context Full (well-known invent alias)" },
+  ...inventAliasTextPlain.map((e) => ({
+    rel: "alternate" as const,
+    type: "text/plain" as const,
+    href: e.url,
+    title: e.title,
+  })),
   { rel: "alternate", type: "text/plain", href: AI_TXT_URL, title: "AI Discovery Pointer" },
   { rel: "alternate", type: "text/plain", href: AI_TXT_WELLKNOWN_URL, title: "AI Discovery Pointer (well-known invent alias)" },
   { rel: "alternate", type: "text/plain", href: HUMANS_TXT_URL, title: "Humans.txt" },

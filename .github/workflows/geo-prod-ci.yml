@@ -134,18 +134,24 @@ jobs:
           grep -qE '"contentUrl": "https://arledscreen.com/sku"' out/ai-shopping.json
           grep -qE '"contentUrl": "https://arledscreen.com/product"' out/ai-shopping.json
           grep -qE '"contentUrl": "https://arledscreen.com/geo-baseline"' out/ai-shopping.json
+          grep -qE '"contentUrl": "https://arledscreen.com/ai-shopping"' out/ai-shopping.json
+          grep -qE '"contentUrl": "https://arledscreen.com/api/v1/prices"' out/ai-shopping.json
+          grep -qE '"contentUrl": "https://arledscreen.com/llms"' out/ai-shopping.json
           grep -q "/brand /brand.json 200" out/_redirects
           grep -q "/modules /modules.json 200" out/_redirects
           grep -q '"/brand"' out/_routes.json
           grep -q '"/modules"' out/_routes.json
           test -f functions/brand.js && test -f functions/modules.js
           test -f out/product && test -f out/products
+          test -f out/entity-profiles && test -f out/ai-shopping
           grep -q 'https://arledscreen.com/brand>' out/_headers
           grep -q 'https://arledscreen.com/modules>' out/_headers
           grep -q 'https://arledscreen.com/sku>' out/_headers
           grep -q 'https://arledscreen.com/product>' out/_headers
+          grep -q 'https://arledscreen.com/api/v1/prices>' out/_headers
+          grep -q 'https://arledscreen.com/llms>' out/_headers
           test -f out/.well-known/ai-shopping.json && cmp -s out/ai-shopping.json out/.well-known/ai-shopping.json
-          node -e 'const a=require("./out/ai-shopping.json"); const u=(a.distribution||[]).map(d=>d.contentUrl||"").join("\n"); const need=["/price.json","/pricing.json","/modules.json","/sku.json","/.well-known/prices.json","/.well-known/panels.json","/.well-known/mpn.json","/.well-known/merchant.json","/.well-known/price.json","/.well-known/pricing.json","/offer.json","/offers.json","/.well-known/offer.json","/.well-known/offers.json","/dataset.json","/feed.json","/.well-known/dataset.json","/.well-known/feed.json","/products.json","/product.json","/.well-known/products.json","/.well-known/product.json","/.well-known/catalog.json","/.well-known/geo-baseline.json","/.well-known/entity-profiles.json","/.well-known/ai-shopping.json","/brand.json","/entity.json","/point-c.txt","https://arledscreen.com/brand","https://arledscreen.com/modules","https://arledscreen.com/sku","https://arledscreen.com/mpn","https://arledscreen.com/merchant","https://arledscreen.com/offers","https://arledscreen.com/dataset","https://arledscreen.com/feed","https://arledscreen.com/products","https://arledscreen.com/product","https://arledscreen.com/geo-baseline","https://arledscreen.com/company","https://arledscreen.com/nap","https://arledscreen.com/cite","https://arledscreen.com/faq","https://arledscreen.com/faqs"]; if(a.distribution.length<31||need.some(n=>!u.includes(n))) process.exit(1)'
+          node -e 'const a=require("./out/ai-shopping.json"); const u=(a.distribution||[]).map(d=>d.contentUrl||"").join("\n"); const need=["/price.json","/pricing.json","/modules.json","/sku.json","/.well-known/prices.json","/.well-known/panels.json","/.well-known/mpn.json","/.well-known/merchant.json","/.well-known/price.json","/.well-known/pricing.json","/offer.json","/offers.json","/.well-known/offer.json","/.well-known/offers.json","/dataset.json","/feed.json","/.well-known/dataset.json","/.well-known/feed.json","/products.json","/product.json","/.well-known/products.json","/.well-known/product.json","/.well-known/catalog.json","/.well-known/geo-baseline.json","/.well-known/entity-profiles.json","/.well-known/ai-shopping.json","/brand.json","/entity.json","/point-c.txt","https://arledscreen.com/brand","https://arledscreen.com/modules","https://arledscreen.com/sku","https://arledscreen.com/mpn","https://arledscreen.com/merchant","https://arledscreen.com/offers","https://arledscreen.com/dataset","https://arledscreen.com/feed","https://arledscreen.com/products","https://arledscreen.com/product","https://arledscreen.com/geo-baseline","https://arledscreen.com/company","https://arledscreen.com/nap","https://arledscreen.com/cite","https://arledscreen.com/faq","https://arledscreen.com/faqs","https://arledscreen.com/ai-shopping","https://arledscreen.com/entity-profiles","https://arledscreen.com/llms","https://arledscreen.com/llms-full","https://arledscreen.com/api/v1/prices","https://arledscreen.com/api/panels.json","https://arledscreen.com/api/merchant.json","https://arledscreen.com/api/catalog"]; if(a.distribution.length<31||need.some(n=>!u.includes(n))) process.exit(1)'
           grep -q '"isBasedOn"' out/geo-baseline.json
           grep -q "/entity.json" out/geo-baseline.json
           grep -q "/point-c.txt" out/geo-baseline.json

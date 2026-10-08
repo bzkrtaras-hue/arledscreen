@@ -810,15 +810,27 @@ if (fs.existsSync(outDir)) {
       "https://arledscreen.com/cite",
       "https://arledscreen.com/faq",
       "https://arledscreen.com/faqs",
+      "https://arledscreen.com/ai-shopping",
+      "https://arledscreen.com/entity-profiles",
+      "https://arledscreen.com/llms",
+      "https://arledscreen.com/llms-full",
+      "https://arledscreen.com/api/v1/prices",
+      "https://arledscreen.com/api/panels.json",
+      "https://arledscreen.com/api/merchant.json",
+      "https://arledscreen.com/api/catalog",
     ]) {
       if (!distUrls.includes(u)) {
-        console.error(`❌ ai-shopping.json distribution must include extensionless invent ${u}`);
+        console.error(`❌ ai-shopping.json distribution must include invent alias ${u}`);
         process.exit(1);
       }
     }
   }
   if (!fs.existsSync(path.join(outDir, "product"))) {
     console.error("❌ out/product extensionless invent alias missing");
+    process.exit(1);
+  }
+  if (!fs.existsSync(path.join(outDir, "entity-profiles"))) {
+    console.error("❌ out/entity-profiles extensionless invent alias missing");
     process.exit(1);
   }
   if (

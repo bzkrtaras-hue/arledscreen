@@ -591,6 +591,14 @@ if (
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/cite`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/faq`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/faqs`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/ai-shopping`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/entity-profiles`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/llms`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/llms-full`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/v1/prices`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/panels.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/merchant.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/catalog`) &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -856,6 +864,10 @@ try {
     String(disc.productsExtless || "").includes("/products") &&
     String(disc.productExtless || "").includes("/product") &&
     String(disc.geoBaselineExtless || "").includes("/geo-baseline") &&
+    String(disc.aiShoppingExtless || "").includes("/ai-shopping") &&
+    String(disc.entityProfilesExtless || "").includes("/entity-profiles") &&
+    String(disc.llmsExtless || "").includes("/llms") &&
+    String(disc.apiV1Prices || "").includes("/api/v1/prices") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
@@ -911,6 +923,10 @@ try {
     link.includes("/product") &&
     link.includes("/geo-baseline") &&
     link.includes("/company") &&
+    link.includes("/ai-shopping") &&
+    link.includes("/entity-profiles") &&
+    link.includes("/api/v1/prices") &&
+    link.includes("/llms") &&
     link.includes("/.well-known/ard.json") &&
     link.includes("/.well-known/agents.json") &&
     link.includes("/humans.txt") &&

@@ -128,7 +128,19 @@
     "https://arledscreen.com/catalog",
     "https://arledscreen.com/geo-baseline",
     "https://arledscreen.com/products",
-    "https://arledscreen.com/product"
+    "https://arledscreen.com/product",
+    "https://arledscreen.com/ai-shopping",
+    "https://arledscreen.com/entity-profiles",
+    "https://arledscreen.com/api/v1/prices",
+    "https://arledscreen.com/api/prices",
+    "https://arledscreen.com/api/panels.json",
+    "https://arledscreen.com/api/panels",
+    "https://arledscreen.com/api/merchant.json",
+    "https://arledscreen.com/api/mpn.json",
+    "https://arledscreen.com/api/catalog",
+    "https://arledscreen.com/api/ai-shopping",
+    "https://arledscreen.com/llms",
+    "https://arledscreen.com/llms-full"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3544,7 +3556,19 @@
     "https://arledscreen.com/catalog",
     "https://arledscreen.com/geo-baseline",
     "https://arledscreen.com/products",
-    "https://arledscreen.com/product"
+    "https://arledscreen.com/product",
+    "https://arledscreen.com/ai-shopping",
+    "https://arledscreen.com/entity-profiles",
+    "https://arledscreen.com/api/v1/prices",
+    "https://arledscreen.com/api/prices",
+    "https://arledscreen.com/api/panels.json",
+    "https://arledscreen.com/api/panels",
+    "https://arledscreen.com/api/merchant.json",
+    "https://arledscreen.com/api/mpn.json",
+    "https://arledscreen.com/api/catalog",
+    "https://arledscreen.com/api/ai-shopping",
+    "https://arledscreen.com/llms",
+    "https://arledscreen.com/llms-full"
   ],
   "distribution": [
     {
@@ -4089,6 +4113,78 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/geo-baseline",
       "name": "GEO baseline extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/ai-shopping",
+      "name": "AI Shopping extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/entity-profiles",
+      "name": "Point C entity-profiles extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/v1/prices",
+      "name": "API v1 prices invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/prices",
+      "name": "API prices invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/panels.json",
+      "name": "API panels.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/panels",
+      "name": "API panels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/merchant.json",
+      "name": "API merchant.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/mpn.json",
+      "name": "API mpn.json invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/catalog",
+      "name": "API catalog invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/api/ai-shopping",
+      "name": "API ai-shopping invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/llms",
+      "name": "LLM Context extensionless invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/llms-full",
+      "name": "LLM Context Full extensionless invent alias"
     }
   ]
 }

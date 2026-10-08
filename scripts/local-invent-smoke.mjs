@@ -582,6 +582,14 @@ if (
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/cite`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/faq`) &&
     (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/faqs`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/ai-shopping`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/entity-profiles`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/llms`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/llms-full`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/v1/prices`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/panels.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/merchant.json`) &&
+    (ai.distribution || []).some((d) => d.contentUrl === `${SITE}/api/catalog`) &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -845,6 +853,10 @@ if (
     String(disc.productsExtless || "").includes("/products") &&
     String(disc.productExtless || "").includes("/product") &&
     String(disc.geoBaselineExtless || "").includes("/geo-baseline") &&
+    String(disc.aiShoppingExtless || "").includes("/ai-shopping") &&
+    String(disc.entityProfilesExtless || "").includes("/entity-profiles") &&
+    String(disc.llmsExtless || "").includes("/llms") &&
+    String(disc.apiV1Prices || "").includes("/api/v1/prices") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
@@ -897,6 +909,10 @@ if (
     headers.includes("https://arledscreen.com/product>") &&
     headers.includes("https://arledscreen.com/geo-baseline>") &&
     headers.includes("https://arledscreen.com/company>") &&
+    headers.includes("https://arledscreen.com/ai-shopping>") &&
+    headers.includes("https://arledscreen.com/entity-profiles>") &&
+    headers.includes("https://arledscreen.com/api/v1/prices>") &&
+    headers.includes("https://arledscreen.com/llms>") &&
     headers.includes("/.well-known/ard.json") &&
     headers.includes("/.well-known/agents.json") &&
     headers.includes("/humans.txt") &&
@@ -928,6 +944,13 @@ if (
   if (fs.existsSync(path.join(outDir, "product")) && fs.existsSync(path.join(outDir, "products"))) {
     ok("extensionless /product+/products invent files present");
   } else fail("extensionless /product+/products invent files present");
+  if (
+    fs.existsSync(path.join(outDir, "entity-profiles")) &&
+    fs.existsSync(path.join(outDir, "ai-shopping")) &&
+    fs.existsSync(path.join(outDir, "api", "v1", "prices"))
+  ) {
+    ok("extensionless /entity-profiles+/ai-shopping+/api/v1/prices invent files present");
+  } else fail("extensionless /entity-profiles+/ai-shopping+/api/v1/prices invent files present");
 }
 
 if (process.exitCode) {

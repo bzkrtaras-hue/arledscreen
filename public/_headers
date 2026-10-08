@@ -81,6 +81,13 @@
   Link: <https://arledscreen.com/cite>; rel="alternate"; type="application/ld+json"; title="Cite extensionless invent alias"
   Link: <https://arledscreen.com/faq>; rel="alternate"; type="application/ld+json"; title="FAQ extensionless invent alias"
   Link: <https://arledscreen.com/faqs>; rel="alternate"; type="application/ld+json"; title="FAQs extensionless invent alias"
+  Link: <https://arledscreen.com/ai-shopping>; rel="alternate"; type="application/ld+json"; title="AI Shopping extensionless invent alias"
+  Link: <https://arledscreen.com/entity-profiles>; rel="alternate"; type="application/ld+json"; title="Point C entity-profiles extensionless invent alias"
+  Link: <https://arledscreen.com/api/v1/prices>; rel="alternate"; type="application/ld+json"; title="API v1 prices invent alias"
+  Link: <https://arledscreen.com/api/panels.json>; rel="alternate"; type="application/ld+json"; title="API panels.json invent alias"
+  Link: <https://arledscreen.com/api/merchant.json>; rel="alternate"; type="application/ld+json"; title="API merchant.json invent alias"
+  Link: <https://arledscreen.com/llms>; rel="alternate"; type="text/plain"; title="LLM Context extensionless invent alias"
+  Link: <https://arledscreen.com/llms-full>; rel="alternate"; type="text/plain"; title="LLM Context Full extensionless invent alias"
   Link: <https://arledscreen.com/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer"
   Link: <https://arledscreen.com/.well-known/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer (well-known invent alias)"
   Link: <https://arledscreen.com/feeds/prices.rss>; rel="alternate"; type="application/rss+xml"; title="Panel Price Updates RSS"
@@ -243,6 +250,13 @@
   Cross-Origin-Resource-Policy: cross-origin
 
 /geo-baseline
+  Cache-Control: public, max-age=3600
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  ! Cross-Origin-Resource-Policy
+  Cross-Origin-Resource-Policy: cross-origin
+
+/entity-profiles
   Cache-Control: public, max-age=3600
   Access-Control-Allow-Origin: *
   Content-Type: application/json; charset=utf-8
