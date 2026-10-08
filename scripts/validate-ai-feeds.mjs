@@ -2005,6 +2005,10 @@ if (fs.existsSync(outDir)) {
     "https://www.isimtescil.net/",
     "https://business.google.com/",
     "https://chatgpt.com/",
+    "https://www.bingplaces.com/",
+    "https://arledscreen.com/geo-next.txt",
+    "https://arledscreen.com/point-c.json",
+    "directoryLong",
     "Open:",
     "point-c.txt",
   ]) {
@@ -2013,7 +2017,7 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
-  console.log("✅ offsite-entity-playbook.md wires geo:next / point-c:csv / tur1a Open tabs");
+  console.log("✅ offsite-entity-playbook.md wires live geo-next/point-c.json next + Bing/Apple Open tabs");
   {
     const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
     if (
@@ -4848,13 +4852,21 @@ if (fs.existsSync(outDir)) {
   console.log("✅ HTML Dataset hasPart×12 on quote-only + fine-pitch + yapay-zeka");
 
   const homeHtml = fs.readFileSync(path.join(outDir, "tr/index.html"), "utf8");
-  for (const needle of ["panels.json", "mpn.json", "entity-profiles.json"]) {
+  for (const needle of [
+    "panels.json",
+    "mpn.json",
+    "entity-profiles.json",
+    "point-c.json",
+    "geo-status.json",
+    "geo-next.txt",
+    "tur1a.json",
+  ]) {
     if (!homeHtml.includes(needle)) {
       console.error(`❌ tr/index.html must <link> alternate ${needle}`);
       process.exit(1);
     }
   }
-  console.log("✅ HTML discovery links include panels/mpn/entity-profiles");
+  console.log("✅ HTML discovery links include panels/mpn/entity-profiles + point-c.json/geo-status/geo-next/tur1a");
 
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms, ai.txt); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);
