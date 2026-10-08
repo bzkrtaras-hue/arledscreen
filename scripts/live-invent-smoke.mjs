@@ -577,6 +577,7 @@ try {
     ownerNextHtml.includes('data-pack="instagramBio"') &&
     ownerNextHtml.includes('e.key === "f"') &&
     ownerNextHtml.includes('e.key === "i"') &&
+    ownerNextHtml.includes('e.key === "w"') &&
     ownerNextHtml.includes("maybeSocialJump") &&
     ownerNextHtml.includes("socialQuery") &&
     ownerNextHtml.includes("?social=fb|ig|wa") &&

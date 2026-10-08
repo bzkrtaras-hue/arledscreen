@@ -83,8 +83,10 @@ export const POINT_C_PASTE_WHERE = {
   directoryLong: "Directories / Bing Places / Apple Business Connect → About / description",
   gbpDescription: "Google Business Profile → Edit profile → About",
   instagramName: "Instagram @arledscreen → https://www.instagram.com/arledscreen → Edit profile → Name",
-  instagramBio: "Instagram @arledscreen → https://www.instagram.com/arledscreen → Edit profile → Bio",
-  facebookAbout: "Facebook @arledscreenn → https://www.facebook.com/arledscreenn → About / Page info",
+  instagramBio:
+    "Instagram @arledscreen → https://www.instagram.com/arledscreen → Edit profile → Bio · owner: https://arledscreen.com/owner-next.html?social=ig",
+  facebookAbout:
+    "Facebook @arledscreenn → https://www.facebook.com/arledscreenn → About / Page info · owner: https://arledscreen.com/owner-next.html?social=fb",
   linkedinAbout: "https://www.linkedin.com/company/arleds → About",
   bingPlaces: "Bing Places for Business → Business description",
   appleBusinessConnect: "Apple Business Connect → Location → Description",
@@ -169,6 +171,16 @@ export function pointCOpenAltUrls(packKey) {
  * Slim Point C pack checklist for invent + owner-next.html (no paste bodies).
  * Cite-only status/open — does not invent citations. `html` filled after SITE is set.
  */
+/** Owner HTML for a pack — IG/FB prefer ?social= deep-links (jump + profile). */
+function packOwnerHtml(key) {
+  const k = String(key || "");
+  if (k === "facebookAbout") return "https://arledscreen.com/owner-next.html?social=fb";
+  if (k === "instagramBio") return "https://arledscreen.com/owner-next.html?social=ig";
+  return k
+    ? `https://arledscreen.com/owner-next.html?pack=${encodeURIComponent(k)}`
+    : "https://arledscreen.com/owner-next.html";
+}
+
 export function buildPointCPackChecklist(acked = []) {
   const ackedSet = new Set((acked || []).map(String));
   const rows = [];
@@ -180,7 +192,7 @@ export function buildPointCPackChecklist(acked = []) {
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
-      html: `https://arledscreen.com/owner-next.html?pack=${encodeURIComponent(key)}`,
+      html: packOwnerHtml(key),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
     if (alts[0]) row.openAlt = alts[0];
@@ -196,7 +208,7 @@ export function buildPointCPackChecklist(acked = []) {
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
-      html: `https://arledscreen.com/owner-next.html?pack=${encodeURIComponent(key)}`,
+      html: packOwnerHtml(key),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
     if (alts[0]) row.openAlt = alts[0];
@@ -507,7 +519,7 @@ export function buildPointCNext(profiles, { en = false } = {}) {
     label: step.label,
     where,
     open: open || "",
-    html: `https://arledscreen.com/owner-next.html?pack=${encodeURIComponent(step.key)}`,
+    html: packOwnerHtml(step.key),
     text: step.text,
     ackCommand: `npm run point-c:ack -- --pack=${step.key}`,
     progress: { acked: step.done, total: step.total },
@@ -551,6 +563,14 @@ export function ownerNextSocialUrl(network = "fb") {
   const key =
     n === "ig" || n === "instagram" ? "ig" : n === "wa" || n === "whatsapp" ? "wa" : "fb";
   return `${SITE}/owner-next.html?social=${key}`;
+}
+
+/** Pack HTML preferring ?social= for IG/FB (export twin of packOwnerHtml). */
+export function ownerNextPackHtmlUrl(packKey = "") {
+  const key = String(packKey || "").trim();
+  if (key === "facebookAbout") return ownerNextSocialUrl("fb");
+  if (key === "instagramBio") return ownerNextSocialUrl("ig");
+  return ownerNextHtmlUrl(key);
 }
 
 /** Spreadsheet-ready Point C sequence (owner tracking). Does not invent citations. */
@@ -603,7 +623,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
-      html: ownerNextHtmlUrl(key),
+      html: ownerNextPackHtmlUrl(key),
       text: String(packs[key]),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
@@ -620,7 +640,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       status: ackedSet.has(key) ? "acked" : "open",
       where: POINT_C_PASTE_WHERE[key] || "",
       open: pointCOpenUrl(key),
-      html: ownerNextHtmlUrl(key),
+      html: ownerNextPackHtmlUrl(key),
       text: buildArleds301DualPathClipboard(),
       ackCommand: ackedSet.has(key) ? "" : `npm run point-c:ack -- --pack=${key}`,
     };
@@ -716,7 +736,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
   };
   const next = doc.next;
   if (next?.text && next?.open) {
-    const packHtml = next.html || ownerNextHtmlUrl(next.packKey);
+    const packHtml = next.html || ownerNextPackHtmlUrl(next.packKey);
     const startHtml = ownerNextStartUrl();
     doc.potentialAction = {
       "@type": "HowTo",

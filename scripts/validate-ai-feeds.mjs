@@ -2660,6 +2660,7 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('data-pack="instagramBio"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "f"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "i"') ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "w"') ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("maybeSocialJump") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("?social=fb|ig|wa") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("@arledscreenn") ||

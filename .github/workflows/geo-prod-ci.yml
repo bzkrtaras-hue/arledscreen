@@ -60,6 +60,9 @@ jobs:
           grep -q "owner-next.html" /tmp/geo-next.txt
           grep -q "owner-next.json" /tmp/geo-next.txt
           grep -q "?pack=" /tmp/geo-next.txt
+          grep -q "Social: FB" /tmp/geo-next.txt
+          grep -q "social=fb" /tmp/geo-next.txt
+          grep -q "social=ig" /tmp/geo-next.txt
           npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
           test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
           test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
@@ -215,8 +218,13 @@ jobs:
           grep -q 'data-pack="instagramBio"' out/owner-next.html
           grep -q 'e.key === "f"' out/owner-next.html
           grep -q 'e.key === "i"' out/owner-next.html
+          grep -q 'e.key === "w"' out/owner-next.html
           grep -q 'maybeSocialJump' out/owner-next.html
           grep -q '?social=fb|ig|wa' out/owner-next.html
+          grep -q 'Social: FB' /tmp/geo-next.txt
+          grep -q 'social=fb' /tmp/geo-next.txt
+          grep -q 'social=ig' /tmp/geo-next.txt
+          node -e 'const p=require("./out/point-c.json"); const fb=p.packs.find(x=>x.packKey==="facebookAbout"); const ig=p.packs.find(x=>x.packKey==="instagramBio"); if(!String(fb?.html||"").includes("social=fb")||!String(ig?.html||"").includes("social=ig")) process.exit(1)'
           node -e 'const a=require("./out/.well-known/ard.json"); const s=a?.agentic?.resources?.socialJson; if(!String(s?.url||"").includes("/social.json")||String(s?.handles?.facebook||"")!=="arledscreenn"||String(s?.handles?.instagram||"")!=="arledscreen"||!String(s?.deepLinks?.facebook||"").includes("social=fb")) process.exit(1)'
           grep -q '@arledscreenn' out/owner-next.html
           grep -q '/social.json' out/owner-next.html

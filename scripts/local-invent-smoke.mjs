@@ -408,6 +408,13 @@ if (
     String(pcJson?.socialHandles?.facebook || "") === "arledscreenn" &&
     String(pcJson?.socialHandles?.instagram || "") === "arledscreen" &&
     String(pcJson?.socialHandles?.whatsapp || "") === "arledscreen" &&
+    String(pcJson?.socialHandles?.facebookDeep || "").includes("social=fb") &&
+    String(
+      (pcJson.packs || []).find((p) => p.packKey === "facebookAbout")?.html || "",
+    ).includes("social=fb") &&
+    String(
+      (pcJson.packs || []).find((p) => p.packKey === "instagramBio")?.html || "",
+    ).includes("social=ig") &&
     JSON.stringify(pcJson?.sameAs || []).includes("/social.json") &&
     fs.existsSync(path.join(outDir, ".well-known/point-c.json")) &&
     fs.existsSync(path.join(outDir, "point-c-en.json")) &&
@@ -584,6 +591,7 @@ else fail("ard.resources.pointC");
     html.includes('data-pack="instagramBio"') &&
     html.includes('e.key === "f"') &&
     html.includes('e.key === "i"') &&
+    html.includes('e.key === "w"') &&
     html.includes("maybeSocialJump") &&
     html.includes("socialQuery") &&
     html.includes("?social=fb|ig|wa") &&
