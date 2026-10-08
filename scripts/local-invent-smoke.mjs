@@ -546,6 +546,9 @@ else fail("ard.resources.pointC");
     html.includes("next-tur1a") &&
     html.includes("showTur1aGate") &&
     html.includes("Next: Tur1a") &&
+    html.includes("tur1a-log-chips") &&
+    html.includes("copy-tur1a-log") &&
+    html.includes("buildTur1aLogCommand") &&
     html.includes("Mailto DNSEnable") &&
     html.includes("packQuery") &&
     alias === html &&

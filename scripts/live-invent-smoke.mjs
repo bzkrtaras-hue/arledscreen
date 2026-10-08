@@ -555,6 +555,9 @@ try {
     ownerNextHtml.includes("next-tur1a") &&
     ownerNextHtml.includes("showTur1aGate") &&
     ownerNextHtml.includes("Next: Tur1a") &&
+    ownerNextHtml.includes("tur1a-log-chips") &&
+    ownerNextHtml.includes("copy-tur1a-log") &&
+    ownerNextHtml.includes("buildTur1aLogCommand") &&
     ownerNextHtml.includes("Mailto DNSEnable") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&

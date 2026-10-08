@@ -61,6 +61,27 @@ function cellKey(platform, promptId) {
   return `${platform}|${promptId}`;
 }
 
+/** Owner-friction: one-shot terminal log (optional platform/promptId when logging a specific cell). */
+export function buildTur1aLogCommand({
+  mentioned = "yes|no|partial",
+  brandCorrect = "yes|no",
+  priceSourceCited = "ai-shopping|catalog|prices-rss|brand|site|other|none",
+  platform = "",
+  promptId = "",
+  sources = "https://arledscreen.com/ai-shopping.json",
+} = {}) {
+  const parts = [
+    "npm run tur1a:log --",
+    `--mentioned=${mentioned}`,
+    `--brandCorrect=${brandCorrect}`,
+    `--priceSourceCited=${priceSourceCited}`,
+    `--sources=${sources}`,
+  ];
+  if (platform) parts.push(`--platform=${platform}`);
+  if (promptId) parts.push(`--promptId=${promptId}`);
+  return parts.join(" ");
+}
+
 function filledSet(rows) {
   const set = new Set();
   for (const r of rows) {
@@ -139,9 +160,7 @@ export function buildTur1aCsv(filledOverride = null, { en = false } = {}) {
       const locale = String(id).startsWith("en-") ? "en" : "tr-TR";
       const status = filledCell ? "filled" : "empty";
       const open = platformOpenUrl(platform);
-      const logCmd = filledCell
-        ? ""
-        : `npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json`;
+      const logCmd = filledCell ? "" : buildTur1aLogCommand({ platform, promptId: id });
       lines.push(
         [platform, id, locale, status, esc(open), esc(textOf(id)), esc(logCmd)].join(","),
       );
@@ -161,8 +180,7 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
     const plat = String(r.platform || "");
     if (ids.includes(pid) && HUMAN_PLATFORMS.includes(plat)) filledLocal.add(cellKey(plat, pid));
   }
-  const logCommand =
-    "npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json";
+  const logTemplate = buildTur1aLogCommand();
   let next = null;
   for (const id of ids) {
     for (const platform of HUMAN_PLATFORMS) {
@@ -176,7 +194,7 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
             .map((p) => platformOpenUrl(p))
             .filter(Boolean),
           prompt: usePrompts.find(([pid]) => pid === id)?.[1] || "",
-          logCommand,
+          logCommand: buildTur1aLogCommand({ platform, promptId: id }),
         };
         break;
       }
@@ -198,7 +216,7 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
           .map((p) => platformOpenUrl(p))
           .filter(Boolean),
         prompt: usePrompts.find(([pid]) => pid === id)?.[1] || "",
-        logCommand,
+        logCommand: buildTur1aLogCommand({ platform, promptId: id }),
         where: `${platform} · promptId=${id} · paste blind prompt (no invented scores)`,
       });
     }
@@ -281,7 +299,7 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
           "@type": "HowToStep",
           position: 3,
           name: "Log observation",
-          text: next.logCommand || logCommand,
+          text: next.logCommand || logTemplate,
         },
       ],
       tool: [
@@ -362,13 +380,24 @@ function printNext(filled) {
 }
 
 function runLog(filled) {
-  const next = findNext(filled);
+  const platformArg = arg("platform");
+  const promptIdArg = arg("promptId");
+  let target = null;
+  if (platformArg && promptIdArg) {
+    if (!HUMAN_PLATFORMS.includes(platformArg) || !promptIds.includes(promptIdArg)) {
+      console.error(`Unknown cell: platform=${platformArg} promptId=${promptIdArg}`);
+      process.exit(1);
+    }
+    target = { platform: platformArg, promptId: promptIdArg };
+  } else {
+    target = findNext(filled);
+  }
   console.log("=== ARLEDSCREEN Tur1a one-shot log ===");
-  if (!next) {
+  if (!target) {
     console.log(`All ${totalCells} human cells filled — nothing to log.`);
     process.exit(0);
   }
-  const openUrl = platformOpenUrl(next.platform);
+  const openUrl = platformOpenUrl(target.platform);
   const mentioned = arg("mentioned");
   const brandCorrect = arg("brandCorrect");
   const priceSourceCited = arg("priceSourceCited");
@@ -377,31 +406,34 @@ function runLog(filled) {
     console.error(
       "Example: npm run tur1a:log -- --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping",
     );
+    console.error(
+      "Optional cell: --platform=chatgpt --promptId=1 (defaults to next empty)",
+    );
     console.error("Do not invent scores — only log what you observed.");
     if (openUrl) {
-      console.error(`Where: ${next.platform} → ${openUrl}`);
+      console.error(`Where: ${target.platform} → ${openUrl}`);
       console.error(`Open: ${openUrl}`);
     }
     process.exit(1);
   }
-  const locale = arg("locale", String(next.promptId).startsWith("en-") ? "en" : "tr-TR");
+  const locale = arg("locale", String(target.promptId).startsWith("en-") ? "en" : "tr-TR");
   const sources = arg("sources", "https://arledscreen.com/ai-shopping.json");
   const notes = arg("notes", "");
   const competitors = arg("competitors", "");
   const wrongClaims = arg("wrongClaims", "");
 
-  console.log(`Cell: platform=${next.platform} · promptId=${next.promptId} · locale=${locale}`);
+  console.log(`Cell: platform=${target.platform} · promptId=${target.promptId} · locale=${locale}`);
   if (openUrl) {
-    console.log(`Where: ${next.platform} → ${openUrl}`);
+    console.log(`Where: ${target.platform} → ${openUrl}`);
     console.log(`Open: ${openUrl}`);
   }
-  console.log(`Prompt: ${promptText(next.promptId)}`);
+  console.log(`Prompt: ${promptText(target.promptId)}`);
   console.log(dryRun ? "Mode: dry-run (not written)" : "Mode: append blind-log.jsonl");
 
   const args = [
     logger,
-    `--platform=${next.platform}`,
-    `--promptId=${next.promptId}`,
+    `--platform=${target.platform}`,
+    `--promptId=${target.promptId}`,
     `--locale=${locale}`,
     `--mentioned=${mentioned}`,
     `--brandCorrect=${brandCorrect}`,

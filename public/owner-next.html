@@ -30,7 +30,7 @@
         { "@type": "HowToStep", "position": 2, "name": "Paste block", "text": "Paste the copied block into each opened destination." },
         { "@type": "HowToStep", "position": 3, "name": "Pasted → next", "text": "Pasted → next copies ack, marks pack pasted locally, advances ?pack= to next open pack. When ≥2 packs are pasted locally, Copy ack batch copies npm run geo:ack -- --packs=… for one terminal paste." },
         { "@type": "HowToStep", "position": 4, "name": "Next: arleds 301", "text": "When every Point C pack is pasted locally, Next: arleds 301 (or G) loads the DNSEnable/Isimtescil 301 clipboard with Copy + Open all — even before terminal geo:ack updates priorityGate." },
-        { "@type": "HowToStep", "position": 5, "name": "Tur1a Pasted → next", "text": "Tur1a checklist: Copy + Open all pastes the blind prompt into ChatGPT/Gemini/Perplexity/Google; Pasted → next (N) marks the cell locally and advances. Log observed flags only — no invented scores. Shortcut T opens Tur1a after Point C local paste." }
+        { "@type": "HowToStep", "position": 5, "name": "Tur1a Pasted → next", "text": "Tur1a checklist: Copy + Open all pastes the blind prompt into ChatGPT/Gemini/Perplexity/Google; Pasted → next (N) marks the cell locally and advances. Log chips (mentioned / brandCorrect / priceSourceCited) build npm run tur1a:log for the active cell — observe only, no invented scores. Shortcut T opens Tur1a after Point C local paste." }
       ],
       "tool": [
         { "@type": "HowToTool", "name": "geo-status.json", "url": "https://arledscreen.com/geo-status.json" },
@@ -180,6 +180,42 @@
       color: var(--muted);
       font-size: 0.82rem;
     }
+    #tur1a-log-chips {
+      margin-top: 0.65rem;
+      padding-top: 0.55rem;
+      border-top: 1px solid rgba(232, 238, 245, 0.08);
+    }
+    #tur1a-log-chips.hidden { display: none; }
+    #tur1a-log-chips .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: center;
+      margin-top: 0.35rem;
+    }
+    #tur1a-log-chips .chip-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      min-width: 6.5rem;
+    }
+    #tur1a-log-chips button.chip {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.22);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.82rem;
+      padding: 0.28rem 0.55rem;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    #tur1a-log-chips button.chip.on {
+      border-color: var(--accent);
+      background: rgba(196, 163, 90, 0.18);
+      color: var(--accent);
+    }
     kbd {
       font: inherit;
       font-size: 0.78rem;
@@ -270,7 +306,34 @@
           <button type="button" class="btn hidden" id="next-arleds" title="Advance to arleds.com 301 DNSEnable clipboard">Next: arleds 301</button>
           <button type="button" class="btn hidden" id="next-tur1a" title="Open Tur1a blind checklist">Next: Tur1a</button>
         </div>
-        <p class="actions-hint"><kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next · <kbd>B</kbd> = ack batch · <kbd>G</kbd> = arleds 301 · <kbd>T</kbd> = Tur1a</p>
+        <p class="actions-hint"><kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next · <kbd>B</kbd> = ack batch · <kbd>G</kbd> = arleds 301 · <kbd>T</kbd> = Tur1a · <kbd>L</kbd> = Copy log</p>
+        <div id="tur1a-log-chips" class="hidden" aria-label="Tur1a observation log chips">
+          <div class="chip-row" data-field="mentioned">
+            <span class="chip-label">mentioned</span>
+            <button type="button" class="chip" data-val="yes">yes</button>
+            <button type="button" class="chip" data-val="no">no</button>
+            <button type="button" class="chip" data-val="partial">partial</button>
+          </div>
+          <div class="chip-row" data-field="brandCorrect">
+            <span class="chip-label">brandCorrect</span>
+            <button type="button" class="chip" data-val="yes">yes</button>
+            <button type="button" class="chip" data-val="no">no</button>
+          </div>
+          <div class="chip-row" data-field="priceSourceCited">
+            <span class="chip-label">priceSource</span>
+            <button type="button" class="chip" data-val="ai-shopping">ai-shopping</button>
+            <button type="button" class="chip" data-val="catalog">catalog</button>
+            <button type="button" class="chip" data-val="prices-rss">prices-rss</button>
+            <button type="button" class="chip" data-val="brand">brand</button>
+            <button type="button" class="chip" data-val="site">site</button>
+            <button type="button" class="chip" data-val="other">other</button>
+            <button type="button" class="chip" data-val="none">none</button>
+          </div>
+          <div class="chip-row">
+            <button type="button" class="btn" id="copy-tur1a-log">Copy log</button>
+            <span class="chip-label" id="tur1a-log-ready" style="min-width:auto;text-transform:none;letter-spacing:0">Pick all three → Copy log</span>
+          </div>
+        </div>
       </div>
 
       <h2 id="pack-heading" class="hidden">Point C packs</h2>
@@ -315,6 +378,9 @@
     let viewingTur1a = false;
     let tur1aCells = [];
     let activeTur1aKey = "";
+    let activeTur1aPlatform = "";
+    let activeTur1aPromptId = "";
+    const tur1aLogPick = { mentioned: "", brandCorrect: "", priceSourceCited: "" };
     const PASTED_KEY = "arledscreen.ownerNext.pastedPacks";
     const TUR1A_DONE_KEY = "arledscreen.ownerNext.tur1aDone";
 
@@ -440,6 +506,9 @@
     function showArleds301(opts = {}) {
       const g = arledsGatePayload();
       viewingArleds = true;
+      viewingTur1a = false;
+      const chipBox = $("tur1a-log-chips");
+      if (chipBox) chipBox.classList.add("hidden");
       const alts = Array.isArray(g.openAlts)
         ? g.openAlts
         : g.openAlt
@@ -526,14 +595,78 @@
       return null;
     }
 
+    function buildTur1aLogCommand(opts = {}) {
+      const mentioned = opts.mentioned || tur1aLogPick.mentioned || "yes|no|partial";
+      const brandCorrect = opts.brandCorrect || tur1aLogPick.brandCorrect || "yes|no";
+      const priceSourceCited =
+        opts.priceSourceCited || tur1aLogPick.priceSourceCited || "ai-shopping|catalog|prices-rss|brand|site|other|none";
+      const platform = opts.platform || activeTur1aPlatform || "";
+      const promptId = opts.promptId || activeTur1aPromptId || "";
+      const parts = [
+        "npm run tur1a:log --",
+        `--mentioned=${mentioned}`,
+        `--brandCorrect=${brandCorrect}`,
+        `--priceSourceCited=${priceSourceCited}`,
+        "--sources=https://arledscreen.com/ai-shopping.json",
+      ];
+      if (platform) parts.push(`--platform=${platform}`);
+      if (promptId) parts.push(`--promptId=${promptId}`);
+      return parts.join(" ");
+    }
+
+    function tur1aLogReady() {
+      return !!(tur1aLogPick.mentioned && tur1aLogPick.brandCorrect && tur1aLogPick.priceSourceCited);
+    }
+
+    function refreshTur1aLogChips() {
+      const box = $("tur1a-log-chips");
+      if (!box) return;
+      if (viewingTur1a) box.classList.remove("hidden");
+      else {
+        box.classList.add("hidden");
+        return;
+      }
+      box.querySelectorAll(".chip-row[data-field]").forEach((row) => {
+        const field = row.getAttribute("data-field");
+        row.querySelectorAll("button.chip").forEach((btn) => {
+          btn.classList.toggle("on", tur1aLogPick[field] === btn.getAttribute("data-val"));
+        });
+      });
+      const ready = $("tur1a-log-ready");
+      const cmd = buildTur1aLogCommand();
+      activeAck = cmd;
+      $("ack").textContent = cmd;
+      if (ready) {
+        ready.textContent = tur1aLogReady()
+          ? `Ready · ${activeTur1aPlatform}/${activeTur1aPromptId}`
+          : "Pick all three → Copy log (observe only)";
+      }
+      const copyBtn = $("copy-tur1a-log");
+      if (copyBtn) copyBtn.classList.toggle("primary", tur1aLogReady());
+    }
+
+    async function doCopyTur1aLog(btn) {
+      if (!tur1aLogReady()) {
+        const ready = $("tur1a-log-ready");
+        if (ready) ready.textContent = "Need mentioned + brandCorrect + priceSourceCited";
+        return;
+      }
+      const cmd = buildTur1aLogCommand();
+      activeAck = cmd;
+      $("ack").textContent = cmd;
+      await copyText(cmd, btn || $("copy-tur1a-log"), "Copy log");
+    }
+
     function showTur1aCell(cell) {
       if (!cell) return;
       viewingTur1a = true;
       viewingArleds = false;
       activeTur1aKey = tur1aCellKey(cell);
+      activeTur1aPlatform = cell.platform || "";
+      activeTur1aPromptId = String(cell.promptId || "");
       activeKey = activeTur1aKey;
       activeOpen = cell.open || "";
-      activeAck = cell.logCommand || "npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…";
+      activeAck = buildTur1aLogCommand();
       const ui = tur1aUiStatus(cell);
       const alts = Array.isArray(cell.openAlts) ? cell.openAlts : [];
       $("pack-list").classList.remove("hidden");
@@ -563,6 +696,7 @@
       if (batchBtn) batchBtn.classList.add("hidden");
       const primaryOpen = $("copy-open-all");
       if (primaryOpen) primaryOpen.classList.add("primary");
+      refreshTur1aLogChips();
     }
 
     function renderTur1aList(cells, focusKey) {
@@ -696,6 +830,8 @@
       if (!pack) return;
       viewingArleds = false;
       viewingTur1a = false;
+      const chipBox = $("tur1a-log-chips");
+      if (chipBox) chipBox.classList.add("hidden");
       if (checklistPacks.length) {
         $("pack-list").classList.remove("hidden");
         $("pack-heading").classList.remove("hidden");
@@ -990,6 +1126,18 @@
     $("copy-ack-batch").addEventListener("click", () => doCopyAckBatch($("copy-ack-batch")));
     $("next-arleds").addEventListener("click", () => doNextArleds($("next-arleds")));
     $("next-tur1a").addEventListener("click", () => doNextTur1a($("next-tur1a")));
+    $("copy-tur1a-log").addEventListener("click", () => doCopyTur1aLog($("copy-tur1a-log")));
+    $("tur1a-log-chips").addEventListener("click", (e) => {
+      const btn = e.target && e.target.closest ? e.target.closest("button.chip") : null;
+      if (!btn) return;
+      const row = btn.closest(".chip-row[data-field]");
+      if (!row) return;
+      const field = row.getAttribute("data-field");
+      const val = btn.getAttribute("data-val") || "";
+      if (!field || !val) return;
+      tur1aLogPick[field] = tur1aLogPick[field] === val ? "" : val;
+      refreshTur1aLogChips();
+    });
     $("select").addEventListener("click", () => {
       $("paste").focus();
       $("paste").select();
@@ -1036,6 +1184,13 @@
         } else if (allPointCPastedLocally() || viewingArleds || packQuery() === "tur1a") {
           e.preventDefault();
           doNextTur1a(turBtn);
+        }
+        return;
+      }
+      if (e.key === "l" || e.key === "L") {
+        if (viewingTur1a) {
+          e.preventDefault();
+          doCopyTur1aLog($("copy-tur1a-log"));
         }
       }
     });

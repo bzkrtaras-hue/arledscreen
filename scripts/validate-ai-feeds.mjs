@@ -2558,10 +2558,13 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("next-tur1a") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("showTur1aGate") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Next: Tur1a") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("tur1a-log-chips") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-tur1a-log") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildTur1aLogCommand") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a/mailto required");
+      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log-chips/mailto required");
       process.exit(1);
     }
     {
