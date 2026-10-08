@@ -181,7 +181,10 @@ jobs:
           test -f out/owner-next.html && test -f out/geo-next.html
           cmp -s out/owner-next.html out/geo-next.html
           grep -q 'Copy paste' out/owner-next.html
+          grep -q 'pack-list' out/owner-next.html
+          grep -q 'howto-ld' out/owner-next.html
           grep -q '/owner-next.html' out/ai.txt
+          node -e 'const p=require("./out/point-c-progress.json"); const g=require("./out/geo-status.json"); if(!Array.isArray(p.packs)||p.packs.length<11||!Array.isArray(g.gates?.pointC?.packs)||g.gates.pointC.packs.length<11||!String(p.potentialAction?.url||"").includes("/owner-next.html")||!String(g.potentialAction?.url||"").includes("/owner-next.html")) process.exit(1)'
           grep -q '/.well-known/security.txt' out/ai-shopping.json
           grep -q '/llms-full.txt' out/ai-shopping.json
           grep -q 'security_txt_url' out/feeds/merchant-priced-panels.tsv
