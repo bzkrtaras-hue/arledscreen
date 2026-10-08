@@ -31,6 +31,10 @@ Allow: /.well-known/offers.json
 Allow: /.well-known/dataset.json
 Allow: /.well-known/feed.json
 Allow: /.well-known/entity.json
+Allow: /.well-known/cite.json
+Allow: /.well-known/faq.json
+Allow: /.well-known/faqs.json
+Allow: /.well-known/organization.json
 Allow: /.well-known/brand.json
 Allow: /.well-known/catalog.json
 Allow: /.well-known/security.txt

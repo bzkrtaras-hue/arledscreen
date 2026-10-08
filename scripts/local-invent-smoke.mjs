@@ -264,6 +264,8 @@ if (
     dist.includes("/.well-known/pricing.json") &&
     JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") &&
     JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack") &&
+    JSON.stringify(profiles?.ownerP0Checklist || []).includes("DNSEnable") &&
+    JSON.stringify(profiles?.ownerP0Checklist || []).includes("Domain Redirect") &&
     String(profiles?.canonicalUrls?.website || "").includes("#website") &&
     String(profiles?.description || "").includes("geo:ack") &&
     String(profiles?.mainEntityOfPage?.["@id"] || "").includes("#website") &&
@@ -479,6 +481,10 @@ if (
     entSame.includes("/.well-known/offer.json") &&
     entSame.includes("/dataset.json") &&
     entSame.includes("/.well-known/dataset.json") &&
+    entSame.includes("/cite.json") &&
+    entSame.includes("/.well-known/cite.json") &&
+    entSame.includes("/.well-known/faq.json") &&
+    entSame.includes("/.well-known/organization.json") &&
     entSame.includes("/humans.txt") &&
     entSame.includes("/.well-known/security.txt")
   ) {

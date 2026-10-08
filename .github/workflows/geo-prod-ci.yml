@@ -94,6 +94,10 @@ jobs:
           grep -q "/.well-known/offers.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/dataset.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/feed.json" scripts/submit-indexnow.mjs
+          grep -q "/.well-known/cite.json" scripts/submit-indexnow.mjs
+          grep -q "/.well-known/organization.json" scripts/submit-indexnow.mjs
+          grep -q "DNSEnable" out/entity-profiles.json
+          grep -q "Domain Redirect" out/entity-profiles.json
           grep -q "/.well-known/modules.json" out/ai-shopping.json
           grep -q "/.well-known/sku.json" out/ai-shopping.json
           grep -q "/.well-known/pricing.json" out/ai-shopping.json

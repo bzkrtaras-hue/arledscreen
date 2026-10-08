@@ -170,6 +170,10 @@ feed-alias-well-known-ai: https://arledscreen.com/.well-known/ai.txt
 feed-alias-well-known-ai-shopping: https://arledscreen.com/.well-known/ai-shopping.json
 feed-alias-well-known-prices: https://arledscreen.com/.well-known/prices.json
 feed-alias-well-known-entity: https://arledscreen.com/.well-known/entity.json
+feed-alias-well-known-cite: https://arledscreen.com/.well-known/cite.json
+feed-alias-well-known-faq: https://arledscreen.com/.well-known/faq.json
+feed-alias-well-known-faqs: https://arledscreen.com/.well-known/faqs.json
+feed-alias-well-known-organization: https://arledscreen.com/.well-known/organization.json
 feed-alias-organization-json: https://arledscreen.com/organization.json
 feed-alias-offers-json: https://arledscreen.com/offers.json
 feed-alias-offer-json: https://arledscreen.com/offer.json

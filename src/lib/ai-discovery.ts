@@ -34,6 +34,9 @@ const ENTITY_PROFILES_URL = `${SITE_URL}/entity-profiles.json`;
 const ORGANIZATION_JSON_URL = `${SITE_URL}/organization.json`;
 const BRAND_WELLKNOWN_URL = `${SITE_URL}/.well-known/brand.json`;
 const ENTITY_WELLKNOWN_URL = `${SITE_URL}/.well-known/entity.json`;
+const CITE_WELLKNOWN_URL = `${SITE_URL}/.well-known/cite.json`;
+const FAQ_WELLKNOWN_URL = `${SITE_URL}/.well-known/faq.json`;
+const ORGANIZATION_WELLKNOWN_URL = `${SITE_URL}/.well-known/organization.json`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
@@ -72,6 +75,9 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: BRAND_JSON_URL, title: "NXTIONSTAR Brand" },
         { url: BRAND_WELLKNOWN_URL, title: "NXTIONSTAR Brand invent alias" },
         { url: ENTITY_WELLKNOWN_URL, title: "Organization invent alias" },
+        { url: CITE_WELLKNOWN_URL, title: "Organization cite invent alias" },
+        { url: FAQ_WELLKNOWN_URL, title: "Organization FAQ invent alias" },
+        { url: ORGANIZATION_WELLKNOWN_URL, title: "Organization well-known invent alias" },
         { url: CATALOG_JSON_URL, title: "Product Catalog" },
         { url: AI_SHOPPING_URL, title: "AI Shopping Index" },
         { url: PRICES_JSON_URL, title: "Panel Prices (alias)" },
@@ -106,6 +112,9 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "application/ld+json", href: BRAND_JSON_URL, title: "NXTIONSTAR Brand" },
   { rel: "alternate", type: "application/ld+json", href: BRAND_WELLKNOWN_URL, title: "NXTIONSTAR Brand invent alias" },
   { rel: "alternate", type: "application/ld+json", href: ENTITY_WELLKNOWN_URL, title: "Organization invent alias" },
+  { rel: "alternate", type: "application/ld+json", href: CITE_WELLKNOWN_URL, title: "Organization cite invent alias" },
+  { rel: "alternate", type: "application/ld+json", href: FAQ_WELLKNOWN_URL, title: "Organization FAQ invent alias" },
+  { rel: "alternate", type: "application/ld+json", href: ORGANIZATION_WELLKNOWN_URL, title: "Organization well-known invent alias" },
   { rel: "alternate", type: "application/ld+json", href: CATALOG_JSON_URL, title: "Product Catalog" },
   { rel: "alternate", type: "application/ld+json", href: AI_SHOPPING_URL, title: "AI Shopping Index" },
   { rel: "alternate", type: "application/ld+json", href: PRICES_JSON_URL, title: "Panel Prices (alias)" },

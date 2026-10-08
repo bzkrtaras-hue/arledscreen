@@ -2234,6 +2234,9 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("llms-full.txt") ||
     !headersLive.includes("#website") ||
     !headersLive.includes("/.well-known/entity.json") ||
+    !headersLive.includes("/.well-known/cite.json") ||
+    !headersLive.includes("/.well-known/faq.json") ||
+    !headersLive.includes("/.well-known/organization.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
@@ -2254,6 +2257,9 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/brand.json"',
       'href="https://arledscreen.com/.well-known/brand.json"',
       'href="https://arledscreen.com/.well-known/entity.json"',
+      'href="https://arledscreen.com/.well-known/cite.json"',
+      'href="https://arledscreen.com/.well-known/faq.json"',
+      'href="https://arledscreen.com/.well-known/organization.json"',
       'href="https://arledscreen.com/prices.json"',
       'href="https://arledscreen.com/organization.json"',
       'href="https://arledscreen.com/entity-profiles.json"',
@@ -2411,9 +2417,11 @@ if (fs.existsSync(outDir)) {
     }
     if (
       !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack")
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("DNSEnable") ||
+      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("Domain Redirect")
     ) {
-      console.error("❌ entity-profiles.json ownerP0Checklist must cite npm run geo:next + geo:ack");
+      console.error("❌ entity-profiles.json ownerP0Checklist must cite npm run geo:next + geo:ack + DNSEnable Domain Redirect");
       process.exit(1);
     }
     if (!String(profiles?.canonicalUrls?.website || "").includes("#website")) {
@@ -2684,7 +2692,15 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   const canonEntityForSyn = fs.readFileSync(path.join(outDir, "entity.json"));
-  for (const rel of ["cite.json", "faq.json", "faqs.json"]) {
+  for (const rel of [
+    "cite.json",
+    "faq.json",
+    "faqs.json",
+    ".well-known/cite.json",
+    ".well-known/faq.json",
+    ".well-known/faqs.json",
+    ".well-known/organization.json",
+  ]) {
     if (!fs.readFileSync(path.join(outDir, rel)).equals(canonEntityForSyn)) {
       console.error(`❌ out/${rel} must match entity.json`);
       process.exit(1);
@@ -3625,6 +3641,9 @@ if (fs.existsSync(outDir)) {
     "/.well-known/offers.json",
     "/.well-known/dataset.json",
     "/.well-known/feed.json",
+    "/.well-known/cite.json",
+    "/.well-known/faq.json",
+    "/.well-known/organization.json",
     "/modules.json",
     "/sku.json",
     "/tr/ai-shopping.json",

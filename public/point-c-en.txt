@@ -12,7 +12,7 @@ Single next: npm run geo:next · Sequential: npm run point-c:next · after paste
 - Instagram Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)
 - Facebook About = packs.facebookAbout · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)
 - Bing Places / Apple = packs.bingPlaces / packs.appleBusinessConnect
-- P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — npm run verify:arleds-301; docs/ops/arleds-301-hostinger.md
+- P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md
 - Merchant jargon yalnızca packs.googleMerchantReadiness — kamu biyografisine koyma
 - Tur 1a / kör test: npm run tur1a:next → paste → npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|… · tur1a:matrix (0/48) — skor uydurma yok
 - PR #60 main merge (GEO kalıcılık)

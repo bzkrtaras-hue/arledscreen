@@ -1837,6 +1837,60 @@ function inventAliasBasedOnUrls() {
   ];
 }
 
+/** Entity/Organization invent aliases (cite/faq/org well-known) — not pricedPanels. */
+function entityAliasBasedOnUrls() {
+  return [
+    `${SITE_URL}/cite.json`,
+    `${SITE_URL}/faq.json`,
+    `${SITE_URL}/faqs.json`,
+    `${SITE_URL}/.well-known/cite.json`,
+    `${SITE_URL}/.well-known/faq.json`,
+    `${SITE_URL}/.well-known/faqs.json`,
+    `${SITE_URL}/.well-known/organization.json`,
+  ];
+}
+
+function entityAliasDistributionEntries() {
+  return [
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/cite.json`,
+      name: "Organization cite invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/faq.json`,
+      name: "Organization FAQ invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/cite.json`,
+      name: "Organization cite well-known invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/faq.json`,
+      name: "Organization FAQ well-known invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/faqs.json`,
+      name: "Organization FAQs well-known invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/organization.json`,
+      name: "Organization well-known invent alias",
+    },
+  ];
+}
+
 function discoveryBasedOnUrls() {
   return [
     `${SITE_URL}/.well-known/agents.json`,
@@ -1898,6 +1952,7 @@ function enrichEntityDocument(entity) {
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/#website`,
+      ...entityAliasBasedOnUrls(),
       ...inventAliasBasedOnUrls(),
     ]) {
       if (!same.includes(u)) same.push(u);
@@ -2046,6 +2101,7 @@ function enrichEntityDocument(entity) {
       `${SITE_URL}/point-c.txt`,
       `${SITE_URL}/entity-profiles.json`,
       `${SITE_URL}/#website`,
+      ...entityAliasBasedOnUrls(),
       ...inventAliasBasedOnUrls(),
     ]) {
       based.add(u);
@@ -2102,6 +2158,7 @@ function enrichEntityDocument(entity) {
         contentUrl: `${SITE_URL}/entity-profiles.json`,
         name: "ARLEDSCREEN Point C entity profiles",
       },
+      ...entityAliasDistributionEntries(),
       ...inventAliasDistributionEntries(),
       websiteDistributionEntry(),
     ]) {
@@ -2273,8 +2330,22 @@ function enrichEntityProfiles(doc) {
 
   const geoNextLead =
     "P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website";
+  const domainLead =
+    "P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md";
   const checklist = Array.isArray(doc.ownerP0Checklist) ? [...doc.ownerP0Checklist] : [];
-  const withoutOldLead = checklist.filter((row) => !String(row).includes("P0 status:") && !String(row).includes("P0 next:"));
+  const withoutOldLead = checklist.filter(
+    (row) =>
+      !String(row).includes("P0 status:") &&
+      !String(row).includes("P0 next:") &&
+      !String(row).includes("P0 domain:"),
+  );
+  // Keep domain after NAP/social rows if present; else append before merchant/Tur1a.
+  const socialIdx = withoutOldLead.findIndex((row) => String(row).includes("Bing Places"));
+  if (socialIdx >= 0) {
+    withoutOldLead.splice(socialIdx + 1, 0, domainLead);
+  } else {
+    withoutOldLead.push(domainLead);
+  }
   doc.ownerP0Checklist = [geoNextLead, ...withoutOldLead];
 
   doc.canonicalUrls = {
@@ -2500,7 +2571,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
         "Tur1a blind — npm run tur1a:next then npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… (no invented %)",
         "GSC access",
         "PR #60 merge",
-        "arleds.com → arledscreen.com/tr/ 301 — Hostinger clipboard in point-c.txt · Gmail draft Send · npm run verify:arleds-301",
+        "arleds.com → arledscreen.com/tr/ 301 — DNSEnable Domain Redirect first (point-c.txt dual-path) · Hostinger only if NS Hostinger · npm run verify:arleds-301",
       ],
       noSpamDoorways: true,
       provinceLandingPolicy: "Only provinces with published project records; no 81-il programatic doorways",
@@ -2764,6 +2835,10 @@ function writeFeedPathAliases(dir) {
     ["entity.json", "faqs"],
     ["entity.json", "api/entity"],
     ["entity.json", ".well-known/entity.json"],
+    ["entity.json", ".well-known/cite.json"],
+    ["entity.json", ".well-known/faq.json"],
+    ["entity.json", ".well-known/faqs.json"],
+    ["entity.json", ".well-known/organization.json"],
     ["catalog.json", ".well-known/catalog.json"],
     ["catalog.json", "api/catalog.json"],
     ["geo-baseline.json", "geo-baseline"],
@@ -3105,6 +3180,10 @@ feed-alias-well-known-ai: ${SITE_URL}/.well-known/ai.txt
 feed-alias-well-known-ai-shopping: ${SITE_URL}/.well-known/ai-shopping.json
 feed-alias-well-known-prices: ${SITE_URL}/.well-known/prices.json
 feed-alias-well-known-entity: ${SITE_URL}/.well-known/entity.json
+feed-alias-well-known-cite: ${SITE_URL}/.well-known/cite.json
+feed-alias-well-known-faq: ${SITE_URL}/.well-known/faq.json
+feed-alias-well-known-faqs: ${SITE_URL}/.well-known/faqs.json
+feed-alias-well-known-organization: ${SITE_URL}/.well-known/organization.json
 feed-alias-organization-json: ${SITE_URL}/organization.json
 feed-alias-offers-json: ${SITE_URL}/offers.json
 feed-alias-offer-json: ${SITE_URL}/offer.json
@@ -3493,6 +3572,10 @@ Acknowledgments: https://arledscreen.com/brand.json
     ".well-known/dataset.json",
     ".well-known/feed.json",
     ".well-known/entity.json",
+    ".well-known/cite.json",
+    ".well-known/faq.json",
+    ".well-known/faqs.json",
+    ".well-known/organization.json",
     ".well-known/catalog.json",
     ".well-known/llms-full.txt",
     "organization.json",

@@ -71,7 +71,14 @@
     "https://arledscreen.com/dataset.json",
     "https://arledscreen.com/feed.json",
     "https://arledscreen.com/.well-known/dataset.json",
-    "https://arledscreen.com/.well-known/feed.json"
+    "https://arledscreen.com/.well-known/feed.json",
+    "https://arledscreen.com/cite.json",
+    "https://arledscreen.com/faq.json",
+    "https://arledscreen.com/faqs.json",
+    "https://arledscreen.com/.well-known/cite.json",
+    "https://arledscreen.com/.well-known/faq.json",
+    "https://arledscreen.com/.well-known/faqs.json",
+    "https://arledscreen.com/.well-known/organization.json"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3430,7 +3437,14 @@
     "https://arledscreen.com/dataset.json",
     "https://arledscreen.com/feed.json",
     "https://arledscreen.com/.well-known/dataset.json",
-    "https://arledscreen.com/.well-known/feed.json"
+    "https://arledscreen.com/.well-known/feed.json",
+    "https://arledscreen.com/cite.json",
+    "https://arledscreen.com/faq.json",
+    "https://arledscreen.com/faqs.json",
+    "https://arledscreen.com/.well-known/cite.json",
+    "https://arledscreen.com/.well-known/faq.json",
+    "https://arledscreen.com/.well-known/faqs.json",
+    "https://arledscreen.com/.well-known/organization.json"
   ],
   "distribution": [
     {
@@ -3627,6 +3641,42 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/feed.json",
       "name": "Feed well-known pricedPanels invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/cite.json",
+      "name": "Organization cite invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faq.json",
+      "name": "Organization FAQ invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/cite.json",
+      "name": "Organization cite well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/faq.json",
+      "name": "Organization FAQ well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/faqs.json",
+      "name": "Organization FAQs well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/organization.json",
+      "name": "Organization well-known invent alias"
     }
   ]
 }
