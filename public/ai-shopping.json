@@ -74,6 +74,7 @@
     "https://arledscreen.com/.well-known/catalog.json",
     "https://arledscreen.com/.well-known/geo-baseline.json",
     "https://arledscreen.com/.well-known/entity-profiles.json",
+    "https://arledscreen.com/.well-known/ai-shopping.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
@@ -131,6 +132,7 @@
     "https://arledscreen.com/.well-known/catalog.json",
     "https://arledscreen.com/.well-known/geo-baseline.json",
     "https://arledscreen.com/.well-known/entity-profiles.json",
+    "https://arledscreen.com/.well-known/ai-shopping.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
@@ -1228,6 +1230,12 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/entity-profiles.json",
       "name": "Point C entity-profiles well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/ai-shopping.json",
+      "name": "AI Shopping well-known invent alias"
     },
     {
       "@type": "DataDownload",

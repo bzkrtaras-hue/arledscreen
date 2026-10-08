@@ -772,9 +772,10 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/product.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/catalog.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/geo-baseline.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/entity-profiles.json")
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/entity-profiles.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/ai-shopping.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price/offer/dataset/feed/products/geo + #website");
+    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price/offer/dataset/feed/products/geo/ai-shopping-wk + #website");
     process.exit(1);
   }
   if (
@@ -2127,6 +2128,7 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('href="https://arledscreen.com/.well-known/catalog.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/geo-baseline.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/entity-profiles.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/ai-shopping.json"') ||
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
@@ -2262,6 +2264,7 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/about.json") ||
     !headersLive.includes("/.well-known/geo-baseline.json") ||
     !headersLive.includes("/.well-known/entity-profiles.json") ||
+    !headersLive.includes("/.well-known/ai-shopping.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
@@ -2291,6 +2294,7 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/.well-known/about.json"',
       'href="https://arledscreen.com/.well-known/geo-baseline.json"',
       'href="https://arledscreen.com/.well-known/entity-profiles.json"',
+      'href="https://arledscreen.com/.well-known/ai-shopping.json"',
       'href="https://arledscreen.com/prices.json"',
       'href="https://arledscreen.com/organization.json"',
       'href="https://arledscreen.com/entity-profiles.json"',
@@ -2768,6 +2772,10 @@ if (fs.existsSync(outDir)) {
   }
   if (!fs.readFileSync(path.join(outDir, ".well-known/entity-profiles.json")).equals(fs.readFileSync(path.join(outDir, "entity-profiles.json")))) {
     console.error("❌ out/.well-known/entity-profiles.json must match entity-profiles.json");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, ".well-known/ai-shopping.json")).equals(fs.readFileSync(path.join(outDir, "ai-shopping.json")))) {
+    console.error("❌ out/.well-known/ai-shopping.json must match ai-shopping.json");
     process.exit(1);
   }
   for (const rel of ["offer", "offers", "dataset", "feed"]) {

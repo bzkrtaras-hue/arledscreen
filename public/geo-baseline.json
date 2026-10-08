@@ -47,6 +47,7 @@
     "https://arledscreen.com/.well-known/catalog.json",
     "https://arledscreen.com/.well-known/geo-baseline.json",
     "https://arledscreen.com/.well-known/entity-profiles.json",
+    "https://arledscreen.com/.well-known/ai-shopping.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
@@ -303,6 +304,12 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/ai-shopping.json",
+      "name": "AI Shopping well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/agents.json",
       "name": "Agent Discovery Index"
     },
@@ -493,8 +500,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "77c95cd630b5bddc70f74c3c6a63028f43f7530b105fbc9af5dc8b9a008ac924",
-    "catalogSha256": "fc045c7365698b62ce7f27e239087ee7a55b69290e7aa44c5a3a3b3238b048a4",
+    "aiShoppingSha256": "d3379d49e2a4547d3e5c79fa590700cbecc7a442cc653293b748f355cd1c35eb",
+    "catalogSha256": "064085f7aeed6f2866d64825b89fbca821bea4bb3b871f9f0f6a8aae243b3c16",
     "merchantTsvSha256": "725b3f10641e7e6ec45cee7144426471c82c9d14eddde5efabc80cc24858a9a4",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
@@ -526,6 +533,7 @@
     "catalogWellKnown": "https://arledscreen.com/.well-known/catalog.json",
     "geoBaselineWellKnown": "https://arledscreen.com/.well-known/geo-baseline.json",
     "entityProfilesWellKnown": "https://arledscreen.com/.well-known/entity-profiles.json",
+    "aiShoppingWellKnown": "https://arledscreen.com/.well-known/ai-shopping.json",
     "offer": "https://arledscreen.com/offer",
     "offers": "https://arledscreen.com/offers",
     "dataset": "https://arledscreen.com/dataset",

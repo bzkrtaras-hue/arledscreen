@@ -191,6 +191,7 @@ feed-alias-well-known-product: https://arledscreen.com/.well-known/product.json
 feed-alias-well-known-catalog: https://arledscreen.com/.well-known/catalog.json
 feed-alias-well-known-geo-baseline: https://arledscreen.com/.well-known/geo-baseline.json
 feed-alias-well-known-entity-profiles: https://arledscreen.com/.well-known/entity-profiles.json
+feed-alias-well-known-ai-shopping-invent: https://arledscreen.com/.well-known/ai-shopping.json
 feed-alias-offer: https://arledscreen.com/offer
 feed-alias-offers: https://arledscreen.com/offers
 feed-alias-dataset: https://arledscreen.com/dataset

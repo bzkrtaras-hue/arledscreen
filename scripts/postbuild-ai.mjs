@@ -945,6 +945,12 @@ function buildAiShopping() {
       {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/ai-shopping.json`,
+        name: "AI Shopping well-known invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/catalog.json`,
       },
       {
@@ -1510,6 +1516,7 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/.well-known/catalog.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/geo-baseline.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/entity-profiles.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/ai-shopping.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/agents.json" rel="related" type="application/ld+json"/>
@@ -1853,6 +1860,12 @@ function inventAliasDistributionEntries() {
       contentUrl: `${SITE_URL}/.well-known/entity-profiles.json`,
       name: "Point C entity-profiles well-known invent alias",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/ai-shopping.json`,
+      name: "AI Shopping well-known invent alias",
+    },
     ...discoveryDistributionEntries(),
   ];
 }
@@ -1936,6 +1949,7 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/.well-known/catalog.json`,
     `${SITE_URL}/.well-known/geo-baseline.json`,
     `${SITE_URL}/.well-known/entity-profiles.json`,
+    `${SITE_URL}/.well-known/ai-shopping.json`,
     ...discoveryBasedOnUrls(),
   ];
 }
@@ -2782,6 +2796,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       catalogWellKnown: `${SITE_URL}/.well-known/catalog.json`,
       geoBaselineWellKnown: `${SITE_URL}/.well-known/geo-baseline.json`,
       entityProfilesWellKnown: `${SITE_URL}/.well-known/entity-profiles.json`,
+      aiShoppingWellKnown: `${SITE_URL}/.well-known/ai-shopping.json`,
       offer: `${SITE_URL}/offer`,
       offers: `${SITE_URL}/offers`,
       dataset: `${SITE_URL}/dataset`,
@@ -3367,6 +3382,7 @@ feed-alias-well-known-product: ${SITE_URL}/.well-known/product.json
 feed-alias-well-known-catalog: ${SITE_URL}/.well-known/catalog.json
 feed-alias-well-known-geo-baseline: ${SITE_URL}/.well-known/geo-baseline.json
 feed-alias-well-known-entity-profiles: ${SITE_URL}/.well-known/entity-profiles.json
+feed-alias-well-known-ai-shopping-invent: ${SITE_URL}/.well-known/ai-shopping.json
 feed-alias-offer: ${SITE_URL}/offer
 feed-alias-offers: ${SITE_URL}/offers
 feed-alias-dataset: ${SITE_URL}/dataset

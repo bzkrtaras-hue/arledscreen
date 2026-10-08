@@ -36,6 +36,7 @@
     <atom:link href="https://arledscreen.com/.well-known/catalog.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/.well-known/geo-baseline.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/.well-known/entity-profiles.json" rel="related" type="application/ld+json"/>
+    <atom:link href="https://arledscreen.com/.well-known/ai-shopping.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/.well-known/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="https://arledscreen.com/.well-known/agents.json" rel="related" type="application/ld+json"/>

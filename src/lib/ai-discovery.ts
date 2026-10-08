@@ -48,6 +48,7 @@ const NAP_WELLKNOWN_URL = `${SITE_URL}/.well-known/nap.json`;
 const ABOUT_WELLKNOWN_URL = `${SITE_URL}/.well-known/about.json`;
 const GEO_BASELINE_WELLKNOWN_URL = `${SITE_URL}/.well-known/geo-baseline.json`;
 const ENTITY_PROFILES_WELLKNOWN_URL = `${SITE_URL}/.well-known/entity-profiles.json`;
+const AI_SHOPPING_WELLKNOWN_URL = `${SITE_URL}/.well-known/ai-shopping.json`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
@@ -83,6 +84,7 @@ const inventAliasLdJson = [
   { url: CATALOG_WELLKNOWN_URL, title: "Catalog well-known invent alias" },
   { url: GEO_BASELINE_WELLKNOWN_URL, title: "GEO baseline well-known invent alias" },
   { url: ENTITY_PROFILES_WELLKNOWN_URL, title: "Point C entity-profiles well-known invent alias" },
+  { url: AI_SHOPPING_WELLKNOWN_URL, title: "AI Shopping well-known invent alias" },
 ] as const;
 
 export const aiDiscoveryMetadata: Metadata = {

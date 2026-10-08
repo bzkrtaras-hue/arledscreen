@@ -59,6 +59,7 @@
   Link: <https://arledscreen.com/.well-known/catalog.json>; rel="alternate"; type="application/ld+json"; title="Catalog well-known invent alias"
   Link: <https://arledscreen.com/.well-known/geo-baseline.json>; rel="alternate"; type="application/ld+json"; title="GEO baseline well-known invent alias"
   Link: <https://arledscreen.com/.well-known/entity-profiles.json>; rel="alternate"; type="application/ld+json"; title="Point C entity-profiles well-known invent alias"
+  Link: <https://arledscreen.com/.well-known/ai-shopping.json>; rel="alternate"; type="application/ld+json"; title="AI Shopping well-known invent alias"
   Link: <https://arledscreen.com/ai.txt>; rel="alternate"; type="text/plain"; title="AI Agent Discovery Pointer"
   Link: <https://arledscreen.com/feeds/prices.rss>; rel="alternate"; type="application/rss+xml"; title="Panel Price Updates RSS"
   Link: <https://arledscreen.com/feeds/merchant-priced-panels.tsv>; rel="alternate"; type="text/tab-separated-values"; title="Merchant pricedPanels TSV"

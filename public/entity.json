@@ -91,7 +91,8 @@
     "https://arledscreen.com/.well-known/product.json",
     "https://arledscreen.com/.well-known/catalog.json",
     "https://arledscreen.com/.well-known/geo-baseline.json",
-    "https://arledscreen.com/.well-known/entity-profiles.json"
+    "https://arledscreen.com/.well-known/entity-profiles.json",
+    "https://arledscreen.com/.well-known/ai-shopping.json"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3470,7 +3471,8 @@
     "https://arledscreen.com/.well-known/product.json",
     "https://arledscreen.com/.well-known/catalog.json",
     "https://arledscreen.com/.well-known/geo-baseline.json",
-    "https://arledscreen.com/.well-known/entity-profiles.json"
+    "https://arledscreen.com/.well-known/entity-profiles.json",
+    "https://arledscreen.com/.well-known/ai-shopping.json"
   ],
   "distribution": [
     {
@@ -3787,6 +3789,12 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/entity-profiles.json",
       "name": "Point C entity-profiles well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/ai-shopping.json",
+      "name": "AI Shopping well-known invent alias"
     }
   ]
 }
