@@ -782,12 +782,25 @@ if (fs.existsSync(outDir)) {
     "pricingJson",
     "securityRoot",
     "llmsFullText",
+    "llmsText",
+    "calculator",
+    "enCalculator",
+    "inventCalculatorEn",
     "website",
   ]) {
     if (!String(baseline?.discovery?.[key] || "").includes("arledscreen.com")) {
       console.error(`❌ geo-baseline.json discovery.${key} required for invent/agent surfaces`);
       process.exit(1);
     }
+  }
+  if (
+    !String(baseline?.discovery?.llmsText || "").includes("/llms.txt") ||
+    !String(baseline?.discovery?.calculator || "").includes("/tr/hesaplayici/") ||
+    !String(baseline?.discovery?.enCalculator || "").includes("/en/hesaplayici/") ||
+    !String(baseline?.discovery?.inventCalculatorEn || "").includes("/en/calculator/")
+  ) {
+    console.error("❌ geo-baseline.json discovery.llmsText + calculator + enCalculator + inventCalculatorEn path parity required");
+    process.exit(1);
   }
   if (!String(baseline?.discovery?.website || "").includes("#website")) {
     console.error("❌ geo-baseline.json discovery.website must cite /#website");

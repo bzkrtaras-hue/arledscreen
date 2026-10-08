@@ -942,6 +942,10 @@ try {
     String(disc.pricingJson || "").includes("/pricing.json") &&
     String(disc.securityRoot || "").includes("/security.txt") &&
     String(disc.llmsFullText || "").includes("/llms-full.txt") &&
+    String(disc.llmsText || "").includes("/llms.txt") &&
+    String(disc.calculator || "").includes("/tr/hesaplayici/") &&
+    String(disc.enCalculator || "").includes("/en/hesaplayici/") &&
+    String(disc.inventCalculatorEn || "").includes("/en/calculator/") &&
     String(disc.geoBaselineExtless || "").includes("/geo-baseline") &&
     String(disc.aiShoppingExtless || "").includes("/ai-shopping") &&
     String(disc.entityProfilesExtless || "").includes("/entity-profiles") &&
