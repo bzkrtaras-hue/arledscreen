@@ -536,6 +536,10 @@ else fail("ard.resources.pointC");
     html.includes("pasted-next") &&
     html.includes("doPastedNext") &&
     html.includes("Pasted → next") &&
+    html.includes("copy-ack-batch") &&
+    html.includes("buildAckBatchCommand") &&
+    html.includes("--packs=") &&
+    html.includes("Copy ack batch") &&
     html.includes("Mailto DNSEnable") &&
     html.includes("packQuery") &&
     alias === html &&

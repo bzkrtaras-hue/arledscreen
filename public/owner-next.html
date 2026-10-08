@@ -28,7 +28,7 @@
       "step": [
         { "@type": "HowToStep", "position": 1, "name": "Copy + Open all", "text": "Sticky Copy + Open all (or Enter) copies paste and opens every Open/OpenAlt tab." },
         { "@type": "HowToStep", "position": 2, "name": "Paste block", "text": "Paste the copied block into each opened destination." },
-        { "@type": "HowToStep", "position": 3, "name": "Pasted → next", "text": "Pasted → next copies ack, marks pack pasted locally, advances ?pack= to next open pack. Terminal: npm run geo:ack / point-c:ack." }
+        { "@type": "HowToStep", "position": 3, "name": "Pasted → next", "text": "Pasted → next copies ack, marks pack pasted locally, advances ?pack= to next open pack. When ≥2 packs are pasted locally, Copy ack batch copies npm run geo:ack -- --packs=… for one terminal paste." }
       ],
       "tool": [
         { "@type": "HowToTool", "name": "geo-status.json", "url": "https://arledscreen.com/geo-status.json" },
@@ -264,8 +264,9 @@
           <button type="button" class="btn" id="pasted-next">Pasted → next</button>
           <button type="button" class="btn" id="copy-open-tab">Copy + Open</button>
           <button type="button" class="btn" id="copy-ack">Copy ack</button>
+          <button type="button" class="btn hidden" id="copy-ack-batch" title="One terminal command for all locally pasted packs">Copy ack batch</button>
         </div>
-        <p class="actions-hint"><kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next (copy ack + advance pack)</p>
+        <p class="actions-hint"><kbd>Enter</kbd> = Copy + Open all · <kbd>N</kbd> = Pasted → next · <kbd>B</kbd> = Copy ack batch (when ≥2 pasted)</p>
       </div>
 
       <h2 id="pack-heading" class="hidden">Point C packs</h2>
@@ -344,12 +345,50 @@
       const set = readPasted();
       set.add(String(key));
       writePasted(set);
+      refreshAckBatchUi();
     }
 
     function packUiStatus(p) {
       if (p.status === "acked") return "acked";
       if (readPasted().has(String(p.packKey || ""))) return "pasted";
       return p.status || "open";
+    }
+
+    function pastedOpenKeys() {
+      const pasted = readPasted();
+      return checklistPacks
+        .filter((p) => p.packKey && p.status !== "acked" && pasted.has(String(p.packKey)))
+        .map((p) => p.packKey);
+    }
+
+    /** Mirror scripts/print-point-c-packs.mjs buildAckBatchCommand */
+    function buildAckBatchCommand(keys) {
+      const list = [...new Set((keys || []).map(String).filter(Boolean))];
+      if (!list.length) return "npm run geo:ack";
+      if (list.length === 1) return `npm run geo:ack -- --pack=${list[0]}`;
+      return `npm run geo:ack -- --packs=${list.join(",")}`;
+    }
+
+    function refreshAckBatchUi() {
+      const btn = $("copy-ack-batch");
+      if (!btn) return;
+      const keys = pastedOpenKeys();
+      const cmd = buildAckBatchCommand(keys);
+      btn.dataset.cmd = cmd;
+      const openLeft = checklistPacks.some((p) => packUiStatus(p) === "open");
+      if (keys.length >= 2) {
+        btn.classList.remove("hidden");
+        btn.textContent = `Copy ack batch (${keys.length})`;
+        btn.classList.toggle("primary", !openLeft);
+        const primaryOpen = $("copy-open-all");
+        if (primaryOpen) primaryOpen.classList.toggle("primary", openLeft);
+      } else {
+        btn.classList.add("hidden");
+        btn.classList.remove("primary");
+        const primaryOpen = $("copy-open-all");
+        if (primaryOpen) primaryOpen.classList.add("primary");
+      }
+      return cmd;
     }
 
     function nextOpenPack(fromKey) {
@@ -487,6 +526,7 @@
         const full = pointCPacks.find((x) => x.packKey === focus.packKey) || focus;
         showPack(full);
       }
+      refreshAckBatchUi();
     }
 
     async function doPastedNext(btn) {
@@ -503,8 +543,25 @@
           `Point C pack · ${nxt.packKey} · open · ack copied for ${key || "prior"}`;
       } else {
         renderPackList(checklistPacks, key);
+        const batch = refreshAckBatchUi();
         $("progress").textContent =
-          `Point C · all packs pasted locally · terminal: ${ack}`;
+          `Point C · all packs pasted locally · terminal: ${batch || ack}`;
+        if (batch && batch.includes("--packs=")) {
+          await copyText(batch, btn || $("pasted-next"), "Pasted → next");
+        }
+      }
+    }
+
+    async function doCopyAckBatch(btn) {
+      const cmd = refreshAckBatchUi() || buildAckBatchCommand(pastedOpenKeys());
+      const el = btn || $("copy-ack-batch");
+      const label = el.textContent || "Copy ack batch";
+      await copyText(cmd, el, label);
+      $("ack").textContent = cmd;
+      const ackEl = $("ack");
+      if (ackEl) {
+        ackEl.classList.add("ok");
+        setTimeout(() => ackEl.classList.remove("ok"), 1600);
       }
     }
 
@@ -666,6 +723,7 @@
     $("pasted-next").addEventListener("click", () => doPastedNext($("pasted-next")));
     $("copy-open").addEventListener("click", () => copyText(activeOpen, $("copy-open"), "Copy Open URL"));
     $("copy-ack").addEventListener("click", () => copyText(activeAck || $("ack").textContent, $("copy-ack"), "Copy ack"));
+    $("copy-ack-batch").addEventListener("click", () => doCopyAckBatch($("copy-ack-batch")));
     $("select").addEventListener("click", () => {
       $("paste").focus();
       $("paste").select();
@@ -683,6 +741,14 @@
       if (e.key === "n" || e.key === "N") {
         e.preventDefault();
         doPastedNext($("pasted-next"));
+        return;
+      }
+      if (e.key === "b" || e.key === "B") {
+        const batchBtn = $("copy-ack-batch");
+        if (batchBtn && !batchBtn.classList.contains("hidden")) {
+          e.preventDefault();
+          doCopyAckBatch(batchBtn);
+        }
       }
     });
     load();

@@ -10,6 +10,7 @@
  *   node scripts/print-point-c-packs.mjs [--en] [--pack=gbpDescription]
  *   node scripts/print-point-c-packs.mjs --next [--en]
  *   node scripts/print-point-c-packs.mjs --ack [--en] [--pack=directoryLong]
+ *   node scripts/print-point-c-packs.mjs --ack [--en] [--packs=directoryLong,gbpDescription]
  *
  * Also imported by postbuild-ai.mjs to emit public/point-c.txt (+ point-c-en.txt).
  */
@@ -815,20 +816,51 @@ function printDnsEnableDraft() {
   );
 }
 
-function ackStep(profiles, { en = false, pack = "" } = {}) {
+/** Build one-shot terminal ack for many packs (owner friction after browser Pasted→next). */
+export function buildAckBatchCommand(keys = []) {
+  const list = [...new Set((keys || []).map(String).filter(Boolean))];
+  if (!list.length) return "npm run geo:ack";
+  if (list.length === 1) return `npm run geo:ack -- --pack=${list[0]}`;
+  return `npm run geo:ack -- --packs=${list.join(",")}`;
+}
+
+function ackStep(profiles, { en = false, pack = "", packs = "" } = {}) {
+  const fromCsv = String(packs || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const fromPack = String(pack || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
   const step = nextStep(profiles, { en });
-  const key = pack || step?.key;
-  if (!key) {
+  const keys = fromCsv.length ? fromCsv : fromPack.length ? fromPack : step?.key ? [step.key] : [];
+  if (!keys.length) {
     console.log("Nothing to ack — sequence complete.");
     return;
   }
-  if (pack && step && pack !== step.key) {
-    console.warn(`Warning: --pack=${pack} but next open step is ${step.key}; recording ${pack} anyway.`);
+  if (keys.length === 1 && keys[0] && step && keys[0] !== step.key) {
+    console.warn(`Warning: --pack=${keys[0]} but next open step is ${step.key}; recording ${keys[0]} anyway.`);
+  } else if (keys.length > 1) {
+    console.log(`Batch ack (${keys.length}): ${keys.join(", ")}`);
   }
   const { acked } = readProgress();
-  if (!acked.includes(key)) acked.push(key);
+  const added = [];
+  for (const key of keys) {
+    if (!acked.includes(key)) {
+      acked.push(key);
+      added.push(key);
+    }
+  }
   writeProgress(acked);
-  console.log(`Acked: ${key}`);
+  if (added.length) {
+    console.log(`Acked: ${added.join(", ")}`);
+    const skipped = keys.filter((k) => !added.includes(k));
+    if (skipped.length) console.log(`Already acked (skipped): ${skipped.join(", ")}`);
+  } else {
+    console.log(`Already acked: ${keys.join(", ")}`);
+  }
+  console.log(`Progress: ${acked.length} acked · replay: ${buildAckBatchCommand(keys)}`);
   console.log("Next:");
   printNext(profiles, { en });
 }
@@ -850,7 +882,8 @@ if (isMain) {
   npm run point-c:next
   npm run point-c:csv
   npm run point-c:ack [-- --pack=directoryLong]
-  npm run geo:ack          (alias of point-c:ack)
+  npm run point-c:ack [-- --packs=directoryLong,gbpDescription]
+  npm run geo:ack          (alias of point-c:ack; supports --packs=)
   npm run point-c:hostinger-eml
   npm run point-c:dnsenable-eml
   npm run point-c:dnsenable-draft
@@ -869,6 +902,7 @@ Does not invent citations. --help never acks progress.`);
   const profiles = JSON.parse(fs.readFileSync(profilesPath, "utf8"));
   const useEn = argFlag("en");
   const only = argValue("pack");
+  const packsCsv = argValue("packs");
   if (argFlag("dnsenable-eml")) {
     writeDnsEnableEml();
   } else if (argFlag("eml") || argFlag("hostinger-eml")) {
@@ -893,14 +927,17 @@ Does not invent citations. --help never acks progress.`);
           "--help",
           "-h",
         ].includes(a) &&
-        !a.startsWith("--pack="),
+        !a.startsWith("--pack=") &&
+        !a.startsWith("--packs="),
     );
     if (unknown.length) {
       console.error(`Refusing ack with unknown flags: ${unknown.join(" ")}`);
-      console.error("Use: npm run point-c:ack   or   npm run point-c:ack -- --pack=directoryLong");
+      console.error(
+        "Use: npm run geo:ack   or   npm run geo:ack -- --pack=directoryLong   or   npm run geo:ack -- --packs=a,b",
+      );
       process.exit(1);
     }
-    ackStep(profiles, { en: useEn, pack: only });
+    ackStep(profiles, { en: useEn, pack: only, packs: packsCsv });
   } else {
     process.stdout.write(buildPointCPackText(profiles, { en: useEn, only }));
   }

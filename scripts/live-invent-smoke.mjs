@@ -545,6 +545,10 @@ try {
     ownerNextHtml.includes("pasted-next") &&
     ownerNextHtml.includes("doPastedNext") &&
     ownerNextHtml.includes("Pasted → next") &&
+    ownerNextHtml.includes("copy-ack-batch") &&
+    ownerNextHtml.includes("buildAckBatchCommand") &&
+    ownerNextHtml.includes("--packs=") &&
+    ownerNextHtml.includes("Copy ack batch") &&
     ownerNextHtml.includes("Mailto DNSEnable") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&
