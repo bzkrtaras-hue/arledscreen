@@ -2385,9 +2385,10 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("Mail paste") ||
       !agentsMdLive.includes("Deep + After") ||
       !agentsMdLive.includes("Copy After link") ||
-      !agentsMdLive.includes("after=1")
+      !agentsMdLive.includes("after=1") ||
+      !agentsMdLive.includes("Copy+Open ack After hint")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + after=1 + WA paste + Mail paste + Deep + After");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links + Copy pack link + Copy After link + after=1 + Copy+Open ack After hint + WA paste + Mail paste + Deep + After");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
@@ -2710,6 +2711,9 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-row-links") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-row-deep") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-row-after") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("bindRowCopy") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Click = copy Deep") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("after paste: A / sticky After") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-deep-after") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("n=1") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("`After: ${packAfterLinkUrl") ||

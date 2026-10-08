@@ -647,6 +647,9 @@ else fail("ard.resources.pointC");
     html.includes("pack-row-links") &&
     html.includes("pack-row-deep") &&
     html.includes("pack-row-after") &&
+    html.includes("bindRowCopy") &&
+    html.includes("Click = copy Deep") &&
+    html.includes("after paste: A / sticky After") &&
     html.includes("pack-deep-after") &&
     html.includes("n=1") &&
     html.includes("`After: ${packAfterLinkUrl") &&
@@ -660,7 +663,8 @@ else fail("ard.resources.pointC");
     readText("AGENTS.md").includes("WA paste") &&
     readText("AGENTS.md").includes("Mail paste") &&
     readText("AGENTS.md").includes("Deep + After") &&
-    readText("AGENTS.md").includes("pack-list per-row Deep/After") &&
+    readText("AGENTS.md").includes("pack-list Deep/After click-to-copy") &&
+    readText("AGENTS.md").includes("Copy+Open ack After hint") &&
     readText("AGENTS.md").includes("Copy After link") &&
     readText("AGENTS.md").includes("?n=1") &&
     readText("AGENTS.md").includes("after=1") &&

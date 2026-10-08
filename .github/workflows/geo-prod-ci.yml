@@ -235,9 +235,13 @@ jobs:
           grep -q 'pack-row-links' out/owner-next.html
           grep -q 'pack-row-deep' out/owner-next.html
           grep -q 'pack-row-after' out/owner-next.html
+          grep -q 'bindRowCopy' out/owner-next.html
+          grep -q 'Click = copy Deep' out/owner-next.html
+          grep -q 'after paste: A / sticky After' out/owner-next.html
           grep -q 'After: ${after}' out/owner-next.html
           grep -q 'Deep + After' out/AGENTS.md
-          grep -q 'pack-list per-row Deep/After' out/AGENTS.md
+          grep -q 'pack-list Deep/After click-to-copy' out/AGENTS.md
+          grep -q 'Copy+Open ack After hint' out/AGENTS.md
           grep -q 'after=1' out/AGENTS.md
           grep -q 'Deep+After' out/.well-known/security.txt
           grep -q 'social=fb' out/.well-known/security.txt

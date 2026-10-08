@@ -255,7 +255,8 @@ else fail("ai.txt WebSite + quote");
     agentsMd.includes("Mail paste") &&
     agentsMd.includes("Deep + After") &&
     agentsMd.includes("Copy After link") &&
-    agentsMd.includes("after=1")
+    agentsMd.includes("after=1") &&
+    agentsMd.includes("Copy+Open ack After hint")
   ) {
     ok("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");
   } else fail("ai.txt + AGENTS.md social deep-links (?social=fb|ig|wa)");
