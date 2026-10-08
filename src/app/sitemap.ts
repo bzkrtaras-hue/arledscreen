@@ -398,6 +398,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/offers",
     "/dataset",
     "/feed",
+    // Noindex invent HTML bridges (postbuild slash bridges / locale invents)
+    "/tr/teklif/",
+    "/tr/teklif-al/",
+    "/tr/fiyat-teklifi/",
+    "/tr/fiyat/",
+    "/tr/prices/",
+    "/tr/catalog/",
+    "/tr/calculator/",
+    "/en/calculator/",
+    "/tr/faq/",
+    "/tr/brand/",
   ]) {
     entries.push({
       url: absoluteUrl(path),

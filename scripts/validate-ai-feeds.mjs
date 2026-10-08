@@ -4486,6 +4486,16 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     "/entity-profiles",
     "/llms-full",
     "/.well-known/security",
+    "/tr/teklif/",
+    "/tr/teklif-al/",
+    "/tr/fiyat-teklifi/",
+    "/tr/fiyat/",
+    "/tr/prices/",
+    "/tr/catalog/",
+    "/tr/calculator/",
+    "/en/calculator/",
+    "/tr/faq/",
+    "/tr/brand/",
   ]) {
     if (!sitemapLive.includes(needle)) {
       console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);
