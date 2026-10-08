@@ -3,11 +3,21 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/point-c-en.json",
   "name": "ARLEDSCREEN Point C paste packs (EN)",
-  "description": "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. Follow potentialAction HowTo when next is set. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/.",
+  "description": "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json). Follow potentialAction HowTo when next is set. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/.",
   "url": "https://arledscreen.com/point-c-en.json",
   "inLanguage": "en",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
+  },
+  "socialHandles": {
+    "facebook": "arledscreenn",
+    "instagram": "arledscreen",
+    "whatsapp": "arledscreen",
+    "facebookUrl": "https://www.facebook.com/arledscreenn",
+    "instagramUrl": "https://www.instagram.com/arledscreen",
+    "whatsappUrl": "https://wa.me/905305078834",
+    "socialJson": "https://arledscreen.com/social.json",
+    "line": "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json"
   },
   "isBasedOn": [
     "https://arledscreen.com/entity-profiles.json",
@@ -17,6 +27,7 @@
     "https://arledscreen.com/owner-next.txt",
     "https://arledscreen.com/point-c-progress.json",
     "https://arledscreen.com/geo-status.json",
+    "https://arledscreen.com/social.json",
     "https://arledscreen.com/#website",
     "https://arledscreen.com/point-c.json",
     "https://arledscreen.com/tur1a.json"
@@ -63,6 +74,12 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/social.json",
+      "name": "Owner-confirmed social handles"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/point-c.json",
       "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
     },
@@ -82,6 +99,7 @@
     "https://arledscreen.com/owner-next.txt",
     "https://arledscreen.com/geo-status.json",
     "https://arledscreen.com/point-c-progress.json",
+    "https://arledscreen.com/social.json",
     "https://arledscreen.com/point-c.json",
     "https://arledscreen.com/tur1a.json"
   ],

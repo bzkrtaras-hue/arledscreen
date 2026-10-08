@@ -3,11 +3,21 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/geo-status.json",
   "name": "ARLEDSCREEN GEO owner-gate status",
-  "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
+  "description": "Owner-gated GEO progress (Point C paste → arleds.com 301 → Tur1a blind → PR #60 merge). Does not invent ChatGPT/Gemini mention rates. Owner-confirmed socials: Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen (socialHandles + /social.json). Follow potentialAction HowTo (priorityGate). Browser session start: /owner-next.html?start=1 · Open/paste: /owner-next.html · Clipboard: /geo-next.txt · Point C: /point-c.json · progress: /point-c-progress.json · Tur1a: /tur1a.json · CSV: /feeds/point-c.csv · /feeds/tur1a.csv.",
   "url": "https://arledscreen.com/geo-status.json",
-  "dateModified": "2026-10-08T15:45:10.693Z",
+  "dateModified": "2026-10-08T15:50:49.864Z",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
+  },
+  "socialHandles": {
+    "facebook": "arledscreenn",
+    "instagram": "arledscreen",
+    "whatsapp": "arledscreen",
+    "facebookUrl": "https://www.facebook.com/arledscreenn",
+    "instagramUrl": "https://www.instagram.com/arledscreen",
+    "whatsappUrl": "https://wa.me/905305078834",
+    "socialJson": "https://arledscreen.com/social.json",
+    "line": "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json"
   },
   "isBasedOn": [
     "https://arledscreen.com/point-c.json",
@@ -19,6 +29,7 @@
     "https://arledscreen.com/owner-next.txt",
     "https://arledscreen.com/owner-next.html?start=1",
     "https://arledscreen.com/owner-next.html",
+    "https://arledscreen.com/social.json",
     "https://arledscreen.com/#website",
     "https://arledscreen.com/geo-status.json"
   ],
@@ -62,6 +73,12 @@
       "encodingFormat": "text/html",
       "contentUrl": "https://arledscreen.com/owner-next.html",
       "name": "Owner next HTML Open/paste"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/social.json",
+      "name": "Owner-confirmed social handles"
     },
     {
       "@type": "DataDownload",
