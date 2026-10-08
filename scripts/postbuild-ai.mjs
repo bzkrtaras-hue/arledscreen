@@ -1150,6 +1150,8 @@ function buildMerchantTsv() {
     "point_c_csv_url",
     "geo_status_url",
     "geo_next_url",
+    "owner_next_url",
+    "point_c_progress_url",
     "tur1a_json_url",
     "tur1a_csv_url",
     "brand_well_known_url",
@@ -1235,6 +1237,8 @@ function buildMerchantTsv() {
         `${SITE_URL}/feeds/point-c.csv`,
         `${SITE_URL}/geo-status.json`,
         `${SITE_URL}/geo-next.txt`,
+        `${SITE_URL}/owner-next.txt`,
+        `${SITE_URL}/point-c-progress.json`,
         `${SITE_URL}/tur1a.json`,
         `${SITE_URL}/feeds/tur1a.csv`,
         `${SITE_URL}/.well-known/brand.json`,
@@ -4536,8 +4540,8 @@ Acknowledgments: https://arledscreen.com/brand.json
     const row = merchantTsv.split("\n").find((ln) => ln.startsWith(`${panel.id}\t`));
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
-    // Trailing invent cols: … point_c(+en/json/csv), geo_status, geo_next, tur1a_json,
-    // tur1a_csv, brand_wk … security_txt
+    // Trailing invent cols: … point_c(+en/json/csv), geo_status, geo_next, owner_next,
+    // point_c_progress, tur1a_json, tur1a_csv, brand_wk … security_txt
     const securityTxtUrl = cells[cells.length - 1];
     const agentsMdUrl = cells[cells.length - 2];
     const humansUrl = cells[cells.length - 3];
@@ -4563,23 +4567,25 @@ Acknowledgments: https://arledscreen.com/brand.json
     const brandWk = cells[cells.length - 23];
     const tur1aCsvUrl = cells[cells.length - 24];
     const tur1aJsonUrl = cells[cells.length - 25];
-    const geoNextUrl = cells[cells.length - 26];
-    const geoStatusUrl = cells[cells.length - 27];
-    const pointCCsvUrl = cells[cells.length - 28];
-    const pointCEnJsonWk = cells[cells.length - 29];
-    const pointCEnJsonUrl = cells[cells.length - 30];
-    const pointCJsonWk = cells[cells.length - 31];
-    const pointCJsonUrl = cells[cells.length - 32];
-    const pointCEnWk = cells[cells.length - 33];
-    const pointCEnUrl = cells[cells.length - 34];
-    const pointCWk = cells[cells.length - 35];
-    const pointCUrl = cells[cells.length - 36];
-    const profilesUrl = cells[cells.length - 37];
-    const catalogUrl = cells[cells.length - 38];
-    const pricesJsonUrl = cells[cells.length - 39];
-    const aiShoppingUrl = cells[cells.length - 40];
-    const shippingIncluded = cells[cells.length - 41];
-    const taxIncluded = cells[cells.length - 42];
+    const pointCProgressUrl = cells[cells.length - 26];
+    const ownerNextUrl = cells[cells.length - 27];
+    const geoNextUrl = cells[cells.length - 28];
+    const geoStatusUrl = cells[cells.length - 29];
+    const pointCCsvUrl = cells[cells.length - 30];
+    const pointCEnJsonWk = cells[cells.length - 31];
+    const pointCEnJsonUrl = cells[cells.length - 32];
+    const pointCJsonWk = cells[cells.length - 33];
+    const pointCJsonUrl = cells[cells.length - 34];
+    const pointCEnWk = cells[cells.length - 35];
+    const pointCEnUrl = cells[cells.length - 36];
+    const pointCWk = cells[cells.length - 37];
+    const pointCUrl = cells[cells.length - 38];
+    const profilesUrl = cells[cells.length - 39];
+    const catalogUrl = cells[cells.length - 40];
+    const pricesJsonUrl = cells[cells.length - 41];
+    const aiShoppingUrl = cells[cells.length - 42];
+    const shippingIncluded = cells[cells.length - 43];
+    const taxIncluded = cells[cells.length - 44];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -4603,6 +4609,8 @@ Acknowledgments: https://arledscreen.com/brand.json
       pointCCsvUrl !== `${SITE_URL}/feeds/point-c.csv` ||
       geoStatusUrl !== `${SITE_URL}/geo-status.json` ||
       geoNextUrl !== `${SITE_URL}/geo-next.txt` ||
+      ownerNextUrl !== `${SITE_URL}/owner-next.txt` ||
+      pointCProgressUrl !== `${SITE_URL}/point-c-progress.json` ||
       tur1aJsonUrl !== `${SITE_URL}/tur1a.json` ||
       tur1aCsvUrl !== `${SITE_URL}/feeds/tur1a.csv` ||
       brandWk !== `${SITE_URL}/.well-known/brand.json` ||

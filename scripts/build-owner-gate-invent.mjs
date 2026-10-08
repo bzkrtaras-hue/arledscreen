@@ -372,19 +372,78 @@ export function buildGeoStatusDoc() {
 
 export function buildPointCProgressDoc() {
   const { acked, updatedAt } = readPointCProgress();
-  return {
+  const next = nextPointCPack(acked);
+  const doc = {
     "@context": "https://schema.org",
     "@type": "Dataset",
     "@id": `${SITE}/point-c-progress.json`,
     name: "ARLEDSCREEN Point C paste progress",
     description:
-      "Acked Point C pack keys (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack.",
+      "Acked Point C pack keys (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. HowTo: potentialAction when next paste remains.",
     url: `${SITE}/point-c-progress.json`,
     dateModified: updatedAt || new Date().toISOString(),
     creator: { "@id": `${SITE}/#organization` },
     acked,
     total: POINT_C_STEPS,
-    next: nextPointCPack(acked),
-    sameAs: [`${SITE}/point-c.json`, `${SITE}/geo-status.json`, `${SITE}/geo-next.txt`],
+    next,
+    sameAs: [
+      `${SITE}/point-c.json`,
+      `${SITE}/geo-status.json`,
+      `${SITE}/geo-next.txt`,
+      `${SITE}/owner-next.txt`,
+      `${SITE}/.well-known/point-c-progress.json`,
+    ],
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/point-c-progress.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/.well-known/point-c-progress.json`,
+      },
+      { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/geo-next.txt` },
+    ],
   };
+  if (next?.text && next?.open) {
+    doc.potentialAction = {
+      "@type": "HowTo",
+      name: `Point C next paste: ${next.packKey}`,
+      description:
+        "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
+      url: `${SITE}/geo-next.txt`,
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Open destination",
+          url: next.open,
+          text: next.openAlt
+            ? `Open: ${next.open} · OpenAlt: ${next.openAlt}`
+            : `Open: ${next.open}`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Paste NAP / About block",
+          text: next.text,
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Ack progress",
+          text: next.ackCommand || "npm run geo:ack",
+        },
+      ],
+      tool: [
+        { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
+        { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
+        { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
+        { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+      ],
+    };
+  }
+  return doc;
 }

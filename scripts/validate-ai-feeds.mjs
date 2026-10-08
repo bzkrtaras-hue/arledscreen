@@ -2329,6 +2329,20 @@ if (fs.existsSync(outDir)) {
       console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + tur1a HowTo (no invented scores)");
       process.exit(1);
     }
+    const progress = JSON.parse(fs.readFileSync(path.join(outDir, "point-c-progress.json"), "utf8"));
+    const progressNext = progress?.next || {};
+    if (
+      progress?.potentialAction?.["@type"] !== "HowTo" ||
+      !Array.isArray(progress?.potentialAction?.step) ||
+      progress.potentialAction.step.length < 3 ||
+      !String(progressNext.packKey || "") ||
+      !String(progressNext.text || "") ||
+      !String(progressNext.open || "").includes("http") ||
+      !String(progress?.potentialAction?.name || "").includes(String(progressNext.packKey || ""))
+    ) {
+      console.error("❌ out/point-c-progress.json must expose next.paste + HowTo potentialAction");
+      process.exit(1);
+    }
   }
   for (const rel of [".well-known/agents.json", "agents.json", "humans.txt", ".well-known/humans.txt"]) {
     if (!fs.existsSync(path.join(outDir, rel))) {
@@ -3541,6 +3555,8 @@ if (fs.existsSync(outDir)) {
     "point_c_csv_url",
     "geo_status_url",
     "geo_next_url",
+    "owner_next_url",
+    "point_c_progress_url",
     "tur1a_json_url",
     "tur1a_csv_url",
     "brand_well_known_url",
@@ -3601,6 +3617,8 @@ if (fs.existsSync(outDir)) {
   const pointCCsvUrlIdx = tsvCols.indexOf("point_c_csv_url");
   const geoStatusUrlIdx = tsvCols.indexOf("geo_status_url");
   const geoNextUrlIdx = tsvCols.indexOf("geo_next_url");
+  const ownerNextUrlIdx = tsvCols.indexOf("owner_next_url");
+  const pointCProgressUrlIdx = tsvCols.indexOf("point_c_progress_url");
   const tur1aJsonUrlIdx = tsvCols.indexOf("tur1a_json_url");
   const tur1aCsvUrlIdx = tsvCols.indexOf("tur1a_csv_url");
   const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
@@ -3714,6 +3732,14 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[geoNextUrlIdx] !== "https://arledscreen.com/geo-next.txt") {
       console.error(`❌ merchant TSV geo_next_url must be /geo-next.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[ownerNextUrlIdx] !== "https://arledscreen.com/owner-next.txt") {
+      console.error(`❌ merchant TSV owner_next_url must be /owner-next.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCProgressUrlIdx] !== "https://arledscreen.com/point-c-progress.json") {
+      console.error(`❌ merchant TSV point_c_progress_url must be /point-c-progress.json for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[tur1aJsonUrlIdx] !== "https://arledscreen.com/tur1a.json") {

@@ -491,8 +491,17 @@ try {
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
-    ok("geo-status priority HowTo + tur1a HowTo/logCommand + pointC.next.paste + ARD");
-  } else fail("geo-status priority HowTo + tur1a HowTo/logCommand + pointC.next.paste + ARD");
+    const progress = await getJson("/point-c-progress.json");
+    if (
+      progress?.potentialAction?.["@type"] === "HowTo" &&
+      Array.isArray(progress?.potentialAction?.step) &&
+      progress.potentialAction.step.length >= 3 &&
+      String(progress?.next?.packKey || "") === "directoryLong" &&
+      String(progress?.potentialAction?.name || "").includes("directoryLong")
+    ) {
+      ok("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD");
+    } else fail("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD");
+  } else fail("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD");
 } catch (e) {
   fail(`geo-status/tur1a ${e?.message || e}`);
 }
@@ -635,6 +644,8 @@ try {
     head.includes("point_c_csv_url") &&
     head.includes("geo_status_url") &&
     head.includes("geo_next_url") &&
+    head.includes("owner_next_url") &&
+    head.includes("point_c_progress_url") &&
     head.includes("tur1a_json_url") &&
     head.includes("tur1a_csv_url") &&
     head.includes("brand_well_known_url") &&

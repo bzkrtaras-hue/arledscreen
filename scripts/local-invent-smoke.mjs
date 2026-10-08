@@ -419,12 +419,22 @@ if (
     String(tur1a.potentialAction.step[0]?.url || "").includes("http") &&
     fs.existsSync(path.join(outDir, ".well-known/AGENTS.md")) &&
     fs.existsSync(path.join(outDir, "point-c-progress.json")) &&
+    (() => {
+      const progress = readJson("point-c-progress.json");
+      return (
+        progress?.potentialAction?.["@type"] === "HowTo" &&
+        Array.isArray(progress?.potentialAction?.step) &&
+        progress.potentialAction.step.length >= 3 &&
+        String(progress?.next?.packKey || "") === "directoryLong" &&
+        String(progress?.potentialAction?.name || "").includes("directoryLong")
+      );
+    })() &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
-    ok("geo-status priority HowTo + tur1a HowTo/logCommand + point-c-progress + ARD + AGENTS.md well-known");
-  } else fail("geo-status priority HowTo + tur1a HowTo/logCommand + point-c-progress + ARD + AGENTS.md well-known");
+    ok("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD + AGENTS.md well-known");
+  } else fail("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD + AGENTS.md well-known");
 }
 
 
@@ -566,6 +576,8 @@ else fail("ard.resources.pointC");
     head.includes("point_c_csv_url") &&
     head.includes("geo_status_url") &&
     head.includes("geo_next_url") &&
+    head.includes("owner_next_url") &&
+    head.includes("point_c_progress_url") &&
     head.includes("tur1a_json_url") &&
     head.includes("tur1a_csv_url") &&
     head.includes("brand_well_known_url") &&
@@ -612,6 +624,8 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/feeds/point-c.csv`) &&
     tsv.includes(`${SITE}/geo-status.json`) &&
     tsv.includes(`${SITE}/geo-next.txt`) &&
+    tsv.includes(`${SITE}/owner-next.txt`) &&
+    tsv.includes(`${SITE}/point-c-progress.json`) &&
     tsv.includes(`${SITE}/tur1a.json`) &&
     tsv.includes(`${SITE}/feeds/tur1a.csv`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
