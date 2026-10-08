@@ -770,9 +770,11 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/product.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/products.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/product.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/catalog.json")
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/catalog.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/geo-baseline.json") ||
+    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/entity-profiles.json")
   ) {
-    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price/offer/dataset/feed/products + #website");
+    console.error("❌ ai-shopping.json isBasedOn must cite invent aliases modules/sku/pricing/panels/mpn/merchant/prices/price/offer/dataset/feed/products/geo + #website");
     process.exit(1);
   }
   if (
@@ -2123,6 +2125,8 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('href="https://arledscreen.com/.well-known/products.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/product.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/catalog.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/geo-baseline.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/entity-profiles.json"') ||
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
@@ -2251,10 +2255,13 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/entity.json") ||
     !headersLive.includes("/.well-known/cite.json") ||
     !headersLive.includes("/.well-known/faq.json") ||
+    !headersLive.includes("/.well-known/faqs.json") ||
     !headersLive.includes("/.well-known/organization.json") ||
     !headersLive.includes("/.well-known/company.json") ||
     !headersLive.includes("/.well-known/nap.json") ||
     !headersLive.includes("/.well-known/about.json") ||
+    !headersLive.includes("/.well-known/geo-baseline.json") ||
+    !headersLive.includes("/.well-known/entity-profiles.json") ||
     !headersLive.includes("prices.rss") ||
     !headersLive.includes("merchant-priced-panels.tsv") ||
     !headersLive.includes("point-c.txt")
@@ -2277,10 +2284,13 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/.well-known/entity.json"',
       'href="https://arledscreen.com/.well-known/cite.json"',
       'href="https://arledscreen.com/.well-known/faq.json"',
+      'href="https://arledscreen.com/.well-known/faqs.json"',
       'href="https://arledscreen.com/.well-known/organization.json"',
       'href="https://arledscreen.com/.well-known/company.json"',
       'href="https://arledscreen.com/.well-known/nap.json"',
       'href="https://arledscreen.com/.well-known/about.json"',
+      'href="https://arledscreen.com/.well-known/geo-baseline.json"',
+      'href="https://arledscreen.com/.well-known/entity-profiles.json"',
       'href="https://arledscreen.com/prices.json"',
       'href="https://arledscreen.com/organization.json"',
       'href="https://arledscreen.com/entity-profiles.json"',
@@ -2751,6 +2761,14 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ out/${rel} must match catalog.json`);
       process.exit(1);
     }
+  }
+  if (!fs.readFileSync(path.join(outDir, ".well-known/geo-baseline.json")).equals(fs.readFileSync(path.join(outDir, "geo-baseline.json")))) {
+    console.error("❌ out/.well-known/geo-baseline.json must match geo-baseline.json");
+    process.exit(1);
+  }
+  if (!fs.readFileSync(path.join(outDir, ".well-known/entity-profiles.json")).equals(fs.readFileSync(path.join(outDir, "entity-profiles.json")))) {
+    console.error("❌ out/.well-known/entity-profiles.json must match entity-profiles.json");
+    process.exit(1);
   }
   for (const rel of ["offer", "offers", "dataset", "feed"]) {
     if (!fs.readFileSync(path.join(outDir, rel)).equals(canonAiForExt)) {
@@ -3679,6 +3697,8 @@ if (fs.existsSync(outDir)) {
     "/.well-known/feed.json",
     "/.well-known/products.json",
     "/.well-known/product.json",
+    "/.well-known/geo-baseline.json",
+    "/.well-known/entity-profiles.json",
     "/.well-known/cite.json",
     "/.well-known/faq.json",
     "/.well-known/organization.json",

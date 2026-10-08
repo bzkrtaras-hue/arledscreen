@@ -96,6 +96,8 @@ jobs:
           grep -q "/.well-known/feed.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/products.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/product.json" scripts/submit-indexnow.mjs
+          grep -q "/.well-known/geo-baseline.json" scripts/submit-indexnow.mjs
+          grep -q "/.well-known/entity-profiles.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/cite.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/organization.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/company.json" scripts/submit-indexnow.mjs
@@ -108,6 +110,8 @@ jobs:
           test -f out/.well-known/about.json && cmp -s out/entity.json out/.well-known/about.json
           test -f out/.well-known/products.json && cmp -s out/catalog.json out/.well-known/products.json
           test -f out/.well-known/product.json && cmp -s out/catalog.json out/.well-known/product.json
+          test -f out/.well-known/geo-baseline.json && cmp -s out/geo-baseline.json out/.well-known/geo-baseline.json
+          test -f out/.well-known/entity-profiles.json && cmp -s out/entity-profiles.json out/.well-known/entity-profiles.json
           grep -q "/.well-known/modules.json" out/ai-shopping.json
           grep -q "/.well-known/sku.json" out/ai-shopping.json
           grep -q "/.well-known/pricing.json" out/ai-shopping.json
@@ -118,7 +122,9 @@ jobs:
           grep -q "/products.json" out/ai-shopping.json
           grep -q "/.well-known/products.json" out/ai-shopping.json
           grep -q "/.well-known/catalog.json" out/ai-shopping.json
-          node -e 'const a=require("./out/ai-shopping.json"); const u=(a.distribution||[]).map(d=>d.contentUrl||"").join("\n"); const need=["/price.json","/pricing.json","/modules.json","/sku.json","/.well-known/prices.json","/.well-known/panels.json","/.well-known/mpn.json","/.well-known/merchant.json","/.well-known/price.json","/.well-known/pricing.json","/offer.json","/offers.json","/.well-known/offer.json","/.well-known/offers.json","/dataset.json","/feed.json","/.well-known/dataset.json","/.well-known/feed.json","/products.json","/product.json","/.well-known/products.json","/.well-known/product.json","/.well-known/catalog.json","/brand.json","/entity.json","/point-c.txt"]; if(a.distribution.length<31||need.some(n=>!u.includes(n))) process.exit(1)'
+          grep -q "/.well-known/geo-baseline.json" out/ai-shopping.json
+          grep -q "/.well-known/entity-profiles.json" out/ai-shopping.json
+          node -e 'const a=require("./out/ai-shopping.json"); const u=(a.distribution||[]).map(d=>d.contentUrl||"").join("\n"); const need=["/price.json","/pricing.json","/modules.json","/sku.json","/.well-known/prices.json","/.well-known/panels.json","/.well-known/mpn.json","/.well-known/merchant.json","/.well-known/price.json","/.well-known/pricing.json","/offer.json","/offers.json","/.well-known/offer.json","/.well-known/offers.json","/dataset.json","/feed.json","/.well-known/dataset.json","/.well-known/feed.json","/products.json","/product.json","/.well-known/products.json","/.well-known/product.json","/.well-known/catalog.json","/.well-known/geo-baseline.json","/.well-known/entity-profiles.json","/brand.json","/entity.json","/point-c.txt"]; if(a.distribution.length<31||need.some(n=>!u.includes(n))) process.exit(1)'
           grep -q '"isBasedOn"' out/geo-baseline.json
           grep -q "/entity.json" out/geo-baseline.json
           grep -q "/point-c.txt" out/geo-baseline.json

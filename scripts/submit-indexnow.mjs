@@ -130,6 +130,8 @@ const URLS = [
   `https://${HOST}/.well-known/feed.json`,
   `https://${HOST}/.well-known/products.json`,
   `https://${HOST}/.well-known/product.json`,
+  `https://${HOST}/.well-known/geo-baseline.json`,
+  `https://${HOST}/.well-known/entity-profiles.json`,
   `https://${HOST}/api/entity`,
   `https://${HOST}/api/ai-shopping`,
   `https://${HOST}/api/panels.json`,

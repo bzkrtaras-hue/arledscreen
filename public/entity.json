@@ -89,7 +89,9 @@
     "https://arledscreen.com/product.json",
     "https://arledscreen.com/.well-known/products.json",
     "https://arledscreen.com/.well-known/product.json",
-    "https://arledscreen.com/.well-known/catalog.json"
+    "https://arledscreen.com/.well-known/catalog.json",
+    "https://arledscreen.com/.well-known/geo-baseline.json",
+    "https://arledscreen.com/.well-known/entity-profiles.json"
   ],
   "knowsAbout": [
     "LED ekran",
@@ -3466,7 +3468,9 @@
     "https://arledscreen.com/product.json",
     "https://arledscreen.com/.well-known/products.json",
     "https://arledscreen.com/.well-known/product.json",
-    "https://arledscreen.com/.well-known/catalog.json"
+    "https://arledscreen.com/.well-known/catalog.json",
+    "https://arledscreen.com/.well-known/geo-baseline.json",
+    "https://arledscreen.com/.well-known/entity-profiles.json"
   ],
   "distribution": [
     {
@@ -3765,6 +3769,24 @@
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/catalog.json",
       "name": "Catalog well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/faqs.json",
+      "name": "Organization FAQs invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/geo-baseline.json",
+      "name": "GEO baseline well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/entity-profiles.json",
+      "name": "Point C entity-profiles well-known invent alias"
     }
   ]
 }

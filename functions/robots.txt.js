@@ -38,6 +38,8 @@ Allow: /.well-known/dataset.json
 Allow: /.well-known/feed.json
 Allow: /.well-known/products.json
 Allow: /.well-known/product.json
+Allow: /.well-known/geo-baseline.json
+Allow: /.well-known/entity-profiles.json
 Allow: /.well-known/entity.json
 Allow: /.well-known/cite.json
 Allow: /.well-known/faq.json

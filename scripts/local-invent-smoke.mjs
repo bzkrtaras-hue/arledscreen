@@ -132,6 +132,8 @@ if (
   rss.includes('href="https://arledscreen.com/.well-known/products.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/product.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/catalog.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/geo-baseline.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/entity-profiles.json"') &&
   rss.includes("/entity-profiles.json") &&
   rss.includes("/.well-known/brand.json") &&
   rss.includes("/.well-known/entity.json") &&
@@ -505,6 +507,10 @@ if (
     entSame.includes("/.well-known/company.json") &&
     entSame.includes("/.well-known/nap.json") &&
     entSame.includes("/.well-known/about.json") &&
+    entSame.includes("/faqs.json") &&
+    entSame.includes("/.well-known/faqs.json") &&
+    entSame.includes("/.well-known/geo-baseline.json") &&
+    entSame.includes("/.well-known/entity-profiles.json") &&
     entSame.includes("/humans.txt") &&
     entSame.includes("/.well-known/security.txt")
   ) {
@@ -540,6 +546,8 @@ if (
     dist.includes("/.well-known/products.json") &&
     dist.includes("/.well-known/product.json") &&
     dist.includes("/.well-known/catalog.json") &&
+    dist.includes("/.well-known/geo-baseline.json") &&
+    dist.includes("/.well-known/entity-profiles.json") &&
     dist.includes("/brand.json") &&
     dist.includes("/.well-known/brand.json") &&
     dist.includes("/entity.json") &&
@@ -640,6 +648,8 @@ if (
   JSON.stringify(brand?.isBasedOn || []).includes("/products.json") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/products.json") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/catalog.json") &&
+  JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/geo-baseline.json") &&
+  JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/entity-profiles.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/modules.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/panels.json") &&
   JSON.stringify(brand?.distribution || []).includes("/.well-known/mpn.json") &&
@@ -698,10 +708,14 @@ if (
     dist.includes("/.well-known/catalog.json") &&
     based.includes("/products.json") &&
     based.includes("/.well-known/products.json") &&
-    based.includes("/.well-known/catalog.json")
+    based.includes("/.well-known/catalog.json") &&
+    based.includes("/.well-known/geo-baseline.json") &&
+    based.includes("/.well-known/entity-profiles.json") &&
+    dist.includes("/.well-known/geo-baseline.json") &&
+    dist.includes("/.well-known/entity-profiles.json")
   ) {
-    ok("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed/products + #website");
-  } else fail("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed/products + #website");
+    ok("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed/products/geo + #website");
+  } else fail("catalog distribution+isBasedOn invent → inventAlias panels/mpn/merchant/offer/dataset/feed/products/geo + #website");
 }
 
 {
@@ -781,6 +795,8 @@ if (
     String(disc.productsWellKnown || "").includes("/.well-known/products.json") &&
     String(disc.productWellKnown || "").includes("/.well-known/product.json") &&
     String(disc.catalogWellKnown || "").includes("/.well-known/catalog.json") &&
+    String(disc.geoBaselineWellKnown || "").includes("/.well-known/geo-baseline.json") &&
+    String(disc.entityProfilesWellKnown || "").includes("/.well-known/entity-profiles.json") &&
     String(disc.brandWellKnown || "").includes("/.well-known/brand.json") &&
     String(disc.entityWellKnown || "").includes("/.well-known/entity.json") &&
     String(disc.website || "").includes("#website") &&
@@ -814,6 +830,9 @@ if (
     headers.includes("/.well-known/products.json") &&
     headers.includes("/.well-known/product.json") &&
     headers.includes("/.well-known/catalog.json") &&
+    headers.includes("/.well-known/geo-baseline.json") &&
+    headers.includes("/.well-known/entity-profiles.json") &&
+    headers.includes("/.well-known/faqs.json") &&
     headers.includes("/.well-known/ard.json") &&
     headers.includes("/.well-known/agents.json") &&
     headers.includes("/humans.txt") &&

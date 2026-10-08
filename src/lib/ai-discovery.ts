@@ -41,10 +41,13 @@ const BRAND_WELLKNOWN_URL = `${SITE_URL}/.well-known/brand.json`;
 const ENTITY_WELLKNOWN_URL = `${SITE_URL}/.well-known/entity.json`;
 const CITE_WELLKNOWN_URL = `${SITE_URL}/.well-known/cite.json`;
 const FAQ_WELLKNOWN_URL = `${SITE_URL}/.well-known/faq.json`;
+const FAQS_WELLKNOWN_URL = `${SITE_URL}/.well-known/faqs.json`;
 const ORGANIZATION_WELLKNOWN_URL = `${SITE_URL}/.well-known/organization.json`;
 const COMPANY_WELLKNOWN_URL = `${SITE_URL}/.well-known/company.json`;
 const NAP_WELLKNOWN_URL = `${SITE_URL}/.well-known/nap.json`;
 const ABOUT_WELLKNOWN_URL = `${SITE_URL}/.well-known/about.json`;
+const GEO_BASELINE_WELLKNOWN_URL = `${SITE_URL}/.well-known/geo-baseline.json`;
+const ENTITY_PROFILES_WELLKNOWN_URL = `${SITE_URL}/.well-known/entity-profiles.json`;
 const POINT_C_TXT_URL = `${SITE_URL}/point-c.txt`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
@@ -78,6 +81,8 @@ const inventAliasLdJson = [
   { url: PRODUCTS_WELLKNOWN_URL, title: "Products well-known catalog invent alias" },
   { url: PRODUCT_WELLKNOWN_URL, title: "Product well-known catalog invent alias" },
   { url: CATALOG_WELLKNOWN_URL, title: "Catalog well-known invent alias" },
+  { url: GEO_BASELINE_WELLKNOWN_URL, title: "GEO baseline well-known invent alias" },
+  { url: ENTITY_PROFILES_WELLKNOWN_URL, title: "Point C entity-profiles well-known invent alias" },
 ] as const;
 
 export const aiDiscoveryMetadata: Metadata = {
@@ -90,6 +95,7 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: ENTITY_WELLKNOWN_URL, title: "Organization invent alias" },
         { url: CITE_WELLKNOWN_URL, title: "Organization cite invent alias" },
         { url: FAQ_WELLKNOWN_URL, title: "Organization FAQ invent alias" },
+        { url: FAQS_WELLKNOWN_URL, title: "Organization FAQs invent alias" },
         { url: ORGANIZATION_WELLKNOWN_URL, title: "Organization well-known invent alias" },
         { url: COMPANY_WELLKNOWN_URL, title: "Organization company invent alias" },
         { url: NAP_WELLKNOWN_URL, title: "Organization NAP invent alias" },
@@ -130,6 +136,7 @@ export const aiDiscoveryLinks = [
   { rel: "alternate", type: "application/ld+json", href: ENTITY_WELLKNOWN_URL, title: "Organization invent alias" },
   { rel: "alternate", type: "application/ld+json", href: CITE_WELLKNOWN_URL, title: "Organization cite invent alias" },
   { rel: "alternate", type: "application/ld+json", href: FAQ_WELLKNOWN_URL, title: "Organization FAQ invent alias" },
+  { rel: "alternate", type: "application/ld+json", href: FAQS_WELLKNOWN_URL, title: "Organization FAQs invent alias" },
   { rel: "alternate", type: "application/ld+json", href: ORGANIZATION_WELLKNOWN_URL, title: "Organization well-known invent alias" },
   { rel: "alternate", type: "application/ld+json", href: COMPANY_WELLKNOWN_URL, title: "Organization company invent alias" },
   { rel: "alternate", type: "application/ld+json", href: NAP_WELLKNOWN_URL, title: "Organization NAP invent alias" },

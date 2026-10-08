@@ -45,6 +45,8 @@
     "https://arledscreen.com/.well-known/products.json",
     "https://arledscreen.com/.well-known/product.json",
     "https://arledscreen.com/.well-known/catalog.json",
+    "https://arledscreen.com/.well-known/geo-baseline.json",
+    "https://arledscreen.com/.well-known/entity-profiles.json",
     "https://arledscreen.com/.well-known/agents.json",
     "https://arledscreen.com/.well-known/ard.json",
     "https://arledscreen.com/ai.txt",
@@ -289,6 +291,18 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/geo-baseline.json",
+      "name": "GEO baseline well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/.well-known/entity-profiles.json",
+      "name": "Point C entity-profiles well-known invent alias"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/.well-known/agents.json",
       "name": "Agent Discovery Index"
     },
@@ -479,8 +493,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "698d78b8d27e7d0135d6f32bb0dbd0f0fa051c5e2865f0e41fa9d65990f8d921",
-    "catalogSha256": "55903d13954bb9b2bb8fc736ccddc534c73c50d686ced9d5d328a2e7997484a5",
+    "aiShoppingSha256": "77c95cd630b5bddc70f74c3c6a63028f43f7530b105fbc9af5dc8b9a008ac924",
+    "catalogSha256": "fc045c7365698b62ce7f27e239087ee7a55b69290e7aa44c5a3a3b3238b048a4",
     "merchantTsvSha256": "725b3f10641e7e6ec45cee7144426471c82c9d14eddde5efabc80cc24858a9a4",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
@@ -510,6 +524,8 @@
     "productsWellKnown": "https://arledscreen.com/.well-known/products.json",
     "productWellKnown": "https://arledscreen.com/.well-known/product.json",
     "catalogWellKnown": "https://arledscreen.com/.well-known/catalog.json",
+    "geoBaselineWellKnown": "https://arledscreen.com/.well-known/geo-baseline.json",
+    "entityProfilesWellKnown": "https://arledscreen.com/.well-known/entity-profiles.json",
     "offer": "https://arledscreen.com/offer",
     "offers": "https://arledscreen.com/offers",
     "dataset": "https://arledscreen.com/dataset",
@@ -531,6 +547,7 @@
     "brandWellKnown": "https://arledscreen.com/.well-known/brand.json",
     "entityWellKnown": "https://arledscreen.com/.well-known/entity.json",
     "entityProfiles": "https://arledscreen.com/entity-profiles.json",
+    "geoBaseline": "https://arledscreen.com/geo-baseline.json",
     "pointCTxt": "https://arledscreen.com/point-c.txt",
     "pointCEnTxt": "https://arledscreen.com/point-c-en.txt",
     "pointCWellKnown": "https://arledscreen.com/.well-known/point-c.txt",

@@ -933,6 +933,18 @@ function buildAiShopping() {
       {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/geo-baseline.json`,
+        name: "GEO baseline well-known invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE_URL}/.well-known/entity-profiles.json`,
+        name: "Point C entity-profiles well-known invent alias",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/catalog.json`,
       },
       {
@@ -1496,6 +1508,8 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/.well-known/products.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/product.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/catalog.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/geo-baseline.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/entity-profiles.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/brand.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/entity.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/agents.json" rel="related" type="application/ld+json"/>
@@ -1827,6 +1841,18 @@ function inventAliasDistributionEntries() {
       contentUrl: `${SITE_URL}/.well-known/catalog.json`,
       name: "Catalog well-known invent alias",
     },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/geo-baseline.json`,
+      name: "GEO baseline well-known invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/.well-known/entity-profiles.json`,
+      name: "Point C entity-profiles well-known invent alias",
+    },
     ...discoveryDistributionEntries(),
   ];
 }
@@ -1908,6 +1934,8 @@ function inventAliasBasedOnUrls() {
     `${SITE_URL}/.well-known/products.json`,
     `${SITE_URL}/.well-known/product.json`,
     `${SITE_URL}/.well-known/catalog.json`,
+    `${SITE_URL}/.well-known/geo-baseline.json`,
+    `${SITE_URL}/.well-known/entity-profiles.json`,
     ...discoveryBasedOnUrls(),
   ];
 }
@@ -1944,6 +1972,12 @@ function entityAliasDistributionEntries() {
       encodingFormat: "application/ld+json",
       contentUrl: `${SITE_URL}/faq.json`,
       name: "Organization FAQ invent alias",
+    },
+    {
+      "@type": "DataDownload",
+      encodingFormat: "application/ld+json",
+      contentUrl: `${SITE_URL}/faqs.json`,
+      name: "Organization FAQs invent alias",
     },
     {
       "@type": "DataDownload",
@@ -2746,6 +2780,8 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       productsWellKnown: `${SITE_URL}/.well-known/products.json`,
       productWellKnown: `${SITE_URL}/.well-known/product.json`,
       catalogWellKnown: `${SITE_URL}/.well-known/catalog.json`,
+      geoBaselineWellKnown: `${SITE_URL}/.well-known/geo-baseline.json`,
+      entityProfilesWellKnown: `${SITE_URL}/.well-known/entity-profiles.json`,
       offer: `${SITE_URL}/offer`,
       offers: `${SITE_URL}/offers`,
       dataset: `${SITE_URL}/dataset`,
@@ -2767,6 +2803,7 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       brandWellKnown: `${SITE_URL}/.well-known/brand.json`,
       entityWellKnown: `${SITE_URL}/.well-known/entity.json`,
       entityProfiles: `${SITE_URL}/entity-profiles.json`,
+      geoBaseline: `${SITE_URL}/geo-baseline.json`,
       pointCTxt: `${SITE_URL}/point-c.txt`,
       pointCEnTxt: `${SITE_URL}/point-c-en.txt`,
       pointCWellKnown: `${SITE_URL}/.well-known/point-c.txt`,
@@ -2969,8 +3006,10 @@ function writeFeedPathAliases(dir) {
     ["catalog.json", ".well-known/product.json"],
     ["catalog.json", "api/catalog.json"],
     ["geo-baseline.json", "geo-baseline"],
+    ["geo-baseline.json", ".well-known/geo-baseline.json"],
     ["geo-baseline.json", "en/geo-baseline.json"],
     ["geo-baseline.json", "tr/geo-baseline.json"],
+    ["entity-profiles.json", ".well-known/entity-profiles.json"],
     ["llms.txt", "llms"],
     ["llms.txt", ".well-known/llms.txt"],
     ["llms.txt", "en/llms.txt"],
@@ -3326,6 +3365,8 @@ feed-alias-well-known-feed: ${SITE_URL}/.well-known/feed.json
 feed-alias-well-known-products: ${SITE_URL}/.well-known/products.json
 feed-alias-well-known-product: ${SITE_URL}/.well-known/product.json
 feed-alias-well-known-catalog: ${SITE_URL}/.well-known/catalog.json
+feed-alias-well-known-geo-baseline: ${SITE_URL}/.well-known/geo-baseline.json
+feed-alias-well-known-entity-profiles: ${SITE_URL}/.well-known/entity-profiles.json
 feed-alias-offer: ${SITE_URL}/offer
 feed-alias-offers: ${SITE_URL}/offers
 feed-alias-dataset: ${SITE_URL}/dataset
@@ -3707,6 +3748,8 @@ Acknowledgments: https://arledscreen.com/brand.json
     ".well-known/products.json",
     ".well-known/product.json",
     ".well-known/catalog.json",
+    ".well-known/geo-baseline.json",
+    ".well-known/entity-profiles.json",
     ".well-known/entity.json",
     ".well-known/cite.json",
     ".well-known/faq.json",
