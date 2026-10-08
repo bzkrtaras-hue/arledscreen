@@ -3110,7 +3110,7 @@
         "type": "Owner-confirmed social handles",
         "url": "https://arledscreen.com/social.json",
         "format": "application/ld+json",
-        "description": "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen. Click-to-chat https://wa.me/905305078834. Aliases /contact.json · /.well-known/social.json. Cite with Point C IG/FB packs — do not invent handles. Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
+        "description": "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen. Click-to-chat https://wa.me/905305078834. Aliases /contact.json · /.well-known/social.json. Owner deep-links: /owner-next.html?social=fb|ig|wa (F/I keys). Cite with Point C IG/FB packs — do not invent handles. Owner-gate HowTo: https://arledscreen.com/point-c.json → next + potentialAction · https://arledscreen.com/geo-status.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/tur1a.json · https://arledscreen.com/point-c-progress.json.",
         "wellKnown": "https://arledscreen.com/.well-known/social.json",
         "handles": {
           "facebook": "arledscreenn",
@@ -3144,7 +3144,12 @@
           "https://arledscreen.com/geo-baseline.json",
           "https://arledscreen.com/entity-profiles.json",
           "https://arledscreen.com/point-c.txt"
-        ]
+        ],
+        "deepLinks": {
+          "facebook": "https://arledscreen.com/owner-next.html?social=fb",
+          "instagram": "https://arledscreen.com/owner-next.html?social=ig",
+          "whatsapp": "https://arledscreen.com/owner-next.html?social=wa"
+        }
       }
     },
     "cite": {

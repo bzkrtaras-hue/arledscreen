@@ -17,7 +17,10 @@
     "instagramUrl": "https://www.instagram.com/arledscreen",
     "whatsappUrl": "https://wa.me/905305078834",
     "socialJson": "https://arledscreen.com/social.json",
-    "line": "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json"
+    "facebookDeep": "https://arledscreen.com/owner-next.html?social=fb",
+    "instagramDeep": "https://arledscreen.com/owner-next.html?social=ig",
+    "whatsappDeep": "https://arledscreen.com/owner-next.html?social=wa",
+    "line": "Facebook @arledscreenn · Instagram @arledscreen · WhatsApp @arledscreen · https://wa.me/905305078834 · https://arledscreen.com/social.json · deep: /owner-next.html?social=fb|ig|wa"
   },
   "isBasedOn": [
     "https://arledscreen.com/entity-profiles.json",
