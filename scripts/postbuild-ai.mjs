@@ -12,6 +12,7 @@ import { fileURLToPath } from "node:url";
 import {
   buildGeoNextText,
   buildGeoStatusDoc,
+  buildOwnerNextJsonDoc,
   buildPointCProgressDoc,
 } from "./build-owner-gate-invent.mjs";
 import {
@@ -35,7 +36,7 @@ const BRAND_URL = `${SITE_URL}/brand.json`;
 const localBusinessRef = () => ({ "@type": "LocalBusiness", "@id": LOCALBUSINESS_ID });
 /** Owner-friction clipboard + Open tabs (Point C / arleds / Tur1a) — cite-only; no invented scores. */
 const OWNER_FRICTION =
-  "live: https://arledscreen.com/owner-next.html · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
+  "live: https://arledscreen.com/owner-next.html · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
 
 /** Ensure description cites geo:next/ack + point-c:csv + Open tabs + #website. */
 function ensureOwnerFrictionDescription(desc) {
@@ -3850,6 +3851,7 @@ function enrichArdOwnerGateInvent() {
     "geoStatus",
     "geoNext",
     "ownerNextHtml",
+    "ownerNextJson",
     "tur1a",
     "pointCProgress",
   ];
@@ -4214,6 +4216,29 @@ function main() {
     writeJson(outDir, "point-c-progress.json", progressDoc);
     writeJson(publicDir, ".well-known/point-c-progress.json", progressDoc);
     writeJson(outDir, ".well-known/point-c-progress.json", progressDoc);
+    // Machine twin of owner-next.html (single invent fetch for Open/paste).
+    let pointCForTwin = null;
+    try {
+      pointCForTwin = JSON.parse(fs.readFileSync(path.join(outDir, "point-c.json"), "utf8"));
+    } catch {
+      try {
+        pointCForTwin = JSON.parse(fs.readFileSync(path.join(publicDir, "point-c.json"), "utf8"));
+      } catch {
+        pointCForTwin = null;
+      }
+    }
+    const ownerNextJson = buildOwnerNextJsonDoc({
+      geoStatus,
+      progress: progressDoc,
+      tur1a: tur1aJson,
+      pointC: pointCForTwin,
+    });
+    writeJson(publicDir, "owner-next.json", ownerNextJson);
+    writeJson(outDir, "owner-next.json", ownerNextJson);
+    writeJson(publicDir, ".well-known/owner-next.json", ownerNextJson);
+    writeJson(outDir, ".well-known/owner-next.json", ownerNextJson);
+    writeJson(publicDir, "geo-next.json", ownerNextJson);
+    writeJson(outDir, "geo-next.json", ownerNextJson);
     const agentsMdPath = path.join(publicDir, "AGENTS.md");
     if (fs.existsSync(agentsMdPath)) {
       const agentsMd = fs.readFileSync(agentsMdPath, "utf8");
@@ -4270,7 +4295,7 @@ prices-rss: ${SITE_URL}/feeds/prices.rss
 geo-baseline: ${SITE_URL}/geo-baseline.json
 ard: ${SITE_URL}/.well-known/ard.json
 entity-profiles: ${SITE_URL}/entity-profiles.json
-owner-next: live: ${SITE_URL}/owner-next.html · ${SITE_URL}/geo-next.txt · ${SITE_URL}/point-c.json → next + potentialAction (packKey=directoryLong; text; Open Bing/Apple) · progress: ${SITE_URL}/point-c-progress.json → potentialAction · status: ${SITE_URL}/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · tur1a: ${SITE_URL}/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
+owner-next: live: ${SITE_URL}/owner-next.html · ${SITE_URL}/owner-next.json · ${SITE_URL}/geo-next.txt · ${SITE_URL}/point-c.json → next + potentialAction (packKey=directoryLong; text; Open Bing/Apple) · progress: ${SITE_URL}/point-c-progress.json → potentialAction · status: ${SITE_URL}/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · tur1a: ${SITE_URL}/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · ${SITE_URL}/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 brand-json: ${SITE_URL}/brand.json
 brand-json-well-known: ${SITE_URL}/.well-known/brand.json
 brand-tr: ${SITE_URL}/tr/nxtionstar/
@@ -4496,7 +4521,9 @@ geo-next: ${SITE_URL}/geo-next.txt
 geo-next-well-known: ${SITE_URL}/.well-known/geo-next.txt
 owner-next-txt: ${SITE_URL}/owner-next.txt
 owner-next-html: ${SITE_URL}/owner-next.html
+owner-next-json: ${SITE_URL}/owner-next.json
 geo-next-html: ${SITE_URL}/geo-next.html
+geo-next-json: ${SITE_URL}/geo-next.json
 tur1a-json: ${SITE_URL}/tur1a.json
 tur1a-json-well-known: ${SITE_URL}/.well-known/tur1a.json
 tur1a-csv: ${SITE_URL}/feeds/tur1a.csv

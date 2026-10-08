@@ -510,24 +510,40 @@ else fail("ard.resources.pointC");
 {
   const html = readText("owner-next.html");
   const alias = readText("geo-next.html");
+  const twin = readJson("owner-next.json");
+  const twinAlias = readJson("geo-next.json");
+  const twinWk = readJson(".well-known/owner-next.json");
   if (
     String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") &&
     String(ard?.agentic?.resources?.ownerNextHtml?.alias || "").includes("/geo-next.html") &&
-    String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (27)") &&
+    String(ard?.agentic?.resources?.ownerNextHtml?.json || "").includes("/owner-next.json") &&
+    String(ard?.agentic?.resources?.ownerNextJson?.url || "").includes("/owner-next.json") &&
+    String(ard?.agentic?.resources?.ownerNextJson?.alias || "").includes("/geo-next.json") &&
+    String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (28)") &&
     html.includes("Copy paste") &&
     html.includes("/geo-status.json") &&
+    html.includes("/owner-next.json") &&
     html.includes("pack-list") &&
     html.includes("howto-ld") &&
     html.includes("Copy Open URL") &&
     html.includes("copy-ack") &&
     html.includes("packQuery") &&
     alias === html &&
-    Number(agents?.numberOfItems) === 27 &&
+    twin?.["@type"] === "Dataset" &&
+    String(twin?.url || "").includes("/owner-next.json") &&
+    Array.isArray(twin?.packs) &&
+    twin.packs.length >= 11 &&
+    twin?.next &&
+    JSON.stringify(twin) === JSON.stringify(twinAlias) &&
+    JSON.stringify(twin) === JSON.stringify(twinWk) &&
+    Number(agents?.numberOfItems) === 28 &&
     (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.html")) &&
-    String(agents?.ownerNext || "").includes("/owner-next.html")
+    (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.json")) &&
+    String(agents?.ownerNext || "").includes("/owner-next.html") &&
+    String(agents?.ownerNext || "").includes("/owner-next.json")
   ) {
-    ok("owner-next.html + geo-next.html alias + agents×27 + ARD ownerNextHtml");
-  } else fail("owner-next.html + geo-next.html alias + agents×27 + ARD ownerNextHtml");
+    ok("owner-next.html + owner-next.json twin + geo-next aliases + agents×28 + ARD");
+  } else fail("owner-next.html + owner-next.json twin + geo-next aliases + agents×28 + ARD");
 }
 
 {

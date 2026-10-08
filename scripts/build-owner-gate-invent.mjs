@@ -502,3 +502,125 @@ export function buildPointCProgressDoc() {
   }
   return applyOwnerGateCrossJoin(doc);
 }
+
+/**
+ * Machine twin of /owner-next.html — single invent fetch for Open/paste gate.
+ * Cite-only; reuses geo-status / point-c / tur1a / progress (no invented scores).
+ */
+export function buildOwnerNextJsonDoc({ geoStatus, progress, tur1a, pointC } = {}) {
+  const priority = String(geoStatus?.priorityGate || "pointC");
+  const packs = Array.isArray(pointC?.packs) ? pointC.packs : progress?.packs || [];
+  let next = null;
+  if (priority === "pointC") {
+    next = geoStatus?.gates?.pointC?.next || progress?.next || pointC?.next || null;
+  } else if (priority === "arleds301") {
+    const g = geoStatus?.gates?.arleds301 || {};
+    next = {
+      packKey: "hostinger301",
+      label: "arleds.com 301 (DNSEnable Domain Redirect)",
+      where: g.where || "",
+      open: g.open || "",
+      openAlt: g.openAlt || "",
+      openAlts: g.openAlts || [],
+      html: g.html || ownerNextHtmlUrl("hostinger301"),
+      text: g.text || buildArleds301DualPathClipboard(),
+      ackCommand: g.ackCommand || "npm run verify:arleds-301",
+      status: g.status || "OPEN",
+      mode: g.mode || null,
+    };
+  } else if (priority === "tur1a") {
+    const t = tur1a?.next || geoStatus?.gates?.tur1a?.next || null;
+    next = t
+      ? {
+          packKey: `${t.platform || ""}|${t.promptId || ""}`,
+          label: `Tur1a ${t.platform || ""} · ${t.promptId || ""}`,
+          where: t.platform ? `${t.platform} blind prompt` : "Tur1a blind",
+          open: t.open || "",
+          html: `${SITE}/owner-next.html`,
+          text: t.prompt || "",
+          ackCommand: t.logCommand || "",
+          platform: t.platform,
+          promptId: t.promptId,
+        }
+      : null;
+  } else {
+    next = {
+      packKey: "prMerge",
+      label: "PR #60 merge",
+      where: "Merge cursor/geo-prod-guard-5666 when Point C + 301 + Tur1a are done",
+      open: "https://github.com/bzkrtaras-hue/arledscreen/pull/60",
+      html: `${SITE}/owner-next.html`,
+      text: "All owner gates cleared in geo-status — merge PR #60.",
+      ackCommand: "npm run invent:smoke · npm run geo:status",
+    };
+  }
+
+  const htmlDeep = next?.html || ownerNextHtmlUrl(next?.packKey || "");
+  const doc = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "@id": `${SITE}/owner-next.json`,
+    name: "ARLEDSCREEN Owner next (Open/paste machine twin)",
+    description:
+      "Single-fetch invent twin of /owner-next.html for GEO owner gates (Point C → arleds 301 → Tur1a). Cite pack text only — do not invent ChatGPT/Gemini scores. Browser: /owner-next.html · Clipboard: /geo-next.txt · Status: /geo-status.json → potentialAction.",
+    url: `${SITE}/owner-next.json`,
+    dateModified: geoStatus?.dateModified || new Date().toISOString(),
+    creator: { "@id": `${SITE}/#organization` },
+    priorityGate: priority,
+    html: `${SITE}/owner-next.html`,
+    htmlDeep,
+    htmlAlias: `${SITE}/geo-next.html`,
+    clipboard: `${SITE}/geo-next.txt`,
+    next,
+    packs,
+    gates: {
+      pointC: {
+        acked: geoStatus?.gates?.pointC?.acked ?? 0,
+        total: geoStatus?.gates?.pointC?.total ?? 11,
+        status: geoStatus?.gates?.pointC?.status,
+        packs: geoStatus?.gates?.pointC?.packs || progress?.packs || [],
+      },
+      arleds301: geoStatus?.gates?.arleds301 || null,
+      tur1a: {
+        filled: geoStatus?.gates?.tur1a?.filled ?? 0,
+        total: geoStatus?.gates?.tur1a?.total ?? 48,
+        status: geoStatus?.gates?.tur1a?.status,
+        next: tur1a?.next || geoStatus?.gates?.tur1a?.next || null,
+      },
+      prMerge: geoStatus?.gates?.prMerge || null,
+    },
+    potentialAction: geoStatus?.potentialAction || progress?.potentialAction || null,
+    ownerNext: `live: ${htmlDeep} · ${SITE}/owner-next.json · ${SITE}/geo-next.txt · ${SITE}/point-c.json → next + potentialAction · progress: ${SITE}/point-c-progress.json → potentialAction · status: ${SITE}/geo-status.json → potentialAction · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/`,
+    sameAs: [
+      `${SITE}/owner-next.html`,
+      `${SITE}/geo-next.html`,
+      `${SITE}/geo-next.txt`,
+      `${SITE}/owner-next.txt`,
+      `${SITE}/.well-known/owner-next.json`,
+    ],
+    distribution: [
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/owner-next.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/.well-known/owner-next.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/html",
+        contentUrl: `${SITE}/owner-next.html`,
+        name: "Owner next HTML Open/paste",
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "text/plain",
+        contentUrl: `${SITE}/geo-next.txt`,
+      },
+    ],
+  };
+  return applyOwnerGateCrossJoin(doc);
+}

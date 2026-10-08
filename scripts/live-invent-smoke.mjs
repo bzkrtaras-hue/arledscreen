@@ -241,19 +241,24 @@ if (aiTxt.includes("#website") && aiTxt.includes("/tr/quote/")) ok("ai.txt WebSi
 else fail("ai.txt WebSite + quote");
 
 if (
-  (agents.itemListElement || []).length >= 27 &&
-  Number(agents.numberOfItems) === 27 &&
-  String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (27)") &&
+  (agents.itemListElement || []).length >= 28 &&
+  Number(agents.numberOfItems) === 28 &&
+  String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (28)") &&
   String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") &&
+  String(ard?.agentic?.resources?.ownerNextHtml?.json || "").includes("/owner-next.json") &&
+  String(ard?.agentic?.resources?.ownerNextJson?.url || "").includes("/owner-next.json") &&
+  String(ard?.agentic?.resources?.ownerNextJson?.alias || "").includes("/geo-next.json") &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("#website")) &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/.well-known/security.txt")) &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/llms-full.txt")) &&
   (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.html")) &&
+  (agents.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.json")) &&
   String(agents?.description || "").includes("point-c:csv") &&
   String(agents?.description || "").includes("potentialAction") &&
   String(agents?.ownerNext || "").includes("point-c:csv") &&
   String(agents?.ownerNext || "").includes("potentialAction") &&
   String(agents?.ownerNext || "").includes("/owner-next.html") &&
+  String(agents?.ownerNext || "").includes("/owner-next.json") &&
   String(agents?.ownerNext || "").includes("/point-c-progress.json") &&
   JSON.stringify(agents.isBasedOn || []).includes("/point-c-progress.json") &&
   JSON.stringify(agents.distribution || []).includes("/geo-status.json") &&
@@ -272,7 +277,7 @@ if (
   String(agents?.ownerNext || "").includes("https://chatgpt.com/")
 ) {
   ok(`agents.json ×${agents.itemListElement.length} sameAs+subjectOf→owner-gate HowTo + security`);
-} else fail("agents.json ×27 sameAs+subjectOf→owner-gate HowTo + security");
+} else fail("agents.json ×28 sameAs+subjectOf→owner-gate HowTo + security");
 
 try {
   const blob = `${agents?.description || ""}${JSON.stringify(agents?.itemListElement || [])}`;
@@ -509,6 +514,9 @@ try {
   const geoNext = await getText("/geo-next.txt");
   const ownerNextHtml = await getText("/owner-next.html");
   const geoNextHtml = await getText("/geo-next.html");
+  const ownerNextJson = await getJson("/owner-next.json");
+  const geoNextJson = await getJson("/geo-next.json");
+  const ownerNextJsonWk = await getJson("/.well-known/owner-next.json");
   const tur1a = await getJson("/tur1a.json");
   const tur1aCsv = await getText("/feeds/tur1a.csv");
   const pointCNext = geoStatus?.gates?.pointC?.next || {};
@@ -523,12 +531,22 @@ try {
     geoNext.includes("/geo-status.json") &&
     ownerNextHtml.includes("Copy paste") &&
     ownerNextHtml.includes("/geo-status.json") &&
+    ownerNextHtml.includes("/owner-next.json") &&
     ownerNextHtml.includes("pack-list") &&
     ownerNextHtml.includes("howto-ld") &&
     ownerNextHtml.includes("Copy Open URL") &&
     ownerNextHtml.includes("copy-ack") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&
+    ownerNextJson?.["@type"] === "Dataset" &&
+    String(ownerNextJson?.url || "").includes("/owner-next.json") &&
+    Array.isArray(ownerNextJson?.packs) &&
+    ownerNextJson.packs.length >= 11 &&
+    ownerNextJson?.next &&
+    String(ownerNextJson?.priorityGate || "") === "pointC" &&
+    JSON.stringify(ownerNextJson) === JSON.stringify(geoNextJson) &&
+    JSON.stringify(ownerNextJson) === JSON.stringify(ownerNextJsonWk) &&
+    String(ard?.agentic?.resources?.ownerNextJson?.url || "").includes("/owner-next.json") &&
     String(pointCNext.packKey || "") === "directoryLong" &&
     String(pointCNext.text || "").includes("34245") &&
     String(pointCNext.open || "").includes("bingplaces.com") &&

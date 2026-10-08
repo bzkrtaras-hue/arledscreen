@@ -382,29 +382,41 @@
 
     async function load() {
       try {
-        const [status, pointC, tur1a, progress] = await Promise.all([
-          fetch("/geo-status.json" + bust()).then((r) => r.json()),
-          fetch("/point-c.json" + bust()).then((r) => r.json()),
-          fetch("/tur1a.json" + bust()).then((r) => r.json()),
-          fetch("/point-c-progress.json" + bust()).then((r) => r.json()),
-        ]);
-        const priority = String(status.priorityGate || "pointC");
+        let twin = null;
+        try {
+          twin = await fetch("/owner-next.json" + bust()).then((r) => {
+            if (!r.ok) throw new Error("owner-next.json " + r.status);
+            return r.json();
+          });
+        } catch {
+          twin = null;
+        }
+        const [status, pointC, tur1a, progress] = twin
+          ? [twin, { packs: twin.packs || [], next: twin.next }, { next: twin.gates?.tur1a?.next }, { packs: twin.gates?.pointC?.packs, next: twin.next, acked: twin.gates?.pointC?.acked, total: twin.gates?.pointC?.total }]
+          : await Promise.all([
+              fetch("/geo-status.json" + bust()).then((r) => r.json()),
+              fetch("/point-c.json" + bust()).then((r) => r.json()),
+              fetch("/tur1a.json" + bust()).then((r) => r.json()),
+              fetch("/point-c-progress.json" + bust()).then((r) => r.json()),
+            ]);
+        const priority = String((twin && twin.priorityGate) || status.priorityGate || "pointC");
         $("priority").textContent = "priority: " + priority;
         $("load").classList.add("hidden");
         $("panel").classList.remove("hidden");
-        pointCPacks = Array.isArray(pointC.packs) ? pointC.packs : [];
+        pointCPacks = Array.isArray(pointC.packs) ? pointC.packs : Array.isArray(twin?.packs) ? twin.packs : [];
 
         if (priority === "pointC") {
-          const next = status.gates?.pointC?.next || pointC.next || progress.next || {};
+          const next = twin?.next || status.gates?.pointC?.next || pointC.next || progress.next || {};
           const checklist =
+            twin?.gates?.pointC?.packs ||
             status.gates?.pointC?.packs ||
             progress.packs ||
             pointCPacks.map(({ packKey, label, status: st, where, open, openAlt, openAlts, ackCommand }) => ({
               packKey, label, status: st, where, open, openAlt, openAlts, ackCommand,
             }));
           $("progress").textContent =
-            `Point C ${status.gates?.pointC?.acked ?? progress.acked?.length ?? "?"}/${status.gates?.pointC?.total ?? progress.total ?? "?"} · ${next.packKey || ""}`;
-          renderPackList(checklist, next.packKey);
+            `Point C ${status.gates?.pointC?.acked ?? twin?.gates?.pointC?.acked ?? progress.acked?.length ?? "?"}/${status.gates?.pointC?.total ?? twin?.gates?.pointC?.total ?? progress.total ?? "?"} · ${next.packKey || ""}`;
+          renderPackList(checklist, next.packKey || packQuery());
           if (!checklist.length) {
             const alts = Array.isArray(next.openAlts) ? next.openAlts : next.openAlt ? [next.openAlt] : [];
             $("where").textContent = next.where || "";
@@ -418,7 +430,7 @@
         } else if (priority === "arleds301" || packQuery() === "hostinger301") {
           $("pack-list").classList.add("hidden");
           $("pack-heading").classList.add("hidden");
-          const g = status.gates?.arleds301 || {};
+          const g = twin?.gates?.arleds301 || status.gates?.arleds301 || twin?.next || {};
           const alts = Array.isArray(g.openAlts) ? g.openAlts : g.openAlt ? [g.openAlt, "https://dash.cloudflare.com/"] : ["https://dash.cloudflare.com/"];
           activeOpen = g.open || "https://www.isimtescil.net/";
           activeAck = g.ackCommand || "npm run verify:arleds-301";
@@ -437,29 +449,32 @@
         } else if (priority === "tur1a") {
           $("pack-list").classList.add("hidden");
           $("pack-heading").classList.add("hidden");
-          const next = tur1a.next || status.gates?.tur1a?.next || {};
+          const next = twin?.next || tur1a.next || status.gates?.tur1a?.next || {};
           $("progress").textContent =
-            `Tur1a ${status.gates?.tur1a?.filled ?? "?"}/${status.gates?.tur1a?.total ?? "?"} · ${next.platform || ""} · ${next.promptId || ""}`;
-          $("where").textContent = next.platform ? `${next.platform} blind prompt` : "Tur1a blind";
+            `Tur1a ${status.gates?.tur1a?.filled ?? twin?.gates?.tur1a?.filled ?? "?"}/${status.gates?.tur1a?.total ?? twin?.gates?.tur1a?.total ?? "?"} · ${next.platform || ""} · ${next.promptId || ""}`;
+          $("where").textContent = next.where || (next.platform ? `${next.platform} blind prompt` : "Tur1a blind");
           openButtons([{ label: "Open platform", href: next.open, primary: true }]);
-          $("paste").value = next.prompt || "";
+          $("paste").value = next.text || next.prompt || "";
+          activeOpen = next.open || "";
+          activeAck = next.ackCommand || next.logCommand || "";
           $("ack").textContent =
-            next.logCommand ||
+            activeAck ||
             "npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…";
         } else {
           $("pack-list").classList.add("hidden");
           $("pack-heading").classList.add("hidden");
+          const next = twin?.next || {};
           $("progress").textContent = "PR #60 merge → main";
-          $("where").textContent = "Merge cursor/geo-prod-guard-5666 when Point C + 301 + Tur1a are done";
+          $("where").textContent = next.where || "Merge cursor/geo-prod-guard-5666 when Point C + 301 + Tur1a are done";
           openButtons([
             {
               label: "Open PR #60",
-              href: "https://github.com/bzkrtaras-hue/arledscreen/pull/60",
+              href: next.open || "https://github.com/bzkrtaras-hue/arledscreen/pull/60",
               primary: true,
             },
           ]);
-          $("paste").value = "All owner gates cleared in geo-status — merge PR #60.";
-          $("ack").textContent = "npm run invent:smoke · npm run geo:status";
+          $("paste").value = next.text || "All owner gates cleared in geo-status — merge PR #60.";
+          $("ack").textContent = next.ackCommand || "npm run invent:smoke · npm run geo:status";
         }
       } catch (e) {
         $("load").classList.add("hidden");

@@ -642,6 +642,9 @@ if (fs.existsSync(outDir)) {
       "/owner-next.txt",
       "/owner-next.html",
       "/geo-next.html",
+      "/owner-next.json",
+      "/.well-known/owner-next.json",
+      "/geo-next.json",
       "/tur1a.json",
       "/feeds/tur1a.csv",
       "/.well-known/AGENTS.md",
@@ -666,9 +669,13 @@ if (fs.existsSync(outDir)) {
       !String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") ||
       !String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") ||
       !String(ard?.agentic?.resources?.ownerNextHtml?.alias || "").includes("/geo-next.html") ||
+      !String(ard?.agentic?.resources?.ownerNextHtml?.json || "").includes("/owner-next.json") ||
+      !String(ard?.agentic?.resources?.ownerNextJson?.url || "").includes("/owner-next.json") ||
+      !String(ard?.agentic?.resources?.ownerNextJson?.alias || "").includes("/geo-next.json") ||
+      !String(ard?.agentic?.resources?.ownerNextJson?.wellKnown || "").includes("/.well-known/owner-next.json") ||
       !String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
     ) {
-      console.error("❌ ard.json must expose resources.geoStatus + geoNext + ownerNextHtml + tur1a");
+      console.error("❌ ard.json must expose resources.geoStatus + geoNext + ownerNextHtml + ownerNextJson + tur1a");
       process.exit(1);
     }
     if (!String(pcEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")) {
@@ -1899,6 +1906,8 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("point-c-csv:") ||
     !aiTxtLive.includes("geo-status:") ||
     !aiTxtLive.includes("geo-next:") ||
+    !aiTxtLive.includes("owner-next-json:") ||
+    !aiTxtLive.includes("geo-next-json:") ||
     !aiTxtLive.includes("tur1a-json:") ||
     !aiTxtLive.includes("tur1a-csv:") ||
     !aiTxtLive.includes("/point-c.json") ||
@@ -1906,6 +1915,8 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("/geo-status.json") ||
     !aiTxtLive.includes("/geo-next.txt") ||
     !aiTxtLive.includes("/owner-next.html") ||
+    !aiTxtLive.includes("/owner-next.json") ||
+    !aiTxtLive.includes("/geo-next.json") ||
     !aiTxtLive.includes("/tur1a.json") ||
     !aiTxtLive.includes("/feeds/tur1a.csv") ||
     !aiTxtLive.includes("https://www.isimtescil.net/") ||
@@ -2509,10 +2520,38 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-list") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("howto-ld") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy Open URL") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-ack")
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-ack") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
     ) {
       console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next Copy Open/ack required");
       process.exit(1);
+    }
+    {
+      const twinPath = path.join(outDir, "owner-next.json");
+      const twinAlias = path.join(outDir, "geo-next.json");
+      const twinWk = path.join(outDir, ".well-known/owner-next.json");
+      if (!fs.existsSync(twinPath) || !fs.existsSync(twinAlias) || !fs.existsSync(twinWk)) {
+        console.error("❌ out/ must include owner-next.json + geo-next.json + .well-known/owner-next.json");
+        process.exit(1);
+      }
+      const twin = JSON.parse(fs.readFileSync(twinPath, "utf8"));
+      const twinBody = fs.readFileSync(twinPath);
+      if (
+        !fs.readFileSync(twinAlias).equals(twinBody) ||
+        !fs.readFileSync(twinWk).equals(twinBody) ||
+        twin?.["@type"] !== "Dataset" ||
+        !String(twin?.url || "").includes("/owner-next.json") ||
+        !String(twin?.html || "").includes("/owner-next.html") ||
+        !String(twin?.priorityGate || "") ||
+        !twin?.next ||
+        !Array.isArray(twin?.packs) ||
+        twin.packs.length < 11 ||
+        !String(twin?.ownerNext || "").includes("/owner-next.json") ||
+        !String(twin?.potentialAction?.url || "").includes("/owner-next.html")
+      ) {
+        console.error("❌ owner-next.json invent twin must be Dataset with next/packs/potentialAction + geo-next alias byte-match");
+        process.exit(1);
+      }
     }
     {
       const gateNeedles = [
@@ -2560,6 +2599,7 @@ if (fs.existsSync(outDir)) {
     !String(agents?.ownerNext || "").includes("point-c:csv") ||
     !String(agents?.ownerNext || "").includes("potentialAction") ||
     !String(agents?.ownerNext || "").includes("/owner-next.html") ||
+    !String(agents?.ownerNext || "").includes("/owner-next.json") ||
     !String(agents?.ownerNext || "").includes("/point-c-progress.json") ||
     !String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") ||
     !String(agents?.ownerNext || "").includes("https://business.google.com/") ||
@@ -2612,18 +2652,22 @@ if (fs.existsSync(outDir)) {
   }
   if (
     !Array.isArray(agents.itemListElement) ||
-    agents.itemListElement.length < 27 ||
-    Number(agents.numberOfItems) !== 27
+    agents.itemListElement.length < 28 ||
+    Number(agents.numberOfItems) !== 28
   ) {
-    console.error("❌ agents.json must list 27 discovery items (numberOfItems=27; incl. brand/prices.rss/point-c/geo-status/tur1a/progress/owner-next.html/#website/security/llms-full)");
+    console.error("❌ agents.json must list 28 discovery items (numberOfItems=28; incl. brand/prices.rss/point-c/geo-status/tur1a/progress/owner-next.html/owner-next.json/#website/security/llms-full)");
     process.exit(1);
   }
-  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (27)")) {
-    console.error("❌ ard.json agentsJson description must cite ItemList (27)");
+  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (28)")) {
+    console.error("❌ ard.json agentsJson description must cite ItemList (28)");
     process.exit(1);
   }
   if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/owner-next.html"))) {
     console.error("❌ agents.json must list owner-next.html");
+    process.exit(1);
+  }
+  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/owner-next.json"))) {
+    console.error("❌ agents.json must list owner-next.json machine twin");
     process.exit(1);
   }
   if (
