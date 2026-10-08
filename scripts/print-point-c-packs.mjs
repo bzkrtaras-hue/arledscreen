@@ -404,6 +404,29 @@ function nextStep(profiles, { en = false } = {}) {
   return null;
 }
 
+/**
+ * Paste-ready Point C next gate (Tur1a-style) for invent agents / geo-status.
+ * Cite pack text only — does not invent citations.
+ */
+export function buildPointCNext(profiles, { en = false } = {}) {
+  const step = nextStep(profiles, { en });
+  if (!step) return null;
+  const where = POINT_C_PASTE_WHERE[step.key] || "";
+  const open = pointCOpenUrl(step.key);
+  const openAlt = pointCOpenAltUrl(step.key);
+  const row = {
+    packKey: step.key,
+    label: step.label,
+    where,
+    open: open || "",
+    text: step.text,
+    ackCommand: `npm run point-c:ack -- --pack=${step.key}`,
+    progress: { acked: step.done, total: step.total },
+  };
+  if (openAlt) row.openAlt = openAlt;
+  return row;
+}
+
 const SITE = "https://arledscreen.com";
 
 /** Spreadsheet-ready Point C sequence (owner tracking). Does not invent citations. */
@@ -522,8 +545,9 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
     sameAs: [txtUrl, csvUrl, wkJson, `${SITE}/entity-profiles.json`],
     packs: items,
     progress: { acked: acked.length, total: sequenceKeys(en).length },
+    next: buildPointCNext(profiles, { en }),
     ownerNext:
-      "npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "npm run geo:next · live: https://arledscreen.com/geo-next.txt · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
   };
 }
 

@@ -349,6 +349,7 @@ if (
 {
   const pcJson = readJson("point-c.json");
   const pcCsv = readText("feeds/point-c.csv");
+  const pcNext = pcJson?.next || {};
   if (
     Array.isArray(pcJson?.packs) &&
     pcJson.packs.length >= 11 &&
@@ -356,6 +357,10 @@ if (
     JSON.stringify(pcJson.distribution || []).includes("/feeds/point-c.csv") &&
     pcCsv.includes("directoryLong") &&
     pcCsv.includes("bingplaces.com") &&
+    String(pcNext.packKey || "") === "directoryLong" &&
+    String(pcNext.text || "").includes("34245") &&
+    String(pcNext.open || "").includes("bingplaces.com") &&
+    String(pcNext.ackCommand || "").includes("directoryLong") &&
     fs.existsSync(path.join(outDir, ".well-known/point-c.json")) &&
     fs.existsSync(path.join(outDir, "point-c-en.json")) &&
     fs.existsSync(path.join(outDir, "feeds/point-c-en.csv")) &&
@@ -364,8 +369,8 @@ if (
     String(ard?.agentic?.resources?.pointCJson?.url || "").includes("/point-c.json") &&
     String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
   ) {
-    ok("point-c.json + feeds/point-c.csv invent + ARD resources");
-  } else fail("point-c.json + feeds/point-c.csv invent + ARD resources");
+    ok("point-c.json next.paste + feeds/point-c.csv invent + ARD resources");
+  } else fail("point-c.json next.paste + feeds/point-c.csv invent + ARD resources");
 }
 
 {
@@ -373,12 +378,16 @@ if (
   const geoNext = readText("geo-next.txt");
   const tur1a = readJson("tur1a.json");
   const tur1aCsv = readText("feeds/tur1a.csv");
+  const pointCNext = geoStatus?.gates?.pointC?.next || {};
   if (
     String(geoStatus?.priorityGate || "") &&
     geoStatus?.gates?.pointC &&
     geoStatus?.gates?.tur1a &&
     geoNext.includes("GEO next") &&
     geoNext.includes("Open:") &&
+    String(pointCNext.packKey || "") === "directoryLong" &&
+    String(pointCNext.text || "").includes("34245") &&
+    String(pointCNext.open || "").includes("bingplaces.com") &&
     Array.isArray(tur1a?.cells) &&
     tur1a.cells.length >= 48 &&
     tur1aCsv.includes("chatgpt") &&
@@ -387,8 +396,8 @@ if (
     String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
-    ok("geo-status/geo-next/tur1a invent + ARD + AGENTS.md well-known");
-  } else fail("geo-status/geo-next/tur1a invent + ARD + AGENTS.md well-known");
+    ok("geo-status pointC.next.paste + geo-next/tur1a invent + ARD + AGENTS.md well-known");
+  } else fail("geo-status pointC.next.paste + geo-next/tur1a invent + ARD + AGENTS.md well-known");
 }
 
 

@@ -7,15 +7,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import {
-  HOSTINGER_STEP,
-  POINT_C_OPEN_ALTS,
-  POINT_C_OPEN_URLS,
-  POINT_C_PASTE_WHERE,
-  TR_ORDER,
-  pointCOpenAltUrl,
-  pointCOpenUrl,
-} from "./print-point-c-packs.mjs";
+import { buildPointCNext } from "./print-point-c-packs.mjs";
 import { HUMAN_PLATFORMS, TR, platformOpenUrl } from "./print-tur1a-prompts.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -23,8 +15,17 @@ const repoRoot = path.resolve(__dirname, "..");
 const SITE = "https://arledscreen.com";
 const progressPath = path.join(repoRoot, "docs/geo/observations/point-c-progress.json");
 const logPath = path.join(repoRoot, "docs/geo/observations/blind-log.jsonl");
+const profilesPath = path.join(repoRoot, "public/entity-profiles.json");
 const POINT_C_STEPS = 11;
 const TUR1A_TOTAL = TR.length * HUMAN_PLATFORMS.length;
+
+function loadEntityProfiles() {
+  try {
+    return JSON.parse(fs.readFileSync(profilesPath, "utf8"));
+  } catch {
+    return { packs: {}, packsEn: {} };
+  }
+}
 
 function runNode(scriptRel, args = [], timeout = 90000) {
   return spawnSync(process.execPath, [path.join(repoRoot, scriptRel), ...args], {
@@ -64,27 +65,9 @@ function tur1aFilledCount() {
   return cells.size;
 }
 
-function nextPointCPack(acked) {
-  const ackedSet = new Set(acked);
-  for (const [, key] of TR_ORDER) {
-    if (!ackedSet.has(key)) {
-      return {
-        packKey: key,
-        where: POINT_C_PASTE_WHERE[key] || "",
-        open: pointCOpenUrl(key),
-        openAlt: pointCOpenAltUrl(key) || "",
-      };
-    }
-  }
-  if (!ackedSet.has(HOSTINGER_STEP)) {
-    return {
-      packKey: HOSTINGER_STEP,
-      where: POINT_C_PASTE_WHERE[HOSTINGER_STEP] || "",
-      open: POINT_C_OPEN_URLS[HOSTINGER_STEP] || "",
-      openAlt: POINT_C_OPEN_ALTS[HOSTINGER_STEP] || "",
-    };
-  }
-  return null;
+/** Paste-ready Point C next (includes text) — mirrors tur1a.json next.prompt. */
+function nextPointCPack(_acked) {
+  return buildPointCNext(loadEntityProfiles(), { en: false });
 }
 
 function nextTur1aCell() {

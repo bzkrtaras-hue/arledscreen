@@ -420,6 +420,7 @@ try {
   const pcJson = await getJson("/point-c.json");
   const pcCsv = await getText("/feeds/point-c.csv");
   const pcJsonWk = await getJson("/.well-known/point-c.json");
+  const pcNext = pcJson?.next || {};
   if (
     Array.isArray(pcJson?.packs) &&
     pcJson.packs.length >= 11 &&
@@ -427,12 +428,17 @@ try {
     JSON.stringify(pcJson.distribution || []).includes("/feeds/point-c.csv") &&
     pcCsv.includes("directoryLong") &&
     pcCsv.includes("bingplaces.com") &&
+    String(pcNext.packKey || "") === "directoryLong" &&
+    String(pcNext.text || "").includes("34245") &&
+    String(pcNext.open || "").includes("bingplaces.com") &&
+    String(pcNext.ackCommand || "").includes("directoryLong") &&
     Array.isArray(pcJsonWk?.packs) &&
+    String(pcJsonWk?.next?.packKey || "") === "directoryLong" &&
     String(ard?.agentic?.resources?.pointC?.json || "").includes("/point-c.json") &&
     String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
   ) {
-    ok("point-c.json + feeds/point-c.csv invent + ARD resources");
-  } else fail("point-c.json + feeds/point-c.csv invent + ARD resources");
+    ok("point-c.json next.paste + feeds/point-c.csv invent + ARD resources");
+  } else fail("point-c.json next.paste + feeds/point-c.csv invent + ARD resources");
 } catch (e) {
   fail(`point-c.json/csv ${e?.message || e}`);
 }
@@ -442,20 +448,24 @@ try {
   const geoNext = await getText("/geo-next.txt");
   const tur1a = await getJson("/tur1a.json");
   const tur1aCsv = await getText("/feeds/tur1a.csv");
+  const pointCNext = geoStatus?.gates?.pointC?.next || {};
   if (
     String(geoStatus?.priorityGate || "") &&
     geoStatus?.gates?.pointC &&
     geoStatus?.gates?.tur1a &&
     geoNext.includes("GEO next") &&
     geoNext.includes("Open:") &&
+    String(pointCNext.packKey || "") === "directoryLong" &&
+    String(pointCNext.text || "").includes("34245") &&
+    String(pointCNext.open || "").includes("bingplaces.com") &&
     Array.isArray(tur1a?.cells) &&
     tur1a.cells.length >= 48 &&
     tur1aCsv.includes("chatgpt") &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
-    ok("geo-status/geo-next/tur1a invent + ARD");
-  } else fail("geo-status/geo-next/tur1a invent + ARD");
+    ok("geo-status pointC.next.paste + geo-next/tur1a invent + ARD");
+  } else fail("geo-status pointC.next.paste + geo-next/tur1a invent + ARD");
 } catch (e) {
   fail(`geo-status/tur1a ${e?.message || e}`);
 }
