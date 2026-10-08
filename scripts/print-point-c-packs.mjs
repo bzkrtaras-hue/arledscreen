@@ -511,7 +511,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
     "@id": jsonUrl,
     name: en ? "ARLEDSCREEN Point C paste packs (EN)" : "ARLEDSCREEN Point C paste packs",
     description:
-      "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/.",
+      "Owner-operated third-party citation paste packs (GBP/IG/FB/LinkedIn/Bing/Apple/YT/Yandex + arleds 301). Cite packs only — no invented ratings. Follow potentialAction HowTo when next is set. CSV twin for spreadsheets. WebSite: https://arledscreen.com/#website. Owner: live https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/.",
     url: jsonUrl,
     inLanguage: en ? "en" : "tr",
     creator: { "@id": `${SITE}/#organization` },
@@ -520,6 +520,9 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       txtUrl,
       `${SITE}/entity.json`,
       `${SITE}/geo-next.txt`,
+      `${SITE}/owner-next.txt`,
+      `${SITE}/point-c-progress.json`,
+      `${SITE}/geo-status.json`,
       `${SITE}/#website`,
     ],
     distribution: [
@@ -548,13 +551,32 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
         encodingFormat: "text/plain",
         contentUrl: `${SITE}/geo-next.txt`,
       },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/point-c-progress.json`,
+      },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/geo-status.json`,
+      },
     ],
-    sameAs: [txtUrl, csvUrl, wkJson, `${SITE}/entity-profiles.json`, `${SITE}/geo-next.txt`, `${SITE}/geo-status.json`],
+    sameAs: [
+      txtUrl,
+      csvUrl,
+      wkJson,
+      `${SITE}/entity-profiles.json`,
+      `${SITE}/geo-next.txt`,
+      `${SITE}/owner-next.txt`,
+      `${SITE}/geo-status.json`,
+      `${SITE}/point-c-progress.json`,
+    ],
     packs: items,
     progress: { acked: acked.length, total: sequenceKeys(en).length },
     next: buildPointCNext(profiles, { en }),
     ownerNext:
-      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
   };
   const next = doc.next;
   if (next?.text && next?.open) {
@@ -592,6 +614,7 @@ export function buildPointCJsonDoc(profiles, { en = false } = {}) {
       tool: [
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: jsonUrl },
+        { "@type": "HowToTool", name: "point-c-progress.json", url: `${SITE}/point-c-progress.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
       ],
     };

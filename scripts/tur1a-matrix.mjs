@@ -197,7 +197,7 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
     "@id": `${SITE}/tur1a.json`,
     name: "ARLEDSCREEN Tur1a blind coverage",
     description:
-      "Human blind Tur1a matrix (ChatGPT/Gemini/Perplexity/Google AI). Does not invent mention rates. Owner: live https://arledscreen.com/tur1a.json → next · npm run tur1a:next · tur1a:log · tur1a:csv · geo:next. CSV: /feeds/tur1a.csv.",
+      "Human blind Tur1a matrix (ChatGPT/Gemini/Perplexity/Google AI). Does not invent mention rates. Follow potentialAction HowTo when next is set. Owner: live https://arledscreen.com/tur1a.json → next + potentialAction · npm run tur1a:next · tur1a:log · tur1a:csv · geo:next. CSV: /feeds/tur1a.csv · status: /geo-status.json → potentialAction.",
     url: `${SITE}/tur1a.json`,
     creator: { "@id": `${SITE}/#organization` },
     isBasedOn: [
@@ -207,6 +207,8 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
       `${SITE}/#website`,
       `${SITE}/geo-status.json`,
       `${SITE}/geo-next.txt`,
+      `${SITE}/owner-next.txt`,
+      `${SITE}/point-c-progress.json`,
     ],
     distribution: [
       { "@type": "DataDownload", encodingFormat: "application/ld+json", contentUrl: `${SITE}/tur1a.json` },
@@ -217,18 +219,26 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
       },
       { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${SITE}/feeds/tur1a.csv` },
       { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${SITE}/tur1a.csv` },
+      {
+        "@type": "DataDownload",
+        encodingFormat: "application/ld+json",
+        contentUrl: `${SITE}/geo-status.json`,
+      },
+      { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/geo-next.txt` },
     ],
     sameAs: [
       `${SITE}/.well-known/tur1a.json`,
       `${SITE}/feeds/tur1a.csv`,
       `${SITE}/geo-status.json`,
       `${SITE}/geo-next.txt`,
+      `${SITE}/owner-next.txt`,
+      `${SITE}/point-c-progress.json`,
     ],
     coverage: { filled: filledLocal.size, total, locale: en ? "tr+en" : "tr" },
     next,
     cells,
     ownerNext:
-      "live: https://arledscreen.com/tur1a.json → next · npm run tur1a:next · tur1a:csv · after observe: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… · Open: https://chatgpt.com/ · https://gemini.google.com/app · https://www.perplexity.ai/ · https://www.google.com/",
+      "live: https://arledscreen.com/tur1a.json → next + potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction · npm run tur1a:next · tur1a:csv · after observe: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… · Open: https://chatgpt.com/ · https://gemini.google.com/app · https://www.perplexity.ai/ · https://www.google.com/",
   };
   if (next?.prompt && next?.open) {
     doc.potentialAction = {
@@ -261,6 +271,7 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
       tool: [
         { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
         { "@type": "HowToTool", name: "feeds/tur1a.csv", url: `${SITE}/feeds/tur1a.csv` },
+        { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
       ],
     };

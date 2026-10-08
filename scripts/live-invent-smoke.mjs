@@ -320,19 +320,23 @@ try {
     llms.includes("geo:next") &&
     llms.includes("point-c:csv") &&
     llms.includes("https://www.isimtescil.net/") &&
-    llms.includes("/.well-known/brand.json")
+    llms.includes("/.well-known/brand.json") &&
+    llms.includes("/point-c-progress.json") &&
+    llms.includes("potentialAction")
   ) {
-    ok("llms.txt geo:next + point-c:csv Open + well-known/brand");
-  } else fail("llms.txt geo:next + point-c:csv Open + well-known/brand");
+    ok("llms.txt geo:next + potentialAction HowTo + point-c:csv Open + well-known/brand");
+  } else fail("llms.txt geo:next + potentialAction HowTo + point-c:csv Open + well-known/brand");
   const llmsFull = await getText("/llms-full.txt");
   if (
     llmsFull.includes("geo:next") &&
     llmsFull.includes("point-c:csv") &&
     llmsFull.includes("https://chatgpt.com/") &&
-    llmsFull.includes("/.well-known/brand.json")
+    llmsFull.includes("/.well-known/brand.json") &&
+    llmsFull.includes("/point-c-progress.json") &&
+    llmsFull.includes("potentialAction")
   ) {
-    ok("llms-full.txt geo:next + point-c:csv Open + well-known/brand");
-  } else fail("llms-full.txt geo:next + point-c:csv Open + well-known/brand");
+    ok("llms-full.txt geo:next + potentialAction HowTo + point-c:csv Open + well-known/brand");
+  } else fail("llms-full.txt geo:next + potentialAction HowTo + point-c:csv Open + well-known/brand");
 } catch (e) {
   fail(`agents/AGENTS/llms invent ${e?.message || e}`);
 }
@@ -447,14 +451,19 @@ try {
     Array.isArray(pcJson?.potentialAction?.step) &&
     pcJson.potentialAction.step.length >= 3 &&
     String(pcJson.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
+    String(pcJson?.description || "").includes("potentialAction") &&
+    String(pcJson?.ownerNext || "").includes("potentialAction") &&
+    String(pcJson?.ownerNext || "").includes("/point-c-progress.json") &&
+    JSON.stringify(pcJson.isBasedOn || []).includes("/point-c-progress.json") &&
+    (pcJson?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/point-c-progress.json")) &&
     Array.isArray(pcJsonWk?.packs) &&
     String(pcJsonWk?.next?.packKey || "") === "directoryLong" &&
     pcJsonWk?.potentialAction?.["@type"] === "HowTo" &&
     String(ard?.agentic?.resources?.pointC?.json || "").includes("/point-c.json") &&
     String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
   ) {
-    ok("point-c.json next.paste + HowTo potentialAction + feeds/point-c.csv invent + ARD resources");
-  } else fail("point-c.json next.paste + HowTo potentialAction + feeds/point-c.csv invent + ARD resources");
+    ok("point-c.json next.paste + HowTo potentialAction + progress invent + feeds/point-c.csv + ARD");
+  } else fail("point-c.json next.paste + HowTo potentialAction + progress invent + feeds/point-c.csv + ARD");
 } catch (e) {
   fail(`point-c.json/csv ${e?.message || e}`);
 }
@@ -488,6 +497,10 @@ try {
     Array.isArray(tur1a?.potentialAction?.step) &&
     tur1a.potentialAction.step.length >= 3 &&
     String(tur1a.potentialAction.step[0]?.url || "").includes("http") &&
+    String(tur1a?.description || "").includes("potentialAction") &&
+    String(tur1a?.ownerNext || "").includes("potentialAction") &&
+    JSON.stringify(tur1a.sameAs || []).includes("/point-c-progress.json") &&
+    (tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/geo-next.txt")) &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
@@ -499,9 +512,9 @@ try {
       String(progress?.next?.packKey || "") === "directoryLong" &&
       String(progress?.potentialAction?.name || "").includes("directoryLong")
     ) {
-      ok("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD");
-    } else fail("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD");
-  } else fail("geo-status priority HowTo + tur1a HowTo + point-c-progress HowTo + ARD");
+      ok("geo-status priority HowTo + tur1a HowTo/potentialAction invent + point-c-progress HowTo + ARD");
+    } else fail("geo-status priority HowTo + tur1a HowTo/potentialAction invent + point-c-progress HowTo + ARD");
+  } else fail("geo-status priority HowTo + tur1a HowTo/potentialAction invent + point-c-progress HowTo + ARD");
 } catch (e) {
   fail(`geo-status/tur1a ${e?.message || e}`);
 }
@@ -951,10 +964,12 @@ try {
     humans.includes("/.well-known/security.txt") &&
     humans.includes("point-c:csv") &&
     humans.includes("https://www.isimtescil.net/") &&
+    humans.includes("/point-c-progress.json") &&
+    humans.includes("potentialAction") &&
     faq.includes("/.well-known/modules.json")
   ) {
-    ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security + point-c:csv");
-  } else fail("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security + point-c:csv");
+    ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security + potentialAction");
+  } else fail("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security + potentialAction");
 } catch (e) {
   fail(`ai-shopping/humans/entity FAQ invent ${e?.message || e}`);
 }

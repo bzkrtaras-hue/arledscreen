@@ -45,12 +45,16 @@ function ensureOwnerFrictionDescription(desc) {
   if (!out.includes("geo:ack")) out = `${out} After paste: npm run geo:ack.`;
   if (!out.includes("point-c:csv")) out = `${out} Spreadsheet: npm run point-c:csv.`;
   if (!out.includes("/geo-next.txt")) out = `${out} Live clipboard: ${SITE_URL}/geo-next.txt.`;
-  if (!out.includes("/point-c.json")) out = `${out} Machine next: ${SITE_URL}/point-c.json → next.`;
+  if (!out.includes("/point-c.json")) out = `${out} Machine next: ${SITE_URL}/point-c.json → next + potentialAction.`;
+  out = out.replaceAll(`${SITE_URL}/point-c.json → next.`, `${SITE_URL}/point-c.json → next + potentialAction.`);
+  out = out.replaceAll(`${SITE_URL}/point-c.json → next ·`, `${SITE_URL}/point-c.json → next + potentialAction ·`);
   if (!out.includes("/point-c-progress.json")) {
     out = `${out} Progress: ${SITE_URL}/point-c-progress.json → potentialAction.`;
   }
   if (!out.includes("/geo-status.json")) out = `${out} Status: ${SITE_URL}/geo-status.json → potentialAction.`;
   if (!out.includes("/tur1a.json")) out = `${out} Tur1a: ${SITE_URL}/tur1a.json → potentialAction.`;
+  out = out.replaceAll(`${SITE_URL}/tur1a.json → next.`, `${SITE_URL}/tur1a.json → potentialAction.`);
+  out = out.replaceAll(`${SITE_URL}/tur1a.json → next ·`, `${SITE_URL}/tur1a.json → potentialAction ·`);
   if (!out.includes("potentialAction")) {
     out = `${out} Follow potentialAction HowTo on geo-status / point-c-progress / tur1a.`;
   }

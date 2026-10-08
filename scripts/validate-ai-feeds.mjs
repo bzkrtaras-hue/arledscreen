@@ -2278,12 +2278,18 @@ if (fs.existsSync(outDir)) {
       !Array.isArray(pcJson?.potentialAction?.step) ||
       pcJson.potentialAction.step.length < 3 ||
       !String(pcJson.potentialAction.step[0]?.url || "").includes("http") ||
+      !String(pcJson?.description || "").includes("potentialAction") ||
+      !String(pcJson?.ownerNext || "").includes("potentialAction") ||
+      !String(pcJson?.ownerNext || "").includes("/point-c-progress.json") ||
+      !JSON.stringify(pcJson.isBasedOn || []).includes("/point-c-progress.json") ||
+      !JSON.stringify(pcJson.distribution || []).includes("/point-c-progress.json") ||
+      !(pcJson?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/point-c-progress.json")) ||
       !fs.readFileSync(path.join(outDir, ".well-known/point-c.json")).equals(
         fs.readFileSync(path.join(outDir, "point-c.json")),
       ) ||
       fs.readFileSync(path.join(outDir, "point-c.csv"), "utf8") !== pcCsv
     ) {
-      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + HowTo potentialAction; well-known/root twins must match");
+      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + HowTo potentialAction + progress invent joins; well-known/root twins must match");
       process.exit(1);
     }
     for (const rel of [
@@ -2336,9 +2342,14 @@ if (fs.existsSync(outDir)) {
       !Array.isArray(tur1a?.potentialAction?.step) ||
       tur1a.potentialAction.step.length < 3 ||
       !String(tur1a.potentialAction.step[0]?.url || "").includes("http") ||
+      !String(tur1a?.description || "").includes("potentialAction") ||
+      !String(tur1a?.ownerNext || "").includes("potentialAction") ||
+      !JSON.stringify(tur1a.isBasedOn || []).includes("/geo-status.json") ||
+      !JSON.stringify(tur1a.sameAs || []).includes("/point-c-progress.json") ||
+      !(tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/geo-next.txt")) ||
       fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
     ) {
-      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + tur1a HowTo (no invented scores)");
+      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + tur1a HowTo/potentialAction invent joins (no invented scores)");
       process.exit(1);
     }
     const progress = JSON.parse(fs.readFileSync(path.join(outDir, "point-c-progress.json"), "utf8"));
