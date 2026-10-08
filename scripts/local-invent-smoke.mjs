@@ -636,6 +636,11 @@ else fail("ard.resources.pointC");
     html.includes("Mail paste") &&
     html.includes('e.key === "e"') &&
     html.includes("selectPasteForNext") &&
+    html.includes("maybeNextSession") &&
+    html.includes("nextQuery") &&
+    html.includes("withNextParam") &&
+    html.includes("pack-deep-after") &&
+    html.includes("n=1") &&
     html.includes("packDeepLinkUrl(key)") &&
     html.includes("Deep/WA paste") &&
     html.includes("Open×") &&

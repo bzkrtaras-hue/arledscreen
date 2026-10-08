@@ -117,6 +117,7 @@ const URLS = [
   `https://${HOST}/owner-next.html?social=wa&copy=1`,
   `https://${HOST}/owner-next.html?pack=directoryLong`,
   `https://${HOST}/owner-next.html?pack=directoryLong&copy=1`,
+  `https://${HOST}/owner-next.html?pack=directoryLong&n=1`,
   `https://${HOST}/owner-next.html?pack=facebookAbout`,
   `https://${HOST}/owner-next.html?pack=instagramBio`,
   `https://${HOST}/owner-next.html?pack=hostinger301`,

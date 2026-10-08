@@ -211,6 +211,13 @@ jobs:
           grep -q 'Mail paste' out/humans.txt
           grep -q 'E=Mail paste' out/.well-known/security.txt
           grep -q 'selectPasteForNext' out/owner-next.html
+          grep -q 'maybeNextSession' out/owner-next.html
+          grep -q 'nextQuery' out/owner-next.html
+          grep -q 'withNextParam' out/owner-next.html
+          grep -q 'pack-deep-after' out/owner-next.html
+          grep -q 'n=1' out/owner-next.html
+          grep -q 'pack=directoryLong&n=1' scripts/submit-indexnow.mjs
+          grep -q 'After' docs/offsite-entity-playbook.md
           grep -q 'packDeepLinkUrl(key)' out/owner-next.html
           grep -q 'Deep/WA paste' out/owner-next.html
           grep -q 'social=fb' out/.well-known/security.txt

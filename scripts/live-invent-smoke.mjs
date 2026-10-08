@@ -612,6 +612,11 @@ try {
     ownerNextHtml.includes("Mail paste") &&
     ownerNextHtml.includes('e.key === "e"') &&
     ownerNextHtml.includes("selectPasteForNext") &&
+    ownerNextHtml.includes("maybeNextSession") &&
+    ownerNextHtml.includes("nextQuery") &&
+    ownerNextHtml.includes("withNextParam") &&
+    ownerNextHtml.includes("pack-deep-after") &&
+    ownerNextHtml.includes("n=1") &&
     ownerNextHtml.includes("packDeepLinkUrl(key)") &&
     ownerNextHtml.includes("Deep/WA paste") &&
     ownerNextHtml.includes("Open×") &&
