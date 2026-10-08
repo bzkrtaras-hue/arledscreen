@@ -540,6 +540,8 @@ try {
     ownerNextHtml.includes("Copy + Open") &&
     ownerNextHtml.includes("copy-open-all") &&
     ownerNextHtml.includes("Copy + Open all") &&
+    ownerNextHtml.includes("actions-sticky") &&
+    ownerNextHtml.includes("doCopyOpenAll") &&
     ownerNextHtml.includes("Mailto DNSEnable") &&
     geoNextHtml.includes("Copy paste") &&
     geoNextHtml === ownerNextHtml &&

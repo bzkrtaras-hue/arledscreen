@@ -26,9 +26,9 @@
       "url": "https://arledscreen.com/owner-next.html",
       "description": "Open destination → paste NAP/About → ack. Live next from /geo-status.json · /point-c.json · /point-c-progress.json.",
       "step": [
-        { "@type": "HowToStep", "position": 1, "name": "Open destination", "text": "Use Open / OpenAlt buttons from the live priorityGate." },
-        { "@type": "HowToStep", "position": 2, "name": "Paste block", "text": "Copy paste textarea (select-all)." },
-        { "@type": "HowToStep", "position": 3, "name": "Ack progress", "text": "npm run geo:ack / point-c:ack / tur1a:log as shown." }
+        { "@type": "HowToStep", "position": 1, "name": "Copy + Open all", "text": "Sticky Copy + Open all (or Enter) copies paste and opens every Open/OpenAlt tab." },
+        { "@type": "HowToStep", "position": 2, "name": "Paste block", "text": "Paste the copied block into each opened destination." },
+        { "@type": "HowToStep", "position": 3, "name": "Ack progress", "text": "Copy ack → npm run geo:ack / point-c:ack / tur1a:log as shown." }
       ],
       "tool": [
         { "@type": "HowToTool", "name": "geo-status.json", "url": "https://arledscreen.com/geo-status.json" },
@@ -144,7 +144,8 @@
     }
     textarea {
       width: 100%;
-      min-height: 14rem;
+      min-height: 10rem;
+      max-height: 40vh;
       resize: vertical;
       font: inherit;
       line-height: 1.45;
@@ -159,6 +160,31 @@
       flex-wrap: wrap;
       gap: 0.55rem;
       margin-top: 0.65rem;
+    }
+    .actions-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      margin: 0.85rem 0 0.35rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: rgba(12, 16, 22, 0.92);
+      backdrop-filter: blur(8px);
+    }
+    .actions-sticky .row { margin-top: 0; }
+    .actions-hint {
+      margin: 0.4rem 0 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    kbd {
+      font: inherit;
+      font-size: 0.78rem;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 0.05rem 0.35rem;
+      background: rgba(232, 238, 245, 0.06);
     }
     .ack {
       font-family: ui-monospace, "IBM Plex Mono", monospace;
@@ -230,17 +256,23 @@
       <p class="where" id="where"></p>
       <div class="opens" id="opens"></div>
 
+      <div class="actions-sticky" id="actions-sticky">
+        <div class="row">
+          <button type="button" class="btn primary" id="copy-open-all">Copy + Open all</button>
+          <button type="button" class="btn" id="copy-open-tab">Copy + Open</button>
+          <button type="button" class="btn" id="copy-ack">Copy ack</button>
+        </div>
+        <p class="actions-hint"><kbd>Enter</kbd> = Copy + Open all · then paste in opened tabs · ack below</p>
+      </div>
+
       <h2 id="pack-heading" class="hidden">Point C packs</h2>
       <ul id="pack-list" class="hidden" aria-label="Point C pack checklist"></ul>
 
       <h2>Paste (select-all)</h2>
       <textarea id="paste" readonly spellcheck="false"></textarea>
       <div class="row">
-        <button type="button" class="btn primary" id="copy-open-tab">Copy + Open</button>
-        <button type="button" class="btn" id="copy-open-all">Copy + Open all</button>
         <button type="button" class="btn" id="copy">Copy paste</button>
         <button type="button" class="btn" id="copy-open">Copy Open URL</button>
-        <button type="button" class="btn" id="copy-ack">Copy ack</button>
         <button type="button" class="btn" id="select">Select all</button>
       </div>
       <p class="ack" id="ack"></p>
@@ -527,6 +559,26 @@
       t.select();
       await copyText(t.value, $("copy"), "Copy paste");
     });
+    async function doCopyOpenAll(btn) {
+      const t = $("paste");
+      t.focus();
+      t.select();
+      await copyText(t.value, btn || $("copy-open-all"), "Copy + Open all");
+      const urls = activeOpens.length ? activeOpens : activeOpen ? [activeOpen] : [];
+      urls.forEach((href) => {
+        try {
+          window.open(href, "_blank", "noopener,noreferrer");
+        } catch {
+          /* popup blocked */
+        }
+      });
+      const ackEl = $("ack");
+      if (ackEl) {
+        ackEl.classList.add("ok");
+        setTimeout(() => ackEl.classList.remove("ok"), 1600);
+      }
+    }
+
     $("copy-open-tab").addEventListener("click", async () => {
       const btn = $("copy-open-tab");
       const t = $("paste");
@@ -541,26 +593,21 @@
         }
       }
     });
-    $("copy-open-all").addEventListener("click", async () => {
-      const btn = $("copy-open-all");
-      const t = $("paste");
-      t.focus();
-      t.select();
-      await copyText(t.value, btn, "Copy + Open all");
-      const urls = activeOpens.length ? activeOpens : activeOpen ? [activeOpen] : [];
-      urls.forEach((href) => {
-        try {
-          window.open(href, "_blank", "noopener,noreferrer");
-        } catch {
-          /* popup blocked */
-        }
-      });
-    });
+    $("copy-open-all").addEventListener("click", () => doCopyOpenAll($("copy-open-all")));
     $("copy-open").addEventListener("click", () => copyText(activeOpen, $("copy-open"), "Copy Open URL"));
     $("copy-ack").addEventListener("click", () => copyText(activeAck || $("ack").textContent, $("copy-ack"), "Copy ack"));
     $("select").addEventListener("click", () => {
       $("paste").focus();
       $("paste").select();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter") return;
+      if (e.altKey || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      const tag = (e.target && e.target.tagName) || "";
+      if (tag === "TEXTAREA" || tag === "INPUT" || tag === "BUTTON" || tag === "A") return;
+      if ($("panel").classList.contains("hidden")) return;
+      e.preventDefault();
+      doCopyOpenAll($("copy-open-all"));
     });
     load();
   </script>

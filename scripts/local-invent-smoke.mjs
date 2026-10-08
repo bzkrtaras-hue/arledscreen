@@ -531,6 +531,8 @@ else fail("ard.resources.pointC");
     html.includes("Copy + Open") &&
     html.includes("copy-open-all") &&
     html.includes("Copy + Open all") &&
+    html.includes("actions-sticky") &&
+    html.includes("doCopyOpenAll") &&
     html.includes("Mailto DNSEnable") &&
     html.includes("packQuery") &&
     alias === html &&
