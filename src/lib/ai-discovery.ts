@@ -95,7 +95,10 @@ const POINT_C_JSON_WELLKNOWN_URL = `${SITE_URL}/.well-known/point-c.json`;
 const POINT_C_CSV_URL = `${SITE_URL}/feeds/point-c.csv`;
 const GEO_STATUS_JSON_URL = `${SITE_URL}/geo-status.json`;
 const GEO_NEXT_TXT_URL = `${SITE_URL}/geo-next.txt`;
+const OWNER_NEXT_TXT_URL = `${SITE_URL}/owner-next.txt`;
 const TUR1A_JSON_URL = `${SITE_URL}/tur1a.json`;
+const TUR1A_CSV_URL = `${SITE_URL}/feeds/tur1a.csv`;
+const POINT_C_PROGRESS_JSON_URL = `${SITE_URL}/point-c-progress.json`;
 const LLMS_URL = `${SITE_URL}/llms.txt`;
 const LLMS_WELLKNOWN_URL = `${SITE_URL}/.well-known/llms.txt`;
 const LLMS_FULL_URL = `${SITE_URL}/llms-full.txt`;
@@ -220,6 +223,10 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: AGENTS_JSON_URL, title: "Agent Discovery Index" },
         { url: AGENTS_JSON_ROOT_URL, title: "Agent Discovery Index (root invent alias)" },
         { url: AGENT_WELLKNOWN_URL, title: "Agent Discovery Index (agent invent alias)" },
+        { url: POINT_C_JSON_URL, title: "Point C paste packs JSON (next.directoryLong)" },
+        { url: GEO_STATUS_JSON_URL, title: "GEO owner-gate status (priorityGate HowTo)" },
+        { url: TUR1A_JSON_URL, title: "Tur1a blind coverage" },
+        { url: POINT_C_PROGRESS_JSON_URL, title: "Point C paste progress" },
       ],
       "application/rss+xml": [{ url: PRICES_RSS_URL, title: "Panel Price Updates RSS" }],
       "text/tab-separated-values": [
@@ -240,6 +247,12 @@ export const aiDiscoveryMetadata: Metadata = {
         { url: POINT_C_EN_TXT_URL, title: "Point C paste packs (EN)" },
         { url: POINT_C_WELLKNOWN_URL, title: "Point C paste packs (well-known invent alias)" },
         { url: POINT_C_EN_WELLKNOWN_URL, title: "Point C paste packs EN (well-known invent alias)" },
+        { url: GEO_NEXT_TXT_URL, title: "GEO next clipboard (directoryLong Bing/Apple)" },
+        { url: OWNER_NEXT_TXT_URL, title: "GEO next clipboard invent alias (owner-next)" },
+      ],
+      "text/csv": [
+        { url: POINT_C_CSV_URL, title: "Point C spreadsheet CSV" },
+        { url: TUR1A_CSV_URL, title: "Tur1a blind coverage CSV" },
       ],
       "text/markdown": [{ url: AGENTS_MD_URL, title: "AGENTS.md" }],
     },
@@ -343,6 +356,24 @@ export const aiDiscoveryLinks = [
     type: "application/ld+json",
     href: TUR1A_JSON_URL,
     title: "Tur1a blind coverage",
+  },
+  {
+    rel: "alternate",
+    type: "text/plain",
+    href: OWNER_NEXT_TXT_URL,
+    title: "GEO next clipboard invent alias (owner-next)",
+  },
+  {
+    rel: "alternate",
+    type: "text/csv",
+    href: TUR1A_CSV_URL,
+    title: "Tur1a blind coverage CSV",
+  },
+  {
+    rel: "alternate",
+    type: "application/ld+json",
+    href: POINT_C_PROGRESS_JSON_URL,
+    title: "Point C paste progress",
   },
   { rel: "alternate", type: "text/markdown", href: AGENTS_MD_URL, title: "AGENTS.md" },
   // RFC 8288: machine agents that follow Link / describedby land on price + entity + brand.

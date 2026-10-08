@@ -2305,9 +2305,10 @@ if (fs.existsSync(outDir)) {
       !String(pointCNext.text || "") ||
       !String(pointCNext.open || "") ||
       geoStatus?.potentialAction?.["@type"] !== "HowTo" ||
-      !String(geoStatus?.potentialAction?.name || "").includes(String(pointCNext.packKey || "")) ||
       !Array.isArray(geoStatus?.potentialAction?.step) ||
       geoStatus.potentialAction.step.length < 3 ||
+      (String(geoStatus.priorityGate) === "pointC" &&
+        !String(geoStatus?.potentialAction?.name || "").includes(String(pointCNext.packKey || ""))) ||
       !Array.isArray(tur1a?.cells) ||
       tur1a.cells.length < 48 ||
       !tur1aCsv.includes("platform,promptId") ||
@@ -2320,7 +2321,7 @@ if (fs.existsSync(outDir)) {
       !String(tur1a.potentialAction.step[0]?.url || "").includes("http") ||
       fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
     ) {
-      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + pointC.next.paste + HowTo (point-c + tur1a) (no invented scores)");
+      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + tur1a HowTo (no invented scores)");
       process.exit(1);
     }
   }
@@ -2689,6 +2690,8 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('href="https://arledscreen.com/tur1a.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/tur1a.json"') ||
       !rssLive.includes('href="https://arledscreen.com/feeds/tur1a.csv"') ||
+      !rssLive.includes('href="https://arledscreen.com/point-c-progress.json"') ||
+      !rssLive.includes('href="https://arledscreen.com/.well-known/point-c-progress.json"') ||
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
@@ -4882,14 +4885,17 @@ if (fs.existsSync(outDir)) {
     "point-c.json",
     "geo-status.json",
     "geo-next.txt",
+    "owner-next.txt",
     "tur1a.json",
+    "feeds/tur1a.csv",
+    "point-c-progress.json",
   ]) {
     if (!homeHtml.includes(needle)) {
       console.error(`❌ tr/index.html must <link> alternate ${needle}`);
       process.exit(1);
     }
   }
-  console.log("✅ HTML discovery links include panels/mpn/entity-profiles + point-c.json/geo-status/geo-next/tur1a");
+  console.log("✅ HTML discovery links include panels/mpn/entity-profiles + point-c/geo-status/geo-next/owner-next/tur1a(+csv)/point-c-progress");
 
   console.log("✅ out/ AI feeds present (catalog, ai-shopping×12, merchant TSV, entity, profiles, llms, ai.txt); product paths exist");
   console.log(`✅ HTML Offer hubs: ${offerHubs.length} pages ≥12 Offers`);

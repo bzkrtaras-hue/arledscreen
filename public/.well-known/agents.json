@@ -180,7 +180,14 @@
       "position": 25,
       "name": "Tur1a blind coverage",
       "url": "https://arledscreen.com/tur1a.json",
-      "description": "Human Tur1a matrix + next empty cell; CSV /feeds/tur1a.csv; does not invent scores"
+      "description": "Human Tur1a matrix + next empty cell + HowTo potentialAction; CSV /feeds/tur1a.csv; does not invent scores"
+    },
+    {
+      "@type": "ListItem",
+      "position": 26,
+      "name": "Point C paste progress",
+      "url": "https://arledscreen.com/point-c-progress.json",
+      "description": "Acked Point C pack keys (owner paste progress); alias /.well-known/point-c-progress.json; source for geo:next / point-c:ack"
     }
   ],
   "provider": {

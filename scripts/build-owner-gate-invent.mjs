@@ -7,7 +7,11 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildPointCNext } from "./print-point-c-packs.mjs";
+import {
+  buildPointCNext,
+  DNSENABLE_GMAIL_DRAFT_URL,
+  DNSENABLE_PANEL_URL,
+} from "./print-point-c-packs.mjs";
 import { HUMAN_PLATFORMS, TR, platformOpenUrl } from "./print-tur1a-prompts.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -93,6 +97,8 @@ function nextTur1aCell() {
           promptId: id,
           open: platformOpenUrl(platform),
           prompt: TR.find(([pid]) => pid === id)?.[1] || "",
+          logCommand:
+            "npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json",
         };
       }
     }
@@ -108,7 +114,8 @@ function probeArleds301() {
   return {
     ok: probe.status === 0,
     mode,
-    open: "https://www.isimtescil.net/",
+    open: DNSENABLE_PANEL_URL || "https://www.isimtescil.net/",
+    openAlt: DNSENABLE_GMAIL_DRAFT_URL || "",
   };
 }
 
@@ -185,6 +192,7 @@ export function buildGeoStatusDoc() {
         mode: arleds.mode || null,
         target: `${SITE}/tr/`,
         open: arleds.open,
+        openAlt: arleds.openAlt || "",
         verify: "npm run verify:arleds-301",
         docs: "docs/ops/arleds-301-hostinger.md",
       },
@@ -205,13 +213,15 @@ export function buildGeoStatusDoc() {
         pr: 60,
         branch: "cursor/geo-prod-guard-5666",
         base: "main",
+        open: "https://github.com/bzkrtaras-hue/arledscreen/pull/60",
       },
     },
     ownerNext:
-      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · status: https://arledscreen.com/geo-status.json · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate) · https://arledscreen.com/tur1a.json → next · npm run geo:next · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
     target: "day-30 / ~2026-11-04 — do not invent ChatGPT/Gemini scores",
   };
-  if (pointCNext?.text && pointCNext?.open) {
+  // Priority-aware HowTo: invent agents follow potentialAction for the active gate only.
+  if (priority === "pointC" && pointCNext?.text && pointCNext?.open) {
     doc.potentialAction = {
       "@type": "HowTo",
       name: `Point C next paste: ${pointCNext.packKey}`,
@@ -245,6 +255,115 @@ export function buildGeoStatusDoc() {
         { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
         { "@type": "HowToTool", name: "point-c.json", url: `${SITE}/point-c.json` },
         { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+      ],
+    };
+  } else if (priority === "arleds301" && arleds.open) {
+    doc.potentialAction = {
+      "@type": "HowTo",
+      name: "arleds.com 301 Domain Redirect (DNSEnable)",
+      description:
+        "Owner-gated legacy domain redirect. Configure permanent 301 to /tr/ — do not invent DNS or mention rates.",
+      url: `${SITE}/geo-next.txt`,
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Open DNSEnable / Isimtescil",
+          url: arleds.open,
+          text: arleds.openAlt
+            ? `Open: ${arleds.open} · OpenAlt: ${arleds.openAlt}`
+            : `Open: ${arleds.open}`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Set permanent Domain Redirect",
+          text: `Permanent 301 → ${SITE}/tr/ (mode was ${arleds.mode || "unknown"})`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Verify",
+          text: "npm run verify:arleds-301",
+        },
+      ],
+      tool: [
+        { "@type": "HowToTool", name: "geo-next.txt", url: `${SITE}/geo-next.txt` },
+        { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+        {
+          "@type": "HowToTool",
+          name: "arleds-301 ops",
+          url: `${SITE}/docs/ops/arleds-301-hostinger.md`,
+        },
+      ],
+    };
+  } else if (priority === "tur1a" && tur1aNext?.prompt && tur1aNext?.open) {
+    doc.potentialAction = {
+      "@type": "HowTo",
+      name: `Tur1a next blind: ${tur1aNext.platform} · ${tur1aNext.promptId}`,
+      description:
+        "Owner-gated human blind observation. Log only observed flags — do not invent mention rates or scores.",
+      url: `${SITE}/tur1a.json`,
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Open platform",
+          url: tur1aNext.open,
+          text: `Open: ${tur1aNext.open}`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Paste blind prompt",
+          text: tur1aNext.prompt,
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Log observation",
+          text:
+            tur1aNext.logCommand ||
+            "npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…",
+        },
+      ],
+      tool: [
+        { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
+        { "@type": "HowToTool", name: "feeds/tur1a.csv", url: `${SITE}/feeds/tur1a.csv` },
+        { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+      ],
+    };
+  } else if (priority === "prMerge") {
+    doc.potentialAction = {
+      "@type": "HowTo",
+      name: "Merge PR #60 (geo-prod-guard)",
+      description:
+        "Owner-gated final merge after Point C + arleds 301 + Tur1a verified. Do not invent mention rates.",
+      url: "https://github.com/bzkrtaras-hue/arledscreen/pull/60",
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Open PR #60",
+          url: "https://github.com/bzkrtaras-hue/arledscreen/pull/60",
+          text: "Open: https://github.com/bzkrtaras-hue/arledscreen/pull/60",
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Confirm gates",
+          text: "npm run geo:status · invent:smoke · verify:arleds-301",
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Merge to main",
+          text: "Merge cursor/geo-prod-guard-5666 → main",
+        },
+      ],
+      tool: [
+        { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+        { "@type": "HowToTool", name: "PR #60", url: "https://github.com/bzkrtaras-hue/arledscreen/pull/60" },
       ],
     };
   }

@@ -35,7 +35,7 @@ const BRAND_URL = `${SITE_URL}/brand.json`;
 const localBusinessRef = () => ({ "@type": "LocalBusiness", "@id": LOCALBUSINESS_ID });
 /** Owner-friction clipboard + Open tabs (Point C / arleds / Tur1a) — cite-only; no invented scores. */
 const OWNER_FRICTION =
-  "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
+  "live: https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next (directoryLong Bing/Apple) · status: https://arledscreen.com/geo-status.json → potentialAction · https://arledscreen.com/tur1a.json → next · npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/";
 
 /** Ensure description cites geo:next/ack + point-c:csv + Open tabs + #website. */
 function ensureOwnerFrictionDescription(desc) {
@@ -46,6 +46,8 @@ function ensureOwnerFrictionDescription(desc) {
   if (!out.includes("point-c:csv")) out = `${out} Spreadsheet: npm run point-c:csv.`;
   if (!out.includes("/geo-next.txt")) out = `${out} Live clipboard: ${SITE_URL}/geo-next.txt.`;
   if (!out.includes("/point-c.json")) out = `${out} Machine next: ${SITE_URL}/point-c.json → next.`;
+  if (!out.includes("/geo-status.json")) out = `${out} Status: ${SITE_URL}/geo-status.json → potentialAction.`;
+  if (!out.includes("/tur1a.json")) out = `${out} Tur1a: ${SITE_URL}/tur1a.json → next.`;
   if (!out.includes("isimtescil.net")) {
     out = `${out} Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/.`;
   } else {
@@ -1448,6 +1450,8 @@ function buildPricesRss(ai) {
     <atom:link href="${SITE_URL}/tur1a.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/.well-known/tur1a.json" rel="related" type="application/ld+json"/>
     <atom:link href="${SITE_URL}/feeds/tur1a.csv" rel="related" type="text/csv"/>
+    <atom:link href="${SITE_URL}/point-c-progress.json" rel="related" type="application/ld+json"/>
+    <atom:link href="${SITE_URL}/.well-known/point-c-progress.json" rel="related" type="application/ld+json"/>
     <description>Published 12 panel (module) USD prices. Source of truth: ai-shopping.json pricedPanels + catalog.json + merchant TSV. Inventable aliases: /prices.json · /offer.json · /offers.json · /dataset.json · /feed.json · /.well-known/offer.json · /.well-known/offers.json · /.well-known/dataset.json · /.well-known/feed.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /.well-known/brand.json · /.well-known/entity.json · /.well-known/agents.json · /.well-known/ard.json · /ai.txt · /llms.txt · /llms-full.txt · /humans.txt · /AGENTS.md · /.well-known/security.txt. No free shipping. Brand: ${SITE_URL}/brand.json · Entity: ${SITE_URL}/entity.json · WebSite: ${SITE_URL}/#website · Organization alias: ${SITE_URL}/organization.json · GEO: ${SITE_URL}/geo-baseline.json · Point C: ${SITE_URL}/point-c.txt · entity-profiles: ${SITE_URL}/entity-profiles.json · Owner next: ${OWNER_FRICTION}</description>
     <language>tr</language>
     <lastBuildDate>${today}T00:00:00Z</lastBuildDate>

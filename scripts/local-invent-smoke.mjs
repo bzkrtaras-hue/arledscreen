@@ -161,6 +161,8 @@ if (
   rss.includes('href="https://arledscreen.com/tur1a.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/tur1a.json"') &&
   rss.includes('href="https://arledscreen.com/feeds/tur1a.csv"') &&
+  rss.includes('href="https://arledscreen.com/point-c-progress.json"') &&
+  rss.includes('href="https://arledscreen.com/.well-known/point-c-progress.json"') &&
   rss.includes("/entity-profiles.json") &&
   rss.includes("/.well-known/brand.json") &&
   rss.includes("/.well-known/entity.json") &&
@@ -401,6 +403,7 @@ if (
     String(pointCNext.packKey || "") === "directoryLong" &&
     String(pointCNext.text || "").includes("34245") &&
     String(pointCNext.open || "").includes("bingplaces.com") &&
+    String(geoStatus?.priorityGate || "") === "pointC" &&
     geoStatus?.potentialAction?.["@type"] === "HowTo" &&
     String(geoStatus?.potentialAction?.name || "").includes("directoryLong") &&
     Array.isArray(geoStatus?.potentialAction?.step) &&
@@ -415,12 +418,13 @@ if (
     tur1a.potentialAction.step.length >= 3 &&
     String(tur1a.potentialAction.step[0]?.url || "").includes("http") &&
     fs.existsSync(path.join(outDir, ".well-known/AGENTS.md")) &&
+    fs.existsSync(path.join(outDir, "point-c-progress.json")) &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
-    ok("geo-status HowTo + tur1a HowTo/logCommand + pointC.next.paste + ARD + AGENTS.md well-known");
-  } else fail("geo-status HowTo + tur1a HowTo/logCommand + pointC.next.paste + ARD + AGENTS.md well-known");
+    ok("geo-status priority HowTo + tur1a HowTo/logCommand + point-c-progress + ARD + AGENTS.md well-known");
+  } else fail("geo-status priority HowTo + tur1a HowTo/logCommand + point-c-progress + ARD + AGENTS.md well-known");
 }
 
 
