@@ -387,6 +387,7 @@ else fail("ard.resources.pointC");
     allow.includes("/tr/gob/") &&
     allow.includes("/katalog/") &&
     allow.includes("/contact/") &&
+    JSON.stringify(ard?.agentic?.resources?.trInventBridges?.examples || []).includes("/en/calculator/") &&
     (ard?.agentic?.resources?.trInventBridges?.examples || []).every((u) =>
       allow.includes(String(u).replace("https://arledscreen.com", ""))
     )

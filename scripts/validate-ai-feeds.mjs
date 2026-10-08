@@ -2817,6 +2817,7 @@ if (fs.existsSync(outDir)) {
     !trExamples.some((u) => String(u).includes("/tr/prices/")) ||
     !trExamples.some((u) => String(u).includes("/tr/catalog/")) ||
     !trExamples.some((u) => String(u).includes("/tr/calculator/")) ||
+    !trExamples.some((u) => String(u).includes("/en/calculator/")) ||
     !trExamples.some((u) => String(u).includes("/tr/faq/")) ||
     !trExamples.some((u) => String(u).includes("/tr/modules/")) ||
     !trExamples.some((u) => String(u).includes("/tr/gob/")) ||
@@ -4467,6 +4468,15 @@ for (const must of [
   "/tr/ai-shopping.json",
   "/en/feed.json",
   "/tr/feed.json",
+  "/tr/calculator/",
+  "/en/calculator/",
+  "/tr/teklif/",
+  "/tr/catalog/",
+  "/tr/gob/",
+  "/katalog/",
+  "/contact/",
+  "/nxtionstar/",
+  "/galeri/",
 ]) {
   if (!robotsFnBody.includes(must)) {
     console.error(`❌ functions/robots.txt.js must Allow ${must}`);
