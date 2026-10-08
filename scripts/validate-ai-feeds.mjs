@@ -1744,17 +1744,27 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("owner-chatgpt-open:") ||
     !aiTxtLive.includes("owner-bingplaces-open:") ||
     !aiTxtLive.includes("owner-apple-open:") ||
+    !aiTxtLive.includes("owner-linkedin-open:") ||
+    !aiTxtLive.includes("owner-instagram-open:") ||
+    !aiTxtLive.includes("owner-facebook-open:") ||
+    !aiTxtLive.includes("owner-youtube-open:") ||
+    !aiTxtLive.includes("owner-yandex-open:") ||
     !aiTxtLive.includes("point-c-en-well-known:") ||
     !aiTxtLive.includes("https://www.isimtescil.net/") ||
     !aiTxtLive.includes("https://business.google.com/") ||
     !aiTxtLive.includes("https://chatgpt.com/") ||
     !aiTxtLive.includes("https://www.bingplaces.com/") ||
     !aiTxtLive.includes("https://businessconnect.apple.com/") ||
+    !aiTxtLive.includes("https://www.linkedin.com/company/arleds/") ||
+    !aiTxtLive.includes("https://www.instagram.com/arledscreen/") ||
+    !aiTxtLive.includes("https://www.facebook.com/arledscreenn") ||
+    !aiTxtLive.includes("https://studio.youtube.com/") ||
+    !aiTxtLive.includes("https://business.yandex.com/") ||
     !aiTxtLive.includes("/.well-known/point-c-en.txt") ||
     !aiTxtLive.includes("point-c:csv") ||
     !aiTxtLive.includes("point-c:")
   ) {
-    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds/GBP/chatgpt/Bing/Apple Open/csv + point-c-en well-known");
+    console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds/GBP/chatgpt/Bing/Apple/LI/IG/FB/YT/Yandex Open/csv + point-c-en well-known");
     process.exit(1);
   }
   const geoNextSrc = fs.readFileSync(path.join(repoRoot, "scripts/geo-next.mjs"), "utf8");
@@ -3303,6 +3313,9 @@ if (fs.existsSync(outDir)) {
     "catalog_url",
     "entity_profiles_url",
     "point_c_url",
+    "point_c_well_known_url",
+    "point_c_en_url",
+    "point_c_en_well_known_url",
     "brand_well_known_url",
     "modules_well_known_url",
     "sku_well_known_url",
@@ -3351,6 +3364,9 @@ if (fs.existsSync(outDir)) {
   const catalogUrlIdx = tsvCols.indexOf("catalog_url");
   const profilesUrlIdx = tsvCols.indexOf("entity_profiles_url");
   const pointCUrlIdx = tsvCols.indexOf("point_c_url");
+  const pointCWkIdx = tsvCols.indexOf("point_c_well_known_url");
+  const pointCEnUrlIdx = tsvCols.indexOf("point_c_en_url");
+  const pointCEnWkIdx = tsvCols.indexOf("point_c_en_well_known_url");
   const brandWkIdx = tsvCols.indexOf("brand_well_known_url");
   const modulesWkIdx = tsvCols.indexOf("modules_well_known_url");
   const skuWkIdx = tsvCols.indexOf("sku_well_known_url");
@@ -3422,6 +3438,18 @@ if (fs.existsSync(outDir)) {
     }
     if (cells[pointCUrlIdx] !== "https://arledscreen.com/point-c.txt") {
       console.error(`❌ merchant TSV point_c_url must be /point-c.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCWkIdx] !== "https://arledscreen.com/.well-known/point-c.txt") {
+      console.error(`❌ merchant TSV point_c_well_known_url must be /.well-known/point-c.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCEnUrlIdx] !== "https://arledscreen.com/point-c-en.txt") {
+      console.error(`❌ merchant TSV point_c_en_url must be /point-c-en.txt for ${cells[idIdx]}`);
+      process.exit(1);
+    }
+    if (cells[pointCEnWkIdx] !== "https://arledscreen.com/.well-known/point-c-en.txt") {
+      console.error(`❌ merchant TSV point_c_en_well_known_url must be /.well-known/point-c-en.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
     if (cells[brandWkIdx] !== "https://arledscreen.com/.well-known/brand.json") {

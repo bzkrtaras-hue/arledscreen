@@ -474,6 +474,9 @@ else fail("ard.resources.pointC");
     head.includes("brand_url") &&
     head.includes("entity_profiles_url") &&
     head.includes("point_c_url") &&
+    head.includes("point_c_well_known_url") &&
+    head.includes("point_c_en_url") &&
+    head.includes("point_c_en_well_known_url") &&
     head.includes("brand_well_known_url") &&
     head.includes("modules_well_known_url") &&
     head.includes("sku_well_known_url") &&
@@ -508,6 +511,9 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/catalog.json`) &&
     tsv.includes(`${SITE}/entity-profiles.json`) &&
     tsv.includes(`${SITE}/point-c.txt`) &&
+    tsv.includes(`${SITE}/.well-known/point-c.txt`) &&
+    tsv.includes(`${SITE}/point-c-en.txt`) &&
+    tsv.includes(`${SITE}/.well-known/point-c-en.txt`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
     tsv.includes(`${SITE}/.well-known/modules.json`) &&
     tsv.includes(`${SITE}/.well-known/sku.json`) &&
@@ -532,8 +538,8 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/geo-baseline.json`) &&
     tsv.includes(`${SITE}/#website`)
   ) {
-    ok("merchant TSV feed/wk/rss/org/entity/profiles/point-c/geo/website/discovery invent cols");
-  } else fail("merchant TSV feed/wk/rss/org/entity/profiles/point-c/geo/website/discovery invent cols");
+    ok("merchant TSV feed/wk/rss/org/entity/profiles/point-c(+en/wk)/geo/website/discovery invent cols");
+  } else fail("merchant TSV feed/wk/rss/org/entity/profiles/point-c(+en/wk)/geo/website/discovery invent cols");
 }
 
 if (

@@ -1113,6 +1113,9 @@ function buildMerchantTsv() {
     "catalog_url",
     "entity_profiles_url",
     "point_c_url",
+    "point_c_well_known_url",
+    "point_c_en_url",
+    "point_c_en_well_known_url",
     "brand_well_known_url",
     "modules_well_known_url",
     "sku_well_known_url",
@@ -1186,6 +1189,9 @@ function buildMerchantTsv() {
         `${SITE_URL}/catalog.json`,
         `${SITE_URL}/entity-profiles.json`,
         `${SITE_URL}/point-c.txt`,
+        `${SITE_URL}/.well-known/point-c.txt`,
+        `${SITE_URL}/point-c-en.txt`,
+        `${SITE_URL}/.well-known/point-c-en.txt`,
         `${SITE_URL}/.well-known/brand.json`,
         `${SITE_URL}/.well-known/modules.json`,
         `${SITE_URL}/.well-known/sku.json`,
@@ -3841,6 +3847,11 @@ owner-gbp-open: https://business.google.com/
 owner-chatgpt-open: https://chatgpt.com/
 owner-bingplaces-open: https://www.bingplaces.com/
 owner-apple-open: https://businessconnect.apple.com/
+owner-linkedin-open: https://www.linkedin.com/company/arleds/
+owner-instagram-open: https://www.instagram.com/arledscreen/
+owner-facebook-open: https://www.facebook.com/arledscreenn
+owner-youtube-open: https://studio.youtube.com/
+owner-yandex-open: https://business.yandex.com/
 founder-en: ${SITE_URL}/en/about/aras-bozkurt/
 contact-bridge-en: ${SITE_URL}/en/contact/
 iletisim-bridge-en: ${SITE_URL}/en/iletisim/
@@ -4355,9 +4366,10 @@ Acknowledgments: https://arledscreen.com/brand.json
     const imageUrl = `${SITE_URL}${panel.image}`;
     const cells = row ? row.split("\t") : [];
     // Trailing invent cols: … tax, shipping, ai, prices, catalog, profiles, point_c,
-    // brand_wk, modules_wk, sku_wk, offer_json, pricing_wk, panels_wk, mpn_wk,
-    // merchant_wk, prices_wk, price_wk, entity_wk, prices_rss, org, geo, website,
-    // agents, ard, ai_txt, llms, llms_full, humans, agents_md, security_txt
+    // point_c_wk, point_c_en, point_c_en_wk, brand_wk, modules_wk, sku_wk, offer_json,
+    // pricing_wk, panels_wk, mpn_wk, merchant_wk, prices_wk, price_wk, entity_wk,
+    // prices_rss, org, geo, website, agents, ard, ai_txt, llms, llms_full, humans,
+    // agents_md, security_txt
     const securityTxtUrl = cells[cells.length - 1];
     const agentsMdUrl = cells[cells.length - 2];
     const humansUrl = cells[cells.length - 3];
@@ -4381,13 +4393,16 @@ Acknowledgments: https://arledscreen.com/brand.json
     const skuWk = cells[cells.length - 21];
     const modulesWk = cells[cells.length - 22];
     const brandWk = cells[cells.length - 23];
-    const pointCUrl = cells[cells.length - 24];
-    const profilesUrl = cells[cells.length - 25];
-    const catalogUrl = cells[cells.length - 26];
-    const pricesJsonUrl = cells[cells.length - 27];
-    const aiShoppingUrl = cells[cells.length - 28];
-    const shippingIncluded = cells[cells.length - 29];
-    const taxIncluded = cells[cells.length - 30];
+    const pointCEnWk = cells[cells.length - 24];
+    const pointCEnUrl = cells[cells.length - 25];
+    const pointCWk = cells[cells.length - 26];
+    const pointCUrl = cells[cells.length - 27];
+    const profilesUrl = cells[cells.length - 28];
+    const catalogUrl = cells[cells.length - 29];
+    const pricesJsonUrl = cells[cells.length - 30];
+    const aiShoppingUrl = cells[cells.length - 31];
+    const shippingIncluded = cells[cells.length - 32];
+    const taxIncluded = cells[cells.length - 33];
     if (
       !row ||
       !row.includes(panel.productUrl) ||
@@ -4401,6 +4416,9 @@ Acknowledgments: https://arledscreen.com/brand.json
       catalogUrl !== `${SITE_URL}/catalog.json` ||
       profilesUrl !== `${SITE_URL}/entity-profiles.json` ||
       pointCUrl !== `${SITE_URL}/point-c.txt` ||
+      pointCWk !== `${SITE_URL}/.well-known/point-c.txt` ||
+      pointCEnUrl !== `${SITE_URL}/point-c-en.txt` ||
+      pointCEnWk !== `${SITE_URL}/.well-known/point-c-en.txt` ||
       brandWk !== `${SITE_URL}/.well-known/brand.json` ||
       modulesWk !== `${SITE_URL}/.well-known/modules.json` ||
       skuWk !== `${SITE_URL}/.well-known/sku.json` ||

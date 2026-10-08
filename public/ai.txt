@@ -247,6 +247,11 @@ owner-gbp-open: https://business.google.com/
 owner-chatgpt-open: https://chatgpt.com/
 owner-bingplaces-open: https://www.bingplaces.com/
 owner-apple-open: https://businessconnect.apple.com/
+owner-linkedin-open: https://www.linkedin.com/company/arleds/
+owner-instagram-open: https://www.instagram.com/arledscreen/
+owner-facebook-open: https://www.facebook.com/arledscreenn
+owner-youtube-open: https://studio.youtube.com/
+owner-yandex-open: https://business.yandex.com/
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/
