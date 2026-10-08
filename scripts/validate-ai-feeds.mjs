@@ -1904,6 +1904,10 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("owner-whatsapp-handle:") ||
     !aiTxtLive.includes("owner-instagram-handle:") ||
     !aiTxtLive.includes("owner-facebook-handle:") ||
+    !aiTxtLive.includes("owner-social-fb:") ||
+    !aiTxtLive.includes("owner-social-ig:") ||
+    !aiTxtLive.includes("owner-social-wa:") ||
+    !aiTxtLive.includes("social=fb") ||
     !aiTxtLive.includes("social-json:") ||
     !aiTxtLive.includes("contact-json:") ||
     !aiTxtLive.includes("owner-youtube-open:") ||
@@ -2366,9 +2370,13 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("/en/calculator/") ||
       !agentsMdLive.includes("/en/catalog/") ||
       !agentsMdLive.includes("/en/shop/") ||
-      !agentsMdLive.includes("/en/request-quote/")
+      !agentsMdLive.includes("/en/request-quote/") ||
+      !agentsMdLive.includes("social=fb") ||
+      !agentsMdLive.includes("social=ig") ||
+      !agentsMdLive.includes("social=wa") ||
+      !agentsMdLive.includes("/social.json")
     ) {
-      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges");
+      console.error("❌ out/AGENTS.md must cite live owner-next.html/json + geo-next/point-c/progress potentialAction HowTo (directoryLong Bing/Apple) + geo:next/ack + point-c:csv + WebSite #website + EN invent bridges + social deep-links");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
