@@ -3,7 +3,7 @@
   "@type": "Dataset",
   "@id": "https://arledscreen.com/point-c-progress.json",
   "name": "ARLEDSCREEN Point C paste progress",
-  "description": "Acked Point C pack keys (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. HowTo: potentialAction when next paste remains.",
+  "description": "Acked Point C pack keys + packs checklist (owner paste progress). Does not invent third-party citations. Source for geo:next / point-c:ack. Browser Open/paste: https://arledscreen.com/owner-next.html. HowTo: potentialAction when next paste remains.",
   "url": "https://arledscreen.com/point-c-progress.json",
   "dateModified": "2026-10-07T20:09:43.307Z",
   "creator": {
@@ -11,6 +11,142 @@
   },
   "acked": [],
   "total": 11,
+  "packs": [
+    {
+      "packKey": "directoryLong",
+      "label": "NAP / directoryLong",
+      "status": "open",
+      "where": "Directories / Bing Places / Apple Business Connect → About / description",
+      "open": "https://www.bingplaces.com/",
+      "ackCommand": "npm run point-c:ack -- --pack=directoryLong",
+      "openAlt": "https://businessconnect.apple.com/",
+      "openAlts": [
+        "https://businessconnect.apple.com/",
+        "https://business.google.com/"
+      ]
+    },
+    {
+      "packKey": "gbpDescription",
+      "label": "GBP About",
+      "status": "open",
+      "where": "Google Business Profile → Edit profile → About",
+      "open": "https://business.google.com/",
+      "ackCommand": "npm run point-c:ack -- --pack=gbpDescription",
+      "openAlt": "https://www.google.com/business/",
+      "openAlts": [
+        "https://www.google.com/business/"
+      ]
+    },
+    {
+      "packKey": "instagramName",
+      "label": "Instagram Adı",
+      "status": "open",
+      "where": "https://www.instagram.com/arledscreen → Edit profile → Name",
+      "open": "https://www.instagram.com/arledscreen/",
+      "ackCommand": "npm run point-c:ack -- --pack=instagramName",
+      "openAlt": "https://www.instagram.com/accounts/edit/",
+      "openAlts": [
+        "https://www.instagram.com/accounts/edit/"
+      ]
+    },
+    {
+      "packKey": "instagramBio",
+      "label": "Instagram Bio",
+      "status": "open",
+      "where": "https://www.instagram.com/arledscreen → Edit profile → Bio",
+      "open": "https://www.instagram.com/arledscreen/",
+      "ackCommand": "npm run point-c:ack -- --pack=instagramBio",
+      "openAlt": "https://www.instagram.com/accounts/edit/",
+      "openAlts": [
+        "https://www.instagram.com/accounts/edit/"
+      ]
+    },
+    {
+      "packKey": "facebookAbout",
+      "label": "Facebook About",
+      "status": "open",
+      "where": "https://www.facebook.com/arledscreenn → About / Page info",
+      "open": "https://www.facebook.com/arledscreenn",
+      "ackCommand": "npm run point-c:ack -- --pack=facebookAbout",
+      "openAlt": "https://business.facebook.com/",
+      "openAlts": [
+        "https://business.facebook.com/"
+      ]
+    },
+    {
+      "packKey": "linkedinAbout",
+      "label": "LinkedIn About",
+      "status": "open",
+      "where": "https://www.linkedin.com/company/arleds → About",
+      "open": "https://www.linkedin.com/company/arleds/",
+      "ackCommand": "npm run point-c:ack -- --pack=linkedinAbout",
+      "openAlt": "https://www.linkedin.com/company/arleds/admin/",
+      "openAlts": [
+        "https://www.linkedin.com/company/arleds/admin/"
+      ]
+    },
+    {
+      "packKey": "bingPlaces",
+      "label": "Bing Places",
+      "status": "open",
+      "where": "Bing Places for Business → Business description",
+      "open": "https://www.bingplaces.com/",
+      "ackCommand": "npm run point-c:ack -- --pack=bingPlaces",
+      "openAlt": "https://businessconnect.apple.com/",
+      "openAlts": [
+        "https://businessconnect.apple.com/"
+      ]
+    },
+    {
+      "packKey": "appleBusinessConnect",
+      "label": "Apple Business Connect",
+      "status": "open",
+      "where": "Apple Business Connect → Location → Description",
+      "open": "https://businessconnect.apple.com/",
+      "ackCommand": "npm run point-c:ack -- --pack=appleBusinessConnect",
+      "openAlt": "https://www.bingplaces.com/",
+      "openAlts": [
+        "https://www.bingplaces.com/"
+      ]
+    },
+    {
+      "packKey": "youtubeAbout",
+      "label": "YouTube About",
+      "status": "open",
+      "where": "YouTube Studio → Customize channel → Basic info / Description",
+      "open": "https://studio.youtube.com/",
+      "ackCommand": "npm run point-c:ack -- --pack=youtubeAbout",
+      "openAlt": "https://www.youtube.com/account",
+      "openAlts": [
+        "https://www.youtube.com/account"
+      ]
+    },
+    {
+      "packKey": "yandexBusiness",
+      "label": "Yandex Business",
+      "status": "open",
+      "where": "Yandex Business → Organization → Description",
+      "open": "https://business.yandex.com/",
+      "ackCommand": "npm run point-c:ack -- --pack=yandexBusiness",
+      "openAlt": "https://yandex.com/maps/",
+      "openAlts": [
+        "https://yandex.com/maps/"
+      ]
+    },
+    {
+      "packKey": "hostinger301",
+      "label": "arleds.com 301 (DNSEnable Domain Redirect)",
+      "status": "open",
+      "where": "Isimtescil/DNSEnable Domain Redirect first (live NS) · Hostinger only if verify mode=hostinger_*",
+      "open": "https://www.isimtescil.net/",
+      "ackCommand": "npm run point-c:ack -- --pack=hostinger301",
+      "openAlt": "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229",
+      "openAlts": [
+        "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229",
+        "https://dash.cloudflare.com/"
+      ]
+    }
+  ],
   "next": {
     "packKey": "directoryLong",
     "label": "NAP / directoryLong",
@@ -33,6 +169,7 @@
     "https://arledscreen.com/geo-status.json",
     "https://arledscreen.com/geo-next.txt",
     "https://arledscreen.com/owner-next.txt",
+    "https://arledscreen.com/owner-next.html",
     "https://arledscreen.com/.well-known/point-c-progress.json",
     "https://arledscreen.com/tur1a.json",
     "https://arledscreen.com/point-c-progress.json"
@@ -57,6 +194,12 @@
     },
     {
       "@type": "DataDownload",
+      "encodingFormat": "text/html",
+      "contentUrl": "https://arledscreen.com/owner-next.html",
+      "name": "Owner next HTML Open/paste"
+    },
+    {
+      "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/point-c.json",
       "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
@@ -77,8 +220,8 @@
   "potentialAction": {
     "@type": "HowTo",
     "name": "Point C next paste: directoryLong",
-    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates.",
-    "url": "https://arledscreen.com/geo-next.txt",
+    "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
+    "url": "https://arledscreen.com/owner-next.html",
     "step": [
       {
         "@type": "HowToStep",
@@ -101,6 +244,11 @@
       }
     ],
     "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "owner-next.html",
+        "url": "https://arledscreen.com/owner-next.html"
+      },
       {
         "@type": "HowToTool",
         "name": "geo-next.txt",
