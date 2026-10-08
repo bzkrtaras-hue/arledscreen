@@ -215,7 +215,9 @@ jobs:
           grep -q 'data-pack="instagramBio"' out/owner-next.html
           grep -q 'e.key === "f"' out/owner-next.html
           grep -q 'e.key === "i"' out/owner-next.html
-          node -e 'const a=require("./out/.well-known/ard.json"); const s=a?.agentic?.resources?.socialJson; if(!String(s?.url||"").includes("/social.json")||String(s?.handles?.facebook||"")!=="arledscreenn"||String(s?.handles?.instagram||"")!=="arledscreen") process.exit(1)'
+          grep -q 'maybeSocialJump' out/owner-next.html
+          grep -q '?social=fb|ig|wa' out/owner-next.html
+          node -e 'const a=require("./out/.well-known/ard.json"); const s=a?.agentic?.resources?.socialJson; if(!String(s?.url||"").includes("/social.json")||String(s?.handles?.facebook||"")!=="arledscreenn"||String(s?.handles?.instagram||"")!=="arledscreen"||!String(s?.deepLinks?.facebook||"").includes("social=fb")) process.exit(1)'
           grep -q '@arledscreenn' out/owner-next.html
           grep -q '/social.json' out/owner-next.html
           node -e 'const p=require("./out/point-c-progress.json"); if(String(p.socialHandles?.facebook||"")!=="arledscreenn"||String(p.socialHandles?.instagram||"")!=="arledscreen") process.exit(1)'
