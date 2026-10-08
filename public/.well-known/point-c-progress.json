@@ -18,6 +18,7 @@
       "status": "open",
       "where": "Directories / Bing Places / Apple Business Connect → About / description",
       "open": "https://www.bingplaces.com/",
+      "html": "https://arledscreen.com/owner-next.html?pack=directoryLong",
       "ackCommand": "npm run point-c:ack -- --pack=directoryLong",
       "openAlt": "https://businessconnect.apple.com/",
       "openAlts": [
@@ -31,6 +32,7 @@
       "status": "open",
       "where": "Google Business Profile → Edit profile → About",
       "open": "https://business.google.com/",
+      "html": "https://arledscreen.com/owner-next.html?pack=gbpDescription",
       "ackCommand": "npm run point-c:ack -- --pack=gbpDescription",
       "openAlt": "https://www.google.com/business/",
       "openAlts": [
@@ -43,6 +45,7 @@
       "status": "open",
       "where": "https://www.instagram.com/arledscreen → Edit profile → Name",
       "open": "https://www.instagram.com/arledscreen/",
+      "html": "https://arledscreen.com/owner-next.html?pack=instagramName",
       "ackCommand": "npm run point-c:ack -- --pack=instagramName",
       "openAlt": "https://www.instagram.com/accounts/edit/",
       "openAlts": [
@@ -55,6 +58,7 @@
       "status": "open",
       "where": "https://www.instagram.com/arledscreen → Edit profile → Bio",
       "open": "https://www.instagram.com/arledscreen/",
+      "html": "https://arledscreen.com/owner-next.html?pack=instagramBio",
       "ackCommand": "npm run point-c:ack -- --pack=instagramBio",
       "openAlt": "https://www.instagram.com/accounts/edit/",
       "openAlts": [
@@ -67,6 +71,7 @@
       "status": "open",
       "where": "https://www.facebook.com/arledscreenn → About / Page info",
       "open": "https://www.facebook.com/arledscreenn",
+      "html": "https://arledscreen.com/owner-next.html?pack=facebookAbout",
       "ackCommand": "npm run point-c:ack -- --pack=facebookAbout",
       "openAlt": "https://business.facebook.com/",
       "openAlts": [
@@ -79,6 +84,7 @@
       "status": "open",
       "where": "https://www.linkedin.com/company/arleds → About",
       "open": "https://www.linkedin.com/company/arleds/",
+      "html": "https://arledscreen.com/owner-next.html?pack=linkedinAbout",
       "ackCommand": "npm run point-c:ack -- --pack=linkedinAbout",
       "openAlt": "https://www.linkedin.com/company/arleds/admin/",
       "openAlts": [
@@ -91,6 +97,7 @@
       "status": "open",
       "where": "Bing Places for Business → Business description",
       "open": "https://www.bingplaces.com/",
+      "html": "https://arledscreen.com/owner-next.html?pack=bingPlaces",
       "ackCommand": "npm run point-c:ack -- --pack=bingPlaces",
       "openAlt": "https://businessconnect.apple.com/",
       "openAlts": [
@@ -103,6 +110,7 @@
       "status": "open",
       "where": "Apple Business Connect → Location → Description",
       "open": "https://businessconnect.apple.com/",
+      "html": "https://arledscreen.com/owner-next.html?pack=appleBusinessConnect",
       "ackCommand": "npm run point-c:ack -- --pack=appleBusinessConnect",
       "openAlt": "https://www.bingplaces.com/",
       "openAlts": [
@@ -115,6 +123,7 @@
       "status": "open",
       "where": "YouTube Studio → Customize channel → Basic info / Description",
       "open": "https://studio.youtube.com/",
+      "html": "https://arledscreen.com/owner-next.html?pack=youtubeAbout",
       "ackCommand": "npm run point-c:ack -- --pack=youtubeAbout",
       "openAlt": "https://www.youtube.com/account",
       "openAlts": [
@@ -127,6 +136,7 @@
       "status": "open",
       "where": "Yandex Business → Organization → Description",
       "open": "https://business.yandex.com/",
+      "html": "https://arledscreen.com/owner-next.html?pack=yandexBusiness",
       "ackCommand": "npm run point-c:ack -- --pack=yandexBusiness",
       "openAlt": "https://yandex.com/maps/",
       "openAlts": [
@@ -139,6 +149,7 @@
       "status": "open",
       "where": "Isimtescil/DNSEnable Domain Redirect first (live NS) · Hostinger only if verify mode=hostinger_*",
       "open": "https://www.isimtescil.net/",
+      "html": "https://arledscreen.com/owner-next.html?pack=hostinger301",
       "ackCommand": "npm run point-c:ack -- --pack=hostinger301",
       "openAlt": "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229",
       "openAlts": [
@@ -152,6 +163,7 @@
     "label": "NAP / directoryLong",
     "where": "Directories / Bing Places / Apple Business Connect → About / description",
     "open": "https://www.bingplaces.com/",
+    "html": "https://arledscreen.com/owner-next.html?pack=directoryLong",
     "text": "ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır. NXTIONSTAR kendi ürün markasıdır; Türkiye’deki tek satış noktası ARLEDSCREEN’dir. İç/dış mekân, GOB, esnek ve kiralık LED ekran satışı ile keşif, montaj ve teknik servis sunar.\n\nAdres: Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245 Gaziosmanpaşa / İstanbul\nTelefon: +90 530 507 88 34\nE-posta: arled@arledscreen.com\nWeb: https://arledscreen.com/tr/\nNot: Eski/yan arleds.com atıf kaynağı değildir — yalnızca arledscreen.com kullanın. LinkedIn /company/arleds sosyal slug’dır, web arleds.com değildir. NXTIONSTAR ≠ NationStar LED bileşen ≠ NEXTSTAR TV.",
     "ackCommand": "npm run point-c:ack -- --pack=directoryLong",
     "progress": {
@@ -221,14 +233,14 @@
     "@type": "HowTo",
     "name": "Point C next paste: directoryLong",
     "description": "Owner-gated third-party citation paste. Cite pack text only — do not invent ratings or mention rates. Browser Open/paste: https://arledscreen.com/owner-next.html",
-    "url": "https://arledscreen.com/owner-next.html",
+    "url": "https://arledscreen.com/owner-next.html?pack=directoryLong",
     "step": [
       {
         "@type": "HowToStep",
         "position": 1,
         "name": "Open destination",
         "url": "https://www.bingplaces.com/",
-        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/"
+        "text": "Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · OpenAlt2: https://business.google.com/ · HTML: https://arledscreen.com/owner-next.html?pack=directoryLong"
       },
       {
         "@type": "HowToStep",
@@ -247,7 +259,7 @@
       {
         "@type": "HowToTool",
         "name": "owner-next.html",
-        "url": "https://arledscreen.com/owner-next.html"
+        "url": "https://arledscreen.com/owner-next.html?pack=directoryLong"
       },
       {
         "@type": "HowToTool",
