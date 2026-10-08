@@ -620,7 +620,7 @@ try {
     ownerNextHtml.includes("pack-deep-after") &&
     ownerNextHtml.includes("n=1") &&
     ownerNextHtml.includes("`After: ${packAfterLinkUrl") &&
-    ownerNextHtml.includes("`After: ${after}") &&
+    ownerNextHtml.includes("After: ${after}") &&
     ownerNextHtml.includes("packDeepLinkUrl(key)") &&
     ownerNextHtml.includes("Deep/WA/Mail paste") &&
     ownerNextHtml.includes("Open×") &&

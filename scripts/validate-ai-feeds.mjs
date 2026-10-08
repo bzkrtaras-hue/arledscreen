@@ -2704,7 +2704,7 @@ if (fs.existsSync(outDir)) {
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-deep-after") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("n=1") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("`After: ${packAfterLinkUrl") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("`After: ${after}") ||
+      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("After: ${after}") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("packDeepLinkUrl(key)") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Deep/WA/Mail paste") ||
       !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open×") ||

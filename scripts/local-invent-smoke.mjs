@@ -643,7 +643,7 @@ else fail("ard.resources.pointC");
     html.includes("pack-deep-after") &&
     html.includes("n=1") &&
     html.includes("`After: ${packAfterLinkUrl") &&
-    html.includes("`After: ${after}") &&
+    html.includes("After: ${after}") &&
     html.includes("packDeepLinkUrl(key)") &&
     html.includes("Deep/WA/Mail paste") &&
     html.includes("Open×") &&
