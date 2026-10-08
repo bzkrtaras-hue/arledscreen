@@ -295,6 +295,36 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/point-c.json",
+      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/geo-status.json",
+      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/plain",
+      "contentUrl": "https://arledscreen.com/geo-next.txt",
+      "name": "ARLEDSCREEN GEO priority clipboard"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/tur1a.json",
+      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
+      "contentUrl": "https://arledscreen.com/point-c-progress.json",
+      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/ld+json",
       "contentUrl": "https://arledscreen.com/modules.json",
       "name": "Modules pricedPanels invent alias"
     },
@@ -1277,8 +1307,8 @@
     }
   ],
   "fingerprints": {
-    "aiShoppingSha256": "14bb3adef640ba210b689b48d56ec32389d367e2051bfae98431718c166c3ff8",
-    "catalogSha256": "3224802537dc2a77f73d738c519bc8c54227176cb0f4634572a1a30a3dfa589b",
+    "aiShoppingSha256": "071e735b845c50f38d8387899fb283b8bf62c8681121ee5393d363ce3066d21b",
+    "catalogSha256": "a1ce93485d05d160bd4249535a3419759472c743789dcfdbf6ffd6f8ef4a28d6",
     "merchantTsvSha256": "5c6b433e739a0460b09a6b823d409b81e0318a2f511b854cff7c9c2c90af7611",
     "citeOneLinerSha256": "21617bc2acbcab6d6aedebaac0511762fdbdbae89160c38b539de15682514396"
   },
