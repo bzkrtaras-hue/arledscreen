@@ -25,7 +25,7 @@ prices-rss: https://arledscreen.com/feeds/prices.rss
 geo-baseline: https://arledscreen.com/geo-baseline.json
 ard: https://arledscreen.com/.well-known/ard.json
 entity-profiles: https://arledscreen.com/entity-profiles.json
-owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · https://arledscreen.com/point-c.txt · playbook: docs/offsite-entity-playbook.md
+owner-next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · https://arledscreen.com/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 brand-json: https://arledscreen.com/brand.json
 brand-json-well-known: https://arledscreen.com/.well-known/brand.json
 brand-tr: https://arledscreen.com/tr/nxtionstar/
@@ -242,6 +242,8 @@ owner-tur1a-open: https://chatgpt.com/ · https://gemini.google.com/app · https
 owner-point-c-csv: npm run point-c:csv
 owner-arleds-301: npm run verify:arleds-301
 owner-arleds-open: https://www.isimtescil.net/
+owner-gbp-open: https://business.google.com/
+owner-chatgpt-open: https://chatgpt.com/
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/
