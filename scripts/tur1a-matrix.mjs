@@ -160,6 +160,8 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
     const plat = String(r.platform || "");
     if (ids.includes(pid) && HUMAN_PLATFORMS.includes(plat)) filledLocal.add(cellKey(plat, pid));
   }
+  const logCommand =
+    "npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|catalog|prices-rss|brand|site|other|none --sources=https://arledscreen.com/ai-shopping.json";
   let next = null;
   for (const id of ids) {
     for (const platform of HUMAN_PLATFORMS) {
@@ -170,6 +172,7 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
           locale: String(id).startsWith("en-") ? "en" : "tr-TR",
           open: platformOpenUrl(platform),
           prompt: usePrompts.find(([pid]) => pid === id)?.[1] || "",
+          logCommand,
         };
         break;
       }
@@ -188,13 +191,13 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
       });
     }
   }
-  return {
+  const doc = {
     "@context": "https://schema.org",
     "@type": "Dataset",
     "@id": `${SITE}/tur1a.json`,
     name: "ARLEDSCREEN Tur1a blind coverage",
     description:
-      "Human blind Tur1a matrix (ChatGPT/Gemini/Perplexity/Google AI). Does not invent mention rates. Owner: npm run tur1a:next · tur1a:log · tur1a:csv · geo:next. CSV: /feeds/tur1a.csv.",
+      "Human blind Tur1a matrix (ChatGPT/Gemini/Perplexity/Google AI). Does not invent mention rates. Owner: live https://arledscreen.com/tur1a.json → next · npm run tur1a:next · tur1a:log · tur1a:csv · geo:next. CSV: /feeds/tur1a.csv.",
     url: `${SITE}/tur1a.json`,
     creator: { "@id": `${SITE}/#organization` },
     isBasedOn: [
@@ -215,12 +218,54 @@ export function buildTur1aJsonDoc({ en = false } = {}) {
       { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${SITE}/feeds/tur1a.csv` },
       { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${SITE}/tur1a.csv` },
     ],
+    sameAs: [
+      `${SITE}/.well-known/tur1a.json`,
+      `${SITE}/feeds/tur1a.csv`,
+      `${SITE}/geo-status.json`,
+      `${SITE}/geo-next.txt`,
+    ],
     coverage: { filled: filledLocal.size, total, locale: en ? "tr+en" : "tr" },
     next,
     cells,
     ownerNext:
-      "npm run tur1a:next · tur1a:csv · after observe: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… · Open: https://chatgpt.com/",
+      "live: https://arledscreen.com/tur1a.json → next · npm run tur1a:next · tur1a:csv · after observe: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… · Open: https://chatgpt.com/ · https://gemini.google.com/app · https://www.perplexity.ai/ · https://www.google.com/",
   };
+  if (next?.prompt && next?.open) {
+    doc.potentialAction = {
+      "@type": "HowTo",
+      name: `Tur1a next blind: ${next.platform} · ${next.promptId}`,
+      description:
+        "Owner-gated human blind observation. Log only observed flags — do not invent mention rates or scores.",
+      url: `${SITE}/tur1a.json`,
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Open platform",
+          url: next.open,
+          text: `Open: ${next.open}`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Paste blind prompt",
+          text: next.prompt,
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Log observation",
+          text: next.logCommand || logCommand,
+        },
+      ],
+      tool: [
+        { "@type": "HowToTool", name: "tur1a.json", url: `${SITE}/tur1a.json` },
+        { "@type": "HowToTool", name: "feeds/tur1a.csv", url: `${SITE}/feeds/tur1a.csv` },
+        { "@type": "HowToTool", name: "geo-status.json", url: `${SITE}/geo-status.json` },
+      ],
+    };
+  }
+  return doc;
 }
 
 function printCsv(filled) {

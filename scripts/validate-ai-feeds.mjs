@@ -2312,9 +2312,15 @@ if (fs.existsSync(outDir)) {
       tur1a.cells.length < 48 ||
       !tur1aCsv.includes("platform,promptId") ||
       !tur1aCsv.includes("chatgpt") ||
+      !String(tur1a?.next?.logCommand || "").includes("tur1a:log") ||
+      !String(tur1a?.next?.open || "").includes("http") ||
+      tur1a?.potentialAction?.["@type"] !== "HowTo" ||
+      !Array.isArray(tur1a?.potentialAction?.step) ||
+      tur1a.potentialAction.step.length < 3 ||
+      !String(tur1a.potentialAction.step[0]?.url || "").includes("http") ||
       fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
     ) {
-      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + pointC.next.paste + HowTo potentialAction (no invented scores)");
+      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + pointC.next.paste + HowTo (point-c + tur1a) (no invented scores)");
       process.exit(1);
     }
   }

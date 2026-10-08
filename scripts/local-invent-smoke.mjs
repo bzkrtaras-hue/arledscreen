@@ -408,13 +408,19 @@ if (
     Array.isArray(tur1a?.cells) &&
     tur1a.cells.length >= 48 &&
     tur1aCsv.includes("chatgpt") &&
+    String(tur1a?.next?.logCommand || "").includes("tur1a:log") &&
+    String(tur1a?.next?.open || "").includes("http") &&
+    tur1a?.potentialAction?.["@type"] === "HowTo" &&
+    Array.isArray(tur1a?.potentialAction?.step) &&
+    tur1a.potentialAction.step.length >= 3 &&
+    String(tur1a.potentialAction.step[0]?.url || "").includes("http") &&
     fs.existsSync(path.join(outDir, ".well-known/AGENTS.md")) &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
-    ok("geo-status HowTo + pointC.next.paste + geo-next/tur1a invent + ARD + AGENTS.md well-known");
-  } else fail("geo-status HowTo + pointC.next.paste + geo-next/tur1a invent + ARD + AGENTS.md well-known");
+    ok("geo-status HowTo + tur1a HowTo/logCommand + pointC.next.paste + ARD + AGENTS.md well-known");
+  } else fail("geo-status HowTo + tur1a HowTo/logCommand + pointC.next.paste + ARD + AGENTS.md well-known");
 }
 
 

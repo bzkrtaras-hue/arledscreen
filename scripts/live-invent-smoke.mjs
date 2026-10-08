@@ -479,11 +479,17 @@ try {
     Array.isArray(tur1a?.cells) &&
     tur1a.cells.length >= 48 &&
     tur1aCsv.includes("chatgpt") &&
+    String(tur1a?.next?.logCommand || "").includes("tur1a:log") &&
+    String(tur1a?.next?.open || "").includes("http") &&
+    tur1a?.potentialAction?.["@type"] === "HowTo" &&
+    Array.isArray(tur1a?.potentialAction?.step) &&
+    tur1a.potentialAction.step.length >= 3 &&
+    String(tur1a.potentialAction.step[0]?.url || "").includes("http") &&
     String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
     String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
   ) {
-    ok("geo-status HowTo + pointC.next.paste + geo-next/tur1a invent + ARD");
-  } else fail("geo-status HowTo + pointC.next.paste + geo-next/tur1a invent + ARD");
+    ok("geo-status HowTo + tur1a HowTo/logCommand + pointC.next.paste + ARD");
+  } else fail("geo-status HowTo + tur1a HowTo/logCommand + pointC.next.paste + ARD");
 } catch (e) {
   fail(`geo-status/tur1a ${e?.message || e}`);
 }
