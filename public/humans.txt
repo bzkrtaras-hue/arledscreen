@@ -32,5 +32,5 @@ Brand alias: https://arledscreen.com/.well-known/brand.json · /brand
 Modules invent: /modules · /modules.json
 Point C paste (owner): https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.txt
 Entity profiles (Point C source): https://arledscreen.com/entity-profiles.json · /entity-profiles
-Owner next (repo): npm run geo:next · after paste: npm run geo:ack · status: npm run geo:status
+Owner next (repo): npm run geo:next · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · status: npm run geo:status · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 Last update: 2026-10-08

@@ -228,19 +228,25 @@ if (
     agentsDist.includes("/humans.txt") &&
     agentsDist.includes("/AGENTS.md") &&
     agentsDist.includes("/.well-known/security.txt") &&
-    agentsMd.includes("geo:next")
+    agentsMd.includes("geo:next") &&
+    agentsMd.includes("point-c:csv") &&
+    agentsMd.includes("https://chatgpt.com/")
   ) {
     ok("agents distribution + isBasedOn inventAlias + discovery ai/llms/humans/AGENTS/security");
   } else fail("agents distribution + isBasedOn inventAlias + discovery ai/llms/humans/AGENTS/security");
   const llmsFull = readText("llms-full.txt");
   if (
     llms.includes("geo:next") &&
+    llms.includes("point-c:csv") &&
+    llms.includes("https://www.isimtescil.net/") &&
     llms.includes("/.well-known/brand.json") &&
     llmsFull.includes("geo:next") &&
+    llmsFull.includes("point-c:csv") &&
+    llmsFull.includes("https://chatgpt.com/") &&
     llmsFull.includes("/.well-known/brand.json")
   ) {
-    ok("llms + llms-full geo:next + well-known/brand");
-  } else fail("llms + llms-full geo:next + well-known/brand");
+    ok("llms + llms-full geo:next + point-c:csv Open + well-known/brand");
+  } else fail("llms + llms-full geo:next + point-c:csv Open + well-known/brand");
 }
 
 const pointC = readText("point-c.txt");
@@ -733,10 +739,12 @@ if (
     String(ai.description || "").includes("/.well-known/pricing.json") &&
     humans.includes("/.well-known/modules.json") &&
     humans.includes("/.well-known/security.txt") &&
+    humans.includes("point-c:csv") &&
+    humans.includes("https://www.isimtescil.net/") &&
     faq.includes("/.well-known/modules.json")
   ) {
-    ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security");
-  } else fail("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security");
+    ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security + point-c:csv");
+  } else fail("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security + point-c:csv");
 }
 
 if (

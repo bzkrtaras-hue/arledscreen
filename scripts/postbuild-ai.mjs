@@ -3045,12 +3045,12 @@ function buildGeoBaseline(ai, catalog, merchantTsv) {
       speakableCoverageNote:
         "TR/EN HTML content pages emit SpeakableSpecification where applicable (measured separately in agent artifacts).",
       ownerGated: [
-        "Single next clipboard — npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack",
-        "Point C third-party cites — paste https://arledscreen.com/point-c.txt (npm run point-c · point-c:next · point-c:ack · geo:ack)",
-        "Tur1a blind — npm run tur1a:next then npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… (no invented %)",
+        "Single next clipboard — npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/",
+        "Point C third-party cites — paste https://arledscreen.com/point-c.txt (npm run point-c · point-c:csv · point-c:next · point-c:ack · geo:ack) · Open: https://business.google.com/",
+        "Tur1a blind — npm run tur1a:next then npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=… (no invented %) · Open: https://chatgpt.com/ · tur1a:csv",
         "GSC access",
         "PR #60 merge",
-        "arleds.com → arledscreen.com/tr/ 301 — DNSEnable Domain Redirect first (point-c.txt dual-path) · Hostinger only if NS Hostinger · npm run verify:arleds-301",
+        "arleds.com → arledscreen.com/tr/ 301 — DNSEnable Domain Redirect first (point-c.txt dual-path) · Hostinger only if NS Hostinger · npm run verify:arleds-301 · Open: https://www.isimtescil.net/",
       ],
       noSpamDoorways: true,
       provinceLandingPolicy: "Only provinces with published project records; no 81-il programatic doorways",
@@ -4118,7 +4118,7 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Catalog: https://arledscreen.com/catalog.json · GEO: https://arledscreen.com/geo-baseline.json · /.well-known/geo-baseline.json
 # Point C: https://arledscreen.com/point-c.txt · entity-profiles: https://arledscreen.com/entity-profiles.json
 # Discovery: https://arledscreen.com/.well-known/agents.json · https://arledscreen.com/.well-known/ard.json · https://arledscreen.com/humans.txt · https://arledscreen.com/AGENTS.md
-# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · arleds: npm run verify:arleds-301 (Open tabs)
+# Owner next (repo): npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · arleds: npm run verify:arleds-301
 `;
   writeText(publicDir, ".well-known/security.txt", securityTxt);
   writeText(outDir, ".well-known/security.txt", securityTxt);

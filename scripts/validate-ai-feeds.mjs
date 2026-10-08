@@ -786,12 +786,19 @@ if (fs.existsSync(outDir)) {
         process.exit(1);
       }
     }
-    if (
-      !JSON.stringify(baseline?.baseline?.ownerGated || []).includes("geo:next") ||
-      !JSON.stringify(baseline?.baseline?.ownerGated || []).includes("geo:ack")
-    ) {
-      console.error("❌ geo-baseline.json baseline.ownerGated must cite npm run geo:next + geo:ack");
-      process.exit(1);
+    {
+      const gated = JSON.stringify(baseline?.baseline?.ownerGated || []);
+      if (
+        !gated.includes("geo:next") ||
+        !gated.includes("geo:ack") ||
+        !gated.includes("point-c:csv") ||
+        !gated.includes("https://www.isimtescil.net/") ||
+        !gated.includes("https://business.google.com/") ||
+        !gated.includes("https://chatgpt.com/")
+      ) {
+        console.error("❌ geo-baseline.json baseline.ownerGated must cite geo:next/ack + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
+        process.exit(1);
+      }
     }
   }
   if (
@@ -1871,9 +1878,13 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/.well-known/offer.json") ||
     !securityLive.includes("verify:arleds-301") ||
     !securityLive.includes("/humans.txt") ||
-    !securityLive.includes("/AGENTS.md")
+    !securityLive.includes("/AGENTS.md") ||
+    !securityLive.includes("point-c:csv") ||
+    !securityLive.includes("https://www.isimtescil.net/") ||
+    !securityLive.includes("https://business.google.com/") ||
+    !securityLive.includes("https://chatgpt.com/")
   ) {
-    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C + invent aliases + discovery agents/ard/humans/AGENTS + geo:next/ack + organization/geo-baseline + verify:arleds-301");
+    console.error("❌ out/.well-known/security.txt must include Contact + Expires + Brand/Entity/WebSite#website/Price/Point C + invent aliases + discovery agents/ard/humans/AGENTS + geo:next/ack + point-c:csv Open tabs + organization/geo-baseline + verify:arleds-301");
     process.exit(1);
   }
   const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
@@ -1911,20 +1922,27 @@ if (fs.existsSync(outDir)) {
     if (
       !llmsGeo.includes("geo:next") ||
       !llmsGeo.includes("geo:ack") ||
+      !llmsGeo.includes("point-c:csv") ||
+      !llmsGeo.includes("https://www.isimtescil.net/") ||
+      !llmsGeo.includes("https://business.google.com/") ||
+      !llmsGeo.includes("https://chatgpt.com/") ||
       !llmsGeo.includes("/.well-known/brand.json") ||
       !llmsGeo.includes("#website")
     ) {
-      console.error("❌ out/llms.txt must cite geo:next + geo:ack + /.well-known/brand.json + #website");
+      console.error("❌ out/llms.txt must cite geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
       process.exit(1);
     }
     const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
     if (
       !llmsFullLive.includes("geo:next") ||
       !llmsFullLive.includes("geo:ack") ||
+      !llmsFullLive.includes("point-c:csv") ||
+      !llmsFullLive.includes("https://www.isimtescil.net/") ||
+      !llmsFullLive.includes("https://chatgpt.com/") ||
       !llmsFullLive.includes("/.well-known/brand.json") ||
       !llmsFullLive.includes("#website")
     ) {
-      console.error("❌ out/llms-full.txt must cite geo:next + geo:ack + /.well-known/brand.json + #website");
+      console.error("❌ out/llms-full.txt must cite geo:next/ack + point-c:csv Open tabs + /.well-known/brand.json + #website");
       process.exit(1);
     }
   }
@@ -1977,6 +1995,10 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/.well-known/brand.json") ||
       !humansLive.includes("#website") ||
       !humansLive.includes("geo:ack") ||
+      !humansLive.includes("point-c:csv") ||
+      !humansLive.includes("https://www.isimtescil.net/") ||
+      !humansLive.includes("https://business.google.com/") ||
+      !humansLive.includes("https://chatgpt.com/") ||
       !humansLive.includes("/.well-known/security.txt") ||
       !humansLive.includes("/security.txt") ||
       !humansLive.includes("/api/v1/prices") ||
@@ -1985,7 +2007,7 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/tr/prices.json") ||
       !humansLive.includes("/llms-full")
     ) {
-      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next/ack + security.txt + api/locale invent");
+      console.error("❌ out/humans.txt must cite ai-shopping + catalog + prices.rss + brand.json + geo-baseline + point-c + entity-profiles + well-known brand + #website + geo:next/ack + point-c:csv Open tabs + security.txt + api/locale invent");
       process.exit(1);
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
@@ -1993,12 +2015,16 @@ if (fs.existsSync(outDir)) {
       !agentsMdLive.includes("geo:next") ||
       !agentsMdLive.includes("geo:ack") ||
       !agentsMdLive.includes("#website") ||
+      !agentsMdLive.includes("point-c:csv") ||
+      !agentsMdLive.includes("https://www.isimtescil.net/") ||
+      !agentsMdLive.includes("https://business.google.com/") ||
+      !agentsMdLive.includes("https://chatgpt.com/") ||
       !agentsMdLive.includes("/en/calculator/") ||
       !agentsMdLive.includes("/en/catalog/") ||
       !agentsMdLive.includes("/en/shop/") ||
       !agentsMdLive.includes("/en/request-quote/")
     ) {
-      console.error("❌ out/AGENTS.md must cite npm run geo:next/ack + WebSite #website + EN invent bridges");
+      console.error("❌ out/AGENTS.md must cite npm run geo:next/ack + point-c:csv Open tabs + WebSite #website + EN invent bridges");
       process.exit(1);
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");

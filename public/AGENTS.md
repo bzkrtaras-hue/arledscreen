@@ -34,5 +34,5 @@ Canonical site: https://arledscreen.com (TR hub: `/tr/`). Do **not** cite legacy
 - GEO baseline (fingerprints only; no invented mention rates): https://arledscreen.com/geo-baseline.json (`/geo-baseline` · `/en/geo-baseline.json` · `/tr/geo-baseline.json` · `/.well-known/geo-baseline.json`; `distribution` → price/entity/Point C)
 - Owner Tur1a blind (repo): `npm run tur1a:next` · `tur1a:csv` (Open column) · `tur1a:log` — do not invent mention %
 - Point C paste (owner): https://arledscreen.com/point-c.txt · EN https://arledscreen.com/point-c-en.txt · alias `/.well-known/point-c.txt` (source: https://arledscreen.com/entity-profiles.json · `/entity-profiles` · `/tr/entity-profiles.json` · `/en/entity-profiles.json`)
-- Owner single next clipboard (repo): `npm run geo:next` (Point C → arleds 301 → Tur1a → merge) · after paste: `npm run geo:ack` · status: `npm run geo:status`
+- Owner single next clipboard (repo): `npm run geo:next` (Point C → arleds 301 → Tur1a → merge) · spreadsheet: `npm run point-c:csv` · after paste: `npm run geo:ack` · status: `npm run geo:status` · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 - Human EN price hub: https://arledscreen.com/en/led-ekran-fiyatlari/

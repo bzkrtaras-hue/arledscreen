@@ -225,17 +225,29 @@ try {
     agentsDist.includes("/humans.txt") &&
     agentsDist.includes("/AGENTS.md") &&
     agentsDist.includes("/.well-known/security.txt") &&
-    agentsMd.includes("geo:next")
+    agentsMd.includes("geo:next") &&
+    agentsMd.includes("point-c:csv") &&
+    agentsMd.includes("https://chatgpt.com/")
   ) {
     ok("agents distribution + isBasedOn inventAlias + discovery ai/llms/humans/AGENTS/security");
   } else fail("agents distribution + isBasedOn inventAlias + discovery ai/llms/humans/AGENTS/security");
-  if (llms.includes("geo:next") && llms.includes("/.well-known/brand.json")) {
-    ok("llms.txt geo:next + well-known/brand");
-  } else fail("llms.txt geo:next + well-known/brand");
+  if (
+    llms.includes("geo:next") &&
+    llms.includes("point-c:csv") &&
+    llms.includes("https://www.isimtescil.net/") &&
+    llms.includes("/.well-known/brand.json")
+  ) {
+    ok("llms.txt geo:next + point-c:csv Open + well-known/brand");
+  } else fail("llms.txt geo:next + point-c:csv Open + well-known/brand");
   const llmsFull = await getText("/llms-full.txt");
-  if (llmsFull.includes("geo:next") && llmsFull.includes("/.well-known/brand.json")) {
-    ok("llms-full.txt geo:next + well-known/brand");
-  } else fail("llms-full.txt geo:next + well-known/brand");
+  if (
+    llmsFull.includes("geo:next") &&
+    llmsFull.includes("point-c:csv") &&
+    llmsFull.includes("https://chatgpt.com/") &&
+    llmsFull.includes("/.well-known/brand.json")
+  ) {
+    ok("llms-full.txt geo:next + point-c:csv Open + well-known/brand");
+  } else fail("llms-full.txt geo:next + point-c:csv Open + well-known/brand");
 } catch (e) {
   fail(`agents/AGENTS/llms invent ${e?.message || e}`);
 }
@@ -741,10 +753,12 @@ try {
     String(ai.description || "").includes("/.well-known/pricing.json") &&
     humans.includes("/.well-known/modules.json") &&
     humans.includes("/.well-known/security.txt") &&
+    humans.includes("point-c:csv") &&
+    humans.includes("https://www.isimtescil.net/") &&
     faq.includes("/.well-known/modules.json")
   ) {
-    ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security");
-  } else fail("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security");
+    ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security + point-c:csv");
+  } else fail("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security + point-c:csv");
 } catch (e) {
   fail(`ai-shopping/humans/entity FAQ invent ${e?.message || e}`);
 }
