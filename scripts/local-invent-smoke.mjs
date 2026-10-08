@@ -294,7 +294,11 @@ if (
     JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack") &&
     JSON.stringify(profiles?.ownerP0Checklist || []).includes("DNSEnable") &&
     JSON.stringify(profiles?.ownerP0Checklist || []).includes("Domain Redirect") &&
+    JSON.stringify(profiles?.ownerP0Checklist || []).includes("point-c:csv") &&
+    JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://www.isimtescil.net/") &&
+    JSON.stringify(profiles?.ownerP0Checklist || []).includes("Open:") &&
     String(profiles?.canonicalUrls?.website || "").includes("#website") &&
+
     String(profiles?.description || "").includes("geo:ack") &&
     String(profiles?.mainEntityOfPage?.["@id"] || "").includes("#website") &&
     JSON.stringify(profiles?.isRelatedTo || []).includes("#website")

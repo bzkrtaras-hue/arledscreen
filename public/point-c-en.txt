@@ -7,14 +7,14 @@ Live: https://arledscreen.com/point-c.txt · https://arledscreen.com/point-c-en.
 Single next: npm run geo:next · Sequential: npm run point-c:next · after paste: npm run geo:ack (or point-c:ack)
 
 --- Owner P0 checklist ---
-- P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · after paste: npm run geo:ack · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website
-- GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok)
+- P0 next: npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack · status: npm run geo:status · paste https://arledscreen.com/point-c.txt (34245; rating yok; Open:/OpenAlt: per pack) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md
+- GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok) · Open: https://business.google.com/
 - Instagram Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)
 - Facebook About = packs.facebookAbout · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)
-- Bing Places / Apple = packs.bingPlaces / packs.appleBusinessConnect
-- P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md
+- Bing Places / Apple = packs.bingPlaces / packs.appleBusinessConnect · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/
+- P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: Open: https://www.isimtescil.net/ · OpenAlt: Gmail draft (geo:status) · registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md
 - Merchant jargon yalnızca packs.googleMerchantReadiness — kamu biyografisine koyma
-- Tur 1a / kör test: npm run tur1a:next → paste → npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|… · tur1a:matrix (0/48) — skor uydurma yok
+- Tur 1a / kör test: npm run tur1a:next → paste → npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|… · tur1a:matrix (0/48) — skor uydurma yok · Open: https://chatgpt.com/ · tur1a:csv
 - PR #60 main merge (GEO kalıcılık)
 - EN profiles (if used): npm run point-c:en — packsEn.* cite-only + LinkedIn slug note
 
