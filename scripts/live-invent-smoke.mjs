@@ -596,6 +596,9 @@ try {
     ownerNextHtml.includes("withCopyParam") &&
     ownerNextHtml.includes("maybeCopyPaste") &&
     ownerNextHtml.includes("copyQuery") &&
+    ownerNextHtml.includes("renderPackDeepLink") &&
+    ownerNextHtml.includes("pack-deep") &&
+    ownerNextHtml.includes("pack-deep-a") &&
     ownerNextHtml.includes("Open×") &&
     ownerNextHtml.includes("activeOpens") &&
     ownerNextHtml.includes("socialFocus") &&

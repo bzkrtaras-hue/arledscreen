@@ -242,6 +242,9 @@ jobs:
           grep -q 'withCopyParam' out/owner-next.html
           grep -q 'maybeCopyPaste' out/owner-next.html
           grep -q 'copyQuery' out/owner-next.html
+          grep -q 'renderPackDeepLink' out/owner-next.html
+          grep -q 'pack-deep' out/owner-next.html
+          grep -q 'pack-deep-a' out/owner-next.html
           grep -q 'Open×' out/owner-next.html
           grep -q 'activeOpens' out/owner-next.html
           grep -q 'socialFocus' out/owner-next.html
