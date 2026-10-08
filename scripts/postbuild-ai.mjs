@@ -3626,6 +3626,65 @@ function copyPublicToOut(relPath) {
   return true;
 }
 
+/** ARD resources.brand invent — subjectOf/distribution → owner-gate HowTo (URL-string parity with geoBaseline/entityProfiles). */
+function enrichArdOwnerGateInvent() {
+  const ardPath = path.join(publicDir, ".well-known", "ard.json");
+  if (!fs.existsSync(ardPath)) return;
+  let ard;
+  try {
+    ard = JSON.parse(fs.readFileSync(ardPath, "utf8"));
+  } catch {
+    console.warn("postbuild-ai: ard.json parse failed — skip owner-gate invent enrich");
+    return;
+  }
+  const brand = ard?.agentic?.resources?.brand;
+  if (!brand || typeof brand !== "object") return;
+
+  const subject = new Set(Array.isArray(brand.subjectOf) ? brand.subjectOf.map(String) : []);
+  for (const u of [
+    `${SITE_URL}/brand.json`,
+    `${SITE_URL}/ai-shopping.json`,
+    `${SITE_URL}/catalog.json`,
+    `${SITE_URL}/feeds/merchant-priced-panels.tsv`,
+    `${SITE_URL}/geo-baseline.json`,
+    `${SITE_URL}/feeds/prices.rss`,
+    `${SITE_URL}/point-c.txt`,
+    `${SITE_URL}/entity-profiles.json`,
+    ...ownerGateSameAsUrls(),
+  ]) {
+    subject.add(u);
+  }
+  brand.subjectOf = [...subject];
+
+  const dist = new Set(Array.isArray(brand.distribution) ? brand.distribution.map(String) : []);
+  for (const u of [
+    `${SITE_URL}/brand.json`,
+    `${SITE_URL}/.well-known/brand.json`,
+    `${SITE_URL}/ai-shopping.json`,
+    `${SITE_URL}/catalog.json`,
+    `${SITE_URL}/entity.json`,
+    `${SITE_URL}/geo-baseline.json`,
+    `${SITE_URL}/entity-profiles.json`,
+    `${SITE_URL}/point-c.txt`,
+    `${SITE_URL}/#website`,
+    ...ownerGateSameAsUrls(),
+  ]) {
+    dist.add(u);
+  }
+  brand.distribution = [...dist];
+
+  if (typeof brand.description === "string" && !brand.description.includes("potentialAction")) {
+    brand.description = `${brand.description} Owner-gate HowTo: ${SITE_URL}/point-c.json → next + potentialAction · ${SITE_URL}/geo-status.json · ${SITE_URL}/geo-next.txt · ${SITE_URL}/tur1a.json · ${SITE_URL}/point-c-progress.json.`;
+  }
+
+  ard.agentic.resources.brand = brand;
+  const body = JSON.stringify(ard, null, 2) + "\n";
+  fs.writeFileSync(ardPath, body);
+  const outArd = path.join(outDir, ".well-known", "ard.json");
+  fs.mkdirSync(path.dirname(outArd), { recursive: true });
+  fs.writeFileSync(outArd, body);
+}
+
 /**
  * Inventable feed path aliases — agents often drop .json/.txt or locale-prefix feeds.
  * CF 404.html beats _redirects, so these must be real files under out/ (deploy root).
@@ -3964,6 +4023,7 @@ function main() {
     console.error(`postbuild-ai: owner-gate invent emit failed: ${e?.message || e}`);
     process.exit(1);
   }
+  enrichArdOwnerGateInvent();
   if (!copyPublicToOut(".well-known/ard.json")) {
     console.warn("postbuild-ai: public/.well-known/ard.json missing — ARD surface not copied");
   }

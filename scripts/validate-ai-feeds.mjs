@@ -714,6 +714,20 @@ if (fs.existsSync(outDir)) {
       console.error("❌ ard.json resources.brand.subjectOf must include point-c.txt");
       process.exit(1);
     }
+    {
+      const brandSubject = JSON.stringify(ardBrand?.subjectOf || []);
+      const brandDist = JSON.stringify(ardBrand?.distribution || []);
+      for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+        if (!brandSubject.includes(needle)) {
+          console.error(`❌ ard.json resources.brand.subjectOf must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+        if (!brandDist.includes(needle)) {
+          console.error(`❌ ard.json resources.brand.distribution must join owner-gate HowTo ${needle}`);
+          process.exit(1);
+        }
+      }
+    }
   }
   if (!String(ard?.agentic?.resources?.entity?.makesOffer || "").includes("#priced-panels-aggregate")) {
     console.error("❌ ard.json resources.entity must cite makesOffer #priced-panels-aggregate");
