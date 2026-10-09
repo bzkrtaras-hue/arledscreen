@@ -4,7 +4,7 @@ import { getDictionary } from "@/lib/i18n";
 import { Calculator, FileText } from "lucide-react";
 import { SocialLinks } from "@/components/layout/SocialLinks";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
-import { GENERIC_WHATSAPP_HREF } from "@/lib/whatsapp";
+import { quoteWhatsappHref } from "@/lib/whatsapp";
 
 interface HomeCtaBandProps {
   locale: Locale;
@@ -46,7 +46,7 @@ export function HomeCtaBand({ locale }: HomeCtaBandProps) {
           <p className="mt-3 text-pretty text-base leading-[1.65] text-white sm:text-[1.0625rem]">{body}</p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <span className="text-xs font-semibold uppercase tracking-[0.14em] text-white">{socialLabel}</span>
-            <SocialLinks ids={["phone", "whatsapp", "instagram", "facebook", "email"]} onDark label={socialLabel} />
+            <SocialLinks ids={["phone", "whatsapp", "instagram", "facebook", "email"]} onDark label={socialLabel} locale={locale} />
           </div>
         </div>
         <div className="flex min-w-0 w-full flex-col gap-3 sm:w-auto">
@@ -58,7 +58,7 @@ export function HomeCtaBand({ locale }: HomeCtaBandProps) {
             {dict.nav.quote}
           </Link>
           <a
-            href={GENERIC_WHATSAPP_HREF}
+            href={quoteWhatsappHref(locale)}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-soft inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full bg-[#0F7A41] px-8 text-[17px] font-bold text-white ring-2 ring-white/70 hover:bg-[#0B6635] sm:min-w-[280px]"

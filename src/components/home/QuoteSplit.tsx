@@ -91,6 +91,7 @@ export function QuoteSplit({
         <SocialLinks
           className="mt-6"
           ids={["phone", "whatsapp", "instagram", "facebook", "email"]}
+          locale={locale}
           onDark
           label={en ? "Social and contact" : "Sosyal medya ve iletişim"}
         />

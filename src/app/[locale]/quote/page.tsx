@@ -6,7 +6,7 @@ import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { ShortQuoteForm } from "@/components/quote/ShortQuoteForm";
 import { WhatsAppProjectPicker } from "@/components/home/WhatsAppProjectPicker";
-import { GENERIC_WHATSAPP_HREF } from "@/lib/whatsapp";
+import { quoteWhatsappHref } from "@/lib/whatsapp";
 import {
   CONTACT_EMAIL,
   CONTACT_EMAIL_HREF,
@@ -159,7 +159,7 @@ export default async function QuotePage({ params }: PageProps) {
                       </a>
                     </li>
                     <li>
-                      <a href={GENERIC_WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center gap-3 hover:text-[#0F7A41]">
+                      <a href={quoteWhatsappHref(locale)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center gap-3 hover:text-[#0F7A41]">
                         <WhatsAppIcon className="h-5 w-5 text-[#0F7A41]" />
                         <span><strong className="text-ink">WhatsApp:</strong> {CONTACT_PHONE_DISPLAY}</span>
                       </a>
@@ -252,7 +252,7 @@ export default async function QuotePage({ params }: PageProps) {
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">E-mail</p>
               <p className="mt-2 font-display font-bold text-ink">{CONTACT_EMAIL}</p>
             </a>
-            <a href={GENERIC_WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
+            <a href={quoteWhatsappHref(locale)} target="_blank" rel="noopener noreferrer" className="rounded-2xl p-6 hover:border-cyan/50 glass-card">
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">WhatsApp</p>
               <p className="mt-2 font-display font-bold text-ink">{CONTACT_PHONE_DISPLAY}</p>
             </a>

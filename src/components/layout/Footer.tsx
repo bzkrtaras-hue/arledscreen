@@ -9,7 +9,7 @@ import {
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
-import { GENERIC_WHATSAPP_HREF } from "@/lib/whatsapp";
+import { quoteWhatsappHref } from "@/lib/whatsapp";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { SocialLinks } from "@/components/layout/SocialLinks";
 import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
@@ -144,6 +144,7 @@ export function Footer({ locale }: FooterProps) {
           ids={["phone", "whatsapp", "instagram", "facebook", "email"]}
           onDark
           label={tr ? "Sosyal medya ve iletişim" : "Social and contact"}
+          locale={locale}
         />
       </div>
 
@@ -228,7 +229,7 @@ export function Footer({ locale }: FooterProps) {
             </p>
             <p>
               <a
-                href={GENERIC_WHATSAPP_HREF}
+                href={quoteWhatsappHref(locale)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-11 items-center gap-2 font-semibold text-white hover:text-[#9CC0F5]"

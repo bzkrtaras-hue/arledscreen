@@ -2,6 +2,16 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-005 — TR site denetimi düzeltmeleri: kırık proje görselleri, görünen teknik jargon, kontrol kartı P0, arleds.com notları
+
+- **Görseller:** `OptImage` / `lib/opt.ts` `/opt/blog/...` kaynaklarına ikinci kez `/opt` ekliyordu (`/opt/opt/blog/...-480.webp` → 404; 37 URL, 19 sayfa: /tr/, /tr/otel-led-ekran/, blog, 4 proje sayfası + EN karşılıkları). Önek artık tekil; out/ içindeki tüm `/opt/...` referansları dosyaya karşılık geliyor
+- **Görünen metin (TR):** ai-shopping.json / pricedPanels / catalog.json / merchant TSV / geo-baseline.json, "Entity: entity.json", "81 il spam’i", "quote-only" (→ "fiyat teklifle verilir"), "Makinece kaynak … priceValidUntil", hesaplayıcıdaki boş "Makinece okunan kopya:" etiketi, /tr/gizlilik "AI ajanları için entity notu" bölümü, "(sameAs değil; sahip P0: 301)" ve LinkedIn slug notu kaldırıldı; yerine sade Türkçe fiyat notu + /tr/led-ekran-fiyatlari/ linki. Bölgeler, ürün grupları, rehber/blog CTA’ları, hakkımızda, kurucu sayfası, rehber makaleleri (md), TR köprü sayfaları
+- **arleds.com:** "arleds.com ile arledscreen.com aynı mı?" SSS’si görünen SSS listelerinden çıkarıldı (`src/lib/faq-visible.ts`; HomeFaq + TR sss/nxtionstar/yapay-zeka); FAQPage JSON-LD, Organization disambiguatingDescription, llms.txt, entity.json’da aynen duruyor
+- **Kontrol kartları:** Huidu / NovaStar / Colorlight kartlarında "P0" rozeti ve "Piksel aralığı" alanı gizlendi (`ProductCard`, pixelPitchMm 0); WhatsApp föy mesajından da "(P0)" çıktı
+- **Doğrulayıcı:** `validate-ai-feeds.mjs` TR köprü kontrolü "Canonical hub" yanında TR metni "Bu içerik şu sayfada" da kabul ediyor (noindex + hedef kontrolü aynı)
+- **Dokunulmadı:** EN metinleri (Yusuf / PR #64), TR başlıklar (`tr-meta-titles.ts`), fiyatlar, hesaplayıcı (`fiyat-hesap/index.html` md5 `14972407dea358a02667f080aab27d33`), `chat-widget.js`, MailerLite CatDAx, `_headers`; CSS hash aynı (`47c76947d5aa65cf.css`)
+- **Cloudflare:** zone Email Address Obfuscation kapatıldı (e-posta adresi ham HTML’de görünür)
+- **WhatsApp:** genel wa.me/905305078834 bağlantıları (üst bar, header, mobil bar, yan şerit, footer/sosyal ikonlar, CTA bandı, teklif sayfası) hazır mesajlı: TR `?text=Merhaba%2C%20LED%20ekran%20fiyat%20teklifi%20istiyorum`, EN `?text=Hello%2C%20I%27d%20like%20an%20LED%20display%20quote`; görünüm aynı. JSON-LD / sosyal JSON’daki çıplak wa.me URL’leri değişmedi; `chat-widget.js` dokunulmadı
 ## ARL-20261009-004 — Yusuf Batch 1: EN sayfalarda Türkçe UI metni
 
 - **Kaynak:** Drive `YUSUF_GOREV_01_INGILIZCE` (Ali, 9 Eki 2026) — Batch 1

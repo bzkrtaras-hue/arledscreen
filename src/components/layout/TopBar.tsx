@@ -7,7 +7,7 @@ import {
   CONTACT_PHONE_DISPLAY,
   CONTACT_PHONE_HREF,
 } from "@/lib/social";
-import { GENERIC_WHATSAPP_HREF } from "@/lib/whatsapp";
+import { quoteWhatsappHref } from "@/lib/whatsapp";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { LocaleSelect } from "@/components/layout/LocaleSelect";
 
@@ -47,7 +47,7 @@ export function TopBar({ locale }: { locale: Locale }) {
             {CONTACT_EMAIL}
           </a>
           <a
-            href={GENERIC_WHATSAPP_HREF}
+            href={quoteWhatsappHref(locale)}
             target="_blank"
             rel="noopener noreferrer"
             className="liquid-glass-btn liquid-glass-btn--compact text-[#1a2430] hover:text-[#0F7A41]"

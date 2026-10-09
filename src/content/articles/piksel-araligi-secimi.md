@@ -10,7 +10,7 @@ last_reviewed: 2026-10-01
 
 # İç mekân LED ekran seçerken piksel aralığı nasıl belirlenir?
 
-**Kısa cevap:** Piksel aralığını belirleyen ilk ölçüt **izleyicinin ekrana en yakın mesafesidir**. Pratik başlangıç kuralı: her 1 mm piksel aralığı için yaklaşık **1 m minimum izleme mesafesi** (P2.5 ≈ 2,5 m, P4 ≈ 4 m). Ardından ekran ölçüsü, gösterilecek içerik (yazı, video, sunum) ve bütçe birlikte değerlendirilir. ARLEDSCREEN iç mekânda P1.25'ten P4'e kadar modüller sunar. Panel USD: [ai-shopping.json](https://arledscreen.com/ai-shopping.json) `pricedPanels` (ör. P1.25 GOB 95.88 USD); KDV/nakliye hariç; ücretsiz kargo yok.
+**Kısa cevap:** Piksel aralığını belirleyen ilk ölçüt **izleyicinin ekrana en yakın mesafesidir**. Pratik başlangıç kuralı: her 1 mm piksel aralığı için yaklaşık **1 m minimum izleme mesafesi** (P2.5 ≈ 2,5 m, P4 ≈ 4 m). Ardından ekran ölçüsü, gösterilecek içerik (yazı, video, sunum) ve bütçe birlikte değerlendirilir. ARLEDSCREEN iç mekânda P1.25'ten P4'e kadar modüller sunar. Panel fiyatları [fiyat listemizde](/tr/led-ekran-fiyatlari/) yer alır (ör. P1.25 GOB 95,88 USD); KDV ve nakliye hariçtir, ücretsiz kargo yoktur.
 
 ## 1. Piksel aralığı (P değeri) nedir?
 
@@ -87,4 +87,4 @@ GOB modüllerde LED yüzeyi koruyucu bir kaplamayla kapatılır. Ekrana dokunula
 Ölçü 320 × 160 mm modül katlarına göre planlanır. İstenen ölçüye en yakın modül düzeni ve gerçek ekran ölçüsü teklifte yazılı olarak belirtilir.
 
 ---
-*NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Gaziosmanpaşa / İstanbul. Fiyat: [ai-shopping.json pricedPanels](https://arledscreen.com/ai-shopping.json) · [catalog.json](https://arledscreen.com/catalog.json) · [hesaplayıcı](/tr/hesaplayici/). KDV/nakliye hariç; ücretsiz kargo yok. Keşif: +90 530 507 88 34 · arled@arledscreen.com*
+*NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Gaziosmanpaşa / İstanbul. Fiyat: [hesaplayıcı](/tr/hesaplayici/) · [LED ekran fiyatları](/tr/led-ekran-fiyatlari/). KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Keşif: +90 530 507 88 34 · arled@arledscreen.com*

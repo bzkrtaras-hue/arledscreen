@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { visibleFaqs } from "@/lib/faq-visible";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
@@ -339,7 +340,7 @@ export default async function YapayZekaPage({ params }: PageProps) {
           ) : null}
 
           <div className="grid gap-4 md:grid-cols-2">
-            {c.faqs.map((f) => (
+            {(locale === "tr" ? visibleFaqs(c.faqs) : c.faqs).map((f) => (
               <GlassPanel key={f.question} className="p-5">
                 <h3 className="font-display text-base font-semibold text-ink">
                   {f.question}

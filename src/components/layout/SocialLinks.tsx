@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { cn } from "@/lib/utils";
 import { SOCIAL_LINKS, type SocialLinkId, SOCIAL_LINK_LIST } from "@/lib/social";
+import { quoteWhatsappHref } from "@/lib/whatsapp";
 import { FacebookIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 
 const ICONS: Record<SocialLinkId, (props: { className?: string }) => ReactElement> = {
@@ -30,9 +31,11 @@ interface SocialLinksProps {
   /** On dark / blue surfaces: adds a white ring so brand tiles stay separated. */
   onDark?: boolean;
   label?: string;
+  /** Picks the prefilled WhatsApp quote message language (default TR). */
+  locale?: string;
 }
 
-export function SocialLinks({ ids, className, size = "md", onDark = false, label }: SocialLinksProps) {
+export function SocialLinks({ ids, className, size = "md", onDark = false, label, locale }: SocialLinksProps) {
   const links = ids ? ids.map((id) => SOCIAL_LINKS[id]) : [...SOCIAL_LINK_LIST];
   const dim = size === "lg" ? "h-12 w-12" : "h-11 w-11"; // >= 44px touch target
   const iconClass = size === "lg" ? "h-6 w-6" : size === "sm" ? "h-[18px] w-[18px]" : "h-5 w-5";
@@ -44,7 +47,7 @@ export function SocialLinks({ ids, className, size = "md", onDark = false, label
         return (
           <li key={link.id}>
             <a
-              href={link.href}
+              href={link.id === "whatsapp" ? quoteWhatsappHref(locale) : link.href}
               aria-label={link.label}
               title={link.label}
               className={cn(

@@ -90,10 +90,14 @@ export function projectWhatsappHref(id: ProjectTypeId, locale: "tr" | "en" = "tr
   return whatsappHref(locale === "en" ? t.messageEn : t.message);
 }
 
-export const GENERIC_WHATSAPP_HREF = whatsappHref(
-  "Merhaba, LED ekran projesi hakkında bilgi almak istiyorum.",
-);
+/** Prefilled quote message for generic WhatsApp buttons/links (TR + EN). Exact encodings are intentional. */
+export const WHATSAPP_QUOTE_HREF_TR = `https://wa.me/${WHATSAPP_NUMBER}?text=Merhaba%2C%20LED%20ekran%20fiyat%20teklifi%20istiyorum`;
+export const WHATSAPP_QUOTE_HREF_EN = `https://wa.me/${WHATSAPP_NUMBER}?text=Hello%2C%20I%27d%20like%20an%20LED%20display%20quote`;
 
-export const GENERIC_WHATSAPP_HREF_EN = whatsappHref(
-  "Hello, I would like information about an LED display project.",
-);
+export function quoteWhatsappHref(locale?: string): string {
+  return locale === "en" ? WHATSAPP_QUOTE_HREF_EN : WHATSAPP_QUOTE_HREF_TR;
+}
+
+/** TR default (kept for TR-only components). */
+export const GENERIC_WHATSAPP_HREF = WHATSAPP_QUOTE_HREF_TR;
+export const GENERIC_WHATSAPP_HREF_EN = WHATSAPP_QUOTE_HREF_EN;

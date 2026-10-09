@@ -603,12 +603,12 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Hangi piksel aralığını seçmeliyim?",
         answer:
-          "Yayımlanan ince pitch / GOB panel USD: P1.25, P1.53 ve P1.86 (ai-shopping.json pricedPanels; mpn=sku). Pratik kural: her 1 mm P ≈ 1 m minimum mesafe. Daha ince (ör. P0.9) seçenekler teknik föy + yazılı teklifle; kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz.",
+          "Fiyatı yayımlanan ince pitch / GOB paneller P1.25, P1.53 ve P1.86’dır. Pratik kural: her 1 mm P ≈ 1 m minimum mesafe. Daha ince (ör. P0.9) seçenekler teknik föy + yazılı teklifle; kesin öneriyi salon ölçüsü ve içerik türüne göre keşifte yapıyoruz.",
       },
       {
         question: "İnce pitch sayfasında fiyat var mı?",
         answer:
-          "Evet — GOB P1.25 / P1.53 / P1.86 panel (modül) USD fiyatları bu grupta da yayımlanır; kanonik model URL’leri /tr/products/gob-led-ekran/ altındadır. Makinece kaynak: https://arledscreen.com/ai-shopping.json",
+          "Evet — GOB P1.25 / P1.53 / P1.86 panel (modül) USD fiyatları bu grupta da yayımlanır; model sayfaları GOB LED ekran grubunda yer alır.",
       },
       {
         question: "SMD, COB ve GOB arasındaki fark nedir?",

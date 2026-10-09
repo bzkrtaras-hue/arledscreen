@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Tag } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { SOCIAL_LINKS } from "@/lib/social";
-import { GENERIC_WHATSAPP_HREF } from "@/lib/whatsapp";
+import { quoteWhatsappHref } from "@/lib/whatsapp";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 
 /**
@@ -18,7 +18,7 @@ export function FloatingSocialRail({ locale }: { locale: Locale }) {
   if (pathname.includes("/hesaplayici")) return null;
   const tr = locale === "tr";
   const tabs = [
-    { href: GENERIC_WHATSAPP_HREF, label: "WhatsApp", Icon: WhatsAppIcon, ext: true, cls: "bg-[#0F7A41] hover:bg-[#0B6635]" },
+    { href: quoteWhatsappHref(locale), label: "WhatsApp", Icon: WhatsAppIcon, ext: true, cls: "bg-[#0F7A41] hover:bg-[#0B6635]" },
     { href: SOCIAL_LINKS.instagram.href, label: "Instagram", Icon: InstagramIcon, ext: true, cls: "bg-[linear-gradient(45deg,#833AB4,#C13584)] hover:brightness-110" },
     { href: SOCIAL_LINKS.facebook.href, label: "Facebook", Icon: FacebookIcon, ext: true, cls: "bg-[#1465D0] hover:bg-[#1257B5]" },
     { href: `/${locale}/quote/`, label: tr ? "Hızlı teklif" : "Quick quote", Icon: Tag, ext: false, cls: "bg-cyan hover:bg-cyan-600" },

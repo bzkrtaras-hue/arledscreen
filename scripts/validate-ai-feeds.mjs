@@ -3037,7 +3037,7 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
     const html = fs.readFileSync(fp, "utf8");
-    if (!/noindex/i.test(html) || !/Canonical hub/i.test(html) || !html.includes(target)) {
+    if (!/noindex/i.test(html) || !/Canonical hub|Bu içerik şu sayfada/i.test(html) || !html.includes(target)) {
       console.error(`❌ invent bridge must be noindex → ${target}: ${rel}`);
       process.exit(1);
     }

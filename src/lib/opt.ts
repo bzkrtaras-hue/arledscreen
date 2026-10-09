@@ -7,7 +7,7 @@ const MANIFEST = manifest as Record<string, ManifestEntry>;
 export function optSrc(src: string, width = 480): string {
   const entry = MANIFEST[src];
   if (!entry) return src;
-  const base = src.replace(/\.(jpe?g|png)$/i, "");
+  const base = src.replace(/\.(jpe?g|png)$/i, "").replace(/^\/opt(?=\/)/, "");
   const pick = entry.widths.find((w) => w >= width) ?? entry.widths[entry.widths.length - 1];
   return `/opt${base}-${pick}.webp`;
 }
@@ -16,6 +16,6 @@ export function optSrc(src: string, width = 480): string {
 export function optSrcSet(src: string): string | undefined {
   const entry = MANIFEST[src];
   if (!entry) return undefined;
-  const base = src.replace(/\.(jpe?g|png)$/i, "");
+  const base = src.replace(/\.(jpe?g|png)$/i, "").replace(/^\/opt(?=\/)/, "");
   return entry.widths.map((w) => `/opt${base}-${w}.webp ${w}w`).join(", ");
 }

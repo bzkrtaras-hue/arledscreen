@@ -17,10 +17,13 @@ interface ProductCardProps {
  */
 export function ProductCard({ product, locale = "en" }: ProductCardProps) {
   const tr = locale === "tr";
-  const pitch = `P${product.specs.pixelPitchMm}`;
+  // Control cards / processors have no pixel pitch (pixelPitchMm 0): hide the pitch badge and field.
+  const hasPitch = Number(product.specs.pixelPitchMm) > 0;
+  const pitch = hasPitch ? `P${product.specs.pixelPitchMm}` : "";
+  const nameWithPitch = hasPitch ? `${product.name} (${pitch})` : product.name;
   const datasheetMsg = tr
-    ? `Merhaba, ${product.name} (${pitch}) modelinin teknik föyünü ve fiyat bilgisini rica ediyorum.`
-    : `Hello, please send me the datasheet and pricing for ${product.name} (${pitch}).`;
+    ? `Merhaba, ${nameWithPitch} modelinin teknik föyünü ve fiyat bilgisini rica ediyorum.`
+    : `Hello, please send me the datasheet and pricing for ${nameWithPitch}.`;
 
   return (
     <article
@@ -38,9 +41,11 @@ export function ProductCard({ product, locale = "en" }: ProductCardProps) {
         <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-0.5 text-xs font-semibold text-cyan-700">
           {product.series}
         </span>
-        <span className="absolute bottom-3 left-3 rounded-lg bg-[#0F2A4F]/85 px-2.5 py-1 font-display text-sm font-bold text-white">
-          {pitch}
-        </span>
+        {hasPitch ? (
+          <span className="absolute bottom-3 left-3 rounded-lg bg-[#0F2A4F]/85 px-2.5 py-1 font-display text-sm font-bold text-white">
+            {pitch}
+          </span>
+        ) : null}
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display text-lg font-bold tracking-[-0.01em] text-ink">
@@ -55,10 +60,12 @@ export function ProductCard({ product, locale = "en" }: ProductCardProps) {
         <p className="mt-2 text-sm leading-relaxed text-ink-muted">{product.shortDescription}</p>
 
         <dl className="mt-4 grid grid-cols-2 gap-2 text-xs">
-          <div className="rounded-lg bg-surface px-3 py-2">
-            <dt className="text-ink-muted">{tr ? "Piksel aralığı" : "Pixel pitch"}</dt>
-            <dd className="mt-0.5 font-display text-sm font-bold text-cyan">{pitch}</dd>
-          </div>
+          {hasPitch ? (
+            <div className="rounded-lg bg-surface px-3 py-2">
+              <dt className="text-ink-muted">{tr ? "Piksel aralığı" : "Pixel pitch"}</dt>
+              <dd className="mt-0.5 font-display text-sm font-bold text-cyan">{pitch}</dd>
+            </div>
+          ) : null}
           <div className="rounded-lg bg-surface px-3 py-2">
             <dt className="text-ink-muted">{tr ? "Kullanım" : "Use"}</dt>
             <dd className="mt-0.5 font-display text-sm font-semibold text-ink-soft">

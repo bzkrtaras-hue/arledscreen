@@ -124,7 +124,6 @@ function priceAnswer(name: string, prices: PanelPrice[]): { question: string; an
     question: `${name} fiyatı ne kadar?`,
     answer:
       `2026 fiyat listemizde NXTIONSTAR ${name} panelleri, panel başına ${fmtUsd(lo.usd)} USD (${priceLabel(lo)}) ile ${fmtUsd(hi.usd)} USD (${priceLabel(hi)}) arasındadır; KDV ve nakliye hariçtir; ücretsiz kargo yoktur. ` +
-      `Makinece kaynak: ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv. ` +
       (lo.moduleMm || hi.moduleMm
         ? ""
         : `1 m² yaklaşık 19,53 panel ettiği için yalnızca modül bedeli m² başına yaklaşık ${fmtM2(lo.usd)} – ${fmtM2(hi.usd)} USD olur. `) +
@@ -466,23 +465,12 @@ export default async function ProductGroupPage({ params }: PageProps) {
                   {g.name} fiyatı ölçü, form, süre ve kurulum koşullarına göre hazırlanır. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz.
                 </p>
                 <p className="mt-2 max-w-xl text-xs leading-relaxed text-ink-muted">
-                  Bu grup quote-only. Yayımlanmış 12 panel USD:{" "}
-                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                    ai-shopping.json
-                  </a>{" "}
-                  pricedPanels,{" "}
-                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                    catalog.json
-                  </a>
-                  ,{" "}
-                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                    merchant TSV
-                  </a>
-                  ,{" "}
-                  <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-                    geo-baseline.json
-                  </a>{" "}
-                  (ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
+                  Bu ürün grubunda fiyat teklifle verilir. Yayımlanmış 12 panel modelinin USD fiyatları (ör. P1.25 GOB
+                  95,88 USD){" "}
+                  <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                    fiyat listemizde
+                  </Link>{" "}
+                  yer alır. KDV ve nakliye hariçtir; ücretsiz kargo yoktur.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
@@ -516,23 +504,8 @@ export default async function ProductGroupPage({ params }: PageProps) {
               <h2 className="mb-4 font-display text-xl font-bold text-ink sm:text-2xl">Panel fiyatları (2026 listesi)</h2>
               <PanelPriceTable panels={prices} caption={`${g.name}: hesaplayıcıdaki panel fiyatları`} showUse={false} />
               <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-muted">
-                Makinece kaynak:{" "}
-                <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                  ai-shopping.json
-                </a>{" "}
-                <code className="text-xs">pricedPanels</code> (12 SKU; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31),{" "}
-                <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                  catalog.json
-                </a>
-                ,{" "}
-                <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                  merchant TSV
-                </a>{" "}
-                ve{" "}
-                <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-                  geo-baseline.json
-                </a>
-                . KDV/nakliye hariç; ücretsiz kargo yok.
+                Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Liste
+                fiyatları 31 Aralık 2026&apos;ya kadar geçerlidir.
               </p>
             </div>
           ) : null}
