@@ -10,7 +10,7 @@ En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 - **Ürün aile başlıkları, galeri kategorileri, ticari proof satırları, şehir link etiketleri, proje videoları / case kartları:** EN görünür metin
 - **/en/magaza/:** title + H1 → “LED Display Shop”
 - **Arayüz:** CSS/className/layout değişmedi; fiyat rakamları ve makine dosyaları dokunulmadı
-- **Production:** Ali incelemesi sonrası main’e alındı ve deploy edildi
+- **Production:** yok — draft PR → main; deploy / IndexNow / merge yok
 
 ## ARL-20261009-003 — Sitemap ayrımı (sitemap.xml / sitemap-ai.xml) + TR başlık uzunluk düzeltmesi
 
