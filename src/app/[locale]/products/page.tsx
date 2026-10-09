@@ -252,7 +252,12 @@ export default async function ProductsPage({ params }: PageProps) {
                 <ul className="mt-3 space-y-1.5 text-ink">
                   <li>
                     <span className="font-semibold">{locale === "en" ? "Outdoor:" : "Dış mekân:"}</span>{" "}
-                    {CANONICAL_LINEUP.outdoor.pitches.join(", ")}
+                    {(locale === "en"
+                      ? CANONICAL_LINEUP.outdoor.pitches.map((p) =>
+                          p.replace("önden servis", "front service"),
+                        )
+                      : CANONICAL_LINEUP.outdoor.pitches
+                    ).join(", ")}
                   </li>
                   <li>
                     <span className="font-semibold">{locale === "en" ? "Indoor:" : "İç mekân:"}</span>{" "}
