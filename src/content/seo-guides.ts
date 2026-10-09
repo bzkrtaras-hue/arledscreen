@@ -1,3 +1,4 @@
+import { SEO_GUIDE_I18N } from "@/content/seo-guides-i18n";
 import type { Locale } from "@/lib/i18n";
 
 export const SEO_GUIDE_SLUGS = [
@@ -1965,7 +1966,10 @@ function normalizeGuide(guide: SeoGuide): SeoGuide {
 
 export function getSeoGuide(locale: Locale, slug: SeoGuideSlug): SeoGuide {
   const lang: GuideLocale = locale === "tr" ? "tr" : "en";
-  return normalizeGuide(guides[lang][slug]);
+  const base = guides[lang][slug];
+  // ru/ar: translated text where available (canonical/noindex policy unchanged).
+  const extra = locale === "ru" || locale === "ar" ? SEO_GUIDE_I18N[locale][slug] : undefined;
+  return normalizeGuide(extra ? { ...base, ...extra } : base);
 }
 
 export function listSeoGuides(locale: Locale): SeoGuide[] {
