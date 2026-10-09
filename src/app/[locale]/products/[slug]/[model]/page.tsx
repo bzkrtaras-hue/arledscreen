@@ -303,45 +303,14 @@ export default async function ModelPage({ params }: PageProps) {
                   <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted">
                     Hesaplayıcıdaki 2026 listesine göre yaklaşık fiyattır; KDV ve nakliye hariçtir; ücretsiz kargo yoktur. İşçilik ({CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı ve yazılım ayrıca eklenir. Nihai fiyat yazılı teklifle kesinleşir.
                   </p>
-                  <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted">
-                    Makinece kaynak:{" "}
-                    <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                      ai-shopping.json
-                    </a>{" "}
-                    <code className="text-[11px]">pricedPanels</code>,{" "}
-                    <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                      catalog.json
-                    </a>
-                    ,{" "}
-                    <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                      merchant TSV
-                    </a>
-                    ,{" "}
-                    <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-                      geo-baseline.json
-                    </a>
-                    .
-                  </p>
                 </div>
               ) : (
                 <p className="mt-5 rounded-2xl border border-border bg-band/60 p-4 text-sm text-ink-soft">
-                  Bu model için fiyat; ölçü, adet ve kurulum koşullarına göre yazılı teklifle verilir (quote-only). Yayımlanmış 12 panel USD:{" "}
-                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                    ai-shopping.json
-                  </a>{" "}
-                  <code className="text-[11px]">pricedPanels</code>,{" "}
-                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                    catalog.json
-                  </a>
-                  ,{" "}
-                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                    merchant TSV
-                  </a>
-                  ,{" "}
-                  <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-                    geo-baseline.json
-                  </a>
-                  . Ücretsiz kargo yok.
+                  Bu model için fiyat; ölçü, adet ve kurulum koşullarına göre yazılı teklifle verilir. Yayımlanmış 12 panel listesi{" "}
+                  <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                    LED ekran fiyatları
+                  </Link>{" "}
+                  sayfasındadır. Ücretsiz kargo yoktur.
                 </p>
               )}
 

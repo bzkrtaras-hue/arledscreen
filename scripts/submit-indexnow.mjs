@@ -87,50 +87,11 @@ const URLS = [
   `https://${HOST}/AGENTS.md`,
   `https://${HOST}/humans.txt`,
   `https://${HOST}/.well-known/humans.txt`,
-  `https://${HOST}/point-c.txt`,
-  `https://${HOST}/point-c-en.txt`,
-  `https://${HOST}/.well-known/point-c.txt`,
-  `https://${HOST}/.well-known/point-c-en.txt`,
-  `https://${HOST}/point-c.json`,
-  `https://${HOST}/point-c-en.json`,
-  `https://${HOST}/.well-known/point-c.json`,
-  `https://${HOST}/.well-known/point-c-en.json`,
-  `https://${HOST}/feeds/point-c.csv`,
-  `https://${HOST}/feeds/point-c-en.csv`,
-  `https://${HOST}/point-c.csv`,
-  `https://${HOST}/point-c-en.csv`,
-  `https://${HOST}/geo-status.json`,
-  `https://${HOST}/.well-known/geo-status.json`,
-  `https://${HOST}/owner-p0.json`,
-  `https://${HOST}/.well-known/owner-p0.json`,
-  `https://${HOST}/geo-next.txt`,
-  `https://${HOST}/.well-known/geo-next.txt`,
-  `https://${HOST}/owner-next.txt`,
-  `https://${HOST}/.well-known/owner-next.txt`,
-  `https://${HOST}/owner-next.html`,
-  `https://${HOST}/owner-next.html?start=1`,
-  `https://${HOST}/owner-next.html?pack=directoryLong`,
-  `https://${HOST}/owner-next.html?pack=hostinger301`,
-  `https://${HOST}/owner-next.html?pack=tur1a`,
-  `https://${HOST}/geo-next.html`,
-  `https://${HOST}/geo-next.html?start=1`,
-  `https://${HOST}/geo-next.html?pack=directoryLong`,
-  `https://${HOST}/geo-next.html?pack=tur1a`,
   `https://${HOST}/social.json`,
   `https://${HOST}/contact.json`,
   `https://${HOST}/.well-known/social.json`,
   `https://${HOST}/.well-known/contact.json`,
   `https://${HOST}/social`,
-  `https://${HOST}/owner-next.json`,
-  `https://${HOST}/.well-known/owner-next.json`,
-  `https://${HOST}/geo-next.json`,
-  `https://${HOST}/.well-known/geo-next.json`,
-  `https://${HOST}/tur1a.json`,
-  `https://${HOST}/.well-known/tur1a.json`,
-  `https://${HOST}/feeds/tur1a.csv`,
-  `https://${HOST}/tur1a.csv`,
-  `https://${HOST}/point-c-progress.json`,
-  `https://${HOST}/.well-known/point-c-progress.json`,
   `https://${HOST}/.well-known/AGENTS.md`,
   `https://${HOST}/security.txt`,
   `https://${HOST}/organization.json`,
@@ -366,6 +327,14 @@ const URLS = [
   `https://${HOST}/tr/products/gob-led-ekran/p1-25-gob/`,
   `https://${HOST}/sitemap.xml`,
 ];
+
+// Owner-only / internal gate surfaces are not built and must never be submitted (privacy).
+const OWNER_GATE_RE = /owner-next|owner-gate|owner-p0|point-c|tur1a|geo-next|geo-status/i;
+const ownerLeak = URLS.filter((u) => OWNER_GATE_RE.test(u));
+if (ownerLeak.length) {
+  console.error(`IndexNow: refusing to submit owner/internal URLs: ${ownerLeak.join(", ")}`);
+  process.exit(1);
+}
 
 async function main() {
   const keyPath = path.join(publicDir, `${KEY}.txt`);

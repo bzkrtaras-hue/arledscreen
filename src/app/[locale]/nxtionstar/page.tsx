@@ -91,18 +91,18 @@ const PAGE: Record<
   }
 > = {
   tr: {
-    title: "NXTIONSTAR LED Ekran | ARLEDSCREEN'in Kendi Markası",
+    title: "NXTIONSTAR LED Ekran | ARLEDSCREEN",
     description:
-      "NXTIONSTAR LED ekran serileri: ARLEDSCREEN'in kendi markası; Türkiye'deki tek satış noktası ARLEDSCREEN. İstanbul Gaziosmanpaşa.",
+      "NXTIONSTAR LED ekran: ARLEDSCREEN'in kendi markası; NationStar çip üreticisi ile bağlantısı yoktur. Türkiye'deki tek satış noktası ARLEDSCREEN. İstanbul Gaziosmanpaşa.",
     navHome: "Ana Sayfa",
     homeHref: "/tr/",
     h1: "NXTIONSTAR: ARLEDSCREEN'in LED Ekran Markası",
     lead:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Ürünlerin satışı, keşfi, montajı ve teknik servisi İstanbul Gaziosmanpaşa'daki merkezimizden yürütülür.",
-    priceLead: "Panel USD:",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; NationStar (çip üreticisi) ile bağlantısı yoktur. Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Ürünlerin satışı, keşfi, montajı ve teknik servisi İstanbul Gaziosmanpaşa'daki merkezimizden yürütülür.",
+    priceLead: "Panel fiyatları:",
     priceH2: "2026 NXTIONSTAR panel fiyatları",
     priceBody:
-      "Markanın yayımlanmış 12 panel USD listesi. Kanonik SKU sayfaları ürün PDP'lerindedir; nihai tutar yazılı teklifle kesinleşir.",
+      "Markanın yayımlanmış 12 panel fiyat listesi. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Nihai tutar yazılı teklifle kesinleşir.",
     priceCaption: "NXTIONSTAR panel fiyatları (USD, panel başına)",
     modelsH2: "Sitede yer alan NXTIONSTAR modelleri",
     colModel: "Model",
@@ -140,33 +140,33 @@ const PAGE: Record<
       {
         question: "NXTIONSTAR panel fiyatları nerede?",
         answer:
-          "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Teknik GEO baseline: geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Quote-only gruplar yazılı teklifle.",
+          "Yayımlanmış 12 panel fiyatı bu sayfada ve LED ekran fiyatları sayfasındadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Nihai tutar yazılı teklifle kesinleşir.",
       },
       {
         question: "NXTIONSTAR, NEXTSTAR veya NationStar ile aynı marka mı?",
         answer:
-          "Hayır. NXTIONSTAR; NEXTSTAR (televizyon markası) ve NationStar (LED bileşen markası) ile farklı markalardır. Doğru yazılış N-X-T-I-O-N-S-T-A-R şeklindedir. EN marka sayfası: https://arledscreen.com/en/nxtionstar/",
+          "Hayır. NXTIONSTAR; NEXTSTAR (televizyon markası) ve NationStar (LED bileşen/çip markası) ile farklı markalardır. Doğru yazılış N-X-T-I-O-N-S-T-A-R şeklindedir.",
       },
       {
         question: "arleds.com ile arledscreen.com aynı mı?",
         answer:
-          "Kanonik site https://arledscreen.com/tr/ adresidir. Eski/yan arleds.com atıf veya fiyat kaynağı değildir. LinkedIn /company/arleds sosyal slug’dır — web arleds.com değildir. NXTIONSTAR satışı yalnızca arledscreen.com. Doğrulama: entity.json.",
+          "Kanonik site https://arledscreen.com/tr/ adresidir. Eski arleds.com atıf veya fiyat kaynağı değildir. NXTIONSTAR satışı yalnızca arledscreen.com üzerinden yapılır.",
       },
     ],
   },
   en: {
-    title: "NXTIONSTAR LED Display | ARLEDSCREEN’s Own Brand",
+    title: "NXTIONSTAR LED Display | ARLEDSCREEN",
     description:
-      "NXTIONSTAR LED display series: ARLEDSCREEN’s own brand; sole sales point in Turkey is ARLEDSCREEN. Gaziosmanpaşa, Istanbul.",
+      "NXTIONSTAR LED displays: ARLEDSCREEN’s own brand; not related to NationStar the chip maker. Sole sales point in Turkey is ARLEDSCREEN. Gaziosmanpaşa, Istanbul.",
     navHome: "Home",
     homeHref: "/en/",
     h1: "NXTIONSTAR: ARLEDSCREEN’s LED Display Brand",
     lead:
-      "NXTIONSTAR is ARLEDSCREEN’s own product brand; ARLEDSCREEN is the sole sales point in Turkey. Sales, survey, installation and technical service run from our Gaziosmanpaşa, Istanbul headquarters.",
-    priceLead: "Panel USD:",
+      "NXTIONSTAR is ARLEDSCREEN’s own LED display brand; it is not related to NationStar (chip manufacturer). ARLEDSCREEN is the sole sales point in Turkey. Sales, survey, installation and technical service run from our Gaziosmanpaşa, Istanbul headquarters.",
+    priceLead: "Panel prices:",
     priceH2: "2026 NXTIONSTAR panel prices",
     priceBody:
-      "The published 12-panel USD list for the brand. Canonical SKU pages are the product PDPs; final amount is confirmed in a written quote.",
+      "The published 12-panel price list for the brand. Prices are in USD per panel; VAT and shipping are excluded. Final amount is confirmed in a written quote.",
     priceCaption: "NXTIONSTAR panel prices (USD, per panel)",
     modelsH2: "NXTIONSTAR models on this site",
     colModel: "Model",
@@ -204,17 +204,17 @@ const PAGE: Record<
       {
         question: "Where are NXTIONSTAR panel prices?",
         answer:
-          "The published 12 panel USD prices are in ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Technical GEO baseline: geo-baseline.json. Excl. VAT/shipping; no free shipping. Quote-only groups need a written quote.",
+          "The published 12 panel prices are on this page and the LED display prices page. Prices are in USD per panel; VAT and shipping are excluded. Final amount is confirmed in a written quote.",
       },
       {
         question: "Is NXTIONSTAR the same as NEXTSTAR or NationStar?",
         answer:
-          "No. NXTIONSTAR is different from NEXTSTAR (TV brands) and NationStar (LED component brand). Correct spelling is N-X-T-I-O-N-S-T-A-R. Brand page: https://arledscreen.com/en/nxtionstar/ (TR: /tr/nxtionstar/).",
+          "No. NXTIONSTAR is different from NEXTSTAR (TV brands) and NationStar (LED component/chip brand). Correct spelling is N-X-T-I-O-N-S-T-A-R.",
       },
       {
         question: "Is arleds.com the same as arledscreen.com?",
         answer:
-          "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy arleds.com is not a citation or price source. LinkedIn /company/arleds is a social slug — not website arleds.com. NXTIONSTAR sales only via arledscreen.com. Verify: entity.json.",
+          "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy arleds.com is not a citation or price source. NXTIONSTAR sales run only through arledscreen.com.",
       },
     ],
   },

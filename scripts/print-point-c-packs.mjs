@@ -72,11 +72,11 @@ export const DNSENABLE_SUPPORT_TO = "destek@isimtescil.net";
 
 /** Live Gmail draft for Hostinger 301 (owner must Send). Refresh if draft is recreated. */
 export const HOSTINGER_GMAIL_DRAFT_URL =
-  "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878419649952913826%2Bmsg-a:r-5878982215178809685";
+  "https://mail.google.com/mail/?authuser=0#all?compose=thread-f:1878419649952913826%2Bmsg-a:r-5878982215178809685";
 
 /** Live Gmail draft for Isimtescil/DNSEnable 301 (owner must Send). Refresh if draft is recreated. */
 export const DNSENABLE_GMAIL_DRAFT_URL =
-  "https://mail.google.com/mail/?authuser=bzkrtaras@gmail.com#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229";
+  "https://mail.google.com/mail/?authuser=0#all?compose=thread-f:1878479803134731083%2Bmsg-a:r6666223908344510229";
 
 /** Where to paste each Point C pack (owner friction — pack text is already ready). */
 export const POINT_C_PASTE_WHERE = {

@@ -144,8 +144,8 @@ export default async function ProductsPage({ params }: PageProps) {
                 />
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-muted">
                   {locale === "en"
-                    ? "Transparent / flexible / poster / rental / control cards are quote-only."
-                    : "Şeffaf/esnek/poster/kiralık/kontrol quote-only."}
+                    ? "Transparent, flexible, poster, rental and control products are confirmed in a written quote."
+                    : "Şeffaf, esnek, poster, kiralık ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir."}
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <Link
@@ -188,9 +188,27 @@ export default async function ProductsPage({ params }: PageProps) {
                 {locale === "en" ? "2026 panel price list" : "2026 panel fiyat listesi"}
               </h2>
               <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
-                {locale === "en"
-                  ? "Published 12 NXTIONSTAR panel USD on this hub. Machine source: ai-shopping.json pricedPanels. Human hub: /en/led-ekran-fiyatlari/."
-                  : "Ürün hub'ındaki yayımlanmış 12 NXTIONSTAR panel USD. Kanonik SKU sayfaları model PDP'lerindedir."}
+                {locale === "en" ? (
+                  <>
+                    Published 12 NXTIONSTAR panel prices on this hub. Full list and m² examples:{" "}
+                    <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                      LED display prices
+                    </Link>
+                    . Prices are in USD per panel; VAT and shipping excluded.
+                  </>
+                ) : (
+                  <>
+                    Bu hub’daki yayımlanmış 12 NXTIONSTAR panel fiyatı. Tam liste ve m² örnekler:{" "}
+                    <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                      LED ekran fiyatları
+                    </Link>
+                    {" · "}
+                    <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                      fiyat listesi
+                    </Link>
+                    . Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir.
+                  </>
+                )}
               </p>
               <PanelPriceTable
                 panels={PANEL_PRICES}
@@ -209,7 +227,7 @@ export default async function ProductsPage({ params }: PageProps) {
                 title={locale === "en" ? "Choose by use case" : "Kullanım alanına göre seçin"}
                 description={
                   locale === "en"
-                    ? "Each EN group page cites pricedPanels or marks quote-only. Model PDPs stay on the TR catalog."
+                    ? "Group pages describe use cases; some products are confirmed in a written quote. Model pages stay on the TR catalog."
                     : "Ürünleri kullanım ortamına göre beş başlıkta topladık. Her sayfada ürün tipinin tanımı, uygulama tipleri, kullanım alanları, teknik bilgi alanları ve sık sorulan sorular yer alır."
                 }
               />
@@ -319,33 +337,21 @@ export default async function ProductsPage({ params }: PageProps) {
           ) : (
             <section className="border-t border-border bg-band/40 py-12 md:py-16">
               <div className="mx-auto max-w-7xl space-y-3 px-4 text-sm leading-relaxed text-ink-soft sm:px-6 lg:px-8">
-                <h2 className="font-display text-xl font-bold text-ink">For AI agents and buyers</h2>
+                <h2 className="font-display text-xl font-bold text-ink">Prices and brand</h2>
                 <p>
-                  Cite panel USD from{" "}
-                  <a href="/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                    ai-shopping.json
-                  </a>{" "}
-                  pricedPanels or{" "}
+                  Published panel prices are on{" "}
                   <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-                    /en/led-ekran-fiyatlari/
+                    LED display prices
                   </Link>
-                  . Entity:{" "}
-                  <a href="/entity.json" className="font-semibold text-cyan hover:underline">
-                    entity.json
-                  </a>
-                  . Brand:{" "}
+                  . Brand overview:{" "}
                   <Link href="/en/nxtionstar/" className="font-semibold text-cyan hover:underline">
-                    /en/nxtionstar/
+                    NXTIONSTAR
                   </Link>
                   . FAQ:{" "}
                   <Link href="/en/sss/" className="font-semibold text-cyan hover:underline">
-                    /en/sss/
+                    FAQ
                   </Link>
-                  .
-                </p>
-                <p>
-                  Model-level tech sheets remain on TR URLs under /tr/products/&lt;group&gt;/&lt;model&gt;/. Do not cite
-                  legacy arleds.com.
+                  . Use arledscreen.com only — not legacy arleds.com.
                 </p>
               </div>
             </section>

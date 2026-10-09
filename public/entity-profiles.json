@@ -1,8 +1,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Dataset",
-  "name": "ARLEDSCREEN entity profile paste packs (Point C)",
-  "description": "Third-party profile paste packs for humans (GBP/IG/FB/LinkedIn) + machine Merchant notes. Owner-operated Point C. Human packs = cite facts only — no catalog.json / quote-only / extrasUsd jargon in public bios. Prices for AI: ai-shopping.json. GEO baseline: geo-baseline.json. Do not invent ratings. Owner single clipboard: npm run geo:next. After paste: npm run geo:ack. WebSite: https://arledscreen.com/#website. Spreadsheet: npm run point-c:csv. Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/. Live clipboard: https://arledscreen.com/geo-next.txt. Machine next: https://arledscreen.com/point-c.json → next + potentialAction. Open: https://www.bingplaces.com/. OpenAlt: https://businessconnect.apple.com/. Status: https://arledscreen.com/geo-status.json → potentialAction. Tur1a: https://arledscreen.com/tur1a.json → potentialAction. Progress: https://arledscreen.com/point-c-progress.json → potentialAction.",
+  "description": "Third-party profile paste packs for humans (GBP/IG/FB/LinkedIn) + machine Merchant notes. Human packs = cite facts only — no catalog.json / quote-only / extrasUsd jargon in public bios. Prices for AI: ai-shopping.json. GEO baseline: geo-baseline.json. Do not invent ratings. WebSite: https://arledscreen.com/#website.",
   "url": "https://arledscreen.com/entity-profiles.json",
   "creator": {
     "@id": "https://arledscreen.com/#organization"
@@ -26,7 +25,6 @@
     "https://arledscreen.com/ai-shopping.json",
     "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/geo-baseline.json",
-    "https://arledscreen.com/point-c.txt",
     "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
     "https://arledscreen.com/feeds/prices.rss",
     "https://arledscreen.com/.well-known/brand.json",
@@ -80,8 +78,6 @@
     "https://arledscreen.com/.well-known/llms.txt",
     "https://arledscreen.com/.well-known/llms-full.txt",
     "https://arledscreen.com/.well-known/humans.txt",
-    "https://arledscreen.com/point-c-en.txt",
-    "https://arledscreen.com/.well-known/point-c.txt",
     "https://arledscreen.com/offer",
     "https://arledscreen.com/offers",
     "https://arledscreen.com/dataset",
@@ -174,26 +170,6 @@
     "https://arledscreen.com/tr/llms-full.txt",
     "https://arledscreen.com/en/ai.txt",
     "https://arledscreen.com/tr/ai.txt",
-    "https://arledscreen.com/point-c.json",
-    "https://arledscreen.com/point-c-en.json",
-    "https://arledscreen.com/.well-known/point-c.json",
-    "https://arledscreen.com/.well-known/point-c-en.json",
-    "https://arledscreen.com/feeds/point-c.csv",
-    "https://arledscreen.com/feeds/point-c-en.csv",
-    "https://arledscreen.com/point-c.csv",
-    "https://arledscreen.com/point-c-en.csv",
-    "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/.well-known/geo-status.json",
-    "https://arledscreen.com/owner-p0.json",
-    "https://arledscreen.com/geo-next.txt",
-    "https://arledscreen.com/.well-known/geo-next.txt",
-    "https://arledscreen.com/owner-next.txt",
-    "https://arledscreen.com/tur1a.json",
-    "https://arledscreen.com/.well-known/tur1a.json",
-    "https://arledscreen.com/feeds/tur1a.csv",
-    "https://arledscreen.com/tur1a.csv",
-    "https://arledscreen.com/point-c-progress.json",
-    "https://arledscreen.com/.well-known/point-c-progress.json",
     "https://arledscreen.com/.well-known/AGENTS.md",
     "https://arledscreen.com/social.json",
     "https://arledscreen.com/contact.json",
@@ -244,18 +220,6 @@
       "EN human packs: packsEn.* (cite + NAP only; no catalog.json / quote-only jargon in public bios)."
     ]
   },
-  "ownerP0Checklist": [
-    "P0 next: live https://arledscreen.com/owner-next.html · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction (packKey=directoryLong; text; Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/) · progress https://arledscreen.com/point-c-progress.json → potentialAction · status https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · paste https://arledscreen.com/point-c.txt (34245; rating yok) · WebSite: https://arledscreen.com/#website · playbook: docs/offsite-entity-playbook.md",
-    "GBP / kişi kartı About = packs.gbpDescription (tek kez; 34245; rating yok) · Open: https://business.google.com/",
-    "Instagram @arledscreen · Adı = packs.instagramName · Bio = packs.instagramBio (quote-only satırı sil)",
-    "Facebook @arledscreenn · About = packs.facebookAbout · WhatsApp @arledscreen (wa.me/905305078834) · LinkedIn = packs.linkedinAbout (slug /company/arleds ≠ web arleds.com satırını koru)",
-    "Bing Places / Apple = packs.bingPlaces / packs.appleBusinessConnect · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/",
-    "P0 domain: arleds.com → https://arledscreen.com/tr/ 301 — live NS DNSEnable/Isimtescil: Open: https://www.isimtescil.net/ · OpenAlt: Gmail draft (geo:status) · registrar Domain Redirect (Hostinger hPanel only if NS Hostinger) · npm run verify:arleds-301 · npm run geo:next · docs/ops/arleds-301-hostinger.md",
-    "Merchant jargon yalnızca packs.googleMerchantReadiness — kamu biyografisine koyma",
-    "Tur 1a / kör test: npm run tur1a:next → paste → npm run tur1a:log -- --mentioned=yes|no|partial --brandCorrect=yes|no --priceSourceCited=ai-shopping|… · tur1a:matrix (0/48) — skor uydurma yok · Open: https://chatgpt.com/ · tur1a:csv",
-    "PR #60 main merge (GEO kalıcılık)",
-    "EN profiles (if used): npm run point-c:en — packsEn.* cite-only + LinkedIn slug note"
-  ],
   "canonicalUrls": {
     "entityJson": "https://arledscreen.com/entity.json",
     "catalogJson": "https://arledscreen.com/catalog.json",
@@ -274,8 +238,6 @@
     "playbook": "docs/offsite-entity-playbook.md (repo)",
     "enHome": "https://arledscreen.com/en/",
     "pricesRss": "https://arledscreen.com/feeds/prices.rss",
-    "pointCTxt": "https://arledscreen.com/point-c.txt",
-    "pointCEnTxt": "https://arledscreen.com/point-c-en.txt",
     "brandJson": "https://arledscreen.com/brand.json",
     "pricesJson": "https://arledscreen.com/prices.json",
     "brandWellKnown": "https://arledscreen.com/.well-known/brand.json",
@@ -354,50 +316,8 @@
     },
     {
       "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/point-c.txt",
-      "name": "ARLEDSCREEN Point C paste packs"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/point-c-en.txt",
-      "name": "ARLEDSCREEN Point C paste packs (EN)"
-    },
-    {
-      "@type": "DataDownload",
       "encodingFormat": "text/tab-separated-values",
       "contentUrl": "https://arledscreen.com/feeds/merchant-priced-panels.tsv"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/point-c.json",
-      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/geo-status.json",
-      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/geo-next.txt",
-      "name": "ARLEDSCREEN GEO priority clipboard"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/tur1a.json",
-      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/point-c-progress.json",
-      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
     },
     {
       "@type": "DataDownload",
@@ -600,8 +520,7 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/.well-known/entity-profiles.json",
-      "name": "Point C entity-profiles well-known invent alias"
+      "contentUrl": "https://arledscreen.com/.well-known/entity-profiles.json"
     },
     {
       "@type": "DataDownload",
@@ -744,8 +663,7 @@
     {
       "@type": "DataDownload",
       "encodingFormat": "application/ld+json",
-      "contentUrl": "https://arledscreen.com/entity-profiles",
-      "name": "Point C entity-profiles extensionless invent alias"
+      "contentUrl": "https://arledscreen.com/entity-profiles"
     },
     {
       "@type": "DataDownload",
@@ -1247,18 +1165,6 @@
     },
     {
       "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/point-c-en.txt",
-      "name": "Point C paste packs (EN)"
-    },
-    {
-      "@type": "DataDownload",
-      "encodingFormat": "text/plain",
-      "contentUrl": "https://arledscreen.com/.well-known/point-c.txt",
-      "name": "Point C paste packs (well-known invent alias)"
-    },
-    {
-      "@type": "DataDownload",
       "@id": "https://arledscreen.com/#website",
       "encodingFormat": "text/html",
       "contentUrl": "https://arledscreen.com",
@@ -1266,13 +1172,6 @@
     }
   ],
   "isRelatedTo": [
-    {
-      "@type": "DataDownload",
-      "@id": "https://arledscreen.com/point-c.txt",
-      "url": "https://arledscreen.com/point-c.txt",
-      "name": "ARLEDSCREEN Point C paste packs",
-      "encodingFormat": "text/plain"
-    },
     {
       "@type": "Brand",
       "@id": "https://arledscreen.com/#brand-nxtionstar",
@@ -1310,45 +1209,7 @@
     "https://arledscreen.com/ai-shopping.json",
     "https://arledscreen.com/catalog.json",
     "https://arledscreen.com/geo-baseline.json",
-    "https://arledscreen.com/point-c.txt",
-    "https://arledscreen.com/#website",
-    "https://arledscreen.com/point-c.json",
-    "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/geo-next.txt",
-    "https://arledscreen.com/tur1a.json",
-    "https://arledscreen.com/point-c-progress.json"
+    "https://arledscreen.com/#website"
   ],
-  "subjectOf": [
-    {
-      "@type": "Dataset",
-      "@id": "https://arledscreen.com/point-c.json",
-      "url": "https://arledscreen.com/point-c.json",
-      "name": "ARLEDSCREEN Point C paste packs (HowTo potentialAction)"
-    },
-    {
-      "@type": "Dataset",
-      "@id": "https://arledscreen.com/geo-status.json",
-      "url": "https://arledscreen.com/geo-status.json",
-      "name": "ARLEDSCREEN GEO owner-gate status (HowTo potentialAction)"
-    },
-    {
-      "@type": "DataDownload",
-      "@id": "https://arledscreen.com/geo-next.txt",
-      "url": "https://arledscreen.com/geo-next.txt",
-      "name": "ARLEDSCREEN GEO priority clipboard",
-      "encodingFormat": "text/plain"
-    },
-    {
-      "@type": "Dataset",
-      "@id": "https://arledscreen.com/tur1a.json",
-      "url": "https://arledscreen.com/tur1a.json",
-      "name": "ARLEDSCREEN Tur1a blind coverage (HowTo potentialAction)"
-    },
-    {
-      "@type": "Dataset",
-      "@id": "https://arledscreen.com/point-c-progress.json",
-      "url": "https://arledscreen.com/point-c-progress.json",
-      "name": "ARLEDSCREEN Point C paste progress (HowTo potentialAction)"
-    }
-  ]
+  "subjectOf": []
 }

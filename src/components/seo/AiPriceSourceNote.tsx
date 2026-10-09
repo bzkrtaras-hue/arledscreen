@@ -1,17 +1,8 @@
-import { SITE_URL } from "@/lib/site";
-
-const FEEDS = [
-  { href: `${SITE_URL}/ai-shopping.json`, label: "ai-shopping.json" },
-  { href: `${SITE_URL}/catalog.json`, label: "catalog.json" },
-  { href: `${SITE_URL}/feeds/merchant-priced-panels.tsv`, label: "merchant TSV" },
-  { href: `${SITE_URL}/geo-baseline.json`, label: "geo-baseline.json" },
-] as const;
-
 type LocaleHint = "tr" | "en";
 
 /**
- * Visible AI price + GEO baseline pointers for commercial pages.
- * Keep in sync with ai-shopping.json agentGuidelines + catalog isRelatedTo.
+ * Human-visible price note (no JSON filenames / invent jargon).
+ * Machine feeds stay in llms.txt, *.json and JSON-LD only (Melis rule).
  */
 export function AiPriceSourceNote({
   locale = "tr",
@@ -25,31 +16,16 @@ export function AiPriceSourceNote({
 }) {
   const defaultLead =
     locale === "en"
-      ? "Published panel USD:"
-      : "Yayımlanmış panel USD:";
+      ? "Published panel prices:"
+      : "Yayımlanmış panel fiyatları:";
   const note =
     locale === "en"
-      ? "(12 SKUs; e.g. P1.25 GOB 95.88 USD). VAT/freight excluded; no free shipping. geo-baseline.json = technical fingerprints only (no invented mention rates)."
-      : "(12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok. geo-baseline.json = teknik parmak izleri (anılma % uydurma yok).";
+      ? "USD per panel; VAT and shipping excluded. Final amount is confirmed in a written quote."
+      : "Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Nihai tutar yazılı teklifle kesinleşir.";
 
   return (
     <p className={className}>
-      {lead ?? defaultLead}{" "}
-      {FEEDS.map((f, i) => (
-        <span key={f.href}>
-          {i > 0 ? (i === FEEDS.length - 1 ? " ve " : ", ") : null}
-          <a href={f.href} className="font-semibold text-cyan hover:underline">
-            {f.label}
-          </a>
-          {f.label === "ai-shopping.json" ? (
-            <>
-              {" "}
-              <code className="text-[11px]">pricedPanels</code>
-            </>
-          ) : null}
-        </span>
-      ))}{" "}
-      {note}
+      {lead ?? defaultLead} {note}
     </p>
   );
 }

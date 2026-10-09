@@ -32,66 +32,36 @@ jobs:
             echo "ai-shopping must not carry blind-test payload" >&2
             exit 1
           fi
-          for needle in ai-shopping.json entity.json llms.txt catalog.json brand.json prices.rss point-c.txt; do
+          for needle in ai-shopping.json entity.json llms.txt catalog.json brand.json prices.rss; do
             grep -q "$needle" out/sitemap.xml || { echo "sitemap missing $needle" >&2; exit 1; }
           done
           for needle in /.well-known/panels.json /.well-known/mpn.json /.well-known/merchant.json /modules.json /sku.json; do
             grep -q "$needle" out/sitemap.xml || { echo "sitemap missing invent alias $needle" >&2; exit 1; }
           done
+          # Owner-only / internal gate surfaces must never ship (privacy).
+          if grep -E -q 'owner-next|owner-gate|owner-p0|point-c|tur1a|geo-next|geo-status' out/sitemap.xml; then
+            echo "sitemap must not list owner/internal gate URLs" >&2
+            exit 1
+          fi
+          for f in out/llms.txt out/llms-full.txt out/ai.txt out/humans.txt out/.well-known/security.txt; do
+            if grep -E -q 'owner-next|owner-gate|owner-p0|point-c|tur1a|geo-next|geo-status' "$f"; then
+              echo "$f must not reference owner/internal gate URLs" >&2
+              exit 1
+            fi
+          done
+          node scripts/validate-no-owner-gate.mjs
           echo "OK GEO out/ artefacts"
       - name: Local invent smoke
         run: npm run invent:smoke:local
-      - name: Owner tooling smoke
+      - name: Discovery artefact smoke
         run: |
           set -euo pipefail
-          npm run point-c | grep -q "GBP About"
-          npm run point-c | grep -q "Hostinger arleds.com"
-          npm run point-c | grep -q "Hostinger support email"
-          npm run point-c | grep -q "DNSEnable"
-          npm run point-c | grep -q "Domain Redirect"
-          npm run point-c | grep -q "mailto:support@hostinger.com"
-          npm run point-c:next > /tmp/point-c-next.txt
-          grep -q "Point C next paste" /tmp/point-c-next.txt
-          grep -q "directoryLong" /tmp/point-c-next.txt
-          npm run geo:next > /tmp/geo-next.txt
-          grep -q "GEO next" /tmp/geo-next.txt
-          grep -q "Point C" /tmp/geo-next.txt
-          grep -q "directoryLong" /tmp/geo-next.txt
-          grep -q "owner-next.html" /tmp/geo-next.txt
-          grep -q "owner-next.json" /tmp/geo-next.txt
-          grep -q "?pack=" /tmp/geo-next.txt
-          npm run point-c:hostinger-eml | grep -q "arleds-301-hostinger.eml"
-          test -f docs/ops/arleds-301-hostinger.eml && grep -q "support@hostinger.com" docs/ops/arleds-301-hostinger.eml
-          test -f out/point-c.txt && grep -q "GBP About" out/point-c.txt
-          test -f out/point-c.txt && grep -q "Hostinger arleds.com" out/point-c.txt
-          test -f out/point-c.txt && grep -q "Hostinger support email" out/point-c.txt
-          test -f out/point-c.txt && grep -q "DNSEnable" out/point-c.txt
-          test -f out/point-c.txt && grep -q "Domain Redirect" out/point-c.txt
-          test -f out/point-c.txt && grep -q "point-c:next" out/point-c.txt
-          test -f out/point-c.txt && grep -q "tur1a:log" out/point-c.txt
-          test -f out/point-c-en.txt && grep -q "EN GBP About" out/point-c-en.txt
-          test -f out/.well-known/ard.json && grep -q '"pointC"' out/.well-known/ard.json
           grep -q 'rel="related"' out/feeds/prices.rss
           grep -q "/entity.json" out/feeds/prices.rss
-          npm run tur1a:print | grep -q "promptId=5"
-          npm run tur1a:list | grep -q "en-1"
-          npm run tur1a:matrix | grep -q "0/48"
-          npm run tur1a:csv | grep -q "platform,promptId,locale,status"
-          npm run tur1a:csv 2>/dev/null | grep -c ",empty," | grep -q "48"
-          npm run tur1a:next > /tmp/tur1a-next.txt
-          grep -q "promptId=1" /tmp/tur1a-next.txt
-          grep -q "tur1a:log" /tmp/tur1a-next.txt
-          grep -q "/.well-known/modules.json" /tmp/tur1a-next.txt
-          npm run tur1a:log -- --dry-run --mentioned=yes --brandCorrect=yes --priceSourceCited=ai-shopping | grep -q "promptId"
-          grep -q "/point-c.txt" out/entity.json
-          grep -q "/point-c.txt" out/brand.json
-          grep -q "/point-c.txt" out/AGENTS.md
           head -1 out/feeds/merchant-priced-panels.tsv | grep -q organization_id
           head -1 out/feeds/merchant-priced-panels.tsv | grep -q entity_url
           head -1 out/feeds/merchant-priced-panels.tsv | grep -q brand_url
           grep -q "/geo-baseline.json" out/feeds/prices.rss
-          grep -q "/point-c.txt" out/feeds/prices.rss
-          grep -q "owner-tur1a-log:" out/ai.txt
           grep -q "feed-alias-well-known-modules:" out/ai.txt
           grep -q "/.well-known/modules.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/sku.json" scripts/submit-indexnow.mjs
@@ -110,8 +80,6 @@ jobs:
           grep -q "/.well-known/company.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/nap.json" scripts/submit-indexnow.mjs
           grep -q "/.well-known/about.json" scripts/submit-indexnow.mjs
-          grep -q "DNSEnable" out/entity-profiles.json
-          grep -q "Domain Redirect" out/entity-profiles.json
           test -f out/.well-known/company.json && cmp -s out/entity.json out/.well-known/company.json
           test -f out/.well-known/nap.json && cmp -s out/entity.json out/.well-known/nap.json
           test -f out/.well-known/about.json && cmp -s out/entity.json out/.well-known/about.json
@@ -135,7 +103,6 @@ jobs:
           grep -q "/prices.json" out/ai-shopping.json
           grep -q "/.well-known/llms.txt" out/ai-shopping.json
           grep -q "/agents.json" out/ai-shopping.json
-          grep -q "/.well-known/point-c.txt" out/ai-shopping.json
           grep -qE '"contentUrl": "https://arledscreen.com/brand"' out/ai-shopping.json
           grep -qE '"contentUrl": "https://arledscreen.com/modules"' out/ai-shopping.json
           grep -qE '"contentUrl": "https://arledscreen.com/sku"' out/ai-shopping.json
@@ -151,90 +118,30 @@ jobs:
           test -f functions/brand.js && test -f functions/modules.js
           test -f out/product && test -f out/products
           test -f out/entity-profiles && test -f out/ai-shopping
-          # Link invent aliases trimmed (header-size guard) — keep brand/modules + owner-gate, drop ext/api/locale twins
           grep -q 'https://arledscreen.com/brand>' out/_headers
           grep -q 'https://arledscreen.com/modules>' out/_headers
           grep -q 'https://arledscreen.com/feeds/prices.json>' out/_headers
-          grep -q 'https://arledscreen.com/geo-status.json>' out/_headers
-          grep -q 'https://arledscreen.com/geo-next.txt>' out/_headers
-          grep -q 'https://arledscreen.com/owner-next.txt>' out/_headers
-          grep -q 'https://arledscreen.com/point-c-progress.json>' out/_headers
-          grep -q 'https://arledscreen.com/tur1a.json>' out/_headers
           ! grep -q 'https://arledscreen.com/sku>' out/_headers
           ! grep -q 'https://arledscreen.com/api/v1/prices>' out/_headers
           ! grep -q 'https://arledscreen.com/en/prices.json>' out/_headers
           test "$(grep -c '^\s*Link:' out/_headers)" -le 90
           test -f out/.well-known/ai-shopping.json && cmp -s out/ai-shopping.json out/.well-known/ai-shopping.json
-          node -e 'const a=require("./out/ai-shopping.json"); const u=(a.distribution||[]).map(d=>d.contentUrl||"").join("\n"); const need=["/price.json","/pricing.json","/modules.json","/sku.json","/.well-known/prices.json","/.well-known/panels.json","/.well-known/mpn.json","/.well-known/merchant.json","/.well-known/price.json","/.well-known/pricing.json","/offer.json","/offers.json","/.well-known/offer.json","/.well-known/offers.json","/dataset.json","/feed.json","/.well-known/dataset.json","/.well-known/feed.json","/products.json","/product.json","/.well-known/products.json","/.well-known/product.json","/.well-known/catalog.json","/.well-known/geo-baseline.json","/.well-known/entity-profiles.json","/.well-known/ai-shopping.json","/brand.json","/entity.json","/point-c.txt","https://arledscreen.com/brand","https://arledscreen.com/modules","https://arledscreen.com/sku","https://arledscreen.com/mpn","https://arledscreen.com/merchant","https://arledscreen.com/offers","https://arledscreen.com/dataset","https://arledscreen.com/feed","https://arledscreen.com/products","https://arledscreen.com/product","https://arledscreen.com/geo-baseline","https://arledscreen.com/company","https://arledscreen.com/nap","https://arledscreen.com/cite","https://arledscreen.com/faq","https://arledscreen.com/faqs","https://arledscreen.com/ai-shopping","https://arledscreen.com/entity-profiles","https://arledscreen.com/llms","https://arledscreen.com/llms-full","https://arledscreen.com/api/v1/prices","https://arledscreen.com/api/panels.json","https://arledscreen.com/api/merchant.json","https://arledscreen.com/api/catalog"]; if(a.distribution.length<31||need.some(n=>!u.includes(n))) process.exit(1)'
+          node -e 'const a=require("./out/ai-shopping.json"); const u=(a.distribution||[]).map(d=>d.contentUrl||"").join("\n"); const need=["/price.json","/pricing.json","/modules.json","/sku.json","/.well-known/prices.json","/.well-known/panels.json","/.well-known/mpn.json","/.well-known/merchant.json","/.well-known/price.json","/.well-known/pricing.json","/offer.json","/offers.json","/.well-known/offer.json","/.well-known/offers.json","/dataset.json","/feed.json","/.well-known/dataset.json","/.well-known/feed.json","/products.json","/product.json","/.well-known/products.json","/.well-known/product.json","/.well-known/catalog.json","/.well-known/geo-baseline.json","/.well-known/entity-profiles.json","/.well-known/ai-shopping.json","/brand.json","/entity.json","https://arledscreen.com/brand","https://arledscreen.com/modules","https://arledscreen.com/sku","https://arledscreen.com/mpn","https://arledscreen.com/merchant","https://arledscreen.com/offers","https://arledscreen.com/dataset","https://arledscreen.com/feed","https://arledscreen.com/products","https://arledscreen.com/product","https://arledscreen.com/geo-baseline","https://arledscreen.com/company","https://arledscreen.com/nap","https://arledscreen.com/cite","https://arledscreen.com/faq","https://arledscreen.com/faqs","https://arledscreen.com/ai-shopping","https://arledscreen.com/entity-profiles","https://arledscreen.com/llms","https://arledscreen.com/llms-full","https://arledscreen.com/api/v1/prices","https://arledscreen.com/api/panels.json","https://arledscreen.com/api/merchant.json","https://arledscreen.com/api/catalog"]; if(a.distribution.length<31||need.some(n=>!u.includes(n))) process.exit(1)'
           grep -q '"isBasedOn"' out/geo-baseline.json
           grep -q "/entity.json" out/geo-baseline.json
-          grep -q "/point-c.txt" out/geo-baseline.json
           grep -q "/.well-known/modules.json" out/.well-known/ard.json
           grep -q "/.well-known/pricing.json" out/.well-known/ard.json
           grep -q "/.well-known/modules.json" out/AGENTS.md
           grep -q "/.well-known/modules.json" out/.well-known/agents.json
-          grep -q '"numberOfItems": 28' out/.well-known/agents.json
+          node -e 'const a=require("./out/.well-known/agents.json"); if(a.numberOfItems!==a.itemListElement.length||a.itemListElement.length<15) process.exit(1)'
           grep -q 'https://arledscreen.com/#website' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/organization.json' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/prices.json' out/.well-known/agents.json
-          grep -q 'https://arledscreen.com/point-c-en.txt' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/.well-known/security.txt' out/.well-known/agents.json
           grep -q 'https://arledscreen.com/llms-full.txt' out/.well-known/agents.json
-          grep -q 'https://arledscreen.com/owner-next.html' out/.well-known/agents.json
-          grep -q 'https://arledscreen.com/owner-next.json' out/.well-known/agents.json
-          grep -q 'owner-next.html' out/.well-known/agents.json
-          grep -q 'ItemList (28)' out/.well-known/ard.json
-          grep -q 'ownerNextHtml' out/.well-known/ard.json
-          grep -q 'ownerNextJson' out/.well-known/ard.json
-          test -f out/owner-next.html && test -f out/geo-next.html
-          cmp -s out/owner-next.html out/geo-next.html
-          test -f out/owner-next.json && test -f out/geo-next.json && test -f out/.well-known/owner-next.json && test -f out/.well-known/geo-next.json
-          cmp -s out/owner-next.json out/geo-next.json
-          cmp -s out/owner-next.json out/.well-known/owner-next.json
-          cmp -s out/owner-next.json out/.well-known/geo-next.json
-          grep -q 'Copy paste' out/owner-next.html
-          grep -q '/owner-next.json' out/owner-next.html
-          grep -q 'pack-list' out/owner-next.html
-          grep -q 'howto-ld' out/owner-next.html
-          grep -q 'Copy Open URL' out/owner-next.html
-          grep -q 'copy-ack' out/owner-next.html
-          grep -q 'copy-open-tab' out/owner-next.html
-          grep -q 'Copy + Open' out/owner-next.html
-          grep -q 'copy-open-all' out/owner-next.html
-          grep -q 'Copy + Open all' out/owner-next.html
-          grep -q 'actions-sticky' out/owner-next.html
-          grep -q 'doCopyOpenAll' out/owner-next.html
-          grep -q 'pasted-next' out/owner-next.html
-          grep -q 'doPastedNext' out/owner-next.html
-          grep -q 'Pasted → next' out/owner-next.html
-          grep -q 'Mailto DNSEnable' out/owner-next.html
-          grep -q 'social-handles' out/owner-next.html
-          grep -q 'copySocialHandles' out/owner-next.html
-          grep -q 'jumpToSocialPack' out/owner-next.html
-          grep -q 'data-pack="facebookAbout"' out/owner-next.html
-          grep -q 'data-pack="instagramBio"' out/owner-next.html
-          grep -q 'e.key === "f"' out/owner-next.html
-          grep -q 'e.key === "i"' out/owner-next.html
+          grep -q 'ItemList (' out/.well-known/ard.json
           node -e 'const a=require("./out/.well-known/ard.json"); const s=a?.agentic?.resources?.socialJson; if(!String(s?.url||"").includes("/social.json")||String(s?.handles?.facebook||"")!=="arledscreenn"||String(s?.handles?.instagram||"")!=="arledscreen") process.exit(1)'
-          grep -q '@arledscreenn' out/owner-next.html
-          grep -q '/social.json' out/owner-next.html
-          node -e 'const p=require("./out/point-c-progress.json"); if(String(p.socialHandles?.facebook||"")!=="arledscreenn"||String(p.socialHandles?.instagram||"")!=="arledscreen") process.exit(1)'
-          grep -q '/owner-next.json' out/_headers
-          awk 'BEGIN{p=0} /^\/owner-next\.json$/{p=1;next} p&&/^[^ ]/{exit} p&&/no-store/{found=1} END{exit found?0:1}' out/_headers
           awk 'BEGIN{p=0} /^\/social\.json$/{p=1;next} p&&/^[^ ]/{exit} p&&/no-store/{found=1} END{exit found?0:1}' out/_headers
-          node -e 'const g=require("./out/geo-status.json"); const a=g.gates?.arleds301?.openAlts||[]; if(!a.some(u=>String(u).startsWith("mailto:")&&String(u).includes("destek@isimtescil"))) process.exit(1)'
-          node -e 'const t=require("./out/tur1a.json"); if(!Array.isArray(t.next?.openAlts)||t.next.openAlts.length<1) process.exit(1)'
-          grep -q '/owner-next.html' out/ai.txt
-          grep -q '/owner-next.json' out/ai.txt
-          grep -q '/owner-next.json' out/_headers
-          grep -q '/owner-next.html' out/_headers
-          grep -q '/owner-next.json' out/AGENTS.md
-          grep -q '/owner-next.json' out/llms.txt
-          grep -q '/owner-next.json' out/.well-known/security.txt
-          grep -q 'owner-next.json' /tmp/geo-next.txt
-          grep -q '?pack=' /tmp/geo-next.txt
-          node -e 'const p=require("./out/point-c-progress.json"); const g=require("./out/geo-status.json"); const t=require("./out/owner-next.json"); const pc=require("./out/point-c.json"); if(!Array.isArray(p.packs)||p.packs.length<11||!p.packs.some(x=>String(x.html||"").includes("?pack=directoryLong"))||!String(p.next?.html||"").includes("?pack=")||!Array.isArray(g.gates?.pointC?.packs)||g.gates.pointC.packs.length<11||!String(p.potentialAction?.url||"").includes("/owner-next.html?start=1")||!String(g.potentialAction?.url||"").includes("/owner-next.html?start=1")||!String(p.potentialAction?.step?.[0]?.url||"").includes("bingplaces.com")||!String(g.potentialAction?.step?.[0]?.url||"").includes("bingplaces.com")||!String(g.gates?.arleds301?.text||"").includes("Domain Redirect")||t["@type"]!=="Dataset"||!Array.isArray(t.packs)||t.packs.length<11||!t.next||!String(t.url||"").includes("/owner-next.json")||!String(t.potentialAction?.url||"").includes("/owner-next.html?start=1")||String(t.socialHandles?.facebook||"")!=="arledscreenn"||String(t.socialHandles?.instagram||"")!=="arledscreen"||String(t.socialHandles?.whatsapp||"")!=="arledscreen"||String(g.socialHandles?.facebook||"")!=="arledscreenn"||String(pc.socialHandles?.facebook||"")!=="arledscreenn"||String(pc.socialHandles?.instagram||"")!=="arledscreen") process.exit(1)'
-          awk 'BEGIN{p=0} /^\/owner-next\.json$/{p=1;next} p&&/^[^ ]/{exit} p&&/! Cache-Control/{u=1} p&&/no-store/{n=1} END{exit (u&&n)?0:1}' out/_headers
           grep -q '/.well-known/security.txt' out/ai-shopping.json
           grep -q '/llms-full.txt' out/ai-shopping.json
           grep -q 'security_txt_url' out/feeds/merchant-priced-panels.tsv
@@ -258,10 +165,8 @@ jobs:
           grep -q "/.well-known/modules.json" out/entity.json
           grep -q "modulesWellKnown" out/geo-baseline.json
           grep -q "/.well-known/modules.json" out/entity-profiles.json
-          grep -q "/.well-known/modules.json" /tmp/tur1a-next.txt
           grep -q "/.well-known/modules.json" out/catalog.json
           grep -q "/.well-known/modules.json" out/brand.json
-          grep -q "/.well-known/modules.json" out/point-c.txt
           grep -q '"modulesJson"' out/.well-known/ard.json
           grep -q '"skuJson"' out/.well-known/ard.json
           grep -q "/.well-known/modules.json" out/feeds/prices.rss
@@ -277,17 +182,6 @@ jobs:
           grep -q 'href="https://arledscreen.com/prices.json"' out/feeds/prices.rss
           grep -q "/brand.json" out/entity.json
           npm run verify:arleds-301 >/tmp/arleds-verify.txt 2>&1 || true
-          grep -q "Hostinger clipboard" /tmp/arleds-verify.txt
           grep -q "DNS diagnosis" /tmp/arleds-verify.txt
           grep -q "mode:" /tmp/arleds-verify.txt
-          npm run geo:status >/tmp/geo-status.txt 2>&1 || true
-          grep -q "GEO next:" /tmp/geo-status.txt
-          grep -q "geo:next" /tmp/geo-status.txt
-          grep -Eq "Hostinger clipboard|DNSEnable|mode=" /tmp/geo-status.txt
-          grep -q "mailto:support@hostinger.com" /tmp/geo-status.txt || grep -q "verify:arleds-301" /tmp/geo-status.txt
-          grep -q "Gmail draft (Send)" /tmp/geo-status.txt || grep -q "Domain Redirect" /tmp/geo-status.txt
-          grep -q "Point C paste progress" /tmp/geo-status.txt
-          grep -q "Point C next paste" /tmp/geo-status.txt
-          grep -q "Tur1a next:" /tmp/geo-status.txt
-          grep -q "tur1a:csv" /tmp/geo-status.txt
-          echo "OK owner tooling"
+          echo "OK discovery artefacts"

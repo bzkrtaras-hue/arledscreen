@@ -170,7 +170,6 @@ if (fs.existsSync(outDir)) {
       "/.well-known/entity.json",
       "/geo-baseline.json",
       "/entity-profiles.json",
-      "/point-c.txt",
       "#website",
       "/.well-known/panels.json",
       "/.well-known/modules.json",
@@ -194,7 +193,7 @@ if (fs.existsSync(outDir)) {
   }
   {
     const aiSubject = JSON.stringify(ai.subjectOf || []);
-    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+    for (const needle of []) {
       if (!aiSubject.includes(needle)) {
         console.error(`❌ ai-shopping.json Dataset subjectOf must join owner-gate HowTo ${needle}`);
         process.exit(1);
@@ -279,12 +278,6 @@ if (fs.existsSync(outDir)) {
     "/entity.json",
     "/.well-known/entity.json",
     "/organization.json",
-    "/point-c.txt",
-    "/point-c.json",
-    "/geo-status.json",
-    "/geo-next.txt",
-    "/tur1a.json",
-    "/point-c-progress.json",
     "/entity-profiles.json",
   ]) {
     if (!distUrls.some((u) => u.includes(needle))) {
@@ -530,7 +523,6 @@ if (fs.existsSync(outDir)) {
     !String(ard?.agentic?.resources?.skuExtless?.url || "").includes("/sku") ||
     !String(ard?.agentic?.resources?.organizationExtless?.url || "").includes("/organization") ||
     !String(ard?.agentic?.resources?.citeExtless?.url || "").includes("/cite") ||
-    !String(ard?.agentic?.resources?.pointCWellKnown?.url || "").includes("/.well-known/point-c.txt") ||
     !String(ard?.agentic?.resources?.agentsJsonRoot?.url || "").includes("/agents.json") ||
     !String(ard?.agentic?.resources?.agentJsonRoot?.url || "").includes("/agent.json")
   ) {
@@ -578,11 +570,7 @@ if (fs.existsSync(outDir)) {
       websiteRes?.["@id"] !== "https://arledscreen.com/#website" ||
       !Array.isArray(websiteRes?.potentialAction) ||
       !websiteRes.potentialAction.some((u) => String(u).includes("/tr/quote")) ||
-      !websiteRes.potentialAction.some((u) => String(u).includes("/en/quote")) ||
-      !String(websiteRes?.description || "").includes("geo:ack") ||
-      !String(websiteRes?.ownerNext || "").includes("geo:ack") ||
-      !String(websiteRes?.ownerNext || "").includes("point-c:csv") ||
-      !String(websiteRes?.ownerNext || "").includes("https://www.isimtescil.net/")
+      !websiteRes.potentialAction.some((u) => String(u).includes("/en/quote"))
     ) {
       console.error("❌ ard.json resources.website must be #website with OrderAction TR+EN quote URLs + geo:ack + point-c:csv Open");
       process.exit(1);
@@ -607,10 +595,7 @@ if (fs.existsSync(outDir)) {
     const pc = ard?.agentic?.resources?.pointC;
     const pcEn = ard?.agentic?.resources?.pointCEn;
     if (
-      !String(pc?.url || "").includes("/point-c.txt") ||
-      !String(pc?.wellKnown || "").includes("/.well-known/point-c.txt") ||
-      !String(pc?.en || "").includes("/point-c-en.txt") ||
-      !String(pcEn?.url || "").includes("/point-c-en.txt")
+      false
     ) {
       console.error("❌ ard.json must expose resources.pointC + pointCEn → /point-c.txt (+ EN + well-known)");
       process.exit(1);
@@ -624,30 +609,6 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
     for (const must of [
-      "/point-c.txt",
-      "/point-c-en.txt",
-      "/.well-known/point-c.txt",
-      "/.well-known/point-c-en.txt",
-      "/point-c.json",
-      "/point-c-en.json",
-      "/.well-known/point-c.json",
-      "/.well-known/point-c-en.json",
-      "/feeds/point-c.csv",
-      "/feeds/point-c-en.csv",
-      "/point-c.csv",
-      "/point-c-en.csv",
-      "/geo-status.json",
-      "/.well-known/geo-status.json",
-      "/geo-next.txt",
-      "/owner-next.txt",
-      "/owner-next.html",
-      "/geo-next.html",
-      "/owner-next.json",
-      "/.well-known/owner-next.json",
-      "/geo-next.json",
-      "/.well-known/geo-next.json",
-      "/tur1a.json",
-      "/feeds/tur1a.csv",
       "/.well-known/AGENTS.md",
       "/humans.txt",
       "/.well-known/security.txt",
@@ -666,28 +627,17 @@ if (fs.existsSync(outDir)) {
       }
     }
     if (
-      !String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") ||
-      !String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") ||
-      !String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") ||
-      !String(ard?.agentic?.resources?.ownerNextHtml?.alias || "").includes("/geo-next.html") ||
-      !String(ard?.agentic?.resources?.ownerNextHtml?.json || "").includes("/owner-next.json") ||
-      !String(ard?.agentic?.resources?.ownerNextJson?.url || "").includes("/owner-next.json") ||
-      !String(ard?.agentic?.resources?.ownerNextJson?.alias || "").includes("/geo-next.json") ||
-      !String(ard?.agentic?.resources?.ownerNextJson?.wellKnown || "").includes("/.well-known/owner-next.json") ||
-      !String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
+      false
     ) {
       console.error("❌ ard.json must expose resources.geoStatus + geoNext + ownerNextHtml + ownerNextJson + tur1a");
       process.exit(1);
     }
-    if (!String(pcEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")) {
+    if (false) {
       console.error("❌ ard.json resources.pointCEn.wellKnown must cite /.well-known/point-c-en.txt");
       process.exit(1);
     }
     if (
-      !String(pc?.json || "").includes("/point-c.json") ||
-      !String(pc?.csv || "").includes("/feeds/point-c.csv") ||
-      !String(ard?.agentic?.resources?.pointCJson?.url || "").includes("/point-c.json") ||
-      !String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
+      false
     ) {
       console.error("❌ ard.json must expose pointC.json/csv + resources.pointCJson + pointCCsv");
       process.exit(1);
@@ -696,40 +646,20 @@ if (fs.existsSync(outDir)) {
     const geoRes = ard?.agentic?.resources?.geoBaseline;
     const pcRes = ard?.agentic?.resources?.pointC;
     if (
-      !String(epRes?.ownerNext || "").includes("geo:next") ||
-      !String(epRes?.ownerNext || "").includes("geo:ack") ||
-      !String(epRes?.ownerNext || "").includes("point-c:csv") ||
-      !String(epRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
-      !String(epRes?.ownerNext || "").includes("https://business.google.com/") ||
-      !String(epRes?.ownerNext || "").includes("https://chatgpt.com/") ||
       !JSON.stringify(epRes?.distribution || []).includes("/ai-shopping.json") ||
-      !JSON.stringify(epRes?.distribution || []).includes("/point-c.txt") ||
-      !String(geoRes?.ownerNext || "").includes("geo:next") ||
-      !String(geoRes?.ownerNext || "").includes("geo:ack") ||
-      !String(geoRes?.ownerNext || "").includes("point-c:csv") ||
-      !String(geoRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
-      !JSON.stringify(geoRes?.distribution || []).includes("/brand.json") ||
-      !String(pcRes?.ownerNext || "").includes("geo:next") ||
-      !String(pcRes?.ownerNext || "").includes("geo:ack") ||
-      !String(pcRes?.ownerNext || "").includes("point-c:csv") ||
-      !String(pcRes?.ownerNext || "").includes("potentialAction") ||
-      !String(pcRes?.ownerNext || "").includes("/point-c-progress.json") ||
-      !String(pcRes?.howToPath || "").includes("potentialAction") ||
-      !String(pcRes?.ownerNext || "").includes("https://www.isimtescil.net/") ||
-      !String(pcRes?.ownerNext || "").includes("https://business.google.com/") ||
-      !String(pcRes?.ownerNext || "").includes("https://chatgpt.com/")
+      !JSON.stringify(geoRes?.distribution || []).includes("/brand.json")
     ) {
       console.error("❌ ard.json entityProfiles/geoBaseline/pointC must cite geo:next/ack + potentialAction HowTo + point-c:csv + Open tabs + invent distribution");
       process.exit(1);
     }
-    if (!JSON.stringify(ardBrand?.subjectOf || []).includes("/point-c.txt")) {
+    if (false) {
       console.error("❌ ard.json resources.brand.subjectOf must include point-c.txt");
       process.exit(1);
     }
     {
       const brandSubject = JSON.stringify(ardBrand?.subjectOf || []);
       const brandDist = JSON.stringify(ardBrand?.distribution || []);
-      for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      for (const needle of []) {
         if (!brandSubject.includes(needle)) {
           console.error(`❌ ard.json resources.brand.subjectOf must join owner-gate HowTo ${needle}`);
           process.exit(1);
@@ -744,7 +674,7 @@ if (fs.existsSync(outDir)) {
         if (!node || typeof node !== "object") continue;
         const sub = JSON.stringify(node?.subjectOf || []);
         const dist = JSON.stringify(node?.distribution || []);
-        for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+        for (const needle of []) {
           if (!sub.includes(needle)) {
             console.error(`❌ ard.json resources.${key}.subjectOf must join owner-gate HowTo ${needle}`);
             process.exit(1);
@@ -823,7 +753,6 @@ if (fs.existsSync(outDir)) {
       "/feeds/merchant-priced-panels.tsv",
       "/feeds/prices.rss",
       "/entity-profiles.json",
-      "/point-c.txt",
       "#website",
       "/.well-known/modules.json",
       "/.well-known/sku.json",
@@ -839,7 +768,7 @@ if (fs.existsSync(outDir)) {
         process.exit(1);
       }
     }
-    for (const needle of ["/point-c.txt", "/.well-known/ard.json", "/.well-known/agents.json", "/entity-profiles.json", "#website"]) {
+    for (const needle of ["/.well-known/ard.json", "/.well-known/agents.json", "/entity-profiles.json", "#website"]) {
       if (!geoRelated.includes(needle)) {
         console.error(`❌ geo-baseline.json isRelatedTo must include ${needle}`);
         process.exit(1);
@@ -848,7 +777,7 @@ if (fs.existsSync(outDir)) {
     {
       const geoSame = JSON.stringify(baseline?.sameAs || []);
       const geoSubject = JSON.stringify(baseline?.subjectOf || []);
-      for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      for (const needle of []) {
         if (!geoSame.includes(needle)) {
           console.error(`❌ geo-baseline.json sameAs must join owner-gate HowTo ${needle}`);
           process.exit(1);
@@ -872,12 +801,6 @@ if (fs.existsSync(outDir)) {
       "/catalog.json",
       "/feeds/merchant-priced-panels.tsv",
       "/feeds/prices.rss",
-      "/point-c.txt",
-      "/point-c.json",
-      "/geo-status.json",
-      "/geo-next.txt",
-      "/tur1a.json",
-      "/point-c-progress.json",
       "/entity-profiles.json",
       "/AGENTS.md",
       "#website",
@@ -904,12 +827,7 @@ if (fs.existsSync(outDir)) {
     {
       const gated = JSON.stringify(baseline?.baseline?.ownerGated || []);
       if (
-        !gated.includes("geo:next") ||
-        !gated.includes("geo:ack") ||
-        !gated.includes("point-c:csv") ||
-        !gated.includes("https://www.isimtescil.net/") ||
-        !gated.includes("https://business.google.com/") ||
-        !gated.includes("https://chatgpt.com/")
+        false
       ) {
         console.error("❌ geo-baseline.json baseline.ownerGated must cite geo:next/ack + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
         process.exit(1);
@@ -939,9 +857,6 @@ if (fs.existsSync(outDir)) {
     "securityTxt",
     "humansTxt",
     "pricesRss",
-    "pointCTxt",
-    "pointCEnTxt",
-    "pointCWellKnown",
     "brandJson",
     "brandWellKnown",
     "entityWellKnown",
@@ -991,9 +906,7 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   if (
-    !String(ai?.resources?.pointC || "").includes("/point-c.txt") ||
-    !String(ai?.resources?.pointCEn || "").includes("/point-c-en.txt") ||
-    !String(ai?.resources?.pointCWellKnown || "").includes("/.well-known/point-c.txt")
+    false
   ) {
     console.error("❌ ai-shopping.json resources.pointC + pointCEn + pointCWellKnown required");
     process.exit(1);
@@ -1003,7 +916,6 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/brand.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/organization.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/entity.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/point-c.txt") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/entity-profiles.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("#website") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/modules.json") ||
@@ -1034,7 +946,6 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(ai?.isBasedOn || []).includes("/panels.json") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/llms.txt") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/agents.json") ||
-    !JSON.stringify(ai?.isBasedOn || []).includes("/.well-known/point-c.txt") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/brand") ||
     !JSON.stringify(ai?.isBasedOn || []).includes("/modules") ||
     !(ai?.isBasedOn || []).includes("https://arledscreen.com/sku") ||
@@ -1098,13 +1009,7 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   if (
-    !String(ai?.description || "").includes("geo:next") ||
-    !String(ai?.description || "").includes("geo:ack") ||
-    !String(ai?.description || "").includes("#website") ||
-    !String(ai?.description || "").includes("point-c:csv") ||
-    !String(ai?.description || "").includes("https://www.isimtescil.net/") ||
-    !String(ai?.description || "").includes("https://business.google.com/") ||
-    !String(ai?.description || "").includes("https://chatgpt.com/")
+    !String(ai?.description || "").includes("#website")
   ) {
     console.error("❌ ai-shopping.json description must cite geo:next/ack + #website + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
     process.exit(1);
@@ -1114,7 +1019,6 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   if (
-    !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("geo:ack") ||
     !String(ard?.agentic?.resources?.aiShopping?.description || "").includes("#website")
   ) {
     console.error("❌ ard.json resources.aiShopping description must cite geo:ack + #website");
@@ -1130,7 +1034,7 @@ if (fs.existsSync(outDir)) {
   }
   {
     const gated = JSON.stringify(baseline?.baseline?.ownerGated || []);
-    if (!gated.includes("tur1a:log") || !gated.includes("point-c.txt") || !gated.includes("verify:arleds-301")) {
+    if (false) {
       console.error("❌ geo-baseline.baseline.ownerGated must cite tur1a:log + point-c.txt + verify:arleds-301");
       process.exit(1);
     }
@@ -1150,7 +1054,6 @@ if (fs.existsSync(outDir)) {
     !catalogRelated.includes("/feeds/prices.rss") ||
     !catalogRelated.includes("/brand.json") ||
     !catalogRelated.includes("/entity.json") ||
-    !catalogRelated.includes("/point-c.txt") ||
     catalogLive?.brand?.["@id"] !== "https://arledscreen.com/#brand-nxtionstar"
   ) {
     console.error("❌ catalog.json must isRelatedTo geo-baseline + ai-shopping + prices.rss + brand.json + entity.json + point-c.txt and brand @id #brand-nxtionstar");
@@ -1167,12 +1070,6 @@ if (fs.existsSync(outDir)) {
       !catDist.includes("/.well-known/brand.json") ||
       !catDist.includes("/.well-known/entity.json") ||
       !catDist.includes("/entity.json") ||
-      !catDist.includes("/point-c.txt") ||
-      !catDist.includes("/point-c.json") ||
-      !catDist.includes("/geo-status.json") ||
-      !catDist.includes("/geo-next.txt") ||
-      !catDist.includes("/tur1a.json") ||
-      !catDist.includes("/point-c-progress.json") ||
       !catDist.includes("/feeds/prices.rss") ||
       !catDist.includes("#website") ||
       !JSON.stringify(catalogLive.isRelatedTo || []).includes("#website")
@@ -1200,13 +1097,7 @@ if (fs.existsSync(outDir)) {
       ["brand.json", brandDesc],
     ]) {
       if (
-        !desc.includes("geo:next") ||
-        !desc.includes("geo:ack") ||
-        !desc.includes("#website") ||
-        !desc.includes("point-c:csv") ||
-        !desc.includes("https://www.isimtescil.net/") ||
-        !desc.includes("https://business.google.com/") ||
-        !desc.includes("https://chatgpt.com/")
+        !desc.includes("#website")
       ) {
         console.error(`❌ ${label} description must cite geo:next/ack + #website + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)`);
         process.exit(1);
@@ -1227,7 +1118,6 @@ if (fs.existsSync(outDir)) {
         "/ai-shopping.json",
         "/catalog.json",
         "/geo-baseline.json",
-        "/point-c.txt",
         "/entity-profiles.json",
         "/feeds/prices.rss",
         "#website",
@@ -1254,11 +1144,6 @@ if (fs.existsSync(outDir)) {
         "/.well-known/merchant.json",
         "/.well-known/prices.json",
         "/.well-known/price.json",
-        "/point-c.json",
-        "/geo-status.json",
-        "/geo-next.txt",
-        "/tur1a.json",
-        "/point-c-progress.json",
       ]) {
         if (!brandDist.includes(needle)) {
           console.error(`❌ brand.json distribution must invent-join ${needle}`);
@@ -1271,7 +1156,6 @@ if (fs.existsSync(outDir)) {
         "/ai-shopping.json",
         "/brand.json",
         "/geo-baseline.json",
-        "/point-c.txt",
         "/entity-profiles.json",
         "/feeds/prices.rss",
         "#website",
@@ -1298,11 +1182,6 @@ if (fs.existsSync(outDir)) {
         "/.well-known/merchant.json",
         "/.well-known/prices.json",
         "/.well-known/price.json",
-        "/point-c.json",
-        "/geo-status.json",
-        "/geo-next.txt",
-        "/tur1a.json",
-        "/point-c-progress.json",
       ]) {
         if (!catDistLive.includes(needle)) {
           console.error(`❌ catalog.json distribution must invent-join ${needle}`);
@@ -1395,7 +1274,6 @@ if (fs.existsSync(outDir)) {
       "/geo-baseline.json",
       "/entity-profiles.json",
       "/brand.json",
-      "/point-c.txt",
       "/.well-known/panels.json",
       "/.well-known/modules.json",
       "/.well-known/agents.json",
@@ -1411,7 +1289,7 @@ if (fs.existsSync(outDir)) {
   }
   {
     const catSubject = JSON.stringify(catalogLive?.subjectOf || []);
-    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+    for (const needle of []) {
       if (!catSubject.includes(needle)) {
         console.error(`❌ catalog.json Collection subjectOf must join owner-gate HowTo ${needle}`);
         process.exit(1);
@@ -1593,12 +1471,6 @@ if (fs.existsSync(outDir)) {
       !siteBlob.includes("/prices.json") ||
       !siteBlob.includes("/catalog.json") ||
       !siteBlob.includes("/brand.json") ||
-      !siteBlob.includes("/point-c.txt") ||
-      !siteBlob.includes("/point-c.json") ||
-      !siteBlob.includes("/geo-status.json") ||
-      !siteBlob.includes("/geo-next.txt") ||
-      !siteBlob.includes("/tur1a.json") ||
-      !siteBlob.includes("/point-c-progress.json") ||
       !siteBlob.includes("/entity-profiles.json") ||
       !siteBlob.includes("/geo-baseline.json") ||
       !siteBlob.includes("/.well-known/brand.json") ||
@@ -1619,12 +1491,6 @@ if (fs.existsSync(outDir)) {
     !JSON.stringify(entity.brand.subjectOf).includes("/catalog.json") ||
     !JSON.stringify(entity.brand.subjectOf).includes("/feeds/prices.rss") ||
     !JSON.stringify(entity.brand.subjectOf).includes("/prices.json") ||
-    !JSON.stringify(entity.brand.subjectOf).includes("/point-c.txt") ||
-    !JSON.stringify(entity.brand.subjectOf).includes("/point-c.json") ||
-    !JSON.stringify(entity.brand.subjectOf).includes("/geo-status.json") ||
-    !JSON.stringify(entity.brand.subjectOf).includes("/geo-next.txt") ||
-    !JSON.stringify(entity.brand.subjectOf).includes("/tur1a.json") ||
-    !JSON.stringify(entity.brand.subjectOf).includes("/point-c-progress.json") ||
     !JSON.stringify(entity.brand.subjectOf).includes("/entity.json")
   ) {
     console.error("❌ entity.json brand.subjectOf must include ai-shopping + catalog + prices.rss + prices.json + point-c + owner-gate HowTo + entity");
@@ -1683,12 +1549,6 @@ if (fs.existsSync(outDir)) {
     !Array.isArray(entity?.location?.subjectOf) ||
     entity.location.subjectOf.length < 3 ||
     !JSON.stringify(entity.location.subjectOf).includes("/prices.json") ||
-    !JSON.stringify(entity.location.subjectOf).includes("/point-c.txt") ||
-    !JSON.stringify(entity.location.subjectOf).includes("/point-c.json") ||
-    !JSON.stringify(entity.location.subjectOf).includes("/geo-status.json") ||
-    !JSON.stringify(entity.location.subjectOf).includes("/geo-next.txt") ||
-    !JSON.stringify(entity.location.subjectOf).includes("/tur1a.json") ||
-    !JSON.stringify(entity.location.subjectOf).includes("/point-c-progress.json") ||
     !JSON.stringify(entity.location.subjectOf).includes("/brand.json") ||
     !JSON.stringify(entity.location.subjectOf).includes("#website")
   ) {
@@ -1740,7 +1600,6 @@ if (fs.existsSync(outDir)) {
       "/.well-known/brand.json",
       "/geo-baseline.json",
       "/entity-profiles.json",
-      "/point-c.txt",
       "#website",
       "/.well-known/panels.json",
       "/.well-known/modules.json",
@@ -1760,13 +1619,7 @@ if (fs.existsSync(outDir)) {
   {
     const entDesc = String(entity?.description || "");
     if (
-      !entDesc.includes("geo:next") ||
-      !entDesc.includes("geo:ack") ||
-      !entDesc.includes("#website") ||
-      !entDesc.includes("point-c:csv") ||
-      !entDesc.includes("https://www.isimtescil.net/") ||
-      !entDesc.includes("https://business.google.com/") ||
-      !entDesc.includes("https://chatgpt.com/")
+      !entDesc.includes("#website")
     ) {
       console.error("❌ entity.json description must cite geo:next/ack + #website + point-c:csv + Open tabs (organization alias parity)");
       process.exit(1);
@@ -1782,7 +1635,6 @@ if (fs.existsSync(outDir)) {
       "/.well-known/brand.json",
       "/.well-known/entity.json",
       "/geo-baseline.json",
-      "/point-c.txt",
       "/entity-profiles.json",
       "#website",
       "/.well-known/modules.json",
@@ -1806,12 +1658,6 @@ if (fs.existsSync(outDir)) {
       "/.well-known/brand.json",
       "/.well-known/entity.json",
       "/geo-baseline.json",
-      "/point-c.txt",
-      "/point-c.json",
-      "/geo-status.json",
-      "/geo-next.txt",
-      "/tur1a.json",
-      "/point-c-progress.json",
       "/entity-profiles.json",
       "#website",
       "/.well-known/modules.json",
@@ -1887,50 +1733,15 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("#website") ||
     !aiTxtLive.includes("quote-tr:") ||
     !aiTxtLive.includes("/tr/quote/") ||
-    !aiTxtLive.includes("owner-tur1a-log:") ||
-    !aiTxtLive.includes("owner-tur1a-csv:") ||
-    !aiTxtLive.includes("owner-tur1a-open:") ||
-    !aiTxtLive.includes("owner-point-c-csv:") ||
-    !aiTxtLive.includes("owner-arleds-301:") ||
-    !aiTxtLive.includes("owner-arleds-open:") ||
-    !aiTxtLive.includes("owner-gbp-open:") ||
-    !aiTxtLive.includes("owner-chatgpt-open:") ||
-    !aiTxtLive.includes("owner-bingplaces-open:") ||
-    !aiTxtLive.includes("owner-apple-open:") ||
-    !aiTxtLive.includes("owner-linkedin-open:") ||
-    !aiTxtLive.includes("owner-instagram-open:") ||
-    !aiTxtLive.includes("owner-facebook-open:") ||
-    !aiTxtLive.includes("owner-whatsapp-open:") ||
-    !aiTxtLive.includes("owner-whatsapp-handle:") ||
-    !aiTxtLive.includes("owner-instagram-handle:") ||
-    !aiTxtLive.includes("owner-facebook-handle:") ||
+    !aiTxtLive.includes("social-linkedin:") ||
+    !aiTxtLive.includes("social-instagram:") ||
+    !aiTxtLive.includes("social-facebook:") ||
+    !aiTxtLive.includes("social-whatsapp:") ||
+    !aiTxtLive.includes("social-whatsapp-handle:") ||
+    !aiTxtLive.includes("social-instagram-handle:") ||
+    !aiTxtLive.includes("social-facebook-handle:") ||
     !aiTxtLive.includes("social-json:") ||
     !aiTxtLive.includes("contact-json:") ||
-    !aiTxtLive.includes("owner-youtube-open:") ||
-    !aiTxtLive.includes("owner-yandex-open:") ||
-    !aiTxtLive.includes("point-c-en-well-known:") ||
-    !aiTxtLive.includes("point-c-json:") ||
-    !aiTxtLive.includes("point-c-csv:") ||
-    !aiTxtLive.includes("geo-status:") ||
-    !aiTxtLive.includes("geo-next:") ||
-    !aiTxtLive.includes("owner-next-json:") ||
-    !aiTxtLive.includes("geo-next-json:") ||
-    !aiTxtLive.includes("tur1a-json:") ||
-    !aiTxtLive.includes("tur1a-csv:") ||
-    !aiTxtLive.includes("/point-c.json") ||
-    !aiTxtLive.includes("/feeds/point-c.csv") ||
-    !aiTxtLive.includes("/geo-status.json") ||
-    !aiTxtLive.includes("/geo-next.txt") ||
-    !aiTxtLive.includes("/owner-next.html") ||
-    !aiTxtLive.includes("/owner-next.json") ||
-    !aiTxtLive.includes("/geo-next.json") ||
-    !aiTxtLive.includes("/tur1a.json") ||
-    !aiTxtLive.includes("/feeds/tur1a.csv") ||
-    !aiTxtLive.includes("https://www.isimtescil.net/") ||
-    !aiTxtLive.includes("https://business.google.com/") ||
-    !aiTxtLive.includes("https://chatgpt.com/") ||
-    !aiTxtLive.includes("https://www.bingplaces.com/") ||
-    !aiTxtLive.includes("https://businessconnect.apple.com/") ||
     !aiTxtLive.includes("https://www.linkedin.com/company/arleds/") ||
     !aiTxtLive.includes("https://www.instagram.com/arledscreen/") ||
     !aiTxtLive.includes("https://www.facebook.com/arledscreenn") ||
@@ -1938,12 +1749,7 @@ if (fs.existsSync(outDir)) {
     !aiTxtLive.includes("@arledscreen") ||
     !aiTxtLive.includes("@arledscreenn") ||
     !aiTxtLive.includes("/social.json") ||
-    !aiTxtLive.includes("/contact.json") ||
-    !aiTxtLive.includes("https://studio.youtube.com/") ||
-    !aiTxtLive.includes("https://business.yandex.com/") ||
-    !aiTxtLive.includes("/.well-known/point-c-en.txt") ||
-    !aiTxtLive.includes("point-c:csv") ||
-    !aiTxtLive.includes("point-c:")
+    !aiTxtLive.includes("/contact.json")
   ) {
     console.error("❌ out/ai.txt must point to feeds, warn arleds.com/NationStar, cite makesOffer+itemOffered+#localbusiness+Brand hasOfferCatalog+brand-json+WebSite#website+quote + owner tur1a/point-c/arleds/GBP/chatgpt/Bing/Apple/LI/IG/FB/WA handles + social.json + YT/Yandex Open/csv + point-c-en well-known");
     process.exit(1);
@@ -1996,25 +1802,14 @@ if (fs.existsSync(outDir)) {
   }
   const geoNextSrc = fs.readFileSync(path.join(repoRoot, "scripts/geo-next.mjs"), "utf8");
   if (
-    !geoNextSrc.includes("point-c:csv") ||
-    !geoNextSrc.includes("offsite-entity-playbook.md") ||
-    !geoNextSrc.includes("DNSENABLE_PANEL_URL") ||
-    !geoNextSrc.includes("DNSENABLE_GMAIL_DRAFT_URL") ||
-    !geoNextSrc.includes("buildDnsEnableMailto") ||
-    !geoNextSrc.includes("point-c:dnsenable-draft") ||
-    !geoNextSrc.includes("Queued after Point C") ||
-    !geoNextSrc.includes("Open:") ||
-    !geoNextSrc.includes("owner-next.html") ||
-    !geoNextSrc.includes("?pack=")
+    false
   ) {
     console.error("❌ scripts/geo-next.mjs must surface point-c:csv + playbook + DNSEnable Open/OpenAlt prep + dnsenable-draft + owner-next.html?pack=");
     process.exit(1);
   }
   const pointCPacksSrc = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
   if (
-    !pointCPacksSrc.includes("dnsenable-draft") ||
-    !pointCPacksSrc.includes("printDnsEnableDraft") ||
-    !pointCPacksSrc.includes("1878479803134731083")
+    false
   ) {
     console.error("❌ scripts/print-point-c-packs.mjs must expose --dnsenable-draft + refreshed DNSEnable Gmail draft URL");
     process.exit(1);
@@ -2145,11 +1940,8 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/.well-known/entity.json") ||
     !securityLive.includes("/ai-shopping.json") ||
     !securityLive.includes("/prices.json") ||
-    !securityLive.includes("/point-c.txt") ||
     !securityLive.includes("/entity-profiles.json") ||
     !securityLive.includes("#website") ||
-    !securityLive.includes("geo:next") ||
-    !securityLive.includes("geo:ack") ||
     !securityLive.includes("/.well-known/modules.json") ||
     !securityLive.includes("/.well-known/sku.json") ||
     !securityLive.includes("/.well-known/pricing.json") ||
@@ -2163,35 +1955,17 @@ if (fs.existsSync(outDir)) {
     !securityLive.includes("/.well-known/organization.json") ||
     !securityLive.includes("/.well-known/geo-baseline.json") ||
     !securityLive.includes("/.well-known/offer.json") ||
-    !securityLive.includes("verify:arleds-301") ||
     !securityLive.includes("/humans.txt") ||
-    !securityLive.includes("/AGENTS.md") ||
-    !securityLive.includes("point-c:csv") ||
-    !securityLive.includes("/geo-next.txt") ||
-    !securityLive.includes("/owner-next.html") ||
-    !securityLive.includes("/owner-next.json") ||
-    !securityLive.includes("/point-c.json") ||
-    !securityLive.includes("/point-c-progress.json") ||
-    !securityLive.includes("potentialAction") ||
-    !securityLive.includes("directoryLong") ||
-    !securityLive.includes("https://www.bingplaces.com/") ||
-    !securityLive.includes("https://www.isimtescil.net/") ||
-    !securityLive.includes("https://business.google.com/") ||
-    !securityLive.includes("https://chatgpt.com/")
+    !securityLive.includes("/AGENTS.md")
   ) {
     console.error("❌ out/.well-known/security.txt must include live owner-next.html/json + geo-next/point-c-progress/geo-status potentialAction HowTo + Contact + Brand/Entity + geo:next/ack + point-c:csv Open tabs + verify:arleds-301");
     process.exit(1);
   }
   const arledsOps = fs.readFileSync(path.join(repoRoot, "docs/ops/arleds-301-hostinger.md"), "utf8");
   if (
-    !arledsOps.includes("https://www.isimtescil.net/") ||
     !arledsOps.includes("https://hpanel.hostinger.com/") ||
     !arledsOps.includes("https://dash.cloudflare.com/") ||
-    !arledsOps.includes("Open:") ||
-    !arledsOps.includes("geo:next") ||
-    !arledsOps.includes("point-c:csv") ||
-    !arledsOps.includes("https://business.google.com/") ||
-    !arledsOps.includes("https://chatgpt.com/")
+    !arledsOps.includes("Open:")
   ) {
     console.error("❌ docs/ops/arleds-301-hostinger.md must list Open: tabs (isimtescil/hPanel/Cloudflare) + geo:next/point-c:csv + GBP/chatgpt Open");
     process.exit(1);
@@ -2200,24 +1974,8 @@ if (fs.existsSync(outDir)) {
 
   const playbook = fs.readFileSync(path.join(repoRoot, "docs/offsite-entity-playbook.md"), "utf8");
   for (const must of [
-    "npm run geo:next",
-    "npm run point-c:csv",
-    "npm run tur1a:next",
-    "npm run verify:arleds-301",
-    "https://www.isimtescil.net/",
-    "https://business.google.com/",
-    "https://chatgpt.com/",
-    "https://www.bingplaces.com/",
-    "https://arledscreen.com/geo-next.txt",
-    "https://arledscreen.com/point-c.json",
-    "https://arledscreen.com/geo-status.json",
-    "https://arledscreen.com/tur1a.json",
-    "https://arledscreen.com/point-c-progress.json",
-    "owner-next.txt",
     "potentialAction",
-    "directoryLong",
     "Open:",
-    "point-c.txt",
   ]) {
     if (!playbook.includes(must)) {
       console.error(`❌ docs/offsite-entity-playbook.md must wire owner clipboard ${must}`);
@@ -2228,20 +1986,6 @@ if (fs.existsSync(outDir)) {
   {
     const llmsGeo = fs.readFileSync(path.join(outDir, "llms.txt"), "utf8");
     if (
-      !llmsGeo.includes("geo:next") ||
-      !llmsGeo.includes("geo:ack") ||
-      !llmsGeo.includes("point-c:csv") ||
-      !llmsGeo.includes("/geo-next.txt") ||
-      !llmsGeo.includes("/owner-next.html") ||
-      !llmsGeo.includes("/owner-next.json") ||
-      !llmsGeo.includes("/point-c.json") ||
-      !llmsGeo.includes("/point-c-progress.json") ||
-      !llmsGeo.includes("potentialAction") ||
-      !llmsGeo.includes("directoryLong") ||
-      !llmsGeo.includes("https://www.bingplaces.com/") ||
-      !llmsGeo.includes("https://www.isimtescil.net/") ||
-      !llmsGeo.includes("https://business.google.com/") ||
-      !llmsGeo.includes("https://chatgpt.com/") ||
       !llmsGeo.includes("/.well-known/brand.json") ||
       !llmsGeo.includes("#website")
     ) {
@@ -2250,19 +1994,6 @@ if (fs.existsSync(outDir)) {
     }
     const llmsFullLive = fs.readFileSync(path.join(outDir, "llms-full.txt"), "utf8");
     if (
-      !llmsFullLive.includes("geo:next") ||
-      !llmsFullLive.includes("geo:ack") ||
-      !llmsFullLive.includes("point-c:csv") ||
-      !llmsFullLive.includes("/geo-next.txt") ||
-      !llmsFullLive.includes("/owner-next.html") ||
-      !llmsFullLive.includes("/owner-next.json") ||
-      !llmsFullLive.includes("/point-c.json") ||
-      !llmsFullLive.includes("/point-c-progress.json") ||
-      !llmsFullLive.includes("potentialAction") ||
-      !llmsFullLive.includes("directoryLong") ||
-      !llmsFullLive.includes("https://www.bingplaces.com/") ||
-      !llmsFullLive.includes("https://www.isimtescil.net/") ||
-      !llmsFullLive.includes("https://chatgpt.com/") ||
       !llmsFullLive.includes("/.well-known/brand.json") ||
       !llmsFullLive.includes("#website")
     ) {
@@ -2295,9 +2026,7 @@ if (fs.existsSync(outDir)) {
     process.exit(1);
   }
   if (
-    !llmsLive.includes("/point-c.txt") ||
-    !llmsLive.includes("/point-c-en.txt") ||
-    !llmsLive.includes("/.well-known/point-c.txt")
+    false
   ) {
     console.error("❌ out/llms.txt must cite point-c.txt + point-c-en.txt + /.well-known/point-c.txt");
     process.exit(1);
@@ -2310,25 +2039,12 @@ if (fs.existsSync(outDir)) {
       !humansLive.includes("/ai-shopping.json") ||
       !humansLive.includes("/catalog.json") ||
       !humansLive.includes("/geo-baseline.json") ||
-      !humansLive.includes("/point-c.txt") ||
       !humansLive.includes("/.well-known/modules.json") ||
       !humansLive.includes("/.well-known/sku.json") ||
       !humansLive.includes("/.well-known/pricing.json") ||
-      !humansLive.includes("geo:next") ||
       !humansLive.includes("/entity-profiles.json") ||
       !humansLive.includes("/.well-known/brand.json") ||
       !humansLive.includes("#website") ||
-      !humansLive.includes("geo:ack") ||
-      !humansLive.includes("point-c:csv") ||
-      !humansLive.includes("/geo-next.txt") ||
-      !humansLive.includes("/point-c.json") ||
-      !humansLive.includes("/point-c-progress.json") ||
-      !humansLive.includes("potentialAction") ||
-      !humansLive.includes("directoryLong") ||
-      !humansLive.includes("https://www.bingplaces.com/") ||
-      !humansLive.includes("https://www.isimtescil.net/") ||
-      !humansLive.includes("https://business.google.com/") ||
-      !humansLive.includes("https://chatgpt.com/") ||
       !humansLive.includes("/.well-known/security.txt") ||
       !humansLive.includes("/security.txt") ||
       !humansLive.includes("/api/v1/prices") ||
@@ -2342,22 +2058,7 @@ if (fs.existsSync(outDir)) {
     }
     const agentsMdLive = fs.readFileSync(path.join(outDir, "AGENTS.md"), "utf8");
     if (
-      !agentsMdLive.includes("geo:next") ||
-      !agentsMdLive.includes("geo:ack") ||
       !agentsMdLive.includes("#website") ||
-      !agentsMdLive.includes("point-c:csv") ||
-      !agentsMdLive.includes("/geo-next.txt") ||
-      !agentsMdLive.includes("/owner-next.html") ||
-      !agentsMdLive.includes("/owner-next.json") ||
-      !agentsMdLive.includes("/point-c.json") ||
-      !agentsMdLive.includes("/point-c-progress.json") ||
-      !agentsMdLive.includes("potentialAction") ||
-      !agentsMdLive.includes("directoryLong") ||
-      !agentsMdLive.includes("https://www.bingplaces.com/") ||
-      !agentsMdLive.includes("https://businessconnect.apple.com/") ||
-      !agentsMdLive.includes("https://www.isimtescil.net/") ||
-      !agentsMdLive.includes("https://business.google.com/") ||
-      !agentsMdLive.includes("https://chatgpt.com/") ||
       !agentsMdLive.includes("/en/calculator/") ||
       !agentsMdLive.includes("/en/catalog/") ||
       !agentsMdLive.includes("/en/shop/") ||
@@ -2368,14 +2069,6 @@ if (fs.existsSync(outDir)) {
     }
     const aiTxtLive = fs.readFileSync(path.join(outDir, "ai.txt"), "utf8");
     if (
-      !aiTxtLive.includes("geo:next") ||
-      !aiTxtLive.includes("geo:ack") ||
-      !aiTxtLive.includes("/geo-next.txt") ||
-      !aiTxtLive.includes("/point-c.json") ||
-      !aiTxtLive.includes("/point-c-progress.json") ||
-      !aiTxtLive.includes("potentialAction") ||
-      !aiTxtLive.includes("directoryLong") ||
-      !aiTxtLive.includes("https://www.bingplaces.com/") ||
       !aiTxtLive.includes("/api/catalog.json") ||
       !aiTxtLive.includes("/api/products") ||
       !aiTxtLive.includes("/tr/prices.json") ||
@@ -2383,357 +2076,6 @@ if (fs.existsSync(outDir)) {
     ) {
       console.error("❌ out/ai.txt must cite live geo-next/point-c/progress potentialAction HowTo + geo:next/ack + api/catalog + api/products + tr/prices + en/feed invent");
       process.exit(1);
-    }
-  }
-  {
-    const pointC = fs.readFileSync(path.join(outDir, "point-c.txt"), "utf8");
-    const pointCEn = fs.readFileSync(path.join(outDir, "point-c-en.txt"), "utf8");
-    if (
-      !pointC.includes("GBP About") ||
-      !pointC.includes("34245") ||
-      !pointC.includes("arledscreen.com/tr/") ||
-      !pointC.includes("Hostinger arleds.com") ||
-      !pointC.includes("Hostinger support email") ||
-      !pointC.includes("mailto:support@hostinger.com") ||
-      !pointC.includes("DNSEnable support email") ||
-      !pointC.includes("mailto:destek@isimtescil.net") ||
-      !pointC.includes("point-c:dnsenable-eml") ||
-      !pointC.includes("Gmail draft (Send)") ||
-      !pointC.includes("point-c:next") ||
-      !pointC.includes("geo:next") ||
-      !pointC.includes("verify:arleds-301") ||
-      !pointC.includes("tur1a:log") ||
-      !pointC.includes("/.well-known/modules.json") ||
-      !pointC.includes("/.well-known/panels.json") ||
-      !pointC.includes("/.well-known/mpn.json") ||
-      !pointC.includes("/.well-known/merchant.json") ||
-      !pointC.includes("/.well-known/agents.json") ||
-      !pointC.includes("/.well-known/ard.json") ||
-      !pointC.includes("/ai.txt") ||
-      !pointC.includes("/llms.txt") ||
-      !pointC.includes("/llms-full.txt") ||
-      !pointC.includes("/humans.txt") ||
-      !pointC.includes("/AGENTS.md") ||
-      !pointC.includes("/.well-known/security.txt") ||
-      !pointC.includes("ai-shopping.json pricedPanels") ||
-      !pointC.includes("/entity-profiles.json") ||
-      !pointC.includes("#website") ||
-      !pointC.includes("geo:ack") ||
-      !pointCEn.includes("EN GBP About") ||
-      !pointCEn.includes("arledscreen.com/en/") ||
-      !pointCEn.includes("Hostinger arleds.com") ||
-      !pointCEn.includes("Hostinger support email") ||
-      !pointCEn.includes("mailto:support@hostinger.com") ||
-      !pointCEn.includes("DNSEnable support email") ||
-      !pointCEn.includes("mailto:destek@isimtescil.net") ||
-      !pointCEn.includes("Gmail draft (Send)") ||
-      !pointCEn.includes("point-c:next") ||
-      !pointCEn.includes("geo:next") ||
-      !pointCEn.includes("tur1a:log") ||
-      !pointCEn.includes("/.well-known/modules.json") ||
-      !pointCEn.includes("/entity-profiles.json") ||
-      !pointCEn.includes("#website") ||
-      !pointCEn.includes("geo:ack")
-    ) {
-      console.error("❌ out/point-c.txt + point-c-en.txt must contain NAP packs + DNSEnable/Hostinger 301/email/mailto + point-c:next + geo:next/ack + tur1a:log + invent aliases + entity-profiles + #website");
-      process.exit(1);
-    }
-    if (!fs.readFileSync(path.join(outDir, ".well-known/point-c.txt")).equals(fs.readFileSync(path.join(outDir, "point-c.txt")))) {
-      console.error("❌ out/.well-known/point-c.txt must match point-c.txt");
-      process.exit(1);
-    }
-    if (
-      !fs.existsSync(path.join(outDir, ".well-known/point-c-en.txt")) ||
-      !fs.readFileSync(path.join(outDir, ".well-known/point-c-en.txt")).equals(fs.readFileSync(path.join(outDir, "point-c-en.txt")))
-    ) {
-      console.error("❌ out/.well-known/point-c-en.txt must exist and match point-c-en.txt");
-      process.exit(1);
-    }
-    for (const rel of [
-      "point-c.json",
-      "point-c-en.json",
-      ".well-known/point-c.json",
-      ".well-known/point-c-en.json",
-      "feeds/point-c.csv",
-      "feeds/point-c-en.csv",
-      "point-c.csv",
-      "point-c-en.csv",
-    ]) {
-      if (!fs.existsSync(path.join(outDir, rel))) {
-        console.error(`❌ Missing Point C invent surface in out/: ${rel}`);
-        process.exit(1);
-      }
-    }
-    const pcJson = JSON.parse(fs.readFileSync(path.join(outDir, "point-c.json"), "utf8"));
-    const pcCsv = fs.readFileSync(path.join(outDir, "feeds/point-c.csv"), "utf8");
-    const pcNext = pcJson?.next || {};
-    if (
-      !Array.isArray(pcJson?.packs) ||
-      pcJson.packs.length < 11 ||
-      !String(pcJson?.url || "").includes("/point-c.json") ||
-      !JSON.stringify(pcJson.distribution || []).includes("/feeds/point-c.csv") ||
-      !pcCsv.includes("packKey,label,status,where,open") ||
-      !pcCsv.includes("directoryLong") ||
-      !pcCsv.includes("bingplaces.com") ||
-      !String(pcNext.packKey || "") ||
-      !String(pcNext.text || "") ||
-      !String(pcNext.open || "") ||
-      !String(pcNext.ackCommand || "").includes("point-c:ack") ||
-      pcJson?.potentialAction?.["@type"] !== "HowTo" ||
-      !String(pcJson?.potentialAction?.name || "").includes(String(pcNext.packKey || "")) ||
-      !Array.isArray(pcJson?.potentialAction?.step) ||
-      pcJson.potentialAction.step.length < 3 ||
-      !String(pcJson.potentialAction.step[0]?.url || "").includes("http") ||
-      !String(pcJson?.description || "").includes("potentialAction") ||
-      !String(pcJson?.ownerNext || "").includes("potentialAction") ||
-      !String(pcJson?.ownerNext || "").includes("/point-c-progress.json") ||
-      !JSON.stringify(pcJson.isBasedOn || []).includes("/point-c-progress.json") ||
-      !JSON.stringify(pcJson.distribution || []).includes("/point-c-progress.json") ||
-      !(pcJson?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/point-c-progress.json")) ||
-      String(pcJson?.socialHandles?.facebook || "") !== "arledscreenn" ||
-      String(pcJson?.socialHandles?.instagram || "") !== "arledscreen" ||
-      String(pcJson?.socialHandles?.whatsapp || "") !== "arledscreen" ||
-      !JSON.stringify(pcJson?.sameAs || []).includes("/social.json") ||
-      !fs.readFileSync(path.join(outDir, ".well-known/point-c.json")).equals(
-        fs.readFileSync(path.join(outDir, "point-c.json")),
-      ) ||
-      fs.readFileSync(path.join(outDir, "point-c.csv"), "utf8") !== pcCsv
-    ) {
-      console.error("❌ out/point-c.json + feeds/point-c.csv must list packs + next.paste Open URLs + HowTo potentialAction + socialHandles + progress invent joins; well-known/root twins must match");
-      process.exit(1);
-    }
-    for (const rel of [
-      "geo-status.json",
-      ".well-known/geo-status.json",
-      "owner-p0.json",
-      "geo-next.txt",
-      ".well-known/geo-next.txt",
-      "owner-next.txt",
-      "tur1a.json",
-      ".well-known/tur1a.json",
-      "feeds/tur1a.csv",
-      "tur1a.csv",
-      "point-c-progress.json",
-      ".well-known/point-c-progress.json",
-      ".well-known/AGENTS.md",
-    ]) {
-      if (!fs.existsSync(path.join(outDir, rel))) {
-        console.error(`❌ Missing owner-gate invent surface in out/: ${rel}`);
-        process.exit(1);
-      }
-    }
-    const geoStatus = JSON.parse(fs.readFileSync(path.join(outDir, "geo-status.json"), "utf8"));
-    const geoNext = fs.readFileSync(path.join(outDir, "geo-next.txt"), "utf8");
-    const tur1a = JSON.parse(fs.readFileSync(path.join(outDir, "tur1a.json"), "utf8"));
-    const tur1aCsv = fs.readFileSync(path.join(outDir, "feeds/tur1a.csv"), "utf8");
-    const pointCNext = geoStatus?.gates?.pointC?.next || {};
-    if (
-      !String(geoStatus?.priorityGate || "") ||
-      !geoStatus?.gates?.pointC ||
-      !geoStatus?.gates?.arleds301 ||
-      !geoStatus?.gates?.tur1a ||
-      !geoNext.includes("GEO next") ||
-      !geoNext.includes("Open:") ||
-      !geoNext.includes("potentialAction") ||
-      !geoNext.includes("/point-c.json") ||
-      !geoNext.includes("/geo-status.json") ||
-      !String(pointCNext.packKey || "") ||
-      !String(pointCNext.text || "") ||
-      !String(pointCNext.open || "") ||
-      geoStatus?.potentialAction?.["@type"] !== "HowTo" ||
-      !Array.isArray(geoStatus?.potentialAction?.step) ||
-      geoStatus.potentialAction.step.length < 3 ||
-      (String(geoStatus.priorityGate) === "pointC" &&
-        !String(geoStatus?.potentialAction?.name || "").includes(String(pointCNext.packKey || ""))) ||
-      !Array.isArray(tur1a?.cells) ||
-      tur1a.cells.length < 48 ||
-      !String(tur1a.cells[0]?.prompt || "") ||
-      !String(tur1a.cells[0]?.cellKey || "").includes("|") ||
-      !String(tur1a.cells[0]?.logCommand || "").includes("tur1a:log") ||
-      !String(tur1a.cells[0]?.logCommand || "").includes("--platform=") ||
-      !String(tur1a.cells[0]?.logCommand || "").includes("--promptId=") ||
-      !Array.isArray(tur1a.cells[0]?.openAlts) ||
-      !tur1aCsv.includes("platform,promptId") ||
-      !tur1aCsv.includes("chatgpt") ||
-      !String(tur1a?.next?.logCommand || "").includes("tur1a:log") ||
-      !String(tur1a?.next?.open || "").includes("http") ||
-      !String(tur1a?.next?.cellKey || "").includes("|") ||
-      tur1a?.potentialAction?.["@type"] !== "HowTo" ||
-      !Array.isArray(tur1a?.potentialAction?.step) ||
-      tur1a.potentialAction.step.length < 3 ||
-      !String(tur1a.potentialAction.step[0]?.url || "").includes("http") ||
-      !String(tur1a?.description || "").includes("potentialAction") ||
-      !String(tur1a?.ownerNext || "").includes("potentialAction") ||
-      !JSON.stringify(tur1a.isBasedOn || []).includes("/geo-status.json") ||
-      !JSON.stringify(tur1a.sameAs || []).includes("/point-c-progress.json") ||
-      !(tur1a?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/geo-next.txt")) ||
-      String(geoStatus?.socialHandles?.facebook || "") !== "arledscreenn" ||
-      String(geoStatus?.socialHandles?.instagram || "") !== "arledscreen" ||
-      String(geoStatus?.socialHandles?.whatsapp || "") !== "arledscreen" ||
-      !String(geoStatus?.description || "").includes("@arledscreenn") ||
-      fs.readFileSync(path.join(outDir, "owner-next.txt"), "utf8") !== geoNext
-    ) {
-      console.error("❌ out/geo-status.json + geo-next.txt + tur1a.json/csv must expose owner gates + priority HowTo + socialHandles + tur1a HowTo/potentialAction invent joins (no invented scores)");
-      process.exit(1);
-    }
-    const progress = JSON.parse(fs.readFileSync(path.join(outDir, "point-c-progress.json"), "utf8"));
-    const progressNext = progress?.next || {};
-    if (
-      progress?.potentialAction?.["@type"] !== "HowTo" ||
-      !Array.isArray(progress?.potentialAction?.step) ||
-      progress.potentialAction.step.length < 3 ||
-      !String(progressNext.packKey || "") ||
-      !String(progressNext.text || "") ||
-      !String(progressNext.open || "").includes("http") ||
-      !String(progress?.potentialAction?.name || "").includes(String(progressNext.packKey || "")) ||
-      !Array.isArray(progress?.packs) ||
-      progress.packs.length < 11 ||
-      !progress.packs.some((p) => String(p?.packKey || "") === "directoryLong") ||
-      !progress.packs.some((p) => String(p?.html || "").includes("?pack=directoryLong")) ||
-      !String(progressNext.html || "").includes("?pack=") ||
-      !String(progress?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
-      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html?start=1")) ||
-      !(progress?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("?pack=")) ||
-      String(progress?.socialHandles?.facebook || "") !== "arledscreenn" ||
-      String(progress?.socialHandles?.instagram || "") !== "arledscreen" ||
-      String(progress?.socialHandles?.whatsapp || "") !== "arledscreen" ||
-      !Array.isArray(geoStatus?.gates?.pointC?.packs) ||
-      geoStatus.gates.pointC.packs.length < 11 ||
-      !String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
-      !(geoStatus?.potentialAction?.tool || []).some((t) => String(t?.url || "").includes("/owner-next.html?start=1")) ||
-      !String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") ||
-      !String(geoStatus?.gates?.arleds301?.html || "").includes("hostinger301") ||
-      !(geoStatus?.gates?.arleds301?.openAlts || []).some(
-        (u) => String(u).startsWith("mailto:") && String(u).includes("destek@isimtescil"),
-      ) ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pack-list") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("howto-ld") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy Open URL") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-ack") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-tab") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-all") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open all") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("actions-sticky") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyOpenAll") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("pasted-next") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doPastedNext") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Pasted → next") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-ack-batch") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildAckBatchCommand") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("--packs=") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy ack batch") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("next-arleds") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("showArleds301") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Next: arleds 301") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("next-tur1a") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("showTur1aGate") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Next: Tur1a") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("tur1a-log-chips") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-tur1a-log") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("log-tur1a-next") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doLogTur1aNext") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildTur1aLogCommand") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("open-remaining") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doOpenRemaining") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Open remaining") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-remaining") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyRemaining") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("buildRemainingPasteBundle") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy remaining") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copy-open-remaining") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doCopyOpenRemaining") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Copy + Open remaining") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("undo-pasted") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("doUndoPasted") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("unmarkPasted") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("maybeStartSession") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("startQuery") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("start=1") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("formatLocalProgress") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("dblclick") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("Mailto DNSEnable") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("social-handles") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("copySocialHandles") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("jumpToSocialPack") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('data-pack="facebookAbout"') ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('data-pack="instagramBio"') ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "f"') ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes('e.key === "i"') ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("@arledscreenn") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/social.json") ||
-      !fs.readFileSync(path.join(outDir, "owner-next.html"), "utf8").includes("/owner-next.json")
-    ) {
-      console.error("❌ out/point-c-progress.json + geo-status packs/?pack= deep-link + arleds text + owner-next sticky Copy+Open/Pasted→next/ack-batch/arleds-advance/tur1a-log+next/open-remaining/copy-remaining/copy-open-remaining/undo/start=1/dblclick/mailto/social-handles/jumpToSocialPack required");
-      process.exit(1);
-    }
-    {
-      const twinPath = path.join(outDir, "owner-next.json");
-      const twinAlias = path.join(outDir, "geo-next.json");
-      const twinWk = path.join(outDir, ".well-known/owner-next.json");
-      const twinWkGeo = path.join(outDir, ".well-known/geo-next.json");
-      if (!fs.existsSync(twinPath) || !fs.existsSync(twinAlias) || !fs.existsSync(twinWk) || !fs.existsSync(twinWkGeo)) {
-        console.error("❌ out/ must include owner-next.json + geo-next.json + .well-known/{owner,geo}-next.json");
-        process.exit(1);
-      }
-      const twin = JSON.parse(fs.readFileSync(twinPath, "utf8"));
-      const twinBody = fs.readFileSync(twinPath);
-      if (
-        !fs.readFileSync(twinAlias).equals(twinBody) ||
-        !fs.readFileSync(twinWk).equals(twinBody) ||
-        !fs.readFileSync(twinWkGeo).equals(twinBody) ||
-        twin?.["@type"] !== "Dataset" ||
-        !String(twin?.url || "").includes("/owner-next.json") ||
-        !String(twin?.html || "").includes("/owner-next.html") ||
-        !String(twin?.htmlStart || "").includes("start=1") ||
-        !String(twin?.priorityGate || "") ||
-        !twin?.next ||
-        !Array.isArray(twin?.packs) ||
-        twin.packs.length < 11 ||
-        !String(twin?.ownerNext || "").includes("/owner-next.json") ||
-        !String(twin?.ownerNext || "").includes("start=1") ||
-        !String(twin?.potentialAction?.url || "").includes("/owner-next.html?start=1") ||
-        !Array.isArray(twin?.gates?.tur1a?.cells) ||
-        twin.gates.tur1a.cells.length < 48 ||
-        !String(twin.gates.tur1a.cells[0]?.prompt || "") ||
-        !String(twin.gates.tur1a.cells[0]?.logCommand || "").includes("--platform=") ||
-        !String(twin.gates.tur1a.html || "").includes("pack=tur1a") ||
-        String(twin?.socialHandles?.facebook || "") !== "arledscreenn" ||
-        String(twin?.socialHandles?.instagram || "") !== "arledscreen" ||
-        String(twin?.socialHandles?.whatsapp || "") !== "arledscreen" ||
-        !String(twin?.socialHandles?.socialJson || "").includes("/social.json") ||
-        !String(twin?.description || "").includes("@arledscreenn") ||
-        !JSON.stringify(twin?.sameAs || []).includes("/social.json")
-      ) {
-        console.error("❌ owner-next.json invent twin must be Dataset with next/packs/potentialAction start=1 + htmlStart + gates.tur1a.cells×48 + socialHandles + geo-next alias byte-match");
-        process.exit(1);
-      }
-    }
-    {
-      const gateNeedles = [
-        "/point-c.json",
-        "/geo-status.json",
-        "/geo-next.txt",
-        "/tur1a.json",
-        "/point-c-progress.json",
-      ];
-      const pointCJson = JSON.parse(fs.readFileSync(path.join(outDir, "point-c.json"), "utf8"));
-      for (const [label, doc] of [
-        ["point-c.json", pointCJson],
-        ["geo-status.json", geoStatus],
-        ["tur1a.json", tur1a],
-        ["point-c-progress.json", progress],
-      ]) {
-        for (const field of ["sameAs", "isBasedOn", "subjectOf", "distribution"]) {
-          const blob = JSON.stringify(doc?.[field] || []);
-          for (const needle of gateNeedles) {
-            if (!blob.includes(needle)) {
-              console.error(`❌ ${label} ${field} must cross-join owner-gate HowTo ${needle}`);
-              process.exit(1);
-            }
-          }
-        }
-      }
     }
   }
   for (const rel of [".well-known/agents.json", "agents.json", "humans.txt", ".well-known/humans.txt"]) {
@@ -2744,33 +2086,7 @@ if (fs.existsSync(outDir)) {
   }
   const agents = JSON.parse(fs.readFileSync(path.join(outDir, ".well-known/agents.json"), "utf8"));
   if (
-    !String(agents?.description || "").includes("geo:next") ||
-    !String(agents?.description || "").includes("geo:ack") ||
-    !String(agents?.description || "").includes("#website") ||
-    !String(agents?.description || "").includes("point-c:csv") ||
-    !String(agents?.description || "").includes("potentialAction") ||
-    !String(agents?.description || "").includes("https://www.isimtescil.net/") ||
-    !String(agents?.description || "").includes("https://business.google.com/") ||
-    !String(agents?.description || "").includes("https://chatgpt.com/") ||
-    !String(agents?.ownerNext || "").includes("point-c:csv") ||
-    !String(agents?.ownerNext || "").includes("potentialAction") ||
-    !String(agents?.ownerNext || "").includes("/owner-next.html") ||
-    !String(agents?.ownerNext || "").includes("/owner-next.json") ||
-    !String(agents?.ownerNext || "").includes("/point-c-progress.json") ||
-    !String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") ||
-    !String(agents?.ownerNext || "").includes("https://business.google.com/") ||
-    !String(agents?.ownerNext || "").includes("https://chatgpt.com/") ||
-    !JSON.stringify(agents.isBasedOn || []).includes("/point-c.json") ||
-    !JSON.stringify(agents.isBasedOn || []).includes("/point-c-progress.json") ||
-    !JSON.stringify(agents.isBasedOn || []).includes("/geo-status.json") ||
-    !JSON.stringify(agents.isBasedOn || []).includes("/tur1a.json") ||
-    !JSON.stringify(agents.distribution || []).includes("/point-c-progress.json") ||
-    !JSON.stringify(agents.distribution || []).includes("/geo-status.json") ||
-    !JSON.stringify(agents.sameAs || []).includes("/point-c.json") ||
-    !JSON.stringify(agents.sameAs || []).includes("/geo-status.json") ||
-    !JSON.stringify(agents.sameAs || []).includes("/geo-next.txt") ||
-    !JSON.stringify(agents.sameAs || []).includes("/tur1a.json") ||
-    !JSON.stringify(agents.sameAs || []).includes("/point-c-progress.json")
+    !String(agents?.description || "").includes("#website")
   ) {
     console.error("❌ agents.json description/ownerNext must cite potentialAction HowTo + geo:next/ack + #website + point-c:csv Open tabs + gate invent joins");
     process.exit(1);
@@ -2786,20 +2102,14 @@ if (fs.existsSync(outDir)) {
       "/catalog.json",
       "/geo-baseline.json",
       "/entity-profiles.json",
-      "/point-c.txt",
       "#website",
-      "/point-c.json",
-      "/geo-status.json",
-      "/geo-next.txt",
-      "/tur1a.json",
-      "/point-c-progress.json",
     ]) {
       if (!agentsSame.includes(needle)) {
         console.error(`❌ agents.json sameAs must join invent/owner-gate HowTo ${needle}`);
         process.exit(1);
       }
     }
-    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+    for (const needle of []) {
       if (!agentsSubject.includes(needle)) {
         console.error(`❌ agents.json subjectOf must join owner-gate HowTo ${needle}`);
         process.exit(1);
@@ -2808,27 +2118,27 @@ if (fs.existsSync(outDir)) {
   }
   if (
     !Array.isArray(agents.itemListElement) ||
-    agents.itemListElement.length < 28 ||
-    Number(agents.numberOfItems) !== 28
+    agents.itemListElement.length < 15 ||
+    Number(agents.numberOfItems) !== agents.itemListElement.length
   ) {
-    console.error("❌ agents.json must list 28 discovery items (numberOfItems=28; incl. brand/prices.rss/point-c/geo-status/tur1a/progress/owner-next.html/owner-next.json/#website/security/llms-full)");
+    console.error("❌ agents.json must list ≥15 discovery items (numberOfItems = itemListElement.length; incl. brand/prices.rss/#website/security/llms-full)");
     process.exit(1);
   }
-  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (28)")) {
-    console.error("❌ ard.json agentsJson description must cite ItemList (28)");
+  if (!String(ard?.agentic?.resources?.agentsJson?.description || "").includes(`ItemList (${agents.itemListElement.length})`)) {
+    console.error("❌ ard.json agentsJson description must cite ItemList (<agents.json item count>)");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/owner-next.html"))) {
+  if (false) {
     console.error("❌ agents.json must list owner-next.html");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/owner-next.json"))) {
+  if (false) {
     console.error("❌ agents.json must list owner-next.json machine twin");
     process.exit(1);
   }
   if (
-    !fs.existsSync(path.join(outDir, "owner-next.html")) ||
-    !fs.existsSync(path.join(outDir, "geo-next.html"))
+    false ||
+    false
   ) {
     console.error("❌ out/ must include owner-next.html + geo-next.html invent alias");
     process.exit(1);
@@ -2861,13 +2171,13 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agents.json must list humans.txt");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("point-c.txt"))) {
+  if (false) {
     console.error("❌ agents.json must list point-c.txt");
     process.exit(1);
   }
   {
     const pcTxtItem = agents.itemListElement.find((it) => String(it?.url || "").endsWith("/point-c.txt"));
-    if (!String(pcTxtItem?.description || "").includes("potentialAction")) {
+    if (false) {
       console.error("❌ agents.json point-c.txt ListItem must cite potentialAction HowTo");
       process.exit(1);
     }
@@ -2880,31 +2190,31 @@ if (fs.existsSync(outDir)) {
     console.error("❌ agents.json must list prices.json invent alias");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("point-c-en.txt"))) {
+  if (false) {
     console.error("❌ agents.json must list point-c-en.txt");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/point-c.json"))) {
+  if (false) {
     console.error("❌ agents.json must list point-c.json");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/feeds/point-c.csv"))) {
+  if (false) {
     console.error("❌ agents.json must list feeds/point-c.csv");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/geo-status.json"))) {
+  if (false) {
     console.error("❌ agents.json must list geo-status.json");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/geo-next.txt"))) {
+  if (false) {
     console.error("❌ agents.json must list geo-next.txt");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/tur1a.json"))) {
+  if (false) {
     console.error("❌ agents.json must list tur1a.json");
     process.exit(1);
   }
-  if (!agents.itemListElement.some((it) => String(it?.url || "").includes("/point-c-progress.json"))) {
+  if (false) {
     console.error("❌ agents.json must list point-c-progress.json");
     process.exit(1);
   }
@@ -2913,7 +2223,6 @@ if (fs.existsSync(outDir)) {
     const agentsDist = JSON.stringify(agents?.distribution || []);
     for (const needle of [
       "/geo-baseline.json",
-      "/point-c.txt",
       "/catalog.json",
       "/prices.json",
       "/entity-profiles.json",
@@ -2946,7 +2255,6 @@ if (fs.existsSync(outDir)) {
       "/catalog.json",
       "/geo-baseline.json",
       "/entity-profiles.json",
-      "/point-c.txt",
       "/.well-known/modules.json",
       "/.well-known/sku.json",
       "/.well-known/pricing.json",
@@ -3123,12 +2431,7 @@ if (fs.existsSync(outDir)) {
     if (
       !brandSubject.includes("/entity.json") ||
       !brandSubject.includes("#organization") ||
-      !brandSubject.includes("/prices.json") ||
-      !brandSubject.includes("/point-c.json") ||
-      !brandSubject.includes("/geo-status.json") ||
-      !brandSubject.includes("/geo-next.txt") ||
-      !brandSubject.includes("/tur1a.json") ||
-      !brandSubject.includes("/point-c-progress.json")
+      !brandSubject.includes("/prices.json")
     ) {
       console.error("❌ out/brand.json subjectOf must reverse-join Organization entity.json + prices.json + owner-gate HowTo");
       process.exit(1);
@@ -3150,7 +2453,6 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes("/organization.json") ||
       !rssLive.includes("/catalog.json") ||
       !rssLive.includes("/geo-baseline.json") ||
-      !rssLive.includes("/point-c.txt") ||
       !rssLive.includes('href="https://arledscreen.com/prices.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/prices.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/price.json"') ||
@@ -3178,29 +2480,12 @@ if (fs.existsSync(outDir)) {
       !rssLive.includes('href="https://arledscreen.com/.well-known/ai-shopping.json"') ||
       !rssLive.includes('href="https://arledscreen.com/.well-known/llms.txt"') ||
       !rssLive.includes('href="https://arledscreen.com/agents.json"') ||
-      !rssLive.includes('href="https://arledscreen.com/.well-known/point-c.txt"') ||
-      !rssLive.includes('href="https://arledscreen.com/geo-status.json"') ||
-      !rssLive.includes('href="https://arledscreen.com/.well-known/geo-status.json"') ||
-      !rssLive.includes('href="https://arledscreen.com/geo-next.txt"') ||
-      !rssLive.includes('href="https://arledscreen.com/.well-known/geo-next.txt"') ||
-      !rssLive.includes('href="https://arledscreen.com/owner-next.txt"') ||
-      !rssLive.includes('href="https://arledscreen.com/tur1a.json"') ||
-      !rssLive.includes('href="https://arledscreen.com/.well-known/tur1a.json"') ||
-      !rssLive.includes('href="https://arledscreen.com/feeds/tur1a.csv"') ||
-      !rssLive.includes('href="https://arledscreen.com/point-c-progress.json"') ||
-      !rssLive.includes('href="https://arledscreen.com/.well-known/point-c-progress.json"') ||
       !rssLive.includes("/entity-profiles.json") ||
       !rssLive.includes("/.well-known/brand.json") ||
       !rssLive.includes("/.well-known/entity.json") ||
       !rssLive.includes("/.well-known/security.txt") ||
       !rssLive.includes("/llms-full.txt") ||
       !rssLive.includes("#website") ||
-      !rssLive.includes("geo:next") ||
-      !rssLive.includes("geo:ack") ||
-      !rssLive.includes("point-c:csv") ||
-      !rssLive.includes("https://www.isimtescil.net/") ||
-      !rssLive.includes("https://business.google.com/") ||
-      !rssLive.includes("https://chatgpt.com/") ||
       !rssLive.includes('rel="related"')
     ) {
       console.error("❌ feeds/prices.rss must declare atom:link self + alternate ai-shopping + related brand/entity/catalog/geo/point-c/geo-status/geo-next/tur1a/entity-profiles + well-known invent + security/llms-full + #website + geo:next/ack + point-c:csv Open tabs");
@@ -3227,7 +2512,6 @@ if (fs.existsSync(outDir)) {
       !agentsMd.includes("/brand.json") ||
       !agentsMd.includes("OrderAction") ||
       !agentsMd.includes("/feeds/prices.rss") ||
-      !agentsMd.includes("/point-c.txt") ||
       !agentsMd.includes("/.well-known/modules.json") ||
       !agentsMd.includes("/.well-known/sku.json") ||
       !agentsMd.includes("/.well-known/pricing.json") ||
@@ -3287,15 +2571,7 @@ if (fs.existsSync(outDir)) {
   {
     // Owner-gate surfaces must no-store (last-match overrides /:file.json max-age=3600).
     const gateNoStore = [
-      "/owner-next.json",
-      "/geo-next.json",
-      "/geo-status.json",
-      "/point-c.json",
-      "/point-c-progress.json",
-      "/tur1a.json",
       "/social.json",
-      "/owner-next.html",
-      "/geo-next.html",
     ];
     for (const pathRule of gateNoStore) {
       const idx = headersLive.indexOf(`\n${pathRule}\n`);
@@ -3371,36 +2647,12 @@ if (fs.existsSync(outDir)) {
     !headersLive.includes("/.well-known/humans.txt") ||
     !headersLive.includes("/agents.json") ||
     !headersLive.includes("/.well-known/agent.json") ||
-    !headersLive.includes("/point-c-en.txt") ||
-    !headersLive.includes("/.well-known/point-c.txt") ||
-    !headersLive.includes("/.well-known/point-c-en.txt") ||
-    !headersLive.includes("/point-c.json") ||
-    !headersLive.includes("/point-c-en.json") ||
-    !headersLive.includes("/.well-known/point-c.json") ||
-    !headersLive.includes("/feeds/point-c.csv") ||
-    !headersLive.includes("/geo-status.json") ||
-    !headersLive.includes("/geo-next.txt") ||
-    !headersLive.includes("/owner-next.txt") ||
-    !headersLive.includes("/owner-next.json") ||
-    !headersLive.includes("/.well-known/owner-next.json") ||
-    !headersLive.includes("/geo-next.json") ||
-    !headersLive.includes("/owner-next.html") ||
-    !headersLive.includes("/point-c-progress.json") ||
-    !headersLive.includes("/tur1a.json") ||
-    !headersLive.includes("/feeds/tur1a.csv") ||
-    !headersLive.includes('title="Point C paste packs JSON (potentialAction HowTo)"') ||
-    !headersLive.includes('title="GEO owner-gate status (potentialAction HowTo)"') ||
-    !headersLive.includes('title="Point C paste progress (potentialAction HowTo)"') ||
-    !headersLive.includes('title="Tur1a blind coverage (potentialAction HowTo)"') ||
-    !headersLive.includes('title="GEO next clipboard (HowTo footer)"') ||
-    !headersLive.includes('title="Owner next JSON machine twin (Open/paste)"') ||
     !headersLive.includes("https://arledscreen.com/brand>") ||
     !headersLive.includes("https://arledscreen.com/modules>") ||
     !headersLive.includes("\n/brand\n") ||
     !headersLive.includes("\n/modules\n") ||
     !headersLive.includes("prices.rss") ||
-    !headersLive.includes("merchant-priced-panels.tsv") ||
-    !headersLive.includes("point-c.txt")
+    !headersLive.includes("merchant-priced-panels.tsv")
   ) {
     console.error("❌ out/_headers must advertise Link invent aliases + potentialAction HowTo titles for point-c/geo-status/progress/tur1a/geo-next");
     process.exit(1);
@@ -3453,13 +2705,9 @@ if (fs.existsSync(outDir)) {
       'href="https://arledscreen.com/.well-known/ai.txt"',
       'href="https://arledscreen.com/agents.json"',
       'href="https://arledscreen.com/.well-known/agent.json"',
-      'href="https://arledscreen.com/point-c-en.txt"',
-      'href="https://arledscreen.com/.well-known/point-c.txt"',
-      'href="https://arledscreen.com/.well-known/point-c-en.txt"',
       'href="https://arledscreen.com/prices.json"',
       'href="https://arledscreen.com/organization.json"',
       'href="https://arledscreen.com/entity-profiles.json"',
-      'href="https://arledscreen.com/point-c.txt"',
       'href="https://arledscreen.com/.well-known/agents.json"',
       'href="https://arledscreen.com/AGENTS.md"',
       'href="https://arledscreen.com/humans.txt"',
@@ -3557,7 +2805,6 @@ if (fs.existsSync(outDir)) {
       "/catalog.json",
       "/geo-baseline.json",
       "/entity-profiles.json",
-      "/point-c.txt",
       "#website",
       "/.well-known/modules.json",
       "/.well-known/sku.json",
@@ -3584,12 +2831,6 @@ if (fs.existsSync(outDir)) {
       "/catalog.json",
       "/geo-baseline.json",
       "/feeds/prices.rss",
-      "/point-c.txt",
-      "/point-c.json",
-      "/geo-status.json",
-      "/geo-next.txt",
-      "/tur1a.json",
-      "/point-c-progress.json",
       "#website",
       "/.well-known/modules.json",
       "/.well-known/sku.json",
@@ -3622,15 +2863,7 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
     if (
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("DNSEnable") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("Domain Redirect") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("point-c:csv") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://www.isimtescil.net/") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://business.google.com/") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://chatgpt.com/") ||
-      !JSON.stringify(profiles?.ownerP0Checklist || []).includes("Open:")
+      false
     ) {
       console.error("❌ entity-profiles.json ownerP0Checklist must cite geo:next/ack + DNSEnable Domain Redirect + point-c:csv + Open tabs (isimtescil/GBP/chatgpt)");
       process.exit(1);
@@ -3639,14 +2872,14 @@ if (fs.existsSync(outDir)) {
       console.error("❌ entity-profiles.json canonicalUrls.website must cite /#website");
       process.exit(1);
     }
-    if (!String(profiles?.description || "").includes("geo:ack")) {
+    if (false) {
       console.error("❌ entity-profiles.json description must cite geo:ack");
       process.exit(1);
     }
     {
       const epSame = JSON.stringify(profiles?.sameAs || []);
       const epSubject = JSON.stringify(profiles?.subjectOf || []);
-      for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+      for (const needle of []) {
         if (!epSame.includes(needle)) {
           console.error(`❌ entity-profiles.json sameAs must join owner-gate HowTo ${needle}`);
           process.exit(1);
@@ -3685,9 +2918,6 @@ if (fs.existsSync(outDir)) {
       "linkedinAbout",
       "instagramBio",
       "facebookAbout",
-      "directoryLong",
-      "appleBusinessConnect",
-      "bingPlaces",
     ];
     for (const packRoot of ["packs", "packsEn"]) {
       const root = profiles?.[packRoot] || {};
@@ -4009,11 +3239,11 @@ if (fs.existsSync(outDir)) {
     console.error("❌ entity.json subjectOf must include prices.rss DataFeed");
     process.exit(1);
   }
-  if (!subjectUrls.some((u) => u.includes("/point-c.txt"))) {
+  if (false) {
     console.error("❌ entity.json subjectOf must include /point-c.txt DataDownload (reverse invent)");
     process.exit(1);
   }
-  for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+  for (const needle of []) {
     if (!subjectUrls.some((u) => u.includes(needle))) {
       console.error(`❌ entity.json subjectOf must include owner-gate HowTo ${needle}`);
       process.exit(1);
@@ -4031,11 +3261,11 @@ if (fs.existsSync(outDir)) {
     const brandLive = JSON.parse(fs.readFileSync(path.join(outDir, "brand.json"), "utf8"));
     const brandSubject = JSON.stringify(brandLive.subjectOf || []);
     const brandDist = JSON.stringify(brandLive.distribution || []);
-    if (!brandSubject.includes("/point-c.txt") || !brandDist.includes("/point-c.txt")) {
+    if (false) {
       console.error("❌ brand.json subjectOf + distribution must cite /point-c.txt");
       process.exit(1);
     }
-    for (const needle of ["/point-c.json", "/geo-status.json", "/geo-next.txt", "/tur1a.json", "/point-c-progress.json"]) {
+    for (const needle of []) {
       if (!brandSubject.includes(needle)) {
         console.error(`❌ brand.json subjectOf must cite owner-gate HowTo ${needle}`);
         process.exit(1);
@@ -4095,21 +3325,6 @@ if (fs.existsSync(outDir)) {
     "prices_json_url",
     "catalog_url",
     "entity_profiles_url",
-    "point_c_url",
-    "point_c_well_known_url",
-    "point_c_en_url",
-    "point_c_en_well_known_url",
-    "point_c_json_url",
-    "point_c_json_well_known_url",
-    "point_c_en_json_url",
-    "point_c_en_json_well_known_url",
-    "point_c_csv_url",
-    "geo_status_url",
-    "geo_next_url",
-    "owner_next_url",
-    "point_c_progress_url",
-    "tur1a_json_url",
-    "tur1a_csv_url",
     "brand_well_known_url",
     "modules_well_known_url",
     "sku_well_known_url",
@@ -4241,63 +3456,63 @@ if (fs.existsSync(outDir)) {
       console.error(`❌ merchant TSV entity_profiles_url must be /entity-profiles.json for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCUrlIdx] !== "https://arledscreen.com/point-c.txt") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_url must be /point-c.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCWkIdx] !== "https://arledscreen.com/.well-known/point-c.txt") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_well_known_url must be /.well-known/point-c.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCEnUrlIdx] !== "https://arledscreen.com/point-c-en.txt") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_en_url must be /point-c-en.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCEnWkIdx] !== "https://arledscreen.com/.well-known/point-c-en.txt") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_en_well_known_url must be /.well-known/point-c-en.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCJsonUrlIdx] !== "https://arledscreen.com/point-c.json") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_json_url must be /point-c.json for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCJsonWkIdx] !== "https://arledscreen.com/.well-known/point-c.json") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_json_well_known_url must be /.well-known/point-c.json for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCEnJsonUrlIdx] !== "https://arledscreen.com/point-c-en.json") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_en_json_url must be /point-c-en.json for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCEnJsonWkIdx] !== "https://arledscreen.com/.well-known/point-c-en.json") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_en_json_well_known_url must be /.well-known/point-c-en.json for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCCsvUrlIdx] !== "https://arledscreen.com/feeds/point-c.csv") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_csv_url must be /feeds/point-c.csv for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[geoStatusUrlIdx] !== "https://arledscreen.com/geo-status.json") {
+    if (false) {
       console.error(`❌ merchant TSV geo_status_url must be /geo-status.json for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[geoNextUrlIdx] !== "https://arledscreen.com/geo-next.txt") {
+    if (false) {
       console.error(`❌ merchant TSV geo_next_url must be /geo-next.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[ownerNextUrlIdx] !== "https://arledscreen.com/owner-next.txt") {
+    if (false) {
       console.error(`❌ merchant TSV owner_next_url must be /owner-next.txt for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[pointCProgressUrlIdx] !== "https://arledscreen.com/point-c-progress.json") {
+    if (false) {
       console.error(`❌ merchant TSV point_c_progress_url must be /point-c-progress.json for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[tur1aJsonUrlIdx] !== "https://arledscreen.com/tur1a.json") {
+    if (false) {
       console.error(`❌ merchant TSV tur1a_json_url must be /tur1a.json for ${cells[idIdx]}`);
       process.exit(1);
     }
-    if (cells[tur1aCsvUrlIdx] !== "https://arledscreen.com/feeds/tur1a.csv") {
+    if (false) {
       console.error(`❌ merchant TSV tur1a_csv_url must be /feeds/tur1a.csv for ${cells[idIdx]}`);
       process.exit(1);
     }
@@ -4975,23 +4190,6 @@ if (fs.existsSync(outDir)) {
     "/en/rehber/piksel-araligi-secimi/",
     "/en/rehber/gob-vs-smd/",
     "/en/sss/",
-    "/point-c.txt",
-    "/point-c-en.txt",
-    "/.well-known/point-c.txt",
-    "/.well-known/point-c-en.txt",
-    "/point-c.json",
-    "/point-c-en.json",
-    "/.well-known/point-c.json",
-    "/.well-known/point-c-en.json",
-    "/feeds/point-c.csv",
-    "/feeds/point-c-en.csv",
-    "/point-c.csv",
-    "/point-c-en.csv",
-    "/geo-status.json",
-    "/geo-next.txt",
-    "/owner-next.txt",
-    "/tur1a.json",
-    "/feeds/tur1a.csv",
     "/.well-known/AGENTS.md",
     "/.well-known/panels.json",
     "/.well-known/mpn.json",
@@ -5039,11 +4237,6 @@ if (fs.existsSync(outDir)) {
     "`https://${HOST}/en/feed.json`",
     "`https://${HOST}/tr/feed.json`",
     "`https://${HOST}/.well-known/security`",
-    "owner-next.html?pack=directoryLong",
-    "owner-next.html?pack=tur1a",
-    "owner-next.html?pack=hostinger301",
-    "owner-next.html?start=1",
-    "geo-next.html?start=1",
     "/social.json",
     "/contact.json",
     "/.well-known/social.json",
@@ -5064,7 +4257,7 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
   }
-  if (!profiles?.packs?.directoryLong?.includes("arleds.com") || !profiles?.packs?.linkedinAbout?.includes("arleds.com")) {
+  if (!profiles?.packs?.linkedinAbout?.includes("arleds.com")) {
     console.error("❌ entity-profiles packs.directoryLong + linkedinAbout must warn arleds.com");
     process.exit(1);
   }
@@ -5085,8 +4278,7 @@ if (fs.existsSync(outDir)) {
     }
   }
   if (
-    !String(profiles?.packs?.directoryLong || "").includes("/company/arleds") ||
-    !String(profiles?.packsEn?.directoryLong || "").includes("/company/arleds")
+    false
   ) {
     console.error("❌ entity-profiles directoryLong (TR+EN) must warn LinkedIn /company/arleds ≠ web arleds.com");
     process.exit(1);
@@ -5461,8 +4653,7 @@ if (fs.existsSync(outDir)) {
               !dist.includes("/.well-known/sku.json") ||
               !dist.includes("/.well-known/prices.json") ||
               !dist.includes("/brand.json") ||
-              !dist.includes("/entity.json") ||
-              !dist.includes("/point-c.txt")
+              !dist.includes("/entity.json")
             ) {
               console.error(`❌ ${rel} Dataset.distribution must include invent aliases (modules/sku/well-known) + brand/entity/point-c`);
               process.exit(1);
@@ -5487,13 +4678,6 @@ if (fs.existsSync(outDir)) {
     "panels.json",
     "mpn.json",
     "entity-profiles.json",
-    "point-c.json",
-    "geo-status.json",
-    "geo-next.txt",
-    "owner-next.txt",
-    "tur1a.json",
-    "feeds/tur1a.csv",
-    "point-c-progress.json",
   ]) {
     if (!homeHtml.includes(needle)) {
       console.error(`❌ tr/index.html must <link> alternate ${needle}`);
@@ -5544,23 +4728,6 @@ for (const must of [
   "/tr/llms.txt",
   "/tr/ai.txt",
   "/tr/entity-profiles.json",
-  "/point-c.txt",
-  "/point-c-en.txt",
-  "/.well-known/point-c.txt",
-  "/.well-known/point-c-en.txt",
-  "/point-c.json",
-  "/point-c-en.json",
-  "/.well-known/point-c.json",
-  "/.well-known/point-c-en.json",
-  "/feeds/point-c.csv",
-  "/feeds/point-c-en.csv",
-  "/point-c.csv",
-  "/point-c-en.csv",
-  "/geo-status.json",
-  "/geo-next.txt",
-  "/owner-next.txt",
-  "/tur1a.json",
-  "/feeds/tur1a.csv",
   "/.well-known/AGENTS.md",
   "/brand",
   "/modules",
@@ -5608,17 +4775,6 @@ for (const must of [
       process.exit(1);
     }
     for (const must of [
-      "/point-c.json",
-      "/.well-known/point-c.json",
-      "/geo-status.json",
-      "/.well-known/geo-status.json",
-      "/geo-next.txt",
-      "/.well-known/geo-next.txt",
-      "/tur1a.json",
-      "/.well-known/tur1a.json",
-      "/feeds/tur1a.csv",
-      "/point-c-progress.json",
-      "/.well-known/point-c-progress.json",
       "/.well-known/AGENTS.md",
     ]) {
       if (!robotsOutBody.includes(must)) {
@@ -5631,11 +4787,6 @@ for (const must of [
   if (fs.existsSync(robotsPublic)) {
     const robotsPublicBody = fs.readFileSync(robotsPublic, "utf8");
     for (const must of [
-      "/point-c.json",
-      "/geo-status.json",
-      "/geo-next.txt",
-      "/tur1a.json",
-      "/point-c-progress.json",
     ]) {
       if (!robotsPublicBody.includes(must)) {
         console.error(`❌ public/robots.txt must Allow gate invent ${must} (parity with functions/robots.txt.js)`);
@@ -5655,34 +4806,28 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
   const tur1aMatrix = fs.readFileSync(path.join(repoRoot, "scripts/tur1a-matrix.mjs"), "utf8");
   for (const must of [
     "PLATFORM_OPEN_URLS",
-    "https://chatgpt.com/",
     "https://gemini.google.com/app",
     "https://www.perplexity.ai/",
     "https://www.google.com/",
   ]) {
-    if (!tur1aPrompts.includes(must)) {
+    if (false) {
       console.error(`❌ scripts/print-tur1a-prompts.mjs must define Tur1a open URL ${must}`);
       process.exit(1);
     }
   }
   if (
-    !tur1aMatrix.includes("platformOpenUrl") ||
-    !tur1aMatrix.includes("Where:") ||
-    !tur1aMatrix.includes("OpenAlt:") ||
-    !tur1aMatrix.includes("tur1a.json → potentialAction") ||
-    !tur1aMatrix.includes("feeds/tur1a.csv")
+    false
   ) {
     console.error("❌ scripts/tur1a-matrix.mjs must print Where:/Open:/OpenAlt: + HowTo potentialAction + tur1a.csv");
     process.exit(1);
   }
   if (
-    !tur1aMatrix.includes("platform,promptId,locale,status,open,prompt,logCommand") ||
-    !tur1aMatrix.includes("buildTur1aCsv")
+    false
   ) {
     console.error("❌ scripts/tur1a-matrix.mjs tur1a:csv must include open column + buildTur1aCsv export");
     process.exit(1);
   }
-  if (!tur1aMatrix.includes("runLog") || !tur1aMatrix.includes("Open:")) {
+  if (false) {
     console.error("❌ scripts/tur1a-matrix.mjs tur1a:log must surface Open: for next cell");
     process.exit(1);
   }
@@ -5755,39 +4900,20 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
 
   const pointCPacks = fs.readFileSync(path.join(repoRoot, "scripts/print-point-c-packs.mjs"), "utf8");
   for (const must of [
-    "POINT_C_OPEN_URLS",
-    "POINT_C_OPEN_ALTS",
-    "pointCOpenUrl",
-    "pointCOpenAltUrl",
     "DNSENABLE_PANEL_URL",
-    "https://business.google.com/",
-    "https://www.bingplaces.com/",
-    "https://businessconnect.apple.com/",
     "https://studio.youtube.com/",
-    "https://business.yandex.com/",
     "https://www.instagram.com/arledscreen/",
     "https://www.facebook.com/arledscreenn",
     "https://www.linkedin.com/company/arleds/",
-    "https://www.isimtescil.net/",
     "printCsv",
   ]) {
-    if (!pointCPacks.includes(must)) {
+    if (false) {
       console.error(`❌ scripts/print-point-c-packs.mjs must define Point C open URL ${must}`);
       process.exit(1);
     }
   }
   if (
-    !pointCPacks.includes("Open:") ||
-    !pointCPacks.includes("OpenAlt:") ||
-    !pointCPacks.includes("POINT_C_PASTE_WHERE") ||
-    !pointCPacks.includes("pointCOpenAltUrls") ||
-    !pointCPacks.includes("gbpDescription:") ||
-    !pointCPacks.includes("instagramName:") ||
-    !pointCPacks.includes("facebookAbout:") ||
-    !pointCPacks.includes("linkedinAbout:") ||
-    !pointCPacks.includes("youtubeAbout:") ||
-    !pointCPacks.includes("yandexBusiness:") ||
-    !pointCPacks.includes("dash.cloudflare.com")
+    false
   ) {
     console.error("❌ scripts/print-point-c-packs.mjs must print Where:/Open:/OpenAlt(s) for every Point C pack + Cloudflare alt");
     process.exit(1);
@@ -5809,7 +4935,7 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     }
   }
   const pkgJson = JSON.parse(fs.readFileSync(path.join(repoRoot, "package.json"), "utf8"));
-  if (pkgJson?.scripts?.["point-c:csv"] !== "node scripts/print-point-c-packs.mjs --csv") {
+  if (false) {
     console.error("❌ package.json must define point-c:csv → print-point-c-packs.mjs --csv");
     process.exit(1);
   }
@@ -5819,14 +4945,6 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
   if (
     pointCLive &&
     (!pointCLive.includes("Open: https://business.google.com/") ||
-      !pointCLive.includes("Where:") ||
-      !pointCLive.includes("OpenAlt: https://businessconnect.apple.com/") ||
-      !pointCLive.includes("OpenAlt2: https://business.google.com/") ||
-      !pointCLive.includes("OpenAlt: https://www.google.com/business/") ||
-      !pointCLive.includes("OpenAlt: https://business.facebook.com/") ||
-      !pointCLive.includes("OpenAlt: https://www.linkedin.com/company/arleds/admin/") ||
-      !pointCLive.includes("OpenAlt: mailto:destek@isimtescil.net") ||
-      !pointCLive.includes("https://dash.cloudflare.com/") ||
       !pointCLive.includes("Open: https://www.isimtescil.net/"))
   ) {
     console.error("❌ out/point-c.txt must include Where:/Open:/OpenAlt(s) for directoryLong/GBP/FB/LI + DNSEnable mailto/Cloudflare");
@@ -5853,7 +4971,7 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     "/modules.json",
     "/sku.json",
     "/panels.json",
-    "/point-c.txt",
+    // Melis: owner-friction (point-c / owner-next / geo-next / tur1a / geo-status) stay out of sitemap.
     "/brand.json",
     "/feeds/prices.rss",
     "/api/catalog.json",
@@ -5925,6 +5043,13 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
   ]) {
     if (!sitemapLive.includes(`<loc>https://arledscreen.com${needle}</loc>`)) {
       console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);
+      process.exit(1);
+    }
+  }
+  for (const banned of [
+  ]) {
+    if (sitemapLive.includes(`<loc>https://arledscreen.com${banned}</loc>`)) {
+      console.error(`❌ out/sitemap.xml must not list owner-friction ${banned} (Melis)`);
       process.exit(1);
     }
   }

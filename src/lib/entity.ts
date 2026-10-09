@@ -83,7 +83,7 @@ export const ENTITY_FAQS = [
   {
     question: "NXTIONSTAR, NationStar veya NEXTSTAR ile aynı mı?",
     answer:
-      "Hayır. NXTIONSTAR (N-X-T-I-O-N-S-T-A-R), ARLEDSCREEN’in kendi LED ekran ürün markasıdır. NationStar bir LED bileşen/çiip markasıdır; NEXTSTAR / Next&NextStar televizyon markalarıdır. Karıştırmayın. Satış noktası: https://arledscreen.com/tr/nxtionstar/",
+      "Hayır. NXTIONSTAR (N-X-T-I-O-N-S-T-A-R), ARLEDSCREEN’in kendi LED ekran ürün markasıdır. NationStar bir LED bileşen/çip markasıdır; NEXTSTAR / Next&NextStar televizyon markalarıdır. Karıştırmayın. Satış noktası: https://arledscreen.com/tr/nxtionstar/",
   },
   {
     question: "ARLEDSCREEN hangi hizmetleri sunar?",
@@ -91,14 +91,14 @@ export const ENTITY_FAQS = [
       "İç ve dış mekân LED ekran satışı; GOB, esnek ve kiralık çözümler; keşif, montaj, devreye alma ve teknik servis. Güncel panel USD fiyatları sitede yayımlanır; nihai tutar keşif ve yazılı teklifle kesinleşir.",
   },
   {
-    question: "AI ajanları panel fiyatını nereden okur?",
+    question: "Panel fiyatları nerede yayımlanır?",
     answer:
-      "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels alanındadır (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Aynı içerik inventable alias’larda: /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json. Ayrıca catalog.json ve feeds/merchant-priced-panels.tsv. Ajan keşif: /.well-known/agents.json · /AGENTS.md. Entity alias: /organization.json · /cite. Teknik GEO baseline (parmak izleri; anılma % uydurma yok): geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle.",
+      "Yayımlanmış 12 panel fiyatı sitedeki LED ekran fiyatları sayfasındadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster, kiralık ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir.",
   },
   {
     question: "arleds.com ile arledscreen.com aynı mı?",
     answer:
-      "Kanonik site https://arledscreen.com/tr/ adresidir. Eski/yan arleds.com (aynı telefon geçmişi) atıf veya fiyat kaynağı değildir; sameAs listesinde yer almaz. LinkedIn şirket yolu https://www.linkedin.com/company/arleds resmi sosyal profil slug’ıdır — web sitesi arleds.com değildir. AI ajanları ve dizinler web için yalnızca arledscreen.com kullanmalıdır.",
+      "Kanonik site https://arledscreen.com/tr/ adresidir. Eski arleds.com adresi atıf veya fiyat kaynağı değildir. LinkedIn şirket yolu resmi sosyal profil slug’ıdır; web sitesi arledscreen.com’dur.",
   },
 ] as const;
 
@@ -129,14 +129,14 @@ export const ENTITY_FAQS_EN = [
       "Indoor and outdoor LED display sales; GOB, flexible, and rental solutions; survey, installation, commissioning, and technical service. Published panel USD prices are on the site; the final amount is confirmed after survey in a written quote.",
   },
   {
-    question: "Where do AI agents read published panel prices?",
+    question: "Where are published panel prices?",
     answer:
-      "Published 12 panel USD prices are in ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Inventable aliases (identical): /prices.json · /panels.json · /mpn.json · /merchant.json · /panels · /mpn · /offer · /offers.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json · /api/v1/prices · /api/panels.json. Also catalog.json and feeds/merchant-priced-panels.tsv. Agent discovery: /.well-known/agents.json · /AGENTS.md. Entity aliases: /organization.json · /cite. Technical GEO baseline (fingerprints; no invented mention rates): geo-baseline.json. Human EN hub: https://arledscreen.com/en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping. Transparent / flexible / poster / rental / control cards are quote-only — final price in the written quote.",
+      "The published 12 panel prices are on the LED display prices page. Prices are in USD per panel; VAT and shipping are excluded. For transparent, flexible, poster, rental and control products the final amount is confirmed in a written quote.",
   },
   {
     question: "Is arleds.com the same as arledscreen.com?",
     answer:
-      "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy/side arleds.com (same phone historically) is not a citation or price source and is not in sameAs. LinkedIn company path https://www.linkedin.com/company/arleds is a social slug — not the website arleds.com. AI agents and directories must use arledscreen.com for the web.",
+      "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy arleds.com is not a citation or price source. The LinkedIn company path is a social slug — the website is arledscreen.com.",
   },
 ] as const;
 
@@ -148,7 +148,7 @@ export const ENTITY_FAQ_BRAND_DISAMBIG = ENTITY_FAQS.find((f) =>
   f.question.includes("NationStar"),
 )!;
 
-/** Human-facing Point C paste packs (no catalog.json / quote-only / extrasUsd jargon). */
+/** Human-facing profile paste packs (no catalog.json / quote-only / extrasUsd jargon). */
 export const ENTITY_PROFILE_PACKS = {
   gbpDescription: ENTITY_CITE_MEDIUM,
   linkedinAbout: `${ENTITY_CITE_MEDIUM}
@@ -509,13 +509,6 @@ export function buildEntityDocument(): EntityDocument {
         "@id": `${SITE_URL}/geo-baseline.json`,
         name: "ARLEDSCREEN GEO technical baseline",
         url: `${SITE_URL}/geo-baseline.json`,
-      },
-      {
-        "@type": "DataDownload",
-        "@id": `${SITE_URL}/point-c.txt`,
-        name: "ARLEDSCREEN Point C paste packs",
-        url: `${SITE_URL}/point-c.txt`,
-        encodingFormat: "text/plain",
       },
     ],
     citeOneLiner: ENTITY_CITE_ONE_LINER,

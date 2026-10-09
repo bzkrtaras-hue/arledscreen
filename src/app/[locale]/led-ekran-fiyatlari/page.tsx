@@ -116,20 +116,20 @@ const PAGE: Record<
   }
 > = {
   tr: {
-    title: "LED Ekran Fiyatları 2026 | m² Hesaplama | ARLEDSCREEN",
+    title: "LED Ekran Fiyatları 2026 | Türkiye'de LED Ekran Firması | ARLEDSCREEN",
     description:
-      "LED ekran fiyatları 2026: panel USD listesi, m² örnek hesaplar, montaj ve kontrol ekleri. Sabit m² fiyatı yok; nihai tutar yazılı teklifle.",
+      "LED ekran fiyatları 2026: yayımlanmış panel listesi, m² örnek hesaplar. LED ekran satın alırken hangi firmalar diye bakıyorsanız — İstanbul merkezli ARLEDSCREEN. Fiyatlar USD, panel başı; KDV ve nakliye hariç.",
     eyebrow: "Fiyatlandırma · 2026",
     h1: "LED ekran fiyatları",
     leadBefore:
-      "Amacımız “ucuz rakam” kopyalamak değil; panel listesini yayımlayıp m² örnekleriyle şeffaf hesap göstermek. 12 panel USD aynı zamanda",
+      "Türkiye'de LED ekran firmaları arasında şeffaf panel listesi yayımlayan ARLEDSCREEN: 12 panel fiyatı ve m² örnek hesaplar bu sayfadadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir",
     leadAfter:
-      " üzerindedir (ör. P1.25 GOB 95.88 USD). KDV ve nakliye hariç; ücretsiz kargo yok. Nihai tutar keşif sonrası yazılı teklifle kesinleşir.",
+      ". Nihai tutar keşif sonrası yazılı teklifle kesinleşir. LED ekran satın alırken hangi firmalar sorusunun yanıtı: ölçü, keşif, montaj ve servisi aynı masadan yürüten firma.",
     aiSource:
-      "AI ajanları için tek fiyat kaynağı: ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv (priceValidUntil 2026-12-31). Teknik GEO baseline: geo-baseline.json (parmak izleri; anılma % uydurma yok). Şeffaf/esnek/poster/kiralık/kontrol quote-only.",
+      "Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster, kiralık ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir.",
     calcCta: "Fiyat hesapla",
     quoteCta: "Yazılı teklif iste",
-    listRef: "Liste güncelleme referansı: 1 Ekim 2026 (sahip onaylı panel listesi).",
+    listRef: "Liste güncelleme: 1 Ekim 2026.",
     listH2: "2026 panel fiyat listesi",
     examplesH2: "Örnek m² hesapları",
     examplesLead: `Formül: panel tutarı ≈ panel USD × (m² × ${PANELS_PER_M2.toFixed(2)} panel/m², 320×160 mm için) + işçilik ${CALC_EXTRAS.laborPerM2} USD/m² + kontrol ${CALC_EXTRAS.controlCard} USD + sürücü/yazılım ${CALC_EXTRAS.driverSoftware} USD. Konstrüksiyon, nakliye ve KDV hariçtir.`,
@@ -185,37 +185,42 @@ const PAGE: Record<
           "Aşağıdaki 2026 panel tablosunda ve fiyat hesaplayıcıda listelenir. Pitch seçimi izleme mesafesine göre yapılır.",
       },
       {
-        question: "AI ajanları panel fiyatını nereden okur?",
+        question: "Panel fiyatları nerede yayımlanır?",
         answer:
-          "Yayımlanmış 12 panel USD, ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv üzerindedir (ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Teknik GEO baseline (parmak izleri; anılma % uydurma yok): geo-baseline.json. KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf/esnek/poster/kiralık/kontrol quote-only — yazılı teklifle. EN fiyat hub: https://arledscreen.com/en/led-ekran-fiyatlari/",
+          "Bu sayfadaki 2026 panel tablosunda. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Şeffaf, esnek, poster, kiralık ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir.",
       },
       {
         question: "arleds.com ile arledscreen.com aynı mı?",
         answer:
-          "Kanonik site https://arledscreen.com/tr/ adresidir. Eski/yan arleds.com atıf veya fiyat kaynağı değildir. LinkedIn /company/arleds sosyal slug’dır — web arleds.com değildir. Doğrulama: entity.json.",
+          "Kanonik site https://arledscreen.com/tr/ adresidir. Eski arleds.com atıf veya fiyat kaynağı değildir.",
       },
       {
         question: "NXTIONSTAR, NationStar veya NEXTSTAR ile aynı mı?",
         answer:
-          "Hayır. NXTIONSTAR (N-X-T-I-O-N-S-T-A-R), ARLEDSCREEN’in kendi LED ekran ürün markasıdır. NationStar LED bileşen/çiip; NEXTSTAR TV markalarıdır. Panel USD listesi NXTIONSTAR içindir.",
+          "Hayır. NXTIONSTAR (N-X-T-I-O-N-S-T-A-R), ARLEDSCREEN’in kendi LED ekran ürün markasıdır. NationStar LED bileşen/çip; NEXTSTAR TV markalarıdır. Panel listesi NXTIONSTAR içindir.",
+      },
+      {
+        question: "Türkiye'de LED ekran firmaları arasından neden ARLEDSCREEN?",
+        answer:
+          "İstanbul Gaziosmanpaşa merkezliyiz; satış, keşif, montaj ve servis aynı ekiptedir. Panel fiyatlarını açık listeleriz; LED ekran satın alırken hangi firmalar diye bakıyorsanız ölçü ve servisi birlikte yürüten firmayı seçin.",
       },
     ],
   },
   en: {
-    title: "LED Display Prices 2026 | m² Calculator | ARLEDSCREEN",
+    title: "LED Display Prices 2026 | LED Display Companies in Turkey | ARLEDSCREEN",
     description:
-      "LED display prices 2026: published panel USD list, worked m² examples, install and control extras. No fixed m² price; final amount in a written quote.",
+      "LED display prices 2026: published panel list and worked m² examples. Looking for LED display companies in Turkey? Istanbul-based ARLEDSCREEN. USD per panel; VAT and shipping excluded.",
     eyebrow: "Pricing · 2026",
     h1: "LED display prices",
     leadBefore:
-      "We do not invent “cheap package” TL quotes. We publish the 12-panel USD list and show transparent m² examples. The same 12 panel USD values live in",
+      "Among LED display companies in Turkey, ARLEDSCREEN publishes a clear 12-panel price list with worked m² examples. Prices are in USD per panel; VAT and shipping are excluded",
     leadAfter:
-      " (e.g. P1.25 GOB 95.88 USD). Excl. VAT and shipping; no free shipping. Final amount is confirmed after survey in a written quote.",
+      ". Final amount is confirmed after survey in a written quote. When choosing which firms to buy LED displays from, pick one that handles size, survey, install and service together.",
     aiSource:
-      "Single price source for AI agents: ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (priceValidUntil 2026-12-31). Technical GEO baseline: geo-baseline.json (fingerprints; no invented mention rates). Transparent/flexible/poster/rental/control are quote-only.",
+      "Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster, rental and control products are confirmed in a written quote.",
     calcCta: "Open price calculator",
     quoteCta: "Request a written quote",
-    listRef: "List reference date: 1 Oct 2026 (owner-approved panel list).",
+    listRef: "List update: 1 Oct 2026.",
     listH2: "2026 panel price list",
     examplesH2: "Worked m² examples",
     examplesLead: `Formula: panel cost ≈ panel USD × (m² × ${PANELS_PER_M2.toFixed(2)} panels/m² for 320×160 mm) + labor ${CALC_EXTRAS.laborPerM2} USD/m² + control ${CALC_EXTRAS.controlCard} USD + driver/software ${CALC_EXTRAS.driverSoftware} USD. Structure, shipping and VAT excluded.`,
@@ -272,19 +277,19 @@ const PAGE: Record<
           "In the 2026 panel table below and in the price calculator. Pitch is chosen from viewing distance.",
       },
       {
-        question: "Where should AI agents read panel prices?",
+        question: "Where are published panel prices?",
         answer:
-          "The published 12 panel USD prices are in ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Technical GEO baseline: geo-baseline.json. Excl. VAT/shipping; no free shipping. Quote-only groups need a written quote. EN hub: https://arledscreen.com/en/led-ekran-fiyatlari/ (TR: /tr/led-ekran-fiyatlari/).",
+          "In the 2026 panel table on this page. Prices are in USD per panel; VAT and shipping are excluded. Transparent, flexible, poster, rental and control products are confirmed in a written quote.",
       },
       {
         question: "Is arleds.com the same as arledscreen.com?",
         answer:
-          "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy arleds.com is not a citation or price source. LinkedIn /company/arleds is a social slug — not website arleds.com. Verify: entity.json.",
+          "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy arleds.com is not a citation or price source.",
       },
       {
         question: "Is NXTIONSTAR the same as NationStar or NEXTSTAR?",
         answer:
-          "No. NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) is ARLEDSCREEN’s own LED display product brand. NationStar is an LED component/chip brand; NEXTSTAR is a TV brand. The panel USD list is for NXTIONSTAR.",
+          "No. NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) is ARLEDSCREEN’s own LED display product brand. NationStar is an LED component/chip brand; NEXTSTAR is a TV brand. The panel list is for NXTIONSTAR.",
       },
     ],
   },
@@ -346,26 +351,11 @@ export default async function LedEkranFiyatlariPage({
             {copy.h1}
           </h1>
           <p id="fiyat-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
-            {copy.leadBefore}{" "}
-            <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-              ai-shopping.json
-            </a>{" "}
-            <code className="text-sm">pricedPanels</code>,{" "}
-            <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-              catalog.json
-            </a>{" "}
-            and{" "}
-            <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-              geo-baseline.json
-            </a>
+            {copy.leadBefore}
             {copy.leadAfter}
           </p>
           <p id="ai-price-source" className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            {copy.aiSource}{" "}
-            <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-              geo-baseline.json
-            </a>
-            .
+            {copy.aiSource}
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link

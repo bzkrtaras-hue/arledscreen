@@ -9,18 +9,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import {
-  buildGeoNextText,
-  buildGeoStatusDoc,
-  buildOwnerNextJsonDoc,
-  buildPointCProgressDoc,
-} from "./build-owner-gate-invent.mjs";
-import {
-  buildPointCCsv,
-  buildPointCJsonDoc,
-  buildPointCPackText,
-} from "./print-point-c-packs.mjs";
-import { buildTur1aCsv, buildTur1aJsonDoc } from "./tur1a-matrix.mjs";
+import { scrubTextLines as scrubOwnerGateText } from "./owner-gate-scrub.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
@@ -4197,109 +4186,14 @@ function main() {
       const profilesDoc = enrichEntityProfiles(profilesRaw);
       writeJson(publicDir, "entity-profiles.json", profilesDoc);
       writeJson(outDir, "entity-profiles.json", profilesDoc);
-      const pointCTr = buildPointCPackText(profilesDoc, { en: false });
-      const pointCEn = buildPointCPackText(profilesDoc, { en: true });
-      writeText(publicDir, "point-c.txt", pointCTr);
-      writeText(outDir, "point-c.txt", pointCTr);
-      writeText(publicDir, "point-c-en.txt", pointCEn);
-      writeText(outDir, "point-c-en.txt", pointCEn);
-      writeText(publicDir, ".well-known/point-c.txt", pointCTr);
-      writeText(outDir, ".well-known/point-c.txt", pointCTr);
-      writeText(publicDir, ".well-known/point-c-en.txt", pointCEn);
-      writeText(outDir, ".well-known/point-c-en.txt", pointCEn);
-      const pointCJsonTr = buildPointCJsonDoc(profilesDoc, { en: false });
-      const pointCJsonEn = buildPointCJsonDoc(profilesDoc, { en: true });
-      writeJson(publicDir, "point-c.json", pointCJsonTr);
-      writeJson(outDir, "point-c.json", pointCJsonTr);
-      writeJson(publicDir, "point-c-en.json", pointCJsonEn);
-      writeJson(outDir, "point-c-en.json", pointCJsonEn);
-      writeJson(publicDir, ".well-known/point-c.json", pointCJsonTr);
-      writeJson(outDir, ".well-known/point-c.json", pointCJsonTr);
-      writeJson(publicDir, ".well-known/point-c-en.json", pointCJsonEn);
-      writeJson(outDir, ".well-known/point-c-en.json", pointCJsonEn);
-      const pointCCsvTr = buildPointCCsv(profilesDoc, { en: false });
-      const pointCCsvEn = buildPointCCsv(profilesDoc, { en: true });
-      writeText(publicDir, "feeds/point-c.csv", pointCCsvTr);
-      writeText(outDir, "feeds/point-c.csv", pointCCsvTr);
-      writeText(publicDir, "feeds/point-c-en.csv", pointCCsvEn);
-      writeText(outDir, "feeds/point-c-en.csv", pointCCsvEn);
-      writeText(publicDir, "point-c.csv", pointCCsvTr);
-      writeText(outDir, "point-c.csv", pointCCsvTr);
-      writeText(publicDir, "point-c-en.csv", pointCCsvEn);
-      writeText(outDir, "point-c-en.csv", pointCCsvEn);
     } catch (e) {
-      console.error(`postbuild-ai: entity-profiles enrich / point-c.txt emit failed: ${e?.message || e}`);
+      console.error(`postbuild-ai: entity-profiles enrich failed: ${e?.message || e}`);
       process.exit(1);
     }
   }
-  // Owner-gate invent: geo-status / geo-next / tur1a / point-c-progress (cite-only).
+  // Owner-only gate surfaces (point-c / owner-next / geo-next / geo-status / owner-p0 / tur1a)
+  // are private owner tooling and are no longer built (privacy). Only AGENTS.md is mirrored.
   try {
-    const geoStatus = buildGeoStatusDoc();
-    writeJson(publicDir, "geo-status.json", geoStatus);
-    writeJson(outDir, "geo-status.json", geoStatus);
-    writeJson(publicDir, ".well-known/geo-status.json", geoStatus);
-    writeJson(outDir, ".well-known/geo-status.json", geoStatus);
-    writeJson(publicDir, "owner-p0.json", geoStatus);
-    writeJson(outDir, "owner-p0.json", geoStatus);
-    writeJson(publicDir, ".well-known/owner-p0.json", geoStatus);
-    writeJson(outDir, ".well-known/owner-p0.json", geoStatus);
-    const geoNext = buildGeoNextText();
-    writeText(publicDir, "geo-next.txt", geoNext);
-    writeText(outDir, "geo-next.txt", geoNext);
-    writeText(publicDir, ".well-known/geo-next.txt", geoNext);
-    writeText(outDir, ".well-known/geo-next.txt", geoNext);
-    writeText(publicDir, "owner-next.txt", geoNext);
-    writeText(outDir, "owner-next.txt", geoNext);
-    writeText(publicDir, ".well-known/owner-next.txt", geoNext);
-    writeText(outDir, ".well-known/owner-next.txt", geoNext);
-    // Owner HTML Open/paste surface (static); invent alias /geo-next.html
-    if (!copyPublicToOut("owner-next.html")) {
-      console.warn("postbuild-ai: public/owner-next.html missing — owner HTML friction surface not copied");
-    } else {
-      const html = fs.readFileSync(path.join(publicDir, "owner-next.html"), "utf8");
-      writeText(publicDir, "geo-next.html", html);
-      writeText(outDir, "geo-next.html", html);
-    }
-    const tur1aJson = buildTur1aJsonDoc({ en: false });
-    writeJson(publicDir, "tur1a.json", tur1aJson);
-    writeJson(outDir, "tur1a.json", tur1aJson);
-    writeJson(publicDir, ".well-known/tur1a.json", tur1aJson);
-    writeJson(outDir, ".well-known/tur1a.json", tur1aJson);
-    const { csv: tur1aCsv } = buildTur1aCsv(null, { en: false });
-    writeText(publicDir, "feeds/tur1a.csv", tur1aCsv);
-    writeText(outDir, "feeds/tur1a.csv", tur1aCsv);
-    writeText(publicDir, "tur1a.csv", tur1aCsv);
-    writeText(outDir, "tur1a.csv", tur1aCsv);
-    const progressDoc = buildPointCProgressDoc();
-    writeJson(publicDir, "point-c-progress.json", progressDoc);
-    writeJson(outDir, "point-c-progress.json", progressDoc);
-    writeJson(publicDir, ".well-known/point-c-progress.json", progressDoc);
-    writeJson(outDir, ".well-known/point-c-progress.json", progressDoc);
-    // Machine twin of owner-next.html (single invent fetch for Open/paste).
-    let pointCForTwin = null;
-    try {
-      pointCForTwin = JSON.parse(fs.readFileSync(path.join(outDir, "point-c.json"), "utf8"));
-    } catch {
-      try {
-        pointCForTwin = JSON.parse(fs.readFileSync(path.join(publicDir, "point-c.json"), "utf8"));
-      } catch {
-        pointCForTwin = null;
-      }
-    }
-    const ownerNextJson = buildOwnerNextJsonDoc({
-      geoStatus,
-      progress: progressDoc,
-      tur1a: tur1aJson,
-      pointC: pointCForTwin,
-    });
-    writeJson(publicDir, "owner-next.json", ownerNextJson);
-    writeJson(outDir, "owner-next.json", ownerNextJson);
-    writeJson(publicDir, ".well-known/owner-next.json", ownerNextJson);
-    writeJson(outDir, ".well-known/owner-next.json", ownerNextJson);
-    writeJson(publicDir, "geo-next.json", ownerNextJson);
-    writeJson(outDir, "geo-next.json", ownerNextJson);
-    writeJson(publicDir, ".well-known/geo-next.json", ownerNextJson);
-    writeJson(outDir, ".well-known/geo-next.json", ownerNextJson);
     const agentsMdPath = path.join(publicDir, "AGENTS.md");
     if (fs.existsSync(agentsMdPath)) {
       const agentsMd = fs.readFileSync(agentsMdPath, "utf8");
@@ -4307,7 +4201,7 @@ function main() {
       writeText(outDir, ".well-known/AGENTS.md", agentsMd);
     }
   } catch (e) {
-    console.error(`postbuild-ai: owner-gate invent emit failed: ${e?.message || e}`);
+    console.error(`postbuild-ai: AGENTS.md mirror failed: ${e?.message || e}`);
     process.exit(1);
   }
   enrichArdOwnerGateInvent();
@@ -4659,8 +4553,9 @@ guide-gob-en: ${SITE_URL}/en/rehber/gob-vs-smd/
 guide-rentbuy-en: ${SITE_URL}/en/rehber/kiralik-mi-satin-alma/
 guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
 `;
-  writeText(publicDir, "ai.txt", aiTxt);
-  writeText(outDir, "ai.txt", aiTxt);
+  // Owner-only gate surfaces (Point C / owner-next / geo-next / tur1a) never ship publicly.
+  writeText(publicDir, "ai.txt", scrubOwnerGateText(aiTxt));
+  writeText(outDir, "ai.txt", scrubOwnerGateText(aiTxt));
 
   // After canonical feeds + ai.txt exist in out/, emit inventable path aliases.
   const aliasCount = writeFeedPathAliases(outDir);
@@ -5061,8 +4956,8 @@ Acknowledgments: https://arledscreen.com/brand.json
 # Discovery: https://arledscreen.com/.well-known/agents.json · https://arledscreen.com/.well-known/ard.json · https://arledscreen.com/humans.txt · https://arledscreen.com/AGENTS.md
 # Owner next (live): https://arledscreen.com/owner-next.html · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo) · tur1a: https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/ · arleds: npm run verify:arleds-301
 `;
-  writeText(publicDir, ".well-known/security.txt", securityTxt);
-  writeText(outDir, ".well-known/security.txt", securityTxt);
+  writeText(publicDir, ".well-known/security.txt", scrubOwnerGateText(securityTxt));
+  writeText(outDir, ".well-known/security.txt", scrubOwnerGateText(securityTxt));
   // Root / extensionless inventables (must run after security.txt exists).
   for (const [srcRel, destRel] of [
     [".well-known/security.txt", "security.txt"],

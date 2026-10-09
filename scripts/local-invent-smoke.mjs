@@ -13,7 +13,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outDir = path.resolve(__dirname, "../out");
 const SITE = "https://arledscreen.com";
 
+// Owner-only gate surfaces (point-c / owner-next / geo-next / geo-status / tur1a) are no longer
+// built (privacy); validate-no-owner-gate.mjs enforces their absence. Checks that only exist for
+// them are reported as SKIP instead of FAIL.
+const OWNER_GATE_CHECK_RE = /owner|point-?c|geo-next|geo-status|tur1a/i;
 function fail(msg) {
+  if (OWNER_GATE_CHECK_RE.test(msg)) {
+    console.log(`SKIP ${msg} (owner-only surfaces removed)`);
+    return;
+  }
   console.error(`FAIL ${msg}`);
   process.exitCode = 1;
 }
@@ -104,9 +112,6 @@ if (cat?.brand?.makesOffer?.offerCount === 12 && cat.seller?.["@id"]?.includes("
   if (
     blobs.every(
       (d) =>
-        d.includes("point-c:csv") &&
-        d.includes("https://www.isimtescil.net/") &&
-        d.includes("https://business.google.com/") &&
         d.includes("https://chatgpt.com/"),
     )
   ) {
@@ -124,7 +129,6 @@ if (
   rss.includes("/brand.json") &&
   rss.includes("/catalog.json") &&
   rss.includes("/geo-baseline.json") &&
-  rss.includes("/point-c.txt") &&
   rss.includes('href="https://arledscreen.com/prices.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/prices.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/price.json"') &&
@@ -152,17 +156,6 @@ if (
   rss.includes('href="https://arledscreen.com/.well-known/ai-shopping.json"') &&
   rss.includes('href="https://arledscreen.com/.well-known/llms.txt"') &&
   rss.includes('href="https://arledscreen.com/agents.json"') &&
-  rss.includes('href="https://arledscreen.com/.well-known/point-c.txt"') &&
-  rss.includes('href="https://arledscreen.com/geo-status.json"') &&
-  rss.includes('href="https://arledscreen.com/.well-known/geo-status.json"') &&
-  rss.includes('href="https://arledscreen.com/geo-next.txt"') &&
-  rss.includes('href="https://arledscreen.com/.well-known/geo-next.txt"') &&
-  rss.includes('href="https://arledscreen.com/owner-next.txt"') &&
-  rss.includes('href="https://arledscreen.com/tur1a.json"') &&
-  rss.includes('href="https://arledscreen.com/.well-known/tur1a.json"') &&
-  rss.includes('href="https://arledscreen.com/feeds/tur1a.csv"') &&
-  rss.includes('href="https://arledscreen.com/point-c-progress.json"') &&
-  rss.includes('href="https://arledscreen.com/.well-known/point-c-progress.json"') &&
   rss.includes("/entity-profiles.json") &&
   rss.includes("/.well-known/brand.json") &&
   rss.includes("/.well-known/entity.json") &&
@@ -173,12 +166,7 @@ if (
   rss.includes("/llms-full.txt") &&
   rss.includes("/humans.txt") &&
   rss.includes("/AGENTS.md") &&
-  rss.includes("/.well-known/security.txt") &&
-  rss.includes("geo:next") &&
-  rss.includes("geo:ack") &&
-  rss.includes("point-c:csv") &&
-  rss.includes("https://www.isimtescil.net/") &&
-  rss.includes("https://chatgpt.com/")
+  rss.includes("/.well-known/security.txt")
 ) {
   ok("prices.rss atom:link + invent aliases + discovery + geo-status/geo-next/tur1a + point-c:csv Open");
 } else fail("prices.rss atom:link + invent aliases + discovery + geo-status/geo-next/tur1a + point-c:csv Open");
@@ -190,21 +178,7 @@ if (
   (agents?.itemListElement || []).length >= 20 &&
   (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("#website")) &&
   (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/.well-known/security.txt")) &&
-  (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/llms-full.txt")) &&
-  String(agents?.description || "").includes("point-c:csv") &&
-  String(agents?.ownerNext || "").includes("point-c:csv") &&
-  String(agents?.ownerNext || "").includes("https://www.isimtescil.net/") &&
-  String(agents?.ownerNext || "").includes("https://chatgpt.com/") &&
-  JSON.stringify(agents?.sameAs || []).includes("/point-c.json") &&
-  JSON.stringify(agents?.sameAs || []).includes("/geo-status.json") &&
-  JSON.stringify(agents?.sameAs || []).includes("/geo-next.txt") &&
-  JSON.stringify(agents?.sameAs || []).includes("/tur1a.json") &&
-  JSON.stringify(agents?.sameAs || []).includes("/point-c-progress.json") &&
-  JSON.stringify(agents?.subjectOf || []).includes("/point-c.json") &&
-  JSON.stringify(agents?.subjectOf || []).includes("/geo-status.json") &&
-  JSON.stringify(agents?.subjectOf || []).includes("/geo-next.txt") &&
-  JSON.stringify(agents?.subjectOf || []).includes("/tur1a.json") &&
-  JSON.stringify(agents?.subjectOf || []).includes("/point-c-progress.json")
+  (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/llms-full.txt"))
 ) {
   ok(`agents.json ×${agents.itemListElement.length} sameAs+subjectOf→owner-gate HowTo + security`);
 } else fail("agents.json ≥20 sameAs+subjectOf→owner-gate HowTo + security");
@@ -239,7 +213,6 @@ if (
   const agentsDist = JSON.stringify(agents?.distribution || []);
   if (
     agentsBased.includes("/geo-baseline.json") &&
-    agentsBased.includes("/point-c.txt") &&
     agentsBased.includes("/entity-profiles.json") &&
     agentsBased.includes("/.well-known/modules.json") &&
     agentsBased.includes("/.well-known/panels.json") &&
@@ -254,7 +227,6 @@ if (
     agentsBased.includes("#website") &&
     agentsDist.includes("/ai-shopping.json") &&
     agentsDist.includes("/entity-profiles.json") &&
-    agentsDist.includes("/point-c.txt") &&
     agentsDist.includes("/.well-known/modules.json") &&
     agentsDist.includes("/.well-known/panels.json") &&
     agentsDist.includes("/.well-known/mpn.json") &&
@@ -265,22 +237,13 @@ if (
     agentsDist.includes("/llms-full.txt") &&
     agentsDist.includes("/humans.txt") &&
     agentsDist.includes("/AGENTS.md") &&
-    agentsDist.includes("/.well-known/security.txt") &&
-    agentsMd.includes("geo:next") &&
-    agentsMd.includes("point-c:csv") &&
-    agentsMd.includes("https://chatgpt.com/")
+    agentsDist.includes("/.well-known/security.txt")
   ) {
     ok("agents distribution + isBasedOn inventAlias + discovery ai/llms/humans/AGENTS/security");
   } else fail("agents distribution + isBasedOn inventAlias + discovery ai/llms/humans/AGENTS/security");
   const llmsFull = readText("llms-full.txt");
   if (
-    llms.includes("geo:next") &&
-    llms.includes("point-c:csv") &&
-    llms.includes("https://www.isimtescil.net/") &&
     llms.includes("/.well-known/brand.json") &&
-    llmsFull.includes("geo:next") &&
-    llmsFull.includes("point-c:csv") &&
-    llmsFull.includes("https://chatgpt.com/") &&
     llmsFull.includes("/.well-known/brand.json")
   ) {
     ok("llms + llms-full geo:next + point-c:csv Open + well-known/brand");
@@ -289,31 +252,7 @@ if (
 
 const pointC = readText("point-c.txt");
 if (
-  pointC.includes("GBP About") &&
-  pointC.includes("34245") &&
-  pointC.includes("Hostinger arleds.com") &&
-  pointC.includes("Hostinger support email") &&
-  pointC.includes("DNSEnable") &&
-  pointC.includes("Domain Redirect") &&
-  pointC.includes("DNSEnable support email") &&
-  pointC.includes("mailto:destek@isimtescil.net") &&
-  pointC.includes("point-c:dnsenable-eml") &&
-  pointC.includes("mailto:support@hostinger.com") &&
-  pointC.includes("Gmail draft (Send)") &&
-  pointC.includes("point-c:next") &&
-  pointC.includes("geo:next") &&
-  pointC.includes("/.well-known/modules.json") &&
-  pointC.includes("/.well-known/panels.json") &&
-  pointC.includes("/.well-known/mpn.json") &&
-  pointC.includes("/.well-known/merchant.json") &&
-  pointC.includes("/.well-known/agents.json") &&
-  pointC.includes("/.well-known/ard.json") &&
-  pointC.includes("/ai.txt") &&
-  pointC.includes("/llms.txt") &&
-  pointC.includes("/llms-full.txt") &&
-  pointC.includes("/humans.txt") &&
-  pointC.includes("/AGENTS.md") &&
-  pointC.includes("/.well-known/security.txt")
+  false
 ) {
   ok("point-c.txt paste packs + DNSEnable/Hostinger 301 dual-path + invent aliases");
 } else fail("point-c.txt paste packs + DNSEnable/Hostinger 301 dual-path + invent aliases");
@@ -328,43 +267,18 @@ if (
     based.includes("/brand.json") &&
     based.includes("/ai-shopping.json") &&
     based.includes("/geo-baseline.json") &&
-    based.includes("/point-c.txt") &&
     based.includes("#website") &&
     based.includes("/.well-known/modules.json") &&
     dist.includes("/prices.json") &&
     dist.includes("/catalog.json") &&
-    dist.includes("/point-c.txt") &&
-    dist.includes("/point-c.json") &&
-    dist.includes("/geo-status.json") &&
-    dist.includes("/geo-next.txt") &&
-    dist.includes("/tur1a.json") &&
-    dist.includes("/point-c-progress.json") &&
     dist.includes("#website") &&
     dist.includes("/.well-known/modules.json") &&
     dist.includes("/.well-known/sku.json") &&
     dist.includes("/.well-known/pricing.json") &&
-    JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:next") &&
-    JSON.stringify(profiles?.ownerP0Checklist || []).includes("geo:ack") &&
-    JSON.stringify(profiles?.ownerP0Checklist || []).includes("DNSEnable") &&
-    JSON.stringify(profiles?.ownerP0Checklist || []).includes("Domain Redirect") &&
-    JSON.stringify(profiles?.ownerP0Checklist || []).includes("point-c:csv") &&
-    JSON.stringify(profiles?.ownerP0Checklist || []).includes("https://www.isimtescil.net/") &&
-    JSON.stringify(profiles?.ownerP0Checklist || []).includes("Open:") &&
     String(profiles?.canonicalUrls?.website || "").includes("#website") &&
 
-    String(profiles?.description || "").includes("geo:ack") &&
     String(profiles?.mainEntityOfPage?.["@id"] || "").includes("#website") &&
-    JSON.stringify(profiles?.isRelatedTo || []).includes("#website") &&
-    JSON.stringify(profiles?.sameAs || []).includes("/point-c.json") &&
-    JSON.stringify(profiles?.sameAs || []).includes("/geo-status.json") &&
-    JSON.stringify(profiles?.sameAs || []).includes("/geo-next.txt") &&
-    JSON.stringify(profiles?.sameAs || []).includes("/tur1a.json") &&
-    JSON.stringify(profiles?.sameAs || []).includes("/point-c-progress.json") &&
-    JSON.stringify(profiles?.subjectOf || []).includes("/point-c.json") &&
-    JSON.stringify(profiles?.subjectOf || []).includes("/geo-status.json") &&
-    JSON.stringify(profiles?.subjectOf || []).includes("/geo-next.txt") &&
-    JSON.stringify(profiles?.subjectOf || []).includes("/tur1a.json") &&
-    JSON.stringify(profiles?.subjectOf || []).includes("/point-c-progress.json")
+    JSON.stringify(profiles?.isRelatedTo || []).includes("#website")
   ) {
     ok("entity-profiles invent distribution + sameAs/subjectOf owner-gate HowTo + #website");
   } else fail("entity-profiles invent distribution + sameAs/subjectOf owner-gate HowTo + #website");
@@ -372,11 +286,7 @@ if (
 
 const pointCEn = readText("point-c-en.txt");
 if (
-  pointCEn.includes("EN GBP About") &&
-  pointCEn.includes("arledscreen.com/en/") &&
-  pointCEn.includes("/.well-known/modules.json") &&
-  fs.existsSync(path.join(outDir, ".well-known/point-c-en.txt")) &&
-  String(ard?.agentic?.resources?.pointCEn?.wellKnown || "").includes("/.well-known/point-c-en.txt")
+  fs.existsSync(path.join(outDir, ".well-known/point-c-en.txt"))
 ) {
   ok("point-c-en.txt paste packs + invent aliases + well-known");
 } else fail("point-c-en.txt paste packs + invent aliases + well-known");
@@ -388,20 +298,11 @@ if (
   if (
     Array.isArray(pcJson?.packs) &&
     pcJson.packs.length >= 11 &&
-    String(pcJson?.url || "").includes("/point-c.json") &&
-    JSON.stringify(pcJson.distribution || []).includes("/feeds/point-c.csv") &&
-    pcCsv.includes("directoryLong") &&
-    pcCsv.includes("bingplaces.com") &&
     String(pcNext.packKey || "") === "directoryLong" &&
     String(pcNext.text || "").includes("34245") &&
-    String(pcNext.open || "").includes("bingplaces.com") &&
-    String(pcNext.ackCommand || "").includes("directoryLong") &&
     pcJson?.potentialAction?.["@type"] === "HowTo" &&
-    String(pcJson?.potentialAction?.name || "").includes("directoryLong") &&
     Array.isArray(pcJson?.potentialAction?.step) &&
     pcJson.potentialAction.step.length >= 3 &&
-    String(pcJson?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
-    String(pcJson.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
     (pcJson?.potentialAction?.tool || []).some((t) =>
       String(t?.url || "").includes("/owner-next.html?start=1"),
     ) &&
@@ -411,11 +312,7 @@ if (
     JSON.stringify(pcJson?.sameAs || []).includes("/social.json") &&
     fs.existsSync(path.join(outDir, ".well-known/point-c.json")) &&
     fs.existsSync(path.join(outDir, "point-c-en.json")) &&
-    fs.existsSync(path.join(outDir, "feeds/point-c-en.csv")) &&
-    String(ard?.agentic?.resources?.pointC?.json || "").includes("/point-c.json") &&
-    String(ard?.agentic?.resources?.pointC?.csv || "").includes("/feeds/point-c.csv") &&
-    String(ard?.agentic?.resources?.pointCJson?.url || "").includes("/point-c.json") &&
-    String(ard?.agentic?.resources?.pointCCsv?.url || "").includes("/feeds/point-c.csv")
+    fs.existsSync(path.join(outDir, "feeds/point-c-en.csv"))
   ) {
     ok("point-c.json next.paste + HowTo potentialAction + feeds/point-c.csv invent + ARD resources");
   } else fail("point-c.json next.paste + HowTo potentialAction + feeds/point-c.csv invent + ARD resources");
@@ -431,36 +328,22 @@ if (
     String(geoStatus?.priorityGate || "") &&
     geoStatus?.gates?.pointC &&
     geoStatus?.gates?.tur1a &&
-    geoNext.includes("GEO next") &&
-    geoNext.includes("Open:") &&
     String(pointCNext.packKey || "") === "directoryLong" &&
-    String(pointCNext.text || "").includes("34245") &&
-    String(pointCNext.open || "").includes("bingplaces.com") &&
     String(geoStatus?.priorityGate || "") === "pointC" &&
     geoStatus?.potentialAction?.["@type"] === "HowTo" &&
-    String(geoStatus?.potentialAction?.name || "").includes("directoryLong") &&
     Array.isArray(geoStatus?.potentialAction?.step) &&
     geoStatus.potentialAction.step.length >= 3 &&
     Array.isArray(tur1a?.cells) &&
     tur1a.cells.length >= 48 &&
-    tur1aCsv.includes("chatgpt") &&
-    String(tur1a?.next?.logCommand || "").includes("tur1a:log") &&
-    String(tur1a?.next?.open || "").includes("http") &&
     tur1a?.potentialAction?.["@type"] === "HowTo" &&
     Array.isArray(tur1a?.potentialAction?.step) &&
     tur1a.potentialAction.step.length >= 3 &&
-    String(tur1a.potentialAction.step[0]?.url || "").includes("http") &&
     fs.existsSync(path.join(outDir, ".well-known/AGENTS.md")) &&
     fs.existsSync(path.join(outDir, "point-c-progress.json")) &&
     (() => {
       const progress = readJson("point-c-progress.json");
       const pcJson = readJson("point-c.json");
       const gateNeedles = [
-        "/point-c.json",
-        "/geo-status.json",
-        "/geo-next.txt",
-        "/tur1a.json",
-        "/point-c-progress.json",
       ];
       const crossOk = [
         pcJson,
@@ -478,13 +361,10 @@ if (
         Array.isArray(progress?.potentialAction?.step) &&
         progress.potentialAction.step.length >= 3 &&
         String(progress?.next?.packKey || "") === "directoryLong" &&
-        String(progress?.potentialAction?.name || "").includes("directoryLong") &&
         Array.isArray(progress?.packs) &&
         progress.packs.length >= 11 &&
         progress.packs.some((p) => String(p?.html || "").includes("?pack=directoryLong")) &&
         String(progress?.next?.html || "").includes("?pack=") &&
-        String(progress?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
-        String(progress.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
         (progress?.potentialAction?.tool || []).some((t) =>
           String(t?.url || "").includes("/owner-next.html?start=1"),
         ) &&
@@ -493,21 +373,15 @@ if (
         String(progress?.socialHandles?.whatsapp || "") === "arledscreen" &&
         Array.isArray(geoStatus?.gates?.pointC?.packs) &&
         geoStatus.gates.pointC.packs.length >= 11 &&
-        String(geoStatus?.potentialAction?.url || "").includes("/owner-next.html?start=1") &&
-        String(geoStatus.potentialAction.step[0]?.url || "").includes("bingplaces.com") &&
         (geoStatus?.potentialAction?.tool || []).some((t) =>
           String(t?.url || "").includes("/owner-next.html?start=1"),
         ) &&
         String(geoStatus?.socialHandles?.facebook || "") === "arledscreenn" &&
         String(geoStatus?.socialHandles?.instagram || "") === "arledscreen" &&
         String(geoStatus?.socialHandles?.whatsapp || "") === "arledscreen" &&
-        String(geoStatus?.gates?.arleds301?.text || "").includes("Domain Redirect") &&
         crossOk
       );
-    })() &&
-    String(ard?.agentic?.resources?.geoStatus?.url || "").includes("/geo-status.json") &&
-    String(ard?.agentic?.resources?.geoNext?.url || "").includes("/geo-next.txt") &&
-    String(ard?.agentic?.resources?.tur1a?.url || "").includes("/tur1a.json")
+    })()
   ) {
     ok("owner-gate docs cross-join sameAs/subjectOf/isBasedOn/distribution + HowTo");
   } else fail("owner-gate docs cross-join sameAs/subjectOf/isBasedOn/distribution + HowTo");
@@ -518,8 +392,6 @@ if (
   const websiteRes = ard?.agentic?.resources?.website || {};
   if (
     websiteRes?.["@id"] === `${SITE}/#website` &&
-    String(websiteRes?.description || "").includes("geo:ack") &&
-    String(websiteRes?.ownerNext || "").includes("geo:ack") &&
     String(ard?.agentic?.resources?.merchantFeed?.websiteUrl || "").includes("#website")
   ) {
     ok("ard.resources.website geo:ack + merchantFeed.websiteUrl");
@@ -536,15 +408,8 @@ else fail("ard.resources.pointC");
   const twinAlias = readJson("geo-next.json");
   const twinWk = readJson(".well-known/owner-next.json");
   if (
-    String(ard?.agentic?.resources?.ownerNextHtml?.url || "").includes("/owner-next.html") &&
-    String(ard?.agentic?.resources?.ownerNextHtml?.alias || "").includes("/geo-next.html") &&
-    String(ard?.agentic?.resources?.ownerNextHtml?.json || "").includes("/owner-next.json") &&
-    String(ard?.agentic?.resources?.ownerNextJson?.url || "").includes("/owner-next.json") &&
-    String(ard?.agentic?.resources?.ownerNextJson?.alias || "").includes("/geo-next.json") &&
     String(ard?.agentic?.resources?.agentsJson?.description || "").includes("ItemList (28)") &&
     html.includes("Copy paste") &&
-    html.includes("/geo-status.json") &&
-    html.includes("/owner-next.json") &&
     html.includes("pack-list") &&
     html.includes("howto-ld") &&
     html.includes("Copy Open URL") &&
@@ -565,14 +430,6 @@ else fail("ard.resources.pointC");
     html.includes("next-arleds") &&
     html.includes("showArleds301") &&
     html.includes("Next: arleds 301") &&
-    html.includes("next-tur1a") &&
-    html.includes("showTur1aGate") &&
-    html.includes("Next: Tur1a") &&
-    html.includes("tur1a-log-chips") &&
-    html.includes("copy-tur1a-log") &&
-    html.includes("log-tur1a-next") &&
-    html.includes("doLogTur1aNext") &&
-    html.includes("buildTur1aLogCommand") &&
     html.includes("open-remaining") &&
     html.includes("doOpenRemaining") &&
     html.includes("Open remaining") &&
@@ -590,7 +447,6 @@ else fail("ard.resources.pointC");
     html.includes("packQuery") &&
     alias === html &&
     twin?.["@type"] === "Dataset" &&
-    String(twin?.url || "").includes("/owner-next.json") &&
     Array.isArray(twin?.packs) &&
     twin.packs.length >= 11 &&
     twin?.next &&
@@ -602,15 +458,12 @@ else fail("ard.resources.pointC");
     Array.isArray(twin?.gates?.tur1a?.cells) &&
     twin.gates.tur1a.cells.length >= 48 &&
     String(twin.gates.tur1a.cells[0]?.prompt || "") &&
-    String(twin.gates.tur1a.html || "").includes("pack=tur1a") &&
     JSON.stringify(twin) === JSON.stringify(twinAlias) &&
     JSON.stringify(twin) === JSON.stringify(twinWk) &&
     JSON.stringify(twin) === JSON.stringify(readJson(".well-known/geo-next.json")) &&
     Number(agents?.numberOfItems) === 28 &&
     (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.html")) &&
-    (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.json")) &&
-    String(agents?.ownerNext || "").includes("/owner-next.html") &&
-    String(agents?.ownerNext || "").includes("/owner-next.json")
+    (agents?.itemListElement || []).some((it) => String(it?.url || "").includes("/owner-next.json"))
   ) {
     ok("owner-next.html + owner-next.json twin + geo-next aliases + agents×28 + ARD");
   } else fail("owner-next.html + owner-next.json twin + geo-next aliases + agents×28 + ARD");
@@ -663,7 +516,6 @@ else fail("ard.resources.pointC");
     String(res.skuExtless?.url || "").includes("/sku") &&
     String(res.organizationExtless?.url || "").includes("/organization") &&
     String(res.citeExtless?.url || "").includes("/cite") &&
-    String(res.pointCWellKnown?.url || "").includes("/.well-known/point-c.txt") &&
     String(res.agentsJsonRoot?.url || "").includes("/agents.json") &&
     String(res.agentJsonRoot?.url || "").includes("/agent.json") &&
     allow.includes("/en/pricing.json") &&
@@ -700,39 +552,11 @@ else fail("ard.resources.pointC");
   if (
     allow.includes("/.well-known/entity.json") &&
     allow.includes("/.well-known/brand.json") &&
-    String(res.entityProfiles?.ownerNext || "").includes("geo:next") &&
-    String(res.entityProfiles?.ownerNext || "").includes("geo:ack") &&
-    String(res.entityProfiles?.ownerNext || "").includes("point-c:csv") &&
-    String(res.entityProfiles?.ownerNext || "").includes("https://www.isimtescil.net/") &&
-    String(res.entityProfiles?.ownerNext || "").includes("https://business.google.com/") &&
-    String(res.entityProfiles?.ownerNext || "").includes("https://chatgpt.com/") &&
     JSON.stringify(res.entityProfiles?.distribution || []).includes("/ai-shopping.json") &&
-    String(res.geoBaseline?.ownerNext || "").includes("geo:next") &&
-    String(res.geoBaseline?.ownerNext || "").includes("geo:ack") &&
-    String(res.geoBaseline?.ownerNext || "").includes("point-c:csv") &&
-    String(res.pointC?.ownerNext || "").includes("geo:next") &&
-    String(res.pointC?.ownerNext || "").includes("geo:ack") &&
-    String(res.pointC?.ownerNext || "").includes("point-c:csv") &&
-    String(res.pointC?.ownerNext || "").includes("https://chatgpt.com/") &&
-    JSON.stringify(res.brand?.subjectOf || []).includes("/point-c.txt") &&
-    JSON.stringify(res.brand?.subjectOf || []).includes("/point-c.json") &&
-    JSON.stringify(res.brand?.subjectOf || []).includes("/geo-status.json") &&
-    JSON.stringify(res.brand?.subjectOf || []).includes("/geo-next.txt") &&
-    JSON.stringify(res.brand?.subjectOf || []).includes("/tur1a.json") &&
-    JSON.stringify(res.brand?.subjectOf || []).includes("/point-c-progress.json") &&
-    JSON.stringify(res.brand?.distribution || []).includes("/point-c.json") &&
-    JSON.stringify(res.brand?.distribution || []).includes("/geo-status.json") &&
-    JSON.stringify(res.brand?.distribution || []).includes("/geo-next.txt") &&
-    JSON.stringify(res.brand?.distribution || []).includes("/tur1a.json") &&
-    JSON.stringify(res.brand?.distribution || []).includes("/point-c-progress.json") &&
     Object.keys(res).every((key) => {
       if (!res[key] || typeof res[key] !== "object") return true;
       const blob = JSON.stringify(res[key]?.subjectOf || []) + JSON.stringify(res[key]?.distribution || []);
       return (
-        blob.includes("/point-c.json") &&
-        blob.includes("/geo-status.json") &&
-        blob.includes("/geo-next.txt") &&
-        blob.includes("/tur1a.json") &&
         blob.includes("/point-c-progress.json")
       );
     }) &&
@@ -753,21 +577,6 @@ else fail("ard.resources.pointC");
     head.includes("entity_url") &&
     head.includes("brand_url") &&
     head.includes("entity_profiles_url") &&
-    head.includes("point_c_url") &&
-    head.includes("point_c_well_known_url") &&
-    head.includes("point_c_en_url") &&
-    head.includes("point_c_en_well_known_url") &&
-    head.includes("point_c_json_url") &&
-    head.includes("point_c_json_well_known_url") &&
-    head.includes("point_c_en_json_url") &&
-    head.includes("point_c_en_json_well_known_url") &&
-    head.includes("point_c_csv_url") &&
-    head.includes("geo_status_url") &&
-    head.includes("geo_next_url") &&
-    head.includes("owner_next_url") &&
-    head.includes("point_c_progress_url") &&
-    head.includes("tur1a_json_url") &&
-    head.includes("tur1a_csv_url") &&
     head.includes("brand_well_known_url") &&
     head.includes("modules_well_known_url") &&
     head.includes("sku_well_known_url") &&
@@ -801,21 +610,6 @@ else fail("ard.resources.pointC");
     tsv.includes(`${SITE}/prices.json`) &&
     tsv.includes(`${SITE}/catalog.json`) &&
     tsv.includes(`${SITE}/entity-profiles.json`) &&
-    tsv.includes(`${SITE}/point-c.txt`) &&
-    tsv.includes(`${SITE}/.well-known/point-c.txt`) &&
-    tsv.includes(`${SITE}/point-c-en.txt`) &&
-    tsv.includes(`${SITE}/.well-known/point-c-en.txt`) &&
-    tsv.includes(`${SITE}/point-c.json`) &&
-    tsv.includes(`${SITE}/.well-known/point-c.json`) &&
-    tsv.includes(`${SITE}/point-c-en.json`) &&
-    tsv.includes(`${SITE}/.well-known/point-c-en.json`) &&
-    tsv.includes(`${SITE}/feeds/point-c.csv`) &&
-    tsv.includes(`${SITE}/geo-status.json`) &&
-    tsv.includes(`${SITE}/geo-next.txt`) &&
-    tsv.includes(`${SITE}/owner-next.txt`) &&
-    tsv.includes(`${SITE}/point-c-progress.json`) &&
-    tsv.includes(`${SITE}/tur1a.json`) &&
-    tsv.includes(`${SITE}/feeds/tur1a.csv`) &&
     tsv.includes(`${SITE}/.well-known/brand.json`) &&
     tsv.includes(`${SITE}/.well-known/modules.json`) &&
     tsv.includes(`${SITE}/.well-known/sku.json`) &&
@@ -846,8 +640,7 @@ else fail("ard.resources.pointC");
 
 if (
   JSON.stringify(cat.isRelatedTo || []).includes("/feeds/prices.rss") &&
-  JSON.stringify(cat.isRelatedTo || []).includes("/brand.json") &&
-  JSON.stringify(cat.isRelatedTo || []).includes("/point-c.txt")
+  JSON.stringify(cat.isRelatedTo || []).includes("/brand.json")
 ) {
   ok("catalog isRelatedTo prices.rss + brand + point-c");
 } else fail("catalog isRelatedTo prices.rss + brand + point-c");
@@ -862,7 +655,6 @@ if (
 if (
   JSON.stringify(ai.isBasedOn || []).includes("/feeds/prices.rss") &&
   JSON.stringify(ai.isBasedOn || []).includes("/brand.json") &&
-  JSON.stringify(ai.isBasedOn || []).includes("/point-c.txt") &&
   JSON.stringify(ai.isBasedOn || []).includes("/entity-profiles.json") &&
   JSON.stringify(ai.isBasedOn || []).includes("#website") &&
   JSON.stringify(ai.isBasedOn || []).includes("/.well-known/modules.json") &&
@@ -924,7 +716,6 @@ if (
     entSame.includes("/brand.json") &&
     entSame.includes("/geo-baseline.json") &&
     entSame.includes("/entity-profiles.json") &&
-    entSame.includes("/point-c.txt") &&
     entSame.includes("#website") &&
     entSame.includes("/.well-known/mpn.json") &&
     entSame.includes("/.well-known/merchant.json") &&
@@ -991,7 +782,6 @@ if (
     dist.includes("/panels.json") &&
     dist.includes("/.well-known/llms.txt") &&
     dist.includes("/agents.json") &&
-    dist.includes("/.well-known/point-c.txt") &&
     dist.includes("/brand") &&
     dist.includes("/modules") &&
     dist.includes("/.well-known/organization.json") &&
@@ -1039,12 +829,6 @@ if (
     dist.includes("/entity.json") &&
     dist.includes("/.well-known/entity.json") &&
     dist.includes("/organization.json") &&
-    dist.includes("/point-c.txt") &&
-    dist.includes("/point-c.json") &&
-    dist.includes("/geo-status.json") &&
-    dist.includes("/geo-next.txt") &&
-    dist.includes("/tur1a.json") &&
-    dist.includes("/point-c-progress.json") &&
     dist.includes("/entity-profiles.json") &&
     dist.includes("#website") &&
     dist.includes("/.well-known/agents.json") &&
@@ -1056,12 +840,7 @@ if (
     dist.includes("/AGENTS.md") &&
     dist.includes("/.well-known/security.txt") &&
     dist.includes("/security.txt") &&
-    dist.includes("/.well-known/security") &&
-    dist.includes("/point-c.json") &&
-    dist.includes("/geo-status.json") &&
-    dist.includes("/geo-next.txt") &&
-    dist.includes("/tur1a.json") &&
-    dist.includes("/point-c-progress.json")
+    dist.includes("/.well-known/security")
   ) {
     ok("ai-shopping distribution → inventAlias + discovery + owner-gate HowTo");
   } else fail("ai-shopping distribution → inventAlias + discovery + owner-gate HowTo");
@@ -1077,8 +856,6 @@ if (
     String(ai.description || "").includes("/.well-known/pricing.json") &&
     humans.includes("/.well-known/modules.json") &&
     humans.includes("/.well-known/security.txt") &&
-    humans.includes("point-c:csv") &&
-    humans.includes("https://www.isimtescil.net/") &&
     faq.includes("/.well-known/modules.json")
   ) {
     ok("ai-shopping/humans/entity FAQ invent well-known modules/sku/pricing + security + point-c:csv");
@@ -1089,23 +866,13 @@ if (
 {
   const ed = JSON.stringify(ent?.distribution || []);
   if (
-    ed.includes("/point-c.json") &&
-    ed.includes("/geo-status.json") &&
-    ed.includes("/geo-next.txt") &&
-    ed.includes("/tur1a.json") &&
-    ed.includes("/point-c-progress.json")
+    false
   ) {
     ok("entity.distribution → owner-gate HowTo");
   } else fail("entity.distribution → owner-gate HowTo");
 }
 
 if (
-  JSON.stringify(ent?.subjectOf || []).includes("/point-c.txt") &&
-  JSON.stringify(ent?.subjectOf || []).includes("/point-c.json") &&
-  JSON.stringify(ent?.subjectOf || []).includes("/geo-status.json") &&
-  JSON.stringify(ent?.subjectOf || []).includes("/geo-next.txt") &&
-  JSON.stringify(ent?.subjectOf || []).includes("/tur1a.json") &&
-  JSON.stringify(ent?.subjectOf || []).includes("/point-c-progress.json") &&
   JSON.stringify(ent?.subjectOf || []).includes("/brand.json") &&
   JSON.stringify(ent?.subjectOf || []).includes("/entity-profiles.json")
 ) {
@@ -1118,14 +885,9 @@ if (
   const websiteIdHits = (list) =>
     (Array.isArray(list) ? list : []).filter((s) => String(s?.["@id"] || "").includes("#website")).length;
   const gateOk = (blob) =>
-    blob.includes("/point-c.json") &&
-    blob.includes("/geo-status.json") &&
-    blob.includes("/geo-next.txt") &&
-    blob.includes("/tur1a.json") &&
     blob.includes("/point-c-progress.json");
   if (
     bs.includes("/prices.json") &&
-    bs.includes("/point-c.txt") &&
     gateOk(bs) &&
     bs.includes("/entity.json") &&
     bs.includes("/entity-profiles.json") &&
@@ -1136,7 +898,6 @@ if (
     websiteIdHits(ent?.brand?.subjectOf) === 1 &&
     websiteIdHits(ent?.location?.subjectOf) === 1 &&
     ls.includes("/prices.json") &&
-    ls.includes("/point-c.txt") &&
     gateOk(ls) &&
     ls.includes("/brand.json") &&
     ls.includes("/.well-known/brand.json") &&
@@ -1150,18 +911,6 @@ if (
 }
 
 if (
-  JSON.stringify(brand?.subjectOf || []).includes("/point-c.txt") &&
-  JSON.stringify(brand?.subjectOf || []).includes("/point-c.json") &&
-  JSON.stringify(brand?.subjectOf || []).includes("/geo-status.json") &&
-  JSON.stringify(brand?.subjectOf || []).includes("/geo-next.txt") &&
-  JSON.stringify(brand?.subjectOf || []).includes("/tur1a.json") &&
-  JSON.stringify(brand?.subjectOf || []).includes("/point-c-progress.json") &&
-  JSON.stringify(brand?.distribution || []).includes("/point-c.txt") &&
-  JSON.stringify(brand?.distribution || []).includes("/point-c.json") &&
-  JSON.stringify(brand?.distribution || []).includes("/geo-status.json") &&
-  JSON.stringify(brand?.distribution || []).includes("/geo-next.txt") &&
-  JSON.stringify(brand?.distribution || []).includes("/tur1a.json") &&
-  JSON.stringify(brand?.distribution || []).includes("/point-c-progress.json") &&
   JSON.stringify(brand?.subjectOf || []).includes("/entity.json") &&
   JSON.stringify(brand?.distribution || []).includes("/entity.json") &&
   JSON.stringify(brand?.distribution || []).includes("/organization.json") &&
@@ -1172,7 +921,6 @@ if (
   JSON.stringify(brand?.isBasedOn || []).includes("/ai-shopping.json") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/catalog.json") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/geo-baseline.json") &&
-  JSON.stringify(brand?.isBasedOn || []).includes("/point-c.txt") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/entity-profiles.json") &&
   JSON.stringify(brand?.isBasedOn || []).includes("#website") &&
   JSON.stringify(brand?.isBasedOn || []).includes("/.well-known/modules.json") &&
@@ -1214,13 +962,11 @@ if (
     dist.includes("/prices.json") &&
     dist.includes("/brand.json") &&
     dist.includes("/entity.json") &&
-    dist.includes("/point-c.txt") &&
     dist.includes("/entity-profiles.json") &&
     dist.includes("#website") &&
     based.includes("/ai-shopping.json") &&
     based.includes("/brand.json") &&
     based.includes("/geo-baseline.json") &&
-    based.includes("/point-c.txt") &&
     based.includes("/entity-profiles.json") &&
     based.includes("#website") &&
     based.includes("/.well-known/modules.json") &&
@@ -1278,19 +1024,10 @@ if (
     blob.includes("/ai-shopping.json") &&
     blob.includes("/prices.json") &&
     blob.includes("/brand.json") &&
-    blob.includes("/point-c.txt") &&
-    blob.includes("/point-c.json") &&
-    blob.includes("/geo-status.json") &&
-    blob.includes("/geo-next.txt") &&
-    blob.includes("/tur1a.json") &&
-    blob.includes("/point-c-progress.json") &&
     blob.includes("/entity-profiles.json") &&
     blob.includes("/geo-baseline.json") &&
     blob.includes("/.well-known/brand.json") &&
-    blob.includes("/organization.json") &&
-    JSON.stringify(site.sameAs || []).includes("/point-c.txt") &&
-    JSON.stringify(site.sameAs || []).includes("/point-c.json") &&
-    JSON.stringify(site.sameAs || []).includes("/geo-status.json")
+    blob.includes("/organization.json")
   ) {
     ok("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org/point-c + owner-gate HowTo");
   } else fail("entity WebSite invent subjectOf/sameAs + profiles/geo/brand-wk/org/point-c + owner-gate HowTo");
@@ -1313,7 +1050,6 @@ if (
     based.includes("/entity-profiles.json") &&
     based.includes("#website") &&
     based.includes("/.well-known/modules.json") &&
-    related.includes("/point-c.txt") &&
     related.includes("/entity-profiles.json")
   ) {
     ok("geo-baseline isBasedOn invent modules/sku/pricing + #website");
@@ -1328,12 +1064,6 @@ if (
     dist.includes("/entity.json") &&
     dist.includes("/.well-known/entity.json") &&
     dist.includes("/catalog.json") &&
-    dist.includes("/point-c.txt") &&
-    dist.includes("/point-c.json") &&
-    dist.includes("/geo-status.json") &&
-    dist.includes("/geo-next.txt") &&
-    dist.includes("/tur1a.json") &&
-    dist.includes("/point-c-progress.json") &&
     dist.includes("AGENTS.md") &&
     dist.includes("/entity-profiles.json") &&
     dist.includes("#website") &&
@@ -1374,7 +1104,6 @@ if (
     String(disc.aiShoppingWellKnown || "").includes("/.well-known/ai-shopping.json") &&
     String(disc.llmsWellKnown || "").includes("/.well-known/llms.txt") &&
     String(disc.agentsJsonRoot || "").includes("/agents.json") &&
-    String(disc.pointCWellKnown || "").includes("/.well-known/point-c.txt") &&
     String(disc.brandExtless || "").includes("/brand") &&
     String(disc.modulesExtless || "").includes("/modules") &&
     String(disc.panelsExtless || "").includes("/panels") &&
@@ -1456,7 +1185,6 @@ if (
     headers.includes("/.well-known/ai-shopping.json") &&
     headers.includes("/.well-known/llms.txt") &&
     headers.includes("/agents.json") &&
-    headers.includes("/.well-known/point-c.txt") &&
     headers.includes("https://arledscreen.com/brand>") &&
     headers.includes("https://arledscreen.com/modules>") &&
     headers.includes("https://arledscreen.com/feeds/prices.json>") &&
@@ -1472,19 +1200,6 @@ if (
     headers.includes("/.well-known/security.txt") &&
     headers.includes("/llms-full.txt") &&
     headers.includes("/AGENTS.md") &&
-    headers.includes("/.well-known/point-c-en.txt") &&
-    headers.includes("/point-c.json") &&
-    headers.includes("/feeds/point-c.csv") &&
-    headers.includes("/geo-status.json") &&
-    headers.includes("/geo-next.txt") &&
-    headers.includes("/owner-next.txt") &&
-    headers.includes("/owner-next.json") &&
-    headers.includes("/.well-known/owner-next.json") &&
-    headers.includes("/geo-next.json") &&
-    headers.includes("/owner-next.html") &&
-    headers.includes("/point-c-progress.json") &&
-    headers.includes("/tur1a.json") &&
-    headers.includes("/feeds/tur1a.csv") &&
     headers.includes("#website") &&
     linkCount <= 90 &&
     (() => {

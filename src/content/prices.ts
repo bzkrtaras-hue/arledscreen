@@ -60,7 +60,7 @@ export const GEO_BASELINE_DATASET = {
   name: "ARLEDSCREEN GEO technical baseline",
 };
 
-/** Nested Brand / LocalBusiness subjectOf = price sources + invent aliases + Point C. */
+/** Nested Brand / LocalBusiness subjectOf = price sources + invent aliases. */
 export const BRAND_SUBJECT_DATASETS = [
   ...PRICE_DATASETS,
   GEO_BASELINE_DATASET,
@@ -69,13 +69,6 @@ export const BRAND_SUBJECT_DATASETS = [
     "@id": `${SITE_URL}/prices.json`,
     url: `${SITE_URL}/prices.json`,
     name: "ARLEDSCREEN pricedPanels (prices.json alias)",
-  },
-  {
-    "@type": "DataDownload" as const,
-    "@id": `${SITE_URL}/point-c.txt`,
-    url: `${SITE_URL}/point-c.txt`,
-    name: "ARLEDSCREEN Point C paste packs",
-    encodingFormat: "text/plain",
   },
   {
     "@type": "Brand" as const,
@@ -109,14 +102,23 @@ export function nxtionstarBrandNode() {
     "@id": NXTIONSTAR_BRAND_ID,
     name: "NXTIONSTAR",
     url: `${SITE_URL}/tr/nxtionstar/`,
+    slogan: "NXTIONSTAR — görsel gücün küresel standardı.",
     subjectOf: BRAND_SUBJECT_DATASETS,
     // Brand-first agents (NXTIONSTAR panel price) join Org AggregateOffer band + catalog.
     makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
     hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     description:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss. GEO baseline: geo-baseline.json.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
     disambiguatingDescription:
-      "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
+      "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
+    sameAs: [
+      `${SITE_URL}/`,
+      `${SITE_URL}/tr/`,
+      `${SITE_URL}/tr/nxtionstar/`,
+      `${SITE_URL}/brand.json`,
+      "https://www.instagram.com/arledscreen/",
+      "https://www.facebook.com/arledscreenn",
+    ],
   };
 }
 
@@ -314,11 +316,6 @@ export function pricedPanelsDatasetJsonLd(pageUrl: string) {
         "@type": "DataDownload",
         encodingFormat: "application/ld+json",
         contentUrl: `${SITE_URL}/entity.json`,
-      },
-      {
-        "@type": "DataDownload",
-        encodingFormat: "text/plain",
-        contentUrl: `${SITE_URL}/point-c.txt`,
       },
     ],
     temporalCoverage: `2026-01-01/${PRICE_VALID_UNTIL}`,
@@ -541,7 +538,7 @@ const moduleExceptions = PANEL_PRICES.filter((p) => p.moduleMm)
   .join(", ");
 
 export const PRICE_NOTE =
-  `Fiyatlar USD, panel (modül) başınadır; modül ölçüsü ${STANDARD_MODULE}${moduleExceptions ? ` (${moduleExceptions})` : ""}. KDV ve nakliye hariçtir. Tutarlar yaklaşıktır; nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`;
+  `Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir.${moduleExceptions ? ` Standart modül ${STANDARD_MODULE}; özel ölçüler: ${moduleExceptions}.` : ` Modül ölçüsü ${STANDARD_MODULE}.`} Tutarlar yaklaşıktır; nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`;
 
 export const pricesForGroup = (slug: string) => PANEL_PRICES.filter((p) => p.groups.includes(slug));
 

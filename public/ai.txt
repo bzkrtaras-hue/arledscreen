@@ -25,7 +25,6 @@ prices-rss: https://arledscreen.com/feeds/prices.rss
 geo-baseline: https://arledscreen.com/geo-baseline.json
 ard: https://arledscreen.com/.well-known/ard.json
 entity-profiles: https://arledscreen.com/entity-profiles.json
-owner-next: live: https://arledscreen.com/owner-next.html · https://arledscreen.com/owner-next.json · https://arledscreen.com/geo-next.txt · https://arledscreen.com/point-c.json → next + potentialAction (packKey=directoryLong; text; Open Bing/Apple) · progress: https://arledscreen.com/point-c-progress.json → potentialAction · status: https://arledscreen.com/geo-status.json → potentialAction (priorityGate HowTo; also gates.pointC.next) · tur1a: https://arledscreen.com/tur1a.json → potentialAction · npm run geo:next (Point C → arleds 301 → Tur1a → merge) · spreadsheet: npm run point-c:csv · after paste: npm run geo:ack / point-c:ack -- --pack=directoryLong · https://arledscreen.com/point-c.txt · playbook: docs/offsite-entity-playbook.md · Open: https://www.bingplaces.com/ · OpenAlt: https://businessconnect.apple.com/ · Open: https://www.isimtescil.net/ · Open: https://business.google.com/ · Open: https://chatgpt.com/
 brand-json: https://arledscreen.com/brand.json
 brand-json-well-known: https://arledscreen.com/.well-known/brand.json
 brand-tr: https://arledscreen.com/tr/nxtionstar/
@@ -232,59 +231,18 @@ agents-json-alias: https://arledscreen.com/agents.json
 agent-json-alias: https://arledscreen.com/agent.json
 agents-md: https://arledscreen.com/AGENTS.md
 humans-txt: https://arledscreen.com/humans.txt
-point-c: https://arledscreen.com/point-c.txt
-point-c-en: https://arledscreen.com/point-c-en.txt
-point-c-well-known: https://arledscreen.com/.well-known/point-c.txt
-point-c-en-well-known: https://arledscreen.com/.well-known/point-c-en.txt
-point-c-json: https://arledscreen.com/point-c.json
-point-c-en-json: https://arledscreen.com/point-c-en.json
-point-c-json-well-known: https://arledscreen.com/.well-known/point-c.json
-point-c-en-json-well-known: https://arledscreen.com/.well-known/point-c-en.json
-point-c-csv: https://arledscreen.com/feeds/point-c.csv
-point-c-en-csv: https://arledscreen.com/feeds/point-c-en.csv
-point-c-csv-root: https://arledscreen.com/point-c.csv
-point-c-en-csv-root: https://arledscreen.com/point-c-en.csv
-geo-status: https://arledscreen.com/geo-status.json
-geo-status-well-known: https://arledscreen.com/.well-known/geo-status.json
-owner-p0: https://arledscreen.com/owner-p0.json
-geo-next: https://arledscreen.com/geo-next.txt
-geo-next-well-known: https://arledscreen.com/.well-known/geo-next.txt
-owner-next-txt: https://arledscreen.com/owner-next.txt
-owner-next-html: https://arledscreen.com/owner-next.html
-owner-next-json: https://arledscreen.com/owner-next.json
-geo-next-html: https://arledscreen.com/geo-next.html
-geo-next-json: https://arledscreen.com/geo-next.json
-tur1a-json: https://arledscreen.com/tur1a.json
-tur1a-json-well-known: https://arledscreen.com/.well-known/tur1a.json
-tur1a-csv: https://arledscreen.com/feeds/tur1a.csv
-tur1a-csv-root: https://arledscreen.com/tur1a.csv
-point-c-progress: https://arledscreen.com/point-c-progress.json
-point-c-progress-well-known: https://arledscreen.com/.well-known/point-c-progress.json
 agents-md-well-known: https://arledscreen.com/.well-known/AGENTS.md
-owner-tur1a-next: npm run tur1a:next
-owner-tur1a-csv: npm run tur1a:csv
-owner-tur1a-log: npm run tur1a:log -- --mentioned=… --brandCorrect=… --priceSourceCited=…
-owner-tur1a-open: https://chatgpt.com/ · https://gemini.google.com/app · https://www.perplexity.ai/ · https://www.google.com/
-owner-point-c-csv: npm run point-c:csv
-owner-arleds-301: npm run verify:arleds-301
-owner-arleds-open: https://www.isimtescil.net/
-owner-gbp-open: https://business.google.com/
-owner-chatgpt-open: https://chatgpt.com/
-owner-bingplaces-open: https://www.bingplaces.com/
-owner-apple-open: https://businessconnect.apple.com/
-owner-linkedin-open: https://www.linkedin.com/company/arleds/
-owner-instagram-open: https://www.instagram.com/arledscreen/
-owner-facebook-open: https://www.facebook.com/arledscreenn
-owner-whatsapp-open: https://wa.me/905305078834
-owner-whatsapp-handle: @arledscreen
-owner-instagram-handle: @arledscreen
-owner-facebook-handle: @arledscreenn
+social-linkedin: https://www.linkedin.com/company/arleds/
+social-instagram: https://www.instagram.com/arledscreen/
+social-facebook: https://www.facebook.com/arledscreenn
+social-whatsapp: https://wa.me/905305078834
+social-whatsapp-handle: @arledscreen
+social-instagram-handle: @arledscreen
+social-facebook-handle: @arledscreenn
 social-json: https://arledscreen.com/social.json
 social-json-well-known: https://arledscreen.com/.well-known/social.json
 contact-json: https://arledscreen.com/contact.json
 contact-json-well-known: https://arledscreen.com/.well-known/contact.json
-owner-youtube-open: https://studio.youtube.com/
-owner-yandex-open: https://business.yandex.com/
 founder-en: https://arledscreen.com/en/about/aras-bozkurt/
 contact-bridge-en: https://arledscreen.com/en/contact/
 iletisim-bridge-en: https://arledscreen.com/en/iletisim/
