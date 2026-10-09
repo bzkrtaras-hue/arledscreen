@@ -49,7 +49,7 @@ export async function generateMetadata({
     path: "/bolgeler/",
     title: "LED Ekran Hizmet Bölgesi: Türkiye İlleri | ARLEDSCREEN",
     description:
-      "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; Tem 2025–Tem 2026 kayıtlı iller ve proje örnekleri.",
+      "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; Tem 2025–Tem 2026 proje tamamladığımız iller ve proje örnekleri.",
     hreflangLocales: ["tr", "en"],
   });
 }
@@ -151,7 +151,7 @@ export default async function BolgelerHubPage({
         description={
           en
             ? "ARLEDSCREEN LED survey, install and service regions. HQ Gaziosmanpaşa, Istanbul; published provinces and project samples only."
-            : "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; kayıtlı iller ve proje örnekleri."
+            : "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; proje tamamladığımız iller ve proje örnekleri."
         }
         cssSelectors={["#bolge-h1", "#bolge-lead"]}
         mainEntity={{ "@id": `${pageUrl}#service` }}

@@ -273,12 +273,12 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
 
       <Section
         id="case-studies"
-        eyebrow="Case study"
-        title={en ? "Published project pages" : "Yayımlanmış proje sayfaları"}
+        eyebrow={en ? "Case studies" : "Proje sayfaları"}
+        title={en ? "Project pages" : "Proje detay sayfaları"}
         description={
           en
-            ? "Pages generated from published records with location and size/pitch. No invented reviews or technical claims. Detail pages are Turkish."
-            : "Konumu ve ölçüsü/pitch’i yayımlanmış kayıtlardan üretilen sayfalar. Uydurma yorum veya teknik iddia yoktur."
+            ? "Each project page shows the location, size and pixel pitch of the install. Detail pages are in Turkish."
+            : "Her proje sayfasında uygulamanın konumu, ölçüsü ve piksel aralığı yer alır."
         }
         className="bg-surface/60 prose-seo"
       >

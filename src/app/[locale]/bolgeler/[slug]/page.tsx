@@ -200,7 +200,7 @@ export default async function ServiceRegionPage({
             <thead>
               <tr className="border-b border-border text-ink-muted">
                 <th className="py-2 pr-3 font-semibold">Tarih</th>
-                <th className="py-2 pr-3 font-semibold">Kayıt</th>
+                <th className="py-2 pr-3 font-semibold">Proje</th>
                 <th className="py-2 pr-3 font-semibold">Ölçü / P</th>
                 <th className="py-2 font-semibold">Konum</th>
               </tr>

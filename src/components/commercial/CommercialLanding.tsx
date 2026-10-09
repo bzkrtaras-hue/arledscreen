@@ -323,11 +323,11 @@ export function CommercialLanding({
         <section className="border-t border-border bg-band/30 py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-xl font-bold text-ink md:text-2xl">
-              {tr ? "Yayımlanmış proje kayıtları" : "Published project records"}
+              {tr ? "Tamamlanan projeler" : "Completed projects"}
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-ink-soft">
               {tr
-                ? "Aşağıdaki satırlar sitedeki referans kayıtlarından türetilir; uydurma şehir veya iş listesi yoktur."
+                ? "Bu kullanım alanında tamamladığımız projelerden örnekler."
                 : "Projects below come from our completed-work records."}
             </p>
             <div className="mt-6 overflow-x-auto">
@@ -335,7 +335,7 @@ export function CommercialLanding({
                 <thead className="border-b border-border text-xs uppercase tracking-wide text-ink-muted">
                   <tr>
                     <th className="py-2 pr-4 font-semibold">{tr ? "Tarih" : "Date"}</th>
-                    <th className="py-2 pr-4 font-semibold">{tr ? "Kayıt" : "Record"}</th>
+                    <th className="py-2 pr-4 font-semibold">{tr ? "Proje" : "Project"}</th>
                     <th className="py-2 pr-4 font-semibold">{tr ? "Detay" : "Detail"}</th>
                     <th className="py-2 font-semibold">{tr ? "Konum" : "Location"}</th>
                   </tr>

@@ -184,7 +184,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Hangi şehirlerde hizmet veriyorsunuz?",
         answer:
-          "Merkez İstanbul Gaziosmanpaşa’dadır. Hizmet Türkiye geneli planlanır; sitede yalnızca yayımlanmış proje kaydı olan iller için ayrı sayfa açılır.",
+          "Merkez İstanbul Gaziosmanpaşa’dadır. Hizmet Türkiye geneli planlanır; proje tamamladığımız iller için ayrı şehir sayfaları bulunur.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Teklif iste" },
@@ -549,7 +549,7 @@ const PITCH_PAGES: CommercialPage[] = [
     h1: "P4 LED ekran",
     lead: "Cephe ve açık alan için sık tercih edilen P4 bandı.",
     intro: [
-      "P4, Manisa Büyükşehir Belediyesi kaydındaki 1344×128 cm Ultra 2026 uygulaması gibi geniş dış mekân işlerinde kullanılır. Önden servis varyantı da vardır.",
+      "P4, Manisa Büyükşehir Belediyesi için yaptığımız 1344×128 cm Ultra 2026 uygulaması gibi geniş dış mekân işlerinde kullanılır. Önden servis varyantı da vardır.",
     ],
     modelLinks: [
       modelLink("ic-mekan-led-ekran", "p4", "P4 iç mekân"),
@@ -567,7 +567,7 @@ const PITCH_PAGES: CommercialPage[] = [
     label: "P5 LED",
     h1: "P5 LED ekran",
     lead: "Uzak mesafeli dış mekân ve stadyum/cephe ölçeği için P5.",
-    intro: ["P5, Bursa kaydındaki 576×480 cm Premium dış mekân gibi büyük yüzeylerde tercih edilir."],
+    intro: ["P5, Bursa'da yaptığımız 576×480 cm Premium dış mekân uygulaması gibi büyük yüzeylerde tercih edilir."],
     modelLinks: [modelLink("dis-mekan-led-ekran", "p5", "P5 dış mekân")!].filter(Boolean),
     proof: (r) => /P5/i.test(r.detail),
     images: [
@@ -590,7 +590,7 @@ function usagePage(opts: {
     slug: opts.slug,
     cluster: "use",
     title: `${opts.name} | ARLEDSCREEN`,
-    description: `${opts.name}: satış, montaj ve servis. ARLEDSCREEN İstanbul merkezli; kayıtlı proje örnekleri ve keşif sonrası yazılı teklif.`,
+    description: `${opts.name}: satış, montaj ve servis. ARLEDSCREEN İstanbul merkezli; tamamlanan proje örnekleri ve keşif sonrası yazılı teklif.`,
     h1: opts.name,
     eyebrow: "Kullanım amacı",
     lead: opts.lead,
@@ -622,7 +622,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Mağaza LED ekran",
     lead: "Vitrin, satış alanı ve marka duvarı için mağaza LED ekran çözümleri.",
     intro: [
-      "Mağaza LED ekranında vitrin mesafesi ve ürün aydınlatması önemlidir. Merter ve Osmanbey gibi perakende kayıtlarımız bu kullanıma yakındır.",
+      "Mağaza LED ekranında vitrin mesafesi ve ürün aydınlatması önemlidir. Merter ve Osmanbey'deki perakende projelerimiz bu kullanıma yakındır.",
     ],
     proof: (r) => /triko|vitrin|mağaza|Prestij|Gnd/i.test(`${r.company} ${r.detail}`),
     images: [
@@ -647,7 +647,7 @@ const USE_PAGES: CommercialPage[] = [
     slug: "cephe-led-ekran",
     name: "Cephe LED ekran",
     lead: "Bina cephesi ve meydan için dış mekân LED ekran.",
-    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa kayıtları geniş dış yüzey örnekleridir."],
+    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa projelerimiz geniş dış yüzey örnekleridir."],
     proof: (r) => /dış mekân|dış mekan|P4|P5|1344|576/i.test(r.detail),
     images: [
       { src: "/projects/modules/outdoor-facade.jpg", alt: "Cephe LED ekran" },
@@ -672,7 +672,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Vitrin LED ekran",
     lead: "Mağaza vitrini ve kolon uygulamaları için LED ekran.",
     intro: [
-      "Aksaray Beren Kırtasiye kaydındaki 192×176 cm vitrin + kolon uygulaması bu kullanıma örnektir. Şeffaf LED alternatifi cam vitrinlerde değerlendirilir.",
+      "Aksaray'da Beren Kırtasiye için yaptığımız 192×176 cm vitrin + kolon uygulaması bu kullanıma örnektir. Şeffaf LED alternatifi cam vitrinlerde değerlendirilir.",
     ],
     proof: (r) => /vitrin|kolon/i.test(r.detail),
     images: [
@@ -685,7 +685,7 @@ const USE_PAGES: CommercialPage[] = [
     slug: "otel-led-ekran",
     name: "Otel LED ekran",
     lead: "Otel lobi, ballroom ve dış cephe LED ekran çözümleri.",
-    intro: ["Alanya White City Resort Hotel kaydı otel ölçeğinde bir uygulamadır. Lobi ince pitch; dış alan daha büyük pitch ister."],
+    intro: ["Alanya White City Resort Hotel projemiz otel ölçeğinde bir uygulamadır. Lobi ince pitch; dış alan daha büyük pitch ister."],
     proof: (r) => /Hotel|Resort|otel/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/opt/blog/alanya-otel-led-ekran.jpg", alt: "Alanya otel LED ekran uygulaması" },
@@ -698,7 +698,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Restoran LED ekran",
     lead: "Restoran ve kafe oturma alanları için LED ekran.",
     intro: [
-      "Kafe/restoran kayıtlarımız arasında Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe ve Yozgat kampüs cafe uygulamaları bulunur.",
+      "Kafe/restoran projelerimiz arasında Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe ve Yozgat kampüs cafe uygulamaları bulunur.",
     ],
     proof: (r) => /Cafe|Kafe|cafe|kafe|Malt|Lounge/i.test(`${r.company} ${r.detail}`),
     images: [
@@ -736,7 +736,7 @@ const USE_PAGES: CommercialPage[] = [
     slug: "sahne-led-ekran",
     name: "Sahne LED ekran",
     lead: "Konser, tiyatro ve etkinlik sahnesi LED ekranları.",
-    intro: ["Kadıköy Matiz Sahne kaydı sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir."],
+    intro: ["Kadıköy Matiz Sahne projemiz sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir."],
     proof: (r) => /Sahne|sahne|kiralama|stand/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Sahne kiralık LED kabin" },
@@ -764,7 +764,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Belediye LED ekran",
     lead: "Belediye meydan, bilgilendirme ve etkinlik LED ekranları.",
     intro: [
-      "Manisa Büyükşehir Belediyesi ve Beylikdüzü Belediyesi kayıtları kamu/belediye ölçeğinde uygulamalardır. İzin süreçleri konuma göre değişir.",
+      "Manisa Büyükşehir Belediyesi ve Beylikdüzü Belediyesi projelerimiz kamu/belediye ölçeğinde uygulamalardır. İzin süreçleri konuma göre değişir.",
     ],
     proof: (r) => /Belediye/i.test(r.company),
     images: [
@@ -802,7 +802,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Stadyum LED ekran",
     lead: "Stadyum ve büyük açık alan LED ekranları.",
     intro: [
-      "Stadyum ölçeği yüksek konstrüksiyon ve uzak izleme mesafesi ister. Bursa’daki 576×480 cm P5 Premium dış mekân kaydı büyük yüzey örneğidir; her stadyum için ayrı keşif gerekir.",
+      "Stadyum ölçeği yüksek konstrüksiyon ve uzak izleme mesafesi ister. Bursa’daki 576×480 cm P5 Premium dış mekân uygulamamız büyük yüzey örneğidir; her stadyum için ayrı keşif gerekir.",
     ],
     proof: (r) => /P5|576|1344|dış mekân|dış mekan/i.test(r.detail),
     images: [
