@@ -9,6 +9,10 @@ export type HeroClip = {
   /** Optional muted loop — omit for high-res still-only scenes */
   src?: string;
   poster: string;
+  /** Optional ≤767px video (centre crop at native density) */
+  srcMobile?: string;
+  /** Optional lighter centre-cropped still for ≤767px (same framing as object-cover centre) */
+  posterMobile?: string;
   width: number;
   height: number;
   /** Short scene label for a11y / dots */
@@ -77,6 +81,10 @@ export function HeroVideo({
   const [active, setActive] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const [ready, setReady] = useState<Record<number, boolean>>({});
+  // Videos stay idle (preload="none") until the page has loaded and the main
+  // thread is idle, so the poster still is the LCP element and no MB of video
+  // competes with the first paint. Save-Data visitors keep the stills only.
+  const [started, setStarted] = useState(false);
   const showPause = !reduce && !userPaused;
   const hasVideo = clips.some((c) => Boolean(c.src));
 
@@ -84,7 +92,7 @@ export function HeroVideo({
     (i: number, allowPlay: boolean) => {
       videoRefs.current.forEach((v, n) => {
         if (!v) return;
-        if (n === i && !reduce && allowPlay && clips[n]?.src) {
+        if (n === i && started && !reduce && allowPlay && clips[n]?.src) {
           if (v.readyState < 2) v.load();
           v.play().catch(() => {});
         } else {
@@ -92,10 +100,10 @@ export function HeroVideo({
         }
       });
     },
-    [clips, reduce],
+    [clips, reduce, started],
   );
 
-  // Stills are ready immediately; prefetch video clips once mounted.
+  // Stills are ready immediately.
   useEffect(() => {
     setReady((prev) => {
       const next = { ...prev };
@@ -104,16 +112,36 @@ export function HeroVideo({
       });
       return next;
     });
-    videoRefs.current.forEach((v) => {
-      if (!v) return;
-      try {
-        v.preload = "auto";
-        if (v.readyState < 2) v.load();
-      } catch {
-        /* ignore */
-      }
-    });
   }, [clips]);
+
+  // Lazy-start: wait for window load, then an idle slot (max 2.5 s).
+  useEffect(() => {
+    if (reduce) return;
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (conn?.saveData) return;
+    let cancelled = false;
+    let idleId: number | undefined;
+    let timer: number | undefined;
+    const go = () => {
+      if (!cancelled) setStarted(true);
+    };
+    const schedule = () => {
+      const w = window as Window & {
+        requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      };
+      if (w.requestIdleCallback) idleId = w.requestIdleCallback(go, { timeout: 2500 });
+      else timer = window.setTimeout(go, 1200);
+    };
+    if (document.readyState === "complete") schedule();
+    else window.addEventListener("load", schedule, { once: true });
+    return () => {
+      cancelled = true;
+      window.removeEventListener("load", schedule);
+      const w = window as Window & { cancelIdleCallback?: (id: number) => void };
+      if (idleId !== undefined) w.cancelIdleCallback?.(idleId);
+      if (timer !== undefined) window.clearTimeout(timer);
+    };
+  }, [reduce]);
 
   useEffect(() => {
     if (reduce || clips.length < 2 || userPaused) return;
@@ -157,10 +185,13 @@ export function HeroVideo({
     <section aria-label={labels.region} className="relative isolate w-full overflow-hidden bg-navy">
       <div className="relative h-[100svh] min-h-[560px] max-h-[860px] md:h-[min(100dvh,920px)] md:min-h-[680px] md:max-h-[920px]">
         {/* Still / poster stack — HQ factory frames stay sharp under the wash */}
-        {clips.map((clip, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
+        {clips.map((clip, i) =>
+          i === 0 || started || active === i ? (
+          <picture key={`still-${clipKey(clip)}`}>
+            {clip.posterMobile ? (
+              <source media="(max-width: 767px)" srcSet={clip.posterMobile} type="image/webp" />
+            ) : null}
           <img
-            key={`still-${clipKey(clip)}`}
             src={clip.poster}
             alt={clip.label}
             width={clip.width}
@@ -175,7 +206,9 @@ export function HeroVideo({
               zIndex: 0,
             }}
           />
-        ))}
+          </picture>
+          ) : null,
+        )}
 
         {clips.map((clip, i) =>
           clip.src ? (
@@ -184,14 +217,13 @@ export function HeroVideo({
               ref={(el) => {
                 videoRefs.current[i] = el;
               }}
-              src={clip.src}
-              poster={clip.poster}
+              src={clip.srcMobile ? undefined : clip.src}
               width={clip.width}
               height={clip.height}
               muted
               loop
               playsInline
-              preload="auto"
+              preload="none"
               aria-hidden={true}
               initial={false}
               animate={{
@@ -200,9 +232,22 @@ export function HeroVideo({
               transition={{ duration: CROSSFADE_S, ease }}
               onLoadedData={() => setReady((r) => ({ ...r, [i]: true }))}
               onCanPlay={() => setReady((r) => ({ ...r, [i]: true }))}
+              onCanPlayThrough={() => {
+                // Warm only the next scene, one clip at a time.
+                if (i !== active) return;
+                const next = videoRefs.current[(i + 1) % clips.length];
+                if (next && next !== videoRefs.current[i] && next.preload !== "auto") next.preload = "auto";
+              }}
               className={coverClass(clip)}
               style={{ zIndex: active === i ? 1 : 0 }}
-            />
+            >
+              {clip.srcMobile ? (
+                <>
+                  <source media="(max-width: 767px)" src={clip.srcMobile} type="video/mp4" />
+                  <source src={clip.src} type="video/mp4" />
+                </>
+              ) : null}
+            </m.video>
           ) : null,
         )}
 
