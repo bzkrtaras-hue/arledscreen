@@ -10,6 +10,7 @@ import { references, type Reference } from "@/content/references";
 import { displayCompany } from "@/content/trust";
 import { modelPath, LED_MODELS } from "@/content/models";
 import { productGroupPath, getProductGroup } from "@/content/categories";
+import { getProductGroupEn } from "@/content/product-groups-en";
 import { SERVICE_REGIONS } from "@/content/service-regions";
 
 export type CommercialCluster = "intent" | "product" | "pitch" | "use";
@@ -968,10 +969,12 @@ function enPitchLinks(except?: string): CommercialLink[] {
 }
 
 function remapProductLinksToEn(links: CommercialLink[]): CommercialLink[] {
-  return links.map((l) => ({
-    ...l,
-    href: l.href.replace(/^\/tr\/products\//, "/en/products/"),
-  }));
+  return links.map((l) => {
+    const href = l.href.replace(/^\/tr\/products\//, "/en/products/");
+    const slug = href.match(/\/en\/products\/([^/]+)\/?$/)?.[1];
+    const enName = slug ? getProductGroupEn(slug)?.name : undefined;
+    return { href, label: enName ?? l.label };
+  });
 }
 
 type EnLeanOverlay = {

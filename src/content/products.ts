@@ -56,6 +56,32 @@ const KIND_SERIES_EN: Record<ModelKind, string> = {
 
 const pitchOf = (m: LedModel) => Number.parseFloat(m.chip.replace(/^P/, "").replace(",", "."));
 
+/** EN product cards keep Turkish datasheet alts translated for visible UI. */
+function enImageAlt(alt: string): string {
+  return alt
+    .replaceAll("iç mekân", "indoor")
+    .replaceAll("İç mekân", "Indoor")
+    .replaceAll("dış mekân", "outdoor")
+    .replaceAll("Dış mekân", "Outdoor")
+    .replaceAll("modülün ön ve arka yüzü", "module front and back")
+    .replaceAll("LED modül yüzeyi", "LED module surface")
+    .replaceAll("LED ekran duvarı", "LED display wall")
+    .replaceAll("LED modül", "LED module")
+    .replaceAll("Önden servis edilebilen", "Front-service")
+    .replaceAll("Bükülmüş", "Bent")
+    .replaceAll("Kavisli forma getirilmiş esnek", "Curve-formed flexible")
+    .replaceAll("asenkron LED kontrol kartı", "asynchronous LED control card")
+    .replaceAll("LED kontrolcü", "LED controller")
+    .replaceAll("Wi-Fi kontrol kartı", "Wi-Fi control card")
+    .replaceAll("all-in-one LED kontrolcü", "all-in-one LED controller")
+    .replaceAll("multimedya oynatıcı ailesi", "multimedia player family")
+    .replaceAll("gönderici kart", "sending card")
+    .replaceAll("multimedya LED işlemci", "multimedia LED processor")
+    .replaceAll("yüksek kapasiteli LED işlemci", "high-capacity LED processor")
+    .replaceAll("LED video işlemci", "LED video processor")
+    .replaceAll("LED gönderici kart", "LED sending card");
+}
+
 function fromModel(m: LedModel): Product {
   if (m.kind === "kontrol") {
     return {
@@ -69,7 +95,7 @@ function fromModel(m: LedModel): Product {
       specs: { pixelPitchMm: 0, technology: "SMD" },
       highlights: [],
       image: m.image,
-      imageAlt: m.imageAlt,
+      imageAlt: enImageAlt(m.imageAlt),
       href: modelPath(m),
       imageGradient: "from-slate-50 via-white to-cyan-50",
     };
@@ -89,7 +115,7 @@ function fromModel(m: LedModel): Product {
     specs: { pixelPitchMm: pitch, technology: m.kind === "gob" ? "GOB" : "SMD" },
     highlights: [],
     image: m.image,
-    imageAlt: m.imageAlt,
+    imageAlt: enImageAlt(m.imageAlt),
     href: modelPath(m),
     imageGradient: "from-cyan-50 via-white to-sky-50",
   };
@@ -113,6 +139,7 @@ export function getProducts(locale: Locale): Product[] {
   if (locale !== "tr") return products;
   return products.map((p) => {
     const copy = trCopy[p.id];
+    const model = LED_MODELS.find((m) => `${m.group}-${m.slug}` === p.id);
     if (!copy) return p;
     return {
       ...p,
@@ -120,6 +147,7 @@ export function getProducts(locale: Locale): Product[] {
       series: copy.series,
       shortDescription: copy.shortDescription,
       description: copy.description,
+      imageAlt: model?.imageAlt ?? p.imageAlt,
     };
   });
 }

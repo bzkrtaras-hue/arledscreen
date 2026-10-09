@@ -296,7 +296,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         className="prose-seo"
       >
         <ReferencesGrid locale={locale} />
-        <AllReferencesNote />
+        <AllReferencesNote locale={locale} />
       </Section>
 
       <Section
