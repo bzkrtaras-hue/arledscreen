@@ -128,7 +128,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         h2: "Choose purchase when…",
         body:
-          "The wall will run daily for months/years. Plan pitch and m² with /en/hesaplayici/ and the published 12 SKUs on /en/led-ekran-fiyatlari/. Install and structure appear in the written quote.",
+          "The wall will run daily for months/years. Plan pitch and m² with /en/hesaplayici/ and the 12 published panel prices on /en/led-ekran-fiyatlari/. Install and structure appear in the written quote.",
       },
       {
         h2: "What our price list covers",

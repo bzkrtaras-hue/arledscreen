@@ -1479,7 +1479,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       {
         question: "Where is P3.07 panel USD?",
         answer:
-          "Published SKUs are on our price list at /en/led-ekran-fiyatlari/. VAT/freight excluded; no free shipping.",
+          "Published panel prices are on our price list at /en/led-ekran-fiyatlari/. VAT/freight excluded; no free shipping.",
       },
     ],
   },
