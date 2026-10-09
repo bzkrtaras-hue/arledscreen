@@ -74,7 +74,7 @@ const HUB: InstallGuide = {
     {
       h2: "First power-on and the scan file",
       paragraphs: [
-        "When power is first applied it is normal to see scrambled lines, a split image or wrong colours, because the receiving card does not yet know the module. Once the settings file that tells the receiving card how to drive the module is loaded, the image comes right.",
+        "When power is first applied it is normal to see scrambled lines, a split image or wrong colours, because the receiving card does not yet know the module. Once the settings file that tells the receiving card how to drive the module is loaded, the image displays correctly.",
         "In the field this is usually called the “scan file”. It holds the module's pixel count, scan type, driver chip and data direction. On NovaStar systems it is the receiving-card configuration file (.rcfgx or .rcfg). On Huidu systems it is loaded in the receiving-card parameters of the hardware settings, either by choosing a ready module file or by running the step-by-step “smart setting”.",
         "After loading, use the test patterns (solid colours, grid, grey levels) to check that every module lights correctly. Sending the settings is not enough; they must be saved to the cards so they survive a power cut. Ask the company that supplied the screen for the correct file and keep a copy.",
       ],
@@ -226,7 +226,7 @@ const HUIDU: InstallGuide = {
     {
       h2: "Connecting the computer to the card",
       paragraphs: [
-        "Huidu cards connect in three ways: a network cable straight to the computer, both on the same router, or, if the card has a Wi-Fi module, by joining the card's own wireless network. A direct cable needs no network settings; shortly after the card's network lights come on, the card name and ID appear in HDPlayer's status area.",
+        "Huidu cards connect in three ways: by network cable straight to the computer, through the same router as the computer, or, if the card has a Wi-Fi module, by joining the card's own wireless network. A direct cable needs no network settings; shortly after the card's network lights come on, the card name and ID appear in HDPlayer's status area.",
         "Through a router, one computer can manage several cards on the same network. If the card is on a different subnet, give it a static IP and add it with manual card search in the Control menu. When setting a static IP, pick an address on the same subnet as the computer that no other device uses.",
       ],
     },
@@ -370,7 +370,7 @@ const NOVASTAR: InstallGuide = {
         "NovaStar has a program for each job. Which ones you need depends on whether your screen runs synchronously (sending card or video processor) or asynchronously (multimedia player).",
       ],
       bullets: [
-        "NovaLCT (Windows): the screen configuration tool. Sending- and receiving-card settings, receiving-card file loading, screen connection, brightness, calibration and monitoring. Used for synchronous products and for the screen settings of asynchronous players.",
+        "NovaLCT (Windows): the screen configuration tool. It handles sending- and receiving-card settings, receiving-card file loading, screen connection, brightness, calibration and monitoring. It is used for synchronous products and for the screen settings of asynchronous players.",
         "ViPlex Express (Windows): content editing and publishing from a computer. In async mode it manages players: content, brightness, on/off schedules and time sync.",
         "ViPlex Handy (Android and iOS): phone app for player management over LAN or the internet, content publishing, brightness and quick screen configuration.",
         "VNNOX: NovaStar's cloud platform, used to publish content to internet-connected players remotely and monitor screen status.",
@@ -438,7 +438,7 @@ const NOVASTAR: InstallGuide = {
   mistakes: [
     "Sending receiving-card settings but not saving them to hardware: they are lost after a power cut.",
     "Leaving the computer's display resolution below the LED screen's (synchronous system).",
-    "Setting a ViPlex solution resolution different from the screen.",
+    "Setting a ViPlex solution resolution different from the screen's.",
     "Trying the .rcfgx file of a similar module: it must match your model and receiving-card firmware.",
     "Expecting synchronised playback on several screens without setting up time sync.",
     "Leaving the factory-default Wi-Fi and admin passwords unchanged.",
@@ -457,7 +457,7 @@ const NOVASTAR: InstallGuide = {
     {
       question: "Should I use ViPlex Express or ViPlex Handy?",
       answer:
-        "Both manage the same players. ViPlex Express on a computer is better for detailed editing and many screens; ViPlex Handy on a phone is handier for quick changes on site.",
+        "Both manage the same players. ViPlex Express on a computer is better for detailed editing and many screens; ViPlex Handy on a phone is more practical for quick changes on site.",
     },
     {
       question: "Can I manage a NovaStar screen remotely?",

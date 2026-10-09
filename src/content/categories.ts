@@ -259,9 +259,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
           "Ekranın montaj yüksekliği, izleyicinin ortalama uzaklığı ve içerik türü birlikte değerlendirilir. Uzaktan izlenen cephe ve billboard uygulamalarında daha büyük piksel aralıkları ekonomik bir seçim olabilir.",
       },
       {
-        question: "Taşıyıcı sistem ve elektrik altyapısı teklife dahil mi?",
+        question: "Taşıyıcı sistem ve elektrik altyapısı teklife dâhil mi?",
         answer:
-          "Taşıyıcı sistem, elektrik ve sinyal altyapısı keşifte incelenir. Hangi kalemlerin teklife dahil olduğu malzeme listesiyle birlikte yazılı olarak belirtilir.",
+          "Taşıyıcı sistem, elektrik ve sinyal altyapısı keşifte incelenir. Hangi kalemlerin teklife dâhil olduğu malzeme listesiyle birlikte yazılı olarak belirtilir.",
       },
       {
         question: "Kurulumdan sonra bakım desteği veriyor musunuz?",
@@ -372,9 +372,9 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
           "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir. Etkinlik tarihi, ölçü ve lokasyonu paylaştığınızda yazılı teklif hazırlıyoruz.",
       },
       {
-        question: "Kurulum ve söküm teklife dahil mi?",
+        question: "Kurulum ve söküm teklife dâhil mi?",
         answer:
-          "Kurulum ve söküm planı etkinlik takvimine göre hazırlanır; teklife dahil kalemler yazılı olarak belirtilir.",
+          "Kurulum ve söküm planı etkinlik takvimine göre hazırlanır; teklife dâhil kalemler yazılı olarak belirtilir.",
       },
       {
         question: "Açık hava etkinlikleri için kiralık ekran var mı?",
@@ -631,13 +631,13 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     title: "Dijital Ekran Satışı ve Montajı | LED, LCD | ARLEDSCREEN",
     description:
       "Mağaza, lobi, kafe ve ofis için dijital ekran: LCD/TV tipi ekran, dokunmatik kiosk, menuboard ve LED ekran. Satış, montaj, tamir ve yazılı teklif ARLEDSCREEN'den.",
-    short: "LCD/TV tipi ekran, kiosk, menuboard ve LED; ihtiyaca göre tek ekipten.",
+    short: "LCD/TV tipi ekran, kiosk, menüboard ve LED; ihtiyaca göre tek ekipten.",
     tag: "Mağaza · Lobi · Ofis",
     family: "LCD ve Dijital Ekranlar",
     types: [
       "LCD / TV tipi ticari ekran",
       "Dokunmatik kiosk",
-      "Menuboard (dijital menü)",
+      "Menüboard (dijital menü)",
       "Ayaklı totem ve poster ekran",
       "Tam renkli LED ekran (NXTIONSTAR)",
     ],
@@ -646,7 +646,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     imageAlt: "Mağaza içinde ayaklı dikey dijital ekran (totem)",
     intro: [
       "Dijital ekran, gösterdiği içeriği basılı malzeme gibi yeniden üretmeden, yazılımla değiştirebildiğiniz her türlü ekranı kapsar. LCD/TV tipi paneller, dokunmatik kiosklar, menü ekranları, ayaklı totemler ve modüllerden kurulan LED ekranlar bu ailenin üyeleridir.",
-      "Doğru tür; ekranın nereye konacağına, ne kadar uzaktan izleneceğine ve ne kadar büyük olacağına göre seçilir. Tek ve yakından bakılan bir yüzeyde hazır ölçülü LCD çoğu zaman yeterlidir. Geniş, çerçevesiz ya da güneş alan bir yüzeyde LED ekran öne çıkar. İki seçeneği de satıyor, kuruyor ve servis ediyoruz.",
+      "Doğru tür, ekranın nereye konacağına, ne kadar uzaktan izleneceğine ve ne kadar büyük olacağına göre seçilir. Tek ve yakından bakılan bir yüzeyde hazır ölçülü LCD çoğu zaman yeterlidir. Geniş, çerçevesiz ya da güneş alan bir yüzeyde LED ekran öne çıkar. İki seçeneği de satıyor, kuruyor ve servis ediyoruz.",
     ],
     highlights: [
       "LED ve LCD seçeneği aynı ekipten",
@@ -679,12 +679,12 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Arızalı dijital ekranları tamir ediyor musunuz?",
         answer:
-          "Evet. LED ekranların yanında LCD, kiosk ve menuboard ekranların arıza tespiti ve tamirini de yapıyoruz. Ekranın modelini ve arızanın kısa tarifini paylaşmanız yeterli.",
+          "Evet. LED ekranların yanında LCD, kiosk ve menüboard ekranların arıza tespiti ve tamirini de yapıyoruz. Ekranın modelini ve arızanın kısa tarifini paylaşmanız yeterli.",
       },
       {
         question: "Fiyat nasıl belirlenir?",
         answer:
-          "Bu grup için sitede fiyat yayımlamıyoruz. Ekran türü, ölçü, adet ve montaj şekli netleşince montaj dahil yazılı teklif hazırlıyoruz.",
+          "Bu grup için sitede fiyat yayımlamıyoruz. Ekran türü, ölçü, adet ve montaj şekli netleşince montaj dâhil yazılı teklif hazırlıyoruz.",
       },
     ],
   },
@@ -726,7 +726,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     ],
     pitches: [],
     seriesCategories: [],
-    guide: { href: "/tr/rehber/menuboard-dijital-menu/", label: "Menuboard rehberi" },
+    guide: { href: "/tr/rehber/menuboard-dijital-menu/", label: "Menüboard rehberi" },
     projectType: "horeca",
     whatsapp: "Merhaba, menüboard (dijital menü ekranı) hakkında bilgi almak istiyorum. Kasa alanının ölçüsü ve ekran sayısı:",
     faqs: [
@@ -811,7 +811,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
           "Tedarik ettiğimiz gövdeler kapalı alanlar içindir. Açık hava için sızdırmaz kasa, yüksek parlaklık ve iklimlendirme gerekir; bu tür talepleri proje bazında değerlendiriyoruz.",
       },
       {
-        question: "Arızalı kiosk tamir ediyor musunuz?",
+        question: "Arızalı kioskları tamir ediyor musunuz?",
         answer:
           "Evet. Kiosk, LCD ve menüboard ekranların arıza tespiti ve tamirini yapıyoruz. Fiyat bu grup için yazılı teklifle verilir.",
       },
@@ -833,14 +833,14 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       "49, 55 ve 65 inç ölçüler",
       "Android tabanlı",
       "Windows tabanlı",
-      "LCD menuboard ve ayaklı ekran (teklifle)",
+      "LCD menüboard ve ayaklı ekran (teklifle)",
     ],
     image: "/projects/guides/lcd-dikey-ekran-55-inc.jpg",
     cardImage: "/projects/guides/lcd-dikey-ekran-55-inc.jpg",
     imageAlt: "55 inç dikey LCD dijital ekran, ayaklı gövde",
     intro: [
       "LCD ekran, fabrikada belirlenen ölçüde gelen tek parça bir paneldir. Modülle büyütülen LED ekranın aksine kutudan çıktığı ölçüde kullanılır; bu yüzden yakından bakılan, tek bir noktaya konan ekranlarda pratik bir seçenektir.",
-      "Ayaklı dokunmatik kiosk gövdelerinde 49, 55 ve 65 inç ölçüleri tedarik ediyoruz. Kiosklar Android ya da Windows tabanlı olarak seçilir; video, fotoğraf ve ses oynatır, internete bağlanarak çevrim içi içerik de gösterebilir. Menuboard ve ayaklı ekran projelerinde LCD seçeneğini LED ile birlikte değerlendiriyor, model ve ölçüyü yazılı teklifte netleştiriyoruz.",
+      "Ayaklı dokunmatik kiosk gövdelerinde 49, 55 ve 65 inç ölçüleri tedarik ediyoruz. Kiosklar Android ya da Windows tabanlı olarak seçilir; video, fotoğraf ve ses oynatır, internete bağlanarak çevrim içi içerik de gösterebilir. Menüboard ve ayaklı ekran projelerinde LCD seçeneğini LED ile birlikte değerlendiriyor, model ve ölçüyü yazılı teklifte netleştiriyoruz.",
     ],
     highlights: [
       "49, 55 ve 65 inç dokunmatik kiosk",
@@ -863,7 +863,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "LCD kiosk hangi ölçülerde var?",
         answer:
-          "Ayaklı dokunmatik kiosklarda 49, 55 ve 65 inç seçeneklerini tedarik ediyoruz. Hangi ölçünün uygun olduğunu izleme mesafesi ve konulacak alana göre birlikte seçiyoruz.",
+          "Ayaklı dokunmatik kiosklarda 49, 55 ve 65 inç seçeneklerini tedarik ediyoruz. Hangi ölçünün uygun olduğunu izleme mesafesine ve konulacak alana göre birlikte seçiyoruz.",
       },
       {
         question: "Android mi, Windows mu seçmeliyim?",
@@ -883,7 +883,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "LCD ekran fiyatı ne kadar?",
         answer:
-          "LCD ekranlar için sitede fiyat yayımlamıyoruz. Ölçü, işletim sistemi ve adet netleştikten sonra montaj dahil yazılı teklif hazırlıyoruz. Sitedeki yayımlanmış fiyatlar yalnızca NXTIONSTAR LED paneller içindir.",
+          "LCD ekranlar için sitede fiyat yayımlamıyoruz. Ölçü, işletim sistemi ve adet netleştikten sonra montaj dâhil yazılı teklif hazırlıyoruz. Sitedeki yayımlanmış fiyatlar yalnızca NXTIONSTAR LED paneller içindir.",
       },
     ],
   },
@@ -898,7 +898,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     short: "Dikey formatlı, ayaklı veya duvara monte edilebilen tanıtım ekranları.",
     tag: "Mağaza · Lobi · Etkinlik",
     family: "Poster ve Totem LED Ekranlar",
-    types: ["Ayaklı poster ekran", "Duvara montaj", "Yan yana birleştirme", "İç ve dış mekân totem", "Menuboard (kafe / restoran)"],
+    types: ["Ayaklı poster ekran", "Duvara montaj", "Yan yana birleştirme", "İç ve dış mekân totem", "Menüboard (kafe / restoran)"],
     image: "/projects/applications/led-poster-totems.jpg",
     cardImage: "/projects/applications/led-poster-totems.jpg",
     imageAlt: "Dikey LED poster ve totem ekranları — yan yana dört ayaklı ünite",

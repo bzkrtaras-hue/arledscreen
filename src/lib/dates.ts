@@ -25,6 +25,7 @@ const DETAIL_PHRASES: [string, string][] = [
   ["Sahne arkası LED ekran", "Backstage LED display"],
   ["Yüksek çözünürlüklü LED", "High-resolution LED"],
   ["Dev LED ekran", "Large-format LED display"],
+  ["dış mekân kiralama kabini", "outdoor rental cabinet"],
   ["outdoor kiralama kabin", "outdoor rental cabinet"],
   ["Türkiye'nin en büyük mağazası", "Flagship store (as logged)"],
   ["Yeşilpınar şube", "Yeşilpınar branch"],

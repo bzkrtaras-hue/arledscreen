@@ -149,7 +149,7 @@ export default async function ProductsPage({ params }: PageProps) {
                 <p id="products-lead" className="mt-4 max-w-xl text-pretty text-base leading-[1.75] text-ink-soft">{seo.intro ?? pageCopy.description}</p>
                 <AiPriceSourceNote
                   locale={locale === "en" ? "en" : "tr"}
-                  lead={locale === "en" ? "Published panel prices:" : "Panel list fiyatı:"}
+                  lead={locale === "en" ? "Published panel prices:" : "Panel liste fiyatı:"}
                 />
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-muted">
                   {locale === "en"
@@ -208,7 +208,7 @@ export default async function ProductsPage({ params }: PageProps) {
                   </>
                 ) : (
                   <>
-                    Bu hub’daki yayımlanmış 12 NXTIONSTAR panel fiyatı. Tam liste ve m² örnekler:{" "}
+                    Bu sayfada yayımlanmış 12 NXTIONSTAR panel fiyatı yer alır. Tam liste ve m² örnekleri:{" "}
                     <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                       LED ekran fiyatları
                     </Link>
