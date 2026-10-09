@@ -12,7 +12,7 @@ export function ValuesBand() {
         <SectionHeading
           eyebrow="Neden ARLEDSCREEN?"
           title="Kararınızı destekleyecek somut bilgiler"
-          description="Doğru ürün kadar doğru keşif, temiz montaj ve kurulum sonrası destek de belirleyicidir. Buradaki bilgilerin tamamı doğrulanabilir kayıtlara dayanır."
+          description="Doğru ürün kadar doğru keşif, temiz montaj ve kurulum sonrası destek de belirleyicidir. Bu sayfadaki proje bilgileri tamamladığımız işlere dayanır."
         />
         <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-12">
           {items.map(({ Icon, title, body, href, linkLabel }, i) => (

@@ -165,7 +165,7 @@ export function ProductGroupEnLanding({
             ))}
           </ul>
           <p className="pt-2 text-sm">
-            Detailed model specs are on the TR catalog pages; panel USD prices are on{" "}
+            Detailed model specs are on the TR catalog pages; panel prices are on{" "}
             <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
               our price list
             </Link>. See{" "}
@@ -184,13 +184,13 @@ export function ProductGroupEnLanding({
         <section id="panel-prices" className="border-t border-border bg-white py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-xl font-bold text-ink md:text-2xl">
-              Published panel USD for this group
+              Published panel prices for this group
             </h2>
             <p className="mb-4 mt-2 max-w-3xl text-sm text-ink-muted">
               From our published price list. VAT/freight excluded; no free shipping. Final project
               price only in the written quote.
             </p>
-            <PanelPriceTable locale="en" panels={prices} caption={`${en.name} — panel USD`} />
+            <PanelPriceTable locale="en" panels={prices} caption={`${en.name} — panel prices`} />
           </div>
         </section>
       ) : (

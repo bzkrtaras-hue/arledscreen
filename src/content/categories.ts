@@ -379,7 +379,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
       {
         question: "Açık hava etkinlikleri için kiralık ekran var mı?",
         answer:
-          "Evet. Proje kayıtlarımızda dış mekân kiralama kabiniyle tamamlanan kurulumlar bulunur. Uygun sistemi etkinlik koşullarına göre öneriyoruz.",
+          "Evet. Dış mekân kiralama kabiniyle tamamladığımız kurulumlar var. Uygun sistemi etkinlik koşullarına göre öneriyoruz.",
       },
     ],
   },

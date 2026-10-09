@@ -1,3 +1,4 @@
+import Script from "next/script";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
@@ -53,6 +54,8 @@ export default async function LocaleLayout({
       <LocaleHtml locale={locale} />
       <OrganizationJsonLd />
       <SiteShell locale={locale}>{children}</SiteShell>
+      {/* Canlı Destek (Melis): her sayfa türünde; /hesaplayici ve /fiyat-hesap widget içinde hariç tutulur. */}
+      <Script src="/chat-widget.js" strategy="lazyOnload" data-locale={locale} data-pages="*" />
     </div>
   );
 }

@@ -335,7 +335,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Menuboard ve kafe-restoran projelerimiz",
           body:
-            "Yeşilpınar'daki (Eyüpsultan, İstanbul) Aslantürk Ercan Et şubesinde menuboard projesini tamamladık; uygulama Instagram hesabımızda (instagram.com/arledscreen) paylaşıldı. Kafe ve restoran kayıtlarımız arasında ayrıca Beylikdüzü Yaşam Cafe (İstanbul), Prestij Cafe (Osmanbey, İstanbul), Orta Şekerli Kentpark Cafe (Yozgat, 384 × 128 cm, P1.86), Ouka Kafe (Aksaray) ve Babil Cafe (Niğde) LED ekran kurulumları bulunur. Bu kafe kayıtları LED ekran kurulumlarıdır; her biri menuboard projesi değildir.",
+            "Yeşilpınar'daki (Eyüpsultan, İstanbul) Aslantürk Ercan Et şubesinde menuboard projesini tamamladık; uygulama Instagram hesabımızda (instagram.com/arledscreen) paylaşıldı. Kafe ve restoran projelerimiz arasında ayrıca Beylikdüzü Yaşam Cafe (İstanbul), Prestij Cafe (Osmanbey, İstanbul), Orta Şekerli Kentpark Cafe (Yozgat, 384 × 128 cm, P1.86), Ouka Kafe (Aksaray) ve Babil Cafe (Niğde) LED ekran kurulumları bulunur. Bu kafe projeleri LED ekran kurulumlarıdır; her biri menuboard projesi değildir.",
         },
         {
           h2: "Menuboard boyutları: iç mekân ve dış mekân",

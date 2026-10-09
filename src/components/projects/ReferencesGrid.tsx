@@ -44,10 +44,10 @@ export function ReferencesGrid({ locale, collapsible = false }: Props) {
               >
                 <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{formatProjectDate(ref.date, locale)}</td>
                 <td className="px-4 py-3 align-top font-display text-[15px] font-semibold tracking-[-0.01em] text-ink sm:px-5">
-                  {displayCompany(ref, locale === "en" ? "en" : "tr")}
+                  {displayCompany(ref, locale === "tr" ? "tr" : "en")}
                 </td>
-                <td className="px-4 py-3 align-top text-ink-soft sm:px-5">{formatProjectDetail(ref.detail, locale)}</td>
-                <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{(locale === "en" ? enProjectLabel(ref.location) : ref.location) || "—"}</td>
+                <td className="px-4 py-3 align-top text-ink-soft sm:px-5">{formatProjectDetail(ref.detail, locale === "tr" ? "tr" : "en")}</td>
+                <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{(locale !== "tr" ? enProjectLabel(ref.location) : ref.location) || "—"}</td>
               </tr>
             ))}
           </tbody>
@@ -55,12 +55,12 @@ export function ReferencesGrid({ locale, collapsible = false }: Props) {
       </div>
       <p className="border-t border-border/60 px-4 py-3 text-xs text-ink-muted sm:px-5">
         {locale === "tr"
-          ? "Kaynak: ARLEDSCREEN proje kayıtları. Bireysel müşteri adları gizlilik nedeniyle gösterilmemektedir."
+          ? "ARLEDSCREEN tarafından tamamlanan projeler. Bireysel müşteri adları gizlilik nedeniyle gösterilmemektedir."
           : locale === "ru"
-            ? "Источник: журнал проектов ARLEDSCREEN. Частные лица скрыты. Текст объёма — на языке записи."
+            ? "Проекты, выполненные ARLEDSCREEN. Имена частных клиентов не указываются."
             : locale === "ar"
-              ? "المصدر: سجل مشاريع ARLEDSCREEN. أسماء الأفراد مخفية. نص النطاق بلغة السجل."
-              : "Source: ARLEDSCREEN project log. Private individuals are anonymised. Scope is translated from the project log; dimensions stay as recorded."}
+              ? "مشاريع نفّذتها ARLEDSCREEN. لا تُذكر أسماء العملاء الأفراد."
+              : "Projects completed by ARLEDSCREEN. Names of private customers are not shown."}
       </p>
     </div>
   );
@@ -69,7 +69,7 @@ export function ReferencesGrid({ locale, collapsible = false }: Props) {
   return (
     <details className="group">
       <summary className="btn-soft inline-flex min-h-11 cursor-pointer items-center border border-cyan/50 bg-white px-5 text-sm text-cyan hover:bg-cyan-50">
-        {locale === "tr" ? `Tüm kayıtları göster (${refs.length})` : `Show all records (${refs.length})`}
+        {locale === "tr" ? `Tüm projeleri göster (${refs.length})` : `Show all projects (${refs.length})`}
       </summary>
       <div className="mt-4">{table}</div>
     </details>

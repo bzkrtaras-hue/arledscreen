@@ -328,7 +328,7 @@ export function CommercialLanding({
             <p className="mt-2 max-w-2xl text-sm text-ink-soft">
               {tr
                 ? "Bu kullanım alanında tamamladığımız projelerden örnekler."
-                : "Projects below come from our completed-work records."}
+                : "Examples from our completed projects."}
             </p>
             <div className="mt-6 overflow-x-auto">
               <table className="min-w-full text-left text-sm">

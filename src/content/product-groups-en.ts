@@ -26,18 +26,18 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     imageAlt: "Indoor LED display wall installation",
     intro: [
       "Indoor LED is chosen for viewing distance, content type and ambient light — not a single fixed m² price.",
-      "Published NXTIONSTAR indoor panel USD (including GOB options) is on our price list. Final amount is confirmed after survey in a written quote. No free shipping.",
+      "Published NXTIONSTAR indoor panel prices (including GOB options) are on our price list. Final amount is confirmed after survey in a written quote. No free shipping.",
     ],
     highlights: [
       "Pitch matched to closest critical viewer",
-      "Panel USD published for planning; install quote after survey",
+      "Panel prices are published for planning; install quote after survey",
       "Huidu / NovaStar / Colorlight control planned with the wall",
     ],
     faqs: [
       {
-        question: "Where are indoor panel USD prices?",
+        question: "Where are indoor panel prices?",
         answer:
-          "Indoor and GOB panel prices are on our price list at /en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping.",
+          "Indoor and GOB panel prices are on our price list. VAT and freight excluded; no free shipping.",
       },
     ],
   },
@@ -53,11 +53,11 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     imageAlt: "Outdoor LED façade installation",
     intro: [
       "Outdoor LED needs brightness, weather protection and structure design alongside pitch.",
-      "Published outdoor panel USD is on our price list; structure, shipping and VAT are quote lines. No free shipping.",
+      "Published outdoor panel prices are on our price list; structure, shipping and VAT are itemised in the written quote. No free shipping.",
     ],
     highlights: [
       "Outdoor-rated planning after site survey",
-      "Published panel USD for P2.5–P5 band",
+      "Published panel prices for P2.5–P5 band",
       "Install + calibration in the same quote when requested",
     ],
     faqs: [
@@ -74,24 +74,24 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     lead: "Protective GOB surface for close indoor viewing",
     title: "GOB LED Display | P1.25–P1.86 Panel Prices | ARLEDSCREEN",
     description:
-      "GOB (Glue on Board) LED for close indoor viewing. Published P1.25–P1.86 panel USD on our price list. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
+      "GOB (Glue on Board) LED for close indoor viewing. Published P1.25–P1.86 panel prices on our price list. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
     short: "GOB fine-pitch indoor LED",
     tag: "GOB",
     imageAlt: "GOB LED module surface",
     intro: [
       "GOB adds a protective resin layer over the diodes — useful for lobbies, control rooms and close-view retail.",
-      "Example: P1.25 GOB 95.88 USD per panel, prices valid until 31 Dec 2026. Full list: /en/led-ekran-fiyatlari/.",
+      "Example: P1.25 GOB 95.88 USD per panel, prices valid until 31 Dec 2026. The full list is on our price list page.",
     ],
     highlights: [
-      "Published GOB panel USD (P1.25, P1.53, P1.86)",
+      "Published GOB panel prices (P1.25, P1.53, P1.86)",
       "Indoor close-view use cases",
       "Survey before final pitch and size",
     ],
     faqs: [
       {
-        question: "What is the P1.25 GOB panel USD?",
+        question: "What is the P1.25 GOB panel price?",
         answer:
-          "95.88 USD per panel on our price list (excl. VAT/shipping; no free shipping). Price page: /en/led-ekran-fiyatlari/.",
+          "95.88 USD per panel on our price list (excl. VAT/shipping; no free shipping).",
       },
     ],
   },
@@ -108,7 +108,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     quoteOnly: true,
     intro: [
       "Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
-      "For ownership planning, use published purchase panel USD on /en/led-ekran-fiyatlari/.",
+      "For ownership planning, use the published purchase prices on our price list.",
     ],
     highlights: ["Quote by days and m²", "Install + strike plan", "Purchase option on our price list"],
     faqs: [
@@ -138,7 +138,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       {
         question: "Why is flexible LED priced by written quote?",
         answer:
-          "Curve radius, cabinet mix and install labour vary too much for a fixed panel list. Use /en/quote/ after sharing drawings or photos.",
+          "Curve radius, cabinet mix and install labour vary too much for a fixed panel list. Request a quote after sharing drawings or photos.",
       },
     ],
   },
@@ -200,14 +200,14 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     imageAlt: "Fine-pitch LED module",
     intro: [
       "Fine pitch is for short viewing distances (control rooms, lobbies, premium retail).",
-      "Published GOB panel USD (e.g. P1.25) is on our price list; some ultra-fine options remain datasheet + quote.",
+      "Published GOB panel prices (e.g. P1.25) are on our price list; some ultra-fine options remain datasheet + quote.",
     ],
     highlights: ["Close-view planning", "GOB prices published", "Survey for final pitch"],
     faqs: [
       {
         question: "Which fine-pitch prices are published?",
         answer:
-          "GOB P1.25 / P1.53 / P1.86 panel USD are on our price list. Other fine-pitch models are priced by written quote — ask via /en/quote/.",
+          "GOB P1.25 / P1.53 / P1.86 panel prices are on our price list. Other fine-pitch models are priced by written quote — ask via our quote form.",
       },
     ],
   },
@@ -390,7 +390,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     quoteOnly: true,
     intro: [
       "Spare modules and controllers are matched to existing walls from label photos and measurements.",
-      "Control cards are priced by written quote; purchase panel USD for new walls stays on our price list.",
+      "Control cards are priced by written quote; purchase prices for new walls stay on our price list.",
     ],
     highlights: ["Compatibility from labels/photos", "Huidu / NovaStar / Colorlight", "Spares priced by written quote"],
     faqs: [
@@ -416,7 +416,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     faqs: [
       {
         question: "Are controllers on the price list?",
-        answer: "No. Our price list is NXTIONSTAR panel USD. Controllers are priced by written quote.",
+        answer: "No. Our price list covers NXTIONSTAR panels. Controllers are priced by written quote.",
       },
     ],
   },
@@ -454,8 +454,8 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     highlights: ["Project-based config", "Priced by written quote", "Install support available"],
     faqs: [
       {
-        question: "Are Colorlight prices published as panel USD?",
-        answer: "No. Panel USD is NXTIONSTAR modules on our price list. Controllers are priced by written quote.",
+        question: "Are Colorlight prices on the panel price list?",
+        answer: "No. Our price list covers NXTIONSTAR panels only. Controllers are priced by written quote.",
       },
     ],
   },
