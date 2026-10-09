@@ -148,14 +148,14 @@ export default async function SeoGuidePage({ params }: PageProps) {
 
           {table ? (
             <div className="max-w-3xl overflow-x-auto rounded-2xl glass-card">
-              <table className="w-full min-w-[560px] text-left text-sm">
+              <table className="w-full min-w-[640px] text-left text-sm [overflow-wrap:normal] [word-break:normal]">
                 <caption className="px-4 pt-4 text-left font-display text-base font-bold text-ink sm:px-5">
                   {table.caption}
                 </caption>
                 <thead>
                   <tr className="border-b border-border text-xs uppercase tracking-[0.08em] text-ink-muted">
                     {table.headers.map((h) => (
-                      <th key={h} scope="col" className="px-4 py-3">
+                      <th key={h} scope="col" className="whitespace-nowrap px-4 py-3">
                         {h}
                       </th>
                     ))}
@@ -168,7 +168,10 @@ export default async function SeoGuidePage({ params }: PageProps) {
                         {r[0]}
                       </th>
                       {r.slice(1).map((c, j) => (
-                        <td key={j} className="px-4 py-2.5 text-ink-soft">
+                        <td
+                          key={j}
+                          className={`px-4 py-2.5 text-ink-soft${j === r.length - 2 ? " whitespace-nowrap" : ""}`}
+                        >
                           {c}
                         </td>
                       ))}
