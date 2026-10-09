@@ -145,6 +145,7 @@ Disallow: /private/
 
 # Sitemap
 Sitemap: https://arledscreen.com/sitemap.xml
+Sitemap: https://arledscreen.com/sitemap-ai.xml
 
 # Crawl delay for responsible indexing
 Crawl-delay: 1
