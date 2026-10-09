@@ -166,7 +166,11 @@ export default async function HesaplayiciPage({ params }: PageProps) {
               <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                 LED ekran fiyatları rehberinde
               </Link>{" "}
-              anlatıyoruz.
+              anlatıyoruz. Kontrol kartı, alıcı kart, trafo ve kasa gibi kalemlerin liste fiyatları{" "}
+              <Link href="/tr/malzemeler/" className="font-semibold text-cyan hover:underline">
+                LED ekran malzemeleri
+              </Link>{" "}
+              sayfasındadır.
             </p>
             <PanelPriceTable panels={PANEL_PRICES} caption="Panel fiyatları (USD, panel başına)" showCalcLink={false} />
           </div>

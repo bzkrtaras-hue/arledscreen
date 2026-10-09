@@ -157,6 +157,7 @@ const PAGE: Record<
       { href: "/tr/p5-led-ekran/", label: "P5 LED" },
       { href: "/tr/led-ekran-kiralama/", label: "LED ekran kiralama" },
       { href: "/tr/products/", label: "Ürün grupları" },
+      { href: "/tr/malzemeler/", label: "LED ekran malzemeleri" },
       { href: "/tr/nxtionstar/", label: "NXTIONSTAR" },
     ],
     faqH2: "Sık sorulanlar",

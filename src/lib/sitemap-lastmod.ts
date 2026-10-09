@@ -33,6 +33,7 @@ const CONTENT_BY_SECTION: Record<string, string[]> = {
   quote: ["src/content/seo.ts"],
   "yapay-zeka": ["src/content/seo.ts"],
   nxtionstar: ["src/content/prices.ts"],
+  malzemeler: ["src/content/materials.ts", "src/content/materials-data.ts", "src/content/prices.ts"],
 };
 
 function exists(rel: string): boolean {

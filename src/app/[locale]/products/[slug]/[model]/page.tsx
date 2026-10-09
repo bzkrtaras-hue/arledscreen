@@ -27,6 +27,8 @@ import {
   pricedPanelsDatasetJsonLd,
   type PanelPrice,
 } from "@/content/prices";
+import { derivedPanelPriceForModel } from "@/content/prices";
+import { MATERIALS_PRICE_NOTE, listPriceForModelPath, materialOffer } from "@/content/materials";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { InventBridge } from "@/components/seo/InventBridge";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
@@ -192,6 +194,10 @@ export default async function ModelPage({ params }: PageProps) {
   const description = describe(m);
   const specRows = SPEC_ORDER.filter((key) => m.specs[key]).map((key) => ({ key, label: SPEC_LABELS[key], spec: m.specs[key] }));
 
+  // Non-12-SKU prices: control list price (HD-W60, VX600) or average-ratio panel (P8, esnek).
+  const derived = price ? undefined : derivedPanelPriceForModel(modelPath(m));
+  const listUsd = price || derived ? undefined : listPriceForModelPath(modelPath(m));
+  const extraUsd = derived?.usd ?? listUsd;
   const brandName = m.brandName ?? g.brandName ?? "NXTIONSTAR";
   // Display-style code kept as alternateName; canonical sku/mpn = priced panel id
   // (same as catalog / ai-shopping / merchant TSV). Honest mpn=sku; no GTIN invent.
@@ -232,6 +238,9 @@ export default async function ModelPage({ params }: PageProps) {
           isRelatedTo: BRAND_SUBJECT_DATASETS,
         }
       : {
+          ...(typeof extraUsd === "number"
+            ? { offers: materialOffer(url, extraUsd, { sku: catalogSku, unit: derived ? "panel" : "adet" }) }
+            : {}),
           isRelatedTo: BRAND_SUBJECT_DATASETS,
         }),
   };
@@ -302,6 +311,21 @@ export default async function ModelPage({ params }: PageProps) {
                   </p>
                   <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted">
                     Hesaplayıcıdaki 2026 listesine göre yaklaşık fiyattır; KDV ve nakliye hariçtir; ücretsiz kargo yoktur. İşçilik ({CALC_EXTRAS.laborPerM2} USD/m²), kontrol kartı ve yazılım ayrıca eklenir. Nihai fiyat yazılı teklifle kesinleşir.
+                  </p>
+                </div>
+              ) : typeof extraUsd === "number" ? (
+                <div className="mt-5 rounded-2xl border border-border bg-band/60 p-4">
+                  <p className="text-sm text-ink-soft">
+                    <span className="font-display text-2xl font-extrabold text-ink">{fmtUsd(extraUsd)} USD</span>{" "}
+                    <span className="text-ink-muted">{derived ? "/ panel" : "/ adet"}</span>
+                  </p>
+                  <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted">
+                    {derived
+                      ? "Yayımlanmış panellerin ortalama fiyat oranıyla hesaplanmış liste fiyatıdır; KDV ve nakliye hariçtir, kura göre değişebilir. Nihai fiyat yazılı teklifle kesinleşir."
+                      : `${MATERIALS_PRICE_NOTE} Kurulum ve yapılandırma istenirse ayrıca eklenir.`}{" "}
+                    <Link href={derived ? "/tr/malzemeler/led-paneller/" : "/tr/malzemeler/"} className="font-semibold text-cyan hover:underline">
+                      {derived ? "Panel varyantları" : "LED ekran malzemeleri"}
+                    </Link>
                   </p>
                 </div>
               ) : (
@@ -379,6 +403,10 @@ export default async function ModelPage({ params }: PageProps) {
                 <Link href="/tr/products/led-modul-ve-kontrol-sistemleri/" className="font-semibold text-cyan hover:underline">
                   LED modül ve kontrol sistemleri
                 </Link>{" "}
+                sayfasına, fiyatlı kontrol kartı ve alıcı kart listesi için{" "}
+                <Link href="/tr/malzemeler/kontrol-kartlari/" className="font-semibold text-cyan hover:underline">
+                  LED ekran malzemeleri
+                </Link>{" "}
                 sayfasına göz atabilirsiniz.
               </>
             ) : (
@@ -387,7 +415,9 @@ export default async function ModelPage({ params }: PageProps) {
                 <Link href="/tr/rehber/piksel-araligi-secimi/" className="font-semibold text-cyan hover:underline">piksel aralığı rehberimize</Link>{" "}
                 ve{" "}
                 <Link href={g.guide.href} className="font-semibold text-cyan hover:underline">{g.guide.label.toLocaleLowerCase("tr-TR")}</Link>{" "}
-                sayfasına göz atabilirsiniz.
+                sayfasına göz atabilirsiniz. Uyumlu kontrol kartı, trafo ve kasa fiyatları{" "}
+                <Link href="/tr/malzemeler/" className="font-semibold text-cyan hover:underline">LED ekran malzemeleri</Link>{" "}
+                sayfasındadır.
               </>
             )}
           </p>

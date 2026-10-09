@@ -5131,4 +5131,80 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
   console.log("✅ sitemap-ai.xml lists well-known panels/mpn/merchant invent aliases");
 }
 
+// ARL-20261009-006: LED ekran malzemeleri catalog (/tr/malzemeler/ + /materials.json).
+{
+  const outM = path.join(repoRoot, "out");
+  if (fs.existsSync(outM)) {
+    const fail = (m) => {
+      console.error(`❌ materials: ${m}`);
+      process.exit(1);
+    };
+    // 12 published panel prices must stay exactly as approved.
+    const EXPECTED_PANELS = {
+      "p1-25-ic-gob": "95.88", "p1-53-ic-gob": "62.08", "p1-86-ic-gob": "49.08", "p2-5-ic": "32.18",
+      "p3-07-ic": "30.88", "p4-ic": "26.98", "p2-5-dis": "63.70", "p2-9-dis": "53.30",
+      "p3-07-dis": "44.20", "p4-dis": "33.80", "p4-dis-front": "36.40", "p5-dis": "29.90",
+    };
+    const aiM = JSON.parse(fs.readFileSync(path.join(outM, "ai-shopping.json"), "utf8"));
+    const got = Object.fromEntries((aiM.pricedPanels || []).map((p) => [p.sku, String(p.price)]));
+    if (JSON.stringify(got) !== JSON.stringify(EXPECTED_PANELS)) fail(`pricedPanels changed: ${JSON.stringify(got)}`);
+    const sitePrices = new Set(Object.values(EXPECTED_PANELS).map(Number));
+
+    const mp = path.join(outM, "materials.json");
+    if (!fs.existsSync(mp)) fail("out/materials.json missing");
+    const m = JSON.parse(fs.readFileSync(mp, "utf8"));
+    if (m["@type"] !== "Dataset" || m.priceCurrency !== "USD" || m.valueAddedTaxIncluded !== false) fail("materials.json must be USD Dataset, KDV hariç");
+    // Derived panel prices only from prices.ts DERIVED_PANEL_PRICES.
+    const pricesTs = fs.readFileSync(path.join(repoRoot, "src/content/prices.ts"), "utf8");
+    const derived = {};
+    for (const mm of pricesTs.matchAll(/\{ id: "([^"]+)", label: "[^"]*", use: "(?:ic|dis)", usd: ([0-9.]+)/g)) derived[mm[1]] = Number(mm[2]);
+    if (Object.keys(derived).length < 15) fail("DERIVED_PANEL_PRICES not parsed from prices.ts");
+    let points = 0;
+    const cats = m.categories || [];
+    if (cats.length !== 9) fail(`expected 9 categories, got ${cats.length}`);
+    for (const c of cats) {
+      const html = path.join(outM, "tr", "malzemeler", c.slug, "index.html");
+      if (!fs.existsSync(html)) fail(`missing page ${c.url}`);
+      for (const s of c.sections) {
+        for (const it of s.items) {
+          if (s.kind === "cnc") {
+            if (!(it.priceSingleSidedUsd > 0 && it.priceDoubleSidedUsd > 0)) fail(`cnc price missing ${it.id}`);
+            points += 2;
+            continue;
+          }
+          if (!(it.priceUsd > 0)) fail(`price missing ${it.id}`);
+          points += 1;
+          if (s.kind === "panel") {
+            if (it.priceBasis === "site" && !sitePrices.has(it.priceUsd)) fail(`panel ${it.id} site price ${it.priceUsd} not in pricedPanels`);
+            if (it.priceBasis === "oran" && derived[it.id] !== it.priceUsd) fail(`panel ${it.id} ratio price ${it.priceUsd} != prices.ts`);
+            if (!["site", "oran"].includes(it.priceBasis)) fail(`panel ${it.id} must be priced from prices.ts`);
+          }
+        }
+      }
+    }
+    if (m.totals?.pricePoints !== points) fail(`totals.pricePoints ${m.totals?.pricePoints} != ${points}`);
+    for (const u of m.modelPages || []) {
+      const rel = new URL(u).pathname;
+      if (!fs.existsSync(path.join(outM, rel, "index.html"))) fail(`missing model page ${rel}`);
+    }
+    if (!fs.existsSync(path.join(outM, "tr/malzemeler/index.html"))) fail("missing /tr/malzemeler/");
+    const sm = fs.readFileSync(path.join(outM, "sitemap.xml"), "utf8");
+    if (!sm.includes("<loc>https://arledscreen.com/tr/malzemeler/</loc>")) fail("sitemap.xml must list /tr/malzemeler/");
+    const smAi = fs.readFileSync(path.join(outM, "sitemap-ai.xml"), "utf8");
+    if (!smAi.includes("https://arledscreen.com/materials.json")) fail("sitemap-ai.xml must list /materials.json");
+    const llms = fs.readFileSync(path.join(outM, "llms.txt"), "utf8");
+    if (/kontrol = quote-only/.test(llms)) fail("llms.txt still says controllers are quote-only");
+    if (!llms.includes("/materials.json")) fail("llms.txt must link materials.json");
+    const scan = [mp, path.join(outM, "llms.txt"), path.join(outM, "llms-full.txt")];
+    const walk = (d) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); if (e.isDirectory()) walk(f); else if (e.name.endsWith(".html")) scan.push(f); } };
+    walk(path.join(outM, "tr/malzemeler"));
+    for (const f of scan) {
+      const t = fs.readFileSync(f, "utf8");
+      if (/yetkili distrib/i.test(t)) fail(`"yetkili distribütör" claim in ${path.relative(outM, f)}`);
+      if (/@gmail\.com/i.test(t)) fail(`personal mailbox in ${path.relative(outM, f)}`);
+    }
+    console.log(`✅ materials: ${cats.length} categories, ${(m.modelPages || []).length} model pages, ${points} price points; 12 panel prices unchanged`);
+  }
+}
+
 validateAIFeeds();

@@ -655,3 +655,43 @@ export function panelProductsJsonLd(
   }
   return { "@context": "https://schema.org", "@graph": graph };
 }
+
+/**
+ * Average site/list ratio (ARL-20261009-006, owner-approved 9 Oct 2026).
+ * ratio = published site panel price ÷ old owner list price (3840 Hz row) for every
+ * panel sold on both; averaged per environment. Used ONLY for panels the site did not
+ * price yet. PANEL_PRICES (12 SKU) above stay the single published panel list.
+ * İç mekân: P4, P3.07, P2.5, P1.86 GOB, P1.53 GOB, P1.25 GOB → 1.8549
+ * Dış mekân: P5, P4, P3.07, P2.9, P2.5 → 1.8300 (also used for single-colour P10)
+ */
+export const PANEL_AVG_RATIO = { ic: 1.8549, dis: 1.83 } as const;
+
+export interface DerivedPanelPrice {
+  id: string;
+  label: string;
+  use: PriceUse;
+  usd: number;
+  ratio: number;
+  /** Existing NXTIONSTAR model page that shows this price (P8 / esnek). */
+  modelPath?: string;
+}
+
+export const DERIVED_PANEL_PRICES: DerivedPanelPrice[] = [
+  { id: "pv-p8-dis", label: "P8 dış mekân", use: "dis", usd: 23.79, ratio: PANEL_AVG_RATIO.dis, modelPath: "/tr/products/dis-mekan-led-ekran/p8/" },
+  { id: "pv-p1-86-esnek", label: "P1.86 esnek iç mekân", use: "ic", usd: 55.18, ratio: PANEL_AVG_RATIO.ic, modelPath: "/tr/products/esnek-led-ekran/p1-86-esnek/" },
+  { id: "pv-p2-5-esnek", label: "P2.5 esnek iç mekân", use: "ic", usd: 36.63, ratio: PANEL_AVG_RATIO.ic, modelPath: "/tr/products/esnek-led-ekran/p2-5-esnek/" },
+  { id: "pv-p3-91-dis", label: "P3.91 dış mekân (25 × 25 cm)", use: "dis", usd: 42.09, ratio: PANEL_AVG_RATIO.dis },
+  { id: "pv-p10-dis-4s-a2", label: "P10 dış mekân 4S-A2", use: "dis", usd: 18.3, ratio: PANEL_AVG_RATIO.dis },
+  { id: "pv-p10-dis-4s-a1", label: "P10 dış mekân 4S-A1", use: "dis", usd: 21.05, ratio: PANEL_AVG_RATIO.dis },
+  { id: "tek-p10-dip-kirmizi", label: "P10 tek renk DIP kırmızı", use: "dis", usd: 10.52, ratio: PANEL_AVG_RATIO.dis },
+  { id: "tek-p10-dip-beyaz", label: "P10 tek renk DIP beyaz", use: "dis", usd: 12.35, ratio: PANEL_AVG_RATIO.dis },
+  { id: "tek-p10-dip-yesil", label: "P10 tek renk DIP yeşil", use: "dis", usd: 12.35, ratio: PANEL_AVG_RATIO.dis },
+  { id: "tek-p10-dip-sari", label: "P10 tek renk DIP sarı", use: "dis", usd: 12.35, ratio: PANEL_AVG_RATIO.dis },
+  { id: "tek-p10-dip-mavi", label: "P10 tek renk DIP mavi", use: "dis", usd: 12.35, ratio: PANEL_AVG_RATIO.dis },
+  { id: "tek-p10-smd-kirmizi", label: "P10 tek renk SMD kırmızı", use: "dis", usd: 7.78, ratio: PANEL_AVG_RATIO.dis },
+  { id: "tek-p10-smd-beyaz", label: "P10 tek renk SMD beyaz", use: "dis", usd: 8.24, ratio: PANEL_AVG_RATIO.dis },
+  { id: "tek-p10-smd-yesil", label: "P10 tek renk SMD yeşil", use: "dis", usd: 8.24, ratio: PANEL_AVG_RATIO.dis },
+  { id: "tek-p10-smd-sari", label: "P10 tek renk SMD sarı", use: "dis", usd: 8.24, ratio: PANEL_AVG_RATIO.dis },
+];
+
+export const derivedPanelPriceForModel = (path: string) => DERIVED_PANEL_PRICES.find((d) => d.modelPath === path);

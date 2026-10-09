@@ -8,6 +8,7 @@ import { SERVICE_REGIONS } from "@/content/service-regions";
 import { COMMERCIAL_EN_SLUGS, COMMERCIAL_PAGES } from "@/content/commercial-pages";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 import { lastmodForUrl } from "@/lib/sitemap-lastmod";
+import { MATERIAL_CATEGORIES, MATERIAL_MODELS, categoryPath, materialModelPath } from "@/content/materials";
 
 export const dynamic = "force-static";
 
@@ -108,6 +109,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     });
+  }
+  // LED ekran malzemeleri (TR only): hub + categories + model pages.
+  entries.push({ url: absoluteUrl("/tr/malzemeler/"), changeFrequency: "weekly", priority: 0.86 });
+  for (const c of MATERIAL_CATEGORIES) {
+    entries.push({ url: absoluteUrl(categoryPath(c.slug)), changeFrequency: "weekly", priority: 0.8 });
+  }
+  for (const m of MATERIAL_MODELS) {
+    entries.push({ url: absoluteUrl(materialModelPath(m)), changeFrequency: "weekly", priority: 0.72 });
   }
   for (const page of COMMERCIAL_PAGES) {
     entries.push({
