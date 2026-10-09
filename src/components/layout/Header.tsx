@@ -131,7 +131,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
   useEffect(() => setMounted(true), []);
 
   // Desktop dropdown shows family headings: keep each family together, families in the
-  // order they first appear in the owner-ordered list (İç Mekân, Dış Mekân, ...).
+  // order they first appear in the owner-ordered list ("Popüler ürünler" first, then the rest).
   const menuGroups = useMemo(() => {
     const families: string[] = [];
     for (const g of groups) if (!families.includes(g.family)) families.push(g.family);

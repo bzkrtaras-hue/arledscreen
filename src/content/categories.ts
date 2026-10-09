@@ -1037,11 +1037,26 @@ const GRID_FAMILY_ORDER: ProductFamily[] = [
   ...PRODUCT_FAMILIES.filter((f) => f !== "İç Mekân LED Ekranlar"),
 ];
 
-export function groupsByFamily(): { family: ProductFamily; groups: ProductGroup[] }[] {
-  return GRID_FAMILY_ORDER.map((family) => ({
-    family,
-    groups: PRODUCT_GROUPS.filter((g) => g.family === family),
-  })).filter((f) => f.groups.length);
+/** Owner's lead products, in owner order (only slugs that exist as product groups). */
+export const LEAD_PRODUCT_GROUPS: ProductGroup[] = GRID_LEAD_SLUGS.map((s) =>
+  PRODUCT_GROUPS.find((g) => g.slug === s),
+).filter((g): g is ProductGroup => Boolean(g));
+export const isLeadProductGroup = (slug: string) => GRID_LEAD_SLUGS.includes(slug);
+/** Heading for the lead group in menus and on the products hub. */
+export const LEAD_GROUP_LABEL = { tr: "Popüler ürünler", en: "Main products" } as const;
+
+/**
+ * Products hub sections: first the owner's lead products (exact order), then the
+ * remaining groups under their existing family headings (no item listed twice).
+ */
+export function groupsByFamily(): { family: ProductFamily | "lead"; groups: ProductGroup[] }[] {
+  return [
+    { family: "lead" as const, groups: LEAD_PRODUCT_GROUPS },
+    ...GRID_FAMILY_ORDER.map((family) => ({
+      family,
+      groups: PRODUCT_GROUPS.filter((g) => g.family === family && !isLeadProductGroup(g.slug)),
+    })),
+  ].filter((f) => f.groups.length);
 }
 
 export function getProductGroup(slug: string): ProductGroup | undefined {

@@ -22,6 +22,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import {
   PRODUCT_GROUPS,
   groupsByFamily,
+  LEAD_GROUP_LABEL,
   productGroupPath,
   type ProductFamily,
 } from "@/content/categories";
@@ -276,7 +277,11 @@ export default async function ProductsPage({ params }: PageProps) {
                 {groupsByFamily().map((f) => (
                   <div key={f.family}>
                     <h3 className="mb-5 border-l-4 border-cyan pl-3 font-display text-lg font-bold text-ink sm:text-xl">
-                      {locale === "en" ? PRODUCT_FAMILY_EN[f.family] : f.family}
+                      {f.family === "lead"
+                        ? LEAD_GROUP_LABEL[locale === "en" ? "en" : "tr"]
+                        : locale === "en"
+                          ? PRODUCT_FAMILY_EN[f.family]
+                          : f.family}
                     </h3>
                     <ProductGroupGrid
                       groups={f.groups}

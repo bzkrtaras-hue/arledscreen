@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingSocialRail } from "@/components/layout/FloatingSocialRail";
 import { MobileCtaBar } from "@/components/layout/MobileCtaBar";
 import { MotionProvider } from "@/components/motion/MotionProvider";
-import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
+import { LEAD_GROUP_LABEL, PRODUCT_GROUPS, isLeadProductGroup, productGroupPath } from "@/content/categories";
 import { ARTICLE_LINKS } from "@/content/article-links";
 import { modelPath, modelsForGroup } from "@/content/models";
 import { listSeoGuides } from "@/content/seo-guides";
@@ -23,7 +23,8 @@ export function SiteShell({ locale, children }: SiteShellProps) {
     ? PRODUCT_GROUPS.map((g) => ({
         href: productGroupPath(g),
         name: g.name,
-        family: g.family,
+        // Owner's lead products sit together under one heading at the top of the menu.
+        family: isLeadProductGroup(g.slug) ? LEAD_GROUP_LABEL.tr : g.family,
         short: g.short,
         tag: g.tag,
         img: optSrc(g.cardImage ?? g.image, 480),
