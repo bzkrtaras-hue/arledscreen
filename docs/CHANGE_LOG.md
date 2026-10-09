@@ -2,16 +2,29 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
-## ARL-20261009-013 — Ürün çeşitleri sırası (İç, Dış, …, LCD) + yeni LCD ekran ürün grubu (TR + EN)
+## ARL-20261009-013 — Ürün çeşitleri sırası + Dijital ekran / Menüboard / Kiosk / LCD ürün grupları (TR + EN)
 
-- **Kaynak:** Aras Bey (9 Eki 2026): ürün çeşitlerinde ilk altı sıra İç mekân LED, Dış mekân LED, Dijital ekran, Menüboard, Kiosk, LCD ekran olsun, diğerleri mevcut göreli sırayla devam etsin. LCD ürün sayfası yoksa toptancının LCD bilgisiyle oluşturulsun.
-- **Sıra (tek kaynak `src/content/categories.ts`, `GRID_LEAD_SLUGS`):** ic-mekan, dis-mekan, dijital-ekran, menuboard, kiosk, lcd-ekran. Ürün grubu olarak bulunmayan slug'lar atlanır. **Dijital ekran, menüboard ve kiosk** şu an yalnız rehber sayfası (`/tr/rehber/dijital-ekran/`, `/menuboard-dijital-menu/`, `/kiosk-dijital-ekran/`, `/kiosk-ekran/`), `/tr/products/…` sayfaları yok. Bu yüzden fiilî sıra: İç → Dış → LCD → diğerleri (eski göreli sırayla).
-- **Etkilenen listeler:** header Ürünler menüsü (masaüstü: aile başlıkları korunur, aileler İç → Dış → LCD → Kiralık → Poster → Modül; mobil: düz liste), footer "Ürün grupları", ana sayfa ürün grupları ızgarası (LCD kartı 3. sırada), /tr ve /en/products/ aile bölümleri + "LED ekran ürün grupları" ItemList şeması, /nxtionstar/ grup listesi, ürün sayfalarındaki "Diğer ürün grupları", sitemap sırası
-- **Yeni:** `/tr/products/lcd-ekran/` + `/en/products/lcd-ekran/` (yeni aile "LCD ve Dijital Ekranlar" / "LCD and digital displays"), sitemap'e otomatik eklendi, `tr-meta-titles`, EN overlay (quoteOnly), `postbuild-ai.mjs` quoteOnly listeleri, llms.txt
-- **LCD içerik kaynağı (sayfada anılmaz, cümleler özgün):** Led Magic Light (toptancı) dokunmatik dijital kiosk ürünleri: https://www.ledmagiclight.com.tr/dijital-kiosk1 · /android-kiosklar · /windows-kiosklar · /49-inch-dokunmatik-dijital-kiosk-android (ve -windows, 55-, 65- sürümleri). Kullanılan bilgiler: 49 / 55 / 65 inç, Android veya Windows, video-resim-ses, internetten içerik, USB-HDMI-LAN-Wi‑Fi, kullanım alanları (tanıtım, reklam, yönlendirme, bilgi; toplantı / konferans salonu, AVM, restoran, mağaza). Fiyat yazılmadı. Toptancı sitesinde duvar tipi / dış mekân / video wall LCD ve ayrıntılı teknik tablo metin olarak yok, eklenmedi. Görsel: repodaki `/projects/guides/lcd-dikey-ekran-55-inc.jpg`.
+- **Kaynak:** Aras Bey (4 ve 9 Eki 2026): ilk altı sıra İç mekân LED, Dış mekân LED, Dijital ekran, Menüboard, Kiosk, LCD ekran; diğerleri mevcut göreli sırayla. Dijital ekran / menüboard / kiosk ürün sayfaları eski sitede vardı, repoya taşınırken kaybolmuştu; LCD sayfası da toptancı bilgisiyle oluşturulacaktı.
+- **Sıra (tek kaynak `src/content/categories.ts`, `GRID_LEAD_SLUGS`):** ic-mekan-led-ekran, dis-mekan-led-ekran, dijital-ekran, menuboard, kiosk, lcd-ekran, ardından diğerleri.
+- **Etkilenen listeler:**
+  - header Ürünler menüsü. Masaüstünde aile başlıkları korunur, aileler İç → Dış → LCD ve Dijital → Kiralık → Poster → Modül sırasında; mobil menü düz liste.
+  - footer "Ürün grupları"
+  - ana sayfa ürün grupları ızgarası (yeni 4 kart İç ve Dış'tan sonra, mevcut kart düzeniyle)
+  - /tr ve /en/products/ aile bölümleri ve ItemList şeması
+  - /nxtionstar/ grup listesi
+  - ürün sayfalarındaki "Diğer ürün grupları"
+  - sitemap
+- **Yeni sayfalar (TR + EN, yeni aile "LCD ve Dijital Ekranlar"):** `/products/dijital-ekran/`, `/products/menuboard/`, `/products/kiosk/`, `/products/lcd-ekran/`. Her biri ürün grubu şablonunda (teklif, WhatsApp, fiyat hesapla CTA'ları, SSS ve FAQPage) ve kendi rehberine bağlı: dijital-ekran, menuboard-dijital-menu, kiosk-ekran, lcd-ekran.
+- **Diğer güncellemeler:** sitemap (otomatik), tr-meta-titles, EN overlay (quoteOnly), `postbuild-ai.mjs` quoteOnly listeleri, llms.txt.
+- **İçerik kaynakları (sayfada anılmaz, metinler özgün):**
+  - Mevcut rehberler: /tr/rehber/dijital-ekran/, /menuboard-dijital-menu/, /kiosk-dijital-ekran/, /kiosk-ekran/, /lcd-ekran/
+  - Toptancı Led Magic Light: https://www.ledmagiclight.com.tr/dijital-kiosk1 · /android-kiosklar · /windows-kiosklar · /49-inch-dokunmatik-dijital-kiosk-android (ve -windows, 55-, 65- sürümleri). Kullanılan bilgiler: 49 / 55 / 65 inç; Android veya Windows; video, resim ve ses; internetten içerik; USB, HDMI, LAN, Wi‑Fi; kullanım alanları.
+  - Sahibin onayladığı bilgiler: LCD, kiosk ve menüboard tamiri yapılır; 2 yıl garanti + 5 yıl ücretsiz teknik servis.
+  - Fiyat ve müşteri adı yazılmadı. Toptancıda metin olarak bulunmayan teknik değer (parlaklık, çözünürlük, duvar tipi, dış mekân ya da video wall LCD) eklenmedi.
+- **Görseller (repodan):** /projects/neu-kutuphane.jpg, /opt/blog/kafe-restoran-led-ekran.jpg, /projects/guides/dokunmatik-kiosk-49-inc.jpg, /projects/guides/lcd-dikey-ekran-55-inc.jpg
 - **Metin düzeltmesi:** /tr/products/ "beş başlıkta" → "altı başlıkta" (yeni aile nedeniyle)
-- **Dokunulmadı:** title / H1 / hero / Dikkat, CSS, görseller, diğer metinler; `public/fiyat-hesap`
-- **Doğrulama:** build + validatörler geçti; önizleme `urun-siralama-preview`; önce/sonra ekran görüntüleri `/workspace/preview-grok/siralama/`
+- **Dokunulmadı:** title / H1 / hero / Dikkat, CSS, diğer metinler; `public/fiyat-hesap`
+- **Doğrulama:** build + validatörler; önizleme `urun-siralama-preview`; ekran görüntüleri `/workspace/preview-grok/siralama/`
 - **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
 
 ## ARL-20261009-012 — Rehber: LED ekran kurulum rehberleri (genel + Huidu + NovaStar), TR + EN
