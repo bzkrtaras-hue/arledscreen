@@ -2,6 +2,19 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-012 — Rehber: LED ekran kurulum rehberleri (genel + Huidu + NovaStar), TR + EN
+
+- **Kaynak:** Aras Bey (9 Eki 2026): "LED ekran kurulumu hakkında bilgileri rehber kısmına ekle; Huidu ve Novastar'dan yararlan, kopyala-yapıştır yerine özgün ve anlaşılır cümlelerle; tarama dosyası yüklemeden mobil ve masaüstü yönetim programlarının kurulumuna kadar"
+- **Yeni sayfalar (TR + EN):** `/rehber/led-ekran-kurulumu/` (genel kurulum, hub), `/rehber/huidu-led-ekran-kurulumu/` (HDPlayer, HDSet, HD2020, LedArt), `/rehber/novastar-led-ekran-kurulumu/` (NovaLCT, ViPlex Express, ViPlex Handy, VNNOX). Her sayfada: kısa adım listesi, bölümler, "Sık yapılan hatalar", SSS, ilgili sayfalar, CTA (teklif / teknik servis / montaj), "Kaynaklar" (yalnız resmî Huidu ve NovaStar sayfaları ve kılavuzları; `rel=nofollow noopener noreferrer`)
+- **Şema:** TechArticle (+ citation = kaynak URL'leri), HowTo (görünen adım listesiyle aynı), FAQPage (görünen SSS ile birebir), BreadcrumbList, Speakable
+- **Kod:** içerik `src/content/install-guides*.ts` + `install-guide-sources.ts`; şablon `src/app/[locale]/rehber/_install-guide.tsx` (mevcut Section / GlassPanel / Button / OptImage sınıfları, yeni CSS yok); route'lar `rehber/<slug>/page.tsx` (yalnız tr/en)
+- **Listeleme:** `/rehber/` hub kartları + ItemList (sona 3 kart), blog dizini "Rehber" listesi (#80'in `blog-guide-index.ts`, başa 3 kart), `sitemap.xml` (+6 URL, toplam 235), `sitemap-lastmod`, `llms.txt` (rehber listesi + arama konusu haritası)
+- **Görseller:** yalnız repoda olanlar: `/projects/install-wiring.jpg`, `/control/huidu-async-hero.png`, `/control/novastar-mctrl660-pro.png`; üretici ekran görüntüsü yok, hotlink yok
+- **Dokunulmadı:** ana sayfa (TR/EN `index.html` script dışı HTML #80 tabanıyla birebir aynı; CSS hash'leri aynı), header/menü (`SEO_GUIDE_SLUGS` değişmedi, bu yüzden "Öğrenme merkezi" ve menü aynı), H1/hero, `public/fiyat-hesap`, fiyatlar
+- **Bağımlılık:** #80 (`seo/stage2-geo-icerik`) üzerine kuruldu; #80 main'e birleşti (34b947d8), PR base'i artık main
+- **Doğrulama:** `npm run build` + postbuild validatörleri (13/13 feed, no-owner-gate) geçti; önizleme https://kurulum-rehberi-preview.arledscreen.pages.dev (noindex)
+- **Production:** Ali / Aras Bey onayı → squash merge → manual deploy
+
 ## ARL-20261009-010 — Kiralık "quote-only" / "sabit fiyat yok" çelişkileri giderildi (llms.txt, ana sayfa fiyat SSS, EN rehber, ard.json)
 
 - **Kaynak:** #78 sonrası canlı denetim: /llms.txt satır 3 ve ana sayfa fiyat SSS cevabı (TR+EN, /en/sss/) kiralığı hâlâ "yazılı teklifle" grubunda sayıyordu; satır 129 ile çelişki
