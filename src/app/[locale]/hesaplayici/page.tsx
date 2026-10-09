@@ -88,7 +88,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             },
             {
               name: "Yazılı teklif isteyin",
-              text: "Keşif sonrası malzeme listesi ve nihai tutar yalnızca yazılı teklifte kesinleşir. Şeffaf/esnek/poster/kontrol quote-only gruplardır. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+              text: "Keşif sonrası malzeme listesi ve nihai tutar yalnızca yazılı teklifte kesinleşir. Şeffaf, esnek, poster ve kontrol ürünlerinde fiyat yazılı teklifle verilir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
             },
           ]}
         />
@@ -117,7 +117,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             },
             {
               name: "Request a written quote",
-              text: "After survey, the bill of materials and final total are confirmed only in writing. Transparent / flexible / poster / control cards are quote-only. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+              text: "After survey, the bill of materials and final total are confirmed only in writing. Transparent, flexible, poster and control products are priced by written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
             },
           ]}
         />

@@ -365,7 +365,7 @@
         "type": "Merchant Product Feed",
         "url": "https://arledscreen.com/feeds/merchant-priced-panels.tsv",
         "format": "text/tab-separated-values",
-        "description": "12 priced panel SKUs: id, mpn(=id), title, brand, brand_id (#brand-nxtionstar), brand_url (brand.json AggregateOffer×12), brand_makes_offer_id (#priced-panels-aggregate), brand_has_offer_catalog (catalog.json); Org join organization_id (#organization) + entity_url (entity.json); place join local_business_id (#localbusiness); JSON-LD join IDs product_ld_id/catalog_id/offer_id/catalog_offer_id; invent cols ai_shopping_url/prices_json_url/catalog_url/entity_profiles_url/point_c_url/brand_well_known_url/modules_well_known_url/sku_well_known_url/offer_json_url/pricing_well_known_url/panels_well_known_url/mpn_well_known_url/merchant_well_known_url/prices_well_known_url/entity_well_known_url/prices_rss_url/organization_url/geo_baseline_url/website_url (#website)",
+        "description": "12 priced panel SKUs: id, mpn(=id), title, brand, brand_id (#brand-nxtionstar), brand_url (brand.json AggregateOffer×12), brand_makes_offer_id (#priced-panels-aggregate), brand_has_offer_catalog (catalog.json); Org join organization_id (#organization) + entity_url (entity.json); place join local_business_id (#localbusiness); JSON-LD join IDs product_ld_id/catalog_id/offer_id/catalog_offer_id",
         "pricedPanels": 12,
         "mpnEqualsSku": true,
         "priceValidUntil": "2026-12-31",
@@ -1722,17 +1722,17 @@
       "priceSource": "Use https://arledscreen.com/ai-shopping.json pricedPanels or https://arledscreen.com/catalog.json only; do not invent prices",
       "shippingAndVat": "All prices exclude VAT and freight; ücretsiz kargo yok / no free shipping",
       "returnPolicy": "MerchantReturnNotPermitted; conditions in written quote",
+      "warranty": "2-year warranty and 5 years of free technical service",
       "quoteOnlyGroups": [
         "Transparent / vitrin",
         "Flexible / esnek",
         "Poster",
-        "Rental / kiralık",
         "Control cards (Huidu/NovaStar/Colorlight)"
       ],
+      "rental": "Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       "noFixedClaims": [
         "Certification (CE/RoHS/ISO/UL/ETL) — per model in datasheet",
         "Nits, IP rating, kW consumption — per model or quote",
-        "Warranty years or return days — per contract",
         "Staffing, revenue, customer counts, ranking — not published"
       ],
       "roleClarity": {

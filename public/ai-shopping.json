@@ -2278,6 +2278,10 @@
       "transparan-led-ekran",
       "esnek-led-ekran",
       "poster-led-ekran",
+      "dijital-ekran",
+      "menuboard",
+      "kiosk",
+      "lcd-ekran",
       "huidu-kontrol-kartlari",
       "novastar-kontrolculer",
       "colorlight-kontrolculer"
@@ -3883,6 +3887,7 @@
       "Şeffaf / vitrin",
       "Esnek",
       "Poster",
+      "Dijital ekran / menüboard / kiosk / LCD",
       "Kontrol kartı (Huidu/NovaStar/Colorlight)"
     ],
     "rental": "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
@@ -3914,6 +3919,7 @@
         "Transparent / storefront",
         "Flexible",
         "Poster",
+        "Digital display / menu board / kiosk / LCD",
         "Control cards (Huidu/NovaStar/Colorlight)"
       ],
       "rental": "Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",

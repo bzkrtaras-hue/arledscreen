@@ -1538,7 +1538,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       {
         question: "P4 or P5 for a façade?",
         answer:
-          "Depends on closest viewer and content. Larger surfaces farther away may step to P5. Share site photos via /en/quote/ — do not invent an installed m² rate.",
+          "Depends on closest viewer and content. Larger surfaces farther away may step to P5. Share site photos via our quote form for a written price.",
       },
     ],
   },
@@ -1626,7 +1626,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       {
         question: "P4 or P5?",
         answer:
-          "Farther critical viewers and very large surfaces often step to P5. Confirm on survey — do not invent an installed m² rate.",
+          "Farther critical viewers and very large surfaces often step to P5. The final choice is confirmed on survey.",
       },
     ],
   },
@@ -2032,7 +2032,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         {
           question: "Is service on the price list?",
           answer:
-            "No. Our price list is purchase panel USD only. Service and maintenance are quote-only after diagnosis.",
+            "No. Our price list is purchase panel USD only. Service and maintenance are priced by written quote after diagnosis.",
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request service" },

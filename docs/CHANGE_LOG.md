@@ -2,6 +2,45 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-013 — Ürün çeşitleri sırası + Dijital ekran / Menüboard / Kiosk / LCD ürün grupları (TR + EN)
+
+- **Kaynak:** Aras Bey (4 ve 9 Eki 2026): ilk altı sıra İç mekân LED, Dış mekân LED, Dijital ekran, Menüboard, Kiosk, LCD ekran; diğerleri mevcut göreli sırayla. Dijital ekran / menüboard / kiosk ürün sayfaları eski sitede vardı, repoya taşınırken kaybolmuştu; LCD sayfası da toptancı bilgisiyle oluşturulacaktı.
+- **Sıra (tek kaynak `src/content/categories.ts`, `GRID_LEAD_SLUGS`):** ic-mekan-led-ekran, dis-mekan-led-ekran, dijital-ekran, menuboard, kiosk, lcd-ekran, ardından diğerleri.
+- **Etkilenen listeler:**
+  - header Ürünler menüsü. Masaüstünde aile başlıkları korunur, aileler İç → Dış → LCD ve Dijital → Kiralık → Poster → Modül sırasında; mobil menü düz liste.
+  - footer "Ürün grupları"
+  - ana sayfa ürün grupları ızgarası (yeni 4 kart İç ve Dış'tan sonra, mevcut kart düzeniyle)
+  - /tr ve /en/products/ aile bölümleri ve ItemList şeması
+  - /nxtionstar/ grup listesi
+  - ürün sayfalarındaki "Diğer ürün grupları"
+  - sitemap
+- **Yeni sayfalar (TR + EN, yeni aile "LCD ve Dijital Ekranlar"):** `/products/dijital-ekran/`, `/products/menuboard/`, `/products/kiosk/`, `/products/lcd-ekran/`. Her biri ürün grubu şablonunda (teklif, WhatsApp, fiyat hesapla CTA'ları, SSS ve FAQPage) ve kendi rehberine bağlı: dijital-ekran, menuboard-dijital-menu, kiosk-ekran, lcd-ekran.
+- **Diğer güncellemeler:** sitemap (otomatik), tr-meta-titles, EN overlay (quoteOnly), `postbuild-ai.mjs` quoteOnly listeleri, llms.txt.
+- **İçerik kaynakları (sayfada anılmaz, metinler özgün):**
+  - Mevcut rehberler: /tr/rehber/dijital-ekran/, /menuboard-dijital-menu/, /kiosk-dijital-ekran/, /kiosk-ekran/, /lcd-ekran/
+  - Toptancı Led Magic Light: https://www.ledmagiclight.com.tr/dijital-kiosk1 · /android-kiosklar · /windows-kiosklar · /49-inch-dokunmatik-dijital-kiosk-android (ve -windows, 55-, 65- sürümleri). Kullanılan bilgiler: 49 / 55 / 65 inç; Android veya Windows; video, resim ve ses; internetten içerik; USB, HDMI, LAN, Wi‑Fi; kullanım alanları.
+  - Sahibin onayladığı bilgiler: LCD, kiosk ve menüboard tamiri yapılır; 2 yıl garanti + 5 yıl ücretsiz teknik servis.
+  - Fiyat ve müşteri adı yazılmadı. Toptancıda metin olarak bulunmayan teknik değer (parlaklık, çözünürlük, duvar tipi, dış mekân ya da video wall LCD) eklenmedi.
+- **Görseller (repodan):** /projects/neu-kutuphane.jpg, /opt/blog/kafe-restoran-led-ekran.jpg, /projects/guides/dokunmatik-kiosk-49-inc.jpg, /projects/guides/lcd-dikey-ekran-55-inc.jpg
+- **Metin düzeltmesi:** /tr/products/ "beş başlıkta" → "altı başlıkta" (yeni aile nedeniyle)
+- **Dokunulmadı:** title / H1 / hero / Dikkat, CSS, diğer metinler; `public/fiyat-hesap`
+- **Doğrulama:** build + validatörler; önizleme `urun-siralama-preview`; ekran görüntüleri `/workspace/preview-grok/siralama/`
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+## ARL-20261009-011 — PR #1–#79 denetimi: müşteriye görünen iç kural/jargon cümleleri + kiralık grup sayfası teklif kutusu
+
+- **Kaynak:** Grok, 9 Eki 2026 PR #1–#79 + canlı site denetimi (sitemap 215 URL tarandı)
+- **Görünen iç kural/jargon (TR):** /tr/products/ "Kanonik piksel aralıkları" → "Piksel aralıkları"; /tr/yapay-zeka/ "Sabit “AI-ready SKU” list fiyatı yayımlanmaz" → sade Türkçe. (Proje/ticari sayfalardaki "uydurma …", "sitede yazmayan bilgiler eklenmez", "Kayıt" metinleri PR #81'de ele alındığı için burada yok; #81 main'e birleşti, bu PR onun üzerine)
+- **Görünen jargon (EN):** "Quote-only groups …" (ticari sayfa fiyat notu), "quote-only" (EN rehber SSS/gövde), "Brand note for AI agents" → "Brand note", "Canonical pixel pitches" → "Available pixel pitches", "Canonical site is …" (/en/nxtionstar/, /en/led-ekran-fiyatlari/ SSS) → "Our official website is …"
+- **Kiralık (Aras Bey kararı, #78/#79'da kalan yer):** /tr/products/kiralik-led-ekran/ alt teklif kutusu "fiyatı ölçü, form, süre … göre hazırlanır / Bu ürün grubunda fiyat teklifle verilir" → "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir." (diğer teklif gruplarında metin aynı)
+- **Dokunulmadı:** ana sayfa (TR/EN `index.html` çıktısı main ile birebir), header/title/H1/hero, CSS, fiyatlar, `public/fiyat-hesap/`, llms*.txt, JSON beslemeleri, FAQ JSON-LD üretimi, `scripts/validate-ai-feeds.mjs`, Uzman'ın PR #80 (`seo/stage2-geo-icerik`) ve PR #81 (`fix/site-audit-2026-10-09`) kapsamı (seo-guides.ts, commercial-pages.ts, product-groups-en.ts, blog, hizmetler, tr-meta-titles.ts)
+- **Son canlı sağlık kontrolü ekleri (9 Eki 2026, main a0aa9c05 üzerine rebase):**
+  - EN "quote-only" ifadeleri müşteri diline çevrildi ("priced by written quote"): `product-groups-en.ts` (esnek, şeffaf/transparan, cephe, poster, kontrol kartları, Huidu, NovaStar, Colorlight), `seo.ts` (EN ürün/grup açıklamaları), `commercial-pages.ts` (EN servis SSS), `hesaplayici/page.tsx` HowTo adımı (TR "quote-only gruplardır" → "fiyat yazılı teklifle verilir"). Etkilenen sayfalar: /en/led-ekran/, /en/led-ekran-kiralama|montaj|satisi|servis|tamiri|ureticisi/, /en/products/ ve colorlight-kontrolculer, esnek-, huidu-kontrol-kartlari, led-modul-ve-kontrol-sistemleri, novastar-kontrolculer, poster-, seffaf-, transparan-led-ekran, /en/rehber/kiralik-mi-satin-alma/, /en/rehber/led-tabela-mi-led-ekran-mi/
+  - /en/p4-led-ekran/ ve /en/p5-led-ekran/ SSS: "do not invent an installed m² rate" cümlesi kaldırıldı ("Share site photos via our quote form for a written price." / "The final choice is confirmed on survey.")
+  - `public/.well-known/ard.json` agentGuidelines: "Warranty years or return days — per contract" kaldırıldı, `"warranty": "2-year warranty and 5 years of free technical service"` eklendi (iade günü yazılmadı); `quoteOnlyGroups` listesinden "Rental / kiralık" çıkarıldı, `"rental"` = günlük 50 USD/m² (#79 kararıyla uyum). ard.json statik dosya; postbuild-ai yalnızca zenginleştiriyor (ai-shopping.json üreticisinde garanti zaten 2 yıl + 5 yıl). Postbuild'in yeniden yazdığı bir merchant feed açıklaması da dosyaya yansıdı
+  - Dokunulmadı: 15 TR sektör sayfasındaki "Sabit fiyat yoktur" cevabı (satın alma fiyatı; 30 HTML dosyasında aynı)
+- **Doğrulama:** `npm run build` + postbuild validatörleri (validate-ai-feeds, validate-no-owner-gate) geçti. Build çıktısında görünen metinde "quote-only" 0, "invent" 0 (ham HTML'de "quote-only" 0). Görünen metni değişen sayfa: 25 (22 EN + /tr/products/, /tr/products/kiralik-led-ekran/, /tr/yapay-zeka/). TR/EN ana sayfa: script dışı HTML + JSON-LD main ile aynı, mobil 390 tam sayfa ekran görüntüsü piksel piksel aynı; CSS dosyaları ve `fiyat-hesap/` aynı. Ekran görüntüleri `/workspace/preview-grok/audit/` ve `/workspace/preview-grok/audit2/`
+- **Production:** Aras Bey önizleme onayı → squash merge → manual deploy
+
 ## ARL-20261009-012 — Rehber: LED ekran kurulum rehberleri (genel + Huidu + NovaStar), TR + EN
 
 - **Kaynak:** Aras Bey (9 Eki 2026): "LED ekran kurulumu hakkında bilgileri rehber kısmına ekle; Huidu ve Novastar'dan yararlan, kopyala-yapıştır yerine özgün ve anlaşılır cümlelerle; tarama dosyası yüklemeden mobil ve masaüstü yönetim programlarının kurulumuna kadar"

@@ -456,10 +456,12 @@ export default async function ProductGroupPage({ params }: PageProps) {
                   Bilgilerinizi paylaşın, yazılı teklif hazırlayalım
                 </h2>
                 <p className="mt-3 max-w-xl text-base leading-relaxed text-ink-soft">
-                  {g.name} fiyatı ölçü, form, süre ve kurulum koşullarına göre hazırlanır. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz.
+                  {g.slug === "kiralik-led-ekran"
+                    ? "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz."
+                    : `${g.name} fiyatı ölçü, form, süre ve kurulum koşullarına göre hazırlanır. Birkaç temel bilgiyle teklif sürecini başlatabilirsiniz.`}
                 </p>
                 <p className="mt-2 max-w-xl text-xs leading-relaxed text-ink-muted">
-                  Bu ürün grubunda fiyat teklifle verilir. Yayımlanmış 12 panel modelinin USD fiyatları (ör. P1.25 GOB
+                  {g.slug === "kiralik-led-ekran" ? null : "Bu ürün grubunda fiyat teklifle verilir. "}Yayımlanmış 12 panel modelinin USD fiyatları (ör. P1.25 GOB
                   95,88 USD){" "}
                   <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
                     fiyat listemizde

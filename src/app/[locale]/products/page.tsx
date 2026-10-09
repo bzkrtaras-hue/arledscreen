@@ -29,6 +29,7 @@ import {
 const PRODUCT_FAMILY_EN: Record<ProductFamily, string> = {
   "Dış Mekân LED Ekranlar": "Outdoor LED displays",
   "İç Mekân LED Ekranlar": "Indoor LED displays",
+  "LCD ve Dijital Ekranlar": "LCD and digital displays",
   "Kiralık LED Ekranlar": "Rental LED displays",
   "Poster ve Totem LED Ekranlar": "Poster and totem LED displays",
   "Modül ve Kontrol Sistemleri": "Modules and control systems",
@@ -237,12 +238,12 @@ export default async function ProductsPage({ params }: PageProps) {
                 description={
                   locale === "en"
                     ? "Group pages describe use cases; some products are confirmed in a written quote. Model pages stay on the TR catalog."
-                    : "Ürünleri kullanım ortamına göre beş başlıkta topladık. Her sayfada ürün tipinin tanımı, uygulama tipleri, kullanım alanları, teknik bilgi alanları ve sık sorulan sorular yer alır."
+                    : "Ürünleri kullanım ortamına göre altı başlıkta topladık. Her sayfada ürün tipinin tanımı, uygulama tipleri, kullanım alanları, teknik bilgi alanları ve sık sorulan sorular yer alır."
                 }
               />
               <aside className="mb-10 max-w-3xl border-y border-border py-6 text-sm leading-relaxed text-ink-soft" data-canonical-lineup>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
-                  {locale === "en" ? "Canonical pixel pitches" : "Kanonik piksel aralıkları"}
+                  {locale === "en" ? "Available pixel pitches" : "Piksel aralıkları"}
                 </p>
                 <ul className="mt-3 space-y-1.5 text-ink">
                   <li>
