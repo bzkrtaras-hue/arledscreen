@@ -2,6 +2,18 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-013 — Ürün çeşitleri sırası (İç, Dış, …, LCD) + yeni LCD ekran ürün grubu (TR + EN)
+
+- **Kaynak:** Aras Bey (9 Eki 2026): ürün çeşitlerinde ilk altı sıra İç mekân LED, Dış mekân LED, Dijital ekran, Menüboard, Kiosk, LCD ekran olsun, diğerleri mevcut göreli sırayla devam etsin. LCD ürün sayfası yoksa toptancının LCD bilgisiyle oluşturulsun.
+- **Sıra (tek kaynak `src/content/categories.ts`, `GRID_LEAD_SLUGS`):** ic-mekan, dis-mekan, dijital-ekran, menuboard, kiosk, lcd-ekran. Ürün grubu olarak bulunmayan slug'lar atlanır. **Dijital ekran, menüboard ve kiosk** şu an yalnız rehber sayfası (`/tr/rehber/dijital-ekran/`, `/menuboard-dijital-menu/`, `/kiosk-dijital-ekran/`, `/kiosk-ekran/`), `/tr/products/…` sayfaları yok. Bu yüzden fiilî sıra: İç → Dış → LCD → diğerleri (eski göreli sırayla).
+- **Etkilenen listeler:** header Ürünler menüsü (masaüstü: aile başlıkları korunur, aileler İç → Dış → LCD → Kiralık → Poster → Modül; mobil: düz liste), footer "Ürün grupları", ana sayfa ürün grupları ızgarası (LCD kartı 3. sırada), /tr ve /en/products/ aile bölümleri + "LED ekran ürün grupları" ItemList şeması, /nxtionstar/ grup listesi, ürün sayfalarındaki "Diğer ürün grupları", sitemap sırası
+- **Yeni:** `/tr/products/lcd-ekran/` + `/en/products/lcd-ekran/` (yeni aile "LCD ve Dijital Ekranlar" / "LCD and digital displays"), sitemap'e otomatik eklendi, `tr-meta-titles`, EN overlay (quoteOnly), `postbuild-ai.mjs` quoteOnly listeleri, llms.txt
+- **LCD içerik kaynağı (sayfada anılmaz, cümleler özgün):** Led Magic Light (toptancı) dokunmatik dijital kiosk ürünleri: https://www.ledmagiclight.com.tr/dijital-kiosk1 · /android-kiosklar · /windows-kiosklar · /49-inch-dokunmatik-dijital-kiosk-android (ve -windows, 55-, 65- sürümleri). Kullanılan bilgiler: 49 / 55 / 65 inç, Android veya Windows, video-resim-ses, internetten içerik, USB-HDMI-LAN-Wi‑Fi, kullanım alanları (tanıtım, reklam, yönlendirme, bilgi; toplantı / konferans salonu, AVM, restoran, mağaza). Fiyat yazılmadı. Toptancı sitesinde duvar tipi / dış mekân / video wall LCD ve ayrıntılı teknik tablo metin olarak yok, eklenmedi. Görsel: repodaki `/projects/guides/lcd-dikey-ekran-55-inc.jpg`.
+- **Metin düzeltmesi:** /tr/products/ "beş başlıkta" → "altı başlıkta" (yeni aile nedeniyle)
+- **Dokunulmadı:** title / H1 / hero / Dikkat, CSS, görseller, diğer metinler; `public/fiyat-hesap`
+- **Doğrulama:** build + validatörler geçti; önizleme `urun-siralama-preview`; önce/sonra ekran görüntüleri `/workspace/preview-grok/siralama/`
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+
 ## ARL-20261009-012 — Rehber: LED ekran kurulum rehberleri (genel + Huidu + NovaStar), TR + EN
 
 - **Kaynak:** Aras Bey (9 Eki 2026): "LED ekran kurulumu hakkında bilgileri rehber kısmına ekle; Huidu ve Novastar'dan yararlan, kopyala-yapıştır yerine özgün ve anlaşılır cümlelerle; tarama dosyası yüklemeden mobil ve masaüstü yönetim programlarının kurulumuna kadar"

@@ -118,6 +118,7 @@ const FLEXIBLE_TECH_GALLERY: TechGalleryShot[] = [
 export const PRODUCT_FAMILIES = [
   "Dış Mekân LED Ekranlar",
   "İç Mekân LED Ekranlar",
+  "LCD ve Dijital Ekranlar",
   "Kiralık LED Ekranlar",
   "Poster ve Totem LED Ekranlar",
   "Modül ve Kontrol Sistemleri",
@@ -623,6 +624,71 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     ],
   },
   {
+    slug: "lcd-ekran",
+    name: "LCD Ekran",
+    h1: "LCD Ekran: Dokunmatik Kiosk ve Ayaklı Ekran",
+    lead: "Yakından bakılan, tek parça ve hazır ölçülü dijital ekranlar",
+    title: "LCD Ekran Satışı | Kiosk ve Ayaklı Ekran | ARLEDSCREEN",
+    description:
+      "49, 55 ve 65 inç dokunmatik LCD kiosk; Android veya Windows tabanlı. USB, HDMI, LAN ve Wi‑Fi ile içerik. Satış, montaj ve yazılı teklif ARLEDSCREEN'den.",
+    short: "Dokunmatik kiosk ve ayaklı LCD ekran; 49, 55 ve 65 inç seçenekler.",
+    tag: "Kiosk · Lobi · Mağaza",
+    family: "LCD ve Dijital Ekranlar",
+    types: [
+      "Ayaklı dokunmatik kiosk",
+      "49, 55 ve 65 inç ölçüler",
+      "Android tabanlı",
+      "Windows tabanlı",
+      "LCD menuboard ve ayaklı ekran (teklifle)",
+    ],
+    image: "/projects/guides/lcd-dikey-ekran-55-inc.jpg",
+    cardImage: "/projects/guides/lcd-dikey-ekran-55-inc.jpg",
+    imageAlt: "55 inç dikey LCD dijital ekran, ayaklı gövde",
+    intro: [
+      "LCD ekran, fabrikada belirlenen ölçüde gelen tek parça bir paneldir. Modülle büyütülen LED ekranın aksine kutudan çıktığı ölçüde kullanılır; bu yüzden yakından bakılan, tek bir noktaya konan ekranlarda pratik bir seçenektir.",
+      "Ayaklı dokunmatik kiosk gövdelerinde 49, 55 ve 65 inç ölçüleri tedarik ediyoruz. Kiosklar Android ya da Windows tabanlı olarak seçilir; video, fotoğraf ve ses oynatır, internete bağlanarak çevrim içi içerik de gösterebilir. Menuboard ve ayaklı ekran projelerinde LCD seçeneğini LED ile birlikte değerlendiriyor, model ve ölçüyü yazılı teklifte netleştiriyoruz.",
+    ],
+    highlights: [
+      "49, 55 ve 65 inç dokunmatik kiosk",
+      "Android veya Windows işletim sistemi",
+      "USB, HDMI, LAN ve Wi‑Fi bağlantısı",
+      "Video, fotoğraf ve ses oynatma; içerik anında değiştirilebilir",
+    ],
+    uses: [
+      { title: "AVM ve mağaza", body: "Kampanya, ürün tanıtımı ve mağaza içi yönlendirme." },
+      { title: "Toplantı ve konferans salonu", body: "Program, salon bilgisi ve karşılama ekranı." },
+      { title: "Restoran ve kafe", body: "Menü, günün önerileri ve self-servis bilgi noktası." },
+      { title: "Lobi ve bekleme alanı", body: "Bilgilendirme, duyuru ve kat / birim yönlendirmesi." },
+    ],
+    pitches: [],
+    seriesCategories: [],
+    guide: { href: "/tr/rehber/lcd-ekran/", label: "LCD ekran rehberi" },
+    projectType: "magaza",
+    whatsapp: "Merhaba, LCD ekran / dokunmatik kiosk hakkında bilgi almak istiyorum. Ölçü (inç), adet ve kullanım alanı:",
+    faqs: [
+      {
+        question: "LCD kiosk hangi ölçülerde var?",
+        answer:
+          "Ayaklı dokunmatik kiosklarda 49, 55 ve 65 inç seçeneklerini tedarik ediyoruz. Hangi ölçünün uygun olduğunu izleme mesafesi ve konulacak alana göre birlikte seçiyoruz.",
+      },
+      {
+        question: "Android mi, Windows mu seçmeliyim?",
+        answer:
+          "İki sürüm de video, fotoğraf ve ses oynatır. Kullanacağınız yazılım veya uygulama belirli bir işletim sistemi istiyorsa seçimi ona göre yapıyoruz; emin değilseniz kullanım senaryonuzu yazın, teklifle birlikte önerelim.",
+      },
+      {
+        question: "İçerik ekrana nasıl yüklenir?",
+        answer:
+          "Kiosklarda USB, HDMI, kablolu ağ (LAN) ve Wi‑Fi bağlantısı bulunur. Görseller ve sunumlar bu yollarla yüklenip istendiğinde anında değiştirilebilir.",
+      },
+      {
+        question: "LCD ekran fiyatı ne kadar?",
+        answer:
+          "LCD ekranlar için sitede fiyat yayımlamıyoruz. Ölçü, işletim sistemi ve adet netleştikten sonra montaj dahil yazılı teklif hazırlıyoruz. Sitedeki yayımlanmış fiyatlar yalnızca NXTIONSTAR LED paneller içindir.",
+      },
+    ],
+  },
+  {
     slug: "poster-led-ekran",
     name: "Poster ve Totem LED Ekran",
     h1: "Poster ve Totem LED Ekran",
@@ -738,19 +804,35 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
   ...CONTROL_GROUPS,
 ];
 
-// Keep a stable, family-ordered list for menus, grids and the sitemap.
+// Keep a stable, family-ordered base list.
 PRODUCT_GROUPS.sort(
   (a, b) => PRODUCT_FAMILIES.indexOf(a.family) - PRODUCT_FAMILIES.indexOf(b.family),
 );
 
-/** Category grids (home + products hub): İç Mekân first, Dış Mekân second, others keep their order. */
-const GRID_LEAD_SLUGS = ["ic-mekan-led-ekran", "dis-mekan-led-ekran"];
-export const PRODUCT_GROUPS_GRID: ProductGroup[] = [
-  ...GRID_LEAD_SLUGS.map((s) => PRODUCT_GROUPS.find((g) => g.slug === s)).filter(
-    (g): g is ProductGroup => Boolean(g),
-  ),
-  ...PRODUCT_GROUPS.filter((g) => !GRID_LEAD_SLUGS.includes(g.slug)),
+/**
+ * Owner order for product types (Aras Bey, 9 Eki 2026): İç mekân, Dış mekân, Dijital ekran,
+ * Menüboard, Kiosk, LCD ekran; everything else keeps its previous relative order.
+ * Slugs without a product group (today: dijital ekran, menüboard, kiosk, which are guides) are
+ * skipped. Used by menus, footer, grids, ItemList and sitemap.
+ */
+const GRID_LEAD_SLUGS = [
+  "ic-mekan-led-ekran",
+  "dis-mekan-led-ekran",
+  "dijital-ekran",
+  "menuboard",
+  "kiosk",
+  "lcd-ekran",
 ];
+{
+  const lead = (g: ProductGroup) => {
+    const i = GRID_LEAD_SLUGS.indexOf(g.slug);
+    return i === -1 ? GRID_LEAD_SLUGS.length : i;
+  };
+  PRODUCT_GROUPS.sort((a, b) => lead(a) - lead(b));
+}
+
+/** Category grids (home + products hub): same owner order as PRODUCT_GROUPS. */
+export const PRODUCT_GROUPS_GRID: ProductGroup[] = [...PRODUCT_GROUPS];
 const GRID_FAMILY_ORDER: ProductFamily[] = [
   "İç Mekân LED Ekranlar",
   ...PRODUCT_FAMILIES.filter((f) => f !== "İç Mekân LED Ekranlar"),

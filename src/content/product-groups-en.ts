@@ -211,6 +211,42 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       },
     ],
   },
+  "lcd-ekran": {
+    name: "LCD display",
+    h1: "LCD display: touch kiosks and freestanding screens",
+    lead: "Single-panel, fixed-size screens for close viewing",
+    title: "LCD Displays: Kiosks & Floor Screens | ARLEDSCREEN",
+    description:
+      "49, 55 and 65-inch touch LCD kiosks, Android or Windows. Content via USB, HDMI, LAN and Wi-Fi. Sale, installation and written quote from ARLEDSCREEN, Istanbul.",
+    short: "Touch kiosks and freestanding LCD screens, 49 to 65 inch",
+    tag: "LCD",
+    imageAlt: "55-inch portrait LCD digital screen on a floor stand",
+    quoteOnly: true,
+    intro: [
+      "An LCD is a single panel made in a fixed factory size. Unlike modular LED, it is used at the size it ships in, which makes it a practical choice for one screen viewed up close.",
+      "For freestanding touch kiosks we supply 49, 55 and 65-inch sizes, running Android or Windows. They play video, images and sound and can show online content when connected. Model and size are confirmed in a written quote; LCD is not on our published LED panel price list.",
+    ],
+    highlights: [
+      "49, 55 and 65-inch touch kiosks",
+      "Android or Windows",
+      "USB, HDMI, LAN and Wi-Fi",
+      "Quote-only; installation by our team",
+    ],
+    faqs: [
+      {
+        question: "What sizes do the LCD kiosks come in?",
+        answer: "We supply freestanding touch kiosks in 49, 55 and 65 inches. We help you choose by viewing distance and the space available.",
+      },
+      {
+        question: "Android or Windows?",
+        answer: "Both play video, images and sound. If your software needs a specific operating system, we pick accordingly; otherwise describe your use case and we will recommend one with the quote.",
+      },
+      {
+        question: "Are LCD prices published?",
+        answer: "No. LCD screens are priced by written quote once size, operating system and quantity are clear. Published prices on our site cover NXTIONSTAR LED panels only.",
+      },
+    ],
+  },
   "poster-led-ekran": {
     name: "Poster / totem LED",
     h1: "Poster and totem LED display",
