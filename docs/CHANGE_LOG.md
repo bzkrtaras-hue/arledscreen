@@ -11,9 +11,9 @@ En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 - **Listeleme:** `/rehber/` hub kartları + ItemList (sona 3 kart), blog dizini "Rehber" listesi (#80'in `blog-guide-index.ts`, başa 3 kart), `sitemap.xml` (+6 URL, toplam 235), `sitemap-lastmod`, `llms.txt` (rehber listesi + arama konusu haritası)
 - **Görseller:** yalnız repoda olanlar: `/projects/install-wiring.jpg`, `/control/huidu-async-hero.png`, `/control/novastar-mctrl660-pro.png`; üretici ekran görüntüsü yok, hotlink yok
 - **Dokunulmadı:** ana sayfa (TR/EN `index.html` script dışı HTML #80 tabanıyla birebir aynı; CSS hash'leri aynı), header/menü (`SEO_GUIDE_SLUGS` değişmedi, bu yüzden "Öğrenme merkezi" ve menü aynı), H1/hero, `public/fiyat-hesap`, fiyatlar
-- **Bağımlılık:** #80 (`seo/stage2-geo-icerik`) üzerine kurulu; önce #80 birleşmeli
+- **Bağımlılık:** #80 (`seo/stage2-geo-icerik`) üzerine kuruldu; #80 main'e birleşti (34b947d8), PR base'i artık main
 - **Doğrulama:** `npm run build` + postbuild validatörleri (13/13 feed, no-owner-gate) geçti; önizleme https://kurulum-rehberi-preview.arledscreen.pages.dev (noindex)
-- **Production:** Ali / Aras Bey onayı → #80'den sonra squash merge → manual deploy
+- **Production:** Ali / Aras Bey onayı → squash merge → manual deploy
 
 ## ARL-20261009-010 — Kiralık "quote-only" / "sabit fiyat yok" çelişkileri giderildi (llms.txt, ana sayfa fiyat SSS, EN rehber, ard.json)
 
