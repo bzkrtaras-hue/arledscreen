@@ -8,15 +8,14 @@ import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
 import {
   CALC_EXTRAS,
-  BRAND_SUBJECT_DATASETS,
+  BRAND_SUBJECT_REFS,
   PRICE_VALID_UNTIL,
   fmtM2,
   fmtUsd,
   localBusinessRef,
   nxtionstarBrandRef,
   panelProductsJsonLd,
-  pricedPanelOfferStubs,
-  pricedPanelsDatasetJsonLd,
+  pricedPanelOfferRefs,
   pricesForGroup,
   type PanelPrice,
 } from "@/content/prices";
@@ -197,7 +196,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
         ? nxtionstarBrandRef()
         : { "@type": "Brand", name: g.brandName },
     areaServed: { "@type": "Country", name: "Türkiye" },
-    isRelatedTo: BRAND_SUBJECT_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_REFS,
     ...(prices.length
       ? {
           offers: {
@@ -219,7 +218,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
               priceCurrency: "USD",
               valueAddedTaxIncluded: false,
             },
-            offers: pricedPanelOfferStubs(prices),
+            offers: pricedPanelOfferRefs(prices),
           },
         }
       : {}),
@@ -243,11 +242,6 @@ export default async function ProductGroupPage({ params }: PageProps) {
         description={g.description}
         cssSelectors={["#pg-h1", "#pg-lead"]}
         {...(prices.length ? { mainEntity: { "@id": `${url}#service` } } : {})}
-      />
-      {/* Always emit Dataset — quote-only groups still point AI shoppers at pricedPanels. */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       {productsLd ? (

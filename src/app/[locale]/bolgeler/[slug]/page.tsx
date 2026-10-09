@@ -15,10 +15,9 @@ import {
   serviceRegionPath,
 } from "@/content/service-regions";
 import {
-  BRAND_SUBJECT_DATASETS,
+  BRAND_SUBJECT_REFS,
   localBusinessRef,
   nxtionstarBrandRef,
-  pricedPanelsDatasetJsonLd,
 } from "@/content/prices";
 import { buildPageMetadata, buildTrOnlyMetadata } from "@/lib/seo";
 import type { Locale } from "@/lib/i18n";
@@ -123,7 +122,7 @@ export default async function ServiceRegionPage({
     },
     url: regionUrl,
     // Published price Datasets only — no province doorway invent.
-    isRelatedTo: BRAND_SUBJECT_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_REFS,
   };
 
   return (
@@ -142,12 +141,6 @@ export default async function ServiceRegionPage({
         description={region.description}
         cssSelectors={["#region-h1", "#region-lead"]}
         mainEntity={{ "@id": `${regionUrl}#service` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(regionUrl)),
-        }}
       />
       <script
         type="application/ld+json"

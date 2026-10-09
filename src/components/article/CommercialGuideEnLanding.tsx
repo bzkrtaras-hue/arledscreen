@@ -6,7 +6,7 @@ import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import type { CommercialGuideEn } from "@/content/commercial-guides-en";
 import { getFaqs } from "@/content/faqs";
-import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 export function CommercialGuideEnLanding({ guide }: { guide: CommercialGuideEn }) {
@@ -32,7 +32,7 @@ export function CommercialGuideEnLanding({ guide }: { guide: CommercialGuideEn }
     dateModified: "2026-10-07",
     author: { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },
-    isRelatedTo: BRAND_SUBJECT_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_REFS,
   };
 
   return (
@@ -53,10 +53,6 @@ export function CommercialGuideEnLanding({ guide }: { guide: CommercialGuideEn }
         mainEntity={{ "@id": `${url}#article` }}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
-      />
       <article className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="text-[13px] text-ink-muted">

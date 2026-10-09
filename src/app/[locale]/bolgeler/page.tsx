@@ -14,10 +14,9 @@ import {
 } from "@/content/service-regions";
 import { getFaqs } from "@/content/faqs";
 import {
-  BRAND_SUBJECT_DATASETS,
+  BRAND_SUBJECT_REFS,
   localBusinessRef,
   nxtionstarBrandRef,
-  pricedPanelsDatasetJsonLd,
 } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -138,7 +137,7 @@ export default async function BolgelerHubPage({
             provider: localBusinessRef(),
             areaServed: { "@type": "Country", name: en ? "Turkey" : "Türkiye" },
             url: pageUrl,
-            isRelatedTo: BRAND_SUBJECT_DATASETS,
+            isRelatedTo: BRAND_SUBJECT_REFS,
           }),
         }}
       />
@@ -156,12 +155,6 @@ export default async function BolgelerHubPage({
         }
         cssSelectors={["#bolge-h1", "#bolge-lead"]}
         mainEntity={{ "@id": `${pageUrl}#service` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
-        }}
       />
 
       <section className="border-b border-border bg-surface/60">

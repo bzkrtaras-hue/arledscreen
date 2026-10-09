@@ -8,7 +8,6 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
@@ -127,19 +126,13 @@ export default async function SssPage({ params }: { params: Promise<{ locale: st
           { name: copy.h1, item: url },
         ]}
       />
-      <FaqJsonLd faqs={faqs} pageUrl={url} />
+      <FaqJsonLd faqs={faqs} pageUrl={url} includeDomainDisclaimer={locale !== "tr"} />
       <SpeakableJsonLd
         pageUrl={url}
         name={copy.h1}
         description={copy.speakableDesc}
         cssSelectors={["#sss-h1", "#sss-lead"]}
         mainEntity={{ "@id": `${url}#faqpage` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)),
-        }}
       />
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">

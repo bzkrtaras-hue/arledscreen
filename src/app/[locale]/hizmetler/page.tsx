@@ -13,7 +13,6 @@ import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { WhatsAppProjectPicker } from "@/components/home/WhatsAppProjectPicker";
 import { OptImage } from "@/components/ui/opt-image";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { getFaqs } from "@/content/faqs";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -203,12 +202,6 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
         }
         cssSelectors={["#hizmet-h1", "#hizmet-lead"]}
         mainEntity={{ "@id": `${pageUrl}#service` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
-        }}
       />
 
       <section className="border-b border-border bg-surface/60">

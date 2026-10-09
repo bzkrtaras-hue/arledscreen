@@ -2,10 +2,10 @@ import { ENTITY_CITE_MEDIUM, ENTITY_DISAMBIGUATING_DESCRIPTION } from "@/lib/ent
 import {
   LOCALBUSINESS_ID,
   NXTIONSTAR_BRAND_ID,
-  BRAND_SUBJECT_DATASETS,
+  BRAND_SUBJECT_REFS,
   nxtionstarBrandNode,
   organizationHasOfferCatalog,
-  organizationMakesOffer,
+  organizationMakesOfferCompact,
 } from "@/content/prices";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import {
@@ -17,6 +17,12 @@ import {
   BUSINESS_MAP_URL,
   BUSINESS_HOURS_SPEC,
 } from "@/lib/social";
+
+/**
+ * sameAs = public profiles only. The WhatsApp chat link is a contact channel (already in
+ * contactPoint), not a profile page, so it is kept out of sameAs in page markup.
+ */
+const ORG_PROFILE_SAME_AS = ORGANIZATION_SAME_AS.filter((u) => !u.startsWith("https://wa.me/"));
 
 /**
  * Organization + LocalBusiness + WebSite JSON-LD (@graph).
@@ -72,7 +78,7 @@ export function OrganizationJsonLd() {
           },
         ],
       },
-      nxtionstarBrandNode(),
+      nxtionstarBrandNode({ compact: true }),
       {
         "@type": "Organization",
         "@id": `${SITE_URL}/#organization`,
@@ -90,10 +96,11 @@ export function OrganizationJsonLd() {
         geo: { "@type": "GeoCoordinates", ...BUSINESS_GEO },
         // Org scrapers that skip the LocalBusiness sibling still join place↔price.
         location: { "@id": LOCALBUSINESS_ID },
-        sameAs: [...ORGANIZATION_SAME_AS],
+        sameAs: ORG_PROFILE_SAME_AS,
         brand: { "@id": NXTIONSTAR_BRAND_ID },
-        subjectOf: BRAND_SUBJECT_DATASETS,
-        makesOffer: organizationMakesOffer(),
+        subjectOf: BRAND_SUBJECT_REFS,
+        // Published USD band; per-SKU Offers are @id refs (full Offers: ai-shopping.json / catalog.json).
+        makesOffer: organizationMakesOfferCompact(),
         hasOfferCatalog: organizationHasOfferCatalog(),
         founder: {
           "@type": "Person",
@@ -167,12 +174,12 @@ export function OrganizationJsonLd() {
           { "@type": "City", name: "İstanbul" },
         ],
         parentOrganization: { "@id": `${SITE_URL}/#organization` },
-        sameAs: [...ORGANIZATION_SAME_AS],
+        sameAs: ORG_PROFILE_SAME_AS,
         brand: { "@id": NXTIONSTAR_BRAND_ID },
-        subjectOf: BRAND_SUBJECT_DATASETS,
-        // Local+shopping agents often key LocalBusiness — mirror Org price authority.
-        makesOffer: organizationMakesOffer(),
-        hasOfferCatalog: organizationHasOfferCatalog(),
+        subjectOf: BRAND_SUBJECT_REFS,
+        // Local+shopping agents often key LocalBusiness — point at the Org price band (no duplicate graph).
+        makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
+        hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
       },
     ],
   };

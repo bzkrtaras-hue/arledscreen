@@ -13,7 +13,7 @@ import { absoluteUrl } from "@/lib/site";
 import Link from "next/link";
 import { modelUrlForPrice } from "@/content/models";
 import { PanelPriceTable } from "@/components/pricing/PanelPriceTable";
-import { PANEL_PRICES, panelProductsJsonLd, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { PANEL_PRICES, panelProductsJsonLd } from "@/content/prices";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -137,14 +137,6 @@ export default async function HesaplayiciPage({ params }: PageProps) {
         >
           {seo.intro ?? dict.page.hesaplayici.description}
         </p>
-        {(locale === "tr" || locale === "en") ? (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
-            }}
-          />
-        ) : null}
         {locale === "tr" ? (
           <div id="panel-fiyatlari" className="mt-10 scroll-mt-28">
             <script

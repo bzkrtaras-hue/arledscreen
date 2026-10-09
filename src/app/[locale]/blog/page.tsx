@@ -3,12 +3,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
-import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { OptImage } from "@/components/ui/opt-image";
 import { BLOG_POSTS, blogPath, formatBlogDate } from "@/content/blog";
-import { getFaqs } from "@/content/faqs";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
@@ -53,21 +50,6 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
   const base = `/${locale}`;
   const pageUrl = absoluteUrl(`${base}/blog/`);
   const posts = [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date));
-  const entityFaqs = en
-    ? getFaqs("en").filter(
-        (f) => f.question.includes("NationStar") || f.question.includes("arleds.com"),
-      )
-    : [];
-  const faqs = en
-    ? [
-        {
-          question: "Are blog posts the commercial price source?",
-          answer:
-            "No. Published panel USD is only on our price list at /en/led-ekran-fiyatlari/. Blog posts are project notes.",
-        },
-        ...entityFaqs,
-      ]
-    : [];
 
   const blogLd = {
     "@context": "https://schema.org",
@@ -109,13 +91,6 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
         }
         cssSelectors={["#blog-h1", "#blog-lead"]}
         mainEntity={{ "@id": `${pageUrl}#blog` }}
-      />
-      {faqs.length ? <FaqJsonLd faqs={faqs} /> : null}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricedPanelsDatasetJsonLd(pageUrl)),
-        }}
       />
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

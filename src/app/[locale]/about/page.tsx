@@ -19,7 +19,6 @@ import { notFound } from "next/navigation";
 import { getDictionary, isLocale, type Locale } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { getSeo } from "@/content/seo";
-import { pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -69,12 +68,6 @@ export default async function AboutPage({ params }: PageProps) {
             description={seo.description}
             cssSelectors={["#about-h1", "#about-cite"]}
             mainEntity={{ "@id": "https://arledscreen.com/#organization" }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(pricedPanelsDatasetJsonLd(absoluteUrl(`/${locale}/about/`))),
-            }}
           />
         </>
       ) : null}

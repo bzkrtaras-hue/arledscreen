@@ -6,7 +6,7 @@ import { OptImage } from "@/components/ui/opt-image";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import manifest from "@/content/image-manifest.json";
 import { BLOG_POSTS, blogImageUrl, blogPath, formatBlogDate, getBlogPost } from "@/content/blog";
-import { BRAND_SUBJECT_DATASETS, pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { BRAND_SUBJECT_REFS } from "@/content/prices";
 import { buildTrOnlyMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { whatsappHref } from "@/lib/whatsapp";
@@ -56,7 +56,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     author: { "@id": `${SITE_URL}/#organization` },
     isPartOf: { "@id": `${absoluteUrl("/tr/blog/")}#blog` },
     publisher: { "@id": `${SITE_URL}/#organization` },
-    isRelatedTo: BRAND_SUBJECT_DATASETS,
+    isRelatedTo: BRAND_SUBJECT_REFS,
     ...(video ? { video: videoObjectJsonLd(video, url, absoluteUrl, `${SITE_URL}/#organization`) } : {}),
   };
   const others = [...BLOG_POSTS].filter((x) => x.slug !== p.slug).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
@@ -77,10 +77,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         description={p.description}
         cssSelectors={["#post-h1", "#post-lead"]}
         mainEntity={{ "@id": `${url}#article` }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricedPanelsDatasetJsonLd(url)) }}
       />
       <article className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
