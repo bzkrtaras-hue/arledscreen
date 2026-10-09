@@ -37,7 +37,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       {
         question: "Where are indoor panel USD prices?",
         answer:
-          "Priced indoor/GOB SKUs are on our price list at /en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping.",
+          "Indoor and GOB panel prices are on our price list at /en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping.",
       },
     ],
   },
@@ -64,7 +64,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       {
         question: "Are outdoor panels on the price list?",
         answer:
-          "Yes — outdoor SKUs such as P2.5–P5 are on our price list. Structure and install are not in that list; they appear in the written quote.",
+          "Yes — outdoor panels such as P2.5–P5 are on our price list. Structure and install are not in that list; they appear in the written quote.",
       },
     ],
   },
@@ -194,7 +194,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     lead: "Close-view fine pitch including GOB options",
     title: "Fine-Pitch LED Display | Close Viewing | ARLEDSCREEN",
     description:
-      "Fine-pitch indoor LED for close viewing. GOB SKUs publish panel USD on our price list. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
+      "Fine-pitch indoor LED for close viewing. GOB panel prices (USD) are on our price list. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
     short: "Fine-pitch indoor LED",
     tag: "Fine pitch",
     imageAlt: "Fine-pitch LED module",
@@ -207,7 +207,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       {
         question: "Which fine-pitch prices are published?",
         answer:
-          "GOB P1.25 / P1.53 / P1.86 panel USD are on our price list. Other fine-pitch SKUs may be quote-only — ask via /en/quote/.",
+          "GOB P1.25 / P1.53 / P1.86 panel USD are on our price list. Other fine-pitch models are priced by written quote — ask via /en/quote/.",
       },
     ],
   },
@@ -229,7 +229,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     faqs: [
       {
         question: "Are totems on the price list?",
-        answer: "No. Our price list covers cabinet/module purchase SKUs. Totem/poster systems are quote-only.",
+        answer: "No. Our price list covers LED module purchases. Totem/poster systems are priced by written quote.",
       },
     ],
   },
@@ -286,7 +286,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     tag: "NovaStar",
     imageAlt: "NovaStar LED controller",
     quoteOnly: true,
-    intro: ["NovaStar suits higher loads and sync/stage work. Controller SKUs are quote-only."],
+    intro: ["NovaStar suits higher loads and sync/stage work. Controllers are priced by written quote."],
     highlights: ["High pixel load", "Sync / stage use", "Quote-only"],
     faqs: [
       {

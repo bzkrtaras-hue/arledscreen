@@ -2,6 +2,12 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-007 — EN görünen "SKU" ifadeleri sade İngilizce
+
+- **Kaynak:** Ali, #68 canlı doğrulamasında kalan EN "SKUs" ifadeleri (iç/dış mekân, ince pitch, poster, NovaStar grupları; P3.07 SSS; kiralık mı satın alma rehberi)
+- **Değişiklik:** "SKUs" → "panel prices / panels / models"; fiyat, CSS, TR metni, hesaplayıcı dokunulmadı
+- **Production:** Ali → squash merge → manual deploy
+
 ## ARL-20261009-006 — Yusuf Issue #66: EN leftovers (a–d)
 
 - **Kaynak:** GitHub Issue #66 (Yusuf next queue after #64)
