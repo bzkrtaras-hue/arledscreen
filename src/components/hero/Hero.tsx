@@ -34,6 +34,35 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
   },
 ];
 
+/**
+ * Hero-only media (same scenes as the gallery clips, lighter delivery):
+ * - Desktop/mobile video: same frames as before. Sphere and club are now
+ *   stream copies of the original Drive camera files (first generation,
+ *   no re-encode, audio removed) instead of second-generation re-encodes.
+ * - Posters: the same still as before, recompressed to WebP <80 KB, plus a
+ *   centre-square crop for ≤767px (matches object-cover centre framing).
+ */
+const HERO_MEDIA: Record<string, { src?: string; poster: string; posterMobile: string }> = {
+  "eskisehir-sigorta-led-ekran-vitrin": {
+    poster: "/videos/hero/eskisehir-sigorta-led-ekran-vitrin.webp",
+    posterMobile: "/videos/hero/eskisehir-sigorta-led-ekran-vitrin-m.webp",
+  },
+  "lounge-aquarium-wall": {
+    poster: "/videos/hero/lounge-aquarium-wall.webp",
+    posterMobile: "/videos/hero/lounge-aquarium-wall-m.webp",
+  },
+  "sphere-led-showroom": {
+    src: "/videos/hero/sphere-led-showroom.mp4",
+    poster: "/videos/hero/sphere-led-showroom.webp",
+    posterMobile: "/videos/hero/sphere-led-showroom-m.webp",
+  },
+  "club-curved-led-ribbon": {
+    src: "/videos/hero/club-curved-led-ribbon.mp4",
+    poster: "/videos/hero/club-curved-led-ribbon.webp",
+    posterMobile: "/videos/hero/club-curved-led-ribbon-m.webp",
+  },
+};
+
 export function Hero({ locale }: HeroProps) {
   const tr = locale === "tr";
 
@@ -42,8 +71,9 @@ export function Hero({ locale }: HeroProps) {
     if (!video) return [];
     return [
       {
-        src: video.src,
-        poster: video.poster,
+        src: HERO_MEDIA[scene.slug]?.src ?? video.src,
+        poster: HERO_MEDIA[scene.slug]?.poster ?? video.poster,
+        posterMobile: HERO_MEDIA[scene.slug]?.posterMobile,
         width: video.width,
         height: video.height,
         label: tr ? scene.labelTr : scene.labelEn,
