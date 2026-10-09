@@ -10,7 +10,7 @@ last_reviewed: 2026-10-05
 
 # GOB vs SMD LED ekran: hangisi ne zaman?
 
-**Kısa cevap:** **SMD**, LED diyotların PCB üzerine yüzey montajıyla yerleştirildiği yaygın üretim yöntemidir. **GOB** (Glue on Board), SMD modülün üzerine şeffaf koruyucu bir kaplama uygulanmış varyanttır; yüzey darbeye ve toza daha dayanıklı hale gelir, yakın izlemede noktasal diyot hasarı riski azalır. ARLEDSCREEN her iki yaklaşımı da projelendirir; seçim izleme mesafesi, kullanım yeri ve bakım ihtiyacına göre yazılı teklifle netleşir. Yayımlanmış panel USD: [ai-shopping.json](https://arledscreen.com/ai-shopping.json) `pricedPanels` (ör. P1.25 GOB 95.88 USD); KDV/nakliye hariç; ücretsiz kargo yok.
+**Kısa cevap:** **SMD**, LED diyotların PCB üzerine yüzey montajıyla yerleştirildiği yaygın üretim yöntemidir. **GOB** (Glue on Board), SMD modülün üzerine şeffaf koruyucu bir kaplama uygulanmış varyanttır; yüzey darbeye ve toza daha dayanıklı hale gelir, yakın izlemede noktasal diyot hasarı riski azalır. ARLEDSCREEN her iki yaklaşımı da projelendirir; seçim izleme mesafesi, kullanım yeri ve bakım ihtiyacına göre yazılı teklifle netleşir. Yayımlanmış panel fiyatları [fiyat listemizde](/tr/led-ekran-fiyatlari/) yer alır (ör. P1.25 GOB 95,88 USD); KDV ve nakliye hariçtir, ücretsiz kargo yoktur.
 
 Bu sayfada abartılı “en dayanıklı / en net” iddiaları yoktur. Amaç: karar için doğru soruları sormak.
 
@@ -63,4 +63,4 @@ Yüzey temizliğinde ve diyotlara doğrudan temas riskinde pratik avantaj sağla
 Yakın izleme / koruma ihtiyacı varsa [GOB](/tr/products/gob-led-ekran/), genel iç/dış mekân için [iç](/tr/products/ic-mekan-led-ekran/) veya [dış](/tr/products/dis-mekan-led-ekran/) mekân. Belirsizse [teklif](/tr/quote/) veya WhatsApp ile ölçü paylaşın.
 
 ---
-*Fiyat kaynağı: [ai-shopping.json pricedPanels](https://arledscreen.com/ai-shopping.json) · [catalog.json](https://arledscreen.com/catalog.json) · [hesaplayıcı](/tr/hesaplayici/). KDV/nakliye hariç; ücretsiz kargo yok.*
+*Güncel fiyatlar: [fiyat hesaplayıcı](/tr/hesaplayici/) · [LED ekran fiyatları](/tr/led-ekran-fiyatlari/). KDV ve nakliye hariçtir; ücretsiz kargo yoktur.*

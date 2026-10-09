@@ -191,23 +191,11 @@ export default async function SeoGuidePage({ params }: PageProps) {
             <p className="mt-3 max-w-2xl text-xs leading-relaxed text-ink-muted">
               {locale === "tr" ? (
                 <>
-                  Yayımlanmış panel USD:{" "}
-                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                    ai-shopping.json
-                  </a>{" "}
-                  pricedPanels,{" "}
-                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                    catalog.json
-                  </a>
-                  ,{" "}
-                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                    merchant TSV
-                  </a>
-                  ,{" "}
-                  <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-                    geo-baseline.json
-                  </a>{" "}
-                  (12 SKU; ör. P1.25 GOB 95.88 USD). KDV/nakliye hariç; ücretsiz kargo yok.
+                  Yayımlanmış 12 panel modelinin USD fiyatları (ör. P1.25 GOB 95,88 USD){" "}
+                  <Link href="/tr/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                    fiyat listemizde
+                  </Link>{" "}
+                  yer alır. KDV ve nakliye hariçtir; ücretsiz kargo yoktur.
                 </>
               ) : (
                 <>

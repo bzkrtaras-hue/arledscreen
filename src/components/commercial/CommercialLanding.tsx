@@ -269,7 +269,7 @@ export function CommercialLanding({
             />
             <p className="mt-2 text-xs text-ink-muted">
               {tr
-                ? "Şehir sayfaları yalnızca yayımlanmış proje kaydı olan illerde açılır; 81 il spam’i yoktur."
+                ? "Şehir sayfaları, yayımlanmış proje kaydımız bulunan illerde yer alır."
                 : "City pages exist only for provinces with published project records — no 81-city spam."}
             </p>
           </aside>
@@ -284,7 +284,7 @@ export function CommercialLanding({
             </h2>
             <p className="mb-4 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
               {tr
-                ? "Yayımlanmış 12 NXTIONSTAR panel USD. Quote-only gruplar (şeffaf, esnek, poster, kiralık, kontrol) için sabit fiyat yazılmaz — yazılı teklif."
+                ? "Yayımlanmış 12 NXTIONSTAR panel fiyatı (USD). Şeffaf, esnek, poster, kiralık ve kontrol ürünlerinde sabit liste fiyatı yoktur; fiyat teklifle verilir."
                 : "Published 12 NXTIONSTAR panel USD. Quote-only groups (transparent, flexible, poster, rental, control) have no fixed list price — written quote."}
             </p>
             <PanelPriceTable

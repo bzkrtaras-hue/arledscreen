@@ -24,7 +24,7 @@ import { PhoneIcon } from "@/components/ui/brand-icons";
 import { LocaleSelect } from "@/components/layout/LocaleSelect";
 import { WhatsAppIcon } from "@/components/ui/brand-icons";
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF, MOBILE_SOCIAL_IDS } from "@/lib/social";
-import { GENERIC_WHATSAPP_HREF } from "@/lib/whatsapp";
+import { quoteWhatsappHref } from "@/lib/whatsapp";
 
 export interface MenuGroup {
   href: string;
@@ -579,7 +579,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                   {dict.nav.quote}
                 </Link>
                 <a
-                  href={GENERIC_WHATSAPP_HREF}
+                  href={quoteWhatsappHref(locale)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="liquid-glass-btn min-h-12 w-full gap-2 text-[15px] font-semibold text-[#0F7A41]"
@@ -599,7 +599,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                     </Link>
                   ) : null}
                 </div>
-                <SocialLinks ids={MOBILE_SOCIAL_IDS} size="md" />
+                <SocialLinks ids={MOBILE_SOCIAL_IDS} size="md" locale={locale} />
                 <LocaleSelect locale={locale} id="locale-select-mobile" size="md" />
               </div>
             </m.nav>

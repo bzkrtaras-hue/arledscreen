@@ -98,7 +98,7 @@ export default async function ServiceRegionPage({
     {
       question: `${region.name} LED ekran fiyatı ne kadar?`,
       answer:
-        "Sabit m² fiyatı yoktur. Yayımlanmış 12 panel USD: ai-shopping.json pricedPanels, catalog.json ve feeds/merchant-priced-panels.tsv (ör. P1.25 GOB 95.88 USD). Teknik GEO baseline: geo-baseline.json. Nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir; ücretsiz kargo yok.",
+        "Sabit m² fiyatı yoktur. 12 panel modelinin USD fiyatı sitede yayımlanır (ör. P1.25 GOB panel 95,88 USD). Nihai tutar ölçü, pitch ve montaj koşullarına göre keşif sonrası yazılı teklifle kesinleşir; ücretsiz kargo yok.",
     },
     {
       question: "Keşif için ne paylaşmalıyım?",
@@ -277,13 +277,6 @@ export default async function ServiceRegionPage({
           </li>
         </ul>
         <AiPriceSourceNote className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-muted" />
-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
-          Entity:{" "}
-          <a href="https://arledscreen.com/entity.json" className="font-semibold text-cyan hover:underline">
-            entity.json
-          </a>
-          .
-        </p>
       </Section>
 
       <Section eyebrow="SSS" title={`${region.name} LED ekran soruları`} className="border-t border-border prose-seo">

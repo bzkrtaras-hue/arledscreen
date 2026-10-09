@@ -133,13 +133,12 @@ export default async function CommercialSlugPage({
   if (locale === "tr" && isTrInventBridgeSlug(slug)) {
     const bridge = getTrInventBridge(slug);
     if (!bridge) notFound();
-    const note = bridge.target.includes("/quote/")
-      ? "Yayımlanmış 12 panel USD: /prices.json · /ai-shopping.json. Nihai tutar yazılı teklifle."
-      : bridge.target.includes("fiyat")
-        ? "Machine price source: /ai-shopping.json pricedPanels (aliases /prices.json · /panels.json · /mpn.json)."
-        : undefined;
+    const note = bridge.target.includes("/quote/") || bridge.target.includes("fiyat")
+      ? "Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir. Nihai tutar yazılı teklifle kesinleşir."
+      : undefined;
     return (
       <InventBridge
+        locale="tr"
         h1={bridge.h1}
         target={bridge.target}
         cta={bridge.cta}

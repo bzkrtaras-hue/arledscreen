@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { visibleFaqs } from "@/lib/faq-visible";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import faqsTr from "@/content/sss.json";
@@ -158,7 +159,7 @@ export default async function SssPage({ params }: { params: Promise<{ locale: st
             {copy.leadAfter}
           </p>
           <div className="glass-card mt-8 divide-y divide-border rounded-card">
-            {faqs.map((f) => (
+            {(locale === "tr" ? visibleFaqs(faqs) : faqs).map((f) => (
               <details key={f.question} className="group px-5 py-1">
                 <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-3 font-display text-[15.5px] font-bold text-ink">
                   <h2 className="text-[15.5px]">{f.question}</h2>

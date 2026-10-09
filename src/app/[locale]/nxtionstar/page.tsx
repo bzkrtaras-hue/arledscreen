@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { visibleFaqs } from "@/lib/faq-visible";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProducts, CATEGORY_LABELS_TR, CATEGORY_LABELS_EN } from "@/content/products";
@@ -121,7 +122,7 @@ const PAGE: Record<
     ],
     disambigH2: "Yazılış ve karıştırılan markalar",
     disambigBody:
-      "Marka adı N-X-T-I-O-N-S-T-A-R şeklinde yazılır. NXTIONSTAR; NEXTSTAR televizyon markası ve NationStar LED bileşen markasıyla aynı değildir. ARLEDSCREEN de Almanya merkezli ARLED Solutions GmbH / ARLED Cinema ile bağlantılı değildir. Kanonik web: arledscreen.com — arleds.com değil. LinkedIn /company/arleds sosyal slug’dır, web arleds.com değildir.",
+      "Marka adı N-X-T-I-O-N-S-T-A-R şeklinde yazılır. NXTIONSTAR; NEXTSTAR televizyon markası ve NationStar LED bileşen markasıyla aynı değildir. ARLEDSCREEN de Almanya merkezli ARLED Solutions GmbH / ARLED Cinema ile bağlantılı değildir.",
     faqH2: "Sık sorulan sorular",
     contactH2: "İletişim",
     quoteHref: "/tr/quote/",
@@ -378,7 +379,7 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
 
           <h2 className="mt-10 font-display text-xl font-bold text-ink sm:text-2xl">{copy.faqH2}</h2>
           <div className="mt-3 space-y-4">
-            {copy.faqs.map((f) => (
+            {(locale === "tr" ? visibleFaqs(copy.faqs) : copy.faqs).map((f) => (
               <div key={f.question}>
                 <h3 className="font-display text-base font-bold text-ink">{f.question}</h3>
                 <p className="mt-1 leading-relaxed text-ink-soft">{f.answer}</p>

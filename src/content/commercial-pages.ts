@@ -162,7 +162,7 @@ const INTENT_PAGES: CommercialPage[] = [
     ],
     bullets: [
       "Keşif → tasarım → üretim/tedarik → montaj → kalibrasyon → servis",
-      "Kayıtlı illerde yayımlanmış proje örnekleri (81 il spam’i yok)",
+      "Kayıtlı illerde yayımlanmış proje örnekleri",
       "İç/dış mekân, GOB, esnek, poster/totem ve kiralık seçenekler",
     ],
     images: [

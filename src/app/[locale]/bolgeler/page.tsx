@@ -192,10 +192,8 @@ export default async function BolgelerHubPage({
                 Hizmetimiz Türkiye geneli; tamamlanan iş listemiz kayıtlı illerde yer alır. Aşağıdaki{" "}
                 {summary.provinceCount} il
                 {summary.countries.length ? ` (ayrıca ${summary.countries.join(", ")})` : ""}, Tem
-                2025 – Tem 2026 yayımlanmış proje kayıtlarından türetilir. Kaydı olmayan il için kapı
-                sayfası açılmaz — programatik 81 il spam’i yoktur. Ankara veya Ordu gibi henüz
-                yayımlanmış il kaydı olmayan şehirler için ayrı landing üretilmez; keşif talebi yine
-                alınır.
+                2025 – Tem 2026 yayımlanmış proje kayıtlarından türetilir. Ankara veya Ordu gibi henüz
+                yayımlanmış proje kaydı olmayan şehirler için de keşif talebi alınır.
               </>
             )}
           </p>

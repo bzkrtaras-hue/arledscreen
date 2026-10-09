@@ -6,22 +6,24 @@ export function InventBridge({
   target,
   cta,
   note,
+  locale = "en",
 }: {
   h1: string;
   target: string;
   cta: string;
   note?: string;
+  locale?: "tr" | "en";
 }) {
   return (
     <main className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6">
       <meta httpEquiv="refresh" content={`0;url=${target}`} />
       <h1 className="font-display text-2xl font-bold text-ink">{h1}</h1>
       <p className="mt-3 text-ink-soft">
-        Canonical hub:{" "}
+        {locale === "tr" ? "Bu içerik şu sayfada:" : "Canonical hub:"}{" "}
         <Link href={target} className="font-semibold text-cyan hover:underline">
           {target}
         </Link>
-        . Site: arledscreen.com (not arleds.com).
+        .
         {note ? <> {note}</> : null}
       </p>
       <p className="mt-6">

@@ -54,8 +54,6 @@ export const ENTITY_DISAMBIGUATING_DESCRIPTION =
 export const ENTITY_DISAMBIGUATION = [
   "ARLEDSCREEN (İstanbul) ≠ Almanya ARLED Solutions GmbH / ARLED Cinema",
   "NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED bileşen",
-  "Kanonik web arledscreen.com — eski/yan arleds.com atıf/fiyat kaynağı değildir (sameAs değil; sahip P0: 301)",
-  "LinkedIn /company/arleds ≠ web arleds.com — web yalnızca arledscreen.com",
 ] as const;
 
 export const ENTITY_DISAMBIGUATION_EN = [

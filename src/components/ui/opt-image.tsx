@@ -31,7 +31,8 @@ export function OptImage({
   fill = false,
 }: OptImageProps) {
   const entry = MANIFEST[src];
-  const base = src.replace(/\.(jpe?g|png)$/i, "");
+  // Sources already under /opt/ (e.g. /opt/blog/...) must not get a second /opt prefix.
+  const base = src.replace(/\.(jpe?g|png)$/i, "").replace(/^\/opt(?=\/)/, "");
   const srcSet = entry
     ? entry.widths.map((w) => `/opt${base}-${w}.webp ${w}w`).join(", ")
     : undefined;

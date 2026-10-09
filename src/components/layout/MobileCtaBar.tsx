@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { FileText } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { CONTACT_PHONE_HREF } from "@/lib/social";
-import { GENERIC_WHATSAPP_HREF } from "@/lib/whatsapp";
+import { quoteWhatsappHref } from "@/lib/whatsapp";
 
 /**
  * Fixed bottom liquid-glass action buttons on mobile (< md): Ara · WhatsApp · Teklif.
@@ -31,7 +31,7 @@ export function MobileCtaBar({ locale }: { locale: Locale }) {
           {tr ? "Ara" : "Call"}
         </a>
         <a
-          href={GENERIC_WHATSAPP_HREF}
+          href={quoteWhatsappHref(locale)}
           target="_blank"
           rel="noopener noreferrer"
           className="liquid-glass-btn min-h-[52px] flex-1 flex-col gap-0.5 px-2 text-xs font-semibold text-ink-soft"

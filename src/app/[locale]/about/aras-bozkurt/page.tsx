@@ -94,7 +94,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
         { label: "Ad", value: "Aras Bozkurt" },
         { label: "Rol", value: "Kurucu, ARLEDSCREEN" },
         { label: "Firma", value: "ARLEDSCREEN · NXTIONSTAR ürün markası" },
-        { label: "Kanonik web", value: "arledscreen.com (arleds.com atıf kaynağı değildir)" },
+        { label: "Web sitesi", value: "arledscreen.com" },
         { label: "Merkez", value: BUSINESS_ADDRESS_LINES.join(", ") },
         { label: "Telefon / WhatsApp", value: CONTACT_PHONE_DISPLAY },
         { label: "E-posta", value: CONTACT_EMAIL },
@@ -150,8 +150,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
             ) : (
               <>
                 ARLEDSCREEN kurucusu. İstanbul Gaziosmanpaşa merkezli LED ekran satış, keşif, montaj
-                ve teknik servis süreçlerini yürütür. Kanonik web: arledscreen.com — eski/yan
-                arleds.com atıf kaynağı değildir.
+                ve teknik servis süreçlerini yürütür.
               </>
             )}
           </p>

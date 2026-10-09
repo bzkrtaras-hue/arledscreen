@@ -59,11 +59,11 @@ export default async function PrivacyBridgePage({
         {en ? "Privacy" : "Gizlilik"}
       </h1>
       <p className="mt-3 text-ink-soft">
-        {en ? "Canonical privacy notice:" : "Kanonik gizlilik sayfası:"}{" "}
+        {en ? "Canonical privacy notice:" : "Gizlilik bilgilendirmemiz:"}{" "}
         <Link href={target} className="font-semibold text-cyan hover:underline">
           {target}
         </Link>
-        . {en ? "Site: arledscreen.com (not arleds.com)." : "Site: arledscreen.com (arleds.com değil)."}
+        {en ? ". Site: arledscreen.com (not arleds.com)." : "."}
       </p>
       <p className="mt-6">
         <Link
