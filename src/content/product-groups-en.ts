@@ -98,7 +98,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
   "kiralik-led-ekran": {
     name: "Rental LED display",
     h1: "Rental LED display",
-    lead: "Stage, fair and event cabinets — quote by size and days",
+    lead: "Stage, fair and event cabinets — USD 50 per m² per day",
     title: "Rental LED Display | Stage & Events | ARLEDSCREEN",
     description:
       "Rental LED for stage, fair and events. USD 50 per m² per day. ARLEDSCREEN install and strike support — Istanbul.",
