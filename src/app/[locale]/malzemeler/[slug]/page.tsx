@@ -95,9 +95,9 @@ export default async function MaterialCategoryPage({ params }: { params: Promise
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <nav aria-label="Sayfa yolu" className="flex flex-wrap items-center gap-1 text-[13px] text-ink-muted">
-            <Link href="/tr/" className="hover:text-cyan">Ana Sayfa</Link>
+            <Link href="/tr/" className="hover:text-cyan max-md:inline-flex max-md:min-h-11 max-md:items-center">Ana Sayfa</Link>
             <ChevronRight className="h-3.5 w-3.5" aria-hidden />
-            <Link href="/tr/malzemeler/" className="hover:text-cyan">Malzemeler</Link>
+            <Link href="/tr/malzemeler/" className="hover:text-cyan max-md:inline-flex max-md:min-h-11 max-md:items-center">Malzemeler</Link>
             <ChevronRight className="h-3.5 w-3.5" aria-hidden />
             <span className="text-ink-soft" aria-current="page">{c.name}</span>
           </nav>
@@ -143,7 +143,7 @@ export default async function MaterialCategoryPage({ params }: { params: Promise
             <MaterialPriceTable key={s.title} section={s} id={`bolum-${i + 1}`} />
           ))}
           {panel ? (
-            <p className="max-w-3xl text-[13px] leading-relaxed text-ink-muted">
+            <p className="max-w-3xl text-[13px] leading-relaxed text-ink-muted max-md:text-base">
               Aynı piksel aralığında site fiyatı olan varyantlar (P2.5 GOB, P1.86, P1.86 GOB esnek, P3.07 45° kesik) o fiyatla
               listelenir. Diğer paneller, yayımlanmış panellerin eski liste fiyatına oranının ortalamasıyla hesaplanmıştır: iç mekân ×
               {ratioTr(PANEL_AVG_RATIO.ic)}, dış mekân ve tek renk ×{ratioTr(PANEL_AVG_RATIO.dis)}. Yayımlanmış 12 panel için{" "}
@@ -159,7 +159,7 @@ export default async function MaterialCategoryPage({ params }: { params: Promise
             <h2 className="font-display text-xl font-bold text-ink md:text-2xl">Model sayfaları</h2>
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
               {models.map((m) => (
-                <Link key={m.slug} href={materialModelPath(m)} className="font-semibold text-cyan hover:underline">
+                <Link key={m.slug} href={materialModelPath(m)} className="font-semibold text-cyan hover:underline max-md:inline-flex max-md:min-h-11 max-md:items-center">
                   {getMaterialItem(m.itemId)?.name}
                 </Link>
               ))}
@@ -176,11 +176,11 @@ export default async function MaterialCategoryPage({ params }: { params: Promise
           </div>
           <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm">
             {MATERIAL_CATEGORIES.filter((x) => x.slug !== c.slug).map((x) => (
-              <Link key={x.slug} href={categoryPath(x.slug)} className="font-semibold text-cyan hover:underline">
+              <Link key={x.slug} href={categoryPath(x.slug)} className="font-semibold text-cyan hover:underline max-md:inline-flex max-md:min-h-11 max-md:items-center">
                 {x.name}
               </Link>
             ))}
-            <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline">Fiyat hesaplayıcı</Link>
+            <Link href="/tr/hesaplayici/" className="font-semibold text-cyan hover:underline max-md:inline-flex max-md:min-h-11 max-md:items-center">Fiyat hesaplayıcı</Link>
           </div>
         </div>
       </section>

@@ -43,7 +43,7 @@ export function MaterialPriceTable({ section, id }: { section: MaterialSection; 
                 <tr key={it.id} id={it.id} className={i % 2 ? "bg-band/60" : ""}>
                   <th scope="row" className="px-4 py-2.5 font-semibold text-ink sm:px-5">
                     {href ? (
-                      <Link href={href} className="text-cyan hover:underline">
+                      <Link href={href} className="text-cyan hover:underline max-md:inline-flex max-md:min-h-11 max-md:items-center">
                         {name}
                       </Link>
                     ) : (
@@ -59,7 +59,7 @@ export function MaterialPriceTable({ section, id }: { section: MaterialSection; 
                         href={whatsappHref(`Merhaba, ${it.name} için fiyat almak istiyorum.`)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-semibold text-cyan hover:underline"
+                        className="font-semibold text-cyan hover:underline max-md:inline-flex max-md:min-h-11 max-md:items-center"
                       >
                         Fiyat için teklif alın
                       </a>

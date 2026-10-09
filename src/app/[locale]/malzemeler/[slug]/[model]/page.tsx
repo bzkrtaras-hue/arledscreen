@@ -85,11 +85,11 @@ export default async function MaterialModelPage({ params }: { params: Promise<Pa
       <section className="bg-white pb-12 pt-6 md:pb-16 md:pt-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Sayfa yolu" className="flex flex-wrap items-center gap-1 text-[13px] text-ink-muted">
-            <Link href="/tr/" className="hover:text-cyan">Ana Sayfa</Link>
+            <Link href="/tr/" className="hover:text-cyan max-md:inline-flex max-md:min-h-11 max-md:items-center">Ana Sayfa</Link>
             <ChevronRight className="h-3.5 w-3.5" aria-hidden />
-            <Link href="/tr/malzemeler/" className="hover:text-cyan">Malzemeler</Link>
+            <Link href="/tr/malzemeler/" className="hover:text-cyan max-md:inline-flex max-md:min-h-11 max-md:items-center">Malzemeler</Link>
             <ChevronRight className="h-3.5 w-3.5" aria-hidden />
-            <Link href={categoryPath(c.slug)} className="hover:text-cyan">{c.name}</Link>
+            <Link href={categoryPath(c.slug)} className="hover:text-cyan max-md:inline-flex max-md:min-h-11 max-md:items-center">{c.name}</Link>
             <ChevronRight className="h-3.5 w-3.5" aria-hidden />
             <span className="text-ink-soft" aria-current="page">{it.name.replace(/^(NovaStar|Huidu) /, "")}</span>
           </nav>
@@ -104,7 +104,7 @@ export default async function MaterialModelPage({ params }: { params: Promise<Pa
                 <span className="font-display text-2xl font-extrabold text-ink">{fmtUsd(usd)} USD</span>{" "}
                 <span className="text-ink-muted">/ adet</span>
               </p>
-              <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted">
+              <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-muted max-md:text-base">
                 {MATERIALS_PRICE_NOTE} Kurulum ve yapılandırma istenirse ayrıca eklenir; ücretsiz kargo yoktur.
               </p>
             </div>
@@ -137,7 +137,7 @@ export default async function MaterialModelPage({ params }: { params: Promise<Pa
                 </div>
               ))}
             </dl>
-            <p className="mt-3 text-[12.5px] leading-relaxed text-ink-muted">
+            <p className="mt-3 text-[12.5px] leading-relaxed text-ink-muted max-md:text-base">
               {m.brand} adı yalnızca satılan ürünün üretici adıdır. Uyumluluk; ekran ölçüsü, modül tipi ve mevcut sisteminize göre teklif öncesinde kontrol edilir.
             </p>
           </div>
@@ -153,7 +153,7 @@ export default async function MaterialModelPage({ params }: { params: Promise<Pa
                 const href = itemHref(s) ?? `${categoryPath(c.slug)}#${s.id}`;
                 return (
                   <li key={s.id} className="rounded-2xl p-5 glass-card">
-                    <Link href={href} className="font-display text-base font-bold text-ink hover:text-cyan">{s.name}</Link>
+                    <Link href={href} className="font-display text-base font-bold text-ink hover:text-cyan max-md:inline-flex max-md:min-h-11 max-md:items-center">{s.name}</Link>
                     <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
                       {s.spec}
                       {typeof s.usd === "number" ? ` · ${fmtUsd(s.usd)} USD` : ""}
