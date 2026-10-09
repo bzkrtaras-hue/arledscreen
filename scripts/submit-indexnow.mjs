@@ -326,6 +326,7 @@ const URLS = [
   `https://${HOST}/tr/about/aras-bozkurt/`,
   `https://${HOST}/tr/products/gob-led-ekran/p1-25-gob/`,
   `https://${HOST}/sitemap.xml`,
+  `https://${HOST}/sitemap-ai.xml`,
 ];
 
 // Owner-only / internal gate surfaces are not built and must never be submitted (privacy).

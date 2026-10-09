@@ -4955,11 +4955,56 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
 
 {
   const sitemapPath = path.join(outDir, "sitemap.xml");
-  if (!fs.existsSync(sitemapPath)) {
-    console.error("❌ Missing in out/: sitemap.xml");
-    process.exit(1);
+  const sitemapAiPath = path.join(outDir, "sitemap-ai.xml");
+  for (const p of [sitemapPath, sitemapAiPath]) {
+    if (!fs.existsSync(p)) {
+      console.error(`❌ Missing in out/: ${path.basename(p)}`);
+      process.exit(1);
+    }
   }
-  const sitemapLive = fs.readFileSync(sitemapPath, "utf8");
+  // ARL-20261009-003: machine files + noindex invent bridges moved to sitemap-ai.xml
+  // (referenced from robots.txt). sitemap.xml = indexable, self-canonical HTML only.
+  const sitemapHtml = fs.readFileSync(sitemapPath, "utf8");
+  const sitemapLive = fs.readFileSync(sitemapAiPath, "utf8");
+  {
+    const locs = [...sitemapHtml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    if (locs.length < 100) {
+      console.error(`❌ out/sitemap.xml lists only ${locs.length} URLs`);
+      process.exit(1);
+    }
+    for (const loc of locs) {
+      const rel = loc.replace("https://arledscreen.com", "").replace(/^\//, "");
+      const htmlPath = path.join(outDir, rel, "index.html");
+      if (!loc.endsWith("/") || !fs.existsSync(htmlPath)) {
+        console.error(`❌ out/sitemap.xml must list only HTML pages: ${loc}`);
+        process.exit(1);
+      }
+      const html = fs.readFileSync(htmlPath, "utf8");
+      if (/<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i.test(html)) {
+        console.error(`❌ out/sitemap.xml must not list noindex page ${loc}`);
+        process.exit(1);
+      }
+      const canon = html.match(/<link[^>]+rel="canonical"[^>]+href="([^"]+)"/i)?.[1];
+      if (canon !== loc) {
+        console.error(`❌ out/sitemap.xml URL not self-canonical: ${loc} → ${canon}`);
+        process.exit(1);
+      }
+    }
+    // Live robots.txt is served by functions/robots.txt.js (out/robots.txt may be absent).
+    for (const robotsFile of [
+      path.join(process.cwd(), "functions/robots.txt.js"),
+      path.join(process.cwd(), "public/robots.txt"),
+      path.join(outDir, "robots.txt"),
+    ]) {
+      if (!fs.existsSync(robotsFile)) continue;
+      const r = fs.readFileSync(robotsFile, "utf8");
+      if (!r.includes("Sitemap: https://arledscreen.com/sitemap-ai.xml")) {
+        console.error(`❌ ${robotsFile} must reference sitemap-ai.xml`);
+        process.exit(1);
+      }
+    }
+    console.log(`✅ sitemap.xml: ${locs.length} indexable self-canonical HTML URLs`);
+  }
   for (const needle of [
     "/.well-known/panels.json",
     "/.well-known/mpn.json",
@@ -5042,16 +5087,22 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
     "/prices/",
   ]) {
     if (!sitemapLive.includes(`<loc>https://arledscreen.com${needle}</loc>`)) {
-      console.error(`❌ out/sitemap.xml must list invent alias ${needle}`);
+      console.error(`❌ out/sitemap-ai.xml must list invent alias ${needle}`);
       process.exit(1);
     }
   }
   for (const banned of [
   ]) {
-    if (sitemapLive.includes(`<loc>https://arledscreen.com${banned}</loc>`)) {
-      console.error(`❌ out/sitemap.xml must not list owner-friction ${banned} (Melis)`);
-      process.exit(1);
+    for (const [name, xml] of [["sitemap.xml", sitemapHtml], ["sitemap-ai.xml", sitemapLive]]) {
+      if (xml.includes(`<loc>https://arledscreen.com${banned}</loc>`)) {
+        console.error(`❌ out/${name} must not list owner-friction ${banned} (Melis)`);
+        process.exit(1);
+      }
     }
+  }
+  if (/owner-next|owner-gate|owner-p0|point-c|tur1a|geo-next|geo-status/.test(sitemapHtml + sitemapLive)) {
+    console.error("❌ sitemaps must not list owner/internal gate URLs");
+    process.exit(1);
   }
   // ARD invent bridge examples with live HTML must all appear in sitemap + robotsPolicy.allow.
   {
@@ -5067,7 +5118,7 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
         const hasHtml = fs.existsSync(htmlPath) || (fs.existsSync(filePath) && fs.statSync(filePath).isFile());
         if (!hasHtml) continue;
         if (!sitemapLive.includes(`<loc>https://arledscreen.com${p}</loc>`)) {
-          console.error(`❌ out/sitemap.xml must list ARD ${key} HTML invent ${p}`);
+          console.error(`❌ out/sitemap-ai.xml must list ARD ${key} HTML invent ${p}`);
           process.exit(1);
         }
         if (!allowLive.includes(p)) {
@@ -5077,7 +5128,7 @@ console.log("✅ functions/robots.txt.js + robots.ts allow geo-baseline/ai.txt +
       }
     }
   }
-  console.log("✅ sitemap.xml lists well-known panels/mpn/merchant invent aliases");
+  console.log("✅ sitemap-ai.xml lists well-known panels/mpn/merchant invent aliases");
 }
 
 validateAIFeeds();

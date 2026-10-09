@@ -295,6 +295,7 @@ Allow: /
 Host: arledscreen.com
 # cache-bust-geo60-2026-10-07q-pdp-offer-sameas
 Sitemap: https://arledscreen.com/sitemap.xml
+Sitemap: https://arledscreen.com/sitemap-ai.xml
 `;
 
 export async function onRequest() {
