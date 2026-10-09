@@ -414,7 +414,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Fiyat ve teklif",
           body:
-            "LCD ekranlar için sitede sabit fiyat veya teknik değer yayımlamıyoruz; model, ölçü ve adet netleştikten sonra yazılı teklif hazırlıyoruz. Sitede yayımlanan fiyatlar yalnızca NXTIONSTAR LED paneller içindir ve LED ekran fiyatları sayfasında yer alır.",
+            "LCD ekranlar için sitede fiyat yayımlamıyoruz; model, ölçü ve adet netleştikten sonra yazılı teklif hazırlıyoruz. Yayımladığımız teknik bilgiler LCD ekran ve kiosk ürün sayfalarındakilerle sınırlıdır: dokunmatik kiosk 49, 55 ve 65 inç, Android veya Windows, USB, HDMI, LAN ve Wi‑Fi bağlantısı. Diğer değerler seçilen modelle birlikte teklifte paylaşılır. Sitede yayımlanan fiyatlar yalnızca NXTIONSTAR LED paneller içindir ve LED ekran fiyatları sayfasında yer alır.",
         },
         {
           h2: "İnç ölçüsüne ve mekâna göre LCD ekran",
@@ -1832,7 +1832,7 @@ const guides: Record<GuideLocale, Record<SeoGuideSlug, SeoGuide>> = {
         {
           h2: "Price and quote",
           body:
-            "We do not publish fixed prices or specifications for LCD displays; a written quote follows once model, size and quantity are clear. Prices published on the site are for NXTIONSTAR LED panels only.",
+            "We do not publish prices for LCD displays; a written quote follows once model, size and quantity are clear. The technical details we publish are limited to those on our LCD and kiosk product pages: touch kiosks in 49, 55 and 65 inch, Android or Windows, with USB, HDMI, LAN and Wi-Fi. Other values are shared with the chosen model in the quote. Prices published on the site are for NXTIONSTAR LED panels only.",
         },
         {
           h2: "LCD displays by inch size and location",

@@ -167,7 +167,7 @@ Menuboard, kafe ve restoranlarda menüyü ve kampanyaları gösteren dijital men
 Evet. Ölü piksel ve sönen modül, renk/parlaklık farkı, güç kaynağı, alıcı/gönderici kart, kablo-konnektör ve dış mekânda nem kaynaklı arızalarda yerinde tespit ve onarım yapılır. Süreç: WhatsApp'tan fotoğraf/video ile ön teşhis, yerinde keşif, arıza tespiti, onarım veya parça değişimi, test. Sabit tamir fiyatı yoktur; keşif sonrası teklif. Sayfa: https://arledscreen.com/tr/led-ekran-tamiri/
 
 **ARLEDSCREEN LCD ekran satıyor mu?**
-Evet. Menuboard ve ayaklı ekran projelerinde LED'in yanı sıra LCD/TV tipi ekran seçeneği sunulur. LCD için sitede fiyat veya teknik değer yayımlanmaz; yazılı teklifle verilir. Rehber: https://arledscreen.com/tr/rehber/lcd-ekran/
+Evet. Menuboard ve ayaklı ekran projelerinde LED'in yanı sıra LCD/TV tipi ekran seçeneği sunulur. LCD fiyatı sitede yayımlanmaz, yazılı teklifle verilir. Yayımlanan teknik bilgiler yalnızca LCD ekran (https://arledscreen.com/tr/products/lcd-ekran/) ve kiosk (https://arledscreen.com/tr/products/kiosk/) sayfalarındakilerdir: dokunmatik kiosk 49, 55 ve 65 inç; Android veya Windows; USB, HDMI, LAN ve Wi‑Fi. Diğer değerler (parlaklık, çözünürlük vb.) model seçilince teklifle paylaşılır. Rehber: https://arledscreen.com/tr/rehber/lcd-ekran/
 
 **Ayaklı dijital ekran (totem) fiyatı ne kadar?**
 LED poster/totem ve LCD/TV tipi ayaklı ekranlarda sabit liste fiyatı yayımlanmaz; ekran tipi, ölçü, iç/dış mekân, tek/çift yüz ve adede göre yazılı teklif hazırlanır. Rehber: https://arledscreen.com/tr/rehber/poster-led-ekran/
