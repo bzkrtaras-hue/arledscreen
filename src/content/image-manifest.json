@@ -1323,5 +1323,40 @@
       960,
       1304
     ]
+  },
+  "/projects/guides/dijital-ekran-totem.jpg": {
+    "w": 1600,
+    "h": 1000,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/projects/guides/eczane-nobetci-led.jpg": {
+    "w": 900,
+    "h": 562,
+    "widths": [
+      480,
+      900
+    ]
+  },
+  "/projects/guides/menuboard-kafe-tezgah.jpg": {
+    "w": 1024,
+    "h": 640,
+    "widths": [
+      480,
+      960,
+      1024
+    ]
+  },
+  "/projects/guides/ekran-cesitleri-led-lcd-kiosk.jpg": {
+    "w": 1600,
+    "h": 1000,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
   }
 }

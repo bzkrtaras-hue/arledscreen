@@ -15,12 +15,12 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
     alt: { tr: "Gece aydınlatılmış bina cephesinde büyük LED ekran", en: "Large LED screen on a lit building façade at night", ru: "Большой LED-экран на фасаде здания ночью", ar: "شاشة LED كبيرة على واجهة مبنى مضاءة ليلًا" },
   },
   "dijital-ekran": {
-    src: "/projects/neu-kutuphane.jpg",
-    alt: { tr: "Kütüphane salonunda LED ekran ve iki ayaklı dijital ekran", en: "LED wall and two freestanding digital screens in a library hall", ru: "LED-экран и два напольных цифровых экрана в зале библиотеки", ar: "شاشة LED وشاشتان رقميتان أرضيتان في قاعة مكتبة" },
+    src: "/projects/guides/dijital-ekran-totem.jpg",
+    alt: { tr: "Mağaza içinde ayaklı dikey dijital ekran (totem)", en: "Freestanding vertical digital signage totem in a store", ru: "Напольный вертикальный цифровой тотем в магазине", ar: "شاشة لافتات رقمية عمودية أرضية (طوطم) داخل متجر" },
   },
   "ekran-cesitleri": {
-    src: "/projects/modules/tech/cob-smd-gob-trio.jpg",
-    alt: { tr: "COB, SMD ve GOB LED modül yüzeylerinin karşılaştırması", en: "COB, SMD and GOB LED module surfaces compared", ru: "Сравнение поверхностей LED-модулей COB, SMD и GOB", ar: "مقارنة بين أسطح وحدات LED بتقنيات COB وSMD وGOB" },
+    src: "/projects/guides/ekran-cesitleri-led-lcd-kiosk.jpg",
+    alt: { tr: "Soldan sağa: LED ekran duvarı, LCD dijital totem ve dokunmatik kiosk", en: "Left to right: LED video wall, LCD digital totem and touch kiosk", ru: "Слева направо: LED-стена, цифровой LCD-тотем и сенсорный киоск", ar: "من اليسار إلى اليمين: جدار شاشات LED وطوطم LCD رقمي وكشك لمسي" },
   },
   "lcd-ekran": {
     src: "/projects/guides/lcd-dikey-ekran-55-inc.jpg",
@@ -51,15 +51,15 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
     alt: { tr: "Yan yana dört ayaklı poster LED ekran", en: "Four freestanding poster LED screens side by side", ru: "Четыре напольных постерных LED-экрана в ряд", ar: "أربع شاشات بوستر LED أرضية متجاورة" },
   },
   "menuboard-dijital-menu": {
-    src: "/opt/blog/kafe-restoran-led-ekran.jpg",
-    alt: { tr: "Kafe-restoranda iç mekân LED ekran uygulaması", en: "Indoor LED screen installed in a café-restaurant", ru: "LED-экран в помещении кафе-ресторана", ar: "شاشة LED داخلية في مقهى ومطعم" },
+    src: "/projects/guides/menuboard-kafe-tezgah.jpg",
+    alt: { tr: "Kafe tezgâhının üstünde menü gösteren dijital ekran", en: "Digital menu board above a café counter", ru: "Цифровое меню над стойкой кафе", ar: "لوحة قائمة رقمية فوق منضدة مقهى" },
   },
   "kiosk-ekran": {
     src: "/projects/guides/dokunmatik-kiosk-49-inc.jpg",
     alt: { tr: "49 inç dokunmatik dijital kiosk, iki ayaklı gövde", en: "Two 49-inch touch digital kiosks on floor stands", ru: "Два сенсорных цифровых киоска 49 дюймов", ar: "كشكان رقميان لمسيان بمقاس 49 بوصة" },
   },
   "kiosk-dijital-ekran": {
-    src: "/projects/totem-indoor.jpg",
+    src: "/projects/guides/dijital-ekran-totem.jpg",
     alt: { tr: "Bina içinde ayaklı dijital totem ekran", en: "Freestanding digital totem screen indoors", ru: "Напольный цифровой тотем в помещении", ar: "شاشة طوطم رقمية أرضية داخل مبنى" },
   },
   "cnc-led-kasa": {
@@ -79,8 +79,8 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
     alt: { tr: "Sevkiyata hazır LED ekran kabinleri", en: "LED screen cabinets ready for shipment", ru: "LED-кабинеты, готовые к отправке", ar: "خزائن شاشات LED جاهزة للشحن" },
   },
   "eczane-led-ekran": {
-    src: "/projects/totem-outdoor.jpg",
-    alt: { tr: "Bina önünde ayaklı dış mekân poster LED ekran", en: "Freestanding outdoor poster LED screen in front of a building", ru: "Уличный напольный постерный LED-экран перед зданием", ar: "شاشة بوستر LED خارجية أرضية أمام مبنى" },
+    src: "/projects/guides/eczane-nobetci-led.jpg",
+    alt: { tr: "Nöbetçi eczane yazısı gösteren LED ekran, teslim öncesi test", en: "LED screen showing a duty-pharmacy sign during pre-delivery testing", ru: "LED-экран с надписью «дежурная аптека» на тесте перед отгрузкой", ar: "شاشة LED تعرض لافتة صيدلية مناوبة أثناء الاختبار قبل التسليم" },
   },
   "dugun-salonu-led": {
     src: "/opt/blog/alanya-otel-led-ekran.jpg",
@@ -91,8 +91,8 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
     alt: { tr: "Hastane acil girişi üzerinde LED ekran", en: "LED screen above a hospital emergency entrance", ru: "LED-экран над входом в приёмное отделение больницы", ar: "شاشة LED فوق مدخل طوارئ مستشفى" },
   },
   "okul-led-ekran": {
-    src: "/projects/hires/neu-library-1920.jpg",
-    alt: { tr: "Kütüphane salonunda LED ekran ve iki ayaklı dijital ekran", en: "LED wall and two freestanding digital screens in a library hall", ru: "LED-экран и два напольных цифровых экрана в зале библиотеки", ar: "شاشة LED وشاشتان رقميتان أرضيتان في قاعة مكتبة" },
+    src: "/opt/blog/alanya-otel-led-ekran.jpg",
+    alt: { tr: "Salon sahnesinin arkasında geniş iç mekân LED ekran", en: "Wide indoor LED screen behind a hall stage", ru: "Широкий внутренний LED-экран за сценой зала", ar: "شاشة LED داخلية عريضة خلف منصة قاعة" },
   },
 };
 
