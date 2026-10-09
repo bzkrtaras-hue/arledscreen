@@ -218,7 +218,7 @@ const PAGE: Record<
       {
         question: "Is arleds.com the same as arledscreen.com?",
         answer:
-          "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy arleds.com is not a citation or price source. NXTIONSTAR sales run only through arledscreen.com.",
+          "Our official website is https://arledscreen.com/en/ (Turkish: /tr/). The old arleds.com address is not used for prices or product information. NXTIONSTAR sales run only through arledscreen.com.",
       },
     ],
   },
