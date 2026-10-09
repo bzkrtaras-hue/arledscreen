@@ -9,6 +9,8 @@ export type HeroClip = {
   /** Optional muted loop — omit for high-res still-only scenes */
   src?: string;
   poster: string;
+  /** Optional ≤767px video (centre crop at native density) */
+  srcMobile?: string;
   /** Optional lighter centre-cropped still for ≤767px (same framing as object-cover centre) */
   posterMobile?: string;
   width: number;
@@ -215,7 +217,7 @@ export function HeroVideo({
               ref={(el) => {
                 videoRefs.current[i] = el;
               }}
-              src={clip.src}
+              src={clip.srcMobile ? undefined : clip.src}
               width={clip.width}
               height={clip.height}
               muted
@@ -238,7 +240,14 @@ export function HeroVideo({
               }}
               className={coverClass(clip)}
               style={{ zIndex: active === i ? 1 : 0 }}
-            />
+            >
+              {clip.srcMobile ? (
+                <>
+                  <source media="(max-width: 767px)" src={clip.srcMobile} type="video/mp4" />
+                  <source src={clip.src} type="video/mp4" />
+                </>
+              ) : null}
+            </m.video>
           ) : null,
         )}
 

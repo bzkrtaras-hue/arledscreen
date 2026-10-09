@@ -42,7 +42,17 @@ const HERO_SCENES: { slug: string; labelTr: string; labelEn: string }[] = [
  * - Posters: the same still as before, recompressed to WebP <80 KB, plus a
  *   centre-square crop for ≤767px (matches object-cover centre framing).
  */
-const HERO_MEDIA: Record<string, { src?: string; poster: string; posterMobile: string }> = {
+const HERO_MEDIA: Record<
+  string,
+  {
+    src?: string;
+    srcMobile?: string;
+    poster: string;
+    posterMobile: string;
+    width?: number;
+    height?: number;
+  }
+> = {
   "eskisehir-sigorta-led-ekran-vitrin": {
     poster: "/videos/hero/eskisehir-sigorta-led-ekran-vitrin.webp",
     posterMobile: "/videos/hero/eskisehir-sigorta-led-ekran-vitrin-m.webp",
@@ -56,10 +66,15 @@ const HERO_MEDIA: Record<string, { src?: string; poster: string; posterMobile: s
     poster: "/videos/hero/sphere-led-showroom.webp",
     posterMobile: "/videos/hero/sphere-led-showroom-m.webp",
   },
+  // Club slot: Drive IMG_3366.MOV 0–10 s (1920×1080, HLG → SDR BT.709 tone-mapped),
+  // H.264 CRF 23 slow. ≤767px gets a native-density centre 1080×1080 crop.
   "club-curved-led-ribbon": {
-    src: "/videos/hero/club-curved-led-ribbon.mp4",
-    poster: "/videos/hero/club-curved-led-ribbon.webp",
-    posterMobile: "/videos/hero/club-curved-led-ribbon-m.webp",
+    src: "/videos/hero/club-led-kabin-1080.mp4",
+    srcMobile: "/videos/hero/club-led-kabin-1080-m.mp4",
+    poster: "/videos/hero/club-led-kabin-1080.webp",
+    posterMobile: "/videos/hero/club-led-kabin-1080-m.webp",
+    width: 1920,
+    height: 1080,
   },
 };
 
@@ -74,8 +89,9 @@ export function Hero({ locale }: HeroProps) {
         src: HERO_MEDIA[scene.slug]?.src ?? video.src,
         poster: HERO_MEDIA[scene.slug]?.poster ?? video.poster,
         posterMobile: HERO_MEDIA[scene.slug]?.posterMobile,
-        width: video.width,
-        height: video.height,
+        srcMobile: HERO_MEDIA[scene.slug]?.srcMobile,
+        width: HERO_MEDIA[scene.slug]?.width ?? video.width,
+        height: HERO_MEDIA[scene.slug]?.height ?? video.height,
         label: tr ? scene.labelTr : scene.labelEn,
       },
     ];
