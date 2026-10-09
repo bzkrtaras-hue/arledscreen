@@ -244,7 +244,7 @@ export function HeroVideo({
                   setActive(i);
                   playIndex(i, !userPaused);
                 }}
-                className={`h-1.5 rounded-full transition-all duration-700 ease-out ${
+                className={`-m-[9px] box-content h-1.5 rounded-full bg-clip-content p-[9px] transition-all duration-700 ease-out ${
                   active === i ? "w-8 bg-white" : "w-1.5 bg-white/40 hover:bg-white/70"
                 }`}
               />
@@ -307,7 +307,7 @@ export function HeroVideo({
             </m.div>
 
             <m.div
-              className="mt-5 flex flex-col gap-2.5 sm:mt-6 sm:flex-row sm:gap-3"
+              className="mt-5 flex flex-col gap-2.5 max-md:mr-[68px] sm:mt-6 sm:flex-row sm:gap-3"
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, ease, delay: 0.36 }}

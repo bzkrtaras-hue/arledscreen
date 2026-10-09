@@ -26,7 +26,7 @@ export function FloatingSocialRail({ locale }: { locale: Locale }) {
   return (
     <nav
       aria-label={tr ? "Hızlı iletişim" : "Quick contact"}
-      className="fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 lg:block"
+      className="fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 min-[1440px]:block"
     >
       <ul className="flex flex-col items-end gap-2">
         {tabs.map(({ href, label, Icon, ext, cls }) => {

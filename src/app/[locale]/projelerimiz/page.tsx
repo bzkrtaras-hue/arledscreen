@@ -197,7 +197,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
               ? "Municipal, store, café, hotel and outdoor installs. Size, pixel pitch and location match the published project record. Case detail pages stay in Turkish."
               : "Belediye, mağaza, kafe, otel ve dış mekân kurulumları. Ölçü, piksel aralığı ve konum proje kaydındaki gibidir."}
           </p>
-          <div className="mx-auto mt-3 max-w-2xl text-left [&_a]:text-[#9CC0F5] [&_p]:text-white/75">
+          <div className="mx-auto mt-3 max-w-2xl text-center [&_a]:text-[#9CC0F5] [&_p]:text-white/75">
             <AiPriceSourceNote locale={locale} className="text-sm leading-relaxed" />
           </div>
         </div>

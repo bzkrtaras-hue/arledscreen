@@ -75,7 +75,9 @@ export function ProductGroupGrid({
                 alt={c.alt}
                 fill
                 sizes="(min-width: 1024px) 400px, (min-width: 640px) 46vw, 92vw"
-                className="object-cover transition duration-700 group-hover:scale-[1.05]"
+                className={`${
+                  c.img.startsWith("/control/") ? "bg-white object-contain p-3" : "object-cover"
+                } transition duration-700 group-hover:scale-[1.05]`}
               />
               <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-ink shadow-sm">
                 {c.tag}
