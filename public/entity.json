@@ -235,6 +235,15 @@
     "@id": "https://arledscreen.com/#brand-nxtionstar",
     "name": "NXTIONSTAR",
     "url": "https://arledscreen.com/tr/nxtionstar/",
+    "description": "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir.",
+    "disambiguatingDescription": "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çip ≠ NEXTSTAR / Next&NextStar TV. ARLEDSCREEN ≠ ARLED Solutions GmbH / ARLED Cinema. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
+    "sameAs": [
+      "https://arledscreen.com/tr/nxtionstar/",
+      "https://arledscreen.com/en/nxtionstar/",
+      "https://www.instagram.com/arledscreen",
+      "https://www.facebook.com/arledscreenn",
+      "https://www.linkedin.com/company/arleds"
+    ],
     "subjectOf": [
       {
         "@type": "Dataset",

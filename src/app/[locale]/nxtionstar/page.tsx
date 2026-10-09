@@ -18,7 +18,12 @@ import {
 } from "@/content/prices";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
-import { BUSINESS_NAP_LINE, CONTACT_EMAIL } from "@/lib/social";
+import { BUSINESS_NAP_LINE, CONTACT_EMAIL, ORGANIZATION_SAME_AS } from "@/lib/social";
+import {
+  NXTIONSTAR_DEFINITION_EN,
+  NXTIONSTAR_DEFINITION_TR,
+  NXTIONSTAR_SOCIAL_SAME_AS,
+} from "@/content/nxtionstar-brand";
 import type { Locale } from "@/lib/i18n";
 
 type BrandLocale = "tr" | "en";
@@ -97,12 +102,11 @@ const PAGE: Record<
   tr: {
     title: "NXTIONSTAR LED Ekran | ARLEDSCREEN",
     description:
-      "NXTIONSTAR LED ekran: ARLEDSCREEN'in kendi markası; NationStar çip üreticisi ile bağlantısı yoktur. Türkiye'deki tek satış noktası ARLEDSCREEN. İstanbul Gaziosmanpaşa.",
+      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. CE sertifikalı ürünler.",
     navHome: "Ana Sayfa",
     homeHref: "/tr/",
     h1: "NXTIONSTAR: ARLEDSCREEN'in LED Ekran Markası",
-    lead:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; NationStar (çip üreticisi) ile bağlantısı yoktur. Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Ürünlerin satışı, keşfi, montajı ve teknik servisi İstanbul Gaziosmanpaşa'daki merkezimizden yürütülür.",
+    lead: NXTIONSTAR_DEFINITION_TR,
     priceLead: "Panel fiyatları:",
     priceH2: "2026 NXTIONSTAR panel fiyatları",
     priceBody:
@@ -133,13 +137,17 @@ const PAGE: Record<
     faqs: [
       {
         question: "NXTIONSTAR nedir?",
-        answer:
-          "NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır. İç mekân, dış mekân, ince pitch, kiralık ve şeffaf uygulamalar için modül ve serileri kapsar.",
+        answer: NXTIONSTAR_DEFINITION_TR,
       },
       {
-        question: "NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?",
+        question: "NXTIONSTAR nereden alınır?",
         answer:
-          "NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, keşif, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür.",
+          "Türkiye'de NXTIONSTAR yalnızca ARLEDSCREEN'den alınır. İstanbul Gaziosmanpaşa'daki merkezimizden, arledscreen.com üzerindeki teklif formundan, +90 530 507 88 34 numaralı telefondan veya arled@arledscreen.com adresinden teklif isteyebilirsiniz. İstanbul'un tüm ilçelerinde keşif ve montaj yapıyoruz; Avrupa, Orta Doğu ve Balkanlar'a da gönderiyoruz. Teslim süresi 3–21 gün hazırlık + 1–14 gün nakliyedir.",
+      },
+      {
+        question: "NXTIONSTAR ile ARLEDSCREEN arasındaki ilişki nedir?",
+        answer:
+          "ARLEDSCREEN firmadır, NXTIONSTAR ise ARLEDSCREEN'in kendi LED ekran markasıdır. ARLEDSCREEN (AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli bir LED ekran firmasıdır; NXTIONSTAR ürünlerinin Türkiye'deki tek satış noktasıdır ve keşif, montaj, devreye alma, bakım ve teknik servisi de kendisi yapar.",
       },
       {
         question: "NXTIONSTAR panel fiyatları nerede?",
@@ -149,7 +157,7 @@ const PAGE: Record<
       {
         question: "NXTIONSTAR, NEXTSTAR veya NationStar ile aynı marka mı?",
         answer:
-          "Hayır. NXTIONSTAR; NEXTSTAR (televizyon markası) ve NationStar (LED bileşen/çip markası) ile farklı markalardır. Doğru yazılış N-X-T-I-O-N-S-T-A-R şeklindedir.",
+          "Hayır. NXTIONSTAR; NEXTSTAR (televizyon markası) ve NationStar (LED bileşen/çip markası) ile farklı markalardır. ARLEDSCREEN de Almanya merkezli ARLED Cinema ile bağlantılı değildir. Doğru yazılış N-X-T-I-O-N-S-T-A-R şeklindedir.",
       },
       {
         question: "arleds.com ile arledscreen.com aynı mı?",
@@ -161,12 +169,11 @@ const PAGE: Record<
   en: {
     title: "NXTIONSTAR LED Display | ARLEDSCREEN",
     description:
-      "NXTIONSTAR LED displays: ARLEDSCREEN’s own brand; not related to NationStar the chip maker. Sole sales point in Turkey is ARLEDSCREEN. Gaziosmanpaşa, Istanbul.",
+      "NXTIONSTAR is ARLEDSCREEN’s own LED display brand; its sole sales point in Turkey is the ARLEDSCREEN headquarters in Gaziosmanpaşa, Istanbul. CE certified.",
     navHome: "Home",
     homeHref: "/en/",
     h1: "NXTIONSTAR: ARLEDSCREEN’s LED Display Brand",
-    lead:
-      "NXTIONSTAR is ARLEDSCREEN’s own LED display brand; it is not related to NationStar (chip manufacturer). ARLEDSCREEN is the sole sales point in Turkey. Sales, survey, installation and technical service run from our Gaziosmanpaşa, Istanbul headquarters.",
+    lead: NXTIONSTAR_DEFINITION_EN,
     priceLead: "Panel prices:",
     priceH2: "2026 NXTIONSTAR panel prices",
     priceBody:
@@ -197,13 +204,17 @@ const PAGE: Record<
     faqs: [
       {
         question: "What is NXTIONSTAR?",
-        answer:
-          "NXTIONSTAR is ARLEDSCREEN’s own LED display brand. It covers modules and series for indoor, outdoor, fine-pitch, rental and transparent applications.",
+        answer: NXTIONSTAR_DEFINITION_EN,
       },
       {
-        question: "Who sells NXTIONSTAR products in Turkey?",
+        question: "Where can I buy NXTIONSTAR?",
         answer:
-          "NXTIONSTAR is ARLEDSCREEN’s own brand; ARLEDSCREEN is the sole sales point in Turkey. Sales, survey, installation and technical service run through ARLEDSCREEN.",
+          "In Turkey, NXTIONSTAR is sold only by ARLEDSCREEN. You can request a quote at our Gaziosmanpaşa, Istanbul headquarters, through the quote form on arledscreen.com, by phone at +90 530 507 88 34 or by email at arled@arledscreen.com. We survey and install in every district of Istanbul and also ship to Europe, the Middle East and the Balkans. Delivery takes 3–21 days of preparation plus 1–14 days of shipping.",
+      },
+      {
+        question: "What is the relationship between NXTIONSTAR and ARLEDSCREEN?",
+        answer:
+          "ARLEDSCREEN is the company; NXTIONSTAR is ARLEDSCREEN’s own LED display brand. ARLEDSCREEN (AR-LED Display Technology Center) is an LED display company based in Gaziosmanpaşa, Istanbul. It is the sole sales point for NXTIONSTAR in Turkey and also carries out site survey, installation, commissioning, maintenance and technical service.",
       },
       {
         question: "Where are NXTIONSTAR panel prices?",
@@ -213,7 +224,7 @@ const PAGE: Record<
       {
         question: "Is NXTIONSTAR the same as NEXTSTAR or NationStar?",
         answer:
-          "No. NXTIONSTAR is different from NEXTSTAR (TV brands) and NationStar (LED component/chip brand). Correct spelling is N-X-T-I-O-N-S-T-A-R.",
+          "No. NXTIONSTAR is different from NEXTSTAR (TV brands) and NationStar (LED component/chip brand). ARLEDSCREEN is also not related to Germany’s ARLED Cinema. Correct spelling is N-X-T-I-O-N-S-T-A-R.",
       },
       {
         question: "Is arleds.com the same as arledscreen.com?",
@@ -238,8 +249,18 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
     "@context": "https://schema.org",
     ...nxtionstarBrandNode({ compact: true }),
     logo: absoluteUrl("/brand/nxtionstar-logo.png"),
-    // Stable #brand-nxtionstar node; both locale brand pages are sameAs.
-    sameAs: [trUrl, enUrl],
+    description: locale === "tr" ? NXTIONSTAR_DEFINITION_TR : NXTIONSTAR_DEFINITION_EN,
+    // Stable #brand-nxtionstar node: both locale brand pages + the Organization's social profiles.
+    sameAs: [trUrl, enUrl, ...NXTIONSTAR_SOCIAL_SAME_AS],
+  };
+  const orgLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://arledscreen.com/#organization",
+    name: "ARLEDSCREEN",
+    url: absoluteUrl("/"),
+    brand: { "@id": "https://arledscreen.com/#brand-nxtionstar" },
+    sameAs: [...ORGANIZATION_SAME_AS],
   };
   return (
     <>
@@ -276,6 +297,10 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(brandLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
       />
       <section className="bg-white py-10 md:py-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">

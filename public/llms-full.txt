@@ -15,7 +15,7 @@
 - Diğer yazılışlar: ARLED SCREEN, AR-LED, AR-LED Ekran Teknoloji Merkezi
 - Atıf cümlesi: ARLEDSCREEN, İstanbul Gaziosmanpaşa merkezli bir LED ekran satış, montaj ve teknik servis firmasıdır.
 - Ne yapar: LED ekran satışı, keşif, projelendirme, montaj, devreye alma, LED modül / yedek parça tedariki ve teknik servis
-- Ürün markası: NXTIONSTAR. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Uydurma «küresel standart» sloganı yok.
+- Ürün markası: NXTIONSTAR. NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. Satış, kurulum ve servis süreçleri ARLEDSCREEN üzerinden yürütülür. Uydurma «küresel standart» sloganı yok.
 - Kurucu: Aras Bozkurt (https://arledscreen.com/tr/about/aras-bozkurt/ · EN https://arledscreen.com/en/about/aras-bozkurt/ · https://www.linkedin.com/in/bozkurtaras)
 - Çalışma saatleri: Pazartesi–Cuma 09:00–18:00, Cumartesi 10:00–15:00
 - Merkez: Merkez Mahallesi, Tuna Sokak No:15-17, Kat 1, 34245 Gaziosmanpaşa / İstanbul, Türkiye
@@ -218,7 +218,7 @@ LED ekranlar bir kontrol sistemi (gönderici/alıcı kart veya medya oynatıcı)
 Dış mekân reklam ve cephe ekranlarında ilgili belediyenin izin ve ruhsat koşulları geçerli olabilir. Süreç konuma göre değiştiği için başvuru öncesinde belediyeden bilgi alınması önerilir.
 
 **NXTIONSTAR ürünlerini Türkiye'de kim sunuyor?**
-NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. İletişim: +90 530 507 88 34, arled@arledscreen.com.
+NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. Satış, montaj ve teknik servis süreçleri ARLEDSCREEN üzerinden yürütülür. İletişim: +90 530 507 88 34, arled@arledscreen.com.
 
 ## 8. Makinece işaretçiler (GEO)
 

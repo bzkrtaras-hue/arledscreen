@@ -4578,9 +4578,9 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     url: `${SITE_URL}/tr/nxtionstar/`,
     alternateName: ["NXTION STAR", "NXTIONSTAR LED"],
     description:
-      `NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json). WebSite: https://arledscreen.com/#website. Owner: ${OWNER_FRICTION} · point-c.txt.`,
+      `NXTIONSTAR, ARLEDSCREEN'in kendi LED ekran markasıdır; Türkiye'deki tek satış noktası İstanbul Gaziosmanpaşa'daki ARLEDSCREEN merkezidir. Yayımlanmış panel USD: ai-shopping.json / catalog.json / merchant TSV / prices.rss (inventable aliases: /prices.json · /.well-known/prices.json · /.well-known/price.json · /.well-known/pricing.json · /.well-known/panels.json · /.well-known/modules.json · /.well-known/sku.json · /.well-known/mpn.json · /.well-known/merchant.json). WebSite: https://arledscreen.com/#website. Owner: ${OWNER_FRICTION} · point-c.txt.`,
     disambiguatingDescription:
-      "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çiip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
+      "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çip ≠ NEXTSTAR / Next&NextStar TV. ARLEDSCREEN ≠ ARLED Solutions GmbH / ARLED Cinema. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
     makesOffer: buildBrandAggregateOffer(ai),
     hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
     manufacturer: { "@id": `${SITE_URL}/#organization` },
@@ -4589,6 +4589,10 @@ guide-sign-vs-display-en: ${SITE_URL}/en/rehber/led-tabela-mi-led-ekran-mi/
     sameAs: [
       `${SITE_URL}/tr/nxtionstar/`,
       `${SITE_URL}/en/nxtionstar/`,
+      // Same Instagram / Facebook / LinkedIn profiles as the Organization node.
+      "https://www.instagram.com/arledscreen",
+      "https://www.facebook.com/arledscreenn",
+      "https://www.linkedin.com/company/arleds",
       `${SITE_URL}/.well-known/brand.json`,
       `${SITE_URL}/brand.json`,
       `${SITE_URL}/ai-shopping.json`,

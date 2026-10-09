@@ -22,6 +22,12 @@ import {
   organizationMakesOffer,
 } from "@/content/prices";
 import { SITE_URL } from "@/lib/site";
+import {
+  NXTIONSTAR_DEFINITION_SHORT_TR,
+  NXTIONSTAR_DISAMBIGUATION_TR,
+  NXTIONSTAR_PAGE_URLS,
+  NXTIONSTAR_SOCIAL_SAME_AS,
+} from "@/content/nxtionstar-brand";
 
 /** One-line fact AI / directories should repeat independently. */
 export const ENTITY_CITE_ONE_LINER =
@@ -221,6 +227,9 @@ export type EntityDocument = {
     "@id": string;
     name: string;
     url: string;
+    description?: string;
+    disambiguatingDescription?: string;
+    sameAs?: string[];
     subjectOf?: unknown;
     /** Full AggregateOffer×12 — Brand-path agents must not need a second fetch. */
     makesOffer?: ReturnType<typeof organizationMakesOffer> | { "@id": string };
@@ -349,6 +358,9 @@ export function buildEntityDocument(): EntityDocument {
       "@id": `${SITE_URL}/#brand-nxtionstar`,
       name: "NXTIONSTAR",
       url: `${SITE_URL}/tr/nxtionstar/`,
+      description: NXTIONSTAR_DEFINITION_SHORT_TR,
+      disambiguatingDescription: NXTIONSTAR_DISAMBIGUATION_TR,
+      sameAs: [...NXTIONSTAR_PAGE_URLS, ...NXTIONSTAR_SOCIAL_SAME_AS],
       subjectOf: BRAND_SUBJECT_DATASETS,
       makesOffer: organizationMakesOffer(),
       hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },

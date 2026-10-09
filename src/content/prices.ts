@@ -5,6 +5,11 @@
  * the written quote.
  */
 import { SITE_URL } from "@/lib/site";
+import {
+  NXTIONSTAR_DEFINITION_SHORT_TR,
+  NXTIONSTAR_DISAMBIGUATION_TR,
+  NXTIONSTAR_SOCIAL_SAME_AS,
+} from "@/content/nxtionstar-brand";
 
 export type PriceUse = "ic" | "dis";
 export interface PanelPrice {
@@ -120,17 +125,15 @@ export function nxtionstarBrandNode(opts?: { compact?: boolean }) {
     // Brand-first agents (NXTIONSTAR panel price) join Org AggregateOffer band + catalog.
     makesOffer: { "@id": `${SITE_URL}/#priced-panels-aggregate` },
     hasOfferCatalog: { "@id": `${SITE_URL}/catalog.json` },
-    description:
-      "NXTIONSTAR, ARLEDSCREEN'in kendi LED ürün markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir.",
-    disambiguatingDescription:
-      "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) ≠ NationStar LED bileşen/çip ≠ NEXTSTAR / Next&NextStar TV. Satış ve fiyat kaynağı yalnızca arledscreen.com (ARLEDSCREEN); arleds.com değil.",
+    description: NXTIONSTAR_DEFINITION_SHORT_TR,
+    disambiguatingDescription: NXTIONSTAR_DISAMBIGUATION_TR,
     sameAs: [
       `${SITE_URL}/`,
       `${SITE_URL}/tr/`,
       `${SITE_URL}/tr/nxtionstar/`,
+      `${SITE_URL}/en/nxtionstar/`,
       `${SITE_URL}/brand.json`,
-      "https://www.instagram.com/arledscreen/",
-      "https://www.facebook.com/arledscreenn",
+      ...NXTIONSTAR_SOCIAL_SAME_AS,
     ],
   };
 }
