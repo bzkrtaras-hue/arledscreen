@@ -184,6 +184,101 @@
       1408
     ]
   },
+  "/control/colorlight-s20.png": {
+    "w": 4000,
+    "h": 2287,
+    "widths": [
+      480,
+      960,
+      1600,
+      4000
+    ]
+  },
+  "/control/colorlight-vx20.png": {
+    "w": 3840,
+    "h": 2695,
+    "widths": [
+      480,
+      960,
+      1600,
+      3840
+    ]
+  },
+  "/control/colorlight-x20.png": {
+    "w": 4000,
+    "h": 2291,
+    "widths": [
+      480,
+      960,
+      1600,
+      4000
+    ]
+  },
+  "/control/colorlight-x40m.png": {
+    "w": 4000,
+    "h": 2211,
+    "widths": [
+      480,
+      960,
+      1600,
+      4000
+    ]
+  },
+  "/control/huidu-async-hero.png": {
+    "w": 480,
+    "h": 278,
+    "widths": [
+      480
+    ]
+  },
+  "/control/huidu-card-a.jpg": {
+    "w": 480,
+    "h": 278,
+    "widths": [
+      480
+    ]
+  },
+  "/control/huidu-card-b.jpg": {
+    "w": 480,
+    "h": 278,
+    "widths": [
+      480
+    ]
+  },
+  "/control/huidu-card-c.png": {
+    "w": 480,
+    "h": 278,
+    "widths": [
+      480
+    ]
+  },
+  "/control/novastar-hero.jpg": {
+    "w": 2560,
+    "h": 1933,
+    "widths": [
+      480,
+      960,
+      1600,
+      2560
+    ]
+  },
+  "/control/novastar-mctrl660-pro.png": {
+    "w": 768,
+    "h": 432,
+    "widths": [
+      480,
+      768
+    ]
+  },
+  "/control/novastar-vx600.png": {
+    "w": 1400,
+    "h": 900,
+    "widths": [
+      480,
+      960,
+      1400
+    ]
+  },
   "/projects/applications/automotive-led-eyes.jpg": {
     "h": 447,
     "w": 447,
