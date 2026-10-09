@@ -540,6 +540,18 @@ const moduleExceptions = PANEL_PRICES.filter((p) => p.moduleMm)
 export const PRICE_NOTE =
   `Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir.${moduleExceptions ? ` Standart modül ${STANDARD_MODULE}; özel ölçüler: ${moduleExceptions}.` : ` Modül ölçüsü ${STANDARD_MODULE}.`} Tutarlar yaklaşıktır; nihai fiyat keşif sonrası yazılı teklifle kesinleşir.`;
 
+const moduleExceptionsEn = PANEL_PRICES.filter((p) => p.moduleMm)
+  .map((p) => `${p.pitch} ${p.use === "ic" ? "indoor" : "outdoor"}: ${p.moduleMm}`)
+  .join(", ");
+
+/** Visible price note — TR string unchanged; EN for /en/ pages only. */
+export function priceNote(locale: "tr" | "en" = "tr"): string {
+  if (locale === "en") {
+    return `Prices are in USD per panel, excl. VAT and shipping.${moduleExceptionsEn ? ` Standard module ${STANDARD_MODULE}; special sizes: ${moduleExceptionsEn}.` : ` Module size ${STANDARD_MODULE}.`} Amounts are approximate; the final price is set in a written quote after site survey.`;
+  }
+  return PRICE_NOTE;
+}
+
 export const pricesForGroup = (slug: string) => PANEL_PRICES.filter((p) => p.groups.includes(slug));
 
 const trNum = (n: number, d = 2) =>
@@ -553,9 +565,10 @@ export const fmtM2 = (n: number) => trNum(Math.round(n * PANELS_PER_M2), 0);
  */
 export const panelM2 = (p: PanelPrice): string | undefined => (p.moduleMm ? undefined : fmtM2(p.usd));
 
-export function panelLabel(p: PanelPrice): string {
-  const use = p.use === "ic" ? "İç mekân" : "Dış mekân";
-  const extra = [p.surface, p.frontService ? "önden servis" : ""].filter(Boolean).join(", ");
+export function panelLabel(p: PanelPrice, locale: "tr" | "en" = "tr"): string {
+  const use = locale === "en" ? (p.use === "ic" ? "Indoor" : "Outdoor") : p.use === "ic" ? "İç mekân" : "Dış mekân";
+  const front = locale === "en" ? "front service" : "önden servis";
+  const extra = [p.surface, p.frontService ? front : ""].filter(Boolean).join(", ");
   return `${p.pitch} ${use}${extra ? ` (${extra})` : ""}`;
 }
 

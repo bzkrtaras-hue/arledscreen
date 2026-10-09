@@ -18,6 +18,7 @@ import { YiyistarGallery } from "@/components/projects/YiyistarGallery";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 import { getFaqs } from "@/content/faqs";
 import { pricedPanelsDatasetJsonLd } from "@/content/prices";
+import { formatProjectDate, formatProjectDetail } from "@/lib/dates";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
@@ -114,7 +115,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": PROJECT_VIDEOS.map((v) =>
-              videoObjectJsonLd(v, pageUrl, absoluteUrl, `${SITE_URL}/#organization`),
+              videoObjectJsonLd(v, pageUrl, absoluteUrl, `${SITE_URL}/#organization`, locale),
             ),
           }),
         }}
@@ -214,7 +215,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         }
         className="prose-seo pt-3 sm:pt-4 md:pt-5 pb-10 sm:pb-12 md:pb-14 [&_header]:mb-4 [&_header]:md:mb-5"
       >
-        <ProjectVideos />
+        <ProjectVideos locale={locale} />
       </Section>
 
       <Section
@@ -236,6 +237,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         className="prose-seo"
       >
         <FeaturedReferences
+          locale={locale}
           limit={7}
           showAllLink={false}
           ctaHref="#liste"
@@ -254,7 +256,12 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         }
         className="bg-band prose-seo"
       >
-        <YiyistarGallery showFeatured={false} showJumpNav={false} limitSections={2} />
+        <YiyistarGallery
+          locale={en ? "en" : "tr"}
+          showFeatured={false}
+          showJumpNav={false}
+          limitSections={2}
+        />
         <p className="mt-8 text-center">
           <Link
             href="/tr/galeri/"
@@ -289,7 +296,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         className="prose-seo"
       >
         <ReferencesGrid locale={locale} />
-        <AllReferencesNote />
+        <AllReferencesNote locale={locale} />
       </Section>
 
       <Section
@@ -310,10 +317,12 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
                 href={`/tr/projelerimiz/${c.slug}/`}
                 className="block rounded-2xl border border-border bg-white p-4 transition hover:border-cyan/40"
               >
-                <p className="font-display text-base font-bold text-ink">{c.companyLabel}</p>
-                <p className="mt-1 text-sm text-ink-soft">{c.detail}</p>
+                <p className="font-display text-base font-bold text-ink">
+                  {en && c.companyLabel === "Bireysel müşteri" ? "Individual customer" : c.companyLabel}
+                </p>
+                <p className="mt-1 text-sm text-ink-soft">{formatProjectDetail(c.detail, locale)}</p>
                 <p className="mt-2 text-xs text-ink-muted">
-                  {c.date}
+                  {formatProjectDate(c.date, locale)}
                   {c.location ? ` · ${c.location}` : ""}
                   {en ? " · TR" : ""}
                 </p>
@@ -326,6 +335,7 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
       <section className="bg-band py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <QuoteSplit
+            locale={en ? "en" : "tr"}
             title={en ? "Planning a similar project?" : "Benzer bir proje mi planlıyorsunuz?"}
           />
         </div>

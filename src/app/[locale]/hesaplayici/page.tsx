@@ -202,6 +202,7 @@ export default async function HesaplayiciPage({ params }: PageProps) {
               for worked m² examples. Product PDPs stay on Turkish catalog URLs.
             </p>
             <PanelPriceTable
+              locale="en"
               panels={PANEL_PRICES}
               caption="Panel prices (USD, per panel)"
               showCalcLink={false}

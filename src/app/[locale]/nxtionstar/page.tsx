@@ -287,12 +287,20 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
           <p id="brand-lead" className="mt-4 text-[15.5px] leading-[1.75] text-ink-soft">
             <strong>{locale === "tr" ? "Kısa cevap:" : "Short answer:"}</strong> {copy.lead}
           </p>
-          <AiPriceSourceNote lead={copy.priceLead} className="mt-3 text-sm leading-relaxed text-ink-muted" />
+          <AiPriceSourceNote
+            locale={locale === "en" ? "en" : "tr"}
+            lead={copy.priceLead}
+            className="mt-3 text-sm leading-relaxed text-ink-muted"
+          />
 
           <div id="panel-fiyatlari" className="mt-10 scroll-mt-28">
             <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">{copy.priceH2}</h2>
             <p className="mb-4 mt-2 text-sm leading-relaxed text-ink-muted">{copy.priceBody}</p>
-            <PanelPriceTable panels={PANEL_PRICES} caption={copy.priceCaption} />
+            <PanelPriceTable
+              locale={locale === "en" ? "en" : "tr"}
+              panels={PANEL_PRICES}
+              caption={copy.priceCaption}
+            />
           </div>
 
           <h2 className="mt-10 font-display text-xl font-bold text-ink sm:text-2xl">{copy.modelsH2}</h2>

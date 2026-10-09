@@ -2,6 +2,16 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-004 — Yusuf Batch 1: EN sayfalarda Türkçe UI metni
+
+- **Kaynak:** Drive `YUSUF_GOREV_01_INGILIZCE` (Ali, 9 Eki 2026) — Batch 1
+- **PanelPriceTable / prices.ts etiketleri:** `locale` ile EN “Panel price (USD)”, Indoor/Outdoor, price note; TR byte-for-byte aynı
+- **QuoteSplit / ShortQuoteForm / WhatsApp:** EN form, onay metni, proje türü etiketleri ve hazır mesajlar
+- **Ürün aile başlıkları, galeri kategorileri, ticari proof satırları, şehir link etiketleri, proje videoları / case kartları:** EN görünür metin
+- **/en/magaza/:** title + H1 → “LED Display Shop”
+- **Arayüz:** CSS/className/layout değişmedi; fiyat rakamları ve makine dosyaları dokunulmadı
+- **Production:** yok — draft PR → main; deploy / IndexNow / merge yok
+
 ## ARL-20261009-003 — Sitemap ayrımı (sitemap.xml / sitemap-ai.xml) + TR başlık uzunluk düzeltmesi
 
 - **Sitemap:** `sitemap.xml` artık yalnızca indekslenebilir, kendi canonical’ına işaret eden HTML sayfaları listeliyor (414 → 215). 49 noindex “invent” köprü sayfası ve 150 makine dosyası (json/txt/md/rss/tsv/uzantısız alias) yeni `sitemap-ai.xml`’e taşındı (199 URL); `robots.txt` (Function + public + robots.ts) iki sitemap’i de gösteriyor. Liste: `src/content/sitemap-ai-paths.ts`, route: `src/app/sitemap-ai.xml/route.ts`

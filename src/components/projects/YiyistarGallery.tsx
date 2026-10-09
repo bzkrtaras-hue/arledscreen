@@ -15,13 +15,16 @@ export function YiyistarGallery({
   showFeatured = true,
   showJumpNav = true,
   limitSections,
+  locale = "tr",
 }: {
   showFeatured?: boolean;
   showJumpNav?: boolean;
   /** When set, only the first N category blocks render (teaser use). */
   limitSections?: number;
+  locale?: "tr" | "en";
 }) {
   const reduce = useReducedMotion();
+  const en = locale === "en";
   const sections = useMemo(
     () =>
       typeof limitSections === "number"
@@ -31,12 +34,14 @@ export function YiyistarGallery({
   );
   const featured = useMemo(
     () =>
-      sections.map((section) => ({
-        src: section.images[0],
-        title: section.title,
-        slug: section.slug,
-      })).filter((s) => Boolean(s.src)),
-    [sections],
+      sections
+        .map((section) => ({
+          src: section.images[0],
+          title: en ? section.titleEn : section.title,
+          slug: section.slug,
+        }))
+        .filter((s) => Boolean(s.src)),
+    [sections, en],
   );
 
   const [active, setActive] = useState(0);
@@ -130,7 +135,7 @@ export function YiyistarGallery({
                 type="button"
                 onClick={() => go(-1)}
                 className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-ink shadow-sm backdrop-blur hover:bg-white sm:left-3"
-                aria-label="Önceki görsel"
+                aria-label={en ? "Previous image" : "Önceki görsel"}
               >
                 <ChevronLeft className="h-5 w-5" aria-hidden />
               </button>
@@ -138,7 +143,7 @@ export function YiyistarGallery({
                 type="button"
                 onClick={() => go(1)}
                 className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-ink shadow-sm backdrop-blur hover:bg-white sm:right-3"
-                aria-label="Sonraki görsel"
+                aria-label={en ? "Next image" : "Sonraki görsel"}
               >
                 <ChevronRight className="h-5 w-5" aria-hidden />
               </button>
@@ -147,7 +152,7 @@ export function YiyistarGallery({
                   <button
                     key={slide.slug}
                     type="button"
-                    aria-label={`${slide.title} slaytı`}
+                    aria-label={en ? `${slide.title} slide` : `${slide.title} slaytı`}
                     aria-current={i === active}
                     onClick={() => setActive(i)}
                     className={cn(
@@ -164,11 +169,13 @@ export function YiyistarGallery({
 
       {showJumpNav ? (
         <nav
-          aria-label="Galeri kategorileri"
+          aria-label={en ? "Gallery categories" : "Galeri kategorileri"}
           className="sticky top-16 z-30 -mx-1 border-b border-border/80 bg-white/95 px-1 py-3 backdrop-blur"
         >
           <ul className="flex gap-2 overflow-x-auto pb-0.5">
-            {sections.map((section) => (
+            {sections.map((section) => {
+              const label = en ? section.titleEn : section.title;
+              return (
               <li key={section.slug}>
                 <button
                   type="button"
@@ -182,23 +189,26 @@ export function YiyistarGallery({
                       : "border-border bg-white text-ink-soft hover:border-cyan/45 hover:text-cyan",
                   )}
                 >
-                  {section.title}
+                  {label}
                 </button>
               </li>
-            ))}
+              );
+            })}
           </ul>
         </nav>
       ) : null}
 
       <div className="space-y-12 md:space-y-16">
-        {sections.map((section) => (
+        {sections.map((section) => {
+          const label = en ? section.titleEn : section.title;
+          return (
           <section
             key={section.slug}
             id={`galeri-${section.slug}`}
             className="scroll-mt-28"
           >
             <h2 className="font-display text-[1.35rem] font-extrabold tracking-[-0.03em] text-ink sm:text-2xl">
-              {section.title}
+              {label}
             </h2>
             <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
               {section.images.map((src) => (
@@ -206,7 +216,7 @@ export function YiyistarGallery({
                   <figure className="group relative aspect-square overflow-hidden rounded-lg bg-surface">
                     <OptImage
                       src={src}
-                      alt={`${section.title} uygulama görseli`}
+                      alt={en ? `${label} application photo` : `${label} uygulama görseli`}
                       fill
                       sizes="(max-width: 768px) 50vw, 25vw"
                       className="object-cover transition duration-700 group-hover:scale-[1.04]"
@@ -216,7 +226,8 @@ export function YiyistarGallery({
               ))}
             </ul>
           </section>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

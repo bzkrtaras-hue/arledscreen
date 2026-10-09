@@ -327,6 +327,7 @@ export default async function YapayZekaPage({ params }: PageProps) {
           {(locale === "tr" || locale === "en") ? (
             <div id="panel-prices" className="max-w-3xl">
               <PanelPriceTable
+                locale={locale === "en" ? "en" : "tr"}
                 panels={PANEL_PRICES}
                 caption={
                   locale === "tr"
