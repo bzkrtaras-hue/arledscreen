@@ -120,6 +120,12 @@ Aynı ölçüde P5 dış mekân: 120 × 29,90 = 3.588,00 USD malzeme; toplam 5.1
 
 Kiralık ve esnek LED ekranlarda fiyat; ölçü, form, süre, lokasyon ve kurulum koşullarına göre projeye özel yazılı teklifle verilir.
 
+## 4a. LED ekran malzemeleri (liste fiyatları)
+
+Kontrol kartı (TF, Huidu), NovaStar alıcı kart / gönderici / medya oynatıcı, video işlemci (NovaStar VX, Huidu HD-VP), 5V adaptör ve DC-DC dönüştürücü, CNC kasa (16–96 serisi, tek / çift yüzlü), ithal ve rental kasa, flight case, esnek LED matrix, kablo ve montaj malzemeleri ile ek panel varyantlarının USD liste fiyatları https://arledscreen.com/tr/malzemeler/ sayfasında ve https://arledscreen.com/materials.json dosyasında yayımlanır. Fiyatlar KDV hariçtir, kura göre değişebilir; nihai tutar yazılı teklifle kesinleşir. Huidu ve NovaStar üretici ürün adlarıdır; ARLEDSCREEN bu ürünleri satar ve kurar.
+
+Ek panel varyantları (tek renk P10, P10 ve P3.91 dış mekân, P8, P1.86 / P2.5 esnek): aynı piksel aralığında site fiyatı varsa o fiyat (P2.5 GOB, P1.86, P1.86 GOB esnek, P3.07 45° kesik); yoksa yayımlanmış panellerin ortalama site/liste oranı (iç mekân ×1,8549, dış mekân ve tek renk ×1,8300) uygulanır.
+
 ## 5. Proje süreci
 
 1. İhtiyaç ve ölçü: kullanım amacı, ortam (iç/dış), yaklaşık ölçü, konum ve zaman planı.

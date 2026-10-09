@@ -1,6 +1,6 @@
 # ARLEDSCREEN — NXTIONSTAR LED ekranlar
 
-> ARLEDSCREEN (ARLED SCREEN, AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli LED ekran firmasıdır. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç mekân, dış mekân, GOB, kiralık ve esnek LED ekran satışı; keşif, montaj, devreye alma, LED modül/yedek parça ve teknik servis hizmeti verir. Yayımlanmış panel USD: [catalog.json](https://arledscreen.com/catalog.json) / [ai-shopping.json](https://arledscreen.com/ai-shopping.json) (`pricedPanels`, 12 SKU; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) / [merchant-priced-panels.tsv](https://arledscreen.com/feeds/merchant-priced-panels.tsv) / [prices.rss](https://arledscreen.com/feeds/prices.rss); teknik GEO baseline: [geo-baseline.json](https://arledscreen.com/geo-baseline.json) (parmak izleri; anılma % uydurma yok). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf / esnek / poster / kiralık / kontrol = quote-only.
+> ARLEDSCREEN (ARLED SCREEN, AR-LED Ekran Teknoloji Merkezi), İstanbul Gaziosmanpaşa merkezli LED ekran firmasıdır. NXTIONSTAR, ARLEDSCREEN'in kendi markasıdır; Türkiye'deki tek satış noktası ARLEDSCREEN'dir. İç mekân, dış mekân, GOB, kiralık ve esnek LED ekran satışı; keşif, montaj, devreye alma, LED modül/yedek parça ve teknik servis hizmeti verir. Yayımlanmış panel USD: [catalog.json](https://arledscreen.com/catalog.json) / [ai-shopping.json](https://arledscreen.com/ai-shopping.json) (`pricedPanels`, 12 SKU; ör. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31) / [merchant-priced-panels.tsv](https://arledscreen.com/feeds/merchant-priced-panels.tsv) / [prices.rss](https://arledscreen.com/feeds/prices.rss); teknik GEO baseline: [geo-baseline.json](https://arledscreen.com/geo-baseline.json) (parmak izleri; anılma % uydurma yok). KDV/nakliye hariç; ücretsiz kargo yok. Şeffaf / poster / kiralık = fiyat teklifle. Kontrol kartı, NovaStar alıcı/gönderici, video işlemci, trafo, CNC/rental kasa, aksesuar ve ek panel varyantları (tek renk P10, P8, P3.91, esnek, GOB) USD liste fiyatlı: [materials.json](https://arledscreen.com/materials.json) · [LED ekran malzemeleri](https://arledscreen.com/tr/malzemeler/) (KDV hariç; kura göre değişebilir).
 
 Bu dosya yalnızca sitede yayımlanmış olguları makinece okunur biçimde sıralar. Yeni rakam, sertifika, garanti yılı, nit, IP, kW, müşteri adı veya proje sayısı eklenmemiştir.
 
@@ -113,6 +113,21 @@ Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde (Tem 
 - [İç mekân rehberi](https://arledscreen.com/tr/rehber/ic-mekan-led-ekran/)
 - [Dış mekân rehberi](https://arledscreen.com/tr/rehber/dis-mekan-led-ekran/)
 - [Kiralık mı satın alma mı](https://arledscreen.com/tr/rehber/kiralik-mi-satin-alma/)
+
+## 3a. LED ekran malzemeleri (fiyatlı)
+
+Kaynak: [materials.json](https://arledscreen.com/materials.json) — 12 SKU pricedPanels listesinden ayrıdır. Fiyatlar USD, KDV hariç; kura göre değişebilir; ücretsiz kargo yok. Huidu ve NovaStar üretici ürün adlarıdır; ARLEDSCREEN bu ürünleri satar ve kurar.
+
+- [Hub: LED ekran malzemeleri](https://arledscreen.com/tr/malzemeler/)
+- [Kontrol kartları (TF, Huidu tek renk ve RGB)](https://arledscreen.com/tr/malzemeler/kontrol-kartlari/) — ör. Huidu HD-W60 10,50 USD
+- [NovaStar alıcı ve gönderici](https://arledscreen.com/tr/malzemeler/novastar-alici-gonderici/) — ör. NovaStar TB40 240 USD
+- [Video işlemciler](https://arledscreen.com/tr/malzemeler/video-islemci/) — ör. NovaStar VX600 1.460 USD
+- [Trafo ve adaptörler](https://arledscreen.com/tr/malzemeler/trafo-adaptor/)
+- [CNC kasalar (tek / çift yüzlü)](https://arledscreen.com/tr/malzemeler/cnc-kasa/)
+- [İthal ve rental kasalar](https://arledscreen.com/tr/malzemeler/ithal-rental-kasa/)
+- [Esnek LED matrix](https://arledscreen.com/tr/malzemeler/esnek-matrix/)
+- [Kablo ve aksesuarlar](https://arledscreen.com/tr/malzemeler/kablo-aksesuar/)
+- [LED panel varyantları](https://arledscreen.com/tr/malzemeler/led-paneller/) — aynı pitch site fiyatı veya ortalama oran (iç ×1,8549; dış ve tek renk ×1,8300); panel başına
 
 ## 4. GEO kapsülü
 

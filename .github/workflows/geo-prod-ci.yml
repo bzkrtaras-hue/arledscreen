@@ -52,6 +52,15 @@ jobs:
             fi
           done
           node scripts/validate-no-owner-gate.mjs
+          # ARL-20261009-006: LED ekran malzemeleri catalog + materials.json feed.
+          test -f out/materials.json || { echo "missing out/materials.json" >&2; exit 1; }
+          test -f out/tr/malzemeler/index.html || { echo "missing /tr/malzemeler/" >&2; exit 1; }
+          test "$(find out/tr/malzemeler -name index.html | wc -l)" -ge 32 || { echo "materials pages < 32" >&2; exit 1; }
+          grep -q 'https://arledscreen.com/tr/malzemeler/</loc>' out/sitemap.xml || { echo "sitemap missing /tr/malzemeler/" >&2; exit 1; }
+          grep -q 'materials.json' out/sitemap-ai.xml || { echo "sitemap-ai missing materials.json" >&2; exit 1; }
+          grep -q 'materials.json' out/llms.txt || { echo "llms missing materials.json" >&2; exit 1; }
+          if grep -q 'kontrol = quote-only' out/llms.txt; then echo "llms: priced controllers still quote-only" >&2; exit 1; fi
+          if grep -R -i -q 'yetkili distrib' out/tr/malzemeler out/materials.json; then echo "materials must not claim yetkili distribütör" >&2; exit 1; fi
           echo "OK GEO out/ artefacts"
       - name: Local invent smoke
         run: npm run invent:smoke:local
