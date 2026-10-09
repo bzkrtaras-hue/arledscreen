@@ -148,7 +148,7 @@ export function ProductGroupEnLanding({
                 href={en.quoteOnly ? "/en/led-ekran-fiyatlari/" : "/en/hesaplayici/"}
                 className="btn-soft inline-flex min-h-12 items-center justify-center border border-cyan/50 bg-white px-6 text-cyan hover:bg-cyan-50"
               >
-                {en.quoteOnly ? "Panel price hub" : "Price calculator"}
+                {en.quoteOnly ? "Panel prices" : "Price calculator"}
               </Link>
             </div>
             <AiPriceSourceNote locale="en" className="mt-4 text-xs leading-relaxed text-ink-muted" />
@@ -173,12 +173,12 @@ export function ProductGroupEnLanding({
             Detailed model specs are on the TR catalog pages; panel USD prices are on{" "}
             <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
               our price list
-            </Link>. TR models:{" "}
+            </Link>. See{" "}
             <Link
               href={`/tr/products/${group.slug}/`}
               className="font-semibold text-cyan hover:underline"
             >
-              /tr/products/{group.slug}/
+              all models (Turkish)
             </Link>
             .
           </p>
@@ -201,7 +201,7 @@ export function ProductGroupEnLanding({
       ) : (
         <section className="border-t border-border py-10">
           <div className="mx-auto max-w-7xl px-4 text-sm text-ink-soft sm:px-6 lg:px-8">
-            This group is quote-only. Published purchase panel USD (12 SKUs) remains on{" "}
+            Prices for this group are given in a written quote. Our 12 published panel prices (USD) are on{" "}
             <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
               our price list
             </Link>.
@@ -212,7 +212,7 @@ export function ProductGroupEnLanding({
       <section className="border-t border-border py-10">
         <div className="mx-auto flex max-w-7xl flex-wrap gap-x-4 gap-y-2 px-4 text-sm font-semibold sm:px-6 lg:px-8">
           <Link href="/en/led-ekran/" className="text-cyan hover:underline">
-            LED display hub
+            LED displays
           </Link>
           <Link href="/en/led-ekran-satisi/" className="text-cyan hover:underline">
             Sales
@@ -224,7 +224,7 @@ export function ProductGroupEnLanding({
             FAQ
           </Link>
           <Link href="/en/products/" className="text-cyan hover:underline">
-            Products hub
+            All products
           </Link>
         </div>
       </section>

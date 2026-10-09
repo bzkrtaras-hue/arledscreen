@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 import { getReferences } from "@/content/references";
-import { displayCompany } from "@/content/trust";
+import { displayCompany, enProjectLabel } from "@/content/trust";
 import { formatProjectDate, formatProjectDetail } from "@/lib/dates";
 
 interface Props {
@@ -47,7 +47,7 @@ export function ReferencesGrid({ locale, collapsible = false }: Props) {
                   {displayCompany(ref, locale === "en" ? "en" : "tr")}
                 </td>
                 <td className="px-4 py-3 align-top text-ink-soft sm:px-5">{formatProjectDetail(ref.detail, locale)}</td>
-                <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{ref.location || "—"}</td>
+                <td className="whitespace-nowrap px-4 py-3 align-top text-ink-muted sm:px-5">{(locale === "en" ? enProjectLabel(ref.location) : ref.location) || "—"}</td>
               </tr>
             ))}
           </tbody>

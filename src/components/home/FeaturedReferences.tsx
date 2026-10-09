@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, CalendarDays, MapPin, Ruler } from "lucide-react";
-import { getCaseStudies, type CaseStudy } from "@/content/trust";
+import { enProjectLabel, getCaseStudies, type CaseStudy } from "@/content/trust";
 import { PROJECT_CASE_STUDIES } from "@/content/case-studies";
 import { OptImage } from "@/components/ui/opt-image";
 import { FadeIn } from "@/components/motion/FadeIn";
@@ -46,7 +46,7 @@ function Meta({ c, locale }: { c: CaseStudy; locale: "tr" | "en" }) {
         <div className="flex items-start gap-2">
           <dt className="sr-only">{en ? "Location" : "Konum"}</dt>
           <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" aria-hidden />
-          <dd>{c.location}</dd>
+          <dd>{en ? enProjectLabel(c.location) : c.location}</dd>
         </div>
       ) : null}
       <div className="flex items-start gap-2">
@@ -103,9 +103,7 @@ export function FeaturedReferences({
   const en = locale === "en";
   const titleOf = (c: CaseStudy) => {
     if (!en) return c.title;
-    if (c.title === "Bireysel müşteri") return "Private client";
-    if (c.title === "Bar üstü proje") return "Above-bar project";
-    return c.title;
+    return enProjectLabel(c.title);
   };
 
   return (

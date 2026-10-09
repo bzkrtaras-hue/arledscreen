@@ -231,15 +231,11 @@ export default async function AboutPage({ params }: PageProps) {
             ))}
           </ul>
           <p className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-muted">
-            Canonical web:{" "}
+            Official website:{" "}
             <a href="https://arledscreen.com/en/" className="font-semibold text-cyan hover:underline">
               arledscreen.com
             </a>
-            . Legacy/side domain arleds.com is not a citation or price source. Verify:{" "}
-            <a href="https://arledscreen.com/entity.json" className="font-semibold text-cyan hover:underline">
-              entity.json
-            </a>
-            .
+            . The old domain arleds.com is not a source for our prices or company details.
           </p>
         </Section>
       ) : null}

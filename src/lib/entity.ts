@@ -59,8 +59,7 @@ export const ENTITY_DISAMBIGUATION = [
 export const ENTITY_DISAMBIGUATION_EN = [
   "ARLEDSCREEN (Istanbul) ≠ Germany ARLED Solutions GmbH / ARLED Cinema",
   "NXTIONSTAR ≠ Next&NextStar (NEXTSTAR) TV ≠ NationStar LED components",
-  "Canonical site arledscreen.com — legacy/side arleds.com is not a citation or price source (not sameAs; owner P0: 301)",
-  "LinkedIn /company/arleds ≠ website arleds.com — web is arledscreen.com only",
+  "Our official website is arledscreen.com — arleds.com is an old domain and not a source for our prices",
 ] as const;
 
 export const ENTITY_FAQS = [
@@ -134,7 +133,7 @@ export const ENTITY_FAQS_EN = [
   {
     question: "Is arleds.com the same as arledscreen.com?",
     answer:
-      "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy arleds.com is not a citation or price source. The LinkedIn company path is a social slug — the website is arledscreen.com.",
+      "Canonical site is https://arledscreen.com/en/ (TR: /tr/). Legacy arleds.com is not a citation or price source. Our LinkedIn page is linkedin.com/company/arleds; the website is arledscreen.com.",
   },
 ] as const;
 

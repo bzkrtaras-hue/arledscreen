@@ -55,14 +55,27 @@ const PRIVATE_PERSON_IDS = new Set(["ref-09", "ref-24", "ref-41", "ref-43"]);
 
 /** Generic project labels in the log that should read in EN on /en/ (proper names stay). */
 const COMPANY_LABEL_EN: Record<string, string> = {
+  "Bireysel müşteri": "Private client",
   "Bar üstü proje": "Above-bar project",
+  "Giresun Proje": "Giresun project",
+  "Manisa Proje": "Manisa project",
+  "Manisa (2 adet)": "Manisa (2 units)",
+  "480×160 cm proje": "480×160 cm project",
+  "Azerbaycan Düğün Salonu": "Wedding hall, Azerbaijan",
+  Azerbaycan: "Azerbaijan",
 };
+
+/** EN label for a project/company or location string from the log (unchanged on TR). */
+export function enProjectLabel(label: string, locale: "tr" | "en" = "en"): string {
+  if (locale !== "en" || !label) return label;
+  return COMPANY_LABEL_EN[label] ?? label;
+}
 
 export function displayCompany(ref: Reference, locale: "tr" | "en" = "tr"): string {
   if (PRIVATE_PERSON_IDS.has(ref.id)) {
     return locale === "en" ? "Private client" : "Bireysel müşteri";
   }
-  if (locale === "en") return COMPANY_LABEL_EN[ref.company] ?? ref.company;
+  if (locale === "en") return enProjectLabel(ref.company);
   return ref.company;
 }
 

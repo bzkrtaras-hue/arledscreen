@@ -143,7 +143,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
         h1={bridge.h1}
         target={bridge.target}
         cta={bridge.cta}
-        note="Short EN product-group aliases are inventable bridges; canonical hubs keep TR slug shapes under /en/products/."
+        note="You are being redirected to the product group page."
       />
     );
   }

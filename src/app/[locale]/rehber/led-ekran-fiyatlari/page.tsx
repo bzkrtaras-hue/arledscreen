@@ -44,9 +44,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         <meta httpEquiv="refresh" content="0;url=/en/led-ekran-fiyatlari/" />
         <h1 className="font-display text-2xl font-bold text-ink">LED display prices</h1>
         <p className="mt-3 text-ink-soft">
-          The EN price hub lives at{" "}
+          See our{" "}
           <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-            /en/led-ekran-fiyatlari/
+            LED display prices
           </Link>
           . Panel USD per model, VAT and freight excluded.
         </p>
@@ -55,7 +55,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             href="/en/led-ekran-fiyatlari/"
             className="inline-flex min-h-11 items-center rounded-full bg-cyan px-5 text-sm font-semibold text-white hover:bg-cyan-600"
           >
-            Open price hub
+            Open price list
           </Link>
         </p>
       </main>

@@ -177,8 +177,8 @@ export default async function ModelPage({ params }: PageProps) {
       <InventBridge
         h1={enBridgeH1(price)}
         target={target}
-        cta="Open EN product group"
-        note="Priced SKU PDPs remain on Turkish paths (/tr/products/.../); this path is an inventable EN locale-flip bridge."
+        cta="Open product group"
+        note="Prices and specs for this panel are listed on the product group page."
       />
     );
   }

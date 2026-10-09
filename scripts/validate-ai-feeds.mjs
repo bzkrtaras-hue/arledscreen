@@ -3037,7 +3037,7 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
     const html = fs.readFileSync(fp, "utf8");
-    if (!/noindex/i.test(html) || !/Canonical hub|Bu içerik şu sayfada/i.test(html) || !html.includes(target)) {
+    if (!/noindex/i.test(html) || !/Canonical hub|This content is on|Bu içerik şu sayfada/i.test(html) || !html.includes(target)) {
       console.error(`❌ invent bridge must be noindex → ${target}: ${rel}`);
       process.exit(1);
     }
@@ -3753,7 +3753,7 @@ if (fs.existsSync(outDir)) {
       process.exit(1);
     }
     const enHtml = fs.readFileSync(enFp, "utf8");
-    if (!/noindex/i.test(enHtml) || !/Canonical hub/i.test(enHtml)) {
+    if (!/noindex/i.test(enHtml) || !/Canonical hub|This content is on/i.test(enHtml)) {
       console.error(`❌ pricedPanels EN bridge must be noindex InventBridge: ${panel.sku} → ${enRel}`);
       process.exit(1);
     }

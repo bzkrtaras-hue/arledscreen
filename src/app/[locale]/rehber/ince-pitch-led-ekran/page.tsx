@@ -42,12 +42,12 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       <meta httpEquiv="refresh" content="0;url=/en/products/ince-pitch-led-ekran/" />
       <h1 className="font-display text-2xl font-bold text-ink">Fine-pitch LED display</h1>
       <p className="mt-3 text-ink-soft">
-        The EN product group lives at{" "}
+        See the{" "}
         <Link
           href="/en/products/ince-pitch-led-ekran/"
           className="font-semibold text-cyan hover:underline"
         >
-          /en/products/ince-pitch-led-ekran/
+          product group page
         </Link>
         . Pitch guide:{" "}
         <Link

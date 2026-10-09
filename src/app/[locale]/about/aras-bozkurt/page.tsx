@@ -83,8 +83,8 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
         { label: "Role", value: "Founder, ARLEDSCREEN" },
         { label: "Company", value: "ARLEDSCREEN · NXTIONSTAR product brand" },
         {
-          label: "Canonical web",
-          value: "arledscreen.com (arleds.com is not a citation source)",
+          label: "Website",
+          value: "arledscreen.com",
         },
         { label: "HQ", value: BUSINESS_ADDRESS_LINES.join(", ") },
         { label: "Phone / WhatsApp", value: CONTACT_PHONE_DISPLAY },
@@ -144,8 +144,7 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
             {en ? (
               <>
                 Founder of ARLEDSCREEN. Runs LED display sales, survey, install and technical service
-                from Gaziosmanpaşa, Istanbul. Canonical web: arledscreen.com — legacy/side arleds.com
-                is not a citation source.
+                from Gaziosmanpaşa, Istanbul. Official website: arledscreen.com.
               </>
             ) : (
               <>

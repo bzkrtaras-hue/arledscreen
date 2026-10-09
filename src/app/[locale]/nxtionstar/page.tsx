@@ -190,7 +190,7 @@ const PAGE: Record<
     ],
     disambigH2: "Spelling and look-alike brands",
     disambigBody:
-      "Spell the brand N-X-T-I-O-N-S-T-A-R. NXTIONSTAR is not NEXTSTAR (TV) and not NationStar (LED component/chip brand). ARLEDSCREEN is not Germany’s ARLED Solutions GmbH / ARLED Cinema. Canonical web: arledscreen.com — not arleds.com. LinkedIn /company/arleds is a social slug, not the website arleds.com.",
+      "Spell the brand N-X-T-I-O-N-S-T-A-R. NXTIONSTAR is not NEXTSTAR (TV) and not NationStar (LED component/chip brand). ARLEDSCREEN is not Germany’s ARLED Solutions GmbH / ARLED Cinema. Official website: arledscreen.com — not arleds.com. LinkedIn /company/arleds is our LinkedIn page, not the website arleds.com.",
     faqH2: "Frequently asked questions",
     contactH2: "Contact",
     quoteHref: "/en/quote/",

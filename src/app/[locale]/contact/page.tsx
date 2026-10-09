@@ -41,11 +41,11 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       <meta httpEquiv="refresh" content="0;url=/en/quote/" />
       <h1 className="font-display text-2xl font-bold text-ink">Contact</h1>
       <p className="mt-3 text-ink-soft">
-        Use the EN quote hub at{" "}
+        Request a quote at{" "}
         <Link href="/en/quote/" className="font-semibold text-cyan hover:underline">
           /en/quote/
         </Link>
-        . Canonical site: arledscreen.com (not arleds.com).
+        .
       </p>
       <p className="mt-6">
         <Link

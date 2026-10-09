@@ -81,8 +81,8 @@ export default async function ServiceRegionPage({
       <InventBridge
         h1={`${region.name} LED display`}
         target="/en/bolgeler/"
-        cta="Open EN regions hub"
-        note="Province detail pages remain Turkish; this path is an inventable EN bridge."
+        cta="Open service regions"
+        note="Province details are listed on our service regions page."
       />
     );
   }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { enProjectLabel } from "@/content/trust";
 import { OptImage } from "@/components/ui/opt-image";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -187,7 +188,9 @@ export function CommercialLanding({
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">
-            {CLUSTER_LABEL[locale][page.cluster]} · {page.eyebrow}
+            {!tr && page.eyebrow.startsWith(CLUSTER_LABEL.en[page.cluster])
+              ? page.eyebrow
+              : `${CLUSTER_LABEL[locale][page.cluster]} · ${page.eyebrow}`}
           </p>
           <h1
             id="commercial-h1"
@@ -276,7 +279,7 @@ export function CommercialLanding({
             <p className="mt-2 text-xs text-ink-muted">
               {tr
                 ? "Şehir sayfaları, yayımlanmış proje kaydımız bulunan illerde yer alır."
-                : "City pages exist only for provinces with published project records — no 81-city spam."}
+                : "We serve all of Turkey; city pages exist for provinces where we have completed projects."}
             </p>
           </aside>
         </div>
@@ -331,7 +334,7 @@ export function CommercialLanding({
             <p className="mt-2 max-w-2xl text-sm text-ink-soft">
               {tr
                 ? "Aşağıdaki satırlar sitedeki referans kayıtlarından türetilir; uydurma şehir veya iş listesi yoktur."
-                : "Rows below are derived from on-site reference records; no invented cities or jobs."}
+                : "Projects below come from our completed-work records."}
             </p>
             <div className="mt-6 overflow-x-auto">
               <table className="min-w-full text-left text-sm">
@@ -350,16 +353,12 @@ export function CommercialLanding({
                         {formatProjectDate(p.date, locale)}
                       </td>
                       <td className="py-3 pr-4 font-medium text-ink">
-                        {!tr && p.label === "Bireysel müşteri"
-                          ? "Private client"
-                          : !tr && p.label === "Bar üstü proje"
-                            ? "Above-bar project"
-                            : p.label}
+                        {tr ? p.label : enProjectLabel(p.label)}
                       </td>
                       <td className="py-3 pr-4 text-ink-soft">
                         {formatProjectDetail(p.detail, locale)}
                       </td>
-                      <td className="py-3 text-ink-soft">{p.location}</td>
+                      <td className="py-3 text-ink-soft">{tr ? p.location : enProjectLabel(p.location)}</td>
                     </tr>
                   ))}
                 </tbody>

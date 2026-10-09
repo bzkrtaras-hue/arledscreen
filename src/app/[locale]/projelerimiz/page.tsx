@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { enProjectLabel } from "@/content/trust";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/section";
@@ -318,16 +319,12 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
                 className="block rounded-2xl border border-border bg-white p-4 transition hover:border-cyan/40"
               >
                 <p className="font-display text-base font-bold text-ink">
-                  {en && c.companyLabel === "Bireysel müşteri"
-                    ? "Private client"
-                    : en && c.companyLabel === "Bar üstü proje"
-                      ? "Above-bar project"
-                      : c.companyLabel}
+                  {en ? enProjectLabel(c.companyLabel) : c.companyLabel}
                 </p>
                 <p className="mt-1 text-sm text-ink-soft">{formatProjectDetail(c.detail, locale)}</p>
                 <p className="mt-2 text-xs text-ink-muted">
                   {formatProjectDate(c.date, locale)}
-                  {c.location ? ` · ${c.location}` : ""}
+                  {c.location ? ` · ${en ? enProjectLabel(c.location) : c.location}` : ""}
                   {en ? " · TR" : ""}
                 </p>
               </Link>
