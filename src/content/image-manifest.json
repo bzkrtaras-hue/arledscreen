@@ -1358,5 +1358,23 @@
       960,
       1600
     ]
+  },
+  "/projects/guides/menuboard-kafe-tezgah-kart.jpg": {
+    "w": 1024,
+    "h": 768,
+    "widths": [
+      480,
+      960,
+      1024
+    ]
+  },
+  "/projects/guides/dijital-ekran-totem-kart.jpg": {
+    "w": 1200,
+    "h": 900,
+    "widths": [
+      480,
+      960,
+      1200
+    ]
   }
 }
