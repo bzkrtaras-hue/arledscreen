@@ -243,7 +243,7 @@ export default async function ProductsPage({ params }: PageProps) {
               />
               <aside className="mb-10 max-w-3xl border-y border-border py-6 text-sm leading-relaxed text-ink-soft" data-canonical-lineup>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
-                  {locale === "en" ? "Canonical pixel pitches" : "Kanonik piksel aralıkları"}
+                  {locale === "en" ? "Available pixel pitches" : "Piksel aralıkları"}
                 </p>
                 <ul className="mt-3 space-y-1.5 text-ink">
                   <li>

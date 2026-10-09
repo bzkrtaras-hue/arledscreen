@@ -122,10 +122,10 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
   "esnek-led-ekran": {
     name: "Flexible LED display",
     h1: "Flexible LED display",
-    lead: "Curved and custom-form LED surfaces — quote-only",
+    lead: "Curved and custom-form LED surfaces — priced by written quote",
     title: "Flexible LED Display | Curves & Custom Forms | ARLEDSCREEN",
     description:
-      "Flexible LED for curved and custom surfaces. Quote-only pricing. NXTIONSTAR / ARLEDSCREEN — Istanbul survey and install.",
+      "Flexible LED for curved and custom surfaces. Priced by written quote. NXTIONSTAR / ARLEDSCREEN — Istanbul survey and install.",
     short: "Flexible / curved LED",
     tag: "Flexible",
     imageAlt: "Flexible LED module bent into a curve",
@@ -133,10 +133,10 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     intro: [
       "Flexible modules suit curves and irregular forms. There is no fixed published USD list for this group — written quote after survey.",
     ],
-    highlights: ["Custom form planning", "Survey required", "Quote-only — not on the price list"],
+    highlights: ["Custom form planning", "Survey required", "Priced by written quote — not on the price list"],
     faqs: [
       {
-        question: "Why is flexible LED quote-only?",
+        question: "Why is flexible LED priced by written quote?",
         answer:
           "Curve radius, cabinet mix and install labour vary too much for a fixed panel list. Use /en/quote/ after sharing drawings or photos.",
       },
@@ -145,33 +145,33 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
   "seffaf-led-ekran": {
     name: "Transparent LED display",
     h1: "Transparent LED display",
-    lead: "Window and glass-line LED with see-through area — quote-only",
+    lead: "Window and glass-line LED with see-through area — priced by written quote",
     title: "Transparent LED Display | Window / Glass | ARLEDSCREEN",
     description:
-      "Transparent LED for shop windows and glass lines. Quote-only. ARLEDSCREEN survey and install — Istanbul.",
+      "Transparent LED for shop windows and glass lines. Priced by written quote. ARLEDSCREEN survey and install — Istanbul.",
     short: "Transparent window LED",
     tag: "Transparent",
     imageAlt: "Transparent LED on glass",
     quoteOnly: true,
     intro: [
-      "Transparent / see-through LED keeps daylight and window merchandising visible. Pricing is project-specific (quote-only).",
+      "Transparent / see-through LED keeps daylight and window merchandising visible. Pricing is project-specific (priced by written quote).",
     ],
-    highlights: ["Glass-line applications", "Transparency vs pitch trade-off", "Quote-only"],
+    highlights: ["Glass-line applications", "Transparency vs pitch trade-off", "Priced by written quote"],
     faqs: [
       {
         question: "Is transparent LED in the published 12-panel price list?",
         answer:
-          "No. Transparent LED is quote-only. The 12 listed panel models are indoor/outdoor/GOB purchase modules.",
+          "No. Transparent LED is priced by written quote. The 12 listed panel models are indoor/outdoor/GOB purchase modules.",
       },
     ],
   },
   "transparan-led-ekran": {
     name: "Transparent mesh LED",
     h1: "Transparent mesh LED display",
-    lead: "Mesh / media-façade LED for building exteriors — quote-only",
+    lead: "Mesh / media-façade LED for building exteriors — priced by written quote",
     title: "Transparent Mesh LED | Media Façade | ARLEDSCREEN",
     description:
-      "Mesh / transparent façade LED for buildings. Quote-only after survey. ARLEDSCREEN — Istanbul.",
+      "Mesh / transparent façade LED for buildings. Priced by written quote after survey. ARLEDSCREEN — Istanbul.",
     short: "Mesh façade LED",
     tag: "Mesh",
     imageAlt: "Transparent mesh LED façade",
@@ -179,7 +179,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     intro: [
       "Mesh LED balances media impact with wind load and transparency. Scope and price are written after survey — not on our price list.",
     ],
-    highlights: ["Façade media use", "Engineering after survey", "Quote-only"],
+    highlights: ["Façade media use", "Engineering after survey", "Priced by written quote"],
     faqs: [
       {
         question: "Mesh vs window transparent LED?",
@@ -230,7 +230,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       "LED and LCD from the same team",
       "Indoor LCD most often 43 to 85 inch",
       "2-year warranty + 5 years of free technical service",
-      "Quote-only; we also repair LCD, kiosk and menu-board screens",
+      "Priced by written quote; we also repair LCD, kiosk and menu-board screens",
     ],
     faqs: [
       {
@@ -266,7 +266,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       "LED or LCD, chosen on site",
       "Landscape above the counter or freestanding portrait",
       "2-year warranty + 5 years of free technical service",
-      "Quote-only; we also repair menu-board screens",
+      "Priced by written quote; we also repair menu-board screens",
     ],
     faqs: [
       {
@@ -338,7 +338,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       "49, 55 and 65-inch touch kiosks",
       "Android or Windows",
       "USB, HDMI, LAN and Wi-Fi",
-      "Quote-only; installation by our team",
+      "Priced by written quote; installation by our team",
     ],
     faqs: [
       {
@@ -358,10 +358,10 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
   "poster-led-ekran": {
     name: "Poster / totem LED",
     h1: "Poster and totem LED display",
-    lead: "Freestanding poster and totem LED — quote-only",
+    lead: "Freestanding poster and totem LED — priced by written quote",
     title: "Poster / Totem LED Display | ARLEDSCREEN",
     description:
-      "Poster and totem LED units for indoor/outdoor wayfinding and promo. Quote-only. ARLEDSCREEN — Istanbul.",
+      "Poster and totem LED units for indoor/outdoor wayfinding and promo. Priced by written quote. ARLEDSCREEN — Istanbul.",
     short: "Poster / totem LED",
     tag: "Poster",
     imageAlt: "Totem LED display",
@@ -390,9 +390,9 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     quoteOnly: true,
     intro: [
       "Spare modules and controllers are matched to existing walls from label photos and measurements.",
-      "Control cards are quote-only; purchase panel USD for new walls stays on our price list.",
+      "Control cards are priced by written quote; purchase panel USD for new walls stays on our price list.",
     ],
-    highlights: ["Compatibility from labels/photos", "Huidu / NovaStar / Colorlight", "Quote-only spares"],
+    highlights: ["Compatibility from labels/photos", "Huidu / NovaStar / Colorlight", "Spares priced by written quote"],
     faqs: [
       {
         question: "Can you match my existing wall?",
@@ -411,12 +411,12 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     tag: "Huidu",
     imageAlt: "Huidu LED control card",
     quoteOnly: true,
-    intro: ["Huidu is often chosen for async signage and Wi‑Fi content updates. Scope is quote-only."],
+    intro: ["Huidu is often chosen for async signage and Wi‑Fi content updates. Scope is priced by written quote."],
     highlights: ["Async signage", "Quote after load calc", "Install/config support available"],
     faqs: [
       {
         question: "Are controllers on the price list?",
-        answer: "No. Our price list is NXTIONSTAR panel USD. Controllers are quote-only.",
+        answer: "No. Our price list is NXTIONSTAR panel USD. Controllers are priced by written quote.",
       },
     ],
   },
@@ -425,13 +425,13 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     h1: "NovaStar LED controllers",
     lead: "NovaStar sync / high-load control — quote after design",
     title: "NovaStar Controllers | ARLEDSCREEN",
-    description: "NovaStar LED controllers for higher pixel loads and sync stages. Quote-only. ARLEDSCREEN — Istanbul.",
+    description: "NovaStar LED controllers for higher pixel loads and sync stages. Priced by written quote. ARLEDSCREEN — Istanbul.",
     short: "NovaStar controllers",
     tag: "NovaStar",
     imageAlt: "NovaStar LED controller",
     quoteOnly: true,
     intro: ["NovaStar suits higher loads and sync/stage work. Controllers are priced by written quote."],
-    highlights: ["High pixel load", "Sync / stage use", "Quote-only"],
+    highlights: ["High pixel load", "Sync / stage use", "Priced by written quote"],
     faqs: [
       {
         question: "NovaStar vs Huidu?",
@@ -450,12 +450,12 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     tag: "Colorlight",
     imageAlt: "Colorlight LED controller",
     quoteOnly: true,
-    intro: ["Colorlight is one of the control lines we supply and configure. Pricing is quote-only."],
-    highlights: ["Project-based config", "Quote-only", "Install support available"],
+    intro: ["Colorlight is one of the control lines we supply and configure. Pricing is by written quote."],
+    highlights: ["Project-based config", "Priced by written quote", "Install support available"],
     faqs: [
       {
         question: "Are Colorlight prices published as panel USD?",
-        answer: "No. Panel USD is NXTIONSTAR modules on our price list. Controllers stay quote-only.",
+        answer: "No. Panel USD is NXTIONSTAR modules on our price list. Controllers are priced by written quote.",
       },
     ],
   },
