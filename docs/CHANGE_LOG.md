@@ -15,6 +15,14 @@ En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 - **Doğrulama:** `npm run build` + postbuild validatörleri (13/13 feed, no-owner-gate) geçti; önizleme https://kurulum-rehberi-preview.arledscreen.pages.dev (noindex)
 - **Production:** Ali / Aras Bey onayı → squash merge → manual deploy
 
+## ARL-20261009-020 — Eski sahip dosyaları (owner-p0, point-c, geo-status, owner-next, tur1a…) için 410 Gone koruması
+
+- **Kaynak:** 9 Eki 2026 Cloudflare zone Custom Purge (09:06 TSİ) sonrası `/owner-p0.json`, `/geo-status.json`, `/point-c.txt`, `/point-c-progress.json`, `/feeds/point-c.csv`, `/.well-known/owner-next.json` (ve `point-c*.json/txt/csv`, `/.well-known/point-c*`, `geo-next.*`, `owner-next.json`, `/.well-known/geo-status.json`, `tur1a.*`) hâlâ 200 ve kişisel gmail adresi içeriyordu
+- **Kök neden:** dosyalar main'de / build çıktısında yok (#62 sonrası `strip-owner-gate` + `validate-no-owner-gate`). Deployment'a özel adresler (`<id>.arledscreen.pages.dev`), `main.arledscreen.pages.dev` ve `?x=` sorgulu istekler 404 veriyor; yalnızca production host adları (`arledscreen.com`, `arledscreen.pages.dev`) `age` 22 000–97 000 sn olan eski kopyayı döndürüyor (zone'da `cf-cache-status: DYNAMIC`, pages.dev'de `HIT`). Yani bu Cloudflare Pages'in kendi statik varlık önbelleği: silinen dosyaların kopyaları yeni deployment'larla düşmüyor ve zone purge'ü bunlara erişmiyor
+- **Değişiklik:** `functions/_middleware.js` sahip yollarını (kök, `/.well-known/`, `/feeds/`; tüm uzantılar) `410 Gone` + `no-store` + `noindex` ile cevaplıyor; `public/_routes.json` bu yolları Functions'a yönlendiriyor (statik varlık sunucusu ve önbelleği hiç çağrılmıyor). `/feeds/*` ve `/.well-known/*` exclude'ları kaldırıldı (Pages'te exclude include'u ezer; include'da olmayan diğer dosyalar statik kalıyor). `strip-owner-gate` `_routes.json`'a dokunmuyor; `validate-no-owner-gate` her sahip yolunun guard'a yönlendiğini ve 410 döndüğünü, normal yolların (`/tr/`, `/feeds/prices.json`, `/.well-known/ard.json`, `/geo-baseline.json`) engellenmediğini doğruluyor
+- **Dokunulmadı:** ana sayfa, header, fiyat-hesap, görünen metin, `_headers`, `_redirects`
+- **Production:** Ali / Aras Bey onayı → squash merge → manual deploy (Deploy Cloudflare Pages) → canlıda sahip yollarının 410 döndüğü kontrol edilir → arledscreen.com zone Custom Purge (feeds/*.csv zone önbelleğinde ayrıca HIT olabiliyor)
+
 ## ARL-20261009-010 — Kiralık "quote-only" / "sabit fiyat yok" çelişkileri giderildi (llms.txt, ana sayfa fiyat SSS, EN rehber, ard.json)
 
 - **Kaynak:** #78 sonrası canlı denetim: /llms.txt satır 3 ve ana sayfa fiyat SSS cevabı (TR+EN, /en/sss/) kiralığı hâlâ "yazılı teklifle" grubunda sayıyordu; satır 129 ile çelişki

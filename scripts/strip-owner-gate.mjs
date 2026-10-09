@@ -51,6 +51,9 @@ function scrubFile(p, name) {
   if ([".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".svg", ".woff", ".woff2", ".avif", ".mp4", ".pdf", ".js", ".css", ".map"].includes(ext))
     return;
   if (ext === ".html" || ext === ".htm") return; // HTML is fixed at source (src/); final gate verifies.
+  // _routes.json only lists the owner-gate paths that functions/_middleware.js answers with 410;
+  // scrubbing them would re-open the stale Pages cache. validate-no-owner-gate.mjs checks it.
+  if (name === "_routes.json") return;
   let text;
   try {
     text = fs.readFileSync(p, "utf8");
