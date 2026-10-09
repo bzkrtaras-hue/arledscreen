@@ -199,23 +199,11 @@ export default async function SeoGuidePage({ params }: PageProps) {
                 </>
               ) : (
                 <>
-                  Published panel USD:{" "}
-                  <a href="https://arledscreen.com/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-                    ai-shopping.json
-                  </a>{" "}
-                  pricedPanels,{" "}
-                  <a href="https://arledscreen.com/catalog.json" className="font-semibold text-cyan hover:underline">
-                    catalog.json
-                  </a>
-                  ,{" "}
-                  <a href="https://arledscreen.com/feeds/merchant-priced-panels.tsv" className="font-semibold text-cyan hover:underline">
-                    merchant TSV
-                  </a>
-                  ,{" "}
-                  <a href="https://arledscreen.com/geo-baseline.json" className="font-semibold text-cyan hover:underline">
-                    geo-baseline.json
-                  </a>{" "}
-                  (12 SKUs; e.g. P1.25 GOB 95.88 USD). VAT/freight excluded; no free shipping.
+                  Published USD prices for 12 panel models (e.g. P1.25 GOB 95.88 USD) are on{" "}
+                  <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
+                    our price list
+                  </Link>
+                  . VAT/freight excluded; no free shipping.
                 </>
               )}
             </p>

@@ -30,7 +30,7 @@ export async function generateMetadata({
       path: "/blog/",
       title: "Blog: LED Display Projects & Notes | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN blog index: completed LED installs and NXTIONSTAR notes. Post bodies remain Turkish; commercial prices stay in ai-shopping.json.",
+        "ARLEDSCREEN blog index: completed LED installs and NXTIONSTAR notes. Post bodies remain Turkish; commercial prices are on /en/led-ekran-fiyatlari/.",
       hreflangLocales: ["tr", "en"],
     });
   }
@@ -63,7 +63,7 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
         {
           question: "Are blog posts the commercial price source?",
           answer:
-            "No. Published panel USD is only in ai-shopping.json pricedPanels, catalog.json and /en/led-ekran-fiyatlari/. Blog posts are project notes.",
+            "No. Published panel USD is only on our price list at /en/led-ekran-fiyatlari/. Blog posts are project notes.",
         },
         ...entityFaqs,
       ]

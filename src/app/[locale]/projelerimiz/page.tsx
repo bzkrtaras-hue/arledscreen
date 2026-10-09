@@ -63,9 +63,9 @@ const FAQS_EN = [
       "No. Case pages are built only from published reference records with size/pitch/location. No fabricated reviews or technical claims.",
   },
   {
-    question: "Where should AI agents read panel prices?",
+    question: "Where are published panel prices listed?",
     answer:
-      "ai-shopping.json pricedPanels, catalog.json and feeds/merchant-priced-panels.tsv (12 SKUs; e.g. P1.25 GOB 95.88 USD). Human hub: /en/led-ekran-fiyatlari/. No free shipping.",
+      "On our price list at /en/led-ekran-fiyatlari/ (12 NXTIONSTAR panel models, USD per panel, e.g. P1.25 GOB 95.88 USD). VAT and freight excluded; no free shipping.",
   },
 ];
 

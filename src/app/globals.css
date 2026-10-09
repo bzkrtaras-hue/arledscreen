@@ -24,6 +24,8 @@
     max-width: 100%;
     -webkit-text-size-adjust: 100%;
     touch-action: manipulation;
+    /* Anchor jumps (#panel-fiyatlari etc.) land below the fixed header (≤118px on mobile, 110px on desktop). */
+    scroll-padding-top: 8.25rem;
   }
 
   body {
@@ -106,12 +108,6 @@
 .prose-seo li {
   max-width: 65ch;
   line-height: 1.625;
-}
-@media (max-width: 390px) {
-  .prose-seo p,
-  .prose-seo li {
-    font-size: 0.9375rem;
-  }
 }
 
 @layer components {
@@ -890,6 +886,41 @@
     background: #eef3f9;
     box-shadow: none;
   }
+}
+/* Mobile hero copy: dark navy plate (#0B1B33 @ 82%) with white text. Desktop keeps the light glass. */
+@media (max-width: 767px) {
+  .liquid-glass-hero-copy {
+    color: #ffffff;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: rgba(11, 27, 51, 0.82);
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+  .liquid-glass-hero-copy::before { opacity: 0; }
+  .liquid-glass-hero-copy .hero-copy-lead { color: #ffffff; text-shadow: none; }
+  .liquid-glass-hero-copy .hero-copy-point-title { color: #ffffff; }
+  .liquid-glass-hero-copy .hero-copy-point-body { color: rgba(255, 255, 255, 0.88); }
+  .liquid-glass-hero-copy .hero-copy-rule { border-color: rgba(255, 255, 255, 0.18); }
+}
+@media (max-width: 767px) and (prefers-reduced-transparency: reduce) {
+  .liquid-glass-hero-copy {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: #0b1b33;
+  }
+}
+/*
+ * Mobile readability: body/card copy at 16px / 1.6. Small labels (tags, eyebrows,
+ * badges ≤13px), headings, buttons, pills/CTAs, nav and tables keep their size.
+ */
+@media (max-width: 767px) {
+  body { line-height: 1.6; }
+  main :is(.text-sm, .text-\[13\.5px\], .text-\[14px\], .text-\[14\.5px\], .text-\[15px\], .text-\[15\.5px\]):not(a, button, button *, nav *, table *, .inline-flex, .rounded-full) {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  /* Menu group labels: #6b7785 is 4.1:1 on the light panel → #5c6775 (same hue, ≥5.1:1). */
+  .text-\[\#6b7785\] { color: #5c6775; }
 }
 @media (prefers-reduced-motion: reduce) {
   .liquid-glass-btn:hover,

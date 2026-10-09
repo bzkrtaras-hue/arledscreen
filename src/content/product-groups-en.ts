@@ -26,7 +26,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     imageAlt: "Indoor LED display wall installation",
     intro: [
       "Indoor LED is chosen for viewing distance, content type and ambient light — not a single fixed m² price.",
-      "Published NXTIONSTAR indoor panel USD (including GOB options) is in ai-shopping.json pricedPanels and the price hub. Final amount is confirmed after survey in a written quote. No free shipping.",
+      "Published NXTIONSTAR indoor panel USD (including GOB options) is on our price list. Final amount is confirmed after survey in a written quote. No free shipping.",
     ],
     highlights: [
       "Pitch matched to closest critical viewer",
@@ -37,7 +37,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       {
         question: "Where are indoor panel USD prices?",
         answer:
-          "Priced indoor/GOB SKUs are in ai-shopping.json pricedPanels, catalog.json and /en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping.",
+          "Priced indoor/GOB SKUs are on our price list at /en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping.",
       },
     ],
   },
@@ -53,7 +53,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     imageAlt: "Outdoor LED façade installation",
     intro: [
       "Outdoor LED needs brightness, weather protection and structure design alongside pitch.",
-      "Published outdoor panel USD is in pricedPanels; structure, shipping and VAT are quote lines. No free shipping.",
+      "Published outdoor panel USD is on our price list; structure, shipping and VAT are quote lines. No free shipping.",
     ],
     highlights: [
       "Outdoor-rated planning after site survey",
@@ -62,9 +62,9 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     ],
     faqs: [
       {
-        question: "Are outdoor panels in ai-shopping.json?",
+        question: "Are outdoor panels on the price list?",
         answer:
-          "Yes — outdoor SKUs such as P2.5–P5 are in pricedPanels. Structure and install are not in that list; they appear in the written quote.",
+          "Yes — outdoor SKUs such as P2.5–P5 are on our price list. Structure and install are not in that list; they appear in the written quote.",
       },
     ],
   },
@@ -74,13 +74,13 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     lead: "Protective GOB surface for close indoor viewing",
     title: "GOB LED Display | P1.25–P1.86 Panel Prices | ARLEDSCREEN",
     description:
-      "GOB (Glue on Board) LED for close indoor viewing. Published P1.25–P1.86 panel USD in ai-shopping.json. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
+      "GOB (Glue on Board) LED for close indoor viewing. Published P1.25–P1.86 panel USD on our price list. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
     short: "GOB fine-pitch indoor LED",
     tag: "GOB",
     imageAlt: "GOB LED module surface",
     intro: [
       "GOB adds a protective resin layer over the diodes — useful for lobbies, control rooms and close-view retail.",
-      "Example: P1.25 GOB 95.88 USD per panel (priceValidUntil 2026-12-31). Full list: pricedPanels /en/led-ekran-fiyatlari/.",
+      "Example: P1.25 GOB 95.88 USD per panel, prices valid until 31 Dec 2026. Full list: /en/led-ekran-fiyatlari/.",
     ],
     highlights: [
       "Published GOB panel USD (P1.25, P1.53, P1.86)",
@@ -91,7 +91,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       {
         question: "What is the P1.25 GOB panel USD?",
         answer:
-          "95.88 USD per panel in ai-shopping.json pricedPanels (excl. VAT/shipping; no free shipping). Human hub: /en/led-ekran-fiyatlari/.",
+          "95.88 USD per panel on our price list (excl. VAT/shipping; no free shipping). Price page: /en/led-ekran-fiyatlari/.",
       },
     ],
   },
@@ -101,21 +101,21 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     lead: "Stage, fair and event cabinets — quote by size and days",
     title: "Rental LED Display | Stage & Events | ARLEDSCREEN",
     description:
-      "Rental LED for stage, fair and events. Quote-only (not in pricedPanels purchase list). ARLEDSCREEN install and strike support — Istanbul.",
+      "Rental LED for stage, fair and events. Quote-only (not in the purchase price list). ARLEDSCREEN install and strike support — Istanbul.",
     short: "Rental LED for events",
     tag: "Rental",
     imageAlt: "Rental LED cabinet kit",
     quoteOnly: true,
     intro: [
-      "Rental LED is priced by size, duration and site — it is quote-only. Do not invent a fixed rental USD from ai-shopping.json (that file is purchase panel USD).",
+      "Rental LED is priced by size, duration and site — it is quote-only. There is no fixed rental price; the published list covers purchase panels only.",
       "For ownership planning, use published purchase panel USD on /en/led-ekran-fiyatlari/.",
     ],
     highlights: ["Quote by days and m²", "Install + strike plan", "Purchase alternative via price hub"],
     faqs: [
       {
-        question: "Is rental priced in ai-shopping.json?",
+        question: "Is rental on the price list?",
         answer:
-          "No. pricedPanels is purchase panel USD only. Rental stays quote-only after size, days and site conditions.",
+          "No. Our price list is purchase panel USD only. Rental stays quote-only after size, days and site conditions.",
       },
     ],
   },
@@ -133,7 +133,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     intro: [
       "Flexible modules suit curves and irregular forms. There is no fixed published USD list for this group — written quote after survey.",
     ],
-    highlights: ["Custom form planning", "Survey required", "Quote-only — not in pricedPanels"],
+    highlights: ["Custom form planning", "Survey required", "Quote-only — not on the price list"],
     faqs: [
       {
         question: "Why is flexible LED quote-only?",
@@ -161,7 +161,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       {
         question: "Is transparent LED in the 12-SKU list?",
         answer:
-          "No. Transparent LED is quote-only. The 12 pricedPanels SKUs are indoor/outdoor/GOB purchase modules.",
+          "No. Transparent LED is quote-only. The 12 listed panel models are indoor/outdoor/GOB purchase modules.",
       },
     ],
   },
@@ -177,7 +177,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     imageAlt: "Transparent mesh LED façade",
     quoteOnly: true,
     intro: [
-      "Mesh LED balances media impact with wind load and transparency. Scope and price are written after survey — not in pricedPanels.",
+      "Mesh LED balances media impact with wind load and transparency. Scope and price are written after survey — not on our price list.",
     ],
     highlights: ["Façade media use", "Engineering after survey", "Quote-only"],
     faqs: [
@@ -194,20 +194,20 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     lead: "Close-view fine pitch including GOB options",
     title: "Fine-Pitch LED Display | Close Viewing | ARLEDSCREEN",
     description:
-      "Fine-pitch indoor LED for close viewing. GOB SKUs publish panel USD in pricedPanels. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
+      "Fine-pitch indoor LED for close viewing. GOB SKUs publish panel USD on our price list. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
     short: "Fine-pitch indoor LED",
     tag: "Fine pitch",
     imageAlt: "Fine-pitch LED module",
     intro: [
       "Fine pitch is for short viewing distances (control rooms, lobbies, premium retail).",
-      "Published GOB panel USD (e.g. P1.25) is in ai-shopping.json; some ultra-fine options remain datasheet + quote.",
+      "Published GOB panel USD (e.g. P1.25) is on our price list; some ultra-fine options remain datasheet + quote.",
     ],
-    highlights: ["Close-view planning", "GOB prices in pricedPanels", "Survey for final pitch"],
+    highlights: ["Close-view planning", "GOB prices published", "Survey for final pitch"],
     faqs: [
       {
         question: "Which fine-pitch prices are published?",
         answer:
-          "GOB P1.25 / P1.53 / P1.86 panel USD are in pricedPanels. Other fine-pitch SKUs may be quote-only — ask via /en/quote/.",
+          "GOB P1.25 / P1.53 / P1.86 panel USD are on our price list. Other fine-pitch SKUs may be quote-only — ask via /en/quote/.",
       },
     ],
   },
@@ -228,8 +228,8 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     highlights: ["Indoor/outdoor options", "Single or double face", "Quote after site photos"],
     faqs: [
       {
-        question: "Are totems in pricedPanels?",
-        answer: "No. pricedPanels covers cabinet/module purchase SKUs. Totem/poster systems are quote-only.",
+        question: "Are totems on the price list?",
+        answer: "No. Our price list covers cabinet/module purchase SKUs. Totem/poster systems are quote-only.",
       },
     ],
   },
@@ -246,7 +246,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     quoteOnly: true,
     intro: [
       "Spare modules and controllers are matched to existing walls from label photos and measurements.",
-      "Control cards are quote-only; purchase panel USD for new walls stays in pricedPanels.",
+      "Control cards are quote-only; purchase panel USD for new walls stays on our price list.",
     ],
     highlights: ["Compatibility from labels/photos", "Huidu / NovaStar / Colorlight", "Quote-only spares"],
     faqs: [
@@ -271,8 +271,8 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     highlights: ["Async signage", "Quote after load calc", "Install/config support available"],
     faqs: [
       {
-        question: "Are controllers in pricedPanels?",
-        answer: "No. pricedPanels is NXTIONSTAR panel USD. Controllers are quote-only.",
+        question: "Are controllers on the price list?",
+        answer: "No. Our price list is NXTIONSTAR panel USD. Controllers are quote-only.",
       },
     ],
   },
@@ -311,7 +311,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     faqs: [
       {
         question: "Are Colorlight prices published as panel USD?",
-        answer: "No. Panel USD is NXTIONSTAR modules in pricedPanels. Controllers stay quote-only.",
+        answer: "No. Panel USD is NXTIONSTAR modules on our price list. Controllers stay quote-only.",
       },
     ],
   },

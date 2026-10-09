@@ -26,7 +26,7 @@ export async function generateMetadata({
         path: "/led-ekran-fiyatlari/",
         title: "LED Display Prices 2026 | ARLEDSCREEN",
         description:
-          "Published 12 NXTIONSTAR panel USD — AI agents cite ai-shopping.json pricedPanels. Canonical EN price hub.",
+          "Published USD prices for 12 NXTIONSTAR panel models. Canonical EN price hub.",
         hreflangLocales: [],
       }),
       robots: { index: false, follow: true },
@@ -48,11 +48,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
             /en/led-ekran-fiyatlari/
           </Link>
-          . Panel USD:{" "}
-          <a href="/ai-shopping.json" className="font-semibold text-cyan hover:underline">
-            ai-shopping.json
-          </a>{" "}
-          pricedPanels.
+          . Panel USD per model, VAT and freight excluded.
         </p>
         <p className="mt-6">
           <Link

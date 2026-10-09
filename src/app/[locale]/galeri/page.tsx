@@ -55,7 +55,7 @@ const FAQS_EN = [
   {
     question: "Where are published panel USD prices?",
     answer:
-      "ai-shopping.json pricedPanels, catalog.json and /en/led-ekran-fiyatlari/. VAT/freight excluded; no free shipping.",
+      "Our price list at /en/led-ekran-fiyatlari/. VAT/freight excluded; no free shipping.",
   },
 ];
 

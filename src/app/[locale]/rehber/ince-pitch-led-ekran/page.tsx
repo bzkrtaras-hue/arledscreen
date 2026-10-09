@@ -27,7 +27,7 @@ export async function generateMetadata({
       path: "/products/ince-pitch-led-ekran/",
       title: "Fine-Pitch LED Display | ARLEDSCREEN",
       description:
-        "Fine-pitch LED for close viewing. Published panel USD in ai-shopping.json. Canonical EN product group.",
+        "Fine-pitch LED for close viewing. Published panel USD on our price list. Canonical EN product group.",
       hreflangLocales: [],
     }),
     robots: { index: false, follow: true },

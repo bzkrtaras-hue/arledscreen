@@ -140,7 +140,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
     products: {
       title: "LED Display Products | GOB, Indoor, Outdoor | ARLEDSCREEN",
       description:
-        "NXTIONSTAR LED groups: GOB, indoor, outdoor, flexible. Published 12 panel USD in ai-shopping.json. Quote-only: transparent, rental, control.",
+        "NXTIONSTAR LED groups: GOB, indoor, outdoor, flexible. Published 12 panel USD on our price list. Quote-only: transparent, rental, control.",
       keywords: [
         "LED display products",
         "fine pitch LED",
@@ -151,7 +151,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
       ],
       h1: "LED display product groups",
       intro:
-        "Browse EN group pages for indoor, outdoor and GOB — or cite ai-shopping.json pricedPanels for the 12 published panel USD. Transparent, flexible, poster, rental and controllers are quote-only.",
+        "Browse EN group pages for indoor, outdoor and GOB — or see /en/led-ekran-fiyatlari/ for the 12 published panel prices. Transparent, flexible, poster, rental and controllers are quote-only.",
     },
     about: {
       title: "About ARLEDSCREEN | LED Engineering Partner",

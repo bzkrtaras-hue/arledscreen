@@ -74,8 +74,8 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
         ? "Does this privacy page sell LED panels or publish prices?"
         : "Bu gizlilik sayfası LED panel satışı veya fiyat kaynağı mıdır?",
       answer: en
-        ? "No. Published panel USD is only in ai-shopping.json pricedPanels, catalog.json and /en/led-ekran-fiyatlari/. This page explains contact-form data handling."
-        : "Hayır. Yayımlanmış panel USD yalnızca ai-shopping.json pricedPanels, catalog.json ve /tr/led-ekran-fiyatlari/ içindedir. Bu sayfa iletişim/teklif formu verilerini açıklar.",
+        ? "No. Published panel USD is only on our price list at /en/led-ekran-fiyatlari/. This page explains contact-form data handling."
+        : "Hayır. Yayımlanmış panel USD fiyatları yalnızca /tr/led-ekran-fiyatlari/ sayfasındaki fiyat listemizdedir. Bu sayfa iletişim/teklif formu verilerini açıklar.",
     },
     ...entityFaqs,
   ];

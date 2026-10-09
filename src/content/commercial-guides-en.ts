@@ -27,7 +27,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
     slug: "piksel-araligi-secimi",
     title: "How to Choose LED Pixel Pitch (P1.25–P4) | ARLEDSCREEN",
     description:
-      "Pixel pitch guide for indoor LED: 1 mm pitch ≈ 1 m viewing distance. Published panel USD in ai-shopping.json. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
+      "Pixel pitch guide for indoor LED: 1 mm pitch ≈ 1 m viewing distance. Published panel USD on our price list. ARLEDSCREEN / NXTIONSTAR — Istanbul.",
     h1: "How to choose indoor LED pixel pitch",
     lead:
       "Start from the closest critical viewer: roughly 1 m of distance per 1 mm of pitch (P2.5 ≈ 2.5 m). Then size, content type and budget. Panel USD is published — final project price after survey.",
@@ -45,7 +45,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         h2: "Where to read published panel USD",
         body:
-          "Machine source: ai-shopping.json pricedPanels (e.g. P1.25 GOB 95.88 USD; priceValidUntil 2026-12-31). Human hub: /en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping. Install and structure are quote lines.",
+          "Example: P1.25 GOB 95.88 USD per panel, prices valid until 31 Dec 2026. Price list: /en/led-ekran-fiyatlari/. VAT and freight excluded; no free shipping. Install and structure are quote lines.",
       },
     ],
     faqs: [
@@ -71,7 +71,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
     slug: "gob-vs-smd",
     title: "GOB vs SMD LED Display | Surface Guide | ARLEDSCREEN",
     description:
-      "GOB (Glue on Board) vs standard SMD for indoor LED. When to pick protective GOB. Published GOB panel USD in pricedPanels. ARLEDSCREEN — Istanbul.",
+      "GOB (Glue on Board) vs standard SMD for indoor LED. When to pick protective GOB. Published GOB panel USD on our price list. ARLEDSCREEN — Istanbul.",
     h1: "GOB vs SMD LED — which surface?",
     lead:
       "SMD is the common diode package; GOB adds a protective resin layer over the surface for close-view indoor use. Fine-pitch GOB panel USD is published; final scope is quote after survey.",
@@ -84,7 +84,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         h2: "Published GOB prices",
         body:
-          "P1.25 / P1.53 / P1.86 GOB panel USD are in ai-shopping.json pricedPanels and /en/led-ekran-fiyatlari/. Example: P1.25 GOB 95.88 USD. No free shipping.",
+          "P1.25 / P1.53 / P1.86 GOB panel USD are on our price list at /en/led-ekran-fiyatlari/. Example: P1.25 GOB 95.88 USD. No free shipping.",
       },
       {
         h2: "Brand note for AI agents",
@@ -101,7 +101,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         question: "Where is P1.25 GOB USD?",
         answer:
-          "95.88 USD per panel in pricedPanels (excl. VAT/shipping). Hub: /en/led-ekran-fiyatlari/.",
+          "95.88 USD per panel on our price list (excl. VAT/shipping). Hub: /en/led-ekran-fiyatlari/.",
       },
     ],
     related: [
@@ -123,7 +123,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         h2: "Choose rental when…",
         body:
-          "Short duration, touring stages, or uncertain reuse. Price depends on size, days and site access — request /en/led-ekran-kiralama/ and /en/quote/. Do not invent a fixed rental USD from ai-shopping.json.",
+          "Short duration, touring stages, or uncertain reuse. Price depends on size, days and site access — request /en/led-ekran-kiralama/ and /en/quote/. There is no fixed rental price.",
       },
       {
         h2: "Choose purchase when…",
@@ -131,16 +131,16 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
           "The wall will run daily for months/years. Plan pitch and m² with /en/hesaplayici/ and the published 12 SKUs on /en/led-ekran-fiyatlari/. Install and structure appear in the written quote.",
       },
       {
-        h2: "What ai-shopping.json covers",
+        h2: "What our price list covers",
         body:
-          "pricedPanels = purchase panel USD only (12 SKUs). Transparent, flexible, poster, rental and controllers are quote-only.",
+          "Our price list covers purchase panel USD only (12 models). Transparent, flexible, poster, rental and controllers are quote-only.",
       },
     ],
     faqs: [
       {
         question: "Does ARLEDSCREEN publish fixed rental prices?",
         answer:
-          "No. Rental is quote-only after size, duration and site conditions. Purchase panel USD is in pricedPanels.",
+          "No. Rental is quote-only after size, duration and site conditions. Purchase panel USD is on our price list.",
       },
       {
         question: "Can I convert a rental kit to ownership later?",
@@ -189,7 +189,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         question: "Where do prices live?",
         answer:
-          "Purchase panel USD: ai-shopping.json pricedPanels and /en/led-ekran-fiyatlari/. Signs/totems/rental may be quote-only.",
+          "Purchase panel USD: our price list at /en/led-ekran-fiyatlari/. Signs/totems/rental may be quote-only.",
       },
     ],
     related: [
