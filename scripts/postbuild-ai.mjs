@@ -115,7 +115,7 @@ const PANEL_PRICES = [
     pitchMm: 3.07,
     use: "ic",
     usd: 30.88,
-    image: "/projects/modules/indoor-smd-surface.jpg",
+    image: "/modules/nxtionstar-p3-07-ic-mekan-modul.webp",
     productUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/p3-07/`,
     groupUrl: `${SITE_URL}/tr/products/ic-mekan-led-ekran/`,
   },

@@ -3,6 +3,7 @@ import { FileText, MessageCircle } from "lucide-react";
 import type { Product } from "@/types/product";
 import type { Locale } from "@/lib/i18n";
 import { OptImage } from "@/components/ui/opt-image";
+import { ModelNoPhoto } from "@/components/products/ModelNoPhoto";
 import { SPECS_VERIFIED, CATEGORY_LABELS_TR, CATEGORY_LABELS_EN } from "@/content/products";
 import { whatsappHref } from "@/lib/whatsapp";
 
@@ -31,13 +32,22 @@ export function ProductCard({ product, locale = "en" }: ProductCardProps) {
       className="group flex h-full scroll-mt-24 flex-col overflow-hidden rounded-2xl glass-card"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-surface">
-        <OptImage
-          src={product.image}
-          alt={product.imageAlt ?? `${product.name} — ${product.series}`}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-        />
+        {product.image ? (
+          <OptImage
+            src={product.image}
+            alt={product.imageAlt ?? `${product.name} — ${product.series}`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <ModelNoPhoto
+            brand={product.series}
+            chip={product.chip ?? product.name}
+            locale={tr ? "tr" : "en"}
+            className="absolute inset-0 h-full w-full"
+          />
+        )}
         <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-0.5 text-xs font-semibold text-cyan-700">
           {product.series}
         </span>
