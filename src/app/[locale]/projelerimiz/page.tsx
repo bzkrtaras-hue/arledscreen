@@ -236,10 +236,10 @@ export default async function ProjelerimizPage({ params }: { params: Promise<{ l
         />
         <p className="mt-8 text-center">
           <Link
-            href="/tr/galeri/"
+            href={`/${locale}/galeri/`}
             className="inline-flex min-h-11 items-center rounded-full border border-border bg-white px-5 text-sm font-semibold text-ink-soft hover:border-cyan/45 hover:text-cyan"
           >
-            {en ? "Open full gallery (TR)" : "Tam galeriyi aç"}
+            {en ? "Open full gallery" : "Tam galeriyi aç"}
           </Link>
         </p>
       </Section>

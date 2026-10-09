@@ -190,9 +190,9 @@ export default async function ServiceRegionPage({
       ) : null}
 
       <Section
-        eyebrow="Kayıtlı projeler"
-        title={`${region.name} proje kayıtları`}
-        description={`${region.projectCount} yayımlanmış kayıt. Tarih, kapsam ve konum; stok görsel yok.`}
+        eyebrow="Tamamlanan projeler"
+        title={`${region.name} projelerimiz`}
+        description={`${region.projectCount} tamamlanan proje: tarih, kapsam ve konum.`}
         className="bg-surface/60 prose-seo"
       >
         <div className="overflow-x-auto">

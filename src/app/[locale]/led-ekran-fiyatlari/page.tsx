@@ -305,6 +305,9 @@ export default async function LedEkranFiyatlariPage({
   const copy = PAGE[locale];
   const url = absoluteUrl(`/${locale}/led-ekran-fiyatlari/`);
   const examples = locale === "tr" ? EXAMPLES_TR : EXAMPLES_EN;
+  // EN: English number format (10,143.00) so amounts are not misread; TR output unchanged.
+  const money = (n: number) =>
+    locale === "en" ? n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : fmtUsd(n);
   const crumbs = [
     { name: copy.navHome, item: absoluteUrl(copy.homeHref) },
     ...(copy.navLed ? [{ name: copy.navLed.name, item: absoluteUrl(copy.navLed.href) }] : []),
@@ -410,9 +413,9 @@ export default async function LedEkranFiyatlariPage({
                       <td className="py-3 pr-3 font-medium text-ink">{ex.label}</td>
                       <td className="py-3 pr-3 text-ink-soft">{panelLabel(ex.panel, locale)}</td>
                       <td className="py-3 pr-3 text-ink-soft">{c.m2}</td>
-                      <td className="py-3 pr-3 text-ink-soft">{fmtUsd(c.modules)} USD</td>
-                      <td className="py-3 pr-3 text-ink-soft">{fmtUsd(c.labor)} USD</td>
-                      <td className="py-3 font-semibold text-ink">{fmtUsd(c.subtotal)} USD</td>
+                      <td className="py-3 pr-3 text-ink-soft">{money(c.modules)} USD</td>
+                      <td className="py-3 pr-3 text-ink-soft">{money(c.labor)} USD</td>
+                      <td className="py-3 font-semibold text-ink">{money(c.subtotal)} USD</td>
                     </tr>
                   );
                 })}

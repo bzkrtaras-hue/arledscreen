@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { LED_MODELS, modelPath } from "@/content/models";
-import { CALC_EXTRAS, fmtUsd, panelLabel, panelM2, priceNote, type PanelPrice } from "@/content/prices";
+import { CALC_EXTRAS, fmtUsd, panelLabel, panelM2, priceNote, PANELS_PER_M2, type PanelPrice } from "@/content/prices";
+
+/** EN pages: English number format (95.88 / 1,873) so prices are not misread; TR output unchanged. */
+const enNum = (n: number, d: number) =>
+  n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
 
 interface Props {
   panels: PanelPrice[];
@@ -71,10 +75,14 @@ export function PanelPriceTable({
                   className="px-4 py-2.5 text-right font-semibold tabular-nums text-ink"
                   aria-label={panelLabel(p, locale)}
                 >
-                  {fmtUsd(p.usd)}
+                  {en ? enNum(p.usd, 2) : fmtUsd(p.usd)}
                 </td>
                 <td className="px-4 py-2.5 text-right tabular-nums text-ink-soft sm:px-5">
-                  {panelM2(p) ?? (en ? "In quote" : "Teklifte")}
+                  {en
+                    ? panelM2(p) !== undefined
+                      ? enNum(Math.round(p.usd * PANELS_PER_M2), 0)
+                      : "In quote"
+                    : panelM2(p) ?? "Teklifte"}
                 </td>
               </tr>
             ))}

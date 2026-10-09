@@ -185,14 +185,17 @@ function buildCase(ref: Reference, slug: string): ProjectCaseStudy {
   const province = provinceSlug ? SERVICE_REGIONS.find((r) => r.slug === provinceSlug) : undefined;
   const product = productHint(ref.detail, environment);
   const use = usageHint(sector);
-  const h1 = `${label} LED ekran projesi`;
+  // Generic labels (e.g. "Bireysel müşteri") repeat across records: add the city so each H1 is unique.
+  const generic = /^bireysel/i.test(label);
+  const place = ref.location ? ref.location.split("/")[0].trim() : "";
+  const h1 = generic && place ? `${label} LED ekran projesi, ${place}` : `${label} LED ekran projesi`;
   return {
     slug,
     refId: ref.id,
     title: label,
     h1,
-    metaTitle: `${label} LED Ekran Projesi${province ? ` | ${province.name}` : ""} | ARLEDSCREEN`,
-    metaDescription: `${label}: ${ref.detail}${ref.location ? `, ${ref.location}` : ""}. Tarih ${ref.date}. ARLEDSCREEN yayımlanmış proje kaydı.`,
+    metaTitle: `${label} LED Ekran Projesi${province ? ` | ${province.name}` : generic && place ? ` | ${place}` : ""} | ARLEDSCREEN`,
+    metaDescription: `${label}: ${ref.detail}${ref.location ? `, ${ref.location}` : ""}. Tarih ${ref.date}. ARLEDSCREEN LED ekran referans projesi.`,
     date: ref.date,
     companyLabel: label,
     detail: ref.detail,

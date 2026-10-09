@@ -207,7 +207,7 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
                     </a>{" "}
                     veya{" "}
                     <Link href={contactHref} className="font-semibold text-cyan hover:underline">
-                      {quoteHref}
+                      teklif formu
                     </Link>{" "}
                     üzerinden yazın.
                   </>

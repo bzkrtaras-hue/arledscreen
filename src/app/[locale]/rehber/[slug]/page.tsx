@@ -209,7 +209,7 @@ export default async function SeoGuidePage({ params }: PageProps) {
                 <Link href={`/${locale}/products`}>{dict.nav.products}</Link>
               </Button>
               <Button asChild variant="secondary">
-                <Link href={"/tr/hesaplayici/"}>
+                <Link href={`/${locale}/hesaplayici/`}>
                   {dict.nav.priceCalculator}
                 </Link>
               </Button>
