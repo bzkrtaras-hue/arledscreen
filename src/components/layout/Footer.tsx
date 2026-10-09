@@ -35,6 +35,7 @@ export function Footer({ locale }: FooterProps) {
         { href: "/tr/led-ekran/", label: "LED ekran" },
         { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
         { href: "/tr/products/", label: "Ürünler" },
+        { href: "/tr/malzemeler/", label: "LED ekran malzemeleri" },
         { href: "/tr/hizmetler/", label: "Hizmetler" },
         { href: "/tr/bolgeler/", label: "Hizmet bölgesi" },
         { href: "/tr/projelerimiz/", label: "Projeler" },
