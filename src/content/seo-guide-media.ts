@@ -67,8 +67,8 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
     alt: { tr: "500 × 1000 mm LED kabin: ön yüz, arka iç yapı ve yan profil", en: "500 × 1000 mm LED cabinet: front, rear structure and side profile", ru: "LED-кабинет 500 × 1000 мм: лицевая сторона, задняя часть и профиль", ar: "خزانة LED بمقاس 500 × 1000 مم: الواجهة والهيكل الخلفي والجانب" },
   },
   "cami-led-ekran": {
-    src: "/projects/hires/neu-library-1920.jpg",
-    alt: { tr: "Geniş bir salonda iç mekân LED ekran ve iki ayaklı dijital ekran", en: "Indoor LED wall and two freestanding digital screens in a large hall", ru: "LED-экран и два напольных цифровых экрана в большом зале", ar: "شاشة LED داخلية وشاشتان رقميتان أرضيتان في قاعة كبيرة" },
+    src: "/projects/modules/indoor-install.jpg",
+    alt: { tr: "Duvara monte iç mekân LED ekran", en: "Wall-mounted indoor LED screen", ru: "Настенный LED-экран для помещений", ar: "شاشة LED داخلية مثبتة على الجدار" },
   },
   "led-ekran-ariza-belirtileri": {
     src: "/projects/service-assembly.jpg",
@@ -77,6 +77,22 @@ const IMAGES: Record<SeoGuideSlug, { src: string; alt: L4 }> = {
   "led-ekran-ihracat": {
     src: "/projects/panels-warehouse.jpg",
     alt: { tr: "Sevkiyata hazır LED ekran kabinleri", en: "LED screen cabinets ready for shipment", ru: "LED-кабинеты, готовые к отправке", ar: "خزائن شاشات LED جاهزة للشحن" },
+  },
+  "eczane-led-ekran": {
+    src: "/projects/totem-outdoor.jpg",
+    alt: { tr: "Bina önünde ayaklı dış mekân poster LED ekran", en: "Freestanding outdoor poster LED screen in front of a building", ru: "Уличный напольный постерный LED-экран перед зданием", ar: "شاشة بوستر LED خارجية أرضية أمام مبنى" },
+  },
+  "dugun-salonu-led": {
+    src: "/opt/blog/alanya-otel-led-ekran.jpg",
+    alt: { tr: "Otel salonunda duvara monte iç mekân LED ekran", en: "Wall-mounted indoor LED screen in a hotel hall", ru: "Настенный LED-экран в зале отеля", ar: "شاشة LED داخلية على جدار قاعة فندق" },
+  },
+  "hastane-dijital-ekran": {
+    src: "/projects/hastane.jpg",
+    alt: { tr: "Hastane acil girişi üzerinde LED ekran", en: "LED screen above a hospital emergency entrance", ru: "LED-экран над входом в приёмное отделение больницы", ar: "شاشة LED فوق مدخل طوارئ مستشفى" },
+  },
+  "okul-led-ekran": {
+    src: "/projects/hires/neu-library-1920.jpg",
+    alt: { tr: "Kütüphane salonunda LED ekran ve iki ayaklı dijital ekran", en: "LED wall and two freestanding digital screens in a library hall", ru: "LED-экран и два напольных цифровых экрана в зале библиотеки", ar: "شاشة LED وشاشتان رقميتان أرضيتان في قاعة مكتبة" },
   },
 };
 
@@ -164,10 +180,94 @@ const ARIZA_ROWS: L4[][] = [
   [{ tr: "Ekran hiç açılmıyor", en: "Screen will not turn on", ru: "Экран не включается", ar: "الشاشة لا تعمل" }, { tr: "Sigorta, enerji, kaynak, gönderici kart", en: "Breaker, power, source, sending card", ru: "Автомат, питание, источник, карта", ar: "القاطع أو الكهرباء أو المصدر أو بطاقة الإرسال" }, { tr: "Sigorta ve görüntü kaynağı", en: "Breaker and video source", ru: "Автомат и источник видео", ar: "القاطع ومصدر الفيديو" }, YOU],
 ];
 
+type T4 = Record<"tr" | "en" | "ru" | "ar", string>;
+const t = (tr: string, en: string, ru: string, ar: string): T4 => ({ tr, en, ru, ar });
+const Q4: T4 = { tr: "teklif üzerine", en: "on quote", ru: "по запросу", ar: "بعرض خاص" };
+
+const SIZE_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
+  tr: ["En arka sıra / masa", "Örnek ekran ölçüsü", "Modül", "Önerilen P", "Modül bedeli (USD)"],
+  en: ["Farthest row / table", "Example screen size", "Modules", "Suggested pitch", "Module cost (USD)"],
+  ru: ["Дальний ряд / стол", "Пример размера", "Модули", "Шаг", "Модули (USD)"],
+  ar: ["أبعد صف / طاولة", "مقاس الشاشة المقترح", "الوحدات", "مسافة البكسل", "تكلفة الوحدات (دولار)"],
+};
+const KONF_ROWS: T4[][] = [
+  [t("≈ 8 m", "≈ 8 m", "≈ 8 м", "≈ 8 م"), t("1,92 × 1,12 m", "1.92 × 1.12 m", "1,92 × 1,12 м", "1.92 × 1.12 م"), t("42", "42", "42", "42"), t("P2.5 iç", "P2.5 indoor", "P2.5 помещ.", "P2.5 داخلي"), t("1.351,56", "1,351.56", "1 351,56", "1,351.56")],
+  [t("≈ 15 m", "≈ 15 m", "≈ 15 м", "≈ 15 م"), t("3,52 × 1,92 m", "3.52 × 1.92 m", "3,52 × 1,92 м", "3.52 × 1.92 م"), t("132", "132", "132", "132"), t("P2.5 iç", "P2.5 indoor", "P2.5 помещ.", "P2.5 داخلي"), t("4.247,76", "4,247.76", "4 247,76", "4,247.76")],
+  [t("≈ 25 m", "≈ 25 m", "≈ 25 м", "≈ 25 م"), t("5,44 × 3,04 m", "5.44 × 3.04 m", "5,44 × 3,04 м", "5.44 × 3.04 م"), t("323", "323", "323", "323"), t("P3.07 iç", "P3.07 indoor", "P3.07 помещ.", "P3.07 داخلي"), t("9.974,24", "9,974.24", "9 974,24", "9,974.24")],
+];
+const KONF_CAPTION = t(
+  "Konferans salonu için örnek ekran ölçüleri (yalnızca modül bedeli; KDV ve nakliye hariç)",
+  "Example conference-hall screen sizes (module cost only; VAT and shipping excluded)",
+  "Примеры размеров экрана для конференц-зала (только модули; без НДС и доставки)",
+  "أمثلة على مقاسات شاشات قاعات المؤتمرات (تكلفة الوحدات فقط؛ دون الضريبة والشحن)",
+);
+const DUGUN_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
+  tr: ["En arka masa", "Örnek ekran ölçüsü", "Modül", "Satın alma: P ve modül bedeli (USD)", "Kiralık (USD/gün)"],
+  en: ["Farthest table", "Example screen size", "Modules", "Purchase: pitch and module cost (USD)", "Rental (USD/day)"],
+  ru: ["Дальний стол", "Пример размера", "Модули", "Покупка: шаг и модули (USD)", "Аренда (USD/день)"],
+  ar: ["أبعد طاولة", "مقاس الشاشة المقترح", "الوحدات", "الشراء: المسافة وتكلفة الوحدات (دولار)", "الإيجار (دولار/يوم)"],
+};
+const DUGUN_ROWS: T4[][] = [
+  [t("≈ 15 m", "≈ 15 m", "≈ 15 м", "≈ 15 م"), t("3,52 × 1,92 m", "3.52 × 1.92 m", "3,52 × 1,92 м", "3.52 × 1.92 م"), t("132", "132", "132", "132"), t("P3.07 iç · 4.076,16", "P3.07 indoor · 4,076.16", "P3.07 · 4 076,16", "P3.07 داخلي · 4,076.16"), t("337,92", "337.92", "337,92", "337.92")],
+  [t("≈ 25 m", "≈ 25 m", "≈ 25 м", "≈ 25 م"), t("5,44 × 3,04 m", "5.44 × 3.04 m", "5,44 × 3,04 м", "5.44 × 3.04 م"), t("323", "323", "323", "323"), t("P4 iç · 8.714,54", "P4 indoor · 8,714.54", "P4 · 8 714,54", "P4 داخلي · 8,714.54"), t("826,88", "826.88", "826,88", "826.88")],
+  [t("≈ 35 m", "≈ 35 m", "≈ 35 м", "≈ 35 م"), t("7,68 × 4,48 m", "7.68 × 4.48 m", "7,68 × 4,48 м", "7.68 × 4.48 م"), t("672", "672", "672", "672"), t("P4 iç · 18.130,56", "P4 indoor · 18,130.56", "P4 · 18 130,56", "P4 داخلي · 18,130.56"), t("1.720,32", "1,720.32", "1 720,32", "1,720.32")],
+];
+const DUGUN_CAPTION = t(
+  "Düğün salonu için örnek ekran ölçüleri: satın alma (yalnızca modül bedeli) ve günlük 50 USD/m² kiralama; KDV ve nakliye hariç",
+  "Example wedding-hall screen sizes: purchase (module cost only) and rental at USD 50 per m² per day; VAT and shipping excluded",
+  "Примеры для свадебного зала: покупка (только модули) и аренда 50 USD за м² в день; без НДС и доставки",
+  "أمثلة لقاعات الأفراح: الشراء (تكلفة الوحدات فقط) والإيجار بـ 50 دولارًا لكل م² يوميًا؛ دون الضريبة والشحن",
+);
+const AREA_HEAD: Record<"tr" | "en" | "ru" | "ar", string[]> = {
+  tr: ["Alan", "Önerilen ekran", "İzleme mesafesi", "Fiyat (USD/panel)"],
+  en: ["Area", "Suggested screen", "Viewing distance", "Price (USD/panel)"],
+  ru: ["Зона", "Рекомендуемый экран", "Дистанция", "Цена (USD/панель)"],
+  ar: ["المكان", "الشاشة المقترحة", "مسافة المشاهدة", "السعر (دولار/لوح)"],
+};
+const ECZANE_ROWS: T4[][] = [
+  [t("Raf üstü / tezgâh arkası", "Shelf-top / behind counter", "Над полками / за прилавком", "فوق الرفوف / خلف المنضدة"), t("İç mekân P2.5 veya P1.86 GOB", "Indoor P2.5 or P1.86 GOB", "P2.5 или P1.86 GOB", "P2.5 داخلي أو P1.86 GOB"), t("1,5–3 m", "1.5–3 m", "1,5–3 м", "1.5–3 م"), t("32,18 / 49,08", "32.18 / 49.08", "32,18 / 49,08", "32.18 / 49.08")],
+  [t("Güneş alan vitrin", "Sunny window", "Солнечная витрина", "واجهة زجاجية مشمسة"), t("Vitrin tipi ekran veya şeffaf LED", "Window screen or transparent LED", "Витринный или прозрачный LED", "شاشة واجهة أو LED شفافة"), t("Yoldan", "From the street", "С улицы", "من الشارع"), Q4],
+  [t("Giriş", "Entrance", "Вход", "المدخل"), t("Ayaklı poster LED", "Freestanding poster LED", "Напольный постерный LED", "بوستر LED أرضي"), t("2–5 m", "2–5 m", "2–5 м", "2–5 م"), Q4],
+  [t("Dış cephe", "Façade", "Фасад", "الواجهة الخارجية"), t("Dış mekân P4 / P5 / P3.07", "Outdoor P4 / P5 / P3.07", "Уличный P4 / P5 / P3.07", "P4 / P5 / P3.07 خارجي"), t("4 m ve üzeri", "4 m and more", "от 4 м", "4 م فأكثر"), t("33,80 / 29,90 / 44,20", "33.80 / 29.90 / 44.20", "33,80 / 29,90 / 44,20", "33.80 / 29.90 / 44.20")],
+];
+const HASTANE_ROWS: T4[][] = [
+  [t("Küçük bekleme alanı", "Small waiting area", "Малая зона ожидания", "منطقة انتظار صغيرة"), t("LCD ekran", "LCD screen", "LCD-экран", "شاشة LCD"), t("2–5 m", "2–5 m", "2–5 м", "2–5 م"), Q4],
+  [t("Geniş bekleme salonu (sıra ekranı)", "Large waiting hall (queue screen)", "Большой зал ожидания (очередь)", "قاعة انتظار كبيرة (شاشة الدور)"), t("İç mekân P2.5 / P3.07 LED", "Indoor P2.5 / P3.07 LED", "LED P2.5 / P3.07", "LED داخلي P2.5 / P3.07"), t("6 m ve üzeri", "6 m and more", "от 6 м", "6 م فأكثر"), t("32,18 / 30,88", "32.18 / 30.88", "32,18 / 30,88", "32.18 / 30.88")],
+  [t("Poliklinik kapısı", "Clinic door", "Дверь кабинета", "باب العيادة"), t("Küçük LCD ekran", "Small LCD screen", "Небольшой LCD", "شاشة LCD صغيرة"), t("1–3 m", "1–3 m", "1–3 м", "1–3 م"), Q4],
+  [t("Lobi ve yönlendirme", "Lobby and wayfinding", "Холл и навигация", "البهو والإرشاد"), t("Poster LED, totem veya kiosk", "Poster LED, totem or kiosk", "Постерный LED, тотем, киоск", "بوستر LED أو طوطم أو كشك"), t("1–5 m", "1–5 m", "1–5 м", "1–5 م"), Q4],
+  [t("Cephe ve acil girişi", "Façade and emergency entrance", "Фасад и приёмное", "الواجهة ومدخل الطوارئ"), t("Dış mekân P4 / P5", "Outdoor P4 / P5", "Уличный P4 / P5", "P4 / P5 خارجي"), t("8 m ve üzeri", "8 m and more", "от 8 м", "8 م فأكثر"), t("33,80 / 29,90", "33.80 / 29.90", "33,80 / 29,90", "33.80 / 29.90")],
+];
+const OKUL_ROWS: T4[][] = [
+  [t("Sınıf", "Classroom", "Класс", "الفصل"), t("LCD veya etkileşimli ekran", "LCD or interactive display", "LCD или интерактивная панель", "LCD أو شاشة تفاعلية"), t("1–6 m", "1–6 m", "1–6 м", "1–6 م"), Q4],
+  [t("Giriş ve koridor", "Entrance and corridor", "Вход и коридор", "المدخل والممر"), t("İç mekân P3.07 veya poster LED", "Indoor P3.07 or poster LED", "P3.07 или постерный LED", "P3.07 داخلي أو بوستر LED"), t("3 m ve üzeri", "3 m and more", "от 3 м", "3 م فأكثر"), t("30,88", "30.88", "30,88", "30.88")],
+  [t("Amfi ve konferans salonu", "Lecture theatre and hall", "Аудитория и зал", "المدرج والقاعة"), t("İç mekân P2.5 / P3.07", "Indoor P2.5 / P3.07", "P2.5 / P3.07", "P2.5 / P3.07 داخلي"), t("2,5 m ve üzeri", "2.5 m and more", "от 2,5 м", "2.5 م فأكثر"), t("32,18 / 30,88", "32.18 / 30.88", "32,18 / 30,88", "32.18 / 30.88")],
+  [t("Spor salonu", "Sports hall", "Спортзал", "الصالة الرياضية"), t("İç mekân P4", "Indoor P4", "P4 для помещений", "P4 داخلي"), t("6 m ve üzeri", "6 m and more", "от 6 м", "6 م فأكثر"), t("26,98", "26.98", "26,98", "26.98")],
+  [t("Bahçe, kampüs, cephe", "Playground, campus, façade", "Двор, кампус, фасад", "الساحة والحرم والواجهة"), t("Dış mekân P4 / P5", "Outdoor P4 / P5", "Уличный P4 / P5", "P4 / P5 خارجي"), t("5 m ve üzeri", "5 m and more", "от 5 м", "5 م فأكثر"), t("33,80 / 29,90", "33.80 / 29.90", "33,80 / 29,90", "33.80 / 29.90")],
+];
+const AREA_CAPTION: Record<string, T4> = {
+  "eczane-led-ekran": t("Eczanede ekran seçimi (fiyatlar panel başına, KDV ve nakliye hariç)", "Pharmacy screen choice (prices per panel, VAT and shipping excluded)", "Выбор экрана для аптеки (цены за панель, без НДС и доставки)", "اختيار شاشة الصيدلية (الأسعار لكل لوح دون الضريبة والشحن)"),
+  "hastane-dijital-ekran": t("Hastanede alanlara göre ekran seçimi (fiyatlar panel başına, KDV ve nakliye hariç)", "Hospital screens by area (prices per panel, VAT and shipping excluded)", "Экраны в больнице по зонам (цены за панель, без НДС и доставки)", "شاشات المستشفى حسب المكان (الأسعار لكل لوح دون الضريبة والشحن)"),
+  "okul-led-ekran": t("Okulda alanlara göre ekran seçimi (fiyatlar panel başına, KDV ve nakliye hariç)", "School screens by area (prices per panel, VAT and shipping excluded)", "Экраны в школе по зонам (цены за панель, без НДС и доставки)", "شاشات المدرسة حسب المكان (الأسعار لكل لوح دون الضريبة والشحن)"),
+};
+const AREA_ROWS: Record<string, T4[][]> = {
+  "eczane-led-ekran": ECZANE_ROWS,
+  "hastane-dijital-ekran": HASTANE_ROWS,
+  "okul-led-ekran": OKUL_ROWS,
+};
+
 export function getGuideTable(slug: SeoGuideSlug, locale: Locale): GuideTable | undefined {
   const k = (["tr", "en", "ru", "ar"].includes(locale) ? locale : "en") as keyof L4;
   if (slug === "cami-led-ekran") {
     return { caption: CAMI_CAPTION[k], headers: CAMI_HEAD[k], rows: CAMI_ROWS.map((r) => r.map((c) => c[k])) };
+  }
+  if (slug === "konferans-salonu-led") {
+    return { caption: KONF_CAPTION[k], headers: SIZE_HEAD[k], rows: KONF_ROWS.map((r) => r.map((c) => c[k])) };
+  }
+  if (slug === "dugun-salonu-led") {
+    return { caption: DUGUN_CAPTION[k], headers: DUGUN_HEAD[k], rows: DUGUN_ROWS.map((r) => r.map((c) => c[k])) };
+  }
+  if (AREA_ROWS[slug]) {
+    return { caption: AREA_CAPTION[slug][k], headers: AREA_HEAD[k], rows: AREA_ROWS[slug].map((r) => r.map((c) => c[k])) };
   }
   if (slug === "led-ekran-ariza-belirtileri") {
     return { caption: ARIZA_CAPTION[k], headers: ARIZA_HEAD[k], rows: ARIZA_ROWS.map((r) => r.map((c) => c[k])) };
