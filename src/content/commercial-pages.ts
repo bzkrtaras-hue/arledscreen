@@ -8,7 +8,7 @@
  */
 import { references, type Reference } from "@/content/references";
 import { displayCompany } from "@/content/trust";
-import { modelPath, LED_MODELS } from "@/content/models";
+import { modelPath, LED_MODELS, getModel } from "@/content/models";
 import { productGroupPath, getProductGroup } from "@/content/categories";
 import { getProductGroupEn } from "@/content/product-groups-en";
 import { SERVICE_REGIONS } from "@/content/service-regions";
@@ -910,7 +910,7 @@ const EN_PRODUCT_LINKS: CommercialLink[] = [
 
 function enIntentLinks(except: string): CommercialLink[] {
   const all: CommercialLink[] = [
-    { href: "/en/led-ekran/", label: "LED display hub" },
+    { href: "/en/led-ekran/", label: "LED displays" },
     { href: "/en/led-ekran-satisi/", label: "LED display sales" },
     { href: "/en/led-ekran-ureticisi/", label: "LED display manufacturer" },
     { href: "/en/led-ekran-montaj/", label: "LED display install" },
@@ -968,8 +968,36 @@ function enPitchLinks(except?: string): CommercialLink[] {
   }));
 }
 
+/** EN label for a model link (chip + kind); keep proper product codes. */
+function enModelLinkLabel(group: string, slug: string, fallback: string): string {
+  const m = getModel(group, slug);
+  if (!m) return fallback;
+  const chip = m.chip.replace(/\s*esnek\s*/i, " ").trim();
+  if (m.kind === "esnek") return `${chip} flexible`;
+  if (m.kind === "gob") return `${m.chip} GOB`;
+  if (m.kind === "ic") return `${m.chip} indoor`;
+  if (m.kind === "dis") {
+    return m.chip.includes("önden") || m.slug.includes("on-servis")
+      ? `${m.chip.replace(" önden servis", "")} outdoor front service`
+      : `${m.chip} outdoor`;
+  }
+  return m.chip;
+}
+
 function remapProductLinksToEn(links: CommercialLink[]): CommercialLink[] {
   return links.map((l) => {
+    const modelMatch = l.href.match(/^\/(?:tr|en)\/products\/([^/]+)\/([^/]+)\/?$/);
+    if (modelMatch) {
+      const [, group, slug] = modelMatch;
+      const m = getModel(group, slug);
+      const label = enModelLinkLabel(group, slug, l.label);
+      // EN model paths are noindex redirect bridges → link the EN group hub directly
+      // (priced panels are listed there); unpriced models keep the TR PDP.
+      if (m?.priceId) {
+        return { href: `/en/products/${group}/`, label };
+      }
+      return { href: `/tr/products/${group}/${slug}/`, label };
+    }
     const href = l.href.replace(/^\/tr\/products\//, "/en/products/");
     const slug = href.match(/\/en\/products\/([^/]+)\/?$/)?.[1];
     const enName = slug ? getProductGroupEn(slug)?.name : undefined;
@@ -1140,7 +1168,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       {
         question: "Do you open a page for every city?",
         answer:
-          "No. City pages exist only where published project records exist — no 81-city doorway spam. Turkey-wide service is planned from Istanbul HQ.",
+          "No. City pages exist only where we have completed projects. Turkey-wide service is planned from Istanbul HQ.",
       },
     ],
   },
@@ -1481,7 +1509,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
 
 const EN_PRODUCT_OVERLAY: Record<CommercialEnProductSlug, EnLeanOverlay> = {
   "totem-led-ekran": {
-    title: "Totem LED Display | Freestanding Digital Signage | ARLEDSCREEN",
+    title: "Totem LED Display | Digital Signage | ARLEDSCREEN",
     description:
       "Freestanding totem LED for wayfinding and advertising. ARLEDSCREEN Istanbul — survey, pitch and written quote.",
     h1: "Totem LED display",
@@ -1602,12 +1630,12 @@ export function getLedEkranPageEn(): CommercialPage {
       "We run indoor, outdoor, GOB, flexible and rental LED projects from survey through after-sales service on one desk.",
     intro: [
       "ARLEDSCREEN is an Istanbul (Gaziosmanpaşa) LED display technology center. With the NXTIONSTAR product line we sell, install and support store, mall, façade, stage, hotel and municipal projects.",
-      "There is no fixed m² price; the panel list is published in the price calculator and price hub. Final amount is confirmed after survey in a written quote from size, pitch and install conditions.",
+      "There is no fixed m² price; the panel list is published in the price calculator and on our price list. Final amount is confirmed after survey in a written quote from size, pitch and install conditions.",
       NAP_EN,
     ],
     bullets: [
       "Survey → design → supply → install → calibration → service",
-      "Published project samples only in recorded provinces (no 81-city spam)",
+      "Project samples from provinces where we have completed work",
       "Indoor/outdoor, GOB, flexible, poster/totem and rental options",
     ],
     images: [
@@ -1628,7 +1656,7 @@ export function getLedEkranPageEn(): CommercialPage {
       {
         question: "Where do you serve?",
         answer:
-          "Headquarters is Gaziosmanpaşa, Istanbul. Service is planned Turkey-wide; separate city pages exist only where published project records exist (no 81-city spam).",
+          "Headquarters is Gaziosmanpaşa, Istanbul. Service is planned Turkey-wide; separate city pages exist only where published project records exist.",
       },
       {
         question: "Where are published panel prices listed?",
@@ -1776,7 +1804,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request an install survey" },
-      secondaryCta: { href: "/en/led-ekran/", label: "LED display hub" },
+      secondaryCta: { href: "/en/led-ekran/", label: "LED displays" },
     };
   },
   "led-ekran-kiralama": () => {
@@ -1791,7 +1819,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       lead: "We plan rental LED installs for short-run events, stages and fairs.",
       intro: [
         "For short needs, rental can beat purchase. Size, duration and install location set the quote — rental is quote-only (no fixed published rental USD).",
-        "Compare with purchase via the price hub and calculator when ownership makes more sense.",
+        "Compare with purchase using our price list and calculator when ownership makes more sense.",
         NAP_EN,
       ],
       bullets: [
@@ -1869,7 +1897,7 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
         },
       ],
       primaryCta: { href: "/en/quote/", label: "Request service" },
-      secondaryCta: { href: "/en/led-ekran/", label: "LED display hub" },
+      secondaryCta: { href: "/en/led-ekran/", label: "LED displays" },
     };
   },
 };

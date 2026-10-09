@@ -181,13 +181,14 @@ export default async function HesaplayiciPage({ params }: PageProps) {
                     absoluteUrl("/en/hesaplayici/"),
                     "LED display module sales, survey and installation",
                     modelUrlForPrice(absoluteUrl),
+                    "en",
                   ),
                 ),
               }}
             />
             <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">2026 panel price list</h2>
             <p className="mb-2 mt-2 max-w-3xl text-sm leading-relaxed text-ink-muted">
-              The 12 modules used by this calculator. Machine-readable copy:
+              The 12 modules used by this calculator.
             </p>
             <AiPriceSourceNote
               locale="en"
@@ -197,9 +198,9 @@ export default async function HesaplayiciPage({ params }: PageProps) {
             <p className="mb-4 max-w-3xl text-sm leading-relaxed text-ink-muted">
               Amounts are approximate; the final price is set in the written quote after survey. See the{" "}
               <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-                LED display prices hub
+                LED display prices page
               </Link>{" "}
-              for worked m² examples. Product PDPs stay on Turkish catalog URLs.
+              for worked m² examples.
             </p>
             <PanelPriceTable
               locale="en"

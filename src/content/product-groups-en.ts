@@ -18,7 +18,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     name: "Indoor LED display",
     h1: "Indoor LED display",
     lead: "Sharp, seamless image at close viewing distance",
-    title: "Indoor LED Display Prices & Models | Store, Café, Hall | ARLEDSCREEN",
+    title: "Indoor LED Display Models | ARLEDSCREEN",
     description:
       "Indoor LED for stores, cafés, showrooms and meeting halls: pitch selection, survey, install and service. NXTIONSTAR by ARLEDSCREEN — Istanbul.",
     short: "Indoor LED walls for close viewing",
@@ -45,7 +45,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     name: "Outdoor LED display",
     h1: "Outdoor LED display",
     lead: "Façade, totem and billboard LED for daylight viewing",
-    title: "Outdoor LED Display Prices & Models | Façade, Totem | ARLEDSCREEN",
+    title: "Outdoor LED Display Models | ARLEDSCREEN",
     description:
       "Outdoor LED for façades, totems and billboards: pitch, structure and install survey. NXTIONSTAR by ARLEDSCREEN — Gaziosmanpaşa, Istanbul.",
     short: "Outdoor LED for façades and totems",
@@ -110,7 +110,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       "Rental LED is priced by size, duration and site — it is quote-only. There is no fixed rental price; the published list covers purchase panels only.",
       "For ownership planning, use published purchase panel USD on /en/led-ekran-fiyatlari/.",
     ],
-    highlights: ["Quote by days and m²", "Install + strike plan", "Purchase alternative via price hub"],
+    highlights: ["Quote by days and m²", "Install + strike plan", "Purchase option on our price list"],
     faqs: [
       {
         question: "Is rental on the price list?",
@@ -159,7 +159,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     highlights: ["Glass-line applications", "Transparency vs pitch trade-off", "Quote-only"],
     faqs: [
       {
-        question: "Is transparent LED in the 12-SKU list?",
+        question: "Is transparent LED in the published 12-panel price list?",
         answer:
           "No. Transparent LED is quote-only. The 12 listed panel models are indoor/outdoor/GOB purchase modules.",
       },
@@ -223,7 +223,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     imageAlt: "Totem LED display",
     quoteOnly: true,
     intro: [
-      "Poster/totem units are sized per location and content loop. Pricing is quote-only — not part of the 12 panel SKU list.",
+      "Poster/totem units are sized per location and content loop. Pricing is by written quote — not part of the published 12-panel price list.",
     ],
     highlights: ["Indoor/outdoor options", "Single or double face", "Quote after site photos"],
     faqs: [
@@ -237,7 +237,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
     name: "LED modules & control systems",
     h1: "LED modules and control systems",
     lead: "Modules, spares and Huidu / NovaStar / Colorlight control",
-    title: "LED Modules & Controllers | Huidu, NovaStar, Colorlight | ARLEDSCREEN",
+    title: "LED Modules & Controllers | ARLEDSCREEN",
     description:
       "LED modules, spares and control systems (Huidu, NovaStar, Colorlight). Compatibility check after label photos. ARLEDSCREEN — Istanbul.",
     short: "Modules and controllers",

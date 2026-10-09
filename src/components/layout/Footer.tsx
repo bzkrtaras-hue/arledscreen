@@ -13,7 +13,7 @@ import { quoteWhatsappHref } from "@/lib/whatsapp";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/brand-icons";
 import { SocialLinks } from "@/components/layout/SocialLinks";
 import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
-import { BUSINESS_ADDRESS_LINES, BUSINESS_HOURS_TEXT, BUSINESS_MAP_URL } from "@/lib/social";
+import { BUSINESS_ADDRESS_LINES, BUSINESS_MAP_URL, businessHoursText } from "@/lib/social";
 import { ARTICLE_LINKS } from "@/content/article-links";
 
 interface FooterProps {
@@ -210,9 +210,9 @@ export function Footer({ locale }: FooterProps) {
             <p className="flex items-start gap-2">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#9CC0F5]" aria-hidden />
               <span>
-                {tr ? BUSINESS_HOURS_TEXT[0] : "Mon–Fri: 09:00–18:00"}
+                {businessHoursText(tr ? "tr" : "en")[0]}
                 <br />
-                {tr ? BUSINESS_HOURS_TEXT[1] : "Sat: 10:00–15:00"}
+                {businessHoursText(tr ? "tr" : "en")[1]}
               </span>
             </p>
             <p>

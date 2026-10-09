@@ -229,11 +229,11 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
               {en ? (
                 <>
                   We plan every step of your LED project — from survey through commissioning and after-sales service.
-                  HQ is Gaziosmanpaşa, Istanbul; we run projects Turkey-wide. For provinces with published records see the{" "}
-                  <Link href="/tr/bolgeler/" className="font-semibold text-cyan hover:underline">
+                  HQ is Gaziosmanpaşa, Istanbul; we run projects Turkey-wide. See our{" "}
+                  <Link href="/en/bolgeler/" className="font-semibold text-cyan hover:underline">
                     service regions
                   </Link>{" "}
-                  hub (TR).
+                  page for provinces where we have completed projects.
                 </>
               ) : (
                 <>

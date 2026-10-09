@@ -19,7 +19,7 @@ export function InventBridge({
       <meta httpEquiv="refresh" content={`0;url=${target}`} />
       <h1 className="font-display text-2xl font-bold text-ink">{h1}</h1>
       <p className="mt-3 text-ink-soft">
-        {locale === "tr" ? "Bu içerik şu sayfada:" : "Canonical hub:"}{" "}
+        {locale === "tr" ? "Bu içerik şu sayfada:" : "This content is on:"}{" "}
         <Link href={target} className="font-semibold text-cyan hover:underline">
           {target}
         </Link>

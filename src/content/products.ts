@@ -82,12 +82,27 @@ function enImageAlt(alt: string): string {
     .replaceAll("LED gönderici kart", "LED sending card");
 }
 
+/** EN display names for control products (TR `m.name` stays for /tr/). */
+const KONTROL_NAME_EN: Record<string, string> = {
+  "huidu-kontrol-kartlari-hd-c16": "Huidu HD-C16 Asynchronous LED Control Card",
+  "huidu-kontrol-kartlari-hd-a7": "Huidu HD-A7 4K Dual-Mode LED Controller",
+  "huidu-kontrol-kartlari-hd-w60": "Huidu HD-W60 Wi-Fi Single/Dual-Color Control Card",
+  "novastar-kontrolculer-vx600": "NovaStar VX600 All-in-One LED Controller",
+  "novastar-kontrolculer-tb50": "NovaStar Taurus TB50 Multimedia Player",
+  "novastar-kontrolculer-mctrl660-pro": "NovaStar MCTRL660 PRO Sending Card",
+  "colorlight-kontrolculer-x20": "Colorlight X20 Multimedia LED Processor",
+  "colorlight-kontrolculer-x40m": "Colorlight X40m High-Capacity LED Processor",
+  "colorlight-kontrolculer-vx20": "Colorlight VX20 Video Processor",
+  "colorlight-kontrolculer-s20": "Colorlight S20 LED Sending Card",
+};
+
 function fromModel(m: LedModel): Product {
   if (m.kind === "kontrol") {
+    const id = `${m.group}-${m.slug}`;
     return {
-      id: `${m.group}-${m.slug}`,
-      slug: `${m.group}-${m.slug}`,
-      name: m.name,
+      id,
+      slug: id,
+      name: KONTROL_NAME_EN[id] ?? m.name,
       series: m.brandName ?? KIND_SERIES_EN.kontrol,
       category: "indoor",
       shortDescription: m.note,

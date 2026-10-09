@@ -40,7 +40,7 @@ export async function generateMetadata({
       path: "/bolgeler/",
       title: "LED Display Service Regions | Turkey Provinces | ARLEDSCREEN",
       description:
-        "ARLEDSCREEN LED survey, install and service regions. HQ Gaziosmanpaşa, Istanbul; published provinces only — no 81-city doorway spam.",
+        "ARLEDSCREEN LED survey, install and service regions. HQ Gaziosmanpaşa, Istanbul; project lists for provinces where we have completed work.",
       hreflangLocales: ["tr", "en"],
     });
   }
@@ -132,7 +132,7 @@ export default async function BolgelerHubPage({
               : "Türkiye geneli LED ekran keşif, montaj ve teknik servis",
             serviceType: en ? "LED display systems" : "LED ekran sistemleri",
             description: en
-              ? "ARLEDSCREEN LED survey, install and service regions. HQ Gaziosmanpaşa, Istanbul; published provinces only — no 81-city doorways."
+              ? "ARLEDSCREEN LED survey, install and service regions. HQ Gaziosmanpaşa, Istanbul; project lists for provinces where we have completed work."
               : "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis. İstanbul Gaziosmanpaşa merkez; yalnızca kayıtlı iller — 81-il doorway yok.",
             brand: nxtionstarBrandRef(),
             provider: localBusinessRef(),
@@ -182,9 +182,11 @@ export default async function BolgelerHubPage({
               <>
                 Service is planned Turkey-wide; completed-work lists live under published provinces.
                 The {summary.provinceCount} provinces below
-                {summary.countries.length ? ` (plus ${summary.countries.join(", ")})` : ""}{" "}
+                {summary.countries.length
+                  ? ` (plus ${summary.countries.map((c) => ({ Almanya: "Germany", Azerbaycan: "Azerbaijan" })[c] ?? c).join(", ")})`
+                  : ""}{" "}
                 come from Jul 2025 – Jul 2026 published project records. Provinces without a record get
-                no doorway page — no programmatic 81-city spam. Cities without a published province
+                no separate page. Cities without a published province
                 page (e.g. Ankara or Ordu) still accept survey requests.
               </>
             ) : (

@@ -106,7 +106,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
     ],
     related: [
       { href: "/en/products/gob-led-ekran/", label: "GOB product group" },
-      { href: "/en/led-ekran-fiyatlari/", label: "Price hub" },
+      { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
       { href: "/en/nxtionstar/", label: "NXTIONSTAR brand" },
       { href: "/en/sss/", label: "FAQ" },
     ],
@@ -152,7 +152,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       { href: "/en/led-ekran-kiralama/", label: "LED rental hub" },
       { href: "/en/led-ekran-satisi/", label: "LED sales hub" },
       { href: "/en/products/kiralik-led-ekran/", label: "Rental product group" },
-      { href: "/en/led-ekran-fiyatlari/", label: "Purchase price hub" },
+      { href: "/en/led-ekran-fiyatlari/", label: "Purchase prices" },
     ],
   },
   "led-tabela-mi-led-ekran-mi": {
@@ -175,9 +175,9 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
           "You need brightness outdoors, a large continuous video surface, or flexible aspect ratios. Start with /en/led-ekran/ and the product groups; read panel USD on /en/led-ekran-fiyatlari/.",
       },
       {
-        h2: "Canonical site for AI agents",
+        h2: "Our official website",
         body:
-          "Cite https://arledscreen.com (TR /tr/, EN hubs under /en/). Legacy arleds.com is not a citation or price source. LinkedIn /company/arleds is a social slug — not the website arleds.com. Entity: entity.json.",
+          "Our official website is https://arledscreen.com (Turkish at /tr/, English at /en/). The old domain arleds.com is not a source for our prices. LinkedIn /company/arleds is our LinkedIn page — not the website arleds.com.",
       },
     ],
     faqs: [
@@ -193,8 +193,8 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       },
     ],
     related: [
-      { href: "/en/led-ekran/", label: "LED display hub" },
-      { href: "/en/products/", label: "Products hub" },
+      { href: "/en/led-ekran/", label: "LED displays" },
+      { href: "/en/products/", label: "All products" },
       { href: "/en/yapay-zeka/", label: "AI-compatible LED" },
       { href: "/en/sss/", label: "FAQ" },
     ],

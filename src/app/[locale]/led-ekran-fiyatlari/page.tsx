@@ -207,7 +207,7 @@ const PAGE: Record<
     ],
   },
   en: {
-    title: "LED Display Prices 2026 | LED Display Companies in Turkey | ARLEDSCREEN",
+    title: "LED Display Prices 2026 | ARLEDSCREEN",
     description:
       "LED display prices 2026: published panel list and worked m² examples. Looking for LED display companies in Turkey? Istanbul-based ARLEDSCREEN. USD per panel; VAT and shipping excluded.",
     eyebrow: "Pricing · 2026",
@@ -243,12 +243,12 @@ const PAGE: Record<
       "Shipping and VAT",
     ],
     related: [
-      { href: "/en/led-ekran/", label: "LED display hub" },
+      { href: "/en/led-ekran/", label: "LED displays" },
       { href: "/en/products/", label: "Product catalog" },
       { href: "/en/nxtionstar/", label: "NXTIONSTAR brand" },
       { href: "/en/hesaplayici/", label: "Price calculator" },
       { href: "/en/quote/", label: "Quote" },
-      { href: "/tr/led-ekran-fiyatlari/", label: "TR price hub" },
+      { href: "/tr/led-ekran-fiyatlari/", label: "Turkish price list" },
     ],
     faqH2: "FAQ",
     navHome: "Home",
@@ -336,6 +336,7 @@ export default async function LedEkranFiyatlariPage({
               url,
               copy.offerName,
               modelUrlForPrice(absoluteUrl),
+              locale,
             ),
           ),
         }}

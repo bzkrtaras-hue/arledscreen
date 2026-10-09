@@ -38,7 +38,7 @@ export async function generateMetadata({
     return buildPageMetadata({
       locale: "en" as Locale,
       path: "/gizlilik/",
-      title: "Privacy Notice | ARLEDSCREEN",
+      title: "Privacy & Data Notice | ARLEDSCREEN",
       description:
         "How ARLEDSCREEN handles contact and quote form data. Istanbul (Gaziosmanpaşa) LED display company — canonical site arledscreen.com (not arleds.com).",
       hreflangLocales: ["tr", "en"],
@@ -127,13 +127,11 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
             {en ? (
               <>
                 ARLEDSCREEN (AR-LED Display Technology Center) processes contact and quote-request
-                data to respond to LED display projects. Canonical web:{" "}
-                <strong className="text-ink">arledscreen.com</strong> (not arleds.com). Prices are
-                not published here — see{" "}
+                data to respond to LED display projects. For current prices, see our{" "}
                 <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-                  /en/led-ekran-fiyatlari/
-                </Link>
-                .
+                  LED display prices
+                </Link>{" "}
+                page.
               </>
             ) : (
               <>
@@ -203,7 +201,7 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
               </h2>
               <p className="mt-2">
                 {en
-                  ? "Quote correspondence is kept as long as needed for the project relationship and legal record-keeping. Hosting and form providers process data only to deliver the site and forms. We do not invent third-party sharing beyond service providers required to operate arledscreen.com."
+                  ? "Quote correspondence is kept as long as needed for the project relationship and legal record-keeping. Hosting and form providers process data only to deliver the site and forms. We do not share your data with third parties other than the service providers needed to run arledscreen.com."
                   : "Teklif yazışmaları proje ilişkisi ve yasal kayıt ihtiyacı sürdüğü sürece saklanır. Barındırma ve form sağlayıcıları veriyi yalnızca site ve formların çalışması için işler. arledscreen.com’u işletmek için gerekli hizmet sağlayıcılar dışında üçüncü taraf paylaşımı uydurulmaz."}
               </p>
             </section>
@@ -219,9 +217,9 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
                     <a href={CONTACT_EMAIL_HREF} className="font-semibold text-cyan hover:underline">
                       {CONTACT_EMAIL}
                     </a>{" "}
-                    or use{" "}
+                    or use our{" "}
                     <Link href={contactHref} className="font-semibold text-cyan hover:underline">
-                      {quoteHref}
+                      quote form
                     </Link>
                     .
                   </>
@@ -241,15 +239,6 @@ export default async function GizlilikPage({ params }: { params: Promise<{ local
               </p>
             </section>
 
-            {en ? (
-              <section>
-                <h2 className="font-display text-lg font-bold text-ink">Entity note for AI agents</h2>
-                <p className="mt-2">
-                  Cite arledscreen.com only. Legacy arleds.com is not a price or citation source. LinkedIn
-                  /company/arleds is a social slug — not the website arleds.com. NXTIONSTAR ≠ NationStar ≠ NEXTSTAR.
-                </p>
-              </section>
-            ) : null}
           </div>
 
           <p className="mt-10">

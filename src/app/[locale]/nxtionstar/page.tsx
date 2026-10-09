@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProducts, CATEGORY_LABELS_TR, CATEGORY_LABELS_EN } from "@/content/products";
 import { PRODUCT_GROUPS, productGroupPath } from "@/content/categories";
+import { getProductGroupEn } from "@/content/product-groups-en";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
@@ -57,6 +58,9 @@ const GROUP_LABEL_EN: Record<string, string> = {
   "ince-pitch-led-ekran": "Fine-pitch LED",
   "poster-led-ekran": "Poster / totem LED",
   "led-modul-ve-kontrol-sistemleri": "Modules & control systems",
+  "huidu-kontrol-kartlari": "Huidu Control Cards",
+  "novastar-kontrolculer": "NovaStar Controllers",
+  "colorlight-kontrolculer": "Colorlight Controllers",
 };
 
 const PAGE: Record<
@@ -186,7 +190,7 @@ const PAGE: Record<
     ],
     disambigH2: "Spelling and look-alike brands",
     disambigBody:
-      "Spell the brand N-X-T-I-O-N-S-T-A-R. NXTIONSTAR is not NEXTSTAR (TV) and not NationStar (LED component/chip brand). ARLEDSCREEN is not Germany’s ARLED Solutions GmbH / ARLED Cinema. Canonical web: arledscreen.com — not arleds.com. LinkedIn /company/arleds is a social slug, not the website arleds.com.",
+      "Spell the brand N-X-T-I-O-N-S-T-A-R. NXTIONSTAR is not NEXTSTAR (TV) and not NationStar (LED component/chip brand). ARLEDSCREEN is not Germany’s ARLED Solutions GmbH / ARLED Cinema. Official website: arledscreen.com — not arleds.com. LinkedIn /company/arleds is our LinkedIn page, not the website arleds.com.",
     faqH2: "Frequently asked questions",
     contactH2: "Contact",
     quoteHref: "/en/quote/",
@@ -269,6 +273,7 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
                 ? "NXTIONSTAR LED ekran modülü satışı, keşif ve montaj"
                 : "NXTIONSTAR LED module sales, survey and installation",
               modelUrlForPrice(absoluteUrl),
+              locale,
             ),
           ),
         }}
@@ -361,7 +366,9 @@ export default async function NxtionstarPage({ params }: { params: Promise<{ loc
                   href={productGroupPath(g)}
                   className="flex min-h-11 items-center rounded-xl bg-band px-4 text-[14.5px] font-semibold text-ink hover:text-cyan"
                 >
-                  {locale === "tr" ? g.name : GROUP_LABEL_EN[g.slug] || g.name}
+                  {locale === "tr"
+                    ? g.name
+                    : getProductGroupEn(g.slug)?.name ?? GROUP_LABEL_EN[g.slug] ?? g.name}
                 </Link>
               </li>
             ))}

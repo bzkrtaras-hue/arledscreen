@@ -168,7 +168,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "Our role is clear: we support integrators, agencies and facility owners with engineering-led LED wall projects across Turkey. NXTIONSTAR is our product sub-brand.",
     },
     hesaplayici: {
-      title: "LED Display Price Calculator | Materials & Cost | ARLEDSCREEN",
+      title: "LED Display Price Calculator | ARLEDSCREEN",
       description:
         "LED display price calculator: size and module type → module count and approximate cost (ex. VAT/shipping). Final amount in a written quote.",
       keywords: [
@@ -198,7 +198,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "Lock geometry before the site survey: 500×500 or 500×1000 cabinets, pitch choice, viewing distance and three-phase power estimates.",
     },
     quote: {
-      title: "Request LED Display Quote | Enterprise Projects | ARLEDSCREEN",
+      title: "Request an LED Display Quote | ARLEDSCREEN",
       description:
         "Enterprise LED wall quote: share size, indoor/outdoor use, timeline and location. ARLEDSCREEN replies with a preliminary BOM and power outline.",
       keywords: [
@@ -213,7 +213,7 @@ const seoByLocale: Record<Locale, Record<SeoPageKey, PageSeo>> = {
         "Share contact details, project dimensions and schedule so our engineering desk can reply with a preliminary BOM and power outline.",
     },
     "yapay-zeka": {
-      title: "AI-Compatible LED Display | Media Server Integration — ARLEDSCREEN",
+      title: "AI-Compatible LED Display | ARLEDSCREEN",
       description:
         "AI-compatible LED walls: pitch, signal topology and media-server integration for AI content engines. How ARLEDSCREEN plans NXTIONSTAR installs.",
       keywords: [
