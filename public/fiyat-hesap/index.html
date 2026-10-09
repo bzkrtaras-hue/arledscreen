@@ -1129,7 +1129,8 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     close: false,
     pending: null,
     envExplicit: false,
-    place: ""
+    place: "",
+    pitch: null
   };
 
   function letter(ch) {
@@ -1374,7 +1375,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     const f = {
       text: t, env: null, envFrom: null, places: [], placeWords: [], vitrin: false, venueNear: false,
       rent: null, curve: null, budget: null, touch: null, close: null, far: null,
-      size: null, sizeAmbiguous: false, dist: null
+      size: null, sizeAmbiguous: false, dist: null, pitch: null
     };
     const inAt = Math.max(word(t, IN_WORDS), hit(t, ["ic"]));
     const outAt = Math.max(word(t, OUT_WORDS), hit(t, ["dis"]));
@@ -1431,10 +1432,18 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     if (hit(t, ["uzak degil"]) >= 0) f.far = false;
     else if (hit(t, ["uzaktan", "uzak mesafe", "yol kenari", "otoyol", "uzak"]) >= 0) f.far = true;
     const spans = [];
-    const size = grabSize(t, spans, pending);
+    /* Model adı ("P1.86", "p 4"): ölçü/mesafe ayrıştırmasına karışmasın diye metinden çıkarılır. */
+    let ts = t;
+    const pm = /(^|[^a-z0-9])p ?(\d+(?:[.,]\d+)?)(?![0-9a-z])/.exec(t);
+    if (pm) {
+      f.pitch = num(pm[2]);
+      const at = pm.index + pm[1].length;
+      ts = t.slice(0, at) + " ".repeat(pm[0].length - pm[1].length) + t.slice(at + pm[0].length - pm[1].length);
+    }
+    const size = grabSize(ts, spans, pending);
     if (size && size.ambiguous) f.sizeAmbiguous = true;
     else if (size) f.size = { w: size.w, h: size.h };
-    const dist = grabDist(t, spans, pending);
+    const dist = grabDist(ts, spans, pending);
     if (dist != null && isFinite(dist) && dist > 0) f.dist = dist;
     return f;
   }
@@ -1460,7 +1469,37 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
       mem.h = f.size.h;
     }
     if (f.dist != null) mem.dist = f.dist;
+    if (f.pitch != null) mem.pitch = f.pitch;
+    else if (f.budget) mem.pitch = null;
+    if (mem.pitch != null && mem.env && !namedModel()) {
+      f.modelMiss = { pitch: mem.pitch, env: mem.env, near: nearModels(mem.pitch, mem.env) };
+      mem.pitch = null;
+    }
     return f;
+  }
+
+  /* Müşterinin adını verdiği model: yalnızca hesaplayıcının modül listesinden (fiyat oradan). */
+  function envModules(env) { return env === "dis" ? outdoorModules : indoorModules; }
+  function modulePitch(m) { const x = /^P(\d+(?:\.\d+)?)/.exec(m.name); return x ? Number(x[1]) : NaN; }
+  function namedModel() {
+    if (mem.pitch == null || !mem.env) return null;
+    const m = envModules(mem.env).find(function (x) { return modulePitch(x) === mem.pitch; });
+    if (!m) return null;
+    const p = "P" + String(modulePitch(m));
+    return {
+      kind: "panel",
+      name: (mem.env === "dis" ? "Dış mekân " : "İç mekân ") + p,
+      catalog: m.name,
+      price: m.price,
+      why: "İstediğiniz model " + p + ". Panel başı " + money(m.price) + "."
+    };
+  }
+  function nearModels(pitch, env) {
+    const seen = [];
+    envModules(env).map(modulePitch).filter(function (v) { return isFinite(v); })
+      .sort(function (a, b) { return Math.abs(a - pitch) - Math.abs(b - pitch) || a - b; })
+      .forEach(function (v) { if (seen.indexOf(v) < 0 && seen.length < 2) seen.push(v); });
+    return seen.map(function (v) { return (env === "dis" ? "Dış mekân P" : "İç mekân P") + String(v); });
   }
 
   function effectiveDist() {
@@ -1472,6 +1511,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
   }
 
   function pitchNeedsDistance() {
+    if (namedModel()) return false;
     if (mem.vitrin && mem.touch === true && mem.env !== "dis") return false;
     if (mem.env === "ic" && mem.budget) return false;
     if (mem.env === "dis" && mem.budget && mem.dist == null && !mem.close) return false;
@@ -1502,6 +1542,8 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     if (mem.curve) {
       return { kind: "visit", name: "Esnek LED ekran", why: "Kavisli yüzey için esnek ekran gerekir. Liste fiyatı yok." };
     }
+    const named = namedModel();
+    if (named) return named;
     if (mem.vitrin && mem.touch === true && mem.env !== "dis") {
       return {
         kind: "panel",
@@ -1753,6 +1795,12 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
   }
 
   let lastOffer = null;
+  let waAsked = false;   /* Melis "WhatsApp'tan teklif isteyelim mi?" diye sordu; "evet" WhatsApp'ı açar. */
+  const YES_WA = /^(evet|olur|tamam|isterim|e|ok|okey|tabi|tabii|elbette|peki|lutfen)( (evet|olur|tamam|isterim|isteyelim|lutfen|olsun|ok))*[ .!]*$/;
+  /* Fiyat/ürün gösterildikten sonra: teklif niyeti WhatsApp'ı, "hesapla" hesaplayıcıyı açar (çiplerle aynı). */
+  const WA_INTENT = /(^| )(teklif|whatsapp|watsap|wp( |$)|fiyat iste|kesin teklif|evet|olur|tamam|isterim)/;
+  const WA_NOT = /(baglayici|garanti|kdv|vergi|nakliye|kargo|taksit|odeme|montaj|kurulum|teslim|indirim|kampanya|ne kadar|kac para|hayir|istemiyorum|istemem|degil)/;
+  const CALC_INTENT = /(^| )(bu urunle )?hesapla(yalim|yin|yiniz|r misiniz|)?( |$)/;
 
   function paintCta(item) {
     const btn = document.getElementById("ar-cta");
@@ -2015,7 +2063,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     const topic = topicOf(t);
     const wasName = nameJust;
     const hasData = !!(f.env || f.places.length || f.size || (f.sizeAmbiguous && mem.pending === "size") || f.dist != null ||
-      (f.rent != null && topic !== "teslimat") || f.curve != null || f.budget != null || f.touch != null || f.close != null || f.far != null);
+      (f.rent != null && topic !== "teslimat") || f.curve != null || f.budget != null || f.touch != null || f.close != null || f.far != null || f.pitch != null);
     if (hasData) {
       if (topic && NOTE_TOPICS.indexOf(topic) >= 0) pendingNote = topicAnswer(topic).text;
       return false;
@@ -2032,10 +2080,15 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     let follow = "";
     if (gap) follow = " " + askFor(gap);
     else if (!topic && !wasName) follow = " Ölçüyü ya da yeri değiştirmek ister misiniz?";
-    else if (done && (topic === "thanks" || topic === "binding" || topic === "price")) follow = lastOffer.price ? " Kesin teklifi WhatsApp'tan isteyelim mi?" : " WhatsApp'tan teklif isteyelim mi?";
+    if (done && !topic && !wasName) {   /* ürün/fiyat belli: "anlayamadım" yerine WhatsApp teklifi */
+      lead = lastOffer.price ? "Kesin teklifi WhatsApp'tan isteyelim mi?" : "WhatsApp'tan teklif isteyelim mi?";
+      follow = " Ölçüyü ya da yeri de değiştirebilirsiniz.";
+      waAsked = true;
+    }
+    else if (done && (topic === "thanks" || topic === "binding" || topic === "price")) { follow = lastOffer.price ? " Kesin teklifi WhatsApp'tan isteyelim mi?" : " WhatsApp'tan teklif isteyelim mi?"; waAsked = true; }
     addMsg("bot", (lead + follow).trim());
     let chips = gap ? (CHIPS[gap.pending] || null) : offerChips();
-    if (wa) {
+    if (wa || waAsked) {
       const first = lastOffer ? WA_OFFER_CHIP : TEAM_CHIP;
       chips = [first].concat((chips || []).filter(function (c) { return !(c && c.action === first.action); }));
     }
@@ -2056,6 +2109,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     if (item.kind === "visit") {
       addMsg("bot", lead + addr(forPlace() + "önerim " + lowFirst(item.name) + ".") + " Fiyatı keşiften sonra netleşir.");
       addMsg("bot", "WhatsApp'tan teklif isteyelim mi?");
+      waAsked = true;
       return;
     }
     if (gap && gap.pending === "size") {
@@ -2127,6 +2181,29 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
   }
 
   function handleCustomer(text) {
+    const askedWa = waAsked;
+    waAsked = false;
+    if (askedWa && YES_WA.test(fold(text))) {
+      askWhatsApp();   /* "WhatsApp'tan teklif iste" çipiyle aynı işlem */
+      addMsg("bot", L("WhatsApp'ı açıyorum, sohbet özetiniz mesajda hazır.", "Opening WhatsApp, your chat summary is ready in the message."));
+      queueChips([WA_OFFER_CHIP]);
+      return;
+    }
+    if (offerDone()) {
+      const pf = parse(text, mem.pending);
+      const newData = !!(pf.env || pf.places.length || pf.size || pf.dist != null || pf.pitch != null || pf.rent != null || pf.curve != null || pf.budget != null || pf.touch != null);
+      if (!newData && CALC_INTENT.test(pf.text) && lastOffer.price && lastOffer.w != null && lastOffer.h != null) {
+        calcAction();   /* "Bu ürünle hesapla" çipiyle aynı işlem */
+        queueChips(offerChips());
+        return;
+      }
+      if (!newData && WA_INTENT.test(pf.text) && !WA_NOT.test(pf.text)) {
+        askWhatsApp();   /* "WhatsApp'tan teklif iste" çipiyle aynı işlem */
+        addMsg("bot", L("WhatsApp'ı açıyorum, sohbet özetiniz mesajda hazır.", "Opening WhatsApp, your chat summary is ready in the message."));
+        queueChips([WA_OFFER_CHIP]);
+        return;
+      }
+    }
     if (ASK_BOT.test(" " + text.toLocaleLowerCase("tr-TR") + " ")) {
       const g0 = missing();
       addMsg("bot", WHO_REPLY + (g0 && !lastOffer ? " " + askFor(g0) : ""));
@@ -2136,16 +2213,18 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     learnName(text);
     if (smallTalk(text)) return;
     const r = step(text);
+    const miss = r.f.modelMiss;
+    if (miss) addMsg("bot", "P" + String(miss.pitch) + " " + (miss.env === "dis" ? "dış" : "iç") + " mekân için listemizde yok. En yakın modeller: " + miss.near.join(" ve ") + ".");
     if (r.item) paintCard(r.item);
     speak(r.item, r.gap, r.ctx);
     if (pendingNote) { addMsg("bot", pendingNote); pendingNote = ""; }
-    queueChips(chipsFor(r));
+    queueChips(miss ? miss.near.concat(chipsFor(r) || []) : chipsFor(r));
   }
 
   function reset() {
     Object.assign(mem, {
       env: null, envExplicit: false, place: "", vitrin: false, venueNear: false, w: null, h: null, dist: null,
-      budget: false, touch: null, rent: false, curve: false, far: false, close: false, pending: "place"
+      budget: false, touch: null, rent: false, curve: false, far: false, close: false, pending: "place", pitch: null
     });
   }
 

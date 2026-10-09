@@ -161,7 +161,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         </Link>
 
         <nav
-          className="ml-auto hidden min-w-0 flex-1 justify-center xl:flex"
+          className="ml-auto hidden min-w-0 flex-1 justify-center min-[1360px]:flex"
           aria-label={tr ? "Ana menü" : "Primary"}
         >
           <ul className="flex w-full flex-nowrap items-center justify-end gap-1 xl:justify-center 2xl:gap-1.5">
@@ -369,7 +369,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
 
         <button
           type="button"
-          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] ml-auto h-12 w-12 shrink-0 xl:hidden"
+          className="liquid-glass-btn liquid-glass-btn--primary liquid-glass-btn--icon relative z-[2] ml-auto h-12 w-12 shrink-0 min-[1360px]:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -412,7 +412,7 @@ export function Header({ locale, groups, guides }: HeaderProps) {
         {open ? (
           <m.div
             key="drawer"
-            className="fixed inset-0 z-[60] xl:hidden"
+            className="fixed inset-0 z-[60] min-[1360px]:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -11,7 +11,9 @@ import json, os, re
 from PIL import Image, ImageOps
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "public")
-SRC_DIRS = ["projects", "brand"]
+SRC_DIRS = ["projects", "brand", "control"]
+# Control-card device photos: also keep a full-size WebP (same dimensions as the original).
+FULL_SIZE_DIRS = {"control"}
 WIDTHS = [480, 960, 1600]
 manifest = {}
 for d in SRC_DIRS:
@@ -27,13 +29,15 @@ for d in SRC_DIRS:
             im = im.convert("RGBA" if has_alpha else "RGB")
             w, h = im.size
             widths = [x for x in WIDTHS if x < w] + [min(w, WIDTHS[-1])]
+            if d in FULL_SIZE_DIRS:
+                widths.append(w)
             widths = sorted(set(widths))
             out = []
             for tw in widths:
                 th = round(h * tw / w)
                 dst = os.path.join(ROOT, "opt", base + f"-{tw}.webp")
                 os.makedirs(os.path.dirname(dst), exist_ok=True)
-                im.resize((tw, th), Image.LANCZOS).save(dst, "WEBP", quality=78 if not has_alpha else 85, method=6)
+                im.resize((tw, th), Image.LANCZOS).save(dst, "WEBP", quality=78 if not has_alpha else (80 if d in FULL_SIZE_DIRS else 85), method=6)
                 out.append(tw)
             manifest["/" + rel] = {"w": w, "h": h, "widths": out}
 
