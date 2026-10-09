@@ -99,22 +99,22 @@ jobs:
             url="https://arledscreen.com${path}"
             code="$(curl -sS -o /tmp/ai-art.body -w '%{http_code}' -A 'Mozilla/5.0' "$url")"
             test "$code" = "200" || { echo "FAIL $code $url" >&2; exit 1; }
-            head -c 1 /tmp/ai-art.body | grep -q '{' || { echo "FAIL not JSON $url" >&2; exit 1; }
+            test "$(head -c 1 /tmp/ai-art.body)" = "{" || { echo "FAIL not JSON $url" >&2; exit 1; }
             echo "OK AI artefact $url"
           done
 
           llms="$(curl -fsSL -A 'Mozilla/5.0' https://arledscreen.com/llms.txt)"
-          echo "$llms" | grep -q 'ai-shopping.json' || { echo "FAIL live llms.txt missing ai-shopping.json" >&2; exit 1; }
-          echo "$llms" | grep -q 'citeOneLiner' || { echo "FAIL live llms.txt missing citeOneLiner" >&2; exit 1; }
+          grep -q 'ai-shopping.json' <<<"$llms" || { echo "FAIL live llms.txt missing ai-shopping.json" >&2; exit 1; }
+          grep -q 'citeOneLiner' <<<"$llms" || { echo "FAIL live llms.txt missing citeOneLiner" >&2; exit 1; }
           sm="$(curl -fsSL -A 'Mozilla/5.0' https://arledscreen.com/sitemap.xml)"
-          echo "$sm" | grep -q 'ai-shopping.json' || { echo "FAIL live sitemap missing ai-shopping.json" >&2; exit 1; }
-          echo "$sm" | grep -q 'entity.json' || { echo "FAIL live sitemap missing entity.json" >&2; exit 1; }
+          grep -q 'ai-shopping.json' <<<"$sm" || { echo "FAIL live sitemap missing ai-shopping.json" >&2; exit 1; }
+          grep -q 'entity.json' <<<"$sm" || { echo "FAIL live sitemap missing entity.json" >&2; exit 1; }
 
           # Live graph must include entity-first price authority (post–makesOffer ships).
           ent="$(curl -fsSL -A 'Mozilla/5.0' https://arledscreen.com/entity.json)"
-          echo "$ent" | grep -q 'makesOffer' || { echo "FAIL live entity.json missing makesOffer" >&2; exit 1; }
-          echo "$ent" | grep -q '#priced-panels-aggregate' || { echo "FAIL live entity missing AggregateOffer @id" >&2; exit 1; }
-          echo "$ent" | grep -q '#localbusiness' || { echo "FAIL live entity missing #localbusiness location" >&2; exit 1; }
+          grep -q 'makesOffer' <<<"$ent" || { echo "FAIL live entity.json missing makesOffer" >&2; exit 1; }
+          grep -q '#priced-panels-aggregate' <<<"$ent" || { echo "FAIL live entity missing AggregateOffer @id" >&2; exit 1; }
+          grep -q '#localbusiness' <<<"$ent" || { echo "FAIL live entity missing #localbusiness location" >&2; exit 1; }
           echo "OK live GEO llms + sitemap + entity price graph"
 
       - name: IndexNow — ping GEO / invent surfaces after Production smoke
