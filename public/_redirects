@@ -11,6 +11,18 @@
 /index.html https://arledscreen.com/tr/ 301
 /index.htm https://arledscreen.com/tr/ 301
 
+# Calculator: old locale-prefixed links (e.g. /tr/fiyat-hesap/ in team docs) -> calculator page (site audit 2026-10-09)
+/tr/fiyat-hesap /tr/hesaplayici/ 301
+/tr/fiyat-hesap/ /tr/hesaplayici/ 301
+/en/fiyat-hesap /en/hesaplayici/ 301
+/en/fiyat-hesap/ /en/hesaplayici/ 301
+
+# Locale-less section roots -> Turkish section (were 404)
+/products /tr/products/ 301
+/products/ /tr/products/ 301
+/rehber /tr/rehber/ 301
+/rehber/ /tr/rehber/ 301
+
 # Legacy Hostinger / Horizons paths → current Next.js routes (301)
 /iletisim /tr/quote/ 301
 /iletisim/ /tr/quote/ 301
@@ -104,8 +116,8 @@
 /sertifikalar /tr/about/ 301
 /kullanim-kosullari /tr/about/ 301
 /kullanim-kosullari/ /tr/about/ 301
-/blog /tr/rehber/ 301
-/blog/ /tr/rehber/ 301
+/blog /tr/blog/ 301
+/blog/ /tr/blog/ 301
 /blog/* /tr/rehber/ 301
 /blogarticle /tr/rehber/ 301
 /blogdetail /tr/rehber/ 301

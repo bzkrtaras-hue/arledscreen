@@ -49,7 +49,7 @@ export async function generateMetadata({
     path: "/bolgeler/",
     title: "LED Ekran Hizmet Bölgesi: Türkiye İlleri | ARLEDSCREEN",
     description:
-      "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; Tem 2025–Tem 2026 kayıtlı iller ve proje örnekleri.",
+      "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; Tem 2025–Tem 2026 proje tamamladığımız iller ve proje örnekleri.",
     hreflangLocales: ["tr", "en"],
   });
 }
@@ -58,7 +58,7 @@ const FAQS_TR = [
   {
     question: "Hangi şehirlerde LED ekran kurulumu yapıyorsunuz?",
     answer:
-      "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Hizmetimiz Türkiye geneli; tamamlanan iş listemiz kayıtlı illerde yer alır (Tem 2025 – Tem 2026: 13 il ile Almanya ve Azerbaycan). Kayıdı olmayan il için kapı sayfası açılmaz.",
+      "Merkezimiz İstanbul Gaziosmanpaşa'dadır. Hizmetimiz Türkiye geneli; Tem 2025 – Tem 2026 arasında 13 ilde ve Almanya ile Azerbaycan'da proje tamamladık. Diğer iller için de keşif talebi alıyoruz.",
   },
   {
     question: "İstanbul dışına keşif için geliyor musunuz?",
@@ -68,7 +68,7 @@ const FAQS_TR = [
   {
     question: "Şehir sayfalarındaki proje sayıları neyi gösterir?",
     answer:
-      "Yalnızca sitede yayımlanmış referans kayıtlarından türetilir. Her il sayfasında o ile ait konumlar ve örnek kayıtlar listelenir; kaydı olmayan il için sayfa üretilmez.",
+      "O ilde tamamladığımız ve sitede yayımladığımız projelerin sayısını gösterir. Her il sayfasında o ildeki proje konumları ve örnek projeler listelenir.",
   },
 ];
 
@@ -132,7 +132,7 @@ export default async function BolgelerHubPage({
             serviceType: en ? "LED display systems" : "LED ekran sistemleri",
             description: en
               ? "ARLEDSCREEN LED survey, install and service regions. HQ Gaziosmanpaşa, Istanbul; project lists for provinces where we have completed work."
-              : "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis. İstanbul Gaziosmanpaşa merkez; yalnızca kayıtlı iller — 81-il doorway yok.",
+              : "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis. İstanbul Gaziosmanpaşa merkez; proje tamamladığımız iller.",
             brand: nxtionstarBrandRef(),
             provider: localBusinessRef(),
             areaServed: { "@type": "Country", name: en ? "Turkey" : "Türkiye" },
@@ -151,7 +151,7 @@ export default async function BolgelerHubPage({
         description={
           en
             ? "ARLEDSCREEN LED survey, install and service regions. HQ Gaziosmanpaşa, Istanbul; published provinces and project samples only."
-            : "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; kayıtlı iller ve proje örnekleri."
+            : "ARLEDSCREEN LED ekran keşif, montaj ve teknik servis hizmet bölgesi. İstanbul Gaziosmanpaşa merkez; proje tamamladığımız iller ve proje örnekleri."
         }
         cssSelectors={["#bolge-h1", "#bolge-lead"]}
         mainEntity={{ "@id": `${pageUrl}#service` }}
@@ -184,11 +184,11 @@ export default async function BolgelerHubPage({
               </>
             ) : (
               <>
-                Hizmetimiz Türkiye geneli; tamamlanan iş listemiz kayıtlı illerde yer alır. Aşağıdaki{" "}
+                Hizmetimiz Türkiye geneli. Aşağıdaki{" "}
                 {summary.provinceCount} il
                 {summary.countries.length ? ` (ayrıca ${summary.countries.join(", ")})` : ""}, Tem
-                2025 – Tem 2026 yayımlanmış proje kayıtlarından türetilir. Ankara veya Ordu gibi henüz
-                yayımlanmış proje kaydı olmayan şehirler için de keşif talebi alınır.
+                2025 – Tem 2026 arasında proje tamamladığımız yerlerdir. Ankara veya Ordu gibi burada
+                listelenmeyen şehirler için de keşif talebi alıyoruz.
               </>
             )}
           </p>
@@ -237,10 +237,10 @@ export default async function BolgelerHubPage({
               {en ? "Request survey & quote" : "Keşif ve teklif iste"}
             </Link>
             <Link
-              href="/tr/projelerimiz/"
+              href={`/${locale}/projelerimiz/`}
               className="btn-soft inline-flex min-h-12 items-center justify-center border border-cyan/50 bg-white px-6 text-cyan hover:bg-cyan-50"
             >
-              {en ? "All projects (TR)" : "Tüm projeler"}
+              {en ? "All projects" : "Tüm projeler"}
             </Link>
           </div>
         </div>
@@ -262,7 +262,7 @@ export default async function BolgelerHubPage({
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">
                   {en
                     ? `${region.projectCount} published project${region.projectCount === 1 ? "" : "s"}${region.isHq ? " · HQ" : ""}`
-                    : `${region.projectCount} kayıtlı proje${region.isHq ? " · merkez ofis" : ""}`}
+                    : `${region.projectCount} tamamlanan proje${region.isHq ? " · merkez ofis" : ""}`}
                 </p>
                 <p className="mt-3 text-sm font-semibold text-cyan">
                   {en ? "Province page (TR) →" : "İl sayfasına git →"}

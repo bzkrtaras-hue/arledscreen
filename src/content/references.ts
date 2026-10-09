@@ -295,7 +295,7 @@ export const references: Reference[] = [
     id: "ref-36",
     date: "Eyl 2025",
     company: "aajansproduksiyon",
-    detail: "128\u00d7160 cm P3 Outdoor",
+    detail: "128\u00d7160 cm P3 dış mekân",
     location: "",
     source: "Reels",
   },

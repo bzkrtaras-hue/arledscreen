@@ -151,7 +151,7 @@ export default async function AboutPage({ params }: PageProps) {
                 </Link>
               </li>
               <li>
-                <Link href="/tr/projelerimiz/" className="font-semibold text-cyan hover:underline">
+                <Link href={`/${locale}/projelerimiz/`} className="font-semibold text-cyan hover:underline">
                   Projeler
                 </Link>
               </li>

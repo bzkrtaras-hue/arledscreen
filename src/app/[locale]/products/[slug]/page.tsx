@@ -618,7 +618,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
         <section id="projeler" className="scroll-mt-28 border-t border-border bg-white py-14 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
-              eyebrow="Proje kayıtları"
+              eyebrow="Proje örnekleri"
               title="Bu gruptan tamamlanan projeler"
               description="Bilgiler proje kayıtlarında yer aldığı şekliyle verilmiştir."
             />
@@ -636,7 +636,7 @@ export default async function ProductGroupPage({ params }: PageProps) {
             </ul>
             <p className="mt-8 text-center">
               <Link href="/tr/projelerimiz/#liste" className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-cyan hover:underline">
-                Tüm proje kayıtları <ArrowRight className="h-4 w-4" aria-hidden />
+                Tüm projeler <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </p>
           </div>

@@ -104,7 +104,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       "Rental LED for stage, fair and events. USD 50 per m² per day. ARLEDSCREEN install and strike support — Istanbul.",
     short: "Rental LED for events",
     tag: "Rental",
-    imageAlt: "Rental LED cabinet kit",
+    imageAlt: "LED screen on a concert stage with the audience",
     quoteOnly: true,
     intro: [
       "Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
@@ -242,7 +242,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       "LED modules, spares and control systems (Huidu, NovaStar, Colorlight). Compatibility check after label photos. ARLEDSCREEN — Istanbul.",
     short: "Modules and controllers",
     tag: "Modules · Control",
-    imageAlt: "LED control and module service bench",
+    imageAlt: "LED module types: indoor, flexible and outdoor models",
     quoteOnly: true,
     intro: [
       "Spare modules and controllers are matched to existing walls from label photos and measurements.",
