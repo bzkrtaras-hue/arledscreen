@@ -2,6 +2,7 @@ import { BLOG_POSTS } from "@/content/blog";
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site";
 import { SEO_GUIDE_SLUGS } from "@/content/seo-guides";
+import { INSTALL_GUIDE_SLUGS } from "@/content/install-guides";
 import { PRODUCT_GROUPS } from "@/content/categories";
 import { LED_MODELS, modelPath } from "@/content/models";
 import { SERVICE_REGIONS } from "@/content/service-regions";
@@ -72,6 +73,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     });
   }
+  for (const slug of INSTALL_GUIDE_SLUGS) {
+    entries.push({
+      url: absoluteUrl(`/tr/rehber/${slug}/`),
+      changeFrequency: "weekly",
+      priority: 0.85,
+    });
+  }
 
   for (const route of EN_CORE) {
     const path = withTrailingSlash(route.path);
@@ -82,6 +90,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
   for (const slug of SEO_GUIDE_SLUGS) {
+    entries.push({
+      url: absoluteUrl(`/en/rehber/${slug}/`),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    });
+  }
+  for (const slug of INSTALL_GUIDE_SLUGS) {
     entries.push({
       url: absoluteUrl(`/en/rehber/${slug}/`),
       changeFrequency: "weekly",

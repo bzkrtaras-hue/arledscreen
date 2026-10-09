@@ -10,6 +10,7 @@ import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import { getSeoGuideHub, listSeoGuides } from "@/content/seo-guides";
+import { listInstallGuides } from "@/content/install-guides";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -44,7 +45,11 @@ export default async function SeoGuideHubPage({ params }: PageProps) {
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
   const hub = getSeoGuideHub(locale);
-  const guides = listSeoGuides(locale);
+  // Kurulum rehberleri (TR/EN only) are appended after the topic guides.
+  const guides: { slug: string; cardLabel: string; cardTeaser: string }[] = [
+    ...listSeoGuides(locale),
+    ...(locale === "tr" || locale === "en" ? listInstallGuides(locale) : []),
+  ];
   const dict = getDictionary(locale);
   const hubUrl = absoluteUrl(`/${locale}/rehber/`);
   const rehberLd = {

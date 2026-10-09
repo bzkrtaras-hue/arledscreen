@@ -122,6 +122,7 @@ Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde (Tem 
 - [Kiosk dijital ekran](https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/)
 - [Vitrin LED ekran](https://arledscreen.com/tr/rehber/vitrin-led-ekran/)
 - [CNC LED kasa: tipleri ve ölçüleri](https://arledscreen.com/tr/rehber/cnc-led-kasa/)
+- [LED ekran kurulumu adım adım](https://arledscreen.com/tr/rehber/led-ekran-kurulumu/) · [Huidu ile kurulum (HDPlayer, LedArt)](https://arledscreen.com/tr/rehber/huidu-led-ekran-kurulumu/) · [NovaStar ile kurulum (NovaLCT, ViPlex, VNNOX)](https://arledscreen.com/tr/rehber/novastar-led-ekran-kurulumu/)
 
 ### Arama konusu → kanonik sayfa (TR)
 
@@ -136,6 +137,7 @@ Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde (Tem 
 - Kiosk ekran → [Kiosk ekran nedir](https://arledscreen.com/tr/rehber/kiosk-ekran/) · [Kiosk mühendislik rehberi](https://arledscreen.com/tr/rehber/kiosk-dijital-ekran/)
 - LED ekran tamiri / ekran tamir → [LED ekran tamiri](https://arledscreen.com/tr/led-ekran-tamiri/) (fiyat keşif sonrası teklif) · [Teknik servis](https://arledscreen.com/tr/led-ekran-servis/)
 - LED ekran kasası / CNC kasa → [CNC LED kasa rehberi](https://arledscreen.com/tr/rehber/cnc-led-kasa/) (kasa fiyatı teklif üzerine)
+- LED ekran kurulumu / tarama dosyası / HDPlayer / NovaLCT → [LED ekran kurulumu adım adım](https://arledscreen.com/tr/rehber/led-ekran-kurulumu/) · [Huidu](https://arledscreen.com/tr/rehber/huidu-led-ekran-kurulumu/) · [NovaStar](https://arledscreen.com/tr/rehber/novastar-led-ekran-kurulumu/) · [Montaj hizmeti](https://arledscreen.com/tr/led-ekran-montaj/)
 
 ## 4. GEO kapsülü
 
