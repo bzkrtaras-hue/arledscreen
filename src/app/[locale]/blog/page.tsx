@@ -6,6 +6,7 @@ import { SpeakableJsonLd } from "@/components/seo/SpeakableJsonLd";
 import { AiPriceSourceNote } from "@/components/seo/AiPriceSourceNote";
 import { OptImage } from "@/components/ui/opt-image";
 import { BLOG_POSTS, blogPath, formatBlogDate } from "@/content/blog";
+import { blogGuideLinks } from "@/content/blog-guide-index";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
@@ -193,6 +194,27 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
                     <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-soft">
                       {(en && EN_CARD[p.slug]?.excerpt) || p.excerpt}
                     </p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h2
+            id="rehber"
+            className="mt-14 font-display text-[clamp(1.4rem,1.1rem+1.2vw,2rem)] font-bold leading-tight text-ink"
+          >
+            {en ? "Guides" : "Rehber"}
+          </h2>
+          <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {blogGuideLinks(locale).map((g) => (
+              <li key={g.href}>
+                <Link
+                  href={g.href}
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl transition hover:-translate-y-0.5 hover:border-cyan/40 glass-card"
+                >
+                  <div className="flex flex-1 flex-col p-4">
+                    <h3 className="font-display text-lg font-bold text-ink group-hover:text-cyan">{g.label}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{g.teaser}</p>
                   </div>
                 </Link>
               </li>

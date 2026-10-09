@@ -1305,5 +1305,23 @@
       480,
       905
     ]
+  },
+  "/projects/guides/dokunmatik-kiosk-49-inc.jpg": {
+    "w": 1238,
+    "h": 774,
+    "widths": [
+      480,
+      960,
+      1238
+    ]
+  },
+  "/projects/guides/lcd-dikey-ekran-55-inc.jpg": {
+    "w": 1304,
+    "h": 815,
+    "widths": [
+      480,
+      960,
+      1304
+    ]
   }
 }

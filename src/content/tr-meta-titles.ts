@@ -57,7 +57,7 @@ export const TR_META_TITLES: Readonly<Record<string, string>> = {
   "/tr/products/novastar-kontrolculer/mctrl660-pro/": "NovaStar MCTRL660 PRO Gönderici Kart | ARLEDSCREEN",
   "/tr/products/novastar-kontrolculer/tb50/": "NovaStar Taurus TB50 Multimedya Oynatıcı | ARLEDSCREEN",
   "/tr/products/novastar-kontrolculer/vx600/": "NovaStar VX600 All-in-One LED Kontrolcü | ARLEDSCREEN",
-  "/tr/products/poster-led-ekran/": "Poster ve Totem LED Ekran | Mağaza, Lobi | ARLEDSCREEN",
+  "/tr/products/poster-led-ekran/": "Poster ve Totem LED Ekran | Ayaklı Ekran | ARLEDSCREEN",
   "/tr/projelerimiz/beylikduzu-belediyesi-led-ekran/": "Beylikdüzü Belediyesi LED Ekran Projesi | ARLEDSCREEN",
   "/tr/projelerimiz/beylikduzu-yasam-cafe-led-ekran/": "Beylikdüzü Yaşam Cafe LED Ekran Projesi | ARLEDSCREEN",
   "/tr/projelerimiz/istanbul-drama-sanat-atolyesi-led-ekran/": "İstanbul Drama Sanat Atölyesi LED Ekranı | ARLEDSCREEN",
@@ -70,11 +70,11 @@ export const TR_META_TITLES: Readonly<Record<string, string>> = {
   "/tr/rehber/gob-vs-smd/": "GOB vs SMD LED Ekran: Farklar ve Seçim | ARLEDSCREEN",
   "/tr/rehber/kiosk-dijital-ekran/": "Kiosk Dijital Ekran | Dokunmatik Bilgi Noktası | ARLEDSCREEN",
   "/tr/rehber/kiralik-mi-satin-alma/": "Kiralık LED Ekran mı, Satın Alma mı? | ARLEDSCREEN",
-  "/tr/rehber/led-tabela-mi-led-ekran-mi/": "LED Tabela mı, LED Ekran mı? Farklar | ARLEDSCREEN",
+  "/tr/rehber/led-tabela-mi-led-ekran-mi/": "LED Tabela mı, LED Ekran mı? Dijital Ekran | ARLEDSCREEN",
   "/tr/rehber/piksel-araligi-secimi/": "İç Mekân LED Ekranda Piksel Aralığı Seçimi | ARLEDSCREEN",
   "/tr/sahne-led-ekran/": "Sahne LED Ekran | Konser ve Etkinlik | ARLEDSCREEN",
   "/tr/sss/": "LED Ekran Sık Sorulan Sorular | Fiyat, Montaj | ARLEDSCREEN",
-  "/tr/totem-led-ekran/": "Totem LED Ekran | Ayaklı Dijital Tabela | ARLEDSCREEN",
+  "/tr/totem-led-ekran/": "Totem LED Ekran | Ayaklı Dijital Ekran | ARLEDSCREEN",
 };
 
 /** Returns the TR override for a canonical TR path ("/tr/…/"), else the fallback title. */

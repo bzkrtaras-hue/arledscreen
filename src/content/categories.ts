@@ -395,7 +395,7 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     family: "İç Mekân LED Ekranlar",
     types: ["Kolon kaplama", "Kavisli duvar", "Silindir ve dairesel form", "Özel tasarım dekor"],
     image: "/projects/modules/tech/flexible-module-bend-lit.jpg",
-    cardImage: "/projects/applications/curved-led-tulips.jpg",
+    cardImage: "/projects/modules/tech/flexible-module-bend-lit.jpg",
     imageAlt: "Bükülerek kavisli forma getirilmiş esnek LED modül",
     techGallery: FLEXIBLE_TECH_GALLERY,
     techGalleryEyebrow: "Esnek form",
@@ -743,8 +743,21 @@ PRODUCT_GROUPS.sort(
   (a, b) => PRODUCT_FAMILIES.indexOf(a.family) - PRODUCT_FAMILIES.indexOf(b.family),
 );
 
+/** Category grids (home + products hub): İç Mekân first, Dış Mekân second, others keep their order. */
+const GRID_LEAD_SLUGS = ["ic-mekan-led-ekran", "dis-mekan-led-ekran"];
+export const PRODUCT_GROUPS_GRID: ProductGroup[] = [
+  ...GRID_LEAD_SLUGS.map((s) => PRODUCT_GROUPS.find((g) => g.slug === s)).filter(
+    (g): g is ProductGroup => Boolean(g),
+  ),
+  ...PRODUCT_GROUPS.filter((g) => !GRID_LEAD_SLUGS.includes(g.slug)),
+];
+const GRID_FAMILY_ORDER: ProductFamily[] = [
+  "İç Mekân LED Ekranlar",
+  ...PRODUCT_FAMILIES.filter((f) => f !== "İç Mekân LED Ekranlar"),
+];
+
 export function groupsByFamily(): { family: ProductFamily; groups: ProductGroup[] }[] {
-  return PRODUCT_FAMILIES.map((family) => ({
+  return GRID_FAMILY_ORDER.map((family) => ({
     family,
     groups: PRODUCT_GROUPS.filter((g) => g.family === family),
   })).filter((f) => f.groups.length);
