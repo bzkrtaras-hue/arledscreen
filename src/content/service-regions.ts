@@ -91,10 +91,10 @@ function buildIntro(province: string, meta: { locative: string; isHq?: boolean }
     .join("; ");
 
   if (meta.isHq) {
-    return `${meta.locative} LED ekran satışı, keşif, montaj ve teknik servis Gaziosmanpaşa merkez ofisten yürütülür (Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245). Tem 2025 – Tem 2026 kayıtlarında bu il için ${count} yayımlanmış uygulama vardır${sample ? `: ${sample}` : ""}. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`;
+    return `${meta.locative} LED ekran satışı, keşif, montaj ve teknik servis Gaziosmanpaşa merkez ofisten yürütülür (Merkez Mah. Tuna Sok. No:15-17 Kat 1, 34245). Tem 2025 – Tem 2026 döneminde bu ilde ${count} LED ekran uygulaması tamamladık${sample ? `: ${sample}` : ""}. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`;
   }
 
-  return `${meta.locative} yayımlanmış ${count} proje kaydı vardır${sample ? ` (${sample})` : ""}. Keşif ve montaj İstanbul Gaziosmanpaşa merkezden planlanır; bu sayfada yalnızca ${province} kayıtları listelenir. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`;
+  return `${meta.locative} tamamladığımız ${count} LED ekran projesi bulunur${sample ? ` (${sample})` : ""}. Keşif ve montaj İstanbul Gaziosmanpaşa merkezimizden planlanır. Nihai fiyat keşif ve yazılı teklifle kesinleşir.`;
 }
 
 function buildRegions(): ServiceRegion[] {
@@ -124,7 +124,7 @@ function buildRegions(): ServiceRegion[] {
       projects,
       projectCount: projects.length,
       title: `${province} LED Ekran Satış, Montaj ve Servis | ARLEDSCREEN`,
-      description: `${province} LED ekran: keşif, montaj ve teknik servis. Kayıtlı konumlar: ${locations.join(", ")}. ARLEDSCREEN — İstanbul Gaziosmanpaşa merkezli.`,
+      description: `${province} LED ekran: keşif, montaj ve teknik servis. Proje konumları: ${locations.join(", ")}. ARLEDSCREEN — İstanbul Gaziosmanpaşa merkezli.`,
       h1: `${province} LED ekran satış, montaj ve teknik servis`,
       intro: buildIntro(province, meta, projects),
     });

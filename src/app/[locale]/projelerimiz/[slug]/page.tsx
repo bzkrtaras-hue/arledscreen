@@ -69,7 +69,7 @@ export default async function ProjectCasePage({
   };
 
   const rows: { label: string; value: string }[] = [
-    { label: "Kayıt", value: c.companyLabel },
+    { label: "Müşteri", value: c.companyLabel },
     { label: "Tarih", value: c.date },
     { label: "Konum", value: c.location },
     { label: "Kapsam", value: c.detail },
@@ -77,7 +77,7 @@ export default async function ProjectCasePage({
   ];
   if (c.pitch) rows.push({ label: "Piksel aralığı", value: c.pitch });
   if (c.environment) rows.push({ label: "Ortam", value: c.environment });
-  if (c.areaM2) rows.push({ label: "Yaklaşık alan", value: `${c.areaM2} m²` });
+  if (c.areaM2) rows.push({ label: "Yaklaşık alan", value: `${c.areaM2.toLocaleString("tr-TR")} m²` });
 
   return (
     <>
@@ -103,17 +103,16 @@ export default async function ProjectCasePage({
       <section className="border-b border-border bg-surface/60">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">
-            Case study · Yayımlanmış kayıt
+            Proje referansı
           </p>
           <h1 id="case-h1" className="mt-3 max-w-3xl text-balance font-display text-[clamp(1.7rem,1.2rem+1.8vw,2.5rem)] font-extrabold tracking-[-0.03em] text-ink">
             {c.h1}
           </h1>
           <p id="case-lead" className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft">
-            Bu sayfa ARLEDSCREEN referans listesindeki yayımlanmış alanlardan üretilir.
-            Kontrol sistemi, garanti yılı, müşteri yorumu veya süre gibi sitede yazmayan
-            bilgiler eklenmez.
+            {c.companyLabel} için ARLEDSCREEN tarafından yapılan LED ekran uygulaması. Tarih,
+            konum ve kapsam bilgilerini aşağıdaki proje özetinde bulabilirsiniz.
           </p>
-          <AiPriceSourceNote lead="Panel USD listesi:" className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted" />
+          <AiPriceSourceNote className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted" />
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/tr/quote/"
@@ -144,15 +143,15 @@ export default async function ProjectCasePage({
               ))}
             </dl>
             <p className="mt-6 text-sm leading-relaxed text-ink-soft">
-              {c.companyLabel} kaydı {c.date} tarihinde yayımlanmıştır. Kapsam: {c.detail}
+              {c.companyLabel} projesi ({c.date}). Kapsam: {c.detail}
               {c.location ? `; konum: ${c.location}` : ""}.
-              {c.pitch ? ` Kayıtta geçen piksel aralığı: ${c.pitch}.` : ""}
+              {c.pitch ? ` Piksel aralığı: ${c.pitch}.` : ""}
               {c.environment ? ` Ortam: ${c.environment}.` : ""}
-              {c.areaM2 ? ` Yaklaşık alan: ${c.areaM2} m².` : ""} Sektör etiketi: {c.sector}.
+              {c.areaM2 ? ` Yaklaşık alan: ${c.areaM2.toLocaleString("tr-TR")} m².` : ""} Sektör: {c.sector}.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-              Teknik çözüm, montaj yöntemi ve kontrol sistemi proje keşfine göre yazılı
-              teklifte netleşir. Aşağıdaki bağlantılar aynı kullanım / ürün ailesine gider.
+              Benzer bir projede teknik çözüm, montaj yöntemi ve kontrol sistemi keşiften sonra
+              yazılı teklifte netleşir. İlgili ürün ve sayfalar:
             </p>
             <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
               {c.relatedProductHref ? (
@@ -192,7 +191,7 @@ export default async function ProjectCasePage({
             </ul>
           </div>
           <aside className="rounded-2xl border border-border bg-band/40 p-5 text-sm text-ink-soft">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">Servis</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan">İletişim</p>
             <p className="mt-3 font-semibold text-ink">ARLEDSCREEN</p>
             {BUSINESS_ADDRESS_LINES.map((line) => (
               <p key={line}>{line}</p>
@@ -225,10 +224,11 @@ export default async function ProjectCasePage({
       ) : (
         <section className="border-t border-border py-8">
           <div className="mx-auto max-w-7xl px-4 text-sm text-ink-muted sm:px-6 lg:px-8">
-            Bu kayıt için henüz eşleşen stok/proje fotoğrafı bağlı değil. Genel galeri:{" "}
+            Diğer LED ekran uygulamalarımızı görmek için{" "}
             <Link href="/tr/galeri/" className="font-semibold text-cyan hover:underline">
-              /tr/galeri/
-            </Link>
+              galeri sayfamıza
+            </Link>{" "}
+            göz atabilirsiniz.
           </div>
         </section>
       )}

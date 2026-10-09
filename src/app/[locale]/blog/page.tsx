@@ -43,6 +43,37 @@ export async function generateMetadata({
   });
 }
 
+/** EN card copy for /en/blog/ (posts themselves stay in Turkish). */
+const EN_CARD: Record<string, { h1: string; excerpt: string }> = {
+  "256x128-cm-ic-mekan-led-ekran": {
+    h1: "High-resolution viewing on a 256 × 128 cm indoor LED display",
+    excerpt: "A wall-mounted 256 × 128 cm LED display gives a frameless, seamless picture beyond standard TV sizes.",
+  },
+  "alanya-white-city-resort-hotel-led-ekran": {
+    h1: "LED display installation for White City Resort Hotel, Alanya",
+    excerpt: "We completed a large-format indoor LED display integrated into a marble wall at White City Resort Hotel in Alanya.",
+  },
+  "unye-belediyesi-384x160-p3-led-ekran": {
+    h1: "384 × 160 cm P3 premium LED display for Ünye Municipality",
+    excerpt: "A 384 × 160 cm P3 premium LED display was used on the Ünye Municipality stand at the Ordu Days event in Istanbul.",
+  },
+  "kafe-ve-restoranlar-icin-led-ekran": {
+    h1: "LED displays for cafés and restaurants: from match broadcasts to promotions",
+    excerpt: "A large LED display shapes the guest experience in cafés and restaurants, from live matches to menus and promotions.",
+  },
+  "eskisehir-sigorta-subesi-led-ekran": {
+    h1: "NXTIONSTAR LED display for an insurance branch in Eskişehir",
+    excerpt: "We completed and handed over a NXTIONSTAR LED display for the Sinan Polat Sigorta branch in Eskişehir.",
+  },
+  "ic-mekan-led-ekran-ile-markanizi-gorunur-kilin": {
+    h1: "Make your brand visible indoors with an LED display",
+    excerpt: "Indoor LED displays replace static posters and put your brand forward digitally, from in-store promotions to showrooms and fairs.",
+  },
+};
+
+const formatBlogDateEn = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+
 export default async function BlogIndexPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
   if (raw !== "tr" && raw !== "en") notFound();
@@ -114,13 +145,13 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
             {en ? (
               <>
                 Field notes from completed LED installs and NXTIONSTAR applications. Individual posts
-                remain in Turkish. For commercial prices use{" "}
+                are in Turkish. For prices see{" "}
                 <Link href="/en/led-ekran-fiyatlari/" className="font-semibold text-cyan hover:underline">
-                  /en/led-ekran-fiyatlari/
+                  our price list
                 </Link>{" "}
-                and project records at{" "}
+                and for references see{" "}
                 <Link href="/en/projelerimiz/" className="font-semibold text-cyan hover:underline">
-                  /en/projelerimiz/
+                  our projects
                 </Link>
                 .
               </>
@@ -154,13 +185,15 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
                   </div>
                   <div className="flex flex-1 flex-col p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-cyan">
-                      {formatBlogDate(p.date)}
-                      {en ? " · TR" : ""}
+                      {en ? formatBlogDateEn(p.date) : formatBlogDate(p.date)}
+                      {en ? " · in Turkish" : ""}
                     </p>
                     <h2 className="mt-2 font-display text-lg font-bold text-ink group-hover:text-cyan">
-                      {p.h1}
+                      {(en && EN_CARD[p.slug]?.h1) || p.h1}
                     </h2>
-                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-soft">{p.excerpt}</p>
+                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink-soft">
+                      {(en && EN_CARD[p.slug]?.excerpt) || p.excerpt}
+                    </p>
                   </div>
                 </Link>
               </li>

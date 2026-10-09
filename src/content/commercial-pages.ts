@@ -126,8 +126,8 @@ function usageLinks(except?: string): CommercialLink[] {
 
 function productClusterLinks(except?: string): CommercialLink[] {
   const slugs: [string, string][] = [
-    ["ic-mekan-led-ekran", "İç mekan LED ekran"],
-    ["dis-mekan-led-ekran", "Dış mekan LED ekran"],
+    ["ic-mekan-led-ekran", "İç mekân LED ekran"],
+    ["dis-mekan-led-ekran", "Dış mekân LED ekran"],
     ["gob-led-ekran", "GOB LED"],
     ["seffaf-led-ekran", "Şeffaf LED"],
     ["transparan-led-ekran", "Transparan LED"],
@@ -185,7 +185,7 @@ const INTENT_PAGES: CommercialPage[] = [
       {
         question: "Hangi şehirlerde hizmet veriyorsunuz?",
         answer:
-          "Merkez İstanbul Gaziosmanpaşa’dadır. Hizmet Türkiye geneli planlanır; sitede yalnızca yayımlanmış proje kaydı olan iller için ayrı sayfa açılır.",
+          "Merkez İstanbul Gaziosmanpaşa’dadır. Hizmet Türkiye geneli planlanır; proje tamamladığımız iller için ayrı şehir sayfaları bulunur.",
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Teklif iste" },
@@ -466,8 +466,8 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
     ],
     bullets: ["Ayaklı yapı", "İç / dış seçenek", "Tekli veya çift yüz"],
     images: [
-      { src: "/projects/totem-indoor.jpg", alt: "İç mekan totem LED ekran" },
-      { src: "/projects/totem-outdoor.jpg", alt: "Dış mekan totem LED ekran" },
+      { src: "/projects/totem-indoor.jpg", alt: "İç mekân totem LED ekran" },
+      { src: "/projects/totem-outdoor.jpg", alt: "Dış mekân totem LED ekran" },
     ],
     proofs: proofsFrom((r) => /vitrin|belediye|otel|resort/i.test(`${r.detail} ${r.company}`), 3),
     relatedProducts: productClusterLinks(),
@@ -478,7 +478,7 @@ const PRODUCT_ALIAS_PAGES: CommercialPage[] = [
       {
         question: "Totem LED dış mekânda dayanıklı mı?",
         answer:
-          "Dış mekan totemlerde koruma sınıfı ve konstrüksiyon keşifte seçilir; iç mekan üniteleri ayrı planlanır.",
+          "Dış mekân totemlerde koruma sınıfı ve konstrüksiyon keşifte seçilir; iç mekân üniteleri ayrı planlanır.",
       },
     ],
     primaryCta: { href: "/tr/products/poster-led-ekran/", label: "Poster / Totem grubu" },
@@ -554,7 +554,7 @@ const PITCH_PAGES: CommercialPage[] = [
     proof: (r) => /P1\.86/i.test(r.detail),
     images: [
       { src: "/projects/modules/fine-pitch-panel.jpg", alt: "P1.86 ince pitch LED" },
-      { src: "/projects/modules/indoor-wall.jpg", alt: "İç mekan ince pitch duvar" },
+      { src: "/projects/applications/indoor-stage-videowall.jpg", alt: "İç mekân sahnede panoramik LED video duvar" },
     ],
   }),
   pitchPage({
@@ -566,14 +566,14 @@ const PITCH_PAGES: CommercialPage[] = [
       "P2.5; mağaza, kafe, sahne yakını ve orta mesafe dış mekânlarda dengeli çözünürlük sunar. Kayıtlı projelerde sık geçer.",
     ],
     modelLinks: [
-      modelLink("ic-mekan-led-ekran", "p2-5", "P2.5 iç mekan"),
-      modelLink("dis-mekan-led-ekran", "p2-5", "P2.5 dış mekan"),
+      modelLink("ic-mekan-led-ekran", "p2-5", "P2.5 iç mekân"),
+      modelLink("dis-mekan-led-ekran", "p2-5", "P2.5 dış mekân"),
       modelLink("esnek-led-ekran", "p2-5-esnek", "P2.5 esnek"),
     ].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P2\.5/i.test(r.detail),
     images: [
-      { src: "/projects/indoor-smd.jpg", alt: "P2.5 iç mekan LED" },
-      { src: "/projects/modules/outdoor-cab.jpg", alt: "P2.5 dış mekan kabin" },
+      { src: "/projects/indoor-smd.jpg", alt: "P2.5 iç mekân LED" },
+      { src: "/projects/urun-dis-mekan.jpg", alt: "Bina önünde dış mekân LED ekran" },
     ],
   }),
   pitchPage({
@@ -582,11 +582,11 @@ const PITCH_PAGES: CommercialPage[] = [
     h1: "P2.9 LED ekran",
     lead: "Dış mekân orta mesafe için P2.9 / P2.97 bandı.",
     intro: ["P2.9 dış mekân ekranlarda orta izleme mesafesi için dengeli bir seçenektir. Model sayfasında teknik özet yer alır."],
-    modelLinks: [modelLink("dis-mekan-led-ekran", "p2-9", "P2.9 dış mekan")!].filter(Boolean),
+    modelLinks: [modelLink("dis-mekan-led-ekran", "p2-9", "P2.9 dış mekân")!].filter(Boolean),
     proof: (r) => /P2\.9|P2\.97/i.test(r.detail),
     images: [
-      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Dış mekan halka açık LED ekran" },
-      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekan LED ekran" },
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Dış mekân halka açık LED ekran" },
+      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekân LED ekran" },
     ],
   }),
   pitchPage({
@@ -596,13 +596,13 @@ const PITCH_PAGES: CommercialPage[] = [
     lead: "İç ve dış mekân orta mesafe uygulamaları için P3.07.",
     intro: ["P3.07, iç ve dış mekân kataloglarında yer alan orta pitch seçeneğidir. Kullanım yerine göre iç veya dış seri seçilir."],
     modelLinks: [
-      modelLink("ic-mekan-led-ekran", "p3-07", "P3.07 iç mekan"),
-      modelLink("dis-mekan-led-ekran", "p3-07", "P3.07 dış mekan"),
+      modelLink("ic-mekan-led-ekran", "p3-07", "P3.07 iç mekân"),
+      modelLink("dis-mekan-led-ekran", "p3-07", "P3.07 dış mekân"),
     ].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P3|P3\.0/i.test(r.detail),
     images: [
-      { src: "/projects/modules/indoor-smd-surface.jpg", alt: "P3 sınıfı iç mekan yüzey" },
-      { src: "/projects/modules/outdoor-cab.jpg", alt: "P3 sınıfı dış mekan kabin" },
+      { src: "/projects/modules/indoor-smd-surface.jpg", alt: "P3 sınıfı iç mekân yüzey" },
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Açık alanda dış mekân LED ekran" },
     ],
   }),
   pitchPage({
@@ -611,11 +611,11 @@ const PITCH_PAGES: CommercialPage[] = [
     h1: "P4 LED ekran",
     lead: "Cephe ve açık alan için sık tercih edilen P4 bandı.",
     intro: [
-      "P4, Manisa Büyükşehir Belediyesi kaydındaki 1344×128 cm Ultra 2026 uygulaması gibi geniş dış mekân işlerinde kullanılır. Önden servis varyantı da vardır.",
+      "P4, Manisa Büyükşehir Belediyesi için yaptığımız 1344×128 cm Ultra 2026 uygulaması gibi geniş dış mekân işlerinde kullanılır. Önden servis varyantı da vardır.",
     ],
     modelLinks: [
-      modelLink("ic-mekan-led-ekran", "p4", "P4 iç mekan"),
-      modelLink("dis-mekan-led-ekran", "p4", "P4 dış mekan"),
+      modelLink("ic-mekan-led-ekran", "p4", "P4 iç mekân"),
+      modelLink("dis-mekan-led-ekran", "p4", "P4 dış mekân"),
       modelLink("dis-mekan-led-ekran", "p4-on-servis", "P4 önden servis"),
     ].filter((x): x is CommercialLink => Boolean(x)),
     proof: (r) => /P4/i.test(r.detail),
@@ -629,12 +629,12 @@ const PITCH_PAGES: CommercialPage[] = [
     label: "P5 LED",
     h1: "P5 LED ekran",
     lead: "Uzak mesafeli dış mekân ve stadyum/cephe ölçeği için P5.",
-    intro: ["P5, Bursa kaydındaki 576×480 cm Premium dış mekân gibi büyük yüzeylerde tercih edilir."],
-    modelLinks: [modelLink("dis-mekan-led-ekran", "p5", "P5 dış mekan")!].filter(Boolean),
+    intro: ["P5, Bursa'da yaptığımız 576×480 cm Premium dış mekân uygulaması gibi büyük yüzeylerde tercih edilir."],
+    modelLinks: [modelLink("dis-mekan-led-ekran", "p5", "P5 dış mekân")!].filter(Boolean),
     proof: (r) => /P5/i.test(r.detail),
     images: [
       { src: "/projects/billboard-arled.jpg", alt: "P5 billboard / büyük yüzey LED" },
-      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Büyük dış mekan LED ekran" },
+      { src: "/projects/modules/outdoor-public-screen.jpg", alt: "Büyük dış mekân LED ekran" },
     ],
   }),
 ];
@@ -652,7 +652,7 @@ function usagePage(opts: {
     slug: opts.slug,
     cluster: "use",
     title: `${opts.name} | ARLEDSCREEN`,
-    description: `${opts.name}: satış, montaj ve servis. ARLEDSCREEN İstanbul merkezli; kayıtlı proje örnekleri ve keşif sonrası yazılı teklif.`,
+    description: `${opts.name}: satış, montaj ve servis. ARLEDSCREEN İstanbul merkezli; tamamlanan proje örnekleri ve keşif sonrası yazılı teklif.`,
     h1: opts.name,
     eyebrow: "Kullanım amacı",
     lead: opts.lead,
@@ -684,11 +684,11 @@ const USE_PAGES: CommercialPage[] = [
     name: "Mağaza LED ekran",
     lead: "Vitrin, satış alanı ve marka duvarı için mağaza LED ekran çözümleri.",
     intro: [
-      "Mağaza LED ekranında vitrin mesafesi ve ürün aydınlatması önemlidir. Merter ve Osmanbey gibi perakende kayıtlarımız bu kullanıma yakındır.",
+      "Mağaza LED ekranında vitrin mesafesi ve ürün aydınlatması önemlidir. Merter ve Osmanbey'deki perakende projelerimiz bu kullanıma yakındır.",
     ],
     proof: (r) => /triko|vitrin|mağaza|Prestij|Gnd/i.test(`${r.company} ${r.detail}`),
     images: [
-      { src: "/projects/modules/indoor-wall.jpg", alt: "Mağaza iç mekan LED duvar" },
+      { src: "/projects/applications/seffaf-led-vitrin.jpg", alt: "AVM mağazasının vitrininde LED ekran" },
       { src: "/projects/indoor-smd.jpg", alt: "Mağaza LED ekran" },
     ],
     products: ["ic-mekan-led-ekran", "gob-led-ekran", "poster-led-ekran"],
@@ -708,12 +708,12 @@ const USE_PAGES: CommercialPage[] = [
   usagePage({
     slug: "cephe-led-ekran",
     name: "Cephe LED ekran",
-    lead: "Bina cephesi ve meydan için dış mekan LED ekran.",
-    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa kayıtları geniş dış yüzey örnekleridir."],
+    lead: "Bina cephesi ve meydan için dış mekân LED ekran.",
+    intro: ["Cephe LED ekranda konstrüksiyon, rüzgâr yükü ve belediye izin süreçleri planın parçasıdır. Manisa ve Bursa projelerimiz geniş dış yüzey örnekleridir."],
     proof: (r) => /dış mekân|dış mekan|P4|P5|1344|576/i.test(r.detail),
     images: [
       { src: "/projects/modules/outdoor-facade.jpg", alt: "Cephe LED ekran" },
-      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekan cephe LED" },
+      { src: "/projects/urun-dis-mekan.jpg", alt: "Dış mekân cephe LED" },
     ],
     products: ["dis-mekan-led-ekran", "transparan-led-ekran"],
   }),
@@ -734,11 +734,11 @@ const USE_PAGES: CommercialPage[] = [
     name: "Vitrin LED ekran",
     lead: "Mağaza vitrini ve kolon uygulamaları için LED ekran.",
     intro: [
-      "Aksaray Beren Kırtasiye kaydındaki 192×176 cm vitrin + kolon uygulaması bu kullanıma örnektir. Şeffaf LED alternatifi cam vitrinlerde değerlendirilir.",
+      "Aksaray'da Beren Kırtasiye için yaptığımız 192×176 cm vitrin + kolon uygulaması bu kullanıma örnektir. Şeffaf LED alternatifi cam vitrinlerde değerlendirilir.",
     ],
     proof: (r) => /vitrin|kolon/i.test(r.detail),
     images: [
-      { src: "/projects/modules/indoor-wall.jpg", alt: "Vitrin LED ekran" },
+      { src: "/projects/applications/seffaf-led-vitrin.jpg", alt: "Mağaza vitrininde şeffaf LED ekran" },
       { src: "/projects/indoor-led-lion.jpg", alt: "Vitrin yakın çekim LED" },
     ],
     products: ["ic-mekan-led-ekran", "seffaf-led-ekran", "gob-led-ekran"],
@@ -747,7 +747,7 @@ const USE_PAGES: CommercialPage[] = [
     slug: "otel-led-ekran",
     name: "Otel LED ekran",
     lead: "Otel lobi, ballroom ve dış cephe LED ekran çözümleri.",
-    intro: ["Alanya White City Resort Hotel kaydı otel ölçeğinde bir uygulamadır. Lobi ince pitch; dış alan daha büyük pitch ister."],
+    intro: ["Alanya White City Resort Hotel projemiz otel ölçeğinde bir uygulamadır. Lobi ince pitch; dış alan daha büyük pitch ister."],
     proof: (r) => /Hotel|Resort|otel/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/opt/blog/alanya-otel-led-ekran.jpg", alt: "Alanya otel LED ekran uygulaması" },
@@ -760,7 +760,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Restoran LED ekran",
     lead: "Restoran ve kafe oturma alanları için LED ekran.",
     intro: [
-      "Kafe/restoran kayıtlarımız arasında Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe ve Yozgat kampüs cafe uygulamaları bulunur.",
+      "Kafe/restoran projelerimiz arasında Beylikdüzü Yaşam Cafe, Prestij Cafe, Ouka Kafe ve Yozgat kampüs cafe uygulamaları bulunur.",
     ],
     proof: (r) => /Cafe|Kafe|cafe|kafe|Malt|Lounge/i.test(`${r.company} ${r.detail}`),
     images: [
@@ -786,11 +786,11 @@ const USE_PAGES: CommercialPage[] = [
     slug: "konferans-salonu-led-ekran",
     name: "Konferans salonu LED ekran",
     lead: "Konferans ve toplantı salonları için yüksek okunabilirlikli LED.",
-    intro: ["Konferans salonunda izleme mesafesi ve sunum içeriği pitch seçimini belirler. İnce pitch GOB ve iç mekan serileri sık değerlendirilir."],
+    intro: ["Konferans salonunda izleme mesafesi ve sunum içeriği pitch seçimini belirler. İnce pitch GOB ve iç mekân serileri sık değerlendirilir."],
     proof: (r) => /P1\.|P2\.5|konferans|lobi/i.test(`${r.detail} ${r.company}`),
     images: [
       { src: "/projects/neu-kutuphane.jpg", alt: "Konferans / kurumsal LED ekran" },
-      { src: "/projects/modules/indoor-wall.jpg", alt: "Salon LED duvar" },
+      { src: "/projects/modules/indoor-install.jpg", alt: "Toplantı salonunda duvara monte iç mekân LED ekran" },
     ],
     products: ["ic-mekan-led-ekran", "gob-led-ekran", "ince-pitch-led-ekran"],
   }),
@@ -798,7 +798,7 @@ const USE_PAGES: CommercialPage[] = [
     slug: "sahne-led-ekran",
     name: "Sahne LED ekran",
     lead: "Konser, tiyatro ve etkinlik sahnesi LED ekranları.",
-    intro: ["Kadıköy Matiz Sahne kaydı sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir."],
+    intro: ["Kadıköy Matiz Sahne projemiz sahne/dış yüzey uygulamasına örnektir. Kısa süreli işlerde kiralık kabin de planlanabilir."],
     proof: (r) => /Sahne|sahne|kiralama|stand/i.test(`${r.company} ${r.detail}`),
     images: [
       { src: "/projects/modules/rental-cabinet-labeled.jpg", alt: "Sahne kiralık LED kabin" },
@@ -826,7 +826,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Belediye LED ekran",
     lead: "Belediye meydan, bilgilendirme ve etkinlik LED ekranları.",
     intro: [
-      "Manisa Büyükşehir Belediyesi ve Beylikdüzü Belediyesi kayıtları kamu/belediye ölçeğinde uygulamalardır. İzin süreçleri konuma göre değişir.",
+      "Manisa Büyükşehir Belediyesi ve Beylikdüzü Belediyesi projelerimiz kamu/belediye ölçeğinde uygulamalardır. İzin süreçleri konuma göre değişir.",
     ],
     proof: (r) => /Belediye/i.test(r.company),
     images: [
@@ -864,7 +864,7 @@ const USE_PAGES: CommercialPage[] = [
     name: "Stadyum LED ekran",
     lead: "Stadyum ve büyük açık alan LED ekranları.",
     intro: [
-      "Stadyum ölçeği yüksek konstrüksiyon ve uzak izleme mesafesi ister. Bursa’daki 576×480 cm P5 Premium dış mekân kaydı büyük yüzey örneğidir; her stadyum için ayrı keşif gerekir.",
+      "Stadyum ölçeği yüksek konstrüksiyon ve uzak izleme mesafesi ister. Bursa’daki 576×480 cm P5 Premium dış mekân uygulamamız büyük yüzey örneğidir; her stadyum için ayrı keşif gerekir.",
     ],
     proof: (r) => /P5|576|1344|dış mekân|dış mekan/i.test(r.detail),
     images: [
@@ -1095,7 +1095,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Survey and measure", "Pitch for closest shopper", "Install + service"],
-    imageAlts: ["Indoor LED wall in a retail store", "Store LED display sample"],
+    imageAlts: ["LED display in a mall shop window", "Store LED display sample"],
     faqs: [
       {
         question: "How much does a store LED cost?",
@@ -1249,7 +1249,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Close-view pitch", "Window vs column survey", "Transparent LED option"],
-    imageAlts: ["Storefront window LED display", "Close-up storefront LED"],
+    imageAlts: ["Transparent LED display in a shop window", "Close-up storefront LED"],
     faqs: [
       {
         question: "Transparent LED or standard indoor for a window?",
@@ -1315,7 +1315,7 @@ const EN_USE_OVERLAY: Record<CommercialEnUseSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Seated viewing distance", "Fine-pitch options", "Survey before order"],
-    imageAlts: ["Conference / corporate LED display", "Hall LED wall"],
+    imageAlts: ["Conference / corporate LED display", "Wall-mounted indoor LED display in a meeting room"],
     faqs: [
       {
         question: "P1.25 or P2.5 for a conference hall?",
@@ -1450,7 +1450,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Indoor and outdoor options", "Published panel USD", "Pitch vs viewing distance"],
-    imageAlts: ["P2.5 indoor LED", "P2.5 outdoor cabinet"],
+    imageAlts: ["P2.5 indoor LED", "Outdoor LED display in front of a building"],
     faqs: [
       {
         question: "Is P2.5 right for a store?",
@@ -1494,7 +1494,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Lobby / store fine pitch", "GOB and flexible options", "Published panel USD"],
-    imageAlts: ["P1.86 fine-pitch LED", "Indoor fine-pitch wall"],
+    imageAlts: ["P1.86 fine-pitch LED", "Panoramic indoor stage LED video wall"],
     faqs: [
       {
         question: "P1.86 or P1.25?",
@@ -1538,7 +1538,7 @@ const EN_PITCH_OVERLAY: Record<CommercialEnPitchSlug, EnLeanOverlay> = {
       NAP_EN,
     ],
     bullets: ["Indoor and outdoor series", "Mid viewing distance", "Survey before order"],
-    imageAlts: ["P3-class indoor surface", "P3-class outdoor cabinet"],
+    imageAlts: ["P3-class indoor surface", "Open-area outdoor LED display"],
     faqs: [
       {
         question: "Where is P3.07 panel USD?",
