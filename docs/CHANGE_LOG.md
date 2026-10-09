@@ -2,6 +2,12 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-008 — EN "P1.86 GOB GOB" model link etiketi
+
+- **Kaynak:** Ali, canlı 390 px ekran görüntüsü (/en/p1-86-led-ekran/ "Related products")
+- **Değişiklik:** `enModelLinkLabel` çipte zaten "GOB" varsa tekrar eklemiyor; yalnızca EN link metni
+- **Production:** Ali → squash merge → manual deploy
+
 ## ARL-20261009-007 — EN görünen "SKU" ifadeleri sade İngilizce
 
 - **Kaynak:** Ali, #68 canlı doğrulamasında kalan EN "SKUs" ifadeleri (iç/dış mekân, ince pitch, poster, NovaStar grupları; P3.07 SSS; kiralık mı satın alma rehberi)
