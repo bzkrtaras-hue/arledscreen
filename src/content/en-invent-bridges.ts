@@ -178,8 +178,8 @@ export const EN_INVENT_BRIDGES: EnInventBridge[] = [
   {
     slug: "magaza",
     target: "/en/products/",
-    title: "LED Mağaza | ARLEDSCREEN",
-    h1: "LED mağaza",
+    title: "LED Display Shop | ARLEDSCREEN",
+    h1: "LED Display Shop",
     description: "EN products hub is /en/products/. Bridge from inventable /en/magaza/.",
     cta: "Open products",
   },

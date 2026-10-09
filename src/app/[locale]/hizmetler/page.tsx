@@ -324,7 +324,7 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
         }
         className="prose-seo"
       >
-        <WhatsAppProjectPicker compact />
+        <WhatsAppProjectPicker compact locale={en ? "en" : "tr"} />
       </Section>
 
       <Section

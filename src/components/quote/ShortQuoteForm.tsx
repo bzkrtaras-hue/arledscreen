@@ -2,11 +2,12 @@
 
 import { useEffect, useId, useState } from "react";
 import { CheckCircle2, Mail, Send } from "lucide-react";
-import { PROJECT_TYPES, whatsappHref, type ProjectTypeId } from "@/lib/whatsapp";
+import { PROJECT_TYPES, projectTypeLabel, whatsappHref, type ProjectTypeId } from "@/lib/whatsapp";
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_HREF } from "@/lib/social";
 import { getProducts } from "@/content/products";
 
 type Env = "ic" | "dis" | "bilmiyorum";
+type FormLocale = "tr" | "en";
 
 interface FormState {
   name: string;
@@ -22,19 +23,21 @@ interface FormState {
   consent: boolean;
 }
 
-const ENV_LABEL: Record<Env, string> = {
-  ic: "İç mekân",
-  dis: "Dış mekân",
-  bilmiyorum: "Emin değilim",
+const ENV_LABEL: Record<FormLocale, Record<Env, string>> = {
+  tr: { ic: "İç mekân", dis: "Dış mekân", bilmiyorum: "Emin değilim" },
+  en: { ic: "Indoor", dis: "Outdoor", bilmiyorum: "Not sure" },
 };
 
-const TIMELINES = ["En kısa sürede", "1 ay içinde", "1–3 ay", "3 aydan sonra", "Henüz belli değil"];
+const TIMELINES: Record<FormLocale, string[]> = {
+  tr: ["En kısa sürede", "1 ay içinde", "1–3 ay", "3 aydan sonra", "Henüz belli değil"],
+  en: ["As soon as possible", "Within 1 month", "1–3 months", "After 3 months", "Not decided yet"],
+};
 
 /** Plain-text cleanup: drop control characters (except newlines in notes) and clamp length. */
 const clean = (v: string, max: number, multiline = false) =>
   v.replace(multiline ? /[\u0000-\u0009\u000B-\u001F\u007F]/g : /[\u0000-\u001F\u007F]/g, " ").trim().slice(0, max);
 
-function buildMessage(raw: FormState): string {
+function buildMessage(raw: FormState, locale: FormLocale): string {
   const f: FormState = {
     ...raw,
     name: clean(raw.name, 80),
@@ -45,15 +48,36 @@ function buildMessage(raw: FormState): string {
     location: clean(raw.location, 80),
     notes: clean(raw.notes, 1000, true),
   };
-  const type = PROJECT_TYPES.find((t) => t.id === f.projectType)?.label ?? "";
-  const size = f.width && f.height ? `${f.width} m × ${f.height} m` : "Belirtilmedi";
+  const type = projectTypeLabel(f.projectType, locale);
+  const size =
+    f.width && f.height
+      ? `${f.width} m × ${f.height} m`
+      : locale === "en"
+        ? "Not specified"
+        : "Belirtilmedi";
+  if (locale === "en") {
+    return [
+      "Hello ARLEDSCREEN, LED display quote request:",
+      `• Name: ${f.name}`,
+      `• Phone: ${f.phone}`,
+      f.company ? `• Company: ${f.company}` : null,
+      `• Project type: ${type}`,
+      `• Environment: ${ENV_LABEL.en[f.environment]}`,
+      `• Approx. size: ${size}`,
+      `• City / district: ${f.location}`,
+      f.timeline ? `• Timeline: ${f.timeline}` : null,
+      f.notes ? `• Notes: ${f.notes}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
   return [
     "Merhaba ARLEDSCREEN, LED ekran teklif talebim:",
     `• Ad Soyad: ${f.name}`,
     `• Telefon: ${f.phone}`,
     f.company ? `• Firma: ${f.company}` : null,
     `• Proje türü: ${type}`,
-    `• Ortam: ${ENV_LABEL[f.environment]}`,
+    `• Ortam: ${ENV_LABEL.tr[f.environment]}`,
     `• Yaklaşık ölçü: ${size}`,
     `• Şehir / ilçe: ${f.location}`,
     f.timeline ? `• Zaman planı: ${f.timeline}` : null,
@@ -68,8 +92,15 @@ function buildMessage(raw: FormState): string {
  * on submit the visitor's own WhatsApp (or e-mail client) opens with the
  * request pre-filled, and they send it themselves.
  */
-export function ShortQuoteForm({ bare = false }: { bare?: boolean } = {}) {
+export function ShortQuoteForm({
+  bare = false,
+  locale = "tr",
+}: {
+  bare?: boolean;
+  locale?: FormLocale;
+} = {}) {
   const id = useId();
+  const en = locale === "en";
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [sentVia, setSentVia] = useState<null | "whatsapp" | "email">(null);
   const [f, setF] = useState<FormState>({
@@ -93,38 +124,57 @@ export function ShortQuoteForm({ bare = false }: { bare?: boolean } = {}) {
     const type = searchParams.get("tip") as ProjectTypeId | null;
     if (slug) {
       const p = getProducts("tr").find((x) => x.slug === slug);
-      if (p) setF((s) => ({ ...s, notes: `İlgilendiğim seri: ${p.name} (P${p.specs.pixelPitchMm})` }));
+      if (p) {
+        setF((s) => ({
+          ...s,
+          notes: en
+            ? `Series of interest: ${p.name} (P${p.specs.pixelPitchMm})`
+            : `İlgilendiğim seri: ${p.name} (P${p.specs.pixelPitchMm})`,
+        }));
+      }
     }
     if (type && PROJECT_TYPES.some((t) => t.id === type)) {
       setF((s) => ({ ...s, projectType: type }));
     }
-  }, []);
+  }, [en]);
 
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) => setF((s) => ({ ...s, [k]: v }));
 
   const validate = () => {
     const e: Partial<Record<keyof FormState, string>> = {};
-    if (f.name.trim().length < 2) e.name = "Lütfen adınızı ve soyadınızı yazın.";
-    if (f.phone.replace(/\D/g, "").length < 10) e.phone = "Lütfen geçerli bir telefon numarası yazın.";
-    if (f.location.trim().length < 2) e.location = "Lütfen projenin şehir veya ilçesini yazın.";
-    if (!f.consent) e.consent = "Devam etmek için onay kutusunu işaretleyin.";
+    if (f.name.trim().length < 2) {
+      e.name = en ? "Please enter your full name." : "Lütfen adınızı ve soyadınızı yazın.";
+    }
+    if (f.phone.replace(/\D/g, "").length < 10) {
+      e.phone = en ? "Please enter a valid phone number." : "Lütfen geçerli bir telefon numarası yazın.";
+    }
+    if (f.location.trim().length < 2) {
+      e.location = en
+        ? "Please enter the project city or district."
+        : "Lütfen projenin şehir veya ilçesini yazın.";
+    }
+    if (!f.consent) {
+      e.consent = en ? "Please tick the consent box to continue." : "Devam etmek için onay kutusunu işaretleyin.";
+    }
     setErrors(e);
     return Object.keys(e).length === 0;
   };
 
   const submit = (via: "whatsapp" | "email") => {
     if (!validate()) return;
-    const msg = buildMessage(f);
+    const msg = buildMessage(f, locale);
     if (via === "whatsapp") {
       window.open(whatsappHref(msg), "_blank", "noopener,noreferrer");
     } else {
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("LED ekran teklif talebi")}&body=${encodeURIComponent(msg)}`;
+      const subject = en ? "LED display quote request" : "LED ekran teklif talebi";
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
     }
     setSentVia(via);
   };
 
-  const field = "mt-1.5 block w-full min-h-12 rounded-xl border border-border bg-white px-3.5 text-base text-ink shadow-sm focus:border-cyan focus:outline-none focus:ring-2 focus:ring-cyan/25";
-  const label = "block text-sm font-semibold text-ink";
+  const field =
+    "mt-1.5 block w-full min-h-12 rounded-xl border border-border bg-white px-3.5 text-base text-ink shadow-sm focus:border-cyan focus:outline-none focus:ring-2 focus:ring-cyan/25";
+  const labelCls = "block text-sm font-semibold text-ink";
   const err = (k: keyof FormState) =>
     errors[k] ? (
       <p id={`${id}-${k}-err`} className="mt-1 text-sm text-[#B42318]" role="alert">
@@ -136,15 +186,23 @@ export function ShortQuoteForm({ bare = false }: { bare?: boolean } = {}) {
     return (
       <div className="mx-auto max-w-xl rounded-2xl p-8 text-center glass-card" role="status">
         <CheckCircle2 className="mx-auto h-12 w-12 text-cyan" aria-hidden />
-        <h2 className="mt-4 font-display text-2xl font-bold text-ink">Talebiniz hazırlandı</h2>
+        <h2 className="mt-4 font-display text-2xl font-bold text-ink">
+          {en ? "Your request is ready" : "Talebiniz hazırlandı"}
+        </h2>
         <p className="mt-3 text-sm leading-relaxed text-ink-muted">
           {sentVia === "whatsapp"
-            ? "WhatsApp yeni sekmede açıldı. Mesajı kontrol edip “Gönder”e dokunduğunuzda talebiniz bize ulaşır."
-            : "E-posta uygulamanız açıldı. E-postayı gönderdiğinizde talebiniz bize ulaşır."}{" "}
-          Ekibimiz ölçü ve konum bilgisine göre sizinle iletişime geçerek keşif ve teklif sürecini planlayacaktır.
+            ? en
+              ? "WhatsApp opened in a new tab. Check the message and tap Send to reach us."
+              : "WhatsApp yeni sekmede açıldı. Mesajı kontrol edip “Gönder”e dokunduğunuzda talebiniz bize ulaşır."
+            : en
+              ? "Your email app opened. Send the email to reach us."
+              : "E-posta uygulamanız açıldı. E-postayı gönderdiğinizde talebiniz bize ulaşır."}{" "}
+          {en
+            ? "Our team will contact you using the size and location details to plan survey and quote."
+            : "Ekibimiz ölçü ve konum bilgisine göre sizinle iletişime geçerek keşif ve teklif sürecini planlayacaktır."}
         </p>
         <p className="mt-4 text-sm text-ink-muted">
-          Uygulama açılmadıysa bizi doğrudan arayın:{" "}
+          {en ? "If the app did not open, call us: " : "Uygulama açılmadıysa bizi doğrudan arayın: "}
           <a href={CONTACT_PHONE_HREF} className="font-semibold text-cyan">
             {CONTACT_PHONE_DISPLAY}
           </a>
@@ -154,7 +212,7 @@ export function ShortQuoteForm({ bare = false }: { bare?: boolean } = {}) {
           onClick={() => setSentVia(null)}
           className="mt-6 text-sm font-semibold text-cyan underline underline-offset-4"
         >
-          Formu düzenle
+          {en ? "Edit form" : "Formu düzenle"}
         </button>
       </div>
     );
@@ -172,93 +230,232 @@ export function ShortQuoteForm({ bare = false }: { bare?: boolean } = {}) {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor={`${id}-name`} className={label}>
-            Ad Soyad <span aria-hidden className="text-[#B42318]">*</span>
+          <label htmlFor={`${id}-name`} className={labelCls}>
+            {en ? "Full name" : "Ad Soyad"}{" "}
+            <span aria-hidden className="text-[#B42318]">
+              *
+            </span>
           </label>
-          <input id={`${id}-name`} autoComplete="name" maxLength={80} required aria-invalid={!!errors.name} aria-describedby={errors.name ? `${id}-name-err` : undefined} className={field} value={f.name} onChange={(e) => set("name", e.target.value)} />
+          <input
+            id={`${id}-name`}
+            autoComplete="name"
+            maxLength={80}
+            required
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? `${id}-name-err` : undefined}
+            className={field}
+            value={f.name}
+            onChange={(e) => set("name", e.target.value)}
+          />
           {err("name")}
         </div>
         <div>
-          <label htmlFor={`${id}-phone`} className={label}>
-            Telefon <span aria-hidden className="text-[#B42318]">*</span>
+          <label htmlFor={`${id}-phone`} className={labelCls}>
+            {en ? "Phone" : "Telefon"}{" "}
+            <span aria-hidden className="text-[#B42318]">
+              *
+            </span>
           </label>
-          <input id={`${id}-phone`} type="tel" inputMode="tel" autoComplete="tel" maxLength={30} required placeholder="05xx xxx xx xx" aria-invalid={!!errors.phone} aria-describedby={errors.phone ? `${id}-phone-err` : undefined} className={field} value={f.phone} onChange={(e) => set("phone", e.target.value)} />
+          <input
+            id={`${id}-phone`}
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            maxLength={30}
+            required
+            placeholder={en ? "+90 …" : "05xx xxx xx xx"}
+            aria-invalid={!!errors.phone}
+            aria-describedby={errors.phone ? `${id}-phone-err` : undefined}
+            className={field}
+            value={f.phone}
+            onChange={(e) => set("phone", e.target.value)}
+          />
           {err("phone")}
         </div>
         <div>
-          <label htmlFor={`${id}-company`} className={label}>Firma / kurum <span className="font-normal text-ink-muted">(isteğe bağlı)</span></label>
-          <input id={`${id}-company`} autoComplete="organization" maxLength={120} className={field} value={f.company} onChange={(e) => set("company", e.target.value)} />
+          <label htmlFor={`${id}-company`} className={labelCls}>
+            {en ? "Company" : "Firma / kurum"}{" "}
+            <span className="font-normal text-ink-muted">
+              {en ? "(optional)" : "(isteğe bağlı)"}
+            </span>
+          </label>
+          <input
+            id={`${id}-company`}
+            autoComplete="organization"
+            maxLength={120}
+            className={field}
+            value={f.company}
+            onChange={(e) => set("company", e.target.value)}
+          />
         </div>
         <div>
-          <label htmlFor={`${id}-type`} className={label}>Proje türü</label>
-          <select id={`${id}-type`} className={field} value={f.projectType} onChange={(e) => set("projectType", e.target.value as ProjectTypeId)}>
+          <label htmlFor={`${id}-type`} className={labelCls}>
+            {en ? "Project type" : "Proje türü"}
+          </label>
+          <select
+            id={`${id}-type`}
+            className={field}
+            value={f.projectType}
+            onChange={(e) => set("projectType", e.target.value as ProjectTypeId)}
+          >
             {PROJECT_TYPES.map((t) => (
-              <option key={t.id} value={t.id}>{t.label}</option>
+              <option key={t.id} value={t.id}>
+                {projectTypeLabel(t.id, locale)}
+              </option>
             ))}
           </select>
         </div>
         <fieldset className="sm:col-span-2">
-          <legend className={label}>Kullanım ortamı</legend>
+          <legend className={labelCls}>{en ? "Environment" : "Kullanım ortamı"}</legend>
           <div className="mt-2 grid grid-cols-3 gap-2">
-            {(Object.keys(ENV_LABEL) as Env[]).map((k) => (
-              <label key={k} className={`flex min-h-12 cursor-pointer items-center justify-center rounded-xl border px-2 text-center text-sm font-semibold ${f.environment === k ? "border-cyan bg-cyan-50 text-cyan-700" : "border-border text-ink-soft"}`}>
-                <input type="radio" name={`${id}-env`} value={k} checked={f.environment === k} onChange={() => set("environment", k)} className="sr-only" />
-                {ENV_LABEL[k]}
+            {(Object.keys(ENV_LABEL[locale]) as Env[]).map((k) => (
+              <label
+                key={k}
+                className={`flex min-h-12 cursor-pointer items-center justify-center rounded-xl border px-2 text-center text-sm font-semibold ${f.environment === k ? "border-cyan bg-cyan-50 text-cyan-700" : "border-border text-ink-soft"}`}
+              >
+                <input
+                  type="radio"
+                  name={`${id}-env`}
+                  value={k}
+                  checked={f.environment === k}
+                  onChange={() => set("environment", k)}
+                  className="sr-only"
+                />
+                {ENV_LABEL[locale][k]}
               </label>
             ))}
           </div>
         </fieldset>
         <div className="grid grid-cols-2 gap-3 sm:col-span-2 sm:grid-cols-4">
           <div>
-            <label htmlFor={`${id}-w`} className={label}>Genişlik (m)</label>
-            <input id={`${id}-w`} inputMode="decimal" maxLength={8} placeholder="örn. 3" className={field} value={f.width} onChange={(e) => set("width", e.target.value)} />
+            <label htmlFor={`${id}-w`} className={labelCls}>
+              {en ? "Width (m)" : "Genişlik (m)"}
+            </label>
+            <input
+              id={`${id}-w`}
+              inputMode="decimal"
+              maxLength={8}
+              placeholder={en ? "e.g. 3" : "örn. 3"}
+              className={field}
+              value={f.width}
+              onChange={(e) => set("width", e.target.value)}
+            />
           </div>
           <div>
-            <label htmlFor={`${id}-h`} className={label}>Yükseklik (m)</label>
-            <input id={`${id}-h`} inputMode="decimal" maxLength={8} placeholder="örn. 2" className={field} value={f.height} onChange={(e) => set("height", e.target.value)} />
+            <label htmlFor={`${id}-h`} className={labelCls}>
+              {en ? "Height (m)" : "Yükseklik (m)"}
+            </label>
+            <input
+              id={`${id}-h`}
+              inputMode="decimal"
+              maxLength={8}
+              placeholder={en ? "e.g. 2" : "örn. 2"}
+              className={field}
+              value={f.height}
+              onChange={(e) => set("height", e.target.value)}
+            />
           </div>
           <div className="col-span-2">
-            <label htmlFor={`${id}-loc`} className={label}>
-              Şehir / ilçe <span aria-hidden className="text-[#B42318]">*</span>
+            <label htmlFor={`${id}-loc`} className={labelCls}>
+              {en ? "City / district" : "Şehir / ilçe"}{" "}
+              <span aria-hidden className="text-[#B42318]">
+                *
+              </span>
             </label>
-            <input id={`${id}-loc`} autoComplete="address-level2" maxLength={80} placeholder="örn. İstanbul / Şişli" aria-invalid={!!errors.location} aria-describedby={errors.location ? `${id}-location-err` : undefined} className={field} value={f.location} onChange={(e) => set("location", e.target.value)} />
+            <input
+              id={`${id}-loc`}
+              autoComplete="address-level2"
+              maxLength={80}
+              placeholder={en ? "e.g. Istanbul / Şişli" : "örn. İstanbul / Şişli"}
+              aria-invalid={!!errors.location}
+              aria-describedby={errors.location ? `${id}-location-err` : undefined}
+              className={field}
+              value={f.location}
+              onChange={(e) => set("location", e.target.value)}
+            />
             {err("location")}
           </div>
         </div>
         <div>
-          <label htmlFor={`${id}-time`} className={label}>Zaman planı</label>
-          <select id={`${id}-time`} className={field} value={f.timeline} onChange={(e) => set("timeline", e.target.value)}>
-            <option value="">Seçiniz</option>
-            {TIMELINES.map((t) => (
-              <option key={t} value={t}>{t}</option>
+          <label htmlFor={`${id}-time`} className={labelCls}>
+            {en ? "Timeline" : "Zaman planı"}
+          </label>
+          <select
+            id={`${id}-time`}
+            className={field}
+            value={f.timeline}
+            onChange={(e) => set("timeline", e.target.value)}
+          >
+            <option value="">{en ? "Select" : "Seçiniz"}</option>
+            {TIMELINES[locale].map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
             ))}
           </select>
         </div>
         <div className="sm:col-span-2">
-          <label htmlFor={`${id}-notes`} className={label}>Not <span className="font-normal text-ink-muted">(isteğe bağlı)</span></label>
-          <textarea id={`${id}-notes`} rows={3} maxLength={1000} placeholder="Montaj yüzeyi, izleme mesafesi, içerik türü vb." className={`${field} py-3`} value={f.notes} onChange={(e) => set("notes", e.target.value)} />
+          <label htmlFor={`${id}-notes`} className={labelCls}>
+            {en ? "Notes" : "Not"}{" "}
+            <span className="font-normal text-ink-muted">
+              {en ? "(optional)" : "(isteğe bağlı)"}
+            </span>
+          </label>
+          <textarea
+            id={`${id}-notes`}
+            rows={3}
+            maxLength={1000}
+            placeholder={
+              en
+                ? "Mount surface, viewing distance, content type, etc."
+                : "Montaj yüzeyi, izleme mesafesi, içerik türü vb."
+            }
+            className={`${field} py-3`}
+            value={f.notes}
+            onChange={(e) => set("notes", e.target.value)}
+          />
         </div>
         <div className="sm:col-span-2">
           <label className="flex items-start gap-3 text-sm text-ink-soft">
-            <input type="checkbox" className="mt-1 h-5 w-5 shrink-0 accent-[#1E5BB8]" checked={f.consent} aria-invalid={!!errors.consent} aria-describedby={errors.consent ? `${id}-consent-err` : undefined} onChange={(e) => set("consent", e.target.checked)} />
-            <span>Bilgilerimin yalnızca teklif hazırlanması ve benimle iletişime geçilmesi amacıyla kullanılmasını kabul ediyorum.</span>
+            <input
+              type="checkbox"
+              className="mt-1 h-5 w-5 shrink-0 accent-[#1E5BB8]"
+              checked={f.consent}
+              aria-invalid={!!errors.consent}
+              aria-describedby={errors.consent ? `${id}-consent-err` : undefined}
+              onChange={(e) => set("consent", e.target.checked)}
+            />
+            <span>
+              {en
+                ? "I agree that my details are used only to prepare a quote and to contact me."
+                : "Bilgilerimin yalnızca teklif hazırlanması ve benimle iletişime geçilmesi amacıyla kullanılmasını kabul ediyorum."}
+            </span>
           </label>
           {err("consent")}
         </div>
       </div>
 
       <p id={`${id}-info`} className="mt-5 rounded-xl bg-surface px-4 py-3 text-xs leading-relaxed text-ink-muted">
-        Bu form bilgilerinizi sitede saklamaz. “WhatsApp ile gönder” dediğinizde talebiniz WhatsApp&apos;ta hazır mesaj olarak açılır; göndermek için onay sizdedir.
+        {en
+          ? "This form does not store your details on the site. When you tap “Send via WhatsApp”, your request opens as a draft message; you choose whether to send it."
+          : "Bu form bilgilerinizi sitede saklamaz. “WhatsApp ile gönder” dediğinizde talebiniz WhatsApp'ta hazır mesaj olarak açılır; göndermek için onay sizdedir."}
       </p>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        <button type="submit" className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 bg-[#12813F] px-5 text-base text-white hover:bg-[#0E6B34]">
+        <button
+          type="submit"
+          className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 bg-[#12813F] px-5 text-base text-white hover:bg-[#0E6B34]"
+        >
           <Send className="h-4 w-4" aria-hidden />
-          WhatsApp ile gönder
+          {en ? "Send via WhatsApp" : "WhatsApp ile gönder"}
         </button>
-        <button type="button" onClick={() => submit("email")} className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 border border-cyan/50 bg-white px-5 text-base text-cyan hover:bg-cyan-50">
+        <button
+          type="button"
+          onClick={() => submit("email")}
+          className="btn-soft inline-flex min-h-12 items-center justify-center gap-2 border border-cyan/50 bg-white px-5 text-base text-cyan hover:bg-cyan-50"
+        >
           <Mail className="h-4 w-4" aria-hidden />
-          E-posta ile gönder
+          {en ? "Send via email" : "E-posta ile gönder"}
         </button>
       </div>
     </form>

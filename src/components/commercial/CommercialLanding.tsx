@@ -29,6 +29,7 @@ import {
 } from "@/lib/social";
 import { ENTITY_FAQ_BRAND_DISAMBIG, ENTITY_FAQ_CANONICAL_DOMAIN } from "@/lib/entity";
 import { getFaqs } from "@/content/faqs";
+import { formatProjectDate, formatProjectDetail } from "@/lib/dates";
 
 const CLUSTER_LABEL: Record<"tr" | "en", Record<CommercialPage["cluster"], string>> = {
   tr: { intent: "Ticari", product: "Ürün", pitch: "Piksel aralığı", use: "Kullanım" },
@@ -287,6 +288,7 @@ export function CommercialLanding({
                 : "Published 12 NXTIONSTAR panel USD. Quote-only groups (transparent, flexible, poster, rental, control) have no fixed list price — written quote."}
             </p>
             <PanelPriceTable
+              locale={tr ? "tr" : "en"}
               panels={PANEL_PRICES}
               caption={tr ? "Panel fiyatları (USD, panel başına)" : "Panel prices (USD, per panel)"}
             />
@@ -338,9 +340,15 @@ export function CommercialLanding({
                 <tbody>
                   {page.proofs.map((p) => (
                     <tr key={`${p.date}-${p.label}-${p.detail}`} className="border-b border-border/70">
-                      <td className="py-3 pr-4 whitespace-nowrap text-ink-muted">{p.date}</td>
-                      <td className="py-3 pr-4 font-medium text-ink">{p.label}</td>
-                      <td className="py-3 pr-4 text-ink-soft">{p.detail}</td>
+                      <td className="py-3 pr-4 whitespace-nowrap text-ink-muted">
+                        {formatProjectDate(p.date, locale)}
+                      </td>
+                      <td className="py-3 pr-4 font-medium text-ink">
+                        {!tr && p.label === "Bireysel müşteri" ? "Individual customer" : p.label}
+                      </td>
+                      <td className="py-3 pr-4 text-ink-soft">
+                        {formatProjectDetail(p.detail, locale)}
+                      </td>
                       <td className="py-3 text-ink-soft">{p.location}</td>
                     </tr>
                   ))}
@@ -414,7 +422,17 @@ export function CommercialLanding({
         />
       ) : null}
       <LinkCloud title={tr ? "Kullanım amaçları" : "Use cases (TR pages)"} links={page.relatedUses} />
-      <LinkCloud title={tr ? "Kayıtlı şehirler" : "Recorded cities (TR)"} links={page.relatedCities} />
+      <LinkCloud
+        title={tr ? "Kayıtlı şehirler" : "Recorded cities (TR)"}
+        links={
+          tr
+            ? page.relatedCities
+            : page.relatedCities.map((l) => ({
+                ...l,
+                label: l.label.replace(/\s*LED ekran$/, " LED display"),
+              }))
+        }
+      />
       <LinkCloud title={tr ? "Ticari sayfalar" : "Commercial links"} links={page.relatedIntents} />
 
       {faqs.length ? (

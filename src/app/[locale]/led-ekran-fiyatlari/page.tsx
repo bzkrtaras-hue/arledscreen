@@ -10,10 +10,10 @@ import {
   CALC_EXTRAS,
   PANEL_PRICES,
   PANELS_PER_M2,
-  PRICE_NOTE,
   fmtUsd,
   panelLabel,
   panelProductsJsonLd,
+  priceNote,
   pricedPanelsDatasetJsonLd,
 } from "@/content/prices";
 import { modelUrlForPrice } from "@/content/models";
@@ -378,9 +378,10 @@ export default async function LedEkranFiyatlariPage({
       <section className="py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-xl font-bold text-ink md:text-2xl">{copy.listH2}</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-soft">{PRICE_NOTE}</p>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-soft">{priceNote(locale)}</p>
           <div className="mt-6">
             <PanelPriceTable
+              locale={locale}
               panels={PANEL_PRICES}
               caption={locale === "tr" ? "Panel fiyatları (USD, panel başına)" : "Panel prices (USD, per panel)"}
               showCalcLink
@@ -411,7 +412,7 @@ export default async function LedEkranFiyatlariPage({
                   return (
                     <tr key={ex.label} className="border-b border-border/70">
                       <td className="py-3 pr-3 font-medium text-ink">{ex.label}</td>
-                      <td className="py-3 pr-3 text-ink-soft">{panelLabel(ex.panel)}</td>
+                      <td className="py-3 pr-3 text-ink-soft">{panelLabel(ex.panel, locale)}</td>
                       <td className="py-3 pr-3 text-ink-soft">{c.m2}</td>
                       <td className="py-3 pr-3 text-ink-soft">{fmtUsd(c.modules)} USD</td>
                       <td className="py-3 pr-3 text-ink-soft">{fmtUsd(c.labor)} USD</td>

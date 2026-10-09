@@ -156,12 +156,13 @@ export default async function GaleriPage({ params }: { params: Promise<{ locale:
       </section>
 
       <Section className="prose-seo pt-6 sm:pt-8 md:pt-10" contained>
-        <YiyistarGallery />
+        <YiyistarGallery locale={en ? "en" : "tr"} />
       </Section>
 
       <section className="bg-band py-14 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <QuoteSplit
+            locale={en ? "en" : "tr"}
             title={en ? "Planning a similar install?" : "Benzer bir uygulama mı planlıyorsunuz?"}
           />
         </div>

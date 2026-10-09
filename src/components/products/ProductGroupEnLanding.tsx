@@ -200,7 +200,7 @@ export function ProductGroupEnLanding({
               From ai-shopping.json pricedPanels. VAT/freight excluded; no free shipping. Final project
               price only in the written quote.
             </p>
-            <PanelPriceTable panels={prices} caption={`${en.name} — panel USD`} />
+            <PanelPriceTable locale="en" panels={prices} caption={`${en.name} — panel USD`} />
           </div>
         </section>
       ) : (

@@ -19,7 +19,20 @@ import { modelUrlForPrice } from "@/content/models";
 import { PANEL_PRICES, panelProductsJsonLd, pricedPanelsDatasetJsonLd } from "@/content/prices";
 import { ProductGroupGrid } from "@/components/products/ProductGroupGrid";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { PRODUCT_GROUPS, groupsByFamily, productGroupPath } from "@/content/categories";
+import {
+  PRODUCT_GROUPS,
+  groupsByFamily,
+  productGroupPath,
+  type ProductFamily,
+} from "@/content/categories";
+
+const PRODUCT_FAMILY_EN: Record<ProductFamily, string> = {
+  "Dış Mekân LED Ekranlar": "Outdoor LED displays",
+  "İç Mekân LED Ekranlar": "Indoor LED displays",
+  "Kiralık LED Ekranlar": "Rental LED displays",
+  "Poster ve Totem LED Ekranlar": "Poster and totem LED displays",
+  "Modül ve Kontrol Sistemleri": "Modules and control systems",
+};
 import { getProductGroupEn } from "@/content/product-groups-en";
 import { CANONICAL_LINEUP } from "@/content/product-lineup";
 import { ArrowRight, Calculator, FileText } from "lucide-react";
@@ -211,6 +224,7 @@ export default async function ProductsPage({ params }: PageProps) {
                 )}
               </p>
               <PanelPriceTable
+                locale={locale === "en" ? "en" : "tr"}
                 panels={PANEL_PRICES}
                 caption={
                   locale === "en" ? "Panel prices (USD, per panel)" : "Panel fiyatları (USD, panel başına)"
@@ -261,7 +275,7 @@ export default async function ProductsPage({ params }: PageProps) {
                 {groupsByFamily().map((f) => (
                   <div key={f.family}>
                     <h3 className="mb-5 border-l-4 border-cyan pl-3 font-display text-lg font-bold text-ink sm:text-xl">
-                      {f.family}
+                      {locale === "en" ? PRODUCT_FAMILY_EN[f.family] : f.family}
                     </h3>
                     <ProductGroupGrid
                       groups={f.groups}

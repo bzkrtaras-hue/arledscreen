@@ -121,7 +121,11 @@ export default async function HomePage({ params }: PageProps) {
           {locale === "en" ? (
             <div id="panel-prices" className="mt-10">
               <AiPriceSourceNote locale="en" lead="Published panel USD:" className="mb-3 text-sm leading-relaxed text-ink-muted" />
-              <PanelPriceTable panels={PANEL_PRICES} caption="Panel prices (USD, per panel)" />
+              <PanelPriceTable
+                locale="en"
+                panels={PANEL_PRICES}
+                caption="Panel prices (USD, per panel)"
+              />
             </div>
           ) : null}
         </Section>

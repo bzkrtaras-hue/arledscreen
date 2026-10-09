@@ -30,8 +30,12 @@ const DETAIL_PHRASES: [string, string][] = [
   ["Yeşilpınar şube", "Yeşilpınar branch"],
   ["Eskişehir şube", "Eskişehir branch"],
   ["çift yön", "double-sided"],
+  ["iç mekân", "indoor"],
+  ["İç mekân", "Indoor"],
   ["dış mekân", "outdoor"],
   ["Dış mekân", "Outdoor"],
+  ["dış mekan", "outdoor"],
+  ["Dış mekan", "Outdoor"],
   ["ev içi", "indoor home"],
   ["vitrin", "storefront"],
   ["kolon", "column"],
@@ -39,6 +43,7 @@ const DETAIL_PHRASES: [string, string][] = [
   ["Dev ekran", "Large-format display"],
   ["Oval ekran", "Oval display"],
   ["LED ekran", "LED display"],
+  ["kiralama", "rental"],
   ["adet", "pcs"],
 ];
 
