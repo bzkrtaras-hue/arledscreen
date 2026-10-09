@@ -147,7 +147,7 @@ img{max-width:100%;height:auto}
 .ar-voice-toggle[hidden]{display:none}
 .ar-voice-toggle .ico{width:20px;height:20px}
 
-.ar-log{position:relative;height:clamp(240px,40vh,360px);overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth;padding:16px 12px;display:flex;flex-direction:column;gap:12px;background:radial-gradient(circle,rgba(47,92,138,.07) 1px,transparent 1.5px) 0 0/14px 14px,linear-gradient(180deg,#f3f6fa,#eef3f8)}
+.ar-log{position:relative;height:clamp(240px,40vh,360px);overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth;padding:16px 12px 20px;scroll-padding-bottom:20px;display:flex;flex-direction:column;gap:12px;background:radial-gradient(circle,rgba(47,92,138,.07) 1px,transparent 1.5px) 0 0/14px 14px,linear-gradient(180deg,#f3f6fa,#eef3f8)}
 @media (min-width:640px){.ar-log{padding:18px 16px}}
 @media (min-width:1024px){.ar-log{height:300px}}
 @media (min-width:1024px){.ar-chip{padding:0 13px;font-size:13.5px}}
@@ -376,7 +376,7 @@ img{max-width:100%;height:auto}
 .mode-chat .ar-live{margin-top:2px;font-size:12px;color:#c9d8ec}
 .mode-chat .ar-voice-toggle{width:40px;height:40px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
 .mode-chat .ar-voice-toggle:hover{background:rgba(255,255,255,.16)}
-.mode-chat .ar-log{flex:1 1 auto;height:auto;min-height:0;padding:12px 12px 10px;gap:10px;background:radial-gradient(circle,rgba(30,91,184,.06) 1px,transparent 1.5px) 0 0/14px 14px,#f4f6f8}
+.mode-chat .ar-log{flex:1 1 auto;height:auto;min-height:0;padding:12px 12px 20px;scroll-padding-bottom:20px;gap:10px;background:radial-gradient(circle,rgba(30,91,184,.06) 1px,transparent 1.5px) 0 0/14px 14px,#f4f6f8}
 .mode-chat .ar-msg{font-size:14px;line-height:1.5}
 .mode-chat .ar-bubble{padding:8px 12px 9px;border-color:#e2e8f0;box-shadow:0 1px 2px rgba(15,42,79,.04),0 4px 12px -6px rgba(15,42,79,.14)}
 .mode-chat .ar-bubble-me{background:#1e5bb8;border-color:transparent}
@@ -559,7 +559,7 @@ img{max-width:100%;height:auto}
                 <p>Bağlayıcı teklif değildir. Keşif sonrası netleşir.</p>
             </div>
             <div id="ar-cta-wrap" class="offer-cta" hidden>
-                <button type="button" id="ar-cta" class="btn btn-primary">Bu ürünle hesapla</button>
+                <button type="button" id="ar-cta" class="btn btn-primary">Detaylı dökümü gör</button>
             </div>
         </aside>
     </section>
@@ -848,7 +848,7 @@ img{max-width:100%;height:auto}
   if (arLines[4]) arLines[4].textContent = 'Driver + software';
   var noteAmber = document.querySelector('.note-amber p');
   if (noteAmber) noteAmber.textContent = 'Not a binding quote. Confirmed after on-site survey.';
-  text('#ar-cta', 'Calculate with this product');
+  text('#ar-cta', 'See detailed breakdown');
 
   text('.calc-head .kicker', 'MATERIAL CALCULATOR');
   text('.calc-head h2', 'Size your project');
@@ -1589,6 +1589,23 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     return mark;
   }
 
+  /* Yeni mesaj, çip satırı ya da klavye günlüğü küçültünce son baloncuk her zaman tam görünür. */
+  function stickLog() {
+    const log = document.getElementById("ar-log");
+    if (!log) return;
+    const go = function () { log.style.scrollBehavior = "auto"; log.scrollTop = log.scrollHeight; log.style.scrollBehavior = ""; };
+    go();
+    requestAnimationFrame(function () { go(); requestAnimationFrame(go); });
+    setTimeout(go, 450);   /* baloncuk giriş animasyonu bitince */
+  }
+  (function () {
+    const log = document.getElementById("ar-log");
+    if (!log) return;
+    if (typeof ResizeObserver === "function") new ResizeObserver(stickLog).observe(log);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(stickLog);
+    window.addEventListener("load", stickLog);
+  })();
+
   function showTyping() {
     const log = document.getElementById("ar-log");
     const row = document.createElement("div");
@@ -1605,7 +1622,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     }
     row.appendChild(b);
     log.appendChild(row);
-    log.scrollTop = log.scrollHeight;
+    stickLog();
     return row;
   }
 
@@ -1634,9 +1651,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     el.appendChild(body);
     if (mine) log.appendChild(el);
     body.textContent = text;
-    const node = mine ? el : el.parentNode;
-    /* Uzun yanıtlar: baloncuğun başı görünür kalsın. */
-    log.scrollTop = Math.max(0, Math.min(node.offsetTop - 12, log.scrollHeight - log.clientHeight));
+    stickLog();
     if (onDone) onDone();
   }
 
@@ -1682,7 +1697,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
   function chipsFor(r) {
     if (r.gap) return CHIPS[r.gap.pending] || null;
     if (r.item && r.item.kind === "visit") return [{ label: window.ARLED_CALC_LANG === "en" ? "Request quote on WhatsApp" : "WhatsApp'tan teklif iste", action: "wa" }];
-    if (r.item && r.item.price && mem.w != null && mem.h != null) return [{ label: window.ARLED_CALC_LANG === "en" ? "Calculate with this product" : "Bu ürünle hesapla", action: "calc" }, WA_OFFER_CHIP, window.ARLED_CALC_LANG === "en" ? "Keep it economical" : "Ekonomik olsun"];
+    if (r.item && r.item.price && mem.w != null && mem.h != null) return [WA_OFFER_CHIP, { label: window.ARLED_CALC_LANG === "en" ? "See detailed breakdown" : "Detaylı dökümü gör", action: "calc" }, window.ARLED_CALC_LANG === "en" ? "Keep it economical" : "Ekonomik olsun"];
     return null;
   }
 
@@ -1695,7 +1710,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
       const chip = typeof c === "string" ? { label: c } : c;
       const b = document.createElement("button");
       b.type = "button";
-      b.className = "ar-chip" + (chip.action === "calc" ? " ar-chip-action" : (chip.action === "wa" || chip.action === "team") ? " ar-chip-wa" : "");
+      b.className = "ar-chip" + ((chip.action === "wa" || chip.action === "team") ? " ar-chip-wa" : "");
       b.style.setProperty("--i", String(i));
       b.textContent = chip.label;
       b.addEventListener("click", function () {
@@ -1706,6 +1721,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
       });
       box.appendChild(b);
     });
+    stickLog();
   }
 
   function queueChips(list) {
@@ -1766,7 +1782,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
       btn.dataset.mode = "";
     } else {
       btn.hidden = false;
-      btn.textContent = window.ARLED_CALC_LANG === "en" ? "Calculate with this product" : "Bu ürünle hesapla";
+      btn.textContent = window.ARLED_CALC_LANG === "en" ? "See detailed breakdown" : "Detaylı dökümü gör";
       btn.dataset.mode = "calc";
     }
     const wrap = document.getElementById("ar-cta-wrap");
@@ -1926,7 +1942,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
   }
   function offerChips() {
     if (!lastOffer) return null;
-    if (lastOffer.price && lastOffer.w != null && lastOffer.h != null) return [{ label: "Bu ürünle hesapla", action: "calc" }, WA_OFFER_CHIP, "Ekonomik olsun"];
+    if (lastOffer.price && lastOffer.w != null && lastOffer.h != null) return [WA_OFFER_CHIP, { label: L("Detaylı dökümü gör", "See detailed breakdown"), action: "calc" }, "Ekonomik olsun"];
     if (!lastOffer.price) return [WA_OFFER_CHIP];
     return null;
   }
@@ -2065,7 +2081,7 @@ Note: Workshop labor included. Freight and VAT excluded. Final amount confirmed 
     }
     const quote = recommendationQuote(mem.w, mem.h, item.price);
     addMsg("bot", lead + addr(forPlace() + "önerim " + item.name + ".") + " Tahmini fiyat " + money(quote.totalCost) + ", KDV ve nakliye hariç.");
-    addMsg("bot", "Bu ürünle hesaplayalım mı, yoksa kesin teklif mi istersiniz?");
+    addMsg("bot", L("Kesin teklifi WhatsApp'tan isteyelim mi?", "Shall we request the final quote on WhatsApp?"));
   }
 
   const ACKS = ["Harika", "Anladım", "Teşekkürler", "Tamam"];

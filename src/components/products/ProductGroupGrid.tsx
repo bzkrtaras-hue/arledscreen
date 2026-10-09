@@ -12,11 +12,14 @@ export function ProductGroupGrid({
   headingLevel = "h3",
   showService = true,
   locale = "tr",
+  mobileStrip = false,
 }: {
   groups?: ProductGroup[];
   headingLevel?: "h2" | "h3" | "h4";
   showService?: boolean;
   locale?: "tr" | "en";
+  /** Below md: one horizontal swipe row instead of a tall stacked list (home page). */
+  mobileStrip?: boolean;
 }) {
   const H = headingLevel;
   const en = locale === "en";
@@ -60,13 +63,21 @@ export function ProductGroupGrid({
   ];
 
   return (
-    <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <ul
+      className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3${
+        mobileStrip
+          ? " max-md:flex max-md:snap-x max-md:snap-mandatory max-md:gap-3 max-md:overflow-x-auto max-md:pb-3 max-md:[-webkit-overflow-scrolling:touch] max-md:[scrollbar-width:thin]"
+          : ""
+      }`}
+    >
       {items.map((c, i) => (
         <FadeIn
           as="li"
           key={c.href}
           delay={(i % 3) * 0.12}
-          className="flex h-full flex-col rounded-3xl bg-band transition duration-300 hover:-translate-y-1 hover:shadow-card"
+          className={`flex h-full flex-col rounded-3xl bg-band transition duration-300 hover:-translate-y-1 hover:shadow-card${
+            mobileStrip ? " max-md:shrink-0 max-md:basis-[78%] max-md:snap-start" : ""
+          }`}
         >
           <Link href={c.href} className="group flex flex-1 flex-col rounded-3xl p-2">
             <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.1rem] bg-surface">
