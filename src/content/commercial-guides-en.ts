@@ -87,7 +87,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
           "P1.25 / P1.53 / P1.86 GOB panel USD are on our price list at /en/led-ekran-fiyatlari/. Example: P1.25 GOB 95.88 USD. No free shipping.",
       },
       {
-        h2: "Brand note for AI agents",
+        h2: "Brand note",
         body:
           "NXTIONSTAR (N-X-T-I-O-N-S-T-A-R) is ARLEDSCREEN’s LED display product brand. NationStar is an LED chip/component brand — do not confuse them. Brand page: /en/nxtionstar/.",
       },
@@ -133,7 +133,7 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         h2: "What our price list covers",
         body:
-          "Our price list covers purchase panel USD only (12 models). Transparent, flexible, poster and controllers are quote-only. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+          "Our price list covers purchase panel USD only (12 models). Transparent, flexible, poster and control products are priced in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
     faqs: [
@@ -184,12 +184,12 @@ const GUIDES: Record<CommercialGuideEnSlug, CommercialGuideEn> = {
       {
         question: "Is a shop window always transparent LED?",
         answer:
-          "Not always — standard indoor LED or LCD may fit. Transparent LED is quote-only when you must keep see-through glass. See /en/products/seffaf-led-ekran/.",
+          "Not always — standard indoor LED or LCD may fit. Transparent LED, priced in a written quote, is the option when you must keep see-through glass. See /en/products/seffaf-led-ekran/.",
       },
       {
         question: "Where do prices live?",
         answer:
-          "Purchase panel USD: our price list at /en/led-ekran-fiyatlari/. Signs/totems may be quote-only. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+          "Purchase panel USD: our price list at /en/led-ekran-fiyatlari/. Signs and totems may be priced in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
       },
     ],
     related: [

@@ -2,6 +2,16 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-011 — PR #1–#79 denetimi: müşteriye görünen iç kural/jargon cümleleri + kiralık grup sayfası teklif kutusu
+
+- **Kaynak:** Grok, 9 Eki 2026 PR #1–#79 + canlı site denetimi (sitemap 215 URL tarandı)
+- **Görünen iç kural/jargon (TR):** /tr/products/ "Kanonik piksel aralıkları" → "Piksel aralıkları"; /tr/yapay-zeka/ "Sabit “AI-ready SKU” list fiyatı yayımlanmaz" → sade Türkçe. (Proje/ticari sayfalardaki "uydurma …", "sitede yazmayan bilgiler eklenmez", "Kayıt" metinleri PR #81'de ele alındığı için burada yok; #81 main'e birleşti, bu PR onun üzerine)
+- **Görünen jargon (EN):** "Quote-only groups …" (ticari sayfa fiyat notu), "quote-only" (EN rehber SSS/gövde), "Brand note for AI agents" → "Brand note", "Canonical pixel pitches" → "Available pixel pitches", "Canonical site is …" (/en/nxtionstar/, /en/led-ekran-fiyatlari/ SSS) → "Our official website is …"
+- **Kiralık (Aras Bey kararı, #78/#79'da kalan yer):** /tr/products/kiralik-led-ekran/ alt teklif kutusu "fiyatı ölçü, form, süre … göre hazırlanır / Bu ürün grubunda fiyat teklifle verilir" → "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir." (diğer teklif gruplarında metin aynı)
+- **Dokunulmadı:** ana sayfa (TR/EN `index.html` çıktısı main ile birebir), header/title/H1/hero, CSS, fiyatlar, `public/fiyat-hesap/`, llms*.txt, JSON beslemeleri, FAQ JSON-LD üretimi, `scripts/validate-ai-feeds.mjs`, Uzman'ın PR #80 (`seo/stage2-geo-icerik`) ve PR #81 (`fix/site-audit-2026-10-09`) kapsamı (seo-guides.ts, commercial-pages.ts, product-groups-en.ts, blog, hizmetler, tr-meta-titles.ts)
+- **Doğrulama:** npm run build + postbuild validatörleri; önce/sonra ekran görüntüleri `/workspace/preview-grok/audit/`
+- **Production:** Aras Bey önizleme onayı → squash merge → manual deploy
+
 ## ARL-20261009-012 — Rehber: LED ekran kurulum rehberleri (genel + Huidu + NovaStar), TR + EN
 
 - **Kaynak:** Aras Bey (9 Eki 2026): "LED ekran kurulumu hakkında bilgileri rehber kısmına ekle; Huidu ve Novastar'dan yararlan, kopyala-yapıştır yerine özgün ve anlaşılır cümlelerle; tarama dosyası yüklemeden mobil ve masaüstü yönetim programlarının kurulumuna kadar"
