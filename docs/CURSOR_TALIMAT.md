@@ -114,12 +114,17 @@ Aras Bey 9 Ekim 2026'da karar verdi: siteye Bulgarca, Yunanca ve komşu ülke di
 - Production yayını öncesinde Arledscreen masaüstü ve mobil ekran görüntülerini kontrol eder; yerleşimin bozulmadığı doğrulanmadan canlıya alınmaz.
 
 ### Melis
-- Widget arayüzü değişmez.
-- Melis veya hesaplayıcı sohbeti için yeni dil algılama ekleme.
-- bg, el ve ka sayfalarında Melis mevcut İngilizce (EN) modunu kullanır.
-- az sayfalarında Melis mevcut Türkçe (TR) modunu kullanır.
-- Melis için yeni çeviri yazılmaz.
-- Widget veya kodda, mevcut modu seçmenin ötesinde değişiklik yapılmaz.
+- Widget arayüzü (görünüm, konum, ses, hesaplayıcı) değişmez.
+- Melis otomatik dil seçer (Aras Bey'in talebi, PR #83). Bu, eski "Melis için yeni dil algılama ekleme / yeni çeviri yazılmaz" kuralının yerine geçer. Sıra:
+  1. Sayfa dili TR değilse o dil (ör. /en/ → İngilizce).
+  2. Ziyaretçinin ülkesi: `/api/geo` (Cloudflare `CF-IPCountry`, yalnızca `{"country":"XX"}` döner, oturum başına bir istek, sessionStorage'da saklanır); ülkenin resmî dili kullanılır.
+  3. Ülke bilinmiyorsa veya dili desteklenmiyorsa tarayıcı dili (`navigator.languages`).
+  4. Desteklenmeyen dil → İngilizce; Türkiye → Türkçe (TR deneyimi eskisiyle birebir aynı kalır).
+  5. Ziyaretçi başka dilde yazarsa Melis o dile geçer.
+- Desteklenen 14 dil: tr, en, de, fr, es, it, ru, uk, bg, ro, el, ar, az, ka. Çeviriler `public/fiyat-hesap/melis-i18n.js` içindedir; yeni dil eklemek için bu dosya kullanılır.
+- Fiyatlar her dilde motorun TR fiyatıyla aynıdır; çeviri katmanı yalnızca sayı biçimini değiştirir. Uydurma fiyat yazılmaz.
+- Persona her dilde aynıdır: Melis adı, "bot musun?" sorusunda dürüst cevap, WhatsApp'tan ekibe yönlendirme. İletişim yalnızca arled@arledscreen.com ve +90 530 507 88 34.
+- Test için ülke benzetimi: `?melis_cc=BG` (DE, SA, US, TR…).
 
 ### Kurallar
 - Yalnızca metin, SEO ve veri. Arayüz değişmez. Önce önizleme. Production yayını günde en fazla bir kez. Yayından sonra kilit adresler doğrulanır: /, /tr/, /tr/products/, /tr/quote/, /fiyat-hesap/ ve o gün eklenen dilin ana adresi.

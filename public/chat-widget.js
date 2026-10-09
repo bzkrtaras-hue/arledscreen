@@ -3,7 +3,11 @@
  * Tek dosya, harici istek yok (yalnızca aynı kökenden avatar + /fiyat-hesap/?mode=chat iframe'i).
  * CSP: satır içi olay işleyicisi yok; stil <style> etiketiyle eklenir (style-src 'unsafe-inline' yeterli).
  * Kullanım: <script src="/chat-widget.js" data-locale="tr" defer></script>
- *   data-locale  : "tr" (varsayılan) | "en"
+ *   data-locale  : "tr" (varsayılan) | "en" | desteklenen diğer diller
+ * Dil (Melis ziyaretçinin dilinde karşılar): 1) sayfa dili TR değilse o dil; 2) ziyaretçinin ülkesi
+ *   (/api/geo, Cloudflare CF-IPCountry; oturum başına bir istek) → o ülkenin resmî dili; 3) tarayıcı dili
+ *   (navigator.languages); 4) bilinmeyen/desteklenmeyen → İngilizce, TR → Türkçe. Sohbet penceresine ?lang= ile geçer;
+ *   ziyaretçi başka dilde yazarsa Melis o dile geçer (fiyat-hesap/melis-i18n.js). Test: sayfa adresine ?melis_cc=BG.
  *   data-src     : sohbet adresi (varsayılan "/fiyat-hesap/?mode=chat")
  *   data-avatar  : avatar yolu (varsayılan "/brand/canli-destek-avatar.webp")
  *   data-delay   : karşılama balonu gecikmesi, ms (varsayılan 3500)
@@ -22,7 +26,43 @@
 
   var me = document.currentScript || document.querySelector('script[src*="chat-widget"]');
   var ds = (me && me.dataset) || {};
-  var LANG = ds.locale === "en" ? "en" : "tr";
+  var SUP = ["tr", "en", "de", "fr", "es", "it", "ru", "uk", "bg", "ro", "el", "ar", "az", "ka"];
+  function norm(l) { l = String(l || "").toLowerCase().split(/[-_]/)[0]; return SUP.indexOf(l) >= 0 ? l : null; }
+  /* Ülke → resmî dil(ler). Listede olmayan ülke: tarayıcı dili, o da yoksa İngilizce. */
+  var CC = {
+    TR: "tr", AZ: "az", GE: "ka", BG: "bg", GR: "el", CY: "el,tr", RO: "ro", MD: "ro", UA: "uk", RU: "ru", BY: "ru", KZ: "ru", KG: "ru",
+    DE: "de", AT: "de", LI: "de", CH: "de,fr,it", LU: "fr,de", BE: "fr,de", FR: "fr", MC: "fr", IT: "it", SM: "it", VA: "it",
+    ES: "es", MX: "es", AR: "es", CO: "es", CL: "es", PE: "es", VE: "es", EC: "es", GT: "es", CU: "es", BO: "es", DO: "es", HN: "es", PY: "es", SV: "es", NI: "es", CR: "es", PA: "es", UY: "es",
+    SA: "ar", AE: "ar", EG: "ar", QA: "ar", KW: "ar", BH: "ar", OM: "ar", JO: "ar", LB: "ar", SY: "ar", IQ: "ar", YE: "ar", LY: "ar", TN: "ar", DZ: "ar", MA: "ar", SD: "ar", PS: "ar", MR: "ar",
+    US: "en", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en,fr", MT: "en", SG: "en", ZA: "en", NG: "en", GH: "en", KE: "en"
+  };
+  var NAV = [];
+  try { NAV = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""]).map(function (l) { return String(l).toLowerCase(); }); } catch (e) { NAV = []; }
+  function fromNav(only) {
+    for (var i = 0; i < NAV.length; i++) { var n = norm(NAV[i]); if (n && (!only || only.indexOf(n) >= 0)) return n; }
+    return null;
+  }
+  function fromCountry(cc) {
+    var list = CC[String(cc || "").toUpperCase()];
+    if (!list) return null;
+    list = list.split(",");
+    return fromNav(list) || list[0];
+  }
+  var CC_KEY = "arled-cd-cc";
+  function storedCountry() {
+    try {
+      var q = /[?&]melis_cc=([a-z]{2})(?:&|$)/i.exec(location.search);   /* önizleme/test: ülke benzetimi */
+      if (q) { window.sessionStorage.setItem(CC_KEY, q[1].toUpperCase()); return q[1].toUpperCase(); }
+      return window.sessionStorage.getItem(CC_KEY) || "";
+    } catch (e) { return ""; }
+  }
+  var PAGE = norm(ds.locale || document.documentElement.getAttribute("lang") || "tr") || "en";
+  var PAGE_FIXED = PAGE !== "tr";
+  function pickLang(cc) {
+    if (PAGE_FIXED) return PAGE;
+    return fromCountry(cc) || fromNav() || (String(cc).toUpperCase() === "TR" ? "tr" : (cc || NAV.length ? "en" : "tr"));
+  }
+  var LANG = pickLang(storedCountry());
   var SRC = ds.src || "/fiyat-hesap/?mode=chat";
   var AVATAR = ds.avatar || "/brand/canli-destek-avatar.webp";
   var DELAY = ds.delay != null && ds.delay !== "" && isFinite(+ds.delay) ? +ds.delay : 3500;
@@ -40,7 +80,7 @@
     return n === BOOT_PATH || n === "/" || n === "/tr" || n === "/en";
   }
 
-  var T = {
+  var STR = {
     tr: {
       name: "Melis", online: "Canlı Destek • Çevrim içi",
       teaser: "Merhaba, ben Melis. Size uygun LED ekranı ve fiyatı birlikte bulalım mı?",
@@ -54,12 +94,25 @@
       name: "Melis", online: "Live Support • Online",
       teaser: "Hi, I'm Melis. Shall we find the right LED screen and an estimated price together?",
       teaserShort: "Hi, I'm Melis. Shall we find the right screen together?",
-      note: "Chat is in Turkish.",
+      note: "",
       open: "Open chat with Melis", close: "Close chat", closeTeaser: "Dismiss message",
       dialog: "Melis • Live Support", frame: "Melis: LED screen recommendation and estimated price", loading: "Connecting…",
       typing: "Melis is typing", minimize: "Minimise chat"
-    }
-  }[LANG];
+    },
+    de: { name: "Melis", online: "Live-Support • Online", teaser: "Hallo, ich bin Melis. Sollen wir gemeinsam die passende LED-Wand und einen Richtpreis finden?", teaserShort: "Hallo, ich bin Melis. Finden wir gemeinsam den passenden Bildschirm?", note: "", open: "Chat mit Melis öffnen", close: "Chat schließen", closeTeaser: "Nachricht schließen", dialog: "Melis • Live-Support", frame: "Melis: LED-Empfehlung und Richtpreis", loading: "Verbinden…", typing: "Melis schreibt", minimize: "Chat minimieren" },
+    fr: { name: "Melis", online: "Assistance • En ligne", teaser: "Bonjour, je suis Melis. On cherche ensemble l'écran LED qu'il vous faut et un prix estimé ?", teaserShort: "Bonjour, je suis Melis. On trouve ensemble le bon écran ?", note: "", open: "Ouvrir le chat avec Melis", close: "Fermer le chat", closeTeaser: "Fermer le message", dialog: "Melis • Assistance en direct", frame: "Melis : conseil écran LED et prix estimé", loading: "Connexion…", typing: "Melis écrit", minimize: "Réduire le chat" },
+    es: { name: "Melis", online: "Atención • En línea", teaser: "Hola, soy Melis. ¿Buscamos juntos la pantalla LED adecuada y un precio estimado?", teaserShort: "Hola, soy Melis. ¿Buscamos juntos la pantalla adecuada?", note: "", open: "Abrir chat con Melis", close: "Cerrar chat", closeTeaser: "Cerrar mensaje", dialog: "Melis • Atención en directo", frame: "Melis: recomendación de pantalla LED y precio estimado", loading: "Conectando…", typing: "Melis está escribiendo", minimize: "Minimizar chat" },
+    it: { name: "Melis", online: "Assistenza • Online", teaser: "Ciao, sono Melis. Troviamo insieme lo schermo LED giusto e un prezzo stimato?", teaserShort: "Ciao, sono Melis. Troviamo insieme lo schermo giusto?", note: "", open: "Apri la chat con Melis", close: "Chiudi la chat", closeTeaser: "Chiudi il messaggio", dialog: "Melis • Assistenza live", frame: "Melis: consiglio schermo LED e prezzo stimato", loading: "Connessione…", typing: "Melis sta scrivendo", minimize: "Riduci la chat" },
+    ru: { name: "Мелис", online: "Поддержка • В сети", teaser: "Здравствуйте, я Мелис. Подберём вместе подходящий светодиодный экран и ориентировочную цену?", teaserShort: "Здравствуйте, я Мелис. Подберём экран вместе?", note: "", open: "Открыть чат с Мелис", close: "Закрыть чат", closeTeaser: "Закрыть сообщение", dialog: "Мелис • Онлайн-поддержка", frame: "Мелис: подбор LED-экрана и ориентировочная цена", loading: "Подключение…", typing: "Мелис печатает", minimize: "Свернуть чат" },
+    uk: { name: "Меліс", online: "Підтримка • Онлайн", teaser: "Вітаю, я Меліс. Підберемо разом відповідний світлодіодний екран і орієнтовну ціну?", teaserShort: "Вітаю, я Меліс. Підберемо екран разом?", note: "", open: "Відкрити чат з Меліс", close: "Закрити чат", closeTeaser: "Закрити повідомлення", dialog: "Меліс • Онлайн-підтримка", frame: "Меліс: підбір LED-екрана та орієнтовна ціна", loading: "З'єднання…", typing: "Меліс друкує", minimize: "Згорнути чат" },
+    bg: { name: "Мелис", online: "Поддръжка • На линия", teaser: "Здравейте, аз съм Мелис. Да намерим ли заедно подходящия LED екран и ориентировъчна цена?", teaserShort: "Здравейте, аз съм Мелис. Да изберем ли екрана заедно?", note: "", open: "Отворете чата с Мелис", close: "Затваряне на чата", closeTeaser: "Затваряне на съобщението", dialog: "Мелис • Онлайн поддръжка", frame: "Мелис: препоръка за LED екран и ориентировъчна цена", loading: "Свързване…", typing: "Мелис пише", minimize: "Смаляване на чата" },
+    ro: { name: "Melis", online: "Asistență • Online", teaser: "Bună, sunt Melis. Găsim împreună ecranul LED potrivit și un preț estimativ?", teaserShort: "Bună, sunt Melis. Alegem împreună ecranul potrivit?", note: "", open: "Deschideți chatul cu Melis", close: "Închideți chatul", closeTeaser: "Închideți mesajul", dialog: "Melis • Asistență live", frame: "Melis: recomandare ecran LED și preț estimativ", loading: "Se conectează…", typing: "Melis scrie", minimize: "Minimizați chatul" },
+    el: { name: "Μελίς", online: "Υποστήριξη • Σε σύνδεση", teaser: "Γεια σας, είμαι η Μελίς. Να βρούμε μαζί την κατάλληλη οθόνη LED και μια εκτιμώμενη τιμή;", teaserShort: "Γεια σας, είμαι η Μελίς. Να βρούμε μαζί την οθόνη;", note: "", open: "Άνοιγμα συνομιλίας με τη Μελίς", close: "Κλείσιμο συνομιλίας", closeTeaser: "Κλείσιμο μηνύματος", dialog: "Μελίς • Ζωντανή υποστήριξη", frame: "Μελίς: πρόταση οθόνης LED και εκτιμώμενη τιμή", loading: "Σύνδεση…", typing: "Η Μελίς γράφει", minimize: "Ελαχιστοποίηση συνομιλίας" },
+    ar: { name: "مليس", online: "الدعم • متصلة", teaser: "مرحبًا، أنا مليس. هل نختار معًا شاشة LED المناسبة وسعرًا تقديريًا؟", teaserShort: "مرحبًا، أنا مليس. هل نختار الشاشة المناسبة معًا؟", note: "", open: "افتح المحادثة مع مليس", close: "أغلق المحادثة", closeTeaser: "أغلق الرسالة", dialog: "مليس • دعم مباشر", frame: "مليس: اقتراح شاشة LED وسعر تقديري", loading: "جارٍ الاتصال…", typing: "مليس تكتب", minimize: "تصغير المحادثة" },
+    az: { name: "Melis", online: "Canlı dəstək • Onlayn", teaser: "Salam, mən Melisəm. Sizə uyğun LED ekranı və qiyməti birlikdə tapaq?", teaserShort: "Salam, mən Melisəm. Uyğun ekranı birlikdə tapaq?", note: "", open: "Melis ilə söhbəti aç", close: "Söhbəti bağla", closeTeaser: "Mesajı bağla", dialog: "Melis • Canlı dəstək", frame: "Melis: LED ekran tövsiyəsi və təxmini qiymət", loading: "Qoşulur…", typing: "Melis yazır", minimize: "Söhbəti kiçilt" },
+    ka: { name: "მელისი", online: "მხარდაჭერა • ონლაინ", teaser: "გამარჯობა, მე მელისი ვარ. ერთად შევარჩიოთ შესაფერისი LED ეკრანი და სავარაუდო ფასი?", teaserShort: "გამარჯობა, მე მელისი ვარ. ეკრანი ერთად შევარჩიოთ?", note: "", open: "ჩატის გახსნა მელისთან", close: "ჩატის დახურვა", closeTeaser: "შეტყობინების დახურვა", dialog: "მელისი • ონლაინ მხარდაჭერა", frame: "მელისი: LED ეკრანის რეკომენდაცია და სავარაუდო ფასი", loading: "დაკავშირება…", typing: "მელისი წერს", minimize: "ჩატის ჩაკეცვა" }
+  };
+  var T = STR[LANG] || STR.en;
 
   var mqReduce = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
   /* Match MobileCtaBar (md:hidden = <768px) so launcher clears Ara / WhatsApp / Teklif. */
@@ -174,6 +227,48 @@
   }
 
   var root, launcher, badge, teaser, teaserMsg, panel, closeBtn, grab, handle, frame, loading, lastFocus = null;
+  var refs = {};
+  /* Ülke bilgisi geldikten sonra dil değişirse metinleri yenile (görünüm aynı). */
+  function relabel() {
+    if (!root) return;
+    root.setAttribute("lang", LANG);
+    if (refs.tb) refs.tb.setAttribute("aria-label", T.open);
+    if (refs.name) refs.name.textContent = T.name;
+    if (refs.online) refs.online.textContent = "• " + T.online;
+    if (refs.tx) refs.tx.setAttribute("aria-label", T.closeTeaser);
+    if (refs.loading) refs.loading.textContent = T.loading;
+    launcher.setAttribute("aria-label", isOpen ? T.close : T.open);
+    panel.setAttribute("aria-label", T.dialog);
+    closeBtn.setAttribute("aria-label", T.close);
+    handle.setAttribute("aria-label", T.minimize);
+    var imgs = root.querySelectorAll("img");
+    for (var i = 0; i < imgs.length; i++) imgs[i].alt = T.name;
+    if (teaserMsg) teaserMsg.dir = LANG === "ar" ? "rtl" : "";
+    if (teaser && !teaser.hidden && teaserMsg && !teaserMsg.querySelector(".acd-typing")) setTeaserText();
+  }
+  function setLang(l) {
+    l = norm(l) || "en";
+    if (l === LANG) return;
+    LANG = l;
+    T = STR[LANG] || STR.en;
+    relabel();
+  }
+  /* Ziyaretçinin ülkesi: Cloudflare (CF-IPCountry) → /api/geo. Oturum başına bir kez; hata olursa tarayıcı dili kalır. */
+  function geo() {
+    if (PAGE_FIXED || storedCountry() || !window.fetch) return;
+    var ctl = "AbortController" in window ? new AbortController() : null;
+    var to = setTimeout(function () { if (ctl) ctl.abort(); }, 2500);
+    fetch("/api/geo", { credentials: "omit", cache: "no-store", signal: ctl ? ctl.signal : undefined })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        clearTimeout(to);
+        var cc = j && /^[A-Z]{2}$/.test(j.country || "") ? j.country : "";
+        if (!cc) return;
+        try { window.sessionStorage.setItem(CC_KEY, cc); } catch (e) { /* özel mod */ }
+        setLang(pickLang(cc));
+      })
+      .catch(function () { clearTimeout(to); });
+  }
   var isOpen = false, teaserTimer = 0, autoTimer = 0, drag = null, lastTap = 0, spaceWait = null;
 
   function build() {
@@ -186,19 +281,23 @@
     teaser = el("div", "acd-teaser");
     teaser.hidden = true;
     var tb = el("button", "acd-teaser-body", { type: "button", "aria-label": T.open });
+    refs.tb = tb;
     tb.appendChild(avatarImg(42));
     var tt = el("span", "");
     var nm = el("span", "acd-t-name");
     nm.appendChild(el("i", "", { "aria-hidden": "true" }));
-    nm.appendChild(document.createTextNode(T.name));
+    refs.name = document.createTextNode(T.name);
+    nm.appendChild(refs.name);
     var on = el("small", "");
     on.textContent = "• " + T.online;
+    refs.online = on;
     nm.appendChild(on);
     teaserMsg = el("span", "acd-t-msg", { "aria-live": "polite" });
     tt.appendChild(nm);
     tt.appendChild(teaserMsg);
     tb.appendChild(tt);
     var tx = el("button", "acd-teaser-x", { type: "button", "aria-label": T.closeTeaser });
+    refs.tx = tx;
     tx.innerHTML = SVG_X_SM;
     teaser.appendChild(tb);
     teaser.appendChild(tx);
@@ -223,6 +322,7 @@
     loading.appendChild(avatarImg(72));
     var lt = el("span", "");
     lt.textContent = T.loading;
+    refs.loading = lt;
     loading.appendChild(lt);
     grab = el("div", "acd-grab");
     handle = el("button", "acd-handle", { type: "button", "aria-label": T.minimize });
@@ -470,7 +570,7 @@
         }
       } catch (e) { /* farklı köken: yok say */ }
     });
-    frame.src = SRC; /* yalnızca ilk açılışta yüklenir (tembel yükleme) */
+    frame.src = LANG === "tr" ? SRC : SRC + (SRC.indexOf("?") >= 0 ? "&" : "?") + "lang=" + LANG; /* yalnızca ilk açılışta yüklenir (tembel yükleme) */
     panel.appendChild(frame);
   }
 
@@ -566,6 +666,8 @@
     if (started) return;
     started = true;
     build();
+    if (LANG !== "tr") relabel();
+    geo();
     watchRoutes();
     if (!dismissed()) {
       var run = function () { teaserTimer = setTimeout(showTeaser, DELAY); };
