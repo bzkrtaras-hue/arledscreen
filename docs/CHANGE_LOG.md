@@ -2,6 +2,13 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-010 — Kiralık "quote-only" listelerinden çıkarıldı (llms.txt satır 3, ana sayfa fiyat SSS)
+
+- **Kaynak:** #78 sonrası canlı denetim: /llms.txt satır 3 ve ana sayfa fiyat SSS cevabı (TR+EN, /en/sss/) kiralığı hâlâ "yazılı teklifle" grubunda sayıyordu; satır 129 ile çelişki
+- **Değişiklik:** "Şeffaf / esnek / poster / kiralık / kontrol" listelerinden kiralık çıkarıldı, yerine "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir." (EN: "Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.") eklendi — public/llms.txt, src/content/faqs.ts (yalnızca fiyat SSS cevabı, TR+EN), public/entity.json + public/ai-shopping.json makine SSS cevabı (TR+EN)
+- **Dokunulmadı:** ana sayfada bu SSS cevabı dışında hiçbir metin/yerleşim; llms-full.txt, src/lib/ai.ts, scripts/postbuild-ai.mjs zaten doğruydu (#78)
+- **Production:** Ali / Aras Bey onayı → squash merge → manual deploy
+
 ## ARL-20261009-009 — Garanti 2 yıl + 5 yıl servis, kiralık 50 USD/m²/gün (Aras Bey kararları)
 
 - **Kaynak:** Aras Bey: 2 yıl garanti + 5 yıl ücretsiz teknik servis (1 Eki 2026, site metni için onaylı); kiralık iç/dış mekân LED 50 USD/m²/gün, kurulum ve nakliye ayrı teklif (4 Eki 2026)
