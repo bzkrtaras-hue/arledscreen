@@ -2,6 +2,12 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-002 — Deploy smoke: SIGPIPE yanlış hata düzeltmesi
+
+- **Sorun:** `deploy-cloudflare-pages.yml` smoke adımında `echo "$sm" | grep -q …` + `set -o pipefail` → grep erken çıkınca echo SIGPIPE alıyor, sağlıklı yayında “FAIL” görünüyordu
+- **Çözüm:** tüm `echo "$x" | grep -q` kalıpları here-string (`grep -q '…' <<<"$x"`); JSON ilk bayt kontrolü `test "$(head -c 1 …)" = "{"`
+- **Kapsam:** yalnızca CI/workflow; site, arayüz, içerik değişmedi. Deploy ve IndexNow çalıştırılmadı
+
 ## ARL-20261009-001 — PR #62 tamamlama: Melis doğru dosya + owner-gate kaldırma (gizlilik)
 
 - **Durum:** PR #62 dalında; merge + tek production deploy sahibinin onayını bekliyor
