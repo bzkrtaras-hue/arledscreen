@@ -2,6 +2,18 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-014 — Ürün sırası kesinleştirildi: "Popüler ürünler" (İç, Dış, Dijital, Menüboard, Kiosk, LCD) önce
+
+- **Kaynak:** Aras Bey (9 Eki 2026). #86 yayında, ama header masaüstü menüsünde ve /products sayfalarında aile gruplaması yüzünden sıra İç, GOB, Esnek, İnce Pitch, Dış… şeklinde görünüyordu.
+- **Değişiklik:** ilk altı ürün yeni bir "Popüler ürünler" / "Main products" başlığı altında, sahibin sırasıyla listeleniyor: İç mekân, Dış mekân, Dijital ekran, Menüboard, Kiosk, LCD. Kalan ürünler mevcut aile başlıklarıyla devam ediyor; hiçbir ürün iki kez listelenmiyor.
+  - Header masaüstü menüsü (`SiteShell` menü ailesi).
+  - /tr/products/ ve /en/products/ (`groupsByFamily()`).
+  - Footer ve mobil menü zaten düz sıradaydı (#86). EN header'da ve EN footer'da ürün listesi yok.
+- **Şema:** "LED ekran ürün grupları" ItemList zaten bu sırada (#86); değişmedi.
+- **Dokunulmadı:** ana sayfa, CSS ve yerleşim (mevcut başlık ve kart bileşenleri kullanıldı).
+- **Doğrulama:** build + validatörler; ekran görüntüleri `/workspace/preview-grok/siralama2/`
+- **Production:** Aras Bey / Ali onayı → squash merge → manual deploy
+
 ## ARL-20261009-013 — Ürün çeşitleri sırası + Dijital ekran / Menüboard / Kiosk / LCD ürün grupları (TR + EN)
 
 - **Kaynak:** Aras Bey (4 ve 9 Eki 2026): ilk altı sıra İç mekân LED, Dış mekân LED, Dijital ekran, Menüboard, Kiosk, LCD ekran; diğerleri mevcut göreli sırayla. Dijital ekran / menüboard / kiosk ürün sayfaları eski sitede vardı, repoya taşınırken kaybolmuştu; LCD sayfası da toptancı bilgisiyle oluşturulacaktı.
