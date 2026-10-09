@@ -46,7 +46,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "How long is the warranty?",
       answer:
-        "Warranty length depends on the series and the project. The written quote and contract state the term. After installation, faults, service and spare parts are handled by phone, WhatsApp or email.",
+        "ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service. After installation, faults, service and spare parts are handled by phone, WhatsApp or email.",
     },
     {
       question: "Who supplies NXTIONSTAR LED projects in Turkey?",
@@ -103,7 +103,7 @@ const faqsByLocale: Record<Locale, FaqItem[]> = {
     {
       question: "Garanti ve teknik servis nasıl sağlanıyor?",
       answer:
-        "Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrasında arıza, bakım ve yedek parça talepleri için telefon, WhatsApp veya e-posta ile bize ulaşabilirsiniz.",
+        "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar. Kurulum sonrasında arıza, bakım ve yedek parça talepleri için telefon, WhatsApp veya e-posta ile bize ulaşabilirsiniz.",
     },
     {
       question: "Kiralık LED ekran hizmetiniz var mı?",

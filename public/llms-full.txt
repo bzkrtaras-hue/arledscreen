@@ -30,7 +30,7 @@
 - Instagram: `@arledscreen` — https://www.instagram.com/arledscreen/
 - Facebook: `@arledscreenn` — https://www.facebook.com/arledscreenn
 - LinkedIn: https://www.linkedin.com/company/arleds (şirket slug; web arleds.com değildir)
-- Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde. Tem 2025 – Tem 2026 arasında 45 proje kaydı; 13 il ile Almanya ve Azerbaycan. Kaydı olmayan il için kapı sayfası yok. Garanti yılı / genel iade politikası sitede sabit yayımlanmaz; teklifte yazılır.
+- Hizmet bölgesi: Türkiye geneli; tamamlanan iş listesi kayıtlı illerde. Tem 2025 – Tem 2026 arasında 45 proje kaydı; 13 il ile Almanya ve Azerbaycan. Kaydı olmayan il için kapı sayfası yok. ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar. Genel iade politikası sitede sabit yayımlanmaz; teklifte yazılır.
 
 Karıştırılmaması gerekenler:
 - ARLEDSCREEN (İstanbul), Almanya merkezli ARLED Solutions GmbH / ARLED Cinema ile aynı firma değildir.
@@ -62,7 +62,7 @@ Karıştırılmaması gerekenler:
 | İç mekân LED ekran | P1.25 – P4 | Mağaza, kafe, showroom, toplantı salonu | https://arledscreen.com/tr/products/ic-mekan-led-ekran/ |
 | Dış mekân LED ekran | P2.5 – P5 | Cephe, totem, billboard, tabela | https://arledscreen.com/tr/products/dis-mekan-led-ekran/ |
 | GOB LED ekran | P1.25, P1.53, P1.86 | Koruyucu kaplamalı yüzey, yakın izleme | https://arledscreen.com/tr/products/gob-led-ekran/ |
-| Kiralık LED ekran | Projeye göre | Konser, fuar, lansman, açık hava etkinliği | https://arledscreen.com/tr/products/kiralik-led-ekran/ |
+| Kiralık LED ekran | Günlük 50 USD/m² (kurulum ve nakliye ayrıca) | Konser, fuar, lansman, açık hava etkinliği | https://arledscreen.com/tr/products/kiralik-led-ekran/ |
 | Esnek LED ekran | Projeye göre | Kavisli, silindir ve özel form yüzeyler | https://arledscreen.com/tr/products/esnek-led-ekran/ |
 | Montaj, modül ve teknik servis | — | Keşif, montaj, bakım, modül ve güç kaynağı değişimi | https://arledscreen.com/tr/hizmetler/ |
 
@@ -118,7 +118,7 @@ Hesaplayıcının toplam formülü:
 
 Aynı ölçüde P5 dış mekân: 120 × 29,90 = 3.588,00 USD malzeme; toplam 5.164,00 USD (KDV ve nakliye hariç).
 
-Kiralık ve esnek LED ekranlarda fiyat; ölçü, form, süre, lokasyon ve kurulum koşullarına göre projeye özel yazılı teklifle verilir.
+Esnek LED ekranlarda fiyat; ölçü, form, süre, lokasyon ve kurulum koşullarına göre projeye özel yazılı teklifle verilir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.
 
 ## 5. Proje süreci
 
@@ -182,10 +182,10 @@ Merkez İstanbul Gaziosmanpaşa'dadır. Hizmet Türkiye geneli; tamamlanan iş l
 Süre; ekran ölçüsüne, taşıyıcı konstrüksiyon ihtiyacına, montaj yüksekliğine ve saha izinlerine göre değişir. Keşif sonrası projeye özel iş planı ve tahmini süre teklifte paylaşılır.
 
 **Garanti ve teknik servis nasıl sağlanıyor?**
-Garanti süresi ve kapsamı ürün serisine ve projeye göre belirlenir; teklif ve sözleşmede yazılı olarak yer alır. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir.
+ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar. Kurulum sonrası arıza, bakım ve yedek parça talepleri telefon, WhatsApp veya e-posta ile iletilir.
 
 **Kiralık LED ekran hizmetiniz var mı?**
-Evet. Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçenekleri birlikte değerlendirilir. Kiralık LED ekran fiyatı ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre hazırlanır.
+Evet. Sahne, fuar ve etkinlik projeleri için kiralık ve satış seçenekleri birlikte değerlendirilir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.
 
 **Ekrana içerik nasıl yüklenir?**
 LED ekranlar bir kontrol sistemi (gönderici/alıcı kart veya medya oynatıcı) üzerinden yönetilir. Kullanım senaryosuna göre bilgisayardan canlı yayın, USB ile oynatma veya uzaktan içerik yönetimi seçenekleri keşifte belirlenir.

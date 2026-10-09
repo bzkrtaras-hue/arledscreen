@@ -21,7 +21,7 @@ Kiralama şu durumlarda öne çıkar:
 - Yatırım bütçesi sabit bir ekran için henüz ayrılmamıştır.
 - Farklı mekânlarda tekrarlayan ama seyrek etkinlikler vardır.
 
-ARLEDSCREEN kiralık LED ekran grubunda sahne ve etkinlik için hızlı kurulan kabin seçeneklerini projelendirir. Fiyat; ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre hazırlanır — sitede sabit günlük TL listesi yoktur.
+ARLEDSCREEN kiralık LED ekran grubunda sahne ve etkinlik için hızlı kurulan kabin seçeneklerini projelendirir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.
 
 ## 2. Ne zaman satın alma?
 
@@ -57,7 +57,7 @@ Bu bilgilerle [teklif formundan](/tr/quote/) veya WhatsApp’tan yazmanız yeter
 ## 5. Sık sorulan sorular
 
 **Kiralık LED ekran fiyatı ne kadar?**
-Ölçü, kiralama süresi, lokasyon ve kurulum koşullarına göre etkinliğe özel hazırlanır. Sabit günlük fiyat listesi sitede yayımlanmaz.
+İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.
 
 **Aynı ekranı hem kiralayıp hem sonra satın alabilir miyim?**
 Senaryoya göre değerlendirilir. İhtiyacınızı paylaştığınızda uygun yolu yazılı teklifte belirtiriz.

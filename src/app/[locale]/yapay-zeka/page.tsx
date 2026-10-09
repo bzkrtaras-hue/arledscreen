@@ -88,7 +88,7 @@ const content: Record<
     ],
     priceTitle: "Panel fiyatları nerede?",
     priceBody:
-      "Yayımlanmış 12 panel fiyatı LED ekran fiyatları sayfasında ve fiyat hesaplayıcıdadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Şeffaf, esnek, poster, kiralık ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir.",
+      "Yayımlanmış 12 panel fiyatı LED ekran fiyatları sayfasında ve fiyat hesaplayıcıdadır. Fiyatlar USD cinsindendir, panel başınadır, KDV ve nakliye hariçtir; ücretsiz kargo yoktur. Şeffaf, esnek, poster ve kontrol ürünlerinde nihai tutar yazılı teklifle kesinleşir. İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
     priceLinks: [
       { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
       { href: "/tr/hesaplayici/", label: "Fiyat hesaplayıcı" },
@@ -157,7 +157,7 @@ const content: Record<
     ],
     priceTitle: "Where are panel prices listed?",
     priceBody:
-      "The published 12 panel prices are on the LED display prices page and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster, rental and control products are confirmed in a written quote.",
+      "The published 12 panel prices are on the LED display prices page and in the price calculator. Prices are in USD per panel; VAT and shipping are excluded; there is no free shipping. Transparent, flexible, poster and control products are confirmed in a written quote. Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
     priceLinks: [
       { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
       { href: "/en/hesaplayici/", label: "Price calculator" },

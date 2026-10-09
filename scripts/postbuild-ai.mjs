@@ -927,13 +927,13 @@ function buildAiShopping() {
         "Şeffaf / vitrin",
         "Esnek",
         "Poster",
-        "Kiralık",
         "Kontrol kartı (Huidu/NovaStar/Colorlight)",
       ],
+      rental: "İç ve dış mekân kiralık LED ekran: günlük 50 USD/m². Kurulum ve nakliye ayrıca tekliflendirilir.",
+      warranty: "ARLEDSCREEN 2 yıl garanti ve 5 yıl ücretsiz teknik servis sunar.",
       noFixedClaims: [
         "Sertifika (CE/RoHS/ISO/UL/ETL) — model veya teklifle",
         "Nit, IP, kW — model veya teklifle",
-        "Garanti yılı — sözleşmede",
         "Çalışan, ciro, müşteri, ranking — yayımlanmadı",
       ],
       roleClarity: {
@@ -961,13 +961,13 @@ function buildAiShopping() {
           "Transparent / storefront",
           "Flexible",
           "Poster",
-          "Rental",
           "Control cards (Huidu/NovaStar/Colorlight)",
         ],
+        rental: "Indoor and outdoor rental LED: USD 50 per m² per day. Installation and shipping are quoted separately.",
+        warranty: "ARLEDSCREEN offers a 2-year warranty and 5 years of free technical service.",
         noFixedClaims: [
           "Certificates (CE/RoHS/ISO/UL/ETL) — only per model or quote",
           "Nits, IP, kW — only per model or quote",
-          "Warranty years — only in contract",
           "Headcount, revenue, customer counts, rankings — not published",
         ],
         roleClarity: {
