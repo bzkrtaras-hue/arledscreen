@@ -3,12 +3,12 @@ import { modelPath, modelsForGroup } from "@/content/models";
 import { ArrowRight } from "lucide-react";
 import { OptImage } from "@/components/ui/opt-image";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { PRODUCT_GROUPS, productGroupPath, type ProductGroup } from "@/content/categories";
+import { PRODUCT_GROUPS_GRID, productGroupPath, type ProductGroup } from "@/content/categories";
 import { getProductGroupEn } from "@/content/product-groups-en";
 
 /** Category tiles: rounded photo on a grey card with a centred caption bar. */
 export function ProductGroupGrid({
-  groups = PRODUCT_GROUPS,
+  groups = PRODUCT_GROUPS_GRID,
   headingLevel = "h3",
   showService = true,
   locale = "tr",

@@ -98,6 +98,7 @@ function intentLinks(except?: string): CommercialLink[] {
     { href: "/tr/led-ekran-kiralama/", label: "LED ekran kiralama" },
     { href: "/tr/led-ekran-fiyatlari/", label: "LED ekran fiyatları" },
     { href: "/tr/led-ekran-servis/", label: "LED ekran servis" },
+    { href: "/tr/led-ekran-tamiri/", label: "LED ekran tamiri" },
   ];
   return all.filter((l) => !except || !l.href.includes(`/${except}/`));
 }
@@ -381,6 +382,67 @@ const INTENT_PAGES: CommercialPage[] = [
       },
     ],
     primaryCta: { href: "/tr/quote/", label: "Servis talebi" },
+    secondaryCta: { href: "/tr/hizmetler/", label: "Hizmetler" },
+  }),
+  page({
+    slug: "led-ekran-tamiri",
+    cluster: "intent",
+    title: "LED Ekran Tamiri ve Arıza Tespiti | ARLEDSCREEN",
+    description:
+      "LED ekran tamiri: ölü piksel, sönen modül, renk farkı, güç kaynağı ve kontrol kartı arızaları. İstanbul Gaziosmanpaşa merkezli servis; keşif sonrası teklif.",
+    h1: "LED ekran tamiri",
+    eyebrow: "Servis · Tamir",
+    lead: "Sönen modül, renk farkı, kararan bölge ya da hiç açılmayan ekran: arızayı yerinde tespit edip modül, güç kaynağı, kart ve kablo düzeyinde onarıyoruz. Fiyatı keşif sonrası teklifle veriyoruz.",
+    intro: [
+      "LED ekran tamirinde en sık karşılaştığımız arızalar şunlardır: ölü piksel ya da tamamen sönen modül; bölgeler arasında renk ve parlaklık farkı; güç kaynağı (PSU) arızası yüzünden kararan kabin; alıcı (receiving) veya gönderici (sending) karttan kaynaklanan görüntü kayması, donma ve sinyal kaybı; gevşemiş ya da oksitlenmiş flat kablo ve konnektörler; dış mekânda conta yıpranması sonrası içeri su ve nem girmesi.",
+      "Ekran tamir süreci beş adımda ilerler. Arızanın fotoğrafını veya kısa videosunu WhatsApp'tan gönderirsiniz ve uzaktan ön teşhis yaparız. Ardından yerinde keşif ve ölçümle arızanın kaynağını tespit ederiz. Onayınızla modül, güç kaynağı, kart ya da kablo değiştirilir veya onarılır. Son adımda ekran test edilir, gerekirse renk ve parlaklık ayarı yapılır.",
+      "NovaStar, Colorlight ve Huidu kontrol sistemli ekranlarda kart ve yazılım kontrolü yapıyoruz. Başka firmadan alınmış ekranlarda marka, model ve kontrol kartı bilgisiyle servis ve yedek parça uygunluğunu değerlendiriyoruz. Merkezimiz İstanbul Gaziosmanpaşa'dadır; Türkiye genelinde servis veriyoruz.",
+      NAP,
+    ],
+    bullets: [
+      "Ölü piksel ve modül değişimi",
+      "Güç kaynağı (PSU) değişimi",
+      "Alıcı / gönderici kart ve yazılım kontrolü",
+      "Kablo, konnektör ve nem kaynaklı arıza onarımı",
+      "Renk ve parlaklık ayarı",
+    ],
+    images: [
+      { src: "/projects/install-wiring.jpg", alt: "LED ekran arkasında alıcı kart, güç kaynağı ve kablo bağlantıları" },
+      { src: "/projects/modules/front-service-module.jpg", alt: "Önden servis edilen LED modül" },
+    ],
+    proofs: proofsFrom(() => true, 4),
+    relatedProducts: productClusterLinks(),
+    relatedUses: usageLinks(),
+    relatedCities: CORE_CITIES,
+    relatedIntents: intentLinks("led-ekran-tamiri"),
+    faqs: [
+      {
+        question: "LED ekran tamiri ne kadar tutar?",
+        answer:
+          "Tamir için sabit fiyat yayımlamıyoruz. Arızanın kaynağı, değişecek parça ve ekrana erişim koşulları her işte farklı olduğu için fiyatı keşif sonrası yazılı teklifle veriyoruz.",
+      },
+      {
+        question: "Ekranın bir bölümü karardı; sebebi ne olabilir?",
+        answer:
+          "Kabin ya da bölge bazında kararma çoğunlukla güç kaynağı, alıcı kart veya bağlantı kablosundan kaynaklanır. Tek modül sönmüşse modül veya flat kablo arızası olasıdır. Kesin teşhisi yerinde ölçümle koyarız.",
+      },
+      {
+        question: "Ekranda renk ve parlaklık farkı neden olur?",
+        answer:
+          "Farklı üretim partisinden modül takılması, LED'lerin zamanla eşit olmayan şekilde yıpranması veya kart ayarlarının bozulması renk ve parlaklık farkı yaratır. Doğru modül değişimi ve ayar ile giderilir.",
+      },
+      {
+        question: "Başka firmadan alınmış ekranı tamir ediyor musunuz?",
+        answer:
+          "Ekranın markası, modeli ve kontrol sistemi bilgisini paylaşırsanız servis ve yedek parça uygunluğunu değerlendirip size iletiriz. NovaStar, Colorlight ve Huidu kontrol sistemlerinde kontrol yapıyoruz.",
+      },
+      {
+        question: "Arızayı nasıl bildiririm?",
+        answer:
+          "Arızanın fotoğrafını veya kısa videosunu +90 530 507 88 34 WhatsApp hattına gönderin; uzaktan ön teşhis yapıp keşfi planlayalım.",
+      },
+    ],
+    primaryCta: { href: "/tr/quote/", label: "Tamir talebi" },
     secondaryCta: { href: "/tr/hizmetler/", label: "Hizmetler" },
   }),
 ];
@@ -833,6 +895,7 @@ export const COMMERCIAL_EN_INTENT_SLUGS = [
   "led-ekran-montaj",
   "led-ekran-kiralama",
   "led-ekran-servis",
+  "led-ekran-tamiri",
 ] as const;
 
 /** Use-case hubs AI agents invent under /en/<tr-slug>/ (full TR use cluster). */
@@ -917,6 +980,7 @@ function enIntentLinks(except: string): CommercialLink[] {
     { href: "/en/led-ekran-kiralama/", label: "LED display rental" },
     { href: "/en/led-ekran-fiyatlari/", label: "LED display prices" },
     { href: "/en/led-ekran-servis/", label: "LED display service" },
+    { href: "/en/led-ekran-tamiri/", label: "LED display repair" },
     { href: "/en/hizmetler/", label: "Services" },
     { href: "/en/quote/", label: "Request a quote" },
     { href: "/en/hesaplayici/", label: "Price calculator" },
@@ -1898,6 +1962,69 @@ const COMMERCIAL_EN_BY_SLUG: Record<CommercialEnIntentSlug, () => CommercialPage
       ],
       primaryCta: { href: "/en/quote/", label: "Request service" },
       secondaryCta: { href: "/en/led-ekran/", label: "LED displays" },
+    };
+  },
+  "led-ekran-tamiri": () => {
+    const tr = getCommercialPage("led-ekran-tamiri")!;
+    return {
+      ...tr,
+      title: "LED Display Repair & Fault Finding | ARLEDSCREEN",
+      description:
+        "LED display repair: dead pixels, dark modules, colour mismatch, power supply and control card faults. Istanbul-based service; priced on quote after survey.",
+      h1: "LED display repair",
+      eyebrow: "Service · Repair",
+      lead:
+        "Dead modules, colour mismatch, dark areas or a screen that won't start: we find the fault on site and repair it at module, power supply, card and cable level. Pricing is given in a quote after survey.",
+      intro: [
+        "The faults we see most often: dead pixels or a fully dark module; colour and brightness mismatch between areas; a dark cabinet caused by a failed power supply (PSU); image shift, freezing or signal loss from the receiving or sending card; loose or oxidised ribbon cables and connectors; and, outdoors, water and moisture getting in after gaskets wear.",
+        "Repair runs in five steps. You send a photo or short video of the fault on WhatsApp and we make a remote pre-diagnosis. We then survey and measure on site to find the cause. With your approval the module, power supply, card or cable is replaced or repaired. Finally the screen is tested and, if needed, colour and brightness are adjusted.",
+        "We check cards and software on screens running NovaStar, Colorlight and Huidu control systems. For screens bought elsewhere we assess service and spare-part fit from brand, model and control card data. Our HQ is in Gaziosmanpaşa, Istanbul; we provide service across Turkey.",
+        NAP_EN,
+      ],
+      bullets: [
+        "Dead pixel and module replacement",
+        "Power supply (PSU) replacement",
+        "Receiving / sending card and software checks",
+        "Cable, connector and moisture fault repair",
+        "Colour and brightness adjustment",
+      ],
+      images: [
+        { src: "/projects/install-wiring.jpg", alt: "Receiving cards, power supplies and cabling behind an LED screen" },
+        { src: "/projects/modules/front-service-module.jpg", alt: "Front-service LED module" },
+      ],
+      relatedProducts: EN_PRODUCT_LINKS,
+      relatedUses: enUseLinks(),
+      relatedCities: tr.relatedCities,
+      relatedIntents: enIntentLinks("led-ekran-tamiri"),
+      faqs: [
+        {
+          question: "How much does LED display repair cost?",
+          answer:
+            "We do not publish fixed repair prices. The cause, the parts to replace and access to the screen differ on every job, so we price in a written quote after survey.",
+        },
+        {
+          question: "Part of the screen went dark. What could cause it?",
+          answer:
+            "A dark cabinet or area is usually a power supply, receiving card or connecting cable. If a single module is out, the module or its ribbon cable is the likely cause. We confirm on site by measurement.",
+        },
+        {
+          question: "Why does a screen show colour and brightness differences?",
+          answer:
+            "Modules from a different production batch, uneven LED ageing or corrupted card settings cause colour and brightness mismatch. It is fixed with the right module replacement and adjustment.",
+        },
+        {
+          question: "Do you repair screens bought elsewhere?",
+          answer:
+            "Share the brand, model and control system and we will assess service and spare-part fit. We check NovaStar, Colorlight and Huidu control systems.",
+        },
+        {
+          question: "How do I report a fault?",
+          answer:
+            "Send a photo or short video of the fault to our WhatsApp line +90 530 507 88 34; we will make a remote pre-diagnosis and plan the survey.",
+        },
+      ],
+      primaryCta: { href: "/en/quote/", label: "Request repair" },
+      secondaryCta: { href: "/en/hizmetler/", label: "Services" },
     };
   },
 };

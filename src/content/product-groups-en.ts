@@ -128,7 +128,7 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       "Flexible LED for curved and custom surfaces. Quote-only pricing. NXTIONSTAR / ARLEDSCREEN — Istanbul survey and install.",
     short: "Flexible / curved LED",
     tag: "Flexible",
-    imageAlt: "Flexible LED module",
+    imageAlt: "Flexible LED module bent into a curve",
     quoteOnly: true,
     intro: [
       "Flexible modules suit curves and irregular forms. There is no fixed published USD list for this group — written quote after survey.",
