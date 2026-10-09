@@ -257,10 +257,10 @@ export default async function HizmetlerPage({ params }: { params: Promise<{ loca
                 {en ? "Request survey & quote" : "Keşif ve teklif iste"}
               </Link>
               <Link
-                href="/tr/projelerimiz/"
+                href={`/${locale}/projelerimiz/`}
                 className="btn-soft inline-flex min-h-12 items-center justify-center border border-cyan/50 bg-white px-6 text-cyan hover:bg-cyan-50"
               >
-                {en ? "View projects (TR)" : "Projeleri inceleyin"}
+                {en ? "View projects" : "Projeleri inceleyin"}
               </Link>
             </div>
           </div>

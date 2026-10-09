@@ -187,8 +187,8 @@ export default async function FounderPage({ params }: { params: Promise<{ locale
               </Link>
             </li>
             <li>
-              <Link href="/tr/projelerimiz/" className="font-semibold text-cyan hover:underline">
-                {en ? "Projects (TR)" : "Projeler"}
+              <Link href={`/${locale}/projelerimiz/`} className="font-semibold text-cyan hover:underline">
+                {en ? "Projects" : "Projeler"}
               </Link>
             </li>
             <li>
