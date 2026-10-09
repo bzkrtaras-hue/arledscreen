@@ -211,6 +211,150 @@ const EN: Record<string, Omit<ProductGroupEn, "slug">> = {
       },
     ],
   },
+  "dijital-ekran": {
+    name: "Digital display",
+    h1: "Digital displays: LED and LCD options",
+    lead: "Screens whose content changes in software; LED or LCD as needed",
+    title: "Digital Displays: Sale & Installation | ARLEDSCREEN",
+    description:
+      "Digital displays for stores, lobbies, cafés and offices: LCD/TV-type screens, touch kiosks, menu boards and LED. Sale, installation, repair and written quote. Istanbul.",
+    short: "LCD/TV-type screens, kiosks, menu boards and LED from one team",
+    tag: "Digital",
+    imageAlt: "LED wall and two freestanding digital screens in a library hall",
+    quoteOnly: true,
+    intro: [
+      "A digital display is any screen whose content you change in software instead of reprinting. LCD/TV-type panels, touch kiosks, menu boards, freestanding totems and modular LED walls all belong here.",
+      "The right type depends on where the screen goes, how far away people stand and how big it needs to be. For one screen viewed up close, a fixed-size LCD is often enough; for a large, bezel-free or sunlit surface, LED leads. We sell, install and service both.",
+    ],
+    highlights: [
+      "LED and LCD from the same team",
+      "Indoor LCD most often 43 to 85 inch",
+      "2-year warranty + 5 years of free technical service",
+      "Priced by written quote; we also repair LCD, kiosk and menu-board screens",
+    ],
+    faqs: [
+      {
+        question: "Is a digital display the same as an LED display?",
+        answer: "No. LED is one type of digital display; LCD/TV-type panels, kiosks and menu boards are digital displays too. We choose with you based on size, viewing distance and ambient light.",
+      },
+      {
+        question: "Do you repair digital displays?",
+        answer: "Yes. Besides LED, we diagnose and repair LCD, kiosk and menu-board screens.",
+      },
+      {
+        question: "Are prices published?",
+        answer: "No. This group is priced by written quote once type, size, quantity and mounting are clear. Published prices on our site cover NXTIONSTAR LED panels only.",
+      },
+    ],
+  },
+  menuboard: {
+    name: "Menu board",
+    h1: "Menu boards: digital menu screens",
+    lead: "Replace printed menus with a screen you update in minutes",
+    title: "Menu Board Screens: Sale & Installation | ARLEDSCREEN",
+    description:
+      "Menu boards for cafés and restaurants: LED menu walls above the counter, LCD/TV-type menu screens and freestanding portrait menus. Sale, installation, repair and written quote.",
+    short: "LED menu walls, LCD menu screens and freestanding portrait menus",
+    tag: "Menu board",
+    imageAlt: "Indoor LED screen installed in a café-restaurant",
+    quoteOnly: true,
+    intro: [
+      "A menu board shows your menu, prices and promotions above the counter or at the entrance. When a price or product changes, you update it in minutes without reprinting.",
+      "We build them two ways. LCD/TV-type screens come in fixed sizes and are placed side by side, usually 43 to 55 inch behind the counter. An LED menu wall is built from modules to fit the wall and gives one bezel-free surface that reads from a distance. At the entrance, 49, 55 or 65-inch portrait units or a poster LED are common.",
+    ],
+    highlights: [
+      "LED or LCD, chosen on site",
+      "Landscape above the counter or freestanding portrait",
+      "2-year warranty + 5 years of free technical service",
+      "Priced by written quote; we also repair menu-board screens",
+    ],
+    faqs: [
+      {
+        question: "LED or LCD for a menu board?",
+        answer: "Side-by-side LCD screens are practical but leave bezels between them. For one seamless surface that reads well in a bright room, an LED menu wall fits better. We decide on site based on the space.",
+      },
+      {
+        question: "Who updates the menu?",
+        answer: "You do. At handover we set up the software, screen settings and the upload method (USB, Wi-Fi or local network) and give a short training.",
+      },
+      {
+        question: "Are prices published?",
+        answer: "No. Menu boards are priced by written quote based on size, type and mounting.",
+      },
+    ],
+  },
+  kiosk: {
+    name: "Kiosk",
+    h1: "Kiosks: touch information and self-service points",
+    lead: "A screen people touch to get information or complete a task",
+    title: "Touch Kiosks: Sale & Installation | ARLEDSCREEN",
+    description:
+      "Touch kiosks in 49, 55 and 65 inch, Android or Windows, for wayfinding, information, ordering and catalogues. Sale, installation, repair and written quote. Istanbul.",
+    short: "49, 55 and 65-inch touch kiosks, Android or Windows",
+    tag: "Kiosk",
+    imageAlt: "Two 49-inch touch digital kiosks on floor stands",
+    quoteOnly: true,
+    intro: [
+      "A kiosk is a standalone point where people touch the screen or scan a QR code to get information or complete a task. Totems and posters mostly broadcast one way; a kiosk is interactive.",
+      "The freestanding touch kiosks we supply come in 49, 55 and 65 inch and run Android or Windows. They play video, images and sound, and content changes via USB, HDMI, LAN or Wi-Fi. These units are for indoor spaces; outdoor kiosk requests are assessed per project.",
+    ],
+    highlights: [
+      "49, 55 and 65-inch touch screen",
+      "Android or Windows",
+      "USB, HDMI, LAN and Wi-Fi",
+      "2-year warranty + 5 years of free technical service",
+    ],
+    faqs: [
+      {
+        question: "What sizes are available?",
+        answer: "We supply freestanding touch kiosks in 49, 55 and 65 inch and help you choose by viewing distance and space.",
+      },
+      {
+        question: "Can a kiosk be used outdoors?",
+        answer: "The units we supply are for indoor use. Outdoor use needs a sealed enclosure, high brightness and climate control; we assess such requests per project.",
+      },
+      {
+        question: "Do you repair kiosks?",
+        answer: "Yes. We diagnose and repair kiosk, LCD and menu-board screens. Pricing for this group is by written quote.",
+      },
+    ],
+  },
+  "lcd-ekran": {
+    name: "LCD display",
+    h1: "LCD display: touch kiosks and freestanding screens",
+    lead: "Single-panel, fixed-size screens for close viewing",
+    title: "LCD Displays: Kiosks & Floor Screens | ARLEDSCREEN",
+    description:
+      "49, 55 and 65-inch touch LCD kiosks, Android or Windows. Content via USB, HDMI, LAN and Wi-Fi. Sale, installation and written quote from ARLEDSCREEN, Istanbul.",
+    short: "Touch kiosks and freestanding LCD screens, 49 to 65 inch",
+    tag: "LCD",
+    imageAlt: "55-inch portrait LCD digital screen on a floor stand",
+    quoteOnly: true,
+    intro: [
+      "An LCD is a single panel made in a fixed factory size. Unlike modular LED, it is used at the size it ships in, which makes it a practical choice for one screen viewed up close.",
+      "For freestanding touch kiosks we supply 49, 55 and 65-inch sizes, running Android or Windows. They play video, images and sound and can show online content when connected. Model and size are confirmed in a written quote; LCD is not on our published LED panel price list.",
+    ],
+    highlights: [
+      "49, 55 and 65-inch touch kiosks",
+      "Android or Windows",
+      "USB, HDMI, LAN and Wi-Fi",
+      "Priced by written quote; installation by our team",
+    ],
+    faqs: [
+      {
+        question: "What sizes do the LCD kiosks come in?",
+        answer: "We supply freestanding touch kiosks in 49, 55 and 65 inches. We help you choose by viewing distance and the space available.",
+      },
+      {
+        question: "Android or Windows?",
+        answer: "Both play video, images and sound. If your software needs a specific operating system, we pick accordingly; otherwise describe your use case and we will recommend one with the quote.",
+      },
+      {
+        question: "Are LCD prices published?",
+        answer: "No. LCD screens are priced by written quote once size, operating system and quantity are clear. Published prices on our site cover NXTIONSTAR LED panels only.",
+      },
+    ],
+  },
   "poster-led-ekran": {
     name: "Poster / totem LED",
     h1: "Poster and totem LED display",

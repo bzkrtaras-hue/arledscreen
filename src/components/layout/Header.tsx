@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, m } from "framer-motion";
 import {
@@ -130,7 +130,14 @@ export function Header({ locale, groups, guides }: HeaderProps) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const group = groups[active] ?? groups[0];
+  // Desktop dropdown shows family headings: keep each family together, families in the
+  // order they first appear in the owner-ordered list (İç Mekân, Dış Mekân, ...).
+  const menuGroups = useMemo(() => {
+    const families: string[] = [];
+    for (const g of groups) if (!families.includes(g.family)) families.push(g.family);
+    return families.flatMap((f) => groups.filter((g) => g.family === f));
+  }, [groups]);
+  const group = menuGroups[active] ?? menuGroups[0];
 
   return (
     <header className="pl-2 pr-3 pb-2.5 pt-1.5 sm:pl-3 sm:pr-4 md:pl-4 md:pr-6 lg:pl-5 lg:pr-8">
@@ -208,9 +215,9 @@ export function Header({ locale, groups, guides }: HeaderProps) {
                         {link.dropdown === "products" ? (
                           <div className="menu-glass-panel grid grid-cols-[250px_1fr] rounded-[24px]">
                             <ul className="border-r border-[#d8e2ee] p-3">
-                              {groups.map((g, i) => (
+                              {menuGroups.map((g, i) => (
                                 <li key={g.href}>
-                                  {i === 0 || groups[i - 1].family !== g.family ? (
+                                  {i === 0 || menuGroups[i - 1].family !== g.family ? (
                                     <p
                                       className={cn(
                                         "px-3 pb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#6b7785]",

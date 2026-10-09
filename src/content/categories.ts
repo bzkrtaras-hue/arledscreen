@@ -118,6 +118,7 @@ const FLEXIBLE_TECH_GALLERY: TechGalleryShot[] = [
 export const PRODUCT_FAMILIES = [
   "Dış Mekân LED Ekranlar",
   "İç Mekân LED Ekranlar",
+  "LCD ve Dijital Ekranlar",
   "Kiralık LED Ekranlar",
   "Poster ve Totem LED Ekranlar",
   "Modül ve Kontrol Sistemleri",
@@ -623,6 +624,270 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
     ],
   },
   {
+    slug: "dijital-ekran",
+    name: "Dijital Ekran",
+    h1: "Dijital Ekran: LED ve LCD Seçenekleri",
+    lead: "İçeriği yazılımla değişen ekranlar; ihtiyaca göre LED ya da LCD",
+    title: "Dijital Ekran Satışı ve Montajı | LED, LCD | ARLEDSCREEN",
+    description:
+      "Mağaza, lobi, kafe ve ofis için dijital ekran: LCD/TV tipi ekran, dokunmatik kiosk, menuboard ve LED ekran. Satış, montaj, tamir ve yazılı teklif ARLEDSCREEN'den.",
+    short: "LCD/TV tipi ekran, kiosk, menuboard ve LED; ihtiyaca göre tek ekipten.",
+    tag: "Mağaza · Lobi · Ofis",
+    family: "LCD ve Dijital Ekranlar",
+    types: [
+      "LCD / TV tipi ticari ekran",
+      "Dokunmatik kiosk",
+      "Menuboard (dijital menü)",
+      "Ayaklı totem ve poster ekran",
+      "Tam renkli LED ekran (NXTIONSTAR)",
+    ],
+    image: "/projects/neu-kutuphane.jpg",
+    cardImage: "/projects/neu-kutuphane.jpg",
+    imageAlt: "Kütüphane salonunda LED ekran ve iki ayaklı dijital ekran",
+    intro: [
+      "Dijital ekran, gösterdiği içeriği basılı malzeme gibi yeniden üretmeden, yazılımla değiştirebildiğiniz her türlü ekranı kapsar. LCD/TV tipi paneller, dokunmatik kiosklar, menü ekranları, ayaklı totemler ve modüllerden kurulan LED ekranlar bu ailenin üyeleridir.",
+      "Doğru tür; ekranın nereye konacağına, ne kadar uzaktan izleneceğine ve ne kadar büyük olacağına göre seçilir. Tek ve yakından bakılan bir yüzeyde hazır ölçülü LCD çoğu zaman yeterlidir. Geniş, çerçevesiz ya da güneş alan bir yüzeyde LED ekran öne çıkar. İki seçeneği de satıyor, kuruyor ve servis ediyoruz.",
+    ],
+    highlights: [
+      "LED ve LCD seçeneği aynı ekipten",
+      "İç mekân LCD'de en sık 43–85 inç ölçüler",
+      "İçerik USB, Wi‑Fi, yerel ağ veya bilgisayarla güncellenir",
+      "2 yıl garanti + 5 yıl ücretsiz teknik servis",
+    ],
+    uses: [
+      { title: "Mağaza ve vitrin", body: "Kampanya, yeni ürün ve fiyat duyuruları." },
+      { title: "AVM ve otel lobisi", body: "Karşılama, yönlendirme ve etkinlik bilgisi." },
+      { title: "Kafe ve restoran", body: "Menü, günün önerisi ve kampanya ekranı." },
+      { title: "Ofis, kurum ve salon", body: "Duyuru, bekleme alanı bilgisi ve sunum." },
+    ],
+    pitches: [],
+    seriesCategories: [],
+    guide: { href: "/tr/rehber/dijital-ekran/", label: "Dijital ekran rehberi" },
+    projectType: "magaza",
+    whatsapp: "Merhaba, dijital ekran hakkında bilgi almak istiyorum. Kullanım yeri, ölçü ve adet:",
+    faqs: [
+      {
+        question: "Dijital ekran ile LED ekran aynı şey mi?",
+        answer:
+          "Hayır. LED ekran, dijital ekranların bir türüdür. LCD/TV tipi paneller, kiosklar ve menü ekranları da dijital ekrandır. Hangisinin uygun olduğunu ölçüye, izleme mesafesine ve ortamın ışığına bakarak birlikte seçiyoruz.",
+      },
+      {
+        question: "Hangi ölçülerde dijital ekran var?",
+        answer:
+          "Hazır LCD/TV tipi ticari ekranlarda iç mekânda en çok 43 ile 85 inç arası tercih edilir; dokunmatik kiosklarda 49, 55 ve 65 inç seçenekleri vardır. Daha büyük ya da özel oranlı bir yüzey gerekiyorsa LED ekran ölçüye göre kurulur.",
+      },
+      {
+        question: "Arızalı dijital ekranları tamir ediyor musunuz?",
+        answer:
+          "Evet. LED ekranların yanında LCD, kiosk ve menuboard ekranların arıza tespiti ve tamirini de yapıyoruz. Ekranın modelini ve arızanın kısa tarifini paylaşmanız yeterli.",
+      },
+      {
+        question: "Fiyat nasıl belirlenir?",
+        answer:
+          "Bu grup için sitede fiyat yayımlamıyoruz. Ekran türü, ölçü, adet ve montaj şekli netleşince montaj dahil yazılı teklif hazırlıyoruz.",
+      },
+    ],
+  },
+  {
+    slug: "menuboard",
+    name: "Menüboard",
+    h1: "Menüboard: Dijital Menü Ekranı",
+    lead: "Kafe ve restoranlarda basılı menünün yerine, anında güncellenen ekran",
+    title: "Menüboard Ekran Satışı ve Montajı | LED, LCD | ARLEDSCREEN",
+    description:
+      "Kafe ve restoranlar için menüboard: kasa üstü LED menü duvarı, LCD/TV tipi menü ekranı ve ayaklı dikey menü. Satış, montaj, tamir ve yazılı teklif ARLEDSCREEN'den.",
+    short: "Kasa üstü LED menü duvarı, LCD menü ekranı ve ayaklı dikey menü.",
+    tag: "Kafe · Restoran · Fast food",
+    family: "LCD ve Dijital Ekranlar",
+    types: [
+      "Kasa üstü LED menü duvarı",
+      "LCD / TV tipi menü ekranı",
+      "Ayaklı dikey menü ekranı",
+      "Dış mekân menüsü (pencere ve arabaya servis)",
+    ],
+    image: "/opt/blog/kafe-restoran-led-ekran.jpg",
+    cardImage: "/opt/blog/kafe-restoran-led-ekran.jpg",
+    imageAlt: "Kafe-restoranda iç mekân LED ekran uygulaması",
+    intro: [
+      "Menüboard, kasanın üstünde ya da girişte duran ve menüyü, fiyatları, kampanyaları gösteren dijital ekrandır. Fiyat değiştiğinde ya da yeni ürün geldiğinde baskı beklemeden içeriği birkaç dakikada güncellersiniz.",
+      "İki yoldan kuruyoruz. LCD/TV tipi menü ekranları hazır ölçülerde gelir ve yan yana dizilir; kasa arkasında çoğunlukla 43–55 inç ekranlar kullanılır. LED menü duvarı ise duvarın ölçüsüne göre modüllerle kurulur ve çerçevesiz, uzaktan okunan tek bir yüzey verir. Girişte ayaklı menü için 49, 55 veya 65 inç dikey gövde ya da poster LED tercih edilir.",
+    ],
+    highlights: [
+      "LED ya da LCD; seçim keşifte alana göre",
+      "Yatay kasa üstü veya dikey ayaklı yerleşim",
+      "İçerik USB, Wi‑Fi veya yerel ağ ile; zamanlanmış kampanya yayını",
+      "2 yıl garanti + 5 yıl ücretsiz teknik servis",
+    ],
+    uses: [
+      { title: "Kafe", body: "İçecek menüsü, günün tatlısı ve sezon kampanyası." },
+      { title: "Restoran ve fast food", body: "Kasa üstü menü, set menüler ve fiyat listesi." },
+      { title: "Pastane ve fırın", body: "Ürün görselleri ve saat bazlı ürün değişimi." },
+      { title: "Pencere ve arabaya servis", body: "Dış mekâna dayanıklı kasada okunur menü." },
+    ],
+    pitches: [],
+    seriesCategories: [],
+    guide: { href: "/tr/rehber/menuboard-dijital-menu/", label: "Menuboard rehberi" },
+    projectType: "horeca",
+    whatsapp: "Merhaba, menüboard (dijital menü ekranı) hakkında bilgi almak istiyorum. Kasa alanının ölçüsü ve ekran sayısı:",
+    faqs: [
+      {
+        question: "Menüboard LED mi, LCD mi olmalı?",
+        answer:
+          "Birkaç ekranı yan yana koymak yeterliyse LCD/TV tipi menü ekranı pratiktir; ekranlar arasında çerçeve kalır. Tek parça, çerçevesiz ve aydınlık ortamda uzaktan okunan bir menü istiyorsanız LED menü duvarı daha uygundur. Kararı keşifte alan ölçüsüne göre veriyoruz.",
+      },
+      {
+        question: "Kaç inç ekran gerekir?",
+        answer:
+          "Kasa arkasında genellikle 43–55 inç ekranlar yan yana kullanılır. Girişteki ayaklı menülerde 49, 55 ve 65 inç dikey gövdeler yaygındır. Daha geniş bir menü yüzeyi için LED ekran ölçüye göre kurulur.",
+      },
+      {
+        question: "Menüyü kim günceller?",
+        answer:
+          "Siz. Kurulumda yazılımı, ekran ayarlarını ve içerik gönderme yöntemini (USB, Wi‑Fi veya yerel ağ) teslim ediyor, kısa bir kullanım eğitimi veriyoruz.",
+      },
+      {
+        question: "Mevcut menüboardumu tamir ediyor musunuz?",
+        answer:
+          "Evet. LED, LCD ve menüboard ekranların arıza tespiti ve tamirini yapıyoruz. Ekranın tipini ve arızanın kısa tarifini iletmeniz yeterli.",
+      },
+    ],
+  },
+  {
+    slug: "kiosk",
+    name: "Kiosk",
+    h1: "Kiosk: Dokunmatik Bilgi ve Self-Servis Noktası",
+    lead: "Kullanıcının dokunarak bilgi aldığı ya da işlem yaptığı ekran",
+    title: "Kiosk Ekran Satışı ve Montajı | Dokunmatik | ARLEDSCREEN",
+    description:
+      "Dokunmatik kiosk: 49, 55 ve 65 inç, Android veya Windows. Yönlendirme, bilgi noktası, sipariş ve katalog için. Satış, montaj, tamir ve yazılı teklif ARLEDSCREEN'den.",
+    short: "49, 55 ve 65 inç dokunmatik kiosk; Android veya Windows.",
+    tag: "AVM · Otel · Restoran",
+    family: "LCD ve Dijital Ekranlar",
+    types: [
+      "Ayaklı dokunmatik kiosk",
+      "49, 55 ve 65 inç",
+      "Android veya Windows",
+      "Yönlendirme ve bilgi noktası",
+      "Self-servis sipariş, bilet ve katalog",
+    ],
+    image: "/projects/guides/dokunmatik-kiosk-49-inc.jpg",
+    cardImage: "/projects/guides/dokunmatik-kiosk-49-inc.jpg",
+    imageAlt: "49 inç dokunmatik dijital kiosk, iki ayaklı gövde",
+    intro: [
+      "Kiosk, kullanıcının ekrana dokunarak ya da QR kod okutarak bilgi aldığı veya işlem yaptığı bağımsız bir noktadır. Totem ve poster ekranlar çoğunlukla tek yönlü yayın yapar; kioskta ise etkileşim vardır.",
+      "Tedarik ettiğimiz ayaklı dokunmatik kiosklar 49, 55 ve 65 inçtir ve Android ya da Windows tabanlı seçilir. Video, görsel ve ses oynatırlar; USB, HDMI, LAN ve Wi‑Fi bağlantısıyla içerik anında değiştirilir. Bu gövdeler kapalı alanlar içindir; açık havada kullanılacak kiosk talepleri proje bazında ayrıca değerlendirilir.",
+    ],
+    highlights: [
+      "49, 55 ve 65 inç dokunmatik ekran",
+      "Android veya Windows işletim sistemi",
+      "USB, HDMI, LAN ve Wi‑Fi bağlantısı",
+      "2 yıl garanti + 5 yıl ücretsiz teknik servis",
+    ],
+    uses: [
+      { title: "AVM ve kampüs", body: "Kat planı, mağaza bulma ve yönlendirme." },
+      { title: "Restoran", body: "Self-servis sipariş ve menü gösterimi." },
+      { title: "Otel ve hastane lobisi", body: "Bilgi noktası, sıra alma ve duyuru." },
+      { title: "Mağaza ve showroom", body: "Dijital katalog ve ürün tanıtımı." },
+    ],
+    pitches: [],
+    seriesCategories: [],
+    guide: { href: "/tr/rehber/kiosk-ekran/", label: "Kiosk ekran rehberi" },
+    projectType: "magaza",
+    whatsapp: "Merhaba, dokunmatik kiosk hakkında bilgi almak istiyorum. Ölçü (inç), adet ve kullanım amacı:",
+    faqs: [
+      {
+        question: "Kiosk hangi ölçülerde var?",
+        answer:
+          "Ayaklı dokunmatik kiosklarda 49, 55 ve 65 inç seçeneklerini tedarik ediyoruz. Ölçüyü kullanıcının duracağı mesafeye ve konulacak alana göre birlikte seçiyoruz.",
+      },
+      {
+        question: "Yazılımı kim sağlıyor?",
+        answer:
+          "Mevcut bir sipariş, katalog ya da yönlendirme yazılımınız varsa kiosku ona göre seçiyor, gerekli işletim sistemini ve bağlantıları teklifte belirtiyoruz. Yazıcı, kart okuyucu veya POS gibi çevre birimleri gerekiyorsa teklife ayrıca ekleniyor.",
+      },
+      {
+        question: "Dış mekânda kiosk kullanılabilir mi?",
+        answer:
+          "Tedarik ettiğimiz gövdeler kapalı alanlar içindir. Açık hava için sızdırmaz kasa, yüksek parlaklık ve iklimlendirme gerekir; bu tür talepleri proje bazında değerlendiriyoruz.",
+      },
+      {
+        question: "Arızalı kiosk tamir ediyor musunuz?",
+        answer:
+          "Evet. Kiosk, LCD ve menüboard ekranların arıza tespiti ve tamirini yapıyoruz. Fiyat bu grup için yazılı teklifle verilir.",
+      },
+    ],
+  },
+  {
+    slug: "lcd-ekran",
+    name: "LCD Ekran",
+    h1: "LCD Ekran: Dokunmatik Kiosk ve Ayaklı Ekran",
+    lead: "Yakından bakılan, tek parça ve hazır ölçülü dijital ekranlar",
+    title: "LCD Ekran Satışı | Kiosk ve Ayaklı Ekran | ARLEDSCREEN",
+    description:
+      "49, 55 ve 65 inç dokunmatik LCD kiosk; Android veya Windows tabanlı. USB, HDMI, LAN ve Wi‑Fi ile içerik. Satış, montaj ve yazılı teklif ARLEDSCREEN'den.",
+    short: "Dokunmatik kiosk ve ayaklı LCD ekran; 49, 55 ve 65 inç seçenekler.",
+    tag: "Kiosk · Lobi · Mağaza",
+    family: "LCD ve Dijital Ekranlar",
+    types: [
+      "Ayaklı dokunmatik kiosk",
+      "49, 55 ve 65 inç ölçüler",
+      "Android tabanlı",
+      "Windows tabanlı",
+      "LCD menuboard ve ayaklı ekran (teklifle)",
+    ],
+    image: "/projects/guides/lcd-dikey-ekran-55-inc.jpg",
+    cardImage: "/projects/guides/lcd-dikey-ekran-55-inc.jpg",
+    imageAlt: "55 inç dikey LCD dijital ekran, ayaklı gövde",
+    intro: [
+      "LCD ekran, fabrikada belirlenen ölçüde gelen tek parça bir paneldir. Modülle büyütülen LED ekranın aksine kutudan çıktığı ölçüde kullanılır; bu yüzden yakından bakılan, tek bir noktaya konan ekranlarda pratik bir seçenektir.",
+      "Ayaklı dokunmatik kiosk gövdelerinde 49, 55 ve 65 inç ölçüleri tedarik ediyoruz. Kiosklar Android ya da Windows tabanlı olarak seçilir; video, fotoğraf ve ses oynatır, internete bağlanarak çevrim içi içerik de gösterebilir. Menuboard ve ayaklı ekran projelerinde LCD seçeneğini LED ile birlikte değerlendiriyor, model ve ölçüyü yazılı teklifte netleştiriyoruz.",
+    ],
+    highlights: [
+      "49, 55 ve 65 inç dokunmatik kiosk",
+      "Android veya Windows işletim sistemi",
+      "USB, HDMI, LAN ve Wi‑Fi bağlantısı",
+      "Video, fotoğraf ve ses oynatma; içerik anında değiştirilebilir",
+    ],
+    uses: [
+      { title: "AVM ve mağaza", body: "Kampanya, ürün tanıtımı ve mağaza içi yönlendirme." },
+      { title: "Toplantı ve konferans salonu", body: "Program, salon bilgisi ve karşılama ekranı." },
+      { title: "Restoran ve kafe", body: "Menü, günün önerileri ve self-servis bilgi noktası." },
+      { title: "Lobi ve bekleme alanı", body: "Bilgilendirme, duyuru ve kat / birim yönlendirmesi." },
+    ],
+    pitches: [],
+    seriesCategories: [],
+    guide: { href: "/tr/rehber/lcd-ekran/", label: "LCD ekran rehberi" },
+    projectType: "magaza",
+    whatsapp: "Merhaba, LCD ekran / dokunmatik kiosk hakkında bilgi almak istiyorum. Ölçü (inç), adet ve kullanım alanı:",
+    faqs: [
+      {
+        question: "LCD kiosk hangi ölçülerde var?",
+        answer:
+          "Ayaklı dokunmatik kiosklarda 49, 55 ve 65 inç seçeneklerini tedarik ediyoruz. Hangi ölçünün uygun olduğunu izleme mesafesi ve konulacak alana göre birlikte seçiyoruz.",
+      },
+      {
+        question: "Android mi, Windows mu seçmeliyim?",
+        answer:
+          "İki sürüm de video, fotoğraf ve ses oynatır. Kullanacağınız yazılım veya uygulama belirli bir işletim sistemi istiyorsa seçimi ona göre yapıyoruz; emin değilseniz kullanım senaryonuzu yazın, teklifle birlikte önerelim.",
+      },
+      {
+        question: "İçerik ekrana nasıl yüklenir?",
+        answer:
+          "Kiosklarda USB, HDMI, kablolu ağ (LAN) ve Wi‑Fi bağlantısı bulunur. Görseller ve sunumlar bu yollarla yüklenip istendiğinde anında değiştirilebilir.",
+      },
+      {
+        question: "LCD ekran tamiri yapıyor musunuz?",
+        answer:
+          "Evet. LCD, kiosk ve menüboard ekranların arıza tespiti ve tamirini yapıyoruz. Ekranın modelini ve arızanın kısa tarifini paylaşmanız yeterli.",
+      },
+      {
+        question: "LCD ekran fiyatı ne kadar?",
+        answer:
+          "LCD ekranlar için sitede fiyat yayımlamıyoruz. Ölçü, işletim sistemi ve adet netleştikten sonra montaj dahil yazılı teklif hazırlıyoruz. Sitedeki yayımlanmış fiyatlar yalnızca NXTIONSTAR LED paneller içindir.",
+      },
+    ],
+  },
+  {
     slug: "poster-led-ekran",
     name: "Poster ve Totem LED Ekran",
     h1: "Poster ve Totem LED Ekran",
@@ -738,19 +1003,35 @@ export const PRODUCT_GROUPS: ProductGroup[] = [
   ...CONTROL_GROUPS,
 ];
 
-// Keep a stable, family-ordered list for menus, grids and the sitemap.
+// Keep a stable, family-ordered base list.
 PRODUCT_GROUPS.sort(
   (a, b) => PRODUCT_FAMILIES.indexOf(a.family) - PRODUCT_FAMILIES.indexOf(b.family),
 );
 
-/** Category grids (home + products hub): İç Mekân first, Dış Mekân second, others keep their order. */
-const GRID_LEAD_SLUGS = ["ic-mekan-led-ekran", "dis-mekan-led-ekran"];
-export const PRODUCT_GROUPS_GRID: ProductGroup[] = [
-  ...GRID_LEAD_SLUGS.map((s) => PRODUCT_GROUPS.find((g) => g.slug === s)).filter(
-    (g): g is ProductGroup => Boolean(g),
-  ),
-  ...PRODUCT_GROUPS.filter((g) => !GRID_LEAD_SLUGS.includes(g.slug)),
+/**
+ * Owner order for product types (Aras Bey, 9 Eki 2026): İç mekân, Dış mekân, Dijital ekran,
+ * Menüboard, Kiosk, LCD ekran; everything else keeps its previous relative order.
+ * Slugs without a product group (today: dijital ekran, menüboard, kiosk, which are guides) are
+ * skipped. Used by menus, footer, grids, ItemList and sitemap.
+ */
+const GRID_LEAD_SLUGS = [
+  "ic-mekan-led-ekran",
+  "dis-mekan-led-ekran",
+  "dijital-ekran",
+  "menuboard",
+  "kiosk",
+  "lcd-ekran",
 ];
+{
+  const lead = (g: ProductGroup) => {
+    const i = GRID_LEAD_SLUGS.indexOf(g.slug);
+    return i === -1 ? GRID_LEAD_SLUGS.length : i;
+  };
+  PRODUCT_GROUPS.sort((a, b) => lead(a) - lead(b));
+}
+
+/** Category grids (home + products hub): same owner order as PRODUCT_GROUPS. */
+export const PRODUCT_GROUPS_GRID: ProductGroup[] = [...PRODUCT_GROUPS];
 const GRID_FAMILY_ORDER: ProductFamily[] = [
   "İç Mekân LED Ekranlar",
   ...PRODUCT_FAMILIES.filter((f) => f !== "İç Mekân LED Ekranlar"),
