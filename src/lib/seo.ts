@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildAlternates, type Locale } from "@/lib/i18n";
 import { absoluteUrl, SITE_URL } from "@/lib/site";
+import { trMetaTitle } from "@/content/tr-meta-titles";
 
 const OG_LOCALE: Record<Locale, string> = {
   en: "en_US",
@@ -101,7 +102,7 @@ function normalizePath(path: string): string {
 export function buildPageMetadata({
   locale,
   path,
-  title,
+  title: rawTitle,
   description,
   keywords,
   canonicalLocale,
@@ -114,6 +115,10 @@ export function buildPageMetadata({
     ? Object.fromEntries(Object.entries(all).filter(([l]) => hreflangLocales.includes(l as Locale)))
     : undefined;
   const desc = clampMetaDescription(description);
+  const title =
+    locale === "tr" && (canonicalLocale ?? "tr") === "tr"
+      ? trMetaTitle(`/tr${clean}`, rawTitle)
+      : rawTitle;
 
   return {
     title,
@@ -152,7 +157,7 @@ export function buildPageMetadata({
 /** Metadata for Turkish-only pages (no hreflang alternates to missing locales). */
 export function buildTrOnlyMetadata({
   path,
-  title,
+  title: rawTitle,
   description,
   image,
   type = "website",
@@ -175,6 +180,7 @@ export function buildTrOnlyMetadata({
   const og = image ?? { url: "/og/arledscreen-og.jpg", width: 1200, height: 630, alt: "ARLEDSCREEN — LED Ekran Teknoloji Merkezi" };
   const url = absoluteUrl(`/tr${clean}`);
   const desc = clampMetaDescription(description);
+  const title = trMetaTitle(`/tr${clean}`, rawTitle);
   return {
     title,
     description: desc,

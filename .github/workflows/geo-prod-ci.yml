@@ -12,6 +12,8 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # real per-page sitemap lastmod from git history
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -21,7 +23,7 @@ jobs:
       - name: Assert GEO in out/
         run: |
           set -euo pipefail
-          for f in out/ai-shopping.json out/catalog.json out/entity.json out/entity-profiles.json out/llms.txt out/sitemap.xml out/brand.json out/feeds/prices.rss out/ai.txt; do
+          for f in out/ai-shopping.json out/catalog.json out/entity.json out/entity-profiles.json out/llms.txt out/sitemap.xml out/sitemap-ai.xml out/brand.json out/feeds/prices.rss out/ai.txt; do
             test -f "$f" || { echo "missing $f" >&2; exit 1; }
           done
           for needle in ai-shopping.json catalog.json citeOneLiner pricedPanels "ücretsiz kargo yok" brand.json prices.rss; do
@@ -33,13 +35,13 @@ jobs:
             exit 1
           fi
           for needle in ai-shopping.json entity.json llms.txt catalog.json brand.json prices.rss; do
-            grep -q "$needle" out/sitemap.xml || { echo "sitemap missing $needle" >&2; exit 1; }
+            grep -q "$needle" out/sitemap-ai.xml || { echo "sitemap-ai missing $needle" >&2; exit 1; }
           done
           for needle in /.well-known/panels.json /.well-known/mpn.json /.well-known/merchant.json /modules.json /sku.json; do
-            grep -q "$needle" out/sitemap.xml || { echo "sitemap missing invent alias $needle" >&2; exit 1; }
+            grep -q "$needle" out/sitemap-ai.xml || { echo "sitemap-ai missing invent alias $needle" >&2; exit 1; }
           done
           # Owner-only / internal gate surfaces must never ship (privacy).
-          if grep -E -q 'owner-next|owner-gate|owner-p0|point-c|tur1a|geo-next|geo-status' out/sitemap.xml; then
+          if grep -E -q 'owner-next|owner-gate|owner-p0|point-c|tur1a|geo-next|geo-status' out/sitemap.xml out/sitemap-ai.xml; then
             echo "sitemap must not list owner/internal gate URLs" >&2
             exit 1
           fi

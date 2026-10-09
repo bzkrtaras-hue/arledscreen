@@ -2,6 +2,14 @@
 
 En yeni kayıt üstte. Numara: ARL-YYYYMMDD-XXX.
 
+## ARL-20261009-003 — Sitemap ayrımı (sitemap.xml / sitemap-ai.xml) + TR başlık uzunluk düzeltmesi
+
+- **Sitemap:** `sitemap.xml` artık yalnızca indekslenebilir, kendi canonical’ına işaret eden HTML sayfaları listeliyor (414 → 215). 49 noindex “invent” köprü sayfası ve 150 makine dosyası (json/txt/md/rss/tsv/uzantısız alias) yeni `sitemap-ai.xml`’e taşındı (199 URL); `robots.txt` (Function + public + robots.ts) iki sitemap’i de gösteriyor. Liste: `src/content/sitemap-ai-paths.ts`, route: `src/app/sitemap-ai.xml/route.ts`
+- **lastmod:** her URL için sayfanın route + içerik dosyalarının son git commit tarihi (`src/lib/sitemap-lastmod.ts`, `src/lib/git-lastmod.ts`); git geçmişi yoksa/shallow ise build tarihi. CI ve deploy checkout `fetch-depth: 0`
+- **Doğrulayıcı:** `validate-ai-feeds.mjs` invent alias / ARD köprü kontrolleri `sitemap-ai.xml` üzerinden; yeni: sitemap.xml’deki her URL HTML, noindex değil ve self-canonical olmalı; robots sitemap-ai.xml’i göstermeli; owner/internal URL yasağı iki sitemap için de geçerli. `geo-prod-ci.yml` + deploy guard/smoke buna göre güncellendi. IndexNow listesine `sitemap-ai.xml` eklendi
+- **TR başlıklar:** 69 TR sayfanın `<title>`/og:title’ı 30–60 karaktere çekildi (anahtar kelime başta, ARLEDSCREEN sonda); `/tr/bolgeler/istanbul/` artık ana sayfadan farklı başlıkta. Tek kaynak: `src/content/tr-meta-titles.ts` (lib/seo.ts builder’larında uygulanır). Aynı canonical’a giden noindex TR köprüleri de hedef sayfanın başlığını alır
+- **Dokunulmadı:** EN başlıklar, hreflang, H1/gövde metni, fiyatlar, slug’lar, `fiyat-hesap/index.html` (md5 `14972407dea358a02667f080aab27d33`), `chat-widget.js`, `_headers`, MailerLite CatDAx. CSS hash aynı (`47c76947d5aa65cf.css`) — arayüz değişmedi
+
 ## ARL-20261009-002 — Deploy smoke: SIGPIPE yanlış hata düzeltmesi
 
 - **Sorun:** `deploy-cloudflare-pages.yml` smoke adımında `echo "$sm" | grep -q …` + `set -o pipefail` → grep erken çıkınca echo SIGPIPE alıyor, sağlıklı yayında “FAIL” görünüyordu
